@@ -7,16 +7,16 @@ import org.json.JSONObject;
 
 public class JSONObjectDemo {
 	public static void main(String[] args) {
-		System.out.println("Creating JSONObject: ");
+		System.out.println("3.1.1. Creating JSONObject: ");
 		jsonFromJSONObject();
 		
-		System.out.println("\nCreating JSONObject from Map: ");
+		System.out.println("\n3.1.2. Creating JSONObject from Map: ");
 		jsonFromMap();
 		
-		System.out.println("\nCreating JSONObject from JSON string: ");
+		System.out.println("\n3.1.3. Creating JSONObject from JSON string: ");
 		jsonFromJSONString();
 		
-		System.out.println("\nCreating JSONObject from Java Bean: ");
+		System.out.println("\n3.1.4. Creating JSONObject from Java Bean: ");
 		jsonFromJavaBean();
 	}
 	

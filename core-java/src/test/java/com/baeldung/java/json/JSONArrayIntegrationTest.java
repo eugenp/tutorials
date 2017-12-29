@@ -1,24 +1,16 @@
 package com.baeldung.java.json;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.Test;
 
-public class JSONArrayDemo {
-	public static void main(String[] args) {
-		System.out.println("3.2.1. Creating JSON Array: ");
-		creatingJSONArray();
-		
-		System.out.println("\n3.2.2. Creating JSON Array from JSON string: ");
-		jsonArrayFromJSONString();
-		
-		System.out.println("\n3.2.3. Creating JSON Array from Collection Object: ");
-		jsonArrayFromCollectionObj();
-	}
-	
-	public static void creatingJSONArray() {
+public class JSONArrayIntegrationTest {
+	@Test
+	public void givenJSONJava_thenCreateNewJSONArrayFromScratch() {
 		JSONArray ja = new JSONArray();
 		ja.put(Boolean.TRUE);
 		ja.put("lorem ipsum");
@@ -31,15 +23,17 @@ public class JSONArrayDemo {
 		 
 		ja.put(jo);
 		 
-		System.out.println(ja.toString());
+		assertEquals("[true,\"lorem ipsum\",{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}]", ja.toString());
 	}
 	
-	public static void jsonArrayFromJSONString() {
+	@Test
+	public void givenJsonString_thenCreateNewJSONArray() {
 		JSONArray ja = new JSONArray("[true, \"lorem ipsum\", 215]");
-		System.out.println(ja);
+		assertEquals("[true,\"lorem ipsum\",215]", ja.toString());
 	}
-	
-	public static void jsonArrayFromCollectionObj() {
+
+	@Test
+	public void givenListObject_thenConvertItToJSONArray() {
 		List<String> list = new ArrayList<>();
 		list.add("California");
 		list.add("Texas");
@@ -47,6 +41,6 @@ public class JSONArrayDemo {
 		list.add("Alaska");
 		 
 		JSONArray ja = new JSONArray(list);
-		System.out.println(ja);
+		assertEquals("[\"California\",\"Texas\",\"Hawaii\",\"Alaska\"]", ja.toString());
 	}
 }
