@@ -7,9 +7,39 @@
 		<constructor-arg value="localhost" />
 		<constructor-arg value="21" />
 	</bean>
-	
+
 	<bean name="readerService" class="com.baeldung.beaninjection.ReaderService">
 		<property name="ftpReader" ref="ftpReader" />
 	</bean>
-	
+
+	<bean id="stockService" class="com.baeldung.spring.core.di.StockService" />
+
+	<bean id="stockController" class="com.baeldung.spring.core.di.StockController">
+		<constructor-arg ref="stockService" />
+	</bean>
+
+	<bean id="stockConfigByType" class="com.baeldung.spring.core.di.StockConfig">
+		<constructor-arg type="int" value="10" />
+		<constructor-arg type="int" value="10000" />
+		<constructor-arg type="int" value="5000" />
+	</bean>
+
+	<bean id="stockConfigByIndex" class="com.baeldung.spring.core.di.StockConfig">
+		<constructor-arg index="0" value="10" />
+		<constructor-arg index="1" value="10000" />
+		<constructor-arg index="2" value="5000" />
+	</bean>
+
+	<bean id="stockConfigByName" class="com.baeldung.spring.core.di.StockConfig">
+		<constructor-arg name="maxStocks" value="10" />
+		<constructor-arg name="maxPrice" value="10000" />
+		<constructor-arg name="maxQuantity" value="5000" />
+	</bean>
+
+	<bean id="stockConfigBySetter" class="com.baeldung.spring.core.di.StockConfigBySetter">
+		<property name="maxStocks" value="10" />
+		<property name="maxPrice" value="10000" />
+		<property name="maxQuantity" value="5000" />
+	</bean>
+
 </beans>
