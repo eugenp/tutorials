@@ -50,7 +50,7 @@ public class WebClientController {
         map.add("key1", "value1");
         map.add("key2", "value2");
 
-        BodyInserter<MultiValueMap<String, ?>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
+        // BodyInserter<MultiValueMap<String, ?>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
         BodyInserter<String, ReactiveHttpOutputMessage> inserter3 = BodyInserters.fromObject("body");
 
         // responses
