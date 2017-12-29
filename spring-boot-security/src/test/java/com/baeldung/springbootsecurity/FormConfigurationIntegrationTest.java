@@ -43,7 +43,7 @@ public class FormConfigurationIntegrationTest {
         HttpHeaders httpHeaders = getHeaders();
         httpHeaders.setAccept(Collections.singletonList(MediaType.TEXT_HTML));
         httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        MultiValueMap<String, String> form = getForm();
+        MultiValueMap<String, String> form = getFormSubmitCorrectCredentials();
         ResponseEntity<String> responseEntity = this.restTemplate.exchange("/login", HttpMethod.POST, new HttpEntity<>(form, httpHeaders), String.class);
         assertEquals(responseEntity.getStatusCode(), HttpStatus.FOUND);
         assertTrue(responseEntity
@@ -56,10 +56,35 @@ public class FormConfigurationIntegrationTest {
           .get("Set-Cookie"));
     }
 
-    private MultiValueMap<String, String> getForm() {
+    @Test
+    public void whenTryingToLoginWithInorrectCredentials_ThenAuthenticationFailed() {
+        HttpHeaders httpHeaders = getHeaders();
+        httpHeaders.setAccept(Collections.singletonList(MediaType.TEXT_HTML));
+        httpHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+        MultiValueMap<String, String> form = getFormSubmitIncorrectCredentials();
+        ResponseEntity<String> responseEntity = this.restTemplate.exchange("/login", HttpMethod.POST, new HttpEntity<>(form, httpHeaders), String.class);
+        assertEquals(responseEntity.getStatusCode(), HttpStatus.FOUND);
+        assertTrue(responseEntity
+          .getHeaders()
+          .getLocation()
+          .toString()
+          .endsWith(this.port + "/login?error"));
+        assertNull(responseEntity
+          .getHeaders()
+          .get("Set-Cookie"));
+    }
+
+    private MultiValueMap<String, String> getFormSubmitCorrectCredentials() {
         MultiValueMap<String, String> form = new LinkedMultiValueMap<>();
         form.set("username", "user");
         form.set("password", "password");
+        return form;
+    }
+
+    private MultiValueMap<String, String> getFormSubmitIncorrectCredentials() {
+        MultiValueMap<String, String> form = new LinkedMultiValueMap<>();
+        form.set("username", "user");
+        form.set("password", "wrongpassword");
         return form;
     }
 

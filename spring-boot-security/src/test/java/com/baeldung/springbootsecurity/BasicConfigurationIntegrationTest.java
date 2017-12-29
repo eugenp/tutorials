@@ -1,6 +1,5 @@
 package com.baeldung.springbootsecurity;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +15,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
@@ -37,9 +38,19 @@ public class BasicConfigurationIntegrationTest {
     @Test
     public void whenLoggedUserRequestsHomePage_ThenSuccess() throws IllegalStateException, IOException {
         ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
-        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
-        Assert.assertTrue(response
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertTrue(response
           .getBody()
           .contains("Baeldung"));
+    }
+
+    @Test
+    public void whenUserWithWrongCredentialsRequestsHomePage_ThenUnauthorizedPage() throws IllegalStateException, IOException {
+        restTemplate = new TestRestTemplate("user", "wrongpassword");
+        ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
+        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        assertTrue(response
+          .getBody()
+          .contains("Unauthorized"));
     }
 }
