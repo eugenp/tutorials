@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                      http://www.springframework.org/schema/beans/spring-beans.xsd
+                      http://www.springframework.org/schema/context 
+                      http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+  <context:component-scan base-package="com.baeldung.ioc"/>
+  
+  <bean id="a" class="com.baeldung.ioc.A" />
+  
+  <bean id="b" class="com.baeldung.ioc.B" />
+  
+  <bean id="setterWithXml" class="com.baeldung.ioc.SetterMethodInjectionExample">
+    <property name="a" ref="a" />
+    <property name="b" ref="b" />
+  </bean>
+  
+   <bean id="constructorWithXml" class="com.baeldung.ioc.ConstructorInjectionExample">
+       <constructor-arg index="0" ref="a"/>
+       <constructor-arg index="1" ref="b"/>   
+  </bean>
+ 
+</beans>
