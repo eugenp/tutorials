@@ -23,8 +23,8 @@ public class StringJoinerUnitTest {
         assertEquals(0, commaSeparatedJoiner.toString()
             .length());
 
-        StringJoiner commaSeparatedWithPrefixSuffixJoiner = new StringJoiner(DELIMITER_COMMA, PREFIX, SUFFIX);
-        assertEquals(commaSeparatedWithPrefixSuffixJoiner.toString(), PREFIX + SUFFIX);
+        StringJoiner commaSeparatedPrefixSuffixJoiner = new StringJoiner(DELIMITER_COMMA, PREFIX, SUFFIX);
+        assertEquals(commaSeparatedPrefixSuffixJoiner.toString(), PREFIX + SUFFIX);
     }
 
     @Test
@@ -34,46 +34,53 @@ public class StringJoinerUnitTest {
 
         assertEquals(commaSeparatedJoiner.toString(), EMPTY_JOINER);
 
-        StringJoiner commaSeparatedWithPrefixSuffixJoiner = new StringJoiner(DELIMITER_COMMA, PREFIX, SUFFIX);
-        commaSeparatedWithPrefixSuffixJoiner.setEmptyValue(EMPTY_JOINER);
+        StringJoiner commaSeparatedPrefixSuffixJoiner = new StringJoiner(DELIMITER_COMMA, PREFIX, SUFFIX);
+        commaSeparatedPrefixSuffixJoiner.setEmptyValue(EMPTY_JOINER);
 
-        assertEquals(commaSeparatedWithPrefixSuffixJoiner.toString(), EMPTY_JOINER);
+        assertEquals(commaSeparatedPrefixSuffixJoiner.toString(), EMPTY_JOINER);
     }
 
     @Test
     public void whenAddElements_thenJoinElements() {
         StringJoiner rgbJoiner = new StringJoiner(DELIMITER_COMMA, PREFIX, SUFFIX);
-        rgbJoiner.add("Red").add("Green").add("Blue");
+        rgbJoiner.add("Red")
+            .add("Green")
+            .add("Blue");
 
         assertEquals(rgbJoiner.toString(), "[Red,Green,Blue]");
     }
-    
+
     @Test
     public void whenAddListElements_thenJoinListElements() {
         List<String> rgbList = new ArrayList<String>();
         rgbList.add("Red");
         rgbList.add("Green");
         rgbList.add("Blue");
-        
+
         StringJoiner rgbJoiner = new StringJoiner(DELIMITER_COMMA, PREFIX, SUFFIX);
-        
-        for (String color: rgbList) {
+
+        for (String color : rgbList) {
             rgbJoiner.add(color);
         }
 
         assertEquals(rgbJoiner.toString(), "[Red,Green,Blue]");
     }
-    
+
     @Test
     public void whenMergeJoiners_thenReturnMerged() {
         StringJoiner rgbJoiner = new StringJoiner(DELIMITER_COMMA, PREFIX, SUFFIX);
         StringJoiner cmybJoiner = new StringJoiner(DELIMITER_HYPHEN, PREFIX, SUFFIX);
 
-        rgbJoiner.add("Red").add("Green").add("Blue");
-        cmybJoiner.add("Cyan").add("Magenta").add("Yellow").add("Black");
+        rgbJoiner.add("Red")
+            .add("Green")
+            .add("Blue");
+        cmybJoiner.add("Cyan")
+            .add("Magenta")
+            .add("Yellow")
+            .add("Black");
 
         rgbJoiner.merge(cmybJoiner);
-        
+
         assertEquals(rgbJoiner.toString(), "[Red,Green,Blue,Cyan-Magenta-Yellow-Black]");
     }
 
@@ -83,7 +90,7 @@ public class StringJoinerUnitTest {
         String commaSeparatedRGB = rgbList.stream()
             .map(color -> color.toString())
             .collect(Collectors.joining(","));
-        
+
         assertEquals(commaSeparatedRGB, "Red,Green,Blue");
     }
 }
