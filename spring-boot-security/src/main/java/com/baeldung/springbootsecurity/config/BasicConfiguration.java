@@ -18,7 +18,11 @@ public class BasicConfiguration extends WebSecurityConfigurerAdapter {
           .inMemoryAuthentication()
           .withUser("user")
           .password("password")
-          .roles("USER");
+          .roles("USER")
+          .and()
+          .withUser("admin")
+          .password("admin")
+          .roles("USER", "ADMIN");
     }
 
     @Override
