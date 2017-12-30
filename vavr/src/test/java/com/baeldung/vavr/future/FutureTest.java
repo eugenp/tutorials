@@ -15,6 +15,8 @@ import io.vavr.control.Option;
 import io.vavr.control.Try;
 
 public class FutureTest {
+    
+    private static final String error = "Failed to get underlying value.";
 
     @Test
     public void whenChangeExecutorService_thenCorrect() throws InterruptedException {
@@ -23,7 +25,7 @@ public class FutureTest {
           Executors.newSingleThreadExecutor(),
           () -> Util.appendData(initialValue));
         Thread.sleep(20);
-        String result = resultFuture.get();
+        String result = resultFuture.getOrElse(error);
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
@@ -33,7 +35,7 @@ public class FutureTest {
         String initialValue = "Welcome to ";
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
         Thread.sleep(20);
-        String result = resultFuture.get();
+        String result = resultFuture.getOrElse(new String(error));
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
@@ -46,7 +48,7 @@ public class FutureTest {
         resultFuture.await();
         Option<Try<String>> futureOption = resultFuture.getValue();
         Try<String> futureTry = futureOption.get();
-        String result = futureTry.get();
+        String result = futureTry.getOrElse(error);
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
@@ -58,7 +60,7 @@ public class FutureTest {
           .onSuccess(finalResult -> System.out.println("Successfully Completed - Result: " + finalResult))
           .onFailure(finalResult -> System.out.println("Failed - Result: " + finalResult));
         Thread.sleep(20);
-        String result = resultFuture.get();
+        String result = resultFuture.getOrElse(error);
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
@@ -70,7 +72,7 @@ public class FutureTest {
           .andThen(finalResult -> System.out.println("Completed - 1: " + finalResult))
           .andThen(finalResult -> System.out.println("Completed - 2: " + finalResult));
         Thread.sleep(20);
-        String result = resultFuture.get();
+        String result = resultFuture.getOrElse(error);
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
@@ -81,7 +83,7 @@ public class FutureTest {
         Future<String> resultFuture = Future.of(() -> Util.appendData(initialValue));
         Thread.sleep(20);
         resultFuture = resultFuture.await();
-        String result = resultFuture.get();
+        String result = resultFuture.getOrElse(error);
 
         assertThat(result).isEqualTo("Welcome to Baeldung!");
     }
@@ -91,7 +93,7 @@ public class FutureTest {
         Future<Integer> resultFuture = Future.of(() -> Util.divideByZero(10));
         Thread.sleep(20);
         Future<Throwable> throwableFuture = resultFuture.failed();
-        Throwable throwable = throwableFuture.get();
+        Throwable throwable = throwableFuture.getOrElse(new Throwable());
 
         assertThat(throwable.getMessage()).isEqualTo("/ by zero");
     }
@@ -102,7 +104,7 @@ public class FutureTest {
         Thread.sleep(20);
         resultFuture.await();
         Option<Throwable> throwableOption = resultFuture.getCause();
-        Throwable throwable = throwableOption.get();
+        Throwable throwable = throwableOption.getOrElse(new Throwable());
 
         assertThat(throwable.getMessage()).isEqualTo("/ by zero");
     }
@@ -135,7 +137,8 @@ public class FutureTest {
         Thread.sleep(20);
         future.await();
 
-        assertThat(future.get()).isEqualTo(Tuple.of("John", new Integer(5)));
+        assertThat(future.getOrElse(new Tuple2<String, Integer>(error, 0)))
+          .isEqualTo(Tuple.of("John", new Integer(5)));
     }
 
     @Test
@@ -155,7 +158,7 @@ public class FutureTest {
         Thread.sleep(20);
         futureResult.await();
 
-        assertThat(futureResult.get()).isEqualTo("Hello from Baeldung");
+        assertThat(futureResult.getOrElse(error)).isEqualTo("Hello from Baeldung");
     }
 
     @Test
@@ -163,7 +166,7 @@ public class FutureTest {
         Future<String> resultFuture = Future.of(() -> Util.getSubstringMinusOne("Hello"));
         Thread.sleep(20);
         Future<String> errorMessageFuture = resultFuture.recover(Throwable::getMessage);
-        String errorMessage = errorMessageFuture.get();
+        String errorMessage = errorMessageFuture.getOrElse(error);
 
         assertThat(errorMessage).isEqualTo("String index out of range: -1");
     }
@@ -173,7 +176,7 @@ public class FutureTest {
         Future<String> resultFuture = Future.of(() -> Util.getSubstringMinusOne("Hello"));
         Thread.sleep(20);
         Future<String> errorMessageFuture = resultFuture.recoverWith(a -> Future.of(a::getMessage));
-        String errorMessage = errorMessageFuture.get();
+        String errorMessage = errorMessageFuture.getOrElse(error);
 
         assertThat(errorMessage).isEqualTo("String index out of range: -1");
     }
@@ -187,7 +190,7 @@ public class FutureTest {
         Future<Throwable> errorMessage = errorMessageFuture.failed();
         
         assertThat(
-          errorMessage.get().getMessage())
+          errorMessage.getOrElse(new Throwable()).getMessage())
           .isEqualTo("String index out of range: -1");
     }
 }
