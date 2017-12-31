@@ -8,15 +8,12 @@ import java.util.Properties;
 import org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl;
 import org.hibernate.engine.jdbc.connections.spi.AbstractMultiTenantConnectionProvider;
 import org.hibernate.engine.jdbc.connections.spi.ConnectionProvider;
+import org.junit.Assert;
 
 @SuppressWarnings("serial")
 public class SchemaMultiTenantConnectionProvider extends AbstractMultiTenantConnectionProvider {
 
-    private final ConnectionProvider connectionProvider;
-
-    public SchemaMultiTenantConnectionProvider() throws IOException {
-        connectionProvider = initConnectionProvider();
-    }
+    private final ConnectionProvider connectionProvider = initConnectionProvider();
 
     @Override
     protected ConnectionProvider getAnyConnectionProvider() {
@@ -36,9 +33,13 @@ public class SchemaMultiTenantConnectionProvider extends AbstractMultiTenantConn
         return connection;
     }
 
-    private ConnectionProvider initConnectionProvider() throws IOException {
+    private ConnectionProvider initConnectionProvider() {
         Properties properties = new Properties();
-        properties.load(getClass().getResourceAsStream("/hibernate-schema-multitenancy.properties"));
+        try {
+            properties.load(getClass().getResourceAsStream("/hibernate-schema-multitenancy.properties"));
+        } catch (IOException e) {
+            Assert.fail("Error loading resource. Cause: " + e.getMessage());
+        }
 
         DriverManagerConnectionProviderImpl connectionProvider = new DriverManagerConnectionProviderImpl();
         connectionProvider.configure(properties);
