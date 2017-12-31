@@ -14,18 +14,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration
-@WithMockUser(username="john",roles={"VIEWER"})
+@WithMockUser(username = "john", roles = { "VIEWER" })
 public class TestWithMockUserAtClassLevel {
-    
+
     @Test
-    public void givenRoleViewer_whenCallGetUsername_thenReturnUsername(){
+    public void givenRoleViewer_whenCallGetUsername_thenReturnUsername() {
         String currentUserName = userService.getUsername();
-        assertEquals("john",currentUserName);
+        assertEquals("john", currentUserName);
     }
-    
+
     @Autowired
     UserRoleService userService;
-    
+
     @Configuration
     @ComponentScan("org.baeldung.methodsecurity.*")
     public static class SpringConfig {

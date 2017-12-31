@@ -6,15 +6,15 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 @SuppressWarnings("serial")
-public class CustomUser extends User{
-    
+public class CustomUser extends User {
+
     private String nickName;
 
     public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
     }
-    
-    public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities,String nickName) {
+
+    public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities, String nickName) {
         super(username, password, authorities);
         this.nickName = nickName;
     }

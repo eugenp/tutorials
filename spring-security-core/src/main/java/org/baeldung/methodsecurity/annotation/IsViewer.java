@@ -10,6 +10,5 @@ import org.springframework.security.access.prepost.PreAuthorize;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @PreAuthorize("hasRole('VIEWER')")
-public @interface IsViewer
-{
+public @interface IsViewer {
 }

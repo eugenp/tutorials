@@ -20,88 +20,87 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserRoleService {
-    
+
     @Autowired
     UserRoleRepository userRoleRepository;
-    
+
     @Secured("ROLE_VIEWER")
-    public String getUsername(){
+    public String getUsername() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return securityContext.getAuthentication().getName();
     }
-    
-    @Secured({"ROLE_VIEWER","ROLE_EDITOR"})
-    public boolean isValidUsername(String username){
+
+    @Secured({ "ROLE_VIEWER", "ROLE_EDITOR" })
+    public boolean isValidUsername(String username) {
         return userRoleRepository.isValidUsername(username);
     }
-    
+
     @RolesAllowed("ROLE_VIEWER")
-    public String getUsername2(){
+    public String getUsername2() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return securityContext.getAuthentication().getName();
     }
-    
-    @RolesAllowed({"ROLE_VIEWER","ROLE_EDITOR"})
-    public boolean isValidUsername2(String username){
+
+    @RolesAllowed({ "ROLE_VIEWER", "ROLE_EDITOR" })
+    public boolean isValidUsername2(String username) {
         return userRoleRepository.isValidUsername(username);
     }
-    
+
     @PreAuthorize("hasRole('ROLE_VIEWER')")
-    public String getUsernameInUpperCase(){
+    public String getUsernameInUpperCase() {
         return getUsername().toUpperCase();
     }
-    
+
     @PreAuthorize("hasAuthority('SYS_ADMIN')")
-    public String getUsernameInLowerCase(){
+    public String getUsernameLC() {
         return getUsername().toLowerCase();
     }
-    
+
     @PreAuthorize("hasRole('ROLE_VIEWER') or hasRole('ROLE_EDITOR')")
-    public boolean isValidUsername3(String username){
+    public boolean isValidUsername3(String username) {
         return userRoleRepository.isValidUsername(username);
     }
-    
+
     @PreAuthorize("#username == authentication.principal.username")
-    public String getMyRoles(String username){
+    public String getMyRoles(String username) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return securityContext
                 .getAuthentication()
                 .getAuthorities()
-                .stream().map(auth -> auth.getAuthority())
-                .collect(Collectors.joining(","));
+                .stream()
+                .map(auth -> auth.getAuthority()).collect(Collectors.joining(","));
     }
-    
+
     @PostAuthorize("returnObject.username == authentication.principal.nickName")
-    public CustomUser loadUserDetail(String username){
+    public CustomUser loadUserDetail(String username) {
         return userRoleRepository.loadUserByUserName(username);
     }
-    
+
     @PreFilter("filterObject != authentication.principal.username")
-    public String joinUsernames(List<String> usernames){
+    public String joinUsernames(List<String> usernames) {
         return usernames.stream().collect(Collectors.joining(";"));
     }
-    
-    @PreFilter(value="filterObject != authentication.principal.username",filterTarget="usernames")
-    public String joinUsernamesAndRoles(List<String> usernames,List<String> roles){
-        return usernames.stream().collect(Collectors.joining(";"))
-                +":"+roles.stream().collect(Collectors.joining(";"));
+
+    @PreFilter(value = "filterObject != authentication.principal.username", filterTarget = "usernames")
+    public String joinUsernamesAndRoles(List<String> usernames, List<String> roles) {
+        return usernames.stream().collect(Collectors.joining(";")) + ":" + roles.stream().collect(Collectors.joining(";"));
     }
-    
+
     @PostFilter("filterObject != authentication.principal.username")
-    public List<String> getAllUsernamesExceptCurrent(){
+    public List<String> getAllUsernamesExceptCurrent() {
         return userRoleRepository.getAllUsernames();
     }
-    
+
     @IsViewer
-    public String getUsername4(){
+    public String getUsername4() {
         SecurityContext securityContext = SecurityContextHolder.getContext();
         return securityContext.getAuthentication().getName();
     }
-    
+
     @PreAuthorize("#username == authentication.principal.username")
     @PostAuthorize("returnObject.username == authentication.principal.nickName")
-    public CustomUser securedLoadUserDetail(String username){
+    public CustomUser securedLoadUserDetail(String username) {
         return userRoleRepository.loadUserByUserName(username);
     }
-   
+
 }
