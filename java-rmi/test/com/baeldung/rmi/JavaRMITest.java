@@ -30,7 +30,7 @@ public class JavaRMITest {
 		
 		try {
 			Registry registry = LocateRegistry.getRegistry();	
-			MessengerService server = (MessengerService) registry.lookup("Server");			
+			MessengerService server = (MessengerService) registry.lookup("MessengerService");			
 			String responseMessage = server.sendMessage("Client Message");			
 			String expectedMessage = "Server Message";			
 			assertEquals(responseMessage, expectedMessage);
