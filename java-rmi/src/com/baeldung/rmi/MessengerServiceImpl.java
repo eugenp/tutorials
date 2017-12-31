@@ -22,7 +22,7 @@ public class MessengerServiceImpl implements MessengerService {
 		
 		MessengerService stub = (MessengerService) UnicastRemoteObject.exportObject((MessengerService) this, 0);
 		Registry registry = LocateRegistry.createRegistry(1099);
-		registry.rebind("Server", stub);
+		registry.rebind("MessengerService", stub);
 	}
 	
 	@Override
