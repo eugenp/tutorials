@@ -103,5 +103,5 @@ public class UserRoleService {
     public CustomUser securedLoadUserDetail(String username){
         return userRoleRepository.loadUserByUserName(username);
     }
-    
+   
 }

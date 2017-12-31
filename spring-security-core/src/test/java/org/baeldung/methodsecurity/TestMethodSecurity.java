@@ -160,4 +160,5 @@ public class TestMethodSecurity{
     public void givenDefaultRole_whenCallGetUsername4_thenAccessDenied(){
         userRoleService.getUsername4();
     }
+    
 }

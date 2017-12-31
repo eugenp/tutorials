@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -35,8 +36,21 @@ public class TestWithUserDetails {
     
     @Test
     @WithUserDetails(value="jane",userDetailsServiceBeanName="userDetailService")
-    public void whenJohn_callSecuredLoadUserDetail_thenOK(){
-        CustomUser user = userService.securedLoadUserDetail("john");
+    public void givenJane_callSecuredLoadUserDetailWithJane_thenOK(){
+        CustomUser user = userService.securedLoadUserDetail("jane");
         assertEquals("jane",user.getNickName());
+        assertEquals("jane",user.getUsername());
+    }
+    
+    @Test(expected=AccessDeniedException.class)
+    @WithUserDetails(value="john",userDetailsServiceBeanName="userDetailService")
+    public void givenJohn_callSecuredLoadUserDetailWithJane_thenAccessDenied(){
+        userService.securedLoadUserDetail("jane");
+    }
+    
+    @Test(expected=AccessDeniedException.class)
+    @WithUserDetails(value="john",userDetailsServiceBeanName="userDetailService")
+    public void givenJohn_callSecuredLoadUserDetailWithJohn_thenAccessDenied(){
+        userService.securedLoadUserDetail("john");
     }
 }
