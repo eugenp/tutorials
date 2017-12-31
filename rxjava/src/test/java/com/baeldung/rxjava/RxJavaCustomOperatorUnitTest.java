@@ -1,25 +1,21 @@
 package com.baeldung.rxjava;
 
-import static com.baelding.rxjava.operator.ToCleanString.toCleanString;
-import static com.baelding.rxjava.operator.ToLength.toLength;
-import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.Test;
-
 import rx.Observable;
 import rx.Observable.Operator;
 import rx.Observable.Transformer;
 import rx.Subscriber;
 
-import com.baelding.rxjava.operator.ToCleanString;
-import com.baelding.rxjava.operator.ToLength;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import static com.baeldung.rxjava.operator.ToCleanString.toCleanString;
+import static com.baeldung.rxjava.operator.ToLength.toLength;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 public class RxJavaCustomOperatorUnitTest {
 
@@ -29,7 +25,7 @@ public class RxJavaCustomOperatorUnitTest {
         final List<String> results = new ArrayList<>();
 
         final Observable<String> observable = Observable.from(list)
-            .lift(toCleanString());
+          .lift(toCleanString());
 
         // when
         observable.subscribe(results::add);
@@ -46,7 +42,7 @@ public class RxJavaCustomOperatorUnitTest {
         final List<Integer> results = new ArrayList<>();
 
         final Observable<Integer> observable = Observable.from(list)
-            .compose(toLength());
+          .compose(toLength());
 
         // when
         observable.subscribe(results::add);
@@ -85,8 +81,8 @@ public class RxJavaCustomOperatorUnitTest {
 
         final List<String> results = new ArrayList<>();
         Observable.from(Arrays.asList("ap_p-l@e", "or-an?ge"))
-            .lift(cleanStringFn)
-            .subscribe(results::add);
+          .lift(cleanStringFn)
+          .subscribe(results::add);
 
         assertThat(results, notNullValue());
         assertThat(results, hasSize(2));
@@ -99,8 +95,8 @@ public class RxJavaCustomOperatorUnitTest {
 
         final List<Integer> results = new ArrayList<>();
         Observable.from(Arrays.asList("apple", "orange"))
-            .compose(toLengthFn)
-            .subscribe(results::add);
+          .compose(toLengthFn)
+          .subscribe(results::add);
 
         assertThat(results, notNullValue());
         assertThat(results, hasSize(2));

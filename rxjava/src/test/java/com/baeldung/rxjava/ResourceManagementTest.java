@@ -12,16 +12,12 @@ public class ResourceManagementTest {
 
         String[] result = {""};
         Observable<Character> values = Observable.using(
-          () -> {
-              return "MyResource";
-          },
-          r -> {
-              return Observable.create(o -> {
-                  for (Character c : r.toCharArray())
-                      o.onNext(c);
-                  o.onCompleted();
-              });
-          },
+          () -> "MyResource",
+          r -> Observable.create(o -> {
+              for (Character c : r.toCharArray())
+                  o.onNext(c);
+              o.onCompleted();
+          }),
           r -> System.out.println("Disposed: " + r)
         );
 

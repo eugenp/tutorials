@@ -1,6 +1,5 @@
 package com.baeldung.awaitility;
 
-import org.awaitility.Awaitility;
 import org.awaitility.Duration;
 import org.junit.Before;
 import org.junit.Test;

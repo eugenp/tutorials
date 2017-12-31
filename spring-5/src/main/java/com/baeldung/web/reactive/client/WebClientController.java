@@ -43,13 +43,14 @@ public class WebClientController {
         WebClient.RequestHeadersSpec<?> requestSpec2 = uri2.body(BodyInserters.fromObject("data"));
 
         // inserters
-        BodyInserter<Publisher<String>, ReactiveHttpOutputMessage> inserter1 = BodyInserters.fromPublisher(Subscriber::onComplete, String.class);
+        BodyInserter<Publisher<String>, ReactiveHttpOutputMessage> inserter1 = BodyInserters
+                .fromPublisher(Subscriber::onComplete, String.class);
 
         LinkedMultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("key1", "value1");
         map.add("key2", "value2");
 
-        BodyInserter<MultiValueMap<String, ?>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
+        // BodyInserter<MultiValueMap<String, ?>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
         BodyInserter<String, ReactiveHttpOutputMessage> inserter3 = BodyInserters.fromObject("body");
 
         // responses

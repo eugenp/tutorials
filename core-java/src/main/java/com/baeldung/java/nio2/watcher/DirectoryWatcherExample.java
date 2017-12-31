@@ -10,6 +10,7 @@ import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
 public class DirectoryWatcherExample {
+    
     public static void main(String[] args) throws IOException, InterruptedException {
         WatchService watchService = FileSystems.getDefault().newWatchService();
         Path path = Paths.get(System.getProperty("user.home"));
@@ -21,5 +22,8 @@ public class DirectoryWatcherExample {
             }
             key.reset();
         }
+
+        watchService.close();
     }
+    
 }

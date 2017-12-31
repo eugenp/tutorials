@@ -10,6 +10,8 @@
       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
 
 	<http use-expressions="true" entry-point-ref="restAuthenticationEntryPoint">
+        <intercept-url pattern="/admin/*" access="hasAnyRole('ROLE_ADMIN')"/>
+    
 		<intercept-url pattern="/api/**" access="isAuthenticated()" />
 
 		<csrf disabled="true" />
@@ -17,6 +19,11 @@
 		<form-login authentication-success-handler-ref="mySuccessHandler"
 			authentication-failure-handler-ref="myFailureHandler" />
 
+        
+        <!-- <access-denied-handler error-page="/my-error-page" /> -->
+        
+        <access-denied-handler ref="customAccessDeniedHandler" />
+        
 		<logout />
 	</http>
 
@@ -30,8 +37,12 @@
 			<user-service>
 				<user name="temporary" password="temporary" authorities="ROLE_ADMIN" />
 				<user name="user" password="userPass" authorities="ROLE_USER" />
+                <user name="user1" password="user1Pass" authorities="ROLE_USER"/>
+                <user name="admin" password="adminPass" authorities="ROLE_ADMIN"/>                
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
+    
+    <global-method-security pre-post-annotations="enabled"/>
 
 </beans:beans>

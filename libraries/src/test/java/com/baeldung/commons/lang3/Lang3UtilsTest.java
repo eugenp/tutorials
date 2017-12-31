@@ -3,7 +3,9 @@ package com.baeldung.commons.lang3;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -20,6 +22,7 @@ import org.apache.commons.lang3.ArchUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.commons.lang3.arch.Processor;
+import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.apache.commons.lang3.concurrent.ConcurrentException;
 import org.apache.commons.lang3.concurrent.ConcurrentRuntimeException;
 import org.apache.commons.lang3.concurrent.ConcurrentUtils;
@@ -133,4 +136,14 @@ public class Lang3UtilsTest {
         assertEquals(sampleObjectOne, sampleObjectTwo);
     }
 
+    @Test
+    public void testBuildDefaults() {
+        BasicThreadFactory.Builder builder = new BasicThreadFactory.Builder();
+        BasicThreadFactory factory = builder.build();
+        assertNull("No naming pattern set Yet", factory.getNamingPattern());
+        BasicThreadFactory factory2 = builder.namingPattern("sampleNamingPattern").daemon(true).priority(Thread.MIN_PRIORITY).build();
+        assertNotNull("Got a naming pattern", factory2.getNamingPattern());
+        assertEquals("sampleNamingPattern", factory2.getNamingPattern());
+
+    }
 }

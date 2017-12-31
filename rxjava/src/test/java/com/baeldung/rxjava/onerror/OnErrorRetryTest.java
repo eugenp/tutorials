@@ -9,20 +9,17 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.Assert.assertTrue;
 
-/**
- * @author aiet
- */
 public class OnErrorRetryTest {
 
     private Error UNKNOWN_ERROR = new Error("unknown error");
 
     @Test
     public void givenSubscriberAndError_whenRetryOnError_thenRetryConfirmed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .error(() -> {
+          .<String>error(() -> {
               atomicCounter.incrementAndGet();
               return UNKNOWN_ERROR;
           })
@@ -37,12 +34,12 @@ public class OnErrorRetryTest {
 
     @Test
     public void givenSubscriberAndError_whenRetryConditionallyOnError_thenRetryConfirmed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
 
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .error(() -> {
+          .<String>error(() -> {
               atomicCounter.incrementAndGet();
               return UNKNOWN_ERROR;
           })
@@ -57,11 +54,11 @@ public class OnErrorRetryTest {
 
     @Test
     public void givenSubscriberAndError_whenRetryUntilOnError_thenRetryConfirmed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .retryUntil(() -> atomicCounter.incrementAndGet() > 3)
           .subscribe(testObserver);
 
@@ -73,12 +70,12 @@ public class OnErrorRetryTest {
 
     @Test
     public void givenSubscriberAndError_whenRetryWhenOnError_thenRetryConfirmed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
         Exception noretryException = new Exception("don't retry");
 
         Observable
-          .error(UNKNOWN_ERROR)
-          .retryWhen(throwableObservable -> Observable.error(noretryException))
+          .<String>error(UNKNOWN_ERROR)
+          .retryWhen(throwableObservable -> Observable.<String>error(noretryException))
           .subscribe(testObserver);
 
         testObserver.assertError(noretryException);
@@ -88,11 +85,11 @@ public class OnErrorRetryTest {
 
     @Test
     public void givenSubscriberAndError_whenRetryWhenOnError_thenCompleted() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .error(() -> {
+          .<String>error(() -> {
               atomicCounter.incrementAndGet();
               return UNKNOWN_ERROR;
           })
@@ -107,11 +104,11 @@ public class OnErrorRetryTest {
 
     @Test
     public void givenSubscriberAndError_whenRetryWhenOnError_thenResubscribed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
         AtomicInteger atomicCounter = new AtomicInteger(0);
 
         Observable
-          .error(() -> {
+          .<String>error(() -> {
               atomicCounter.incrementAndGet();
               return UNKNOWN_ERROR;
           })
@@ -126,11 +123,11 @@ public class OnErrorRetryTest {
 
     @Test
     public void givenSubscriberAndError_whenRetryWhenForMultipleTimesOnError_thenResumed() {
-        TestObserver testObserver = new TestObserver();
+        TestObserver<String> testObserver = new TestObserver<>();
         long before = System.currentTimeMillis();
 
         Observable
-          .error(UNKNOWN_ERROR)
+          .<String>error(UNKNOWN_ERROR)
           .retryWhen(throwableObservable -> throwableObservable
             .zipWith(Observable.range(1, 3), (throwable, integer) -> integer)
             .flatMap(integer -> {

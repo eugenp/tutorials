@@ -20,5 +20,4 @@ public class SingleTest {
         single.subscribe();
         assertTrue(result[0].equals("Hello"));
     }
-
 }
