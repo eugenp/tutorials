@@ -12,7 +12,7 @@ public class RMIClientImpl {
 		try {
 			
 			Registry registry = LocateRegistry.getRegistry();
-			MessengerService server = (MessengerService) registry.lookup("Server");
+			MessengerService server = (MessengerService) registry.lookup("MessengerService");
 			String responseMessage = server.sendMessage("Client Message");
 		} catch (RemoteException e) {
 			e.printStackTrace();
