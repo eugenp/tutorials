@@ -20,8 +20,7 @@ public class StringJoinerUnitTest {
     @Test
     public void whenJoinerWithoutPrefixSuffixWithoutEmptyValue_thenReturnDefault() {
         StringJoiner commaSeparatedJoiner = new StringJoiner(DELIMITER_COMMA);
-        assertEquals(0, commaSeparatedJoiner.toString()
-          .length());
+        assertEquals(0, commaSeparatedJoiner.toString().length());
     }
 
     @Test
