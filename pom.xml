@@ -24,7 +24,7 @@
         <logback.version>1.1.7</logback.version>
         <!-- plugins -->
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     </properties>
 
     <modules>
@@ -152,6 +152,8 @@
         <module>spring-boot</module>
 	    <module>spring-boot-keycloak</module>
         <module>spring-boot-bootstrap</module>
+        <module>spring-boot-admin</module>
+        <module>spring-boot-security</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -263,7 +265,6 @@
         <module>vertx-and-rxjava</module>
         <module>saas</module>
         <module>deeplearning4j</module>
-        <module>spring-boot-admin</module>
         <module>lucene</module>
 		<module>vraptor</module>
     </modules>

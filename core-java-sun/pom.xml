@@ -483,7 +483,7 @@
         <avaitility.version>1.7.0</avaitility.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
 </project>

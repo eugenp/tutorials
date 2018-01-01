@@ -30,7 +30,6 @@
         </dependency>
 
         <!-- json api -->
-
        <dependency>
 			<groupId>io.katharsis</groupId>
 			<artifactId>katharsis-core</artifactId>
