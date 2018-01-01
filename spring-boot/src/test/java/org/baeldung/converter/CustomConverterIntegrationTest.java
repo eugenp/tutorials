@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
-public class CustomConverterTest {
+public class CustomConverterIntegrationTest {
 
     @Autowired
     ConversionService conversionService;

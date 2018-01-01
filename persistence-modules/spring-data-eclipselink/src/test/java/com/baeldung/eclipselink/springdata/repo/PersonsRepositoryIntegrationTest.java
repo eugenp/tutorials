@@ -14,13 +14,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.hamcrest.core.IsNull.notNullValue;
 
-/**
- * Created by adam.
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
-public class PersonsRepositoryTest {
+public class PersonsRepositoryIntegrationTest {
 
 	@Autowired
 	private PersonsRepository personsRepository;
