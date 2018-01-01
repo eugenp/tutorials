@@ -1,40 +1,39 @@
 package org.baeldung;
 
-import java.util.Arrays;
-import java.util.HashSet;
-
 import javax.annotation.PostConstruct;
 
-import org.baeldung.persistence.dao.RoleRepository;
-import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.persistence.model.Role;
-import org.baeldung.persistence.model.User;
+import org.baeldung.persistence.domain.model.Role;
+import org.baeldung.persistence.domain.model.User;
+import org.baeldung.persistence.domain.repository.RoleRepository;
+import org.baeldung.persistence.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class Setup {
 
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired
+  RoleRepository roleRepository;
 
-    @Autowired
-    private RoleRepository roleRepository;
+  @Autowired
+  UserRepository userRepository;
 
-    @PostConstruct
-    private void setupData() {
-        Role roleUser = new Role("ROLE_USER");
-        roleUser = roleRepository.save(roleUser);
-        Role roleAdmin = new Role("ROLE_ADMIN");
-        roleAdmin = roleRepository.save(roleAdmin);
+  @PostConstruct
+  public void init() {
+    Role role1 = new Role(1L, "admin");
+    Role role2 = new Role(2L, "superadmin");
 
-        final User userJohn = new User("john", "john@test.com");
-        userJohn.setRoles(new HashSet<Role>(Arrays.asList(roleUser, roleAdmin)));
-        userRepository.save(userJohn);
+    User user1 = new User(1L, "John","john@test.com");
 
-        final User userTom = new User("tom", "tom@test.com");
-        userTom.setRoles(new HashSet<Role>(Arrays.asList(roleUser)));
-        userRepository.save(userTom);
-    }
+    role1.setUser(user1);
+    role2.setUser(user1);
 
+    user1.getRoles().add(role1);
+    user1.getRoles().add(role2);
+
+    roleRepository.save(role1);
+    roleRepository.save(role2);
+
+    userRepository.save(user1);
+  }
 }

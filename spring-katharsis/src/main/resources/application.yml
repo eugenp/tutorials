@@ -1,0 +1,8 @@
+katharsis:
+  resourcePackage: org.baeldung.persistence.domain
+  domainName: http://localhost:8080/spring-katharsis
+  pathPrefix: /api
+
+server:
+  context-path: /spring-katharsis
+  port: 8080
