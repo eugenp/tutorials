@@ -15,33 +15,35 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Setup {
 
-  /** The role repository. */
-  @Autowired
-  RoleRepository roleRepository;
+    /** The role repository. */
+    @Autowired
+    RoleRepository roleRepository;
 
-  /** The user repository. */
-  @Autowired
-  UserRepository userRepository;
+    /** The user repository. */
+    @Autowired
+    UserRepository userRepository;
 
-  /**
-   * Inits the.
-   */
-  @PostConstruct
-  public void init() {
-    Role role1 = new Role(1L, "admin");
-    Role role2 = new Role(2L, "superadmin");
+    /**
+     * Inits the.
+     */
+    @PostConstruct
+    public void init() {
+        Role role1 = new Role(1L, "admin");
+        Role role2 = new Role(2L, "superadmin");
 
-    User user1 = new User(1L, "John","john@test.com");
+        User user1 = new User(1L, "John", "john@test.com");
 
-    role1.setUser(user1);
-    role2.setUser(user1);
+        role1.setUser(user1);
+        role2.setUser(user1);
 
-    user1.getRoles().add(role1);
-    user1.getRoles().add(role2);
+        user1.getRoles()
+            .add(role1);
+        user1.getRoles()
+            .add(role2);
 
-    roleRepository.save(role1);
-    roleRepository.save(role2);
+        roleRepository.save(role1);
+        roleRepository.save(role2);
 
-    userRepository.save(user1);
-  }
+        userRepository.save(user1);
+    }
 }

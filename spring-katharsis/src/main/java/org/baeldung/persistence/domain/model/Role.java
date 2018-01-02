@@ -4,8 +4,8 @@ import io.katharsis.resource.annotations.JsonApiId;
 import io.katharsis.resource.annotations.JsonApiRelation;
 import io.katharsis.resource.annotations.JsonApiResource;
 
+// TODO: Auto-generated Javadoc
 /**
- * @author krishan.gandhi
  * The Class Role.
  */
 @JsonApiResource(type = "roles")
@@ -71,7 +71,7 @@ public class Role {
     /**
      * Sets the name.
      *
-     * @param name            the name to set
+     * @param name the new name
      */
     public void setName(String name) {
         this.name = name;
@@ -89,7 +89,7 @@ public class Role {
     /**
      * Sets the user.
      *
-     * @param user            the user to set
+     * @param user the new user
      */
     public void setUser(User user) {
         this.user = user;
