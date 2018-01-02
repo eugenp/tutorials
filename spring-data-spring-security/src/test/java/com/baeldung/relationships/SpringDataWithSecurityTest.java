@@ -2,13 +2,8 @@ package com.baeldung.relationships;
 
 import static org.springframework.util.Assert.isTrue;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import javax.servlet.ServletContext;
 
@@ -16,17 +11,13 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -51,7 +42,6 @@ public class SpringDataWithSecurityTest {
     private ServletContext servletContext;
     private static UserRepository userRepository;
     private static TweetRepository tweetRepository;
-    private static final Logger logger = LoggerFactory.getLogger(SpringDataWithSecurityTest.class);
 
     @Before
     public void testInit() {

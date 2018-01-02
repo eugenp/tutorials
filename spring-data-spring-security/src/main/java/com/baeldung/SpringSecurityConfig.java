@@ -4,7 +4,6 @@ import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +25,7 @@ import com.baeldung.security.CustomUserDetailsService;
 @EnableWebSecurity
 @ComponentScan("com.baeldung.security")
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
-    
+
     @Autowired
     private WebApplicationContext applicationContext;
     private CustomUserDetailsService userDetailsService;
@@ -34,7 +33,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     private AuthenticationSuccessHandlerImpl successHandler;
     @Autowired
     private DataSource dataSource;
-    
+
     @PostConstruct
     public void completeSetup() {
         userDetailsService = applicationContext.getBean(CustomUserDetailsService.class);
@@ -42,13 +41,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-        auth
-        .userDetailsService(userDetailsService)
-        .passwordEncoder(encoder())
-        .and()
-        .authenticationProvider(authenticationProvider())
-        .jdbcAuthentication()
-        .dataSource(dataSource);
+        auth.userDetailsService(userDetailsService)
+            .passwordEncoder(encoder())
+            .and()
+            .authenticationProvider(authenticationProvider())
+            .jdbcAuthentication()
+            .dataSource(dataSource);
     }
 
     @Override
@@ -62,11 +60,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
             .antMatchers("/login")
             .permitAll()
-            .antMatchers("/users")
-            .authenticated()
             .and()
             .formLogin()
-            .permitAll().successHandler(successHandler)
+            .permitAll()
+            .successHandler(successHandler)
             .and()
             .csrf()
             .disable();
@@ -84,7 +81,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(11);
     }
-    
+
     @Bean
     public SecurityEvaluationContextExtension securityEvaluationContextExtension() {
         return new SecurityEvaluationContextExtension();

@@ -1,7 +1,5 @@
 package com.baeldung.security;
 
-import java.util.Date;
-
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,25 +14,24 @@ import com.baeldung.models.AppUser;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
-    
+
     @Autowired
     private WebApplicationContext applicationContext;
     private UserRepository userRepository;
-    
+
     public CustomUserDetailsService() {
         super();
     }
-    
+
     @PostConstruct
     public void completeSetup() {
         userRepository = applicationContext.getBean(UserRepository.class);
     }
-    
-    
+
     @Override
     public UserDetails loadUserByUsername(final String username) {
         final AppUser appUser = userRepository.findByUsername(username);
-        if(appUser == null) {
+        if (appUser == null) {
             throw new UsernameNotFoundException(username);
         }
         return new AppUserPrincipal(appUser);

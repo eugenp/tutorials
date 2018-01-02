@@ -5,9 +5,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
@@ -16,11 +14,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 
 @SpringBootApplication
 @PropertySource("classpath:persistence-h2.properties")
@@ -64,18 +59,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
             hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
         }
         return hibernateProperties;
-    }
-    
-    @Bean
-    public InternalResourceViewResolver resolver() {
-       InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-       resolver.setPrefix("/WEB-INF/views/");
-       resolver.setSuffix(".jsp");
-       return resolver;
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(AppConfig.class, args);
     }
 
 }
