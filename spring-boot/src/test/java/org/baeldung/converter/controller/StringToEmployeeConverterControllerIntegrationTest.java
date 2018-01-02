@@ -19,7 +19,7 @@ import org.baeldung.boot.Application;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Application.class)
 @AutoConfigureMockMvc
-public class StringToEmployeeConverterControllerTest {
+public class StringToEmployeeConverterControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
