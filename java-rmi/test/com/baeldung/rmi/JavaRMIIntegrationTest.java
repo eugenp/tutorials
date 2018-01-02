@@ -11,27 +11,27 @@ import java.rmi.registry.Registry;
 
 import org.junit.Test;
 
-public class JavaRMITest {
+public class JavaRMIIntegrationTest {
 	
 	@Test
-	public void WhenRunServer_ServerIsStarted() {
+	public void WhenRunServer_thenServerStarts() {
 		
 		try {
 			MessengerServiceImpl server = new MessengerServiceImpl();
-			server.createStubAndbind();
-			assertTrue(true);
+			server.createStubAndBind();
 		} catch (RemoteException e) {
 			fail("Exception Occured");
 		}
 	}
 	
 	@Test
-	public void WhenClientSendsMessageToServer_ServerSendsResponseMessage() {
+	public void WhenClientSendsMessageToServer_thenServerSendsResponseMessage() {
 		
 		try {
 			Registry registry = LocateRegistry.getRegistry();	
 			MessengerService server = (MessengerService) registry.lookup("MessengerService");			
-			String responseMessage = server.sendMessage("Client Message");			
+			String responseMessage = server.sendMessage("Client Message");	
+			
 			String expectedMessage = "Server Message";			
 			assertEquals(responseMessage, expectedMessage);
 		} catch (RemoteException e) {
