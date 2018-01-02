@@ -17,7 +17,7 @@ import io.restassured.response.Response;
 public class JsonApiLiveTest {
 
     /** The Constant URL_PREFIX. */
-    private final static String URL_PREFIX = "http://127.0.0.1:8080/spring-katharsis/api/users";
+    private final static String URL_PREFIX = "http://localhost:8080/spring-katharsis/api/users";
 
     /**
      * When getting all users then correct.
