@@ -13,7 +13,7 @@ public class HelloStatefulWorldBean implements HelloStatefulWorld {
 
     public String getHelloWorld() {
         howManyTimes++;
-        return "Hello Stateful World";
+        return "Hello Stateful World!";
     }
     
 }

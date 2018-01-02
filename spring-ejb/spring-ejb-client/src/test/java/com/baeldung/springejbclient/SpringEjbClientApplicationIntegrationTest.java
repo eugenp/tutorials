@@ -2,7 +2,7 @@ package com.baeldung.springejbclient;
 
 import org.junit.Test;
 
-public class SpringEjbClientApplicationTests {
+public class SpringEjbClientApplicationIntegrationTest {
 
 	@Test
 	public void contextLoads() {

@@ -1,11 +1,11 @@
 package com.baeldung.ejb.tutorial;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class HelloStatelessWorldTest {
+public class HelloStatelessWorldTestUnitTest {
 
     private HelloStatelessWorldBean statelessBean;
     
@@ -15,9 +15,10 @@ public class HelloStatelessWorldTest {
     }
     
     @Test
-    public void statelessTest() {
+    public void whenStatelessBeanGetHelloWorldIsCalled_thenHelloStatelessWorldIsReturned() {
         String helloWorld = statelessBean.getHelloWorld();
-        assertEquals(helloWorld, "Hello Stateless World!");
+        
+        assertThat(helloWorld).isEqualTo("Hello Stateless World!");
     }
     
 }
