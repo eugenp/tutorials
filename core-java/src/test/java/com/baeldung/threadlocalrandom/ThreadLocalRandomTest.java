@@ -54,5 +54,10 @@ public class ThreadLocalRandomTest {
         
         assertTrue(generatedInt < Double.MAX_VALUE && generatedInt >= Double.MIN_VALUE);
     }
+    
+    @Test(expected = UnsupportedOperationException.class)
+    public void givenUsingThreadLocalRandom_whenSettingSeed_thenThrowUnsupportedOperationException() {
+        ThreadLocalRandom.current().setSeed(0l);
+    }
 
 }
