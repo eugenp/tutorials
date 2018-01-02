@@ -18,7 +18,7 @@ public class MessengerServiceImpl implements MessengerService {
 		return serverMessage;
 	}
 	
-	public void createStubAndbind() throws RemoteException {
+	public void createStubAndBind() throws RemoteException {
 		
 		MessengerService stub = (MessengerService) UnicastRemoteObject.exportObject((MessengerService) this, 0);
 		Registry registry = LocateRegistry.createRegistry(1099);
@@ -34,16 +34,6 @@ public class MessengerServiceImpl implements MessengerService {
 		}
 		
 		return serverMessage;
-	}
-	
-	public static void main(String[] args) {
-		
-		MessengerServiceImpl msgInf = new MessengerServiceImpl();
-		try {
-			msgInf.createStubAndbind();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
 	}
 	
 }
