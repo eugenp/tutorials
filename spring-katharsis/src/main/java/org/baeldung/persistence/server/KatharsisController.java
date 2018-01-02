@@ -12,22 +12,31 @@ import io.katharsis.resource.registry.RegistryEntry;
 import io.katharsis.resource.registry.ResourceRegistry;
 import io.katharsis.spring.boot.v3.KatharsisConfigV3;
 
-
+/**
+ * @author krishan.gandhi
+ * The Class KatharsisController.
+ */
 @RestController
-@Import({KatharsisConfigV3.class})
+@Import({ KatharsisConfigV3.class })
 public class KatharsisController {
 
-  @Autowired
-  private ResourceRegistry resourceRegistry;
+    /** The resource registry. */
+    @Autowired
+    private ResourceRegistry resourceRegistry;
 
-  @RequestMapping("/resources-info")
-  public Map<String, String> getResources() {
-    Map<String, String> result = new HashMap<>();
-    // Add all resources
-    for (RegistryEntry entry : resourceRegistry.getResources()) {
-      result.put(entry.getResourceInformation().getResourceType(),
-          resourceRegistry.getResourceUrl(entry.getResourceInformation()));
+    /**
+     * Gets the resources.
+     *
+     * @return the resources
+     */
+    @RequestMapping("/resources-info")
+    public Map<String, String> getResources() {
+        Map<String, String> result = new HashMap<>();
+        // Add all resources
+        for (RegistryEntry entry : resourceRegistry.getResources()) {
+            result.put(entry.getResourceInformation()
+                .getResourceType(), resourceRegistry.getResourceUrl(entry.getResourceInformation()));
+        }
+        return result;
     }
-    return result;
-  }
 }

@@ -6,12 +6,17 @@ import org.springframework.stereotype.Component;
 
 import io.katharsis.repository.RelationshipRepositoryBase;
 
-
+/**
+ * @author krishan.gandhi
+ * The Class RoleToUserRepositoryImpl.
+ */
 @Component
-public class RoleToUserRepositoryImpl
-    extends RelationshipRepositoryBase<Role, Long, User, Long> {
+public class RoleToUserRepositoryImpl extends RelationshipRepositoryBase<Role, Long, User, Long> {
 
-  public RoleToUserRepositoryImpl() {
-    super(Role.class, User.class);
-  }
+    /**
+     * Instantiates a new role to user repository impl.
+     */
+    public RoleToUserRepositoryImpl() {
+        super(Role.class, User.class);
+    }
 }

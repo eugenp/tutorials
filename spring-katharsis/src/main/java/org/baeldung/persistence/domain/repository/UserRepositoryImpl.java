@@ -10,29 +10,45 @@ import io.katharsis.queryspec.QuerySpec;
 import io.katharsis.repository.ResourceRepositoryBase;
 import io.katharsis.resource.list.ResourceList;
 
+/**
+ * @author krishan.gandhi
+ * The Class UserRepositoryImpl.
+ */
 @Component
-public class UserRepositoryImpl extends ResourceRepositoryBase<User, Long>
-    implements UserRepository {
+public class UserRepositoryImpl extends ResourceRepositoryBase<User, Long> implements UserRepository {
 
-  private Map<Long, User> people = new ConcurrentHashMap<>();
+    /** The people. */
+    private Map<Long, User> people = new ConcurrentHashMap<>();
 
-  public UserRepositoryImpl() {
-    super(User.class);
-  }
+    /**
+     * Instantiates a new user repository impl.
+     */
+    public UserRepositoryImpl() {
+        super(User.class);
+    }
 
-  @Override
-  public synchronized void delete(Long id) {
-    people.remove(id);
-  }
+    /* (non-Javadoc)
+     * @see io.katharsis.repository.ResourceRepositoryBase#delete(java.io.Serializable)
+     */
+    @Override
+    public synchronized void delete(Long id) {
+        people.remove(id);
+    }
 
-  @Override
-  public synchronized <S extends User> S save(S person) {
-    people.put(person.getId(), person);
-    return person;
-  }
+    /* (non-Javadoc)
+     * @see io.katharsis.repository.ResourceRepositoryBase#save(S)
+     */
+    @Override
+    public synchronized <S extends User> S save(S person) {
+        people.put(person.getId(), person);
+        return person;
+    }
 
-  @Override
-  public synchronized ResourceList<User> findAll(QuerySpec querySpec) {
-    return querySpec.apply(people.values());
-  }
+    /* (non-Javadoc)
+     * @see io.katharsis.repository.ResourceRepositoryV2#findAll(io.katharsis.queryspec.QuerySpec)
+     */
+    @Override
+    public synchronized ResourceList<User> findAll(QuerySpec querySpec) {
+        return querySpec.apply(people.values());
+    }
 }

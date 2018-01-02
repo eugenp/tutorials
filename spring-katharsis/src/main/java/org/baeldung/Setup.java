@@ -9,15 +9,23 @@ import org.baeldung.persistence.domain.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * The Class Setup.
+ */
 @Configuration
 public class Setup {
 
+  /** The role repository. */
   @Autowired
   RoleRepository roleRepository;
 
+  /** The user repository. */
   @Autowired
   UserRepository userRepository;
 
+  /**
+   * Inits the.
+   */
   @PostConstruct
   public void init() {
     Role role1 = new Role(1L, "admin");

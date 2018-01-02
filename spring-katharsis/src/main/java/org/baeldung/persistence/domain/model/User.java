@@ -7,87 +7,125 @@ import io.katharsis.resource.annotations.JsonApiId;
 import io.katharsis.resource.annotations.JsonApiRelation;
 import io.katharsis.resource.annotations.JsonApiResource;
 
-
-
+/**
+ * @author krishan.gandhi
+ * The Class User.
+ */
 @JsonApiResource(type = "users")
 public class User {
 
-	@JsonApiId
-	private Long id;
+    /** The id. */
+    @JsonApiId
+    private Long id;
 
-	private String username;
+    /** The username. */
+    private String username;
 
-	private String email;
+    /** The email. */
+    private String email;
 
-	@JsonApiRelation(opposite = "user")
-	private List<Role> roles = new ArrayList<>();
+    /** The roles. */
+    @JsonApiRelation(opposite = "user")
+    private List<Role> roles = new ArrayList<>();
 
-	public User() {
-		super();
-	}
+    /**
+     * Instantiates a new user.
+     */
+    public User() {
+        super();
+    }
 
-	public User(Long id, String username, String email) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.email = email;
-	}
+    /**
+     * Instantiates a new user.
+     *
+     * @param id the id
+     * @param username the username
+     * @param email the email
+     */
+    public User(Long id, String username, String email) {
+        super();
+        this.id = id;
+        this.username = username;
+        this.email = email;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    /**
+     * Gets the id.
+     *
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    /**
+     * Sets the id.
+     *
+     * @param id the new id
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @return the username
-	 */
-	public String getUsername() {
-		return username;
-	}
+    /**
+     * Gets the username.
+     *
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
 
-	/**
-	 * @param username
-	 *            the username to set
-	 */
-	public void setUsername(String username) {
-		this.username = username;
-	}
+    /**
+     * Sets the username.
+     *
+     * @param username            the username to set
+     */
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
+    /**
+     * Gets the email.
+     *
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
 
-	/**
-	 * @param email
-	 *            the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    /**
+     * Sets the email.
+     *
+     * @param email            the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	/**
-	 * @return the roles
-	 */
-	public List<Role> getRoles() {
-		return roles;
-	}
+    /**
+     * Gets the roles.
+     *
+     * @return the roles
+     */
+    public List<Role> getRoles() {
+        return roles;
+    }
 
-	/**
-	 * @param roles
-	 *            the roles to set
-	 */
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+    /**
+     * Sets the roles.
+     *
+     * @param roles            the roles to set
+     */
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
-	@Override
-	public String toString() {
-		return "person[id=" + id + ", name=" + username + ", email=" + email + "]";
-	}
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "person[id=" + id + ", name=" + username + ", email=" + email + "]";
+    }
 }
