@@ -15,18 +15,17 @@ public class HelloStatefulWorldTestUnitTest {
     }
     
     @Test
-    public void whenStatefulBeanGetHelloWorldIsCalled_thenHelloStatefulWorldIsReturned() {
+    public void whenGetHelloWorld_thenHelloStatefulWorldIsReturned() {
         String helloWorld = statefulBean.getHelloWorld();
         
         assertThat(helloWorld).isEqualTo("Hello Stateful World!");
     }
     
     @Test
-    public void whenStatefulBeanGetHelloWorldIsCalled_thenHowManyTimesCounterShouldbeIncreased() {
+    public void whenGetHelloWorldIsCalledTwice_thenCounterIs2() {
         statefulBean.getHelloWorld();
-        assertThat(statefulBean.howManyTimes()).isEqualTo(1);
-        
         statefulBean.getHelloWorld();
+
         assertThat(statefulBean.howManyTimes()).isEqualTo(2);
     }
     

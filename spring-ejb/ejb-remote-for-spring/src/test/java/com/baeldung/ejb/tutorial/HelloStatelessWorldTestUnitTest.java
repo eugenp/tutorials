@@ -15,7 +15,7 @@ public class HelloStatelessWorldTestUnitTest {
     }
     
     @Test
-    public void whenStatelessBeanGetHelloWorldIsCalled_thenHelloStatelessWorldIsReturned() {
+    public void whenGetHelloWorld_thenHelloStatelessWorldIsReturned() {
         String helloWorld = statelessBean.getHelloWorld();
         
         assertThat(helloWorld).isEqualTo("Hello Stateless World!");
