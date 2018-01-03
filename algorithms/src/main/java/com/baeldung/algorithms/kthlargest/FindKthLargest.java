@@ -1,6 +1,7 @@
 package com.baeldung.algorithms.kthlargest;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.stream.IntStream;
 
 public class FindKthLargest {
@@ -9,6 +10,11 @@ public class FindKthLargest {
         Arrays.sort(arr);
         int targetIndex = arr.length - k;
         return arr[targetIndex];
+    }
+    
+    public int findKthLargestBySortingDesc(Integer[] arr, int k) {
+        Arrays.sort(arr, Collections.reverseOrder());
+        return arr[k-1];
     }
 
     public int findKthElementByQuickSelect(Integer[] arr, int left, int right, int k) {
