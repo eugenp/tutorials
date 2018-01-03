@@ -1,10 +1,16 @@
-package com.baeldung.functional;
+package com.baeldung.reactive.urlmatch;
 
 import static org.springframework.web.reactive.function.BodyInserters.fromObject;
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
+import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
+import static org.springframework.web.reactive.function.server.RequestPredicates.path;
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
@@ -19,15 +25,29 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.WebHandler;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 
-public class ExploreSpring5URLPatternUsingRouterFunctions {
+import reactor.core.publisher.Flux;
+
+public class FunctionalWebApplication {
+
+    private static final Actor BRAD_PITT = new Actor("Brad", "Pitt");
+    private static final Actor TOM_HANKS = new Actor("Tom", "Hanks");
+    private static final List<Actor> actors = new CopyOnWriteArrayList<>(Arrays.asList(BRAD_PITT, TOM_HANKS));
 
     private RouterFunction<ServerResponse> routingFunction() {
+        FormHandler formHandler = new FormHandler();
 
-        return route(GET("/p?ths"), serverRequest -> ok().body(fromObject("/p?ths"))).andRoute(GET("/test/{*id}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("id"))))
-            .andRoute(GET("/*card"), serverRequest -> ok().body(fromObject("/*card path was accessed")))
-            .andRoute(GET("/{var1}_{var2}"), serverRequest -> ok().body(fromObject(serverRequest.pathVariable("var1") + " , " + serverRequest.pathVariable("var2"))))
-            .andRoute(GET("/{baeldung:[a-z]+}"), serverRequest -> ok().body(fromObject("/{baeldung:[a-z]+} was accessed and baeldung=" + serverRequest.pathVariable("baeldung"))))
-            .and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
+        RouterFunction<ServerResponse> restfulRouter = route(GET("/"), serverRequest -> ok().body(Flux.fromIterable(actors), Actor.class)).andRoute(POST("/"), serverRequest -> serverRequest.bodyToMono(Actor.class)
+            .doOnNext(actors::add)
+            .then(ok().build()));
+
+        return route(GET("/test"), serverRequest -> ok().body(fromObject("helloworld"))).andRoute(POST("/login"), formHandler::handleLogin)
+            .andRoute(POST("/upload"), formHandler::handleUpload)
+            .and(RouterFunctions.resources("/files/**", new ClassPathResource("files/")))
+            .andNest(path("/actor"), restfulRouter)
+            .filter((request, next) -> {
+                System.out.println("Before handler invocation: " + request.path());
+                return next.handle(request);
+            });
     }
 
     WebServer start() throws Exception {
@@ -57,5 +77,4 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
             e.printStackTrace();
         }
     }
-
 }
