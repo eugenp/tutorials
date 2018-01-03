@@ -8,3 +8,4 @@
 - [Inject Parameters into JUnit Jupiter Unit Tests](http://www.baeldung.com/junit-5-parameters)
 - [Mockito and JUnit 5 – Using ExtendWith](http://www.baeldung.com/mockito-junit-5-extension)
 - [JUnit 5 – @RunWith](http://www.baeldung.com/junit-5-runwith)
+- [JUnit 5 @Test Annotation](http://www.baeldung.com/junit-5-test-annotation)

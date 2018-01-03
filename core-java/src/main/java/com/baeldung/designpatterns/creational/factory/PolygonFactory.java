@@ -11,7 +11,7 @@ public class PolygonFactory {
         if(numberOfSides == 5) {
             return new Pentagon();
         }
-        if(numberOfSides == 4) {
+        if(numberOfSides == 7) {
             return new Heptagon();
         }
         else if(numberOfSides == 8) {
