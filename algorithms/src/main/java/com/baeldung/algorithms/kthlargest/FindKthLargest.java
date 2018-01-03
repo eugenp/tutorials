@@ -44,7 +44,7 @@ public class FindKthLargest {
 
         int leftArraySize = leftArr.length;
         System.arraycopy(leftArr, 0, arr, left, leftArraySize);
-        arr[leftArraySize] = pivot;
+        arr[leftArraySize+left] = pivot;
         System.arraycopy(rightArr, 0, arr, left + leftArraySize + 1, rightArr.length);
 
         return left + leftArraySize;
@@ -69,9 +69,9 @@ public class FindKthLargest {
                 return arr[pos];
             }
             if (pos - left > k) {
-                return findKthElementByQuickSelect(arr, left, pos - 1, k);
+                return findKthElementByRandomizedQuickSelect(arr, left, pos - 1, k);
             }
-            return findKthElementByQuickSelect(arr, pos + 1, right, k - pos + left - 1);
+            return findKthElementByRandomizedQuickSelect(arr, pos + 1, right, k - pos + left - 1);
         }
         return 0;
     }
