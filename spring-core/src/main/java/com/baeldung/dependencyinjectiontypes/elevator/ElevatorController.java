@@ -1,4 +1,4 @@
-package com.baeldung.dependencyinjectiontypes.elevatorExample;
+package com.baeldung.dependencyinjectiontypes.elevator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.baeldung.dependencyinjectiontypes.elevatorExample;
+package com.baeldung.dependencyinjectiontypes.elevator;
 
 public enum Schedule {
 
