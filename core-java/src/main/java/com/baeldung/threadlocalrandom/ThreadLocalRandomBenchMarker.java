@@ -3,6 +3,7 @@ package com.baeldung.threadlocalrandom;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +20,7 @@ public class ThreadLocalRandomBenchMarker {
 
     @Benchmark
     public void randomValuesUsingRandom() {
-        final ExecutorService executor = Executors.newWorkStealingPool();
+        final ExecutorService executor = (ForkJoinPool) Executors.newWorkStealingPool();
         Random random = new Random();
         for (int i = 0; i < 1000; i++) {
             executor.submit(() -> {
@@ -31,11 +32,10 @@ public class ThreadLocalRandomBenchMarker {
 
     @Benchmark
     public void randomValuesUsingThreadLocalRandom() {
-        final ExecutorService executor = Executors.newFixedThreadPool(5);
+        final ExecutorService executor = (ForkJoinPool) Executors.newWorkStealingPool();
         for (int i = 0; i < 1000; i++) {
             executor.submit(() -> {
-                int randomValue = ThreadLocalRandom.current()
-                    .nextInt();
+                int randomValue = ThreadLocalRandom.current().nextInt();
             });
         }
         executor.shutdown();

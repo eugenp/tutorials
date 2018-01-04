@@ -9,7 +9,7 @@ public class ThreadLocalRandomBenchMarkRunner {
     public static void main(String[] args) throws Exception {
 
         Options options = new OptionsBuilder().include(ThreadLocalRandomBenchMarker.class.getSimpleName())
-            .threads(1)
+            .threads(2)
             .forks(1)
             .shouldFailOnError(true)
             .shouldDoGC(true)
