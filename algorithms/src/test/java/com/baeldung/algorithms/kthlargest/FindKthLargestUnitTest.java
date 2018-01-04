@@ -18,8 +18,7 @@ public class FindKthLargestUnitTest {
     @Test
     public void givenIntArray_whenFindKthLargestBySorting_thenGetResult() {
         int k = 3;
-        int kthLargest = arr.length - k;
-        assertEquals(8, findKthLargest.findKthLargestBySorting(arr, kthLargest));
+        assertEquals(8, findKthLargest.findKthLargestBySorting(arr, k));
     }
 
     @Test
