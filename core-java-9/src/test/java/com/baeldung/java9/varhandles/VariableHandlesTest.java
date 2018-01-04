@@ -6,6 +6,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.VarHandle;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertThat;
 
 public class VariableHandlesTest {
 
@@ -24,7 +25,7 @@ public class VariableHandlesTest {
           .findVarHandle(VariableHandlesTest.class, "publicTestVariable", int.class);
 
         assertThat(publicIntHandle.coordinateTypes().size() == 1);
-        assertThat(publicIntHandle.coordinateTypes().get(0) == VariableHandles.class);
+        assertThat(publicIntHandle.coordinateTypes().get(0) == VariableHandlesTest.class);
 
     }
 
