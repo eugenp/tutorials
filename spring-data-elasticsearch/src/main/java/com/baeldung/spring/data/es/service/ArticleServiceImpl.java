@@ -34,12 +34,12 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Page<Article> findByAuthorName(String name, Pageable pageable) {
-        return articleRepository.findByAuthorsName(name, pageable);
+        return articleRepository.findArticleByAuthorsName(name, pageable);
     }
 
     @Override
     public Page<Article> findByAuthorNameUsingCustomQuery(String name, Pageable pageable) {
-        return articleRepository.findByAuthorsNameUsingCustomQuery(name, pageable);
+        return articleRepository.findArticleByAuthorsNameUsingCustomQuery(name, pageable);
     }
 
     @Override
