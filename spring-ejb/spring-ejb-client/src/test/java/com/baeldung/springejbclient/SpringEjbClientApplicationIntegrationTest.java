@@ -4,8 +4,8 @@ import org.junit.Test;
 
 public class SpringEjbClientApplicationIntegrationTest {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }
