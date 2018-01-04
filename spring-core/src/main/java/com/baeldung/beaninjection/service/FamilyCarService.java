@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service("familyCar")
 public class FamilyCarService implements CarService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(RacingCarService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FamilyCarService.class);
 
     private Car car;
 
