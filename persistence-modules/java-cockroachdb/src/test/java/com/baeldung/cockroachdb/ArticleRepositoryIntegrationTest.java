@@ -26,7 +26,7 @@ public class ArticleRepositoryIntegrationTest {
     @Before
     public void connect() throws Exception {
         Class.forName("org.postgresql.Driver");
-        con = DriverManager.getConnection("jdbc:postgresql://localhost:26257/testDB", "user17", "qwerty");
+        con = DriverManager.getConnection("jdbc:postgresql://localhost:26257/testdb", "user17", "qwerty");
 
         articleRepository = new ArticleRepository(con);
     }
