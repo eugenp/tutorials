@@ -1,5 +1,20 @@
 package com.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.hateoas.MediaTypes;
+import org.springframework.restdocs.RestDocumentation;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
+
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -11,67 +26,30 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.pr
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.hateoas.MediaTypes;
-import org.springframework.restdocs.JUnitRestDocumentation;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-/**
- * The Class GettingStartedDocumentationIntegrationTest.
- */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SpringRestDocsApplication.class)
+@SpringApplicationConfiguration(classes = SpringRestDocsApplication.class)
 @WebAppConfiguration
 public class GettingStartedDocumentationIntegrationTest {
 
-    /** The rest documentation. */
     @Rule
-    public final JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("target/generated-snippets");
+    public final RestDocumentation restDocumentation = new RestDocumentation("target/generated-snippets");
 
-    /** The object mapper. */
     @Autowired
     private ObjectMapper objectMapper;
 
-    /** The context. */
     @Autowired
     private WebApplicationContext context;
 
-    /** The mock mvc. */
     private MockMvc mockMvc;
 
-    /**
-     * Sets the up.
-     */
     @Before
     public void setUp() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
-            .apply(documentationConfiguration(this.restDocumentation))
-            .alwaysDo(document("{method-name}/{step}/", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint())))
-            .build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).apply(documentationConfiguration(this.restDocumentation)).alwaysDo(document("{method-name}/{step}/", preprocessRequest(prettyPrint()), preprocessResponse(prettyPrint()))).build();
     }
 
-    /**
-     * Index.
-     *
-     * @throws Exception the exception
-     */
     @Test
     public void index() throws Exception {
-        this.mockMvc.perform(get("/").accept(MediaTypes.HAL_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("_links.crud", is(notNullValue())))
-            .andExpect(jsonPath("_links.crud", is(notNullValue())));
+        this.mockMvc.perform(get("/").accept(MediaTypes.HAL_JSON)).andExpect(status().isOk()).andExpect(jsonPath("_links.crud", is(notNullValue()))).andExpect(jsonPath("_links.crud", is(notNullValue())));
     }
 
     // String createNote() throws Exception {
@@ -142,8 +120,7 @@ public class GettingStartedDocumentationIntegrationTest {
     // .andExpect(jsonPath("_embedded.tags", hasSize(1)));
     // }
     //
-    // void tagExistingNote(String noteLocation, String tagLocation) throws
-    // Exception {
+    // void tagExistingNote(String noteLocation, String tagLocation) throws Exception {
     // Map<String, Object> update = new HashMap<String, Object>();
     // update.put("tags", Arrays.asList(tagLocation));
     // this.mockMvc.perform(patch(noteLocation)
@@ -153,21 +130,17 @@ public class GettingStartedDocumentationIntegrationTest {
     // }
     //
     // MvcResult getTaggedExistingNote(String noteLocation) throws Exception {
-    // return
-    // this.mockMvc.perform(get(noteLocation)).andExpect(status().isOk()).andReturn();
+    // return this.mockMvc.perform(get(noteLocation)).andExpect(status().isOk()).andReturn();
     // }
     //
     // void getTagsForExistingNote(String noteTagsLocation) throws Exception {
     // this.mockMvc.perform(get(noteTagsLocation))
-    // .andExpect(status().isOk()).andExpect(jsonPath("_embedded.tags",
-    // hasSize(1)));
+    // .andExpect(status().isOk()).andExpect(jsonPath("_embedded.tags", hasSize(1)));
     // }
     //
     // private String getLink(MvcResult result, String rel)
     // throws UnsupportedEncodingException {
-    // return
-    // JsonPath.parse(result.getResponse().getContentAsString()).read("_links." +
-    // rel + ".href");
+    // return JsonPath.parse(result.getResponse().getContentAsString()).read("_links." + rel + ".href");
     // }
 
 }

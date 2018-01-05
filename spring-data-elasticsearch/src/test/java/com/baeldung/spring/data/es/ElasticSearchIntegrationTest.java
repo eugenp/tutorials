@@ -44,9 +44,7 @@ public class ElasticSearchIntegrationTest {
     public void before() {
         elasticsearchTemplate.deleteIndex(Article.class);
         elasticsearchTemplate.createIndex(Article.class);
-        elasticsearchTemplate.putMapping(Article.class);
-        elasticsearchTemplate.refresh(Article.class);
-        
+
         Article article = new Article("Spring Data Elasticsearch");
         article.setAuthors(asList(johnSmith, johnDoe));
         articleService.save(article);
@@ -74,10 +72,6 @@ public class ElasticSearchIntegrationTest {
     @Test
     public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
 
-        Iterable<Article> iterable=articleService.findAll();
-        for (Article article : iterable) {
-            System.out.println(article.getTitle());
-        }
         final Page<Article> articleByAuthorName = articleService.findByAuthorName(johnSmith.getName(), new PageRequest(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }

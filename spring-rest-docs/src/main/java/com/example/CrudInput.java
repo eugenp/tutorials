@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.Collections;
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

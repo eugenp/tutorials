@@ -1,16 +1,5 @@
 package com.baeldung.java9;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.collection.IsEmptyCollection.empty;
-import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
-
-import org.junit.Test;
-
 public class Java9OptionalTest {
     @Test
     public void givenOptionalOfSome_whenToStream_thenShouldTreatItAsOneElementStream() {
@@ -21,9 +10,7 @@ public class Java9OptionalTest {
         List<String> collect = value.stream().map(String::toUpperCase).collect(Collectors.toList());
 
         //then
-        //assertThat(collect).hasSameElementsAs(List.of("A"));
-        assertThat(collect,contains("A"));
-        
+        assertThat(collect).hasSameElementsAs(List.of("A"));
     }
 
     @Test
@@ -35,8 +22,7 @@ public class Java9OptionalTest {
         List<String> collect = value.stream().map(String::toUpperCase).collect(Collectors.toList());
 
         //then
-        //assertThat(collect).isEmpty();
-        assertThat(collect, empty());
+        assertThat(collect).isEmpty();
     }
 
     @Test
@@ -50,10 +36,8 @@ public class Java9OptionalTest {
         value.ifPresentOrElse((v) -> successCounter.incrementAndGet(), onEmptyOptionalCounter::incrementAndGet);
 
         //then
-        //assertThat(successCounter.get()).isEqualTo(1);
-        //assertThat(onEmptyOptionalCounter.get()).isEqualTo(0);
-        assertThat(successCounter.get(),equalTo(1));
-        assertThat(onEmptyOptionalCounter.get(),equalTo(0));
+        assertThat(successCounter.get()).isEqualTo(1);
+        assertThat(onEmptyOptionalCounter.get()).isEqualTo(0);
     }
 
     @Test
@@ -67,10 +51,8 @@ public class Java9OptionalTest {
         value.ifPresentOrElse((v) -> successCounter.incrementAndGet(), onEmptyOptionalCounter::incrementAndGet);
 
         //then
-        //assertThat(successCounter.get()).isEqualTo(0);
-       // assertThat(onEmptyOptionalCounter.get()).isEqualTo(1);
-        assertThat(successCounter.get(),equalTo(0));
-        assertThat(onEmptyOptionalCounter.get(),equalTo(1));
+        assertThat(successCounter.get()).isEqualTo(0);
+        assertThat(onEmptyOptionalCounter.get()).isEqualTo(1);
     }
 
     @Test
@@ -84,8 +66,7 @@ public class Java9OptionalTest {
         Optional<String> result = value.or(() -> defaultValue);
 
         //then
-        //assertThat(result.get()).isEqualTo(expected);
-        assertThat(result.get(),equalTo(expected));
+        assertThat(result.get()).isEqualTo(expected);
     }
 
     @Test
@@ -99,7 +80,6 @@ public class Java9OptionalTest {
         Optional<String> result = value.or(() -> defaultValue);
 
         //then
-        //assertThat(result.get()).isEqualTo(defaultString);
-        assertThat(result.get(),equalTo(defaultString));
+        assertThat(result.get()).isEqualTo(defaultString);
     }
 }

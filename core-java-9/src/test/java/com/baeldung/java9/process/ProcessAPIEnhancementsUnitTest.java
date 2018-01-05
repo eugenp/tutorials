@@ -18,13 +18,13 @@ import org.slf4j.LoggerFactory;
 
 public class ProcessAPIEnhancementsUnitTest {
 
-    Logger log = LoggerFactory.getLogger(ProcessAPIEnhancementsUnitTest.class);
+    Logger log = LoggerFactory.getLogger(ProcessAPIEnhancementsTest.class);
 
     @Test
     public void givenCurrentProcess_whenInvokeGetInfo_thenSuccess() throws IOException {
         ProcessHandle processHandle = ProcessHandle.current();
         ProcessHandle.Info processInfo = processHandle.info();
-        assertNotNull(processHandle.pid());
+        assertNotNull(processHandle.getPid());
         assertEquals(false, processInfo.arguments()
           .isPresent());
         assertEquals(true, processInfo.command()
@@ -51,7 +51,7 @@ public class ProcessAPIEnhancementsUnitTest {
           .start();
         ProcessHandle processHandle = process.toHandle();
         ProcessHandle.Info processInfo = processHandle.info();
-        assertNotNull(processHandle.pid());
+        assertNotNull(processHandle.getPid());
         assertEquals(false, processInfo.arguments()
           .isPresent());
         assertEquals(true, processInfo.command()
@@ -72,7 +72,7 @@ public class ProcessAPIEnhancementsUnitTest {
         Stream<ProcessHandle> liveProcesses = ProcessHandle.allProcesses();
         liveProcesses.filter(ProcessHandle::isAlive)
             .forEach(ph -> {
-                assertNotNull(ph.pid());
+                assertNotNull(ph.getPid());
                 assertEquals(true, ph.info()
                   .command()
                   .isPresent());
@@ -102,12 +102,12 @@ public class ProcessAPIEnhancementsUnitTest {
         Stream<ProcessHandle> children = ProcessHandle.current()
           .children();
         children.filter(ProcessHandle::isAlive)
-          .forEach(ph -> log.info("PID: {}, Cmd: {}", ph.pid(), ph.info()
+          .forEach(ph -> log.info("PID: {}, Cmd: {}", ph.getPid(), ph.info()
             .command()));
         Stream<ProcessHandle> descendants = ProcessHandle.current()
           .descendants();
         descendants.filter(ProcessHandle::isAlive)
-          .forEach(ph -> log.info("PID: {}, Cmd: {}", ph.pid(), ph.info()
+          .forEach(ph -> log.info("PID: {}, Cmd: {}", ph.getPid(), ph.info()
             .command()));
     }
 
@@ -121,12 +121,12 @@ public class ProcessAPIEnhancementsUnitTest {
           .start();
         ProcessHandle processHandle = process.toHandle();
 
-        log.info("PID: {} has started", processHandle.pid());
+        log.info("PID: {} has started", processHandle.getPid());
         CompletableFuture<ProcessHandle> onProcessExit = processHandle.onExit();
         onProcessExit.get();
         assertEquals(false, processHandle.isAlive());
         onProcessExit.thenAccept(ph -> {
-            log.info("PID: {} has stopped", ph.pid());
+            log.info("PID: {} has stopped", ph.getPid());
         });
     }
 
