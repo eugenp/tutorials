@@ -1,6 +1,6 @@
 package com.baeldung.algorithms.kthlargest;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -8,7 +8,7 @@ import org.junit.Test;
 public class FindKthLargestUnitTest {
 
     private FindKthLargest findKthLargest;
-    private Integer[] arr = {3, 7, 1, 2, 8, 10, 4, 5, 6, 9};
+    private Integer[] arr = { 3, 7, 1, 2, 8, 10, 4, 5, 6, 9 };
 
     @Before
     public void setup() {
@@ -18,27 +18,40 @@ public class FindKthLargestUnitTest {
     @Test
     public void givenIntArray_whenFindKthLargestBySorting_thenGetResult() {
         int k = 3;
-        assertEquals(8, findKthLargest.findKthLargestBySorting(arr, k));
+        assertThat(findKthLargest.findKthLargestBySorting(arr, k)).isEqualTo(8);
+    }
+
+    @Test
+    public void givenIntArray_whenFindKthLargestBySortingDesc_thenGetResult() {
+        int k = 3;
+        assertThat(findKthLargest.findKthLargestBySortingDesc(arr, k)).isEqualTo(8);
     }
 
     @Test
     public void givenIntArray_whenFindKthLargestByQuickSelect_thenGetResult() {
         int k = 3;
         int kthLargest = arr.length - k;
-        assertEquals(8, findKthLargest.findKthElementByQuickSelect(arr,0,arr.length-1, kthLargest));
+        assertThat(findKthLargest.findKthElementByQuickSelect(arr, 0, arr.length - 1, kthLargest)).isEqualTo(8);
+    }
+
+    @Test
+    public void givenIntArray_whenFindKthElementByQuickSelectIterative_thenGetResult() {
+        int k = 3;
+        int kthLargest = arr.length - k;
+        assertThat(findKthLargest.findKthElementByQuickSelectWithIterativePartition(arr, 0, arr.length - 1, kthLargest)).isEqualTo(8);
     }
 
     @Test
     public void givenIntArray_whenFindKthSmallestByQuickSelect_thenGetResult() {
         int k = 3;
-        assertEquals(3, findKthLargest.findKthElementByQuickSelect(arr,0,arr.length-1, k-1));
+        assertThat(findKthLargest.findKthElementByQuickSelect(arr, 0, arr.length - 1, k - 1)).isEqualTo(3);
     }
 
     @Test
     public void givenIntArray_whenFindKthLargestByRandomizedQuickSelect_thenGetResult() {
         int k = 3;
         int kthLargest = arr.length - k;
-        assertEquals(8, findKthLargest.findKthElementByRandomizedQuickSelect(arr,0,arr.length-1, kthLargest));
+        assertThat(findKthLargest.findKthElementByRandomizedQuickSelect(arr, 0, arr.length - 1, kthLargest)).isEqualTo(8);
     }
 
 }
