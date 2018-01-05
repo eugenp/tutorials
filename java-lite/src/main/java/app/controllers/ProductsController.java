@@ -11,8 +11,13 @@ import java.util.Map;
 public class ProductsController extends AppController {
 
     public void index() {
-      view("products", Product.findAll());
-      render().contentType("application/json");
+      try {
+        view("products", Product.findAll());
+        render().contentType("application/json");
+      } catch (Exception e) {
+        view("message", "There was an error.", "code", 200);
+        render("message");
+      }
     }
 
     public void create() {
@@ -50,28 +55,38 @@ public class ProductsController extends AppController {
     }
 
     public void show() {
-      String id = getId();
-      Product p = Product.findById(id);
-      if (p == null) {
-        view("message", "Product id " + id + " not found.", "code", 200);
+      try {
+        String id = getId();
+        Product p = Product.findById(id);
+        if (p == null) {
+          view("message", "Product id " + id + " not found.", "code", 200);
+          render("message");
+          return;
+        }
+        view("product", p);
+        render("_product");
+      } catch (Exception e) {
+        view("message", "There was an error.", "code", 200);
         render("message");
-        return;
       }
-      view("product", p);
-      render("_product");
     }
 
     public void destroy() {
-      String id = getId();
-      Product p = Product.findById(id);
-      if (p == null) {
-        view("message", "Product id " + id + " not found.", "code", 200);
+      try {
+        String id = getId();
+        Product p = Product.findById(id);
+        if (p == null) {
+          view("message", "Product id " + id + " not found.", "code", 200);
+          render("message");
+          return;
+        }
+        p.delete();
+        view("message", "Successfully deleted product id " + id, "code", 200);
         render("message");
-        return;
+      } catch (Exception e) {
+        view("message", "There was an error.", "code", 200);
+        render("message");
       }
-      p.delete();
-      view("message", "Successfully deleted product id " + id, "code", 200);
-      render("message");
     }
 
     @Override
