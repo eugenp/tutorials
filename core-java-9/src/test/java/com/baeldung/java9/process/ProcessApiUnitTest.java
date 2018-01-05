@@ -30,7 +30,7 @@ public class ProcessApiUnitTest {
     @Test
     public void processInfoExample() throws NoSuchAlgorithmException {
         ProcessHandle self = ProcessHandle.current();
-        long PID = self.getPid();
+        long PID = self.pid();
         ProcessHandle.Info procInfo = self.info();
         Optional<String[]> args = procInfo.arguments();
         Optional<String> cmd = procInfo.commandLine();
@@ -45,7 +45,7 @@ public class ProcessApiUnitTest {
 
         Stream<ProcessHandle> allProc = ProcessHandle.current().children();
         allProc.forEach(p -> {
-            System.out.println("Proc " + p.getPid());
+            System.out.println("Proc " + p.pid());
         });
 
     }
@@ -54,7 +54,7 @@ public class ProcessApiUnitTest {
     public void createAndDestroyProcess() throws IOException, InterruptedException {
         int numberOfChildProcesses = 5;
         for (int i = 0; i < numberOfChildProcesses; i++) {
-            createNewJVM(ServiceMain.class, i).getPid();
+            createNewJVM(ServiceMain.class, i).pid();
         }
 
         Stream<ProcessHandle> childProc = ProcessHandle.current().children();
@@ -62,10 +62,10 @@ public class ProcessApiUnitTest {
 
         childProc = ProcessHandle.current().children();
         childProc.forEach(processHandle -> {
-            assertTrue("Process " + processHandle.getPid() + " should be alive!", processHandle.isAlive());
+            assertTrue("Process " + processHandle.pid() + " should be alive!", processHandle.isAlive());
             CompletableFuture<ProcessHandle> onProcExit = processHandle.onExit();
             onProcExit.thenAccept(procHandle -> {
-                System.out.println("Process with PID " + procHandle.getPid() + " has stopped");
+                System.out.println("Process with PID " + procHandle.pid() + " has stopped");
             });
         });
 
@@ -73,14 +73,14 @@ public class ProcessApiUnitTest {
 
         childProc = ProcessHandle.current().children();
         childProc.forEach(procHandle -> {
-            assertTrue("Could not kill process " + procHandle.getPid(), procHandle.destroy());
+            assertTrue("Could not kill process " + procHandle.pid(), procHandle.destroy());
         });
 
         Thread.sleep(5000);
 
         childProc = ProcessHandle.current().children();
         childProc.forEach(procHandle -> {
-            assertFalse("Process " + procHandle.getPid() + " should not be alive!", procHandle.isAlive());
+            assertFalse("Process " + procHandle.pid() + " should not be alive!", procHandle.isAlive());
         });
 
     }

@@ -8,10 +8,6 @@ import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.http.HttpClient;
-import java.net.http.HttpHeaders;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
@@ -24,6 +20,12 @@ import javax.net.ssl.SSLParameters;
 import org.junit.Before;
 import org.junit.Test;
 
+import jdk.incubator.http.HttpClient;
+import jdk.incubator.http.HttpHeaders;
+import jdk.incubator.http.HttpRequest;
+import jdk.incubator.http.HttpResponse;
+import jdk.incubator.http.HttpRequest.BodyProcessor;
+
 public class SimpleHttpRequestsUnitTest {
 
     private URI httpURI;
@@ -35,21 +37,35 @@ public class SimpleHttpRequestsUnitTest {
 
     @Test
     public void quickGet() throws IOException, InterruptedException, URISyntaxException {
-        HttpRequest request = HttpRequest.create(httpURI).GET();
-        HttpResponse response = request.response();
+        // HttpRequest request = HttpRequest.create(httpURI).GET();
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(httpURI)
+            .GET()
+            .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
+        String responseBody = response.body();
         int responseStatusCode = response.statusCode();
-        String responseBody = response.body(HttpResponse.asString());
+        /*HttpResponse response = request.response();
+        int responseStatusCode = response.statusCode();
+        String responseBody = response.body(HttpResponse.asString());*/
         assertTrue("Get response status code is bigger then 400", responseStatusCode < 400);
     }
 
     @Test
     public void asynchronousGet() throws URISyntaxException, IOException, InterruptedException, ExecutionException {
-        HttpRequest request = HttpRequest.create(httpURI).GET();
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder(httpURI)
+            .GET()
+            .build();
+        CompletableFuture<HttpResponse<String>> futureResponse = client.sendAsync(request, HttpResponse.BodyHandler.asString());
+        /*HttpRequest request = HttpRequest.create(httpURI).GET();
         long before = System.currentTimeMillis();
         CompletableFuture<HttpResponse> futureResponse = request.responseAsync();
         futureResponse.thenAccept(response -> {
             String responseBody = response.body(HttpResponse.asString());
         });
+        */
         HttpResponse resp = futureResponse.get();
         HttpHeaders hs = resp.headers();
         assertTrue("There should be more then 1 header.", hs.map().size() > 1);
@@ -57,34 +73,47 @@ public class SimpleHttpRequestsUnitTest {
 
     @Test
     public void postMehtod() throws URISyntaxException, IOException, InterruptedException {
-        HttpRequest.Builder requestBuilder = HttpRequest.create(httpURI);
+        HttpClient client = HttpClient.newBuilder().build();
+        HttpRequest request = HttpRequest.newBuilder(httpURI)
+            .POST(BodyProcessor.fromString("Sample Post Request"))
+            .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandler.asString());
+        String responseBody = response.body();
+        int statusCode = response.statusCode();
+        assertTrue("HTTP return code", statusCode == HTTP_OK);
+        System.out.println(responseBody);
+        /*HttpRequest.Builder requestBuilder = HttpRequest.create(httpURI);
         requestBuilder.body(HttpRequest.fromString("param1=foo,param2=bar")).followRedirects(HttpClient.Redirect.SECURE);
         HttpRequest request = requestBuilder.POST();
         HttpResponse response = request.response();
         int statusCode = response.statusCode();
-        assertTrue("HTTP return code", statusCode == HTTP_OK);
+        assertTrue("HTTP return code", statusCode == HTTP_OK);*/
     }
 
     @Test
     public void configureHttpClient() throws NoSuchAlgorithmException, URISyntaxException, IOException, InterruptedException {
         CookieManager cManager = new CookieManager();
         cManager.setCookiePolicy(CookiePolicy.ACCEPT_ORIGINAL_SERVER);
-
         SSLParameters sslParam = new SSLParameters(new String[] { "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256" }, new String[] { "TLSv1.2" });
 
-        HttpClient.Builder hcBuilder = HttpClient.create();
-        hcBuilder.cookieManager(cManager).sslContext(SSLContext.getDefault()).sslParameters(sslParam);
+        HttpClient.Builder hcBuilder = HttpClient.newHttpClient().newBuilder();
+        hcBuilder.cookieManager(cManager)
+            .sslContext(SSLContext.getDefault())
+            .sslParameters(sslParam);
         HttpClient httpClient = hcBuilder.build();
-        HttpRequest.Builder reqBuilder = httpClient.request(new URI("https://www.facebook.com"));
-
-        HttpRequest request = reqBuilder.followRedirects(HttpClient.Redirect.ALWAYS).GET();
-        HttpResponse response = request.response();
+        HttpRequest request = HttpRequest.newBuilder()
+            .uri(new URI("https://www.facebook.com"))
+            .GET()
+            .build();
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandler.asString());
+        String responseBody = response.body();
         int statusCode = response.statusCode();
         assertTrue("HTTP return code", statusCode == HTTP_OK);
     }
 
     SSLParameters getDefaultSSLParameters() throws NoSuchAlgorithmException {
-        SSLParameters sslP1 = SSLContext.getDefault().getSupportedSSLParameters();
+        SSLParameters sslP1 = SSLContext.getDefault()
+            .getSupportedSSLParameters();
         String[] proto = sslP1.getApplicationProtocols();
         String[] cifers = sslP1.getCipherSuites();
         System.out.println(printStringArr(proto));
@@ -112,11 +141,13 @@ public class SimpleHttpRequestsUnitTest {
         StringBuilder sb = new StringBuilder();
         Map<String, List<String>> hMap = h.map();
         for (String k : hMap.keySet()) {
-            sb.append(k).append(":");
+            sb.append(k)
+                .append(":");
             List<String> l = hMap.get(k);
             if (l != null) {
                 l.forEach(s -> {
-                    sb.append(s).append(",");
+                    sb.append(s)
+                        .append(",");
                 });
             }
             sb.append("\n");
