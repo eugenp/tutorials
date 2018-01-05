@@ -1,12 +1,14 @@
 package com.baeldung.java9.streams.reactive;
 
 
-import org.junit.Test;
+import static org.assertj.core.api.Java6Assertions.assertThat;
+import static com.jayway.awaitility.Awaitility.await;
 
 import java.util.List;
 import java.util.concurrent.SubmissionPublisher;
+import java.util.concurrent.TimeUnit;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import org.junit.Test;
 
 public class ReactiveStreamsTest {
 
@@ -25,7 +27,7 @@ public class ReactiveStreamsTest {
 
         //then
 
-        await().atMost(1000, TimeUnit.MILLISECONDS).until(
+       await().atMost(1000, TimeUnit.MILLISECONDS).until(
                 () -> assertThat(subscriber.consumedElements).containsExactlyElementsOf(items)
         );
     }
