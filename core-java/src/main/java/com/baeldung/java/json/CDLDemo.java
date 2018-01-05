@@ -6,16 +6,16 @@ import org.json.JSONTokener;
 
 public class CDLDemo {
     public static void main(String[] args) {
-        System.out.println("3.4.1. Producing JSONArray Directly from Comma Delimited Text: ");
+        System.out.println("7.1. Producing JSONArray Directly from Comma Delimited Text: ");
         jsonArrayFromCDT();
         
-        System.out.println("\n3.4.2. Producing Comma Delimited Text from JSONArray: ");
+        System.out.println("\n7.2. Producing Comma Delimited Text from JSONArray: ");
         cDTfromJSONArray();
         
-        System.out.println("\n3.4.3. Producing JSONArray of JSONObjects Using Comma Delimited Text: ");
+        System.out.println("\n7.3. Producing JSONArray of JSONObjects Using Comma Delimited Text: ");
         jaOfJOFromCDT2();
         
-        System.out.println("\n3.4.4. Producing JSONArray of JSONObjects Using Comma Delimited Text: ");
+        System.out.println("\n7.4. Producing JSONArray of JSONObjects Using Comma Delimited Text: ");
         jaOfJOFromCDT2();
     }
     

@@ -8,13 +8,13 @@ import org.json.JSONObject;
 
 public class JSONArrayDemo {
     public static void main(String[] args) {
-        System.out.println("3.2.1. Creating JSON Array: ");
+        System.out.println("5.1. Creating JSON Array: ");
         creatingJSONArray();
         
-        System.out.println("\n3.2.2. Creating JSON Array from JSON string: ");
+        System.out.println("\n5.2. Creating JSON Array from JSON string: ");
         jsonArrayFromJSONString();
         
-        System.out.println("\n3.2.3. Creating JSON Array from Collection Object: ");
+        System.out.println("\n5.3. Creating JSON Array from Collection Object: ");
         jsonArrayFromCollectionObj();
     }
     

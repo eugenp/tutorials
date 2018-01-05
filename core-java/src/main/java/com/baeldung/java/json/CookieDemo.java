@@ -5,10 +5,10 @@ import org.json.JSONObject;
 
 public class CookieDemo {
     public static void main(String[] args) {
-        System.out.println("3.5.1. Converting a Cookie String into a JSONObject");
+        System.out.println("8.1. Converting a Cookie String into a JSONObject");
         cookieStringToJSONObject();
         
-        System.out.println("\n3.5.2. Converting a JSONObject into Cookie String");
+        System.out.println("\n8.2. Converting a JSONObject into Cookie String");
         jSONObjectToCookieString();
     }
     
