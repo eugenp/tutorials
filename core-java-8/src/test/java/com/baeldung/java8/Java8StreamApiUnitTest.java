@@ -1,6 +1,6 @@
 package com.baeldung.java8;
 
-import com.baeldung.streamApi.Product;
+import com.baeldung.stream.Product;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
