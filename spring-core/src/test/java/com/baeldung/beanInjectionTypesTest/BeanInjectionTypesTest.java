@@ -15,13 +15,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import static org.junit.Assert.assertTrue;
+
 public class BeanInjectionTypesTest {
 
     File file = null;
 
     @Before
     public void setup() throws IOException {
-        char[] chars = new char[1025]; //1KByte
+        char[] chars = new char[1024]; // 1KByte
 
         File file = new File("testFile.txt");
         BufferedWriter outputWriter = new BufferedWriter(new FileWriter(file));
@@ -35,20 +37,22 @@ public class BeanInjectionTypesTest {
         Files.deleteIfExists(file.toPath());
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void givenAutowired_WhenSetOnSetter_ThenDependencyValid() throws IOException {
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         FileUploaderSetterInjection setterInjectionBean = (FileUploaderSetterInjection) context.getBean("fileUploaderSetterInjection");
-        //if everything works we expect a runtimeexception saying that the max file size is 1 KB
-        setterInjectionBean.handleFileUpload(file);
+
+        boolean success = setterInjectionBean.handleFileUpload(file);
+        assertTrue(success);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void givenAutowired_WhenSetOnConstructor_ThenDependencyValid() throws IOException {
         ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         FileUploaderConstructorInjection constructorInjectionBean = (FileUploaderConstructorInjection) context.getBean("fileUploaderConstructorInjection");
-        //if everything works we expect a runtimeexception saying that the max file size is 1 KB
-        constructorInjectionBean.handleFileUpload(file);
+
+        boolean success = constructorInjectionBean.handleFileUpload(file);
+        assertTrue(success);
     }
 
 }

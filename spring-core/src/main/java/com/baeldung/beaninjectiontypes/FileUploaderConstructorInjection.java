@@ -14,8 +14,8 @@ public class FileUploaderConstructorInjection {
         this.fileChecker = fileChecker;
     }
 
-    public void handleFileUpload(File file) {
-        fileChecker.checkFile(file);
+    public boolean handleFileUpload(File file) {
+        return fileChecker.checkFile(file);
     }
 
 }
