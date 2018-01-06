@@ -28,6 +28,7 @@
     </properties>
 
     <modules>
+        <module>parent-boot-5</module>
         <module>asm</module>     
         <module>atomix</module>
         <module>apache-cayenne</module>
@@ -85,6 +86,7 @@
         <module>jackson</module>
         <!--         <module>persistence-modules/java-cassandra</module> -->
         <module>vavr</module>
+		<module>java-lite</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
