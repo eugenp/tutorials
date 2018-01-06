@@ -11,8 +11,8 @@ public class PriorityJobScheduler {
     private ExecutorService priorityJobScheduler;
     private PriorityBlockingQueue<Runnable> priorityQueue;
 
-    public PriorityJobScheduler(Integer queueSize) {
-        priorityJobPoolExecutor = Executors.newFixedThreadPool(1);
+    public PriorityJobScheduler(Integer poolSize, Integer queueSize) {
+        priorityJobPoolExecutor = Executors.newFixedThreadPool(poolSize);
         priorityQueue = new PriorityBlockingQueue<Runnable>(queueSize, new JobExecutionComparator());
 
         priorityJobScheduler = Executors.newSingleThreadExecutor();
@@ -32,11 +32,11 @@ public class PriorityJobScheduler {
     public void scheduleJob(Job job) {
         priorityQueue.add(job);
     }
-    
+
     public int getQueuedTaskCount() {
         return priorityQueue.size();
     }
-    
+
     protected void close(ExecutorService scheduler) {
         scheduler.shutdown();
         try {

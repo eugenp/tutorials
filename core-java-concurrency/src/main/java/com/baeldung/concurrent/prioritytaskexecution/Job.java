@@ -1,7 +1,6 @@
 package com.baeldung.concurrent.prioritytaskexecution;
 
 public class Job implements Runnable {
-    
     private String jobName;
     private JobPriority jobPriority;
     
@@ -10,10 +9,8 @@ public class Job implements Runnable {
         this.jobPriority = jobPriority != null ? jobPriority : JobPriority.MEDIUM;
     }
 
-    // constructor, getters and setter
-    
     public JobPriority getJobPriority() {
-            return jobPriority;
+        return jobPriority;
     }
 
     @Override
@@ -21,9 +18,7 @@ public class Job implements Runnable {
         try {
             System.out.println("Job:" + jobName + " Priority:" + jobPriority);
             Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            // handle exception...
-            e.printStackTrace();
+        } catch (InterruptedException ignored) {
         }
     }
 }

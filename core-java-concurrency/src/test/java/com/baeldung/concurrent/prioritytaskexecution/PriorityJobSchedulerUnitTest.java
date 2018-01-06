@@ -1,11 +1,10 @@
 package com.baeldung.concurrent.prioritytaskexecution;
 
-import static junit.framework.TestCase.assertEquals;
-
 import org.junit.Test;
 
-public class PriorityTaskSchedulerUnitTest {
-    private static int PRIORITY_QUEUE_LENGHT = 10;
+public class PriorityJobSchedulerUnitTest {
+    private static int POOL_SIZE = 1;
+    private static int QUEUE_SIZE = 10;
     
     @Test
     public void whenMultiplePriorityJobsQueued_thenHighestPriorityJobIsPicked() {
@@ -16,7 +15,7 @@ public class PriorityTaskSchedulerUnitTest {
         Job job5 = new Job("Job5", JobPriority.LOW);
         Job job6 = new Job("Job6", JobPriority.HIGH);
         
-        PriorityJobScheduler pjs = new PriorityJobScheduler(PRIORITY_QUEUE_LENGHT);
+        PriorityJobScheduler pjs = new PriorityJobScheduler(POOL_SIZE, QUEUE_SIZE);
         
         pjs.scheduleJob(job1);
         pjs.scheduleJob(job2);
@@ -28,12 +27,10 @@ public class PriorityTaskSchedulerUnitTest {
         // ensure no tasks is pending before closing the scheduler
         while (pjs.getQueuedTaskCount() != 0);
         
-        // add delay
+        // delay to avoid job sleep (added for demo) being interrupted
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        } catch (InterruptedException ignored) {
         }
         
         pjs.closeScheduler();
