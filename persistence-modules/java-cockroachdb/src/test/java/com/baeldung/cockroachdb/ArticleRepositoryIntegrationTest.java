@@ -145,6 +145,60 @@ public class ArticleRepositoryIntegrationTest {
         assertEquals(0, savedArticles.size());
     }
 
+    @Test
+    public void whenInsertingTwoArticlesWithSamePrimaryKeyInASingleTransaction_thenRollback() throws SQLException {
+        articleRepository.deleteTable();
+        articleRepository.createTable();
+
+        try {
+            con.setAutoCommit(false);
+
+            UUID articleId = UUID.randomUUID();
+
+            Article article = new Article(articleId, "Guide to CockroachDB in Java", "baeldung");
+            articleRepository.insertArticle(article);
+
+            article = new Article(articleId, "A Guide to MongoDB with Java", "baeldung");
+            articleRepository.insertArticle(article);
+
+            con.commit();
+        } catch (Exception e) {
+            con.rollback();
+        } finally {
+            con.setAutoCommit(true);
+        }
+
+        List<Article> savedArticles = articleRepository.selectAll();
+        assertEquals(0, savedArticles.size());
+    }
+
+    @Test
+    public void whenInsertingTwoArticlesInASingleTransaction_thenInserted() throws SQLException {
+        articleRepository.deleteTable();
+        articleRepository.createTable();
+
+        try {
+            con.setAutoCommit(false);
+
+            Article article = new Article(UUID.randomUUID(), "Guide to CockroachDB in Java", "baeldung");
+            articleRepository.insertArticle(article);
+
+            article = new Article(UUID.randomUUID(), "A Guide to MongoDB with Java", "baeldung");
+            articleRepository.insertArticle(article);
+
+            con.commit();
+        } catch (Exception e) {
+            con.rollback();
+        } finally {
+            con.setAutoCommit(true);
+        }
+
+        List<Article> savedArticles = articleRepository.selectAll();
+        assertEquals(2, savedArticles.size());
+        assertTrue(savedArticles.stream().anyMatch(a -> a.getTitle().equals("Guide to CockroachDB in Java")));
+        assertTrue(savedArticles.stream().anyMatch(a -> a.getTitle().equals("A Guide to MongoDB with Java")));
+    }
+
     @After
     public void disconnect() throws SQLException {
         articleRepository = null;
