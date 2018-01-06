@@ -131,4 +131,6 @@
 - [How to Invert an Array in Java](http://www.baeldung.com/java-invert-array)
 - [Guide to the Cipher Class](http://www.baeldung.com/java-cipher-class)
 - [A Guide to Java Initialization](http://www.baeldung.com/java-initialization)
+- [Implementing a Binary Tree in Java](http://www.baeldung.com/java-binary-tree)
+
 
