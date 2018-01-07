@@ -16,6 +16,7 @@ import org.springframework.security.oauth2.client.registration.ClientRegistratio
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -55,15 +56,18 @@ public class LoginController {
             .getUserInfoEndpoint()
             .getUri();
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.AUTHORIZATION, "Bearer " + client.getAccessToken()
-            .getTokenValue());
+        if (!StringUtils.isEmpty(userInfoEndpointUri)) {
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = new HttpHeaders();
+            headers.add(HttpHeaders.AUTHORIZATION, "Bearer " + client.getAccessToken()
+                .getTokenValue());
 
-        HttpEntity<String> entity = new HttpEntity<String>("", headers);
-        ResponseEntity<Map> response = restTemplate.exchange(userInfoEndpointUri, HttpMethod.GET, entity, Map.class);
-        Map userAttributes = response.getBody();  
-        model.addAttribute("name", userAttributes.get("name"));
+            HttpEntity<String> entity = new HttpEntity<String>("", headers);
+
+            ResponseEntity<Map> response = restTemplate.exchange(userInfoEndpointUri, HttpMethod.GET, entity, Map.class);
+            Map userAttributes = response.getBody();
+            model.addAttribute("name", userAttributes.get("name"));
+        }
 
         return "loginSuccess";
     }
