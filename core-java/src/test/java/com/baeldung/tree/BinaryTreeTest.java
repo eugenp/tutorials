@@ -1,5 +1,6 @@
 package com.baeldung.tree;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -27,6 +28,26 @@ public class BinaryTreeTest {
     }
 
     @Test
+    public void givenABinaryTree_WhenAddingExistingElement_ThenElementIsNotAdded() {
+
+        BinaryTree bt = createBinaryTree();
+
+        int initialSize = bt.getSize();
+
+        assertTrue(bt.containsNode(3));
+        bt.add(3);
+        assertEquals(initialSize, bt.getSize());
+    }
+
+    @Test
+    public void givenABinaryTree_WhenLookingForNonExistingElement_ThenReturnsFalse() {
+
+        BinaryTree bt = createBinaryTree();
+
+        assertFalse(bt.containsNode(99));
+    }
+
+    @Test
     public void givenABinaryTree_WhenDeletingElements_ThenTreeDoesNotContainThoseElements() {
 
         BinaryTree bt = createBinaryTree();
@@ -34,6 +55,19 @@ public class BinaryTreeTest {
         assertTrue(bt.containsNode(9));
         bt.delete(9);
         assertFalse(bt.containsNode(9));
+    }
+
+    @Test
+    public void givenABinaryTree_WhenDeletingNonExistingElement_ThenTreeDoesNotDelete() {
+
+        BinaryTree bt = createBinaryTree();
+
+        int initialSize = bt.getSize();
+
+        assertFalse(bt.containsNode(99));
+        bt.delete(99);
+        assertFalse(bt.containsNode(99));
+        assertEquals(initialSize, bt.getSize());
     }
 
     @Test

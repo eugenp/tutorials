@@ -2,11 +2,11 @@ package com.baeldung.stream;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -66,7 +66,9 @@ public class PrimitiveStreamsUnitTest {
     @Test
     public void givenAnArrayWhenSumIsCalledThenTheCorrectSumIsReturned() {
 
-        int sum = Arrays.asList(33,45).stream().mapToInt(a -> a).sum();
+        int sum = Stream.of(33,45)
+          .mapToInt(i -> i)
+          .sum();
 
         assertEquals(78, sum);
     }

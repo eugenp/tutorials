@@ -107,6 +107,7 @@
             <!-- /Neuroph -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>              
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -612,16 +613,16 @@
             <artifactId>caffeine</artifactId>
             <version>${caffeine.version}</version>
         </dependency>
-	<dependency>
-	    <groupId>org.bouncycastle</groupId>
-	    <artifactId>bcprov-jdk15on</artifactId>
-	    <version>1.58</version>
-	</dependency>
-	<dependency>
-	    <groupId>org.bouncycastle</groupId>
-	    <artifactId>bcpkix-jdk15on</artifactId>
-	    <version>1.58</version>
-	</dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.58</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>1.58</version>
+        </dependency>
         <dependency>
             <groupId>com.google.http-client</groupId>
             <artifactId>google-http-client</artifactId>
@@ -654,6 +655,29 @@
           <artifactId>google-api-services-sheets</artifactId>
           <version>${google-sheets.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>${kafka.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <classifier>test</classifier>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -668,6 +692,10 @@
             <id>bintray-cuba-platform-main</id>
             <name>bintray</name>
             <url>http://dl.bintray.com/cuba-platform/main</url>
+        </repository>
+        <repository>
+            <id>Apache Staging</id>
+            <url>https://repository.apache.org/content/groups/staging</url>
         </repository>
     </repositories>
     <properties>
@@ -729,5 +757,6 @@
         <caffeine.version>2.5.5</caffeine.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
+        <kafka.version>1.0.0</kafka.version>
     </properties>
 </project>
