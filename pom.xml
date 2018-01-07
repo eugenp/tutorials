@@ -86,6 +86,7 @@
         <module>jackson</module>
         <!--         <module>persistence-modules/java-cassandra</module> -->
         <module>vavr</module>
+		<module>java-lite</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
@@ -268,6 +269,7 @@
         <module>deeplearning4j</module>
         <module>lucene</module>
 		<module>vraptor</module>
+        <module>persistence-modules/java-cockroachdb</module>
     </modules>
 
     <dependencies>
