@@ -97,6 +97,19 @@ public class TestMethodSecurity {
     public void givenUserJane_whenCallGetMyRolesWithJane_thenAccessDenied() {
         userRoleService.getMyRoles("jane");
     }
+    
+    @Test
+    @WithMockUser(username = "john", roles = { "ADMIN", "USER", "VIEWER" })
+    public void givenUserJohn_whenCallGetMyRoles2WithJohn_thenReturnRoles() {
+        String roles = userRoleService.getMyRoles2("john");
+        assertEquals("ROLE_ADMIN,ROLE_USER,ROLE_VIEWER", roles);
+    }
+
+    @Test(expected = AccessDeniedException.class)
+    @WithMockUser(username = "john", roles = { "ADMIN", "USER", "VIEWER" })
+    public void givenUserJane_whenCallGetMyRoles2WithJane_thenAccessDenied() {
+        userRoleService.getMyRoles2("jane");
+    }
 
     @Test(expected = AccessDeniedException.class)
     @WithAnonymousUser

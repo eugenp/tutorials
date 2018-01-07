@@ -64,11 +64,13 @@ public class UserRoleService {
     @PreAuthorize("#username == authentication.principal.username")
     public String getMyRoles(String username) {
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        return securityContext
-                .getAuthentication()
-                .getAuthorities()
-                .stream()
-                .map(auth -> auth.getAuthority()).collect(Collectors.joining(","));
+        return securityContext.getAuthentication().getAuthorities().stream().map(auth -> auth.getAuthority()).collect(Collectors.joining(","));
+    }
+
+    @PostAuthorize("#username == authentication.principal.username")
+    public String getMyRoles2(String username) {
+        SecurityContext securityContext = SecurityContextHolder.getContext();
+        return securityContext.getAuthentication().getAuthorities().stream().map(auth -> auth.getAuthority()).collect(Collectors.joining(","));
     }
 
     @PostAuthorize("returnObject.username == authentication.principal.nickName")
