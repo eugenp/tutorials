@@ -117,6 +117,7 @@
         <module>testing-modules/mockito-2</module>
         <module>testing-modules/mocks</module>
         <module>mustache</module>
+	    <module>mvn-wrapper</module>
         <module>noexception</module>
         <module>orientdb</module>
         <module>osgi</module>
@@ -269,6 +270,7 @@
         <module>deeplearning4j</module>
         <module>lucene</module>
 		<module>vraptor</module>
+        <module>persistence-modules/java-cockroachdb</module>
     </modules>
 
     <dependencies>
