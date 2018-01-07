@@ -149,7 +149,7 @@ public class FutureTest {
     }
     
     @Test
-    public void whenFlatMapToString_shouldCombineAndReturn() {
+    public void whenCallFlatMap_thenCorrect() {
         Future<Object> futureMap = Future.of(() -> 1)
           .flatMap((i) -> Future.of(() -> "Hello: " + i));
      
