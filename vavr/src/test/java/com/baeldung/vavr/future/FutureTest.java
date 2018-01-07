@@ -58,6 +58,14 @@ public class FutureTest {
         assertThat(result)
           .isEqualTo(HELLO);
     }
+    
+    @Test
+    public void whenTransform_thenCorrect() {
+        Future<Object> future = Future.of(() -> 5)
+          .transformValue(result -> Try.of(() -> HELLO + result.get()));
+            
+        assertThat(future.get()).isEqualTo(HELLO + 5);
+    }
 
     @Test
     public void whenChainingCallbacks_thenCorrect() {
@@ -138,6 +146,14 @@ public class FutureTest {
 
         assertThat(futureResult.get())
           .isEqualTo("Hello from Baeldung");
+    }
+    
+    @Test
+    public void whenFlatMapToString_shouldCombineAndReturn() {
+        Future<Object> futureMap = Future.of(() -> 1)
+          .flatMap((i) -> Future.of(() -> "Hello: " + i));
+     
+        assertThat(futureMap.get()).isEqualTo("Hello: 1");
     }
 
     @Test
