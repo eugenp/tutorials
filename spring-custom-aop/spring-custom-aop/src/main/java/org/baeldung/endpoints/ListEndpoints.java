@@ -1,6 +1,7 @@
 package org.baeldung.endpoints;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.endpoint.AbstractEndpoint;
@@ -8,16 +9,16 @@ import org.springframework.boot.actuate.endpoint.Endpoint;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ListEndpoints extends AbstractEndpoint<List<Endpoint>> {
-    private List<Endpoint> endpoints;
+public class ListEndpoints extends AbstractEndpoint<List<EndpointDTO>> {
+    private List<EndpointDTO> endpointDTOs;
 
     @Autowired
     public ListEndpoints(List<Endpoint> endpoints) {
         super("listEndpoints");
-        this.endpoints = endpoints;
+        this.endpointDTOs = endpoints.stream().map(endpoint -> new EndpointDTO(endpoint.getId(), endpoint.isEnabled(), endpoint.isSensitive())).collect(Collectors.toList());
     }
 
-    public List<Endpoint> invoke() {
-        return this.endpoints;
+    public List<EndpointDTO> invoke() {
+        return this.endpointDTOs;
     }
 }

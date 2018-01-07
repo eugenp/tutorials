@@ -27,7 +27,7 @@
         <h2.version>1.4.196</h2.version>
         <mockito.version>2.11.0</mockito.version>
 
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <junit4.version>4.12</junit4.version>
         <spring.version>5.0.1.RELEASE</spring.version>

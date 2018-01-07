@@ -14,9 +14,9 @@ public class NewOuter {
         public void run() {
             System.out.println("a = " + a);
             System.out.println("b = " + b);
-            System.out.println("NewOuterTest.this.a = " + NewOuter.this.a);
-            System.out.println("NewOuterTest.b = " + NewOuter.b);
-            System.out.println("NewOuterTest.this.b = " + NewOuter.this.b);
+            System.out.println("NewOuter.this.a = " + NewOuter.this.a);
+            System.out.println("NewOuter.b = " + NewOuter.b);
+            System.out.println("NewOuter.this.b = " + NewOuter.this.b);
         }
     }
 

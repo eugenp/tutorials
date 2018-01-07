@@ -15,10 +15,10 @@
     </modules>
 
     <parent>
-        <artifactId>parent-boot-4</artifactId>
+        <artifactId>parent-boot-5</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-4</relativePath>
+        <relativePath>../../parent-boot-5</relativePath>
     </parent>
 
     <dependencyManagement>
