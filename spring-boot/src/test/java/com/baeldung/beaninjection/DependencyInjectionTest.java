@@ -16,21 +16,16 @@ import com.baeldung.beaninjection.service.CarService;
 public class DependencyInjectionTest {
 
     @Resource
-    private CarService userService;
+    private CarService carService;
 
     @Test
     public void testConstructorDI() {
-        assertTrue("Constructor-based DI isn't working", userService.getCarRepository() != null);
-    }
-
-    @Test
-    public void testConstructorDIUsingFactory() {
-        assertTrue("Constructor-based DI using Factory isn't working", userService.getCar() != null);
+        assertTrue("Constructor-based DI isn't working", carService.getCarRepository() != null);
     }
 
     @Test
     public void testSetterDI() {
-        String optionalDependency = userService.getOptionalDependency();
+        String optionalDependency = carService.getOptionalDependency();
         assertTrue("Setter-based DI isn't working. It is null", optionalDependency != null);
         assertTrue("Setter-based DI isn't working. Value is different than 'yeah'", optionalDependency.equals("yeah"));
     }
