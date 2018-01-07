@@ -4,3 +4,4 @@
 - [An Overview of Identifiers in Hibernate](http://www.baeldung.com/hibernate-identifiers)
 - [Hibernate – Mapping Date and Time](http://www.baeldung.com/hibernate-date-time)
 - [Hibernate Inheritance Mapping](http://www.baeldung.com/hibernate-inheritance)
+- [A Guide to Multitenancy in Hibernate 5](http://www.baeldung.com/hibernate-5-multitenancy)
