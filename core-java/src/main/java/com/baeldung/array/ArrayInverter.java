@@ -25,7 +25,9 @@ public class ArrayInverter {
     }
 
     public Object[] invertUsingStreams(final Object[] array) {
-        return IntStream.range(1, array.length + 1).mapToObj(i -> array[array.length - i]).toArray();
+        return IntStream.rangeClosed(1, array.length)
+            .mapToObj(i -> array[array.length - i])
+            .toArray();
     }
 
     public void invertUsingCommonsLang(Object[] array) {
