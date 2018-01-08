@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean name="engine" class="com.baeldung.typesofbeaninjection.domain.Engine">
+        <constructor-arg value="V8" />
+        <constructor-arg value="5" />
+    </bean>
+
+    <bean name="alices-car" class="com.baeldung.typesofbeaninjection.domain.Car">
+        <constructor-arg ref="engine" />
+    </bean>
+
+    <bean name="bobs-car" class="com.baeldung.typesofbeaninjection.domain.Car">
+        <property name="engine" ref="engine" />
+    </bean>
+
+</beans>
