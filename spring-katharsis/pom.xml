@@ -7,10 +7,10 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-4</artifactId>
+        <artifactId>parent-boot-5</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-4</relativePath>
+        <relativePath>../parent-boot-5</relativePath>
     </parent>
 
     <dependencies>
@@ -36,12 +36,16 @@
             <artifactId>katharsis-servlet</artifactId>
             <version>${katharsis.version}</version>
         </dependency>
-
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.10</version>
+		</dependency>
     </dependencies>
 
 
     <properties>
-        <katharsis.version>1.0.1</katharsis.version>
+        <katharsis.version>2.1.3</katharsis.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 

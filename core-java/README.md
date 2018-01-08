@@ -130,3 +130,7 @@
 - [Check if a Java Array Contains a Value](http://www.baeldung.com/java-array-contains-value)
 - [How to Invert an Array in Java](http://www.baeldung.com/java-invert-array)
 - [Guide to the Cipher Class](http://www.baeldung.com/java-cipher-class)
+- [A Guide to Java Initialization](http://www.baeldung.com/java-initialization)
+- [Implementing a Binary Tree in Java](http://www.baeldung.com/java-binary-tree)
+- [A Guide to ThreadLocalRandom in Java](http://www.baeldung.com/java-thread-local-random)
+- [RegEx for matching Date Pattern in Java](http://www.baeldung.com/java-date-regular-expressions)

@@ -1,6 +1,6 @@
 package org.baeldung.persistence.katharsis;
 
-import io.katharsis.queryParams.RequestParams;
+import io.katharsis.queryParams.QueryParams;
 import io.katharsis.repository.ResourceRepository;
 
 import org.baeldung.persistence.dao.RoleRepository;
@@ -15,17 +15,17 @@ public class RoleResourceRepository implements ResourceRepository<Role, Long> {
     private RoleRepository roleRepository;
 
     @Override
-    public Role findOne(Long id, RequestParams params) {
+    public Role findOne(Long id, QueryParams params) {
         return roleRepository.findOne(id);
     }
 
     @Override
-    public Iterable<Role> findAll(RequestParams params) {
+    public Iterable<Role> findAll(QueryParams params) {
         return roleRepository.findAll();
     }
 
     @Override
-    public Iterable<Role> findAll(Iterable<Long> ids, RequestParams params) {
+    public Iterable<Role> findAll(Iterable<Long> ids, QueryParams params) {
         return roleRepository.findAll(ids);
     }
 

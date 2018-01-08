@@ -16,3 +16,4 @@
 - [Introduction to Lambda Behave](http://www.baeldung.com/lambda-behave)
 - [Introduction to Jukito](http://www.baeldung.com/jukito)
 - [Custom JUnit 4 Test Runners](http://www.baeldung.com/junit-4-custom-runners)
+- [Guide to JSpec](http://www.baeldung.com/jspec)
