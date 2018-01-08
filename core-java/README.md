@@ -133,3 +133,4 @@
 - [A Guide to Java Initialization](http://www.baeldung.com/java-initialization)
 - [Implementing a Binary Tree in Java](http://www.baeldung.com/java-binary-tree)
 - [A Guide to ThreadLocalRandom in Java](http://www.baeldung.com/java-thread-local-random)
+- [RegEx for matching Date Pattern in Java](http://www.baeldung.com/java-date-regular-expressions)
