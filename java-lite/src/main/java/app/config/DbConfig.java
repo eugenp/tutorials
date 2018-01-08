@@ -6,6 +6,6 @@ import org.javalite.activeweb.AppContext;
 public class DbConfig extends AbstractDBConfig {
     @Override
     public void init(AppContext appContext) {
-      this.configFile("/database.properties");
+        this.configFile("/database.properties");
     }
 }
