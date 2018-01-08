@@ -5,8 +5,11 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,33 +26,33 @@ import org.springframework.web.bind.annotation.RestController;
 public class CRUDController {
 
     @GetMapping
-    public List<CrudInput> read(@RequestBody CrudInput crudInput) {
-        List<CrudInput> returnList = new ArrayList<CrudInput>();
+    public List<CrudInput> read(@RequestBody @Valid CrudInput crudInput) {
+        List<CrudInput> returnList = new ArrayList<>();
         returnList.add(crudInput);
         return returnList;
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public HttpHeaders save(@RequestBody CrudInput crudInput) {
+    public HttpHeaders save(@RequestBody @Valid CrudInput crudInput) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setLocation(linkTo(CRUDController.class).slash(crudInput.getId()).toUri());
         return httpHeaders;
     }
 
-   @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     HttpHeaders delete(@PathVariable("id") long id) {
         return new HttpHeaders();
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     void put(@PathVariable("id") long id, @RequestBody CrudInput crudInput) {
 
     }
 
-    @PatchMapping(value = "/{id}")
+    @PatchMapping("/{id}")
     public List<CrudInput> patch(@PathVariable("id") long id, @RequestBody CrudInput crudInput) {
         List<CrudInput> returnList = new ArrayList<CrudInput>();
         crudInput.setId(id);

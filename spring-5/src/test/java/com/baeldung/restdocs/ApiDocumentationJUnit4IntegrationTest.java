@@ -75,20 +75,18 @@ public class ApiDocumentationJUnit4IntegrationTest {
     @Test
     public void crudGetExample() throws Exception {
 
-        Map<String, String> tag = new HashMap<>();
-        tag.put("name", "GET");
+        Map<String, Object> crud = new HashMap<>();
+        crud.put("id", 1L);
+        crud.put("title", "Sample Model");
+        crud.put("body", "http://www.baeldung.com/");
 
         String tagLocation = this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(tag)))
+            .content(this.objectMapper.writeValueAsString(crud)))
             .andExpect(status().isOk())
             .andReturn()
             .getResponse()
             .getHeader("Location");
 
-        Map<String, Object> crud = new HashMap<>();
-        crud.put("id", 1L);
-        crud.put("title", "Sample Model");
-        crud.put("body", "http://www.baeldung.com/");
         crud.put("tags", singletonList(tagLocation));
 
         ConstraintDescriptions desc = new ConstraintDescriptions(CrudInput.class);
@@ -102,20 +100,18 @@ public class ApiDocumentationJUnit4IntegrationTest {
 
     @Test
     public void crudCreateExample() throws Exception {
-        Map<String, String> tag = new HashMap<>();
-        tag.put("name", "CREATE");
+        Map<String, Object> crud = new HashMap<>();
+        crud.put("id", 2L);
+        crud.put("title", "Sample Model");
+        crud.put("body", "http://www.baeldung.com/");
 
         String tagLocation = this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(tag)))
+            .content(this.objectMapper.writeValueAsString(crud)))
             .andExpect(status().isCreated())
             .andReturn()
             .getResponse()
             .getHeader("Location");
 
-        Map<String, Object> crud = new HashMap<>();
-        crud.put("id", 2L);
-        crud.put("title", "Sample Model");
-        crud.put("body", "http://www.baeldung.com/");
         crud.put("tags", singletonList(tagLocation));
 
         this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON)

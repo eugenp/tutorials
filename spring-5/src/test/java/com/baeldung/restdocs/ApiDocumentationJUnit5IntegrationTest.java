@@ -7,11 +7,7 @@ import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.li
 import static org.springframework.restdocs.hypermedia.HypermediaDocumentation.links;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.delete;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.patch;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
-import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.put;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.*;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessRequest;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.preprocessResponse;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
@@ -72,20 +68,18 @@ public class ApiDocumentationJUnit5IntegrationTest {
     @Test
     public void crudGetExample() throws Exception {
 
-        Map<String, String> tag = new HashMap<>();
-        tag.put("name", "GET");
+        Map<String, Object> crud = new HashMap<>();
+        crud.put("id", 1L);
+        crud.put("title", "Sample Model");
+        crud.put("body", "http://www.baeldung.com/");
 
         String tagLocation = this.mockMvc.perform(get("/crud").contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(tag)))
+            .content(this.objectMapper.writeValueAsString(crud)))
             .andExpect(status().isOk())
             .andReturn()
             .getResponse()
             .getHeader("Location");
 
-        Map<String, Object> crud = new HashMap<>();
-        crud.put("id", 1L);
-        crud.put("title", "Sample Model");
-        crud.put("body", "http://www.baeldung.com/");
         crud.put("tags", singletonList(tagLocation));
 
         ConstraintDescriptions desc = new ConstraintDescriptions(CrudInput.class);
@@ -99,20 +93,18 @@ public class ApiDocumentationJUnit5IntegrationTest {
 
     @Test
     public void crudCreateExample() throws Exception {
-        Map<String, String> tag = new HashMap<>();
-        tag.put("name", "CREATE");
+        Map<String, Object> crud = new HashMap<>();
+        crud.put("id", 2L);
+        crud.put("title", "Sample Model");
+        crud.put("body", "http://www.baeldung.com/");
 
         String tagLocation = this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON)
-            .content(this.objectMapper.writeValueAsString(tag)))
+            .content(this.objectMapper.writeValueAsString(crud)))
             .andExpect(status().isCreated())
             .andReturn()
             .getResponse()
             .getHeader("Location");
 
-        Map<String, Object> crud = new HashMap<>();
-        crud.put("id", 2L);
-        crud.put("title", "Sample Model");
-        crud.put("body", "http://www.baeldung.com/");
         crud.put("tags", singletonList(tagLocation));
 
         this.mockMvc.perform(post("/crud").contentType(MediaTypes.HAL_JSON)
