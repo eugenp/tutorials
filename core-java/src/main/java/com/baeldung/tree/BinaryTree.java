@@ -8,15 +8,7 @@ public class BinaryTree {
     Node root;
 
     public void add(int value) {
-
-        Node newNode = new Node(value);
-
-        if (root == null) {
-            root = newNode;
-            return;
-        }
-
-        addRecursive(root, value);
+        root = addRecursive(root, value);
     }
 
     private Node addRecursive(Node current, int value) {
@@ -27,16 +19,23 @@ public class BinaryTree {
 
         if (value < current.value) {
             current.left = addRecursive(current.left, value);
-        } else {
+        } else if (value > current.value) {
             current.right = addRecursive(current.right, value);
         }
 
         return current;
-
     }
 
     public boolean isEmpty() {
         return root == null;
+    }
+
+    public int getSize() {
+        return getSizeRecursive(root);
+    }
+
+    private int getSizeRecursive(Node current) {
+        return current == null ? 0 : getSizeRecursive(current.left) + 1 + getSizeRecursive(current.right);
     }
 
     public boolean containsNode(int value) {
@@ -44,17 +43,17 @@ public class BinaryTree {
     }
 
     private boolean containsNodeRecursive(Node current, int value) {
-
         if (current == null) {
             return false;
-        } else if (value == current.value) {
-            return true;
-        } else if (value < current.value) {
-            return containsNodeRecursive(current.left, value);
-        } else {
-            return containsNodeRecursive(current.right, value);
         }
 
+        if (value == current.value) {
+            return true;
+        }
+
+        return value < current.value
+          ? containsNodeRecursive(current.left, value)
+          : containsNodeRecursive(current.right, value);
     }
 
     public void delete(int value) {
@@ -86,23 +85,18 @@ public class BinaryTree {
             current.value = smallestValue;
             current.right = deleteRecursive(current.right, smallestValue);
             return current;
-
-        } else if (value < current.value) {
+        }
+        if (value < current.value) {
             current.left = deleteRecursive(current.left, value);
             return current;
-        } else {
-            current.right = deleteRecursive(current.right, value);
-            return current;
         }
+
+        current.right = deleteRecursive(current.right, value);
+        return current;
     }
 
     private int findSmallestValue(Node root) {
-
-        if (root.left == null) {
-            return root.value;
-        }
-
-        return findSmallestValue(root.left);
+        return root.left == null ? root.value : findSmallestValue(root.left);
     }
 
     public void traverseInOrder(Node node) {
@@ -125,12 +119,15 @@ public class BinaryTree {
         if (node != null) {
             traversePostOrder(node.left);
             traversePostOrder(node.right);
-
             System.out.print(" " + node.value);
         }
     }
 
     public void traverseLevelOrder() {
+        if (root == null) {
+            return;
+        }
+
         Queue<Node> nodes = new LinkedList<>();
         nodes.add(root);
 
