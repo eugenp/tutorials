@@ -20,7 +20,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpringBootAuthorizationServerApplication.class,
                 properties = { "security.oauth2.client.client-id=client", "security.oauth2.client.client-secret=secret" })
-public class Oauth2AuthorizationServerIntegrationTest {
+public class DefaultConfigAuthorizationServerIntegrationTest {
 
     @Value("${local.server.port}") protected int port;
 
