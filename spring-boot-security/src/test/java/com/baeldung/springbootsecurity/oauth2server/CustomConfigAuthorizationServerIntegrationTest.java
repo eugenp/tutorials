@@ -27,11 +27,9 @@ public class CustomConfigAuthorizationServerIntegrationTest {
 
     @Test
     public void whenAccessTokenIsRequested_ThenAccessTokenValueIsNotNull() {
-        ClientCredentialsResourceDetails resourceDetails = new ClientCredentialsResourceDetails();
-        resourceDetails.setAccessTokenUri(format("http://localhost:%d/oauth/token", port));
+        ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails();
         resourceDetails.setClientId("baeldung");
         resourceDetails.setClientSecret("baeldung");
-        resourceDetails.setGrantType("client_credentials");
         resourceDetails.setScope(singletonList("read"));
         DefaultOAuth2ClientContext clientContext = new DefaultOAuth2ClientContext();
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, clientContext);
@@ -43,11 +41,9 @@ public class CustomConfigAuthorizationServerIntegrationTest {
 
     @Test(expected = OAuth2AccessDeniedException.class)
     public void whenAccessTokenIsRequestedWithInvalidException_ThenExceptionIsThrown() {
-        ClientCredentialsResourceDetails resourceDetails = new ClientCredentialsResourceDetails();
-        resourceDetails.setAccessTokenUri(format("http://localhost:%d/oauth/token", port));
+        ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails();
         resourceDetails.setClientId("baeldung");
         resourceDetails.setClientSecret("baeldung");
-        resourceDetails.setGrantType("client_credentials");
         resourceDetails.setScope(singletonList("write"));
         DefaultOAuth2ClientContext clientContext = new DefaultOAuth2ClientContext();
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, clientContext);
@@ -57,17 +53,22 @@ public class CustomConfigAuthorizationServerIntegrationTest {
 
     @Test
     public void whenAccessTokenIsRequestedByClientWithWriteScope_ThenAccessTokenIsNotNull() {
-        ClientCredentialsResourceDetails resourceDetails = new ClientCredentialsResourceDetails();
-        resourceDetails.setAccessTokenUri(format("http://localhost:%d/oauth/token", port));
+        ClientCredentialsResourceDetails resourceDetails = getClientCredentialsResourceDetails();
         resourceDetails.setClientId("baeldung-admin");
         resourceDetails.setClientSecret("baeldung");
-        resourceDetails.setGrantType("client_credentials");
         resourceDetails.setScope(singletonList("write"));
         DefaultOAuth2ClientContext clientContext = new DefaultOAuth2ClientContext();
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, clientContext);
         restTemplate.setMessageConverters(singletonList(new MappingJackson2HttpMessageConverter()));
         OAuth2AccessToken accessToken = restTemplate.getAccessToken();
         assertNotNull(accessToken);
+    }
+
+    private ClientCredentialsResourceDetails getClientCredentialsResourceDetails() {
+        ClientCredentialsResourceDetails resourceDetails = new ClientCredentialsResourceDetails();
+        resourceDetails.setAccessTokenUri(format("http://localhost:%d/oauth/token", port));
+        resourceDetails.setGrantType("client_credentials");
+        return resourceDetails;
     }
 
 }
