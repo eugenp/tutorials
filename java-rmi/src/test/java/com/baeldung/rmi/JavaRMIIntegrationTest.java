@@ -20,8 +20,7 @@ public class JavaRMIIntegrationTest {
 			MessengerServiceImpl server = new MessengerServiceImpl();
 			server.createStubAndBind();
 		} catch (RemoteException e) {
-			e.printStackTrace();
-			fail("Exception Occured");
+			fail("Exception Occurred");
 		}
 	}
 	
@@ -36,9 +35,9 @@ public class JavaRMIIntegrationTest {
 			String expectedMessage = "Server Message";			
 			assertEquals(responseMessage, expectedMessage);
 		} catch (RemoteException e) {
-			fail("Exception Occured");
+			fail("Exception Occurred");
 		} catch (NotBoundException nb) {
-			fail("Exception Occured");
+			fail("Exception Occurred");
 		}
 	}
 	
