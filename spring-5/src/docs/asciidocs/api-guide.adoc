@@ -55,13 +55,6 @@ use of HTTP status codes.
 | The requested resource did not exist
 |===
 
-[[overview-headers]]
-== Headers
-
-Every response has the following header(s):
-
-include::{snippets}/headers-example/response-headers.adoc[]
-
 [[overview-hypermedia]]
 == Hypermedia
 
@@ -86,17 +79,13 @@ The index provides the entry point into the service.
 
 A `GET` request is used to access the index
 
-==== Response structure
+==== Request structure
 
-include::{snippets}/index-example/http-response.adoc[]
+include::{snippets}/index-example/http-request.adoc[]
 
 ==== Example response
 
 include::{snippets}/index-example/http-response.adoc[]
-
-==== Example request
-
-include::{snippets}/index-example/http-request.adoc[]
 
 ==== CURL request
 
@@ -113,12 +102,12 @@ include::{snippets}/index-example/links.adoc[]
 
 The CRUD provides the entry point into the service.
 
-[[resources-crud-access]]
+[[resources-crud-get]]
 === Accessing the crud GET
 
-A `GET` request is used to access the CRUD read
+A `GET` request is used to access the CRUD read.
 
-==== Response structure
+==== Request structure
 
 include::{snippets}/crud-get-example/http-request.adoc[]
 
@@ -130,12 +119,12 @@ include::{snippets}/crud-get-example/http-response.adoc[]
 
 include::{snippets}/crud-get-example/curl-request.adoc[]
 
-[[resources-crud-access]]
+[[resources-crud-post]]
 === Accessing the crud POST
 
-A `POST` request is used to access the CRUD create
+A `POST` request is used to access the CRUD create.
 
-==== Response structure
+==== Request structure
 
 include::{snippets}/crud-create-example/http-request.adoc[]
 
@@ -147,14 +136,17 @@ include::{snippets}/crud-create-example/http-response.adoc[]
 
 include::{snippets}/crud-create-example/curl-request.adoc[]
 
-[[resources-crud-access]]
+[[resources-crud-delete]]
 === Accessing the crud DELETE
 
-A `DELETE` request is used to access the CRUD create
+A `DELETE` request is used to access the CRUD delete.
 
-==== Response structure
+==== Request structure
 
 include::{snippets}/crud-delete-example/http-request.adoc[]
+
+==== Path Parameters
+include::{snippets}/crud-delete-example/path-parameters.adoc[]
 
 ==== Example response
 
@@ -164,12 +156,12 @@ include::{snippets}/crud-delete-example/http-response.adoc[]
 
 include::{snippets}/crud-delete-example/curl-request.adoc[]
 
-[[resources-crud-access]]
+[[resources-crud-patch]]
 === Accessing the crud PATCH
 
-A `PATCH` request is used to access the CRUD create
+A `PATCH` request is used to access the CRUD update.
 
-==== Response structure
+==== Request structure
 
 include::{snippets}/crud-patch-example/http-request.adoc[]
 
@@ -181,12 +173,12 @@ include::{snippets}/crud-patch-example/http-response.adoc[]
 
 include::{snippets}/crud-patch-example/curl-request.adoc[]
 
-[[resources-crud-access]]
+[[resources-crud-put]]
 === Accessing the crud PUT
 
-A `PUT` request is used to access the CRUD create
+A `PUT` request is used to access the CRUD update.
 
-==== Response structure
+==== Request structure
 
 include::{snippets}/crud-put-example/http-request.adoc[]
 
