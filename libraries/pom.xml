@@ -107,7 +107,7 @@
             <!-- /Neuroph -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>              
+                <version>3.7.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -639,6 +639,33 @@
           <version>${googleclient.version}</version>
         </dependency>
 
+        <!--Java Docker API Client-->
+        <dependency>
+            <groupId>com.github.docker-java</groupId>
+            <artifactId>docker-java</artifactId>
+            <version>${docker.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+        <!--Java Docker API Client-->
+
         <!-- google api -->
         <dependency>
           <groupId>com.google.api-client</groupId>
@@ -758,5 +785,6 @@
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
         <kafka.version>1.0.0</kafka.version>
+        <docker.version>3.0.14</docker.version>
     </properties>
 </project>

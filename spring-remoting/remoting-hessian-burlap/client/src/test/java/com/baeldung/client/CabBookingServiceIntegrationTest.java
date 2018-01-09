@@ -18,9 +18,9 @@ import static java.lang.Thread.sleep;
 
 @SpringBootTest(classes = {BurlapClient.class, HessianClient.class})
 @RunWith(SpringRunner.class)
-public class CabBookingServiceTest {
+public class CabBookingServiceIntegrationTest {
 
-    static Logger log = LoggerFactory.getLogger(CabBookingServiceTest.class);
+    static Logger log = LoggerFactory.getLogger(CabBookingServiceIntegrationTest.class);
     @Autowired @Qualifier("burlapInvoker") CabBookingService burlapClient;
     @Autowired @Qualifier("hessianInvoker")  CabBookingService hessianClient;
     static Thread serverThread;

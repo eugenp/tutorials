@@ -1,25 +1,30 @@
 package com.baeldung.ethereumj.controllers;
 
-import com.baeldung.ethereumj.ApplicationMain;
-import com.baeldung.ethereumj.Constants;
-import com.baeldung.ethereumj.transfer.EthResponse;
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.ethereumj.ApplicationMain;
+import com.baeldung.ethereumj.Constants;
+import com.baeldung.ethereumj.transfer.EthResponse;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ApplicationMain.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @TestPropertySource(properties = "server.port=8080")
-public class EthControllerTestOne {
+public class EthControllerLiveTest {
 
     @LocalServerPort
     int port;
