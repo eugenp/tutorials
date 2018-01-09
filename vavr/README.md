@@ -9,3 +9,4 @@
 - [Guide to Collections API in Vavr](http://www.baeldung.com/vavr-collections)
 - [Collection Factory Methods for Vavr](http://www.baeldung.com/vavr-collection-factory-methods)
 - [Introduction to Future in Vavr](http://www.baeldung.com/vavr-future)
+
