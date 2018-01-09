@@ -20,7 +20,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpringBootAuthorizationServerApplication.class)
-@ActiveProfiles("custom")
+@ActiveProfiles("authz")
 public class CustomConfigAuthorizationServerIntegrationTest {
 
     @Value("${local.server.port}") protected int port;
