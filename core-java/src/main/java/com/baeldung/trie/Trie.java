@@ -14,19 +14,19 @@ public class Trie {
         TrieNode trie = root;
         if (trie == null || word == null)
             return false;
-        char[] characters = word.toCharArray();
+        char[] chars = word.toCharArray();
         int counter = 0;
-        while (counter < characters.length) {
+        while (counter < chars.length) {
             Set<Character> children = trie.getChildren()
                 .keySet();
-            if (!children.contains(characters[counter])) {
-                insertChar(trie, characters[counter]);
-                if (counter == characters.length - 1) {
-                    getChild(trie, characters[counter]).setIsWord(true);
+            if (!children.contains(chars[counter])) {
+                insertChar(trie, chars[counter]);
+                if (counter == chars.length - 1) {
+                    getChild(trie, chars[counter]).setIsWord(true);
                     return true;
                 }
             }
-            trie = getChild(trie, characters[counter]);
+            trie = getChild(trie, chars[counter]);
             if (trie.getContent()
                 .equals(word) && !trie.isWord()) {
                 trie.setIsWord(true);
@@ -50,7 +50,7 @@ public class Trie {
         }
         return true;
     }
-    
+
     public boolean containsNode(String string) {
         return find(string);
     }

@@ -14,7 +14,7 @@ public class TrieTest {
     }
 
     @Test
-    public void givenATrie_WhenAddingElements_ThenTrieContainsThoseElements() {
+    public void givenATrie_WhenAddingElements_ThenTrieHasThoseElements() {
         Trie trie = createTrie();
 
         assertFalse(trie.containsNode("3"));
@@ -24,14 +24,14 @@ public class TrieTest {
     }
 
     @Test
-    public void givenABinaryTree_WhenLookingForNonExistingElement_ThenReturnsFalse() {
+    public void givenATrie_WhenLookingForNonExistingElement_ThenReturnsFalse() {
         Trie trie = createTrie();
 
         assertFalse(trie.containsNode("99"));
     }
 
     @Test
-    public void givenABinaryTree_WhenDeletingElements_ThenTreeDoesNotContainThoseElements() {
+    public void givenATrie_WhenDeletingElements_ThenTreeDoesNotContainThoseElements() {
 
         Trie trie = createTrie();
 
