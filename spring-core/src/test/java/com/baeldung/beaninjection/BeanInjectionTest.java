@@ -12,7 +12,7 @@ import com.baeldung.beaninjection.model.Book;
 public class BeanInjectionTest {
 
     @Test
-    public void givenAutowiredAnnotation_WhenSetOnSetter_ThenDependencyValid() {
+    public void whenUsingSetter_CheckDependencyValid() {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com.baeldung.beaninjection.setterbasedDI.xml");
         
@@ -26,7 +26,7 @@ public class BeanInjectionTest {
     }
 
     @Test
-    public void givenAutowiredAnnotation_WhenSetOnConstructor_ThenDependencyValid() {
+    public void WhenUsingConstructor_CheckDependencyValid() {
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("com.baeldung.beaninjection.constructorbasedDI.xml");
 
