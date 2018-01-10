@@ -1,0 +1,7 @@
+server.port: 9000
+
+pcf.v1:
+  endpoint: http://api.run.pivotal.io/v2/info
+  connectionRequestTimeout: 10000
+  connectionTimeout: 10000
+  readTimeout: 10000
