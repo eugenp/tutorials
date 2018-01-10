@@ -40,16 +40,6 @@ public class TrieTest {
         assertFalse(trie.containsNode("Programming"));
     }
 
-    @Test
-    public void testDelete() {
-        Trie trie = createTrie();
-
-        trie.delete("Programming");
-
-        assertFalse(trie.find("Programming"));
-
-    }
-
     private Trie createTrie() {
         Trie trie = new Trie();
 
