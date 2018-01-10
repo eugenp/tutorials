@@ -7,6 +7,7 @@
     <groupId>org.baeldung</groupId>
     <artifactId>java-lite</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -15,7 +16,7 @@
     </parent>
 
     <properties>
-        <jetty.maven.plugin.version>9.3.4.RC1</jetty.maven.plugin.version>
+        <jetty.maven.plugin.version>9.4.8.v20171121</jetty.maven.plugin.version>
         <activejdbc.version>1.4.13</activejdbc.version>
         <activeweb.version>1.15</activeweb.version>
         <mysql.connector.java.version>5.1.45</mysql.connector.java.version>
@@ -85,16 +86,6 @@
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
 
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-lgpl</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-lgpl</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
