@@ -87,6 +87,7 @@
         <!--         <module>persistence-modules/java-cassandra</module> -->
         <module>vavr</module>
 		<module>java-lite</module>
+	<module>java-vavr-stream</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
@@ -203,7 +204,6 @@
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest-angular</module>
-        <module>spring-rest-docs</module>
         <module>spring-rest-full</module>
         <module>spring-rest-query-language</module>
         <module>spring-rest</module>
