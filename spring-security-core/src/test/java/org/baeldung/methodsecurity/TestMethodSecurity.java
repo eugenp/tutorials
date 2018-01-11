@@ -133,12 +133,11 @@ public class TestMethodSecurity {
         usernames.add("jack");
         String containCurrentUser = userRoleService.joinUsernames(usernames);
         assertEquals("john;jack", containCurrentUser);
-
     }
 
     @Test
     @WithMockUser(username = "john")
-    public void givenListNotContainCurrentUsername_whenCallContainCurrentUser_thenReturnAccessDenied() {
+    public void givenListContainCurrentUsername_whenCallJoinUsernamesAndRoles_thenReturnUsernameAndRoles() {
         List<String> usernames = new ArrayList<>();
         usernames.add("jane");
         usernames.add("john");
