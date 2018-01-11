@@ -1,5 +1,19 @@
 package com.baeldung.metrics.servo;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static java.util.stream.Collectors.toMap;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.hasEntry;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+
+import java.util.Map;
+
+import org.junit.Ignore;
+import org.junit.Test;
+
 import com.netflix.servo.monitor.BasicCounter;
 import com.netflix.servo.monitor.BasicGauge;
 import com.netflix.servo.monitor.BasicInformational;
@@ -17,18 +31,6 @@ import com.netflix.servo.monitor.StatsTimer;
 import com.netflix.servo.monitor.StepCounter;
 import com.netflix.servo.monitor.Stopwatch;
 import com.netflix.servo.stats.StatsConfig;
-import org.junit.Ignore;
-import org.junit.Test;
-
-import java.util.Map;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
-import static java.util.stream.Collectors.toMap;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.hasEntry;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class MetricTypeTest {
 
@@ -104,17 +106,18 @@ public class MetricTypeTest {
     public void givenTimer_whenExecuteTask_thenTimerUpdated() throws Exception {
         BasicTimer timer = new BasicTimer(MonitorConfig
           .builder("test")
-          .build(), SECONDS);
+            .build(), MILLISECONDS);
 
         Stopwatch stopwatch = timer.start();
-        SECONDS.sleep(1);
-        timer.record(2, SECONDS);
+        MILLISECONDS.sleep(1);
+        timer.record(2, MILLISECONDS);
         stopwatch.stop();
 
-        assertEquals("timer should count 1 second", 1, timer
+        assertEquals("timer should count 1 millisecond", 1, timer
           .getValue()
           .intValue());
-        assertEquals("timer should count 3 seconds in total", 3.0, timer.getTotalTime(), 0.01);
+        assertEquals("timer should count 3 millisecond in total", 3, timer.getTotalTime()
+            .intValue());
         assertEquals("timer should record 2 updates", 2, timer
           .getCount()
           .intValue());
@@ -158,6 +161,7 @@ public class MetricTypeTest {
     }
 
     @Test
+    //==
     public void givenStatsTimer_whenExecuteTask_thenStatsCalculated() throws Exception {
         System.setProperty("netflix.servo", "1000");
         StatsTimer timer = new StatsTimer(MonitorConfig
@@ -171,20 +175,20 @@ public class MetricTypeTest {
           .withPublishMean(true)
           .withPublishStdDev(true)
           .withPublishVariance(true)
-          .build(), SECONDS);
+            .build(), MILLISECONDS);
 
         Stopwatch stopwatch = timer.start();
-        SECONDS.sleep(1);
-        timer.record(3, SECONDS);
+        MILLISECONDS.sleep(1);
+        timer.record(3, MILLISECONDS);
         stopwatch.stop();
 
         stopwatch = timer.start();
-        timer.record(6, SECONDS);
-        SECONDS.sleep(2);
+        timer.record(6, MILLISECONDS);
+        MILLISECONDS.sleep(2);
         stopwatch.stop();
 
-        assertEquals("timer should count 12 seconds in total", 12, timer.getTotalTime());
-        assertEquals("timer should count 12 seconds in total", 12, timer.getTotalMeasurement());
+        assertEquals("timer should count 12 milliseconds in total", 12, timer.getTotalTime());
+        assertEquals("timer should count 12 milliseconds in total", 12, timer.getTotalMeasurement());
         assertEquals("timer should record 4 updates", 4, timer.getCount());
         assertEquals("stats timer value time-cost/update should be 2", 3, timer
           .getValue()
