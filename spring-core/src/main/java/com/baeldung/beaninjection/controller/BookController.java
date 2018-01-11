@@ -2,7 +2,12 @@ package com.baeldung.beaninjection.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
+
 import com.baeldung.beaninjection.model.Book;
 import com.baeldung.beaninjection.service.BookService;
 
@@ -10,11 +15,19 @@ import com.baeldung.beaninjection.service.BookService;
  * This class is the controller for Book Services.
  * @Author Akshay Desale.
  */
-public class BookController {
 
+@Component
+public class BookController implements ApplicationContextAware{
+
+    @Autowired
     private BookService bookService;
+    
+    ApplicationContext applicationContext;
 
-//    @Autowired
+    public BookController() {
+    }
+  
+    
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
@@ -37,6 +50,24 @@ public class BookController {
 
     public boolean removeAllBooks() {
         return bookService.removeAllBooks();
+    }
+    
+    public void setBookService(BookService bookService) {
+        this.bookService = bookService;
+    }
+    
+    public BookService getBookService() {
+        return bookService;
+    }
+
+    public ApplicationContext getApplicationContext() {
+        return applicationContext;
+    }
+    
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        this.applicationContext= applicationContext;
+        
     }
 
 }

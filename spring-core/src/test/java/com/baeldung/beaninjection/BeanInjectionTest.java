@@ -3,7 +3,11 @@ package com.baeldung.beaninjection;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.baeldung.beaninjection.controller.BookController;
 import com.baeldung.beaninjection.model.Book;

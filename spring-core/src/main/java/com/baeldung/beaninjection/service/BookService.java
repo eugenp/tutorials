@@ -20,18 +20,19 @@ public class BookService implements ApplicationContextAware {
     ApplicationContext applicationContext;
     Map<String, Book> books = new HashMap<>();
 
-    
+    public BookService() {
+        // TODO Auto-generated constructor stub
+    }
+
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
     }
 
-    
     public Book getBook(String title) {
         return books.get(title);
     }
 
-    
     public List<Book> getAllBooks() {
         if (books.size() == 0)
             return null;
@@ -42,19 +43,17 @@ public class BookService implements ApplicationContextAware {
             .collect(Collectors.toList());
     }
 
-    
     public boolean addBook(String title, String author) {
         Book book = applicationContext.getBean(Book.class);
         book.setTitle(title);
         book.setAuthor(author);
-        
+
         if (books.putIfAbsent(title, book) == null)
             return true;
         else
             return false;
     }
 
-    
     public boolean removeBook(String title) {
         if (books.remove(title) != null)
             return true;
@@ -62,7 +61,6 @@ public class BookService implements ApplicationContextAware {
             return false;
     }
 
-    
     public boolean removeAllBooks() {
         books.clear();
         return true;

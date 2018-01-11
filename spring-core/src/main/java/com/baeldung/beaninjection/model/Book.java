@@ -35,6 +35,15 @@ public class Book {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Book))
+            return false;
+        
+        Book book = (Book)obj;
+        return (this.getTitle().equalsIgnoreCase(book.getTitle()) && (this.getAuthor().equalsIgnoreCase(book.getAuthor())));
+    }
+    
+    @Override
     public String toString() {
         return "Book [title=" + title + ", author=" + author + "]";
     }    
