@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="bookController" class="com.baeldung.beaninjection.controller.BookController">
+		<constructor-arg name="bookService" ref="bookService" />
+	</bean>
+
+	<bean id="bookService" class="com.baeldung.beaninjection.service.BookService" />
+
+	<bean id="book" class="com.baeldung.beaninjection.model.Book">
+		<constructor-arg name="title"
+			value="Harry Potter And The Deathly Hollows" />
+		<constructor-arg name="author" value="J. K. Rowling" />
+	</bean>
+
+</beans>
