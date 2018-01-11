@@ -31,38 +31,48 @@ node {
 
         stage("Tests and Deployment") {
             parallel 'Unit tests': {
-                stage("Runing unit tests") {
-                    if (isUnix()) {
-                        sh "./mvnw test -Punit"
-                    } else {
-                        bat "./mvnw.cmd test -Punit"
+                stage("Running unit tests") {
+                    try {
+                        if (isUnix()) {
+                            sh "./mvnw test -Punit"
+                        } else {
+                            bat "./mvnw.cmd test -Punit"
+                        }
+                    } catch(err) {
+                        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*UnitTest.xml'])
+                        throw err
                     }
                     step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*UnitTest.xml'])
 
                 }
             }, 'Integration tests': {
-                stage("Runing integration tests") {
-                    if (isUnix()) {
-                        sh "./mvnw test -Pintegration"
-                    } else {
-                        bat "./mvnw.cmd test -Pintegration"
+                stage("Running integration tests") {
+                    try {
+                        if (isUnix()) {
+                            sh "./mvnw test -Pintegration"
+                        } else {
+                            bat "./mvnw.cmd test -Pintegration"
+                        }
+                    } catch(err) {
+                        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*IntegrationTest.xml'])
+                        throw err
                     }
                     step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*IntegrationTest.xml'])
                 }
-            }, 'Deployment': {
-                stage("Staging") {
-                    if (isUnix()) {
-                        sh "pid=\$(lsof -i:8989 -t); kill -TERM \$pid || kill -KILL \$pid"
-                    } else {
-                        bat "FOR /F \"tokens=5 delims= \" %%G IN (\"netstat -a | findstr :8989\") DO TaskKill.exe /PID %%G /fi \"memusage gt 0\""
-                    }
+            }
 
-                    withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
-                        if (isUnix()) {
-                            sh 'nohup ./mvnw spring-boot:run -Dserver.port=8989 &'
-                        } else {
-                            bat 'start ./mvnw.cmd spring-boot:run -Dserver.port=8989'
-                        }
+            stage("Staging") {
+                if (isUnix()) {
+                    sh "pid=\$(lsof -i:8989 -t); kill -TERM \$pid || kill -KILL \$pid"
+                } else {
+                    bat "FOR /F \"tokens=5 delims= \" %%G IN (\"netstat -a | findstr :8989\") DO TaskKill.exe /PID %%G /fi \"memusage gt 0\""
+                }
+
+                withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                    if (isUnix()) {
+                        sh 'nohup ./mvnw spring-boot:run -Dserver.port=8989 &'
+                    } else {
+                        bat 'start ./mvnw.cmd spring-boot:run -Dserver.port=8989'
                     }
                 }
             }
