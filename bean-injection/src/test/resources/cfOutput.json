@@ -1,0 +1,16 @@
+{
+  name='',
+  build='',
+  support='https://support.run.pivotal.io',
+  version='0',
+  description='Cloud Foundry sponsored by Pivotal',
+  authorization_endpoint='https://login.run.pivotal.io',
+  token_endpoint='https://uaa.run.pivotal.io',
+  min_cli_version='6.22.0',
+  min_recommended_cli_version='latest',
+  api_version='2.101.0',
+  app_ssh_endpoint='ssh.run.pivotal.io:2222',
+  app_ssh_host_key_fingerprint='e7:13:4e:32:ee:39:62:df:54:41:d7:f7:8b:b2:a7:6b',
+  app_ssh_oauth_client='ssh-proxy',
+  doppler_logging_endpoint='wss://doppler.run.pivotal.io:443',
+  routing_endpoint='https://api.run.pivotal.io/routing'}

@@ -1,0 +1,14 @@
+
+                             ,,        ,,
+`7MM"""Yp,                 `7MM      `7MM
+  MM    Yb                   MM        MM
+  MM    dP  ,6"Yb.  .gP"Ya   MM   ,M""bMM `7MM  `7MM  `7MMpMMMb.  .P"Ybmmm
+  MM"""bg. 8)   MM ,M'   Yb  MM ,AP    MM   MM    MM    MM    MM :MI  I8
+  MM    `Y  ,pm9MM 8M""""""  MM 8MI    MM   MM    MM    MM    MM  WmmmP"
+  MM    ,9 8M   MM YM.    ,  MM `Mb    MM   MM    MM    MM    MM 8M
+.JMMmmmd9  `Moo9^Yo.`Mbmmd'.JMML.`Wbmd"MML. `Mbod"YML..JMML  JMML.YMMMMMb
+                                                                 6'     dP
+                                                                 Ybmmmd'
+
+Bean Injection example v0.1.0
+
