@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <context:annotation-config/>
+
+    <bean id="barBean" class="com.baeldung.differenttypesofbeaninjection.Bar">
+    </bean>
+
+    <bean id="beerServiceSetterInjectionBean"
+          class="com.baeldung.differenttypesofbeaninjection.BeerService">
+        <property name="bar" ref="barBean"/>
+    </bean>
+
+    <bean id="addressBean" class="com.baeldung.differenttypesofbeaninjection.Address">
+    </bean>
+
+    <bean id="userServiceFieldInjectionBean"
+          class="com.baeldung.differenttypesofbeaninjection.UserService">
+    </bean>
+
+    <bean id="salaryBean" class="com.baeldung.differenttypesofbeaninjection.Salary">
+    </bean>
+
+    <bean id="employeeServiceConstructorInjectionBean"
+          class="com.baeldung.differenttypesofbeaninjection.EmployeeService">
+        <constructor-arg ref="salaryBean"/>
+    </bean>
+
+</beans>
