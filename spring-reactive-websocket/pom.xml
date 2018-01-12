@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>spring-reactive-websocket</name>
-	<description>Example from article: Reactive WebSockets with Spring 5</description>
+	<description>Reactive WebSockets with Spring 5</description>
 
 	<parent>
 		<groupId>com.baeldung</groupId>
