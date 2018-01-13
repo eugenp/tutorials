@@ -17,6 +17,7 @@ public class SecurityConfig {
     public SecurityWebFilterChain securitygWebFilterChain(ServerHttpSecurity http) {
         return http.authorizeExchange()
                 .pathMatchers("/admin").hasAuthority("ROLE_ADMIN")
+                .pathMatchers("/actuator/**").permitAll()
                 .anyExchange().authenticated()
                 .and().formLogin()
                 .and().build();
