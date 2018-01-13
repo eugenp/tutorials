@@ -9,11 +9,11 @@ class Application {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
+        ConstructorHelloWorld constructorHelloWorld = context.getBean(ConstructorHelloWorld.class);
+        SetterHelloWorld setterHelloWorld = context.getBean(SetterHelloWorld.class);
         FieldHelloWorld fieldHelloWorld = context.getBean(FieldHelloWorld.class);
         System.out.println(fieldHelloWorld.getHelloWorldBean());
-        ConstructorHelloWorld constructorHelloWorld = context.getBean(ConstructorHelloWorld.class);
         System.out.println(constructorHelloWorld.getHelloWorldBean());
-        SetterHelloWorld setterHelloWorld = context.getBean(SetterHelloWorld.class);
         System.out.println(setterHelloWorld.getHelloWorldBean());
     }
 }
