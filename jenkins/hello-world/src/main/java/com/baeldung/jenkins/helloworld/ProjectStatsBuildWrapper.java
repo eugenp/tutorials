@@ -30,8 +30,8 @@ public class ProjectStatsBuildWrapper extends BuildWrapper {
     public Environment setUp(AbstractBuild build, final Launcher launcher, BuildListener listener) {
         return new Environment() {
             @Override
-            public boolean tearDown(AbstractBuild build,
-                                    BuildListener listener) throws IOException, InterruptedException
+            public boolean tearDown(AbstractBuild build, BuildListener listener)
+              throws IOException, InterruptedException
             {
                 ProjectStats stats = buildStats(build.getWorkspace());
                 String report = generateReport(build.getProject().getDisplayName(), stats);
@@ -40,13 +40,12 @@ public class ProjectStatsBuildWrapper extends BuildWrapper {
                     boolean success = artifactsDir.mkdirs();
                     if (!success) {
                         listener.getLogger().println("Can't create artifacts directory at "
-                                                             + artifactsDir.getAbsolutePath());
+                          + artifactsDir.getAbsolutePath());
                     }
                 }
                 String path = artifactsDir.getCanonicalPath() + REPORT_TEMPLATE_PATH;
                 try (BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path),
-                                                                                       StandardCharsets.UTF_8)))
-                {
+                  StandardCharsets.UTF_8))) {
                     writer.write(report);
                 }
                 return super.tearDown(build, listener);
