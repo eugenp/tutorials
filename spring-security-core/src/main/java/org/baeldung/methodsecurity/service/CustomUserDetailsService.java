@@ -1,6 +1,6 @@
-package org.baeldung.testmethodsecurity.service;
+package org.baeldung.methodsecurity.service;
 
-import org.baeldung.testmethodsecurity.repository.UserRoleRepository;
+import org.baeldung.methodsecurity.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

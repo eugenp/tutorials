@@ -1,8 +1,8 @@
-package org.baeldung.testmethodsecurity;
+package org.baeldung.methodsecurity;
 
 import static org.junit.Assert.assertEquals;
 
-import org.baeldung.testmethodsecurity.service.UserRoleService;
+import org.baeldung.methodsecurity.service.UserRoleService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +14,20 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration
-@WithMockUser(username="john",roles={"VIEWER"})
+@WithMockUser(username = "john", roles = { "VIEWER" })
 public class TestWithMockUserAtClassLevel {
-    
+
     @Test
-    public void givenRoleViewer_whenCallGetUsername_thenReturnUsername(){
+    public void givenRoleViewer_whenCallGetUsername_thenReturnUsername() {
         String currentUserName = userService.getUsername();
-        assertEquals("john",currentUserName);
+        assertEquals("john", currentUserName);
     }
-    
+
     @Autowired
     UserRoleService userService;
-    
+
     @Configuration
-    @ComponentScan("org.baeldung.testmethodsecurity.*")
+    @ComponentScan("org.baeldung.methodsecurity.*")
     public static class SpringConfig {
 
     }
