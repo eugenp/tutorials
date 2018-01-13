@@ -1,4 +1,4 @@
-package com.baeldung.actuator;
+package com.baeldung.reactive.actuator;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.ReactiveHealthIndicator;
