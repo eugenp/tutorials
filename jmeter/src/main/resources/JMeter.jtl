@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample t="83" it="0" lt="81" ct="1" ts="1513137019153" s="false" lb="HTTP Request" rc="200" rm="" tn="Thread Group 1-3" dt="text" by="502" sby="126" ng="3" na="3">
+  <assertionResult>
+    <name>Duration Assertion</name>
+    <failure>true</failure>
+    <error>false</error>
+    <failureMessage>The operation lasted too long: It took 83 milliseconds, but should not have lasted longer than 10 milliseconds.</failureMessage>
+  </assertionResult>
+</httpSample>
+<httpSample t="388" it="0" lt="382" ct="292" ts="1513137018851" s="false" lb="HTTP Request" rc="200" rm="" tn="Thread Group 1-1" dt="text" by="502" sby="126" ng="3" na="3">
+  <assertionResult>
+    <name>Duration Assertion</name>
+    <failure>true</failure>
+    <error>false</error>
+    <failureMessage>The operation lasted too long: It took 388 milliseconds, but should not have lasted longer than 10 milliseconds.</failureMessage>
+  </assertionResult>
+</httpSample>
+<httpSample t="281" it="0" lt="279" ct="189" ts="1513137018955" s="false" lb="HTTP Request" rc="200" rm="" tn="Thread Group 1-2" dt="text" by="502" sby="126" ng="3" na="3">
+  <assertionResult>
+    <name>Duration Assertion</name>
+    <failure>true</failure>
+    <error>false</error>
+    <failureMessage>The operation lasted too long: It took 281 milliseconds, but should not have lasted longer than 10 milliseconds.</failureMessage>
+  </assertionResult>
+</httpSample>
+<httpSample t="10" it="0" lt="10" ct="1" ts="1513137019354" s="true" lb="HTTP Request" rc="200" rm="" tn="Thread Group 1-4" dt="text" by="502" sby="126" ng="1" na="1">
+  <assertionResult>
+    <name>Duration Assertion</name>
+    <failure>false</failure>
+    <error>false</error>
+  </assertionResult>
+</httpSample>
+<httpSample t="13" it="0" lt="13" ct="1" ts="1513137019558" s="false" lb="HTTP Request" rc="200" rm="" tn="Thread Group 1-5" dt="text" by="502" sby="126" ng="1" na="1">
+  <assertionResult>
+    <name>Duration Assertion</name>
+    <failure>true</failure>
+    <error>false</error>
+    <failureMessage>The operation lasted too long: It took 13 milliseconds, but should not have lasted longer than 10 milliseconds.</failureMessage>
+  </assertionResult>
+</httpSample>
+
+</testResults>
