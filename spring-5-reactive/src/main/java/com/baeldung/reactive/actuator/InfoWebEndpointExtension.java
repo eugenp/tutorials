@@ -1,4 +1,4 @@
-package com.baeldung.actuator;
+package com.baeldung.reactive.actuator;
 
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.web.WebEndpointResponse;

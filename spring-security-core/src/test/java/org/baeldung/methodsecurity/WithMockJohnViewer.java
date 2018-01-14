@@ -1,4 +1,4 @@
-package org.baeldung.testmethodsecurity;
+package org.baeldung.methodsecurity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

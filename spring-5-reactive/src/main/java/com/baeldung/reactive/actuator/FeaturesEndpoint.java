@@ -1,4 +1,4 @@
-package com.baeldung.actuator;
+package com.baeldung.reactive.actuator;
 
 import org.springframework.boot.actuate.endpoint.annotation.*;
 import org.springframework.stereotype.Component;

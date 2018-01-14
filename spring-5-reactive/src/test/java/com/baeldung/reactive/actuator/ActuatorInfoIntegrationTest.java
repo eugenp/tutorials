@@ -1,6 +1,5 @@
-package com.baeldung.actuator;
+package com.baeldung.reactive.actuator;
 
-import com.baeldung.jsonb.Spring5Application;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +9,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.reactive.Spring5ReactiveApplication;
+
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Spring5Application.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Spring5ReactiveApplication.class)
 public class ActuatorInfoIntegrationTest {
 
     @Autowired 

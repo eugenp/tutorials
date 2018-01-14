@@ -34,3 +34,6 @@
 - [Copy a File with Java](http://www.baeldung.com/java-copy-file)
 - [Generating Prime Numbers in Java](http://www.baeldung.com/java-generate-prime-numbers)
 - [Static and Default Methods in Interfaces in Java](http://www.baeldung.com/java-static-default-methods)
+- [Iterable to Stream in Java](http://www.baeldung.com/java-iterable-to-stream)
+- [Converting String to Stream of chars](http://www.baeldung.com/java-string-to-stream)
+- [How to Iterate Over a Stream With Indices](http://www.baeldung.com/java-stream-indices)
