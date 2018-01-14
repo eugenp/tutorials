@@ -29,7 +29,7 @@ public class NettyServerB  {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     public void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(new ChannelHandlerA(), new ChannelHandlerB());
-                     }
+                    }
                 })
                 .option(ChannelOption.SO_BACKLOG, 128)
                 .childOption(ChannelOption.SO_KEEPALIVE, true);
