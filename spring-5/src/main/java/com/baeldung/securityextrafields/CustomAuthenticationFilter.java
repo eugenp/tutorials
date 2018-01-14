@@ -43,8 +43,9 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
             domain = "";
         }
 
-        username = username.trim();
-        return new UsernamePasswordAuthenticationToken(username + ":" + domain, password);        
+        String usernameDomain = String.format("%s%s%s", username.trim(), 
+            String.valueOf(Character.LINE_SEPARATOR), domain);
+        return new UsernamePasswordAuthenticationToken(usernameDomain, password);        
     }
 
     private String obtainDomain(HttpServletRequest request) {

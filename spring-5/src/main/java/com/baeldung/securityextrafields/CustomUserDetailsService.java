@@ -17,7 +17,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        String[] usernameAndDomain = StringUtils.split(username, ":");
+        String[] usernameAndDomain = StringUtils.split(username, String.valueOf(Character.LINE_SEPARATOR));
         if (usernameAndDomain == null || usernameAndDomain.length != 2) {
             throw new UsernameNotFoundException("Username and domain must be provided");
         }
