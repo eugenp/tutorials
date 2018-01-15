@@ -1,5 +1,6 @@
-package com.baeldung.springbootsecurity;
+package com.baeldung.springbootsecurity.basic_auth;
 
+import com.baeldung.springbootsecurity.basic_auth.SpringBootSecurityApplication;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
@@ -20,9 +20,8 @@ import static org.junit.Assert.assertTrue;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = RANDOM_PORT)
-@ActiveProfiles("basic")
-public class BasicConfigurationIntegrationTest {
+@SpringBootTest(webEnvironment = RANDOM_PORT, classes = SpringBootSecurityApplication.class)
+public class BasicAuthConfigurationIntegrationTest {
 
     TestRestTemplate restTemplate;
     URL base;
