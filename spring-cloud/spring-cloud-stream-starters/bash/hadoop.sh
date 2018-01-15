@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # For Ubuntu 14.04
 # Inspired from: https://github.com/curran/setupHadoop/blob/master/setupHadoop.sh
 # Use from the user directory
@@ -32,7 +34,7 @@ sudo mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 
 # SSH
 ssh localhost
-# Authenticate with local user
+# authenticate with osboxes.org
 
 # Start NameNode daemon and DataNode daemon
 start-dfs.sh
@@ -40,3 +42,5 @@ start-dfs.sh
 
 # Install Maven
 sudo apt-get install maven
+
+# Access Hadoop - http://localhost:50070

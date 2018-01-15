@@ -5,7 +5,7 @@ git clone https://github.com/spring-cloud-stream-app-starters/twitter.git
 # Build it
 ./mvnw clean install -PgenerateApps
 
-# RUn it
+# Run it
 cd apps
 # Optionally inject application.properties prior to build
 java -jar twitter_stream_source.jar --consumerKey=<CONSUMER_KEY> --consumerSecret=<CONSUMER_SECRET> \

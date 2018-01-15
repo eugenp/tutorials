@@ -5,7 +5,7 @@ git clone https://github.com/spring-cloud-stream-app-starters/hdfs.git
 # Build it
 ./mvnw clean install -PgenerateApps
 
-# RUn it
+# Run it
 cd apps
 # Optionally inject application.properties prior to build
 java -jar hdfs-sink.jar --fsUri=http://osboxes:50075
