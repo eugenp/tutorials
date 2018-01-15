@@ -5,14 +5,12 @@ import java.util.List;
 import java.util.Spliterator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 public class Executor {
-	private final static Logger LOG = Logger.getLogger(Executor.class.getName());
 	public void executeCustomSpliterator() {
         Article article = new Article(Arrays.asList(new Author("Ahmad", 0), new Author("Eugen", 0), new Author("Alice", 1), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1),
             new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0), new Author("Alice", 1), new Author("Mike", 0),
@@ -20,10 +18,10 @@ public class Executor {
         Stream<Author> stream = IntStream.range(0, article.getListOfAuthors()
             .size())
             .mapToObj(article.getListOfAuthors()::get);
-        LOG.info("count= " + countAutors(stream.parallel()));
+        System.out.println("count= " + countAutors(stream.parallel()));
         Spliterator<Author> spliterator = new RelatedAuthorSpliterator(article.getListOfAuthors());
         Stream<Author> stream2 = StreamSupport.stream(spliterator, true);
-        LOG.info("count= " + countAutors(stream2.parallel()));
+        System.out.println("count= " + countAutors(stream2.parallel()));
     }
 
     public void executeSpliterator() {
