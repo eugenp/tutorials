@@ -43,6 +43,10 @@
             <groupId>javax.json.bind</groupId>
             <artifactId>javax.json.bind-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         
         <!-- Dependencies for Yasson -->
         <!-- <dependency> -->
@@ -198,4 +202,5 @@
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
     </properties>
 
+    
 </project>
