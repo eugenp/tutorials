@@ -8,4 +8,4 @@ git clone https://github.com/spring-cloud-stream-app-starters/hdfs.git
 # Run it
 cd apps
 # Optionally inject application.properties prior to build
-java -jar hdfs-sink.jar --fsUri=http://osboxes:50075
+java -jar hdfs-sink.jar --fsUri=hdfs://127.0.0.1:50010/
