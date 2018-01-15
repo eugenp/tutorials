@@ -15,3 +15,4 @@
 - [Introduction to JGraphT](http://www.baeldung.com/jgrapht)
 - [Introduction to Minimax Algorithm](http://www.baeldung.com/java-minimax-algorithm)
 - [How to Calculate Levenshtein Distance in Java?](http://www.baeldung.com/java-levenshtein-distance)
+- [How to Find the Kth Largest Element in Java](http://www.baeldung.com/java-kth-largest-element)
