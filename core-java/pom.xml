@@ -227,6 +227,12 @@
             <version>2.4.0</version>
             <scope>runtime</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20171018</version>
+        </dependency>
     </dependencies>
 
     <build>
