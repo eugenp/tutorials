@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@ContextConfiguration(classes = { DepdencenyInjectionTest.TestBeanConfig.class })
+@ContextConfiguration(classes = { DependencyInjectionTest.TestBeanConfig.class })
 @RunWith(SpringRunner.class)
-public class DepdencenyInjectionTest {
+public class DependencyInjectionTest {
 
     private TextEditorConstructorInjected constructorInjected;
 
@@ -39,19 +39,19 @@ public class DepdencenyInjectionTest {
     @Test
     public void testConstructorBasedInjection() {
         assertNotNull(constructorInjected.getDictionary());
-        assertEquals("Hello from dictionary", constructorInjected.getDictionary().hello());
+        assertEquals("Hello from dictionary in English", constructorInjected.getDictionary().hello());
     }
 
     @Test
     public void testFieldBasedInjection() {
         assertNotNull(fieldInjected.getDictionary());
-        assertEquals("Hello from dictionary", fieldInjected.getDictionary().hello());
+        assertEquals("Hello from dictionary in English", fieldInjected.getDictionary().hello());
     }
 
     @Test
     public void testSetterBasedInjection() {
         assertNotNull(setterInjected.getDictionary());
-        assertEquals("Hello from dictionary", setterInjected.getDictionary().hello());
+        assertEquals("Hello from dictionary in English", setterInjected.getDictionary().hello());
     }
 
     public static class TestBeanConfig {
