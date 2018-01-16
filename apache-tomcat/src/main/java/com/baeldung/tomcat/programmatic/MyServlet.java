@@ -1,3 +1,5 @@
+package com.baeldung.tomcat.programmatic;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +10,7 @@ import java.io.IOException;
  * Created by adi on 1/10/18.
  */
 @WebServlet(
-  name = "MyServlet",
+  name = "com.baeldung.tomcat.programmatic.MyServlet",
   urlPatterns = {"/my-servlet"}
 )
 public class MyServlet extends HttpServlet {

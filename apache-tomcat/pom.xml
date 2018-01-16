@@ -89,7 +89,7 @@
                     <finalName>apache-tomcat</finalName>
                     <archive>
                         <manifest>
-                            <mainClass>ProgrammaticTomcat</mainClass>
+                            <mainClass>com.baeldung.tomcat.programmatic.ProgrammaticTomcat</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
