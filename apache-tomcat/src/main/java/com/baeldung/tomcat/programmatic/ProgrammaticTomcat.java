@@ -1,3 +1,5 @@
+package com.baeldung.tomcat.programmatic;
+
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;

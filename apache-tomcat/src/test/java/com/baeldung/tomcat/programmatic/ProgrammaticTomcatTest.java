@@ -1,3 +1,5 @@
+package com.baeldung.tomcat.programmatic;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -10,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
+
 
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
