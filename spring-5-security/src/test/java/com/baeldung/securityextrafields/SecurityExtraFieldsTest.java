@@ -11,47 +11,44 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.SpringSecurity5ExtraLoginFieldsApplication;
-
-@WebAppConfiguration
-@SpringJUnitWebConfig
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = SpringSecurity5ExtraLoginFieldsApplication.class)
+@SpringJUnitWebConfig
+@SpringBootTest(classes = SpringExtraLoginFieldsApplication.class)
 public class SecurityExtraFieldsTest {
     
     @Autowired
     private FilterChainProxy springSecurityFilterChain;
     
+    @Autowired
+    private WebApplicationContext wac;
+
     private MockMvc mockMvc;  
 
-    @BeforeEach
-    public void setup(WebApplicationContext wac) {
+    @Before
+    public void setup() {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(wac)
             .apply(springSecurity(springSecurityFilterChain)).build();
     }
 
-    @DisplayName("Access of root path redirects to index")
     @Test
     public void givenRootPathAccess_thenRedirectToIndex() throws Exception {
         this.mockMvc.perform(get("/"))
@@ -59,7 +56,6 @@ public class SecurityExtraFieldsTest {
                 .andExpect(redirectedUrlPattern("/index*"));
     }
 
-    @DisplayName("Unauthenticated access of secured resource redirects to login page")
     @Test
     public void givenSecuredResource_whenAccessUnauthenticated_thenRequiresAuthentication() throws Exception {
         this.mockMvc.perform(get("/user/index"))
@@ -67,7 +63,6 @@ public class SecurityExtraFieldsTest {
             .andExpect(redirectedUrlPattern("**/login"));
     }
 
-    @DisplayName("Succesfull auth on login page redirects and extra field exists")
     @Test
     public void givenAccessSecuredResource_whenAuthenticated_thenAuthHasExtraFields() throws Exception {
         MockHttpServletRequestBuilder securedResourceAccess = get("/user/index");

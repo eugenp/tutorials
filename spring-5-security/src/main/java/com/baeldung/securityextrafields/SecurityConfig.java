@@ -15,7 +15,7 @@ import org.springframework.security.web.authentication.SimpleUrlAuthenticationFa
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
-@PropertySource("application-extrafields.properties")
+@PropertySource("classpath:/application-extrafields.properties")
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
