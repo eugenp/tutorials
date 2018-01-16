@@ -55,7 +55,7 @@ public class InfluxDBConnectionLiveTest {
 
         InfluxDB connection = connectDatabase();
 
-        // Create "baeldung and check for it
+        // Create "baeldung" and check for it
         connection.createDatabase("baeldung");
         assertTrue(connection.databaseExists("baeldung"));
 
