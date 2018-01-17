@@ -19,8 +19,6 @@ public class WebSecurityConfigurer
     extends
         WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private OAuth2ClientContext oauth2ClientContext;
 
     @Override
     protected void configure(HttpSecurity http)
