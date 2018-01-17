@@ -4,16 +4,15 @@
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="surface" class="com.baeldung.tobi.Surface">
+	<bean id="surface" class="com.baeldung.beaninjectiontypes.Surface">
 	</bean>
 	
-	<bean id="graphics" class="com.baeldung.tobi.Graphics">
+	<bean id="graphics" class="com.baeldung.beaninjectiontypes.Graphics">
 		<constructor-arg ref="surface"></constructor-arg>
 	</bean>
 	
-	<bean id="shape" class="com.baeldung.tobi.Shape">
+	<bean id="shape" class="com.baeldung.beaninjectiontypes.Shape">
 		<property name="graphics" ref="graphics"></property>
 	</bean>
 	
 </beans>
-

@@ -1,4 +1,6 @@
-package com.baeldung.tobi;
+package com.baeldung.beaninjectiontypes;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class Shape {
 
@@ -8,6 +10,7 @@ public class Shape {
 	public Graphics getGraphics() {
 		return graphics;
 	}
+	@Autowired
 	public void setGraphics(Graphics graphics) {
 		this.graphics = graphics;
 	}
@@ -18,7 +21,7 @@ public class Shape {
 		return this.name;
 	}
 	
-	public void DrawMe(){
+	public void drawMe(){
 		this.graphics.getSurface().drawShape(this);
 	}
 	

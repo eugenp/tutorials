@@ -1,4 +1,4 @@
-package com.baeldung.tobi;
+package com.baeldung.beaninjectiontypes;
 
 public class Surface {
 
