@@ -3,6 +3,8 @@ package com.baeldung.commons.lang3;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.concurrent.ConcurrentException;
+import org.apache.commons.lang3.concurrent.BackgroundInitializer;
 
 public class BuilderMethods {
 
@@ -56,5 +58,36 @@ public class BuilderMethods {
         System.out.println(simple1.getName());
         System.out.println(simple1.hashCode());
         System.out.println(simple1.toString());
+        
+        SampleLazyInitializer sampleLazyInitializer = new SampleLazyInitializer();
+        
+        try {
+            sampleLazyInitializer.get();
+        } catch (ConcurrentException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        
+        SampleBackgroundInitializer sampleBackgroundInitializer = new SampleBackgroundInitializer();
+        sampleBackgroundInitializer.start();
+        
+        // Proceed with other tasks instead of waiting for the SampleBackgroundInitializer task to finish.
+        
+        try {
+            Object result = sampleBackgroundInitializer.get();
+        } catch (ConcurrentException e) {
+            e.printStackTrace();
+        }
     }
+}
+
+class SampleBackgroundInitializer extends BackgroundInitializer<String>{
+
+    @Override
+    protected String initialize() throws Exception {
+        return null;
+    }
+    
+    // Any complex task that takes some time
+    
 }

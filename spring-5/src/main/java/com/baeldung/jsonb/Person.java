@@ -10,6 +10,7 @@ import javax.json.bind.annotation.JsonbTransient;
 
 public class Person {
 
+    private int id;
     @JsonbProperty("person-name")
     private String name;
     @JsonbProperty(nillable = true)
@@ -23,13 +24,22 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, String email, int age, LocalDate registeredDate, BigDecimal salary) {
+    public Person(int id, String name, String email, int age, LocalDate registeredDate, BigDecimal salary) {
         super();
+        this.id = id;
         this.name = name;
         this.email = email;
         this.age = age;
         this.registeredDate = registeredDate;
         this.salary = salary;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getAge() {
@@ -76,7 +86,9 @@ public class Person {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Person [name=");
+        builder.append("Person [id=");
+        builder.append(id);
+        builder.append(", name=");
         builder.append(name);
         builder.append(", email=");
         builder.append(email);
@@ -94,11 +106,7 @@ public class Person {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + age;
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((registeredDate == null) ? 0 : registeredDate.hashCode());
-        result = prime * result + ((salary == null) ? 0 : salary.hashCode());
+        result = prime * result + id;
         return result;
     }
 
@@ -111,27 +119,7 @@ public class Person {
         if (getClass() != obj.getClass())
             return false;
         Person other = (Person) obj;
-        if (age != other.age)
-            return false;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        if (name == null) {
-            if (other.name != null)
-                return false;
-        } else if (!name.equals(other.name))
-            return false;
-        if (registeredDate == null) {
-            if (other.registeredDate != null)
-                return false;
-        } else if (!registeredDate.equals(other.registeredDate))
-            return false;
-        if (salary == null) {
-            if (other.salary != null)
-                return false;
-        } else if (!salary.equals(other.salary))
+        if (id != other.id)
             return false;
         return true;
     }

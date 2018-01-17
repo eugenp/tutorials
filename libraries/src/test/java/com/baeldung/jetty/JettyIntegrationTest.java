@@ -7,7 +7,9 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -15,17 +17,16 @@ import java.nio.charset.StandardCharsets;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class JettyIntegrationTest {
-    private JettyServer jettyServer;
+    private static JettyServer jettyServer;
 
-    @Before
-    public void setup() throws Exception {
+    @BeforeClass
+    public static void setup() throws Exception {
         jettyServer = new JettyServer();
         jettyServer.start();
     }
 
-    @After
-    public void cleanup() throws Exception {
-        Thread.sleep(2000);
+    @AfterClass
+    public static void cleanup() throws Exception {
         jettyServer.stop();
     }
 

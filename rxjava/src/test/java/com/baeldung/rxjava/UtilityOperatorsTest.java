@@ -7,16 +7,18 @@ import rx.Observable;
 import rx.Observer;
 import rx.exceptions.OnErrorNotImplementedException;
 import rx.schedulers.Schedulers;
+import rx.schedulers.Timestamped;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.jayway.awaitility.Awaitility.await;
 import static org.junit.Assert.assertTrue;
 
 public class UtilityOperatorsTest {
 
-    int emittedTotal = 0;
-    int receivedTotal = 0;
-    String result = "";
+    private int emittedTotal = 0;
+    private int receivedTotal = 0;
+    private String result = "";
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -39,11 +41,12 @@ public class UtilityOperatorsTest {
                 + Thread.currentThread().getName());
           });
 
-        Thread.sleep(2000);
-        assertTrue(emittedTotal == 1500);
-        assertTrue(receivedTotal == 15000);
+        await().until(() -> {
+              assertTrue(emittedTotal == 1500);
+              assertTrue(receivedTotal == 15000);
+          }
+        );
     }
-
 
     @Test
     public void givenObservable_whenObserveOnBeforeOnNext_thenEmitsEventsOnComputeScheduler() throws InterruptedException {
@@ -63,11 +66,11 @@ public class UtilityOperatorsTest {
                 + Thread.currentThread().getName());
           });
 
-        Thread.sleep(2000);
-        assertTrue(emittedTotal == 1500);
-        assertTrue(receivedTotal == 15000);
+        await().until(() -> {
+            assertTrue(emittedTotal == 1500);
+            assertTrue(receivedTotal == 15000);
+        });
     }
-
 
     @Test
     public void givenObservable_whenSubscribeOn_thenEmitsEventsOnComputeScheduler() throws InterruptedException {
@@ -87,11 +90,11 @@ public class UtilityOperatorsTest {
                 + Thread.currentThread().getName());
           });
 
-        Thread.sleep(2000);
-        assertTrue(emittedTotal == 1500);
-        assertTrue(receivedTotal == 15000);
+        await().until(() -> {
+            assertTrue(emittedTotal == 1500);
+            assertTrue(receivedTotal == 15000);
+        });
     }
-
 
     @Test
     public void givenObservableWithOneEvent_whenSingle_thenEmitEvent() {
@@ -197,15 +200,13 @@ public class UtilityOperatorsTest {
     @Test
     public void givenObservables_whenDelay_thenEventsStartAppearAfterATime() throws InterruptedException {
 
-        Observable source
-          = Observable.interval(1, TimeUnit.SECONDS)
+        Observable<Timestamped<Long>> source = Observable.interval(1, TimeUnit.SECONDS)
           .take(5)
           .timestamp();
 
-        Observable delay
-          = source.delaySubscription(2, TimeUnit.SECONDS);
+        Observable<Timestamped<Long>> delay = source.delaySubscription(2, TimeUnit.SECONDS);
 
-        source.subscribe(
+        source.<Long>subscribe(
           value -> System.out.println("source :" + value),
           t -> System.out.println("source error"),
           () -> System.out.println("source completed"));
@@ -214,7 +215,7 @@ public class UtilityOperatorsTest {
           value -> System.out.println("delay : " + value),
           t -> System.out.println("delay error"),
           () -> System.out.println("delay completed"));
-        Thread.sleep(8000);
+        //Thread.sleep(8000);
     }
 
     @Test
@@ -231,14 +232,12 @@ public class UtilityOperatorsTest {
 
         Observable<Character> values = Observable.using(
           () -> "resource",
-          r -> {
-              return Observable.create(o -> {
-                  for (Character c : r.toCharArray()) {
-                      o.onNext(c);
-                  }
-                  o.onCompleted();
-              });
-          },
+          r -> Observable.create(o -> {
+              for (Character c : r.toCharArray()) {
+                  o.onNext(c);
+              }
+              o.onCompleted();
+          }),
           r -> System.out.println("Disposed: " + r)
         );
         values.subscribe(
@@ -247,7 +246,6 @@ public class UtilityOperatorsTest {
         );
         assertTrue(result.equals("resource"));
     }
-
 
     @Test
     public void givenObservableCached_whenSubscribesWith2Actions_thenEmitsCachedValues() {
@@ -269,5 +267,4 @@ public class UtilityOperatorsTest {
         });
         assertTrue(receivedTotal == 8);
     }
-
 }

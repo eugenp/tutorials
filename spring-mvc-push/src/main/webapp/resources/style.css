@@ -1,0 +1,9 @@
+.single-title {
+    font-size: 30px;
+    color: #535353;
+    font-weight: 200;
+    letter-spacing: -1.5px;
+    line-height: 64px;
+    max-width: 750px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+}

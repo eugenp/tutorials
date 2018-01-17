@@ -43,5 +43,4 @@ public class VavrRepositoryIntegrationTest {
         Seq<User> users = userRepository.findByName("John");
         assertEquals(2, users.size());
     }
-
 }

@@ -105,6 +105,14 @@
                 </executions>
             </plugin>
             <!-- /Neuroph -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <dependencies>
@@ -327,6 +335,11 @@
             <version>5.0.0-release</version>
         </dependency>
         <dependency>
+            <groupId>org.datanucleus</groupId>
+            <artifactId>datanucleus-jdo-query</artifactId>
+            <version>5.0.2</version>
+        </dependency>
+        <dependency>
             <groupId>net.openhft</groupId>
             <artifactId>chronicle</artifactId>
             <version>3.6.4</version>
@@ -487,7 +500,7 @@
             <artifactId>vavr</artifactId>
             <version>${vavr.version}</version>
         </dependency>
-        
+
         <!-- Retrofit -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
@@ -503,7 +516,7 @@
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>adapter-rxjava</artifactId>
             <version>${retrofit.version}</version>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
@@ -546,20 +559,152 @@
             <version>${protonpack.version}</version>
         </dependency>
         <dependency>
-	          <groupId>org.functionaljava</groupId>
-	          <artifactId>functionaljava</artifactId>
-	          <version>4.7</version>
-	      </dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava</artifactId>
+            <version>4.7</version>
+        </dependency>
         <dependency>
-   			    <groupId>javax.cache</groupId>
-   			    <artifactId>cache-api</artifactId>
-   			    <version>${cache.version}</version>
-   		  </dependency>
-		    <dependency>
-		        <groupId>com.hazelcast</groupId>
-		        <artifactId>hazelcast</artifactId>
-		        <version>${hazelcast.version}</version>
-		    </dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava-java8</artifactId>
+            <version>4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava-quickcheck</artifactId>
+            <version>4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.functionaljava</groupId>
+            <artifactId>functionaljava-java-core</artifactId>
+            <version>4.7</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>${cache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>${hazelcast.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.netopyr.wurmloch</groupId>
+            <artifactId>wurmloch-crdt</artifactId>
+            <version>${crdt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.docx4j</groupId>
+            <artifactId>docx4j</artifactId>
+            <version>3.3.5</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+            <version>${caffeine.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.58</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk15on</artifactId>
+            <version>1.58</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client</artifactId>
+            <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.http-client</groupId>
+          <artifactId>google-http-client-jackson2</artifactId>
+          <version>${googleclient.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.http-client</groupId>
+          <artifactId>google-http-client-gson</artifactId>
+          <version>${googleclient.version}</version>
+        </dependency>
+
+        <!--Java Docker API Client-->
+        <dependency>
+            <groupId>com.github.docker-java</groupId>
+            <artifactId>docker-java</artifactId>
+            <version>${docker.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+        <!--Java Docker API Client-->
+
+        <!-- google api -->
+        <dependency>
+          <groupId>com.google.api-client</groupId>
+          <artifactId>google-api-client</artifactId>
+          <version>${google-api.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.oauth-client</groupId>
+          <artifactId>google-oauth-client-jetty</artifactId>
+          <version>${google-api.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>com.google.apis</groupId>
+          <artifactId>google-api-services-sheets</artifactId>
+          <version>${google-sheets.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-streams</artifactId>
+            <version>${kafka.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+            <classifier>test</classifier>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -575,8 +720,14 @@
             <name>bintray</name>
             <url>http://dl.bintray.com/cuba-platform/main</url>
         </repository>
+        <repository>
+            <id>Apache Staging</id>
+            <url>https://repository.apache.org/content/groups/staging</url>
+        </repository>
     </repositories>
     <properties>
+        <googleclient.version>1.23.0</googleclient.version>
+        <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
         <cglib.version>3.2.4</cglib.version>
         <commons-lang.version>3.6</commons-lang.version>
@@ -620,6 +771,7 @@
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
+        <geotools.version>15.2</geotools.version>
         <joda-time.version>2.9.9</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <retrofit.version>2.3.0</retrofit.version>
@@ -628,6 +780,11 @@
         <protonpack.version>1.14</protonpack.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <cache.version>1.0.0</cache.version>
-    	<hazelcast.version>3.8.4</hazelcast.version>
+        <hazelcast.version>3.8.4</hazelcast.version>
+        <caffeine.version>2.5.5</caffeine.version>
+        <google-api.version>1.23.0</google-api.version>
+        <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
+        <kafka.version>1.0.0</kafka.version>
+        <docker.version>3.0.14</docker.version>
     </properties>
 </project>

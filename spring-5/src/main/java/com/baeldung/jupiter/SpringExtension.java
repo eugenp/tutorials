@@ -1,28 +1,36 @@
 package com.baeldung.jupiter;
 
-import org.junit.jupiter.api.extension.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Executable;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+
+import org.junit.jupiter.api.extension.AfterAllCallback;
+import org.junit.jupiter.api.extension.AfterEachCallback;
+import org.junit.jupiter.api.extension.BeforeAllCallback;
+import org.junit.jupiter.api.extension.BeforeEachCallback;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.ParameterContext;
+import org.junit.jupiter.api.extension.ParameterResolutionException;
+import org.junit.jupiter.api.extension.ParameterResolver;
+import org.junit.jupiter.api.extension.TestInstancePostProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.test.context.TestContextManager;
 import org.springframework.util.Assert;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Executable;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
-
 public class SpringExtension implements BeforeAllCallback, AfterAllCallback, TestInstancePostProcessor, BeforeEachCallback, AfterEachCallback, ParameterResolver {
 
     private static final ExtensionContext.Namespace namespace = ExtensionContext.Namespace.create(SpringExtension.class);
 
     @Override
-    public void beforeAll(ContainerExtensionContext context) throws Exception {
+    public void beforeAll(ExtensionContext context) throws Exception {
         getTestContextManager(context).beforeTestClass();
     }
 
     @Override
-    public void afterAll(ContainerExtensionContext context) throws Exception {
+    public void afterAll(ExtensionContext context) throws Exception {
         try {
             getTestContextManager(context).afterTestClass();
         } finally {
@@ -38,7 +46,7 @@ public class SpringExtension implements BeforeAllCallback, AfterAllCallback, Tes
     }
 
     @Override
-    public void beforeEach(TestExtensionContext context) throws Exception {
+    public void beforeEach(ExtensionContext context) throws Exception {
         Object testInstance = context.getTestInstance();
         Method testMethod = context.getTestMethod()
             .get();
@@ -46,24 +54,24 @@ public class SpringExtension implements BeforeAllCallback, AfterAllCallback, Tes
     }
 
     @Override
-    public void afterEach(TestExtensionContext context) throws Exception {
+    public void afterEach(ExtensionContext context) throws Exception {
         Object testInstance = context.getTestInstance();
         Method testMethod = context.getTestMethod()
             .get();
-        Throwable testException = context.getTestException()
+        Throwable testException = context.getExecutionException()
             .orElse(null);
         getTestContextManager(context).afterTestMethod(testInstance, testMethod, testException);
     }
 
     @Override
-    public boolean supports(ParameterContext parameterContext, ExtensionContext extensionContext) {
+    public boolean supportsParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         Parameter parameter = parameterContext.getParameter();
         Executable executable = parameter.getDeclaringExecutable();
-        return (executable instanceof Constructor && AnnotatedElementUtils.hasAnnotation(executable, Autowired.class)) || ParameterAutowireUtils.isAutowirable(parameter);
+        return ((executable instanceof Constructor) && AnnotatedElementUtils.hasAnnotation(executable, Autowired.class)) || ParameterAutowireUtils.isAutowirable(parameter);
     }
 
     @Override
-    public Object resolve(ParameterContext parameterContext, ExtensionContext extensionContext) {
+    public Object resolveParameter(ParameterContext parameterContext, ExtensionContext extensionContext) throws ParameterResolutionException {
         Parameter parameter = parameterContext.getParameter();
         Class<?> testClass = extensionContext.getTestClass()
             .get();
