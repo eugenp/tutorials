@@ -80,9 +80,10 @@ public class InstanceProfileAwsApplication {
     }
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = new SpringApplicationBuilder(InstanceProfileAwsApplication.class).properties(applicationConfig)
-            .build()
-            .run(args);
+        SpringApplicationBuilder builder = new SpringApplicationBuilder(InstanceProfileAwsApplication.class);
+        builder.properties(applicationConfig);
+        builder.build();
+        ConfigurableApplicationContext context = builder.run(args);
         AmazonS3 s3 = context.getBean(AmazonS3.class);
         SpringCloudS3 springCloudS3 = context.getBean(SpringCloudS3.class);
         setup(s3);

@@ -63,6 +63,13 @@ Resources:
       InstanceType: t2.micro
       IamInstanceProfile: !Ref InstanceProfileBaeldung
       KeyName: Satish-Ohio
+      UserData: !Base64 
+        'Fn::Join':
+          - ''
+          - - |
+              #!/bin/bash
+            - |
+              apt -y install openjdk-8-jre-headless
     Metadata:
       'AWS::CloudFormation::Designer':
         id: a7348729-a594-4dca-9b0a-e1c8d777dc3b
