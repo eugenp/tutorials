@@ -43,8 +43,9 @@ public class ControlSubThread implements Runnable {
             try {
                 Thread.sleep(interval);
             } catch (InterruptedException e) {
-                // no-op, just loop again
-            }
+            	Thread.currentThread().interrupt();
+                System.out.println("Thread was interrupted, Failed to complete operation");
+	    }
             // do something
         }
         stopped.set(true);
