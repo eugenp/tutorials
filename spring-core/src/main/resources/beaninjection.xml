@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="mouse" class="com.baeldung.beaninjection.domain.Mouse" />
+
+	<bean
+		class="com.baeldung.beaninjection.domain.ComputerWithConstructorInjection">
+		<constructor-arg ref="mouse" />
+	</bean>
+	<bean class="com.baeldung.beaninjection.domain.ComputerWithSetterInjection">
+		<property name="mouse" ref="mouse" />
+	</bean>
+</beans>

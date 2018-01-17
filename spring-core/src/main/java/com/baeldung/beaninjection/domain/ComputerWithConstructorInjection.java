@@ -1,0 +1,18 @@
+package com.baeldung.beaninjection.domain;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ComputerWithConstructorInjection {
+    private Mouse mouse;
+
+    @Autowired
+    public ComputerWithConstructorInjection(Mouse mouse) {
+        this.mouse = mouse;
+    }
+
+    public String toString() {
+        return "computerWithConstructorInjection with " + mouse;
+    }
+}
