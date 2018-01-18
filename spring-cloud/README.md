@@ -15,7 +15,10 @@
 - [Intro to Spring Cloud Netflix - Hystrix](http://www.baeldung.com/spring-cloud-netflix-hystrix)
 - [Dockerizing a Spring Boot Application](http://www.baeldung.com/dockerizing-spring-boot-application)
 - [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
+- [A Quick Guide to Spring Cloud Consul](http://www.baeldung.com/spring-cloud-consul)
 
 ### Relevant Articles:
 - [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
- [An Introduction to Spring Cloud Zookeeper](http://www.baeldung.com/spring-cloud-zookeeper)
+- [An Introduction to Spring Cloud Zookeeper](http://www.baeldung.com/spring-cloud-zookeeper)
+- [Spring Cloud Connectors and Heroku](http://www.baeldung.com/spring-cloud-heroku)
+

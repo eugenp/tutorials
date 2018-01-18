@@ -54,7 +54,7 @@ public class GenericFile {
     }
 
     public String getFileInfo() {
-        return "File Name: " + this.getName() + "\n" + "Extension: " + this.getExtension() + "\n" + "Date Created: " + this.getDateCreated() + "\n" + "Version: " + this.getVersion() + "\n";
+        return "Generic File Impl";
     }
 
     public Object read() {

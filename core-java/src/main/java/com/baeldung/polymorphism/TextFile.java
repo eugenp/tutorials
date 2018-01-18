@@ -21,7 +21,7 @@ public class TextFile extends GenericFile {
     }
 
     public String getFileInfo() {
-        return super.getFileInfo() + "Word Count: " + wordCount;
+        return "Text File Impl";
     }
 
     public String read() {
