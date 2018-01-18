@@ -1,0 +1,18 @@
+body {
+    font-family: sans;
+    font-size: 1em;
+}
+
+p.error {
+    font-weight: bold;
+    color: red;
+}
+
+div.logout {
+    float: right;
+}
+
+.formfield {
+	margin: 0.5em;
+	padding: 0.3em;
+}
