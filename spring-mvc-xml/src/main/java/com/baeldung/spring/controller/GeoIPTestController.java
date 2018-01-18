@@ -14,15 +14,15 @@ import com.baeldung.spring.service.RawDBDemoGeoIPLocationService;
 @Controller
 public class GeoIPTestController {
     private RawDBDemoGeoIPLocationService locationService;
+
     public GeoIPTestController() throws IOException {
-        locationService 
-        = new RawDBDemoGeoIPLocationService();
+        locationService = new RawDBDemoGeoIPLocationService();
     }
-    @RequestMapping(value="/GeoIPTest", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/GeoIPTest", method = RequestMethod.POST)
     @ResponseBody
-    public GeoIP getLocation(
-      @RequestParam(value="ipAddress", required=true) String ipAddress) throws Exception {
-        
+    public GeoIP getLocation(@RequestParam(value = "ipAddress", required = true) String ipAddress) throws Exception {
+
         return locationService.getLocation(ipAddress);
     }
 }

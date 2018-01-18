@@ -21,50 +21,41 @@ public class OrientDBGraphAPITest {
 
     // @BeforeClass
     public static void init() {
-        boolean articleExists = graph.getVertexType("Article") != null;
-        boolean writerExists = graph.getVertexType("Writer") != null;
-        boolean authorExists = graph.getVertexType("Author") != null;
-        boolean editorExists = graph.getVertexType("Editor") != null;
+        graph.createVertexType("Article");
 
-        boolean classesExist = articleExists && writerExists && authorExists && editorExists;
+        OrientVertexType writerType = graph.createVertexType("Writer");
+        writerType.setStrictMode(true);
+        writerType.createProperty("firstName", OType.STRING);
+        writerType.createProperty("lastName", OType.STRING);
+        writerType.createProperty("country", OType.STRING);
 
-        if(!classesExist) {
-            graph.createVertexType("Article");
+        OrientVertexType authorType = graph.createVertexType("Author", "Writer");
+        authorType.createProperty("level", OType.INTEGER).setMax("3");
 
-            OrientVertexType writerType = graph.createVertexType("Writer");
-            writerType.setStrictMode(true);
-            writerType.createProperty("firstName", OType.STRING);
-            writerType.createProperty("lastName", OType.STRING);
-            writerType.createProperty("country", OType.STRING);
+        OrientVertexType editorType = graph.createVertexType("Editor", "Writer");
+        editorType.createProperty("level", OType.INTEGER).setMin("3");
 
-            OrientVertexType authorType = graph.createVertexType("Author", "Writer");
-            authorType.createProperty("level", OType.INTEGER).setMax("3");
+        Vertex vEditor = graph.addVertex("class:Editor");
+        vEditor.setProperty("firstName", "Maxim");
+        vEditor.setProperty("lastName", "Mink's");
+        vEditor.setProperty("country", "Cameroon");
+        vEditor.setProperty("publicProfile", true);
+        vEditor.setProperty("level", "7");
 
-            OrientVertexType editorType = graph.createVertexType("Editor", "Writer");
-            editorType.createProperty("level", OType.INTEGER).setMin("3");
+        Vertex vAuthor = graph.addVertex("class:Author");
+        vAuthor.setProperty("firstName", "Jerome");
+        vAuthor.setProperty("country", "Romania");
+        vAuthor.setProperty("publicProfile", false);
+        vAuthor.setProperty("level", "3");
 
-            Vertex vEditor = graph.addVertex("class:Editor");
-            vEditor.setProperty("firstName", "Maxim");
-            vEditor.setProperty("lastName", "Mink's");
-            vEditor.setProperty("country", "Cameroon");
-            vEditor.setProperty("publicProfile", true);
-            vEditor.setProperty("level", "7");
+        Vertex vArticle = graph.addVertex("class:Article");
+        vArticle.setProperty("title", "Introduction to the OrientDB Java APIs.");
+        vArticle.setProperty("priority", "High");
+        vArticle.setProperty("type", "Article");
+        vArticle.setProperty("level", "+L4");
 
-            Vertex vAuthor = graph.addVertex("class:Author");
-            vAuthor.setProperty("firstName", "Jerome");
-            vAuthor.setProperty("country", "Romania");
-            vAuthor.setProperty("publicProfile", false);
-            vAuthor.setProperty("level", "3");
-
-            Vertex vArticle = graph.addVertex("class:Article");
-            vArticle.setProperty("title", "Introduction to the OrientDB Java APIs.");
-            vArticle.setProperty("priority", "High");
-            vArticle.setProperty("type", "Article");
-            vArticle.setProperty("level", "+L4");
-
-            graph.addEdge(null, vAuthor, vEditor, "has");
-            graph.addEdge(null, vAuthor, vArticle, "wrote");
-        }
+        graph.addEdge(null, vAuthor, vEditor, "has");
+        graph.addEdge(null, vAuthor, vArticle, "wrote");
     }
 
     // @Test
