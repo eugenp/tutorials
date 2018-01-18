@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -82,8 +83,8 @@ public class InstanceProfileAwsApplication {
     public static void main(String[] args) {
         SpringApplicationBuilder builder = new SpringApplicationBuilder(InstanceProfileAwsApplication.class);
         builder.properties(applicationConfig);
-        builder.build();
-        ConfigurableApplicationContext context = builder.run(args);
+        SpringApplication application = builder.build();
+        ConfigurableApplicationContext context = application.run(args);
         AmazonS3 s3 = context.getBean(AmazonS3.class);
         SpringCloudS3 springCloudS3 = context.getBean(SpringCloudS3.class);
         setup(s3);
