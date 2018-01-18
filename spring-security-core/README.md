@@ -9,3 +9,4 @@ mvn clean install
 ### Relevant Articles:
 - [Intro to @PreFilter and @PostFilter in Spring Security](http://www.baeldung.com/spring-security-prefilter-postfilter)
 - [Spring Boot Authentication Auditing Support](http://www.baeldung.com/spring-boot-authentication-audit)
+- [Spring Data with Spring Security](http://www.baeldung.com/spring-data-with-spring-security)
