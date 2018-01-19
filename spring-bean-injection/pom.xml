@@ -75,11 +75,6 @@
 	        <groupId>org.apache.maven.plugins</groupId>
 	        <artifactId>maven-surefire-plugin</artifactId>
             <version>2.18.1</version>
-	        <configuration>
-	            <environmentVariables>
-	                <spring.profiles.default>beansconfig</spring.profiles.default>
-	            </environmentVariables>
-	        </configuration>
     	</plugin>
     </plugins>
   </build>

@@ -17,7 +17,7 @@ public class BeanInjectionChecker {
     private static final Logger LOGGER = LoggerFactory.getLogger(BeanInjectionConfig.class);
 
     public void showUser() {
-        LOGGER.info(profile.getCredentials()
+        LOGGER.info("User Name " + profile.getCredentials()
             .getUserName());
         LOGGER.info("City : " + profile.getDemographic()
             .getCity() + " State : "
@@ -25,5 +25,9 @@ public class BeanInjectionChecker {
                 .getState()
             + " ZipCode : " + profile.getDemographic()
                 .getZipCode());
+    }
+
+    public UserProfile getUserProfile() {
+        return profile;
     }
 }

@@ -19,7 +19,7 @@
 
     <bean id="credentials"
         class="com.baeldung.tutorial.beaninjection.beans.UserCredentials">
-        <property name="userName" value="${userName}"/>
+        <property name="userName" value="${uname}"/>
     </bean>
 
     <bean id="demographic"

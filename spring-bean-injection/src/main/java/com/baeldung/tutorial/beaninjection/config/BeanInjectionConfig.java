@@ -39,7 +39,7 @@ public class BeanInjectionConfig {
 
     @Bean
     UserCredentials credentials() {
-        String userName = environment.getProperty("userName");
+        String userName = environment.getProperty("uname");
         UserCredentials userCred = new UserCredentials();
         userCred.setUserName(userName);
         return userCred;
