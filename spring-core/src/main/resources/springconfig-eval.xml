@@ -1,0 +1,18 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="LaptopWithConstructorBean" class="com.baeldung.dependencyinjectiontypeseval.LaptopWithConstructor">
+        <constructor-arg>
+            <bean class="com.baeldung.dependencyinjectiontypeseval.NvidiaGraphicsCard" />
+        </constructor-arg>
+    </bean>
+	<bean id="LaptopWithSetterBean" class="com.baeldung.dependencyinjectiontypeseval.LaptopWithSetter">
+		<property name="graphicsCard">
+			<ref bean="NvidiaGraphicsCard" />
+		</property>
+	</bean>
+	<bean id="IntelGraphicsCard" class="com.baeldung.dependencyinjectiontypeseval.IntelGraphicsCard" />
+	<bean id="NvidiaGraphicsCard" class="com.baeldung.dependencyinjectiontypeseval.NvidiaGraphicsCard" />
+</beans>
