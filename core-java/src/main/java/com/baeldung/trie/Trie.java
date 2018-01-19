@@ -1,8 +1,5 @@
 package com.baeldung.trie;
 
-import java.util.Map;
-import java.util.Set;
-
 public class Trie {
     private TrieNode root;
 
@@ -10,94 +7,72 @@ public class Trie {
         root = new TrieNode();
     }
 
-    public boolean insert(String word) {
-        TrieNode trie = root;
-        if (trie == null || word == null)
+    public void insert(String word) {
+        TrieNode current = root;
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            TrieNode node = current.getChildren()
+                .get(ch);
+            if (node == null) {
+                node = new TrieNode();
+                current.getChildren()
+                    .put(ch, node);
+            }
+            current = node;
+        }
+        current.setEndOfWord(true);
+    }
+
+    public boolean find(String word) {
+        TrieNode current = root;
+        for (int i = 0; i < word.length(); i++) {
+            char ch = word.charAt(i);
+            TrieNode node = current.getChildren()
+                .get(ch);
+            if (node == null) {
+                return false;
+            }
+            current = node;
+        }
+        return current.isEndOfWord();
+    }
+
+    public void delete(String word) {
+        delete(root, word, 0);
+    }
+
+    private boolean delete(TrieNode current, String word, int index) {
+        if (index == word.length()) {
+            if (!current.isEndOfWord()) {
+                return false;
+            }
+            current.setEndOfWord(false);
+            return current.getChildren()
+                .size() == 0;
+        }
+        char ch = word.charAt(index);
+        TrieNode node = current.getChildren()
+            .get(ch);
+        if (node == null) {
             return false;
-        char[] chars = word.toCharArray();
-        int counter = 0;
-        while (counter < chars.length) {
-            Set<Character> children = trie.getChildren()
-                .keySet();
-            if (!children.contains(chars[counter])) {
-                insertChar(trie, chars[counter]);
-                if (counter == chars.length - 1) {
-                    getChild(trie, chars[counter]).setIsWord(true);
-                    return true;
-                }
-            }
-            trie = getChild(trie, chars[counter]);
-            if (trie.getContent()
-                .equals(word) && !trie.isWord()) {
-                trie.setIsWord(true);
-                return true;
-            }
-            counter++;
+        }
+        boolean shouldDeleteCurrentNode = delete(node, word, index + 1);
+
+        if (shouldDeleteCurrentNode) {
+            current.getChildren()
+                .remove(ch);
+            return current.getChildren()
+                .size() == 0;
         }
         return false;
     }
 
-    public boolean find(String string) {
-        Map<Character, TrieNode> children = root.getChildren();
-        TrieNode t = null;
-        for (int i = 0; i < string.length(); i++) {
-            char c = string.charAt(i);
-            if (children.containsKey(c)) {
-                t = children.get(c);
-                children = t.getChildren();
-            } else
-                return false;
-        }
-        return true;
-    }
-
-    public boolean containsNode(String string) {
-        return find(string);
+    public boolean containsNode(String word) {
+        return find(word);
     }
 
     public boolean isEmpty() {
         return root == null;
     }
 
-    public boolean delete(String str) {
-        return findNode(root, str);
-    }
-
-    private TrieNode getChild(TrieNode trie, Character c) {
-        return trie.getChildren()
-            .get(c);
-    }
-
-    private TrieNode insertChar(TrieNode trie, Character c) {
-        if (trie.getChildren()
-            .containsKey(c)) {
-            return null;
-        }
-        TrieNode next = new TrieNode(trie.getContent() + c.toString());
-        trie.getChildren()
-            .put(c, next);
-        return next;
-    }
-
-    private boolean findNode(TrieNode trie, String string) {
-        Map<Character, TrieNode> children = root.getChildren();
-        TrieNode parent = null;
-        for (int i = 0; i < string.length(); i++) {
-            char character = string.charAt(i);
-            if (children.containsKey(character)) {
-                parent = trie;
-                trie = children.get(character);
-                children = trie.getChildren();
-                if (trie.getContent()
-                    .equals(string)) {
-
-                    parent.getChildren()
-                        .remove(character);
-                    trie = null;
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 }
