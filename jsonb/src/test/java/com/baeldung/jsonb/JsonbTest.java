@@ -17,6 +17,8 @@ import javax.json.bind.config.PropertyOrderStrategy;
 import org.apache.commons.collections4.ListUtils;
 import org.junit.Test;
 
+import com.baeldung.adapter.PersonAdapter;
+
 public class JsonbTest {
 
     @Test
@@ -150,6 +152,34 @@ public class JsonbTest {
              "\"person-name\":\"Jhon\"," + 
              "\"registeredDate\":\"07-09-2019\"," + 
              "\"salary\":\"1000.0\"}";
+        // @formatter:on
+        assertTrue(jsonb.fromJson(jsonPerson, Person.class)
+            .equals(person));
+    }
+
+    @Test
+    public void givenPersonObject_whenSerializeWithAdapter_thenGetPersonJson() {
+        JsonbConfig config = new JsonbConfig().withAdapters(new PersonAdapter());
+        Jsonb jsonb = JsonbBuilder.create(config);
+        Person person = new Person(1, "Jhon", "jhon@test.com", 0, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000.0));// new Person(1, "Jhon");
+        String jsonPerson = jsonb.toJson(person);
+        // @formatter:off
+        String jsonExpected = 
+            "{\"id\":1," +
+             "\"name\":\"Jhon\"}";
+        // @formatter:on
+        assertTrue(jsonExpected.equals(jsonPerson));
+    }
+
+    @Test
+    public void givenPersonJson_whenDeserializeWithAdapter_thenGetPersonObject() {
+        JsonbConfig config = new JsonbConfig().withAdapters(new PersonAdapter());
+        Jsonb jsonb = JsonbBuilder.create(config);
+        Person person = new Person(1, "Jhon", "jhon@test.com", 0, LocalDate.of(2019, 9, 7), BigDecimal.valueOf(1000.0));// new Person(1, "Jhon");
+        // @formatter:off
+        String jsonPerson = 
+            "{\"id\":1," +
+             "\"name\":\"Jhon\"}";
         // @formatter:on
         assertTrue(jsonb.fromJson(jsonPerson, Person.class)
             .equals(person));

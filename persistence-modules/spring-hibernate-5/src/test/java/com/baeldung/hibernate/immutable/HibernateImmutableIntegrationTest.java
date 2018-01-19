@@ -4,7 +4,6 @@ import com.baeldung.hibernate.immutable.entities.Event;
 import com.baeldung.hibernate.immutable.entities.EventGeneratedId;
 import com.baeldung.hibernate.immutable.util.HibernateUtil;
 import com.google.common.collect.Sets;
-import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.junit.*;
 import org.junit.rules.ExpectedException;
@@ -14,6 +13,9 @@ import javax.persistence.PersistenceException;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsEqual.equalTo;
 
+/**
+ * Configured in: immutable.cfg.xml
+ */
 public class HibernateImmutableIntegrationTest {
 
     private static Session session;
@@ -98,6 +100,7 @@ public class HibernateImmutableIntegrationTest {
     public void updateEventGenerated() {
         createEventGenerated();
         EventGeneratedId eventGeneratedId = (EventGeneratedId) session.createQuery("FROM EventGeneratedId WHERE name LIKE '%John%'").list().get(0);
+        
         eventGeneratedId.setName("Mike");
         session.update(eventGeneratedId);
         session.flush();
@@ -115,7 +118,6 @@ public class HibernateImmutableIntegrationTest {
 
     private static void createEventGenerated() {
         EventGeneratedId eventGeneratedId = new EventGeneratedId("John", "Doe");
-        eventGeneratedId.setId(4L);
         session.save(eventGeneratedId);
     }
 

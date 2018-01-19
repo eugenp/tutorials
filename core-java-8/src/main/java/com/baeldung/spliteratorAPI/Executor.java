@@ -15,4 +15,5 @@ public class Executor {
 	public static List<Article> generateElements() {
 		return Stream.generate(() -> new Article("Java")).limit(35000).collect(Collectors.toList());
 	}
+
 }

@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>core-java9</artifactId>
+    <artifactId>core-java-9</artifactId>
     <version>0.2-SNAPSHOT</version>
 
-    <name>core-java9</name>
+    <name>core-java-9</name>
 
     <pluginRepositories>
         <pluginRepository>
@@ -90,7 +90,7 @@
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <ch.qos.logback.version>1.2.1</ch.qos.logback.version>
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 
         <!-- testing -->

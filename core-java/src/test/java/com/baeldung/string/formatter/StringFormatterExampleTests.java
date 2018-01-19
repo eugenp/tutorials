@@ -14,7 +14,8 @@ public class StringFormatterExampleTests {
     public void givenString_whenFormatSpecifierForCalendar_thenGotExpected() {
         //Syntax of Format Specifiers for Date/Time Representation
         Calendar c = new GregorianCalendar(2017, 11, 10);
-        String s = String.format("The date is: %1$tm %1$te,%1$tY", c);
+        String s = String.format("The date is: %tm %1$te,%1$tY", c);
+
 
         assertEquals("The date is: 12 10,2017", s);
     }
@@ -84,7 +85,7 @@ public class StringFormatterExampleTests {
     public void givenString_whenLineSeparatorConversion_thenConvertedString() {        
         //Line Separator Conversion
         String s = String.format("First Line %nSecond Line");
-        assertEquals("First Line \n"
+        assertEquals("First Line " + System.getProperty("line.separator")
                 + "Second Line", s);
     }
 
@@ -114,10 +115,10 @@ public class StringFormatterExampleTests {
     public void givenString_whenSpecifyArgumentIndex_thenGotExpected() {
         Calendar c = new GregorianCalendar(2017, 11, 10);
         //Argument_Index
-        String s = String.format("The date is: %1$tm %1$te,%1$tY", c);
+        String s = String.format("The date is: %tm %1$te,%1$tY", c);
         assertEquals("The date is: 12 10,2017", s);
-
-        s = String.format("The date is: %1$tm %<te,%<tY", c);
+       
+        s = String.format("The date is: %tm %<te,%<tY", c);
         assertEquals("The date is: 12 10,2017", s);
     }
 
@@ -126,8 +127,7 @@ public class StringFormatterExampleTests {
         //Using String Formatter with Appendable
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
-        formatter.format("I am writting to a %1$s Instance.", sb.getClass());
-
+        formatter.format("I am writting to a %s Instance.", sb.getClass());
         assertEquals("I am writting to a class java.lang.StringBuilder Instance.", sb.toString());
     }
     
