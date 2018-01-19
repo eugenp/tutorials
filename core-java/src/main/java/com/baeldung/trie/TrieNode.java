@@ -1,44 +1,31 @@
 package com.baeldung.trie;
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class TrieNode {
-    private HashMap<Character, TrieNode> children;
-    private String content;
-    private boolean isWord;
+class TrieNode {
+    private Map<Character, TrieNode> children;
+    private boolean endOfWord;
 
     public TrieNode() {
-        children = new HashMap<Character, TrieNode>();
-        content = "";
-        isWord = false;
+        children = new HashMap<>();
+        endOfWord = false;
     }
 
-    public TrieNode(String content) {
-        this();
-        this.content = content;
-    }
-
-    public HashMap<Character, TrieNode> getChildren() {
+    public Map<Character, TrieNode> getChildren() {
         return children;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public boolean isWord() {
-        return isWord;
-    }
-
-    public void setIsWord(boolean isWord) {
-        this.isWord = isWord;
-    }
-
-    public void setChildren(HashMap<Character, TrieNode> children) {
+    public void setChildren(Map<Character, TrieNode> children) {
         this.children = children;
     }
+
+    public boolean isEndOfWord() {
+        return endOfWord;
+    }
+
+    public void setEndOfWord(boolean endOfWord) {
+        this.endOfWord = endOfWord;
+    }
+
 }
