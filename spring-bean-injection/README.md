@@ -1,0 +1,1 @@
+Different types of Bean Injection in Spring - Baeldung evaluation project
