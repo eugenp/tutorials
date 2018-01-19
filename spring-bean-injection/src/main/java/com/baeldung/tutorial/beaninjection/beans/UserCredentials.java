@@ -5,7 +5,7 @@ public class UserCredentials {
     private String userName;
 
     public UserCredentials(String uName) {
-        setUserName(uName);
+        userName = uName;
     }
 
     public UserCredentials() {
