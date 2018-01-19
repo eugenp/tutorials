@@ -21,7 +21,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-h2.properties" })
+@PropertySource({ "classpath:persistence-mysql.properties" })
 @ComponentScan({ "com.baeldung.persistence" })
 public class PersistenceConfig {
 

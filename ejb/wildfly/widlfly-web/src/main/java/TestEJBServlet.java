@@ -26,16 +26,13 @@ public class TestEJBServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         out.println("<html>");
-        out.println("<head><title>Users</title></head>");
         out.println("<body>");
-        out.println("<center><h1>List of users:</h1>");
-        out.println("<table border=\"1\" align=\"center\" style=\"width:50%\">");
         for (User user : users) {
-            out.println("<tr>");
-            out.print("<td>" + user.getUsername() + "</td>");
-            out.print("<td>" + user.getEmail() + "</td>");
-            out.println("</tr>");
+            out.print(user.getUsername());
+            out.print(" " + user.getEmail() + " <br>");
         }
+        out.println("</body>");
+        out.println("</html>");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

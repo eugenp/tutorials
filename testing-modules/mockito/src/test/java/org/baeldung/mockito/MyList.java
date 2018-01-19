@@ -19,4 +19,7 @@ class MyList extends AbstractList<String> {
         // no-op
     }
 
+    final public int finalMethod() {
+        return 0;
+    }
 }
