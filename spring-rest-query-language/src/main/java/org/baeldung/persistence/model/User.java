@@ -1,9 +1,11 @@
 package org.baeldung.persistence.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -19,6 +21,11 @@ public class User {
     private String email;
 
     private int age;
+
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
+    @JsonManagedReference
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    private Address address;
 
     public User() {
         super();
@@ -62,6 +69,14 @@ public class User {
 
     public void setAge(final int age) {
         this.age = age;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override

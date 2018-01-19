@@ -4,21 +4,21 @@ public class SpecSearchCriteria {
 
     private String key;
     private SearchOperation operation;
-    private Object value;
+    private Comparable value;
     private boolean orPredicate;
 
     public SpecSearchCriteria() {
 
     }
 
-    public SpecSearchCriteria(final String key, final SearchOperation operation, final Object value) {
+    public SpecSearchCriteria(final String key, final SearchOperation operation, final Comparable value) {
         super();
         this.key = key;
         this.operation = operation;
         this.value = value;
     }
 
-    public SpecSearchCriteria(final String orPredicate, final String key, final SearchOperation operation, final Object value) {
+    public SpecSearchCriteria(final String orPredicate, final String key, final SearchOperation operation, final Comparable value) {
         super();
         this.orPredicate = orPredicate != null && orPredicate.equals(SearchOperation.OR_PREDICATE_FLAG);
         this.key = key;
@@ -51,11 +51,24 @@ public class SpecSearchCriteria {
         return key;
     }
 
+    public String key() {
+        return key;
+    }
+
     public void setKey(final String key) {
         this.key = key;
     }
 
+    public SpecSearchCriteria key(final String key) {
+        this.key = key;
+        return this;
+    }
+
     public SearchOperation getOperation() {
+        return operation;
+    }
+
+    public SearchOperation operation() {
         return operation;
     }
 
@@ -63,12 +76,26 @@ public class SpecSearchCriteria {
         this.operation = operation;
     }
 
-    public Object getValue() {
+    public SpecSearchCriteria operation(final SearchOperation operation) {
+        this.operation = operation;
+        return this;
+    }
+
+    public Comparable getValue() {
         return value;
     }
 
-    public void setValue(final Object value) {
+    public Comparable value() {
+        return value;
+    }
+
+    public void setValue(final Comparable value) {
         this.value = value;
+    }
+
+    public SpecSearchCriteria value(final Comparable value) {
+        this.value = value;
+        return this;
     }
 
     public boolean isOrPredicate() {
@@ -79,4 +106,8 @@ public class SpecSearchCriteria {
         this.orPredicate = orPredicate;
     }
 
+    public SpecSearchCriteria orPredicate(boolean orPredicate) {
+        this.orPredicate = orPredicate;
+        return this;
+    }
 }
