@@ -39,3 +39,8 @@ $ curl -X POST -H "Content-Type:application/json" -d '{ "firstName" : "Dassi", "
 Now with default configurations it will be available at: [http://localhost:8080](http://localhost:8080)
 
 Enjoy it :)
+
+### Relevant Articles:
+
+- [Intro to Performance Testing using JMeter](http://www.baeldung.com/jmeter)
+- [Configure Jenkins to Run and Show JMeter Tests](http://www.baeldung.com/jenkins-and-jmeter)

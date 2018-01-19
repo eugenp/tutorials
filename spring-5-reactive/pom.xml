@@ -43,6 +43,10 @@
             <groupId>javax.json.bind</groupId>
             <artifactId>javax.json.bind-api</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
         
         <!-- Dependencies for Yasson -->
         <!-- <dependency> -->
@@ -56,7 +60,13 @@
         <!-- <version>1.1.2</version> -->
         <!-- </dependency> -->
         <!-- Dependencies for Johnzon -->
-        
+        <!-- lombok-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-json_1.1_spec</artifactId>
@@ -198,4 +208,5 @@
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
     </properties>
 
+    
 </project>
