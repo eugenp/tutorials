@@ -92,6 +92,8 @@
           <annotationProcessors>
             <!-- Add all the checkers you want to enable here -->
             <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+            <annotationProcessor>org.checkerframework.checker.interning.InterningChecker</annotationProcessor>
+            <annotationProcessor>org.checkerframework.checker.fenum.FenumChecker</annotationProcessor>
           </annotationProcessors>
           <compilerArgs>
             <arg>-AprintErrorStack</arg>
