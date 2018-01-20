@@ -9,26 +9,23 @@ public class Trie {
 
     public void insert(String word) {
         TrieNode current = root;
+
         for (int i = 0; i < word.length(); i++) {
-            char ch = word.charAt(i);
-            TrieNode node = current.getChildren()
-              .get(ch);
-            if (node == null) {
-                node = new TrieNode();
-                current.getChildren()
-                  .put(ch, node);
-            }
-            current = node;
+            current = current.getChildren().computeIfAbsent(word.charAt(i), c -> new TrieNode());
         }
         current.setEndOfWord(true);
     }
 
-    public boolean find(String word) {
+    public boolean delete(String word) {
+        return delete(root, word, 0);
+    }
+
+    public boolean containsNode(String word) {
         TrieNode current = root;
+
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            TrieNode node = current.getChildren()
-              .get(ch);
+            TrieNode node = current.getChildren().get(ch);
             if (node == null) {
                 return false;
             }
@@ -37,8 +34,8 @@ public class Trie {
         return current.isEndOfWord();
     }
 
-    public void delete(String word) {
-        delete(root, word, 0);
+    public boolean isEmpty() {
+        return root == null;
     }
 
     private boolean delete(TrieNode current, String word, int index) {
@@ -47,30 +44,19 @@ public class Trie {
                 return false;
             }
             current.setEndOfWord(false);
-            return current.getChildren()
-              .size() == 0;
+            return current.getChildren().isEmpty();
         }
         char ch = word.charAt(index);
-        TrieNode node = current.getChildren()
-          .get(ch);
+        TrieNode node = current.getChildren().get(ch);
         if (node == null) {
             return false;
         }
         boolean shouldDeleteCurrentNode = delete(node, word, index + 1);
 
         if (shouldDeleteCurrentNode) {
-            current.getChildren()
-              .remove(ch);
+            current.getChildren().remove(ch);
             return current.getChildren().isEmpty();
         }
         return false;
-    }
-
-    public boolean containsNode(String word) {
-        return find(word);
-    }
-
-    public boolean isEmpty() {
-        return root == null;
     }
 }
