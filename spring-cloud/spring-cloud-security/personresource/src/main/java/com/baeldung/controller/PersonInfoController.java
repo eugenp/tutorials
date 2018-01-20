@@ -14,8 +14,6 @@ public class PersonInfoController {
     @GetMapping("/personResource")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public @ResponseBody String personInfo() {
-        Gson gson = new Gson();
-        String person = gson.toJson(new Person("abir", "Dhaka", "Bangladesh", 29, "Male"));
-        return person;
+        return new Person("abir", "Dhaka", "Bangladesh", 29, "Male");
     }
 }
