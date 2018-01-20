@@ -24,7 +24,7 @@ public class AppTest {
     QuestionnaireController qCtrller;
 
     @Test
-    public void testDI() {
+    public void TestDependencyInjection() {
 
         //assert correct type/impl
         assertThat(qCtrller.getQuestionService(), instanceOf(QuestionService.class));
