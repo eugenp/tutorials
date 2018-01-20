@@ -3,7 +3,7 @@ package com.baeldung.trie;
 public class Trie {
     private TrieNode root;
 
-    public Trie() {
+    Trie() {
         root = new TrieNode();
     }
 
@@ -12,11 +12,11 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
             TrieNode node = current.getChildren()
-                .get(ch);
+              .get(ch);
             if (node == null) {
                 node = new TrieNode();
                 current.getChildren()
-                    .put(ch, node);
+                  .put(ch, node);
             }
             current = node;
         }
@@ -28,7 +28,7 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
             TrieNode node = current.getChildren()
-                .get(ch);
+              .get(ch);
             if (node == null) {
                 return false;
             }
@@ -48,11 +48,11 @@ public class Trie {
             }
             current.setEndOfWord(false);
             return current.getChildren()
-                .size() == 0;
+              .size() == 0;
         }
         char ch = word.charAt(index);
         TrieNode node = current.getChildren()
-            .get(ch);
+          .get(ch);
         if (node == null) {
             return false;
         }
@@ -60,9 +60,8 @@ public class Trie {
 
         if (shouldDeleteCurrentNode) {
             current.getChildren()
-                .remove(ch);
-            return current.getChildren()
-                .size() == 0;
+              .remove(ch);
+            return current.getChildren().isEmpty();
         }
         return false;
     }
@@ -74,5 +73,4 @@ public class Trie {
     public boolean isEmpty() {
         return root == null;
     }
-
 }
