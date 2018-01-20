@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="injectedObject" class="com.baeldung.spring.tutorial.InjectedObject" />
+	
+	<bean id="constructorInjectionReceiver" class="com.baeldung.spring.tutorial.ConstructorInjectionReceiver">
+		<constructor-arg name="internalConstructorInjectedObject" ref="injectedObject" />	
+	</bean>
+	
+	<bean id="constructorInjectionReceiverTest" class="com.baeldung.spring.tutorial.ConstructorInjectionReceiverTest" >
+		<property name="constructorInjectionReceiver" ref="constructorInjectionReceiver" />
+	</bean>
+</beans>

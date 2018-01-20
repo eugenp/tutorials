@@ -276,6 +276,8 @@
         <module>lucene</module>
 		<module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+		
+		<module>bean-injection</module>
     </modules>
 
     <dependencies>
