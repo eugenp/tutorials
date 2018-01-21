@@ -1,13 +1,13 @@
-package com.baeldung.securityextrafields;
+package com.baeldung.loginextrafieldscustom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringExtraLoginFieldsApplication {
+public class ExtraLoginFieldsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringExtraLoginFieldsApplication.class, args);
+        SpringApplication.run(ExtraLoginFieldsApplication.class, args);
     }
 
 }

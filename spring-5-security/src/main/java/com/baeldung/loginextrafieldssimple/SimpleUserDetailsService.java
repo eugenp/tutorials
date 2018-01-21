@@ -1,4 +1,4 @@
-package com.baeldung.securityextrafields;
+package com.baeldung.loginextrafieldssimple;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -7,11 +7,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service("userDetailsService")
-public class CustomUserDetailsService implements UserDetailsService {
+public class SimpleUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
  
-    public CustomUserDetailsService(UserRepository userRepository) {
+    public SimpleUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

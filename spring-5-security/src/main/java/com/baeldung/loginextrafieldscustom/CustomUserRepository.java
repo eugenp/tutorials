@@ -1,4 +1,4 @@
-package com.baeldung.securityextrafields;
+package com.baeldung.loginextrafieldscustom;
 
 import java.util.ArrayList;
 import java.util.Collection;

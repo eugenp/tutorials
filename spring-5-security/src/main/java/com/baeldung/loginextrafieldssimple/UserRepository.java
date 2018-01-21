@@ -1,4 +1,4 @@
-package com.baeldung.securityextrafields;
+package com.baeldung.loginextrafieldssimple;
 
 public interface UserRepository {
 

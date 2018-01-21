@@ -1,4 +1,4 @@
-package com.baeldung.securityextrafields;
+package com.baeldung.loginextrafieldssimple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
@@ -36,8 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .logoutUrl("/logout");
     }
 
-    public CustomAuthenticationFilter authenticationFilter() throws Exception {
-        CustomAuthenticationFilter filter = new CustomAuthenticationFilter();
+    public SimpleAuthenticationFilter authenticationFilter() throws Exception {
+        SimpleAuthenticationFilter filter = new SimpleAuthenticationFilter();
         filter.setAuthenticationManager(authenticationManagerBean());
         filter.setAuthenticationFailureHandler(failureHandler());
         return filter;
