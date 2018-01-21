@@ -31,11 +31,6 @@ public class ExecutorTest {
 	}
 
 	@Test
-	public void givenAStreamOfAuthors_whenProcessedInParallel_countProducesWrongOutput() {
-		assertThat(Executor.countAutors(stream.parallel())).isGreaterThan(9);
-	}
-
-	@Test
 	public void givenAstreamOfAuthors_whenProcessedInParallelWithCustomSpliterator_coubtProducessRightOutput() {
 		Stream<Author> stream2 = StreamSupport.stream(spliterator, true);
 		assertThat(Executor.countAutors(stream2.parallel())).isEqualTo(9);
