@@ -76,7 +76,7 @@ public class JettyServerFactoryUnitTest {
 	 * @throws Exception
 	 */
 	private int sendGetRequest() throws Exception {
-		HttpHost target = new HttpHost("localhost", 80);
+		HttpHost target = new HttpHost("localhost", JettyServerFactory.SERVER_PORT);
 		HttpRequest request = new HttpGet(JettyServerFactory.APP_PATH);
 		HttpClient client = HttpClientBuilder.create().build();
 		HttpResponse response = client.execute(target, request);
