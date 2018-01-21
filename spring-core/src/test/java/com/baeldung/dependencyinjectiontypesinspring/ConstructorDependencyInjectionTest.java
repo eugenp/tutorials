@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class ConstructorDependencyInjectionTest {
 
 	@Test
-	public void cotr_givenMyDependencyIsValid_setsMyDependency() {
+	public void givenMyDependencyIsValid_whenConstructInjectionConstructorBased_setsMyDependency() {
 		final MyDependency myDependency = mock(MyDependency.class); 
 		when(myDependency.getValue()).thenReturn(10); 
 		

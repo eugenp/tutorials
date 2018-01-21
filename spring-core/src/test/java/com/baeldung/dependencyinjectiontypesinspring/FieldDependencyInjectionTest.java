@@ -14,7 +14,7 @@ public class FieldDependencyInjectionTest {
 	
 	
 	@Test
-	public void cotr_givenNoDependency_getsNullPointerException() {
+	public void givenNoDependencyWhenConstruct_whileGetDependencyValue_getsNullPointerException() {
 		MyDependency myDependency = mock(MyDependency.class); 
 		when(myDependency.getValue()).thenReturn(10); 
 		
