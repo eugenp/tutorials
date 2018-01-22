@@ -1,6 +1,7 @@
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,13 +25,13 @@ public class AppTest {
     QuestionnaireController qCtrller;
 
     @Test
-    public void TestDependencyInjection() {
+    public void givenContextInitialized_whenDependencyInjected_thenQCtrllerFunctionsCorrectly() {
 
         //assert correct type/impl
         assertThat(qCtrller.getQuestionService(), instanceOf(QuestionService.class));
 
         //assert true
-        assertThat(qCtrller.getQuestionService().getQuestion(), is(true));
+        assertEquals("How are you doing today?", qCtrller.getQuestionService().getQuestion());
 
     }
 }
