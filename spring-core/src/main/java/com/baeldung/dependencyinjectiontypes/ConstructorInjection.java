@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class ConstructorInjection {
 
-    private MyInjectedBean myInjectedBean;
+    private final MyInjectedBean myInjectedBean;
 
     @Autowired
     public ConstructorInjection(MyInjectedBean myInjectedBean) {
