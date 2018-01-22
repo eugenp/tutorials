@@ -113,7 +113,9 @@
         <module>lombok</module>
        <!-- <module>kotlin</module>-->
         <module>mapstruct</module>
+	<!--
         <module>metrics</module>
+        -->
         <module>mesos-marathon</module>
         <module>testing-modules/mockito</module>
         <module>testing-modules/mockito-2</module>
