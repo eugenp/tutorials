@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.reactive.websocket;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
