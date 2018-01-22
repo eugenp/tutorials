@@ -179,7 +179,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.10.RELEASE</org.springframework.version>
+        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
 
 	     <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
 
@@ -220,7 +220,7 @@
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>

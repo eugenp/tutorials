@@ -101,6 +101,23 @@
 		    <version>1.19</version>
 		</dependency>
 
+        <dependency>
+            <groupId>com.codepoetics</groupId>
+            <artifactId>protonpack</artifactId>
+            <version>${protonpack.version}</version>
+        </dependency>
+        
+       <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>one.util</groupId>
+            <artifactId>streamex</artifactId>
+            <version>${streamex.version}</version>
+        </dependency>        
     </dependencies>
 
     <build>
@@ -267,6 +284,9 @@
         <collections-generic.version>4.01</collections-generic.version>
         <commons-codec.version>1.10</commons-codec.version>
         <lombok.version>1.16.12</lombok.version>
+        <vavr.version>0.9.0</vavr.version>
+        <protonpack.version>1.13</protonpack.version>
+        <streamex.version>0.6.5</streamex.version>
 
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
