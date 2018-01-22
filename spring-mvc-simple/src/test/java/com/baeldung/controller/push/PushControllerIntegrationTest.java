@@ -1,10 +1,9 @@
-package com.baeldung.controller;
+package com.baeldung.controller.push;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.web.SpringJUnitWebConfig;
@@ -12,9 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.baeldung.config.PushConfiguration;
+import com.baeldung.spring.configuration.PushConfiguration;
 
-@Disabled
 @SpringJUnitWebConfig(PushConfiguration.class)
 public class PushControllerIntegrationTest {
     @Autowired

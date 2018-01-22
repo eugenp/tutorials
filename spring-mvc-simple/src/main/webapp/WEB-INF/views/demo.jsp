@@ -12,7 +12,6 @@
     <img src="<c:url value="/resources/logo.png"/>" alt="Logo"
         height="126" width="411">
     <br>
-    <br> Go to
-    <a href="/spring-mvc-push/">index</a>
+    <!-- Content -->
 </body>
 </html>
