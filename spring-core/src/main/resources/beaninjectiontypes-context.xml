@@ -19,13 +19,4 @@
 		<property name="anotherSampleDAO" ref="anotherSampleDAO"></property>
 	</bean>
 
-	<bean id="MyInjectedBean" class="com.baeldung.MyInjectedBean"/>
-	<!-- Constructor injection -->
-	<bean id="MyBean" class="com.baeldung.MyBean">
-		<constructor-arg index="0" ref="MyInjectedBean"/>
-	</bean>
-	<!-- Setter injection -->
-	<bean id="MyBean" class="com.baeldung.MyBean">
-		<property name="myInjectedBean" ref="MyInjectedBean"/>
-	</bean>
 </beans>
