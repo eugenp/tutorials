@@ -28,12 +28,6 @@ public class ReactiveWebSocketHandler implements WebSocketHandler {
 
     private ObjectMapper json = new ObjectMapper();
 
-    /**
-     * On each new client session, send the message flux to the client.
-     * Spring subscribes to the flux and send every new flux event to the WebSocketSession object
-     * @param session
-     * @return Mono<Void>
-     */
     @Override
     public Mono<Void> handle(WebSocketSession webSocketSession) {
 
