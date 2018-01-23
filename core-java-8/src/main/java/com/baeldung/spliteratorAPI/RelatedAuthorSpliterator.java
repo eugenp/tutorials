@@ -43,7 +43,7 @@ public class RelatedAuthorSpliterator implements Spliterator<Author> {
 
 	@Override
 	public int characteristics() {
-		return SIZED + CONCURRENT;
+		return CONCURRENT;
 	}
 
 }
