@@ -1,15 +1,9 @@
 package com.baeldung.spring.data.es;
 
-import static java.util.Arrays.asList;
-import static org.elasticsearch.index.query.MatchQueryBuilder.Operator.AND;
-import static org.elasticsearch.index.query.QueryBuilders.fuzzyQuery;
-import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
-import static org.elasticsearch.index.query.QueryBuilders.regexpQuery;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.List;
-
+import com.baeldung.spring.data.es.config.Config;
+import com.baeldung.spring.data.es.model.Article;
+import com.baeldung.spring.data.es.model.Author;
+import com.baeldung.spring.data.es.service.ArticleService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,10 +16,15 @@ import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.baeldung.spring.data.es.config.Config;
-import com.baeldung.spring.data.es.model.Article;
-import com.baeldung.spring.data.es.model.Author;
-import com.baeldung.spring.data.es.service.ArticleService;
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static org.elasticsearch.index.query.MatchQueryBuilder.Operator.AND;
+import static org.elasticsearch.index.query.QueryBuilders.fuzzyQuery;
+import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
+import static org.elasticsearch.index.query.QueryBuilders.regexpQuery;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
@@ -72,21 +71,24 @@ public class ElasticSearchIntegrationTest {
     @Test
     public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
 
-        final Page<Article> articleByAuthorName = articleService.findByAuthorName(johnSmith.getName(), new PageRequest(0, 10));
+        final Page<Article> articleByAuthorName = articleService
+          .findByAuthorName(johnSmith.getName(), new PageRequest(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenCustomQuery_whenSearchByAuthorsName_thenArticleIsFound() {
 
-        final Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("John Smith", new PageRequest(0, 10));
+        final Page<Article> articleByAuthorName = articleService
+          .findByAuthorNameUsingCustomQuery("John Smith", new PageRequest(0, 10));
         assertEquals(3L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenPersistedArticles_whenUseRegexQuery_thenRightArticlesFound() {
 
-        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withFilter(regexpQuery("title", ".*data.*")).build();
+        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withFilter(regexpQuery("title", ".*data.*"))
+          .build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
 
         assertEquals(1, articles.size());
@@ -112,7 +114,8 @@ public class ElasticSearchIntegrationTest {
 
         final String articleTitle = "Spring Data Elasticsearch";
 
-        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
+        final SearchQuery searchQuery = new NativeSearchQueryBuilder()
+          .withQuery(matchQuery("title", articleTitle).minimumShouldMatch("75%")).build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
         final long count = articleService.count();
@@ -124,7 +127,8 @@ public class ElasticSearchIntegrationTest {
 
     @Test
     public void givenSavedDoc_whenOneTermMatches_thenFindByTitle() {
-        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(matchQuery("title", "Search engines").operator(AND)).build();
+        final SearchQuery searchQuery = new NativeSearchQueryBuilder()
+          .withQuery(matchQuery("title", "Search engines").operator(AND)).build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(1, articles.size());
     }
