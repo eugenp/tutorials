@@ -46,14 +46,22 @@ public class ElasticSearchIntegrationTest {
 
         Article article = new Article("Spring Data Elasticsearch");
         article.setAuthors(asList(johnSmith, johnDoe));
+        article.setTags("elasticsearch", "spring data");
         articleService.save(article);
 
         article = new Article("Search engines");
         article.setAuthors(asList(johnDoe));
+        article.setTags("search engines", "tutorial");
         articleService.save(article);
 
         article = new Article("Second Article About Elasticsearch");
         article.setAuthors(asList(johnSmith));
+        article.setTags("elasticsearch", "spring data");
+        articleService.save(article);
+
+        article = new Article("Elasticsearch Tutorial");
+        article.setAuthors(asList(johnDoe));
+        article.setTags("elasticsearch");
         articleService.save(article);
     }
 
@@ -78,10 +86,20 @@ public class ElasticSearchIntegrationTest {
 
     @Test
     public void givenCustomQuery_whenSearchByAuthorsName_thenArticleIsFound() {
+        final Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("Smith", new PageRequest(0, 10));
+        assertEquals(2L, articleByAuthorName.getTotalElements());
+    }
 
-        final Page<Article> articleByAuthorName = articleService
-          .findByAuthorNameUsingCustomQuery("John Smith", new PageRequest(0, 10));
+    @Test
+    public void givenTagFilterQuery_whenSearchByTag_thenArticleIsFound() {
+        final Page<Article> articleByAuthorName = articleService.findByFilteredTagQuery("elasticsearch", new PageRequest(0, 10));
         assertEquals(3L, articleByAuthorName.getTotalElements());
+    }
+
+    @Test
+    public void givenTagFilterQuery_whenSearchByAuthorsName_thenArticleIsFound() {
+        final Page<Article> articleByAuthorName = articleService.findByAuthorsNameAndFilteredTagQuery("Doe", "elasticsearch", new PageRequest(0, 10));
+        assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
