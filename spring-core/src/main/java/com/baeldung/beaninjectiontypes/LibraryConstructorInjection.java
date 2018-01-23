@@ -4,7 +4,7 @@ public class LibraryConstructorInjection {
 
     private String book;
 
-    public Library(String book) {
+    public LibraryConstructorInjection(String book) {
         this.book = book;
     }
     
