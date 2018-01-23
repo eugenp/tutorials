@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.spring.tutorial.config.SetterSpringInjectionConfig;
+
 /**
  * Test class for the SetterInjectionReceiver.
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration({ "classpath:/setter-spring-test-configuration.xml" })
+@ContextConfiguration(classes = { SetterSpringInjectionConfig.class })
 public class SetterInjectionReceiverTest {
 
     /**

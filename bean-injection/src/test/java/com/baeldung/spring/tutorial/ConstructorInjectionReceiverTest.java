@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.spring.tutorial.config.ConstructorSpringInjectionConfig;
+
 /**
  * Test class for the ConstructorInjectionReceiver.
  */
 @RunWith(SpringRunner.class)
-@ContextConfiguration({ "classpath:/constructor-spring-test-configuration.xml" })
+@ContextConfiguration(classes = { ConstructorSpringInjectionConfig.class })
 public class ConstructorInjectionReceiverTest {
 
     /**
