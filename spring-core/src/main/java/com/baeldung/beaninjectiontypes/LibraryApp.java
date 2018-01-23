@@ -7,7 +7,7 @@ public class LibraryApp {
     public static void main(String args[]) {
         @SuppressWarnings("resource")
         ApplicationContext context = new ClassPathXmlApplicationContext("Spring.xml");
-        LibrarySetterInjection library = (LibrarySetterInjection) context.getBean("library");
+        LibrarySetterInjection library = (LibrarySetterInjection) context.getBean("library"); //using setter injection here
         System.out.println(library.getBook());
     }
 }
