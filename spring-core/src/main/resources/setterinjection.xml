@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-	<bean id="library" class="com.baeldung.Library">
+	<bean id="library" class="com.baeldung.beaninjectiontypes.LibrarySetterInjection">
 		<property name = "book" value = "Data Structures and Algorithms" />
 	</bean>
 </beans>
