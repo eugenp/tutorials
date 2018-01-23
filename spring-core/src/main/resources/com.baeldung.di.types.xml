@@ -1,0 +1,15 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="author" class="com.baeldung.di.types.xml.Author">
+        <property name="name" value="Java Champion"/>
+    </bean>
+
+    <bean id="book" class="com.baeldung.di.types.xml.Book">
+        <constructor-arg ref="author"/>
+        <property name="isbn" value="111222333"/>
+    </bean>
+
+</beans>
