@@ -12,10 +12,10 @@ public class CDLDemo {
         System.out.println("\n7.2. Producing Comma Delimited Text from JSONArray: ");
         cDTfromJSONArray();
         
-        System.out.println("\n7.3. Producing JSONArray of JSONObjects Using Comma Delimited Text: ");
+        System.out.println("\n7.3.1. Producing JSONArray of JSONObjects Using Comma Delimited Text: ");
         jaOfJOFromCDT2();
         
-        System.out.println("\n7.4. Producing JSONArray of JSONObjects Using Comma Delimited Text: ");
+        System.out.println("\n7.3.2. Producing JSONArray of JSONObjects Using Comma Delimited Text: ");
         jaOfJOFromCDT2();
     }
     

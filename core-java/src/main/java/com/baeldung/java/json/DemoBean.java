@@ -1,6 +1,6 @@
 package com.baeldung.java.json;
 
-public class JavaBean {
+public class DemoBean {
     private int id;
     private String name;
     private boolean active;

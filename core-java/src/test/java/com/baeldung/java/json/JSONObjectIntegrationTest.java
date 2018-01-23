@@ -41,8 +41,8 @@ public class JSONObjectIntegrationTest {
     }
 
     @Test
-    public void givenJavaBean_thenCreateJSONObject() {
-        JavaBean demo = new JavaBean();
+    public void givenDemoBean_thenCreateJSONObject() {
+        DemoBean demo = new DemoBean();
         demo.setId(1);
         demo.setName("lorem ipsum");
         demo.setActive(true);
