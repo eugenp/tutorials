@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="wheel" class="com.baeldung.bean.inject.xml.Wheel">
+		<property name="type" value="Tube-less" />
+		<property name="manufacturer" value="Michelin" />
+	</bean>
+	<bean id="car" class="com.baeldung.bean.inject.xml.Car">
+		<constructor-arg ref="wheel" />
+	</bean>
+</beans>
