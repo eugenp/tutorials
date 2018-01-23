@@ -7,4 +7,8 @@ public class LibraryConstructorInjection {
     public Library(String book) {
         this.book = book;
     }
+    
+    public String getBook() {
+        return book;
+    }
 }
