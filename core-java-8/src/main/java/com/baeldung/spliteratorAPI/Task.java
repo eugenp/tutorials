@@ -1,8 +1,9 @@
 package com.baeldung.spliteratorAPI;
 
 import java.util.Spliterator;
+import java.util.concurrent.Callable;
 
-public class Task implements Runnable {
+public class Task implements Callable<String> {
     private Spliterator<Article> spliterator;
     private final static String SUFFIX = "- published by Baeldung";
 
@@ -11,7 +12,7 @@ public class Task implements Runnable {
     }
 
     @Override
-    public void run() {
+    public String call() {
         int current = 0;
         while (spliterator.tryAdvance(article -> {
             article.setName(article.getName()
@@ -20,7 +21,7 @@ public class Task implements Runnable {
             current++;
         }
         ;
-        System.out.println(Thread.currentThread()
-            .getName() + ":" + current);
+        return Thread.currentThread()
+            .getName() + ":" + current;
     }
 }
