@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<smooks-resource-list xmlns="http://www.milyn.org/xsd/smooks-1.1.xsd"
+                      xmlns:rules="http://www.milyn.org/xsd/smooks/rules-1.0.xsd"
+                      xmlns:validation="http://www.milyn.org/xsd/smooks/validation-1.0.xsd">
+
+    <import file="/smooks/smooks-mapping.xml" />
+
+    <rules:ruleBases>
+        <rules:ruleBase name="supplierValidation" src="/smooks/supplier.properties" provider="org.milyn.rules.regex.RegexProvider"/>
+        <rules:ruleBase name="itemsValidation" src="/smooks/item-rules.csv" provider="org.milyn.rules.mvel.MVELProvider"/>
+    </rules:ruleBases>
+
+    <validation:rule executeOn="supplier/name" name="supplierValidation.supplierName" onFail="ERROR"/>
+    <validation:rule executeOn="supplier/phone" name="supplierValidation.supplierPhone" onFail="ERROR"/>
+    <validation:rule executeOn="order-items/item" name="itemsValidation.max_total" onFail="ERROR"/>
+
+</smooks-resource-list>
