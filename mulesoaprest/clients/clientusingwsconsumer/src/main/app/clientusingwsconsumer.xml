@@ -38,8 +38,6 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
         <response>
             <set-payload value="#[xpath3(&quot;/ns2:showPersonDetailResponse/return&quot;, payload)]" doc:name="Set Payload"/>
         </response>
-
-		<!-- <set-payload value="#[new Object[]{'Abir' , 10}]" doc:name="Set Payload"/> -->
 		<set-payload
 			value="#[st=new com.baeldung.ShowPersonDetail();st.arg0= 'Baeldung'; st.arg1=10; st]"
 			doc:name="Set Payload" />
@@ -63,15 +61,6 @@ http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee
 		<logger message="payload: #[payload]"
 			level="INFO" doc:name="Logger" />
         <ws:consumer config-ref="Web_Service_Consumer" operation="showPersonDetail" doc:name="Web Service Consumer"/>
-
-
-		<!-- <cxf:jaxws-client doc:name="ServiceClient" -->
-		<!-- soapVersion="1.2" clientClass="com.baeldung.CodeFirstServiceService" -->
-		<!-- wsdlLocation="http://localhost:61081/hello?wsdl" operation="showPersonDetail" -->
-		<!-- port="CodeFirstServicePort" /> -->
-
-		<!-- <http:request config-ref="HTTP_Request_Configuration" -->
-		<!-- path="/" method="POST" doc:name="HTTP" /> -->
 
 	</flow>
 

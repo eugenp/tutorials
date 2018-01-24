@@ -17,10 +17,6 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
 		host="localhost" port="61081" basePath="hello" doc:name="HTTP Request Configuration" />
 	<http:listener-config name="HTTP_Listener_Configuration"
 		host="localhost" port="8081" basePath="client" doc:name="HTTP Listener Configuration" />
-	<ws:consumer-config name="Web_Service_Consumer"
-		wsdlLocation="http://localhost:61081/hello?wsdl" service="CodeFirstServiceService"
-		port="CodeFirstServicePort" serviceAddress="http://localhost:61081/hello"
-		doc:name="Web Service Consumer" />
 	<mulexml:namespace-manager
 		includeConfigNamespaces="true">
 		<mulexml:namespace prefix="ns2"
@@ -38,17 +34,9 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
             <logger message="Response payload: #[payload]" level="INFO" doc:name="Logger"/>
         </response>
         <set-payload value="#[new Object[]{90 , 10}]" doc:name="Set Payload"/>
-<!--         <response> -->
-<!--             <set-payload value="#[xpath3(&quot;/ns2:showPersonDetailResponse/return&quot;, payload)]" doc:name="Set Payload"/> -->
-<!--         </response> -->
-<!-- 		<set-payload -->
-<!-- 			value="#[st=new com.baeldung.ShowPersonDetail();st.arg0= 'Abir'; st.arg1=10; st]" -->
-<!-- 			doc:name="Set Payload" /> -->
-<!-- 		<mulexml:jaxb-object-to-xml-transformer -->
-<!-- 			jaxbContext-ref="JAXB_Context" doc:name="JAXB Object to XML" /> -->
+
 		<logger message="payload: #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger" />
-<!-- 		<ws:consumer config-ref="Web_Service_Consumer" operation="showPersonDetail" -->
-<!-- 			doc:name="Web Service Consumer" /> -->
+
 
 		<cxf:jaxws-client doc:name="ServiceClient" 
 		soapVersion="1.2" clientClass="com.baeldung.SimpleService" 
@@ -57,7 +45,5 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
 
 		<http:request config-ref="HTTP_Request_Configuration"
 		path="/" method="POST" doc:name="HTTP" />
-
 	</flow>
-
 </mule>
