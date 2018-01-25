@@ -6,15 +6,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class Student {
 
-	// the Student has a dependency on a teacherFinder
 	private TeacherFinder teacherFinder;
 
-	// a constructor so that the Spring container can inject a teacherFinder
 	@Autowired
 	public Student(TeacherFinder teacherFinder) {
 		this.teacherFinder = teacherFinder;
 	}
 
+	public String getTeacher() {
+        return teacherFinder.getTeacherFinder();
+    }
 	// business logic that actually uses the injected teacherFinders is omitted...
 }
 

@@ -3,7 +3,14 @@ public class TeacherFinder {
 
     private String teacherFinder;
 
+	public String getTeacherFinder() {
+		return teacherFinder;
+	}
+
+	public void setTeacherFinder(String teacherFinder) {
+		this.teacherFinder = teacherFinder;
+	}
+
    
-    // business logic that actually uses the injected MovieFinder is omitted...
 }
 

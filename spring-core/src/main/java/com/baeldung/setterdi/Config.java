@@ -36,6 +36,13 @@ public class Config {
         return trailer;
     }
     
+    @Bean 
+    public TeacherFinder teacherFinder(){
+    	TeacherFinder teacherFinder =new TeacherFinder();
+    	teacherFinder.setTeacherFinder("author");
+    	return teacherFinder;
+    }
+    
     @Bean
     public Student student() {
         return new Student(teacherFinder());
@@ -48,8 +55,4 @@ public class Config {
         return student2;
     }
  
-    @Bean 
-    public TeacherFinder teacherFinder(){
-       return new TeacherFinder( );
-    }
 }
