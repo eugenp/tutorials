@@ -9,13 +9,9 @@
 	<bean id="homeService" class="com.baeldung.dependencyinjections.HomepageService">
 	</bean>
 	
-	<bean id="aboutusService" class="com.baeldung.dependencyinjections.AboutuspageService">
-	</bean>
-	
 	<bean id="websiteControllerConstructorInjection"
 		class="com.baeldung.dependencyinjections.WebsiteControllerConstructorInjection">
 		<constructor-arg ref="homeService" />
-		<constructor-arg ref="aboutusService" />
 	</bean>	
 	
 	<bean id="websiteControllerSetterInjection"
