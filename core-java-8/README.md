@@ -37,3 +37,6 @@
 - [Iterable to Stream in Java](http://www.baeldung.com/java-iterable-to-stream)
 - [Converting String to Stream of chars](http://www.baeldung.com/java-string-to-stream)
 - [How to Iterate Over a Stream With Indices](http://www.baeldung.com/java-stream-indices)
+- [Efficient Word Frequency Calculator in Java](http://www.baeldung.com/java-word-frequency)
+- [Primitive Type Streams in Java 8](http://www.baeldung.com/java-8-primitive-streams)
+- [Fail-Safe Iterator vs Fail-Fast Iterator](http://www.baeldung.com/java-fail-safe-vs-fail-fast-iterator)
