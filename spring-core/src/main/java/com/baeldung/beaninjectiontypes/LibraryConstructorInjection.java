@@ -1,14 +1,17 @@
 package com.baeldung.beaninjectiontypes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class LibraryConstructorInjection {
 
-    private String book;
+    private Book book;
 
-    public LibraryConstructorInjection(String book) {
+    @Autowired
+    public LibraryConstructorInjection(Book book) {
         this.book = book;
     }
-    
-    public String getBook() {
+
+    public Book getBook() {
         return book;
     }
 }
