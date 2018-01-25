@@ -8,7 +8,7 @@
 	<context:annotation-config />
 
 	<bean id="library" class="com.baeldung.beaninjectiontypes.LibrarySetterInjection" />
-	<bean id="book" class="org.baeldung.Book">
+	<bean id="book" class="com.baeldung.beaninjectiontypes.Book">
 		<property name="name" value="Data Structures and Algorithms" />
 	</bean>
 </beans>
