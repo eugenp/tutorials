@@ -1,14 +1,16 @@
 package com.baeldung.beaninjectiontypes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class LibrarySetterInjection {
+    private Book book;
 
-    private String book;
-
-    public void setBook(String book) {
+    @Autowired
+    public void setBook(Book book) {
         this.book = book;
     }
 
-    public String getBook() {
+    public Book getBook() {
         return book;
     }
 }
