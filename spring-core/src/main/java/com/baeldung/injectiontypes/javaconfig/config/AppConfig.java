@@ -1,30 +1,18 @@
 package com.baeldung.injectiontypes.javaconfig.config;
 
-import com.baeldung.injectiontypes.javaconfig.domain.constructor.Earth;
-import com.baeldung.injectiontypes.javaconfig.domain.constructor.Moon;
-import com.baeldung.injectiontypes.javaconfig.domain.setter.Jupiter;
-import com.baeldung.injectiontypes.javaconfig.domain.setter.Uranus;
+import com.baeldung.injectiontypes.domain.Jupiter;
+import com.baeldung.injectiontypes.domain.Moon;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan({"com.baeldung.injectiontypes.javaconfig.domain"})
+@ComponentScan({"com.baeldung.injectiontypes"})
 public class AppConfig {
 
     @Bean
     public Moon moon() {
         return new Moon(3474);
-    }
-
-    @Bean
-    public Earth earth() {
-        return new Earth(6371);
-    }
-
-    @Bean
-    public Uranus uranus() {
-        return new Uranus(50724);
     }
 
     @Bean

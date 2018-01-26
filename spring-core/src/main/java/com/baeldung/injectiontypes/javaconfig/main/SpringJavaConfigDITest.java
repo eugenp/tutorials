@@ -1,8 +1,8 @@
 package com.baeldung.injectiontypes.javaconfig.main;
 
 import com.baeldung.injectiontypes.javaconfig.config.AppConfig;
-import com.baeldung.injectiontypes.javaconfig.domain.constructor.SolarSystemConstructorDi;
-import com.baeldung.injectiontypes.javaconfig.domain.setter.SolarSystemSetterDi;
+import com.baeldung.injectiontypes.javaconfig.constructor.SolarSystemConstructorDi;
+import com.baeldung.injectiontypes.javaconfig.setter.SolarSystemSetterDi;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -24,5 +24,4 @@ public class SpringJavaConfigDITest {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         return context.getBean(SolarSystemSetterDi.class);
     }
-
 }

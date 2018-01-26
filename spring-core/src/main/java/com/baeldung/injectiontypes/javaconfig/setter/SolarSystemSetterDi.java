@@ -1,5 +1,6 @@
-package com.baeldung.injectiontypes.javaconfig.domain.setter;
+package com.baeldung.injectiontypes.javaconfig.setter;
 
+import com.baeldung.injectiontypes.domain.Jupiter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -7,17 +8,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class SolarSystemSetterDi {
 
-    private Uranus uranus;
     private Jupiter jupiter;
 
     public void printDiameters() {
-        System.out.println("Diameter of the uranus is :" + uranus.getDiameter() + " km");
         System.out.println("Diameter of the jupiter is :" + jupiter.getDiameter() + " km");
-    }
-
-    @Autowired
-    public void setUranus(Uranus uranus) {
-        this.uranus = uranus;
     }
 
     @Autowired

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="jupiter" class="com.baeldung.injectiontypes.domain.Jupiter">
+        <constructor-arg value="139822"/>
+    </bean>
+
+    <bean id="moon" class="com.baeldung.injectiontypes.domain.Moon">
+        <constructor-arg value="3474"/>
+    </bean>
+
+    <bean id="solarSystemConstructorDi"
+          class="com.baeldung.injectiontypes.xmlconfig.constructor.SolarSystemConstructorDi">
+        <constructor-arg index="0" ref="moon"/>
+    </bean>
+
+    <bean id="solarSystemSetterDi" class="com.baeldung.injectiontypes.xmlconfig.setter.SolarSystemSetterDi">
+        <property name="jupiter" ref="jupiter">
+
+        </property>
+    </bean>
+</beans>

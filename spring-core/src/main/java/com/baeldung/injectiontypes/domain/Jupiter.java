@@ -1,4 +1,4 @@
-package com.baeldung.injectiontypes.javaconfig.domain.setter;
+package com.baeldung.injectiontypes.domain;
 
 
 public class Jupiter {
@@ -10,9 +10,5 @@ public class Jupiter {
 
     public Integer getDiameter() {
         return diameter;
-    }
-
-    public void setDiameter(Integer diameter) {
-        this.diameter = diameter;
     }
 }

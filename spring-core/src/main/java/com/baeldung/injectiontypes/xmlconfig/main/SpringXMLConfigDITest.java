@@ -1,7 +1,7 @@
 package com.baeldung.injectiontypes.xmlconfig.main;
 
-import com.baeldung.injectiontypes.xmlconfig.domain.constructor.SolarSystemConstructorDi;
-import com.baeldung.injectiontypes.xmlconfig.domain.setter.SolarSystemSetterDi;
+import com.baeldung.injectiontypes.xmlconfig.constructor.SolarSystemConstructorDi;
+import com.baeldung.injectiontypes.xmlconfig.setter.SolarSystemSetterDi;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,12 +16,12 @@ public class SpringXMLConfigDITest {
     }
 
     private static SolarSystemConstructorDi getSolarSystemConstructorDiFromXMLConfig() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("AppConfigConstructor.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("AppConfig.xml");
         return context.getBean(SolarSystemConstructorDi.class);
     }
 
     private static SolarSystemSetterDi getSolarSystemSetterDiFromXMLConfig() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("AppConfigSetter.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("AppConfig.xml");
         return context.getBean(SolarSystemSetterDi.class);
     }
 }

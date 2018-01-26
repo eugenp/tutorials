@@ -1,4 +1,4 @@
-package com.baeldung.injectiontypes.javaconfig.domain.constructor;
+package com.baeldung.injectiontypes.domain;
 
 
 public class Moon {
@@ -10,9 +10,5 @@ public class Moon {
 
     public Integer getDiameter() {
         return diameter;
-    }
-
-    public void setDiameter(Integer diameter) {
-        this.diameter = diameter;
     }
 }
