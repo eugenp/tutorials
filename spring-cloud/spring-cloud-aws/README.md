@@ -19,3 +19,8 @@ to write the following in `application.properties`:
 cloud.aws.rds.spring-cloud-test-db
 cloud.aws.rds.spring-cloud-test-db.password=se3retpass
 ```
+Multiple application classes are available under this project. To launch InstanceProfileAwsApplication application, replace `start-class` under `pom.xml`:
+
+```
+<start-class>com.baeldung.spring.cloud.aws.InstanceProfileAwsApplication</start-class>
+```
