@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns="http://www.springframework.org/schema/beans"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+ <bean id="simpleDependency"
+  class="com.baeldung.beaninjectiontypes.xmlconfigexample.SimpleDependency" />
+
+ <bean id="simpleBeanConstructorInjection"
+  class="com.baeldung.beaninjectiontypes.xmlconfigexample.SimpleBeanConstructorInjection">
+  <constructor-arg ref="simpleDependency" />
+ </bean>
+
+ <bean id="simpleBeanSetterInjection"
+  class="com.baeldung.beaninjectiontypes.xmlconfigexample.SimpleBeanSetterInjection">
+  <property name="simpleDependency" ref="simpleDependency" />
+ </bean>
+
+</beans>
