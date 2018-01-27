@@ -1,4 +1,4 @@
-package com.baeldung.rss;
+package com.baeldung.spring.controller.rss;
 
 import com.rometools.rome.feed.rss.Channel;
 import com.rometools.rome.feed.rss.Description;
@@ -18,7 +18,7 @@ public class ArticleFeedView extends AbstractRssFeedView {
 
     protected Channel newFeed() {
         Channel channel = new Channel("rss_2.0");
-        channel.setLink("http://localhost:8080/rss");
+        channel.setLink("http://localhost:8080/spring-mvc-simple/rss");
         channel.setTitle("Article Feed");
         channel.setDescription("Article Feed Description");
         channel.setPubDate(new Date());
