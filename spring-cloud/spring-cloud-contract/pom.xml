@@ -11,6 +11,7 @@
     </parent>
     <modules>
         <module>spring-cloud-contract-producer</module>
+        <module>spring-cloud-contract-consumer</module>
     </modules>
     <packaging>pom</packaging>
 
