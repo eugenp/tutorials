@@ -191,4 +191,16 @@ public class ElasticSearchQueryIntegrationTest {
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
         assertEquals(2, articles.size());
     }
+
+    @Test
+    public void givenBoolQuery_whenQueryByAuthorsName_thenFoundArticlesByThatAuthorAndFilteredTag() {
+        final QueryBuilder builder = boolQuery().must(nestedQuery("authors", boolQuery().must(termQuery("authors.name", "doe"))))
+            .filter(termQuery("tags", "elasticsearch"));
+
+        final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder)
+            .build();
+        final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
+
+        assertEquals(2, articles.size());
+    }
 }
