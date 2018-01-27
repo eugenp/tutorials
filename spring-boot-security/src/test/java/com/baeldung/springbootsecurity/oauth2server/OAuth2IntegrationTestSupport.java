@@ -25,7 +25,7 @@ public class OAuth2IntegrationTestSupport {
         return resourceDetails;
     }
 
-    protected OAuth2RestTemplate getOAuth2RestTemplate(ClientCredentialsResourceDetails resourceDetails) {
+    protected OAuth2RestTemplate getOAuth2RestTemplate(final ClientCredentialsResourceDetails resourceDetails) {
         DefaultOAuth2ClientContext clientContext = new DefaultOAuth2ClientContext();
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails, clientContext);
         restTemplate.setMessageConverters(singletonList(new MappingJackson2HttpMessageConverter()));
