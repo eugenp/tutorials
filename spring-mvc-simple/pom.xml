@@ -30,6 +30,7 @@
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
         <junit.platform.version>1.0.2</junit.platform.version>
+        <rome.version>1.9.0</rome.version>
     </properties>
 
     <dependencies>
@@ -114,6 +115,11 @@
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+            <version>${rome.version}</version>
         </dependency>
     </dependencies>
     <build>
