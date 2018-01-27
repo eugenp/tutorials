@@ -8,153 +8,95 @@ public class BinaryTree {
     Node root;
 
     public void add(int value) {
+        root = addRecursive(root, value);
+    }
 
-        Node newNode = new Node(value);
+    private Node addRecursive(Node current, int value) {
 
-        if (root == null) {
-            root = newNode;
-            return;
+        if (current == null) {
+            return new Node(value);
         }
 
-        Node parent = root;
-        Node current = root;
-
-        while (true) {
-
-            if (newNode.value < parent.value) {
-                current = parent.left;
-
-                if (current == null) {
-                    parent.left = newNode;
-                    break;
-                }
-            } else {
-                current = parent.right;
-
-                if (current == null) {
-                    parent.right = newNode;
-                    break;
-                }
-            }
-
-            parent = current;
+        if (value < current.value) {
+            current.left = addRecursive(current.left, value);
+        } else if (value > current.value) {
+            current.right = addRecursive(current.right, value);
         }
+
+        return current;
     }
 
     public boolean isEmpty() {
         return root == null;
     }
 
+    public int getSize() {
+        return getSizeRecursive(root);
+    }
+
+    private int getSizeRecursive(Node current) {
+        return current == null ? 0 : getSizeRecursive(current.left) + 1 + getSizeRecursive(current.right);
+    }
+
     public boolean containsNode(int value) {
+        return containsNodeRecursive(root, value);
+    }
 
-        Node current = root;
-
-        while (current != null) {
-
-            if (value == current.value) {
-                return true;
-            }
-
-            if (value < current.value) {
-                current = current.left;
-            } else {
-                current = current.right;
-            }
-
+    private boolean containsNodeRecursive(Node current, int value) {
+        if (current == null) {
+            return false;
         }
 
-        return false;
+        if (value == current.value) {
+            return true;
+        }
+
+        return value < current.value
+          ? containsNodeRecursive(current.left, value)
+          : containsNodeRecursive(current.right, value);
     }
 
     public void delete(int value) {
-
-        Node current = root;
-        Node parent = root;
-        Node nodeToDelete = null;
-        boolean isLeftChild = false;
-
-        while (nodeToDelete == null && current != null) {
-
-            if (value == current.value) {
-                nodeToDelete = current;
-            } else if (value < current.value) {
-                parent = current;
-                current = current.left;
-                isLeftChild = true;
-            } else {
-                parent = current;
-                current = current.right;
-                isLeftChild = false;
-            }
-
-        }
-
-        if (nodeToDelete == null) {
-            return;
-        }
-
-        // Case 1: no children
-        if (nodeToDelete.left == null && nodeToDelete.right == null) {
-            if (nodeToDelete == root) {
-                root = null;
-            } else if (isLeftChild) {
-                parent.left = null;
-            } else {
-                parent.right = null;
-            }
-        }
-        // Case 2: only 1 child
-        else if (nodeToDelete.right == null) {
-            if (nodeToDelete == root) {
-                root = nodeToDelete.left;
-            } else if (isLeftChild) {
-                parent.left = nodeToDelete.left;
-            } else {
-                parent.right = nodeToDelete.left;
-            }
-        } else if (nodeToDelete.left == null) {
-            if (nodeToDelete == root) {
-                root = nodeToDelete.right;
-            } else if (isLeftChild) {
-                parent.left = nodeToDelete.right;
-            } else {
-                parent.right = nodeToDelete.right;
-            }
-        }
-        // Case 3: 2 children
-        else if (nodeToDelete.left != null && nodeToDelete.right != null) {
-            Node replacement = findReplacement(nodeToDelete);
-            if (nodeToDelete == root) {
-                root = replacement;
-            } else if (isLeftChild) {
-                parent.left = replacement;
-            } else {
-                parent.right = replacement;
-            }
-        }
-
+        deleteRecursive(root, value);
     }
 
-    private Node findReplacement(Node nodeToDelete) {
-
-        Node replacement = nodeToDelete;
-        Node parentReplacement = nodeToDelete;
-        Node current = nodeToDelete.right;
-
-        while (current != null) {
-            parentReplacement = replacement;
-            replacement = current;
-            current = current.left;
+    private Node deleteRecursive(Node current, int value) {
+        if (current == null) {
+            return null;
         }
 
-        if (replacement != nodeToDelete.right) {
-            parentReplacement.left = replacement.right;
-            replacement.right = nodeToDelete.right;
+        if (value == current.value) {
+            // Case 1: no children
+            if (current.left == null && current.right == null) {
+                return null;
+            }
+
+            // Case 2: only 1 child
+            if (current.right == null) {
+                return current.left;
+            }
+
+            if (current.left == null) {
+                return current.right;
+            }
+
+            // Case 3: 2 children
+            int smallestValue = findSmallestValue(current.right);
+            current.value = smallestValue;
+            current.right = deleteRecursive(current.right, smallestValue);
+            return current;
+        }
+        if (value < current.value) {
+            current.left = deleteRecursive(current.left, value);
+            return current;
         }
 
-        replacement.left = nodeToDelete.left;
+        current.right = deleteRecursive(current.right, value);
+        return current;
+    }
 
-        return replacement;
+    private int findSmallestValue(Node root) {
+        return root.left == null ? root.value : findSmallestValue(root.left);
     }
 
     public void traverseInOrder(Node node) {
@@ -177,12 +119,15 @@ public class BinaryTree {
         if (node != null) {
             traversePostOrder(node.left);
             traversePostOrder(node.right);
-
             System.out.print(" " + node.value);
         }
     }
 
     public void traverseLevelOrder() {
+        if (root == null) {
+            return;
+        }
+
         Queue<Node> nodes = new LinkedList<>();
         nodes.add(root);
 

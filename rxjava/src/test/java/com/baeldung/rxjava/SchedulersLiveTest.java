@@ -194,6 +194,7 @@ public class SchedulersLiveTest {
     }
 
     @Test
+    @Ignore
     public void givenObservable_whenComputationScheduling_thenReturnThreadName() throws InterruptedException {
         System.out.println("computation");
         Observable.just("computation")
