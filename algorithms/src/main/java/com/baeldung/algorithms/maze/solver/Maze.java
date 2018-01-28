@@ -2,6 +2,7 @@ package com.baeldung.algorithms.maze.solver;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -91,7 +92,6 @@ public class Maze {
     }
     
     public void setVisited(int row, int col, boolean value) {
-        isValidLocation(row, col);
         visited[row][col] = value;
     }
     
@@ -103,7 +103,7 @@ public class Maze {
     }
     
     public void printPath(List<Coordinate> path) {
-        int[][] tempMaze = maze;
+        int[][] tempMaze = Arrays.stream(maze).map(int[]::clone).toArray(int[][]::new);
         for(Coordinate coordinate: path) {
             if(isStart(coordinate.getX(), coordinate.getY()) || isExit(coordinate.getX(), coordinate.getY())) {
                 continue;
@@ -132,5 +132,10 @@ public class Maze {
             result.append('\n');
         }
         return result.toString();
+    }
+    
+    public void reset() {
+        for( int i = 0; i < visited.length; i++ )
+            Arrays.fill( visited[i], false );
     }
 }
