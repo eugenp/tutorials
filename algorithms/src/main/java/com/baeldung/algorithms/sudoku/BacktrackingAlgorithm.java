@@ -6,7 +6,7 @@ public class BacktrackingAlgorithm {
     
     private static int BOARD_SIZE = 9;
     private static int SUBSECTION_SIZE = 3;
-    private static int BOARD_INDEX_START = 0;
+    private static int BOARD_START_INDEX = 0;
     
     private static int NO_VALUE = 0;
     private static int MIN_VALUE = 1;
@@ -31,17 +31,17 @@ public class BacktrackingAlgorithm {
     }
 
     public void printBoard() {
-        IntStream.range(BOARD_INDEX_START, BOARD_SIZE).forEach(row -> {
-            IntStream.range(BOARD_INDEX_START, BOARD_SIZE).forEach(column -> {
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
+            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
                 System.out.print(board[row][column] + " ");
-            });
+            }
             System.out.println();
-        });
+        }
     }
 
     public boolean solve(int[][] board) {
-        for (int r = BOARD_INDEX_START; r < BOARD_SIZE; r++) {
-            for (int c = BOARD_INDEX_START; c < BOARD_SIZE; c++) {
+        for (int r = BOARD_START_INDEX; r < BOARD_SIZE; r++) {
+            for (int c = BOARD_START_INDEX; c < BOARD_SIZE; c++) {
                 if (board[r][c] == NO_VALUE) {
                     for (int k = MIN_VALUE; k <= MAX_VALUE; k++) {
                         board[r][c] = k;
@@ -76,7 +76,7 @@ public class BacktrackingAlgorithm {
 
     private boolean columnConstraint(int[][] board, int c) {
         boolean[] constraint = new boolean[BOARD_SIZE];
-        for (int i = BOARD_INDEX_START; i < BOARD_SIZE; i++) {
+        for (int i = BOARD_START_INDEX; i < BOARD_SIZE; i++) {
             if (!checkConstraint(board, i, constraint, c)) return false;
         }
         return true;
@@ -84,7 +84,7 @@ public class BacktrackingAlgorithm {
 
     private boolean rowConstraint(int[][] board, int r) {
         boolean[] constraint = new boolean[BOARD_SIZE];
-        for (int i = BOARD_INDEX_START; i < BOARD_SIZE; i++) {
+        for (int i = BOARD_START_INDEX; i < BOARD_SIZE; i++) {
             if (!checkConstraint(board, r, constraint, i)) return false;
         }
         return true;
