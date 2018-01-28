@@ -1,27 +1,40 @@
 package com.baeldung.metrics.micrometer;
 
-import com.netflix.spectator.atlas.AtlasConfig;
+import static org.hamcrest.CoreMatchers.allOf;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.collection.IsMapContaining.hasEntry;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import io.micrometer.atlas.AtlasMeterRegistry;
-import io.micrometer.core.instrument.*;
+import io.micrometer.core.instrument.Clock;
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.core.instrument.DistributionSummary;
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.LongTaskTimer;
+import io.micrometer.core.instrument.Measurement;
+import io.micrometer.core.instrument.Meter.Type;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Metrics;
+import io.micrometer.core.instrument.Tag;
 import io.micrometer.core.instrument.Timer;
 import io.micrometer.core.instrument.composite.CompositeMeterRegistry;
 import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
 import io.micrometer.core.instrument.stats.hist.Histogram;
 import io.micrometer.core.instrument.stats.quantile.WindowSketchQuantiles;
-import org.junit.Before;
-import org.junit.Test;
 
 import java.time.Duration;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import static io.micrometer.core.instrument.Meter.Type;
-import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.collection.IsMapContaining.hasEntry;
-import static org.hamcrest.core.IsCollectionContaining.hasItems;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.netflix.spectator.atlas.AtlasConfig;
 
 /**
  * @author aiet
@@ -135,15 +148,15 @@ public class MicrometerAtlasTest {
         Timer timer = registry.timer("app.event");
         timer.record(() -> {
             try {
-                TimeUnit.MILLISECONDS.sleep(1500);
+                TimeUnit.MILLISECONDS.sleep(15);
             } catch (InterruptedException ignored) {
             }
         });
 
-        timer.record(3000, TimeUnit.MILLISECONDS);
+        timer.record(30, TimeUnit.MILLISECONDS);
 
         assertTrue(2 == timer.count());
-        assertTrue(4510 > timer.totalTime(TimeUnit.MILLISECONDS) && 4500 <= timer.totalTime(TimeUnit.MILLISECONDS));
+        assertTrue(50 > timer.totalTime(TimeUnit.MILLISECONDS) && 45 <= timer.totalTime(TimeUnit.MILLISECONDS));
     }
 
     @Test
@@ -155,12 +168,12 @@ public class MicrometerAtlasTest {
 
         long currentTaskId = longTaskTimer.start();
         try {
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.MILLISECONDS.sleep(2);
         } catch (InterruptedException ignored) {
         }
         long timeElapsed = longTaskTimer.stop(currentTaskId);
 
-        assertTrue(timeElapsed / (int) 1e9 == 2);
+        assertTrue(timeElapsed / (int) 1e6 == 2);
     }
 
     @Test

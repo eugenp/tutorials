@@ -1,10 +1,14 @@
 package com.baeldung.hibernate;
 
 import com.baeldung.hibernate.pojo.PointEntity;
+import com.baeldung.hibernate.pojo.PolygonEntity;
+import com.vividsolutions.jts.geom.Coordinate;
 import com.vividsolutions.jts.geom.Geometry;
 import com.vividsolutions.jts.geom.Point;
+import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
+import com.vividsolutions.jts.util.GeometricShapeFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.After;
@@ -13,6 +17,7 @@ import org.junit.Test;
 
 import javax.persistence.Query;
 import java.io.IOException;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -82,9 +87,43 @@ public class HibernateSpatialTest {
           .containsOnly("POINT (1 1)", "POINT (1 2)", "POINT (3 4)");
     }
 
+    @Test
+    public void shouldSelectAllPointsWithinRadius() throws ParseException {
+        insertPoint("POINT (1 1)");
+        insertPoint("POINT (1 2)");
+        insertPoint("POINT (3 4)");
+        insertPoint("POINT (5 6)");
+
+        Query query = session.createQuery("select p from PointEntity p where within(p.point, :circle) = true",
+          PointEntity.class);
+        query.setParameter("circle", createCircle(0.0, 0.0, 5));
+
+        assertThat(query.getResultList().stream().map(p -> ((PointEntity) p).getPoint().toString()))
+          .containsOnly("POINT (1 1)", "POINT (1 2)");
+    }
+
+    @Test
+    public void shouldSelectAdjacentPolygons() throws ParseException {
+        insertPolygon("POLYGON ((0 0, 0 5, 5 5, 5 0, 0 0))");
+        insertPolygon("POLYGON ((3 0, 3 5, 8 5, 8 0, 3 0))");
+        insertPolygon("POLYGON ((2 2, 3 1, 2 5, 4 3, 3 3, 2 2))");
+
+        Query query = session.createQuery("select p from PolygonEntity p where touches(p.polygon, :polygon) = true",
+          PolygonEntity.class);
+        query.setParameter("polygon", wktToGeometry("POLYGON ((5 5, 5 10, 10 10, 10 5, 5 5))"));
+        assertThat(query.getResultList().stream().map(p -> ((PolygonEntity) p).getPolygon().toString()))
+          .containsOnly("POLYGON ((0 0, 0 5, 5 5, 5 0, 0 0))", "POLYGON ((3 0, 3 5, 8 5, 8 0, 3 0))");
+    }
+
     private void insertPoint(String point) throws ParseException {
         PointEntity entity = new PointEntity();
         entity.setPoint((Point) wktToGeometry(point));
+        session.persist(entity);
+    }
+
+    private void insertPolygon(String polygon) throws ParseException {
+        PolygonEntity entity = new PolygonEntity();
+        entity.setPolygon((Polygon) wktToGeometry(polygon));
         session.persist(entity);
     }
 
@@ -93,5 +132,13 @@ public class HibernateSpatialTest {
         Geometry geom = null;
         geom = fromText.read(wellKnownText);
         return geom;
+    }
+
+    private static Geometry createCircle(double x, double y, double radius) {
+        GeometricShapeFactory shapeFactory = new GeometricShapeFactory();
+        shapeFactory.setNumPoints(32);
+        shapeFactory.setCentre(new Coordinate(x, y));
+        shapeFactory.setSize(radius * 2);
+        return shapeFactory.createCircle();
     }
 }

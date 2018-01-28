@@ -2,7 +2,6 @@ package com.baeldung.datetime;
 
 import java.time.Duration;
 import java.time.LocalTime;
-import java.time.Period;
 
 public class UseDuration {
 

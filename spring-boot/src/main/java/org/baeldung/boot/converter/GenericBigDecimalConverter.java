@@ -5,7 +5,6 @@ import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.core.convert.converter.GenericConverter;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.Set;
 
 public class GenericBigDecimalConverter implements GenericConverter {
