@@ -11,7 +11,7 @@ public class MazeDriver {
         execute(maze1);
         execute(maze2);
     }
-    
+
     private static void execute(File file) throws Exception {
         Maze maze = new Maze(file);
         dfs(maze);
