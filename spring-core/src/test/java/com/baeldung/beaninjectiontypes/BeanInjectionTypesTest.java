@@ -1,30 +1,27 @@
 package com.baeldung.beaninjectiontypes;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
 public class BeanInjectionTypesTest {
-    @SuppressWarnings("resource")
     @Test
     public void LibrarySetterInjectionTest() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("setterinjection.xml");
-        LibrarySetterInjection library = (LibrarySetterInjection) context.getBean("library");
+        LibrarySetterConfiguration configuration = new LibrarySetterConfiguration();
+        LibrarySetterInjection library = (LibrarySetterInjection) configuration.library();
         String name = "Data Structures and Algorithms";
         assertNotNull(library);
         assertTrue(name.equals(library.getBook().getName()));
     }
 
-    @SuppressWarnings("resource")
     @Test
     public void LibraryConstructorInjectionTest() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("constructorinjection.xml");
-        LibraryConstructorInjection library = (LibraryConstructorInjection) context.getBean("library");
+        LibraryConstructorConfiguration configuration = new LibraryConstructorConfiguration();
+        LibraryConstructorInjection library = (LibraryConstructorInjection) configuration.library();
         String name = "Data Structures and Algorithms";
         assertNotNull(library);
         assertTrue(name.equals(library.getBook().getName()));
     }
 }
+
