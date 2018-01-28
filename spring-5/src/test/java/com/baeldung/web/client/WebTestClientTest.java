@@ -53,7 +53,7 @@ public class WebTestClientTest {
             .uri("/resource")
             .exchange()
             .expectStatus()
-            .is4xxClientError()
+            .is3xxRedirection()
             .expectBody();
     }
 

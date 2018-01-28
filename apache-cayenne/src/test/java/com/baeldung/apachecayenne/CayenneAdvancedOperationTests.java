@@ -151,20 +151,20 @@ public class CayenneAdvancedOperationTests {
 
     @Test
     public void givenTwoAuthor_whenInObjS_thenWeGetAuthors() {
-        String [] args = {"Paul Xavier", "pAuL Smith", "Vicky Sarra"};
+        List<String> names = Arrays.asList("Paul Xavier", "pAuL Smith", "Vicky Sarra");
         List<Author> authors = ObjectSelect.query(Author.class)
-          .where(Author.NAME.in(Arrays.asList(args)))
-          .select(context);
+                .where(Author.NAME.in(names))
+                .select(context);
 
         assertEquals(authors.size(), 3);
     }
 
     @Test
     public void givenTwoAuthor_whenNinObjS_thenWeGetAuthors() {
-        String [] args = {"Paul Xavier", "pAuL Smith"};
+        List<String> names = Arrays.asList("Paul Xavier", "pAuL Smith");
         List<Author> authors = ObjectSelect.query(Author.class)
-          .where(Author.NAME.nin(Arrays.asList(args)))
-          .select(context);
+                .where(Author.NAME.nin(names))
+                .select(context);
         Author author = authors.get(0);
 
         assertEquals(authors.size(), 1);
