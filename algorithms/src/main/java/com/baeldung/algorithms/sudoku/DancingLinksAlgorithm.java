@@ -3,28 +3,32 @@ package com.baeldung.algorithms.sudoku;
 import java.util.*;
 
 public class DancingLinksAlgorithm {
-    private static int S = 9;
-    private static int SIDE = 3;
+    private static int BOARD_SIZE = 9;
+    private static int SUBSECTION_SIZE = 3;
+    private static int NO_VALUE = 0;
+    private static int CONSTRAINTS = 4;
+    private static int MIN_VALUE = 1;
+    private static int MAX_VALUE = 9;
+    private static int COVER_START_INDEX = 1;
 
-    static char[][] board = { 
-            { '8', '.', '.', '.', '.', '.', '.', '.', '.' }, 
-            { '.', '.', '3', '6', '.', '.', '.', '.', '.' }, 
-            { '.', '7', '.', '.', '9', '.', '2', '.', '.' }, 
-            { '.', '5', '.', '.', '.', '7', '.', '.', '.' },
-            { '.', '.', '.', '.', '4', '5', '7', '.', '.' }, 
-            { '.', '.', '.', '1', '.', '.', '.', '3', '.' }, 
-            { '.', '.', '1', '.', '.', '.', '.', '6', '8' }, 
-            { '.', '.', '8', '5', '.', '.', '.', '1', '.' }, 
-            { '.', '9', '.', '.', '.', '.', '4', '.', '.' } 
+    public static int[][] board = { 
+            { 8, 0, 0, 0, 0, 0, 0, 0, 0 }, 
+            { 0, 0, 3, 6, 0, 0, 0, 0, 0 }, 
+            { 0, 7, 0, 0, 9, 0, 2, 0, 0 }, 
+            { 0, 5, 0, 0, 0, 7, 0, 0, 0 },
+            { 0, 0, 0, 0, 4, 5, 7, 0, 0 }, 
+            { 0, 0, 0, 1, 0, 0, 0, 3, 0 }, 
+            { 0, 0, 1, 0, 0, 0, 0, 6, 8 }, 
+            { 0, 0, 8, 5, 0, 0, 0, 1, 0 }, 
+            { 0, 9, 0, 0, 0, 0, 4, 0, 0 } 
         };
 
     public static void main(String[] args) {
-
         DancingLinksAlgorithm solver = new DancingLinksAlgorithm();
         solver.solve(board);
     }
 
-    public boolean solve(char[][] board) {
+    public boolean solve(int[][] board) {
         boolean[][] cover = initializeExactCoverBoard(board);
         DancingLinks dlx = new DancingLinks(cover);
         dlx.runSolver();
@@ -33,46 +37,50 @@ public class DancingLinksAlgorithm {
     }
 
     private int getIndex(int row, int col, int num) {
-        return (row - 1) * S * S + (col - 1) * S + (num - 1);
+        return (row - 1) * BOARD_SIZE * BOARD_SIZE + (col - 1) * BOARD_SIZE + (num - 1);
     }
 
     private boolean[][] createExactCoverBoard() {
-        boolean[][] R = new boolean[9 * 9 * 9][9 * 9 * 4];
+        boolean[][] R = new boolean[BOARD_SIZE * BOARD_SIZE * MAX_VALUE][BOARD_SIZE * BOARD_SIZE * CONSTRAINTS];
 
         int hBase = 0;
 
-        for (int r = 1; r <= S; r++) {
-            for (int c = 1; c <= S; c++, hBase++) {
-                for (int n = 1; n <= S; n++) {
+        // Cell constraint.
+        for (int r = COVER_START_INDEX; r <= BOARD_SIZE; r++) {
+            for (int c = COVER_START_INDEX; c <= BOARD_SIZE; c++, hBase++) {
+                for (int n = COVER_START_INDEX; n <= BOARD_SIZE; n++) {
                     int index = getIndex(r, c, n);
                     R[index][hBase] = true;
                 }
             }
         }
-
-        for (int r = 1; r <= S; r++) {
-            for (int n = 1; n <= S; n++, hBase++) {
-                for (int c1 = 1; c1 <= S; c1++) {
+        
+        // Row constrain.
+        for (int r = COVER_START_INDEX; r <= BOARD_SIZE; r++) {
+            for (int n = COVER_START_INDEX; n <= BOARD_SIZE; n++, hBase++) {
+                for (int c1 = COVER_START_INDEX; c1 <= BOARD_SIZE; c1++) {
                     int index = getIndex(r, c1, n);
                     R[index][hBase] = true;
                 }
             }
         }
 
-        for (int c = 1; c <= S; c++) {
-            for (int n = 1; n <= S; n++, hBase++) {
-                for (int r1 = 1; r1 <= S; r1++) {
+        // Column constraint.
+        for (int c = COVER_START_INDEX; c <= BOARD_SIZE; c++) {
+            for (int n = COVER_START_INDEX; n <= BOARD_SIZE; n++, hBase++) {
+                for (int r1 = COVER_START_INDEX; r1 <= BOARD_SIZE; r1++) {
                     int index = getIndex(r1, c, n);
                     R[index][hBase] = true;
                 }
             }
         }
-
-        for (int br = 1; br <= S; br += SIDE) {
-            for (int bc = 1; bc <= S; bc += SIDE) {
-                for (int n = 1; n <= S; n++, hBase++) {
-                    for (int rDelta = 0; rDelta < SIDE; rDelta++) {
-                        for (int cDelta = 0; cDelta < SIDE; cDelta++) {
+        
+        // Subsection constraint
+        for (int br = COVER_START_INDEX; br <= BOARD_SIZE; br += SUBSECTION_SIZE) {
+            for (int bc = COVER_START_INDEX; bc <= BOARD_SIZE; bc += SUBSECTION_SIZE) {
+                for (int n = COVER_START_INDEX; n <= BOARD_SIZE; n++, hBase++) {
+                    for (int rDelta = 0; rDelta < SUBSECTION_SIZE; rDelta++) {
+                        for (int cDelta = 0; cDelta < SUBSECTION_SIZE; cDelta++) {
                             int index = getIndex(br + rDelta, bc + cDelta, n);
                             R[index][hBase] = true;
                         }
@@ -83,14 +91,14 @@ public class DancingLinksAlgorithm {
         return R;
     }
 
-    private boolean[][] initializeExactCoverBoard(char[][] sudoku) {
+    private boolean[][] initializeExactCoverBoard(int[][] board) {
         boolean[][] R = createExactCoverBoard();
-        for (int i = 1; i <= S; i++) {
-            for (int j = 1; j <= S; j++) {
-                char n = sudoku[i - 1][j - 1];
-                if (n != '.') {
-                    for (int num = 1; num <= S; num++) {
-                        if ((char) ('0' + num) != n) {
+        for (int i = COVER_START_INDEX; i <= BOARD_SIZE; i++) {
+            for (int j = COVER_START_INDEX; j <= BOARD_SIZE; j++) {
+                int n = board[i - 1][j - 1];
+                if (n != NO_VALUE) {
+                    for (int num = MIN_VALUE; num <= MAX_VALUE; num++) {
+                        if (num != n) {
                             Arrays.fill(R[getIndex(i, j, num)], false);
                         }
                     }

@@ -1,18 +1,28 @@
 package com.baeldung.algorithms.sudoku;
 
-public class BacktrackingAlgorithm {
+import java.util.stream.IntStream;
 
-    static char[][] board = { 
-            { '8', '.', '.', '.', '.', '.', '.', '.', '.' },
-            { '.', '.', '3', '6', '.', '.', '.', '.', '.' },
-            { '.', '7', '.', '.', '9', '.', '2', '.', '.' },
-            { '.', '5', '.', '.', '.', '7', '.', '.', '.' },
-            { '.', '.', '.', '.', '4', '5', '7', '.', '.' },
-            { '.', '.', '.', '1', '.', '.', '.', '3', '.' },
-            { '.', '.', '1', '.', '.', '.', '.', '6', '8' },
-            { '.', '.', '8', '5', '.', '.', '.', '1', '.' },
-            { '.', '9', '.', '.', '.', '.', '4', '.', '.' } 
-        };
+public class BacktrackingAlgorithm {
+    
+    private static int BOARD_SIZE = 9;
+    private static int SUBSECTION_SIZE = 3;
+    private static int BOARD_INDEX_START = 0;
+    
+    private static int NO_VALUE = 0;
+    private static int MIN_VALUE = 1;
+    private static int MAX_VALUE = 9;
+
+    public static int[][] board = { 
+        { 8, 0, 0, 0, 0, 0, 0, 0, 0 },
+        { 0, 0, 3, 6, 0, 0, 0, 0, 0 },
+        { 0, 7, 0, 0, 9, 0, 2, 0, 0 },
+        { 0, 5, 0, 0, 0, 7, 0, 0, 0 },
+        { 0, 0, 0, 0, 4, 5, 7, 0, 0 },
+        { 0, 0, 0, 1, 0, 0, 0, 3, 0 },
+        { 0, 0, 1, 0, 0, 0, 0, 6, 8 },
+        { 0, 0, 8, 5, 0, 0, 0, 1, 0 },
+        { 0, 9, 0, 0, 0, 0, 4, 0, 0 } 
+    };
 
     public static void main(String[] args) {
         BacktrackingAlgorithm solver = new BacktrackingAlgorithm();
@@ -21,24 +31,24 @@ public class BacktrackingAlgorithm {
     }
 
     public void printBoard() {
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 9; j++) {
-                System.out.print(board[i][j] + " ");
-            }
+        IntStream.range(BOARD_INDEX_START, BOARD_SIZE).forEach(row -> {
+            IntStream.range(BOARD_INDEX_START, BOARD_SIZE).forEach(column -> {
+                System.out.print(board[row][column] + " ");
+            });
             System.out.println();
-        }
+        });
     }
 
-    public boolean solve(char[][] board) {
-        for (int r = 0; r < board.length; r++) {
-            for (int c = 0; c < board[0].length; c++) {
-                if (board[r][c] == '.') {
-                    for (int k = 1; k <= 9; k++) {
-                        board[r][c] = (char) ('0' + k);
+    public boolean solve(int[][] board) {
+        for (int r = BOARD_INDEX_START; r < BOARD_SIZE; r++) {
+            for (int c = BOARD_INDEX_START; c < BOARD_SIZE; c++) {
+                if (board[r][c] == NO_VALUE) {
+                    for (int k = MIN_VALUE; k <= MAX_VALUE; k++) {
+                        board[r][c] = k;
                         if (isValid(board, r, c) && solve(board)) {
                             return true;
                         } else {
-                            board[r][c] = '.';
+                            board[r][c] = NO_VALUE;
                         }
                     }
                     return false;
@@ -48,39 +58,44 @@ public class BacktrackingAlgorithm {
         return true;
     }
 
-    public boolean isValid(char[][] board, int r, int c) {
-        boolean[] row = new boolean[9];
-        for (int i = 0; i < 9; i++) {
-            if (board[r][i] >= '1' && board[r][i] <= '9') {
-                if (row[board[r][i] - '1'] == false) {
-                    row[board[r][i] - '1'] = true;
-                } else {
-                    return false;
-                }
+    public boolean isValid(int[][] board, int r, int c) {
+        return (rowConstraint(board, r) && 
+                columnConstraint(board, c) &&
+                subsectionConstraint(board, r, c));
+    }
+
+    private boolean subsectionConstraint(int[][] board, int r, int c) {
+        boolean[] constraint = new boolean[BOARD_SIZE];
+        for (int i = (r / SUBSECTION_SIZE) * SUBSECTION_SIZE; i < (r / SUBSECTION_SIZE) * SUBSECTION_SIZE + SUBSECTION_SIZE; i++) {
+            for (int j = (c / SUBSECTION_SIZE) * SUBSECTION_SIZE; j < (c / SUBSECTION_SIZE) * SUBSECTION_SIZE + SUBSECTION_SIZE; j++) {
+                if (!checkConstraint(board, i, constraint, j)) return false;
             }
         }
+        return true;
+    }
 
-        boolean[] col = new boolean[9];
-        for (int i = 0; i < 9; i++) {
-            if (board[i][c] >= '1' && board[i][c] <= '9') {
-                if (col[board[i][c] - '1'] == false) {
-                    col[board[i][c] - '1'] = true;
-                } else {
-                    return false;
-                }
-            }
+    private boolean columnConstraint(int[][] board, int c) {
+        boolean[] constraint = new boolean[BOARD_SIZE];
+        for (int i = BOARD_INDEX_START; i < BOARD_SIZE; i++) {
+            if (!checkConstraint(board, i, constraint, c)) return false;
         }
+        return true;
+    }
 
-        boolean[] grid = new boolean[9];
-        for (int i = (r / 3) * 3; i < (r / 3) * 3 + 3; i++) {
-            for (int j = (c / 3) * 3; j < (c / 3) * 3 + 3; j++) {
-                if (board[i][j] >= '1' && board[i][j] <= '9') {
-                    if (grid[board[i][j] - '1'] == false) {
-                        grid[board[i][j] - '1'] = true;
-                    } else {
-                        return false;
-                    }
-                }
+    private boolean rowConstraint(int[][] board, int r) {
+        boolean[] constraint = new boolean[BOARD_SIZE];
+        for (int i = BOARD_INDEX_START; i < BOARD_SIZE; i++) {
+            if (!checkConstraint(board, r, constraint, i)) return false;
+        }
+        return true;
+    }
+
+    private boolean checkConstraint(int[][] board, int r, boolean[] constraint, int c) {
+        if (board[r][c] >= MIN_VALUE && board[r][c] <= MAX_VALUE) {
+            if (constraint[board[r][c] - 1] == false) {
+                constraint[board[r][c] - 1] = true;
+            } else {
+                return false;
             }
         }
         return true;
