@@ -50,6 +50,11 @@
             <version>${kotlin-stdlib.version}</version>
         </dependency>
         <dependency>
+            <groupId>khttp</groupId>
+            <artifactId>khttp</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-test-junit</artifactId>
             <version>${kotlin-test-junit.version}</version>
