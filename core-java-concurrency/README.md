@@ -33,3 +33,4 @@
 - [Daemon Threads in Java](http://www.baeldung.com/java-daemon-thread)
 - [Implementing a Runnable vs Extending a Thread](http://www.baeldung.com/java-runnable-vs-extending-thread)
 - [How to Kill a Java Thread](http://www.baeldung.com/java-thread-stop)
+- [ExecutorService - Waiting for Threads to Finish](http://www.baeldung.com/java-executor-wait-for-threads)
