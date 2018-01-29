@@ -87,8 +87,9 @@
         <module>jackson</module>
         <!--         <module>persistence-modules/java-cassandra</module> -->
         <module>vavr</module>
-		<module>java-lite</module>
-	<module>java-vavr-stream</module>
+	      <module>java-lite</module>
+	      <module>java-rmi</module>	    
+	      <module>java-vavr-stream</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
