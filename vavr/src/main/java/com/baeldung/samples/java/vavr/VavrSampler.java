@@ -1,9 +1,9 @@
 package com.baeldung.samples.java.vavr;
 
-import io.vavr.collection.Stream;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.vavr.collection.Stream;
 
 /**
  *
@@ -11,12 +11,12 @@ import java.util.List;
  */
 public class VavrSampler {
 
-    static int[] intArray = new int[]{1, 2, 4};
-    static List<Integer> intList = new ArrayList<Integer>();
-    static int[][] intOfInts = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+    static int[] intArray = new int[] { 1, 2, 4 };
+    static List<Integer> intList = new ArrayList<>();
+    static int[][] intOfInts = new int[][] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 
     public static void main(String[] args) {
-       vavrStreamElementAccess();
+        vavrStreamElementAccess();
         System.out.println("====================================");
         vavrParallelStreamAccess();
         System.out.println("====================================");
@@ -43,12 +43,12 @@ public class VavrSampler {
         System.out.println("Vavr Stream Concurrent Modification");
         System.out.println("====================================");
         Stream<Integer> vavrStream = Stream.ofAll(intList);
-        //intList.add(5);
+        // intList.add(5);
         vavrStream.forEach(i -> System.out.println("in a Vavr Stream: " + i));
 
-//        Stream<Integer> wrapped = Stream.ofAll(intArray);
-//        intArray[2] = 5;
-//        wrapped.forEach(i -> System.out.println("Vavr looped " + i));
+        // Stream<Integer> wrapped = Stream.ofAll(intArray);
+        // intArray[2] = 5;
+        // wrapped.forEach(i -> System.out.println("Vavr looped " + i));
     }
 
     public static void jdkFlatMapping() {
@@ -65,9 +65,9 @@ public class VavrSampler {
         System.out.println("====================================");
         Stream.of(42)
                 .flatMap(i -> Stream.continually(() -> {
-            System.out.println("nested call");
-            return 42;
-        }))
+                    System.out.println("nested call");
+                    return 42;
+                }))
                 .get(0);
     }
 
