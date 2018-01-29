@@ -14,8 +14,9 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
 <flow name="codeFirstSoapService">
         <http:listener config-ref="listener-config" path="/" doc:name="HTTP"/>
         <logger message="payload: #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
-    <cxf:jaxws-service serviceClass="com.baeldung.CodeFirstService" doc:name="CXF" soapVersion="1.2"/>
-    <component class="com.baeldung.CodeFirstServiceImpl" doc:name="Java"/>
+    <cxf:jaxws-service serviceClass="" doc:name="CXF" soapVersion="1.2"/>
+<!--  We need to set component after generating service from wsdl file -->
+<!--     <component class="" doc:name="Java"/> --> 
 </flow>
 
 
