@@ -38,7 +38,7 @@ public class GuavaMemoizerUnitTest {
         int n = 95;
 
         // when
-        BigInteger factorial = Factorial.getFactorial(n);
+        BigInteger factorial = new Factorial().getFactorial(n);
 
         // then
         BigInteger expectedFactorial = new BigInteger("10329978488239059262599702099394727095397746340117372869212250571234293987594703124871765375385424468563282236864226607350415360000000000000000000000");
@@ -52,50 +52,47 @@ public class GuavaMemoizerUnitTest {
 
         Instant start = Instant.now();
         BigInteger bigNumber = memoizedSupplier.get();
-        Long duration = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("90840813214259257091017657299038202013732367616052353832494971785771209455315189760000000000"))));
-        assertThat(duration.doubleValue(), is(closeTo(2000D, 100D)));
+        Long durationInMs = Duration.between(start, Instant.now()).toMillis();
+        assertThat(bigNumber, is(equalTo(new BigInteger("12345"))));
+        assertThat(durationInMs.doubleValue(), is(closeTo(2000D, 100D)));
 
         start = Instant.now();
         bigNumber = memoizedSupplier.get().add(BigInteger.ONE);
-        duration = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("90840813214259257091017657299038202013732367616052353832494971785771209455315189760000000001"))));
-        assertThat(duration.doubleValue(), is(closeTo(0D, 100D)));
+        durationInMs = Duration.between(start, Instant.now()).toMillis();
+        assertThat(bigNumber, is(equalTo(new BigInteger("12346"))));
+        assertThat(durationInMs.doubleValue(), is(closeTo(0D, 100D)));
 
         start = Instant.now();
         bigNumber = memoizedSupplier.get().add(BigInteger.TEN);
-        duration = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("90840813214259257091017657299038202013732367616052353832494971785771209455315189760000000010"))));
-        assertThat(duration.doubleValue(), is(closeTo(0D, 100D)));
+        durationInMs = Duration.between(start, Instant.now()).toMillis();
+        assertThat(bigNumber, is(equalTo(new BigInteger("12355"))));
+        assertThat(durationInMs.doubleValue(), is(closeTo(0D, 100D)));
     }
 
     @Test
-    public void givenMemoizedSupplierWithExpiration_whenGet_thenSubsequentGetsBeforeExpiredAreFast() {
+    public void givenMemoizedSupplierWithExpiration_whenGet_thenSubsequentGetsBeforeExpiredAreFast() throws InterruptedException {
         Supplier<BigInteger> memoizedSupplier;
         memoizedSupplier = Suppliers.memoizeWithExpiration(CostlySupplier::generateBigNumber, 3, TimeUnit.SECONDS);
 
         Instant start = Instant.now();
         BigInteger bigNumber = memoizedSupplier.get();
-        Long duration = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("90840813214259257091017657299038202013732367616052353832494971785771209455315189760000000000"))));
-        assertThat(duration.doubleValue(), is(closeTo(2000D, 100D)));
+        Long durationInMs = Duration.between(start, Instant.now()).toMillis();
+        assertThat(bigNumber, is(equalTo(new BigInteger("12345"))));
+        assertThat(durationInMs.doubleValue(), is(closeTo(2000D, 100D)));
 
         start = Instant.now();
         bigNumber = memoizedSupplier.get().add(BigInteger.ONE);
-        duration = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("90840813214259257091017657299038202013732367616052353832494971785771209455315189760000000001"))));
-        assertThat(duration.doubleValue(), is(closeTo(0D, 100D)));
+        durationInMs = Duration.between(start, Instant.now()).toMillis();
+        assertThat(bigNumber, is(equalTo(new BigInteger("12346"))));
+        assertThat(durationInMs.doubleValue(), is(closeTo(0D, 100D)));
 
-        try {
-            TimeUnit.SECONDS.sleep(1);
-        } catch (InterruptedException e) {
-        }
+        TimeUnit.SECONDS.sleep(1);
 
         start = Instant.now();
         bigNumber = memoizedSupplier.get().add(BigInteger.TEN);
-        duration = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("90840813214259257091017657299038202013732367616052353832494971785771209455315189760000000010"))));
-        assertThat(duration.doubleValue(), is(closeTo(2000D, 100D)));
+        durationInMs = Duration.between(start, Instant.now()).toMillis();
+        assertThat(bigNumber, is(equalTo(new BigInteger("12355"))));
+        assertThat(durationInMs.doubleValue(), is(closeTo(2000D, 100D)));
     }
 
 }

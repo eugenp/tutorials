@@ -10,12 +10,13 @@ public class Factorial {
 
     private static LoadingCache<Integer, BigInteger> memo = CacheBuilder.newBuilder()
             .build(CacheLoader.from(Factorial::getFactorial));
-    static {
-        memo.put(0, BigInteger.ONE);
-    }
 
     public static BigInteger getFactorial(int n) {
-        return BigInteger.valueOf(n).multiply(memo.getUnchecked(n -1 ));
+        if (n == 0) {
+            return BigInteger.ONE;
+        } else {
+            return BigInteger.valueOf(n).multiply(memo.getUnchecked(n - 1));
+        }
     }
 
 }

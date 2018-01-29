@@ -11,12 +11,7 @@ public class CostlySupplier {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
         }
-        BigInteger number = BigInteger.valueOf(new Random(0L)
-                .ints(0, Integer.MAX_VALUE)
-                .limit(1)
-                .findFirst()
-                .getAsInt());
-        return number.multiply(number).pow(5);
+        return new BigInteger("12345");
     }
 
 }
