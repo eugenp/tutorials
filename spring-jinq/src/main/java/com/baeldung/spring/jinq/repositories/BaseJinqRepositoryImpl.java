@@ -20,10 +20,6 @@ public abstract class BaseJinqRepositoryImpl<T> {
         return streamOf(entityType());
     }
 
-    public void save(T entity) {
-        entityManager.persist(entity);
-    }
-
     protected <U> JPAJinqStream<U> streamOf(Class<U> clazz) {
         return jinqDataProvider.streamAll(entityManager, clazz);
     }

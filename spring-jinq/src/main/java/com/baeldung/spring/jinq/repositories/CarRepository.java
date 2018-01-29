@@ -11,8 +11,6 @@ import com.baeldung.spring.jinq.entities.Manufacturer;
 
 public interface CarRepository {
 
-    void save(String model, String description);
-
     Optional<Car> findByModel(String model);
 
     List<Car> findByModelAndDescription(String model, String desc);

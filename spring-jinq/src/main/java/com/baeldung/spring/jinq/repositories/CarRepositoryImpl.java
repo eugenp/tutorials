@@ -7,7 +7,6 @@ import org.jinq.orm.stream.JinqStream;
 import org.jinq.tuples.Pair;
 import org.jinq.tuples.Tuple3;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.baeldung.spring.jinq.entities.Car;
 import com.baeldung.spring.jinq.entities.Manufacturer;
@@ -63,15 +62,6 @@ public class CarRepositoryImpl extends BaseJinqRepositoryImpl<Car> implements Ca
         return stream().skip(skip)
             .limit(limit)
             .toList();
-    }
-
-    @Override
-    @Transactional
-    public void save(String model, String description) {
-        Car car = new Car();
-        car.setModel(model);
-        car.setDescription(description);
-        save(car);
     }
 
     @Override

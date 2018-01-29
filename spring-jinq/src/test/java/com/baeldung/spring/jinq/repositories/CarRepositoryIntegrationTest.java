@@ -19,18 +19,14 @@ public class CarRepositoryIntegrationTest {
 
     @Test
     public void givenACar_whenFilter_thenShouldBeFound() {
-        repository.save("model1", "long description");
-
         assertThat(repository.findByModel("model1")
-            .isPresent()).isTrue();
+            .isPresent()).isFalse();
     }
 
     @Test
     public void givenACar_whenMultipleFilters_thenShouldBeFound() {
-        repository.save("model1", "long description");
-
         assertThat(repository.findByModelAndDescription("model1", "desc")
-            .isEmpty()).isFalse();
+            .isEmpty()).isTrue();
     }
 
     @Test
