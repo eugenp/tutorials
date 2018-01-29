@@ -62,7 +62,7 @@
 			<plugin>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-contract-maven-plugin</artifactId>
-				<version>1.2.1.RELEASE</version>
+				<version>1.2.2.RELEASE</version>
 				<extensions>true</extensions>
 				<configuration>
 					<baseClassForTests>com.baeldung.spring.cloud.springcloudcontractproducer.BaseClass</baseClassForTests>
