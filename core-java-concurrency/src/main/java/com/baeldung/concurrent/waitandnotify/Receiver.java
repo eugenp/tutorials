@@ -19,7 +19,9 @@ public class Receiver implements Runnable {
             //Thread.sleep() to mimic heavy server-side processing
             try {
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 5000));
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+                System.out.println("Thread Interrupted");
+            }
         }
     }
 }
