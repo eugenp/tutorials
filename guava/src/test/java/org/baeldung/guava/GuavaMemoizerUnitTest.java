@@ -38,7 +38,7 @@ public class GuavaMemoizerUnitTest {
         int n = 95;
 
         // when
-        BigInteger factorial = new Factorial().getFactorial(n);
+        BigInteger factorial = Factorial.getFactorial(n);
 
         // then
         BigInteger expectedFactorial = new BigInteger("10329978488239059262599702099394727095397746340117372869212250571234293987594703124871765375385424468563282236864226607350415360000000000000000000000");
@@ -47,52 +47,46 @@ public class GuavaMemoizerUnitTest {
 
     @Test
     public void givenMemoizedSupplier_whenGet_thenSubsequentGetsAreFast() {
+        // given
         Supplier<BigInteger> memoizedSupplier;
         memoizedSupplier = Suppliers.memoize(CostlySupplier::generateBigNumber);
 
-        Instant start = Instant.now();
-        BigInteger bigNumber = memoizedSupplier.get();
-        Long durationInMs = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("12345"))));
-        assertThat(durationInMs.doubleValue(), is(closeTo(2000D, 100D)));
+        // when
+        BigInteger expectedValue = new BigInteger("12345");
+        assertSupplierGetExecutionResultAndDuration(memoizedSupplier, expectedValue, 2000D);
 
-        start = Instant.now();
-        bigNumber = memoizedSupplier.get().add(BigInteger.ONE);
-        durationInMs = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("12346"))));
-        assertThat(durationInMs.doubleValue(), is(closeTo(0D, 100D)));
-
-        start = Instant.now();
-        bigNumber = memoizedSupplier.get().add(BigInteger.TEN);
-        durationInMs = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("12355"))));
-        assertThat(durationInMs.doubleValue(), is(closeTo(0D, 100D)));
+        // then
+        assertSupplierGetExecutionResultAndDuration(memoizedSupplier, expectedValue, 0D);
+        assertSupplierGetExecutionResultAndDuration(memoizedSupplier, expectedValue, 0D);
     }
 
     @Test
     public void givenMemoizedSupplierWithExpiration_whenGet_thenSubsequentGetsBeforeExpiredAreFast() throws InterruptedException {
+        // given
         Supplier<BigInteger> memoizedSupplier;
         memoizedSupplier = Suppliers.memoizeWithExpiration(CostlySupplier::generateBigNumber, 3, TimeUnit.SECONDS);
 
-        Instant start = Instant.now();
-        BigInteger bigNumber = memoizedSupplier.get();
-        Long durationInMs = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("12345"))));
-        assertThat(durationInMs.doubleValue(), is(closeTo(2000D, 100D)));
+        // when
+        BigInteger expectedValue = new BigInteger("12345");
+        assertSupplierGetExecutionResultAndDuration(memoizedSupplier, expectedValue, 2000D);
 
-        start = Instant.now();
-        bigNumber = memoizedSupplier.get().add(BigInteger.ONE);
-        durationInMs = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("12346"))));
-        assertThat(durationInMs.doubleValue(), is(closeTo(0D, 100D)));
-
+        // then
+        assertSupplierGetExecutionResultAndDuration(memoizedSupplier, expectedValue, 0D);
+        // add one more second until memoized Supplier is evicted from memory
         TimeUnit.SECONDS.sleep(1);
+        assertSupplierGetExecutionResultAndDuration(memoizedSupplier, expectedValue, 2000D);
+    }
 
-        start = Instant.now();
-        bigNumber = memoizedSupplier.get().add(BigInteger.TEN);
-        durationInMs = Duration.between(start, Instant.now()).toMillis();
-        assertThat(bigNumber, is(equalTo(new BigInteger("12355"))));
-        assertThat(durationInMs.doubleValue(), is(closeTo(2000D, 100D)));
+    private <T> void assertSupplierGetExecutionResultAndDuration(Supplier<T> supplier,
+                                                                 T expectedValue,
+                                                                 double expectedDurationInMs) {
+        Instant start = Instant.now();
+        T value = supplier.get();
+        Long durationInMs = Duration.between(start, Instant.now()).toMillis();
+        double marginOfErrorInMs = 100D;
+
+        assertThat(value, is(equalTo(expectedValue)));
+        assertThat(durationInMs.doubleValue(), is(closeTo(expectedDurationInMs, marginOfErrorInMs)));
     }
 
 }
