@@ -1,4 +1,4 @@
-package com.baeldung.java.json;
+package com.baeldung.jsonjava;
 
 import org.json.CDL;
 import org.json.JSONArray;

@@ -1,16 +1,24 @@
-package com.baeldung.java.json;
-import static org.junit.Assert.assertEquals;
+package com.baeldung.jsonjava;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Test;
 
-public class JSONArrayIntegrationTest {
-    @Test
-    public void givenJSONJava_thenCreateNewJSONArrayFromScratch() {
+public class JSONArrayDemo {
+    public static void main(String[] args) {
+        System.out.println("5.1. Creating JSON Array: ");
+        creatingJSONArray();
+        
+        System.out.println("\n5.2. Creating JSON Array from JSON string: ");
+        jsonArrayFromJSONString();
+        
+        System.out.println("\n5.3. Creating JSON Array from Collection Object: ");
+        jsonArrayFromCollectionObj();
+    }
+    
+    public static void creatingJSONArray() {
         JSONArray ja = new JSONArray();
         ja.put(Boolean.TRUE);
         ja.put("lorem ipsum");
@@ -23,17 +31,15 @@ public class JSONArrayIntegrationTest {
          
         ja.put(jo);
          
-        assertEquals("[true,\"lorem ipsum\",{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}]", ja.toString());
+        System.out.println(ja.toString());
     }
     
-    @Test
-    public void givenJsonString_thenCreateNewJSONArray() {
+    public static void jsonArrayFromJSONString() {
         JSONArray ja = new JSONArray("[true, \"lorem ipsum\", 215]");
-        assertEquals("[true,\"lorem ipsum\",215]", ja.toString());
+        System.out.println(ja);
     }
-
-    @Test
-    public void givenListObject_thenConvertItToJSONArray() {
+    
+    public static void jsonArrayFromCollectionObj() {
         List<String> list = new ArrayList<>();
         list.add("California");
         list.add("Texas");
@@ -41,6 +47,6 @@ public class JSONArrayIntegrationTest {
         list.add("Alaska");
          
         JSONArray ja = new JSONArray(list);
-        assertEquals("[\"California\",\"Texas\",\"Hawaii\",\"Alaska\"]", ja.toString());
+        System.out.println(ja);
     }
 }
