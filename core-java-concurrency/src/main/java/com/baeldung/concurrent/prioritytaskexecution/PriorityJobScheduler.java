@@ -1,5 +1,6 @@
 package com.baeldung.concurrent.prioritytaskexecution;
 
+import java.util.Comparator;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
@@ -13,17 +14,17 @@ public class PriorityJobScheduler {
 
     public PriorityJobScheduler(Integer poolSize, Integer queueSize) {
         priorityJobPoolExecutor = Executors.newFixedThreadPool(poolSize);
-        priorityQueue = new PriorityBlockingQueue<Runnable>(queueSize, new JobExecutionComparator());
+        Comparator<? super Job> jobComparator = Comparator.comparing(Job::getJobPriority);
+        priorityQueue = new PriorityBlockingQueue<Runnable>(queueSize, 
+          (Comparator<? super Runnable>) jobComparator);
 
         priorityJobScheduler = Executors.newSingleThreadExecutor();
-        priorityJobScheduler.execute(new Runnable() {
-            public void run() {
-                while (true) {
-                    try {
-                        priorityJobPoolExecutor.execute(priorityQueue.take());
-                    } catch (InterruptedException e) {
-                        break;
-                    }
+        priorityJobScheduler.execute(()->{
+            while (true) {
+                try {
+                    priorityJobPoolExecutor.execute(priorityQueue.take());
+                } catch (InterruptedException e) {
+                    break;
                 }
             }
         });
