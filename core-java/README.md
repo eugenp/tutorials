@@ -126,3 +126,4 @@
 - [A Guide to Inner Interfaces in Java](http://www.baeldung.com/java-inner-interfaces)
 - [Polymorphism in Java](http://www.baeldung.com/java-polymorphism)
 - [Recursion In Java](http://www.baeldung.com/java-recursion)
+- [A Guide to the finalize Method in Java](http://www.baeldung.com/java-finalize)
