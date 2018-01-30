@@ -21,18 +21,7 @@ public class OrderConverter {
             smooks.close();
         }
     }
-
-    public Order convertOrderJSONToOrderObject(String path) throws IOException, SAXException {
-        Smooks smooks = new Smooks(OrderConverter.class.getResourceAsStream("/smooks/smooks-mapping-json.xml"));
-        try {
-            JavaResult javaResult = new JavaResult();
-            smooks.filterSource(new StreamSource(OrderConverter.class.getResourceAsStream(path)), javaResult);
-            return (Order) javaResult.getBean("order");
-        } finally {
-            smooks.close();
-        }
-    }
-
+    
 
     public String convertOrderXMLtoEDIFACT(String path) throws IOException, SAXException {
         return convertDocumentWithTempalte(path, "/smooks/smooks-transform-edi.xml");
