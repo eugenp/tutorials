@@ -4,7 +4,7 @@ class ColumnNode extends DancingNode {
     int size;
     String name;
 
-    public ColumnNode(String n) {
+    ColumnNode(String n) {
         super();
         size = 0;
         name = n;
