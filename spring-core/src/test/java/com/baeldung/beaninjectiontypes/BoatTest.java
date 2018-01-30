@@ -16,7 +16,7 @@ public class BoatTest {
     Boat boat;
 
     @Test
-    public void engineInjectionTest() {
+    public void givenAutowired_whenOnSetter_thenInjected() {
         assertNotNull(boat);
         assertNotNull(boat.getEngine());
     }

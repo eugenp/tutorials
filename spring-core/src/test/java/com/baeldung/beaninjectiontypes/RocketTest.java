@@ -16,7 +16,7 @@ public class RocketTest {
     Rocket rocket;
 
     @Test
-    public void engineInjectionTest() {
+    public void givenAutowired_whenOnConstructor_thenInjected() {
         assertNotNull(rocket);
         assertNotNull(rocket.getEngine());
     }

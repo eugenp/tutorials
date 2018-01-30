@@ -16,7 +16,7 @@ public class CarTest {
     Car car;
 
     @Test
-    public void engineInjectionTest() {
+    public void givenAutowired_whenOnField_thenSetterInjected() {
         assertNotNull(car);
         assertNotNull(car.getEngine());
     }

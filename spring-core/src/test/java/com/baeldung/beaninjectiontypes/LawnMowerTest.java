@@ -16,7 +16,7 @@ public class LawnMowerTest {
     LawnMower lawnMower;
 
     @Test
-    public void engineInjectionTest() {
+    public void givenAutowired_whenOnField_thenConstructorInjected() {
         assertNotNull(lawnMower);
         assertNotNull(lawnMower.getEngine());
     }
