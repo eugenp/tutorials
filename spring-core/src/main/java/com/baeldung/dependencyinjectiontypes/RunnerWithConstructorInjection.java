@@ -2,12 +2,12 @@ package com.baeldung.dependencyinjectiontypes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class ArticleWithConstructorInjection {
+public class RunnerWithConstructorInjection {
 
-	private TextFormatter formatter;
+	private Formatter formatter;
 
 	@Autowired
-    public ArticleWithConstructorInjection(TextFormatter formatter) {
+    public RunnerWithConstructorInjection(Formatter formatter) {
         this.formatter = formatter;
     }
 
