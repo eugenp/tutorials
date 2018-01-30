@@ -17,15 +17,15 @@ public class SmooksIntegrationTest {
             "UNA:+.? '\r\n" +
             "UNH+771+IN_PROGRESS+2018-01-14'\r\n" +
             "CTA+CompanyX+1234567'\r\n" +
-            "LIN+1+PX1234+9,99'\r\n" +
-            "LIN+2+RX990+120,32'\r\n";
+            "LIN+1+PX1234+9.99'\r\n" +
+            "LIN+2+RX990+120.32'\r\n";
     private static final String EMAIL_MESSAGE =
             "Hi,\r\n" +
             "Order number #771 created on 2018-01-14 is currently in IN_PROGRESS status.\r\n" +
             "Consider contact supplier \"CompanyX\"  with phone number: \"1234567\".\r\n" +
             "Order items:\r\n" +
-            "1  X PX1234 (total price 9,99)\r\n" +
-            "2  X RX990 (total price 240,64)\r\n";
+            "1  X PX1234 (total price 9.99)\r\n" +
+            "2  X RX990 (total price 240.64)\r\n";
 
     @Test
     public void givenOrderXML_whenConvert_thenPOJOsConstructedCorrectly() throws Exception {
@@ -43,7 +43,7 @@ public class SmooksIntegrationTest {
         );
 
     }
-    
+
     @Test
     public void givenIncorrectOrderXML_whenValidate_thenExpectValidationErrors() throws Exception {
         OrderValidator orderValidator = new OrderValidator();
