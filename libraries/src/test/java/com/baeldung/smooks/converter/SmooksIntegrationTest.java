@@ -48,7 +48,10 @@ public class SmooksIntegrationTest {
     public void givenIncorrectOrderXML_whenValidate_thenExpectValidationErrors() throws Exception {
         OrderValidator orderValidator = new OrderValidator();
         ValidationResult validationResult = orderValidator.validate("/smooks/order.xml");
+
         assertThat(validationResult.getErrors(), hasSize(1));
+        // 1234567 didn't match ^[0-9\\-\\+]{9,15}$
+        assertThat(validationResult.getErrors().get(0).getFailRuleResult().getRuleName(),is("supplierPhone"));
     }
 
     @Test
