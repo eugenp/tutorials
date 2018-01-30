@@ -13,19 +13,6 @@ public class ActorController {
     @Autowired
     ActorService actorService;
 
-    // Response based on @ResponseStatus
-    @GetMapping("/leadActor/{id}")
-    public String getLeadActorName(@PathVariable("id") int id) throws LeadActorNotFoundException {
-        return actorService.getLeadActor(id);
-    }
-
-    // Response based on Global Exception Handler, overriding @ResponseStatus
-    @GetMapping("/leadActress/{id}")
-    public String getLeadActressName(@PathVariable("id") int id) throws LeadActressNotFoundException {
-        return actorService.getLeadActress(id);
-    }
-
-    // Response based on ResponseStatusException
     @GetMapping("/actor/{id}")
     public String getActorName(@PathVariable("id") int id) {
         try {
@@ -34,15 +21,4 @@ public class ActorController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Actor Not Found", ex);
         }
     }
-
-    // Response based on Global Exception Handler, overriding ResponseStatusException
-    @GetMapping("/actress/{id}")
-    public String getActressName(@PathVariable("id") int id) {
-        try {
-            return actorService.getActress(id);
-        } catch (ActressNotFoundException ex) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Actress Not Found", ex);
-        }
-    }
-
 }
