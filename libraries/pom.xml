@@ -710,6 +710,11 @@
             <classifier>test</classifier>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.milyn</groupId>
+            <artifactId>milyn-smooks-all</artifactId>
+            <version>${smooks.version}</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -789,6 +794,7 @@
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
         <kafka.version>1.0.0</kafka.version>
+        <smooks.version>1.7.0</smooks.version>
         <docker.version>3.0.14</docker.version>
     </properties>
 </project>
