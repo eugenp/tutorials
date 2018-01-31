@@ -57,6 +57,7 @@ public class NetworkIntegrationTest {
             sender.join();
             receiver.join();
         } catch (InterruptedException e) {
+            Thread.currentThread().interrupt(); 
             e.printStackTrace();
         }
         

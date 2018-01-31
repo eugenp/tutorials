@@ -14,7 +14,8 @@ public class Data {
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.out.println("Thread Interrupted");
+                Thread.currentThread().interrupt(); 
+                e.printStackTrace();
             }
         }
         transfer = true;
@@ -28,7 +29,8 @@ public class Data {
             try { 
                 wait();
             } catch (InterruptedException e) {
-                System.out.println("Thread Interrupted");
+                Thread.currentThread().interrupt(); 
+                e.printStackTrace();
             }
         }
         transfer = false;

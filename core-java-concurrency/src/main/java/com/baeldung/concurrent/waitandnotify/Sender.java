@@ -25,7 +25,8 @@ public class Sender implements Runnable {
             try {
                 Thread.sleep(ThreadLocalRandom.current().nextInt(1000, 5000));
             } catch (InterruptedException e) {
-                System.out.println("Thread Interrupted");
+                Thread.currentThread().interrupt(); 
+                e.printStackTrace();
             }
         }
     }
