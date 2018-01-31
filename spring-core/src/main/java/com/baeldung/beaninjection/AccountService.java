@@ -9,12 +9,11 @@ public class AccountService {
     private AccountRepository accountRepository;
 
     @Autowired
-    public AccountService(AccountRepository accountRepository) {
+    public void setAccountRepository(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
-    @Autowired
-    public void setAccountRepository(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public AccountRepository getAccountRepository() {
+        return accountRepository;
     }
 }
