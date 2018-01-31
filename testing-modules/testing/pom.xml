@@ -154,6 +154,17 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-assertions-generator-maven-plugin</artifactId>
+                <version>${assertj-generator.version}</version>
+                <configuration>
+                    <classes>
+                        <param>com.baeldung.testing.assertj.custom.Person</param>
+                        <param>com.baeldung.testing.assertj.custom.Car</param>
+                    </classes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -164,6 +175,7 @@
         <guava.version>21.0</guava.version>
         <assertj-guava.version>3.1.0</assertj-guava.version>
         <assertj-core.version>3.6.1</assertj-core.version>
+        <assertj-generator.version>2.1.0</assertj-generator.version>
         <truth.version>0.32</truth.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <jgotesting.version>0.12</jgotesting.version>
