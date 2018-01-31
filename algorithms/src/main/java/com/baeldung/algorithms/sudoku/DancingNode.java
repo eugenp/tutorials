@@ -39,11 +39,11 @@ class DancingNode {
         this.U.D = this.D.U = this;
     }
 
-    public DancingNode() {
+    DancingNode() {
         L = R = U = D = this;
     }
 
-    public DancingNode(ColumnNode c) {
+    DancingNode(ColumnNode c) {
         this();
         C = c;
     }

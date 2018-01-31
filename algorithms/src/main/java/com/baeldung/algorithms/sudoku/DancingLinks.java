@@ -50,10 +50,9 @@ public class DancingLinks {
 
     private ColumnNode makeDLXBoard(boolean[][] grid) {
         final int COLS = grid[0].length;
-        final int ROWS = grid.length;
 
         ColumnNode headerNode = new ColumnNode("header");
-        ArrayList<ColumnNode> columnNodes = new ArrayList<ColumnNode>();
+        List<ColumnNode> columnNodes = new ArrayList<>();
 
         for (int i = 0; i < COLS; i++) {
             ColumnNode n = new ColumnNode(Integer.toString(i));
@@ -62,10 +61,10 @@ public class DancingLinks {
         }
         headerNode = headerNode.R.C;
 
-        for (int i = 0; i < ROWS; i++) {
+        for (boolean[] aGrid : grid) {
             DancingNode prev = null;
             for (int j = 0; j < COLS; j++) {
-                if (grid[i][j] == true) {
+                if (aGrid[j]) {
                     ColumnNode col = columnNodes.get(j);
                     DancingNode newNode = new DancingNode(col);
                     if (prev == null)
@@ -82,21 +81,21 @@ public class DancingLinks {
         return headerNode;
     }
 
-    public DancingLinks(boolean[][] cover) {
+    DancingLinks(boolean[][] cover) {
         header = makeDLXBoard(cover);
     }
 
     public void runSolver() {
-        answer = new LinkedList<DancingNode>();
+        answer = new LinkedList<>();
         search(0);
     }
 
-    public void handleSolution(List<DancingNode> answer) {
+    private void handleSolution(List<DancingNode> answer) {
         int[][] result = parseBoard(answer);
         printSolution(result);
     }
 
-    int size = 9;
+    private int size = 9;
 
     private int[][] parseBoard(List<DancingNode> answer) {
         int[][] result = new int[size][size];
@@ -120,12 +119,12 @@ public class DancingLinks {
         return result;
     }
 
-    public static void printSolution(int[][] result) {
+    private static void printSolution(int[][] result) {
         int N = result.length;
-        for (int i = 0; i < N; i++) {
-            String ret = "";
+        for (int[] aResult : result) {
+            StringBuilder ret = new StringBuilder();
             for (int j = 0; j < N; j++) {
-                ret += result[i][j] + " ";
+                ret.append(aResult[j]).append(" ");
             }
             System.out.println(ret);
         }
