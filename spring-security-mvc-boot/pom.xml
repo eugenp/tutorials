@@ -122,6 +122,25 @@
             <artifactId>jstl-api</artifactId>
             <version>${jstl.version}</version>
         </dependency>
+        
+        <dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-acl</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		</dependency>
+		<dependency>
+	        <groupId>net.sf.ehcache</groupId>
+	    	<artifactId>ehcache-core</artifactId>
+	    	<version>2.6.11</version>
+	    	<type>jar</type>
+        </dependency>
 
     </dependencies>
 

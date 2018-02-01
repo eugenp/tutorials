@@ -25,10 +25,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-    <groupId>org.keycloak</groupId>
-    <artifactId>keycloak-spring-boot-starter</artifactId>
-</dependency>
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
@@ -171,18 +167,13 @@
             <groupId>org.apache.activemq</groupId>
             <artifactId>artemis-server</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+            <version>${rome.version}</version>
+        </dependency>
     </dependencies>
-    <dependencyManagement>
-  <dependencies>
-    <dependency>
-      <groupId>org.keycloak.bom</groupId>
-      <artifactId>keycloak-adapter-bom</artifactId>
-      <version>3.3.0.CR2</version>
-      <type>pom</type>
-      <scope>import</scope>
-    </dependency>
-  </dependencies>
-</dependencyManagement>
 
     <build>
         <finalName>spring-boot</finalName>
@@ -282,7 +273,7 @@
 
     <properties>
         <!-- The main class to start by executing java -jar -->
-        <start-class>org.baeldung.boot.DemoApplication</start-class>
+        <start-class>org.baeldung.demo.DemoApplication</start-class>
         <spring.version>4.3.4.RELEASE</spring.version>
         <git-commit-id-plugin.version>2.2.1</git-commit-id-plugin.version>
         <jquery.version>3.1.1</jquery.version>
@@ -291,6 +282,7 @@
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <h2.version>1.4.194</h2.version>
         <togglz.version>2.4.1.Final</togglz.version>
+        <rome.version>1.9.0</rome.version>
     </properties>
 
 </project>

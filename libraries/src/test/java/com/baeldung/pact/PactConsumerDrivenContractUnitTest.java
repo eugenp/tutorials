@@ -32,9 +32,9 @@ public class PactConsumerDrivenContractUnitTest {
         headers.put("Content-Type", "application/json");
 
         return builder
-          .given("test GET ")
+          .given("test GET")
           .uponReceiving("GET REQUEST")
-          .path("/")
+          .path("/pact")
           .method("GET")
           .willRespondWith()
           .status(200)
@@ -45,11 +45,9 @@ public class PactConsumerDrivenContractUnitTest {
           .method("POST")
           .headers(headers)
           .body("{\"name\": \"Michael\"}")
-          .path("/create")
+          .path("/pact")
           .willRespondWith()
           .status(201)
-          .headers(headers)
-          .body("")
           .toPact();
     }
 
@@ -59,7 +57,7 @@ public class PactConsumerDrivenContractUnitTest {
     public void givenGet_whenSendRequest_shouldReturn200WithProperHeaderAndBody() {
         //when
         ResponseEntity<String> response
-          = new RestTemplate().getForEntity(mockProvider.getUrl(), String.class);
+          = new RestTemplate().getForEntity(mockProvider.getUrl() + "/pact", String.class);
 
         //then
         assertThat(response.getStatusCode().value()).isEqualTo(200);
@@ -73,7 +71,7 @@ public class PactConsumerDrivenContractUnitTest {
 
         //when
         ResponseEntity<String> postResponse = new RestTemplate().exchange(
-          mockProvider.getUrl() + "/create",
+          mockProvider.getUrl() + "/pact",
           HttpMethod.POST,
           new HttpEntity<>(jsonBody, httpHeaders),
           String.class
