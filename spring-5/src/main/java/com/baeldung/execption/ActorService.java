@@ -15,4 +15,12 @@ public class ActorService {
         }
         return actors.get(index);
     }
+
+    public String updateActor(int index, String actorName) throws ActorNotFoundException {
+        if (index >= actors.size()) {
+            throw new ActorNotFoundException("Actor Not Found in Repsoitory");
+        }
+        actors.set(index, actorName);
+        return actorName;
+    }
 }
