@@ -9,6 +9,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Vector;
@@ -251,4 +252,62 @@ public class EmployeeTest {
         
         assertEquals(empNames.size(), 3);
     }
+
+    @Test
+    public void whenPartition_GetMap() {
+        List<Integer> intList = Arrays.asList(2, 4, 5, 6, 8);
+        Map<Boolean, List<Integer>> isEven = intList.stream().collect(
+          Collectors.partitioningBy(i -> i % 2 == 0));
+        
+        assertEquals(isEven.get(true).size(), 4);
+        assertEquals(isEven.get(false).size(), 1);
+    }
+    
+    @Test
+    public void whenGroupingBy_GetMap() {
+        Map<Character, List<Employee>> groupByAlphabet = empList.stream().collect(
+          Collectors.groupingBy(e -> new Character(e.getName().charAt(0))));
+
+        assertEquals(groupByAlphabet.get('B').get(0).getName(), "Bill Gates");
+        assertEquals(groupByAlphabet.get('J').get(0).getName(), "Jeff Bezos");
+        assertEquals(groupByAlphabet.get('M').get(0).getName(), "Mark Zuckerberg");
+    }
+
+    @Test
+    public void whenParallelStream_thenPerformOperationsInParallel() {
+        Employee[] arrayOfEmps = {
+          new Employee(1, "Jeff Bezos", 100000.0), 
+          new Employee(2, "Bill Gates", 200000.0), 
+          new Employee(3, "Mark Zuckerberg", 300000.0)
+        };
+
+        List<Employee> empList = Arrays.asList(arrayOfEmps);
+        
+        empList.stream().parallel().forEach(e -> e.salaryIncrement(10.0));
+        
+        assertThat(empList, contains(
+          hasProperty("salary", equalTo(110000.0)),
+          hasProperty("salary", equalTo(220000.0)),
+          hasProperty("salary", equalTo(330000.0))
+        ));
+    }
+
+    @Test
+    public void whenGenerateStream_thenGetInfiniteStream() {
+        Stream.generate(Math::random)
+          .limit(5)
+          .forEach(System.out::println);
+    }
+
+    @Test
+    public void whenIterateStream_thenGetInfiniteStream() {
+        Stream<Integer> evenNumStream = Stream.iterate(2, i -> i * 2);
+    
+        List<Integer> collect = evenNumStream
+          .limit(5)
+          .collect(Collectors.toList());
+  
+        assertEquals(collect, Arrays.asList(2, 4, 8, 16, 32));
+    }
+
 }
