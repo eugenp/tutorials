@@ -1,9 +1,6 @@
 package com.baeldung.shufflingcollections;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class SetShuffling {
     public static void main(String[] args) {
@@ -16,8 +13,10 @@ public class SetShuffling {
         System.out.println("Set before shuffling:");
         System.out.println(students);
 
-        Collections.shuffle(new ArrayList<>(students));
-        System.out.println("Set after shuffling:");
-        System.out.println(students);
+        List<String> studentList = new ArrayList<>(students);
+
+        Collections.shuffle(studentList);
+        System.out.println("Students after shuffling:");
+        System.out.println(studentList);
     }
 }
