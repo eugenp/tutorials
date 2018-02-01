@@ -5,7 +5,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.sun.istack.internal.NotNull;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +17,7 @@ public class Config {
 	private String printerType;
 
 	@Bean(name = "printer")
-	public IPrinter printer(@NotNull ApplicationContext context) {
+	public IPrinter printer(ApplicationContext context) {
 		if (printerType.equals("decorator")) {
 			return context.getBean(DecoratorPrinter.class);
 		} else {
