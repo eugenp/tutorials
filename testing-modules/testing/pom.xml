@@ -161,7 +161,6 @@
                 <configuration>
                     <classes>
                         <param>com.baeldung.testing.assertj.custom.Person</param>
-                        <param>com.baeldung.testing.assertj.custom.Car</param>
                     </classes>
                 </configuration>
             </plugin>

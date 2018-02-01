@@ -5,7 +5,5 @@ public class Assertions {
         return new PersonAssert(actual);
     }
 
-    public static CarAssert assertThat(Car actual) {
-        return new CarAssert(actual);
-    }
+    // static factory methods of other assertion classes
 }
