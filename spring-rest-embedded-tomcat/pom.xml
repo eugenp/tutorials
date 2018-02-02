@@ -84,14 +84,13 @@
                         <exclude>**/JdbcTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
-
                 </configuration>
             </plugin>
         </plugins>
 	</build>
 
 	<properties>
-		<spring.version>5.0.1.RELEASE</spring.version>
+		<spring.version>5.0.2.RELEASE</spring.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
 		<junit.version>4.12</junit.version>
 		<jackson.library>2.9.2</jackson.library>
