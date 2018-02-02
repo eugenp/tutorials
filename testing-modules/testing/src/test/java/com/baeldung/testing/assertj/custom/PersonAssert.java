@@ -15,7 +15,7 @@ public class PersonAssert extends AbstractAssert<PersonAssert, Person> {
     public PersonAssert hasFullName(String fullName) {
         isNotNull();
         if (!actual.getFullName().equals(fullName)) {
-            failWithMessage("Expected full name %s but was %s", fullName, actual.getFullName());
+            failWithMessage("Expected person to have full name %s but was %s", fullName, actual.getFullName());
         }
         return this;
     }
@@ -23,7 +23,7 @@ public class PersonAssert extends AbstractAssert<PersonAssert, Person> {
     public PersonAssert isAdult() {
         isNotNull();
         if (actual.getAge() < 18) {
-            failWithMessage("Expected adult but was juvenile");
+            failWithMessage("Expected person to be adult");
         }
         return this;
     }
@@ -31,7 +31,7 @@ public class PersonAssert extends AbstractAssert<PersonAssert, Person> {
     public PersonAssert hasNickname(String nickName) {
         isNotNull();
         if (!actual.getNicknames().contains(nickName)) {
-            failWithMessage("Expected nickname %s but did not have", nickName);
+            failWithMessage("Expected person to have nickname %s", nickName);
         }
         return this;
     }

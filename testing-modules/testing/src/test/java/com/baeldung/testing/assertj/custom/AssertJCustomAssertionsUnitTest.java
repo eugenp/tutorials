@@ -25,7 +25,7 @@ public class AssertJCustomAssertionsUnitTest {
             assertThat(person).isAdult();
             fail();
         } catch (AssertionError e) {
-            org.assertj.core.api.Assertions.assertThat(e).hasMessage("Expected adult but was juvenile");
+            org.assertj.core.api.Assertions.assertThat(e).hasMessage("Expected person to be adult");
         }
     }
 
@@ -38,7 +38,7 @@ public class AssertJCustomAssertionsUnitTest {
             assertThat(person).hasNickname("John");
             fail();
         } catch (AssertionError e) {
-            org.assertj.core.api.Assertions.assertThat(e).hasMessage("Expected nickname John but did not have");
+            org.assertj.core.api.Assertions.assertThat(e).hasMessage("Expected person to have nickname John");
         }
     }
 }
