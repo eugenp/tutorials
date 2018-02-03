@@ -27,14 +27,10 @@ public class ValidReservationValidator implements ConstraintValidator<ValidReser
             return false;
         }
 
-        if (reservation.getBegin()
+        return (reservation.getBegin()
             .isAfter(LocalDate.now())
             && reservation.getBegin()
                 .isBefore(reservation.getEnd())
-            && reservation.getRoom() > 0) {
-
-            return true;
-        }
-        return false;
+            && reservation.getRoom() > 0);
     }
 }
