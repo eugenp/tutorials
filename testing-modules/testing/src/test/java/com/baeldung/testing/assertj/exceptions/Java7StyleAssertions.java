@@ -15,9 +15,10 @@ public class Java7StyleAssertions {
             int denominator = 0;
             int quotient = numerator / denominator;
             fail("ArithmeticException expected because dividing by zero yields an ArithmeticException.");
-            failBecauseExceptionWasNotThrown(IndexOutOfBoundsException.class);
-        } catch (ArithmeticException e) {
+            failBecauseExceptionWasNotThrown(ArithmeticException.class);
+        } catch (Exception e) {
             assertThat(e).hasMessage("/ by zero");
+            assertThat(e).isInstanceOf(ArithmeticException.class);
         }
     }
 }
