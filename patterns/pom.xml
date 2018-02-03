@@ -10,6 +10,7 @@
         <module>front-controller</module>
         <module>intercepting-filter</module>
         <module>behavioral-patterns</module>
+        <module>creational-patterns</module>
     </modules>
 
     <parent>
