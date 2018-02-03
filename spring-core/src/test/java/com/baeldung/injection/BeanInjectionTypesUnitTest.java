@@ -12,7 +12,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = InjectionsApp.class)
-public class SpringBeanInjectionTypesTest {
+public class BeanInjectionTypesUnitTest {
 
     @Autowired
     @Qualifier("preferences")
