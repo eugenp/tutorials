@@ -20,7 +20,7 @@ public class InjectionsApp {
 
     @Bean(name = "constructorPreferences", autowire = Autowire.BY_NAME)
     public UserPreferences getUserConstructor() {
-        final UserPreferences preferences = new UserPreferences("test");
+        final UserPreferences preferences = new UserPreferences("constructor test");
         return preferences;
     }
 
