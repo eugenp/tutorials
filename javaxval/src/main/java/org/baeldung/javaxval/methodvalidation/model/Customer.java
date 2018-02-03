@@ -14,7 +14,7 @@ public class Customer {
     @Size(min = 5, max = 200)
     private String lastName;
 
-    public Customer(@Size(min = 5, max = 200) @NotNull String firstName, @Size(min = 5, max = 200) String lastName) {
+    public Customer(@Size(min = 5, max = 200) @NotNull String firstName, @Size(min = 5, max = 200) @NotNull String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
