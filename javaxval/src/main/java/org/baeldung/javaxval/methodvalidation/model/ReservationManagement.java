@@ -30,6 +30,11 @@ public class ReservationManagement {
         // ...
     }
 
+    public void createReservation(@Valid Reservation reservation) {
+
+        // ...
+    }
+
     @NotNull
     @Size(min = 1)
     public List<@NotNull Customer> getAllCustomers() {
@@ -37,13 +42,8 @@ public class ReservationManagement {
         return null;
     }
 
-    public void createNewCustomer(@Valid Customer customer) {
-
-        // ...
-    }
-
     @Valid
-    public Customer getCustomerById() {
+    public Reservation getReservationById(int id) {
 
         return null;
     }

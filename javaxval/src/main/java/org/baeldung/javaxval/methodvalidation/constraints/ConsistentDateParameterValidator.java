@@ -15,9 +15,6 @@ public class ConsistentDateParameterValidator implements ConstraintValidator<Con
 
     @Override
     public boolean isValid(Object[] value, ConstraintValidatorContext context) {
-        if (value.length != 4 && value.length != 3) {
-            throw new IllegalArgumentException("Illegal method signature");
-        }
 
         if (value[0] == null || value[1] == null) {
             return false;
@@ -27,6 +24,6 @@ public class ConsistentDateParameterValidator implements ConstraintValidator<Con
             throw new IllegalArgumentException("Illegal method signature, expected two parameters of type LocalDate.");
         }
 
-        return ((LocalDate) value[0]).isBefore((LocalDate) value[1]);
+        return ((LocalDate) value[0]).isAfter(LocalDate.now()) && ((LocalDate) value[0]).isBefore((LocalDate) value[1]);
     }
 }

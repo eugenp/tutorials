@@ -16,7 +16,7 @@ public class ValidReservationValidator implements ConstraintValidator<ValidReser
     public boolean isValid(Reservation reservation, ConstraintValidatorContext context) {
 
         if (reservation == null) {
-            return true;
+            return false;
         }
 
         if (!(reservation instanceof Reservation)) {

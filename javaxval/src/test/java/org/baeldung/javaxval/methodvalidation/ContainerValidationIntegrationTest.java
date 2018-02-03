@@ -1,6 +1,7 @@
 package org.baeldung.javaxval.methodvalidation;
 
 import org.baeldung.javaxval.methodvalidation.model.Customer;
+import org.baeldung.javaxval.methodvalidation.model.Reservation;
 import org.baeldung.javaxval.methodvalidation.model.ReservationManagement;
 import org.junit.Rule;
 import org.junit.Test;
@@ -69,9 +70,14 @@ public class ContainerValidationIntegrationTest {
         Customer customer = new Customer();
         customer.setFirstName("John");
         customer.setLastName("Doe");
+        Reservation reservation = new Reservation(LocalDate.now()
+            .plusDays(1),
+            LocalDate.now()
+                .plusDays(2),
+            customer, 1);
 
         exception.expect(ConstraintViolationException.class);
-        reservationManagement.createNewCustomer(customer);
+        reservationManagement.createReservation(reservation);
     }
 
     @Test
@@ -80,7 +86,12 @@ public class ContainerValidationIntegrationTest {
         Customer customer = new Customer();
         customer.setFirstName("William");
         customer.setLastName("Smith");
+        Reservation reservation = new Reservation(LocalDate.now()
+            .plusDays(1),
+            LocalDate.now()
+                .plusDays(2),
+            customer, 1);
 
-        reservationManagement.createNewCustomer(customer);
+        reservationManagement.createReservation(reservation);
     }
 }

@@ -4,6 +4,8 @@ import org.baeldung.javaxval.methodvalidation.constraints.ConsistentDateParamete
 import org.baeldung.javaxval.methodvalidation.constraints.ValidReservation;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 import java.time.LocalDate;
 
 @Validated
@@ -13,8 +15,10 @@ public class Reservation {
 
     private LocalDate end;
 
+    @Valid
     private Customer customer;
 
+    @Positive
     private int room;
 
     @ConsistentDateParameters

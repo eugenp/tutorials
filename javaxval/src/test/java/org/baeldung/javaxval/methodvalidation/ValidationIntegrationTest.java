@@ -172,11 +172,16 @@ public class ValidationIntegrationTest {
     public void whenValidationWithInvalidCascadedValue_thenCorrectNumberOfVoilations() throws NoSuchMethodException {
 
         ReservationManagement object = new ReservationManagement();
-        Method method = ReservationManagement.class.getMethod("createNewCustomer", Customer.class);
+        Method method = ReservationManagement.class.getMethod("createReservation", Reservation.class);
         Customer customer = new Customer();
         customer.setFirstName("John");
         customer.setLastName("Doe");
-        Object[] parameterValues = { customer };
+        Reservation reservation = new Reservation(LocalDate.now()
+            .plusDays(1),
+            LocalDate.now()
+                .plusDays(2),
+            customer, 1);
+        Object[] parameterValues = { reservation };
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateParameters(object, method, parameterValues);
 
         assertEquals(2, violations.size());
@@ -186,11 +191,16 @@ public class ValidationIntegrationTest {
     public void whenValidationWithValidCascadedValue_thenCorrectNumberOfVoilations() throws NoSuchMethodException {
 
         ReservationManagement object = new ReservationManagement();
-        Method method = ReservationManagement.class.getMethod("createNewCustomer", Customer.class);
+        Method method = ReservationManagement.class.getMethod("createReservation", Reservation.class);
         Customer customer = new Customer();
         customer.setFirstName("William");
         customer.setLastName("Smith");
-        Object[] parameterValues = { customer };
+        Reservation reservation = new Reservation(LocalDate.now()
+            .plusDays(1),
+            LocalDate.now()
+                .plusDays(2),
+            customer, 1);
+        Object[] parameterValues = { reservation };
         Set<ConstraintViolation<ReservationManagement>> violations = executableValidator.validateParameters(object, method, parameterValues);
 
         assertEquals(0, violations.size());
