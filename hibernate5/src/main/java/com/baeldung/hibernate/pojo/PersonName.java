@@ -2,9 +2,6 @@ package com.baeldung.hibernate.pojo;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-
-@Entity
 public class PersonName implements Serializable {
 
     private static final long serialVersionUID = 7883094644631050150L;
