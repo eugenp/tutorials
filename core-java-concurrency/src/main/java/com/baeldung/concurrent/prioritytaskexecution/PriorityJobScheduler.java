@@ -9,14 +9,14 @@ import java.util.concurrent.TimeUnit;
 public class PriorityJobScheduler {
 
     private ExecutorService priorityJobPoolExecutor;
-    private ExecutorService priorityJobScheduler;
+    private ExecutorService priorityJobScheduler = 
+      Executors.newSingleThreadExecutor();
     private PriorityBlockingQueue<Job> priorityQueue;
 
     public PriorityJobScheduler(Integer poolSize, Integer queueSize) {
         priorityJobPoolExecutor = Executors.newFixedThreadPool(poolSize);
         priorityQueue = new PriorityBlockingQueue<Job>(queueSize, 
           Comparator.comparing(Job::getJobPriority));
-        priorityJobScheduler = Executors.newSingleThreadExecutor();
 
         priorityJobScheduler.execute(()->{
             while (true) {
