@@ -23,7 +23,8 @@ public class PriorityJobScheduler {
                 try {
                     priorityJobPoolExecutor.execute(priorityQueue.take());
                 } catch (InterruptedException e) {
-                    break;
+                    Thread.currentThread().interrupt();
+                    throw new RuntimeException(e);
                 }
             }
         });
