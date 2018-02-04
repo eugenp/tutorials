@@ -138,15 +138,16 @@ public class EmployeeTest {
     
     @Test
     public void whenSortStream_GetSortedStream() {
-        List<Employee> employees = empList.stream()
+        Employee employees = empList.stream()
           .sorted((e1, e2) -> e1.getName().compareTo(e2.getName()))
-          .collect(Collectors.toList());
-        
-        List<String> result = employees.stream()
-          .map(Employee::getName)
-          .collect(Collectors.toList());
+          .findFirst()
+          .orElse(null);
+//          .collect(Collectors.toList());
+      assertEquals(employees.getName(), "Bill Gates");
 
-        assertEquals(result, Arrays.asList("Bill Gates", "Jeff Bezos", "Mark Zuckerberg"));
+//        assertEquals(employees.get(0).getName(), "Bill Gates");
+//        assertEquals(employees.get(1).getName(), "Jeff Bezos");
+//        assertEquals(employees.get(2).getName(), "Mark Zuckerberg");
     }
 
 
