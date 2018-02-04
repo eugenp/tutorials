@@ -10,8 +10,8 @@ public class MonotonicNotNullExample {
     // so it starts as null but can only become not null.
     @MonotonicNonNull private Date firstCall;
 
-    public Date getFirstCall(){
-        if(firstCall==null) {
+    public Date getFirstCall() {
+        if (firstCall == null) {
             firstCall = new Date();
         }
         return firstCall;
@@ -22,6 +22,5 @@ public class MonotonicNotNullExample {
         // we wrongly set it to null.
         firstCall = null;
     }
-
 
 }

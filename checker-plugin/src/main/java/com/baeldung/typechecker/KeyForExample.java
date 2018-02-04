@@ -12,11 +12,11 @@ public class KeyForExample {
 
     private Map<String, String> paramToValue = new HashMap<>();
 
-    KeyForExample(){
+    KeyForExample() {
         paramToValue.put(URL, "http://1.2.3.4");
     }
 
-    String getMaker(@KeyFor("this.paramToValue") Object model){
+    String getMaker(@KeyFor("this.paramToValue") Object model) {
         return paramToValue.get(model);
     }
 

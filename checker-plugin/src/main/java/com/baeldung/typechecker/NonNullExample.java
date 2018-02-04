@@ -5,12 +5,12 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 
 public class NonNullExample {
 
-    private int countArgs(@NonNull String[] args) {
+    private static int countArgs(@NonNull String[] args) {
         return args.length;
     }
 
-    public String status(@Nullable String[] args) {
-        return "There are " + countArgs(args) + " items";
+    public static void main(@Nullable String[] args) {
+        System.out.println(countArgs(args));
     }
 
 }
