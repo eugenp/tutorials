@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<bean id="company" class="com.baeldung.springpractice.Company">
+		<constructor-arg index="0" value="NeoTech"/>
+        <constructor-arg index="1" value="Tester"/>
+	</bean>
+	
+	<bean id="person" class="com.baeldung.springpractice.Person">
+		<constructor-arg type="int" value="20"/>
+        <constructor-arg type="java.lang.String" value="Ramu"/>
+	</bean>
+	
+	<bean id="salary" class="com.baeldung.springpractice.Salary">
+		<constructor-arg name="experience" value="5"/>
+        <constructor-arg name="amount" value="20000"/>
+	</bean>
+	
+	<bean id="employee" class="com.baeldung.springpractice.Employee">
+		<constructor-arg ref="person"/>
+        <constructor-arg ref="company"/>
+        <constructor-arg ref="salary"/>
+	</bean>
+	<bean id="processor" class="com.baeldung.springpractice.Processor">
+		<property name="employee" ref="employee"></property>
+	</bean>
+
+</beans>
