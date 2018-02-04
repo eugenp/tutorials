@@ -9,7 +9,7 @@ import org.hibernate.Interceptor;
 import org.hibernate.Transaction;
 import org.hibernate.type.Type;
 
-public class CustomInterceptorImpl implements Interceptor {
+public class CustomInterceptorImpl implements Interceptor, Serializable {
 
     @Override
     public boolean onLoad(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) throws CallbackException {

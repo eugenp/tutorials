@@ -15,9 +15,9 @@ public class PriorityJobScheduler {
     public PriorityJobScheduler(Integer poolSize, Integer queueSize) {
         priorityJobPoolExecutor = Executors.newFixedThreadPool(poolSize);
         priorityQueue = new PriorityBlockingQueue<Job>(queueSize, 
-                Comparator.comparing(Job::getJobPriority));
-
+          Comparator.comparing(Job::getJobPriority));
         priorityJobScheduler = Executors.newSingleThreadExecutor();
+
         priorityJobScheduler.execute(()->{
             while (true) {
                 try {

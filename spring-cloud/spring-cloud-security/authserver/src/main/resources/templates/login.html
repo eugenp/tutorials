@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Baeldung Spring cloud Security</title>
+</head>
+<body onload="document.f.username.focus();">
+
+<h1>Login</h1>
+
+
+<form th:action="@{/login}" name="f" method="post">
+    <fieldset>
+        <h2> Username and Password:</h2>
+        <p>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"/>
+        </p>
+        <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"/>
+        </p>
+        <p>
+            <input name="submit" type="submit" value="Login"/>
+        </p>
+    </fieldset>
+</form>
+</body>
+</html>
