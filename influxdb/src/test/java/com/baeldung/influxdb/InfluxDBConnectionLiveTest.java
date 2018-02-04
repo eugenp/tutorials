@@ -8,7 +8,6 @@ import org.influxdb.dto.*;
 import org.influxdb.impl.InfluxDBResultMapper;
 import org.junit.Test;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -55,7 +54,7 @@ public class InfluxDBConnectionLiveTest {
 
         InfluxDB connection = connectDatabase();
 
-        // Create "baeldung and check for it
+        // Create "baeldung" and check for it
         connection.createDatabase("baeldung");
         assertTrue(connection.databaseExists("baeldung"));
 
@@ -103,7 +102,7 @@ public class InfluxDBConnectionLiveTest {
         // another brief pause.
         Thread.sleep(10);
 
-        List<MemoryPoint> memoryPointList = getPoints(connection, "Select * from memory", "baeldung");
+        List<com.baeldung.influxdb.MemoryPoint> memoryPointList = getPoints(connection, "Select * from memory", "baeldung");
 
         assertEquals(10, memoryPointList.size());
 

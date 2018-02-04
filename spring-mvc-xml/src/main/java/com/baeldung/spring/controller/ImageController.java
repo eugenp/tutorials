@@ -12,7 +12,6 @@ import org.springframework.web.context.support.ServletContextResource;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
