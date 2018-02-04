@@ -45,7 +45,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenIncrSalaryForEachEmployee_ApplyNewSalary() {
+    public void whenIncrementSalaryForEachEmployee_thenApplyNewSalary() {
         Employee[] arrayOfEmps = {
             new Employee(1, "Jeff Bezos", 100000.0), 
             new Employee(2, "Bill Gates", 200000.0), 
@@ -64,7 +64,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenMapIdToEmployees_GetEmployeeStream() {
+    public void whenMapIdToEmployees_thenGetEmployeeStream() {
         Integer[] empIds = { 1, 2, 3 };
         
         List<Employee> employees = Stream.of(empIds)
@@ -75,7 +75,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenFilterIdToEmployees_GetEmployeeStream() {
+    public void whenFilterEmployees_thenGetFilteredStream() {
         Integer[] empIds = { 1, 2, 3, 4 };
         
         List<Employee> employees = Stream.of(empIds)
@@ -88,7 +88,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenFilterAndFindFirstEmployee_GetEmployee() {
+    public void whenFindFirst_thenGetFirstEmployeeInStream() {
         Integer[] empIds = { 1, 2, 3, 4 };
         
         Employee employee = Stream.of(empIds)
@@ -102,21 +102,21 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenCollectStream_GetList() {
+    public void whenCollectStreamToList_thenGetList() {
         List<Employee> employees = empList.stream().collect(Collectors.toList());
         
         assertEquals(empList, employees);
     }
 
     @Test
-    public void whenStreamToArray_GetArray() {
+    public void whenStreamToArray_thenGetArray() {
         Employee[] employees = empList.stream().toArray(Employee[]::new);
 
         assertThat(empList.toArray(), equalTo(employees));
     }
     
     @Test
-    public void whenStreamCount_GetElementCount() {
+    public void whenStreamCount_thenGetElementCount() {
         Long empCount = empList.stream()
           .filter(e -> e.getSalary() > 200000)
           .count();
@@ -125,7 +125,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenInfiniteStream_ShortCircuitUsingLimit() {
+    public void whenLimitInfiniteStream_thenGetFiniteElements() {
         Stream<Integer> infiniteStream = Stream.iterate(2, i -> i * 2);
     
         List<Integer> collect = infiniteStream
@@ -137,22 +137,19 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenSortStream_GetSortedStream() {
-        Employee employees = empList.stream()
+    public void whenSortStream_thenGetSortedStream() {
+        List<Employee> employees = empList.stream()
           .sorted((e1, e2) -> e1.getName().compareTo(e2.getName()))
-          .findFirst()
-          .orElse(null);
-//          .collect(Collectors.toList());
-      assertEquals(employees.getName(), "Bill Gates");
+          .collect(Collectors.toList());
 
-//        assertEquals(employees.get(0).getName(), "Bill Gates");
-//        assertEquals(employees.get(1).getName(), "Jeff Bezos");
-//        assertEquals(employees.get(2).getName(), "Mark Zuckerberg");
+        assertEquals(employees.get(0).getName(), "Bill Gates");
+        assertEquals(employees.get(1).getName(), "Jeff Bezos");
+        assertEquals(employees.get(2).getName(), "Mark Zuckerberg");
     }
 
 
     @Test
-    public void whenFindMin_GetMinElementFromStream() {
+    public void whenFindMin_thenGetMinElementFromStream() {
         Employee firstEmp = empList.stream()
           .min((e1, e2) -> e1.getId() - e2.getId())
           .orElseThrow(NoSuchElementException::new);
@@ -161,7 +158,7 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenFindMax_GetMaxElementFromStream() {
+    public void whenFindMax_thenGetMaxElementFromStream() {
         Employee maxSalEmp = empList.stream()
           .max(Comparator.comparing(Employee::getSalary))
           .orElseThrow(NoSuchElementException::new);
@@ -170,7 +167,7 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenDistinct_RemoveDuplicatesFromStream() {
+    public void whenApplyDistinct_thenRemoveDuplicatesFromStream() {
         List<Integer> intList = Arrays.asList(2, 5, 3, 2, 4, 3);
         List<Integer> distinctIntList = intList.stream().distinct().collect(Collectors.toList());
         
@@ -178,7 +175,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenApplyMatch_ReturnBoolean() {
+    public void whenApplyMatch_thenReturnBoolean() {
         List<Integer> intList = Arrays.asList(2, 4, 5, 6, 8);
         
         boolean allEven = intList.stream().allMatch(i -> i % 2 == 0);
@@ -191,7 +188,7 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenApplyMaxOnIntStream_ReturnMax() {
+    public void whenFindMaxOnIntStream_thenGetMaxInteger() {
         Integer latestEmpId = empList.stream()
           .mapToInt(Employee::getId)
           .max()
@@ -208,7 +205,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenApplySumOnIntStream_ReturnSum() {
+    public void whenApplySumOnIntStream_thenGetSum() {
         Double avgSal = empList.stream()
           .mapToDouble(Employee::getSalary)
           .average()
@@ -218,7 +215,7 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenApplyReduceOnStream_ReturnSum() {
+    public void whenApplyReduceOnStream_thenGetValue() {
         Double sumSal = empList.stream()
           .map(Employee::getSalary)
           .reduce(0.0, Double::sum);
@@ -227,7 +224,7 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenCollectByJoining_GetJoinedString() {
+    public void whenCollectByJoining_thenGetJoinedString() {
         String empNames = empList.stream()
           .map(Employee::getName)
           .collect(Collectors.joining(", "))
@@ -237,7 +234,7 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenCollectBySet_GetSet() {
+    public void whenCollectBySet_thenGetSet() {
         Set<String> empNames = empList.stream()
                 .map(Employee::getName)
                 .collect(Collectors.toSet());
@@ -246,7 +243,7 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenToCollectionVector_GetVector() {
+    public void whenToVectorCollection_thenGetVector() {
         Vector<String> empNames = empList.stream()
                 .map(Employee::getName)
                 .collect(Collectors.toCollection(Vector::new));
@@ -255,7 +252,7 @@ public class EmployeeTest {
     }
 
     @Test
-    public void whenPartition_GetMap() {
+    public void whenStreamPartition_thenGetMap() {
         List<Integer> intList = Arrays.asList(2, 4, 5, 6, 8);
         Map<Boolean, List<Integer>> isEven = intList.stream().collect(
           Collectors.partitioningBy(i -> i % 2 == 0));
@@ -265,7 +262,7 @@ public class EmployeeTest {
     }
     
     @Test
-    public void whenGroupingBy_GetMap() {
+    public void whenStreamGroupingBy_thenGetMap() {
         Map<Character, List<Employee>> groupByAlphabet = empList.stream().collect(
           Collectors.groupingBy(e -> new Character(e.getName().charAt(0))));
 
