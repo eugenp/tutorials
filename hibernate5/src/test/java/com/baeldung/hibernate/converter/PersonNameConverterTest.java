@@ -11,7 +11,8 @@ import org.junit.Test;
 import com.baeldung.hibernate.HibernateUtil;
 import com.baeldung.hibernate.pojo.Person;
 import com.baeldung.hibernate.pojo.PersonName;
-import com.vividsolutions.jts.util.Assert;
+
+import static org.junit.Assert.assertEquals;
 
 public class PersonNameConverterTest {
 
@@ -58,15 +59,15 @@ public class PersonNameConverterTest {
             .setParameter("id", id)
             .getSingleResult();
 
-        Assert.equals(surname + ", " + name, dbPersonName);
+        assertEquals(surname + ", " + name, dbPersonName);
 
         Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
             .setParameter("id", id)
             .getSingleResult();
 
-        Assert.equals(dbPerson.getPersonName()
+        assertEquals(dbPerson.getPersonName()
             .getName(), name);
-        Assert.equals(dbPerson.getPersonName()
+        assertEquals(dbPerson.getPersonName()
             .getSurname(), surname);
     }
 
