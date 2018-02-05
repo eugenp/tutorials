@@ -100,7 +100,6 @@ public class JGroupsMessenger extends ReceiverAdapter {
             System.out.println("Received initial view:");
             newView.forEach(System.out::println);
         } else {
-
             // Compare to last view
             System.out.println("Received new view.");
 
@@ -135,7 +134,7 @@ public class JGroupsMessenger extends ReceiverAdapter {
                     continue;
                 } else if (!destinationName.isEmpty()) {
                     destination = getAddress(destinationName)
-                        . orElseThrow(() -> new Exception("Destination not found"));
+                      . orElseThrow(() -> new Exception("Destination not found"));
                 }
 
                 // Accept a string to send
