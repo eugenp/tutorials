@@ -193,15 +193,8 @@ public class EmployeeTest {
           .mapToInt(Employee::getId)
           .max()
           .orElseThrow(NoSuchElementException::new);
-        
-        IntStream i = IntStream.of(1, 2, 3);
-        Stream<Integer> s = Stream.of(1, 2, 3);
-        Stream<Integer> s1 = empList.stream()
-                .map(Employee::getId);
-        
-        IntStream.range(10, 20).forEach(System.out::println);
-        
-        assertEquals(latestEmpId, new Integer(1));
+
+        assertEquals(latestEmpId, new Integer(3));
     }
 
     @Test
