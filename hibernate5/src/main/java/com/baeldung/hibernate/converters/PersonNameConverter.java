@@ -29,13 +29,20 @@ public class PersonNameConverter implements AttributeConverter<PersonName, Strin
     public PersonName convertToEntityAttribute(String dbPerson) {
         String[] pieces = dbPerson.split(SEPARATOR);
 
-        if (pieces == null || pieces.length != 2) {
+        if (pieces == null || pieces.length > 2) {
             return null;
         }
 
         PersonName personName = new PersonName();
-        personName.setSurname(pieces[0]);
-        personName.setName(pieces[1]);
+        if (dbPerson.contains(SEPARATOR)) {
+            personName.setSurname(pieces[0]);
+
+            if (pieces[1] != null) {
+                personName.setName(pieces[1]);
+            }
+        } else {
+            personName.setName(pieces[0]);
+        }
 
         return personName;
     }
