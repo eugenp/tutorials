@@ -11,5 +11,4 @@ public class SampleClassLoaderTest {
                 sampleClassLoader.loadClass();
 
         }
-
 }

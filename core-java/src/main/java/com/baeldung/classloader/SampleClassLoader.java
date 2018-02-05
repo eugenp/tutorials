@@ -1,22 +1,23 @@
 package com.baeldung.classloader;
 
+import com.sun.javafx.util.Logging;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 
 public class SampleClassLoader {
 
-       public void loadClass() throws ClassNotFoundException {
+        public void loadClass() throws ClassNotFoundException {
 
-               System.out.println("Classloader of this class:"+SampleClassLoader.class.getClassLoader());
+                System.out.println("Classloader of this class:" + SampleClassLoader.class.getClassLoader());
+                System.out.println("Classloader of Logging:" + Logging.class.getClassLoader());
+                System.out.println("Classloader of ArrayList:" + ArrayList.class.getClassLoader());
 
-               Class.forName("com.baeldung.classloader.SampleClassLoader", true
-                       ,  SampleClassLoader.class.getClassLoader().getParent());
-
-       }
-
-
+                Class.forName("com.baeldung.classloader.SampleClassLoader", true, SampleClassLoader.class.getClassLoader().getParent());
+        }
 }
