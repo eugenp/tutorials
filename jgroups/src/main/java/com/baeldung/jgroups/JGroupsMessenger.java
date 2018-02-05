@@ -105,16 +105,12 @@ public class JGroupsMessenger extends ReceiverAdapter {
             System.out.println("Received new view.");
 
             List<Address> newMembers = View.newMembers(lastView, newView);
-            if (newMembers.size() > 0) {
-                System.out.println("New members: ");
-                newMembers.forEach(System.out::println);
-            }
+            System.out.println("New members: ");
+            newMembers.forEach(System.out::println);
 
             List<Address> exMembers = View.leftMembers(lastView, newView);
-            if (exMembers.size() > 0) {
-                System.out.println("Exited members:");
-                exMembers.forEach(System.out::println);
-            }
+            System.out.println("Exited members:");
+            exMembers.forEach(System.out::println);
         }
         lastView = newView;
     }
@@ -122,7 +118,7 @@ public class JGroupsMessenger extends ReceiverAdapter {
     /**
      * Loop on console input until we see 'x' to exit
      */
-    private void processInput() {
+    private void processInput() throws Exception {
 
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         while (running) {
@@ -138,13 +134,8 @@ public class JGroupsMessenger extends ReceiverAdapter {
                     running = false;
                     continue;
                 } else if (!destinationName.isEmpty()) {
-                    Optional<Address> optDestination = getAddress(destinationName);
-                    if (optDestination.isPresent()) {
-                        destination = optDestination.get();
-                    } else {
-                        System.out.println("Destination not found, try again.");
-                        continue;
-                    }
+                    destination = getAddress(destinationName)
+                        . orElseThrow(() -> new Exception("Destination not found"));
                 }
 
                 // Accept a string to send
