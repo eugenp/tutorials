@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureJsonTesters
 @AutoConfigureStubRunner(workOffline = true,
         ids = "com.baeldung.spring.cloud:spring-cloud-contract-producer:+:stubs:8090")
-public class BasicMathControllerTest {
+public class BasicMathControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

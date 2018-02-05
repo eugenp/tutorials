@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @DirtiesContext
 @AutoConfigureMessageVerifier
-public class BaseClass {
+public class BaseTestClass {
 
     @Autowired
     private EvenOddController evenOddController;

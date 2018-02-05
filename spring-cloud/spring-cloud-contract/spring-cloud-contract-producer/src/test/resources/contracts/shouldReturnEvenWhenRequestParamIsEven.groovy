@@ -14,5 +14,4 @@ Contract.make {
         body("Even")
         status 200
     }
-
 }
