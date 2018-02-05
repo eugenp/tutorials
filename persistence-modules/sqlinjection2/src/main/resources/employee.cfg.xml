@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
-"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
 
 <hibernate-configuration>
-	<session-factory>
-		<!-- <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property> 
-			<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/baeldung</property> 
-			<property name="hibernate.connection.username">baeldung</property> <property 
-			name="hibernate.connection.password">YourPassword</property> <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property> -->
-		<property name="show_sql">false</property>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/baeldung</property>
+        <property name="hibernate.connection.username">baeldung</property>
+        <property name="hibernate.connection.password">YourPassword</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="show_sql">false</property>
 
-		<property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-		<property name="hibernate.connection.url">jdbc:ucanaccess://C:/Users/pkara/Documents/baeldung.accdb</property>
-		<property name="hibernate.connection.driver_class">net.ucanaccess.jdbc.UcanaccessDriver</property>
-		<property name="hibernate.archive.autodetection">class</property>
-		
-		<mapping class="com.baeldung.model.Employee" />
-	</session-factory>
+        <!--
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+        <property name="hibernate.connection.url">jdbc:ucanaccess://C:/Users/pkara/Documents/baeldung.accdb</property>
+        <property name="hibernate.connection.driver_class">net.ucanaccess.jdbc.UcanaccessDriver</property>
+        <property name="hibernate.archive.autodetection">class</property>
+        -->
+        <mapping class="com.baeldung.model.Employee"/>
+    </session-factory>
 </hibernate-configuration>
