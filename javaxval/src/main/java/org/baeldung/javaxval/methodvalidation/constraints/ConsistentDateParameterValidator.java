@@ -10,14 +10,10 @@ import java.time.LocalDate;
 public class ConsistentDateParameterValidator implements ConstraintValidator<ConsistentDateParameters, Object[]> {
 
     @Override
-    public void initialize(ConsistentDateParameters constraintAnnotation) {
-    }
-
-    @Override
     public boolean isValid(Object[] value, ConstraintValidatorContext context) {
 
         if (value[0] == null || value[1] == null) {
-            return false;
+            return true;
         }
 
         if (!(value[0] instanceof LocalDate) || !(value[1] instanceof LocalDate)) {

@@ -9,14 +9,10 @@ import java.time.LocalDate;
 public class ValidReservationValidator implements ConstraintValidator<ValidReservation, Reservation> {
 
     @Override
-    public void initialize(ValidReservation constraintAnnotation) {
-    }
-
-    @Override
     public boolean isValid(Reservation reservation, ConstraintValidatorContext context) {
 
         if (reservation == null) {
-            return false;
+            return true;
         }
 
         if (!(reservation instanceof Reservation)) {
