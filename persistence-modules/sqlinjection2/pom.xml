@@ -15,6 +15,11 @@
 		</resources>
 		<plugins>
 			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring.version}</version>
+			</plugin>
+			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
 				<configuration>
@@ -26,6 +31,9 @@
 	</build>
 
 	<properties>
+		<spring.version>1.5.9.RELEASE</spring.version>
+		<eclipselink.version>2.7.0</eclipselink.version>
+		<h2.version>1.4.196</h2.version>
 		<org.springframework.boot.version>1.4.3.RELEASE</org.springframework.boot.version>
 		<org.springframework.version>4.3.4.RELEASE</org.springframework.version>
 		<org.springframework.data.version>1.10.5.RELEASE</org.springframework.data.version>
@@ -90,6 +98,14 @@
 			<version>${commons-io.version}</version>
 		</dependency>
 
+
+		<dependency> 
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+			<version>${h2.version}</version>
+		 </dependency>
+		 
 		<!-- utils -->
 		<dependency>
 			<groupId>net.sf.qualitycheck</groupId>

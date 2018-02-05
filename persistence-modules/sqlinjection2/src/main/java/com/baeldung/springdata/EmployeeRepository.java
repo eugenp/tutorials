@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.baeldung.model.Employee;
 
-@Repository
 public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     public List<Employee> findByName(String name);

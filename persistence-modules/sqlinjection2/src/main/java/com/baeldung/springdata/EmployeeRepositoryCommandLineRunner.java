@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.springdata;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.baeldung.model.Employee;
-import com.baeldung.springdata.EmployeeRepository;
 
 @SpringBootApplication
 public class EmployeeRepositoryCommandLineRunner implements CommandLineRunner {
