@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+	version="2.1">
+
+	<persistence-unit name="jpa-db">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>com.baeldung.model.Employee</class>
+		<properties>
+		<!-- 
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/baeldung" />
+			<property name="javax.persistence.jdbc.user" value="baeldung" />
+			<property name="javax.persistence.jdbc.password" value="YourPassword" />
+	
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.show_sql" value="true" />
+		-->
+			<property name="hibernate.show_sql" value="false" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
+            <property name="hibernate.connection.url" value="jdbc:ucanaccess://C:/Users/pkara/Documents/baeldung.accdb;" />
+            <property name="hibernate.connection.driver_class" value="net.ucanaccess.jdbc.UcanaccessDriver"/>
+            <property name="hibernate.archive.autodetection" value="class" />
+		</properties>
+	</persistence-unit>
+</persistence>
