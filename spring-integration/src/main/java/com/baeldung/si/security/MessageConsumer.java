@@ -2,6 +2,7 @@ package com.baeldung.si.security;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.messaging.Message;
@@ -37,7 +38,7 @@ public class MessageConsumer {
 
     @ServiceActivator(inputChannel = "finalPSResult")
     public void endPSFlow(Message<?> message) {
-        System.out.println(Thread.currentThread().getName() + " has completed ---------------------------");
+        Logger.getAnonymousLogger().info(Thread.currentThread().getName() + " has completed ---------------------------");
         messagePSContent.put(Thread.currentThread().getName(), (String) message.getPayload());
     }
 

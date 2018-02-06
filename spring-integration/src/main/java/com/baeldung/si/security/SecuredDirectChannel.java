@@ -1,5 +1,7 @@
 package com.baeldung.si.security;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +28,7 @@ public class SecuredDirectChannel {
     @ServiceActivator(inputChannel = "startDirectChannel", outputChannel = "endDirectChannel")
     @PreAuthorize("hasRole('ROLE_LOGGER')")
     public Message<?> logMessage(Message<?> message) {
-        System.out.println(message);
+        Logger.getAnonymousLogger().info(message.toString());
         return message;
     }
 
