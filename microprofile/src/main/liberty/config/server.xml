@@ -1,0 +1,17 @@
+<server description="Sample Liberty server">
+
+    <featureManager>
+        <feature>jaxrs-2.0</feature>
+        <feature>cdi-1.2</feature>
+        <feature>jsonp-1.0</feature>
+    </featureManager>
+
+    <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
+                  host="*"/>
+
+    <!-- Automatically expand WAR files and EAR files -->
+    <applicationManager autoExpand="true"/>
+
+    <webApplication context-root="/" name="microprofile" location="${app.location}"/>
+
+</server>
