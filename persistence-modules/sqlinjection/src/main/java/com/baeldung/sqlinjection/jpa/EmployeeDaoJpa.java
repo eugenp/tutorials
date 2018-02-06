@@ -70,7 +70,7 @@ public class EmployeeDaoJpa {
         EntityManager entityManager = factory.createEntityManager();
 
         try {
-            // with a named parameter in JPQL
+            // Potentially insecure JPQL
             Query jpqlQuery = entityManager.createQuery("select emp from Employee emp where emp.name like :empname order by " + orderby);
             return jpqlQuery.setParameter("empname", name)
                 .getResultList();

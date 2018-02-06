@@ -33,7 +33,7 @@ public class EmployeeRepoTest {
     @Test
     public void givenEmployees_whenSearchWithGoodQuery_thenFindOk() {
         initializeData();
-
+        
         // search by name
         List<Employee> result = empRepository.findByName("Trudy");
 
