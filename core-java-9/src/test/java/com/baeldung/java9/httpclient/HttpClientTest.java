@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
@@ -116,18 +117,20 @@ public class HttpClientTest {
             .GET()
             .build();
 
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+
         CompletableFuture<HttpResponse<String>> response1 = HttpClient.newBuilder()
-            .executor(Executors.newFixedThreadPool(2))
+            .executor(executorService)
             .build()
             .sendAsync(request, HttpResponse.BodyHandler.asString());
 
         CompletableFuture<HttpResponse<String>> response2 = HttpClient.newBuilder()
-            .executor(Executors.newFixedThreadPool(2))
+            .executor(executorService)
             .build()
             .sendAsync(request, HttpResponse.BodyHandler.asString());
 
         CompletableFuture<HttpResponse<String>> response3 = HttpClient.newBuilder()
-            .executor(Executors.newFixedThreadPool(2))
+            .executor(executorService)
             .build()
             .sendAsync(request, HttpResponse.BodyHandler.asString());
 
