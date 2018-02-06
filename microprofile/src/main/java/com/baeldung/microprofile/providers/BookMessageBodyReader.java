@@ -1,7 +1,7 @@
 package com.baeldung.microprofile.providers;
 
 import com.baeldung.microprofile.model.Book;
-import com.baeldung.microprofile.util.Mapper;
+import com.baeldung.microprofile.util.BookMapper;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.WebApplicationException;
@@ -25,6 +25,6 @@ public class BookMessageBodyReader implements MessageBodyReader<Book> {
 
     @Override
     public Book readFrom(Class<Book> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
-        return Mapper.map(entityStream);
+        return BookMapper.map(entityStream);
     }
 }

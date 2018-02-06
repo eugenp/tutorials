@@ -20,14 +20,14 @@ public class BookManager {
 
     private ConcurrentMap<String, Book> inMemoryStore = new ConcurrentHashMap<>();
 
-    @PostConstruct
-    public void init() {
+    public BookManager() {
         Book book = new Book();
         book.setId(getNextId());
         book.setName("Building Microservice With Eclipse MicroProfile");
         book.setIsbn("1");
         book.setAuthor("baeldung");
-        book.setNbrePages(420);
+        book.setPages(420);
+        inMemoryStore.put(book.getId(),book);
     }
 
     private String getNextId() {
@@ -46,7 +46,7 @@ public class BookManager {
         return inMemoryStore.get(id);
     }
 
-    public List<Book> list() {
+    public List<Book> getAll() {
         List<Book> books = new ArrayList<>();
         inMemoryStore.values().forEach(book -> books.add(book));
         return books;

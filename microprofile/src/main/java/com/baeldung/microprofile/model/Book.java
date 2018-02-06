@@ -3,10 +3,10 @@ package com.baeldung.microprofile.model;
 public class Book {
 
     private String id;
-    private String name;
     private String isbn;
+    private String name;
     private String author;
-    private int nbrePages;
+    private int pages;
 
     public String getId() {
         return id;
@@ -40,11 +40,11 @@ public class Book {
         this.author = author;
     }
 
-    public int getNbrePages() {
-        return nbrePages;
+    public int getPages() {
+        return pages;
     }
 
-    public void setNbrePages(int nbrePages) {
-        this.nbrePages = nbrePages;
+    public void setPages(int pages) {
+        this.pages = pages;
     }
 }

@@ -2,49 +2,39 @@ package com.baeldung.microprofile.web;
 
 import com.baeldung.microprofile.model.Book;
 import com.baeldung.microprofile.repo.BookManager;
-import com.baeldung.microprofile.util.Utils;
 
 import javax.inject.Inject;
-import javax.json.*;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 
 @Path("books")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class BookEndpoint {
 
     @Inject
     private BookManager bookManager;
 
-    @POST
-    public JsonObject add(JsonObject jsonObject) {
-        Book book = Utils.map(jsonObject);
-        String bookId = bookManager.add(book);
-        return Json.createObjectBuilder().add("id", bookId).build();
-    }
-
     @GET
     @Path("{id}")
-    public JsonObject getBook(@PathParam("id") String id) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getBook(@PathParam("id") String id) {
         Book book = bookManager.get(id);
-        return Utils.map(book);
+        return Response.ok(book).build();
     }
 
     @GET
-    public List<Book> getAllBooks() {
-        JsonArrayBuilder books = Json.createArrayBuilder();
-
-        bookManager.list().forEach(book -> {
-            books.add(Utils.map(book));
-        });
-        return null;
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllBooks() {
+        return Response.ok(bookManager.getAll()).build();
     }
 
-    @DELETE
-    public void deleteAll() {
-        bookManager.deleteAll();
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response add(Book book) {
+        String bookId = bookManager.add(book);
+        return Response.created(
+                UriBuilder.fromResource(this.getClass()).path(bookId).build())
+                .build();
     }
-
 }
