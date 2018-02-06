@@ -29,15 +29,12 @@
 	</build>
 
 	<properties>
-		<spring.version>1.5.9.RELEASE</spring.version>
+		<spring.version>1.5.10.RELEASE</spring.version>
 		<eclipselink.version>2.7.0</eclipselink.version>
 		<h2.version>1.4.196</h2.version>
 		<org.springframework.boot.version>1.4.3.RELEASE</org.springframework.boot.version>
 		<org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-		<org.springframework.data.version>1.10.5.RELEASE</org.springframework.data.version>
 		<hibernate.version>5.2.5.Final</hibernate.version>
-		<mysql.version>6.0.5</mysql.version>
-		<commons-io.version>2.5</commons-io.version>
 	</properties>
 
 	<dependencies>
@@ -67,7 +64,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- persistence -->
+		<!-- Persistence -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -105,7 +102,7 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- MySql JDBC -->
+		<!-- Database -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

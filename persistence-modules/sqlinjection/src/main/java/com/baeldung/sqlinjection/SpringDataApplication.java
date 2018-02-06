@@ -8,7 +8,6 @@ import com.baeldung.sqlinjection.model.Employee;
 import com.baeldung.sqlinjection.springdata.EmployeeRepository;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = { "com.baeldung.sqlinjection" })
 public class SpringDataApplication {
 
     public static void main(String[] args) {
@@ -23,10 +22,6 @@ public class SpringDataApplication {
 
         // search by last name
         for (Employee emp : repository.findByName("Trudy")) {
-            System.out.println(emp);
-        }
-
-        for (Employee emp : repository.findByNameQuery("%")) {
             System.out.println(emp);
         }
     }

@@ -62,7 +62,21 @@ public class EmployeeDaoJpa {
         } finally {
             entityManager.close();
         }
+    }
 
+    @SuppressWarnings("unchecked")
+    public List<Employee> searchEmployeesOrdered(String name, String orderby) {
+
+        EntityManager entityManager = factory.createEntityManager();
+
+        try {
+            // with a named parameter in JPQL
+            Query jpqlQuery = entityManager.createQuery("select emp from Employee emp where emp.name like :empname order by " + orderby);
+            return jpqlQuery.setParameter("empname", name)
+                .getResultList();
+        } finally {
+            entityManager.close();
+        }
     }
 
 }

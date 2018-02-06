@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -46,8 +48,26 @@ public class EmployeeRepoTest {
         initializeData();
 
         // search by name with injected malice to return all records instead
-        List<Employee> result = empRepository.findByNameQuery("Trudy' or 1=1 or '1'='1");
+        List<Employee> result = empRepository.findByNameQuery("Trudy' or 1=1 or '1'='1", null);
 
         assertTrue(result.size() == 0);
+    }
+
+    @Test
+    public void givenEmployees_whenSearchWithOrderByBadQuery_thenPotentialHarm() {
+
+        initializeData();
+
+        // search by name with injected malice to return all records instead
+        try {
+            empRepository.findByNameQuery("Trudy' or 1=1 or '1'='1", new Sort(" length(emp.name))"));
+        } catch (InvalidDataAccessApiUsageException exp) {
+            // Since it accepts function it is potentially dangerous!
+            // Spring Data throws an exception in this case
+            assertTrue(true);
+            return;
+        }
+
+        assertTrue("Potential harm not prevented", 1 == 2);
     }
 }

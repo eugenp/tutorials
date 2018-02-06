@@ -29,6 +29,14 @@ public class EmployeeDaoJpaTest {
 
     @After
     public final void after() {
+
+        manager.getTransaction()
+            .begin();
+        manager.createQuery("delete from Employee")
+            .executeUpdate();
+        manager.getTransaction()
+            .commit();
+
         manager.close();
         factory.close();
     }
@@ -53,6 +61,7 @@ public class EmployeeDaoJpaTest {
         // search by name
         List<Employee> result = empDao.searchEmployeesSecure1("Tru%");
 
+        System.out.println(result.size());
         assertTrue(result.size() == 1);
         assertTrue(result.get(0)
             .getName()
@@ -80,5 +89,17 @@ public class EmployeeDaoJpaTest {
 
         // should have been only 1, but all returned due to malicious injection
         assertTrue(result.size() > 1);
+    }
+
+    @Test
+    public void givenEmployees_whenSearchWithOrderByBadQuery_thenPotentialHarm() {
+
+        EmployeeDaoJpa empDao = new EmployeeDaoJpa();
+
+        // search by name with order by clause
+        List<Employee> result = empDao.searchEmployeesOrdered("Trudy", " upper(emp.name)");
+
+        // return only 1, but since it accepts function it is potentially dangerous!
+        assertTrue(result.size() == 1);
     }
 }
