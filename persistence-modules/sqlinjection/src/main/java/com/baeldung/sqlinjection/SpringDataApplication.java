@@ -2,7 +2,6 @@ package com.baeldung.sqlinjection;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.baeldung.sqlinjection.model.Employee;
 import com.baeldung.sqlinjection.springdata.EmployeeRepository;
