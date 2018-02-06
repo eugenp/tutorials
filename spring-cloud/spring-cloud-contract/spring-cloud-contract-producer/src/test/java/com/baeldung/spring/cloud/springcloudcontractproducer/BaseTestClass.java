@@ -18,12 +18,12 @@ import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 @AutoConfigureMessageVerifier
 public class BaseTestClass {
 
-    @Autowired
-    private EvenOddController evenOddController;
+  @Autowired
+  private EvenOddController evenOddController;
 
-    @Before
-    public void setup() {
-        StandaloneMockMvcBuilder standaloneMockMvcBuilder = MockMvcBuilders.standaloneSetup(evenOddController);
-        RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);
-    }
+  @Before
+  public void setup() {
+    StandaloneMockMvcBuilder standaloneMockMvcBuilder = MockMvcBuilders.standaloneSetup(evenOddController);
+    RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);
+  }
 }
