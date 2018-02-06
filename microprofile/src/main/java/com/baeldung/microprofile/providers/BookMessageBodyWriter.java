@@ -2,6 +2,10 @@ package com.baeldung.microprofile.providers;
 
 import com.baeldung.microprofile.model.Book;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
+import javax.json.JsonWriter;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
@@ -18,16 +22,47 @@ import java.lang.reflect.Type;
 public class BookMessageBodyWriter implements MessageBodyWriter<Book> {
     @Override
     public boolean isWriteable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        return false;
+        return type.equals(Book.class);
     }
 
+    /*
+    Deprecated in JAX RS 2.0
+     */
     @Override
     public long getSize(Book book, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
         return 0;
     }
 
+    /**
+     * Marsahl Book to OutputStream
+     *
+     * @param book
+     * @param type
+     * @param genericType
+     * @param annotations
+     * @param mediaType
+     * @param httpHeaders
+     * @param entityStream
+     * @throws IOException
+     * @throws WebApplicationException
+     */
     @Override
     public void writeTo(Book book, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
-
+        JsonWriter jsonWriter = Json.createWriter(entityStream);
+        JsonObject jsonObject = map(book);
+        jsonWriter.writeObject(jsonObject);
+        jsonWriter.close();
     }
+
+    private JsonObject map(Book book) {
+        JsonObjectBuilder builder = Json.createObjectBuilder();
+        builder = builder
+                .add("id", book.getId())
+                .add("isbn", book.getIsbn())
+                .add("name", book.getName())
+                .add("author", book.getAuthor())
+                .add("pages", book.getPages());
+        return builder.build();
+    }
+
 }
