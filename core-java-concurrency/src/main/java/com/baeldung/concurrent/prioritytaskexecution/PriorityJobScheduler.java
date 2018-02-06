@@ -23,10 +23,10 @@ public class PriorityJobScheduler {
                 try {
                     priorityJobPoolExecutor.execute(priorityQueue.take());
                 } catch (InterruptedException e) {
-                    if (priorityQueue.size() == 0) {
-                        break;
+                    if (priorityQueue.size() > 0) {
+                        e.printStackTrace();
                     }
-                    e.printStackTrace();
+                    break;
                 }
             }
         });
