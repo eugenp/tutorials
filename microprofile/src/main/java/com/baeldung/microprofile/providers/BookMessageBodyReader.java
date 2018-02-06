@@ -1,6 +1,7 @@
 package com.baeldung.microprofile.providers;
 
 import com.baeldung.microprofile.model.Book;
+import com.baeldung.microprofile.util.Mapper;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.WebApplicationException;
@@ -16,13 +17,14 @@ import java.lang.reflect.Type;
 @Provider
 @Consumes(MediaType.APPLICATION_JSON)
 public class BookMessageBodyReader implements MessageBodyReader<Book> {
+
     @Override
     public boolean isReadable(Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType) {
-        return false;
+        return type.equals(Book.class);
     }
 
     @Override
     public Book readFrom(Class<Book> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, String> httpHeaders, InputStream entityStream) throws IOException, WebApplicationException {
-        return null;
+        return Mapper.map(entityStream);
     }
 }
