@@ -34,17 +34,12 @@ public class VehicleFactory {
 	 */
 	public static Vehicle createVehicle(Color color) {
 		// Looks for the requested vehicle into the cache.
-		Vehicle newVehicle = vehiclesCache.get(color);
-
-		// If the vehicle doesn't exist inside the cache, creates a new one.
-		if (newVehicle == null) {
+		// If the vehicle doesn't exist, a new one is created.
+		Vehicle newVehicle = vehiclesCache.computeIfAbsent(color, newColor -> {
 			// Creates the new car.
 			Engine newEngine = new Engine();
-			newVehicle = new Car(newEngine, color);
-
-			// Puts the new car into cache before returning it.
-			vehiclesCache.put(color, newVehicle);
-		}
+			return new Car(newEngine, newColor);
+		});
 		return newVehicle;
 	}
 }
