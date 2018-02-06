@@ -16,11 +16,12 @@ public class MainHibernate {
         try (Session session = factory.openSession()) {
             Employee emp1 = new Employee(1L, "Trudy");
             Employee emp2 = new Employee(2L, "Bob");
-            
+
             session.beginTransaction();
             session.save(emp1);
             session.save(emp2);
-            session.getTransaction().commit();
+            session.getTransaction()
+                .commit();
         }
 
         EmployeeDaoHibernate empDaoHibernate = new EmployeeDaoHibernate(factory);
