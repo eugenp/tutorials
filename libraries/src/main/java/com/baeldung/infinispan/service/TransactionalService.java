@@ -1,12 +1,10 @@
 package com.baeldung.infinispan.service;
 
 import org.infinispan.Cache;
-import org.springframework.stereotype.Service;
 import org.springframework.util.StopWatch;
 
 import javax.transaction.TransactionManager;
 
-@Service
 public class TransactionalService {
 
     private final Cache<String, Integer> transactionalCache;
@@ -19,7 +17,18 @@ public class TransactionalService {
         transactionalCache.put(KEY, 0);
     }
 
-    public Integer getQuickHowManyVisits() {
+    public String getTransactional() throws InterruptedException {
+        Runnable backGroundJob = () -> this.startBackgroundBatch();
+        Thread backgroundThread = new Thread(backGroundJob);
+
+        this.getQuickHowManyVisits();
+        backgroundThread.start();
+        Thread.sleep(100); //lets wait our thread warm up
+        this.getQuickHowManyVisits();
+        return "OK";
+    }
+
+    private Integer getQuickHowManyVisits() {
         try {
             TransactionManager tm = transactionalCache.getAdvancedCache().getTransactionManager();
             tm.begin();
@@ -39,7 +48,7 @@ public class TransactionalService {
         }
     }
 
-    public void startBackgroundBatch() {
+    private void startBackgroundBatch() {
         try {
             TransactionManager tm = transactionalCache.getAdvancedCache().getTransactionManager();
             tm.begin();

@@ -3,10 +3,8 @@ package com.baeldung.infinispan.listener;
 import org.infinispan.notifications.Listener;
 import org.infinispan.notifications.cachelistener.annotation.*;
 import org.infinispan.notifications.cachelistener.event.*;
-import org.springframework.stereotype.Component;
 
 @Listener
-@Component
 public class CacheListener {
 
     @CacheEntryCreated

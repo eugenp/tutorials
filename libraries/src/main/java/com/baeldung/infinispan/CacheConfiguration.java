@@ -8,12 +8,10 @@ import org.infinispan.eviction.EvictionType;
 import org.infinispan.manager.DefaultCacheManager;
 import org.infinispan.transaction.LockingMode;
 import org.infinispan.transaction.TransactionMode;
-import org.springframework.context.annotation.Bean;
 
 import java.util.concurrent.TimeUnit;
 
-@org.springframework.context.annotation.Configuration
-public class InfinispanConfiguration {
+public class CacheConfiguration {
 
     public static final String SIMPLE_HELLO_WORLD_CACHE = "simple-hello-world-cache";
     public static final String EXPIRING_HELLO_WORLD_CACHE = "expiring-hello-world-cache";
@@ -21,33 +19,27 @@ public class InfinispanConfiguration {
     public static final String PASSIVATING_HELLO_WORLD_CACHE = "passivating-hello-world-cache";
     public static final String TRANSACTIONAL_CACHE = "transactional-cache";
 
-    @Bean
     public DefaultCacheManager cacheManager() {
         DefaultCacheManager cacheManager = new DefaultCacheManager();
         return cacheManager;
     }
 
-    @Bean
     public Cache<String, Integer> transactionalCache(DefaultCacheManager cacheManager, CacheListener listener) {
         return this.buildCache(TRANSACTIONAL_CACHE, cacheManager, listener, transactionalConfiguration());
     }
 
-    @Bean
     public Cache<String, String> simpleHelloWorldCache(DefaultCacheManager cacheManager, CacheListener listener) {
         return this.buildCache(SIMPLE_HELLO_WORLD_CACHE, cacheManager, listener, new ConfigurationBuilder().build());
     }
 
-    @Bean
     public Cache<String, String> expiringHelloWorldCache(DefaultCacheManager cacheManager, CacheListener listener) {
         return this.buildCache(EXPIRING_HELLO_WORLD_CACHE, cacheManager, listener, expiringConfiguration());
     }
 
-    @Bean
     public Cache<String, String> evictingHelloWorldCache(DefaultCacheManager cacheManager, CacheListener listener) {
         return this.buildCache(EVICTING_HELLO_WORLD_CACHE, cacheManager, listener, evictingConfiguration());
     }
 
-    @Bean
     public Cache<String, String> passivatingHelloWorldCache(DefaultCacheManager cacheManager, CacheListener listener) {
         return this.buildCache(PASSIVATING_HELLO_WORLD_CACHE, cacheManager, listener, passivatingConfiguration());
     }

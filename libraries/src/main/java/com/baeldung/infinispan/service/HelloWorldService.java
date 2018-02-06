@@ -3,11 +3,9 @@ package com.baeldung.infinispan.service;
 import com.baeldung.infinispan.listener.CacheListener;
 import com.baeldung.infinispan.repository.HelloWorldRepository;
 import org.infinispan.Cache;
-import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
-@Service
 public class HelloWorldService {
 
     private final HelloWorldRepository repository;
