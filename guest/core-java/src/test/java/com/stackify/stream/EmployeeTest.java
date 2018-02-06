@@ -14,7 +14,6 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.Vector;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.junit.Test;
