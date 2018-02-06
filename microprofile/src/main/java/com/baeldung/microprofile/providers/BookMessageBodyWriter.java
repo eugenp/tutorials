@@ -1,6 +1,7 @@
 package com.baeldung.microprofile.providers;
 
 import com.baeldung.microprofile.model.Book;
+import com.baeldung.microprofile.util.Mapper;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -49,20 +50,9 @@ public class BookMessageBodyWriter implements MessageBodyWriter<Book> {
     @Override
     public void writeTo(Book book, Class<?> type, Type genericType, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> httpHeaders, OutputStream entityStream) throws IOException, WebApplicationException {
         JsonWriter jsonWriter = Json.createWriter(entityStream);
-        JsonObject jsonObject = map(book);
+        JsonObject jsonObject = Mapper.map(book);
         jsonWriter.writeObject(jsonObject);
         jsonWriter.close();
-    }
-
-    private JsonObject map(Book book) {
-        JsonObjectBuilder builder = Json.createObjectBuilder();
-        builder = builder
-                .add("id", book.getId())
-                .add("isbn", book.getIsbn())
-                .add("name", book.getName())
-                .add("author", book.getAuthor())
-                .add("pages", book.getPages());
-        return builder.build();
     }
 
 }
