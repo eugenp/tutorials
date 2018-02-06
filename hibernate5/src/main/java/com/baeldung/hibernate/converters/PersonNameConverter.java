@@ -29,7 +29,7 @@ public class PersonNameConverter implements AttributeConverter<PersonName, Strin
     public PersonName convertToEntityAttribute(String dbPerson) {
         String[] pieces = dbPerson.split(SEPARATOR);
 
-        if (pieces == null || pieces.length > 2) {
+        if (pieces == null || pieces.length == 0) {
             return null;
         }
 
