@@ -6,7 +6,7 @@ import javax.json.*;
 import java.io.InputStream;
 import java.util.List;
 
-public class Mapper {
+public class BookMapper {
 
     public static JsonObject map(Book book) {
         JsonObjectBuilder builder = Json.createObjectBuilder();
