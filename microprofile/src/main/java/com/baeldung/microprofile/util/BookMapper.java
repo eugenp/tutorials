@@ -13,7 +13,6 @@ public class BookMapper {
         builder = builder
                 .add("id", book.getId())
                 .add("isbn", book.getIsbn())
-                .add("isbn22", book.getIsbn())
                 .add("name", book.getName())
                 .add("author", book.getAuthor())
                 .add("pages", book.getPages());
