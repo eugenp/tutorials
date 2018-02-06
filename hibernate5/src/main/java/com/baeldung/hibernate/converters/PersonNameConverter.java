@@ -11,30 +11,38 @@ public class PersonNameConverter implements AttributeConverter<PersonName, Strin
     private static final String SEPARATOR = ", ";
 
     @Override
-    public String convertToDatabaseColumn(PersonName person) {
+    public String convertToDatabaseColumn(PersonName personName) {
+        if (personName == null) {
+            return null;
+        }
+
         StringBuilder sb = new StringBuilder();
-        if (person.getSurname() != null) {
-            sb.append(person.getSurname());
+        if (personName.getSurname() != null) {
+            sb.append(personName.getSurname());
             sb.append(SEPARATOR);
         }
 
-        if (person.getName() != null) {
-            sb.append(person.getName());
+        if (personName.getName() != null) {
+            sb.append(personName.getName());
         }
 
         return sb.toString();
     }
 
     @Override
-    public PersonName convertToEntityAttribute(String dbPerson) {
-        String[] pieces = dbPerson.split(SEPARATOR);
+    public PersonName convertToEntityAttribute(String dbPersonName) {
+        if (dbPersonName == null) {
+            return null;
+        }
+
+        String[] pieces = dbPersonName.split(SEPARATOR);
 
         if (pieces == null || pieces.length == 0) {
             return null;
         }
 
         PersonName personName = new PersonName();
-        if (dbPerson.contains(SEPARATOR)) {
+        if (dbPersonName.contains(SEPARATOR)) {
             personName.setSurname(pieces[0]);
 
             if (pieces[1] != null) {
