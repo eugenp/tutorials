@@ -7,6 +7,7 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.invoke.WrongMethodTypeException;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.List;
@@ -73,6 +74,15 @@ public class MethodHandlesTest {
         Book book = new Book("ISBN-123", "Java in Action");
 
         assertEquals("ISBN-123 > Java in Action", formatBookMH.invoke(book));
+    }
+
+    @Test
+    public void givenReplaceMethod_whenUsingReflectionAndInvoked_thenCorrectlyReplaced() throws Throwable {
+        Method replaceMethod = String.class.getMethod("replace", char.class, char.class);
+
+        String string = (String) replaceMethod.invoke("jovo", 'o', 'a');
+
+        assertEquals("java", string);
     }
 
     @Test
