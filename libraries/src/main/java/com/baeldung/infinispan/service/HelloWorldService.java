@@ -69,29 +69,22 @@ public class HelloWorldService {
         return helloWorld;
     }
 
-    public String findEvictingHelloWorld() {
-        evictingHelloWorldCache.put("evictable-entry", "Evicting Victim");
-
-        String hello = "Hello World";
-        evictingHelloWorldCache.put("hello-entry", hello);
-
-        if(evictingHelloWorldCache.get("evictable-entry") == null) {
-            System.out.println("The first entry was evicted, therefore couldn't be retrieved");
+    public String findEvictingHelloWorld(String key) {
+        String value = evictingHelloWorldCache.get(key);
+        if(value == null) {
+            value = repository.getHelloWorld();
+            evictingHelloWorldCache.put(key, value);
         }
-
-        return hello;
+        return value;
     }
 
-    public String findPassivatingHelloWorld() {
-        passivatingHelloWorldCache.put("evictable-entry", "Evicting Victim");
-
-        String hello = "Hello World";
-        passivatingHelloWorldCache.put("hello-entry", hello);
-
-        if(passivatingHelloWorldCache.get("evictable-entry") != null) {
-            System.out.println("It was possible to retrieve the evicted entry");
+    public String findPassivatingHelloWorld(String key) {
+        String value = passivatingHelloWorldCache.get(key);
+        if(value == null) {
+            value = repository.getHelloWorld();
+            passivatingHelloWorldCache.put(key, value);
         }
-        return hello;
+        return value;
     }
 
 }

@@ -28,7 +28,7 @@ public class TransactionalService {
         return "OK";
     }
 
-    private Integer getQuickHowManyVisits() {
+    public Integer getQuickHowManyVisits() {
         try {
             TransactionManager tm = transactionalCache.getAdvancedCache().getTransactionManager();
             tm.begin();
@@ -48,7 +48,7 @@ public class TransactionalService {
         }
     }
 
-    private void startBackgroundBatch() {
+    public void startBackgroundBatch() {
         try {
             TransactionManager tm = transactionalCache.getAdvancedCache().getTransactionManager();
             tm.begin();
