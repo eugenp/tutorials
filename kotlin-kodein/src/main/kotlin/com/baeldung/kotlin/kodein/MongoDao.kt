@@ -1,4 +1,3 @@
 package com.baeldung.kotlin.kodein
 
-class MongoDao : Dao {
-}
+class MongoDao : Dao

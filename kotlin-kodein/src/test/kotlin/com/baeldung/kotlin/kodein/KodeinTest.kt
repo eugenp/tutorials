@@ -15,10 +15,15 @@ class KodeinTest {
                 MongoDao()
             }
         }
+
         assertFalse(created)
+
         val dao1: Dao = kodein.instance()
+
         assertTrue(created)
+
         val dao2: Dao = kodein.instance()
+
         assertSame(dao1, dao2)
     }
 
@@ -30,6 +35,7 @@ class KodeinTest {
         }
         val service1: Service = kodein.with("myTag").instance()
         val service2: Service = kodein.with("myTag").instance()
+
         assertNotSame(service1, service2)
     }
 
@@ -40,6 +46,7 @@ class KodeinTest {
         }
         val dao1: Dao = kodein.instance()
         val dao2: Dao = kodein.instance()
+
         assertNotSame(dao1, dao2)
     }
 
@@ -51,6 +58,7 @@ class KodeinTest {
         }
         val dao1: Dao = kodein.instance("dao1")
         val dao2: Dao = kodein.instance("dao2")
+
         assertNotSame(dao1, dao2)
     }
 
@@ -63,9 +71,11 @@ class KodeinTest {
                 MongoDao()
             }
         }
+
         assertTrue { created }
         val dao1: Dao = kodein.instance()
         val dao2: Dao = kodein.instance()
+
         assertSame(dao1, dao2)
     }
 
@@ -77,6 +87,7 @@ class KodeinTest {
         }
         val service1: Service = kodein.with("myTag").instance()
         val service2: Service = kodein.with("myTag").instance()
+
         assertSame(service1, service2)
     }
 
@@ -87,6 +98,7 @@ class KodeinTest {
             bind<Dao>() with instance(dao)
         }
         val fromContainer: Dao = kodein.instance()
+
         assertSame(dao, fromContainer)
     }
 
@@ -96,6 +108,7 @@ class KodeinTest {
             constant("magic") with 42
         }
         val fromContainer: Int = kodein.instance("magic")
+
         assertEquals(42, fromContainer)
     }
 
@@ -109,6 +122,7 @@ class KodeinTest {
             bind<Controller>() with singleton { Controller(instance()) }
             bind<Service>() with singleton { Service(instance(), "myService") }
         }
+
         assertTrue {
             val dao: Dao = kodein.instance()
             dao is JdbcDao
@@ -126,6 +140,7 @@ class KodeinTest {
         }
         val fromPersistence: Dao = persistenceContainer.instance()
         val fromService: Dao = serviceContainer.instance()
+
         assertSame(fromPersistence, fromService)
     }
 
@@ -140,6 +155,7 @@ class KodeinTest {
             bind<Dao>(overrides = true) with singleton { InMemoryDao() }
         }
         val dao: Dao = testContainer.instance()
+
         assertTrue { dao is InMemoryDao }
     }
 
@@ -151,6 +167,7 @@ class KodeinTest {
             bind<Dao>().inSet() with singleton { JdbcDao() }
         }
         val daos: Set<Dao> = kodein.instance()
+
         assertEquals(setOf(MongoDao::class.java, JdbcDao::class.java), daos.map { it.javaClass }.toSet())
     }
 
@@ -168,6 +185,7 @@ class KodeinTest {
         }
         val controller = Controller2()
         controller.injectDependencies(kodein)
+
         assertNotNull(controller.service)
     }
 }
