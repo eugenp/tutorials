@@ -14,10 +14,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
         <package.file>${project.build.directory}/${project.artifactId}-service.jar</package.file>
         <packaging.type>runnable</packaging.type>
-
     </properties>
 
     <dependencies>
@@ -33,22 +31,17 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <packagingExcludes>pom.xml</packagingExcludes>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>2.1.2</version>
                 <configuration>
-                    <looseApplication>false</looseApplication>
-                    <installAppPackages>project</installAppPackages>
                     <assemblyArtifact>
                         <groupId>io.openliberty</groupId>
                         <artifactId>openliberty-runtime</artifactId>
@@ -58,7 +51,10 @@
                     <configFile>${basedir}/src/main/liberty/config/server.xml</configFile>
                     <packageFile>${package.file}</packageFile>
                     <include>${packaging.type}</include>
+                    <looseApplication>false</looseApplication>
+                    <installAppPackages>project</installAppPackages>
                     <bootstrapProperties>
+                        <app.context.root>/</app.context.root>
                         <app.location>${project.artifactId}-${project.version}.war</app.location>
                         <default.http.port>9080</default.http.port>
                         <default.https.port>9443</default.https.port>
@@ -66,7 +62,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>create-server</id>
+                        <id>install-server</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>install-server</goal>
@@ -75,7 +71,7 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>install-apps</id>
+                        <id>package-server-with-apps</id>
                         <phase>package</phase>
                         <goals>
                             <goal>install-apps</goal>
