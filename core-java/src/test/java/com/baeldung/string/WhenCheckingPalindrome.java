@@ -34,4 +34,40 @@ public class WhenCheckingPalindrome {
         for(String sentence:sentences)
             Assert.assertTrue(palindrome.isPalindrome(sentence));
     }
+    
+    @Test
+    public void whenReverseWord_shouldBePalindrome() {
+        for(String word:words)
+            Assert.assertTrue(palindrome.isPalindromeReverseTheString(word));
+    }
+    
+    @Test
+    public void whenReverseSentence_shouldBePalindrome() {
+        for(String sentence:sentences)
+            Assert.assertTrue(palindrome.isPalindromeReverseTheString(sentence));
+    }
+    
+    @Test
+    public void whenStringBuilderWord_shouldBePalindrome() {
+        for(String word:words)
+            Assert.assertTrue(palindrome.isPalindromeUsingStringBuilder(word));
+    }
+    
+    @Test
+    public void whenStringBuilderSentence_shouldBePalindrome() {
+        for(String sentence:sentences)
+            Assert.assertTrue(palindrome.isPalindromeUsingStringBuilder(sentence));
+    }
+    
+    @Test
+    public void whenStringBufferWord_shouldBePalindrome() {
+        for(String word:words)
+            Assert.assertTrue(palindrome.isPalindromeUsingStringBuffer(word));
+    }
+    
+    @Test
+    public void whenStringBufferSentence_shouldBePalindrome() {
+        for(String sentence:sentences)
+            Assert.assertTrue(palindrome.isPalindromeUsingStringBuffer(sentence));
+    }
 }
