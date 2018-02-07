@@ -10,13 +10,20 @@ public class BookMapper {
 
     public static JsonObject map(Book book) {
         JsonObjectBuilder builder = Json.createObjectBuilder();
-        builder = builder
-                .add("id", book.getId())
-                .add("isbn", book.getIsbn())
-                .add("name", book.getName())
-                .add("author", book.getAuthor())
-                .add("pages", book.getPages());
+        addValue(builder, "id", book.getId());
+        addValue(builder, "isbn", book.getIsbn());
+        addValue(builder, "name", book.getName());
+        addValue(builder, "author", book.getAuthor());
+        addValue(builder, "pages", book.getPages());
         return builder.build();
+    }
+
+    private static void addValue(JsonObjectBuilder builder, String key, Object value) {
+        if (value != null) {
+            builder.add(key, value.toString());
+        } else {
+            builder.addNull(key);
+        }
     }
 
     public static JsonArray map(List<Book> books) {
@@ -52,8 +59,8 @@ public class BookMapper {
         return returnedString;
     }
 
-    private static int getIntFromJson(String key, JsonObject json) {
-        int returnedValue = 0;
+    private static Integer getIntFromJson(String key, JsonObject json) {
+        Integer returnedValue = null;
         if (json.containsKey(key)) {
             JsonNumber value = json.getJsonNumber(key);
             if (value != null) {

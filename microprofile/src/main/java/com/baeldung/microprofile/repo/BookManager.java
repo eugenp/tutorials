@@ -2,7 +2,6 @@ package com.baeldung.microprofile.repo;
 
 import com.baeldung.microprofile.model.Book;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ApplicationScoped
 public class BookManager {
 
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMM");
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMM");
     private AtomicInteger bookIdGenerator = new AtomicInteger(0);
 
     private ConcurrentMap<String, Book> inMemoryStore = new ConcurrentHashMap<>();
@@ -27,7 +26,7 @@ public class BookManager {
         book.setIsbn("1");
         book.setAuthor("baeldung");
         book.setPages(420);
-        inMemoryStore.put(book.getId(),book);
+        inMemoryStore.put(book.getId(), book);
     }
 
     private String getNextId() {
@@ -48,7 +47,7 @@ public class BookManager {
 
     public List<Book> getAll() {
         List<Book> books = new ArrayList<>();
-        inMemoryStore.values().forEach(book -> books.add(book));
+        books.addAll(inMemoryStore.values());
         return books;
     }
 }

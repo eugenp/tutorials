@@ -6,7 +6,7 @@ public class Book {
     private String isbn;
     private String name;
     private String author;
-    private int pages;
+    private Integer pages;
 
     public String getId() {
         return id;
@@ -40,11 +40,11 @@ public class Book {
         this.author = author;
     }
 
-    public int getPages() {
+    public Integer getPages() {
         return pages;
     }
 
-    public void setPages(int pages) {
+    public void setPages(Integer pages) {
         this.pages = pages;
     }
 }
