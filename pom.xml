@@ -93,6 +93,7 @@
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
+        <module>jgroups</module>
         <module>jee-7</module>
         <!-- <module>jhipster/jhipster-monolithic</module> -->
         <module>jjwt</module>
@@ -246,6 +247,7 @@
         <module>spring-zuul</module>
         <module>spring-reactor</module>
         <module>spring-vertx</module>
+        <module>spring-jinq</module>
 		
 		<module>spring-rest-embedded-tomcat</module>
         
