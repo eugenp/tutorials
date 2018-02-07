@@ -1,15 +1,16 @@
-<server description="Sample Liberty server">
+<server description="OpenLiberty MicroProfile server">
 
     <featureManager>
-        <feature>microProfile-1.2</feature>
+        <feature>jaxrs-2.0</feature>
+        <feature>cdi-1.2</feature>
+        <feature>jsonp-1.0</feature>
     </featureManager>
 
     <httpEndpoint httpPort="${default.http.port}" httpsPort="${default.https.port}"
-                  host="*"/>
+                  id="defaultHttpEndpoint" host="*"/>
 
-    <!-- Automatically expand WAR files and EAR files -->
     <applicationManager autoExpand="true"/>
 
-    <webApplication context-root="/" name="microprofile" location="${app.location}"/>
+    <webApplication context-root="${app.context.root}" location="${app.location}"/>
 
 </server>
