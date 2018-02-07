@@ -14,7 +14,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <package.file>${project.build.directory}/${project.artifactId}-service.jar</package.file>
+        <app.name>library</app.name>
+        <package.file>${project.build.directory}/${app.name}-service.jar</package.file>
         <packaging.type>runnable</packaging.type>
     </properties>
 
