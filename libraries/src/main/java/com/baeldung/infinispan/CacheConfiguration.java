@@ -45,7 +45,7 @@ public class CacheConfiguration {
     }
 
     private <K, V> Cache<K, V> buildCache(String cacheName, DefaultCacheManager cacheManager,
-                                          CacheListener listener, Configuration configuration) {
+      CacheListener listener, Configuration configuration) {
 
         cacheManager.defineConfiguration(cacheName, configuration);
         Cache<K, V> cache = cacheManager.getCache(cacheName);
@@ -55,31 +55,31 @@ public class CacheConfiguration {
 
     private Configuration expiringConfiguration() {
         return new ConfigurationBuilder().expiration().lifespan(5, TimeUnit.SECONDS)
-                .build();
+          .build();
     }
 
     private Configuration evictingConfiguration() {
         return new ConfigurationBuilder()
-                .memory().evictionType(EvictionType.COUNT).size(1)
-                .build();
+          .memory().evictionType(EvictionType.COUNT).size(1)
+          .build();
     }
 
     private Configuration passivatingConfiguration() {
         return new ConfigurationBuilder()
-                .memory().evictionType(EvictionType.COUNT).size(1)
-                .persistence()
-                .passivation(true)
-                .addSingleFileStore()
-                .purgeOnStartup(true)
-                .location(System.getProperty("java.io.tmpdir"))
-                .build();
+          .memory().evictionType(EvictionType.COUNT).size(1)
+          .persistence()
+          .passivation(true)
+          .addSingleFileStore()
+          .purgeOnStartup(true)
+          .location(System.getProperty("java.io.tmpdir"))
+          .build();
     }
 
     private Configuration transactionalConfiguration() {
         return new ConfigurationBuilder()
-                .transaction().transactionMode(TransactionMode.TRANSACTIONAL)
-                .lockingMode(LockingMode.PESSIMISTIC)
-                .build();
+          .transaction().transactionMode(TransactionMode.TRANSACTIONAL)
+          .lockingMode(LockingMode.PESSIMISTIC)
+          .build();
     }
 
 }

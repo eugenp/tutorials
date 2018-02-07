@@ -17,17 +17,6 @@ public class TransactionalService {
         transactionalCache.put(KEY, 0);
     }
 
-    public String getTransactional() throws InterruptedException {
-        Runnable backGroundJob = () -> this.startBackgroundBatch();
-        Thread backgroundThread = new Thread(backGroundJob);
-
-        this.getQuickHowManyVisits();
-        backgroundThread.start();
-        Thread.sleep(100); //lets wait our thread warm up
-        this.getQuickHowManyVisits();
-        return "OK";
-    }
-
     public Integer getQuickHowManyVisits() {
         try {
             TransactionManager tm = transactionalCache.getAdvancedCache().getTransactionManager();
@@ -39,7 +28,9 @@ public class TransactionalService {
             watch.start();
             transactionalCache.put(KEY, howManyVisits);
             watch.stop();
-            System.out.println("I was able to set HowManyVisits to " + howManyVisits + " after waiting " + watch.getTotalTimeSeconds() + " seconds");
+            System.out.println("I was able to set HowManyVisits to " + howManyVisits +
+              " after waiting " + watch.getTotalTimeSeconds() + " seconds");
+
             tm.commit();
             return howManyVisits;
         } catch (Exception e) {
@@ -54,7 +45,7 @@ public class TransactionalService {
             tm.begin();
             transactionalCache.put(KEY, 1000);
             System.out.println("HowManyVisits should now be 1000, " +
-                    "but we are holding the transaction");
+              "but we are holding the transaction");
             Thread.sleep(5000L);
             tm.rollback();
             System.out.println("The slow batch suffered a rollback");
