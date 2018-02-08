@@ -3,7 +3,9 @@ package com.baeldung.execption;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class ActorService {
@@ -22,5 +24,12 @@ public class ActorService {
         }
         actors.set(index, actorName);
         return actorName;
+    }
+
+    public String removeActor(int index) {
+        if (index >= actors.size()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Actor Not Found in Repsoitory");
+        }
+        return actors.remove(index);
     }
 }
