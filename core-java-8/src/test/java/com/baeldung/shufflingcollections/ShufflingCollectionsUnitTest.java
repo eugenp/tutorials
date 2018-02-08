@@ -3,7 +3,7 @@ package com.baeldung.shufflingcollections;
 import org.junit.Test;
 
 import java.util.*;
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ShufflingCollectionsUnitTest {
 
@@ -54,13 +54,13 @@ public class ShufflingCollectionsUnitTest {
     }
 
     @Test
-    public void whenShufflingWithSameRandomness_thenElementsAreShuffledInSameOrder() {
+    public void whenShufflingWithSameRandomness_thenElementsAreShuffledDeterministically() {
         List<String> students_1 = Arrays.asList("Foo", "Bar", "Baz", "Qux");
         List<String> students_2 = Arrays.asList("Foo", "Bar", "Baz", "Qux");
 
         Collections.shuffle(students_1, new Random(5));
         Collections.shuffle(students_2, new Random(5));
 
-        assertEquals(students_1, students_2);
+        assertThat(students_1).isEqualTo(students_2);
     }
 }
