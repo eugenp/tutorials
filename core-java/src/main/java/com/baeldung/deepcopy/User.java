@@ -19,9 +19,17 @@ class User implements Serializable, Cloneable {
         this(that.getFirstName(), that.getLastName(), new Address(that.getAddress()));
     }
 
+    public User() {
+    }
+
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        User user = (User) super.clone();
+    public Object clone() {
+        User user = null;
+        try {
+            user = (User) super.clone();
+        } catch (CloneNotSupportedException e) {
+            user = new User(this.getFirstName(), this.getLastName(), this.getAddress());
+        }
         user.address = (Address) this.address.clone();
         return user;
     }

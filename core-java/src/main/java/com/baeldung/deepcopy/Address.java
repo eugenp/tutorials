@@ -1,11 +1,9 @@
 package com.baeldung.deepcopy;
-
 import java.io.Serializable;
 
 class Address implements Serializable, Cloneable {
 
     private static final long serialVersionUID = 1740913841244949416L;
-
     private String street;
     private String city;
     private String country;
@@ -20,9 +18,16 @@ class Address implements Serializable, Cloneable {
         this.country = country;
     }
 
+    public Address() {
+    }
+
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        return (Address) super.clone();
+    public Object clone() {
+        try {
+            return (Address) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return new Address(this.street, this.getCity(), this.getCountry());
+        }
     }
 
     public String getStreet() {
