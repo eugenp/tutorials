@@ -1,5 +1,7 @@
 package com.baeldung.string;
 
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -68,6 +70,45 @@ public class WhenCheckingPalindrome {
     @Test
     public void whenStringBufferSentence_shouldBePalindrome() {
         for(String sentence:sentences)
+            
             Assert.assertTrue(palindrome.isPalindromeUsingStringBuffer(sentence));
+    }
+    
+    @Test
+    public void whenPalindromeRecursive_wordShouldBePalindrome() {
+        for(String word:words) {
+            word = word.replaceAll("\\s+", "").toLowerCase();
+            int backward = word.length()-1;
+            
+            Assert.assertTrue(palindrome.isPalindromeRecursive(word,0,backward));
+        }
+    }
+    
+    @Test
+    public void whenPalindromeRecursive_sentenceShouldBePalindrome() {
+        for(String sentence:sentences) {
+            sentence = sentence.replaceAll("\\s+", "").toLowerCase();
+            int backward = sentence.length()-1;
+            
+            Assert.assertTrue(palindrome.isPalindromeRecursive(sentence,0,backward));
+        }
+    }
+    
+    @Test
+    public void whenPalindromeStreams_wordShouldBePalindrome() {
+        String[] expected = Arrays.stream(words)
+            .filter(palindrome::isPalindrome)
+            .toArray(String[]::new);
+        
+        Assert.assertArrayEquals(expected, words);
+    }
+    
+    @Test
+    public void whenPalindromeStreams_sentenceShouldBePalindrome() {
+        String[] expected = Arrays.stream(sentences)
+            .filter(palindrome::isPalindrome)
+            .toArray(String[]::new);
+        
+        Assert.assertArrayEquals(expected, sentences);
     }
 }

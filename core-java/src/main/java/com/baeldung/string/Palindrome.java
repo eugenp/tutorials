@@ -3,7 +3,8 @@ package com.baeldung.string;
 public class Palindrome {
 
     public boolean isPalindrome(String text) {
-        text = text.replaceAll("\\s+", "").toLowerCase();
+        text = text.replaceAll("\\s+", "")
+            .toLowerCase();
         int length = text.length();
         int forward = 0;
         int backward = length - 1;
@@ -19,7 +20,7 @@ public class Palindrome {
 
     public boolean isPalindromeReverseTheString(String text) {
         String reverse = "";
-        text = text.toLowerCase();
+        text = text.replaceAll("\\s+", "").toLowerCase();
         char[] plain = text.toCharArray();
         for (int i = plain.length - 1; i >= 0; i--)
             reverse += plain[i];
@@ -36,5 +37,17 @@ public class Palindrome {
         StringBuffer plain = new StringBuffer(text);
         StringBuffer reverse = plain.reverse();
         return reverse.equals(plain);
+    }
+
+    public boolean isPalindromeRecursive(String text, int forward, int backward) {
+        if (forward == backward)
+            return true;
+        if ((text.charAt(forward)) != (text.charAt(backward)))
+            return false;
+        if (forward < backward + 1) {
+            return isPalindromeRecursive(text, forward + 1, backward - 1);
+        }
+
+        return true;
     }
 }
