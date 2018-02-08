@@ -81,6 +81,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(Bag.class);
         metadataSources.addAnnotatedClass(PointEntity.class);
         metadataSources.addAnnotatedClass(PolygonEntity.class);
+        metadataSources.addAnnotatedClass(com.baeldung.hibernate.pojo.Person.class);
 
         Metadata metadata = metadataSources.buildMetadata();
         return metadata.getSessionFactoryBuilder()
