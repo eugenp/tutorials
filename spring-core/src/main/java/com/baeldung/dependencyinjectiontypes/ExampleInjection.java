@@ -1,5 +1,7 @@
 package com.baeldung.dependencyinjectiontypes;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class ExampleInjection {
 
     private String strField;
@@ -8,12 +10,8 @@ public class ExampleInjection {
     public ExampleInjection() {
         super();
     }
-
-    public ExampleInjection(String strField) {
-        this.strField = strField;
-        this.intField = 0;
-    }
-
+    
+    @Autowired
     public ExampleInjection(String strField, int intField) {
         this.strField = strField;
         this.intField = intField;

@@ -2,60 +2,57 @@ package com.baeldung.dependencyinjectiontypes;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 public class ExampleInjectionTypeTest {
     
     private static ApplicationContext context ;
-    
-    @BeforeClass
-    public static void setApplicationContext() {
-        context = new ClassPathXmlApplicationContext("injectiontypes-example.xml") ;
-    }
 
     @Test
-    public void whenConstructorInjectionByIndex_thenSucessful() {
-        ExampleInjection exampleInjection 
-            = (ExampleInjection) context.getBean("exampleConstructorByIndex") ;
+    public void whenConstructorInjection_thenSucessful() {
+        context = new AnnotationConfigApplicationContext(ExampleConfig1.class);
+        ExampleInjection exampleInjection = (ExampleInjection) context.getBean(ExampleInjection.class) ;
         
-        assertEquals("Successfully injected based on index",exampleInjection.getStrField());
+        assertEquals("Successfully injected from constructor",exampleInjection.getStrField());
         assertEquals(100, exampleInjection.getIntField());
-    }
 
-    @Test
-    public void whenConstructorInjectionByType_thenSucessful() {
-        ExampleInjection exampleInjection 
-            = (ExampleInjection) context.getBean("exampleConstructorByType") ;
-        
-        assertEquals("Successfully injected based on type",exampleInjection.getStrField());
-        assertEquals(200, exampleInjection.getIntField());
-    }
-
-    @Test
-    public void whenConstructorInjectionWithoutType_thenSucessful() {
-        ExampleInjection exampleInjection 
-            = (ExampleInjection) context.getBean("exampleConstructorWithoutType") ;
-        
-        assertEquals("300",exampleInjection.getStrField());
+        ((ConfigurableApplicationContext)context).close() ;
     }
 
     @Test
     public void whenSetterInjection_thenSucessful() {
-        ExampleInjection exampleInjection 
-            = (ExampleInjection) context.getBean("exampleSetter") ;
+        context = new AnnotationConfigApplicationContext(ExampleConfig2.class);
+        ExampleInjection exampleInjection = (ExampleInjection) context.getBean(ExampleInjection.class) ;
         
         assertEquals("Successfully injected from setter",exampleInjection.getStrField());
-        assertEquals(400, exampleInjection.getIntField());
-    }
+        assertEquals(200, exampleInjection.getIntField());
 
-    @AfterClass
-    public static void closeApplicationContext() {
         ((ConfigurableApplicationContext)context).close() ;
     }
+}
+
+@Configuration
+class ExampleConfig1 {
     
+    @Bean
+    public ExampleInjection configure() {
+        return new ExampleInjection("Successfully injected from constructor", 100) ;
+    }
+}
+
+@Configuration
+class ExampleConfig2 {
+    
+    @Bean
+    public ExampleInjection configure() {
+        ExampleInjection setterInjection = new ExampleInjection() ;
+        setterInjection.setStrField("Successfully injected from setter");
+        setterInjection.setIntField(200);
+        return setterInjection ;
+    }
 }
