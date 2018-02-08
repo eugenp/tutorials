@@ -15,9 +15,12 @@ public class Employee {
 		this.address = address;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
 	@Override
 	public String toString() {
 		return "Employee [address=" + address + "]";
 	}
-	
 }
