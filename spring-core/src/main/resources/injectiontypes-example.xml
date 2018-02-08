@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean 
+		id="exampleConstructorByIndex" 
+		class="com.baeldung.dependencyinjectiontypes.ExampleInjection">
+		<constructor-arg 
+			index="0" 
+			value="Successfully injected based on index" />
+		<constructor-arg 
+			index="1" 
+			value="100" />
+	</bean>
+
+	<bean 
+		id="exampleConstructorByType" 
+		class="com.baeldung.dependencyinjectiontypes.ExampleInjection">
+		<constructor-arg 
+			type="java.lang.String" 
+			value="Successfully injected based on type" />
+		<constructor-arg 
+			type="int" 
+			value="200" />
+	</bean>
+
+	<bean 
+		id="exampleConstructorWithoutType" 
+		class="com.baeldung.dependencyinjectiontypes.ExampleInjection">
+		<constructor-arg value="300" />
+	</bean>
+
+	<bean 
+		id="exampleSetter" 
+		class="com.baeldung.dependencyinjectiontypes.ExampleInjection">
+		<property 
+			name="strField" 
+			value="Successfully injected from setter"/>
+		<property 
+			name="intField" 
+			value="400"/>
+	</bean>
+
+</beans>
