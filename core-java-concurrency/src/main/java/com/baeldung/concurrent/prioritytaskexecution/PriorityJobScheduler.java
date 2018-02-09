@@ -23,9 +23,7 @@ public class PriorityJobScheduler {
                 try {
                     priorityJobPoolExecutor.execute(priorityQueue.take());
                 } catch (InterruptedException e) {
-                    if (priorityQueue.size() > 0) {
-                        e.printStackTrace();
-                    }
+                    // exception needs special handling
                     break;
                 }
             }
