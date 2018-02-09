@@ -1,18 +1,14 @@
 package com.baeldung.designpatterns.chainofresponsibility;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.PrintStream;
 
 public class ErrorLogger extends AbstractLogger {
     public ErrorLogger(int level, AbstractLogger nextLogger) {
-        super.setNextLogger(nextLogger);
-        this.level = level;
+        super(level, nextLogger);
     }
-    
+
     @Override
-    public void write(String message, OutputStream os) throws IOException{
-        
-        os.write(new String("ERROR::Logger: " + message).getBytes());
-        
+    public void write(String message, PrintStream ps) {
+        ps.println("ERROR::Logger: " + message);
     }
 }
