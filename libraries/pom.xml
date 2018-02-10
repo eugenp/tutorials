@@ -649,6 +649,11 @@
           <artifactId>google-http-client-gson</artifactId>
           <version>${googleclient.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-core</artifactId>
+            <version>${infinispan.version}</version>
+        </dependency>
 
         <!--Java Docker API Client-->
         <dependency>
@@ -811,5 +816,6 @@
         <docker.version>3.0.14</docker.version>
         <tomcat.version>8.5.24</tomcat.version>
         <async.http.client.version>2.2.0</async.http.client.version>
+        <infinispan.version>9.1.5.Final</infinispan.version>
     </properties>
 </project>
