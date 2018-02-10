@@ -16,11 +16,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.7.RELEASE</spring.version>
-        <spring-data-redis>1.8.1.RELEASE</spring-data-redis>
+        <spring.version>5.0.3.RELEASE</spring.version>
+        <spring-data-redis>2.0.3.RELEASE</spring-data-redis>
         <cglib.version>3.2.4</cglib.version>
         <jedis.version>2.9.0</jedis.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
+        <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
+        
     </properties>
 
     <dependencies>
@@ -73,6 +75,12 @@
             <artifactId>nosqlunit-redis</artifactId>
             <version>${nosqlunit.version}</version>
         </dependency>
+        
+        <dependency>
+    		<groupId>org.springframework.data</groupId>
+    		<artifactId>spring-data-commons</artifactId>
+    		<version>${spring-data-commons.version}</version>
+		</dependency>
     </dependencies>
 
 </project>
