@@ -1,8 +1,11 @@
 package com.baeldung.si;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
+import org.hamcrest.core.IsInstanceOf;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.SubscribableChannel;
@@ -21,6 +24,9 @@ import com.baeldung.si.security.SecurityConfig;
 @ContextConfiguration(classes = { SecurityConfig.class, SecuredDirectChannel.class, MessageConsumer.class })
 public class TestSpringIntegrationSecurity {
 
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
     @Autowired
     SubscribableChannel startDirectChannel;
 
@@ -34,34 +40,28 @@ public class TestSpringIntegrationSecurity {
         startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
     }
 
-    @Test(expected = AccessDeniedException.class)
+    @Test
     @WithMockUser(username = "jane", roles = { "LOGGER" })
-    public void givenRoleLogger_whenSendMessageToDirectChannel_thenAccessDenied() throws Throwable {
-        try {
-            startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
-        } catch (Exception e) {
-            throw e.getCause();
-        }
+    public void givenRoleLogger_whenSendMessageToDirectChannel_thenAccessDenied() {
+        expectedException.expectCause(IsInstanceOf.<Throwable> instanceOf(AccessDeniedException.class));
+
+        startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
     }
 
-    @Test(expected = AccessDeniedException.class)
+    @Test
     @WithMockUser(username = "jane")
-    public void givenJane_whenSendMessageToDirectChannel_thenAccessDenied() throws Throwable {
-        try {
-            startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
-        } catch (Exception e) {
-            throw e.getCause();
-        }
+    public void givenJane_whenSendMessageToDirectChannel_thenAccessDenied() {
+        expectedException.expectCause(IsInstanceOf.<Throwable> instanceOf(AccessDeniedException.class));
+
+        startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
     }
 
-    @Test(expected = AccessDeniedException.class)
+    @Test
     @WithMockUser(roles = { "VIEWER" })
-    public void givenRoleViewer_whenSendToDirectChannel_thenAccessDenied() throws Throwable {
-        try {
-            startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
-        } catch (Exception e) {
-            throw e.getCause();
-        }
+    public void givenRoleViewer_whenSendToDirectChannel_thenAccessDenied() {
+        expectedException.expectCause(IsInstanceOf.<Throwable> instanceOf(AccessDeniedException.class));
+
+        startDirectChannel.send(new GenericMessage<String>(DIRECT_CHANNEL_MESSAGE));
     }
 
     @Test
