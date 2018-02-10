@@ -46,7 +46,7 @@ public class TransactionalService {
             transactionalCache.put(KEY, 1000);
             System.out.println("HowManyVisits should now be 1000, " +
               "but we are holding the transaction");
-            Thread.sleep(5000L);
+            Thread.sleep(1000L);
             tm.rollback();
             System.out.println("The slow batch suffered a rollback");
         } catch (Exception e) {

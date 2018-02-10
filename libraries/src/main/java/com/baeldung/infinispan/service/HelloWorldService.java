@@ -44,7 +44,7 @@ public class HelloWorldService {
         String helloWorld = simpleHelloWorldCache.get(cacheKey);
         if (helloWorld == null) {
             helloWorld = repository.getHelloWorld();
-            simpleHelloWorldCache.put(cacheKey, helloWorld, 10, TimeUnit.SECONDS);
+            simpleHelloWorldCache.put(cacheKey, helloWorld, 1, TimeUnit.SECONDS);
         }
         return helloWorld;
     }

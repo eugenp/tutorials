@@ -54,7 +54,7 @@ public class CacheConfiguration {
     }
 
     private Configuration expiringConfiguration() {
-        return new ConfigurationBuilder().expiration().lifespan(5, TimeUnit.SECONDS)
+        return new ConfigurationBuilder().expiration().lifespan(1, TimeUnit.SECONDS)
           .build();
     }
 
