@@ -1,5 +1,7 @@
 package com.baeldung.string;
 
+import java.util.stream.IntStream;
+
 public class Palindrome {
 
     public boolean isPalindrome(String text) {
@@ -50,4 +52,11 @@ public class Palindrome {
 
         return true;
     }
+    
+    public boolean isPalindromeUsingIntStream(String text) {
+        String temp  = text.replaceAll("\\s+", "").toLowerCase();
+        return IntStream.range(0, temp.length() / 2)
+            .noneMatch(i -> temp.charAt(i) != temp.charAt(temp.length() - i - 1));
+    }
+    
 }
