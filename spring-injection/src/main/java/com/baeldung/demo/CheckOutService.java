@@ -20,11 +20,11 @@ public class CheckOutService {
     }
 
     public void checkOut() {
-        System.out.printf("Client  %S, %S is checking out.", clientProfileService.findByUserId("")
+        System.out.printf("Client %S, %S is checking out.", clientProfileService.findByUserId("")
             .getLastName(),
             clientProfileService.findByUserId("")
                 .getFirstName());
-        System.out.printf("Product Toothbrush has  %d left.",inventoryService.returnIntentory("Toothbrush"));
+        System.out.printf("Product Toothbrush has %d left.",inventoryService.returnIntentory("Toothbrush"));
     }
 
 }
