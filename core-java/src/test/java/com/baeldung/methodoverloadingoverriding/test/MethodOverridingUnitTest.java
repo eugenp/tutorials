@@ -23,7 +23,7 @@ public class MethodOverridingUnitTest {
     
     @Test
     public void givenVehicleInstance_whenCalledAccelerate_thenOneAssertion() {
-        assertThat(vehicle.accelerate(100)).isEqualTo("The vehicle accelerates at the following speed: 100 MPH.");
+        assertThat(vehicle.accelerate(100)).isEqualTo("The vehicle accelerates at : 100 MPH.");
     }
     
     @Test
@@ -38,7 +38,7 @@ public class MethodOverridingUnitTest {
     
     @Test
     public void givenCarInstance_whenCalledAccelerate_thenOneAssertion() {
-        assertThat(car.accelerate(80)).isEqualTo("The car accelerates at the following speed: 80 MPH.");
+        assertThat(car.accelerate(80)).isEqualTo("The car accelerates at the : 80 MPH.");
     }
     
     @Test
