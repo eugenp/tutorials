@@ -1,5 +1,6 @@
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -15,7 +16,6 @@ import wildfly.beans.UserBeanLocal;
  * Servlet implementation class TestEJBServlet
  */
 public class TestEJBServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
     @EJB
     private UserBeanLocal userBean;
@@ -23,8 +23,16 @@ public class TestEJBServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<User> users = userBean.getUsers();
 
-        response.getWriter()
-            .append("The number of users is: " + users.size());
+        PrintWriter out = response.getWriter();
+
+        out.println("<html>");
+        out.println("<body>");
+        for (User user : users) {
+            out.print(user.getUsername());
+            out.print(" " + user.getEmail() + " <br>");
+        }
+        out.println("</body>");
+        out.println("</html>");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

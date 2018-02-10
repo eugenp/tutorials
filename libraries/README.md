@@ -30,7 +30,7 @@
 - [Introduction to Neuroph](http://www.baeldung.com/neuroph)
 - [Guide to Apache Commons CircularFifoQueue](http://www.baeldung.com/commons-circular-fifo-queue)
 - [Quick Guide to RSS with Rome](http://www.baeldung.com/rome-rss)
-- [Introduction to NoException](http://www.baeldung.com/intrduction-to-noexception)
+- [Introduction to NoException](http://www.baeldung.com/introduction-to-noexception)
 - [Introduction to PCollections](http://www.baeldung.com/java-pcollections)
 - [Introduction to Hoverfly in Java](http://www.baeldung.com/hoverfly)
 - [Apache Commons Chain](http://www.baeldung.com/apache-commons-chain)
@@ -39,7 +39,6 @@
 - [Introduction to Apache Commons CSV](http://www.baeldung.com/apache-commons-csv)
 - [Difference Between Two Dates in Java](http://www.baeldung.com/java-date-difference)
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
-- [Introduction to FunctionalJava](http://www.baeldung.com/functional-java)
 - [Apache Commons IO](http://www.baeldung.com/apache-commons-io)
 - [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
 - [Introduction to javax.measure](http://www.baeldung.com/javax-measure)
@@ -53,7 +52,16 @@
 - [Using Pairs in Java](http://www.baeldung.com/java-pairs)
 - [Apache Commons Collections Bag](http://www.baeldung.com/apache-commons-bag)
 - [Introduction to Caffeine](http://www.baeldung.com/java-caching-caffeine)
-+-[Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
+- [Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
+- [Introduction To Docx4J](http://www.baeldung.com/docx4j)
+- [Introduction to StreamEx](http://www.baeldung.com/streamex)
+- [Introduction to BouncyCastle with Java](http://www.baeldung.com/java-bouncy-castle)
+- [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
+- [Guide to google-http-client](http://www.baeldung.com/google-http-client)
+- [Interact with Google Sheets from Java](http://www.baeldung.com/google-sheets-java-client)
+- [Programatically Create, Configure, and Run a Tomcat Server] (http://www.baeldung.com/tomcat-programmatic-setup)
+
+
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
