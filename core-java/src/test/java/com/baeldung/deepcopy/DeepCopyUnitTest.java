@@ -27,7 +27,7 @@ public class DeepCopyUnitTest {
     }
 
     @Test
-    public void whenModifyingOriginalObject_ThenConstructorCopyShouldNotChange() {
+    public void whenModifyingOriginalObject_thenConstructorCopyShouldNotChange() {
         Address address = new Address("Downing St 10", "London", "England");
         User pm = new User("Prime", "Minister", address);
         User deepCopy = new User(pm);
@@ -38,17 +38,17 @@ public class DeepCopyUnitTest {
                 .isNotEqualTo(pm.getAddress().getCountry());
     }
 
-    @Test
-    public void whenModifyingOriginalObject_ThenCloneCopyShouldNotChange() {
-        Address address = new Address("Downing St 10", "London", "England");
-        User pm = new User("Prime", "Minister", address);
-        User deepCopy = (User) pm.clone();
+@Test
+public void whenModifyingOriginalObject_thenCloneCopyShouldNotChange() {
+    Address address = new Address("Downing St 10", "London", "England");
+    User pm = new User("Prime", "Minister", address);
+    User deepCopy = (User) pm.clone();
 
-        address.setCountry("Great Britain");
+    address.setCountry("Great Britain");
 
-        assertThat(deepCopy.getAddress().getCountry())
-                .isNotEqualTo(pm.getAddress().getCountry());
-    }
+    assertThat(deepCopy.getAddress().getCountry())
+            .isNotEqualTo(pm.getAddress().getCountry());
+}
 
     @Test
     public void whenModifyingOriginalObject_thenCommonsCloneShouldNotChange() {
@@ -76,7 +76,7 @@ public class DeepCopyUnitTest {
     }
 
     @Test
-    public void whenModifyingOriginalObject_ThenJacksonCopyShouldNotChange() throws IOException {
+    public void whenModifyingOriginalObject_thenJacksonCopyShouldNotChange() throws IOException {
         Address address = new Address("Downing St 10", "London", "England");
         User pm = new User("Prime", "Minister", address);
         ObjectMapper objectMapper = new ObjectMapper();
