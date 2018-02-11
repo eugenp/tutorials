@@ -20,7 +20,7 @@ public class StudentService {
         
 		switch(id) {
             case 1:
-                student = new Student(1, "Jhon", "Doe");
+                student = new Student(1, "John", "Doe");
                 break;
             case 2:
                 student = new Student(2, "Jane", "Goodall");
