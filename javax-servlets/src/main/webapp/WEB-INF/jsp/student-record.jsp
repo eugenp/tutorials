@@ -20,7 +20,7 @@
         <div>Last Name: <%= student.getLastName()%></div>
         
          <% } else { %>
-         	<h1>No student Record found.</h1>
+         	<h1>No student record found.</h1>
          <% }%>
 	</body>
 </html>
