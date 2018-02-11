@@ -42,7 +42,7 @@ public class Java8StyleAssertions {
             }
         }).isInstanceOf(RuntimeException.class)
             .hasCauseInstanceOf(IOException.class)
-            .hasStackTraceContaining("java.io.IOException");
+            .hasStackTraceContaining("IOException");
     }
 
     @Test
