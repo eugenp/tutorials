@@ -1,7 +1,6 @@
 package com.baeldung.deepcopy;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertNotSame;
 
 import java.io.IOException;
 
@@ -22,8 +21,7 @@ public class DeepCopyUnitTest {
 
         User deepCopy = new User(pm);
 
-        assertThat(deepCopy)
-                .isNotSameAs(pm);
+        assertThat(deepCopy).isNotSameAs(pm);
     }
 
     @Test
@@ -34,21 +32,19 @@ public class DeepCopyUnitTest {
 
         address.setCountry("Great Britain");
 
-        assertThat(deepCopy.getAddress().getCountry())
-                .isNotEqualTo(pm.getAddress().getCountry());
+        assertThat(deepCopy.getAddress().getCountry()).isNotEqualTo(pm.getAddress().getCountry());
     }
 
-@Test
-public void whenModifyingOriginalObject_thenCloneCopyShouldNotChange() {
-    Address address = new Address("Downing St 10", "London", "England");
-    User pm = new User("Prime", "Minister", address);
-    User deepCopy = (User) pm.clone();
+    @Test
+    public void whenModifyingOriginalObject_thenCloneCopyShouldNotChange() {
+        Address address = new Address("Downing St 10", "London", "England");
+        User pm = new User("Prime", "Minister", address);
+        User deepCopy = (User) pm.clone();
 
-    address.setCountry("Great Britain");
+        address.setCountry("Great Britain");
 
-    assertThat(deepCopy.getAddress().getCountry())
-            .isNotEqualTo(pm.getAddress().getCountry());
-}
+        assertThat(deepCopy.getAddress().getCountry()).isNotEqualTo(pm.getAddress().getCountry());
+    }
 
     @Test
     public void whenModifyingOriginalObject_thenCommonsCloneShouldNotChange() {
@@ -58,8 +54,7 @@ public void whenModifyingOriginalObject_thenCloneCopyShouldNotChange() {
 
         address.setCountry("Great Britain");
 
-        assertThat(deepCopy.getAddress().getCountry())
-                .isNotEqualTo(pm.getAddress().getCountry());
+        assertThat(deepCopy.getAddress().getCountry()).isNotEqualTo(pm.getAddress().getCountry());
     }
 
     @Test
@@ -71,8 +66,7 @@ public void whenModifyingOriginalObject_thenCloneCopyShouldNotChange() {
 
         address.setCountry("Great Britain");
 
-        assertThat(deepCopy.getAddress().getCountry())
-                .isNotEqualTo(pm.getAddress().getCountry());
+        assertThat(deepCopy.getAddress().getCountry()).isNotEqualTo(pm.getAddress().getCountry());
     }
 
     @Test
@@ -84,10 +78,8 @@ public void whenModifyingOriginalObject_thenCloneCopyShouldNotChange() {
 
         address.setCountry("Great Britain");
 
-        assertThat(deepCopy.getAddress().getCountry())
-                .isNotEqualTo(pm.getAddress().getCountry());
+        assertThat(deepCopy.getAddress().getCountry()).isNotEqualTo(pm.getAddress().getCountry());
     }
-
 
     @Test
     @Ignore
