@@ -4,14 +4,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class ShallowCopyTest {
+public class ShallowCopyUnitTest {
 
 
     @Test
-    public void whenShallowCoping_thenObjectsShouldNotBeSame() {
+    public void whenShallowCopying_thenObjectsShouldNotBeSame() {
 
         Address address = new Address("Downing St 10", "London", "England");
         User pm = new User("Prime", "Minister", address);
+
         User shallowCopy = new User(pm.getFirstName(), pm.getLastName(), pm.getAddress());
 
         assertThat(shallowCopy)
@@ -19,13 +20,14 @@ public class ShallowCopyTest {
     }
 
     @Test
-    public void whenModifyingOriginalObject_ThenCopyShouldChange() {
+    public void whenModifyingOriginalObject_thenCopyShouldChange() {
         Address address = new Address("Downing St 10", "London", "England");
         User pm = new User("Prime", "Minister", address);
+
         User shallowCopy = new User(pm.getFirstName(), pm.getLastName(), pm.getAddress());
 
         address.setCountry("Great Britain");
         assertThat(shallowCopy.getAddress().getCountry())
-                .isNotEqualTo(pm.getAddress().getCountry());
+                .isEqualTo(pm.getAddress().getCountry());
     }
 }

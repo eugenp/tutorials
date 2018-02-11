@@ -2,7 +2,7 @@ package com.baeldung.deepcopy;
 
 import java.io.Serializable;
 
-class Address implements Serializable, Cloneable {
+public class Address implements Serializable, Cloneable {
 
     @Override
     public Object clone() {

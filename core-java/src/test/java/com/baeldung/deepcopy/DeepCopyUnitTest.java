@@ -6,21 +6,24 @@ import static org.junit.Assert.assertNotSame;
 import java.io.IOException;
 
 import org.apache.commons.lang.SerializationUtils;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
-public class DeepCopyTest {
+public class DeepCopyUnitTest {
 
     @Test
     public void whenCreatingDeepCopyWithCopyConstructor_thenObjectsShouldNotBeSame() {
 
         Address address = new Address("Downing St 10", "London", "England");
         User pm = new User("Prime", "Minister", address);
+
         User deepCopy = new User(pm);
 
-        assertNotSame(deepCopy, pm);
+        assertThat(deepCopy)
+                .isNotSameAs(pm);
     }
 
     @Test
@@ -87,12 +90,14 @@ public class DeepCopyTest {
 
 
     @Test
-    public void shouldDisplayHowLongEachMethodTake() throws CloneNotSupportedException, IOException {
+    @Ignore
+    public void whenMakingCopies_thenShowHowLongEachMethodTakes() throws CloneNotSupportedException, IOException {
+        int times = 1000000;
         Address address = new Address("Downing St 10", "London", "England");
         User pm = new User("Prime", "Minister", address);
 
         long start = System.currentTimeMillis();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < times; i++) {
             User primeMinisterClone = (User) SerializationUtils.clone(pm);
         }
         long end = System.currentTimeMillis();
@@ -100,21 +105,21 @@ public class DeepCopyTest {
 
         start = System.currentTimeMillis();
         Gson gson = new Gson();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < times; i++) {
             User primeMinisterClone = gson.fromJson(gson.toJson(pm), User.class);
         }
         end = System.currentTimeMillis();
         System.out.println("Cloning with Gson took " + (end - start) + " milliseconds.");
 
         start = System.currentTimeMillis();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < times; i++) {
             User primeMinisterClone = new User(pm);
         }
         end = System.currentTimeMillis();
         System.out.println("Cloning with the copy constructor took " + (end - start) + " milliseconds.");
 
         start = System.currentTimeMillis();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < times; i++) {
             User primeMinisterClone = (User) pm.clone();
         }
         end = System.currentTimeMillis();
@@ -122,7 +127,7 @@ public class DeepCopyTest {
 
         start = System.currentTimeMillis();
         ObjectMapper objectMapper = new ObjectMapper();
-        for (int i = 0; i < 1000000; i++) {
+        for (int i = 0; i < times; i++) {
             User primeMinisterClone = objectMapper.readValue(objectMapper.writeValueAsString(pm), User.class);
         }
         end = System.currentTimeMillis();

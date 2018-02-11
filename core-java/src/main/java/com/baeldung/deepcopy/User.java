@@ -2,7 +2,7 @@ package com.baeldung.deepcopy;
 
 import java.io.Serializable;
 
-class User implements Serializable, Cloneable {
+public class User implements Serializable, Cloneable {
 
     private static final long serialVersionUID = -3427002229954777557L;
     private String firstName;
