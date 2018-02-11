@@ -33,10 +33,11 @@ public class ShufflingCollectionsUnitTest {
         List<Integer> shuffledStudentIds = new ArrayList<>(studentsById.keySet());
         Collections.shuffle(shuffledStudentIds);
 
-        System.out.println("Students after shuffling:");
-        for(int id: shuffledStudentIds) {
-            System.out.println(studentsById.get(id));
-        }
+        List<String> shuffledStudents = new ArrayList();
+        shuffledStudentIds.forEach(id -> shuffledStudents.add(studentsById.get(id)));
+
+        System.out.println("Students after shuffling");
+        System.out.println(shuffledStudents);
     }
 
     @Test
