@@ -25,84 +25,73 @@ public class PalindromeTest {
     
     @Test
     public void whenWord_shouldBePalindrome() {
-        for(String word:words)
+        for (String word : words)
             assertTrue(palindrome.isPalindrome(word));
     }
 
     @Test
     public void whenSentence_shouldBePalindrome() {
-        for(String sentence:sentences)
+        for (String sentence : sentences)
             assertTrue(palindrome.isPalindrome(sentence));
     }
-    
+
     @Test
     public void whenReverseWord_shouldBePalindrome() {
-        for(String word:words)
+        for (String word : words)
             assertTrue(palindrome.isPalindromeReverseTheString(word));
     }
-    
+
     @Test
     public void whenReverseSentence_shouldBePalindrome() {
-        for(String sentence:sentences)
+        for (String sentence : sentences)
             assertTrue(palindrome.isPalindromeReverseTheString(sentence));
     }
-    
+
     @Test
     public void whenStringBuilderWord_shouldBePalindrome() {
-        for(String word:words)
+        for (String word : words)
             assertTrue(palindrome.isPalindromeUsingStringBuilder(word));
     }
-    
+
     @Test
     public void whenStringBuilderSentence_shouldBePalindrome() {
-        for(String sentence:sentences)
+        for (String sentence : sentences)
             assertTrue(palindrome.isPalindromeUsingStringBuilder(sentence));
     }
-    
+
     @Test
     public void whenStringBufferWord_shouldBePalindrome() {
-        for(String word:words)
+        for (String word : words)
             assertTrue(palindrome.isPalindromeUsingStringBuffer(word));
     }
-    
+
     @Test
     public void whenStringBufferSentence_shouldBePalindrome() {
-        for(String sentence:sentences)
-            
+        for (String sentence : sentences)
             assertTrue(palindrome.isPalindromeUsingStringBuffer(sentence));
     }
-    
+
     @Test
     public void whenPalindromeRecursive_wordShouldBePalindrome() {
-        for(String word:words) {
-            word = word.replaceAll("\\s+", "").toLowerCase();
-            int backward = word.length()-1;
-            
-            assertTrue(palindrome.isPalindromeRecursive(word,0,backward));
-        }
+        for (String word : words)
+            assertTrue(palindrome.isPalindromeRecursive(word));
     }
-    
+
     @Test
     public void whenPalindromeRecursive_sentenceShouldBePalindrome() {
-        for(String sentence:sentences) {
-            sentence = sentence.replaceAll("\\s+", "").toLowerCase();
-            int backward = sentence.length()-1;
-            
-            assertTrue(palindrome.isPalindromeRecursive(sentence,0,backward));
-        }
+        for (String sentence : sentences)
+            assertTrue(palindrome.isPalindromeRecursive(sentence));
     }
-    
+
     @Test
     public void whenPalindromeStreams_wordShouldBePalindrome() {
-        for(String word:words) {
+        for (String word : words)
             assertTrue(palindrome.isPalindromeUsingIntStream(word));
-        }
     }
-    
+
     @Test
     public void whenPalindromeStreams_sentenceShouldBePalindrome() {
-        for(String sentence:sentences) {
+        for (String sentence : sentences)
             assertTrue(palindrome.isPalindromeUsingIntStream(sentence));
-        }
     }
 }
