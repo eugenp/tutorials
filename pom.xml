@@ -281,7 +281,6 @@
         <module>lucene</module>
 		    <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
-        <module>activeweb</module>
     </modules>
 
     <dependencies>
