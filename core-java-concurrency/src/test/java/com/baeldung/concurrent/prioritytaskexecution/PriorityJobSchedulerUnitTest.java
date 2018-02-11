@@ -30,7 +30,9 @@ public class PriorityJobSchedulerUnitTest {
         // delay to avoid job sleep (added for demo) being interrupted
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException ignored) {
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException(e);
         }
         
         pjs.closeScheduler();
