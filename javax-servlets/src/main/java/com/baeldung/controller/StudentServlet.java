@@ -19,28 +19,25 @@ import com.baeldung.service.StudentService;
 @WebServlet(name = "StudentServlet", urlPatterns = "/student-record")
 public class StudentServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         StudentService studentService = new StudentService();
         String studentID = request.getParameter("id");
         if (studentID != null) {
             int id = Integer.parseInt(studentID);
             request.setAttribute("studentRecord", studentService.getStudent(id));
-        } 
-        
+        }
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/student-record.jsp");
         dispatcher.forward(request, response);
     }
- 
+
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
-    } 
- 
+    }
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 }
