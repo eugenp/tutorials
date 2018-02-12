@@ -6,9 +6,10 @@ public class ExampleResource_pl_PL extends ListResourceBundle {
 
     @Override
     protected Object[][] getContents() {
-        return new Object[][] {
-                {"keyA", "PL_pl_valueA"},
-                {"keyD", new Double("44.44")}
+        return new Object[][] { 
+            { "currency", "polish zloty" }, 
+            { "toUsdRate", new Double("3.401") }, 
+            { "cities", new String[] { "Warsaw", "Cracow" } } 
         };
     }
 

@@ -6,42 +6,33 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ExampleResourceUnitTest {
 
     @Test
-    public void whenGetBundleExampleResource_thenItShouldContainKeyAAndValueA() {
-        ResourceBundle exampleBundle = ResourceBundle.getBundle("com.baeldung.resourcebundle.ExampleResource");
-
-        assertEquals(exampleBundle.getString("keyA"), "valueA");
-    }
-
-    @Test
-    public void whenGetBundleExampleResourceForLocalePlPl_thenItShouldInheritKeyAKeyBKeyCKeyD() {
+    public void whenGetBundleExampleResourceForLocalePlPl_thenItShouldInheritPropertiesGreetingAndLanguage() {
         Locale plLocale = new Locale("pl", "PL");
 
         ResourceBundle exampleBundle = ResourceBundle.getBundle("com.baeldung.resourcebundle.ExampleResource", plLocale);
 
-        assertTrue(exampleBundle.keySet().containsAll(Arrays.asList("keyA", "keyB", "keyC", "keyD")));
-        assertEquals(exampleBundle.getString("keyA"), "PL_pl_valueA");
-        assertEquals(exampleBundle.getString("keyB"), "pl_valueB");
-        assertEquals(exampleBundle.getString("keyC"), "valueC");
-        assertEquals(exampleBundle.getObject("keyD"), new Double(44.44));
+        assertTrue(exampleBundle.keySet()
+            .containsAll(Arrays.asList("toUsdRate", "cities", "greeting", "currency", "language")));
+        assertEquals(exampleBundle.getString("greeting"), "cześć");
+        assertEquals(exampleBundle.getObject("toUsdRate"), 3.401);
+        assertArrayEquals(exampleBundle.getStringArray("cities"), new String[] { "Warsaw", "Cracow" });
     }
 
     @Test
-    public void whenGetBundleExampleResourceForLocaleUs_thenItShouldContainKeyAKeyBAndNotContainKeyCKeyD() {
+    public void whenGetBundleExampleResourceForLocaleUs_thenItShouldContainOnlyGreeting() {
         Locale usLocale = Locale.US;
 
         ResourceBundle exampleBundle = ResourceBundle.getBundle("com.baeldung.resourcebundle.ExampleResource", usLocale);
 
-        assertFalse(exampleBundle.keySet().containsAll(Arrays.asList("keyA", "keyB", "keyC", "keyD")));
-        assertTrue(exampleBundle.keySet().containsAll(Arrays.asList("keyA", "keyB")));
-        assertEquals(exampleBundle.getString("keyA"), "valueA");
-        assertEquals(exampleBundle.getString("keyB"), "valueB");
+        assertFalse(exampleBundle.keySet()
+            .containsAll(Arrays.asList("toUsdRate", "cities", "currency", "language")));
+        assertTrue(exampleBundle.keySet()
+            .containsAll(Arrays.asList("greeting")));
     }
 
 }

@@ -6,9 +6,9 @@ public class ExampleResource_pl extends ListResourceBundle {
 
     @Override
     protected Object[][] getContents() {
-        return new Object[][] {
-                {"keyA", "pl_valueA"},
-                {"keyB", "pl_valueB"},
+        return new Object[][] { 
+            { "greeting", "cześć" }, 
+            { "language", "polish" }, 
         };
     }
 
