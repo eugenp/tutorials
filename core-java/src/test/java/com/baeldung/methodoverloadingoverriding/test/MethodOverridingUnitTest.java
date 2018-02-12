@@ -65,5 +65,4 @@ public class MethodOverridingUnitTest {
     public void givenVehicleCarInstances_whenCalledStop_thenEqual() {
         assertThat(vehicle.stop()).isEqualTo(car.stop());
     }
-    
 }

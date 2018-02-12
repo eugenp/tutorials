@@ -3,7 +3,7 @@ package com.baeldung.methodoverridingoverloading.model;
 public class Vehicle {
     
     public String accelerate(long mph) {
-        return "The vehicle accelerates at the following speed: " + mph + " MPH.";
+        return "The vehicle accelerates at : " + mph + " MPH.";
     }
     
     public String stop() {
