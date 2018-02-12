@@ -1,14 +1,21 @@
 package com.baeldung.spring.configuration;
 
+import com.baeldung.spring.controller.rss.ArticleRssFeedViewResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.accept.ContentNegotiationManager;
+
+import java.util.List;
+import java.util.ArrayList;
 
 @Configuration
 @EnableWebMvc
@@ -21,11 +28,19 @@ class ApplicationConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public InternalResourceViewResolver jspViewResolver() {
-        InternalResourceViewResolver bean = new InternalResourceViewResolver();
-        bean.setPrefix("/WEB-INF/views/");
-        bean.setSuffix(".jsp");
-        return bean;
+    public ContentNegotiatingViewResolver viewResolver(ContentNegotiationManager cnManager) {
+        ContentNegotiatingViewResolver cnvResolver = new ContentNegotiatingViewResolver();
+        cnvResolver.setContentNegotiationManager(cnManager);
+        List<ViewResolver> resolvers = new ArrayList<>();
+
+        InternalResourceViewResolver bean = new InternalResourceViewResolver("/WEB-INF/views/",".jsp");
+        ArticleRssFeedViewResolver articleRssFeedViewResolver = new ArticleRssFeedViewResolver();
+
+        resolvers.add(bean);
+        resolvers.add(articleRssFeedViewResolver);
+
+        cnvResolver.setViewResolvers(resolvers);
+        return cnvResolver;
     }
 
     @Bean
