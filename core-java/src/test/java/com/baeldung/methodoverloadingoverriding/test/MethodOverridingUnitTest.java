@@ -50,4 +50,20 @@ public class MethodOverridingUnitTest {
     public void givenCarInstance_whenCalledStop_thenOneAssertion() {
         assertThat(car.stop()).isEqualTo("The vehicle has stopped.");
     }
+    
+    @Test
+    public void givenVehicleCarInstances_whenCalledAccelerateWithSameArgument_thenNotEqual() {
+        assertThat(vehicle.accelerate(100)).isNotEqualTo(car.accelerate(100));
+    }
+    
+    @Test
+    public void givenVehicleCarInstances_whenCalledRun_thenEqual() {
+        assertThat(vehicle.run()).isEqualTo(car.run());
+    }
+    
+    @Test
+    public void givenVehicleCarInstances_whenCalledStop_thenEqual() {
+        assertThat(vehicle.stop()).isEqualTo(car.stop());
+    }
+    
 }
