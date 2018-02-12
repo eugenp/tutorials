@@ -16,7 +16,8 @@ public class Job implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println("Job:" + jobName + " Priority:" + jobPriority);
+            System.out.println("Job:" + jobName + 
+              " Priority:" + jobPriority);
             Thread.sleep(1000);
         } catch (InterruptedException ignored) {
         }
