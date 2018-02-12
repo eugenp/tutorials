@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "logical-utility-781",
+  "private_key_id": "10857e3d312e1fc54afe86aa8ecf6087272164f6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC96MlqWiC8q6iM\nraaRMYIDjb5p+4YEF0ZtJqVTMoYaZvPGWzTM34HT7RmQiRtgLL/r+fIT/isXR7Ss\nM1ie6PrZSMpftJy+txU/zTXd0mXI5+clggMEH7MF/zwr3P4tbmxtzHnATBWsA8ds\nHXhHxGHAvznqprXiCRsWvniG6i01vMEYDNdyCXGMHewXrlHb+ocUyzmFlVrGvKHU\nbvaER1MaM9q5OMAXnX54fV4EW6GrxvLR80vWGXGNro41OY6qM7eQ5J8jDRg6OLSZ\nJ8UP2BtEtCO3dpp3VLadGZ9mrCEmAbKBRZbQsrJdp7Q+aPiufW2wmGj+KK/NK7Xo\neAQzG5IfAgMBAAECggEAAm1GoabMM00IRt/zOHjG/g+iJs2RjVzUyBFN3I3RO+Yj\n6F2DA7k5egFWKcwuvuBjhXr4tnuxhkcizm6Li+BTUFKHT4jJ1gAV8+5F6XNGXLZl\n9EtAiZ10FrgHx1G4J9F47kBGMAho4H1d34pS3qvqSeHHtjFyMpTGNViyxpqYgE7H\nDnkf07Z5FAFpnOs28lDEn7v+xM4yAnE6CYtLIuRDdp+5Mo+GUGSeavjHDVDm2G1/\nTMmoVv7eDr8i7vULs3t6a1zFoeo1wZlcW4b4Gh0K3F0QjP9q/KnNc/EIJgmKG4dN\nPJBwfDCEeZcUlBrvvVmJth19O+2fSBQ9CJSVAt1VHQKBgQDnuGLi5HEufU/anIFM\nqhlTkGbMLfroj5l+Bgzj50VW3zDiQNQdaXx+FFpf+4sNdIvZsPXUTkX8hbNl5pY2\ndI+yrx1xmUM9HzUFrF16b85znxPhhoYW2CWlHO6Pv2ukWcLsy6eH86Dngntfurm7\nZM1xuKrmr7o+jkTLzxq/EHKVFQKBgQDRzt+CSB2ZQ4lBhe1UM6XrYL7Ai7s1pnt8\nNyCalKHlVuxnzP8Jt3jwnxJTcOj7vNuBlNpGk4fwo/eWUgG/q7pc9s+V3jO4Avu/\nxWlapc0jx0XOUpKteVhMa7FgVFt+w4+xuptx3Jw2HS5rE83anwmuINOSr1+NnJWS\nRhwiThz/YwKBgE2R8TCJTsZEVt4U9EfozW+m8HK7lboSkEya0+fbPOAW+TNUhm2O\nKYm/YH2vJF6NvF9UmQbIaS9exq5/IZv7Kzui2ZV0vAiTENnkWKqrEQ6tmyctNGgj\nVX7Pj6D5cJxlHBbPGjctvJijmo9yX8i2tvux2Sw+eXeFgsxDeW2qoOD9AoGAGFLx\nmrsdo10vFoeeYjqyq71FoDES/T9V5arGfuVod5xCQC6GCuxYex0WFNJsUHMux7Eo\nNTJ5ei6oT6cmSMByFMEQhAGE4XqHEU6jzjyWseUydJ8iHjaJRCLgJ5jgGqw1hpdp\n2iOHgMaVURi0rvntN2Da5pCqdVKIDLNQI7IGrp0CgYEAoum6xxOmQyh/tvAjrPn8\nrRborAInxpUxa0R/vReaO0pwVMlmeXmdhzfb6CBY+JwoWtG8bk00t73jLcuWx1En\npwIV4VOrFuFKjwpPSstq5eDwNxz5kSopylnBDxjk5vMMDRUKofvzV39dDbu+7JtG\nML3c56VAb3RRFmusnozMzl4=\n-----END PRIVATE KEY-----\n",
+  "client_email": "baeldung-storage-tutorial@logical-utility-781.iam.gserviceaccount.com",
+  "client_id": "118132451575760593559",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/baeldung-storage-tutorial%40logical-utility-781.iam.gserviceaccount.com"
+}
