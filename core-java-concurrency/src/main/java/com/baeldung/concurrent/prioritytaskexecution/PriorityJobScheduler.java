@@ -9,21 +9,21 @@ import java.util.concurrent.TimeUnit;
 public class PriorityJobScheduler {
 
     private ExecutorService priorityJobPoolExecutor;
-    private ExecutorService priorityJobScheduler;
-    private PriorityBlockingQueue<Runnable> priorityQueue;
+    private ExecutorService priorityJobScheduler = 
+      Executors.newSingleThreadExecutor();
+    private PriorityBlockingQueue<Job> priorityQueue;
 
     public PriorityJobScheduler(Integer poolSize, Integer queueSize) {
         priorityJobPoolExecutor = Executors.newFixedThreadPool(poolSize);
-        Comparator<? super Job> jobComparator = Comparator.comparing(Job::getJobPriority);
-        priorityQueue = new PriorityBlockingQueue<Runnable>(queueSize, 
-          (Comparator<? super Runnable>) jobComparator);
+        priorityQueue = new PriorityBlockingQueue<Job>(queueSize, 
+          Comparator.comparing(Job::getJobPriority));
 
-        priorityJobScheduler = Executors.newSingleThreadExecutor();
         priorityJobScheduler.execute(()->{
             while (true) {
                 try {
                     priorityJobPoolExecutor.execute(priorityQueue.take());
                 } catch (InterruptedException e) {
+                    // exception needs special handling
                     break;
                 }
             }
