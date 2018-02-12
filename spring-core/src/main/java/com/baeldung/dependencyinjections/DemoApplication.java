@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import com.baeldung.dependencyinjections.model.Email;
+
 /**
  * Entry point for spring boot
  * @author hemant
