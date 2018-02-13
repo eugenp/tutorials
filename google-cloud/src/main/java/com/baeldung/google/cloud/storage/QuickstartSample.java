@@ -21,7 +21,7 @@ public class QuickstartSample {
         Storage storage = loadStorageFromPath("google-cloud/src/main/resources/google-auth.json", "logical-utility-781");
 
         // The name for the new bucket
-        String bucketName = "egoebelbecker-1-bucket";  // "my-new-bucket";
+        String bucketName = "baeldung-1-bucket";  // "my-new-bucket";
 
         // Creates the new bucket
         Bucket bucket = storage.create(BucketInfo.of(bucketName));
