@@ -46,9 +46,7 @@ public class ClientErrorLoggingFilter extends GenericFilterBean {
             logger.debug("User " + auth.getName() + " encountered error " + status);
         } else {
             if (errorCodes.stream()
-                .filter(s -> s.value() == status)
-                .findFirst()
-                .isPresent()) {
+                .anyMatch(s -> s.value() == status)) {
                 logger.debug("User " + auth.getName() + " encountered error " + status);
             }
         }
