@@ -3,6 +3,8 @@ package com.baeldung.shufflingcollections;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class ShufflingCollectionsUnitTest {
@@ -33,8 +35,9 @@ public class ShufflingCollectionsUnitTest {
         List<Integer> shuffledStudentIds = new ArrayList<>(studentsById.keySet());
         Collections.shuffle(shuffledStudentIds);
 
-        List<String> shuffledStudents = new ArrayList();
-        shuffledStudentIds.forEach(id -> shuffledStudents.add(studentsById.get(id)));
+        List<String> shuffledStudents = shuffledStudentIds.stream()
+                .map(id -> studentsById.get(id))
+                .collect(Collectors.toList());
 
         System.out.println("Students after shuffling");
         System.out.println(shuffledStudents);
