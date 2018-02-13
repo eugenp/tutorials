@@ -1,4 +1,4 @@
-package com.baeldung.methodoverridingoverloading.util;
+package com.baeldung.methodoverloadingoverriding.util;
 
 public class Multiplier {
     

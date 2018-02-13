@@ -1,8 +1,8 @@
-package com.baeldung.methodoverridingoverloading.application;
+package com.baeldung.methodoverloadingoverriding.application;
 
-import com.baeldung.methodoverridingoverloading.model.Car;
-import com.baeldung.methodoverridingoverloading.model.Vehicle;
-import com.baeldung.methodoverridingoverloading.util.Multiplier;
+import com.baeldung.methodoverloadingoverriding.model.Car;
+import com.baeldung.methodoverloadingoverriding.model.Vehicle;
+import com.baeldung.methodoverloadingoverriding.util.Multiplier;
 
 public class Application {
     
