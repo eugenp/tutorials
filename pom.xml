@@ -166,6 +166,8 @@
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-security</module>
+		<module>spring-constructor-di-annotation</module>
+        <module>spring-constructor-di-xml</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -216,6 +218,8 @@
         <module>spring-rest-query-language</module>
         <module>spring-rest</module>
         <module>spring-rest-simple</module>
+		<module>spring-setter-di-annotation</module>
+		<module>spring-setter-di-xml</module>
         <module>spring-security-acl</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
