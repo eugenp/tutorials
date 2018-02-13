@@ -10,7 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class ConstructorDependencyInjectionTest {
+public class DependencyInjectionTest {
 
     @Test
     public void givenAutowired_WhenSetOnConstructor_ThenDependencyResolved() {
@@ -38,5 +38,4 @@ public class ConstructorDependencyInjectionTest {
         assertNotNull(demoBean.getDemoDependency());
         assertEquals("Test", demoBean.getDemoDependency().getMessage());
     }
-
 }
