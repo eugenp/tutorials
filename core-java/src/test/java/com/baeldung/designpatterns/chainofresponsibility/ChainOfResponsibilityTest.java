@@ -4,43 +4,31 @@ import org.junit.Test;
 
 public class ChainOfResponsibilityTest {
 
-    private static AbstractLogger getChainOfLoggers() {
+    private static AbstractNumberHandler getChainOfNumberHandlers() {
 
-        AbstractLogger debugLogger = new DebugLogger(AbstractLogger.DEBUG, null);
-        AbstractLogger infoLogger = new InfoLogger(AbstractLogger.INFO, debugLogger);
-        AbstractLogger errorLogger = new ErrorLogger(AbstractLogger.ERROR, infoLogger);
+        AbstractNumberHandler oddNumberHandler = new OddNumberHandler(null);
+        AbstractNumberHandler evenNumberHandler = new EvenNumberHandler(oddNumberHandler);
+        AbstractNumberHandler primeNumberHandler = new PrimeNumberHandler(evenNumberHandler);
 
-        return errorLogger;
+        return primeNumberHandler;
     }
 
     @Test
     public void givenMessage_whenLogLevelDebug_thenMessageStartsWithDebugKeyword() {
-        AbstractLogger loggerChain = getChainOfLoggers();
-
-        loggerChain.logMessage(AbstractLogger.DEBUG, "This is an debug level information.");
-
+        AbstractNumberHandler numberHandlerChain = getChainOfNumberHandlers();
+        numberHandlerChain.handleNumber(13);
     }
 
     @Test
     public void givenMessage_whenLogLevelInfo_thenMessageStartsWithInfoKeyword() {
-        AbstractLogger loggerChain = getChainOfLoggers();
-
-        loggerChain.logMessage(AbstractLogger.INFO, "This is an info level information.");
-
+        AbstractNumberHandler numberHandlerChain = getChainOfNumberHandlers();
+        numberHandlerChain.handleNumber(12);
     }
 
     @Test
     public void givenMessage_whenLogLevelError_thenMessageStartsWithErrorKeyword() {
-        AbstractLogger loggerChain = getChainOfLoggers();
-
-        loggerChain.logMessage(AbstractLogger.ERROR, "This is an error level information.");
-    }
-
-    @Test
-    public void givenMessage_whenLogLevelUnknown_thenMessageStartsWithConsoleKeyword() {
-        AbstractLogger loggerChain = getChainOfLoggers();
-
-        loggerChain.logMessage(4, "This is an unknown level information.");
+        AbstractNumberHandler numberHandlerChain = getChainOfNumberHandlers();
+        numberHandlerChain.handleNumber(15);
     }
 
 }
