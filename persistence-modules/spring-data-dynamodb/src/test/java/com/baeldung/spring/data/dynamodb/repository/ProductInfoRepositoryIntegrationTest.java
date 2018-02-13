@@ -22,7 +22,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
@@ -71,7 +74,7 @@ public class ProductInfoRepositoryIntegrationTest {
         repository.save(productInfo);
 
         List<ProductInfo> result = (List<ProductInfo>) repository.findAll();
-        assertTrue("Not empty", result.size() > 0);
-        assertTrue("Contains item with expected cost", result.get(0).getCost().equals(EXPECTED_COST));
+        assertThat(result.size(), is(greaterThan(0)));
+        assertThat(result.get(0).getCost(), is(equalTo(EXPECTED_COST)));
     }
 }
