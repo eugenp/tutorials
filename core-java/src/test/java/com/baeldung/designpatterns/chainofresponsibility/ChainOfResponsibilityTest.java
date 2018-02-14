@@ -2,33 +2,36 @@ package com.baeldung.designpatterns.chainofresponsibility;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertTrue;
+
 public class ChainOfResponsibilityTest {
 
-    private static AbstractNumberHandler getChainOfNumberHandlers() {
+    private static AuthenticationProcessor getChainOfAuthProcessor() {
 
-        AbstractNumberHandler oddNumberHandler = new OddNumberHandler(null);
-        AbstractNumberHandler evenNumberHandler = new EvenNumberHandler(oddNumberHandler);
-        AbstractNumberHandler primeNumberHandler = new PrimeNumberHandler(evenNumberHandler);
-
-        return primeNumberHandler;
+        AuthenticationProcessor oAuthProcessor = new OAuthAuthenticationProcessor(null);
+        AuthenticationProcessor unamePasswordProcessor = new UsernamePasswordAuthenticationProcessor(oAuthProcessor);
+        return unamePasswordProcessor;
     }
 
     @Test
-    public void givenMessage_whenLogLevelDebug_thenMessageStartsWithDebugKeyword() {
-        AbstractNumberHandler numberHandlerChain = getChainOfNumberHandlers();
-        numberHandlerChain.handleNumber(13);
+    public void givenOAuthProvider_whenCheckingAuthorized_thenSuccess() {
+        AuthenticationProcessor authProcessorChain = getChainOfAuthProcessor();
+        boolean isAuthorized = authProcessorChain.isAuthorized(new OAuthTokenProvider());
+        assertTrue(isAuthorized);
     }
 
     @Test
-    public void givenMessage_whenLogLevelInfo_thenMessageStartsWithInfoKeyword() {
-        AbstractNumberHandler numberHandlerChain = getChainOfNumberHandlers();
-        numberHandlerChain.handleNumber(12);
+    public void givenUsernamePasswordProvider_whenCheckingAuthorized_thenSuccess() {
+        AuthenticationProcessor authProcessorChain = getChainOfAuthProcessor();
+        boolean isAuthorized = authProcessorChain.isAuthorized(new UsernamePasswordProvider());
+        assertTrue(isAuthorized);
     }
 
     @Test
-    public void givenMessage_whenLogLevelError_thenMessageStartsWithErrorKeyword() {
-        AbstractNumberHandler numberHandlerChain = getChainOfNumberHandlers();
-        numberHandlerChain.handleNumber(15);
+    public void givenSamlAuthProvider_whenCheckingAuthorized_thenFailure() {
+        AuthenticationProcessor authProcessorChain = getChainOfAuthProcessor();
+        boolean isAuthorized = authProcessorChain.isAuthorized(new SamlAuthenticationProvider());
+        assertTrue(!isAuthorized);
     }
 
 }
