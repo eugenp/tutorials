@@ -1,9 +1,9 @@
 package com.baeldung.jsonjava;
 
 public class DemoBean {
-	public int id;
-	public String name;
-	public boolean active;
+    private int id;
+    private String name;
+    private boolean active;
     
     public int getId() {
         return id;
