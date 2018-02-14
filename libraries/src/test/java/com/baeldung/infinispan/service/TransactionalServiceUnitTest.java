@@ -14,11 +14,9 @@ public class TransactionalServiceUnitTest extends ConfigurationTest {
         transactionalService.getQuickHowManyVisits();
         backgroundThread.start();
         Thread.sleep(100); //lets wait our thread warm up
-        long milis = System.currentTimeMillis();
-        transactionalService.getQuickHowManyVisits();
-        long executionTime = System.currentTimeMillis() - milis;
 
-        assertThat(executionTime).isGreaterThan(500).isLessThan(1000);
+        assertThat(timeThis(() -> transactionalService.getQuickHowManyVisits()))
+          .isGreaterThan(500).isLessThan(1000);
     }
 
 }
