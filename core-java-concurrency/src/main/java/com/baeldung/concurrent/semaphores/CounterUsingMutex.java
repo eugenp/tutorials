@@ -3,7 +3,7 @@ package com.baeldung.concurrent.semaphores;
 import java.util.concurrent.Semaphore;
 
 class CounterUsingMutex {
-
+    public static final long DELAY = 200;
     private final Semaphore mutex;
     private int count;
 
@@ -15,7 +15,7 @@ class CounterUsingMutex {
     void increase() throws InterruptedException {
         mutex.acquire();
         this.count = this.count + 1;
-        Thread.sleep(1000);
+        Thread.sleep(DELAY);
         mutex.release();
 
     }

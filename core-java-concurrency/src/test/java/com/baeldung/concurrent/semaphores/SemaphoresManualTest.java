@@ -112,7 +112,7 @@ public class SemaphoresManualTest {
             }));
         executorService.shutdown();
         assertTrue(counter.hasQueuedThreads());
-        Thread.sleep(5000);
+        Thread.sleep(count * CounterUsingMutex.DELAY);
         assertFalse(counter.hasQueuedThreads());
         assertEquals(count, counter.getCount());
     }

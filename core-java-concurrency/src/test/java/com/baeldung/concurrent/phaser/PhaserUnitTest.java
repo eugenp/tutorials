@@ -11,7 +11,7 @@ import org.junit.Test;
 public class PhaserUnitTest {
 
     @Test
-    public void givenPhaser_whenCoordinateWorksBetweenThreads_thenShouldCoordinateBetweenMultiplePhases() {
+    public void givenPhaser_whenCoordinateWorksBetweenThreads_thenShouldCoordinateBetweenMultiplePhases() throws InterruptedException {
         // given
         ExecutorService executorService = Executors.newCachedThreadPool();
         Phaser ph = new Phaser(1);
