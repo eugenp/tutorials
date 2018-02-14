@@ -1,25 +1,26 @@
 package com.baeldung.concurrent.locks;
 
-import org.junit.Test;
+import static junit.framework.TestCase.assertEquals;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 
-import static junit.framework.TestCase.assertEquals;
+import org.junit.Test;
 
 public class SharedObjectWithLockManualTest {
 
     @Test
-    public void whenLockAcquired_ThenLockedIsTrue() {
-        final SharedObjectWithLock object = new SharedObjectWithLock();
+    public void whenLockAcquired_ThenLockedIsTrue() throws InterruptedException {
+        Semaphore sem = new Semaphore(0);
+        final SharedObjectWithLock object = new SharedObjectWithLock(sem);
 
-        final int threadCount = 2;
+        final int threadCount = 1;
         final ExecutorService service = Executors.newFixedThreadPool(threadCount);
 
         executeThreads(object, threadCount, service);
-
+        sem.acquire();
         assertEquals(true, object.isLocked());
-
         service.shutdown();
     }
 
@@ -35,19 +36,6 @@ public class SharedObjectWithLockManualTest {
 
         service.shutdown();
 
-    }
-
-    public void whenTryLock_ThenQueuedThread() {
-        final SharedObjectWithLock object = new SharedObjectWithLock();
-
-        final int threadCount = 2;
-        final ExecutorService service = Executors.newFixedThreadPool(threadCount);
-
-        executeThreads(object, threadCount, service);
-
-        assertEquals(true, object.isLocked());
-
-        service.shutdown();
     }
 
     @Test

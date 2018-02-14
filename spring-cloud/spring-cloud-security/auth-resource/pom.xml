@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baeldung</groupId>
-	<artifactId>personresource</artifactId>
+	<artifactId>auth-resource</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>personresource</name>
+	<name>auth-resource</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
