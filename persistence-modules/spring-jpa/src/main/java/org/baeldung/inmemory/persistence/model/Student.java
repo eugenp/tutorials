@@ -1,7 +1,10 @@
 package org.baeldung.inmemory.persistence.model;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
@@ -9,6 +12,9 @@ public class Student {
     @Id
     private long id;
     private String name;
+
+    @ElementCollection
+    private List<String> tags = new ArrayList<>();
 
     public Student() {
     }
@@ -35,4 +41,11 @@ public class Student {
         this.name = name;
     }
 
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags.addAll(tags);
+    }
 }
