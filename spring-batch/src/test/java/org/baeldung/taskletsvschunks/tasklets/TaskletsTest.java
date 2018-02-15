@@ -17,7 +17,7 @@ public class TaskletsTest {
     @Autowired private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
-    public void test() throws Exception {
+    public void givenTaskletsJob_WhenJobEnds_ThenStatusCompleted() throws Exception {
         JobExecution jobExecution = jobLauncherTestUtils.launchJob();
         Assert.assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
     }
