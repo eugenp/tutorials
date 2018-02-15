@@ -14,14 +14,14 @@ import java.util.List;
 @Controller
 public class ArticleRssController {
 
-    @GetMapping(value = "/rssMvc")
+    @GetMapping(value = "/rss0")
     public String articleMvcFeed() {
         return "articleFeedView";
     }
 
-    @GetMapping(value = "/rssRest", produces = "application/rss+xml")
+    @GetMapping(value = "/rss1")
     @ResponseBody
-    public String articleRestFeed() throws FeedException {
+    public SyndFeed articleRestFeed1() throws FeedException {
         SyndFeed feed = new SyndFeedImpl();
         feed.setFeedType("rss_2.0");
         feed.setLink("http://localhost:8080/spring-mvc-simple/rss");
@@ -53,7 +53,37 @@ public class ArticleRssController {
         list.add(item2);
         feed.setEntries(list);
 
-        return new SyndFeedOutput().outputString(feed);
+//        return new SyndFeedOutput().outputString(feed);
+        return feed;
+    }
+
+    @GetMapping(value = "/rss2")
+    @ResponseBody
+    public ArticleFeed articleRestFeed2() {
+        ArticleFeed feed = new ArticleFeed();
+        feed.setLink("http://localhost:8080/spring-mvc-simple/rss");
+        feed.setTitle("Article Feed");
+        feed.setDescription("Article Feed Description");
+        feed.setPublishedDate(new Date());
+
+        ArticleItem item1 = new ArticleItem();
+        item1.setLink("http://www.baeldung.com/netty-exception-handling");
+        item1.setTitle("Exceptions in Netty");
+        item1.setDescription("In this quick article, we’ll be looking at exception handling in Netty.");
+        item1.setPublishedDate(new Date());
+        item1.setAuthor("Carlos");
+
+        ArticleItem item2 = new ArticleItem();
+        item2.setLink("http://www.baeldung.com/cockroachdb-java");
+        item2.setTitle("Guide to CockroachDB in Java");
+        item2.setDescription("This tutorial is an introductory guide to using CockroachDB with Java.");
+        item2.setPublishedDate(new Date());
+        item2.setAuthor("Baeldung");
+
+        feed.addItem(item1);
+        feed.addItem(item2);
+
+        return feed;
     }
 
 }
