@@ -1,23 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+mule soap rest: commit caefbe854c49c22114ea4b9b81e84747b113f2b8
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns:cxf="http://www.mulesoft.org/schema/mule/cxf"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
-http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/cxf http://www.mulesoft.org/schema/mule/cxf/current/mule-cxf.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+Mbassador commit da32a94d12307b5677ff630a773ee715f3ec6c92
 
 
-
-<http:listener-config name="listener-config" host="localhost" port="61081" doc:name="HTTP Listener Configuration" basePath="hello"/>   
-<flow name="codeFirstSoapService">
-        <http:listener config-ref="listener-config" path="/" doc:name="HTTP"/>
-        <logger message="payload: #[message.payloadAs(java.lang.String)]" level="INFO" doc:name="Logger"/>
-    <cxf:jaxws-service serviceClass="com.baeldung.CodeFirstService" doc:name="CXF" soapVersion="1.2"/>
-    <component class="com.baeldung.CodeFirstServiceImpl" doc:name="Java"/>
-</flow>
-
-</mule>
+		<cxf:jaxws-client doc:name="ServiceClient" 
+		soapVersion="1.2" clientClass="com.baeldung.CodeFirstServiceService" 
+			wsdlLocation="http://localhost:61081/hello?wsdl" operation="showPersonDetail" 
+			port="CodeFirstServicePort"   />
