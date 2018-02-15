@@ -3,11 +3,11 @@ package org.baeldung.guava;
 public class CustomEvent {
     private String action;
 
-    public CustomEvent(String action) {
+    CustomEvent(String action) {
         this.action = action;
     }
 
-    public String getAction() {
+    String getAction() {
         return action;
     }
 

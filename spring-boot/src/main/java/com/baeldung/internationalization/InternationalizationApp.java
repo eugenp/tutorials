@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 
-@SpringBootApplication(exclude=MySQLAutoconfiguration.class)
+@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
 public class InternationalizationApp {
     @RolesAllowed("*")
     public static void main(String[] args) {

@@ -18,23 +18,23 @@ public class MultiHttpClientConnThread extends Thread {
     private final HttpGet get;
 
     private PoolingHttpClientConnectionManager connManager;
-    public int leasedConn;
+    private int leasedConn;
 
-    public MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get, final PoolingHttpClientConnectionManager connManager) {
+    MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get, final PoolingHttpClientConnectionManager connManager) {
         this.client = client;
         this.get = get;
         this.connManager = connManager;
         leasedConn = 0;
     }
 
-    public MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get) {
+    MultiHttpClientConnThread(final CloseableHttpClient client, final HttpGet get) {
         this.client = client;
         this.get = get;
     }
 
     // API
 
-    public final int getLeasedConn() {
+    final int getLeasedConn() {
         return leasedConn;
     }
 
@@ -61,8 +61,6 @@ public class MultiHttpClientConnThread extends Thread {
             }
 
             EntityUtils.consume(response.getEntity());
-        } catch (final ClientProtocolException ex) {
-            logger.error("", ex);
         } catch (final IOException ex) {
             logger.error("", ex);
         }

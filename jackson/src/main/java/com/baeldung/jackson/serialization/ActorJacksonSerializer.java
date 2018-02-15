@@ -24,8 +24,11 @@ public class ActorJacksonSerializer extends StdSerializer<ActorJackson> {
         jsonGenerator.writeStartObject();
         jsonGenerator.writeStringField("imdbId", actor.getImdbId());
         jsonGenerator.writeObjectField("dateOfBirth", actor.getDateOfBirth() != null ? sdf.format(actor.getDateOfBirth()) : null);
-        jsonGenerator.writeNumberField("N° Film: ", actor.getFilmography() != null ? actor.getFilmography().size() : null);
-        jsonGenerator.writeStringField("filmography", actor.getFilmography().stream().collect(Collectors.joining("-")));
+        jsonGenerator.writeNumberField("N° Film: ", actor.getFilmography() != null ? actor.getFilmography()
+            .size() : null);
+        jsonGenerator.writeStringField("filmography", actor.getFilmography()
+            .stream()
+            .collect(Collectors.joining("-")));
         jsonGenerator.writeEndObject();
     }
 }

@@ -7,15 +7,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-/**
- * @author aiet
- */
 @RunWith(SerenityRunner.class)
 public class GoogleSearchPageObjectLiveTest {
 
-    @Managed(driver = "chrome") private WebDriver browser;
+    @Managed(driver = "chrome")
+    private WebDriver browser;
 
-    GoogleSearchPageObject googleSearch;
+    private GoogleSearchPageObject googleSearch;
 
     @Test
     public void whenGoogleBaeldungThenShouldSeeEugen() {

@@ -1,9 +1,5 @@
 package org.baeldung.mongotemplate;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import org.baeldung.config.SimpleMongoConfig;
 import org.baeldung.model.User;
 import org.junit.After;
@@ -15,6 +11,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SimpleMongoConfig.class)
@@ -42,14 +42,14 @@ public class MongoTemplateProjectionLiveTest {
 
         final Query query = new Query();
         query.fields()
-            .include("name");
+          .include("name");
 
         mongoTemplate.find(query, User.class)
-            .forEach(user -> {
-                assertNotNull(user.getName());
-                assertTrue(user.getAge()
-                    .equals(0));
-            });
+          .forEach(user -> {
+              assertNotNull(user.getName());
+              assertTrue(user.getAge()
+                .equals(0));
+          });
     }
 
     @Test
@@ -59,13 +59,13 @@ public class MongoTemplateProjectionLiveTest {
 
         final Query query = new Query();
         query.fields()
-            .exclude("_id");
+          .exclude("_id");
 
         mongoTemplate.find(query, User.class)
-            .forEach(user -> {
-                assertNull(user.getId());
-                assertNotNull(user.getAge());
-            });
+          .forEach(user -> {
+              assertNull(user.getId());
+              assertNotNull(user.getAge());
+          });
 
     }
 

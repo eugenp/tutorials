@@ -2,7 +2,6 @@ package com.baeldung.string;
 
 import com.google.common.base.Splitter;
 import org.apache.commons.lang.StringUtils;
-import org.assertj.core.util.Lists;
 import org.junit.Test;
 
 import java.util.List;

@@ -15,7 +15,7 @@ class OffHeapArray {
         return (Unsafe) f.get(null);
     }
 
-    public OffHeapArray(long size) throws NoSuchFieldException, IllegalAccessException {
+    OffHeapArray(long size) throws NoSuchFieldException, IllegalAccessException {
         this.size = size;
         address = getUnsafe().allocateMemory(size * BYTE);
     }
@@ -32,7 +32,7 @@ class OffHeapArray {
         return size;
     }
 
-    public void freeMemory() throws NoSuchFieldException, IllegalAccessException {
+    void freeMemory() throws NoSuchFieldException, IllegalAccessException {
         getUnsafe().freeMemory(address);
     }
 

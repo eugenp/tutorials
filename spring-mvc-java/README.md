@@ -23,3 +23,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Uploading and Displaying Excel Files with Spring MVC](http://www.baeldung.com/spring-mvc-excel-files)
 - [Spring MVC Custom Validation](http://www.baeldung.com/spring-mvc-custom-validator)
 - [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
+- [The HttpMediaTypeNotAcceptableException in Spring MVC](http://www.baeldung.com/spring-httpmediatypenotacceptable)

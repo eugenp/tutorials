@@ -14,7 +14,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootPlainApp.class)
@@ -22,9 +24,11 @@ import static org.junit.Assert.*;
 @TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithoutServletComponentIntegrationTest {
 
-    @Autowired private ServletContext servletContext;
+    @Autowired
+    private ServletContext servletContext;
 
-    @Autowired private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
     @Test
     public void givenServletContext_whenAccessAttrs_thenNotFound() {
@@ -46,5 +50,3 @@ public class SpringBootWithoutServletComponentIntegrationTest {
     }
 
 }
-
-

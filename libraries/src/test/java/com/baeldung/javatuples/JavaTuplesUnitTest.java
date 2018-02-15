@@ -1,10 +1,5 @@
 package com.baeldung.javatuples;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.Arrays;
-import java.util.List;
-
 import org.javatuples.KeyValue;
 import org.javatuples.LabelValue;
 import org.javatuples.Pair;
@@ -12,6 +7,11 @@ import org.javatuples.Quartet;
 import org.javatuples.Triplet;
 import org.javatuples.Unit;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class JavaTuplesUnitTest {
 
@@ -26,7 +26,7 @@ public class JavaTuplesUnitTest {
 
         Pair<String, String> pairFromList = Pair.fromIterable(collectionOfNames, 2);
 
-        String[] names = new String[] { "john", "doe", "anne" };
+        String[] names = new String[]{"john", "doe", "anne"};
         Triplet<String, String, String> triplet2 = Triplet.fromArray(names);
     }
 

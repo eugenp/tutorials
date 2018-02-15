@@ -1,5 +1,6 @@
 package org.baeldung;
 
+import org.baeldung.boot.Application;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.context.WebApplicationContext;
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
 
@@ -62,11 +61,15 @@ public class SpringBootMailIntegrationTest {
     }
 
     private String getMessage(WiserMessage wiserMessage) throws MessagingException, IOException {
-        return wiserMessage.getMimeMessage().getContent().toString().trim();
+        return wiserMessage.getMimeMessage()
+            .getContent()
+            .toString()
+            .trim();
     }
 
     private String getSubject(WiserMessage wiserMessage) throws MessagingException {
-        return wiserMessage.getMimeMessage().getSubject();
+        return wiserMessage.getMimeMessage()
+            .getSubject();
     }
 
     private SimpleMailMessage composeEmailMessage() {

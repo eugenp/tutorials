@@ -1,12 +1,11 @@
 package org.baeldung.config;
 
+import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "org.baeldung.repository")

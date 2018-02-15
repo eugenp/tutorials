@@ -6,8 +6,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>lombok</name>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>lombok</artifactId>
     <version>0.1-SNAPSHOT</version>
 
@@ -81,7 +79,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- lombok: https://projectlombok.org/changelog.html -->
-        <lombok.version>1.16.12</lombok.version>
+        <lombok.version>1.16.18</lombok.version>
 
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>

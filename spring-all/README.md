@@ -9,7 +9,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
  
 ### Relevant articles: 
 - [Guide to Spring @Autowired](http://www.baeldung.com/spring-autowire)
-- [Properties with Spring](http://www.baeldung.com/2012/02/06/properties-with-spring) - checkout the `org.baeldung.properties` package for all scenarios of properties injection and usage
+- [Properties with Spring](http://www.baeldung.com/properties-with-spring) - checkout the `org.baeldung.properties` package for all scenarios of properties injection and usage
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
 - [A Spring Custom Annotation for a Better DAO](http://www.baeldung.com/spring-annotation-bean-pre-processor)
 - [What's New in Spring 4.3?](http://www.baeldung.com/whats-new-in-spring-4-3/)
@@ -23,3 +23,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [New in Guava 21 common.util.concurrent](http://www.baeldung.com/guava-21-util-concurrent)
 - [A CLI with Spring Shell](http://www.baeldung.com/spring-shell-cli)
 - [JasperReports with Spring](http://www.baeldung.com/spring-jasper)
+- [Model, ModelMap, and ModelView in Spring MVC](http://www.baeldung.com/spring-mvc-model-model-map-model-view)

@@ -13,13 +13,11 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
-/**
- * @author aiet
- */
 @RunWith(SerenityRunner.class)
 public class GoogleSearchLiveTest {
 
-    @Managed(driver = "chrome") private WebDriver browser;
+    @Managed(driver = "chrome")
+    private WebDriver browser;
 
     @Test
     public void whenGoogleBaeldungThenShouldSeeEugen() {

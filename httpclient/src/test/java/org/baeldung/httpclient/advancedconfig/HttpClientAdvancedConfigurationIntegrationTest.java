@@ -24,7 +24,14 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.containing;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.post;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static org.junit.Assert.assertEquals;
 
 public class HttpClientAdvancedConfigurationIntegrationTest {
@@ -40,9 +47,9 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         //given
         String userAgent = "BaeldungAgent/1.0";
         serviceMock.stubFor(get(urlEqualTo("/detail"))
-                .withHeader("User-Agent", equalTo(userAgent))
-                .willReturn(aResponse()
-                        .withStatus(200)));
+          .withHeader("User-Agent", equalTo(userAgent))
+          .willReturn(aResponse()
+            .withStatus(200)));
 
         HttpClient httpClient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet("http://localhost:8089/detail");
@@ -60,10 +67,10 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         //given
         String xmlBody = "<xml><id>1</id></xml>";
         serviceMock.stubFor(post(urlEqualTo("/person"))
-                .withHeader("Content-Type", equalTo("application/xml"))
-                .withRequestBody(equalTo(xmlBody))
-                .willReturn(aResponse()
-                        .withStatus(200)));
+          .withHeader("Content-Type", equalTo("application/xml"))
+          .withRequestBody(equalTo(xmlBody))
+          .willReturn(aResponse()
+            .withStatus(200)));
 
         HttpClient httpClient = HttpClients.createDefault();
         HttpPost httpPost = new HttpPost("http://localhost:8089/person");
@@ -83,17 +90,17 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
     public void givenServerThatIsBehindProxy_whenClientIsConfiguredToSendRequestViaProxy_shouldReturn200() throws IOException {
         //given
         proxyMock.stubFor(get(urlMatching(".*"))
-                .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
+          .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
 
         serviceMock.stubFor(get(urlEqualTo("/private"))
-                .willReturn(aResponse().withStatus(200)));
+          .willReturn(aResponse().withStatus(200)));
 
 
         HttpHost proxy = new HttpHost("localhost", 8090);
         DefaultProxyRoutePlanner routePlanner = new DefaultProxyRoutePlanner(proxy);
         HttpClient httpclient = HttpClients.custom()
-                .setRoutePlanner(routePlanner)
-                .build();
+          .setRoutePlanner(routePlanner)
+          .build();
 
         //when
         final HttpGet httpGet = new HttpGet("http://localhost:8089/private");
@@ -109,9 +116,9 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
     public void givenServerThatIsBehindAuthorizationProxy_whenClientSendRequest_shouldAuthorizeProperly() throws IOException {
         //given
         proxyMock.stubFor(get(urlMatching("/private"))
-                .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
+          .willReturn(aResponse().proxiedFrom("http://localhost:8089/")));
         serviceMock.stubFor(get(urlEqualTo("/private"))
-                .willReturn(aResponse().withStatus(200)));
+          .willReturn(aResponse().withStatus(200)));
 
 
         HttpHost proxy = new HttpHost("localhost", 8090);
@@ -120,7 +127,7 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
         // Client credentials
         CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
         credentialsProvider.setCredentials(new AuthScope(proxy),
-                new UsernamePasswordCredentials("username_admin", "secret_password"));
+          new UsernamePasswordCredentials("username_admin", "secret_password"));
 
 
         // Create AuthCache instance
@@ -135,9 +142,9 @@ public class HttpClientAdvancedConfigurationIntegrationTest {
 
 
         HttpClient httpclient = HttpClients.custom()
-                .setRoutePlanner(routePlanner)
-                .setDefaultCredentialsProvider(credentialsProvider)
-                .build();
+          .setRoutePlanner(routePlanner)
+          .setDefaultCredentialsProvider(credentialsProvider)
+          .build();
 
 
         //when

@@ -61,7 +61,6 @@ public class SecretService {
         return TextCodec.BASE64.decode(secrets.get(SignatureAlgorithm.HS384.getValue()));
     }
 
-
     public Map<String, String> refreshSecrets() {
         SecretKey key = MacProvider.generateKey(SignatureAlgorithm.HS256);
         secrets.put(SignatureAlgorithm.HS256.getValue(), TextCodec.BASE64.encode(key.getEncoded()));

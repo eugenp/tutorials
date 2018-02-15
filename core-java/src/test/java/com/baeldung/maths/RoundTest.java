@@ -5,6 +5,9 @@ import org.decimal4j.util.DoubleRounder;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 public class RoundTest {
     private double value = 2.03456d;
     private int places = 2;

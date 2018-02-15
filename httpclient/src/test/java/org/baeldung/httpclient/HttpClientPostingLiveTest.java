@@ -1,20 +1,10 @@
 package org.baeldung.httpclient;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.auth.AuthenticationException;
 import org.apache.http.auth.UsernamePasswordCredentials;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
@@ -29,17 +19,26 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+
 /*
  * NOTE : Need module spring-rest to be running
  */
 public class HttpClientPostingLiveTest {
-    private static final String SAMPLE_URL = "http://localhost:8080/spring-rest/users";
+    private static final String SAMPLE_URL = "http://localhost:8082/spring-rest/users";
     private static final String URL_SECURED_BY_BASIC_AUTHENTICATION = "http://browserspy.dk/password-ok.php";
     private static final String DEFAULT_USER = "test";
     private static final String DEFAULT_PASS = "test";
 
     @Test
-    public void whenSendPostRequestUsingHttpClient_thenCorrect() throws ClientProtocolException, IOException {
+    public void whenSendPostRequestUsingHttpClient_thenCorrect() throws IOException {
         final CloseableHttpClient client = HttpClients.createDefault();
         final HttpPost httpPost = new HttpPost(SAMPLE_URL);
 
@@ -54,7 +53,7 @@ public class HttpClientPostingLiveTest {
     }
 
     @Test
-    public void whenSendPostRequestWithAuthorizationUsingHttpClient_thenCorrect() throws ClientProtocolException, IOException, AuthenticationException {
+    public void whenSendPostRequestWithAuthorizationUsingHttpClient_thenCorrect() throws IOException, AuthenticationException {
         final CloseableHttpClient client = HttpClients.createDefault();
         final HttpPost httpPost = new HttpPost(URL_SECURED_BY_BASIC_AUTHENTICATION);
 
@@ -68,7 +67,7 @@ public class HttpClientPostingLiveTest {
     }
 
     @Test
-    public void whenPostJsonUsingHttpClient_thenCorrect() throws ClientProtocolException, IOException {
+    public void whenPostJsonUsingHttpClient_thenCorrect() throws IOException {
         final CloseableHttpClient client = HttpClients.createDefault();
         final HttpPost httpPost = new HttpPost(SAMPLE_URL + "/detail");
 
@@ -84,14 +83,14 @@ public class HttpClientPostingLiveTest {
     }
 
     @Test
-    public void whenPostFormUsingHttpClientFluentAPI_thenCorrect() throws ClientProtocolException, IOException {
+    public void whenPostFormUsingHttpClientFluentAPI_thenCorrect() throws IOException {
         final HttpResponse response = Request.Post(SAMPLE_URL).bodyForm(Form.form().add("username", DEFAULT_USER).add("password", DEFAULT_PASS).build()).execute().returnResponse();
 
         assertThat(response.getStatusLine().getStatusCode(), equalTo(200));
     }
 
     @Test
-    public void whenSendMultipartRequestUsingHttpClient_thenCorrect() throws ClientProtocolException, IOException {
+    public void whenSendMultipartRequestUsingHttpClient_thenCorrect() throws IOException {
         final CloseableHttpClient client = HttpClients.createDefault();
         final HttpPost httpPost = new HttpPost(SAMPLE_URL + "/multipart");
 
@@ -109,7 +108,7 @@ public class HttpClientPostingLiveTest {
     }
 
     @Test
-    public void whenUploadFileUsingHttpClient_thenCorrect() throws ClientProtocolException, IOException {
+    public void whenUploadFileUsingHttpClient_thenCorrect() throws IOException {
         final CloseableHttpClient client = HttpClients.createDefault();
         final HttpPost httpPost = new HttpPost(SAMPLE_URL + "/upload");
 
@@ -125,7 +124,7 @@ public class HttpClientPostingLiveTest {
     }
 
     @Test
-    public void whenGetUploadFileProgressUsingHttpClient_thenCorrect() throws ClientProtocolException, IOException {
+    public void whenGetUploadFileProgressUsingHttpClient_thenCorrect() throws IOException {
         final CloseableHttpClient client = HttpClients.createDefault();
         final HttpPost httpPost = new HttpPost(SAMPLE_URL + "/upload");
 
@@ -133,12 +132,7 @@ public class HttpClientPostingLiveTest {
         builder.addBinaryBody("file", new File("src/test/resources/test.in"), ContentType.APPLICATION_OCTET_STREAM, "file.ext");
         final HttpEntity multipart = builder.build();
 
-        final ProgressEntityWrapper.ProgressListener pListener = new ProgressEntityWrapper.ProgressListener() {
-            @Override
-            public void progress(final float percentage) {
-                assertFalse(Float.compare(percentage, 100) > 0);
-            }
-        };
+        final ProgressEntityWrapper.ProgressListener pListener = percentage -> assertFalse(Float.compare(percentage, 100) > 0);
 
         httpPost.setEntity(new ProgressEntityWrapper(multipart, pListener));
 

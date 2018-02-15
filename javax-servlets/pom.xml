@@ -39,7 +39,7 @@
 
     <properties>
         <javax.servlet.version>3.1.0</javax.servlet.version>
-        <org.apache.httpcomponents.version>4.5.2</org.apache.httpcomponents.version>
+        <org.apache.httpcomponents.version>4.5.3</org.apache.httpcomponents.version>
     </properties>
 
 </project>

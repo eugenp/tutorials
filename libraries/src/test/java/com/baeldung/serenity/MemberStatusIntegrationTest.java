@@ -16,7 +16,8 @@ import static com.baeldung.serenity.membership.MemberGrade.Silver;
 @RunWith(SerenityRunner.class)
 public class MemberStatusIntegrationTest {
 
-    @Steps MemberStatusSteps memberSteps;
+    @Steps
+    private MemberStatusSteps memberSteps;
 
     @Test
     public void membersShouldStartWithBronzeStatus() {
@@ -42,7 +43,7 @@ public class MemberStatusIntegrationTest {
 
     @Test
     @Title("Members with 50,000 points can exchange a MacBook Pro")
-    public void memberWith50000PointsCanExchangeAMacbookpro(){
+    public void memberWith50000PointsCanExchangeAMacbookpro() {
         memberSteps.aMemberHasPointsOf(50_000);
         memberSteps.aMemberExchangeA(MacBookPro);
         memberSteps.memberShouldHavePointsLeft();
@@ -50,12 +51,11 @@ public class MemberStatusIntegrationTest {
 
     /**
      * This test should fail, comment out <code>@Ignore</code> to see how failed test can be reflected in Serenity report. <br/>
-     * Remember to add <code>&lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;</code> under maven-surefire-plugin configuration.
      */
     @Test
     @Ignore
     @Title("Members with 500 points should have a Gold status when added 4,000 points ($40,000)")
-    public void memberWith500PointsEarnsGoldAfterSpends$40000(){
+    public void memberWith500PointsEarnsGoldAfterSpends$40000() {
         memberSteps.aMemberHasPointsOf(500);
         memberSteps.theMemberSpends(40_000);
         memberSteps.theMemberShouldHaveAStatusOf(Gold);
@@ -64,7 +64,7 @@ public class MemberStatusIntegrationTest {
     @Test
     @Ignore
     @Title("Members with 100 points would have a Gold status when added 10,000 points ($100,000)")
-    public void memberWith100EarnsGoldAfterSpends$100000(){
+    public void memberWith100EarnsGoldAfterSpends$100000() {
         memberSteps.aMemberHasPointsOf(100);
         memberSteps.theMemberSpends(100_000);
         memberSteps.theMemberShouldHaveAStatusOf(Gold);

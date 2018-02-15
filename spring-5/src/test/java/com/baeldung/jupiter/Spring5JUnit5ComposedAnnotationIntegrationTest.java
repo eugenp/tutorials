@@ -16,10 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class Spring5JUnit5ComposedAnnotationIntegrationTest {
 
     @Autowired
-    Task task;
+    private Task task;
 
     @Autowired
-    List<Task> tasks;
+    private List<Task> tasks;
 
     @Test
     @DisplayName("ApplicationContext injected into method")

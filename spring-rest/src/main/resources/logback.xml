@@ -6,6 +6,10 @@
             </pattern>
         </encoder>
     </appender>
+    
+    <logger name="org.springframework.web.filter.CommonsRequestLoggingFilter">
+		<level value="DEBUG" />
+	</logger>
 
     <logger name="org.springframework" level="WARN" />
     <logger name="org.springframework.transaction" level="WARN" />

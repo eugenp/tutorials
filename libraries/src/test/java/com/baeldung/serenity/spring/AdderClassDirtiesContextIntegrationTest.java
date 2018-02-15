@@ -14,23 +14,21 @@ import org.springframework.test.context.ContextConfiguration;
 import static com.baeldung.serenity.spring.RandomNumberUtil.randomInt;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS;
 
-/**
- * @author aiet
- */
-
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-                      AdderClassDirtiesContextIntegrationTest.DirtiesContextTest.class, AdderClassDirtiesContextIntegrationTest.AnotherDirtiesContextTest.class
-                    })
+  AdderClassDirtiesContextIntegrationTest.DirtiesContextTest.class, AdderClassDirtiesContextIntegrationTest.AnotherDirtiesContextTest.class
+})
 public class AdderClassDirtiesContextIntegrationTest {
 
     @RunWith(SerenityRunner.class)
     @ContextConfiguration(classes = AdderService.class)
     public static abstract class Base {
 
-        @Steps AdderServiceSteps adderServiceSteps;
+        @Steps
+        AdderServiceSteps adderServiceSteps;
 
-        @ClassRule public static SpringIntegrationClassRule springIntegrationClassRule = new SpringIntegrationClassRule();
+        @ClassRule
+        public static SpringIntegrationClassRule springIntegrationClassRule = new SpringIntegrationClassRule();
 
         void whenAccumulate_thenSummedUp() {
             adderServiceSteps.whenAccumulate();

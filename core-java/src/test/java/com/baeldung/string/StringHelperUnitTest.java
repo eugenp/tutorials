@@ -1,9 +1,10 @@
 package com.baeldung.string;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class StringHelperUnitTest {
 
@@ -67,7 +68,7 @@ public class StringHelperUnitTest {
         assertEquals("abc", StringHelper.removeLastCharOptional(WHITE_SPACE_AT_THE_END_STRING));
         assertEquals("abc", StringHelper.removeLastCharRegexOptional(WHITE_SPACE_AT_THE_END_STRING));
     }
-    
+
     @Test
     public void givenStringWithNewLineAtTheEnd_whenSubstring_thenGetStringWithoutNewLine() {
         assertEquals("abc", StringHelper.removeLastChar(NEW_LINE_AT_THE_END_STRING));
@@ -78,7 +79,7 @@ public class StringHelperUnitTest {
         assertEquals("abc", StringHelper.removeLastCharOptional(NEW_LINE_AT_THE_END_STRING));
         assertNotEquals("abc", StringHelper.removeLastCharRegexOptional(NEW_LINE_AT_THE_END_STRING));
     }
-    
+
     @Test
     public void givenMultiLineString_whenSubstring_thenGetStringWithoutNewLine() {
         assertEquals("abc\nde", StringHelper.removeLastChar(MULTIPLE_LINES_STRING));

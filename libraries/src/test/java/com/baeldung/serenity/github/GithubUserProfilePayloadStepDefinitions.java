@@ -9,11 +9,8 @@ import java.io.IOException;
 
 public class GithubUserProfilePayloadStepDefinitions {
 
-//    @Steps
-//    GithubRestUserAPISteps userAPISteps;
-
     @Steps
-    GithubRestAssuredUserAPISteps userAPISteps;
+    private GithubRestAssuredUserAPISteps userAPISteps;
 
     @Given("github user profile api")
     public void givenGithubUserProfileApi() {

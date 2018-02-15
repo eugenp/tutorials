@@ -41,7 +41,7 @@ public class CsrfEnabledIntegrationTest {
     @Autowired
     private Filter springSecurityFilterChain;
 
-    protected RequestPostProcessor testUser() {
+    private RequestPostProcessor testUser() {
         return user("user1").password("user1Pass").roles("USER");
     }
 

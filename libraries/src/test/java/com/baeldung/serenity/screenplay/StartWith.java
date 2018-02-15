@@ -7,9 +7,6 @@ import net.thucydides.core.annotations.Step;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
-/**
- * @author baoqiang
- */
 public class StartWith implements Task {
 
     public static StartWith googleSearchPage() {

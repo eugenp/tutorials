@@ -1,5 +1,6 @@
 package com.baeldung.ldap.javaconfig;
 
+import com.baeldung.ldap.client.LdapClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -8,15 +9,15 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.data.ldap.repository.config.EnableLdapRepositories;
 import org.springframework.ldap.core.LdapTemplate;
 import org.springframework.ldap.core.support.LdapContextSource;
 import org.springframework.ldap.test.TestContextSourceFactoryBean;
 
-import com.baeldung.ldap.client.LdapClient;
-
 @Configuration
 @PropertySource("classpath:test_application.properties")
-@ComponentScan(basePackages = { "com.baeldung.ldap.*" })
+@ComponentScan(basePackages = {"com.baeldung.ldap.*"})
+@EnableLdapRepositories(basePackages = "com.baeldung.ldap.**")
 @Profile("testlive")
 public class TestConfig {
     @Autowired

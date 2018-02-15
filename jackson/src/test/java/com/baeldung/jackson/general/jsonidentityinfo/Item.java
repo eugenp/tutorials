@@ -13,9 +13,7 @@ import java.util.UUID;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Item {
 
     private UUID id;
@@ -23,7 +21,8 @@ public class Item {
     private List<Person> authors = new ArrayList<>();
     private float price;
 
-    public Item(){}
+    public Item() {
+    }
 
     public Item(String title, Author author) {
         this.id = UUID.randomUUID();

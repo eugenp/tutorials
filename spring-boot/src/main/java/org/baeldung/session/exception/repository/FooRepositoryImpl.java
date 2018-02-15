@@ -1,6 +1,6 @@
 package org.baeldung.session.exception.repository;
 
-import org.baeldung.boot.model.Foo;
+import org.baeldung.demo.model.Foo;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -14,12 +14,14 @@ public class FooRepositoryImpl implements FooRepository {
 
     @Override
     public void save(Foo foo) {
-        sessionFactory.getCurrentSession().saveOrUpdate(foo);
+        sessionFactory.getCurrentSession()
+            .saveOrUpdate(foo);
     }
 
     @Override
     public Foo get(Integer id) {
-        return sessionFactory.getCurrentSession().get(Foo.class, id);
+        return sessionFactory.getCurrentSession()
+            .get(Foo.class, id);
     }
 
 }

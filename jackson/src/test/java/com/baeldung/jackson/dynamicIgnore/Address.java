@@ -1,6 +1,5 @@
 package com.baeldung.jackson.dynamicIgnore;
 
-
 public class Address implements Hidable {
     private String city;
     private String country;

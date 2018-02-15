@@ -12,19 +12,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import static net.serenitybdd.screenplay.GivenWhenThen.*;
+import static net.serenitybdd.screenplay.GivenWhenThen.givenThat;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.GivenWhenThen.then;
+import static net.serenitybdd.screenplay.GivenWhenThen.when;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.hasItem;
 
-/**
- * Unit test for simple App.
- */
 @RunWith(SerenityRunner.class)
 public class GoogleSearchScreenplayLiveTest {
 
-    @Managed(driver = "chrome") WebDriver browser;
+    @Managed(driver = "chrome")
+    private WebDriver browser;
 
-    Actor kitty = Actor.named("kitty");
+    private Actor kitty = Actor.named("kitty");
 
     @Before
     public void setup() {

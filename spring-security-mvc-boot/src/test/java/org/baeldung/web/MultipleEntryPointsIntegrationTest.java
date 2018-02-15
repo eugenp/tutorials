@@ -21,6 +21,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 @WebAppConfiguration
 @SpringBootTest(classes = MultipleEntryPointsApplication.class)
 public class MultipleEntryPointsIntegrationTest {
+
     @Autowired
     private WebApplicationContext wac;
 

@@ -14,3 +14,6 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [An Intro to Spring HATEOAS](http://www.baeldung.com/spring-hateoas-tutorial)
 - [Spring Security Context Propagation with @Async](http://www.baeldung.com/spring-security-async-principal-propagation)
 - [Servlet 3 Async Support with Spring MVC and Spring Security](http://www.baeldung.com/spring-mvc-async-security)
+- [Intro to Spring Security Expressions](http://www.baeldung.com/spring-security-expressions)
+- [Spring Security Expressions - hasRole Example](http://www.baeldung.com/spring-security-expressions-basic)
+- [Error Handling for REST with Spring 3](http://www.baeldung.com/2013/01/31/exception-handling-for-rest-with-spring-3-2/)

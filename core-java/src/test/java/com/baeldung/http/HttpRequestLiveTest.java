@@ -2,7 +2,6 @@ package com.baeldung.http;
 
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -16,6 +15,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class HttpRequestLiveTest {
 
@@ -39,7 +41,7 @@ public class HttpRequestLiveTest {
         int status = con.getResponseCode();
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
-        StringBuffer content = new StringBuffer();
+        StringBuilder content = new StringBuilder();
         while ((inputLine = in.readLine()) != null) {
             content.append(inputLine);
         }
@@ -67,7 +69,7 @@ public class HttpRequestLiveTest {
         int status = con.getResponseCode();
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
-        StringBuffer content = new StringBuffer();
+        StringBuilder content = new StringBuilder();
         while ((inputLine = in.readLine()) != null) {
             content.append(inputLine);
         }

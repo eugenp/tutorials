@@ -15,9 +15,6 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-/**
- * @author aiet
- */
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = Spring5JUnit4ConcurrentIntegrationTest.SimpleConfiguration.class)
 public class Spring5JUnit4ConcurrentIntegrationTest implements ApplicationContextAware, InitializingBean {
@@ -53,5 +50,3 @@ public class Spring5JUnit4ConcurrentIntegrationTest implements ApplicationContex
     }
 
 }
-
-

@@ -12,10 +12,12 @@ import java.util.List;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-@JsonIgnoreProperties({"medium"})
+@JsonIgnoreProperties({ "medium" })
 public class Course extends Item {
 
-    public enum Medium {CLASSROOM, ONLINE}
+    public enum Medium {
+        CLASSROOM, ONLINE
+    }
 
     public enum Level {
         BEGINNER("Beginner", 1), INTERMEDIATE("Intermediate", 2), ADVANCED("Advanced", 3);

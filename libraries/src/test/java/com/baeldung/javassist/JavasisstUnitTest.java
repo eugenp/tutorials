@@ -4,7 +4,15 @@ package com.baeldung.javassist;
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.NotFoundException;
-import javassist.bytecode.*;
+import javassist.bytecode.AccessFlag;
+import javassist.bytecode.BadBytecode;
+import javassist.bytecode.Bytecode;
+import javassist.bytecode.ClassFile;
+import javassist.bytecode.CodeAttribute;
+import javassist.bytecode.CodeIterator;
+import javassist.bytecode.FieldInfo;
+import javassist.bytecode.MethodInfo;
+import javassist.bytecode.Mnemonic;
 import org.junit.Test;
 
 import java.io.DataOutputStream;
@@ -66,7 +74,7 @@ public class JavasisstUnitTest {
 
         //then
         assertEquals(operations,
-                Arrays.asList("aload_0", "iload_1", "putfield", "aload_0", "iload_2", "putfield", "return"));
+          Arrays.asList("aload_0", "iload_1", "putfield", "aload_0", "iload_2", "putfield", "return"));
 
     }
 
@@ -112,7 +120,7 @@ public class JavasisstUnitTest {
         }
 
         assertEquals(operations,
-                Arrays.asList("aload_0", "invokespecial", "return"));
+          Arrays.asList("aload_0", "invokespecial", "return"));
 
 
     }

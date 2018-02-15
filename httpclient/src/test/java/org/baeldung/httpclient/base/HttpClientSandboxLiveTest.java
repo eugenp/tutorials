@@ -1,9 +1,5 @@
 package org.baeldung.httpclient.base;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.apache.http.HttpEntity;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
@@ -12,7 +8,10 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.baeldung.httpclient.ResponseUtil;
 import org.junit.Test;
+
+import java.io.IOException;
 
 /*
  * NOTE : Need module spring-security-rest-basic-auth to be running
@@ -32,15 +31,6 @@ public class HttpClientSandboxLiveTest {
 
         System.out.println(response.getStatusLine());
 
-        try {
-            final HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                // EntityUtils.consume(entity);
-                final InputStream instream = entity.getContent();
-                instream.close();
-            }
-        } finally {
-            response.close();
-        }
+        ResponseUtil.closeResponse(response);
     }
 }
