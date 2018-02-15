@@ -32,7 +32,6 @@ public class MaybeTest {
     public void whenThrowsErrorBeforeComplete_observerSeesTheError() {
         Maybe<String> topPickToday = todaysTopPick(null);
         topPickToday.subscribe(testObserver);
-        testObserver.onComplete();
         testObserver.assertErrorMessage("Error getting todays top pick.");
     }
 
