@@ -18,4 +18,12 @@ public class InternalServiceTwo {
     public void setComponentTwo(ComponentTwo componentTwo) {
         this.componentTwo = componentTwo;
     }
+
+    public String callComponentOne() {
+        return componentOne.componentMethod();
+    }
+
+    public String callComponentTwo() {
+        return componentTwo.componentMethod();
+    }
 }
