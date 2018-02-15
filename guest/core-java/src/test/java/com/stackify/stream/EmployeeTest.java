@@ -6,19 +6,30 @@ import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.beans.HasPropertyWithValue.hasProperty;
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 import java.util.Vector;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.junit.After;
 import org.junit.Test;
 
 public class EmployeeTest {
+    private String fileName = "src/test/resources/test.txt";
+    
     private static Employee[] arrayOfEmps = {
         new Employee(1, "Jeff Bezos", 100000.0), 
         new Employee(2, "Bill Gates", 200000.0), 
@@ -28,6 +39,11 @@ public class EmployeeTest {
     private static List<Employee> empList = Arrays.asList(arrayOfEmps);
     private static EmployeeRepository employeeRepository = new EmployeeRepository(empList);
 
+    @After
+    public void cleanup() throws IOException {
+        Files.deleteIfExists(Paths.get(fileName));
+    }
+    
     @Test
     public void whenGetStreamFromList_ObtainStream() {
         assert(empList.stream() instanceof Stream<?>);
@@ -41,6 +57,19 @@ public class EmployeeTest {
     @Test
     public void whenGetStreamFromElements_ObtainStream() {
         assert(Stream.of(arrayOfEmps[0], arrayOfEmps[1], arrayOfEmps[2]) instanceof Stream<?>);
+    }
+
+    @Test
+    public void whenBuildStreamFromElements_ObtainStream() {
+        Stream.Builder<Employee> empStreamBuilder = Stream.builder();
+        
+        empStreamBuilder.accept(arrayOfEmps[0]);
+        empStreamBuilder.accept(arrayOfEmps[1]);
+        empStreamBuilder.accept(arrayOfEmps[2]);
+
+        Stream<Employee> empStream = empStreamBuilder.build();
+        
+        assert(empStream instanceof Stream<?>);
     }
 
     @Test
@@ -63,6 +92,28 @@ public class EmployeeTest {
     }
 
     @Test
+    public void whenIncrementSalaryUsingPeek_thenApplyNewSalary() {
+        Employee[] arrayOfEmps = {
+            new Employee(1, "Jeff Bezos", 100000.0), 
+            new Employee(2, "Bill Gates", 200000.0), 
+            new Employee(3, "Mark Zuckerberg", 300000.0)
+        };
+
+        List<Employee> empList = Arrays.asList(arrayOfEmps);
+        
+        empList.stream()
+          .peek(e -> e.salaryIncrement(10.0))
+          .peek(System.out::println)
+          .collect(Collectors.toList());
+
+        assertThat(empList, contains(
+          hasProperty("salary", equalTo(110000.0)),
+          hasProperty("salary", equalTo(220000.0)),
+          hasProperty("salary", equalTo(330000.0))
+        ));
+    }
+
+    @Test
     public void whenMapIdToEmployees_thenGetEmployeeStream() {
         Integer[] empIds = { 1, 2, 3 };
         
@@ -71,6 +122,20 @@ public class EmployeeTest {
           .collect(Collectors.toList());
         
         assertEquals(employees.size(), empIds.length);
+    }
+
+    @Test
+    public void whenFlatMapEmployeeNames_thenGetNameStream() {
+        List<List<String>> namesNested = Arrays.asList( 
+          Arrays.asList("Jeff", "Bezos"), 
+          Arrays.asList("Bill", "Gates"), 
+          Arrays.asList("Mark", "Zuckerberg"));
+
+        List<String> namesFlatStream = namesNested.stream()
+          .flatMap(Collection::stream)
+          .collect(Collectors.toList());
+
+        assertEquals(namesFlatStream.size(), namesNested.size() * 2);
     }
 
     @Test
@@ -244,6 +309,31 @@ public class EmployeeTest {
     }
 
     @Test
+    public void whenApplySummarizing_thenGetBasicStats() {
+        DoubleSummaryStatistics stats = empList.stream()
+          .collect(Collectors.summarizingDouble(Employee::getSalary));
+
+        assertEquals(stats.getCount(), 3);
+        assertEquals(stats.getSum(), 600000.0, 0);
+        assertEquals(stats.getMin(), 100000.0, 0);
+        assertEquals(stats.getMax(), 300000.0, 0);
+        assertEquals(stats.getAverage(), 200000.0, 0);
+    }
+
+    @Test
+    public void whenApplySummaryStatistics_thenGetBasicStats() {
+        DoubleSummaryStatistics stats = empList.stream()
+          .mapToDouble(Employee::getSalary)
+          .summaryStatistics();
+
+        assertEquals(stats.getCount(), 3);
+        assertEquals(stats.getSum(), 600000.0, 0);
+        assertEquals(stats.getMin(), 100000.0, 0);
+        assertEquals(stats.getMax(), 300000.0, 0);
+        assertEquals(stats.getAverage(), 200000.0, 0);
+    }
+
+    @Test
     public void whenStreamPartition_thenGetMap() {
         List<Integer> intList = Arrays.asList(2, 4, 5, 6, 8);
         Map<Boolean, List<Integer>> isEven = intList.stream().collect(
@@ -261,6 +351,28 @@ public class EmployeeTest {
         assertEquals(groupByAlphabet.get('B').get(0).getName(), "Bill Gates");
         assertEquals(groupByAlphabet.get('J').get(0).getName(), "Jeff Bezos");
         assertEquals(groupByAlphabet.get('M').get(0).getName(), "Mark Zuckerberg");
+    }
+    
+    @Test
+    public void whenStreamReducing_thenGetValue() {
+        Double percentage = 10.0;
+        Double salIncrOverhead = empList.stream().collect(Collectors.reducing(
+            0.0, e -> e.getSalary() * percentage / 100, (s1, s2) -> s1 + s2));
+
+        assertEquals(salIncrOverhead, 60000.0, 0);
+    }
+    
+    @Test
+    public void whenStreamGroupingAndReducing_thenGetMap() {
+        Comparator<Employee> byNameLength = Comparator.comparing(Employee::getName);
+        
+        Map<Character, Optional<Employee>> longestNameByAlphabet = empList.stream().collect(
+          Collectors.groupingBy(e -> new Character(e.getName().charAt(0)),
+            Collectors.reducing(BinaryOperator.maxBy(byNameLength))));
+
+        assertEquals(longestNameByAlphabet.get('B').get().getName(), "Bill Gates");
+        assertEquals(longestNameByAlphabet.get('J').get().getName(), "Jeff Bezos");
+        assertEquals(longestNameByAlphabet.get('M').get().getName(), "Mark Zuckerberg");
     }
 
     @Test
@@ -300,4 +412,35 @@ public class EmployeeTest {
         assertEquals(collect, Arrays.asList(2, 4, 8, 16, 32));
     }
 
+    @Test
+    public void whenStreamToFile_thenGetFile() throws IOException {
+        String[] words = {
+                "hello", 
+                "refer",
+                "world",
+                "level"
+            };
+        
+        try (PrintWriter pw = new PrintWriter(
+          Files.newBufferedWriter(Paths.get(fileName)))) {
+            Stream.of(words).forEach(pw::println);
+        }
+    }
+    
+    private List<String> getPalindrome(Stream<String> stream, int length) {
+        return stream.filter(s -> s.length() == length)
+          .filter(s -> s.compareToIgnoreCase(
+            new StringBuilder(s).reverse().toString()) == 0)
+          .peek(System.out::println)
+          .collect(Collectors.toList());
+    }
+    
+    @Test
+    public void whenFileToStream_thenGetStream() throws IOException {
+        whenStreamToFile_thenGetFile();
+        
+        List<String> str = getPalindrome(Files.lines(Paths.get(fileName)), 5);
+        
+        assertThat(str, contains("refer", "level"));
+    }
 }
