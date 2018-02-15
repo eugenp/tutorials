@@ -256,6 +256,7 @@
         <module>vertx-and-rxjava</module>
         <module>saas</module>
         <module>deeplearning4j</module>
+        <module>akka-actors</module>
     </modules>
 
     <dependencies>
