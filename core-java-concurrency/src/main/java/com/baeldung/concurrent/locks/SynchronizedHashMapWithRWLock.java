@@ -1,17 +1,18 @@
 package com.baeldung.concurrent.locks;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static java.lang.Thread.sleep;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import static java.lang.Thread.sleep;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SynchronizedHashMapWithRWLock {
 
@@ -22,11 +23,18 @@ public class SynchronizedHashMapWithRWLock {
     private final Lock readLock = lock.readLock();
     private final Lock writeLock = lock.writeLock();
 
-    public void put(String key, String value) throws InterruptedException {
+    private final Semaphore sem;
 
+    public SynchronizedHashMapWithRWLock(Semaphore sem) {
+        this.sem = sem;
+    }
+
+    public void put(String key, String value) throws InterruptedException {
         try {
             writeLock.lock();
-            logger.info(Thread.currentThread().getName() + " writing");
+            sem.release();
+            logger.info(Thread.currentThread()
+                .getName() + " writing");
             syncHashMap.put(key, value);
             sleep(1000);
         } finally {
@@ -38,7 +46,8 @@ public class SynchronizedHashMapWithRWLock {
     public String get(String key) {
         try {
             readLock.lock();
-            logger.info(Thread.currentThread().getName() + " reading");
+            logger.info(Thread.currentThread()
+                .getName() + " reading");
             return syncHashMap.get(key);
         } finally {
             readLock.unlock();
@@ -69,13 +78,15 @@ public class SynchronizedHashMapWithRWLock {
 
     public static void main(String[] args) throws InterruptedException {
 
+        final Semaphore sem = new Semaphore(0);
         final int threadCount = 3;
         final ExecutorService service = Executors.newFixedThreadPool(threadCount);
-        SynchronizedHashMapWithRWLock object = new SynchronizedHashMapWithRWLock();
+        SynchronizedHashMapWithRWLock object = new SynchronizedHashMapWithRWLock(sem);
 
         service.execute(new Thread(new Writer(object), "Writer"));
         service.execute(new Thread(new Reader(object), "Reader1"));
         service.execute(new Thread(new Reader(object), "Reader2"));
+        sem.acquire();
 
         service.shutdown();
     }
