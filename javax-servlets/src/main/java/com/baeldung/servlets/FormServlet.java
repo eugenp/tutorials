@@ -25,7 +25,7 @@ public class FormServlet extends HttpServlet {
             response.setHeader("Test", "Success");
             response.setHeader("BMI", String.valueOf(bmi));
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {
 

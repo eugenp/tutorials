@@ -53,7 +53,7 @@ public class ArticleRssController {
         list.add(item2);
         feed.setEntries(list);
 
-//        return new SyndFeedOutput().outputString(feed);
+        // return new SyndFeedOutput().outputString(feed);
         return feed;
     }
 
