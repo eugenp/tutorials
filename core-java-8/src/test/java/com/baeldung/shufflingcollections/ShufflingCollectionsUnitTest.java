@@ -36,8 +36,8 @@ public class ShufflingCollectionsUnitTest {
         Collections.shuffle(shuffledStudentIds);
 
         List<String> shuffledStudents = shuffledStudentIds.stream()
-                .map(id -> studentsById.get(id))
-                .collect(Collectors.toList());
+          .map(id -> studentsById.get(id))
+          .collect(Collectors.toList());
 
         System.out.println("Students after shuffling");
         System.out.println(shuffledStudents);
