@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CustomDslApplication {
+public class CustomConfigurerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CustomDslApplication.class, args);
+        SpringApplication.run(CustomConfigurerApplication.class, args);
     }
 
 }
