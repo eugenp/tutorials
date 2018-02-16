@@ -4,53 +4,47 @@ import static com.jayway.awaitility.Awaitility.await;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.concurrent.TimeUnit;
-
 import org.junit.Test;
-
-import com.jayway.awaitility.Awaitility;
 
 public class StopThreadTest {
 
     @Test
     public void whenStoppedThreadIsStopped() throws InterruptedException {
 
-        int interval = 5;
-
-        ControlSubThread controlSubThread = new ControlSubThread(interval);
+        ControlSubThread controlSubThread = new ControlSubThread();
         controlSubThread.start();
 
         // Give things a chance to get set up
-        Thread.sleep(interval);
-        assertTrue(controlSubThread.isRunning());
+        assertIsStarted(controlSubThread);
         assertFalse(controlSubThread.isStopped());
 
         // Stop it and make sure the flags have been reversed
         controlSubThread.stop();
-        await()
-          .until(() -> assertTrue(controlSubThread.isStopped()));
+        assertIsStopped(controlSubThread);
     }
 
     @Test
     public void whenInterruptedThreadIsStopped() throws InterruptedException {
 
-        int interval = 50;
-
-        ControlSubThread controlSubThread = new ControlSubThread(interval);
+        ControlSubThread controlSubThread = new ControlSubThread();
         controlSubThread.start();
 
         // Give things a chance to get set up
-        Thread.sleep(interval);
-        assertTrue(controlSubThread.isRunning());
+        assertIsStarted(controlSubThread);
         assertFalse(controlSubThread.isStopped());
 
         // Stop it and make sure the flags have been reversed
         controlSubThread.interrupt();
 
         // Wait less than the time we would normally sleep, and make sure we exited.
-        Awaitility.await()
-            .pollDelay(2, TimeUnit.MILLISECONDS)
-          .atMost(interval/ 10, TimeUnit.MILLISECONDS)
-          .until(controlSubThread::isStopped);
+        assertIsStopped(controlSubThread);
+    }
+
+    private void assertIsStarted(ControlSubThread controlSubThread) {
+        await().until(() -> assertTrue(controlSubThread.isRunning()));
+    }
+
+    private void assertIsStopped(ControlSubThread controlSubThread) {
+        await().until(() -> assertTrue(controlSubThread.isStopped()));
     }
 }
