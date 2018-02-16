@@ -1,33 +1,20 @@
 <configuration>
 
-    <appender name="FILE-AUDIT"
-              class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>C:\Users\admin\Desktop\Baeldung\repo\magkrause\tutorials\spring-batch\src\main\resources\taskletsvschunks\logs.log</file>
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
                 %d{yyyy-MM-dd HH:mm:ss} [%thread] %level %logger{35} - %msg%n
             </Pattern>
-        </encoder>
-
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- rollover daily -->
-            <fileNamePattern>${DEV_HOME}/archived/debug.%d{yyyy-MM-dd}.%i.log
-            </fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy
-                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-
+        </layout>
     </appender>
 
     <logger name="org.baeldung.taskletsvschunks" level="debug"
             additivity="false">
-        <appender-ref ref="FILE-AUDIT" />
+        <appender-ref ref="STDOUT" />
     </logger>
 
     <root level="error">
-        <appender-ref ref="FILE-AUDIT" />
+        <appender-ref ref="STDOUT" />
     </root>
 
 </configuration>
