@@ -354,6 +354,17 @@ public class EmployeeTest {
     }
     
     @Test
+    public void whenStreamMapping_thenGetMap() {
+        Map<Character, List<Integer>> idGroupedByAlphabet = empList.stream().collect(
+          Collectors.groupingBy(e -> new Character(e.getName().charAt(0)),
+            Collectors.mapping(Employee::getId, Collectors.toList())));
+
+        assertEquals(idGroupedByAlphabet.get('B').get(0), new Integer(2));
+        assertEquals(idGroupedByAlphabet.get('J').get(0), new Integer(1));
+        assertEquals(idGroupedByAlphabet.get('M').get(0), new Integer(3));
+    }
+
+    @Test
     public void whenStreamReducing_thenGetValue() {
         Double percentage = 10.0;
         Double salIncrOverhead = empList.stream().collect(Collectors.reducing(
@@ -415,11 +426,11 @@ public class EmployeeTest {
     @Test
     public void whenStreamToFile_thenGetFile() throws IOException {
         String[] words = {
-                "hello", 
-                "refer",
-                "world",
-                "level"
-            };
+          "hello", 
+          "refer",
+          "world",
+          "level"
+        };
         
         try (PrintWriter pw = new PrintWriter(
           Files.newBufferedWriter(Paths.get(fileName)))) {
@@ -431,7 +442,6 @@ public class EmployeeTest {
         return stream.filter(s -> s.length() == length)
           .filter(s -> s.compareToIgnoreCase(
             new StringBuilder(s).reverse().toString()) == 0)
-          .peek(System.out::println)
           .collect(Collectors.toList());
     }
     
@@ -439,8 +449,7 @@ public class EmployeeTest {
     public void whenFileToStream_thenGetStream() throws IOException {
         whenStreamToFile_thenGetFile();
         
-        List<String> str = getPalindrome(Files.lines(Paths.get(fileName)), 5);
-        
+        List<String> str = getPalindrome(Files.lines(Paths.get(fileName)), 5);        
         assertThat(str, contains("refer", "level"));
     }
 }
