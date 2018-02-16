@@ -21,19 +21,19 @@ public class ConstructorInjectionWeatherService implements WeatherService {
 
     @Override
     public int getTemprature(String location) {
-        System.out.println("Setter Injection get temprature");
+        System.out.println("Constructor Injection get temprature");
         return yahoo.getTempratureInCelcius(location);
     }
 
     @Override
     public int getHumidity(String location) {
-        System.out.println("Setter Injection get humidity");
+        System.out.println("Constructor Injection get humidity");
         return accuweather.getHumidityPercentage(location);
     }
 
     @Override
     public boolean willItRainToday(String location) {
-        System.out.println("Setter Injection will it rain");
+        System.out.println("Constructor Injection will it rain");
         return accuweather.getChancesOfRain(location) > 0.5;
     }
 }
