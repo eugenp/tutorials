@@ -20,25 +20,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @AutoConfigureJsonTesters
 @AutoConfigureStubRunner(workOffline = true,
-  ids = "com.baeldung.spring.cloud:spring-cloud-contract-producer:+:stubs:8090")
+        ids = "com.baeldung.spring.cloud:spring-cloud-contract-producer:+:stubs:8090")
 public class BasicMathControllerIntegrationTest {
 
-  @Autowired
-  private MockMvc mockMvc;
+    @Autowired
+    private MockMvc mockMvc;
 
-  @Test
-  public void given_WhenPassEvenNumberInQueryParam_ThenReturnEven() throws Exception {
-    mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=2")
-      .contentType(MediaType.APPLICATION_JSON))
-      .andExpect(status().isOk())
-      .andExpect(content().string("Even"));
-  }
+    @Test
+    public void given_WhenPassEvenNumberInQueryParam_ThenReturnEven() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=2")
+          .contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk())
+          .andExpect(content().string("Even"));
+    }
 
-  @Test
-  public void given_WhenPassOddNumberInQueryParam_ThenReturnOdd() throws Exception {
-    mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=1")
-      .contentType(MediaType.APPLICATION_JSON))
-      .andExpect(status().isOk())
-      .andExpect(content().string("Odd"));
-  }
+    @Test
+    public void given_WhenPassOddNumberInQueryParam_ThenReturnOdd() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/calculate?number=1")
+          .contentType(MediaType.APPLICATION_JSON))
+          .andExpect(status().isOk())
+          .andExpect(content().string("Odd"));
+    }
 }

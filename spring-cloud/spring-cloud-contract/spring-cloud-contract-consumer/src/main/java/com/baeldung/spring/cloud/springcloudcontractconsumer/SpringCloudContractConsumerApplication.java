@@ -7,12 +7,12 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class SpringCloudContractConsumerApplication {
-  public static void main(String[] args) {
-    SpringApplication.run(SpringCloudContractConsumerApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringCloudContractConsumerApplication.class, args);
+    }
 
-  @Bean
-  RestTemplate restTemplate() {
-    return new RestTemplate();
-  }
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }

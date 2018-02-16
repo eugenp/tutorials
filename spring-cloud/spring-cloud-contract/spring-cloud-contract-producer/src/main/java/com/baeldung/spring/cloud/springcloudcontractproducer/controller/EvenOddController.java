@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EvenOddController {
 
-  @GetMapping("/validate/prime-number")
-  public String isNumberPrime(@RequestParam("number") String number) {
-    return Integer.parseInt(number) % 2 == 0 ? "Even" : "Odd";
-  }
+    @GetMapping("/validate/prime-number")
+    public String isNumberPrime(@RequestParam("number") String number) {
+        return Integer.parseInt(number) % 2 == 0 ? "Even" : "Odd";
+    }
 }
