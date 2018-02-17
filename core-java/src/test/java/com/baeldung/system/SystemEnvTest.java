@@ -14,13 +14,9 @@ public class SystemEnvTest {
 
         // access each entry in the collection
         for (HashMap.Entry<String, String> entry: envVariables.entrySet()) {
-            System.out.println(entry.getKey() + " = " + entry.getValue());
-
             Assert.assertNotNull(entry.getKey());
             Assert.assertNotNull(entry.getValue());
         }
-
-        System.out.println("PATH has value: " + System.getenv("PATH"));
 
         Assert.assertNotNull(System.getenv("PATH"));
     }
