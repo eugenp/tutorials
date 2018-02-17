@@ -1,14 +1,19 @@
 package com.baeldung.task;
 
+import java.util.logging.Logger;
+
 import org.springframework.cloud.task.listener.TaskExecutionListener;
 import org.springframework.cloud.task.repository.TaskExecution;
 
 public class TaskListener implements TaskExecutionListener {
 
+    private final static Logger LOGGER = Logger
+        .getLogger(JobConfiguration.class.getName());
+
     @Override
     public void onTaskEnd(TaskExecution arg0) {
         // TODO Auto-generated method stub
-        System.out.println("End of task");
+        LOGGER.info("End of Task");
     }
 
     @Override
@@ -21,7 +26,6 @@ public class TaskListener implements TaskExecutionListener {
     @Override
     public void onTaskStartup(TaskExecution arg0) {
         // TODO Auto-generated method stub
-        System.out.println("Task startup ");
+        LOGGER.info("Task Startup");
     }
-
 }

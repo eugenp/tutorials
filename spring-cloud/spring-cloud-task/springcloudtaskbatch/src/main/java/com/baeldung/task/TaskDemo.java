@@ -1,5 +1,7 @@
 package com.baeldung.task;
 
+import java.util.logging.Logger;
+
 import javax.sql.DataSource;
 
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -16,6 +18,9 @@ import org.springframework.stereotype.Component;
 @EnableTask
 @EnableBatchProcessing
 public class TaskDemo {
+
+    private final static Logger LOGGER = Logger
+        .getLogger(JobConfiguration.class.getName());
 
     @Autowired
     private DataSource dataSource;
@@ -44,10 +49,8 @@ public class TaskDemo {
         public void run(ApplicationArguments arg0)
             throws Exception {
             // TODO Auto-generated method stub
-            System.out
-                .println("Hello World from Spring Cloud Task!");
+            LOGGER
+                .info("Hello World from Spring Cloud Task!");
         }
     }
-
-
 }

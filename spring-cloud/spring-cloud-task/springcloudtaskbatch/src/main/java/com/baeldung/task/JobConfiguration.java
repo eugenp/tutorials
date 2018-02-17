@@ -2,6 +2,7 @@ package com.baeldung.task;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -21,6 +22,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class JobConfiguration {
 
+    private final static Logger LOGGER = Logger
+        .getLogger(JobConfiguration.class.getName());
+
     @Autowired
     private JobBuilderFactory jobBuilderFactory;
 
@@ -36,8 +40,7 @@ public class JobConfiguration {
                     StepContribution contribution,
                     ChunkContext chunkContext)
                     throws Exception {
-                    System.out
-                        .println("Tasklet has run");
+                    LOGGER.info("Tasklet has run");
                     return RepeatStatus.FINISHED;
                 }
             }).build();
@@ -56,8 +59,7 @@ public class JobConfiguration {
                     @Override
                     public String process(String item)
                         throws Exception {
-                        System.out
-                            .println("Processing of chunks");
+                        LOGGER.info("Processing of chunks");
                         return String.valueOf(Integer
                             .parseInt(item) * -1);
                     }
@@ -68,8 +70,7 @@ public class JobConfiguration {
                     List<? extends String> items)
                     throws Exception {
                     for (String item : items) {
-                        System.out
-                            .println(">> " + item);
+                        LOGGER.info(">> " + item);
                     }
                 }
             }).build();
@@ -93,13 +94,12 @@ public class JobConfiguration {
                         StepContribution contribution,
                         ChunkContext chunkContext)
                         throws Exception {
-                        System.out
-                            .println("This job is from Baeldung");
+                        LOGGER
+                            .info("This job is from Baeldung");
                         return RepeatStatus.FINISHED;
                     }
                 })
                 .build())
             .build();
     }
-
 }
