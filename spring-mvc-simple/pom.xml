@@ -33,6 +33,7 @@
         <rome.version>1.9.0</rome.version>
         <jackson.version>2.9.4</jackson.version>
         <xstream.version>1.4.9</xstream.version>
+        <scribejava.version>5.1.0</scribejava.version>
     </properties>
 
     <dependencies>
@@ -144,6 +145,13 @@
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
             <version>${xstream.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>${scribejava.version}</version>
         </dependency>
     </dependencies>
     <build>
