@@ -10,26 +10,6 @@ public class CustomList<E> implements List<E> {
     private Object[] internal = {};
 
     @Override
-    public boolean add(E element) {
-        // the first cycle
-        // internal = new Object[1];
-        // internal[0] = element;
-        // return true;
-
-        Object[] temp = new Object[internal.length + 1];
-        System.arraycopy(internal, 0, temp, 0, internal.length);
-        temp[internal.length] = element;
-        internal = temp;
-        return true;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public E get(int index) {
-        return (E) internal[index];
-    }
-
-    @Override
     public void add(int index, E element) {
         throw new UnsupportedOperationException();
     }
@@ -75,11 +55,28 @@ public class CustomList<E> implements List<E> {
     }
 
     @Override
-    public boolean contains(Object object) {
+    public boolean add(E element) {
         // the first cycle
-        // if (object.equals(internal[0])) {
-        //     return true;
-        // }
+        // internal = new Object[1];
+        // internal[0] = element;
+        // return true;
+
+        Object[] temp = new Object[internal.length + 1];
+        System.arraycopy(internal, 0, temp, 0, internal.length);
+        temp[internal.length] = element;
+        internal = temp;
+        return true;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public E get(int index) {
+        return (E) internal[index];
+    }
+
+    @Override
+    public boolean contains(Object object) {
+        // return false
 
         for (Object element : internal) {
             if (object.equals(element)) {
@@ -171,9 +168,7 @@ public class CustomList<E> implements List<E> {
     @Override
     public <T> T[] toArray(T[] array) {
         // the first cycle
-        // for (int i = 0; i < array.length; i++) {
-        //     array[i] = (T) internal[i];
-        // }
+        // array[0] = (T) internal[0];
         // return array;
 
         // the second cycle
@@ -185,6 +180,7 @@ public class CustomList<E> implements List<E> {
         if (array.length < internal.length) {
             return (T[]) Arrays.copyOf(internal, internal.length, array.getClass());
         }
+
         System.arraycopy(internal, 0, array, 0, internal.length);
         if (array.length > internal.length) {
             array[internal.length] = null;
@@ -204,6 +200,7 @@ public class CustomList<E> implements List<E> {
 
     @Override
     public ListIterator<E> listIterator(int index) {
+        // ignored for brevity
         return null;
     }
 
