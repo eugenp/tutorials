@@ -279,6 +279,7 @@
         <module>lucene</module>
 		<module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+	<module>spring-security-thymeleaf</module>
     </modules>
 
     <dependencies>
