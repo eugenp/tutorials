@@ -25,8 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public ClientErrorLoggingDsl clientErrorLogging() {
-        return new ClientErrorLoggingDsl();
+    public ClientErrorLoggingConfigurer clientErrorLogging() {
+        return new ClientErrorLoggingConfigurer();
     }
 
     @Override

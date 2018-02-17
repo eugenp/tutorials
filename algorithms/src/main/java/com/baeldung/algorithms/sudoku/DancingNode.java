@@ -4,21 +4,21 @@ class DancingNode {
     DancingNode L, R, U, D;
     ColumnNode C;
 
-    DancingNode hookDown(DancingNode n1) {
-        assert (this.C == n1.C);
-        n1.D = this.D;
-        n1.D.U = n1;
-        n1.U = this;
-        this.D = n1;
-        return n1;
+    DancingNode hookDown(DancingNode node) {
+        assert (this.C == node.C);
+        node.D = this.D;
+        node.D.U = node;
+        node.U = this;
+        this.D = node;
+        return node;
     }
 
-    DancingNode hookRight(DancingNode n1) {
-        n1.R = this.R;
-        n1.R.L = n1;
-        n1.L = this;
-        this.R = n1;
-        return n1;
+    DancingNode hookRight(DancingNode node) {
+        node.R = this.R;
+        node.R.L = node;
+        node.L = this;
+        this.R = node;
+        return node;
     }
 
     void unlinkLR() {

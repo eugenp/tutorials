@@ -7,15 +7,15 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
 
-public class ClientErrorLoggingDsl extends AbstractHttpConfigurer<ClientErrorLoggingDsl, HttpSecurity> {
+public class ClientErrorLoggingConfigurer extends AbstractHttpConfigurer<ClientErrorLoggingConfigurer, HttpSecurity> {
 
     private List<HttpStatus> errorCodes;
 
-    public ClientErrorLoggingDsl(List<HttpStatus> errorCodes) {
+    public ClientErrorLoggingConfigurer(List<HttpStatus> errorCodes) {
         this.errorCodes = errorCodes;
     }
 
-    public ClientErrorLoggingDsl() {
+    public ClientErrorLoggingConfigurer() {
 
     }
 
