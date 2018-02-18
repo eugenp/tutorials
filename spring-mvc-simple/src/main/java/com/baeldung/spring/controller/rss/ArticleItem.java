@@ -4,7 +4,6 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import java.io.Serializable;
 
-@JacksonXmlRootElement(localName="article")
 public class ArticleItem extends RssData implements Serializable {
     private String author;
 
