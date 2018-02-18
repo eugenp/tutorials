@@ -1,7 +1,5 @@
 package com.baeldung.spring.controller.rss;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
 import java.io.Serializable;
 
 public class ArticleItem extends RssData implements Serializable {
