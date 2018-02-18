@@ -45,10 +45,7 @@ public class PasswordStorageWebSecurityConfigurer extends WebSecurityConfigurerA
         encoders.put("scrypt", new SCryptPasswordEncoder());
         encoders.put("SHA-256", new MessageDigestPasswordEncoder("SHA-256"));
 
-        // get an instance of the DelegatingPasswordEncoder, set up to use our instance as default encoder
         DelegatingPasswordEncoder delegatingPasswordEncoder = new DelegatingPasswordEncoder(encodingId, encoders);
-
-        // configure our instance as default encoder for actual matching
         delegatingPasswordEncoder.setDefaultPasswordEncoderForMatches(encoders.get(encodingId));
 
         return delegatingPasswordEncoder;
