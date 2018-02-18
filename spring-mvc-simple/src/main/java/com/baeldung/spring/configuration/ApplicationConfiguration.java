@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.feed.RssChannelHttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -65,6 +66,7 @@ class ApplicationConfiguration extends WebMvcConfigurerAdapter {
         XmlMapper xmlMapper = builder.createXmlMapper(true).build();
         xmlMapper.configure(ToXmlGenerator.Feature.WRITE_XML_DECLARATION, true);
 
+        converters.add(new StringHttpMessageConverter());
         converters.add(new RssChannelHttpMessageConverter());
         converters.add(new MappingJackson2HttpMessageConverter());
         converters.add(new MappingJackson2XmlHttpMessageConverter(xmlMapper));
