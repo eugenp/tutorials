@@ -1,33 +1,41 @@
 package com.baeldung.passwordstorage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
+import org.springframework.security.authentication.AuthenticationEventPublisher;
+import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Configuration
 public class BaeldungPasswordEncoderSetup {
 
+    private final static Logger LOG = LoggerFactory.getLogger(BaeldungPasswordEncoderSetup.class);
+
     @Bean
-    public PasswordEncoder passwordEncoder() {
-        // set up the list of supported encoders and their prefixes
-        String encodingId = "rot13";
-        Map<String, PasswordEncoder> encoders = new HashMap<>();
-        encoders.put(encodingId, new Rot13PasswordEncoder());
-        encoders.put("scrypt", new SCryptPasswordEncoder());
-        encoders.put("bcrypt", new BCryptPasswordEncoder());
+    public AuthenticationEventPublisher authenticationEventPublisher(final ApplicationEventPublisher publisher) {
+        return new DefaultAuthenticationEventPublisher(publisher);
+    }
 
-        // get an instance of the DelegatingPasswordEncoder, set up to use our instance as default encoder
-        DelegatingPasswordEncoder delegatingPasswordEncoder = new DelegatingPasswordEncoder(encodingId, encoders);
+    @Bean
+    public ApplicationListener<AuthenticationSuccessEvent> authenticationSuccessListener(final PasswordEncoder encoder) {
+        return (AuthenticationSuccessEvent event) -> {
+            final Authentication authentication = event.getAuthentication();
 
-        // configure our instance as default encoder for actual matching
-        delegatingPasswordEncoder.setDefaultPasswordEncoderForMatches(encoders.get(encodingId));
+            if (authentication instanceof UsernamePasswordAuthenticationToken && authentication.getCredentials() != null) {
+                final CharSequence clearTextPassword = (CharSequence) authentication.getCredentials(); // 1
+                final String newPasswordHash = encoder.encode(clearTextPassword); // 2
 
-        return delegatingPasswordEncoder;
+                LOG.info("New password hash {} for user {}", newPasswordHash, authentication.getName());
+
+                ((UsernamePasswordAuthenticationToken) authentication).eraseCredentials(); // 3
+            }
+        };
     }
 }
