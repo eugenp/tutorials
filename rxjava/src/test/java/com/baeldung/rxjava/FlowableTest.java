@@ -38,7 +38,7 @@ public class FlowableTest {
         assertNotNull(integerFlowable);
     }
 
-    @Test public void whenFlowableUsesBufferStragegy_thenOnBackpressureAllValuesAreBufferedAndReceived() {
+    @Test public void thenAllValuesAreBufferedAndReceived() {
         List testList = IntStream.range(0, 100000).boxed().collect(Collectors.toList());
         Observable observable = Observable.fromIterable(testList);
         TestSubscriber<Integer> testSubscriber = observable.toFlowable(BackpressureStrategy.BUFFER).observeOn(Schedulers.computation()).test();
@@ -50,7 +50,7 @@ public class FlowableTest {
         assertEquals(testList, receivedInts);
     }
 
-    @Test public void whenFlowableUsesDropStrategy_thenOnBackpressureNotAllValuesAreReceivedAndTheLastElementIsNotReceived() {
+    @Test public void whenDropStrategyUsed_thenOnBackpressureDropped() {
         List testList = IntStream.range(0, 100000).boxed().collect(Collectors.toList());
 
         Observable observable = Observable.fromIterable(testList);
@@ -62,7 +62,7 @@ public class FlowableTest {
         assertThat(!receivedInts.contains(100000));
     }
 
-    @Test public void whenFlowableUsesMissingStrategy_thenExceptionIsThrownOnBackpressure() {
+    @Test public void whenMissingStrategyUsed_thenException() {
         Observable observable = Observable.range(1, 100000);
         TestSubscriber subscriber = observable.toFlowable(BackpressureStrategy.MISSING).observeOn(Schedulers.computation()).test();
 
@@ -70,15 +70,15 @@ public class FlowableTest {
         subscriber.assertError(MissingBackpressureException.class);
     }
 
-    @Test public void whenFlowableUsesErrorStrategy_thenExceptionIsThrownOnBackpressure() {
-        Observable observable = Observable.range(1, 100000);
+    @Test public void  whenErrorStrategyUsed_thenExceptionIsThrown() {
+            Observable observable = Observable.range(1, 100000);
         TestSubscriber subscriber = observable.toFlowable(BackpressureStrategy.ERROR).observeOn(Schedulers.computation()).test();
 
         subscriber.awaitTerminalEvent();
         subscriber.assertError(MissingBackpressureException.class);
     }
 
-    @Test public void whenFlowableUsesLatesStrategy_thenNotElementsAreReceivedButTheLastElementIs() {
+    @Test public void whenLatestStrategyUsed_thenTheLastElementReceived() {
         List testList = IntStream.range(0, 100000).boxed().collect(Collectors.toList());
         Observable observable = Observable.fromIterable(testList);
         TestSubscriber<Integer> testSubscriber = observable.toFlowable(BackpressureStrategy.LATEST).observeOn(Schedulers.computation()).test();
