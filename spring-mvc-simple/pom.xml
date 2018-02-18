@@ -146,16 +146,11 @@
             <artifactId>xstream</artifactId>
             <version>${xstream.version}</version>
         </dependency>
-<<<<<<< HEAD
-
-
         <dependency>
             <groupId>com.github.scribejava</groupId>
             <artifactId>scribejava-apis</artifactId>
             <version>${scribejava.version}</version>
         </dependency>
-=======
->>>>>>> 1b0e859d3a85970462c7daefc646e37155b87c0b
     </dependencies>
     <build>
         <pluginManagement>
