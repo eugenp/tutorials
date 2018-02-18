@@ -65,21 +65,21 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenSize_thenNumberOfElementsIsReturned() {
+    public void givenEmptyList_whenSize_thenZeroIsReturned() {
         List<Object> list = new CustomList<>();
 
         assertEquals(0, list.size());
     }
 
     @Test
-    public void whenIsEmpty_thenWhetherListIsEmptyIsReturned() {
+    public void givenEmptyList_whenIsEmpty_thenTrueIsReturned() {
         List<Object> list = new CustomList<>();
 
         assertTrue(list.isEmpty());
     }
 
     @Test
-    public void whenAddToTheEndAndGet_thenAddedElementIsReturned() {
+    public void givenEmptyList_whenElementIsAdded_thenGetReturnsThatElement() {
         List<Object> list = new CustomList<>();
         boolean succeeded = list.add("baeldung");
         Object element = list.get(0);
@@ -89,7 +89,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenAddToTheEndAndGet_thenAddedElemenetsAreReturned() {
+    public void givenListWithAnElement_whenAnotherIsAdded_thenGetReturnsBoth() {
         List<Object> list = new CustomList<>();
         boolean succeeded1 = list.add("baeldung");
         boolean succeeded2 = list.add(".com");
@@ -103,14 +103,14 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenContains_thenFalseIsReturned() {
+    public void givenEmptyList_whenContains_thenFalseIsReturned() {
         List<Object> list = new CustomList<>();
 
-        assertFalse(list.contains("baeldung"));
+        assertFalse(list.contains(null));
     }
 
     @Test
-    public void whenContains_thenTrueIsReturned() {
+    public void givenListWithAnElement_whenContains_thenTrueIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
 
@@ -118,7 +118,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenContainsAll_thenTrueIsReturned() {
+    public void givenListWithAnElement_whenContainsAll_thenTrueIsReturned() {
         Collection<Object> collection = new ArrayList<>();
         collection.add("baeldung");
         List<Object> list = new CustomList<>();
@@ -128,7 +128,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenContainsAll_thenEitherTrueOfFalseIsReturned() {
+    public void givenList_whenContainsAll_thenEitherTrueOrFalseIsReturned() {
         Collection<Object> collection1 = new ArrayList<>();
         collection1.add("baeldung");
         collection1.add(".com");
@@ -143,7 +143,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenSet_thenOldElementIsReturned() {
+    public void givenList_whenSet_thenOldElementIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         Object element = list.set(0, null);
@@ -153,7 +153,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenClear_thenAllElementsAreRemoved() {
+    public void givenList_whenClear_thenAllElementsAreRemoved() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         list.clear();
@@ -162,7 +162,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenIndexOf_thenIndexZeroIsReturned() {
+    public void givenList_whenIndexOf_thenIndexZeroIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
 
@@ -170,7 +170,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenIndexOf_thenPositiveOrNegativeIndexIsReturned() {
+    public void givenList_whenIndexOf_thenPositiveIndexOrMinusOneIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         list.add(".com");
@@ -189,7 +189,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenLastIndexOf_thenPositiveOrNegativeIndexIsReturned() {
+    public void whenLastIndexOf_thenPositiveIndexOrMinusOneIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         list.add("baeldung");
@@ -200,7 +200,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenSubList_thenListContainingFirstElementIsReturned() {
+    public void whenSubListZeroToOne_thenListContainingFirstElementIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         List<Object> subList = list.subList(0, 1);
@@ -209,7 +209,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenSubList_thenListContainingSecondElementIsReturned() {
+    public void whenSubListOneToTwo_thenListContainingSecondElementIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         list.add(".");
@@ -221,16 +221,17 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenToNewArray_thenArrayIsReturned() {
+    public void givenListWithElements_whenToArray_thenArrayContainsThose() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
+        list.add(".com");
         Object[] array = list.toArray();
 
-        assertEquals("baeldung", array[0]);
+        assertArrayEquals(new Object[] { "baeldung", ".com" }, array);
     }
 
     @Test
-    public void whenToArray_thenOldArrayIsReturned() {
+    public void givenListWithAnElement_whenToArray_thenInputArrayIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         String[] input = new String[1];
@@ -240,7 +241,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenToArray_thenNewArrayIsReturned() {
+    public void whenToArrayIsCalledWithEmptyInputArray_thenNewArrayIsReturned() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         String[] input = {};
@@ -250,7 +251,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenToArray_thenNewArrayWithTrailingNullIsReturned() {
+    public void whenToArrayIsCalledWithLargerInput_thenOutputHasTrailingNull() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         String[] input = new String[2];
@@ -260,7 +261,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenIterator_thenOneCheckIsCorrect() {
+    public void givenListWithOneElement_whenIterator_thenThisElementIsNext() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         Iterator<Object> iterator = list.iterator();
@@ -270,13 +271,12 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenIterator_thenTwoChecksAreCorrect() {
+    public void whenIteratorNextIsCalledTwice_thenTheSecondReturnsFalse() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         Iterator<Object> iterator = list.iterator();
 
         assertTrue(iterator.hasNext());
-        assertEquals("baeldung", iterator.next());
         assertFalse(iterator.hasNext());
     }
 }
