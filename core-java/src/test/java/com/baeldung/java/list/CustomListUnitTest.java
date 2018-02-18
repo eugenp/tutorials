@@ -276,7 +276,7 @@ public class CustomListUnitTest {
         list.add("baeldung");
         Iterator<Object> iterator = list.iterator();
 
-        assertTrue(iterator.hasNext());
+        iterator.next();
         assertFalse(iterator.hasNext());
     }
 }
