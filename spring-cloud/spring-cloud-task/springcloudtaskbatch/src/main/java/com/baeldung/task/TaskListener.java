@@ -8,7 +8,7 @@ import org.springframework.cloud.task.repository.TaskExecution;
 public class TaskListener implements TaskExecutionListener {
 
     private final static Logger LOGGER = Logger
-        .getLogger(JobConfiguration.class.getName());
+        .getLogger(TaskListener.class.getName());
 
     @Override
     public void onTaskEnd(TaskExecution arg0) {

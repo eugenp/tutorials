@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 public class TaskDemo {
 
     private final static Logger LOGGER = Logger
-        .getLogger(JobConfiguration.class.getName());
+        .getLogger(TaskDemo.class.getName());
 
     @Autowired
     private DataSource dataSource;
