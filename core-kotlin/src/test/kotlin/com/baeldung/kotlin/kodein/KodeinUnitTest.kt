@@ -1,14 +1,18 @@
 package com.baeldung.kotlin.kodein
 
 import com.github.salomonbrys.kodein.*
+import org.junit.Assert.assertNotSame
+import org.junit.Assert.assertSame
 import org.junit.Test
 import kotlin.test.*
 
-class KodeinTest {
+class KodeinUnitTest {
+
+    class InMemoryDao : Dao
 
     @Test
     fun whenSingletonBinding_thenSingleInstanceIsCreated() {
-        var created = false;
+        var created = false
         val kodein = Kodein {
             bind<Dao>() with singleton {
                 created = true
