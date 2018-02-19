@@ -8,25 +8,18 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.M5</version>
-		<relativePath />
+		<version>1.5.10.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<start-class>com.baeldung.TaskDemo</start-class>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<spring-cloud-task.version>1.2.2.RELEASE</spring-cloud-task.version>
 	</properties>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-task-dependencies</artifactId>
-				<version>2.0.0.BUILD-SNAPSHOT</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 
 	<dependencies>
@@ -47,6 +40,7 @@
 			<artifactId>spring-cloud-starter-task</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-task-core -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-task-core</artifactId>
@@ -57,58 +51,33 @@
 			<artifactId>spring-boot-starter-batch</artifactId>
 		</dependency>
 
-		</dependencies>
-		<build>
-			<plugins>
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-			</plugins>
-		</build>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-task-batch -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-task-batch</artifactId>
+		</dependency>
+	</dependencies>
 
-		<repositories>
-			<repository>
-				<id>spring-snapshots</id>
-				<name>Spring Snapshots</name>
-				<url>https://repo.spring.io/libs-snapshot-local</url>
-				<snapshots>
-					<enabled>true</enabled>
-				</snapshots>
-			</repository>
-			<repository>
-				<id>spring-milestones</id>
-				<name>Spring Milestones</name>
-				<url>https://repo.spring.io/libs-milestone-local</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</repository>
-			<repository>
-				<id>spring-releases</id>
-				<name>Spring Releases</name>
-				<url>https://repo.spring.io/release</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</repository>
-		</repositories>
-		<pluginRepositories>
-			<pluginRepository>
-				<id>spring-snapshots</id>
-				<name>Spring Snapshots</name>
-				<url>https://repo.spring.io/libs-snapshot-local</url>
-				<snapshots>
-					<enabled>true</enabled>
-				</snapshots>
-			</pluginRepository>
-			<pluginRepository>
-				<id>spring-milestones</id>
-				<name>Spring Milestones</name>
-				<url>https://repo.spring.io/libs-milestone-local</url>
-				<snapshots>
-					<enabled>false</enabled>
-				</snapshots>
-			</pluginRepository>
-		</pluginRepositories>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-task-dependencies</artifactId>
+				<version>${spring-cloud-task.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>
