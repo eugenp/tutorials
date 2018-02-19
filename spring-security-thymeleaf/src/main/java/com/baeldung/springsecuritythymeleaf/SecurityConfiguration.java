@@ -12,26 +12,32 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-	@Override
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
+        http.authorizeRequests()
+            .anyRequest()
+            .authenticated()
+            .and()
             .formLogin()
-                .loginPage("/login")
-                .permitAll().failureUrl("/loginError").successForwardUrl("/index")
-                .and()
+            .loginPage("/login")
+            .permitAll()
+            .successForwardUrl("/index")
+            .and()
             .logout()
-                .permitAll()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login");
+            .permitAll()
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessUrl("/login");
     }
 
     @Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-        .withUser("user").password("password").roles("USER").and()
-        .withUser("admin").password("admin").roles("ADMIN");
+            .withUser("user")
+            .password("password")
+            .roles("USER")
+            .and()
+            .withUser("admin")
+            .password("admin")
+            .roles("ADMIN");
     }
 }
