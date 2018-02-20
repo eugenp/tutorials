@@ -6,19 +6,19 @@ import org.junit.Test;
 
 @Ignore
 public class WhenDetectingOSTest {
-    
+
     private DetectOS os = new DetectOS();
 
     @Test
     public void whenUsingSystemProperty_shouldReturnOS() {
-        String expected = "Windows";
+        String expected = "Windows 10";
         String actual = os.getOperatingSystem();
         Assert.assertEquals(expected, actual);
     }
-    
+
     @Test
     public void whenUsingSystemUtils_shouldReturnOS() {
-        String expected = "Windows";
+        String expected = "Windows 10";
         String actual = os.getOperatingSystemSystemUtils();
         Assert.assertEquals(expected, actual);
     }
