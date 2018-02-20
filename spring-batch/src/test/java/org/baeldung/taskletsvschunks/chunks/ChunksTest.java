@@ -1,5 +1,6 @@
 package org.baeldung.taskletsvschunks.chunks;
 
+import org.baeldung.taskletsvschunks.config.ChunksConfig;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/taskletsvschunks/chunks.xml")
+@ContextConfiguration(classes  = ChunksConfig.class)
 public class ChunksTest {
 
     @Autowired private JobLauncherTestUtils jobLauncherTestUtils;
