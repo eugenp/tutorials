@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+   <bean id = "firstPatient" class = "com.mala.model.Patient">
+      <property name = "medicine">
+	<ref bean = "firstPatientMedicine"/>
+      </property>
+   </bean>
+    
+   <bean id = "firstPatientMedicine" class = "com.mala.model.OralMedicine">
+      <property name = "name" value = "Aspirin"/>
+   </bean>
+
+
+   <bean id = "secondPatient" class ="com.mala.model.Patient">
+		<constructor-arg index = "0" ref = "secondPatientMedicine" />
+   </bean>
+  
+   
+   <bean id = "secondPatientMedicine" class = "com.mala.model.InjectableMedicine">
+   		<constructor-arg value = "IV" />
+	</bean>
+      
+   
+   
+   
+</beans>
