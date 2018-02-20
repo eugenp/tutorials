@@ -6,11 +6,11 @@ import org.junit.rules.ExternalResource;
 
 import java.util.Optional;
 
-public class LocalDynamoDBCreationRule extends ExternalResource {
+public class LocalDbCreationRule extends ExternalResource {
 
     protected DynamoDBProxyServer server;
 
-    public LocalDynamoDBCreationRule() {
+    public LocalDbCreationRule() {
         System.setProperty("sqlite4java.library.path", "native-libs");
     }
 
@@ -23,7 +23,7 @@ public class LocalDynamoDBCreationRule extends ExternalResource {
 
     @Override
     protected void after() {
-        Optional.ofNullable(server).ifPresent(this::stopUnchecked);
+        this.stopUnchecked(server);
     }
 
     protected void stopUnchecked(DynamoDBProxyServer dynamoDbServer) {

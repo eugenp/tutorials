@@ -8,7 +8,7 @@ import com.amazonaws.services.dynamodbv2.model.ResourceInUseException;
 import com.baeldung.Application;
 import com.baeldung.spring.data.dynamodb.model.ProductInfo;
 import com.baeldung.spring.data.dynamodb.repositories.ProductInfoRepository;
-import com.baeldung.spring.data.dynamodb.repository.rule.LocalDynamoDBCreationRule;
+import com.baeldung.spring.data.dynamodb.repository.rule.LocalDbCreationRule;
 import org.junit.Before;
 import org.junit.ClassRule;
 import org.junit.Test;
@@ -35,7 +35,7 @@ import static org.junit.Assert.assertThat;
 public class ProductInfoRepositoryIntegrationTest {
 
     @ClassRule
-    public static LocalDynamoDBCreationRule dynamoDB = new LocalDynamoDBCreationRule();
+    public static LocalDbCreationRule dynamoDB = new LocalDbCreationRule();
 
     private DynamoDBMapper dynamoDBMapper;
 
