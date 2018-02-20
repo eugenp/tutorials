@@ -1,49 +1,40 @@
 package com.baeldung.rxjava;
 
-import org.junit.Before;
 import org.junit.Test;
 
+import io.reactivex.Flowable;
 import io.reactivex.Maybe;
-import io.reactivex.observers.TestObserver;
 
 public class MaybeTest {
-    private TestObserver<String> testObserver;
+    @Test
+    public void whenEmitsSingleValue_thenItIsObserved() {
+        Maybe<Integer> maybe = Flowable.just(1, 2, 3, 4, 5)
+            .firstElement();
 
-    @Before
-    public void setUp() {
-        testObserver = new TestObserver<>();
+        maybe.map(x -> x + 7)
+            .filter(x -> x > 0)
+            .test()
+            .assertResult(8)
+            .assertComplete();
     }
 
     @Test
-    public void whenEmitsSingleValue_observerUpdated() {
-        Maybe<String> topPickToday = todaysTopPick("AGreatArticle");
-        topPickToday.subscribe(testObserver);
-        testObserver.assertResult("AGreatArticle");
+    public void whenEmitsNoValue_thenSignalsCompletionAndNoValueObserved() {
+        Maybe<Integer> maybe = Flowable.just(1, 2, 3, 4, 5)
+            .skip(5)
+            .firstElement();
+
+        maybe.test()
+            .assertComplete()
+            .assertNoValues();
     }
 
     @Test
-    public void whenCompletesWithoutValue_observerGetsNoValues() {
-        Maybe<String> topPickToday = todaysTopPick("");
-        topPickToday.subscribe(testObserver);
-        testObserver.assertNoValues();
-    }
+    public void whenThrowsError_thenErrorIsRaised() {
+        Maybe<Integer> maybe = Flowable.<Integer> error(new Exception("msg"))
+            .firstElement();
 
-    @Test
-    public void whenThrowsErrorBeforeComplete_observerSeesTheError() {
-        Maybe<String> topPickToday = todaysTopPick(null);
-        topPickToday.subscribe(testObserver);
-        testObserver.assertErrorMessage("Error getting todays top pick.");
-    }
-
-    private Maybe<String> todaysTopPick(String analyticsResult) {
-        return Maybe.create(onSubscribe -> {
-            if (analyticsResult == null) {
-                onSubscribe.onError(new Exception("Error getting todays top pick."));
-            } else if (analyticsResult.isEmpty()) {
-                onSubscribe.onComplete();
-            } else {
-                onSubscribe.onSuccess(analyticsResult);
-            }
-        });
+        maybe.test()
+            .assertErrorMessage("msg");
     }
 }
