@@ -7,17 +7,25 @@ import java.util.Map;
 
 public class KeyForExample {
 
-    private final @KeyFor("paramToValue") String NAME = "Name";
-    private final @KeyFor("paramToValue") String URL = "url";
-
-    private Map<String, String> paramToValue = new HashMap<>();
+    private final Map<String, String> config = new HashMap<>();
 
     KeyForExample() {
-        paramToValue.put(URL, "http://1.2.3.4");
+
+        // Here we initialize a map to store
+        // some config data.
+        config.put("url", "http://1.2.3.4");
+        config.put("name", "foobaz");
     }
 
-    String getMaker(@KeyFor("this.paramToValue") Object model) {
-        return paramToValue.get(model);
+    public void dumpPort() {
+
+        // Here, we want to dump the port value stored in the
+        // config, so we declare that this key has to be
+        // present in the config map.
+        // Obviously that will fail because such key is not present
+        // in the map.
+        @KeyFor("config") String key = "port";
+        System.out.println( config.get(key) );
     }
 
 }

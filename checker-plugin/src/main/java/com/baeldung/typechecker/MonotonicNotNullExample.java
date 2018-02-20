@@ -6,8 +6,10 @@ import java.util.Date;
 
 public class MonotonicNotNullExample {
 
-    // The idea is to lazily initialize that field,
-    // so it starts as null but can only become not null.
+    // The idea is we need this field to be to lazily initialized,
+    // so it starts as null but once it becomes not null
+    // it cannot return null.
+    // In these cases, we can use @MonotonicNonNull
     @MonotonicNonNull private Date firstCall;
 
     public Date getFirstCall() {
@@ -19,7 +21,7 @@ public class MonotonicNotNullExample {
 
     public void reset() {
         // This is reported as error because
-        // we wrongly set it to null.
+        // we wrongly set the field back to null.
         firstCall = null;
     }
 
