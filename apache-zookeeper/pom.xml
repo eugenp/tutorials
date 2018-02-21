@@ -6,25 +6,25 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-<dependencies>
-	<dependency>
-		<groupId>org.apache.zookeeper</groupId>
-		<artifactId>zookeeper</artifactId>
-		<version>3.3.2</version>
-		<exclusions>
-			<exclusion>
-				<groupId>com.sun.jmx</groupId>
-				<artifactId>jmxri</artifactId>
-			</exclusion>
-			<exclusion>
-				<groupId>com.sun.jdmk</groupId>
-				<artifactId>jmxtools</artifactId>
-			</exclusion>
-			<exclusion>
-				<groupId>javax.jms</groupId>
-				<artifactId>jms</artifactId>
-			</exclusion>
-		</exclusions>
-	</dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.3.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 </project>
