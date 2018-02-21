@@ -22,7 +22,7 @@ public class ShufflingCollectionsUnitTest {
     }
 
     @Test
-    public void whenShufflingMapKeys_thenValuesAreShuffled() {
+    public void whenShufflingMapEntries_thenValuesAreShuffled() {
         Map<Integer, String> studentsById = new HashMap<>();
         studentsById.put(1, "Foo");
         studentsById.put(2, "Bar");
@@ -32,11 +32,11 @@ public class ShufflingCollectionsUnitTest {
         System.out.println("Students before shuffling:");
         System.out.println(studentsById.values());
 
-        List<Integer> shuffledStudentIds = new ArrayList<>(studentsById.keySet());
-        Collections.shuffle(shuffledStudentIds);
+        List<Map.Entry<Integer, String>> shuffledStudentEntries = new ArrayList<>(studentsById.entrySet());
+        Collections.shuffle(shuffledStudentEntries);
 
-        List<String> shuffledStudents = shuffledStudentIds.stream()
-                .map(id -> studentsById.get(id))
+        List<String> shuffledStudents = shuffledStudentEntries.stream()
+                .map(Map.Entry::getValue)
                 .collect(Collectors.toList());
 
         System.out.println("Students after shuffling");
