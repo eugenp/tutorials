@@ -6,13 +6,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class PizzaMaker {
 
-    private final PizzaOven pizzaOven;
+    private final PizzaBaker pizzaBaker;
 
-    private final PizzaAssembler pizzaAssembler;
+    private Pineappler pineappler;
+
+    private Baconizer baconizer;
 
     @Autowired
-    public PizzaMaker(PizzaOven pizzaOven, PizzaAssembler pizzaAssembler) {
-        this.pizzaOven = pizzaOven;
-        this.pizzaAssembler = pizzaAssembler;
+    public PizzaMaker(PizzaBaker pizzaBaker) {
+        this.pizzaBaker = pizzaBaker;
+    }
+
+    @Autowired
+    public void setPineappler(Pineappler pineappler) {
+        this.pineappler = pineappler;
+    }
+
+    @Autowired
+    public void setPizzaBaconizer(Baconizer baconizer) {
+        this.baconizer = baconizer;
     }
 }
