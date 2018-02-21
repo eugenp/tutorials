@@ -21,7 +21,8 @@
         <module>spring-cloud-aws</module>
         <module>spring-cloud-consul</module>
         <module>spring-cloud-zuul-eureka-integration</module>
-	</modules>
+        <module>spring-cloud-contract</module>
+    </modules>
     <packaging>pom</packaging>
 
     <name>spring-cloud</name>
