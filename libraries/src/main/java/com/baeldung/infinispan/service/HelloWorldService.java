@@ -31,12 +31,7 @@ public class HelloWorldService {
 
     public String findSimpleHelloWorld() {
         String cacheKey = "simple-hello";
-        String helloWorld = simpleHelloWorldCache.get(cacheKey);
-        if (helloWorld == null) {
-            helloWorld = repository.getHelloWorld();
-            simpleHelloWorldCache.put(cacheKey, helloWorld);
-        }
-        return helloWorld;
+        return simpleHelloWorldCache.computeIfAbsent(cacheKey, k -> repository.getHelloWorld());
     }
 
     public String findExpiringHelloWorld() {
@@ -79,12 +74,7 @@ public class HelloWorldService {
     }
 
     public String findPassivatingHelloWorld(String key) {
-        String value = passivatingHelloWorldCache.get(key);
-        if(value == null) {
-            value = repository.getHelloWorld();
-            passivatingHelloWorldCache.put(key, value);
-        }
-        return value;
+        return passivatingHelloWorldCache.computeIfAbsent(key, k -> repository.getHelloWorld());
     }
 
 }
