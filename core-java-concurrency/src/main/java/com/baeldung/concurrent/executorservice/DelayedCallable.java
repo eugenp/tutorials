@@ -1,38 +1,32 @@
 package com.baeldung.concurrent.executorservice;
 
+import java.util.Optional;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.time.StopWatch;
 
 public class DelayedCallable implements Callable<String> {
-    
-    private String name;
-    private long period;
-    private CountDownLatch latch;
-    
-    public DelayedCallable(String name, long period, CountDownLatch latch) {
-        this(name, period);
+
+    private final String name;
+    private final long delay;
+    private final Optional<CountDownLatch> latch;
+
+    public DelayedCallable(String name, long delay, Optional<CountDownLatch> latch) {
+        this.name = name;
+        this.delay = delay;
         this.latch = latch;
     }
 
-    public DelayedCallable(String name, long period) {
-        this.name = name;
-        this.period = period;
-    }
-
+    @Override
     public String call() {
 
-        try {
-            Thread.sleep(period);
-            
-            if (latch != null) {
-                latch.countDown();
-            }
-            
-        } catch (InterruptedException ex) {
-            // handle exception
-            ex.printStackTrace();
-            Thread.currentThread().interrupt();
-        }
+        StopWatch worker = StopWatch.createStarted();
+        do {
+        } while (worker.getTime(TimeUnit.MILLISECONDS) < delay);
+
+        latch.ifPresent(CountDownLatch::countDown);
 
         return name;
     }

@@ -1,17 +1,17 @@
 package com.baeldung.concurrent.stopping;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ControlSubThread implements Runnable {
 
+    private final Semaphore sem;
     private Thread worker;
-    private int interval = 100;
     private AtomicBoolean running = new AtomicBoolean(false);
     private AtomicBoolean stopped = new AtomicBoolean(true);
 
-
-    public ControlSubThread(int sleepInterval) {
-        interval = sleepInterval;
+    public ControlSubThread() {
+        this.sem = new Semaphore(0);
     }
 
     public void start() {
@@ -21,10 +21,11 @@ public class ControlSubThread implements Runnable {
 
     public void stop() {
         running.set(false);
+        this.sem.release();
     }
 
     public void interrupt() {
-        running.set(false);
+        stop();
         worker.interrupt();
     }
 
@@ -36,17 +37,16 @@ public class ControlSubThread implements Runnable {
         return stopped.get();
     }
 
+    @Override
     public void run() {
         running.set(true);
         stopped.set(false);
-        while (running.get()) {
-            try {
-                Thread.sleep(interval);
-            } catch (InterruptedException e) {
-            	Thread.currentThread().interrupt();
-                System.out.println("Thread was interrupted, Failed to complete operation");
-	    }
-            // do something
+        try {
+            sem.acquire();
+        } catch (InterruptedException e) {
+            Thread.currentThread()
+                .interrupt();
+            System.out.println("Thread was interrupted, Failed to complete operation");
         }
         stopped.set(true);
     }

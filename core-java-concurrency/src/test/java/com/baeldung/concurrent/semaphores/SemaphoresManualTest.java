@@ -1,27 +1,29 @@
 package com.baeldung.concurrent.semaphores;
 
-import org.junit.Test;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.stream.IntStream;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.IntStream;
+
+import org.junit.Test;
 
 public class SemaphoresManualTest {
 
     // ========= login queue ======
 
     @Test
-    public void givenLoginQueue_whenReachLimit_thenBlocked() {
+    public void givenLoginQueue_whenReachLimit_thenBlocked() throws InterruptedException {
         final int slots = 10;
         final ExecutorService executorService = Executors.newFixedThreadPool(slots);
         final LoginQueueUsingSemaphore loginQueue = new LoginQueueUsingSemaphore(slots);
         IntStream.range(0, slots)
-          .forEach(user -> executorService.execute(loginQueue::tryLogin));
+            .forEach(user -> executorService.execute(loginQueue::tryLogin));
         executorService.shutdown();
+        executorService.awaitTermination(2, TimeUnit.SECONDS);
 
         assertEquals(0, loginQueue.availableSlots());
         assertFalse(loginQueue.tryLogin());
@@ -33,7 +35,7 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(slots);
         final LoginQueueUsingSemaphore loginQueue = new LoginQueueUsingSemaphore(slots);
         IntStream.range(0, slots)
-          .forEach(user -> executorService.execute(loginQueue::tryLogin));
+            .forEach(user -> executorService.execute(loginQueue::tryLogin));
         executorService.shutdown();
 
         assertEquals(0, loginQueue.availableSlots());
@@ -50,7 +52,7 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(slots);
         final DelayQueueUsingTimedSemaphore delayQueue = new DelayQueueUsingTimedSemaphore(1, slots);
         IntStream.range(0, slots)
-          .forEach(user -> executorService.execute(delayQueue::tryAdd));
+            .forEach(user -> executorService.execute(delayQueue::tryAdd));
         executorService.shutdown();
 
         assertEquals(0, delayQueue.availableSlots());
@@ -63,7 +65,7 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(slots);
         final DelayQueueUsingTimedSemaphore delayQueue = new DelayQueueUsingTimedSemaphore(1, slots);
         IntStream.range(0, slots)
-          .forEach(user -> executorService.execute(delayQueue::tryAdd));
+            .forEach(user -> executorService.execute(delayQueue::tryAdd));
         executorService.shutdown();
 
         assertEquals(0, delayQueue.availableSlots());
@@ -80,13 +82,13 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(count);
         final CounterUsingMutex counter = new CounterUsingMutex();
         IntStream.range(0, count)
-          .forEach(user -> executorService.execute(() -> {
-              try {
-                  counter.increase();
-              } catch (final InterruptedException e) {
-                  e.printStackTrace();
-              }
-          }));
+            .forEach(user -> executorService.execute(() -> {
+                try {
+                    counter.increase();
+                } catch (final InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }));
         executorService.shutdown();
 
         assertTrue(counter.hasQueuedThreads());
@@ -98,13 +100,13 @@ public class SemaphoresManualTest {
         final ExecutorService executorService = Executors.newFixedThreadPool(count);
         final CounterUsingMutex counter = new CounterUsingMutex();
         IntStream.range(0, count)
-          .forEach(user -> executorService.execute(() -> {
-              try {
-                  counter.increase();
-              } catch (final InterruptedException e) {
-                  e.printStackTrace();
-              }
-          }));
+            .forEach(user -> executorService.execute(() -> {
+                try {
+                    counter.increase();
+                } catch (final InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }));
         executorService.shutdown();
         assertTrue(counter.hasQueuedThreads());
         Thread.sleep(5000);
