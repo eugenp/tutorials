@@ -9,7 +9,7 @@ import org.infinispan.manager.DefaultCacheManager;
 import org.junit.After;
 import org.junit.Before;
 
-import java.util.concurrent.Callable;
+import java.util.function.Supplier;
 
 public class ConfigurationTest {
 
@@ -47,7 +47,6 @@ public class ConfigurationTest {
           passivatingHelloWorldCache);
 
         this.transactionalService = new TransactionalService(transactionalCache);
-
     }
 
     @After
@@ -55,15 +54,9 @@ public class ConfigurationTest {
         cacheManager.stop();
     }
 
-    protected long timeThis(Callable callable) {
-        try {
-            long milis = System.currentTimeMillis();
-            callable.call();
-            return System.currentTimeMillis() - milis;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0l;
+    protected <T> long timeThis(Supplier<T> supplier) {
+        long millis = System.currentTimeMillis();
+        supplier.get();
+        return System.currentTimeMillis() - millis;
     }
-
 }
