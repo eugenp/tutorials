@@ -2,33 +2,20 @@ package com.baeldung.service;
 
 import com.baeldung.model.Student;
 
-/**
- * 
- * @author haseeb
- *
- */
+import java.util.Optional;
+
 public class StudentService {
 
-    /**
-     * 
-     * @param id
-     * @return
-     */
-    public Student getStudent(int id) {
-
-        Student student = null;
-
+    public Optional<Student> getStudent(int id) {
         switch (id) {
-        case 1:
-            student = new Student(1, "John", "Doe");
-            break;
-        case 2:
-            student = new Student(2, "Jane", "Goodall");
-            break;
-        case 3:
-            student = new Student(3, "Max", "Born");
-            break;
+            case 1:
+                return Optional.of(new Student(1, "John", "Doe"));
+            case 2:
+                return Optional.of(new Student(2, "Jane", "Goodall"));
+            case 3:
+                return Optional.of(new Student(3, "Max", "Born"));
+            default:
+                return Optional.empty();
         }
-        return student;
     }
 }

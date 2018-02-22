@@ -26,7 +26,7 @@
         <sqlite4java.version>1.0.392</sqlite4java.version>
         <dynamodb.version>1.11.106</dynamodb.version>
         <dynamodblocal.version>1.11.86</dynamodblocal.version>
-        <dynamodblocal.repository.url>https://s3.eu-central-1.amazonaws.com/dynamodb-local-frankfurt/release</dynamodblocal.repository.url>
+        <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
     </properties>
 
     <dependencyManagement>
