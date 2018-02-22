@@ -5,10 +5,14 @@ import org.apache.commons.lang3.SystemUtils;
 public class DetectOS {
 
     public String getOperatingSystem() {
-        return System.getProperty("os.name");
+        String os = System.getProperty("os.name");
+        System.out.println(os);
+        return os;
     }
 
     public String getOperatingSystemSystemUtils() {
-        return SystemUtils.OS_NAME;
+        String os = SystemUtils.OS_NAME;
+        System.out.println(os);
+        return os;
     }
 }
