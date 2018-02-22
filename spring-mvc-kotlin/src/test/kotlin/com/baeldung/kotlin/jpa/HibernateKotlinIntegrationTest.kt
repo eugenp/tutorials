@@ -1,6 +1,6 @@
 package com.baeldung.kotlin.jpa
 
-import com.baeldung.entity.Person
+import com.baeldung.jpa.Person
 import org.hibernate.cfg.Configuration
 import org.hibernate.testing.junit4.BaseCoreFunctionalTestCase
 import org.hibernate.testing.transaction.TransactionUtil.doInHibernate
