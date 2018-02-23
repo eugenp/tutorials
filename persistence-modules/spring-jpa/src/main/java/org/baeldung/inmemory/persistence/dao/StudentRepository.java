@@ -15,4 +15,10 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("SELECT s FROM Student s JOIN s.tags t WHERE s.name = LOWER(:name) AND t = LOWER(:tag)")
     List<Student> retrieveByNameFilterByTag(@Param("name") String name, @Param("tag") String tag);
 
+    @Query("SELECT s FROM Student s JOIN s.skillTags t WHERE t.name = LOWER(:tagName) AND t.value > :tagValue")
+    List<Student> retrieveByNameFilterByMinimumSkillTag(@Param("tagName") String tagName, @Param("tagValue") int tagValue);
+
+    @Query("SELECT s FROM Student s JOIN s.kvTags t WHERE t.key = LOWER(:key)")
+    List<Student> retrieveByKeyTag(@Param("key") String key);
+
 }
