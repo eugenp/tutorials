@@ -1,10 +1,10 @@
 package org.baeldung.inmemory.persistence.model;
 
-import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 public class Student {
