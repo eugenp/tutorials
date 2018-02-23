@@ -1,0 +1,44 @@
+//constructor based injection
+
+private DependencyA dependencyA; 
+private DependencyB dependencyB; 
+private DependencyC dependencyC;
+
+@Autowired
+public DI(DependencyA dependencyA, DependencyB dependencyB, DependencyC dependencyC) {
+this.dependencyA = dependencyA;
+this.dependencyB = dependencyB;
+this.dependencyC = dependencyC; 
+}
+
+//setter based injection
+
+private DependencyA dependencyA;
+private DependencyB dependencyB;
+private DependencyC dependencyC; 
+
+@Autowired
+public void setDependencyA(DependencyA dependencyA) {
+this.dependencyA = dependencyA; 
+}
+
+@Autowired
+public void setDependencyB(DependencyB dependencyB) { 
+this.dependencyB = dependencyB; 
+}
+
+@Autowired
+public void setDependencyC(DependencyC dependencyC) {
+this.dependencyC = dependencyC;
+}
+
+//field based injection
+
+@Autowired
+private DependencyA dependencyA;
+
+@Autowired
+private DependencyB dependencyB; 
+
+@Autowired 
+private DependencyC dependencyC;
