@@ -40,9 +40,7 @@ public class CacheListener {
     @CacheEntriesEvicted
     public void entriesEvicted(CacheEntriesEvictedEvent<String, String> event) {
         final StringBuilder builder = new StringBuilder();
-        event.getEntries().entrySet().forEach((e) ->
-                builder.append(e.getKey() + ", ")
-        );
+        event.getEntries().forEach((key, value) -> builder.append(key).append(", "));
         System.out.println("Evicting following entries from cache: " + builder.toString());
     }
 
