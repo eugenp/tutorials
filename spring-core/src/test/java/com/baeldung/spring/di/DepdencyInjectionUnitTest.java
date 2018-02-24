@@ -4,7 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -17,7 +16,7 @@ public class DepdencyInjectionUnitTest {
 
     @Before
     public  void oneTimeSetup() {
-        context = new AnnotationConfigApplicationContext(DependencyInjectionConfig.class);
+        context = new ClassPathXmlApplicationContext("spring-di.xml");
     }
 
     @Test
