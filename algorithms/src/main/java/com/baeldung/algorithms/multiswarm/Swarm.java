@@ -3,7 +3,6 @@ package com.baeldung.algorithms.multiswarm;
 import java.util.Arrays;
 import java.util.Random;
 
-// TODO: Auto-generated Javadoc
 /**
  * Represents a collection of {@link Particle}.
  * 
