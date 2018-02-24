@@ -82,6 +82,12 @@
             <artifactId>kodein</artifactId>
             <version>${kodein.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -200,6 +206,7 @@
         <junit.platform.version>1.0.0</junit.platform.version>
         <junit.vintage.version>4.12.0</junit.vintage.version>
         <junit4.version>4.12</junit4.version>
+        <assertj.version>3.9.1</assertj.version>
     </properties>
 
 </project>

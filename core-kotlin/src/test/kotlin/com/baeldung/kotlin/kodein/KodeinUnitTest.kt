@@ -1,10 +1,8 @@
 package com.baeldung.kotlin.kodein
 
 import com.github.salomonbrys.kodein.*
-import org.junit.Assert.assertNotSame
-import org.junit.Assert.assertSame
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
-import kotlin.test.*
 
 class KodeinUnitTest {
 
@@ -20,15 +18,15 @@ class KodeinUnitTest {
             }
         }
 
-        assertFalse(created)
+        assertThat(created).isFalse()
 
         val dao1: Dao = kodein.instance()
 
-        assertTrue(created)
+        assertThat(created).isTrue()
 
         val dao2: Dao = kodein.instance()
 
-        assertSame(dao1, dao2)
+        assertThat(dao1).isSameAs(dao2)
     }
 
     @Test
@@ -40,7 +38,7 @@ class KodeinUnitTest {
         val service1: Service = kodein.with("myTag").instance()
         val service2: Service = kodein.with("myTag").instance()
 
-        assertNotSame(service1, service2)
+        assertThat(service1).isNotSameAs(service2)
     }
 
     @Test
@@ -51,7 +49,7 @@ class KodeinUnitTest {
         val dao1: Dao = kodein.instance()
         val dao2: Dao = kodein.instance()
 
-        assertNotSame(dao1, dao2)
+        assertThat(dao1).isNotSameAs(dao2)
     }
 
     @Test
@@ -63,7 +61,7 @@ class KodeinUnitTest {
         val dao1: Dao = kodein.instance("dao1")
         val dao2: Dao = kodein.instance("dao2")
 
-        assertNotSame(dao1, dao2)
+        assertThat(dao1).isNotSameAs(dao2)
     }
 
     @Test
@@ -76,11 +74,11 @@ class KodeinUnitTest {
             }
         }
 
-        assertTrue { created }
+        assertThat(created).isTrue()
         val dao1: Dao = kodein.instance()
         val dao2: Dao = kodein.instance()
 
-        assertSame(dao1, dao2)
+        assertThat(dao1).isSameAs(dao2)
     }
 
     @Test
@@ -92,7 +90,7 @@ class KodeinUnitTest {
         val service1: Service = kodein.with("myTag").instance()
         val service2: Service = kodein.with("myTag").instance()
 
-        assertSame(service1, service2)
+        assertThat(service1).isSameAs(service2)
     }
 
     @Test
@@ -103,7 +101,7 @@ class KodeinUnitTest {
         }
         val fromContainer: Dao = kodein.instance()
 
-        assertSame(dao, fromContainer)
+        assertThat(dao).isSameAs(fromContainer)
     }
 
     @Test
@@ -113,7 +111,7 @@ class KodeinUnitTest {
         }
         val fromContainer: Int = kodein.instance("magic")
 
-        assertEquals(42, fromContainer)
+        assertThat(fromContainer).isEqualTo(42)
     }
 
     @Test
@@ -127,10 +125,8 @@ class KodeinUnitTest {
             bind<Service>() with singleton { Service(instance(), "myService") }
         }
 
-        assertTrue {
-            val dao: Dao = kodein.instance()
-            dao is JdbcDao
-        }
+        val dao: Dao = kodein.instance()
+        assertThat(dao).isInstanceOf(JdbcDao::class.java)
     }
 
     @Test
@@ -145,7 +141,7 @@ class KodeinUnitTest {
         val fromPersistence: Dao = persistenceContainer.instance()
         val fromService: Dao = serviceContainer.instance()
 
-        assertSame(fromPersistence, fromService)
+        assertThat(fromPersistence).isSameAs(fromService)
     }
 
     @Test
@@ -160,7 +156,7 @@ class KodeinUnitTest {
         }
         val dao: Dao = testContainer.instance()
 
-        assertTrue { dao is InMemoryDao }
+        assertThat(dao).isInstanceOf(InMemoryDao::class.java)
     }
 
     @Test
@@ -172,7 +168,7 @@ class KodeinUnitTest {
         }
         val daos: Set<Dao> = kodein.instance()
 
-        assertEquals(setOf(MongoDao::class.java, JdbcDao::class.java), daos.map { it.javaClass }.toSet())
+        assertThat(daos.map { it.javaClass as Class<*> }).containsOnly(MongoDao::class.java, JdbcDao::class.java)
     }
 
     @Test
@@ -190,6 +186,6 @@ class KodeinUnitTest {
         val controller = Controller2()
         controller.injectDependencies(kodein)
 
-        assertNotNull(controller.service)
+        assertThat(controller.service).isNotNull
     }
 }
