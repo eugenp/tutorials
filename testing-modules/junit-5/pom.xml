@@ -20,7 +20,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
-        <junit.jupiter.version>5.0.2</junit.jupiter.version>
+        <junit.jupiter.version>5.1.0</junit.jupiter.version>
         <junit.platform.version>1.0.1</junit.platform.version>
         <junit.vintage.version>4.12.1</junit.vintage.version>
         <log4j2.version>2.8.2</log4j2.version>

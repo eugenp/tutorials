@@ -48,25 +48,25 @@ public class StringComparisonTest {
     @Test
     public void whenUsingCompareTo_ThenComparingStrings(){
 
-        String Author = "author";
-        String Book = "book";
+        String author = "author";
+        String book = "book";
         String duplicateBook = "book";
 
-        assertThat(Author.compareTo(Book)).isEqualTo(-1);
-        assertThat(Book.compareTo(Author)).isEqualTo(1);
-        assertThat(duplicateBook.compareTo(Book)).isEqualTo(0);
+        assertThat(author.compareTo(book)).isEqualTo(-1);
+        assertThat(book.compareTo(author)).isEqualTo(1);
+        assertThat(duplicateBook.compareTo(book)).isEqualTo(0);
     }
 
     @Test
     public void whenUsingCompareToIgnoreCase_ThenComparingStrings(){
 
-        String Author = "Author";
-        String Book = "book";
+        String author = "Author";
+        String book = "book";
         String duplicateBook = "BOOK";
 
-        assertThat(Author.compareToIgnoreCase(Book)).isEqualTo(-1);
-        assertThat(Book.compareToIgnoreCase(Author)).isEqualTo(1);
-        assertThat(duplicateBook.compareToIgnoreCase(Book)).isEqualTo(0);
+        assertThat(author.compareToIgnoreCase(book)).isEqualTo(-1);
+        assertThat(book.compareToIgnoreCase(author)).isEqualTo(1);
+        assertThat(duplicateBook.compareToIgnoreCase(book)).isEqualTo(0);
     }
 
     @Test
