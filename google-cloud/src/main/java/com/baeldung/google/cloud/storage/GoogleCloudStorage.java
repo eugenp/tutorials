@@ -27,7 +27,7 @@ public class GoogleCloudStorage {
         // Use this variation to read the Google authorization JSON from the resources directory with a path
         // and a project name.
         GoogleCloudStorage googleCloudStorage =
-            new GoogleCloudStorage("google-cloud/src/main/resources/google-auth.json", "baeldung-cloud-tutorial");
+            new GoogleCloudStorage("google-cloud/src/main/resources/google_auth.json", "baeldung-cloud-tutorial");
 
         // Bucket require globally unique names, so you'll probably need to change this
         Bucket bucket = googleCloudStorage.getBucket("baeldung-1-bucket");
@@ -75,14 +75,14 @@ public class GoogleCloudStorage {
     }
 
 
-    // get a blob ny id
+    // get a blob by id
     private String getString(BlobId blobId) {
         Blob blob = storage.get(blobId);
         return new String(blob.getContent());
     }
 
 
-    // get a blob ny name
+    // get a blob by name
     private String getString(String name) {
         Page<Blob> blobs = bucket.list();
         for (Blob blob: blobs.getValues()) {
