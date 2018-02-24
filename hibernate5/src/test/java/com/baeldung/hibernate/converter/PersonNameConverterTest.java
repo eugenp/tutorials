@@ -71,4 +71,130 @@ public class PersonNameConverterTest {
             .getSurname(), surname);
     }
 
+    @Test
+    public void givenPersonNameNull_WhenSaving_ThenNullStored() {
+        final String name = null;
+        final String surname = null;
+
+        PersonName personName = new PersonName();
+        personName.setName(name);
+        personName.setSurname(surname);
+
+        Person person = new Person();
+        person.setPersonName(personName);
+
+        Long id = (Long) session.save(person);
+
+        session.flush();
+        session.clear();
+
+        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
+            .setParameter("id", id)
+            .getSingleResult();
+
+        assertEquals("", dbPersonName);
+
+        Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
+            .setParameter("id", id)
+            .getSingleResult();
+
+        assertEquals(dbPerson.getPersonName(), null);
+    }
+
+    @Test
+    public void givenPersonNameWithoutName_WhenSaving_ThenNotNameStored() {
+        final String name = null;
+        final String surname = "surname";
+
+        PersonName personName = new PersonName();
+        personName.setName(name);
+        personName.setSurname(surname);
+
+        Person person = new Person();
+        person.setPersonName(personName);
+
+        Long id = (Long) session.save(person);
+
+        session.flush();
+        session.clear();
+
+        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
+            .setParameter("id", id)
+            .getSingleResult();
+
+        assertEquals("surname, ", dbPersonName);
+
+        Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
+            .setParameter("id", id)
+            .getSingleResult();
+
+        assertEquals(dbPerson.getPersonName()
+            .getName(), name);
+        assertEquals(dbPerson.getPersonName()
+            .getSurname(), surname);
+    }
+
+    @Test
+    public void givenPersonNameWithoutSurName_WhenSaving_ThenNotSurNameStored() {
+        final String name = "name";
+        final String surname = null;
+
+        PersonName personName = new PersonName();
+        personName.setName(name);
+        personName.setSurname(surname);
+
+        Person person = new Person();
+        person.setPersonName(personName);
+
+        Long id = (Long) session.save(person);
+
+        session.flush();
+        session.clear();
+
+        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
+            .setParameter("id", id)
+            .getSingleResult();
+
+        assertEquals("name", dbPersonName);
+
+        Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
+            .setParameter("id", id)
+            .getSingleResult();
+
+        assertEquals(dbPerson.getPersonName()
+            .getName(), name);
+        assertEquals(dbPerson.getPersonName()
+            .getSurname(), surname);
+    }
+
+    @Test
+    public void givenPersonNameEmptyFields_WhenSaving_ThenFielsNotStored() {
+        final String name = "";
+        final String surname = "";
+
+        PersonName personName = new PersonName();
+        personName.setName(name);
+        personName.setSurname(surname);
+
+        Person person = new Person();
+        person.setPersonName(personName);
+
+        Long id = (Long) session.save(person);
+
+        session.flush();
+        session.clear();
+
+        String dbPersonName = (String) session.createNativeQuery("select p.personName from PersonTable p where p.id = :id")
+            .setParameter("id", id)
+            .getSingleResult();
+
+        assertEquals("", dbPersonName);
+
+        Person dbPerson = session.createNativeQuery("select * from PersonTable p where p.id = :id", Person.class)
+            .setParameter("id", id)
+            .getSingleResult();
+
+        assertEquals(dbPerson.getPersonName(), null);
+    }
+
 }
