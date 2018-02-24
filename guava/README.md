@@ -19,6 +19,7 @@
 - [Guide to Guava’s Ordering](http://www.baeldung.com/guava-ordering)
 - [Guide to Guava’s PreConditions](http://www.baeldung.com/guava-preconditions)
 - [Introduction to Guava CacheLoader](http://www.baeldung.com/guava-cacheloader)
+- [Introduction to Guava Memoizer](http://www.baeldung.com/guava-memoizer)
 - [Guide to Guava’s EventBus](http://www.baeldung.com/guava-eventbus)
 - [Guide to Guava Multimap](http://www.baeldung.com/guava-multimap)
 - [Guide to Guava RangeSet](http://www.baeldung.com/guava-rangeset)
