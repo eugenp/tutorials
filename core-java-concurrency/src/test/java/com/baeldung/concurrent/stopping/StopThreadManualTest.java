@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.jayway.awaitility.Awaitility;
 
-public class StopThreadTest {
+public class StopThreadManualTest {
 
     @Test
     public void whenStoppedThreadIsStopped() throws InterruptedException {
