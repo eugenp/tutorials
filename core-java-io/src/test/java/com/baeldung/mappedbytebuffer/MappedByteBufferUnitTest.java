@@ -14,6 +14,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 
 public class MappedByteBufferUnitTest {
@@ -36,7 +37,9 @@ public class MappedByteBufferUnitTest {
 
         //then
         assertNotNull(charBuffer);
-        assertEquals(charBuffer.toString(), "This is a content of the file");
+        String actual = charBuffer.toString().trim();
+        String expected = new String("This is a content of the file");
+        assertTrue(actual.equals(expected));
     }
 
     @Test
