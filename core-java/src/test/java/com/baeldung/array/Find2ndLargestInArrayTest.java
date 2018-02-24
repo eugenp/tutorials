@@ -3,9 +3,6 @@ package com.baeldung.array;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- * Created by Raghav Jha on 24/02/18 at 8:31 PM.
- */
 public class Find2ndLargestInArrayTest {
     @Test
     public void whenGivenAnIntArrayFindAn2ndLargestElement() {
