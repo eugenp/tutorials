@@ -49,7 +49,7 @@ class JsonParserTest extends Specification {
             def json = jsonParser.toJson(account)
         then:
             json
-            json == '{"value":15.6,"createdAt":"2018-01-01T02:00:00+0000","id":"123"}'
+            json == '{"value":15.6,"createdAt":"2018-01-01T00:00:00+0000","id":"123"}'
     }
 
     def 'Should parse to Json given an Account object, a date format and fields to exclude' () {
