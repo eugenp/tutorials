@@ -21,8 +21,7 @@ public class WebSecurityConfigurer
     @Override
     protected void configure(HttpSecurity http)
         throws Exception {
-        http.
-            authorizeRequests()
+        http.authorizeRequests()
             .antMatchers("/login**").permitAll()
             .anyRequest().authenticated()
             .and().csrf()
@@ -32,7 +31,8 @@ public class WebSecurityConfigurer
     @Override
     protected void configure(
         AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+        auth
+            .inMemoryAuthentication()
             .withUser("user").password("user")
             .roles("USER")
             .and()
