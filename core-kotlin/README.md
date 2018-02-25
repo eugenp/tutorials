@@ -17,4 +17,4 @@
 - [Sealed Classes in Kotlin](http://www.baeldung.com/kotlin-sealed-classes)
 - [JUnit 5 for Kotlin Developers](http://www.baeldung.com/junit-5-kotlin)
 - [Extension Methods in Kotlin](http://www.baeldung.com/kotlin-extension-methods)
-
+- [Infix Functions in Kotlin](http://www.baeldung.com/kotlin-infix-functions)

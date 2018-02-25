@@ -54,7 +54,6 @@
             <version>2.4.0</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
@@ -126,5 +125,5 @@
         <junit.vintage.version>4.12.0</junit.vintage.version>
         <junit4.version>4.12</junit4.version>
     </properties>
-
 </project>
+

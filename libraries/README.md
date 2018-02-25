@@ -59,6 +59,7 @@
 - [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
 - [Guide to google-http-client](http://www.baeldung.com/google-http-client)
 - [Interact with Google Sheets from Java](http://www.baeldung.com/google-sheets-java-client)
+- [Programatically Create, Configure, and Run a Tomcat Server] (http://www.baeldung.com/tomcat-programmatic-setup)
 
 
 
