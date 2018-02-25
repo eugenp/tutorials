@@ -8,26 +8,26 @@ import org.junit.Test;
 public class JerseyClientTest {
 
     private static int HTTP_OK = 200;
-    
+
     @Test
-    public void getHelloGreetingTest() {
+    public void givenGreetingResource_whenCallingHelloGreeting_thenHelloReturned() {
         String response = JerseyClient.getHelloGreeting();
-        
+
         Assert.assertEquals("hello", response);
     }
-    
+
     @Test
-    public void getHiGreetingTest() {
+    public void givenGreetingResource_whenCallingHiGreeting_thenHiReturned() {
         String response = JerseyClient.getHiGreeting();
-        
+
         Assert.assertEquals("hi", response);
     }
-    
+
     @Test
-    public void getCustomGreetingTest() {
+    public void givenGreetingResource_whenCallingCustomGreeting_thenCustomGreetingReturned() {
         Response response = JerseyClient.getCustomGreeting();
         
         Assert.assertEquals(HTTP_OK, response.getStatus());
     }
-    
+
 }

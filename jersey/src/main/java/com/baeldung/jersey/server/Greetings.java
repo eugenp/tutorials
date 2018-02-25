@@ -3,6 +3,8 @@ package com.baeldung.jersey.server;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.baeldung.jersey.server.config.HelloBinding;
 
@@ -23,7 +25,8 @@ public class Greetings {
 
     @POST
     @Path("/custom")
-    public String getCustomGreeting(String name) {
-        return "hello " + name;
+    public Response getCustomGreeting(String name) {
+        return Response.status(Status.OK.getStatusCode())
+            .build();
     }
 }
