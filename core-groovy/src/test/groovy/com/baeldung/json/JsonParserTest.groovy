@@ -26,7 +26,7 @@ class JsonParserTest extends Specification {
 
     def 'Should parse to Account given Json String with date property' () {
         given:
-            def json = '{"id":"1234","value":15.6,"createdAt":"2018-01-01T02:00:00+0000"}'
+            def json = '{"id":"1234","value":15.6,"createdAt":"2018-01-01T00:00:00+0000"}'
         when:
             def account = jsonParser.toObjectWithIndexOverlay(json)
         then:
