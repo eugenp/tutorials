@@ -11,7 +11,7 @@ public class CalculationConstructorInjection {
         this.calculation = calculation;
     }
 
-	 public Integer format(int nmbr) {
-	    return calculation.multipleWithTen(nmbr);
+	 public Integer calculate(int nmbr) {
+	    return calculation.multipleWithSameNumber(nmbr);
 	} 
 }

@@ -1,15 +1,13 @@
 package com.baeldung.diffbeaninjectiontypes;
 
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CalculationPropertyInjection {
 	
+	@Autowired
 	private Calculation calculation;
-	
-    public CalculationPropertyInjection(Calculation calculation) {
-        this.calculation = calculation;
-    }
 
-	 public Integer format(int nmbr) {
-	    return calculation.multipleWithTen(nmbr);
+	 public Integer calculate(int nmbr) {
+	    return calculation.multipleWithSameNumber(nmbr);
 	} 
 }

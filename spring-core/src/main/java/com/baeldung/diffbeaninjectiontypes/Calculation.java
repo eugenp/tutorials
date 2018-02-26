@@ -2,8 +2,8 @@ package com.baeldung.diffbeaninjectiontypes;
 
 public class Calculation {
 	
-	public Integer multipleWithTen (int baseNumber) {
-		return baseNumber * 10;
+	public Integer multipleWithSameNumber (int baseNumber) {
+		return baseNumber * baseNumber;
 	}
 
 }
