@@ -2,7 +2,7 @@ package org.baeldung.persistence.repository;
 
 import org.baeldung.config.StudentJpaConfig;
 import org.baeldung.inmemory.persistence.dao.StudentRepository;
-import org.baeldung.inmemory.persistence.model.*;
+import org.baeldung.inmemory.persistence.model.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -78,7 +78,5 @@ public class InMemoryDBIntegrationTest {
         Student student2 = studentRepository.retrieveByNameFilterByTag("John", "full time").get(0);
         assertEquals("name incorrect", NAME, student2.getName());
     }
-
-
 
 }
