@@ -4,8 +4,8 @@
           "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 <module name="Checker">
 	<module name="TreeWalker">
-		<module name="AvoidStarImport" />
-		<module name="ConstantName"/>
-		<module name="EmptyBlock" />
+		<module name="AvoidStarImport">
+            <property name="severity" value="warning" />
+        </module>
 	</module>
 </module>
