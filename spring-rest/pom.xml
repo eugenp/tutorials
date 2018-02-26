@@ -334,18 +334,5 @@
 		
 		<pact.version>3.5.11</pact.version>
 	</properties>
-	
-<reporting>
-    <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>3.0.0</version>
-            <configuration>
-                <configLocation>checkstyle.xml</configLocation>
-            </configuration>
-        </plugin>
-    </plugins>
-</reporting>
 
 </project>
