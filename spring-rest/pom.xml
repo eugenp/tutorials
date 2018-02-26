@@ -325,7 +325,8 @@
 		<!-- Maven plugins -->
 		<cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
 		<findbugs-maven-plugin.version>3.0.4</findbugs-maven-plugin.version>
-
+		<checkstyle-maven-plugin.version>3.0.0</checkstyle-maven-plugin.version>
+		<dependency.locations.enabled>false</dependency.locations.enabled>
 		<!-- okhttp -->
 		<com.squareup.okhttp3.version>3.4.1</com.squareup.okhttp3.version>
 
@@ -333,5 +334,18 @@
 		
 		<pact.version>3.5.11</pact.version>
 	</properties>
+	
+<reporting>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+                <configLocation>checkstyle.xml</configLocation>
+            </configuration>
+        </plugin>
+    </plugins>
+</reporting>
 
 </project>
