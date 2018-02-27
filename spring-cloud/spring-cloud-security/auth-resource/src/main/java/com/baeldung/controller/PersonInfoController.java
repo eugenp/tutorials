@@ -10,7 +10,7 @@ import com.baeldung.model.Person;
 @RestController
 public class PersonInfoController {
 
-    @GetMapping("/personResource")
+    @GetMapping("/person")
     @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public @ResponseBody Person personInfo() {
         return new Person("abir", "Dhaka", "Bangladesh", 29, "Male");
