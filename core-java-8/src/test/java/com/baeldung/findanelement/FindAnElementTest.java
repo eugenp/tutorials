@@ -8,110 +8,109 @@ import org.junit.Test;
 
 public class FindAnElementTest {
 
-	private static List<Integer> listOfIntegers = new ArrayList<>();
-	static {
-		listOfIntegers.add(new Integer(0));
-		listOfIntegers.add(new Integer(1));
-		listOfIntegers.add(new Integer(2));
-	}
-	
-	private static FindElementInAList<Integer> findElementInAList = new FindElementInAList<>();
+    private static List<Integer> scores = new ArrayList<>();
+    static {
+        scores.add(new Integer(0));
+        scores.add(new Integer(1));
+        scores.add(new Integer(2));
+    }
 
-	@Test
-	public void givenElement_whenFoundUsingIndexOf_thenReturnElement() {
-		Integer element = new Integer(1);
-		Integer foundElement = findElementInAList.findUsingIndexOf(element, listOfIntegers);
-		assertTrue(foundElement.equals(element));
-	}
-	
-	@Test
-	public void givenElement_whenNotFoundUsingIndexOf_thenReturnNull() {
-		Integer foundElement = findElementInAList.findUsingIndexOf(new Integer(5), listOfIntegers);
-		assertNull(foundElement);
-	}
-	
-	@Test
-	public void givenElement_whenFoundUsingNormalForLoop_thenReturnElement() {
-		Integer element = new Integer(1);
-		Integer foundElement = findElementInAList.findUsingNormalForLoop(element, listOfIntegers);
-		assertTrue(foundElement.equals(element));
-	}
-	
-	@Test
-	public void givenElement_whenNotFoundUsingNormalForLoop_thenReturnNull() {
-		Integer element = new Integer(5);
-		Integer foundElement = findElementInAList.findUsingNormalForLoop(element, listOfIntegers);
-		assertNull(foundElement);
-	}
-	
-	@Test
-	public void givenElement_whenFoundUsingEnhancedForLoop_thenReturnElement() {
-		Integer element = new Integer(1);
-		Integer foundElement = findElementInAList.findUsingEnhancedForLoop(element, listOfIntegers);
-		assertTrue(foundElement.equals(element));
-	}
-	
-	@Test
-	public void givenElement_whenNotFoundUsingEnhancedForLoop_thenReturnNull() {
-		Integer element = new Integer(5);
-		Integer foundElement = findElementInAList.findUsingEnhancedForLoop(element, listOfIntegers);
-		assertNull(foundElement);
-	}
-	
-	@Test
-	public void givenElement_whenFoundUsingStream_thenReturnElement() {
-		Integer element = new Integer(1);
-		Integer foundElement = findElementInAList.findUsingStream(element, listOfIntegers);
-		assertTrue(foundElement.equals(element));
-	}
-	
-	@Test
-	public void givenElement_whenNotFoundUsingStream_thenReturnNull() {
-		Integer element = new Integer(5);
-		Integer foundElement = findElementInAList.findUsingStream(element, listOfIntegers);
-		assertNull(foundElement);
-	}
-	
-	@Test
-	public void givenElement_whenFoundUsingParallelStream_thenReturnElement() {
-		Integer element = new Integer(1);
-		Integer foundElement = findElementInAList.findUsingParallelStream(element, listOfIntegers);
-		assertTrue(foundElement.equals(element));
-	}
-	
-	@Test
-	public void givenElement_whenNotFoundUsingParallelStream_thenReturnNull() {
-		Integer element = new Integer(5);
-		Integer foundElement = findElementInAList.findUsingParallelStream(element, listOfIntegers);
-		assertNull(foundElement);
-	}
-	
-	@Test
-	public void givenElement_whenFoundUsingGuava_thenReturnElement() {
-		Integer element = new Integer(1);
-		Integer foundElement = findElementInAList.findUsingGuava(element, listOfIntegers);
-		assertTrue(foundElement.equals(element));
-	}
-	
-	@Test
-	public void givenElement_whenNotFoundUsingGuava_thenReturnNull() {
-		Integer element = new Integer(5);
-		Integer foundElement = findElementInAList.findUsingGuava(element, listOfIntegers);
-		assertNull(foundElement);
-	}
-	
-	@Test
-	public void givenElement_whenFoundUsingApacheCommons_thenReturnElement() {
-		Integer element = new Integer(1);
-		Integer foundElement = findElementInAList.findUsingApacheCommon(element, listOfIntegers);
-		assertTrue(foundElement.equals(element));
-	}
-	
-	@Test
-	public void givenElement_whenNotFoundUsingApacheCommons_thenReturnNull() {
-		Integer element = new Integer(5);
-		Integer foundElement = findElementInAList.findUsingApacheCommon(element, listOfIntegers);
-		assertNull(foundElement);
-	}
+    private static FindElementInAList<Integer> findElementInAList = new FindElementInAList<>();
+
+    @Test
+    public void givenElement_whenFoundUsingIndexOf_thenReturnElement() {
+        Integer scoreToFind = new Integer(1);
+        Integer score = findElementInAList.findUsingIndexOf(scoreToFind, scores);
+        assertTrue(score.equals(scoreToFind));
+    }
+
+    @Test
+    public void givenElement_whenNotFoundUsingListIterator_thenReturnNull() {
+        Integer score = findElementInAList.findUsingListIterator(new Integer(5), scores);
+        assertNull(score);
+    }
+    
+    @Test
+    public void givenElement_whenFoundListIterator_thenReturnElement() {
+        Integer scoreToFind = new Integer(1);
+        Integer score = findElementInAList.findUsingListIterator(scoreToFind, scores);
+        assertTrue(score.equals(scoreToFind));
+    }
+
+    @Test
+    public void givenElement_whenNotFoundUsingIndexOf_thenReturnNull() {
+        Integer score = findElementInAList.findUsingIndexOf(new Integer(5), scores);
+        assertNull(score);
+    }
+
+    @Test
+    public void givenElement_whenFoundUsingEnhancedForLoop_thenReturnElement() {
+        Integer scoreToFind = new Integer(1);
+        Integer score = findElementInAList.findUsingEnhancedForLoop(scoreToFind, scores);
+        assertTrue(score.equals(scoreToFind));
+    }
+
+    @Test
+    public void givenElement_whenNotFoundUsingEnhancedForLoop_thenReturnNull() {
+        Integer scoreToFind = new Integer(5);
+        Integer score = findElementInAList.findUsingEnhancedForLoop(scoreToFind, scores);
+        assertNull(score);
+    }
+
+    @Test
+    public void givenElement_whenFoundUsingStream_thenReturnElement() {
+        Integer scoreToFind = new Integer(1);
+        Integer score = findElementInAList.findUsingStream(scoreToFind, scores);
+        assertTrue(score.equals(scoreToFind));
+    }
+
+    @Test
+    public void givenElement_whenNotFoundUsingStream_thenReturnNull() {
+        Integer scoreToFind = new Integer(5);
+        Integer score = findElementInAList.findUsingStream(scoreToFind, scores);
+        assertNull(score);
+    }
+
+    @Test
+    public void givenElement_whenFoundUsingParallelStream_thenReturnElement() {
+        Integer scoreToFind = new Integer(1);
+        Integer score = findElementInAList.findUsingParallelStream(scoreToFind, scores);
+        assertTrue(score.equals(scoreToFind));
+    }
+
+    @Test
+    public void givenElement_whenNotFoundUsingParallelStream_thenReturnNull() {
+        Integer scoreToFind = new Integer(5);
+        Integer score = findElementInAList.findUsingParallelStream(scoreToFind, scores);
+        assertNull(score);
+    }
+
+    @Test
+    public void givenElement_whenFoundUsingGuava_thenReturnElement() {
+        Integer scoreToFind = new Integer(1);
+        Integer score = findElementInAList.findUsingGuava(scoreToFind, scores);
+        assertTrue(score.equals(scoreToFind));
+    }
+
+    @Test
+    public void givenElement_whenNotFoundUsingGuava_thenReturnNull() {
+        Integer scoreToFind = new Integer(5);
+        Integer score = findElementInAList.findUsingGuava(scoreToFind, scores);
+        assertNull(score);
+    }
+
+    @Test
+    public void givenElement_whenFoundUsingApacheCommons_thenReturnElement() {
+        Integer scoreToFind = new Integer(1);
+        Integer score = findElementInAList.findUsingApacheCommon(scoreToFind, scores);
+        assertTrue(score.equals(scoreToFind));
+    }
+
+    @Test
+    public void givenElement_whenNotFoundUsingApacheCommons_thenReturnNull() {
+        Integer scoreToFind = new Integer(5);
+        Integer score = findElementInAList.findUsingApacheCommon(scoreToFind, scores);
+        assertNull(score);
+    }
 
 }
