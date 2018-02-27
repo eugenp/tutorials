@@ -3,8 +3,10 @@ package com.baeldung.jersey.client;
 import javax.ws.rs.core.Response;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class JerseyClientTest {
 
     private static int HTTP_OK = 200;
