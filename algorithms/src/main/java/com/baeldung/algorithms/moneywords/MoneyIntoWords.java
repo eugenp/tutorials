@@ -73,22 +73,19 @@ public class MoneyIntoWords {
         // Get the number of billions from the format: XXXnnnnnnnnn
         int billions = Integer.parseInt(stringNumber.substring(0, 3));
 
-        // Get the number of millions from the format: nnnXXXnnnnnn
+        // nnnXXXnnnnnn
         int millions = Integer.parseInt(stringNumber.substring(3, 6));
 
-        // Get the number of hundred of thousands from the format: // nnnnnnXXXnnn
+        // nnnnnnXXXnnn
         int hundredThousands = Integer.parseInt(stringNumber.substring(6, 9));
 
-        // Get the number of thousands from the format: // nnnnnnnnnXXX
+        //  nnnnnnnnnXXX
         int thousands = Integer.parseInt(stringNumber.substring(9, 12));
 
-        // We are adding billion term where needed
         String formattedBillions = formatExpression(billions, "billion");
 
-        // We are adding million term where needed
         String formattedMillions = formatExpression(millions, "million");
 
-        // We are adding thousand term where needed
         String formattedHundredThousand = formatExpression(hundredThousands, "thousand");
 
         String tradThousand = convertLessThanOneThousand(thousands);
@@ -119,7 +116,6 @@ public class MoneyIntoWords {
 
     private String convertLessThanOneThousand(int number) {
         String result;
-        // If the number given divided by 100 is greater than 20, then we need to
         if (number % 100 >= 20) {
             // get the number of ones as words
             result = ones[number % 10];
@@ -136,7 +132,6 @@ public class MoneyIntoWords {
             number /= 100;
         }
         if (number == 0) {
-            // return the result if number given is zero
             return result;
         }
         // return the number of hundreds
