@@ -14,6 +14,58 @@ import java.util.List;
 import org.junit.Test;
 
 public class CustomListUnitTest {
+     @Test
+     public void givenEmptyList_whenIsEmpty_thenTrueIsReturned() {
+         List<Object> list = new CustomList<>();
+    
+         assertTrue(list.isEmpty());
+     }
+     
+     @Test
+     public void givenNonEmptyList_whenIsEmpty_thenFalseIsReturned() {
+         List<Object> list = new CustomList<>();
+         list.add(null);
+      
+         assertFalse(list.isEmpty());
+     }
+     
+     @Test
+     public void givenListWithAnElement_whenSize_thenOneIsReturned() {
+         List<Object> list = new CustomList<>();
+         list.add(null);
+      
+         assertEquals(1, list.size());
+     }
+     
+     @Test
+     public void givenListWithAnElement_whenGet_thenThatElementIsReturned() {
+         List<Object> list = new CustomList<>();
+         list.add("baeldung");
+         Object element = list.get(0);
+      
+         assertEquals("baeldung", element);
+     }
+     
+     @Test
+     public void givenEmptyList_whenElementIsAdded_thenGetReturnsThatElement() {
+         List<Object> list = new CustomList<>();
+         boolean succeeded = list.add(null);
+      
+         assertTrue(succeeded);
+     }
+     
+     @Test
+     public void givenListWithAnElement_whenAnotherIsAdded_thenGetReturnsBoth() {
+         List<Object> list = new CustomList<>();
+         list.add("baeldung");
+         list.add(".com");
+         Object element1 = list.get(0);
+         Object element2 = list.get(1);
+
+         assertEquals("baeldung", element1);
+         assertEquals(".com", element2);
+     }
+    
     @Test(expected = UnsupportedOperationException.class)
     public void whenAddToSpecifiedIndex_thenExceptionIsThrown() {
         new CustomList<>().add(0, null);
@@ -62,44 +114,6 @@ public class CustomListUnitTest {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         list.retainAll(collection);
-    }
-
-    @Test
-    public void givenEmptyList_whenSize_thenZeroIsReturned() {
-        List<Object> list = new CustomList<>();
-
-        assertEquals(0, list.size());
-    }
-
-    @Test
-    public void givenEmptyList_whenIsEmpty_thenTrueIsReturned() {
-        List<Object> list = new CustomList<>();
-
-        assertTrue(list.isEmpty());
-    }
-
-    @Test
-    public void givenEmptyList_whenElementIsAdded_thenGetReturnsThatElement() {
-        List<Object> list = new CustomList<>();
-        boolean succeeded = list.add("baeldung");
-        Object element = list.get(0);
-
-        assertTrue(succeeded);
-        assertEquals("baeldung", element);
-    }
-
-    @Test
-    public void givenListWithAnElement_whenAnotherIsAdded_thenGetReturnsBoth() {
-        List<Object> list = new CustomList<>();
-        boolean succeeded1 = list.add("baeldung");
-        boolean succeeded2 = list.add(".com");
-        Object element1 = list.get(0);
-        Object element2 = list.get(1);
-
-        assertTrue(succeeded1);
-        assertTrue(succeeded2);
-        assertEquals("baeldung", element1);
-        assertEquals(".com", element2);
     }
 
     @Test
@@ -271,7 +285,7 @@ public class CustomListUnitTest {
     }
 
     @Test
-    public void whenIteratorNextIsCalledTwice_thenTheSecondReturnsFalse() {
+    public void whenIteratorHasNextIsCalledTwice_thenTheSecondReturnsFalse() {
         List<Object> list = new CustomList<>();
         list.add("baeldung");
         Iterator<Object> iterator = list.iterator();
