@@ -1,6 +1,6 @@
 package com.baeldung.controller;
 
-import java.io.IOException;
+import com.baeldung.service.StudentService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,23 +8,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-import com.baeldung.service.StudentService;
-
-/**
- * 
- * @author haseeb
- *
- */
 @WebServlet(name = "StudentServlet", urlPatterns = "/student-record")
 public class StudentServlet extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        StudentService studentService = new StudentService();
+    private final StudentService studentService = new StudentService();
+
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String studentID = request.getParameter("id");
         if (studentID != null) {
             int id = Integer.parseInt(studentID);
-            request.setAttribute("studentRecord", studentService.getStudent(id));
+            studentService.getStudent(id)
+              .ifPresent(s -> request.setAttribute("studentRecord", s));
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/student-record.jsp");

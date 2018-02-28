@@ -20,8 +20,7 @@ public class CacheConfiguration {
     public static final String TRANSACTIONAL_CACHE = "transactional-cache";
 
     public DefaultCacheManager cacheManager() {
-        DefaultCacheManager cacheManager = new DefaultCacheManager();
-        return cacheManager;
+        return new DefaultCacheManager();
     }
 
     public Cache<String, Integer> transactionalCache(DefaultCacheManager cacheManager, CacheListener listener) {
