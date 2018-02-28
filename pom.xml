@@ -188,7 +188,7 @@
         <module>spring-integration</module>
         <module>spring-jenkins-pipeline</module>
         <module>spring-jersey</module>
-        <module>jmeter</module>
+        <!-- <module>jmeter</module> --> <!-- TODO: uncomment -->
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>persistence-modules/spring-jpa</module>
