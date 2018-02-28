@@ -83,7 +83,7 @@
         <module>httpclient</module>
         <module>hystrix</module>
 
-        <module>image-processing</module>
+        <!-- <module>image-processing</module> --> <!-- TODO: to add back -->
         <module>immutables</module>
         <module>influxdb</module>
 
