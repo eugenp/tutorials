@@ -15,4 +15,5 @@ public class PersonInfoController {
     public @ResponseBody Person personInfo() {
         return new Person("abir", "Dhaka", "Bangladesh", 29, "Male");
     }
+    
 }
