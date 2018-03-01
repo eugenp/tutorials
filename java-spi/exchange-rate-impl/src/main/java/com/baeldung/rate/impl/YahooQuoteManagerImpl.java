@@ -2,15 +2,21 @@ package com.baeldung.rate.impl;
 
 import com.baeldung.rate.api.Quote;
 import com.baeldung.rate.api.QuoteManager;
-import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import yahoofinance.YahooFinance;
+import yahoofinance.quotes.fx.FxQuote;
+import yahoofinance.quotes.fx.FxSymbols;
 
+import javax.json.bind.JsonbBuilder;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.time.LocalDate;
-import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
+import java.util.Map;
 
 public class YahooQuoteManagerImpl implements QuoteManager {
 
@@ -19,24 +25,34 @@ public class YahooQuoteManagerImpl implements QuoteManager {
 
     @Override
     public List<Quote> getQuotes(String baseCurrency, LocalDate date) {
-        List<Quote> quotes = new ArrayList<>();
 
-        String response = doGetRequest();
+        StringBuilder sb = new StringBuilder();
+        Currency.getAvailableCurrencies().forEach(currency -> {
+            if (!currency.equals(currency.getCurrencyCode())) {
+                sb.append(baseCurrency).append(currency.getCurrencyCode()).append("=X").append(",");
+            }
+        });
+
+        String value = "";
+        try {
+            value = URLEncoder.encode(sb.toString().substring(0, sb.toString().length() - 1), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String queryString = String.format("%s=%s", "symbols", value);
+        String response = doGetRequest(queryString);
         System.out.println(response);
         return map(response);
     }
 
     private List<Quote> map(String response) {
-        return new ArrayList<>();
+        QuoteResponseWrapper qrw = JsonbBuilder.create().fromJson(response, QuoteResponseWrapper.class);
+        return qrw.getQuoteResponse().getResult();
     }
 
-    String doGetRequest() {
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(URL_PROVIDER).newBuilder();
-        //urlBuilder.addQueryParameter("v", "1.0");
-        urlBuilder.addQueryParameter("symbols", "madusd=x");
-        urlBuilder.addQueryParameter("symbols", "USDEUR=x");
+    String doGetRequest(String queryString) {
+        String fullUrl = URL_PROVIDER + "?" + queryString;
 
-        String fullUrl = urlBuilder.build().toString();
         System.out.println(fullUrl);
         Request request = new Request.Builder()
                 .url(fullUrl)
