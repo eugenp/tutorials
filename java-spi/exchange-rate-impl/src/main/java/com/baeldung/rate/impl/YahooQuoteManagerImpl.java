@@ -5,9 +5,6 @@ import com.baeldung.rate.api.QuoteManager;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import yahoofinance.YahooFinance;
-import yahoofinance.quotes.fx.FxQuote;
-import yahoofinance.quotes.fx.FxSymbols;
 
 import javax.json.bind.JsonbBuilder;
 import java.io.IOException;
@@ -16,7 +13,6 @@ import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.util.Currency;
 import java.util.List;
-import java.util.Map;
 
 public class YahooQuoteManagerImpl implements QuoteManager {
 
