@@ -40,15 +40,15 @@ public class BacktrackingAlgorithm {
     }
 
     private boolean solve(int[][] board) {
-        for (int r = BOARD_START_INDEX; r < BOARD_SIZE; r++) {
-            for (int c = BOARD_START_INDEX; c < BOARD_SIZE; c++) {
-                if (board[r][c] == NO_VALUE) {
+        for (int row = BOARD_START_INDEX; row < BOARD_SIZE; row++) {
+            for (int column = BOARD_START_INDEX; column < BOARD_SIZE; column++) {
+                if (board[row][column] == NO_VALUE) {
                     for (int k = MIN_VALUE; k <= MAX_VALUE; k++) {
-                        board[r][c] = k;
-                        if (isValid(board, r, c) && solve(board)) {
+                        board[row][column] = k;
+                        if (isValid(board, row, column) && solve(board)) {
                             return true;
                         }
-                        board[r][c] = NO_VALUE;
+                        board[row][column] = NO_VALUE;
                     }
                     return false;
                 }
@@ -57,44 +57,44 @@ public class BacktrackingAlgorithm {
         return true;
     }
 
-    private boolean isValid(int[][] board, int r, int c) {
-        return rowConstraint(board, r) &&
-          columnConstraint(board, c) &&
-          subsectionConstraint(board, r, c);
+    private boolean isValid(int[][] board, int row, int column) {
+        return rowConstraint(board, row) &&
+          columnConstraint(board, column) &&
+          subsectionConstraint(board, row, column);
     }
 
-    private boolean subsectionConstraint(int[][] board, int r, int c) {
+    private boolean subsectionConstraint(int[][] board, int row, int column) {
         boolean[] constraint = new boolean[BOARD_SIZE];
-        int subsectionRowStart = (r / SUBSECTION_SIZE) * SUBSECTION_SIZE;
+        int subsectionRowStart = (row / SUBSECTION_SIZE) * SUBSECTION_SIZE;
         int subsectionRowEnd = subsectionRowStart + SUBSECTION_SIZE;
 
-        int subsectionColumnStart = (c / SUBSECTION_SIZE) * SUBSECTION_SIZE;
+        int subsectionColumnStart = (column / SUBSECTION_SIZE) * SUBSECTION_SIZE;
         int subsectionColumnEnd = subsectionColumnStart + SUBSECTION_SIZE;
 
-        for (int i = subsectionRowStart; i < subsectionRowEnd; i++) {
-            for (int j = subsectionColumnStart; j < subsectionColumnEnd; j++) {
-                if (!checkConstraint(board, i, constraint, j)) return false;
+        for (int r = subsectionRowStart; r < subsectionRowEnd; r++) {
+            for (int c = subsectionColumnStart; c < subsectionColumnEnd; c++) {
+                if (!checkConstraint(board, r, constraint, c)) return false;
             }
         }
         return true;
     }
 
-    private boolean columnConstraint(int[][] board, int c) {
+    private boolean columnConstraint(int[][] board, int column) {
         boolean[] constraint = new boolean[BOARD_SIZE];
         return IntStream.range(BOARD_START_INDEX, BOARD_SIZE)
-          .allMatch(i -> checkConstraint(board, i, constraint, c));
+          .allMatch(row -> checkConstraint(board, row, constraint, column));
     }
 
-    private boolean rowConstraint(int[][] board, int r) {
+    private boolean rowConstraint(int[][] board, int row) {
         boolean[] constraint = new boolean[BOARD_SIZE];
         return IntStream.range(BOARD_START_INDEX, BOARD_SIZE)
-          .allMatch(i -> checkConstraint(board, r, constraint, i));
+          .allMatch(column -> checkConstraint(board, row, constraint, column));
     }
 
-    private boolean checkConstraint(int[][] board, int r, boolean[] constraint, int c) {
-        if (board[r][c] != NO_VALUE) {
-            if (!constraint[board[r][c] - 1]) {
-                constraint[board[r][c] - 1] = true;
+    private boolean checkConstraint(int[][] board, int row, boolean[] constraint, int column) {
+        if (board[row][column] != NO_VALUE) {
+            if (!constraint[board[row][column] - 1]) {
+                constraint[board[row][column] - 1] = true;
             } else {
                 return false;
             }
