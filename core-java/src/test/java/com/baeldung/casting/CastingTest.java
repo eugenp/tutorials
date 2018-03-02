@@ -11,6 +11,7 @@ public class CastingTest {
     public void whenPrimitiveConverted_thenValueChanged() {
         double myDouble = 1.1;
         int myInt = (int) myDouble;
+
         assertNotEquals(myDouble, myInt);
     }
 
@@ -55,4 +56,15 @@ public class CastingTest {
         animals.add(new Dog());
         new AnimalFeeder().uncheckedFeed(animals);
     }
+
+    @Test
+    public void whenDowncastToCatWithCastMethod_thenMeowIsCalled() {
+        Animal animal = new Cat();
+        if (Cat.class.isInstance(animal)) {
+            Cat cat = Cat.class.cast(animal);
+            cat.meow();
+        }
+    }
+    
+ 
 }
