@@ -281,6 +281,7 @@
         <module>lucene</module>
 		<module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+        <module>apache-zookeeper</module>
     </modules>
 
     <dependencies>
