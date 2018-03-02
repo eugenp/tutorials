@@ -33,3 +33,60 @@ task execSecondTest {
     }
     println 'This will be executed during the configuration phase as well.'
 }
+
+task welcome {
+    doLast {
+        println 'Welcome on the Baeldung!'
+    }
+}
+
+task welcomeWithGroup {
+    group 'Sample category'
+    doLast {
+        println 'Welcome on the Baeldung!'
+    }
+}
+
+task welcomeWithGroupAndDescription {
+    group 'Sample category'
+    description 'Tasks which shows welcome message'
+    doLast {
+        println 'Welcome on the Baeldung!'
+    }
+}
+
+class PrintToolVersionTask extends DefaultTask {
+    String tool
+
+    @TaskAction
+    void printToolVersion() {
+        switch (tool) {
+            case 'java':
+                println System.getProperty("java.version")
+                break
+            case 'groovy':
+                println GroovySystem.version
+                break
+            default:
+                throw new IllegalArgumentException("Unknown tool")
+        }
+    }
+}
+
+task printJavaVersion(type : PrintToolVersionTask) {
+    tool 'java'
+}
+
+task printGroovyVersion(type : PrintToolVersionTask) {
+    tool 'groovy'
+}
+
+import com.baeldung.PrintToolVersionBuildSrcTask
+
+task printJavaVersionBuildSrc(type : PrintToolVersionBuildSrcTask) {
+    tool 'java'
+}
+
+task printGroovyVersionBuildSrc(type : PrintToolVersionBuildSrcTask) {
+    tool 'groovy'
+}
