@@ -40,3 +40,6 @@
 - [Efficient Word Frequency Calculator in Java](http://www.baeldung.com/java-word-frequency)
 - [Primitive Type Streams in Java 8](http://www.baeldung.com/java-8-primitive-streams)
 - [Fail-Safe Iterator vs Fail-Fast Iterator](http://www.baeldung.com/java-fail-safe-vs-fail-fast-iterator)
+- [Shuffling Collections In Java](http://www.baeldung.com/java-shuffle-collection)
+- [Java 8 StringJoiner](http://www.baeldung.com/java-string-joiner)
+- [Introduction to Spliterator in Java](http://www.baeldung.com/java-spliterator)

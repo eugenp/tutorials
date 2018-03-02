@@ -12,6 +12,7 @@ The "REST With Spring" Classes: http://github.learnspringsecurity.com
 - [Introduction to Spring MVC HandlerInterceptor](http://www.baeldung.com/spring-mvc-handlerinterceptor)
 - [Using a Custom Spring MVC’s Handler Interceptor to Manage Sessions](http://www.baeldung.com/spring-mvc-custom-handler-interceptor)
 - [A Guide to CSRF Protection in Spring Security](http://www.baeldung.com/spring-security-csrf)
+- [How to Manually Authenticate User with Spring Security](http://www.baeldung.com/manually-set-user-authentication-spring-security)
 
 ### Build the Project
 ```
