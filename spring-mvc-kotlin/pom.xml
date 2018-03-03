@@ -24,7 +24,6 @@
         <spring.version>4.3.10.RELEASE</spring.version>
         <thymeleaf.version>3.0.7.RELEASE</thymeleaf.version>
         <h2.version>1.4.196</h2.version>
-        <mysql.version>6.0.6</mysql.version>
     </properties>
 
     <dependencies>
@@ -77,11 +76,6 @@
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
         </dependency>
     </dependencies>
 
