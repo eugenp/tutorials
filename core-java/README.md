@@ -135,4 +135,4 @@
 - [A Guide to Iterator in Java](http://www.baeldung.com/java-iterator)
 - [The Trie Data Structure in Java](http://www.baeldung.com/trie-java)
 - [Introduction to Javadoc](http://www.baeldung.com/javadoc)
-
+- [Comparing Strings in Java](http://www.baeldung.com/java-compare-strings)
