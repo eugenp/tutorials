@@ -13,6 +13,7 @@
 
     <modules>
         <module>exchange-rate-api</module>
+	<module>exchange-rate-impl</module>
     </modules>
          
 </project>
