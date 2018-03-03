@@ -14,6 +14,7 @@
     <modules>
         <module>exchange-rate-api</module>
 	<module>exchange-rate-impl</module>
+	<module>exchange-rate-app</module>
     </modules>
          
 </project>
