@@ -47,8 +47,7 @@ public class UserRepositoryIntegrationTest {
         Optional<User> foundUser = userRepository.findOneByName(USER_NAME_ADAM);
 
         assertThat(foundUser.isPresent(), equalTo(true));
-        assertThat(foundUser.get()
-            .getName(), equalTo(USER_NAME_ADAM));
+        assertThat(foundUser.get().getName(), equalTo(USER_NAME_ADAM));
     }
 
     @Test
@@ -84,8 +83,7 @@ public class UserRepositoryIntegrationTest {
 
         CompletableFuture<User> userByStatus = userRepository.findOneByStatus(ACTIVE_STATUS);
 
-        assertThat(userByStatus.get()
-            .getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.get().getName(), equalTo(USER_NAME_ADAM));
 
     }
 
