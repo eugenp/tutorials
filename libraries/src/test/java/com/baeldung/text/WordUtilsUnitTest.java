@@ -4,7 +4,7 @@ import org.apache.commons.text.WordUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class WordUtilsTest {
+public class WordUtilsUnitTest {
 
     @Test
     public void whenCapitalized_thenCorrect() {
