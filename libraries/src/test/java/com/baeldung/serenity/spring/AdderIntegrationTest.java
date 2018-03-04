@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
 @ContextConfiguration(classes = { AdderController.class, AdderService.class })
-public class AdderTest extends SerenityStory {
+public class AdderIntegrationTest extends SerenityStory {
 
     @Autowired
     private AdderService adderService;

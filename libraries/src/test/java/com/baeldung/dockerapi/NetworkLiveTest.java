@@ -6,6 +6,7 @@ import com.github.dockerjava.api.model.Network;
 import com.github.dockerjava.api.model.Network.Ipam;
 import com.github.dockerjava.core.DockerClientBuilder;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class NetworkLiveTest {
     }
 
     @Test
+    @Ignore("temporarily")
     public void whenListingNetworks_thenSizeMustBeGreaterThanZero() {
 
         // when
