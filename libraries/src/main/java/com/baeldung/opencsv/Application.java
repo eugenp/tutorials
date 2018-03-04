@@ -54,7 +54,7 @@ public class Application {
     public static String oneByOneExample() {
         Reader reader = null;
         try {
-            reader = Files.newBufferedReader(Helpers.fileOutOnePath());
+            reader = Files.newBufferedReader(Helpers.twoColumnCsvPath());
         } catch (Exception ex) {
             Helpers.err(ex);
         }
@@ -64,7 +64,7 @@ public class Application {
     public static String readAllExample() {
         Reader reader = null;
         try {
-            reader = Files.newBufferedReader(Helpers.fileOutAllPath());
+            reader = Files.newBufferedReader(Helpers.twoColumnCsvPath());
         } catch (Exception ex) {
             Helpers.err(ex);
         }
