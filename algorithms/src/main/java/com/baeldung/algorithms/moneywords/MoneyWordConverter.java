@@ -1,3 +1,4 @@
+
 package com.baeldung.algorithms.moneywords;
 
 import java.math.BigDecimal;
@@ -5,7 +6,7 @@ import java.text.DecimalFormat;
 
 import pl.allegro.finance.tradukisto.MoneyConverters;
 
-public class MoneyIntoWords {
+public class MoneyWordConverter {
 
     private final String[] tens = { "", " ten", " twenty", " thirty", " forty", " fifty", " sixty", " seventy", " eighty", " ninety" };
 
@@ -79,7 +80,7 @@ public class MoneyIntoWords {
         // nnnnnnXXXnnn
         int hundredThousands = Integer.parseInt(stringNumber.substring(6, 9));
 
-        //  nnnnnnnnnXXX
+        // nnnnnnnnnXXX
         int thousands = Integer.parseInt(stringNumber.substring(9, 12));
 
         String formattedBillions = formatExpression(billions, "billion");
