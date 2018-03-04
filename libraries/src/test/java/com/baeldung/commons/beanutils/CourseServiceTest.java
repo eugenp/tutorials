@@ -10,8 +10,7 @@ import org.junit.Test;
 public class CourseServiceTest {
 
     @Test
-    public void givenCourse_whenSetValuesUsingPropertyUtil_thenReturnSetValues() 
-        throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void givenCourse_whenSetValuesUsingPropertyUtil_thenReturnSetValues() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         Course course = new Course();
         String name = "Computer Science";
         List<String> codes = Arrays.asList("CS", "CS01");
@@ -36,8 +35,7 @@ public class CourseServiceTest {
     }
 
     @Test
-    public void givenCopyProperties_whenCopyCourseToCourseEntity_thenCopyPropertyWithSameName()
-        throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    public void givenCopyProperties_whenCopyCourseToCourseEntity_thenCopyPropertyWithSameName() throws IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         Course course = new Course();
         course.setName("Computer Science");
         course.setCodes(Arrays.asList("CS"));

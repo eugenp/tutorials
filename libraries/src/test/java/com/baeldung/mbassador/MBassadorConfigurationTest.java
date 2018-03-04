@@ -25,8 +25,8 @@ public class MBassadorConfigurationTest implements IPublicationErrorHandler {
     @Before
     public void prepareTests() {
 
-      dispatcher = new MBassador<String>(this);
-      dispatcher.subscribe(this);
+        dispatcher = new MBassador<String>(this);
+        dispatcher.subscribe(this);
     }
 
     @Test

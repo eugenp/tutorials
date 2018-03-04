@@ -27,16 +27,8 @@ import static org.junit.Assert.assertTrue;
 
 public class MapUtilsTest {
 
-    private String[][] color2DArray = new String[][]{
-      {"RED", "#FF0000"},
-      {"GREEN", "#00FF00"},
-      {"BLUE", "#0000FF"}
-    };
-    private String[] color1DArray = new String[]{
-      "RED", "#FF0000",
-      "GREEN", "#00FF00",
-      "BLUE", "#0000FF"
-    };
+    private String[][] color2DArray = new String[][] { { "RED", "#FF0000" }, { "GREEN", "#00FF00" }, { "BLUE", "#0000FF" } };
+    private String[] color1DArray = new String[] { "RED", "#FF0000", "GREEN", "#00FF00", "BLUE", "#0000FF" };
     private Map<String, String> colorMap;
 
     @Before
@@ -92,34 +84,26 @@ public class MapUtilsTest {
         Map<String, String> invColorMap = MapUtils.invertMap(this.colorMap);
 
         int size = invColorMap.size();
-        Assertions.assertThat(invColorMap)
-                .hasSameSizeAs(colorMap)
-                .containsKeys(this.colorMap.values().toArray(new String[size]))
-                .containsValues(this.colorMap.keySet().toArray(new String[size]));
+        Assertions.assertThat(invColorMap).hasSameSizeAs(colorMap).containsKeys(this.colorMap.values().toArray(new String[size])).containsValues(this.colorMap.keySet().toArray(new String[size]));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void whenCreateFixedSizedMapAndAdd_thenMustThrowException() {
-        Map<String, String> rgbMap = MapUtils.fixedSizeMap(MapUtils.putAll(
-          new HashMap<String, String>(),
-          this.color1DArray));
+        Map<String, String> rgbMap = MapUtils.fixedSizeMap(MapUtils.putAll(new HashMap<String, String>(), this.color1DArray));
 
         rgbMap.put("ORANGE", "#FFA500");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void whenAddDuplicateToUniqueValuesPredicateMap_thenMustThrowException() {
-        Map<String, String> uniqValuesMap
-          = MapUtils.predicatedMap(this.colorMap, null, PredicateUtils.uniquePredicate());
+        Map<String, String> uniqValuesMap = MapUtils.predicatedMap(this.colorMap, null, PredicateUtils.uniquePredicate());
 
         uniqValuesMap.put("NEW_RED", "#FF0000");
     }
 
     @Test
     public void whenCreateLazyMap_theMapIsCreated() {
-        Map<Integer, String> intStrMap = MapUtils.lazyMap(
-          new HashMap<Integer, String>(),
-          TransformerUtils.stringValueTransformer());
+        Map<Integer, String> intStrMap = MapUtils.lazyMap(new HashMap<Integer, String>(), TransformerUtils.stringValueTransformer());
 
         assertThat(intStrMap, is(anEmptyMap()));
 

@@ -10,7 +10,7 @@ import javax.cache.spi.CachingProvider;
 
 import static org.junit.Assert.assertEquals;
 
-public class JCacheTest {
+public class JCacheIntegrationTest {
 
     @Test
     public void instantiateCache() {

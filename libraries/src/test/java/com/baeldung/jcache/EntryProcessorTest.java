@@ -29,8 +29,7 @@ public class EntryProcessorTest {
 
     @After
     public void tearDown() {
-        Caching.getCachingProvider()
-          .getCacheManager().destroyCache(CACHE_NAME);
+        Caching.getCachingProvider().getCacheManager().destroyCache(CACHE_NAME);
     }
 
     @Test

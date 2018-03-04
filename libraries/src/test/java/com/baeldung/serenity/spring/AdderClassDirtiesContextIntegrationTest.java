@@ -15,9 +15,7 @@ import static com.baeldung.serenity.spring.RandomNumberUtil.randomInt;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.AFTER_CLASS;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses({
-  AdderClassDirtiesContextIntegrationTest.DirtiesContextTest.class, AdderClassDirtiesContextIntegrationTest.AnotherDirtiesContextTest.class
-})
+@Suite.SuiteClasses({ AdderClassDirtiesContextIntegrationTest.DirtiesContextTest.class, AdderClassDirtiesContextIntegrationTest.AnotherDirtiesContextTest.class })
 public class AdderClassDirtiesContextIntegrationTest {
 
     @RunWith(SerenityRunner.class)
@@ -52,7 +50,7 @@ public class AdderClassDirtiesContextIntegrationTest {
 
         @Test
         public void givenNumber_whenAdd_thenSumWrong() {
-            super.whenAdd_thenSummedUp(); //expecting zero
+            super.whenAdd_thenSummedUp(); // expecting zero
             adderServiceSteps.givenBaseAndAdder(randomInt(), randomInt());
             super.whenAccumulate_thenSummedUp();
             super.whenAdd_thenSumWrong();
@@ -64,7 +62,7 @@ public class AdderClassDirtiesContextIntegrationTest {
 
         @Test
         public void givenNumber_whenAdd_thenSumWrong() {
-            super.whenAdd_thenSummedUp(); //expecting zero
+            super.whenAdd_thenSummedUp(); // expecting zero
             adderServiceSteps.givenBaseAndAdder(randomInt(), randomInt());
             super.whenAccumulate_thenSummedUp();
             super.whenAdd_thenSumWrong();

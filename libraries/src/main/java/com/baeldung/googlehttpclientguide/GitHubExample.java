@@ -21,30 +21,23 @@ import java.util.concurrent.Future;
 
 public class GitHubExample {
     static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
-    //static final HttpTransport HTTP_TRANSPORT = new ApacheHttpTransport();
+    // static final HttpTransport HTTP_TRANSPORT = new ApacheHttpTransport();
     static final JsonFactory JSON_FACTORY = new JacksonFactory();
-    //static final JsonFactory JSON_FACTORY = new GsonFactory();
+    // static final JsonFactory JSON_FACTORY = new GsonFactory();
 
     private static void run() throws Exception {
-        HttpRequestFactory requestFactory
-                = HTTP_TRANSPORT.createRequestFactory(
-                        (HttpRequest request) -> {
-                            request.setParser(new JsonObjectParser(JSON_FACTORY));
-                        });
+        HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory((HttpRequest request) -> {
+            request.setParser(new JsonObjectParser(JSON_FACTORY));
+        });
         GitHubUrl url = new GitHubUrl("https://api.github.com/users");
         url.per_page = 10;
         url.page = 1;
         HttpRequest request = requestFactory.buildGetRequest(url);
-        ExponentialBackOff backoff = new ExponentialBackOff.Builder()
-                .setInitialIntervalMillis(500)
-                .setMaxElapsedTimeMillis(900000)
-                .setMaxIntervalMillis(6000)
-                .setMultiplier(1.5)
-                .setRandomizationFactor(0.5)
-                .build();
+        ExponentialBackOff backoff = new ExponentialBackOff.Builder().setInitialIntervalMillis(500).setMaxElapsedTimeMillis(900000).setMaxIntervalMillis(6000).setMultiplier(1.5).setRandomizationFactor(0.5).build();
         request.setUnsuccessfulResponseHandler(new HttpBackOffUnsuccessfulResponseHandler(backoff));
-        Type type = new TypeToken<List<User>>() {}.getType();
-        List<User> users = (List<User>)request.execute().parseAs(type);
+        Type type = new TypeToken<List<User>>() {
+        }.getType();
+        List<User> users = (List<User>) request.execute().parseAs(type);
         System.out.println(users);
         url.appendRawPath("/eugenp");
         request = requestFactory.buildGetRequest(url);

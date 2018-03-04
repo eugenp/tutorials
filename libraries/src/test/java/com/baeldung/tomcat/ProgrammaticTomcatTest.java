@@ -13,7 +13,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.BlockJUnit4ClassRunner;
 
-
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -37,19 +36,13 @@ public class ProgrammaticTomcatTest {
 
     @Test
     public void givenTomcatStarted_whenAccessServlet_responseIsTestAndResponseHeaderIsSet() throws Exception {
-        CloseableHttpClient httpClient = HttpClientBuilder
-          .create()
-          .build();
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet getServlet = new HttpGet("http://localhost:8080/my-servlet");
 
         HttpResponse response = httpClient.execute(getServlet);
-        assertEquals(HttpStatus.SC_OK, response
-          .getStatusLine()
-          .getStatusCode());
+        assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
 
-        String myHeaderValue = response
-          .getFirstHeader("myHeader")
-          .getValue();
+        String myHeaderValue = response.getFirstHeader("myHeader").getValue();
         assertEquals("myHeaderValue", myHeaderValue);
 
         HttpEntity responseEntity = response.getEntity();

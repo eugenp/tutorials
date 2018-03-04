@@ -13,10 +13,9 @@ public class TransactionalServiceUnitTest extends ConfigurationTest {
         Thread backgroundThread = new Thread(backGroundJob);
         transactionalService.getQuickHowManyVisits();
         backgroundThread.start();
-        Thread.sleep(100); //lets wait our thread warm up
+        Thread.sleep(100); // lets wait our thread warm up
 
-        assertThat(timeThis(() -> transactionalService.getQuickHowManyVisits()))
-          .isGreaterThan(500).isLessThan(1000);
+        assertThat(timeThis(() -> transactionalService.getQuickHowManyVisits())).isGreaterThan(500).isLessThan(1000);
     }
 
 }
