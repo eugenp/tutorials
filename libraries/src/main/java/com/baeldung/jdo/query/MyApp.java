@@ -66,7 +66,6 @@ public class MyApp {
     }
 
     public static void queryUsingTypedJDOQL() {
-
         JDOQLTypedQuery<ProductItem> tq = pm.newJDOQLTypedQuery(ProductItem.class);
         QProductItem cand = QProductItem.candidate();
         tq = tq.filter(cand.price.lt(10).and(cand.name.startsWith("pro")));

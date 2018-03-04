@@ -1,7 +1,6 @@
 package com.baeldung.jdo.query;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.PersistenceAware;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;

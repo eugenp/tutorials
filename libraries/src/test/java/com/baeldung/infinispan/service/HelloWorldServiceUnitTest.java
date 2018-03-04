@@ -3,9 +3,6 @@ package com.baeldung.infinispan.service;
 import com.baeldung.infinispan.ConfigurationTest;
 import org.junit.Test;
 
-import java.util.concurrent.Callable;
-import java.util.function.Consumer;
-
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 public class HelloWorldServiceUnitTest extends ConfigurationTest {
