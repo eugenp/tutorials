@@ -17,7 +17,7 @@ public class InjectIntoPatternTest {
             Integer v = list.get(i);
             result = result + v.intValue();
         }
-        
+
         assertEquals(15, result);
     }
 }
