@@ -16,6 +16,16 @@
 		<constructor-arg ref="textFormatterBean" />
 	</bean>
 	
+	<bean id="articleFormatterWithSetterInjectionBean"
+		class="com.baeldung.dependencyinjectiontypes.spring.ArticleFormatterWithSetterInjection">
+		<property name="formatter" ref="textFormatterBean" />
+	</bean>
+	
+	<bean id="articleFormatterWithConstructorInjectionBean"
+		class="com.baeldung.dependencyinjectiontypes.spring.ArticleFormatterWithConstructorInjection">
+		<constructor-arg ref="textFormatterBean" />
+	</bean>
+	
 	
 	<bean id="textFormatterBean" class="com.baeldung.dependencyinjectiontypes.TextFormatter">
 	</bean>
