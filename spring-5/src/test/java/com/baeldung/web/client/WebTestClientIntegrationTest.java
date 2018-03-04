@@ -16,7 +16,7 @@ import reactor.core.publisher.Mono;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Spring5Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class WebTestClientTest {
+public class WebTestClientIntegrationTest {
 
     @LocalServerPort
     private int port;

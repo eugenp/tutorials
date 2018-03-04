@@ -23,7 +23,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
-public class UserRepositoryTest {
+public class UserRepositoryIntegrationTest {
 
     private final String USER_NAME_ADAM = "Adam";
     private final Integer ACTIVE_STATUS = 1;

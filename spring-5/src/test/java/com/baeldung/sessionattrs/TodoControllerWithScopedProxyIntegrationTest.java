@@ -25,7 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest
 @AutoConfigureMockMvc
 @Import(TestConfig.class)
-public class TodoControllerWithScopedProxyTest {
+public class TodoControllerWithScopedProxyIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;

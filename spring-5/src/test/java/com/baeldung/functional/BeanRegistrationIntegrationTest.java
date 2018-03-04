@@ -13,7 +13,7 @@ import com.baeldung.Spring5Application;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Spring5Application.class)
-public class BeanRegistrationTest {
+public class BeanRegistrationIntegrationTest {
 
     @Autowired
     private GenericWebApplicationContext context;
