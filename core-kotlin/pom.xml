@@ -76,7 +76,18 @@
             <artifactId>mockito-kotlin</artifactId>
             <version>${mockito-kotlin.version}</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
+        <dependency>
+            <groupId>com.github.salomonbrys.kodein</groupId>
+            <artifactId>kodein</artifactId>
+            <version>${kodein.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -189,11 +200,13 @@
         <kotlin-reflect.version>1.1.2</kotlin-reflect.version>
         <kotlinx.version>0.15</kotlinx.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
+        <kodein.version>4.1.0</kodein.version>
 
         <junit.jupiter.version>5.0.0</junit.jupiter.version>
         <junit.platform.version>1.0.0</junit.platform.version>
         <junit.vintage.version>4.12.0</junit.vintage.version>
         <junit4.version>4.12</junit4.version>
+        <assertj.version>3.9.1</assertj.version>
     </properties>
 
 </project>
