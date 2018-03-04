@@ -41,8 +41,8 @@ public class MappedByteBufferUnitTest {
     @Test
     public void givenPath_whenWriteToItUsingMappedByteBuffer_thenShouldSuccessfullyWrite() throws Exception {
         // given
-        CharBuffer charBuffer = CharBuffer.wrap("This will be written to the file");
-        Path pathToWrite = getFileURIFromResources("fileToWriteTo.txt");
+        final CharBuffer charBuffer = CharBuffer.wrap("This will be written to the file");
+        final Path pathToWrite = getFileURIFromResources("fileToWriteTo.txt");
 
         // when
         try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(pathToWrite, EnumSet.of(StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING))) {
@@ -54,13 +54,15 @@ public class MappedByteBufferUnitTest {
         }
 
         // then
-        List<String> fileContent = Files.readAllLines(pathToWrite);
+        final List<String> fileContent = Files.readAllLines(pathToWrite);
         assertEquals(fileContent.get(0), "This will be written to the file");
 
     }
 
-    private Path getFileURIFromResources(String fileName) throws Exception {
-        ClassLoader classLoader = getClass().getClassLoader();
+    //
+
+    private final Path getFileURIFromResources(String fileName) throws Exception {
+        final ClassLoader classLoader = getClass().getClassLoader();
         return Paths.get(classLoader.getResource(fileName).toURI());
     }
 }
