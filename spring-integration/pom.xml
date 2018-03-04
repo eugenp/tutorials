@@ -18,7 +18,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>5.0.1.RELEASE</spring.version>
+        <spring.version>5.0.3.RELEASE</spring.version>
         <spring-social.version>1.1.4.RELEASE</spring-social.version>
         <javax-mail.version>1.4.7</javax-mail.version>
         <javax-activation.version>1.1.1</javax-activation.version>
@@ -106,12 +106,6 @@
             <artifactId>spring-integration-file</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        
-		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-core</artifactId>
-		    <version>${spring.version}</version>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
