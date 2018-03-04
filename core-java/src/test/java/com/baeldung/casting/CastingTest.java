@@ -66,5 +66,15 @@ public class CastingTest {
         }
     }
     
- 
+    @Test
+    public void whenParameterCat_thenOnlyCatsFed() {
+        List<Animal> animals = new ArrayList<>();
+        animals.add(new Cat());
+        animals.add(new Dog());
+        AnimalFeederGeneric<Cat> catFeeder = new AnimalFeederGeneric<Cat>(Cat.class);
+        List<Cat> fedAnimals = catFeeder.feed(animals);
+
+        assertTrue(fedAnimals.size() == 1);
+        assertTrue(fedAnimals.get(0) instanceof Cat);
+    }
 }
