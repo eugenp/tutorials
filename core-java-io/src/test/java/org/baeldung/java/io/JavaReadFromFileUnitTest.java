@@ -111,6 +111,7 @@ public class JavaReadFromFileUnitTest {
         final String currentLine = reader.readLine();
         reader.close();
         LOG.debug(currentLine);
+        
         assertEquals(expected_value, currentLine);
     }
 
