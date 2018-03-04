@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-public class HelloWorldServiceUnitTest extends ConfigurationTest {
+public class HelloWorldServiceIntegrationTest extends ConfigurationTest {
 
     @Test
     public void whenGetIsCalledTwoTimes_thenTheSecondShouldHitTheCache() {
@@ -23,7 +23,6 @@ public class HelloWorldServiceUnitTest extends ConfigurationTest {
 
     @Test
     public void whenGetIsCalledTwoTimesSparsely_thenNeitherShouldHitTheCache() throws InterruptedException {
-
         assertThat(timeThis(() -> helloWorldService.findExpiringHelloWorld())).isGreaterThanOrEqualTo(1000);
 
         Thread.sleep(1100);
@@ -33,7 +32,6 @@ public class HelloWorldServiceUnitTest extends ConfigurationTest {
 
     @Test
     public void givenOneEntryIsConfigured_whenTwoAreAdded_thenFirstShouldntBeAvailable() {
-
         assertThat(timeThis(() -> helloWorldService.findEvictingHelloWorld("key 1"))).isGreaterThanOrEqualTo(1000);
 
         assertThat(timeThis(() -> helloWorldService.findEvictingHelloWorld("key 2"))).isGreaterThanOrEqualTo(1000);
@@ -43,13 +41,11 @@ public class HelloWorldServiceUnitTest extends ConfigurationTest {
 
     @Test
     public void givenOneEntryIsConfigured_whenTwoAreAdded_thenTheFirstShouldBeAvailable() {
-
         assertThat(timeThis(() -> helloWorldService.findPassivatingHelloWorld("key 1"))).isGreaterThanOrEqualTo(1000);
 
         assertThat(timeThis(() -> helloWorldService.findPassivatingHelloWorld("key 2"))).isGreaterThanOrEqualTo(1000);
 
         assertThat(timeThis(() -> helloWorldService.findPassivatingHelloWorld("key 1"))).isLessThan(100);
-
     }
 
 }

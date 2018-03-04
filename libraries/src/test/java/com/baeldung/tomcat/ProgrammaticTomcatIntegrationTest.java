@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNotNull;
  * Created by adi on 1/14/18.
  */
 @RunWith(BlockJUnit4ClassRunner.class)
-public class ProgrammaticTomcatTest {
+public class ProgrammaticTomcatIntegrationTest {
 
     private ProgrammaticTomcat tomcat = new ProgrammaticTomcat();
 

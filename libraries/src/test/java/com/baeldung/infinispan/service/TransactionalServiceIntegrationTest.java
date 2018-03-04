@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-public class TransactionalServiceUnitTest extends ConfigurationTest {
+public class TransactionalServiceIntegrationTest extends ConfigurationTest {
 
     @Test
     public void whenLockingAnEntry_thenItShouldBeInaccessible() throws InterruptedException {

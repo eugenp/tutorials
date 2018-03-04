@@ -12,7 +12,7 @@ import javax.cache.spi.CachingProvider;
 
 import static org.junit.Assert.assertEquals;
 
-public class EntryProcessorTest {
+public class EntryProcessorIntegrationTest {
 
     private static final String CACHE_NAME = "MyCache";
 
