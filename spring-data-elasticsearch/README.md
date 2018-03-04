@@ -5,6 +5,7 @@
 
 - [Elasticsearch Queries with Spring Data](http://www.baeldung.com/spring-data-elasticsearch-queries)
 - [Guide to Elasticsearch in Java](http://www.baeldung.com/elasticsearch-java)
+- [Geospatial Support in ElasticSearch](http://www.baeldung.com/elasticsearch-geo-spatial)
 
 ### Build the Project with Tests Running
 ```

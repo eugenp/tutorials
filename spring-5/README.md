@@ -12,4 +12,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring 5 Functional Bean Registration](http://www.baeldung.com/spring-5-functional-beans)
 - [The SpringJUnitConfig and SpringJUnitWebConfig Annotations in Spring 5](http://www.baeldung.com/spring-5-junit-config)
 - [Spring Security 5 for Reactive Applications](http://www.baeldung.com/spring-security-5-reactive)
-- [Spring 5 Testing with @EnabledIf Annotation](https://github.com/eugenp/tutorials/tree/master/spring-5)
+- [Spring 5 Testing with @EnabledIf Annotation](http://www.baeldung.com/sring-5-enabledif)
+- [Introduction to Spring REST Docs](http://www.baeldung.com/spring-rest-docs)
+- [Spring Security 5 – OAuth2 Login](http://www.baeldung.com/spring-security-5-oauth2-login)
