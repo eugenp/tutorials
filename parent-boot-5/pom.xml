@@ -21,7 +21,7 @@
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
-        <version>1.5.9.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
         <relativePath />
     </parent>
 
@@ -60,9 +60,6 @@
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
-                        <exclude>**/JdbcTest.java</exclude>
-                        <exclude>**/AutoconfigurationTest.java</exclude>     
-                        <exclude>**/*EntryPointsTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                 </configuration>
