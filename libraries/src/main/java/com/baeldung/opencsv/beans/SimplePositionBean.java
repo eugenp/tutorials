@@ -1,4 +1,4 @@
-package com.baeldung.opencsv.pojos;
+package com.baeldung.opencsv.beans;
 
 import com.opencsv.bean.CsvBindByPosition;
 

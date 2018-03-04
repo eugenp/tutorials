@@ -1,4 +1,4 @@
-package com.baeldung.opencsv.pojos;
+package com.baeldung.opencsv.beans;
 
 import com.opencsv.bean.CsvBindByName;
 
@@ -10,7 +10,6 @@ public class NamedColumnBean extends CsvBean {
     //Automatically infer column name as Age
     @CsvBindByName
     private int age;
-
 
     public String getName() {
         return name;

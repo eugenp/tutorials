@@ -1,5 +1,7 @@
 package com.baeldung.opencsv.pojos;
 
+import com.baeldung.opencsv.beans.CsvBean;
+
 import java.util.ArrayList;
 import java.util.List;
 

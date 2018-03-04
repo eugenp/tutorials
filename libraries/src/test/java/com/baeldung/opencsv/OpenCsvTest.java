@@ -1,46 +1,66 @@
 package com.baeldung.opencsv;
 
+import com.baeldung.opencsv.helpers.Helpers;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
 public class OpenCsvTest {
 
-    private Object testCsv(Object result) {
+    private Object testReadCsv(Object result) {
         assert (result != null);
-        assert (result instanceof List);
-        assert (((List) result).size() > 1);
+        assert (result instanceof String);
+        assert (!((String) result).isEmpty());
+        System.out.println(result);
         return result;
+    }
+
+    private Object testWriteCsv(Object result) {
+        assert (result instanceof String);
+        assert (!((String) result).isEmpty());
+        return result;
+    }
+
+    @Before
+    public void setup() {
     }
 
     @Test
     public void positionExampleTest() {
-        com.baeldung.opencsv.Application.simplePositionBeanExample().thenApplyAsync(result -> {
-            return testCsv(result);
-        });
+        testReadCsv(Application.simplePositionBeanExample());
     }
 
     @Test
     public void namedColumnExampleTest() {
-        com.baeldung.opencsv.Application.namedColumnBeanExample().thenApplyAsync(result -> {
-            return testCsv(result);
-        });
+        testReadCsv(Application.namedColumnBeanExample());
+    }
+
+    @Test
+    public void writeCsvUsingBeanBuilderTest() {
+        testWriteCsv(Application.writeCsvFromBeanExample());
     }
 
     @Test
     public void oneByOneExampleTest() {
-        com.baeldung.opencsv.Application.oneByOneExample().thenApplyAsync(result -> {
-            return testCsv(result);
-        });
+        testReadCsv(Application.oneByOneExample());
     }
 
     @Test
     public void readAllExampleTest() {
-        com.baeldung.opencsv.Application.readAllExample().thenApplyAsync(result -> {
-            return testCsv(result);
-        });
+        testReadCsv(Application.readAllExample());
     }
 
+    @Test
+    public void csvWriterOneByOneTest() {
+        testWriteCsv(Application.csvWriterOneByOne());
+    }
+
+    @Test
+    public void csvWriterAllTest() {
+        testWriteCsv(Application.csvWriterAll());
+    }
+
+    @After
+    public void close() {
+    }
 }
-
-
-

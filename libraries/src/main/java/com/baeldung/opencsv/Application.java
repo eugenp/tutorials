@@ -1,97 +1,108 @@
 package com.baeldung.opencsv;
 
 import com.baeldung.opencsv.helpers.Helpers;
-import com.baeldung.opencsv.opencsv.BeanExamples;
-import com.baeldung.opencsv.opencsv.CsvReaderExamples;
-import com.baeldung.opencsv.pojos.NamedColumnBean;
-import com.baeldung.opencsv.pojos.SimplePositionBean;
+import com.baeldung.opencsv.examples.BeanExamples;
+import com.baeldung.opencsv.examples.CsvReaderExamples;
+import com.baeldung.opencsv.examples.CsvWriterExamples;
+import com.baeldung.opencsv.beans.NamedColumnBean;
+import com.baeldung.opencsv.beans.SimplePositionBean;
 
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
 
 public class Application {
 
-    /*
-     *  Bean Examples.
-     */
-    public static CompletableFuture simplePositionBeanExample() {
-        Path path = null;
-        try {
-            path = Helpers.getTwoColumnCsv();
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        CompletableFuture result = BeanExamples.beanBuilderExample(path, SimplePositionBean.class);
-        result.whenCompleteAsync((suc, err) -> {
-            Helpers.print(suc.toString());
-        });
-        return result;
-
-    }
-
-    public static CompletableFuture namedColumnBeanExample() {
-        Path path = null;
-        try {
-            path = Helpers.getTwoColumnCsv();
-        } catch (Exception ex) {
-            Helpers.err(ex);
-        }
-        CompletableFuture result = BeanExamples.beanBuilderExample(path, NamedColumnBean.class);
-        result.whenCompleteAsync((suc, err) -> {
-            Helpers.print(suc.toString());
-        });
-        return result;
-
-    }
-
-
         /*
-         *  Non-Bean Examples.
+         *  Bean Examples.
          */
 
-    public static CompletableFuture oneByOneExample() {
-
-        Reader reader = null;
-
+    public static String simplePositionBeanExample() {
+        Path path = null;
         try {
-            reader = Files.newBufferedReader(Helpers.getTwoColumnCsv());
+            path = Helpers.twoColumnCsvPath();
         } catch (Exception ex) {
             Helpers.err(ex);
         }
-
-        CompletableFuture<List<String[]>> result = CsvReaderExamples.oneByOne(reader);
-        result.whenCompleteAsync((suc, err) -> {
-            Helpers.print(suc.toString());
-        });
-        return result;
-
+        return BeanExamples.beanBuilderExample(path, SimplePositionBean.class).toString();
     }
 
-    public static CompletableFuture readAllExample() {
-
-        Reader reader = null;
-
+    public static String namedColumnBeanExample() {
+        Path path = null;
         try {
-            reader = Files.newBufferedReader(Helpers.getTwoColumnCsv());
+            path = Helpers.namedColumnCsvPath();
         } catch (Exception ex) {
             Helpers.err(ex);
         }
+        return BeanExamples.beanBuilderExample(path, NamedColumnBean.class).toString();
+    }
 
-        CompletableFuture<List<String[]>> result = CsvReaderExamples.readAll(reader);
-        result.whenCompleteAsync((suc, err) -> {
-            Helpers.print(suc.toString());
-        });
-        return result;
+    public static String writeCsvFromBeanExample() {
+        Path path = null;
+        try {
+            path = Helpers.fileOutBeanPath();
+        } catch (Exception ex) {
+            Helpers.err(ex);
+        }
+        return BeanExamples.writeCsvFromBean(path);
+    }
 
+        /*
+         *  CSV Reader Examples.
+         */
+
+    public static String oneByOneExample() {
+        Reader reader = null;
+        try {
+            reader = Files.newBufferedReader(Helpers.fileOutOnePath());
+        } catch (Exception ex) {
+            Helpers.err(ex);
+        }
+        return CsvReaderExamples.oneByOne(reader).toString();
+    }
+
+    public static String readAllExample() {
+        Reader reader = null;
+        try {
+            reader = Files.newBufferedReader(Helpers.fileOutAllPath());
+        } catch (Exception ex) {
+            Helpers.err(ex);
+        }
+        return CsvReaderExamples.readAll(reader).toString();
+    }
+
+         /*
+         *  CSV Writer Examples.
+         */
+
+
+    public static String csvWriterOneByOne() {
+        Path path = null;
+        try {
+            path = Helpers.fileOutOnePath();
+        } catch (Exception ex) {
+            Helpers.err(ex);
+        }
+        return CsvWriterExamples.csvWriterOneByOne(Helpers.fourColumnCsvString(), path);
+    }
+
+    public static String csvWriterAll() {
+        Path path = null;
+        try {
+            path = Helpers.fileOutAllPath();
+        } catch (Exception ex) {
+            Helpers.err(ex);
+        }
+        return CsvWriterExamples.csvWriterAll(Helpers.fourColumnCsvString(), path);
     }
 
     public static void main(String[] args) {
         simplePositionBeanExample();
         namedColumnBeanExample();
+        writeCsvFromBeanExample();
         oneByOneExample();
         readAllExample();
+        csvWriterOneByOne();
+        csvWriterAll();
     }
 }
