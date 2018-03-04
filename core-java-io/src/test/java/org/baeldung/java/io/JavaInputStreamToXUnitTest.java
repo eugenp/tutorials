@@ -210,7 +210,7 @@ public class JavaInputStreamToXUnitTest {
 
         FileUtils.copyInputStreamToFile(initialStream, targetFile);
     }
-    
+
     @Test
     public final void givenUsingPlainJava_whenConvertingAnInputStreamToString_thenCorrect() throws IOException {
         String originalString = randomAlphabetic(8);
@@ -225,7 +225,7 @@ public class JavaInputStreamToXUnitTest {
 
         buffer.flush();
         byte[] byteArray = buffer.toByteArray();
-        
+
         String text = new String(byteArray, StandardCharsets.UTF_8);
         assertThat(text, equalTo(originalString));
     }
