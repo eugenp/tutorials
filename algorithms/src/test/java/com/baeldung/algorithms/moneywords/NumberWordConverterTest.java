@@ -10,32 +10,32 @@ public class NumberWordConverterTest {
 
     @Test
     public void whenMoneyNegative_thenReturnInvalidInput() {
-        assertEquals((NumberWordConverter.getMoneyIntoWords(-13)), NumberWordConverter.INVALID_INPUT_GIVEN);
+        assertEquals(NumberWordConverter.INVALID_INPUT_GIVEN, NumberWordConverter.getMoneyIntoWords(-13));
     }
 
     @Test
     public void whenZeroDollarsGiven_thenReturnEmptyString() {
-        assertEquals((NumberWordConverter.getMoneyIntoWords(0)), "");
+        assertEquals("", NumberWordConverter.getMoneyIntoWords(0));
     }
 
     @Test
     public void whenOnlyDollarsGiven_thenReturnWords() {
-        assertEquals((NumberWordConverter.getMoneyIntoWords(1)), "one dollar");
+        assertEquals("one dollar", NumberWordConverter.getMoneyIntoWords(1));
     }
 
     @Test
     public void whenOnlyCentsGiven_thenReturnWords() {
-        assertEquals((NumberWordConverter.getMoneyIntoWords(0.6)), "sixty cents");
+        assertEquals("sixty cents", NumberWordConverter.getMoneyIntoWords(0.6));
     }
 
     @Test
     public void whenGivenDollarsAndCents_thenReturnWords() {
         String expectedResult = "nine hundred twenty four dollars and sixty cents";
-        assertEquals((NumberWordConverter.getMoneyIntoWords(924.6)), expectedResult);
+        assertEquals(expectedResult, NumberWordConverter.getMoneyIntoWords(924.6));
     }
 
     @Test
     public void whenGivenDollarsAndCents_thenReturnWordsVersionTwo() {
-        assertEquals((NumberWordConverter.getMoneyIntoWords("310")), "three hundred ten £ 00/100");
+        assertEquals("three hundred ten £ 00/100", NumberWordConverter.getMoneyIntoWords("310"));
     }
 }

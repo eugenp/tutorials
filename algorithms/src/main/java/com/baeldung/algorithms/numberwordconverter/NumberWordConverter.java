@@ -10,16 +10,17 @@ public class NumberWordConverter {
 
     public static final String[] ones = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
 
-    public static final String[] tens = { "", // 0
-            "", // 1
-            "twenty", // 2
-            "thirty", // 3
-            "forty", // 4
-            "fifty", // 5
-            "sixty", // 6
-            "seventy", // 7
-            "eighty", // 8
-            "ninety" // 9
+    public static final String[] tens = {
+      "", // 0
+      "", // 1
+      "twenty", // 2
+      "thirty", // 3
+      "forty", // 4
+      "fifty", // 5
+      "sixty", // 6
+      "seventy", // 7
+      "eighty", // 8
+      "ninety" // 9
     };
 
     public static String getMoneyIntoWords(String input) {
@@ -30,13 +31,22 @@ public class NumberWordConverter {
     public static String getMoneyIntoWords(final double money) {
         long dollar = (long) money;
         long cents = Math.round((money - dollar) * 100);
-        String dollarPart = formatOutput(convert(dollar), dollar, "dollar");
+        if (money == 0D) {
+            return "";
+        }
+        if (money < 0) {
+            return INVALID_INPUT_GIVEN;
+        }
+        String dollarPart = "";
+        if (dollar > 0) {
+            dollarPart = convert(dollar) + " dollar" + (dollar == 1 ? "" : "s");
+        }
         String centsPart = "";
         if (cents > 0) {
             if (dollarPart.length() > 0) {
                 centsPart = " and ";
             }
-            centsPart += formatOutput(convert(cents), cents, "cent");
+            centsPart += convert(cents) + " cent" + (cents == 1 ? "" : "s");
         }
         return dollarPart + centsPart;
     }
@@ -61,18 +71,5 @@ public class NumberWordConverter {
             return convert(n / 1_000_000) + " million" + ((n % 1_000_000 != 0) ? " " : "") + convert(n % 1_000_000);
         }
         return convert(n / 1_000_000_000) + " billion" + ((n % 1_000_000_000 != 0) ? " " : "") + convert(n % 1_000_000_000);
-    }
-
-    private static String formatOutput(String input, long number, String type) {
-        if (input.equals(INVALID_INPUT_GIVEN)) {
-            return INVALID_INPUT_GIVEN;
-        } else if (input.length() > 0) {
-            if (number == 1) {
-                return input + " " + type;
-            } else {
-                return input + " " + type + "s";
-            }
-        }
-        return "";
     }
 }
