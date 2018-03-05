@@ -123,7 +123,7 @@ public class EC2Application {
 
         // 9) - Start an Instance
         StartInstancesRequest startInstancesRequest = new StartInstancesRequest()
-            .withInstanceIds("yourInstanceId");
+            .withInstanceIds(yourInstanceId);
 
         ec2Client.startInstances(startInstancesRequest);
 
