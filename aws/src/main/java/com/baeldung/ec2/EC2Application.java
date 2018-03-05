@@ -39,18 +39,18 @@ public class EC2Application {
 
     public static void main(String[] args) {
        
-        // 0) - Set up the client
+        // Set up the client
         AmazonEC2 ec2Client = AmazonEC2ClientBuilder.standard()
             .withCredentials(new AWSStaticCredentialsProvider(credentials))
             .withRegion(Regions.US_EAST_1)
             .build();
 
-        // 1) - Create a security group
+        // Create a security group
         CreateSecurityGroupRequest createSecurityGroupRequest = new CreateSecurityGroupRequest().withGroupName("BaeldungSecurityGroup")
             .withDescription("Baeldung Security Group");
         ec2Client.createSecurityGroup(createSecurityGroupRequest);
 
-        // 2) - Allow HTTP and SSH traffic
+        // Allow HTTP and SSH traffic
         IpRange ipRange1 = new IpRange().withCidrIp("0.0.0.0/0");
 
         IpPermission ipPermission1 = new IpPermission().withIpv4Ranges(Arrays.asList(new IpRange[] { ipRange1 }))
@@ -69,7 +69,7 @@ public class EC2Application {
 
         ec2Client.authorizeSecurityGroupIngress(authorizeSecurityGroupIngressRequest);
 
-        // 3) - Create KeyPair
+        // Create KeyPair
         CreateKeyPairRequest createKeyPairRequest = new CreateKeyPairRequest()
             .withKeyName("baeldung-key-pair");
         CreateKeyPairResult createKeyPairResult = ec2Client.createKeyPair(createKeyPairRequest);
@@ -77,11 +77,11 @@ public class EC2Application {
             .getKeyPair()
             .getKeyMaterial(); // make sure you keep it, the private key, Amazon doesn't store the private key
 
-        // 4) - See what key-pairs you've got
+        // See what key-pairs you've got
         DescribeKeyPairsRequest describeKeyPairsRequest = new DescribeKeyPairsRequest();
         DescribeKeyPairsResult describeKeyPairsResult = ec2Client.describeKeyPairs(describeKeyPairsRequest);
 
-        // 5) - Launch an Amazon Instance
+        // Launch an Amazon Instance
         RunInstancesRequest runInstancesRequest = new RunInstancesRequest().withImageId("ami-97785bed") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/usingsharedamis-finding.html
             .withInstanceType("t2.micro") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
             .withMinCount(1)
@@ -91,7 +91,13 @@ public class EC2Application {
 
         String yourInstanceId = ec2Client.runInstances(runInstancesRequest).getReservation().getInstances().get(0).getInstanceId();
 
-        // 6) Monitor Instances
+        // Start an Instance
+        StartInstancesRequest startInstancesRequest = new StartInstancesRequest()
+            .withInstanceIds(yourInstanceId);
+
+        ec2Client.startInstances(startInstancesRequest);
+
+        // Monitor Instances
         MonitorInstancesRequest monitorInstancesRequest = new MonitorInstancesRequest()
             .withInstanceIds(yourInstanceId);
 
@@ -102,14 +108,14 @@ public class EC2Application {
 
         ec2Client.unmonitorInstances(unmonitorInstancesRequest);
 
-        // 7) - Reboot an Instance
+        // Reboot an Instance
 
         RebootInstancesRequest rebootInstancesRequest = new RebootInstancesRequest()
             .withInstanceIds(yourInstanceId);
 
         ec2Client.rebootInstances(rebootInstancesRequest);
 
-        // 8) - Stop an Instance
+        // Stop an Instance
         StopInstancesRequest stopInstancesRequest = new StopInstancesRequest()
             .withInstanceIds(yourInstanceId);
 
@@ -119,13 +125,7 @@ public class EC2Application {
             .getPreviousState()
             .getName();
 
-        // 9) - Start an Instance
-        StartInstancesRequest startInstancesRequest = new StartInstancesRequest()
-            .withInstanceIds(yourInstanceId);
-
-        ec2Client.startInstances(startInstancesRequest);
-
-        // 10) - Describe an Instance
+        // Describe an Instance
         DescribeInstancesRequest describeInstancesRequest = new DescribeInstancesRequest();
         DescribeInstancesResult response = ec2Client.describeInstances(describeInstancesRequest);
         System.out.println(response.getReservations()
