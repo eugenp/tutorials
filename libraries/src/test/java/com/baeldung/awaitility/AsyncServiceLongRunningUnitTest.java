@@ -35,10 +35,7 @@ public class AsyncServiceLongRunningUnitTest {
     public void givenAsyncService_whenInitialize_thenInitOccurs2() {
         asyncService.initialize();
         Callable<Boolean> isInitialized = asyncService::isInitialized;
-        await().atLeast(Duration.ONE_HUNDRED_MILLISECONDS)
-          .atMost(Duration.FIVE_SECONDS)
-          .with().pollInterval(Duration.ONE_HUNDRED_MILLISECONDS)
-          .until(isInitialized);
+        await().atLeast(Duration.ONE_HUNDRED_MILLISECONDS).atMost(Duration.FIVE_SECONDS).with().pollInterval(Duration.ONE_HUNDRED_MILLISECONDS).until(isInitialized);
     }
 
     @Test
@@ -60,9 +57,7 @@ public class AsyncServiceLongRunningUnitTest {
     @Test
     public void givenAsyncService_whenInitialize_thenInitOccurs3() {
         asyncService.initialize();
-        await().until(fieldIn(asyncService)
-          .ofType(boolean.class)
-          .andWithName("initialized"), equalTo(true));
+        await().until(fieldIn(asyncService).ofType(boolean.class).andWithName("initialized"), equalTo(true));
     }
 
     @Test
@@ -77,10 +72,6 @@ public class AsyncServiceLongRunningUnitTest {
     @Test
     public void givenAsyncService_whenGetValue_thenExceptionIgnored() {
         asyncService.initialize();
-        given().ignoreException(IllegalStateException.class)
-          .await()
-          .atMost(Duration.FIVE_SECONDS)
-          .atLeast(Duration.FIVE_HUNDRED_MILLISECONDS)
-          .until(asyncService::getValue, equalTo(0L));
+        given().ignoreException(IllegalStateException.class).await().atMost(Duration.FIVE_SECONDS).atLeast(Duration.FIVE_HUNDRED_MILLISECONDS).until(asyncService::getValue, equalTo(0L));
     }
 }

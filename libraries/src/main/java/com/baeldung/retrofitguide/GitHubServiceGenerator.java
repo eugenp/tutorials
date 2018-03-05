@@ -13,19 +13,13 @@ public class GitHubServiceGenerator {
 
     private static final String BASE_URL = "https://api.github.com/";
 
-    private static Retrofit.Builder builder
-            = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create());
+    private static Retrofit.Builder builder = new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create());
 
     private static Retrofit retrofit = builder.build();
 
-    private static OkHttpClient.Builder httpClient
-            = new OkHttpClient.Builder();
+    private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-    private static HttpLoggingInterceptor logging
-            = new HttpLoggingInterceptor()
-                    .setLevel(HttpLoggingInterceptor.Level.BASIC);
+    private static HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC);
 
     public static <S> S createService(Class<S> serviceClass) {
         if (!httpClient.interceptors().contains(logging)) {
@@ -43,8 +37,7 @@ public class GitHubServiceGenerator {
                 @Override
                 public Response intercept(Interceptor.Chain chain) throws IOException {
                     Request original = chain.request();
-                    Request.Builder builder = original.newBuilder()
-                            .header("Authorization", token);
+                    Request.Builder builder = original.newBuilder().header("Authorization", token);
                     Request request = builder.build();
                     return chain.proceed(request);
                 }

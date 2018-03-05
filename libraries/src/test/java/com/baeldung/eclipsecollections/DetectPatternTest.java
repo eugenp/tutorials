@@ -20,7 +20,6 @@ public class DetectPatternTest {
     public void whenDetect_thenCorrect() {
         Integer result = list.detect(Predicates.greaterThan(30));
 
-        Assertions.assertThat(result)
-            .isEqualTo(41);
+        Assertions.assertThat(result).isEqualTo(41);
     }
 }

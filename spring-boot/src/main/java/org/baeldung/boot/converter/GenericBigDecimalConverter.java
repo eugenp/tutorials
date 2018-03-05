@@ -9,23 +9,20 @@ import java.util.Set;
 
 public class GenericBigDecimalConverter implements GenericConverter {
     @Override
-    public Set<ConvertiblePair> getConvertibleTypes () {
+    public Set<ConvertiblePair> getConvertibleTypes() {
 
-        ConvertiblePair[] pairs = new ConvertiblePair[] {
-                new ConvertiblePair(Number.class, BigDecimal.class),
-                new ConvertiblePair(String.class, BigDecimal.class)};
+        ConvertiblePair[] pairs = new ConvertiblePair[] { new ConvertiblePair(Number.class, BigDecimal.class), new ConvertiblePair(String.class, BigDecimal.class) };
 
         return ImmutableSet.copyOf(pairs);
     }
 
     @Override
-    public Object convert (Object source, TypeDescriptor sourceType,
-                           TypeDescriptor targetType) {
+    public Object convert(Object source, TypeDescriptor sourceType, TypeDescriptor targetType) {
         if (sourceType.getType() == BigDecimal.class) {
             return source;
         }
 
-        if(sourceType.getType() == String.class) {
+        if (sourceType.getType() == String.class) {
             String number = (String) source;
             return new BigDecimal(number);
         } else {
