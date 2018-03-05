@@ -129,3 +129,11 @@
 - [A Guide to the finalize Method in Java](http://www.baeldung.com/java-finalize)
 - [Compiling Java *.class Files with javac](http://www.baeldung.com/javac)
 - [Method Overloading and Overriding in Java](http://www.baeldung.com/java-method-overload-override)
+- [A Guide to TreeSet in Java](http://www.baeldung.com/java-tree-set)
+- [Guide to ThreadLocalRandom in Java](http://www.baeldung.com/java-thread-local-random)
+- [Java TreeMap vs HashMap](http://www.baeldung.com/java-treemap-vs-hashmap)
+- [A Guide to Iterator in Java](http://www.baeldung.com/java-iterator)
+- [The Trie Data Structure in Java](http://www.baeldung.com/trie-java)
+- [Introduction to Javadoc](http://www.baeldung.com/javadoc)
+- [How to TDD a List Implementation](http://jira.baeldung.com/browse/BAEL-1537)
+

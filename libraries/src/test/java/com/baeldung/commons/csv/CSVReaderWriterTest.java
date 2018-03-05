@@ -29,10 +29,7 @@ public class CSVReaderWriterTest {
     @Test
     public void givenCSVFile_whenRead_thenContentsAsExpected() throws IOException {
         Reader in = new FileReader("src/test/resources/book.csv");
-        Iterable<CSVRecord> records = CSVFormat.DEFAULT
-          .withHeader(HEADERS)
-          .withFirstRecordAsHeader()
-          .parse(in);
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withHeader(HEADERS).withFirstRecordAsHeader().parse(in);
         for (CSVRecord record : records) {
             String author = record.get("author");
             String title = record.get("title");
@@ -52,9 +49,7 @@ public class CSVReaderWriterTest {
                 }
             });
         }
-        assertEquals(EXPECTED_FILESTREAM, sw
-          .toString()
-          .trim());
+        assertEquals(EXPECTED_FILESTREAM, sw.toString().trim());
     }
 
 }

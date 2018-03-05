@@ -278,6 +278,7 @@
         <module>lucene</module>
         <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+        <module>java-spi</module>
     </modules>
 
     <dependencies>
