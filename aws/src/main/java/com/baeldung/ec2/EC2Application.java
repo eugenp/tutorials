@@ -38,9 +38,7 @@ public class EC2Application {
     }
 
     public static void main(String[] args) {
-
-        String yourInstanceId = "<you-instance>";
-        
+       
         // 0) - Set up the client
         AmazonEC2 ec2Client = AmazonEC2ClientBuilder.standard()
             .withCredentials(new AWSStaticCredentialsProvider(credentials))
@@ -91,7 +89,7 @@ public class EC2Application {
             .withKeyName("baeldung-key-pair") // optional - if not present, can't connect to instance
             .withSecurityGroups("BaeldungSecurityGroup");
 
-        ec2Client.runInstances(runInstancesRequest);
+        String yourInstanceId = ec2Client.runInstances(runInstancesRequest).getReservation().getInstances().get(0).getInstanceId();
 
         // 6) Monitor Instances
         MonitorInstancesRequest monitorInstancesRequest = new MonitorInstancesRequest()
@@ -123,7 +121,7 @@ public class EC2Application {
 
         // 9) - Start an Instance
         StartInstancesRequest startInstancesRequest = new StartInstancesRequest()
-            .withInstanceIds("instance-id");
+            .withInstanceIds(yourInstanceId);
 
         ec2Client.startInstances(startInstancesRequest);
 
