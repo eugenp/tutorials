@@ -152,11 +152,11 @@ public class JavaInputStreamToXUnitTest {
 
     @Test
     public final void whenConvertingToFile_thenCorrect() throws IOException {
-        final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
+        final InputStream initialStream = new FileInputStream(new File("src/test/resources/sample.txt"));
         final byte[] buffer = new byte[initialStream.available()];
         initialStream.read(buffer);
 
-        final File targetFile = new File("src/main/resources/targetFile.tmp");
+        final File targetFile = new File("src/test/resources/targetFile.tmp");
         final OutputStream outStream = new FileOutputStream(targetFile);
         outStream.write(buffer);
 
@@ -166,8 +166,8 @@ public class JavaInputStreamToXUnitTest {
 
     @Test
     public final void whenConvertingInProgressToFile_thenCorrect() throws IOException {
-        final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
-        final File targetFile = new File("src/main/resources/targetFile.tmp");
+        final InputStream initialStream = new FileInputStream(new File("src/test/resources/sample.txt"));
+        final File targetFile = new File("src/test/resources/targetFile.tmp");
         final OutputStream outStream = new FileOutputStream(targetFile);
 
         final byte[] buffer = new byte[8 * 1024];
@@ -182,8 +182,8 @@ public class JavaInputStreamToXUnitTest {
 
     @Test
     public final void whenConvertingAnInProgressInputStreamToFile_thenCorrect2() throws IOException {
-        final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
-        final File targetFile = new File("src/main/resources/targetFile.tmp");
+        final InputStream initialStream = new FileInputStream(new File("src/test/resources/sample.txt"));
+        final File targetFile = new File("src/test/resources/targetFile.tmp");
 
         java.nio.file.Files.copy(initialStream, targetFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
@@ -192,11 +192,11 @@ public class JavaInputStreamToXUnitTest {
 
     @Test
     public final void whenConvertingInputStreamToFile_thenCorrect3() throws IOException {
-        final InputStream initialStream = new FileInputStream(new File("src/main/resources/sample.txt"));
+        final InputStream initialStream = new FileInputStream(new File("src/test/resources/sample.txt"));
         final byte[] buffer = new byte[initialStream.available()];
         initialStream.read(buffer);
 
-        final File targetFile = new File("src/main/resources/targetFile.tmp");
+        final File targetFile = new File("src/test/resources/targetFile.tmp");
         Files.write(buffer, targetFile);
 
         IOUtils.closeQuietly(initialStream);
@@ -204,13 +204,13 @@ public class JavaInputStreamToXUnitTest {
 
     @Test
     public final void whenConvertingInputStreamToFile_thenCorrect4() throws IOException {
-        final InputStream initialStream = FileUtils.openInputStream(new File("src/main/resources/sample.txt"));
+        final InputStream initialStream = FileUtils.openInputStream(new File("src/test/resources/sample.txt"));
 
-        final File targetFile = new File("src/main/resources/targetFile.tmp");
+        final File targetFile = new File("src/test/resources/targetFile.tmp");
 
         FileUtils.copyInputStreamToFile(initialStream, targetFile);
     }
-    
+
     @Test
     public final void givenUsingPlainJava_whenConvertingAnInputStreamToString_thenCorrect() throws IOException {
         String originalString = randomAlphabetic(8);
@@ -225,7 +225,7 @@ public class JavaInputStreamToXUnitTest {
 
         buffer.flush();
         byte[] byteArray = buffer.toByteArray();
-        
+
         String text = new String(byteArray, StandardCharsets.UTF_8);
         assertThat(text, equalTo(originalString));
     }

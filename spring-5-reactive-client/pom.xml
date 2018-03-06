@@ -7,7 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring-5</name>
+    <name>spring-5-reactive-client</name>
     <description>spring 5 sample project about new features</description>
 
     <parent>
