@@ -1,0 +1,423 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<head>
+	<link rel="shortcut icon" href="http://www.ajkp.ca/blog/wp-content/themes/refresh-child/favicon.ico" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<title>How to Implement a LRU Cache</title>
+	<meta name="google-site-verification" content="DVNJaYYEEPyQUDOvqGFYsrfZ1adhjJu6HS-wwWAVqAA" />
+	<meta name="msvalidate.01" content="3F4EBB948315C7C70D12E2E8D0779F3E" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<link rel="pingback" href="http://www.ajkp.ca/blog/xmlrpc.php" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+		
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.24 - http://yoast.com/wordpress/seo/ -->
+<meta name="description" content="How to Implement a LRU Cache"/>
+<link rel="canonical" href="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="How to Implement a LRU Cache" />
+<meta property="og:description" content="How to Implement a LRU Cache" />
+<meta property="og:url" content="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/" />
+<meta property="og:site_name" content="Ajk Palikuqi" />
+<meta property="article:publisher" content="https://www.facebook.com/ajk.palikuqi" />
+<meta property="article:tag" content="Interview question" />
+<meta property="article:tag" content="Java" />
+<meta property="article:tag" content="LRU Cache" />
+<meta property="article:section" content="Problem Solving" />
+<meta property="article:published_time" content="2014-02-06T19:41:47+00:00" />
+<meta property="article:modified_time" content="2014-02-07T13:31:47+00:00" />
+<meta property="fb:admins" content="100001598571942" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:site" content="@https://twitter.com/Ajk_P"/>
+<meta name="twitter:domain" content="Ajk Palikuqi"/>
+<meta name="twitter:creator" content="@https://twitter.com/Ajk_P"/>
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Ajk Palikuqi &raquo; Feed" href="http://www.ajkp.ca/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Ajk Palikuqi &raquo; Comments Feed" href="http://www.ajkp.ca/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Ajk Palikuqi &raquo; How to implement a LRU Cache Comments Feed" href="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/feed/" />
+<link rel='stylesheet' id='jetpack_likes-css'  href='http://www.ajkp.ca/blog/wp-content/plugins/jetpack/modules/likes/style.css?ver=2.8' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-subscriptions-css'  href='http://www.ajkp.ca/blog/wp-content/plugins/jetpack/modules/subscriptions/subscriptions.css?ver=3.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='ts_fab_css-css'  href='http://www.ajkp.ca/blog/wp-content/plugins/fancier-author-box/css/ts-fab.css?ver=1.0' type='text/css' media='all' />
+<link rel='stylesheet' id='ssbaFont-css'  href='http://fonts.googleapis.com/css?family=Indie+Flower&#038;ver=3.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='ssba-page-styles-css'  href='http://www.ajkp.ca/blog/wp-content/plugins/simple-share-buttons-adder/css/page-style.css?ver=3.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-widgets-css'  href='http://www.ajkp.ca/blog/wp-content/plugins/jetpack/modules/widgets/widgets.css?ver=20121003' type='text/css' media='all' />
+<link rel='stylesheet' id='refresh-style-css'  href='http://www.ajkp.ca/blog/wp-content/themes/refresh-child/style.css?ver=3.8.1' type='text/css' media='all' />
+<link rel='stylesheet' id='monda-css'  href='http://www.ajkp.ca/blog/wp-content/themes/refresh/fonts/monda.css?ver=1.1' type='text/css' media='all' />
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-includes/js/jquery/jquery.js?ver=1.10.2'></script>
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wtilp = {"ajax_url":"http:\/\/www.ajkp.ca\/blog\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-content/plugins/wti-like-post/js/wti_like_post.js?ver=3.8.1'></script>
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-content/plugins/jetpack/_inc/postmessage.js?ver=2.8'></script>
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-content/plugins/jetpack/_inc/jquery.inview.js?ver=2.8'></script>
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-content/plugins/jetpack/_inc/jquery.jetpack-resize.js?ver=2.8'></script>
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-content/plugins/fancier-author-box/js/ts-fab.js?ver=1.0'></script>
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-includes/js/comment-reply.min.js?ver=3.8.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.ajkp.ca/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.ajkp.ca/blog/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.8.1" />
+<link rel='shortlink' href='http://wp.me/p4khso-U' />
+	<style>
+	.ts-fab-list li a { background-color: #e9e9e9; border: 1px solid #06AFE4; color: #333; }
+	.ts-fab-list li.active a { background-color: #333; border: 1px solid #06AFE4; color: #fff; }		
+	.ts-fab-tab { background-color: #f9f9f9; border: 2px solid #06AFE4; color: #555; }		
+	</style>
+		<link href="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Styles/SyntaxHighlighter.css" type="text/css" rel="stylesheet" />
+	<style type="text/css">	#ssba {
+										padding: 1px;
+										border: 1px solid #06afe4;
+										background-color: #ffffff;
+										
+									}
+									#ssba img		
+									{ 	
+										width: 35px !important;
+										padding: 6px;
+										border:  0;
+										box-shadow: none !important;
+										display: inline;
+										vertical-align: middle;
+									}
+									#ssba, #ssba a		
+									{
+										
+										font-family: Indie Flower;
+										font-size: 	20px;
+										
+										
+									}</style><link rel="stylesheet" type="text/css" href="http://www.ajkp.ca/blog/wp-content/plugins/wti-like-post/css/wti_like_post.css" media="screen" />	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+</head>
+<body class="single single-post postid-56 single-format-standard custom-background" id="top">
+<div class="wrapper">
+<div id="flot">
+	<div id="header">
+    <div id="header-inner" class="clearfix">
+		<div id="logo">
+		        
+            <h1 class="site-title">
+			<a href="http://www.ajkp.ca/" title="Ajk Palikuqi" rel="home">Ajk Palikuqi</a></h1>
+      
+    		</div>
+		<div id="spc"><ul id="searchacc"></ul>
+</div>
+<div id="navigation"> 
+<div id="navigation-inner" class="clearfix">
+	<div id="navigation" class="secondary">		<div class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li id="menu-item-40" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-40"><a href="http://www.ajkp.ca/category/problem-solving/">Problem Solving</a></li>
+<li id="menu-item-147" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-147"><a href="http://www.ajkp.ca/category/brain-teasers/">Brain Teasers</a></li>
+<li id="menu-item-146" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-146"><a href="http://www.ajkp.ca/coding-q-a/">Coding Q &#038; A</a></li>
+<li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33"><a href="http://www.ajkp.ca/profile/">Profile</a></li>
+</ul></div>		</div><!-- end div #myslidemenu -->
+    </div> <!-- end div #navigation-inner -->
+	</div> <!-- end div #navigation -->
+    </div> <!-- end div #header-inner -->
+	</div>	
+</div>
+	<!-- BEGIN PAGE -->	<div id="page">	<div id="page-inner" class="clearfix">
+<div id="banner-top"></div>
+		<div id="content"><div id="crumbs"><a href="http://www.ajkp.ca/">Home</a> &raquo; <a href="http://www.ajkp.ca/category/problem-solving/" title="View all posts in Problem Solving">Problem Solving</a> &raquo; <span class="current">How to implement a LRU Cache</span></div>									<h1 class="entry-title">How to implement a LRU Cache</h1>
+			<div class="entry" class="clearfix">
+						<p>If you have rarely used and heard the term <strong>&#8220;cache&#8221;</strong> this question will come to you as quite a surprise. I am sure you have heard the term cache in CPUs or HDDs but to implement a cache? I remember when I first came across this question I was quite surprised myself and needed to think hard before I could understand the question.</p>
+<p>Understanding a problem is the first step towards solving it. So the first thing you should do is ask yourself &#8211; what is a cache? A cache is a component that retrieves future requests faster by keeping them in a least recently used order and removing the least recently used item when a new one come up.</p>
+<p>Some design specification to a cache to be mentioned for an <strong>LRU cache</strong></p>
+<ul>
+<li>Cache hits need to be the fastest possible (meaning <strong>O(1)</strong>)</li>
+<li>We need to keep and update a list of items</li>
+</ul>
+<p>So while we think about this design specification we can further specify the data structures needed.</p>
+<ul>
+<li>To guarantee access in <strong>O(1)</strong> time in case of hits we need to keep all recently used items in a HashMap data structure</li>
+<li>To guarantee a continuously updated list we need an ArrayList or even better a Queue data structure.</li>
+</ul>
+<p>A simple approach will be to use the already defined for us <strong><em>java.util.LinkedHashMap</em></strong> (documentation found at <a href="http://docs.oracle.com/javase/6/docs/api/java/util/LinkedHashMap.html" title="LinkedHashMap API" target="_blank">LinkedHashMap API</a>) so let&#8217;s start with this.</p>
+<pre name="code" class="java">private class LRUCache&lt;Key, Value> extends LinkedHashMap&lt;Key, Value>
+{
+   private final int size; // size of the cache
+
+   public LruCache(final int maxEntries) 
+   {
+       super(size + 1, 1.0f, true); // 1.0 is the loadFactor or in cheap words how much each bucket/slot will be filled in the hashtable
+       this.size = size;
+   }
+
+   /**
+    * @see java.util.LinkedHashMap#removeEldestEntry(Map.Entry)
+    */
+   protected boolean removeEldestEntry(final Map.Entry&lt;Key, Value> oldest) 
+   {
+       return super.size() > size;
+   }
+}</pre>
+<p>Good. Now to follow up and make your answer more crisp you might think. What else should I be careful about? A topic to keep always in your mind is <strong>Concurrency</strong>and how your implementation will fit in a multi-threaded application. The answer is astonishingly simple. Java provides you with all the help you need following the simple static method <em> <strong>Collections.synchronizedMap</strong></em> method.<br />
+(check <a href="http://docs.oracle.com/javase/7/docs/api/java/util/Collections.html" title="Collections API" target="_blank">Collections API</a> for more info)</p>
+<pre name="code" class="java">Map&lt;Key, Value> example = Collections.synchronizedMap(new LRUCache&lt;Key, Value>(CACHE_SIZE));</pre>
+<p>Some food for thought on how this will work:</p>
+<ul>
+<li>If item exists in the cache &#8211; <strong>Cache Hit</strong> -> Remove the element from the queue and add it to the beginning</li>
+<li>If item does not exist in cache  &#8211; <strong>Cache Miss</strong> -> Remove the oldest entry in the queue (if out of capacity) and add the new one to both Queue and Map</li>
+</ul>
+<p>Following this to make your code look extra crisp and be able to prove your knowledge, let&#8217;s try to not use Java&#8217;s LinkedHashMap, which provides everything for us. Instead we will use ConcurrentHashMap and ConcurrentLinkedQueue.</p>
+<pre name="code" class="java">
+public class LRUCache&lt;Key, Value> 
+{
+	private final int size;
+	private ConcurrentLinkedQueue&lt;Key> linkedQueue;
+	private ConcurrentHashMap&lt;Key, Value> hashMap;
+
+	/**
+	 * Cache constructor
+	 * @param size - size of our cache
+	 */
+	public LRUCache(final int size)
+	{
+		this.size = size;
+		this.linkedQueue	= new ConcurrentLinkedQueue&lt;Key>();
+		this.hashMap	= new ConcurrentHashMap&lt;Key, Value>(size);
+	}
+ 
+	/**
+	 * Return the Value corresponding to the given Key in the map. return null if key not found.
+	 * @param key - Key
+	 * @return value - Value
+	 */
+	public Value get(final Key key)
+	{
+		return hashMap.get(key);
+	}
+ 
+	/**
+	 * Add new Key, Value pair to our Map and Queue. If the Key already exists, 
+	 * move it at the beginning of the queue.
+	 * @param key - Key
+	 * @param value - Value
+	 */
+	public synchronized void put(final Key key, final Value value)
+	{
+	   if (hashMap.containsKey(key)) 
+	   {
+			linkedQueue.remove(key);
+		}
+
+		while (linkedQueue.size() >= size) 
+		{
+			Key oldestKey = linkedQueue.poll();
+			if (oldestKey != null) {
+				hashMap.remove(oldestKey);
+			}
+		}
+
+		linkedQueue.add(key);
+		hashMap.put(key, value);
+	}
+}
+</pre>
+<p>Final thoughts. So now you can say you successfully know how to implement a cache and next time you will be asked in an interview you (and me) will ace the question <img src="http://www.ajkp.ca/blog/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /> </p>
+<!-- I got these buttons from simplesharebuttons.com --><div id="ssba"><a href="http://www.simplesharebuttons.com" target="_blank" class="ssba_tooptip" id="ssba_tooptip""><span>www.simplesharebuttons.com</span>Sharing is Caring<a id="ssba_facebook_share" href="http://www.facebook.com/sharer.php?u=http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/" target="_blank"><img title="Facebook" class="ssba" alt="Facebook" src="http://www.ajkp.ca/blog/wp-content/plugins/simple-share-buttons-adder/buttons/ribbons/facebook.png" /></a><a id="ssba_google_share" href="https://plus.google.com/share?url=http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/" target="_blank"><img title="Google+" class="ssba" alt="Google+" src="http://www.ajkp.ca/blog/wp-content/plugins/simple-share-buttons-adder/buttons/ribbons/google.png" /></a><a id="ssba_twitter_share" href="http://twitter.com/share?url=http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/&text=How+to+implement+a+LRU+Cache+" target="_blank"><img title="Twitter" class="ssba" alt="Twitter" src="http://www.ajkp.ca/blog/wp-content/plugins/simple-share-buttons-adder/buttons/ribbons/twitter.png" /></a><a id="ssba_linkedin_share" class="ssba_share_link" href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/" target="_blank"><img title="Linkedin" class="ssba" alt="LinkedIn" src="http://www.ajkp.ca/blog/wp-content/plugins/simple-share-buttons-adder/buttons/ribbons/linkedin.png" /></a><a id="ssba_reddit_share" href="http://reddit.com/submit?url=http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/&title=How to implement a LRU Cache" target="_blank"><img title="Reddit" class="ssba" alt="Reddit" src="http://www.ajkp.ca/blog/wp-content/plugins/simple-share-buttons-adder/buttons/ribbons/reddit.png" /></a></div><div class='watch-action'><div class='watch-position align-left'><div class='action-like'><a class='lbg-style1 like-56 jlk' href='http://www.ajkp.ca/blog/wp-admin/admin-ajax.php?action=wti_like_post_process_vote&task=like&post_id=56&nonce=f5fca28b08' data-task='like' data-post_id='56' data-nonce='f5fca28b08' rel='nofollow'><img src='http://www.ajkp.ca/blog/wp-content/plugins/wti-like-post/images/pixel.gif' title='Amazing' /><span class='lc-56 lc'>+5</span></a></div><div class='action-unlike'><a class='unlbg-style1 unlike-56 jlk' href='http://www.ajkp.ca/blog/wp-admin/admin-ajax.php?action=wti_like_post_process_vote&task=unlike&post_id=56&nonce=f5fca28b08' data-task='unlike' data-post_id='56' data-nonce='f5fca28b08' rel='nofollow'><img src='http://www.ajkp.ca/blog/wp-content/plugins/wti-like-post/images/pixel.gif' title='Sucks' /><span class='unlc-56 unlc'>0</span></a></div> </div> <div class='status-56 status align-left'>&nbsp;&nbsp;</div></div><div class='wti-clear'></div><div id="ts-fab-below" class="ts-fab-wrapper"><span class="screen-reader-text">The following two tabs change content below.</span><ul class="ts-fab-list"><li class="ts-fab-bio-link"><a href="#ts-fab-bio-below">Bio</a></li><li class="ts-fab-latest-posts-link"><a href="#ts-fab-latest-posts-below">Latest Posts</a></li></ul><div class="ts-fab-tabs">
+	<div class="ts-fab-tab" id="ts-fab-bio-below">
+		<div class="ts-fab-avatar"><img alt='' src='http://0.gravatar.com/avatar/cbd524ad36c1aba52cd6d17cfb46b9c2?s=80&amp;d=wavatar&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' /><div class="ts-fab-social-links"><a href="https://www.facebook.com/ajk.palikuqi" title="Facebook"><img src="http://www.ajkp.ca/blog/wp-content/plugins/fancier-author-box/images/facebook.png" width="24" height="24" alt="My Facebook profile" /></a><a href="http://www.linkedin.com/profile/view?id=91893902" title="LinkedIn"><img src="http://www.ajkp.ca/blog/wp-content/plugins/fancier-author-box/images/linkedin.png" width="24" height="24" alt="My LinkedIn profile" /></a></div>
+		</div>
+		
+		<div class="ts-fab-text">
+			<div class="ts-fab-header"><h4><a href="http://www.AjkP.ca">Ajk</a></h4></div><!-- /.ts-fab-header -->
+			<div class="ts-fab-content">If you like one of my posts the best way to support is give it a thumbs up, comment, or share it on social media :)</div>
+		</div>
+	</div>
+	<div class="ts-fab-tab" id="ts-fab-latest-posts-below">
+		<div class="ts-fab-avatar"><img alt='' src='http://0.gravatar.com/avatar/cbd524ad36c1aba52cd6d17cfb46b9c2?s=80&amp;d=wavatar&amp;r=G' class='avatar avatar-80 photo' height='80' width='80' /><div class="ts-fab-social-links"><a href="http://facebook.com/https://www.facebook.com/ajk.palikuqi" title="Facebook"><img src="http://www.ajkp.ca/blog/wp-content/plugins/fancier-author-box/images/facebook.png" width="24" height="24" alt="My Facebook profile" /></a><a href="http://www.linkedin.com/in/http://www.linkedin.com/profile/view?id=91893902" title="LinkedIn"><img src="http://www.ajkp.ca/blog/wp-content/plugins/fancier-author-box/images/linkedin.png" width="24" height="24" alt="My LinkedIn profile" /></a></div>
+		</div>
+		<div class="ts-fab-text">
+			<div class="ts-fab-header">
+				<h4>Latest posts by Ajk <span class="latest-see-all">(<a href="http://www.ajkp.ca/author/ajk_photmail-com/">see all</a>)</span></h4>
+			</div>
+			<ul class="ts-fab-latest">
+				<li>
+					<a href="http://www.ajkp.ca/2014/02/20/how-to-implement-threads-in-java/">How to implement threads in Java</a><span> - February 20, 2014</span> 
+				</li>
+				<li>
+					<a href="http://www.ajkp.ca/2014/02/18/convert-decimals-to-binary/">How to convert decimals to binary</a><span> - February 18, 2014</span> 
+				</li>
+				<li>
+					<a href="http://www.ajkp.ca/2014/02/14/brain-teaser-making-arithmetic-expression-true/">Brain Teaser: Making arithmetic expression true</a><span> - February 14, 2014</span> 
+				</li>
+		</ul></div>
+	</div>
+		</div>
+	</div> 
+												<!-- <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/"
+    dc:identifier="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/"
+    dc:title="How to implement a LRU Cache"
+    trackback:ping="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/trackback/" />
+</rdf:RDF> -->
+							</div> <!-- end div .entry -->
+<span class="postmeta_box">
+		<span class="auth"> <span class="meta-prep meta-prep-author posted"></span><a href="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/" title="7:41 pm" rel="bookmark"><span class="timestamp updated">February 6, 2014</span></a><span class="byline"></span><span class="author vcard"><a class="url fn n" href="http://www.ajkp.ca/author/ajk_photmail-com/" title="View all posts by Ajk">Ajk</a></span></span>
+<span class="postcateg"><a href="http://www.ajkp.ca/category/problem-solving/" title="View all posts in Problem Solving" rel="category tag">Problem Solving</a></span>
+
+<span class="comp"><a href="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/#respond" title="Comment on How to implement a LRU Cache"><span class="dsq-postid" rel="56 http://www.ajkp.ca/?p=56">No Comment</span></a></span> <span class="tags"><a href="http://www.ajkp.ca/tag/interview-question/" rel="tag">Interview question</a>, <a href="http://www.ajkp.ca/tag/java/" rel="tag">Java</a>, <a href="http://www.ajkp.ca/tag/lru-cache/" rel="tag">LRU Cache</a></span>	</span><!-- .entry-header -->
+<div class="gap"></div>		<div id="single-nav" class="clearfix">
+			<div id="single-nav-left">&laquo;<strong><a href="http://www.ajkp.ca/2014/02/04/how-and-when-to-use-binary-search-in-a-non-duplicate-array/" rel="prev">How and when to use Binary Search in a non-duplicate Array</a></strong></div>
+		<div id="single-nav-right"><strong><a href="http://www.ajkp.ca/2014/02/10/two-strings-are-anagrams-java/" rel="next">How to find out if two Strings are anagrams Java</a></strong>&raquo;</div>
+			
+        </div>
+        <!-- END single-nav -->
+			<div class="comments">	
+<div id="disqus_thread">
+    </div>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var disqus_url = 'http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/';
+    var disqus_identifier = '56 http://www.ajkp.ca/?p=56';
+    var disqus_container_id = 'disqus_thread';
+    var disqus_domain = 'disqus.com';
+    var disqus_shortname = 'ajkpca';
+    var disqus_title = "How to implement a LRU Cache";
+        var disqus_config = function () {
+        var config = this; // Access to the config object
+        config.language = '';
+
+        /*
+           All currently supported events:
+            * preData — fires just before we request for initial data
+            * preInit - fires after we get initial data but before we load any dependencies
+            * onInit  - fires when all dependencies are resolved but before dtpl template is rendered
+            * afterRender - fires when template is rendered but before we show it
+            * onReady - everything is done
+         */
+
+        config.callbacks.preData.push(function() {
+            // clear out the container (its filled for SEO/legacy purposes)
+            document.getElementById(disqus_container_id).innerHTML = '';
+        });
+                config.callbacks.onReady.push(function() {
+            // sync comments in the background so we don't block the page
+            var script = document.createElement('script');
+            script.async = true;
+            script.src = '?cf_action=sync_comments&post_id=56';
+
+            var firstScript = document.getElementsByTagName( "script" )[0];
+            firstScript.parentNode.insertBefore(script, firstScript);
+        });
+                    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+    var DsqLocal = {
+        'trackbacks': [
+        ],
+        'trackback_url': "http:\/\/www.ajkp.ca\/2014\/02\/06\/how-to-implement-a-lru-cache\/trackback\/"    };
+/* ]]> */
+</script>
+
+<script type="text/javascript">
+/* <![CDATA[ */
+(function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.' + 'disqus.com' + '/embed.js?pname=wordpress&pver=2.74';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+/* ]]> */
+</script>
+	</div> <!-- end div .comments -->	
+								</div> <!-- end div #content -->
+<div id="sidebar">	
+		<div class="box clearfloat"><div class="boxinside clearfloat"><h4 class="widgettitle">Search</h4><form method="get" id="searchform" action="http://www.ajkp.ca/">
+	<div>
+	<input type="text" value="Search" name="s" id="s" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" />
+		<input type="submit" id="searchsubmit" value="Go" />
+	</div>
+</form>
+</div></div>		<div class="box clearfloat"><div class="boxinside clearfloat">		<h4 class="widgettitle">Recent Posts</h4>		<ul>
+					<li>
+				<a href="http://www.ajkp.ca/2014/02/20/how-to-implement-threads-in-java/">How to implement threads in Java</a>
+						</li>
+					<li>
+				<a href="http://www.ajkp.ca/2014/02/18/convert-decimals-to-binary/">How to convert decimals to binary</a>
+						</li>
+					<li>
+				<a href="http://www.ajkp.ca/2014/02/14/brain-teaser-making-arithmetic-expression-true/">Brain Teaser: Making arithmetic expression true</a>
+						</li>
+					<li>
+				<a href="http://www.ajkp.ca/2014/02/10/two-strings-are-anagrams-java/">How to find out if two Strings are anagrams Java</a>
+						</li>
+					<li>
+				<a href="http://www.ajkp.ca/2014/02/06/how-to-implement-a-lru-cache/">How to implement a LRU Cache</a>
+						</li>
+				</ul>
+		</div></div><div class="box clearfloat"><div class="boxinside clearfloat"><h4 class="widgettitle">Recent Comments</h4><ul id="recentcomments"><li class="recentcomments">Ajk_P on <a href="http://www.ajkp.ca/2014/02/14/brain-teaser-making-arithmetic-expression-true/#comment-17">Brain Teaser: Making arithmetic expression true</a></li><li class="recentcomments">Matt on <a href="http://www.ajkp.ca/2014/02/14/brain-teaser-making-arithmetic-expression-true/#comment-16">Brain Teaser: Making arithmetic expression true</a></li><li class="recentcomments">Ajk_P on <a href="http://www.ajkp.ca/2014/02/04/how-and-when-to-use-binary-search-in-a-non-duplicate-array/#comment-15">How and when to use Binary Search in a non-duplicate Array</a></li><li class="recentcomments">Paul Gries on <a href="http://www.ajkp.ca/2014/02/04/how-and-when-to-use-binary-search-in-a-non-duplicate-array/#comment-14">How and when to use Binary Search in a non-duplicate Array</a></li></ul></div></div><div class="box clearfloat"><div class="boxinside clearfloat"><h4 class="widgettitle">Archives</h4>		<ul>
+			<li><a href='http://www.ajkp.ca/2014/02/'>February 2014</a></li>
+		</ul>
+</div></div><div class="box clearfloat"><div class="boxinside clearfloat"><h4 class="widgettitle">Meta</h4>			<ul>
+						<li><a rel="nofollow" href="http://www.ajkp.ca/blog/wp-login.php">Log in</a></li>
+			<li><a href="http://www.ajkp.ca/feed/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://ajkpca.disqus.com/latest.rss" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
+</div></div>	</div>	<!-- end div #sidebar -->
+
+			</div><!-- end div #page-inner -->
+</div><!-- end div #page --><!-- END PAGE --><!-- BEGIN BOTTOM-MENU -->	
+
+	<div id="footer">
+		<div id="footer-inner" class="clearfix">		Copyright &#169;  2014 Lime <a href="http://www.ajkp.ca/" title="Ajk Palikuqi" >Ajk Palikuqi</a> | Edited by: <a href="http://www.ajkp.ca" title="AjkP.Ca"><strong>AjkP.ca </strong></a>
+	</br>By <a href="http://www.AjkP.ca">Ajk P</a>
+	</div> <!-- end div #footer-inner -->
+	</div> <!-- end div #footer -->
+	<!-- END FOOTER -->
+		
+</div> <!-- end wrapper -->
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shCore.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushCSharp.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushPhp.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushJScript.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushJava.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushVb.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushSql.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushXml.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushDelphi.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushPython.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushRuby.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushCss.js"></script>
+<script class="javascript" src="http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/shBrushCpp.js"></script>
+<script class="javascript">
+dp.SyntaxHighlighter.ClipboardSwf = 'http://www.ajkp.ca/blog/wp-content/plugins/google-syntax-highlighter/Scripts/clipboard.swf';
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>
+	<div style="display:none">
+	<div class="grofile-hash-map-cbd524ad36c1aba52cd6d17cfb46b9c2">
+	</div>
+	</div>
+<script type='text/javascript' src='http://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201408'></script>
+<script type='text/javascript' src='http://s.gravatar.com/js/gprofiles.js?ver=2014Febaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://www.ajkp.ca/blog/wp-content/plugins/jetpack/modules/wpgroho.js?ver=3.8.1'></script>
+
+	<script src="http://stats.wordpress.com/e-201408.js" type="text/javascript"></script>
+	<script type="text/javascript">
+	st_go({v:'ext',j:'1:2.8',blog:'63939012',post:'56',tz:'-5'});
+	var load_cmc = function(){linktracker_init(63939012,56,2);};
+	if ( typeof addLoadEvent != 'undefined' ) addLoadEvent(load_cmc);
+	else load_cmc();
+	</script></body>
+</html>
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+
+ Served from: www.ajkp.ca @ 2014-02-21 01:15:16 by W3 Total Cache -->

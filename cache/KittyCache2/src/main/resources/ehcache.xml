@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache>
+    <diskStore path="data/ehcache" />
+    <defaultCache maxElementsInMemory="10000" eternal="false"
+        overflowToDisk="true" timeToIdleSeconds="120" timeToLiveSeconds="120"
+        diskPersistent="false" diskExpiryThreadIntervalSeconds="120" />
+
+    <cache name="cache1" maxElementsInMemory="100" eternal="false"
+        timeToIdleSeconds="6" timeToLiveSeconds="60" overflowToDisk="true"
+        diskPersistent="false" />
+
+    <cache name="cache2" maxElementsInMemory="100000" eternal="false"
+        timeToIdleSeconds="300" timeToLiveSeconds="600" overflowToDisk="false"
+        diskPersistent="false" />
+</ehcache>
