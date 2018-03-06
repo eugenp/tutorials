@@ -9,11 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.apache.commons.io.IOUtils;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,17 +20,21 @@ import com.baeldung.hibernate.lob.model.User;
 
 public class LobTest {
 
-	private EntityManager em;
+	private Session session;
 	
 	@Before
 	public void init(){
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("lob-example"); 
-		this.em = factory.createEntityManager();
+		try {
+			session = HibernateSessionUtil.getSessionFactory("hibernate.properties")
+			          .openSession();
+		} catch (HibernateException | IOException e) {
+			fail("Failed to initiate Hibernate Session [Exception:" + e.toString() + "]");
+		}
 	}
 	
 	@After
 	public void close(){
-		if(this.em != null) em.close();
+        if(session != null) session.close();
 	}
 	
 	@Test
@@ -45,14 +47,12 @@ public class LobTest {
 			user.setName("User"); 
 			user.setPhoto(IOUtils.toByteArray(inputStream)); 
 			
-			em.getTransaction().begin(); 
-			em.persist(user); 
-			em.getTransaction().commit(); 
+			session.persist(user);
 		} catch (IOException e) { 
 			fail("Unable to read input stream"); 
 		}
 		
-		User result = em.find(User.class, "1");
+		User result = session.find(User.class, "1");
 		
 		assertNotNull("Query result is null", result); 
 		assertEquals("User's name is invalid", user.getName(), result.getName() ); 
