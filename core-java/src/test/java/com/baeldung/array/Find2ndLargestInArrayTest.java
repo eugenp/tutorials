@@ -5,21 +5,12 @@ import org.junit.Test;
 
 public class Find2ndLargestInArrayTest {
     @Test
-    public void whenGivenAnIntArrayFindAn2ndLargestElement() {
-        int[] array = {1, 3, 24, 16, 87, 20};
+    public void givenAnIntArray_thenFind2ndLargestElement() {
+        int[] array = { 1, 3, 24, 16, 87, 20 };
         int expected2ndLargest = 24;
 
-        int maxElement = array[0];
-        int secondLargestElement = -1;
+        int actualSecondLargestElement = Find2ndLargestInArray.find2ndLargestElement(array);
 
-        for (int index = 0; index < array.length; index++) {
-            if (maxElement <= array[index]) {
-                secondLargestElement = maxElement;
-                maxElement = array[index];
-            } else if (secondLargestElement < array[index]) {
-                secondLargestElement = array[index];
-            }
-        }
-        Assert.assertEquals(expected2ndLargest, secondLargestElement);
+        Assert.assertEquals(expected2ndLargest, actualSecondLargestElement);
     }
 }

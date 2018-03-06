@@ -5,31 +5,31 @@ import org.junit.Test;
 
 public class FindElementInArrayTest {
     @Test
-    public void whenGivenAnIntArrayFindAnElement() {
-        int[] array = {1, 3, 4, 8, 19, 20};
+    public void givenAnIntArray_whenNotUsingStream_thenFindAnElement() {
+        int[] array = { 1, 3, 4, 8, 19, 20 };
         int element = 19;
         boolean expectedResult = true;
-        boolean actualResult = false;
-
-        for (int index = 0; index < array.length; index++) {
-            if (element == array[index]) {
-                actualResult = true;
-                break;
-            }
-        }
+        boolean actualResult = FindElementInArray.findGivenElementInArrayWithoutUsingStream(array, element);
         Assert.assertEquals(expectedResult, actualResult);
 
         element = 78;
         expectedResult = false;
-        actualResult = false;
+        actualResult = FindElementInArray.findGivenElementInArrayWithoutUsingStream(array, element);
+        Assert.assertEquals(expectedResult, actualResult);
+    }
 
-        for (int index = 0; index < array.length; index++) {
-            if (element == array[index]) {
-                actualResult = true;
-                break;
-            }
-        }
+    @Test
+    public void givenAnIntArray_whenUsingStream_thenFindAnElement() {
+        int[] array = { 15, 16, 12, 18 };
+        int element = 16;
+        boolean expectedResult = true;
+        boolean actualResult = FindElementInArray.findGivenElementInArrayUsingStream(array, element);
         Assert.assertEquals(expectedResult, actualResult);
 
+        element = 20;
+        expectedResult = false;
+        actualResult = FindElementInArray.findGivenElementInArrayUsingStream(array, element);
+        Assert.assertEquals(expectedResult, actualResult);
     }
+
 }
