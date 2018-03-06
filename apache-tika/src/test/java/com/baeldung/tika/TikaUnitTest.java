@@ -13,11 +13,9 @@ import org.junit.Test;
 import org.xml.sax.SAXException;
 
 public class TikaUnitTest {
-    private ClassLoader loader = this.getClass().getClassLoader();
-
     @Test
     public void whenUsingDetector_thenDocumentTypeIsReturned() throws IOException {
-        InputStream stream = loader.getResourceAsStream("tika.txt");
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream("tika.txt");
         String mediaType = TikaAnalysis.detectDocTypeUsingDetector(stream);
 
         assertEquals("application/pdf", mediaType);
@@ -27,7 +25,7 @@ public class TikaUnitTest {
 
     @Test
     public void whenUsingFacade_thenDocumentTypeIsReturned() throws IOException {
-        InputStream stream = loader.getResourceAsStream("tika.txt");
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream("tika.txt");
         String mediaType = TikaAnalysis.detectDocTypeUsingFacade(stream);
 
         assertEquals("application/pdf", mediaType);
@@ -37,7 +35,7 @@ public class TikaUnitTest {
 
     @Test
     public void whenUsingParser_thenContentIsReturned() throws IOException, TikaException, SAXException {
-        InputStream stream = loader.getResourceAsStream("tika.docx");
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream("tika.docx");
         String content = TikaAnalysis.extractContentUsingParser(stream);
 
         assertThat(content, containsString("Apache Tika - a content analysis toolkit"));
@@ -48,7 +46,7 @@ public class TikaUnitTest {
 
     @Test
     public void whenUsingFacade_thenContentIsReturned() throws IOException, TikaException {
-        InputStream stream = loader.getResourceAsStream("tika.docx");
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream("tika.docx");
         String content = TikaAnalysis.extractContentUsingFacade(stream);
 
         assertThat(content, containsString("Apache Tika - a content analysis toolkit"));
@@ -59,7 +57,7 @@ public class TikaUnitTest {
 
     @Test
     public void whenUsingParser_thenMetadataIsReturned() throws IOException, TikaException, SAXException {
-        InputStream stream = loader.getResourceAsStream("tika.xlsx");
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream("tika.xlsx");
         Metadata metadata = TikaAnalysis.extractMetadatatUsingParser(stream);
 
         assertEquals("org.apache.tika.parser.DefaultParser", metadata.get("X-Parsed-By"));
@@ -70,7 +68,7 @@ public class TikaUnitTest {
 
     @Test
     public void whenUsingFacade_thenMetadataIsReturned() throws IOException, TikaException {
-        InputStream stream = loader.getResourceAsStream("tika.xlsx");
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream("tika.xlsx");
         Metadata metadata = TikaAnalysis.extractMetadatatUsingFacade(stream);
 
         assertEquals("org.apache.tika.parser.DefaultParser", metadata.get("X-Parsed-By"));
