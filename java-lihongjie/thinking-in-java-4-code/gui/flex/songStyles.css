@@ -1,0 +1,11 @@
+.headerText {
+  font-family: Arial, "_sans";
+  font-size: 16;
+  font-weight: bold;
+}
+
+.boldText {
+  font-family: Arial, "_sans";
+  font-size: 11;
+  font-weight: bold;
+}

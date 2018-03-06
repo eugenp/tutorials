@@ -1,0 +1,128 @@
+<?xml version="1.0" ?>
+
+<project basedir="." default="run" name="Thinking in Java, 4th Edition by Bruce Eckel">
+
+  <description>
+    Main build.xml for the source code for
+    Thinking in Java, 4th Edition by Bruce Eckel
+    Code available at http://www.MindView.net
+    See copyright notice in CopyRight.txt
+
+    Ant available from: http://jakarta.apache.org/ant
+
+    To see options, type: ant -p
+  </description>
+
+  <condition property="version1.5">
+    <equals arg1="1.5" arg2="${ant.java.version}"/>
+  </condition>
+
+  <filelist id="buildfiles" dir="."
+    files="object/build.xml
+      operators/build.xml
+      control/build.xml
+      initialization/build.xml
+      access/build.xml
+      net/build.xml
+      reusing/build.xml
+      polymorphism/build.xml
+      interfaces/build.xml
+      innerclasses/build.xml
+      holding/build.xml
+      exceptions/build.xml
+      strings/build.xml
+      typeinfo/build.xml
+      generics/build.xml
+      arrays/build.xml
+      containers/build.xml
+      io/build.xml
+      xml/build.xml
+      enumerated/build.xml
+      annotations/build.xml
+      concurrency/build.xml
+      gui/build.xml
+      frogbean/build.xml
+      bangbean/build.xml
+      swt/build.xml
+      "/>
+
+  <target name="run" description="Compiles and runs all examples">
+    <delete file="errors.txt"/>
+    <subant>
+      <filelist refid="buildfiles"/>
+    </subant>
+    <available file="errors.txt" property="errors"/>
+    <antcall target="finish"/>
+  </target>
+
+  <target name="build" description="Compiles all examples">
+    <fail message="J2SE5 required" unless="version1.5"/>
+    <delete file="errors.txt"/>
+    <subant target="build">
+      <filelist refid="buildfiles"/>
+    </subant>
+    <available file="errors.txt" property="errors"/>
+    <antcall target="finish"/>
+  </target>
+
+  <target name="clean" description="delete all byproducts">
+    <delete>
+      <fileset dir="${basedir}" includes="**/*.class"/>
+      <fileset dir="${basedir}" includes="**/*Output.txt"/>
+      <fileset dir="${basedir}" includes="**/log.txt"/>
+      <fileset dir="${basedir}" includes="errors.txt"/>
+      <fileset dir="${basedir}" includes="failures"/>
+    </delete>
+    <echo message="clean successful"/>
+  </target>
+
+  <target name="finish" if="errors">
+    <echo message="Errors occurred.  See errors.txt for information."/>
+  </target>
+
+  <target name="verify" depends="run"
+    description="Verifies comment output; requires Python 2.3">
+    <exec executable="python">
+      <arg value="OutputVerifier.py"/>
+    </exec>
+  </target>
+
+  <target name="findbugs" depends="build"
+    description="Runs findbugs. Must install findbugs from findbugs.sourceforge.net">
+    <exec executable="findbugs.bat">
+      <arg value="-textui"/>
+      <arg value="-sortByClass"/>
+      <arg value="-exclude"/>
+      <arg value="FindBugsFilter.xml"/>
+      <arg value="-html"/>
+      <arg value="."/>
+      <redirector output="findbugs.html"/>
+    </exec>
+  </target>
+
+  <target name="findbugs-plain" depends="build"
+    description="Runs findbugs with plain text output">
+    <exec executable="findbugs.bat">
+      <arg value="-textui"/>
+      <arg value="-sortByClass"/>
+      <arg value="-exclude"/>
+      <arg value="FindBugsFilter.xml"/>
+      <arg value="."/>
+      <redirector output="findbugs.txt"/>
+    </exec>
+  </target>
+
+  <target name="findbugs-xml" depends="build"
+    description="Runs findbugs with xml output">
+    <exec executable="findbugs.bat">
+      <arg value="-textui"/>
+      <arg value="-sortByClass"/>
+      <arg value="-exclude"/>
+      <arg value="FindBugsFilter.xml"/>
+      <arg value="-xml"/>
+      <arg value="."/>
+      <redirector output="findbugs.xml"/>
+    </exec>
+  </target>
+
+</project>
