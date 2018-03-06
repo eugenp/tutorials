@@ -13,12 +13,12 @@ public class StrBuilderTest {
 
         Assert.assertEquals(new StrBuilder("new StrBuilder!"), strBuilder);
     }
-    
+
     @Test
     public void whenCleared_thenEmpty() {
         StrBuilder strBuilder = new StrBuilder("example StrBuilder!");
         strBuilder.clear();
-        
+
         Assert.assertEquals(new StrBuilder(""), strBuilder);
     }
 }
