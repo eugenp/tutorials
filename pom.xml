@@ -278,8 +278,9 @@
         <module>lucene</module>
         <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+        <module>jersey</module>
         <module>java-spi</module>
-    </modules>
+  </modules>
 
     <dependencies>
         <!-- logging -->
