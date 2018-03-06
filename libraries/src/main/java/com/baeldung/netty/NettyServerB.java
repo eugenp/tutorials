@@ -9,7 +9,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
-public class NettyServerB  {
+public class NettyServerB {
 
     private int port;
 
@@ -24,15 +24,11 @@ public class NettyServerB  {
 
         try {
             ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup)
-                .channel(NioServerSocketChannel.class)
-                .childHandler(new ChannelInitializer<SocketChannel>() {
-                    public void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(new ChannelHandlerA(), new ChannelHandlerB());
-                    }
-                })
-                .option(ChannelOption.SO_BACKLOG, 128)
-                .childOption(ChannelOption.SO_KEEPALIVE, true);
+            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).childHandler(new ChannelInitializer<SocketChannel>() {
+                public void initChannel(SocketChannel ch) throws Exception {
+                    ch.pipeline().addLast(new ChannelHandlerA(), new ChannelHandlerB());
+                }
+            }).option(ChannelOption.SO_BACKLOG, 128).childOption(ChannelOption.SO_KEEPALIVE, true);
             ChannelFuture f = b.bind(port).sync(); // (7)
             f.channel().closeFuture().sync();
         } finally {
