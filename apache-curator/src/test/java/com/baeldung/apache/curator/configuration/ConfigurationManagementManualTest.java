@@ -15,10 +15,10 @@ import com.baeldung.apache.curator.BaseTest;
 
 public class ConfigurationManagementManualTest extends BaseTest {
 
-    private static final String KEY_FORMAT = "/dev/key/%s";
+    private static final String KEY_FORMAT = "/%s";
 
     @Test
-    public void whenCreateKeyThenValueIsStored() throws Exception {
+    public void givenPath_whenCreateKey_thenValueIsStored() throws Exception {
         try (CuratorFramework client = newClient()) {
             client.start();
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
@@ -26,7 +26,7 @@ public class ConfigurationManagementManualTest extends BaseTest {
             String expected = "my_value";
 
             // Create key nodes structure
-            async.create()
+            client.create()
                 .forPath(key);
 
             // Set data value for our key
@@ -39,14 +39,14 @@ public class ConfigurationManagementManualTest extends BaseTest {
                 .forPath(key)
                 .thenAccept(data -> isEquals.set(new String(data).equals(expected)));
 
-            Thread.sleep(100);
+            Thread.sleep(1000);
 
             assertThat(isEquals.get()).isTrue();
         }
     }
 
     @Test
-    public void whenCreateKeyThenWatcherIsFired() throws Exception {
+    public void givenPath_whenWatchAKeyAndStoreAValue_thenWatcherIsTriggered() throws Exception {
         try (CuratorFramework client = newClient()) {
             client.start();
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
@@ -77,7 +77,7 @@ public class ConfigurationManagementManualTest extends BaseTest {
             async.setData()
                 .forPath(key, expected.getBytes());
 
-            Thread.sleep(100);
+            Thread.sleep(1000);
 
             assertThat(changes.size() > 0).isTrue();
         }

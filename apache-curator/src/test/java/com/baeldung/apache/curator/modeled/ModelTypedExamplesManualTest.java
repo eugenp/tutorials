@@ -16,12 +16,7 @@ import com.baeldung.apache.curator.BaseTest;
 public class ModelTypedExamplesManualTest extends BaseTest {
 
     @Test
-    public void whenReadDataUsingAsync() {
-
-    }
-
-    @Test
-    public void whenStoreAModelThenNodesAreCreated() throws InterruptedException {
+    public void givenPath_whenStoreAModel_thenNodesAreCreated() throws InterruptedException {
 
         ModelSpec<HostConfig> mySpec = ModelSpec.builder(ZPath.parseWithIds("/config/dev"), JacksonModelSerializer.build(HostConfig.class))
             .build();
