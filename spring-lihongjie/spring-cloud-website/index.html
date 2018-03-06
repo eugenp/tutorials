@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Spring Cloud中文网-官方文档中文版</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="author" content="Spring Cloud官方文档中文版">
+    <meta name="robots" content="index,follow">
+    <meta name="application-name" content="springcloud.cc">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Site CSS -->
+<!--    <link href="//cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/sweetalert/0.5.0/sweet-alert.min.css" rel="stylesheet">-->
+    <link href="cdn/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="cdn/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="cdn/sweetalert/0.5.0/sweet-alert.min.css" rel="stylesheet">
+    <link href="css/site.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Favicons -->
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
+    <link rel="shortcut icon" href="images/favicon.png">
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hidden-sm" href="//springcloud.cc">Spring Cloud中文网</a>
+        </div>
+        <div class="navbar-collapse collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li><a href="spring-cloud-config.html" target="_blank">Config</a></li>
+                <li><a href="spring-cloud-netflix.html" target="_blank">Netflix</a></li>
+                <li><a href="spring-cloud-connectors.html" target="_blank">Connectors</a></li>
+                <li><a href="spring-cloud-consul.html" target="_blank">Consul</a></li>
+                <li><a href="spring-data-rest-zhcn.html" target="_blank">Spring Data Rest</a></li>
+                <li><a href="spring-security-zhcn.html" target="_blank">Spring Security</a></li>
+            </ul>
+            <div class="navbar-text navbar-right hidden-sm">
+                <span id="loginbar">
+                    <a class="navbar-link" href="/register">注册</a>
+                    <a class="navbar-link" href="/login">登录</a>
+                </span>
+                <a class="navbar-link" href="javascript:springcloud.donation()">捐赠</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron masthead">
+    <div class="container">
+        <h1>Spring Cloud</h1>
+        <h2>微服务架构集大成者，云计算最佳业务实践。</h2>
+        <p class="masthead-button-links">
+            <a class="btn btn-lg btn-primary btn-shadow" href="spring-cloud-dalston.html" target="_blank" role="button">Spring Cloud Dalston中文文档</a>
+        </p>
+        <ul class="masthead-links">
+            <li>
+                <a href="spring-cloud-brixton.html" target="_blank" role="button">Spring Cloud Brixton中文文档</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="bc-social">
+    <div class="container">
+        <ul class="bc-social-buttons">
+            <li class="social-qq">
+                <i class="fa fa-qq"></i> Spring Cloud中文用户组：<span>31777218</span>
+            </li>
+            <li class="social-qq">
+                <i class="fa fa-qq"></i> JHipster中文社区：<span>58612944</span>
+            </li>
+            <li class="social-forum">
+                <a class="" href="//projects.spring.io/spring-cloud/" title="Spring Cloud官网" target="_blank">
+                    <i class="fa fa-cloud"></i> Spring Cloud官方网站
+                </a>
+            </li>
+            <li class="social-weibo">
+                <a href="https://zhuanlan.zhihu.com/p/21778490" title="知乎专栏" target="_blank"><i class="fa fa-heart"></i> 知乎专栏：轩辕悠悠</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="container projects">
+    <div class="projects-header page-header">
+        <h2>Spring Cloud集成相关优质项目推荐</h2>
+        <p>这些项目是Spring Cloud官方项目或是对Spring Cloud进行了有益的补充以及基于Spring Cloud最佳实践。</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="spring-cloud-config.html" target="_blank" title="Spring Cloud Config">
+                    <img class="lazy" src="images/spring-cloud-config.png" width="300" height="150" data-src="images/spring-cloud-config.png" alt="Spring Cloud Config">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="spring-cloud-config.html" target="_blank" title="Spring Cloud Config">
+                            Spring Cloud Config<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>配置管理工具包，让你可以把配置放到远程服务器，集中化管理集群配置，目前支持本地存储、Git以及Subversion。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-bus" target="_blank" title="Spring Cloud Bus">
+                    <img class="lazy" src="images/spring-cloud-bus.png" width="300" height="150" data-src="images/spring-cloud-bus.png" alt="Spring Cloud Bus">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-bus" target="_blank" title="Spring Cloud Bus">
+                            Spring Cloud Bus<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>事件、消息总线，用于在集群（例如，配置变化事件）中传播状态变化，可与Spring Cloud Config联合实现热部署。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/Netflix/eureka" target="_blank" title="Eureka">
+                    <img class="lazy" src="images/netflix-eureka.jpg" width="300" height="150" data-src="images/netflix-eureka.jpg" alt="Eureka">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/Netflix/eureka" target="_blank" title="Eureka">
+                            Eureka<br>
+                            <small>Netflix</small></a>
+                    </h3>
+                    <p>云端服务发现，一个基于 REST 的服务，用于定位服务，以实现云端中间层服务发现和故障转移。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/Netflix/hystrix" target="_blank" title="Hystrix">
+                    <img class="lazy" src="images/netflix-hystrix.png" width="300" height="150" data-src="images/netflix-hystrix.png" alt="Hystrix">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/Netflix/hystrix" target="_blank" title="Hystrix">
+                            Hystrix<br>
+                            <small>Netflix</small></a>
+                    </h3>
+                    <p>熔断器，容错管理工具，旨在通过熔断机制控制服务和第三方库的节点,从而对延迟和故障提供更强大的容错能力。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/Netflix/zuul" target="_blank" title="Zuul">
+                    <img class="lazy" src="images/netflix-zuul.png" width="300" height="150" data-src="images/netflix-zuul.png" alt="Zuul">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/Netflix/zuul" target="_blank" title="Zuul">
+                            Zuul<br>
+                            <small>Netflix</small></a>
+                    </h3>
+                    <p>Zuul 是在云平台上提供动态路由,监控,弹性,安全等边缘服务的框架。Zuul 相当于是设备和 Netflix 流应用的 Web 网站后端所有请求的前门。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/Netflix/archaius" target="_blank" title="Archaius">
+                    <img class="lazy" src="images/netflix-archaius.png" width="300" height="150" data-src="images/netflix-archaius.png" alt="Archaius">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/Netflix/archaius" target="_blank" title="Archaius">
+                            Archaius<br>
+                            <small>Netflix</small></a>
+                    </h3>
+                    <p>配置管理API，包含一系列配置管理API，提供动态类型化属性、线程安全配置操作、轮询框架、回调机制等功能。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/HashiCorp/consul" target="_blank" title="Consul">
+                    <img class="lazy" src="images/hashicorp-consul.png" width="300" height="150" data-src="images/hashicorp-consul.png" alt="Consul">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/HashiCorp/consul" target="_blank" title="Consul">
+                            Consul<br>
+                            <small>HashiCorp</small></a>
+                    </h3>
+                    <p>封装了Consul操作，consul是一个服务发现与配置工具，与Docker容器可以无缝集成。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry" target="_blank" title="Spring Cloud for Cloud Foundry">
+                    <img class="lazy" src="images/pivotal-cloud-foundry.png" width="300" height="150" data-src="images/pivotal-cloud-foundry.png" alt="Spring Cloud for Cloud Foundry">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-cloudfoundry" target="_blank" title="Spring Cloud for Cloud Foundry">
+                            Spring Cloud for Cloud Foundry<br>
+                            <small>Pivotal</small></a>
+                    </h3>
+                    <p>通过Oauth2协议绑定服务到CloudFoundry，CloudFoundry是VMware推出的开源PaaS云平台。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-sleuth" target="_blank" title="Spring Cloud Sleuth">
+                    <img class="lazy" src="images/spring-cloud-sleuth.png" width="300" height="150" data-src="images/spring-cloud-sleuth.png" alt="Spring Cloud Sleuth">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-sleuth" target="_blank" title="Spring Cloud Sleuth">
+                            Spring Cloud Sleuth<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>日志收集工具包，封装了Dapper和log-based追踪以及Zipkin和HTrace操作，为SpringCloud应用实现了一种分布式追踪解决方案。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-dataflow" target="_blank" title="Spring Cloud Data Flow">
+                    <img class="lazy" src="images/spring-cloud-data-flow.png" width="300" height="150" data-src="images/spring-cloud-data-flow.png" alt="Spring Cloud Data Flow">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-dataflow" target="_blank" title="Spring Cloud Data Flow">
+                            Spring Cloud Data Flow<br>
+                            <small>Pivotal</small></a>
+                    </h3>
+                    <p>大数据操作工具，作为Spring XD的替代产品，它是一个混合计算模型，结合了流数据与批量数据的处理方式。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-security" target="_blank" title="Spring Cloud Security">
+                    <img class="lazy" src="images/spring-cloud-security.png" width="300" height="150" data-src="images/spring-cloud-security.png" alt="Spring Cloud Security">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-security" target="_blank" title="Spring Cloud Security">
+                            Spring Cloud Security<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>基于spring security的安全工具包，为你的应用程序添加安全控制。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-zookeeper" target="_blank" title="Spring Cloud Zookeeper">
+                    <img class="lazy" src="images/spring-cloud-zookeeper.png" width="300" height="150" data-src="images/spring-cloud-zookeeper.png" alt="Spring Cloud Zookeeper">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-zookeeper" target="_blank" title="Spring Cloud Zookeeper">
+                            Spring Cloud Zookeeper<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>操作Zookeeper的工具包，用于使用zookeeper方式的服务发现和配置管理。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-stream" target="_blank" title="Spring Cloud Stream">
+                    <img class="lazy" src="images/spring-cloud-stream.png" width="300" height="150" data-src="images/spring-cloud-stream.png" alt="Spring Cloud Stream">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-stream" target="_blank" title="Spring Cloud Stream">
+                            Spring Cloud Stream<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>数据流操作开发包，封装了与Redis,Rabbit、Kafka等发送接收消息。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-cli" target="_blank" title="Spring Cloud CLI">
+                    <img class="lazy" src="images/spring-cloud-cli.png" width="300" height="150" data-src="images/spring-cloud-cli.png" alt="Spring Cloud CLI">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-cli" target="_blank" title="Spring Cloud CLI">
+                            Spring Cloud CLI<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>基于 Spring Boot CLI，可以让你以命令行方式快速建立云组件。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/Netflix/ribbon" target="_blank" title="Ribbon">
+                    <img class="lazy" src="images/netflix-ribbon.png" width="300" height="150" data-src="images/netflix-ribbon.png" alt="Ribbon">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/Netflix/ribbon" target="_blank" title="Ribbon">
+                            Ribbon<br>
+                            <small>Netflix</small></a>
+                    </h3>
+                    <p>提供云端负载均衡，有多种负载均衡策略可供选择，可配合服务发现和断路器使用。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/Netflix/turbine" target="_blank" title="Turbine">
+                    <img class="lazy" src="images/netflix-turbine.png" width="300" height="150" data-src="images/netflix-turbine.png" alt="Turbine">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/Netflix/turbine" target="_blank" title="Turbine">
+                            Turbine<br>
+                            <small>Netflix</small></a>
+                    </h3>
+                    <p>Turbine是聚合服务器发送事件流数据的一个工具，用来监控集群下hystrix的metrics情况。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/OpenFeign/feign" target="_blank" title="Feign">
+                    <img class="lazy" src="images/netflix-feign.png" width="300" height="150" data-src="images/netflix-feign.png" alt="Feign">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/OpenFeign/feign" target="_blank" title="Feign">
+                            Feign<br>
+                            <small>OpenFeign</small></a>
+                    </h3>
+                    <p>Feign是一种声明式、模板化的HTTP客户端。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-task" target="_blank" title="Spring Cloud Task">
+                    <img class="lazy" src="images/spring-cloud-task.png" width="300" height="150" data-src="images/spring-cloud-task.png" alt="Spring Cloud Task">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-task" target="_blank" title="Spring Cloud Task">
+                            Spring Cloud Task<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>提供云端计划任务管理、任务调度。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-connectors" target="_blank" title="Spring Cloud Connectors">
+                    <img class="lazy" src="images/spring-cloud-connectors.png" width="300" height="150" data-src="images/spring-cloud-connectors.png" alt="Spring Cloud Connectors">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-connectors" target="_blank" title="Spring Cloud Connectors">
+                            Spring Cloud Connectors<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>便于云端应用程序在各种PaaS平台连接到后端，如：数据库和消息代理服务。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-cluster" target="_blank" title="Spring Cloud Cluster">
+                    <img class="lazy" src="images/spring-cloud-cluster.png" width="300" height="150" data-src="images/spring-cloud-cluster.png" alt="Spring Cloud Cluster">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-cluster" target="_blank" title="Spring Cloud Cluster">
+                            Spring Cloud Cluster<br>
+                            <small>Spring</small></a>
+                    </h3>
+                    <p>提供Leadership选举，如：Zookeeper, Redis, Hazelcast, Consul等常见状态模式的抽象和实现。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3 ">
+            <div class="thumbnail">
+                <a href="https://github.com/spring-cloud/spring-cloud-stream-starters" target="_blank" title="Spring Cloud Starters">
+                    <img class="lazy" src="images/spring-cloud-starters.png" width="300" height="150" data-src="images/spring-cloud-starters.png" alt="Spring Cloud Starters">
+                </a>
+                <div class="caption">
+                    <h3>
+                        <a href="https://github.com/spring-cloud/spring-cloud-stream-starters" target="_blank" title="Spring Cloud Starters">
+                            Spring Cloud Starters<br>
+                            <small>Pivotal</small></a>
+                    </h3>
+                    <p>Spring Boot式的启动项目，为Spring Cloud提供开箱即用的依赖管理。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- /.container -->
+<footer class="footer ">
+    <div class="container">
+        <div class="row footer-top">
+            <div class="col-sm-6 col-lg-6">
+                <h4>
+                    <img src="images/logo.png">
+                </h4>
+                <p>本网站所列开源项目的中文文档全部使用官方文档翻译整理。</p>
+            </div>
+            <div class="col-sm-6  col-lg-5 col-lg-offset-1">
+                <div class="row about">
+                    <div class="col-xs-3">
+                        <h4>关于</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="/about.html">关于我们</a></li>
+                            <li><a href="/cooperate.html">广告合作</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-3">
+                        <h4>联系方式</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.zhihu.com/people/gan-ming-51" title="甘明的知乎"
+                                   target="_blank" rel="nofollow">作者知乎</a>
+                            </li>
+                            <li><a href="mailto:admin@springcloud.cc" rel="nofollow">电子邮件</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-3">
+                        <h4>软件作品</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="https://github.com/XYUU/BatteryUtils" target="_blank" rel="nofollow">电源管理</a></li>
+                            <li><a href="https://github.com/XYUU/ChaZD" target="_blank" rel="nofollow">记单词</a></li>
+                            <li><a href="https://github.com/XYUU/JDO" target="_blank">反混淆器</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-3">
+                        <h4>Thymeleaf</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.amazon.cn/Thymeleaf-3-%E5%AE%8C%E5%85%A8%E6%89%8B%E5%86%8C-%E7%94%98%E6%98%8E/dp/B06ZZHV8N4/ref=sr_1_1?ie=UTF8&qid=1496194453&sr=8-1&keywords=thymeleaf" target="_blank" rel="nofollow">Kindle版</a></li>
+                            <li><a href="http://www.duokan.com/book/139633" target="_blank" rel="nofollow">手机版</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+        <div class="row footer-bottom">
+            <ul class="list-inline text-center">
+                <li>Spring Cloud中文网 版权所有</li>
+                <li><a href="http://www.miibeian.gov.cn/" target="_blank" rel="nofollow">鄂ICP备16000202号-2</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!--<script src="//cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="//cdn.bootcss.com/unveil/1.3.0/jquery.unveil.min.js"></script>
+<script src="//cdn.bootcss.com/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
+<script src="//cdn.bootcss.com/toc/0.3.2/toc.min.js"></script>
+<script src="//cdn.bootcss.com/jquery.matchHeight/0.5.2/jquery.matchHeight-min.js"></script>-->
+<script src="cdn/jquery/1.11.2/jquery.min.js"></script>
+<script src="cdn/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="cdn/unveil/1.3.0/jquery.unveil.min.js"></script>
+<script src="cdn/scrollup/2.4.0/jquery.scrollUp.min.js"></script>
+<script src="cdn/toc/0.3.2/toc.min.js"></script>
+<script src="cdn/match-height/0.5.2/jquery.matchHeight-min.js"></script>
+<script src="js/site.js"></script>
+<script src="js/springcloud.min.js"></script>
+</body>
+</html>

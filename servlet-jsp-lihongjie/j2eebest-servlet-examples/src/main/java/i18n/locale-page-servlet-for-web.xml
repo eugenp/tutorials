@@ -1,0 +1,9 @@
+<servlet>
+    <servlet-name>LocalePageServlet</servlet-name>
+    <servlet-class>com.ora.i18n.servlets.LocalePageServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>LocalePageServlet</servlet-name>
+    <url-pattern>/LocalePageServlet</url-pattern>
+</servlet-mapping>

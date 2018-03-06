@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         version="2.4" 
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+                   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+    <!--<start id="param_contextConfigLocation" />-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spitter-security.xml
+            classpath:service-context.xml
+            classpath:persistence-context.xml
+            classpath:dataSource-context.xml
+        </param-value>
+    </context-param>
+    <!--<end id="param_contextConfigLocation" />-->
+
+    <!--<start id="listener_ContextLoaderListener" />-->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <!--<end id="listener_ContextLoaderListener" />-->
+
+    <!--<start id="filter_security" />-->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>
+            org.springframework.web.filter.DelegatingFilterProxy
+        </filter-class>
+    </filter>
+    <!--<end id="filter_security" />-->
+
+    <!--<start id="filter_hiddenHttpMethod" />-->
+    <filter>
+        <filter-name>httpMethodFilter</filter-name>
+        <filter-class>
+            org.springframework.web.filter.HiddenHttpMethodFilter
+        </filter-class>
+    </filter>
+    <!--<end id="filter_hiddenHttpMethod" />-->
+    
+    <!--<start id="filter_mapping_security" />-->
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--<end id="filter_mapping_security" />-->
+
+    
+    <!--<start id="filterMapping_hiddenHttpMethod" />-->
+    <filter-mapping>
+        <filter-name>httpMethodFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!--<end id="filterMapping_hiddenHttpMethod" />-->
+
+    <!--<start id="servlet_DispatcherServlet"/>-->
+    <servlet>
+        <servlet-name>spitter</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <!--<end id="servlet_DispatcherServlet"/>-->
+
+    <!--<start id="servletmapping_DispatcherServlet" />-->
+    <servlet-mapping>
+        <servlet-name>spitter</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <!--<end id="servletmapping_DispatcherServlet" />-->
+</web-app>

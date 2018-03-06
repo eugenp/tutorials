@@ -1,0 +1,877 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<FindBugsFilter>
+  <!--  Considered to be false positives -->
+  <Match>
+    <!--  Cannot do anything about this. API is fixed by the specification. -->
+    <Class name="javax.servlet.jsp.tagext.TagData"/>
+    <Bug code="CN" />
+  </Match>
+  <Match>
+    <Class name="javax.servlet.jsp.el.ImplicitObjectELResolver$ScopeMap$ScopeEntry"/>
+    <Method name="equals"/>
+    <Bug code="Eq" />
+  </Match>
+  <Match>
+    <!-- Yes the simple name is the same as the super class. Accept it. -->
+    <Class name="org.apache.catalina.Executor" />
+    <Bug code="Nm" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.ant.AbstractCatalinaTask"/>
+    <Method name="execute"/>
+    <Bug code="REC"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.ant.jmx.JMXAccessorCondition"/>
+    <Method name="accessJMXValue"/>
+    <Bug code="REC"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.ant.jmx.JMXAccessorEqualsCondition"/>
+    <Method name="accessJMXValue"/>
+    <Bug code="REC"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.authenticator.AuthenticatorBase"/>
+    <Field name="sessionIdGenerator"/>
+    <Bug code="IS"/>
+  </Match>
+  <Match>
+    <!-- request.getCoyoteRequest().getRemoteUser(), request.getDecodedRequestURI()
+    can be null because o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.authenticator.AuthenticatorBase"/>
+    <Or>
+      <Method name="checkForCachedAuthentication"/>
+      <Method name="invoke"/>
+    </Or>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.authenticator.DigestAuthenticator"/>
+    <Field name="cnonces"/>
+    <Bug code="IS"/>
+  </Match>
+  <Match>
+    <!-- request.getQueryString() can be null because
+    o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.authenticator.DigestAuthenticator$DigestInfo"/>
+    <Method name="validate"/>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <!-- request.getPathInfo(), request.getDecodedRequestURI() can return null
+    because o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.authenticator.FormAuthenticator"/>
+    <Or>
+      <Method name="authenticate"/>
+      <Method name="matchRequest"/>
+    </Or>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <!-- req.getRemoteUser(), req.getAuthType(), request.getQueryString() can
+    return null because o.a.t.util.buf.MessageBytes.toString() can return NULL
+    -->
+    <Class name="org.apache.catalina.connector.CoyoteAdapter"/>
+    <Or>
+      <Method name="doConnectorAuthenticationAuthorization"/>
+      <Method name="postParseRequest"/>
+    </Or>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.connector.CoyoteReader"/>
+    <Method name="readLine"/>
+    <Bug code="RR"/>
+  </Match>
+  <Match>
+    <!-- request.getPathInfo(), scookie.getDomain() can return null because
+    o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.connector.Request"/>
+    <Or>
+      <Method name="getRequestDispatcher"/>
+      <Method name="getPathTranslated"/>
+      <Method name="parseCookies"/>
+    </Or>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <!-- the platform default encoding is a fallback when calculating the
+    length of the string -->
+    <Class name="org.apache.catalina.connector.Request"/>
+    <Method name="parseParts"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- JNI library can only be loaded once so statics are appropriate -->
+    <Class name="org.apache.catalina.core.AprLifecycleListener" />
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <!-- request.getQueryString() can return null because
+    o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.core.AsyncContextImpl"/>
+    <Method name="logDebug"/>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <!-- Have to trigger GC for leak detection to work. Clearly documented -->
+    <Class name="org.apache.catalina.core.StandardHost" />
+    <Method name="findReloadedContextMemoryLeaks" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- Sleep is of short duration and lock is required -->
+    <Class name="org.apache.catalina.core.StandardWrapper" />
+    <Method name="unload" />
+    <Bug code="SWL" />
+  </Match>
+  <Match>
+    <!-- null return value is documented -->
+    <Class name="org.apache.catalina.core.StandardWrapper" />
+    <Method name="isSingleThreadModel" />
+    <Bug pattern="NP_BOOLEAN_RETURN_NULL" />
+  </Match>
+  <Match>
+    <!-- The code is adding HTTP request headers, not parameters and the
+         header parsing on input will have removed any CR or LF characters. -->
+    <Class name="org.apache.catalina.filters.CorsFilter" />
+    <Or>
+      <Method name="handlePreflightCORS" />
+      <Method name="handleSimpleCORS" />
+    </Or>
+    <Bug pattern="HRS_REQUEST_PARAMETER_TO_HTTP_HEADER" />
+  </Match>
+  <Match>
+    <!-- shost will not be null in normal usage -->
+    <Class name="org.apache.catalina.ha.backend.CollectedInfo" />
+    <Method name="init" />
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- Field is only modified during Servlet load -->
+    <Class name="org.apache.catalina.manager.host.HostManagerServlet" />
+    <Bug code="MSF" />
+  </Match>
+  <Match>
+    <!-- Catching exception is simpler than handling all the individual ones -->
+    <Class name="org.apache.catalina.manager.util.SessionUtils" />
+    <Method name="guessLocaleFromSession" />
+    <Bug code="REC" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.realm.JDBCRealm" />
+    <Field name="containerLog" />
+    <Bug code="IS" />
+  </Match>
+  <Match>
+    <!-- roles will be initialized in addAttributeValues -->
+    <Class name="org.apache.catalina.realm.JNDIRealm" />
+    <Or>
+      <Method name="getUserByPattern" />
+      <Method name="getUserBySearch" />
+    </Or>
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- request.getRequestPathMB(), request.getQueryString() can be null because
+    o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.realm.RealmBase"/>
+    <Or>
+      <Method name="findSecurityConstraints"/>
+      <Method name="hasUserDataPermission"/>
+    </Or>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <!-- If encoding is specified it will be used,
+    otherwise platform default encoding will be used -->
+    <Class name="org.apache.catalina.realm.RealmBase"/>
+    <Method name="Digest"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+  <!-- The header value is safe  -->
+    <Class name="org.apache.catalina.servlets.DefaultServlet" />
+    <Method name="doDirectoryRedirect" />
+    <Bug pattern="HRS_REQUEST_PARAMETER_TO_HTTP_HEADER" />
+  </Match>
+  <Match>
+    <!-- If encoding is specified it will be used,
+    otherwise platform default encoding will be used -->
+    <Class name="org.apache.catalina.servlets.DefaultServlet"/>
+    <Or>
+      <Method name="copy"/>
+      <Method name="getReadme"/>
+    </Or>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- Non-constant strings are configuration settings rather than client
+         supplied -->
+    <Class name="org.apache.catalina.session.JDBCStore" />
+    <Or>
+      <Method name="load" />
+      <Method name="save" />
+    </Or>
+    <Bug code="SQL" />
+  </Match>
+  <Match>
+    <!-- We can live with the threading issue. See code comment for details. -->
+    <Class name="org.apache.catalina.session.ManagerBase" />
+    <Method name="generateSessionId" />
+    <Bug code="VO" />
+  </Match>
+  <Match>
+    <!-- Use of null is deliberate -->
+    <Class name="org.apache.catalina.ssi.ExpressionParseTree" />
+    <Method name="pushOpp" />
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- If encoding is specified it will be used,
+    otherwise platform default encoding will be used -->
+    <Class name="org.apache.catalina.ssi.SSIServlet"/>
+    <Method name="processSSI"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- If encoding is specified it will be used,
+    otherwise platform default encoding will be used -->
+    <Class name="org.apache.catalina.ssi.SSIServletExternalResolver"/>
+    <Method name="getFileText"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- Catalina isn't used when embedding -->
+    <Class name="org.apache.catalina.startup.Catalina" />
+    <Method name="stopServer" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- The stream is closed in WebXmlParser.parseWebXml -->
+    <Class name="org.apache.catalina.startup.ContextConfig" />
+    <Or>
+      <Method name="getContextWebXmlSource" />
+      <Method name="getWebXmlSource" />
+    </Or>
+    <Bug code="OBL" />
+  </Match>
+  <Match>
+    <!-- Sleep is short, needs to keep lock -->
+    <Class name="org.apache.catalina.startup.HostConfig" />
+    <Method name="checkResources" />
+    <Bug code="SWL" />
+  </Match>
+  <Match>
+    <!-- context is never null -->
+    <Class name="org.apache.catalina.startup.HostConfig" />
+    <Or>
+      <Method name="deployDescriptor" />
+      <Method name="deployDirectory" />
+    </Or>
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.group.interceptors.TcpFailureDetector"/>
+    <Method name="memberAlive"/>
+    <Bug code="DE"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.membership.McastServiceImpl"/>
+    <Method name="stop"/>
+    <Bug code="DE"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.membership.McastServiceImpl$ReceiverThread"/>
+    <Method name="run"/>
+    <Bug code="DE"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.membership.McastServiceImpl$RecoveryThread"/>
+    <Method name="run"/>
+    <Bug code="NS"/>
+  </Match>
+  <Match>
+    <!-- Intentional in case thread is waiting -->
+    <Class name="org.apache.catalina.tribes.transport.RxTaskPool"/>
+    <Method name="returnWorker"/>
+    <Bug code="NN"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.util.LifecycleBase" />
+    <Method name="getState"/>
+    <Bug code="UG" />
+  </Match>
+  <Match>
+    <!-- If encoding is specified it will be used,
+    otherwise platform default encoding will be used -->
+    <Class name="org.apache.catalina.util.RequestUtil"/>
+    <Method name="URLDecode"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- the platform default encoding is a fallback -->
+    <Class name="org.apache.catalina.util.URLEncoder"/>
+    <Method name="encode"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- request.getRemoteHost() can be null because
+    o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.valves.AccessLogValve$HostElement"/>
+    <Method name="addElement"/>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <!-- request.getMethod() can be null because
+    o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.valves.AccessLogValve$RequestElement"/>
+    <Method name="addElement"/>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <!-- Non-constant strings are configuration settings rather than client
+         supplied -->
+    <Class name="org.apache.catalina.valves.JDBCAccessLogValve" />
+    <Method name="open" />
+    <Bug code="SQL" />
+  </Match>
+  <Match>
+    <!-- request.getQueryString() can be null because
+    o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.catalina.valves.StuckThreadDetectionValve"/>
+    <Method name="invoke"/>
+    <Bug code="RCN"/>
+  </Match>
+  <Match>
+    <!-- Fall-through expected -->
+    <Class name="org.apache.coyote.http11.AbstractHttp11Processor" />
+    <Method name="process"/>
+    <Bug code="SF" />
+  </Match>
+  <Match>
+    <!-- JspC will not be used under a security manager -->
+    <Class name="org.apache.jasper.JspC"/>
+    <Method name="initClassLoader"/>
+    <Bug code="DP" />
+  </Match>
+  <Match>
+    <!-- Parser config is static so statics are appropriate -->
+    <Class name="org.apache.jasper.JspC"/>
+    <Method name="setValidateXml"/>
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <!-- If encoding is specified it will be used,
+    otherwise platform default encoding will be used -->
+    <Class name="org.apache.jasper.JspC"/>
+    <Or>
+      <Method name="openWebxmlReader"/>
+      <Method name="openWebxmlWriter"/>
+    </Or>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- NPE is not possible -->
+    <Class name="org.apache.jasper.compiler.JspConfig"/>
+    <Method name="selectProperty"/>
+    <Bug code="NP"/>
+  </Match>
+  <Match>
+    <!-- Returning null is intentional -->
+    <Class name="org.apache.jasper.compiler.JspReader"/>
+    <Method name="indexOf"/>
+    <Bug code="NP"/>
+  </Match>
+  <Match>
+    <!-- Node constructors add node to parent. Local variable is used to
+         silence an Eclipse warning -->
+    <Class name="org.apache.jasper.compiler.Parser"/>
+    <Or>
+      <Method name="parseTemplateText"/>
+      <Method name="parseXMLTemplateText"/>
+    </Or>
+    <Bug code="DLS"/>
+  </Match>
+  <Match>
+    <!-- Use of == is deliberate -->
+    <Class name="org.apache.jasper.compiler.Parser"/>
+    <Method name="parseBody"/>
+    <Bug code="ES"/>
+  </Match>
+  <Match>
+    <!-- base null is handled by this resolver -->
+    <Class name="org.apache.jasper.el.JasperELResolver"/>
+    <Method name="getValue" />
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- the platform default encoding is a fallback -->
+    <Class name="org.apache.jasper.runtime.JspRuntimeLibrary"/>
+    <Method name="URLEncode"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- Use of == is deliberate, String.intern() is used -->
+    <Class name="org.apache.jasper.xmlparser.XMLEncodingDetector"/>
+    <Method name="scanXMLDeclOrTextDecl"/>
+    <Bug code="ES"/>
+  </Match>
+  <Match>
+    <!-- Stream is closed in o.a.juli.ClassLoaderLogManager.readConfiguration
+         (InputStream, ClassLoader) -->
+    <Class name="org.apache.juli.ClassLoaderLogManager"/>
+    <Method name="readConfiguration"/>
+    <Bug code="OBL"/>
+  </Match>
+  <Match>
+    <!-- If encoding is specified it will be used,
+    otherwise platform default encoding will be used -->
+    <Class name="org.apache.juli.FileHandler"/>
+    <Method name="openWriter"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- Simpler to catch Exception than to create dummy implementations of the
+         necessary exception hierarchy -->
+    <Class name="org.apache.naming.factory.SendMailFactory$1" />
+    <Method name="run" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <!-- Simpler to catch Exception than to create dummy implementations of the
+         necessary exception hierarchy -->
+    <Class name="org.apache.naming.factory.webservices.ServiceProxy" />
+    <Method name="&lt;init&gt;"/>
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <!-- Class name needs to start with a lower case letter in this case -->
+    <Class name="org.apache.naming.java.javaURLContextFactory" />
+    <Bug code="Nm" />
+  </Match>
+  <Match>
+    <!-- Class has to implement clone since its superclass does but fakes it -->
+    <Class name="org.apache.naming.resources.ResourceAttributes" />
+    <Bug code="CN" />
+  </Match>
+  <Match>
+    <!-- Return value is ignored but a null result will trigger an exception -->
+    <Class name="org.apache.tomcat.jdbc.pool.ConnectionPool$ConnectionFuture" />
+    <Method name="get" />
+    <Bug code="RV" />
+  </Match>
+  <Match>
+    <!-- Lock is released -->
+    <Class name="org.apache.tomcat.jdbc.pool.FairBlockingQueue" />
+    <Method name="poll" />
+    <Bug code="UL" />
+  </Match>
+  <Match>
+    <!-- Use of == is deliberate -->
+    <Class name="org.apache.tomcat.jdbc.pool.JdbcInterceptor" />
+    <Method name="compare" />
+    <Bug code="ES" />
+  </Match>
+  <Match>
+    <!-- Lock is released -->
+    <Class name="org.apache.tomcat.jdbc.pool.MultiLockFairBlockingQueue" />
+    <Method name="poll" />
+    <Bug code="UL" />
+  </Match>
+  <Match>
+    <!-- Lack of thread-safety is accepted in return for better performance. -->
+    <Class name="org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReport$QueryStats" />
+    <Or>
+      <Method name="add" />
+      <Method name="failure" />
+      <Method name="prepare" />
+    </Or>
+    <Bug code="VO" />
+  </Match>
+  <Match>
+    <Class name="org.apache.tomcat.util.IntrospectionUtils" />
+    <Method name="findMethod"/>
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- Class name is appropriate -->
+    <Class name="org.apache.tomcat.util.bcel.classfile.CodeException"/>
+    <Bug code="Nm" />
+  </Match>
+  <Match>
+    <!-- Field by field copy is fine for clone in this case -->
+    <Class name="org.apache.tomcat.util.bcel.classfile.StackMapType"/>
+    <Bug code="CN" />
+  </Match>
+  <Match>
+    <!-- Fall-through expected -->
+    <Class name="org.apache.tomcat.util.bcel.classfile.Utility"/>
+    <Bug code="SF" />
+  </Match>
+  <Match>
+    <!-- Returning null here is fine -->
+    <Class name="org.apache.tomcat.util.buf.ByteChunk"/>
+    <Method name="toString"/>
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- Returning null here is fine -->
+    <Class name="org.apache.tomcat.util.buf.CharChunk"/>
+    <Method name="toString"/>
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- Returning null here is fine -->
+    <Class name="org.apache.tomcat.util.buf.MessageBytes"/>
+    <Method name="toString"/>
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- Whilst cache is global there may be multiple instances (one per     -->
+    <!-- server so statics are appropriate -->
+    <Class name="org.apache.tomcat.util.buf.StringCache"/>
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <!-- mb.toString() can be null because
+    o.a.t.util.buf.MessageBytes.toString() can return NULL -->
+    <Class name="org.apache.tomcat.util.buf.UDecoder"/>
+    <Method name="convert"/>
+    <Bug code="RCN" />
+  </Match>
+  <Match>
+    <!-- the platform default encoding is a fallback -->
+    <Class name="org.apache.tomcat.util.buf.UDecoder"/>
+    <Method name="URLDecode"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- NPE is desired as it indicates an error condition -->
+    <Class name="org.apache.tomcat.util.digester.CallMethodRule"/>
+    <Method name="end"/>
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <!-- Test really is for the same object rather than equality -->
+    <Class name="org.apache.tomcat.util.digester.Digester"/>
+    <Or>
+      <Method name="updateBodyText"/>
+      <Method name="updateAttributes"/>
+    </Or>
+    <Bug code="ES" />
+  </Match>
+  <Match>
+    <!-- Fall-through expected -->
+    <Class name="org.apache.tomcat.util.http.Cookies" />
+    <Method name="processCookieHeader"/>
+    <Bug code="SF" />
+  </Match>
+  <Match>
+    <!-- the platform default encoding is a fallback -->
+    <Class name="org.apache.tomcat.util.http.fileupload.MultipartStream"/>
+    <Method name="readHeaders"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- the platform default encoding is a fallback -->
+    <Class name="org.apache.tomcat.util.http.fileupload.disk.DiskFileItem"/>
+    <Method name="getString"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- the platform default encoding is deliberate -->
+    <Class name="org.apache.tomcat.util.http.fileupload.util.Streams"/>
+    <Method name="asString"/>
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <!-- Fall-through expected -->
+    <Class name="org.apache.tomcat.util.http.Parameters" />
+    <Method name="processParameters"/>
+    <Bug code="SF" />
+  </Match>
+  <Match>
+    <!-- Hiding of field in superclass is deliberate -->
+    <Class name="org.apache.tomcat.util.modeler.NotificationInfo"/>
+    <Field name="info" />
+    <Bug code="MF" />
+  </Match>
+  <Match>
+    <!-- JSSE vs APR attribute names. More confusing to change one of them -->
+    <Class name="org.apache.tomcat.util.net.AprEndpoint"/>
+    <Or>
+      <Method name="getSSLProtocol"/>
+      <Method name="setSSLProtocol"/>
+    </Or>
+    <Bug code="Nm"/>
+  </Match>
+  <Match>
+    <!-- addCount is modified in other threads -->
+    <Class name="org.apache.tomcat.util.net.AprEndpoint$Poller"/>
+    <Method name="run"/>
+    <Bug code="NN" />
+  </Match>
+  <Match>
+    <Class name="org.apache.tomcat.util.net.AprEndpoint$Sendfile"/>
+    <Method name="run"/>
+    <Or>
+      <!-- see wait() call in destroy() -->
+      <Bug code="NN" />
+      <!-- notify() is called from add() -->
+      <Bug code="UW" />
+    </Or>
+  </Match>
+  <Match>
+    <!-- Sync is there to protect referenced object not field -->
+    <Class name="org.apache.tomcat.util.net.AprEndpoint$SocketEventProcessor"/>
+    <Method name="run"/>
+    <Bug code="ML" />
+  </Match>
+  <Match>
+    <!-- Sync is there to protect referenced object not field -->
+    <Class name="org.apache.tomcat.util.net.AprEndpoint$SocketWithOptionsProcessor"/>
+    <Method name="run"/>
+    <Bug code="ML" />
+  </Match>
+  <Match>
+    <!-- Return value is ignored at this point but logic further up call     -->
+    <!-- stack will ensure that a SocketTimeoutException is thrown           -->
+    <Class name="org.apache.tomcat.util.net.NioEndpoint$KeyAttachment"/>
+    <Method name="awaitLatch"/>
+    <Bug code="RV"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.tomcat.util.net.SecureNioChannel"/>
+    <Method name="rehandshake"/>
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <!-- Yes the simple name is the same as the super class. Accept it. -->
+    <Class name="org.apache.tomcat.util.threads.ThreadPoolExecutor" />
+    <Bug code="Nm" />
+  </Match>
+  <!--  Generated code -->
+  <Match>
+    <Or>
+      <Class name="org.apache.el.parser.AstFloatingPoint" />
+      <Class name="org.apache.el.parser.AstFunction" />
+      <Class name="org.apache.el.parser.AstInteger" />
+      <Class name="org.apache.el.parser.AstNegative" />
+      <Class name="org.apache.el.parser.AstValue" />
+      <Class name="org.apache.el.parser.ELParser" />
+      <Class name="org.apache.el.parser.ELParserConstants" />
+      <Class name="org.apache.el.parser.ELParserTokenManager" />
+      <Class name="org.apache.el.parser.ELParserTreeConstants" />
+      <Class name="org.apache.el.parser.ParseException" />
+      <Class name="org.apache.el.parser.SimpleCharStream" />
+      <Class name="org.apache.el.parser.TokenMgrError" />
+    </Or>
+  </Match>
+  <Match>
+    <!-- fCurrentEntity may be null after endEntity() call -->
+    <Class name="org.apache.jasper.xmlparser.XMLEncodingDetector" />
+    <Method name="load" />
+    <Bug code="RCN" />
+  </Match>
+
+  <!-- Test code -->
+   <Match>
+    <!-- Return value of latch is intentionally ignored -->
+    <Class name="org.apache.catalina.connector.TestSendFile"/>
+    <Method name="testBug60409"/>
+    <Bug pattern="RV_RETURN_VALUE_IGNORED"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.core.TestApplicationSessionCookieConfig$CustomContext" />
+    <Method name="getState"/>
+    <Bug code="UG" />
+  </Match>
+  <Match>
+    <Or>
+      <Class name="org.apache.catalina.startup.TestListener$SCL" />
+      <Class name="org.apache.catalina.startup.TestListener$SCL3" />
+    </Or>
+    <Method name="contextInitialized" />
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.startup.TestTomcatClassLoader$ClassLoaderReport"/>
+    <Bug code="Se"/>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.demos.EchoRpcTest" />
+    <Method name="run"/>
+    <Bug code="REC" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.demos.EchoRpcTest$SystemExit" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.demos.IntrospectionUtils" />
+    <Method name="findMethod"/>
+    <Bug code="NP" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.demos.LoadTest" />
+    <Method name="memberAdded"/>
+    <Bug code="NN" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.demos.LoadTest" />
+    <Method name="run"/>
+    <Or>
+      <Bug code="REC" />
+      <Bug code="UW" />
+    </Or>
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.demos.LoadTest$SystemExit" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.demos.MapDemo$SystemExit" />
+    <Bug code="Dm" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.channel.TestChannelOptionFlag" />
+    <Method name="tearDown" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.channel.TestChannelStartStop" />
+    <Method name="tearDown" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.channel.TestChannelStartStop" />
+    <Method name="testDoublePartialStart" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.channel.TestChannelStartStop" />
+    <Method name="testFalseOption" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.channel.TestRemoteProcessException" />
+   <Bug code="Nm" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.interceptors.TestNonBlockingCoordinator" />
+    <Method name="testCoord1" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.membership.TestTcpFailureDetector" />
+    <Method name="tearDown" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.transport.SocketReceive$1" />
+    <Method name="run" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.transport.SocketTribesReceive$1" />
+    <Method name="run" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.transport.SocketTribesReceive" />
+    <Method name="main" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.catalina.tribes.test.transport.SocketValidateReceive$1" />
+    <Method name="run" />
+    <Bug code="DE" />
+  </Match>
+  <Match>
+    <Class name="org.apache.naming.resources.ResourceAttributes" />
+    <Or>
+      <Field name="format"/>
+      <Field name="formats"/>
+    </Or>
+    <Bug pattern="STCAL_STATIC_SIMPLE_DATE_FORMAT_INSTANCE" />
+  </Match>
+  <Match>
+    <!-- Use of statics is unavoidable in all cases -->
+    <!-- Better to use it consistently rather than only where necessary -->
+    <Class name="org.apache.tomcat.jdbc.pool.interceptor.TestInterceptor" />
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <!-- The call with the ignored return value is used to ensure the pool -->
+    <!-- thinks the connection is being used.                              -->
+    <Class name="org.apache.tomcat.jdbc.test.AbandonPercentageTest" />
+    <Method name="testResetConnection" />
+    <Bug pattern="RV_RETURN_VALUE_IGNORED" />
+  </Match>
+  <Match>
+    <!-- Use of static is unavoidable -->
+    <Class name="org.apache.tomcat.jdbc.test.TestStatementCache" />
+    <Method name="tearDown" />
+    <Bug code="ST" />
+  </Match>
+  <Match>
+    <Class name="org.apache.tomcat.jdbc.test.TwoDataSources" />
+    <Method name="testTwoDataSources" />
+    <Or>
+      <!-- The object creation should fail -->
+      <Bug pattern="RV_RETURN_VALUE_IGNORED" />
+      <!-- The connection should be close by the pool -->
+      <Bug pattern="ODR_OPEN_DATABASE_RESOURCE" />
+    </Or>
+  </Match>
+  <Match>
+    <Class name="org.apache.tomcat.util.net.TestSsl" />
+    <Or>
+      <Method name="testRenegotiateFail" />
+      <Method name="testRenegotiateWorks" />
+    </Or>
+    <Bug code="RR" />
+  </Match>
+  <Match>
+    <!-- Return value of latch is intentionally ignored -->
+    <Or>
+      <Class name="org.apache.tomcat.websocket.TestWebSocketFrameClient"/>
+      <Class name="org.apache.tomcat.websocket.TestWebSocketFrameClientSSL"/>
+    </Or>
+    <Method name="testConnectToServerEndpoint"/>
+    <Bug pattern="RV_RETURN_VALUE_IGNORED"/>
+  </Match>
+  <Match>
+    <!-- Statics are used deliberately as they are simpler -->
+    <Class name="org.apache.tomcat.websocket.server.TestClose" />
+    <Method name="setUp" />
+    <Bug pattern="ST_WRITE_TO_STATIC_FROM_INSTANCE_METHOD"/>
+  </Match>
+  <Match>
+    <!-- Code is deliberately unused -->
+    <Class name="org.apache.tomcat.websocket.server.TestUriTemplate" />
+    <Or>
+      <Method name="testBasicPrefix" />
+      <Method name="testQuote2" />
+      <Method name="testDuplicate01" />
+    </Or>
+    <Bug pattern="DLS_DEAD_LOCAL_STORE"/>
+  </Match>
+</FindBugsFilter>

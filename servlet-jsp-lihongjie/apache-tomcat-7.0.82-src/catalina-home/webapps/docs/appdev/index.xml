@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="index.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <title>Table of Contents</title>
+  </properties>
+
+<body>
+
+
+<section name="Preface">
+
+<p>This manual includes contributions from many members of the Tomcat Project
+developer community.  The following authors have provided significant content:
+</p>
+<ul>
+<li>Craig R. McClanahan
+    (<a href="mailto:craigmcc@apache.org">craigmcc@apache.org</a>)</li>
+</ul>
+
+</section>
+
+
+<section name="Table of Contents">
+
+<p>The information presented is divided into the following sections:</p>
+<ul>
+<li><a href="introduction.html"><strong>Introduction</strong></a> -
+    Briefly describes the information covered here, with
+    links and references to other sources of information.</li>
+<li><a href="installation.html"><strong>Installation</strong></a> -
+    Covers acquiring and installing the required software
+    components to use Tomcat for web application development.</li>
+<li><a href="deployment.html"><strong>Deployment Organization</strong></a> -
+    Discusses the standard directory layout for a web application
+    (defined in the Servlet API Specification), the Web Application
+    Deployment Descriptor, and options for integration with Tomcat
+    in your development environment.</li>
+<li><a href="source.html"><strong>Source Organization</strong></a> -
+    Describes a useful approach to organizing the source code
+    directories for your project, and introduces the
+    <code>build.xml</code> used by Ant to manage compilation.</li>
+<li><a href="processes.html"><strong>Development Processes</strong></a> -
+    Provides brief descriptions of typical development processes
+    utilizing the recommended deployment and source organizations.</li>
+<li><a href="sample/" target="_blank"><strong>Example Application</strong></a> -
+    This directory contains a very simple, but functionally complete,
+    "Hello, World" application built according to the principles
+    described in this manual.  You can use this application to
+    practice using the described techniques.</li>
+</ul>
+
+</section>
+
+
+</body>
+</document>

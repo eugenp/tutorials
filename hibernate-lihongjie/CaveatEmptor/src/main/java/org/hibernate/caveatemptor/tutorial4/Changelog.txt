@@ -1,0 +1,14 @@
+CaveatEmptor Native
+###########################################################################
+
+Changes in version 20061211
+-----------------------------------------------
+
+* upgraded to Hibernate 3.2.1
+* upgraded to TestNG 5.4, fixes pathname with spaces problem on Windows
+
+Changes in version 20061109
+-----------------------------------------------
+
+* tested everything on HSQL DB, not any other DBMS
+* initial release for the 'Java Persistence with Hibernate' book

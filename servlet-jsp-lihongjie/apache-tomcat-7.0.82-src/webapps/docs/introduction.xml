@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="introduction.html">
+
+    &project;
+
+    <properties>
+        <author email="rslifka@sfu.ca">Robert Slifka</author>
+        <title>Introduction</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+<p>For administrators and web developers alike, there are some important bits
+of information you should familiarize yourself with before starting out. This
+document serves as a brief introduction to some of the concepts and
+terminology behind the Tomcat container. As well, where to go when you need
+help.</p>
+
+</section>
+
+
+<section name="Terminology">
+
+<p>In the course of reading these documents, you will run across a number of
+terms; some specific to Tomcat, and others defined by the
+<a href="http://wiki.apache.org/tomcat/Specifications">Servlet and
+JSP specifications</a>.</p>
+
+<ul>
+<li><strong>Context</strong> - In a nutshell, a Context is a
+    web application.</li>
+<li><strong>Term2</strong> - This is it.</li>
+<li><strong>Term3</strong> - This is it!</li>
+</ul>
+
+</section>
+
+
+<section name="Directories and Files">
+
+<p>Throughout the docs, you'll notice there are numerous references to
+<strong>$CATALINA_HOME</strong>. This represents the root of your Tomcat
+installation. When we say, "This information can be found in your
+$CATALINA_HOME/README.txt file" we mean to look at the README.txt file at the
+root of your Tomcat install. Optionally, Tomcat may be configured for multiple
+instances by defining <strong>$CATALINA_BASE</strong> for each instance. If
+multiple instances are not configured, <strong>$CATALINA_BASE</strong> is the
+same as <strong>$CATALINA_HOME</strong>.</p>
+
+<p>These are some of the key tomcat directories:</p>
+
+<ul>
+<li><strong>/bin</strong> - Startup, shutdown, and other scripts. The
+    <code>*.sh</code> files (for Unix systems) are functional duplicates of
+    the <code>*.bat</code> files (for Windows systems).  Since the Win32
+    command-line lacks certain functionality, there are some additional
+    files in here.</li>
+<li><strong>/conf</strong> - Configuration files and related DTDs.  The most
+    important file in here is server.xml.  It is the main configuration file
+    for the container.</li>
+<li><strong>/logs</strong> - Log files are here by default.</li>
+<li><strong>/webapps</strong> - This is where your webapps go.</li>
+</ul>
+
+</section>
+
+
+<section name="Configuring Tomcat">
+
+<p>This section will acquaint you with the basic information used during
+the configuration of the container.</p>
+
+<p>All of the information in the configuration files is read at startup,
+meaning that any change to the files necessitates a restart of the container.
+</p>
+
+</section>
+
+
+<section name="Where to Go for Help">
+
+<p>While we've done our best to ensure that these documents are clearly
+written and easy to understand, we may have missed something.  Provided
+below are various web sites and mailing lists in case you get stuck.</p>
+
+<p>As Tomcat 7 is a new release of Tomcat, keep in mind that some of the
+issues and solutions vary between the major versions of Tomcat (6.x versus
+7.x).  As you search around the web, there will be some documentation that
+is not relevant to Tomcat 7, but 6.x, 5.x or earlier versions.  Doing 3.x
+or 4.x things to 7 will probably not work in most cases as the server.xml
+files are very different.</p>
+
+<ul>
+<li>Current document - most documents will list potential hangups. Be sure
+    to fully read the relevant documentation as it will save you much time
+    and effort. There's nothing like scouring the web only to find out that
+    the answer was right in front of you all along!</li>
+<li><a href="http://wiki.apache.org/tomcat/FAQ">Tomcat FAQ</a></li>
+<li><a href="http://wiki.apache.org/tomcat/">Tomcat WIKI</a></li>
+<li>Tomcat FAQ at <a href="http://www.jguru.com/faq/home.jsp?topic=Tomcat">jGuru</a></li>
+<li>Tomcat mailing list archives - numerous sites archive the Tomcat mailing
+    lists. Since the links change over time, clicking here will search
+    <a href="http://www.google.com/search?q=tomcat+mailing+list+archives">Google</a>.
+    </li>
+<li>The TOMCAT-USER mailing list, which you can subscribe to
+    <a href="http://tomcat.apache.org/lists.html">here</a>. If you don't
+    get a reply, then there's a good chance that your question was probably
+    answered in the list archives or one of the FAQs.  Although questions
+    about web application development in general are sometimes asked and
+    answered, please focus your questions on Tomcat-specific issues.</li>
+<li>The TOMCAT-DEV mailing list, which you can subscribe to
+    <a href="http://tomcat.apache.org/lists.html">here</a>.  This list is
+    <strong>reserved</strong> for discussions about the development of Tomcat
+    itself.  Questions about Tomcat configuration, and the problems you run
+    into while developing and running applications, will normally be more
+    appropriate on the TOMCAT-USER list instead.</li>
+</ul>
+
+<p>And, if you think something should be in the docs, by all means let us know
+on the TOMCAT-DEV list.</p>
+
+</section>
+
+</body>
+
+</document>

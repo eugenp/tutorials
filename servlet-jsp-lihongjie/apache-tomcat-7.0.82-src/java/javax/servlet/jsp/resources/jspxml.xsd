@@ -1,0 +1,514 @@
+<?xml version ="1.0"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE schema [
+<!-- Patterns -->
+<!ENTITY Identifier   "(\p{L}|_|$)(\p{N}|\p{L}|_|$)*">
+<!ENTITY TypeName     "&Identifier;(\.&Identifier;)*">
+<!ENTITY WS       "\s*">
+<!ENTITY Import     "&TypeName;(\.\*)?">
+<!ENTITY ImportList   "&Import;(&WS;,&WS;&Import;)*">
+<!ENTITY SetProp    "(&Identifier;|\*)">
+<!ENTITY RelativeURL  "[^:#/\?]*(:{0,0}|[#/\?].*)">
+<!ENTITY Length     "[0-9]*&#x25;?">
+<!ENTITY AsciiName    "[A-Za-z0-9_-]*">
+<!ENTITY ValidContentType  "&AsciiName;/&AsciiName;(;&WS;(charset=)?&AsciiName;)?">
+<!ENTITY ValidPageEncoding  "&AsciiName;/&AsciiName;">
+<!ENTITY Buffer     "[0-9]+kb">
+<!ENTITY RTexpr     "&#x25;=.*&#x25;">
+]>
+
+
+<!--Conforms to w3c http://www.w3.org/2001/XMLSchema -->
+
+<xsd:schema
+    xmlns = "http://java.sun.com/JSP/Page"
+    xmlns:xsd = "http://www.w3.org/2001/XMLSchema"
+    xmlns:jsp = "http://java.sun.com/JSP/Page"
+    targetNamespace = "http://java.sun.com/JSP/Page"
+    elementFormDefault = "qualified"
+    attributeFormDefault = "unqualified">
+
+  <xsd:annotation>
+    <xsd:documentation>
+      XML Schema for JSP 2.0.
+
+      This schema is based upon the recent (May 5th, 2001)
+      W3C recommendation for XML Schema.
+
+      A JSP translator should reject an XML-format file that is
+      not strictly valid according to this schema or does not observe
+      the constraints documented here. A translator is not required
+      to use this schema for validation or to use a validating parser.
+    </xsd:documentation>
+  </xsd:annotation>
+
+
+  <!-- Complex Types -->
+
+  <xsd:complexType name = "Body">
+    <xsd:annotation>
+      <xsd:documentation>
+        Body defines the "top-level" elements in root and beanInfo.
+        There are probably other elements that should use it.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:group ref = "Bodygroup" minOccurs = "0" maxOccurs = "unbounded"/>
+  </xsd:complexType>
+
+  <!-- groups -->
+
+  <xsd:group name = "Bodygroup">
+    <xsd:choice>
+      <xsd:element ref = "directive.page"/>
+      <xsd:element ref = "directive.include"/>
+      <xsd:element ref = "scriptlet"/>
+      <xsd:element ref = "declaration"/>
+      <xsd:element ref = "expression"/>
+      <xsd:element ref = "useBean"/>
+      <xsd:element ref = "setProperty"/>
+      <xsd:element ref = "getProperty"/>
+      <xsd:element ref = "include"/>
+      <xsd:element ref = "forward"/>
+      <xsd:element ref = "plugin"/>
+      <xsd:element ref = "text"/>
+      <xsd:any namespace="##other" processContents = "lax"/>
+    </xsd:choice>
+  </xsd:group>
+
+
+  <!-- Simple types are next -->
+
+  <xsd:simpleType name = "RTE">
+    <xsd:annotation>
+      <xsd:documentation>
+        A request-time expression value
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&RTexpr;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "Bool">
+    <xsd:annotation>
+      <xsd:documentation>
+        Bool would be boolean except it does not accept 1 and 0.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:NMTOKEN" >
+      <xsd:enumeration value = "true"/>
+      <xsd:enumeration value = "false"/>
+      <xsd:enumeration value = "yes"/>
+      <xsd:enumeration value = "no"/>
+    </xsd:restriction>     
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "Identifier">
+    <xsd:annotation>
+      <xsd:documentation>
+        Identifier is an unqualified Java identifier.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&Identifier;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name = "TypeName">
+    <xsd:annotation>
+      <xsd:documentation>
+        TypeName is one or more Java identifiers separated by dots
+        with no whitespace.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&TypeName;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name = "ImportList">
+    <xsd:annotation>
+      <xsd:documentation>
+        ImportList is one or more typeNames separated by commas.
+        Whitespace is allowed before and after the comma.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&ImportList;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name = "SetProp">
+    <xsd:annotation>
+      <xsd:documentation>
+        SetProp is an Identifier or *.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&SetProp;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name = "RelativeURL">
+    <xsd:annotation>
+      <xsd:documentation>
+        RelativeURL is a uriReference with no colon character
+        before the first /, ? or #, if any (RFC2396).
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:anyURI">
+      <xsd:pattern value = "&RelativeURL;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "RTERelativeURL">
+    <xsd:union memberTypes = "RelativeURL RTE"/>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "Length">
+    <xsd:annotation>
+      <xsd:documentation>
+        Length is nn or nn%.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&Length;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+
+  <xsd:simpleType name = "ExplicitBufferSize">
+    <xsd:annotation>
+      <xsd:documentation>
+         Buffer Size with an explicit value
+      </xsd:documentation>
+    </xsd:annotation> 
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&Buffer;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "NoneBufferSize">
+    <xsd:annotation>
+      <xsd:documentation>
+         Buffer Size with a "none" value
+      </xsd:documentation>
+    </xsd:annotation> 
+       <xsd:restriction base = "xsd:string">
+         <xsd:enumeration value = "none"/>
+       </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "BufferSize">
+    <xsd:annotation>
+      <xsd:documentation>
+        Buffer size is xkb or none.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:union memberTypes = "ExplicitBufferSize NoneBufferSize"/>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name = "ContentType">
+    <xsd:annotation>
+      <xsd:documentation>
+        Content type and character encoding for this page.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&ValidContentType;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "PageEncoding">
+    <xsd:annotation>
+      <xsd:documentation>
+        Page Encoding for this page.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:string">
+      <xsd:pattern value = "&ValidPageEncoding;"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "Scope">
+    <xsd:annotation>
+      <xsd:documentation>
+        valid scope values
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:NMTOKEN">
+      <xsd:enumeration value = "page"/>
+      <xsd:enumeration value = "session"/>
+      <xsd:enumeration value = "request"/>
+      <xsd:enumeration value = "application"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "PlugInType">
+    <xsd:annotation>
+      <xsd:documentation>
+        valid values for a plugin type
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:NMTOKEN">
+      <xsd:enumeration value = "bean"/>
+      <xsd:enumeration value = "applet"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name = "AlignType">
+    <xsd:annotation>
+      <xsd:documentation>
+        Buffer size is xkb.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base = "xsd:NMTOKEN">
+      <xsd:enumeration value = "top"/>
+      <xsd:enumeration value = "middle"/>
+      <xsd:enumeration value = "bottom"/>
+      <xsd:enumeration value = "left"/>
+      <xsd:enumeration value = "right"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- Elements follow -->
+
+  <xsd:element name = "root">
+    <xsd:annotation>
+      <xsd:documentation>
+        The root element of all JSP documents is named root.
+        
+        Authors may, if they wish, include schema location information.
+        If specified, the information may appear as attributes of
+        the root element as follows:
+
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/JSP/Page xsd-file-location"
+
+        Documents should not specify the system identifier of a DTD
+        in a DOCTYPE declaration.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base = "Body">
+          <xsd:attribute name = "version" fixed = "2.0" type = "xsd:string"/>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name = "directive.page">
+    <xsd:annotation>
+      <xsd:documentation>
+        directive.page is the "page directive".
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:attribute name = "language" default = "java" type = "xsd:string"/>
+      <xsd:attribute name = "extends" type = "TypeName"/>
+      <xsd:attribute name = "contentType" default = "text/html; charset=ISO-8859-1" type = "ContentType"/>
+      <xsd:attribute name = "pageEncoding" use = "optional" type = "PageEncoding"/>
+      <xsd:attribute name = "import" type = "ImportList"/>
+      <xsd:attribute name = "session" default = "true" type = "Bool"/>
+      <xsd:attribute name = "buffer" default = "8kb" type = "BufferSize"/>
+      <xsd:attribute name = "autoFlush" default = "true" type = "Bool"/>
+      <xsd:attribute name = "isThreadSafe" default = "true" type = "Bool"/>
+      <xsd:attribute name = "info" type = "xsd:string"/>
+      <xsd:attribute name = "errorPage" type = "RelativeURL"/>
+      <xsd:attribute name = "isErrorPage" default = "false" type = "Bool"/>
+      <xsd:attribute name = "isELIgnored" type = "Bool"/>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name = "directive.include">
+    <xsd:annotation>
+      <xsd:documentation>
+        directive.include is the "include directive".
+        This element does not appear on XML views of JSP pages.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:attribute name = "file" use = "required" type = "RelativeURL"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name = "scriptlet" type = "xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>
+        The representation of a scriplet.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:element name = "declaration" type = "xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>
+        The representation of a declaration.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+  
+  <xsd:element name = "expression" type = "xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>
+        The representation of an expression.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+ 
+  <xsd:element name = "text" type = "xsd:string">
+    <xsd:annotation>
+      <xsd:documentation>
+        Verbatim template text.
+      </xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+  <xsd:element name = "useBean">
+    <xsd:annotation>
+      <xsd:documentation>
+        useBean instantiates or accesses a bean in the specified scope.
+        
+        Constraint: The allowed combinations of attributes are:
+        
+          class [type] | type [( class | beanName)]
+        
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:complexContent>
+        <xsd:extension base="Body">
+          <xsd:attribute name = "id" use = "required" type = "Identifier"/>
+          <xsd:attribute name = "class" type = "TypeName"/>
+          <xsd:attribute name = "type" type = "TypeName"/>
+          <xsd:attribute name = "beanName" type = "TypeName"/>
+          <xsd:attribute name = "scope" default = "page" type = "Scope"/>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name = "setProperty">
+    <xsd:annotation>
+      <xsd:documentation>
+        setProperty changes the value of an object property.
+        
+        Constraint: The object named by the name must have been
+        "introduced" to the JSP processor using either the
+        jsp:useBean action or a custom action with an associated
+        VariableInfo entry for this name.
+
+        Exact valid combinations are not expressable in XML Schema.
+        They are:
+
+        name="Identifier" property="*"
+        name="Identifier" property="Identfiier" param="string"
+        name="Identifier" property="Identifier" value="string"
+                
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:attribute name = "name" use = "required" type = "Identifier"/>
+      <xsd:attribute name = "property" use = "required" type = "SetProp"/>
+      <xsd:attribute name = "param" type = "xsd:string"/>
+      <xsd:attribute name = "value" type = "xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name = "getProperty">
+    <xsd:annotation>
+      <xsd:documentation>
+        getProperty obtains the value of an object property.
+        
+        Constraint: The object named by the name must have been
+        "introduced" to the JSP processor using either the
+        jsp:useBean action or a custom action with an associated
+        VariableInfo entry for this name.
+        
+        ???The spec is interpreted as restricting the values of
+        property to Identifier.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:attribute name = "name" use = "required" type = "Identifier"/>
+      <xsd:attribute name = "property" use = "required" type = "Identifier"/>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name = "include">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref = "param" minOccurs = "0" maxOccurs = "unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name = "flush" default = "false" type = "Bool"/>
+      <xsd:attribute name = "page" use = "required" type = "RTERelativeURL"/>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name = "forward">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref = "param" minOccurs = "0" maxOccurs = "unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name = "page" use = "required" type = "RTERelativeURL"/>
+     </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name = "plugin">
+    <xsd:complexType> <!-- content only! -->
+      <xsd:sequence>
+        <xsd:element ref = "params" minOccurs = "0" maxOccurs = "1"/>
+        <xsd:element name = "fallback" minOccurs = "0" maxOccurs = "1" type = "Body"/>
+      </xsd:sequence>
+      <xsd:attribute name = "type" use = "required" type = "PlugInType"/>
+      <xsd:attribute name = "code" type = "xsd:anyURI"/>
+      <xsd:attribute name = "codebase" type = "xsd:anyURI"/>
+      <xsd:attribute name = "align" type = "AlignType"/>
+      <xsd:attribute name = "archive">
+        <xsd:simpleType>
+           <xsd:list itemType="xsd:anyURI"/>
+        </xsd:simpleType>
+      </xsd:attribute>
+      <xsd:attribute name = "height" type = "Length"/>
+      <xsd:attribute name = "hspace" type = "xsd:int"/>
+      <xsd:attribute name = "jreversion" default = "1.2" type = "xsd:string"/>
+      <xsd:attribute name = "name" type = "xsd:NMTOKEN"/>
+      <xsd:attribute name = "vspace" type = "xsd:int"/>
+      <xsd:attribute name = "width" type = "Length"/>
+      <xsd:attribute name = "nspluginurl" type = "xsd:anyURI"/>
+      <xsd:attribute name = "iepluginurl" type = "xsd:anyURI"/>
+    </xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name = "params">
+    <xsd:complexType>
+       <xsd:sequence>
+         <xsd:element ref = "param" minOccurs = "1" maxOccurs = "unbounded"/>
+       </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name = "param">
+    <xsd:complexType>
+      <xsd:attribute name = "name" use = "required" type = "xsd:NMTOKEN"/>
+      <xsd:attribute name = "value" use = "required" type = "xsd:string"/>
+    </xsd:complexType>
+  </xsd:element>
+  
+</xsd:schema>

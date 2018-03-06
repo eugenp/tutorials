@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd">
+    <bean:import resource="classpath:ch10/job-context.xml"/>
+
+    <job id="retryJob">
+        <step id="retryStep">
+          <tasklet>
+				<chunk reader="reader" processor="alwaysExceptionItemProcessor" writer="writer" 
+				    commit-interval="1" retry-limit="3">
+				    <retry-listeners>
+				        <listener ref="sysoutRetryListener"></listener>
+				    </retry-listeners>
+				    <retryable-exception-classes>
+				        <include class="java.lang.RuntimeException" />
+				        <exclude class="java.io.FileNotFoundException" />
+				    </retryable-exception-classes>
+         		</chunk>
+		  </tasklet>
+        </step>
+    </job>
+    
+    <job id="retryPolicyJob">
+        <step id="retryPolicyStep">
+          <tasklet>
+				<chunk reader="reader" processor="alwaysExceptionItemProcessor" writer="writer" 
+				    commit-interval="1" retry-policy="exceptionClassifierRetryPolicy">
+         		</chunk>
+		  </tasklet>
+        </step>
+    </job>
+    
+    
+    <job id="retryCacheCapacityJob">
+        <step id="retryCacheCapacityStep">
+          <tasklet>
+				<chunk reader="reader" processor="radomExceptionItemProcessor"  writer="writer" 
+				    commit-interval="1" retry-policy="alwaysRetryPolicy" cache-capacity="1" >
+         		</chunk>
+		  </tasklet>
+        </step>
+    </job>
+    
+    <bean:bean id="alwaysRetryPolicy" 
+        class="org.springframework.retry.policy.AlwaysRetryPolicy" />
+    
+	<bean:bean id="exceptionClassifierRetryPolicy" 
+	    class="org.springframework.retry.policy.ExceptionClassifierRetryPolicy">
+		<bean:property name="policyMap">
+			<bean:map>
+				<bean:entry key="com.juxtapose.example.ch10.retry.MockARuntimeException">
+					<bean:bean class="org.springframework.retry.policy.SimpleRetryPolicy">
+						<bean:property name="maxAttempts" value="3" />
+					</bean:bean>
+				</bean:entry>
+				<bean:entry key="com.juxtapose.example.ch10.retry.MockBRuntimeException">
+					<bean:bean class="org.springframework.retry.policy.SimpleRetryPolicy">
+						<bean:property name="maxAttempts" value="5" />
+					</bean:bean>
+				</bean:entry>
+			</bean:map>
+		</bean:property>
+	</bean:bean>
+	    
+    <bean:bean id="sysoutRetryListener" 
+        class=" com.juxtapose.example.ch10.retry.SystemOutRetryListener" />
+    
+    <bean:bean id="reader" class="com.juxtapose.example.ch10.retry.AutoReader" >
+        <bean:property name="maxCount" value="100" />
+    </bean:bean>
+    
+	<bean:bean id="writer" class="com.juxtapose.example.ch10.retry.ConsoleWriter" />
+	<bean:bean id="radomExceptionItemProcessor" 
+	    class="com.juxtapose.example.ch10.retry.RadomExceptionItemProcessor" />
+	<bean:bean id="alwaysExceptionItemProcessor" 
+	    class="com.juxtapose.example.ch10.retry.AlwaysExceptionItemProcessor" />
+</bean:beans>

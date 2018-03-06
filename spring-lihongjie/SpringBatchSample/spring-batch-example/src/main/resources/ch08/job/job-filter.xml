@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd">
+    <bean:import resource="classpath:ch08/job-context.xml"/>
+    
+    <job id="filterJob">
+        <step id="filterStep">
+            <tasklet transaction-manager="transactionManager">
+                <chunk reader="flatFileItemReader" writer="flatFileItemWriter" 
+                    processor="filterItemProcessor" commit-interval="2">
+                	<listeners>
+                	    <listener ref="filterCountStepExecutionListener" />
+                	</listeners>
+                </chunk>
+            </tasklet>
+        </step>
+    </job>
+    
+    <bean:bean id="flatFileItemWriter" 
+        class="org.springframework.batch.item.file.FlatFileItemWriter">
+        <bean:property name="resource" value="file:target/ch08/filter/outputFile.csv"/>
+        <bean:property name="lineAggregator" ref="lineAggregator"/>
+    </bean:bean>
+    
+    <bean:bean id="lineAggregator"
+                class="org.springframework.batch.item.file.transform.DelimitedLineAggregator">
+         <bean:property name="delimiter" value=","></bean:property>
+         <bean:property name="fieldExtractor">
+             <bean:bean 
+                 class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">
+                 <bean:property name="names" 
+                      value="accountID,name,amount,date,address">
+                 </bean:property>
+             </bean:bean>
+         </bean:property>
+     </bean:bean>
+     
+    <bean:bean id="flatFileItemReader" scope="step"
+        class="org.springframework.batch.item.file.FlatFileItemReader">
+        <bean:property name="resource" 
+            value="classpath:ch08/data/flat/credit-card-bill-201310.csv"/>
+        <bean:property name="lineMapper" ref="lineMapper" />
+    </bean:bean>
+    
+	<bean:bean id="lineMapper" 
+	    class="org.springframework.batch.item.file.mapping.DefaultLineMapper" >
+	    <bean:property name="lineTokenizer" ref="delimitedLineTokenizer" />
+	    <bean:property name="fieldSetMapper" ref="creditBillFieldSetMapper"/>
+	</bean:bean>
+            
+    <bean:bean id="delimitedLineTokenizer" 
+        class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+        <bean:property name="delimiter" value=","/>
+        <bean:property name="names" value="accountID,name,amount,date,address" />
+    </bean:bean>
+
+    <bean:bean id="creditBillFieldSetMapper"
+        class="com.juxtapose.example.ch08.CreditBillFieldSetMapper">
+    </bean:bean>
+    
+    <bean:bean id="creditBill"
+        class="com.juxtapose.example.ch08.CreditBill">
+    </bean:bean>
+    
+    <bean:bean id="destinationCreditBill"
+        class="com.juxtapose.example.ch08.DestinationCreditBill">
+    </bean:bean>
+    
+    <bean:bean id="filterItemProcessor"
+        class="com.juxtapose.example.ch08.FilterItemProcessor">
+    </bean:bean>
+    
+    <bean:bean id="filterCountStepExecutionListener"
+        class="com.juxtapose.example.ch08.FilterCountStepExecutionListener">
+    </bean:bean>
+</bean:beans>

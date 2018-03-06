@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document>
+
+    &project;
+
+    <properties>
+      <title>Building Tomcat</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+<p>
+Building Apache Tomcat from source is very easy, and is the first step to
+contributing to Tomcat. The complete and comprehensive instructions are
+provided in the file <a href="BUILDING.txt">BUILDING.txt</a>.
+The following is a quick step by step guide.
+</p>
+
+</section>
+
+<section name="Download Java Development Kit (JDK) versions 6 and 7">
+
+<p>
+  Building Apache Tomcat requires a Java 6 JDK to be installed and optionally
+  a Java 7 JDK installed in parallel with Java 6 one. The Java 7 JDK is only
+  required if you wish to build Tomcat with JSR-356 (Java WebSocket 1.1)
+  support.
+</p>
+
+<p>
+  You can download JDKs from Oracle<br />
+  <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a><br/>
+  or from another JDK vendor.
+</p>
+
+<p>
+  <b>IMPORTANT</b>: Set an environment variable JAVA_HOME to the pathname of
+  the directory into which you installed the Java 6 JDK. The path to Java 7
+  JDK is configured in <code>build.properties</code> file (see below).
+</p>
+
+</section>
+
+<section name="Install Apache Ant 1.8.2 or later">
+
+<p>
+Download a binary distribution of Ant 1.8.2 or later from
+<a href="http://ant.apache.org/bindownload.cgi">here</a>.
+</p>
+
+<p>
+Unpack the binary distribution into a convenient location so that the
+Ant release resides in its own directory (conventionally named
+<code>apache-ant-1.8.x</code>).  For the remainder of this guide,
+the symbolic name <code>${ant.home}</code> is used to refer to the full pathname of
+ the Ant installation directory.
+</p>
+
+<p>
+<b>IMPORTANT</b>: Create an ANT_HOME environment variable to point the directory <code>${ant.home}</code>,
+and modify the PATH environment variable to include directory
+<code>${ant.home}/bin</code> in its list.  This makes the <code>ant</code> command line script
+available, which will be used to actually perform the build.
+</p>
+
+</section>
+
+<section name="Checkout or obtain the source code for Tomcat 7.0">
+
+  <p>
+  Tomcat 7.0 SVN repository URL:
+  <a href="http://svn.apache.org/repos/asf/tomcat/tc7.0.x/trunk/">http://svn.apache.org/repos/asf/tomcat/tc7.0.x/trunk/</a>
+  </p>
+  <p>
+  Tomcat source packages:
+  <a href="http://tomcat.apache.org/download-70.cgi">http://tomcat.apache.org/download-70.cgi</a>.
+  </p>
+
+  <p>
+  Checkout the source using SVN, selecting a tag for released version or
+  trunk for the current development code, or download and unpack a
+  source package. For the remainder of this guide, the symbolic name
+  <code>${tomcat.source}</code> is used to refer to the
+  location where the source has been placed.
+  </p>
+
+</section>
+
+<section name="Configure download area">
+
+<p>
+  Building Tomcat involves downloading a number of libraries that it depends on.
+  It is strongly recommended to configure download area for those libraries.
+</p>
+
+<p>
+  By default the build is configured to download the dependencies into the
+  <code>${user.home}/tomcat-build-libs</code> directory. You can change this
+  (see below) but it must be an absolute path.
+</p>
+
+<p>
+  The build is controlled by creating a
+  <code>${tomcat.source}/build.properties</code> file. It can be used to
+  redefine any property that is present in <code>build.properties.default</code>
+  and <code>build.xml</code> files. The <code>build.properties</code> file
+  does not exist by default. You have to create it.
+</p>
+
+<p>
+  The download area is defined by property <code>base.path</code>. For example:
+</p>
+
+<source><![CDATA[# ----- Default Base Path for Dependent Packages -----
+# Replace this path with the directory path where
+# dependencies binaries should be downloaded.
+base.path=/home/me/some-place-to-download-to]]></source>
+
+<p>
+  Different versions of Tomcat are allowed to share the same download area.
+</p>
+
+<p>
+  Another example:
+</p>
+
+<source>base.path=${user.dir}/../libraries-tomcat<version-major-minor/></source>
+
+<p>
+  Users who access the Internet through a proxy must use the properties
+  file to indicate to Ant the proxy configuration:
+</p>
+
+<source><![CDATA[# ----- Proxy setup -----
+proxy.host=proxy.domain
+proxy.port=8080
+proxy.use=on]]></source>
+
+</section>
+
+<section name="Building Tomcat">
+
+<p>
+  If you have installed a Java 7 JDK and wish to build Tomcat with JSR-356
+  (Java WebSocket 1.1) support, set <code>java.7.home</code> property in
+  file <code>${tomcat.source}/build.properties</code> to the location of
+  the Java 7 JDK installation.
+</p>
+
+<p>
+  An example, using 32-bit JDK on a 64-bit Windows system:
+</p>
+
+<source><![CDATA[# Location of Java 7 JDK
+java.7.home=C:/Program Files (x86)/Java/jdk1.7.0_72]]></source>
+
+<p>
+Use the following commands to build Tomcat:
+</p>
+
+<p>
+<code>cd ${tomcat.source}</code><br/>
+<code>ant</code>
+</p>
+
+<p>
+Once the build has completed successfully, a usable Tomcat installation will have been
+produced in the <code>${tomcat.source}/output/build</code> directory, and can be started
+and stopped with the usual scripts.
+</p>
+</section>
+
+<section name="Building with Eclipse">
+
+<p>
+<b>IMPORTANT:</b> This is not a supported means of building Tomcat; this information is
+provided without warranty :-).
+The only supported means of building Tomcat is with the Ant build described above.
+However, some developers like to work on Java code with a Java IDE,
+and the following steps have been used by some developers.
+</p>
+
+<p>
+<b>NOTE:</b> This will not let you build everything under Eclipse;
+the build process requires use of Ant for the many stages that aren't
+simple Java compilations.
+However, it will allow you to view and edit the Java code,
+get warnings, reformat code, perform refactorings, run Tomcat
+under the IDE, and so on.
+</p>
+
+<p>
+<b>WARNING:</b> Do not forget to create and configure
+  <code>${tomcat.source}/build.properties</code> file as described above
+  before running any Ant targets.
+</p>
+
+<p>
+Sample Eclipse project files and launch targets are provided in the
+<code>res/ide-support/eclipse</code> directory of the source tree.
+The instructions below will automatically copy these into the required locations.
+</p>
+<p>
+Two Ant targets are provided as a convenience. The first one, named
+<em>ide-eclipse</em>, downloads all binary dependencies and configures
+Eclipse project in the root of the source tree. The created Eclipse project
+targets a Java 6 JDK and skips WebSocket classes that cannot be compiled with
+Java 6.
+</p>
+
+<p>
+The second target, named <em>ide-eclipse-websocket</em>, creates directory
+<code>../tomcat-7.0.x-java7</code> and configures the second Eclipse project
+there. This project targets a Java 7 JDK. This project does not have its own
+source tree, but accesses a subset of the source tree of the first project,
+compiling all WebSocket classes that were skipped.
+</p>
+
+<p>
+<code>cd ${tomcat.source}</code><br/>
+<code>ant ide-eclipse</code><br/>
+<code>ant ide-eclipse-websocket</code>
+</p>
+
+<p>
+Start Eclipse and create a new Workspace.
+</p>
+
+<p>
+Open the <em>Preferences</em> dialog and then select <em>Java-&gt;Build Path-&gt;Classpath
+Variables</em> to add two new <em>Classpath Variables</em>:
+</p>
+
+
+<table class="defaultTable">
+ <tr><td>TOMCAT_LIBS_BASE</td><td>The same location as the <code>base.path</code>
+  setting in <code>build.properties</code>, where the binary dependencies have been downloaded</td></tr>
+ <tr><td>ANT_HOME</td><td>the base path of Ant 1.8.2 or later</td></tr>
+</table>
+
+<p>
+In the <em>Preferences</em> dialog go to <em>Java-&gt;Installed JREs</em>
+and add JDK 6 and JDK 7 there. Close the dialog.
+</p>
+
+<p>
+Use <em>File-&gt;Import</em> command from menu and choose <em>Existing Projects into Workspace</em>.
+From there choose the root directory of the Tomcat source tree (<code>${tomcat.source}</code>)
+and import the project located there. Import the second project as well,
+if you have created it (<code>../tomcat-7.0.x-java7</code>).
+</p>
+
+<p>
+<code>start-tomcat</code> and <code>stop-tomcat</code> launch configurations are provided in
+<code>res/ide-support/eclipse</code> and will be available in the <em>Run-&gt;Run Configurations</em>
+dialog. Use these to start and stop Tomcat from Eclipse.
+If you want to configure these yourself (or are using a different IDE)
+then use <code>org.apache.catalina.startup.Bootstrap</code> as the main class,
+<code>start</code>/<code>stop</code> etc. as program arguments, and specify <code>-Dcatalina.home=...</code>
+(with the name of your build directory) as VM arguments.
+</p>
+
+<p>
+Tweaking a few formatting preferences will make it much easier to keep consistent with Tomcat
+coding conventions (and have your contributions accepted):
+</p>
+
+<table class="defaultTable">
+  <tr><td>Java -&gt; Code Style -> Formatter -&gt; Edit...</td>
+  <td>Tab policy: Spaces only<br/>Tab and Indentation size: 4</td></tr>
+  <tr><td>General -&gt; Editors -> Text Editors</td>
+  <td>Displayed tab width: 2<br/>Insert spaces for tabs<br/>Show whitespace characters (optional)</td></tr>
+  <tr><td>XML -&gt; XML Files -> Editor</td><td>Indent using spaces<br/>Indentation size: 2</td></tr>
+  <tr><td>Ant -&gt; Editor -> Formatter</td><td>Tab size: 2<br/>Use tab character instead of spaces: unchecked</td></tr>
+</table>
+
+<p>
+The recommended configuration of Compiler Warnings is documented in
+<code>res/ide-support/eclipse/java-compiler-errors-warnings.txt</code> file.
+</p>
+
+</section>
+
+<section name="Building with other IDEs">
+<p>
+The same general approach should work for most IDEs; it has been reported
+to work in IntelliJ IDEA, for example.
+</p>
+
+</section>
+
+</body>
+</document>

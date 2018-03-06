@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Export-Package: org.apache.tomcat.jdbc.naming;uses:="javax.naming,org.ap
+ ache.juli.logging,javax.naming.spi";version="@VERSION@",org.apache.tomc
+ at.jdbc.pool;uses:="org.apache.juli.logging,javax.sql,org.apache.tomcat
+ .jdbc.pool.jmx,javax.management,javax.naming,javax.naming.spi,org.apach
+ e.tomcat.jdbc.pool.interceptor";version="@VERSION@",org.apache.tomcat.j
+ dbc.pool.interceptor;uses:="org.apache.tomcat.jdbc.pool,org.apache.juli
+ .logging,javax.management.openmbean,javax.management";version="@VERSION@
+ ",org.apache.tomcat.jdbc.pool.jmx;uses:="org.apache.tomcat.jdbc.pool,or
+ g.apache.juli.logging,javax.management";version="@VERSION@"
+Bundle-Vendor: Apache Software Foundation
+Bundle-Version: @VERSION@
+Bundle-Name: Apache Tomcat JDBC Connection Pool
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.apache.tomcat.jdbc
+Import-Package: 
+  javax.management;version="0",
+  javax.management.openmbean;version="0",
+  javax.naming;version="0",
+  javax.naming.spi;version="0",
+  javax.sql;version="0",
+  org.apache.juli.logging;version="0"

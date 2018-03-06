@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "@TOMCAT_PROJECT_DEST@">
+]>
+<?xml-stylesheet type="text/xsl" href="package.xsl"?>
+<document url="changelog.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>Changelog</title>
+  </properties>
+
+<body>
+<section name="Tomcat JDBC Connection Pool - Apache Tomcat 7.0.19 and later">
+  <p>
+    Starting with Apache Tomcat 7.0.19 in July 2011, Tomcat JDBC Connection Pool
+    is built and released as a component in official releases of Tomcat.
+    The changes are now listed in "jdbc-pool" sections of Apache Tomcat
+    changelog file. This changelog file is obsolete.
+  </p>
+</section>
+
+<section name="Tomcat JDBC Connection Pool 1.1.0.0">
+  <subsection name="pool">
+    <changelog>
+      <add><rev>1207712</rev> Pool cleaner should be a global thread, not spawn one thread per connection pool. (fhanik)</add>
+      <fix><rev>1073531</rev> <bug>50805</bug> Only initialize connections once when async (fhanik)</fix>
+      <fix><rev>1076380</rev> <bug>50857</bug> Correctly handle timeouts when the pool is busy when async (fhanik)</fix>
+      <add>Added QueryTimeoutInterceptor to be able to configure timeouts on running queries automatically.</add>
+    </changelog>
+  </subsection>
+</section>
+
+<section name="Tomcat JDBC Connection Pool 1.0.9.4">
+  <subsection name="pool">
+    <changelog>
+      <fix><rev>1069864</rev> <bug>50759</bug> Correctly set validation timestamp when using external validator.(fhanik)</fix>
+    </changelog>
+  </subsection>
+</section>
+
+<section name="Tomcat JDBC Connection Pool 1.0.9.3">
+  <subsection name="pool">
+    <changelog>
+      <fix><rev>1060998</rev> <bug>50613</bug> Fix concurrency issue around pool size calculation.(fhanik)</fix>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat JDBC Connection Pool 1.0.9.2">
+  <subsection name="pool">
+    <changelog>
+      <fix><rev>1057743</rev> Make sure passwords are masked.(fhanik)</fix>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat JDBC Connection Pool 1.0.9.0">
+  <subsection name="pool">
+    <changelog>
+      <fix><rev>997321</rev> Ensure threads borrowing connections do not
+      get stuck waiting for a new connection if a connection is released in
+      another thread. (markt)</fix>
+      <fix><rev>995432</rev> Make interceptor class names, property names
+      and property values tolerant of whitespace by trimming the values before
+      use. (markt)</fix>
+      <fix><rev>995091</rev> <bug>49831</bug> Make sure pooled XAConnections are
+      closed when the connection pool shuts down. Patch provided by Daniel
+      Mikusa. (markt)</fix>
+      <update><rev>995087</rev> Code clean-up. Remove some unused code. (markt)
+      </update>
+      <update><rev>995083</rev> Update to Tomcat 6.0.29 (for JULI). (markt)
+      </update>
+      <update><rev>992409</rev> Code clean-up. Reduce sequences of three or more
+      blank lines to two blank lines. (markt)</update>
+      <add><rev>952811</rev>, <rev>995095</rev> <bug>48814</bug> Add Validator
+      interface and allow users to configure a Validator class name. Patch
+      provided by Matt Passell. (markt)</add>
+      <update><rev>948073</rev> Code clean-up. Remove unused imports. (markt)
+      </update>
+      <fix><rev>943434</rev> <bug>49224</bug> Only try setting the username and
+      password if they are non-null. Patch provided by Matt Passell. (markt)
+      </fix>
+      <fix><rev>943032</rev> <bug>49269</bug> Set maxIdle to maxActive by
+      default to prevent warning on start when maxIdle > maxActive. Patch
+      provided by Matt Passell. (markt)</fix>
+      <fix><rev>940574</rev> <bug>49241</bug> Don&apos;t ignore the
+      suspectTimeout property. (fhanik)</fix>
+      <fix><rev>939320</rev> Fix svn:keywords for property replacement.
+      (kkolinko)</fix>
+      <add><rev>931550</rev>, <rev>934651</rev>, <rev>934677</rev> Add a
+      statement cache. (fhanik)</add>
+      <update><rev>919076</rev> Improve XA support. (fhanik)</update>
+      <fix><rev>915940</rev> <bug>48392</bug> Add an interceptor to wrap
+      Statements and ResultSets to prevent access to the physical connection.
+      (fhanik)</fix>
+      <fix><rev>912026</rev> Call <code>setTransactionIsolation()</code> before
+      anything else as some drivers require this to be the first call. (fhanik)
+      </fix>
+      <update><rev>900017</rev> Update Javadoc for XADataSource. (kkolinko)
+      </update>
+    </changelog>
+  </subsection>
+</section>
+<section name="Tomcat JDBC Connection Pool prior to 1.0.9.0 (incomplete)">
+  <subsection name="pool">
+    <changelog>
+      <update><rev>720253</rev> Document how to use interceptors</update>
+      <update><rev>717972</rev> Added an interceptor that will clean up non closed statements when a connection is returned to the pool. (<code>org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer</code>)</update>
+      <update><rev>713763</rev> Improve connection state handling</update>
+      <fix><rev>713763</rev> Improve connection state handling</fix>
+    </changelog>
+  </subsection>
+</section>
+</body>
+</document>

@@ -1,0 +1,31 @@
+#searchBar {
+  background:#34302d;
+  border:none;
+}
+
+#searchBar #collapseLink img.springClass {
+  bottom: 1px;
+}
+
+#searchBar #logoSpan .springClass {
+  bottom: 0px !important;
+}
+
+#searchBar span {
+/*  color: white; */
+}
+
+.S2UniGeoipBanner .S2GPcourse_name {
+  font-weight: normal;
+}
+
+#searchBar #searchWhat {
+/*  border: 1px solid;  */
+}
+
+#searchBar #searchKeys {
+}
+
+#searchBar #siteLinks a {
+  color: #ebebeb;
+}

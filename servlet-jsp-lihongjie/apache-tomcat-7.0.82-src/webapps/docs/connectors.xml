@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="connectors.html">
+
+    &project;
+
+    <properties>
+        <author email="remm@apache.org">Remy Maucherat</author>
+        <title>Connectors How To</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+<p>Choosing a connector to use with Tomcat can be difficult. This page will
+list the connectors which are supported with this Tomcat release, and will
+hopefully help you make the right choice according to your needs.</p>
+
+</section>
+
+<section name="HTTP">
+
+<p>The HTTP connector is setup by default with Tomcat, and is ready to use. This
+connector features the lowest latency and best overall performance.</p>
+
+<p>For clustering, a HTTP load balancer <b>with support for web sessions stickiness</b>
+must be installed to direct the traffic to the Tomcat servers. Tomcat supports mod_proxy
+(on Apache HTTP Server 2.x, and included by default in Apache HTTP Server 2.2) as the load balancer.
+It should be noted that the performance of HTTP proxying is usually lower than the
+performance of AJP, so AJP clustering is often preferable.</p>
+
+</section>
+
+<section name="AJP">
+
+<p>When using a single server, the performance when using a native webserver in
+front of the Tomcat instance is most of the time significantly worse than a
+standalone Tomcat with its default HTTP connector, even if a large part of the web
+application is made of static files. If integration with the native webserver is
+needed for any reason, an AJP connector will provide faster performance than
+proxied HTTP. AJP clustering is the most efficient from the Tomcat perspective.
+It is otherwise functionally equivalent to HTTP clustering.</p>
+
+<p>The native connectors supported with this Tomcat release are:</p>
+<ul>
+<li>JK 1.2.x with any of the supported servers</li>
+<li>mod_proxy on Apache HTTP Server 2.x (included by default in Apache HTTP Server 2.2),
+with AJP enabled</li>
+</ul>
+
+<p><b>Other native connectors supporting AJP may work, but are no longer supported.</b></p>
+
+</section>
+
+</body>
+
+</document>

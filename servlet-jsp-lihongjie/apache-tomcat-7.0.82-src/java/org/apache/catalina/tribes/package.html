@@ -1,0 +1,86 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<body>
+<head><title>Apache Tribes - The Tomcat Cluster Communication Module</title>
+<h3>QuickStart</h3>
+    <pre><code>
+            //create a channel
+            Channel myChannel = new GroupChannel();
+
+            //create my listeners
+            MyMessageListener msgListener = new MyMessageListener();
+            MyMemberListener mbrListener = new MyMemberListener();
+
+            //attach the listeners to the channel
+            myChannel.addMembershipListener(mbrListener);
+            myChannel.addChannelListener(msgListener);
+
+            //start the channel
+            myChannel.start(Channel.DEFAULT);
+
+            //create a message to be sent, message must implement java.io.Serializable
+            //for performance reasons you probably want them to implement java.io.Externalizable
+            Serializable myMsg = new MyMessage();
+
+            //retrieve my current members
+            Member[] group = myChannel.getMembers();
+
+            //send the message
+            channel.send(group,myMsg,Channel.SEND_OPTIONS_DEFAULT);
+
+    </code></pre>
+<h3>Interfaces for the Application Developer</h3>
+    <ol>
+        <li><code>org.apache.catalina.tribes.Channel</code>
+            Main component to interact with to send messages
+        </li>
+        <li><code>org.apache.catalina.tribes.MembershipListener</code>
+            Listen to membership changes
+        </li>
+        <li><code>org.apache.catalina.tribes.ChannelListener</code>
+            Listen to data messages
+        </li>
+        <li><code>org.apache.catalina.tribes.Member</code>
+            Identifies a node, implementation specific, default is org.apache.catalina.tribes.membership.MemberImpl
+        </li>
+    </ol>
+    <h3>Interfaces for the Tribes Component Developer</h3>
+    <ol>
+        <li><code>org.apache.catalina.tribes.Channel</code>
+            Main component to that the application interacts with
+        </li>
+        <li><code>org.apache.catalina.tribes.ChannelReceiver</code>
+            IO Component to receive messages over some network transport
+        </li>
+        <li><code>org.apache.catalina.tribes.ChannelSender</code>
+            IO Component to send messages over some network transport
+        </li>
+        <li><code>org.apache.catalina.tribes.MembershipService</code>
+            IO Component that handles membership discovery and 
+        </li>
+        <li><code>org.apache.catalina.tribes.ChannelInterceptor</code>
+            interceptors between the Channel and the IO layer
+        </li>
+        <li><code>org.apache.catalina.tribes.ChannelMessage</code>
+            The message that is sent through the interceptor stack down to the IO layer 
+        </li>
+
+        <li><code>org.apache.catalina.tribes.Member</code>
+            Identifies a node, implementation specific to the underlying IO logic
+        </li>
+    </ol>
+</body>

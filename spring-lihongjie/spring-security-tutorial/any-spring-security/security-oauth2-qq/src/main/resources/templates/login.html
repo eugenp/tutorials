@@ -1,0 +1,64 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录 | SpringForAll - Spring Security</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f1f1f1; padding-bottom: 0">
+
+<div th:insert="~{header :: nav}"></div>
+
+<div class="container" style="margin-top: 60px">
+
+    <div class="row" style="margin-top: 100px">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-console"></span> Login</h3>
+                </div>
+                <div class="panel-body">
+                    <form th:action="@{/login}" method="post">
+                        <div class="form-group" style="margin-top: 30px">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="账号">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                                <input type="password" class="form-control" name="password" id="password"
+                                       placeholder="密码">
+                            </div>
+                        </div>
+                        <br>
+                        <div th:if="${param.error}">
+                            <p style="text-align: center" class="text-danger">登录失败，账号或密码错误!</p>
+                        </div>
+                        <div th:if="${result}">
+                            <p style="text-align: center" class="text-success" th:text="${result}"></p>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-12 col-xs-12 ">
+                                <button type="submit" class="btn btn-primary btn-block">登录</button>
+                                <a href="https://graph.qq.com/oauth2.0/authorize?response_type=code&client_id=101386962&redirect_uri=http://www.ictgu.cn/login/qq&state=test" class="btn btn-primary btn-block">QQ登录</a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-6 col-md-offset-3" style="text-align: center">
+                                创建账号 | 忘记密码?
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>

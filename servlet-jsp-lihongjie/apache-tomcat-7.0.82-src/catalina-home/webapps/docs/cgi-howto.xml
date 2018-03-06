@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cgi-howto.html">
+
+    &project;
+
+    <properties>
+        <title>CGI How To</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+<p>The CGI (Common Gateway Interface) defines a way for a web server to
+interact with external content-generating programs, which are often
+referred to as CGI programs or CGI scripts.
+</p>
+
+<p>Within Tomcat, CGI support can be added when you are using Tomcat as your
+HTTP server and require CGI support.  Typically this is done
+during development when you don't want to run a web server like
+Apache httpd.
+Tomcat's CGI support is largely compatible with Apache httpd's,
+but there are some limitations (e.g., only one cgi-bin directory).
+</p>
+
+<p>CGI support is implemented using the servlet class
+<code>org.apache.catalina.servlets.CGIServlet</code>.  Traditionally,
+this servlet is mapped to the URL pattern "/cgi-bin/*".</p>
+
+<p>By default CGI support is disabled in Tomcat.</p>
+</section>
+
+<section name="Installation">
+
+<p><strong>CAUTION</strong> - CGI scripts are used to execute programs
+external to the Tomcat JVM. If you are using the Java SecurityManager this
+will bypass your security policy configuration in <code>catalina.policy.</code></p>
+
+<p>To enable CGI support:</p>
+
+<ol>
+<li><p>There are commented-out sample servlet and servlet-mapping elements for
+CGI servlet in the default <code>$CATALINA_BASE/conf/web.xml</code> file.
+To enable CGI support in your web application, copy that servlet and
+servlet-mapping declarations into <code>WEB-INF/web.xml</code> file of your
+web application.</p>
+
+<p>Uncommenting the servlet and servlet-mapping in
+<code>$CATALINA_BASE/conf/web.xml</code> file enables CGI for all installed
+web applications at once.</p>
+</li>
+
+<li><p>Set <code>privileged="true"</code> on the Context element for your
+web application.</p>
+
+<p>Only Contexts which are marked as privileged are allowed to use the
+CGI servlet. Note that modifying the global <code>$CATALINA_BASE/conf/context.xml</code>
+file affects all web applications. See
+<a href="config/context.html">Context documentation</a> for details.</p>
+</li>
+</ol>
+
+</section>
+
+<section name="Configuration">
+
+<p>There are several servlet init parameters which can be used to
+configure the behaviour of the CGI servlet.</p>
+<ul>
+<li><strong>cgiPathPrefix</strong> - The CGI search path will start at
+the web application root directory + File.separator + this prefix.
+By default there is no value, which results in the web application root
+directory being used as the search path. The recommended value is
+<code>WEB-INF/cgi</code></li>
+<li><strong>enableCmdLineArguments</strong> - Are command line parameters
+generated from the query string as per section 4.4 of 3875 RFC? The default is
+<code>true</code>.</li>
+<li><strong>environment-variable-</strong> - An environment to be set for the
+execution environment of the CGI script. The name of variable is taken from the
+parameter name. To configure an environment variable named FOO, configure a
+parameter named environment-variable-FOO. The parameter value is used as the
+environment variable value. The default is no environment variables.</li>
+<li><strong>executable</strong> - The name of the executable to be used to
+run the script. You may explicitly set this parameter to be an empty string
+if your script is itself executable (e.g. an exe file). Default is
+<code>perl</code>.</li>
+<li><strong>executable-arg-1</strong>, <strong>executable-arg-2</strong>,
+and so on - additional arguments for the executable. These precede the
+CGI script name. By default there are no additional arguments.</li>
+<li><strong>envHttpHeaders</strong> - A regular expression used to select the
+HTTP headers passed to the CGI process as environment variables. Note that
+headers are converted to upper case before matching and that the entire header
+name must match the pattern. Default is
+<code>ACCEPT[-0-9A-Z]*|CACHE-CONTROL|COOKIE|HOST|IF-[-0-9A-Z]*|REFERER|USER-AGENT</code>
+</li>
+<li><strong>parameterEncoding</strong> - Name of the parameter encoding
+to be used with the CGI servlet. Default is
+<code>System.getProperty("file.encoding","UTF-8")</code>. That is the system
+default encoding, or UTF-8 if that system property is not available.</li>
+<li><strong>passShellEnvironment</strong> - Should the shell environment
+variables from Tomcat process (if any) be passed to the CGI script? Default is
+<code>false</code>.</li>
+<li><strong>stderrTimeout</strong> - The time (in milliseconds) to wait for
+the reading of stderr to complete before terminating the CGI process. Default
+is <code>2000</code>.</li>
+</ul>
+
+<p>The name and path of the CGI script to search for in the CGI search path
+depends on how the Servlet has been mapped. If the <strong>pathInfo</strong> is
+<code>null</code>, the <strong>servletPath</strong> will be used. If the
+<strong>pathInfo</strong> is not <code>null</code> then the
+<strong>servletPath</strong> is appended to the CGI search path and the
+<strong>pathInfo</strong> is used.</p>
+
+<p>The search will start with the first path segment and expand one path segment
+at a time until no path segments are left (resulting in a 404) or a matching
+script is found in the CGI search path. Any remaining path segments will be
+passed to the CGI executable in the <strong>PATH_INFO</strong> environment
+variable.</p>
+
+</section>
+
+</body>
+
+</document>

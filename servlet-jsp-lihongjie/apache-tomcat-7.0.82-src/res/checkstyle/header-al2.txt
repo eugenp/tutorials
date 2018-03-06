@@ -1,0 +1,19 @@
+^<\?xml.*>$
+^@echo off$
+^#!
+^\W*$
+^(rem)?\W*Licensed to the Apache Software Foundation \(ASF\) under one or more$
+^(rem)?\W*contributor license agreements\.  See the NOTICE file distributed with$
+^(rem)?\W*this work for additional information regarding copyright ownership\.$
+^(rem)?\W*The ASF licenses this file to You under the Apache License, Version 2\.0$
+^(rem)?\W*\(the "License"\); you may not use this file except in compliance with$
+^(rem)?\W*the License\.  You may obtain a copy of the License at$
+^(rem)?\W*$
+^(rem)?\W*http://www.apache.org/licenses/LICENSE-2\.0$
+^(rem)?\W*$
+^(rem)?\W*Unless required by applicable law or agreed to in writing, software$
+^(rem)?\W*distributed under the License is distributed on an "AS IS" BASIS,$
+^(rem)?\W*WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\.$
+^(rem)?\W*See the License for the specific language governing permissions and$
+^(rem)?\W*limitations under the License\.$
+^(rem)?\W*$

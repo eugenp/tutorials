@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="ssi-howto.html">
+
+&project;
+
+<properties>
+<author email="glenn@apache.org">Glenn L. Nielsen</author>
+<title>SSI How To</title>
+</properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+<p>SSI (Server Side Includes) are directives that are placed in HTML pages,
+and evaluated on the server while the pages are being served. They let you
+add dynamically generated content to an existing HTML page, without having
+to serve the entire page via a CGI program, or other dynamic technology.
+</p>
+
+<p>Within Tomcat SSI support can be added when using Tomcat as your
+HTTP server and you require SSI support.  Typically this is done
+during development when you don't want to run a web server like Apache.</p>
+
+<p>Tomcat SSI support implements the same SSI directives as Apache.  See the
+<a href="http://httpd.apache.org/docs/howto/ssi.html#basicssidirectives">
+Apache Introduction to SSI</a> for information on using SSI directives.</p>
+
+<p>SSI support is available as a servlet and as a filter. You should use one
+or the other to provide SSI support but not both.</p>
+
+<p>Servlet based SSI support is implemented using the class
+<code>org.apache.catalina.ssi.SSIServlet</code>.  Traditionally, this servlet
+is mapped to the URL pattern "*.shtml".</p>
+
+<p>Filter based SSI support is implemented using the class
+<code>org.apache.catalina.ssi.SSIFilter</code>.  Traditionally, this filter
+is mapped to the URL pattern "*.shtml", though it can be mapped to "*" as
+it will selectively enable/disable SSI processing based on mime types.  The
+contentType init param allows you to apply SSI processing to JSP pages,
+javascript, or any other content you wish.</p>
+<p>By default SSI support is disabled in Tomcat.</p>
+</section>
+
+<section name="Installation">
+
+<p><strong>CAUTION</strong> - SSI directives can be used to execute programs
+external to the Tomcat JVM. If you are using the Java SecurityManager this
+will bypass your security policy configuration in <code>catalina.policy.</code>
+</p>
+
+<p>To use the SSI servlet, remove the XML comments from around the SSI servlet
+and servlet-mapping configuration in
+<code>$CATALINA_BASE/conf/web.xml</code>.</p>
+
+<p>To use the SSI filter, remove the XML comments from around the SSI filter
+and filter-mapping configuration in
+<code>$CATALINA_BASE/conf/web.xml</code>.</p>
+
+<p>Only Contexts which are marked as privileged may use SSI features (see the
+privileged property of the Context element).</p>
+
+</section>
+
+<section name="Servlet Configuration">
+
+<p>There are several servlet init parameters which can be used to
+configure the behaviour of the SSI servlet.
+<ul>
+<li><strong>buffered</strong> - Should output from this servlet be buffered?
+(0=false, 1=true) Default 0 (false).</li>
+<li><strong>debug</strong> - Debugging detail level for messages logged
+by this servlet. Default 0.</li>
+<li><strong>expires</strong> - The number of seconds before a page with SSI
+directives will expire. Default behaviour is for all SSI directives to be
+evaluated for every request.</li>
+<li><strong>isVirtualWebappRelative</strong> - Should "virtual" SSI directive
+paths be interpreted as relative to the context root, instead of the server
+root? Default false.</li>
+<li><strong>inputEncoding</strong> - The encoding to be assumed for SSI
+resources if one cannot be determined from the resource itself. Default is
+the default platform encoding.</li>
+<li><strong>outputEncoding</strong> - The encoding to be used for the result
+of the SSI processing. Default is UTF-8.</li>
+<li><strong>allowExec</strong> - Is the exec command enabled? Default is
+false.</li>
+</ul>
+</p>
+
+</section>
+
+<section name="Filter Configuration">
+
+<p>There are several filter init parameters which can be used to
+configure the behaviour of the SSI filter.
+<ul>
+<li><strong>contentType</strong> - A regex pattern that must be matched before
+SSI processing is applied. When crafting your own pattern, don't forget that a
+mime content type may be followed by an optional character set in the form
+"mime/type; charset=set" that you must take into account.  Default is
+"text/x-server-parsed-html(;.*)?".</li>
+<li><strong>debug</strong> - Debugging detail level for messages logged
+by this servlet. Default 0.</li>
+<li><strong>expires</strong> - The number of seconds before a page with SSI
+directives will expire. Default behaviour is for all SSI directives to be
+evaluated for every request.</li>
+<li><strong>isVirtualWebappRelative</strong> - Should "virtual" SSI directive
+paths be interpreted as relative to the context root, instead of the server
+root? Default false.</li>
+<li><strong>allowExec</strong> - Is the exec command enabled? Default is
+false.</li>
+</ul>
+</p>
+
+</section>
+
+<section name="Directives">
+<p>Server Side Includes are invoked by embedding SSI directives in an HTML document
+ whose type will be processed by the SSI servlet. The directives take the form of an HTML
+ comment. The directive is replaced by the results of interpreting it before sending the
+ page to the client. The general form of a directive is: </p>
+<p> <code>&lt;!--#directive [parm=value] --&gt;</code></p>
+<p>The directives are:
+<ul>
+<li>
+<strong>config</strong> - <code>&lt;!--#config timefmt=&quot;%B %Y&quot; --&gt;</code>
+Used to set the format of dates and other items processed by SSI
+</li>
+<li>
+<strong>echo</strong> -   <code>&lt;!--#echo var=&quot;VARIABLE_NAME&quot; --&gt;</code>
+will be replaced by the value of the variable.
+</li>
+<li>
+<strong>exec</strong> -  Used to run commands on the host system.
+</li>
+<li>
+<strong>include</strong> -  <code>&lt;!--#include virtual=&quot;file-name&quot; --&gt;</code>
+inserts the contents
+</li>
+<li>
+<strong>flastmod</strong> - <code>&lt;!--#flastmod file=&quot;filename.shtml&quot; --&gt;</code>
+Returns the time that a file was lost modified.
+</li>
+<li>
+<strong>fsize</strong> - <code>&lt;!--#fsize file=&quot;filename.shtml&quot; --&gt;</code>
+Returns the size of a file.
+</li>
+<li>
+<strong>printenv</strong> - <code>&lt;!--#printenv --&gt;</code>
+Returns the list of all the defined variables.
+</li>
+<li>
+<strong>set</strong> - <code>&lt;!--#set var="foo" value="Bar" --&gt;</code>
+is used to assign a value to a user-defined variable.
+</li>
+<li>
+<strong>if elif endif else</strong> - Used to create conditional sections. For example:</li>
+<code>&lt;!--#config timefmt="%A" --&gt;<br />
+  &lt;!--#if expr="$DATE_LOCAL = /Monday/" --&gt;<br />
+  &lt;p&gt;Meeting at 10:00 on Mondays&lt;/p&gt;<br />
+  &lt;!--#elif expr="$DATE_LOCAL = /Friday/" --&gt;<br />
+  &lt;p&gt;Turn in your time card&lt;/p&gt;<br />
+  &lt;!--#else --&gt;<br />
+  &lt;p&gt;Yoga class at noon.&lt;/p&gt;<br />
+  &lt;!--#endif --&gt;</code>
+ </ul>
+</p>
+See the
+<p> <a href="http://httpd.apache.org/docs/howto/ssi.html#basicssidirectives">
+Apache Introduction to SSI</a> for more information on using SSI directives.</p>
+</section>
+
+<section name="Variables">
+<p>The SSI servlet currently implements the following variables:
+</p>
+<table border="1">
+<tr>
+<th>Variable Name</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>AUTH_TYPE</td>
+<td>
+  The type of authentication used for this user: BASIC, FORM, etc.</td>
+</tr>
+
+<tr>
+<td>CONTENT_LENGTH</td>
+<td>
+  The length of the data (in bytes or the number of
+  characters) passed from a form.</td>
+</tr>
+
+<tr>
+<td>CONTENT_TYPE</td>
+<td>
+  The MIME type of the query data, such as &quot;text/html&quot;.</td>
+</tr>
+
+<tr>
+<td>DATE_GMT</td>
+<td>
+Current date and time in GMT</td>
+</tr>
+
+<tr>
+<td>DATE_LOCAL</td>
+<td>
+Current date and time in the local time zone</td>
+</tr>
+<tr>
+<td>DOCUMENT_NAME</td>
+<td>
+The current file</td>
+</tr>
+<tr>
+<td>DOCUMENT_URI</td>
+<td>
+Virtual path to the file</td>
+</tr>
+
+<tr>
+<td>GATEWAY_INTERFACE</td>
+<td>
+  The revision of the Common Gateway Interface that the
+  server uses if enabled: &quot;CGI/1.1&quot;.</td>
+</tr>
+
+<tr>
+<td>HTTP_ACCEPT</td>
+<td>
+  A list of the MIME types that the client can accept.</td>
+</tr>
+
+<tr>
+<td>HTTP_ACCEPT_ENCODING</td>
+<td>
+  A list of the compression types that the client can accept.</td>
+</tr>
+
+<tr>
+<td>HTTP_ACCEPT_LANGUAGE</td>
+<td>
+  A list of the languages that the client can accept.</td>
+</tr>
+<tr>
+<td>HTTP_CONNECTION</td>
+<td>
+  The way that the connection from the client is being managed:
+  &quot;Close&quot; or &quot;Keep-Alive&quot;.</td>
+</tr>
+<tr>
+<td>HTTP_HOST</td>
+<td>
+  The web site that the client requested.</td>
+</tr>
+<tr>
+<td>HTTP_REFERER</td>
+<td>
+  The URL of the document that the client linked from.</td>
+</tr>
+<tr>
+<td>HTTP_USER_AGENT</td>
+<td>
+  The browser the client is using to issue the request.</td>
+</tr>
+<tr>
+<td>LAST_MODIFIED</td>
+<td>
+Last modification date and time for current file</td>
+</tr>
+<tr>
+<td>PATH_INFO</td>
+<td>
+  Extra path information passed to a servlet.</td>
+</tr>
+<tr>
+<td>PATH_TRANSLATED</td>
+<td>
+  The translated version of the path given by the
+  variable PATH_INFO.</td>
+</tr>
+<tr>
+<td>QUERY_STRING</td>
+<td>
+The query string that follows the &quot;?&quot; in the URL.
+</td>
+</tr>
+<tr>
+<td>QUERY_STRING_UNESCAPED</td>
+<td>
+Undecoded query string with all shell metacharacters escaped
+with &quot;\&quot;</td>
+</tr>
+<tr>
+<td>REMOTE_ADDR</td>
+<td>
+  The remote IP address of the user making the request.</td>
+</tr>
+<tr>
+<td>REMOTE_HOST</td>
+<td>
+  The remote hostname of the user making the request.</td>
+</tr>
+<tr>
+<td>REMOTE_PORT</td>
+<td>
+  The port number at remote IP address of the user making the request.</td>
+</tr>
+<tr>
+<td>REMOTE_USER</td>
+<td>
+  The authenticated name of the user.</td>
+</tr>
+<tr>
+<td>REQUEST_METHOD</td>
+<td>
+  The method with which the information request was
+  issued: &quot;GET&quot;, &quot;POST&quot; etc.</td>
+</tr>
+<tr>
+<td>REQUEST_URI</td>
+<td>
+  The web page originally requested by the client.</td>
+</tr>
+<tr>
+<td>SCRIPT_FILENAME</td>
+<td>
+  The location of the current web page on the server.</td>
+</tr>
+<tr>
+<td>SCRIPT_NAME</td>
+<td>
+  The name of the web page.</td>
+</tr>
+<tr>
+<td>SERVER_ADDR</td>
+<td>
+  The server's IP address.</td>
+</tr>
+<tr>
+<td>SERVER_NAME</td>
+<td>
+  The server's hostname or IP address.</td>
+</tr>
+<tr>
+<td>SERVER_PORT</td>
+<td>
+  The port on which the server received the request.</td>
+</tr>
+<tr>
+<td>SERVER_PROTOCOL</td>
+<td>
+  The protocol used by the server. E.g. &quot;HTTP/1.1&quot;.</td>
+</tr>
+<tr>
+<td>SERVER_SOFTWARE</td>
+<td>
+  The name and version of the server software that is
+  answering the client request.</td>
+</tr>
+<tr>
+<td>UNIQUE_ID</td>
+<td>
+  A token used to identify the current session if one
+  has been established.</td>
+</tr>
+</table>
+</section>
+
+</body>
+
+</document>

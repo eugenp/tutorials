@@ -1,0 +1,37 @@
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+
+	<logger name="com.confirmit" level="INFO">
+	</logger>
+
+	<logger name="org.springframework.core" level="INFO">
+	</logger>
+
+	<logger name="org.springframework.core.env" level="INFO">
+	</logger>
+
+	<logger name="org.springframework.beans" level="INFO">
+	</logger>
+
+	<logger name="org.springframework.expression" level="INFO">
+	</logger>
+
+	<logger name="org.springframework.context" level="INFO">
+	</logger>
+
+	<logger name="org.springframework.web" level="INFO">
+	</logger>
+
+	<logger name="org.springframework.orm.jpa.JpaTransactionManager" level="INFO">
+	</logger>
+
+</configuration>

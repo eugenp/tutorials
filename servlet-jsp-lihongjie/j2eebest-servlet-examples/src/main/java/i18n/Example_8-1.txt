@@ -1,0 +1,8 @@
+// Above JSP code removed
+<li> Format &quot;12345.67&quot; as German currency (given string is parsed using &quot;en&quot; locale before it is formatted):
+    <br>
+        <fmt:setLocale value="de-DE"/>
+        <fmt:formatNumber value="12345.67" type="currency"/>
+    </ul>
+</body>
+</html>

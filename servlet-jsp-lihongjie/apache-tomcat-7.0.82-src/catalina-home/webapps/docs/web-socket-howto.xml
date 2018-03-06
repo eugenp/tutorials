@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="web-socket-howto.html">
+
+    &project;
+
+    <properties>
+      <title>WebSocket How-To</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Overview">
+<p>Tomcat provides support for WebSocket as defined by
+   <a href="http://tools.ietf.org/html/rfc6455">RFC 6455</a>.</p>
+</section>
+
+<section name="Application development">
+<p>Tomcat implements the Java WebSocket 1.1 API defined by <a
+   href="http://www.jcp.org/en/jsr/detail?id=356">JSR-356</a>.</p>
+
+<p>There are several example applications that demonstrate how the WebSocket API
+   can be used. You will need to look at both the client side <a
+   href="http://svn.apache.org/viewvc/tomcat/tc7.0.x/trunk/webapps/examples/websocket/">
+   HTML</a> and the server side <a
+   href="http://svn.apache.org/viewvc/tomcat/tc7.0.x/trunk/webapps/examples/WEB-INF/classes/websocket/">
+   code</a>.</p>
+</section>
+
+<section name="Production usage">
+<p>Although the WebSocket implementation does work with any of the HTTP
+connectors, it is not recommended to the WebSocket with the BIO HTTP connector
+as the typical uses of WebSocket (large numbers of mostly idle connections) is
+not a good fit for the HTTP BIO connector which requires that one thread is
+allocated per connection regardless of whether or not the connection is idle.
+</p>
+
+<p>It has been reported (<bug>56304</bug>) that Linux can take large numbers of
+minutes to report dropped connections. When using WebSocket with the BIO HTTP
+connector this can result in threads blocking on writes for this period. This is
+likely to be undesirable. The time taken for the connection to be reported as
+dropped can be reduced by using the kernel network parameter
+<code>/proc/sys/net/ipv4/tcp_retries2</code>. Alternatively, one of the other
+HTTP connectors may be used as they utilise non-blocking IO enabling Tomcat to
+implement its own timeout mechanism to handle these cases.</p>
+</section>
+
+<section name="Tomcat WebSocket specific configuration">
+<p>The JSR-356 Java WebSocket 1.1 implementation is only available when Tomcat
+   is running on Java 7 or later.</p>
+
+<p>Tomcat provides a number of Tomcat specific configuration options for
+   WebSocket. It is anticipated that these will be absorbed into the WebSocket
+   specification over time.</p>
+
+<p>The write timeout used when sending WebSocket messages in blocking mode
+   defaults to 20000 milliseconds (20 seconds). This may be changed by setting
+   the property <code>org.apache.tomcat.websocket.BLOCKING_SEND_TIMEOUT</code>
+   in the user properties collection attached to the WebSocket session. The
+   value assigned to this property should be a <code>Long</code> and represents
+   the timeout to use in milliseconds. For an infinite timeout, use
+   <code>-1</code>.</p>
+
+<p>If the application does not define a <code>MessageHandler.Partial</code> for
+   incoming binary messages, any incoming binary messages must be buffered so
+   the entire message can be delivered in a single call to the registered
+   <code>MessageHandler.Whole</code> for binary messages. The default buffer
+   size for binary messages is 8192 bytes. This may be changed for a web
+   application by setting the servlet context initialization parameter
+   <code>org.apache.tomcat.websocket.binaryBufferSize</code> to the desired
+   value in bytes.</p>
+
+<p>If the application does not define a <code>MessageHandler.Partial</code> for
+   incoming text messages, any incoming text messages must be buffered so the
+   entire message can be delivered in a single call to the registered
+   <code>MessageHandler.Whole</code> for text messages. The default buffer size
+   for text messages is 8192 bytes. This may be changed for a web application by
+   setting the servlet context initialization parameter
+   <code>org.apache.tomcat.websocket.textBufferSize</code> to the desired value
+   in bytes.</p>
+
+<p>The Java WebSocket specification 1.0 does not permit programmatic deployment
+   after the first endpoint has started a WebSocket handshake. By default,
+   Tomcat continues to permit additional programmatic deployment. This
+   behavior is controlled by the
+   <code>org.apache.tomcat.websocket.noAddAfterHandshake</code> servlet context
+   initialization parameter. The default may be changed by setting the
+   <code>org.apache.tomcat.websocket.STRICT_SPEC_COMPLIANCE</code> system
+   property to <code>true</code> but any explicit setting on the servlet context
+   will always take priority.</p>
+
+<p>The Java WebSocket 1.0 specification requires that callbacks for
+   asynchronous writes are performed on a different thread to the thread that
+   initiated the write. Since the container thread pool is not exposed via the
+   Servlet API, the WebSocket implementation has to provide its own thread pool.
+   This thread pool is controlled by the following servlet context
+   initialization parameters:</p>
+   <ul>
+     <li><code>org.apache.tomcat.websocket.executorCoreSize</code>: The core
+         size of the executor thread pool. If not set, the default of 0 (zero)
+         is used. Note that the maximum permitted size of the executor thread
+         pool is hard coded to <code>Integer.MAX_VALUE</code> which effectively
+         means it is unlimited.</li>
+     <li><code>org.apache.tomcat.websocket.executorKeepAliveTimeSeconds</code>:
+         The maximum time an idle thread will remain in the executor thread pool
+         until it is terminated. If not specified, the default of 60 seconds is
+         used.</li>
+   </ul>
+
+<p>When using the WebSocket client to connect to server endpoints, the timeout
+   for IO operations while establishing the connection is controlled by the
+   <code>userProperties</code> of the provided
+   <code>javax.websocket.ClientEndpointConfig</code>. The property is
+   <code>org.apache.tomcat.websocket.IO_TIMEOUT_MS</code> and is the
+   timeout as a <code>String</code> in milliseconds. The default is 5000 (5
+   seconds).</p>
+
+<p>When using the WebSocket client to connect to secure server endpoints, the
+   client SSL configuration is controlled by the <code>userProperties</code>
+   of the provided <code>javax.websocket.ClientEndpointConfig</code>. The
+   following user properties are supported:</p>
+   <ul>
+     <li><code>org.apache.tomcat.websocket.SSL_CONTEXT</code></li>
+     <li><code>org.apache.tomcat.websocket.SSL_PROTOCOLS</code></li>
+     <li><code>org.apache.tomcat.websocket.SSL_TRUSTSTORE</code></li>
+     <li><code>org.apache.tomcat.websocket.SSL_TRUSTSTORE_PWD</code></li>
+   </ul>
+   <p>The default truststore password is <code>changeit</code>.</p>
+   <p>If the <code>org.apache.tomcat.websocket.SSL_CONTEXT</code> property is
+      set then the <code>org.apache.tomcat.websocket.SSL_TRUSTSTORE</code> and
+      <code>org.apache.tomcat.websocket.SSL_TRUSTSTORE_PWD</code> properties
+      will be ignored.</p>
+
+<p>When using the WebSocket client to connect to server endpoints, the number of
+   HTTP redirects that the client will follow is controlled by the
+   <code>userProperties</code> of the provided
+   <code>javax.websocket.ClientEndpointConfig</code>. The property is
+   <ocde>org.apache.tomcat.websocket.MAX_REDIRECTIONS</ocde>. The default value
+   is 20. Redirection support can be disabled by configuring a value of zero.</p>
+
+</section>
+
+<section name="Deprecated proprietary API">
+
+<p>Prior to the development of JRS-356, Tomcat provided a proprietary WebSocket
+   API. This API has been deprecated in Tomcat 7 and will be removed in Tomcat
+   8. There is unlikely to be any further development of this proprietary API
+   apart from bug fixes.</p>
+
+<p>For information on this API, please see the Javadoc for the
+   <a href="api/index.html?org/apache/catalina/websocket/package-summary.html">
+   <code>org.apache.catalina.websocket</code></a> package. The Javadoc
+   pages are not included with Tomcat binary distributions. To view them
+   locally you would have to download and install "Full documentation"
+   distribution, or build it from sources. You can
+   also read this on the Apache Tomcat web site. Start with the
+   <a href="api/index.html?org/apache/catalina/websocket/WebSocketServlet.html">
+   <code>WebSocketServlet</code></a> class.</p>
+
+<p>There are also several example applications that demonstrate how the
+   WebSocket API can be used. You'll need to look at both the client side <a
+   href="http://svn.apache.org/viewvc/tomcat/tc7.0.x/trunk/webapps/examples/websocket-deprecated/">
+   HTML</a> and the server side <a
+   href="http://svn.apache.org/viewvc/tomcat/tc7.0.x/trunk/webapps/examples/WEB-INF/classes/websocket/tc7/">
+   code</a>.</p>
+</section>
+
+
+</body>
+</document>

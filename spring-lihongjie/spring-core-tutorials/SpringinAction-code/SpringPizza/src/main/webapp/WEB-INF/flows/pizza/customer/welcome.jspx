@@ -1,0 +1,21 @@
+<html xmlns:jsp="http://java.sun.com/JSP/Page"
+     xmlns:form="http://www.springframework.org/tags/form">
+  <jsp:output omit-xml-declaration="yes"/>  
+  <jsp:directive.page contentType="text/html;charset=UTF-8" />  
+  
+  <head><title>Spizza</title></head>
+
+  <body>
+    <h2>Welcome to Spizza!!!</h2>
+
+    <form:form>
+      <input type="hidden" name="_flowExecutionKey" 
+             value="${flowExecutionKey}"/> <!--<co id="flowExecutionKey"/>-->
+             
+      <input type="text" name="phoneNumber"/><br/>
+      
+      <input type="submit" name="_eventId_phoneEntered" 
+             value="Lookup Customer" />  <!--<co id="phoneEnteredEvent"/>-->
+    </form:form>
+  </body>
+</html>

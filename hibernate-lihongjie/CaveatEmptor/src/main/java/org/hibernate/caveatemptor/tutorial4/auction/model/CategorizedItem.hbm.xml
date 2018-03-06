@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="auction.model" default-access="field">
+
+<!--
+
+Mapping file for the CategorizedItem class of CaveatEmptor.
+
+This class is the entity in the middle, between Category and Item.
+You can see that it has references to both. The trick is the usage
+of update="false" insert="false" on the <many-to-one> mapping
+elements. The foreign/primary key columns of the association table
+are therefore managed by the <key-property> mappings in the composite key.
+The <many-to-one> associations are read-only.
+
+Alternatively, you could use <key-many-to-one> instead, but this mapping
+has limitations for querying.
+
+Note that the composite key is encapsulated in an inner class, which
+simplifies the implementation of equals/hashCode. We recommend to
+always use a separate composite key class.
+
+@author Christian Bauer
+-->
+
+<class name="CategorizedItem" table="CATEGORIZED_ITEM" mutable="false">
+
+    <!-- A composite primary key, assigned by the application -->
+    <composite-id name="id" class="CategorizedItem$Id">
+        <key-property name="categoryId" column="CATEGORY_ID"/>
+        <key-property name="itemId" column="ITEM_ID"/>
+    </composite-id>
+
+    <!-- Regular property -->
+    <property   name="username"
+                column="ADDED_BY_USER"
+                length="16"
+                type="string"
+                not-null="true"/>
+
+    <!-- Alternatively, a many-to-one association to User:
+    <many-to-one name="addedByUser"
+                 column="ADDED_BY_USER_ID"
+                 class="User"
+                 not-null="true"
+                 foreign-key="FK_ADDED_BY_USER_ID"/>
+    -->
+
+    <!-- Regular property -->
+    <property   name="dateAdded"
+                column="ADDED_ON"
+                type="timestamp"
+                not-null="true"/>
+
+    <!-- Read-only association property -->
+    <many-to-one    name="item"
+                    column="ITEM_ID"
+                    not-null="true"
+                    insert="false"
+                    update="false"
+                    foreign-key="FK_CATEGORIZED_ITEM_ITEM_ID"/>
+
+    <!-- Read-only association property -->
+    <many-to-one    name="category"
+                    column="CATEGORY_ID"
+                    not-null="true"
+                    insert="false"
+                    update="false"
+                    foreign-key="FK_CATEGORIZED_ITEM_CATEGORY_ID"/>
+</class>
+
+</hibernate-mapping>

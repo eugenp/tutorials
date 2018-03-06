@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+                         "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+    <!-- We want to test two filters, one for session-per-request,
+         the other for session-per-conversation. In practice you'd of
+         course pick one strategy... -->
+    <filter>
+        <filter-name>SessionRequestFilter</filter-name>
+        <filter-class>auction.web.filter.HibernateSessionRequestFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>SessionConversationFilter</filter-name>
+        <filter-class>auction.web.filter.HibernateSessionConversationFilter</filter-class>
+    </filter>
+
+    <!-- Apply the filters each to a separate servlet name -->
+    <filter-mapping>
+        <filter-name>SessionRequestFilter</filter-name>
+        <servlet-name>SessionRequestTest</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionConversationFilter</filter-name>
+        <servlet-name>SessionConversationTest</servlet-name>
+    </filter-mapping>
+
+    <!-- Create different servlet names with the same base servlet class -->
+    <servlet>
+        <servlet-name>SessionRequestTest</servlet-name>
+        <servlet-class>auction.test.web.FilterTestServlet</servlet-class>
+        <init-param>
+            <param-name>daoFactoryClass</param-name>
+            <param-value>auction.dao.hibernate.HibernateDAOFactory</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>SessionConversationTest</servlet-name>
+        <servlet-class>auction.test.web.FilterTestServlet</servlet-class>
+        <init-param>
+            <param-name>daoFactoryClass</param-name>
+            <param-value>auction.dao.hibernate.HibernateDAOFactory</param-value>
+        </init-param>
+    </servlet>
+
+    <!-- Finally, map the URLs so we can call the different stacks.
+         In a real application you'd only enable the filters for your actions that need
+         database access! -->
+    <servlet-mapping>
+        <servlet-name>SessionRequestTest</servlet-name>
+        <url-pattern>/session-per-request</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SessionConversationTest</servlet-name>
+        <url-pattern>/session-per-conversation</url-pattern>
+    </servlet-mapping>
+
+</web-app>

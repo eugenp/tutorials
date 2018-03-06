@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="apr.html">
+
+    &project;
+
+  <properties>
+    <title>Apache Portable Runtime (APR) based Native library for Tomcat</title>
+    <author>Remy Maucherat</author>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Introduction">
+
+  <p>
+      Tomcat can use the <a href="http://apr.apache.org/">Apache Portable Runtime</a> to
+      provide superior scalability, performance, and better integration with native server
+      technologies. The Apache Portable Runtime is a highly portable library that is at
+      the heart of Apache HTTP Server 2.x. APR has many uses, including access to advanced IO
+      functionality (such as sendfile, epoll and OpenSSL), OS level functionality (random number
+      generation, system status, etc), and native process handling (shared memory, NT
+      pipes and Unix sockets).
+  </p>
+
+  <p>
+      These features allows making Tomcat a general purpose webserver, will enable much better
+      integration with other native web technologies, and overall make Java much more viable as
+      a full fledged webserver platform rather than simply a backend focused technology.
+  </p>
+
+  </section>
+
+  <section name="Installation">
+
+    <p>
+      APR support requires three main native components to be installed:
+    </p>
+    <ul>
+      <li>APR library</li>
+      <li>JNI wrappers for APR used by Tomcat (libtcnative)</li>
+      <li>OpenSSL libraries</li>
+    </ul>
+
+    <subsection name="Windows">
+
+    <p>
+      Windows binaries are provided for tcnative-1, which is a statically compiled .dll which includes
+      OpenSSL and APR. It can be downloaded from <a href="http://tomcat.apache.org/download-native.cgi">here</a>
+      as 32bit or AMD x86-64 binaries.
+      In security conscious production environments, it is recommended to use separate shared dlls
+      for OpenSSL, APR, and libtcnative-1, and update them as needed according to security bulletins.
+      Windows OpenSSL binaries are linked from the <a href="http://www.openssl.org">Official OpenSSL
+      website</a> (see related/binaries).
+    </p>
+
+    </subsection>
+
+    <subsection name="Linux">
+
+    <p>
+      Most Linux distributions will ship packages for APR and OpenSSL. The JNI wrapper (libtcnative) will
+      then have to be compiled. It depends on APR, OpenSSL, and the Java headers.
+    </p>
+
+    <p>
+      Requirements:
+    </p>
+    <ul>
+      <li>APR 1.2+ development headers (libapr1-dev package)</li>
+      <li>OpenSSL 0.9.7+ development headers (libssl-dev package)</li>
+      <li>JNI headers from Java compatible JDK 1.4+</li>
+      <li>GNU development environment (gcc, make)</li>
+    </ul>
+
+    <p>
+      The wrapper library sources are located in the Tomcat binary bundle, in the
+      <code>bin/tomcat-native.tar.gz</code> archive.
+      Once the build environment is installed and the source archive is extracted, the wrapper library
+      can be compiled using (from the folder containing the configure script):
+    </p>
+    <source>./configure &amp;&amp; make &amp;&amp; make install</source>
+
+    </subsection>
+
+  </section>
+
+  <section name="APR Components">
+
+  <p>
+    Once the libraries are properly installed and available to Java (if loading fails, the library path
+    will be displayed), the Tomcat connectors will automatically use APR. Configuration of the connectors
+    is similar to the regular connectors, but have a few extra attributes which are used to configure
+    APR components. Note that the defaults should be well tuned for most use cases, and additional
+    tweaking shouldn't be required.
+  </p>
+
+  <p>
+    When APR is enabled, the following features are also enabled in Tomcat:
+  </p>
+  <ul>
+    <li>Secure session ID generation by default on all platforms (platforms other than Linux required
+        random number generation using a configured entropy)</li>
+    <li>OS level statistics on memory usage and CPU usage by the Tomcat process are displayed by
+        the status servlet</li>
+  </ul>
+
+  </section>
+
+  <section name="APR Lifecycle Listener Configuration">
+    <subsection name="AprLifecycleListener">
+    <attributes>
+    <attribute name="SSLEngine" required="false">
+    <p>
+      Name of the SSLEngine to use. off: Do not use SSL, on: Use SSL but no specific ENGINE.
+      The default value is <b>on</b>.
+      This initializes the native SSL engine, then enable the use of this engine in the connector
+      using the <code>SSLEnabled</code> attribute. Example:
+    </p>
+      <source><![CDATA[<Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on" />]]></source>
+
+    <p>See the <a href="http://www.openssl.org">Official OpenSSL
+       website</a> for more details on SSL hardware engines and manufacturers.
+    </p>
+    </attribute>
+    </attributes>
+    </subsection>
+  </section>
+
+  <section name="APR Connectors Configuration">
+
+    <subsection name="HTTP/HTTPS">
+
+      <p>For HTTP configuration, see the <a href="config/http.html">HTTP</a>
+      connector configuration documentation.</p>
+
+      <p>For HTTPS configuration, see the
+      <a href="config/http.html#SSL_Support">HTTPS</a> connector configuration
+      documentation.</p>
+
+      <p>An example SSL Connector declaration is:</p>
+      <source><![CDATA[<Connector port="443" maxHttpHeaderSize="8192"
+                 maxThreads="150"
+                 enableLookups="false" disableUploadTimeout="true"
+                 acceptCount="100" scheme="https" secure="true"
+                 SSLEnabled="true"
+                 SSLCertificateFile="${catalina.base}/conf/localhost.crt"
+                 SSLCertificateKeyFile="${catalina.base}/conf/localhost.key" />]]></source>
+
+
+    </subsection>
+
+    <subsection name="AJP">
+
+      <p>For AJP configuration, see the <a href="config/ajp.html">AJP</a>
+      connector configuration documentation.</p>
+
+    </subsection>
+
+  </section>
+
+</body>
+</document>

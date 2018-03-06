@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.2.xsd ">
+
+
+   <!-- Definition for textEditor bean using inner bean -->
+   <bean id="kenny" class="org.springframework.tutorial.tutorial8.Instrumentalist" autowire="byName">
+      <property name="song" value="my song"/>
+<!--       <property name="instrument" ref="saxophone" /> 原来这样注入bean， 这里使用 byName代替 -->
+   </bean>
+   
+    <bean id="instrument" class="org.springframework.tutorial.tutorial8.Saxophone"> <!-- id 属性名与 Instrumentalist中属性instrument同名 -->
+   </bean> 
+</beans>

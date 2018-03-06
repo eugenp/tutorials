@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<!--
+
+Mapping file for the audit log record.
+
+This mapping uses an internally managed identifier and access
+fields of the AuditLogRecord class directly. Keep it simple,
+this part of our persistence layer doesn't need more abstraction
+and encapsulation.
+
+@author Christian Bauer
+
+-->
+<hibernate-mapping default-access="field">
+
+<class name="auction.persistence.audit.AuditLogRecord"
+	   table="AUDIT_LOG" mutable="false">
+
+	<id type="long" column="AUDIT_LOG_ID">
+		<generator class="native"/>
+	</id>
+
+	<property   name="message"
+				type="string"
+				column="MESSAGE"
+				length="255"
+				not-null="true"/>
+
+	<property   name="entityId"
+				type="long"
+				column="ENTITY_ID"
+				not-null="true"/>
+
+	<property   name="entityClass"
+				type="class"
+				column="ENTITY_CLASS"
+				not-null="true"/>
+
+	<property   name="userId"
+				type="long"
+				column="USER_ID"
+				not-null="true"/>
+
+	<property   name="created"
+				column="CREATED"
+				type="timestamp"
+				update="false"
+				not-null="true"/>
+
+</class>
+
+</hibernate-mapping>

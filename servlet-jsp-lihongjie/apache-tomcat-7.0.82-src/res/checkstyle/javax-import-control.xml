@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE import-control PUBLIC
+    "-//Puppy Crawl//DTD Import Control 1.1//EN"
+    "http://www.puppycrawl.com/dtds/import_control_1_1.dtd">
+
+<import-control pkg="javax">
+  <allow pkg="java"/>
+  <subpackage name="annotation">
+    <allow pkg="javax.annotation"/>
+  </subpackage>
+  <subpackage name="ejb">
+    <allow pkg="javax.ejb"/>
+  </subpackage>
+  <subpackage name="el">
+    <allow pkg="javax.el"/>
+  </subpackage>
+  <subpackage name="mail">
+    <allow pkg="javax.mail"/>
+  </subpackage>
+  <subpackage name="persistence">
+    <allow pkg="javax.persistence"/>
+  </subpackage>
+  <subpackage name="servlet">
+    <allow pkg="javax.servlet"/>
+    <disallow pkg="javax.servlet.jsp" local-only="true"/>
+    <subpackage name="jsp">
+      <allow pkg="javax.el"/>
+      <allow pkg="javax.servlet.jsp"/>
+    </subpackage>
+  </subpackage>
+  <subpackage name="websocket">
+    <allow pkg="javax.websocket"/>
+  </subpackage>
+  <subpackage name="xml.ws">
+    <allow pkg="javax.xwl.ws"/>
+  </subpackage>
+</import-control>

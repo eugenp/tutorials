@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Various Hibernate value types for CaveatEmptor.
+Make sure this mapping file is loaded before the others.
+
+@author Christian Bauer
+-->
+<hibernate-mapping>
+
+<typedef class="auction.persistence.MonetaryAmountType" name="monetary_amount_usd">
+    <param name="convertTo">USD</param>
+</typedef>
+
+<typedef class="auction.persistence.MonetaryAmountType" name="monetary_amount_eur">
+    <param name="convertTo">EUR</param>
+</typedef>
+
+<typedef class="auction.persistence.StringEnumUserType" name="item_state">
+    <param name="enumClassname">auction.model.ItemState</param>
+</typedef>
+
+<typedef class="auction.persistence.StringEnumUserType" name="credit_card_type">
+    <param name="enumClassname">auction.model.CreditCardType</param>
+</typedef>
+
+<typedef class="auction.persistence.StringEnumUserType" name="rating">
+    <param name="enumClassname">auction.model.Rating</param>
+</typedef>
+
+<typedef class="auction.persistence.StringEnumUserType" name="shipment_state">
+    <param name="enumClassname">auction.model.ShipmentState</param>
+</typedef>
+
+</hibernate-mapping>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+    http://www.springframework.org/schema/jdbc 
+    http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+    <bean:import resource="classpath:ch07/job-context-jpa.xml"/>
+    
+    <jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:/ch07/db/create-tables-mysql.sql" />
+	</jdbc:initialize-database>
+    
+    <job id="jpaWriteJob">
+        <step id="jpaWriteStep">
+            <tasklet transaction-manager="transactionManager">
+                <chunk reader="jpaPagingItemReader" processor="creditBillProcessor" 
+                    writer="jpaItemWriter" commit-interval="2"></chunk>
+            </tasklet>
+        </step>
+    </job>
+    
+    <!-- jpa写数据库 -->
+	<bean:bean id="jpaItemWriter" class="org.springframework.batch.item.database.JpaItemWriter">
+		<bean:property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean:bean> 
+    
+    
+    <!-- jpa分页读取数据库 -->
+    <bean:bean id="jpaPagingItemReader" scope="step"
+		class="org.springframework.batch.item.database.JpaPagingItemReader">
+		<bean:property name="entityManagerFactory" ref="entityManagerFactory" />
+		<bean:property name="queryString" value="select c from CreditBill c where id between :begin and :end" />
+		<bean:property name="parameterValues">
+		    <bean:map>
+				<bean:entry key="begin" value="#{jobParameters['id_begin']}" />
+				<bean:entry key="end" value="#{jobParameters['id_end']}" />
+			</bean:map>
+		</bean:property>
+		<bean:property name="pageSize" value="2"/>
+	</bean:bean>
+	
+    <bean:bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<bean:property name="dataSource" ref="dataSource" />
+		<bean:property name="persistenceXmlLocation" value="classpath:/ch07/jpa/persistence.xml" />
+		<bean:property name="jpaVendorAdapter">
+			<bean:bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<bean:property name="showSql" value="true" />
+			</bean:bean>
+		</bean:property>
+		<bean:property name="jpaDialect">
+			<bean:bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
+		</bean:property>
+	</bean:bean>
+	
+    <bean:bean id="creditBillProcessor" scope="step"
+        class="com.juxtapose.example.ch07.jpa.CreditBillProcessor">
+    </bean:bean>
+</bean:beans>

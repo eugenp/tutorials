@@ -1,0 +1,1582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<xsd:schema
+     targetNamespace="http://java.sun.com/xml/ns/j2ee"
+     xmlns:j2ee="http://java.sun.com/xml/ns/j2ee"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     elementFormDefault="qualified"
+     attributeFormDefault="unqualified"
+     version="1.4">
+<xsd:annotation>
+<xsd:documentation>
+
+The following definitions that appear in the common
+shareable schema(s) of J2EE deployment descriptors should be
+interpreted with respect to the context they are included:
+
+Deployment Component may indicate one of the following:
+    j2ee application;
+    application client;
+    web application;
+    enterprise bean;
+    resource adapter;
+
+Deployment File may indicate one of the following:
+    ear file;
+    war file;
+    jar file;
+    rar file;
+
+</xsd:documentation>
+</xsd:annotation>
+
+  <xsd:import namespace="http://www.w3.org/XML/1998/namespace"
+              schemaLocation="http://www.w3.org/2001/xml.xsd"/>
+
+  <xsd:include schemaLocation=
+        "http://www.ibm.com/webservices/xsd/j2ee_web_services_client_1_1.xsd"/>
+
+
+<!-- **************************************************** -->
+
+  <xsd:group name="descriptionGroup">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This group keeps the usage of the contained description related
+        elements consistent across J2EE deployment descriptors.
+
+        All elements may occur multiple times with different languages,
+        to support localization of the content.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="display-name"
+                   type="j2ee:display-nameType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="icon"
+                   type="j2ee:iconType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="descriptionType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The description type is used by a description element to
+        provide text describing the parent element.  The elements
+        that use this type should include any information that the
+        Deployment Component's Deployment File file producer wants
+        to provide to the consumer of the Deployment Component's
+        Deployment File (i.e., to the Deployer). Typically, the
+        tools used by such a Deployment File consumer will display
+        the description when processing the parent element that
+        contains the description.
+
+        The lang attribute defines the language that the
+        description is provided in. The default value is "en" (English).
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="j2ee:xsdStringType">
+        <xsd:attribute ref="xml:lang"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:simpleType name="dewey-versionType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type defines a dewey decimal which is used
+        to describe versions of documents.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:restriction base="xsd:decimal">
+      <xsd:whiteSpace value="collapse"/>
+    </xsd:restriction>
+
+  </xsd:simpleType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="display-nameType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The display-name type contains a short name that is intended
+          to be displayed by tools. It is used by display-name
+          elements.  The display name need not be unique.
+
+          Example:
+
+          ...
+             <display-name xml:lang="en">Employee Self Service</display-name>
+
+          The value of the xml:lang attribute is "en" (English) by default.
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="j2ee:string">
+        <xsd:attribute ref="xml:lang"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="ejb-linkType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The ejb-linkType is used by ejb-link
+          elements in the ejb-ref or ejb-local-ref elements to specify
+          that an EJB reference is linked to enterprise bean.
+
+          The value of the ejb-link element must be the ejb-name of an
+          enterprise bean in the same ejb-jar file or in another ejb-jar
+          file in the same J2EE application unit.
+
+          Alternatively, the name in the ejb-link element may be
+          composed of a path name specifying the ejb-jar containing the
+          referenced enterprise bean with the ejb-name of the target
+          bean appended and separated from the path name by "#".  The
+          path name is relative to the Deployment File containing
+          Deployment Component that is referencing the enterprise
+          bean.  This allows multiple enterprise beans with the same
+          ejb-name to be uniquely identified.
+
+          Examples:
+
+              <ejb-link>EmployeeRecord</ejb-link>
+
+              <ejb-link>../products/product.jar#ProductEJB</ejb-link>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="ejb-local-refType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The ejb-local-refType is used by ejb-local-ref elements for
+        the declaration of a reference to an enterprise bean's local
+        home. The declaration consists of:
+
+            - an optional description
+            - the EJB reference name used in the code of the Deployment
+              Component that's referencing the enterprise bean
+            - the expected type of the referenced enterprise bean
+            - the expected local home and local interfaces of the
+              referenced enterprise bean
+            - optional ejb-link information, used to specify the
+              referenced enterprise bean
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="ejb-ref-name"
+                   type="j2ee:ejb-ref-nameType"/>
+      <xsd:element name="ejb-ref-type"
+                   type="j2ee:ejb-ref-typeType"/>
+      <xsd:element name="local-home"
+                   type="j2ee:local-homeType"/>
+      <xsd:element name="local"
+                   type="j2ee:localType"/>
+      <xsd:element name="ejb-link"
+                   type="j2ee:ejb-linkType"
+                   minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="ejb-ref-nameType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The ejb-ref-name element contains the name of an EJB
+          reference. The EJB reference is an entry in the
+          Deployment Component's environment and is relative to the
+          java:comp/env context.  The name must be unique within the
+          Deployment Component.
+
+          It is recommended that name is prefixed with "ejb/".
+
+          Example:
+
+          <ejb-ref-name>ejb/Payroll</ejb-ref-name>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:jndi-nameType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="ejb-ref-typeType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The ejb-ref-typeType contains the expected type of the
+        referenced enterprise bean.
+
+        The ejb-ref-type designates a value
+        that must be one of the following:
+
+            Entity
+            Session
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="Entity"/>
+        <xsd:enumeration value="Session"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="ejb-refType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The ejb-refType is used by ejb-ref elements for the
+        declaration of a reference to an enterprise bean's home. The
+        declaration consists of:
+
+            - an optional description
+            - the EJB reference name used in the code of
+              the Deployment Component that's referencing the enterprise
+              bean
+            - the expected type of the referenced enterprise bean
+            - the expected home and remote interfaces of the referenced
+              enterprise bean
+            - optional ejb-link information, used to specify the
+              referenced enterprise bean
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="ejb-ref-name"
+                   type="j2ee:ejb-ref-nameType"/>
+      <xsd:element name="ejb-ref-type"
+                   type="j2ee:ejb-ref-typeType"/>
+
+      <xsd:element name="home"
+                   type="j2ee:homeType"/>
+      <xsd:element name="remote"
+                   type="j2ee:remoteType"/>
+      <xsd:element name="ejb-link"
+                   type="j2ee:ejb-linkType"
+                   minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="emptyType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type is used to designate an empty
+        element when used.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="env-entry-type-valuesType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          This type contains the fully-qualified Java type of the
+          environment entry value that is expected by the
+          application's code.
+
+          The following are the legal values of env-entry-type-valuesType:
+
+              java.lang.Boolean
+              java.lang.Byte
+              java.lang.Character
+              java.lang.String
+              java.lang.Short
+              java.lang.Integer
+              java.lang.Long
+              java.lang.Float
+              java.lang.Double
+
+          Example:
+
+          <env-entry-type>java.lang.Boolean</env-entry-type>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="java.lang.Boolean"/>
+        <xsd:enumeration value="java.lang.Byte"/>
+        <xsd:enumeration value="java.lang.Character"/>
+        <xsd:enumeration value="java.lang.String"/>
+        <xsd:enumeration value="java.lang.Short"/>
+        <xsd:enumeration value="java.lang.Integer"/>
+        <xsd:enumeration value="java.lang.Long"/>
+        <xsd:enumeration value="java.lang.Float"/>
+        <xsd:enumeration value="java.lang.Double"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="env-entryType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The env-entryType is used to declare an application's
+        environment entry. The declaration consists of an optional
+        description, the name of the environment entry, and an
+        optional value.  If a value is not specified, one must be
+        supplied during deployment.
+
+        It is used by env-entry elements.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="env-entry-name"
+                   type="j2ee:jndi-nameType">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+
+              The env-entry-name element contains the name of a
+              Deployment Component's environment entry.  The name
+              is a JNDI name relative to the java:comp/env
+              context.  The name must be unique within a
+              Deployment Component. The uniqueness
+              constraints must be defined within the declared
+              context.
+
+              Example:
+
+              <env-entry-name>minAmount</env-entry-name>
+
+              ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="env-entry-type"
+                   type="j2ee:env-entry-type-valuesType"/>
+
+      <xsd:element name="env-entry-value"
+                   type="j2ee:xsdStringType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+
+              The env-entry-value designates the value of a
+              Deployment Component's environment entry. The value
+              must be a String that is valid for the
+              constructor of the specified type that takes a
+              single String parameter, or for java.lang.Character,
+              a single character.
+
+              Example:
+
+              <env-entry-value>100.00</env-entry-value>
+
+              ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="fully-qualified-classType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The elements that use this type designate the name of a
+        Java class or interface.  The name is in the form of a
+        "binary name", as defined in the JLS.  This is the form
+        of name used in Class.forName().  Tools that need the
+        canonical name (the name used in source code) will need
+        to convert this binary name to the canonical name.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="generic-booleanType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type defines four different values which can designate
+        boolean values. This includes values yes and no which are
+        not designated by xsd:boolean
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="true"/>
+        <xsd:enumeration value="false"/>
+        <xsd:enumeration value="yes"/>
+        <xsd:enumeration value="no"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="homeType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The homeType defines the fully-qualified name of
+          an enterprise bean's home interface.
+
+          Example:
+
+              <home>com.aardvark.payroll.PayrollHome</home>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:fully-qualified-classType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="iconType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The icon type contains small-icon and large-icon elements
+        that specify the file names for small and large GIF or
+        JPEG icon images used to represent the parent element in a
+        GUI tool.
+
+        The xml:lang attribute defines the language that the
+        icon file names are provided in. Its value is "en" (English)
+        by default.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="small-icon" type="j2ee:pathType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+
+              The small-icon element contains the name of a file
+              containing a small (16 x 16) icon image. The file
+              name is a relative path within the Deployment
+              Component's Deployment File.
+
+              The image may be either in the JPEG or GIF format.
+              The icon can be used by tools.
+
+              Example:
+
+              <small-icon>employee-service-icon16x16.jpg</small-icon>
+
+              ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="large-icon" type="j2ee:pathType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+
+              The large-icon element contains the name of a file
+              containing a large
+              (32 x 32) icon image. The file name is a relative
+              path within the Deployment Component's Deployment
+              File.
+
+              The image may be either in the JPEG or GIF format.
+              The icon can be used by tools.
+
+              Example:
+
+              <large-icon>employee-service-icon32x32.jpg</large-icon>
+
+              ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+
+    <xsd:attribute ref="xml:lang"/>
+    <xsd:attribute name="id" type="xsd:ID"/>
+
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="java-identifierType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The java-identifierType defines a Java identifier.
+        The users of this type should further verify that
+        the content does not contain Java reserved keywords.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:pattern value="($|_|\p{L})(\p{L}|\p{Nd}|_|$)*"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="java-typeType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This is a generic type that designates a Java primitive
+        type or a fully qualified name of a Java interface/type,
+        or an array of such types.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:pattern value="[^\p{Z}]*"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="jndi-nameType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The jndi-nameType type designates a JNDI name in the
+        Deployment Component's environment and is relative to the
+        java:comp/env context.  A JNDI name must be unique within the
+        Deployment Component.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:group name="jndiEnvironmentRefsGroup">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This group keeps the usage of the contained JNDI environment
+        reference elements consistent across J2EE deployment descriptors.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="env-entry"
+                   type="j2ee:env-entryType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="ejb-ref"
+                   type="j2ee:ejb-refType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="ejb-local-ref"
+                   type="j2ee:ejb-local-refType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:group ref="j2ee:service-refGroup"/>
+      <xsd:element name="resource-ref"
+                   type="j2ee:resource-refType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="resource-env-ref"
+                   type="j2ee:resource-env-refType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="message-destination-ref"
+                   type="j2ee:message-destination-refType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:group>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="listenerType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The listenerType indicates the deployment properties for a web
+        application listener bean.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="listener-class"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The listener-class element declares a class in the
+            application must be registered as a web
+            application listener bean. The value is the fully
+            qualified classname of the listener class.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="local-homeType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The local-homeType defines the fully-qualified
+        name of an enterprise bean's local home interface.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:fully-qualified-classType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="localType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The localType defines the fully-qualified name of an
+        enterprise bean's local interface.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:fully-qualified-classType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="message-destination-linkType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The message-destination-linkType is used to link a message
+        destination reference or message-driven bean to a message
+        destination.
+
+        The Assembler sets the value to reflect the flow of messages
+        between producers and consumers in the application.
+
+        The value must be the message-destination-name of a message
+        destination in the same Deployment File or in another
+        Deployment File in the same J2EE application unit.
+
+        Alternatively, the value may be composed of a path name
+        specifying a Deployment File containing the referenced
+        message destination with the message-destination-name of the
+        destination appended and separated from the path name by
+        "#". The path name is relative to the Deployment File
+        containing Deployment Component that is referencing the
+        message destination.  This allows multiple message
+        destinations with the same name to be uniquely identified.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="message-destination-refType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The message-destination-ref element contains a declaration
+          of Deployment Component's reference to a message destination
+          associated with a resource in Deployment Component's
+          environment. It consists of:
+
+                  - an optional description
+                  - the message destination reference name
+                  - the message destination type
+                  - a specification as to whether the
+                    destination is used for
+                    consuming or producing messages, or both
+                  - a link to the message destination
+
+          Examples:
+
+          <message-destination-ref>
+                  <message-destination-ref-name>jms/StockQueue
+                  </message-destination-ref-name>
+                  <message-destination-type>javax.jms.Queue
+                  </message-destination-type>
+                  <message-destination-usage>Consumes
+                  </message-destination-usage>
+                  <message-destination-link>CorporateStocks
+                  </message-destination-link>
+          </message-destination-ref>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="message-destination-ref-name"
+                   type="j2ee:jndi-nameType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The message-destination-ref-name element specifies
+            the name of a message destination reference; its
+            value is the environment entry name used in
+            Deployment Component code.  The name is a JNDI name
+            relative to the java:comp/env context and must be
+            unique within an ejb-jar (for enterprise beans) or a
+            Deployment File (for others).
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="message-destination-type"
+                   type="j2ee:message-destination-typeType"/>
+      <xsd:element name="message-destination-usage"
+                   type="j2ee:message-destination-usageType"/>
+      <xsd:element name="message-destination-link"
+                   type="j2ee:message-destination-linkType"
+                   minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="message-destination-typeType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The message-destination-typeType specifies the type of
+          the destination. The type is specified by the Java interface
+          expected to be implemented by the destination.
+
+          Example:
+
+            <message-destination-type>javax.jms.Queue
+            </message-destination-type>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:fully-qualified-classType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="message-destination-usageType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The message-destination-usageType specifies the use of the
+        message destination indicated by the reference.  The value
+        indicates whether messages are consumed from the message
+        destination, produced for the destination, or both.  The
+        Assembler makes use of this information in linking producers
+        of a destination with its consumers.
+
+        The value of the message-destination-usage element must be
+        one of the following:
+            Consumes
+            Produces
+            ConsumesProduces
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="Consumes"/>
+        <xsd:enumeration value="Produces"/>
+        <xsd:enumeration value="ConsumesProduces"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="message-destinationType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The message-destinationType specifies a message
+          destination. The logical destination described by this
+          element is mapped to a physical destination by the Deployer.
+
+          The message destination element contains:
+
+                  - an optional description
+                  - an optional display-name
+                  - an optional icon
+                  - a message destination name which must be unique
+                    among message destination names within the same
+                    Deployment File.
+
+          Example:
+
+          <message-destination>
+                  <message-destination-name>CorporateStocks
+                  </message-destination-name>
+          </message-destination>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="message-destination-name"
+                   type="j2ee:string">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The message-destination-name element specifies a
+            name for a message destination.  This name must be
+            unique among the names of message destinations
+            within the Deployment File.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="param-valueType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type is a general type that can be used to declare
+        parameter/value lists.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="param-name"
+                   type="j2ee:string">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The param-name element contains the name of a
+            parameter.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="param-value"
+                   type="j2ee:xsdStringType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The param-value element contains the value of a
+            parameter.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="pathType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The elements that use this type designate either a relative
+        path or an absolute path starting with a "/".
+
+        In elements that specify a pathname to a file within the
+        same Deployment File, relative filenames (i.e., those not
+        starting with "/") are considered relative to the root of
+        the Deployment File's namespace.  Absolute filenames (i.e.,
+        those starting with "/") also specify names in the root of
+        the Deployment File's namespace.  In general, relative names
+        are preferred.  The exception is .war files where absolute
+        names are preferred for consistency with the Servlet API.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="remoteType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The remote element contains the fully-qualified name
+          of the enterprise bean's remote interface.
+
+          Example:
+
+              <remote>com.wombat.empl.EmployeeService</remote>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:fully-qualified-classType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="res-authType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The res-authType specifies whether the Deployment Component
+        code signs on programmatically to the resource manager, or
+        whether the Container will sign on to the resource manager
+        on behalf of the Deployment Component. In the latter case,
+        the Container uses information that is supplied by the
+        Deployer.
+
+        The value must be one of the two following:
+
+            Application
+            Container
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="Application"/>
+        <xsd:enumeration value="Container"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="res-sharing-scopeType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The res-sharing-scope type specifies whether connections
+        obtained through the given resource manager connection
+        factory reference can be shared. The value, if specified,
+        must be one of the two following:
+
+            Shareable
+            Unshareable
+
+        The default value is Shareable.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="Shareable"/>
+        <xsd:enumeration value="Unshareable"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="resource-env-refType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The resource-env-refType is used to define
+          resource-env-type elements.  It contains a declaration of a
+          Deployment Component's reference to an administered object
+          associated with a resource in the Deployment Component's
+          environment.  It consists of an optional description, the
+          resource environment reference name, and an indication of
+          the resource environment reference type expected by the
+          Deployment Component code.
+
+          Example:
+
+          <resource-env-ref>
+              <resource-env-ref-name>jms/StockQueue
+              </resource-env-ref-name>
+              <resource-env-ref-type>javax.jms.Queue
+              </resource-env-ref-type>
+          </resource-env-ref>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="resource-env-ref-name"
+                   type="j2ee:jndi-nameType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The resource-env-ref-name element specifies the name
+            of a resource environment reference; its value is
+            the environment entry name used in
+            the Deployment Component code.  The name is a JNDI
+            name relative to the java:comp/env context and must
+            be unique within a Deployment Component.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="resource-env-ref-type"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The resource-env-ref-type element specifies the type
+            of a resource environment reference.  It is the
+            fully qualified name of a Java language class or
+            interface.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="resource-refType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The resource-refType contains a declaration of a
+          Deployment Component's reference to an external resource. It
+          consists of an optional description, the resource manager
+          connection factory reference name, the indication of the
+          resource manager connection factory type expected by the
+          Deployment Component code, the type of authentication
+          (Application or Container), and an optional specification of
+          the shareability of connections obtained from the resource
+          (Shareable or Unshareable).
+
+          Example:
+
+          <resource-ref>
+              <res-ref-name>jdbc/EmployeeAppDB</res-ref-name>
+              <res-type>javax.sql.DataSource</res-type>
+              <res-auth>Container</res-auth>
+              <res-sharing-scope>Shareable</res-sharing-scope>
+          </resource-ref>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="res-ref-name"
+                   type="j2ee:jndi-nameType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The res-ref-name element specifies the name of a
+            resource manager connection factory reference.
+            The name is a JNDI name relative to the
+            java:comp/env context.
+            The name must be unique within a Deployment File.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="res-type"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The res-type element specifies the type of the data
+            source. The type is specified by the fully qualified
+            Java language class or interface
+            expected to be implemented by the data source.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="res-auth"
+                   type="j2ee:res-authType"/>
+
+      <xsd:element name="res-sharing-scope"
+                   type="j2ee:res-sharing-scopeType"
+                   minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="role-nameType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The role-nameType designates the name of a security role.
+
+        The name must conform to the lexical rules for a token.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="run-asType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The run-asType specifies the run-as identity to be
+        used for the execution of a component. It contains an
+        optional description, and the name of a security role.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="role-name"
+                   type="j2ee:role-nameType"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="security-role-refType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The security-role-refType contains the declaration of a
+        security role reference in a component's or a
+        Deployment Component's code. The declaration consists of an
+        optional description, the security role name used in the
+        code, and an optional link to a security role. If the
+        security role is not specified, the Deployer must choose an
+        appropriate security role.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="role-name"
+                   type="j2ee:role-nameType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The value of the role-name element must be the String used
+            as the parameter to the
+            EJBContext.isCallerInRole(String roleName) method or the
+            HttpServletRequest.isUserInRole(String role) method.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="role-link"
+                   type="j2ee:role-nameType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The role-link element is a reference to a defined
+            security role. The role-link element must contain
+            the name of one of the security roles defined in the
+            security-role elements.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="security-roleType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The security-roleType contains the definition of a security
+          role. The definition consists of an optional description of the
+          security role, and the security role name.
+
+          Example:
+
+              <security-role>
+              <description>
+                  This role includes all employees who are authorized
+                  to access the employee service application.
+              </description>
+              <role-name>employee</role-name>
+              </security-role>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="role-name"
+                   type="j2ee:role-nameType"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="string">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This is a special string datatype that is defined by J2EE as
+        a base type for defining collapsed strings. When schemas
+        require trailing/leading space elimination as well as
+        collapsing the existing whitespace, this base type may be
+        used.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:token">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="true-falseType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This simple type designates a boolean with only two
+        permissible values
+
+        - true
+        - false
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:xsdBooleanType">
+        <xsd:pattern value="(true|false)"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="url-patternType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The url-patternType contains the url pattern of the mapping.
+        It must follow the rules specified in Section 11.2 of the
+        Servlet API Specification. This pattern is assumed to be in
+        URL-decoded form and must not contain CR(#xD) or LF(#xA).
+        If it contains those characters, the container must inform
+        the developer with a descriptive error message.
+        The container must preserve all characters including whitespaces.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="xsdAnyURIType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type adds an "id" attribute to xsd:anyURI.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:anyURI">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="xsdBooleanType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type adds an "id" attribute to xsd:boolean.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:boolean">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="xsdIntegerType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type adds an "id" attribute to xsd:integer.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:integer">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="xsdNMTOKENType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type adds an "id" attribute to xsd:NMTOKEN.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:NMTOKEN">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="xsdNonNegativeIntegerType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type adds an "id" attribute to xsd:nonNegativeInteger.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:nonNegativeInteger">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="xsdPositiveIntegerType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type adds an "id" attribute to xsd:positiveInteger.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:positiveInteger">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="xsdQNameType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type adds an "id" attribute to xsd:QName.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:QName">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="xsdStringType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type adds an "id" attribute to xsd:string.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:extension base="xsd:string">
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:extension>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+</xsd:schema>
+

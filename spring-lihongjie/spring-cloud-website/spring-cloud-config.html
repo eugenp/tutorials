@@ -1,0 +1,1631 @@
+<!DOCTYPE html><html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Spring Cloud Config 中文文档 参考手册 中文版</title>
+<link rel="stylesheet" href="//fonts.css.network/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden],template{display:none}script{display:none!important}html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}a{background:transparent}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em;margin:.67em 0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace;font-size:1em}pre{white-space:pre-wrap}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}*,*:before,*:after{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}html,body{font-size:100%}body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;font-weight:400;font-style:normal;line-height:1;position:relative;cursor:auto}a:hover{cursor:pointer}img,object,embed{max-width:100%;height:auto}object,embed{height:100%}img{-ms-interpolation-mode:bicubic}.left{float:left!important}.right{float:right!important}.text-left{text-align:left!important}.text-right{text-align:right!important}.text-center{text-align:center!important}.text-justify{text-align:justify!important}.hide{display:none}body{-webkit-font-smoothing:antialiased}img,object,svg{display:inline-block;vertical-align:middle}textarea{height:auto;min-height:50px}select{width:100%}.center{margin-left:auto;margin-right:auto}.spread{width:100%}p.lead,.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{font-size:1.21875em;line-height:1.6}.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0;direction:ltr}a{color:#2156a5;text-decoration:underline;line-height:inherit}a:hover,a:focus{color:#1d4b8f}a img{border:none}p{font-family:inherit;font-weight:400;font-size:1em;line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}p aside{font-size:.875em;line-height:1.35;font-style:italic}h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}h1{font-size:2.125em}h2{font-size:1.6875em}h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}h4,h5{font-size:1.125em}h6{font-size:1em}hr{border:solid #ddddd8;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em;height:0}em,i{font-style:italic;line-height:inherit}strong,b{font-weight:bold;line-height:inherit}small{font-size:60%;line-height:inherit}code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}ul,ol,dl{font-size:1em;line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}ul,ol,ul.no-bullet,ol.no-bullet{margin-left:1.5em}ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0;font-size:1em}ul.square li ul,ul.circle li ul,ul.disc li ul{list-style:inherit}ul.square{list-style-type:square}ul.circle{list-style-type:circle}ul.disc{list-style-type:disc}ul.no-bullet{list-style:none}ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}dl dt{margin-bottom:.3125em;font-weight:bold}dl dd{margin-bottom:1.25em}abbr,acronym{text-transform:uppercase;font-size:90%;color:rgba(0,0,0,.8);border-bottom:1px dotted #ddd;cursor:help}abbr{text-transform:none}blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}blockquote cite{display:block;font-size:.9375em;color:rgba(0,0,0,.6)}blockquote cite:before{content:"\2014 \0020"}blockquote cite a,blockquote cite a:visited{color:rgba(0,0,0,.6)}blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}@media only screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}h1{font-size:2.75em}h2{font-size:2.3125em}h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}h4{font-size:1.4375em}}table{background:#fff;margin-bottom:1.25em;border:solid 1px #dedede}table thead,table tfoot{background:#f7f8f7;font-weight:bold}table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}table tr.even,table tr.alt,table tr:nth-of-type(even){background:#f8f8f7}table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{display:table-cell;line-height:1.6}body{tab-size:4}h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}.clearfix:before,.clearfix:after,.float-group:before,.float-group:after{content:" ";display:table}.clearfix:after,.float-group:after{clear:both}*:not(pre)>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background-color:#f7f7f8;-webkit-border-radius:4px;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}pre,pre>code{line-height:1.45;color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;text-rendering:optimizeSpeed}.keyseq{color:rgba(51,51,51,.8)}kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background-color:#f7f7f7;border:1px solid #ccc;-webkit-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em white inset;box-shadow:0 1px 0 rgba(0,0,0,.2),0 0 0 .1em #fff inset;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}.keyseq kbd:first-child{margin-left:0}.keyseq kbd:last-child{margin-right:0}.menuseq,.menu{color:rgba(0,0,0,.8)}b.button:before,b.button:after{position:relative;top:-1px;font-weight:400}b.button:before{content:"[";padding:0 3px 0 2px}b.button:after{content:"]";padding:0 2px 0 3px}p a>code:hover{color:rgba(0,0,0,.9)}#header,#content,#footnotes,#footer{width:100%;margin-left:auto;margin-right:auto;margin-top:0;margin-bottom:0;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}#header:before,#header:after,#content:before,#content:after,#footnotes:before,#footnotes:after,#footer:before,#footer:after{content:" ";display:table}#header:after,#content:after,#footnotes:after,#footer:after{clear:both}#content{margin-top:1.25em}#content:before{content:none}#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #ddddd8}#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #ddddd8;padding-bottom:8px}#header .details{border-bottom:1px solid #ddddd8;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:-ms-flexbox;display:-webkit-flex;display:flex;-ms-flex-flow:row wrap;-webkit-flex-flow:row wrap;flex-flow:row wrap}#header .details span:first-child{margin-left:-.125em}#header .details span.email a{color:rgba(0,0,0,.85)}#header .details br{display:none}#header .details br+span:before{content:"\00a0\2013\00a0"}#header .details br+span.author:before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}#header .details br+span#revremark:before{content:"\00a0|\00a0"}#header #revnumber{text-transform:capitalize}#header #revnumber:after{content:"\00a0"}#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #ddddd8;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}#toc{border-bottom:1px solid #efefed;padding-bottom:.5em}#toc>ul{margin-left:.125em}#toc ul.sectlevel0>li>a{font-style:italic}#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}#toc li{line-height:1.3334;margin-top:.3334em}#toc a{text-decoration:none}#toc a:active{text-decoration:underline}#toctitle{color:#7a2518;font-size:1.2em}@media only screen and (min-width:768px){#toctitle{font-size:1.375em}body.toc2{padding-left:15em;padding-right:0}#toc.toc2{margin-top:0!important;background-color:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #efefed;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}#toc.toc2>ul{font-size:.9em;margin-bottom:0}#toc.toc2 ul ul{margin-left:0;padding-left:1em}#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}body.toc2.toc-right{padding-left:0;padding-right:15em}body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #efefed;left:auto;right:0}}@media only screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}#toc.toc2{width:20em}#toc.toc2 #toctitle{font-size:1.375em}#toc.toc2>ul{font-size:.95em}#toc.toc2 ul ul{padding-left:1.25em}body.toc2.toc-right{padding-left:0;padding-right:20em}}#content #toc{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}#content #toc>:first-child{margin-top:0}#content #toc>:last-child{margin-bottom:0}#footer{max-width:100%;background-color:rgba(0,0,0,.8);padding:1.25em}#footer-text{color:rgba(255,255,255,.8);line-height:1.44}.sect1{padding-bottom:.625em}@media only screen and (min-width:768px){.sect1{padding-bottom:1.25em}}.sect1+.sect1{border-top:1px solid #efefed}#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}#content h1>a.anchor:before,h2>a.anchor:before,h3>a.anchor:before,#toctitle>a.anchor:before,.sidebarblock>.content>.title>a.anchor:before,h4>a.anchor:before,h5>a.anchor:before,h6>a.anchor:before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}table.tableblock>caption.title{white-space:nowrap;overflow:visible;max-width:0}.paragraph.lead>p,#preamble>.sectionbody>.paragraph:first-of-type p{color:rgba(0,0,0,.85)}table.tableblock #preamble>.sectionbody>.paragraph:first-of-type p{font-size:inherit}.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}.admonitionblock>table td.icon{text-align:center;width:80px}.admonitionblock>table td.icon img{max-width:none}.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #ddddd8;color:rgba(0,0,0,.6)}.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}.exampleblock>.content{border-style:solid;border-width:1px;border-color:#e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;-webkit-border-radius:4px;border-radius:4px}.exampleblock>.content>:first-child{margin-top:0}.exampleblock>.content>:last-child{margin-bottom:0}.sidebarblock{border-style:solid;border-width:1px;border-color:#e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;-webkit-border-radius:4px;border-radius:4px}.sidebarblock>:first-child{margin-top:0}.sidebarblock>:last-child{margin-bottom:0}.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}.literalblock pre,.listingblock pre:not(.highlight),.listingblock pre[class="highlight"],.listingblock pre[class^="highlight "],.listingblock pre.CodeRay,.listingblock pre.prettyprint{background:#f7f7f8}.sidebarblock .literalblock pre,.sidebarblock .listingblock pre:not(.highlight),.sidebarblock .listingblock pre[class="highlight"],.sidebarblock .listingblock pre[class^="highlight "],.sidebarblock .listingblock pre.CodeRay,.sidebarblock .listingblock pre.prettyprint{background:#f2f1f1}.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{-webkit-border-radius:4px;border-radius:4px;word-wrap:break-word;padding:1em;font-size:.8125em}.literalblock pre.nowrap,.literalblock pre[class].nowrap,.listingblock pre.nowrap,.listingblock pre[class].nowrap{overflow-x:auto;white-space:pre;word-wrap:normal}@media only screen and (min-width:768px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:.90625em}}@media only screen and (min-width:1280px){.literalblock pre,.literalblock pre[class],.listingblock pre,.listingblock pre[class]{font-size:1em}}.literalblock.output pre{color:#f7f7f8;background-color:rgba(0,0,0,.9)}.listingblock pre.highlightjs{padding:0}.listingblock pre.highlightjs>code{padding:1em;-webkit-border-radius:4px;border-radius:4px}.listingblock pre.prettyprint{border-width:0}.listingblock>.content{position:relative}.listingblock code[data-lang]:before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:#999}.listingblock:hover code[data-lang]:before{display:block}.listingblock.terminal pre .command:before{content:attr(data-prompt);padding-right:.5em;color:#999}.listingblock.terminal pre .command:not([data-prompt]):before{content:"$"}table.pyhltable{border-collapse:separate;border:0;margin-bottom:0;background:none}table.pyhltable td{vertical-align:top;padding-top:0;padding-bottom:0;line-height:1.45}table.pyhltable td.code{padding-left:.75em;padding-right:0}pre.pygments .lineno,table.pyhltable td:not(.code){color:#999;padding-left:0;padding-right:.5em;border-right:1px solid #ddddd8}pre.pygments .lineno{display:inline-block;margin-right:.25em}table.pyhltable .linenodiv{background:none!important;padding-right:0!important}.quoteblock{margin:0 1em 1.25em 1.5em;display:table}.quoteblock>.title{margin-left:-1.5em;margin-bottom:.75em}.quoteblock blockquote,.quoteblock blockquote p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}.quoteblock blockquote{margin:0;padding:0;border:0}.quoteblock blockquote:before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}.quoteblock .attribution{margin-top:.5em;margin-right:.5ex;text-align:right}.quoteblock .quoteblock{margin-left:0;margin-right:0;padding:.5em 0;border-left:3px solid rgba(0,0,0,.6)}.quoteblock .quoteblock blockquote{padding:0 0 0 .75em}.quoteblock .quoteblock blockquote:before{display:none}.verseblock{margin:0 1em 1.25em 1em}.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}.verseblock pre strong{font-weight:400}.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}.quoteblock .attribution br,.verseblock .attribution br{display:none}.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}.quoteblock.abstract{margin:0 0 1.25em 0;display:block}.quoteblock.abstract blockquote,.quoteblock.abstract blockquote p{text-align:left;word-spacing:0}.quoteblock.abstract blockquote:before,.quoteblock.abstract blockquote p:first-of-type:before{display:none}table.tableblock{max-width:100%;border-collapse:separate}table.tableblock td>.paragraph:last-child p>p:last-child,table.tableblock th>p:last-child,table.tableblock td>p:last-child{margin-bottom:0}table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}table.grid-all th.tableblock,table.grid-all td.tableblock{border-width:0 1px 1px 0}table.grid-all tfoot>tr>th.tableblock,table.grid-all tfoot>tr>td.tableblock{border-width:1px 1px 0 0}table.grid-cols th.tableblock,table.grid-cols td.tableblock{border-width:0 1px 0 0}table.grid-all *>tr>.tableblock:last-child,table.grid-cols *>tr>.tableblock:last-child{border-right-width:0}table.grid-rows th.tableblock,table.grid-rows td.tableblock{border-width:0 0 1px 0}table.grid-all tbody>tr:last-child>th.tableblock,table.grid-all tbody>tr:last-child>td.tableblock,table.grid-all thead:last-child>tr>th.tableblock,table.grid-rows tbody>tr:last-child>th.tableblock,table.grid-rows tbody>tr:last-child>td.tableblock,table.grid-rows thead:last-child>tr>th.tableblock{border-bottom-width:0}table.grid-rows tfoot>tr>th.tableblock,table.grid-rows tfoot>tr>td.tableblock{border-width:1px 0 0 0}table.frame-all{border-width:1px}table.frame-sides{border-width:0 1px}table.frame-topbot{border-width:1px 0}th.halign-left,td.halign-left{text-align:left}th.halign-right,td.halign-right{text-align:right}th.halign-center,td.halign-center{text-align:center}th.valign-top,td.valign-top{vertical-align:top}th.valign-bottom,td.valign-bottom{vertical-align:bottom}th.valign-middle,td.valign-middle{vertical-align:middle}table thead th,table tfoot th{font-weight:bold}tbody tr th{display:table-cell;line-height:1.6;background:#f7f8f7}tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}p.tableblock>code:only-child{background:none;padding:0}p.tableblock{font-size:1em}td>div.verse{white-space:pre}ol{margin-left:1.75em}ul li ol{margin-left:1.5em}dl dd{margin-left:1.125em}dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}ul.inline>li>*{display:block}.unstyled dl dt{font-weight:400;font-style:normal}ol.arabic{list-style-type:decimal}ol.decimal{list-style-type:decimal-leading-zero}ol.loweralpha{list-style-type:lower-alpha}ol.upperalpha{list-style-type:upper-alpha}ol.lowerroman{list-style-type:lower-roman}ol.upperroman{list-style-type:upper-roman}ol.lowergreek{list-style-type:lower-greek}.hdlist>table,.colist>table{border:0;background:none}.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}td.hdlist1{font-weight:bold;padding-bottom:1.25em}.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}.colist>table tr>td:first-of-type{padding:0 .75em;line-height:1}.colist>table tr>td:last-of-type{padding:.25em 0}.thumb,.th{line-height:0;display:inline-block;border:solid 4px #fff;-webkit-box-shadow:0 0 0 1px #ddd;box-shadow:0 0 0 1px #ddd}.imageblock.left,.imageblock[style*="float: left"]{margin:.25em .625em 1.25em 0}.imageblock.right,.imageblock[style*="float: right"]{margin:.25em 0 1.25em .625em}.imageblock>.title{margin-bottom:0}.imageblock.thumb,.imageblock.th{border-width:6px}.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}.image.left{margin-right:.625em}.image.right{margin-left:.625em}a.image{text-decoration:none;display:inline-block}a.image object{pointer-events:none}sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}sup.footnote a,sup.footnoteref a{text-decoration:none}sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em 0;border-width:1px 0 0 0}#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;text-indent:-1.05em;margin-bottom:.2em}#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none}#footnotes .footnote:last-of-type{margin-bottom:0}#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}.gist .file-data>table{border:0;background:#fff;width:100%;margin-bottom:0}.gist .file-data>table td.line-data{width:99%}div.unbreakable{page-break-inside:avoid}.big{font-size:larger}.small{font-size:smaller}.underline{text-decoration:underline}.overline{text-decoration:overline}.line-through{text-decoration:line-through}.aqua{color:#00bfbf}.aqua-background{background-color:#00fafa}.black{color:#000}.black-background{background-color:#000}.blue{color:#0000bf}.blue-background{background-color:#0000fa}.fuchsia{color:#bf00bf}.fuchsia-background{background-color:#fa00fa}.gray{color:#606060}.gray-background{background-color:#7d7d7d}.green{color:#006000}.green-background{background-color:#007d00}.lime{color:#00bf00}.lime-background{background-color:#00fa00}.maroon{color:#600000}.maroon-background{background-color:#7d0000}.navy{color:#000060}.navy-background{background-color:#00007d}.olive{color:#606000}.olive-background{background-color:#7d7d00}.purple{color:#600060}.purple-background{background-color:#7d007d}.red{color:#bf0000}.red-background{background-color:#fa0000}.silver{color:#909090}.silver-background{background-color:#bcbcbc}.teal{color:#006060}.teal-background{background-color:#007d7d}.white{color:#bfbfbf}.white-background{background-color:#fafafa}.yellow{color:#bfbf00}.yellow-background{background-color:#fafa00}span.icon>.fa{cursor:default}.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}.admonitionblock td.icon .icon-note:before{content:"\f05a";color:#19407c}.admonitionblock td.icon .icon-tip:before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}.admonitionblock td.icon .icon-warning:before{content:"\f071";color:#bf6900}.admonitionblock td.icon .icon-caution:before{content:"\f06d";color:#bf3400}.admonitionblock td.icon .icon-important:before{content:"\f06a";color:#bf0000}.conum[data-value]{display:inline-block;color:#fff!important;background-color:rgba(0,0,0,.8);-webkit-border-radius:100px;border-radius:100px;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}.conum[data-value] *{color:#fff!important}.conum[data-value]+b{display:none}.conum[data-value]:after{content:attr(data-value)}pre .conum[data-value]{position:relative;top:-.125em}b.conum *{color:inherit!important}.conum:not([data-value]):empty{display:none}dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}h1,h2,p,td.content,span.alt{letter-spacing:-.01em}p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}p,blockquote,dt,td.content,span.alt{font-size:1.0625rem}p{margin-bottom:1.25rem}.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}.exampleblock>.content{background-color:#fffef7;border-color:#e0e0dc;-webkit-box-shadow:0 1px 4px #e0e0dc;box-shadow:0 1px 4px #e0e0dc}.print-only{display:none!important}@media print{@page{margin:1.25cm .75cm}*{-webkit-box-shadow:none!important;box-shadow:none!important;text-shadow:none!important}a{color:inherit!important;text-decoration:underline!important}a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}a[href^="http:"]:not(.bare):after,a[href^="https:"]:not(.bare):after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}abbr[title]:after{content:" (" attr(title) ")"}pre,blockquote,tr,img,object,svg{page-break-inside:avoid}thead{display:table-header-group}svg{max-width:100%}p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}#toc,.sidebarblock,.exampleblock>.content{background:none!important}#toc{border-bottom:1px solid #ddddd8!important;padding-bottom:0!important}.sect1{padding-bottom:0!important}.sect1+.sect1{border:0!important}#header>h1:first-child{margin-top:1.25rem}body.book #header{text-align:center}body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em 0}body.book #header .details{border:0!important;display:block;padding:0!important}body.book #header .details span:first-child{margin-left:0!important}body.book #header .details br{display:block}body.book #header .details br+span:before{content:none!important}body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}.listingblock code[data-lang]:before{display:block}#footer{background:none!important;padding:0 .9375em}#footer-text{color:rgba(0,0,0,.6)!important;font-size:.9em}.hide-on-print{display:none!important}.print-only{display:block!important}.hide-for-print{display:none!important}.show-for-print{display:inherit!important}}</style>
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="css/springcloud.min.css"><script type="text/javascript" charset="UTF-8" src="js/springcloud.min.js"></script></head>
+<body class="article">
+<div id="header">
+<h1>Spring Cloud Config</h1>
+<div id="toc" class="toc">
+<div id="toctitle"><font o="2">目录</font></div>
+<ul class="sectlevel1">
+<li><a href="#_quick_start"><font o="3">快速开始</font></a>
+<ul class="sectlevel2">
+<li><a href="#_client_side_usage"><font o="4">客户端使用</font></a></li>
+</ul>
+</li>
+<li><a href="#_spring_cloud_config_server"><font o="5">Spring Cloud Config服务器</font></a>
+<ul class="sectlevel2">
+<li><a href="#_environment_repository"><font o="6">环境库</font></a></li>
+<li><a href="#_health_indicator"><font o="7">健康指标</font></a></li>
+<li><a href="#_security"><font o="8">安全</font></a></li>
+<li><a href="#_encryption_and_decryption"><font o="9">加密和解密</font></a></li>
+<li><a href="#_key_management"><font o="10">密钥管理</font></a></li>
+<li><a href="#_creating_a_key_store_for_testing"><font o="11">创建用于测试的密钥库</font></a></li>
+<li><a href="#_using_multiple_keys_and_key_rotation"><font o="12">使用多个键和键旋转</font></a></li>
+<li><a href="#_serving_encrypted_properties"><font o="13">提供加密属性</font></a></li>
+</ul>
+</li>
+<li><a href="#_serving_alternative_formats"><font o="14">服务替代格式</font></a></li>
+<li><a href="#_serving_plain_text"><font o="15">服务纯文本</font></a></li>
+<li><a href="#_embedding_the_config_server"><font o="16">嵌入配置服务器</font></a></li>
+<li><a href="#_push_notifications_and_spring_cloud_bus"><font o="17">推送通知和Spring Cloud Bus</font></a></li>
+<li><a href="#_spring_cloud_config_client"><font o="18">Spring Cloud Config客户端</font></a>
+<ul class="sectlevel2">
+<li><a href="#config-first-bootstrap"><font o="19">配置第一引导</font></a></li>
+<li><a href="#discovery-first-bootstrap"><font o="20">发现第一个引导</font></a></li>
+<li><a href="#config-client-fail-fast"><font o="21">配置客户端快速失败</font></a></li>
+<li><a href="#config-client-retry"><font o="22">配置客户端重试</font></a></li>
+<li><a href="#_locating_remote_configuration_resources"><font o="23">查找远程配置资源</font></a></li>
+<li><a href="#_security_2"><font o="24">安全</font></a></li>
+<li><a href="#_vault_2">Vault</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong><font o="26">1.3.0.RELEASE</font></strong></p>
+</div>
+<div class="paragraph">
+<p><font o="27">Spring Cloud Config为分布式系统中的外部配置提供服务器和客户端支持。</font><font o="28">使用Config Server，您可以在所有环境中管理应用程序的外部属性。</font><font o="29">客户端和服务器上的概念映射与Spring <code i="5">Environment</code>和<code i="6">PropertySource</code>抽象相同，因此它们与Spring应用程序非常契合，但可以与任何以任何语言运行的应用程序一起使用。</font><font o="30">随着应用程序通过从开发人员到测试和生产的部署流程，您可以管理这些环境之间的配置，并确定应用程序具有迁移时需要运行的一切。</font><font o="31">服务器存储后端的默认实现使用git，因此它轻松支持标签版本的配置环境，以及可以访问用于管理内容的各种工具。</font><font o="32">可以轻松添加替代实现，并使用Spring配置将其插入。</font></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_quick_start"><font o="33">快速开始</font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font o="34">启动服务器：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ cd spring-cloud-config-server
+$ ../mvnw spring-boot:run</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="35">该服务器是一个Spring Boot应用程序，所以你可以从IDE运行它，而不是喜欢（主类是<code i="7">ConfigServerApplication</code>）。</font><font o="36">然后尝试一个客户端：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ curl localhost:8888/foo/development
+{"name":"development","label":"master","propertySources":[
+  {"name":"https://github.com/scratches/config-repo/foo-development.properties","source":{"bar":"spam"}},
+  {"name":"https://github.com/scratches/config-repo/foo.properties","source":{"foo":"bar"}}
+]}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="37">定位资源的默认策略是克隆一个git仓库（在<code i="8">spring.cloud.config.server.git.uri</code>），并使用它来初始化一个迷你<code i="9">SpringApplication</code>。</font><font o="38">迷你应用程序的<code i="10">Environment</code>用于枚举属性源并通过JSON端点发布。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="39">HTTP服务具有以下格式的资源：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">/{application}/{profile}[/{label}]
+/{application}-{profile}.yml
+/{label}/{application}-{profile}.yml
+/{application}-{profile}.properties
+/{label}/{application}-{profile}.properties</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="40">其中“应用程序”作为<code i="12">SpringApplication</code>中的<code i="11">spring.config.name</code>注入（即常规Spring Boot应用程序中通常为“应用程序”），“配置文件”是活动配置文件（或逗号分隔列表）的属性），“label”是可选的git标签（默认为“master”）。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="41">Spring Cloud Config服务器从git存储库中提取远程客户端的配置（必须提供）：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_client_side_usage"><font o="42">客户端使用</font></h3>
+<div class="paragraph">
+<p><font o="43">要在应用程序中使用这些功能，只需将其构建为依赖于spring-cloud-config-client的Spring Boot应用程序（例如，查看配置客户端或示例应用程序的测试用例）。</font><font o="44">添加依赖关系的最方便的方法是通过Spring Boot启动器<code i="13">org.springframework.cloud:spring-cloud-starter-config</code>。</font><font o="45">还有一个Maven用户的父pom和BOM（<code i="14">spring-cloud-starter-parent</code>）和用于Gradle和Spring CLI用户的Spring IO版本管理属性文件。</font><font o="46">示例Maven配置：</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="47">的pom.xml</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-xml" data-lang="xml">   &lt;parent&gt;
+       &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+       &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+       &lt;version&gt;1.3.5.RELEASE&lt;/version&gt;
+       &lt;relativePath /&gt; &lt;!-- lookup parent from repository --&gt;
+   &lt;/parent&gt;
+
+&lt;dependencyManagement&gt;
+	&lt;dependencies&gt;
+		&lt;dependency&gt;
+			&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+			&lt;artifactId&gt;spring-cloud-dependencies&lt;/artifactId&gt;
+			&lt;version&gt;Brixton.RELEASE&lt;/version&gt;
+			&lt;type&gt;pom&lt;/type&gt;
+			&lt;scope&gt;import&lt;/scope&gt;
+		&lt;/dependency&gt;
+	&lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;
+
+&lt;dependencies&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-cloud-starter-config&lt;/artifactId&gt;
+	&lt;/dependency&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+		&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;
+		&lt;scope&gt;test&lt;/scope&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;
+
+&lt;build&gt;
+	&lt;plugins&gt;
+           &lt;plugin&gt;
+               &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+               &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+           &lt;/plugin&gt;
+	&lt;/plugins&gt;
+&lt;/build&gt;
+
+   &lt;!-- repositories also needed for snapshots and milestones --&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="48">那么你可以创建一个标准的Spring Boot应用程序，就像这个简单的HTTP服务器：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">@SpringBootApplication
+@RestController
+public class Application {
+
+    @RequestMapping("/")
+    public String home() {
+        return "Hello World!";
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="49">当它运行它将从端口8888上的默认本地配置服务器接收外部配置，如果它正在运行。</font><font o="50">要修改启动行为，您可以使用<code i="15">bootstrap.properties</code>（如<code i="16">application.properties</code>，但是应用程序上下文的引导阶段）更改配置服务器的位置，例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">spring.cloud.config.uri: http://myconfigserver.com</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="51">引导属性将在<code i="17">/env</code>端点中显示为高优先级属性源，例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ curl localhost:8080/env
+{
+  "profiles":[],
+  "configService:https://github.com/spring-cloud-samples/config-repo/bar.properties":{"foo":"bar"},
+  "servletContextInitParams":{},
+  "systemProperties":{...},
+  ...
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="52">（名为“configService：&lt;远程存储库的URL&gt; / &lt;文件名&gt;”的属性源包含值为“bar”的属性“foo”，是最高优先级）。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="53">注意</font></div>
+</td>
+<td class="content"><font o="54">
+属性源名称中的URL是git存储库，而不是配置服务器URL。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_spring_cloud_config_server"><font o="55">Spring Cloud Config服务器</font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font o="56">服务器为外部配置（名称值对或等效的YAML内容）提供了基于资源的HTTP。</font><font o="57">服务器可以使用<code i="18">@EnableConfigServer</code>注释轻松嵌入到Spring Boot应用程序中。</font><font o="58">所以这个应用程序是一个配置服务器：</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="59">ConfigServer.java</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-java" data-lang="java">@SpringBootApplication
+@EnableConfigServer
+public class ConfigServer {
+  public static void main(String[] args) {
+    SpringApplication.run(ConfigServer.class, args);
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="60">像所有默认情况下在端口8080上运行的所有Spring Boot应用程序一样，但您可以通过各种方式将其切换到常规端口8888。</font><font o="61">最简单的设置默认配置存储库是通过使用<code i="19">spring.config.name=configserver</code>启动（在Config Server jar中有一个<code i="20">configserver.yml</code>）。</font><font o="62">另一个是使用你自己的<code i="21">application.properties</code>，例如</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="63">application.properties</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-properties" data-lang="properties">server.port: 8888
+spring.cloud.config.server.git.uri: file://${user.home}/config-repo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="64">其中<code i="22">${user.home}/config-repo</code>是包含YAML和属性文件的git仓库。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="65">注意</font></div>
+</td>
+<td class="content"><font o="66">
+在Windows中，如果文件URL为绝对带有驱动器前缀，例如<code i="23"><a href="file:///${user.home}/config-repo" class="bare">file:///${user.home}/config-repo</a></code>，则需要额外的“/”。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="67">小费</font></div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><font o="68">以下是上面示例中创建git仓库的方法：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ cd $HOME
+$ mkdir config-repo
+$ cd config-repo
+$ git init .
+$ echo info.foo: bar &gt; application.properties
+$ git add -A .
+$ git commit -m "Add application.properties"</pre>
+</div>
+</div>
+</td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="69">警告</font></div>
+</td>
+<td class="content"><font o="70">
+使用本地文件系统进行git存储库仅用于测试。</font><font o="71">使用服务器在生产环境中托管配置库。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="72">警告</font></div>
+</td>
+<td class="content"><font o="73">
+如果您只保留文本文件，则配置库的初始克隆将会快速有效。</font><font o="74">如果您开始存储二进制文件，尤其是较大的文件，则可能会遇到服务器中第一个配置请求和/或内存不足错误的延迟。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="sect2">
+<h3 id="_environment_repository"><font o="75">环境库</font></h3>
+<div class="paragraph">
+<p><font o="76">您要在哪里存储配置服务器的配置数据？</font><font o="77">管理此行为的策略是<code i="24">EnvironmentRepository</code>，服务于<code i="25">Environment</code>对象。</font><font o="78">这个<code i="26">Environment</code>是Spring <code i="27">Environment</code>（包括<code i="28">propertySources</code>作为主要功能）的域的浅层副本。</font><font o="79"><code i="29">Environment</code>资源由三个变量参数化：</font></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><font o="80"><code i="30">{application}</code>映射到客户端的“spring.application.name”;</font></p>
+</li>
+<li>
+<p><font o="81"><code i="31">{profile}</code>映射到客户端上的“spring.profiles.active”（逗号分隔列表）; </font><font o="82">和</font></p>
+</li>
+<li>
+<p><font o="83"><code i="32">{label}</code>这是一个服务器端功能，标记“版本”的一组配置文件。</font></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><font o="84">存储库实现通常表现得像一个Spring Boot应用程序从“spring.config.name”等于<code i="33">{application}</code>参数加载配置文件，“spring.profiles.active”等于<code i="34">{profiles}</code>参数。</font><font o="85">配置文件的优先级规则也与常规启动应用程序中的相同：活动配置文件优先于默认配置，如果存在多个配置文件，则最后一个配置文件（例如向<code i="35">Map</code>添加条目））。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="86">示例：客户端应用程序具有此引导配置：</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="87">bootstrap.yml</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  application:
+    name: foo
+  profiles:
+    active: dev,mysql</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="88">（像往常一样使用Spring Boot应用程序，这些属性也可以设置为环境变量或命令行参数）。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="89">如果存储库是基于文件的，则服务器将从<code i="37">application.yml</code>创建<code i="36">Environment</code>（在所有客户端之间共享），<code i="38">foo.yml</code>（以<code i="39">foo.yml</code>优先））。</font><font o="90">如果YAML文件在其中具有指向Spring配置文件的文档，则应用较高优先级（按照列出的配置文件的顺序），并且如果存在特定于配置文件的YAML（或属性）文件，那么这些文件也应用的优先级高于默认值。</font><font o="91">较高优先级转换为<code i="41">Environment</code>之前列出的<code i="40">PropertySource</code>。</font><font o="92">（这些规则与独立的Spring Boot应用程序相同。）</font></p>
+</div>
+<div class="sect3">
+<h4 id="_git_backend"><font o="93">Git后端</font></h4>
+<div class="paragraph">
+<p><font o="94"><code i="42">EnvironmentRepository</code>的默认实现使用Git后端，这对于管理升级和物理环境以及审核更改非常方便。</font><font o="95">要更改存储库的位置，可以在Config Server中设置“spring.cloud.config.server.git.uri”配置属性（例如<code i="43">application.yml</code>）。</font><font o="96">如果您使用<code i="44">file:</code>前缀进行设置，则应从本地存储库中运行，以便在没有服务器的情况下快速方便地启动，但在这种情况下，服务器将直接在本地存储库中进行操作，而不会克隆它如果它不是裸机，因为配置服务器永远不会更改“远程”资源库）。</font><font o="97">要扩展Config Server并使其高度可用，您需要将服务器的所有实例指向同一个存储库，因此只有共享文件系统才能正常工作。</font><font o="98">即使在这种情况下，最好使用共享文件系统存储库的<code i="45">ssh:</code>协议，以便服务器可以将其克隆并使用本地工作副本作为缓存。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="99">该存储库实现将HTTP资源的<code i="46">{label}</code>参数映射到git标签（提交ID，分支名称或标签）。</font><font o="100">如果git分支或标签名称包含斜杠（“/”），则应使用特殊字符串“（_）”指定HTTP URL中的标签，以避免与其他URL路径模糊。</font><font o="101">例如，如果标签是<code i="47">foo/bar</code>，则替换斜杠将导致类似于<code i="48">foo(_)bar</code>的标签。</font><font o="102">如果您使用像curl这样的命令行客户端（例如使用引号将其从shell中转出来），请小心URL中的方括号。</font></p>
+</div>
+<div class="sect4">
+<h5 id="_placeholders_in_git_uri"><font o="103">Git URI中的占位符</font></h5>
+<div class="paragraph">
+<p><font o="104">Spring Cloud Config服务器支持一个Git仓库URL，其中包含<code i="49">{application}</code>和<code i="50">{profile}</code>（以及<code i="51">{label}</code>）的占位符，如果需要，请记住，标签应用为git标签）。</font><font o="105">因此，您可以使用（例如）轻松支持“每个应用程序的一个repo”策略：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/myorg/{application}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="106">或使用类似模式“{一个回报每个配置文件”策略，但使用<code i="52">{profile}</code>。</font></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_pattern_matching_and_multiple_repositories"><font o="107">模式匹配和多个存储库</font></h5>
+<div class="paragraph">
+<p><font o="108">还可以通过应用程序和配置文件名称的模式匹配来支持更复杂的需求。</font><font o="109">模式格式是带有通配符的<code i="53">{application}/{profile}</code>名称的逗号分隔列表（其中以通配符开头的模式可能需要引用）。</font><font o="110">例：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          repos:
+            simple: https://github.com/simple/config-repo
+            special:
+              pattern: special*/dev*,*special*/dev*
+              uri: https://github.com/special/config-repo
+            local:
+              pattern: local*
+              uri: file:/home/configsvc/config-repo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="111">如果<code i="54">{application}/{profile}</code>不匹配任何模式，它将使用在“spring.cloud.config.server.git.uri”下定义的默认uri。</font><font o="112">在上面的例子中，对于“简单”存储库，模式是<code i="55">simple/*</code>（即所有配置文件中只匹配一个名为“简单”的应用程序）。</font><font o="113">“本地”存储库与所有配置文件中以“local”开头的所有应用程序名称匹配（将<code i="56">/*</code>后缀自动添加到任何没有配置文件匹配器的模式）。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="114">注意</font></div>
+</td>
+<td class="content"><font o="115">
+在上述“简单”示例中使用的“单行”快捷方式只能在唯一要设置的属性为URI的情况下使用。</font><font o="116">如果您需要设置其他任何内容（凭据，模式等），则需要使用完整的表单。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="117">repo中的<code i="57">pattern</code>属性实际上是一个数组，因此您可以使用属性文件中的YAML数组（或<code i="58">[0]</code>，<code i="59">[1]</code>等后缀）绑定到多个模式。</font><font o="118">如果要运行具有多个配置文件的应用程序，则可能需要执行此操作。</font><font o="119">例：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          repos:
+            development:
+              pattern:
+                - */development
+                - */staging
+              uri: https://github.com/development/config-repo
+            staging:
+              pattern:
+                - */qa
+                - */production
+              uri: https://github.com/staging/config-repo</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="120">注意</font></div>
+</td>
+<td class="content"><font o="121">
+Spring Cloud将猜测包含不在<code i="60">*</code>中的配置文件的模式意味着您实际上希望匹配从该模式开始的配置文件列表（所以<code i="61">*/staging</code>是<code i="62">["*/staging", "*/staging,*"]</code>的快捷方式） 。</font><font o="122">这是常见的，您需要在本地的“开发”配置文件中运行应用程序，但也可以远程运行“云”配置文件。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="123">每个存储库还可以选择将配置文件存储在子目录中，搜索这些目录的模式可以指定为<code i="63">searchPaths</code>。</font><font o="124">例如在顶层：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          searchPaths: foo,bar*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="125">在此示例中，服务器搜索顶级和“foo /”子目录以及名称以“bar”开头的任何子目录中的配置文件。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="126">默认情况下，首次请求配置时，服务器克隆远程存储库。</font><font o="127">服务器可以配置为在启动时克隆存储库。</font><font o="128">例如在顶层：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git/common/config-repo.git
+          repos:
+            team-a:
+                pattern: team-a-*
+                cloneOnStart: true
+                uri: http://git/team-a/config-repo.git
+            team-b:
+                pattern: team-b-*
+                cloneOnStart: false
+                uri: http://git/team-b/config-repo.git
+            team-c:
+                pattern: team-c-*
+                uri: http://git/team-a/config-repo.git</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="129">在此示例中，服务器在启动之前克隆了team-a的config-repo，然后它接受任何请求。</font><font o="130">所有其他存储库将不被克隆，直到请求从存储库配置。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="131">注意</font></div>
+</td>
+<td class="content"><font o="132">
+在配置服务器启动时设置要克隆的存储库可以帮助在配置服务器启动时快速识别错误配置的源（例如，无效的存储库URI）。</font><font o="133">配置源不启用<code i="64">cloneOnStart</code>时，配置服务器可能启动成功配置错误或无效的配置源，并且不会检测到错误，直到应用程序从该配置源请求配置为止。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_authentication"><font o="134">认证</font></h5>
+<div class="paragraph">
+<p><font o="135">要在远程存储库上使用HTTP基本身份验证，请分别添加“username”和“password”属性（不在URL中），例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          username: trolley
+          password: strongpassword</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="136">如果您不使用HTTPS和用户凭据，则在将密钥存储在默认目录（<code i="65">~/.ssh</code>）中，并且uri指向SSH位置时，SSH也应该开箱即用，例如“ </font><a href="mailto:git@github.com"><font o="136">git@github.com</font></a><font o="136">：配置/云配置”。</font><font o="137">重要的是，Git服务器的条目存在于<code i="66">~/.ssh/known_hosts</code>文件中，并且格式为<code i="67">ssh-rsa</code>。</font><font o="138">不支持其他格式（如<code i="68">ecdsa-sha2-nistp256</code>）。</font><font o="139">为了避免意外，您应该确保Git服务器的<code i="69">known_hosts</code>文件中只有一个条目存在，并且与您提供给配置服务器的URL匹配。</font><font o="140">如果您在URL中使用了一个主机名，那么您希望在<code i="70">known_hosts</code>文件中具有该主机名，而不是IP。</font><font o="141">使用JGit访问存储库，因此您发现的任何文档都应适用。</font><font o="142">HTTPS代理设置可以<code i="71">~/.git/config</code>设置，也可以通过系统属性（<code i="72">-Dhttps.proxyHost</code>和<code i="73">-Dhttps.proxyPort</code>）与任何其他JVM进程相同。</font></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="143">小费</font></div>
+</td>
+<td class="content"><font o="144">
+如果您不知道<code i="74">~/.git</code>目录在何处使用<code i="75">git config
+--global</code>操纵设置（例如<code i="76">git config --global
+http.sslVerify false</code>）。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_authentication_with_aws_codecommit"><font o="145">使用AWS CodeCommit进行认证</font></h5>
+<div class="paragraph">
+<p><a href="https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html"><font o="146">AWS CodeCommit</font></a><font o="146">认证也可以完成。</font><font o="147">当从命令行使用Git时，AWS CodeCommit使用身份验证助手。</font><font o="148">该帮助器不与JGit库一起使用，因此如果Git URI与AWS CodeCommit模式匹配，则将创建用于AWS CodeCommit的JGit CredentialProvider。</font><font o="149">AWS CodeCommit URI始终看起来像
+ </font><a href="https://git-codecommit.${AWS_REGION}.amazonaws.com/${repopath}" class="bare"><font o="149">https：//git-codecommit.$ {AWS_REGION} .amazonaws.com / $ {repopath}</font></a><font o="149">。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="150">如果您使用AWS CodeCommit URI提供用户名和密码，那么这些URI必须</font><font o="150">
+是用于访问存储库</font><font o="150">的</font><a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSGettingStartedGuide/AWSCredentials.html"><font o="150">AWS accessKeyId和</font></a><font o="150"> secretAccessKey。</font><font o="151">如果不指定用户名和密码，则将使用</font><a href="https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html"><font o="151">AWS默认凭据提供程序链</font></a><font o="151">检索accessKeyId和secretAccessKey
+ </font><font o="151">。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="152">如果您的Git URI与CodeCommit URI模式（上述）匹配，则必须在用户名和密码或默认凭据提供程序链支持的某个位置中提供有效的AWS凭据。</font><font o="153">AWS EC2实例可以使用EC2实例的
+ </font><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html"><font o="153">IAM角色</font></a><font o="153">。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="154">注意：aws-java-sdk-core jar是一个可选的依赖关系。</font><font o="155">如果aws-java-sdk-core jar不在您的类路径上，则无论git服务器URI如何，都将不会创建AWS代码提交凭据提供程序。</font></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_placeholders_in_git_search_paths"><font o="156">Git搜索路径中的占位符</font></h5>
+<div class="paragraph">
+<p><font o="157">Spring Cloud Config服务器还支持<code i="77">{application}</code>和<code i="78">{profile}</code>（以及<code i="79">{label}</code>（如果需要））占位符的搜索路径。</font><font o="158">例：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          searchPaths: '{application}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="159">在资源库中搜索与目录（以及顶级）相同名称的文件。</font><font o="160">通配符在具有占位符的搜索路径中也是有效的（搜索中包含任何匹配的目录）。</font></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_force_pull_in_git_repositories"><font o="161">力拉入Git存储库</font></h5>
+<div class="paragraph">
+<p><font o="162">如前所述Spring Cloud Config服务器克隆远程git存储库，如果某种方式本地副本变脏（例如，由操作系统进程更改文件夹内容），则Spring Cloud Config服务器无法从远程存储库更新本地副本。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="163">要解决这个问题，有一个<code i="80">force-pull</code>属性将使Spring Cloud Config Server强制从远程存储库中提取，如果本地副本是脏的。</font><font o="164">例：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/spring-cloud-samples/config-repo
+          force-pull: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="165">如果您有多个存储库配置，则可以为每个存储库配置<code i="81">force-pull</code>属性。</font><font o="166">例：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://git/common/config-repo.git
+          force-pull: true
+          repos:
+            team-a:
+                pattern: team-a-*
+                uri: http://git/team-a/config-repo.git
+                force-pull: true
+            team-b:
+                pattern: team-b-*
+                uri: http://git/team-b/config-repo.git
+                force-pull: true
+            team-c:
+                pattern: team-c-*
+                uri: http://git/team-a/config-repo.git</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="167">注意</font></div>
+</td>
+<td class="content"><font o="168">
+<code i="82">force-pull</code>属性的默认值为<code i="83">false</code>。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_version_control_backend_filesystem_use"><font o="169">版本控制后端文件系统使用</font></h4>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="170">警告</font></div>
+</td>
+<td class="content"><font o="171">
+使用基于VCS的后端（git，svn）文件被检出或克隆到本地文件系统。</font><font o="172">默认情况下，它们放在系统临时目录中，前缀为<code i="84">config-repo-</code>。</font><font o="173">在linux上，例如可以是<code i="85">/tmp/config-repo-&lt;randomid&gt;</code>。</font><font o="174">一些操作系统会</font><a href="https://serverfault.com/questions/377348/when-does-tmp-get-cleared/377349#377349"><font o="174">定期清除</font></a><font o="174">临时目录。</font><font o="175">这可能会导致意外的行为，例如缺少属性。</font><font o="176">为避免此问题，请通过将<code i="86">spring.cloud.config.server.git.basedir</code>或<code i="87">spring.cloud.config.server.svn.basedir</code>设置为不在系统临时结构中的目录来更改Config Server所使用的目录。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_file_system_backend"><font o="177">文件系统后端</font></h4>
+<div class="paragraph">
+<p><font o="178">配置服务器中还有一个不使用Git的“本机”配置文件，只是从本地类路径或文件系统加载配置文件（您想要指向的任何静态URL“spring.cloud.config.server .native.searchLocations“）。</font><font o="179">要使用本机配置文件，只需使用“spring.profiles.active = native”启动Config Server。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="180">注意</font></div>
+</td>
+<td class="content"><font o="181">
+记住使用<code i="88">file:</code>前缀的文件资源（缺省没有前缀通常是classpath）。</font><font o="182">与任何Spring Boot配置一样，您可以嵌入<code i="89">${}</code>样式的环境占位符，但请记住，Windows中的绝对路径需要额外的“/”，例如<code i="90"><a href="file:///${user.home}/config-repo" class="bare">file:///${user.home}/config-repo</a></code>
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="183">警告</font></div>
+</td>
+<td class="content"><font o="184">
+<code i="91">searchLocations</code>的默认值与本地Spring Boot应用程序（所以<code i="92">[classpath:/, classpath:/config,
+file:./, file:./config]</code>）相同。</font><font o="185">这不会将<code i="93">application.properties</code>从服务器暴露给所有客户端，因为在发送到客户端之前，服务器中存在的任何属性源都将被删除。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="186">小费</font></div>
+</td>
+<td class="content"><font o="187">
+文件系统后端对于快速入门和测试是非常好的。</font><font o="188">要在生产中使用它，您需要确保文件系统是可靠的，并在配置服务器的所有实例中共享。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="189">搜索位置可以包含<code i="94">{application}</code>，<code i="95">{profile}</code>和<code i="96">{label}</code>的占位符。</font><font o="190">以这种方式，您可以隔离路径中的目录，并选择一个有用的策略（例如每个应用程序的子目录或每个配置文件的子目录）。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="191">如果您不在搜索位置使用占位符，则该存储库还将HTTP资源的<code i="97">{label}</code>参数附加到搜索路径上的后缀，因此属性文件将从每个搜索位置加载</font><strong><font o="191">并</font></strong><font o="191">具有相同名称的子目录作为标签（标签属性在Spring环境中优先）。</font><font o="192">因此，没有占位符的默认行为与添加以<code i="98">/{label}/. For example `file:/tmp/config</code>结尾的搜索位置的添加与<code i="99">file:/tmp/config,file:/tmp/config/{label}</code>相同</font></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vault_backend"><font o="193">Vault后端</font></h4>
+<div class="paragraph">
+<p><font o="194">Spring Cloud Config服务器还支持</font><a href="https://www.vaultproject.io"><font o="194">Vault</font></a><font o="194">作为后端。</font></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p><font o="195">Vault是安全访问秘密的工具。</font><font o="196">一个秘密是你想要严格控制访问的任何东西，如API密钥，密码，证书等等。</font><font o="197">Vault为任何秘密提供统一的界面，同时提供严格的访问控制和记录详细的审核日志。</font></p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="198">有关Vault的更多信息，请参阅</font><a href="https://www.vaultproject.io/intro/index.html"><font o="198">Vault快速入门指南</font></a><font o="198">。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="199">要使配置服务器使用Vault后端，必须使用<code i="100">vault</code>配置文件运行配置服务器。</font><font o="200">例如在配置服务器的<code i="101">application.properties</code>中，您可以添加<code i="102">spring.profiles.active=vault</code>。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="201">默认情况下，配置服务器将假定您的Vault服务器正在运行<code i="103"><a href="http://127.0.0.1:8200" class="bare">http://127.0.0.1:8200</a></code>。</font><font o="202">它还将假设后端名称为<code i="104">secret</code>，密钥为<code i="105">application</code>。</font><font o="203">所有这些默认值都可以在配置服务器的<code i="106">application.properties</code>中配置。</font><font o="204">以下是可配置的Vault属性表。</font><font o="205">所有属性前缀为<code i="107">spring.cloud.config.server.vault</code>。</font></p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><font o="206">名称</font></th>
+<th class="tableblock halign-left valign-top"><font o="207">默认值</font></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="208">主办</font></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">127.0.0.1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="210">港口</font></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8200</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="212">方案</font></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="213">HTTP</font></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="214">后端</font></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="215">秘密</font></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="216">defaultKey</font></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="217">应用</font></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><font o="218">profileSeparator</font></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">,</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><font o="220">所有可配置的属性可以在<code i="108">org.springframework.cloud.config.server.environment.VaultEnvironmentRepository</code>中找到。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="221">运行您的配置服务器，您可以向服务器发出HTTP请求，以从Vault后端检索值。</font><font o="222">为此，您将需要一个令牌为您的Vault服务器。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="223">首先将一些数据放在你身上Vault。</font><font o="224">例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-sh" data-lang="sh">$ vault write secret/application foo=bar baz=bam
+$ vault write secret/myapp foo=myappsbar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="225">现在，将HTTP请求发送给您的配置服务器以检索值。</font></p>
+</div>
+<div class="paragraph">
+<p><code>$ curl -X "GET" "http://localhost:8888/myapp/default" -H "X-Config-Token: yourtoken"</code></p>
+</div>
+<div class="paragraph">
+<p><font o="226">在提出上述要求后，您应该会看到类似的回复。</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-json" data-lang="json">{
+   "name":"myapp",
+   "profiles":[
+      "default"
+   ],
+   "label":null,
+   "version":null,
+   "state":null,
+   "propertySources":[
+      {
+         "name":"vault:myapp",
+         "source":{
+            "foo":"myappsbar"
+         }
+      },
+      {
+         "name":"vault:application",
+         "source":{
+            "baz":"bam",
+            "foo":"bar"
+         }
+      }
+   ]
+}</code></pre>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_multiple_properties_sources"><font o="227">多个属性来源</font></h5>
+<div class="paragraph">
+<p><font o="228">使用Vault时，您可以为应用程序提供多个属性源。</font><font o="229">例如，假设您已将数据写入Vault中的以下路径。</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-sh" data-lang="sh">secret/myApp,dev
+secret/myApp
+secret/application,dev
+secret/application</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="230">写入<code i="109">secret/application</code>的属性可
+ </font><a href="#_vault_server"><font o="230">用于使用配置服务器的所有应用程序</font></a><font o="230">。</font><font o="231">名称为<code i="110">myApp</code>的应用程序将具有写入<code i="111">secret/myApp</code>和<code i="112">secret/application</code>的任何属性。</font><font o="232">当<code i="113">myApp</code>启用<code i="114">dev</code>配置文件时，写入所有上述路径的属性将可用，列表中第一个路径中的属性优先于其他路径。</font></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sharing_configuration_with_all_applications"><font o="233">与所有应用共享配置</font></h4>
+<div class="sect4">
+<h5 id="_file_based_repositories"><font o="234">基于文件的存储库</font></h5>
+<div class="paragraph">
+<p><font o="235">使用基于文件（即git，svn和native）的存储库，所有客户端应用程序（<code i="116">application.properties</code>，<code i="117">application.yml</code>，<code i="118">application-*.properties</code>等））共享文件名为<code i="115">application*</code>的资源。</font><font o="236">您可以使用这些文件名的资源来配置全局默认值，并根据需要将其覆盖应用程序特定的文件。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="237">#_property_overrides [属性覆盖]功能也可用于设置全局默认值，并且允许占位符应用程序在本地覆盖它们。</font></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="238">小费</font></div>
+</td>
+<td class="content"><font o="239">
+使用“本机”配置文件（本地文件系统后端），建议您使用不属于服务器自身配置的显式搜索位置。</font><font o="240">否则，默认搜索位置中的<code i="119">application*</code>资源将被删除，因为它们是服务器的一部分。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_vault_server"><font o="241">Vault服务器</font></h5>
+<div class="paragraph">
+<p><font o="242">当使用Vault作为后端时，您可以通过将配置放在<code i="120">secret/application</code>中与所有应用程序共享配置。</font><font o="243">例如，如果您运行此Vault命令</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-sh" data-lang="sh">$ vault write secret/application foo=bar baz=bam</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="244">使用配置服务器的所有应用程序都可以使用属性<code i="121">foo</code>和<code i="122">baz</code>。</font></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_composite_environment_repositories"><font o="245">复合环境库</font></h4>
+<div class="paragraph">
+<p><font o="246">在某些情况下，您可能希望从多个环境存储库中提取配置数据。</font><font o="247">为此，只需在配置服务器的应用程序属性或YAML文件中启用多个配置文件即可。</font><font o="248">例如，如果您要从Git存储库以及SVN存储库中提取配置数据，那么您将为配置服务器设置以下属性。</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  profiles:
+    active: git, svn
+  cloud:
+    config:
+      server:
+        svn:
+          uri: file:///path/to/svn/repo
+          order: 2
+        git:
+          uri: file:///path/to/git/repo
+          order: 1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="249">除了指定URI的每个repo之外，还可以指定<code i="123">order</code>属性。</font><font o="250"><code i="124">order</code>属性允许您指定所有存储库的优先级顺序。</font><font o="251"><code i="125">order</code>属性的数值越低，优先级越高。</font><font o="252">存储库的优先顺序将有助于解决包含相同属性的值的存储库之间的任何潜在冲突。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="253">注意</font></div>
+</td>
+<td class="content"><font o="254">
+从环境仓库检索值时的任何类型的故障将导致整个复合环境的故障。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="255">注意</font></div>
+</td>
+<td class="content"><font o="256">
+当使用复合环境时，重要的是所有repos都包含相同的标签。</font><font o="257">如果您有类似于上述的环境，并且使用标签<code i="126">master</code>请求配置数据，但是SVN repo不包含称为<code i="127">master</code>的分支，则整个请求将失败。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="sect4">
+<h5 id="_custom_composite_environment_repositories"><font o="258">自定义复合环境库</font></h5>
+<div class="paragraph">
+<p><font o="259">除了使用Spring Cloud中的一个环境存储库之外，还可以提供自己的<code i="128">EnvironmentRepository</code> bean作为复合环境的一部分。</font><font o="260">要做到这一点，你的bean必须实现<code i="129">EnvironmentRepository</code>接口。</font><font o="261">如果您想在复合环境中控制自定义<code i="130">EnvironmentRepository</code>的优先级，您还应该实现<code i="131">Ordered</code>接口并覆盖<code i="132">getOrdered</code>方法。</font><font o="262">如果您不实现<code i="133">Ordered</code>接口，则您的<code i="134">EnvironmentRepository</code>将被赋予最低优先级。</font></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_property_overrides"><font o="263">属性覆盖</font></h4>
+<div class="paragraph">
+<p><font o="264">Config Server具有“覆盖”功能，允许操作员为所有应用程序提供配置属性，这些应用程序不会被应用程序使用正常的Spring Boot钩子意外更改。</font><font o="265">要声明覆盖只是将名称/值对的地图添加到<code i="135">spring.cloud.config.server.overrides</code>。</font><font o="266">例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        overrides:
+          foo: bar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="267">将导致配置客户端的所有应用程序独立于自己的配置读取<code i="136">foo=bar</code>。</font><font o="268">（当然，应用程序可以以任何方式使用Config Server中的数据，因此覆盖不可强制执行，但如果它们是Spring Cloud Config客户端，则它们会提供有用的默认行为。）</font></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="269">小费</font></div>
+</td>
+<td class="content"><font o="270">
+通常使用“$ {}”的Spring环境占位符可以使用反斜杠（“\”）来转义（并在客户端上解析）来转义“$”或“{”，例如<code i="137">\${app.foo:bar}</code>解析为“bar “除非该应用程序提供自己的”app.foo“。</font><font o="271">请注意，在YAML中，您不需要转义反斜杠本身，而是在您执行的属性文件中配置服务器上的覆盖。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="272">您可以将客户端中所有覆盖的优先级更改为更为默认值，允许应用程序通过在远程存储库中设置标志<code i="138">spring.cloud.config.overrideNone=true</code>（默认值为false），在环境变量或系统属性中提供自己的值。</font></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_health_indicator"><font o="273">健康指标</font></h3>
+<div class="paragraph">
+<p><font o="274">配置服务器附带运行状况指示器，检查配置的<code i="139">EnvironmentRepository</code>是否正常工作。</font><font o="275">默认情况下，它要求<code i="140">EnvironmentRepository</code>应用程序名为<code i="141">app</code>，<code i="142">default</code>配置文件和<code i="143">EnvironmentRepository</code>实现提供的默认标签。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="276">您可以配置运行状况指示器以检查更多应用程序以及自定义配置文件和自定义标签，例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      server:
+        health:
+          repositories:
+            myservice:
+              label: mylabel
+            myservice-dev:
+              name: myservice
+              profiles: development</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="277">您可以通过设置<code i="144">spring.cloud.config.server.health.enabled=false</code>来禁用运行状况指示器。</font></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_security"><font o="278">安全</font></h3>
+<div class="paragraph">
+<p><font o="279">您可以以任何对您有意义的方式（从物理网络安全性到OAuth2承载令牌）来保护您的Config Server，而Spring Security和Spring Boot可以轻松做任何事情。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="280">要使用默认的Spring Boot配置的HTTP Basic安全性，只需在类路径中包含Spring Security（例如，通过<code i="145">spring-boot-starter-security</code>）。</font><font o="281">默认是“user”的用户名和随机生成的密码，这在实践中不会非常有用，因此我们建议您配置密码（通过<code i="146">security.user.password</code>）进行加密（有关以下内容的说明，请参阅以下内容）怎么做）。</font></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_encryption_and_decryption"><font o="282">加密和解密</font></h3>
+<div class="admonitionblock important">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="283">重要</font></div>
+</td>
+<td class="content">
+<strong><font o="284">先决条件：</font></strong><font o="284">要使用加密和解密功能，您需要在JVM中安装全面的JCE（默认情况下不存在）。</font><font o="285">您可以从Oracle下载“Java加密扩展（JCE）无限强度管理策略文件”，并按照安装说明（实际上将JRE lib / security目录中的2个策略文件替换为您下载的文件）。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="286">如果远程属性源包含加密内容（以<code i="147">{cipher}</code>开头的值）），则在通过HTTP发送给客户端之前，它们将被解密。</font><font o="287">这种设置的主要优点是，当它们“静止”时，属性值不必是纯文本（例如在git仓库中）。</font><font o="288">如果值无法解密，则从属性源中删除该值，并添加具有相同键的附加属性，但以“无效”作为前缀。</font><font o="289">和“不适用”的值（通常为“&lt;n / a&gt;”）。</font><font o="290">这主要是为了防止密码被用作密码并意外泄漏。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="291">如果要为配置客户端应用程序设置远程配置存储库，可能会包含一个<code i="148">application.yml</code>，例如：</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="292">application.yml</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  datasource:
+    username: dbuser
+    password: '{cipher}FKSAJDFGYOS8F7GLHAKERGFHLSAJ'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="293">.properties文件中的加密值不能用引号括起来，否则不会解密该值：</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="294">application.properties</font></div>
+<div class="content">
+<pre class="notranslate">spring.datasource.username: dbuser
+spring.datasource.password: {cipher}FKSAJDFGYOS8F7GLHAKERGFHLSAJ</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="295">您可以安全地将此纯文本推送到共享git存储库，并且保密密码。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="296">服务器还暴露了<code i="149">/encrypt</code>和<code i="150">/decrypt</code>端点（假设这些端点将被保护并且只能由授权代理访问）。</font><font o="297">如果您正在编辑远程配置文件，可以使用Config Server通过POST到<code i="151">/encrypt</code>端点来加密值，例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ curl localhost:8888/encrypt -d mysecret
+682bc583f4641835fa2db009355293665d2647dade3375c0ee201de2a49f7bda</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="298">注意</font></div>
+</td>
+<td class="content"><font o="299">
+如果要加密的值具有需要进行URL编码的字符，则应使用<code i="152">--data-urlencode</code>选项<code i="153">curl</code>来确保它们已正确编码。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="300">逆向操作也可通过<code i="154">/decrypt</code>获得（如果服务器配置了对称密钥或完整密钥对）：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ curl localhost:8888/decrypt -d 682bc583f4641835fa2db009355293665d2647dade3375c0ee201de2a49f7bda
+mysecret</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="301">小费</font></div>
+</td>
+<td class="content"><font o="302">
+如果您使用curl进行测试，则使用<code i="155">--data-urlencode</code>（而不是<code i="156">-d</code>）或设置显式<code i="157">Content-Type:
+text/plain</code>，以确保在有特殊字符时正确地对数据进行编码（'+'特别是棘手）。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="303">在加入值之前，先添加<code i="158">{cipher}</code>前缀，然后再将其放在YAML或属性文件中，然后再提交并将其推送到远程，可能不安全的存储区。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="304"><code i="159">/encrypt</code>和<code i="160">/decrypt</code>端点也都接受<code i="161">/*/{name}/{profiles}</code>形式的路径，当客户端调用到主环境资源时，可以使用每个应用程序（名称）和配置文件控制密码。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="305">注意</font></div>
+</td>
+<td class="content"><font o="306">
+为了以这种细微的方式控制密码，您还必须提供<code i="163">TextEncryptorLocator</code>类型的<code i="162">@Bean</code>，每个名称和配置文件都会创建一个不同的加密器。</font><font o="307">默认提供的不会这样做（所有加密使用相同的密钥）。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="308"><code i="164">spring</code>命令行客户端（安装了Spring Cloud CLI扩展名）也可用于加密和解密，例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ spring encrypt mysecret --key foo
+682bc583f4641835fa2db009355293665d2647dade3375c0ee201de2a49f7bda
+$ spring decrypt --key foo 682bc583f4641835fa2db009355293665d2647dade3375c0ee201de2a49f7bda
+mysecret</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="309">要在文件中使用密钥（例如用于加密的RSA公钥），使用“@”键入键值，并提供文件路径，例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ spring encrypt mysecret --key @${HOME}/.ssh/id_rsa.pub
+AQAjPgt3eFZQXwt8tsHAVv/QHiY5sI2dRcR+...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="310">关键参数是强制性的（尽管有一个<code i="165">--</code>前缀）。</font></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_key_management"><font o="311">密钥管理</font></h3>
+<div class="paragraph">
+<p><font o="312">Config Server可以使用对称（共享）密钥或非对称密钥（RSA密钥对）。</font><font o="313">非对称选择在安全性方面是优越的，但是使用对称密钥往往更方便，因为它只是配置的一个属性值。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="314">要配置对称密钥，您只需要将<code i="166">encrypt.key</code>设置为一个秘密字符串（或使用环境变量<code i="167">ENCRYPT_KEY</code>将其保留为纯文本配置文件）。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="315">要配置非对称密钥，您可以将密钥设置为PEM编码的文本值（<code i="168">encrypt.key</code>）或通过密钥库（例如由JDK附带的<code i="169">keytool</code>实用程序创建）。</font><font o="316">密钥库属性为<code i="170">encrypt.keyStore.*</code>，<code i="171">*</code>等于</font></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><font o="317"><code i="172">location</code>（<code i="173">Resource</code>位置），</font></p>
+</li>
+<li>
+<p><font o="318"><code i="174">password</code>（解锁密钥库）和</font></p>
+</li>
+<li>
+<p><font o="319"><code i="175">alias</code>（以识别商店中使用的密钥）。</font></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><font o="320">使用公钥进行加密，需要私钥进行解密。</font><font o="321">因此，原则上您只能在服务器中配置公钥，如果您只想进行加密（并准备使用私钥本地解密值）。</font><font o="322">实际上，您可能不想这样做，因为它围绕所有客户端传播密钥管理流程，而不是将其集中在服务器中。</font><font o="323">另一方面，如果您的配置服务器真的相对不安全，并且只有少数客户端需要加密的属性，这是一个有用的选项。</font></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_a_key_store_for_testing"><font o="324">创建用于测试的密钥库</font></h3>
+<div class="paragraph">
+<p><font o="325">要创建一个密钥库进行测试，您可以执行以下操作：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">$ keytool -genkeypair -alias mytestkey -keyalg RSA \
+  -dname "CN=Web Server,OU=Unit,O=Organization,L=City,S=State,C=US" \
+  -keypass changeme -keystore server.jks -storepass letmein</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="326">将<code i="176">server.jks</code>文件放在类路径（例如）中，然后在配置服务器的<code i="177">application.yml</code>中：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">encrypt:
+  keyStore:
+    location: classpath:/server.jks
+    password: letmein
+    alias: mytestkey
+    secret: changeme</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_using_multiple_keys_and_key_rotation"><font o="327">使用多个键和键旋转</font></h3>
+<div class="paragraph">
+<p><font o="328">除了加密属性值中的<code i="178">{cipher}</code>前缀之外，配置服务器在（Base64编码）密文开始之前查找<code i="179">{name:value}</code>前缀（零或多个）。</font><font o="329">密钥被传递给<code i="180">TextEncryptorLocator</code>，它可以执行找到密码的<code i="181">TextEncryptor</code>所需的任何逻辑。</font><font o="330">如果配置了密钥库（<code i="182">encrypt.keystore.location</code>），默认定位器将使用“key”前缀提供的别名，即使用如下密码来查找存储中的密钥：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">foo:
+  bar: `{cipher}{key:testkey}...`</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="331">定位器将寻找一个名为“testkey”的键。</font><font o="332">也可以通过前缀中的<code i="183">{secret:…​}</code>值提供一个秘密，但是如果不是默认值，则使用密钥库密码（这是您构建密钥存储并且不指定密码时获得的密码）。</font><font o="333">如果你</font><strong><font o="333">这样做</font></strong><font o="333"> 
+提供一个秘密建议你也加密使用自定义<code i="184">SecretLocator</code>的秘密。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="334">如果密钥只用于加密几个字节的配置数据（即它们没有在其他地方使用），则密码转换几乎不是必需的，但是如果存在安全漏洞，有时您可能需要更改密钥实例。</font><font o="335">在这种情况下，所有客户端都需要更改其源配置文件（例如git），并在所有密码中使用新的<code i="185">{key:…​}</code>前缀，当然，先检查配置服务器密钥库中的密钥别名可用。</font></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="336">小费</font></div>
+</td>
+<td class="content"><font o="337">
+如果要让Config Server处理所有加密以及解密，也可以将<code i="186">{name:value}</code>前缀添加到发布到<code i="187">/encrypt</code>端点的明文。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_serving_encrypted_properties"><font o="338">提供加密属性</font></h3>
+<div class="paragraph">
+<p><font o="339">有时您希望客户端在本地解密配置，而不是在服务器中进行配置。</font><font o="340">在这种情况下，您仍然可以拥有/加密和/解密端点（如果提供<code i="188">encrypt.*</code>配置来定位密钥），但是您需要使用<code i="189">spring.cloud.config.server.encrypt.enabled=false</code>明确地关闭传出属性的解密。</font><font o="341">如果您不关心端点，那么如果您既不配置密钥也不配置使能的标志，则应该起作用。</font></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_serving_alternative_formats"><font o="342">服务替代格式</font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font o="343">来自环境端点的默认JSON格式对于Spring应用程序的消耗是完美的，因为它直接映射到<code i="190">Environment</code>抽象。</font><font o="344">如果您喜欢，可以通过向资源路径（“.yml”，“.yaml”或“.properties”）添加后缀来使用与YAML或Java属性相同的数据。</font><font o="345">这对于不关心JSON端点的结构的应用程序的消费或其提供的额外的元数据可能是有用的，例如，不使用Spring的应用程序可能会受益于此方法的简单性。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="346">YAML和属性表示有一个额外的标志（作为布尔查询参数<code i="191">resolvePlaceholders</code>提供）），以标示Spring <code i="192">${…​}</code>形式的原始文档中的占位符信号，在渲染之前应尽可能在输出中解析。</font><font o="347">这对于不了解Spring占位符约定的消费者来说是一个有用的功能。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="348">注意</font></div>
+</td>
+<td class="content"><font o="349">
+使用YAML或属性格式存在局限性，主要是与元数据的丢失有关。</font><font o="350">JSON被构造为属性源的有序列表，例如，名称与源相关联。</font><font o="351">即使源的起源具有多个源，并且原始源文件的名称丢失，YAML和属性表也合并成一个映射。</font><font o="352">YAML表示不一定是后台存储库中YAML源的忠实表示：它是由平面属性源的列表构建的，并且必须对键的形式进行假设。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_serving_plain_text"><font o="353">服务纯文本</font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font o="354">您的应用程序可能不需要使用<code i="193">Environment</code>抽象（或YAML中的其他替代表示形式或属性格式），而是根据自己的环境需要通用的纯文本配置文件。</font><font o="355">配置服务器通过<code i="194">/{name}/{profile}/{label}/{path}</code>中的附加端点提供这些服务，其中“name”，“profile”和“label”的含义与常规环境端点相同，但“path”是文件名（例如<code i="195">log.xml</code> ）。</font><font o="356">此端点的源文件位于与环境端点相同的方式：与属性或YAML文件相同的搜索路径，而不是聚合所有匹配的资源，只返回匹配的第一个。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="357">资源位置后，使用正常格式（<code i="196">${…​}</code>）的占位符使用提供的应用程序名称，配置文件和标签的有效<code i="197">Environment</code>来解析。</font><font o="358">以这种方式，资源端点与环境端点紧密集成。</font><font o="359">例如，如果您有一个GIT（或SVN）资源库的布局：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">application.yml
+nginx.conf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="360">其中<code i="198">nginx.conf</code>看起来像这样：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">server {
+    listen              80;
+    server_name         ${nginx.server.name};
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="361">和<code i="199">application.yml</code>这样：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">nginx:
+  server:
+    name: example.com
+---
+spring:
+  profiles: development
+nginx:
+  server:
+    name: develop.com</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="362">那么<code i="200">/foo/default/master/nginx.conf</code>资源如下所示：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">server {
+    listen              80;
+    server_name         example.com;
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="363">和<code i="201">/foo/development/master/nginx.conf</code>如下所示：</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="notranslate">server {
+    listen              80;
+    server_name         develop.com;
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="364">注意</font></div>
+</td>
+<td class="content"><font o="365">
+就像环境配置的源文件一样，“配置文件”用于解析文件名，所以如果你想要一个特定于文件的文件，那么<code i="202">/*/development/*/logback.xml</code>将被一个名为<code i="203">logback-development.xml</code>的文件解析（优先于<code i="204">logback.xml</code>）。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_embedding_the_config_server"><font o="366">嵌入配置服务器</font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font o="367">配置服务器最好作为独立应用程序运行，但如果需要，可以将其嵌入到另一个应用程序中。</font><font o="368">只需使用<code i="205">@EnableConfigServer</code>注释。</font><font o="369">在这种情况下可以使用的可选属性是<code i="206">spring.cloud.config.server.bootstrap</code>，它是一个标志，表示服务器应该从自己的远程存储库配置自身。</font><font o="370">该标志默认关闭，因为它可能会延迟启动，但是当嵌入在另一个应用程序中时，以与其他应用程序相同的方式初始化是有意义的。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="371">注意</font></div>
+</td>
+<td class="content"><font o="372">
+应该很明显，但是请记住，如果使用引导标志，配置服务器将需要在<code i="207">bootstrap.yml</code>中配置其名称和存储库URI。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="paragraph">
+<p><font o="373">要更改服务器端点的位置，您可以（可选）设置<code i="208">spring.cloud.config.server.prefix</code>，例如“/ config”，以提供前缀下的资源。</font><font o="374">前缀应该开始但不以“/”结尾。</font><font o="375">它应用于Config Server中的<code i="209">@RequestMappings</code>（即Spring Boot前缀<code i="210">server.servletPath</code>和<code i="211">server.contextPath</code>）之下。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="376">如果您想直接从后端存储库（而不是从配置服务器）读取应用程序的配置，这基本上是一个没有端点的嵌入式配置服务器。</font><font o="377">如果不使用<code i="212">@EnableConfigServer</code>注释（只设置<code i="213">spring.cloud.config.server.bootstrap=true</code>），则可以完全关闭端点。</font></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_push_notifications_and_spring_cloud_bus"><font o="378">推送通知和Spring Cloud Bus</font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font o="379">许多源代码存储库提供程序（例如Github，Gitlab或Bitbucket）将通过webhook通知您存储库中的更改。</font><font o="380">您可以通过提供商的用户界面将webhook配置为URL和一组感兴趣的事件。</font><font o="381">例如，
+ </font><a href="https://developer.github.com/v3/activity/events/types/#pushevent"><font o="381">Github</font></a><font o="381"> 
+将使用包含提交列表的JSON主体和“X-Github-Event”等于“push”的头文件发送到webhook。</font><font o="382">如果您在<code i="214">spring-cloud-config-monitor</code>库中添加依赖关系并激活配置服务器中的Spring Cloud Bus，则启用“/ monitor”端点。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="383">当Webhook被激活时，配置服务器将发送一个<code i="215">RefreshRemoteApplicationEvent</code>针对他认为可能已经改变的应用程序。</font><font o="384">变更检测可以进行策略化，但默认情况下，它只是查找与应用程序名称匹配的文件的更改（例如，“foo.properties”针对的是“foo”应用程序，“application.properties”针对所有应用程序） 。</font><font o="385">如果要覆盖该行为的策略是<code i="216">PropertyPathNotificationExtractor</code>，它接受​​请求标头和正文作为参数，并返回更改的文件路径列表。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="386">默认配置与Github，Gitlab或Bitbucket配合使用。</font><font o="387">除了Github，Gitlab或Bitbucket的JSON通知之外，您还可以通过使用表单编码的身体参数<code i="217">path={name}</code>通过POST为“/ monitor”来触发更改通知。</font><font o="388">这将广播到匹配“{name}”模式的应用程序（可以包含通配符）。</font></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="389">注意</font></div>
+</td>
+<td class="content"><font o="390">
+只有在配置服务器和客户端应用程序中激活<code i="219">spring-cloud-bus</code>时才会传送<code i="218">RefreshRemoteApplicationEvent</code>。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="391">注意</font></div>
+</td>
+<td class="content"><font o="392">
+默认配置还检测本地git存储库中的文件系统更改（在这种情况下不使用webhook，但是一旦编辑配置文件，将会播放刷新）。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_spring_cloud_config_client"><font o="393">Spring Cloud Config客户端</font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font o="394">一个Spring Boot应用程序可以立即利用Spring Config Server（或应用程序开发人员提供的其他外部属性源），并且还将获取与<code i="220">Environment</code>更改事件相关的一些其他有用功能。</font></p>
+</div>
+<div class="sect2">
+<h3 id="config-first-bootstrap"><font o="395">配置第一引导</font></h3>
+<div class="paragraph">
+<p><font o="396">这是在类路径中具有Spring Cloud Config Client的任何应用程序的默认行为。</font><font o="397">当配置客户端启动时，它将通过配置服务器（通过引导配置属性<code i="221">spring.cloud.config.uri</code>）绑定并使用远程属性源初始化Spring <code i="222">Environment</code>。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="398">这样做的最终结果是所有想要使用配置服务器的客户端应用程序都需要<code i="224">spring.cloud.config.uri</code>（默认为“http：// localhost：8888”）的<code i="223">bootstrap.yml</code>（或环境变量） ）。</font></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="discovery-first-bootstrap"><font o="399">发现第一个引导</font></h3>
+<div class="paragraph">
+<p><font o="400">如果您正在使用“DiscoveryClient”实现，例如Spring Cloud Netflix和Eureka Service Discovery或Spring Cloud Consul（Spring Cloud Zookeeper还不支持此功能），那么您可以让Config Server注册Discovery Discovery，但在默认的“配置优先”模式下，客户端将无法利用注册。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="401">如果您希望使用<code i="225">DiscoveryClient</code>找到Config Server，可以通过设置<code i="226">spring.cloud.config.discovery.enabled=true</code>（默认为“false”）来实现。</font><font o="402">最终的结果是客户端应用程序都需要具有适当的发现配置的<code i="227">bootstrap.yml</code>（或环境变量）。</font><font o="403">例如，使用Spring Cloud Netflix，您需要定义Eureka服务器地址，例如<code i="228">eureka.client.serviceUrl.defaultZone</code>。</font><font o="404">使用此选项的价格是启动时额外的网络往返，以定位服务注册。</font><font o="405">好处是配置服务器可以更改其坐标，只要发现服务是一个固定点。</font><font o="406">默认的服务标识是“configserver”，但是您可以使用<code i="229">spring.cloud.config.discovery.serviceId</code>在客户端上进行更改（在服务器上可以通过设置<code i="230">spring.application.name</code>以通常方式更改服务。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="407">发现客户端实现都支持某种元数据映射（例如，对于Eureka，我们有<code i="231">eureka.instance.metadataMap</code>）。</font><font o="408">可能需要在其服务注册元数据中配置Config Server的一些其他属性，以便客户端可以正确连接。</font><font o="409">如果使用HTTP Basic安全配置服务器，则可以将凭据配置为“用户名”和“密码”。</font><font o="410">并且如果配置服务器具有上下文路径，您可以设置“configPath”。</font><font o="411">例如，对于作为Eureka客户端的配置服务器：</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="412">bootstrap.yml</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">eureka:
+  instance:
+    ...
+    metadataMap:
+      user: osufhalskjrtl
+      password: lviuhlszvaorhvlo5847
+      configPath: /config</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="config-client-fail-fast"><font o="413">配置客户端快速失败</font></h3>
+<div class="paragraph">
+<p><font o="414">在某些情况下，如果服务无法连接到配置服务器，则可能希望启动服务失败。</font><font o="415">如果这是所需的行为，请设置引导配置属性<code i="232">spring.cloud.config.failFast=true</code>，客户端将以异常停止。</font></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="config-client-retry"><font o="416">配置客户端重试</font></h3>
+<div class="paragraph">
+<p><font o="417">如果您希望配置服务器在您的应用程序启动时可能偶尔不可用，您可以要求它在发生故障后继续尝试。</font><font o="418">首先，您需要设置<code i="233">spring.cloud.config.failFast=true</code>，然后您需要将<code i="234">spring-retry</code>和<code i="235">spring-boot-starter-aop</code>添加到您的类路径中。</font><font o="419">默认行为是重试6次，初始退避间隔为1000ms，指数乘数为1.1，用于后续退避。</font><font o="420">您可以使用<code i="236">spring.cloud.config.retry.*</code>配置属性配置这些属性（和其他）。</font></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tbody><tr>
+<td class="icon">
+<div class="title"><font o="421">小费</font></div>
+</td>
+<td class="content"><font o="422">
+要完全控制重试，请使用id“configServerRetryInterceptor”添加<code i="238">RetryOperationsInterceptor</code>类型的<code i="237">@Bean</code>。</font><font o="423">Spring Retry有一个<code i="239">RetryInterceptorBuilder</code>，可以轻松创建一个。
+</font></td>
+</tr>
+</tbody></table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_locating_remote_configuration_resources"><font o="424">查找远程配置资源</font></h3>
+<div class="paragraph">
+<p><font o="425">配置服务从<code i="240">/{name}/{profile}/{label}</code>提供属性源，客户端应用程序中的默认绑定</font></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><font o="426">“name”= <code i="241">${spring.application.name}</code></font></p>
+</li>
+<li>
+<p><font o="427">“profile”= <code i="242">${spring.profiles.active}</code>（实际上是<code i="243">Environment.getActiveProfiles()</code>）</font></p>
+</li>
+<li>
+<p><font o="428">“label”=“master”</font></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><font o="429">所有这些都可以通过设置<code i="244">spring.cloud.config.*</code>（其中<code i="245">*</code>是“name”，“profile”或“label”）来覆盖。</font><font o="430">“标签”可用于回滚到以前版本的配置; </font><font o="431">使用默认的Config Server实现，它可以是git标签，分支名称或提交ID。</font><font o="432">标签也可以以逗号分隔的列表形式提供，在这种情况下，列表中的项目会逐个尝试，直到成功。</font><font o="433">例如，当您可能希望将配置标签与您的分支对齐，但使其成为可选（例如<code i="246">spring.cloud.config.label=myfeature,develop</code>）时，这对于在特征分支上工作时可能很有用。</font></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_security_2"><font o="434">安全</font></h3>
+<div class="paragraph">
+<p><font o="435">如果您在服务器上使用HTTP基本安全性，那么客户端只需要知道密码（如果不是默认用户名）。</font><font o="436">您可以通过配置服务器URI，或通过单独的用户名和密码属性，例如</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="437">bootstrap.yml</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+     uri: https://user:secret@myconfig.mycompany.com</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="438">要么</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="439">bootstrap.yml</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+     uri: https://myconfig.mycompany.com
+     username: user
+     password: secret</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="440"><code i="247">spring.cloud.config.password</code>和<code i="248">spring.cloud.config.username</code>值覆盖URI中提供的任何内容。</font></p>
+</div>
+<div class="paragraph">
+<p><font o="441">如果您在Cloud Foundry部署应用程序，则提供密码的最佳方式是通过服务凭证（例如URI），因为它甚至不需要在配置文件中。</font><font o="442">在Cloud Foundry上为本地工作的用户提供的服务的一个例子，名为“configserver”：</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="443">bootstrap.yml</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+     uri: ${vcap.services.configserver.credentials.uri:http://user:password@localhost:8888}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="444">如果您使用另一种形式的安全性，则可能需要向<code i="250">ConfigServicePropertySourceLocator</code>提供<code i="249">RestTemplate</code>（例如，通过在引导上下文中获取它并注入一个）。</font><font o="444"><code i="250">ConfigServicePropertySourceLocator</code> </font><a href="#custom-rest-template"><font o="444">提供{249</font></a><font o="444"> /}（例如通过在引导上下文中获取它并注入）。</font></p>
+</div>
+<div class="sect3">
+<h4 id="_health_indicator_2"><font o="445">健康指标</font></h4>
+<div class="paragraph">
+<p><font o="446">配置客户端提供尝试从配置服务器加载配置的Spring Boot运行状况指示器。</font><font o="447">可以通过设置<code i="251">health.config.enabled=false</code>来禁用运行状况指示器。</font><font o="448">由于性能原因，响应也被缓存。</font><font o="449">默认缓存生存时间为5分钟。</font><font o="450">要更改该值，请设置<code i="252">health.config.time-to-live</code>属性（以毫秒为单位）。</font></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="custom-rest-template"><font o="451">提供自定义RestTemplate</font></h4>
+<div class="paragraph">
+<p><font o="452">在某些情况下，您可能需要从客户端自定义对配置服务器的请求。</font><font o="453">通常这涉及传递特殊的<code i="253">Authorization</code>标头来对服务器的请求进行身份验证。</font><font o="454">要提供自定义<code i="254">RestTemplate</code>，请按照以下步骤操作。</font></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><font o="455">设置<code i="255">spring.cloud.config.enabled=false</code>以禁用现有的配置服务器属性源。</font></p>
+</li>
+<li>
+<p><font o="456">使用<code i="256">PropertySourceLocator</code>的实现创建一个新的配置bean。</font></p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title"><font o="457">CustomConfigServiceBootstrapConfiguration.java</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-java" data-lang="java">@Configuration
+public class CustomConfigServiceBootstrapConfiguration {
+    @Bean
+    public ConfigClientProperties configClientProperties() {
+        ConfigClientProperties client = new ConfigClientProperties(this.environment);
+        client.setEnabled(false);
+        return client;
+    }
+
+    @Bean
+    public ConfigServicePropertySourceLocator configServicePropertySourceLocator() {
+        ConfigClientProperties clientProperties = configClientProperties();
+       ConfigServicePropertySourceLocator configServicePropertySourceLocator =  new ConfigServicePropertySourceLocator(clientProperties);
+        configServicePropertySourceLocator.setRestTemplate(customRestTemplate(clientProperties));
+        return configServicePropertySourceLocator;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><font o="458">在<code i="257">resources/META-INF</code>中创建一个名为<code i="258">spring.factories</code>的文件，并指定您的自定义配置。</font></p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="title"><font o="459">spring.factorties</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-properties" data-lang="properties">org.springframework.cloud.bootstrap.BootstrapConfiguration = com.my.config.client.CustomConfigServiceBootstrapConfiguration</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vault">Vault</h4>
+<div class="paragraph">
+<p><font o="461">当使用Vault作为配置服务器的后端时，客户端将需要为服务器提供令牌以从Vault中检索值。</font><font o="462">可以通过在<code i="260">bootstrap.yml</code>中设置<code i="259">spring.cloud.config.token</code>来在客户端中提供此令牌。</font></p>
+</div>
+<div class="listingblock">
+<div class="title"><font o="463">bootstrap.yml</font></div>
+<div class="content">
+<pre class="highlight notranslate"><code class="language-yaml" data-lang="yaml">spring:
+  cloud:
+    config:
+      token: YourVaultToken</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vault_2">Vault</h3>
+<div class="sect3">
+<h4 id="_nested_keys_in_vault"><font o="465">嵌套密钥在Vault</font></h4>
+<div class="paragraph">
+<p><font o="466">Vault支持将键嵌入存储在Vault中的值。</font><font o="467">例如</font></p>
+</div>
+<div class="paragraph">
+<p><code>echo -n '{"appA": {"secret": "appAsecret"}, "bar": "baz"}' | vault write secret/myapp -</code></p>
+</div>
+<div class="paragraph">
+<p><font o="468">此命令会将JSON对象写入您的Vault。</font><font o="469">要在Spring中访问这些值，您将使用传统的点（。）注释。</font><font o="470">例如</font></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight notranslate"><code class="language-java" data-lang="java">@Value("${appA.secret}")
+String name = "World";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><font o="471">上述代码将<code i="261">name</code>变量设置为<code i="262">appAsecret</code>。</font></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>/* <![CDATA[ */(function(d,s,a,i,j,r,l,m,t){try{l=d.getElementsByTagName('a');t=d.createElement('textarea');for(i=0;l.length-i;i++){try{a=l[i].href;s=a.indexOf('/cdn-cgi/l/email-protection');m=a.length;if(a&&s>-1&&m>28){j=28+s;s='';if(j<m){r='0x'+a.substr(j,2)|0;for(j+=2;j<m&&a.charAt(j)!='X';j+=2)s+='%'+('0'+('0x'+a.substr(j,2)^r).toString(16)).slice(-2);j++;s=decodeURIComponent(s)+a.substr(j,m-j)}t.innerHTML=s.replace(/</g,'&lt;').replace(/\>/g,'&gt;');l[i].href='mailto:'+t.value}}catch(e){}}}catch(e){}})(document);/* ]]> */</script>
+<script type="text/javascript" charset="UTF-8" name="springcloud">springcloud.cc({"original":{"2":"Table of Contents","3":"Quick Start","4":"Client Side Usage","5":"{0/} Server","6":"Environment Repository","7":"Health Indicator","8":"Security","9":"Encryption and Decryption","10":"Key Management","11":"Creating a Key Store for Testing","12":"Using Multiple Keys and Key Rotation","13":"Serving Encrypted Properties","14":"Serving Alternative Formats","15":"Serving Plain Text","16":"Embedding the Config Server","17":"Push Notifications and {2/}","18":"{0/} Client","19":"Config First Bootstrap","20":"Discovery First Bootstrap","21":"Config Client Fail Fast","22":"Config Client Retry","23":"Locating Remote Configuration Resources","24":"Security","26":"1.3.0.RELEASE","27":"{0/} provides server and client-side support for externalized configuration in a distributed system.","28":"With the Config Server you have a central place to manage external properties for applications across all environments.","29":"The concepts on both client and server map identically to the Spring {5/} and {6/} abstractions, so they fit very well with Spring applications, but can be used with any application running in any language.","30":"As an application moves through the deployment pipeline from dev to test and into production you can manage the configuration between those environments and be certain that applications have everything they need to run when they migrate.","31":"The default implementation of the server storage backend uses git so it easily supports labelled versions of configuration environments, as well as being accessible to a wide range of tooling for managing the content.","32":"It is easy to add alternative implementations and plug them in with Spring configuration.","33":"Quick Start","34":"Start the server:","35":"The server is a {3/} application so you can run it from your IDE instead if you prefer (the main class is {7/}).","36":"Then try out a client:","37":"The default strategy for locating property sources is to clone a git repository (at {8/}) and use it to initialize a mini {9/}.","38":"The mini-application's {10/} is used to enumerate property sources and publish them via a JSON endpoint.","39":"The HTTP service has resources in the form:","40":"where the \"application\" is injected as the {11/} in the\n{12/} (i.e. what is normally \"application\" in a regular\n{3/} app), \"profile\" is an active profile (or comma-separated\nlist of properties), and \"label\" is an optional git label (defaults to\n\"master\".)","41":"{0/} Server pulls configuration for remote clients\nfrom a git repository (which must be provided):","42":"Client Side Usage","43":"To use these features in an application, just build it as a Spring Boot application that depends on spring-cloud-config-client (eg see the test cases for the config-client, or the sample app).","44":"The most convenient way to add the dependency is via a {3/} starter {13/}.","45":"There is also a parent pom and BOM ({14/}) for Maven users and a Spring IO version management properties file for Gradle and Spring CLI users.","46":"Example Maven configuration:","47":"pom.xml","48":"Then you can create a standard {3/} application, like this simple HTTP server:","49":"When it runs it will pick up the external configuration from the default local config server on port 8888 if it is running.","50":"To modify the startup behaviour you can change the location of the config server using {15/} (like {16/} but for the bootstrap phase of an application context), eg","51":"The bootstrap properties will show up in the {17/} endpoint as a\nhigh-priority property source, e.g.","52":"(a property source called \"configService:<URL of remote\nrepository>/<file name>\" contains the property \"foo\" with value\n\"bar\" and is highest priority).","53":"Note","54":"\nthe URL in the property source name is the git repository not\nthe config server URL.\n","55":"{0/} Server","56":"The Server provides an HTTP, resource-based API for external configuration (name-value pairs, or equivalent YAML content).","57":"The server is easily embeddable in a {3/} application using the {18/} annotation.","58":"So this app is a config server:","59":"ConfigServer.java","60":"Like all {3/} apps it runs on port 8080 by default, but you can switch it to the conventional port 8888 in various ways.","61":"The easiest, which also sets a default configuration repository, is by launching it with {19/} (there is a {20/} in the Config Server jar).","62":"Another is to use your own {21/}, eg","63":"application.properties","64":"where {22/} is a git repository containing\nYAML and properties files.","65":"Note","66":"\nin Windows you need an extra \"/\" in the file URL if it is\nabsolute with a drive prefix, e.g. {23/}.\n","67":"Tip","68":"Here’s a recipe for creating the git repository in the example\nabove:","69":"Warning","70":"using the local filesystem for your git repository is intended for testing only.","71":"Use a server to host your configuration repositories in production.","72":"Warning","73":"the initial clone of your configuration repository will be quick and efficient if you only keep text files in it.","74":"If you start to store binary files, especially large ones, you may experience delays on the first request for configuration and/or out of memory errors in the server.","75":"Environment Repository","76":"Where do you want to store the configuration data for the Config Server?","77":"The strategy that governs this behaviour is the {24/}, serving {25/} objects.","78":"This {26/} is a shallow copy of the domain from the Spring {27/} (including {28/} as the main feature).","79":"The {29/} resources are parametrized by three variables:","80":"{30/} maps to \"spring.application.name\" on the client side;","81":"{31/} maps to \"spring.profiles.active\" on the client (comma separated list);","82":"and","83":"{32/} which is a server side feature labelling a \"versioned\" set of config files.","84":"Repository implementations generally behave just like a {3/} application loading configuration files from a \"spring.config.name\" equal to the {33/} parameter, and \"spring.profiles.active\" equal to the {34/} parameter.","85":"Precedence rules for profiles are also the same as in a regular Boot application: active profiles take precedence over defaults, and if there are multiple profiles the last one wins (like adding entries to a {35/}).","86":"Example: a client application has this bootstrap configuration:","87":"bootstrap.yml","88":"(as usual with a {3/} application, these properties could also\nbe set as environment variables or command line arguments).","89":"If the repository is file-based, the server will create an {36/} from {37/} (shared between all clients), and {38/} (with {39/} taking precedence).","90":"If the YAML files have documents inside them that point to Spring profiles, those are applied with higher precedence (in order of the profiles listed), and if there are profile-specific YAML (or properties) files these are also applied with higher precedence than the defaults.","91":"Higher precedence translates to a {40/} listed earlier in the {41/}.","92":"(These are the same rules as apply in a standalone {3/} application.)","93":"Git Backend","94":"The default implementation of {42/} uses a Git backend, which is very convenient for managing upgrades and physical environments, and also for auditing changes.","95":"To change the location of the repository you can set the \"spring.cloud.config.server.git.uri\" configuration property in the Config Server (eg in {43/}).","96":"If you set it with a {44/} prefix it should work from a local repository so you can get started quickly and easily without a server, but in that case the server operates directly on the local repository without cloning it (it doesn't matter if it's not bare because the Config Server never makes changes to the \"remote\" repository).","97":"To scale the Config Server up and make it highly available, you would need to have all instances of the server pointing to the same repository, so only a shared file system would work.","98":"Even in that case it is better to use the {45/} protocol for a shared filesystem repository, so that the server can clone it and use a local working copy as a cache.","99":"This repository implementation maps the {46/} parameter of the HTTP resource to a git label (commit id, branch name or tag).","100":"If the git branch or tag name contains a slash (\"/\") then the label in the HTTP URL should be specified with the special string \"(_)\" instead (to avoid ambiguity with other URL paths).","101":"For example, if the label is {47/}, replacing the slash would result in a label that looks like {48/}.","102":"Be careful with the brackets in the URL if you are using a command line client like curl (eg escape them from the shell with quotes '').","103":"Placeholders in Git URI","104":"{0/} Server supports a git repository URL with placeholders for the {49/} and {50/} (and {51/} if you need it, but remember that the label is applied as a git label anyway).","105":"So you can easily support a \"one repo per application\" policy using (for example):","106":"or a \"one repo per profile\" policy using a similar pattern but with\n{52/}.","107":"Pattern Matching and Multiple Repositories","108":"There is also support for more complex requirements with pattern matching on the application and profile name.","109":"The pattern format is a comma-separated list of {53/} names with wildcards (where a pattern beginning with a wildcard may need to be quoted).","110":"Example:","111":"If {54/} does not match any of the patterns, it will use the default uri defined under \"spring.cloud.config.server.git.uri\".","112":"In the above example, for the \"simple\" repository, the pattern is {55/} (ie it only matches one application named \"simple\" in all profiles).","113":"The \"local\" repository matches all application names beginning with \"local\" in all profiles (the {56/} suffix is added automatically to any pattern that doesn't have a profile matcher).","114":"Note","115":"the \"one-liner\" short cut used in the \"simple\" example above can only be used if the only property to be set is the URI.","116":"If you need to set anything else (credentials, pattern, etc.) you need to use the full form.","117":"The {57/} property in the repo is actually an array, so you can use a YAML array (or {58/}, {59/}, etc. suffixes in properties files) to bind to multiple patterns.","118":"You may need to do this if you are going to run apps with multiple profiles.","119":"Example:","120":"Note","121":"Spring Cloud will guess that a pattern containing a profile that doesn't end in {60/} implies that you actually want to match a list of profiles starting with this pattern (so {61/} is a shortcut for {62/}).","122":"This is common where you need to run apps in the \"development\" profile locally but also the \"cloud\" profile remotely, for instance.","123":"Every repository can also optionally store config files in sub-directories, and patterns to search for those directories can be specified as {63/}.","124":"For example at the top level:","125":"In this example the server searches for config files in the top level\nand in the \"foo/\" sub-directory and also any sub-directory whose name\nbegins with \"bar\".","126":"By default the server clones remote repositories when configuration is first requested.","127":"The server can be configured to clone the repositories at startup.","128":"For example at the top level:","129":"In this example the server clones team-a's config-repo on startup before it accepts any requests.","130":"All other repositories will not be cloned until configuration from the repository is requested.","131":"Note","132":"Setting a repository to be cloned when the Config Server starts up can help to identify a misconfigured configuration source (eg, an invalid repository URI) quickly, while the Config Server is starting up.","133":"With {64/} not enabled for a configuration source, the Config Server may start successfully with a misconfigured or invalid configuration source and not detect an error until an application requests configuration from that configuration source.","134":"Authentication","135":"To use HTTP basic authentication on the remote repository add the\n\"username\" and \"password\" properties separately (not in the URL),\ne.g.","136":"If you don't use HTTPS and user credentials, SSH should also work out of the box when you store keys in the default directories ({65/}) and the uri points to an SSH location, eg \" git@github.com :configuration/cloud-configuration\".","137":"It is important that an entry for the Git server be present in the {66/} file and that it is in {67/} format.","138":"Other formats (like {68/}) are not supported.","139":"To avoid surprises, you should ensure that only one entry is present in the {69/} file for the Git server and that it is matching with the URL you provided to the config server.","140":"If you used a hostname in the URL, you want to have exactly that in the {70/} file, not the IP.","141":"The repository is accessed using JGit, so any documentation you find on that should be applicable.","142":"HTTPS proxy settings can be set in {71/} or in the same way as for any other JVM process via system properties ({72/} and {73/}).","143":"Tip","144":"\nIf you don’t know where your {74/} directory is use {75/} to manipulate the settings (e.g. {76/}).\n","145":"Authentication with AWS CodeCommit","146":"AWS CodeCommit authentication can also be done.","147":"AWS CodeCommit uses an authentication helper when using Git from the command line.","148":"This helper is not used with the JGit library, so a JGit CredentialProvider for AWS CodeCommit will be created if the Git URI matches the AWS CodeCommit pattern.","149":"AWS CodeCommit URIs always look like https://git-codecommit.${AWS_REGION}.amazonaws.com/${repopath} .","150":"If you provide a username and password with an AWS CodeCommit URI, then these must be the AWS accessKeyId and secretAccessKey to be used to access the repository.","151":"If you do not specify a username and password, then the accessKeyId and secretAccessKey will be retrieved using the AWS Default Credential Provider Chain .","152":"If your Git URI matches the CodeCommit URI pattern (above) then you must provide valid AWS credentials in the username and password, or in one of the locations supported by the default credential provider chain.","153":"AWS EC2 instances may use IAM Roles for EC2 Instances .","154":"Note: The aws-java-sdk-core jar is an optional dependency.","155":"If the aws-java-sdk-core jar is not on your classpath, then the AWS Code Commit credential provider will not be created regardless of the git server URI.","156":"Placeholders in Git Search Paths","157":"{0/} Server also supports a search path with placeholders for the {77/} and {78/} (and {79/} if you need it).","158":"Example:","159":"searches the repository for files in the same name as the directory (as well as the top level).","160":"Wildcards are also valid in a search path with placeholders (any matching directory is included in the search).","161":"Force pull in Git Repositories","162":"As mentioned before {0/} Server makes a clone of the\nremote git repository and if somehow the local copy gets dirty (e.g.\nfolder content changes by OS process) so {0/} Server\ncannot update the local copy from remote repository.","163":"To solve this there is a {80/} property that will make Spring Cloud Config Server force pull from remote repository if the local copy is dirty.","164":"Example:","165":"If you have a multiple repositories configuration you can configure the {81/} property per repository.","166":"Example:","167":"Note","168":"\nThe default value for {82/} property is {83/}.\n","169":"Version Control Backend Filesystem Use","170":"Warning","171":"With VCS based backends (git, svn) files are checked out or cloned to the local filesystem.","172":"By default they are put in the system temporary directory with a prefix of {84/}.","173":"On linux, for example it could be {85/}.","174":"Some operating systems routinely clean out temporary directories.","175":"This can lead to unexpected behaviour such as missing properties.","176":"To avoid this problem, change the directory Config Server uses, by setting {86/} or {87/} to a directory that does not reside in the system temp structure.","177":"File System Backend","178":"There is also a \"native\" profile in the Config Server that doesn't use Git, but just loads the config files from the local classpath or file system (any static URL you want to point to with \"spring.cloud.config.server.native.searchLocations\").","179":"To use the native profile just launch the Config Server with \"spring.profiles.active=native\".","180":"Note","181":"Remember to use the {88/} prefix for file resources (the default without a prefix is usually the classpath).","182":"Just as with any {3/} configuration you can embed {89/}-style environment placeholders, but remember that absolute paths in Windows require an extra \"/\", eg {90/}","183":"Warning","184":"The default value of the {91/} is identical to a local {3/} application (so {92/}).","185":"This does not expose the {93/} from the server to all clients because any property sources present in the server are removed before being sent to the client.","186":"Tip","187":"A filesystem backend is great for getting started quickly and for testing.","188":"To use it in production you need to be sure that the file system is reliable, and shared across all instances of the Config Server.","189":"The search locations can contain placeholders for {94/}, {95/} and {96/}.","190":"In this way you can segregate the directories in the path, and choose a strategy that makes sense for you (eg sub-directory per application, or sub-directory per profile).","191":"If you don't use placeholders in the search locations, this repository also appends the {97/} parameter of the HTTP resource to a suffix on the search path, so properties files are loaded from each search location and a subdirectory with the same name as the label (the labelled properties take precedence in the Spring Environment).","192":"Thus the default behaviour with no placeholders is the same as adding a search location ending with {98/} is the same as {99/}","193":"{4/} Backend","194":"{0/} Server also supports {4/} as a backend.","195":"{4/} is a tool for securely accessing secrets.","196":"A secret is anything that you want to tightly control access to, such as API keys, passwords, certificates, and more.","197":"{4/} provides a unified interface to any secret, while providing tight access control and recording a detailed audit log.","198":"For more information on {4/} see the {4/} quickstart guide.","199":"To enable the config server to use a {4/} backend you must run your config server with the {100/} profile.","200":"For example in your config server's {101/} you can add {102/}.","201":"By default the config server will assume your {4/} server is running at {103/}.","202":"It also will assume that the name of backend is {104/} and the key is {105/}.","203":"All of these defaults can be configured in your config server's {106/}.","204":"Below is a table of configurable {4/} properties.","205":"All properties are prefixed with {107/}.","206":"Name","207":"Default Value","208":"host","210":"port","212":"scheme","213":"http","214":"backend","215":"secret","216":"defaultKey","217":"application","218":"profileSeparator","220":"All configurable properties can be found in\n{108/}.","221":"With your config server running you can make HTTP requests to the server to retrieve values from the {4/} backend.","222":"To do this you will need a token for your {4/} server.","223":"First place some data in you {4/}.","224":"For example","225":"Now make the HTTP request to your config server to retrieve the values.","226":"You should see a response similar to this after making the above request.","227":"Multiple Properties Sources","228":"When using {4/} you can provide your applications with multiple properties sources.","229":"For example, assume you have written data to the following paths in {4/}.","230":"Properties written to {109/} are available to all applications using the Config Server .","231":"An application with the name {110/} would have any properties written to {111/} and {112/} available to it.","232":"When {113/} has the {114/} profile enabled then properties written to all of the above paths would be available to it, with properties in the first path in the list taking priority over the others.","233":"Sharing Configuration With All Applications","234":"File Based Repositories","235":"With file-based (ie git, svn and native) repositories, resources with file names in {115/} are shared between all client applications (so {116/}, {117/}, {118/} etc.).","236":"You can use resources with these file names to configure global defaults and have them overridden by application-specific files as necessary.","237":"The #_property_overrides[property overrides] feature can also be used\nfor setting global defaults, and with placeholders applications are\nallowed to override them locally.","238":"Tip","239":"With the \"native\" profile (local file system backend) it is recommended that you use an explicit search location that isn't part of the server's own configuration.","240":"Otherwise the {119/} resources in the default search locations are removed because they are part of the server.","241":"{4/} Server","242":"When using {4/} as a backend you can share configuration with all applications by placing configuration in {120/}.","243":"For example, if you run this {4/} command","244":"All applications using the config server will have the properties\n{121/} and {122/} available to them.","245":"Composite Environment Repositories","246":"In some scenarios you may wish to pull configuration data from multiple environment repositories.","247":"To do this just enable multiple profiles in your config server's application properties or YAML file.","248":"If, for example, you want to pull configuration data from a Git repository as well as a SVN repository you would set the following properties for your configuration server.","249":"In addition to each repo specifying a URI, you can also specify an {123/} property.","250":"The {124/} property allows you to specify the priority order for all your repositories.","251":"The lower the numerical value of the {125/} property the higher priority it will have.","252":"The priority order of a repository will help resolve any potential conflicts between repositories that contain values for the same properties.","253":"Note","254":"\nAny type of failure when retrieving values from an environment repositoy\nwill result in a failure for the entire composite environment.\n","255":"Note","256":"When using a composite environment it is important that all repos contain the same label(s).","257":"If you have an environment similar to the one above and you request configuration data with the label {126/} but the SVN repo does not contain a branch called {127/} the entire request will fail.","258":"Custom Composite Environment Repositories","259":"It is also possible to provide your own {128/} bean to be included as part of a composite environment in addition to using one of the environment repositories from Spring Cloud.","260":"To do this your bean must implement the {129/} interface.","261":"If you would like to control the priority of you custom {130/} within the composite environment you should also implement the {131/} interface and override the {132/} method.","262":"If you do not implement the {133/} interface then your {134/} will be given the lowest priority.","263":"Property Overrides","264":"The Config Server has an \"overrides\" feature that allows the operator to provide configuration properties to all applications that cannot be accidentally changed by the application using the normal {3/} hooks.","265":"To declare overrides just add a map of name-value pairs to {135/}.","266":"For example","267":"will cause all applications that are config clients to read {136/} independent of their own configuration.","268":"(Of course an application can use the data in the Config Server in any way it likes, so overrides are not enforceable, but they do provide useful default behaviour if they are {0/} clients.)","269":"Tip","270":"Normal, Spring environment placeholders with \"${}\" can be escaped (and resolved on the client) by using backslash (\"\\\") to escape the \"$\" or the \"{\", eg {137/} resolves to \"bar\" unless the app provides its own \"app.foo\".","271":"Note that in YAML you don't need to escape the backslash itself, but in properties files you do, when you configure the overrides on the server.","272":"You can change the priority of all overrides in the client to be more\nlike default values, allowing applications to supply their own values\nin environment variables or System properties, by setting the flag\n{138/} (default is false) in the\nremote repository.","273":"Health Indicator","274":"Config Server comes with a Health Indicator that checks if the configured {139/} is working.","275":"By default it asks the {140/} for an application named {141/}, the {142/} profile and the default label provided by the {143/} implementation.","276":"You can configure the Health Indicator to check more applications\nalong with custom profiles and custom labels, e.g.","277":"You can disable the Health Indicator by setting {144/}.","278":"Security","279":"You are free to secure your Config Server in any way that makes sense\nto you (from physical network security to OAuth2 bearer\ntokens), and Spring Security and {3/} make it easy to do pretty\nmuch anything.","280":"To use the default {3/} configured HTTP Basic security, just include Spring Security on the classpath (eg through {145/}).","281":"The default is a username of \"user\" and a randomly generated password, which isn't going to be very useful in practice, so we recommend you configure the password (via {146/}) and encrypt it (see below for instructions on how to do that).","282":"Encryption and Decryption","283":"Important","284":"Prerequisites: to use the encryption and decryption features you need the full-strength JCE installed in your JVM (it's not there by default).","285":"You can download the \"Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files\" from Oracle, and follow instructions for installation (essentially replace the 2 policy files in the JRE lib/security directory with the ones that you downloaded).","286":"If the remote property sources contain encrypted content (values starting with {147/}) they will be decrypted before sending to clients over HTTP.","287":"The main advantage of this set up is that the property values don't have to be in plain text when they are \"at rest\" (eg in a git repository).","288":"If a value cannot be decrypted it is removed from the property source and an additional property is added with the same key, but prefixed with \"invalid.\"","289":"and a value that means \"not applicable\" (usually \"<n/a>\").","290":"This is largely to prevent cipher text being used as a password and accidentally leaking.","291":"If you are setting up a remote config repository for config client\napplications it might contain an {148/} like this, for\ninstance:","292":"application.yml","293":"Encrypted values in a .properties file must not be wrapped in quotes, otherwise the value will not be decrypted:","294":"application.properties","295":"You can safely push this plain text to a shared git repository and the\nsecret password is protected.","296":"The server also exposes {149/} and {150/} endpoints (on the assumption that these will be secured and only accessed by authorized agents).","297":"If you are editing a remote config file you can use the Config Server to encrypt values by POSTing to the {151/} endpoint, eg","298":"Note","299":"\nIf the value you are encrypting has characters in it that need to be URL encoded you should use\nthe {152/} option to {153/} to make sure they are encoded properly.\n","300":"The inverse operation is also available via {154/} (provided the server is\nconfigured with a symmetric key or a full key pair):","301":"Tip","302":"\nIf you are testing like this with curl, then use\n{155/} (instead of {156/}) or set an explicit {157/} to make sure curl encodes the data correctly when there\nare special characters ('+' is particularly tricky).\n","303":"Take the encrypted value and add the {158/} prefix before you put\nit in the YAML or properties file, and before you commit and push it\nto a remote, potentially insecure store.","304":"The {159/} and {160/} endpoints also both accept paths of the\nform {161/} which can be used to control cryptography\nper application (name) and profile when clients call into the main\nEnvironment resource.","305":"Note","306":"to control the cryptography in this granular way you must also provide a {162/} of type {163/} that creates a different encryptor per name and profiles.","307":"The one that is provided by default does not do this (so all encryptions use the same key).","308":"The {164/} command line client (with {1/} extensions\ninstalled) can also be used to encrypt and decrypt, e.g.","309":"To use a key in a file (e.g. an RSA public key for encryption) prepend\nthe key value with \"@\" and provide the file path, e.g.","310":"The key argument is mandatory (despite having a {165/} prefix).","311":"Key Management","312":"The Config Server can use a symmetric (shared) key or an asymmetric one (RSA key pair).","313":"The asymmetric choice is superior in terms of security, but it is often more convenient to use a symmetric key since it is just a single property value to configure.","314":"To configure a symmetric key you just need to set {166/} to a\nsecret String (or use an enviroment variable {167/} to keep it\nout of plain text configuration files).","315":"To configure an asymmetric key you can either set the key as a PEM-encoded text value (in {168/}), or via a keystore (eg as created by the {169/} utility that comes with the JDK).","316":"The keystore properties are {170/} with {171/} equal to","317":"{172/} (a {173/} location),","318":"{174/} (to unlock the keystore) and","319":"{175/} (to identify which key in the store is to be\nused).","320":"The encryption is done with the public key, and a private key is needed for decryption.","321":"Thus in principle you can configure only the public key in the server if you only want to do encryption (and are prepared to decrypt the values yourself locally with the private key).","322":"In practice you might not want to do that because it spreads the key management process around all the clients, instead of concentrating it in the server.","323":"On the other hand it's a useful option if your config server really is relatively insecure and only a handful of clients need the encrypted properties.","324":"Creating a Key Store for Testing","325":"To create a keystore for testing you can do something like this:","326":"Put the {176/} file in the classpath (for instance) and then in\nyour {177/} for the Config Server:","327":"Using Multiple Keys and Key Rotation","328":"In addition to the {178/} prefix in encrypted property values, the Config Server looks for {179/} prefixes (zero or many) before the start of the (Base64 encoded) cipher text.","329":"The keys are passed to a {180/} which can do whatever logic it needs to locate a {181/} for the cipher.","330":"If you have configured a keystore ({182/}) the default locator will look for keys in the store with aliases as supplied by the \"key\" prefix, ie with a cipher text like this:","331":"the locator will look for a key named \"testkey\".","332":"A secret can also be supplied via a {183/} value in the prefix, but if it is not the default is to use the keystore password (which is what you get when you build a keytore and don't specify a secret).","333":"If you do supply a secret it is recommended that you also encrypt the secrets using a custom {184/}.","334":"Key rotation is hardly ever necessary on cryptographic grounds if the keys are only being used to encrypt a few bytes of configuration data (ie they are not being used elsewhere), but occasionally you might need to change the keys if there is a security breach for instance.","335":"In that case all the clients would need to change their source config files (eg in git) and use a new {185/} prefix in all the ciphers, checking beforehand of course that the key alias is available in the Config Server keystore.","336":"Tip","337":"\nthe {186/} prefixes can also be added to plaintext posted\nto the {187/} endpoint, if you want to let the Config Server\nhandle all encryption as well as decryption.\n","338":"Serving Encrypted Properties","339":"Sometimes you want the clients to decrypt the configuration locally, instead of doing it in the server.","340":"In that case you can still have /encrypt and /decrypt endpoints (if you provide the {188/} configuration to locate a key), but you need to explicitly switch off the decryption of outgoing properties using {189/}.","341":"If you don't care about the endpoints, then it should work if you configure neither the key nor the enabled flag.","342":"Serving Alternative Formats","343":"The default JSON format from the environment endpoints is perfect for consumption by Spring applications because it maps directly onto the {190/} abstraction.","344":"If you prefer you can consume the same data as YAML or Java properties by adding a suffix to the resource path (\".yml\", \".yaml\" or \".properties\").","345":"This can be useful for consumption by applications that do not care about the structure of the JSON endpoints, or the extra metadata they provide, for example an application that is not using Spring might benefit from the simplicity of this approach.","346":"The YAML and properties representations have an additional flag (provided as a boolean query parameter {191/}) to signal that placeholders in the source documents, in the standard Spring {192/} form, should be resolved in the output where possible before rendering.","347":"This is a useful feature for consumers that don't know about the Spring placeholder conventions.","348":"Note","349":"there are limitations in using the YAML or properties formats, mainly in relation to the loss of metadata.","350":"The JSON is structured as an ordered list of property sources, for example, with names that correlate with the source.","351":"The YAML and properties forms are coalesced into a single map, even if the origin of the values has multiple sources, and the names of the original source files are lost.","352":"The YAML representation is not necessarily a faithful representation of the YAML source in a backing repository either: it is constructed from a list of flat property sources, and assumptions have to be made about the form of the keys.","353":"Serving Plain Text","354":"Instead of using the {193/} abstraction (or one of the alternative representations of it in YAML or properties format) your applications might need generic plain text configuration files, tailored to their environment.","355":"The Config Server provides these through an additional endpoint at {194/} where \"name\", \"profile\" and \"label\" have the same meaning as the regular environment endpoint, but \"path\" is a file name (eg {195/}).","356":"The source files for this endpoint are located in the same way as for the environment endpoints: the same search path is used as for properties or YAML files, but instead of aggregating all matching resources, only the first one to match is returned.","357":"After a resource is located, placeholders in the normal format ({196/}) are resolved using the effective {197/} for the application name, profile and label supplied.","358":"In this way the resource endpoint is tightly integrated with the environment endpoints.","359":"Example, if you have this layout for a GIT (or SVN) repository:","360":"where {198/} looks like this:","361":"and {199/} like this:","362":"then the {200/} resource looks like this:","363":"and {201/} like this:","364":"Note","365":"\njust like the source files for environment configuration, the\n\"profile\" is used to resolve the file name, so if you want a\nprofile-specific file then {202/} will be\nresolved by a file called {203/} (in preference\nto {204/}).\n","366":"Embedding the Config Server","367":"The Config Server runs best as a standalone application, but if you need to you can embed it in another application.","368":"Just use the {205/} annotation.","369":"An optional property that can be useful in this case is {206/} which is a flag to indicate that the server should configure itself from its own remote repository.","370":"The flag is off by default because it can delay startup, but when embedded in another application it makes sense to initialize the same way as any other application.","371":"Note","372":"\nIt should be obvious, but remember that if you use the bootstrap\nflag the config server will need to have its name and repository URI\nconfigured in {207/}.\n","373":"To change the location of the server endpoints you can (optionally) set {208/}, eg \"/config\", to serve the resources under a prefix.","374":"The prefix should start but not end with a \"/\".","375":"It is applied to the {209/} in the Config Server (ie underneath the {3/} prefixes {210/} and {211/}).","376":"If you want to read the configuration for an application directly from the backend repository (instead of from the config server) that's basically an embedded config server with no endpoints.","377":"You can switch off the endpoints entirely if you don't use the {212/} annotation (just set {213/}).","378":"Push Notifications and {2/}","379":"Many source code repository providers (like Github, Gitlab or Bitbucket for instance) will notify you of changes in a repository through a webhook.","380":"You can configure the webhook via the provider's user interface as a URL and a set of events in which you are interested.","381":"For instance Github will POST to the webhook with a JSON body containing a list of commits, and a header \"X-Github-Event\" equal to \"push\".","382":"If you add a dependency on the {214/} library and activate the {2/} in your Config Server, then a \"/monitor\" endpoint is enabled.","383":"When the webhook is activated the Config Server will send a {215/} targeted at the applications it thinks might have changed.","384":"The change detection can be strategized, but by default it just looks for changes in files that match the application name (eg \"foo.properties\" is targeted at the \"foo\" application, and \"application.properties\" is targeted at all applications).","385":"The strategy if you want to override the behaviour is {216/} which accepts the request headers and body as parameters and returns a list of file paths that changed.","386":"The default configuration works out of the box with Github, Gitlab or Bitbucket.","387":"In addition to the JSON notifications from Github, Gitlab or Bitbucket you can trigger a change notification by POSTing to \"/monitor\" with a form-encoded body parameters {217/}.","388":"This will broadcast to applications matching the \"{name}\" pattern (can contain wildcards).","389":"Note","390":"\nthe {218/} will only be transmitted if\nthe {219/} is activated in the Config Server and in the\nclient application.\n","391":"Note","392":"\nthe default configuration also detects filesystem changes in\nlocal git repositories (the webhook is not used in that case but as\nsoon as you edit a config file a refresh will be broadcast).\n","393":"{0/} Client","394":"A {3/} application can take immediate advantage of the Spring\nConfig Server (or other external property sources provided by the\napplication developer), and it will also pick up some additional\nuseful features related to {220/} change events.","395":"Config First Bootstrap","396":"This is the default behaviour for any application which has the Spring Cloud Config Client on the classpath.","397":"When a config client starts up it binds to the Config Server (via the bootstrap configuration property {221/}) and initializes Spring {222/} with remote property sources.","398":"The net result of this is that all client apps that want to consume\nthe Config Server need a {223/} (or an environment variable)\nwith the server address in {224/} (defaults to\n\"http://localhost:8888\").","399":"Discovery First Bootstrap","400":"If you are using a `DiscoveryClient implementation, such as Spring Cloud Netflix\nand Eureka Service Discovery or Spring Cloud Consul (Spring Cloud Zookeeper does\nnot support this yet), then you can have the Config Server register with the\nDiscovery Service if you want to, but in the default \"Config First\" mode,\nclients won’t be able to take advantage of the registration.","401":"If you prefer to use {225/} to locate the Config Server, you can do that by setting {226/} (default \"false\").","402":"The net result of that is that client apps all need a {227/} (or an environment variable) with the appropriate discovery configuration.","403":"For example, with Spring Cloud Netflix, you need to define the Eureka server address, eg in {228/}.","404":"The price for using this option is an extra network round trip on start up to locate the service registration.","405":"The benefit is that the Config Server can change its co-ordinates, as long as the Discovery Service is a fixed point.","406":"The default service id is \"configserver\" but you can change that on the client with {229/} (and on the server in the usual way for a service, eg by setting {230/}).","407":"The discovery client implementations all support some kind of metadata map (eg for Eureka we have {231/}).","408":"Some additional properties of the Config Server may need to be configured in its service registration metadata so that clients can connect correctly.","409":"If the Config Server is secured with HTTP Basic you can configure the credentials as \"username\" and \"password\".","410":"And if the Config Server has a context path you can set \"configPath\".","411":"Example, for a Config Server that is a Eureka client:","412":"bootstrap.yml","413":"Config Client Fail Fast","414":"In some cases, it may be desirable to fail startup of a service if it cannot connect to the Config Server.","415":"If this is the desired behavior, set the bootstrap configuration property {232/} and the client will halt with an Exception.","416":"Config Client Retry","417":"If you expect that the config server may occasionally be unavailable when your app starts, you can ask it to keep trying after a failure.","418":"First you need to set {233/}, and then you need to add {234/} and {235/} to your classpath.","419":"The default behaviour is to retry 6 times with an initial backoff interval of 1000ms and an exponential multiplier of 1.1 for subsequent backoffs.","420":"You can configure these properties (and others) using {236/} configuration properties.","421":"Tip","422":"To take full control of the retry add a {237/} of type {238/} with id \"configServerRetryInterceptor\".","423":"Spring Retry has a {239/} that makes it easy to create one.","424":"Locating Remote Configuration Resources","425":"The Config Service serves property sources from {240/}, where the default bindings in the client app are","426":"\"name\" = {241/}","427":"\"profile\" = {242/} (actually {243/})","428":"\"label\" = \"master\"","429":"All of them can be overridden by setting {244/} (where {245/} is \"name\", \"profile\" or \"label\").","430":"The \"label\" is useful for rolling back to previous versions of configuration;","431":"with the default Config Server implementation it can be a git label, branch name or commit id.","432":"Label can also be provided as a comma-separated list, in which case the items in the list are tried on-by-one until one succeeds.","433":"This can be useful when working on a feature branch, for instance, when you might want to align the config label with your branch, but make it optional (eg {246/}).","434":"Security","435":"If you use HTTP Basic security on the server then clients just need to know the password (and username if it isn't the default).","436":"You can do that via the config server URI, or via separate username and password properties, eg","437":"bootstrap.yml","438":"or","439":"bootstrap.yml","440":"The {247/} and {248/}\nvalues override anything that is provided in the URI.","441":"If you deploy your apps on Cloud Foundry then the best way to provide the password is through service credentials, eg in the URI, since then it doesn't even need to be in a config file.","442":"An example which works locally and for a user-provided service on Cloud Foundry named \"configserver\":","443":"bootstrap.yml","444":"If you use another form of security you might need to provide a\n{249/} to the {250/} (e.g. by\ngrabbing it in the bootstrap context and injecting one).","445":"Health Indicator","446":"The Config Client supplies a {3/} Health Indicator that attempts to load configuration from Config Server.","447":"The health indicator can be disabled by setting {251/}.","448":"The response is also cached for performance reasons.","449":"The default cache time to live is 5 minutes.","450":"To change that value set the {252/} property (in milliseconds).","451":"Providing A Custom RestTemplate","452":"In some cases you might need to customize the requests made to the config server from the client.","453":"Typically this involves passing special {253/} headers to authenticate requests to the server.","454":"To provide a custom {254/} follow the steps below.","455":"Set {255/} to disable the existing config server\nproperty source.","456":"Create a new configuration bean with an implementation of {256/}.","457":"CustomConfigServiceBootstrapConfiguration.java","458":"In {257/} create a file called\n{258/} and specify your custom configuration.","459":"spring.factorties","461":"When using {4/} as a backend to your config server the client will need to supply a token for the server to retrieve values from {4/}.","462":"This token can be provided within the client by setting {259/} in {260/}.","463":"bootstrap.yml","465":"Nested Keys In {4/}","466":"{4/} supports the ability to nest keys in a value stored in {4/}.","467":"For example","468":"This command will write a JSON object to your {4/}.","469":"To access these values in Spring you would use the traditional dot(.) annotation.","470":"For example","471":"The above code would set the {261/} variable to {262/}."},"errors":{},"nouns":{"0":"Spring Cloud Config","1":"Spring Cloud CLI","2":"Spring Cloud Bus","3":"Spring Boot","4":"Vault"},"name":"spring-cloud-config","timestamp":1494114413022});</script></body></html>

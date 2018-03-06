@@ -1,0 +1,122 @@
+<project name="limrick" basedir="." default="behaviors">
+
+    <property name="version" value="0.2"/>
+
+    <target name="clean" description="cleans out generated directory">
+        <delete dir="target"/>
+    </target>
+
+    <path id="build.classpath">
+        <fileset dir="lib">
+            <include name="**/*.jar">
+            </include>
+        </fileset>
+    </path>
+
+    <target name="compile-source" description="compiles source code">
+        <mkdir dir="target/classes"/>
+        <javac srcdir="src/java" destdir="target/classes">
+            <classpath>
+                <path refid="build.classpath"/>
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="compile-tests" description="compiles test files only">
+        <mkdir dir="target/test-classes"/>
+        <javac srcdir="test/java" destdir="target/test-classes">
+            <classpath>
+                <path refid="build.classpath"/>
+                <pathelement path="target/classes"/>
+            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="start-db" description="starts an instance of HSQLDB in the background">
+        <java classname="org.hsqldb.Server" fork="true" failonerror="false"
+              dir="."
+              spawn="true">
+           <!-- <arg value="-database.0=db01"/>
+            <arg value="-dbname.0=db01"/>
+            <arg value="-database.1=db02"/>
+            <arg value="-dbname.1=db01"/>-->
+            <classpath>
+                <pathelement location="lib/hsqldb-1.8.0.5.jar"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="shutdown-db" description="stops an instance of HSQLDB in the background" depends="compile-tests">
+        <java classname="org.disco.racer.hsql.RacersDatabaseShutdownTest" fork="true" failonerror="true">
+            <classpath>
+                <pathelement location="target/test-classes"/>
+                <pathelement location="lib/hsqldb-1.8.0.5.jar"/>
+                <pathelement location="lib/junit-4.4.jar"/>
+            </classpath>
+        </java>
+    </target>
+
+    <target name="_prep-conf-files">
+        <copy todir="./target/classes">
+            <fileset dir="src/conf">
+                <include name="**/*.xml"/>
+                <include name="**/*.properties"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="behaviors" depends="compile-source,_prep-conf-files">
+
+        <antcall target="start-db"/>
+
+        <taskdef name="easyb" classname="org.disco.easyb.ant.BehaviorRunnerTask">
+            <classpath>
+                <path refid="build.classpath"/>
+            </classpath>
+        </taskdef>
+
+        <easyb failureProperty="easyb.failed">
+            <classpath>
+                <path refid="build.classpath"/>
+                <pathelement path="target/classes"/>
+            </classpath>
+
+            <report location="target/story.txt" format="txtstory"/>
+            <behaviors dir="stories">
+                <include name="**/**.story"/>
+            </behaviors>
+        </easyb>
+
+        <antcall target="shutdown-db"/>
+
+        <fail if="easyb.failed" message="easyb reported a failure"/>
+
+    </target>
+
+    <target name="jar" depends="behaviors" description="creates a jar file">
+        <jar basedir="target/classes" jarfile="target/limrick-${version}.jar"/>
+    </target>
+
+
+    <target name="release" depends="jar" description="creates a release including all deps">
+        <mkdir dir="target/release"/>
+        <mkdir dir="target/dist"/>
+        <copy todir="target/release">
+            <fileset dir="target">
+                <include name="limrick-${version}.jar"/>
+            </fileset>
+            <fileset dir="lib">
+                <include name="**.jar"/>
+                <exclude name="easyb-*.jar"/>
+                <exclude name="commons-cli-*.jar"/>
+                <exclude name="dbunit-*.jar"/>
+                <exclude name="crimson-*.jar"/>
+                <exclude name="junit-*.jar"/>
+                <exclude name="groovy-*.jar"/>
+            </fileset>
+        </copy>
+        <zip basedir="target/release" zipfile="target/dist/limrick-${version}.zip"/>
+    </target>
+
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+		PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain2">
+
+	<class name="Customer" table="customer001" >
+		<id name="id" type="long" column="ID">
+			<generator class="increment"/>
+		</id>
+
+		<property name="name" type="string" >
+			<column name="NAME" length="15" />
+		</property>
+
+	</class>
+
+</hibernate-mapping>

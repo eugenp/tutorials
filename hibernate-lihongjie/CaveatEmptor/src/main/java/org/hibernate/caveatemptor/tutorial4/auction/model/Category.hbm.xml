@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+[
+<!ENTITY % globals SYSTEM "classpath://auction/persistence/globals.dtd">
+%globals;
+]>
+
+<!--
+
+Mapping file for the Category class of CaveatEmptor.
+
+@author Christian Bauer
+-->
+<hibernate-mapping package="auction.model" default-access="field">
+
+<class name="Category" table="CATEGORY">
+
+	<!-- Common id property -->
+	<id name="id" type="long" column="CATEGORY_ID">
+		<generator class="&idgenerator;"/>
+	</id>
+
+	<!-- A versioned entity -->
+	<version name="version" column="OBJ_VERSION"/>
+
+	<!-- Name is limited to 255 characters.-->
+	<property   name="name"
+				type="string">
+		<column name="CATEGORY_NAME"
+				not-null="true"
+				length="255"/>
+	</property>
+
+	<!-- Immutable property -->
+	<property   name="created"
+				column="CREATED"
+				type="timestamp"
+				update="false"
+				not-null="true"/>
+
+    <!-- The non-inverse side of the one-to-many/many-to-one association -->
+    <many-to-one name="parentCategory"
+                 class="Category"
+                 foreign-key="FK_CATEGORY_PARENT_ID">
+        <column name="PARENT_CATEGORY_ID"
+                not-null="false"/>
+    </many-to-one>
+
+    <!-- The inverse side of the one-to-many/many-to-one association, we
+         use a bag mapping, iteration order of this collection is by
+         category name. -->
+    <bag name="childCategories"
+            cascade="save-update, merge"
+            inverse="true"
+            order-by="CATEGORY_NAME asc">
+        <key column="PARENT_CATEGORY_ID"/>
+        <one-to-many class="Category"/>
+    </bag>
+
+    <!-- The pure many-to-many association to Item, a true persistent list with index -->
+    <list name="items" table="CATEGORY_ITEM">
+        <key column="CATEGORY_ID" foreign-key="FK_CATEGORY_ITEM_CATEGORY_ID"/>
+        <list-index column="DISPLAY_POSITION"/>
+        <many-to-many class="Item" column="ITEM_ID" foreign-key="FK_CATEGORY_ITEM_ITEM_ID">
+
+            <!-- Dynamic collection filter -->
+            <filter name="limitItemsByUserRank"
+                    condition=":currentUserRank >=
+                               (select u.RANK from USERS u where u.USER_ID = SELLER_ID)"/>
+
+        </many-to-many>
+    </list>
+
+    <!--
+        This is an alternative for the many-to-many association to Item.
+        We use a one-to-many association to express the relationship
+        to a set of items. There is an intermediate entity class,
+        CategorizedItem, which effectively makes this a many-to-many
+        association between Category and Item.
+
+        You can use this mapping style if your association table has
+        additional columns. These are then properties of the
+        CategorizedItem entity class.
+
+        To create a link, instantiate a CategorizedItem with the right
+        constructor. To remove a link, use getCategorizedItems().remove()
+        on this class (mapped with orphan delete).
+    -->
+    <set    name="categorizedItems"
+            cascade="all, delete-orphan"
+            inverse="true"
+            fetch="subselect">
+        <key column="CATEGORY_ID" not-null="true"/>
+        <one-to-many class="CategorizedItem"/>
+    </set>
+
+    <!--
+        This is an alternative mapping for the many-to-many association
+        to Item. We use an intermediate class, CategorizedItem, that
+        represents the link. This is a value-typed component class!
+
+        You can use this mapping style if your association table has
+        additional columns. In our case, we have the ADDED_BY_USER and
+        ADDED_ON columns. These are also properties of the
+        CategorizedItemComponent class. The many-to-many association we created
+        here is only accessible from the Category side. Items can't
+        access CategorizedItemComponents, it is mapped as a non-shared
+        component owned by Category (this collection).
+
+        You can also make the username property a real many-to-one
+        association to User, if it is a foreign key column.
+
+        To create a link, instantiate a new CategorizedItemComponent
+        and add it to this collection. To remove a link, remove the
+        CategorizedItemComponent from the collection (dependent life
+        cycle of value typed instances).
+    -->
+    <set name="categorizedItemComponents" table="CATEGORIZED_ITEM_COMPONENT">
+        <key column="CATEGORY_ID" foreign-key="FK_CATEGORIZED_ITEM_COMPONENT_CATEGORY_ID"/>
+        <composite-element class="CategorizedItemComponent">
+            <parent name="category"/>
+
+            <many-to-one name="item"
+                         column="ITEM_ID"
+                         class="Item"
+                         not-null="true"
+                         update="false"
+                         foreign-key="FK_CATEGORIZED_ITEM_COMPONENT_ITEM_ID"/>
+
+            <property   name="username"
+                        type="string"
+                        column="ADDED_BY_USER"
+                        not-null="true"
+                        update="false"/>
+
+            <property   name="dateAdded"
+                        column="ADDED_ON"
+                        type="timestamp"
+                        not-null="true"
+                        update="false"/>
+
+        </composite-element>
+     </set>
+
+    <!--
+        This is an alternative mapping for the many-to-many association
+        to Item. We use a Map, with the Item objects as keys, and the User
+        who added the Item to the Category as a value. This makes any
+        intermediate class unnecessary, but limits what you can represent
+        on the many-to-many join table. The date of the addition is no
+        longer present.
+    -->
+    <map name="itemsAndUser" table="CATEGORY_ITEMS_BY_USER">
+        <key column="CATEGORY_ID" foreign-key="FK_CATEGORY_ITEMS_BY_USER_CATEGORY_ID"/>
+        <map-key-many-to-many column="ITEM_ID" class="Item" foreign-key="FK_CATEGORY_ITEMS_BY_USER_ITEM_ID"/>
+        <many-to-many column="ADDED_BY_USER_ID" class="User" foreign-key="FK_CATEGORY_ITEMS_BY_USER_USER_ID"/>
+    </map>
+
+</class>
+
+<!--
+    There can never be two categories with the same name at
+    the same "level", that is, they can't have the same parent
+    category. This is protected with a unique constraint.
+-->
+<database-object>
+    <create>
+        alter table CATEGORY add constraint UNIQUE_SIBLINGS
+            unique (CATEGORY_NAME, PARENT_CATEGORY_ID)
+    </create>
+    <drop>
+        alter table CATEGORY drop constraint UNIQUE_SIBLINGS
+    </drop>
+</database-object>
+
+</hibernate-mapping>

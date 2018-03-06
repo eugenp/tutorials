@@ -1,0 +1,86 @@
+<!--<start id="jmxMBeanServerFactoryBean"/>--> 
+<bean id="jmxServer"
+      class="org.springframework.jmx.support.MBeanServerFactoryBean"> 
+  <property name="defaultDomain" value="spitter" />
+</bean>
+<!--<end id="jmxMBeanServerFactoryBean"/>--> 
+
+<!--<start id="mbeanExporter_serverProperty"/>--> 
+<bean id="mbeanExporter" 
+      class="org.springframework.jmx.export.MBeanExporter">
+  <property name="beans"> 
+    <map>
+      <entry key="spitter:name=HomeController" 
+             value-ref="homeController"/>
+    </map>
+  </property>
+
+  <property name="server" ref="mbeanServer" /> 
+</bean>
+<!--<end id="mbeanExporter_serverProperty"/>-->
+
+<!--<start id="mbeanExporter_collisionHandling"/>--> 
+<bean id="mbeanExporter" 
+  class="org.springframework.jmx.export.MBeanExporter">
+  <property name="beans"> 
+    <map>
+      <entry key="spitter:name=HomeController" 
+             value-ref="homeController"/>
+    </map>
+  </property>
+  <property name="server" ref="mbeanServer" /> 
+  
+  <property name="assembler" ref="assembler"/>    
+  <property name="registrationBehaviorName" 
+            value="REGISTRATION_IGNORE_EXISTING" />
+</bean>
+<!--<end id="mbeanExporter_collisionHandling"/>-->
+
+
+<!--<start id="contextMbeanExport_collisionHandling"/>--> 
+<context:mbean-export server="mbeanServer" 
+    registration="replaceExisting"/>
+<!--<end id="contextMbeanExport_collisionHandling"/>--> 
+
+<!--<start id="connectorServerFB_basic"/>--> 
+<bean class=
+    "org.springframework.jmx.support.ConnectorServerFactoryBean" />
+<!--<end id="connectorServerFB_basic"/>--> 
+
+<!--<start id="mbeanServerConnectionFB"/>-->     
+<bean id="mBeanServerClient" 
+    class=
+        "org.springframework.jmx.support.MBeanServerConnectionFactoryBean"
+    p:serviceUrl=
+        "service:jmx:rmi://localhost/jndi/rmi://localhost:1099/spitter"/> 
+<!--<end id="mbeanServerConnectionFB"/>-->     
+
+<!--<start id="mbeanServerClient"/>--> 
+<bean id="jmxClient" class="com.springinaction.jmx.JmxClient">
+  <property name="mbeanServerConnection" ref="mBeanServerClient" />
+</bean>
+<!--<end id="mbeanServerClient"/>--> 
+
+
+<!--<start id="mbeanProxyFactoryBean"/>--> 
+<bean id="remoteHomeControllerMBean" 
+    class="org.springframework.jmx.access.MBeanProxyFactoryBean"
+  p:objectName="spitter:name=HomeController"
+  p:server-ref="mBeanServerClient"
+  p:proxyInterface=
+        "com.habuma.spitter.jmx.HomeControllerManagedOperations" />
+<!--<end id="mbeanProxyFactoryBean"/>--> 
+
+
+<!--<start id="mbeanExporterListenerMappings"/>--> 
+<bean class="org.springframework.jmx.export.MBeanExporter">
+  ...
+  <property name="notificationListenerMappings">
+    <map>
+      <entry key="Spitter:name=PagingNotificationListener">
+        <bean class="com.habuma.spitter.jmx.PagingNotificationListener" />
+      </entry>
+    </map>
+  </property>
+</bean>
+<!--<end id="mbeanExporterListenerMappings"/>--> 

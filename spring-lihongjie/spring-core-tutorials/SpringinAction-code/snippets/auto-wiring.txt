@@ -1,0 +1,199 @@
+
+<!--<start id="default_auto_wiring" />--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+    default-autowire="byType">
+
+
+</beans>
+<!--<end id="default_auto_wiring" />-->
+
+
+
+<!--<start id="context_annotation_config" />--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <context:annotation-config />
+  
+  <!-- bean declarations go here -->
+        
+</beans>
+<!--<end id="context_annotation_config" />-->
+
+
+//<start id="autowire_qualifier" /> 
+@Autowired
+@Qualifier("guitar")
+private Instrument instrument;
+//<end id="autowire_qualifier" />
+
+//<start id="inject_named" /> 
+@Inject
+@Named("guitar")
+private Instrument instrument;
+//<end id="inject_named" />
+
+//<start id="class_qualifier"/> 
+@Qualifier("stringed")
+public class Guitar implements Instrument {
+  ...
+}
+//<end id="class_qualifier"/> 
+
+
+<!--<start id="qualifier_element" />--> 
+<bean class="com.springinaction.springidol.Guitar">
+  <qualifier value="stringed" />
+</bean>
+<!--<end id="qualifier_element" />-->
+
+<!--<start id="include_filter_assignable" />--> 
+<context:component-scan 
+    base-package="com.springinaction.springidol">
+  <context:include-filter type="assignable" 
+      expression="com.springinaction.springidol.Instrument"/>
+</context:component-scan>
+<!--<end id="include_filter_assignable" />-->
+
+<!--<start id="exclude_filter" />--> 
+<context:component-scan 
+    base-package="com.springinaction.springidol">
+  <context:include-filter type="assignable" 
+      expression="com.springinaction.springidol.Instrument"/>
+  <context:exclude-filter type="annotation" 
+      expression="com.springinaction.springidol.SkipIt"/>
+</context:component-scan>
+<!--<end id="exclude_filter" />--> 
+
+
+//<start id="at_value" /> 
+@Value("Eruption")
+private String song;
+//<end id="at_value" />
+
+//<start id="at_value_spel" /> 
+@Value("#{systemProperties.myFavoriteSong}")
+private String song;
+//<end id="at_value_spel" />
+
+<!--<start id="saxophone_instrument_bean" />--> 
+<bean id="instrument" 
+    class="com.springinaction.springidol.Saxophone" />
+<!--<end id="saxophone_instrument_bean" />-->
+
+
+<!--<start id="autowired_kenny" />--> 
+<bean id="kenny" 
+    class="com.springinaction.springidol.Instrumentalist" 
+    autowire="byName"> 
+  <property name="song" value="Jingle Bells" /> 
+</bean>
+<!--<end id="autowired_kenny" />-->
+
+<!--<start id="saxophone_instrument_bean_not_primary" />--> 
+<bean id="saxophone" 
+    class="com.springinaction.springidol.Saxophone" 
+    primary="false" />
+<!--<end id="saxophone_instrument_bean_not_primary" />-->
+
+<!--<start id="saxophone_instrument_bean_not_autowire_candidate" />--> 
+<bean id="saxophone" 
+    class="com.springinaction.springidol.Saxophone" 
+    autowire-candidate="false" />
+<!--<end id="saxophone_instrument_bean_not_autowire_candidate" />-->
+
+<!--<start id="duke_bean_autowire_constructor" />--> 
+<bean id="duke" 
+    class="com.springinaction.springidol.PoeticJuggler" 
+    autowire="constructor" />
+<!--<end id="duke_bean_autowire_constructor" />--> 
+    
+
+<!--<start id="duke_bean_autodetect_autowire" />--> 
+<bean id="duke" 
+    class="com.springinaction.springidol.PoeticJuggler" 
+    autowire="autodetect" />
+<!--<end id="duke_bean_autodetect_autowire" />-->
+
+
+//<start id="stringed_instrument_qualifier"/> 
+package com.springinaction.springidol.qualifiers;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Qualifier
+public @interface StringedInstrument {
+}
+//<end id="stringed_instrument_qualifier"/> 
+
+
+//<start id="stringed_instrument_qualifier_jsr330"/> 
+package com.springinaction.springidol;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import javax.inject.Qualifier;
+
+@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Qualifier
+public @interface StringedInstrument {
+}
+//<end id="stringed_instrument_qualifier_jsr330"/> 
+
+
+
+//<start id="guitar_stringed_instrument"/> 
+@StringedInstrument
+public class Guitar implements Instrument {
+  ...
+}
+//<end id="guitar_stringed_instrument"/> 
+
+//<start id="stringed_instrument_qualified"/> 
+@Autowired
+@StringedInstrument
+private Instrument instrument;
+//<end id="stringed_instrument_qualified"/> 
+
+//<start id="strummed_stringed_instrument_qualified"/> 
+@Autowired
+@StringedInstrument
+@Strummed
+private Instrument instrument;
+//<end id="strummed_stringed_instrument_qualified"/> 
+
+
+//<start id="strummed_qualifier"/> 
+@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Qualifier
+public @interface Strummed {
+}
+//<end id="strummed_qualifier"/> 
+
+//<start id="named_qualifier"/> 
+@Qualifier
+@Documented
+@Retention(RUNTIME)
+public @interface Named {
+    String value() default "";
+}
+//<end id="named_qualifier"/> 

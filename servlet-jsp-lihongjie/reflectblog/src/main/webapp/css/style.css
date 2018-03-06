@@ -1,0 +1,68 @@
+
+
+/*header*/
+* {
+	margin:0px;
+	padding:0px;
+}
+#head,#main {
+	width:800px;
+	margin:0px auto;
+	border: 1px solid #F0FFFF;
+}
+#head {
+	width:800px;
+	height:70px;
+	background:#A52A2A;
+	margin-top:5px;
+}
+#banner {
+	text-align:center;
+	color:#FFFFFF;
+	font-style:;
+	font-weight:bold;
+	padding-top:10px;
+}
+
+#main {
+	width:800px;
+	height:550px;
+}
+
+#left {
+	float:left;
+	width:600px;
+	height:540px;
+	border:1px solid #FFFFFF;
+	background-color:#FFFFFF;
+}
+#right {
+	float:right;
+	width:195px;
+	height:540px;
+	border:1px solid #FFFFFF;
+	background-color:#FFFFFF;
+}
+#one {
+	width:190px;
+	height:70px;
+}
+h4 {
+	color:#8B0000;
+}
+#two {
+	width:190px;
+	height:100px;
+}
+#three {
+	width:190px;
+	height:130px;
+}
+#four {
+	width:190px;
+	height:100px;
+}
+#five {
+	width:190px;
+	height:100px;
+}

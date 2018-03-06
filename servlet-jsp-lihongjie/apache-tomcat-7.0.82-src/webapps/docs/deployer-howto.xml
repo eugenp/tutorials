@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="deployer-howto.html">
+
+    &project;
+
+    <properties>
+        <author>Allistair Crossley</author>
+        <title>Tomcat Web Application Deployment</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+    <section name="Introduction">
+        <p>
+            Deployment is the term used for the process of installing a web
+            application (either a 3rd party WAR or your own custom web application)
+            into the Tomcat server.
+        </p>
+        <p>
+            Web application deployment may be accomplished in a number of ways
+            within the Tomcat server.
+        </p>
+        <ul>
+                <li>Statically; the web application is setup before Tomcat is started</li>
+                <li>
+                    Dynamically; by directly manipulating already deployed web
+                    applications (relying on <em>auto-deployment</em>
+                    feature) or remotely by using the Tomcat Manager web
+                    application
+                </li>
+        </ul>
+        <p>
+            The <a href="manager-howto.html">Tomcat Manager</a> is a web
+            application that can be used interactively (via HTML GUI) or
+            programmatically (via URL-based API) to deploy and manage web
+            applications.
+        </p>
+        <p>
+            There are a number of ways to perform deployment that rely on
+            the Manager web application. Apache Tomcat provides tasks
+            for Apache Ant build tool.
+            <a href="http://tomcat.apache.org/maven-plugin.html">Apache Tomcat Maven Plugin</a>
+            project provides integration with Apache Maven.
+            There is also a tool called the Client Deployer, which can be
+            used from a command line and provides additional functionality
+            such as compiling and validating web applications as well as
+            packaging web application into web application resource (WAR)
+            files.
+        </p>
+    </section>
+
+    <section name="Installation">
+        <p>
+            There is no installation required for static deployment of web
+            applications as this is provided out of the box by Tomcat. Nor is any
+            installation required for deployment functions with the Tomcat Manager,
+            although some configuration is required as detailed in the
+            <a href="manager-howto.html">Tomcat Manager manual</a>.
+            An installation is however required if you wish
+            to use the Tomcat Client Deployer (TCD).
+        </p>
+        <p>
+            The TCD is not packaged with the Tomcat core
+            distribution, and must therefore be downloaded separately from
+            the Downloads area. The download is usually labelled
+            <i>apache-tomcat-7.0.x-deployer</i>.
+        </p>
+        <p>
+            TCD has prerequisites of Apache Ant 1.6.2+ and a Java installation.
+            Your environment should define an ANT_HOME environment value pointing to
+            the root of your Ant installation, and a JAVA_HOME value pointing to
+            your Java installation. Additionally, you should ensure Ant's ant
+            command, and the Java javac compiler command run from the command shell
+            that your operating system provides.
+        </p>
+        <ol>
+            <li>Download the TCD distribution</li>
+            <li>
+                The TCD package need not be extracted into any existing Tomcat
+                installation, it can be extracted to any location.
+            </li>
+            <li>Read Using the <a href="#Deploying_using_the_Client_Deployer_Package">
+            Tomcat Client Deployer</a></li>
+        </ol>
+    </section>
+
+    <section name="A word on Contexts">
+        <p>
+            In talking about deployment of web applications, the concept of a
+            <i>Context</i> is required to be understood. A Context is what Tomcat
+            calls a web application.
+        </p>
+        <p>
+            In order to configure a Context within Tomcat a <i>Context Descriptor</i>
+            is required. A Context Descriptor is simply an XML file that contains
+            Tomcat related configuration for a Context, e.g naming resources or
+            session manager configuration. In earlier versions of
+            Tomcat the content of a Context Descriptor configuration was often stored within
+            Tomcat's primary configuration file <i>server.xml</i> but this is now
+            discouraged (although it currently still works).
+        </p>
+        <p>
+            Context Descriptors not only help Tomcat to know how to configure
+            Contexts but other tools such as the Tomcat Manager and TCD often use
+            these Context Descriptors to perform their roles properly.
+        </p>
+        <p>
+            The locations for Context Descriptors are:
+        </p>
+        <ol>
+                <li>$CATALINA_BASE/conf/[enginename]/[hostname]/[webappname].xml</li>
+                <li>$CATALINA_BASE/webapps/[webappname]/META-INF/context.xml</li>
+        </ol>
+        <p>
+            Files in (1) are named [webappname].xml but files in (2) are named
+            context.xml. If a Context Descriptor is not provided for a Context,
+            Tomcat configures the Context using default values.
+        </p>
+    </section>
+
+    <section name="Deployment on Tomcat startup">
+        <p>
+            If you are not interested in using the Tomcat Manager, or TCD,
+            then you'll need to deploy your web applications
+            statically to Tomcat, followed by a Tomcat startup. The location you
+            deploy web applications to for this type of deployment is called the
+            <code>appBase</code> which is specified per Host. You either copy a
+            so-called <i>exploded web application</i>, i.e non-compressed, to this
+            location, or a compressed web application resource .WAR file.
+        </p>
+        <p>
+            The web applications present in the location specified by the Host's
+            (default Host is "localhost") <code>appBase</code> attribute (default
+            appBase is "$CATALINA_BASE/webapps") will be deployed on Tomcat startup
+            only if the Host's <code>deployOnStartup</code> attribute is "true".
+        </p>
+        <p>
+            The following deployment sequence will occur on Tomcat startup in that
+            case:
+        </p>
+        <ol>
+            <li>Any Context Descriptors will be deployed first.</li>
+            <li>
+                Exploded web applications not referenced by any Context
+                Descriptor will then be deployed. Note that if an exploded web
+                application has an associated .WAR file in the appBase, Tomcat
+                will not detect if the associated .WAR has been updated while
+                Tomcat was stopped and will deploy the exploded web application
+                as is. The exploded web application will not be removed and
+                replaced with the contents of the updated .WAR file.
+            </li>
+            <li>.WAR files will be deployed</li>
+        </ol>
+    </section>
+
+    <section name="Deploying on a running Tomcat server">
+        <p>
+            It is possible to deploy web applications to a running Tomcat server.
+        </p>
+        <p>
+            If the Host <code>autoDeploy</code> attribute is "true", the Host will
+            attempt to deploy and update web applications dynamically, as needed,
+            for example if a new .WAR is dropped into the <code>appBase</code>.
+            For this to work, the Host needs to have background processing
+            enabled which is the default configuration.
+        </p>
+
+        <p>
+            <code>autoDeploy</code> set to "true" and a running Tomcat allows for:
+        </p>
+        <ul>
+            <li>Deployment of .WAR files copied into the Host <code>appBase</code>.</li>
+            <li>
+                Deployment of exploded web applications which are
+                copied into the Host <code>appBase</code>.
+            </li>
+            <li>
+                Re-deployment of a web application which has already been deployed from
+                a .WAR when the new .WAR is provided. In this case the exploded
+                web application is removed, and the .WAR is expanded again.
+                Note that the explosion will not occur if the Host is configured
+                so that .WARs are not exploded with a <code>unpackWARs</code>
+                attribute set to "false", in which case the web application
+                will be simply redeployed as a compressed archive.
+            </li>
+            <li>
+                Re-loading of a web application if the /WEB-INF/web.xml file (or
+                any other resource defined as a WatchedResource) is updated.
+            </li>
+            <li>
+                Re-deployment of a web application if the Context Descriptor
+                file from which the web application has been deployed is
+                updated.
+            </li>
+            <li>
+                Re-deployment of dependent web applications if the global or
+                per-host Context Descriptor file used by the web application is
+                updated.
+            </li>
+            <li>
+                Re-deployment of a web application if a Context Descriptor file (with a
+                filename corresponding to the Context path of the previously deployed
+                web application) is added to the
+                <code>$CATALINA_BASE/conf/[enginename]/[hostname]/</code>
+                directory.
+            </li>
+            <li>
+                Undeployment of a web application if its document base (docBase)
+                is deleted. Note that on Windows, this assumes that anti-locking
+                features (see Context configuration) are enabled, otherwise it is not
+                possible to delete the resources of a running web application.
+            </li>
+        </ul>
+        <p>
+            Note that web application reloading can also be configured in the loader, in which
+            case loaded classes will be tracked for changes.
+        </p>
+    </section>
+
+    <section name="Deploying using the Tomcat Manager">
+        <p>
+            The Tomcat Manager is covered in its <a href="manager-howto.html">own manual page</a>.
+        </p>
+    </section>
+
+    <section name="Deploying using the Client Deployer Package">
+        <p>
+            Finally, deployment of web application may be achieved using the
+            Tomcat Client Deployer. This is a package which can be used to
+            validate, compile, compress to .WAR, and deploy web applications to
+            production or development Tomcat servers. It should be noted that this feature
+            uses the Tomcat Manager and as such the target Tomcat server should be
+            running.
+        </p>
+
+        <p>
+            It is assumed the user will be familiar with Apache Ant for using the TCD.
+            Apache Ant is a scripted build tool. The TCD comes pre-packaged with a
+            build script to use. Only a modest understanding of Apache Ant is
+            required (installation as listed earlier in this page, and familiarity
+            with using the operating system command shell and configuring
+            environment variables).
+        </p>
+
+        <p>
+            The TCD includes Ant tasks, the Jasper page compiler for JSP compilation
+            before deployment, as well as a task which
+            validates the web application Context Descriptor. The validator task (class
+            <code>org.apache.catalina.ant.ValidatorTask</code>) allows only one parameter:
+            the base path of an exploded web application.
+        </p>
+
+        <p>
+            The TCD uses an exploded web application as input (see the list of the
+            properties used below). A web application that is programmatically
+            deployed with the deployer may include a Context Descriptor in
+            <code>/META-INF/context.xml</code>.
+        </p>
+
+        <p>
+            The TCD includes a ready-to-use Ant script, with the following targets:
+        </p>
+        <ul>
+            <li>
+                <code>compile</code> (default): Compile and validate the web
+                application. This can be used standalone, and does not need a running
+                Tomcat server. The compiled application will only run on the associated
+                <em>Tomcat&#160;X.Y.Z</em> server release, and is not guaranteed to work
+                on another Tomcat release, as the code generated by Jasper depends on its runtime
+                component. It should also be noted that this target will also compile
+                automatically any Java source file located in the
+                <code>/WEB-INF/classes</code> folder of the web application.</li>
+            <li>
+                <code>deploy</code>: Deploy a web application (compiled or not) to
+                a Tomcat server.
+            </li>
+            <li><code>undeploy</code>: Undeploy a web application</li>
+            <li><code>start</code>: Start web application</li>
+            <li><code>reload</code>: Reload web application</li>
+            <li><code>stop</code>: Stop web application</li>
+        </ul>
+
+        <p>
+            In order for the deployment to be configured, create a file
+            called <code>deployer.properties</code> in the TCD installation
+            directory root. In this file, add the following name=value pairs per
+            line:
+        </p>
+
+        <p>
+            Additionally, you will need to ensure that a user has been
+            setup for the target Tomcat Manager (which TCD uses) otherwise the TCD
+            will not authenticate with the Tomcat Manager and the deployment will
+            fail. To do this, see the Tomcat Manager page.
+        </p>
+
+        <ul>
+            <li>
+                <code>build</code>: The build folder used will be, by default,
+                <code>${build}/webapp/${path}</code> (<code>${build}</code>, by
+                default, points to <code>${basedir}/build</code>). After the end
+                of the execution of the <code>compile</code> target, the web
+                application .WAR will be located at
+                <code>${build}/webapp/${path}.war</code>.
+            </li>
+            <li>
+                <code>webapp</code>: The directory containing the exploded web application
+                which will be compiled and validated. By default, the folder is
+                <code>myapp</code>.
+            </li>
+            <li>
+                <code>path</code>: Deployed context path of the web application,
+                by default <code>/myapp</code>.
+            </li>
+            <li>
+                <code>url</code>: Absolute URL to the Tomcat Manager web application of a
+                running Tomcat server, which will be used to deploy and undeploy the
+                web application. By default, the deployer will attempt to access
+                a Tomcat instance running on localhost, at
+                <code>http://localhost:8080/manager/text</code>.
+            </li>
+            <li>
+                <code>username</code>: Tomcat Manager username (user should have a role of
+                manager-script)
+            </li>
+            <li><code>password</code>: Tomcat Manager password.</li>
+        </ul>
+    </section>
+
+</body>
+
+</document>

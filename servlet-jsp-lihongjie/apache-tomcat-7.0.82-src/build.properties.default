@@ -1,0 +1,244 @@
+# -----------------------------------------------------------------------------
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# -----------------------------------------------------------------------------
+# build.properties.sample
+#
+# This is an example "build.properties" file, used to customize building
+# Tomcat for your local environment.  It defines the location of all external
+# modules that Tomcat depends on.  Copy this file to "build.properties"
+# in the top-level source directory, and customize it as needed.
+# -----------------------------------------------------------------------------
+
+# ----- Version Control Flags -----
+version.major=7
+version.minor=0
+version.build=82
+version.patch=0
+version.suffix=
+
+# ----- Build control flags -----
+# Note enabling validation uses Checkstyle which is LGPL licensed
+execute.validate=false
+execute.test.bio=true
+execute.test.nio=true
+# Still requires APR/native library to be present
+execute.test.apr=true
+# Stop testing if a failure occurs
+test.haltonfailure=false
+# Activate AccessLog during testing
+test.accesslog=false
+# Display the tests output on the console
+test.verbose=true
+
+# Note the Cobertura code coverage tool is GPLv2 licensed
+test.cobertura=false
+
+# Some platforms (e.g. OSX El Capitan) require IPv4 to be the default for the
+# multicast tests to work
+java.net.preferIPv4Stack=false
+
+# Location of Java7 JDK
+#java.7.home=/path/to/java7/jdk
+
+# Location of GPG executable (used only for releases)
+gpg.exec=/path/to/gpg
+
+# ----- Settings to use when downloading files -----
+trydownload.httpusecaches=true
+
+# ----- Default Base Path for Dependent Packages -----
+# Please note this path must be absolute, not relative,
+# as it is referenced with different working directory
+# contexts by the various build scripts.
+base.path=${user.home}/tomcat-build-libs
+
+compile.source=1.6
+compile.target=1.6
+compile.debug=true
+
+base-apache.loc.1=http://www.apache.org/dyn/closer.lua?action=download&filename=
+base-apache.loc.2=http://archive.apache.org/dist
+base-commons.loc.1=${base-apache.loc.1}/commons
+base-commons.loc.2=${base-apache.loc.2}/commons
+base-tomcat.loc.1=${base-apache.loc.1}/tomcat
+base-tomcat.loc.2=${base-apache.loc.2}/tomcat
+
+base-sf.loc=http://downloads.sourceforge.net
+# repo.maven.apache.org is the same as repo2.maven.org
+base-maven.loc=http://repo.maven.apache.org/maven2
+
+# Mirror, was used when there were problems with the main SF downloads site
+# base-sf.loc=http://sunet.dl.sourceforge.net
+
+# ----- Commons Logging, version 1.1 or later -----
+# If this version is updated, check the versions required for the dependencies below
+# - avalon-framework
+# - log4j
+# - logkit
+# - servletapi
+commons-logging.version=1.1.3
+commons-logging.home=${base.path}/commons-logging-${commons-logging.version}
+commons-logging-src.loc.1=${base-commons.loc.1}/logging/source/commons-logging-${commons-logging.version}-src.tar.gz
+commons-logging-src.loc.2=${base-commons.loc.2}/logging/source/commons-logging-${commons-logging.version}-src.tar.gz
+commons-logging-src.tar.gz=${commons-logging.home}/commons-logging-${commons-logging.version}-src.tar.gz
+
+# ----- Avalon Framework (required by commons logging) -----
+avalon-framework.version=4.1.5
+avalon-framework.home=${base.path}/avalon-framework-${avalon-framework.version}
+avalon-framework.loc=${base-maven.loc}/avalon-framework/avalon-framework/${avalon-framework.version}/avalon-framework-${avalon-framework.version}.jar
+avalon-framework.jar=${avalon-framework.home}/avalon-framework-${avalon-framework.version}.jar
+
+# ----- log4j (required by commons logging) -----
+log4j.version=1.2.17
+log4j.home=${base.path}/log4j-${log4j.version}
+log4j.loc=${base-maven.loc}/log4j/log4j/${log4j.version}/log4j-${log4j.version}.jar
+log4j.jar=${log4j.home}/log4j-${log4j.version}.jar
+
+# ----- logkit (required by commons logging) -----
+logkit.version=1.0.1
+logkit.home=${base.path}/logkit-${logkit.version}
+logkit.loc=${base-maven.loc}/logkit/logkit/${logkit.version}/logkit-${logkit.version}.jar
+logkit.jar=${logkit.home}/logkit-${logkit.version}.jar
+
+# ----- servletapi (required by commons logging) -----
+servletapi.version=2.3
+servletapi.home=${base.path}/servletapi-${servletapi.version}
+servletapi.loc=${base-maven.loc}/servletapi/servletapi/${servletapi.version}/servletapi-${servletapi.version}.jar
+servletapi.jar=${servletapi.home}/servletapi-${servletapi.version}.jar
+
+# ----- Webservices - JAX RPC -----
+jaxrpc-lib.version=1.1-rc4
+jaxrpc-lib.home=${base.path}/jaxrpc-${jaxrpc-lib.version}
+jaxrpc-lib.loc=${base-maven.loc}/geronimo-spec/geronimo-spec-jaxrpc/${jaxrpc-lib.version}/geronimo-spec-jaxrpc-${jaxrpc-lib.version}.jar
+jaxrpc-lib.jar=${jaxrpc-lib.home}/geronimo-spec-jaxrpc-${jaxrpc-lib.version}.jar
+
+# ----- Webservices - WSDL4J -----
+wsdl4j-lib.version=1.6.2
+wsdl4j-lib.home=${base.path}/wsdl4j-${wsdl4j-lib.version}
+wsdl4j-lib.loc=${base-maven.loc}/wsdl4j/wsdl4j/${wsdl4j-lib.version}/wsdl4j-${wsdl4j-lib.version}.jar
+wsdl4j-lib.jar=${wsdl4j-lib.home}/wsdl4j-${wsdl4j-lib.version}.jar
+
+# ----- Eclipse JDT, version 4.4 or later -----#
+# See https://wiki.apache.org/tomcat/JDTCoreBatchCompiler before updating
+jdt.version=4.4.2
+jdt.release=R-4.4.2-201502041700
+jdt.home=${base.path}/ecj-${jdt.version}
+jdt.jar=${jdt.home}/ecj-${jdt.version}.jar
+# The download will be moved to the archive area eventually. We are taking care of that in advance.
+jdt.loc.1=http://archive.eclipse.org/eclipse/downloads/drops4/${jdt.release}/ecj-${jdt.version}.jar
+jdt.loc.2=http://download.eclipse.org/eclipse/downloads/drops4/${jdt.release}/ecj-${jdt.version}.jar
+
+# ----- Tomcat native library -----
+tomcat-native.version=1.2.14
+tomcat-native.home=${base.path}/tomcat-native-${tomcat-native.version}
+tomcat-native.tar.gz=${tomcat-native.home}/tomcat-native.tar.gz
+tomcat-native.loc.1=${base-tomcat.loc.1}/tomcat-connectors/native/${tomcat-native.version}/source/tomcat-native-${tomcat-native.version}-src.tar.gz
+tomcat-native.loc.2=${base-tomcat.loc.2}/tomcat-connectors/native/${tomcat-native.version}/source/tomcat-native-${tomcat-native.version}-src.tar.gz
+tomcat-native.win.1=${base-tomcat.loc.1}/tomcat-connectors/native/${tomcat-native.version}/binaries/tomcat-native-${tomcat-native.version}-win32-bin.zip
+tomcat-native.win.2=${base-tomcat.loc.2}/tomcat-connectors/native/${tomcat-native.version}/binaries/tomcat-native-${tomcat-native.version}-win32-bin.zip
+
+# ----- Commons DBCP, version 1.1 or later -----
+commons-dbcp.version=1.4
+commons-dbcp.home=${base.path}/commons-dbcp-${commons-dbcp.version}-src
+commons-dbcp-src.loc.1=${base-commons.loc.1}/dbcp/source/commons-dbcp-${commons-dbcp.version}-src.tar.gz
+commons-dbcp-src.loc.2=${base-commons.loc.2}/dbcp/source/commons-dbcp-${commons-dbcp.version}-src.tar.gz
+
+# ----- Commons Pool, version 1.1 or later -----
+commons-pool.version=1.5.7
+commons-pool.home=${base.path}/commons-pool-${commons-pool.version}-src
+commons-pool-src.loc.1=${base-commons.loc.1}/pool/source/commons-pool-${commons-pool.version}-src.tar.gz
+commons-pool-src.loc.2=${base-commons.loc.2}/pool/source/commons-pool-${commons-pool.version}-src.tar.gz
+
+# ----- NSIS, version 3.0 or later -----
+nsis.version=3.01
+nsis.home=${base.path}/nsis-${nsis.version}
+nsis.exe=${nsis.home}/makensis.exe
+nsis.arch.dir=x86-unicode/
+nsis.installoptions.dll=${nsis.home}/Plugins/${nsis.arch.dir}InstallOptions.dll
+nsis.nsexec.dll=${nsis.home}/Plugins/${nsis.arch.dir}nsExec.dll
+nsis.nsisdl.dll=${nsis.home}/Plugins/${nsis.arch.dir}NSISdl.dll
+nsis.system.dll=${nsis.home}/Plugins/${nsis.arch.dir}System.dll
+nsis.nsdialogs.dll=${nsis.home}/Plugins/${nsis.arch.dir}nsDialogs.dll
+nsis.loc=${base-sf.loc}/nsis/nsis-${nsis.version}.zip
+
+# ----- Commons Daemon, version 1.0-Alpha or later -----
+commons-daemon.version=1.0.15
+commons-daemon.home=${base.path}/commons-daemon-${commons-daemon.version}
+commons-daemon.jar=${commons-daemon.home}/commons-daemon-${commons-daemon.version}.jar
+commons-daemon.native.win.home=${commons-daemon.home}/windows
+commons-daemon.native.win.mgr.exe=${commons-daemon.native.win.home}/prunmgr.exe
+commons-daemon.native.src.tgz=${commons-daemon.home}/commons-daemon-${commons-daemon.version}-native-src.tar.gz
+commons-daemon.native.win.zip=${commons-daemon.home}/commons-daemon-${commons-daemon.version}-bin-windows-signed.zip
+commons-daemon.bin.loc.1=${base-commons.loc.1}/daemon/binaries/commons-daemon-${commons-daemon.version}-bin.tar.gz
+commons-daemon.bin.loc.2=${base-commons.loc.2}/daemon/binaries/commons-daemon-${commons-daemon.version}-bin.tar.gz
+commons-daemon.native.src.loc.1=${base-commons.loc.1}/daemon/source/commons-daemon-${commons-daemon.version}-native-src.tar.gz
+commons-daemon.native.src.loc.2=${base-commons.loc.2}/daemon/source/commons-daemon-${commons-daemon.version}-native-src.tar.gz
+commons-daemon.native.win.loc.1=${base-commons.loc.1}/daemon/binaries/windows/commons-daemon-${commons-daemon.version}-bin-windows-signed.zip
+commons-daemon.native.win.loc.2=${base-commons.loc.2}/daemon/binaries/windows/commons-daemon-${commons-daemon.version}-bin-windows-signed.zip
+
+# ----- JUnit Unit Test Suite, version 4.11 or later -----
+junit.version=4.11
+junit.home=${base.path}/junit-${junit.version}
+junit.jar=${junit.home}/junit-${junit.version}.jar
+junit.loc=${base-maven.loc}/junit/junit/${junit.version}/junit-${junit.version}.jar
+
+# ----- Hamcrest Library, used by JUnit, version 1.3 or later ----
+hamcrest.version=1.3
+hamcrest.home=${base.path}/hamcrest-${hamcrest.version}
+hamcrest.jar=${hamcrest.home}/hamcrest-core-${hamcrest.version}.jar
+hamcrest.loc=${base-maven.loc}/org/hamcrest/hamcrest-core/${hamcrest.version}/hamcrest-core-${hamcrest.version}.jar
+
+# ----- EasyMock, version 3.2 or later -----
+easymock.version=3.2
+easymock.home=${base.path}/easymock-${easymock.version}
+easymock.loc=${base-sf.loc}/easymock/easymock-${easymock.version}.zip
+easymock.jar=${easymock.home}/easymock-${easymock.version}.jar
+
+# ----- cglib, used by EasyMock, version 2.2 or later -----
+cglib.version=2.2.3
+cglib.home=${base.path}/cglib-${cglib.version}
+cglib.loc=${base-sf.loc}/cglib/cglib-nodep-${cglib.version}.jar
+cglib.jar=${cglib.home}/cglib-nodep-${cglib.version}.jar
+
+# ----- objenesis, used by EasyMock, version 1.2 or later -----
+objenesis.version=1.2
+objenesis.home=${base.path}/objenesis-${objenesis.version}
+objenesis.loc=https://bintray.com/easymock/distributions/download_file?file_path=objenesis-${objenesis.version}-bin.zip
+objenesis.jar=${objenesis.home}/objenesis-${objenesis.version}.jar
+
+# ----- Checkstyle, version 6.0 or later -----
+# Limited to 6.1.1 since that is the latest release that supports Java 6
+checkstyle.version=6.1.1
+checkstyle.home=${base.path}/checkstyle-${checkstyle.version}
+checkstyle.loc=${base-sf.loc}/checkstyle/checkstyle/${checkstyle.version}/checkstyle-${checkstyle.version}-all.jar
+checkstyle.jar=${checkstyle.home}/checkstyle-${checkstyle.version}-all.jar
+
+# ----- JSON Libraries (for bayeux module) -----
+json-lib.home=${base.path}/json-20080701
+json-lib.lib=http://repo1.maven.org/maven2/org/json/json/20080701/json-20080701.jar
+json-lib.jar=json.jar
+
+# ----- Dojo Toolkit (for bayeux module) -----
+dojo-js.home=${base.path}/dojo-release-1.1.1
+dojo-js.loc=http://download.dojotoolkit.org/release-1.1.1/dojo-release-1.1.1.tar.gz
+dojo-js.jar=${dojo-js.home}/dojo/dojo.js
+
+# ----- Cobertura code coverage tool -----
+cobertura.version=2.0.3
+cobertura.home=${base.path}/cobertura-${cobertura.version}
+cobertura.jar=${cobertura.home}/cobertura-${cobertura.version}.jar
+cobertura.lib=${cobertura.home}/lib
+cobertura.loc=${base-sf.loc}/cobertura/cobertura-2.0.3-bin.tar.gz

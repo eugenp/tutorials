@@ -1,0 +1,10 @@
+API使用说明:
+1. 登录
+curl -XPOST http://localhost:8080/api/token -H "Authorization: basic {base64(email:password[\n])}" => token
+
+2. 请求
+获取Summary
+curl http://localhost:8080/api/tasks -H "From:{email}" -H "Token:{token}"
+
+创建Task
+curl -XPOST http://localhost:8080/api/tasks -H "Content-Type: application/x-www-form-urlencoded; charset=UTF-8" -H "Token: 3fea6af1349166ea" -d "content=hello-curl"

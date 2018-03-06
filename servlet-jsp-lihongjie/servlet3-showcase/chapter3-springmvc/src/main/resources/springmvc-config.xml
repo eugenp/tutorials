@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       ">
+
+    <context:component-scan base-package="com.sishuok.chapter3"/>
+
+    <!-- Executor -->
+    <task:executor id="executor" pool-size="10"/>
+    <!-- 任务调度器 -->
+    <task:scheduler id="scheduler" pool-size="10"/>
+
+    <task:annotation-driven scheduler="scheduler" executor="executor"/>
+
+    <mvc:annotation-driven>
+        <!-- 异步支持： 设置默认超时时间 和 异步执行器 -->
+        <mvc:async-support default-timeout="30000" task-executor="executor">
+            <!-- 测试MyCallableController时开启即可 -->
+           <!-- <mvc:callable-interceptors>
+                &lt;!&ndash; 设计很糟糕，没有如mvc:mapping灵活，比如包含、排除 还需要自己搞定。。。。 &ndash;&gt;
+                <bean class="com.sishuok.chapter3.web.interceptor.MyCallableInterceptor"/>
+            </mvc:callable-interceptors>
+            <mvc:deferred-result-interceptors>
+                <bean class="com.sishuok.chapter3.web.interceptor.MyDeferredResultInterceptor"/>
+            </mvc:deferred-result-interceptors>-->
+        </mvc:async-support>
+    </mvc:annotation-driven>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <mvc:default-servlet-handler/>
+    <mvc:resources mapping="/static/**" location="/WEB-INF/static/"/>
+
+
+</beans>

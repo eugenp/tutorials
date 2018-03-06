@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<classpath>
+  <classpathentry kind="src" path="src/main/java"/>
+  <classpathentry kind="src" path="src/main/resources"/>
+  <classpathentry kind="output" path="build/classes/main"/>
+  <classpathentry kind="src" path="src/test/java" output="build/classes/test"/>
+  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/javax.servlet/jstl/jars/jstl-1.1.2.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/javax.servlet/servlet-api/jars/servlet-api-2.4.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/junit/junit/jars/junit-4.7.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/log4j/log4j/jars/log4j-1.2.13.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/ognl/ognl/jars/ognl-2.6.9.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.aspectj/aspectjweaver/jars/aspectjweaver-1.6.6.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.mockito/mockito-all/jars/mockito-all-1.8.0.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework.webflow/spring-binding/jars/spring-binding-2.0.8.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework.webflow/spring-js/jars/spring-js-2.0.8.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework.webflow/spring-webflow/jars/spring-webflow-2.0.8.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-asm/jars/spring-asm-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-aspects/jars/spring-aspects-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-beans/jars/spring-beans-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-context-support/jars/spring-context-support-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-context/jars/spring-context-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-core/jars/spring-core-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-expression/jars/spring-expression-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-test/jars/spring-test-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-web/jars/spring-web-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.springframework/spring-webmvc/jars/spring-webmvc-3.0.0.RELEASE.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/org.tuckey/urlrewritefilter/jars/urlrewritefilter-3.1.0.jar"/>
+  <classpathentry kind="lib" path="/Users/wallsc/.gradle/cache/taglibs/standard/jars/standard-1.1.2.jar"/>
+</classpath>

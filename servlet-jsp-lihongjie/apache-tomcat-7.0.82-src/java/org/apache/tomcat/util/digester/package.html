@@ -1,0 +1,1244 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+<head>
+<title>Package Documentation for org.apache.commons.digester Package</title>
+</head>
+<body bgcolor="white">
+The Digester package provides for rules-based processing of arbitrary
+XML documents.
+<br><br>
+<a name="doc.Description"></a>
+<div align="center">
+<a href="#doc.Intro">[Introduction]</a>
+<a href="#doc.Properties">[Configuration Properties]</a>
+<a href="#doc.Stack">[The Object Stack]</a>
+<a href="#doc.Patterns">[Element Matching Patterns]</a>
+<a href="#doc.Rules">[Processing Rules]</a>
+<a href="#doc.Logging">[Logging]</a>
+<a href="#doc.Usage">[Usage Example]</a>
+<a href="#doc.Namespace">[Namespace Aware Parsing]</a>
+<a href="#doc.Pluggable">[Pluggable Rules Processing]</a>
+<a href="#doc.RuleSets">[Encapsulated Rule Sets]</a>
+<a href="#doc.NamedStacks">[Using Named Stacks For Inter-Rule Communication]</a>
+<a href="#doc.RegisteringDTDs">[Registering DTDs]</a>
+<a href="#doc.troubleshooting">[Troubleshooting]</a>
+<a href="#doc.FAQ">[FAQ]</a>
+<a href="#doc.Limits">[Known Limitations]</a>
+</div>
+
+<a name="doc.Intro"></a>
+<h3>Introduction</h3>
+
+<p>In many application environments that deal with XML-formatted data, it is
+useful to be able to process an XML document in an "event driven" manner,
+where particular Java objects are created (or methods of existing objects
+are invoked) when particular patterns of nested XML elements have been
+recognized.  Developers familiar with the Simple API for XML Parsing (SAX)
+approach to processing XML documents will recognize that the Digester provides
+a higher level, more developer-friendly interface to SAX events, because most
+of the details of navigating the XML element hierarchy are hidden -- allowing
+the developer to focus on the processing to be performed.</p>
+
+<p>In order to use a Digester, the following basic steps are required:</p>
+<ul>
+<li>Create a new instance of the
+    <code>org.apache.commons.digester.Digester</code> class.  Previously
+    created Digester instances may be safely reused, as long as you have
+    completed any previously requested parse, and you do not try to utilize
+    a particular Digester instance from more than one thread at a time.</li>
+<li>Set any desired <a href="#doc.Properties">configuration properties</a>
+    that will customize the operation of the Digester when you next initiate
+    a parse operation.</li>
+<li>Optionally, push any desired initial object(s) onto the Digester's
+    <a href="#doc.Stack">object stack</a>.</li>
+<li>Register all of the <a href="#doc.Patterns">element matching patterns</a>
+    for which you wish to have <a href="#doc.Rules">processing rules</a>
+    fired when this pattern is recognized in an input document.  You may
+    register as many rules as you like for any particular pattern.  If there
+    is more than one rule for a given pattern, the rules will be executed in
+    the order that they were listed.</li>
+<li>Call the <code>digester.parse()</code> method, passing a reference to the
+    XML document to be parsed in one of a variety of forms.  See the
+    <a href="Digester.html#parse(java.io.File)">Digester.parse()</a>
+    documentation for details.  Note that you will need to be prepared to
+    catch any <code>IOException</code> or <code>SAXException</code> that is
+    thrown by the parser, or any runtime expression that is thrown by one of
+    the processing rules.</li>
+</ul>
+
+<p>For example code, see <a href="#doc.Usage"> the usage 
+examples</a>, and <a href="#doc.FAQ.Examples"> the FAQ </a>. </p>
+
+<a name="doc.Properties"></a>
+<h3>Digester Configuration Properties</h3>
+
+<p>A <code>org.apache.commons.digester.Digester</code> instance contains several
+configuration properties that can be used to customize its operation.  These
+properties <strong>must</strong> be configured before you call one of the
+<code>parse()</code> variants, in order for them to take effect on that
+parse.</p>
+
+<blockquote>
+  <table border="1">
+    <tr>
+      <th width="15%">Property</th>
+      <th width="85%">Description</th>
+    </tr>
+    <tr>
+      <td align="center">classLoader</td>
+      <td>You can optionally specify the class loader that will be used to
+          load classes when required by the <code>ObjectCreateRule</code>
+          and <code>FactoryCreateRule</code> rules.  If not specified,
+          application classes will be loaded from the thread's context
+          class loader (if the <code>useContextClassLoader</code> property
+          is set to <code>true</code>) or the same class loader that was
+          used to load the <code>Digester</code> class itself.</td>
+    </tr>
+    <tr>
+      <td align="center">errorHandler</td>
+      <td>You can optionally specify a SAX <code>ErrorHandler</code> that
+          is notified when parsing errors occur.  By default, any parsing
+          errors that are encountered are logged, but Digester will continue
+          processing as well.</td>
+    </tr>
+    <tr>
+      <td align="center">namespaceAware</td>
+      <td>A boolean that is set to <code>true</code> to perform parsing in a
+          manner that is aware of XML namespaces.  Among other things, this
+          setting affects how elements are matched to processing rules.  See
+          <a href="#doc.Namespace">Namespace Aware Parsing</a> for more
+          information.</td>
+    </tr>
+    <tr>
+      <td align="center">ruleNamespaceURI</td>
+      <td>The public URI of the namespace for which all subsequently added
+          rules are associated, or <code>null</code> for adding rules that
+          are not associated with any namespace.  See
+          <a href="#doc.Namespace">Namespace Aware Parsing</a> for more
+          information.</td>
+    </tr>
+    <tr>
+      <td align="center">rules</td>
+      <td>The <code>Rules</code> component that actually performs matching of
+          <code>Rule</code> instances against the current element nesting
+          pattern is pluggable.  By default, Digester includes a
+          <code>Rules</code> implementation that behaves as described in this
+          document.  See
+          <a href="#doc.Pluggable">Pluggable Rules Processing</a> for
+          more information.</td>
+    </tr>
+    <tr>
+      <td align="center">useContextClassLoader</code>
+      <td>A boolean that is set to <code>true</code> if you want application
+          classes required by <code>FactoryCreateRule</code> and
+          <code>ObjectCreateRule</code> to be loaded from the context class
+          loader of the current thread.  By default, classes will be loaded
+          from the class loader that loaded this <code>Digester</code> class.
+          <strong>NOTE</strong> - This property is ignored if you set a
+          value for the <code>classLoader</code> property; that class loader
+          will be used unconditionally.</td>
+    </tr>
+    <tr>
+      <td align="center">validating</td>
+      <td>A boolean that is set to <code>true</code> if you wish to validate
+          the XML document against a Document Type Definition (DTD) that is
+          specified in its <code>DOCTYPE</code> declaration.  The default
+          value of <code>false</code> requests a parse that only detects
+          "well formed" XML documents, rather than "valid" ones.</td>
+    </tr>
+  </table>
+</blockquote>
+
+<p>In addition to the scalar properties defined above, you can also register
+a local copy of a Document Type Definition (DTD) that is referenced in a
+<code>DOCTYPE</code> declaration.  Such a registration tells the XML parser
+that, whenever it encounters a <code>DOCTYPE</code> declaration with the
+specified public identifier, it should utilize the actual DTD content at the
+registered system identifier (a URL), rather than the one in the
+<code>DOCTYPE</code> declaration.</p>
+
+<p>For example, the Struts framework controller servlet uses the following
+registration in order to tell Struts to use a local copy of the DTD for the
+Struts configuration file.  This allows usage of Struts in environments that
+are not connected to the Internet, and speeds up processing even at Internet
+connected sites (because it avoids the need to go across the network).</p>
+
+<pre>
+    URL url = new URL("/org/apache/struts/resources/struts-config_1_0.dtd");
+    digester.register
+      ("-//Apache Software Foundation//DTD Struts Configuration 1.0//EN",
+       url.toString());
+</pre>
+
+<p>As a side note, the system identifier used in this example is the path
+that would be passed to <code>java.lang.ClassLoader.getResource()</code>
+or <code>java.lang.ClassLoader.getResourceAsStream()</code>.  The actual DTD
+resource is loaded through the same class loader that loads all of the Struts
+classes -- typically from the <code>struts.jar</code> file.</p>
+
+<a name="doc.Stack"></a>
+<h3>The Object Stack</h3>
+
+<p>One very common use of <code>org.apache.commons.digester.Digester</code>
+technology is to dynamically construct a tree of Java objects, whose internal
+organization, as well as the details of property settings on these objects,
+are configured based on the contents of the XML document.  In fact, the
+primary reason that the Digester package was created (it was originally part
+of Struts, and then moved to the Commons project because it was recognized
+as being generally useful) was to facilitate the
+way that the Struts controller servlet configures itself based on the contents
+of your application's <code>struts-config.xml</code> file.</p>
+
+<p>To facilitate this usage, the Digester exposes a stack that can be
+manipulated by processing rules that are fired when element matching patterns
+are satisfied.  The usual stack-related operations are made available,
+including the following:</p>
+<ul>
+<li><a href="Digester.html#clear()">clear()</a> - Clear the current contents
+    of the object stack.</li>
+<li><a href="Digester.html#peek()">peek()</a> - Return a reference to the top
+    object on the stack, without removing it.</li>
+<li><a href="Digester.html#pop()">pop()</a> - Remove the top object from the
+    stack and return it.</li>
+<li><a href="Digester.html#push(java.lang.Object)">push()</a> - Push a new
+    object onto the top of the stack.</li>
+</ul>
+
+<p>A typical design pattern, then, is to fire a rule that creates a new object
+and pushes it on the stack when the beginning of a particular XML element is
+encountered. The object will remain there while the nested content of this
+element is processed, and it will be popped off when the end of the element
+is encountered.  As we will see, the standard "object create" processing rule
+supports exactly this functionality in a very convenient way.</p>
+
+<p>Several potential issues with this design pattern are addressed by other
+features of the Digester functionality:</p>
+<ul>
+<li><em>How do I relate the objects being created to each other?</em> - The
+    Digester supports standard processing rules that pass the top object on
+    the stack as an argument to a named method on the next-to-top object on
+    the stack (or vice versa).  This rule makes it easy to establish
+    parent-child relationships between these objects.  One-to-one and
+    one-to-many relationships are both easy to construct.</li>
+<li><em>How do I retain a reference to the first object that was created?</em>
+    As you review the description of what the "object create" processing rule
+    does, it would appear that the first object you create (i.e. the object
+    created by the outermost XML element you process) will disappear from the
+    stack by the time that XML parsing is completed, because the end of the
+    element would have been encountered.  However, Digester will maintain a
+    reference to the very first object ever pushed onto the object stack,
+    and will return it to you
+    as the return value from the <code>parse()</code> call.  Alternatively,
+    you can push a reference to some application object onto the stack before
+    calling <code>parse()</code>, and arrange that a parent-child relationship
+    be created (by appropriate processing rules) between this manually pushed
+    object and the ones that are dynamically created.  In this way,
+    the pushed object will retain a reference to the dynamically created objects
+    (and therefore all of their children), and will be returned to you after
+    the parse finishes as well.</li>
+</ul>
+
+<a name="doc.Patterns"></a>
+<h3>Element Matching Patterns</h3>
+
+<p>A primary feature of the <code>org.apache.commons.digester.Digester</code>
+parser is that the Digester automatically navigates the element hierarchy of
+the XML document you are parsing for you, without requiring any developer
+attention to this process.  Instead, you focus on deciding what functions you
+would like to have performed whenver a certain arrangement of nested elements
+is encountered in the XML document being parsed.  The mechanism for specifying
+such arrangements are called <em>element matching patterns</em>.
+
+<p>A very simple element matching pattern is a simple string like "a".  This
+pattern is matched whenever an <code>&lt;a&gt;</code> top-level element is
+encountered in the XML document, no matter how many times it occurs.  Note that
+nested <code>&lt;a&gt;</code> elements will <strong>not</strong> match this
+pattern -- we will describe means to support this kind of matching later.</li>
+
+<p>The next step up in matching pattern complexity is "a/b".  This pattern will
+be matched when a <code>&lt;b&gt;</code> element is found nested inside a
+top-level <code>&lt;a&gt;</code> element.  Again, this match can occur as many
+times as desired, depending on the content of the XML document being parsed.
+You can use multiple slashes to define a hierarchy of any desired depth that
+will be matched appropriately.</p>
+
+<p>For example, assume you have registered processing rules that match patterns
+"a", "a/b", and "a/b/c".  For an input XML document with the following
+contents, the indicated patterns will be matched when the corresponding element
+is parsed:</p>
+<pre>
+  &lt;a&gt;         -- Matches pattern "a"
+    &lt;b&gt;       -- Matches pattern "a/b"
+      &lt;c/&gt;    -- Matches pattern "a/b/c"
+      &lt;c/&gt;    -- Matches pattern "a/b/c"
+    &lt;/b&gt;
+    &lt;b&gt;       -- Matches pattern "a/b"
+      &lt;c/&gt;    -- Matches pattern "a/b/c"
+      &lt;c/&gt;    -- Matches pattern "a/b/c"
+      &lt;c/&gt;    -- Matches pattern "a/b/c"
+    &lt;/b&gt;
+  &lt;/a&gt;
+</pre>
+
+<p>It is also possible to match a particular XML element, no matter how it is
+nested (or not nested) in the XML document, by using the "*" wildcard character
+in your matching pattern strings.  For example, an element matching pattern
+of "*/a" will match an <code>&lt;a&gt;</code> element at any nesting position
+within the document.</p>
+
+<p>It is quite possible that, when a particular XML element is being parsed,
+the pattern for more than one registered processing rule will be matched
+ either because you registered more than one processing rule with the same
+matching pattern, or because one more more exact pattern matches and wildcard
+pattern matches are satisfied by the same element.</p>
+
+<p>When this occurs, the corresponding processing rules will all be fired in order. 
+<code>begin</code> (and <code>body</code>) method calls are executed in the 
+order that the <code>Rules</code> where initially registered with the 
+<code>Digester</code>, whilst <code>end</code> method calls are execute in 
+reverse order. In other words - the order is first in, last out.</p>
+
+<a name="doc.Rules"></a>
+<h3>Processing Rules</h3>
+
+<p>The <a href="#doc.Patterns">previous section</a> documented how you identify
+<strong>when</strong> you wish to have certain actions take place.  The purpose
+of processing rules is to define <strong>what</strong> should happen when the
+patterns are matched.</p>
+
+<p>Formally, a processing rule is a Java class that subclasses the
+<a href="Rule.html">org.apache.commons.digester.Rule</a> interface.  Each Rule
+implements one or more of the following event methods that are called at
+well-defined times when the matching patterns corresponding to this rule
+trigger it:</p>
+<ul>
+<li><a href="Rule.html#begin(org.xml.sax.AttributeList)">begin()</a> -
+    Called when the beginning of the matched XML element is encountered.  A
+    data structure containing all of the attributes corresponding to this
+    element are passed as well.</li>
+<li><a href="Rule.html#body(java.lang.String)">body()</a> -
+    Called when nested content (that is not itself XML elements) of the
+    matched element is encountered.  Any leading or trailing whitespace will
+    have been removed as part of the parsing process.</li>
+<li><a href="Rule.html#end()">end()</a> - Called when the ending of the matched
+    XML element is encountered.  If nested XML elements that matched other
+    processing rules was included in the body of this element, the appropriate
+    processing rules for the matched rules will have already been completed
+    before this method is called.</li>
+<li><a href="Rule.html#finish()">finish()</a> - Called when the parse has
+    been completed, to give each rule a chance to clean up any temporary data
+    they might have created and cached.</li>
+</ul>
+
+<p>As you are configuring your digester, you can call the
+<code>addRule()</code> method to register a specific element matching pattern,
+along with an instance of a <code>Rule</code> class that will have its event
+handling methods called at the appropriate times, as described above.  This
+mechanism allows you to create <code>Rule</code> implementation classes
+dynamically, to implement any desired application specific functionality.</p>
+
+<p>In addition, a set of processing rule implementation classes are provided,
+which deal with many common programming scenarios.  These classes include the
+following:</p>
+<ul>
+<li><a href="ObjectCreateRule.html">ObjectCreateRule</a> - When the
+    <code>begin()</code> method is called, this rule instantiates a new
+    instance of a specified Java class, and pushes it on the stack.  The
+    class name to be used is defaulted according to a parameter passed to
+    this rule's constructor, but can optionally be overridden by a classname
+    passed via the specified attribute to the XML element being processed.
+    When the <code>end()</code> method is called, the top object on the stack
+    (presumably, the one we added in the <code>begin()</code> method) will
+    be popped, and any reference to it (within the Digester) will be
+    discarded.</li>
+<li><a href="FactoryCreateRule.html">FactoryCreateRule</a> - A variation of
+    <code>ObjectCreateRule</code> that is useful when the Java class with
+    which you wish to create an object instance does not have a no-arguments
+    constructor, or where you wish to perform other setup processing before
+    the object is handed over to the Digester.</li>
+<li><a href="SetPropertiesRule.html">SetPropertiesRule</a> - When the
+    <code>begin()</code> method is called, the digester uses the standard
+    Java Reflection API to identify any JavaBeans property setter methods
+    (on the object at the top of the digester's stack)
+    who have property names that match the attributes specified on this XML
+    element, and then call them individually, passing the corresponding
+    attribute values. These natural mappings can be overridden. This allows
+    (for example) a <code>class</code> attribute to be mapped correctly.
+    It is recommended that this feature should not be overused - in most cases,
+    it's better to use the standard <code>BeanInfo</code> mechanism.
+    A very common idiom is to define an object create
+    rule, followed by a set properties rule, with the same element matching
+    pattern.  This causes the creation of a new Java object, followed by
+    "configuration" of that object's properties based on the attributes
+    of the same XML element that created this object.</li>
+<li><a href="SetPropertyRule.html">SetPropertyRule</a> - When the
+    <code>begin()</code> method is called, the digester calls a specified
+    property setter (where the property itself is named by an attribute)
+    with a specified value (where the value is named by another attribute),
+    on the object at the top of the digester's stack.
+    This is useful when your XML file conforms to a particular DTD, and
+    you wish to configure a particular property that does not have a
+    corresponding attribute in the DTD.</li>
+<li><a href="SetNextRule.html">SetNextRule</a> - When the
+    <code>end()</code> method is called, the digester analyzes the
+    next-to-top element on the stack, looking for a property setter method
+    for a specified property.  It then calls this method, passing the object
+    at the top of the stack as an argument.  This rule is commonly used to
+    establish one-to-many relationships between the two objects, with the
+    method name commonly being something like "addChild".</li>
+<li><a href="SetTopRule.html">SetTopRule</a> - When the
+    <code>end()</code> method is called, the digester analyzes the
+    top element on the stack, looking for a property setter method for a
+    specified property.  It then calls this method, passing the next-to-top
+    object on the stack as an argument.  This rule would be used as an
+    alternative to a SetNextRule, with a typical method name "setParent",
+    if the API supported by your object classes prefers this approach.</li>
+<li><a href="CallMethodRule.html">CallMethodRule</a> - This rule sets up a
+    method call to a named method of the top object on the digester's stack,
+    which will actually take place when the <code>end()</code> method is
+    called.  You configure this rule by specifying the name of the method
+    to be called, the number of arguments it takes, and (optionally) the
+    Java class name(s) defining the type(s) of the method's arguments.
+    The actual parameter values, if any, will typically be accumulated from
+    the body content of nested elements within the element that triggered
+    this rule, using the CallParamRule discussed next.</li>
+<li><a href="CallParamRule.html">CallParamRule</a> - This rule identifies
+    the source of a particular numbered (zero-relative) parameter for a
+    CallMethodRule within which we are nested.  You can specify that the
+    parameter value be taken from a particular named attribute, or from the
+    nested body content of this element.</li>
+<li><a href="NodeCreateRule.html">NodeCreateRule</a> - A specialized rule
+    that converts part of the tree into a <code>DOM Node</code> and then
+    pushes it onto the stack.</li>
+</ul>
+
+<p>You can create instances of the standard <code>Rule</code> classes and
+register them by calling <code>digester.addRule()</code>, as described above.
+However, because their usage is so common, shorthand registration methods are
+defined for each of the standard rules, directly on the <code>Digester</code>
+class.  For example, the following code sequence:</p>
+<pre>
+    Rule rule = new SetNextRule(digester, "addChild",
+                                "com.mycompany.mypackage.MyChildClass");
+    digester.addRule("a/b/c", rule);
+</pre>
+<p>can be replaced by:</p>
+<pre>
+    digester.addSetNext("a/b/c", "addChild",
+                        "com.mycompany.mypackage.MyChildClass");
+</pre>
+
+<a name="doc.Logging"></a>
+<h3>Logging</h3>
+
+<p>Logging is a vital tool for debugging Digester rulesets. Digester can log
+copious amounts of debugging information. So, you need to know how logging
+works before you start using Digester seriously.</p>
+
+<p>Two main logs are used by Digester:</p>
+<ul>
+<li>SAX-related messages are logged to
+    <strong><code>org.apache.commons.digester.Digester.sax</code></strong>.
+    This log gives information about the basic SAX events received by
+    Digester.</li>
+<li><strong><code>org.apache.commons.digester.Digester</code></strong> is used
+    for everything else. You'll probably want to have this log turned up during
+    debugging but turned down during production due to the high message
+    volume.</li>
+</ul>
+
+<a name="doc.Usage"></a>
+<h3>Usage Examples</h3>
+
+
+<h5>Creating a Simple Object Tree</h5>
+
+<p>Let's assume that you have two simple JavaBeans, <code>Foo</code> and
+<code>Bar</code>, with the following method signatures:</p>
+<pre>
+  package mypackage;
+  public class Foo {
+    public void addBar(Bar bar);
+    public Bar findBar(int id);
+    public Iterator getBars();
+    public String getName();
+    public void setName(String name);
+  }
+
+  public mypackage;
+  public class Bar {
+    public int getId();
+    public void setId(int id);
+    public String getTitle();
+    public void setTitle(String title);
+  }
+</pre>
+
+<p>and you wish to use Digester to parse the following XML document:</p>
+
+<pre>
+  &lt;foo name="The Parent"&gt;
+    &lt;bar id="123" title="The First Child"/&gt;
+    &lt;bar id="456" title="The Second Child"/&gt;
+  &lt;/foo&gt;
+</pre>
+
+<p>A simple approach will be to use the following Digester in the following way
+to set up the parsing rules, and then process an input file containing this
+document:</p>
+
+<pre>
+  Digester digester = new Digester();
+  digester.setValidating(false);
+  digester.addObjectCreate("foo", "mypackage.Foo");
+  digester.addSetProperties("foo");
+  digester.addObjectCreate("foo/bar", "mypackage.Bar");
+  digester.addSetProperties("foo/bar");
+  digester.addSetNext("foo/bar", "addBar", "mypackage.Bar");
+  Foo foo = (Foo) digester.parse();
+</pre>
+
+<p>In order, these rules do the following tasks:</p>
+<ol>
+<li>When the outermost <code>&lt;foo&gt;</code> element is encountered,
+    create a new instance of <code>mypackage.Foo</code> and push it
+    on to the object stack.  At the end of the <code>&lt;foo&gt;</code>
+    element, this object will be popped off of the stack.</li>
+<li>Cause properties of the top object on the stack (i.e. the <code>Foo</code>
+    object that was just created and pushed) to be set based on the values
+    of the attributes of this XML element.</li>
+<li>When a nested <code>&lt;bar&gt;</code> element is encountered,
+    create a new instance of <code>mypackage.Bar</code> and push it
+    on to the object stack.  At the end of the <code>&lt;bar&gt;</code>
+    element, this object will be popped off of the stack (i.e. after the
+    remaining rules matching <code>foo/bar</code> are processed).</li>
+<li>Cause properties of the top object on the stack (i.e. the <code>Bar</code>
+    object that was just created and pushed) to be set based on the values
+    of the attributes of this XML element.  Note that type conversions
+    are automatically performed (such as String to int for the <code>id</code>
+    property), for all converters registered with the <code>ConvertUtils</code>
+    class from <code>commons-beanutils</code> package.</li>
+<li>Cause the <code>addBar</code> method of the next-to-top element on the
+    object stack (which is why this is called the "set <em>next</em>" rule)
+    to be called, passing the element that is on the top of the stack, which
+    must be of type <code>mypackage.Bar</code>.  This is the rule that causes
+    the parent/child relationship to be created.</li>
+</ol>
+
+<p>Once the parse is completed, the first object that was ever pushed on to the
+stack (the <code>Foo</code> object in this case) is returned to you.  It will
+have had its properties set, and all of its child <code>Bar</code> objects
+created for you.</p>
+
+
+<h5>Processing A Struts Configuration File</h5>
+
+<p>As stated earlier, the primary reason that the
+<code>Digester</code> package was created is because the
+Struts controller servlet itself needed a robust, flexible, easy to extend
+mechanism for processing the contents of the <code>struts-config.xml</code>
+configuration that describes nearly every aspect of a Struts-based application.
+Because of this, the controller servlet contains a comprehensive, real world,
+example of how the Digester can be employed for this type of a use case.
+See the <code>initDigester()</code> method of class
+<code>org.apache.struts.action.ActionServlet</code> for the code that creates
+and configures the Digester to be used, and the <code>initMapping()</code>
+method for where the parsing actually takes place.</p>
+
+<p>(Struts binary and source distributions can be acquired at
+<a href="http://struts.apache.org/">http://struts.apache.org/</a>.)</p>
+
+<p>The following discussion highlights a few of the matching patterns and
+processing rules that are configured, to illustrate the use of some of the
+Digester features.  First, let's look at how the Digester instance is
+created and initialized:</p>
+<pre>
+    Digester digester = new Digester();
+    digester.push(this); // Push controller servlet onto the stack
+    digester.setValidating(true);
+</pre>
+
+<p>We see that a new Digester instance is created, and is configured to use
+a validating parser.  Validation will occur against the struts-config_1_0.dtd
+DTD that is included with Struts (as discussed earlier).  In order to provide
+a means of tracking the configured objects, the controller servlet instance
+itself will be added to the digester's stack.</p>
+
+<pre>
+    digester.addObjectCreate("struts-config/global-forwards/forward",
+                             forwardClass, "className");
+    digester.addSetProperties("struts-config/global-forwards/forward");
+    digester.addSetNext("struts-config/global-forwards/forward",
+                        "addForward",
+                        "org.apache.struts.action.ActionForward");
+    digester.addSetProperty
+      ("struts-config/global-forwards/forward/set-property",
+       "property", "value");
+</pre>
+
+<p>The rules created by these lines are used to process the global forward
+declarations.  When a <code>&lt;forward&gt;</code> element is encountered,
+the following actions take place:</p>
+<ul>
+<li>A new object instance is created -- the <code>ActionForward</code>
+    instance that will represent this definition.  The Java class name
+    defaults to that specified as an initialization parameter (which
+    we have stored in the String variable <code>forwardClass</code>), but can
+    be overridden by using the "className" attribute (if it is present in the
+    XML element we are currently parsing).  The new <code>ActionForward</code>
+    instance is pushed onto the stack.</li>
+<li>The properties of the <code>ActionForward</code> instance (at the top of
+    the stack) are configured based on the attributes of the
+    <code>&lt;forward&gt;</code> element.</li>
+<li>Nested occurrences of the <code>&lt;set-property&gt;</code> element
+    cause calls to additional property setter methods to occur.  This is
+    required only if you have provided a custom implementation of the
+    <code>ActionForward</code> class with additional properties that are
+    not included in the DTD.</li>
+<li>The <code>addForward()</code> method of the next-to-top object on
+    the stack (i.e. the controller servlet itself) will be called, passing
+    the object at the top of the stack (i.e. the <code>ActionForward</code>
+    instance) as an argument.  This causes the global forward to be
+    registered, and as a result of this it will be remembered even after
+    the stack is popped.</li>
+<li>At the end of the <code>&lt;forward&gt;</code> element, the top element
+    (i.e. the <code>ActionForward</code> instance) will be popped off the
+    stack.</li>
+</ul>
+
+<p>Later on, the digester is actually executed as follows:</p>
+<pre>
+    InputStream input =
+      getServletContext().getResourceAsStream(config);
+    ...
+    try {
+        digester.parse(input);
+        input.close();
+    } catch (SAXException e) {
+        ... deal with the problem ...
+    }
+</pre>
+
+<p>As a result of the call to <code>parse()</code>, all of the configuration
+information that was defined in the <code>struts-config.xml</code> file is
+now represented as collections of objects cached within the Struts controller
+servlet, as well as being exposed as servlet context attributes.</p>
+
+
+<h5>Parsing Body Text In XML Files</h5>
+
+<p>The Digester module also allows you to process the nested body text in an
+XML file, not just the elements and attributes that are encountered.  The
+following example is based on an assumed need to parse the web application
+deployment descriptor (<code>/WEB-INF/web.xml</code>) for the current web
+application, and record the configuration information for a particular
+servlet.  To record this information, assume the existence of a bean class
+with the following method signatures (among others):</p>
+<pre>
+  package com.mycompany;
+  public class ServletBean {
+    public void setServletName(String servletName);
+    public void setServletClass(String servletClass);
+    public void addInitParam(String name, String value);
+  }
+</pre>
+
+<p>We are going to process the <code>web.xml</code> file that declares the
+controller servlet in a typical Struts-based application (abridged for
+brevity in this example):</p>
+<pre>
+  &lt;web-app&gt;
+    ...
+    &lt;servlet&gt;
+      &lt;servlet-name&gt;action&lt;/servlet-name&gt;
+      &lt;servlet-class&gt;org.apache.struts.action.ActionServlet&lt;servlet-class&gt;
+      &lt;init-param&gt;
+        &lt;param-name&gt;application&lt;/param-name&gt;
+        &lt;param-value&gt;org.apache.struts.example.ApplicationResources&lt;param-value&gt;
+      &lt;/init-param&gt;
+      &lt;init-param&gt;
+        &lt;param-name&gt;config&lt;/param-name&gt;
+        &lt;param-value&gt;/WEB-INF/struts-config.xml&lt;param-value&gt;
+      &lt;/init-param&gt;
+    &lt;/servlet&gt;
+    ...
+  &lt;/web-app&gt;
+</pre>
+
+<p>Next, lets define some Digester processing rules for this input file:</p>
+<pre>
+  digester.addObjectCreate("web-app/servlet",
+                           "com.mycompany.ServletBean");
+  digester.addCallMethod("web-app/servlet/servlet-name", "setServletName", 0);
+  digester.addCallMethod("web-app/servlet/servlet-class",
+                         "setServletClass", 0);
+  digester.addCallMethod("web-app/servlet/init-param",
+                         "addInitParam", 2);
+  digester.addCallParam("web-app/servlet/init-param/param-name", 0);
+  digester.addCallParam("web-app/servlet/init-param/param-value", 1);
+</pre>
+
+<p>Now, as elements are parsed, the following processing occurs:</p>
+<ul>
+<li><em>&lt;servlet&gt;</em> - A new <code>com.mycompany.ServletBean</code>
+    object is created, and pushed on to the object stack.</li>
+<li><em>&lt;servlet-name&gt;</em> - The <code>setServletName()</code> method
+    of the top object on the stack (our <code>ServletBean</code>) is called,
+    passing the body content of this element as a single parameter.</li>
+<li><em>&lt;servlet-class&gt;</em> - The <code>setServletClass()</code> method
+    of the top object on the stack (our <code>ServletBean</code>) is called,
+    passing the body content of this element as a single parameter.</li>
+<li><em>&lt;init-param&gt;</em> - A call to the <code>addInitParam</code>
+    method of the top object on the stack (our <code>ServletBean</code>) is
+    set up, but it is <strong>not</strong> called yet.  The call will be
+    expecting two <code>String</code> parameters, which must be set up by
+    subsequent call parameter rules.</li>
+<li><em>&lt;param-name&gt;</em> - The body content of this element is assigned
+    as the first (zero-relative) argument to the call we are setting up.</li>
+<li><em>&lt;param-value&gt;</em> - The body content of this element is assigned
+    as the second (zero-relative) argument to the call we are setting up.</li>
+<li><em>&lt;/init-param&gt;</em> - The call to <code>addInitParam()</code>
+    that we have set up is now executed, which will cause a new name-value
+    combination to be recorded in our bean.</li>
+<li><em>&lt;init-param&gt;</em> - The same set of processing rules are fired
+    again, causing a second call to <code>addInitParam()</code> with the
+    second parameter's name and value.</li>
+<li><em>&lt;/servlet&gt;</em> - The element on the top of the object stack
+    (which should be the <code>ServletBean</code> we pushed earlier) is
+    popped off the object stack.</li>
+</ul>
+
+
+<a name="doc.Namespace"></a>
+<h3>Namespace Aware Parsing</h3>
+
+<p>For digesting XML documents that do not use XML namespaces, the default
+behavior of <code>Digester</code>, as described above, is generally sufficient.
+However, if the document you are processing uses namespaces, it is often
+convenient to have sets of <code>Rule</code> instances that are <em>only</em>
+matched on elements that use the prefix of a particular namespace.  This
+approach, for example, makes it possible to deal with element names that are 
+the same in different namespaces, but where you want to perform different 
+processing for each namespace. </p>
+
+<p>Digester does not provide full support for namespaces, but does provide
+sufficient to accomplish most tasks. Enabling digester's namespace support
+is done by following these steps:</p>
+
+<ol>
+<li>Tell <code>Digester</code> that you will be doing namespace
+    aware parsing, by adding this statement in your initialization
+    of the Digester's properties:
+    <pre>
+    digester.setNamespaceAware(true);
+    </pre></li>
+<li>Declare the public namespace URI of the namespace with which
+    following rules will be associated.  Note that you do <em>not</em>
+    make any assumptions about the prefix - the XML document author
+    is free to pick whatever prefix they want:
+    <pre>
+    digester.setRuleNamespaceURI("http://www.mycompany.com/MyNamespace");
+    </pre></li>
+<li>Add the rules that correspond to this namespace, in the usual way,
+    by calling methods like <code>addObjectCreate()</code> or
+    <code>addSetProperties()</code>.  In the matching patterns you specify,
+    use only the <em>local name</em> portion of the elements (i.e. the
+    part after the prefix and associated colon (":") character:
+    <pre>
+    digester.addObjectCreate("foo/bar", "com.mycompany.MyFoo");
+    digester.addSetProperties("foo/bar");
+    </pre></li>
+<li>Repeat the previous two steps for each additional public namespace URI
+    that should be recognized on this <code>Digester</code> run.</li>
+</ol>
+
+<p>Now, consider that you might wish to digest the following document, using
+the rules that were set up in the steps above:</p>
+<pre>
+&lt;m:foo
+   xmlns:m="http://www.mycompany.com/MyNamespace"
+   xmlns:y="http://www.yourcompany.com/YourNamespace"&gt;
+
+  &lt;m:bar name="My Name" value="My Value"/&gt;
+
+  &lt;y:bar id="123" product="Product Description"/&gt;L
+
+&lt;/x:foo&gt;
+</pre>
+
+<p>Note that your object create and set properties rules will be fired for the
+<em>first</em> occurrence of the <code>bar</code> element, but not the
+<em>second</em> one.  This is because we declared that our rules only matched
+for the particular namespace we are interested in.  Any elements in the
+document that are associated with other namespaces (or no namespaces at all)
+will not be processed.  In this way, you can easily create rules that digest
+only the portions of a compound document that they understand, without placing
+any restrictions on what other content is present in the document.</p>
+
+<p>You might also want to look at <a href="#doc.RuleSets">Encapsulated
+Rule Sets</a> if you wish to reuse a particular set of rules, associated
+with a particular namespace, in more than one application context.</p>
+
+<h4>Using Namespace Prefixes In Pattern Matching</h4>
+
+<p>Using rules with namespaces is very useful when you have orthogonal rulesets. 
+One ruleset applies to a namespace and is independent of other rulesets applying
+to other namespaces. However, if your rule logic requires mixed namespaces, then 
+matching namespace prefix patterns might be a better strategy.</p>
+
+<p>When you set the <code>NamespaceAware</code> property to false, digester uses
+the qualified element name (which includes the namespace prefix) rather than the
+local name as the patten component for the element. This means that your pattern
+matches can include namespace prefixes as well as element names. So, rather than
+create namespace-aware rules, create pattern matches including the namespace
+prefixes.</p>
+
+<p>For example, (with <code>NamespaceAware</code> false), the pattern <code>
+'foo:bar'</code> will match a top level element named <code>'bar'</code> in the 
+namespace with (local) prefix <code>'foo'</code>.</p>
+
+<h4>Limitations of Digester Namespace support</h4>
+<p>Digester does not provide general "xpath-compliant" matching;
+only the namespace attached to the <i>last</i> element in the match path
+is involved in the matching process. Namespaces attached to parent
+elements are ignored for matching purposes.</p>
+
+
+<a name="doc.Pluggable"></a>
+<h3>Pluggable Rules Processing</h3>
+
+<p>By default, <code>Digester</code> selects the rules that match a particular
+pattern of nested elements as described under
+<a href="#doc.Patterns">Element Matching Patterns</a>.  If you prefer to use
+different selection policies, however, you can create your own implementation
+of the <a href="Rules.html">org.apache.commons.digester.Rules</a> interface,
+or subclass the corresponding convenience base class
+<a href="RulesBase.html">org.apache.commons.digester.RulesBase</a>.
+Your implementation of the <code>match()</code> method will be called when the
+processing for a particular element is started or ended, and you must return
+a <code>List</code> of the rules that are relevant for the current nesting
+pattern.  The order of the rules you return <strong>is</strong> significant,
+and should match the order in which rules were initially added.</p>
+
+<p>Your policy for rule selection should generally be sensitive to whether
+<a href="#doc.Namespace">Namespace Aware Parsing</a> is taking place.  In
+general, if <code>namespaceAware</code> is true, you should select only rules
+that:</p>
+<ul>
+<li>Are registered for the public namespace URI that corresponds to the
+    prefix being used on this element.</li>
+<li>Match on the "local name" portion of the element (so that the document
+    creator can use any prefix that they like).</li>
+</ul>
+
+<h4>ExtendedBaseRules</h4>
+<p><a href="ExtendedBaseRules.html">ExtendedBaseRules</a>,
+adds some additional expression syntax for pattern matching
+to the default mechanism, but it also executes more slowly.  See the
+JavaDocs for more details on the new pattern matching syntax, and suggestions
+on when this implementation should be used.  To use it, simply do the
+following as part of your Digester initialization:</p>
+
+<pre>
+  Digester digester = ...
+  ...
+  digester.setRules(new ExtendedBaseRules());
+  ...
+</pre>
+
+<h4>RegexRules</h4>
+<p><a href="RegexRules.html">RegexRules</a> is an advanced <code>Rules</code> 
+implementation which does not build on the default pattern matching rules.
+It uses a pluggable <a href="RegexMatcher.html">RegexMatcher</a> implementation to test 
+if a path matches the pattern for a Rule. All matching rules are returned 
+(note that this behaviour differs from longest matching rule of the default
+ pattern matching rules). See the Java Docs for more details.
+</p>
+<p>
+Example usage:
+</p>
+
+<pre>
+  Digester digester = ...
+  ...
+  digester.setRules(new RegexRules(new SimpleRegexMatcher()));
+  ...
+</pre>
+<h5>RegexMatchers</h5>
+<p>
+<code>Digester</code> ships only with one <code>RegexMatcher</code>
+implementation: <a href='SimpleRegexMatcher.html'>SimpleRegexMatcher</a>.
+This implementation is unsophisticated and lacks many good features
+lacking in more power Regex libraries. There are some good reasons
+why this approach was adopted. The first is that <code>SimpleRegexMatcher</code>
+is simple, it is easy to write and runs quickly. The second has to do with 
+the way that <code>RegexRules</code> is intended to be used.
+</p>
+<p>
+There are many good regex libraries available. (For example 
+<a href='http://jakarta.apache.org/oro/index.html'>Jakarta ORO</a>,
+<a href='http://jakarta.apache.org/regexp/index.html'>Jakarta Regex</a>,
+<a href='http://www.cacas.org/java/gnu/regexp/'>GNU Regex</a> and
+<a href='http://java.sun.com/j2se/1.4.2/docs/api/java/util/regex/package-summary.html'>
+Java 1.4 Regex</a>)
+Not only do different people have different personal tastes when it comes to
+regular expression matching but these products all offer different functionality
+and different strengths.
+</p>
+<p>
+The pluggable <code>RegexMatcher</code> is a thin bridge
+designed to adapt other Regex systems. This allows any Regex library the user
+desires to be plugged in and used just by creating one class.
+<code>Digester</code> does not (currently) ship with bridges to the major
+regex (to allow the dependencies required by <code>Digester</code>
+to be kept to a minimum).
+</p>
+
+<h4>WithDefaultsRulesWrapper</h4>
+<p>
+<a href="WithDefaultsRulesWrapper.html"> WithDefaultsRulesWrapper</a> allows 
+default <code>Rule</code> instances to be added to any existing 
+<code>Rules</code> implementation. These default <code>Rule</code> instances 
+will be returned for any match for which the wrapped implementation does not 
+return any matches. 
+</p>
+<p>
+For example,
+<pre>
+    Rule alpha;
+    ...
+    WithDefaultsRulesWrapper rules = new WithDefaultsRulesWrapper(new BaseRules());
+    rules.addDefault(alpha);
+    ...
+    digester.setRules(rules);
+    ...
+</pre>
+when a pattern does not match any other rule, then rule alpha will be called.
+</p>
+<p>
+<code>WithDefaultsRulesWrapper</code> follows the <em>Decorator</em> pattern.
+</p>
+
+<a name="doc.RuleSets"></a>
+<h3>Encapsulated Rule Sets</h3>
+
+<p>All of the examples above have described a scenario where the rules to be
+processed are registered with a <code>Digester</code> instance immediately
+after it is created.  However, this approach makes it difficult to reuse the
+same set of rules in more than one application environment.  Ideally, one
+could package a set of rules into a single class, which could be easily
+loaded and registered with a <code>Digester</code> instance in one easy step.
+</p>
+
+<p>The <a href="RuleSet.html">RuleSet</a> interface (and the convenience base
+class <a href="RuleSetBase.html">RuleSetBase</a>) make it possible to do this.
+In addition, the rule instances registered with a particular
+<code>RuleSet</code> can optionally be associated with a particular namespace,
+as described under <a href="#doc.Namespace">Namespace Aware Processing</a>.</p>
+
+<p>An example of creating a <code>RuleSet</code> might be something like this:
+</p>
+<pre>
+public class MyRuleSet extends RuleSetBase {
+
+  public MyRuleSet() {
+    this("");
+  }
+
+  public MyRuleSet(String prefix) {
+    super();
+    this.prefix = prefix;
+    this.namespaceURI = "http://www.mycompany.com/MyNamespace";
+  }
+
+  protected String prefix = null;
+
+  public void addRuleInstances(Digester digester) {
+    digester.addObjectCreate(prefix + "foo/bar",
+      "com.mycompany.MyFoo");
+    digester.addSetProperties(prefix + "foo/bar");
+  }
+
+}
+</pre>
+
+<p>You might use this <code>RuleSet</code> as follow to initialize a
+<code>Digester</code> instance:</p>
+<pre>
+  Digester digester = new Digester();
+  ... configure Digester properties ...
+  digester.addRuleSet(new MyRuleSet("baz/"));
+</pre>
+
+<p>A couple of interesting notes about this approach:</p>
+<ul>
+<li>The application that is using these rules does not need to know anything
+    about the fact that the <code>RuleSet</code> being used is associated
+    with a particular namespace URI.  That knowledge is emedded inside the
+    <code>RuleSet</code> class itself.</li>
+<li>If desired, you could make a set of rules work for more than one
+    namespace URI by providing constructors on the <code>RuleSet</code> to
+    allow this to be specified dynamically.</li>
+<li>The <code>MyRuleSet</code> example above illustrates another technique
+    that increases reusability -- you can specify (as an argument to the
+    constructor) the leading portion of the matching pattern to be used.
+    In this way, you can construct a <code>Digester</code> that recognizes
+    the same set of nested elements at different nesting levels within an
+    XML document.</li>
+</ul>
+<a name="doc.NamedStacks"></a>
+<h3>Using Named Stacks For Inter-Rule Communication</h3>
+<p>
+<code>Digester</code> is based on <code>Rule</code> instances working together 
+to process xml. For anything other than the most trivial processing, 
+communication between <code>Rule</code> instances is necessary. Since <code>Rule</code>
+instances are processed in sequence, this usually means storing an Object 
+somewhere where later instances can retrieve it.
+</p>
+<p>
+<code>Digester</code> is based on SAX. The most natural data structure to use with 
+SAX based xml processing is the stack. This allows more powerful processes to be
+specified more simply since the pushing and popping of objects can mimic the 
+nested structure of the xml. 
+</p>
+<p>
+<code>Digester</code> uses two basic stacks: one for the main beans and the other 
+for parameters for method calls. These are inadequate for complex processing 
+where many different <code>Rule</code> instances need to communicate through 
+different channels.
+</p>
+<p>
+In this case, it is recommended that named stacks are used. In addition to the
+two basic stacks, <code>Digester</code> allows rules to use an unlimited number
+of other stacks referred two by an identifying string (the name). (That's where
+the term <em>named stack</em> comes from.) These stacks are 
+accessed through calls to:
+</p>
+<ul>
+    <li><a href='Digester.html#push(java.lang.String, java.lang.Object)'>
+        void push(String stackName, Object value)</a></li>
+    <li><a href='Digester.html#pop(java.lang.String)'>
+        Object pop(String stackName)</a></li>
+    <li><a href='Digester.html#peek(java.lang.String)'>
+        Object peek(String stackName)</a></li>
+</ul>
+<p>
+<strong>Note:</strong> all stack names beginning with <code>org.apache.commons.digester</code>
+are reserved for future use by the <code>Digester</code> component. It is also recommended
+that users choose stack names perfixed by the name of their own domain to avoid conflicts
+with other <code>Rule</code> implementations.
+</p>
+<a name="doc.RegisteringDTDs"></a>
+<h3>Registering DTDs</h3>
+
+<h4>Brief (But Still Too Long) Introduction To System and Public Identifiers</h4>
+<p>A definition for an external entity comes in one of two forms:
+</p>
+<ol>
+    <li><code>SYSTEM <em>system-identifier</em></code></li>
+    <li><code>PUBLIC <em>public-identifier</em> <em>system-identifier</em></code></li>
+</ol>
+<p>
+The <code><em>system-identifier</em></code> is an URI from which the resource can be obtained
+(either directly or indirectly). Many valid URIs may identify the same resource.
+The <code><em>public-identifier</em></code> is an additional free identifier which may be used
+(by the parser) to locate the resource. 
+</p>
+<p>
+In practice, the weakness with a <code><em>system-identifier</em></code> is that most parsers
+will attempt to interpret this URI as an URL, try to download the resource directly
+from the URL and stop the parsing if this download fails. So, this means that 
+almost always the URI will have to be an URL from which the declaration
+can be downloaded.
+</p>
+<p>
+URLs may be local or remote but if the URL is chosen to be local, it is likely only
+to function correctly on a small number of machines (which are configured precisely
+to allow the xml to be parsed). This is usually unsatisfactory and so a universally
+accessable URL is preferred. This usually means an internet URL.
+</p>
+<p>
+To recap, in practice the <code><em>system-identifier</em></code> will (most likely) be an 
+internet URL. Unfortunately downloading from an internet URL is not only slow
+but unreliable (since successfully downloading a document from the internet 
+relies on the client being connect to the internet and the server being
+able to satisfy the request).
+</p>
+<p>
+The <code><em>public-identifier</em></code> is a freely defined name but (in practice) it is 
+strongly recommended that a unique, readable and open format is used (for reasons
+that should become clear later). A Formal Public Identifier (FPI) is a very
+common choice. This public identifier is often used to provide a unique and location
+independent key which can be used to substitute local resources for remote ones 
+(hint: this is why ;).
+</p>
+<p>
+By using the second (<code>PUBLIC</code>) form combined with some form of local
+catalog (which matches <code><em>public-identifiers</em></code> to local resources) and where
+the <code><em>public-identifier</em></code> is a unique name and the <code><em>system-identifier</em></code> 
+is an internet URL, the practical disadvantages of specifying just a 
+<code><em>system-identifier</em></code> can be avoided. Those external entities which have been 
+store locally (on the machine parsing the document) can be identified and used.
+Only when no local copy exists is it necessary to download the document
+from the internet URL. This naming scheme is recommended when using <code>Digester</code>.
+</p>
+
+<h4>External Entity Resolution Using Digester</h4>
+<p>
+SAX factors out the resolution of external entities into an <code>EntityResolver</code>.
+<code>Digester</code> supports the use of custom <code>EntityResolver</code> 
+but ships with a simple internal implementation. This implementation allows local URLs
+to be easily associated with <code><em>public-identifiers</em></code>. 
+</p>
+<p>For example:</p>
+<code><pre>
+    digester.register("-//Example Dot Com //DTD Sample Example//EN", "assets/sample.dtd");
+</pre></code>
+<p>
+will make digester return the relative file path <code>assets/sample.dtd</code> 
+whenever an external entity with public id 
+<code>-//Example Dot Com //DTD Sample Example//EN</code> is needed.
+</p>
+<p><strong>Note:</strong> This is a simple (but useful) implementation. 
+Greater sophistication requires a custom <code>EntityResolver</code>.</p>
+    
+<a name="doc.troubleshooting"></a>
+<h3>Troubleshooting</h3>
+<h4>Debugging Exceptions</h4>
+<p>
+<code>Digester</code> is based on <a href='http://www.saxproject.org'>SAX</a>.
+Digestion throws two kinds of <code>Exception</code>:
+</p>
+<ul>
+    <li><code>java.io.IOException</code></li>
+    <li><code>org.xml.sax.SAXException</code></li>
+</ul>
+<p>
+The first is rarely thrown and indicates the kind of fundamental IO exception
+that developers know all about. The second is thrown by SAX parsers when the processing
+of the XML cannot be completed. So, to diagnose the cause a certain familiarity with 
+the way that SAX error handling works is very useful. 
+</p>
+<h5>Diagnosing SAX Exceptions</h5>
+<p>
+This is a short, potted guide to SAX error handling strategies. It's not intended as a
+proper guide to error handling in SAX.
+</p>
+<p>
+When a SAX parser encounters a problem with the xml (well, ok - sometime after it 
+encounters a problem) it will throw a 
+<a href='http://www.saxproject.org/apidoc/org/xml/sax/SAXParseException.html'>
+SAXParseException</a>. This is a subclass of <code>SAXException</code> and contains
+a bit of extra information about what exactly when wrong - and more importantly,
+where it went wrong. If you catch an exception of this sort, you can be sure that
+the problem is with the XML and not <code>Digester</code> or your rules.
+It is usually a good idea to catch this exception and log the extra information
+to help with diagnosing the reason for the failure.
+</p>
+<p>
+General <a href='http://www.saxproject.org/apidoc/org/xml/sax/SAXException.html'>
+SAXException</a> instances may wrap a causal exception. When exceptions are
+throw by <code>Digester</code> each of these will be wrapped into a 
+<code>SAXException</code> and rethrown. So, catch these and examine the wrapped
+exception to diagnose what went wrong.
+</p>
+<a name="doc.FAQ"></a>
+<h3>Frequently Asked Questions</h3>
+<p><ul>
+<li><strong>Why do I get warnings when using a JAXP 1.1 parser?</strong>
+<p>If you're using a JAXP 1.1 parser, you might see the following warning (in your log):
+<code><pre>
+[WARN] Digester - -Error: JAXP SAXParser property not recognized: http://java.sun.com/xml/jaxp/properties/schemaLanguage
+</pre></code>
+This property is needed for JAXP 1.2 (XML Schema support) as required
+for the Servlet Spec. 2.4 but is not recognized by JAXP 1.1 parsers.
+This warning is harmless.</p>
+<p>
+</li>
+<li><strong>Why Doesn't Schema Validation Work With Parser XXX Out Of The Box?</strong>
+<p>
+Schema location and language settings are often need for validation using schemas.
+Unfortunately, there isn't a single standard approach to how these properties are
+configured on a parser.
+Digester tries to guess the parser being used and configure it appropriately
+but it's not infallible.
+You might need to grab an instance, configure it and pass it to Digester.
+</p>
+<p>
+If you want to support more than one parser in a portable manner, 
+then you'll probably want to take a look at the 
+<code>org.apache.commons.digester.parsers</code> package
+and add a new class to support the particular parser that's causing problems.
+</p>
+</li>
+<li><strong>Help! 
+I'm Validating Against Schema But Digester Ignores Errors!</strong>
+<p>
+Digester is based on <a href='http://www.saxproject.org'>SAX</a>. The convention for
+SAX parsers is that all errors are reported (to any registered 
+<code>ErrorHandler</code>) but processing continues. Digester (by default) 
+registers its own <code>ErrorHandler</code> implementation. This logs details 
+but does not stop the processing (following the usual convention for SAX 
+based processors). 
+</p>
+<p>
+This means that the errors reported by the validation of the schema will appear in the
+Digester logs but the processing will continue. To change this behaviour, call
+<code>digester.setErrorHandler</code> with a more suitable implementation.
+</p>
+
+<li><strong>Where Can I Find Example Code?</strong>
+<a name="doc.FAQ.Examples">
+<p>Digester ships with a sample application: a mapping for the <em>Rich Site 
+Summary</em> format used by many newsfeeds. Download the source distribution 
+to see how it works.</p>
+<p>Digester also ships with a set of examples demonstrating most of the 
+features described in this document. See the "src/examples" subdirectory 
+of the source distribution.</p>
+</li>
+<li><strong>When Are You Going To Support <em>Rich Site Summary</em> Version x.y.z?</strong>
+<p>
+The <em>Rich Site Summary</em> application is intended to be a sample application. 
+It works but we have no plans to add support for other versions of the format.
+</p>
+<p>
+We would consider donations of standard digester applications but it's unlikely that
+these would ever be shipped with the base digester distribution.
+If you want to discuss this, please post to <a href='http://commons.apache.org/mail-lists.html'>
+commons dev mailing list</a>
+</p>
+</li>
+</ul>
+<a name="doc.Limits"></a>
+<h3>Known Limitations</h3>
+<h4>Accessing Public Methods In A Default Access Superclass</h4>
+<p>There is an issue when invoking public methods contained in a default access superclass.
+Reflection locates these methods fine and correctly assigns them as public.
+However, an <code>IllegalAccessException</code> is thrown if the method is invoked.</p>
+
+<p><code>MethodUtils</code> contains a workaround for this situation. 
+It will attempt to call <code>setAccessible</code> on this method.
+If this call succeeds, then the method can be invoked as normal.
+This call will only succeed when the application has sufficient security privileges. 
+If this call fails then a warning will be logged and the method may fail.</p>
+
+<p><code>Digester</code> uses <code>MethodUtils</code> and so there may be an issue accessing methods
+of this kind from a high security environment. If you think that you might be experiencing this 
+problem, please ask on the mailing list.</p>
+</body>
+</html>

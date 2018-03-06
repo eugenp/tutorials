@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录 | SpringForAll - Spring Security</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f1f1f1; padding-bottom: 0">
+
+<div th:insert="~{header :: nav}"></div>
+
+<div class="container" style="margin-top: 60px">
+
+    <div style="text-align: center; margin-top: 10%">
+        <img th:src="${avatar}" alt="avatar" class="img-circle" style="margin: 0 auto">
+        <p th:text="${username}" style="margin-top: 25px; font-size: 20; color: crimson">Anoy</p>
+        <form th:action="@{/logout}" method="post">
+            <button class="btn btn-danger" style="margin-top: 20px">退出登录</button>
+        </form>
+    </div>
+
+</div>
+
+</body>
+
+</html>

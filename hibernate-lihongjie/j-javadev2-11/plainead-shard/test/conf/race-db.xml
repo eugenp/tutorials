@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+    <RACE RACE_ID="1" NAME="Mclean 1/2 Marathon" DISTANCE="13.1" DATE="2008-05-12"/>
+    <RACE RACE_ID="2" NAME="Reston 5K" DISTANCE="3.1" DATE="2008-09-13"/>
+    <RACE RACE_ID="3" NAME="Herndon 10K" DISTANCE="6.2" DATE="2008-10-22"/>
+    <RACE RACE_ID="4" NAME="Leesburg 1/2 Marathon" DISTANCE="13.1" DATE="2008-01-02"/>
+    <RACE RACE_ID="5" NAME="Leesburg 5K" DISTANCE="3.1" DATE="2008-05-12"/>
+    <RACE RACE_ID="6" NAME="Leesburg 10K" DISTANCE="6.2" DATE="2008-07-30"/>
+
+    <RUNNER RUNNER_ID="1" FIRST_NAME="Andrew" LAST_NAME="Glover" AGE="32"/>
+
+    <RUNNER RUNNER_ID="2" FIRST_NAME="Lisa" LAST_NAME="Smith" AGE="40"/>
+    <RUNNER RUNNER_ID="3" FIRST_NAME="Bill" LAST_NAME="Payne" AGE="18"/>
+
+    <race_participants RACE_ID="1" RUNNER_ID="1"/>
+    <race_participants RACE_ID="2" RUNNER_ID="2"/>
+    <race_participants RACE_ID="2" RUNNER_ID="3"/>
+
+    <race_result RACE_ID="1" RUNNER_ID="1" TIME="100.04" PLACE="45"/>
+
+
+</dataset>

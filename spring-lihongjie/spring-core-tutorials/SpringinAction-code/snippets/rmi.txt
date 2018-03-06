@@ -1,0 +1,20 @@
+<!--<start id="bean_rmiServiceExporter_hostPort"/>--> 
+<bean class="org.springframework.remoting.rmi.RmiServiceExporter"
+  p:service-ref="spitterService"
+  p:serviceName="SpitterService" 
+  p:serviceInterface="com.habuma.spitter.service.SpitterService"
+  p:registryHost="rmi.spitter.com"
+  p:registryPort="1199"/>
+<!--<end id="bean_rmiServiceExporter_hostPort"/>-->
+
+//<start id="snippet_traditionalRmi"/> 
+try {
+  String serviceUrl = "rmi:/spitter/SpitterService"; 
+  SpitterService spitterService = 
+          (SpitterService) Naming.lookup(serviceUrl);
+  ...    
+} 
+catch (RemoteException e) { ... }
+catch (NotBoundException e) { ... }
+catch (MalformedURLException e) { ... }
+//<end id="snippet_traditionalRmi"/> 

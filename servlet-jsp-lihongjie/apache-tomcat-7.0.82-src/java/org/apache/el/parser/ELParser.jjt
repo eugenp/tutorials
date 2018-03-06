@@ -1,0 +1,477 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/*
+    Author:    Jacob Hookom
+    Email:    jacob at hookom.net
+*/
+
+/* == Option Declaration == */
+options
+{
+    STATIC=false;
+    NODE_PREFIX="Ast";
+    VISITOR_EXCEPTION="javax.el.ELException";
+    VISITOR=false;
+    MULTI=true;
+    NODE_DEFAULT_VOID=true;
+    JAVA_UNICODE_ESCAPE=false;
+    UNICODE_INPUT=true;
+    BUILD_NODE_FILES=true;
+}
+
+/* == Parser Declaration == */
+PARSER_BEGIN( ELParser )
+package org.apache.el.parser;
+import java.io.StringReader;
+import javax.el.ELException;
+public class ELParser
+{
+    public static Node parse(String ref) throws ELException
+    {
+        try {
+            return (new ELParser(new StringReader(ref))).CompositeExpression();
+        } catch (ParseException pe) {
+            throw new ELException(pe.getMessage());
+        }
+    }
+}
+PARSER_END( ELParser )
+
+/*
+ * CompositeExpression
+ * Allow most flexible parsing, restrict by examining
+ * type of returned node
+ */
+AstCompositeExpression CompositeExpression() #CompositeExpression : {}
+{
+    (DeferredExpression() | DynamicExpression() | LiteralExpression())* <EOF> { return jjtThis; }
+}
+
+/*
+ * LiteralExpression
+ * Non-EL Expression blocks
+ */
+void LiteralExpression() #LiteralExpression : { Token t = null; }
+{
+    t=<LITERAL_EXPRESSION> { jjtThis.setImage(t.image); }
+}
+
+/*
+ * DeferredExpression
+ * #{..} Expressions
+ */
+void DeferredExpression() #DeferredExpression : {}
+{
+    <START_DEFERRED_EXPRESSION> Expression() <END_EXPRESSION>
+}
+
+/*
+ * DynamicExpression
+ * ${..} Expressions
+ */
+void DynamicExpression() #DynamicExpression : {}
+{
+    <START_DYNAMIC_EXPRESSION> Expression() <END_EXPRESSION>
+}
+
+/*
+ * Expression
+ * EL Expression Language Root, goes to Choice
+ */
+void Expression() : {}
+{
+    Choice()
+}
+
+/*
+ * Choice
+ * For Choice markup a ? b : c, then Or
+ */
+void Choice() : {}
+{
+    Or() (LOOKAHEAD(3) <QUESTIONMARK> Choice() <COLON> Choice() #Choice(3))*
+}
+
+/*
+ * Or
+ * For 'or' '||', then And
+ */
+void Or() : {}
+{
+    And() ((<OR0>|<OR1>) And() #Or(2))*
+}
+
+/*
+ * And
+ * For 'and' '&&', then Equality
+ */
+void And() : {}
+{
+    Equality() ((<AND0>|<AND1>) Equality() #And(2))*
+}
+
+/*
+ * Equality
+ * For '==' 'eq' '!=' 'ne', then Compare
+ */
+void Equality() : {}
+{
+    Compare()
+    (
+        ((<EQ0>|<EQ1>) Compare() #Equal(2))
+    |
+        ((<NE0>|<NE1>) Compare() #NotEqual(2))
+    )*
+}
+
+/*
+ * Compare
+ * For a bunch of them, then Math
+ */
+void Compare() : {}
+{
+    Math()
+    (
+        ((<LT0>|<LT1>) Math() #LessThan(2))
+    |
+        ((<GT0>|<GT1>) Math() #GreaterThan(2))
+    |
+        ((<LE0>|<LE1>) Math() #LessThanEqual(2))
+    |
+        ((<GE0>|<GE1>) Math() #GreaterThanEqual(2))
+    )*
+}
+
+/*
+ * Math
+ * For '+' '-', then Multiplication
+ */
+void Math() : {}
+{
+    Multiplication()
+    (
+        (<PLUS> Multiplication() #Plus(2))
+    |
+        (<MINUS> Multiplication() #Minus(2))
+    )*
+}
+
+/*
+ * Multiplication
+ * For a bunch of them, then Unary
+ */
+void Multiplication() : {}
+{
+    Unary()
+    (
+        (<MULT> Unary() #Mult(2))
+    |
+        ((<DIV0>|<DIV1>) Unary() #Div(2))
+    |
+        ((<MOD0>|<MOD1>) Unary() #Mod(2))
+    )*
+}
+
+/*
+ * Unary
+ * For '-' '!' 'not' 'empty', then Value
+ */
+void Unary() : {}
+{
+        <MINUS> Unary() #Negative
+    |
+        (<NOT0>|<NOT1>) Unary() #Not
+    |
+        <EMPTY> Unary() #Empty
+    |
+        Value()
+}
+
+/*
+ * Value
+ * Defines Prefix plus zero or more Suffixes
+ */
+void Value() : {}
+{
+    (ValuePrefix() (ValueSuffix())*) #Value(>1)
+}
+
+/*
+ * ValuePrefix
+ * For Literals, Variables, and Functions
+ */
+void ValuePrefix() : {}
+{
+    Literal()
+    | NonLiteral()
+}
+
+/*
+ * ValueSuffix
+ * Either dot or bracket notation
+ */
+void ValueSuffix() : {}
+{
+    ( DotSuffix() | BracketSuffix() ) ( MethodParameters())?
+}
+
+/*
+ * DotSuffix
+ * Dot Property
+ */
+void DotSuffix() #DotSuffix : { Token t = null; }
+{
+    <DOT> t=<IDENTIFIER> { jjtThis.setImage(t.image); }
+}
+
+/*
+ * BracketSuffix
+ * Sub Expression Suffix
+ */
+void BracketSuffix() #BracketSuffix : {}
+{
+    <LBRACK> Expression() <RBRACK>
+}
+
+/*
+ * MethodParameters
+ */
+void MethodParameters() #MethodParameters : {}
+{
+    <LPAREN> ( Expression() ( <COMMA> Expression())* )? <RPAREN>
+}
+
+/*
+ * NonLiteral
+ * For Grouped Operations, Identifiers, and Functions
+ */
+void NonLiteral() : {}
+{
+    <LPAREN> Expression() <RPAREN>
+    | LOOKAHEAD((<IDENTIFIER> <COLON>)? <IDENTIFIER> <LPAREN>) Function()
+    | Identifier()
+}
+
+/*
+ * Identifier
+ * Java Language Identifier
+ */
+void Identifier() #Identifier : { Token t = null; }
+{
+    t=<IDENTIFIER> { jjtThis.setImage(t.image); }
+}
+
+/*
+ * Function
+ * Namespace:Name(a,b,c)
+ */
+void Function() #Function :
+{
+    Token t0 = null;
+    Token t1 = null;
+}
+{
+    (LOOKAHEAD(2) t0=<IDENTIFIER> <COLON>)? t1=<IDENTIFIER>
+    {
+        if (t0 != null) {
+            jjtThis.setPrefix(t0.image);
+            jjtThis.setLocalName(t1.image);
+        } else {
+            jjtThis.setLocalName(t1.image);
+        }
+    }
+    <LPAREN> (Expression() (<COMMA> Expression())*)? <RPAREN>
+}
+
+/*
+ * Literal
+ * Reserved Keywords
+ */
+void Literal() : {}
+{
+    Boolean()
+    | FloatingPoint()
+    | Integer()
+    | String()
+    | Null()
+}
+
+/*
+ * Boolean
+ * For 'true' 'false'
+ */
+void Boolean() : {}
+{
+    <TRUE> #True
+    | <FALSE> #False
+}
+
+/*
+ * FloatinPoint
+ * For Decimal and Floating Point Literals
+ */
+void FloatingPoint() #FloatingPoint : { Token t = null; }
+{
+    t=<FLOATING_POINT_LITERAL> { jjtThis.setImage(t.image); }
+}
+
+/*
+ * Integer
+ * For Simple Numeric Literals
+ */
+void Integer() #Integer : { Token t = null; }
+{
+    t=<INTEGER_LITERAL> { jjtThis.setImage(t.image); }
+}
+
+/*
+ * String
+ * For Quoted Literals
+ */
+void String() #String : { Token t = null; }
+{
+    t=<STRING_LITERAL> { jjtThis.setImage(t.image); }
+}
+
+/*
+ * Null
+ * For 'null'
+ */
+void Null() #Null : {}
+{
+    <NULL>
+}
+
+
+/* ==================================================================================== */
+<DEFAULT> TOKEN :
+{
+  /*
+   * The following definition uses + rather than * in two places to prevent
+   * LITERAL_EXPRESSION matching the empty string that could result in the
+   * Parser entering an infinite loop.
+   */
+  < LITERAL_EXPRESSION:
+    (   (~["$", "#", "\\"])* "\\" (["$", "#"])?
+      | (~["$", "#"])* (["$", "#"] ~["{", "$", "#", "\\"])
+      | (~["$", "#"])+
+    )+
+    | "$"
+    | "#"
+  >
+|
+  < START_DYNAMIC_EXPRESSION: "${" > : IN_EXPRESSION
+|
+  < START_DEFERRED_EXPRESSION: "#{" > : IN_EXPRESSION
+}
+
+<IN_EXPRESSION> SKIP : { " " | "\t" | "\n" | "\r" }
+
+<IN_EXPRESSION> TOKEN :
+{
+    < INTEGER_LITERAL: ["0"-"9"] (["0"-"9"])* >
+|    < FLOATING_POINT_LITERAL: (["0"-"9"])+ "." (["0"-"9"])* (<EXPONENT>)?
+        | "." (["0"-"9"])+ (<EXPONENT>)?
+        | (["0"-"9"])+ <EXPONENT>
+    >
+|    < #EXPONENT: ["e","E"] (["+","-"])? (["0"-"9"])+ >
+|    < STRING_LITERAL: ("\"" ((~["\"","\\"])
+        | ("\\" ( ["\\","\"","\'"] )))* "\"")
+        | ("\'" ((~["\'","\\"])
+        | ("\\" ( ["\\","\"","\'"] )))* "\'")
+    >
+|    < TRUE : "true" >
+|    < FALSE : "false" >
+|    < NULL : "null" >
+|    < END_EXPRESSION : "}" > : DEFAULT
+|    < DOT : "." >
+|    < LPAREN : "(" >
+|    < RPAREN : ")" >
+|    < LBRACK : "[" >
+|    < RBRACK : "]" >
+|    < COLON : ":" >
+|    < COMMA : "," >
+|    < GT0 : ">" >
+|    < GT1 : "gt" >
+|    < LT0 : "<" >
+|    < LT1 : "lt" >
+|    < GE0 : ">=" >
+|    < GE1 : "ge" >
+|    < LE0 : "<=" >
+|    < LE1 : "le" >
+|    < EQ0 : "==" >
+|    < EQ1 : "eq" >
+|    < NE0 : "!=" >
+|    < NE1 : "ne" >
+|    < NOT0 : "!" >
+|    < NOT1 : "not" >
+|    < AND0 : "&&" >
+|    < AND1 : "and" >
+|    < OR0 : "||" >
+|    < OR1 : "or" >
+|    < EMPTY : "empty" >
+|    < INSTANCEOF : "instanceof" >
+|    < MULT : "*" >
+|    < PLUS : "+" >
+|    < MINUS : "-" >
+|    < QUESTIONMARK : "?" >
+|    < DIV0 : "/" >
+|    < DIV1 : "div" >
+|    < MOD0 : "%" >
+|    < MOD1 : "mod" >
+|    < IDENTIFIER : (<LETTER>|<IMPL_OBJ_START>) (<LETTER>|<DIGIT>)* >
+|    < FUNCTIONSUFFIX : (<IDENTIFIER>) >
+|    < #IMPL_OBJ_START: "#" >
+|    < #LETTER:
+        [
+        "\u0024",
+        "\u0041"-"\u005a",
+        "\u005f",
+        "\u0061"-"\u007a",
+        "\u00c0"-"\u00d6",
+        "\u00d8"-"\u00f6",
+        "\u00f8"-"\u00ff",
+        "\u0100"-"\u1fff",
+        "\u3040"-"\u318f",
+        "\u3300"-"\u337f",
+        "\u3400"-"\u3d2d",
+        "\u4e00"-"\u9fff",
+        "\uf900"-"\ufaff"
+        ]
+    >
+|    < #DIGIT:
+        [
+        "\u0030"-"\u0039",
+        "\u0660"-"\u0669",
+        "\u06f0"-"\u06f9",
+        "\u0966"-"\u096f",
+        "\u09e6"-"\u09ef",
+        "\u0a66"-"\u0a6f",
+        "\u0ae6"-"\u0aef",
+        "\u0b66"-"\u0b6f",
+        "\u0be7"-"\u0bef",
+        "\u0c66"-"\u0c6f",
+        "\u0ce6"-"\u0cef",
+        "\u0d66"-"\u0d6f",
+        "\u0e50"-"\u0e59",
+        "\u0ed0"-"\u0ed9",
+        "\u1040"-"\u1049"
+        ]
+    >
+|    < ILLEGAL_CHARACTER: (~[]) >
+}

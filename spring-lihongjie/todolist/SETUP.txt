@@ -1,0 +1,30 @@
+开发环境配置
+
+Vagrant
+==================================
+正在制作
+system env:
+vagrant init debian/jessie64
+vagrant up
+
+
+Windows
+==================================
+1. Java 8
+2. maven
+3. IntelliJ IDEA -> Import Project
+4. git bash
+5. sdkman -> gradle
+6. gradle build
+7. download & install nodejs
+8. cnpm
+9. cnpm install -g typescript webpack typings
+10. cnpm install --save-dev ts-loader source-map-loader
+11. npm link typescript
+12. typings install
+13. npm install
+14. gradle build (again)
+15. mysql
+16. redis
+
+*ts/react: http://www.typescriptlang.org/docs/handbook/react-&-webpack.html

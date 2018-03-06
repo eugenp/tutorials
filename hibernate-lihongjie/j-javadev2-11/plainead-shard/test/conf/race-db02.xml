@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+    <RACE RACE_ID="1000" NAME="Mclean 1/2 Marathon" DISTANCE="13.1" DATE="2008-05-12"/>
+    <RUNNER RUNNER_ID="145" FIRST_NAME="Andrew" LAST_NAME="Glover" AGE="32"/>
+    <race_participants RACE_ID="1000" RUNNER_ID="145"/>
+    <race_result RACE_ID="1000" RUNNER_ID="145" TIME="100.04" PLACE="45"/>
+    
+</dataset>

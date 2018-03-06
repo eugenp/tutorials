@@ -1,0 +1,50 @@
+database env:
+todo unzip -qo todoapp db/schema.sql
+todo unzip -qo todoapp db/rebuild.sh
+
+backup:
+mysqldump todolist > /var/www/todo/data/data-$( date '+%Y-%m-%d_%H-%M-%S' ).sql -u root -p12345678
+
+restore:
+mysql todolist -uroot -p12345678 < data.sql
+
+master
+
+v0.1.7
+task +belongsToEmail
+
+v0.1.6
+task -zindex
+task -topmost
+task +priority
+
+v0.1.5
+task +belongsToName
+
+v0.1.4
+user admin -> role
+
+v0.1.3
+user增加location
+
+v0.1.2
+增加用户数据,适配wechat
+
+v0.1.1
+中文乱码
+1. spring.datasource.url=jdbc:mysql://localhost/todolist?useSSL=false
+2. ALTER DATABASE todolist CHARACTER SET utf8;
+3. ALTER TABLE user CONVERT TO CHARACTER SET utf8;
+
+v0.1.0
+mysql -uroot -p
+CREATE DATABASE todolist;
+
+CREATE USER username IDENTIFIED BY 'password';
+GRANT privileges ON todolist.* TO username;
+select user from mysql.user;
+
+mysql todolist -uusername -p < schema.sql
+mysql todolist -uusername -p < data.sql
+
+

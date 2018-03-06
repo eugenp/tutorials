@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="loader.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <title>The Loader Component</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>The <strong>Loader</strong> element represents the <em>web
+  application class loader</em> that will be used to load Java
+  classes and resources for your web application.  Such
+  a class loader must follow the requirements of the Servlet
+  Specification, and load classes from the following locations:</p>
+  <ul>
+  <li>From the <code>/WEB-INF/classes</code> directory inside your
+      web application.</li>
+  <li>From JAR files in the <code>/WEB-INF/lib</code> directory
+      inside your web application.</li>
+  <li>From resources made available by Catalina to all web
+      applications globally.</li>
+  </ul>
+
+  <p>A Loader element MAY be nested inside a <a href="context.html">Context</a>
+  component.  If it is not included, a default Loader configuration will be
+  created automatically, which is sufficient for most requirements.</p>
+
+  <p>For a more in-depth description of the class loader hierarchy
+  that is implemented by Catalina, see <a href="../class-loader-howto.html">the ClassLoader HowTo</a>.</p>
+
+    <p><em>The description below uses the variable name $CATALINA_BASE to refer the
+    base directory against which most relative paths are resolved. If you have
+    not configured Tomcat for multiple instances by setting a CATALINA_BASE
+    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
+    the directory into which you have installed Tomcat.</em></p>
+
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+    <p>All implementations of <strong>Loader</strong>
+    support the following attributes:</p>
+
+    <attributes>
+
+      <attribute name="className" required="false">
+        <p>Java class name of the implementation to use.  This class must
+        implement the <code>org.apache.catalina.Loader</code> interface.
+        If not specified, the standard value (defined below) will be used.</p>
+      </attribute>
+
+      <attribute name="delegate" required="false">
+        <p>Set to <code>true</code> if you want the class loader to follow
+        the standard Java2 delegation model, and attempt to load classes from
+        parent class loaders <strong>before</strong> looking inside the web
+        application.  Set to <code>false</code> (the default) to have the
+        class loader look inside the web application first, before asking
+        parent class loaders to find requested classes or resources.</p>
+      </attribute>
+
+      <attribute name="reloadable" required="false">
+        <p>Set to <code>true</code> if you want Catalina to monitor classes in
+        <code>/WEB-INF/classes/</code> and <code>/WEB-INF/lib</code> for
+        changes, and automatically reload the web application if a change
+        is detected.  This feature is very useful during application
+        development, but it requires significant runtime overhead and is
+        not recommended for use on deployed production applications.  You
+        can use the <a href="../manager-howto.html">Manager</a> web
+        application, however, to trigger reloads of deployed applications
+        on demand.</p>
+
+        <p><strong>NOTE</strong> - The value for this property will be
+        inherited from the <code>reloadable</code> attribute you set on
+        the surrounding <a href="context.html">Context</a> component,
+        and any value you explicitly set here will be replaced.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+  <subsection name="Standard Implementation">
+
+    <p>The standard implementation of <strong>Loader</strong> is
+    <strong>org.apache.catalina.loader.WebappLoader</strong>.
+    It supports the following additional attributes (in addition to the
+    common attributes listed above):</p>
+
+    <attributes>
+
+      <attribute name="loaderClass" required="false">
+        <p>Java class name of the <code>java.lang.ClassLoader</code>
+        implementation class to use.  If not specified, the default value is
+        <code>org.apache.catalina.loader.WebappClassLoader</code>. Custom
+        <strong>loaderClass</strong> implementations must extend
+        <code>org.apache.catalina.loader.WebappClassLoaderBase</code>.The
+        default <strong>loaderClass</strong> is not parallel capable. A parallel
+        capable <strong>loaderClass</strong> is available when running on a Java
+        7 or higher JRE and can be used by specifying
+        <code>org.apache.catalina.loader.ParallelWebappClassLoader</code>.</p>
+      </attribute>
+
+      <attribute name="searchExternalFirst" required="false">
+        <p>Set to <code>true</code> if you want repositories outside
+        of <code>WEB-INF/classes</code> and <code>WEB-INF/lib</code> to
+        be searched first. Default value is <code>false</code>.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+  <subsection name="VirtualWebappLoader Implementation">
+
+    <p>This implementation of <strong>Loader</strong> is
+    <strong>org.apache.catalina.loader.VirtualWebappLoader</strong>.
+    It extends <code>WebappLoader</code> and supports the following
+    additional attributes</p>
+
+    <attributes>
+
+      <attribute name="virtualClasspath" required="false">
+        <p>Additional repositories to search for resources.
+        Multiple values can be joined using <code>;</code>
+        as a separator.</p>
+        <p>Leading and trailing whitespaces in values are ignored.
+        If a value does not point to an existing directory or
+        <code>*.jar</code> file, it is silently skipped.
+        Diagnostic messages can be seen if you enable debug logging for
+        the VirtualWebappLoader class.
+        </p>
+        <p>Example: <code>virtualClasspath=&quot;${catalina.base}/myapp_config&quot;</code></p>
+      </attribute>
+
+      <attribute name="searchVirtualFirst" required="false">
+        <p>Set to <code>true</code> if you want the virtual
+        class path to be searched before
+        <code>WEB-INF/classes</code> and <code>WEB-INF/lib</code>.
+        Default value is <code>false</code>.</p>
+        <p>If searched before, resources located in the virtual
+        class path take precendence over resources with the same
+        name contained in the webapp.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Nested Components">
+
+  <p>No components may be nested inside a <strong>Loader</strong> element.</p>
+
+</section>
+
+
+<section name="Special Features">
+
+  <subsection name="Logging">
+
+    <p>A loader is associated with the log category based on its classname.</p>
+
+  </subsection>
+
+</section>
+
+
+</body>
+
+
+</document>

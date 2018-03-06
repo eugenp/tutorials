@@ -1,0 +1,129 @@
+<!--<start id="simple_view_state"/>--> 
+<view-state id="welcome" />
+<!--<end id="simple_view_state"/>--> 
+
+<!--<start id="view_state_view_attribute"/>--> 
+<view-state id="welcome" view="greeting" />
+<!--<end id="view_state_view_attribute"/>--> 
+
+<!--<start id="view_state_model_attribute"/>--> 
+<view-state id="takePayment" model="flowScope.paymentDetails"/>
+<!--<end id="view_state_model_attribute"/>--> 
+
+<!--<start id="decision_state"/>--> 
+<decision-state id="checkDeliveryArea">
+  <if test="pizzaFlowActions.checkDeliveryArea(customer.zipCode)"
+      then="addCustomer"
+      else="deliveryWarning" />
+</decision-state>
+<!--<end id="decision_state"/>--> 
+
+<!--<start id="action_state"/>--> 
+<action-state id="saveOrder">
+  <evaluate expression="pizzaFlowActions.saveOrder(order)" />
+  <transition to="thankYou" />
+</action-state>
+<!--<end id="action_state"/>-->
+
+<!--<start id="end_state"/>--> 
+<end-state id="customerReady" />
+<!--<end id="end_state"/>--> 
+
+<!--<start id="subflow_state"/>--> 
+<subflow-state id="order" subflow="pizza/order">
+  <input name="order" value="order"/>
+  <transition on="orderCreated" to="payment" />
+</subflow-state>
+<!--<end id="subflow_state"/>--> 
+
+<!--<start id="transition_unconditional"/>--> 
+<transition to="customerReady" />
+<!--<end id="transition_unconditional"/>--> 
+
+<!--<start id="transition_onevent"/>--> 
+<transition on="phoneEntered" to="lookupCustomer"/>
+<!--<end id="transition_onevent"/>--> 
+
+<!--<start id="transition_onexception"/>--> 
+<transition 
+    on-exception=
+           "com.springinaction.pizza.service.CustomerNotFoundException" 
+    to="registrationForm" />
+<!--<end id="transition_onexception"/>--> 
+
+<!--<start id="cancel_transition"/>--> 
+<transition on="cancel" to="endState" />
+<!--<end id="cancel_transition"/>--> 
+
+<!--<start id="global_cancel_transition"/>--> 
+<global-transitions>
+  <transition on="cancel" to="endState" />
+</global-transitions>
+<!--<end id="global_cancel_transition"/>--> 
+
+<!--<start id="secured_view_state"/>--> 
+<view-state id="restricted">
+  <secured attributes="ROLE_ADMIN" match="all"/>
+</view-state>
+<!--<end id="secured_view_state"/>--> 
+
+
+<!--<start id="flowConfigNamespace"/>--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:flow="http://www.springframework.org/schema/webflow-config"
+ xsi:schemaLocation="http://www.springframework.org/schema/webflow-config 
+   http://www.springframework.org/schema/webflow-config/[CA]
+                                              spring-webflow-config-2.0.xsd
+   http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+<!--<end id="flowConfigNamespace"/>--> 
+
+
+<!--<start id="flow_registry"/>--> 
+<flow:flow-registry id="flowRegistry" 
+         base-path="/WEB-INF/flows">
+   <flow:flow-location-pattern value="/**/*-flow.xml" />
+</flow:flow-registry>
+<!--<end id="flow_registry"/>-->
+
+
+<!--<start id="flow_registry_location_path"/>--> 
+<flow:flow-registry id="flowRegistry">
+   <flow:flow-location path="/WEB-INF/flows/springpizza.xml" />
+</flow:flow-registry>
+<!--<end id="flow_registry_location_path"/>-->
+
+<!--<start id="flow_registry_location_id"/>--> 
+<flow:flow-registry id="flowRegistry">
+   <flow:flow-location id="pizza"
+         path="/WEB-INF/flows/springpizza.xml" />
+</flow:flow-registry>
+<!--<end id="flow_registry_location_id"/>-->
+
+<!--<start id="mvcFactoryCreator_viewResolvers"/>--> 
+<bean id="mvcViewFactoryCreator" class=
+    "org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+    <property name="viewResolvers">
+      <list>
+        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+          <property name="prefix" value="/WEB-INF/jspx/" />
+          <property name="suffix" value=".jspx" />
+        </bean>
+      </list>
+    </property>
+</bean>
+<!--<end id="mvcFactoryCreator_viewResolvers"/>-->  
+
+<!--<start id="flow_start_state"/>--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+  http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+  start-state="identifyCustomer">
+...
+</flow>
+<!--<end id="flow_start_state"/>--> 
+

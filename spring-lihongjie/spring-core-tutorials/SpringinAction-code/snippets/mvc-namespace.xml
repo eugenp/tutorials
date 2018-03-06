@@ -1,0 +1,20 @@
+<!--<start id="bean_annotatedcontrollers" />-->
+<bean class=
+   "org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+  <property name="order" value="1" />
+</bean>
+
+<bean class=
+    "org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+  <property name="webBindingInitializer">
+    <bean class=
+        "org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+      <property name="conversionService" ref="conversionService" />
+      <property name="validator" ref="validator" />
+    </bean>
+  </property>
+</bean>
+ 
+<bean id="validator" class=
+    "org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+<!--<end id="bean_annotatedcontrollers" />-->

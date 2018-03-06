@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task"     
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+    http://www.springframework.org/schema/task 
+    http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+    <bean:import resource="classpath:ch04/job-context.xml"/>
+    
+	<task:scheduler id="scheduler" pool-size="10" />
+	
+	<!-- 每一秒钟，执行对象schedulerLauncher的launch方法一次 -->	
+	<task:scheduled-tasks scheduler="scheduler">
+		<task:scheduled ref="schedulerLauncher" method="launch" fixed-rate="1000" />
+	</task:scheduled-tasks>
+	
+	<bean:bean id="schedulerLauncher" 
+	    class="com.juxtapose.example.ch04.scheduler.SchedulerLauncher">
+		<bean:property name="job" ref="helloworldJob" />
+		<bean:property name="jobLauncher" ref="jobLauncher" />
+	</bean:bean>
+    
+    <!-- HelloWorld Job -->
+    <job id="helloworldJob">
+        <step id="helloworldStep">
+           <tasklet>
+				<bean:bean class="com.juxtapose.example.ch04.HelloWorldTasklet">
+				</bean:bean>
+			</tasklet>	
+        </step>
+    </job>
+</bean:beans>

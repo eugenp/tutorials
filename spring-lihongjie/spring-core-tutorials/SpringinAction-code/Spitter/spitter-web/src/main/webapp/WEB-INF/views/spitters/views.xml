@@ -1,0 +1,22 @@
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+      "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+  
+<tiles-definitions>
+   <definition name="spitters/list" extends="template">
+    <put-attribute name="content" 
+                   value="/WEB-INF/views/spitters/list.jsp" />
+   </definition>
+
+   <definition name="spitters/view" extends="template">
+    <put-attribute name="content" 
+                   value="/WEB-INF/views/spitters/view.jsp" />
+   </definition>
+
+<!--<start id="tile_spitter_edit"/>-->
+   <definition name="spitters/edit" extends="template">
+    <put-attribute name="content" 
+                   value="/WEB-INF/views/spitters/edit.jsp" />
+   </definition>
+<!--<end id="tile_spitter_edit"/>-->
+</tiles-definitions>

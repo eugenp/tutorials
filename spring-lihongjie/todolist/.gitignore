@@ -1,0 +1,65 @@
+*.class
+
+# Build results
+[Tt]arget/
+[Bb]uild/
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# mac
+.DS_Store
+.DS_Store?
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+
+# windows
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# node
+node_modules/
+
+# typings
+typings/
+
+# gradle
+.gradletasknamecache
+.gradle/
+build/
+bin/
+
+# IntelliJ IDEA
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws

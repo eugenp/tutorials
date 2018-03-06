@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain">
+	<class name="IdCard" table="id_card"><!--不加入table标签，表明类名和表名相同  -->
+		<id name="id" column="id">
+<!-- 			<generator class="foreign">
+				<param name="property">person</param>
+			</generator> --><!-- 共享主键方式 一对一 -->
+			<generator class="native"/>
+		</id>
+		<property name="usefulLife" column="useful_Life"/>
+		<!-- <one-to-one name="person" constrained="true"/>  共享主键方式一对一--><!-- constrained 加上外键引用 -->
+		<many-to-one name="person" column="person_id" update="true"/><!-- 唯一主键一对一 -->
+	</class>
+</hibernate-mapping>
+

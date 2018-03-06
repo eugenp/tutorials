@@ -1,0 +1,380 @@
+update service:
+ssh nonocast.cn -t todolist-update
+ssh nonocast.cn redis-cli flushall
+
+ts, react, webpack stack:
+webpack -watch
+
+
+todolist
+2. spring session with reids
+3. application logfile in web
+4. en-us/zh-cn
+5. unit test
+6. task: @who, #tag#
+7. highcharts
+8. 用户登录注册
+9. 用户信息修改
+
+bug
+gradle/webpack在windows下失败
+
+master
+TODO: closedAt
+
+v0.2.38
+完成前端重构,增加completed获取
+
+v0.2.37
+重构frontend react, 通过TaskManager完成协调工作
+
+v0.2.36
+more completed tasks by page
+
+v0.2.35
+fix login CDN auto
+
+v0.2.34
+fix admin CDN auto
+
+v0.2.33
+migrate to https
+1. add nginx.conf
+2. cdn //
+
+v0.2.32
+1. fix 增加@JsonView(ModelBase.API.class)一致json输出, 暂时未能解决redis deserialize Page, 所以还是采用User/TaskSummary+List
+
+v0.2.31
+fix bug: add UserSummary(APIViewModel) to protected User(Model)
+
+v0.2.30
+hide user password in TaskSummary.User
+
+v0.2.29
+fix User json property
+
+v0.2.28
+completed按创建时间逆序排列
+
+v0.2.27
+fix api/Tasks belongsToName is null
+task按时间逆序排列
+
+v0.2.26
+find taskSummary
+完成react page第一个版本
+
+v0.2.25
+frontend: 增加task分类界面
+
+v0.2.24
+momentjs typing files: typings install --save --global dt~moment dt~moment-node
+
+v0.2.23
+1. apply Ge UI
+
+v0.2.22
+fix User.role加上JsonView进行序列化, 否则无法访问/admin
+
+v0.2.21
+1. 通过扩展RedisCacheManger实现根据cacheName控制new RedisCache参数
+2. add redis cacheable
+3. 重构controller-service-repository, 控制层次, 制作cache
+
+v0.2.20
+1. database import and export
+2. admin增加backup management
+
+v0.2.19
+fix task title binding
+
+v0.2.18
+1. fix setState异步改变this.state,所以需要setState(..., callback);
+2. 增加task status changed
+
+v0.2.17
+1. react增加task edit
+2. task belongsTo改为LAZY
+3. try-catch ApiAuthenticationUserDetails
+
+v0.2.16
+fix bugs
+
+v0.2.15
+1. react增加log version
+
+v0.2.14
+1. 增加task删除
+
+v0.2.13
+1. rest api exception handle
+
+v0.2.12
+1. react中新建task
+2. add task api
+
+v0.2.11
+webjars改为bootcdn.cn
+
+v0.2.10
+webpack去掉jquery, bundle.js控制在10k以内
+
+v0.2.9
+bootcdn.cn对react和jquery加速
+
+v0.2.8
+1. api token auth
+2. 添加测试数据
+3. user增加到task的链接
+4. 整合react和api/tasks
+
+v0.2.7
+fix task编辑时无法显示form.belongsTo, 把@NotNull去掉就好了
+
+v0.2.6
+apply todolist style
+
+v0.2.5
+增加api/task
+db -> v0.1.7
+增加react skeleton
+
+v0.2.4
+add ts/react/webpack stack
+
+v.0.2.3
+调整结构,为typescript/react作准备
+
+v0.2.2
+1. api token supported
+
+v0.2.1
+1. first react page
+
+v0.2.0
+1. null or size (validator annotation)
+@Pattern(regexp="(^$|.{6,20})")
+
+v0.1.40
+1. task: 选择用户
+
+v0.1.39
+1. 增加delete user & task
+
+v0.1.38
+1. fix $.app.params 解析,需要decodeUrlComponent
+2. 支持sort=createdAt,desc
+
+
+v0.1.37
+1. search: add clear button
+    Clear Button in Bootstrap Input Group Component
+    https://www.thewebflash.com/clear-button-in-bootstrap-input-group-component/
+2. task: 去掉topmost和zindex, 改为priority
+
+v0.1.36
+1. fix task new & edit
+
+v0.1.35
+1. add form.error message
+2. extract FormBase
+3. add task new & edit
+4. spring.ftl
+    https://svn.apache.org/repos/asf/qpid/tags/pre-M1/java/java/management/core/lib/spring/spring.ftl
+
+v0.1.34
+fix edit page bugs
+
+v0.1.33
+1. 通过@ControllerAdvice将freemarker method加入model
+   http://blog.codeleak.pl/2013/11/controlleradvice-improvements-in-spring.html
+   http://blog.csdn.net/a67474506/article/details/46362783
+2. 增加user create & edit
+3. refactor admin controllers
+4. fix Spring Security config
+
+
+v0.1.32
+1. add user search
+2. 调整登录界面
+    spring security - cache last name
+    http://stackoverflow.com/questions/15052860/spring-security-authentication-get-username-without-spring-security-last-userna
+    Spring boot: failureHandler(...)
+
+v0.1.31
+1. 将task中的status和category改为enum
+2. 增加sort & filter
+3. admin -> role db:v0.1.4
+4. 增加$.app.params分析requst-url / coffee-script
+
+v0.1.30
+1. refactor resource => public, private
+2. admin.coffee
+3. add MySQL PROCEDURE create_user
+4. 增加pageable
+    Spring Data Jpa: 分页和排序
+    http://www.tianmaying.com/tutorial/spring-jpa-page-sort
+5. 将SpringMVC分页改为1-based page
+    java - How to configure PageableHandlerMethodArgumentResolver in spring boot application - Stack Overflow
+    http://stackoverflow.com/questions/35397912/how-to-configure-pageablehandlermethodargumentresolver-in-spring-boot-applicatio
+6. 增加pagnation macro
+
+v0.1.29
+还是DAOAccessException, MySQL 5.7还是有这个问题, 重新增加borrow和validate-query
+
+v0.1.28
+server.address=127.0.0.1
+
+v0.1.27
+1. 增加todolist-update
+    sudo ln -s /home/nonocast/.sdkman/candidates/gradle/current/bin/gradle /usr/bin/gradle
+2. 通过ssh nonocast.cn -t todolist-update
+    -t是需要模拟tty,用来sudo输入密码
+
+v0.1.26
+add task:publish
+
+v0.1.23
+再次出现 org.springframework.dao.DataAccessResourceFailureException
+说明v0.1.19没有解决此问题
+    spring.datasource.test-on-borrow=true
+    spring.datasource.validation-query=SELECT 1
+ref: http://tomaszdziurko.pl/2010/06/solving-com-mysql-jdbc-exceptions-jdbc4-communicationsexception-in-spring-jdbc-based-application/
+mysql升级到5.7直接解决问题!
+
+v0.1.22
+fix
+
+v0.1.21
+1. 增加Task-User relation
+2. 通过@AuthenticationPrincipal返回login user
+    public String home(@AuthenticationPrincipal User user)
+
+v0.1.20
+1. 增加Task
+2. 增加ModelBase
+
+v0.1.19
+1. 服务器出现DataAccessResourceFailureException,网上说需要在connection string增加autoReconnect=true, 需要观察
+
+2. 微信套路:
+    扫码后得到unionid, 如果user中已有则直接登录,如果没有跳转到/register
+    如果填写的邮箱没有则新增用户,如果已有转换为绑定.
+
+v0.1.18
+增加了wechatid判定
+
+v0.1.16
+fix wechat access
+
+v0.1.15
+1. 初步完成wechat接入
+
+v0.1.14
+1. fix mysql 中文乱码
+2. 增加注册
+3. Application获取context
+    @Autowired
+    private ApplicationContext appContext;
+4. 将wechat.json配置放在/etc/todolist/下,读取外部文件进行配置
+    Path p = Paths.get(path, "wechat.json");
+    String key = new String(Files.readAllBytes(p));
+5. 解析外部json
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    TypeReference<HashMap<String, String>> typeRef = new TypeReference<HashMap<String, String>>() {};
+    Map<String,String> settings = objectMapper.readValue(key, typeRef);
+6. 增加DBA, 配置数据库, --不合适取消了.
+    java -cp build/libs/todoapp-0.1.13-SNAPSHOT.jar cn.nonocast.DBA
+
+    查看jar包中的文件:
+    unzip -q -c todoapp-0.1.13-SNAPSHOT.jar META-INF/MANIFEST.MF
+    单独extract一个文件:
+    unzip -q todoapp-0.1.13-SNAPSHOT.jar META-INF/MANIFEST.MF
+
+unzip -q -c todoapp-x.y.z-SNAPSHOT.jar db/schema.sql
+unzip -q -c todoapp-x.y.z-SNAPSHOT.jar db/data.sql
+
+v0.1.13
+1. 模拟用户登录
+    UserDetails user = userDetailsManager.loadUserByUsername("linda@yahoo.com");
+    Authentication auth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+    SecurityContextHolder.getContext().setAuthentication(auth);
+    rememberMeServices.loginSuccess(request, response ,auth);
+这是因为wechat login需要单独使用rememberMeServices,所以需要在WebSecurityConfiguration中单独注入rememberMeServices
+
+2. fix logout, 不可以直接使用request.logout(), 这个logout不能清理cookie.
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){
+            rememberMeServices.logout(request, response, auth);
+            new SecurityContextLogoutHandler().logout(request, response, auth);
+        }
+
+        SecurityContextHolder.getContext().setAuthentication(null);
+        SecurityContextHolder.clearContext();
+
+        return "redirect:/login?logout";
+    }
+
+v0.1.12
+1. 外部配置, 增加dev, prod profile.
+    System variable: $ java -Dspring.profiles.active='prod' -jar myapp.jar
+    Command line argument: $ java -jar myapp.jar --spring.profiles.active='prod'
+2. Spring Boot 日志
+    logging.path=/var/log/todolist
+3. 微信登录, 增加/wechat/callback回调,显示code
+4. 增加service
+    sudo systemctl daemon-reload
+
+v0.1.11
+fix linux systemd service failed. 貌似要去掉devtools.
+还需要再验证.
+
+v0.1.10
+1. "mail"改为"email"
+2. freemarker增加spring.ftl, 完成spring binding
+3. 增加用户验证, Valid/Errors
+4. admin创建用户,显示错误,返回创建成功页面
+
+v0.1.9
+1. freemarker template
+2. 增加create_user
+
+v0.1.8
+1. 增加todolist数据库schema
+    User p = userRepository.findByEmail("nonocast@gmail.com");
+    p.setPassword(passwordEncoder.encode("123456"));
+    userRepository.save(p);
+2. 增加jpa
+3. 支持User/UserRepository
+4. 增加CustomUserService注入Spring Security
+5. 增加BCryptPasswordEncoder
+
+v0.1.7
+1. 去掉TodolistApplicationConfiguration中的403 handler.
+
+v0.1.6
+1. 替换error page
+Whitelabel Error Page出自Spring Boot中的WebMvcAutoConfiguration,
+在BasicErrorController中通过RequestMapping判定输出json还是html,
+所以在templates下增加error.ftl可以满足基本要求.
+
+v0.1.5 2016/6/26
+1. 通过@Value(project.version)获取application.properties
+2. build.gradle中通过Properties和PropertiesFile获取application.perperties中版本号
+
+v0.1.4 2016/6/26
+1. 增加Spring Boot， Spring Security和Freemarker支持。
+2. 增加devtools支持
+  1) gradle build --continuous
+  2) gradle bootRun
+2. 导入到IntelliJ IDEA
+  1) create Spring Boot project with SB V1.3 and add "Devtools" (1*) to dependencies
+  2) invoke Help->Find Action... and type "Registry", in the dialog search for "automake" and enable the entry "compiler.automake.allow.when.app.running", close dialog
+  3) enable background compilation in Settings->Build, Execution, Deployment->Compiler "Make project automatically"
+
+nonocast 创建于 2016/6/25

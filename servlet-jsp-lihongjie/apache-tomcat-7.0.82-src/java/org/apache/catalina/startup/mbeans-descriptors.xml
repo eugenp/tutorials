@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean name="ContextConfig"
+         description="Startup event listener for a Context that configures the properties of that Context, and the associated defined servlets"
+         domain="Catalina"
+         group="Listener"
+         type="org.apache.catalina.startup.ContextConfig">
+    
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+               
+    <attribute name="defaultContextXml"
+               description="The location of the default context file"
+               type="java.lang.String"/>  
+
+    <attribute name="defaultWebXml"
+               description="The location of the default deployment descriptor"
+               type="java.lang.String"/>     
+
+  </mbean>
+
+  <mbean name="EngineConfig"
+         description="Startup event listener for a Engine that configures the properties of that Engine, and the associated defined contexts"
+         domain="Catalina"
+         group="Listener"
+         type="org.apache.catalina.startup.EngineConfig">
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+      
+  </mbean>
+
+
+  <mbean name="HostConfig"
+         description="Startup event listener for a Host that configures the properties of that Host, and the associated defined contexts"
+         domain="Catalina"
+         group="Listener"
+         type="org.apache.catalina.startup.HostConfig">
+    
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="configBaseName"
+               description="The base directory for Context configuration files"
+               type="java.lang.String"
+               writeable="false" />
+
+    <attribute name="configClass"
+               description="The Java class name of the Context configuration class we should use"
+               type="java.lang.String"/>
+
+    <attribute name="contextClass"
+               description="The Java class name of the Context implementation we should use"
+               type="java.lang.String"/>
+               
+     <attribute name="copyXML"
+               description="The copy XML config file flag for this component"
+               is="true"
+               type="boolean"/>
+               
+     <attribute name="deployXML"
+               description="The deploy XML config file flag for this component"
+               is="true"
+               type="boolean"/>
+               
+     <attribute name="unpackWARs"
+               description="The unpack WARs flag"
+               is="true"
+               type="boolean"/>
+               
+    <operation name="addServiced"
+               description="Add a web application to the serviced list to show it gets serviced by another component"
+               impact="ACTION"
+               returnType="void">
+      <parameter name="name"
+                 description="Application name"
+                 type="java.lang.String"/>
+    </operation>
+      
+    <operation name="check"
+               description="Check a web application name for updates"
+               impact="ACTION"
+               returnType="void">
+      <parameter name="name"
+                 description="Application name"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation name="checkUndeploy"
+               description="Undeploy any old versions of applications deployed using parallel deployment that have no active sessions"
+               impact="ACTION"
+               returnType="void">
+    </operation>
+
+    <operation name="getDeploymentTime"
+               description="Get the instant where an application was deployed"
+               impact="ACTION"
+               returnType="long">
+      <parameter name="name"
+                 description="Application name"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation name="isDeployed"
+               description="Was this web application deployed by this component"
+               impact="ACTION"
+               returnType="boolean">
+      <parameter name="name"
+                 description="Application name"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation name="isServiced"
+               description="Is a web application serviced by another component"
+               impact="ACTION"
+               returnType="boolean">
+      <parameter name="name"
+                 description="Application name"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation name="manageApp"
+               description="Add a web application managed externally"
+               impact="ACTION"
+               returnType="void">
+      <parameter name="context"
+                 description="Context to add"
+                 type="org.apache.catalina.Context" />
+    </operation>
+
+    <operation name="removeServiced"
+               description="Remove a web application from the serviced list to show it isn't serviced by another component"
+               impact="ACTION"
+               returnType="void">
+      <parameter name="name"
+                 description="Application name"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation name="unmanageApp"
+               description="Remove a web application from checks"
+               impact="ACTION"
+               returnType="void">
+      <parameter name="contextPath"
+                 description="The application path"
+                 type="java.lang.String" />
+    </operation>
+
+  </mbean>
+
+</mbeans-descriptors>

@@ -1,0 +1,36 @@
+Apache Tomcat
+Copyright 1999-2017 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+The Windows Installer is built with the Nullsoft
+Scriptable Install System (NSIS), which is
+open source software.  The original software and
+related information is available at
+http://nsis.sourceforge.net.
+
+Java compilation software for JSP pages is provided by the Eclipse
+JDT Core Batch Compiler component, which is open source software.
+The original software and related information is available at
+http://www.eclipse.org/jdt/core/.
+
+For the bayeux implementation
+The org.apache.cometd.bayeux API is derivative work originating at the Dojo Foundation
+* Copyright 2007-2008 Guy Molinari
+* Copyright 2007-2008 Filip Hanik
+* Copyright 2007 Dojo Foundation
+* Copyright 2007 Mort Bay Consulting Pty. Ltd.
+
+The original XML Schemas for Java EE Deployment Descriptors:
+ - javaee_5.xsd
+ - javaee_web_services_1_2.xsd
+ - javaee_web_services_client_1_2.xsd
+ - javaee_6.xsd
+ - javaee_web_services_1_3.xsd
+ - javaee_web_services_client_1_3.xsd
+ - jsp_2_2.xsd
+ - web-app_3_0.xsd
+ - web-common_3_0.xsd
+ - web-fragment_3_0.xsd
+may be obtained from http://java.sun.com/xml/ns/javaee/

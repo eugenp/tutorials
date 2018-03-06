@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.mybatis3.mappers.TutorMapper">
+	
+	
+  	<resultMap type="Tutor" id="TutorWithCoursesNestedResult">
+  		<id 	column="tutor_id" property="tutorId"/>
+  		<result column="tutor_name" property="name"/>
+  		<result column="email" property="email"/>
+  		<association property="address" resultMap="com.mybatis3.mappers.AddressMapper.AddressResult"/>
+  		<collection property="courses"  resultMap="com.mybatis3.mappers.CourseMapper.CourseResult"  />
+  	</resultMap>
+  	
+  	<resultMap type="Tutor" id="TutorWithCoursesNestedSelect">
+  		<id 	column="tutor_id" property="tutorId"/>
+  		<result column="tutor_name" property="name"/>
+  		<result column="email" property="email"/>
+  		<association property="address" resultMap="com.mybatis3.mappers.AddressMapper.AddressResult"/>
+  		<collection property="courses"  column="tutor_id" select="com.mybatis3.mappers.CourseMapper.selectCoursesByTutor"/>
+  	</resultMap>
+  	
+  	<select id="selectTutorById" parameterType="int" resultMap="TutorWithCoursesNestedResult">
+  		SELECT t.tutor_id, t.name as tutor_name, email, a.addr_id, street, city, state, zip, country,
+       			course_id, c.name, description, start_date, end_date
+		FROM tutors t left outer join addresses a on t.addr_id=a.addr_id
+		  left outer join courses c on t.tutor_id=c.tutor_id
+		where t.tutor_id=#{tutorId}
+  	</select>
+  	
+  	<select id="selectTutorWithCourses" parameterType="int" resultMap="TutorWithCoursesNestedSelect">
+  		SELECT t.tutor_id, t.name as tutor_name, email, a.addr_id, street, city, state, zip, country
+		FROM tutors t left outer join addresses a on t.addr_id=a.addr_id
+		where t.tutor_id=#{tutorId}
+  	</select>
+  	
+</mapper>

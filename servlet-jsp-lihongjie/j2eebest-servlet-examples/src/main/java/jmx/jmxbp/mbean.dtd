@@ -1,0 +1,23 @@
+<!ELEMENT application (mbean+)>
+
+<!ELEMENT mbean (description?, (attribute | operation | notification)+)>
+<!ATTLIST mbean
+  className CDATA #REQUIRED
+>
+
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT attribute (#PCDATA)>
+<!ATTLIST attribute
+  name CDATA #REQUIRED
+>
+
+<!ELEMENT operation (#PCDATA)>
+<!ATTLIST operation
+  name CDATA #REQUIRED
+>
+
+<!ELEMENT notification (#PCDATA)>
+<!ATTLIST notification
+  type CDATA #REQUIRED
+>

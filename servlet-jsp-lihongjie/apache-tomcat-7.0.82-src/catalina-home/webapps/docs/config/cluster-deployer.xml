@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cluster-deployer.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>The Cluster Deployer object</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  <p>The Farm War Deployer can deploy and undeploy web applications on the other
+  nodes in the cluster.</p>
+  <p><strong>Note: </strong>FarmWarDeployer can be configured at host level
+  cluster only.
+  </p>
+</section>
+
+
+<section name="org.apache.catalina.ha.deploy.FarmWarDeployer">
+
+  <subsection name="Attributes">
+
+    <attributes>
+      <attribute name="className" required="true">
+        The cluster deployer class, currently only one is available,
+        <code>org.apache.catalina.ha.deploy.FarmWarDeployer.</code>
+      </attribute>
+      <attribute name="deployDir" required="true">
+        Deployment directory. This is the pathname of a directory where deploy
+        the web applications. You may specify an absolute pathname, or a
+        pathname that is relative to the $CATALINA_BASE directory. In the
+        current implementation, this attribute must be the same value as the
+        <strong>Host's appBase</strong>.
+      </attribute>
+      <attribute name="tempDir" required="true">
+        The temporaryDirectory to store binary data when downloading a war from
+        the cluster. You may specify an absolute pathname, or a pathname that is
+        relative to the $CATALINA_BASE directory.
+      </attribute>
+      <attribute name="watchDir" required="false">
+        This is the pathname of a directory where watch for changes(add/modify/remove)
+        of web applications. You may specify an absolute pathname, or a pathname
+        that is relative to the $CATALINA_BASE directory.
+        <strong>Note: </strong> if <strong>watchEnabled</strong> is false, this
+        attribute will have no effect.
+      </attribute>
+      <attribute name="watchEnabled" required="false">
+        Set to true if you want to watch for changes of web applications.
+        Only when this attribute set to true, you can trigger a deploy/undeploy
+        of web applications. The flag's value defaults to false.
+      </attribute>
+      <attribute name="processDeployFrequency" required="false">
+        Frequency of the Farm watchDir check. Cluster wide deployment will be
+        done once for the specified amount of backgroundProcess calls (ie, the
+        lower the amount, the most often the checks will occur). The minimum
+        value is 1, and the default value is 2.
+        <strong>Note: </strong> if <strong>watchEnabled</strong> is false, this
+        attribute will have no effect.
+      </attribute>
+      <attribute name="maxValidTime" required="false">
+        The maximum valid time(in seconds) of FileMessageFactory.
+        FileMessageFactory will be removed immediately after receiving the
+        complete WAR file but when failing to receive a FileMessage which was
+        sent dividing, FileMessageFactory will leak without being removed.
+        FileMessageFactory that is leaking will be automatically removed after
+        maxValidTime. If a negative value specified, FileMessageFactory will
+        never be removed. If the attribute is not provided, a default of 300
+        seconds (5 minutes) is used.
+      </attribute>
+    </attributes>
+
+  </subsection>
+
+</section>
+
+
+</body>
+
+</document>

@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+<!--
+    Just a basic set of rows that are currently sufficient for all tests.
+    In future, maybe several datasets are required.
+-->
+<dataset>
+
+    <BILLING_DETAILS
+        BILLING_DETAILS_ID      ="1"
+        BILLING_DETAILS_TYPE    ="CC"
+        OBJ_VERSION             ="0"
+        OWNER                   ="John Doe"
+        CREATED                 ="2006-09-23 13:45:00"
+        USER_ID                 ="1"
+        BA_ACCOUNT              ="[NULL]"
+        BA_BANKNAME             ="[NULL]"
+        BA_SWIFT                ="[NULL]"
+    />
+
+    <CREDIT_CARD CREDIT_CARD_ID     ="1"
+                 CC_TYPE            ="MASTERCARD"
+                 CC_NUMBER          ="123123123123"
+                 CC_EXP_MONTH       ="08"
+                 CC_EXP_YEAR        ="2010"
+            />
+
+    <USERS
+        USER_ID             ="1"
+        OBJ_VERSION         ="0"
+        FIRSTNAME           ="John"
+        LASTNAME            ="Doe"
+        USERNAME            ="johndoe"
+        PASSWORD            ="secret"
+        EMAIL               ="jd@mail.tld"
+        RANK                ="0"
+        IS_ADMIN            ="true"
+        CREATED             ="2006-09-23 13:45:00"
+        HOME_STREET         ="Foostreet"
+        HOME_ZIPCODE        ="22222"
+        HOME_CITY           ="Foocity"
+        DEFAULT_BILLING_DETAILS_ID ="1"
+    />
+
+    <USERS
+        USER_ID             ="2"
+        OBJ_VERSION         ="0"
+        FIRSTNAME           ="Another"
+        LASTNAME            ="User"
+        USERNAME            ="anotheruser"
+        PASSWORD            ="secret"
+        EMAIL               ="anotheruser@mail.tld"
+        RANK                ="0"
+        IS_ADMIN            ="false"
+        CREATED             ="2006-09-23 13:45:00"
+        HOME_STREET         ="Foostreet"
+        HOME_ZIPCODE        ="22222"
+        HOME_CITY           ="Foocity"
+        DEFAULT_BILLING_DETAILS_ID ="[NULL]"
+    />
+
+    <ADDRESS
+        ADDRESS_ID      ="1"
+        OBJ_VERSION     ="0"
+        STREET          ="Shippingstreet 1"
+        ZIPCODE         ="12345"
+        CITY            ="Shippingcity"
+    />
+
+    <ITEM
+        ITEM_ID                 ="1"
+        OBJ_VERSION             ="0"
+        ITEM_NAME               ="Testitem 1"
+        DESCRIPTION             ="This is TestItem One."
+        INITIAL_PRICE           ="99"
+        INITIAL_PRICE_CURRENCY  ="USD"
+        RESERVE_PRICE           ="123"
+        RESERVE_PRICE_CURRENCY  ="USD"
+        START_DATE              ="2006-09-23 13:45:00"
+        END_DATE                ="2016-09-23 13:45:00"
+        ITEM_STATE              ="ACTIVE"
+        APPROVED_BY_USER_ID     ="1"
+        APPROVAL_DATETIME       ="2006-09-23 13:45:00"
+        SELLER_ID               ="1"
+        SUCCESSFUL_BID_ID       ="2"
+        CREATED                 ="2006-09-23 13:45:00"
+    />
+
+    <ITEM
+        ITEM_ID                 ="2"
+        OBJ_VERSION             ="0"
+        ITEM_NAME               ="Testitem 2"
+        DESCRIPTION             ="This is TestItem Two."
+        INITIAL_PRICE           ="111"
+        INITIAL_PRICE_CURRENCY  ="USD"
+        RESERVE_PRICE           ="222"
+        RESERVE_PRICE_CURRENCY  ="USD"
+        START_DATE              ="2006-09-23 13:45:00"
+        END_DATE                ="2016-09-23 13:45:00"
+        ITEM_STATE              ="DRAFT"
+        APPROVED_BY_USER_ID     ="1"
+        APPROVAL_DATETIME       ="2006-09-23 13:45:00"
+        SELLER_ID               ="1"
+        SUCCESSFUL_BID_ID       ="[NULL]"
+        CREATED                 ="2006-09-23 13:45:00"
+    />
+
+    <BID
+        BID_ID                  ="1"
+        BID_AMOUNT              ="100"
+        BID_AMOUNT_CURRENCY     ="USD"
+        ITEM_ID                 ="1"
+        BIDDER_ID               ="1"
+        BID_POSITION            ="0"
+        CREATED                 ="2006-09-23 13:46:00"
+    />
+
+    <BID
+        BID_ID                  ="2"
+        BID_AMOUNT              ="124"
+        BID_AMOUNT_CURRENCY     ="USD"
+        ITEM_ID                 ="1"
+        BIDDER_ID               ="1"
+        BID_POSITION            ="1"
+        CREATED                 ="2006-09-23 13:47:00"
+    />
+
+    <CATEGORY
+        CATEGORY_ID             ="1"
+        OBJ_VERSION             ="0"
+        CATEGORY_NAME           ="Category One"
+        CREATED                 ="2006-09-23 13:45:00"
+        PARENT_CATEGORY_ID      ="[NULL]"
+    />
+
+    <CATEGORY
+        CATEGORY_ID             ="2"
+        OBJ_VERSION             ="0"
+        CATEGORY_NAME           ="Category Two"
+        CREATED                 ="2006-09-23 13:45:00"
+        PARENT_CATEGORY_ID      ="1"
+    />
+
+    <CATEGORIZED_ITEM
+        CATEGORY_ID             ="1"
+        ITEM_ID                 ="1"
+        ADDED_BY_USER           ="johndoe"
+        ADDED_ON                ="2006-09-23 13:45:00"
+    />
+
+    <CATEGORIZED_ITEM
+        CATEGORY_ID             ="2"
+        ITEM_ID                 ="1"
+        ADDED_BY_USER           ="johndoe"
+        ADDED_ON                ="2006-09-23 13:45:00"
+    />
+
+    <COMMENT
+        COMMENT_ID              ="1"
+        OBJ_VERSION             ="0"
+        RATING                  ="OK"
+        COMMENT_TEXT            ="Just a comment."
+        ABOUT_ITEM_ID           ="1"
+        FROM_USER_ID            ="1"
+        CREATED                 ="2006-09-23 13:47:00"
+    />
+
+</dataset>

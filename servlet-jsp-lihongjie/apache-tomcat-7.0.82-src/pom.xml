@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<project xmlns="http://maven.apache.org/POM/4.0.0"  
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">  
+  
+  
+    <modelVersion>4.0.0</modelVersion>  
+    <groupId>org.apache.tomcat</groupId>  
+    <artifactId>apache-tomcat</artifactId>  
+    <name>apache-tomcat</name>  
+    <version>7.0.82</version>  
+  
+    <build>  
+        <finalName>apache-tomcat-7.0.82</finalName>  
+        <sourceDirectory>java</sourceDirectory>  
+        <testSourceDirectory>test</testSourceDirectory>  
+        <resources>  
+            <resource>  
+                <directory>java</directory>  
+            </resource>  
+        </resources>  
+        <testResources>  
+            <testResource>  
+                <directory>test</directory>  
+            </testResource>  
+        </testResources>  
+        <plugins>  
+            <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-compiler-plugin</artifactId>  
+                <version>3.5</version>  
+  
+                <configuration>  
+                    <encoding>UTF-8</encoding>  
+                    <source>1.7</source>  
+                    <target>1.7</target>  
+                </configuration>  
+            </plugin>  
+        </plugins>  
+    </build>  
+  
+    <dependencies>  
+        <dependency>  
+            <groupId>junit</groupId>  
+            <artifactId>junit</artifactId>  
+            <version>4.12</version>
+            <scope>test</scope>  
+        </dependency>  
+        <dependency>  
+            <groupId>ant</groupId>  
+            <artifactId>ant</artifactId>  
+            <version>1.7.0</version>  
+        </dependency>  
+		<dependency>
+			<groupId>ant</groupId>
+			<artifactId>ant-apache-log4j</artifactId>
+			<version>1.6.5</version>
+		</dependency>
+		  <dependency>
+        <groupId>ant</groupId>
+        <artifactId>ant-commons-logging</artifactId>
+        <version>1.6.5</version>
+    </dependency>
+        <dependency>  
+            <groupId>wsdl4j</groupId>  
+            <artifactId>wsdl4j</artifactId>  
+            <version>1.6.2</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>javax.xml.rpc</groupId>  
+            <artifactId>javax.xml.rpc-api</artifactId>  
+            <version>1.1</version>  
+        </dependency>  
+        <dependency>  
+            <groupId>org.eclipse.jdt.core.compiler</groupId>  
+            <artifactId>ecj</artifactId>  
+            <version>4.5.1</version>  
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.easymock/easymock -->
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <version>3.5</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>  
+  
+</project>  

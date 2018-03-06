@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="logging.html">
+
+    &project;
+
+  <properties>
+    <title>Logging in Tomcat</title>
+    <author>Allistair Crossley</author>
+    <author email="yoavs@apache.org">Yoav Shapira</author>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Introduction">
+    <p>
+      Logging in Apache Tomcat is implemented with the help of
+      <a href="http://commons.apache.org/logging">Apache Commons Logging</a>
+      library. That library is a thin wrapper above different logging
+      frameworks. It provides Tomcat with the ability to log
+      hierarchically across various log levels without the need to rely on a
+      particular logging implementation.
+    </p>
+
+    <p>
+      Since Tomcat 6.0, Tomcat uses a private package-renamed implementation of
+      Apache Commons Logging, to allow web applications to use their own
+      independent copies of the original Apache Commons Logging library.
+      In the default distribution this private copy of the library
+      is simplified and hardcoded to use the <code>java.util.logging</code> framework.
+    </p>
+
+    <p>
+      To configure Tomcat to use alternative logging frameworks for its internal
+      logging, one has to replace the logging library with the one that is built
+      with the full implementation. Such library is provided as an <a href="extras.html">extras</a>
+      component. Instructions on how to configure Tomcat to use Log4j framework
+      for its internal logging may be found <a href="#Using_Log4j">below</a>.
+    </p>
+
+    <p>
+      A web application running on Apache Tomcat can:
+    </p>
+    <ul>
+      <li>
+        Use system logging API, <code>java.util.logging</code>.
+      </li>
+      <li>
+        Use the logging API provided by the Java Servlets specification,
+        <code>javax.servlet.ServletContext.log(...)</code>
+      </li>
+      <li>
+        Use any logging framework of its choice.
+      </li>
+    </ul>
+
+    <p>
+      The logging frameworks used by different web applications run independently
+      of each other. See <a href="class-loader-howto.html">class loading</a>
+      for more details.
+      The exception to this rule is <code>java.util.logging</code>, if it used
+      directly or indirectly by your logging library. That is because it is loaded
+      by the system and is shared across web applications.
+    </p>
+
+    <subsection name="Java logging API &#8212; java.util.logging">
+
+    <p>
+      Apache Tomcat has its own implementation of several key elements of
+      <code>java.util.logging</code> API. This implementation is called "JULI".
+      The key component there is a custom LogManager implementation,
+      that is aware of different web applications running on Tomcat (and
+      their different class loaders). It supports private per-application
+      logging configurations. It is also notified by Tomcat when a web application
+      is unloaded from memory, so that the references to its classes can be
+      cleared, preventing memory leaks.
+    </p>
+
+    <p>
+      This <code>java.util.logging</code> implementation is enabled by providing
+      certain system properties when starting Java. The Apache Tomcat startup
+      scripts do this for you, but if you are using different tools to run
+      Tomcat (such as jsvc, or running Tomcat from within an IDE), you should
+      take care of them by yourself.
+    </p>
+
+    <p>
+      More details about java.util.logging may be found in the documentation
+      for your JDK and on its Javadoc pages for the <code>java.util.logging</code>
+      package.
+    </p>
+
+    <p>
+      More details about Tomcat JULI may be found below.
+    </p>
+
+    </subsection>
+
+    <subsection name="Servlets logging API">
+
+    <p>
+      The calls to <code>javax.servlet.ServletContext.log(...)</code> to write
+      log messages are handled by internal Tomcat logging. Such messages are
+      logged to the category named
+    </p>
+      <source>org.apache.catalina.core.ContainerBase.[${engine}].[${host}].[${context}]</source>
+    <p>
+      This logging is performed according to the Tomcat logging configuration. You
+      cannot overwrite it in a web application.
+    </p>
+
+    <p>
+      The Servlets logging API predates the <code>java.util.logging</code> API
+      that is now provided by Java. As such, it does not offer you much options.
+      E.g., you cannot control the log levels. It can be noted, though, that
+      in Apache Tomcat implementation the calls to <code>ServletContext.log(String)</code>
+      or <code>GenericServlet.log(String)</code> are logged at the INFO level.
+      The calls to <code>ServletContext.log(String, Throwable)</code> or
+      <code>GenericServlet.log(String, Throwable)</code>
+      are logged at the SEVERE level.
+    </p>
+
+    </subsection>
+
+    <subsection name="Console">
+
+    <p>
+      When running Tomcat on unixes, the console output is usually redirected
+      to the file named <code>catalina.out</code>. The name is configurable
+      using an environment variable. (See the startup scripts).
+      Whatever is written to <code>System.err/out</code> will be caught into
+      that file. That may include:
+    </p>
+
+    <ul>
+      <li>Uncaught exceptions printed by <code>java.lang.ThreadGroup.uncaughtException(..)</code></li>
+      <li>Thread dumps, if you requested them via a system signal</li>
+    </ul>
+
+    <p>
+      When running as a service on Windows, the console output is also caught
+      and redirected, but the file names are different.
+    </p>
+
+    <p>
+      The default logging configuration in Apache Tomcat writes the same
+      messages to the console and to a log file. This is great when using
+      Tomcat for development, but usually is not needed in production.
+    </p>
+
+    <p>
+      Old applications that still use <code>System.out</code> or <code>System.err</code>
+      can be tricked by setting <code>swallowOutput</code> attribute on a
+      <a href="config/context.html">Context</a>. If the attribute is set to
+      <code>true</code>, the calls to <code>System.out/err</code> during request
+      processing will be intercepted, and their output will be fed to the
+      logging subsystem using the
+      <code>javax.servlet.ServletContext.log(...)</code> calls.<br />
+      <strong>Note</strong>, that the <code>swallowOutput</code>  feature is
+      actually a trick, and it has its limitations.
+      It works only with direct calls to <code>System.out/err</code>,
+      and only during request processing cycle. It may not work in other
+      threads that might be created by the application. It cannot be used to
+      intercept logging frameworks that themselves write to the system streams,
+      as those start early and may obtain a direct reference to the streams
+      before the redirection takes place.
+    </p>
+
+    </subsection>
+
+    <subsection name="Access logging">
+
+    <p>
+      Access logging is a related but different feature, which is
+      implemented as a <code>Valve</code>. It uses self-contained
+      logic to write its log files. The essential requirement for
+      access logging is to handle a large continuous stream of data
+      with low overhead, so it only uses Apache Commons Logging for
+      its own debug messages. This implementation approach avoids
+      additional overhead and potentially complex configuration.
+      Please refer to the <a href="config/valve.html#Access_Logging">Valves</a>
+      documentation for more details on its configuration, including
+      the various report formats.
+    </p>
+
+    </subsection>
+
+  </section>
+
+  <section name="Using java.util.logging (default)">
+
+  <p>
+    The default implementation of java.util.logging provided in the JDK is too
+    limited to be useful. A limitation of JDK Logging appears to be the
+    inability to have per-web application logging,  as the configuration is
+    per-VM. As a result, Tomcat will, in the default configuration, replace the
+    default LogManager implementation with a container friendly implementation
+    called JULI, which addresses these shortcomings. It supports the same
+    configuration mechanisms as the standard JDK java.util.logging, using either
+    a programmatic approach, or properties files. The main difference is that
+    per-classloader properties files can be set (which enables easy redeployment
+    friendly webapp configuration), and the properties files support slightly
+    extended constructs which allows more freedom for defining handlers and
+    assigning them to loggers.
+  </p>
+  <p>
+    JULI is enabled by default, and supports per classloader configuration, in
+    addition to the regular global java.util.logging configuration. This means
+    that logging can be configured at the following layers:
+  </p>
+    <ul>
+      <li>Globally. That is usually done in the
+        <code>${catalina.base}/conf/logging.properties</code> file.
+        The file is specified by the <code>java.util.logging.config.file</code>
+        System property which is set by the startup scripts.
+        If it is not readable or is not configured, the default is to use the
+        <code>${java.home}/lib/logging.properties</code> file in the JRE.
+      </li>
+      <li>In the web application. The file will be
+        <code>WEB-INF/classes/logging.properties</code>
+      </li>
+    </ul>
+  <p>
+    The default <code>logging.properties</code> in the JRE specifies a
+    <code>ConsoleHandler</code> that routes logging to System.err.
+    The default <code>conf/logging.properties</code> in Apache Tomcat also
+    adds several <code>FileHandler</code>s that write to files.
+  </p>
+  <p>
+    A handler's log level threshold is INFO by default and can be set using
+    SEVERE, WARNING, INFO, CONFIG, FINE, FINER, FINEST or ALL.
+    You can also target specific packages to collect logging from and specify
+    a level.
+  </p>
+  <p>
+    Here is how you would set debugging from Tomcat. You would need to ensure the
+    ConsoleHandler's (or FileHandler's') level is also set to collect this threshold,
+    so FINEST or ALL should be set. Please refer to <code>java.util.logging</code>
+    documentation in the JDK for the complete details:
+  </p>
+  <source>org.apache.catalina.level=FINEST</source>
+  <p>
+    The configuration used by JULI is extremely similar to the one supported by
+    plain <code>java.util.logging</code>, but uses a few
+    extensions to allow better flexibility in assigning loggers. The main
+    differences are:
+  </p>
+  <ul>
+      <li>A prefix may be added to handler names, so that multiple handlers of a
+      single class may be instantiated. A prefix is a String which starts with a
+      digit, and ends with '.'. For example, <code>22foobar.</code> is a valid
+      prefix.</li>
+      <li>System property replacement is performed for property values which
+      contain ${systemPropertyName}.</li>
+      <li>As in Java 6, loggers can define a list of handlers using the
+      <code>loggerName.handlers</code> property.</li>
+      <li>By default, loggers will not delegate to their parent if they have
+      associated handlers. This may be changed per logger using the
+      <code>loggerName.useParentHandlers</code> property, which accepts a
+      boolean value.</li>
+      <li>The root logger can define its set of handlers using the
+      <code>.handlers</code> property.</li>
+      <li> By default the log files will be kept on the file system forever.
+      This may be changed per handler using the
+      <code>handlerName.maxDays</code> property. If the specified value for the
+      property is <code>&lt;=0</code> then the log files will be kept on the
+      file system forever, otherwise they will be kept the specified maximum
+      days.</li>
+  </ul>
+  <p>
+    There are several additional implementation classes, that can be used
+    together with the ones provided by Java. The notable one is
+    <code>org.apache.juli.FileHandler</code>.
+  </p>
+  <p>
+    <code>org.apache.juli.FileHandler</code> supports buffering of the
+      logs. The buffering is not enabled by default. To configure it, use the
+      <code>bufferSize</code> property of a handler. The value of <code>0</code>
+      uses system default buffering (typically an 8K buffer will be used). A
+      value of <code>&lt;0</code> forces a writer flush upon each log write. A
+      value <code>&gt;0</code> uses a BufferedOutputStream with the defined
+      value but note that the system default buffering will also be
+      applied.
+  </p>
+  <p>
+    Example logging.properties file to be placed in $CATALINA_BASE/conf:
+  </p>
+  <source><![CDATA[handlers = 1catalina.org.apache.juli.FileHandler, \
+           2localhost.org.apache.juli.FileHandler, \
+           3manager.org.apache.juli.FileHandler, \
+           java.util.logging.ConsoleHandler
+
+.handlers = 1catalina.org.apache.juli.FileHandler, java.util.logging.ConsoleHandler
+
+############################################################
+# Handler specific properties.
+# Describes specific configuration info for Handlers.
+############################################################
+
+1catalina.org.apache.juli.FileHandler.level = FINE
+1catalina.org.apache.juli.FileHandler.directory = ${catalina.base}/logs
+1catalina.org.apache.juli.FileHandler.prefix = catalina.
+
+2localhost.org.apache.juli.FileHandler.level = FINE
+2localhost.org.apache.juli.FileHandler.directory = ${catalina.base}/logs
+2localhost.org.apache.juli.FileHandler.prefix = localhost.
+
+3manager.org.apache.juli.FileHandler.level = FINE
+3manager.org.apache.juli.FileHandler.directory = ${catalina.base}/logs
+3manager.org.apache.juli.FileHandler.prefix = manager.
+3manager.org.apache.juli.FileHandler.bufferSize = 16384
+
+java.util.logging.ConsoleHandler.level = FINE
+java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
+
+
+############################################################
+# Facility specific properties.
+# Provides extra control for each logger.
+############################################################
+
+org.apache.catalina.core.ContainerBase.[Catalina].[localhost].level = INFO
+org.apache.catalina.core.ContainerBase.[Catalina].[localhost].handlers = \
+   2localhost.org.apache.juli.FileHandler
+
+org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager].level = INFO
+org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager].handlers = \
+   3manager.org.apache.juli.FileHandler
+
+# For example, set the org.apache.catalina.util.LifecycleBase logger to log
+# each component that extends LifecycleBase changing state:
+#org.apache.catalina.util.LifecycleBase.level = FINE]]></source>
+
+    <p>
+      Example logging.properties for the servlet-examples web application to be
+      placed in WEB-INF/classes inside the web application:
+    </p>
+    <source><![CDATA[handlers = org.apache.juli.FileHandler, java.util.logging.ConsoleHandler
+
+############################################################
+# Handler specific properties.
+# Describes specific configuration info for Handlers.
+############################################################
+
+org.apache.juli.FileHandler.level = FINE
+org.apache.juli.FileHandler.directory = ${catalina.base}/logs
+org.apache.juli.FileHandler.prefix = servlet-examples.
+
+java.util.logging.ConsoleHandler.level = FINE
+java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter]]></source>
+
+
+    <subsection name="Documentation references">
+      <p>See the following resources for additional information:</p>
+      <ul>
+        <li>Apache Tomcat Javadoc for the
+          <a href="api/org/apache/juli/package-summary.html"><code>org.apache.juli</code></a>
+          package.
+        </li>
+        <li>Oracle Java 6 Javadoc for the
+          <a href="http://docs.oracle.com/javase/6/docs/api/java/util/logging/package-summary.html"><code>java.util.logging</code></a>
+          package.
+        </li>
+      </ul>
+    </subsection>
+
+    <subsection name="Considerations for productive usage">
+      <p>You may want to take note of the following:</p>
+      <ul>
+        <li><p>Consider removing <code>ConsoleHandler</code> from configuration.</p>
+        <p>By default (thanks to the <code>.handlers</code> setting) logging goes
+        both to a <code>FileHandler</code> and to a <code>ConsoleHandler</code>.
+        The output of the latter one is usually captured into a file, such as
+        <code>catalina.out</code>. Thus you end up with two copies of the same
+        messages.</p>
+        </li>
+        <li><p>Consider removing <code>FileHandler</code>s for the applications
+        that you do not use. E.g., the one for <code>host-manager</code>.</p></li>
+        <li><p>The handlers by default use the system default encoding to write
+        the log files. It can be configured with <code>encoding</code> property.
+        See Javadoc for details.</p></li>
+        <li><p>Consider configuring an
+        <a href="config/valve.html#Access_Logging">Access log</a>.</p></li>
+      </ul>
+    </subsection>
+
+  </section>
+
+  <section name="Using Log4j">
+    <p>
+      This section explains how to configure Tomcat to use
+      <a href="http://logging.apache.org/log4j/">log4j</a> rather than
+      java.util.logging for all Tomcat's internal logging.
+    </p>
+    <p><em>Note</em>: The steps described in this section are needed
+      when you want to reconfigure Tomcat to use Apache log4j for its own
+      logging. These steps are <strong>not</strong> needed if you just want
+      to use log4j in your own web application. &#8212; In that case, just
+      put <code>log4j.jar</code> and <code>log4j.properties</code> into
+      <code>WEB-INF/lib</code> and <code>WEB-INF/classes</code>
+      of your web application.
+    </p>
+    <p>
+      The following steps describe configuring log4j to output Tomcat's
+      internal logging.
+    </p>
+
+    <ol>
+        <li>Create a file called <code>log4j.properties</code> with the
+        following content and save it into <code>$CATALINA_BASE/lib</code></li>
+    </ol>
+    <source><![CDATA[
+log4j.rootLogger = INFO, CATALINA
+
+# Define all the appenders
+log4j.appender.CATALINA = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.CATALINA.File = ${catalina.base}/logs/catalina
+log4j.appender.CATALINA.Append = true
+log4j.appender.CATALINA.Encoding = UTF-8
+# Roll-over the log once per day
+log4j.appender.CATALINA.DatePattern = '.'yyyy-MM-dd'.log'
+log4j.appender.CATALINA.layout = org.apache.log4j.PatternLayout
+log4j.appender.CATALINA.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+log4j.appender.LOCALHOST = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.LOCALHOST.File = ${catalina.base}/logs/localhost
+log4j.appender.LOCALHOST.Append = true
+log4j.appender.LOCALHOST.Encoding = UTF-8
+log4j.appender.LOCALHOST.DatePattern = '.'yyyy-MM-dd'.log'
+log4j.appender.LOCALHOST.layout = org.apache.log4j.PatternLayout
+log4j.appender.LOCALHOST.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+log4j.appender.MANAGER = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.MANAGER.File = ${catalina.base}/logs/manager
+log4j.appender.MANAGER.Append = true
+log4j.appender.MANAGER.Encoding = UTF-8
+log4j.appender.MANAGER.DatePattern = '.'yyyy-MM-dd'.log'
+log4j.appender.MANAGER.layout = org.apache.log4j.PatternLayout
+log4j.appender.MANAGER.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+log4j.appender.HOST-MANAGER = org.apache.log4j.DailyRollingFileAppender
+log4j.appender.HOST-MANAGER.File = ${catalina.base}/logs/host-manager
+log4j.appender.HOST-MANAGER.Append = true
+log4j.appender.HOST-MANAGER.Encoding = UTF-8
+log4j.appender.HOST-MANAGER.DatePattern = '.'yyyy-MM-dd'.log'
+log4j.appender.HOST-MANAGER.layout = org.apache.log4j.PatternLayout
+log4j.appender.HOST-MANAGER.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+log4j.appender.CONSOLE = org.apache.log4j.ConsoleAppender
+log4j.appender.CONSOLE.Encoding = UTF-8
+log4j.appender.CONSOLE.layout = org.apache.log4j.PatternLayout
+log4j.appender.CONSOLE.layout.ConversionPattern = %d [%t] %-5p %c- %m%n
+
+# Configure which loggers log to which appenders
+log4j.logger.org.apache.catalina.core.ContainerBase.[Catalina].[localhost] = INFO, LOCALHOST
+log4j.logger.org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/manager] =\
+  INFO, MANAGER
+log4j.logger.org.apache.catalina.core.ContainerBase.[Catalina].[localhost].[/host-manager] =\
+  INFO, HOST-MANAGER]]></source>
+    <ol start="2">
+        <li><a href="http://logging.apache.org/log4j">Download Log4J</a>
+        (Tomcat requires v1.2.x).</li>
+
+        <li><p>Download or build <code>tomcat-juli.jar</code> and
+        <code>tomcat-juli-adapters.jar</code> that are available as an "extras"
+        component for Tomcat. See <a href="extras.html">Additional Components
+        documentation</a> for details.</p>
+        <p>This <code>tomcat-juli.jar</code> differs from the default one. It
+        contains the full Apache Commons Logging implementation and thus is
+        able to discover the presence of log4j and configure itself.</p>
+        </li>
+
+        <li><p>If you want to configure Tomcat to use log4j globally:</p>
+        <ul>
+          <li>Put <code>log4j.jar</code> and
+            <code>tomcat-juli-adapters.jar</code> from "extras" into
+            <code>$CATALINA_HOME/lib</code>.</li>
+          <li>Replace <code>$CATALINA_HOME/bin/tomcat-juli.jar</code> with
+          <code>tomcat-juli.jar</code> from "extras".</li>
+        </ul>
+        </li>
+
+        <li><p>If you are running Tomcat with separate $CATALINA_HOME and
+        $CATALINA_BASE and want to configure to use log4j in a single
+        $CATALINA_BASE only:</p>
+        <ul>
+          <li>Create <code>$CATALINA_BASE/bin</code> and
+          <code>$CATALINA_BASE/lib</code> directories if they do not exist.
+          </li>
+          <li>Put <code>log4j.jar</code> and
+             <code>tomcat-juli-adapters.jar</code> from "extras" into
+             <code>$CATALINA_BASE/lib</code></li>
+          <li>Put <code>tomcat-juli.jar</code> from "extras" as
+          <code>$CATALINA_BASE/bin/tomcat-juli.jar</code></li>
+          <li>If you are running with a
+          <a href="security-manager-howto.html">security manager</a>, you
+          would need to edit the
+          <code>$CATALINA_BASE/conf/catalina.policy</code> file to adjust
+          it to using a different copy of tomcat-juli.jar.</li>
+        </ul>
+        </li>
+
+        <li><p>Delete <code>$CATALINA_BASE/conf/logging.properties</code> to
+        prevent java.util.logging generating zero length log files.</p></li>
+
+        <li><p>Start Tomcat</p></li>
+    </ol>
+
+    <p>
+      This log4j configuration mirrors the default java.util.logging setup
+      that ships with Tomcat: both the manager and host-manager apps get an
+      individual log file, and everything else goes to the "catalina.log" log
+      file. Each file is rolled-over once per day.
+    </p>
+
+    <p>
+      You can (and should) be more picky about which packages to include
+      in the logging. Tomcat defines loggers by Engine and Host names.
+      For example, for a more detailed Catalina localhost log, add this to the
+      end of the log4j.properties above. Note that there are known issues with
+      using this naming convention (with square brackets) in log4j XML based
+      configuration files, so we recommend you use a properties file as
+      described until a future version of log4j allows this convention.
+    </p>
+      <source><![CDATA[log4j.logger.org.apache.catalina.core.ContainerBase.[Catalina].[localhost]=DEBUG
+log4j.logger.org.apache.catalina.core=DEBUG
+log4j.logger.org.apache.catalina.session=DEBUG]]></source>
+
+    <p>
+      Be warned: a level of DEBUG will produce megabytes of logging and slow
+      startup of Tomcat. This level should be used sparingly when debugging of
+      internal Tomcat operations is required.
+    </p>
+
+    <p>
+      Your web applications should certainly use their own log4j configuration.
+      This is valid <i>with</i> the above configuration.  You would place a
+      similar log4j.properties file in your web application's WEB-INF/classes
+      directory, and log4jx.y.z.jar into WEB-INF/lib. Then specify your package
+      level logging. This is a basic setup of log4j which does *not* require
+      Commons-Logging, and you should consult the
+      <a href="http://logging.apache.org/log4j/docs/documentation.html">log4j
+      documentation</a> for more options. This page is intended only as a
+      bootstrapping guide.
+    </p>
+
+    <p><em>Additional notes</em></p>
+    <ul>
+        <li><p>This exposes log4j libraries to the web applications through the
+        Common classloader. See <a href="class-loader-howto.html">class loading</a>
+        documentation for details.</p>
+        <p>Because of that, the web applications and libraries using
+        <a href="http://commons.apache.org/logging">Apache Commons Logging</a>
+        library are likely to automatically choose log4j as the underlying
+        logging implementation.</p></li>
+
+        <li><p>The <code>java.util.logging</code> API is still available for
+        those web applications that use it directly.  The
+        <code>${catalina.base}/conf/logging.properties</code> file is still
+        referenced by Tomcat startup scripts.  For more information, see the
+        subsections of the <a href="#Introduction">Introduction</a> to
+        this page.</p>
+        <p> Removal of <code>${catalina.base}/conf/logging.properties</code>
+        file, mentioned as one of the steps above, causes
+        <code>java.util.logging</code> to fallback to the default
+        configuration for the JRE, which is to use a ConsoleHandler
+        and therefore not create any standard log files.  You should
+        confirm that all your log files are being created by log4j
+        <i>before</i> disabling the standard mechanism.</p></li>
+
+        <li><p>The <strong>Access Log Valve</strong> and
+        <strong>ExtendedAccessLogValve</strong> use their own self-contained
+        logging implementation, so they
+        <strong><i>cannot be configured to use log4j</i></strong>.
+        Refer to <a href="config/valve.html#Access_Logging">Valves</a>
+        for specific configuration details.</p></li>
+    </ul>
+  </section>
+
+</body>
+</document>

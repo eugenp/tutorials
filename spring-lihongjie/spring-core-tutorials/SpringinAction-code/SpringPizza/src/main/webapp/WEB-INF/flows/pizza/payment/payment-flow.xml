@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/webflow 
+  http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+  <input name="order" required="true"/>
+  
+  <view-state id="takePayment" model="flowScope.paymentDetails">
+    <on-entry>
+      <set name="flowScope.paymentDetails" 
+          value="new com.springinaction.pizza.domain.PaymentDetails()" />
+
+      <evaluate result="viewScope.paymentTypeList" expression=
+               "T(com.springinaction.pizza.domain.PaymentType).asList()" />
+    </on-entry>
+    <transition on="paymentSubmitted" to="verifyPayment" />
+    <transition on="cancel" to="cancel" />
+  </view-state>
+  
+  <action-state id="verifyPayment">
+    <evaluate result="order.payment" expression=
+        "pizzaFlowActions.verifyPayment(flowScope.paymentDetails)" />
+    <transition to="paymentTaken" />
+  </action-state>
+          
+  <end-state id="cancel" />
+  <end-state id="paymentTaken" />
+</flow>

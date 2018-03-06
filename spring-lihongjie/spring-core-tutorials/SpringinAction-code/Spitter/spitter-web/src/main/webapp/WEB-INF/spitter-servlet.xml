@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:util="http://www.springframework.org/schema/util"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+   <bean id="messageSource"
+         class="org.springframework.context.support.ResourceBundleMessageSource">
+     <property name="basenames">
+       <list>
+         <value>ui</value>
+       </list>
+     </property>
+   </bean>
+
+   <!--<start id="multipart_resolver"/>-->   
+   <bean id="multipartResolver" class=
+	   "org.springframework.web.multipart.commons.CommonsMultipartResolver"
+     p:maxUploadSize="500000" />
+   <!--<end id="multipart_resolver"/>-->   
+   
+   <!--<start id="spring_component_scan" />-->
+   <context:component-scan base-package="com.habuma.spitter.mvc" />
+   <!--<end id="spring_component_scan" />-->
+
+   <!--<start id="mvc_annotatedcontrollers" />-->
+   <mvc:annotation-driven/>
+   <!--<end id="mvc_annotatedcontrollers" />-->
+
+   <!--<start id="mvc_resources"/>--> 
+   <mvc:resources mapping="/resources/**" location="/resources/" />
+   <!--<end id="mvc_resources"/>--> 
+
+   <mvc:interceptors>
+     <mvc:interceptor>
+       <mvc:mapping path="/**" />
+       <bean class="com.habuma.spitter.mvc.SpittleBackingBeanInterceptor" />
+     </mvc:interceptor>
+   </mvc:interceptors>
+
+
+
+<!--   <bean name="spitter/spittles" -->
+<!--       class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />-->
+
+<!--   <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">-->
+<!--     <property name="mediaTypes">-->
+<!--       <map>-->
+<!--         <entry key="htm" value="text/html"/>-->
+<!--         <entry key="json" value="application/json"/>-->
+<!--       </map>-->
+<!--     </property>-->
+<!--     <property name="defaultViews">-->
+<!--       <list>-->
+<!--         <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />-->
+<!--       </list>-->
+<!--     </property>-->
+<!--   </bean>-->
+<!--   -->
+
+
+   <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+     <property name="definitions">
+       <list>
+         <value>/WEB-INF/views/**/views.xml</value>
+       </list>
+     </property>
+   </bean>
+      
+   <bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver"/>
+
+   <util:properties id="s3Properties" 
+                    location="classpath:s3.properties"/>
+   
+   <import resource="classpath:jmx-context.xml"/>   
+</beans>

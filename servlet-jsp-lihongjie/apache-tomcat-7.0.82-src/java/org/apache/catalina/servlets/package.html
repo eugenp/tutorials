@@ -1,0 +1,33 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<body>
+
+<p>This package contains <code>Servlets</code> that implement some of the
+standard functionality provided by the Catalina servlet container.  Because
+these servlets are in the <code>org.apache.catalina</code> package hierarchy,
+they are in the privileged position of being able to reference internal server
+data structures, which application level servlets are prevented from
+accessing (by the application class loader implementation).</p>
+
+<p>To the extent that these servlets depend upon internal Catalina data
+structures, they are obviously not portable to other servlet container
+environments.  However, they can be used as models for creating application
+level servlets that provide similar capabilities -- most obviously the
+<a href="DefaultServlet.html">DefaultServlet</a> implementation, which
+serves static resources when Catalina runs stand-alone.</p>
+
+</body>

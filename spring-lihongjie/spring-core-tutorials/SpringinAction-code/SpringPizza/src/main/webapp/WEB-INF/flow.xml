@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:flow="http://www.springframework.org/schema/webflow-config"
+ xmlns:p="http://www.springframework.org/schema/p"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/webflow-config 
+   http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd
+   http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+  <context:component-scan base-package="com.springinaction.pizza.flow" />
+
+  <!-- Executes flows: the entry point into the Spring Web Flow system -->
+  <!--<start id="flow_executor"/>--> 
+  <flow:flow-executor id="flowExecutor"
+                      flow-registry="flowRegistry" />
+  <!--<end id="flow_executor"/>--> 
+
+  <!-- The registry of executable flow definitions -->
+  <!--<start id="flow_registry"/>--> 
+  <flow:flow-registry id="flowRegistry" 
+           flow-builder-services="flowBuilderServices"
+           base-path="/WEB-INF/flows">
+     <flow:flow-location-pattern value="/**/*-flow.xml" />
+  </flow:flow-registry>
+
+  <flow:flow-builder-services id="flowBuilderServices" 
+           view-factory-creator="mvcViewFactoryCreator"/>
+  <!--<end id="flow_registry"/>--> 
+
+  <!--<start id="mvcFactoryCreator"/>--> 
+  <bean id="mvcViewFactoryCreator" class=
+      "org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+     <property name="defaultViewSuffix" value=".jspx" />   
+  </bean>
+  <!--<end id="mvcFactoryCreator"/>-->  
+
+  <!--Maps request paths to flows in the flowRegistry-->
+  <!--<start id="flowHandlerMapping"/>--> 
+  <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+    <property name="flowRegistry" ref="flowRegistry" />
+  </bean>
+  <!--<end id="flowHandlerMapping"/>--> 
+
+  <!--
+   Dispatches requests mapped to flows to FlowHandler implementations
+  -->
+  <!--<start id="flowHandlerAdapter"/>--> 
+  <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
+    <property name="flowExecutor" ref="flowExecutor" />
+  </bean>
+  <!--<end id="flowHandlerAdapter"/>--> 
+
+</beans>

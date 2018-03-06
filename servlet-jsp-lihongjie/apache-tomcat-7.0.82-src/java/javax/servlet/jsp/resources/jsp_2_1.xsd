@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!--
+  **  The actual Sun XSD for this stripped down XSD can be found at
+  **  http://java.sun.com/xml/ns/javaee/jsp_2_1.xsd
+  **  This XSD contains only the functional elements for programatic use.
+-->
+
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"             
+            targetNamespace="http://java.sun.com/xml/ns/javaee" 
+            xmlns:javaee="http://java.sun.com/xml/ns/javaee" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            elementFormDefault="qualified" 
+            attributeFormDefault="unqualified" 
+            version="2.1">
+
+    <xsd:include schemaLocation="javaee_5.xsd" />
+
+    <xsd:complexType name="jsp-configType">
+        <xsd:sequence>
+            <xsd:element name="taglib" type="javaee:taglibType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="jsp-property-group" type="javaee:jsp-property-groupType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="jsp-fileType">
+        <xsd:simpleContent>
+            <xsd:restriction base="javaee:pathType" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="jsp-property-groupType">
+        <xsd:sequence>
+            <xsd:group ref="javaee:descriptionGroup"/>
+            <xsd:element name="url-pattern" type="javaee:url-patternType" maxOccurs="unbounded" />
+            <xsd:element name="el-ignored" type="javaee:true-falseType" minOccurs="0" />
+            <xsd:element name="page-encoding" type="javaee:string" minOccurs="0" />
+            <xsd:element name="scripting-invalid" type="javaee:true-falseType" minOccurs="0" />
+            <xsd:element name="is-xml" type="javaee:true-falseType" minOccurs="0" />
+            <xsd:element name="include-prelude" type="javaee:pathType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="include-coda" type="javaee:pathType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="deferred-syntax-allowed-as-literal" type="javaee:true-falseType" minOccurs="0" />
+            <xsd:element name="trim-directive-whitespaces" type="javaee:true-falseType" minOccurs="0" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="taglibType">
+        <xsd:sequence>
+            <xsd:element name="taglib-uri" type="javaee:string" />
+            <xsd:element name="taglib-location" type="javaee:pathType" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+</xsd:schema>

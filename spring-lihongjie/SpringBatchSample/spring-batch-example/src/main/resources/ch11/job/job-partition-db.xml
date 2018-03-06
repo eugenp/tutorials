@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd">
+    <bean:import resource="classpath:ch11/job-context.xml"/>
+    <bean:import resource="classpath:ch11/job-context-db.xml"/>
+    
+    <job id="partitionJob" restartable="true">
+		<step id="partitionStep">
+			<partition step="partitionReadWriteDB" partitioner="partitionerDB">
+				<handler grid-size="3" task-executor="taskExecutor"/>
+			</partition>
+		</step>
+	</job>
+	
+    <step id="partitionReadWriteDB">
+		<tasklet>
+			<chunk reader="jdbcItemPageReader" writer="jdbcItemWriter" 
+			    processor="creditBillProcessor" commit-interval="2"/>
+			 <listeners>
+                  <listener ref="partitionItemReadListener"></listener>
+             </listeners>
+		</tasklet>
+	</step>
+	
+    <!-- db数据切分 -->
+	<bean:bean id="partitionerDB" 
+	    class="com.juxtapose.example.ch11.partition.db.DBpartition">
+		<bean:property name="table" value="t_credit"/>
+		<bean:property name="column" value="ID"/>
+        <bean:property name="dataSource" ref="dataSource"/>
+	</bean:bean>
+	
+	
+	<!-- 从db分页读数据 -->
+	<bean:bean id="jdbcItemPageReader" scope="step" 
+	    class="org.springframework.batch.item.database.JdbcPagingItemReader">
+        <bean:property name="dataSource" ref="dataSource"/>
+        <bean:property name="queryProvider" ref="refQueryProvider" />
+    	<bean:property name="pageSize" value="2"/>
+        <bean:property name="rowMapper" ref="custCreditRowMapper"/>
+    </bean:bean>
+    
+     <bean:bean id="refQueryProvider" scope="step" 
+         class="org.springframework.batch.item.database.support.SqlPagingQueryProviderFactoryBean">
+         <bean:property name="dataSource" ref="dataSource"/>
+         <bean:property name="selectClause" value="select ID,ACCOUNTID,NAME,AMOUNT,DATE,ADDRESS"/>
+         <bean:property name="fromClause" value="from t_credit"/>
+         <bean:property name="whereClause" value="where ID between #{stepExecutionContext[_minRecord]} and #{stepExecutionContext[_maxRecord]}"/>
+         <bean:property name="sortKey" value="ID"/>
+      </bean:bean>    
+         
+    <bean:bean id="custCreditRowMapper" 
+        class="com.juxtapose.example.ch11.partition.db.CreditBillRowMapper"/>
+	
+	<bean:bean id="jdbcItemWriter" 
+        class="org.springframework.batch.item.database.JdbcBatchItemWriter">
+        <bean:property name="dataSource" ref="dataSource"/>
+        <bean:property name="sql" value="insert into t_destcredit (ID,ACCOUNTID,NAME,AMOUNT,DATE,ADDRESS) values (:id,:accountID,:name,:amount,:date,:address)"/>
+        <bean:property name="itemSqlParameterSourceProvider">
+            <bean:bean class="org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider"/>
+        </bean:property>
+    </bean:bean>
+    
+    <bean:bean id="creditBillProcessor" scope="step"
+        class="com.juxtapose.example.ch11.partition.CreditBillProcessor">
+    </bean:bean>
+
+    <bean:bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<bean:property name="corePoolSize" value="5"/>
+		<bean:property name="maxPoolSize" value="15"/>
+	</bean:bean>
+	
+    <bean:bean id="partitionItemReadListener"
+		class="com.juxtapose.example.ch11.partition.db.PartitionStepExecutionListener">
+	</bean:bean>
+</bean:beans>

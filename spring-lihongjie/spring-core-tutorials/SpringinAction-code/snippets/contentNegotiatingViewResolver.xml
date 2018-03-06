@@ -1,0 +1,17 @@
+<!--<start id="contentNegotiatingViewResolver_sample"/>--> 
+<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver"> 
+  <property name="mediaTypes"> 
+    <map> 
+      <entry key="json" value="application/json" />
+      <entry key="xml" value="text/xml" />
+      <entry key="htm" value="text/html" /> 
+    </map> 
+  </property> 
+  <property name="defaultContentType" value="text/html" /> 
+</bean>
+<!--<end id="contentNegotiatingViewResolver_sample"/>--> 
+
+
+<!--<start id="contentNegotiatingViewResolver_formatParameter"/>--> 
+<property name="favorParameter" value="true" />
+<!--<end id="contentNegotiatingViewResolver_formatParameter"/>--> 

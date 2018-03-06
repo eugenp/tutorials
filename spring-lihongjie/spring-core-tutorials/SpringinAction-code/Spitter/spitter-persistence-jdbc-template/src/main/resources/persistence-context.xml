@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+                 http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+  <!--<start id="bean.jdbcTemplate" />--> 
+  <bean id="jdbcTemplate"
+     class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+     <constructor-arg ref="dataSource" />
+  </bean>
+  <!--<end id="bean.jdbcTemplate" />-->
+  
+  <!--<start id="bean.spitterDao" />--> 
+  <bean id="spitterDao" 
+      class="com.habuma.spitter.persistence.SimpleJdbcTemplateSpitterDao">
+    <property name="jdbcTemplate" ref="jdbcTemplate" />
+  </bean>
+  <!--<end id="bean.spitterDao" />-->
+</beans>

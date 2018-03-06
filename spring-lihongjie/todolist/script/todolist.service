@@ -1,0 +1,11 @@
+[Unit]
+Description=todolist
+After=syslog.target
+
+[Service]
+User=nonocast
+ExecStart=/usr/bin/java -Dspring.profiles.active=prod -jar /var/www/todo/todoapp
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target

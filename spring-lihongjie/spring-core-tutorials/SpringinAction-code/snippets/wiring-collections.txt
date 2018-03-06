@@ -1,0 +1,48 @@
+<!--<start id="hank_bean_wired_list" />-->
+<bean id="hank"
+    class="com.springinaction.springidol.OneManBand">
+  <property name="instruments"> 
+    <list> 
+      <ref bean="guitar" />
+      <ref bean="cymbal" /> 
+      <ref bean="harmonica" />
+    </list> 
+  </property> 
+</bean>
+<!--<end id="hank_bean_wired_list" />-->
+
+
+
+<!--<start id="hank_bean_wired_set" />-->
+<bean id="hank"
+    class="com.springinaction.springidol.OneManBand"> 
+  <property name="instruments"> 
+    <set>
+      <ref bean="guitar" />
+      <ref bean="cymbal" />
+      <ref bean="harmonica" />
+      <ref bean="harmonica" />
+    </set>
+  </property>
+</bean>
+<!--<end id="hank_bean_wired_set" />-->
+
+//<start id="hank_bean_properties" /> 
+private Properties instruments; 
+public void setInstruments(Properties instruments) { 
+    this.instruments = instruments; 
+} 
+//<end id="hank_bean_properties" />
+
+
+<!--<start id="hank_bean_wired_properties" />-->
+<bean id="hank" class="com.springinaction.springidol.OneManBand"> 
+  <property name="instruments"> 
+    <props> 
+      <prop key="GUITAR">STRUM STRUM STRUM</prop> 
+      <prop key="CYMBAL">CRASH CRASH CRASH</prop> 
+      <prop key="HARMONICA">HUM HUM HUM</prop> 
+    </props> 
+  </property> 
+</bean>
+<!--<end id="hank_bean_wired_properties" />-->

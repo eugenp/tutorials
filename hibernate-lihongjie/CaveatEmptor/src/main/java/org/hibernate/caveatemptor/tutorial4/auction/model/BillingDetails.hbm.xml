@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+[
+<!ENTITY % globals SYSTEM "classpath://auction/persistence/globals.dtd">
+%globals;
+
+]>
+
+<!--
+
+The mapping for the class hierarchy of billing strategies.
+
+To demonstrate mixed inheritance mapping, the default strategy
+for the hierarchy is table-per-hierarchy with a discriminator
+column, and the CreditCard subclass is joined from a separate
+table.
+
+@author Christian Bauer
+-->
+<hibernate-mapping package="auction.model" default-access="field">
+
+<class name="BillingDetails" table="BILLING_DETAILS" abstract="true">
+
+    <!-- Common id property -->
+	<id name="id" type="long" column="BILLING_DETAILS_ID">
+		<generator class="&idgenerator;"/>
+	</id>
+
+    <!-- String-based discriminator, holds the fully qualified classname -->
+    <discriminator column="BILLING_DETAILS_TYPE" type="string"/>
+
+    <!-- A versioned entity -->
+	<version name="version" column="OBJ_VERSION"/>
+
+    <!-- Superclass property -->
+    <property   name="owner"
+				column="OWNER"
+				type="string"
+				not-null="true"/>
+
+    <!-- Immutable property -->
+	<property   name="created"
+				column="CREATED"
+				type="timestamp"
+				update="false"
+				not-null="true"/>
+
+	<!-- The non-inverse side of the one-to-many/many-to-one between User and this class -->
+	<many-to-one name="user"
+				 class="User"
+				 column="USER_ID"
+				 update="false"
+				 foreign-key="FK_USER_ID"/>
+
+	<!-- CreditCard subclass mapping to its own table, normalized.
+		 CreditCard is immutable, we map all properties with update="false" -->
+    <subclass name="CreditCard" discriminator-value="CC">
+        <join table="CREDIT_CARD" fetch="select">
+            <key column="CREDIT_CARD_ID" foreign-key="FK_CREDIT_CARD_SUPERCLASS"/>
+
+            <property name="type"
+                      type="credit_card_type"
+                      column="CC_TYPE"
+                      update="false"
+                      not-null="true"/>
+
+            <property name="number"
+                      type="string"
+                      column="CC_NUMBER"
+                      length="16"
+                      update="false"
+                      not-null="true"/>
+
+            <property name="expMonth"
+                      type="string"
+                      column="CC_EXP_MONTH"
+                      length="2"
+                      update="false"
+                      not-null="true"/>
+
+            <property name="expYear"
+                      type="string"
+                      column="CC_EXP_YEAR"
+                      length="4"
+                      update="false"
+                      not-null="true"/>
+        </join>
+	</subclass>
+
+    <!-- BankAccount goes into the hierarchy table, columns have to be nullable -->
+    <subclass name="BankAccount" discriminator-value="BA">
+        <property name="account"
+                  type="string"
+                  column="BA_ACCOUNT"
+                  length="16"
+                  not-null="false"/>
+
+        <property name="bankname"
+                  type="string"
+                  column="BA_BANKNAME"
+                  length="255"
+                  not-null="false"/>
+
+        <property name="swift"
+                  type="string"
+                  column="BA_SWIFT"
+                  length="15"
+                  not-null="false"/>
+    </subclass>
+
+</class>
+
+</hibernate-mapping>

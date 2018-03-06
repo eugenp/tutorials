@@ -1,0 +1,584 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="manager.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <author email="yoavs@apache.org">Yoav Shapira</author>
+    <title>The Manager Component</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>The <strong>Manager</strong> element represents the <em>session
+  manager</em> that will be used to create and maintain HTTP sessions
+  as requested by the associated web application.</p>
+
+  <p>A Manager element MAY be nested inside a
+  <a href="context.html">Context</a> component.  If it is not included,
+  a default Manager configuration will be created automatically, which
+  is sufficient for most requirements, &#x2014; see
+  <em>Standard Manager Implementation</em> below for the details
+  of this configuration.</p>
+
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+    <p>All implementations of <strong>Manager</strong>
+    support the following attributes:</p>
+
+    <attributes>
+
+      <attribute name="className" required="false">
+        <p>Java class name of the implementation to use.  This class must
+        implement the <code>org.apache.catalina.Manager</code> interface.
+        If not specified, the standard value (defined below) will be used.</p>
+      </attribute>
+
+      <attribute name="distributable" required="false">
+        <p><strong>Deprecated</strong>: This should be configured via the
+        Context.</p>
+        <p>Set to <code>true</code> to ask the session manager to enforce
+        the restrictions described in the Servlet Specification on
+        distributable applications (primarily, this would mean that all
+        session attributes must implement <code>java.io.Serializable</code>).
+        Set to <code>false</code> (the default) to not enforce these
+        restrictions.</p>
+
+        <p><strong>NOTE</strong> - The value for this property is inherited
+        automatically based on the presence or absence of the
+        <code>&lt;distributable&gt;</code> element in the web application
+        deployment descriptor (<code>/WEB-INF/web.xml</code>).</p>
+      </attribute>
+
+      <attribute name="maxActiveSessions" required="false">
+        <p>The maximum number of active sessions that will be created by
+        this Manager, or <code>-1</code> (the default) for no limit.</p>
+
+        <p>When the limit is reached, any attempt to create a new session
+        (e.g. with <code>HttpServletRequest.getSession()</code> call)
+        will fail with an <code>IllegalStateException</code>.</p>
+      </attribute>
+
+      <attribute name="maxInactiveInterval" required="false">
+        <p><strong>Deprecated</strong>: This should be configured via the
+        Context.</p>
+        <p>The initial maximum time interval, in seconds,
+        between client requests before a session is invalidated. A negative value
+        will result in sessions never timing out. If the attribute is not provided,
+        a default of 1800 seconds (30 minutes) is used.</p>
+
+        <p>This attribute provides the initial value whenever a
+        new session is created, but the interval may be dynamically
+        varied by a servlet via the
+        <code>setMaxInactiveInterval</code> method of the <code>HttpSession</code> object.</p>
+      </attribute>
+
+      <attribute name="sessionIdLength" required="false">
+       <p>The length of session ids created by this Manager, measured in bytes,
+        excluding subsequent conversion to a hexadecimal string and
+        excluding any JVM route information used for load balancing.
+        The default is 16. You should set the length on a nested
+        <strong>SessionIdGenerator</strong> element instead.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+  <subsection name="Standard Implementation">
+
+    <p>Tomcat provides two standard implementations of <strong>Manager</strong>
+    for use &#x2014; the default one stores active sessions, while the optional one
+    stores active sessions that have been swapped out (in addition to saving
+    sessions across a restart of Tomcat) in a storage location that is selected
+    via the use of an appropriate <strong>Store</strong> nested element.</p>
+
+    <h3>Standard Manager Implementation</h3>
+
+    <p>The standard implementation of <strong>Manager</strong> is
+    <strong>org.apache.catalina.session.StandardManager</strong>.
+    It supports the following additional attributes (in addition to the
+    common attributes listed above):</p>
+
+    <attributes>
+
+      <attribute name="pathname" required="false">
+        <p>Absolute or relative (to the work directory for this Context)
+        pathname of the file in which session state will be preserved
+        across application restarts, if possible.  The default is
+        "SESSIONS.ser".<br />See
+        <a href="#Persistence_Across_Restarts">Persistence Across Restarts</a>
+        for more information. This persistence may be
+        disabled by setting this attribute to an empty string.</p>
+      </attribute>
+
+      <attribute name="processExpiresFrequency" required="false">
+        <p>Frequency of the session expiration, and related manager operations.
+        Manager operations will be done once for the specified amount of
+        backgroundProcess calls (i.e., the lower the amount, the more often the
+        checks will occur). The minimum value is 1, and the default value is 6.
+        </p>
+      </attribute>
+
+      <attribute name="secureRandomClass" required="false">
+        <p>Name of the Java class that extends
+        <code>java.security.SecureRandom</code> to use to generate session IDs.
+        If not specified, the default value is
+        <code>java.security.SecureRandom</code>.</p>
+      </attribute>
+
+      <attribute name="secureRandomProvider" required="false">
+        <p>Name of the provider to use to create the
+        <code>java.security.SecureRandom</code> instances that generate session
+        IDs. If an invalid algorithm and/or provider is specified, the Manager
+        will use the platform default provider and the default algorithm. If not
+        specified, the platform default provider will be used.</p>
+      </attribute>
+
+      <attribute name="secureRandomAlgorithm" required="false">
+        <p>Name of the algorithm to use to create the
+        <code>java.security.SecureRandom</code> instances that generate session
+        IDs. If an invalid algorithm and/or provider is specified, the Manager
+        will use the platform default provider and the default algorithm. If not
+        specified, the default algorithm of SHA1PRNG will be used. If the
+        default algorithm is not supported, the platform default will be used.
+        To specify that the platform default should be used, do not set the
+        secureRandomProvider attribute and set this attribute to the empty
+        string.</p>
+      </attribute>
+
+      <attribute name="sessionAttributeNameFilter" required="false">
+        <p>A regular expression used to filter which session attributes will be
+        distributed. An attribute will only be distributed if its name matches
+        this pattern. If the pattern is zero length or <code>null</code>, all
+        attributes are eligible for distribution. The pattern is anchored so the
+        session attribute name must fully match the pattern. As an example, the
+        value <code>(userName|sessionHistory)</code> will only distribute the
+        two session attributes named <code>userName</code> and
+        <code>sessionHistory</code>. If not specified, the default value of
+        <code>null</code> will be used.</p>
+      </attribute>
+
+      <attribute name="sessionAttributeValueClassNameFilter" required="false">
+        <p>A regular expression used to filter which session attributes will be
+        distributed. An attribute will only be distributed if the implementation
+        class name of the value matches this pattern. If the pattern is zero
+        length or <code>null</code>, all attributes are eligible for
+        distribution. The pattern is anchored so the fully qualified class name
+        must fully match the pattern. If not specified, the default value of
+        <code>null</code> will be used unless a <code>SecurityManager</code> is
+        enabled in which case the default will be
+        <code>java\\.lang\\.(?:Boolean|Integer|Long|Number|String)</code>.</p>
+      </attribute>
+
+      <attribute name="warnOnSessionAttributeFilterFailure" required="false">
+        <p>If <strong>sessionAttributeNameFilter</strong> or
+        <strong>sessionAttributeValueClassNameFilter</strong> blocks an
+        attribute, should this be logged at <code>WARN</code> level? If
+        <code>WARN</code> level logging is disabled then it will be logged at
+        <code>DEBUG</code>. The default value of this attribute is
+        <code>false</code> unless a <code>SecurityManager</code> is enabled in
+        which case the default will be <code>true</code>.</p>
+      </attribute>
+    </attributes>
+
+    <h3>Persistent Manager Implementation</h3>
+
+    <p><strong>NOTE:</strong> You must set either the
+    <code>org.apache.catalina.session.StandardSession.ACTIVITY_CHECK</code> or
+    <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code>
+    <a href="systemprops.html">system properties</a> to <code>true</code> for
+    the persistent manager to work correctly.</p>
+
+    <p>The persistent implementation of <strong>Manager</strong> is
+    <strong>org.apache.catalina.session.PersistentManager</strong>.  In
+    addition to the usual operations of creating and deleting sessions, a
+    <code>PersistentManager</code> has the capability to swap active (but
+    idle) sessions out to a persistent storage mechanism, as well as to save
+    all sessions across a normal restart of Tomcat.  The actual persistent
+    storage mechanism used is selected by your choice of a
+    <strong>Store</strong> element nested inside the <strong>Manager</strong>
+    element - this is required for use of <code>PersistentManager</code>.</p>
+
+    <p>This implementation of Manager supports the following attributes in
+    addition to the <a href="#Common_Attributes">Common Attributes</a>
+    described earlier.</p>
+
+    <attributes>
+
+      <attribute name="className" required="true">
+        <p>It has the same meaning as described in the
+        <a href="#Common_Attributes">Common Attributes</a> above.
+        You <strong>must</strong> specify
+        <code>org.apache.catalina.session.PersistentManager</code> to use
+        this manager implementation.</p>
+      </attribute>
+
+      <attribute name="maxIdleBackup" required="false">
+        <p>The time interval (in seconds) since the last access to a session
+        before it is eligible for being persisted to the session store, or
+        <code>-1</code> to disable this feature.  By default, this feature is
+        disabled.</p>
+      </attribute>
+
+      <attribute name="maxIdleSwap" required="false">
+        <p>The maximum time a session may be idle before it is eligible to be
+        swapped to disk due to inactivity. Setting this to <code>-1</code> means
+        sessions should not be swapped out just because of inactivity. If this
+        feature is enabled, the time interval specified here should be equal to
+        or longer than the value specified for <code>maxIdleBackup</code>. By
+        default, this feature is disabled.</p>
+      </attribute>
+
+      <attribute name="minIdleSwap" required="false">
+        <p>The minimum time in seconds a session must be idle before it is
+        eligible to be swapped to disk to keep the active session count below
+        maxActiveSessions. Setting to <code>-1</code> means sessions will not be
+        swapped out to keep the active session count down. If specified, this
+        value should be less than that specified by <code>maxIdleSwap</code>.
+        By default, this value is set to <code>-1</code>.</p>
+      </attribute>
+
+      <attribute name="processExpiresFrequency" required="false">
+        <p>It is the same as described above for the
+        <code>org.apache.catalina.session.StandardManager</code> class.
+        </p>
+      </attribute>
+
+      <attribute name="saveOnRestart" required="false">
+        <p>Should all sessions be persisted and reloaded when Tomcat is shut
+        down and restarted (or when this application is reloaded)?  By default,
+        this attribute is set to <code>true</code>.</p>
+      </attribute>
+
+
+      <attribute name="secureRandomClass" required="false">
+        <p>It is the same as described above for the
+        <code>org.apache.catalina.session.StandardManager</code> class.
+        </p>
+      </attribute>
+
+      <attribute name="secureRandomProvider" required="false">
+        <p>It is the same as described above for the
+        <code>org.apache.catalina.session.StandardManager</code> class.
+        </p>
+      </attribute>
+
+      <attribute name="secureRandomAlgorithm" required="false">
+        <p>It is the same as described above for the
+        <code>org.apache.catalina.session.StandardManager</code> class.
+        </p>
+      </attribute>
+
+      <attribute name="sessionAttributeNameFilter" required="false">
+        <p>A regular expression used to filter which session attributes will be
+        distributed. An attribute will only be distributed if its name matches
+        this pattern. If the pattern is zero length or <code>null</code>, all
+        attributes are eligible for distribution. The pattern is anchored so the
+        session attribute name must fully match the pattern. As an example, the
+        value <code>(userName|sessionHistory)</code> will only distribute the
+        two session attributes named <code>userName</code> and
+        <code>sessionHistory</code>. If not specified, the default value of
+        <code>null</code> will be used.</p>
+      </attribute>
+
+      <attribute name="sessionAttributeValueClassNameFilter" required="false">
+        <p>A regular expression used to filter which session attributes will be
+        distributed. An attribute will only be distributed if the implementation
+        class name of the value matches this pattern. If the pattern is zero
+        length or <code>null</code>, all attributes are eligible for
+        distribution. The pattern is anchored so the fully qualified class name
+        must fully match the pattern. If not specified, the default value of
+        <code>null</code> will be used unless a <code>SecurityManager</code> is
+        enabled in which case the default will be
+        <code>java\\.lang\\.(?:Boolean|Integer|Long|Number|String)</code>.</p>
+      </attribute>
+
+      <attribute name="warnOnSessionAttributeFilterFailure" required="false">
+        <p>If <strong>sessionAttributeNameFilter</strong> or
+        <strong>sessionAttributeValueClassNameFilter</strong> blocks an
+        attribute, should this be logged at <code>WARN</code> level? If
+        <code>WARN</code> level logging is disabled then it will be logged at
+        <code>DEBUG</code>. The default value of this attribute is
+        <code>false</code> unless a <code>SecurityManager</code> is enabled in
+        which case the default will be <code>true</code>.</p>
+      </attribute>
+    </attributes>
+
+    <p>In order to successfully use a PersistentManager, you must nest inside
+    it a <strong>&lt;Store&gt;</strong> element, as described below.</p>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Nested Components">
+
+  <h3>All Manager Implementations</h3>
+
+  <p>All Manager implementations bundled with Tomcat or extending
+  <code>ManagerBase</code> allow nesting of a
+  <strong>&lt;SessionIdGenerator&gt;</strong> element. It defines
+  the behavior of session id generation.  All implementations
+  of the <a href="sessionidgenerator.html">SessionIdGenerator</a> allow the
+  following attributes:
+  </p>
+
+  <attributes>
+
+    <attribute name="sessionIdLength" required="false">
+      <p>The length of the session ID may be changed with the
+      <strong>sessionIdLength</strong> attribute.
+      </p>
+    </attribute>
+
+  </attributes>
+
+  <h3>Persistent Manager Implementation</h3>
+
+  <p>If you are using the <em>Persistent Manager Implementation</em>
+  as described above, you <strong>MUST</strong> nest a
+  <strong>&lt;Store&gt;</strong> element inside, which defines the
+  characteristics of the persistent data storage.  Two implementations
+  of the <code>&lt;Store&gt;</code> element are currently available,
+  with different characteristics, as described below.</p>
+
+  <h5>File Based Store</h5>
+
+  <p>The <em>File Based Store</em> implementation saves swapped out
+  sessions in individual files (named based on the session identifier)
+  in a configurable directory.  Therefore, you are likely to encounter
+  scalability problems as the number of active sessions increases, and
+  this should primarily be considered a means to easily experiment.</p>
+
+  <p>To configure this, add a <code>&lt;Store&gt;</code> nested inside
+  your <code>&lt;Manager&gt;</code> element with the following attributes:
+  </p>
+
+  <attributes>
+
+    <attribute name="checkInterval" required="false">
+      <p>The interval (in seconds) between checks for expired sessions
+      among those sessions that are currently swapped out.  By default,
+      this interval is set to 60 seconds (one minute).</p>
+    </attribute>
+
+    <attribute name="className" required="true">
+      <p>Java class name of the implementation to use.  This class must
+      implement the <code>org.apache.catalina.Store</code> interface.  You
+      <strong>must</strong> specify
+      <code>org.apache.catalina.session.FileStore</code>
+      to use this implementation.</p>
+    </attribute>
+
+    <attribute name="directory" required="false">
+      <p>Absolute or relative (to the temporary work directory for this web
+      application) pathname of the directory into which individual session
+      files are written.  If not specified, the temporary work directory
+      assigned by the container is utilized.</p>
+    </attribute>
+
+  </attributes>
+
+
+  <h5>JDBC Based Store</h5>
+
+  <p>The <em>JDBC Based Store</em> implementation saves swapped out
+  sessions in individual rows of a preconfigured table in a database
+  that is accessed via a JDBC driver.  With large numbers of swapped out
+  sessions, this implementation will exhibit improved performance over
+  the File Based Store described above.</p>
+
+  <p>To configure this, add a <code>&lt;Store&gt;</code> nested inside
+  your <code>&lt;Manager&gt;</code> element with the following attributes:
+  </p>
+
+  <attributes>
+
+    <attribute name="checkInterval" required="false">
+      <p>The interval (in seconds) between checks for expired sessions
+      among those sessions that are currently swapped out.  By default,
+      this interval is set to 60 seconds (one minute).</p>
+    </attribute>
+
+    <attribute name="className" required="true">
+      <p>Java class name of the implementation to use.  This class must
+      implement the <code>org.apache.catalina.Store</code> interface.  You
+      <strong>must</strong> specify
+      <code>org.apache.catalina.session.JDBCStore</code>
+      to use this implementation.</p>
+    </attribute>
+
+    <attribute name="connectionURL" required="true">
+      <p>The connection URL that will be handed to the configured JDBC
+      driver to establish a connection to the database containing our
+      session table.</p>
+    </attribute>
+
+    <attribute name="dataSourceName" required="false">
+      <p>Name of the JNDI resource for a JDBC DataSource-factory. If this option
+      is given and a valid JDBC resource can be found, it will be used and any
+      direct configuration of a JDBC connection via <code>connectionURL</code>
+      and <code>driverName</code> will be ignored. Since this code uses prepared
+      statements, you might want to configure pooled prepared statements as
+      shown in <a href="../jndi-resources-howto.html">the JNDI resources
+      HOW-TO</a>.</p>
+    </attribute>
+
+    <attribute name="driverName" required="true">
+      <p>Java class name of the JDBC driver to be used.</p>
+    </attribute>
+
+    <attribute name="sessionAppCol" required="true">
+      <p>Name of the database column, contained in the specified session
+      table, that contains the Engine, Host, and Web Application Context
+      name in the format <code>/Engine/Host/Context</code>.</p>
+    </attribute>
+
+    <attribute name="sessionDataCol" required="true">
+      <p>Name of the database column, contained in the specified
+      session table, that contains the serialized form of all session
+      attributes for a swapped out session.  The column type must accept
+      a binary object (typically called a BLOB).</p>
+    </attribute>
+
+    <attribute name="sessionIdCol" required="true">
+      <p>Name of the database column, contained in the specified
+      session table, that contains the session identifier of the
+      swapped out session.  The column type must accept character
+      string data of at least as many characters as are contained
+      in session identifiers created by Tomcat (typically 32).</p>
+    </attribute>
+
+    <attribute name="sessionLastAccessedCol" required="true">
+      <p>Name of the database column, contained in the specified
+      session table, that contains the <code>lastAccessedTime</code>
+      property of this session.  The column type must accept a
+      Java <code>long</code> (64 bits).</p>
+    </attribute>
+
+    <attribute name="sessionMaxInactiveCol" required="true">
+      <p>Name of the database column, contained in the specified
+      session table, that contains the <code>maxInactiveInterval</code>
+      property of this session.  The column type must accept a
+      Java <code>integer</code> (32 bits).</p>
+    </attribute>
+
+    <attribute name="sessionTable" required="true">
+      <p>Name of the database table to be used for storing swapped out
+      sessions.  This table must contain (at least) the database columns
+      that are configured by the other attributes of this element.</p>
+    </attribute>
+
+    <attribute name="sessionValidCol" required="true">
+      <p>Name of the database column, contained in the specified
+      session table, that contains a flag indicating whether this
+      swapped out session is still valid or not.  The column type
+      must accept a single character.</p>
+    </attribute>
+
+  </attributes>
+
+  <p>Before attempting to use the JDBC Based Store for the first time,
+  you must create the table that will be used to store swapped out sessions.
+  Detailed SQL commands vary depending on the database you are using, but
+  a script like this will generally be required:</p>
+
+<source>create table tomcat_sessions (
+  session_id     varchar(100) not null primary key,
+  valid_session  char(1) not null,
+  max_inactive   int not null,
+  last_access    bigint not null,
+  app_name       varchar(255),
+  session_data   mediumblob,
+  KEY kapp_name(app_name)
+);</source>
+
+  <p>In order for the JDBC Based Store to successfully connect to your
+  database, the JDBC driver you configure must be visible to Tomcat's
+  internal class loader.  Generally, that means you must place the JAR
+  file containing this driver into the <code>$CATALINA_HOME/lib</code>
+  directory.</p>
+
+</section>
+
+
+<section name="Special Features">
+
+
+  <subsection name="Persistence Across Restarts">
+
+    <p>Whenever Apache Tomcat is shut down normally and restarted, or when an
+    application reload is triggered, the standard Manager implementation
+    will attempt to serialize all currently active sessions to a disk
+    file located via the <code>pathname</code> attribute.  All such saved
+    sessions will then be deserialized and activated (assuming they have
+    not expired in the mean time) when the application reload is completed.</p>
+
+    <p>In order to successfully restore the state of session attributes,
+    all such attributes MUST implement the <code>java.io.Serializable</code>
+    interface.  You MAY cause the Manager to enforce this restriction by
+    including the <code>&lt;distributable&gt;</code> element in your web
+    application deployment descriptor (<code>/WEB-INF/web.xml</code>).</p>
+
+    <p>The persistence across restarts provided by the
+    <strong>StandardManager</strong> is a simpler implementation than that
+    provided by the <strong>PersistentManager</strong>. If robust, production
+    quality persistence across restarts is required then the
+    <strong>PersistentManager</strong> should be used with an appropriate
+    configuration.</p>
+
+  </subsection>
+
+  <subsection name="Disable Session Persistence">
+
+    <p>As documented above, every web application by default has
+    standard manager implementation configured, and it performs session
+    persistence across restarts. To disable this persistence feature, create
+    a <a href="context.html">Context</a> configuration file for your web
+    application and add the following element there:</p>
+
+    <source><![CDATA[<Manager pathname="" />]]></source>
+  </subsection>
+
+</section>
+
+
+</body>
+
+
+</document>

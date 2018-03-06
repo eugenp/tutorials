@@ -1,0 +1,9 @@
+Apache Tomcat
+Copyright 1999-@YEAR@ The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+The original XML Schemas for Java EE Deployment Descriptors:
+ - jsp_2_2.xsd
+may be obtained from http://java.sun.com/xml/ns/javaee/

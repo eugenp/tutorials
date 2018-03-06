@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="extras.html">
+
+    &project;
+
+  <properties>
+    <title>Additional Components</title>
+    <author>Remy Maucherat</author>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Introduction">
+  <p>
+    A number of additional components may be used with Apache Tomcat. These
+    components may be built by users should they need them or they can be
+    downloaded from one of the mirrors.
+  </p>
+
+  </section>
+
+  <section name="Downloading">
+  <p>
+    To download the extras components open the
+    <a href="http://tomcat.apache.org/download-70.cgi">Tomcat download page</a>
+    and select "Browse" from the Quick Navigation Links. The extras components
+    can be found in bin/extras.
+  </p>
+  </section>
+
+  <section name="Building">
+
+    <p>
+      The additional components are built using the <code>extras</code> target
+      of the standard Tomcat Ant script which is present in the source bundle of
+      Tomcat.
+    </p>
+
+    <p>The build process is the following:</p>
+
+    <ul>
+    <li>Follow the <a href="building.html">build instructions</a> to build a
+        Tomcat binary from the source bundle (note: it will be used by the build
+        process of the additional components, but does not need to be actually
+        used later on)</li>
+    <li>Execute the command <code>ant extras</code> to run the build
+        script</li>
+    <li>The additional components JARs will be placed in the
+        <code>output/extras</code> folder</li>
+    <li>Refer to the documentation below about the usage of these JARs</li>
+    </ul>
+
+  </section>
+
+  <section name="Components list">
+
+  <subsection name="Full commons-logging implementation">
+
+  <p>
+    Tomcat uses a package renamed commons-logging API implementation which is
+    hardcoded to use the java.util.logging API. The commons-logging additional
+    component builds a full fledged package renamed commons-logging
+    implementation which can be used to replace the implementation provided with
+    Tomcat. See the <a href="logging.html">logging</a> page for usage
+    instructions.
+  </p>
+
+  </subsection>
+
+  <subsection name="Web Services support (JSR 109)">
+
+  <p>
+    Tomcat provides factories for JSR 109 which may be used to resolve web
+    services references. Place the generated catalina-ws.jar as well as
+    jaxrpc.jar and wsdl4j.jar (or another implementation of JSR 109) in the
+    Tomcat lib folder.
+  </p>
+
+  <p>
+    Users should be aware that wsdl4j.jar is licensed under CPL 1.0 and not the
+    Apache License version 2.0.
+  </p>
+
+  </subsection>
+
+  <subsection name="JMX Remote Lifecycle Listener">
+
+  <p>
+    The JMX protocol requires the JMX server (Tomcat in this instance) to listen
+    on two network ports. One of these ports can be fixed via configuration but
+    the second is selected randomly. This makes it difficult to use JMX through
+    a firewall. The JMX Remote Lifecycle Listener allows both ports to be fixed,
+    simplifying the process of connecting to JMX through a firewall. See the <a
+    href="config/listeners.html">listeners</a> page for usage instructions.
+  </p>
+
+  </subsection>
+  </section>
+
+</body>
+</document>

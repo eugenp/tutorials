@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+        http://www.springframework.org/schema/security 
+        http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+                        
+<!--<start id="in_memory_user_service"/>--> 
+    <user-service id="userService">
+      <user name="habuma" password="letmein" 
+                     authorities="ROLE_SPITTER,ROLE_ADMIN"/>
+      <user name="twoqubed" password="longhorns" 
+                     authorities="ROLE_SPITTER"/>
+      <user name="admin" password="admin" 
+                     authorities="ROLE_ADMIN"/>
+    </user-service>
+<!--<end id="in_memory_user_service"/>-->
+
+</beans:beans>

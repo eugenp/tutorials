@@ -1,0 +1,52 @@
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+  <head>
+    <title>JSP 2.0 SVG Example</title>
+  </head>
+  <body>
+    <h1>JSP 2.0 SVG Example</h1>
+    <hr>
+    This example uses JSP 2.0's new, simplified JSPX syntax to render a
+    Scalable Vector Graphics (SVG) document.  When you view the source,
+    notice the lack of a &lt;jsp:root&gt; element!  The text to be rendered
+    can be modified by changing the value of the name parameter.
+    <p>
+    SVG has many potential uses, such as searchable images, or images
+    customized with the name of your site's visitor (e.g. a "Susan's Store"
+    tab image).  JSPX is a natural fit for generating dynamic XML content
+    such as SVG.
+    <p>
+    To execute this example, follow these steps:
+    <ol>
+      <li>Download <a href="http://xmlgraphics.apache.org/batik/index.html">Apache Batik</a>,
+          or any other SVG viewer.</li>
+      <li>Copy the following URL:
+      <a href="http://localhost:8080/examples/jsp/jsp2/jspx/textRotate.jspx?name=JSPX">
+      http://localhost:8080/examples/jsp/jsp2/jspx/textRotate.jspx?name=JSPX</a>
+      </li>
+      <li>Paste the URL into Batik's Location field and press Enter</li>
+      <li>Customize by changing the name=JSPX parameter</li>
+    </ol>
+    <br>
+    The following is a screenshot of the resulting image, for those that
+    don't have an SVG viewer:
+    <blockquote>
+      <img src="textRotate.jpg" border="1">
+    </blockquote>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<!-- Global settings imported by all XMl mapping files.
+     You can customize this file on deployment to keep your
+     mapping files portable. -->
+
+<!ENTITY idgenerator    "identity">
+
+<!-- ... add more when needed -->

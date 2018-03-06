@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
+        version="3.0"
+        metadata-complete="false">
+
+    <name>fragment2</name>
+
+    <filter>
+        <filter-name>fragment2Filter</filter-name>
+        <filter-class>com.sishuok.chapter2.fragment.web.filter.Fragment2Filter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>fragment2Filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>fragment2Servlet</servlet-name>
+        <servlet-class>com.sishuok.chapter2.fragment.web.servlet.Fragment2Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fragment2Servlet</servlet-name>
+        <url-pattern>/fragment2</url-pattern>
+    </servlet-mapping>
+
+
+
+
+</web-fragment>

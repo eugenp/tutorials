@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DestCredit">
+  <resultMap id="result" class="com.juxtapose.example.ch07.db.DestinationCreditBill">
+    <result property="id" column="ID" />
+    <result property="accountID" column="ACCOUNTID" />
+    <result property="name" column="NAME" />
+    <result property="amount" column="AMOUNT" />
+    <result property="date" column="DATE" />
+    <result property="address" column="ADDRESS" />
+  </resultMap>
+
+  <!-- 查询所有的信用卡账单对象 -->
+  <select id="getAllDestCredits" resultMap="result">
+ 	select ID,ACCOUNTID,NAME,AMOUNT,DATE,ADDRESS from t_destcredit
+  </select>
+  
+  <!-- 根据ID所在区间查询信用卡账单对象 -->
+  <select id="getDestCreditsById" parameterClass="java.util.HashMap" resultMap="result">
+  	select ID,ACCOUNTID,NAME,AMOUNT,DATE,ADDRESS from t_destcredit where ID between #begin# and #end#
+  </select>
+  
+  <insert id="insertDestCredits" parameterClass="com.juxtapose.example.ch07.db.DestinationCreditBill">
+ 	insert into t_destcredit values(#id#, #accountID#, #name#, #amount#, #date#, #address#) 
+  </insert>
+</sqlMap>

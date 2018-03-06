@@ -1,0 +1,78 @@
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><font color="#0000FF"><a href="servlet/RequestParamExample"><img src="images/execute.gif" align="right" border="0"></a><a href="index.html"><img src="images/return.gif" width="24" height="24" align="right" border="0"></a></font></p>
+<h3>Source Code for Request Parameter Example<font color="#0000FF"><br>
+  </font> </h3>
+<font color="#0000FF"></font>
+<pre><font color="#0000FF">import</font> java.io.*;
+<font color="#0000FF">import</font> java.util.*;
+<font color="#0000FF">import</font> javax.servlet.*;
+<font color="#0000FF">import</font> javax.servlet.http.*;
+
+<font color="#0000FF">public class</font> RequestParamExample <font color="#0000FF">extends</font> HttpServlet {
+
+    <font color="#0000FF">public void</font> doGet(HttpServletRequest request, HttpServletResponse response)
+    <font color="#0000FF">throws</font> IOException, ServletException
+    {
+        response.setContentType(&quot;<font color="#009900">text/html</font>&quot;);
+        PrintWriter out = response.getWriter();
+        out.println(&quot;<font color="#009900">&lt;html&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;head&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;title&gt;Request Parameters Example&lt;/title&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;/head&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;body&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;h3&gt;Request Parameters Example&lt;/h3&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">Parameters in this request:&lt;br&gt;</font>&quot;);
+        if (firstName != null || lastName != null) {
+            out.println(&quot;<font color="#009900">First Name:</font>&quot;);
+            out.println(&quot;<font color="#009900"> = </font>&quot; + HTMLFilter.filter(firstName) + &quot;<font color="#009900">&lt;br&gt;</font>&quot;);
+            out.println(&quot;<font color="#009900">Last Name:</font>&quot;);
+            out.println(&quot;<font color="#009900"> = </font>&quot; + HTMLFilter.filter(lastName));
+        } else {
+            out.println(&quot;<font color="#009900">No Parameters, Please enter some</font>&quot;);
+        }
+        out.println(&quot;<font color="#009900">&lt;P&gt;</font>&quot;);
+        out.print(&quot;<font color="#009900">&lt;form action=\"</font>&quot;);
+        out.print(&quot;<font color="#009900">RequestParamExample\" </font>&quot;);
+        out.println(&quot;<font color="#009900">method=POST&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">First Name:</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;input type=text size=20 name=firstname&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;br&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">Last Name:</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;input type=text size=20 name=lastname&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;br&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;input type=submit&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;/form&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;/body&gt;</font>&quot;);
+        out.println(&quot;<font color="#009900">&lt;/html&gt;</font>&quot;);
+    }
+
+    <font color="#0000FF">public void</font> doPost(HttpServletRequest request, HttpServletResponse res)
+    <font color="#0000FF">throws</font> IOException, ServletException
+    {
+        doGet(request, response);
+    }
+}</pre>
+</body>
+</html>

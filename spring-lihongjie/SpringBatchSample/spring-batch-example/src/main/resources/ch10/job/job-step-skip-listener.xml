@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:task="http://www.springframework.org/schema/task" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+    http://www.springframework.org/schema/task 
+    http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+    
+    <bean:import resource="classpath:ch10/job-context.xml"/>
+    <bean:import resource="classpath:ch10/job-context-db.xml"/>
+
+    <job id="dbSkipJob">
+        <step id="dbSkipStep">
+          <tasklet>
+				<chunk reader="radomExceptionAutoReader" processor="processor" writer="writer" 
+				    commit-interval="5" skip-limit="20">
+				    <skippable-exception-classes>
+				        <include class="org.springframework.batch.item.file.FlatFileParseException" />
+				    </skippable-exception-classes>
+				    <listeners>
+						<listener ref="dbSkipListener"></listener>
+			  		</listeners>
+         		</chunk>
+		  </tasklet>
+        </step>
+    </job>
+    
+    
+    <bean:bean id="dbSkipListener" 
+        class="com.juxtapose.example.ch10.skip.DBSkipListener" >
+        <bean:property name="jdbcTemplate" ref="jdbcTemplate"></bean:property>
+    </bean:bean>
+    <bean:bean id="radomExceptionAutoReader" 
+        class="com.juxtapose.example.ch10.skip.RadomExceptionAutoReader" />
+    <bean:bean id="processor" 
+        class="org.springframework.batch.item.support.PassThroughItemProcessor" />
+	<bean:bean id="writer" 
+	    class="com.juxtapose.example.ch10.skip.ConsoleWriter" />
+    
+</bean:beans>

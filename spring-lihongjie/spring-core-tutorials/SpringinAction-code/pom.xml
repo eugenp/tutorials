@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.springinaction</groupId>
+  <artifactId>example-code</artifactId>
+  <version>3.0.0</version>
+  <packaging>pom</packaging>
+  
+  <name>Spring in Action Example Code</name>
+  <url>http://www.manning.com/walls4</url>
+
+  <properties>
+      <spring.group>org.springframework</spring.group>
+      <spring.version>3.0.2.RELEASE</spring.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <modules>
+    <module>translators</module>
+  </modules>
+
+  <repositories>
+      <repository>
+          <id>Spring Milestone</id>
+          <url>http://maven.springframework.org/milestone</url>
+      </repository>
+  </repositories>
+</project>

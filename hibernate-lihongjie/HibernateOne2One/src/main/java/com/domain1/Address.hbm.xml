@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain1">
+	<class name="Address" table="ADDRESS"><!--不加入table标签，表明类名和表名相同  -->
+		<id name="id" column="ADDRESS_ID">
+<!-- 			<generator class="foreign">
+				<param name="property">person</param>
+			</generator> --><!-- 共享主键方式 一对一 -->
+			<generator class="foreign">
+				<param name="property">user</param>
+			</generator>
+		</id>
+		<property name="street" column="STREET"/>
+		<property name="city" column="CITY"/>
+		<property name="zipcode" column="ZIPCODE"/>
+
+	</class>
+</hibernate-mapping>
+

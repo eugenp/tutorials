@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:util="http://www.springframework.org/schema/util"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+    http://www.springframework.org/schema/util 
+    http://www.springframework.org/schema/util/spring-util.xsd">
+    <bean:import resource="classpath:ch07/job-context.xml"/>
+    
+    <job id="filesetsWriterJob">
+        <step id="filesetsWriterStep">
+            <tasklet>
+                <chunk reader="xmlReader" writer="multiItemWriter" commit-interval="2">
+                </chunk>
+            </tasklet>
+        </step>
+    </job>
+    
+    <bean:bean id="multiItemWriter"
+        class="org.springframework.batch.item.file.MultiResourceItemWriter" >
+        <bean:property name="resource" 
+            value="file:target/ch07/notexist/credit-card-bill.xml" />
+        <bean:property name="itemCountLimitPerResource" value="2" />
+        <bean:property name="delegate" ref="xmlWriter" />
+    </bean:bean>
+    
+    
+    <job id="extFilesetsWriterJob">
+        <step id="extFilesetsWriterStep">
+            <tasklet>
+                <chunk reader="xmlReader" writer="extMultiItemWriter" commit-interval="2">
+                </chunk>
+            </tasklet>
+        </step>
+    </job>
+    
+     <bean:bean id="extMultiItemWriter"
+        class="com.juxtapose.example.ch07.multiresource.ext.ExtMultiResourceItemWriter" >
+        <bean:property name="resource" 
+            value="file:target/ch07/filesets/credit-card-bill.xml" />
+        <bean:property name="itemCountLimitPerResource" value="2" />
+        <bean:property name="delegate" ref="xmlWriter" />
+    </bean:bean>
+    
+    <!-- XML文件读取 -->
+    <bean:bean id="xmlReader" scope="step" 
+        class="org.springframework.batch.item.xml.StaxEventItemReader">
+        <bean:property name="fragmentRootElementName" value="credit"/>
+        <bean:property name="unmarshaller" ref="creditMarshaller"/>
+        <bean:property name="resource" 
+            value="classpath:ch07/data/xml/credit-card-bill-201310.xml"/>
+    </bean:bean>
+    <bean:bean id="creditMarshaller" 
+        class="org.springframework.oxm.xstream.XStreamMarshaller">
+        <bean:property name="aliases">
+            <util:map id="aliases">
+                <bean:entry key="credit" 
+                    value="com.juxtapose.example.ch07.CreditBill"/>
+            </util:map>
+        </bean:property>
+    </bean:bean>
+    <bean:bean id="creditBill" scope="prototype" 
+        class="com.juxtapose.example.ch07.CreditBill"/>
+    
+    <!-- XML文件写入 -->
+    <bean:bean id="xmlWriter" 
+        class="org.springframework.batch.item.xml.StaxEventItemWriter">
+        <bean:property name="rootTagName" value="juxtapose"/>
+        <bean:property name="marshaller" ref="creditMarshaller"/>
+    </bean:bean>
+    
+</bean:beans>

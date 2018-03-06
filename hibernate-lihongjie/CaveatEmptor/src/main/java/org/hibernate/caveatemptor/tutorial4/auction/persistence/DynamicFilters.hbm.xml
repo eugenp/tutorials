@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+Various Hibernate dynamic data filters for CaveatEmptor.
+
+@author Christian Bauer
+
+-->
+<hibernate-mapping>
+
+    <filter-def name="limitItemsByUserRank">
+        <filter-param name="currentUserRank" type="int"/>
+    </filter-def>
+
+</hibernate-mapping>

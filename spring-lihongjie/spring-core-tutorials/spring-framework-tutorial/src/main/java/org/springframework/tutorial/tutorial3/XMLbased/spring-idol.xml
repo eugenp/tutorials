@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+       					http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"> 
+
+	<!-- 默认构造器创建对象 -->
+	<bean id="duke" class="org.springframework.tutorial.tutorial3.XMLbased.Juggler"/>
+		
+	<bean id="duke1" class="org.springframework.tutorial.tutorial3.XMLbased.Juggler">
+		<constructor-arg value="5"/>	
+	</bean>
+	<bean id="duke2" class="org.springframework.tutorial.tutorial3.XMLbased.Juggler">
+		<constructor-arg value="5"/>	
+		<constructor-arg value="2"/>
+	</bean>
+	
+	<bean id="poeticDuke" class="org.springframework.tutorial.tutorial3.XMLbased.PoeticJuggler">
+		<constructor-arg value="15"/>	
+		<constructor-arg ref="sonnet"/> <!-- 第2个参数是Poem， 不是简单类型，使用ref属性来将ID为sonnet的Bean引用传递给构造器 -->
+	</bean>
+	
+	<bean id="sonnet" class="org.springframework.tutorial.tutorial3.XMLbased.Sonnet">
+	
+	</bean>
+
+	<bean id="theStage" class="org.springframework.tutorial.tutorial3.XMLbased.Stage"
+							factory-method="getInstance">
+	</bean>
+</beans>

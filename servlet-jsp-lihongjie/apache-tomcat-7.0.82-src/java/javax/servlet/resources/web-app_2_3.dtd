@@ -1,0 +1,1003 @@
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!--
+This is the XML DTD for the Servlet 2.3 deployment descriptor.
+All Servlet 2.3 deployment descriptors must include a DOCTYPE
+of the following form:
+
+  <!DOCTYPE web-app PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+-->
+
+<!--
+The following conventions apply to all J2EE deployment descriptor
+elements unless indicated otherwise.
+
+- In elements that contain PCDATA, leading and trailing whitespace
+  in the data may be ignored.
+
+- In elements whose value is an "enumerated type", the value is
+  case sensitive.
+
+- In elements that specify a pathname to a file within the same
+  JAR file, relative filenames (i.e., those not starting with "/")
+  are considered relative to the root of the JAR file's namespace.
+  Absolute filenames (i.e., those starting with "/") also specify
+  names in the root of the JAR file's namespace.  In general, relative
+  names are preferred.  The exception is .war files where absolute
+  names are preferred for consistency with the servlet API.
+-->
+
+
+<!--
+The web-app element is the root of the deployment descriptor for
+a web application.
+-->
+<!ELEMENT web-app (icon?, display-name?, description?, distributable?,
+context-param*, filter*, filter-mapping*, listener*, servlet*,
+servlet-mapping*, session-config?, mime-mapping*, welcome-file-list?,
+error-page*, taglib*, resource-env-ref*, resource-ref*, security-constraint*,
+login-config?, security-role*, env-entry*, ejb-ref*,  ejb-local-ref*)>
+
+<!--
+The auth-constraint element indicates the user roles that should
+be permitted access to this resource collection. The role-name
+used here must either correspond to the role-name of one of the
+security-role elements defined for this web application, or be
+the specially reserved role-name "*" that is a compact syntax for
+indicating all roles in the web application. If both "*" and
+rolenames appear, the container interprets this as all roles.
+If no roles are defined, no user is allowed access to the portion of
+the web application described by the containing security-constraint.
+The container matches role names case sensitively when determining
+access.
+
+
+Used in: security-constraint
+-->
+<!ELEMENT auth-constraint (description?, role-name*)>
+
+<!--
+The auth-method element is used to configure the authentication
+mechanism for the web application. As a prerequisite to gaining access to any web resources which are protected by an authorization
+constraint, a user must have authenticated using the configured
+mechanism. Legal values for this element are "BASIC", "DIGEST",
+"FORM", or "CLIENT-CERT".
+
+Used in: login-config
+-->
+<!ELEMENT auth-method (#PCDATA)>
+
+<!--
+The context-param element contains the declaration of a web
+application's servlet context initialization parameters.
+
+Used in: web-app
+-->
+<!ELEMENT context-param (param-name, param-value, description?)>
+
+<!--
+The description element is used to provide text describing the parent
+element.  The description element should include any information that
+the web application war file producer wants to provide to the consumer of
+the web application war file (i.e., to the Deployer). Typically, the tools
+used by the web application war file consumer will display the description
+when processing the parent element that contains the description.
+
+Used in: auth-constraint, context-param, ejb-local-ref, ejb-ref,
+env-entry, filter, init-param, resource-env-ref, resource-ref, run-as,
+security-role, security-role-ref, servlet, user-data-constraint,
+web-app, web-resource-collection
+-->
+<!ELEMENT description (#PCDATA)>
+
+<!--
+The display-name element contains a short name that is intended to be
+displayed by tools.  The display name need not be unique.
+
+Used in: filter, security-constraint, servlet, web-app
+
+Example:
+
+<display-name>Employee Self Service</display-name>
+-->
+<!ELEMENT display-name (#PCDATA)>
+
+<!--
+The distributable element, by its presence in a web application
+deployment descriptor, indicates that this web application is
+programmed appropriately to be deployed into a distributed servlet
+container
+
+Used in: web-app
+-->
+<!ELEMENT distributable EMPTY>
+
+<!--
+The ejb-link element is used in the ejb-ref or ejb-local-ref
+elements to specify that an EJB reference is linked to an
+enterprise bean.
+
+The name in the ejb-link element is composed of a
+path name specifying the ejb-jar containing the referenced enterprise
+bean with the ejb-name of the target bean appended and separated from
+the path name by "#".  The path name is relative to the war file
+containing the web application that is referencing the enterprise bean.
+This allows multiple enterprise beans with the same ejb-name to be
+uniquely identified.
+
+Used in: ejb-local-ref, ejb-ref
+
+Examples:
+
+    <ejb-link>EmployeeRecord</ejb-link>
+
+    <ejb-link>../products/product.jar#ProductEJB</ejb-link>
+
+-->
+<!ELEMENT ejb-link (#PCDATA)>
+
+<!--
+The ejb-local-ref element is used for the declaration of a reference to
+an enterprise bean's local home. The declaration consists of:
+
+    - an optional description
+    - the EJB reference name used in the code of the web application
+      that's referencing the enterprise bean
+    - the expected type of the referenced enterprise bean
+    - the expected local home and local interfaces of the referenced
+      enterprise bean
+    - optional ejb-link information, used to specify the referenced
+      enterprise bean
+
+Used in: web-app
+-->
+<!ELEMENT ejb-local-ref (description?, ejb-ref-name, ejb-ref-type,
+        local-home, local, ejb-link?)>
+
+<!--
+The ejb-ref element is used for the declaration of a reference to
+an enterprise bean's home. The declaration consists of:
+
+    - an optional description
+    - the EJB reference name used in the code of
+      the web application that's referencing the enterprise bean
+    - the expected type of the referenced enterprise bean
+    - the expected home and remote interfaces of the referenced
+      enterprise bean
+    - optional ejb-link information, used to specify the referenced
+      enterprise bean
+
+Used in: web-app
+-->
+<!ELEMENT ejb-ref (description?, ejb-ref-name, ejb-ref-type,
+        home, remote, ejb-link?)>
+
+<!--
+The ejb-ref-name element contains the name of an EJB reference. The
+EJB reference is an entry in the web application's environment and is
+relative to the java:comp/env context.  The name must be unique
+within the web application.
+
+It is recommended that name is prefixed with "ejb/".
+
+Used in: ejb-local-ref, ejb-ref
+
+Example:
+
+<ejb-ref-name>ejb/Payroll</ejb-ref-name>
+-->
+<!ELEMENT ejb-ref-name (#PCDATA)>
+
+<!--
+The ejb-ref-type element contains the expected type of the
+referenced enterprise bean.
+
+The ejb-ref-type element must be one of the following:
+
+    <ejb-ref-type>Entity</ejb-ref-type>
+    <ejb-ref-type>Session</ejb-ref-type>
+
+Used in: ejb-local-ref, ejb-ref
+-->
+<!ELEMENT ejb-ref-type (#PCDATA)>
+
+<!--
+The env-entry element contains the declaration of a web application's
+environment entry. The declaration consists of an optional
+description, the name of the environment entry, and an optional
+value.  If a value is not specified, one must be supplied
+during deployment.
+-->
+<!ELEMENT env-entry (description?, env-entry-name, env-entry-value?,
+env-entry-type)>
+
+<!--
+The env-entry-name element contains the name of a web application's
+environment entry.  The name is a JNDI name relative to the
+java:comp/env context.  The name must be unique within a web application.
+
+Example:
+
+<env-entry-name>minAmount</env-entry-name>
+
+Used in: env-entry
+-->
+<!ELEMENT env-entry-name (#PCDATA)>
+
+<!--
+The env-entry-type element contains the fully-qualified Java type of
+the environment entry value that is expected by the web application's
+code.
+
+The following are the legal values of env-entry-type:
+
+    java.lang.Boolean
+    java.lang.Byte
+    java.lang.Character
+    java.lang.String
+    java.lang.Short
+    java.lang.Integer
+    java.lang.Long
+    java.lang.Float
+    java.lang.Double
+
+Used in: env-entry
+-->
+<!ELEMENT env-entry-type (#PCDATA)>
+
+<!--
+The env-entry-value element contains the value of a web application's
+environment entry. The value must be a String that is valid for the
+constructor of the specified type that takes a single String
+parameter, or for java.lang.Character, a single character.
+
+Example:
+
+<env-entry-value>100.00</env-entry-value>
+
+Used in: env-entry
+-->
+<!ELEMENT env-entry-value (#PCDATA)>
+
+<!--
+The error-code contains an HTTP error code, ex: 404
+
+Used in: error-page
+-->
+<!ELEMENT error-code (#PCDATA)>
+
+<!--
+The error-page element contains a mapping between an error code
+or exception type to the path of a resource in the web application
+
+Used in: web-app
+-->
+<!ELEMENT error-page ((error-code | exception-type), location)>
+
+<!--
+The exception type contains a fully qualified class name of a
+Java exception type.
+
+Used in: error-page
+-->
+<!ELEMENT exception-type (#PCDATA)>
+
+<!--
+The extension element contains a string describing an
+extension. example: "txt"
+
+Used in: mime-mapping
+-->
+<!ELEMENT extension (#PCDATA)>
+
+<!--
+Declares a filter in the web application. The filter is mapped to
+either a servlet or a URL pattern in the filter-mapping element, using
+the filter-name value to reference. Filters can access the
+initialization parameters declared in the deployment descriptor at
+runtime via the FilterConfig interface.
+
+Used in: web-app
+-->
+<!ELEMENT filter (icon?, filter-name, display-name?, description?,
+filter-class, init-param*)>
+
+<!--
+The fully qualified classname of the filter.
+
+Used in: filter
+-->
+<!ELEMENT filter-class (#PCDATA)>
+
+<!--
+Declaration of the filter mappings in this web application. The
+container uses the filter-mapping declarations to decide which filters
+to apply to a request, and in what order. The container matches the
+request URI to a Servlet in the normal way. To determine which filters
+to apply it matches filter-mapping declarations either on servlet-name,
+or on url-pattern for each filter-mapping element, depending on which
+style is used. The order in which filters are invoked is the order in
+which filter-mapping declarations that match a request URI for a
+servlet appear in the list of filter-mapping elements. The filter-name
+value must be the value of the <filter-name> sub-elements of one of the
+<filter> declarations in the deployment descriptor.
+
+Used in: web-app
+-->
+<!ELEMENT filter-mapping (filter-name, (url-pattern | servlet-name))>
+
+<!--
+The logical name of the filter. This name is used to map the filter.
+Each filter name is unique within the web application.
+
+Used in: filter, filter-mapping
+-->
+<!ELEMENT filter-name (#PCDATA)>
+
+<!--
+The form-error-page element defines the location in the web app
+where the error page that is displayed when login is not successful
+can be found. The path begins with a leading / and is interpreted
+relative to the root of the WAR.
+
+Used in: form-login-config
+-->
+<!ELEMENT form-error-page (#PCDATA)>
+
+<!--
+The form-login-config element specifies the login and error pages
+that should be used in form based login. If form based authentication
+is not used, these elements are ignored.
+
+Used in: login-config
+-->
+<!ELEMENT form-login-config (form-login-page, form-error-page)>
+
+<!--
+The form-login-page element defines the location in the web app
+where the page that can be used for login can be found. The path
+begins with a leading / and is interpreted relative to the root of the WAR.
+
+Used in: form-login-config
+-->
+<!ELEMENT form-login-page (#PCDATA)>
+
+<!--
+The home element contains the fully-qualified name of the enterprise
+bean's home interface.
+
+Used in: ejb-ref
+
+Example:
+
+<home>com.aardvark.payroll.PayrollHome</home>
+-->
+<!ELEMENT home (#PCDATA)>
+
+<!--
+The http-method contains an HTTP method (GET | POST |...).
+
+Used in: web-resource-collection
+-->
+<!ELEMENT http-method (#PCDATA)>
+
+<!--
+The icon element contains small-icon and large-icon elements that
+specify the file names for small and a large GIF or JPEG icon images
+used to represent the parent element in a GUI tool.
+
+Used in: filter, servlet, web-app
+-->
+<!ELEMENT icon (small-icon?, large-icon?)>
+
+<!--
+The init-param element contains a name/value pair as an
+initialization param of the servlet
+
+Used in: filter, servlet
+-->
+<!ELEMENT init-param (param-name, param-value, description?)>
+
+<!--
+The jsp-file element contains the full path to a JSP file within
+the web application beginning with a `/'.
+
+Used in: servlet
+-->
+<!ELEMENT jsp-file (#PCDATA)>
+
+<!--
+The large-icon element contains the name of a file
+containing a large (32 x 32) icon image. The file
+name is a relative path within the web application's
+war file.
+
+The image may be either in the JPEG or GIF format.
+The icon can be used by tools.
+
+Used in: icon
+
+Example:
+
+<large-icon>employee-service-icon32x32.jpg</large-icon>
+-->
+<!ELEMENT large-icon (#PCDATA)>
+
+<!--
+The listener element indicates the deployment properties for a web
+application listener bean.
+
+Used in: web-app
+-->
+<!ELEMENT listener (listener-class)>
+
+<!--
+The listener-class element declares a class in the application must be
+registered as a web application listener bean. The value is the fully qualified classname of the listener class.
+
+
+Used in: listener
+-->
+<!ELEMENT listener-class (#PCDATA)>
+
+<!--
+The load-on-startup element indicates that this servlet should be
+loaded (instantiated and have its init() called) on the start-up
+of the web application. The optional contents of
+these element must be an integer indicating the order in which
+the servlet should be loaded. If the value is a negative integer,
+or the element is not present, the container is free to load the
+servlet whenever it chooses. If the value is a positive integer
+or 0, the container must load and initialize the servlet as the
+application is deployed. The container must guarantee that
+servlets marked with lower integers are loaded before servlets
+marked with higher integers. The container may choose the order
+of loading of servlets with the same load-on-start-up value.
+
+Used in: servlet
+-->
+<!ELEMENT load-on-startup (#PCDATA)>
+
+<!--
+
+The local element contains the fully-qualified name of the
+enterprise bean's local interface.
+
+Used in: ejb-local-ref
+
+-->
+<!ELEMENT local (#PCDATA)>
+
+<!--
+
+The local-home element contains the fully-qualified name of the
+enterprise bean's local home interface.
+
+Used in: ejb-local-ref
+-->
+<!ELEMENT local-home (#PCDATA)>
+
+<!--
+The location element contains the location of the resource in the web
+application relative to the root of the web application. The value of
+the location must have a leading `/'.
+
+Used in: error-page
+-->
+<!ELEMENT location (#PCDATA)>
+
+<!--
+The login-config element is used to configure the authentication
+method that should be used, the realm name that should be used for
+this application, and the attributes that are needed by the form login
+mechanism.
+
+Used in: web-app
+-->
+<!ELEMENT login-config (auth-method?, realm-name?, form-login-config?)>
+
+<!--
+The mime-mapping element defines a mapping between an extension
+and a mime type.
+
+Used in: web-app
+-->
+<!ELEMENT mime-mapping (extension, mime-type)>
+
+<!--
+The mime-type element contains a defined mime type. example:
+"text/plain"
+
+Used in: mime-mapping
+-->
+<!ELEMENT mime-type (#PCDATA)>
+
+<!--
+The param-name element contains the name of a parameter. Each parameter
+name must be unique in the web application.
+
+
+Used in: context-param, init-param
+-->
+<!ELEMENT param-name (#PCDATA)>
+
+<!--
+The param-value element contains the value of a parameter.
+
+Used in: context-param, init-param
+-->
+<!ELEMENT param-value (#PCDATA)>
+
+<!--
+The realm name element specifies the realm name to use in HTTP
+Basic authorization.
+
+Used in: login-config
+-->
+<!ELEMENT realm-name (#PCDATA)>
+
+<!--
+The remote element contains the fully-qualified name of the enterprise
+bean's remote interface.
+
+Used in: ejb-ref
+
+Example:
+
+<remote>com.wombat.empl.EmployeeService</remote>
+-->
+<!ELEMENT remote (#PCDATA)>
+
+<!--
+The res-auth element specifies whether the web application code signs
+on programmatically to the resource manager, or whether the Container
+will sign on to the resource manager on behalf of the web application. In the
+latter case, the Container uses information that is supplied by the
+Deployer.
+
+The value of this element must be one of the two following:
+
+    <res-auth>Application</res-auth>
+    <res-auth>Container</res-auth>
+
+Used in: resource-ref
+-->
+<!ELEMENT res-auth (#PCDATA)>
+
+<!--
+The res-ref-name element specifies the name of a resource manager
+connection factory reference.  The name is a JNDI name relative to the
+java:comp/env context.  The name must be unique within a web application.
+
+Used in: resource-ref
+-->
+<!ELEMENT res-ref-name (#PCDATA)>
+
+<!--
+The res-sharing-scope element specifies whether connections obtained
+through the given resource manager connection factory reference can be
+shared. The value of this element, if specified, must be one of the
+two following:
+
+    <res-sharing-scope>Shareable</res-sharing-scope>
+    <res-sharing-scope>Unshareable</res-sharing-scope>
+
+The default value is Shareable.
+
+Used in: resource-ref
+-->
+<!ELEMENT res-sharing-scope (#PCDATA)>
+
+<!--
+The res-type element specifies the type of the data source. The type
+is specified by the fully qualified Java language class or interface
+expected to be implemented by the data source.
+
+Used in: resource-ref
+-->
+<!ELEMENT res-type (#PCDATA)>
+
+<!--
+The resource-env-ref element contains a declaration of a web application's
+reference to an administered object associated with a resource
+in the web application's environment.  It consists of an optional
+description, the resource environment reference name, and an
+indication of the resource environment reference type expected by
+the web application code.
+
+Used in: web-app
+
+Example:
+
+<resource-env-ref>
+    <resource-env-ref-name>jms/StockQueue</resource-env-ref-name>
+    <resource-env-ref-type>javax.jms.Queue</resource-env-ref-type>
+</resource-env-ref>
+-->
+<!ELEMENT resource-env-ref (description?, resource-env-ref-name,
+        resource-env-ref-type)>
+
+<!--
+The resource-env-ref-name element specifies the name of a resource
+environment reference; its value is the environment entry name used in
+the web application code.  The name is a JNDI name relative to the
+java:comp/env context and must be unique within a web application.
+
+Used in: resource-env-ref
+-->
+<!ELEMENT resource-env-ref-name (#PCDATA)>
+
+<!--
+The resource-env-ref-type element specifies the type of a resource
+environment reference.  It is the fully qualified name of a Java
+language class or interface.
+
+Used in: resource-env-ref
+-->
+<!ELEMENT resource-env-ref-type (#PCDATA)>
+
+<!--
+The resource-ref element contains a declaration of a web application's
+reference to an external resource. It consists of an optional
+description, the resource manager connection factory reference name,
+the indication of the resource manager connection factory type
+expected by the web application code, the type of authentication
+(Application or Container), and an optional specification of the
+shareability of connections obtained from the resource (Shareable or
+Unshareable).
+
+Used in: web-app
+
+Example:
+
+    <resource-ref>
+    <res-ref-name>jdbc/EmployeeAppDB</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+    <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
+-->
+<!ELEMENT resource-ref (description?, res-ref-name, res-type, res-auth,
+        res-sharing-scope?)>
+
+<!--
+The role-link element is a reference to a defined security role. The
+role-link element must contain the name of one of the security roles
+defined in the security-role elements.
+
+Used in: security-role-ref
+-->
+<!ELEMENT role-link (#PCDATA)>
+
+<!--
+The role-name element contains the name of a security role.
+
+The name must conform to the lexical rules for an NMTOKEN.
+
+Used in: auth-constraint, run-as, security-role, security-role-ref
+-->
+<!ELEMENT role-name (#PCDATA)>
+
+<!--
+The run-as element specifies the run-as identity to be used for the
+execution of the web application. It contains an optional description, and
+the name of a security role.
+
+Used in: servlet
+-->
+<!ELEMENT run-as (description?, role-name)>
+
+<!--
+The security-constraint element is used to associate security
+constraints with one or more web resource collections
+
+Used in: web-app
+-->
+<!ELEMENT security-constraint (display-name?, web-resource-collection+,
+auth-constraint?, user-data-constraint?)>
+
+<!--
+The security-role element contains the definition of a security
+role. The definition consists of an optional description of the
+security role, and the security role name.
+
+Used in: web-app
+
+Example:
+
+    <security-role>
+    <description>
+        This role includes all employees who are authorized
+        to access the employee service application.
+    </description>
+    <role-name>employee</role-name>
+    </security-role>
+-->
+<!ELEMENT security-role (description?, role-name)>
+
+<!--
+The security-role-ref element contains the declaration of a security
+role reference in the web application's code. The declaration consists
+of an optional description, the security role name used in the code,
+and an optional link to a security role. If the security role is not
+specified, the Deployer must choose an appropriate security role.
+
+The value of the role-name element must be the String used as the
+parameter to the EJBContext.isCallerInRole(String roleName) method
+or the HttpServletRequest.isUserInRole(String role) method.
+
+Used in: servlet
+
+-->
+<!ELEMENT security-role-ref (description?, role-name, role-link?)>
+
+<!--
+The servlet element contains the declarative data of a
+servlet. If a jsp-file is specified and the load-on-startup element is
+present, then the JSP should be precompiled and loaded.
+
+Used in: web-app
+-->
+<!ELEMENT servlet (icon?, servlet-name, display-name?, description?,
+(servlet-class|jsp-file), init-param*, load-on-startup?, run-as?, security-role-ref*)>
+
+<!--
+The servlet-class element contains the fully qualified class name
+of the servlet.
+
+Used in: servlet
+-->
+<!ELEMENT servlet-class (#PCDATA)>
+
+<!--
+The servlet-mapping element defines a mapping between a servlet
+and a url pattern
+
+Used in: web-app
+-->
+<!ELEMENT servlet-mapping (servlet-name, url-pattern)>
+
+<!--
+The servlet-name element contains the canonical name of the
+servlet. Each servlet name is unique within the web application.
+
+Used in: filter-mapping, servlet, servlet-mapping
+-->
+<!ELEMENT servlet-name (#PCDATA)>
+
+<!--
+The session-config element defines the session parameters for
+this web application.
+
+Used in: web-app
+-->
+<!ELEMENT session-config (session-timeout?)>
+
+<!--
+The session-timeout element defines the default session timeout
+interval for all sessions created in this web application. The
+specified timeout must be expressed in a whole number of minutes.
+If the timeout is 0 or less, the container ensures the default
+behaviour of sessions is never to time out.
+
+Used in: session-config
+-->
+<!ELEMENT session-timeout (#PCDATA)>
+
+<!--
+The small-icon element contains the name of a file
+containing a small (16 x 16) icon image. The file
+name is a relative path within the web application's
+war file.
+
+The image may be either in the JPEG or GIF format.
+The icon can be used by tools.
+
+Used in: icon
+
+Example:
+
+<small-icon>employee-service-icon16x16.jpg</small-icon>
+-->
+<!ELEMENT small-icon (#PCDATA)>
+
+<!--
+The taglib element is used to describe a JSP tag library.
+
+Used in: web-app
+-->
+<!ELEMENT taglib (taglib-uri, taglib-location)>
+
+<!--
+the taglib-location element contains the location (as a resource
+relative to the root of the web application) where to find the Tag
+Library Description file for the tag library.
+
+Used in: taglib
+-->
+<!ELEMENT taglib-location (#PCDATA)>
+
+<!--
+The taglib-uri element describes a URI, relative to the location
+of the web.xml document, identifying a Tag Library used in the Web
+Application.
+
+Used in: taglib
+-->
+<!ELEMENT taglib-uri (#PCDATA)>
+
+<!--
+The transport-guarantee element specifies that the communication
+between client and server should be NONE, INTEGRAL, or
+CONFIDENTIAL. NONE means that the application does not require any
+transport guarantees. A value of INTEGRAL means that the application
+requires that the data sent between the client and server be sent in
+such a way that it can't be changed in transit. CONFIDENTIAL means
+that the application requires that the data be transmitted in a
+fashion that prevents other entities from observing the contents of
+the transmission. In most cases, the presence of the INTEGRAL or
+CONFIDENTIAL flag will indicate that the use of SSL is required.
+
+Used in: user-data-constraint
+-->
+<!ELEMENT transport-guarantee (#PCDATA)>
+
+<!--
+The url-pattern element contains the url pattern of the mapping. Must
+follow the rules specified in Section 11.2 of the Servlet API
+Specification.
+
+Used in: filter-mapping, servlet-mapping, web-resource-collection
+-->
+<!ELEMENT url-pattern (#PCDATA)>
+
+<!--
+The user-data-constraint element is used to indicate how data
+communicated between the client and container should be protected.
+
+Used in: security-constraint
+-->
+<!ELEMENT user-data-constraint (description?, transport-guarantee)>
+
+<!--
+The web-resource-collection element is used to identify a subset
+of the resources and HTTP methods on those resources within a web
+application to which a security constraint applies. If no HTTP methods
+are specified, then the security constraint applies to all HTTP
+methods.
+
+Used in: security-constraint
+-->
+<!ELEMENT web-resource-collection (web-resource-name, description?,
+url-pattern*, http-method*)>
+
+<!--
+The web-resource-name contains the name of this web resource
+collection.
+
+Used in: web-resource-collection
+-->
+<!ELEMENT web-resource-name (#PCDATA)>
+
+<!--
+The welcome-file element contains file name to use as a default
+welcome file, such as index.html
+
+Used in: welcome-file-list
+-->
+<!ELEMENT welcome-file (#PCDATA)>
+
+<!--
+The welcome-file-list contains an ordered list of welcome files
+elements.
+
+Used in: web-app
+-->
+<!ELEMENT welcome-file-list (welcome-file+)>
+
+<!--
+The ID mechanism is to allow tools that produce additional deployment
+information (i.e., information beyond the standard deployment
+descriptor information) to store the non-standard information in a
+separate file, and easily refer from these tool-specific files to the
+information in the standard deployment descriptor.
+
+Tools are not allowed to add the non-standard information into the
+standard deployment descriptor.
+-->
+
+<!ATTLIST auth-constraint id ID #IMPLIED>
+<!ATTLIST auth-method id ID #IMPLIED>
+<!ATTLIST context-param id ID #IMPLIED>
+<!ATTLIST description id ID #IMPLIED>
+<!ATTLIST display-name id ID #IMPLIED>
+<!ATTLIST distributable id ID #IMPLIED>
+<!ATTLIST ejb-link id ID #IMPLIED>
+<!ATTLIST ejb-local-ref id ID #IMPLIED>
+<!ATTLIST ejb-ref id ID #IMPLIED>
+<!ATTLIST ejb-ref-name id ID #IMPLIED>
+<!ATTLIST ejb-ref-type id ID #IMPLIED>
+<!ATTLIST env-entry id ID #IMPLIED>
+<!ATTLIST env-entry-name id ID #IMPLIED>
+<!ATTLIST env-entry-type id ID #IMPLIED>
+<!ATTLIST env-entry-value id ID #IMPLIED>
+<!ATTLIST error-code id ID #IMPLIED>
+<!ATTLIST error-page id ID #IMPLIED>
+<!ATTLIST exception-type id ID #IMPLIED>
+<!ATTLIST extension id ID #IMPLIED>
+<!ATTLIST filter id ID #IMPLIED>
+<!ATTLIST filter-class id ID #IMPLIED>
+<!ATTLIST filter-mapping id ID #IMPLIED>
+<!ATTLIST filter-name id ID #IMPLIED>
+<!ATTLIST form-error-page id ID #IMPLIED>
+<!ATTLIST form-login-config id ID #IMPLIED>
+<!ATTLIST form-login-page id ID #IMPLIED>
+<!ATTLIST home id ID #IMPLIED>
+<!ATTLIST http-method id ID #IMPLIED>
+<!ATTLIST icon id ID #IMPLIED>
+<!ATTLIST init-param id ID #IMPLIED>
+<!ATTLIST jsp-file id ID #IMPLIED>
+<!ATTLIST large-icon id ID #IMPLIED>
+<!ATTLIST listener id ID #IMPLIED>
+<!ATTLIST listener-class id ID #IMPLIED>
+<!ATTLIST load-on-startup id ID #IMPLIED>
+<!ATTLIST local id ID #IMPLIED>
+<!ATTLIST local-home id ID #IMPLIED>
+<!ATTLIST location id ID #IMPLIED>
+<!ATTLIST login-config id ID #IMPLIED>
+<!ATTLIST mime-mapping id ID #IMPLIED>
+<!ATTLIST mime-type id ID #IMPLIED>
+<!ATTLIST param-name id ID #IMPLIED>
+<!ATTLIST param-value id ID #IMPLIED>
+<!ATTLIST realm-name id ID #IMPLIED>
+<!ATTLIST remote id ID #IMPLIED>
+<!ATTLIST res-auth id ID #IMPLIED>
+<!ATTLIST res-ref-name id ID #IMPLIED>
+<!ATTLIST res-sharing-scope id ID #IMPLIED>
+<!ATTLIST res-type id ID #IMPLIED>
+<!ATTLIST resource-env-ref id ID #IMPLIED>
+<!ATTLIST resource-env-ref-name id ID #IMPLIED>
+<!ATTLIST resource-env-ref-type id ID #IMPLIED>
+<!ATTLIST resource-ref id ID #IMPLIED>
+<!ATTLIST role-link id ID #IMPLIED>
+<!ATTLIST role-name id ID #IMPLIED>
+<!ATTLIST run-as id ID #IMPLIED>
+<!ATTLIST security-constraint id ID #IMPLIED>
+<!ATTLIST security-role id ID #IMPLIED>
+<!ATTLIST security-role-ref id ID #IMPLIED>
+<!ATTLIST servlet id ID #IMPLIED>
+<!ATTLIST servlet-class id ID #IMPLIED>
+<!ATTLIST servlet-mapping id ID #IMPLIED>
+<!ATTLIST servlet-name id ID #IMPLIED>
+<!ATTLIST session-config id ID #IMPLIED>
+<!ATTLIST session-timeout id ID #IMPLIED>
+<!ATTLIST small-icon id ID #IMPLIED>
+<!ATTLIST taglib id ID #IMPLIED>
+<!ATTLIST taglib-location id ID #IMPLIED>
+<!ATTLIST taglib-uri id ID #IMPLIED>
+<!ATTLIST transport-guarantee id ID #IMPLIED>
+<!ATTLIST url-pattern id ID #IMPLIED>
+<!ATTLIST user-data-constraint id ID #IMPLIED>
+<!ATTLIST web-app id ID #IMPLIED>
+<!ATTLIST web-resource-collection id ID #IMPLIED>
+<!ATTLIST web-resource-name id ID #IMPLIED>
+<!ATTLIST welcome-file id ID #IMPLIED>
+<!ATTLIST welcome-file-list id ID #IMPLIED>

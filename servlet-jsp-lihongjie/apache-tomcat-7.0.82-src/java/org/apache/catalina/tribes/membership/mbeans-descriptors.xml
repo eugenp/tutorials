@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE mbeans-descriptors PUBLIC
+   "-//Apache Software Foundation//DTD Model MBeans Configuration File"
+   "http://jakarta.apache.org/commons/dtds/mbeans-descriptors.dtd">
+<mbeans-descriptors>
+  <mbean
+    name="McastService"
+    description="Cluster Membership service implementation"
+    domain="Catalina"
+    group="Cluster"
+    type="org.apache.catalina.tribes.membership.McastService">
+    <attribute
+      name="address"
+      description="Multicast IP Address"
+      type="java.lang.String"/>
+    <attribute
+      name="bind"
+      description="Multicast IP Interface address (default auto)"
+      type="java.lang.String"/>
+    <attribute
+      name="dropTime"
+      description="Timeout from frequency ping after member disappear notify"
+      type="long"/>
+    <attribute
+      name="frequency"
+      description="Ping Frequency at msec"
+      type="long"/>
+    <attribute
+      name="info"
+      description="Class version info"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="localLoopbackDisabled"
+      description="Is local loopback disabled?"
+      is="true"
+      type="boolean"/>
+    <attribute
+      name="localMemberName"
+      description="Complete local receiver information"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="membersByName"
+      description="Complete remote sender information"
+      type="[Ljava.lang.String;"
+      writeable="false"/>
+    <attribute
+      name="port"
+      description="Multicast UDP Port"
+      type="int"/>
+    <attribute
+      name="recoveryCounter"
+      description="Counter after membership failure socket restarted"
+      type="int"/>
+    <attribute
+      name="recoveryEnabled"
+      description="Membership recovery enabled"
+      is="true"
+      type="boolean"/>
+    <attribute
+      name="recoverySleepTime"
+      description="Sleep time between next socket recovery (5000 msec)"
+      type="long"/>
+    <attribute
+      name="soTimeout"
+      description="Multicast Socket Timeout"
+      type="int"/>
+    <attribute
+      name="Ttl"
+      description=""
+      type="int"/>
+    <operation
+      name="start"
+      description="Start the cluster membership"
+      impact="ACTION"
+      returnType="void"/>
+    <operation
+      name="stop"
+      description="Stop the cluster membership"
+      impact="ACTION"
+      returnType="void"/>
+  </mbean>
+  <mbean
+    name="MemberImpl"
+    description="Cluster member"
+    domain="Catalina"
+    group="Cluster"
+    type="org.apache.catalina.tribes.membership.MemberImpl">
+    <attribute
+      name="failing"
+      description="Has a problem been observed with this member (failing is worse than suspect)"
+      type="boolean"
+      is="true"
+      writeable="false"/>
+    <attribute
+      name="hostname"
+      description="The name of the host where this member is located"
+      type="String"
+      writeable="false"/>
+    <attribute
+      name="memberAliveTime"
+      description="The number of milliseconds since this member was created"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="msgCount"
+      description="The number of messages sent by this member"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="name"
+      description="The unique name of this member within the cluster"
+      type="String"
+      writeable="false"/>
+    <attribute
+      name="port"
+      description="The tcp port the member is listening on"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="ready"
+      description="Is this member ready to send messages"
+      type="boolean"
+      is="true"
+      writeable="false"/>
+    <attribute
+      name="securePort"
+      description="The tcp(SSL) port the member is listening on"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="serviceStartTime"
+      description="The time the member was started"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="suspect"
+      description="Has a potential problem been observed with this member (failing is worse than suspect)"
+      type="boolean"
+      is="true"
+      writeable="false"/>
+    <attribute
+      name="udpPort"
+      description="The upd port the member is listening on"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="local"
+      description="The flag indicating that this member is a local member"
+      type="boolean"
+      is="true"
+      writeable="false"/>
+  </mbean>
+  <mbean
+    name="StaticMember"
+    description="Cluster static member"
+    domain="Catalina"
+    group="Cluster"
+    type="org.apache.catalina.tribes.membership.StaticMember">
+    <attribute
+      name="failing"
+      description="Has a problem been observed with this member (failing is worse than suspect)"
+      type="boolean"
+      is="true"
+      writeable="false"/>
+    <attribute
+      name="hostname"
+      description="The name of the host where this member is located"
+      type="String"
+      writeable="false"/>
+    <attribute
+      name="memberAliveTime"
+      description="The number of milliseconds since this member was created"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="msgCount"
+      description="The number of messages sent by this member"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="name"
+      description="The unique name of this member within the cluster"
+      type="String"
+      writeable="false"/>
+    <attribute
+      name="port"
+      description="The tcp port the member is listening on"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="ready"
+      description="Is this member ready to send messages"
+      type="boolean"
+      is="true"
+      writeable="false"/>
+    <attribute
+      name="securePort"
+      description="The tcp(SSL) port the member is listening on"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="serviceStartTime"
+      description="The time the member was started"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="suspect"
+      description="Has a potential problem been observed with this member (failing is worse than suspect)"
+      type="boolean"
+      is="true"
+      writeable="false"/>
+    <attribute
+      name="udpPort"
+      description="The upd port the member is listening on"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="local"
+      description="The flag indicating that this member is a local member"
+      type="boolean"
+      is="true"
+      writeable="false"/>
+  </mbean>
+</mbeans-descriptors>
