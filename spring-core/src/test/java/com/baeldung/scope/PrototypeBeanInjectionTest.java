@@ -20,10 +20,10 @@ public class PrototypeBeanInjectionTest {
     @Test
     public void givenPrototypeInjection_WhenObjectFactory_ThenNewInstanceReturn() {
 
-        final AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        final SingletonObjectFactoryBean firstContext = context.getBean(SingletonObjectFactoryBean.class);
-        final SingletonObjectFactoryBean secondContext = context.getBean(SingletonObjectFactoryBean.class);
+        SingletonObjectFactoryBean firstContext = context.getBean(SingletonObjectFactoryBean.class);
+        SingletonObjectFactoryBean secondContext = context.getBean(SingletonObjectFactoryBean.class);
 
         PrototypeBean firstInstance = firstContext.getPrototypeInstance();
         PrototypeBean secondInstance = secondContext.getPrototypeInstance();
@@ -34,10 +34,10 @@ public class PrototypeBeanInjectionTest {
     @Test
     public void givenPrototypeInjection_WhenLookup_ThenNewInstanceReturn() {
 
-        final AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        final SingletonLookupBean firstContext = context.getBean(SingletonLookupBean.class);
-        final SingletonLookupBean secondContext = context.getBean(SingletonLookupBean.class);
+        SingletonLookupBean firstContext = context.getBean(SingletonLookupBean.class);
+        SingletonLookupBean secondContext = context.getBean(SingletonLookupBean.class);
 
         PrototypeBean firstInstance = firstContext.getPrototypeBean();
         PrototypeBean secondInstance = secondContext.getPrototypeBean();
@@ -48,10 +48,10 @@ public class PrototypeBeanInjectionTest {
     @Test
     public void givenPrototypeInjection_WhenProvider_ThenNewInstanceReturn() {
 
-        final AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        final SingletonProviderBean firstContext = context.getBean(SingletonProviderBean.class);
-        final SingletonProviderBean secondContext = context.getBean(SingletonProviderBean.class);
+        SingletonProviderBean firstContext = context.getBean(SingletonProviderBean.class);
+        SingletonProviderBean secondContext = context.getBean(SingletonProviderBean.class);
 
         PrototypeBean firstInstance = firstContext.getPrototypeInstance();
         PrototypeBean secondInstance = secondContext.getPrototypeInstance();
