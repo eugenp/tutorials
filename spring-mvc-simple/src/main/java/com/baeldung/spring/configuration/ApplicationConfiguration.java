@@ -24,7 +24,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator" })
-class ApplicationConfiguration extends WebMvcConfigurerAdapter {
+public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
