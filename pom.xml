@@ -280,8 +280,9 @@
         <module>saas</module>
         <module>deeplearning4j</module>
         <module>lucene</module>
-		    <module>vraptor</module>
+        <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+        <module>persistence-modules/java-jdbi</module>
     </modules>
 
     <dependencies>
