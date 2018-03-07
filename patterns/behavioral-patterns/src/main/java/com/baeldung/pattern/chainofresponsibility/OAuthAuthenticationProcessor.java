@@ -1,14 +1,15 @@
-package com.baeldung.designpatterns.chainofresponsibility;
+package com.baeldung.pattern.chainofresponsibility;
 
-public class UsernamePasswordAuthenticationProcessor extends AuthenticationProcessor {
+public class OAuthAuthenticationProcessor extends AuthenticationProcessor {
 
-    public UsernamePasswordAuthenticationProcessor(AuthenticationProcessor nextProcessor) {
+    public OAuthAuthenticationProcessor(AuthenticationProcessor nextProcessor) {
         super(nextProcessor);
     }
 
     @Override
     public boolean isAuthorized(AuthenticationProvider authProvider) {
-        if (authProvider instanceof UsernamePasswordProvider) {
+
+        if (authProvider instanceof OAuthTokenProvider) {
             return Boolean.TRUE;
         } else if (nextProcessor != null) {
             return nextProcessor.isAuthorized(authProvider);

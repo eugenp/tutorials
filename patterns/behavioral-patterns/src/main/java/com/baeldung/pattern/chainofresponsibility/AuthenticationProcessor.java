@@ -1,4 +1,4 @@
-package com.baeldung.designpatterns.chainofresponsibility;
+package com.baeldung.pattern.chainofresponsibility;
 
 public abstract class AuthenticationProcessor {
 
