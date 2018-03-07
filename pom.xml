@@ -39,6 +39,8 @@
         <module>apache-fop</module>
         <module>apache-poi</module>
         <module>apache-thrift</module>
+        <module>apache-curator</module>
+        <module>apache-zookeeper</module>
         <module>autovalue</module>
         <module>axon</module>
         <module>bootique</module>
@@ -278,9 +280,9 @@
         <module>lucene</module>
         <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
-        <module>apache-zookeeper</module>
+        <module>jersey</module>
         <module>java-spi</module>
-    </modules>
+  </modules>
 
     <dependencies>
         <!-- logging -->
