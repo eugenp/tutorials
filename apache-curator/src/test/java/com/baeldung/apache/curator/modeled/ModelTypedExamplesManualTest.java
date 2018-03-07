@@ -18,8 +18,9 @@ public class ModelTypedExamplesManualTest extends BaseTest {
     @Test
     public void givenPath_whenStoreAModel_thenNodesAreCreated() throws InterruptedException {
 
-        ModelSpec<HostConfig> mySpec = ModelSpec.builder(ZPath.parseWithIds("/config/dev"), JacksonModelSerializer.build(HostConfig.class))
-            .build();
+        ModelSpec<HostConfig> mySpec = ModelSpec
+          .builder(ZPath.parseWithIds("/config/dev"), JacksonModelSerializer.build(HostConfig.class))
+          .build();
 
         try (CuratorFramework client = newClient()) {
             client.start();
@@ -28,20 +29,18 @@ public class ModelTypedExamplesManualTest extends BaseTest {
 
             modeledClient.set(new HostConfig("host-name", 8080));
 
-            modeledClient.read()
-                .whenComplete((value, e) -> {
-                    if (e != null) {
-                        fail("Cannot read host config", e);
-                    } else {
-                        assertThat(value).isNotNull();
-                        assertThat(value.getHostname()).isEqualTo("host-name");
-                        assertThat(value.getPort()).isEqualTo(8080);
-                    }
+            modeledClient
+              .read()
+              .whenComplete((value, e) -> {
+                  if (e != null) {
+                      fail("Cannot read host config", e);
+                  } else {
+                      assertThat(value).isNotNull();
+                      assertThat(value.getHostname()).isEqualTo("host-name");
+                      assertThat(value.getPort()).isEqualTo(8080);
+                  }
 
-                });
-
-            // Wait some time to finish
-            Thread.sleep(100);
+              });
         }
 
     }

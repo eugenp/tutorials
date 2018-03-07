@@ -21,8 +21,9 @@ public class ConnectionManagementManualTest {
 
         try (CuratorFramework client = CuratorFrameworkFactory.newClient("127.0.0.1:2181", retryPolicy)) {
             client.start();
-            assertThat(client.checkExists()
-                .forPath("/")).isNotNull();
+            assertThat(client
+              .checkExists()
+              .forPath("/")).isNotNull();
         }
     }
 
@@ -37,9 +38,10 @@ public class ConnectionManagementManualTest {
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
 
             AtomicBoolean exists = new AtomicBoolean(false);
-            async.checkExists()
-                .forPath("/")
-                .thenAcceptAsync(s -> exists.set(s != null));
+            async
+              .checkExists()
+              .forPath("/")
+              .thenAcceptAsync(s -> exists.set(s != null));
             Thread.sleep(100);
             assertThat(exists.get()).isTrue();
         }
@@ -56,9 +58,10 @@ public class ConnectionManagementManualTest {
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
 
             AtomicBoolean exists = new AtomicBoolean(false);
-            async.checkExists()
-                .forPath("/")
-                .thenAccept(s -> exists.set(s != null));
+            async
+              .checkExists()
+              .forPath("/")
+              .thenAccept(s -> exists.set(s != null));
             Thread.sleep(100);
             assertThat(exists.get()).isTrue();
         }
