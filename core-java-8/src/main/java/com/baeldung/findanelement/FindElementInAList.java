@@ -16,24 +16,24 @@ public class FindElementInAList<T> {
         return null;
     }
 
-    public T findUsingListIterator(T element, List<T> list) {
+    public boolean findUsingListIterator(T element, List<T> list) {
         ListIterator<T> listIterator = list.listIterator();
         while (listIterator.hasNext()) {
             T elementFromList = listIterator.next();
             if (elementFromList.equals(element)) {
-                return element;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
-    public T findUsingEnhancedForLoop(T element, List<T> list) {
+    public boolean findUsingEnhancedForLoop(T element, List<T> list) {
         for (T elementFromList : list) {
             if (element.equals(elementFromList)) {
-                return elementFromList;
+                return true;
             }
         }
-        return null;
+        return false;
     }
 
     public T findUsingStream(T element, List<T> list) {
