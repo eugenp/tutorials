@@ -1,9 +1,8 @@
 package com.baeldung.rxjava.combine;
 
-import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ import org.junit.Test;
 
 import rx.Observable;
 
-public class ObservableCombineTest {
+public class ObservableCombineUnitTest {
 
     private static ExecutorService executor;
     
@@ -38,16 +37,17 @@ public class ObservableCombineTest {
 
         //@formatter:off
         Observable.merge(
-            Observable.from(new String[] {"Hello", "World"}),
-            Observable.from(new String[]{ "I love", "RxJava"})
+          Observable.from(new String[] {"Hello", "World"}),
+          Observable.from(new String[]{ "I love", "RxJava"})
         ).subscribe(data -> {
-           results.add(data); 
+          results.add(data); 
         });
         //@formatter:on
 
         assertFalse(results.isEmpty());
         assertEquals(4, results.size());
-        assertThat(results, hasItems("Hello", "World", "I love", "RxJava"));
+        
+        assertThat(results).contains("Hello", "World", "I love", "RxJava");
     }
 
     @Test
@@ -56,13 +56,11 @@ public class ObservableCombineTest {
 
         //@formatter:off
         Observable
-            .from(new String[] { "RxJava", "Observables" })
-            .startWith("Buzzwords of Reactive Programming")
-            .subscribe(data -> {
-                buffer
-                    .append(data)
-                    .append(" ");
-            });
+          .from(new String[] { "RxJava", "Observables" })
+          .startWith("Buzzwords of Reactive Programming")
+          .subscribe(data -> {
+            buffer.append(data).append(" ");
+          });
         //@formatter:on
 
         assertEquals("Buzzwords of Reactive Programming RxJava Observables", buffer.toString().trim());
@@ -74,18 +72,18 @@ public class ObservableCombineTest {
 
         //@formatter:off
         Observable.zip(
-            Observable.from(new String[] { "Simple", "Moderate", "Complex" }), 
-            Observable.from(new String[] { "Solutions", "Success", "Heirarchy"}),
+          Observable.from(new String[] { "Simple", "Moderate", "Complex" }), 
+          Observable.from(new String[] { "Solutions", "Success", "Heirarchy"}),
         (str1, str2) -> {
-            return str1 + " " + str2;
+          return str1 + " " + str2;
         }).subscribe(zipped -> {
-            zippedStrings.add(zipped);
+          zippedStrings.add(zipped);
         });
         //formatter:on
         
         assertFalse(zippedStrings.isEmpty());
         assertEquals(3, zippedStrings.size());
-        assertThat(zippedStrings, hasItems("Simple Solutions", "Moderate Success", "Complex Heirarchy"));
+        assertThat(zippedStrings).contains("Simple Solutions", "Moderate Success", "Complex Heirarchy");
     }
     
     @Test(expected = RuntimeException.class)
@@ -99,14 +97,14 @@ public class ObservableCombineTest {
         
         //@formatter:off
         Observable.mergeDelayError(
-            Observable.from(f1),
-            Observable.from(f2),
-            Observable.from(f3),
-            Observable.from(f4)
+          Observable.from(f1),
+          Observable.from(f2),
+          Observable.from(f3),
+          Observable.from(f4)
         ).subscribe(data -> {
-            results.add(data);
+          results.add(data);
         }, error -> {
-            throw new RuntimeException(error);
+          throw new RuntimeException(error);
         });
         //@formatter:on
     }
