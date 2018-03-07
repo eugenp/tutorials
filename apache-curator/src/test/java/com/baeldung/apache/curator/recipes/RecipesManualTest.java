@@ -15,7 +15,7 @@ import com.baeldung.apache.curator.BaseTest;
 public class RecipesManualTest extends BaseTest {
 
     @Test
-    public void whenUsingLeaderElection() {
+    public void givenRunningZookeeper_whenUsingLeaderElection_thenNoErrors() {
         try (CuratorFramework client = newClient()) {
             client.start();
             LeaderSelector leaderSelector = new LeaderSelector(client, "/mutex/select/leader/for/job/A", new LeaderSelectorListener() {
@@ -41,7 +41,7 @@ public class RecipesManualTest extends BaseTest {
     }
 
     @Test
-    public void whenUsingSharedLocks() throws Exception {
+    public void givenRunningZookeeper_whenUsingSharedLock_thenNoErrors() throws Exception {
         try (CuratorFramework client = newClient()) {
             client.start();
             InterProcessSemaphoreMutex sharedLock = new InterProcessSemaphoreMutex(client, "/mutex/process/A");
@@ -55,7 +55,7 @@ public class RecipesManualTest extends BaseTest {
     }
 
     @Test
-    public void whenUsingSharedCounter() throws Exception {
+    public void givenRunningZookeeper_whenUsingSharedCounter_thenCounterIsIncrement() throws Exception {
         try (CuratorFramework client = newClient()) {
             client.start();
 

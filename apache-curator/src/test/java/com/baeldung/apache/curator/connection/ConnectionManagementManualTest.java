@@ -14,7 +14,7 @@ import org.junit.Test;
 public class ConnectionManagementManualTest {
 
     @Test
-    public void whenOpenConnectionThenClientIsOpened() throws Exception {
+    public void givenRunningZookeeper_whenOpenConnection_thenClientIsOpened() throws Exception {
         int sleepMsBetweenRetries = 100;
         int maxRetries = 3;
         RetryPolicy retryPolicy = new RetryNTimes(maxRetries, sleepMsBetweenRetries);
@@ -27,7 +27,7 @@ public class ConnectionManagementManualTest {
     }
 
     @Test
-    public void whenOpenConnectionThenClientIsOpenedUsingAsyncNotBlocking() throws InterruptedException {
+    public void givenRunningZookeeper_whenOpenConnectionUsingAsyncNotBlocking_thenClientIsOpened() throws InterruptedException {
         int sleepMsBetweenRetries = 100;
         int maxRetries = 3;
         RetryPolicy retryPolicy = new RetryNTimes(maxRetries, sleepMsBetweenRetries);
@@ -46,7 +46,7 @@ public class ConnectionManagementManualTest {
     }
 
     @Test
-    public void whenOpenConnectionThenClientIsOpenedUsingAsyncBlocking() throws InterruptedException {
+    public void givenRunningZookeeper_whenOpenConnectionUsingAsyncBlocking_thenClientIsOpened() throws InterruptedException {
         int sleepMsBetweenRetries = 100;
         int maxRetries = 3;
         RetryPolicy retryPolicy = new RetryNTimes(maxRetries, sleepMsBetweenRetries);
