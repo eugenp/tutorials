@@ -27,24 +27,17 @@ public class ConfigurationTest {
 
         cacheManager = configuration.cacheManager();
 
-        Cache<String, Integer> transactionalCache =
-          configuration.transactionalCache(cacheManager, listener);
+        Cache<String, Integer> transactionalCache = configuration.transactionalCache(cacheManager, listener);
 
-        Cache<String, String> simpleHelloWorldCache =
-          configuration.simpleHelloWorldCache(cacheManager, listener);
+        Cache<String, String> simpleHelloWorldCache = configuration.simpleHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> expiringHelloWorldCache =
-          configuration.expiringHelloWorldCache(cacheManager, listener);
+        Cache<String, String> expiringHelloWorldCache = configuration.expiringHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> evictingHelloWorldCache =
-          configuration.evictingHelloWorldCache(cacheManager, listener);
+        Cache<String, String> evictingHelloWorldCache = configuration.evictingHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> passivatingHelloWorldCache =
-          configuration.passivatingHelloWorldCache(cacheManager, listener);
+        Cache<String, String> passivatingHelloWorldCache = configuration.passivatingHelloWorldCache(cacheManager, listener);
 
-        this.helloWorldService = new HelloWorldService(repository,
-          listener, simpleHelloWorldCache, expiringHelloWorldCache, evictingHelloWorldCache,
-          passivatingHelloWorldCache);
+        this.helloWorldService = new HelloWorldService(repository, listener, simpleHelloWorldCache, expiringHelloWorldCache, evictingHelloWorldCache, passivatingHelloWorldCache);
 
         this.transactionalService = new TransactionalService(transactionalCache);
     }

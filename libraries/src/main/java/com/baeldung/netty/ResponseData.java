@@ -13,8 +13,6 @@ public class ResponseData {
 
     @Override
     public String toString() {
-        return "ResponseData{" +
-                "intValue=" + intValue +
-                '}';
+        return "ResponseData{" + "intValue=" + intValue + '}';
     }
 }

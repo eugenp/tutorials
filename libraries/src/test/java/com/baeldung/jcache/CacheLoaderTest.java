@@ -23,15 +23,13 @@ public class CacheLoaderTest {
     public void setup() {
         CachingProvider cachingProvider = Caching.getCachingProvider();
         CacheManager cacheManager = cachingProvider.getCacheManager();
-        MutableConfiguration<Integer, String> config = new MutableConfiguration<Integer, String>().setReadThrough(true)
-            .setCacheLoaderFactory(new FactoryBuilder.SingletonFactory<>(new SimpleCacheLoader()));
+        MutableConfiguration<Integer, String> config = new MutableConfiguration<Integer, String>().setReadThrough(true).setCacheLoaderFactory(new FactoryBuilder.SingletonFactory<>(new SimpleCacheLoader()));
         this.cache = cacheManager.createCache("SimpleCache", config);
     }
 
     @After
     public void tearDown() {
-        Caching.getCachingProvider()
-          .getCacheManager().destroyCache(CACHE_NAME);
+        Caching.getCachingProvider().getCacheManager().destroyCache(CACHE_NAME);
     }
 
     @Test
