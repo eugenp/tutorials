@@ -28,8 +28,7 @@ public class TransactionalService {
             watch.start();
             transactionalCache.put(KEY, howManyVisits);
             watch.stop();
-            System.out.println("I was able to set HowManyVisits to " + howManyVisits +
-              " after waiting " + watch.getTotalTimeSeconds() + " seconds");
+            System.out.println("I was able to set HowManyVisits to " + howManyVisits + " after waiting " + watch.getTotalTimeSeconds() + " seconds");
 
             tm.commit();
             return howManyVisits;
@@ -44,8 +43,7 @@ public class TransactionalService {
             TransactionManager tm = transactionalCache.getAdvancedCache().getTransactionManager();
             tm.begin();
             transactionalCache.put(KEY, 1000);
-            System.out.println("HowManyVisits should now be 1000, " +
-              "but we are holding the transaction");
+            System.out.println("HowManyVisits should now be 1000, " + "but we are holding the transaction");
             Thread.sleep(1000L);
             tm.rollback();
             System.out.println("The slow batch suffered a rollback");
