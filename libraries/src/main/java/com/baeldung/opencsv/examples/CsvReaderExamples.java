@@ -1,6 +1,6 @@
-package com.baeldung.opencsvsync.examples;
+package com.baeldung.opencsv.examples;
 
-import com.baeldung.opencsvsync.helpers.Helpers;
+import com.baeldung.opencsv.helpers.Helpers;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;

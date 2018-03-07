@@ -29,6 +29,12 @@
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+        </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
@@ -735,6 +741,10 @@
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
+                    <includes>
+                        <include>test/java/com/baeldung/neuroph/XORTest.java</include>
+                        <include>test/java/com/baeldung/opencsv/OpenCsvTest.java</include>
+                    </includes>
                 </configuration>
             </plugin>
 
@@ -814,6 +824,7 @@
         <tomcat.version>8.5.24</tomcat.version>
         <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
+        <opencsv.version>4.1</opencsv.version>
     </properties>
 
 </project>
