@@ -12,11 +12,13 @@
 
   Client-side service discovery allows services to find and communicate with each other without hardcoding hostname and port. The only ‘fixed point’ in such an architecture consists of a service registry with which each service has to register.
 
+### Relevant Articles:
 - [Intro to Spring Cloud Netflix - Hystrix](http://www.baeldung.com/spring-cloud-netflix-hystrix)
 - [Dockerizing a Spring Boot Application](http://www.baeldung.com/dockerizing-spring-boot-application)
 - [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
 - [A Quick Guide to Spring Cloud Consul](http://www.baeldung.com/spring-cloud-consul)
-
-### Relevant Articles:
-- [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
- [An Introduction to Spring Cloud Zookeeper](http://www.baeldung.com/spring-cloud-zookeeper)
+- [An Introduction to Spring Cloud Zookeeper](http://www.baeldung.com/spring-cloud-zookeeper)
+- [Using a Spring Cloud App Starter](http://www.baeldung.com/using-a-spring-cloud-app-starter)
+- [Spring Cloud Connectors and Heroku](http://www.baeldung.com/spring-cloud-heroku)
+- [An Example of Load Balancing with Zuul and Eureka](http://www.baeldung.com/zuul-load-balancing)
+- [An Intro to Spring Cloud Contract](http://www.baeldung.com/spring-cloud-contract)

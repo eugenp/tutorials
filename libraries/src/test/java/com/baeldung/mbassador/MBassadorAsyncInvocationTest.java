@@ -5,8 +5,6 @@ import net.engio.mbassy.listener.Handler;
 import net.engio.mbassy.listener.Invoke;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

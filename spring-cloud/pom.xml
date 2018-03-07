@@ -20,6 +20,8 @@
         <module>spring-cloud-connectors-heroku</module>
         <module>spring-cloud-aws</module>
         <module>spring-cloud-consul</module>
+        <module>spring-cloud-zuul-eureka-integration</module>
+        <module>spring-cloud-contract</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -43,8 +45,9 @@
         <spring-cloud-starter-hystrix.version>1.2.3.RELEASE</spring-cloud-starter-hystrix.version>
         <spring-cloud-stream.version>1.3.0.RELEASE</spring-cloud-stream.version>
         <spring-boot-starter-web.version>1.4.2.RELEASE</spring-boot-starter-web.version>
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
+        <spring-cloud-starter-zuul.version>1.2.3.RELEASE</spring-cloud-starter-zuul.version>
     </properties>
 
     <build>
