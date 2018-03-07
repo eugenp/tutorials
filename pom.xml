@@ -39,6 +39,7 @@
         <module>apache-fop</module>
         <module>apache-poi</module>
         <module>apache-thrift</module>
+        <module>apache-curator</module>
         <module>autovalue</module>
         <module>axon</module>
         <module>bootique</module>
