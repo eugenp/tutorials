@@ -37,7 +37,5 @@ public class SumAndAverageInArrayTest {
         double actualAvgOfArray = SumAndAverageInArray.findAverageUsingStream(array);
 
         Assert.assertEquals(expectedAvgOfArray, actualAvgOfArray, 0.0034);
-
     }
-
 }
