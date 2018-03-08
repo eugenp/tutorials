@@ -18,14 +18,13 @@ import static org.junit.Assert.assertNotNull;
 
 public class MappedByteBufferUnitTest {
 
-
     @Test
     public void givenFileChannel_whenReadToTheMappedByteBuffer_thenShouldSuccess() throws Exception {
-        //given
+        // given
         CharBuffer charBuffer = null;
         Path pathToRead = getFileURIFromResources("fileToRead.txt");
 
-        //when
+        // when
         try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(pathToRead, EnumSet.of(StandardOpenOption.READ))) {
             MappedByteBuffer mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size());
 
@@ -34,20 +33,19 @@ public class MappedByteBufferUnitTest {
             }
         }
 
-        //then
+        // then
         assertNotNull(charBuffer);
         assertEquals(charBuffer.toString(), "This is a content of the file");
     }
 
     @Test
     public void givenPath_whenWriteToItUsingMappedByteBuffer_thenShouldSuccessfullyWrite() throws Exception {
-        //given
-        CharBuffer charBuffer = CharBuffer.wrap("This will be written to the file");
-        Path pathToWrite = getFileURIFromResources("fileToWriteTo.txt");
+        // given
+        final CharBuffer charBuffer = CharBuffer.wrap("This will be written to the file");
+        final Path pathToWrite = getFileURIFromResources("fileToWriteTo.txt");
 
-        //when
-        try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(pathToWrite,
-          EnumSet.of(StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING))) {
+        // when
+        try (FileChannel fileChannel = (FileChannel) Files.newByteChannel(pathToWrite, EnumSet.of(StandardOpenOption.READ, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING))) {
             MappedByteBuffer mappedByteBuffer = fileChannel.map(FileChannel.MapMode.READ_WRITE, 0, charBuffer.length());
 
             if (mappedByteBuffer != null) {
@@ -55,14 +53,16 @@ public class MappedByteBufferUnitTest {
             }
         }
 
-        //then
-        List<String> fileContent = Files.readAllLines(pathToWrite);
+        // then
+        final List<String> fileContent = Files.readAllLines(pathToWrite);
         assertEquals(fileContent.get(0), "This will be written to the file");
 
     }
 
-    private Path getFileURIFromResources(String fileName) throws Exception {
-        ClassLoader classLoader = getClass().getClassLoader();
+    //
+
+    private final Path getFileURIFromResources(String fileName) throws Exception {
+        final ClassLoader classLoader = getClass().getClassLoader();
         return Paths.get(classLoader.getResource(fileName).toURI());
     }
 }

@@ -186,17 +186,12 @@ public class AsyncHttpClientTestCase {
 
         WebSocket WEBSOCKET_CLIENT = null;
         try {
-            WEBSOCKET_CLIENT = Dsl.asyncHttpClient()
-              .prepareGet("ws://localhost:5590/websocket")
-              .addHeader("header_name", "header_value")
-              .addQueryParam("key", "value")
-              .setRequestTimeout(5000)
-              .execute(wsHandler).get();
+            WEBSOCKET_CLIENT = Dsl.asyncHttpClient().prepareGet("ws://localhost:5590/websocket").addHeader("header_name", "header_value").addQueryParam("key", "value").setRequestTimeout(5000).execute(wsHandler).get();
 
             if (WEBSOCKET_CLIENT.isOpen()) {
                 WEBSOCKET_CLIENT.sendPingFrame();
                 WEBSOCKET_CLIENT.sendTextFrame("test message");
-                WEBSOCKET_CLIENT.sendBinaryFrame(new byte[]{'t', 'e', 's', 't'});
+                WEBSOCKET_CLIENT.sendBinaryFrame(new byte[] { 't', 'e', 's', 't' });
             }
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();

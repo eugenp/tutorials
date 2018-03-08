@@ -11,15 +11,15 @@ public class LongestCommonSubsequenceTest {
     public void whenCompare_thenCorrect() {
         LongestCommonSubsequence lcs = new LongestCommonSubsequence();
         int countLcs = lcs.apply("New York", "New Hampshire");
-        
+
         Assert.assertEquals(5, countLcs);
     }
-    
+
     @Test
     public void whenCalculateDistance_thenCorrect() {
         LongestCommonSubsequenceDistance lcsd = new LongestCommonSubsequenceDistance();
         int countLcsd = lcsd.apply("New York", "New Hampshire");
-        
+
         Assert.assertEquals(11, countLcsd);
     }
 }

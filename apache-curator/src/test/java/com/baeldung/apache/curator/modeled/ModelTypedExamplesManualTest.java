@@ -16,15 +16,19 @@ import com.baeldung.apache.curator.BaseTest;
 public class ModelTypedExamplesManualTest extends BaseTest {
 
     @Test
-    public void givenPath_whenStoreAModel_thenNodesAreCreated() throws InterruptedException {
+    public void givenPath_whenStoreAModel_thenNodesAreCreated()
+        throws InterruptedException {
 
-        ModelSpec<HostConfig> mySpec = ModelSpec.builder(ZPath.parseWithIds("/config/dev"), JacksonModelSerializer.build(HostConfig.class))
+        ModelSpec<HostConfig> mySpec = ModelSpec
+            .builder(ZPath.parseWithIds("/config/dev"),
+                JacksonModelSerializer.build(HostConfig.class))
             .build();
 
         try (CuratorFramework client = newClient()) {
             client.start();
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
-            ModeledFramework<HostConfig> modeledClient = ModeledFramework.wrap(async, mySpec);
+            ModeledFramework<HostConfig> modeledClient = ModeledFramework
+                .wrap(async, mySpec);
 
             modeledClient.set(new HostConfig("host-name", 8080));
 
@@ -39,9 +43,6 @@ public class ModelTypedExamplesManualTest extends BaseTest {
                     }
 
                 });
-
-            // Wait some time to finish
-            Thread.sleep(100);
         }
 
     }

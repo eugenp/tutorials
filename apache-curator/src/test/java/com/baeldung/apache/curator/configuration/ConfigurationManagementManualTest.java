@@ -38,14 +38,16 @@ public class ConfigurationManagementManualTest extends BaseTest {
             AtomicBoolean isEquals = new AtomicBoolean();
             async.getData()
                 .forPath(key)
-                .thenAccept(data -> isEquals.set(new String(data).equals(expected)));
+                .thenAccept(
+                    data -> isEquals.set(new String(data).equals(expected)));
 
             await().until(() -> assertThat(isEquals.get()).isTrue());
         }
     }
 
     @Test
-    public void givenPath_whenWatchAKeyAndStoreAValue_thenWatcherIsTriggered() throws Exception {
+    public void givenPath_whenWatchAKeyAndStoreAValue_thenWatcherIsTriggered()
+        throws Exception {
         try (CuratorFramework client = newClient()) {
             client.start();
             AsyncCuratorFramework async = AsyncCuratorFramework.wrap(client);
