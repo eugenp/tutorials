@@ -6,8 +6,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 
 public class HamcrestNumberUnitTest {
 
