@@ -1,5 +1,6 @@
 package com.baeldung.apache.curator.configuration;
 
+import static com.jayway.awaitility.Awaitility.await;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
@@ -39,9 +40,7 @@ public class ConfigurationManagementManualTest extends BaseTest {
                 .forPath(key)
                 .thenAccept(data -> isEquals.set(new String(data).equals(expected)));
 
-            Thread.sleep(1000);
-
-            assertThat(isEquals.get()).isTrue();
+            await().until(() -> assertThat(isEquals.get()).isTrue());
         }
     }
 
@@ -77,9 +76,7 @@ public class ConfigurationManagementManualTest extends BaseTest {
             async.setData()
                 .forPath(key, expected.getBytes());
 
-            Thread.sleep(1000);
-
-            assertThat(changes.size() > 0).isTrue();
+            await().until(() -> assertThat(changes.size() > 0).isTrue());
         }
     }
 
