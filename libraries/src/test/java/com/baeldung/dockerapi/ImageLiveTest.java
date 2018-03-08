@@ -33,99 +33,84 @@ public class ImageLiveTest {
     @Test
     public void whenListingImages_thenReturnNonEmptyList() {
 
-        //when
+        // when
         List<Image> images = dockerClient.listImagesCmd().exec();
 
-        //then
+        // then
         assertThat(images.size(), is(not(0)));
     }
 
     @Test
     public void whenListingImagesWithIntermediateImages_thenReturnNonEmptyList() {
 
-        //when
-        List<Image> images = dockerClient.listImagesCmd()
-                .withShowAll(true).exec();
+        // when
+        List<Image> images = dockerClient.listImagesCmd().withShowAll(true).exec();
 
-        //then
+        // then
         assertThat(images.size(), is(not(0)));
     }
 
     @Test
     public void whenListingDanglingImages_thenReturnNonNullList() {
 
-        //when
-        List<Image> images = dockerClient.listImagesCmd()
-                .withDanglingFilter(true).exec();
+        // when
+        List<Image> images = dockerClient.listImagesCmd().withDanglingFilter(true).exec();
 
-        //then
+        // then
         assertThat(images, is(not(null)));
     }
 
     @Test
     public void whenBuildingImage_thenMustReturnImageId() {
 
-        //when
-        String imageId = dockerClient.buildImageCmd()
-                .withDockerfile(new File("src/test/resources/dockerapi/Dockerfile"))
-                .withPull(true)
-                .withNoCache(true)
-                .withTag("alpine:git")
-                .exec(new BuildImageResultCallback())
-                .awaitImageId();
+        // when
+        String imageId = dockerClient.buildImageCmd().withDockerfile(new File("src/test/resources/dockerapi/Dockerfile")).withPull(true).withNoCache(true).withTag("alpine:git").exec(new BuildImageResultCallback()).awaitImageId();
 
-        //then
+        // then
         assertThat(imageId, is(not(null)));
     }
 
     @Test
     public void givenListOfImages_whenInspectImage_thenMustReturnObject() {
 
-        //given
+        // given
         List<Image> images = dockerClient.listImagesCmd().exec();
         Image image = images.get(0);
 
-        //when
-        InspectImageResponse imageResponse
-                = dockerClient.inspectImageCmd(image.getId()).exec();
+        // when
+        InspectImageResponse imageResponse = dockerClient.inspectImageCmd(image.getId()).exec();
 
-        //then
+        // then
         assertThat(imageResponse.getId(), is(image.getId()));
     }
 
     @Test
     public void givenListOfImages_whenTagImage_thenListMustIncrement() {
 
-        //given
+        // given
         List<Image> images = dockerClient.listImagesCmd().exec();
         Image image = images.get(0);
 
-        //when
+        // when
         dockerClient.tagImageCmd(image.getId(), "baeldung/alpine", "3.6.v2").exec();
 
-        //then
+        // then
         List<Image> imagesNow = dockerClient.listImagesCmd().exec();
         assertThat(imagesNow.size(), is(greaterThan(images.size())));
     }
 
     public void pushingAnImage() throws InterruptedException {
 
-        dockerClient.pushImageCmd("baeldung/alpine")
-                .withTag("3.6.v2")
-                .exec(new PushImageResultCallback())
-                .awaitCompletion(90, TimeUnit.SECONDS);
+        dockerClient.pushImageCmd("baeldung/alpine").withTag("3.6.v2").exec(new PushImageResultCallback()).awaitCompletion(90, TimeUnit.SECONDS);
     }
 
     @Test
     public void whenPullingImage_thenImageListNotEmpty() throws InterruptedException {
 
-        //when
-        dockerClient.pullImageCmd("alpine")
-                .withTag("latest")
-                .exec(new PullImageResultCallback())
-                .awaitCompletion(30, TimeUnit.SECONDS);
+        // when
+        dockerClient.pullImageCmd("alpine").withTag("latest").exec(new PullImageResultCallback()).awaitCompletion(30, TimeUnit.SECONDS);
 
-        //then
+        // then
         List<Image> images = dockerClient.listImagesCmd().exec();
         assertThat(images.size(), is(not(0)));
     }
@@ -133,12 +118,12 @@ public class ImageLiveTest {
     @Test
     public void whenRemovingImage_thenImageListDecrease() {
 
-        //when
+        // when
         List<Image> images = dockerClient.listImagesCmd().exec();
         Image image = images.get(0);
         dockerClient.removeImageCmd(image.getId()).exec();
 
-        //then
+        // then
         List<Image> imagesNow = dockerClient.listImagesCmd().exec();
         assertThat(imagesNow.size(), is(lessThan(images.size())));
     }
@@ -146,10 +131,10 @@ public class ImageLiveTest {
     @Test
     public void whenSearchingImage_thenMustReturn25Items() {
 
-        //when
+        // when
         List<SearchItem> items = dockerClient.searchImagesCmd("Java").exec();
 
-        //then
+        // then
         assertThat(items.size(), is(25));
     }
 }

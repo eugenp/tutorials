@@ -61,15 +61,11 @@ public class SpringBootMailIntegrationTest {
     }
 
     private String getMessage(WiserMessage wiserMessage) throws MessagingException, IOException {
-        return wiserMessage.getMimeMessage()
-            .getContent()
-            .toString()
-            .trim();
+        return wiserMessage.getMimeMessage().getContent().toString().trim();
     }
 
     private String getSubject(WiserMessage wiserMessage) throws MessagingException {
-        return wiserMessage.getMimeMessage()
-            .getSubject();
+        return wiserMessage.getMimeMessage().getSubject();
     }
 
     private SimpleMailMessage composeEmailMessage() {

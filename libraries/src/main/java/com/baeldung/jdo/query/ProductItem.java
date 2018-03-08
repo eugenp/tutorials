@@ -1,7 +1,6 @@
 package com.baeldung.jdo.query;
 
 import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.PersistenceAware;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
@@ -10,24 +9,23 @@ import javax.jdo.annotations.PrimaryKey;
 public class ProductItem {
 
     @PrimaryKey
-    @Persistent(valueStrategy=IdGeneratorStrategy.INCREMENT)
+    @Persistent(valueStrategy = IdGeneratorStrategy.INCREMENT)
     int id;
     String name;
     String description;
     String status;
     double price;
 
-    public ProductItem(){
+    public ProductItem() {
 
     }
 
-    public ProductItem(String name,String description,String status,double price){
-        this.name=name;
+    public ProductItem(String name, String description, String status, double price) {
+        this.name = name;
         this.description = description;
         this.status = status;
         this.price = price;
     }
-
 
     public int getId() {
         return id;
@@ -40,18 +38,23 @@ public class ProductItem {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
     public double getPrice() {
         return price;
     }
+
     public void setPrice(double price) {
         this.price = price;
     }
@@ -63,6 +66,5 @@ public class ProductItem {
     public void setStatus(String status) {
         this.status = status;
     }
-
 
 }
