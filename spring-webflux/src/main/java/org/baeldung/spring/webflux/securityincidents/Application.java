@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
-
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
@@ -18,8 +17,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        WebClient
-            .builder()
+        WebClient.builder()
             .build()
             .get()
             .uri("http://localhost:8080/securityeventsstream")

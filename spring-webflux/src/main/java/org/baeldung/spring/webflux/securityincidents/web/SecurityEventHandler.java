@@ -21,12 +21,13 @@ public class SecurityEventHandler {
         int size = Integer.parseInt(request.pathVariable("size"));
 
         return ok().contentType(MediaType.APPLICATION_JSON)
-                .body(securityEventGeneratorService.getSecurityEventStream().take(size), SecurityEvent.class);
+            .body(securityEventGeneratorService.getSecurityEventStream()
+                .take(size), SecurityEvent.class);
     }
 
     public Mono<ServerResponse> getSecurityEventsStream(ServerRequest request) {
 
         return ok().contentType(MediaType.APPLICATION_STREAM_JSON)
-                .body(securityEventGeneratorService.getSecurityEventStream(), SecurityEvent.class);
+            .body(securityEventGeneratorService.getSecurityEventStream(), SecurityEvent.class);
     }
 }
