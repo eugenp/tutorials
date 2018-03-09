@@ -68,7 +68,7 @@ public class JavaXToInputStreamUnitTest {
 
     @Test
     public final void givenUsingPlainJava_whenConvertingFileToInputStream_thenCorrect() throws IOException {
-        final File initialFile = new File("src/main/resources/sample.txt");
+        final File initialFile = new File("src/test/resources/sample.txt");
         final InputStream targetStream = new FileInputStream(initialFile);
 
         IOUtils.closeQuietly(targetStream);
@@ -76,7 +76,7 @@ public class JavaXToInputStreamUnitTest {
 
     @Test
     public final void givenUsingGuava_whenConvertingFileToInputStream_thenCorrect() throws IOException {
-        final File initialFile = new File("src/main/resources/sample.txt");
+        final File initialFile = new File("src/test/resources/sample.txt");
         final InputStream targetStream = Files.asByteSource(initialFile).openStream();
 
         IOUtils.closeQuietly(targetStream);
@@ -84,7 +84,7 @@ public class JavaXToInputStreamUnitTest {
 
     @Test
     public final void givenUsingCommonsIO_whenConvertingFileToInputStream_thenCorrect() throws IOException {
-        final File initialFile = new File("src/main/resources/sample.txt");
+        final File initialFile = new File("src/test/resources/sample.txt");
         final InputStream targetStream = FileUtils.openInputStream(initialFile);
 
         IOUtils.closeQuietly(targetStream);

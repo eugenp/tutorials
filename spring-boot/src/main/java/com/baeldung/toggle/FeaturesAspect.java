@@ -14,12 +14,10 @@ public class FeaturesAspect {
 
     @Around(value = "@within(featureAssociation) || @annotation(featureAssociation)")
     public Object checkAspect(ProceedingJoinPoint joinPoint, FeatureAssociation featureAssociation) throws Throwable {
-        if (featureAssociation.value()
-            .isActive()) {
+        if (featureAssociation.value().isActive()) {
             return joinPoint.proceed();
         } else {
-            LOG.info("Feature " + featureAssociation.value()
-                .name() + " is not enabled!");
+            LOG.info("Feature " + featureAssociation.value().name() + " is not enabled!");
             return null;
         }
     }

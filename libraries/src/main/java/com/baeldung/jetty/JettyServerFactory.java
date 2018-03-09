@@ -14,81 +14,79 @@ import org.eclipse.jetty.webapp.WebAppContext;
  */
 public class JettyServerFactory {
 
-	/**
-	 * Exposed context of the app.
-	 */
-	public final static String APP_PATH = "/myApp";
-	
-	/**
-	 * The server port.
-	 */
-	public final static int SERVER_PORT = 13133;
+    /**
+     * Exposed context of the app.
+     */
+    public final static String APP_PATH = "/myApp";
 
-	/**
-	 * Private constructor to avoid instantiation.
-	 */
-	private JettyServerFactory() {
-	}
+    /**
+     * The server port.
+     */
+    public final static int SERVER_PORT = 13133;
 
-	/**
-	 * Returns a simple server listening on port 80 with a timeout of 30 seconds
-	 * for connections and no handlers.
-	 * 
-	 * @return a server
-	 */
-	public static Server createBaseServer() {
-		Server server = new Server();
+    /**
+     * Private constructor to avoid instantiation.
+     */
+    private JettyServerFactory() {
+    }
 
-		// Adds a connector for port 80 with a timeout of 30 seconds.
-		ServerConnector connector = new ServerConnector(server);
-		connector.setPort(SERVER_PORT);
-		connector.setHost("127.0.0.1");
-		connector.setIdleTimeout(30000);
-		server.addConnector(connector);
+    /**
+     * Returns a simple server listening on port 80 with a timeout of 30 seconds
+     * for connections and no handlers.
+     * 
+     * @return a server
+     */
+    public static Server createBaseServer() {
+        Server server = new Server();
 
-		return server;
-	}
+        // Adds a connector for port 80 with a timeout of 30 seconds.
+        ServerConnector connector = new ServerConnector(server);
+        connector.setPort(SERVER_PORT);
+        connector.setHost("127.0.0.1");
+        connector.setIdleTimeout(30000);
+        server.addConnector(connector);
 
-	/**
-	 * Creates a server which delegates the request handling to a web
-	 * application.
-	 * 
-	 * @return a server
-	 */
-	public static Server createWebAppServer() {
-		// Adds an handler to a server and returns it.
-		Server server = createBaseServer();
-		String webAppFolderPath = JettyServerFactory.class.getClassLoader().getResource("jetty-embedded-demo-app.war")
-				.getPath();
-		Handler webAppHandler = new WebAppContext(webAppFolderPath, APP_PATH);
-		server.setHandler(webAppHandler);
+        return server;
+    }
 
-		return server;
-	}
+    /**
+     * Creates a server which delegates the request handling to a web
+     * application.
+     * 
+     * @return a server
+     */
+    public static Server createWebAppServer() {
+        // Adds an handler to a server and returns it.
+        Server server = createBaseServer();
+        String webAppFolderPath = JettyServerFactory.class.getClassLoader().getResource("jetty-embedded-demo-app.war").getPath();
+        Handler webAppHandler = new WebAppContext(webAppFolderPath, APP_PATH);
+        server.setHandler(webAppHandler);
 
-	/**
-	 * Creates a server which delegates the request handling to both a logging
-	 * handler and to a web application, in this order.
-	 * 
-	 * @return a server
-	 */
-	public static Server createMultiHandlerServer() {
-		Server server = createBaseServer();
+        return server;
+    }
 
-		// Creates the handlers and adds them to the server.
-		HandlerCollection handlers = new HandlerCollection();
+    /**
+     * Creates a server which delegates the request handling to both a logging
+     * handler and to a web application, in this order.
+     * 
+     * @return a server
+     */
+    public static Server createMultiHandlerServer() {
+        Server server = createBaseServer();
 
-		String webAppFolderPath = JettyServerFactory.class.getClassLoader().getResource("jetty-embedded-demo-app.war")
-				.getPath();
-		Handler customRequestHandler = new WebAppContext(webAppFolderPath, APP_PATH);
-		handlers.addHandler(customRequestHandler);
+        // Creates the handlers and adds them to the server.
+        HandlerCollection handlers = new HandlerCollection();
 
-		Handler loggingRequestHandler = new LoggingRequestHandler();
-		handlers.addHandler(loggingRequestHandler);
+        String webAppFolderPath = JettyServerFactory.class.getClassLoader().getResource("jetty-embedded-demo-app.war").getPath();
+        Handler customRequestHandler = new WebAppContext(webAppFolderPath, APP_PATH);
+        handlers.addHandler(customRequestHandler);
 
-		server.setHandler(handlers);
+        Handler loggingRequestHandler = new LoggingRequestHandler();
+        handlers.addHandler(loggingRequestHandler);
 
-		return server;
-	}
+        server.setHandler(handlers);
+
+        return server;
+    }
 
 }
