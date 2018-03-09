@@ -18,8 +18,7 @@ public class HelloFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        servletResponse.getOutputStream()
-            .print(filterConfig.getInitParameter("msg"));
+        servletResponse.getOutputStream().print(filterConfig.getInitParameter("msg"));
         filterChain.doFilter(servletRequest, servletResponse);
     }
 

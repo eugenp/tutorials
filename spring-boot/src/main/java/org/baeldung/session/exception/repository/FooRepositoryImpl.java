@@ -14,14 +14,12 @@ public class FooRepositoryImpl implements FooRepository {
 
     @Override
     public void save(Foo foo) {
-        sessionFactory.getCurrentSession()
-            .saveOrUpdate(foo);
+        sessionFactory.getCurrentSession().saveOrUpdate(foo);
     }
 
     @Override
     public Foo get(Integer id) {
-        return sessionFactory.getCurrentSession()
-            .get(Foo.class, id);
+        return sessionFactory.getCurrentSession().get(Foo.class, id);
     }
 
 }

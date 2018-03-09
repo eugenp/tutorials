@@ -44,7 +44,6 @@ public class FlatCollectTest {
     public void whenFlatCollect_thenCorrect() {
         MutableList<String> addresses = students.flatCollect(Student::getAddresses);
 
-        Assertions.assertThat(addresses)
-            .containsExactlyElementsOf(this.expectedAddresses);
+        Assertions.assertThat(addresses).containsExactlyElementsOf(this.expectedAddresses);
     }
 }
