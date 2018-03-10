@@ -1,12 +1,11 @@
 package com.baeldung.rxjava.combine;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -16,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import rx.Observable;
+import rx.observers.TestSubscriber;
 
 public class ObservableCombineUnitTest {
 
@@ -32,7 +32,7 @@ public class ObservableCombineUnitTest {
     }
 
     @Test
-    public void testMerge() {
+    public void givenTwoObservables_whenMerged_shouldEmitCombinedResults() {
         List<String> results = new ArrayList<>();
 
         //@formatter:off
@@ -44,14 +44,13 @@ public class ObservableCombineUnitTest {
         });
         //@formatter:on
 
-        assertFalse(results.isEmpty());
-        assertEquals(4, results.size());
-        
+        assertThat(results).isNotEmpty();
+        assertThat(results.size()).isEqualTo(4);
         assertThat(results).contains("Hello", "World", "I love", "RxJava");
     }
 
     @Test
-    public void testStartWith() {
+    public void givenAnObservable_whenStartWith_thenPrependEmittedResults() {
         StringBuffer buffer = new StringBuffer();
 
         //@formatter:off
@@ -63,11 +62,11 @@ public class ObservableCombineUnitTest {
           });
         //@formatter:on
 
-        assertEquals("Buzzwords of Reactive Programming RxJava Observables", buffer.toString().trim());
+        assertThat(buffer.toString().trim()).isEqualTo("Buzzwords of Reactive Programming RxJava Observables");
     }
 
     @Test
-    public void testZip() {
+    public void givenTwoObservables_whenZipped_thenReturnCombinedResults() {
         List<String> zippedStrings = new ArrayList<>();
 
         //@formatter:off
@@ -81,19 +80,19 @@ public class ObservableCombineUnitTest {
         });
         //formatter:on
         
-        assertFalse(zippedStrings.isEmpty());
-        assertEquals(3, zippedStrings.size());
+        assertThat(zippedStrings).isNotEmpty();
+        assertThat(zippedStrings.size()).isEqualTo(3);
         assertThat(zippedStrings).contains("Simple Solutions", "Moderate Success", "Complex Heirarchy");
     }
     
-    @Test(expected = RuntimeException.class)
-    public void testMergeDelayError() {
-        List<String> results = new ArrayList<>();
-        
+    @Test
+    public void givenMutipleObservablesOneThrows_whenMerged_thenCombineBeforePropagatingError() {        
         Future<String> f1 = executor.submit(createCallable("Hello"));
         Future<String> f2 = executor.submit(createCallable("World"));
         Future<String> f3 = executor.submit(createCallable(null));
         Future<String> f4 = executor.submit(createCallable("RxJava"));
+        
+        TestSubscriber<String> testSubscriber = new TestSubscriber<>();
         
         //@formatter:off
         Observable.mergeDelayError(
@@ -101,12 +100,11 @@ public class ObservableCombineUnitTest {
           Observable.from(f2),
           Observable.from(f3),
           Observable.from(f4)
-        ).subscribe(data -> {
-          results.add(data);
-        }, error -> {
-          throw new RuntimeException(error);
-        });
+        ).subscribe(testSubscriber);
         //@formatter:on
+        
+        testSubscriber.assertValues("hello", "world", "rxjava");
+        testSubscriber.assertError(ExecutionException.class);
     }
     
     private Callable<String> createCallable(final String data) {
