@@ -11,7 +11,7 @@ import reactor.core.publisher.Flux;
 @Service
 public class SecurityEventGeneratorServiceImpl implements SecurityEventGeneratorService {
 
-    private final Random random = new Random();
+    private Random random = new Random();
 
     @Override
     public Flux<SecurityEvent> getSecurityEventStream() {
@@ -24,16 +24,21 @@ public class SecurityEventGeneratorServiceImpl implements SecurityEventGenerator
     }
 
     private List<SecurityEvent> createSecurityEventList(Long id) {
-        return Arrays.asList(new SecurityEvent[] { new SecurityEvent(randomEvent()) });
+        return Arrays.asList(
+          new SecurityEvent[] { new SecurityEvent(randomEvent()) });
     }
 
     private String randomEvent() {
-        List<String> events = Arrays.asList("Port scan", "Suspicious UDP", "TCP fragmentation", "ICMP", "Bogus traffic");
-        return events.get(random.nextInt(events.size())) + " from " + generateIp();
+        List<String> events 
+          = Arrays.asList("Port scan", "Suspicious UDP", "TCP fragmentation", "ICMP", "Bogus traffic");
+        
+        return events.get(random.nextInt(events.size()))  
+          + " from " + generateIp();
     }
 
     private String generateIp() {
-        return (random.nextInt(254) + 1) + "." + (random.nextInt(254) + 1) + "." + (random.nextInt(254) + 1) + "." + (random.nextInt(254) + 1);
+        return (random.nextInt(254) + 1) + "." + (random.nextInt(254) + 1) 
+          + "." + (random.nextInt(254) + 1) + "." + (random.nextInt(254) + 1);
     }
 
 }

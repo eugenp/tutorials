@@ -16,8 +16,8 @@ public class SecurityEventRouter {
     public RouterFunction<ServerResponse> routes(SecurityEventHandler handler) {
         return RouterFunctions
                 .route(GET("/securityevents/{size}")
-                    .and(accept(MediaType.APPLICATION_JSON)), handler::getSecurityEvents)
+                  .and(accept(MediaType.APPLICATION_JSON)), handler::getSecurityEvents)
                 .andRoute(GET("/securityeventsstream")
-                    .and(accept(MediaType.APPLICATION_STREAM_JSON)), handler::getSecurityEventsStream);
+                  .and(accept(MediaType.APPLICATION_STREAM_JSON)), handler::getSecurityEventsStream);
     }
 }

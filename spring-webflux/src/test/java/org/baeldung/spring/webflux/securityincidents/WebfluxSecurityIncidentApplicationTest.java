@@ -31,8 +31,10 @@ public class WebfluxSecurityIncidentApplicationTest {
             .expectBodyList(SecurityEvent.class)
             .hasSize(1)
             .consumeWith(securityEvents -> {
+                
                 assertThat(securityEvents.getResponseBody()).hasSize(1);
-                assertThat(securityEvents.getResponseBody()).allSatisfy(securityEvent -> assertThat(securityEvent.getId()
+                assertThat(securityEvents.getResponseBody())
+                    .allSatisfy(securityEvent -> assertThat(securityEvent.getId()
                     .toString()
                     .length()).isEqualTo(UUID_LENGTH))
                     .allSatisfy(securityEvent -> assertThat(securityEvent.getName()

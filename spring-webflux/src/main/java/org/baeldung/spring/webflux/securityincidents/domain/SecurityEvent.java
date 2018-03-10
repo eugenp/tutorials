@@ -36,6 +36,7 @@ public class SecurityEvent {
 
     @Override
     public String toString() {
-        return "SecurityEvent [id=" + id + ", name=" + name + ", timestamp=" + timestamp + "]";
+        return "SecurityEvent [id=" + id + ", name=" 
+          + name + ", timestamp=" + timestamp + "]";
     }
 }

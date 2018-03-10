@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>securityincidents</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Sample app to show the use of Spring Webflux</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

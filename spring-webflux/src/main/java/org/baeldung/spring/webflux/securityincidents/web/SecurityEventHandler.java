@@ -20,14 +20,21 @@ public class SecurityEventHandler {
     public Mono<ServerResponse> getSecurityEvents(ServerRequest request) {
         int size = Integer.parseInt(request.pathVariable("size"));
 
-        return ok().contentType(MediaType.APPLICATION_JSON)
-            .body(securityEventGeneratorService.getSecurityEventStream()
-                .take(size), SecurityEvent.class);
+        return ok()
+          .contentType(MediaType.APPLICATION_JSON)
+          .body(
+            securityEventGeneratorService.getSecurityEventStream().take(size),
+            SecurityEvent.class
+          );
     }
 
     public Mono<ServerResponse> getSecurityEventsStream(ServerRequest request) {
 
-        return ok().contentType(MediaType.APPLICATION_STREAM_JSON)
-            .body(securityEventGeneratorService.getSecurityEventStream(), SecurityEvent.class);
+        return ok()
+          .contentType(MediaType.APPLICATION_STREAM_JSON)
+          .body(
+            securityEventGeneratorService.getSecurityEventStream(),
+            SecurityEvent.class
+          );
     }
 }

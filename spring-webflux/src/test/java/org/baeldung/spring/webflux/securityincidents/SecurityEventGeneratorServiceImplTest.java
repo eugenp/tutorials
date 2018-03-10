@@ -27,6 +27,7 @@ public class SecurityEventGeneratorServiceImplTest {
 
         quoteFlux.take(10)
             .subscribe(securityEvent -> {
+                
                 assertThat(securityEvent.getId()
                     .toString()
                     .length()).isEqualTo(UUID_LENGTH);
