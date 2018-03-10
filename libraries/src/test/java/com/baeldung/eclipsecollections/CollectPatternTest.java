@@ -17,7 +17,6 @@ public class CollectPatternTest {
 
         MutableList<String> lastNames = students.collect(Student::getLastName);
 
-        Assertions.assertThat(lastNames)
-            .containsExactly("Hopkins", "Adams");
+        Assertions.assertThat(lastNames).containsExactly("Hopkins", "Adams");
     }
 }

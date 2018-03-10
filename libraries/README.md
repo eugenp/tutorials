@@ -58,6 +58,12 @@
 - [Introduction to BouncyCastle with Java](http://www.baeldung.com/java-bouncy-castle)
 - [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
 - [Guide to google-http-client](http://www.baeldung.com/google-http-client)
+- [Interact with Google Sheets from Java](http://www.baeldung.com/google-sheets-java-client)
+- [Programatically Create, Configure, and Run a Tomcat Server] (http://www.baeldung.com/tomcat-programmatic-setup)
+- [A Docker Guide for Java](http://www.baeldung.com/docker-java-api)
+- [Exceptions in Netty](http://www.baeldung.com/netty-exception-handling)
+- [Creating and Configuring Jetty 9 Server in Java](http://www.baeldung.com/jetty-java-programmatic)
+
 
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.

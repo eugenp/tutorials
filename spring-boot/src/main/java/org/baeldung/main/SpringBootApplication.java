@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +21,7 @@ import java.util.concurrent.Executors;
 
 @RestController
 @EnableAutoConfiguration(exclude = MySQLAutoconfiguration.class)
-@ComponentScan({ "org.baeldung.common.error", "org.baeldung.common.error.controller", "org.baeldung.common.properties", "org.baeldung.common.resources","org.baeldung.endpoints", "org.baeldung.service", "org.baeldung.monitor.jmx", "org.baeldung.boot.config"})
+@ComponentScan({ "org.baeldung.common.error", "org.baeldung.common.error.controller", "org.baeldung.common.properties", "org.baeldung.common.resources", "org.baeldung.endpoints", "org.baeldung.service", "org.baeldung.monitor.jmx", "org.baeldung.boot.config" })
 public class SpringBootApplication {
 
     private static ApplicationContext applicationContext;

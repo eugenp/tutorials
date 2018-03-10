@@ -1,6 +1,5 @@
 package com.baeldung.commons.collections;
 
-
 import com.baeldung.commons.collectionutil.Address;
 import com.baeldung.commons.collectionutil.Customer;
 import org.apache.commons.collections4.CollectionUtils;
@@ -20,7 +19,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class CollectionUtilsGuideTest {
-
 
     Customer customer1 = new Customer(1, "Daniel", 123456l, "locality1", "city1", "1234");
     Customer customer4 = new Customer(4, "Bob", 456789l, "locality4", "city4", "4567");
@@ -77,8 +75,8 @@ public class CollectionUtilsGuideTest {
             }
         });
 
-        //filterInverse does the opposite. It removes the element from the list if the Predicate returns true
-        //select and selectRejected work the same way except that they do not remove elements from the given collection and return a new collection 
+        // filterInverse does the opposite. It removes the element from the list if the Predicate returns true
+        // select and selectRejected work the same way except that they do not remove elements from the given collection and return a new collection
 
         assertTrue(isModified && linkedList1.size() == 2);
     }
@@ -88,8 +86,8 @@ public class CollectionUtilsGuideTest {
         List<Customer> emptyList = new ArrayList<>();
         List<Customer> nullList = null;
 
-        //Very handy at times where we want to check if a collection is not null and not empty too.
-        //isNotEmpty does the opposite. Handy because using ! operator on isEmpty makes it missable while reading
+        // Very handy at times where we want to check if a collection is not null and not empty too.
+        // isNotEmpty does the opposite. Handy because using ! operator on isEmpty makes it missable while reading
         assertTrue(CollectionUtils.isNotEmpty(list1));
         assertTrue(CollectionUtils.isEmpty(nullList));
         assertTrue(CollectionUtils.isEmpty(emptyList));

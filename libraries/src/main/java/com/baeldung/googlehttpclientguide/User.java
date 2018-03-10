@@ -16,7 +16,7 @@ public class User extends GenericJson {
     private String blog;
     @Key
     private String email;
-    
+
     @Key("subscriptions_url")
     private String subscriptionsUrl;
 
@@ -71,7 +71,6 @@ public class User extends GenericJson {
     @Override
     public String toString() {
         return "User{" + "login=" + login + ", id=" + id + ", url=" + url + ", company=" + company + ", blog=" + blog + ", email=" + email + '}';
-    }    
-     
-    
+    }
+
 }

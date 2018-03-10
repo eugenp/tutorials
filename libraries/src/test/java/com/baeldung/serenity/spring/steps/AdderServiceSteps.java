@@ -13,7 +13,8 @@ import static org.junit.Assert.assertNotEquals;
 @ContextConfiguration(classes = AdderService.class)
 public class AdderServiceSteps {
 
-    @Autowired private AdderService adderService;
+    @Autowired
+    private AdderService adderService;
 
     private int givenNumber;
     private int base;

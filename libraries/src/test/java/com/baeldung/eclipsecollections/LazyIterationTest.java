@@ -18,7 +18,6 @@ public class LazyIterationTest {
         LazyIterable<Student> lazyStudents = students.asLazy();
         LazyIterable<String> lastNames = lazyStudents.collect(Student::getLastName);
 
-        Assertions.assertThat(lastNames)
-            .containsAll(Lists.mutable.with("Hopkins", "Adams", "Rodriguez"));
+        Assertions.assertThat(lastNames).containsAll(Lists.mutable.with("Hopkins", "Adams", "Rodriguez"));
     }
 }
