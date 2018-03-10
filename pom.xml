@@ -199,7 +199,8 @@
         <module>spring-ldap</module>
         <module>spring-mockito</module>
         <module>spring-mvc-email</module>
-        <module>spring-mvc-forms</module>
+        <module>spring-mvc-forms-jsp</module>
+        <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
