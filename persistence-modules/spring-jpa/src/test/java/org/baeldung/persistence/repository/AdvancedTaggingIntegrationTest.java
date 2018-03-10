@@ -53,7 +53,7 @@ public class AdvancedTaggingIntegrationTest {
     }
 
     @Test
-    public void givenStudentWithKVTags_whenSave_thenGetByTagOk(){
+    public void givenStudentWithKVTags_whenSave_thenGetByTagOk() {
         Student student = new Student(0, "John");
         student.setKVTags(Arrays.asList(new KVTag("department", "computer science")));
         studentRepository.save(student);

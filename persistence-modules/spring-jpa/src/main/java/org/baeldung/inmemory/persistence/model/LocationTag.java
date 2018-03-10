@@ -8,7 +8,8 @@ public class LocationTag {
     private int xPos;
     private int yPos;
 
-    public LocationTag(){}
+    public LocationTag() {
+    }
 
     public LocationTag(String name, int xPos, int yPos) {
         super();

@@ -7,7 +7,8 @@ public class KVTag {
     private String key;
     private String value;
 
-    public KVTag(){}
+    public KVTag() {
+    }
 
     public KVTag(String key, String value) {
         super();

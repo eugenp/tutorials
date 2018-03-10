@@ -15,7 +15,8 @@ public class ManyTag {
     @ManyToMany(mappedBy = "manyTags")
     private Set<ManyStudent> students = new HashSet<>();
 
-    public ManyTag() {}
+    public ManyTag() {
+    }
 
     public ManyTag(String name) {
         this.name = name;

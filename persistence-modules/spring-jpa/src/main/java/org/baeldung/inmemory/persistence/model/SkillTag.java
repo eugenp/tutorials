@@ -7,7 +7,8 @@ public class SkillTag {
     private String name;
     private int value;
 
-    public SkillTag(){}
+    public SkillTag() {
+    }
 
     public SkillTag(String name, int value) {
         super();

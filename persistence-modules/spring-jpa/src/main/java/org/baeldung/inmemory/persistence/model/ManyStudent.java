@@ -13,12 +13,11 @@ public class ManyStudent {
     private String name;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "manystudent_manytags",
-            joinColumns = @JoinColumn(name = "manystudent_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "manytag_id", referencedColumnName = "id"))
+    @JoinTable(name = "manystudent_manytags", joinColumns = @JoinColumn(name = "manystudent_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "manytag_id", referencedColumnName = "id"))
     private Set<ManyTag> manyTags = new HashSet<>();
 
-    public ManyStudent() {}
+    public ManyStudent() {
+    }
 
     public ManyStudent(String name) {
         this.name = name;
