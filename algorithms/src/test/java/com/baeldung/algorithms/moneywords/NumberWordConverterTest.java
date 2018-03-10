@@ -53,6 +53,31 @@ public class NumberWordConverterTest {
     }
 
     @Test
+    public void whenOneDollarAndNoCents_thenReturnDollarSingular() {
+        assertEquals("one dollar", NumberWordConverter.getMoneyIntoWords(1));
+    }
+
+    @Test
+    public void whenNoDollarsAndOneCent_thenReturnCentSingular() {
+        assertEquals("one cent", NumberWordConverter.getMoneyIntoWords(0.01));
+    }
+
+    @Test
+    public void whenNoDollarsAndTwoCents_thenReturnCentsPlural() {
+        assertEquals("two cents", NumberWordConverter.getMoneyIntoWords(0.02));
+    }
+
+    @Test
+    public void whenNoDollarsAndNinetyNineCents_thenReturnWords() {
+        assertEquals("ninety nine cents", NumberWordConverter.getMoneyIntoWords(0.99));
+    }
+
+    @Test
+    public void whenNoDollarsAndNineFiveNineCents_thenCorrectRounding() {
+        assertEquals("ninety six cents", NumberWordConverter.getMoneyIntoWords(0.959));
+    }
+
+    @Test
     public void whenGivenDollarsAndCents_thenReturnWordsVersionTwo() {
         assertEquals("three hundred ten £ 00/100", NumberWordConverter.getMoneyIntoWords("310"));
     }
