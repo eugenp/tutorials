@@ -2,7 +2,7 @@ package com.baeldung.externalizable;
 
 import java.io.*;
 
-public class Community implements Externalizable {
+public class Community implements Serializable {
 
     private int id;
 
@@ -19,15 +19,5 @@ public class Community implements Externalizable {
         return "Community{" +
                 "id=" + id +
                 '}';
-    }
-
-    @Override
-    public void writeExternal(ObjectOutput out) throws IOException {
-
-    }
-
-    @Override
-    public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-
     }
 }
