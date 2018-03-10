@@ -1,15 +1,14 @@
 package com.baeldung.spring.controller.rss;
 
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class RssData implements Serializable {
+public class Article implements Serializable {
     private String link;
     private String title;
     private String description;
-    private String publishedDate;
+    private Date publishedDate;
+    private String author;
 
     public String getLink() {
         return link;
@@ -35,22 +34,30 @@ public class RssData implements Serializable {
         this.description = description;
     }
 
-    public String getPublishedDate() {
+    public Date getPublishedDate() {
         return publishedDate;
     }
 
     public void setPublishedDate(Date publishedDate) {
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        this.publishedDate = df.format(publishedDate);
+        this.publishedDate = publishedDate;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     @Override
     public String toString() {
-        return "RssData{" +
+        return "Article{" +
                 "link='" + link + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", publishedDate=" + publishedDate +
+                ", author='" + author + '\'' +
                 '}';
     }
 }

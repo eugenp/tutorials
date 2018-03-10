@@ -17,18 +17,18 @@ import java.util.concurrent.ExecutionException;
 
 @Controller
 @RequestMapping("twitter")
-public class ScribeController {
+public class TwitterController {
 
-    private OAuth10aService createTwitterService() {
+    private OAuth10aService createService() {
         return new ServiceBuilder("PSRszoHhRDVhyo2RIkThEbWko")
-                .apiSecret("prpJbz03DcGRN46sb4ucdSYtVxG8unUKhcnu3an5ItXbEOuenL")
-                .callback("http://localhost:8080/spring-mvc-simple/twitter/callback")
-                .build(TwitterApi.instance());
+            .apiSecret("prpJbz03DcGRN46sb4ucdSYtVxG8unUKhcnu3an5ItXbEOuenL")
+            .callback("http://localhost:8080/spring-mvc-simple/twitter/callback")
+            .build(TwitterApi.instance());
     }
 
     @GetMapping(value = "/authorization")
     public RedirectView authorization(HttpServletRequest servletReq) throws InterruptedException, ExecutionException, IOException {
-        OAuth10aService twitterService = createTwitterService();
+        OAuth10aService twitterService = createService();
 
         OAuth1RequestToken requestToken = twitterService.getRequestToken();
         String authorizationUrl = twitterService.getAuthorizationUrl(requestToken);
@@ -42,7 +42,7 @@ public class ScribeController {
     @GetMapping(value = "/callback", produces = "text/plain")
     @ResponseBody
     public String callback(HttpServletRequest servletReq, @RequestParam("oauth_verifier") String oauthV) throws InterruptedException, ExecutionException, IOException {
-        OAuth10aService twitterService = createTwitterService();
+        OAuth10aService twitterService = createService();
         OAuth1RequestToken requestToken = (OAuth1RequestToken) servletReq.getSession().getAttribute("requestToken");
         OAuth1AccessToken accessToken = twitterService.getAccessToken(requestToken, oauthV);
 
