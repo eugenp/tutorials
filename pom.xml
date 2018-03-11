@@ -38,6 +38,7 @@
         <module>apache-cxf</module>
         <module>apache-fop</module>
         <module>apache-poi</module>
+        <module>apache-tika</module>
         <module>apache-thrift</module>
         <module>apache-curator</module>
         <module>apache-zookeeper</module>
