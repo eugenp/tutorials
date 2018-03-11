@@ -13,7 +13,7 @@ security:
       clientId: authserver
       clientSecret: passwordforauthserver
     resource:
-      userInfoUri: http://localhost:7070/authserver/user
+      userInfoUri: http://localhost:9000/user
 
 person:
   url: http://localhost:9000/person
@@ -27,7 +27,7 @@ zuul:
       url: http://localhost:9000
     user: 
       path: /user/**
-      url: http://localhost:7070/authserver/user
+      url: http://localhost:9000/user
 
 # Make sure the OAuth2 token is only relayed when using the internal API,
 # do not pass any authentication to the external API

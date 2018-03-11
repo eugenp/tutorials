@@ -17,8 +17,7 @@ public class SetUtilsUnitTest {
     public void givenSetAndPredicate_whenPredicatedSet_thenValidateSet_and_throw_IllegalArgumentException() {
         Set<String> sourceSet = new HashSet<>();
         sourceSet.addAll(Arrays.asList("London", "Lagos", "Err Source1"));
-        Set<String> validatingSet
-          = SetUtils.predicatedSet(sourceSet, (s) -> s.startsWith("L"));
+        Set<String> validatingSet = SetUtils.predicatedSet(sourceSet, (s) -> s.startsWith("L"));
         validatingSet.add("Err Source2");
     }
 

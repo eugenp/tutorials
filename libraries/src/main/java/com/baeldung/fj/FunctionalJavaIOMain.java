@@ -7,7 +7,7 @@ import fj.data.IO;
 import fj.data.IOFunctions;
 
 public class FunctionalJavaIOMain {
-    
+
     public static IO<Unit> printLetters(final String s) {
         return () -> {
             for (int i = 0; i < s.length(); i++) {
@@ -21,8 +21,7 @@ public class FunctionalJavaIOMain {
 
         F<String, IO<Unit>> printLetters = i -> printLetters(i);
 
-        IO<Unit> lowerCase = IOFunctions
-          .stdoutPrintln("What's your first Name ?");
+        IO<Unit> lowerCase = IOFunctions.stdoutPrintln("What's your first Name ?");
 
         IO<Unit> input = IOFunctions.stdoutPrint("First Name: ");
 
@@ -32,14 +31,11 @@ public class FunctionalJavaIOMain {
 
         F<String, String> toUpperCase = i -> i.toUpperCase();
 
-        F<String, IO<Unit>> transformInput = F1Functions
-          .<String, IO<Unit>, String> o(printLetters).f(toUpperCase);
+        F<String, IO<Unit>> transformInput = F1Functions.<String, IO<Unit>, String> o(printLetters).f(toUpperCase);
 
-        IO<Unit> readAndPrintResult = IOFunctions.bind(readInput,
-          transformInput);
+        IO<Unit> readAndPrintResult = IOFunctions.bind(readInput, transformInput);
 
-        IO<Unit> program = IOFunctions.bind(userInput,
-          nothing -> readAndPrintResult);
+        IO<Unit> program = IOFunctions.bind(userInput, nothing -> readAndPrintResult);
 
         IOFunctions.toSafe(program).run();
 
