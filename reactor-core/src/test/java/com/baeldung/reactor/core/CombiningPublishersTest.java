@@ -15,28 +15,28 @@ public class CombiningPublishersTest {
     private static Flux<Integer> evenNumbers = Flux.range(min, max).filter(x -> x % 2 == 0);
     private static Flux<Integer> oddNumbers = Flux.range(min, max).filter(x -> x % 2 > 0);
     
-    
     @Test
-    public void givenFluxes_whenMergeIsInvoked_thenMerge() {
-        Flux<Integer> fluxOfIntegers = Flux.merge(
-                evenNumbers, 
-                oddNumbers);
+    public void givenFluxes_whenMergeDelayErrorIsInvoked_thenMergeDelayError() {
+        Flux<Integer> fluxOfIntegers = Flux.mergeDelayError(1, 
+                evenNumbers.delayElements(Duration.ofMillis(2000L)), 
+                oddNumbers.delayElements(Duration.ofMillis(1000L)));
         
         StepVerifier.create(fluxOfIntegers)
-        .expectNext(2)
-        .expectNext(4)
         .expectNext(1)
+        .expectNext(2)
         .expectNext(3)
         .expectNext(5)
+        .expectNext(4)
         .expectComplete()
         .verify();
     }
     
+    
     @Test
     public void givenFluxes_whenMergeWithDelayedElementsIsInvoked_thenMergeWithDelayedElements() {
         Flux<Integer> fluxOfIntegers = Flux.merge(
-                evenNumbers.delayElements(Duration.ofMillis(500L)), 
-                oddNumbers.delayElements(Duration.ofMillis(300L)));
+                evenNumbers.delayElements(Duration.ofMillis(2000L)), 
+                oddNumbers.delayElements(Duration.ofMillis(1000L)));
         
         StepVerifier.create(fluxOfIntegers)
         .expectNext(1)
@@ -51,8 +51,24 @@ public class CombiningPublishersTest {
     @Test
     public void givenFluxes_whenConcatIsInvoked_thenConcat() {
         Flux<Integer> fluxOfIntegers = Flux.concat(
-                evenNumbers.delayElements(Duration.ofMillis(500L)), 
-                oddNumbers.delayElements(Duration.ofMillis(300L)));
+                evenNumbers.delayElements(Duration.ofMillis(2000L)), 
+                oddNumbers.delayElements(Duration.ofMillis(1000L)));
+        
+        StepVerifier.create(fluxOfIntegers)
+        .expectNext(2)
+        .expectNext(4)
+        .expectNext(1)
+        .expectNext(3)
+        .expectNext(5)
+        .expectComplete()
+        .verify();
+    }
+    
+    @Test
+    public void givenFluxes_whenMergeIsInvoked_thenMerge() {
+        Flux<Integer> fluxOfIntegers = Flux.merge(
+                evenNumbers, 
+                oddNumbers);
         
         StepVerifier.create(fluxOfIntegers)
         .expectNext(2)
@@ -120,22 +136,6 @@ public class CombiningPublishersTest {
         .verify();
     }
     
-    
-    @Test
-    public void givenFluxes_whenMergeDelayErrorIsInvoked_thenMergeDelayError() {
-        Flux<Integer> fluxOfIntegers = Flux.mergeDelayError(1, 
-                evenNumbers.delayElements(Duration.ofMillis(500L)), 
-                oddNumbers.delayElements(Duration.ofMillis(300L)));
-        
-        StepVerifier.create(fluxOfIntegers)
-        .expectNext(1)
-        .expectNext(2)
-        .expectNext(3)
-        .expectNext(5)
-        .expectNext(4)
-        .expectComplete()
-        .verify();
-    }
     
     @Test
     public void givenFluxes_whenMergeWithIsInvoked_thenMergeWith() {
