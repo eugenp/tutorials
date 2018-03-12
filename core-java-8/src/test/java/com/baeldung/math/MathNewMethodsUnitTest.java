@@ -4,41 +4,59 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class MathNewMethodsTests {
+public class MathNewMethodsUnitTest {
 
+    public void whenAddExactToInteger_thenExpectCorrectArithmeticResult() {
+        assertEquals(150, Math.addExact(100, 50));                // Returns 150
+    }
+    
+    public void whenSubstractExactFromInteger_thenExpectCorrectArithmeticResult() {
+        assertEquals(50, Math.subtractExact(100, 50));            // Returns 50
+    }
+    
+    public void whenDecrementExactInteger_thenExpectCorrectArithmeticResult() {
+        assertEquals(99, Math.decrementExact(100));               // Returns 99
+    }
+    
+    public void whenIncrementExactToInteger_thenExpectCorrectArithmeticResult() {
+        assertEquals(101, Math.incrementExact(100));              // Returns 101
+    }
+    
+    public void whenMultiplyExactTwoIntegers_thenExpectCorrectArithmeticResult() {
+        assertEquals(500, Math.multiplyExact(100, 5));            // Returns 500
+    }
+    
+    public void whenNegateExactInteger_thenExpectCorrectArithmeticResult() {
+        assertEquals(-100, Math.negateExact(100));                // Returns -100
+    }
+    
     @Test(expected = ArithmeticException.class) 
     public void whenAddToMaxInteger_thenThrowsArithmeticException() {
-        assertEquals(150, Math.addExact(100, 50));                // Returns 150
         Math.addExact(Integer.MAX_VALUE, 1);                      // Throws ArithmeticException
     }
     
     @Test(expected = ArithmeticException.class) 
     public void whenDecrementMinInteger_thenThrowsArithmeticException() {
-        assertEquals(99, Math.decrementExact(100));               // Returns 99
         Math.decrementExact(Integer.MIN_VALUE);                   // Throws ArithmeticException
     }
     
     @Test(expected = ArithmeticException.class) 
     public void whenIncrementMaxLong_thenThrowsArithmeticException() {
-        assertEquals(101, Math.incrementExact(100));              // Returns 101
         Math.incrementExact(Long.MAX_VALUE);                      // Throws ArithmeticException
     }
     
     @Test(expected = ArithmeticException.class) 
     public void whenMultiplyMaxLong_thenThrowsArithmeticException() {
-        assertEquals(500, Math.multiplyExact(100, 5));            // Returns 500
         Math.multiplyExact(Long.MAX_VALUE, 2);                    // Throws ArithmeticException
     }
     
     @Test(expected = ArithmeticException.class) 
     public void whenNegateMinInteger_thenThrowsArithmeticException() {
-        assertEquals(-100, Math.negateExact(100));                // Returns -100
         Math.negateExact(Integer.MIN_VALUE);                      // MinInt value: −2.147.483.648, but MaxInt Value: 2.147.483.647  => Throws ArithmeticException
     }
     
     @Test(expected = ArithmeticException.class) 
     public void whenSubstractFromMinInteger_thenThrowsArithmeticException() {
-        assertEquals(50, Math.subtractExact(100, 50));            // Returns 50
         Math.subtractExact(Integer.MIN_VALUE, 1);
     }
     
