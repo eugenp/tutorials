@@ -37,7 +37,7 @@ public class AssertionsUnitTest {
     }
 
     @Test
-    public void givenNullArrays_whenAssertinArraysEqaulity_thenEqual() {
+    public void givenNullArrays_whenAssertingArraysEquality_thenEqual() {
         int[] expected = null;
         int[] actual = null;
 
