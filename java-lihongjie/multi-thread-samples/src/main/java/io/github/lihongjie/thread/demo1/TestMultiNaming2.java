@@ -5,7 +5,7 @@ package io.github.lihongjie.thread.demo1;
  * @author lihongjie
  *
  */
-public class TestJoinMethod4 extends Thread {
+public class TestMultiNaming2 extends Thread {
 
 	@Override
 	public void run() {
@@ -14,12 +14,18 @@ public class TestJoinMethod4 extends Thread {
 
 	public static void main(String[] args) {
 
-		TestJoinMethod4 t1=new TestJoinMethod4();  
-		TestJoinMethod4 t2=new TestJoinMethod4(); 
+		TestMultiNaming2 t1=new TestMultiNaming2();
+		TestMultiNaming2 t2=new TestMultiNaming2();
 
 		t1.start();
 		t2.start();
 
 	}
+
+	/**
+	 * Thread-1
+	 * Thread-0
+	 *
+	 */
 
 }

@@ -32,4 +32,17 @@ public class TestCallRun2 extends Thread {
 
 	}
 
+	/**
+	 * output:
+	 * 1
+	 * 2
+	 * 3
+	 * 4
+	 * 1
+	 * 2
+	 * 3
+	 * 4
+	 *
+	 */
+
 }

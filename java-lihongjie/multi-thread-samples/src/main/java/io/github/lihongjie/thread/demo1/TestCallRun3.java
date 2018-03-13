@@ -29,4 +29,16 @@ public class TestCallRun3 extends Thread {
 		t2.start();
 	}
 
+	/**
+	 * output:
+	 * 1
+	 * 1
+	 * 2
+	 * 2
+	 * 3
+	 * 3
+	 * 4
+	 * 4
+	 */
+
 }

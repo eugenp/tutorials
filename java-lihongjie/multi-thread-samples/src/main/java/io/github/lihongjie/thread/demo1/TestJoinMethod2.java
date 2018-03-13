@@ -28,5 +28,24 @@ public class TestJoinMethod2 extends Thread {
 		t2.start();
 		t3.start();
 	}
+	/**
+	 * output:
+	 * 1
+	 * 2
+	 * 3
+	 * 1
+	 * 1
+	 * 4
+	 * 2
+	 * 2
+	 * 5
+	 * 3
+	 * 3
+	 * 4
+	 * 4
+	 * 5
+	 * 5
+	 *
+	 */
 
 }
