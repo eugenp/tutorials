@@ -15,11 +15,8 @@ public class HelloWorldService {
     private final Cache<String, String> evictingHelloWorldCache;
     private final Cache<String, String> passivatingHelloWorldCache;
 
-    public HelloWorldService(HelloWorldRepository repository, CacheListener listener,
-      Cache<String, String> simpleHelloWorldCache,
-      Cache<String, String> expiringHelloWorldCache,
-      Cache<String, String> evictingHelloWorldCache,
-      Cache<String, String> passivatingHelloWorldCache) {
+    public HelloWorldService(HelloWorldRepository repository, CacheListener listener, Cache<String, String> simpleHelloWorldCache, Cache<String, String> expiringHelloWorldCache, Cache<String, String> evictingHelloWorldCache,
+            Cache<String, String> passivatingHelloWorldCache) {
 
         this.repository = repository;
 
@@ -31,12 +28,7 @@ public class HelloWorldService {
 
     public String findSimpleHelloWorld() {
         String cacheKey = "simple-hello";
-        String helloWorld = simpleHelloWorldCache.get(cacheKey);
-        if (helloWorld == null) {
-            helloWorld = repository.getHelloWorld();
-            simpleHelloWorldCache.put(cacheKey, helloWorld);
-        }
-        return helloWorld;
+        return simpleHelloWorldCache.computeIfAbsent(cacheKey, k -> repository.getHelloWorld());
     }
 
     public String findExpiringHelloWorld() {
@@ -71,7 +63,7 @@ public class HelloWorldService {
 
     public String findEvictingHelloWorld(String key) {
         String value = evictingHelloWorldCache.get(key);
-        if(value == null) {
+        if (value == null) {
             value = repository.getHelloWorld();
             evictingHelloWorldCache.put(key, value);
         }
@@ -79,12 +71,7 @@ public class HelloWorldService {
     }
 
     public String findPassivatingHelloWorld(String key) {
-        String value = passivatingHelloWorldCache.get(key);
-        if(value == null) {
-            value = repository.getHelloWorld();
-            passivatingHelloWorldCache.put(key, value);
-        }
-        return value;
+        return passivatingHelloWorldCache.computeIfAbsent(key, k -> repository.getHelloWorld());
     }
 
 }

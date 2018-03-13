@@ -18,8 +18,7 @@ public class StreamExMergeStreamsTest {
 
         Stream<Integer> resultingStream = StreamEx.of(stream1).append(stream2);
 
-        assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6),
-          resultingStream.collect(Collectors.toList()));
+        assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6), resultingStream.collect(Collectors.toList()));
     }
 
     @Test
@@ -29,13 +28,9 @@ public class StreamExMergeStreamsTest {
         Stream<Integer> stream3 = Stream.of(18, 15, 36);
         Stream<Integer> stream4 = Stream.of(99);
 
-        Stream<Integer> resultingStream = StreamEx.of(stream1)
-          .append(stream2)
-          .append(stream3)
-          .append(stream4);
+        Stream<Integer> resultingStream = StreamEx.of(stream1).append(stream2).append(stream3).append(stream4);
 
-        assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6, 18, 15, 36, 99),
-          resultingStream.collect(Collectors.toList()));
+        assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6, 18, 15, 36, 99), resultingStream.collect(Collectors.toList()));
 
     }
 
@@ -45,11 +40,8 @@ public class StreamExMergeStreamsTest {
         Stream<String> openingBracketStream = Stream.of("[");
         Stream<String> closingBracketStream = Stream.of("]");
 
-        Stream<String> resultingStream = StreamEx.of(stream1)
-          .append(closingBracketStream)
-          .prepend(openingBracketStream);
+        Stream<String> resultingStream = StreamEx.of(stream1).append(closingBracketStream).prepend(openingBracketStream);
 
-        assertEquals(Arrays.asList("[", "foo", "bar", "]"),
-          resultingStream.collect(Collectors.toList()));
+        assertEquals(Arrays.asList("[", "foo", "bar", "]"), resultingStream.collect(Collectors.toList()));
     }
 }
