@@ -6,26 +6,32 @@ import org.junit.Test;
 
 public class MathNewMethodsUnitTest {
 
+    @Test
     public void whenAddExactToInteger_thenExpectCorrectArithmeticResult() {
         assertEquals(150, Math.addExact(100, 50));                // Returns 150
     }
-    
+
+    @Test
     public void whenSubstractExactFromInteger_thenExpectCorrectArithmeticResult() {
         assertEquals(50, Math.subtractExact(100, 50));            // Returns 50
     }
-    
+
+    @Test
     public void whenDecrementExactInteger_thenExpectCorrectArithmeticResult() {
         assertEquals(99, Math.decrementExact(100));               // Returns 99
     }
-    
+
+    @Test
     public void whenIncrementExactToInteger_thenExpectCorrectArithmeticResult() {
         assertEquals(101, Math.incrementExact(100));              // Returns 101
     }
-    
+
+    @Test
     public void whenMultiplyExactTwoIntegers_thenExpectCorrectArithmeticResult() {
         assertEquals(500, Math.multiplyExact(100, 5));            // Returns 500
     }
-    
+
+    @Test
     public void whenNegateExactInteger_thenExpectCorrectArithmeticResult() {
         assertEquals(-100, Math.negateExact(100));                // Returns -100
     }
