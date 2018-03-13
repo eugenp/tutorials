@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application
+  xmlns:mx="http://www.macromedia.com/2003/mxml"
+  backgroundColor="#ffffff">
+  <mx:Label id="output" text="Hello, Flex!" />
+</mx:Application>

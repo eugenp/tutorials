@@ -1,0 +1,37 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CaveatEmptor Integration" verbose="2">
+
+    <!-- Our datasource definition for the embedded EJB 3.0 container -->
+    <parameter name="deploy_beans_xml" value="META-INF/caveatemptor-beans.xml"/>
+
+    <!-- Location to scan for META-INF/persistence.xml and @Entity classes
+         (must be in java.class.path, can be several paths comma separated,
+         all regular slashes are automatically replaced with Windows file separators!) -->
+    <parameter name="scan_classpath" value="build/classes"/>
+
+    <!-- DBUnit needs a database connection -->
+    <parameter name="jndi_datasource" value="java:/caveatemptorTestingDatasource"/>
+
+    <!-- How do we get an EntityManagerFactory from JNDI in tests? -->
+    <parameter name="jndi_name_emf" value="java:/EntityManagerFactories/caveatEmptorEMF"/>
+
+    <!-- How do we get a JTA UserTransaction from JNDI in tests? -->
+    <parameter name="jndi_name_usertx" value="UserTransaction"/>
+
+    <test name="Integration JPA">
+        <groups>
+            <run><include name="integration-persistence.*"/></run>
+        </groups>
+        <classes>
+            <class name="auction.test.basic.PersistentStateTransitions"/>
+        </classes>
+        <!-- Or scan the whole package
+        <packages>
+            <package name="auction.test.basic"/>
+         </packages>
+         -->
+    </test>
+
+</suite>
+

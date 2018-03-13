@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+archivesBaseName = 'spring-demo'
+version = '1' 
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web:1.2.7.RELEASE'    
+    compile 'jstl:jstl:1.2'    
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:1.2.7.RELEASE'
+} 

@@ -1,0 +1,130 @@
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+
+
+  This is excludes file for Apache RAT tool run by ASF Buildbot,
+  http://incubator.apache.org/rat/
+
+  The following files are excluded:
+
+  - *.html files in documentation are generated from XML sources
+
+  - *.md5, *.sha/*.sha1 files are generated and cannot contain license
+
+  - *.manifest JAR manifest files cannot contain license
+
+  - package-list files in API documentation (javadoc) are generated
+
+  - bug52121-part1, bug52121-part2 files in tests are test data for a hard
+    to reproduce testcase and should be used as is.
+
+  - other trivial test files, such as textual files containing only "OK' string,
+    are also excluded.
+
+  - local build configuration files
+
+  - file fragments that are combined during the build process and therefore can
+    not contain a license header in every fragment
+
+  - JavaEE XML schemas that are CDDL licensed
+
+  - Checkstyle configuration file that defines how to check for the presence of
+    ALv2 headers
+
+  - files used simply to ensure directories are not empty
+
+  - *.bmp, *.dia files are binary
+    (*.gif, *.jpg are also binary, but are automatically detected by RAT as
+    ones, so no explicit configuration is needed)
+
+  - Markdown files for display in ther GitHub UI
+
+  - Temporary cache files used by Checkstle
+
+output/build/webapps/**/*.html
+output/dist/webapps/docs/**/*.html
+output/deployer/deployer-howto.html
+
+**/*.md5
+**/*.sha1
+
+**/MANIFEST.MF
+**/*.manifest
+
+output/dist/webapps/docs/*/package-list
+
+output/dist/src/test/org/apache/coyote/http11/filters/bug52121-part1
+output/dist/src/test/org/apache/coyote/http11/filters/bug52121-part2
+test/org/apache/coyote/http11/filters/bug52121-part1
+test/org/apache/coyote/http11/filters/bug52121-part2
+
+output/dist/src/test/webapp-3.0/404.html
+output/dist/src/test/webapp-3.0/bug53257/*.txt
+output/dist/src/test/webapp-3.0/bug53257/foo bar/foobar.txt
+output/dist/src/test/webapp-3.0-fragments/WEB-INF/classes/*.txt
+test/webapp-3.0/404.html
+test/webapp-3.0/bug53257/*.txt
+test/webapp-3.0/bug53257/foo bar/foobar.txt
+test/webapp-3.0-fragments/WEB-INF/classes/*.txt
+
+build.properties
+
+output/dist/confinstall/tomcat-users_2.xml
+output/dist/src/res/confinstall/tomcat-users_2.xml
+res/confinstall/tomcat-users_2.xml
+
+java/javax/servlet/jsp/resources/jsp_2_2.xsd
+java/javax/servlet/resources/javaee_5.xsd
+java/javax/servlet/resources/javaee_6.xsd
+java/javax/servlet/resources/javaee_web_services_1_2.xsd
+java/javax/servlet/resources/javaee_web_services_1_3.xsd
+java/javax/servlet/resources/javaee_web_services_client_1_2.xsd
+java/javax/servlet/resources/javaee_web_services_client_1_3.xsd
+java/javax/servlet/resources/web-app_3_0.xsd
+java/javax/servlet/resources/web-common_3_0.xsd
+java/javax/servlet/resources/web-fragment_3_0.xsd
+output/classes/javax/servlet/jsp/resources/jsp_2_2.xsd
+output/classes/javax/servlet/resources/javaee_5.xsd
+output/classes/javax/servlet/resources/javaee_6.xsd
+output/classes/javax/servlet/resources/javaee_web_services_1_2.xsd
+output/classes/javax/servlet/resources/javaee_web_services_1_3.xsd
+output/classes/javax/servlet/resources/javaee_web_services_client_1_2.xsd
+output/classes/javax/servlet/resources/javaee_web_services_client_1_3.xsd
+output/classes/javax/servlet/resources/jsp_2_2.xsd
+output/classes/javax/servlet/resources/web-app_3_0.xsd
+output/classes/javax/servlet/resources/web-common_3_0.xsd
+output/classes/javax/servlet/resources/web-fragment_3_0.xsd
+output/dist/src/java/javax/servlet/jsp/resources/jsp_2_2.xsd
+output/dist/src/java/javax/servlet/resources/javaee_5.xsd
+output/dist/src/java/javax/servlet/resources/javaee_6.xsd
+output/dist/src/java/javax/servlet/resources/javaee_web_services_1_2.xsd
+output/dist/src/java/javax/servlet/resources/javaee_web_services_1_3.xsd
+output/dist/src/java/javax/servlet/resources/javaee_web_services_client_1_2.xsd
+output/dist/src/java/javax/servlet/resources/javaee_web_services_client_1_3.xsd
+output/dist/src/java/javax/servlet/resources/web-app_3_0.xsd
+output/dist/src/java/javax/servlet/resources/web-common_3_0.xsd
+output/dist/src/java/javax/servlet/resources/web-fragment_3_0.xsd
+
+output/dist/src/res/checkstyle/header-al2.txt
+res/checkstyle/header-al2.txt
+
+output/dist/temp/safeToDelete.tmp
+
+**/*.bmp
+**/*.dia
+
+**/*.md
+
+output/res/checkstyle/*

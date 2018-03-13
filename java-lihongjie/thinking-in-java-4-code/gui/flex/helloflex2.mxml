@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application
+  xmlns:mx="http://www.macromedia.com/2003/mxml"
+  backgroundColor="#ffffff">
+  <mx:Script>
+    <![CDATA[
+    function updateOutput() {
+      output.text = "Hello! " + input.text;
+    }
+    ]]>
+  </mx:Script>
+  <mx:TextInput id="input" width="200"
+    change="updateOutput()" />
+  <mx:Label id="output" text="Hello!" />
+</mx:Application>

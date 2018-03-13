@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+
+    <bean id="shardedSessionFactoryBuilder" class="org.disco.racer.shardsupport.ShardedSessionFactoryBuilder">
+        <property name="resourceConfigurations">
+            <list>
+                <value>racer.hbm.xml</value>
+            </list>
+        </property>
+
+
+        <property name="hibernateConfigurations">
+            <list>
+                <value>shard0.hibernate.cfg.xml</value>
+                <value>shard1.hibernate.cfg.xml</value>
+            </list>
+        </property>
+
+    </bean>
+
+    <bean id="mySessionFactory"
+          factory-bean="shardedSessionFactoryBuilder"
+          factory-method="createSessionFactory">
+    </bean>
+
+
+    <bean id="race_dao"
+          class="org.disco.racer.domain.RaceDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="mySessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="runner_dao"
+          class="org.disco.racer.domain.RunnerDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="mySessionFactory"/>
+        </property>
+    </bean>
+
+
+</beans>

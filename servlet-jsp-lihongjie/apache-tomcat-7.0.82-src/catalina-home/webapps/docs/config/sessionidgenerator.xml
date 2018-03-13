@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="sessionidgenerator.html">
+
+  &project;
+
+  <properties>
+    <title>The SessionIdGenerator Component</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>The <strong>SessionIdGenerator</strong> element represents the <em>session
+  id generator</em> that will be used to create session ids used by
+  web application HTTP sessions.</p>
+
+  <p>A SessionIdGenerator element MAY be nested inside a
+  <a href="manager.html">Manager</a> component.  If it is not included,
+  a default SessionIdGenerator configuration will be created automatically, which
+  is sufficient for most requirements, &#x2014; see
+  <em>Standard SessionIdGenerator Implementation</em> below for the details
+  of this configuration.</p>
+
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+    <p>All implementations of <strong>SessionIdGenerator</strong>
+    support the following attributes:</p>
+
+    <attributes>
+
+      <attribute name="className" required="false">
+        <p>Java class name of the implementation to use.  This class must
+        implement the <code>org.apache.catalina.SessionIdGenerator</code> interface.
+        If not specified, the standard value (defined below) will be used.</p>
+      </attribute>
+
+      <attribute name="jvmRoute" required="false">
+        <p>A routing identifier for this Tomcat instance. It will be added
+        to the session id to allow for stateless stickyness routing by
+        load balancers. The details on how the <code>jvmRoute</code>
+        will be included in the id are implementation dependent.
+        See <a href="#Standard_Implementation">Standard Implementation</a>
+        for the default behavior.</p>
+
+        <p><strong>NOTE</strong> - The value for this property is inherited
+        automatically from the <code>jvmRoute</code> attribute of the
+        <a href="engine.html">Engine</a> element.</p>
+      </attribute>
+
+      <attribute name="sessionIdLength" required="false">
+        <p>The length of session ids created by this SessionIdGenerator.
+        The details on how the <code>sessionIdLength</code>
+        influences the session id length are implementation dependent.
+        See <a href="#Standard_Implementation">Standard Implementation</a>
+        for the default behavior.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+  <subsection name="Standard Implementation">
+
+    <p>Tomcat provides a standard implementations of <strong>SessionIdGenerator</strong>
+    for use.</p>
+
+    <h3>Standard SessionIdGenerator Implementation</h3>
+
+    <p>The standard implementation of <strong>SessionIdGenerator</strong> is
+    <strong>org.apache.catalina.util.StandardSessionIdGenerator</strong>.
+    It supports the following attributes:</p>
+
+    <attributes>
+
+      <attribute name="jvmRoute" required="false">
+        <p>A routing identifier for this Tomcat instance. It will be added
+        to the end of the session id separated by a &quot;.&quot;.</p>
+      </attribute>
+
+      <attribute name="sessionIdLength" required="false">
+        <p>The length of session ids created by this SessionIdGenerator.
+        More precisely the session id length is twice the value of
+        <code>sessionIdLength</code> plus the length of the trailing
+        <code>jvmRoute</code> if given. The factor 2 is because
+        the session id is constructed using <code>sessionIdLength</code>
+        random bytes, each byte being encoded in two hex characters
+        in the actual id. The default value is 16.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+</section>
+
+
+</body>
+
+
+</document>

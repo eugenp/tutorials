@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="urn:jboss:bean-deployer bean-deployer_1_0.xsd"
+            xmlns="urn:jboss:bean-deployer:2.0">
+   <bean name="Naming" class="org.jnp.server.SingletonNamingServer"/>
+
+   <bean name="InitialContextProperties" class="java.util.Hashtable">
+      <constructor>
+      <parameter class="java.util.Map">
+            <map keyClass="java.lang.String" valueClass="java.lang.String">
+               <entry>
+                  <key>java.naming.factory.initial</key>
+                  <value>org.jnp.interfaces.LocalOnlyContextFactory</value>
+               </entry>
+               <entry>
+                   <key>java.naming.factory.url.pkgs</key>
+                   <value>org.jboss.naming:org.jnp.interfaces</value>
+               </entry>
+            </map>
+      </parameter>
+      </constructor>
+   </bean>
+
+   <bean name="java:comp/Initializer" class="org.jboss.ejb3.embedded.JavaCompInitializer">
+      <property name="jndiProperties"><inject bean="InitialContextProperties"/></property>
+   </bean>
+
+   <bean name="XidFactory" class="org.jboss.tm.XidFactoryImpl"/>
+
+   <bean name="XidFactoryMBean" class="org.jboss.ejb3.embedded.XidFactoryMBean">
+      <constructor>
+         <parameter class="org.jboss.tm.XidFactoryBase">
+            <inject bean="XidFactory"/>
+         </parameter>
+      </constructor>
+   </bean>
+
+   <bean name="TransactionManagerInitializer" class="org.jboss.tm.TransactionManagerInitializer">
+      <property name="xidFactory"><inject bean="XidFactory"/></property>
+      <property name="initialContextProperties"><inject bean="InitialContextProperties"/></property>
+   </bean>
+
+   <bean name="UserTransaction" class="org.jboss.ejb3.embedded.UserTransactionImpl">
+      <demand>TransactionManagerInitializer</demand>
+   </bean>
+
+   <bean name="UserTransactionBinding" class="org.jboss.ejb3.embedded.JndiBinder">
+      <property name="jndiProperties"><inject bean="InitialContextProperties"/></property>
+      <property name="target"><inject bean="UserTransaction"/></property>
+      <property name="bindTo">UserTransaction</property>
+      <property name="serializable">false</property>
+   </bean>
+
+
+   <bean name="TransactionManager" class="java.lang.Object">
+      <constructor factoryMethod="getTransactionManager">
+         <factory bean="TransactionManagerInitializer"/>
+      </constructor>
+   </bean>
+   <bean name="CachedConnectionManager" class="org.jboss.resource.connectionmanager.CachedConnectionManagerReference">
+      <property name="transactionManager"><inject bean="TransactionManager"/></property>
+   </bean>
+
+   <!--
+      <bean class="org.jboss.jdbc.HypersonicDatabase"
+        name="jboss:service=Hypersonic,database=localDB">
+        <property name="database">localDB</property>
+        <property name="inProcessMode">true</property>
+        <property name="dbDataDir">.</property>
+      </bean>
+   -->
+<!--
+   <bean name="DefaultDSBootstrap" class="org.jboss.resource.adapter.jdbc.local.LocalTxDataSource">
+      <property name="driverClass">org.hsqldb.jdbcDriver</property>
+      <property name="connectionURL">jdbc:hsqldb:.</property>
+      <property name="userName">sa</property>
+      <property name="jndiName">java:/DefaultDS</property>
+      <property name="minSize">0</property>
+      <property name="maxSize">10</property>
+      <property name="blockingTimeout">1000</property>
+      <property name="idleTimeout">100000</property>
+      <property name="transactionManager"><inject bean="TransactionManager"/></property>
+      <property name="cachedConnectionManager"><inject bean="CachedConnectionManager"/></property>
+      <property name="initialContextProperties"><inject bean="InitialContextProperties"/></property>
+   </bean>
+
+   <bean name="DefaultDS" class="java.lang.Object">
+      <constructor factoryMethod="getDatasource">
+         <factory bean="DefaultDSBootstrap"/>
+      </constructor>
+   </bean>
+-->
+    
+   <!--
+   <bean name="TimerServiceFactory" class="org.jboss.ejb3.timerservice.quartz.QuartzTimerServiceFactory">
+      <property name="properties">
+        	org.quartz.jobStore.class=org.quartz.impl.jdbcjobstore.JobStoreCMT
+            org.quartz.jobStore.nonManagedTXDataSource=myDS
+            org.quartz.jobStore.driverDelegateClass=org.quartz.impl.jdbcjobstore.HSQLDBDelegate
+            org.quartz.jobStore.tablePrefix=QRTZ_
+            org.quartz.jobStore.dataSource=myDS
+         
+	        # To get it to work with hypersonic
+	        # FIXME: this doesn't lock the row
+            org.quartz.jobStore.selectWithLockSQL=SELECT * FROM qrtz_locks WHERE lock_name = ?
+         
+        	# from quartz.properties
+            org.quartz.scheduler.instanceName=JBossEJB3QuartzScheduler
+            org.quartz.scheduler.rmi.export=false
+            org.quartz.scheduler.rmi.proxy=false
+            org.quartz.scheduler.wrapJobExecutionInUserTransaction=false
+   
+            org.quartz.threadPool.class=org.quartz.simpl.SimpleThreadPool
+            org.quartz.threadPool.threadCount=10
+            org.quartz.threadPool.threadPriority=5
+            org.quartz.threadPool.threadsInheritContextClassLoaderOfInitializingThread=true
+   
+        	org.quartz.jobStore.misfireThreshold=60000
+      </property>
+      <property name="dataSource">java:/DefaultDS</property>
+      <property name="sqlProperties">
+         CREATE_DB_ON_STARTUP = TRUE
+         
+         CREATE_TABLE_JOB_DETAILS = CREATE TABLE qrtz_job_details(JOB_NAME VARCHAR(80) NOT NULL, JOB_GROUP VARCHAR(80) NOT NULL, \
+            DESCRIPTION VARCHAR(120) NULL, JOB_CLASS_NAME VARCHAR(128) NOT NULL, IS_DURABLE VARCHAR(1) NOT NULL, \
+            IS_VOLATILE VARCHAR(1) NOT NULL, IS_STATEFUL VARCHAR(1) NOT NULL, REQUESTS_RECOVERY VARCHAR(1) NOT NULL, \
+            JOB_DATA BINARY NULL, PRIMARY KEY (JOB_NAME,JOB_GROUP))
+         CREATE_TABLE_JOB_LISTENERS = CREATE TABLE qrtz_job_listeners(JOB_NAME VARCHAR(80) NOT NULL, JOB_GROUP VARCHAR(80) NOT NULL, \
+            JOB_LISTENER VARCHAR(80) NOT NULL, PRIMARY KEY (JOB_NAME,JOB_GROUP,JOB_LISTENER), FOREIGN KEY (JOB_NAME,JOB_GROUP) \
+            REFERENCES QRTZ_JOB_DETAILS(JOB_NAME,JOB_GROUP))
+         CREATE_TABLE_TRIGGERS = CREATE TABLE qrtz_triggers(TRIGGER_NAME VARCHAR(80) NOT NULL, TRIGGER_GROUP VARCHAR(80) NOT NULL, \
+            JOB_NAME VARCHAR(80) NOT NULL, JOB_GROUP VARCHAR(80) NOT NULL, IS_VOLATILE VARCHAR(1) NOT NULL, DESCRIPTION VARCHAR(120) NULL, \
+            NEXT_FIRE_TIME NUMERIC(13) NULL, PREV_FIRE_TIME NUMERIC(13) NULL, TRIGGER_STATE VARCHAR(16) NOT NULL, \
+            TRIGGER_TYPE VARCHAR(8) NOT NULL, START_TIME NUMERIC(13) NOT NULL, END_TIME NUMERIC(13) NULL, CALENDAR_NAME VARCHAR(80) NULL, \
+            MISFIRE_INSTR NUMERIC(2) NULL, JOB_DATA BINARY NULL, PRIMARY KEY (TRIGGER_NAME,TRIGGER_GROUP), FOREIGN KEY (JOB_NAME,JOB_GROUP) \
+            REFERENCES QRTZ_JOB_DETAILS(JOB_NAME,JOB_GROUP))
+         CREATE_TABLE_SIMPLE_TRIGGERS = CREATE TABLE qrtz_simple_triggers(TRIGGER_NAME VARCHAR(80) NOT NULL, \
+            TRIGGER_GROUP VARCHAR(80) NOT NULL, REPEAT_COUNT NUMERIC(7) NOT NULL, REPEAT_INTERVAL NUMERIC(12) NOT NULL, \
+            TIMES_TRIGGERED NUMERIC(7) NOT NULL, PRIMARY KEY (TRIGGER_NAME,TRIGGER_GROUP), FOREIGN KEY (TRIGGER_NAME,TRIGGER_GROUP) \
+            REFERENCES QRTZ_TRIGGERS(TRIGGER_NAME,TRIGGER_GROUP))
+         CREATE_TABLE_CRON_TRIGGERS = CREATE TABLE qrtz_cron_triggers(TRIGGER_NAME VARCHAR(80) NOT NULL, \
+            TRIGGER_GROUP VARCHAR(80) NOT NULL, CRON_EXPRESSION VARCHAR(80) NOT NULL, TIME_ZONE_ID VARCHAR(80), \
+            PRIMARY KEY (TRIGGER_NAME,TRIGGER_GROUP), FOREIGN KEY (TRIGGER_NAME,TRIGGER_GROUP) \
+            REFERENCES QRTZ_TRIGGERS(TRIGGER_NAME,TRIGGER_GROUP))
+         CREATE_TABLE_BLOB_TRIGGERS = CREATE TABLE qrtz_blob_triggers(TRIGGER_NAME VARCHAR(80) NOT NULL, \
+            TRIGGER_GROUP VARCHAR(80) NOT NULL, BLOB_DATA BINARY NULL, PRIMARY KEY (TRIGGER_NAME,TRIGGER_GROUP), \
+            FOREIGN KEY (TRIGGER_NAME,TRIGGER_GROUP) REFERENCES QRTZ_TRIGGERS(TRIGGER_NAME,TRIGGER_GROUP))
+         CREATE_TABLE_TRIGGER_LISTENERS = CREATE TABLE qrtz_trigger_listeners(TRIGGER_NAME VARCHAR(80) NOT NULL, \
+            TRIGGER_GROUP VARCHAR(80) NOT NULL, TRIGGER_LISTENER VARCHAR(80) NOT NULL, \
+            PRIMARY KEY (TRIGGER_NAME,TRIGGER_GROUP,TRIGGER_LISTENER), FOREIGN KEY (TRIGGER_NAME,TRIGGER_GROUP) \
+            REFERENCES QRTZ_TRIGGERS(TRIGGER_NAME,TRIGGER_GROUP))
+         CREATE_TABLE_CALENDARS = CREATE TABLE qrtz_calendars(CALENDAR_NAME VARCHAR(80) NOT NULL, CALENDAR BINARY NOT NULL, \
+            PRIMARY KEY (CALENDAR_NAME))
+         CREATE_TABLE_PAUSED_TRIGGER_GRPS = CREATE TABLE qrtz_paused_trigger_grps(TRIGGER_GROUP VARCHAR(80) NOT NULL, \
+            PRIMARY KEY (TRIGGER_GROUP))
+         CREATE_TABLE_FIRED_TRIGGERS = CREATE TABLE qrtz_fired_triggers(ENTRY_ID VARCHAR(95) NOT NULL, TRIGGER_NAME VARCHAR(80) NOT NULL, \
+            TRIGGER_GROUP VARCHAR(80) NOT NULL, IS_VOLATILE VARCHAR(1) NOT NULL, INSTANCE_NAME VARCHAR(80) NOT NULL, \
+            FIRED_TIME NUMERIC(13) NOT NULL, STATE VARCHAR(16) NOT NULL, JOB_NAME VARCHAR(80) NULL, JOB_GROUP VARCHAR(80) NULL, \
+            IS_STATEFUL VARCHAR(1) NULL, REQUESTS_RECOVERY VARCHAR(1) NULL, PRIMARY KEY (ENTRY_ID))
+         CREATE_TABLE_SCHEDULER_STATE = CREATE TABLE qrtz_scheduler_state(INSTANCE_NAME VARCHAR(80) NOT NULL, \
+            LAST_CHECKIN_TIME NUMERIC(13) NOT NULL, CHECKIN_INTERVAL NUMERIC(13) NOT NULL, RECOVERER VARCHAR(80) NULL, \
+            PRIMARY KEY (INSTANCE_NAME))
+         CREATE_TABLE_LOCKS = CREATE TABLE qrtz_locks(LOCK_NAME VARCHAR(40) NOT NULL, PRIMARY KEY (LOCK_NAME))
+         INSERT_TRIGGER_ACCESS = INSERT INTO qrtz_locks values('TRIGGER_ACCESS')
+         INSERT_JOB_ACCESS = INSERT INTO qrtz_locks values('JOB_ACCESS')
+         INSERT_CALENDAR_ACCESS = INSERT INTO qrtz_locks values('CALENDAR_ACCESS')
+         INSERT_STATE_ACCESS = INSERT INTO qrtz_locks values('STATE_ACCESS')
+         INSERT_MISFIRE_ACCESS = INSERT INTO qrtz_locks values('MISFIRE_ACCESS')
+      </property>
+   </bean>
+
+   -->
+   
+</deployment>

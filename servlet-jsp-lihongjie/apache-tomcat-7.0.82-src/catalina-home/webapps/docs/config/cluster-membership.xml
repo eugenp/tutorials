@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cluster-membership.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>The Cluster Membership object</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  <p>
+    The membership component in the Apache Tribes <a href="cluster-channel.html">Channel</a> is responsible
+    for dynamic discovery of other members(nodes) in the cluster.
+  </p>
+</section>
+
+<section name="Default Implementation">
+  <p>
+    The default implementation of the cluster group notification is built on top of multicast heartbeats
+    sent using UDP packets to a multicast IP address.
+    Cluster members are grouped together by using the same multicast address/port combination.
+    Each member sends out a heartbeat with a given interval (<code>frequency</code>), and this
+    heartbeat is used for dynamic discovery.
+    In a similar fashion, if a heartbeat has not been received in a timeframe specified by <code>dropTime</code>
+    ms. a member is considered suspect and the channel and any membership listener will be notified.
+  </p>
+</section>
+
+
+
+<section name="Attributes">
+
+  <subsection name="Multicast Attributes">
+
+  <attributes>
+
+    <attribute name="className" required="true">
+      <p>
+      The default value is <code>org.apache.catalina.tribes.membership.McastService</code>
+      and is currently the only implementation.
+      This implementation uses multicast heartbeats for member discovery.
+      </p>
+    </attribute>
+    <attribute name="address" required="false">
+      <p>
+      The multicast address that the membership will broadcast its presence and listen
+      for other heartbeats on. The default value is <code>228.0.0.4</code>
+      Make sure your network is enabled for multicast traffic.<br/>
+      The multicast address, in conjunction with the <code>port</code> is what
+      creates a cluster group. To divide up your farm into several different group, or to
+      split up QA from production, change the <code>port</code> or the <code>address</code>
+      <br/>Previously known as mcastAddr.
+      </p>
+    </attribute>
+    <attribute name="port" required="false">
+      <p>
+      The multicast port, the default value is <code>45564</code><br/>
+      The multicast port, in conjunction with the <code>address</code> is what
+      creates a cluster group. To divide up your farm into several different group, or to
+      split up QA from production, change the <code>port</code> or the <code>address</code>
+      </p>
+    </attribute>
+    <attribute name="frequency" required="false">
+      <p>
+      The frequency in milliseconds in which heartbeats are sent out. The default value is <code>500</code> ms.<br/>
+      In most cases the default value is sufficient. Changing this value, simply changes the interval in between heartbeats.
+      </p>
+    </attribute>
+    <attribute name="dropTime" required="false">
+      <p>
+      The membership component will time out members and notify the Channel if a member fails to send a heartbeat within
+      a give time. The default value is <code>3000</code> ms. This means, that if a heartbeat is not received from a
+      member in that timeframe, the membership component will notify the cluster of this.<br/>
+      On a high latency network you may wish to increase this value, to protect against false positives.<br/>
+      Apache Tribes also provides a <a href="cluster-interceptor.html#org.apache.catalina.tribes.group.interceptors.TcpFailureDetector_Attributes"><code>TcpFailureDetector</code></a> that will
+      verify a timeout using a TCP connection when a heartbeat timeout has occurred. This protects against false positives.
+      </p>
+    </attribute>
+    <attribute name="bind" required="false">
+      <p>
+      Use this attribute if you wish to bind your multicast traffic to a specific network interface.
+      By default, or when this attribute is unset, it tries to bind to <code>0.0.0.0</code> and sometimes on multihomed hosts
+      this becomes a problem.
+      </p>
+    </attribute>
+    <attribute name="ttl" required="false">
+      <p>
+      The time-to-live setting for the multicast heartbeats.
+      This setting should be a value between 0 and 255. The default value is VM implementation specific.
+      </p>
+    </attribute>
+    <attribute name="domain" required="false">
+      <p>
+      Apache Tribes has the ability to logically group members into domains, by using this domain attribute.
+      The <code>org.apache.catalina.tribes.Member.getDomain()</code> method returns the value specified here.
+      </p>
+    </attribute>
+    <attribute name="soTimeout" required="false">
+      <p>
+      The sending and receiving of heartbeats is done on a single thread, hence to avoid blocking this thread forever,
+      you can control the <code>SO_TIMEOUT</code> value on this socket.<br/>
+      If a value smaller or equal to 0 is presented, the code will default this value to frequency
+      </p>
+    </attribute>
+    <attribute name="recoveryEnabled" required="false">
+      <p>
+      In case of a network failure, Java multicast socket don't transparently fail over, instead the socket will continuously
+      throw IOException upon each receive request. When recoveryEnabled is set to true, this will close the multicast socket
+      and open a new socket with the same properties as defined above.<br/>
+      The default is <code>true</code>. <br/>
+      </p>
+    </attribute>
+    <attribute name="recoveryCounter" required="false">
+      <p>
+      When <code>recoveryEnabled==true</code> this value indicates how many
+      times an error has to occur before recovery is attempted. The default is
+      <code>10</code>. <br/>
+      </p>
+    </attribute>
+    <attribute name="recoverySleepTime" required="false">
+      <p>
+      When <code>recoveryEnabled==true</code> this value indicates how long time (in milliseconds)
+      the system will sleep in between recovery attempts, until it recovers successfully.
+      The default is <code>5000</code> (5 seconds). <br/>
+      </p>
+    </attribute>
+
+    <attribute name="localLoopbackDisabled" required="false">
+      <p>
+      Membership uses multicast, it will call <code>java.net.MulticastSocket.setLoopbackMode(localLoopbackDisabled)</code>.
+      When <code>localLoopbackDisabled==true</code> multicast messages will not reach other nodes on the same local machine.
+      The default is <code>false</code>. <br/>
+      </p>
+    </attribute>
+
+
+  </attributes>
+
+
+  </subsection>
+
+
+</section>
+
+
+</body>
+
+</document>

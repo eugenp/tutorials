@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册 | SpringForAll - Spring Security</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body style="background-color: #f1f1f1; padding-bottom: 0">
+
+<div th:insert="~{header :: nav}"></div>
+
+<div class="container" style="margin-top: 60px">
+
+    <div class="row" style="margin-top: 100px">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><span class="glyphicon glyphicon-console"></span> Login</h3>
+                </div>
+                <div class="panel-body">
+                    <form th:action="@{/register}" method="post">
+                        <div class="form-group" style="margin-top: 30px">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="账号">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="密码">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="input-group col-md-6 col-md-offset-3">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></div>
+                                <input type="text" class="form-control" name="nickname" id="nickname" placeholder="昵称">
+                            </div>
+                        </div>
+                        <br>
+                        <div th:if="${param.error}">
+                            <p style="text-align: center" class="text-danger">注册失败，账号已存在！</p>
+                        </div>
+                        <div th:if="${param.success}">
+                            <p style="text-align: center" class="text-success">注册成功，可以登录了！</p>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-6 col-md-offset-3 col-xs-12 ">
+                                <button type="submit" class="btn btn-primary btn-block">注册</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group col-md-6 col-md-offset-3" style="text-align: center">
+                                <a href="/login">返回登录页面</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+</html>

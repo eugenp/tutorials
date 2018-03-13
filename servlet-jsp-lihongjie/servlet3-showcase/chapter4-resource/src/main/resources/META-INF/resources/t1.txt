@@ -1,0 +1,1 @@
+chapter4-resource.jar  /META-INF/t1.txt

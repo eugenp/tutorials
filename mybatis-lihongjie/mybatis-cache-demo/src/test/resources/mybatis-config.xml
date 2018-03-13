@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--配置文件地址-->
+    <properties resource="local-mysql.properties"/>
+
+    <settings>
+        <setting name="localCacheScope" value="SESSION"/>
+        <setting name="cacheEnabled" value="true"/>
+        <!--开启驼峰式命名，数据库的列名能够映射到去除下划线驼峰命名后的字段名-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <environments default="development">
+        <environment id="development">
+            <!--使用默认的JDBC事务管理-->
+            <transactionManager type="JDBC"/>
+            <!--使用连接池-->
+            <dataSource type="POOLED">
+                <!--这里会替换为local-mysql.properties中的对应字段的值-->
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--SQL映射文件,mybatis的核心-->
+    <mappers>
+        <mapper resource="mapper/studentMapper.xml"/>
+        <mapper resource="mapper/classMapper.xml"/>
+    </mappers>
+</configuration>

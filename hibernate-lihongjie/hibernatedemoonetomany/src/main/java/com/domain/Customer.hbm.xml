@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+		PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain">
+
+	<class name="Customer" table="customer002" >
+		<id name="id" type="long" column="ID">
+			<generator class="increment"/>
+		</id>
+
+		<property name="name" type="string" >
+			<column name="NAME" length="15" />
+		</property>
+		<set name="orders" cascade="save-update, delete">
+			<key column="CUSTOMER_ID"></key>
+			<one-to-many class="com.domain.Order" />
+		</set>
+
+	</class>
+</hibernate-mapping>
+
+<!--
+<set> 元素表明Customer类的orders属性为java.util.Set集合类型。
+<one-to-many> 子元素表示orders集合中存放的是一组Order对象。
+<key>子元素表明ORDERS表通过外键CUSTOMER_ID参照CUSTOMERS表。
+cascade属性取值为 save-update ，表明当保存或更新Customer对象时，会级联保存或更新orders集合中的所有Order对象。
+
+-->

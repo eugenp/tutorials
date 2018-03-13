@@ -1,0 +1,66 @@
+<html>
+<body>
+<p>
+  Class, field, and method level annotations for describing thread-safety policies.
+</p>
+
+<p>
+  Three class-level annotations describe the <em>intended</em> thread-safety promises of a class:
+  <code>@Immutable</code>, <code>@ThreadSafe</code>, and <code>@NotThreadSafe</code>.
+  <code>@Immutable</code> means that the class is immutable,
+  and implies <code>@ThreadSafe</code>.
+  <code>@NotThreadSafe</code> is optional;
+  if a class is not annotated as thread-safe, it should be presumed not to be
+  thread-safe, but if you want to make it extra clear, use
+  <code>@NotThreadSafe</code>.
+</p>
+
+<p>
+  These annotations are relatively unintrusive and are beneficial to
+  both users and maintainers.  Users can see immediately whether a class
+  is thread-safe, and maintainers can see immediately whether
+  thread-safety guarantees must be preserved.  Annotations are also
+  useful to a third constituency: tools.  Static code-analysis tools may
+  be able to verify that the code complies with the contract indicated
+  by the annotation, such as verifying that a class annotated with
+  <code>@Immutable</code> actually is immutable.
+</p>
+
+<h2>Field and method annotations</h2>
+
+<p>
+  The class-level annotations above are part of the public documentation
+  for the class.  Other aspects of a class's thread-safety strategy are
+  entirely for maintainers and are not part of its public documentation.
+</p>
+
+<p>
+  Classes that use locking should document which state variables are
+  guarded with which locks, and which locks are used to guard those
+  variables.  A common source of inadvertent non-thread-safety is when a
+  thread-safe class consistently uses locking to guard its state, but is
+  later modified to add either new state variables that are not
+  adequately guarded by locking, or new methods that do not use locking
+  properly to guard the existing state variables.  Documenting which
+  variables are guarded by which locks can help prevent both types of
+  omissions.
+</p>
+
+<p>
+  The <code>@GuardedBy(lock)</code> annotation documents that a field or method should
+  be accessed only with a specific lock held.
+</p>
+
+
+<h2>Copyright and license</h2>
+<p>
+This software is copyright (c) 2005 Brian Goetz and Tim Peierls
+and is released under the Creative Commons Attribution License
+(http://creativecommons.org/licenses/by/2.5).  The official home
+for this software is http://www.jcip.net.
+Any republication or derived work distributed in source code form
+must include the copyright and license notice.
+</p>
+
+</body>
+</html>

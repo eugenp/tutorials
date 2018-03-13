@@ -1,0 +1,2 @@
+ - Fix deprecated methods in spitter-persistence-jdbc-template
+ 

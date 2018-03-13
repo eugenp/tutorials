@@ -1,0 +1,1 @@
+mxmlc -flexlib C:/"Program Files"/Macromedia/Flex/jrun4/servers/default/flex/WEB-INF/flex songs.mxml

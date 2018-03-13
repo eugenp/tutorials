@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="in.codelearn.model">
+ <class name="Department" table="DEPARTMENT">
+  <id column="DEPARTMENT_ID" name="departmentId" type="java.lang.Long">
+   <generator class="native"/>
+  </id>
+  <property column="DEPT_NAME" generated="never" lazy="false" name="departmentName"/>
+  <list cascade="all" name="employees" table="employee">
+   <key column="department_id"/>
+   <list-index base="0" column="idx"/>
+   <one-to-many class="in.codelearn.model.Employee"/>
+  </list>
+ </class>
+</hibernate-mapping>

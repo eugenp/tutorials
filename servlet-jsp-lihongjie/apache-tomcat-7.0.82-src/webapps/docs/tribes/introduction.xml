@@ -1,0 +1,276 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="introduction.html">
+
+    &project;
+
+    <properties>
+        <author email="fhanik@apache.org">Filip Hanik</author>
+        <title>Apache Tribes - Introduction</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Quick Start">
+
+  <p>Apache Tribes is a group or peer-to-peer communication framework that enables you to easily connect
+     your remote objects to communicate with each other.
+  </p>
+  <ul>
+    <li>Import: <code>org.apache.catalina.tribes.Channel</code></li>
+    <li>Import: <code>org.apache.catalina.tribes.Member</code></li>
+    <li>Import: <code>org.apache.catalina.tribes.MembershipListener</code></li>
+    <li>Import: <code>org.apache.catalina.tribes.ChannelListener</code></li>
+    <li>Import: <code>org.apache.catalina.tribes.group.GroupChannel</code></li>
+    <li>Create a class that implements: <code>org.apache.catalina.tribes.ChannelListener</code></li>
+    <li>Create a class that implements: <code>org.apache.catalina.tribes.MembershipListener</code></li>
+    <li>Simple class to demonstrate how to send a message:
+      <source>
+        //create a channel
+        Channel myChannel = new GroupChannel();
+
+        //create my listeners
+        ChannelListener msgListener = new MyMessageListener();
+        MembershipListener mbrListener = new MyMemberListener();
+
+        //attach the listeners to the channel
+        myChannel.addMembershipListener(mbrListener);
+        myChannel.addChannelListener(msgListener);
+
+        //start the channel
+        myChannel.start(Channel.DEFAULT);
+
+        //create a message to be sent, message must implement java.io.Serializable
+        //for performance reasons you probably want them to implement java.io.Externalizable
+        Serializable myMsg = new MyMessage();
+
+        //retrieve my current members
+        Member[] group = myChannel.getMembers();
+
+        //send the message
+        myChannel.send(group,myMsg,Channel.SEND_OPTIONS_DEFAULT);
+      </source>
+    </li>
+  </ul>
+  <p>
+      Simple yeah? There is a lot more to Tribes than we have shown, hopefully the docs will be able
+      to explain more to you. Remember, that we are always interested in suggestions, improvements, bug fixes
+      and anything that you think would help this project.
+  </p>
+  <p>
+      Note: Tribes is currently built for JDK1.5, you can run on JDK1.4 by a small modifications to locks used from the <code>java.util.concurrent</code> package.
+  </p>
+</section>
+
+
+<section name="What is Tribes">
+  <p>
+    Tribes is a messaging framework with group communication abilities. Tribes allows you to send and receive
+    messages over a network, it also allows for dynamic discovery of other nodes in the network.<br/>
+    And that is the short story, it really is as simple as that. What makes Tribes useful and unique will be
+    described in the section below.<br/>
+  </p>
+  <p>
+    The Tribes module was started early 2006 and a small part of the code base comes from the clustering module
+    that has been existing since 2003 or 2004.
+    The current cluster implementation has several short comings and many workarounds were created due
+    to the complexity in group communication. Long story short, what should have been two modules a long time
+    ago, will be now. Tribes takes out the complexity of messaging from the replication module and becomes
+    a fully independent and highly flexible group communication module.<br/>
+  </p>
+  <p>
+    In Tomcat the old <code>modules/cluster</code> has now become <code>modules/groupcom</code>(Tribes) and
+    <code>modules/ha</code> (replication). This will allow development to proceed and let the developers
+    focus on the issues they are actually working on rather than getting boggled down in details of a module
+    they are not interested in. The understanding is that both communication and replication are complex enough,
+    and when trying to develop them in the same module, well you know, it becomes a cluster :)<br/>
+  </p>
+  <p>
+    Tribes allows for guaranteed messaging, and can be customized in many ways. Why is this important?<br/>
+    Well, you as a developer want to know that the messages you are sending are reaching their destination.
+    More than that, if a message doesn't reach its destination, the application on top of Tribes will be notified
+    that the message was never sent, and what node it failed.
+  </p>
+
+</section>
+
+<section name="Why another messaging framework">
+  <p>
+    I am a big fan of reusing code and would never dream of developing something if someone else has already
+    done it and it was available to me and the community I try to serve.<br/>
+    When I did my research to improve the clustering module I was constantly faced with a few obstacles:<br/>
+    1. The framework wasn't flexible enough<br/>
+    2. The framework was licensed in a way that neither I nor the community could use it<br/>
+    3. Several features that I needed were missing<br/>
+    4. Messaging was guaranteed, but no feedback was reported to me<br/>
+    5. The semantics of my message delivery had to be configured before runtime<br/>
+    And the list continues...
+  </p>
+  <p>
+    So I came up with Tribes, to address these issues and other issues that came along.
+    When designing Tribes I wanted to make sure I didn't lose any of the flexibility and
+    delivery semantics that the existing frameworks already delivered. The goal was to create a framework
+    that could do everything that the others already did, but to provide more flexibility for the application
+    developer. In the next section will give you the high level overview of what features tribes offers or will offer.
+  </p>
+</section>
+
+<section name="Feature Overview">
+  <p>
+    To give you an idea of the feature set I will list it out here.
+    Some of the features are not yet completed, if that is the case they are marked accordingly.
+  </p>
+  <p>
+    <b>Pluggable modules</b><br/>
+    Tribes is built using interfaces. Any of the modules or components that are part of Tribes can be swapped out
+    to customize your own Tribes implementation.
+  </p>
+  <p>
+    <b>Guaranteed Messaging</b><br/>
+    In the default implementation of Tribes uses TCP or UDP for messaging. TCP already has guaranteed message delivery
+    and flow control built in. I believe that the performance of Java TCP, will outperform an implementation of
+    Java/UDP/flow-control/message guarantee since the logic happens further down the stack. UDP messaging has been added in for
+    sending messages over UDP instead of TCP when desired. The same guarantee scenarios as described below are still available
+    over UDP, however, when a UDP message is lost, it's considered failed.<br/>
+    Tribes supports both non-blocking and blocking IO operations. The recommended setting is to use non blocking
+    as it promotes better parallelism when sending and receiving messages. The blocking implementation is available
+    for those platforms where NIO is still a trouble child.
+  </p>
+  <p>
+    <b>Different Guarantee Levels</b><br/>
+    There are three different levels of delivery guarantee when a message is sent.<br/>
+    <ol>
+      <li>IO Based send guarantee. - fastest, least reliable<br/>
+          This means that Tribes considers the message transfer to be successful
+          if the message was sent to the socket send buffer and accepted.<br/>
+          On blocking IO, this would be <code>socket.getOutputStream().write(msg)</code><br/>
+          On non blocking IO, this would be <code>socketChannel.write()</code>, and the buffer byte buffer gets emptied
+          followed by a <code>socketChannel.read()</code> to ensure the channel still open.
+          The <code>read()</code> has been added since <code>write()</code> will succeed if the connection has been &quot;closed&quot;
+          when using NIO.
+      </li>
+      <li>ACK based. - recommended, guaranteed delivery<br/>
+          When the message has been received on a remote node, an ACK is sent back to the sender,
+          indicating that the message was received successfully.
+      </li>
+      <li>SYNC_ACK based. - guaranteed delivery, guaranteed processed, slowest<br/>
+          When the message has been received on a remote node, the node will process
+          the message and if the message was processed successfully, an ACK is sent back to the sender
+          indicating that the message was received and processed successfully.
+          If the message was received, but processing it failed, an ACK_FAIL will be sent back
+          to the sender. This is a unique feature that adds an incredible amount value to the application
+          developer. Most frameworks here will tell you that the message was delivered, and the application
+          developer has to build in logic on whether the message was actually processed properly by the application
+          on the remote node. If configured, Tribes will throw an exception when it receives an ACK_FAIL
+          and associate that exception with the member that didn't process the message.
+      </li>
+    </ol>
+    You can of course write even more sophisticated guarantee levels, and some of them will be mentioned later on
+    in the documentation. One mentionable level would be a 2-Phase-Commit, where the remote applications don't receive
+    the message until all nodes have received the message. Sort of like a all-or-nothing protocol.
+  </p>
+  <p>
+    <b>Per Message Delivery Attributes</b><br/>
+    Perhaps the feature that makes Tribes stand out from the crowd of group communication frameworks.
+    Tribes enables you to send to decide what delivery semantics a message transfer should have on a per
+    message basis. Meaning, that your messages are not delivered based on some static configuration
+    that remains fixed after the message framework has been started.<br/>
+    To give you an example of how powerful this feature is, I'll try to illustrate it with a simple example.
+    Imagine you need to send 10 different messages, you could send them the following way:
+    <source>
+      Message_1 - asynchronous and fast, no guarantee required, fire and forget
+      Message_2 - all-or-nothing, either all receivers get it, or none.
+      Message_3 - encrypted and SYNC_ACK based
+      Message_4 - asynchronous, SYNC_ACK and call back when the message is processed on the remote nodes
+      Message_5 - totally ordered, this message should be received in the same order on all nodes that have been
+                  send totally ordered
+      Message_6 - asynchronous and totally ordered
+      Message_7 - RPC message, send a message, wait for all remote nodes to reply before returning
+      Message_8 - RPC message, wait for the first reply
+      Message_9 - RPC message, asynchronous, don't wait for a reply, collect them via a callback
+      Message_10- sent to a member that is not part of this group
+    </source>
+    As you can imagine by now, these are just examples. The number of different semantics you can apply on a
+    per-message-basis is almost limitless. Tribes allows you to set up to 28 different on a message
+    and then configure Tribes to what flag results in what action on the message.<br/>
+    Imagine a shared transactional cache, probably &gt;90% are reads, and the dirty reads should be completely
+    unordered and delivered as fast as possible. But transactional writes on the other hand, have to
+    be ordered so that no cache gets corrupted. With tribes you would send the write messages totally ordered,
+    while the read messages you simple fire to achieve highest throughput.<br/>
+    There are probably better examples on how this powerful feature can be used, so use your imagination and
+    your experience to think of how this could benefit you in your application.
+  </p>
+  <p>
+    <b>Interceptor based message processing</b><br/>
+    Tribes uses a customizable interceptor stack to process messages that are sent and received.<br/>
+    <i>So what, all frameworks have this!</i><br/>
+    Yes, but in Tribes interceptors can react to a message based on the per-message-attributes
+    that are sent runtime. Meaning, that if you add a encryption interceptor that encrypts message
+    you can decide if this interceptor will encrypt all messages, or only certain messages that are decided
+    by the applications running on top of Tribes.<br/>
+    This is how Tribes is able to send some messages totally ordered and others fire and forget style
+    like the example above.<br/>
+    The number of interceptors that are available will keep growing, and we would appreciate any contributions
+    that you might have.
+  </p>
+  <p>
+    <b>Threadless Interceptor stack</b>
+    The interceptor don't require any separate threads to perform their message manipulation.<br/>
+    Messages that are sent will piggy back on the thread that is sending them all the way through transmission.
+    The exception is the <code>MessageDispatchInterceptor</code> that will queue up the message
+    and send it on a separate thread for asynchronous message delivery.
+    Messages received are controlled by a thread pool in the <code>receiver</code> component.<br/>
+    The channel object can send a <code>heartbeat()</code> through the interceptor stack to allow
+    for timeouts, cleanup and other events.<br/>
+    The <code>MessageDispatchInterceptor</code> is the only interceptor that is configured by default.
+  </p>
+  <p>
+    <b>Parallel Delivery</b><br/>
+    Tribes support parallel delivery of messages. Meaning that node_A could send three messages to node_B in
+    parallel. This feature becomes useful when sending messages with different delivery semantics.
+    Otherwise if Message_1 was sent totally ordered, Message_2 would have to wait for that message to complete.<br/>
+    Through NIO, Tribes is also able to send a message to several receivers at the same time on the same thread.
+  </p>
+  <p>
+    <b>Silent Member Messaging</b><br/>
+    With Tribes you are able to send messages to members that are not in your group.
+    So by default, you can already send messages over a wide area network, even though the dynamic discover
+    module today is limited to local area networks by using multicast for dynamic node discovery.
+    Of course, the membership component will be expanded to support WAN memberships in the future.
+    But this is very useful, when you want to hide members from the rest of the group and only communicate with them
+  </p>
+</section>
+
+<section name="Where can I get Tribes">
+  <p>
+    Tribes ships as a module with Tomcat, and is released as part of the Apache Tomcat release.
+  </p>
+
+
+</section>
+
+</body>
+
+</document>

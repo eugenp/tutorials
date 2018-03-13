@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://java.sun.com/xml/ns/j2ee"
+            xmlns:j2ee="http://java.sun.com/xml/ns/j2ee"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+            version="2.0">
+  <xsd:annotation>
+    <xsd:documentation>
+
+      This is the XML Schema for the JSP 2.0 deployment descriptor
+      types.  The JSP 2.0 schema contains all the special
+      structures and datatypes that are necessary to use JSP files
+      from a web application.
+
+      The contents of this schema is used by the web-app_2_4.xsd
+      file to define JSP specific content.
+
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:annotation>
+    <xsd:documentation>
+
+      The following conventions apply to all J2EE
+      deployment descriptor elements unless indicated otherwise.
+
+      - In elements that specify a pathname to a file within the
+        same JAR file, relative filenames (i.e., those not
+        starting with "/") are considered relative to the root of
+        the JAR file's namespace.  Absolute filenames (i.e., those
+        starting with "/") also specify names in the root of the
+        JAR file's namespace.  In general, relative names are
+        preferred.  The exception is .war files where absolute
+        names are preferred for consistency with the Servlet API.
+
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:include schemaLocation="j2ee_1_4.xsd"/>
+
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="jsp-configType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The jsp-configType is used to provide global configuration
+        information for the JSP files in a web application. It has
+        two subelements, taglib and jsp-property-group.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="taglib"
+                   type="j2ee:taglibType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="jsp-property-group"
+                   type="j2ee:jsp-property-groupType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="jsp-fileType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The jsp-file element contains the full path to a JSP file
+        within the web application beginning with a `/'.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:pathType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="jsp-property-groupType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The jsp-property-groupType is used to group a number of
+        files so they can be given global property information.
+        All files so described are deemed to be JSP files.  The
+        following additional properties can be described:
+
+            - Control whether EL is ignored
+            - Control whether scripting elements are invalid
+            - Indicate pageEncoding information.
+            - Indicate that a resource is a JSP document (XML)
+            - Prelude and Coda automatic includes.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="url-pattern"
+                   type="j2ee:url-patternType"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="el-ignored"
+                   type="j2ee:true-falseType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Can be used to easily set the isELIgnored
+            property of a group of JSP pages.  By default, the
+            EL evaluation is enabled for Web Applications using
+            a Servlet 2.4 or greater web.xml, and disabled
+            otherwise.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="page-encoding"
+                   type="j2ee:string"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The valid values of page-encoding are those of the
+            pageEncoding page directive.  It is a
+            translation-time error to name different encodings
+            in the pageEncoding attribute of the page directive
+            of a JSP page and in a JSP configuration element
+            matching the page.  It is also a translation-time
+            error to name different encodings in the prolog
+            or text declaration of a document in XML syntax and
+            in a JSP configuration element matching the document.
+            It is legal to name the same encoding through
+            mulitple mechanisms.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="scripting-invalid"
+                   type="j2ee:true-falseType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Can be used to easily disable scripting in a
+            group of JSP pages.  By default, scripting is
+            enabled.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="is-xml"
+                   type="j2ee:true-falseType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            If true, denotes that the group of resources
+            that match the URL pattern are JSP documents,
+            and thus must be interpreted as XML documents.
+            If false, the resources are assumed to not
+            be JSP documents, unless there is another
+            property group that indicates otherwise.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="include-prelude"
+                   type="j2ee:pathType"
+                   minOccurs="0"
+                   maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The include-prelude element is a context-relative
+            path that must correspond to an element in the
+            Web Application.  When the element is present,
+            the given path will be automatically included (as
+            in an include directive) at the beginning of each
+            JSP page in this jsp-property-group.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="include-coda"
+                   type="j2ee:pathType"
+                   minOccurs="0"
+                   maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The include-coda element is a context-relative
+            path that must correspond to an element in the
+            Web Application.  When the element is present,
+            the given path will be automatically included (as
+            in an include directive) at the end of each
+            JSP page in this jsp-property-group.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="taglibType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The taglibType defines the syntax for declaring in
+        the deployment descriptor that a tag library is
+        available to the application.  This can be done
+        to override implicit map entries from TLD files and
+        from the container.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="taglib-uri"
+                   type="j2ee:string">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            A taglib-uri element describes a URI identifying a
+            tag library used in the web application.  The body
+            of the taglib-uri element may be either an
+            absolute URI specification, or a relative URI.
+            There should be no entries in web.xml with the
+            same taglib-uri value.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="taglib-location"
+                   type="j2ee:pathType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            the taglib-location element contains the location
+            (as a resource relative to the root of the web
+            application) where to find the Tag Library
+            Description file for the tag library.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+</xsd:schema>
+

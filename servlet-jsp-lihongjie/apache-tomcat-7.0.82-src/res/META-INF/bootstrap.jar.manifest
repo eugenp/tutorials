@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Main-Class: org.apache.catalina.startup.Bootstrap
+Class-Path: commons-daemon.jar
+Specification-Title: Apache Tomcat Bootstrap
+Specification-Version: @VERSION_MAJOR_MINOR@
+Specification-Vendor: Apache Software Foundation
+Implementation-Title: Apache Tomcat Bootstrap
+Implementation-Version: @VERSION@
+Implementation-Vendor: Apache Software Foundation
+X-Compile-Source-JDK: @source.jdk@
+X-Compile-Target-JDK: @target.jdk@

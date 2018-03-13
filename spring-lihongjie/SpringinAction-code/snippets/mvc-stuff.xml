@@ -1,0 +1,114 @@
+<!--<start id="bean_ControllerClassNameHandlerMapping" />-->
+<bean class=
+  "org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+<!--<end id="bean_ControllerClassNameHandlerMapping" />-->
+
+
+<!--<start id="bean_SimpleUrlHandlerMapping" />-->
+<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+ <property name="mappings">
+   <value>
+     /home=homeController
+     /help=helpController
+   </value>
+ </property>
+</bean>
+<!--<end id="bean_SimpleUrlHandlerMapping" />-->
+
+
+<!-- REPLACED BY <mvc:annotated-controllers/>-->
+<!--   This is enabled by DispatcherServlet by default anyway -->
+<!--   <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />-->
+
+   <!-- REPLACED BY <mvc:annotated-controllers/>-->
+<!--   This is enabled by DispatcherServlet by default, but not with the validator in place. -->
+<!--   With <mvc:annotated-controllers/>, you get the validator and a conversionService -->
+<!--<start id="bean_annotationMethodHandlerAdapter" />-->
+<bean class=
+  "org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+<property name="webBindingInitializer">
+    <bean class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
+        <property name="validator" ref="validator" />
+    </bean>
+</property>
+</bean>
+<!--<end id="bean_annotationMethodHandlerAdapter" />-->
+
+
+<!-- REPLACED BY <mvc:annotated-controllers/>-->
+<!--<start id="bean_validator" />-->
+<bean id="validator" 
+   class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+<!--<end id="bean_validator" />-->
+
+<!--<start id="bean_tilesViewResolver" />-->
+<bean class=
+    "org.springframework.web.servlet.view.tiles2.TilesViewResolver"/>
+<!--<end id="bean_tilesViewResolver" />-->
+
+<!--<start id="bean_tilesViewConfigurer" />-->
+<bean class=
+    "org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+  <property name="definitions">
+    <list>
+      <value>/WEB-INF/views/**/views.xml</value>
+    </list>
+  </property>
+</bean>
+<!--<end id="bean_tilesViewConfigurer" />-->
+
+
+<!--<start id="bean_internalResourceViewResolver" />-->
+<bean class=
+	   "org.springframework.web.servlet.view.InternalResourceViewResolver">
+ <property name="prefix" value="/WEB-INF/views/"/>
+ <property name="suffix" value=".jsp"/>
+</bean>
+<!--<end id="bean_internalResourceViewResolver" />-->
+
+<!--<start id="bean_internalResourceViewResolver_jstl" />-->
+<bean class=
+	   "org.springframework.web.servlet.view.InternalResourceViewResolver">
+ <property name="viewClass"
+     value="org.springframework.web.servlet.view.JstlView" />
+ <property name="prefix" value="/WEB-INF/views/"/>
+ <property name="suffix" value=".jsp"/>
+</bean>
+<!--<end id="bean_internalResourceViewResolver_jstl" />-->
+
+
+<!--<start id="hiddenHttpMethodForm" />-->
+<form id="command" action="/Spitter/spittle/33" method="POST">
+  <input type="hidden" name="_method" value="delete"/>
+  <input type="submit" value="Delete"/>
+</form>
+<!--<end id="hiddenHttpMethodForm" />-->
+
+
+
+<!--<start id="formform_deleteSpittle" />-->
+<form:form method="delete" action="/spittle/33">
+    <input type="submit" value="Delete"/>
+</form:form>
+<!--<end id="formform_deleteSpittle" />-->
+
+
+<!--<start id="tile_home"/>-->
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+      "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+  
+<tiles-definitions>
+   <definition name="mainTemplate"                     
+               template="/WEB-INF/views/main_template.jsp"> <!--<co id="co_masterTemplate" />-->
+     <put-attribute name="top" 
+                    value="/WEB-INF/views/spittle/form.jsp" />
+     <put-attribute name="side" 
+                    value="/WEB-INF/views/tiles/signinsignup.jsp" />
+   </definition>
+ 
+   <definition name="home" extends="mainTemplate">    <!--<co id="co_homeTemplate" />-->
+     <put-attribute name="content" value="/WEB-INF/views/home.jsp" />
+   </definition>
+</tiles-definitions>
+<!--<end id="tile_home"/>-->

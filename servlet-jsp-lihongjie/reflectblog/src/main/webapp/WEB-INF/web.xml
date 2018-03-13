@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <servlet>
+        <servlet-name>CategoryServlet</servlet-name>
+        <servlet-class>servlet.CategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>servlet.UserServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>EntryServlet</servlet-name>
+        <servlet-class>servlet.EntryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>LinkServlet</servlet-name>
+        <servlet-class>servlet.LinkServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <description>This is the description of my J2EE component</description>
+        <display-name>This is the display name of my J2EE component</display-name>
+        <servlet-name>CommentServlet</servlet-name>
+        <servlet-class>servlet.CommentServlet</servlet-class>
+    </servlet>
+<!--    <servlet>
+        <servlet-name>Connector</servlet-name>
+        <servlet-class>net.fckeditor.connector.ConnectorServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>-->
+    <servlet-mapping>
+        <servlet-name>CategoryServlet</servlet-name>
+        <url-pattern>/CategoryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/UserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EntryServlet</servlet-name>
+        <url-pattern>/EntryServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LinkServlet</servlet-name>
+        <url-pattern>/LinkServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentServlet</servlet-name>
+        <url-pattern>/CommentServlet</url-pattern>
+    </servlet-mapping>
+<!--    <servlet-mapping>
+        <servlet-name>Connector</servlet-name>
+        <url-pattern>/fckeditor/editor/filemanager/connectors/*</url-pattern>
+    </servlet-mapping>-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+</web-app>

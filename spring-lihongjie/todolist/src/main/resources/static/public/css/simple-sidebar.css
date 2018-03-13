@@ -1,0 +1,172 @@
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+#wrapper.toggled {
+    padding-left: 250px;
+}
+#sidebar-wrapper {
+    z-index: 1000;
+    position: absolute;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #F7FAF9;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    border-right: 1px solid #eee;
+}
+.sidebar-menu {
+    display: block;
+    padding: 6px 12px;
+    position: absolute;
+    left: -1px;
+    top: 10px;
+    border: 1px solid #eee;
+    border-left: none;
+    border-radius: 3px;
+    background: #F7FAF9;
+    color: #37BC9B !important;
+    z-index: 1040;
+}
+.sidebar-menu.folded {
+    left: -33px;
+    border-radius: 3px 0 0  3px;
+    border: 1px solid #eee;
+    background: #fff;
+    border-right: none;
+}
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding-top: 10px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #333;
+    background: rgba(0,0,0,0.1);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.act {
+    text-decoration: none;
+    color: black !important;
+    background: rgba(0,0,0,0.1);
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 50px;
+    font-size: 18px;
+    line-height: 50px;
+    box-shadow: 0px 1px 2px 0px #BEC0C2;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #333;
+    background: #fff;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #009688;
+    background: #fff;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+    .sidebar-menu {
+        display: block;
+        padding: 6px;
+        position: absolute;
+        left: -21px;
+        top: 10px;
+        border: 1px solid #eee;
+        border-right: none;
+        border-radius: 3px 0 0 3px;
+        background: #fff;
+        color: #37BC9B !important;
+        z-index: 1040;
+    }
+    .sidebar-menu.folded {
+        left: -1px;
+        border-radius: 0 3px 3px 0;
+        border: 1px solid #eee;
+        border-left: none;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 0;
+        padding-top: 10px;
+        position: relative;
+        padding-top: 10px;
+
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}

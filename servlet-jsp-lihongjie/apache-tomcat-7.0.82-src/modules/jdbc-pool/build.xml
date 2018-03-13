@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- Basedir points at tomcat-trunk directory -->
+<project name="Tomcat JDBC Pool" default="simplebuild" basedir=".">
+
+
+  <!-- ===================== Initialize Property Values =================== -->
+
+  <!-- We read customizable properties from the file "build.properties.default" -->
+  <!-- and also from "build.properties" if it exists.                           -->
+  <!-- The values in "build.properties" have stronger preference.               -->
+  <!-- If you want to customize your build, you can either change the values    -->
+  <!-- directly in the default file, or create a new build.properties and set   -->
+  <!-- the values there. This way you don't have to change a file which is part -->
+  <!-- of the original project source code.                                     -->
+  <!-- See "build.properties.default" for some property values you may          -->
+  <!-- customize.                                                               -->
+  <property file="${user.home}/build.properties"/>
+  <property file="${basedir}/build.properties"/>
+  <property file="${basedir}/build.properties.default"/>
+  <property name="version"               value="${version.major}.${version.minor}.${version.build}.${version.patch}${version.suffix}" />
+  <property name="version.major.minor"   value="${version.major}.${version.minor}" />
+
+  <!-- Project Properties -->
+  <property name="name"                  value="Apache Tomcat JDBC Pool" />
+  <tstamp>
+    <format property="year" pattern="yyyy" locale="en" timezone="UTC" />
+    <format property="TODAY" pattern="MMM d yyyy" locale="en" timezone="UTC" />
+    <format property="TSTAMP" pattern="HH:mm:ss" locale="en" timezone="UTC" />
+  </tstamp>
+
+  <property name="project"               value="apache-tomcat-jdbc-pool" />
+  <property name="final.name"            value="${project}-${version}" />
+  <property name="final-src.name"        value="${project}-${version}-src" />
+
+  <!-- Build Defaults -->
+  <property name="tomcat.pool" value="${basedir}/./output"/>
+  <property name="tomcat.build"      value="${tomcat.pool}/build"/>
+  <property name="tomcat.classes"    value="${tomcat.pool}/classes"/>
+  <property name="tomcat.api"    value="${tomcat.pool}/api"/>
+  <property name="tomcat.testclasses"    value="${tomcat.pool}/testclasses"/>
+
+  <!-- JAR Artifacts -->
+  <property name="tomcat-jdbc.jar" value="${tomcat.pool}/tomcat-jdbc.jar"/>
+  <property name="tomcat-jdbc-src.jar" value="${tomcat.pool}/tomcat-jdbc-src.jar"/>
+  <property name="tomcat-jdbc-test.jar" value="${tomcat.pool}/tomcat-jdbc-test.jar"/>
+  <property name="tomcat-jdbc-test-src.jar" value="${tomcat.pool}/tomcat-jdbc-test-src.jar"/>
+  <property name="tomcat-jdbc-api.jar" value="${tomcat.pool}/tomcat-jdbc-api.jar"/>
+  <!-- Classpath -->
+  <path id="tomcat.jdbc.classpath">
+    <pathelement location="${tomcat.classes}"/>
+    <pathelement location="${tomcat.juli.jar}"/>
+  </path>
+
+  <path id="test.classpath">
+    <pathelement location="${tomcat-jdbc.jar}"/>
+    <pathelement location="${tomcat.testclasses}"/>
+    <pathelement location="${c3p0.jar}"/>
+    <pathelement location="${mysql.jar}"/>
+    <pathelement location="${junit.jar}"/>
+    <pathelement location="${hamcrest.jar}"/>
+    <pathelement location="${tomcat.dbcp.jar}"/>
+    <pathelement location="${derby.jar}"/>
+    <pathelement location="${h2.jar}"/>
+  </path>
+
+  <fileset id="license.notice" dir="${basedir}">
+    <include name="NOTICE"/>
+    <include name="LICENSE"/>
+  </fileset>
+
+  <!-- Version info filter set -->
+  <filterset id="version.filters">
+    <filter token="YEAR" value="${year}"/>
+    <filter token="VERSION" value="${version}"/>
+    <filter token="VERSION_MAJOR" value="${version.major}"/>
+    <filter token="VERSION_MAJOR_MINOR" value="${version.major.minor}"/>
+    <filter token="VERSION_BUILT" value="${TODAY} ${TSTAMP} UTC"/>
+    <filter token="TOMCAT_PROJECT_DEST" value="${tomcat.project.dest}"/>
+  </filterset>
+
+  <target name="prepare">
+    <mkdir dir="${tomcat.build}"/>
+    <mkdir dir="${tomcat.classes}"/>
+    <mkdir dir="${tomcat.testclasses}"/>
+    <copy todir="${tomcat.pool}">
+      <fileset dir="${basedir}">
+        <include name="LICENSE"/>
+        <include name="NOTICE"/>
+        <include name="build.xml"/>
+        <include name="doc/*.xml"/>
+        <include name="resources/MANIFEST.MF"/>
+      </fileset>
+      <filterset refid="version.filters"/>
+    </copy>
+  </target>
+
+  <target name="javadoc" depends="prepare">
+
+     <xslt basedir="${tomcat.pool}/doc"
+          destdir="${basedir}/src/main/java/org/apache/tomcat/jdbc/pool"
+          extension=".html"
+          style="${basedir}/doc/package.xsl"
+          excludes="build.xml"
+          includes="jdbc-pool.xml">
+      <param name="relative-path" expression="http://tomcat.apache.org/tomcat-6.0-doc"/>
+      <param name="apache-logo" expression="/images/asf-logo.svg"/>
+    </xslt>
+    <move tofile="${basedir}/src/main/java/org/apache/tomcat/jdbc/pool/package.html"
+          file="${basedir}/src/main/java/org/apache/tomcat/jdbc/pool/jdbc-pool.html"/>
+    <javadoc
+        destdir="${tomcat.api}"
+        bottom="Copyright &amp;#169; 2000-${year} Apache Software Foundation. All Rights Reserved."
+        encoding="ISO-8859-1"
+        additionalparam="-breakiterator -notimestamp"
+        verbose="false">
+      <classpath refid="tomcat.jdbc.classpath"/>
+      <link href="http://docs.oracle.com/javase/6/docs/api/"/>
+      <sourcepath location="${basedir}/src/main/java"/>
+    </javadoc>
+    <!-- connection pool API  file-->
+    <jar jarfile="${tomcat-jdbc-api.jar}" update="true">
+      <fileset dir="${tomcat.api}"/>
+      <fileset refid="license.notice"/>
+    </jar>
+    <delete file="${basedir}/src/main/java/org/apache/tomcat/jdbc/pool/package.html"/>
+  </target>
+
+  <target name="build" depends="prepare,download,build-src">
+    <!-- compile org.apache.tomcat.jdbc-->
+    <javac srcdir="${basedir}/src/main/java" destdir="${tomcat.classes}"
+           debug="${compile.debug}"
+           deprecation="${compile.deprecation}"
+           source="${compile.source}"
+           target="${compile.target}"
+           optimize="${compile.optimize}"
+           encoding="ISO-8859-1"
+           includeantruntime="false">
+      <classpath refid="tomcat.jdbc.classpath"/>
+      <include name="org/apache/tomcat/jdbc/**" />
+    </javac>
+
+    <!-- connection pool JAR File -->
+    <jar jarfile="${tomcat-jdbc.jar}" update="true" manifest="${tomcat.pool}/resources/MANIFEST.MF">
+      <fileset dir="${tomcat.classes}">
+        <include name="org/apache/tomcat/jdbc/**" />
+      </fileset>
+      <fileset dir="${basedir}/src/main/java">
+        <include name="org/apache/tomcat/jdbc/**/*.xml" />
+      </fileset>
+      <fileset refid="license.notice"/>
+    </jar>
+  </target>
+
+  <target name="build-src">
+    <!-- connection pool source file-->
+    <jar jarfile="${tomcat-jdbc-src.jar}" update="true">
+      <fileset dir="${basedir}/src/main/java">
+        <include name="org/apache/tomcat/jdbc/**" />
+      </fileset>
+      <fileset refid="license.notice"/>
+    </jar>
+  </target>
+
+  <target name="build-test" depends="prepare, build, download-test">
+    <mkdir dir="${tomcat.pool}"/>
+    <!-- compile org.apache.tomcat.jdbc-->
+    <javac srcdir="${basedir}/src/test/java" destdir="${tomcat.testclasses}"
+           debug="${compile.debug}"
+           deprecation="${compile.deprecation}"
+           source="${compile.source}"
+           target="${compile.target}"
+           optimize="${compile.optimize}"
+           encoding="ISO-8859-1"
+           includeantruntime="false">
+      <classpath refid="tomcat.jdbc.classpath"/>
+      <classpath refid="test.classpath"/>
+      <include name="org/apache/tomcat/jdbc/**" />
+    </javac>
+    <!-- connection pool JAR File -->
+    <jar jarfile="${tomcat-jdbc-test.jar}" update="true">
+      <fileset dir="${tomcat.testclasses}">
+        <include name="org/apache/tomcat/jdbc/**" />
+      </fileset>
+      <fileset dir="${basedir}/src/test/java">
+        <include name="org/apache/tomcat/jdbc/**/*.xml" />
+      </fileset>
+      <fileset refid="license.notice"/>
+    </jar>
+    <jar jarfile="${tomcat-jdbc-test-src.jar}" update="true">
+      <fileset dir="${basedir}/src/test/java">
+        <include name="org/apache/tomcat/jdbc/**" />
+      </fileset>
+      <fileset refid="license.notice"/>
+    </jar>
+  </target>
+
+
+  <target name="clean">
+      <mkdir dir="${tomcat.pool}"/>
+      <delete file="${tomcat-jdbc.jar}" />
+      <delete file="${tomcat-jdbc-src.jar}"/>
+      <delete includeemptydirs="true" failonerror="false">
+          <fileset dir="${tomcat.classes}">
+            <include name="org/apache/tomcat/jdbc/**"/>
+          </fileset>
+          <fileset dir="${tomcat.pool}">
+            <include name="*.html"/>
+            <include name="LICENSE"/>
+            <include name="NOTICE"/>
+          </fileset>
+      </delete>
+      <delete dir="${tomcat.pool}/doc"/>
+      <delete dir="${tomcat.classes}"/>
+      <delete dir="${tomcat.testclasses}"/>
+      <delete file="${tomcat.pool}/build.xml"/>
+      <delete dir="${tomcat.pool}/build"/>
+      <delete dir="${tomcat.api}"/>
+  </target>
+
+  <target name="docs" depends="prepare">
+    <xslt basedir="${tomcat.pool}/doc"
+          destdir="${tomcat.pool}/"
+          extension=".html"
+          style="${tomcat.xsl.dest}"
+          excludes="build.xml project.xml"
+          includes="*.xml">
+      <param name="relative-path" expression="http://tomcat.apache.org/tomcat-6.0-doc"/>
+      <param name="apache-logo" expression="/images/asf-logo.svg"/>
+    </xslt>
+  </target>
+
+  <target name="dist" depends="clean, build, build-test, docs, javadoc">
+    <property name="destdir" value="${tomcat.pool}/release/v${version}"/>
+    <mkdir dir="${destdir}"/>
+    <zip destfile="${destdir}/apache-tomcat-jdbc-${version}-bin.zip">
+      <fileset dir="${tomcat.pool}">
+        <include name="jdbc-pool.html"/>
+        <include name="changelog.html"/>
+        <include name="LICENSE"/>
+        <include name="NOTICE"/>
+        <include name="tomcat-jdbc.jar"/>
+        <include name="tomcat-jdbc-test.jar"/>
+        <include name="tomcat-jdbc-src.jar"/>
+        <include name="tomcat-jdbc-test-src.jar"/>
+      </fileset>
+      <fileset dir="${tomcat.home}/bin">
+        <include name="tomcat-juli.jar"/>
+      </fileset>
+    </zip>
+    <tar destfile="${destdir}/apache-tomcat-jdbc-${version}-bin.tar">
+      <fileset dir="${tomcat.pool}">
+        <include name="jdbc-pool.html"/>
+        <include name="changelog.html"/>
+        <include name="LICENSE"/>
+        <include name="NOTICE"/>
+        <include name="tomcat-jdbc.jar"/>
+        <include name="tomcat-jdbc-test.jar"/>
+        <include name="tomcat-jdbc-src.jar"/>
+        <include name="tomcat-jdbc-test-src.jar"/>
+      </fileset>
+      <fileset dir="${tomcat.home}/bin">
+        <include name="tomcat-juli.jar"/>
+      </fileset>
+    </tar>
+    <gzip src="${destdir}/apache-tomcat-jdbc-${version}-bin.tar"
+          destfile="${destdir}/apache-tomcat-jdbc-${version}-bin.tar.gz"/>
+    <delete file="${destdir}/apache-tomcat-jdbc-${version}-bin.tar"/>
+
+    <zip destfile="${destdir}/apache-tomcat-jdbc-${version}-src.zip">
+      <zipfileset src="${tomcat-jdbc-src.jar}" prefix="java"/>
+      <zipfileset src="${tomcat-jdbc-test-src.jar}" prefix="test"/>
+      <fileset dir="${basedir}">
+        <include name="build.xml"/>
+        <include name="build.properties.default"/>
+        <include name="doc/*.xml"/>
+        <include name="doc/*.xsl"/>
+        <include name="resources/MANIFEST.MF"/>
+        <include name="LICENSE"/>
+        <include name="NOTICE"/>
+      </fileset>
+    </zip>
+    <tar destfile="${destdir}/apache-tomcat-jdbc-${version}-src.tar">
+      <zipfileset src="${tomcat-jdbc-src.jar}" prefix="java"/>
+      <zipfileset src="${tomcat-jdbc-test-src.jar}" prefix="test"/>
+      <fileset dir="${basedir}">
+        <include name="build.xml"/>
+        <include name="build.properties.default"/>
+        <include name="doc/*.xml"/>
+        <include name="doc/*.xsl"/>
+        <include name="resources/MANIFEST.MF"/>
+        <include name="LICENSE"/>
+        <include name="NOTICE"/>
+      </fileset>
+    </tar>
+    <gzip src="${destdir}/apache-tomcat-jdbc-${version}-src.tar"
+          destfile="${destdir}/apache-tomcat-jdbc-${version}-src.tar.gz"/>
+
+    <delete file="${destdir}/apache-tomcat-jdbc-${version}-src.tar"/>
+    <echo message="Options +Indexes" file="${destdir}/.htaccess"/>
+
+    <checksum file="${destdir}/apache-tomcat-jdbc-${version}-bin.tar.gz" forceOverwrite="yes" fileext=".md5" />
+    <checksum file="${destdir}/apache-tomcat-jdbc-${version}-bin.zip" forceOverwrite="yes" fileext=".md5" />
+    <checksum file="${destdir}/apache-tomcat-jdbc-${version}-src.tar.gz" forceOverwrite="yes" fileext=".md5" />
+    <checksum file="${destdir}/apache-tomcat-jdbc-${version}-src.zip" forceOverwrite="yes" fileext=".md5" />
+
+
+  </target>
+
+  <!-- Download and dependency building -->
+  <target name="proxyflags">
+    <!-- check proxy parameters. -->
+    <condition property="useproxy">
+      <equals arg1="${proxy.use}" arg2="on" />
+    </condition>
+  </target>
+
+  <target name="setproxy" depends="proxyflags" if="useproxy">
+    <taskdef name="setproxy"
+            classname="org.apache.tools.ant.taskdefs.optional.net.SetProxy" />
+    <setproxy proxyhost="${proxy.host}" proxyport="${proxy.port}"
+              proxyuser="${proxy.user}" proxypassword="${proxy.password}" />
+    <echo message="Using ${proxy.host}:${proxy.port} to download ${sourcefile}"/>
+  </target>
+
+  <target name="testexist">
+    <echo message="Testing  for ${destfile}"/>
+    <available file="${destfile}" property="exist"/>
+  </target>
+
+  <target name="downloadfile" unless="exist" depends="setproxy,testexist">
+    <!-- Download extract the file -->
+    <mkdir dir="${destdir}" />
+    <get src="${sourcefile}" dest="${destfile}" />
+  </target>
+
+  <target name="downloadgz" unless="exist" depends="setproxy,testexist">
+    <!-- Download and extract the package -->
+    <get src="${sourcefile}" dest="${base.path}/file.tar.gz" />
+    <gunzip src="${base.path}/file.tar.gz" dest="${base.path}/file.tar"/>
+    <untar src="${base.path}/file.tar" dest="${base.path}"/>
+    <delete file="${base.path}/file.tar"/>
+    <delete file="${base.path}/file.tar.gz"/>
+  </target>
+
+  <target name="downloadzip" unless="exist" depends="setproxy,testexist">
+    <!-- Download and extract the package -->
+    <get src="${sourcefile}" dest="${base.path}/file.zip" />
+    <mkdir dir="${destdir}" />
+    <unzip src="${base.path}/file.zip" dest="${destdir}"/>
+    <delete file="${base.path}/file.zip"/>
+  </target>
+
+  <target name="download" unless="skip.download">
+    <mkdir dir="${base.path}"/>
+<!--
+    <antcall target="downloadzip">
+      <param name="sourcefile" value="${dbcp.loc}"/>
+      <param name="destfile" value="${dbcp.jar}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+ -->
+    <antcall target="downloadzip">
+      <param name="sourcefile" value="${tomcat.loc}"/>
+      <param name="destfile" value="${tomcat.juli.jar}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+    <antcall target="downloadfile">
+      <param name="sourcefile" value="${tomcat.xsl.loc}"/>
+      <param name="destfile" value="${tomcat.xsl.dest}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+    <antcall target="downloadfile">
+      <param name="sourcefile" value="${tomcat.project.loc}"/>
+      <param name="destfile" value="${tomcat.project.dest}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+    <!-- Derby database
+    <antcall target="downloadgz">
+      <param name="sourcefile" value="${derby.loc}"/>
+      <param name="destfile" value="${derby.jar}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+     -->
+    <antcall target="downloadzip">
+      <param name="sourcefile" value="${h2.loc}"/>
+      <param name="destfile" value="${h2.jar}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+    <antcall target="downloadfile">
+      <param name="sourcefile" value="${junit.loc}"/>
+      <param name="destfile" value="${junit.jar}"/>
+      <param name="destdir" value="${junit.home}"/>
+    </antcall>
+    <antcall target="downloadfile">
+      <param name="sourcefile" value="${hamcrest.loc}"/>
+      <param name="destfile" value="${hamcrest.jar}"/>
+      <param name="destdir" value="${hamcrest.home}"/>
+    </antcall>
+
+  </target>
+
+  <target name="download-test" depends="prepare">
+    <mkdir dir="${base.path}"/>
+    <!-- Derby database
+    <antcall target="downloadgz">
+      <param name="sourcefile" value="${derby.loc}"/>
+      <param name="destfile" value="${derby.jar}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+     -->
+    <antcall target="downloadzip">
+      <param name="sourcefile" value="${h2.loc}"/>
+      <param name="destfile" value="${h2.jar}"/>
+      <param name="destdir" value="${base.path}"/>
+    </antcall>
+    <antcall target="downloadfile">
+      <param name="sourcefile" value="${junit.loc}"/>
+      <param name="destfile" value="${junit.jar}"/>
+      <param name="destdir" value="${junit.home}"/>
+    </antcall>
+    <antcall target="downloadfile">
+      <param name="sourcefile" value="${hamcrest.loc}"/>
+      <param name="destfile" value="${hamcrest.jar}"/>
+      <param name="destdir" value="${hamcrest.home}"/>
+    </antcall>
+  </target>
+
+  <!-- Extract the testdb.* properties and remove the leading testdb. -->
+  <propertyset dynamic="false" id="testdb">
+    <propertyref prefix="testdb"/>
+    <mapper type="regexp" from="^testdb\.(.*)$$" to="\1"/>
+  </propertyset>
+
+  <target name="test" depends="build,build-test">
+    <echo/>
+    <echo>Creating test table for test purposes.</echo>
+
+    <junit printsummary="withOutAndErr" showoutput="on">
+      <syspropertyset refid="testdb"/>
+      <formatter type="brief" usefile="no"/>
+      <classpath refid="tomcat.jdbc.classpath"/>
+      <classpath refid="test.classpath"/>
+      <batchtest fork="yes" todir="${tomcat.testclasses}">
+        <fileset dir="${basedir}/src/test/java">
+          <include name="**/CreateTestTable*"/>
+        </fileset>
+      </batchtest>
+    </junit>
+
+    <echo/>
+    <echo>Performance and fairness tests.</echo>
+    <junit printsummary="withOutAndErr" showoutput="on">
+      <syspropertyset refid="testdb"/>
+      <formatter type="brief" usefile="no"/>
+      <classpath refid="tomcat.jdbc.classpath"/>
+      <classpath refid="test.classpath"/>
+      <batchtest fork="yes" todir="${tomcat.testclasses}">
+        <fileset dir="${basedir}/src/test/java">
+          <include name="org/apache/tomcat/jdbc/test/*CheckOutThreadTest*.java"/>
+          <include name="org/apache/tomcat/jdbc/test/FairnessTest*.java"/>
+          <exclude name="**/CreateTestTable*"/>
+          <exclude name="**/DefaultTestCase*"/>
+        </fileset>
+      </batchtest>
+    </junit>
+
+    <echo/>
+    <echo>Functional tests.</echo>
+    <junit printsummary="yes">
+      <syspropertyset refid="testdb"/>
+      <formatter type="brief" usefile="no"/>
+      <classpath refid="tomcat.jdbc.classpath"/>
+      <classpath refid="test.classpath"/>
+      <batchtest fork="yes" todir="${tomcat.testclasses}">
+        <fileset dir="${basedir}/src/test/java">
+          <include name="org/apache/tomcat/jdbc/test/*Test*.java"/>
+          <exclude name="org/apache/tomcat/jdbc/test/*CheckOutThreadTest*.java"/>
+          <exclude name="**/CreateTestTable*"/>
+          <exclude name="**/DefaultTestCase*"/>
+          <exclude name="**/CheckOutThread*"/>
+          <exclude name="**/Fairness*"/>
+        </fileset>
+      </batchtest>
+    </junit>
+
+  </target>
+
+  <target name="simplebuild" depends="build"/>
+  <target name="clean-and-build" depends="clean,build"/>
+
+  <target name="onetest" depends="build,build-test">
+
+    <echo>Testing:${test}</echo>
+    <junit printsummary="withOutAndErr" showoutput="on">
+      <syspropertyset refid="testdb"/>
+      <formatter type="brief" usefile="no"/>
+      <classpath refid="tomcat.jdbc.classpath"/>
+      <classpath refid="test.classpath"/>
+      <batchtest fork="yes" todir="${tomcat.testclasses}">
+        <fileset dir="${basedir}/src/test/java">
+          <include name="org/apache/tomcat/jdbc/test/*${test}*.java"/>
+          <exclude name="**/CreateTestTable*"/>
+          <exclude name="**/DefaultTestCase*"/>
+        </fileset>
+      </batchtest>
+    </junit>
+
+  </target>
+
+</project>
+

@@ -1,0 +1,16 @@
+1、执行Maven的Locally Install Artifact
+2、调出命令行，进入目录：/spring-batch-example/target
+3、第二章HelloWorld中的命令行：
+	java -classpath "./dependency/*;spring-batch-example-1.0.jar" org.springframework.batch.core.launch.support.CommandLineJobRunner ch02/job/job.xml billJob
+4、控制台输出如下内容：
+2013-03-18 20:29:52,397 INFO [org.springframework.batch.core.job.SimpleStepHandler] - Executing step: [billStep]
+accountID=4047390012345678;name=tom;amount=100.0;date=2013-2-2 12:00:08;address=Lu Jia Zui road
+accountID=4047390012345678;name=tom;amount=320.0;date=2013-2-3 10:35:21;address=Lu Jia Zui road
+accountID=4047390012345678;name=tom;amount=674.7;date=2013-2-6 16:26:49;address=South Linyi road
+accountID=4047390012345678;name=tom;amount=793.2;date=2013-2-9 15:15:37;address=Longyang road
+accountID=4047390012345678;name=tom;amount=360.0;date=2013-2-11 11:12:38;address=Longyang road
+accountID=4047390012345678;name=tom;amount=893.0;date=2013-2-28 20:34:19;address=Hunan road
+
+5、执行ch04/job/job-exitstatus.xml中的billJob任务
+	java -classpath "./dependency/*;spring-batch-example-1.0.jar" org.springframework.batch.core.launch.support.CommandLineJobRunner ch04/job/job-exitstatus.xml billJob inputResource(string)=ch04/data/credit-card-bill-201303.csv outputResource(string)=file:target/ch04/exitstatus/outputFile.csv date(string)=2013/03/18
+	

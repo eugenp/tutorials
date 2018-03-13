@@ -1,0 +1,317 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="source.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <title>Source Organization</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Directory Structure">
+
+    <p><em>The description below uses the variable name $CATALINA_BASE to refer the
+    base directory against which most relative paths are resolved. If you have
+    not configured Tomcat for multiple instances by setting a CATALINA_BASE
+    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
+    the directory into which you have installed Tomcat.</em></p>
+
+<p>A key recommendation of this manual is to separate the directory
+hierarchy containing your source code (described in this section) from
+the directory hierarchy containing your deployable application
+(described in the preceding section).  Maintaining this separation has
+the following advantages:</p>
+<ul>
+<li><p>The contents of the source directories can be more easily administered,
+    moved, and backed up if the "executable" version of the application
+    is not intermixed.
+    </p></li>
+<li><p>Source code control is easier to manage on directories that contain
+    only source files.
+    </p></li>
+<li><p>The files that make up an installable distribution of your
+    application are much easier to select when the deployment
+    hierarchy is separate.</p></li>
+</ul>
+
+<p>As we will see, the <code>ant</code> development tool makes the creation
+and processing of such directory hierarchies nearly painless.</p>
+
+<p>The actual directory and file hierarchy used to contain the source code
+of an application can be pretty much anything you like.  However, the
+following organization has proven to be quite generally applicable, and is
+expected by the example <code>build.xml</code> configuration file that
+is discussed below.  All of these components exist under a top level
+<em>project source directory</em> for your application:</p>
+<ul>
+<li><strong>docs/</strong> - Documentation for your application, in whatever
+    format your development team is using.<br/><br/></li>
+<li><strong>src/</strong> - Java source files that generate the servlets,
+    beans, and other Java classes that are unique to your application.
+    If your source code is organized in packages (<strong>highly</strong>
+    recommended), the package hierarchy should be reflected as a directory
+    structure underneath this directory.<br/><br/></li>
+<li><strong>web/</strong> - The static content of your web site (HTML pages,
+    JSP pages, JavaScript files, CSS stylesheet files, and images) that will
+    be accessible to application clients.  This directory will be the
+    <em>document root</em> of your web application, and any subdirectory
+    structure found here will be reflected in the request URIs required to
+    access those files.<br/><br/></li>
+<li><strong>web/WEB-INF/</strong> - The special configuration files required
+    for your application, including the web application deployment descriptor
+    (<code>web.xml</code>, defined in the
+    <a href="http://wiki.apache.org/tomcat/Specifications">Servlet Specification</a>),
+    tag library descriptors for custom tag libraries
+    you have created, and other resource files you wish to include within
+    your web application.  Even though this directory appears to be a
+    subdirectory of your <em>document root</em>, the Servlet Specification
+    prohibits serving the contents of this directory (or any file it contains)
+    directly to a client request.  Therefore, this is a good place to store
+    configuration information that is sensitive (such as database connection
+    usernames and passwords), but is required for your application to
+    operate successfully.</li>
+</ul>
+
+<p>During the development process, two additional directories will be
+created on a temporary basis:</p>
+<ul>
+<li><strong>build/</strong> - When you execute a default build
+    (<code>ant</code>), this directory will contain an exact image
+    of the files in the web application archive for this application.
+    Tomcat allows you to deploy an application in an unpacked
+    directory like this, either by copying it to the
+    <code>$CATALINA_BASE/webapps</code> directory, or by <em>installing</em>
+    it via the "Manager" web application.  The latter approach is very
+    useful during development, and will be illustrated below.
+    <br/><br/></li>
+<li><strong>dist/</strong> - When you execute the <code>ant dist</code>
+    target, this directory will be created.  It will create an exact image
+    of the binary distribution for your web application, including an license
+    information, documentation, and README files that you have prepared.</li>
+</ul>
+
+<p>Note that these two directories should <strong>NOT</strong> be archived in
+your source code control system, because they are deleted and recreated (from
+scratch) as needed during development.  For that reason, you should not edit
+any source files in these directories if you want to maintain a permanent
+record of the changes, because the changes will be lost the next time that a
+build is performed.</p>
+
+  <subsection name="External Dependencies">
+
+  <p>What do you do if your application requires JAR files (or other
+  resources) from external projects or packages?  A common example is that
+  you need to include a JDBC driver in your web application, in order to
+  operate.</p>
+
+  <p>Different developers take different approaches to this problem.
+  Some will encourage checking a copy of the JAR files you depend on into
+  the source code control archives for every application that requires those
+  JAR files.  However, this can cause significant management issues when you
+  use the same JAR in many applications - particular when faced with a need
+  to upgrade to a different version of that JAR file.</p>
+
+  <p>Therefore, this manual recommends that you <strong>NOT</strong> store
+  a copy of the packages you depend on inside the source control archives
+  of your applications.  Instead, the external dependencies should be
+  integrated as part of the process of <strong>building</strong> your
+  application.  In that way, you can always pick up the appropriate version
+  of the JAR files from wherever your development system administrator has
+  installed them, without having to worry about updating your application
+  every time the version of the dependent JAR file is changed.</p>
+
+  <p>In the example Ant <code>build.xml</code> file, we will demonstrate
+  how to define <em>build properties</em> that let you configure the locations
+  of the files to be copied, without having to modify <code>build.xml</code>
+  when these files change.  The build properties used by a particular
+  developer can be customized on a per-application basis, or defaulted to
+  "standard" build properties stored in the developer's home directory.</p>
+
+  <p>In many cases, your development system administrator will have already
+  installed the required JAR files into the <code>lib</code> directory of Tomcat.
+  If this has been done, you need
+  to take no actions at all - the example <code>build.xml</code> file
+  automatically constructs a compile classpath that includes these files.</p>
+
+  </subsection>
+
+</section>
+
+
+<section name="Source Code Control">
+
+<p>As mentioned earlier, it is highly recommended that you place all of the
+source files that comprise your application under the management of a
+source code control system like the Concurrent Version System (CVS).  If you
+elect to do this, every directory and file in the source hierarchy should be
+registered and saved -- but none of the generated files.  If you register
+binary format files (such as images or JAR libraries), be sure to indicate
+this to your source code control system.</p>
+
+<p>We recommended (in the previous section) that you should not store the
+contents of the <code>build/</code> and <code>dist/</code> directories
+created by your development process in the source code control system.  An
+easy way to tell CVS to ignore these directories is to create a file named
+<code>.cvsignore</code> (note the leading period) in your top-level source
+directory, with the following contents:</p>
+<source>build
+dist
+build.properties</source>
+
+<p>The reason for mentioning <code>build.properties</code> here will be
+explained in the <a href="processes.html">Processes</a> section.</p>
+
+<p>Detailed instructions for your source code control environment are beyond
+the scope of this manual.  However, the following steps are followed when
+using a command-line CVS client:</p>
+<ul>
+<li>To refresh the state of your source code to that stored in the
+    the source repository, go to your project source directory, and
+    execute <code>cvs update -dP</code>.
+    <br/><br/></li>
+<li>When you create a new subdirectory in the source code hierarchy, register
+    it in CVS with a command like <code>cvs add {subdirname}</code>.
+    <br/><br/></li>
+<li>When you first create a new source code file, navigate to the directory
+    that contains it, and register the new file with a command like
+    <code>cvs add {filename}</code>.
+    <br/><br/></li>
+<li>If you no longer need a particular source code file, navigate to the
+    containing directory and remove the file.  Then, deregister it in CVS
+    with a command like <code>cvs remove {filename}</code>.
+    <br/><br/></li>
+<li>While you are creating, modifying, and deleting source files, changes
+    are not yet reflected in the server repository.  To save your changes in
+    their current state, go to the project source directory
+    and execute <code>cvs commit</code>.  You will be asked to write a brief
+    description of the changes you have just completed, which will be stored
+    with the new version of any updated source file.</li>
+</ul>
+
+<p>CVS, like other source code control systems, has many additional features
+(such as the ability to tag the files that made up a particular release, and
+support for multiple development branches that can later be merged).  See the
+links and references in the <a href="introduction.html">Introduction</a> for
+more information.</p>
+
+</section>
+
+
+<section name="BUILD.XML Configuration File">
+
+<p>We will be using the <strong>ant</strong> tool to manage the compilation of
+our Java source code files, and creation of the deployment hierarchy.  Ant
+operates under the control of a build file, normally called
+<code>build.xml</code>, that defines the processing steps required.  This
+file is stored in the top-level directory of your source code hierarchy, and
+should be checked in to your source code control system.</p>
+
+<p>Like a Makefile, the <code>build.xml</code> file provides several
+"targets" that support optional development activities (such as creating
+the associated Javadoc documentation, erasing the deployment home directory
+so you can build your project from scratch, or creating the web application
+archive file so you can distribute your application.  A well-constructed
+<code>build.xml</code> file will contain internal documentation describing
+the targets that are designed for use by the developer, versus those targets
+used internally.  To ask Ant to display the project documentation, change to
+the directory containing the <code>build.xml</code> file and type:</p>
+<source>ant -projecthelp</source>
+
+<p>To give you a head start, a <a href="build.xml.txt">basic build.xml file</a>
+is provided that you can customize and install in the project source directory
+for your application.  This file includes comments that describe the various
+targets that can be executed.  Briefly, the following targets are generally
+provided:</p>
+<ul>
+<li><strong>clean</strong> - This target deletes any existing
+    <code>build</code> and <code>dist</code> directories, so that they
+    can be reconstructed from scratch.  This allows you to guarantee that
+    you have not made source code modifications that will result in
+    problems at runtime due to not recompiling all affected classes.
+    <br/><br/></li>
+<li><strong>compile</strong> - This target is used to compile any source code
+    that has been changed since the last time compilation took place.  The
+    resulting class files are created in the <code>WEB-INF/classes</code>
+    subdirectory of your <code>build</code> directory, exactly where the
+    structure of a web application requires them to be.  Because
+    this command is executed so often during development, it is normally
+    made the "default" target so that a simple <code>ant</code> command will
+    execute it.
+    <br/><br/></li>
+<li><strong>all</strong> - This target is a short cut for running the
+    <code>clean</code> target, followed by the <code>compile</code> target.
+    Thus, it guarantees that you will recompile the entire application, to
+    ensure that you have not unknowingly introduced any incompatible changes.
+    <br/><br/></li>
+<li><strong>javadoc</strong> - This target creates Javadoc API documentation
+    for the Java classes in this web application.  The example
+    <code>build.xml</code> file assumes you want to include the API
+    documentation with your app distribution, so it generates the docs
+    in a subdirectory of the <code>dist</code> directory.  Because you normally
+    do not need to generate the Javadocs on every compilation, this target is
+    usually a dependency of the <code>dist</code> target, but not of the
+    <code>compile</code> target.
+    <br/><br/></li>
+<li><strong>dist</strong> - This target creates a distribution directory for
+    your application, including any required documentation, the Javadocs for
+    your Java classes, and a web application archive (WAR) file that will be
+    delivered to system administrators who wish to install your application.
+    Because this target also depends on the <code>deploy</code> target, the
+    web application archive will have also picked up any external dependencies
+    that were included at deployment time.</li>
+</ul>
+
+<p>For interactive development and testing of your web application using
+Tomcat, the following additional targets are defined:</p>
+<ul>
+<li><strong>install</strong> - Tell the currently running Tomcat to make
+    the application you are developing immediately available for execution
+    and testing.  This action does not require Tomcat to be restarted, but
+    it is also not remembered after Tomcat is restarted the next time.
+    <br/><br/></li>
+<li><strong>reload</strong> - Once the application is installed, you can
+    continue to make changes and recompile using the <code>compile</code>
+    target.  Tomcat will automatically recognize changes made to JSP pages,
+    but not to servlet or JavaBean classes - this command will tell Tomcat
+    to restart the currently installed application so that such changes are
+    recognized.
+    <br/><br/></li>
+<li><strong>remove</strong> - When you have completed your development and
+    testing activities, you can optionally tell Tomcat to remove this
+    application from service.
+    </li>
+</ul>
+
+<p>Using the development and testing targets requires some additional
+one-time setup that is described on the next page.</p>
+
+</section>
+
+
+</body>
+</document>

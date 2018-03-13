@@ -1,0 +1,602 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean         name="DataSourceRealm"
+            className="org.apache.catalina.mbeans.ClassNameMBean"
+          description="Implementation of Realm that works with any JNDI configured DataSource"
+               domain="Catalina"
+                group="Realm"
+                 type="org.apache.catalina.realm.DataSourceRealm">
+                
+    <attribute   name="allRolesMode"
+          description="The all roles mode."
+                 type="java.lang.String"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="dataSourceName"
+          description="The JNDI named JDBC DataSource for your database"
+                 type="java.lang.String"/>
+
+    <attribute   name="digest"
+          description="Digest algorithm used in storing passwords in a non-plaintext format"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="digestEncoding"
+          description="The digest encoding charset."
+                 type="java.lang.String"/>       
+
+    <attribute   name="localDataSource"
+          description="Configures if the DataSource is local to the webapp"
+                 type="boolean"/>
+                 
+    <attribute   name="realmPath"
+          description="The realm path"
+                 type="java.lang.String"/>
+
+    <attribute   name="roleNameCol"
+          description="The column in the user role table that names a role"
+                 type="java.lang.String"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="userCredCol"
+          description="The column in the user table that holds the user's credentials"
+                 type="java.lang.String"/>
+
+    <attribute   name="userNameCol"
+          description="The column in the user table that holds the user's username"
+                 type="java.lang.String"/>
+
+    <attribute   name="userRoleTable"
+          description="The table that holds the relation between user's and roles"
+                 type="java.lang.String"/>
+
+    <attribute   name="userTable"
+          description="The table that holds user data"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="validate"
+          description="The 'validate certificate chains' flag."
+                 type="boolean"/>
+
+
+    <operation name="start" description="Start" impact="ACTION" returnType="void" />
+    <operation name="stop" description="Stop" impact="ACTION" returnType="void" />
+    <operation name="init" description="Init" impact="ACTION" returnType="void" />
+    <operation name="destroy" description="Destroy" impact="ACTION" returnType="void" />
+
+  </mbean>
+
+  <mbean         name="JAASRealm"
+          description="Implementation of Realm that authenticates users via the Java Authentication and Authorization Service (JAAS)"
+               domain="Catalina"
+                group="Realm"
+                 type="org.apache.catalina.realm.JAASRealm">
+                 
+    <attribute   name="allRolesMode"
+          description="The all roles mode."
+                 type="java.lang.String"/>
+
+    <attribute   name="appName"
+          description="The application name passed to the JAAS LoginContext, which uses it to select the set of relevant LoginModules"
+                 type="java.lang.String"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="digest"
+          description="Digest algorithm used in storing passwords in a non-plaintext format"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="digestEncoding"
+          description="The digest encoding charset."
+                 type="java.lang.String"/>
+
+    <attribute   name="roleClassNames"
+          description="Comma-delimited list of javax.security.Principal classes that represent security roles"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="realmPath"
+          description="The realm path"
+                 type="java.lang.String"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="userClassNames"
+          description="Comma-delimited list of javax.security.Principal classes that represent individual users"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="useContextClassLoader"
+          description="Sets whether to use the context or default ClassLoader."
+                   is="true"
+                 type="boolean"/>
+
+    <attribute   name="validate"
+          description="Should we validate client certificate chains when they are presented?"
+                 type="boolean"/>
+
+
+    <operation name="start" description="Start" impact="ACTION" returnType="void" />
+    <operation name="stop" description="Stop" impact="ACTION" returnType="void" />
+    <operation name="init" description="Init" impact="ACTION" returnType="void" />
+    <operation name="destroy" description="Destroy" impact="ACTION" returnType="void" />
+  </mbean>
+
+
+  <mbean         name="JDBCRealm"
+          description="Implementation of Realm that works with any JDBC supported database"
+               domain="Catalina"
+                group="Realm"
+                 type="org.apache.catalina.realm.JDBCRealm">
+                 
+    <attribute   name="allRolesMode"
+          description="The all roles mode."
+                 type="java.lang.String"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="connectionName"
+          description="The connection username to use when trying to connect to the database"
+                 type="java.lang.String"/>
+
+    <attribute   name="connectionPassword"
+          description="The connection password to use when trying to connect to the database"
+                 type="java.lang.String"/>
+
+    <attribute   name="connectionURL"
+          description="The connection URL to use when trying to connect to the database"
+                 type="java.lang.String"/>
+
+    <attribute   name="digest"
+          description="Digest algorithm used in storing passwords in a non-plaintext format"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="digestEncoding"
+          description="The digest encoding charset."
+                 type="java.lang.String"/>
+
+    <attribute   name="driverName"
+          description="The JDBC driver to use"
+                 type="java.lang.String"/>
+
+    <attribute   name="roleNameCol"
+          description="The column in the user role table that names a role"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="realmPath"
+          description="The realm path"
+                 type="java.lang.String"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="userCredCol"
+          description="The column in the user table that holds the user's credentials"
+                 type="java.lang.String"/>
+
+    <attribute   name="userNameCol"
+          description="The column in the user table that holds the user's username"
+                 type="java.lang.String"/>
+
+    <attribute   name="userRoleTable"
+          description="The table that holds the relation between user's and roles"
+                 type="java.lang.String"/>
+
+    <attribute   name="userTable"
+          description="The table that holds user data"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="validate"
+          description="The 'validate certificate chains' flag."
+                 type="boolean"/>
+
+
+    <operation name="start" description="Start" impact="ACTION" returnType="void" />
+    <operation name="stop" description="Stop" impact="ACTION" returnType="void" />
+    <operation name="init" description="Init" impact="ACTION" returnType="void" />
+    <operation name="destroy" description="Destroy" impact="ACTION" returnType="void" />
+  </mbean>
+
+  <mbean         name="JNDIRealm"
+          description="Implementation of Realm that works with a directory server accessed via the Java Naming and Directory Interface (JNDI) APIs"
+               domain="Catalina"
+                group="Realm"
+                 type="org.apache.catalina.realm.JNDIRealm">
+                 
+    <attribute   name="adCompat"
+          description=" The current settings for handling PartialResultExceptions"
+                 type="boolean"/>
+                 
+    <attribute   name="allRolesMode"
+          description="The all roles mode."
+                 type="java.lang.String"/>
+
+    <attribute   name="alternateURL"
+          description="The Alternate URL"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="authentication"
+          description="The type of authentication to use"
+                 type="java.lang.String"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+            
+    <attribute   name="commonRole"
+          description="The common role"
+                 type="java.lang.String"/>
+
+    <attribute   name="connectionName"
+          description="The connection username for the server we will contact"
+                 type="java.lang.String"/>
+
+    <attribute   name="connectionPassword"
+          description="The connection password for the server we will contact"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="connectionTimeout"
+          description="The connection timeout"
+                 type="java.lang.String"/>
+
+    <attribute   name="connectionURL"
+          description="The connection URL for the server we will contact"
+                 type="java.lang.String"/>
+
+    <attribute   name="contextFactory"
+          description="The JNDI context factory for this Realm"
+                 type="java.lang.String"/>
+
+    <attribute   name="digest"
+          description="Digest algorithm used in storing passwords in a non-plaintext format"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="digestEncoding"
+          description="The digest encoding charset."
+                 type="java.lang.String"/>
+                 
+    <attribute   name="protocol"
+          description="The protocol to be used"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="realmPath"
+          description="The realm path"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="referrals"
+          description="The current setting for handling JNDI referrals."
+                 type="java.lang.String"/>
+
+    <attribute   name="roleBase"
+          description="The base element for role searches"
+                 type="java.lang.String"/>
+
+    <attribute   name="roleName"
+          description="The name of the attribute containing roles held elsewhere"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="roleNested"
+          description="The 'The nested group search flag' flag"
+                 type="boolean"/>
+
+    <attribute   name="roleSearch"
+          description="The message format used to select roles for a user"
+                 type="java.lang.String"/>
+
+    <attribute   name="roleSearchAsUser"
+          description="Should the search for user roles be performed as the authenticating user?"
+                   is="true"
+                 type="boolean"/>
+
+    <attribute   name="roleSubtree"
+          description="Should we search the entire subtree for matching memberships?"
+                 type="boolean"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="userBase"
+          description="The base element for user searches"
+                 type="java.lang.String"/>
+
+    <attribute   name="userPassword"
+          description="The attribute name used to retrieve the user password"
+                 type="java.lang.String"/>
+
+    <attribute   name="userPattern"
+          description="The message format used to select a user"
+                 type="java.lang.String"/>
+
+    <attribute   name="userRoleName"
+          description="The name of the attribute in the user's entry containing roles for that user"
+                 type="java.lang.String"/>
+
+    <attribute   name="userSearch"
+          description="The message format used to search for a user"
+                 type="java.lang.String"/>
+
+    <attribute   name="userSearchAsUser"
+          description="Should the search for the user's DN be performed as the authenticating user?"
+                   is="true"
+                 type="boolean"/>
+
+    <attribute   name="userSubtree"
+          description="Should we search the entire subtree for matching users?"
+                 type="boolean"/>
+                 
+    <attribute   name="validate"
+          description="The 'validate certificate chains' flag."
+                 type="boolean"/>
+
+
+    <operation name="start" description="Start" impact="ACTION" returnType="void" />
+    <operation name="stop" description="Stop" impact="ACTION" returnType="void" />
+    <operation name="init" description="Init" impact="ACTION" returnType="void" />
+    <operation name="destroy" description="Destroy" impact="ACTION" returnType="void" />
+  </mbean>
+
+  <mbean         name="MemoryRealm"
+          description="Simple implementation of Realm that reads an XML file to configure the valid users, passwords, and roles"
+               domain="Catalina"
+                group="Realm"
+                 type="org.apache.catalina.realm.MemoryRealm">
+                 
+    <attribute   name="allRolesMode"
+          description="The all roles mode."
+                 type="java.lang.String"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+            
+    <attribute   name="digest"
+          description="Digest algorithm used in storing passwords in a non-plaintext format"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="digestEncoding"
+          description="The digest encoding charset."
+                 type="java.lang.String"/>
+
+    <attribute   name="pathname"
+          description="The pathname of the XML file containing our database information"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="realmPath"
+          description="The realm path"
+                 type="java.lang.String"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="validate"
+          description="The 'validate certificate chains' flag."
+                 type="boolean"/>
+
+    <operation name="start" description="Start" impact="ACTION" returnType="void" />
+    <operation name="stop" description="Stop" impact="ACTION" returnType="void" />
+    <operation name="init" description="Init" impact="ACTION" returnType="void" />
+    <operation name="destroy" description="Destroy" impact="ACTION" returnType="void" />
+
+  </mbean>
+
+  <mbean         name="UserDatabaseRealm"
+          description="Realm connected to a UserDatabase as a global JNDI resource"
+               domain="Catalina"
+                group="Realm"
+                 type="org.apache.catalina.realm.UserDatabaseRealm">
+                 
+    <attribute   name="allRolesMode"
+          description="The all roles mode."
+                 type="java.lang.String"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+            
+    <attribute   name="digest"
+          description="Digest algorithm used in storing passwords in a non-plaintext format"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="digestEncoding"
+          description="The digest encoding charset."
+                 type="java.lang.String"/>
+
+    <attribute   name="resourceName"
+          description="The global JNDI name of the UserDatabase resource to use"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="realmPath"
+          description="The realm path"
+                 type="java.lang.String"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="validate"
+          description="The 'validate certificate chains' flag."
+                 type="boolean"/>
+                 
+    <operation name="start" description="Start" impact="ACTION" returnType="void" />
+    <operation name="stop" description="Stop" impact="ACTION" returnType="void" />
+    <operation name="init" description="Init" impact="ACTION" returnType="void" />
+    <operation name="destroy" description="Destroy" impact="ACTION" returnType="void" />
+
+  </mbean>
+
+  <mbean         name="CombinedRealm"
+          description="Realm implementation that can be used to chain multiple realms"
+               domain="Catalina"
+                group="Realm"
+                 type="org.apache.catalina.realm.CombinedRealm">
+                 
+    <attribute   name="allRolesMode"
+          description="The all roles mode."
+                 type="java.lang.String"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+            
+    <attribute   name="digest"
+          description="Digest algorithm used in storing passwords in a non-plaintext format"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="digestEncoding"
+          description="The digest encoding charset."
+                 type="java.lang.String"/>
+
+    <attribute   name="realms"
+          description="The set of realms that the combined realm is wrapping"
+                 type="[Ljavax.management.ObjectName;"
+            writeable="false"/>
+            
+    <attribute   name="realmPath"
+          description="The realm path"
+                 type="java.lang.String"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="validate"
+          description="The 'validate certificate chains' flag."
+                 type="boolean"/>
+
+    <operation   name="addRealm"
+          description="Add a new Realm to the set of Realms wrapped by this realm"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="theRealm"
+                 description="New Realm to add"
+                 type="org.apache.catalina.Realm"/>
+    </operation>
+
+    <operation name="start" description="Start" impact="ACTION" returnType="void" />
+    <operation name="stop" description="Stop" impact="ACTION" returnType="void" />
+    <operation name="init" description="Init" impact="ACTION" returnType="void" />
+    <operation name="destroy" description="Destroy" impact="ACTION" returnType="void" />
+
+  </mbean>
+
+  <mbean         name="LockOutRealm"
+          description="Realm implementation that can be used to wrap existing realms to provide a user lock-out capability"
+               domain="Catalina"
+                group="Realm"
+                 type="org.apache.catalina.realm.LockOutRealm">
+                 
+    <attribute   name="allRolesMode"
+          description="The all roles mode."
+                 type="java.lang.String"/>
+                
+    <attribute   name="cacheSize"
+          description="Number of users that have failed authentication to keep in cache. Over time the cache will grow to this size and may not shrink. Defaults to 1000."
+                 type="int" />
+                 
+    <attribute   name="cacheRemovalWarningTime"
+          description="If a failed user is removed from the cache because the cache is too big before it has been in the cache for at least this period of time (in seconds) a warning message will be logged. Defaults to 3600 (1 hour)."
+                 type="int" />
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+            
+    <attribute   name="digest"
+          description="Digest algorithm used in storing passwords in a non-plaintext format"
+                 type="java.lang.String"/>
+                 
+    <attribute   name="failureCount"
+          description="The number of times in a row a user has to fail authentication to be locked out. Defaults to 5."
+                 type="int" />
+
+    <attribute   name="lockOutTime"
+          description="The time (in seconds) a user is locked out for after too many authentication failures. Defaults to 300 (5 minutes)."
+                 type="int" />
+                 
+    <attribute   name="digestEncoding"
+          description="The digest encoding charset."
+                 type="java.lang.String"/>
+
+    <attribute   name="realms"
+          description="The set of realms that the lockout realm is wrapping"
+                 type="[Ljavax.management.ObjectName;"
+            writeable="false"/>
+            
+    <attribute   name="realmPath"
+          description="The realm path"
+                 type="java.lang.String"/>
+
+    <attribute   name="validate"
+          description="The 'validate certificate chains' flag."
+                 type="boolean"/>
+                 
+    <operation   name="addRealm"
+          description="Add a new Realm to the set of Realms wrapped by this realm"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="theRealm"
+                 description="New Realm to add"
+                 type="org.apache.catalina.Realm"/>
+    </operation>
+
+    <operation   name="unlock"
+          description="Unlock the specified user"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="username"
+                 description="User to unlock"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation name="start" description="Start" impact="ACTION" returnType="void" />
+    <operation name="stop" description="Stop" impact="ACTION" returnType="void" />
+    <operation name="init" description="Init" impact="ACTION" returnType="void" />
+    <operation name="destroy" description="Destroy" impact="ACTION" returnType="void" />
+
+  </mbean>
+
+</mbeans-descriptors>

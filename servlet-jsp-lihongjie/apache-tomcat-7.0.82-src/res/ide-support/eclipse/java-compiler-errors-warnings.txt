@@ -1,0 +1,126 @@
+================================================================================
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+================================================================================
+
+# Java -> Compiler -> Errors/Warnings
+=======================================
+
+The following settings are for Oxygen (Eclipse 4.7)
+W = Warning
+I = Ignore
+E = Error
+
+Code style
+ - Non-static access to static member   - W
+ - Indirect access to static member     - I
+ - Unqualified access to instance field - I
+ - Access to a non-accessible member... - I
+ - Parameter assignment                 - I
+ - Non-externalized strings             - I
+ - Undocumented empty block             - I
+ - Resource not managed via try-with-resource (1.7 or higher)  - I
+ - Method with a constructor name       - W
+ - Method can be static                 - I
+ - Method can potentially be static     - I
+
+Potential programming problems
+ - All                                  - W
+   except the following:
+
+   - Incomplete 'switch' cases on enum    - W
+     [ ] Signal even if 'default' case exists
+   - 'switch' is missing 'default' case   - I
+   - Potential resource leak              - I
+
+Name shadowing and conflicts
+ - Field declaration hides another...   - I
+ - Local variable declaration hides..   - I
+ - Type parameter hides another type    - W
+ - Method does not override...          - W
+ - Interface method conflicts...        - W
+
+Deprecated and restricted API
+ - Deprecated API                       - W
+   ([ ] on all additional check boxes)
+ - Forbidden references                 - E
+ - Discouraged reference                - W
+
+Unnecessary code
+ - All                                  - W
+   ([x] on all additional check boxes)
+   except the following:
+
+   - Value of exception parameter is...   - I
+   - Unnecessary else                     - I
+
+Generic types
+ - All                                  - W
+   [ ] Ignore unavoidable generic type problems
+
+Annotations
+ - All                                  - W
+   ([x] on all additional check boxes)
+
+Null analysis
+ - Null pointer access                  - W
+ - Potential null pointer access        - W
+ - Redundant null check                 - W
+   [ ] Include 'assert' in null analysis
+   [ ] Enable annotation-based null analysis
+
+Note: The list of codes supported in @SuppressWarnings annotation in
+Eclipse IDE is documented here:
+
+ 3.6: http://help.eclipse.org/helios/topic/org.eclipse.jdt.doc.isv/guide/jdt_api_compile.htm
+ 3.7: http://help.eclipse.org/indigo/topic/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm
+ 4.2: http://help.eclipse.org/juno/topic/org.eclipse.jdt.doc.user/tasks/task-suppress_warnings.htm
+
+
+# Java -> Compiler -> Javadoc
+=============================
+
+Enable 'Process Javadoc comments'
+  - Malformed Javadoc comments          - W
+    - Only consider members visible as  - Public
+    [X] Validate tag arguments
+        [ ] Report non-visible references
+        [X] Report deprecated references
+    - Missing tag descriptions          - Validate all standard tags
+  - Missing Javadoc tags                - W
+    - Only consider members visible as  - Public
+    [X] - Ignore in overriding and implementing methods
+    [ ] - Ignore method type parameters
+  - Missing Javadoc comments            - I
+
+
+# Java -> Code Style -> Organize Imports
+==========================================
+
+The following configuration of "Organize Imports" setting can be
+recommended for a quick setup. The order is enforced by checkstyle, so for
+the authoritative definition look at <module name="ImportOrder"> in
+res/checkstyle/checkstyle.xml
+
+ - java
+ - javax
+ - async
+ - jsp2
+ - [static] org.junit
+ - org.junit
+ - [static] org
+ - org
+ - com
+ - util

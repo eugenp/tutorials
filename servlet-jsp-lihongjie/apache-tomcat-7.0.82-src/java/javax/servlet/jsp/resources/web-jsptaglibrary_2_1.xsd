@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!--
+  ** This XSD contains only the programatic elements required for an implementation.
+  ** For the XSD from Sun that includes documentation and other copyrighted information
+  ** please refer to http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd for a fully documented and latest
+  **  XSD.
+-->
+
+<xsd:schema targetNamespace="http://java.sun.com/xml/ns/javaee" 
+            xmlns:javaee="http://java.sun.com/xml/ns/javaee" 
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            elementFormDefault="qualified" 
+            attributeFormDefault="unqualified" 
+            version="2.1">
+
+    <xsd:include schemaLocation="javaee_5.xsd" />
+
+    <xsd:element name="taglib" type="javaee:tldTaglibType">
+        <xsd:unique name="tag-name-uniqueness">
+            <xsd:selector xpath="javaee:tag|javaee:tag-file" />
+            <xsd:field xpath="javaee:name" />
+        </xsd:unique>
+
+        <xsd:unique name="function-name-uniqueness">
+            <xsd:selector xpath="javaee:function" />
+            <xsd:field xpath="javaee:name" />
+        </xsd:unique>
+    </xsd:element>
+
+    <xsd:complexType name="body-contentType">
+        <xsd:simpleContent>
+            <xsd:restriction base="javaee:string">
+                <xsd:enumeration value="tagdependent" />
+                <xsd:enumeration value="JSP" />
+                <xsd:enumeration value="empty" />
+                <xsd:enumeration value="scriptless" />
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="extensibleType" abstract="true">
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="functionType">
+        <xsd:sequence>
+            <xsd:group ref="javaee:descriptionGroup" />
+            <xsd:element name="name" type="javaee:tld-canonical-nameType"></xsd:element>
+            <xsd:element name="function-class" type="javaee:fully-qualified-classType"></xsd:element>
+            <xsd:element name="function-signature" type="javaee:string"></xsd:element>
+            <xsd:element name="example" type="javaee:xsdStringType" minOccurs="0"></xsd:element>
+            <xsd:element name="function-extension" type="javaee:tld-extensionType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="tagFileType">
+        <xsd:sequence>
+            <xsd:group ref="javaee:descriptionGroup" />
+            <xsd:element name="name" type="javaee:tld-canonical-nameType" />
+            <xsd:element name="path" type="javaee:pathType" />
+            <xsd:element name="example" type="javaee:xsdStringType" minOccurs="0"></xsd:element>
+            <xsd:element name="tag-extension" type="javaee:tld-extensionType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="tagType">
+        <xsd:sequence>
+            <xsd:group ref="javaee:descriptionGroup" />
+            <xsd:element name="name" type="javaee:tld-canonical-nameType" />
+            <xsd:element name="tag-class" type="javaee:fully-qualified-classType"></xsd:element>
+            <xsd:element name="tei-class" type="javaee:fully-qualified-classType" minOccurs="0"></xsd:element>
+            <xsd:element name="body-content" type="javaee:body-contentType"></xsd:element>
+            <xsd:element name="variable" type="javaee:variableType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="attribute" type="javaee:tld-attributeType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="dynamic-attributes" type="javaee:generic-booleanType" minOccurs="0" />
+            <xsd:element name="example" type="javaee:xsdStringType" minOccurs="0" />
+            <xsd:element name="tag-extension" type="javaee:tld-extensionType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="tld-attributeType">
+        <xsd:sequence>
+            <xsd:element name="description" type="javaee:descriptionType" minOccurs="0" maxOccurs="unbounded" />
+
+            <xsd:element name="name" type="javaee:java-identifierType" />
+            <xsd:element name="required" type="javaee:generic-booleanType" minOccurs="0"></xsd:element>
+            <xsd:choice>
+
+                <xsd:sequence>
+                    <xsd:sequence minOccurs="0">
+                        <xsd:element name="rtexprvalue" type="javaee:generic-booleanType"></xsd:element>
+
+                        <xsd:element name="type" type="javaee:fully-qualified-classType" minOccurs="0"></xsd:element>
+                    </xsd:sequence>
+
+                    <xsd:choice>
+                        <xsd:element name="deferred-value" type="javaee:tld-deferred-valueType" minOccurs="0"></xsd:element>
+                        <xsd:element name="deferred-method" type="javaee:tld-deferred-methodType" minOccurs="0"></xsd:element>
+                    </xsd:choice>
+                </xsd:sequence>
+
+                <xsd:element name="fragment" type="javaee:generic-booleanType" minOccurs="0"></xsd:element>
+
+            </xsd:choice>
+
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="tld-canonical-nameType">
+        <xsd:simpleContent>
+            <xsd:restriction base="javaee:xsdNMTOKENType" />
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="tld-deferred-methodType">
+        <xsd:sequence>
+            <xsd:element name="method-signature" type="javaee:string" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+
+        <xsd:attribute name="id" type="xsd:ID" />
+
+    </xsd:complexType>
+
+    <xsd:complexType name="tld-deferred-valueType">
+
+        <xsd:sequence>
+            <xsd:element name="type" type="javaee:fully-qualified-classType" minOccurs="0"></xsd:element>
+
+        </xsd:sequence>
+
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="tld-extensionType">
+        <xsd:sequence>
+            <xsd:element name="extension-element" type="javaee:extensibleType" maxOccurs="unbounded" />
+        </xsd:sequence>
+
+        <xsd:attribute name="namespace" use="required" type="xsd:anyURI" />
+        <xsd:attribute name="id" type="xsd:ID" />
+
+    </xsd:complexType>
+
+    <xsd:complexType name="tldTaglibType">
+        <xsd:sequence>
+            <xsd:group ref="javaee:descriptionGroup" />
+            <xsd:element name="tlib-version" type="javaee:dewey-versionType"></xsd:element>
+
+            <xsd:element name="short-name" type="javaee:tld-canonical-nameType">
+
+            </xsd:element>
+
+            <xsd:element name="uri" type="javaee:xsdAnyURIType" minOccurs="0">
+
+            </xsd:element>
+            <xsd:element name="validator" type="javaee:validatorType" minOccurs="0">
+
+            </xsd:element>
+            <xsd:element name="listener" type="javaee:listenerType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+            <xsd:element name="tag" type="javaee:tagType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="tag-file" type="javaee:tagFileType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="function" type="javaee:functionType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="taglib-extension" type="javaee:tld-extensionType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="version" type="javaee:dewey-versionType" fixed="2.1" use="required"></xsd:attribute>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="validatorType">
+        <xsd:sequence>
+            <xsd:element name="description" type="javaee:descriptionType" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="validator-class" type="javaee:fully-qualified-classType"></xsd:element>
+            <xsd:element name="init-param" type="javaee:param-valueType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+
+    <xsd:complexType name="variable-scopeType">
+        <xsd:simpleContent>
+
+            <xsd:restriction base="javaee:string">
+                <xsd:enumeration value="NESTED" />
+                <xsd:enumeration value="AT_BEGIN" />
+                <xsd:enumeration value="AT_END" />
+            </xsd:restriction>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="variableType">
+        <xsd:sequence>
+            <xsd:element name="description" type="javaee:descriptionType" minOccurs="0" maxOccurs="unbounded" />
+
+            <xsd:choice>
+                <xsd:element name="name-given" type="javaee:java-identifierType"></xsd:element>
+
+                <xsd:element name="name-from-attribute" type="javaee:java-identifierType"></xsd:element>
+            </xsd:choice>
+            <xsd:element name="variable-class" type="javaee:fully-qualified-classType" minOccurs="0"></xsd:element>
+
+            <xsd:element name="declare" type="javaee:generic-booleanType" minOccurs="0"></xsd:element>
+            <xsd:element name="scope" type="javaee:variable-scopeType" minOccurs="0"></xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:ID" />
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,525 @@
+================================================================================
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+================================================================================
+
+            ====================================================
+            Building The Apache Tomcat @VERSION_MAJOR_MINOR@ Servlet/JSP Container
+            ====================================================
+
+This subproject contains the source code for Tomcat @VERSION_MAJOR_MINOR@, a container that
+implements the Servlet 3.0, JSP 2.2, EL 2.2 and WebSocket 1.1 specifications
+from the Java Community Process <http://www.jcp.org/>.
+
+Note: If you just need to run Apache Tomcat, it is not necessary to build
+it. You may simply download a binary distribution. It is cross-platform.
+Read RUNNING.txt for the instruction on how to run it.
+
+In order to build a binary distribution version of Apache Tomcat from a
+source distribution, do the following:
+
+
+(1) Download and Install a Java 6 and Java 7 Development Kit
+
+ 1. If the JDKs are already installed, skip to (2).
+
+ 2. Download a version 6 of the Java Development Kit (JDK) release (use the
+    latest update available for your chosen version) from
+
+        http://www.oracle.com/technetwork/java/javase/downloads/index.html
+        or from another JDK vendor.
+
+    Note regarding later versions of Java:
+
+      As documented elsewhere, one of the components in Apache Tomcat includes
+      a private copy of the Apache Commons DBCP library. The source code
+      for this library is downloaded, processed by the build script
+      (renaming the packages) and compiled.
+
+      Due to changes in JDBC interfaces implemented by the library between
+      versions of Java SE specification, the library has to target specific
+      version of Java and can be compiled only with the JDK version
+      implementing this version of specification. Therefore, the build Tomcat
+      build process must be executed with a Java 6 JDK.
+
+      See Apache Commons DBCP project web site for more details on
+      available versions of the library and its requirements,
+
+        http://commons.apache.org/dbcp/
+
+      If you really want to use a later version of JDK to build Tomcat,
+      several workarounds are possible. One of them is to skip building
+      the component (tomcat-dbcp.jar).
+
+ 3. Install the Java 6 JDK according to the instructions included with the
+    release.
+
+ 4. Set an environment variable JAVA_HOME to the pathname of the directory
+    into which you installed the JDK release.
+
+ 5. Download a version 7 of the Java Development Kit (JDK) release (use the
+    latest update available for your chosen version) from
+
+        http://www.oracle.com/technetwork/java/javase/downloads/index.html
+        or from another JDK vendor.
+
+ 6. Install the Java 7 JDK according to the instructions included with the
+    release.
+
+* NOTE: The Java 7 JDK is only required if you wish to build Tomcat with
+  JSR-356 (Java WebSocket 1.1) support.
+
+
+(2) Install Apache Ant version 1.8.2 or later on your computer
+
+ 1. If Apache Ant version 1.8.2 or later is already installed on your computer, skip to (3).
+
+ 2. Download a binary distribution of Ant from:
+
+        http://ant.apache.org/bindownload.cgi
+
+ 3. Unpack the binary distribution into a convenient location so that the
+    Ant release resides in its own directory (conventionally named
+    "apache-ant-[version]").
+
+    For the purposes of the remainder of this document, the symbolic name
+    "${ant.home}" is used to refer to the full pathname of the release
+    directory.
+
+ 4. Create an ANT_HOME environment variable to point the directory
+    ${ant.home}.
+
+ 5. Modify the PATH environment variable to include the directory
+    ${ant.home}/bin in its list.  This makes the "ant" command line script
+    available, which will be used to actually perform the build.
+
+
+(3) Building Tomcat @VERSION_MAJOR_MINOR@
+
+(3.1) Checkout or obtain the source code for Tomcat @VERSION_MAJOR_MINOR@
+
+Checkout the source using SVN, selecting a tag for released version or
+trunk for the current development code, or download and unpack a source
+package.
+
+ *  Tomcat SVN repository URL:
+
+        http://svn.apache.org/repos/asf/tomcat/tc@VERSION_MAJOR_MINOR@.x/trunk/
+
+ *  Source packages can be downloaded from:
+
+        http://tomcat.apache.org/download-@VERSION_MAJOR@0.cgi
+
+The location where the source has been placed will be further referred as
+${tomcat.source}.
+
+The Tomcat local build process does not modify line-endings. The svn repository
+is configured so that all files will be checked out with the line-ending
+appropriate for the current platform. When using a source package you should
+ensure that you use the source package that has the appropriate line-ending
+for your platform:
+
+  zip    -> CRLF
+  tar.gz -> LF
+
+Note that the release build process does modify line-endings to ensure that
+each release package has the appropriate line-endings.
+
+(3.2) Building
+
+ 1. The build is controlled by creating a ${tomcat.source}/build.properties
+    file.
+
+    It is recommended to always create the file, because of unfortunate
+    default value of base.path property. You may start with the following
+    content for the file:
+
+        # ----- Default Base Path for Dependent Packages -----
+        # Replace this path with the directory path where dependencies binaries
+        # should be downloaded
+        base.path=/home/me/some-place-to-download-to
+
+ 2. Configure base.path property by adding it to the
+    ${tomcat.source}/build.properties file.
+
+    The base.path property specifies the place where Tomcat dependencies
+    required by the build are downloaded. It is recommended to place this
+    directory outside of the source tree, so that you do not waste your
+    time re-downloading the libraries.
+
+* NOTE: The default value of the base.path property configures the build script
+  to download the libraries required to build Tomcat to the
+  ${user.home}/tomcat-build-libs directory.
+
+* NOTE: Users accessing the Internet through a proxy must use the properties
+  file to indicate to Ant the proxy configuration.
+
+  The following properties should be added to the ${tomcat.source}/build.properties
+  file.
+
+        proxy.use=on
+        proxy.host=proxy.domain
+        proxy.port=8080
+        proxy.user=username
+        proxy.password=password
+
+  See Apache Ant documentation for the <setproxy> task for details.
+
+* NOTE: Users wishing to build Tomcat with JSR-356 (Java WebSocket 1.1) support
+  must also set the java.7.home build property to the location of the Java 7 JDK
+  installation.
+
+ 3. Go to the sources directory and run Ant:
+
+        cd ${tomcat.source}
+        ant
+
+    This will execute the "deploy" target in build.xml.
+
+    Once the build has completed successfully, a usable Tomcat installation
+    will have been produced in the ${tomcat.source}/output/build directory,
+    and can be started and stopped with the usual scripts.
+
+    Note that the build includes Tomcat documentation, which can be found
+    in the output/build/webapps/docs directory.
+
+    The path of the output directory can be controlled by specifying the
+    "tomcat.output" property in the build.properties file.
+
+* NOTE: Do not run the build as the root user. Building and running Tomcat
+  does not require root privileges.
+
+
+(4) Updating sources and rebuilding
+
+It is recommended that you regularly update the downloaded Tomcat @VERSION_MAJOR_MINOR@
+sources using your SVN client.
+
+For a quick rebuild of only modified code you can use:
+
+    cd ${tomcat.source}
+    ant
+
+
+(5) Special builds
+
+There are several targets in Tomcat build files that are useful to be
+called separately. They build components that you may want to build
+quickly, or ones that are included in the full release and are not built
+during the default "deploy" build.
+
+(5.1) Building documentation
+
+The documentation web application is built during the default "deploy"
+build.
+
+It can be built quickly by using the following commands:
+
+    cd ${tomcat.source}
+    ant build-docs
+
+The output of this command will be found in the following directory:
+
+    output/build/webapps/docs
+
+
+The API documentation (Javadoc) is built during a "release" build. It is
+easy to build it separately by using the following commands:
+
+    cd ${tomcat.source}
+    ant javadoc
+
+The output of this command will be found in the following directories:
+
+    output/dist/webapps/docs/api
+    output/dist/webapps/docs/elapi
+    output/dist/webapps/docs/jspapi
+    output/dist/webapps/docs/servletapi
+
+
+(5.2) Building the extras (commons-logging, webservices etc.)
+
+These components are documented on the "Additional Components"
+(extras.html) page of documentation. They are built during a "release"
+build.
+
+You can build them by using the following commands:
+
+    cd ${tomcat.source}
+    ant extras
+
+(5.3) Building the embedded packages
+
+These are built during a "release" build.
+
+You can build them by using the following commands:
+
+    cd ${tomcat.source}
+    ant embed
+
+
+(6) Building a full release (as provided via the ASF download pages)
+
+    A full release includes the Windows installer which requires a Windows
+    environment to be available to create it. If not building in a Windows
+    environment, the build scripts assume that Wine is available. If this is not
+    the case, the skip.installer property may be set to skip the creation of the
+    Windows installer.
+
+ 1. Configure GPG, if needed
+
+    If the released artifacts have to be cryptographically signed with a
+    PGP signature, like the official ASF releases are, the following
+    property can be added to the build.properties file:
+
+        # Location of GPG executable (used only for releases)
+        gpg.exec=/path/to/gpg
+
+    You do not need it if you do not plan to sign the release.
+
+    If "gpg.exec" property does not point to an existing file, it will be
+    ignored and this feature will be disabled.
+
+    You will be prompted for the GPG passphrase when the release build
+    starts, unless "gpg.passphrase" property is set.
+
+ 2. Build the release:
+
+    cd ${tomcat.source}
+    ant release
+
+
+(7) Tests
+
+(7.1) Running Tomcat tests
+
+Tomcat includes a number of junit tests. The tests are not run when a
+release is built. There is separate command to run them.
+
+To run the testsuite use the following command:
+
+    cd ${tomcat.source}
+    ant test
+
+It is advisable to redirect output of the above command to a file for later
+inspection.
+
+The JUnit reports generated by the tests will be written to the following
+directory:
+
+    output/build/logs
+
+By default the testsuite is run three times to test 3 different
+implementations of Tomcat connectors: BIO, NIO and APR. (If you are not
+familiar with Tomcat connectors, see config/http.html in documentation for
+details).
+
+The 3 runs are enabled and disabled individually by the following
+properties, which all are "true" by default:
+
+    execute.test.bio=true
+    execute.test.nio=true
+    execute.test.apr=true
+
+The APR connector can be tested only if Tomcat-Native library binaries are
+found by the testsuite. The "test.apr.loc" property specifies the directory
+where the library binaries are located.
+
+By default the "test.apr.loc" property specifies the following location:
+
+    output/build/bin/native/
+
+If you are on Windows and want to test the APR connector you can put the
+tcnative-1.dll file into ${tomcat.source}/bin/native/ and it will be copied
+into the above directory when the build runs.
+
+* NOTE: If you configured the build to use a Java 7 JDK (if the
+"java.7.home" property has been defined) the tests will be run with Java 7.
+
+The version of Java that was actually used to run the tests is reported by
+"org.apache.catalina.util.TestServerInfo" test class.
+
+
+(7.2) Running a single test
+
+It is possible to run a single JUnit test class by adding the "test.entry"
+property to the build.properties file. The property specifies the name of
+the test class.
+
+For example:
+
+    test.entry=org.apache.catalina.util.TestServerInfo
+
+It is possible to further limit such run to a number of selected test
+methods by adding "test.entry.methods" property. The property specifies a
+comma-separated list of test case methods.
+
+For example:
+
+    test.entry=org.apache.el.lang.TestELArithmetic
+    test.entry.methods=testMultiply01,testMultiply02
+
+
+(7.3) Running a set of tests
+
+It is possible to run a set of JUnit test classes by adding the "test.name"
+property to the build.properties file. The property specifies an Ant
+includes pattern for the fileset of test class files to run.
+
+The default value is "**/Test*.java", so all test classes are being
+executed (with few exceptions - see build.xml for several exclude patterns).
+
+You can include multiple patterns by concatenating them with a comma (",")
+as the separator.
+
+For example:
+
+    test.name=**/TestSsl.java,**/TestWebSocketFrameClientSSL.java
+
+You can exclude specific JUnit test classes by adding the "test.exclude"
+property to the build.properties file. The property specifies an Ant
+excludes pattern for the fileset of test class files to exclude form the run.
+The default value is empty, so no classes are excluded. The syntax is the same
+as for the property "test.name".
+
+
+(7.4) Other configuration options
+
+ 1. It is possible to configure the directory where JUnit reports are
+ written to. It is configured by "test.reports" property. The default
+ value is
+
+        output/build/logs
+
+ 2. It is possible to enable generation of access log file when the tests
+ are run. This is off by default and can be enabled by the following
+ property:
+
+        test.accesslog=true
+
+ The "access_log.<date>" file will be written to the same directory as
+ JUnit reports,
+
+        output/build/logs
+
+ 3. The testsuite respects logging configuration as configured by
+ ${tomcat.source}/conf/logging.properties
+
+ The log files will be written to the temporary directory used by the
+ tests,
+
+        output/test-tmp/logs
+
+ 4. It is possible to configure formatter used by JUnit reports.
+ Configuration properties are "junit.formatter.type",
+ "junit.formatter.extension" and "junit.formatter.usefile".
+
+ For example the following property disables generation of separate report
+ files:
+
+        junit.formatter.usefile=false
+
+ 5. Optional support is provided for the Cobertura code coverage tool.
+
+* NOTE: Cobertura is licensed under GPL v2 with parts of it being under
+  Apache License v1.1. See http://cobertura.sf.net for details. Using it
+  during Tomcat build is optional and is off by default.
+
+ Cobertura can be enabled using the following property:
+
+        test.cobertura=true
+
+ The report files by default are written to
+
+        output/coverage
+
+ 6. The performance tests are written to run reasonably powerful machines (such
+    as a developer may use day to day) assuming no other resource hungry
+    processes are running.
+
+    These assumptions are not always true (e.g. on CI systems running in a
+    virtual machine) so the performance tests may be disabled by using the
+    following property:
+
+        test.excludePerformance=true
+
+ 7. Some tests include checks that the access log valve entries are as expected.
+    These checks include timings. On slower / loaded systems these checks will
+    often fail. The checks may be relaxed by using the following property:
+
+        test.relaxTiming=true
+
+ 8. It is known that some platforms (e.g. OSX El Capitan) require IPv4 to
+    be the default for the multicast tests to work. This is configured by
+    the following property:
+
+        java.net.preferIPv4Stack=true
+
+ 9. It is possible to control whether the output of the tests is displayed
+    on the console or not. By default it is displayed and can be disabled
+    by the following property:
+
+        test.verbose=true
+
+(8) Source code checks
+
+(8.1) Checkstyle
+
+* NOTE: Checkstyle is licensed under LGPL. Using Checkstyle during Tomcat
+  build is optional and is off by default.
+
+      See http://checkstyle.sourceforge.net/ for more information.
+
+Tomcat comes with a Checkstyle configuration that tests its source code
+for certain conventions, like presence of the license header.
+
+To enable Checkstyle, add the following property to build.properties file:
+
+    execute.validate=true
+
+Once Checkstyle is enabled, the check will be performed automatically
+during the build. The check is run before compilation of the source code.
+
+To speed-up repeated runs of this check, a cache is configured. The cache
+is located in the following directory:
+
+    output/res/checkstyle
+
+It is possible to run the check separately by calling the "validate"
+target. The command is:
+
+    cd ${tomcat.source}
+    ant -Dexecute.validate=true validate
+
+
+(8.2) End-of-line conventions check
+
+You usually would not need to run this check. You can skip this section.
+
+Apache Tomcat project has convention that all of its textual source files,
+stored in Subversion repository, are marked with Subversion property
+"svn:eol-style" with value of "native". This convention makes the editing
+of source code on different platforms easier.
+
+This test is used by developers to check that the source code adheres to
+this convention. It verifies that the ends of lines in textual files are
+appropriate for the operating system where it is run. The idea is to run
+this check regularly on two different platforms and notify developers when
+an inconsistency is detected.
+
+The command to run this test is:
+
+    cd ${tomcat.source}
+    ant validate-eoln

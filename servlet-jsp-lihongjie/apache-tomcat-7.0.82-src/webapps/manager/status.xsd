@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="status">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="jvm" type="jvm"/>
+                <xs:element name="connector" type="connector" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="connector">
+        <xs:sequence>
+            <xs:element name="threadInfo" type="threadInfo"/>
+            <xs:element name="requestInfo" type="requestInfo"/>
+            <xs:element name="workers" type="workers"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="jvm">
+        <xs:sequence>
+            <xs:element name="memory" type="memory"/>
+            <xs:element name="memorypool" type="memorypool" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="memory">
+        <xs:attribute name="free" type="xs:long" use="required"/>
+        <xs:attribute name="total" type="xs:long" use="required"/>
+        <xs:attribute name="max" type="xs:long" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="memorypool">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="xs:string" use="required"/>
+        <xs:attribute name="usageInit" type="xs:long" use="required"/>
+        <xs:attribute name="usageCommitted" type="xs:long" use="required"/>
+        <xs:attribute name="usageMax" type="xs:long" use="required"/>
+        <xs:attribute name="usageUsed" type="xs:long" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="requestInfo">
+        <xs:attribute name="maxTime" type="xs:long" use="required"/>
+        <xs:attribute name="processingTime" type="xs:int" use="required"/>
+        <xs:attribute name="requestCount" type="xs:long" use="required"/>
+        <xs:attribute name="errorCount" type="xs:long" use="required"/>
+        <xs:attribute name="bytesReceived" type="xs:long" use="required"/>
+        <xs:attribute name="bytesSent" type="xs:long" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="threadInfo">
+        <xs:attribute name="maxThreads" type="xs:int" use="required"/>
+        <xs:attribute name="currentThreadCount" type="xs:int" use="required"/>
+        <xs:attribute name="currentThreadsBusy" type="xs:int" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="worker">
+        <xs:attribute name="stage" type="xs:string" use="required"/>
+        <xs:attribute name="requestProcessingTime" type="xs:int" use="required"/>
+        <xs:attribute name="requestBytesSent" type="xs:long" use="required"/>
+        <xs:attribute name="requestBytesReceived" type="xs:long" use="required"/>
+        <xs:attribute name="remoteAddr" type="xs:string" use="required"/>
+        <xs:attribute name="virtualHost" type="xs:string" use="required"/>
+        <xs:attribute name="method" type="xs:string" use="required"/>
+        <xs:attribute name="currentUri" type="xs:string" use="required"/>
+        <xs:attribute name="currentQueryString" type="xs:string" use="required"/>
+        <xs:attribute name="protocol" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="workers">
+        <xs:sequence>
+            <xs:element name="worker" type="worker" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

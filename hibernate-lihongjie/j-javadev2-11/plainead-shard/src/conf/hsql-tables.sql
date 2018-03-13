@@ -1,0 +1,50 @@
+DROP TABLE race_result if EXISTS;
+DROP TABLE race_participants if EXISTS;
+DROP TABLE runner IF EXISTS;
+DROP TABLE race IF EXISTS;
+
+CREATE TABLE race (
+  RACE_ID bigint default '0' NOT NULL,
+  NAME varchar(100) default ''  NOT NULL,
+  DISTANCE DOUBLE default '0.0' NOT NULL,
+  DATE date NOT NULL,
+  DESCRIPTION varchar(500),
+  PRIMARY KEY  (RACE_ID),
+  UNIQUE (NAME)
+);
+
+CREATE TABLE runner (
+  RUNNER_ID bigint default '0' NOT NULL,
+  FIRST_NAME varchar(200) NOT NULL,
+  LAST_NAME varchar(200) NOT NULL,
+  AGE INTEGER NOT NULL,
+  PRIMARY KEY  (RUNNER_ID)
+);
+
+CREATE TABLE race_participants (
+   RACE_ID bigint default '0' NOT NULL,
+   RUNNER_ID bigint default '0' NOT NULL,
+   PRIMARY KEY  (RACE_ID, RUNNER_ID),
+   FOREIGN KEY (RUNNER_ID) REFERENCES runner(RUNNER_ID) 
+  	ON DELETE CASCADE
+  	ON UPDATE CASCADE,
+   FOREIGN KEY (RACE_ID) REFERENCES race(RACE_ID)
+  	ON DELETE CASCADE
+  	ON UPDATE CASCADE
+);
+
+CREATE TABLE race_result (
+   RACE_ID bigint default '0' NOT NULL,
+   RUNNER_ID bigint default '0' NOT NULL,
+   TIME decimal default '0.0' NOT NULL,
+   PLACE int default '0' NOT NULL,
+   PRIMARY KEY  (RACE_ID, RUNNER_ID),
+   FOREIGN KEY (RUNNER_ID) REFERENCES runner(RUNNER_ID)
+  	ON DELETE CASCADE
+  	ON UPDATE CASCADE,
+   FOREIGN KEY (RACE_ID) REFERENCES race(RACE_ID)
+  	ON DELETE CASCADE
+  	ON UPDATE CASCADE
+);
+
+commit;

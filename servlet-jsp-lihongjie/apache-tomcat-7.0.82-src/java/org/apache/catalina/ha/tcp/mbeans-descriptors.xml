@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE mbeans-descriptors PUBLIC
+   "-//Apache Software Foundation//DTD Model MBeans Configuration File"
+   "http://jakarta.apache.org/commons/dtds/mbeans-descriptors.dtd">
+<mbeans-descriptors>
+  <mbean
+    name="SimpleTcpCluster"
+    description="Tcp Cluster implementation"
+    domain="Catalina"
+    group="Cluster"
+    type="org.apache.catalina.ha.tcp.SimpleTcpCluster">
+    <attribute
+      name="channelSendOptions"
+      description="This sets channel behaviour on sent messages."
+      type="int"/>
+    <attribute
+      name="channelStartOptions"
+      description="This sets channel start behaviour."
+      type="java.lang.String"/>
+    <attribute
+      name="clusterName"
+      description="name of cluster"
+      type="java.lang.String"/>
+    <attribute
+      name="heartbeatBackgroundEnabled"
+      description="enable that container background thread call channel heartbeat, default is that channel manage heartbeat itself."
+      is="true"
+      type="boolean"/>
+    <attribute
+      name="info"
+      description="Class version info"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="notifyLifecycleListenerOnFailure"
+      description="notify lifecycleListener from message transfer failure"
+      is="true"
+      type="boolean"/>
+    <attribute
+      name="stateName"
+      description="The name of the LifecycleState that this component is currently in"
+      type="java.lang.String"
+      writeable="false"/>
+    <operation
+      name="setProperty"
+      description="set a property to all cluster managers (with prefix 'manager.')"
+      impact="ACTION"
+      returnType="void">
+      <parameter
+        name="key"
+        description="Property name"
+        type="java.lang.String"/>
+      <parameter
+        name="value"
+        description="Property value"
+        type="java.lang.String"/>
+    </operation>
+    <operation
+      name="send"
+      description="send message to all cluster members"
+      impact="ACTION"
+      returnType="void">
+      <parameter
+        name="message"
+        description="replication message"
+        type="org.apache.catalina.ha.ClusterMessage"/>
+    </operation>
+    <operation
+      name="start"
+      description="Start the cluster"
+      impact="ACTION"
+      returnType="void"/>
+    <operation
+      name="stop"
+      description="Stop the cluster"
+      impact="ACTION"
+      returnType="void"/>
+  </mbean>
+  <mbean
+    name="ReplicationValve"
+    description="Valve for simple tcp replication"
+    domain="Catalina"
+    group="Valve"
+    type="org.apache.catalina.ha.tcp.ReplicationValve">
+    <attribute
+      name="asyncSupported"
+      description="Does this valve support async reporting?"
+      is="true"
+      type="boolean"/>
+    <attribute
+      name="doProcessingStats"
+      getMethod="doStatistics"
+      setMethod="setStatistics"
+      description="active statistics counting"
+      type="boolean"/>
+    <attribute
+      name="filter"
+      description="resource filter to disable session replication check"
+      type="java.lang.String"/>
+    <attribute
+      name="info"
+      description="Class version info"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="lastSendTime"
+      description="last replicated request time"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="nrOfCrossContextSendRequests"
+      description="number of send cross context session requests"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="nrOfFilterRequests"
+      description="number of filtered requests"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="nrOfSendRequests"
+      description="number of send requests"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="nrOfRequests"
+      description="number of replicated requests"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="primaryIndicator"
+      is="true"
+      description="set indicator that request processing is at primary session node"
+      type="boolean"/>
+    <attribute
+      name="primaryIndicatorName"
+      description="Request attribute name to indicate that request processing is at primary session node"
+      type="java.lang.String"/>
+    <attribute
+      name="stateName"
+      description="The name of the LifecycleState that this component is currently in"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="totalSendTime"
+      description="total replicated send time"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="totalRequestTime"
+      description="total replicated request time"
+      type="long"
+      writeable="false"/>
+    <operation
+      name="resetStatistics"
+      description="Reset all statistics"
+      impact="ACTION"
+      returnType="void"/>
+  </mbean>
+</mbeans-descriptors>

@@ -1,0 +1,47 @@
+================================================================================
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+================================================================================
+
+                         =================================
+                         Apache Tomcat 7.0 Patch Proposals
+                         =================================
+
+
+RELEASE SHOWSTOPPERS:
+
+
+PATCHES ACCEPTED TO BACKPORT:
+  [ start all new proposals below, under PATCHES PROPOSED. ]
+
+PATCHES PROPOSED TO BACKPORT:
+  [ New proposals should be added at the end of the list ]
+
+* https://bz.apache.org/bugzilla/show_bug.cgi?id=54330
+  Refactor Member interface to reduce dependency on concrete implementation.
+  Based on a patch by Greg Turnquist.
+  I have added this to the status file because it changes an interface. I don't
+  believe there is any harm in this - the interface isn't really usable prior to
+  this patch - but I'd prefer this change to be RTC.
+  http://svn.apache.org/viewvc?rev=1430602&view=rev
+  +1: markt, fhanik
+  -1:
+
+* Back-port r1437083 from trunk.
+  http://svn.apache.org/viewvc?view=revision&revision=1437083
+  Adds SSLContext.clearOptions method to allow clearing of SSL_OP_* options
+  in OpenSSL.
+  This will require tcnative 1.1.25 or errors may be thrown when attempting
+  to call this method.

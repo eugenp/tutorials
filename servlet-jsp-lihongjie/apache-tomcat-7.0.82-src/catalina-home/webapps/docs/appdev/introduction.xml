@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="introduction.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <title>Introduction</title>
+  </properties>
+
+<body>
+
+
+<section name="Overview">
+
+<p>Congratulations!  You've decided to (or been told to) learn how to
+build web applications using servlets and JSP pages, and picked the
+Tomcat server to use for your learning and development.  But now what
+do you do?</p>
+
+<p>This manual is a primer covering the basic steps of using Tomcat to
+set up a development environment, organize your source code, and then
+build and test your application.  It does not discuss architectures or
+recommended coding practices for web application development,
+or provide in depth instructions on operating the development
+tools that are discussed.  References to sources of additional information
+are included in the following subsections.</p>
+
+<p>The discussion in this manual is aimed at developers who will be using
+a text editor along with command line tools to develop and debug their
+applications.  As such, the recommendations are fairly generic &#x2013; but you
+should easily be able to apply them in either a Windows-based or Unix-based
+development environment.  If you are utilizing an Integrated Development
+Environment (IDE) tool, you will need to adapt the advice given here to
+the details of your particular environment.</p>
+
+</section>
+
+
+<section name="Links">
+
+<p>The following links provide access to selected sources of online
+information, documentation, and software that is useful in developing
+web applications with Tomcat.</p>
+<ul>
+<li><p><a href="http://jcp.org/aboutJava/communityprocess/mrel/jsr245/index.html">http://jcp.org/aboutJava/communityprocess/mrel/jsr245/</a> -
+    <i>JavaServer Pages (JSP) Specification, Version 2.2</i>.  Describes
+    the programming environment provided by standard implementations
+    of the JavaServer Pages (JSP) technology.  In conjunction with
+    the Servlet API Specification (see below), this document describes
+    what a portable API page is allowed to contain.  Specific
+    information on scripting (Chapter 9), tag extensions (Chapter 7),
+    and packaging JSP pages (Appendix A) is useful.  The Javadoc
+    API Documentation is included in the specification, and with the
+    Tomcat download.</p></li>
+<li><p><a href="http://jcp.org/aboutJava/communityprocess/mrel/jsr315/index.html">http://jcp.org/aboutJava/communityprocess/mrel/jsr315/</a> -
+    <i>Servlet API Specification, Version 3.0</i>.  Describes the
+    programming environment that must be provided by all servlet
+    containers conforming to this specification.  In particular, you
+    will need this document to understand the web application
+    directory structure and deployment file (Chapter 10), methods of
+    mapping request URIs to servlets (Chapter 12), container managed
+    security (Chapter 13), and the syntax of the <code>web.xml</code>
+    Web Application Deployment Descriptor (Chapter 14).  The Javadoc
+    API Documentation is included in the specification, and with the
+    Tomcat download.</p></li>
+</ul>
+
+</section>
+
+
+</body>
+</document>

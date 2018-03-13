@@ -1,0 +1,107 @@
+package com.supportmycode.model;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+
+@Entity
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Table(name="EMPLOYEE")
+public class Employee {
+
+	@Id	
+	@GeneratedValue
+	private Long id;
+	
+	@Column(name="firstname")
+	private String firstname;
+	
+	@Column(name="lastname")
+	private String lastname;
+	
+	@Column(name="birth_date")
+	private Date birthDate;
+	
+	@Column(name="cell_phone")
+	private String cellphone;
+
+	public Employee() {
+		
+	}
+	
+	public Employee(String firstname, String lastname, Date birthdate, String phone) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.birthDate = birthdate;
+		this.cellphone = phone;
+		
+	}
+	public Long getId() {
+		return id;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public String getCellphone() {
+		return cellphone;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+	        if (this == other) return true;
+	        if ( !(other instanceof Employee) ) return false;
+
+	        final Employee emp = (Employee) other;
+
+	        if ( !emp.getId().equals( getId() ) ) return false;
+	        if ( !emp.getCellphone().equals( getCellphone() ) ) return false;
+
+	        return true;
+	}
+
+	@Override
+	public int hashCode() {
+	        int result;
+	        result = getCellphone().hashCode();
+	        result = (int) (29 * result + getId());
+	        return result;
+	}
+}

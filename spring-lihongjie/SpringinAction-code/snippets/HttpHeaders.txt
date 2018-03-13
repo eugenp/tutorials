@@ -1,0 +1,17 @@
+//<start id="getHeaders"/> 
+GET /Spitter/spitters/habuma HTTP/1.1
+Accept: application/xml, text/xml, application/*+xml, application/json
+Content-Length: 0
+User-Agent: Java/1.6.0_20
+Host: localhost:8080
+Connection: keep-alive
+//<end id="getHeaders"/> 
+
+//<start id="getHeaders_AcceptJSON"/> 
+GET /Spitter/spitters/habuma HTTP/1.1
+Accept: application/json
+Content-Length: 0
+User-Agent: Java/1.6.0_20
+Host: localhost:8080
+Connection: keep-alive
+//<end id="getHeaders_AcceptJSON"/> 

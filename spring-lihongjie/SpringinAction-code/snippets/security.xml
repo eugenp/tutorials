@@ -1,0 +1,294 @@
+<!--<start id="securityNamespaceBeanCentric"/>--> 
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:security="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+   http://www.springframework.org/schema/security 
+   http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+<!--<co id="co_securityNamespaceTags"/>-->
+      
+</beans>
+<!--<end id="securityNamespaceBeanCentric"/>-->
+
+
+<!--<start id="securityNamespaceSecurityCentric"/>--> 
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+   http://www.springframework.org/schema/security 
+   http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+<!--<co id="co_securityTags"/>-->
+
+</beans:beans>
+<!--<end id="securityNamespaceSecurityCentric"/>-->
+
+
+<!--<start id="minimal_security"/>--> 
+<http auto-config="true">
+  <intercept-url pattern="/**" access="ROLE_SPITTER" />
+</http>
+<!--<end id="minimal_security"/>-->
+
+
+<!--<start id="auto_config_expanded"/>--> 
+<http>
+    <form-login />
+    <http-basic />
+    <logout />
+  <intercept-url pattern="/**" access="ROLE_SPITTER" />
+</http>
+<!--<end id="auto_config_expanded"/>-->
+
+<!--<start id="authenticationManagerWiredWithEmbeddedUserService"/>--> 
+<authentication-provider>
+  <user-service id="userService">
+    <user name="habuma" password="letmein" 
+          authorities="ROLE_SPITTER,ROLE_ADMIN"/>
+    ...
+  </user-service>
+</authentication-provider>
+<!--<end id="authenticationManagerWiredWithEmbeddedUserService"/>--> 
+
+<!--<start id="authenticationManagerWiredWithUserService"/>--> 
+<authentication-manager>
+  <authentication-provider user-service-ref="userService" />
+</authentication-manager>
+<!--<end id="authenticationManagerWiredWithUserService"/>--> 
+
+<!--<start id="jdbc_user_service"/>-->
+<jdbc-user-service id="userService" 
+    data-source-ref="dataSource" />
+<!--<end id="jdbc_user_service"/>-->
+
+<!--<start id="authenticationManagerWithLdapProvider"/>-->
+    <authentication-manager alias="authenticationManager">
+      <ldap-authentication-provider              
+          user-search-filter="(uid={0})" 
+          group-search-filter="member={0}"/>
+    </authentication-manager>
+<!--<end id="authenticationManagerWithLdapProvider"/>-->
+
+<!--<start id="ldapProviderWithPasswordCompare"/>--> 
+<ldap-authentication-provider           
+    user-search-filter="(uid={0})" 
+    group-search-filter="member={0}">
+  <password-compare />
+</ldap-authentication-provider>
+<!--<end id="ldapProviderWithPasswordCompare"/>-->
+
+
+<!--<start id="ldapProviderWithPasswordCompare2"/>--> 
+<password-compare hash="md5" 
+    password-attribute="passcode" />
+<!--<end id="ldapProviderWithPasswordCompare2"/>-->
+
+
+<!--<start id="ldapUserServiceWithBaseQueries"/>-->
+    <ldap-user-service id="userService"  
+             user-search-base="ou=people"
+             user-search-filter="(uid={0})"
+             group-search-base="ou=groups" 
+             group-search-filter="member={0}" />
+<!--<end id="ldapUserServiceWithBaseQueries"/>-->
+
+<!--<start id="remoteLdapServer"/>-->
+<ldap-server url="ldap://habuma.com:389/dc=habuma,dc=com" />
+<!--<end id="remoteLdapServer"/>-->
+
+<!--<start id="ldapServerWithExplicitLdif"/>-->
+<ldap-server root="dc=habuma,dc=com"
+             ldif="classpath:users.ldif" />
+<!--<end id="ldapServerWithExplicitLdif"/>-->
+
+<!--<start id="httpWithCustomLogin"/>--> 
+<http auto-config="true" use-expressions="false">
+  <form-login login-processing-url="/static/j_spring_security_check" 
+              login-page="/login" 
+              authentication-failure-url="/login?login_error=t"/>
+</http>
+<!--<end id="httpWithCustomLogin"/>--> 
+
+<!--<start id="logoutWthCustomUrl"/>--> 
+<logout logout-url="/static/j_spring_security_logout"/>
+<!--<end id="logoutWthCustomUrl"/>--> 
+
+//<start id="atSecured_addSpittle"/> 
+@Secured("ROLE_SPITTER")
+public void addSpittle(Spittle spittle) {
+  // ...
+}
+//<end id="atSecured_addSpittle"/>
+
+//<start id="atSecured_addSpittle2"/> 
+@Secured({"ROLE_SPITTER", "ROLE_ADMIN"})
+public void addSpittle(Spittle spittle) {
+  // ...
+}
+//<end id="atSecured_addSpittle2"/>
+
+<!--<start id="globalMethodSecurity_jsr250Annotations"/>--> 
+<global-method-security jsr250-annotations="enabled" />
+<!--<end id="globalMethodSecurity_jsr250Annotations"/>--> 
+
+
+<!--<start id="globalMethodSecurity_prePostAnnotations"/>--> 
+<global-method-security pre-post-annotations="enabled" />
+<!--<end id="globalMethodSecurity_prePostAnnotations"/>--> 
+
+//<start id="atSecured_addSpittle_preAuthorize"/> 
+@PreAuthorize("hasRole('ROLE_SPITTER')")
+public void addSpittle(Spittle spittle) {
+  // ...
+}
+//<end id="atSecured_addSpittle_preAuthorize"/>
+
+//<start id="atSecured_addSpittle_preAuthorizePremium"/> 
+@PreAuthorize("(hasRole('ROLE_SPITTER') and #spittle.text.length() <= 140) 
+                or hasRole('ROLE_PREMIUM')")
+public void addSpittle(Spittle spittle) {
+  // ...
+}
+//<end id="atSecured_addSpittle_preAuthorizePremium"/>
+
+//<start id="postAuthorizedGetSpittleById"/> 
+@PostAuthorize("returnObject.spitter.username == principal.username")
+public Spittle getSpittleById(long id) {
+  // ...
+}
+//<end id="postAuthorizedGetSpittleById"/> 
+
+
+<!--<start id="protectedPointcut"/>--> 
+<global-method-security>
+  <protect-pointcut access="ROLE_SPITTER" 
+      expression=
+          "execution(@com.habuma.spitter.Sensitive * *.*(String))"/>
+</global-method-security>
+<!--<end id="protectedPointcut"/> -->
+
+<!--<start id="securityJspTags"/>--> 
+<%@ taglib prefix="security" 
+           uri="http://www.springframework.org/security/tags" %>
+<!--<end id="securityJspTags"/>--> 
+
+<!--<start id="securityJspxTags"/>--> 
+<div xmlns:security="http://www.springframework.org/security/tags">        
+<!--<end id="securityJspxTags"/>--> 
+
+<!--<start id="securityAuthenticationTag"/>--> 
+Hello <security:authentication property="principal.username" />!
+<!--<end id="securityAuthenticationTag"/>--> 
+
+<!--<start id="securityAuthenticationTag_var"/>--> 
+<security:authentication property="principal.username" 
+        var="loginId"/>
+<!--<end id="securityAuthenticationTag_var"/>--> 
+
+<!--<start id="securityAuthenticationTag_scope"/>--> 
+<security:authentication property="principal.username" 
+        var="loginId" scope="request" />
+<!--<end id="securityAuthenticationTag_scope"/>--> 
+
+<!--<start id="securityAuthorizeTag_ifAllGranted"/>--> 
+<security:authorize ifAllGranted="ROLE_SPITTER">
+  <span style="font-size:12pt;"><security:authentication 
+        property="principal.username" /></span>
+  <br/>
+  <spring:url value="/static/j_spring_security_logout" 
+            var="logout_url" /> 
+  <a href="${logout_url}">Logout</a>
+</security:authorize>
+<!--<end id="securityAuthorizeTag_ifAllGranted"/>-->
+
+<!--<start id="securityAuthorizeTag_ifAnyGranted"/>--> 
+<security:authorize ifAllGranted="ROLE_SPITTER">
+...
+</security:authorize>
+<!--<end id="securityAuthorizeTag_ifAnyGranted"/>-->
+
+<!--<start id="securityAuthorizeTag_ifNotGranted"/>--> 
+<security:authorize ifNotGranted="ROLE_SPITTER">
+  <h3>Please Sign In!</h3>
+  <spring:url value="/static/j_spring_security_check" 
+             var="authUrl" />
+  <form class="signin" action="${authUrl}" method="post">
+      ...
+  </form>
+</security:authorize>
+<!--<end id="securityAuthorizeTag_ifNotGranted"/>-->
+
+<!--<start id="securityAuthorizeTag_access"/>--> 
+<security:authorize access="hasRole('ROLE_SPITTER')">
+...
+</security:authorize>
+<!--<end id="securityAuthorizeTag_access"/>-->
+
+<!--<start id="securityAuthorizeTag_access2"/>--> 
+<security:authorize 
+   access="isAuthenticated() and principal.username=='habuma'">
+  <a href="/admin">Administration</a>
+</security:authorize>
+<!--<end id="securityAuthorizeTag_access2"/>--> 
+
+
+<!--<start id="interceptAdminUrl"/>--> 
+<intercept-url pattern="/admin/**" 
+    access="hasRole('ROLE_ADMIN') and hasIpAddress('192.168.1.2')"/>
+<!--<end id="interceptAdminUrl"/>--> 
+
+<!--<start id="interceptAdminUrl_hasRole"/>--> 
+<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+<!--<end id="interceptAdminUrl_hasRole"/>-->
+
+<!--<start id="authorizeAdminUrl"/>--> 
+<security:authorize url="/admin/**">
+  <spring:url value="/admin" var="admin_url" />
+  <br/><a href="${admin_url}">Admin</a>
+</security:authorize>
+<!--<end id="authorizeAdminUrl"/>--> 
+
+<!--<start id="httpRememberMe"/>--> 
+<http auto-config="true" use-expressions="true">
+  ...
+  <remember-me 
+      key="spitterKey"
+      token-validity-seconds="2419200" />
+</http>
+<!--<end id="httpRememberMe"/>-->
+
+<!--<start id="rememberMeCheckbox"/>--> 
+<input id="remember_me" name="_spring_security_remember_me" 
+       type="checkbox"/> 
+<label for="remember_me" class="inline">Remember me</label>
+<!--<end id="rememberMeCheckbox"/>--> 
+
+<!--<start id="httpRememberMe_persistent"/>--> 
+<remember-me data-source-ref="dataSource"/>
+<!--<end id="httpRememberMe_persistent"/>--> 
+
+<!--<start id="interceptUrlEverything"/>--> 
+<intercept-url pattern="/**" access="ROLE_SPITTER" />
+<!--<end id="interceptUrlEverything"/>--> 
+
+<!--<start id="interceptUrlAdmin"/>--> 
+<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+<!--<end id="interceptUrlAdmin"/>-->
+
+<!--<start id="httpUseExpressions"/>--> 
+<http auto-config="true" use-expressions="true">
+...
+</http>
+<!--<end id="httpUseExpressions"/>-->
+
+<!--<start id="channelEnforcement_https"/>--> 
+<intercept-url pattern="/spitter/form" requires-channel="https"/>
+<!--<end id="channelEnforcement_https"/>--> 
+
+<!--<start id="channelEnforcement_http"/>--> 
+<intercept-url pattern="/home" requires-channel="http"/>
+<!--<end id="channelEnforcement_http"/>--> 
+ 

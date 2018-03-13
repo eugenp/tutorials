@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+  <mbean
+    name="ClusterSingleSignOn"
+    description="A Valve that supports a 'single signon' user experience on a whole cluster"
+    domain="Catalina"
+    group="Valve"
+    type="org.apache.catalina.ha.authenticator.ClusterSingleSignOn">
+    <attribute
+      name="asyncSupported"
+      description="Does this valve support async reporting?"
+      is="true"
+      type="boolean"/>
+    <attribute
+      name="className"
+      description="Fully qualified class name of the managed object"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="requireReauthentication"
+      description="Should we attempt to reauthenticate each request against the security Realm?"
+      type="boolean"/>
+    <attribute
+      name="cookieDomain"
+      description="(Optional) Domain to be used by sso cookies"
+      type="java.lang.String"/>
+    <attribute
+      name="mapSendOptions"
+      description="mapSendOptions"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="rpcTimeout"
+      description="Timeout for RPC messages, how long we will wait for a reply"
+      type="long"/>
+    <attribute
+      name="terminateOnStartFailure"
+      description="Flag for whether to terminate this map that failed to start."
+      type="boolean"/>
+    <attribute
+      name="accessTimeout"
+      description="The timeout for a ping message in replication map."
+      type="long"/>
+  </mbean>
+</mbeans-descriptors>

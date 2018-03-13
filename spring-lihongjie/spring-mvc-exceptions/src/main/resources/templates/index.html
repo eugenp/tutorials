@@ -1,0 +1,130 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+
+	<h1>Exceptions Demo V2</h1>
+	<h3>Details</h3>
+	<ul>
+		<li>Demo running with profile: <i th:text="${profiles}">profiles</i>
+			<br />To change the profile, edit <code>Main.java</code><a
+			th:href="${gitHubSrc + '/java/demo/main/Main.java'}"><img
+				th:src="@{/extlink.png}" src="extlink.png" title="View in github" /></a>
+			and change the value of the <code>activeProfile</code> data-member.
+		</li>
+		<li>See <a th:replace="link :: blog"></a> for more details.
+		</li>
+		<li>Demo uses the <a href="http://thymeleaf.org">Thymeleaf</a>
+			view generation system to generate HTML pages (a nice alternative to
+			JSP that cn be configured by Spring Boot automatically).
+		</li>
+	</ul>
+	<p>
+		Spring-Boot sets up <i>error</i> view as the default error-page and we
+		are using Thymeleaf to define it via the <i>error.html</i> template
+		(if you don't configure your own error view you see the so-called
+		"Whitelabel Error Page").
+	</p>
+	<p>
+		Without Spring Boot you would see your container's default error page.
+		Rename <i>error.html</i> to <i>error2.html</i> and restart to see this
+		for yourself.
+	</p>
+
+	<p>The previous version of this demo tried to show everything on
+		one page. It has been broken down into different pages for clarity.</p>
+
+	<h3>The Demo</h3>
+
+	<ul class="openlist">
+		<li><a th:href="@{/local/}">Local Exception Handling</a> - Exceptions
+			handled in the Controller.<br /> URLs on this page are handled by
+			the <code>demo1.web.ExceptionHandlingController</code><a
+			th:href="${gitHubSrc + '/java/demo1/web/ExceptionHandlingController.java'}"><img
+				th:src="@{/extlink.png}" src="extlink.png" title="View in github" /></a>
+			which handles its own exceptions using its own <code>@ExceptionHandler</code>
+			methods.</li>
+
+		<li><a th:href="@{/global/}">Global Exception Handling</a> - Exceptions
+			handled by a Controller Advice.<br />URLs on this page are handled
+			by the <code>demo2.web.ControllerWithoutExceptionHandlers</code><a
+			th:href="${gitHubSrc + '/java/demo2/web/ControllerWithoutExceptionHandlers.java'}"><img
+				th:src="@{/extlink.png}" src="extlink.png" title="View in github" /></a>
+			which relies on a Controller Advice <code>demo2.web.GlobalExceptionHandlingControllerAdvice</code><a
+			th:href="${gitHubSrc + '/java/demo2/web/GlobalExceptionHandlingControllerAdvice.java'}"><img
+				th:src="@{/extlink.png}" src="extlink.png" title="View in github" /></a>
+			to handle any exceptions thrown.</li>
+
+		<!--  This HTML looks horrid but it is just a switch to determine what
+		      Profile we are using: XML, JAVA or DEMO.
+		      CASE XML: A SimpleMappingExceptionResolver is defined by mvc-configuration.xml
+		          (probably what most developers are used to). It is always present.
+		      CASE JAVA: An identical  SimpleMappingExceptionResolver is defined by
+		          ExceptionConfiguration (using Java Configuration instead). It is always
+		          present.
+		      CASE DEMO: A for demonstration switchable SimpleMappingExceptionResolver is
+		          created by DemoExceptionConfiguration that can be turned on and off to
+		          see the difference.
+		-->
+		<li th:switch="${profiles}">
+			<!-- Configuration - XML: Resolver defined using XML --> <span
+			th:case="xml-config"><a th:href="@{/unannotated}">With Exception
+					Resolver</a> - Exceptions handled by a customized <span
+				th:replace="link :: simpleMappingExceptionResolver"></span> bean
+				defined in <code>mvc-configuration.xml</code><a
+				href="mvc-configuration.xml"
+				th:href="${gitHubSrc + '/resources/mvc-configuration.xml'}"><img
+					th:replace="link :: github"></img></a>. </span> <!-- Configuration - JAVA: Resolver defined using Java Configuration -->
+			<span th:case="java-config"><a th:href="@{/unannotated}">With
+					Exception Resolver</a> - Exceptions handled by a customized <span
+				th:replace="link :: simpleMappingExceptionResolver"></span> bean
+				defined in <code>demo.config.ExceptionConfiguration</code><a
+				href="ExceptionConfiguration.java"
+				th:href="${gitHubSrc + '/java/demo/config/ExceptionConfiguration.java'}"><img
+					th:replace="link :: github"></img></a>. </span> <!--  DEMO Configuration --> <span
+			th:case="demo-config"><a
+				th:href="@{/simpleMappingExceptionResolver/on}">With Exception
+					Resolver</a> - Exceptions handled by a runtime switchable (for demo
+				purposes only) <span
+				th:replace="link :: simpleMappingExceptionResolver"></span> bean
+				defined by <code>demo3.config.DemoExceptionConfiguration</code><a
+				href="DemoExceptionConfiguration.java"
+				th:href="${gitHubSrc + '/java/demo3/config/DemoExceptionConfiguration.java'}"><img
+					th:replace="link :: github"></img></a>. </span> <br />Exceptions raised by <code>demo3.web.ExceptionThrowingController</code><a
+			href="${gitHubSrc + '/java/demo3/web/ExceptionThrowingController.java'}"><img
+				th:replace="link :: github"></img></a>
+		</li>
+
+		<!-- This option is only available when using the DEMO profile -->
+		<li th:if="${profiles == 'demo-config'}"><a
+			th:href="@{/simpleMappingExceptionResolver/off}">No Resolver for
+				Exceptions</a><br />For comparison, the same exceptions as previous
+			option, but with the resolver disabled to see what you get by
+			default. Exceptions are not totally unhandled because they are caught
+			by Spring Boot's default error page - mapped to <code>error.html</code>.</li>
+
+		<li><a th:href="@{/demo5}">Using Spring Boot</a> - demonstrates how
+			Spring Boot's error-handling setup works.</li>
+	</ul>
+
+	<h3>Spring Boot URLs</h3>
+	<p>For those interested, Spring Boot provides RESTful URLs for
+		interrogating your application (they return JSON format data):</p>
+
+	<ul>
+		<li><a th:href="@{/beans}">The beans</a></li>
+		<li><a th:href="@{/env}">The environment</a></li>
+		<li><a th:href="@{/dump}">Thread dump</a></li>
+		<li><a th:href="@{/health}">Application health</a></li>
+		<li><a th:href="@{/info}">Application information</a></li>
+		<li><a th:href="@{/metrics}">Application metrics</a></li>
+		<li><a th:href="@{/trace}">Request call trace</a></li>
+	</ul>
+
+	<div th:replace="footer :: copy"></div>
+
+</body>
+</html>

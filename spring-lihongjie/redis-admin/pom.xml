@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mauersu</groupId>
+    <artifactId>redis-admin</artifactId>
+    <version>0.0.1.Final</version>
+    <packaging>war</packaging>
+
+    <name>redis admin</name>
+    <description>redis admin</description>
+	
+	<scm>
+		<developerConnection>scm:git:ssh://git@github.com/mauersu/redis-admin.git</developerConnection>
+	  <tag>redis-admin-0.0.1.Final</tag>
+  </scm>
+	
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <spring.version>4.1.6.RELEASE</spring.version>
+        <curator.version>2.5.0</curator.version>
+        <servlet.version>2.5</servlet.version>
+        <jetbrick-template.version>2.0.10</jetbrick-template.version>
+        <mybatis.version>3.2.7</mybatis.version>
+        <mybatis-spring.version>1.2.2</mybatis-spring.version>
+        <mysql.version>5.1.30</mysql.version>
+        <druid.version>1.0.14</druid.version>
+        <jackson.version>2.3.3</jackson.version>
+        <log4j.version>1.2.12</log4j.version>
+        <junit.version>4.11</junit.version>
+        <guava.version>16.0.1</guava.version>
+        <jedis.version>2.6.1</jedis.version>
+        <fastjson.version>1.2.3</fastjson.version>
+        <spring.data.redis.version>1.4.1.RELEASE</spring.data.redis.version>
+    </properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- 编译插件 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<compilerVersion>1.7</compilerVersion>
+					<encoding>UTF-8</encoding>
+					<fork>true</fork>
+					<optimize>true</optimize>
+					<meminitial>128m</meminitial>
+					<maxmem>512m</maxmem>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- 发布插件 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.8.2</version>
+				<configuration>
+					<updateReleaseInfo>true</updateReleaseInfo>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- 源码插件 -->
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!-- 资源文件过滤插件 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- 打包插件 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- 单元测试插件 -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.17</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- 发布插件 -->
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.2</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<allowTimestampedSnapshots>false</allowTimestampedSnapshots>
+					<useReleaseProfile>false</useReleaseProfile>
+					<!-- 
+					<arguments>-P release,sonatype-oss-release,full,no-osgi</arguments>
+					 -->
+					<tagNameFormat>redis-admin-@{project.version}</tagNameFormat>
+				</configuration>
+			</plugin>
+			<plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/${project.build.finalName}</path>
+                    <uriEncoding>UTF-8</uriEncoding>
+                </configuration>
+            </plugin>
+		</plugins>
+		<finalName>redis-admin</finalName>
+	</build>
+	
+    <dependencies>
+    	<!-- fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+    	<!-- JSTL API -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>3.2.8.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>3.2.8.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Jetbrick Template Engineer -->
+        <dependency>
+            <groupId>com.github.subchen</groupId>
+            <artifactId>jetbrick-template-springmvc</artifactId>
+            <version>${jetbrick-template.version}</version>
+        </dependency>
+        <!-- MyBatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${mybatis-spring.version}</version>
+        </dependency>
+        <!-- MySQL JDBC Driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <!-- Spring Data Support -->
+        <dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-redis</artifactId>
+			<version>${spring.data.redis.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.commons</groupId>
+					<artifactId>commons-pool2</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- log4j Support -->
+        <dependency>     
+		    <groupId>log4j</groupId>     
+		    <artifactId>log4j</artifactId>     
+		    <version>${log4j.version}</version>     
+		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+		<!-- redis -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<!-- commons-logging -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+		</dependency>
+    </dependencies>
+
+</project>

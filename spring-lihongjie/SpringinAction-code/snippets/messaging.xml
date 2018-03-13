@@ -1,0 +1,46 @@
+<!--<start id="messaging_namespace"/>--> 
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:jms="http://www.springframework.org/schema/jms"
+ xmlns:amq="http://activemq.apache.org/schema/core"
+ xsi:schemaLocation="http://activemq.apache.org/schema/core 
+   http://activemq.apache.org/schema/core/activemq-core.xsd
+   http://www.springframework.org/schema/jms 
+   http://www.springframework.org/schema/jms/spring-jms.xsd
+   http://www.springframework.org/schema/beans 
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+ ...  
+</beans>
+<!--<end id="messaging_namespace"/>--> 
+
+<!--<start id="jmsTemplate_defaultDestination"/>--> 
+<bean id="jmsTemplate" 
+      class="org.springframework.jms.core.JmsTemplate">
+  <property name="connectionFactory" ref="connectionFactory" />
+  <property name="defaultDestinationName" 
+            value="spittle.alert.queue"/>
+</bean>
+<!--<end id="jmsTemplate_defaultDestination"/>--> 
+
+
+//<start id="simplifiedJmsTemplateSend"/> 
+jmsTemplate.send(
+  new MessageCreator() {
+  ...
+  }
+);
+//<end id="simplifiedJmsTemplateSend"/> 
+
+//<start id="ejb3_mdb"/> 
+@MessageDriven(mappedName="jms/spittle.alert.queue")
+public class SpittleAlertHandler implements MessageListener {
+  @Resource
+  private MessageDrivenContext mdc;
+
+  public void onMessage(Message message) {
+     ...
+  }
+}
+//<end id="ejb3_mdb"/> 
+

@@ -1,0 +1,384 @@
+
+// -----------------------------------------------------------------------------
+// Configuration for the root project
+// -----------------------------------------------------------------------------
+description = 'spitter'
+abbreviation = 'SOCIAL'
+
+apply plugin: 'base'
+apply plugin: 'idea'
+
+allprojects {
+    // group will translate to groupId during pom generation and deployment
+    group = 'com.habuma.spitter'
+
+    version = '1.0.0.SNAPSHOT'
+
+    // default set of maven repositories to be used when resolving dependencies
+    repositories {
+        mavenRepo urls: 'http://maven.springframework.org/release'
+        mavenRepo urls: 'http://maven.springframework.org/milestone'
+        mavenRepo urls: 'http://maven.springframework.org/snapshot'
+        mavenCentral()
+    }
+}
+
+
+configure(subprojects) {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    // set up dedicated directories for jars and source jars.
+    // this makes it easier when putting together the distribution
+    libsBinDir = new File(libsDir, 'bin')
+    libsSrcDir = new File(libsDir, 'src')
+
+    commonsHttpClientVersion = '3.1'
+    jacksonVersion = '1.5.3'
+    jodaVersion = '1.6.2'
+    junitVersion = '4.7'
+    mockitoVersion = '1.8.5'
+    s2OAuthVersion = '1.0.0.M1'
+    scribeVersion = '1.0.8'
+    servletApiVersion = '2.5'
+    springVersion = '3.0.5.RELEASE'
+    
+
+    sourceSets {
+        test {
+            resources {
+                srcDirs = ['src/test/resources', 'src/test/java']
+            }
+        }
+    }
+
+    configurations {
+        provided { transitive = false }
+    }
+
+    sourceSets.main.compileClasspath += configurations.provided
+    sourceSets.test.compileClasspath += configurations.provided
+    sourceSets.test.runtimeClasspath += configurations.provided
+
+    dependencies {
+        compile 'log4j:log4j:1.2.13'
+        compile 'javax.inject:javax.inject:1'
+        testCompile "junit:junit:$junitVersion"
+        testCompile "org.mockito:mockito-all:$mockitoVersion"
+        testCompile "org.springframework:spring-test:$springVersion"
+    }
+
+    [compileJava, compileTestJava]*.options*.compilerArgs = ['-Xlint:all']
+
+    eclipseClasspath.variables = [:]
+}
+
+
+project('spitter-domain-plain') {
+    description = 'Spitter Domain (Plain...no JPA)'
+    dependencies {}
+}
+
+project('spitter-domain-jpa') {
+    description = 'Spitter Domain JPA-Annotated'
+    dependencies {
+        compile "javax.persistence:persistence-api:1.0"
+        compile "javax.validation:validation-api:1.0.0.GA"
+        compile "commons-lang:commons-lang:2.4"
+        compile "org.codehaus.jackson:jackson-core-asl:1.6.3"
+        compile "org.springframework:spring-context:$springVersion"
+    }
+}
+
+project('spitter-persistence-common') {
+    description = 'Spitter Persistence Commons'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+    }
+}
+
+project('spitter-persistence-jdbc-conventional') {
+    description = 'Spitter Persistence (Traditional)'
+    dependencies {
+        compile project(':spitter-domain-plain')
+        compile project(':spitter-persistence-common')
+    }
+}
+
+project('spitter-persistence-jdbc-template') {
+    description = 'Spitter Persistence (JDBC Template)'
+    dependencies {
+        compile "org.springframework:spring-jdbc:$springVersion"
+        compile "joda-time:joda-time:$jodaVersion"
+        compile project(':spitter-domain-plain')
+        compile project(':spitter-persistence-common')
+        testCompile "com.h2database:h2:1.2.143"
+     }
+}
+
+project('spitter-persistence-jdbc-dao-support') {
+    description = 'Spitter Persistence (JDBC DAO Support)'
+    dependencies {
+        compile "org.springframework:spring-jdbc:$springVersion"
+        compile "joda-time:joda-time:$jodaVersion"
+        compile project(':spitter-domain-plain')
+        compile project(':spitter-persistence-common')
+        testCompile "com.h2database:h2:1.2.143"
+     }
+}
+
+project('spitter-persistence-hibernate-template') {
+    description = 'Spitter Persistence (Hibernate Template)'
+    dependencies {
+        compile project(':spitter-domain-plain')
+        compile project(':spitter-persistence-common')
+        compile "org.springframework:spring-orm:$springVersion"
+        compile "org.hibernate:hibernate-core:3.3.2.GA"
+        compile "javassist:javassist:3.9.0.GA"
+        testCompile "com.h2database:h2:1.2.143"
+        testCompile "org.slf4j:slf4j-api:1.6.1"
+    }
+}
+
+project('spitter-persistence-hibernate-contextual-sessions') {
+    description = 'Spitter Persistence (Hibernate Contextual Sessions)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-persistence-common')
+        compile "org.springframework:spring-orm:$springVersion"
+        compile "org.hibernate:hibernate-core:3.3.2.GA"
+        compile "org.hibernate:hibernate-annotations:3.4.0.GA"
+        compile "javassist:javassist:3.9.0.GA"
+        compile "cglib:cglib-nodep:2.2"
+        testCompile "com.h2database:h2:1.2.143"
+        testCompile "org.slf4j:slf4j-api:1.6.1"
+    }
+}
+
+project('spitter-persistence-jpa') {
+    description = 'Spitter Persistence (Commons JPA)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-persistence-common')
+        compile "org.springframework:spring-orm:$springVersion"
+        compile "org.hibernate:hibernate-core:3.3.2.GA"
+        compile "org.hibernate:hibernate-entitymanager:3.4.0.GA"
+        compile "com.h2database:h2:1.2.143"
+        compile "cglib:cglib-nodep:2.2"
+        compile "org.slf4j:slf4j-api:1.6.1"
+        compile "javax.persistence:persistence-api:1.0"
+        compile "org.slf4j:slf4j-api:1.5.8"
+        compile "org.slf4j:slf4j-nop:1.5.8"
+    }
+}
+
+project('spitter-service-common') {
+    description = 'Spitter Service Commons'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+    }
+}
+
+project('spitter-service-programmatic-tx') {
+    description = 'Spitter Service (Programmatic Transactions)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile project(':spitter-persistence-common')
+        compile "org.springframework:spring-tx:$springVersion"        
+        testCompile "org.easymock:easymock:3.0"
+    }
+}
+
+project('spitter-service-declarative-tx') {
+    description = 'Spitter Service (Declarative Transactions)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile project(':spitter-persistence-common')
+        compile "org.springframework:spring-tx:$springVersion"        
+        testCompile "org.easymock:easymock:3.0"
+    }
+}
+
+project('spitter-service-annotation-tx') {
+    description = 'Spitter Service (Annotated Transactions)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile project(':spitter-persistence-common')
+        compile "org.springframework:spring-tx:$springVersion"        
+        testCompile "org.easymock:easymock:3.0"
+    }
+}
+
+project('spitter-jmx') {
+    description = 'Spitter JMX'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile "org.springframework:spring-context:$springVersion"        
+        compile "org.springframework:spring-web:$springVersion"        
+    }
+}
+
+project('spitter-web') {
+    apply plugin: 'jetty'
+    description = 'Spitter Web'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-jmx')
+        compile project(':spitter-persistence-common')
+        compile project(':spitter-persistence-jpa')
+        compile project(':spitter-service-common')
+        compile project(':spitter-service-annotation-tx')
+        compile "org.springframework:spring-webmvc:$springVersion"        
+        compile "rome:rome:0.9"
+        compile "net.java.dev.jets3t:jets3t:0.7.4"
+        compile ("javax.servlet:servlet-api:2.5") { provider = true }
+        compile "org.springframework.security:spring-security-core:3.0.3.RELEASE"
+        compile "org.springframework.security:spring-security-web:3.0.3.RELEASE"
+        compile "org.springframework.security:spring-security-config:3.0.3.RELEASE"
+        compile "org.springframework.security:spring-security-taglibs:3.0.3.RELEASE"
+        compile "org.springframework.security:spring-security-ldap:3.0.3.RELEASE"
+        compile ("org.apache.directory.server:apacheds-core:1.5.5") { optional=true }
+        compile ("org.apache.directory.server:apacheds-server-jndi:1.5.5") { optional=true }
+        compile "commons-fileupload:commons-fileupload:1.2.1"
+        compile "org.hibernate:hibernate-validator:4.0.2.GA"
+        compile "org.apache.tiles:tiles-core:2.2.2"
+        compile "org.apache.tiles:tiles-jsp:2.2.2"
+    }
+}
+
+project('spitter-email') {
+    description = 'Spitter E-mail'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile "org.springframework:spring-context-support:$springVersion"
+        compile "org.apache.velocity:velocity:1.6.3"
+        compile "javax.mail:mail:1.4.1"
+        testCompile "dumbster:dumbster:1.6"
+    }
+}
+
+
+project('remoting-clients') {
+    description = 'Spitter Remoting (Clients)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile "org.springframework:spring-web:${springVersion}"        
+    }
+}
+
+project('remoting-hessian') {
+    description = 'Spitter Remoting (Hessian)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile "org.springframework:spring-web:${springVersion}"        
+    }
+}
+
+project('remoting-httpinvoker') {
+    description = 'Spitter Remoting (HttpInvoker)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile "org.springframework:spring-web:${springVersion}"        
+    }
+}
+
+project('remoting-jaxrpc') {
+    description = 'Spitter Remoting (JAX-RPC)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile "org.springframework:spring-web:${springVersion}"        
+        compile "javax.xml:jaxrpc-api:1.1"
+    }
+}
+
+project('remoting-jaxws') {
+    description = 'Spitter Remoting (JAX-WS)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile "org.springframework:spring-web:${springVersion}"        
+        compile "javax.xml:jaxrpc-api:1.1"
+    }
+}
+
+project('remoting-jaxws-standalone') {
+    description = 'Spitter Remoting (JAX-WS Standalone)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile "org.springframework:spring-web:${springVersion}"        
+        compile "javax.xml:jaxrpc-api:1.1"
+    }
+}
+
+project('remoting-rmi') {
+    description = 'Spitter Remoting (RMI)'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile project(':spitter-service-common')
+        compile "org.springframework:spring-context:${springVersion}"        
+    }
+}
+
+project('async') {
+    description = 'Spitter Asynchronous Tasks'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile "org.springframework:spring-context:${springVersion}"        
+    }
+}
+
+project('jms') {
+    description = 'Spitter JMS'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile "org.springframework:spring-jms:${springVersion}"        
+        compile "org.apache.activemq:activemq-core:5.3.0"
+        compile "org.apache.xbean:xbean-spring:3.5"
+    }
+}
+
+project('jms-rpc') {
+    description = 'Spitter JMS-RPC'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile "org.springframework:spring-context-support:$springVersion"
+        compile "org.springframework:spring-jms:${springVersion}"        
+        compile "javax.mail:mail:1.4.1"
+        compile "org.apache.activemq:activemq-core:5.3.0"
+        compile "org.apache.xbean:xbean-spring:3.5"
+    }
+}
+
+project('lingo-rpc') {
+    description = 'Lingo RPC'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile "org.springframework:spring-context:${springVersion}"        
+        compile "org.springframework:spring-jms:${springVersion}"
+        compile "org.apache.activemq:activemq-core:5.3.0"
+        compile "org.apache.xbean:xbean-spring:3.5"
+        compile ("org.logicblaze.lingo:lingo:1.3") {
+            exclude group: 'org.springframework'
+            exclude group: 'incubator-activemq'
+        }
+    }
+}
+
+project('spitter-jmx') {
+    description = 'Spitter JMX'
+    dependencies {
+        compile project(':spitter-domain-jpa')
+        compile "org.springframework:spring-context:${springVersion}"        
+        compile "org.springframework:spring-web:${springVersion}"        
+    }
+}

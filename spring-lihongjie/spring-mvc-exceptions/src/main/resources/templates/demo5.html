@@ -1,0 +1,84 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+
+	<h1>Exceptions Demo 5</h1>
+	<h2>Doing it the Spring Boot Way</h2>
+
+	<h3>Summary</h3>
+	<ul>
+		<li>Demo running with profiles: <i th:text="${profiles}">profiles</i>
+		</li>
+		<li>Key classes: <code>ReturnOrRedirectContoller</code>, <code>BasicErrorController</code>.
+		</li>
+		<li>See <a th:substituteby="link :: blog"></a> for more details.
+		</li>
+	</ul>
+
+	<h3>Details</h3>
+	<p>
+		Spring Boot generates its error page by forwarding to it via an
+		internal controller (see below for details). This demo shows this at
+		work. The exceptions below are thrown and handled within the same
+		Controller -
+		<code>demo5.web.ReturnOrRedirectController</code>
+		<a href="ExceptionHandlingController.java"
+			th:href="${gitHubSrc + '/java/demo5/web/ReturnOrRedirectController.java'}"> <img
+			th:replace="link :: github" />
+		</a>.
+	</p>
+	<p>To fully understand this demo, review the output in the server
+		(console) log as you click the links below.</p>
+
+	<h3>Demo</h3>
+	<ul class="openlist">
+		<li>Throw an <a th:href="@{/demo5/return}">exception</a> and make the <code>@ExceptionHandler</code>
+			method return the logical view-name "<code>error</code>" - this will
+			display the <code>error.html</code> template. Notice it contains no
+			useful data because, by default, <code>@ExceptionHandler</code>
+			methods don't provide any.
+		</li>
+		<li><p>
+				Throw an <a th:href="@{/demo5/forward}">exception</a> and make the
+				<code>@ExceptionHandler</code>
+				forward the request to
+				<code>/error</code>
+				. This will also display the
+				<code>error.html</code>
+				template but notice it now contains no useful data.
+			</p>
+			<p>
+				This is because Spring Boot's internal
+				<code>BasicErrorController</code>
+				defines an
+				<code>@RequestMapping</code>
+				method mapped to
+				<code>/error</code>
+				which is able to add exception and other useful information to the
+				Model. Look for the
+				<code>BasicErrorController.errorHtml()</code>
+				<a
+					href="https://github.com/spring-projects/spring-boot/blob/master/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/BasicErrorController.java">
+					<img th:replace="link :: github"></img>
+				</a> which in turn relies on
+				<code>DefaultErrorAttributes.getErrorAttributes()</code>
+				<a
+					href="https://github.com/spring-projects/spring-boot/blob/master/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/DefaultErrorAttributes.java">
+					<img th:replace="link :: github"></img>
+				</a>
+			</p></li>
+
+	</ul>
+
+	<p>
+		Return to <a th:href="@{/}">Home</a> page.
+	</p>
+
+	<div th:replace="footer :: copy"></div>
+
+</body>
+</html>

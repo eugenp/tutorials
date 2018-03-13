@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CaveatEmptor AOP" verbose="0">
+
+    <test name="Interception">
+        <groups>
+            <run><include name="integration-hibernate.*"/></run>
+        </groups>
+        <packages>
+            <package name="auction.test.aop"/>
+         </packages>
+    </test>
+
+</suite>
+

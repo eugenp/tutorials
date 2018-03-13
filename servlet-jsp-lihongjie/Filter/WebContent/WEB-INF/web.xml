@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Filter</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <display-name>PerformanceFilter</display-name>
+    <filter-name>PerformanceFilter</filter-name>
+    <filter-class>com.lhj.tutorial.PerformanceFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>PerformanceFilter</filter-name>
+    <servlet-name>*</servlet-name>
+  </filter-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PerformanceServlet</display-name>
+    <servlet-name>PerformanceServlet</servlet-name>
+    <servlet-class>com.lhj.tutorial.PerformanceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PerformanceServlet</servlet-name>
+    <url-pattern>/PerformanceServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PerTestServlet</display-name>
+    <servlet-name>PerTestServlet</servlet-name>
+    <servlet-class>com.lhj.tutorial.PerTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PerTestServlet</servlet-name>
+    <url-pattern>/PerTestServlet.do</url-pattern>
+  </servlet-mapping>
+</web-app>

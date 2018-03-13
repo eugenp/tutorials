@@ -1,0 +1,7 @@
+作用域
+
+singleton 在每一个Spring容器中，一个Bean定义只有一个对象实例（默认）。
+prototype 允许Bean的定义可以被实例化任意次（每次调用都创建一个实例）。
+request 在一次HTTP请求中，每个Bean定义对应一个实例。该作用域仅在基于Web的Spring上下文（例如Spring MVC）中才有效。(见工程 spring-bean-scope)
+session 在一个HTTP Session中，每个Bean定义对应一个实例。该作用域仅在基于Web的Spring上下文（例如Spring MVC）中才有效。
+global-session 在一个全局HTTP Session中，每个Bean定义对应一个实例。该作用域仅在Portlet上下文（例如Spring MVC）中才有效。

@@ -1,0 +1,11 @@
+Manifest-version: 1.0
+X-Compile-Source-JDK: @source.jdk@
+X-Compile-Target-JDK: @target.jdk@
+
+Name: javax/el/
+Specification-Title: Expression Language
+Specification-Version: 2.2
+Specification-Vendor: Sun Microsystems, Inc.
+Implementation-Title: javax.el
+Implementation-Version: 2.2.@el.revision@
+Implementation-Vendor: Apache Software Foundation

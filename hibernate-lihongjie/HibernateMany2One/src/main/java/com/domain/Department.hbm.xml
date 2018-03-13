@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain">
+	<class name="Department" table="depart001"><!--不加入table标签，表明类名和表名相同  -->
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+		<property name="name" /><!-- 使用户名唯一，方便后面名称查询 -->
+		<!-- 一对多 配置 -->
+ 		<set name="emps" inverse="false" >
+			<key column="depart_id" /> <!-- 依赖外键来找 --><!-- 加上not-null 会报错 -->
+			<one-to-many class="Employee"/><!-- 泛型找到Employee类型 -->
+		</set>
+	</class>
+</hibernate-mapping>
+

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+    <RACE RACE_ID="15" NAME="Mclean 5K" DISTANCE="3.1" DATE="2008-05-12"/>
+    <RACE RACE_ID="20" NAME="Reston 5K" DISTANCE="3.1" DATE="2008-09-13"/>
+
+    <RUNNER RUNNER_ID="50" FIRST_NAME="Andrew" LAST_NAME="Glover" AGE="32"/>
+    <RUNNER RUNNER_ID="51" FIRST_NAME="Lisa" LAST_NAME="Smith" AGE="40"/>
+    <RUNNER RUNNER_ID="52" FIRST_NAME="Bill" LAST_NAME="Payne" AGE="18"/>
+
+    <race_participants RACE_ID="15" RUNNER_ID="50"/>
+    <race_participants RACE_ID="20" RUNNER_ID="51"/>
+    <race_participants RACE_ID="20" RUNNER_ID="52"/>
+
+    <race_result RACE_ID="15" RUNNER_ID="50" TIME="100.04" PLACE="45"/>
+
+</dataset>

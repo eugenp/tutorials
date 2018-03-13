@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean description="Reports " domain="tomcat.jdbc" group="jdbc-pool" name="SlowQueryReportJmx"
+         type="org.apache.tomcat.jdbc.pool.interceptor.SlowQueryReportJmx">
+
+    <attribute description="The name of the connection pool this Jmx bean is representing" name="poolName" type="java.lang.String" writeable="false"/>
+    <attribute description="List of all registered connections pools" name="poolNames" type="[java.lang.String;" writeable="false"/>
+    <attribute description="All the recorded query stats. " name="slowQueriesCD" type="[javax.management.openmbean.CompositeData;" writeable="false"/>
+    <operation description="Clears all the query stats" impact="ACTION" name="resetStats" returnType="void"/>
+
+    <notification description="Notification sent out by the slow query report when a query exceeds the threshold" name="slow-query">
+      <notification-type>Slow query</notification-type>
+    </notification>
+
+    <notification description="Notification sent out by the slow query report when a query fails execution" name="failed-query">
+      <notification-type>Failed query execution</notification-type>
+    </notification>
+  </mbean>
+</mbeans-descriptors>

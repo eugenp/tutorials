@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:aop="http://www.springframework.org/schema/aop"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+  <bean id="eddie"
+      class="com.springinaction.springidol.Instrumentalist">
+    <property name="instrument">
+      <bean class="com.springinaction.springidol.Guitar" />
+    </property>
+  </bean>
+
+  <!--<start id="audience_bean"/>--> 
+  <bean id="audience" 
+      class="com.springinaction.springidol.Audience" />
+  <!--<end id="audience_bean"/>-->
+
+  <!--<start id="audience_aspect"/>--> 
+  <aop:config>
+    <aop:aspect ref="audience">
+      <aop:pointcut id="performance" expression=
+	    "execution(* com.springinaction.springidol.Performer.perform(..))" 
+	  /> 
+      <aop:before 
+          pointcut-ref="performance"
+          method="takeSeats()" />
+      <aop:before 
+          pointcut-ref="performance"
+          method="turnOffCellPhones" />
+      <aop:after-returning
+          pointcut-ref="performance"
+          method="applaud" />
+      <aop:after-throwing 
+          pointcut-ref="performance"
+          method="demandRefund" />
+    </aop:aspect>
+    
+    <!--<start id="contestant_introduction"/>--> 
+<aop:aspect>
+  <aop:declare-parents 
+    types-matching="com.springinaction.springidol.Performer+" 
+    implement-interface="com.springinaction.springidol.Contestant"
+    default-impl="com.springinaction.springidol.GraciousContestant"
+    />
+</aop:aspect>
+    <!--<end id="contestant_introduction"/>-->
+
+    <!--
+<start id="delegate_ref"/>    
+<aop:declare-parents 
+  types-matching="com.springinaction.springidol.Performer+" 
+  implement-interface="com.springinaction.springidol.Contestant"
+  delegate-ref="contestantDelegate"
+  />
+    <end id="delegate_ref"/>   
+
+<start id="contestant_delegate"/>    
+<bean id="contestantDelegate"
+    class="com.springinaction.springidol.GraciousContestant" />
+    <end id="contestant_delegate"/>   
+
+     -->
+    
+  </aop:config>
+  <!--<end id="audience_aspect" />-->
+
+</beans>

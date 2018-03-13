@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="windows-service-howto.html">
+
+    &project;
+
+    <properties>
+      <author email="mturk@apache.org">Mladen Turk</author>
+      <title>Windows service HOW-TO</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Tomcat service application">
+<p>
+    <b>Tomcat<version-major/></b> is a service application for running Tomcat
+    <version-major/> as a Windows service.
+</p>
+</section>
+<section name="Tomcat monitor application">
+<p>
+    <b>Tomcat<version-major/>w</b> is a GUI application for monitoring and
+    configuring Tomcat services.
+</p>
+    <p>The available command line options are:</p>
+
+    <table class="defaultTable">
+    <tr><td><b>//ES//</b></td>
+        <td>Edit service configuration</td>
+        <td>This is the default operation. It is called if the no option is
+            provided but the executable is renamed to <b>servicenameW.exe</b></td>
+    </tr>
+    <tr><td><b>//MS//</b></td>
+        <td>Monitor service</td>
+        <td>Put the icon in the system tray</td>
+    </tr>
+    </table>
+
+</section>
+<section name="Command line arguments">
+<p>
+    Each command line directive is in the form of <b>//XX//ServiceName</b>
+</p>
+    <p>The available command line options are:</p>
+
+    <table class="defaultTable">
+    <tr><td><b>//TS//</b></td>
+        <td>Run the service as console application</td>
+        <td>This is the default operation. It is called if the no option is
+            provided. The ServiceName is the name of the executable without
+            exe suffix, meaning Tomcat<version-major/></td>
+    </tr>
+    <tr><td><b>//RS//</b></td>
+        <td>Run the service</td>
+        <td>Called only from ServiceManager</td>
+    </tr>
+    <tr><td><b>//SS//</b></td>
+        <td>Stop the service</td>
+        <td></td>
+    </tr>
+    <tr><td><b>//US//</b></td>
+        <td>Update service parameters</td>
+        <td></td>
+    </tr>
+    <tr><td><b>//IS//</b></td>
+        <td>Install service</td>
+        <td></td>
+    </tr>
+    <tr><td><b>//DS//</b></td>
+        <td>Delete service</td>
+        <td>Stops the service if running</td>
+    </tr>
+    </table>
+
+</section>
+<section name="Command line parameters">
+<p>
+    Each command parameter is prefixed with <b>--</b>.
+    If the command line is prefixed with <b>++</b> then it's value will
+    be appended to the existing option.
+    If the environment variable with the same name as command line parameter but
+    prefixed with <code>PR_</code> exists it will take precedence.
+    For example:</p>
+<source>set PR_CLASSPATH=xx.jar</source>
+
+<p>is equivalent to providing</p>
+<source>--Classpath=xx.jar</source>
+<p> as command line parameter.</p>
+
+    <table class="defaultTable">
+    <tr>
+    <th>ParameterName</th>
+    <th>Default</th>
+    <th>Description</th>
+    </tr>
+    <tr>
+    <td>--Description</td>
+    <td></td>
+    <td>Service name description (maximum 1024 characters)</td>
+    </tr>
+    <tr>
+    <td>--DisplayName</td>
+    <td>ServiceName</td>
+    <td>Service display name</td>
+    </tr>
+    <tr>
+    <td>--Install</td>
+    <td>procrun.exe //RS//ServiceName</td>
+    <td>Install image</td>
+    </tr>
+    <tr>
+    <td>--Startup</td>
+    <td>manual</td>
+    <td>Service startup mode can be either <b>auto</b> or <b>manual</b></td>
+    </tr>
+    <tr>
+    <td>++DependsOn</td>
+    <td></td>
+    <td>List of services that this service depend on. Dependent services
+        are separated using either <b>#</b> or <b>;</b> characters</td>
+    </tr>
+    <tr>
+    <td>++Environment</td>
+    <td></td>
+    <td>List of environment variables that will be provided to the service
+        in the form <b>key=value</b>. They are separated using either
+        <b>#</b> or <b>;</b> characters. If you need to use either the <b>#</b>
+        or <b>;</b> character within a value then the entire value must be
+        enclosed inside single quotes.</td>
+    </tr>
+    <tr>
+    <td>--User</td>
+    <td></td>
+    <td>User account used for running executable. It is used only for
+        StartMode <b>java</b> or <b>exe</b> and enables running applications
+        as service under account without LogonAsService privilege.</td>
+    </tr>
+    <tr>
+    <td>--Password</td>
+    <td></td>
+    <td>Password for user account set by --User parameter</td>
+    </tr>
+    <tr>
+    <td>--JavaHome</td>
+    <td>JAVA_HOME</td>
+    <td>Set a different JAVA_HOME than defined by JAVA_HOME environment
+        variable</td>
+    </tr>
+    <tr>
+    <td>--Jvm</td>
+    <td>auto</td>
+    <td>Use either <b>auto</b> (i.e. find the JVM from the Windows registry)
+        or specify the full path to the <b>jvm.dll</b>.
+        You can use the environment variable expansion here.</td>
+    </tr>
+    <tr>
+    <td>++JvmOptions</td>
+    <td>-Xrs</td>
+    <td>List of options in the form of <b>-D</b> or <b>-X</b> that will be
+        passed to the JVM. The options are separated using either
+        <b>#</b> or <b>;</b> characters. (Not used in <b>exe</b> mode.)</td>
+    </tr>
+    <tr>
+    <td>--Classpath</td>
+    <td></td>
+    <td>Set the Java classpath. (Not used in <b>exe</b> mode.)</td>
+    </tr>
+    <tr>
+    <td>--JvmMs</td>
+    <td></td>
+    <td>Initial memory pool size in MB. (Not used in <b>exe</b> mode.)</td>
+    </tr>
+    <tr>
+    <td>--JvmMx</td>
+    <td></td>
+    <td>Maximum memory pool size in MB. (Not used in <b>exe</b> mode.)</td>
+    </tr>
+    <tr>
+    <td>--JvmSs</td>
+    <td></td>
+    <td>Thread stack size in KB. (Not used in <b>exe</b> mode.)</td>
+    </tr>
+    <tr>
+    <td>--StartMode</td>
+    <td></td>
+    <td>One of <b>jvm</b>, <b>Java</b> or <b>exe</b>. The modes are:
+      <ul>
+        <li>jvm - start Java in-process. Depends on jvm.dll, see <b>--Jvm</b>.</li>
+        <li>Java - same as exe, but automatically uses the default Java
+         executable, i.e. %JAVA_HOME%\bin\java.exe. Make sure JAVA_HOME is set
+         correctly, or use --JavaHome to provide the correct location.
+         If neither is set, procrun will try to find the default JDK (not JRE)
+         from the Windows registry.</li>
+        <li>exe - run the image as a separate process</li>
+      </ul>
+    </td>
+    </tr>
+    <tr>
+    <td>--StartImage</td>
+    <td></td>
+    <td>Executable that will be run. Only applies to <b>exe</b> mode.</td>
+    </tr>
+    <tr>
+    <td>--StartPath</td>
+    <td></td>
+    <td>Working path for the start image executable.</td>
+    </tr>
+    <tr>
+    <td>--StartClass</td>
+    <td>Main</td>
+    <td>Class that contains the startup method. Applies to the <b>jvm</b> and
+        <b>Java</b> modes. (Not used in <b>exe</b> mode.) </td>
+    </tr>
+    <tr>
+    <td>--StartMethod</td>
+    <td>main</td>
+    <td>Method name if differs then main</td>
+    </tr>
+    <tr>
+    <td>++StartParams</td>
+    <td></td>
+    <td>List of parameters that will be passed to either StartImage or
+        StartClass. Parameters are separated using either <b>#</b> or
+        <b>;</b> character.</td>
+    </tr>
+    <tr>
+    <td>--StopMode</td>
+    <td></td>
+    <td>One of <b>jvm</b>, <b>Java</b> or <b>exe</b>. See <b>--StartMode</b>
+        for further details. </td>
+    </tr>
+    <tr>
+    <td>--StopImage</td>
+    <td></td>
+    <td>Executable that will be run on Stop service signal. Only applies to
+        <b>exe</b> mode.</td>
+    </tr>
+    <tr>
+    <td>--StopPath</td>
+    <td></td>
+    <td>Working path for the stop image executable. Does not apply to <b>jvm</b>
+        mode.</td>
+    </tr>
+    <tr>
+    <td>--StopClass</td>
+    <td>Main</td>
+    <td>Class that will be used on Stop service signal. Applies to the
+        <b>jvm</b> and <b>Java</b> modes. </td>
+    </tr>
+    <tr>
+    <td>--StopMethod</td>
+    <td>main</td>
+    <td>Method name if differs then main</td>
+    </tr>
+    <tr>
+    <td>++StopParams</td>
+    <td></td>
+    <td>List of parameters that will be passed to either StopImage or
+        StopClass. Parameters are separated using either <b>#</b> or
+        <b>;</b> character.</td>
+    </tr>
+    <tr>
+    <td>--StopTimeout</td>
+    <td>No Timeout</td>
+    <td>Defines the timeout in seconds that procrun waits for service to
+        exit gracefully.</td>
+    </tr>
+    <tr>
+    <td>--LogPath</td>
+    <td>%SystemRoot%\System32\LogFiles\Apache</td>
+    <td>Defines the path for logging. Creates the directory if necessary.</td>
+    </tr>
+    <tr>
+    <td>--LogPrefix</td>
+    <td>commons-daemon</td>
+    <td>Defines the service log filename prefix. The log file is created in the
+        LogPath directory with <code>.YEAR-MONTH-DAY.log</code> suffix</td>
+    </tr>
+    <tr>
+    <td>--LogLevel</td>
+    <td>Info</td>
+    <td>Defines the logging level and can be either <b>Error</b>,
+        <b>Info</b>, <b>Warn</b> or <b>Debug</b>. (Case insensitive).</td>
+    </tr>
+    <tr>
+    <td>--StdOutput</td>
+    <td></td>
+    <td>Redirected stdout filename.
+        If named <b>auto</b> then file is created inside <b>LogPath</b> with the
+        name <b>service-stdout.YEAR-MONTH-DAY.log</b>.</td>
+    </tr>
+    <tr>
+    <td>--StdError</td>
+    <td></td>
+    <td>Redirected stderr filename.
+        If named <b>auto</b> then file is created inside <b>LogPath</b> with the
+        name <b>service-stderr.YEAR-MONTH-DAY.log</b>.</td>
+    </tr>
+    <tr>
+    <td>--PidFile</td>
+    <td></td>
+    <td>Defines the file name for storing the running process id. Actual file is
+        created in the <b>LogPath</b> directory</td>
+    </tr>
+    </table>
+
+</section>
+<section name="Installing services">
+<p>
+The safest way to manually install the service is to use the provided
+<b>service.bat</b> script. Administrator privileges are required to run this
+script. If necessary, you can use the <code>/user</code> switch to specify
+a user to use for the installation of the service.
+</p>
+<p>
+<strong>NOTE:</strong> On Windows Vista or any later operating system with User
+Account Control (UAC) enabled you will be asked for additional privileges
+when 'Tomcat<version-major/>.exe' is launched by the script.<br/>
+If you want to pass additional options to service installer as
+<code>PR_*</code> environment variables, you have to either configure them
+globally in OS, or launch the program that sets them with elevated privileges
+(e.g. right-click on cmd.exe and select "Run as administrator"; on Windows 8
+(or later) or Windows Server 2012 (or later), you can open an elevated command
+prompt for the current directory from the Explorer
+by clicking on the "File" menu bar). See issue <bug>56143</bug> for details.
+</p>
+
+<source>Install the service named 'Tomcat<version-major/>'
+C:\> service.bat install</source>
+
+<p>There is a 2nd optional parameter that lets you specify the name of the
+service, as displayed in Windows services.</p>
+
+<source>Install the service named 'MyService'
+C:\> service.bat install MyService</source>
+
+<p>
+If using tomcat<version-major/>.exe, you need to use the <b>//IS//</b> parameter.</p>
+
+<source>Install the service named 'Tomcat<version-major/>'
+C:\> tomcat<version-major/> //IS//Tomcat<version-major/> --DisplayName="Apache Tomcat <version-major/>" ^
+     --Install="C:\Program Files\Tomcat\bin\tomcat<version-major/>.exe" --Jvm=auto ^
+     --StartMode=jvm --StopMode=jvm ^
+     --StartClass=org.apache.catalina.startup.Bootstrap --StartParams=start ^
+     --StopClass=org.apache.catalina.startup.Bootstrap --StopParams=stop</source>
+
+</section>
+<section name="Updating services">
+<p>
+To update the service parameters, you need to use the <b>//US//</b> parameter.
+</p>
+
+<source>Update the service named 'Tomcat<version-major/>'
+C:\> tomcat<version-major/> //US//Tomcat<version-major/> --Description="Apache Tomcat Server - http://tomcat.apache.org/ " ^
+     --Startup=auto --Classpath=%JAVA_HOME%\lib\tools.jar;%CATALINA_HOME%\bin\bootstrap.jar</source>
+
+<p>If you gave the service an optional name, you need to specify it like this:
+</p>
+
+<source>Update the service named 'MyService'
+C:\> tomcat<version-major/> //US//MyService --Description="Apache Tomcat Server - http://tomcat.apache.org/ " ^
+     --Startup=auto --Classpath=%JAVA_HOME%\lib\tools.jar;%CATALINA_HOME%\bin\bootstrap.jar</source>
+
+</section>
+<section name="Removing services">
+<p>
+To remove the service, you need to use the <b>//DS//</b> parameter.<br/>
+If the service is running it will be stopped and then deleted.</p>
+
+<source>Remove the service named 'Tomcat<version-major/>'
+C:\> tomcat<version-major/> //DS//Tomcat<version-major/></source>
+
+<p>If you gave the service an optional name, you need to specify it like this:
+</p>
+
+<source>Remove the service named 'MyService'
+C:\> tomcat<version-major/> //DS//MyService</source>
+
+</section>
+<section name="Debugging services">
+<p>
+To run the service in console mode, you need to use the <b>//TS//</b> parameter.
+The service shutdown can be initiated by pressing <b>CTRL+C</b> or
+<b>CTRL+BREAK</b>.
+If you rename the tomcat<version-major/>.exe to testservice.exe then you can just execute the
+testservice.exe and this command mode will be executed by default.</p>
+
+<source>Run the service named 'Tomcat<version-major/>' in console mode
+C:\> tomcat<version-major/> //TS//Tomcat<version-major/> [additional arguments]
+Or simply execute:
+C:\> tomcat<version-major/></source>
+
+</section>
+<section name="Multiple Instances">
+<p>
+Tomcat supports installation of multiple instances. You can have a single
+installation of Tomcat with multiple instances running on different IP/port
+combinations, or multiple Tomcat versions, each running one or more instances on
+different IP/ports.</p>
+<p>
+Each instance folder will need the following structure:
+</p>
+<ul>
+<li>conf</li>
+<li>logs</li>
+<li>temp</li>
+<li>webapps</li>
+<li>work</li>
+</ul>
+<p>
+At a minimum, conf should contain a copy of the following files from
+CATALINA_HOME\conf\. Any files not copied and edited, will be picked up by
+default from CATALINA_HOME\conf, i.e. CATALINA_BASE\conf files override defaults
+from CATALINA_HOME\conf.</p>
+<ul>
+<li>server.xml</li>
+<li>web.xml</li>
+</ul>
+<p>
+You must edit CATALINA_BASE\conf\server.xml to specify a unique IP/port for the
+instance to listen on. Find the line that contains
+<code>&lt;Connector port="8080" ...</code> and add an address attribute and/or
+update the port number so as to specify a unique IP/port combination.</p>
+<p>
+To install an instance, first set the CATALINA_HOME environment variable to the
+name of the Tomcat installation directory. Then create a second environment
+variable CATALINA_BASE and point this to the instance folder. Then run "service
+install" command specifying a service name.</p>
+
+<source>set CATALINA_HOME=c:\tomcat_<version-major/>
+set CATALINA_BASE=c:\tomcat_<version-major/>\instances\instance1
+service install instance1</source>
+
+<p>
+To modify the service settings, you can run <b>tomcat<version-major/>w //ES//instance1</b>.
+</p>
+<p>
+For additional instances, create additional instance folder, update the
+CATALINA_BASE environment variable, and run the service install again.</p>
+
+<source>set CATALINA_BASE=c:\tomcat_<version-major/>\instances\instance2
+service install instance2</source>
+
+</section>
+</body>
+</document>

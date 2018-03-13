@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html><head>
+  <script src="jquery/jquery-1.9.1.min.js"></script>
+  <script src="rabbitmq/sockjs-0.3.js"></script>
+  <script src="rabbitmq/stomp.js"></script>
+  <style>
+      .box {
+          width: 440px;
+          float: left;
+          margin: 0 20px 0 20px;
+      }
+
+      .box div, .box input {
+          border: 1px solid;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
+          width: 100%;
+          padding: 5px;
+          margin: 3px 0 10px 0;
+      }
+
+      .box div {
+          border-color: grey;
+          height: 300px;
+          overflow: auto;
+      }
+
+      div code {
+          display: block;
+      }
+
+      #first div code {
+          -moz-border-radius: 2px;
+          border-radius: 2px;
+          border: 1px solid #eee;
+          margin-bottom: 5px;
+      }
+
+      #second div {
+          font-size: 0.8em;
+      }
+  </style>
+  <title>RabbitMQ Web STOMP Examples : Echo Server</title>
+  <link href="main.css" rel="stylesheet" type="text/css"/>
+</head><body lang="en">
+    <h1><a href="index.html">RabbitMQ Web STOMP Examples</a> > Echo Server</h1>
+
+    <div id="first" class="box">
+      <h2>Received</h2>
+      <div></div>
+      <form><input autocomplete="off" value="Type here..."></input></form>
+    </div>
+
+    <div id="second" class="box">
+      <h2>Logs</h2>
+      <div></div>
+    </div>
+
+    <script>
+        var has_had_focus = false;
+        var pipe = function(el_name, send) {
+            var div  = $(el_name + ' div');
+            var inp  = $(el_name + ' input');
+            var form = $(el_name + ' form');
+
+            var print = function(m, p) {
+                p = (p === undefined) ? '' : JSON.stringify(p);
+                div.append($("<code>").text(m + ' ' + p));
+                div.scrollTop(div.scrollTop() + 10000);
+            };
+
+            if (send) {
+                form.submit(function() {
+                    send(inp.val());
+                    inp.val('');
+                    return false;
+                });
+            }
+            return print;
+        };
+        
+        var print_first = pipe('#first', function(data) {
+            //client.send('/topic/test', {"content-type":"text/plain"}, data);
+        });
+
+// Stomp.js boilerplate
+if (location.search == '?ws') {
+    var ws = new WebSocket('ws://192.168.1.105:15674/ws');
+} else {
+    var ws = new SockJS('http://192.168.1.105:15674/stomp');
+}
+
+// Init Client
+var client = Stomp.over(ws);
+
+// SockJS does not support heart-beat: disable heart-beats
+client.heartbeat.outgoing = 0;
+client.heartbeat.incoming = 0;
+client.debug = pipe('#second');
+
+// Declare on_connect
+var on_connect = function(x) {
+    client.subscribe("/exchange/rabbitmq/yuchao", function(d) {
+         print_first(d.body);
+    });
+};
+
+// Declare on_error
+var on_error =  function() {
+  console.log('error');
+};
+
+// Conect to RabbitMQ
+client.connect('guest', 'guest', on_connect, on_error, '/');
+
+      $('#first input').focus(function() {
+          if (!has_had_focus) {
+              has_had_focus = true;
+              $(this).val("");
+          }
+      });
+    </script>
+</body></html>

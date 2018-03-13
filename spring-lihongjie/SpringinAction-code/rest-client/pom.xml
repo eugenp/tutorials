@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+        http://maven.apache.org/maven-v4_0_0.xsd">
+
+ <modelVersion>4.0.0</modelVersion>
+ <name>Spitter</name>
+ <groupId>com.habuma.spitter</groupId>
+ <artifactId>rest-client</artifactId>
+ <version>1.0.0-SNAPSHOT</version>
+
+ <packaging>jar</packaging>
+
+ <properties>
+  <spring.version>3.0.4.RELEASE</spring.version>
+  <spring.security.version>3.0.3.RELEASE</spring.security.version>
+ </properties>
+
+ <build>
+  <plugins>
+   <plugin>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+     <source>1.5</source>
+     <target>1.5</target>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+
+ <dependencies>
+  <dependency>
+   <groupId>log4j</groupId>
+   <artifactId>log4j</artifactId>
+   <version>1.2.13</version>
+  </dependency>
+
+  <dependency>
+   <groupId>org.springframework</groupId>
+   <artifactId>spring-web</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+
+  <dependency>
+   <groupId>com.habuma.spitter.domain</groupId>
+   <artifactId>jpa-annotated</artifactId>
+   <version>1.0.0-SNAPSHOT</version>
+  </dependency>
+
+  <dependency>
+   <groupId>org.codehaus.jackson</groupId>
+   <artifactId>jackson-mapper-asl</artifactId>
+   <version>1.4.2</version>
+  </dependency>
+
+  <dependency>
+   <groupId>org.codehaus.jackson</groupId>
+   <artifactId>jackson-core-asl</artifactId>
+   <version>1.4.2</version>
+  </dependency>
+
+  <dependency>
+    <groupId>javax.xml</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.1</version>
+  </dependency>    
+    
+  <dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.0.1</version>
+  </dependency>
+
+  <dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>1.4</version>
+  </dependency>
+  
+  <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.8.1</version>
+  </dependency>
+ </dependencies>
+
+</project>

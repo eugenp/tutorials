@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+    http://www.springframework.org/schema/jdbc 
+    http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+    <bean:import resource="classpath:ch06/job-context.xml"/>
+    
+    <jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:/ch06/db/create-tables-mysql.sql" />
+	</jdbc:initialize-database>
+    
+    <job id="ibatisPagingReadJob">
+        <step id="ibatisPagingReadStep">
+            <tasklet transaction-manager="transactionManager">
+                <chunk reader="ibatisPagingItemReader" processor="creditBillProcessor" 
+                    writer="creditItemWriter" commit-interval="2"></chunk>
+            </tasklet>
+        </step>
+    </job>
+    
+    <!-- Ibatis分页读取数据库 -->
+    <bean:bean id="ibatisPagingItemReader" scope="step"
+		class="org.springframework.batch.item.database.IbatisPagingItemReader">
+		<!-- <bean:property name="queryId" value="getAllCredits" /> -->
+		<bean:property name="queryId" value="getCreditsById" />
+		<bean:property name="sqlMapClient" ref="sqlMapClient" />
+		<bean:property name="parameterValues">
+		    <bean:map>
+				<bean:entry key="begin" value="#{jobParameters['id_begin']}" />
+				<bean:entry key="end" value="#{jobParameters['id_end']}" />
+			</bean:map>
+		</bean:property>
+	</bean:bean>
+	
+    <bean:bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<bean:property name="dataSource" ref="dataSource" />
+		<bean:property name="configLocation" value="classpath:/ch06/ibatis/ibatis-config.xml" />	
+	</bean:bean>
+    
+    <bean:bean id="creditBillProcessor" scope="step"
+        class="com.juxtapose.example.ch06.ibatis.CreditBillProcessor">
+    </bean:bean>
+    
+    <bean:bean id="creditItemWriter" 
+        class="com.juxtapose.example.ch06.ibatis.DummyCreditItemWriter"/>
+    
+</bean:beans>

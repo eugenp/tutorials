@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!--<start id="bean_jpa_emf"/>--> 
+  <bean id="emf" class=
+      "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="dataSource" ref="dataSource" />
+    <property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+  </bean>
+  <!--<end id="bean_jpa_emf"/>-->
+
+  <!-- <start id="bean.jpa_emf_app" />
+  <bean id="emf" 
+      class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+    <property name="persistenceUnitName" value="spitterPU" />
+  </bean>
+  <end id="bean.jpa_emf_app" /> -->
+
+  <!--<start id="bean_hibernateAdapter"/>--> 
+  <bean id="jpaVendorAdapter" 
+      class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+    <property name="database" value="HSQL" />
+    <property name="showSql" value="true"/>
+    <property name="generateDdl" value="false"/>
+    <property name="databasePlatform" 
+              value="org.hibernate.dialect.HSQLDialect" />
+  </bean>
+  <!--<end id="bean_hibernateAdapter"/>-->
+
+ <!--<start id="bean_exception_translation_post_processor" />--> 
+<bean class=
+ "org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"
+/>
+ <!--<end id="bean_exception_translation_post_processor" />-->
+
+
+  <!--<start id="bean_persistenceAnnotationBeanPostProcessor"/>--> 
+<bean class=
+  "org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+  <!--<end id="bean_persistenceAnnotationBeanPostProcessor"/>-->
+
+  <bean id="transactionManager"
+      class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="emf" />
+  </bean>
+
+  <!-- 3-show the dao class  -->
+  <context:component-scan base-package="com.habuma.spitter.persistence" />
+</beans>

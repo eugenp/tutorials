@@ -1,0 +1,1367 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="manager-howto.html">
+
+    &project;
+
+    <properties>
+        <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+        <title>Manager App HOW-TO</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+<p>In many production environments, it is very useful to have the capability
+to deploy a new web application, or undeploy an existing one, without having
+to shut down and restart the entire container.  In addition, you can request
+an existing application to reload itself, even if you have not declared it
+to be <code>reloadable</code> in the Tomcat server
+configuration file.</p>
+
+<p>To support these capabilities, Tomcat includes a web application
+(installed by default on context path <code>/manager</code>) that supports
+the following functions:</p>
+<ul>
+<li>Deploy a new web application from the uploaded contents of a WAR file.</li>
+<li>Deploy a new web application, on a specified context path, from the
+    server file system.</li>
+<li>List the currently deployed web applications, as well as the
+    sessions that are currently active for those web apps.</li>
+<li>Reload an existing web application, to reflect changes in the
+    contents of <code>/WEB-INF/classes</code> or <code>/WEB-INF/lib</code>.
+    </li>
+<li>List the OS and JVM property values.</li>
+<li>List the available global JNDI resources, for use in deployment
+    tools that are preparing <code>&lt;ResourceLink&gt;</code> elements
+    nested in a <code>&lt;Context&gt;</code> deployment description.</li>
+<li>Start a stopped application (thus making it available again).</li>
+<li>Stop an existing application (so that it becomes unavailable), but
+    do not undeploy it.</li>
+<li>Undeploy a deployed web application and delete its document base
+    directory (unless it was deployed from file system).</li>
+</ul>
+
+<p>A default Tomcat installation includes the Manager. To add an instance of the
+Manager web application <code>Context</code> to a new host install the
+<code>manager.xml</code> context configuration file in the
+<code>$CATALINA_BASE/conf/[enginename]/[hostname]</code> folder. Here is an
+example:</p>
+<source><![CDATA[<Context privileged="true" antiResourceLocking="false"
+         docBase="${catalina.home}/webapps/manager">
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.0\.0\.1" />
+</Context>]]></source>
+
+<p>If you have Tomcat configured to support multiple virtual hosts
+(websites) you would need to configure a Manager for each.</p>
+
+<p>There are three ways to use the <strong>Manager</strong> web application.</p>
+<ul>
+<li>As an application with a user interface you use in your browser.
+Here is an example URL where you can replace <code>localhost</code> with
+your website host name:  <code>http://localhost:8080/manager/html</code> .</li>
+<li>A minimal version using HTTP requests only which is suitable for use
+by scripts setup by system administrators.  Commands are given as part of the
+request URI, and responses are in the form of simple text that can be easily
+parsed and processed.  See <a href="#Supported_Manager_Commands">
+Supported Manager Commands</a> for more information.</li>
+<li>A convenient set of task definitions for the <em>Ant</em>
+(version 1.4 or later) build tool.  See
+<a href="#Executing_Manager_Commands_With_Ant">Executing Manager Commands
+With Ant</a> for more information.</li>
+</ul>
+
+</section>
+
+<section name="Configuring Manager Application Access">
+
+
+    <p><em>The description below uses the variable name $CATALINA_BASE to refer the
+    base directory against which most relative paths are resolved. If you have
+    not configured Tomcat for multiple instances by setting a CATALINA_BASE
+    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
+    the directory into which you have installed Tomcat.</em></p>
+
+
+<p>It would be quite unsafe to ship Tomcat with default settings that allowed
+anyone on the Internet to execute the Manager application on your server.
+Therefore, the Manager application is shipped with the requirement that anyone
+who attempts to use it must authenticate themselves, using a username and
+password that have one of <strong>manager-xxx</strong> roles associated with
+them (the role name depends on what functionality is required).
+Further, there is no username in the default users file
+(<code>$CATALINA_BASE/conf/tomcat-users.xml</code>) that is assigned to those
+roles.  Therefore, access to the Manager application is completely disabled
+by default.</p>
+
+<p>You can find the role names in the <code>web.xml</code> file of the Manager
+web application. The available roles are:</p>
+
+<ul>
+  <li><strong>manager-gui</strong> &#8212; Access to the HTML interface.</li>
+  <li><strong>manager-status</strong> &#8212; Access to the "Server Status"
+    page only.</li>
+  <li><strong>manager-script</strong> &#8212; Access to the tools-friendly
+    plain text interface that is described in this document,
+    and to the "Server Status" page.</li>
+  <li><strong>manager-jmx</strong> &#8212; Access to JMX proxy interface
+    and to the "Server Status" page.</li>
+</ul>
+
+<p>The HTML interface is protected against CSRF (Cross-Site Request Forgery)
+attacks, but the text and JMX interfaces cannot be protected. It means that
+users who are allowed access to the text and JMX interfaces have to be cautious
+when accessing the Manager application with a web browser.
+To maintain the CSRF protection:</p>
+
+<ul>
+  <li>If you use web browser to access the Manager application using
+      a user that has either <strong>manager-script</strong> or
+      <strong>manager-jmx</strong> roles (for example for testing
+      the plain text or JMX interfaces), you MUST close all windows
+      of the browser afterwards to terminate the session.
+      If you do not close the browser and visit other sites, you may become
+      victim of a CSRF attack.</li>
+  <li>It is recommended to never grant
+      the <strong>manager-script</strong> or <strong>manager-jmx</strong>
+      roles to users that have the <strong>manager-gui</strong> role.</li>
+</ul>
+
+<p><strong>Note</strong> that JMX proxy interface is effectively low-level root-like
+administrative interface of Tomcat. One can do a lot, if he knows
+what commands to call. You should be cautious when enabling the
+<strong>manager-jmx</strong> role.</p>
+
+<p>To enable access to the Manager web application, you must either create
+a new username/password combination and associate one of the
+<strong>manager-xxx</strong> roles with it, or add a
+<strong>manager-xxx</strong> role
+to some existing username/password combination.
+As the majority of this document describes the using the text interface, this
+example will use the role name <strong>manager-script</strong>.
+Exactly how the usernames/passwords are configured depends on which
+<a href="config/realm.html">Realm implementation</a> you are using:</p>
+<ul>
+<li><em>UserDatabaseRealm</em> plus <em>MemoryUserDatabase</em>, or <em>MemoryRealm</em>
+    &#8212; The <em>UserDatabaseRealm</em> and <em>MemoryUserDatabase</em> are
+    configured in the default <code>$CATALINA_BASE/conf/server.xml</code>.
+    Both <em>MemoryUserDatabase</em> and <em>MemoryRealm</em> read an
+    XML-format file by default stored at
+    <code>$CATALINA_BASE/conf/tomcat-users.xml</code>, which can be
+    edited with any text editor.  This file contains an XML
+    <code>&lt;user&gt;</code> for each individual user, which might
+    look something like this:
+<source><![CDATA[<user username="craigmcc" password="secret" roles="standard,manager-script" />]]></source>
+    which defines the username and password used by this individual to
+    log on, and the role names he or she is associated with.  You can
+    add the <strong>manager-script</strong> role to the comma-delimited
+    <code>roles</code> attribute for one or more existing users, and/or
+    create new users with that assigned role.</li>
+<li><em>DataSourceRealm</em> or <em>JDBCRealm</em>
+    &#8212; Your user and role information is stored in
+    a database accessed via JDBC.  Add the <strong>manager-script</strong> role
+    to one or more existing users, and/or create one or more new users
+    with this role assigned, following the standard procedures for your
+    environment.</li>
+<li><em>JNDIRealm</em> &#8212; Your user and role information is stored in
+    a directory server accessed via LDAP.  Add the
+    <strong>manager-script</strong> role to one or more existing users,
+    and/or create one or more new users with this role assigned, following
+    the standard procedures for your environment.</li>
+</ul>
+
+<p>The first time you attempt to issue one of the Manager commands
+described in the next section, you will be challenged to log on using
+BASIC authentication.  The username and password you enter do not matter,
+as long as they identify a valid user in the users database who possesses
+the role <strong>manager-script</strong>.</p>
+
+<p>In addition to the password restrictions, access to the Manager web
+application can be restricted by the <strong>remote IP address</strong> or host
+by adding a <code>RemoteAddrValve</code> or <code>RemoteHostValve</code>.
+See <a href="config/valve.html#Remote_Address_Filter">valves documentation</a>
+for details. Here is
+an example of restricting access to the localhost by IP address:</p>
+<source><![CDATA[<Context privileged="true">
+         <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+                allow="127\.0\.0\.1"/>
+</Context>]]></source>
+
+</section>
+
+<section name="HTML User-friendly Interface">
+
+<p>The user-friendly HTML interface of Manager web application is located at</p>
+
+<source>http://{host}:{port}/manager/html</source>
+
+<p>As has already been mentioned above, you need <strong>manager-gui</strong>
+role to be allowed to access it. There is a separate document that provides
+help on this interface. See:</p>
+
+<ul>
+  <li><a href="html-manager-howto.html">HTML Manager documentation</a></li>
+</ul>
+
+<p>The HTML interface is protected against CSRF (Cross-Site Request Forgery)
+attacks. Each access to the HTML pages generates a random token, which is
+stored in your session and is included in all links on the page. If your next
+action does not have correct value of the token, the action will be denied.
+If the token has expired you can start again from the main page or
+<em>List Applications</em> page of Manager.</p>
+
+</section>
+
+<section name="Supported Manager Commands">
+
+<p>All commands that the Manager application knows how to process are
+specified in a single request URI like this:</p>
+<source>http://{host}:{port}/manager/text/{command}?{parameters}</source>
+<p>where <code>{host}</code> and <code>{port}</code> represent the hostname
+and port number on which Tomcat is running, <code>{command}</code>
+represents the Manager command you wish to execute, and
+<code>{parameters}</code> represents the query parameters
+that are specific to that command.  In the illustrations below, customize
+the host and port appropriately for your installation.</p>
+
+<p>The commands are usually executed by HTTP GET requests. The
+<code>/deploy</code> command has a form that is executed by an HTTP PUT request.</p>
+
+<subsection name="Common Parameters">
+
+<p>Most commands accept one or more of the following query parameters:</p>
+<ul>
+<li><strong>path</strong> - The context path (including the leading slash)
+    of the web application you are dealing with.  To select the ROOT web
+    application, specify "/".  <strong>NOTE</strong>:
+    It is not possible to perform administrative commands on the
+    Manager application itself.</li>
+<li><strong>version</strong> - The version of this web application as used by
+    the <a href="config/context.html">parallel deployment</a> feature. If you
+    use parallel deployment wherever a path is required you must specify a
+    version in addition to the path and it is the combination of path and
+    version that must be unique rather than just the path.</li>
+<li><strong>war</strong> - URL of a web application archive (WAR) file, or
+    pathname of a directory which contains the web application, or a
+    Context configuration ".xml" file.  You can use URLs in any of the
+    following formats:
+    <ul>
+    <li><strong>file:/absolute/path/to/a/directory</strong> - The absolute
+        path of a directory that contains the unpacked version of a web
+        application.  This directory will be attached to the context path
+        you specify without any changes.</li>
+    <li><strong>file:/absolute/path/to/a/webapp.war</strong> - The absolute
+        path of a web application archive (WAR) file.  This is valid
+        <strong>only</strong> for the <code>/deploy</code> command, and is
+        the only acceptable format to that command.</li>
+    <li><strong>file:/absolute/path/to/a/context.xml</strong> - The
+        absolute path of a web application Context configuration ".xml"
+        file which contains the Context configuration element.</li>
+    <li><strong>directory</strong> - The directory name for the web
+        application context in the Host's application base directory.</li>
+    <li><strong>webapp.war</strong> - The name of a web application war file
+        located in the Host's application base directory.</li>
+    </ul></li>
+</ul>
+
+<p>Each command will return a response in <code>text/plain</code> format
+(i.e. plain ASCII with no HTML markup), making it easy for both humans and
+programs to read).  The first line of the response will begin with either
+<code>OK</code> or <code>FAIL</code>, indicating whether the requested
+command was successful or not.  In the case of failure, the rest of the first
+line will contain a description of the problem that was encountered.  Some
+commands include additional lines of information as described below.</p>
+
+<p><em>Internationalization Note</em> - The Manager application looks up
+its message strings in resource bundles, so it is possible that the strings
+have been translated for your platform.  The examples below show the English
+version of the messages.</p>
+
+</subsection>
+
+<subsection name="Deploy A New Application Archive (WAR) Remotely">
+
+<source>http://localhost:8080/manager/text/deploy?path=/foo</source>
+
+<p>Upload the web application archive (WAR) file that is specified as the
+request data in this HTTP PUT request, install it into the <code>appBase</code>
+directory of our corresponding virtual host, and start, deriving the name for
+the WAR file added to the <code>appBase</code> from the specified path. The
+application can later be undeployed (and the corresponding WAR file removed) by
+use of the <code>/undeploy</code> command.</p>
+
+<p>This command is executed by an HTTP PUT request.</p>
+
+<p>The .WAR file may include Tomcat specific deployment configuration, by
+including a Context configuration XML file in
+<code>/META-INF/context.xml</code>.</p>
+
+<p>URL parameters include:</p>
+<ul>
+<li><code>update</code>: When set to true, any existing update will be
+    undeployed first. The default value is set to false.</li>
+<li><code>tag</code>: Specifying a tag name, this allows associating the
+    deployed webapp with a tag or label. If the web application is undeployed,
+    it can be later redeployed when needed using only the tag.</li>
+</ul>
+
+<p><strong>NOTE</strong> - This command is the logical
+opposite of the <code>/undeploy</code> command.</p>
+
+<p>If installation and startup is successful, you will receive a response
+like this:</p>
+<source>OK - Deployed application at context path /foo</source>
+
+<p>Otherwise, the response will start with <code>FAIL</code> and include an
+error message.  Possible causes for problems include:</p>
+<ul>
+<li><em>Application already exists at path /foo</em>
+    <p>The context paths for all currently running web applications must be
+    unique.  Therefore, you must undeploy the existing web
+    application using this context path, or choose a different context path
+    for the new one. The <code>update</code> parameter may be specified as
+    a parameter on the URL, with a value of <code>true</code> to avoid this
+    error. In that case, an undeploy will be performed on an existing
+    application before performing the deployment.</p>
+    </li>
+<li><em>Encountered exception</em>
+    <p>An exception was encountered trying to start the new web application.
+    Check the Tomcat logs for the details, but likely explanations include
+    problems parsing your <code>/WEB-INF/web.xml</code> file, or missing
+    classes encountered when initializing application event listeners and
+    filters.</p>
+    </li>
+</ul>
+
+</subsection>
+
+<subsection name="Deploy A New Application from a Local Path">
+
+<p>Deploy and start a new web application, attached to the specified context
+<code>path</code> (which must not be in use by any other web application).
+This command is the logical opposite of the <code>/undeploy</code> command.</p>
+
+<p>This command is executed by an HTTP GET request.
+There are a number of different ways the deploy command can be used.</p>
+
+<subsection name="Deploy a previously deployed webapp">
+
+<source>http://localhost:8080/manager/text/deploy?path=/footoo&amp;tag=footag</source>
+
+<p>This can be used to deploy a previously deployed web application, which
+has been deployed using the <code>tag</code> attribute. Note that the work
+directory of the Manager webapp will contain the previously deployed WARs;
+removing it would make the deployment fail.</p>
+
+</subsection>
+
+<subsection name="Deploy a Directory or WAR by URL">
+
+<p>Deploy a web application directory or ".war" file located on the Tomcat
+server. If no <code>path</code> is specified, the path and version are derived
+from the directory name or the war file name. The <code>war</code> parameter
+specifies a URL (including the <code>file:</code> scheme) for either
+a directory or a web application archive (WAR) file. The supported syntax for
+a URL referring to a WAR file is described on the Javadocs page for the
+<code>java.net.JarURLConnection</code> class.  Use only URLs that refer to
+the entire WAR file.</p>
+
+<p>In this example the web application located in the directory
+<code>/path/to/foo</code> on the Tomcat server is deployed as the
+web application context named <code>/footoo</code>.</p>
+<source>http://localhost:8080/manager/text/deploy?path=/footoo&amp;war=file:/path/to/foo</source>
+
+
+<p>In this example the ".war" file <code>/path/to/bar.war</code> on the
+Tomcat server is deployed as the web application context named
+<code>/bar</code>. Notice that there is no <code>path</code> parameter
+so the context path defaults to the name of the web application archive
+file without the ".war" extension.</p>
+<source>http://localhost:8080/manager/text/deploy?war=file:/path/to/bar.war</source>
+
+</subsection>
+
+<subsection name="Deploy a Directory or War from the Host appBase">
+
+<p>Deploy a web application directory or ".war" file located in your Host
+appBase directory. The path and optional version are derived from the directory
+or war file name.</p>
+
+<p>In this example the web application located in a sub directory named
+<code>foo</code> in the Host appBase directory of the Tomcat server is
+deployed as the web application context named <code>/foo</code>. Notice
+that the context path used is the name of the web application directory.</p>
+<source>http://localhost:8080/manager/text/deploy?war=foo</source>
+
+
+<p>In this example the ".war" file <code>bar.war</code> located in your
+Host appBase directory on the Tomcat server is deployed as the web
+application context named <code>/bar</code>.</p>
+<source>http://localhost:8080/manager/text/deploy?war=bar.war</source>
+
+</subsection>
+
+<subsection name="Deploy using a Context configuration &quot;.xml&quot; file">
+
+<p>If the Host deployXML flag is set to true you can deploy a web
+application using a Context configuration ".xml" file and an optional
+".war" file or web application directory. The context <code>path</code>
+is not used when deploying a web application using a context ".xml"
+configuration file.</p>
+
+<p>A Context configuration ".xml" file can contain valid XML for a
+web application Context just as if it were configured in your
+Tomcat <code>server.xml</code> configuration file. Here is an
+example:</p>
+<source><![CDATA[<Context path="/foobar" docBase="/path/to/application/foobar">
+</Context>]]></source>
+
+
+<p>When the optional <code>war</code> parameter is set to the URL
+for a web application ".war" file or directory it overrides any
+docBase configured in the context configuration ".xml" file.</p>
+
+<p>Here is an example of deploying an application using a Context
+configuration ".xml" file.</p>
+<source>http://localhost:8080/manager/text/deploy?config=file:/path/context.xml</source>
+
+
+<p>Here is an example of deploying an application using a Context
+configuration ".xml" file and a web application ".war" file located
+on the server.</p>
+<source>http://localhost:8080/manager/text/deploy
+ ?config=file:/path/context.xml&amp;war=file:/path/bar.war</source>
+
+</subsection>
+
+<subsection name="Deployment Notes">
+
+<p>If the Host is configured with unpackWARs=true and you deploy a war
+file, the war will be unpacked into a directory in your Host appBase
+directory.</p>
+
+<p>If the application war or directory is installed in your Host appBase
+directory and either the Host is configured with autoDeploy=true or the
+Context path must match the directory name or war file name without the
+".war" extension.</p>
+
+<p>For security when untrusted users can manage web applications, the
+Host deployXML flag can be set to false.  This prevents untrusted users
+from deploying web applications using a configuration XML file and
+also prevents them from deploying application directories or ".war"
+files located outside of their Host appBase.</p>
+
+</subsection>
+
+<subsection name="Deploy Response">
+
+<p>If installation and startup is successful, you will receive a response
+like this:</p>
+<source>OK - Deployed application at context path /foo</source>
+
+<p>Otherwise, the response will start with <code>FAIL</code> and include an
+error message.  Possible causes for problems include:</p>
+<ul>
+<li><em>Application already exists at path /foo</em>
+    <p>The context paths for all currently running web applications must be
+    unique.  Therefore, you must undeploy the existing web
+    application using this context path, or choose a different context path
+    for the new one. The <code>update</code> parameter may be specified as
+    a parameter on the URL, with a value of <code>true</code> to avoid this
+    error. In that case, an undeploy will be performed on an existing
+    application before performing the deployment.</p>
+    </li>
+<li><em>Document base does not exist or is not a readable directory</em>
+    <p>The URL specified by the <code>war</code> parameter must identify a
+    directory on this server that contains the "unpacked" version of a
+    web application, or the absolute URL of a web application archive (WAR)
+    file that contains this application.  Correct the value specified by
+    the <code>war</code> parameter.</p>
+    </li>
+<li><em>Encountered exception</em>
+    <p>An exception was encountered trying to start the new web application.
+    Check the Tomcat logs for the details, but likely explanations include
+    problems parsing your <code>/WEB-INF/web.xml</code> file, or missing
+    classes encountered when initializing application event listeners and
+    filters.</p>
+    </li>
+<li><em>Invalid application URL was specified</em>
+    <p>The URL for the directory or web application that you specified
+    was not valid.  Such URLs must start with <code>file:</code>, and URLs
+    for a WAR file must end in ".war".</p>
+    </li>
+<li><em>Invalid context path was specified</em>
+    <p>The context path must start with a slash character. To reference the
+    ROOT web application use "/".</p>
+    </li>
+<li><em>Context path must match the directory or WAR file name:</em>
+    <p>If the application war or directory is installed in your Host appBase
+    directory and either the Host is configured with autoDeploy=true the
+    Context path must match the directory name or war file name without
+    the ".war" extension.</p>
+    </li>
+<li><em>Only web applications in the Host web application directory can
+     be installed</em>
+     <p>
+     If the Host deployXML flag is set to false this error will happen
+     if an attempt is made to deploy a web application directory or
+      ".war" file outside of the Host appBase directory.
+     </p></li>
+</ul>
+
+</subsection>
+</subsection>
+
+<subsection name="List Currently Deployed Applications">
+
+<source>http://localhost:8080/manager/text/list</source>
+
+<p>List the context paths, current status (<code>running</code> or
+<code>stopped</code>), and number of active sessions for all currently
+deployed web applications.  A typical response immediately
+after starting Tomcat might look like this:</p>
+<source>OK - Listed applications for virtual host localhost
+/webdav:running:0:webdav
+/examples:running:0:examples
+/manager:running:0:manager
+/:running:0:ROOT
+/test:running:0:test##2
+/test:running:0:test##1</source>
+
+</subsection>
+
+<subsection name="Reload An Existing Application">
+
+<source>http://localhost:8080/manager/text/reload?path=/examples</source>
+
+<p>Signal an existing application to shut itself down and reload.  This can
+be useful when the web application context is not reloadable and you have
+updated classes or property files in the <code>/WEB-INF/classes</code>
+directory or when you have added or updated jar files in the
+<code>/WEB-INF/lib</code> directory.
+</p>
+
+<p>If this command succeeds, you will see a response like this:</p>
+<source>OK - Reloaded application at context path /examples</source>
+
+<p>Otherwise, the response will start with <code>FAIL</code> and include an
+error message.  Possible causes for problems include:</p>
+<ul>
+<li><em>Encountered exception</em>
+    <p>An exception was encountered trying to restart the web application.
+    Check the Tomcat logs for the details.</p>
+    </li>
+<li><em>Invalid context path was specified</em>
+    <p>The context path must start with a slash character. To reference the
+    ROOT web application use "/".</p>
+    </li>
+<li><em>No context exists for path /foo</em>
+    <p>There is no deployed application on the context path
+    that you specified.</p>
+    </li>
+<li><em>No context path was specified</em>
+    <p>
+    The <code>path</code> parameter is required.
+    </p></li>
+<li><em>Reload not supported on WAR deployed at path /foo</em>
+    <p>
+    Currently, application reloading (to pick up changes to the classes or
+    <code>web.xml</code> file) is not supported when a web application is
+    deployed directly from a WAR file.  It only works when the web application
+    is deployed from an unpacked directory.  If you are using a WAR file,
+    you should <code>undeploy</code> and then <code>deploy</code> or
+    <code>deploy</code> with the <code>update</code> parameter the
+    application again to pick up your changes.
+    </p></li>
+</ul>
+
+</subsection>
+
+<subsection name="List OS and JVM Properties">
+
+<source>http://localhost:8080/manager/text/serverinfo</source>
+
+<p>Lists information about the Tomcat version, OS, and JVM properties.</p>
+
+<p>If an error occurs, the response will start with <code>FAIL</code> and
+include an error message.  Possible causes for problems include:</p>
+<ul>
+<li><em>Encountered exception</em>
+    <p>An exception was encountered trying to enumerate the system properties.
+    Check the Tomcat logs for the details.</p>
+    </li>
+</ul>
+
+</subsection>
+
+<subsection name="List Available Global JNDI Resources">
+
+<source>http://localhost:8080/manager/text/resources[?type=xxxxx]</source>
+
+<p>List the global JNDI resources that are available for use in resource
+links for context configuration files.  If you specify the <code>type</code>
+request parameter, the value must be the fully qualified Java class name of
+the resource type you are interested in (for example, you would specify
+<code>javax.sql.DataSource</code> to acquire the names of all available
+JDBC data sources).  If you do not specify the <code>type</code> request
+parameter, resources of all types will be returned.</p>
+
+<p>Depending on whether the <code>type</code> request parameter is specified
+or not, the first line of a normal response will be:</p>
+<source>OK - Listed global resources of all types</source>
+<p>or</p>
+<source>OK - Listed global resources of type xxxxx</source>
+<p>followed by one line for each resource.  Each line is composed of fields
+delimited by colon characters (":"), as follows:</p>
+<ul>
+<li><em>Global Resource Name</em> - The name of this global JNDI resource,
+    which would be used in the <code>global</code> attribute of a
+    <code>&lt;ResourceLink&gt;</code> element.</li>
+<li><em>Global Resource Type</em> - The fully qualified Java class name of
+    this global JNDI resource.</li>
+</ul>
+
+<p>If an error occurs, the response will start with <code>FAIL</code> and
+include an error message.  Possible causes for problems include:</p>
+<ul>
+<li><em>Encountered exception</em>
+    <p>An exception was encountered trying to enumerate the global JNDI
+    resources.  Check the Tomcat logs for the details.</p>
+    </li>
+<li><em>No global JNDI resources are available</em>
+    <p>The Tomcat server you are running has been configured without
+    global JNDI resources.</p>
+    </li>
+</ul>
+
+
+</subsection>
+
+<subsection name="Session Statistics">
+
+<source>http://localhost:8080/manager/text/sessions?path=/examples</source>
+
+<p>Display the default session timeout for a web application, and the
+number of currently active sessions that fall within one-minute ranges of
+their actual timeout times.  For example, after restarting Tomcat and then
+executing one of the JSP samples in the <code>/examples</code> web app,
+you might get something like this:</p>
+
+<source><![CDATA[OK - Session information for application at context path /examples
+Default maximum session inactive interval 30 minutes
+<1 minutes: 1 sessions
+1 - <2 minutes: 1 sessions]]></source>
+
+</subsection>
+
+<subsection name="Expire Sessions">
+
+<source>http://localhost:8080/manager/text/expire?path=/examples&amp;idle=num</source>
+
+<p>Display the session statistics (like the above <code>/sessions</code>
+command) and expire sessions that are idle for longer than <code>num</code>
+minutes. To expire all sessions, use <code>&amp;idle=0</code> .</p>
+
+<source><![CDATA[OK - Session information for application at context path /examples
+Default maximum session inactive interval 30 minutes
+1 - <2 minutes: 1 sessions
+3 - <4 minutes: 1 sessions
+>0 minutes: 2 sessions were expired]]></source>
+
+<p>Actually <code>/sessions</code> and <code>/expire</code> are synonyms for
+the same command. The difference is in the presence of <code>idle</code>
+parameter.</p>
+
+</subsection>
+
+<subsection name="Start an Existing Application">
+
+<source>http://localhost:8080/manager/text/start?path=/examples</source>
+
+<p>Signal a stopped application to restart, and make itself available again.
+Stopping and starting is useful, for example, if the database required by
+your application becomes temporarily unavailable.  It is usually better to
+stop the web application that relies on this database rather than letting
+users continuously encounter database exceptions.</p>
+
+<p>If this command succeeds, you will see a response like this:</p>
+<source>OK - Started application at context path /examples</source>
+
+<p>Otherwise, the response will start with <code>FAIL</code> and include an
+error message.  Possible causes for problems include:</p>
+<ul>
+<li><em>Encountered exception</em>
+    <p>An exception was encountered trying to start the web application.
+    Check the Tomcat logs for the details.</p>
+    </li>
+<li><em>Invalid context path was specified</em>
+    <p>The context path must start with a slash character. To reference the
+    ROOT web application use "/".</p>
+    </li>
+<li><em>No context exists for path /foo</em>
+    <p>There is no deployed application on the context path
+    that you specified.</p>
+    </li>
+<li><em>No context path was specified</em>
+    <p>
+    The <code>path</code> parameter is required.
+    </p></li>
+</ul>
+
+</subsection>
+
+<subsection name="Stop an Existing Application">
+
+<source>http://localhost:8080/manager/text/stop?path=/examples</source>
+
+<p>Signal an existing application to make itself unavailable, but leave it
+deployed.  Any request that comes in while an application is
+stopped will see an HTTP error 404, and this application will show as
+"stopped" on a list applications command.</p>
+
+<p>If this command succeeds, you will see a response like this:</p>
+<source>OK - Stopped application at context path /examples</source>
+
+<p>Otherwise, the response will start with <code>FAIL</code> and include an
+error message.  Possible causes for problems include:</p>
+<ul>
+<li><em>Encountered exception</em>
+    <p>An exception was encountered trying to stop the web application.
+    Check the Tomcat logs for the details.</p>
+    </li>
+<li><em>Invalid context path was specified</em>
+    <p>The context path must start with a slash character. To reference the
+    ROOT web application use "/".</p>
+    </li>
+<li><em>No context exists for path /foo</em>
+    <p>There is no deployed application on the context path
+    that you specified.</p>
+    </li>
+<li><em>No context path was specified</em>
+    The <code>path</code> parameter is required.
+    </li>
+</ul>
+
+</subsection>
+
+
+<subsection name="Undeploy an Existing Application">
+
+<source>http://localhost:8080/manager/text/undeploy?path=/examples</source>
+
+<p><strong><span style="color: red;">WARNING</span> - This command will delete any web
+application artifacts that exist within <code>appBase</code> directory
+(typically "webapps") for this virtual host</strong>.
+This will delete the application .WAR, if present,
+the application directory resulting either from a deploy in unpacked form
+or from .WAR expansion as well as the XML Context definition from
+<code>$CATALINA_BASE/conf/[enginename]/[hostname]/</code> directory.
+If you simply want to take an application
+out of service, you should use the <code>/stop</code> command instead.</p>
+
+<p>Signal an existing application to gracefully shut itself down, and
+remove it from Tomcat (which also makes this context path available for
+reuse later).  In addition, the document root directory is removed, if it
+exists in the <code>appBase</code> directory (typically "webapps") for
+this virtual host.  This command is the logical opposite of the
+<code>/deploy</code> command.</p>
+
+<p>If this command succeeds, you will see a response like this:</p>
+<source>OK - Undeployed application at context path /examples</source>
+
+<p>Otherwise, the response will start with <code>FAIL</code> and include an
+error message.  Possible causes for problems include:</p>
+<ul>
+<li><em>Encountered exception</em>
+    <p>An exception was encountered trying to undeploy the web application.
+    Check the Tomcat logs for the details.</p>
+    </li>
+<li><em>Invalid context path was specified</em>
+    <p>The context path must start with a slash character. To reference the
+    ROOT web application use "/".</p>
+    </li>
+<li><em>No context exists named /foo</em>
+    <p>There is no deployed application with the name that you specified.</p>
+    </li>
+<li><em>No context path was specified</em>
+    The <code>path</code> parameter is required.
+    </li>
+</ul>
+
+</subsection>
+
+<subsection name="Finding memory leaks">
+
+<source>http://localhost:8080/manager/text/findleaks[?statusLine=[true|false]]</source>
+
+<p><strong>The find leaks diagnostic triggers a full garbage collection. It
+should be used with extreme caution on production systems.</strong></p>
+
+<p>The find leaks diagnostic attempts to identify web applications that have
+caused memory leaks when they were stopped, reloaded or undeployed. Results
+should always be confirmed
+with a profiler. The diagnostic uses additional functionality provided by the
+StandardHost implementation. It will not work if a custom host is used that
+does not extend StandardHost.</p>
+
+<p>Explicitly triggering a full garbage collection from Java code is documented
+to be unreliable. Furthermore, depending on the JVM used, there are options to
+disable explicit GC triggering, like <code>-XX:+DisableExplicitGC</code>.
+If you want to make sure, that the diagnostics were successfully running a full
+GC, you will need to check using tools like GC logging, JConsole or similar.</p>
+
+<p>If this command succeeds, you will see a response like this:</p>
+<source>/leaking-webapp</source>
+
+<p>If you wish to see a status line included in the response then include the
+<code>statusLine</code> query parameter in the request with a value of
+<code>true</code>.</p>
+
+<p>Each context path for a web application that was stopped, reloaded or
+undeployed, but which classes from the previous runs are still loaded in memory,
+thus causing a memory leak, will be listed on a new line. If an application
+has been reloaded several times, it may be listed several times.</p>
+
+<p>If the command does not succeed, the response will start with
+<code>FAIL</code> and include an error message.</p>
+
+</subsection>
+
+<subsection name="Thread Dump">
+
+<source>http://localhost:8080/manager/text/threaddump</source>
+
+<p>Write a JVM thread dump.</p>
+
+<p>The response will look something like this:</p>
+<source><![CDATA[OK - JVM thread dump
+2014-12-08 07:24:40.080
+Full thread dump Java HotSpot(TM) Client VM (25.25-b02 mixed mode):
+
+"http-nio-8080-exec-2" Id=26 cpu=46800300 ns usr=46800300 ns blocked 0 for -1 ms waited 0 for -1 ms
+   java.lang.Thread.State: RUNNABLE
+        locks java.util.concurrent.ThreadPoolExecutor$Worker@1738ad4
+        at sun.management.ThreadImpl.dumpThreads0(Native Method)
+        at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:446)
+        at org.apache.tomcat.util.Diagnostics.getThreadDump(Diagnostics.java:440)
+        at org.apache.tomcat.util.Diagnostics.getThreadDump(Diagnostics.java:409)
+        at org.apache.catalina.manager.ManagerServlet.threadDump(ManagerServlet.java:557)
+        at org.apache.catalina.manager.ManagerServlet.doGet(ManagerServlet.java:371)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:618)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:725)
+...
+]]></source>
+
+</subsection>
+
+<subsection name="VM Info">
+
+<source>http://localhost:8080/manager/text/vminfo</source>
+
+<p>Write some diagnostic information about Java Virtual Machine.</p>
+
+<p>The response will look something like this:</p>
+<source><![CDATA[OK - VM info
+2014-12-08 07:27:32.578
+Runtime information:
+  vmName: Java HotSpot(TM) Client VM
+  vmVersion: 25.25-b02
+  vmVendor: Oracle Corporation
+  specName: Java Virtual Machine Specification
+  specVersion: 1.8
+  specVendor: Oracle Corporation
+  managementSpecVersion: 1.2
+  name: ...
+  startTime: 1418012458849
+  uptime: 393855
+  isBootClassPathSupported: true
+
+OS information:
+...
+]]></source>
+
+</subsection>
+
+</section>
+
+<section name="Server Status">
+
+<p>From the following links you can view Status information about the server.
+Any one of <strong>manager-xxx</strong> roles allows access to this page.</p>
+
+<source>http://localhost:8080/manager/status
+http://localhost:8080/manager/status/all</source>
+
+<p>Displays server status information in HTML format.</p>
+
+<source>http://localhost:8080/manager/status?XML=true
+http://localhost:8080/manager/status/all?XML=true</source>
+
+<p>Displays server status information in XML format.</p>
+
+<p>First, you have the server and JVM version number, JVM provider, OS name
+and number followed by the architecture type.</p>
+
+<p>Second, there is information about the memory usage of the JVM.</p>
+
+<p>Then, there is information about the Tomcat AJP and HTTP connectors.
+The same information is available for both of them :
+</p>
+<ul>
+    <li><p>Threads information : Max threads, min and max spare threads,
+    current thread count and current thread busy.</p></li>
+    <li><p>Request information : Max processing time and processing time,
+    request and error count, bytes received and sent.</p></li>
+    <li><p>A table showing Stage, Time, Bytes Sent, Bytes Receive, Client,
+    VHost and Request. All existing threads are listed in the table.
+    Here is the list of the possible thread stages :</p>
+    <ul>
+        <li><p><em>"Parse and Prepare Request"</em> : The request headers are
+        being parsed or the necessary preparation to read the request body (if
+        a transfer encoding has been specified) is taking place.</p></li>
+        <li><p><em>"Service"</em> : The thread is processing a request and
+        generating the response. This stage follows the "Parse and Prepare
+        Request" stage and precedes the "Finishing" stage. There is always at
+        least one thread in this stage (the server-status page).</p></li>
+        <li><p><em>"Finishing"</em> : The end of the request processing. Any
+        remainder of the response still in the output buffers is sent to the
+        client. This stage is followed by "Keep-Alive" if it is appropriate to
+        keep the connection alive or "Ready" if "Keep-Alive" is not
+        appropriate.</p></li>
+        <li><p><em>"Keep-Alive"</em> : The thread keeps the connection open to
+        the client in case the client sends another request. If another request
+        is received, the next stage will be "Parse and Prepare Request". If no
+        request is received before the keep alive times out, the connection will
+        be closed and the next stage will be "Ready".</p></li>
+        <li><p><em>"Ready"</em> : The thread is at rest and ready to be
+        used.</p></li>
+    </ul>
+    </li>
+</ul>
+
+<p>If you are using <code>/status/all</code> command, additional information
+on each of deployed web applications will be available.</p>
+
+</section>
+
+<section name="Using the JMX Proxy Servlet">
+
+  <subsection name="What is JMX Proxy Servlet">
+    The JMX Proxy Servlet is a lightweight proxy to get and set the
+    tomcat internals. (Or any class that has been exposed via an MBean)
+    Its usage is not very user friendly but the UI is
+    extremely helpful for integrating command line scripts for monitoring
+    and changing the internals of tomcat. You can do two things with the proxy:
+    get information and set information. For you to really understand the
+    JMX Proxy Servlet, you should have a general understanding of JMX.
+    If you don't know what JMX is, then prepare to be confused.
+  </subsection>
+
+  <subsection name="JMX Query command">
+    <p>This takes the form:</p>
+<source>http://webserver/manager/jmxproxy/?qry=STUFF</source>
+    <p>Where <code>STUFF</code> is the JMX query you wish to perform. For example,
+    here are some queries you might wish to run:</p>
+    <ul>
+      <li>
+        <code>qry=*%3Atype%3DRequestProcessor%2C* -->
+         type=RequestProcessor</code> which will locate all
+         workers which can process requests and report
+         their state.
+      </li>
+      <li>
+        <code>qry=*%3Aj2eeType=Servlet%2c* -->
+            j2eeType=Servlet</code> which return all loaded servlets.
+      </li>
+      <li>
+        <code>qry=Catalina%3Atype%3DEnvironment%2Cresourcetype%3DGlobal%2Cname%3DsimpleValue -->
+            Catalina:type=Environment,resourcetype=Global,name=simpleValue</code>
+            which look for a specific MBean by the given name.
+      </li>
+    </ul>
+    <p>
+    You'll need to experiment with this to really understand its capabilities
+    If you provide no <code>qry</code> parameter, then all of the MBeans will
+    be displayed. We really recommend looking at the tomcat source code and
+    understand the JMX spec to get a better understanding of all the queries
+    you may run.
+    </p>
+  </subsection>
+
+  <subsection name="JMX Get command">
+  <p>
+    The JXMProxyServlet also supports a "get" command that you can use to
+    fetch the value of a specific MBean's attribute. The general form of
+    the <code>get</code> command is:
+  </p>
+
+<source>http://webserver/manager/jmxproxy/?get=BEANNAME&amp;att=MYATTRIBUTE&amp;key=MYKEY</source>
+
+    <p>You must provide the following parameters:</p>
+    <ol>
+      <li><code>get</code>: The full bean name</li>
+      <li><code>att</code>: The attribute you wish to fetch</li>
+      <li><code>key</code>: (optional) The key into a CompositeData MBean attribute</li>
+    </ol>
+    <p>
+    If all goes well, then it will say OK, otherwise an error message will
+    be shown. For example, let's say we wish to fetch the current heap memory
+    data:
+    </p>
+
+<source>http://webserver/manager/jmxproxy/?get=java.lang:type=Memory&amp;att=HeapMemoryUsage</source>
+
+    <p>Or, if you only want the "used" key:</p>
+
+<source>http://webserver/manager/jmxproxy/
+ ?get=java.lang:type=Memory&amp;att=HeapMemoryUsage&amp;key=used</source>
+  </subsection>
+
+  <subsection name="JMX Set command">
+    <p>
+    Now that you can query an MBean, its time to muck with Tomcat's internals!
+    The general form of the set command is :
+    </p>
+<source>http://webserver/manager/jmxproxy/?set=BEANNAME&amp;att=MYATTRIBUTE&amp;val=NEWVALUE</source>
+    <p>So you need to provide 3 request parameters:</p>
+    <ol>
+      <li><code>set</code>: The full bean name</li>
+      <li><code>att</code>: The attribute you wish to alter</li>
+      <li><code>val</code>: The new value </li>
+    </ol>
+    <p>
+    If all goes ok, then it will say OK, otherwise an error message will be
+    shown. For example, lets say we wish to turn up debugging on the fly for the
+    <code>ErrorReportValve</code>. The following will set debugging to 10.
+    </p>
+<source>http://localhost:8080/manager/jmxproxy/
+ ?set=Catalina%3Atype%3DValve%2Cname%3DErrorReportValve%2Chost%3Dlocalhost
+ &amp;att=debug&amp;val=10</source>
+    <p>and my result is (YMMV):</p>
+<source>Result: ok</source>
+
+    <p>Here is what I see if I pass in a bad value. Here is the URL I used,
+    I try set debugging equal to 'cow':</p>
+<source>http://localhost:8080/manager/jmxproxy/
+ ?set=Catalina%3Atype%3DValve%2Cname%3DErrorReportValve%2Chost%3Dlocalhost
+ &amp;att=debug&amp;val=cow</source>
+    <p>When I try that, my result is</p>
+<source>Error: java.lang.NumberFormatException: For input string: "cow"</source>
+  </subsection>
+
+  <subsection name="JMX Invoke command">
+    <p>The <code>invoke</code> command enables methods to be called on MBeans. The
+    general form of the command is:</p>
+<source>http://webserver/manager/jmxproxy/
+ ?invoke=BEANNAME&amp;op=METHODNAME&amp;ps=COMMASEPARATEDPARAMETERS</source>
+    <p>For example, to call the <code>findConnectors()</code> method of the
+    <strong>Service</strong> use:</p>
+<source>http://localhost:8080/manager/jmxproxy/
+ ?invoke=Catalina%3Atype%3DService&amp;op=findConnectors&amp;ps=</source>
+  </subsection>
+
+</section>
+
+<section name="Executing Manager Commands With Ant">
+
+<p>In addition to the ability to execute Manager commands via HTTP requests,
+as documented above, Tomcat includes a convenient set of Task definitions
+for the <em>Ant</em> (version 1.4 or later) build tool.  In order to use these
+commands, you must perform the following setup operations:</p>
+<ul>
+<li>Download the binary distribution of Ant from
+    <a href="http://ant.apache.org">http://ant.apache.org</a>.
+    You must use version <strong>1.4</strong> or later.</li>
+<li>Install the Ant distribution in a convenient directory (called
+    ANT_HOME in the remainder of these instructions).</li>
+<li>Add the <code>$ANT_HOME/bin</code> directory to your <code>PATH</code>
+    environment variable.</li>
+<li>Configure at least one username/password combination in your Tomcat
+    user database that includes the <code>manager-script</code> role.</li>
+</ul>
+
+<p>To use custom tasks within Ant, you must declare them first with an
+<code>&lt;import&gt;</code> element.  Therefore, your <code>build.xml</code>
+file might look something like this:</p>
+
+<source><![CDATA[<project name="My Application" default="compile" basedir=".">
+
+  <!-- Configure the directory into which the web application is built -->
+  <property name="build"    value="${basedir}/build"/>
+
+  <!-- Configure the context path for this application -->
+  <property name="path"     value="/myapp"/>
+
+  <!-- Configure properties to access the Manager application -->
+  <property name="url"      value="http://localhost:8080/manager/text"/>
+  <property name="username" value="myusername"/>
+  <property name="password" value="mypassword"/>
+
+  <!-- Configure the path to the Tomcat installation -->
+  <property name="catalina.home" value="/usr/local/apache-tomcat"/>
+
+  <!-- Configure the custom Ant tasks for the Manager application -->
+  <import file="${catalina.home}/bin/catalina-tasks.xml"/>
+
+  <!-- Executable Targets -->
+  <target name="compile" description="Compile web application">
+    <!-- ... construct web application in ${build} subdirectory, and
+            generated a ${path}.war ... -->
+  </target>
+
+  <target name="deploy" description="Install web application"
+          depends="compile">
+    <deploy url="${url}" username="${username}" password="${password}"
+            path="${path}" war="file:${build}${path}.war"/>
+  </target>
+
+  <target name="reload" description="Reload web application"
+          depends="compile">
+    <reload  url="${url}" username="${username}" password="${password}"
+            path="${path}"/>
+  </target>
+
+  <target name="undeploy" description="Remove web application">
+    <undeploy url="${url}" username="${username}" password="${password}"
+            path="${path}"/>
+  </target>
+
+</project>]]></source>
+
+<p>Note: The definition of the resources task via the import above will override
+the resources datatype added in Ant 1.7. If you wish to use the resources
+datatype you will need to use Ant's namespace support to modify
+<code>catalina-tasks.xml</code> to assign the Tomcat tasks to their own
+namespace.</p>
+
+<p>Now, you can execute commands like <code>ant deploy</code> to deploy the
+application to a running instance of Tomcat, or <code>ant reload</code> to
+tell Tomcat to reload it.  Note also that most of the interesting values in
+this <code>build.xml</code> file are defined as replaceable properties, so
+you can override their values from the command line.  For example, you might
+consider it a security risk to include the real manager password in your
+<code>build.xml</code> file's source code.  To avoid this, omit the password
+property, and specify it from the command line:</p>
+<source>ant -Dpassword=secret deploy</source>
+
+<subsection name="Tasks output capture">
+
+<p>Using <em>Ant</em> version <strong>1.6.2</strong> or later,
+the Catalina tasks offer the option to capture their output in
+properties or external files. They support directly the following subset of the
+<code>&lt;redirector&gt;</code> type attributes:
+</p>
+
+<table class="defaultTable">
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th style="text-align: center;">Required</th>
+</tr>
+<tr>
+<td>output</td>
+<td>Name of a file to which to write the output. If
+the error stream is not also redirected to a file or property, it will
+appear in this output.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>error</td>
+<td>The file to which the standard error of the
+command should be redirected.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>logError</td>
+<td>This attribute is used when you wish to see
+error output in Ant's log and you are redirecting output to a
+file/property. The error output will not be included in the output
+file/property. If you redirect error with the <i>error</i> or <i>errorProperty</i>
+attributes, this will have no effect.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>append</td>
+<td>Whether output and error files should be
+appended to or overwritten. Defaults to <code>false</code>.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>createemptyfiles</td>
+<td>Whether output and error files should be created
+even when empty. Defaults to <code>true</code>.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>outputproperty</td>
+<td>The name of a property in which the output of
+the command should be stored. Unless the error stream is redirected to
+a separate file or stream, this property will include the error output.</td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>errorproperty</td>
+<td>The name of a property in which the standard
+error of the command should be stored.</td>
+<td style="text-align: center;">No</td>
+</tr>
+</table>
+
+<p>A couple of additional attributes can also be specified:
+</p>
+<table class="defaultTable">
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+<th style="text-align: center;">Required</th>
+</tr>
+<tr>
+<td>alwaysLog</td>
+<td>This attribute is used when you wish to see the
+output you are capturing, appearing also in the Ant's log. It must not be
+used unless you are capturing task output.
+Defaults to <code>false</code>.
+<em>This attribute will be supported directly by <code>&lt;redirector&gt;</code>
+in Ant 1.6.3</em></td>
+<td style="text-align: center;">No</td>
+</tr>
+<tr>
+<td>failonerror</td>
+<td>This attribute is used when you wish to avoid that
+any manager command processing error terminates the ant execution. Defaults to <code>true</code>.
+It must be set to <code>false</code>, if you want to capture error output,
+otherwise execution will terminate before anything can be captured.
+<br/>
+This attribute acts only on manager command execution,
+any wrong or missing command attribute will still cause Ant execution termination.
+</td>
+<td style="text-align: center;">No</td>
+</tr>
+</table>
+
+<p>They also support the embedded <code>&lt;redirector&gt;</code> element
+in which you can specify
+its full set of attributes, but <code>input</code>, <code>inputstring</code> and
+<code>inputencoding</code> that, even if accepted, are not used because they have
+no meaning in this context.
+Refer to <a href="http://ant.apache.org">ant manual</a> for details on
+<code>&lt;redirector&gt;</code> element attributes.
+</p>
+
+<p>
+Here is a sample build file extract that shows how this output redirection support
+can be used:
+</p>
+
+<source><![CDATA[    <target name="manager.deploy"
+        depends="context.status"
+        if="context.notInstalled">
+        <deploy url="${mgr.url}"
+            username="${mgr.username}"
+            password="${mgr.password}"
+            path="${mgr.context.path}"
+            config="${mgr.context.descriptor}"/>
+    </target>
+
+    <target name="manager.deploy.war"
+        depends="context.status"
+        if="context.deployable">
+        <deploy url="${mgr.url}"
+            username="${mgr.username}"
+            password="${mgr.password}"
+            update="${mgr.update}"
+            path="${mgr.context.path}"
+            war="${mgr.war.file}"/>
+    </target>
+
+    <target name="context.status">
+        <property name="running" value="${mgr.context.path}:running"/>
+        <property name="stopped" value="${mgr.context.path}:stopped"/>
+
+        <list url="${mgr.url}"
+            outputproperty="ctx.status"
+            username="${mgr.username}"
+            password="${mgr.password}">
+        </list>
+
+        <condition property="context.running">
+            <contains string="${ctx.status}" substring="${running}"/>
+        </condition>
+        <condition property="context.stopped">
+            <contains string="${ctx.status}" substring="${stopped}"/>
+        </condition>
+        <condition property="context.notInstalled">
+            <and>
+                <isfalse value="${context.running}"/>
+                <isfalse value="${context.stopped}"/>
+            </and>
+        </condition>
+        <condition property="context.deployable">
+            <or>
+                <istrue value="${context.notInstalled}"/>
+                <and>
+                    <istrue value="${context.running}"/>
+                    <istrue value="${mgr.update}"/>
+                </and>
+                <and>
+                    <istrue value="${context.stopped}"/>
+                    <istrue value="${mgr.update}"/>
+                </and>
+            </or>
+        </condition>
+        <condition property="context.undeployable">
+            <or>
+                <istrue value="${context.running}"/>
+                <istrue value="${context.stopped}"/>
+            </or>
+        </condition>
+    </target>]]></source>
+
+<p><strong>WARNING:</strong> even if it doesn't make many sense, and is always a bad idea,
+calling a Catalina task more than once,
+badly set Ant tasks depends chains may cause that a task be called
+more than once in the same Ant run, even if not intended to. A bit of caution should be exercised when you are
+capturing output from that task, because this could lead to something unexpected:</p>
+<ul>
+<li>when capturing in a property you will find in it only the output from the <em>first</em> call, because
+Ant properties are immutable and once set they cannot be changed,
+</li>
+<li>when capturing in a file, each run will overwrite it and you will find in it only the <em>last</em> call
+output, unless you are using the <code>append="true"</code> attribute, in which case you will
+see the output of each task call appended to the file.
+</li>
+</ul>
+
+</subsection>
+
+</section>
+
+
+
+</body>
+
+</document>

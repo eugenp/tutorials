@@ -1,0 +1,76 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<body>
+
+<p>This package contains a set of <code>JMX Task</code> implementations for
+<em>Ant (version 1.6 or later)</em> that can be used to interact with the
+Remote JMX JSR 160 RMI Adaptor to get/set attributes, invoke MBean operations
+and query for Mbeans inside a running instance of Tomcat.  For more information, see
+<a href="http://tomcat.apache.org/tomcat-7.0-doc/monitoring.html">
+http://tomcat.apache.org/tomcat-7.0-doc/monitoring.html</a>.</p>
+
+<p>Each task element can open a new jmx connection or reference an
+existing one. The following attribute are exists in every tasks:</p>
+
+<table>
+  <tr>
+    <th align="center" width="15%">Attribute</th>
+    <th align="center" width="85%">Description</th>
+  </tr>
+  <tr>
+    <td align="center">url</td>
+    <td>
+      The JMX Connection URL of the remote Tomcat MBeansServer.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">username</td>
+    <td>
+      The username of a MBeanServer auth, when configured.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">password</td>
+    <td>
+      The password of a MBeanServer auth, when configured.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">host</td>
+    <td>
+      The JMX Connection host.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">port</td>
+    <td>
+      The JMX Connection port.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">ref</td>
+    <td>
+      The name of the ant internal reference for a jmx connection.
+    </td>
+  </tr>
+
+</table>
+
+<p><strong>NOTE</strong> - This Tasks only work, 
+when JSR 160 MBean Adaptor as remote jvm is configured.</p>
+
+</body>

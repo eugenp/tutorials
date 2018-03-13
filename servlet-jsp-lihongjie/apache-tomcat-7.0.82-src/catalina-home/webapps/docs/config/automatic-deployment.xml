@@ -1,0 +1,548 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="automatic-deployment.html">
+
+  &project;
+
+  <properties>
+    <title>Automatic Deployment - Use cases</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+
+<section name="Introduction">
+
+  <p>This page defines the expected behaviour of the automatic deployer in many
+  typical use cases. This is a complex area of Tomcat&apos;s functionality.
+  While any difference between this document and Tomcat&apos;s behaviour is a
+  bug, the fix may be to change this document, Tomcat&apos;s behaviour or
+  both.</p>
+
+</section>
+
+
+<section name="Key">
+
+  <table class="detail-table">
+    <tr>
+      <th>Term</th><th>Description</th>
+    </tr>
+    <tr>
+      <td>XML</td>
+      <td>An XML configuration file located in the Host&apos;s
+          <em>configBase</em>. It must contain a single &lt;Context&gt; element
+          and may contain optional nested elements. It does not define an
+          explicit <em>docBase</em> attribute. It represents a single web
+          application. It is often referred to as a context.xml file.</td>
+    </tr><tr>
+      <td>XML+EW</td>
+      <td>An XML configuration file located in the Host&apos;s
+          <em>configBase</em>. It must contain a single &lt;Context&gt; element
+          and may contain optional nested elements. It includes an explicit
+          <em>docBase</em> attribute that points to an external WAR. It
+          represents a single web application. It is often referred to as a
+          context.xml file.</td>
+    </tr><tr>
+      <td>XML+ED</td>
+      <td>An XML configuration file located in the Host&apos;s
+          <em>configBase</em>. It must contain a single &lt;Context&gt; element
+          and may contain optional nested elements. It includes an explicit
+          <em>docBase</em> attribute that points to an external directory. It
+          represents a single web application. It is often referred to as a
+          context.xml file.</td>
+    </tr><tr>
+      <td>WAR</td>
+      <td>A WAR file located in the Host&apos;s <em>appBase</em>. The WAR does
+          not include an embedded context.xml file.</td>
+    </tr><tr>
+      <td>WAR+XML</td>
+      <td>A WAR file located in the Host&apos;s <em>appBase</em>. The WAR does
+          include an embedded context.xml file.</td>
+    </tr><tr>
+      <td>DIR</td>
+      <td>A directory located in the Host&apos;s <em>appBase</em>. The directory
+          does not include an embedded context.xml file.</td>
+    </tr><tr>
+      <td>DIR+XML</td>
+      <td>A directory located in the Host&apos;s <em>appBase</em>. The directory
+          does include an embedded context.xml file.</td>
+    </tr><tr>
+      <td>redeploy</td>
+      <td>The Context object that represents the web application is destroyed
+          and a new Context object is created. If present and permitted by the
+          configuration, this new Context object is created by parsing the
+          context.xml file. The web.xml file is parsed during the application
+          start process. Any sessions stored in the standard Manager in the
+          default configuration will not be persisted. Any requests to the web
+          application during the redeploy will be handled as if the web
+          application is not deployed.</td>
+    </tr><tr>
+      <td>reload</td>
+      <td>The Context object that represents the web application is stopped and
+          then started. The web.xml file is parsed during the application start
+          process. Any sessions stored in the standard Manager in the default
+          configuration will not be persisted. Any requests to the web
+          application during the reload will be held until the reload completes
+          at which point they will continue using the reloaded web application.
+          </td>
+    </tr>
+  </table>
+
+</section>
+
+
+<section name="New files">
+
+  <p>This section describes Tomcat&apos;s behaviour when the automatic
+  deployment process discovers a new web application.</p>
+
+  <table class="detail-table">
+    <tr>
+      <th rowspan="2">Starting artifact(s)</th>
+      <th colspan="3">Configuration Settings</th>
+      <th colspan="4">Result</th>
+    </tr>
+    <tr>
+      <th>deployXML</th><th>copyXML</th><th>unpackWARs</th>
+      <th>XML</th><th>WAR</th><th>DIR</th><th>Notes</th>
+    </tr>
+    <tr>
+      <td>XML</td>
+      <td>either</td><td>either</td><td>either</td>
+      <td>Y</td><td>N</td><td>N</td><td>1, 2, 3</td>
+    </tr>
+    <tr>
+      <td>XML+EW</td>
+      <td>either</td><td>either</td><td>false</td>
+      <td>Y</td><td>N</td><td>N</td><td>1</td>
+    </tr>
+    <tr>
+      <td>XML+EW</td>
+      <td>either</td><td>either</td><td>true</td>
+      <td>Y</td><td>N</td><td>Y</td><td>1</td>
+    </tr>
+    <tr>
+      <td>XML+ED</td>
+      <td>either</td><td>either</td><td>either</td>
+      <td>Y</td><td>N</td><td>N</td><td>1, 2</td>
+    </tr>
+    <tr>
+      <td>WAR+XML</td>
+      <td>false</td><td>either</td><td>false</td>
+      <td>N</td><td>Y</td><td>N</td><td>4</td>
+    </tr>
+    <tr>
+      <td>WAR+XML</td>
+      <td>false</td><td>either</td><td>true</td>
+      <td>N</td><td>Y</td><td>Y</td><td>4</td>
+    </tr>
+    <tr>
+      <td>WAR+XML</td>
+      <td>true</td><td>false</td><td>false</td>
+      <td>N</td><td>Y</td><td>N</td><td></td>
+    </tr>
+    <tr>
+      <td>WAR+XML</td>
+      <td>true</td><td>false</td><td>true</td>
+      <td>N</td><td>Y</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+      <td>WAR+XML</td>
+      <td>true</td><td>true</td><td>false</td>
+      <td>Y</td><td>Y</td><td>N</td><td></td>
+    </tr>
+    <tr>
+      <td>WAR+XML</td>
+      <td>true</td><td>true</td><td>true</td>
+      <td>Y</td><td>Y</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+      <td>WAR</td>
+      <td>either</td><td>either</td><td>false</td>
+      <td>N</td><td>Y</td><td>N</td><td></td>
+    </tr>
+    <tr>
+      <td>WAR</td>
+      <td>either</td><td>either</td><td>true</td>
+      <td>N</td><td>Y</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+      <td>DIR+XML</td>
+      <td>false</td><td>either</td><td>either</td>
+      <td>N</td><td>N</td><td>Y</td><td>4</td>
+    </tr>
+    <tr>
+      <td>DIR+XML</td>
+      <td>true</td><td>false</td><td>either</td>
+      <td>N</td><td>N</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+      <td>DIR+XML</td>
+      <td>true</td><td>true</td><td>either</td>
+      <td>Y</td><td>N</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+      <td>DIR</td>
+      <td>false</td><td>either</td><td>either</td>
+      <td>N</td><td>N</td><td>Y</td><td></td>
+    </tr>
+  </table>
+
+</section>
+
+
+<section name="Deleted files">
+
+  <p>This section describes Tomcat&apos;s behaviour when the automatic
+  deployment process detects that a web application file has been deleted.</p>
+
+  <p>When a file is deleted or modified any redeploy resources that are listed
+  after the modified/deleted resource are themselves deleted (and possibly
+  re-created). The order of redeploy resources is:</p>
+
+  <ol>
+    <li>WAR</li>
+    <li>DIR</li>
+    <li>XML</li>
+    <li>global resources</li>
+  </ol>
+
+  <p>There are some exceptions to the deletion rule above:</p>
+
+  <ul>
+    <li>global resources are never deleted</li>
+    <li>external resources are never deleted</li>
+    <li>if the WAR or DIR has been modified then the XML file is only deleted if
+       <em>copyXML</em> is <code>true</code> and <em>deployXML</em> is
+       <code>true</code></li>
+  </ul>
+
+  <p>In the following table:</p>
+
+  <ul>
+    <li>'-' means "unchanged from not present". i.e. the artifact wasn't present
+        before the change and isn't present after it either. '-' rather than 'N'
+        is used to focus attention on what changes.</li>
+    <li>'R' means that the directory is re-created by expanding the WAR file.
+        This will only happen if <em>unpackWARs</em> is <code>true</code>.</li>
+    <li>'XW' means that the if the WAR contains a META-INF/context.xml file it
+        will be extracted and placed in the Host&apos;s <em>configBase</em>.
+        This only happens if <em>copyXML</em> is <code>true</code> and
+        <em>deployXML</em> is <code>true</code>.</li>
+    <li>'XD' means that the if the directory contains a META-INF/context.xml
+        file it will be copied to the Host&apos;s <em>configBase</em>. This only
+        happens if <em>copyXML</em> is <code>true</code> and <em>deployXML</em>
+        is <code>true</code>.</li>
+  </ul>
+
+  <table class="detail-table">
+    <tr>
+      <th colspan="3">Artifacts present</th>
+      <th rowspan="2">Artifact removed</th>
+      <th colspan="4">Artifacts remaining</th>
+    </tr>
+    <tr>
+      <th>XML</th><th>WAR</th><th>DIR</th>
+      <th>XML</th><th>WAR</th><th>DIR</th><th>Notes</th>
+    </tr>
+    <tr>
+      <td>N</td><td>N</td><td>Y</td>
+      <td>DIR</td>
+      <td>-</td><td>-</td><td>N</td><td></td>
+    </tr>
+    <tr>
+      <td>N</td><td>Y</td><td>N</td>
+      <td>WAR</td>
+      <td>-</td><td>N</td><td>-</td><td></td>
+    </tr>
+    <tr>
+      <td>N</td><td>Y</td><td>Y</td>
+      <td>DIR</td>
+      <td>-</td><td>Y</td><td>R</td><td></td>
+    </tr>
+    <tr>
+      <td>N</td><td>Y</td><td>Y</td>
+      <td>WAR</td>
+      <td>-</td><td>N</td><td>N</td><td></td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>N</td>
+      <td>XML</td>
+      <td>N</td><td>-</td><td>-</td><td></td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>Y</td>
+      <td>DIR</td>
+      <td>N</td><td>-</td><td>N</td><td>5</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>Y</td>
+      <td>XML</td>
+      <td>XD</td><td>-</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>N</td>
+      <td>WAR</td>
+      <td>N</td><td>N</td><td>-</td><td>5</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>N</td>
+      <td>XML</td>
+      <td>XW</td><td>Y</td><td>-</td><td></td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>Y</td>
+      <td>DIR</td>
+      <td>XW</td><td>Y</td><td>R</td><td></td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>Y</td>
+      <td>WAR</td>
+      <td>N</td><td>N</td><td>N</td><td></td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>Y</td>
+      <td>XML</td>
+      <td>XW</td><td>Y</td><td>Y</td><td></td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y (external)</td><td>N</td>
+      <td>WAR</td>
+      <td>Y</td><td>N</td><td>-</td><td>3</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y (external)</td><td>N</td>
+      <td>XML</td>
+      <td>N</td><td>Y (external)</td><td>-</td><td>6</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>Y (external)</td>
+      <td>DIR</td>
+      <td>Y</td><td>-</td><td>N</td><td>3</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>Y (external)</td>
+      <td>XML</td>
+      <td>N</td><td>-</td><td>Y (external)</td><td>6</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y (external)</td><td>Y</td>
+      <td>DIR</td>
+      <td>Y</td><td>Y (external)</td><td>R</td><td></td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y (external)</td><td>Y</td>
+      <td>WAR</td>
+      <td>Y</td><td>N</td><td>N</td><td>3</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y (external)</td><td>Y</td>
+      <td>XML</td>
+      <td>N</td><td>Y (external)</td><td>N</td><td>6</td>
+    </tr>
+  </table>
+
+</section>
+
+
+<section name="Modified files">
+
+  <p>This section describes Tomcat&apos;s behaviour when the automatic
+  deployment process detects that a web application file has been modified.</p>
+
+  <p>In the following table:</p>
+
+  <ul>
+    <li>'-' means "unchanged from not present". i.e. the artifact wasn't present
+        before the change and isn't present after it either. '-' rather than 'N'
+        is used to focus attention on what changes.</li>
+    <li>'M' means that the artifact has been modified.</li>
+    <li>'R' means that the directory is deleted and re-created by expanding the
+        WAR file. This will only happen if <em>unpackWARs</em> is
+        <code>true</code>.</li>
+  </ul>
+
+  <table class="detail-table">
+    <tr>
+      <th colspan="3">Artifacts present</th>
+      <th rowspan="2">Artifact modified</th>
+      <th colspan="4">Artifacts remaining</th>
+    </tr>
+    <tr>
+      <th>XML</th><th>WAR</th><th>DIR</th>
+      <th>XML</th><th>WAR</th><th>DIR</th><th>Action</th>
+    </tr>
+    <tr>
+      <td>N</td><td>N</td><td>Y</td>
+      <td>DIR</td>
+      <td>-</td><td>-</td><td>M</td><td>None</td>
+    </tr>
+    <tr>
+      <td>N</td><td>Y</td><td>N</td>
+      <td>WAR</td>
+      <td>-</td><td>M</td><td>-</td><td>Redeploy</td>
+    </tr>
+    <tr>
+      <td>N</td><td>Y</td><td>Y</td>
+      <td>DIR</td>
+      <td>-</td><td>Y</td><td>M</td><td>None</td>
+    </tr>
+    <tr>
+      <td>N</td><td>Y</td><td>Y</td>
+      <td>WAR</td>
+      <td>-</td><td>M</td><td>R</td><td>Redeploy</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>N</td>
+      <td>XML</td>
+      <td>M</td><td>-</td><td>-</td><td>Redeploy</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>Y</td>
+      <td>DIR</td>
+      <td>Y</td><td>-</td><td>M</td><td>None</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>Y</td>
+      <td>XML</td>
+      <td>M</td><td>-</td><td>Y</td><td>Redeploy</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>N</td>
+      <td>WAR</td>
+      <td>Y</td><td>M</td><td>-</td><td>Reload</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>N</td>
+      <td>XML</td>
+      <td>M</td><td>Y</td><td>-</td><td>Redeploy</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>Y</td>
+      <td>DIR</td>
+      <td>Y</td><td>Y</td><td>M</td><td>None</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>Y</td>
+      <td>WAR</td>
+      <td>Y</td><td>M</td><td>R</td><td>Reload</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y</td><td>Y</td>
+      <td>XML</td>
+      <td>M</td><td>Y</td><td>Y</td><td>Redeploy</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y(external)</td><td>N</td>
+      <td>WAR</td>
+      <td>Y</td><td>M(external)</td><td>-</td><td>Reload</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y(external)</td><td>N</td>
+      <td>XML</td>
+      <td>M</td><td>Y(external)</td><td>-</td><td>Redeploy</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>Y(external)</td>
+      <td>DIR</td>
+      <td>Y</td><td>-</td><td>M(external)</td><td>None</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>N</td><td>Y(external)</td>
+      <td>XML</td>
+      <td>M</td><td>-</td><td>Y(external)</td><td>Redeploy</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y(external)</td><td>Y</td>
+      <td>DIR</td>
+      <td>Y</td><td>Y(external)</td><td>M</td><td>None</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y(external)</td><td>Y</td>
+      <td>WAR</td>
+      <td>Y</td><td>M(external)</td><td>R</td><td>Reload</td>
+    </tr>
+    <tr>
+      <td>Y</td><td>Y(external)</td><td>Y</td>
+      <td>XML</td>
+      <td>M</td><td>Y(external)</td><td>Y</td><td>Redeploy</td>
+    </tr>
+  </table>
+
+</section>
+
+
+<section name="Added files">
+
+  <p>This is treated as if the added file has been modified with the following
+  additional actions:</p>
+
+  <ul>
+    <li>If a WAR is added, any DIR is removed and may be recreated depending on
+        <em>unpackWARs</em>.</li>
+    <li>If an XML file is added that refers to an external <em>docBase</em> any
+        WAR or DIR in the appBase will be removed. The DIR may be recreated if
+        the external resource is a WAR and <em>unpackWARs</em> is true.</li>
+    <li>If a DIR is added when a WAR already exists and <em>unpackWARs</em> is
+        <code>false</code>, the DIR will be ignored but a warning will be
+        logged when the DIR is first detected. If the WAR is removed, the DIR
+        will be left and may be deployed via automatic deployment.</li>
+    <li>If a WAR is added to the <em>appBase</em> when an external WAR already
+        exists, the WAR in the <em>appBase</em> will be ignored but a warning
+        will be logged when the WAR in the <em>appBase</em> is first detected.
+        If the external WAR is removed, the WAR in the <em>appBase</em> will be
+        left and may be deployed via automatic deployment.</li>
+    <li>If an XML file is added to the META-INF directory of an application
+        deployed from that DIR, the application will always be redeployed. The
+        result will be the same as for a new deployment.</li>
+  </ul>
+
+</section>
+
+
+<section name="Notes">
+
+  <ol>
+    <li><em>deployXML</em> and <em>copyXML</em> are ignored since an XML file
+        was discovered in the <em>configBase</em>.</li>
+    <li><em>unpackWARs</em> is ignored since there is no WAR file.</li>
+    <li>The context will fail to start because there is no content in the
+        expected <em>docBase</em>.</li>
+    <li>The web application fails to deploy because it contains an embedded
+        META-INF/context.xml, <em>deployXML</em> is <code>false</code> and an
+        XML has not been provided in the <em>configBase</em>.</li>
+    <li>The XML file is only deleted if <em>copyXML</em> is <code>true</code>
+        and <em>deployXML</em> is <code>true</code>.</li>
+    <li>Although the external resource is still present, the web application is
+        fully undeployed as Tomcat has no knowledge of the external resource.
+        </li>
+  </ol>
+
+</section>
+
+</body>
+
+</document>

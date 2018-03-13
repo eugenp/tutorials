@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="fs-admin-apps.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig McClanahan</author>
+    <title>Administrative Apps - Overall Requirements</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Overview">
+
+
+  <subsection name="Introduction">
+
+    <p>The purpose of this specification is to define high level requirements
+    for administrative applications that can be used to manage the operation
+    of a running Tomcat container.  A variety of <em>Access Methods</em>
+    to the supported administrative functionality shall be supported, to
+    meet varying requirements:</p>
+    <ul>
+    <li><em>As A Scriptable Web Application</em> - The existing
+        <code>Manager</code> web application provides a simple HTTP-based
+        interface for managing Tomcat through commands that are expressed
+        entirely through a request URI.  This is useful in environments
+        where you wish to script administrative commands with tools that
+        can generate HTTP transactions.</li>
+    <li><em>As An HTML-Based Web Application</em> - Use an HTML presentation
+        to provide a GUI-like user interface for humans to interact with the
+        administrative capabilities.</li>
+    <li><em>As SOAP-Based Web Services</em> - The operational commands to
+        administer Tomcat are made available as web services that utilize
+        SOAP message formats.</li>
+    <li><em>As Java Management Extensions (JMX) Commands</em> - The operational
+        commands to administer Tomcat are made available through JMX APIs,
+        for integration into management consoles that utilize them.</li>
+    <li><em>Other Remote Access APIs</em> - Other remote access APIs, such
+        as JINI, RMI, and CORBA can also be utilized to access administrative
+        capabilities.</li>
+    </ul>
+
+    <p>Underlying all of the access methods described above, it is assumed
+    that the actual operations are performed either directly on the
+    corresponding Catalina components (such as calling the
+    <code>Deployer.deploy()</code> method to deploy a new web application),
+    or through a "business logic" layer that can be shared across all of the
+    access methods.  This approach minimizes the cost of adding new
+    administrative capabilities later -- it is only necessary to add the
+    corresponding business logic function, and then write adapters to it for
+    all desired access methods.</p>
+
+    <p>The current status of this functional specification is
+    <strong>PROPOSED</strong>.  It has not yet been discussed and
+    agreed to on the TOMCAT-DEV mailing list.</p>
+
+  </subsection>
+
+
+  <subsection name="External Specifications">
+
+    <p>The implementation of this functionality depends on the following
+    external specifications:</p>
+    <ul>
+    <li><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/idl">
+        Java IDL</a> (for CORBA, included in the JDK)</li>
+    <li><a href="http://www.oracle.com/technetwork/java/javase/tech/javamanagement-140525.html">
+        Java Management Extensions</a></li>
+    <li><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/rmi">
+        Remote Method Invocation</a> (Included in the JDK)</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Implementation Requirements">
+
+    <p>The implementation of this functionality shall conform to the
+    following requirements:</p>
+    <ul>
+    <li>To the maximum extent feasible, all administrative functions,
+        and the access methods that support them, shall run portably
+        on all platforms where Tomcat itself runs.</li>
+    <li>In a default Tomcat distribution, all administrative capabilities
+        shall be disabled.  It shall be necessary for a system
+        administrator to specifically enable the desired access methods
+        (such as by adding a username/password with a specific role to
+        the Tomcat user's database.</li>
+    <li>Administrative functions shall be realized as direct calls to
+        corresponding Catalina APIs, or through a business logic layer
+        that is independent of the access method used to initiate it.</li>
+    <li>The common business logic components shall be implemented in
+        package <code>org.apache.catalina.admin</code>.</li>
+    <li>The common business logic components shall be built as part of the
+        standard Catalina build process, and made visible in the
+        Catalina class loader.</li>
+    <li>The Java components required for each access method shall be
+        implemented in subpackages of <code>org.apache.catalina.admin</code>.
+        </li>
+    <li>The build scripts should treat each access method as optional,
+        so that it will be built only if the corresponding required
+        APIs are present at build time.</li>
+    <li>It shall be possible to save the configured state of the running
+        Tomcat container such that this state can be reproduced when the
+        container is shut down and restarted.</li>
+    <li>Administrative commands to start up and shut down the overall
+        Tomcat container are <strong>out of scope</strong> for the
+        purposes of these applications.  It is assumed that other
+        (usually platform-specific) mechanisms will be used for container
+        startup and shutdown.</li>
+    </ul>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Dependencies">
+
+
+  <subsection name="Environmental Dependencies">
+
+    <p>The following environmental dependencies must be met in order for
+    administrative applications to operate correctly:</p>
+    <ul>
+    <li>For access methods that require creation of server sockets, the
+        appropriate ports must be configured and available.</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Container Dependencies">
+
+    <p>Correct operation of administrative applications depends on the
+       following specific features of the surrounding container:</p>
+    <ul>
+    <li>To the maximum extent feasible, Catalina components that offer
+        direct administrative APIs and property setters shall support
+        "live" changes to their operation, without requiring a container
+        restart.</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="External Technologies">
+
+    <p>The availability of the following technologies can be assumed
+    for the implementation and operation of the various access methods
+    and the corresponding administrative business logic:<br/>
+    <strong>FIXME</strong> - This list below is totally outdated, but nobody
+    cares about the administrative app anymore. It is removed and unsupported
+    since Tomcat 6.0.</p>
+    <ul>
+    <li><a href="http://www.oracle.com/technetwork/java/javase/overview/index.html">
+        Java Standard Edition</a> (Version 1.2 or later)</li>
+    <li><a href="http://www.jcp.org/jsr/detail/154.jsp">Servlet 2.4</a>
+        (supported natively by Tomcat 5)</li>
+    <li><a href="http://www.jcp.org/jsr/detail/152.jsp">JavaServer Pages 2.0</a>
+        (supported natively by Tomcat 5)</li>
+    <li><a href="http://jakarta.apache.org/taglibs/doc/standard-doc/intro.html">JavaServer Pages Standard Tag Library 1.0 (Jakarta Taglibs-Standard 1.0.3)</a></li>
+    <li><a href="http://struts.apache.org/">Struts Framework</a>
+        (Version 1.0) - MVC Framework for Web Applications</li>
+    <li><strong>TO BE DETERMINED</strong> - Application for hosting SOAP
+        based web services</li>
+    </ul>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Functionality">
+
+
+  <subsection name="Properties of Administered Objects">
+
+  <p>Functional requirements for administrative applications are specified
+  in terms of <em>Administered Objects</em>, whose definitions and detailed
+  properties are listed <a href="fs-admin-objects.html">here</a>.  In general,
+  Administered Objects correspond to components in the Catalina architecture,
+  but these objects are defined separately here for the following reasons:</p>
+  <ul>
+  <li>It is possible that the administrative applications do not expose
+      every possible configurable facet of the underlying components.</li>
+  <li>In some cases, an Administered Object (from the perspective of an
+      administrative operation) is realized by more than one Catalina
+      component, at a finer-grained level of detail.</li>
+  <li>It is necessary to represent the configuration information for a
+      component separately from the component itself (for instance, in
+      order to store that configuration information for later use).</li>
+  <li>It is necessary to represent configuration information (such as
+      a Default Context) when there is no corresponding component instance.
+      </li>
+  <li>Administered Objects, when realized as Java classes, will include
+      methods for administrative operations that have no correspondence
+      to operations performed by the corresponding actual components.</li>
+  </ul>
+
+  <p>It is assumed that the reader is familiar with the overall component
+  architecture of Catalina.  For further information, see the corresponding
+  Developer Documentation.  To distinguish names that are used as both
+  <em>Administered Objects</em> and <code>Components</code>, different
+  font presentations are utilized.  Default values for many properties
+  are listed in [square brackets].</p>
+
+  </subsection>
+
+
+  <subsection name="Supported Administrative Operations">
+
+  <p>The administrative operations that are available are described in terms
+  of the corresponding Administered Objects (as defined above), in a manner
+  that is independent of the access method by which these operations are
+  requested.  In general, such operations are relevant only in the context
+  of a particular Administered Object (and will most likely be realized as
+  method calls on the corresponding Administered Object classes), so they
+  are organized based on the currently "focused" administered object.
+  The available Supported Operations are documented
+  <a href="fs-admin-opers.html">here</a>.</p>
+
+  </subsection>
+
+
+  <subsection name="Access Method Specific Requirements">
+
+  <h5>Scriptable Web Application</h5>
+
+  <p>An appropriate subset of the administrative operations described above
+  shall be implemented as commands that can be performed by the "Manager"
+  web application.  <strong>FIXME</strong> - Enumerate them.</p>
+
+  <p>In addition, this web application shall conform to the following
+  requirements:</p>
+  <ul>
+  <li>All request URIs shall be protected by security constraints that
+      require a security role to be assigned for processing.</li>
+  <li>The default user database shall <strong>not</strong> contain any
+      user that has been assigned a security role.</li>
+  </ul>
+
+  <h5>HTML-Based Web Application</h5>
+
+  <p>The entire suite of administrative operations described above shall be
+  made available through a web application designed for human interaction.
+  In addition, this web application shall conform to the following
+  requirements:</p>
+  <ul>
+  <li>Must be implemented using servlet, JSP, and MVC framework technologies
+      described under "External Technologies", above.</li>
+  <li>Prompts and error messages must be internationalizable to multiple
+      languages.</li>
+  <li>Rendered HTML must be compatible with Netscape Navigator (version 4.7
+      or later) and Internet Explorer (version 5.0 or later).</li>
+  </ul>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Testable Assertions">
+
+  <p><strong>FIXME</strong> - Complete this section.</p>
+
+</section>
+
+
+</body>
+
+</document>

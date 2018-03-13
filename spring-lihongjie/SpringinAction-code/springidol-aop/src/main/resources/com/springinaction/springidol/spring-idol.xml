@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:aop="http://www.springframework.org/schema/aop"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+  <bean id="eddie"
+      class="com.springinaction.springidol.Instrumentalist">
+    <property name="instrument">
+      <bean class="com.springinaction.springidol.Guitar" />
+    </property>
+  </bean>
+
+  <!--<start id="audience_bean" />--> 
+  <bean id="audience" 
+      class="com.springinaction.springidol.Audience" />
+  <!--<end id="audience_bean" />-->
+
+  <!--<start id="audience_aspect" />--> 
+<aop:config>
+  <aop:aspect ref="audience"><!--<co id="co_refAudienceBean"/>-->
+
+    <aop:before pointcut=
+         "execution(* com.springinaction.springidol.Performer.perform(..))"
+      method="takeSeats" /> <!--<co id="co_beforePointcut"/>-->
+       
+    <aop:before pointcut=
+         "execution(* com.springinaction.springidol.Performer.perform(..))"
+      method="turnOffCellPhones" /> <!--<co id="co_beforePointcut2"/>-->
+       
+    <aop:after-returning pointcut=
+         "execution(* com.springinaction.springidol.Performer.perform(..))" 
+      method="applaud" /> <!--<co id="co_afterPointcut"/>-->
+       
+    <aop:after-throwing pointcut=
+         "execution(* com.springinaction.springidol.Performer.perform(..))" 
+      method="demandRefund" /> <!--<co id="co_afterThrowingPointcut"/>-->
+       
+ </aop:aspect>
+</aop:config>
+  <!--<end id="audience_aspect" />-->
+
+</beans>

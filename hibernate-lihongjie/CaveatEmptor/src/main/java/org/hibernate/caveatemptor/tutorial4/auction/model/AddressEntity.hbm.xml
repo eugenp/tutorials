@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!--
+
+Mapping file for the AddressEntity class of CaveatEmptor.
+
+This entity class supports shared references, e.g. the
+same instance can be referenced by a User (shippingAddress)
+and by a Shipment (deliveryAddress).
+
+@author Christian Bauer
+-->
+<hibernate-mapping package="auction.model" default-access="field">
+
+<class name="AddressEntity"
+	   table="ADDRESS">
+
+    <!-- Shared primary key generator, dependend on "user" property -->
+	<id name="id" type="long" column="ADDRESS_ID">
+        <generator class="foreign">
+            <param name="property">user</param>
+        </generator>
+	</id>
+
+    <!-- A versioned entity -->
+	<version name="version" column="OBJ_VERSION"/>
+
+    <property   name="street"
+                type="string"
+                column="STREET"
+                length="255"/>
+
+    <property   name="zipcode"
+                type="string"
+                column="ZIPCODE"
+                length="16"/>
+
+    <property   name="city"
+                type="string"
+                column="CITY"
+                length="255"/>
+
+    <!-- A shared primary key association, the identifier generator uses the
+         identifier value of the associated instance. -->
+    <one-to-one name="user"
+                class="User"
+                constrained="true"
+                foreign-key="FK_ADDRESS_USERS_SHARED_PK"/>
+
+</class>
+
+</hibernate-mapping>

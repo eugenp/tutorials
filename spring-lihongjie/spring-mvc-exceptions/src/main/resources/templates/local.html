@@ -1,0 +1,73 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+
+	<h1>Exceptions Demo 1</h1>
+	<h2>Controller Exception Handling</h2>
+
+	<h3>Summary</h3>
+	<ul>
+		<li>Demo running with profiles: <i th:text="${profiles}">profiles</i>
+		</li>
+		<li>Key classes: <code>ExceptionHandlingController</code>.
+		</li>
+		<li>See <a th:substituteby="link :: blog"></a> for more details.
+		</li>
+	</ul>
+
+	<h3>Details</h3>
+	<p>
+		The exceptions below are thrown and handled within the same Controller
+		using its own
+		<code>@ExceptionHandler</code>
+		methods. The controller is
+		<code>demo1.web.ExceptionHandlingController</code>
+		<a href="ExceptionHandlingController.java"
+			th:href="${gitHubSrc + '/java/demo1/web/ExceptionHandlingController.java'}">
+			<img th:replace="link :: github" />
+		</a>.
+	</p>
+	<p>To fully understand this demo, review the output in the server
+		(console) log as you click the links below.</p>
+
+	<p>
+		The behavior of this demo is the same as <a th:href="@{/global/}">Demo 2</a>
+		- just implemented differently.
+	</p>
+
+	<h3>Demo</h3>
+	<ul class="openlist">
+		<li>Throw <a th:href="@{/local/orderNotFound}">OrderNotFoundException</a>
+			- should generate a 404 (in the Spring Boot error page).
+		</li>
+		<li>Throw <a th:href="@{dataIntegrityViolation}">DataIntegrityViolationException</a>
+			- should generate a 409 (in the Spring Boot error page).
+		</li>
+		<li>Throw <a th:href="@{/local/databaseError1}">SQLException</a> -
+			should return a specific database-error page.
+		</li>
+		<li>Throw <a th:href="@{/local/databaseError2}">DataAccessException</a>
+			- should also return the database-error page. Demonstrates catching
+			multiple exceptions with one handler.
+		</li>
+		<li>Throw <a th:href="@{/local/supportInfoException}">SupportInfoException</a>
+			- should generate a support oriented error page with hidden
+			stack-trace hidden in the page source. Whether this is a good idea,
+			is debatable! but it shows how to add extra information into the
+			model for the exception view to use.
+		</li>
+	</ul>
+
+	<p>
+		Demo 2: <a th:href="@{/global/}">Global Exception Handling</a> - using a
+		Controller Advice
+	</p>
+
+	<div th:replace="footer :: copy"></div>
+
+</body>
+</html>

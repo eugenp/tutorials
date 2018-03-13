@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="in.codelearn.common.Employee" table="employee" catalog="hibernate_example_xml">
+        <id name="employeeId" type="java.lang.Integer">
+            <column name="EMPLOYEE_ID" />
+            <generator class="identity" />
+        </id>
+        <property name="employeeCode" type="string">
+            <column name="EMPLOYEE_CODE" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="employeeName" type="string">
+            <column name="EMPLOYEE_NAME" length="20" not-null="true" unique="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE aop PUBLIC
+   "-//JBoss//DTD JBOSS AOP 1.0//EN"
+   "http://www.jboss.org/aop/dtd/jboss-aop_1_0.dtd">
+
+<aop>
+   <interceptor class="org.jboss.aspects.remoting.InvokeRemoteInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.aspects.security.SecurityClientInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.aspects.tx.ClientTxPropagationInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.ejb3.remoting.IsLocalInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.aspects.remoting.ClusterChooserInterceptor" scope="PER_VM"/>
+
+   <interceptor class="org.jboss.aspects.tx.TxPropagationInterceptor" scope="PER_VM"/>
+
+   <stack name="ServiceClientInterceptors">
+      <interceptor-ref name="org.jboss.ejb3.remoting.IsLocalInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.security.SecurityClientInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.tx.ClientTxPropagationInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.InvokeRemoteInterceptor"/>
+   </stack>
+
+   <stack name="AsynchronousStatelessSessionClientInterceptors">
+      <interceptor-ref name="org.jboss.ejb3.remoting.IsLocalInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.security.SecurityClientInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.tx.ClientTxPropagationInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.InvokeRemoteInterceptor"/>
+   </stack>
+
+   <stack name="AsynchronousStatefulSessionClientInterceptors">
+      <interceptor-ref name="org.jboss.ejb3.remoting.IsLocalInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.security.SecurityClientInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.tx.ClientTxPropagationInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.InvokeRemoteInterceptor"/>
+   </stack>
+
+   <stack name="StatelessSessionClientInterceptors">
+      <interceptor-ref name="org.jboss.ejb3.remoting.IsLocalInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.security.SecurityClientInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.tx.ClientTxPropagationInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.InvokeRemoteInterceptor"/>
+   </stack>
+
+   <stack name="StatefulSessionClientInterceptors">
+      <interceptor-ref name="org.jboss.ejb3.remoting.IsLocalInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.security.SecurityClientInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.tx.ClientTxPropagationInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.InvokeRemoteInterceptor"/>
+   </stack>
+
+   <stack name="ClusteredStatelessSessionClientInterceptors">
+      <interceptor-ref name="org.jboss.ejb3.remoting.IsLocalInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.security.SecurityClientInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.tx.ClientTxPropagationInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.ClusterChooserInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.InvokeRemoteInterceptor"/>
+   </stack>
+
+   <stack name="ClusteredStatefulSessionClientInterceptors">
+      <interceptor-ref name="org.jboss.ejb3.remoting.IsLocalInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.security.SecurityClientInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.tx.ClientTxPropagationInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.ClusterChooserInterceptor"/>
+      <interceptor-ref name="org.jboss.aspects.remoting.InvokeRemoteInterceptor"/>
+   </stack>
+
+   <interceptor class="org.jboss.ejb3.asynchronous.AsynchronousInterceptor" scope="PER_CLASS"/>
+   <interceptor class="org.jboss.ejb3.ENCPropagationInterceptor" scope="PER_VM"/>
+   <interceptor name="Basic Authorization" factory="org.jboss.ejb3.security.RoleBasedAuthorizationInterceptorFactory" scope="PER_CLASS"/>
+   <interceptor name="JACC Authorization" factory="org.jboss.ejb3.security.JaccAuthorizationInterceptorFactory" scope="PER_CLASS"/>
+   <interceptor factory="org.jboss.ejb3.security.AuthenticationInterceptorFactory" scope="PER_CLASS"/>
+   <interceptor factory="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory" scope="PER_CLASS"/>
+   <interceptor class="org.jboss.ejb3.entity.ExtendedPersistenceContextPropagationInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.ejb3.stateless.StatelessInstanceInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.ejb3.stateful.StatefulInstanceInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.ejb3.stateful.SessionSynchronizationInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.ejb3.service.ServiceSingletonInterceptor" scope="PER_VM"/>
+   <interceptor class="org.jboss.ejb3.cache.StatefulReplicationInterceptor" scope="PER_VM"/>
+   <interceptor factory="org.jboss.ejb3.stateful.StatefulRemoveFactory" scope="PER_CLASS_JOINPOINT"/>
+   <interceptor factory="org.jboss.ejb3.tx.TxInterceptorFactory" scope="PER_CLASS_JOINPOINT"/>
+   <interceptor factory="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory" scope="PER_CLASS_JOINPOINT"/>
+   <interceptor factory="org.jboss.ejb3.remoting.ReplicantsManagerInterceptorFactory" scope="PER_CLASS"/>
+   <interceptor class="org.jboss.ejb3.AllowedOperationsInterceptor" scope="PER_VM"/>
+   <interceptor factory="org.jboss.ejb3.mdb.CurrentMessageInjectorInterceptorFactory" scope="PER_CLASS"/>
+   <interceptor class="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor" scope="PER_VM"/>
+
+   <domain name="Stateless Bean">
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.asynchronous.AsynchronousInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.ENCPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.security.AuthenticationInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * @org.jboss.annotation.security.SecurityDomain->*(..))">
+         <interceptor-ref name="Basic Authorization"/>
+      </bind>
+      <bind pointcut="execution(public * @javax.annotation.security.RunAs->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * @org.jboss.annotation.ejb.Clustered->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.remoting.ReplicantsManagerInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateless.StatelessInstanceInterceptor"/>
+         <interceptor-ref name="org.jboss.aspects.tx.TxPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.tx.TxInterceptorFactory"/>
+         <interceptor-ref name="org.jboss.ejb3.AllowedOperationsInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory"/>
+      </bind>
+      <annotation expr="!class(@org.jboss.annotation.ejb.PoolClass)">
+         @org.jboss.annotation.ejb.PoolClass (value=org.jboss.ejb3.ThreadlocalPool.class, maxSize=30, timeout=10000)
+      </annotation>
+   </domain>
+
+   <domain name="JACC Stateless Bean">
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.asynchronous.AsynchronousInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.ENCPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.security.AuthenticationInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * @org.jboss.annotation.security.SecurityDomain->*(..))">
+         <interceptor-ref name="JACC Authorization"/>
+      </bind>
+      <bind pointcut="execution(public * @javax.annotation.security.RunAs->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * @org.jboss.annotation.ejb.Clustered->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.remoting.ReplicantsManagerInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateless.StatelessInstanceInterceptor"/>
+         <interceptor-ref name="org.jboss.aspects.tx.TxPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.tx.TxInterceptorFactory"/>
+         <interceptor-ref name="org.jboss.ejb3.AllowedOperationsInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory"/>
+      </bind>
+      <annotation expr="!class(@org.jboss.annotation.ejb.PoolClass)">
+         @org.jboss.annotation.ejb.PoolClass (value=org.jboss.ejb3.ThreadlocalPool.class, maxSize=30, timeout=10000)
+      </annotation>
+   </domain>
+
+   <domain name="Base Stateful Bean">
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.asynchronous.AsynchronousInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.ENCPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.security.AuthenticationInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * @org.jboss.annotation.security.SecurityDomain->*(..))">
+         <interceptor-ref name="Basic Authorization"/>
+      </bind>
+      <bind pointcut="execution(public * @javax.annotation.security.RunAs->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * @org.jboss.annotation.ejb.Clustered->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.remoting.ReplicantsManagerInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->@javax.ejb.Remove(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateful.StatefulRemoveFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateful.StatefulInstanceInterceptor"/>
+         <interceptor-ref name="org.jboss.aspects.tx.TxPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.tx.TxInterceptorFactory"/>
+         <interceptor-ref name="org.jboss.ejb3.AllowedOperationsInterceptor"/>
+      </bind>
+      <bind pointcut="execution(public * $instanceof{javax.ejb.SessionSynchronization}->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateful.SessionSynchronizationInterceptor"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.entity.ExtendedPersistenceContextPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory"/>
+      </bind>
+
+      <bind pointcut="execution(public * @org.jboss.annotation.ejb.Clustered->*(..)) AND !execution(public * *->@javax.ejb.Remove(..))">
+         <interceptor-ref name="org.jboss.ejb3.cache.StatefulReplicationInterceptor"/>
+      </bind>
+      <annotation expr="!class(@org.jboss.annotation.ejb.PoolClass)">
+         @org.jboss.annotation.ejb.PoolClass (value=org.jboss.ejb3.ThreadlocalPool.class, maxSize=30, timeout=10000)
+      </annotation>
+   </domain>
+
+   <domain name="Stateful Bean" extends="Base Stateful Bean" inheritBindings="true">
+      <!-- NON Clustered cache configuration -->
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.Cache) AND !class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.Cache (org.jboss.ejb3.cache.simple.SimpleStatefulCache.class)
+      </annotation>
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.simple.PersistenceManager) AND !class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.simple.PersistenceManager (org.jboss.ejb3.cache.simple.StatefulSessionFilePersistenceManager.class)
+      </annotation>
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.simple.CacheConfig) AND !class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.simple.CacheConfig (maxSize=100000, idleTimeoutSeconds=300)
+      </annotation>
+
+      <!-- Clustered cache configuration -->
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.Cache) AND class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.Cache (org.jboss.ejb3.cache.tree.StatefulTreeCache.class)
+      </annotation>
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.tree.CacheConfig) AND class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.tree.CacheConfig (name="jboss.cache:service=EJB3SFSBClusteredCache", maxSize=100000, idleTimeoutSeconds=300)
+      </annotation>
+   </domain>
+
+   <domain name="JACC Stateful Bean">
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.asynchronous.AsynchronousInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.ENCPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.security.AuthenticationInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * @org.jboss.annotation.security.SecurityDomain->*(..))">
+         <interceptor-ref name="JACC Authorization"/>
+      </bind>
+      <bind pointcut="execution(public * @javax.annotation.security.RunAs->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * @org.jboss.annotation.ejb.Clustered->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.remoting.ReplicantsManagerInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->@javax.ejb.Remove(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateful.StatefulRemoveFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateful.StatefulInstanceInterceptor"/>
+         <interceptor-ref name="org.jboss.aspects.tx.TxPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.tx.TxInterceptorFactory"/>
+         <interceptor-ref name="org.jboss.ejb3.AllowedOperationsInterceptor"/>
+      </bind>
+      <bind pointcut="execution(public * $instanceof{javax.ejb.SessionSynchronization}->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateful.SessionSynchronizationInterceptor"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.entity.ExtendedPersistenceContextPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory"/>
+      </bind>
+
+      <bind pointcut="execution(public * @org.jboss.annotation.ejb.Clustered->*(..)) AND !execution(public * *->@javax.ejb.Remove(..))">
+         <interceptor-ref name="org.jboss.ejb3.cache.StatefulReplicationInterceptor"/>
+      </bind>
+      <annotation expr="!class(@org.jboss.annotation.ejb.PoolClass)">
+         @org.jboss.annotation.ejb.PoolClass (value=org.jboss.ejb3.ThreadlocalPool.class, maxSize=30, timeout=10000)
+      </annotation>
+
+      <!-- NON Clustered cache configuration -->
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.Cache) AND !class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.Cache (org.jboss.ejb3.cache.simple.SimpleStatefulCache.class)
+      </annotation>
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.simple.PersistenceManager) AND !class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.simple.PersistenceManager (org.jboss.ejb3.cache.simple.StatefulSessionFilePersistenceManager.class)
+      </annotation>
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.simple.CacheConfig) AND !class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.simple.CacheConfig (maxSize=100000, idleTimeoutSeconds=300)
+      </annotation>
+
+      <!-- Clustered cache configuration -->
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.Cache) AND class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.Cache (org.jboss.ejb3.cache.tree.StatefulTreeCache.class)
+      </annotation>
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.tree.CacheConfig) AND class(@org.jboss.annotation.ejb.Clustered)">
+         @org.jboss.annotation.ejb.cache.tree.CacheConfig (name="jboss.cache:service=EJB3SFSBClusteredCache", maxSize=100000, idleTimeoutSeconds=300)
+      </annotation>
+   </domain>
+
+   <domain name="Embedded Stateful Bean" extends="Base Stateful Bean" inheritBindings="true">
+      <!-- NON Clustered cache configuration -->
+      <annotation expr="!class(@org.jboss.annotation.ejb.cache.Cache)">
+         @org.jboss.annotation.ejb.cache.Cache (org.jboss.ejb3.cache.NoPassivationCache.class)
+      </annotation>
+
+   </domain>
+
+   <domain name="Message Driven Bean">
+      <bind pointcut="execution(public * @javax.annotation.security.RunAs->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateless.StatelessInstanceInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.tx.TxInterceptorFactory"/>
+         <interceptor-ref name="org.jboss.ejb3.AllowedOperationsInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory"/>
+      </bind>
+      <annotation expr="!class(@org.jboss.annotation.ejb.PoolClass)">
+         @org.jboss.annotation.ejb.PoolClass (value=org.jboss.ejb3.StrictMaxPool.class, maxSize=30, timeout=10000)
+      </annotation>
+   </domain>
+   
+   <domain name="Consumer Bean">
+      <bind pointcut="execution(public * @javax.annotation.security.RunAs->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.stateless.StatelessInstanceInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.tx.TxInterceptorFactory"/>
+         <interceptor-ref name="org.jboss.ejb3.AllowedOperationsInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..)) AND (has(* *->@org.jboss.annotation.ejb.CurrentMessage(..)) OR hasfield(* *->@org.jboss.annotation.ejb.CurrentMessage))">
+         <interceptor-ref name="org.jboss.ejb3.mdb.CurrentMessageInjectorInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory"/>
+      </bind>
+      <annotation expr="!class(@org.jboss.annotation.ejb.PoolClass)">
+         @org.jboss.annotation.ejb.PoolClass (value=org.jboss.ejb3.StrictMaxPool.class, maxSize=30, timeout=10000)
+      </annotation>
+   </domain>
+
+   <domain name="Service Bean">
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.asynchronous.AsynchronousInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.ENCPropagationInterceptor"/>
+      </bind>
+      <bind pointcut="!execution(* *->create()) AND !execution(* *->start()) AND !execution(*->new(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.AuthenticationInterceptorFactory"/>
+      </bind>      
+      <bind pointcut="execution(public * @org.jboss.annotation.security.SecurityDomain->*(..))">
+         <interceptor-ref name="Basic Authorization"/>
+      </bind>
+      <bind pointcut="execution(public * @javax.annotation.security.RunAs->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.aspects.tx.TxPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.tx.TxInterceptorFactory"/>
+         <interceptor-ref name="org.jboss.ejb3.AllowedOperationsInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..)) AND !execution(* *->create()) AND !execution(* *->start())">
+         <interceptor-ref name="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory"/>
+      </bind>
+   </domain>
+
+   <domain name="JACC Service Bean">
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.asynchronous.AsynchronousInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.ENCPropagationInterceptor"/>
+      </bind>
+      <bind pointcut="!execution(* *->create()) AND !execution(* *->start()) AND !execution(*->new(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.AuthenticationInterceptorFactory"/>
+      </bind>      
+      <bind pointcut="execution(public * @org.jboss.annotation.security.SecurityDomain->*(..))">
+         <interceptor-ref name="Basic Authorization"/>
+      </bind>
+      <bind pointcut="execution(public * @javax.annotation.security.RunAs->*(..))">
+         <interceptor-ref name="org.jboss.ejb3.security.RunAsSecurityInterceptorFactory"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..))">
+         <interceptor-ref name="org.jboss.aspects.tx.TxPropagationInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.tx.TxInterceptorFactory"/>
+         <interceptor-ref name="org.jboss.ejb3.AllowedOperationsInterceptor"/>
+         <interceptor-ref name="org.jboss.ejb3.entity.TransactionScopedEntityManagerInterceptor"/>
+      </bind>
+      <bind pointcut="execution(public * *->*(..)) AND !execution(* *->create()) AND !execution(* *->start())">
+         <interceptor-ref name="org.jboss.ejb3.interceptor.EJB3InterceptorsFactory"/>
+      </bind>
+   </domain>
+
+
+</aop>

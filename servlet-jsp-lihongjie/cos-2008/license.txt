@@ -1,0 +1,82 @@
+Copyright (C) 2001-2002 by Jason Hunter, jhunter@servlets.com.
+All rights reserved. 
+
+The source code, object code, and documentation in the com.oreilly.servlet
+package is copyright and owned by Jason Hunter. 
+
+
+USE RIGHTS
+
+Permission is granted to use the com.oreilly.servlet.* packages in the
+development of any non-commercial project. For this use you are granted a
+non-exclusive, non-transferable limited license at no cost.
+
+For a commercial project, permission is granted to use the
+com.oreilly.servlet.* packages provided that every person on the development
+team for that project owns a copy of the book Java Servlet Programming
+(O'Reilly) in its most recent edition. The most recent edition is currently
+the 2nd Edition, available in association with Amazon.com at
+http://www.amazon.com/exec/obidos/ASIN/0596000405/jasonhunter. 
+
+Other (sometimes cheaper) license terms are available upon request; please
+write to jhunter@servlets.com for more information. 
+
+
+REDISTRIBUTION RIGHTS
+
+Commercial redistribution rights of the com.oreilly.servlet.* packages are
+available by writing jhunter@servlets.com.
+
+Non-commercial redistribution is permitted provided that:
+
+1. You redistribute the package in object code form only (as Java .class files
+or a .jar file containing the .class files) and only as part of a product that
+uses the classes as part of its primary functionality. 
+
+2. The product containing the package is non-commercial in nature.
+
+3. The public interface to the classes in the package, and the public
+interface to any classes with similar functionality, is hidden from end users
+when engaged in normal use of the product.
+
+4. The distribution is not part of a software development kit, operating
+system, other library, or a development tool without written permission from
+the copyright holder.
+
+5. The distribution includes copyright notice as follows: "The source code,
+object code, and documentation in the com.oreilly.servlet package is copyright
+and owned by Jason Hunter." in the documentation and/or other materials
+provided with the distribution.
+
+6. You reproduce the above copyright notice, this list of conditions, and the
+following disclaimer in the documentation and/or other materials provided with
+the distribution.  
+
+7. Licensor retains title to and ownership of the Software and all
+enhancements, modifications, and updates to the Software.
+
+Note that the com.oreilly.servlet package is provided "as is" and the author
+will not be liable for any damages suffered as a result of your use.
+Furthermore, you understand the package comes without any guarantee of
+technical support. 
+
+You can always find the latest version of the com.oreilly.servlet package at
+http://www.servlets.com. 
+
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS
+OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
+
+Thanks,
+
+Jason Hunter
+jhunter@servlets.com

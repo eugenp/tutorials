@@ -1,0 +1,1193 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="monitoring.html">
+
+  &project;
+
+  <properties>
+    <title>Monitoring and Managing Tomcat</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Introduction">
+
+  <p>Monitoring is a key aspect of system administration. Looking inside a
+     running server, obtaining some statistics or reconfiguring some aspects of
+     an application are all daily administration tasks.</p>
+
+  </section>
+
+  <section name="Enabling JMX Remote">
+
+    <p><strong>Note:</strong> This configuration is needed only if you are
+    going to monitor Tomcat remotely. It is not needed if you are going
+    to monitor it locally, using the same user that Tomcat runs with.</p>
+
+    <p>The Oracle website includes the list of options and how to configure
+    JMX Remote on Java 6:
+        <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/management/agent.html">
+        http://docs.oracle.com/javase/6/docs/technotes/guides/management/agent.html</a>.
+    </p>
+    <p>The following is a quick configuration guide for Java 6:</p>
+    <p>Add the following parameters to <code>setenv.bat</code> script of your
+    Tomcat (see <a href="RUNNING.txt">RUNNING.txt</a> for details).<br/>
+    <em>Note:</em> This syntax is for Microsoft Windows. The command has
+    to be on the same line. It is wrapped to be more readable. If Tomcat is
+    running as a Windows service, use its configuration dialog to set
+    java options for the service.
+    For un*xes remove <code>"set "</code> from beginning of the line.
+    </p>
+<source>
+set CATALINA_OPTS=-Dcom.sun.management.jmxremote
+  -Dcom.sun.management.jmxremote.port=%my.jmx.port%
+  -Dcom.sun.management.jmxremote.ssl=false
+  -Dcom.sun.management.jmxremote.authenticate=false
+</source>
+
+    <ol>
+    <li>If you require authorization, add and change this:
+<source>
+  -Dcom.sun.management.jmxremote.authenticate=true
+  -Dcom.sun.management.jmxremote.password.file=../conf/jmxremote.password
+  -Dcom.sun.management.jmxremote.access.file=../conf/jmxremote.access
+</source>
+    </li>
+    <li>edit the access authorization file <em>$CATALINA_BASE/conf/jmxremote.access</em>:
+<source>
+monitorRole readonly
+controlRole readwrite
+</source>
+    </li>
+    <li>edit the password file <em>$CATALINA_BASE/conf/jmxremote.password</em>:
+<source>
+monitorRole tomcat
+controlRole tomcat
+</source>
+    <b>Tip</b>: The password file should be read-only and only accessible by the
+    operating system user Tomcat is running as.
+    </li>
+    </ol>
+    <p><strong>Note:</strong> The JSR 160 JMX-Adaptor opens a second data channel
+    on a random port. That is a problem when you have a local firewall installed.
+    To fix it, configure a <code>JmxRemoteLifecycleListener</code>, as described
+    in <a href="config/listeners.html">listeners</a> documentation.
+    </p>
+
+  </section>
+
+  <section name="Manage Tomcat with JMX remote Ant Tasks">
+   <p>To simplify JMX usage with Ant 1.6.x, a set of tasks is provided that may
+   be used with antlib.</p>
+   <p><b>antlib</b>: Copy your catalina-ant.jar from $CATALINA_HOME/lib to $ANT_HOME/lib.</p>
+   <p>The following example shows the JMX Accessor usage:<br/>
+   <em>Note:</em> The <code>name</code> attribute value was wrapped here to be
+   more readable. It has to be all on the same line, without spaces.</p>
+   <table border="1">
+   <tr><td><pre>
+&lt;project name="Catalina Ant JMX"
+      xmlns:jmx="antlib:org.apache.catalina.ant.jmx"
+      default="state"
+      basedir="."&gt;
+  &lt;property name="jmx.server.name" value="localhost" /&gt;
+  &lt;property name="jmx.server.port" value="9012" /&gt;
+  &lt;property name="cluster.server.address" value="192.168.1.75" /&gt;
+  &lt;property name="cluster.server.port" value="9025" /&gt;
+
+  &lt;target name="state" description="Show JMX Cluster state"&gt;
+    &lt;jmx:open
+      host="${jmx.server.name}"
+      port="${jmx.server.port}"
+      username="controlRole"
+      password="tomcat"/&gt;
+    &lt;jmx:get
+      name=
+"Catalina:type=IDataSender,host=localhost,
+senderAddress=${cluster.server.address},senderPort=${cluster.server.port}"
+      attribute="connected"
+      resultproperty="IDataSender.backup.connected"
+      echo="false"
+    /&gt;
+    &lt;jmx:get
+      name="Catalina:type=ClusterSender,host=localhost"
+      attribute="senderObjectNames"
+      resultproperty="senderObjectNames"
+      echo="false"
+    /&gt;
+    &lt;!-- get current maxActiveSession from ClusterTest application
+       echo it to Ant output and store at
+       property &lt;em&gt;clustertest.maxActiveSessions.orginal&lt;/em&gt;
+    --&gt;
+    &lt;jmx:get
+      name="Catalina:type=Manager,context=/ClusterTest,host=localhost"
+      attribute="maxActiveSessions"
+      resultproperty="clustertest.maxActiveSessions.orginal"
+      echo="true"
+    /&gt;
+    &lt;!-- set maxActiveSession to 100
+    --&gt;
+    &lt;jmx:set
+      name="Catalina:type=Manager,context=/ClusterTest,host=localhost"
+      attribute="maxActiveSessions"
+      value="100"
+      type="int"
+    /&gt;
+    &lt;!-- get all sessions and split result as delimiter &lt;em&gt;SPACE&lt;/em&gt; for easy
+       access all session ids directly with Ant property sessions.[0..n].
+    --&gt;
+    &lt;jmx:invoke
+      name="Catalina:type=Manager,context=/ClusterTest,host=localhost"
+      operation="listSessionIds"
+      resultproperty="sessions"
+      echo="false"
+      delimiter=" "
+    /&gt;
+    &lt;!-- Access session attribute &lt;em&gt;Hello&lt;/em&gt; from first session.
+    --&gt;
+    &lt;jmx:invoke
+      name="Catalina:type=Manager,context=/ClusterTest,host=localhost"
+      operation="getSessionAttribute"
+      resultproperty="Hello"
+      echo="false"
+    &gt;
+      &lt;arg value="${sessions.0}"/&gt;
+      &lt;arg value="Hello"/&gt;
+    &lt;/jmx:invoke&gt;
+    &lt;!-- Query for all application manager.of the server from all hosts
+       and bind all attributes from all found manager MBeans.
+    --&gt;
+    &lt;jmx:query
+      name="Catalina:type=Manager,*"
+      resultproperty="manager"
+      echo="true"
+      attributebinding="true"
+    /&gt;
+    &lt;!-- echo the create properties --&gt;
+&lt;echo&gt;
+senderObjectNames: ${senderObjectNames.0}
+IDataSender.backup.connected: ${IDataSender.backup.connected}
+session: ${sessions.0}
+manager.length: ${manager.length}
+manager.0.name: ${manager.0.name}
+manager.1.name: ${manager.1.name}
+hello: ${Hello}
+manager.ClusterTest.0.name: ${manager.ClusterTest.0.name}
+manager.ClusterTest.0.activeSessions: ${manager.ClusterTest.0.activeSessions}
+manager.ClusterTest.0.counterSend_EVT_SESSION_EXPIRED:
+ ${manager.ClusterTest.0.counterSend_EVT_SESSION_EXPIRED}
+manager.ClusterTest.0.counterSend_EVT_GET_ALL_SESSIONS:
+ ${manager.ClusterTest.0.counterSend_EVT_GET_ALL_SESSIONS}
+&lt;/echo&gt;
+
+  &lt;/target&gt;
+
+&lt;/project&gt;
+</pre>
+   </td></tr>
+</table>
+   <p><b>import:</b> Import the JMX Accessor Project with
+   <em>&lt;import file="${CATALINA.HOME}/bin/catalina-tasks.xml" /&gt;</em> and
+   reference the tasks with <em>jmxOpen</em>, <em>jmxSet</em>, <em>jmxGet</em>,
+   <em>jmxQuery</em>, <em>jmxInvoke</em>, <em>jmxEquals</em> and <em>jmxCondition</em>.</p>
+
+  </section>
+
+<!-- Open #########################################################################
+-->
+
+<section name="JMXAccessorOpenTask - JMX open connection task">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+  <tr>
+    <td>url</td>
+    <td>Set JMX connection URL - <em>service:jmx:rmi:///jndi/rmi://localhost:8050/jmxrmi</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>host</td>
+    <td>Set the host, shortcut the very long URL syntax.
+    </td>
+    <td><code>localhost</code></td>
+  </tr>
+
+  <tr>
+    <td>port</td>
+    <td>Set the remote connection port
+    </td>
+    <td><code>8050</code></td>
+  </tr>
+
+  <tr>
+    <td>username</td>
+    <td>remote JMX connection user name.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>password</td>
+    <td>remote JMX connection password.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>Name of the internal connection reference. With this attribute you can
+        configure more the one connection inside the same Ant project.
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>echo</td>
+    <td>Echo the command usage (for access analysis or debugging)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+  <tr>
+    <td>if</td>
+    <td>Only execute if a property of the given name <b>exists</b> in the current project.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>unless</td>
+    <td>Only execute if a property of the given name <b>not exists</b> in the current project.
+    </td>
+    <td></td>
+  </tr>
+
+</table>
+</p>
+<p>
+Example to open a new JMX connection<br/>
+<source>
+  &lt;jmx:open
+    host="${jmx.server.name}"
+    port="${jmx.server.port}"
+  /&gt;
+</source>
+</p>
+<p>
+Example to open a JMX connection from URL, with authorization and
+store at other reference <br/>
+<source>
+  &lt;jmx:open
+    url="service:jmx:rmi:///jndi/rmi://localhost:9024/jmxrmi"
+    ref="jmx.server.9024"
+    username="controlRole"
+    password="tomcat"
+  /&gt;
+</source>
+</p>
+
+<p>
+Example to open a JMX connection from URL, with authorization and
+store at other reference, but only when property <em>jmx.if</em> exists and
+<em>jmx.unless</em> not exists<br/>
+<source>
+  &lt;jmx:open
+    url="service:jmx:rmi:///jndi/rmi://localhost:9024/jmxrmi"
+    ref="jmx.server.9024"
+    username="controlRole"
+    password="tomcat"
+    if="jmx.if"
+    unless="jmx.unless"
+  /&gt;
+</source>
+</p>
+<p><b>Note</b>: All properties from <em>jmxOpen</em> task also exists at all
+other tasks and conditions.
+</p>
+
+</section>
+
+<!-- Get #########################################################################
+-->
+
+<section name="JMXAccessorGetTask:  get attribute value Ant task">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Full qualified JMX ObjectName -- <em>Catalina:type=Server</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>attribute</td>
+    <td>Existing MBean attribute (see Tomcat MBean description above)
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>JMX Connection reference
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>echo</td>
+    <td>Echo command usage (access and result)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+  <tr>
+    <td>resultproperty</td>
+    <td>Save result at this project property
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>delimiter</td>
+    <td>Split result with delimiter (java.util.StringTokenizer)
+        and use resultproperty as prefix to store tokens.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>separatearrayresults</td>
+    <td>When return value is an array, save result as property list
+    (<em>$resultproperty.[0..N]</em> and <em>$resultproperty.length</em>)
+    </td>
+    <td><code>true</code></td>
+  </tr>
+
+</table>
+</p>
+<p>
+Example to get remote MBean attribute from default JMX connection <br/>
+<source>
+  &lt;jmx:get
+    name="Catalina:type=Manager,context=/servlets-examples,host=localhost"
+    attribute="maxActiveSessions"
+    resultproperty="servlets-examples.maxActiveSessions"
+  /&gt;
+</source>
+</p>
+<p>
+Example to get and result array and split it at separate properties<br/>
+<source>
+  &lt;jmx:get
+      name="Catalina:type=ClusterSender,host=localhost"
+      attribute="senderObjectNames"
+      resultproperty="senderObjectNames"
+  /&gt;
+</source>
+Access the senderObjectNames properties with:
+<source>
+  ${senderObjectNames.length} give the number of returned sender list.
+  ${senderObjectNames.[0..N]} found all sender object names
+</source>
+</p>
+
+<p>
+Example to get IDataSender attribute connected only when cluster is configured.<br/>
+<em>Note:</em> The <code>name</code> attribute value was wrapped here to be
+more readable. It has to be all on the same line, without spaces.
+</p>
+<source>
+  &lt;jmx:query
+    failonerror="false"
+    name="Catalina:type=Cluster,host=${tomcat.application.host}"
+    resultproperty="cluster"
+  /&gt;
+  &lt;jmx:get
+    name=
+"Catalina:type=IDataSender,host=${tomcat.application.host},
+senderAddress=${cluster.backup.address},senderPort=${cluster.backup.port}"
+    attribute="connected"
+    resultproperty="datasender.connected"
+    if="cluster.0.name" /&gt;
+</source>
+
+</section>
+
+<!-- Set #########################################################################
+-->
+
+<section name="JMXAccessorSetTask:  set attribute value Ant task">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Full qualified JMX ObjectName -- <em>Catalina:type=Server</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>attribute</td>
+    <td>Existing MBean attribute (see Tomcat MBean description above)
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>value</td>
+    <td>value that set to attribute
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>type</td>
+    <td>type of the attribute.
+    </td>
+    <td>java.lang.String</td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>JMX Connection reference
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>echo</td>
+    <td>Echo command usage (access and result)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+</table>
+</p>
+<p>
+Example to set remote MBean attribute value<br/>
+<source>
+  &lt;jmx:set
+    name="Catalina:type=Manager,context=/servlets-examples,host=localhost"
+    attribute="maxActiveSessions"
+    value="500"
+    type="int"
+  /&gt;
+</source>
+</p>
+
+</section>
+
+<!-- Invoke #########################################################################
+-->
+
+<section name="JMXAccessorInvokeTask:  invoke MBean operation Ant task">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Full qualified JMX ObjectName -- <em>Catalina:type=Server</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>operation</td>
+    <td>Existing MBean operation (see Tomcat
+        <a href="funcspecs/fs-admin-opers.html">funcspecs/fs-admin-opers.html</a>).
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>JMX Connection reference
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>echo</td>
+    <td>Echo command usage (access and result)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+  <tr>
+    <td>resultproperty</td>
+    <td>Save result at this project property
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>delimiter</td>
+    <td>Split result with delimiter (java.util.StringTokenizer)
+        and use resultproperty as prefix to store tokens.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>separatearrayresults</td>
+    <td>When return value is an array, save result as property list
+    (<em>$resultproperty.[0..N]</em> and <em>$resultproperty.length</em>)
+    </td>
+    <td><code>true</code></td>
+  </tr>
+
+</table>
+</p>
+<p>
+stop an application <br/>
+<source>
+  &lt;jmx:invoke
+    name="Catalina:type=Manager,context=/servlets-examples,host=localhost"
+    operation="stop"/&gt;
+</source>
+Now you can find the sessionid at <em>${sessions.[0..N}</em> properties and access the count
+with ${sessions.length} property.
+</p>
+<p>
+Example to get all sessionids <br/>
+<source>
+  &lt;jmx:invoke
+    name="Catalina:type=Manager,context=/servlets-examples,host=localhost"
+    operation="listSessionIds"
+    resultproperty="sessions"
+    delimiter=" "
+  /&gt;
+</source>
+Now you can find the sessionid at <em>${sessions.[0..N}</em> properties and access the count
+with ${sessions.length} property.
+</p>
+<p>
+Example to get remote MBean session attribute from session ${sessionid.0}<br/>
+<source>
+  &lt;jmx:invoke
+    name="Catalina:type=Manager,context=/ClusterTest,host=localhost"
+    operation="getSessionAttribute"
+    resultproperty="hello"&gt;
+     &lt;arg value="${sessionid.0}"/&gt;
+     &lt;arg value="Hello" /&gt;
+  &lt;/jmx:invoke&gt;
+</source>
+</p>
+<p>
+Example to create a new access logger valve at vhost <em>localhost</em>
+<source>
+ &lt;jmx:invoke
+         name="Catalina:type=MBeanFactory"
+         operation="createAccessLoggerValve"
+         resultproperty="accessLoggerObjectName"
+ &gt;
+     &lt;arg value="Catalina:type=Host,host=localhost"/&gt;
+ &lt;/jmx:invoke&gt;
+</source>
+Now you can find new MBean with name stored at <em>${accessLoggerObjectName}</em>
+property.
+</p>
+
+</section>
+
+<!-- Query #########################################################################
+-->
+
+<section name="JMXAccessorQueryTask:  query MBean Ant task">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>JMX  ObjectName query string -- <em>Catalina:type=Manager,*</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>JMX Connection reference
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>echo</td>
+    <td>Echo command usage (access and result)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+  <tr>
+    <td>resultproperty</td>
+    <td>Prefix project property name to all founded MBeans (<em>mbeans.[0..N].objectname</em>)
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>attributebinding</td>
+    <td>bind ALL MBean attributes in addition to <em>name</em>
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+  <tr>
+    <td>delimiter</td>
+    <td>Split result with delimiter (java.util.StringTokenizer)
+        and use resultproperty as prefix to store tokens.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>separatearrayresults</td>
+    <td>When return value is an array, save result as property list
+    (<em>$resultproperty.[0..N]</em> and <em>$resultproperty.length</em>)
+    </td>
+    <td><code>true</code></td>
+  </tr>
+
+</table>
+</p>
+<p>
+Get all Manager ObjectNames from all services and Hosts <br/>
+<source>
+  &lt;jmx:query
+    name="Catalina:type=Manager,*
+    resultproperty="manager" /&gt;
+</source>
+Now you can find the Session Manager at <em>${manager.[0..N].name}</em>
+properties and access the result object counter with ${manager.length} property.
+</p>
+<p>
+Example to get the Manager from <em>servlet-examples</em> application an bind all MBean properties<br/>
+<source>
+  &lt;jmx:query
+    name="Catalina:type=Manager,context=/servlet-examples,host=localhost*"
+    attributebinding="true"
+    resultproperty="manager.servletExamples" /&gt;
+</source>
+Now you can find the manager at <em>${manager.servletExamples.0.name}</em> property
+and can access all properties from this manager with <em>${manager.servletExamples.0.[manager attribute names]</em>}.
+The result object counter from MBeans is stored ad ${manager.length} property.
+</p>
+
+<p>
+Example to get all MBeans from a server and store inside an external XML property file<br/>
+<source>
+&lt;project name="jmx.query"
+            xmlns:jmx="antlib:org.apache.catalina.ant.jmx"
+            default="query-all" basedir="."&gt;
+&lt;property name="jmx.host" value="localhost"/&gt;
+&lt;property name="jmx.port" value="8050"/&gt;
+&lt;property name="jmx.username" value="controlRole"/&gt;
+&lt;property name="jmx.password" value="tomcat"/&gt;
+
+&lt;target name="query-all" description="Query all MBeans of a server"&gt;
+  &lt;!-- Configure connection --&gt;
+  &lt;jmx:open
+    host="${jmx.host}"
+    port="${jmx.port}"
+    ref="jmx.server"
+    username="${jmx.username}"
+    password="${jmx.password}"/&gt;
+
+  &lt;!-- Query MBean list --&gt;
+  &lt;jmx:query
+    name="*:*"
+    resultproperty="mbeans"
+    attributebinding="false"/&gt;
+
+  &lt;echoproperties
+    destfile="mbeans.properties"
+    prefix="mbeans."
+    format="xml"/&gt;
+
+  &lt;!-- Print results --&gt;
+  &lt;echo message=
+    "Number of MBeans in server ${jmx.host}:${jmx.port} is ${mbeans.length}"/&gt;
+&lt;/target&gt;
+&lt;/project&gt;
+</source>
+Now you can find all MBeans inside the file <em>mbeans.properties</em>.
+</p>
+
+</section>
+
+<!-- Create #########################################################################
+-->
+
+<section name="JMXAccessorCreateTask:  remote create MBean Ant task">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Full qualified JMX ObjectName -- <em>Catalina:type=MBeanFactory</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>className</td>
+    <td>Existing MBean full qualified class name (see Tomcat MBean description above)
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>classLoader</td>
+    <td>ObjectName of server or web application classloader <br/>
+    ( <em>Catalina:type=ServerClassLoader,name=[server,common,shared]</em> or<br/>
+     <em>Catalina:type=WebappClassLoader,context=/myapps,host=localhost</em>)
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>JMX Connection reference
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>echo</td>
+    <td>Echo command usage (access and result)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+</table>
+</p>
+<p>
+Example to create remote MBean<br/>
+<source>
+  &lt;jmx:create
+    ref="${jmx.reference}"
+    name="Catalina:type=MBeanFactory"
+    className="org.apache.commons.modeler.BaseModelMBean"
+    classLoader="Catalina:type=ServerClassLoader,name=server"&gt;
+    &lt;arg value="org.apache.catalina.mbeans.MBeanFactory" /&gt;
+  &lt;/jmx:create&gt;
+</source>
+</p>
+<p>
+    <b>Warning</b>: Many Tomcat MBeans can't be linked to their parent once<br/>
+    created. The Valve, Cluster and Realm MBeans are not automatically<br/>
+    connected with their parent. Use the <em>MBeanFactory</em> create<br/>
+    operation instead.
+</p>
+
+</section>
+
+<!-- Unregister #########################################################################
+-->
+
+<section name="JMXAccessorUnregisterTask:  remote unregister MBean Ant task">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Full qualified JMX ObjectName -- <em>Catalina:type=MBeanFactory</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>JMX Connection reference
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>echo</td>
+    <td>Echo command usage (access and result)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+</table>
+</p>
+<p>
+Example to unregister remote MBean<br/>
+<source>
+  &lt;jmx:unregister
+    name="Catalina:type=MBeanFactory"
+  /&gt;
+</source>
+</p>
+<p>
+    <b>Warning</b>: A lot of Tomcat MBeans can't be unregister.<br/>
+    The MBeans are not unlinked from their parent. Use <em>MBeanFactory</em><br/>
+    remove operation instead.
+</p>
+
+</section>
+
+<!-- condition #########################################################################
+-->
+
+<section name="JMXAccessorCondition:  express condition">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+ <tr>
+    <td>url</td>
+    <td>Set JMX connection URL - <em>service:jmx:rmi:///jndi/rmi://localhost:8050/jmxrmi</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>host</td>
+    <td>Set the host, shortcut the very long URL syntax.
+    </td>
+    <td><code>localhost</code></td>
+  </tr>
+
+  <tr>
+    <td>port</td>
+    <td>Set the remote connection port
+    </td>
+    <td><code>8050</code></td>
+  </tr>
+
+  <tr>
+    <td>username</td>
+    <td>remote JMX connection user name.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>password</td>
+    <td>remote JMX connection password.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>Name of the internal connection reference. With this attribute you can
+        configure more the one connection inside the same Ant project.
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Full qualified JMX ObjectName -- <em>Catalina:type=Server</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>echo</td>
+    <td>Echo condition usage (access and result)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+  <tr>
+    <td>if</td>
+    <td>Only execute if a property of the given name <b>exists</b> in the current project.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>unless</td>
+    <td>Only execute if a property of the given name <b>not exists</b> in the current project.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>value (required)</td>
+    <td>Second arg for operation
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>type</td>
+    <td>Value type to express operation (support <em>long</em> and <em>double</em>)
+    </td>
+    <td><code>long</code></td>
+  </tr>
+
+  <tr>
+    <td>operation</td>
+    <td> express one
+    <ul>
+    <li>==  equals</li>
+    <li>!=  not equals</li>
+    <li>&gt; greater than (&amp;gt;)</li>
+    <li>&gt;= greater than or equals (&amp;gt;=)</li>
+    <li>&lt; lesser than (&amp;lt;)</li>
+    <li>&lt;= lesser than or equals (&amp;lt;=)</li>
+    </ul>
+    </td>
+    <td><code>==</code></td>
+  </tr>
+
+</table>
+</p>
+<p>
+Wait for server connection and that cluster backup node is accessable<br/>
+<source>
+&lt;target name="wait"&gt;
+  &lt;waitfor maxwait="${maxwait}" maxwaitunit="second" timeoutproperty="server.timeout" &gt;
+    &lt;and&gt;
+      &lt;socket server="${server.name}" port="${server.port}"/&gt;
+      &lt;http url="${url}"/&gt;
+      &lt;jmx:condition
+        operation="=="
+        host="localhost"
+        port="9014"
+        username="controlRole"
+        password="tomcat"
+        name=
+"Catalina:type=IDataSender,host=localhost,senderAddress=192.168.111.1,senderPort=9025"
+        attribute="connected"
+        value="true"
+      /&gt;
+    &lt;/and&gt;
+  &lt;/waitfor&gt;
+  &lt;fail if="server.timeout" message="Server ${url} don't answer inside ${maxwait} sec" /&gt;
+  &lt;echo message="Server ${url} alive" /&gt;
+&lt;/target&gt;
+</source>
+</p>
+
+</section>
+
+<!-- Equals #########################################################################
+-->
+
+<section name="JMXAccessorEqualsCondition:  equals MBean Ant condition">
+<p>
+List of Attributes<br/>
+<table border="1" cellpadding="5">
+
+  <tr>
+    <th align="center" bgcolor="aqua">Attribute</th>
+    <th align="center" bgcolor="aqua">Description</th>
+    <th align="center" bgcolor="aqua">Default value</th>
+  </tr>
+
+ <tr>
+    <td>url</td>
+    <td>Set JMX connection URL - <em>service:jmx:rmi:///jndi/rmi://localhost:8050/jmxrmi</em>
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>host</td>
+    <td>Set the host, shortcut the very long URL syntax.
+    </td>
+    <td><code>localhost</code></td>
+  </tr>
+
+  <tr>
+    <td>port</td>
+    <td>Set the remote connection port
+    </td>
+    <td><code>8050</code></td>
+  </tr>
+
+  <tr>
+    <td>username</td>
+    <td>remote JMX connection user name.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>password</td>
+    <td>remote JMX connection password.
+    </td>
+    <td></td>
+  </tr>
+
+  <tr>
+    <td>ref</td>
+    <td>Name of the internal connection reference. With this attribute you can
+        configure more the one connection inside the same Ant project.
+    </td>
+    <td><code>jmx.server</code></td>
+  </tr>
+
+  <tr>
+    <td>name</td>
+    <td>Full qualified JMX ObjectName -- <em>Catalina:type=Server</em>
+    </td>
+    <td></td>
+  </tr>
+
+
+  <tr>
+    <td>echo</td>
+    <td>Echo condition usage (access and result)
+    </td>
+    <td><code>false</code></td>
+  </tr>
+
+</table>
+</p>
+<p>
+Wait for server connection and that cluster backup node is accessible<br/>
+<source>
+&lt;target name="wait"&gt;
+  &lt;waitfor maxwait="${maxwait}" maxwaitunit="second" timeoutproperty="server.timeout" &gt;
+    &lt;and&gt;
+      &lt;socket server="${server.name}" port="${server.port}"/&gt;
+      &lt;http url="${url}"/&gt;
+      &lt;jmx:equals
+        host="localhost"
+        port="9014"
+        username="controlRole"
+        password="tomcat"
+        name=
+"Catalina:type=IDataSender,host=localhost,senderAddress=192.168.111.1,senderPort=9025"
+        attribute="connected"
+        value="true"
+      /&gt;
+    &lt;/and&gt;
+  &lt;/waitfor&gt;
+  &lt;fail if="server.timeout" message="Server ${url} don't answer inside ${maxwait} sec" /&gt;
+  &lt;echo message="Server ${url} alive" /&gt;
+&lt;/target&gt;
+</source>
+</p>
+
+</section>
+
+  <section name="Using the JMXProxyServlet">
+
+    <p>
+      Tomcat offers an alternative to using remote (or even local) JMX
+      connections while still giving you access to everything JMX has to offer:
+      Tomcat's
+      <a href="api/org/apache/catalina/manager/JMXProxyServlet.html">JMXProxyServlet</a>.
+    </p>
+    
+    <p>
+      The JMXProxyServlet allows a client to issue JMX queries via an HTTP
+      interface. This technique offers the following advantages over using
+      JMX directly from a client program:
+    </p>
+
+    <ul>
+      <li>You don't have to launch a full JVM and make a remote JMX connection
+      just to ask for one small piece of data from a running server</li>
+      <li>You don't have to know how to work with JMX connections</li>
+      <li>You don't need any of the complex configuration covered in the rest
+      of this page</li>
+      <li>Your client program does not have to be written in Java</li>
+    </ul>
+
+    <p>
+      A perfect example of JMX overkill can be seen in the case of popular
+      server-monitoring software such as Nagios or Icinga: if you want to
+      monitor 10 items via JMX, you will have to launch 10 JVMs, make 10 JMX
+      connections, and then shut them all down every few minutes. With the
+      JMXProxyServlet, you can make 10 HTTP connections and be done with it.
+    </p>
+    
+    <p>
+      You can find out more information about the JMXProxyServlet in the
+      documentation for the 
+      <a href="manager-howto.html#Using_the_JMX_Proxy_Servlet">Tomcat
+      manager</a>.
+    </p>
+  </section>
+</body>
+</document>

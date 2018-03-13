@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean name="ContextEnvironment"
+         className="org.apache.catalina.mbeans.ContextEnvironmentMBean"
+         description="Representation of an application environment entry"
+         domain="Catalina"
+         group="Resources"
+         type="org.apache.catalina.deploy.ContextEnvironment">
+    
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+      
+    <attribute name="description"
+               description="The description of this environment entry"
+               type="java.lang.String"/>
+
+    <attribute name="name"
+               description="The name of this environment entry"
+               type="java.lang.String"/>
+      
+    <attribute name="override"
+               description="Does this environment entry allow overrides by the
+               application deployment descriptor"
+               type="boolean"/>
+
+    <attribute name="type"
+               description="The type of this environment entry"
+               type="java.lang.String"/>
+
+    <attribute name="value"
+               description="The value of this environment entry"
+               type="java.lang.String"/>
+  </mbean>
+
+
+  <mbean         name="ContextResource"
+         className="org.apache.catalina.mbeans.ContextResourceMBean"
+         description="Representation of a resource reference for a web application"
+         domain="Catalina"
+         group="Resources"
+         type="org.apache.catalina.deploy.ContextResource">
+    
+    <attribute   name="auth"
+               description="The authorization requirement for this resource"
+               type="java.lang.String"/>
+      
+    <attribute   name="description"
+               description="The description of this resource"
+               type="java.lang.String"/>
+      
+    <attribute   name="name"
+               description="The name of this resource"
+               type="java.lang.String"/>
+      
+    <attribute   name="scope"
+               description="The sharing scope of this resource factory"
+               type="java.lang.String"/>
+      
+    <attribute   name="type"
+               description="The type of this environment entry"
+               type="java.lang.String"/>
+  </mbean>
+  
+  
+   <mbean         name="ContextResourceLink"
+          className="org.apache.catalina.mbeans.ContextResourceLinkMBean"
+          description="Representation of a resource link for a web application"
+          domain="Catalina"
+          group="Resources"
+          type="org.apache.catalina.deploy.ContextResourceLink">
+    
+    <attribute   name="global"
+               description="The global name of this resource"
+               type="java.lang.String"/>
+      
+    <attribute   name="name"
+               description="The name of this resource"
+               type="java.lang.String"/>
+               
+    <attribute   name="description"
+               description="The description of this resource"
+               type="java.lang.String"/>
+      
+    <attribute   name="type"
+               description="The type of this resource"
+               type="java.lang.String"/>
+      
+  </mbean>
+  
+  <mbean         name="NamingResources"
+            className="org.apache.catalina.mbeans.NamingResourcesMBean"
+          description="Holds and manages the naming resources defined in the
+                       J2EE Enterprise Naming Context and their associated 
+                       JNDI context"
+               domain="Catalina"
+                group="Resources"
+                 type="org.apache.catalina.deploy.NamingResources">
+                 
+    <attribute   name="container"
+          description="The container with which the naming resources are associated."
+                 type="java.lang.Object"
+            writeable="false"/>
+
+    <attribute   name="environments"
+          description="MBean Names of the set of defined environment entries
+                       for this web application"
+                 type="[Ljava.lang.String;"
+            writeable="false"/>
+
+    <attribute   name="resources"
+          description="MBean Names of all the defined resource references
+                       for this application."
+                 type="[Ljava.lang.String;"
+            writeable="false"/>
+
+    <attribute   name="resourceLinks"
+          description="MBean Names of all the defined resource link references
+                       for this application."
+                 type="[Ljava.lang.String;"
+            writeable="false"/>
+
+    <operation   name="addEnvironment"
+          description="Add an environment entry for this web application"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="envName"
+          description="New environment entry name"
+                 type="java.lang.String"/>
+      <parameter name="type"
+          description="New environment entry type"
+                 type="java.lang.String"/>
+      <parameter name="value"
+          description="New environment entry value"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="addResource"
+          description="Add a resource reference for this web application"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="resourceName"
+          description="New resource reference name"
+                 type="java.lang.String"/>
+      <parameter name="type"
+          description="New resource reference type"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="addResourceLink"
+          description="Add a resource link reference for this web application"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="resourceLinkName"
+          description="New resource reference name"
+                 type="java.lang.String"/>
+      <parameter name="type"
+          description="New resource reference type"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeEnvironment"
+          description="Remove any environment entry with the specified name"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="envName"
+          description="Name of the environment entry to remove"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeResource"
+          description="Remove any resource reference with the specified name"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="resourceName"
+          description="Name of the resource reference to remove"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeResourceLink"
+          description="Remove any resource link reference with the specified name"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="resourceLinkName"
+          description="Name of the resource reference to remove"
+                 type="java.lang.String"/>
+    </operation>
+
+  </mbean>
+
+
+</mbeans-descriptors>

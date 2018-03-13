@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="resources.html">
+
+  &project;
+
+  <properties>
+    <author email="remm@apache.org">Remy Maucherat</author>
+    <title>The Resources Component</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>The <strong>Resources</strong> element represents the <em>web
+  application static resources</em>, from which classes will be loaded,
+  HTML, JSP and the other static files will be served. This allows the webapp
+  to reside on various mediums other than the filesystem, like compressed
+  in a WAR file, in a JDBC database, or in a more advanced versioning
+  repository.</p>
+
+  <p>A unified caching engine is provided for all accesses to the webapp
+  resources made by the servlet container and web applications which use the
+  container provided mechanisms to access such resources, such as classloader
+  access, access through the <code>ServletContext</code> interface, or native
+  access through the <code>DirectoryContext</code> interface.</p>
+
+  <p><strong>Note: Running a webapp with non-filesystem based
+  Resources implementations is only possible when the webapp does not
+  rely on direct filesystem access to its own resources, and uses the methods
+  in the ServletContext interface to access them.</strong></p>
+
+  <p>A Resources element MAY be nested inside a
+  <a href="context.html">Context</a> component.  If it is not included,
+  a default filesystem based Resources will be created automatically,
+  which is sufficient for most requirements.</p>
+
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+    <p>All implementations of <strong>Resources</strong>
+    support the following attributes:</p>
+
+    <attributes>
+
+      <attribute name="className" required="false">
+        <p>Java class name of the implementation to use.  This class must
+        implement the <code>javax.naming.directory.DirContext</code> interface.
+        It is recommended for optimal functionality and performance,
+        but not mandatory, that the class extend
+        <code>org.apache.naming.resources.BaseDirContext</code>, as well as
+        use the special object types provided in the
+        <code>org.apache.naming.resources</code> for returned objects.
+        If not specified, the standard value (defined below) will be used.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+  <subsection name="Standard Implementation">
+
+    <p>The standard implementation of <strong>Resources</strong> is
+    <strong>org.apache.naming.resources.FileDirContext</strong>, and
+    is configured by its parent Context element.</p>
+
+  </subsection>
+
+  <subsection name="VirtualDirContext implementation">
+    <p>This implementation of <strong>Resources</strong> is
+    <strong>org.apache.naming.resources.VirtualDirContext</strong> and is aimed to be used
+    during development to deploy a webapp without copying files to a webapp compliant
+    directory structure.
+    It extends <code>FileDirContext</code> and supports the following
+    additional attributes</p>
+
+    <attributes>
+      <attribute name="extraResourcePaths" required="false">
+        <p>Allows to map a path of the filesystem to a path in the webapp. Multiple
+        filesystem paths can be mapped to the same path in the webapp. Filesystem
+        path and virtual path must be separated by an equal signe (=). Pairs of paths
+        must be separated by a column.</p>
+        Example: <code>/=/Users/jdoe/mywebapp/src/main/webapp,/=/Users/jdoe/mywebapp/src/main/webapp2,/pictures=/Users/jdoe/sharedpictures</code>
+        <p>The path to the docBase (as declared in the Context) must not be added here.</p>
+        <p>This attribute enhances the feature provided by the <code>aliases</code>
+        attribute of the <strong>StandardContext</strong>.</p>
+      </attribute>
+    </attributes>
+  </subsection>
+
+</section>
+
+
+<section name="Nested Components">
+
+  <p>No components may be nested inside a <strong>Resources</strong> element.</p>
+
+</section>
+
+
+<section name="Special Features">
+
+  <p>No special features are associated with a <strong>Resources</strong>
+  element.</p>
+
+</section>
+
+
+</body>
+
+
+</document>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+    <bean id="myDataSource"
+          class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+
+        <property name="driverClassName">
+            <value>org.hsqldb.jdbcDriver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:hsqldb:file:/Users/aglover/Development/demos/talks/hibernate-sharding/plainead-shard/db01/db01</value>
+        </property>
+        <property name="username">
+            <value>SA</value>
+        </property>
+        <property name="password">
+            <value></value>
+        </property>
+
+    </bean>
+
+    <bean id="mySessionFactory"
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource"/>
+        <property name="mappingResources">
+            <list>
+                <value>racer.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <value>hibernate.dialect=org.hibernate.dialect.HSQLDialect</value>
+        </property>
+    </bean>
+
+    <bean id="race_dao"
+          class="org.disco.racer.domain.RaceDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="mySessionFactory"/>
+        </property>
+    </bean>
+
+    <bean id="runner_dao"
+          class="org.disco.racer.domain.RunnerDAOImpl">
+        <property name="sessionFactory">
+            <ref bean="mySessionFactory"/>
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,12 @@
+<aop>
+
+    <!--
+        Wrap all execute() methods in all Action implementors inside a database transaction
+        and a thread-bound persistence context. If one execute() method should call another
+        execute() method, both transaction and persistence context are propagated.
+    -->
+    <bind pointcut="execution(* $instanceof{auction.web.actions.Action}->execute(..))">
+        <interceptor class="auction.persistence.SessionTransactionInterceptor"/>
+    </bind>
+
+</aop>

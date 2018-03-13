@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="org.disco.racer.domain.Race"
+           table="race"
+           dynamic-update="true"
+           dynamic-insert="true">
+
+        <id name="id" column="RACE_ID" unsaved-value="-1">
+            <generator class="org.hibernate.shards.id.ShardedUUIDGenerator"/>
+        </id>
+
+        <set name="participants" cascade="save-update" inverse="false" table="race_participants"
+             lazy="false">
+            <key column="race_id"/>
+            <many-to-many column="runner_id"
+                          class="org.disco.racer.domain.Runner"/>
+        </set>
+
+
+        <set name="results" inverse="true" table="race_results" lazy="false">
+            <key column="race_id"/>
+            <one-to-many class="org.disco.racer.domain.Result"/>
+        </set>
+
+
+        <property name="name" column="NAME" type="string"/>
+        <property name="distance" column="DISTANCE" type="double"/>
+        <property name="date" column="DATE" type="date"/>
+        <property name="description" column="DESCRIPTION" type="string"/>
+    </class>
+
+
+    <!--
+    Current problem w/runner: there can be same person as the primary key is the
+    id. It should be some combination of name and ssn
+    -->
+    <class name="org.disco.racer.domain.Runner"
+           table="runner"
+           dynamic-update="true"
+           dynamic-insert="true">
+
+        <id name="id" column="RUNNER_ID" unsaved-value="-1">
+            <generator class="org.hibernate.shards.id.ShardedUUIDGenerator"/>
+        </id>
+
+        <set name="races" cascade="save-update" inverse="true" table="race_participants" lazy="false">
+            <key column="runner_id"/>
+            <many-to-many column="race_id"
+                          class="org.disco.racer.domain.Race"/>
+        </set>
+
+        <set name="raceResults" inverse="true" table="race_results" lazy="false">
+            <key column="runner_id"/>
+            <one-to-many class="org.disco.racer.domain.Result"/>
+        </set>
+
+        <property name="firstName" column="FIRST_NAME" type="string"/>
+        <property name="lastName" column="LAST_NAME" type="string"/>
+        <property name="age" column="AGE" type="int"/>
+    </class>
+
+    <class name="org.disco.racer.domain.Result"
+           table="race_result"
+           dynamic-update="true"
+           dynamic-insert="true">
+
+        <composite-id name="resultId" class="org.disco.racer.domain.Result$ResultId">
+            <key-property name="raceId" column="RACE_ID"/>
+            <key-property name="runnerId" column="RUNNER_ID"/>
+        </composite-id>
+
+
+        <many-to-one name="runner" column="RUNNER_ID"
+                     class="org.disco.racer.domain.Runner"
+                     insert="false" update="false"/>
+
+        <many-to-one name="race" column="RACE_ID"
+                     class="org.disco.racer.domain.Race"
+                     insert="false" update="false"/>
+
+        <property name="ranking" column="PLACE" type="int"/>
+        <property name="time" column="TIME" type="big_decimal"/>
+    </class>
+
+</hibernate-mapping>

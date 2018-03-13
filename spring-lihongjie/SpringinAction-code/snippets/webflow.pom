@@ -1,0 +1,15 @@
+<dependency>
+  <groupId>org.springframework.webflow</groupId>
+  <artifactId>spring-webflow</artifactId>
+  <version>2.0.8.RELEASE</version>
+</dependency>
+<dependency>
+  <groupId>org.springframework.webflow</groupId>
+  <artifactId>spring-binding</artifactId>
+  <version>2.0.8.RELEASE</version>
+</dependency>
+<dependency>
+  <groupId>ognl</groupId>
+  <artifactId>ognl</artifactId>
+  <version>2.6.9</version>
+</dependency>

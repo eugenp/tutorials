@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="index.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <title>Overview</title>
+  </properties>
+
+<body>
+
+
+<section name="Overview">
+
+<p>This manual contains reference information about all of the configuration
+directives that can be included in a <code>conf/server.xml</code> file to
+configure the behavior of the Tomcat 7 Servlet/JSP container.  It does not
+attempt to describe which configuration directives should be used to perform
+specific tasks - for that, see the various <em>HOW-TO</em> documents on the
+main index page.</p>
+
+<p>Tomcat configuration files are formatted as schemaless XML; elements and
+attributes are case-sensitive. Apache Ant-style variable substitution
+is supported; a system property with the name <code>propname</code> may be
+used in a configuration file using the syntax <code>${propname}</code>. All
+system properties are available including those set using the <code>-D</code>
+syntax, those automatically made available by the JVM and those configured in
+the <code>$CATALINA_BASE/conf/catalina.properties</code> file.
+</p>
+
+<p>The configuration element descriptions are organized into the following
+major categories:</p>
+<ul>
+<li><strong>Top Level Elements</strong> - <code>&lt;Server&gt;</code> is the
+    root element of the entire configuration file, while
+    <code>&lt;Service&gt;</code> represents a group of Connectors that is
+    associated with an Engine.</li>
+<li><strong>Connectors</strong> - Represent the interface between external
+    clients sending requests to (and receiving responses from) a particular
+    Service.</li>
+<li><strong>Containers</strong> - Represent components whose function is to
+    process incoming requests, and create the corresponding responses.
+    An Engine handles all requests for a Service, a Host handles all requests
+    for a particular virtual host, and a Context handles all requests for a
+    specific web application.</li>
+<li><strong>Nested Components</strong> - Represent elements that can be
+    nested inside the element for a Container.  Some elements can be nested
+    inside any Container, while others can only be nested inside a
+    Context.</li>
+</ul>
+
+<p>For each element, the corresponding documentation follows this general
+outline:</p>
+<ul>
+<li><strong>Introduction</strong> - Overall description of this particular
+    component.  There will be a corresponding Java <em>interface</em> (in
+    the <code>org.apache.catalina</code> package) that is implemented by one
+    or more standard implementations.</li>
+<li><strong>Attributes</strong> - The set of attributes that are legal for
+    this element.  Generally, this will be subdivided into <em>Common</em>
+    attributes that are supported by all implementations of the corresponding
+    Java interface, and <em>Standard Implementation</em> attributes that are
+    specific to a particular Java class that implements this interface.
+    The names of required attributes are <strong>bolded</strong>.</li>
+<li><strong>Nested Components</strong> - Enumerates which of the <em>Nested
+    Components</em> can be legally nested within this element.</li>
+<li><strong>Special Features</strong> - Describes the configuration of a large
+    variety of special features (specific to each element type) that are
+    supported by the standard implementation of this interface.</li>
+</ul>
+
+</section>
+
+
+</body>
+</document>

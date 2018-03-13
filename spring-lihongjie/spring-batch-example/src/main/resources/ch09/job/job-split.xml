@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns="http://www.springframework.org/schema/batch"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd" >
+
+    <bean:import resource="classpath:ch09/job-context.xml" />
+    <bean:import resource="classpath:ch09/job/base/job-tasklet.xml" />
+    <bean:import resource="classpath:ch09/job/base/job-chunk-flat.xml" />
+
+    <job id="splitJob" >
+        <split id="split" task-executor="taskExecutor" next="cleanStep">
+            <flow>
+                <step id="decompressStep" parent="abstractDecompressStep" next="verifyStep" >
+            		<tasklet ref="decompressTasklet" />
+        		</step>
+        		<step id="verifyStep" next="readWrite_10Step">
+            		<tasklet ref="verifyTasklet" />
+        		</step>
+        		<step id="readWrite_10Step" parent="parentReadWriteStep"/>
+            </flow>
+            <flow>
+            	<step id="readWrite_11Step" parent="parentReadWriteStep">
+            	    <listeners>
+            	        <listener ref="splitStepExecutionListener"></listener>
+            	    </listeners>
+            	</step>
+            </flow>
+        </split>
+        <step id="cleanStep">
+            <tasklet ref="cleanTasklet" />
+        </step>
+    </job>
+    
+    <bean:bean id="taskExecutor"
+		class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<bean:property name="corePoolSize" value="5"/>
+		<bean:property name="maxPoolSize" value="15"/>
+	</bean:bean>
+    
+    <bean:bean id="splitStepExecutionListener" scope="step"
+        class="com.juxtapose.example.ch09.listener.SplitStepExecutionListener">
+        <bean:property name="readFile" value="classpath:ch09/data/credit-card-bill-201311.csv" />
+        <bean:property name="writeFile" value="file:target/ch09/split/outputFile_11.csv" />
+    </bean:bean>
+    
+</bean:beans>

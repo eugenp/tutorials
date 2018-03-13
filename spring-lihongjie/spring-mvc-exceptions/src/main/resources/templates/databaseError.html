@@ -1,0 +1,76 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:substituteby="header :: copy"></head>
+
+<body>
+	<h1>Database Error</h1>
+	<p>An internal data storage error has occurred accessing:</p>
+	<p>
+		<code th:text="${#httpServletRequest.requestURL}">Request URL</code>
+	</p>
+
+	<!--/* Just to prove that no exception information is provided by an
+           @ExceptionHandler by default.  Possible exception variables are:
+             ${ex} would be set by ourSimpleMappingExceptionResolver,
+	         ${exception} or ${message} would be set internally by Spring Boot.
+	    */-->
+	<div
+		th:if="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+		<b>Cause:</b> <span th:if="${ex}" th:text="${ex}">exception ...</span>
+		<span th:if="${exception}" th:text="${exception}">exception ...</span>
+		<span th:if="${message} and ${message.length() != 0}"
+			th:text="${message}">message ...</span>
+		<blockquote>
+			<i>Note: You would never generate a page that displays a Java
+				exception to an end-user in a real application</i>
+		</blockquote>
+	</div>
+
+	<p
+		th:unless="${ex} or ${exception} or (${message} and ${message.length() != 0})">
+		Cause unknown (no exception details available)</p>
+
+	<hr />
+
+	<h3>Notes on this Page</h3>
+	<p>Notice that there is very little information here (above the
+		line). Firstly, end-users should not be shown internal exception
+		details, but secondly, no exception details are available anyway.</p>
+	<p>
+		Compare this to the code in
+		<code>ExceptionHandlingController.handleError()</code>
+		or
+		<code>GlobalControllerExceptionHandler.handleError()</code>
+		which explicitly create a Model and put extra details into it (these
+		are the methods used when a
+		<code>SupportInfoException</code>
+		is thrown).
+	</p>
+	<p>
+		Alternatively you could extend
+		<code>ExceptionHandlerExceptionResolver</code>
+		<a
+			href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/ExceptionHandlerExceptionResolver.html">
+			<img th:replace="link::spring"></img>
+		</a> and override
+	</p>
+	<pre>doResolveHandlerMethodException(HttpServletRequest req, HttpServletResponse resp,
+    HandlerMethod handlerMethod, Exception exception)</pre>
+	<p>
+		to add exception and other attributes to the model. Also set the
+		inherited
+		<code>order</code>
+		data-member to a value less than
+		<var>MAX_INT</var>
+		so it runs before the default
+		<code>ExceptionHandlerExceptionResolver</code>
+		instance (it is easier to create your own handler than try to modify
+		the one created by Spring).
+	</p>
+
+	<div th:substituteby="footer :: copy"></div>
+
+</body>
+</html>

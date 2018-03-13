@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+[
+<!ENTITY % globals SYSTEM "classpath://auction/persistence/globals.dtd">
+%globals;
+]>
+
+<hibernate-mapping>
+
+<class entity-name="ItemEntity" table="DYNAMIC_ITEM_ENTITY" node="item">
+    <id name="id" type="long" column="ITEM_ID" node="@id">
+        <generator class="&idgenerator;"/>
+    </id>
+
+    <property name="initialPrice"
+              type="big_decimal"
+              column="INIT_PRICE"
+              node="item-details/@initial-price"/>
+
+    <property name="description"
+              type="string"
+              column="DESCRIPTION"
+              node="item-details/@description"/>
+
+    <many-to-one name="seller"
+                 entity-name="UserEntity"
+                 column="USER_ID"
+                 embed-xml="false"
+                 node="@seller-id"/>
+
+</class>
+
+<class entity-name="UserEntity" table="DYNAMIC_USER_ENTITY" node="user">
+    <id name="id" type="long" column="USER_ID" node="@id">
+        <generator class="&idgenerator;"/>
+    </id>
+
+    <property name="username"
+              type="string"
+              column="USERNAME"
+              node="@username"/>
+
+    <bag name="itemsForSale" inverse="true" cascade="all" embed-xml="true" node="items-for-sale">
+        <key column="USER_ID"/>
+        <one-to-many entity-name="ItemEntity"/>
+    </bag>
+
+</class>
+
+</hibernate-mapping>
+

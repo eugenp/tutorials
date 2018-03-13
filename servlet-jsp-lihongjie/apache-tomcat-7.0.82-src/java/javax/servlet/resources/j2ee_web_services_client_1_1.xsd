@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://java.sun.com/xml/ns/j2ee"
+            xmlns:j2ee="http://java.sun.com/xml/ns/j2ee"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+            version="1.1">
+  <xsd:annotation>
+    <xsd:documentation>
+
+      (C) Copyright International Business Machines Corporation 2002
+
+    </xsd:documentation>
+  </xsd:annotation>
+
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="port-component-refType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The port-component-ref element declares a client dependency
+        on the container for resolving a Service Endpoint Interface
+        to a WSDL port. It optionally associates the Service Endpoint
+        Interface with a particular port-component. This is only used
+        by the container for a Service.getPort(Class) method call.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="service-endpoint-interface"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The service-endpoint-interface element defines a fully qualified
+            Java class that represents the Service Endpoint Interface of a
+            WSDL port.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="port-component-link"
+                   type="j2ee:string"
+                   minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The port-component-link element links a port-component-ref
+            to a specific port-component required to be made available
+            by a service reference.
+
+            The value of a port-component-link must be the
+            port-component-name of a port-component in the same module
+            or another module in the same application unit. The syntax
+            for specification follows the syntax defined for ejb-link
+            in the EJB 2.0 specification.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:group name="service-refGroup">
+    <xsd:sequence>
+      <xsd:element name="service-ref"
+                   type="j2ee:service-refType"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:key name="service-ref_handler-name-key">
+          <xsd:annotation>
+            <xsd:documentation>
+
+              Defines the name of the handler. The name must be unique
+              within the module.
+
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:selector xpath="j2ee:handler"/>
+          <xsd:field xpath="j2ee:handler-name"/>
+        </xsd:key>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="service-refType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The service-ref element declares a reference to a Web
+        service. It contains optional description, display name and
+        icons, a declaration of the required Service interface,
+        an optional WSDL document location, an optional set
+        of JAX-RPC mappings, an optional QName for the service element,
+        an optional set of Service Endpoint Interfaces to be resolved
+        by the container to a WSDL port, and an optional set of handlers.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="service-ref-name"
+                   type="j2ee:jndi-nameType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The service-ref-name element declares logical name that the
+            components in the module use to look up the Web service. It
+            is recommended that all service reference names start with
+            "service/".
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="service-interface"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The service-interface element declares the fully qualified class
+            name of the JAX-RPC Service interface the client depends on.
+            In most cases the value will be javax.xml.rpc.Service.  A JAX-RPC
+            generated Service Interface class may also be specified.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="wsdl-file"
+                   type="j2ee:xsdAnyURIType"
+                   minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The wsdl-file element contains the URI location of a WSDL
+            file. The location is relative to the root of the module.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="jaxrpc-mapping-file"
+                   type="j2ee:pathType"
+                   minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The jaxrpc-mapping-file element contains the name of a file that
+            describes the JAX-RPC mapping between the Java interfaces used by
+            the application and the WSDL description in the wsdl-file.  The
+            file name is a relative path within the module file.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="service-qname"
+                   type="j2ee:xsdQNameType"
+                   minOccurs="0" maxOccurs="1">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The service-qname element declares the specific WSDL service
+            element that is being refered to.  It is not specified if no
+            wsdl-file is declared.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="port-component-ref"
+                   type="j2ee:port-component-refType"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The port-component-ref element declares a client dependency
+            on the container for resolving a Service Endpoint Interface
+            to a WSDL port. It optionally associates the Service Endpoint
+            Interface with a particular port-component. This is only used
+            by the container for a Service.getPort(Class) method call.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="handler"
+                   type="j2ee:service-ref_handlerType"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Declares the handler for a port-component. Handlers can
+            access the init-param name/value pairs using the
+            HandlerInfo interface. If port-name is not specified, the
+            handler is assumed to be associated with all ports of the
+            service.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="service-ref_handlerType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        Declares the handler for a port-component. Handlers can access the
+        init-param name/value pairs using the HandlerInfo interface. If
+        port-name is not specified, the handler is assumed to be associated
+        with all ports of the service.
+
+        Used in: service-ref
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="handler-name"
+                   type="j2ee:string">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Defines the name of the handler. The name must be unique
+            within the module.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="handler-class"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Defines a fully qualified class name for the handler
+            implementation.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="init-param"
+                   type="j2ee:param-valueType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+
+      <xsd:element name="soap-header"
+                   type="j2ee:xsdQNameType"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Defines the QName of a SOAP header that will be processed
+            by the handler.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="soap-role"
+                   type="j2ee:string"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The soap-role element contains a SOAP actor definition that
+            the Handler will play as a role.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="port-name"
+                   type="j2ee:string"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The port-name element defines the WSDL port-name that a
+            handler should be associated with.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+</xsd:schema>
+

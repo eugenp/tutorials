@@ -1,0 +1,581 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="listeners.html">
+
+  &project;
+
+  <properties>
+    <title>The LifeCycle Listener Component</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>A <strong>Listener</strong> element defines a component that performs
+  actions when specific events occur, usually Tomcat starting or Tomcat
+  stopping.</p>
+
+  <p>Listeners may be nested inside a <a href="server.html">Server</a>,
+  <a href="engine.html">Engine</a>, <a href="host.html">Host</a> or
+  <a href="context.html">Context</a>. Some Listeners are only intended to be
+  nested inside specific elements. These constraints are noted in the
+  documentation below.</p>
+
+</section>
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+    <p>All implementations of <strong>Listener</strong>
+    support the following attributes:</p>
+
+    <attributes>
+
+      <attribute name="className" required="true">
+        <p>Java class name of the implementation to use. This class must
+        implement the <code>org.apache.catalina.LifecycleListener</code>
+        interface.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+</section>
+
+<section name="Nested Components">
+
+  <p>No element may be nested inside a <strong>Listener</strong>.</p>
+
+</section>
+
+<section name="Standard Implementations">
+
+  <p>Unlike most Catalina components, there are several standard
+  <strong>Listener</strong> implementations available.  As a result,
+  the <code>className</code> attribute MUST be used to select the
+  implementation you wish to use.</p>
+
+  <subsection name="APR Lifecycle Listener - org.apache.catalina.core.AprLifecycleListener">
+
+    <p>The <strong>APR Lifecycle Listener</strong> checks for the presence of
+    the APR/native library and loads the library if it is present. For more
+    information see the <a href="../apr.html">APR/native guide</a>.</p>
+
+    <p>This listener must only be nested within <a href="server.html">Server</a>
+    elements.</p>
+
+    <p>The following additional attributes are supported by the <strong>APR
+    Lifecycle Listener</strong>:</p>
+
+    <attributes>
+
+      <attribute name="SSLEngine" required="false">
+        <p>Name of the SSLEngine to use. <code>off</code>: do not use SSL,
+        <code>on</code>: use SSL but no specific ENGINE.</p>
+        <p>The default value is <b>on</b>. This initializes the
+        native SSL engine, which must be enabled in the APR/native connector by
+        the use of the <code>SSLEnabled</code> attribute.</p>
+        <p>See the <a href="http://www.openssl.org/">Official OpenSSL website</a>
+        for more details on supported SSL hardware engines and manufacturers.
+        </p>
+      </attribute>
+
+      <attribute name="SSLRandomSeed" required="false">
+        <p>Entropy source used to seed the SSLEngine's PRNG. The default value
+        is <code>builtin</code>. On development systems, you may want to set
+        this to <code>/dev/urandom</code> to allow quicker start times.</p>
+      </attribute>
+
+      <attribute name="FIPSMode" required="false">
+        <p>Set to <code>on</code> to request that OpenSSL be in FIPS mode
+        (if OpenSSL is already in FIPS mode, it will remain in FIPS mode).
+        Set to <code>enter</code> to force OpenSSL to enter FIPS mode (an error
+        will occur if OpenSSL is already in FIPS mode).
+        Set to <code>require</code> to require that OpenSSL <i>already</i> be
+        in FIPS mode (an error will occur if OpenSSL is not already in FIPS
+        mode).</p>
+        <p>FIPS mode <em>requires you to have a FIPS-capable OpenSSL library which
+        you must build yourself</em>.
+        If this attribute is set to any of the above values, the <b>SSLEngine</b>
+        must be enabled as well.</p>
+        <p>The default value is <code>off</code>.</p>
+      </attribute>
+    </attributes>
+
+  </subsection>
+
+  <subsection name="Jasper Listener - org.apache.catalina.core.JasperListener">
+
+    <p>The <strong>Jasper Listener</strong> initializes the Jasper 2 JSP engine
+    before any web applications that may use it are loaded. For more
+    information on the Jasper 2 JSP engine see the
+    <a href="../jasper-howto.html">Jasper How To</a>.</p>
+
+    <p>This listener must only be nested within <a href="server.html">Server</a>
+    elements.</p>
+
+    <p>No additional attributes are supported by the <strong>Jasper Listener
+    </strong>.</p>
+
+  </subsection>
+
+  <subsection name="Global Resources Lifecycle Listener - org.apache.catalina.mbeans.GlobalResourcesLifecycleListener">
+
+    <p>The <strong>Global Resources Lifecycle Listener</strong> initializes the
+    Global JNDI resources defined in server.xml as part of the <a
+    href="globalresources.html">Global Resources</a> element. Without this
+    listener, none of the Global Resources will be available.</p>
+
+    <p>This listener must only be nested within <a href="server.html">Server</a>
+    elements.</p>
+
+    <p>No additional attributes are supported by the <strong>Global Resources
+    Lifecycle Listener</strong>.</p>
+
+  </subsection>
+
+  <subsection name="JRE Memory Leak Prevention Listener - org.apache.catalina.core.JreMemoryLeakPreventionListener">
+
+    <p>The <strong>JRE Memory Leak Prevention Listener</strong> provides
+    work-arounds for known places where the Java Runtime environment uses
+    the context class loader to load a singleton as this will cause a memory
+    leak if a web application class loader happens to be the context class
+    loader at the time. The work-around is to initialise these singletons when
+    this listener starts as Tomcat's common class loader is the context class
+    loader at that time. It also provides work-arounds for known issues that
+    can result in locked JAR files.</p>
+
+    <p>This listener must only be nested within <a href="server.html">Server</a>
+    elements.</p>
+
+    <p>The following additional attributes are supported by the <strong>JRE
+    Memory Leak Prevention Listener</strong>:</p>
+
+    <attributes>
+
+      <attribute name="appContextProtection" required="false">
+        <p>Enables protection so that calls to
+        <code>sun.awt.AppContext.getAppContext()</code> triggered by a web
+        application do not result in a memory leak. Note that a call to this
+        method will be triggered as part of the web application stop process
+        when running on Java 6 and earlier. It is therefore strongly recommended
+        that this protection is enabled when running on Java 6 and earlier. The
+        default is <code>true</code> for Java 6 and earlier versions. The
+        default is <code>false</code> for Java 7 and later versions.</p>
+      </attribute>
+
+      <attribute name="AWTThreadProtection" required="false">
+        <p>Enables protection so that calls to
+        <code>java.awt.Toolkit.getDefaultToolkit()</code> triggered by a web
+        application do not result in a memory leak.
+        Defaults to <code>false</code> because an AWT thread is launched.</p>
+      </attribute>
+
+      <attribute name="classesToInitialize" required="false">
+        <p>List of comma-separated fully qualified class names to load and initialize
+        during the startup of this Listener. This allows to pre-load classes that are
+        known to provoke classloader leaks if they are loaded during a request
+        processing. Non-JRE classes may be referenced, like
+        <code>oracle.jdbc.driver.OracleTimeoutThreadPerVM</code>.
+        The default value is empty, but specific JRE classes are loaded by other leak
+        protection features managed by other attributes of this Listener.</p>
+      </attribute>
+
+      <attribute name="driverManagerProtection" required="false">
+        <p>The first use of <code>java.sql.DriverManager</code> will trigger the
+        loading of JDBC Driver in the current class loader. The web
+        application level memory leak protection can take care of this in most
+        cases but triggering the loading here has fewer side-effects. The
+        default is <code>true</code>.</p>
+      </attribute>
+
+      <attribute name="forkJoinCommonPoolProtection" required="false">
+        <p>Enables protection so the threads created for
+        <code>ForkJoinPool.commonPool()</code> do not result in a memory leak.
+        The protection is enabled by setting the
+        <code>java.util.concurrent.ForkJoinPool.common.threadFactory</code>
+        system property. If this property is set when Tomcat starts, Tomcat will
+        not over-ride it even if this protection is explicitly enabled. The
+        default is <code>true</code>. This protection is only used when running
+        on Java 8 onwards. The common pool does not exist in earlier
+        versions.</p>
+      </attribute>
+
+      <attribute name="gcDaemonProtection" required="false">
+        <p>Enables protection so that calls to
+        <code>sun.misc.GC.requestLatency(long)</code> triggered by a web
+        application do not result in a memory leak. Use of RMI is likely to
+        trigger a call to this method. A side effect of enabling this protection
+        is the creation of a thread named "GC Daemon". The protection uses
+        reflection to access internal Sun classes and may generate errors on
+        startup on non-Sun JVMs. The default is <code>true</code>.</p>
+      </attribute>
+
+      <attribute name="java2DDisposerProtection" required="false">
+        <p>Enables protection so that loading the
+        <code>sun.java2d.Disposer</code> class by a web application does not
+        result in a memory leak.
+        Defaults to <code>false</code> because a thread is launched.</p>
+        <p>Note: The underlying leak has been fixed in Java 1.6.0 update 21
+        onwards and Java 7 onwards. This option is unnecessary if running on a
+        fixed version of Java.</p>
+      </attribute>
+
+      <attribute name="ldapPoolProtection" required="false">
+        <p>Enables protection so that the PoolCleaner thread started by
+        <code>com.sun.jndi.ldap.LdapPoolManager</code> does not result in a
+        memory leak. The thread is started the first time the
+        <code>LdapPoolManager</code> class is used if the system property
+        <code>com.sun.jndi.ldap.connect.pool.timeout</code> is set to a value
+        greater than 0. Without this protection, if a web application uses this
+        class the PoolCleaner thread will be configured with the thread's
+        context class loader set to the web application class loader which in
+        turn will trigger a memory leak on reload. Defaults to
+        <code>true</code>.</p>
+      </attribute>
+
+      <attribute name="securityLoginConfigurationProtection" required="false">
+        <p>Enables protection so that usage of the
+        <code>javax.security.auth.login.Configuration</code> class by a web
+        application does not provoke a memory leak. The first access of this
+        class will trigger the initializer that will retain a static reference
+        to the context class loader. The protection loads the class with the
+        system class loader to ensure that the static initializer is not
+        triggered by a web application. Defaults to <code>true</code>.</p>
+      </attribute>
+
+      <attribute name="securityPolicyProtection" required="false">
+        <p>Enables protection so that usage of the deprecated
+        <code>javax.security.auth.Policy</code> class by a web application does not
+        result in a memory leak. The first access of this class will trigger the
+        static initializer that will retain a static reference to the context
+        class loader. The protection calls the <code>getPolicy()</code> method
+        of this class to ensure that the static initializer is not triggered by
+        a web application. Defaults to <code>true</code>.</p>
+        <p>Note: The underlying leak has been fixed in Java 7 update 51 onwards
+        and Java 8 onwards. This option is unnecessary if running on a fixed
+        version of Java.</p>
+      </attribute>
+
+      <attribute name="tokenPollerProtection" required="false">
+        <p>Enables protection so that any token poller thread initialized by
+        <code>sun.security.pkcs11.SunPKCS11.initToken()</code> does not
+        result in a memory leak. The thread is started depending on various
+        conditions as part of the initialization of the Java Cryptography
+        Architecture. Without the protection this can happen during Webapp
+        deployment when the MessageDigest for generating session IDs is
+        initialized. As a result the thread has the Webapp class loader as its
+        thread context class loader. Enabling the protection initializes JCA
+        early during Tomcat startup. Defaults to <code>true</code>.</p>
+      </attribute>
+
+      <attribute name="urlCacheProtection" required="false">
+        <p>Enables protection so that reading resources from JAR files using
+        <code>java.net.URLConnection</code>s does not result in the JAR file
+        being locked. Note that enabling this protection disables caching by
+        default for all resources obtained via
+        <code>java.net.URLConnection</code>s. Caching may be re-enabled on a
+        case by case basis as required. Defaults to <code>true</code>.</p>
+      </attribute>
+
+      <attribute name="xmlParsingProtection" required="false">
+        <p>Enables protection so that parsing XML files within a web application
+        does not result in a memory leak. Note that memory profilers may not
+        display the GC root associated with this leak making it particularly
+        hard to diagnose. Defaults to <code>true</code>.</p>
+      </attribute>
+
+    </attributes>
+
+    <subsection name="JreMemoryLeakPreventionListener Examples">
+
+      <p>The following is an example of how to configure the
+      <code>classesToInitialize</code> attribute of this listener.</p>
+
+      <p>If this listener was configured in server.xml as:</p>
+
+      <source><![CDATA[  <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"
+            classesToInitialize="oracle.jdbc.driver.OracleTimeoutThreadPerVM" />]]></source>
+
+      <p>then the <code>OracleTimeoutThreadPerVM</code> class would be loaded
+      and initialized during listener startup instead of during request
+      processing.</p>
+
+    </subsection>
+
+  </subsection>
+
+  <subsection name="Security Lifecycle Listener - org.apache.catalina.security.SecurityListener">
+
+    <p>The <strong>Security Lifecycle Listener</strong> performs a number of
+    security checks when Tomcat starts and prevents Tomcat from starting if they
+    fail. The listener is not enabled by default. To enabled it uncomment the
+    listener in $CATALINA_BASE/conf/server.xml. If the operating system supports
+    umask then the line in $CATALINA_HOME/bin/catalina.sh that obtains the umask
+    also needs to be uncommented.</p>
+
+    <p>This listener must only be nested within <a href="server.html">Server</a>
+    elements.</p>
+
+    <p>The following additional attributes are supported by the <strong>Security
+    Lifecycle Listener</strong>:</p>
+
+    <attributes>
+
+      <attribute name="checkedOsUsers" required="false">
+        <p>A comma separated list of OS users that must not be used to start
+        Tomcat. If not specified, the default value of <b>root</b> is used. To
+        disable this check, set the attribute to the empty string. Usernames
+        are checked in a case-insensitive manner.</p>
+      </attribute>
+
+      <attribute name="minimumUmask" required="false">
+        <p>The least restrictive umask that must be configured before Tomcat
+        will start. If not specified, the default value of <b>0007</b> is used.
+        To disable this check, set the attribute to the empty string. The check
+        is not performed on Windows platforms.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+  <subsection name="ThreadLocal Leak Prevention Listener - org.apache.catalina.core.ThreadLocalLeakPreventionListener">
+
+    <p>The <strong>ThreadLocal Leak Prevention Listener</strong> triggers the
+    renewal of threads in <a href="executor.html">Executor</a> pools when a
+    <a href="context.html">Context</a> is being stopped to avoid thread-local
+    related memory leaks. Active threads will be renewed one by one when they
+    come back to the pool after executing their task. The renewal happens
+    only for contexts that have their <code>renewThreadsWhenStoppingContext</code>
+    attribute set to <code>true</code>.</p>
+
+    <p>This listener must only be nested within <a href="server.html">Server</a>
+    elements.</p>
+
+    <p>No additional attributes are supported by the <strong>ThreadLocal Leak
+    Prevention Listener</strong>.</p>
+
+  </subsection>
+
+  <subsection name="UserConfig - org.apache.catalina.startup.UserConfig">
+
+    <p>The <strong>UserConfig</strong> provides feature of User Web Applications.
+    User Web Applications map a request URI starting with a tilde character ("~")
+    and a username to a directory (commonly named public_html) in that user's 
+    home directory on the server.</p>
+
+    <p>See the <a href="host.html#User_Web_Applications">User Web Applications</a>
+    special feature on the <strong>Host</strong> element for more information.</p>
+
+    <p>The following additional attributes are supported by the 
+    <strong>UserConfig</strong>:</p>
+
+    <attributes>
+
+      <attribute name="directoryName" required="false">
+        <p>The directory name to be searched for within each user home directory.
+        The default is <code>public_html</code>.</p>
+      </attribute>
+
+      <attribute name="userClass" required="false">
+        <p>The class name of the user database class.
+        There are currently two user database, the 
+        <code>org.apache.catalina.startup.PasswdUserDatabase</code> is used on a
+        Unix system that uses the /etc/passwd file to identify valid users.
+        The <code>org.apache.catalina.startup.HomesUserDatabase</code> is used on 
+        a server where /etc/passwd is not in use. HomesUserDatabase deploy all 
+        directories found in a specified base directory.</p>
+      </attribute>
+
+      <attribute name="homeBase" required="false">
+        <p>The base directory containing user home directories. This is effective
+        only when <code>org.apache.catalina.startup.HomesUserDatabase</code> is
+        used.</p>
+      </attribute>
+
+      <attribute name="allow" required="false">
+        <p>A regular expression defining user who deployment is allowed. If this 
+        attribute is specified, the user to deploy must match for this pattern.
+        If this attribute is not specified, all users will be deployed unless the
+        user matches a deny pattern.</p>
+      </attribute>
+
+      <attribute name="deny" required="false">
+        <p>A regular expression defining user who deployment is denied. If this
+        attribute is specified, the user to deploy must not match for this
+        pattern. If this attribute is not specified, deployment of user will be
+        governed by a allow attribute.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+  
+  <subsection name="Version Logging Lifecycle Listener - org.apache.catalina.startup.VersionLoggerListener">
+
+    <p>The <strong>Version Logging Lifecycle Listener</strong> logs Tomcat, Java
+    and operating system information when Tomcat starts.</p>
+
+    <p>This listener must only be nested within <a href="server.html">Server</a>
+    elements and should be the first listener defined.</p>
+
+    <p>The following additional attributes are supported by the <strong>Version
+    Logging Lifecycle Listener</strong>:</p>
+
+    <attributes>
+
+      <attribute name="logArgs" required="false">
+        <p>If <code>true</code>, the command line arguments passed to Java when
+        Tomcat started will be logged. If not specified, the default value of
+        <code>true</code> will be used.</p>
+      </attribute>
+
+      <attribute name="logEnv" required="false">
+        <p>If <code>true</code>, the current environment variables when Tomcat
+        starts will be logged. If not specified, the default value of
+        <code>false</code> will be used.</p>
+      </attribute>
+
+      <attribute name="logProps" required="false">
+        <p>If <code>true</code>, the current Java system properties will be
+        logged. If not specified, the default value of
+        <code>false</code> will be used.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+</section>
+
+<section name="Additional Implementations">
+
+  <subsection name="JMX Remote Lifecycle Listener - org.apache.catalina.mbeans.JmxRemoteLifecycleListener">
+
+    <p>This listener requires <code>catalina-jmx-remote.jar</code> to be placed
+    in <code>$CATALINA_HOME/lib</code>. This jar may be found in the extras
+    directory of the binary download area.</p>
+
+    <p>The <strong>JMX Remote Lifecycle Listener</strong> fixes the ports used by
+    the JMX/RMI Server making things much simpler if you need to connect
+    jconsole or a similar tool to a remote Tomcat instance that is running
+    behind a firewall. Only these ports are configured via the listener. The
+    remainder of the configuration is via the standard system properties for
+    configuring JMX. For further information on configuring JMX see
+    <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/management/agent.html">
+    Monitoring and Management Using JMX</a> included with the Java SDK
+    documentation.</p>
+
+    <p>This listener must only be nested within a <a href="server.html">Server</a>
+    element.</p>
+
+    <p>The following additional attributes are supported by the <strong>JMX Remote
+    Lifecycle Listener</strong>:</p>
+
+    <attributes>
+
+      <attribute name="rmiRegistryPortPlatform" required="true">
+        <p>The port to be used by the JMX/RMI registry for the Platform MBeans.
+        This replaces the use of the
+        <code>com.sun.management.jmxremote.port</code> system property that
+        should not be set when using this listener.</p>
+      </attribute>
+
+      <attribute name="rmiServerPortPlatform" required="true">
+        <p>The port to be used by the Platform JMX/RMI server.</p>
+      </attribute>
+
+      <attribute name="rmiBindAddress" required="false">
+        <p>The address of the interface to be used by JMX/RMI server.</p>
+      </attribute>
+
+      <attribute name="useLocalPorts" required="false">
+        <p>Should any clients using these ports be forced to use local ports to
+        connect to the JMX/RMI server. This is useful when tunnelling
+        connections over SSH or similar. Defaults to <code>false</code>.</p>
+      </attribute>
+
+    </attributes>
+
+    <h3>Using file-based Authentication and Authorisation</h3>
+
+    <p>If this listener was configured in server.xml as:</p>
+  <source><![CDATA[  <Listener className="org.apache.catalina.mbeans.JmxRemoteLifecycleListener"
+          rmiRegistryPortPlatform="10001" rmiServerPortPlatform="10002" />]]></source>
+    <p>with the following system properties set (e.g. in setenv.sh):</p>
+  <source>  -Dcom.sun.management.jmxremote.password.file=$CATALINA_BASE/conf/jmxremote.password
+  -Dcom.sun.management.jmxremote.access.file=$CATALINA_BASE/conf/jmxremote.access
+  -Dcom.sun.management.jmxremote.ssl=false</source>
+    <p>$CATALINA_BASE/conf/jmxremote.password containing:</p>
+  <source>admin letmein</source>
+    <p>$CATALINA_BASE/conf/jmxremote.access containing:</p>
+  <source>admin readwrite</source>
+    <p>then opening ports 10001 (RMI Registry) and 10002 (JMX/RMI Server) in your
+    firewall would enable jconsole to connect to a Tomcat instance running
+    behind a firewall using a connection string of the form:</p>
+  <source>service:jmx:rmi://&lt;hostname&gt;:10002/jndi/rmi://&lt;hostname&gt;:10001/jmxrmi</source>
+    <p>
+    with a user name of <code>admin</code> and a password of
+    <code>letmein</code>.
+    </p>
+
+    <h3>Using JAAS</h3>
+
+    <p>If we use the following system properties instead:</p>
+  <source>  -Dcom.sun.management.jmxremote.login.config=Tomcat
+  -Djava.security.auth.login.config=$CATALINA_BASE/conf/login.config
+  -Dcom.sun.management.jmxremote.access.file=$CATALINA_BASE/conf/jmxremote.access
+  -Dcom.sun.management.jmxremote.ssl=false</source>
+    <p>$CATALINA_BASE/conf/login.config containing your choice of JAAS LoginModule implementation, for example:</p>
+  <source>  Tomcat { /* should match to the com.sun.management.jmxremote.login.config property */
+
+    /* for illustration purposes only */
+    com.sun.security.auth.module.LdapLoginModule REQUIRED
+      userProvider="ldap://ldap-svr/ou=people,dc=example,dc=com"
+      userFilter="(&amp;(uid={USERNAME})(objectClass=inetOrgPerson))"
+      authzIdentity="admin"
+      debug=true;
+  };</source>
+    <p>$CATALINA_BASE/conf/jmxremote.access containing:</p>
+  <source>admin readwrite</source>
+    <p>
+    then we would need to provide LDAP credentials instead.
+    </p>
+
+    <p><strong>Note that the examples above do not use SSL. JMX access should
+    be considered equivalent to administrative access and secured accordingly.
+    </strong></p>
+
+  </subsection>
+
+</section>
+
+</body>
+
+</document>

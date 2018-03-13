@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="false">
+
+  <display-name>Tomcat Test Application</display-name>
+  <description>
+     Used as part of the Tomcat unit tests when a full web application is
+     required.
+  </description>
+
+  <servlet>
+    <servlet-name>AllowByAnnotation</servlet-name>
+    <servlet-class>org.apache.catalina.core.TestStandardWrapper$SubclassAllowAllServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AllowByAnnotation</servlet-name>
+    <url-pattern>/testStandardWrapper/securityAnnotationsWebXmlPriority</url-pattern>
+  </servlet-mapping>
+  <security-constraint>
+    <auth-constraint/>
+    <web-resource-collection>
+    <url-pattern>/testStandardWrapper/securityAnnotationsWebXmlPriority</url-pattern>
+    </web-resource-collection>
+  </security-constraint>
+
+  <!-- Bug 51396 -->
+  <servlet>
+    <servlet-name>bug51396</servlet-name>
+    <jsp-file>/bug51396.jsp</jsp-file>
+  </servlet>
+
+  <post-construct>
+    <lifecycle-callback-class>org.apache.catalina.startup.TesterServletWithLifeCycleMethods</lifecycle-callback-class>
+    <lifecycle-callback-method>postConstruct1</lifecycle-callback-method>
+  </post-construct>
+  <pre-destroy>
+    <lifecycle-callback-class>org.apache.catalina.startup.TesterServletWithLifeCycleMethods</lifecycle-callback-class>
+    <lifecycle-callback-method>preDestroy1</lifecycle-callback-method>
+  </pre-destroy>
+
+  <env-entry>
+    <env-entry-name>envEntry2</env-entry-name>
+    <env-entry-type>java.lang.Integer</env-entry-type>
+    <env-entry-value>2</env-entry-value>
+    <injection-target>
+      <injection-target-class>org.apache.catalina.startup.TesterServletWithAnnotations</injection-target-class>
+      <injection-target-name>envEntry2</injection-target-name>
+    </injection-target>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>envEntry3</env-entry-name>
+    <env-entry-type>java.lang.Integer</env-entry-type>
+    <env-entry-value>33</env-entry-value>
+    <injection-target>
+      <injection-target-class>org.apache.catalina.startup.TesterServletWithAnnotations</injection-target-class>
+      <injection-target-name>envEntry3</injection-target-name>
+    </injection-target>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>envEntry5</env-entry-name>
+    <env-entry-type>java.lang.Integer</env-entry-type>
+    <env-entry-value>55</env-entry-value>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>envEntry6</env-entry-name>
+    <env-entry-type>java.lang.Integer</env-entry-type>
+    <env-entry-value>66</env-entry-value>
+  </env-entry>
+</web-app>

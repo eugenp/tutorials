@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="in.codelearn.model">
+
+	<class name="Person" table="PERSON">
+		<id name="personId" column="PERSON_ID">
+			<generator class="native" />
+		</id>
+		<property name="firstname" />
+		<property name="lastname" column="lastname" />
+
+	</class>
+
+	<class name="Employee">
+		<id name="personId" column="PERSON_ID">
+			<generator class="native" />
+		</id>
+		<property name="firstname" />
+		<property name="lastname" column="lastname" />
+		<property name="departmentName" column="department_name" />
+		<property name="joiningDate" type="date" column="joining_date" />
+	</class>
+
+	<class name="Owner">
+		<id name="personId" column="PERSON_ID">
+			<generator class="native" />
+		</id>
+		<property name="firstname" />
+		<property name="lastname" column="lastname" />
+		<property name="stocks" column="stocks" />
+		<property name="partnershipStake" column="partnership_stake" />
+	</class>
+</hibernate-mapping>

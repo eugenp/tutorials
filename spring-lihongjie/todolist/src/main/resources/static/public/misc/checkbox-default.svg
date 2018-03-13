@@ -1,0 +1,11 @@
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="20" height="20" rx="3"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="20" height="20" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <use id="default-checkbox" stroke="#B7BCC0" mask="url(#mask-2)" stroke-width="2" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+</svg>

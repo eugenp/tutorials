@@ -1,0 +1,22 @@
+server {
+	listen 80;
+	listen [::]:80;
+	server_name todo.nonocast.cn;
+	return 301 https://$server_name$request_uri;
+}
+
+server {
+	listen 443;
+	ssl on;
+	ssl_certificate /etc/nginx/ssl/todo.nonocast.cn.crt;
+	ssl_certificate_key /etc/nginx/ssl/todo.nonocast.cn.key.unsecure;
+
+	server_name todo.nonocast.cn;
+
+	location / {
+		proxy_set_header X-Forwarded-Host $host;
+		proxy_set_header X-Forwarded-Server $host;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_pass http://127.0.0.1:10921/;
+	}
+}

@@ -1,0 +1,65 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<body>
+
+<p>This package contains the standard <code>Manager</code> and
+<code>Session</code> implementations that represent the collection of
+active sessions and the individual sessions themselves, respectively,
+that are associated with a <code>Context</code>.  Additional implementations
+of the <code>Manager</code> interface can be based upon the supplied
+convenience base class (<code>ManagerBase</code>), if desired.  Different
+implementations of <code>Session</code> are possible, but a need for
+functionality beyond what is provided by the standard implementation
+(<code>StandardSession</code>) is not expected.</p>
+
+<p>The convenience <code>ManagerBase</code> base class is configured by
+setting the following properties:</p>
+<ul>
+<li><b>algorithm</b> - Message digest algorithm to be used when
+    generating session identifiers.  This must be the name of an
+    algorithm supported by the <code>java.security.MessageDigest</code>
+    class on your platform.  [DEFAULT_ALGORITHM]</li>
+<li><b>debug</b> - Debugging detail level for this component. [0]</li>
+<li><b>distributable</b> - Has the web application we are associated with
+    been marked as "distributable"?  If it has, attempts to add or replace
+    a session attribute object that does not implement the
+    <code>java.io.Serializable</code> interface will be rejected.
+    [false]</li>
+<li><b>maxInactiveInterval</b> - The default maximum inactive interval,
+    in minutes, for sessions created by this Manager.  The standard
+    implementation automatically updates this value based on the configuration
+    settings in the web application deployment descriptor.  [60]</li>
+<li><b>randomClass</b> - The Java class name of the random number generator
+    to be used when creating session identifiers for this Manager.
+    [java.security.SecureRandom]</li>
+</ul>
+
+<p>The standard implementation of the <code>Manager</code> interface
+(<code>StandardManager</code>) supports the following additional configuration
+properties:</p>
+<ul>
+<li><b>checkInterval</b> - The interval, in seconds, between checks for
+    sessions that have expired and should be invalidated.  [60]</li>
+<li><b>maxActiveSessions</b> - The maximum number of active sessions that
+    will be allowed, or -1 for no limit.  [-1]</li>
+<li><b>pathname</b> - Pathname to the file that is used to store session
+    data persistently across container restarts.  If this pathname is relative,
+    it is resolved against the temporary working directory provided by our
+    associated Context, if any.  ["sessions.ser"]</li>
+</ul>
+
+</body>

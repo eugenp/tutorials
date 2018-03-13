@@ -1,0 +1,215 @@
+body {
+	background: #ff9933 url(../images/spitter_background.gif) no-repeat
+		fixed left top;
+	color: #333333;
+	font-family: 'Lucida Grande',sans-serif;
+	font-size: 0.75em;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1.5;
+	text-align: center;
+}
+
+#container {
+	margin: 0pt auto;
+	padding: 15px 0pt;
+	position: relative;
+	text-align: left;
+	width: 755px;
+}
+
+#top {
+	float: left;
+	position: relative;
+	width: 535px;
+}
+
+#content {
+	float: left;
+	padding-bottom: 15px;
+	width: 535px;
+	background: #FFFFFF;
+	margin-top: 6px;
+	padding: 10px;
+}
+
+#side {
+	background: #99ccff none repeat scroll 0%;
+	border: 1px solid #996633;
+	float: right;
+	line-height: 1.2;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	padding: 12px;
+	width: 162px;
+}
+
+th label {
+	font-size: 0.75em;
+	font-weight: normal;
+}
+
+td label {
+  font-size: 0.75em;
+  font-weight: normal;
+}
+
+table.horizontalRuled td {
+  border-bottom: 1px solid #BBBBBB;	
+}
+
+fieldset {
+	margin: 10px 0pt;
+}
+
+.spitItSubmitIt {
+  width:100%;
+  text-align:right;
+}
+
+fieldset input[type="text"],input[type="password"],select,checkbox {
+	border: 1px solid #AAAAAA;
+	margin-right: 3px;
+	padding: 4px 2px;
+}
+
+fieldset input[type="text"],input[type="password"] {
+	width: 12em;
+}
+
+fieldset small {
+	color: #777777;
+	font-size: 0.7em;
+}
+
+fieldset th {
+	font-weight: normal;
+	padding-top: 10px;
+	text-align: right;
+	width: 8em;
+}
+
+fieldset th,td {
+	padding: 7px 3px;
+	vertical-align: top;
+}
+
+a img,form,fieldset {
+	border: 0pt none;
+}
+
+#side .signin #email,#side .signin #pass {
+	background: #FFFFFF none repeat scroll 0%;
+	border: 1px solid #86BC46;
+	display: block;
+	font-size: 0.92em;
+	padding: 4px 2px;
+	width: 158px;
+}
+
+#side .notify {
+	line-height: 1.5;
+	padding: 5px 0pt;
+	text-align: center;
+}
+
+#side .notify {
+	background: #FFFFFF none repeat scroll 0%;
+	border: 1px solid #87BC44;
+	font-weight: bold;
+	margin: 10px -3px;
+	padding: 2px 5px;
+}
+
+#content h2 {
+	margin: 13px 0pt 4px;
+}
+
+h2 {
+	font-weight: normal;
+	line-height: 1.2em;
+}
+
+* {
+	padding: 0px;
+}
+
+#spittle textarea {
+	width: 535px;
+	font-family: 'Lucida Grande', sans-serif;
+	font-size: 1.15em;
+}
+
+.status-btn {
+	padding: 10px 10px;
+	cursor: default;
+	font-size: 12pt;
+}
+
+label {
+	font-size: 20px;
+}
+
+
+ol.spittle-list {
+	font-size: 1.0em;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+ol.spittle-list li:first-child {
+  border-top: 1px solid #EEEEEE;
+}
+
+ol.spittle-list li {
+	font-size: 1.2em;
+	border-bottom: 1px solid #EEEEEE;
+	line-height: 1.1em;
+	padding: 0.7em 0 0.6em;
+	position: relative;
+}
+
+.submit {
+	background: transparent;
+	border-top: 0px;
+	border-left: 0px;
+	border-right:0px;
+	border-bottom: 1px solid #00F;
+	color: #00F;
+	display:inline;
+	margin:0;
+	padding:0;
+}
+
+*:first-child+html .submit {
+  border-bottom: 0;
+  text-decoration: underline;	
+}
+
+
+* html .submit {
+  border-bottom: 0;
+  text-decoration: underline;	
+}
+
+.spittleListImage {
+  display:block;
+  position:absolute;
+  width:50px;
+}
+	
+.spittleListText {
+  display:block;
+  width:500px;
+  margin-left:56px;
+  min-height:50px;
+}
+
+span.error {
+	color: red;
+	font-size: 8pt;
+}

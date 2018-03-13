@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:jms="http://www.springframework.org/schema/jms"
+ xmlns:amq="http://activemq.apache.org/schema/core"
+ xsi:schemaLocation="http://activemq.apache.org/schema/core 
+        http://activemq.apache.org/schema/core/activemq-core.xsd
+		http://www.springframework.org/schema/jms 
+        http://www.springframework.org/schema/jms/spring-jms.xsd
+		http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <amq:connectionFactory id="connectionFactory"
+      brokerURL="tcp://localhost:61616"/>
+
+  <amq:queue id="queue" physicalName="spitter.alert.queue" />
+
+  <bean id="alertService"
+      class="org.logicblaze.lingo.jms.JmsProxyFactoryBean"
+    p:connectionFactory-ref="connectionFactory"
+    p:destination-ref="queue"
+    p:serviceInterface="com.habuma.spitter.alerts.AlertService">
+     <property name="metadataStrategy">
+       <bean id="metadataStrategy" 
+             class="org.logicblaze.lingo.SimpleMetadataStrategy">
+         <constructor-arg value="true"/>
+       </bean>
+     </property>
+  </bean>
+
+</beans>

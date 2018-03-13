@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+
+<!--
+     DTD for the Model MBeans Configuration File
+
+     To support validation of your configuration file, include the following
+     DOCTYPE element at the beginning (after the "xml" declaration):
+
+     <!DOCTYPE mbeans-descriptors PUBLIC
+      "-//Apache Software Foundation//DTD Model MBeans Configuration File"
+      "http://jakarta.apache.org/commons/dtds/mbeans-descriptors.dtd">
+-->
+
+
+<!-- ========== Defined Types ============================================= -->
+
+
+<!-- A "Boolean" is the string representation of a boolean (true or false)
+     variable.
+-->
+<!ENTITY % Boolean "(true|false|yes|no)">
+
+
+<!-- A "ClassName" is the fully qualified name of a Java class that is
+     instantiated to provide the functionality of the enclosing element.
+-->
+<!ENTITY % ClassName "CDATA">
+
+
+<!-- A "MethodName" is the name of a constructor or method, which must
+     be legal according to the syntax requirements of the Java language.
+-->
+<!ENTITY % MethodName "CDATA">
+
+
+<!-- A "VariableName" is the name of a variable or parameter, which must
+     be legal according to the syntax requirements of the Java language.
+-->
+<!ENTITY % VariableName "CDATA">
+
+
+<!-- ========== Element Definitions ======================================= -->
+
+
+<!-- The "mbeans-descriptors" element is the root of the configuration file
+     hierarchy, and contains nested elements for all of the other
+     configuration settings.  Remaining element definitions are listed
+     in alphabetical order.
+-->
+<!ELEMENT mbeans-descriptors (mbean*)>
+<!ATTLIST mbeans-descriptors id          ID             #IMPLIED>
+
+
+<!-- The "attribute" element describes a JavaBeans property of an MBean.
+     The following attributes are supported:
+
+     description      Human-readable description of this attribute.
+
+     displayName      Display name of this attribute.
+
+     getMethod        Name of the property getter method, if it does
+                      not follow standard JavaBeans naming patterns.
+
+     is               Boolean value indicating whether or not this
+                      attribute is a boolean with an "is" getter method.
+                      By default, this is set to "false".
+
+     name             Name of this JavaBeans property, conforming to
+                      standard naming design patterns.
+
+     readable         Boolean value indicating whether or not this
+                      attribute is readable by management applications.
+                      By default, this is set to "true".
+
+     setMethod        Name of the property setter method, if it does
+                      not follow standard JavaBeans naming patterns.
+
+     type             Fully qualified Java class name of this attribute.
+
+     writeable        Boolean value indicating whether or not this
+                      attribute is writeable by management applications.
+                      By default, this is set to "true".
+-->
+<!ELEMENT attribute (descriptor?)>
+<!ATTLIST attribute         id           ID             #IMPLIED>
+<!ATTLIST attribute         description  CDATA          #IMPLIED>
+<!ATTLIST attribute         displayName  CDATA          #IMPLIED>
+<!ATTLIST attribute         getMethod    %MethodName;   #IMPLIED>
+<!ATTLIST attribute         is           %Boolean;      #IMPLIED>
+<!ATTLIST attribute         name         %VariableName; #IMPLIED>
+<!ATTLIST attribute         readable     %Boolean;      #IMPLIED>
+<!ATTLIST attribute         setMethod    %MethodName;   #IMPLIED>
+<!ATTLIST attribute         type         %ClassName;    #IMPLIED>
+<!ATTLIST attribute         writeable    %Boolean;      #IMPLIED>
+
+
+<!-- The "constructor" element describes a public constructor for the
+     underlying actual class.  It may contain nested "parameter" elements
+     for the various arguments to this constructor.  The following attributes
+     are supported:
+
+     displayName      Display name of this constructor.
+
+     name             Name of this constructor (by Java convention, this must
+                      be the same as the base class name).
+-->
+<!ELEMENT constructor (descriptor?, parameter*)>
+<!ATTLIST constructor       id           ID             #IMPLIED>
+<!ATTLIST constructor       displayName  CDATA          #IMPLIED>
+<!ATTLIST constructor       name         %VariableName; #IMPLIED>
+
+
+<!-- The "descriptor" element groups a set of descriptor fields whose
+     values will be included in the Descriptor for the corresponding
+     metadata info classes.
+-->
+<!ELEMENT descriptor (field*)>
+<!ATTLIST descriptor        id           ID             #IMPLIED>
+
+
+<!-- The "field" element represents a single name/value pair that will
+     be included in the Descriptor corresponding to our enclosing
+     "descriptor" element.  The following attributes are supported:
+
+     name             Field name of the field to be included
+
+     value            Field value of the field to be included
+                      (will be stored as a String)
+-->
+<!ELEMENT field EMPTY>
+<!ATTLIST field             id           ID             #IMPLIED>
+<!ATTLIST field             name         CDATA          #REQUIRED>
+<!ATTLIST field             value        CDATA          #REQUIRED>
+
+
+
+<!-- The "mbean" element describes a particular JMX ModelMBean implementation,
+     including the information necessary to construct the corresponding
+     ModelMBeanInfo structures.  The following attributes are supported:
+
+     className        Fully qualified Java class name of the ModelMBean
+                      implementation class.  If not specified, the standard
+                      implementation provided by JMX will be utilized.
+
+     description      Human-readable description of this managed bean.
+
+     domain           The JMX MBeanServer domain in which the ModelMBean
+                      created by this managed bean should be registered,
+                      when creating its ObjectName.
+
+     group            Optional name of a "grouping classification" that can
+                      be used to select groups of similar MBean implementation
+                      classes.
+
+     name             Unique name of this MBean (normally corresponds to the
+                      base class name of the corresponding server component).
+
+     type             Fully qualified Java class name of the underlying
+                      managed resource implementation class.
+-->
+<!ELEMENT mbean (descriptor?, attribute*, constructor*, notification*, operation*)>
+<!ATTLIST mbean             id           ID             #IMPLIED>
+<!ATTLIST mbean             className    %ClassName;    #IMPLIED>
+<!ATTLIST mbean             description  CDATA          #IMPLIED>
+<!ATTLIST mbean             domain       CDATA          #IMPLIED>
+<!ATTLIST mbean             group        CDATA          #IMPLIED>
+<!ATTLIST mbean             name         %MethodName;   #IMPLIED>
+<!ATTLIST mbean             type         %ClassName;    #IMPLIED>
+
+
+<!-- The "notification" element describes the notification types that are
+     generated by a particular managed bean.  The following attributes
+     are supported:
+
+     description      Human-readable description of these notification events.
+
+     name             Name of this set of notification event types.
+-->
+<!ELEMENT notification (descriptor?, notification-type*)>
+<!ATTLIST notification      id           ID             #IMPLIED>
+<!ATTLIST notification      description  CDATA          #IMPLIED>
+<!ATTLIST notification      name         %VariableName; #IMPLIED>
+
+
+<!-- The nested content of the "notification-type" element is the event string
+     of an event that can be emitted by this MBean.
+-->
+<!ELEMENT notification-type (#PCDATA)>
+<!ATTLIST notification-type id           ID             #IMPLIED>
+
+
+<!-- The "operation" element describes a the signature of a public method
+     that is accessible to management applications.  The following attributes
+     are supported:
+
+     description      Human-readable description of this operation.
+
+     impact           Indication of the impact of this method:
+                      ACTION (write like), ACTION-INFO (write+read like)
+                      INFO (read like), or UNKNOWN.
+
+     name             Name of this public method.
+
+     returnType       Fully qualified Java class name of the return
+                      type of this method.
+-->
+<!ELEMENT operation   (descriptor?, parameter*)>
+<!ATTLIST operation         id           ID             #IMPLIED>
+<!ATTLIST operation         description  CDATA          #IMPLIED>
+<!ATTLIST operation         impact       CDATA          #IMPLIED>
+<!ATTLIST operation         name         %VariableName; #IMPLIED>
+<!ATTLIST operation         returnType   %ClassName;    #IMPLIED>
+
+
+<!-- The "parameter" element describes a single argument that will be passed
+     to a constructor or operation.  The following attributes are supported:
+
+     description      Human-readable description of this parameter.
+
+     name             Java language name of this parameter.
+
+     type             Fully qualified Java class name of this parameter.
+-->
+<!ELEMENT parameter EMPTY>
+<!ATTLIST parameter         id           ID             #IMPLIED>
+<!ATTLIST parameter         description  CDATA          #IMPLIED>
+<!ATTLIST parameter         name         %VariableName; #IMPLIED>
+<!ATTLIST parameter         type         %ClassName;    #IMPLIED>
+
+

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+    <RACE RACE_ID="100" NAME="Paris 1/2 Marathon" DISTANCE="13.1" DATE="2008-05-12"/>
+    <RACE RACE_ID="200" NAME="London 20K" DISTANCE="13.1" DATE="2008-05-12"/>
+    <RACE RACE_ID="300" NAME="NY Marathon" DISTANCE="24.1" DATE="2008-05-12"/>
+
+
+    <RUNNER RUNNER_ID="200" FIRST_NAME="Guillaume" LAST_NAME="LaForge" AGE="40"/>
+    <race_participants RACE_ID="200" RUNNER_ID="200"/>
+    
+</dataset>

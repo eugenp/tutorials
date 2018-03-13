@@ -1,0 +1,18 @@
+1、glassfish插件下载比较慢，请耐心等待
+
+2、直接 mvn package 即可运行，如果不想这样可以去掉pom的
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+然后必须这样运行: mvn clean package embedded-glassfish:run
+
+
+servlet 3.1新特性介绍PPT下载
+https://blogs.oracle.com/arungupta/entry/what_s_new_in_servlet
+https://oracleus.activeevents.com/connect/sessionDetail.ww?SESSION_ID=6793

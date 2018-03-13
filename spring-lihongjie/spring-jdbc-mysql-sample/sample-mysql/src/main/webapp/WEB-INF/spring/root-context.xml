@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/test" />
+		<property name="username" value="root" />
+		<property name="password" value="gsg" />
+	</bean>
+
+	<jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:db-schema.sql"/>
+	</jdbc:initialize-database>
+		
+</beans>

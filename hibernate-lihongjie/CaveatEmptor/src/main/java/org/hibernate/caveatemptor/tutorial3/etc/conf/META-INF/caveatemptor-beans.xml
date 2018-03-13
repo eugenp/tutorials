@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deployment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:jboss:bean-deployer bean-deployer_1_0.xsd"
+    xmlns="urn:jboss:bean-deployer:2.0">
+
+    <!-- Enable a JCA datasource available through JNDI -->
+    <bean name="caveatEmptorDatasourceFactory"
+          class="org.jboss.resource.adapter.jdbc.local.LocalTxDataSource">
+        <property name="jndiName">java:/caveatemptorTestingDatasource</property>
+
+        <!-- HSQL DB -->
+        <property name="driverClass">org.hsqldb.jdbcDriver</property>
+        <property name="connectionURL">jdbc:hsqldb:hsql://localhost</property>
+        <property name="userName">sa</property>
+
+        <property name="minSize">0</property>
+        <property name="maxSize">10</property>
+        <property name="blockingTimeout">1000</property>
+        <property name="idleTimeout">100000</property>
+
+        <property name="transactionManager"><inject bean="TransactionManager"/></property>
+        <property name="cachedConnectionManager"><inject bean="CachedConnectionManager"/></property>
+        <property name="initialContextProperties"><inject bean="InitialContextProperties"/></property>
+    </bean>
+
+    <bean name="caveatemptorTestingDatasource" class="java.lang.Object">
+        <constructor factoryMethod="getDatasource">
+            <factory bean="caveatEmptorDatasourceFactory"/>
+        </constructor>
+    </bean>
+
+</deployment>

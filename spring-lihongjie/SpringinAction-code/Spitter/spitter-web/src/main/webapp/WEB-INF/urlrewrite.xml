@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite 
+    PUBLIC "-//tuckey.org//DTD UrlRewrite 3.0//EN" 
+    "http://tuckey.org/res/dtds/urlrewrite3.0.dtd">
+
+<!--<start id="urlrewrite_xml" />-->
+<urlrewrite default-match-type="wildcard">
+  <rule>
+    <from>/resources/**</from>
+    <to>/resources/$1</to>
+  </rule>
+  <rule>
+    <from>/**</from>
+    <to>/app/$1</to>
+  </rule>
+  <outbound-rule>
+    <from>/app/**</from>
+    <to>/$1</to>
+  </outbound-rule>  
+</urlrewrite>
+<!--<end id="urlrewrite_xml" />-->

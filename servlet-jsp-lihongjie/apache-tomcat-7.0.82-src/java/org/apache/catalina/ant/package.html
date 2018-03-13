@@ -1,0 +1,102 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<body>
+
+<p>This package contains a set of <code>Task</code> implementations for
+<em>Ant (version 1.6.x or later)</em> that can be used to interact with the
+Manager application to deploy, undeploy, list, reload, start and stop web applications 
+from a running instance of Tomcat.  For more information, see
+<a href="http://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html">
+http://tomcat.apache.org/tomcat-7.0-doc/manager-howto.html</a>.</p>
+
+<p>The attributes of each task element correspond
+exactly to the request parameters that are included with an HTTP request
+sent directly to the Manager application.  They are summarized as follows:
+</p>
+
+<table>
+  <tr>
+    <th align="center" width="15%">Attribute</th>
+    <th align="center" width="85%">Description</th>
+  </tr>
+  <tr>
+    <td align="center">url</td>
+    <td>
+      The URL of the Manager web application you will use to
+      perform the requested operations.  If not specified, defaults to
+      <code>http://localhost:8080/manager/text</code> (which corresponds
+      to a standard installation of Tomcat 7).
+    </td>
+  </tr>
+  <tr>
+    <td align="center">username</td>
+    <td>
+      The username of a Tomcat user that has been configured with the
+      <code>manager-script</code> role, as required to execute Manager
+      application commands.  This attribute is required.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">password</td>
+    <td>
+      The password of a Tomcat user that has been configured with the
+      <code>manager-script</code> role, as required to execute Manager
+      application commands.  This attribute is required.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">config</td>
+    <td>
+      A URL pointing at the context configuration file (i.e. a file
+      containing only the <code>&lt;Context&gt;</code> element, and
+      its nested elements, from <code>server.xml</code> for a particular
+      web application).  This attribute is supported only on the
+      <code>install</code> target, and is required only if you wish to
+      install an application with non-default configuration characteristics.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">path</td>
+    <td>
+      The context path (including the leading slash) of the web application
+      this command is intended to manage, or a zero-length string for the
+      ROOT web application.  This attribute is valid for the
+      <code>install</code>, <code>reload</code>, <code>remove</code>,
+      <code>start</code>, and <code>stop</code> tasks only, and is
+      required in all of those cases.
+    </td>
+  </tr>
+  <tr>
+    <td align="center">war</td>
+    <td>
+      A <code>jar:</code> URL that points at a web application archive (WAR)
+      file, or a <code>file:</code> URL that points at an unpacked directory
+      containing the web application.  This attribute is supported only on
+      the <code>install</code> target.  You must specify at least one of the
+      <code>config</code> and <code>war</code> attributes; if you specify
+      both, the <code>war</code> attribute overrides the <code>docBase</code>
+      attribute in the context configuration file.
+    </td>
+  </tr>
+</table>
+
+<p><strong>NOTE</strong> - Commands executed through the <em>Manager</em>
+application are <strong>NOT</strong> reflected in updates to the Tomcat
+<code>server.xml</code> configuration file, so they do not persist past the
+next time you restart the entire Tomcat container.</p>
+
+</body>

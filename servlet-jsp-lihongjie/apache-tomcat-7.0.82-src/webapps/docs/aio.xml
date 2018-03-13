@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="aio.html">
+
+    &project;
+
+  <properties>
+    <title>Advanced IO and Tomcat</title>
+    <author>Remy Maucherat</author>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Introduction">
+
+  <p>
+    With usage of APR or NIO APIs as the basis of its connectors, Tomcat is
+    able to provide a number of extensions over the regular blocking IO
+    as provided with support for the Servlet API.
+  </p>
+
+  <p>
+    <b>IMPORTANT NOTE: Usage of these features requires using the APR or NIO
+    HTTP connectors. The classic java.io HTTP connector and the AJP connectors
+    do not support them.</b>
+  </p>
+
+  </section>
+
+  <section name="Comet support">
+
+  <p>
+    Comet support allows a servlet to process IO asynchronously, receiving
+    events when data is available for reading on the connection (rather than
+    always using a blocking read), and writing data back on connections
+    asynchronously (most likely responding to some event raised from some
+    other source).
+  </p>
+
+  <subsection name="CometEvent">
+
+  <p>
+    Servlets which implement the <code>org.apache.catalina.comet.CometProcessor</code>
+    interface will have their event method invoked rather than the usual service
+    method, according to the event which occurred. The event object gives
+    access to the usual request and response objects, which may be used in the
+    usual way. The main difference is that those objects remain valid and fully
+    functional at any time between processing of the BEGIN event until processing
+    an END or ERROR event.
+    The following event types exist:
+  </p>
+
+  <ul>
+  <li>EventType.BEGIN: will be called at the beginning
+     of the processing of the connection. It can be used to initialize any relevant
+     fields using the request and response objects. Between the end of the processing
+     of this event, and the beginning of the processing of the end or error events,
+     it is possible to use the response object to write data on the open connection.
+     Note that the response object and dependent OutputStream and Writer are still
+     not synchronized, so when they are accessed by multiple threads,
+     synchronization is mandatory. After processing the initial event, the request
+     is considered to be committed.</li>
+  <li>EventType.READ: This indicates that input data is available, and that one read can be made
+       without blocking. The available and ready methods of the InputStream or
+       Reader may be used to determine if there is a risk of blocking: the servlet
+       should read while data is reported available. When encountering a read error,
+       the servlet should report it by propagating the exception properly. Throwing
+       an exception will cause the error event to be invoked, and the connection
+       will be closed.
+       Alternately, it is also possible to catch any exception, perform clean up
+       on any data structure the servlet may be using, and using the close method
+       of the event. It is not allowed to attempt reading data from the request
+       object outside of the execution of this method.<br/>
+       On some platforms, like Windows, a client disconnect is indicated by a READ event.
+       Reading from the stream may result in -1, an IOException or an EOFException.
+       Make sure you properly handle all these three cases.
+       If you don't catch the IOException, Tomcat will instantly invoke your event chain with an ERROR as
+       it catches the error for you, and you will be notified of the error at that time.
+  </li>
+  <li>EventType.END: End may be called to end the processing of the request. Fields that have
+     been initialized in the begin method should be reset. After this event has
+     been processed, the request and response objects, as well as all their dependent
+     objects will be recycled and used to process other requests. End will also be
+     called when data is available and the end of file is reached on the request input
+     (this usually indicates the client has pipelined a request).</li>
+  <li>EventType.ERROR: Error will be called by the container in the case where an IO exception
+     or a similar unrecoverable error occurs on the connection. Fields that have
+     been initialized in the begin method should be reset. After this event has
+     been processed, the request and response objects, as well as all their dependent
+     objects will be recycled and used to process other requests.</li>
+  </ul>
+
+  <p>
+    There are some event subtypes which allow finer processing of events (note: some of these
+    events require usage of the org.apache.catalina.valves.CometConnectionManagerValve valve):
+  </p>
+
+  <ul>
+  <li>EventSubType.TIMEOUT: The connection timed out (sub type of ERROR); note that this ERROR
+    type is not fatal, and the connection will not be closed unless the servlet uses the close
+    method of the event.
+  </li>
+  <li>EventSubType.CLIENT_DISCONNECT: The client connection was closed (sub type of ERROR).
+  </li>
+  <li>EventSubType.IOEXCEPTION: An IO exception occurred, such as invalid content, for example,
+    an invalid chunk block (sub type of ERROR).
+  </li>
+  <li>EventSubType.WEBAPP_RELOAD: The web application is being reloaded (sub type of END).
+  </li>
+  <li>EventSubType.SESSION_END: The servlet ended the session (sub type of END).
+  </li>
+  </ul>
+
+  <p>
+    As described above, the typical lifecycle of a Comet request will consist in a series of
+    events such as: BEGIN -> READ -> READ -> READ -> ERROR/TIMEOUT. At any time, the servlet
+    may end processing of the request by using the close method of the event object.
+  </p>
+
+  </subsection>
+
+  <subsection name="CometFilter">
+
+  <p>
+    Similar to regular filters, a filter chain is invoked when comet events are processed.
+    These filters should implement the CometFilter interface (which works in the same way as
+    the regular Filter interface), and should be declared and mapped in the deployment
+    descriptor in the same way as a regular filter. The filter chain when processing an event
+    will only include filters which match all the usual mapping rules, and also implement
+    the CometFiler interface.
+  </p>
+
+  </subsection>
+
+  <subsection name="Example code">
+
+  <p>
+    The following pseudo code servlet implements asynchronous chat functionality using the API
+    described above:
+  </p>
+
+  <source><![CDATA[public class ChatServlet
+    extends HttpServlet implements CometProcessor {
+
+    protected ArrayList<HttpServletResponse> connections =
+        new ArrayList<HttpServletResponse>();
+    protected MessageSender messageSender = null;
+
+    public void init() throws ServletException {
+        messageSender = new MessageSender();
+        Thread messageSenderThread =
+            new Thread(messageSender, "MessageSender[" + getServletContext().getContextPath() + "]");
+        messageSenderThread.setDaemon(true);
+        messageSenderThread.start();
+    }
+
+    public void destroy() {
+        connections.clear();
+        messageSender.stop();
+        messageSender = null;
+    }
+
+    /**
+     * Process the given Comet event.
+     *
+     * @param event The Comet event that will be processed
+     * @throws IOException
+     * @throws ServletException
+     */
+    public void event(CometEvent event)
+        throws IOException, ServletException {
+        HttpServletRequest request = event.getHttpServletRequest();
+        HttpServletResponse response = event.getHttpServletResponse();
+        if (event.getEventType() == CometEvent.EventType.BEGIN) {
+            log("Begin for session: " + request.getSession(true).getId());
+            PrintWriter writer = response.getWriter();
+            writer.println("<!DOCTYPE html>");
+            writer.println("<head><title>JSP Chat</title></head><body>");
+            writer.flush();
+            synchronized(connections) {
+                connections.add(response);
+            }
+        } else if (event.getEventType() == CometEvent.EventType.ERROR) {
+            log("Error for session: " + request.getSession(true).getId());
+            synchronized(connections) {
+                connections.remove(response);
+            }
+            event.close();
+        } else if (event.getEventType() == CometEvent.EventType.END) {
+            log("End for session: " + request.getSession(true).getId());
+            synchronized(connections) {
+                connections.remove(response);
+            }
+            PrintWriter writer = response.getWriter();
+            writer.println("</body></html>");
+            event.close();
+        } else if (event.getEventType() == CometEvent.EventType.READ) {
+            InputStream is = request.getInputStream();
+            byte[] buf = new byte[512];
+            do {
+                int n = is.read(buf); //can throw an IOException
+                if (n > 0) {
+                    log("Read " + n + " bytes: " + new String(buf, 0, n)
+                            + " for session: " + request.getSession(true).getId());
+                } else if (n < 0) {
+                    error(event, request, response);
+                    return;
+                }
+            } while (is.available() > 0);
+        }
+    }
+
+    public class MessageSender implements Runnable {
+
+        protected boolean running = true;
+        protected ArrayList<String> messages = new ArrayList<String>();
+
+        public MessageSender() {
+        }
+
+        public void stop() {
+            running = false;
+        }
+
+        /**
+         * Add message for sending.
+         */
+        public void send(String user, String message) {
+            synchronized (messages) {
+                messages.add("[" + user + "]: " + message);
+                messages.notify();
+            }
+        }
+
+        public void run() {
+
+            while (running) {
+
+                if (messages.size() == 0) {
+                    try {
+                        synchronized (messages) {
+                            messages.wait();
+                        }
+                    } catch (InterruptedException e) {
+                        // Ignore
+                    }
+                }
+
+                synchronized (connections) {
+                    String[] pendingMessages = null;
+                    synchronized (messages) {
+                        pendingMessages = messages.toArray(new String[0]);
+                        messages.clear();
+                    }
+                    // Send any pending message on all the open connections
+                    for (int i = 0; i < connections.size(); i++) {
+                        try {
+                            PrintWriter writer = connections.get(i).getWriter();
+                            for (int j = 0; j < pendingMessages.length; j++) {
+                                writer.println(pendingMessages[j] + "<br>");
+                            }
+                            writer.flush();
+                        } catch (IOException e) {
+                            log("IOExeption sending message", e);
+                        }
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+}]]></source>
+
+  </subsection>
+  <subsection name="Comet timeouts">
+    <p>If you are using the NIO connector, you can set individual timeouts for your different comet connections.
+       To set a timeout, simply set a request attribute like the following code shows:</p>
+    <source>CometEvent event.... event.setTimeout(30*1000);</source>
+    <p>or</p>
+    <source>event.getHttpServletRequest().setAttribute("org.apache.tomcat.comet.timeout", new Integer(30 * 1000));</source>
+    <p>
+       This sets the timeout to 30 seconds.
+       Important note: in order to set this timeout, it has to be done on the <code>BEGIN</code> event.
+       The default value is <code>soTimeout</code>
+    </p>
+    <p>If you are using the APR connector, all Comet connections will have the same timeout value. It is <code>soTimeout*50</code>
+    </p>
+  </subsection>
+
+  </section>
+
+  <section name="Asynchronous writes">
+
+  <p>
+    When APR or NIO is enabled, Tomcat supports using sendfile to send large static files.
+    These writes, as soon as the system load increases, will be performed
+    asynchronously in the most efficient way. Instead of sending a large response using
+    blocking writes, it is possible to write content to a static file, and write it
+    using a sendfile code. A caching valve could take advantage of this to cache the
+    response data in a file rather than store it in memory. Sendfile support is
+    available if the request attribute <code>org.apache.tomcat.sendfile.support</code>
+    is set to <code>Boolean.TRUE</code>.
+  </p>
+
+  <p>
+    Any servlet can instruct Tomcat to perform a sendfile call by setting the appropriate
+    request attributes. It is also necessary to correctly set the content length
+    for the response. When using sendfile, it is best to ensure that neither the
+    request or response have been wrapped, since as the response body will be sent later
+    by the connector itself, it cannot be filtered. Other than setting the 3 needed
+    request attributes, the servlet should not send any response data, but it may use
+    any method which will result in modifying the response header (like setting cookies).
+  </p>
+
+  <ul>
+  <li><code>org.apache.tomcat.sendfile.filename</code>: Canonical filename of the file which will be sent as
+      a String</li>
+  <li><code>org.apache.tomcat.sendfile.start</code>: Start offset as a Long</li>
+  <li><code>org.apache.tomcat.sendfile.end</code>: End offset as a Long</li>
+  </ul>
+
+  </section>
+
+</body>
+</document>

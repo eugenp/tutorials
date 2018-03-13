@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://java.sun.com/xml/ns/j2ee"
+            xmlns:j2ee="http://java.sun.com/xml/ns/j2ee"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+            version="1.1">
+  <xsd:annotation>
+    <xsd:documentation>
+
+      (C) Copyright International Business Machines Corporation 2002
+
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:annotation>
+    <xsd:documentation>
+      <![CDATA[
+
+        The webservices element is the root element for the web services
+        deployment descriptor.  It specifies the set of web service
+        descriptions that are to be deployed into the J2EE Application
+        Server and the dependencies they have on container resources and
+        services.  The deployment descriptor must be named
+        "META-INF/webservices.xml" in the web services' jar file.
+
+        Used in: webservices.xml
+
+        All webservices deployment descriptors must indicate the
+        webservices schema by using the J2EE namespace:
+
+        http://java.sun.com/xml/ns/j2ee
+
+        and by indicating the version of the schema by using the version
+        element as shown below:
+
+            <webservices xmlns="http://java.sun.com/xml/ns/j2ee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+                http://www.ibm.com/webservices/xsd/j2ee_web_services_1_1.xsd"
+              version="1.1">
+              ...
+            </webservices>
+
+        The instance documents may indicate the published version of the
+        schema using the xsi:schemaLocation attribute for the J2EE
+        namespace with the following location:
+
+        http://www.ibm.com/webservices/xsd/j2ee_web_services_1_1.xsd
+
+        ]]>
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:annotation>
+    <xsd:documentation>
+
+      The following conventions apply to all J2EE
+      deployment descriptor elements unless indicated otherwise.
+
+      - In elements that specify a pathname to a file within the
+        same JAR file, relative filenames (i.e., those not
+        starting with "/") are considered relative to the root of
+        the JAR file's namespace.  Absolute filenames (i.e., those
+        starting with "/") also specify names in the root of the
+        JAR file's namespace.  In general, relative names are
+        preferred.  The exception is .war files where absolute
+        names are preferred for consistency with the Servlet API.
+
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:include schemaLocation="j2ee_1_4.xsd"/>
+
+
+<!-- **************************************************** -->
+
+
+  <xsd:element name="webservices" type="j2ee:webservicesType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The webservices element is the root element for the web services
+        deployment descriptor.  It specifies the set of web service
+        descriptions that are to be deployed into the J2EE Application Server
+        and the dependencies they have on container resources and services.
+
+        Used in: webservices.xml
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:key name="webservice-description-name-key">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The webservice-description-name identifies the collection of
+          port-components associated with a WSDL file and JAX-RPC mapping. The
+          name must be unique within the deployment descriptor.
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:webservice-description"/>
+      <xsd:field xpath="j2ee:webservice-description-name"/>
+    </xsd:key>
+  </xsd:element>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="port-componentType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The port-component element associates a WSDL port with a web service
+        interface and implementation.  It defines the name of the port as a
+        component, optional description, optional display name, optional iconic
+        representations, WSDL port QName, Service Endpoint Interface, Service
+        Implementation Bean.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="display-name"
+                   type="j2ee:display-nameType"
+                   minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="icon"
+                   type="j2ee:iconType"
+                   minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="port-component-name"
+                   type="j2ee:string">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+
+              The port-component-name element specifies a port component's
+              name.  This name is assigned by the module producer to name
+              the service implementation bean in the module's deployment
+              descriptor. The name must be unique among the port component
+              names defined in the same module.
+
+              Used in: port-component
+
+              Example:
+                      <port-component-name>EmployeeService
+                      </port-component-name>
+
+              ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="wsdl-port"
+                   type="j2ee:xsdQNameType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Defines the name space and local name part of the WSDL port QName.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="service-endpoint-interface"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+            <![CDATA[
+
+              The service-endpoint-interface element contains the
+              fully-qualified name of the port component's Service Endpoint
+              Interface.
+
+              Used in: port-component
+
+              Example:
+                      <remote>com.wombat.empl.EmployeeService</remote>
+
+              ]]>
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="service-impl-bean"
+                   type="j2ee:service-impl-beanType"/>
+
+      <xsd:element name="handler"
+                   type="j2ee:port-component_handlerType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="port-component_handlerType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        Declares the handler for a port-component. Handlers can access the
+        init-param name/value pairs using the HandlerInfo interface.
+
+        Used in: port-component
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="handler-name"
+                   type="j2ee:string">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Defines the name of the handler. The name must be unique within the
+            module.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="handler-class"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Defines a fully qualified class name for the handler implementation.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="init-param"
+                   type="j2ee:param-valueType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+
+      <xsd:element name="soap-header"
+                   type="j2ee:xsdQNameType"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            Defines the QName of a SOAP header that will be processed by the
+            handler.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="soap-role"
+                   type="j2ee:string"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The soap-role element contains a SOAP actor definition that the
+            Handler will play as a role.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="service-impl-beanType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The service-impl-bean element defines the web service implementation.
+        A service implementation can be an EJB bean class or JAX-RPC web
+        component.  Existing EJB implementations are exposed as a web service
+        using an ejb-link.
+
+        Used in: port-component
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:choice>
+      <xsd:element name="ejb-link"
+                   type="j2ee:ejb-linkType"/>
+      <xsd:element name="servlet-link"
+                   type="j2ee:servlet-linkType"/>
+    </xsd:choice>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="servlet-linkType">
+    <xsd:annotation>
+      <xsd:documentation>
+        <![CDATA[
+
+          The servlet-link element is used in the service-impl-bean element
+          to specify that a Service Implementation Bean is defined as a
+          JAX-RPC Service Endpoint.
+
+          The value of the servlet-link element must be the servlet-name of
+          a JAX-RPC Service Endpoint in the same WAR file.
+
+          Used in: service-impl-bean
+
+          Example:
+                  <servlet-link>StockQuoteService</servlet-link>
+
+          ]]>
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="webservice-descriptionType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The webservice-description element defines a WSDL document file
+        and the set of Port components associated with the WSDL ports
+        defined in the WSDL document.  There may be multiple
+        webservice-descriptions defined within a module.
+
+        All WSDL file ports must have a corresponding port-component element
+        defined.
+
+        Used in: webservices
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="display-name"
+                   type="j2ee:display-nameType"
+                   minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="icon"
+                   type="j2ee:iconType"
+                   minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="webservice-description-name"
+                   type="j2ee:string">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The webservice-description-name identifies the collection of
+            port-components associated with a WSDL file and JAX-RPC
+            mapping. The name must be unique within the deployment descriptor.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="wsdl-file"
+                   type="j2ee:pathType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The wsdl-file element contains the name of a WSDL file in the
+            module.  The file name is a relative path within the module.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="jaxrpc-mapping-file"
+                   type="j2ee:pathType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The jaxrpc-mapping-file element contains the name of a file that
+            describes the JAX-RPC mapping between the Java interfaces used by
+            the application and the WSDL description in the wsdl-file.  The
+            file name is a relative path within the module.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="port-component"
+                   type="j2ee:port-componentType"
+                   minOccurs="1" maxOccurs="unbounded">
+        <xsd:key name="port-component_handler-name-key">
+          <xsd:annotation>
+            <xsd:documentation>
+
+              Defines the name of the handler. The name must be unique
+              within the module.
+
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:selector xpath="j2ee:handler"/>
+          <xsd:field xpath="j2ee:handler-name"/>
+        </xsd:key>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="webservicesType">
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="webservice-description"
+                   type="j2ee:webservice-descriptionType"
+                   minOccurs="1" maxOccurs="unbounded">
+        <xsd:key name="port-component-name-key">
+          <xsd:annotation>
+            <xsd:documentation>
+              <![CDATA[
+
+                The port-component-name element specifies a port
+                component's name.  This name is assigned by the module
+                producer to name the service implementation bean in the
+                module's deployment descriptor. The name must be unique
+                among the port component names defined in the same module.
+
+                Used in: port-component
+
+                Example:
+                        <port-component-name>EmployeeService
+                        </port-component-name>
+
+                ]]>
+            </xsd:documentation>
+          </xsd:annotation>
+          <xsd:selector xpath="j2ee:port-component"/>
+          <xsd:field xpath="j2ee:port-component-name"/>
+        </xsd:key>
+      </xsd:element>
+    </xsd:sequence>
+
+    <xsd:attribute name="version"
+                   type="j2ee:dewey-versionType"
+                   fixed="1.1"
+                   use="required">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The required value for the version is 1.1.
+
+        </xsd:documentation>
+      </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+</xsd:schema>
+

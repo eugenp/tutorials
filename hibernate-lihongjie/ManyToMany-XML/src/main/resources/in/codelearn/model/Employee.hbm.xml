@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="in.codelearn.model">
+
+	<class name="Employee" table="EMPLOYEE">
+		<id name="employeeId" column="EMPLOYEE_ID">
+			<generator class="native" />
+		</id>
+
+		<property name="firstname" />
+		<property name="lastname" column="lastname" />
+
+		<set name="meetings" table="EMPLOYEE_MEETING"
+			inverse="false" lazy="true" fetch="select" cascade="all">
+			<key column="EMPLOYEE_ID" />
+			<many-to-many column="MEETING_ID" class="Meeting" />
+		</set>
+
+	</class>
+</hibernate-mapping>

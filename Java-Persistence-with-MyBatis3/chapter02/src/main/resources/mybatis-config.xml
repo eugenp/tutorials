@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="application.properties">
+		<property name="jdbc.username" value="root"/>
+  		<property name="jdbc.password" value="verysecurepwd"/>	
+	</properties>
+	
+	<!-- <settings>
+	   <setting name="cacheEnabled" value="true"/>
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<setting name="multipleResultSetsEnabled" value="true"/>
+		<setting name="useColumnLabel" value="true"/>
+		<setting name="useGeneratedKeys" value="false"/>
+		<setting name="autoMappingBehavior" value="PARTIAL"/>
+		<setting name="defaultExecutorType" value="SIMPLE"/>
+		<setting name="defaultStatementTimeout" value="25000"/>
+		<setting name="safeRowBoundsEnabled" value="false"/>
+		<setting name="mapUnderscoreToCamelCase" value="false"/>
+		<setting name="localCacheScope" value="SESSION"/>
+		<setting name="jdbcTypeForNull" value="OTHER"/>
+		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>
+	</settings> -->
+
+	  <typeAliases>
+	  	<package name="com.mybatis3.domain"/>
+	  </typeAliases>
+	
+	  <environments default="development">
+	    <environment id="development">
+	      <transactionManager type="JDBC"/>
+	      <dataSource type="POOLED">
+	        <property name="driver" value="${jdbc.driverClassName}"/>
+	        <property name="url" value="${jdbc.url}"/>
+	        <property name="username" value="${jdbc.username}"/>
+	        <property name="password" value="${jdbc.password}"/>
+	      </dataSource>
+	    </environment>
+	  </environments>
+	  
+	  <mappers>
+	    <mapper resource="com/mybatis3/mappers/StudentMapper.xml"/>
+	    <!-- <package name="com.mybatis3.mappers"/> -->
+	  </mappers>
+  	
+</configuration>

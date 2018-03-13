@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+  <!-- When adding checks, keep to the order checks are listed under         -->
+  <!-- 'Standard Checks' in the Checkstyle documentation:                    -->
+  <!-- http://checkstyle.sourceforge.net/config_coding.html                  -->
+
+  <!-- Headers -->
+  <module name="RegexpHeader">
+    <property name="headerFile" value="${basedir}/res/checkstyle/header-al2.txt"/>
+    <property name="multiLines" value="1, 2, 3, 4"/>
+    <property name="fileExtensions" value="java,xml,jsp,txt,sh,bat,properties"/>
+  </module>
+
+  <!-- Whitespace -->
+  <module name="FileTabCharacter"/>
+
+  <module name="TreeWalker">
+    <!-- Cache what has passed checkstyle -->
+    <property name="cacheFile"
+              value="${tomcat.output}/res/checkstyle/cachefile-checkstyle.xml"/>
+
+    <!-- Annotations -->
+    <module name="AnnotationLocation"/>
+    <!-- 1 false positive, fixed in later Checkstyle release but can't upgrade
+         as it requires Java 7.
+    <module name="AnnotationUseStyle"/>
+    -->
+    <module name="MissingOverride"/>
+    <module name="PackageAnnotation"/>
+
+    <!-- Block Checks -->
+    <!--  ~60 errors
+    <module name="AvoidNestedBlocks"/>
+    -->
+
+    <!-- Coding -->
+    <module name="IllegalInstantiation"/>
+    
+    <!-- Imports -->
+    <module name="AvoidStarImport"/>
+    <module name="AvoidStaticImport">
+        <property name="excludes"
+                  value="org.apache.catalina.startup.SimpleHttpClient.CRLF"/>
+        <property name="excludes" value="org.junit.Assert.*"/>
+    </module>
+    <module name="IllegalImport">
+        <property name="illegalPkgs" value="sun,junit.framework"/>
+    </module>
+    <module name="ImportOrder">
+        <property name="groups" value="java,javax,org.hamcrest,org.junit,org,async,jsp2,util"/>
+        <property name="ordered" value="true"/>
+        <property name="separated" value="true"/>
+        <property name="option" value="above"/>
+    </module>
+    <module name="RedundantImport"/>
+    <module name="UnusedImports"/>
+    
+    <!--  Modifiers -->
+    <module name="ModifierOrder"/>
+    <!-- ~1750 errors
+    <module name="RedundantModifier"/>
+    -->
+    
+    <!-- Whitespace -->
+    <!-- Can't handle HashMap<String,Class<?>[]>
+    https://sourceforge.net/tracker/?func=detail&aid=3039718&group_id=29721&atid=397078
+    <module name="GenericWhitespace"/>
+    -->
+    <module name="EmptyForInitializerPad"/>
+    <module name="EmptyForIteratorPad"/>
+    <!--  ~ 1000 errors
+    <module name="OperatorWrap">
+      <property name="option" value="oel"/>
+    </module>
+    -->
+  </module>
+</module>

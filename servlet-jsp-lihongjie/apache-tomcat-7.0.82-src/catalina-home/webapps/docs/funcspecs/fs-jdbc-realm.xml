@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="fs-jdbc-realm.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig McClanahan</author>
+    <title>JDBCRealm</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Overview">
+
+
+  <subsection name="Introduction">
+
+    <p>The purpose of the <strong>JDBCRealm</strong> implementation is to
+    provide a mechanism by which Tomcat can acquire information needed
+    to authenticate web application users, and define their security roles,
+    from a relational database accessed via JDBC APIs.  For integration
+    with Catalina, the resulting class(es) must implement the
+    <code>org.apache.catalina.Realm</code> interface.</p>
+
+    <p>This specification reflects a combination of functionality that is
+    already present in the <code>org.apache.catalina.realm.JDBCRealm</code>
+    class, as well as requirements for enhancements that have been
+    discussed.  Where appropriate, requirements statements are marked
+    <em>[Current]</em> and <em>[Requested]</em> to distinguish them.</p>
+
+    <p>The current status of this functional specification is
+    <strong>PROPOSED</strong>.  It has not yet been discussed and
+    agreed to on the TOMCAT-DEV mailing list.</p>
+
+  </subsection>
+
+
+  <subsection name="External Specifications">
+
+    <p>The implementation of this functionality depends on the following
+    external specifications:</p>
+    <ul>
+    <li><a href="http://www.oracle.com/technetwork/java/javase/jdbc/index.html">
+        Java Database Connectivity</a> (version 2.0 or later)</li>
+    <li><a href="http://www.oracle.com/technetwork/java/javase/jdbc/index.html">
+        Java Database Connectivity Optional Package</a> (version 2.0 or later)</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Implementation Requirements">
+
+    <p>The implementation of this functionality shall conform to the
+    following requirements:</p>
+    <ul>
+    <li>Be realized in one or more implementation classes.</li>
+    <li>Implement the <code>org.apache.catalina.Realm</code> interface.
+        [Current]</li>
+    <li>Implement the <code>org.apache.catalina.Lifecycle</code>
+        interface.  [Current]</li>
+    <li>Subclass the <code>org.apache.catalina.realm.RealmBase</code>
+        base class.</li>
+    <li>Live in the <code>org.apache.catalina.realm</code> package.
+        [Current]</li>
+    <li>Support a configurable debugging detail level. [Current]</li>
+    <li>Log debugging and operational messages (suitably internationalized)
+        via the <code>getContainer().log()</code> method. [Current]</li>
+    </ul>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Dependencies">
+
+
+  <subsection name="Environmental Dependencies">
+
+    <p>The following environmental dependencies must be met in order for
+    JDBCRealm to operate correctly:</p>
+    <ul>
+    <li>The desire to utilize JDBCRealm must be registered in
+        <code>$CATALINA_BASE/conf/server.xml</code>, in a
+        <code>&lt;Realm&gt;</code> element that is nested inside a
+        corresponding <code>&lt;Engine&gt;</code>, <code>&lt;Host&gt;</code>,
+        or <code>&lt;Context&gt;</code> element.</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Container Dependencies">
+
+    <p>Correct operation of JDBCRealm depends on the following
+    specific features of the surrounding container:</p>
+    <ul>
+    <li>Interactions with <code>JDBCRealm</code> will be initiated by
+        the appropriate <code>Authenticator</code> implementation, based
+        on the login method that is selected.</li>
+    <li><code>JDBCRealm</code> must have the JDBC standard API classes
+        available to it.  For a JDK 1.2 or later container, these APIs
+        are included in the standard platform.</li>
+    <li>When connection pooling is implemented, <code>JDBCRealm</code>
+        must have the JDBC Optional Package (version 2.0 or later) APIs
+        available to it.  This library is available as a separate
+        download (and will be included in Tomcat binary distributions).</li>
+    </ul>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Functionality">
+
+
+  <subsection name="Overview of Operation">
+
+    <p>The main purpose of <code>JDBCRealm</code> is to allow Catalina to
+    authenticate users, and look up the corresponding security roles, from
+    the information found in a relational database accessed via JDBC APIs.
+    For maximum flexibility, the details of how this is done (for example,
+    the names of the required tables and columns) should be configurable.</p>
+
+    <p>Each time that Catalina needs to authenticate a user, it will call
+    the <code>authenticate()</code> method of this Realm implementation,
+    passing the username and password that were specified by the user.  If
+    we find the user in the database (and match on the password), we accumulate
+    all of the security roles that are defined for this user, and create a
+    new <code>GenericPrincipal</code> object to be returned.  If the user
+    is not authenticated, we return <code>null</code> instead.  The
+    <code>GenericUser</code> object caches the set of security roles that
+    were owned by this user at the time of authentication, so that calls to
+    <code>isUserInRole()</code> can be answered without going back to the
+    database every time.</p>
+
+  </subsection>
+
+
+  <subsection name="Detailed Functional Requirements">
+
+
+    <h3>Configurable Properties</h3>
+
+    <p>The implementation shall support the following properties
+    that can be configured with JavaBeans property setters:</p>
+    <ul>
+    <li>Configuration parameters defining the JDBC driver to use, the
+        database connection URL to be accessed, and the username/password
+        to use for logging in. [Current]</li>
+    <li>Configuration parameters describing the connection pool to be
+        created to support simultaneous authentications. [Requested]</li>
+    <li>Name of the tables to be searched for users and roles. [Current]</li>
+    <li>Name of the columns to be used for usernames, passwords, and
+        role names.  [Current]</li>
+    </ul>
+
+    <h3>Lifecycle Functionality</h3>
+
+    <p>The following processing must be performed when the <code>start()</code>
+    method is called:</p>
+    <ul>
+    <li>Establish a connection to the configured database, using the
+        configured username and password.  [Current]</li>
+    <li>Configure and establish a connection pool of connections to the
+        database.  [Requested]</li>
+    </ul>
+
+    <p>The following processing must be performed when the <code>stop()</code>
+    method is called:</p>
+    <ul>
+    <li>Close any opened connections to the database.</li>
+    </ul>
+
+
+    <h3>Method authenticate() Functionality</h3>
+
+    <p>When <code>authenticate()</code> is called, the following processing
+    is required:</p>
+    <ul>
+    <li>Acquire the one and only connection [Current] or acquire a connection
+        from the connection pool [Requested].</li>
+    <li>Select the one and only row from the user's table for this user,
+        and retrieve the corresponding password column.  If zero rows (or
+        more than one row) are found, return <code>null</code>.</li>
+    <li>Authenticate the user by comparing the (possibly encrypted) password
+        value that was received against the password presented by the user.
+        If there is no match, return <code>null</code>.</li>
+    <li>Acquire a <code>List</code> of the security roles assigned to the
+        authenticated user by selecting from the roles table.</li>
+    <li>Construct a new instance of class
+        <code>org.apache.catalina.realm.GenericPrincipal</code>, passing as
+        constructor arguments:  this realm instance, the authenticated
+        username, and a <code>List</code> of the security roles associated
+        with this user.</li>
+    <li><strong>WARNING</strong> - Do not attempt to cache and reuse previous
+        <code>GenericPrincipal</code> objects for a particular user, because
+        the information in the directory server might have changed since the
+        last time this user was authenticated.</li>
+    <li>Return the newly constructed <code>GenericPrincipal</code>.</li>
+    </ul>
+
+
+    <h3>Method hasRole() Functionality</h3>
+
+    <p>When <code>hasRole()</code> is called, the following processing
+    is required:</p>
+    <ul>
+    <li>The <code>principal</code> that is passed as an argument SHOULD
+        be one that we returned (instanceof class
+        <code>org.apache.catalina.realm.GenericPrincipal</code>, with a
+        <code>realm</code> property that is equal to our instance.</li>
+    <li>If the passed <code>principal</code> meets these criteria, check
+        the specified role against the list returned by
+        <code>getRoles()</code>, and return <code>true</code> if the
+        specified role is included; otherwise, return <code>false</code>.</li>
+    <li>If the passed <code>principal</code> does not meet these criteria,
+        return <code>false</code>.</li>
+    </ul>
+
+  </subsection>
+
+</section>
+
+
+<section name="Testable Assertions">
+
+  <p>In addition to the assertions implied by the functionality requirements
+  listed above, the following additional assertions shall be tested to
+  validate the behavior of <code>JDBCRealm</code>:</p>
+  <ul>
+  </ul>
+
+</section>
+
+
+</body>
+
+</document>

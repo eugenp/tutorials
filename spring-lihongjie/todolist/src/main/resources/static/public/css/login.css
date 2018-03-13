@@ -1,0 +1,79 @@
+.blue-bg {
+    background: #1677A1;
+    background: linear-gradient(to bottom right, #1677A1, #57A57C) no-repeat center center fixed;
+    background-size: cover;
+}
+.red-bg {
+    background: #B91251;
+    background: linear-gradient(to bottom right, #B91251, #F69D74) no-repeat center center fixed;
+    background-size: cover;
+}
+html,body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.login-form {
+    max-width: 480px;
+    min-width: 320px;
+    margin: 15% auto;
+    color: #fff;
+}
+
+.login-form>h2 {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.login-form>hr {
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.login-form .form-control {
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    height: 46px;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.login-form .form-control::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #fff;
+    opacity: 0.5;
+}
+
+.login-form .form-control:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+    opacity: 0.5;
+}
+
+.login-form .form-control::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #fff;
+    opacity: 0.5;
+}
+
+.login-form .form-control:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #fff;
+    opacity: 0.5;
+}
+
+.btn-login {
+    margin-top: 25px;
+    width: 100%;
+    height: 46px;
+    font-size: 1.2em;
+    background: #D8EAE8;
+    border: none;
+    color: #333;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+}
+
+.btn-login:hover {
+    background: #5BCEBB;
+}

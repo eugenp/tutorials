@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Angular web</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/toastr.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/common.css}"/>
+</head>
+<body ng-app="app">
+
+<div id="appPage">
+
+	<form id="from" method="post" action="submit" enctype="application/x-www-form-urlencoded">
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label>
+			<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"/>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputPassword1">Password</label>
+			<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+		</div>
+		<div class="form-group">
+			<label for="exampleInputFile">File input</label>
+			<input type="file" id="exampleInputFile"/>
+			<p class="help-block">Example block-level help text here.</p>
+		</div>
+		<div class="checkbox">
+			<label>
+				<input type="checkbox"/> Check me out
+			</label>
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+
+</div>
+
+<script th:src="@{/js/lib/jquery-2.min.js}"></script>
+<script th:src="@{/js/lib/jquery.cookie.js}"></script>
+<script th:src="@{/js/lib/jquery.rest.js}"></script>
+<script th:src="@{/js/lib/bootstrap.min.js}"></script>
+<script th:src="@{/js/lib/angular.min.js}"></script>
+<script th:src="@{/js/lib/angular-route.min.js}"></script>
+<script th:src="@{/js/lib/bootbox.min.js}"></script>
+<script th:src="@{/js/lib/toastr.min.js}"></script>
+
+<script th:src="@{/js/form.js}"></script>
+</body>
+</html>

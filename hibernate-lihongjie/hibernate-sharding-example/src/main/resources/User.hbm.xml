@@ -1,0 +1,12 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="test">
+    <class name="User" table="s_usr">
+        <id name="usr_kid" column="usr_kid" type="integer">
+            <generator class="test.IdGenerator"/>
+        </id>
+        <property name="name" column="usr_name"/>
+        <property name="gender" column="usr_gender"/>
+        <property name="country" column="usr_country"/>
+    </class>
+</hibernate-mapping>
