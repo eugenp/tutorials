@@ -70,7 +70,7 @@ public class AssertionsUnitTest {
     public void whenAssertingSameObject_thenSame() {
         Object cat = new Object();
 
-        assertNotSame(cat, cat);
+        assertSame(cat, cat);
     }
 
     @Test
