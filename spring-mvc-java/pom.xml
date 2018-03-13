@@ -150,6 +150,12 @@
             <artifactId>javax.el</artifactId>
             <version>2.2.4</version>
         </dependency>
+		<dependency>
+		    <groupId>org.mockito</groupId>
+		    <artifactId>mockito-all</artifactId>
+		    <version>1.10.19</version>
+		    <scope>test</scope>
+		</dependency>
     </dependencies>
 
     <build>
