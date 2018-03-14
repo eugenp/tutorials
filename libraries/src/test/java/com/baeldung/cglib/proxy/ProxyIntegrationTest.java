@@ -10,34 +10,34 @@ import static org.junit.Assert.assertEquals;
 public class ProxyIntegrationTest {
     @Test
     public void givenPersonService_whenSayHello_thenReturnResult() {
-        //given
+        // given
         PersonService personService = new PersonService();
 
-        //when
+        // when
         String res = personService.sayHello("Tom");
 
-        //then
+        // then
         assertEquals(res, "Hello Tom");
     }
 
     @Test
     public void givenEnhancerProxy_whenExtendPersonService_thenInterceptMethod() throws Exception {
-        //given
+        // given
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(PersonService.class);
         enhancer.setCallback((FixedValue) () -> "Hello Tom!");
         PersonService proxy = (PersonService) enhancer.create();
 
-        //when
+        // when
         String res = proxy.sayHello(null);
 
-        //then
+        // then
         assertEquals("Hello Tom!", res);
     }
 
     @Test
     public void givenEnhancer_whenExecuteMethodOnProxy_thenInterceptOnlyStringReturnTypeMethod() throws Exception {
-        //given
+        // given
         Enhancer enhancer = new Enhancer();
         enhancer.setSuperclass(PersonService.class);
         enhancer.setCallback((MethodInterceptor) (obj, method, args, proxy) -> {
@@ -48,10 +48,10 @@ public class ProxyIntegrationTest {
             }
         });
 
-        //when
+        // when
         PersonService proxy = (PersonService) enhancer.create();
 
-        //then
+        // then
         assertEquals("Hello Tom!", proxy.sayHello(null));
         int lengthOfName = proxy.lengthOfName("Mary");
         assertEquals(4, lengthOfName);

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EvenOddController {
 
     @GetMapping("/validate/prime-number")
-    public String isNumberPrime(@RequestParam("number") String number) {
-        return Integer.parseInt(number) % 2 == 0 ? "Even" : "Odd";
+    public String isNumberPrime(@RequestParam("number") Integer number) {
+        return number % 2 == 0 ? "Even" : "Odd";
     }
 }

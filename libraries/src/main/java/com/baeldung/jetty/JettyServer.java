@@ -21,7 +21,7 @@ class JettyServer {
         server = new Server(threadPool);
         ServerConnector connector = new ServerConnector(server);
         connector.setPort(8090);
-        server.setConnectors(new Connector[]{connector});
+        server.setConnectors(new Connector[] { connector });
 
         ServletHandler servletHandler = new ServletHandler();
         server.setHandler(servletHandler);

@@ -10,6 +10,58 @@ public class CustomList<E> implements List<E> {
     private Object[] internal = {};
 
     @Override
+    public boolean isEmpty() {
+        // the first cycle
+        // return true;
+
+        // the second cycle
+        // if (internal.length != 0) {
+        //     return false;
+        // } else {
+        //     return true;
+        // }
+
+        // refactoring
+        return internal.length == 0;
+    }
+
+    @Override
+    public int size() {
+        // the first cycle
+        // if (isEmpty()) {
+        //     return 0;
+        // } else {
+        //     return internal.length;
+        // }
+
+        // refactoring
+        return internal.length;
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public E get(int index) {
+        // the first cycle
+        // return (E) internal[0];
+
+        // improvement
+        return (E) internal[index];
+    }
+
+    @Override
+    public boolean add(E element) {
+        // the first cycle
+        // internal = new Object[] { element };
+        // return true;
+
+        // the second cycle
+        Object[] temp = Arrays.copyOf(internal, internal.length + 1);
+        temp[internal.length] = element;
+        internal = temp;
+        return true;
+    }
+
+    @Override
     public void add(int index, E element) {
         throw new UnsupportedOperationException();
     }
@@ -45,39 +97,7 @@ public class CustomList<E> implements List<E> {
     }
 
     @Override
-    public int size() {
-        return internal.length;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return internal.length == 0;
-    }
-
-    @Override
-    public boolean add(E element) {
-        // the first cycle
-        // internal = new Object[1];
-        // internal[0] = element;
-        // return true;
-
-        Object[] temp = new Object[internal.length + 1];
-        System.arraycopy(internal, 0, temp, 0, internal.length);
-        temp[internal.length] = element;
-        internal = temp;
-        return true;
-    }
-
-    @SuppressWarnings("unchecked")
-    @Override
-    public E get(int index) {
-        return (E) internal[index];
-    }
-
-    @Override
     public boolean contains(Object object) {
-        // return false
-
         for (Object element : internal) {
             if (object.equals(element)) {
                 return true;
@@ -88,14 +108,6 @@ public class CustomList<E> implements List<E> {
 
     @Override
     public boolean containsAll(Collection<?> collection) {
-        // the first cycle
-        // for (Object element : collection) {
-        //     if (element.equals(internal[0])) {
-        //         return true;
-        //     }
-        // }
-        // return false;
-
         for (Object element : collection)
             if (!contains(element)) {
                 return false;
@@ -118,12 +130,6 @@ public class CustomList<E> implements List<E> {
 
     @Override
     public int indexOf(Object object) {
-        // the first cycle
-        // if (object.equals(internal[0])) {
-        //     return 0;
-        // }
-        // return -1;
-
         for (int i = 0; i < internal.length; i++) {
             if (object.equals(internal[i])) {
                 return i;
@@ -134,12 +140,6 @@ public class CustomList<E> implements List<E> {
 
     @Override
     public int lastIndexOf(Object object) {
-        // the first cycle
-        // if (object.equals(internal[0])) {
-        //     return 0;
-        // }
-        // return -1;
-
         for (int i = internal.length - 1; i >= 0; i--) {
             if (object.equals(internal[i])) {
                 return i;
@@ -151,9 +151,6 @@ public class CustomList<E> implements List<E> {
     @SuppressWarnings("unchecked")
     @Override
     public List<E> subList(int fromIndex, int toIndex) {
-        // the first cycle
-        // return (List<E>) Arrays.asList(internal);
-
         Object[] temp = new Object[toIndex - fromIndex];
         System.arraycopy(internal, fromIndex, temp, 0, temp.length);
         return (List<E>) Arrays.asList(temp);
@@ -167,16 +164,6 @@ public class CustomList<E> implements List<E> {
     @SuppressWarnings("unchecked")
     @Override
     public <T> T[] toArray(T[] array) {
-        // the first cycle
-        // array[0] = (T) internal[0];
-        // return array;
-
-        // the second cycle
-        // if (array.length < internal.length) {
-        //     return (T[]) Arrays.copyOf(internal, internal.length, array.getClass());
-        // }
-        // return (T[]) Arrays.copyOf(internal, internal.length, array.getClass());
-
         if (array.length < internal.length) {
             return (T[]) Arrays.copyOf(internal, internal.length, array.getClass());
         }
@@ -209,18 +196,12 @@ public class CustomList<E> implements List<E> {
 
         @Override
         public boolean hasNext() {
-            // the first cycle
-            // return true;
-
             return index != internal.length;
         }
 
         @SuppressWarnings("unchecked")
         @Override
         public E next() {
-            // the first cycle
-            // return (E) CustomList.this.internal[0];
-
             E element = (E) CustomList.this.internal[index];
             index++;
             return element;

@@ -26,19 +26,19 @@ public class MyApp {
 
     }
 
-    public static void createTestData(){
-        ProductItem item1 = new ProductItem("supportedItem", "price less than 10", "SoldOut",5);
-        ProductItem item2 = new ProductItem("pro2", "price less than 10","InStock", 8);
-        ProductItem item3 = new ProductItem("pro3", "price more than 10","SoldOut", 15);
+    public static void createTestData() {
+        ProductItem item1 = new ProductItem("supportedItem", "price less than 10", "SoldOut", 5);
+        ProductItem item2 = new ProductItem("pro2", "price less than 10", "InStock", 8);
+        ProductItem item3 = new ProductItem("pro3", "price more than 10", "SoldOut", 15);
 
-        if( pm != null ){
+        if (pm != null) {
             pm.makePersistent(item1);
             pm.makePersistent(item2);
-            pm.makePersistent(item3); 
+            pm.makePersistent(item3);
         }
     }
 
-    public static void defineDynamicPersistentUnit(){
+    public static void defineDynamicPersistentUnit() {
 
         PersistenceUnitMetaData pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
         pumd.addProperty("javax.jdo.option.ConnectionURL", "jdbc:mysql://localhost:3306/jdo_db");
@@ -51,53 +51,45 @@ public class MyApp {
         pm = pmf.getPersistenceManager();
     }
 
-    public static void queryUsingJDOQL(){
+    public static void queryUsingJDOQL() {
 
-        Query query = pm.newQuery("SELECT FROM com.baeldung.jdo.query.ProductItem "
-                + "WHERE price < threshold PARAMETERS double threshold");
-        List<ProductItem> explicitParamResults = (List<ProductItem>)query.execute(10);
+        Query query = pm.newQuery("SELECT FROM com.baeldung.jdo.query.ProductItem " + "WHERE price < threshold PARAMETERS double threshold");
+        List<ProductItem> explicitParamResults = (List<ProductItem>) query.execute(10);
 
-        query = pm.newQuery("SELECT FROM "
-                + "com.baeldung.jdo.query.ProductItem WHERE price < :threshold");
+        query = pm.newQuery("SELECT FROM " + "com.baeldung.jdo.query.ProductItem WHERE price < :threshold");
         query.setParameters("double threshold");
-        List<ProductItem> explicitParamResults2 = (List<ProductItem>)query.execute(10);
+        List<ProductItem> explicitParamResults2 = (List<ProductItem>) query.execute(10);
 
-        query = pm.newQuery("SELECT FROM "
-                + "com.baeldung.jdo.query.ProductItem WHERE price < :threshold");
-        List<ProductItem> implicitParamResults = (List<ProductItem>)query.execute(10);
+        query = pm.newQuery("SELECT FROM " + "com.baeldung.jdo.query.ProductItem WHERE price < :threshold");
+        List<ProductItem> implicitParamResults = (List<ProductItem>) query.execute(10);
 
     }
 
-    public static void queryUsingTypedJDOQL(){
-
+    public static void queryUsingTypedJDOQL() {
         JDOQLTypedQuery<ProductItem> tq = pm.newJDOQLTypedQuery(ProductItem.class);
         QProductItem cand = QProductItem.candidate();
-        tq=tq.filter(cand.price.lt(10).and(cand.name.startsWith("pro")));
+        tq = tq.filter(cand.price.lt(10).and(cand.name.startsWith("pro")));
         List<ProductItem> results = tq.executeList();
 
     }
 
-    public static void queryUsingSQL(){
+    public static void queryUsingSQL() {
 
-        Query query = pm.newQuery("javax.jdo.query.SQL","select * from "
-                + "product_item where price < ? and status = ?");
+        Query query = pm.newQuery("javax.jdo.query.SQL", "select * from " + "product_item where price < ? and status = ?");
         query.setClass(ProductItem.class);
-        query.setParameters(10,"InStock");
+        query.setParameters(10, "InStock");
         List<ProductItem> results = query.executeList();
 
     }
 
-    public static void queryUsingJPQL(){
-        Query query = pm.newQuery("JPQL","select i from "
-                + "com.baeldung.jdo.query.ProductItem i where i.price < 10"
-                + " and i.status = 'InStock'");
+    public static void queryUsingJPQL() {
+        Query query = pm.newQuery("JPQL", "select i from " + "com.baeldung.jdo.query.ProductItem i where i.price < 10" + " and i.status = 'InStock'");
         List<ProductItem> results = (List<ProductItem>) query.execute();
 
     }
 
-    public static void namedQuery(){
-        Query<ProductItem> query = pm.newNamedQuery(
-                ProductItem.class, "PriceBelow10");
+    public static void namedQuery() {
+        Query<ProductItem> query = pm.newNamedQuery(ProductItem.class, "PriceBelow10");
         List<ProductItem> results = query.executeList();
 
     }
