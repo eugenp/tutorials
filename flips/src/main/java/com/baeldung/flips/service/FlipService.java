@@ -40,4 +40,12 @@ public class FlipService {
         return new Thing("New Thing!", 99);
     }
 
+    public Thing getLastThing() {
+        return things.get(things.size() -1);
+    }
+
+    public Thing getFirstThing() {
+        return things.get(0);
+    }
+
 }

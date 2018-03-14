@@ -24,6 +24,30 @@ public class FlipControllerTest {
     @Autowired
     private MockMvc mvc;
 
+
+    // @Test - comment this out after insuring that its the proper day of the week in FlipController!
+    public void givenValidDayOfWeek_APIAvailable() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/thing/1"))
+            .andExpect(MockMvcResultMatchers.status().is(200))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.equalTo("Thing1")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(1)));
+    }
+
+    @Test
+    public void givenValidDate_APIAvailable() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/thing/last"))
+            .andExpect(MockMvcResultMatchers.status().is(200))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.equalTo("Thing6")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(6)));
+    }
+
+    @Test
+    public void givenInvalidDate_APINotAvailable() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/thing/first"))
+            .andExpect(MockMvcResultMatchers.status().is(501));
+    }
+
+
     @Test
     public void shouldLoadAllThings() throws Exception{
         mvc.perform(MockMvcRequestBuilders.get("/things"))
@@ -32,7 +56,7 @@ public class FlipControllerTest {
     }
 
     @Test
-    public void shouldGetThingById() throws Exception {
+    public void givenPropertySet_APIAvailable() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/things/1"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.equalTo("Thing1")))
