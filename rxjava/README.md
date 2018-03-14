@@ -8,3 +8,4 @@
 - [Observable Utility Operators in RxJava](http://www.baeldung.com/rxjava-observable-operators)
 - [Introduction to rxjava-jdbc](http://www.baeldung.com/rxjava-jdbc)
 - [Schedulers in RxJava](http://www.baeldung.com/rxjava-schedulers)
+- [Mathematical and Aggregate Operators in RxJava](http://www.baeldung.com/rxjava-math)

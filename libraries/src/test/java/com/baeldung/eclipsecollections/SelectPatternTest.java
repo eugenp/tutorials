@@ -18,17 +18,14 @@ public class SelectPatternTest {
 
     @Test
     public void givenListwhenSelect_thenCorrect() {
-        MutableList<Integer> greaterThanThirty = list.select(Predicates.greaterThan(30))
-            .sortThis();
+        MutableList<Integer> greaterThanThirty = list.select(Predicates.greaterThan(30)).sortThis();
 
-        Assertions.assertThat(greaterThanThirty)
-            .containsExactly(31, 38, 41);
+        Assertions.assertThat(greaterThanThirty).containsExactly(31, 38, 41);
     }
 
     @SuppressWarnings("rawtypes")
     public MutableList selectUsingLambda() {
-        return list.select(each -> each > 30)
-            .sortThis();
+        return list.select(each -> each > 30).sortThis();
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +33,6 @@ public class SelectPatternTest {
     public void givenListwhenSelectUsingLambda_thenCorrect() {
         MutableList<Integer> greaterThanThirty = selectUsingLambda();
 
-        Assertions.assertThat(greaterThanThirty)
-            .containsExactly(31, 38, 41);
+        Assertions.assertThat(greaterThanThirty).containsExactly(31, 38, 41);
     }
 }

@@ -27,4 +27,8 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Java Client for a WebSockets API](http://www.baeldung.com/websockets-api-java-spring-client)
 - [Spring Boot and Togglz Aspect](http://www.baeldung.com/spring-togglz)
 - [Getting Started with GraphQL and Spring Boot](http://www.baeldung.com/spring-graphql)
-
+- [Guide to Spring Type Conversions](http://www.baeldung.com/spring-type-conversions)
+- [Quick Guide on data.sql and schema.sql Files in Spring Boot](http://www.baeldung.com/spring-boot-data-sql-and-schema-sql)
+- [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)
+- [A Quick Guide to Maven Wrapper](http://www.baeldung.com/maven-wrapper)
+- [An Introduction to Kong](http://www.baeldung.com/kong)
