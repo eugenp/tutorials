@@ -634,6 +634,11 @@
             <artifactId>milyn-smooks-all</artifactId>
             <version>${smooks.version}</version>
         </dependency>
+                <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>${unirest.version}</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -825,6 +830,6 @@
         <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
         <opencsv.version>4.1</opencsv.version>
+        <unirest.version>1.4.9</unirest.version>
     </properties>
-
 </project>
