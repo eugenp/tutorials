@@ -6,3 +6,4 @@
 ### Relevant Articles: 
 - [Introduction to Spring Batch](http://www.baeldung.com/introduction-to-spring-batch)
 - [Spring Batch using Partitioner](https://github.com/eugenp/tutorials/tree/master/spring-batch)
+- [Spring Batch - Tasklets vs Chunks](http://www.baeldung.com/spring-batch-tasklet-chunk)
