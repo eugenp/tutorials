@@ -27,37 +27,37 @@ public class OpenCsvTest {
 
     @Test
     public void positionExampleTest() {
-        testReadCsv(Application.simplePositionBeanExample());
+        testReadCsv(Application.simpleSyncPositionBeanExample());
     }
 
     @Test
     public void namedColumnExampleTest() {
-        testReadCsv(Application.namedColumnBeanExample());
+        testReadCsv(Application.namedSyncColumnBeanExample());
     }
 
     @Test
     public void writeCsvUsingBeanBuilderTest() {
-        testWriteCsv(Application.writeCsvFromBeanExample());
+        testWriteCsv(Application.writeSyncCsvFromBeanExample());
     }
 
     @Test
     public void oneByOneExampleTest() {
-        testReadCsv(Application.oneByOneExample());
+        testReadCsv(Application.oneByOneSyncExample());
     }
 
     @Test
     public void readAllExampleTest() {
-        testReadCsv(Application.readAllExample());
+        testReadCsv(Application.readAllSyncExample());
     }
 
     @Test
     public void csvWriterOneByOneTest() {
-        testWriteCsv(Application.csvWriterOneByOne());
+        testWriteCsv(Application.csvWriterSyncOneByOne());
     }
 
     @Test
     public void csvWriterAllTest() {
-        testWriteCsv(Application.csvWriterAll());
+        testWriteCsv(Application.csvWriterSyncAll());
     }
 
     @After

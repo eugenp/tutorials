@@ -1,4 +1,4 @@
-package com.baeldung.opencsv.examples;
+package com.baeldung.opencsv.examples.sync;
 
 import com.baeldung.opencsv.beans.CsvBean;
 import com.baeldung.opencsv.beans.WriteExampleBean;

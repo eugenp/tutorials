@@ -1,11 +1,11 @@
 package com.baeldung.opencsv;
 
-import com.baeldung.opencsv.helpers.Helpers;
-import com.baeldung.opencsv.examples.BeanExamples;
-import com.baeldung.opencsv.examples.CsvReaderExamples;
-import com.baeldung.opencsv.examples.CsvWriterExamples;
 import com.baeldung.opencsv.beans.NamedColumnBean;
 import com.baeldung.opencsv.beans.SimplePositionBean;
+import com.baeldung.opencsv.examples.sync.BeanExamples;
+import com.baeldung.opencsv.examples.sync.CsvReaderExamples;
+import com.baeldung.opencsv.examples.sync.CsvWriterExamples;
+import com.baeldung.opencsv.helpers.Helpers;
 
 import java.io.Reader;
 import java.nio.file.Files;
@@ -17,7 +17,7 @@ public class Application {
          *  Bean Examples.
          */
 
-    public static String simplePositionBeanExample() {
+    public static String simpleSyncPositionBeanExample() {
         Path path = null;
         try {
             path = Helpers.twoColumnCsvPath();
@@ -27,7 +27,7 @@ public class Application {
         return BeanExamples.beanBuilderExample(path, SimplePositionBean.class).toString();
     }
 
-    public static String namedColumnBeanExample() {
+    public static String namedSyncColumnBeanExample() {
         Path path = null;
         try {
             path = Helpers.namedColumnCsvPath();
@@ -37,7 +37,7 @@ public class Application {
         return BeanExamples.beanBuilderExample(path, NamedColumnBean.class).toString();
     }
 
-    public static String writeCsvFromBeanExample() {
+    public static String writeSyncCsvFromBeanExample() {
         Path path = null;
         try {
             path = Helpers.fileOutBeanPath();
@@ -51,7 +51,7 @@ public class Application {
          *  CSV Reader Examples.
          */
 
-    public static String oneByOneExample() {
+    public static String oneByOneSyncExample() {
         Reader reader = null;
         try {
             reader = Files.newBufferedReader(Helpers.twoColumnCsvPath());
@@ -61,7 +61,7 @@ public class Application {
         return CsvReaderExamples.oneByOne(reader).toString();
     }
 
-    public static String readAllExample() {
+    public static String readAllSyncExample() {
         Reader reader = null;
         try {
             reader = Files.newBufferedReader(Helpers.twoColumnCsvPath());
@@ -76,7 +76,7 @@ public class Application {
          */
 
 
-    public static String csvWriterOneByOne() {
+    public static String csvWriterSyncOneByOne() {
         Path path = null;
         try {
             path = Helpers.fileOutOnePath();
@@ -86,7 +86,7 @@ public class Application {
         return CsvWriterExamples.csvWriterOneByOne(Helpers.fourColumnCsvString(), path);
     }
 
-    public static String csvWriterAll() {
+    public static String csvWriterSyncAll() {
         Path path = null;
         try {
             path = Helpers.fileOutAllPath();
@@ -97,12 +97,12 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        simplePositionBeanExample();
-        namedColumnBeanExample();
-        writeCsvFromBeanExample();
-        oneByOneExample();
-        readAllExample();
-        csvWriterOneByOne();
-        csvWriterAll();
+        simpleSyncPositionBeanExample();
+        namedSyncColumnBeanExample();
+        writeSyncCsvFromBeanExample();
+        oneByOneSyncExample();
+        readAllSyncExample();
+        csvWriterSyncOneByOne();
+        csvWriterSyncAll();
     }
 }
