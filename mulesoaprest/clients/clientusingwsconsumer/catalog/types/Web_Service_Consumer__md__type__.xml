@@ -1,0 +1,253 @@
+<metadata__catalog__entry>
+  <version>5.2.0.0</version>
+  <types class="tree-map">
+    <entry>
+      <org.mule.common.metadata.DefaultMetaDataKey>
+        <id>showPersonDetail</id>
+        <displayName>showPersonDetail</displayName>
+        <category>DEFAULT</category>
+        <metaDataKeyPropertiesManager>
+          <properties>
+            <org.mule.common.metadata.key.property.dsql.DsqlFromMetaDataKeyProperty/>
+          </properties>
+        </metaDataKeyPropertiesManager>
+      </org.mule.common.metadata.DefaultMetaDataKey>
+      <org.mule.common.metadata.DefaultXmlMetaDataModel>
+        <dataType>XML</dataType>
+        <metaDataModelPropertiesManager>
+          <properties>
+            <org.mule.common.metadata.property.TextBasedExampleMetaDataModelProperty/>
+            <org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+              <typeQName>
+                <namespaceURI>http://baeldung.com/</namespaceURI>
+                <localPart>showPersonDetail</localPart>
+                <prefix></prefix>
+              </typeQName>
+            </org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+            <org.mule.common.metadata.property.StructureIdentifierMetaDataModelProperty>
+              <metaDataKey class="org.mule.common.metadata.DefaultMetaDataKey">
+                <id>showPersonDetail</id>
+                <displayName>showPersonDetail</displayName>
+                <category>DEFAULT</category>
+                <metaDataKeyPropertiesManager>
+                  <properties>
+                    <org.mule.common.metadata.key.property.dsql.DsqlFromMetaDataKeyProperty/>
+                  </properties>
+                </metaDataKeyPropertiesManager>
+              </metaDataKey>
+              <derivedStructure>false</derivedStructure>
+              <generatedStructure>false</generatedStructure>
+            </org.mule.common.metadata.property.StructureIdentifierMetaDataModelProperty>
+          </properties>
+        </metaDataModelPropertiesManager>
+        <fields>
+          <org.mule.common.metadata.DefaultMetaDataField>
+            <name>arg0</name>
+            <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+              <dataType>STRING</dataType>
+              <metaDataModelPropertiesManager>
+                <properties>
+                  <org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+                    <typeQName>
+                      <namespaceURI>http://www.w3.org/2001/XMLSchema</namespaceURI>
+                      <localPart>string</localPart>
+                      <prefix></prefix>
+                    </typeQName>
+                  </org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+                </properties>
+              </metaDataModelPropertiesManager>
+            </model>
+            <accessType>READ_WRITE</accessType>
+            <metaDataFieldPropertyManager>
+              <properties>
+                <org.mule.common.metadata.property.QNameMetaDataProperty>
+                  <name>
+                    <namespaceURI></namespaceURI>
+                    <localPart>arg0</localPart>
+                    <prefix></prefix>
+                  </name>
+                </org.mule.common.metadata.property.QNameMetaDataProperty>
+              </properties>
+            </metaDataFieldPropertyManager>
+          </org.mule.common.metadata.DefaultMetaDataField>
+          <org.mule.common.metadata.DefaultMetaDataField>
+            <name>arg1</name>
+            <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+              <dataType>INTEGER</dataType>
+              <metaDataModelPropertiesManager>
+                <properties>
+                  <org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+                    <typeQName>
+                      <namespaceURI>http://www.w3.org/2001/XMLSchema</namespaceURI>
+                      <localPart>int</localPart>
+                      <prefix></prefix>
+                    </typeQName>
+                  </org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+                </properties>
+              </metaDataModelPropertiesManager>
+            </model>
+            <accessType>READ_WRITE</accessType>
+            <metaDataFieldPropertyManager>
+              <properties>
+                <org.mule.common.metadata.property.QNameMetaDataProperty>
+                  <name>
+                    <namespaceURI></namespaceURI>
+                    <localPart>arg1</localPart>
+                    <prefix></prefix>
+                  </name>
+                </org.mule.common.metadata.property.QNameMetaDataProperty>
+              </properties>
+            </metaDataFieldPropertyManager>
+          </org.mule.common.metadata.DefaultMetaDataField>
+        </fields>
+        <rootElement>
+          <namespaceURI>http://baeldung.com/</namespaceURI>
+          <localPart>showPersonDetail</localPart>
+          <prefix>ns0</prefix>
+        </rootElement>
+        <schemas class="org.mule.common.metadata.StringBasedSchemaProvider">
+          <schemas>
+            <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns1=&quot;http://schemas.xmlsoap.org/soap/http&quot; xmlns:soap12=&quot;http://schemas.xmlsoap.org/wsdl/soap12/&quot; xmlns:tns=&quot;http://baeldung.com/&quot; xmlns:wsdl=&quot;http://schemas.xmlsoap.org/wsdl/&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;unqualified&quot; targetNamespace=&quot;http://baeldung.com/&quot; version=&quot;1.0&quot;&gt;
+
+  &lt;xs:element name=&quot;showPersonDetail&quot; type=&quot;tns:showPersonDetail&quot;/&gt;
+
+  &lt;xs:element name=&quot;showPersonDetailResponse&quot; type=&quot;tns:showPersonDetailResponse&quot;/&gt;
+
+  &lt;xs:complexType name=&quot;showPersonDetail&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;arg0&quot; type=&quot;xs:string&quot;/&gt;
+      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;arg1&quot; type=&quot;xs:int&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name=&quot;showPersonDetailResponse&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;return&quot; type=&quot;xs:string&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+&lt;/xs:schema&gt;</string>
+          </schemas>
+          <encoding>UTF-8</encoding>
+          <baseUri>http://localhost:61081/hello?wsdl</baseUri>
+        </schemas>
+        <namespaceManager>
+          <namespacePrefix>
+            <entry>
+              <string>http://baeldung.com/</string>
+              <string>ns0</string>
+            </entry>
+          </namespacePrefix>
+        </namespaceManager>
+      </org.mule.common.metadata.DefaultXmlMetaDataModel>
+    </entry>
+    <entry>
+      <org.mule.common.metadata.DefaultMetaDataKey>
+        <id>showPersonDetailResponse</id>
+        <displayName>showPersonDetailResponse</displayName>
+        <category>DEFAULT</category>
+        <metaDataKeyPropertiesManager>
+          <properties>
+            <org.mule.common.metadata.key.property.dsql.DsqlFromMetaDataKeyProperty/>
+          </properties>
+        </metaDataKeyPropertiesManager>
+      </org.mule.common.metadata.DefaultMetaDataKey>
+      <org.mule.common.metadata.DefaultXmlMetaDataModel>
+        <dataType>XML</dataType>
+        <metaDataModelPropertiesManager>
+          <properties>
+            <org.mule.common.metadata.property.TextBasedExampleMetaDataModelProperty/>
+            <org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+              <typeQName>
+                <namespaceURI>http://baeldung.com/</namespaceURI>
+                <localPart>showPersonDetailResponse</localPart>
+                <prefix></prefix>
+              </typeQName>
+            </org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+            <org.mule.common.metadata.property.StructureIdentifierMetaDataModelProperty>
+              <metaDataKey class="org.mule.common.metadata.DefaultMetaDataKey">
+                <id>showPersonDetailResponse</id>
+                <displayName>showPersonDetailResponse</displayName>
+                <category>DEFAULT</category>
+                <metaDataKeyPropertiesManager>
+                  <properties>
+                    <org.mule.common.metadata.key.property.dsql.DsqlFromMetaDataKeyProperty/>
+                  </properties>
+                </metaDataKeyPropertiesManager>
+              </metaDataKey>
+              <derivedStructure>false</derivedStructure>
+              <generatedStructure>false</generatedStructure>
+            </org.mule.common.metadata.property.StructureIdentifierMetaDataModelProperty>
+          </properties>
+        </metaDataModelPropertiesManager>
+        <fields>
+          <org.mule.common.metadata.DefaultMetaDataField>
+            <name>return</name>
+            <model class="org.mule.common.metadata.DefaultSimpleMetaDataModel">
+              <dataType>STRING</dataType>
+              <metaDataModelPropertiesManager>
+                <properties>
+                  <org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+                    <typeQName reference="../../../../../../../../../entry/org.mule.common.metadata.DefaultXmlMetaDataModel/fields/org.mule.common.metadata.DefaultMetaDataField/model/metaDataModelPropertiesManager/properties/org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty/typeQName"/>
+                  </org.mule.common.metadata.property.xml.SchemaTypeMetaDataProperty>
+                </properties>
+              </metaDataModelPropertiesManager>
+            </model>
+            <accessType>READ_WRITE</accessType>
+            <metaDataFieldPropertyManager>
+              <properties>
+                <org.mule.common.metadata.property.QNameMetaDataProperty>
+                  <name>
+                    <namespaceURI></namespaceURI>
+                    <localPart>return</localPart>
+                    <prefix></prefix>
+                  </name>
+                </org.mule.common.metadata.property.QNameMetaDataProperty>
+              </properties>
+            </metaDataFieldPropertyManager>
+          </org.mule.common.metadata.DefaultMetaDataField>
+        </fields>
+        <rootElement>
+          <namespaceURI>http://baeldung.com/</namespaceURI>
+          <localPart>showPersonDetailResponse</localPart>
+          <prefix>ns0</prefix>
+        </rootElement>
+        <schemas class="org.mule.common.metadata.StringBasedSchemaProvider">
+          <schemas>
+            <string>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;xs:schema xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:ns1=&quot;http://schemas.xmlsoap.org/soap/http&quot; xmlns:soap12=&quot;http://schemas.xmlsoap.org/wsdl/soap12/&quot; xmlns:tns=&quot;http://baeldung.com/&quot; xmlns:wsdl=&quot;http://schemas.xmlsoap.org/wsdl/&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;unqualified&quot; targetNamespace=&quot;http://baeldung.com/&quot; version=&quot;1.0&quot;&gt;
+
+  &lt;xs:element name=&quot;showPersonDetail&quot; type=&quot;tns:showPersonDetail&quot;/&gt;
+
+  &lt;xs:element name=&quot;showPersonDetailResponse&quot; type=&quot;tns:showPersonDetailResponse&quot;/&gt;
+
+  &lt;xs:complexType name=&quot;showPersonDetail&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;arg0&quot; type=&quot;xs:string&quot;/&gt;
+      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;arg1&quot; type=&quot;xs:int&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+  &lt;xs:complexType name=&quot;showPersonDetailResponse&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element minOccurs=&quot;0&quot; name=&quot;return&quot; type=&quot;xs:string&quot;/&gt;
+    &lt;/xs:sequence&gt;
+  &lt;/xs:complexType&gt;
+
+&lt;/xs:schema&gt;</string>
+          </schemas>
+          <encoding reference="../../../../entry/org.mule.common.metadata.DefaultXmlMetaDataModel/schemas/encoding"/>
+          <baseUri>http://localhost:61081/hello?wsdl</baseUri>
+        </schemas>
+        <namespaceManager>
+          <namespacePrefix>
+            <entry>
+              <string>http://baeldung.com/</string>
+              <string>ns0</string>
+            </entry>
+          </namespacePrefix>
+        </namespaceManager>
+      </org.mule.common.metadata.DefaultXmlMetaDataModel>
+    </entry>
+  </types>
+  <connectorName>Web_Service_Consumer</connectorName>
+</metadata__catalog__entry>
