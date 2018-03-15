@@ -19,7 +19,7 @@ import static akka.pattern.PatternsCS.ask;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-public class AkkaActorsTestCase {
+public class AkkaActorsUnitTest {
 
     private static ActorSystem system = null;
 
@@ -75,7 +75,7 @@ public class AkkaActorsTestCase {
     }
     
     @Test
-    public void giveAnAkkaSystem_couteTheWordsInAText() {
+    public void givenAnAkkaSystem_countTheWordsInAText() {
     	ActorSystem system = ActorSystem.create("test-system");
         ActorRef myActorRef = system.actorOf(Props.create(MyActor.class), "my-actor");
         myActorRef.tell("printit", null);
