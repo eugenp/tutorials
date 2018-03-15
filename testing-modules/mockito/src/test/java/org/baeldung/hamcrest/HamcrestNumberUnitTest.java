@@ -6,8 +6,15 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
+import static org.hamcrest.Matchers.comparesEqualTo;
+import static org.hamcrest.Matchers.notANumber;
 
 public class HamcrestNumberUnitTest {
 
@@ -41,6 +48,19 @@ public class HamcrestNumberUnitTest {
         BigDecimal operand = new BigDecimal("1");
         BigDecimal error = new BigDecimal("0.0005");
         assertThat(actual, is(not(closeTo(operand, error))));
+    }
+
+    @Test
+    public void given5_whenComparesEqualTo5_thenCorrect() {
+        Integer five = 5;
+        assertThat(five, comparesEqualTo(five));
+    }
+
+    @Test
+    public void given5_whenNotComparesEqualTo7_thenCorrect() {
+        Integer seven = 7;
+        Integer five = 5;
+        assertThat(five, not(comparesEqualTo(seven)));
     }
 
     @Test
@@ -148,5 +168,11 @@ public class HamcrestNumberUnitTest {
             if (this.age > o.age) return 1;
             else return -1;
         }
+    }
+
+    @Test
+    public void givenNaN_whenIsNotANumber_thenCorrect() {
+        double zero = 0d;
+        assertThat(zero / zero, is(notANumber()));
     }
 }
