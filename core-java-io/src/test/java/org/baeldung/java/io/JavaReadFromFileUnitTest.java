@@ -18,7 +18,6 @@ import static org.junit.Assert.assertTrue;
 
 public class JavaReadFromFileUnitTest {
 
-
     private static final Logger LOG = LoggerFactory.getLogger(JavaReadFromFileUnitTest.class);
 
     @Test
@@ -107,11 +106,12 @@ public class JavaReadFromFileUnitTest {
 
     @Test
     public void whenReadUTFEncodedFile_thenCorrect() throws IOException {
-        final String expected_value = "青空";
+        final String expected_value = "é�’ç©º";
         final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/test_read7.in"), "UTF-8"));
         final String currentLine = reader.readLine();
         reader.close();
         LOG.debug(currentLine);
+        
         assertEquals(expected_value, currentLine);
     }
 

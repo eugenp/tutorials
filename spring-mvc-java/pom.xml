@@ -297,7 +297,7 @@
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
         <thymeleaf.version>2.1.5.RELEASE</thymeleaf.version>
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.4</jackson.version>
 
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>

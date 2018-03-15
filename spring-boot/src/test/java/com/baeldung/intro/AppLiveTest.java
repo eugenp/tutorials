@@ -26,18 +26,12 @@ public class AppLiveTest {
 
     @Test
     public void getIndex() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/")
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(content().string(equalTo("Index Page")));
+        mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().string(equalTo("Index Page")));
     }
 
     @Test
     public void getLocal() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/local")
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(content().string(equalTo("/local")));
+        mvc.perform(MockMvcRequestBuilders.get("/local").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(content().string(equalTo("/local")));
     }
 
 }

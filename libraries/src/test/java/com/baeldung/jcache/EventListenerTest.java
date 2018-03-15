@@ -33,14 +33,12 @@ public class EventListenerTest {
 
     @After
     public void tearDown() {
-        Caching.getCachingProvider()
-          .getCacheManager().destroyCache(CACHE_NAME);
+        Caching.getCachingProvider().getCacheManager().destroyCache(CACHE_NAME);
     }
 
     @Test
     public void whenRunEvent_thenCorrect() throws InterruptedException {
-        this.listenerConfiguration = new MutableCacheEntryListenerConfiguration<>(FactoryBuilder
-          .factoryOf(this.listener), null, false, true);
+        this.listenerConfiguration = new MutableCacheEntryListenerConfiguration<>(FactoryBuilder.factoryOf(this.listener), null, false, true);
         this.cache.registerCacheEntryListener(this.listenerConfiguration);
 
         assertEquals(false, this.listener.getCreated());

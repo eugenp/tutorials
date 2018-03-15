@@ -58,7 +58,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
         </dependency>
 		
         <dependency>		
@@ -166,6 +165,12 @@
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>artemis-server</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rometools</groupId>
+            <artifactId>rome</artifactId>
+            <version>${rome.version}</version>
         </dependency>
     </dependencies>
 
@@ -276,6 +281,7 @@
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <h2.version>1.4.194</h2.version>
         <togglz.version>2.4.1.Final</togglz.version>
+        <rome.version>1.9.0</rome.version>
     </properties>
 
 </project>

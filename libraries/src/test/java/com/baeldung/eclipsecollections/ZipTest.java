@@ -28,7 +28,6 @@ public class ZipTest {
         MutableList<String> cars = Lists.mutable.with("Porsche", "Volvo", "Toyota");
         MutableList<Pair<String, String>> pairs = numbers.zip(cars);
 
-        Assertions.assertThat(pairs)
-            .containsExactlyElementsOf(this.expectedPairs);
+        Assertions.assertThat(pairs).containsExactlyElementsOf(this.expectedPairs);
     }
 }
