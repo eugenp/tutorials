@@ -1,17 +1,13 @@
 package com.baeldung.flips.service;
 
-import com.baeldung.flips.model.Thing;
+import com.baeldung.flips.model.Foo;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 @Service
 public class NewFlipService {
 
-    public Thing getNewThing() {
-        return new Thing("Shiny New Thing!", 100);
+    public Foo getNewFoo() {
+        return new Foo("Shiny New Foo!", 100);
     }
 
 }

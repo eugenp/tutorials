@@ -1,6 +1,6 @@
 package com.baeldung.flips.service;
 
-import com.baeldung.flips.model.Thing;
+import com.baeldung.flips.model.Foo;
 import org.flips.annotation.FlipBean;
 import org.flips.annotation.FlipOnSpringExpression;
 import org.springframework.stereotype.Service;
@@ -12,39 +12,39 @@ import java.util.Optional;
 @Service
 public class FlipService {
 
-    private final List<Thing> things;
+    private final List<Foo> foos;
 
     public FlipService() {
-        things = new ArrayList<>();
-        things.add(new Thing("Thing1", 1));
-        things.add(new Thing("Thing2", 2));
-        things.add(new Thing("Thing3", 3));
-        things.add(new Thing("Thing4", 4));
-        things.add(new Thing("Thing5", 5));
-        things.add(new Thing("Thing6", 6));
+        foos = new ArrayList<>();
+        foos.add(new Foo("Foo1", 1));
+        foos.add(new Foo("Foo2", 2));
+        foos.add(new Foo("Foo3", 3));
+        foos.add(new Foo("Foo4", 4));
+        foos.add(new Foo("Foo5", 5));
+        foos.add(new Foo("Foo6", 6));
 
     }
 
-    public List<Thing> getAllThings() {
-        return things;
+    public List<Foo> getAllFoos() {
+        return foos;
     }
 
-    public Optional<Thing> getThingById(int id) {
-        return things.stream().filter(thing -> (thing.getId() == id)).findFirst();
+    public Optional<Foo> getFooById(int id) {
+        return foos.stream().filter(foo -> (foo.getId() == id)).findFirst();
     }
 
     @FlipBean(with = NewFlipService.class)
     @FlipOnSpringExpression(expression = "(2 + 2) == 4")
-    public Thing getNewThing() {
-        return new Thing("New Thing!", 99);
+    public Foo getNewFoo() {
+        return new Foo("New Foo!", 99);
     }
 
-    public Thing getLastThing() {
-        return things.get(things.size() - 1);
+    public Foo getLastFoo() {
+        return foos.get(foos.size() - 1);
     }
 
-    public Thing getFirstThing() {
-        return things.get(0);
+    public Foo getFirstFoo() {
+        return foos.get(0);
     }
 
 }

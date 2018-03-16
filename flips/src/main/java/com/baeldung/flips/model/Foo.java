@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class Thing {
+public class Foo {
   private final String name;
   private final int id;
 }

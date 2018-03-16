@@ -1,6 +1,6 @@
 package com.baeldung.flips.controller;
 
-import com.baeldung.flips.model.Thing;
+import com.baeldung.flips.model.Foo;
 import com.baeldung.flips.service.FlipService;
 import org.flips.annotation.FlipOnDateTime;
 import org.flips.annotation.FlipOnDaysOfWeek;
@@ -25,41 +25,41 @@ public class FlipController {
         this.flipService = flipService;
     }
 
-    @RequestMapping(value = "/things", method = RequestMethod.GET)
+    @RequestMapping(value = "/foos", method = RequestMethod.GET)
     @FlipOnProfiles(activeProfiles = "dev")
-    public List<Thing> getAllThings() {
-        return flipService.getAllThings();
+    public List<Foo> getAllFoos() {
+        return flipService.getAllFoos();
     }
 
-    @RequestMapping(value = "/thing/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/foo/{id}", method = RequestMethod.GET)
     @FlipOnDaysOfWeek(daysOfWeek = {
         DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.WEDNESDAY, DayOfWeek.THURSDAY,
         DayOfWeek.FRIDAY, DayOfWeek.SATURDAY, DayOfWeek.SUNDAY
     })
-    public Thing getThingByNewId(@PathVariable int id) {
-        return flipService.getThingById(id).orElse(new Thing("Not Found", -1));
+    public Foo getFooByNewId(@PathVariable int id) {
+        return flipService.getFooById(id).orElse(new Foo("Not Found", -1));
     }
 
-    @RequestMapping(value = "/thing/last", method = RequestMethod.GET)
+    @RequestMapping(value = "/foo/last", method = RequestMethod.GET)
     @FlipOnDateTime(cutoffDateTimeProperty = "last.active.after")
-    public Thing getLastThing() {
-        return flipService.getLastThing();
+    public Foo getLastFoo() {
+        return flipService.getLastFoo();
     }
 
-    @RequestMapping(value = "/thing/first", method = RequestMethod.GET)
+    @RequestMapping(value = "/foo/first", method = RequestMethod.GET)
     @FlipOnDateTime(cutoffDateTimeProperty = "first.active.after")
-    public Thing getFirstThing() {
-        return flipService.getLastThing();
+    public Foo getFirstFoo() {
+        return flipService.getLastFoo();
     }
 
-    @RequestMapping(value = "/things/{id}", method = RequestMethod.GET)
-    @FlipOnEnvironmentProperty(property = "feature.thing.by.id", expectedValue = "Y")
-    public Thing getThingById(@PathVariable int id) {
-        return flipService.getThingById(id).orElse(new Thing("Not Found", -1));
+    @RequestMapping(value = "/foos/{id}", method = RequestMethod.GET)
+    @FlipOnEnvironmentProperty(property = "feature.foo.by.id", expectedValue = "Y")
+    public Foo getFooById(@PathVariable int id) {
+        return flipService.getFooById(id).orElse(new Foo("Not Found", -1));
     }
 
-    @RequestMapping(value = "/thing/new", method = RequestMethod.GET)
-    public Thing getNewThing() {
-        return flipService.getNewThing();
+    @RequestMapping(value = "/foo/new", method = RequestMethod.GET)
+    public Foo getNewThing() {
+        return flipService.getNewFoo();
     }
 }
