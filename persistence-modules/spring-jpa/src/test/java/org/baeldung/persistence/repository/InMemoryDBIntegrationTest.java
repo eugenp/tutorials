@@ -21,24 +21,24 @@ import static org.junit.Assert.assertEquals;
 @ContextConfiguration(classes = { StudentJpaConfig.class }, loader = AnnotationConfigContextLoader.class)
 @Transactional
 public class InMemoryDBIntegrationTest {
-    
+
     @Resource
     private StudentRepository studentRepository;
-    
+
     private static final long ID = 1;
-    private static final String NAME="john";
-    
+    private static final String NAME = "john";
+
     @Test
-    public void givenStudent_whenSave_thenGetOk(){
+    public void givenStudent_whenSave_thenGetOk() {
         Student student = new Student(ID, NAME);
         studentRepository.save(student);
-        
+
         Student student2 = studentRepository.findOne(ID);
-        assertEquals("name incorrect", NAME, student2.getName());        
+        assertEquals("name incorrect", NAME, student2.getName());
     }
 
     @Test
-    public void givenStudentWithTags_whenSave_thenGetByTagOk(){
+    public void givenStudentWithTags_whenSave_thenGetByTagOk() {
         Student student = new Student(ID, NAME);
         student.setTags(Arrays.asList("full time", "computer science"));
         studentRepository.save(student);
@@ -48,7 +48,7 @@ public class InMemoryDBIntegrationTest {
     }
 
     @Test
-    public void givenMultipleStudentsWithTags_whenSave_thenGetByTagReturnsCorrectCount(){
+    public void givenMultipleStudentsWithTags_whenSave_thenGetByTagReturnsCorrectCount() {
         Student student = new Student(0, "Larry");
         student.setTags(Arrays.asList("full time", "computer science"));
         studentRepository.save(student);
@@ -70,7 +70,7 @@ public class InMemoryDBIntegrationTest {
     }
 
     @Test
-    public void givenStudentWithTags_whenSave_thenGetByNameAndTagOk(){
+    public void givenStudentWithTags_whenSave_thenGetByNameAndTagOk() {
         Student student = new Student(ID, NAME);
         student.setTags(Arrays.asList("full time", "computer science"));
         studentRepository.save(student);
