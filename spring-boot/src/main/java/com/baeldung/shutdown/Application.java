@@ -20,10 +20,12 @@ public class Application {
 //        SpringApplication.exit(ctx, () -> 0);
         System.out.println("Exit Spring Boot");
 
-//        int exitCode = SpringApplication.exit(ctx, (ExitCodeGenerator) () -> {
-//            // no errors
-//            return 0;
-//        });
-//        System.exit(exitCode);
+        int exitCode = SpringApplication.exit(ctx, new ExitCodeGenerator() {
+            @Override
+            public int getExitCode() {
+                // return the error code
+                return 500;
+            }
+        });
     }
 }
