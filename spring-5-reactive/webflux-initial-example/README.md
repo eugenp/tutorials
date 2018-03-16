@@ -16,21 +16,21 @@ Below, we explain how to develop a simple server-side publisher who will send re
 Let’s start by seeing how to configure our project to use __Spring Webflux__. First of all, we need to add the following dependency to the pom.xml:
 
 
-> ##### <dependency>
-> #####     <groupId>org.springframework</groupId>
-> #####     <artifactId>spring-webflux</artifactId>
-> ##### </dependency>
+> ##### < dependency >
+> ##### &nbsp;&nbsp;&nbsp;< groupId >org.springframework< /groupId >
+> ##### &nbsp;&nbsp;&nbsp;< artifactId >spring-webflux< /artifactId >
+> ##### < /dependency >
 
 ### 3. Server-side – Publisher 
 The server-side client is just a simple rest endpoint who will return a Flux object. This class has the publisher’s streams and will inform the subscribed web clients about the changes. Now, let´s take a look at this endpoint:
 
 > ##### @RestController
 > ##### public class PublisherController {  
-> #####     @GetMapping(path = "createEvent", produces = "text/event-stream")
-> #####     public Flux<Long> createEvent() {
-> #####         return Flux.interval(Duration.ofMillis(1000)).
-> #####                 map(index->index);
-> #####     }
+> ##### &nbsp;&nbsp;&nbsp;@GetMapping(path = "createEvent", produces = "text/event-stream")
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public Flux<Long> createEvent() {
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return Flux.interval(Duration.ofMillis(1000)).
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map(index->index);
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
 > ##### }
 
 This method will send an infinite number’s list, one per second. Accordingly, the web client reacts to this action each time a number is sent.
@@ -40,19 +40,19 @@ The reactive web clients process the Server-Sent events, captured via HTTP, and 
 
 Note that each programming language has his specific frameworks to manage the SSEs. However, for our example, we will keep it simple using the following web client to process the received numbers:
 
-> ##### <html>
-> #####     <body>
-> #####         <div id="content"></div>
-> #####         <script>
-> #####             var source = new EventSource("createEvent");
-> #####             source.addEventListener('message', function (e) {
-> #####                 const index = event.data;
-> #####                 const content = "New number received: " + index + "<br>";
-> #####                 document.getElementById("content").innerHTML += content;
-> #####             }, false);
-> #####         </script>
-> #####     </body>
-> ##### <html>
+> ##### < html >
+> ##### &nbsp;&nbsp;&nbsp;< body >
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;< div id="content" >< /div >
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;< script >
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var source = new EventSource("createEvent");
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;source.addEventListener('message', function (e) {
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const index = event.data;
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const content = "New number received: " + index + "< br >";
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById("content").innerHTML += content;
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}, false);
+> ##### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;< /script >
+> ##### &nbsp;&nbsp;&nbsp;< /body >
+> ##### < html >
 
 This simplistic web client is listening to the endpoint createEvent, previously shown, and will print the newly received number.
 
