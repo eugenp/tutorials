@@ -1,0 +1,40 @@
+<html>
+    <body>
+
+        <!-- Here will be painted each new received Server-Sent event's content-->
+        <div id="content"></div>
+
+        <script>
+            /* Server endpoint where listen to the SSEs*/
+            var source = new EventSource("createEvent");
+
+            /* Message listener */
+            source.addEventListener('message', function (e) {
+                /* Console logging - A new event has been received */
+                console.log('Real-time event streaming with Spring Webflux - A new event has been received');
+                /* Retrieve data from the event */
+                const index = event.data;
+                /* Format the received content */
+                const content = "New number received: " + index + "<br>";
+                /* Paint the content */
+                document.getElementById("content").innerHTML += content;
+                /* Console logging - Log the new event */
+                console.log('Real-time event streaming with Spring Webflux - Event content: ' + index);
+            }, false);
+
+            /* Open connection listener */
+            source.addEventListener('open', function(e) {
+                /* Console logging - Event streaming on open */
+                console.log('Real-time event streaming with Spring Webflux - The connection has been opened');
+            }, false);
+
+            /* Error raised listener */
+            source.addEventListener('error', function(e) {
+                if (e.readyState == EventSource.CLOSED) {
+                    /* Console logging - Event streaming on open */
+                    console.log('Real-time event streaming with Spring Webflux - The connection has been closed');
+                }
+            }, false);
+        </script>
+    </body>
+<html>
