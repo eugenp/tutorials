@@ -7,12 +7,12 @@ This is a quick and practical example of the Spring Webflux support on the serve
 This __INITIAL__ version contains the article example, the backend produces one event per second infinitely and the client side consumes and log the events as they arrive.
 
 
-###1. Overview
+### 1. Overview
 __Spring Webflux__ is a new module of __Spring 5__ that allows us to work with the __Reactive programming__ concept. Basically, it’s a paradigm based on the Observer design pattern where we have the Publisher object, who sends data; and the Subscriber object, who processes it.
 
 Below, we explain how to develop a simple server-side publisher who will send recursive events. We also focus on how to process these events on reactive web clients (subscribers).
 
-###2. Configure
+### 2. Configure
 Let’s start by seeing how to configure our project to use __Spring Webflux__. First of all, we need to add the following dependency to the pom.xml:
 
 
@@ -56,12 +56,12 @@ Note that each programming language has his specific frameworks to manage the SS
 
 This simplistic web client is listening to the endpoint createEvent, previously shown, and will print the newly received number.
 
-###5. Conclusion
+### 5. Conclusion
 In conclusion, we now have a simple way to take advantage of this programming paradigm with Spring Webflux and the use of Server-Sent events. Hence, this supposes an alternative to WebSockets and the use of full-duplex communications.
 
 The implementation of this example can be checked in the GitHub project. It is a Maven-based project, so execute the Spring Boot application and call index.html locally to see how it’s working.
 
-### Relevant Articles
+### 6. Relevant Articles
 
 - [Concurrent Test Execution in Spring 5](http://www.baeldung.com/spring-5-concurrent-tests)
 - [Introduction to the Functional Web Framework in Spring 5](http://www.baeldung.com/spring-5-functional-web)
