@@ -61,6 +61,7 @@
         <!--<module>ejb</module> -->
 
         <module>feign</module>
+        <module>flips</module>
 
         <!-- <module>testing-modules/gatling</module> --> <!-- not meant to run as part of the standard build -->
 

@@ -12,20 +12,22 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(properties = {"feature.flips.by.id=Y",
-                              "feature.movie.statistics=Y"
-                             })
+@SpringBootTest(properties = {
+    "feature.thing.by.id=Y",
+    "feature.new.thing=Y",
+    "last.active.after=2018-03-14T00:00:00Z",
+    "first.active.after=2999-03-15T00:00:00Z",
+    "logging.level.org.flips=info"
+
+})
 @AutoConfigureMockMvc
 @ActiveProfiles("dev")
 public class FlipControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
+    @Autowired private MockMvc mvc;
 
-
-    // @Test - comment this out after insuring that its the proper day of the week in FlipController!
+    @Test
     public void givenValidDayOfWeek_APIAvailable() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/thing/1"))
             .andExpect(MockMvcResultMatchers.status().is(200))
@@ -47,27 +49,26 @@ public class FlipControllerTest {
             .andExpect(MockMvcResultMatchers.status().is(501));
     }
 
-
     @Test
-    public void shouldLoadAllThings() throws Exception{
+    public void givenCorrectProfile_APIAvailable() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/things"))
-           .andExpect(MockMvcResultMatchers.status().isOk())
-           .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(6)));
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$", Matchers.hasSize(6)));
     }
 
     @Test
     public void givenPropertySet_APIAvailable() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/things/1"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.equalTo("Thing1")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(1)));
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.equalTo("Thing1")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(1)));
     }
 
     @Test
-    public void getNewThing() throws Exception {
+    public void getValidExpression_FlipBean() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/thing/new"))
-                .andExpect(MockMvcResultMatchers.status().is(200))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.equalTo("New Thing!")))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(99)));
+            .andExpect(MockMvcResultMatchers.status().is(200))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.name", Matchers.equalTo("Shiny New Thing!")))
+            .andExpect(MockMvcResultMatchers.jsonPath("$.id", Matchers.equalTo(100)));
     }
 }

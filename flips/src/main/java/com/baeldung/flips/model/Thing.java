@@ -1,6 +1,5 @@
 package com.baeldung.flips.model;
 
-
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
