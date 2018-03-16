@@ -1,2 +1,2 @@
 ### Relevant Articles:
-- [Guide to Flips Library](http://www.baeldung.com/guide-to-flips-library)
+- [Guide to Flips For Spring](http://www.baeldung.com/guide-to-flips-for-spring/)
