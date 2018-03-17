@@ -16,7 +16,9 @@ public class HelloServletTest {
         request.addParameter("name", "Dennis");
         MockHttpServletResponse response = new MockHttpServletResponse();
         HelloServlet servlet = new HelloServlet();
+        
         servlet.doGet(request, response);
+        
         assertEquals("/forwarded", response.getForwardedUrl());
         assertEquals(200, response.getStatus());
     }

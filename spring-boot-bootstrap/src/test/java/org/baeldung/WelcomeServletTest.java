@@ -16,7 +16,9 @@ public class WelcomeServletTest {
         request.addParameter("name", "Dennis");
         WelcomeServlet servlet = new WelcomeServlet();
         MockHttpServletResponse response = new MockHttpServletResponse();
+        
         servlet.doGet(request, response);
+        
         assertEquals("/redirected", response.getRedirectedUrl());
         assertEquals(302, response.getStatus());
     }
