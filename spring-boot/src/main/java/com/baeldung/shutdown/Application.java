@@ -5,20 +5,31 @@ import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.system.ApplicationPidFileWriter;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication(exclude = MySQLAutoconfiguration.class)
 public class Application {
 
-    public static void main(String [] args) {
+    public static void main(String[] args) {
+
+        closeApplication();
+//        exitApplication();
+//        writePID();
+
+    }
+
+    private static void closeApplication() {
 
         ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class).web(false).run();
         System.out.println("Spring Boot application started");
         ctx.getBean(TerminateBean.class);
         ctx.close();
-//        SpringApplication.exit(ctx, () -> 0);
-        System.out.println("Exit Spring Boot");
+    }
+
+    private static void exitApplication() {
+
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class).web(false).run();
 
         int exitCode = SpringApplication.exit(ctx, new ExitCodeGenerator() {
             @Override
@@ -27,5 +38,15 @@ public class Application {
                 return 500;
             }
         });
+
+        System.out.println("Exit Spring Boot");
+
+        System.exit(exitCode);
+    }
+
+    private static void writePID() {
+        SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class).web(false);
+        app.build().addListeners(new ApplicationPidFileWriter("./bin/shutdown.pid"));
+        app.run();
     }
 }
