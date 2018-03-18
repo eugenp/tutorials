@@ -1,7 +1,6 @@
 package org.baeldung.guava;
 
-import static org.junit.Assert.assertEquals;
-
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 
 import org.junit.Test;
@@ -9,17 +8,22 @@ import org.junit.Test;
 import com.google.common.io.CountingOutputStream;
 
 public class GuavaCountingOutputStreamTest {
+    public static final int MAX = 5;
 
-    @Test
-    public void givenData_whenWrittenToStream_thenGetCorrectCount() throws Exception {
+    @Test(expected = RuntimeException.class)
+    public void givenData_whenCountReachesLimit_thenThrowException() throws Exception {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         CountingOutputStream cos = new CountingOutputStream(out);
-        
-        byte[] data = new byte[10];
-        
-        cos.write(data);
-        
-        assertEquals(10, cos.getCount());
-        
+
+        byte[] data = new byte[1024];
+        ByteArrayInputStream in = new ByteArrayInputStream(data);
+
+        while (in.read() != -1) {
+            cos.write(data);
+            cos.flush();
+            if (cos.getCount() >= MAX) {
+                throw new RuntimeException("Write limit reached");
+            }
+        }
     }
 }
