@@ -15,6 +15,7 @@ import java.util.concurrent.Future;
 import org.apache.http.entity.ContentType;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.baeldung.unirest.Article;
@@ -104,6 +105,7 @@ public class HttpClientTest {
     }
 
     @Test
+    @Ignore
     public void whenAysncRequestShouldReturnOk() throws InterruptedException, ExecutionException {
         Future<HttpResponse<JsonNode>> future = Unirest.post("http://www.mocky.io/v2/5a9ce37b3100004f00ab5154?mocky-delay=10000ms")
             .header("accept", "application/json")
