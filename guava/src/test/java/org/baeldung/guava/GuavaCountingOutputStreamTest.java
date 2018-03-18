@@ -18,9 +18,9 @@ public class GuavaCountingOutputStreamTest {
         byte[] data = new byte[1024];
         ByteArrayInputStream in = new ByteArrayInputStream(data);
 
-        while (in.read() != -1) {
-            cos.write(data);
-            cos.flush();
+        int b;
+        while ((b = in.read()) != -1) {
+            cos.write(b);
             if (cos.getCount() >= MAX) {
                 throw new RuntimeException("Write limit reached");
             }
