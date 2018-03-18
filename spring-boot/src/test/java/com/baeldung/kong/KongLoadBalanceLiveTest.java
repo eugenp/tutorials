@@ -30,7 +30,8 @@ public class KongLoadBalanceLiveTest {
         System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
     }
 
-    @Autowired TestRestTemplate restTemplate;
+    @Autowired
+    TestRestTemplate restTemplate;
 
     @Test
     public void givenKongAdminAPI_whenAddAPI_thenAPIAccessibleViaKong() throws Exception {
