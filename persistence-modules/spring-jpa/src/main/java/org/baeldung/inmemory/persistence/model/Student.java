@@ -1,10 +1,10 @@
 package org.baeldung.inmemory.persistence.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Student {
@@ -15,6 +15,12 @@ public class Student {
 
     @ElementCollection
     private List<String> tags = new ArrayList<>();
+
+    @ElementCollection
+    private List<SkillTag> skillTags = new ArrayList<>();
+
+    @ElementCollection
+    private List<KVTag> kvTags = new ArrayList<>();
 
     public Student() {
     }
@@ -48,4 +54,21 @@ public class Student {
     public void setTags(List<String> tags) {
         this.tags.addAll(tags);
     }
+
+    public List<SkillTag> getSkillTags() {
+        return skillTags;
+    }
+
+    public void setSkillTags(List<SkillTag> skillTags) {
+        this.skillTags.addAll(skillTags);
+    }
+
+    public List<KVTag> getKVTags() {
+        return this.kvTags;
+    }
+
+    public void setKVTags(List<KVTag> kvTags) {
+        this.kvTags.addAll(kvTags);
+    }
+
 }

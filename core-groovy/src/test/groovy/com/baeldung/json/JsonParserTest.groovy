@@ -52,20 +52,6 @@ class JsonParserTest extends Specification {
             json == '{"value":15.6,"createdAt":"2018-01-01T00:00:00+0000","id":"123"}'
     }
 
-    def 'Should parse to Json given an Account object, a date format and fields to exclude' () {
-        given:
-            Account account = new Account(
-                    id: '123',
-                    value: 15.6,
-                    createdAt: new SimpleDateFormat('MM/dd/yyyy').parse('01/01/2018')
-            )
-        when:
-            def json = jsonParser.toJson(account, 'MM/dd/yyyy', 'value')
-        then:
-            json
-            json == '{"createdAt":"01/01/2018","id":"123"}'
-    }
-
     def 'Should prettify given a json string' () {
         given:
             String json = '{"value":15.6,"createdAt":"01/01/2018","id":"123456"}'
