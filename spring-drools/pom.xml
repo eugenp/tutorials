@@ -8,49 +8,59 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
     </parent>
 
-    <properties>
-        <drools-version>7.0.0.Final</drools-version>
-        <spring-framework.version>4.3.3.RELEASE</spring-framework.version>
-    </properties>
-    <dependencies>
-        <!-- ... -->
-        <dependency>
-            <groupId>org.kie</groupId>
-            <artifactId>kie-ci</artifactId>
-            <version>${drools-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-decisiontables</artifactId>
-            <version>${drools-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-core</artifactId>
-            <version>${drools-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-compiler</artifactId>
-            <version>${drools-version}</version>
-        </dependency>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<tomcat.version>8.5.5</tomcat.version>
+	</properties>
 
-        <!--spring integration-->
+    <dependencies>
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-spring</artifactId>
-            <version>${drools-version}</version>
+            <version>7.3.0.Final</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring-framework.version}</version>
-            <scope>test</scope>
+        	<groupId>org.kie</groupId>
+        	<artifactId>kie-api</artifactId>
+        	<version>7.3.0.Final</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.projectlombok</groupId>
+        	<artifactId>lombok</artifactId>
+        	<version>1.16.16</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.poi</groupId>
+        	<artifactId>poi-ooxml-schemas</artifactId>
+        	<version>3.9</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.mvel</groupId>
+        	<artifactId>mvel2</artifactId>
+        	<version>2.3.1.Final</version>
         </dependency>
     </dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 </project>
