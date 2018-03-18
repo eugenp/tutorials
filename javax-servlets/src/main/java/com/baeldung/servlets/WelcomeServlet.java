@@ -25,7 +25,7 @@ public class WelcomeServlet extends HttpServlet {
         if (!userName.isPresent()) {
             response.sendRedirect("/login");
         } else {
-            request.setAttribute("uiColor", uiColor.isPresent() ? uiColor.get() : "blue");
+            request.setAttribute("uiColor", uiColor.orElse("blue"));
             request.setAttribute("userName", userName.get());
             request.setAttribute("sessionAttribute", request.getSession()
                 .getAttribute("sampleKey"));

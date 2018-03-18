@@ -33,7 +33,7 @@ public class CookieReader {
         return Arrays.stream(request.getCookies())
                  .filter(c -> key.equals(c.getName()))
                  .map(Cookie::getValue)
-                 .findFirst();
+                 .findAny();
     }
 
 }
