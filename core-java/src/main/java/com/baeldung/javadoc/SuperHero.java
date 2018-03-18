@@ -23,9 +23,15 @@ public class SuperHero extends Person {
      * @return the amount of health hero has after attack
      * @see <a href="http://www.link_to_jira/HERO-402">HERO-402</a>
      * @since 1.0
+     * @deprecated As of version 1.1, use . . . instead
+     * @version 1.2
+     * @throws IllegalArgumentException if incomingDamage is negative
      */
-    public int successfullyAttacked(int incomingDamage, String damageType) {
+    public int successfullyAttacked(int incomingDamage, String damageType) throws Exception {
     	// do things
+    	if (incomingDamage < 0) {
+    		throw new IllegalArgumentException ("Cannot cause negative damage");
+    	}
         return 0;
     }
 

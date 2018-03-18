@@ -17,9 +17,7 @@ public class StartWith implements Task {
 
     @Step("{0} starts a google search")
     public <T extends Actor> void performAs(T t) {
-        t.attemptsTo(Open
-          .browserOn()
-          .the(googleSearchPage));
+        t.attemptsTo(Open.browserOn().the(googleSearchPage));
     }
 
 }

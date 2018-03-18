@@ -41,11 +41,14 @@ public class AdderMethodRuleIntegrationTest {
         LOG.info("adder after test: {}", adder);
     }
 
-    @Rule public SpringIntegrationMethodRule springMethodIntegration = new SpringIntegrationMethodRule();
+    @Rule
+    public SpringIntegrationMethodRule springMethodIntegration = new SpringIntegrationMethodRule();
 
-    @Steps private AdderSteps adderSteps;
+    @Steps
+    private AdderSteps adderSteps;
 
-    @Value("#{props['adder']}") private int adder;
+    @Value("#{props['adder']}")
+    private int adder;
 
     private static int staticAdder;
 

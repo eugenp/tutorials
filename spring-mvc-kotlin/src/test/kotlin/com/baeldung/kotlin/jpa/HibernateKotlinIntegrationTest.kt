@@ -35,6 +35,7 @@ class HibernateKotlinIntegrationTest : BaseCoreFunctionalTestCase() {
             session.persist(personToSave)
             val personFound = session.find(Person::class.java, personToSave.id)
             session.refresh(personFound)
+
             assertTrue(personToSave == personFound)
         })
     }
@@ -58,6 +59,7 @@ class HibernateKotlinIntegrationTest : BaseCoreFunctionalTestCase() {
             session.persist(personToSave)
             val personFound = session.find(Person::class.java, personToSave.id)
             session.refresh(personFound)
+
             assertTrue(personToSave == personFound)
         })
     }
