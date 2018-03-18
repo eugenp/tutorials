@@ -3,6 +3,7 @@ package com.baeldung.servlets;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * Created by adam.
@@ -26,14 +27,13 @@ public class CookieReader {
      * Reads cookie by key from request.
      *
      * @param key the key of a cookie
-     * @return returns cookie value (or null if cookie with given key does not exist)
+     * @return returns cookie value
      */
-    public String readCookie(String key) {
+    public Optional<String> readCookie(String key) {
         return Arrays.stream(request.getCookies())
                  .filter(c -> key.equals(c.getName()))
                  .map(Cookie::getValue)
-                 .findFirst()
-                 .orElse(null);
+                 .findFirst();
     }
 
 }
