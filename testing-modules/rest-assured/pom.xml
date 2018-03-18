@@ -173,6 +173,11 @@
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>${scribe.version}</version>
+        </dependency>
 
     </dependencies>
 
@@ -221,7 +226,15 @@
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <servlet-api.version>2.5</servlet-api.version>
         <javax.mail.version>1.4.7</javax.mail.version>
-        <jetty.version>9.4.0.v20161208</jetty.version>
+        <!-- https://github.com/tomakehurst/wiremock/issues/551 -->
+        <!-- wiremock, at least 2.4.x, only supports jetty 9.2.x -->
+        <jetty.version>9.2.20.v20161216</jetty.version>
+        <!--
+        Rest Assured OAuth 1.0 support only works with scribe 2.5.3, newer versions fail to work
+        https://github.com/rest-assured/rest-assured/wiki/usage#oauth
+        https://github.com/rest-assured/rest-assured/issues/880
+        -->
+        <scribe.version>2.5.3</scribe.version>
 
 
         <commons-lang3.version>3.5</commons-lang3.version>
