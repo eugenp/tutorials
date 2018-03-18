@@ -77,7 +77,7 @@ public class FragmentsTest {
             .perform(get("/markup").with(testUser()))
             .andDo(print())
             .andExpect(status().isOk())
-            .andExpect(content().string(containsString("<aside><div>This is a sidebar</div></aside>")));
+            .andExpect(content().string(containsString("<div class=\"another\">This is another sidebar</div>")));
     }
     @Test
     public void whenAccessingOtherRoute_thenViewHasExpectedContent() throws Exception {
