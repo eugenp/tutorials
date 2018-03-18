@@ -13,7 +13,8 @@ public class Application {
 
     public static void main(String[] args) {
 
-        closeApplication();
+        SpringApplication.run(Application.class, args);
+//        closeApplication();
 //        exitApplication();
 //        writePID();
 
@@ -35,7 +36,7 @@ public class Application {
             @Override
             public int getExitCode() {
                 // return the error code
-                return 500;
+                return 0;
             }
         });
 
