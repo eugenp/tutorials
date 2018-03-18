@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Created by adam.
@@ -18,15 +19,16 @@ public class WelcomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CookieReader cookieReader = new CookieReader(request);
-        String uiColor = cookieReader.readCookie("uiColor");
-        String userName = cookieReader.readCookie("userName");
+        Optional<String> uiColor = cookieReader.readCookie("uiColor");
+        Optional<String> userName = cookieReader.readCookie("userName");
 
-        if (userName == null || userName.isEmpty()) {
+        if (!userName.isPresent()) {
             response.sendRedirect("/login");
         } else {
-            request.setAttribute("uiColor", uiColor != null ? uiColor : "blue");
-            request.setAttribute("userName", userName);
-            request.setAttribute("sessionAttribute", request.getSession().getAttribute("sampleKey"));
+            request.setAttribute("uiColor", uiColor.isPresent() ? uiColor.get() : "blue");
+            request.setAttribute("userName", userName.get());
+            request.setAttribute("sessionAttribute", request.getSession()
+                .getAttribute("sampleKey"));
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/welcome.jsp");
             dispatcher.forward(request, response);

@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * Created by adam.
@@ -15,12 +16,12 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CookieReader cookieReader = new CookieReader(request);
-        String uiColor = cookieReader.readCookie("uiColor");
-        String userName = cookieReader.readCookie("userName");
+        Optional<String> uiColor = cookieReader.readCookie("uiColor");
+        Optional<String> userName = cookieReader.readCookie("userName");
 
-        request.setAttribute("uiColor", uiColor != null ? uiColor : "blue");
+        request.setAttribute("uiColor", uiColor.isPresent() ? uiColor.get() : "blue");
 
-        if (userName == null || userName.isEmpty()) {
+        if (!userName.isPresent()) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
             dispatcher.forward(request, response);
         } else {
