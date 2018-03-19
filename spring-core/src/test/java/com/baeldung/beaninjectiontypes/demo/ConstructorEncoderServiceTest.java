@@ -1,7 +1,6 @@
-package com.baeldung.beaninjectiontypes;
+package com.baeldung.beaninjectiontypes.demo;
 
-import com.baeldung.beaninjectiontypes.config.good.DefaultContextConfig;
-import com.baeldung.beaninjectiontypes.demo.ConstructorEncryptionService;
+import com.baeldung.beaninjectiontypes.config.standard.DefaultContextConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +12,14 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = DefaultContextConfig.class)
-public class ConstructorEncryptionServiceTest {
+public class ConstructorEncoderServiceTest {
 
     @Autowired
-    ConstructorEncryptionService testObject;
+    ConstructorEncoderService testObject;
 
     @Test
-    public void encrypt() throws Exception {
-        String encrypted = testObject.encryptMessage("secret message!");
+    public void encode() throws Exception {
+        String encrypted = testObject.encodeMessage("secret message!");
         assertEquals(encrypted, "secret message!");
     }
 }
