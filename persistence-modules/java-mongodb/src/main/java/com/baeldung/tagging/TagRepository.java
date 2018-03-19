@@ -8,11 +8,15 @@ import java.util.stream.StreamSupport;
 
 import org.bson.Document;
 
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.result.UpdateResult;
 
 /**
  * Repository used to manage tags for a blog post.
@@ -90,6 +94,36 @@ public class TagRepository implements Closeable {
 	}
 
 	/**
+	 * Adds a list of tags to the blog post with the given title.
+	 * 
+	 * @param title
+	 *            the title of the blog post
+	 * @param tags
+	 *            a list of tags to add
+	 * @return the outcome of the operation
+	 */
+	public boolean addTags(String title, List<String> tags) {
+		UpdateResult result = collection.updateOne(new BasicDBObject(DBCollection.ID_FIELD_NAME, title),
+				Updates.addEachToSet(TAGS_FIELD, tags));
+		return result.getModifiedCount() == 1;
+	}
+
+	/**
+	 * Removes a list of tags to the blog post with the given title.
+	 * 
+	 * @param title
+	 *            the title of the blog post
+	 * @param tags
+	 *            a list of tags to remove
+	 * @return the outcome of the operation
+	 */
+	public boolean removeTags(String title, List<String> tags) {
+		UpdateResult result = collection.updateOne(new BasicDBObject(DBCollection.ID_FIELD_NAME, title),
+				Updates.pullAll(TAGS_FIELD, tags));
+		return result.getModifiedCount() == 1;
+	}
+
+	/**
 	 * Utility method used to map a MongoDB document into a {@link Post}.
 	 * 
 	 * @param document
@@ -100,9 +134,9 @@ public class TagRepository implements Closeable {
 	@SuppressWarnings("unchecked")
 	private static Post documentToPost(Document document) {
 		Post post = new Post();
+		post.setTitle(document.getString(DBCollection.ID_FIELD_NAME));
 		post.setArticle(document.getString("article"));
 		post.setAuthor(document.getString("author"));
-		post.setTitle(document.getString("title"));
 		post.setTags((List<String>) document.get(TAGS_FIELD));
 		return post;
 	}

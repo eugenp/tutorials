@@ -11,7 +11,7 @@ import java.util.List;
 public class Post {
 
 	/**
-	 * Title of the post.
+	 * Title of the post. Must be unique.
 	 */
 	private String title;
 
