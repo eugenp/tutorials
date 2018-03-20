@@ -14,3 +14,5 @@
 - [Mocking Void Methods with Mockito](http://www.baeldung.com/mockito-void-methods)
 - [Mocking of Private Methods Using PowerMock](http://www.baeldung.com/powermock-private-method)
 - [Mock Final Classes and Methods with Mockito](http://www.baeldung.com/mockito-final)
+- [Hamcrest Text Matchers] (http://www.baeldung.com/hamcrest-text-matchers)
+- [Hamcrest File Matchers] (http://www.baeldung.com/hamcrest-file-matchers)

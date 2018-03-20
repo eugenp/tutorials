@@ -38,6 +38,7 @@
         <module>apache-cxf</module>
         <module>apache-fop</module>
         <module>apache-poi</module>
+        <module>apache-tika</module>
         <module>apache-thrift</module>
         <module>apache-curator</module>
         <module>apache-zookeeper</module>
@@ -63,6 +64,7 @@
         <!--<module>ejb</module> -->
 
         <module>feign</module>
+        <module>flips</module>
 
         <!-- <module>testing-modules/gatling</module> --> <!-- not meant to run as part of the standard build -->
 
@@ -199,7 +201,8 @@
         <module>spring-ldap</module>
         <module>spring-mockito</module>
         <module>spring-mvc-email</module>
-        <module>spring-mvc-forms</module>
+        <module>spring-mvc-forms-jsp</module>
+        <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
@@ -280,6 +283,7 @@
         <module>lucene</module>
         <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+        <module>persistence-modules/java-jdbi</module>
         <module>jersey</module>
         <module>java-spi</module>
   </modules>
