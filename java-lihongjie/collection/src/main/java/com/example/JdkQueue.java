@@ -20,7 +20,7 @@ public class JdkQueue {
 
     public static void main(String[] args) {
 
-        Queue<Integer> queue = new LinkedList<>();
+        Queue<Integer> queue = new LinkedList<Integer>();
         System.out.println("queue size： " + queue.size());
 
         Integer arr[] = {1,2,3,4,5};
