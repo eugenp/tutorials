@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.easymock;
 
 import java.util.ArrayList;
 import java.util.Iterator;

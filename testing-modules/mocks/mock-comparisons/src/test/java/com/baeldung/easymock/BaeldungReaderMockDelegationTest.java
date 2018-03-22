@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.easymock;
 
 import org.easymock.*;
 import org.junit.*;

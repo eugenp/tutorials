@@ -1,17 +1,17 @@
-package com.baeldung;
+package com.baeldung.easymock;
 
-import org.easymock.EasyMockRunner;
+import org.easymock.EasyMockRule;
 import org.easymock.Mock;
 import org.easymock.TestSubject;
 import org.junit.*;
-import org.junit.runner.RunWith;
 
 import java.util.NoSuchElementException;
 
 import static org.easymock.EasyMock.*;
 
-@RunWith(EasyMockRunner.class)
-public class BaeldungReaderAnnotatedTest {
+public class BaeldungReaderAnnotatedWithRuleTest {
+
+    @Rule public EasyMockRule mockRule = new EasyMockRule(this);
 
     @Mock ArticleReader mockArticleReader;
 

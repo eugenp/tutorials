@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.easymock;
 
 import org.junit.*;
 
@@ -24,7 +24,7 @@ public class BaeldungReaderTest {
         replay(mockArticleReader);
 
         BaeldungArticle article = baeldungReader.readNext();
-        verifyRecording(mockArticleReader);
+        verify(mockArticleReader);
         assertEquals(null, article);
     }
 
