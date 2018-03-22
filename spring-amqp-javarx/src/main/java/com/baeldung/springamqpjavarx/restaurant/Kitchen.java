@@ -6,20 +6,24 @@ public class Kitchen {
 
         String greeting;
 
-        if (order == Order.SODA) {
-            cookFor(1);
-            greeting = "Sugar-free!";
+        switch (order) {
+            case SODA:
+                cookFor(1);
+                greeting = "Sugar-free!";
+                break;
 
-        } else if (order == Order.ICE_CREAM) {
-            cookFor(5);
-            greeting = "Enjoy the sorbet!";
+            case ICE_CREAM:
+                cookFor(5);
+                greeting = "Enjoy the sorbet!";
+                break;
 
-        } else if (order == Order.PIZZA) {
-            cookFor(20);
-            greeting = "Pepperoni special!";
+            case PIZZA:
+                cookFor(20);
+                greeting = "Pepperoni special!";
+                break;
 
-        } else {
-            throw new RuntimeException("Oops, my apologies!");
+            default:
+                throw new RuntimeException("Oops, my apologies!");
         }
 
         return new ChefGreeting(greeting);
