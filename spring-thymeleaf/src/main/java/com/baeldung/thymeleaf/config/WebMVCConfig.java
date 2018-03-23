@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.thymeleaf.TemplateEngine;
@@ -39,10 +39,11 @@ import nz.net.ultraq.thymeleaf.decorators.strategies.GroupingStrategy;
  * Java configuration file that is used for Spring MVC and Thymeleaf
  * configurations
  */
-public class WebMVCConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
+public class WebMVCConfig implements WebMvcConfigurer, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
 
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
@@ -60,7 +61,8 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
     @Bean
     public ViewResolver javascriptViewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-        resolver.setTemplateEngine(templateEngine(javascriptTemplateResolver()));
+        resolver
+            .setTemplateEngine(templateEngine(javascriptTemplateResolver()));
         resolver.setContentType("application/javascript");
         resolver.setCharacterEncoding("UTF-8");
         resolver.setViewNames(ArrayUtil.array("*.js"));
@@ -77,14 +79,14 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
         return resolver;
     }
 
-	private TemplateEngine templateEngine(ITemplateResolver templateResolver) {
-		SpringTemplateEngine engine = new SpringTemplateEngine();
-		engine.addDialect(new LayoutDialect(new GroupingStrategy()));
-		engine.addDialect(new Java8TimeDialect());
-		engine.setTemplateResolver(templateResolver);
-		engine.setTemplateEngineMessageSource(messageSource());
-		return engine;
-	}
+    private TemplateEngine templateEngine(ITemplateResolver templateResolver) {
+        SpringTemplateEngine engine = new SpringTemplateEngine();
+        engine.addDialect(new LayoutDialect(new GroupingStrategy()));
+        engine.addDialect(new Java8TimeDialect());
+        engine.setTemplateResolver(templateResolver);
+        engine.setTemplateEngineMessageSource(messageSource());
+        return engine;
+    }
 
     private ITemplateResolver htmlTemplateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
@@ -142,7 +144,8 @@ public class WebMVCConfig extends WebMvcConfigurerAdapter implements Application
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/WEB-INF/resources/");
+        registry.addResourceHandler("/resources/**")
+            .addResourceLocations("/WEB-INF/resources/");
     }
 
     @Override

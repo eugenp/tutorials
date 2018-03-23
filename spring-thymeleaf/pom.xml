@@ -15,8 +15,8 @@
     <properties>
         <java-version>1.8</java-version>
         <!-- spring -->
-        <org.springframework-version>4.3.4.RELEASE</org.springframework-version>
-        <springframework-security.version>4.2.0.RELEASE</springframework-security.version>
+        <org.springframework-version>5.0.4.RELEASE</org.springframework-version>
+        <springframework-security.version>5.0.3.RELEASE</springframework-security.version>
         <javax.servlet-version>3.1.0</javax.servlet-version>
         <!-- thymeleaf -->
         <org.thymeleaf-version>3.0.3.RELEASE</org.thymeleaf-version>

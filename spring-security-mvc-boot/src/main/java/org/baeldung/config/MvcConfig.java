@@ -24,19 +24,22 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     }
 
     @Override
-    public void configureDefaultServletHandling(final DefaultServletHandlerConfigurer configurer) {
+    public void configureDefaultServletHandling(
+        final DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
         super.addViewControllers(registry);
-        registry.addViewController("/").setViewName("forward:/index");
+        registry.addViewController("/")
+            .setViewName("forward:/index");
         registry.addViewController("/index");
     }
 
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/resources/**")
+            .addResourceLocations("/resources/");
     }
 }

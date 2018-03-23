@@ -21,12 +21,13 @@ public class ChannelSecSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(final AuthenticationManagerBuilder auth)
+        throws Exception {
         // @formatter:off
         auth.inMemoryAuthentication()
-        .withUser("user1").password("user1Pass").roles("USER")
+        .withUser("user1").password("{noop}user1Pass").roles("USER")
         .and()
-        .withUser("user2").password("user2Pass").roles("USER");
+        .withUser("user2").password("{noop}user2Pass").roles("USER");
         // @formatter:on
     }
 

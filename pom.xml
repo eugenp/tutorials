@@ -51,7 +51,7 @@
         <module>core-java</module>
         <module>core-java-io</module>
         <module>core-java-8</module>
-        <module>core-groovy</module>
+        <!-- <module>core-groovy</module> -->
         <module>core-java-concurrency</module>
 
         <module>couchbase</module>
@@ -140,7 +140,7 @@
         <module>persistence-modules/querydsl</module>
 
         <!-- <module>raml</module> -->
-        <module>reactor-core</module>
+        <!-- <module>reactor-core</module> -->
         <module>persistence-modules/redis</module>
         <module>testing-modules/rest-assured</module>
         <module>testing-modules/rest-testing</module>

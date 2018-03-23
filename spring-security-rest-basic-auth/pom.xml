@@ -271,7 +271,7 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.3.6.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>
+        <org.springframework.security.version>5.0.3.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
