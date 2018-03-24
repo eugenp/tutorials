@@ -15,11 +15,12 @@ import org.junit.Test;
 public class DaylightSavingTimeExamplesTest {
 
     @Test
-    public void givenItalianTimeZone_WhenDSTHappens_ThenCorrectlyShiftTimeZone() throws ParseException {
+    public void givenItalianTimeZone_WhenDSTHappens_ThenCorrectlyShiftTimeZone() throws ParseException {        
+        TimeZone.setDefault(TimeZone.getTimeZone("Europe/Rome"));
+        
         TimeZone tz = TimeZone.getTimeZone("Europe/Rome");
         Calendar cal = Calendar.getInstance(tz, Locale.ITALIAN);
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ITALIAN);
-        df.setTimeZone(tz);
         Date dateBeforeDST = df.parse("2018-03-25 01:55");
         prettyPrint(cal.getTimeZone());
 
