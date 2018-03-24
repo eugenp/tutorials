@@ -19,6 +19,7 @@ public class DaylightSavingTimeExamplesTest {
 		TimeZone tz = TimeZone.getTimeZone("Europe/Rome");
 		Calendar cal = Calendar.getInstance(tz, Locale.ITALIAN);
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ITALIAN);
+		df.setTimeZone(tz);
 		Date dateBeforeDST = df.parse("2018-03-25 01:55");
 		prettyPrint(cal.getTimeZone());
 		
