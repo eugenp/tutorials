@@ -25,7 +25,7 @@ public class DaylightSavingTimeExamplesTest {
 
         cal.setTime(dateBeforeDST);
         System.out.println("Before DST (00:55 UTC - 01:55 GMT+1) = " + dateBeforeDST);
-       
+
         System.out.println("With this Calendar " + (cal.get(Calendar.ZONE_OFFSET) + cal.get(Calendar.DST_OFFSET)) / (60 * 1000) + " minutes must be added to UTC (GMT TimeZone) to get a correct date for this TimeZone\n");
         assertThat(cal.get(Calendar.ZONE_OFFSET)).isEqualTo(3600000);
         assertThat(cal.get(Calendar.DST_OFFSET)).isEqualTo(0);
@@ -33,7 +33,7 @@ public class DaylightSavingTimeExamplesTest {
         cal.add(Calendar.MINUTE, 10);
 
         Date dateAfterDST = cal.getTime();
-        
+
         System.out.println(" After DST (01:05 UTC - 03:05 GMT+2) = " + dateAfterDST);
         System.out.println("With this Calendar " + (cal.get(Calendar.ZONE_OFFSET) + cal.get(Calendar.DST_OFFSET)) / (60 * 1000) + " minutes must be added to UTC (GMT TimeZone) to get a correct date for this TimeZone\n");
         assertThat(cal.get(Calendar.DST_OFFSET)).isEqualTo(3600000);
@@ -45,8 +45,15 @@ public class DaylightSavingTimeExamplesTest {
     }
 
     private void prettyPrint(TimeZone tz) {
-        System.out.println(
-            String.format("    Zone ID = %s (%s)\n" + "  RawOffset = %s minutes\n" + "        DST = %s minutes\n" + "  -----------------------------------------", tz.getID(), tz.getDisplayName(), tz.getRawOffset() / 60000, tz.getDSTSavings() / 60000));
+
+        //@formatter:off
+        System.out.println(String.format(
+             "    Zone ID = %s (%s)\n"  
+             + "  RawOffset = %s minutes\n"
+             + "        DST = %s minutes\n"
+             + "  -----------------------------------------",
+             tz.getID(), tz.getDisplayName(), tz.getRawOffset()/60000, tz.getDSTSavings()/60000));
+        //@formatter:on
     }
 
     @Test
