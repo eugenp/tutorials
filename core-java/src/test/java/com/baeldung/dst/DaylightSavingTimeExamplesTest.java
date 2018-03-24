@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class DaylightSavingTimeExamplesTest {
@@ -58,6 +59,7 @@ public class DaylightSavingTimeExamplesTest {
     }
 
     @Test
+    @Ignore
     public void whenIterating_ThenPrintAllTimeZones() {
         for (String id : TimeZone.getAvailableIDs()) {
             TimeZone tz = TimeZone.getTimeZone(id);
