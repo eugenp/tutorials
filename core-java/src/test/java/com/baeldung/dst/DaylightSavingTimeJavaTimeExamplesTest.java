@@ -37,7 +37,7 @@ public class DaylightSavingTimeJavaTimeExamplesTest {
     private void prettyPrint(ZonedDateTime zdt) {
         //@formatter:off
         System.out.println(String.format(
-            " ZonedDateTime = %s\n"  
+              " ZonedDateTime = %s\n"  
             + "       Zone ID = %s (%s)\n"  
             + "     RawOffset = %s minutes\n"
             + "  -----------------------------------------",
