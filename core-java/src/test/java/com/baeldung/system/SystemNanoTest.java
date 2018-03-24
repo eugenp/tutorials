@@ -7,8 +7,10 @@ public class SystemNanoTest {
 
     @Test
     public void givenSystem_whenCalledNanoTime_thenGivesTimeinResult() {
-        Assert.assertNotNull(System.nanoTime());
-        // do some other stuff
-        Assert.assertNotNull(System.nanoTime());
+        long startTime = System.nanoTime();
+        // do something that takes time
+        long endTime = System.nanoTime();
+
+        Assert.assertTrue(endTime - startTime < 0);
     }
 }
