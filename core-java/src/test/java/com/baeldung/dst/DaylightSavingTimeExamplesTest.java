@@ -48,7 +48,7 @@ public class DaylightSavingTimeExamplesTest {
 
         //@formatter:off
         System.out.println(String.format(
-             "    Zone ID = %s (%s)\n"  
+               "    Zone ID = %s (%s)\n"  
              + "  RawOffset = %s minutes\n"
              + "        DST = %s minutes\n"
              + "  -----------------------------------------",
