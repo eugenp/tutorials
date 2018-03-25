@@ -64,6 +64,7 @@
         <!--<module>ejb</module> -->
 
         <module>feign</module>
+        <module>flips</module>
 
         <!-- <module>testing-modules/gatling</module> --> <!-- not meant to run as part of the standard build -->
 
@@ -149,6 +150,7 @@
         <module>testing-modules/selenium-junit-testng</module>
         <module>persistence-modules/solr</module>
         <module>spark-java</module>
+        <module>spring-4</module>
         <module>spring-5</module>
         <module>spring-5-reactive</module>
         <module>spring-5-mvc</module>

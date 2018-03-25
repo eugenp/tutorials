@@ -39,15 +39,4 @@ public class JSONObjectIntegrationTest {
         
         assertEquals("{\"city\":\"chicago\",\"name\":\"jon doe\",\"age\":\"22\"}", jo.toString());
     }
-
-    @Test
-    public void givenDemoBean_thenCreateJSONObject() {
-        DemoBean demo = new DemoBean();
-        demo.setId(1);
-        demo.setName("lorem ipsum");
-        demo.setActive(true);
-         
-        JSONObject jo = new JSONObject(demo);
-        assertEquals("{\"name\":\"lorem ipsum\",\"active\":true,\"id\":1}", jo.toString());
-    }
 }
