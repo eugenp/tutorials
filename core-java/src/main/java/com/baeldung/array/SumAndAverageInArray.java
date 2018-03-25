@@ -1,7 +1,6 @@
 package com.baeldung.array;
 
 import java.util.Arrays;
-import java.util.OptionalDouble;
 
 public class SumAndAverageInArray {
 
@@ -23,10 +22,6 @@ public class SumAndAverageInArray {
     }
 
     public static double findAverageUsingStream(int[] array) {
-        if (array.length == 0) {
-            return 0;
-        } else {
-            return Arrays.stream(array).average().getAsDouble();
-        }
+        return Arrays.stream(array).average().orElse(Double.NaN);
     }
 }
