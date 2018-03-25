@@ -7,6 +7,6 @@ import javax.ejb.Local;
 @Local
 public interface CountryState {
 	
-	public List<String> getStates(String country);
+    public List<String> getStates(String country);
 
 }
