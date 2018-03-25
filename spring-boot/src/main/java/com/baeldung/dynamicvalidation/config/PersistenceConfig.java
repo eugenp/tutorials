@@ -18,10 +18,7 @@ public class PersistenceConfig {
     @Bean
     public DataSource dataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2)
-            .addScript("schema-expressions.sql")
-            .addScript("data-expressions.sql")
-            .build();
+        EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.H2).addScript("schema-expressions.sql").addScript("data-expressions.sql").build();
         return db;
     }
 }
