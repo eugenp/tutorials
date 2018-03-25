@@ -20,6 +20,7 @@ public class TaggingIntegrationTest {
 
 	/**
 	 * Object to test.
+	 * Object to test.
 	 */
 	private TagRepository repository;
 
