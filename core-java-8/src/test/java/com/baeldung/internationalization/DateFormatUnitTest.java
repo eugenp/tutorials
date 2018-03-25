@@ -41,6 +41,7 @@ public class DateFormatUnitTest {
     public void givenGregorianCalendar_whenTimeInstanceWithDifferentFormats_givenSpecificTimeFormatting() {
         GregorianCalendar gregorianCalendar = new GregorianCalendar(2018, 1, 1, 10, 15, 20);
         gregorianCalendar.setTimeZone(TimeZone.getTimeZone("CET"));
+        TimeZone.setDefault(TimeZone.getTimeZone("CET"));
         Date date = gregorianCalendar.getTime();
 
         DateFormat fullInstance = DateFormat.getTimeInstance(DateFormat.FULL, Locale.ITALY);
@@ -54,6 +55,7 @@ public class DateFormatUnitTest {
     public void givenGregorianCalendar_whenDateTimeInstanceWithDifferentFormats_givenSpecificDateTimeFormatting() {
         GregorianCalendar gregorianCalendar = new GregorianCalendar(2018, 1, 1, 10, 15, 20);
         gregorianCalendar.setTimeZone(TimeZone.getTimeZone("CET"));
+        TimeZone.setDefault(TimeZone.getTimeZone("CET"));
         Date date = gregorianCalendar.getTime();
 
         DateFormat ffInstance = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, Locale.ITALY);
@@ -67,6 +69,7 @@ public class DateFormatUnitTest {
     public void givenGregorianCalendar_whenLocaleSpecificDateTimeInstance_givenLocaleSpecificFormatting() {
         GregorianCalendar gregorianCalendar = new GregorianCalendar(2018, 1, 1, 10, 15, 20);
         gregorianCalendar.setTimeZone(TimeZone.getTimeZone("CET"));
+        TimeZone.setDefault(TimeZone.getTimeZone("CET"));
         Date date = gregorianCalendar.getTime();
 
         DateFormat itInstance = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, Locale.ITALY);
