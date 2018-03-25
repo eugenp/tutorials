@@ -6,8 +6,8 @@ public class SumAndAverageInArray {
 
     public static int findSumWithoutUsingStream(int[] array) {
         int sum = 0;
-        for (int index = 0; index < array.length; index++) {
-            sum += array[index];
+        for (int value : array) {
+            sum += value;
         }
         return sum;
     }
@@ -22,6 +22,6 @@ public class SumAndAverageInArray {
     }
 
     public static double findAverageUsingStream(int[] array) {
-        return Arrays.stream(array).average().getAsDouble();
+        return Arrays.stream(array).average().orElse(Double.NaN);
     }
 }

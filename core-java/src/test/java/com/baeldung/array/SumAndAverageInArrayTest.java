@@ -38,4 +38,13 @@ public class SumAndAverageInArrayTest {
 
         Assert.assertEquals(expectedAvgOfArray, actualAvgOfArray, 0.0034);
     }
+
+    @Test
+    public void givenAnEmptyIntArray_whenUsingStream_thenFindAverage() {
+        int[] array = {};
+        double expectedAvgOfArray = Double.NaN;
+        double actualAvgOfArray = SumAndAverageInArray.findAverageUsingStream(array);
+
+        Assert.assertEquals(expectedAvgOfArray, actualAvgOfArray, 0.00);
+    }
 }
