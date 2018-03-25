@@ -29,7 +29,7 @@ public class CountryStateCacheBeanTest {
     	
         String[] actualStates = {"Texas", "Alabama", "Alaska", "Arizona", "Arkansas"};
 		
-	CountryState countryStateBean = (CountryState) context.lookup("java:global/java-singletonsession/CountryStateCacheBean");
+	CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateCacheBean");
 	List<String> states = countryStateBean.getStates("UnitedStates");
 	if (states != null) {
 	    assertArrayEquals(states.toArray(), actualStates);
