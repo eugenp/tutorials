@@ -175,6 +175,29 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4j.version}</version>
         </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/javax/javaee-api -->
+	    <dependency>
+    		<groupId>javax</groupId>
+    		<artifactId>javaee-api</artifactId>
+    		<version>8.0</version>
+    		<scope>provided</scope>
+	    </dependency>
+	
+	    <!-- https://mvnrepository.com/artifact/org.apache.openejb/tomee-embedded -->
+	    <dependency>
+    		<groupId>org.apache.openejb</groupId>
+    		<artifactId>tomee-embedded</artifactId>
+    		<version>1.7.5</version>
+	    </dependency>
+  	
+  	    <!-- https://mvnrepository.com/artifact/junit/junit -->
+	    <dependency>
+    		<groupId>junit</groupId>
+    		<artifactId>junit</artifactId>
+    		<version>4.12</version>
+    		<scope>test</scope>
+	    </dependency>
 
     </dependencies>
 
