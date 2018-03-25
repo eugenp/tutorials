@@ -14,32 +14,31 @@ import com.baeldung.singletonbean.CountryState;
 
 public class CountryStateCacheBeanTest {
 	
-	private EJBContainer ejbContainer = null;
-	
-	private Context context = null;
-	
-	@Before
-	public void init() {
+    private EJBContainer ejbContainer = null;
+    
+    private Context context = null;
+    
+    @Before
+    public void init() {    	
+        ejbContainer = EJBContainer.createEJBContainer();
+        context = ejbContainer.getContext();
+    }
+    
+    @Test
+    public void whenCallGetStates_ReturnsStatesForCountry() throws Exception {
+    	
+        String[] actualStates = {"Texas", "Alabama", "Alaska", "Arizona", "Arkansas"};
 		
-		ejbContainer = EJBContainer.createEJBContainer();
-	    context = ejbContainer.getContext();
+	CountryState countryStateBean = (CountryState) context.lookup("java:global/java-singletonsession/CountryStateCacheBean");
+	List<String> states = countryStateBean.getStates("UnitedStates");
+	if (states != null) {
+	    assertArrayEquals(states.toArray(), actualStates);
 	}
-	
-	@Test
-	public void whenCallGetStates_ReturnsStatesForCountry() throws Exception {
-		
-		String[] actualStates = {"Texas", "Alabama", "Alaska", "Arizona", "Arkansas"};
-		
-		CountryState countryStateBean = (CountryState) context.lookup("java:global/java-singletonsession/CountryStateCacheBean");
-		List<String> states = countryStateBean.getStates("UnitedStates");
-		if (states != null) {
-			assertArrayEquals(states.toArray(), actualStates);
-		}
-	}
-	
-	@After
-	public void close() {
-		if (ejbContainer != null)
-			ejbContainer.close();
-	}
+    }
+    
+    @After
+    public void close() {
+        if (ejbContainer != null)
+	    ejbContainer.close();
+    }
 }
