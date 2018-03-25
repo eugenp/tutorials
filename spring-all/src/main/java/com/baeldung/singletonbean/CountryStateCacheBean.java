@@ -18,24 +18,24 @@ import javax.ejb.Startup;
 @ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
 public class CountryStateCacheBean implements CountryState {
 	
-	private Map<String, List<String>> countryStatesMap = new HashMap<String, List<String>>();
+    private Map<String, List<String>> countryStatesMap = new HashMap<String, List<String>>();
 	
-	@Lock(LockType.WRITE)
-	@PostConstruct
-	public void initialize() {
+    @Lock(LockType.WRITE)
+    @PostConstruct
+    public void initialize() {
 		
-		List<String> states = new ArrayList<String>();
-		states.add("Texas");
-		states.add("Alabama");
-		states.add("Alaska");
-		states.add("Arizona");
-		states.add("Arkansas");
+        List<String> states = new ArrayList<String>();
+	states.add("Texas");
+	states.add("Alabama");
+	states.add("Alaska");
+	states.add("Arizona");
+	states.add("Arkansas");
 		
-		countryStatesMap.put("UnitedStates", states);
-	}
+	countryStatesMap.put("UnitedStates", states);
+    }
 	
-	@Lock(LockType.READ)
-	public List<String> getStates(String country) {
-		return countryStatesMap.get(country);
-	}
+    @Lock(LockType.READ)
+    public List<String> getStates(String country) {
+        return countryStatesMap.get(country);
+    }
 }
