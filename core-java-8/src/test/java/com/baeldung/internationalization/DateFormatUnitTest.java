@@ -9,8 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+import java.util.TimeZone;
 
-public class Java7DateAndTimeFormattingUnitTest {
+public class DateFormatUnitTest {
 
     @Test
     public void givenGregorianCalendar_whenLocaleSpecificDateInstance_givenLanguageSpecificMonths() {
@@ -39,18 +40,20 @@ public class Java7DateAndTimeFormattingUnitTest {
     @Test
     public void givenGregorianCalendar_whenTimeInstanceWithDifferentFormats_givenSpecificTimeFormatting() {
         GregorianCalendar gregorianCalendar = new GregorianCalendar(2018, 1, 1, 10, 15, 20);
+        gregorianCalendar.setTimeZone(TimeZone.getTimeZone("CET"));
         Date date = gregorianCalendar.getTime();
 
         DateFormat fullInstance = DateFormat.getTimeInstance(DateFormat.FULL, Locale.ITALY);
         DateFormat mediumInstance = DateFormat.getTimeInstance(DateFormat.MEDIUM, Locale.ITALY);
 
         Assert.assertEquals("10.15.20 CET", fullInstance.format(date));
-        Assert.assertEquals("10.15.20", mediumInstance.format(date));
+        Assert.assertEquals("10.15.20" , mediumInstance.format(date));
     }
 
     @Test
     public void givenGregorianCalendar_whenDateTimeInstanceWithDifferentFormats_givenSpecificDateTimeFormatting() {
         GregorianCalendar gregorianCalendar = new GregorianCalendar(2018, 1, 1, 10, 15, 20);
+        gregorianCalendar.setTimeZone(TimeZone.getTimeZone("CET"));
         Date date = gregorianCalendar.getTime();
 
         DateFormat ffInstance = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, Locale.ITALY);
@@ -63,6 +66,7 @@ public class Java7DateAndTimeFormattingUnitTest {
     @Test
     public void givenGregorianCalendar_whenLocaleSpecificDateTimeInstance_givenLocaleSpecificFormatting() {
         GregorianCalendar gregorianCalendar = new GregorianCalendar(2018, 1, 1, 10, 15, 20);
+        gregorianCalendar.setTimeZone(TimeZone.getTimeZone("CET"));
         Date date = gregorianCalendar.getTime();
 
         DateFormat itInstance = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, Locale.ITALY);
@@ -82,7 +86,7 @@ public class Java7DateAndTimeFormattingUnitTest {
         SimpleDateFormat shortMonthsimpleDateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss:SSS");
 
         Assert.assertEquals("01-lutego-2018 10:15:20:000", fullMonthDateFormat.format(date));
-        Assert.assertEquals("01-02-2018 10:15:20:000", shortMonthsimpleDateFormat.format(date));
+        Assert.assertEquals("01-02-2018 10:15:20:000" , shortMonthsimpleDateFormat.format(date));
     }
 
     @Test
@@ -92,7 +96,7 @@ public class Java7DateAndTimeFormattingUnitTest {
         Locale.setDefault(new Locale("pl", "PL"));
 
         DateFormatSymbols dateFormatSymbols = new DateFormatSymbols();
-        dateFormatSymbols.setWeekdays(new String[] { "A", "B", "C", "D", "E", "F", "G", "H" });
+        dateFormatSymbols.setWeekdays(new String[]{"A", "B", "C", "D", "E", "F", "G", "H"});
         SimpleDateFormat standardDateFormat = new SimpleDateFormat("EEEE-MMMM-yyyy HH:mm:ss:SSS");
         SimpleDateFormat newDaysDateFormat = new SimpleDateFormat("EEEE-MMMM-yyyy HH:mm:ss:SSS", dateFormatSymbols);
 
