@@ -23,7 +23,7 @@ public class SimpleBookControllerTest {
     }
 
     @Test
-    public void givenGreetURI_whenMockMVC_thenVerifyResponse() throws Exception {
+    public void givenBookId_whenMockMVC_thenVerifyResponse() throws Exception {
         this.mockMvc
             .perform(get("/books/42"))
             .andExpect(status().isOk())
