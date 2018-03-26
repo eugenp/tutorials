@@ -17,3 +17,4 @@
 - [How to Calculate Levenshtein Distance in Java?](http://www.baeldung.com/java-levenshtein-distance)
 - [How to Find the Kth Largest Element in Java](http://www.baeldung.com/java-kth-largest-element)
 - [Multi-Swarm Optimization Algorithm in Java](http://www.baeldung.com/java-multi-swarm-algorithm)
+- [Find all pairs of numbers in an array that add up to a given sum in Java](http://www.baeldung.com/find-all-pairs-of-numbers-in-an-array-that-add-up-to-a-given-sum/
