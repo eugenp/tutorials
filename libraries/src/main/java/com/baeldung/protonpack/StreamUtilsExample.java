@@ -20,18 +20,14 @@ public class StreamUtilsExample {
 
     public void zipAStreamWithIndex() {
         Stream<String> source = Stream.of("Foo", "Bar", "Baz");
-        List<Indexed<String>> zipped = StreamUtils
-          .zipWithIndex(source)
-          .collect(Collectors.toList());
+        List<Indexed<String>> zipped = StreamUtils.zipWithIndex(source).collect(Collectors.toList());
     }
 
     public void zipAPairOfStreams() {
         Stream<String> streamA = Stream.of("A", "B", "C");
         Stream<String> streamB = Stream.of("Apple", "Banana", "Carrot");
 
-        List<String> zipped = StreamUtils
-          .zip(streamA, streamB, (a, b) -> a + " is for " + b)
-          .collect(Collectors.toList());
+        List<String> zipped = StreamUtils.zip(streamA, streamB, (a, b) -> a + " is for " + b).collect(Collectors.toList());
     }
 
     public void zipThreeStreams() {
@@ -39,9 +35,7 @@ public class StreamUtilsExample {
         Stream<String> streamB = Stream.of("aggravating", "banausic", "complaisant");
         Stream<String> streamC = Stream.of("Apple", "Banana", "Carrot");
 
-        List<String> zipped = StreamUtils
-          .zip(streamA, streamB, streamC, (a, b, c) -> a + " is for " + b + " " + c)
-          .collect(Collectors.toList());
+        List<String> zipped = StreamUtils.zip(streamA, streamB, streamC, (a, b, c) -> a + " is for " + b + " " + c).collect(Collectors.toList());
     }
 
     public void mergeThreeStreams() {
@@ -79,24 +73,16 @@ public class StreamUtilsExample {
     public void windowedStream() {
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
 
-        List<List<Integer>> windows = StreamUtils
-          .windowed(integerStream, 2)
-          .collect(toList());
-        List<List<Integer>> windowsWithSkipIndex = StreamUtils
-          .windowed(integerStream, 3, 2)
-          .collect(toList());
-        List<List<Integer>> windowsWithSkipIndexAndAllowLowerSize = StreamUtils
-          .windowed(integerStream, 2, 2, true)
-          .collect(toList());
+        List<List<Integer>> windows = StreamUtils.windowed(integerStream, 2).collect(toList());
+        List<List<Integer>> windowsWithSkipIndex = StreamUtils.windowed(integerStream, 3, 2).collect(toList());
+        List<List<Integer>> windowsWithSkipIndexAndAllowLowerSize = StreamUtils.windowed(integerStream, 2, 2, true).collect(toList());
 
     }
 
     public void groupRunsStreams() {
         Stream<Integer> integerStream = Stream.of(1, 1, 2, 2, 3, 4, 5);
 
-        List<List<Integer>> runs = StreamUtils
-          .groupRuns(integerStream)
-          .collect(toList());
+        List<List<Integer>> runs = StreamUtils.groupRuns(integerStream).collect(toList());
     }
 
     public void aggreagateOnBiElementPredicate() {

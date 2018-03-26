@@ -28,9 +28,7 @@ public class ContactInfoValidator implements ConstraintValidator<ContactInfo, St
         if (StringUtils.isEmptyOrWhitespace(expressionType)) {
             LOG.error("Contact info type missing!");
         } else {
-            pattern = expressionRepository.findOne(expressionType)
-                .map(ContactInfoExpression::getPattern)
-                .orElse("");
+            pattern = expressionRepository.findOne(expressionType).map(ContactInfoExpression::getPattern).orElse("");
         }
     }
 

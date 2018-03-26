@@ -27,10 +27,10 @@ public class VolumeLiveTest {
     @Test
     public void whenListingVolumes_thenSizeMustBeGreaterThanZero() {
 
-        //when
+        // when
         ListVolumesResponse volumesResponse = dockerClient.listVolumesCmd().exec();
 
-        //then
+        // then
         List<InspectVolumeResponse> volumes = volumesResponse.getVolumes();
         assertThat(volumes.size(), is(greaterThan(0)));
     }
@@ -38,48 +38,45 @@ public class VolumeLiveTest {
     @Test
     public void givenVolumes_whenInspectingVolume_thenReturnNonNullResponse() {
 
-        //given
+        // given
         ListVolumesResponse volumesResponse = dockerClient.listVolumesCmd().exec();
         List<InspectVolumeResponse> volumes = volumesResponse.getVolumes();
         InspectVolumeResponse volume = volumes.get(0);
 
-        //when
-        InspectVolumeResponse volumeResponse
-                = dockerClient.inspectVolumeCmd(volume.getName()).exec();
+        // when
+        InspectVolumeResponse volumeResponse = dockerClient.inspectVolumeCmd(volume.getName()).exec();
 
-        //then
+        // then
         assertThat(volumeResponse, is(not(null)));
     }
 
     @Test
     public void whenCreatingUnnamedVolume_thenGetVolumeId() {
 
-        //when
+        // when
         CreateVolumeResponse unnamedVolume = dockerClient.createVolumeCmd().exec();
 
-        //then
+        // then
         assertThat(unnamedVolume.getName(), is(not(null)));
     }
 
     @Test
     public void whenCreatingNamedVolume_thenGetVolumeId() {
 
-        //when
-        CreateVolumeResponse namedVolume
-                = dockerClient.createVolumeCmd().withName("myNamedVolume").exec();
+        // when
+        CreateVolumeResponse namedVolume = dockerClient.createVolumeCmd().withName("myNamedVolume").exec();
 
-        //then
+        // then
         assertThat(namedVolume.getName(), is(not(null)));
     }
 
     @Test
     public void whenGettingNamedVolume_thenRemove() throws InterruptedException {
 
-        //when
-        CreateVolumeResponse namedVolume
-                = dockerClient.createVolumeCmd().withName("anotherNamedVolume").exec();
+        // when
+        CreateVolumeResponse namedVolume = dockerClient.createVolumeCmd().withName("anotherNamedVolume").exec();
 
-        //then
+        // then
         Thread.sleep(4000);
         dockerClient.removeVolumeCmd(namedVolume.getName()).exec();
     }

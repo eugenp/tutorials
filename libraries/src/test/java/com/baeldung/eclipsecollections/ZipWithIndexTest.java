@@ -27,7 +27,6 @@ public class ZipWithIndexTest {
         MutableList<String> cars = FastList.newListWith("Porsche", "Volvo", "Toyota");
         MutableList<Pair<String, Integer>> pairs = cars.zipWithIndex();
 
-        Assertions.assertThat(pairs)
-            .containsExactlyElementsOf(this.expectedPairs);
+        Assertions.assertThat(pairs).containsExactlyElementsOf(this.expectedPairs);
     }
 }
