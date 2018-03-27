@@ -1,20 +1,18 @@
 package com.baeldung.javafx.view;
 
 
+import com.baeldung.javafx.model.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Pagination;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SearchController {
 
@@ -26,20 +24,17 @@ public class SearchController {
     private Button searchButton;
     @FXML
     private Pagination pagination;
+    @FXML
+    private Label searchLabel;
 
-    private ObservableList<Image> masterData = FXCollections.observableArrayList();
-
+    private ObservableList<Person> masterData = FXCollections.observableArrayList();
 
     public SearchController() {
-
+        masterData.add(new Person(5, "John", true));
+        masterData.add(new Person(7, "Albert", true));
+        masterData.add(new Person(11, "Monica", false));
     }
 
-    /**
-     * Initializes the controller class. This method is automatically called
-     * after the fxml file has been loaded.
-     * <p>
-     * Initializes the table columns and sets up sorting and filtering.
-     */
     @FXML
     private void initialize() {
 
@@ -47,10 +42,16 @@ public class SearchController {
         searchButton.setText("Search");
         searchButton.setOnAction(event -> loadData());
 
+        searchButton.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
+
         searchField.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
                 loadData();
             }
+        });
+
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            searchLabel.setText(newValue);
         });
 
         pagination.setPageFactory(SearchController.this::createPage);
@@ -60,7 +61,13 @@ public class SearchController {
 
         VBox iconContainer = new VBox();
 
-        //iconContainer.getChildren().add(myGrid);
+        TableView<Person> tableView = new TableView<>(masterData);
+        TableColumn id = new TableColumn("ID");
+        TableColumn name = new TableColumn("NAME");
+        TableColumn employed = new TableColumn("EMPLOYED");
+
+        tableView.getColumns().addAll(id, name, employed);
+        iconContainer.getChildren().add(tableView);
 
         return iconContainer;
     }
@@ -69,29 +76,26 @@ public class SearchController {
 
         String searchText = searchField.getText();
 
-        Task<List<String>> task = new Task<List<String>>() {
+        Task<List<Person>> task = new Task<List<Person>>() {
             @Override
-            protected List<String> call() throws Exception {
-                updateMessage("Loading images");
-
-                List<String> result = new ArrayList<>();
-
-                return result;
+            protected List<Person> call() throws Exception {
+                updateMessage("Loading data");
+                return masterData
+                        .stream()
+                        .filter(value -> value.getName().toLowerCase().contains(searchText))
+                        .collect(Collectors.toList());
             }
         };
 
-//        task.setOnRunning((e) -> loadingDialog.show());
         task.setOnSucceeded(event -> {
-            List<String> data = task.getValue();
-            data.forEach(url -> masterData.add(new Image(url)));
+            List<Person> data = task.getValue();
+            data.forEach(p -> masterData.add(p));
             pagination.setVisible(true);
             pagination.setPageCount(masterData.size() / PAGE_ITEMS_COUNT);
         });
 
         Thread th = new Thread(task);
-
         th.setDaemon(true);
-
         th.start();
     }
 
