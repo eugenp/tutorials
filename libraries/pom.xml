@@ -647,6 +647,13 @@
             <artifactId>unirest-java</artifactId>
             <version>${unirest.version}</version>
         </dependency>
+
+        <!-- Atlassian Fugue -->
+        <dependency>
+            <groupId>io.atlassian.fugue</groupId>
+            <artifactId>fugue</artifactId>
+            <version>4.5.1</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
