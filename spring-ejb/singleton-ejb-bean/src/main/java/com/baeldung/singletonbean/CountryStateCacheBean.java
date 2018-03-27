@@ -23,9 +23,9 @@ public class CountryStateCacheBean implements CountryState {
     @Lock(LockType.WRITE)
     @PostConstruct
     public void initialize() {
-		
-        List<String> states = new ArrayList<String>();
-        states.add("Texas");
+
+	List<String> states = new ArrayList<String>();
+	states.add("Texas");
 	states.add("Alabama");
 	states.add("Alaska");
 	states.add("Arizona");
