@@ -5,18 +5,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 
 import static org.junit.Assert.*;
 import static io.atlassian.fugue.Unit.Unit;
 
 public class FugueTest {
-
-    @Before
-    public void setup() {
-    }
 
     @Test
     public void whenSome_thenDefined() {
@@ -71,6 +66,32 @@ public class FugueTest {
 
         assertFalse(optional.isPresent());
         assertTrue(Option.fromOptional(optional).isEmpty());
+    }
+
+    @Test
+    public void whenOption_thenIterable() {
+        Option<String> some = Option.some("value");
+        Iterable<String> strings = Iterables.concat(some, Arrays.asList("a", "b", "c"));
+        List<String> stringList = new ArrayList<>();
+        Iterables.addAll(stringList, strings);
+
+        assertEquals(4, stringList.size());
+    }
+
+    @Test
+    public void whenOption_thenStream() {
+        assertEquals(0, Option.none().toStream().count());
+        assertEquals(1, Option.some("value").toStream().count());
+    }
+
+    @Test
+    public void whenLift_thenPartialFunction() {
+        Function<Integer, Integer> f = (Integer x) -> x > 0 ? x + 1 : null;
+        Function<Option<Integer>, Option<Integer>> lifted = Options.lift(f);
+
+        assertEquals(2, (long) lifted.apply(Option.some(1)).get());
+        assertTrue(lifted.apply(Option.none()).isEmpty());
+        assertEquals(null, lifted.apply(Option.some(0)).get());
     }
 
     @Test
@@ -191,6 +212,14 @@ public class FugueTest {
     Unit doSomething() {
         System.out.println("Hello! Side effect");
         return Unit();
+    }
+
+    @Test
+    public void whenPair_thenLeftAndRight() {
+        Pair<Integer, String> pair = Pair.pair(1, "a");
+
+        assertEquals(1, (int) pair.left());
+        assertEquals("a", pair.right());
     }
 
 }
