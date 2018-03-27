@@ -19,16 +19,16 @@ public class CountryStateCacheBeanTest {
     private Context context = null;
     
     @Before
-    public void init() {    	
-        ejbContainer = EJBContainer.createEJBContainer();
-        context = ejbContainer.getContext();
+    public void init() {
+	ejbContainer = EJBContainer.createEJBContainer();
+	context = ejbContainer.getContext();
     }
     
     @Test
     public void whenCallGetStates_ReturnsStatesForCountry() throws Exception {
     	
-        String[] actualStates = {"Texas", "Alabama", "Alaska", "Arizona", "Arkansas"};
-		
+	String[] actualStates = {"Texas", "Alabama", "Alaska", "Arizona", "Arkansas"};
+	
 	CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateCacheBean");
 	List<String> states = countryStateBean.getStates("UnitedStates");
 	if (states != null) {
