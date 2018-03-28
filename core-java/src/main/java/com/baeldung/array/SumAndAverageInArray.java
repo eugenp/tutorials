@@ -16,6 +16,10 @@ public class SumAndAverageInArray {
         return Arrays.stream(array).sum();
     }
 
+    public static int findSumUsingStream(Integer[] array) {
+        return Arrays.stream(array).mapToInt(Integer::intValue).sum();
+    }
+
     public static double findAverageWithoutUsingStream(int[] array) {
         int sum = findSumWithoutUsingStream(array);
         return (double) sum / array.length;
