@@ -1,0 +1,5 @@
+.springBeans
+/gradle
+/log
+/nbactions.xml
+/target
