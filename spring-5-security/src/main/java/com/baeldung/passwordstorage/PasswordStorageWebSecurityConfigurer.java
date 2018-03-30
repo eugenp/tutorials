@@ -14,13 +14,11 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
 public class PasswordStorageWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
-
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -31,8 +29,10 @@ public class PasswordStorageWebSecurityConfigurer extends WebSecurityConfigurerA
 
     @Bean
     public UserDetailsService getUserDefaultDetailsService() {
-        User testUser = new User("baeldung", "{noop}SpringSecurity5", Collections.emptyList());
-        return new InMemoryUserDetailsManager(testUser);
+        return new InMemoryUserDetailsManager(User
+          .withUsername("baeldung")
+          .password("{noop}SpringSecurity5")
+          .build());
     }
 
     @Bean
