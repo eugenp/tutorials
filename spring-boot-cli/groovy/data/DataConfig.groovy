@@ -1,4 +1,4 @@
-package bael.security
+package bael.data
 
 @Grab('h2')
 
@@ -12,7 +12,7 @@ import javax.sql.DataSource
 
 @Configuration
 @EnableWebMvc
-@ComponentScan('bael.security')
+@ComponentScan('bael.data')
 class DataConfig {
 
     @Bean
