@@ -10,10 +10,6 @@ import opennlp.tools.tokenize.SimpleTokenizer;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
-/**
- *
- * @author Parth
- */
 public class ChunkerTest {
 
     @Test
