@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +33,7 @@ public class PasswordStorageWebSecurityConfigurer extends WebSecurityConfigurerA
         return new InMemoryUserDetailsManager(User
           .withUsername("baeldung")
           .password("{noop}SpringSecurity5")
+          .authorities(Collections.emptyList())
           .build());
     }
 
