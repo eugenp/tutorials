@@ -7,8 +7,11 @@ import org.springframework.stereotype.Component;
 @Component("schoolNotification")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SchoolNotification {
-
-    private String message = "SCHOOL_OPEN";
+    private String message;
+    
+    public SchoolNotification(String message) {
+        this.message = message;
+    }
 
     public String getMessage() {
         return this.message;

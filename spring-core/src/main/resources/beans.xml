@@ -12,6 +12,7 @@
     </bean>
         
     <bean id="schoolNotification" class="com.baeldung.methodinjections.SchoolNotification">
-        <property name="message" value="SCHOOL_OPEN" />
+    	<constructor-arg  type="java.lang.String" value="Test"></constructor-arg>
+        
     </bean>    
 </beans>
