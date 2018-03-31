@@ -21,4 +21,10 @@ public class JSTLController {
         return mv;
     }
 
+
+    @RequestMapping(value = "/formatting_tags", method = RequestMethod.GET)
+    public ModelAndView formattingTags(final Model model) {
+        ModelAndView mv = new ModelAndView("formatting_tags");
+        return mv;
+    }
 }
