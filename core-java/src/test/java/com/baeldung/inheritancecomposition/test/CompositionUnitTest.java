@@ -1,4 +1,4 @@
-package com.baeldung.inheritancecomposition;
+package com.baeldung.inheritancecomposition.test;
 
 import com.baeldung.inheritancecomposition.model.Computer;
 import com.baeldung.inheritancecomposition.model.Memory;
@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
 public class CompositionUnitTest {
+    
     
     @Test
     public void givenComputerInstance_whenExtractedEachField_thenThreeAssertions() {

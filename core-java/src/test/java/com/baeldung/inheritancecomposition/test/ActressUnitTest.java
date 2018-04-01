@@ -1,4 +1,4 @@
-package com.baeldung.inheritancecomposition;
+package com.baeldung.inheritancecomposition.test;
 
 import com.baeldung.inheritancecomposition.model.Actress;
 import org.junit.BeforeClass;
