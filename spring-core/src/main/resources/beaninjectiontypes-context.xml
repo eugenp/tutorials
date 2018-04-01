@@ -1,22 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://www.springframework.org/schema/beans"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="exampleDAO" class="com.baeldung.beaninjection.ExampleDAOBean">
-		<constructor-arg index="0" type="java.lang.String"
-			value="Mandatory DAO Property X" />
-	</bean>
+    <bean id="userWithCI" class="com.baeldung.beaninjectiontypes.constructorinjection.User">
+        <constructor-arg ref="addressWithCI" />
+    </bean>
 
-	<bean id="anotherSampleDAO" class="com.baeldung.beaninjection.AnotherSampleDAOBean">
-		<constructor-arg index="0" type="java.lang.String"
-			value="Mandatory DAO Property Y" />
-	</bean>
+    <bean id="userWithSI" class="com.baeldung.beaninjectiontypes.setterinjection.User">
+        <property name="address" ref="addressWithSI" />
+    </bean>
 
-	<bean id="exampleService" class="com.baeldung.beaninjection.ExampleServiceBean">
-		<constructor-arg index="0" ref="exampleDAO" />
-		<property name="propertyX" value="Some Service Property X"></property>
-		<property name="anotherSampleDAO" ref="anotherSampleDAO"></property>
-	</bean>
+    <bean id="addressWithCI" class="com.baeldung.beaninjectiontypes.constructorinjection.Address">
+        <constructor-arg index="0" value="California"></constructor-arg>
+        <constructor-arg index="1" value="USA"></constructor-arg>
+    </bean>
+
+    <bean id="addressWithSI" class="com.baeldung.beaninjectiontypes.setterinjection.Address">
+        <property name="city" value="Washington D.C."></property>
+        <property name="country" value="USA"></property>
+    </bean>
 
 </beans>
