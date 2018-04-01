@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.lhj.web.po.Emp" table="emp" catalog="">
+        <id name="empno" type="java.lang.Integer">
+            <column name="empno" />
+            <generator class="native" />
+        </id>
+        <property name="ename" type="java.lang.String">
+            <column name="ename" length="45" not-null="true" />
+        </property>
+        <property name="job" type="java.lang.String">
+            <column name="job" length="45" not-null="true" />
+        </property>
+        <property name="hiredate" type="java.util.Date">
+            <column name="hiredate" length="15" not-null="true" />
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="sex" length="10" not-null="true" />
+        </property>
+        <property name="birthday" type="java.util.Date">
+            <column name="birthday" length="15" not-null="true" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="address" length="50" not-null="true" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" length="15" not-null="true" />
+        </property>
+        <property name="bankcard" type="java.lang.String">
+            <column name="bankcard" length="20" not-null="true" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email" length="30" not-null="true" />
+        </property>
+        
+        <many-to-one name="dept" class="com.lhj.web.po.Dept" fetch="select">
+            <column name="deptno" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

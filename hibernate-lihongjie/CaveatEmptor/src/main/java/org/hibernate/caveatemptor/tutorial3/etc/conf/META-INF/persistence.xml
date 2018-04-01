@@ -1,0 +1,67 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+   version="1.0">
+
+   <persistence-unit name="caveatemptor">
+
+       <!-- A managed datasource provided by the application server, in this
+            case the microcontainer, see caveatemptor-beans.xml definition.
+        -->
+       <jta-data-source>java:/caveatemptorTestingDatasource</jta-data-source>
+
+       <!-- The path to scan for entity classes, different than the root of this file
+       <jar-file>file:/home/work/local/hibernate/jpwh/caveatemptor.jpa/build/classes</jar-file>
+        -->
+
+       <properties>
+          <!-- Only scan and detect annotated entities -->
+           <property name="hibernate.archive.autodetection" value="class"/>
+
+          <!-- Only scan and detect hbm.xml files
+          <property name="hibernate.archive.autodetection" value="hbm"/>
+          -->
+
+          <!-- SQL stdout logging
+           -->
+          <property name="hibernate.show_sql" value="false"/>
+          <property name="hibernate.format_sql" value="true"/>
+          <property name="use_sql_comments" value="true"/>
+
+           <!-- We have a JTA data source...
+          <property name="hibernate.connection.driver_class"
+                    value="org.hsqldb.jdbcDriver"/>
+          <property name="hibernate.connection.url"
+                    value="jdbc:hsqldb:hsql://localhost"/>
+          <property name="hibernate.connection.username"
+                    value="sa"/>
+
+          <property name="hibernate.c3p0.min_size"
+                    value="5"/>
+          <property name="hibernate.c3p0.max_size"
+                    value="20"/>
+          <property name="hibernate.c3p0.timeout"
+                    value="300"/>
+          <property name="hibernate.c3p0.max_statements"
+                    value="50"/>
+          <property name="hibernate.c3p0.idle_test_period"
+                    value="3000"/>
+           -->
+
+          <property name="hibernate.dialect"
+                    value="org.hibernate.dialect.HSQLDialect"/>
+
+           <!-- Put the EntityManagerFactory into JNDI so we can use it manually in tests -->
+           <property name="jboss.entity.manager.factory.jndi.name"
+                     value="java:/EntityManagerFactories/caveatEmptorEMF"/>
+
+           <!-- Create the database schema when this test.persistence unit is deployed, drop
+                it (clean the database) when it is undeployed
+           -->
+           <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+
+      </properties>
+   </persistence-unit>
+
+</persistence>

@@ -1,0 +1,22 @@
+CaveatEmptor JPA
+###########################################################################
+
+Changes in version 20061211
+-----------------------------------------------
+
+* upgraded to Hibernate/HEM/HAN 3.2.1
+* upgraded to TestNG 5.4, fixes pathname with spaces problem on Windows
+
+Changes in version 20061209
+-----------------------------------------------
+
+* changed paths in build.xml to location, from value
+* changed default configuration to scan for deployment units in "build/classes"
+* removed runtime/ directory and merged all libs in lib/ directory
+* added automatic file separator replacement to EJB3IntegrationTest for Windows
+
+Changes in version 20061110
+-----------------------------------------------
+
+* tested everything on HSQL DB, not any other DBMS
+* initial release for the 'Java Persistence with Hibernate' book

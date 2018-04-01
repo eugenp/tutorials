@@ -1,0 +1,109 @@
+<!--===========================================================-->
+<!-- build.xml - Ant build file for the producer/consumer      -->
+<!--             application for all implementations.          -->
+<!--===========================================================-->
+
+<project name="jmxbook" default="standard" basedir=".">
+
+  <!--=========================================================-->
+  <!-- Set global properties                                   -->
+  <!-- You may have to modify this property if you installed   -->
+  <!-- the application to a different location than the one    -->
+  <!-- specified below.                                        -->
+  <!--=========================================================-->
+  <property name="source_root" value="c:\cygwin\home\Administrator\jmxbp"/>
+  <!--=========================================================-->
+  <!-- You may have to modify this property if you installed   -->
+  <!-- the JMX RI to a different location than the one         -->
+  <!-- specified below.                                        -->
+  <!--=========================================================-->
+  <property name="jmx_home" value="c:\jmx-1_2-mr"/>
+  <!--=========================================================-->
+  <!-- The location of JAXP implementation. Change this        -->
+  <!-- property if the location on your machine is different   -->
+  <!-- than what is specified below.                           -->
+  <!--=========================================================-->
+  <property name="jaxp_home" value="C:\java_xml_pack-summer-02_01\jaxp-1.2_01"/>
+  <!--=========================================================-->
+  <!-- Set some general path information that will be used     -->
+  <!-- repeatedly in this build file. This information will be -->
+  <!-- referenced by the id attribute.                         -->
+  <!--=========================================================-->
+  <path id="project.general.class.path">
+    <pathelement path="${jmx_home}\lib\jmxri.jar"/>
+    <pathelement path="${jmx_home}\lib\jmxtools.jar"/>
+    <pathelement path="${jaxp_home}\lib\dom.jar"/>
+    <pathelement path="${jaxp_home}\lib\jaxp-api.jar"/>
+    <pathelement path="${jaxp_home}\lib\sax.jar"/>
+    <pathelement path="${jaxp_home}\lib\xercesImpl.jar"/>
+    <pathelement path="${jaxp_home}\lib\xalan.jar"/>
+    <pathelement path="${jaxp_home}\lib\xsltc.jar"/>
+    <pathelement path="."/>
+  </path>
+
+  <!--=========================================================-->
+  <!-- TARGET: init                                            -->
+  <!--=========================================================-->
+  <target name="init">
+    <!--=======================================================-->
+    <!-- create the time stamp                                 -->
+    <!--=======================================================-->
+    <tstamp>
+      <format property="build.start.time" pattern="MM/dd/yyyy hh:mm:ss aa"/>
+    </tstamp>
+    <echo message="Build started at ${build.start.time}..."/>
+  </target>
+
+  <!--=========================================================-->
+  <!-- TARGET: build-common                                    -->
+  <!--=========================================================-->
+  <target name="build-common" depends="init">
+    <javac debug="on">
+      <classpath refid="project.general.class.path"/>
+      <src path="${source_root}"/>
+      <include name="jmxbp\common\*"/>
+    </javac>
+  </target>
+
+  <!--=========================================================-->
+  <!-- TARGET: build-jmxbp-ex1                                 -->
+  <!--=========================================================-->
+  <target name="build-jmxbp-ex1" depends="build-common">
+    <javac debug="on">
+      <classpath refid="project.general.class.path"/>
+      <src path="${source_root}"/>
+      <include name="jmxbp\ex1\*"/>
+    </javac>
+  </target>
+
+  <!--=========================================================-->
+  <!-- TARGET: build-jmxbp-ex2                                 -->
+  <!--=========================================================-->
+  <target name="build-jmxbp-ex2" depends="build-common">
+    <javac debug="on">
+      <classpath refid="project.general.class.path"/>
+      <src path="${source_root}"/>
+      <include name="jmxbp\ex2\*"/>
+    </javac>
+  </target>
+
+  <!--=========================================================-->
+  <!-- TARGET: clean                                           -->
+  <!--=========================================================-->
+  <target name="clean">
+    <!--=======================================================-->
+    <!-- Remove all .class files from all subdirectories       -->
+    <!-- beginning with ${source_root} and recursing in.       -->
+    <!--=======================================================-->
+    <delete>
+      <fileset dir="${source_root}\jmxbp" defaultexcludes="no">
+        <patternset>
+          <include name="**\*.java~"/>
+          <include name="**\*.class"/>
+          <include name="**\.nbattrs"/>
+        </patternset>
+      </fileset>
+    </delete>
+  </target>
+
+</project>

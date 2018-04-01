@@ -1,0 +1,248 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+<head>
+<title>Package Documentation for COMMONS-MODELER</title>
+</head>
+<body bgcolor="white">
+<p>The <em>Modeler</em> component of the Commons project
+offers convenient support for configuring and instantiating Model MBeans
+(management beans), as described in the JMX Specification.  It is typically
+used within a server-based application that wants to expose management
+features via JMX.  See the
+<a href="http://java.sun.com/products/JavaManagement/download.html">
+JMX Specification (Version 1.1)</a> for more information about Model MBeans
+and other JMX concepts.</p>
+
+<p>Model MBeans are very powerful - and the JMX specification includes a
+mechanism to use a standard JMX-provided base class to satisfy many of the
+requirements, without having to create custom Model MBean implementation
+classes yourself.  However, one of the requirements in creating such a
+Model MBean is to create the corresponding metadata information (i.e. an
+implementation of the
+<code>javax.management.modelmbean.ModelMBeanInfo</code> interface and its
+corresponding subordinate interfaces).  Creating this information can be
+tedious and error prone.  The <em>Modeler</em> package makes the process
+much simpler, because the required information is constructed dynamically
+from an easy-to-understand XML description of the metadata.  Once you have
+the metadata defined, and registered at runtime in the provided
+<a href="Registry.html">Registry</a>, <em>Modeler</em> also supports
+convenient factory methods to instantiate new Model MBean instances for you.
+</p>
+
+<p>The steps required to use Modeler in your server-based application are
+described in detail below.  You can find some simple usage code in the unit
+tests that come with Modeler (in the <code>src/test</code> subdirectory of the
+source distribution), and much more complex usage code in Tomcat 4.1 (in the
+<code>org.apache.catalina.mbeans</code> package).</p>. More advanced uses can
+be found in Tomcat 5.
+
+
+<h3>1.  Acquire a JMX Implementation</h3>
+
+<p><em>Modeler</em> has been tested with different JMX implementations:
+<ul>
+<li>JMX Reference Implementation (version 1.0.1 or later) -
+    <a href="http://java.sun.com/products/JavaManagement/download.html">
+    http://java.sun.com/products/JavaManagement/download.html</a></li>
+<li>MX4J (version 1.1 or later) -
+    <a href="http://mx4j.sourceforge.net/">http://mx4j.sourceforge.net</a></li>
+<li>JBoss MX
+    <a href="http://www.jboss.org/">http://www.jboss.org</a></li>
+</ul>
+
+<p>After unpacking the release, you will need to ensure that the appropriate
+JAR file (<code>jmxri.jar</code> or <code>mx4j.jar</code>) is included on your
+compilation classpath, and in the classpath of your server application when it
+is executed.</p>
+
+
+<h3>2.  Create a Modeler Configuration File</h3>
+
+<p><em>Modeler</em> requires that you construct a configuration file that
+describes the metadata ultimately need to construct the
+<code>javax.management.modelmbean.ModelMBeanInfo</code> structure that is
+required by JMX.  Your XML file must conform to the
+<a href="../../../../../../mbeans-descriptors.dtd">mbeans-descriptors.dtd</a>
+DTD that defines the acceptable structure.</p>
+
+<p>Fundamentally, you will be constructing an <code>&lt;mbean&gt;</code>
+element for each type of Model MBean that a registry will know how to create.
+Nested within this element will be other elements describing the constructors,
+attributes, operations, and notifications associated with this MBean.  See
+the comments in the DTD for detailed information about the valid attributes
+and their meanings.</p>
+
+<p>A simple example configuration file might include the following components
+(abstracted from the real definitions found in Tomcat 4.1's use of Modeler):
+</p>
+<pre>
+
+  &lt;?xml version="1.0"?&gt;
+  &lt;!DOCTYPE mbeans-descriptors PUBLIC
+   "-//Apache Software Foundation//DTD Model MBeans Configuration File"
+   "http://jakarta.apache.org/commons/dtds/mbeans-descriptors.dtd"&gt;
+
+  &lt;mbeans-descriptors&gt;
+
+    &lt;!-- ... other MBean definitions ... --&gt;
+
+    &lt;mbean         name="Group"
+              className="org.apache.catalina.mbeans.GroupMBean"
+            description="Group from a user database"
+                 domain="Users"
+                  group="Group"
+                   type="org.apache.catalina.Group"&gt;
+
+      &lt;attribute   name="description"
+            description="Description of this group"
+                   type="java.lang.String"/&gt;
+
+      &lt;attribute   name="groupname"
+            description="Group name of this group"
+                   type="java.lang.String"/&gt;
+
+      &lt;attribute   name="roles"
+            description="MBean Names of roles for this group"
+                   type="java.lang.String[]"
+              writeable="false"/&gt;
+
+      &lt;attribute   name="users"
+            description="MBean Names of user members of this group"
+                   type="java.lang.String[]"
+              writeable="false"/&gt;
+
+      &lt;operation   name="addRole"
+            description="Add a new authorized role for this group"
+                 impact="ACTION"
+             returnType="void"&gt;
+        &lt;parameter name="role"
+            description="Role to be added"
+                   type="java.lang.String"/&gt;
+      &lt;/operation&gt;
+
+      &lt;operation   name="removeRole"
+            description="Remove an old authorized role for this group"
+                 impact="ACTION"
+             returnType="void"&gt;
+        &lt;parameter name="role"
+            description="Role to be removed"
+                   type="java.lang.String"/&gt;
+      &lt;/operation&gt;
+
+      &lt;operation   name="removeRoles"
+            description="Remove all authorized roles for this group"
+                 impact="ACTION"
+             returnType="void"&gt;
+      &lt;/operation&gt;
+
+    &lt;/mbean&gt;
+
+    &lt;!-- ... other MBean definitions ... --&gt;
+
+  &lt;/mbeans-descriptors&gt;
+
+</pre>
+
+<p>This MBean represents an instance of <em>org.apache.catalina.Group</em>,
+which is an entity representing a group of users (with a shared set of security
+roles that all users in the group inherit) in a user database.  This MBean
+advertises support for four attributes (description, groupname, roles, and
+users) that roughly correspond to JavaBean properties.  By default, attributes
+are assumed to have read/write access.  For this particular MBean, the roles
+and users attributes are read-only (<code>writeable="false"</code>).  Finally,
+this MBean supports three operations (addRole, removeRole, and
+removeRoles) that roughly correspond to JavaBean methods on the underlying
+component.</p>
+
+<p>In general, <em>Modeler</em> provides a standard ModelMBean implementation
+that simply passes on JMX calls on attributes and operations directly through
+to the managed component that the ModelMBean is associated with.  For special
+case requirements, you can define a subclass of
+<a href="BaseModelMBean.html">BaseModelMBean</a> that provides override
+methods for one or more of these attributes (i.e. the property getter and/or
+setter methods) and operations (i.e. direct method calls).
+
+<p>For this particular MBean, a custom BaseModelMBean implementation subclass
+is described (<code>org.apache.catalina.mbeans.GroupMBean</code>) is
+configured.  It was necessary in this particular case because several of the
+underlying Catalina component's methods deal with internal objects or arrays of
+objects, rather than just the Strings and primitives that are supported by all
+JMX clients.  Thus, the following method on the <code>Group</code> interface:
+</p>
+<pre>
+    public void addRole(Role role);
+</pre>
+<p>is represented, in the MBean, by an <code>addRole</code> method that takes
+a String argument representing the role name of the required role.  The MBean's
+implementation class acts as an adapter, and looks up the required Role
+object (by name) before calling the <code>addRole</code> method on the
+underlying <code>Group</code> instance within the Server.</p>
+
+
+<h3>3.  Create Modeler Registry at Startup Time</h3>
+
+<p>The metadata information, and the corresponding Model MBean factory, is
+represented at runtime in an instance of <a href="Registry.html">Registry</a>
+whose contents are initialized from the configuration file prepared as was
+described above.  Typically, such a file will be included in the JAR file
+containing the MBean implementation classes themselves, and loaded as follows:
+</p>
+<pre>
+    URL url= this.getClass().getResource
+      ("/com/mycompany/mypackage/mbeans-descriptors.xml");
+    Registry registry = Registry.getRegistry();
+    registry.loadMetadata(url);
+</pre>
+
+<p>Besides using the configuration file, it is possible to configure the
+registry metadata by hand, using the <code>addManagedBean()</code> and
+<code>removeManagedBean()</code> methods.  However, most users will find
+the standard support for loading a configuration file to be convenient
+and sufficient.</p>
+
+<p>Modeler will also look for a mbeans-descriptors.xml in the same package
+with the class being registered and in its parent. If no metadata is found,
+modeler will use a number of simple patterns, similar with the ones used by 
+ant, to determine a reasonable metadata</p>
+
+<p>In a future version we should also support xdoclet-based generation of the
+descriptors</p>
+
+
+<h3>4.  Instantiate Model MBeans As Needed</h3>
+
+<p>When your server application needs to instantiate a new MBean and register
+it with the corresponding <code>MBeanServer</code>, it can execute code like
+this:</p>
+
+<pre>
+  Group group = ... managed component instance ...;
+
+  MBeanServer mserver = registry.getMBeanServer();
+
+  String oname="myDomain:type=Group,name=myGroup";
+
+  registry.registerComponent( group, oname, "Group" );
+</pre>
+
+<p>After the Model MBean has been created and registered, it is accessible to
+JMX clients through the standard JMX client APIs.
+</p>
+
+</body>
+</html>

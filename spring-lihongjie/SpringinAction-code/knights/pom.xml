@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+ <parent>
+  <groupId>com.springinaction</groupId>
+  <artifactId>example-code</artifactId>
+  <version>3.0.0</version>
+ </parent>
+
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>com.springinaction</groupId>
+ <artifactId>knights</artifactId>
+ <version>3.0.0</version>
+ <packaging>jar</packaging>
+
+ <name>Spring in Action Knights</name>
+ <url>http://www.manning.com/walls4</url>
+
+ <dependencies>
+  <dependency>
+   <groupId>${spring.group}</groupId>
+   <artifactId>spring-context</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>${spring.group}</groupId>
+   <artifactId>spring-aop</artifactId>
+   <version>${spring.version}</version>
+  </dependency>
+  <dependency>
+   <groupId>org.aspectj</groupId>
+   <artifactId>aspectjweaver</artifactId>
+   <version>1.6.4</version>
+  </dependency>
+
+  <dependency>
+   <groupId>cglib</groupId>
+   <artifactId>cglib-nodep</artifactId>
+   <version>2.2</version>
+  </dependency>
+
+  <dependency>
+   <groupId>junit</groupId>
+   <artifactId>junit</artifactId>
+   <version>4.5</version>
+   <scope>test</scope>
+  </dependency>
+
+  <dependency>
+   <groupId>org.mockito</groupId>
+   <artifactId>mockito-core</artifactId>
+   <version>1.8.0</version>
+   <scope>test</scope>
+  </dependency>
+  <dependency>
+   <groupId>org.mockito</groupId>
+   <artifactId>mockito-all</artifactId>
+   <version>1.8.0</version>
+   <scope>test</scope>
+  </dependency>
+
+
+ </dependencies>
+</project>

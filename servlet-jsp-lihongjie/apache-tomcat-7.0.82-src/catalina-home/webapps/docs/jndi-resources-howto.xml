@@ -1,0 +1,1060 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="jndi-resources-howto.html">
+
+    &project;
+
+    <properties>
+      <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+      <author email="yoavs@apache.org">Yoav Shapira</author>
+      <title>JNDI Resources HOW-TO</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+<p>Tomcat provides a JNDI <strong>InitialContext</strong> implementation
+instance for each web application running under it, in a manner that is
+compatible with those provided by a
+<a href="http://www.oracle.com/technetwork/java/javaee/overview/index.html">
+Java Enterprise Edition</a> application server. The Java EE standard provides
+a standard set of elements in the <code>/WEB-INF/web.xml</code> file to
+reference/define resources.</p>
+
+<p>See the following Specifications for more information about programming APIs
+for JNDI, and for the features supported by Java Enterprise Edition (Java EE)
+servers, which Tomcat emulates for the services that it provides:</p>
+<ul>
+<li><a href="http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/index.html">
+    Java Naming and Directory Interface</a> (included in JDK 1.4 onwards)</li>
+<li><a href="http://www.oracle.com/technetwork/java/javaee/documentation/index.html">
+    Java EE Platform Specification</a> (in particular, see Chapter 5 on <em>Naming</em>)</li>
+</ul>
+
+</section>
+
+<section name="web.xml configuration" >
+
+<p>The following elements may be used in the web application deployment
+descriptor (<code>/WEB-INF/web.xml</code>) of your web application to define
+resources:</p>
+<ul>
+<li><code><strong>&lt;env-entry&gt;</strong></code> - Environment entry, a
+    single-value parameter that can be used to configure how the application
+    will operate.</li>
+<li><code><strong>&lt;resource-ref&gt;</strong></code> - Resource reference,
+    which is typically to an object factory for resources such as a JDBC
+    <code>DataSource</code>, a JavaMail <code>Session</code>, or custom
+    object factories configured into Tomcat.</li>
+<li><code><strong>&lt;resource-env-ref&gt;</strong></code> - Resource
+    environment reference, a new variation of <code>resource-ref</code>
+    added in Servlet 2.4 that is simpler to configure for resources
+    that do not require authentication information.</li>
+</ul>
+
+<p>Providing that Tomcat is able to identify an appropriate resource factory to
+use to create the resource and that no further configuration information is
+required, Tomcat will use the information in <code>/WEB-INF/web.xml</code> to
+create the resource.</p>
+
+<p>Tomcat provides a number of Tomcat specific options for JNDI resources that
+cannot be specified in web.xml. These include <code>closeMethod</code> that
+enables faster cleaning-up of JNDI resources when a web application stops and
+<code>singleton</code> that controls whether or not a new instance of the
+resource is created for every JNDI lookup. To use these configuration options
+the resource must be specified in a web application&apos;s
+<a href="config/context.html"><code>&lt;Context&gt;</code></a> element or in the
+<a href="config/globalresources.html">
+<code><strong>&lt;GlobalNamingResources&gt;</strong></code></a> element of
+<code>$CATALINA_BASE/conf/server.xml</code>.</p>
+
+</section>
+
+<section name="context.xml configuration">
+
+<p>If Tomcat is unable to identify the appropriate resource factory and/or
+additional configuration information is required, additional Tomcat specific
+configuration must be specified before Tomcat can create the resource.
+Tomcat specific resource configuration is entered in
+the <a href="config/context.html"><code>&lt;Context&gt;</code></a> elements that
+can be specified in either <code>$CATALINA_BASE/conf/server.xml</code> or,
+preferably, the per-web-application context XML file
+(<code>META-INF/context.xml</code>).</p>
+
+<p>Tomcat specific resource configuration is performed using the following
+elements in the <a href="config/context.html"><code>&lt;Context&gt;</code></a>
+element:</p>
+
+<ul>
+<li><a href="config/context.html#Environment_Entries">&lt;Environment&gt;</a> -
+    Configure names and values for scalar environment entries that will be
+    exposed to the web application through the JNDI
+    <code>InitialContext</code> (equivalent to the inclusion of an
+    <code>&lt;env-entry&gt;</code> element in the web application
+    deployment descriptor).</li>
+<li><a href="config/context.html#Resource_Definitions">&lt;Resource&gt;</a> -
+    Configure the name and data type of a resource made available to the
+    application (equivalent to the inclusion of a
+    <code>&lt;resource-ref&gt;</code> element in the web application
+    deployment descriptor).</li>
+<li><a href="config/context.html#Resource_Links">&lt;ResourceLink&gt;</a> -
+    Add a link to a resource defined in the global JNDI context. Use resource
+    links to give a web application access to a resource defined in
+    the <a href="config/globalresources.html">&lt;GlobalNamingResources&gt;</a>
+    child element of the <a href="config/server.html">&lt;Server&gt;</a>
+    element.</li>
+<li><a href="config/context.html#Transaction">&lt;Transaction&gt;</a> -
+    Add a resource factory for instantiating the UserTransaction object
+    instance that is available at <code>java:comp/UserTransaction</code>.</li>
+
+</ul>
+
+<p>Any number of these elements may be nested inside a
+<a href="config/context.html"><code>&lt;Context&gt;</code></a> element and will
+be associated only with that particular web application.</p>
+
+<p>If a resource has been defined in a
+<a href="config/context.html"><code>&lt;Context&gt;</code></a> element it is not
+necessary for that resource to be defined in <code>/WEB-INF/web.xml</code>.
+However, it is recommended to keep the entry in <code>/WEB-INF/web.xml</code>
+to document the resource requirements for the web application.</p>
+
+<p>Where the same resource name has been defined for a
+<code>&lt;env-entry&gt;</code> element included in the web application
+deployment descriptor (<code>/WEB-INF/web.xml</code>) and in an
+<code>&lt;Environment&gt;</code> element as part of the
+<a href="config/context.html"><code>&lt;Context&gt;</code></a> element for the
+web application, the values in the deployment descriptor will take precedence
+<strong>only</strong> if allowed by the corresponding
+<code>&lt;Environment&gt;</code> element (by setting the <code>override</code>
+attribute to "true").</p>
+
+</section>
+
+<section name="Global configuration">
+
+<p>Tomcat maintains a separate namespace of global resources for the
+entire server.  These are configured in the
+<a href="config/globalresources.html">
+<code><strong>&lt;GlobalNamingResources&gt;</strong></code></a> element of
+<code>$CATALINA_BASE/conf/server.xml</code>. You may expose these resources to
+web applications by using a
+<a href="config/context.html#Resource_Links">&lt;ResourceLink&gt;</a> to
+include it in the per-web-application context.</p>
+
+<p>If a resource has been defined using a
+<a href="config/context.html#Resource_Links">&lt;ResourceLink&gt;</a>, it is not
+necessary for that resource to be defined in <code>/WEB-INF/web.xml</code>.
+However, it is recommended to keep the entry in <code>/WEB-INF/web.xml</code>
+to document the resource requirements for the web application.</p>
+
+</section>
+
+<section name="Using resources">
+
+<p>The <code>InitialContext</code> is configured as a web application is
+initially deployed, and is made available to web application components (for
+read-only access).  All configured entries and resources are placed in
+the <code>java:comp/env</code> portion of the JNDI namespace, so a typical
+access to a resource - in this case, to a JDBC <code>DataSource</code> -
+would look something like this:</p>
+
+<source><![CDATA[// Obtain our environment naming context
+Context initCtx = new InitialContext();
+Context envCtx = (Context) initCtx.lookup("java:comp/env");
+
+// Look up our data source
+DataSource ds = (DataSource)
+  envCtx.lookup("jdbc/EmployeeDB");
+
+// Allocate and use a connection from the pool
+Connection conn = ds.getConnection();
+... use this connection to access the database ...
+conn.close();]]></source>
+
+</section>
+
+<section name="Tomcat Standard Resource Factories">
+
+  <p>Tomcat includes a series of standard resource factories that can
+  provide services to your web applications, but give you configuration
+  flexibility (via the
+  <a href="config/context.html"><code>&lt;Context&gt;</code></a> element)
+  without modifying the web application or the deployment descriptor. Each
+  subsection below details the configuration and usage of the standard resource
+  factories.</p>
+
+  <p>See <a href="#Adding_Custom_Resource_Factories">Adding Custom
+  Resource Factories</a> for information about how to create, install,
+  configure, and use your own custom resource factory classes with
+  Tomcat.</p>
+
+  <p><em>NOTE</em> - Of the standard resource factories, only the
+  "JDBC Data Source" and "User Transaction" factories are mandated to
+  be available on other platforms, and then they are required only if
+  the platform implements the Java Enterprise Edition (Java EE) specs.
+  All other standard resource factories, plus custom resource factories
+  that you write yourself, are specific to Tomcat and cannot be assumed
+  to be available on other containers.</p>
+
+  <subsection name="Generic JavaBean Resources">
+
+    <h5>0.  Introduction</h5>
+
+    <p>This resource factory can be used to create objects of <em>any</em>
+    Java class that conforms to standard JavaBeans naming conventions (i.e.
+    it has a zero-arguments constructor, and has property setters that
+    conform to the setFoo() naming pattern.  The resource factory will
+    only create a new instance of the appropriate bean class every time a
+    <code>lookup()</code> for this entry is made if the <code>singleton</code>
+    attribute of the factory is set to <code>false</code>.</p>
+
+    <p>The steps required to use this facility are described below.</p>
+
+    <h5>1.  Create Your JavaBean Class</h5>
+
+    <p>Create the JavaBean class which will be instantiated each time
+    that the resource factory is looked up.  For this example, assume
+    you create a class <code>com.mycompany.MyBean</code>, which looks
+    like this:</p>
+
+<source><![CDATA[package com.mycompany;
+
+public class MyBean {
+
+  private String foo = "Default Foo";
+
+  public String getFoo() {
+    return (this.foo);
+  }
+
+  public void setFoo(String foo) {
+    this.foo = foo;
+  }
+
+  private int bar = 0;
+
+  public int getBar() {
+    return (this.bar);
+  }
+
+  public void setBar(int bar) {
+    this.bar = bar;
+  }
+
+
+}]]></source>
+
+  <h5>2.  Declare Your Resource Requirements</h5>
+
+  <p>Next, modify your web application deployment descriptor
+  (<code>/WEB-INF/web.xml</code>) to declare the JNDI name under which
+  you will request new instances of this bean.  The simplest approach is
+  to use a <code>&lt;resource-env-ref&gt;</code> element, like this:</p>
+
+<source><![CDATA[<resource-env-ref>
+  <description>
+    Object factory for MyBean instances.
+  </description>
+  <resource-env-ref-name>
+    bean/MyBeanFactory
+  </resource-env-ref-name>
+  <resource-env-ref-type>
+    com.mycompany.MyBean
+  </resource-env-ref-type>
+</resource-env-ref>]]></source>
+
+    <p><strong>WARNING</strong> - Be sure you respect the element ordering
+    that is required by the DTD for web application deployment descriptors!
+    See the
+    <a href="http://wiki.apache.org/tomcat/Specifications">Servlet
+    Specification</a> for details.</p>
+
+  <h5>3.  Code Your Application's Use Of This Resource</h5>
+
+  <p>A typical use of this resource environment reference might look
+  like this:</p>
+
+<source><![CDATA[Context initCtx = new InitialContext();
+Context envCtx = (Context) initCtx.lookup("java:comp/env");
+MyBean bean = (MyBean) envCtx.lookup("bean/MyBeanFactory");
+
+writer.println("foo = " + bean.getFoo() + ", bar = " +
+               bean.getBar());]]></source>
+
+    <h5>4.  Configure Tomcat's Resource Factory</h5>
+
+    <p>To configure Tomcat's resource factory, add an element like this to the
+    <a href="config/context.html"><code>&lt;Context&gt;</code></a> element for
+    this web application.</p>
+
+<source><![CDATA[<Context ...>
+  ...
+  <Resource name="bean/MyBeanFactory" auth="Container"
+            type="com.mycompany.MyBean"
+            factory="org.apache.naming.factory.BeanFactory"
+            bar="23"/>
+  ...
+</Context>]]></source>
+
+    <p>Note that the resource name (here, <code>bean/MyBeanFactory</code>
+    must match the value specified in the web application deployment
+    descriptor.  We are also initializing the value of the <code>bar</code>
+    property, which will cause <code>setBar(23)</code> to be called before
+    the new bean is returned.  Because we are not initializing the
+    <code>foo</code> property (although we could have), the bean will
+    contain whatever default value is set up by its constructor.</p>
+
+    <p>Some beans have properties with types that can not automatically be
+    converted from a string value. Setting such properties using the Tomcat
+    BeanFactory will fail with a NamingException. In cases were those beans
+    provide methods to set the properties from a string value, the Tomcat
+    BeanFactory can be configured to use these methods. The configuration is
+    done with the <code>forceString</code> attribute.</p>
+
+    <p>Assume our bean looks like this:</p>
+
+<source><![CDATA[package com.mycompany;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class MyBean2 {
+
+  private InetAddress local = null;
+
+  public InetAddress getLocal() {
+    return local;
+  }
+
+  public void setLocal(InetAddress ip) {
+    local = ip;
+  }
+
+  public void setLocal(String localHost) {
+    try {
+      local = InetAddress.getByName(localHost);
+    } catch (UnknownHostException ex) {
+    }
+  }
+
+  private InetAddress remote = null;
+
+  public InetAddress getRemote() {
+    return remote;
+  }
+
+  public void setRemote(InetAddress ip) {
+    remote = ip;
+  }
+
+  public void host(String remoteHost) {
+    try {
+      remote = InetAddress.getByName(remoteHost);
+    } catch (UnknownHostException ex) {
+    }
+  }
+
+}]]></source>
+
+    <p>The bean has two properties, both are of type <code>InetAddress</code>.
+    The first property <code>local</code> has an additional setter taking a
+    string argument. By default the Tomcat BeanFactory would try to use the
+    automatically detected setter with the same argument type as the property
+    type and then throw a NamingException, because it is not prepared to convert
+    the given string attribute value to <code>InetAddress</code>.
+    We can tell the Tomcat BeanFactory to use the other setter like that:</p>
+
+<source><![CDATA[<Context ...>
+  ...
+  <Resource name="bean/MyBeanFactory" auth="Container"
+            type="com.mycompany.MyBean2"
+            factory="org.apache.naming.factory.BeanFactory"
+            forceString="local"
+            local="localhost"/>
+  ...
+</Context>]]></source>
+
+    <p>The bean property <code>remote</code> can also be set from a string,
+    but one has to use the non-standard method name <code>host</code>.
+    To set <code>local</code> and <code>remote</code> use the following
+    configuration:</p>
+
+<source><![CDATA[<Context ...>
+  ...
+  <Resource name="bean/MyBeanFactory" auth="Container"
+            type="com.mycompany.MyBean2"
+            factory="org.apache.naming.factory.BeanFactory"
+            forceString="local,remote=host"
+            local="localhost"
+            remote="tomcat.apache.org"/>
+  ...
+</Context>]]></source>
+
+    <p>Multiple property descriptions can be combined in
+    <code>forceString</code> by concatenation with comma as a separator.
+    Each property description consists of either only the property name
+    in which case the BeanFactory calls the setter method. Or it consist
+    of <code>name=method</code> in which case the property named
+    <code>name</code> is set by calling method <code>method</code>.
+    For properties of types <code>String</code> or of primitive type
+    or of their associated primitive wrapper classes using
+    <code>forceString</code> is not needed. The correct setter will be
+    automatically detected and argument conversion will be applied.</p>
+
+  </subsection>
+
+
+  <subsection name="UserDatabase Resources">
+
+    <h5>0.  Introduction</h5>
+
+    <p>UserDatabase resources are typically configured as global resources for
+    use by a UserDatabase realm. Tomcat includes a UserDatabaseFactory that
+    creates UserDatabase resources backed by an XML file - usually
+    <code>tomcat-users.xml</code></p>
+
+    <p>The steps required to set up a global UserDatabase resource are described
+    below.</p>
+
+    <h5>1. Create/edit the XML file</h5>
+
+    <p>The XML file is typically located at
+    <code>$CATALINA_BASE/conf/tomcat-users.xml</code> however, you are free to
+    locate the file anywhere on the file system. It is recommended that the XML
+    files are placed in <code>$CATALINA_BASE/conf</code>. A typical XML would
+    look like:</p>
+
+<source><![CDATA[<?xml version='1.0' encoding='utf-8'?>
+<tomcat-users>
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <user username="tomcat" password="tomcat" roles="tomcat"/>
+  <user username="both" password="tomcat" roles="tomcat,role1"/>
+  <user username="role1" password="tomcat" roles="role1"/>
+</tomcat-users>]]></source>
+
+    <h5>2.  Declare Your Resource</h5>
+
+    <p>Next, modify <code>$CATALINA_BASE/conf/server.xml</code> to create the
+    UserDatabase resource based on your XML file. It should look something like
+    this:</p>
+
+<source><![CDATA[<Resource name="UserDatabase"
+          auth="Container"
+          type="org.apache.catalina.UserDatabase"
+          description="User database that can be updated and saved"
+          factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+          pathname="conf/tomcat-users.xml"
+          readonly="false" />]]></source>
+
+    <p>The <code>pathname</code> attribute can be a URL, an absolute path or a
+    relative path. If relative, it is relative to <code>$CATALINA_BASE</code>.
+    </p>
+
+    <p>The <code>readonly</code> attribute is optional and defaults to
+    <code>true</code> if not supplied. If the XML is writeable then it will be
+    written to when Tomcat starts. <strong>WARNING:</strong> When the file is
+    written it will inherit the default file permissions for the user Tomcat
+    is running as. Ensure that these are appropriate to maintain the security
+    of your installation.</p>
+
+    <h5>3.  Configure the Realm</h5>
+
+    <p>Configure a UserDatabase Realm to use this resource as described in the
+    <a href="config/realm.html">Realm configuration documentation</a>.</p>
+
+  </subsection>
+
+
+  <subsection name="JavaMail Sessions">
+
+    <h5>0.  Introduction</h5>
+
+    <p>In many web applications, sending electronic mail messages is a
+    required part of the system's functionality.  The
+    <a href="http://www.oracle.com/technetwork/java/javamail/index.html">Java Mail</a> API
+    makes this process relatively straightforward, but requires many
+    configuration details that the client application must be aware of
+    (including the name of the SMTP host to be used for message sending).</p>
+
+    <p>Tomcat includes a standard resource factory that will create
+    <code>javax.mail.Session</code> session instances for you, already
+    configured to connect to an SMTP server.
+    In this way, the application is totally insulated from changes in the
+    email server configuration environment - it simply asks for, and receives,
+    a preconfigured session whenever needed.</p>
+
+    <p>The steps required for this are outlined below.</p>
+
+    <h5>1.  Declare Your Resource Requirements</h5>
+
+    <p>The first thing you should do is modify the web application deployment
+    descriptor (<code>/WEB-INF/web.xml</code>) to declare the JNDI name under
+    which you will look up preconfigured sessions.  By convention, all such
+    names should resolve to the <code>mail</code> subcontext (relative to the
+    standard <code>java:comp/env</code> naming context that is the root of
+    all provided resource factories.  A typical <code>web.xml</code> entry
+    might look like this:</p>
+<source><![CDATA[<resource-ref>
+  <description>
+    Resource reference to a factory for javax.mail.Session
+    instances that may be used for sending electronic mail
+    messages, preconfigured to connect to the appropriate
+    SMTP server.
+  </description>
+  <res-ref-name>
+    mail/Session
+  </res-ref-name>
+  <res-type>
+    javax.mail.Session
+  </res-type>
+  <res-auth>
+    Container
+  </res-auth>
+</resource-ref>]]></source>
+
+    <p><strong>WARNING</strong> - Be sure you respect the element ordering
+    that is required by the DTD for web application deployment descriptors!
+    See the
+    <a href="http://wiki.apache.org/tomcat/Specifications">Servlet
+    Specification</a> for details.</p>
+
+    <h5>2.  Code Your Application's Use Of This Resource</h5>
+
+    <p>A typical use of this resource reference might look like this:</p>
+<source><![CDATA[Context initCtx = new InitialContext();
+Context envCtx = (Context) initCtx.lookup("java:comp/env");
+Session session = (Session) envCtx.lookup("mail/Session");
+
+Message message = new MimeMessage(session);
+message.setFrom(new InternetAddress(request.getParameter("from")));
+InternetAddress to[] = new InternetAddress[1];
+to[0] = new InternetAddress(request.getParameter("to"));
+message.setRecipients(Message.RecipientType.TO, to);
+message.setSubject(request.getParameter("subject"));
+message.setContent(request.getParameter("content"), "text/plain");
+Transport.send(message);]]></source>
+
+    <p>Note that the application uses the same resource reference name
+    that was declared in the web application deployment descriptor.  This
+    is matched up against the resource factory that is configured in the
+    <a href="config/context.html"><code>&lt;Context&gt;</code></a> element
+    for the web application as described below.</p>
+
+    <h5>3.  Configure Tomcat's Resource Factory</h5>
+
+    <p>To configure Tomcat's resource factory, add an elements like this to the
+    <a href="config/context.html"><code>&lt;Context&gt;</code></a> element for
+    this web application.</p>
+
+<source><![CDATA[<Context ...>
+  ...
+  <Resource name="mail/Session" auth="Container"
+            type="javax.mail.Session"
+            mail.smtp.host="localhost"/>
+  ...
+</Context>]]></source>
+
+    <p>Note that the resource name (here, <code>mail/Session</code>) must
+    match the value specified in the web application deployment descriptor.
+    Customize the value of the <code>mail.smtp.host</code> parameter to
+    point at the server that provides SMTP service for your network.</p>
+
+    <p>Additional resource attributes and values will be converted to properties
+    and values and passed to
+    <code>javax.mail.Session.getInstance(java.util.Properties)</code> as part of
+    the <code>java.util.Properties</code> collection. In addition to the
+    properties defined in Annex A of the JavaMail specification, individual
+    providers may also support additional properties.
+    </p>
+    
+    <p>If the resource is configured with a <code>password</code> attribute and
+    either a <code>mail.smtp.user</code> or <code>mail.user</code> attribute
+    then Tomcat&apos;s resource factory will configure and add a
+    <code>javax.mail.Authenticator</code> to the mail session.</p>
+
+    <h5>4.  Install the JavaMail libraries</h5>
+
+    <p><a href="http://javamail.java.net/">
+    Download the JavaMail API</a>.</p>
+
+    <p>Unpackage the distribution and place mail.jar  into $CATALINA_HOME/lib so
+    that it is available to Tomcat during the initialization of the mail Session
+    Resource. <strong>Note:</strong> placing this jar in both $CATALINA_HOME/lib
+    and a  web application's lib folder will cause an error, so ensure you have
+    it in the $CATALINA_HOME/lib location only.
+    </p>
+
+    <h5>5.  Restart Tomcat</h5>
+
+    <p>For the additional JAR to be visible to Tomcat, it is necessary for the
+    Tomcat instance to be restarted.</p>
+
+
+    <h5>Example Application</h5>
+
+    <p>The <code>/examples</code> application included with Tomcat contains
+    an example of utilizing this resource factory.  It is accessed via the
+    "JSP Examples" link.  The source code for the servlet that actually
+    sends the mail message is in
+    <code>/WEB-INF/classes/SendMailServlet.java</code>.</p>
+
+    <p><strong>WARNING</strong> - The default configuration assumes that there
+    is an SMTP server listing on port 25 on <code>localhost</code>. If this is
+    not the case, edit the
+    <a href="config/context.html"><code>&lt;Context&gt;</code></a> element for
+    this web application and modify the parameter value for the
+    <code>mail.smtp.host</code> parameter to be the host name of an SMTP server
+    on your network.</p>
+
+  </subsection>
+
+  <subsection name="JDBC Data Sources">
+
+    <h5>0.  Introduction</h5>
+
+    <p>Many web applications need to access a database via a JDBC driver,
+    to support the functionality required by that application.  The Java EE
+    Platform Specification requires Java EE Application Servers to make
+    available a <em>DataSource</em> implementation (that is, a connection
+    pool for JDBC connections) for this purpose.  Tomcat offers exactly
+    the same support, so that database-based applications you develop on
+    Tomcat using this service will run unchanged on any Java EE server.</p>
+
+    <p>For information about JDBC, you should consult the following:</p>
+    <ul>
+    <li><a href="http://www.oracle.com/technetwork/java/javase/jdbc/index.html">
+        http://www.oracle.com/technetwork/java/javase/jdbc/index.html</a> -
+        Home page for information about Java Database Connectivity.</li>
+    <li><a href="http://java.sun.com/j2se/1.3/docs/guide/jdbc/spec2/jdbc2.1.frame.html">http://java.sun.com/j2se/1.3/docs/guide/jdbc/spec2/jdbc2.1.frame.html</a> -
+        The JDBC 2.1 API Specification.</li>
+    <li><a href="http://java.sun.com/products/jdbc/jdbc20.stdext.pdf">http://java.sun.com/products/jdbc/jdbc20.stdext.pdf</a> -
+        The JDBC 2.0 Standard Extension API (including the
+        <code>javax.sql.DataSource</code> API).  This package is now known
+        as the "JDBC Optional Package".</li>
+    <li><a href="http://www.oracle.com/technetwork/java/javaee/overview/index.htm">
+        http://www.oracle.com/technetwork/java/javaee/overview/index.htm</a> -
+        The Java EE Platform Specification (covers the JDBC facilities that
+        all Java EE platforms must provide to applications).</li>
+    </ul>
+
+    <p><strong>NOTE</strong> - The default data source support in Tomcat
+    is based on the <strong>DBCP</strong> connection pool from the
+    <a href="http://commons.apache.org/">Commons</a>
+    project.  However, it is possible to use any other connection pool
+    that implements <code>javax.sql.DataSource</code>, by writing your
+    own custom resource factory, as described
+    <a href="#Adding_Custom_Resource_Factories">below</a>.</p>
+
+    <h5>1.  Install Your JDBC Driver</h5>
+
+    <p>Use of the <em>JDBC Data Sources</em> JNDI Resource Factory requires
+    that you make an appropriate JDBC driver available to both Tomcat internal
+    classes and to your web application.  This is most easily accomplished by
+    installing the driver's JAR file(s) into the
+    <code>$CATALINA_HOME/lib</code> directory, which makes the driver
+    available both to the resource factory and to your application.</p>
+
+    <h5>2.  Declare Your Resource Requirements</h5>
+
+    <p>Next, modify the web application deployment descriptor
+    (<code>/WEB-INF/web.xml</code>) to declare the JNDI name under
+    which you will look up preconfigured data source.  By convention, all such
+    names should resolve to the <code>jdbc</code> subcontext (relative to the
+    standard <code>java:comp/env</code> naming context that is the root of
+    all provided resource factories.  A typical <code>web.xml</code> entry
+    might look like this:</p>
+<source><![CDATA[<resource-ref>
+  <description>
+    Resource reference to a factory for java.sql.Connection
+    instances that may be used for talking to a particular
+    database that is configured in the <Context>
+    configuration for the web application.
+  </description>
+  <res-ref-name>
+    jdbc/EmployeeDB
+  </res-ref-name>
+  <res-type>
+    javax.sql.DataSource
+  </res-type>
+  <res-auth>
+    Container
+  </res-auth>
+</resource-ref>]]></source>
+
+    <p><strong>WARNING</strong> - Be sure you respect the element ordering
+    that is required by the DTD for web application deployment descriptors!
+    See the
+    <a href="http://wiki.apache.org/tomcat/Specifications">Servlet
+    Specification</a> for details.</p>
+
+    <h5>3.  Code Your Application's Use Of This Resource</h5>
+
+    <p>A typical use of this resource reference might look like this:</p>
+<source><![CDATA[Context initCtx = new InitialContext();
+Context envCtx = (Context) initCtx.lookup("java:comp/env");
+DataSource ds = (DataSource)
+  envCtx.lookup("jdbc/EmployeeDB");
+
+Connection conn = ds.getConnection();
+... use this connection to access the database ...
+conn.close();]]></source>
+
+    <p>Note that the application uses the same resource reference name that was
+    declared in the web application deployment descriptor. This is matched up
+    against the resource factory that is configured in the
+    <a href="config/context.html"><code>&lt;Context&gt;</code></a> element for
+    the web application as described below.</p>
+
+    <h5>4.  Configure Tomcat's Resource Factory</h5>
+
+    <p>To configure Tomcat's resource factory, add an element like this to the
+    <a href="config/context.html"><code>&lt;Context&gt;</code></a> element for
+    the web application.</p>
+
+<source><![CDATA[<Context ...>
+  ...
+  <Resource name="jdbc/EmployeeDB"
+            auth="Container"
+            type="javax.sql.DataSource"
+            username="dbusername"
+            password="dbpassword"
+            driverClassName="org.hsql.jdbcDriver"
+            url="jdbc:HypersonicSQL:database"
+            maxActive="8"
+            maxIdle="4"/>
+  ...
+</Context>]]></source>
+
+    <p>Note that the resource name (here, <code>jdbc/EmployeeDB</code>) must
+    match the value specified in the web application deployment descriptor.</p>
+
+    <p>This example assumes that you are using the HypersonicSQL database
+    JDBC driver.  Customize the <code>driverClassName</code> and
+    <code>driverName</code> parameters to match your actual database's
+    JDBC driver and connection URL.</p>
+
+    <p>The configuration properties for Tomcat's standard data source
+    resource factory
+    (<code>org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory</code>) are
+    as follows:</p>
+    <ul>
+    <li><strong>driverClassName</strong> - Fully qualified Java class name
+        of the JDBC driver to be used.</li>
+    <li><strong>username</strong> - Database username to be passed to our
+        JDBC driver.</li>
+    <li><strong>password</strong> - Database password to be passed to our
+        JDBC driver.</li>
+    <li><strong>url</strong> - Connection URL to be passed to our JDBC driver.
+        (For backwards compatibility, the property <code>driverName</code>
+        is also recognized.)</li>
+    <li><strong>initialSize</strong> - The initial number of connections
+        that will be created in the pool during pool initialization. Default: 0</li>
+    <li><strong>maxActive</strong> - The maximum number of connections
+        that can be allocated from this pool at the same time. Default: 8</li>
+    <li><strong>minIdle</strong> - The minimum number of connections that
+        will sit idle in this pool at the same time. Default: 0</li>
+    <li><strong>maxIdle</strong> - The maximum number of connections that
+        can sit idle in this pool at the same time. Default: 8</li>
+    <li><strong>maxWait</strong> - The maximum number of milliseconds that the
+        pool will wait (when there are no available connections) for a
+        connection to be returned before throwing an exception. Default: -1 (infinite)</li>
+    </ul>
+    <p>Some additional properties handle connection validation:</p>
+    <ul>
+    <li><strong>validationQuery</strong> - SQL query that can be used by the
+        pool to validate connections before they are returned to the
+        application.  If specified, this query MUST be an SQL SELECT
+        statement that returns at least one row.</li>
+    <li><strong>validationQueryTimeout</strong> - Timeout in seconds
+        for the validation query to return. Default: -1 (infinite)</li>
+    <li><strong>testOnBorrow</strong> - true or false: whether a connection
+        should be validated using the validation query each time it is
+        borrowed from the pool. Default: true</li>
+    <li><strong>testOnReturn</strong> - true or false: whether a connection
+        should be validated using the validation query each time it is
+        returned to the pool. Default: false</li>
+    </ul>
+    <p>The optional evictor thread is responsible for shrinking the pool
+    by removing any connections which are idle for a long time. The evictor
+    does not respect <code>minIdle</code>. Note that you do not need to
+    activate the evictor thread if you only want the pool to shrink according
+    to the configured <code>maxIdle</code> property.</p>
+    <p>The evictor is disabled by default and can be configured using
+    the following properties:</p>
+    <ul>
+    <li><strong>timeBetweenEvictionRunsMillis</strong> - The number of
+        milliseconds between consecutive runs of the evictor.
+        Default: -1 (disabled)</li>
+    <li><strong>numTestsPerEvictionRun</strong> - The number of connections
+        that will be checked for idleness by the evictor during each
+        run of the evictor. Default: 3</li>
+    <li><strong>minEvictableIdleTimeMillis</strong> - The idle time in
+        milliseconds after which a connection can be removed from the pool
+        by the evictor. Default: 30*60*1000 (30 minutes)</li>
+    <li><strong>testWhileIdle</strong> - true or false: whether a connection
+        should be validated by the evictor thread using the validation query
+        while sitting idle in the pool. Default: false</li>
+    </ul>
+    <p>Another optional feature is the removal of abandoned connections.
+    A connection is called abandoned if the application does not return it
+    to the pool for a long time. The pool can close such connections
+    automatically and remove them from the pool. This is a workaround
+    for applications leaking connections.</p>
+    <p>The abandoning feature is disabled by default and can be configured
+    using the following properties:</p>
+    <ul>
+    <li><strong>removeAbandoned</strong> - true or false: whether to
+        remove abandoned connections from the pool. Default: false</li>
+    <li><strong>removeAbandonedTimeout</strong> - The number of
+        seconds after which a borrowed connection is assumed to be abandoned.
+        Default: 300</li>
+    <li><strong>logAbandoned</strong> - true or false: whether to log
+        stack traces for application code which abandoned a statement
+        or connection. This adds serious overhead. Default: false</li>
+    </ul>
+    <p>Finally there are various properties that allow further fine tuning
+    of the pool behaviour:</p>
+    <ul>
+    <li><strong>defaultAutoCommit</strong> - true or false: default
+        auto-commit state of the connections created by this pool.
+        Default: true</li>
+    <li><strong>defaultReadOnly</strong> - true or false: default
+        read-only state of the connections created by this pool.
+        Default: false</li>
+    <li><strong>defaultTransactionIsolation</strong> - This sets the
+        default transaction isolation level. Can be one of
+        <code>NONE</code>, <code>READ_COMMITTED</code>,
+        <code>READ_UNCOMMITTED</code>, <code>REPEATABLE_READ</code>,
+        <code>SERIALIZABLE</code>. Default: no default set</li>
+    <li><strong>poolPreparedStatements</strong> - true or false: whether to
+        pool PreparedStatements and CallableStatements. Default: false</li>
+    <li><strong>maxOpenPreparedStatements</strong> - The maximum number of open
+        statements that can be allocated from the statement pool at the same time.
+        Default: -1 (unlimited)</li>
+    <li><strong>defaultCatalog</strong> - The name of the default catalog.
+        Default: not set</li>
+    <li><strong>connectionInitSqls</strong> - A list of SQL statements
+        run once after a Connection is created. Separate multiple statements
+        by semicolons (<code>;</code>). Default: no statement</li>
+    <li><strong>connectionProperties</strong> - A list of driver specific
+        properties passed to the driver for creating connections. Each
+        property is given as <code>name=value</code>, multiple properties
+        are separated by semicolons (<code>;</code>). Default: no properties</li>
+    <li><strong>accessToUnderlyingConnectionAllowed</strong> - true or false: whether
+        accessing the underlying connections is allowed. Default: false</li>
+    </ul>
+    <p>For more details, please refer to the commons-dbcp documentation.</p>
+
+  </subsection>
+
+</section>
+
+
+<section name="Adding Custom Resource Factories">
+
+  <p>If none of the standard resource factories meet your needs, you can write
+  your own factory and integrate it into Tomcat, and then configure the use
+  of this factory in the
+  <a href="config/context.html"><code>&lt;Context&gt;</code></a> element for
+  the web application. In the example below, we will create a factory that only
+  knows how to create <code>com.mycompany.MyBean</code> beans from the
+  <a href="#Generic_JavaBean_Resources">Generic JavaBean Resources</a> example
+  above.</p>
+
+  <h4>1.  Write A Resource Factory Class</h4>
+
+  <p>You must write a class that implements the JNDI service provider
+  <code>javax.naming.spi.ObjectFactory</code> interface.  Every time your
+  web application calls <code>lookup()</code> on a context entry that is
+  bound to this factory (assuming that the factory is configured with
+  <code>singleton=&quot;false&quot;</code>), the
+  <code>getObjectInstance()</code> method is called, with the following
+  arguments:</p>
+  <ul>
+  <li><strong>Object obj</strong> - The (possibly null) object containing
+      location or reference information that can be used in creating an object.
+      For Tomcat, this will always be an object of type
+      <code>javax.naming.Reference</code>, which contains the class name of
+      this factory class, as well as the configuration properties (from the
+      <a href="config/context.html"><code>&lt;Context&gt;</code></a> for the
+      web application) to use in creating objects to be returned.</li>
+  <li><strong>Name name</strong> - The name to which this factory is bound
+      relative to <code>nameCtx</code>, or <code>null</code> if no name
+      is specified.</li>
+  <li><strong>Context nameCtx</strong> - The context relative to which the
+      <code>name</code> parameter is specified, or <code>null</code> if
+      <code>name</code> is relative to the default initial context.</li>
+  <li><strong>Hashtable environment</strong> - The (possibly null)
+      environment that is used in creating this object.  This is generally
+      ignored in Tomcat object factories.</li>
+  </ul>
+
+  <p>To create a resource factory that knows how to produce <code>MyBean</code>
+  instances, you might create a class like this:</p>
+
+<source><![CDATA[package com.mycompany;
+
+import java.util.Enumeration;
+import java.util.Hashtable;
+import javax.naming.Context;
+import javax.naming.Name;
+import javax.naming.NamingException;
+import javax.naming.RefAddr;
+import javax.naming.Reference;
+import javax.naming.spi.ObjectFactory;
+
+public class MyBeanFactory implements ObjectFactory {
+
+  public Object getObjectInstance(Object obj,
+      Name name2, Context nameCtx, Hashtable environment)
+      throws NamingException {
+
+      // Acquire an instance of our specified bean class
+      MyBean bean = new MyBean();
+
+      // Customize the bean properties from our attributes
+      Reference ref = (Reference) obj;
+      Enumeration addrs = ref.getAll();
+      while (addrs.hasMoreElements()) {
+          RefAddr addr = (RefAddr) addrs.nextElement();
+          String name = addr.getType();
+          String value = (String) addr.getContent();
+          if (name.equals("foo")) {
+              bean.setFoo(value);
+          } else if (name.equals("bar")) {
+              try {
+                  bean.setBar(Integer.parseInt(value));
+              } catch (NumberFormatException e) {
+                  throw new NamingException("Invalid 'bar' value " + value);
+              }
+          }
+      }
+
+      // Return the customized instance
+      return (bean);
+
+  }
+
+}]]></source>
+
+  <p>In this example, we are unconditionally creating a new instance of
+  the <code>com.mycompany.MyBean</code> class, and populating its properties
+  based on the parameters included in the <code>&lt;ResourceParams&gt;</code>
+  element that configures this factory (see below).  You should note that any
+  parameter named <code>factory</code> should be skipped - that parameter is
+  used to specify the name of the factory class itself (in this case,
+  <code>com.mycompany.MyBeanFactory</code>) rather than a property of the
+  bean being configured.</p>
+
+  <p>For more information about <code>ObjectFactory</code>, see the
+  <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/jndi/index.html">
+  JNDI Service Provider Interface (SPI) Specification</a>.</p>
+
+  <p>You will need to compile this class against a class path that includes
+  all of the JAR files in the <code>$CATALINA_HOME/lib</code> directory.  When you are through,
+  place the factory class (and the corresponding bean class) unpacked under
+  <code>$CATALINA_HOME/lib</code>, or in a JAR file inside
+  <code>$CATALINA_HOME/lib</code>.  In this way, the required class
+  files are visible to both Catalina internal resources and your web
+  application.</p>
+
+  <h4>2.  Declare Your Resource Requirements</h4>
+
+  <p>Next, modify your web application deployment descriptor
+  (<code>/WEB-INF/web.xml</code>) to declare the JNDI name under which
+  you will request new instances of this bean.  The simplest approach is
+  to use a <code>&lt;resource-env-ref&gt;</code> element, like this:</p>
+
+<source><![CDATA[<resource-env-ref>
+  <description>
+    Object factory for MyBean instances.
+  </description>
+  <resource-env-ref-name>
+    bean/MyBeanFactory
+  </resource-env-ref-name>
+  <resource-env-ref-type>
+    com.mycompany.MyBean
+  </resource-env-ref-type>
+</resource-env-ref>]]></source>
+
+    <p><strong>WARNING</strong> - Be sure you respect the element ordering
+    that is required by the DTD for web application deployment descriptors!
+    See the
+    <a href="http://wiki.apache.org/tomcat/Specifications">Servlet
+    Specification</a> for details.</p>
+
+  <h4>3.  Code Your Application's Use Of This Resource</h4>
+
+  <p>A typical use of this resource environment reference might look
+  like this:</p>
+
+<source><![CDATA[Context initCtx = new InitialContext();
+Context envCtx = (Context) initCtx.lookup("java:comp/env");
+MyBean bean = (MyBean) envCtx.lookup("bean/MyBeanFactory");
+
+writer.println("foo = " + bean.getFoo() + ", bar = " +
+               bean.getBar());]]></source>
+
+    <h4>4.  Configure Tomcat's Resource Factory</h4>
+
+    <p>To configure Tomcat's resource factory, add an elements like this to the
+    <a href="config/context.html"><code>&lt;Context&gt;</code></a> element for
+    this web application.</p>
+
+<source><![CDATA[<Context ...>
+  ...
+  <Resource name="bean/MyBeanFactory" auth="Container"
+            type="com.mycompany.MyBean"
+            factory="com.mycompany.MyBeanFactory"
+            singleton="false"
+            bar="23"/>
+  ...
+</Context>]]></source>
+
+    <p>Note that the resource name (here, <code>bean/MyBeanFactory</code>
+    must match the value specified in the web application deployment
+    descriptor.  We are also initializing the value of the <code>bar</code>
+    property, which will cause <code>setBar(23)</code> to be called before
+    the new bean is returned.  Because we are not initializing the
+    <code>foo</code> property (although we could have), the bean will
+    contain whatever default value is set up by its constructor.</p>
+
+    <p>You will also note that, from the application developer's perspective,
+    the declaration of the resource environment reference, and the programming
+    used to request new instances, is identical to the approach used for the
+    <em>Generic JavaBean Resources</em> example.  This illustrates one of the
+    advantages of using JNDI resources to encapsulate functionality - you can
+    change the underlying implementation without necessarily having to
+    modify applications using the resources, as long as you maintain
+    compatible APIs.</p>
+
+</section>
+
+</body>
+
+</document>

@@ -1,0 +1,51 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+   version="1.0">
+
+   <persistence-unit name="helloworld">
+
+       <!-- The provider only needs to be set if you use several JPA providers
+       <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        -->
+       <!-- This is required to be spec compliant, Hibernate however supports
+            auto-detection even in JSE.
+       <class>hello.Message</class>
+        -->
+
+      <properties>
+          <!-- Scan for annotated classes and Hibernate mapping XML files -->
+          <property name="hibernate.archive.autodetection" value="class, hbm"/>
+
+          <!-- SQL stdout logging
+          <property name="hibernate.show_sql" value="true"/>
+          <property name="hibernate.format_sql" value="true"/>
+          <property name="use_sql_comments" value="true"/>
+          -->
+
+          <property name="hibernate.connection.driver_class"
+                    value="org.hsqldb.jdbcDriver"/>
+          <property name="hibernate.connection.url"
+                    value="jdbc:hsqldb:hsql://localhost"/>
+          <property name="hibernate.connection.username"
+                    value="sa"/>
+
+          <property name="hibernate.c3p0.min_size"
+                    value="5"/>
+          <property name="hibernate.c3p0.max_size"
+                    value="20"/>
+          <property name="hibernate.c3p0.timeout"
+                    value="300"/>
+          <property name="hibernate.c3p0.max_statements"
+                    value="50"/>
+          <property name="hibernate.c3p0.idle_test_period"
+                    value="3000"/>
+
+          <property name="hibernate.dialect"
+                    value="org.hibernate.dialect.HSQLDialect"/>
+
+      </properties>
+   </persistence-unit>
+
+</persistence>

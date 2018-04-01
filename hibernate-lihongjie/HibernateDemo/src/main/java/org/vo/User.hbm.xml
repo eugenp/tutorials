@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="org.vo">
+	<class name="User"><!--不加入table标签，表明类名和表名相同  -->
+		<id name="id" column="id">
+			<generator class="native"/>
+		</id>
+		<property name="username" unique="true"/><!-- 使用户名唯一，方便后面名称查询 -->
+		<property name="password"/>
+	</class>
+</hibernate-mapping>
+

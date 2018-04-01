@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cluster-valve.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>The Cluster Valve object</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  <p>
+  A cluster valve is no different from any other <a href="valve.html">Tomcat <code>Valve</code></a>.
+  The cluster valves are interceptors in the invocation chain for HTTP requests, and the clustering implementation
+  uses these valves to make intelligent decision around data and when data should be replicated.
+  </p>
+  <p>
+  A cluster valve must implement the <code>org.apache.catalina.ha.ClusterValve</code> interface.
+  This is a simple interface that extends the <code>org.apache.catalina.Valve</code> interface.
+  </p>
+</section>
+
+<section name="org.apache.catalina.ha.tcp.ReplicationValve">
+  The <code>ReplicationValve</code> will notify the cluster at the end of a HTTP request
+  so that the cluster can make a decision whether there is data to be replicated or not.
+  <subsection name="Attributes">
+    <attributes>
+      <attribute name="className" required="true">
+        Set value to <code>org.apache.catalina.ha.tcp.ReplicationValve</code>
+      </attribute>
+      <attribute name="filter" required="false">
+        For known file extensions or urls, you can use this Valve to notify the
+        cluster that the session has not been modified during this  request and
+        the cluster doesn't have to probe the session managers for changes. If
+        the request matches this filter pattern, the cluster assumes there has
+        been no session change. An example filter would look like <code>
+        filter=&quot;.*\.gif|.*\.js|.*\.jpeg|.*\.jpg|.*\.png|.*\.htm|.*\.html|.*\.css|.*\.txt&quot;
+        </code>. The filter is a regular expression using
+        <code>java.util.regex</code>.
+      </attribute>
+      <attribute name="primaryIndicator" required="false">
+        Boolean value, so to true, and the replication valve will insert a request attribute with the name
+        defined by the <code>primaryIndicatorName</code> attribute.
+        The value inserted into the request attribute is either <code>Boolean.TRUE</code> or
+        <code>Boolean.FALSE</code>
+      </attribute>
+      <attribute name="primaryIndicatorName" required="false">
+        Default value is <code>org.apache.catalina.ha.tcp.isPrimarySession</code>
+        The value defined here is the name of the request attribute that contains the boolean value
+        if the session is primary on this server or not.
+      </attribute>
+      <attribute name="statistics" required="false">
+        Boolean value. Set to <code>true</code> if you want the valve to collect request statistics.
+        Default value is <code>false</code>
+      </attribute>
+    </attributes>
+  </subsection>
+</section>
+
+<section name="org.apache.catalina.ha.session.JvmRouteBinderValve">
+  In case of a mod_jk failover, the <code>JvmRouteBinderValve</code> will replace the
+  <code>jvmWorker</code> attribute in the session Id, to make future requests stick to this
+  node. If you want fallback capability, don't enable this valve, but if you want your failover to stick,
+  and for mod_jk not to have to keep probing the node that went down, you use this valve.
+  <subsection name="Attributes">
+    <attributes>
+      <attribute name="className" required="true">
+        <code>org.apache.catalina.ha.session.JvmRouteBinderValve</code>
+      </attribute>
+      <attribute name="enabled" required="false">
+        Default value is <code>true</code>
+        Runtime attribute to turn on and off turn over of the session's jvmRoute value.
+      </attribute>
+      <attribute name="sessionIdAttribute" required="false">
+        Old sessionid before failover is registered in request attributes with  this attribute.
+        Default attribute name is <code>org.apache.catalina.ha.session.JvmRouteOrignalSessionID</code>.
+      </attribute>
+    </attributes>
+  </subsection>
+</section>
+
+<section name="org.apache.catalina.ha.authenticator.ClusterSingleSignOn">
+  The <code>ClusterSingleSignOn</code> supports feature of single sign on in cluster.
+  By using <code>ClusterSingleSignOn</code>, the security identity authenticated
+  by one web application is recognized by other web applications on the same virtual host,
+  and it is propagated to other nodes in the cluster.
+
+  <p>See the <a href="host.html#Single_Sign_On">Single Sign On</a> special
+    feature on the <strong>Host</strong> element for more information.</p>
+
+  <p><strong>Note: </strong>ClusterSingleSignOn can be configured at host level cluster only.
+  </p>
+
+  <subsection name="Attributes">
+    <attributes>
+      <attribute name="className" required="true">
+        <p>Java class name of the implementation to use.  This MUST be set to
+        <strong>org.apache.catalina.ha.authenticator.ClusterSingleSignOn</strong>.</p>
+      </attribute>
+      <attribute name="cookieDomain" required="false">
+        <p>Sets the host domain to be used for sso cookies.</p>
+      </attribute>
+      <attribute name="mapSendOptions" required="false">
+        <p>The Valve uses a replicated map. You can setup the flag for how this
+        map sends messages. The default value is <code>6</code> (synchronous).
+        Note that if you use asynchronous messaging it is possible for update
+        messages to be processed by the receiving node in a different order to
+        the order in which they were sent.</p>
+      </attribute>
+      <attribute name="requireReauthentication" required="false">
+        <p>Default false. Flag to determine whether each request needs to be
+        reauthenticated to the security <strong>Realm</strong>. If "true", this
+        Valve uses cached security credentials (username and password) to
+        reauthenticate to the <strong>Realm</strong> each request associated
+        with an SSO session.  If "false", the Valve can itself authenticate
+        requests based on the presence of a valid SSO cookie, without
+        rechecking with the <strong>Realm</strong>.</p>
+      </attribute>
+      <attribute name="rpcTimeout" required="false">
+        <p>The Valve uses a replicated map. This is the timeout for messages
+        that transfer state to/from the other nodes in the cluster. If not
+        specified, a default value of <code>15000</code> milliseconds is used.
+        </p>
+      </attribute>
+      <attribute name="terminateOnStartFailure" required="false">
+        <p>Set to <code>true</code> if you wish this Valve to fail if the
+        underlying replication fails to start. If the Valve fails, then the
+        associated container will fail to start. If you set this attribute to
+        false, and the underlying replications fails to start, the Valve will
+        start and it will attempt to join the cluster and start replication as
+        part of the heartbeat process. If not specified, the default value of
+        <code>false</code> is used.</p>
+      </attribute>
+      <attribute name="accessTimeout" required="false">
+        The timeout for a ping message. If a remote map does not respond within
+        this timeout period, its regarded as disappeared.
+        Default value is <code>5000</code> milliseconds.
+      </attribute>
+    </attributes>
+  </subsection>
+</section>
+
+</body>
+
+</document>

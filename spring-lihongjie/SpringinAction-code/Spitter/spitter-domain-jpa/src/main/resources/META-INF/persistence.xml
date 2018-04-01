@@ -1,0 +1,13 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+   version="1.0">
+   <persistence-unit name="spitterPU" transaction-type="RESOURCE_LOCAL">
+      <class>com.habuma.spitter.domain.Spitter</class>
+      <class>com.habuma.spitter.domain.Spittle</class>
+      <properties>
+         <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+<!--         <property name="hibernate.hbm2ddl.auto" value="create-drop"/>-->
+      </properties>
+   </persistence-unit>
+</persistence>

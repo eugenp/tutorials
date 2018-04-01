@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<groupId>io.spring.demo</groupId>
+	<version>2.0.0-RELEASE</version>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>mvc-exceptions</artifactId>
+	<name>Demo application for Spring Exception Handling Blog</name>
+	
+	<!-- Build as a JAR running Tomcat embedded -->
+	<packaging>jar</packaging>
+
+        <!--  Note that we are using spring.version to get Spring 4.1. -->
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<start-class>demo.main.Main</start-class>
+		<!-- <java.version>1.8</java.version> -->
+		<spring.version>4.1.0.RELEASE</spring.version>
+	</properties>
+
+	<!-- Must inherit from the Spring Boot parent POM. -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.1.8.RELEASE</version>
+	</parent>
+
+	<!-- Spring boot starters automatically configure common setups.  It also
+		detects known dependencies like Thymeleaf. -->
+	<dependencies>
+		<!-- Spring Boot itself. Version number inherited from parent POM. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- RESTful API for monitoring the app. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- Tell Spring Boot to setup Thymeleaf for page rendering. -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- Spring Boot plugin enables: spring-boot:run -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!--
+			  // Allow deployment to Cloud Foundry.  To use, run:
+			  //    mvn install
+			  //    mvn -Dcf.username=xxxm -Dcf.password=xxx -Dcf.org=xxx cf:push
+			  -->
+			<plugin>
+				<groupId>org.cloudfoundry</groupId>
+				<artifactId>cf-maven-plugin</artifactId>
+				<version>1.0.1</version>
+				<configuration>
+					<server>pivotal-cloud-foundry</server>
+					<target>https://api.run.pivotal.io</target>
+					<space>development</space>
+					<appname>mvc-exceptions</appname>
+					<!-- Need to make url unique - change xxx -->
+					<url>mvc-exceptions-xxx.cfapps.io</url>
+					<memory>512</memory>
+					<instances>1</instances>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -1,0 +1,74 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="copy">
+<title>Exception Blog Demo Code</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta
+	content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no"
+	id="Viewport" name="viewport" />
+
+<!-- Bootstrap -->
+<link rel="stylesheet" media="screen"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" />
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap-theme.min.css" />
+
+<link rel="stylesheet" href="/styles.css" />
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]
+	      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	    <![endif]-->
+</head>
+
+<body th:fragment="copy" class="container">
+	<nav class="navbar navbar-default navbar-inverse" role="navigation">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span>
+				<!-- Logo -->
+				<span class="icon-bar"></span>
+				<!-- Home -->
+				<span class="icon-bar"></span>
+				<!-- This Blog -->
+				<span class="icon-bar"></span>
+				<!-- Other Blogs -->
+			</button>
+			<a title="Spring IO" href="http://www.spring.io"><img
+				height="50" th:src="@{/spring-trans.png}" src="spring-trans.png" /></a>
+			&nbsp;&nbsp;&nbsp;
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/" th:href="@{/}">Home</a></li>
+				<li><a
+					href="https://spring.io/blog/2013/11/01/exception-handling-in-spring-mvc">This
+						Blog</a></li>
+				<li><a href="http://spring.io/blog">Other Blogs</a></li>
+
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="http://www.pivotal.io"><img alt="Pivotal"
+						title="Pivotal" height="25" th:src="@{/pivotal-logo-600.png}"
+						src="pivotal-logo-600.png" /></a></li>
+
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</nav>
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="windows-auth-howto.html">
+
+    &project;
+
+    <properties>
+      <title>Windows Authentication How-To</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Overview">
+<p>Integrated Windows authentication is most frequently used within intranet
+environments since it requires that the server performing the authentication and
+the user being authenticated are part of the same domain. For the user to be
+authenticated automatically, the client machine used by the user must also be
+part of the domain.</p>
+<p>There are several options for implementing integrated Windows authentication
+with Apache Tomcat. They are:
+<ul>
+<li>Built-in Tomcat support.</li>
+<li>Use a third party library such as Waffle.</li>
+<li>Use a reverse proxy that supports Windows authentication to perform the
+authentication step such as IIS or httpd.</li>
+</ul>
+The configuration of each of these options is discussed in the following
+sections.</p>
+</section>
+
+<section name="Built-in Tomcat support">
+<p>Kerberos (the basis for integrated Windows authentication) requires careful
+configuration. If the steps in this guide are followed exactly, then a working
+configuration will result. It is important that the steps below are followed
+exactly. There is very little scope for flexibility in the configuration. From
+the testing to date it is known that:</p>
+<ul>
+<li>The host name used to access the Tomcat server must match the host name in
+the SPN exactly else authentication will fail. A checksum error may be reported
+in the debug logs in this case.</li>
+<li>The client must be of the view that the server is part of the local trusted
+intranet.</li>
+<li>The SPN must be HTTP/&lt;hostname&gt; and it must be exactly the same in all
+the places it is used.</li>
+<li>The port number must not be included in the SPN.</li>
+<li>No more than one SPN may be mapped to a domain user.</li>
+<li>Tomcat must run as the domain account with which the SPN has been associated
+or as domain admin. It is <strong>NOT</strong> recommended to run Tomcat under a
+domain admin user.</li>
+<li>The domain name (<code>DEV.LOCAL</code>) is not case sensitive when used in
+the ktpass command, nor when used in jaas.conf</li>
+<li>The domain must be specified when using the ktpass command</li>
+</ul>
+<p>There are four components to the configuration of the built-in Tomcat
+support for Windows authentication. The domain controller, the server hosting
+Tomcat, the web application wishing to use Windows authentication and the client
+machine. The following sections describe the configuration required for each
+component.</p>
+<p>The names of the three machines used in the configuration examples below are
+win-dc01.dev.local (the domain controller), win-tc01.dev.local (the Tomcat
+instance) and win-pc01.dev.local (client). All are members of the DEV.LOCAL
+domain.</p>
+<p>Note: In order to use the passwords in the steps below, the domain password
+policy had to be relaxed. This is not recommended for production environments.
+</p>
+
+  <subsection name="Domain Controller">
+  <p>These steps assume that the server has already been configured to act as a
+  domain controller. Configuration of a Windows server as a domain controller is
+  outside the scope of this how-to. The steps to configure the domain controller
+  to enable Tomcat to support Windows authentication are as follows:
+  </p>
+  <ul>
+  <li>Create a domain user that will be mapped to the service name used by the
+  Tomcat server. In this how-to, this user is called <code>tc01</code> and has a
+  password of <code>tc01pass</code>.</li>
+  <li>Map the service principal name (SPN) to the user account. SPNs take the
+  form <code>
+  &lt;service class&gt;/&lt;host&gt;:&lt;port&gt;/&lt;service name&gt;</code>.
+  The SPN used in this how-to is <code>HTTP/win-tc01.dev.local</code>. To
+  map the user to the SPN, run the following:
+  <source>setspn -A HTTP/win-tc01.dev.local tc01</source>
+  </li>
+  <li>Generate the keytab file that the Tomcat server will use to authenticate
+  itself to the domain controller. This file contains the Tomcat private key for
+  the service provider account and should be protected accordingly. To generate
+  the file, run the following command (all on a single line):
+  <source>ktpass /out c:\tomcat.keytab /mapuser tc01@DEV.LOCAL
+          /princ HTTP/win-tc01.dev.local@DEV.LOCAL
+          /pass tc01pass /kvno 0</source></li>
+  <li>Create a domain user to be used on the client. In this how-to the domain
+  user is <code>test</code> with a password of <code>testpass</code>.</li>
+  </ul>
+  <p>The above steps have been tested on a domain controller running Windows
+  Server 2008 R2 64-bit Standard using the Windows Server 2003 functional level
+  for both the forest and the domain.
+  </p>
+  </subsection>
+
+  <subsection name="Tomcat instance (Windows server)">
+  <p>These steps assume that Tomcat and a Java 6 JDK/JRE have already been
+  installed and configured and that Tomcat is running as the tc01@DEV.LOCAL
+  user. The steps to configure the Tomcat instance for Windows authentication
+  are as follows:
+  </p>
+  <ul>
+  <li>Copy the <code>tomcat.keytab</code> file created on the domain controller
+  to <code>$CATALINA_BASE/conf/tomcat.keytab</code>.</li>
+  <li>Create the kerberos configuration file
+  <code>$CATALINA_BASE/conf/krb5.ini</code>. The file used in this how-to
+  contained:<source>[libdefaults]
+default_realm = DEV.LOCAL
+default_keytab_name = FILE:c:\apache-tomcat-7.0.x\conf\tomcat.keytab
+default_tkt_enctypes = rc4-hmac,aes256-cts-hmac-sha1-96,aes128-cts-hmac-sha1-96
+default_tgs_enctypes = rc4-hmac,aes256-cts-hmac-sha1-96,aes128-cts-hmac-sha1-96
+forwardable=true
+
+[realms]
+DEV.LOCAL = {
+        kdc = win-dc01.dev.local:88
+}
+
+[domain_realm]
+dev.local= DEV.LOCAL
+.dev.local= DEV.LOCAL</source>
+  The location of this file can be changed by setting the
+  <code>java.security.krb5.conf</code> system property.</li>
+  <li>Create the JAAS login configuration file
+  <code>$CATALINA_BASE/conf/jaas.conf</code>. The file used in this how-to
+  contained:<source>com.sun.security.jgss.krb5.initiate {
+    com.sun.security.auth.module.Krb5LoginModule required
+    doNotPrompt=true
+    principal="HTTP/win-tc01.dev.local@DEV.LOCAL"
+    useKeyTab=true
+    keyTab="c:/apache-tomcat-7.0.x/conf/tomcat.keytab"
+    storeKey=true;
+};
+
+com.sun.security.jgss.krb5.accept {
+    com.sun.security.auth.module.Krb5LoginModule required
+    doNotPrompt=true
+    principal="HTTP/win-tc01.dev.local@DEV.LOCAL"
+    useKeyTab=true
+    keyTab="c:/apache-tomcat-7.0.x/conf/tomcat.keytab"
+    storeKey=true;
+};</source>
+  The location of this file can be changed by setting the
+  <code>java.security.auth.login.config</code> system property. The LoginModule
+  used is a JVM specific one so ensure that the LoginModule specified matches
+  the JVM being used. The name of the login configuration must match the
+  value used by the <a href="config/valve.html#SPNEGO_Valve">authentication
+  valve</a>.</li>
+  </ul>
+  <p>The SPNEGO authenticator will work with any <a href="config/realm.html">
+  Realm</a> but if used with the JNDI Realm, by default the JNDI Realm will use
+  the user&apos;s delegated credentials to connect to the Active Directory.
+  </p>
+  <p>The above steps have been tested on a Tomcat server running Windows Server
+  2008 R2 64-bit Standard with an Oracle 1.6.0_24 64-bit JDK.</p>
+  </subsection>
+
+  <subsection name="Tomcat instance (Linux server)">
+  <p>This was tested with:</p>
+  <ul>
+  <li>Java 1.7.0, update 45, 64-bit</li>
+  <li>Ubuntu Server 12.04.3 LTS 64-bit</li>
+  <li>Tomcat 8.0.x (r1546570)</li>
+  </ul>
+  <p>It should work with any Tomcat 7 release from 7.0.12 onwards although it is
+  recommended that the latest stable release is used.</p>
+  <p>The configuration is the same as for Windows but with the following
+  changes:</p>
+  <ul>
+  <li>The Linux server does not have to be part of the Windows domain.</li>
+  <li>The path to the keytab file in krb5.ini and jaas.conf should be updated
+      to reflect the path to the keytab file on the Linux server using Linux
+      style file paths (e.g. /usr/local/tomcat/...).</li>
+  </ul>
+  </subsection>
+
+  <subsection name="Web application">
+  <p>The web application needs to be configured to the use Tomcat specific
+  authentication method of <code>SPNEGO</code> (rather than BASIC etc.) in
+  web.xml. As with the other authenticators, behaviour can be customised by
+  explicitly configuring the <a href="config/valve.html#SPNEGO_Valve">
+  authentication valve</a> and setting attributes on the Valve.</p>
+  </subsection>
+
+  <subsection name="Client">
+  <p>The client must be configured to use Kerberos authentication. For Internet
+  Explorer this means making sure that the Tomcat instance is in the &quot;Local
+  intranet&quot; security domain and that it is configured (Tools > Internet
+  Options > Advanced) with integrated Windows authentication enabled. Note that
+  this <strong>will not</strong> work if you use the same machine for the client
+  and the Tomcat instance as Internet Explorer will use the unsupported NTLM
+  protocol.</p>
+  </subsection>
+
+  <subsection name="References">
+  <p>Correctly configuring Kerberos authentication can be tricky. The following
+  references may prove helpful. Advice is also always available from the
+  <a href="http://tomcat.apache.org/lists.html#tomcat-users">Tomcat users
+  mailing list</a>.</p>
+  <ol>
+  <li><a href="http://www.adopenstatic.com/cs/blogs/ken/archive/2006/10/19/512.aspx">
+      IIS and Kerberos</a></li>
+  <li><a href="http://spnego.sourceforge.net/index.html">
+      SPNEGO project at SourceForge</a></li>
+  <li><a href="http://docs.oracle.com/javase/1.5.0/docs/guide/security/jgss/tutorials/index.html">
+      Oracle JGSS tutorial</a></li>
+  <li><a href="https://cwiki.apache.org/confluence/display/GMOxDOC21/Using+SPNEGO+in+Geronimo#UsingSPNEGOinGeronimo-SettinguptheDomainControllerMachine">
+      Geronimo configuration for Windows authentication</a></li>
+  <li><a href="http://blogs.msdn.com/b/openspecification/archive/2010/11/17/encryption-type-selection-in-kerberos-exchanges.aspx">
+      Encryption Selection in Kerberos Exchanges</a></li>
+  <li><a href="http://support.microsoft.com/kb/977321">Supported Kerberos Cipher
+      Suites</a></li>
+  </ol>
+  </subsection>
+
+</section>
+
+<section name="Third party libraries">
+
+  <subsection name="Waffle">
+  <p>Full details of this solution can be found through the
+  <a href="http://waffle.codeplex.com/"  rel="nofollow">Waffle web site</a>. The
+  key features are:</p>
+  <ul>
+  <li>Drop-in solution</li>
+  <li>Simple configuration (no JAAS or Kerberos keytab configuration required)
+  </li>
+  <li>Uses a native library</li>
+  </ul>
+  </subsection>
+
+  <subsection name="Spring Security - Kerberos Extension">
+  <p>Full details of this solution can be found through the
+  <a href="http://static.springsource.org/spring-security/site/extensions/krb/index.html"
+  rel="nofollow"> Kerberos extension web site</a>. The key features are:</p>
+  <ul>
+  <li>Extension to Spring Security</li>
+  <li>Requires a Kerberos keytab file to be generated</li>
+  <li>Pure Java solution</li>
+  </ul>
+  </subsection>
+
+  <subsection name="SPNEGO project at SourceForge">
+  <p>Full details of this solution can be found through the
+  <a href="http://spnego.sourceforge.net/index.html/"  rel="nofollow">project
+  site</a>. The key features are:</p>
+  <ul>
+  <li>Uses Kerberos</li>
+  <li>Pure Java solution</li>
+  </ul>
+  </subsection>
+
+  <subsection name="Jespa">
+  <p>Full details of this solution can be found through the
+  <a href="http://www.ioplex.com/" rel="nofollow">project web site</a>The key
+  features are:</p>
+  <ul>
+  <li>Pure Java solution</li>
+  <li>Advanced Active Directory integration</li>
+  </ul>
+  </subsection>
+</section>
+
+<section name="Reverse proxies">
+
+  <subsection name="Microsoft IIS">
+  <p>There are three steps to configuring IIS to provide Windows authentication.
+  They are:</p>
+  <ol>
+  <li>Configure IIS as a reverse proxy for Tomcat (see the
+  <a href="http://tomcat.apache.org/connectors-doc/webserver_howto/iis.html">
+  IIS Web Server How-To)</a>.</li>
+  <li>Configure IIS to use Windows authentication</li>
+  <li>Configure Tomcat to use the authentication user information from IIS by
+  setting the tomcatAuthentication attribute on the <a href="config/ajp.html">
+  AJP connector</a> to <code>false</code>. Alternatively, set the
+  tomcatAuthorization attribute to <code>true</code> to allow IIS to
+  authenticate, while Tomcat performs the authorization.</li>
+  </ol>
+  </subsection>
+
+  <subsection name="Apache httpd">
+  <p>Apache httpd does not support Windows authentication out of the box but
+  there are a number of third-party modules that can be used. These include:</p>
+  <ol>
+  <li><a href="http://sourceforge.net/projects/mod-auth-sspi/"
+  rel="nofollow">mod_auth_sspi</a> for use on Windows platforms.</li>
+  <li><a href="http://adldap.sourceforge.net/wiki/doku.php?id=mod_auth_ntlm_winbind"
+  rel="nofollow">mod_auth_ntlm_winbind</a> for non-Windows platforms. Known to
+  work with httpd 2.0.x on 32-bit platforms. Some users have reported stability
+  issues with both httpd 2.2.x builds and 64-bit Linux builds.</li>
+  </ol>
+  <p>There are three steps to configuring httpd to provide Windows
+  authentication. They are:</p>
+  <ol>
+  <li>Configure httpd as a reverse proxy for Tomcat (see the
+  <a href="http://tomcat.apache.org/connectors-doc/webserver_howto/apache.html">
+  Apache httpd Web Server How-To)</a>.</li>
+  <li>Configure httpd to use Windows authentication</li>
+  <li>Configure Tomcat to use the authentication user information from httpd by
+  setting the tomcatAuthentication attribute on the <a href="config/ajp.html">
+  AJP connector</a> to <code>false</code>.</li>
+  </ol>
+  </subsection>
+
+</section>
+
+</body>
+</document>

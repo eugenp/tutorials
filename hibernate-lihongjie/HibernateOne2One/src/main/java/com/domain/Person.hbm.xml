@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain">
+	<class name="Person"><!--不加入table标签，表明类名和表名相同  -->
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name" /><!-- 使用户名唯一，方便后面名称查询 -->
+		<!-- <one-to-one name="idCard" /> --><!-- 共享主键方式一对一 -->
+		<one-to-one name="idCard" property-ref="person"/>
+	</class>
+</hibernate-mapping>
+

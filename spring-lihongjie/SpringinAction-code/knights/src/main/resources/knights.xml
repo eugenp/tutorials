@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <bean id="knight" class="com.springinaction.knights.BraveKnight">
+    <constructor-arg ref="quest" /> <!--<co id="co_inject_quest_bean"/>-->       
+  </bean>
+
+  <bean id="quest"
+        class="com.springinaction.knights.SlayDragonQuest" /><!--<co id="co_quest_bean"/>-->
+      
+</beans>

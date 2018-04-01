@@ -1,0 +1,746 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="ajp.html">
+
+  &project;
+
+  <properties>
+    <author email="remm@apache.org">Remy Maucherat</author>
+    <author email="yoavs@apache.org">Yoav Shapira</author>
+    <author email="arjaquith@mindspring.com">Andrew R. Jaquith</author>
+    <title>The AJP Connector</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>The <strong>AJP Connector</strong> element represents a
+  <strong>Connector</strong> component that communicates with a web
+  connector via the <code>AJP</code> protocol.  This is used for cases
+  where you wish to invisibly integrate Tomcat into an existing (or new)
+  Apache installation, and you want Apache to handle the static content
+  contained in the web application, and/or utilize Apache's SSL
+  processing.</p>
+
+  <p>This connector supports load balancing when used in conjunction with
+  the <code>jvmRoute</code> attribute of the
+  <a href="engine.html">Engine</a>.</p>
+
+  <p>The native connectors supported with this Tomcat release are:</p>
+    <ul>
+      <li>JK 1.2.x with any of the supported servers. See
+      <a href="http://tomcat.apache.org/connectors-doc/">the JK docs</a>
+      for details.</li>
+      <li>mod_proxy on Apache httpd 2.x (included by default in Apache HTTP
+      Server 2.2), with AJP enabled: see
+      <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy_ajp.html">the
+      httpd docs</a> for details.</li>
+    </ul>
+
+  <p><b>Other native connectors supporting AJP may work, but are no longer
+  supported.</b></p>
+
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+  <p>All implementations of <strong>Connector</strong>
+  support the following attributes:</p>
+
+  <attributes>
+
+    <attribute name="ajpFlush" required="false">
+      <p>A boolean value which can be used to enable or disable sending
+      AJP flush messages to the fronting proxy whenever an explicit
+      flush happens. The default value is <code>true</code>.<br/>
+      An AJP flush message is a SEND_BODY_CHUNK packet with no body content.
+      Proxy implementations like mod_jk or mod_proxy_ajp will flush the
+      data buffered in the web server to the client when they receive
+      such a packet. Setting this to <code>false</code> can reduce
+      AJP packet traffic but might delay sending packets to the client.
+      At the end of the response, AJP does always flush to the client.</p>
+    </attribute>
+
+    <attribute name="allowTrace" required="false">
+      <p>A boolean value which can be used to enable or disable the TRACE
+      HTTP method. If not specified, this attribute is set to false.</p>
+    </attribute>
+
+    <attribute name="asyncTimeout" required="false">
+      <p>The default timeout for asynchronous requests in milliseconds. If not
+      specified, this attribute is set to 10000 (10 seconds).</p>
+    </attribute>
+
+    <attribute name="enableLookups" required="false">
+      <p>Set to <code>true</code> if you want calls to
+      <code>request.getRemoteHost()</code> to perform DNS lookups in
+      order to return the actual host name of the remote client.  Set
+      to <code>false</code> to skip the DNS lookup and return the IP
+      address in String form instead (thereby improving performance).
+      By default, DNS lookups are disabled.</p>
+    </attribute>
+
+    <attribute name="maxHeaderCount" required="false">
+      <p>The maximum number of headers in a request that are allowed by the
+      container. A request that contains more headers than the specified limit
+      will be rejected. A value of less than 0 means no limit.
+      If not specified, a default of 100 is used.</p>
+    </attribute>
+
+    <attribute name="maxParameterCount" required="false">
+      <p>The maximum number of parameter and value pairs (GET plus POST) which
+      will be automatically parsed by the container. Parameter and value pairs
+      beyond this limit will be ignored. A value of less than 0 means no limit.
+      If not specified, a default of 10000 is used. Note that
+      <code>FailedRequestFilter</code> <a href="filter.html">filter</a> can be
+      used to reject requests that hit the limit.</p>
+    </attribute>
+
+    <attribute name="maxPostSize" required="false">
+      <p>The maximum size in bytes of the POST which will be handled by
+      the container FORM URL parameter parsing. The limit can be disabled by
+      setting this attribute to a value less than zero. If not specified, this
+      attribute is set to 2097152 (2 megabytes). Note that the
+      <a href="filter.html#Failed_Request_Filter"><code>FailedRequestFilter</code></a>
+      can be used to reject requests that exceed this limit.</p>
+    </attribute>
+
+    <attribute name="maxSavePostSize" required="false">
+      <p>The maximum size in bytes of the POST which will be saved/buffered by
+      the container during FORM or CLIENT-CERT authentication. For both types
+      of authentication, the POST will be saved/buffered before the user is
+      authenticated. For CLIENT-CERT authentication, the POST is buffered for
+      the duration of the SSL handshake and the buffer emptied when the request
+      is processed. For FORM authentication the POST is saved whilst the user
+      is re-directed to the login form and is retained until the user
+      successfully authenticates or the session associated with the
+      authentication request expires. The limit can be disabled by setting this
+      attribute to -1. Setting the attribute to zero will disable the saving of
+      POST data during authentication. If not specified, this attribute is set
+      to 4096 (4 kilobytes).</p>
+    </attribute>
+
+    <attribute name="parseBodyMethods" required="false">
+      <p>A comma-separated list of HTTP methods for which request
+      bodies will be parsed for request parameters identically
+      to POST. This is useful in RESTful applications that want to
+      support POST-style semantics for PUT requests.
+      Note that any setting other than <code>POST</code> causes Tomcat
+      to behave in a way that goes against the intent of the servlet
+      specification.
+      The HTTP method TRACE is specifically forbidden here in accordance
+      with the HTTP specification.
+      The default is <code>POST</code></p>
+    </attribute>
+
+    <attribute name="port" required="true">
+      <p>The TCP port number on which this <strong>Connector</strong>
+      will create a server socket and await incoming connections.  Your
+      operating system will allow only one server application to listen
+      to a particular port number on a particular IP address. If the special
+      value of 0 (zero) is used, then Tomcat will select a free port at random
+      to use for this connector. This is typically only useful in embedded and
+      testing applications.</p>
+    </attribute>
+
+    <attribute name="protocol" required="false">
+      <p>Sets the protocol to handle incoming traffic. To configure an AJP
+        connector this must be specified. If no value for protocol is provided,
+        an <a href="http.html">HTTP connector</a> rather than an AJP connector
+        will be configured.<br/>
+        The standard protocol value for an AJP connector is <code>AJP/1.3</code>
+        which uses an auto-switching mechanism to select either a Java based
+        connector or an APR/native based connector. If the
+        <code>PATH</code> (Windows) or <code>LD_LIBRARY_PATH</code> (on most unix
+        systems) environment variables contain the Tomcat native library, the
+        native/APR connector will be used. If the native library cannot be
+        found, the Java BIO based connector will be used.<br/>
+        To use an explicit protocol rather than rely on the auto-switching
+        mechanism described above, the following values may be used:<br/>
+        <code>org.apache.coyote.ajp.AjpProtocol</code>
+        - blocking Java connector<br/>
+        <code>org.apache.coyote.ajp.AjpNioProtocol</code>
+        - non blocking Java connector.<br/>
+        <code>org.apache.coyote.ajp.AjpAprProtocol</code>
+        - the APR/native connector.<br/>
+        Custom implementations may also be used.<br/>
+        Take a look at our <a href="#Connector_Comparison">Connector
+        Comparison</a> chart.
+      </p>
+    </attribute>
+
+    <attribute name="proxyName" required="false">
+      <p>If this <strong>Connector</strong> is being used in a proxy
+      configuration, configure this attribute to specify the server name
+      to be returned for calls to <code>request.getServerName()</code>.
+      See <a href="#Proxy_Support">Proxy Support</a> for more
+      information.</p>
+    </attribute>
+
+    <attribute name="proxyPort" required="false">
+      <p>If this <strong>Connector</strong> is being used in a proxy
+      configuration, configure this attribute to specify the server port
+      to be returned for calls to <code>request.getServerPort()</code>.
+      See <a href="#Proxy_Support">Proxy Support</a> for more
+      information.</p>
+    </attribute>
+
+    <attribute name="redirectPort" required="false">
+      <p>If this <strong>Connector</strong> is supporting non-SSL
+      requests, and a request is received for which a matching
+      <code>&lt;security-constraint&gt;</code> requires SSL transport,
+      Catalina will automatically redirect the request to the port
+      number specified here.</p>
+    </attribute>
+
+    <attribute name="scheme" required="false">
+      <p>Set this attribute to the name of the protocol you wish to have
+      returned by calls to <code>request.getScheme()</code>.  For
+      example, you would set this attribute to "<code>https</code>"
+      for an SSL Connector.  The default value is "<code>http</code>".
+      </p>
+    </attribute>
+
+    <attribute name="secure" required="false">
+      <p>Set this attribute to <code>true</code> if you wish to have
+      calls to <code>request.isSecure()</code> to return <code>true</code>
+      for requests received by this Connector. You would want this on an
+      SSL Connector or a non SSL connector that is receiving data from a
+      SSL accelerator, like a crypto card, a SSL appliance or even a webserver.
+      The default value is <code>false</code>.</p>
+    </attribute>
+
+    <attribute name="URIEncoding" required="false">
+      <p>This specifies the character encoding used to decode the URI bytes,
+      after %xx decoding the URL. If not specified, ISO-8859-1 will be used.
+      </p>
+    </attribute>
+
+    <attribute name="useBodyEncodingForURI" required="false">
+      <p>This specifies if the encoding specified in contentType should be used
+      for URI query parameters, instead of using the URIEncoding. This
+      setting is present for compatibility with Tomcat 4.1.x, where the
+      encoding specified in the contentType, or explicitly set using
+      Request.setCharacterEncoding method was also used for the parameters from
+      the URL. The default value is <code>false</code>.
+      </p>
+      <p><em>Notes:</em> See notes on this attribute in
+      <a href="http.html">HTTP Connector</a> documentation.</p>
+    </attribute>
+
+    <attribute name="useIPVHosts" required="false">
+      <p>Set this attribute to <code>true</code> to cause Tomcat to use
+      the IP address passed by the native web server to determine the Host
+      to send the request to.  The default value is <code>false</code>.</p>
+    </attribute>
+
+    <attribute name="xpoweredBy" required="false">
+      <p>Set this attribute to <code>true</code> to cause Tomcat to advertise
+      support for the Servlet specification using the header recommended in the
+      specification.  The default value is <code>false</code>.</p>
+    </attribute>
+
+  </attributes>
+
+  </subsection>
+
+  <subsection name="Standard Implementations">
+
+  <p>To use AJP, you must specify the protocol attribute (see above).</p>
+
+  <p>The standard AJP connectors (BIO, NIO and APR/native) all support the
+  following attributes in addition to the common Connector attributes listed
+  above.</p>
+
+  <attributes>
+
+    <attribute name="acceptCount" required="false">
+      <p>The maximum queue length for incoming connection requests when
+      all possible request processing threads are in use.  Any requests
+      received when the queue is full will be refused.  The default
+      value is 100.</p>
+    </attribute>
+
+    <attribute name="acceptorThreadCount" required="false">
+      <p>The number of threads to be used to accept connections. Increase this
+      value on a multi CPU machine, although you would never really need more
+      than <code>2</code>. Also, with a lot of non keep alive connections, you
+      might want to increase this value as well. Default value is
+      <code>1</code>.</p>
+    </attribute>
+
+    <attribute name="acceptorThreadPriority" required="false">
+      <p>The priority of the acceptor threads. The threads used to accept
+      new connections. The default value is <code>5</code> (the value of the
+      <code>java.lang.Thread.NORM_PRIORITY</code> constant). See the JavaDoc
+      for the <code>java.lang.Thread</code> class for more details on what
+      this priority means.</p>
+    </attribute>
+
+    <attribute name="address" required="false">
+      <p>For servers with more than one IP address, this attribute
+      specifies which address will be used for listening on the specified
+      port.  By default, this port will be used on all IP addresses
+      associated with the server. A value of <code>127.0.0.1</code>
+      indicates that the Connector will only listen on the loopback
+      interface.</p>
+    </attribute>
+
+    <attribute name="bindOnInit" required="false">
+      <p>Controls when the socket used by the connector is bound. By default it
+      is bound when the connector is initiated and unbound when the connector is
+      destroyed. If set to <code>false</code>, the socket will be bound when the
+      connector is started and unbound when it is stopped.</p>
+    </attribute>
+
+    <attribute name="clientCertProvider" required="false">
+      <p>When client certificate information is presented in a form other than
+      instances of <code>java.security.cert.X509Certificate</code> it needs to
+      be converted before it can be used and this property controls which JSSE
+      provider is used to perform the conversion. For example it is used with
+      the AJP connectors, the <a href="http.html">HTTP APR connector</a> and
+      with the <a href="valve.html#SSL_Authenticator_Valve">
+      org.apache.catalina.valves.SSLValve</a>.If not specified, the default
+      provider will be used.</p>
+    </attribute>
+
+    <attribute name="connectionLinger" required="false">
+      <p>The number of seconds during which the sockets used by this
+      <strong>Connector</strong> will linger when they are closed. The default
+      value is <code>-1</code> which disables socket linger.</p>
+    </attribute>
+
+    <attribute name="connectionTimeout" required="false">
+      <p>The number of milliseconds this <strong>Connector</strong> will wait,
+      after accepting a connection, for the request URI line to be
+      presented.  The default value for AJP protocol connectors
+      is <code>-1</code> (i.e. infinite).</p>
+    </attribute>
+
+    <attribute name="executor" required="false">
+      <p>A reference to the name in an <a href="executor.html">Executor</a>
+      element. If this attribute is set, and the named executor exists, the
+      connector will use the executor, and all the other thread attributes will
+      be ignored. Note that if a shared executor is not specified for a
+      connector then the connector will use a private, internal executor to
+      provide the thread pool.</p>
+    </attribute>
+
+    <attribute name="executorTerminationTimeoutMillis" required="false">
+      <p>The time that the private internal executor will wait for request
+      processing threads to terminate before continuing with the process of
+      stopping the connector. If not set, the default is <code>0</code> (zero)
+      for the BIO connector and <code>5000</code> (5 seconds) for the NIO and
+      APR/native connectors.</p>
+    </attribute>
+
+    <attribute name="keepAliveTimeout" required="false">
+      <p>The number of milliseconds this <strong>Connector</strong> will wait for
+       another AJP request before closing the connection.
+       The default value is to use the value that has been set for the
+       connectionTimeout attribute.</p>
+    </attribute>
+
+    <attribute name="maxConnections" required="false">
+      <p>The maximum number of connections that the server will accept and
+      process at any given time. When this number has been reached, the server
+      will accept, but not process, one further connection. This additional
+      connection be blocked until the number of connections being processed
+      falls below <strong>maxConnections</strong> at which point the server will
+      start accepting and processing new connections again. Note that once the
+      limit has been reached, the operating system may still accept connections
+      based on the <code>acceptCount</code> setting. The default value varies by
+      connector type. For BIO the default is the value of
+      <strong>maxThreads</strong> unless an <a href="executor.html">Executor</a>
+      is used in which case the default will be the value of maxThreads from the
+      executor. For NIO the default is <code>10000</code>.
+      For APR/native, the default is <code>8192</code>.</p>
+      <p>Note that for APR/native on Windows, the configured value will be
+      reduced to the highest multiple of 1024 that is less than or equal to
+      maxConnections. This is done for performance reasons.<br/>
+      If set to a value of -1, the maxConnections feature is disabled 
+      and connections are not counted.</p>
+    </attribute>
+
+    <attribute name="maxCookieCount" required="false">
+      <p>The maximum number of cookies that are permitted for a request. A value
+      of less than zero means no limit. If not specified, a default value of 200
+      will be used.</p>
+    </attribute>
+
+    <attribute name="maxThreads" required="false">
+      <p>The maximum number of request processing threads to be created
+      by this <strong>Connector</strong>, which therefore determines the
+      maximum number of simultaneous requests that can be handled.  If
+      not specified, this attribute is set to 200. If an executor is associated
+      with this connector, this attribute is ignored as the connector will
+      execute tasks using the executor rather than an internal thread pool. Note
+      that if an executor is configured any value set for this attribute will be
+      recorded correctly but it will be reported (e.g. via JMX) as
+      <code>-1</code> to make clear that it is not used.</p>
+    </attribute>
+
+    <attribute name="minSpareThreads" required="false">
+      <p>The minimum number of threads always kept running. If not specified,
+      the default of <code>10</code> is used. If an executor is associated
+      with this connector, this attribute is ignored as the connector will
+      execute tasks using the executor rather than an internal thread pool. Note
+      that if an executor is configured any value set for this attribute will be
+      recorded correctly but it will be reported (e.g. via JMX) as
+      <code>-1</code> to make clear that it is not used.</p>
+    </attribute>
+
+    <attribute name="packetSize" required="false">
+      <p>This attribute sets the maximum AJP packet size in Bytes. The maximum
+      value is 65536. It should be the same as the <code>max_packet_size</code>
+      directive configured for mod_jk. Normally it is not necessary to change
+      the maximum packet size. Problems with the default value have been
+      reported when sending certificates or certificate chains. The default
+      value is 8192. If set to less than 8192 then the setting will ignored and
+      the default value of 8192 used.</p>
+    </attribute>
+
+    <attribute name="processorCache" required="false">
+      <p>The protocol handler caches Processor objects to speed up performance.
+      This setting dictates how many of these objects get cached.
+      <code>-1</code> means unlimited, default is <code>200</code>. If not using
+      Servlet 3.0 asynchronous processing, a good default is to use the same as
+      the maxThreads setting. If using Servlet 3.0 asynchronous processing, a
+      good default is to use the larger of maxThreads and the maximum number of
+      expected concurrent requests (synchronous and asynchronous).</p>
+    </attribute>
+
+    <attribute name="requiredSecret" required="false">
+      <p>Only requests from workers with this secret keyword will be accepted.
+      </p>
+    </attribute>
+
+    <attribute name="tcpNoDelay" required="false">
+      <p>If set to <code>true</code>, the TCP_NO_DELAY option will be
+      set on the server socket, which improves performance under most
+      circumstances.  This is set to <code>true</code> by default.</p>
+    </attribute>
+
+    <attribute name="threadPriority" required="false">
+      <p>The priority of the request processing threads within the JVM.
+      The default value is <code>5</code> (the value of the
+      <code>java.lang.Thread.NORM_PRIORITY</code> constant). See the JavaDoc
+      for the <code>java.lang.Thread</code> class for more details on what
+      this priority means.If an executor is associated
+      with this connector, this attribute is ignored as the connector will
+      execute tasks using the executor rather than an internal thread pool. Note
+      that if an executor is configured any value set for this attribute will be
+      recorded correctly but it will be reported (e.g. via JMX) as
+      <code>-1</code> to make clear that it is not used.</p>
+    </attribute>
+
+    <attribute name="tomcatAuthentication" required="false">
+      <p>If set to <code>true</code>, the authentication will be done in Tomcat.
+      Otherwise, the authenticated principal will be propagated from the native
+      webserver and used for authorization in Tomcat. Note that this principal
+      will have no roles associated with it.
+      The default value is <code>true</code>. If
+      <code>tomcatAuthorization</code> is set to <code>true</code> this
+      attribute has no effect.</p>
+    </attribute>
+
+    <attribute name="tomcatAuthorization" required="false">
+      <p>If set to <code>true</code>, the authenticated principal will be
+      propagated from the native webserver and considered already authenticated
+      in Tomcat. If the web application has one or more security constraints,
+      authorization will then be performed by Tomcat and roles assigned to the
+      authenticated principal. If the appropriate Tomcat Realm for the request
+      does not recognise the provided user name, a Principal will be still be
+      created but it will have no roles. The default value is
+      <code>false</code>.</p>
+    </attribute>
+
+  </attributes>
+
+  </subsection>
+
+  <subsection name="Java TCP socket attributes">
+
+    <p>The BIO and NIO implementation support the following Java TCP socket
+    attributes in addition to the common Connector and HTTP attributes listed
+    above.</p>
+
+    <attributes>
+      <attribute name="socket.rxBufSize" required="false">
+        <p>(int)The socket receive buffer (SO_RCVBUF) size in bytes. JVM default
+        used if not set.</p>
+      </attribute>
+      <attribute name="socket.txBufSize" required="false">
+        <p>(int)The socket send buffer (SO_SNDBUF) size in bytes. JVM default
+        used if not set.</p>
+      </attribute>
+      <attribute name="socket.tcpNoDelay" required="false">
+        <p>(bool)This is equivalent to standard attribute
+        <strong>tcpNoDelay</strong>.</p>
+      </attribute>
+      <attribute name="socket.soKeepAlive" required="false">
+        <p>(bool)Boolean value for the socket's keep alive setting
+        (SO_KEEPALIVE). JVM default used if not set.</p>
+      </attribute>
+      <attribute name="socket.ooBInline" required="false">
+        <p>(bool)Boolean value for the socket OOBINLINE setting. JVM default
+        used if not set.</p>
+      </attribute>
+      <attribute name="socket.soReuseAddress" required="false">
+        <p>(bool)Boolean value for the sockets reuse address option
+        (SO_REUSEADDR). JVM default used if not set.</p>
+      </attribute>
+      <attribute name="socket.soLingerOn" required="false">
+        <p>(bool)Boolean value for the sockets so linger option (SO_LINGER).
+        A value for the standard attribute <strong>connectionLinger</strong>
+        that is &gt;=0 is equivalent to setting this to <code>true</code>.
+        A value for the standard attribute <strong>connectionLinger</strong>
+        that is &lt;0 is equivalent to setting this to <code>false</code>.
+        Both this attribute and <code>soLingerTime</code> must be set else the
+        JVM defaults will be used for both.</p>
+      </attribute>
+      <attribute name="socket.soLingerTime" required="false">
+        <p>(int)Value in seconds for the sockets so linger option (SO_LINGER).
+        This is equivalent to standard attribute
+        <strong>connectionLinger</strong>.
+        Both this attribute and <code>soLingerOn</code> must be set else the
+        JVM defaults will be used for both.</p>
+      </attribute>
+      <attribute name="socket.soTimeout" required="false">
+        <p>This is equivalent to standard attribute
+        <strong>connectionTimeout</strong>.</p>
+      </attribute>
+      <attribute name="socket.performanceConnectionTime" required="false">
+        <p>(int)The first value for the performance settings. See
+        <a href="http://docs.oracle.com/javase/6/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a>
+        All three performance attributes must be set else the JVM defaults will
+        be used for all three.</p>
+      </attribute>
+      <attribute name="socket.performanceLatency" required="false">
+        <p>(int)The second value for the performance settings. See
+        <a href="http://docs.oracle.com/javase/6/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a>
+        All three performance attributes must be set else the JVM defaults will
+        be used for all three.</p>
+      </attribute>
+      <attribute name="socket.performanceBandwidth" required="false">
+        <p>(int)The third value for the performance settings. See
+        <a href="http://docs.oracle.com/javase/6/docs/api/java/net/Socket.html#setPerformancePreferences(int,%20int,%20int)">Socket Performance Options</a>
+        All three performance attributes must be set else the JVM defaults will
+        be used for all three.</p>
+      </attribute>
+      <attribute name="socket.unlockTimeout" required="false">
+        <p>(int) The timeout for a socket unlock. When a connector is stopped, it will try to release the acceptor thread by opening a connector to itself.
+           The default value is <code>250</code> and the value is in milliseconds</p>
+      </attribute>
+    </attributes>
+  </subsection>
+
+  <subsection name="NIO specific configuration">
+
+    <p>The following attributes are specific to the NIO connector.</p>
+
+    <attributes>
+
+      <attribute name="socket.directBuffer" required="false">
+        <p>(bool)Boolean value, whether to use direct ByteBuffers or java mapped
+        ByteBuffers. Default is <code>false</code>.<br/>
+        When you are using direct buffers, make sure you allocate the
+        appropriate amount of memory for the direct memory space. On Sun's JDK
+        that would be something like <code>-XX:MaxDirectMemorySize=256m</code>.
+        </p>
+      </attribute>
+
+      <attribute name="socket.appReadBufSize" required="false">
+        <p>(int)Each connection that is opened up in Tomcat get associated with
+        a read ByteBuffer. This attribute controls the size of this buffer. By
+        default this read buffer is sized at <code>8192</code> bytes. For lower
+        concurrency, you can increase this to buffer more data. For an extreme
+        amount of keep alive connections, decrease this number or increase your
+        heap size.</p>
+      </attribute>
+
+      <attribute name="socket.appWriteBufSize" required="false">
+        <p>(int)Each connection that is opened up in Tomcat get associated with
+        a write ByteBuffer. This attribute controls the size of this buffer. By
+        default this write buffer is sized at <code>8192</code> bytes. For low
+        concurrency you can increase this to buffer more response data. For an
+        extreme amount of keep alive connections, decrease this number or
+        increase your heap size.<br/>
+        The default value here is pretty low, you should up it if you are not
+        dealing with tens of thousands concurrent connections.</p>
+      </attribute>
+
+      <attribute name="socket.bufferPool" required="false">
+        <p>(int)The NIO connector uses a class called NioChannel that holds
+        elements linked to a socket. To reduce garbage collection, the NIO
+        connector caches these channel objects. This value specifies the size of
+        this cache. The default value is <code>500</code>, and represents that
+        the cache will hold 500 NioChannel objects. Other values are
+        <code>-1</code> for unlimited cache and <code>0</code> for no cache.</p>
+      </attribute>
+
+      <attribute name="socket.bufferPoolSize" required="false">
+        <p>(int)The NioChannel pool can also be size based, not used object
+        based. The size is calculated as follows:<br/>
+        NioChannel
+        <code>buffer size = read buffer size + write buffer size</code><br/>
+        SecureNioChannel <code>buffer size = application read buffer size +
+        application write buffer size + network read buffer size +
+        network write buffer size</code><br/>
+        The value is in bytes, the default value is <code>1024*1024*100</code>
+        (100MB).</p>
+      </attribute>
+
+      <attribute name="socket.processorCache" required="false">
+        <p>(int)Tomcat will cache SocketProcessor objects to reduce garbage
+        collection. The integer value specifies how many objects to keep in the
+        cache at most. The default is <code>500</code>. Other values are
+        <code>-1</code> for unlimited cache and <code>0</code> for no cache.</p>
+      </attribute>
+
+      <attribute name="socket.keyCache" required="false">
+        <p>(int)Tomcat will cache KeyAttachment objects to reduce garbage
+        collection. The integer value specifies how many objects to keep in the
+        cache at most. The default is <code>500</code>. Other values are
+        <code>-1</code> for unlimited cache and <code>0</code> for no cache.</p>
+      </attribute>
+
+      <attribute name="socket.eventCache" required="false">
+        <p>(int)Tomcat will cache PollerEvent objects to reduce garbage
+        collection. The integer value specifies how many objects to keep in the
+        cache at most. The default is <code>500</code>. Other values are
+        <code>-1</code> for unlimited cache and <code>0</code> for no cache.</p>
+      </attribute>
+
+      <attribute name="selectorPool.maxSelectors" required="false">
+        <p>(int)The max selectors to be used in the pool, to reduce selector
+        contention. Use this option when the command line
+        <code>org.apache.tomcat.util.net.NioSelectorShared</code> value is set
+        to false. Default value is <code>200</code>.</p>
+      </attribute>
+
+      <attribute name="selectorPool.maxSpareSelectors" required="false">
+        <p>(int)The max spare selectors to be used in the pool, to reduce
+        selector contention. When a selector is returned to the pool, the system
+        can decide to keep it or let it be GC'd. Use this option when the
+        command line <code>org.apache.tomcat.util.net.NioSelectorShared</code>
+        value is set to false. Default value is <code>-1</code> (unlimited).</p>
+      </attribute>
+
+      <attribute name="command-line-options" required="false">
+        <p>The following command line options are available for the NIO
+        connector:<br/>
+        <code>-Dorg.apache.tomcat.util.net.NioSelectorShared=true|false</code>
+        - default is <code>true</code>. Set this value to <code>false</code> if you wish to
+        use a selector for each thread. When you set it to <code>false</code>, you can
+        control the size of the pool of selectors by using the
+        <strong>selectorPool.maxSelectors</strong> attribute.</p>
+      </attribute>
+
+    </attributes>
+  </subsection>
+
+  <subsection name="APR/native specific configuration">
+
+    <p>The APR/native implementation supports the following attributes in
+    addition to the common Connector and AJP attributes listed above.</p>
+
+    <attributes>
+      <attribute name="pollTime" required="false">
+        <p>Duration of a poll call in microseconds. Lowering this value will
+        slightly decrease latency of connections being kept alive in some cases
+        , but will use more CPU as more poll calls are being made. The default
+        value is 2000 (2ms).
+        </p>
+    </attribute>
+
+    <attribute name="pollerSize" required="false">
+      <p>Amount of sockets that the poller responsible for polling kept alive
+      connections can hold at a given time. Extra connections will be closed
+      right away. The default value is 8192, corresponding to 8192 keep-alive
+      connections.</p>
+    </attribute>
+
+    </attributes>
+
+  </subsection>
+
+</section>
+
+
+<section name="Nested Components">
+
+  <p>None at this time.</p>
+
+</section>
+
+<section name="Special Features">
+
+  <subsection name="Proxy Support">
+
+  <p>The <code>proxyName</code> and <code>proxyPort</code> attributes can
+  be used when Tomcat is run behind a proxy server.  These attributes
+  modify the values returned to web applications that call the
+  <code>request.getServerName()</code> and <code>request.getServerPort()</code>
+  methods, which are often used to construct absolute URLs for redirects.
+  Without configuring these attributes, the values returned would reflect
+  the server name and port on which the connection from the proxy server
+  was received, rather than the server name and port to whom the client
+  directed the original request.</p>
+
+  <p>For more information, see the
+  <a href="../proxy-howto.html">Proxy Support HOW-TO</a>.</p>
+
+  </subsection>
+
+  <subsection name="Connector Comparison">
+
+    <p>Below is a small chart that shows how the connectors differ.</p>
+    <source>
+                       Java Blocking Connector   Java Nio Blocking Connector   APR/native Connector
+                                 BIO                         NIO                       APR
+    Classname                AjpProtocol               AjpNioProtocol           AjpAprProtocol
+    Tomcat Version           3.x onwards                 7.x onwards              5.5.x onwards
+    Support Polling              NO                          YES                       YES
+    Polling Size                 N/A                   maxConnections             maxConnections
+    Read Request Headers      Blocking                    Blocking                   Blocking
+    Read Request Body         Blocking                    Blocking                   Blocking
+    Write Response            Blocking                    Blocking                   Blocking
+    Wait for next Request     Blocking                  Non Blocking               Non Blocking
+    Max Connections        maxConnections              maxConnections             maxConnections
+
+    </source>
+
+  </subsection>
+
+</section>
+
+</body>
+
+</document>

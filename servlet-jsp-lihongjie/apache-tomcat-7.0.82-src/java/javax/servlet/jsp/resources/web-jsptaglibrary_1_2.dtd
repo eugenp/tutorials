@@ -1,0 +1,478 @@
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!--
+
+   This is the DTD defining the JavaServer Pages 1.2 Tag Library
+   descriptor (.tld) (XML) file format/syntax.
+
+   A Tag Library is a JAR file containing a valid instance of a Tag Library
+   Descriptor (taglib.tld) file in the META-INF subdirectory, along with the
+   appropriate implementing classes, and other resources required to
+   implement the tags defined therein.
+
+   Use is subject to license terms.
+  -->
+
+<!NOTATION WEB-JSPTAGLIB.1_2 PUBLIC
+          "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN">
+
+<!--
+This is the XML DTD for the JSP 1.2 Tag Library Descriptor.
+All JSP 1.2 tag library descriptors must include a DOCTYPE
+of the following form:
+
+  <!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+-->
+
+<!--
+The taglib tag is the document root, it defines:
+
+tlib-version    the version of the tag library implementation
+
+jsp-version     the version of JSP the tag library depends upon
+
+short-name      a simple default short name that could be used by
+                a JSP authoring tool to create names with a mnemonic
+                value; for example, the it may be used as the prefered
+                prefix value in taglib directives
+
+uri             a uri uniquely identifying this taglib
+
+display-name    the display-name element contains a short name that
+                is intended to be displayed by tools
+small-icon      optional small-icon that can be used by tools
+
+large-icon      optional large-icon that can be used by tools
+
+description     a simple string describing the "use" of this taglib,
+                should be user discernable
+
+validator       optional TagLibraryValidator information
+
+listener        optional event listener specification
+
+
+-->
+
+<!ELEMENT taglib (tlib-version, jsp-version, short-name, uri?,
+                  display-name?, small-icon?, large-icon?, description?,
+                  validator?, listener*, tag+) >
+
+<!ATTLIST taglib id ID #IMPLIED
+        xmlns CDATA #FIXED
+        "http://java.sun.com/JSP/TagLibraryDescriptor"
+>
+
+<!--
+Describes this version (number) of the taglibrary (dewey decimal)
+
+#PCDATA ::= [0-9]*{ "."[0-9] }0..3
+-->
+
+<!ELEMENT tlib-version (#PCDATA) >
+
+<!--
+Describes the JSP version (number) this taglibrary requires in
+order to function (dewey decimal)
+
+The default is 1.2
+
+#PCDATA ::= [0-9]*{ "."[0-9] }0..3
+-->
+
+<!ELEMENT jsp-version  (#PCDATA) >
+
+<!--
+Defines a short (default) short-name to be used for tags and
+variable names used/created by this tag library.  Do not use
+white space, and do not start with digits or underscore.
+
+#PCDATA ::= NMTOKEN
+-->
+
+<!ELEMENT short-name      (#PCDATA) >
+
+<!--
+Defines a public URI that uniquely identifies this version of
+the taglibrary.  Leave it empty if it does not apply.
+-->
+
+<!ELEMENT uri             (#PCDATA) >
+
+<!--
+Defines an arbitrary text string describing the tag library
+-->
+
+<!ELEMENT description     (#PCDATA) >
+
+<!--
+
+Defines an optional validator that can be used to
+validate the conformance of a JSP page to using this tag library.
+-->
+
+<!ELEMENT validator (validator-class, init-param*, description?) >
+
+
+<!--
+
+Defines the TagLibraryValidator class that can be used to
+validate the conformance of a JSP page to using this tag library.
+-->
+
+<!ELEMENT validator-class (#PCDATA) >
+
+
+<!--
+
+The init-param element contains a name/value pair as an
+initialization param
+-->
+
+<!ELEMENT init-param (param-name, param-value, description?)>
+
+<!--
+
+The param-name element contains the name of a parameter.
+-->
+
+<!ELEMENT param-name (#PCDATA)>
+
+<!--
+
+The param-value element contains the value of a parameter.
+-->
+
+<!ELEMENT param-value (#PCDATA)>
+
+
+<!--
+
+Defines an optional event listener object to be instantiated and
+registered automatically.
+-->
+
+<!ELEMENT listener (listener-class) >
+
+<!--
+
+The listener-class element declares a class in the application that
+must be registered as a web application listener bean.  See the
+Servlet 2.3 specification for details.
+-->
+
+<!ELEMENT listener-class (#PCDATA) >
+
+
+<!--
+The tag defines a unique tag in this tag library.  It has one
+attribute, id.
+
+The tag element may have several subelements defining:
+
+name              The unique action name
+
+tag-class         The tag handler class implementing
+                  javax.servlet.jsp.tagext.Tag
+
+tei-class         An optional subclass of
+                  javax.servlet.jsp.tagext.TagExtraInfo
+
+body-content      The body content type
+
+display-name      A short name that is intended to be displayed
+                  by tools
+
+small-icon        Optional small-icon that can be used by tools
+
+large-icon        Optional large-icon that can be used by tools
+
+description       Optional tag-specific information
+
+variable          Optional scripting variable information
+
+attribute         All attributes of this action
+
+example           Optional informal description of an example of a
+                  use of this tag
+
+-->
+
+<!ELEMENT tag (name, tag-class, tei-class?, body-content?, display-name?,
+               small-icon?, large-icon?, description?, variable*, attribute*,
+               example?) >
+
+<!--
+Defines the subclass of javax.serlvet.jsp.tagext.Tag that implements
+the request time semantics for this tag. (required)
+
+#PCDATA ::= fully qualified Java class name
+-->
+
+<!ELEMENT tag-class (#PCDATA) >
+
+<!--
+Defines the subclass of javax.servlet.jsp.tagext.TagExtraInfo for
+this tag. (optional)
+
+If this is not given, the class is not consulted at translation time.
+
+#PCDATA ::= fully qualified Java class name
+-->
+
+<!ELEMENT tei-class (#PCDATA) >
+
+<!--
+Provides a hint as to the content of the body of this tag. Primarily
+intended for use by page composition tools.
+
+There are currently three values specified:
+
+tagdependent    The body of the tag is interpreted by the tag
+                implementation itself, and is most likely in a
+                different "langage", e.g embedded SQL statements.
+
+JSP             The body of the tag contains nested JSP syntax
+
+empty           The body must be empty
+
+The default (if not defined) is JSP
+
+#PCDATA ::=  tagdependent | JSP | empty
+
+-->
+
+<!ELEMENT body-content (#PCDATA) >
+
+<!--
+
+The display-name element contains a short name that is intended
+to be displayed by tools.
+-->
+
+<!ELEMENT display-name (#PCDATA) >
+
+
+<!--
+
+The large-icon element contains the name of a file containing a large
+(32 x 32) icon image.  The file name is a relative path within the
+tag library.  The image must be either in the JPEG or GIF format, and
+the file name must end with the suffix ".jpg" or ".gif" respectively.
+The icon can be used by tools.
+-->
+
+<!ELEMENT large-icon (#PCDATA) >
+
+<!--
+
+The small-icon element contains the name of a file containing a large
+(32 x 32) icon image.  The file name is a relative path within the
+tag library.  The image must be either in the JPEG or GIF format, and
+the file name must end with the suffix ".jpg" or ".gif" respectively.
+The icon can be used by tools.
+-->
+
+<!ELEMENT small-icon (#PCDATA) >
+
+<!--
+
+The example element contains an informal description of an example
+of the use of a tag.
+-->
+
+<!ELEMENT example (#PCDATA) >
+
+<!--
+
+The variable tag provides information on the scripting variables
+defined by this tag.  It is a (translation time) error for a tag
+that has one or more variable subelements to have a TagExtraInfo
+class that returns a non-null object.
+
+The subelements of variable are of the form:
+
+name-given               The variable name as a constant
+
+name-from-attribute      The name of an attribute whose (translation
+                         time) value will give the name of the
+                         variable.  One of name-given or
+                         name-from-attribute is required.
+
+variable-class           Name of the class of the variable.
+                         java.lang.String is default.
+
+declare                  Whether the variable is declared or not.
+                         True is the default.
+
+scope                    The scope of the scripting varaible
+                         defined.  NESTED is default.
+
+description              Optional description of this variable
+
+-->
+
+<!ELEMENT variable ( (name-given | name-from-attribute), variable-class?,
+                    declare?, scope?, description?) >
+
+<!--
+
+The name for the scripting variable.  One of name-given or
+name-from-attribute is required.
+-->
+
+<!ELEMENT name-given (#PCDATA) >
+
+<!--
+
+The name of an attribute whose (translation-time) value will give
+the name of the variable.  One of name-given or name-from-attribute
+is required.
+-->
+
+<!ELEMENT name-from-attribute (#PCDATA) >
+
+<!--
+
+The optional name of the class for the scripting variable.  The
+default is java.lang.String.
+-->
+
+<!ELEMENT variable-class (#PCDATA) >
+
+<!--
+
+Whether the scripting variable is to be defined or not.  See
+TagExtraInfo for details.  This element is optional and "true"
+is the default.
+-->
+
+<!ELEMENT declare (#PCDATA) >
+
+<!--
+
+The scope of the scripting variable.  See TagExtraInfo for details.
+The element is optional and "NESTED" is the default.  Other legal
+values are "AT_BEGIN" and "AT_END".
+-->
+
+<!ELEMENT scope (#PCDATA) >
+
+<!--
+
+The attribute tag defines an attribute for the nesting tag
+
+An attribute definition is composed of:
+
+- the attributes name (required)
+- if the attribute is required or optional (optional)
+- if the attributes value may be dynamically calculated at runtime
+  by a scriptlet expression (optional)
+- the type of the attributes value (optional)
+- an informal description of the meaning of the attribute (optional)
+
+-->
+
+
+<!--
+The attribute tag defines an attribute for the nesting tag
+
+An attribute definition is composed of:
+
+- the attributes name (required)
+
+- if the attribute is required or optional (optional)
+
+- if the attributes value may be dynamically calculated at runtime
+  by a scriptlet expression (optional)
+
+- the type of the attributes value (optional)
+
+- an informal description of the meaning of the attribute (optional)
+-->
+
+<!ELEMENT attribute (name, required? , rtexprvalue?, type?, description?) >
+
+<!--
+Defines the canonical name of a tag or attribute being defined
+
+#PCDATA ::= NMTOKEN
+-->
+
+<!ELEMENT name        (#PCDATA) >
+
+<!--
+Defines if the nesting attribute is required or optional.
+
+#PCDATA ::= true | false | yes | no
+
+If not present then the default is "false", i.e the attribute
+is optional.
+-->
+
+<!ELEMENT required    (#PCDATA) >
+
+<!--
+Defines if the nesting attribute can have scriptlet expressions as
+a value, i.e the value of the attribute may be dynamically calculated
+at request time, as opposed to a static value determined at translation
+time.
+
+#PCDATA ::= true | false | yes | no
+
+If not present then the default is "false", i.e the attribute
+has a static value
+-->
+
+<!ELEMENT rtexprvalue (#PCDATA) >
+
+
+<!--
+
+Defines the Java type of the attributes value.  For static values
+(those determined at translation time) the type is always
+java.lang.String.
+-->
+
+<!ELEMENT type (#PCDATA) >
+
+
+<!-- ID attributes -->
+
+<!ATTLIST tlib-version id ID #IMPLIED>
+<!ATTLIST jsp-version id ID #IMPLIED>
+<!ATTLIST short-name id ID #IMPLIED>
+<!ATTLIST uri id ID #IMPLIED>
+<!ATTLIST description id ID #IMPLIED>
+<!ATTLIST example id ID #IMPLIED>
+<!ATTLIST tag id ID #IMPLIED>
+<!ATTLIST tag-class id ID #IMPLIED>
+<!ATTLIST tei-class id ID #IMPLIED>
+<!ATTLIST body-content id ID #IMPLIED>
+<!ATTLIST attribute id ID #IMPLIED>
+<!ATTLIST name id ID #IMPLIED>
+<!ATTLIST required id ID #IMPLIED>
+<!ATTLIST rtexprvalue id ID #IMPLIED>
+
+
+<!ATTLIST param-name id ID #IMPLIED>
+<!ATTLIST param-value id ID #IMPLIED>
+<!ATTLIST listener id ID #IMPLIED>
+<!ATTLIST listener-class id ID #IMPLIED>

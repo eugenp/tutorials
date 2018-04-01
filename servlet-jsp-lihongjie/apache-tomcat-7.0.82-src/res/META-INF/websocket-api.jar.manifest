@@ -1,0 +1,11 @@
+Manifest-version: 1.0
+X-Compile-Source-JDK: @source.jdk@
+X-Compile-Target-JDK: @target.jdk@
+
+Name: javax/websocket/
+Specification-Title: WebSocket
+Specification-Version: 1.1
+Specification-Vendor: Oracle, Inc.
+Implementation-Title: javax.websocket
+Implementation-Version: 1.1.@websocket.revision@
+Implementation-Vendor: Apache Software Foundation

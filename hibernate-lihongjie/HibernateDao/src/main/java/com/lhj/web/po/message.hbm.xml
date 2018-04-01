@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.lhj.web.po.Message" table="messages">
+        <id name="id" column="MESSAGE_ID">
+            <generator class="increment" />
+        </id>
+
+        <property name="text" column="MESSAGE_TEXT"/>
+
+        <many-to-one name="nextMessage" cascade="all" column="NEXT_MESSAGE_ID" foreign-key="FK_NEXT_MESSAGE"/>
+
+    </class>
+</hibernate-mapping>

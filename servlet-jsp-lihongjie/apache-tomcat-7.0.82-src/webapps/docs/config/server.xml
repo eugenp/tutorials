@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="server.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <title>The Server Component</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>A <strong>Server</strong> element represents the entire Catalina
+  servlet container.  Therefore, it must be the single outermost element
+  in the <code>conf/server.xml</code> configuration file.  Its attributes
+  represent the characteristics of the servlet container as a whole.</p>
+
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+  <p>All implementations of <strong>Server</strong>
+  support the following attributes:</p>
+
+  <attributes>
+
+    <attribute name="className" required="false">
+      <p>Java class name of the implementation to use.  This class must
+      implement the <code>org.apache.catalina.Server</code> interface.
+      If no class name is specified, the standard implementation will
+      be used.</p>
+    </attribute>
+
+    <attribute name="address" required="false">
+      <p>The TCP/IP address on which this server waits for a shutdown
+      command. If no address is specified, <code>localhost</code> is used.</p>
+    </attribute>
+
+    <attribute name="port" required="true">
+      <p>The TCP/IP port number on which this server waits for a shutdown
+      command. Set to <code>-1</code> to disable the shutdown port.</p>
+      <p>Note: Disabling the shutdown port works well when Tomcat is started
+      using <a href="http://commons.apache.org/daemon/">Apache Commons Daemon</a>
+      (running as a service on Windows or with jsvc on un*xes). It cannot be
+      used when running Tomcat with the standard shell scripts though, as it
+      will prevent shutdown.bat|.sh and catalina.bat|.sh from stopping it
+      gracefully.</p>
+    </attribute>
+
+    <attribute name="shutdown" required="true">
+      <p>The command string that must be received via a TCP/IP connection
+      to the specified port number, in order to shut down Tomcat.</p>
+    </attribute>
+
+  </attributes>
+
+  </subsection>
+
+  <subsection name="Standard Implementation">
+
+  <p>The standard implementation of <strong>Server</strong> is
+  <strong>org.apache.catalina.core.StandardServer</strong>.
+  It supports the following additional attributes (in addition to the
+  common attributes listed above):</p>
+
+  <attributes>
+  </attributes>
+
+  </subsection>
+
+</section>
+
+
+<section name="Nested Components">
+
+  <p>The following components may be nested inside a <strong>Server</strong>
+  element:</p>
+  <ul>
+  <li><a href="service.html"><strong>Service</strong></a> -
+      One or more service element.</li>
+  <li><a href="globalresources.html"><strong>GlobalNamingResources</strong></a> -
+      Configure the JNDI global resources for the server.</li>
+  </ul>
+
+</section>
+
+
+<section name="Special Features">
+
+  <p>There are no special features associated with a <strong>Server</strong>.
+  </p>
+
+</section>
+
+
+</body>
+
+</document>

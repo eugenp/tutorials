@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<!--
+
+Various named queries.
+
+@author Christian Bauer
+-->
+<hibernate-mapping>
+
+<!-- TODO: This completely ignores currency -->
+<query name="getItemMinBid"><![CDATA[select b from Bid b where b.amount.value = (select min(b.amount.value) from Bid b where b.item.id = :itemid)]]></query>
+
+<!-- TODO: This completely ignores currency -->
+<query name="getItemMaxBid"><![CDATA[select b from Bid b where b.amount.value = (select max(b.amount.value) from Bid b where b.item.id = :itemid)]]></query>
+
+</hibernate-mapping>

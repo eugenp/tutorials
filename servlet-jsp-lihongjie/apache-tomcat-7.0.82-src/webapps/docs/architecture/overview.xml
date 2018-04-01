@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="overview.html">
+
+  &project;
+
+  <properties>
+    <author email="yoavs@apache.org">Yoav Shapira</author>
+    <title>Architecture Overview</title>
+  </properties>
+
+<body>
+
+
+<section name="Overview">
+<p>
+This page provides an overview of the Tomcat server architecture.
+</p>
+</section>
+
+<section name="Terms">
+
+<subsection name="Server">
+<p>
+In the Tomcat world, a
+<a href="../config/server.html">Server</a> represents the whole container.
+Tomcat provides a default implementation of the
+<a href="../api/org/apache/catalina/Server.html">Server interface</a>
+which is rarely customized by users.
+</p>
+</subsection>
+
+<subsection name="Service">
+<p>
+A <a href="../config/service.html">Service</a> is an intermediate component
+which lives inside a Server and ties one or more Connectors to exactly one
+Engine.  The Service element is rarely customized by users, as the default
+implementation is simple and sufficient:
+<a href="../api/org/apache/catalina/Service.html">Service interface</a>.
+</p>
+</subsection>
+
+<subsection name="Engine">
+<p>
+An
+<a href="../config/engine.html">Engine</a> represents request processing
+pipeline for a specific Service.  As a Service may have multiple Connectors,
+the Engine receives and processes all requests from these connectors, handing
+the response back to the appropriate connector for transmission to the client.
+The <a href="../api/org/apache/catalina/Engine.html">Engine interface</a>
+may be implemented to supply custom Engines, though this is uncommon.
+</p>
+<p>
+Note that the Engine may be used for Tomcat server clustering via the
+jvmRoute parameter.  Read the Clustering documentation for more information.
+</p>
+</subsection>
+
+<subsection name="Host">
+<p>
+A <a href="../config/host.html">Host</a> is an association of a network name,
+e.g. www.yourcompany.com, to the Tomcat server.  An Engine may contain
+multiple hosts, and the Host element also supports network aliases such as
+yourcompany.com and abc.yourcompany.com.  Users rarely create custom
+<a href="../api/org/apache/catalina/Host.html">Hosts</a>
+because the
+<a href="../api/org/apache/catalina/core/StandardHost.html">StandardHost
+implementation</a> provides significant additional functionality.
+</p>
+</subsection>
+
+<subsection name="Connector">
+<p>
+A Connector handles communications with the client.  There are multiple
+connectors available with Tomcat. These include the
+<a href="../config/http.html">HTTP connector</a> which is used for
+most HTTP traffic, especially when running Tomcat as a standalone server,
+and the <a href="../config/ajp.html">AJP connector</a> which implements
+the AJP protocol used when connecting Tomcat to a web server such as
+Apache HTTPD server. Creating a customized connector is a significant
+effort.
+</p>
+</subsection>
+
+<subsection name="Context">
+<p>
+A
+<a href="../config/context.html">Context</a>
+represents a web application.  A Host may contain multiple
+contexts, each with a unique path.  The
+<a href="../api/org/apache/catalina/Context.html">Context
+interface</a> may be implemented to create custom Contexts, but
+this is rarely the case because the
+<a href="../api/org/apache/catalina/core/StandardContext.html">
+StandardContext</a> provides significant additional functionality.
+</p>
+</subsection>
+</section>
+
+<section name="Comments">
+<p>
+Tomcat is designed to be a fast and efficient implementation of the
+Servlet Specification.  Tomcat came about as the reference implementation
+of this specification, and has remained rigorous in adhering to the
+specification.  At the same time, significant attention has been paid
+to Tomcat's performance and it is now on par with other servlet containers,
+including commercial ones.
+</p>
+<p>
+In recent releases of Tomcat, mostly starting with Tomcat 5,
+we have begun efforts to make more aspects of Tomcat manageable via
+JMX.  In addition, the Manager and Admin webapps have been greatly
+enhanced and improved.  Manageability is a primary area of concern
+for us as the product matures and the specification becomes more
+stable.
+</p>
+</section>
+
+</body>
+</document>

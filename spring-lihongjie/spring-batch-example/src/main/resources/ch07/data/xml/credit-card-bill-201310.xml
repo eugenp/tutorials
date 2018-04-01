@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<credits>
+    <credit>
+        <accountID>4047390012345678</accountID>
+        <name>tom</name>
+        <amount>100.00</amount>
+        <date>2013-2-2 12:00:08</date>
+        <address>Lu Jia Zui road</address>
+    </credit>
+    <credit>
+        <accountID>4047390012345678</accountID>
+        <name>tom</name>
+        <amount>320.00</amount>
+        <date>2013-2-3 10:35:21</date>
+        <address>Lu Jia Zui road</address>
+    </credit>
+    <credit>
+        <accountID>4047390012345678</accountID>
+        <name>tom</name>
+        <amount>674.70</amount>
+        <date>2013-2-6 16:26:49</date>
+        <address>South Linyi road</address>
+    </credit>
+</credits>
+    

@@ -1,0 +1,51 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# To create custom properties, simply create
+# the file mvn.properties
+# in this directory
+# no need to change this file
+#
+
+# Authentication
+# Note: You will be prompted for your GPG passphrase and LDAP password when
+#        running this script
+asf.ldap.username=<!-- YOUR APACHE LDAP USERNAME -->
+gpg.exec=C:/software/GNU/GnuPG/gpg.exe
+
+# ASF Snapshot Repository (hosted on Nexus)
+maven.snapshot.repo.url=https://repository.apache.org/content/repositories/snapshots
+maven.snapshot.repo.repositoryId=apache.snapshots
+
+# ASF Release Repository (hosted on Nexus)
+# Note: Also used for staging releases prior to voting
+maven.asf.release.repo.url=https://repository.apache.org/service/local/staging/deploy/maven2
+maven.asf.release.repo.repositoryId=apache.releases
+
+# Release version info
+maven.asf.release.deploy.version=7.0.82
+
+#Where do we load the libraries from
+tomcat.lib.path=../../output/build/lib
+tomcat.bin.path=../../output/build/bin
+tomcat.release.path=../../output/release
+tomcat.src.path=../../output/src-jars
+tomcat.embed.path=../../output/embed
+tomcat.embed.src.path=../../output/embed-src-jars
+tomcat.extras.path=../../output/extras
+tomcat.extras.src.path=../../output/extras-src-jars
+
+#Where do we find the POM files
+tomcat.pom.path=../../res/maven

@@ -1,0 +1,25 @@
+package com.habuma.spitter.mvc;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
+import org.springframework.jmx.export.annotation.ManagedResource;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.habuma.spitter.service.SpitterService;
+
+@Controller
+@ManagedResource(objectName="spitter:name=HomeController") // <co id="co_managedResource"/> 
+public class HomeController {
+  
+  ...
+  
+  @ManagedAttribute   // <co id="co_managedAttribute"/> 
+  public void setSpittlesPerPage(int spittlesPerPage) {
+    this.spittlesPerPage = spittlesPerPage;
+  }
+  
+  @ManagedAttribute   // <co id="co_managedAttribute"/> 
+  public int getSpittlesPerPage() {
+    return spittlesPerPage;
+  }
+}

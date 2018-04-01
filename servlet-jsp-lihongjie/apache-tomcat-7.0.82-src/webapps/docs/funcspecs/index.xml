@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="index.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <title>Table of Contents</title>
+  </properties>
+
+<body>
+
+
+<section name="Catalina Functional Specifications">
+
+<p>This documentation area includes <em>functional specifications</em> for
+many features supported by the <strong>Catalina</strong> servlet container
+portion of Tomcat.  In most cases, these features are not documented in the
+underlying Servlet or JSP specifications, so a definition of the expected
+correct behavior is important both to implementors of those features, and to
+test writers trying to decide what to test.</p>
+
+<p>The functional specifications are divided into the following categories
+in the menu (to the left):</p>
+<ul>
+<li><em>Administrative Apps</em> - Overall requirements for supporting an
+    ability to configure and operate a Tomcat installation through tools,
+    as well as detailed requirements for the tools themselves.</li>
+<li><em>Internal Servlets</em> - Requirements for Catalina features that are
+    implemented as internal, container-managed, servlets.</li>
+<li><em>Realm Implementations</em> - Requirements for the implementations of
+    the <code>org.apache.catalina.Realm</code> interface (providing access to
+    collections of users, passwords and roles) that are included in the
+    standard Tomcat distribution.</li>
+</ul>
+
+<p><em>NOTE</em> - In some cases, the contents of these functional specs has
+been "reverse engineered" from existing implementations.  This exercise is
+still useful, because it provides an introduction to <strong>what</strong>
+Catalina does, without being as concerned with <strong>how</strong> this is
+accomplished.</p>
+
+<p><strong>TODO</strong> - Obviously, this area has a long ways to go before
+it is complete.  Contributions are welcome!</p>
+
+</section>
+
+
+</body>
+
+</document>

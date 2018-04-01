@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="in.codelearn.model">
+
+	<class name="Person" table="EMPLOYEE" discriminator-value="P">
+		<id name="personId" column="PERSON_ID">
+			<generator class="native" />
+		</id>
+
+		<discriminator column="DISCRIMINATOR" type="string" />
+
+		<property name="firstname" />
+		<property name="lastname" column="lastname" />
+
+		<subclass name="Employee" extends="Person" discriminator-value="E">
+				<property name="departmentName" column="department_name" />
+				<property name="joiningDate" type="date" column="joining_date" />
+		</subclass>
+	</class>
+</hibernate-mapping>

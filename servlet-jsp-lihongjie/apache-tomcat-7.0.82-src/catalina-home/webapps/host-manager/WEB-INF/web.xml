@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">
+
+  <display-name>Tomcat Host Manager Application</display-name>
+  <description>
+    A scriptable host management web application for the Tomcat Web Server;
+    Manager lets you view, create and remove virtual hosts.
+  </description>
+
+  <servlet>
+    <servlet-name>HostManager</servlet-name>
+    <servlet-class>org.apache.catalina.manager.host.HostManagerServlet</servlet-class>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>2</param-value>
+    </init-param>
+  </servlet>
+  <servlet>
+    <servlet-name>HTMLHostManager</servlet-name>
+    <servlet-class>org.apache.catalina.manager.host.HTMLHostManagerServlet</servlet-class>
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>2</param-value>
+    </init-param>
+  </servlet>
+
+  <filter>
+    <filter-name>SetCharacterEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>SetCharacterEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <filter>
+    <filter-name>CSRF</filter-name>
+    <filter-class>org.apache.catalina.filters.CsrfPreventionFilter</filter-class>
+    <init-param>
+      <param-name>entryPoints</param-name>
+      <param-value>/html,/html/,/html/list,/index.jsp</param-value>
+    </init-param>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>CSRF</filter-name>
+    <servlet-name>HTMLHostManager</servlet-name>
+  </filter-mapping>
+
+  <!-- Define the Manager Servlet Mapping -->
+  <servlet-mapping>
+    <servlet-name>HostManager</servlet-name>
+    <url-pattern>/text/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HTMLHostManager</servlet-name>
+    <url-pattern>/html/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- Define a Security Constraint on this Application -->
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>HostManager commands</web-resource-name>
+      <url-pattern>/text/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+       <!-- NOTE:  This role is not present in the default users file -->
+       <role-name>admin-script</role-name>
+    </auth-constraint>
+  </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>HTMLHostManager commands</web-resource-name>
+      <url-pattern>/html/*</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+       <!-- NOTE:  This role is not present in the default users file -->
+       <role-name>admin-gui</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <!-- Define the Login Configuration for this Application -->
+  <login-config>
+    <auth-method>BASIC</auth-method>
+    <realm-name>Tomcat Host Manager Application</realm-name>
+  </login-config>
+
+  <!-- Security roles referenced by this web application -->
+  <security-role>
+    <description>
+      The role that is required to log in to the Host Manager Application HTML
+      interface
+    </description>
+    <role-name>admin-gui</role-name>
+  </security-role>
+  <security-role>
+    <description>
+      The role that is required to log in to the Host Manager Application text
+      interface
+    </description>
+    <role-name>admin-script</role-name>
+  </security-role>
+
+  <error-page>
+    <error-code>401</error-code>
+    <location>/WEB-INF/jsp/401.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/jsp/403.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/jsp/404.jsp</location>
+  </error-page>
+
+</web-app>

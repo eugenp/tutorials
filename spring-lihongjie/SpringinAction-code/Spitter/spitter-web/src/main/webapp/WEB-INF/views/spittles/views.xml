@@ -1,0 +1,17 @@
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+      "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+  
+<tiles-definitions>
+   <!--<start id="spittleListTileDef"/>--> 
+   <definition name="spittles/list" extends="template">
+    <put-attribute name="content" 
+                   value="/WEB-INF/views/spittles/list.jsp" />
+   </definition>
+   <!--<end id="spittleListTileDef"/>--> 
+
+   <definition name="spittles/view" extends="template">
+    <put-attribute name="content" 
+                   value="/WEB-INF/views/spittles/view.jsp" />
+   </definition>
+</tiles-definitions>

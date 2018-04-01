@@ -1,0 +1,97 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Apache Tomcat @VERSION@</TITLE>
+<META http-equiv=Content-Type content="text/html;charset=ISO-8859-1">
+</HEAD>
+<BODY>
+<P>
+<H3>Apache Tomcat @VERSION@</H3>
+<P></P>
+<p>Useful references:</p>
+<ul>
+<li><a href="RELEASE-NOTES">Release notes</a>, with important information
+about known issues</li>
+<li><a href="http://tomcat.apache.org/tomcat-@VERSION_MAJOR_MINOR@-doc/changelog.html">Changelog</a></li>
+</ul>
+
+<p><b>NOTE: The tar files in this distribution use GNU tar extensions,
+and must be untarred with a GNU compatible version of tar. The version
+of <CODE>tar</CODE> on Solaris and Mac OS X will not work with
+these files.</b></P>
+
+<p><font color="red">Tomcat @VERSION_MAJOR_MINOR@ requires Java SE 6 or later. Read the
+RELEASE-NOTES and the RUNNING.txt file in the distribution for more details.
+</font></p>
+
+<h4>Packaging Details (or "What Should I Download?")</h4>
+<dl>
+<dt><b>bin/</b></dt>
+<dd><dl>
+  <dt>apache-tomcat-[version].zip or .tar.gz</dt>
+    <dd>Base distribution. These distributions do not include the Windows
+    service wrapper nor the compiled APR/native library for Windows.</dd>
+  <dt>apache-tomcat-[version].exe</dt>
+    <dd>32-bit/64-bit Windows installer for Tomcat. &nbsp; Please note that while this
+    distribution includes the vast majority of the base distribution, some of the
+    command-line scripts for launching Tomcat are not included.  This distribution
+    is intended for those users planning to launch Tomcat through the Windows
+    shortcuts or services.</dd>
+  <dt>apache-tomcat-[version]-windows-x86.zip</dt>
+    <dd>32-bit Windows specific distribution that includes the Windows service
+    wrapper and the compiled APR/native library for use with 32-bit JVMs on both
+    32 and 64 bit Windows platforms.</dd>
+  <dt>apache-tomcat-[version]-windows-x64.zip</dt>
+    <dd>64-bit Windows specific distribution that includes the Windows service
+    wrapper and the compiled APR/native library for use with 64-bit JVMs on
+    x64 Windows platforms.</dd>
+  <dt>apache-tomcat-[version]-deployer.zip or .tar.gz</dt>
+    <dd>The standalone
+    <a href="http://tomcat.apache.org/tomcat-@VERSION_MAJOR_MINOR@-doc/deployer-howto.html">
+    Tomcat Web Application Deployer</a>.</dd>
+  <dt>apache-tomcat-[version]-fulldocs.tar.gz</dt>
+    <dd>The Tomcat documentation bundle, including complete javadocs.</dd>
+</dl></dd>
+<dt><b>bin/extras/</b></dt>
+<dd><dl>
+  <dt>tomcat-juli-adapters.jar &amp; tomcat-juli.jar</dt>
+    <dd>Full commons-logging implementation. See the <a
+    href="http://tomcat.apache.org/tomcat-@VERSION_MAJOR_MINOR@-doc/logging.html">
+    logging documentation</a> for more information.</dd>
+  <dt>catalina-ws.jar</dt>
+    <dd>Web Services support (JSR 109). See the <a
+    href="http://tomcat.apache.org/tomcat-@VERSION_MAJOR_MINOR@-doc/extras.html">
+    extras documentation</a> for more information.</dd>
+  <dt>catalina-jmx-remote.jar</dt>
+    <dd>JMX Remote Lifecycle Listener. See the <a
+    href="http://tomcat.apache.org/tomcat-@VERSION_MAJOR_MINOR@-doc/config/listeners.html">
+    listeners documentation</a> for details.</dd>
+</dl></dd>
+<dt><b>src/</b></dt>
+<dd><dl>
+  <dt>apache-tomcat-[version].zip or .tar.gz</dt>
+    <dd>The source code. See
+    <a href="http://tomcat.apache.org/tomcat-@VERSION_MAJOR_MINOR@-doc/building.html">building instructions</a>.</dd>
+</dl></dd>
+</dl>
+
+<P>Thank you for using <A href="http://tomcat.apache.org/">Tomcat</A>!.
+</P>
+<P><B>The Apache Tomcat Project</B> <BR><A
+href="http://tomcat.apache.org/">http://tomcat.apache.org/</A> </P>
+<P>
+<P></P></BODY></HTML>

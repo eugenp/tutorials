@@ -1,0 +1,13 @@
+*.class
+target/*
+.project
+.classpath
+.settings/
+bin/
+Thumbs.db
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/target

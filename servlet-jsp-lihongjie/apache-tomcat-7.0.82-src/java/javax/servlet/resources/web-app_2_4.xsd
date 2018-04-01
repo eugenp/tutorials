@@ -1,0 +1,1208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://java.sun.com/xml/ns/j2ee"
+            xmlns:j2ee="http://java.sun.com/xml/ns/j2ee"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified"
+            version="2.4">
+  <xsd:annotation>
+    <xsd:documentation>
+      <![CDATA[
+
+        This is the XML Schema for the Servlet 2.4 deployment descriptor.
+        The deployment descriptor must be named "WEB-INF/web.xml" in the
+        web application's war file.  All Servlet deployment descriptors
+        must indicate the web application schema by using the J2EE
+        namespace:
+
+        http://java.sun.com/xml/ns/j2ee
+
+        and by indicating the version of the schema by
+        using the version element as shown below:
+
+            <web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="..."
+              version="2.4">
+              ...
+            </web-app>
+
+        The instance documents may indicate the published version of
+        the schema using the xsi:schemaLocation attribute for J2EE
+        namespace with the following location:
+
+        http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd
+
+        ]]>
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:annotation>
+    <xsd:documentation>
+
+      The following conventions apply to all J2EE
+      deployment descriptor elements unless indicated otherwise.
+
+      - In elements that specify a pathname to a file within the
+        same JAR file, relative filenames (i.e., those not
+        starting with "/") are considered relative to the root of
+        the JAR file's namespace.  Absolute filenames (i.e., those
+        starting with "/") also specify names in the root of the
+        JAR file's namespace.  In general, relative names are
+        preferred.  The exception is .war files where absolute
+        names are preferred for consistency with the Servlet API.
+
+    </xsd:documentation>
+  </xsd:annotation>
+
+  <xsd:include schemaLocation="j2ee_1_4.xsd"/>
+  <xsd:include schemaLocation="jsp_2_0.xsd"/>
+
+
+<!-- **************************************************** -->
+
+
+  <xsd:element name="web-app" type="j2ee:web-appType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The web-app element is the root of the deployment
+        descriptor for a web application.  Note that the sub-elements
+        of this element can be in the arbitrary order. Because of
+        that, the multiplicity of the elements of distributable,
+        session-config, welcome-file-list, jsp-config, login-config,
+        and locale-encoding-mapping-list was changed from "?" to "*"
+        in this schema.  However, the deployment descriptor instance
+        file must not contain multiple elements of session-config,
+        jsp-config, and login-config. When there are multiple elements of
+        welcome-file-list or locale-encoding-mapping-list, the container
+        must concatenate the element contents.  The multiple occurrence
+        of the element distributable is redundant and the container
+        treats that case exactly in the same way when there is only
+        one distributable.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:unique name="web-app-servlet-name-uniqueness">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The servlet element contains the name of a servlet.
+          The name must be unique within the web application.
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:servlet"/>
+      <xsd:field    xpath="j2ee:servlet-name"/>
+    </xsd:unique>
+
+    <xsd:unique name="web-app-filter-name-uniqueness">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The filter element contains the name of a filter.
+          The name must be unique within the web application.
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:filter"/>
+      <xsd:field    xpath="j2ee:filter-name"/>
+    </xsd:unique>
+
+    <xsd:unique name="web-app-ejb-local-ref-name-uniqueness">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The ejb-local-ref-name element contains the name of an EJB
+          reference. The EJB reference is an entry in the web
+          application's environment and is relative to the
+          java:comp/env context.  The name must be unique within
+          the web application.
+
+          It is recommended that name is prefixed with "ejb/".
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:ejb-local-ref"/>
+      <xsd:field    xpath="j2ee:ejb-ref-name"/>
+    </xsd:unique>
+
+    <xsd:unique name="web-app-ejb-ref-name-uniqueness">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The ejb-ref-name element contains the name of an EJB
+          reference. The EJB reference is an entry in the web
+          application's environment and is relative to the
+          java:comp/env context.  The name must be unique within
+          the web application.
+
+          It is recommended that name is prefixed with "ejb/".
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:ejb-ref"/>
+      <xsd:field    xpath="j2ee:ejb-ref-name"/>
+    </xsd:unique>
+
+    <xsd:unique name="web-app-resource-env-ref-uniqueness">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The resource-env-ref-name element specifies the name of
+          a resource environment reference; its value is the
+          environment entry name used in the web application code.
+          The name is a JNDI name relative to the java:comp/env
+          context and must be unique within a web application.
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:resource-env-ref"/>
+      <xsd:field    xpath="j2ee:resource-env-ref-name"/>
+    </xsd:unique>
+
+    <xsd:unique name="web-app-message-destination-ref-uniqueness">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The message-destination-ref-name element specifies the name of
+          a message destination reference; its value is the
+          environment entry name used in the web application code.
+          The name is a JNDI name relative to the java:comp/env
+          context and must be unique within a web application.
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:message-destination-ref"/>
+      <xsd:field    xpath="j2ee:message-destination-ref-name"/>
+    </xsd:unique>
+
+    <xsd:unique name="web-app-res-ref-name-uniqueness">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The res-ref-name element specifies the name of a
+          resource manager connection factory reference.  The name
+          is a JNDI name relative to the java:comp/env context.
+          The name must be unique within a web application.
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:resource-ref"/>
+      <xsd:field    xpath="j2ee:res-ref-name"/>
+    </xsd:unique>
+
+    <xsd:unique name="web-app-env-entry-name-uniqueness">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The env-entry-name element contains the name of a web
+          application's environment entry.  The name is a JNDI
+          name relative to the java:comp/env context.  The name
+          must be unique within a web application.
+
+        </xsd:documentation>
+      </xsd:annotation>
+
+      <xsd:selector xpath="j2ee:env-entry"/>
+      <xsd:field    xpath="j2ee:env-entry-name"/>
+    </xsd:unique>
+
+    <xsd:key name="web-app-role-name-key">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          A role-name-key is specified to allow the references
+          from the security-role-refs.
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:security-role"/>
+      <xsd:field    xpath="j2ee:role-name"/>
+    </xsd:key>
+
+    <xsd:keyref name="web-app-role-name-references"
+                refer="j2ee:web-app-role-name-key">
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The keyref indicates the references from
+          security-role-ref to a specified role-name.
+
+        </xsd:documentation>
+      </xsd:annotation>
+      <xsd:selector xpath="j2ee:servlet/j2ee:security-role-ref"/>
+      <xsd:field    xpath="j2ee:role-link"/>
+    </xsd:keyref>
+  </xsd:element>
+
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="auth-constraintType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The auth-constraintType indicates the user roles that
+        should be permitted access to this resource
+        collection. The role-name used here must either correspond
+        to the role-name of one of the security-role elements
+        defined for this web application, or be the specially
+        reserved role-name "*" that is a compact syntax for
+        indicating all roles in the web application. If both "*"
+        and rolenames appear, the container interprets this as all
+        roles.  If no roles are defined, no user is allowed access
+        to the portion of the web application described by the
+        containing security-constraint.  The container matches
+        role names case sensitively when determining access.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="role-name"
+                   type="j2ee:role-nameType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="auth-methodType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The auth-methodType is used to configure the authentication
+        mechanism for the web application. As a prerequisite to
+        gaining access to any web resources which are protected by
+        an authorization constraint, a user must have authenticated
+        using the configured mechanism. Legal values are "BASIC",
+        "DIGEST", "FORM", "CLIENT-CERT", or a vendor-specific
+        authentication scheme.
+
+        Used in: login-config
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="dispatcherType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The dispatcher has four legal values: FORWARD, REQUEST, INCLUDE,
+        and ERROR. A value of FORWARD means the Filter will be applied
+        under RequestDispatcher.forward() calls.  A value of REQUEST
+        means the Filter will be applied under ordinary client calls to
+        the path or servlet. A value of INCLUDE means the Filter will be
+        applied under RequestDispatcher.include() calls.  A value of
+        ERROR means the Filter will be applied under the error page
+        mechanism.  The absence of any dispatcher elements in a
+        filter-mapping indicates a default of applying filters only under
+        ordinary client calls to the path or servlet.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="FORWARD"/>
+        <xsd:enumeration value="INCLUDE"/>
+        <xsd:enumeration value="REQUEST"/>
+        <xsd:enumeration value="ERROR"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:simpleType name="encodingType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The encodingType defines IANA character sets.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[^\s]+"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="error-codeType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The error-code contains an HTTP error code, ex: 404
+
+        Used in: error-page
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:xsdPositiveIntegerType">
+        <xsd:pattern value="\d{3}"/>
+        <xsd:attribute name="id" type="xsd:ID"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="error-pageType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The error-pageType contains a mapping between an error code
+        or exception type to the path of a resource in the web
+        application.
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:choice>
+        <xsd:element name="error-code"
+                     type="j2ee:error-codeType"/>
+
+        <xsd:element name="exception-type"
+                     type="j2ee:fully-qualified-classType">
+          <xsd:annotation>
+            <xsd:documentation>
+
+              The exception-type contains a fully qualified class
+              name of a Java exception type.
+
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:choice>
+
+      <xsd:element name="location"
+                   type="j2ee:war-pathType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The location element contains the location of the
+            resource in the web application relative to the root of
+            the web application. The value of the location must have
+            a leading `/'.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="filter-mappingType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        Declaration of the filter mappings in this web
+        application is done by using filter-mappingType.
+        The container uses the filter-mapping
+        declarations to decide which filters to apply to a request,
+        and in what order. The container matches the request URI to
+        a Servlet in the normal way. To determine which filters to
+        apply it matches filter-mapping declarations either on
+        servlet-name, or on url-pattern for each filter-mapping
+        element, depending on which style is used. The order in
+        which filters are invoked is the order in which
+        filter-mapping declarations that match a request URI for a
+        servlet appear in the list of filter-mapping elements. The
+        filter-name value must be the value of the filter-name
+        sub-elements of one of the filter declarations in the
+        deployment descriptor.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="filter-name"
+                   type="j2ee:filter-nameType"/>
+      <xsd:choice>
+        <xsd:element name="url-pattern"
+                     type="j2ee:url-patternType"/>
+        <xsd:element name="servlet-name"
+                     type="j2ee:servlet-nameType"/>
+      </xsd:choice>
+      <xsd:element name="dispatcher"
+                   type="j2ee:dispatcherType"
+                   minOccurs="0" maxOccurs="4"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="filter-nameType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The logical name of the filter is declare
+        by using filter-nameType. This name is used to map the
+        filter.  Each filter name is unique within the web
+        application.
+
+        Used in: filter, filter-mapping
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:extension base="j2ee:nonEmptyStringType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="filterType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The filterType is used to declare a filter in the web
+        application. The filter is mapped to either a servlet or a
+        URL pattern in the filter-mapping element, using the
+        filter-name value to reference. Filters can access the
+        initialization parameters declared in the deployment
+        descriptor at runtime via the FilterConfig interface.
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="filter-name"
+                   type="j2ee:filter-nameType"/>
+      <xsd:element name="filter-class"
+                   type="j2ee:fully-qualified-classType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The fully qualified classname of the filter.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="init-param"
+                   type="j2ee:param-valueType"
+                   minOccurs="0" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The init-param element contains a name/value pair as
+            an initialization param of a servlet filter
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="form-login-configType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The form-login-configType specifies the login and error
+        pages that should be used in form based login. If form based
+        authentication is not used, these elements are ignored.
+
+        Used in: login-config
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+
+      <xsd:element name="form-login-page"
+                   type="j2ee:war-pathType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The form-login-page element defines the location in the web
+            app where the page that can be used for login can be
+            found.  The path begins with a leading / and is interpreted
+            relative to the root of the WAR.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="form-error-page"
+                   type="j2ee:war-pathType">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The form-error-page element defines the location in
+            the web app where the error page that is displayed
+            when login is not successful can be found.
+            The path begins with a leading / and is interpreted
+            relative to the root of the WAR.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="http-methodType">
+    <xsd:annotation>
+
+      <xsd:documentation>
+
+        The http-method contains an HTTP method recognized by the
+        web-app, for example GET, POST, ...
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="GET"/>
+        <xsd:enumeration value="POST"/>
+        <xsd:enumeration value="PUT"/>
+        <xsd:enumeration value="DELETE"/>
+        <xsd:enumeration value="HEAD"/>
+        <xsd:enumeration value="OPTIONS"/>
+        <xsd:enumeration value="TRACE"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="locale-encoding-mapping-listType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The locale-encoding-mapping-list contains one or more
+        locale-encoding-mapping(s).
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="locale-encoding-mapping"
+                   type="j2ee:locale-encoding-mappingType"
+                   maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="locale-encoding-mappingType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The locale-encoding-mapping contains locale name and
+        encoding name. The locale name must be either "Language-code",
+        such as "ja", defined by ISO-639 or "Language-code_Country-code",
+        such as "ja_JP".  "Country code" is defined by ISO-3166.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="locale"
+                   type="j2ee:localeType"/>
+      <xsd:element name="encoding"
+                   type="j2ee:encodingType"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:simpleType name="localeType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The localeType defines valid locale defined by ISO-639-1
+        and ISO-3166.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[a-z]{2}(_|-)?([\p{L}\-\p{Nd}]{2})?"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="login-configType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The login-configType is used to configure the authentication
+        method that should be used, the realm name that should be
+        used for this application, and the attributes that are
+        needed by the form login mechanism.
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="auth-method"
+                   type="j2ee:auth-methodType"
+                   minOccurs="0"/>
+      <xsd:element name="realm-name"
+                   type="j2ee:string" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The realm name element specifies the realm name to
+            use in HTTP Basic authorization.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="form-login-config"
+                   type="j2ee:form-login-configType"
+                   minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="mime-mappingType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The mime-mappingType defines a mapping between an extension
+        and a mime type.
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:annotation>
+        <xsd:documentation>
+
+          The extension element contains a string describing an
+          extension. example: "txt"
+
+        </xsd:documentation>
+      </xsd:annotation>
+
+      <xsd:element name="extension"
+                   type="j2ee:string"/>
+      <xsd:element name="mime-type"
+                   type="j2ee:mime-typeType"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="mime-typeType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The mime-typeType is used to indicate a defined mime type.
+
+        Example:
+        "text/plain"
+
+        Used in: mime-mapping
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+          <xsd:pattern value="[^\p{Cc}^\s]+/[^\p{Cc}^\s]+"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="nonEmptyStringType">
+    <xsd:annotation>
+      <xsd:documentation>
+        This type defines a string which contains at least one
+        character.
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:minLength value="1"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="security-constraintType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The security-constraintType is used to associate
+        security constraints with one or more web resource
+        collections
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="display-name"
+                   type="j2ee:display-nameType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="web-resource-collection"
+                   type="j2ee:web-resource-collectionType"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="auth-constraint"
+                   type="j2ee:auth-constraintType"
+                   minOccurs="0"/>
+      <xsd:element name="user-data-constraint"
+                   type="j2ee:user-data-constraintType"
+                   minOccurs="0"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="servlet-mappingType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The servlet-mappingType defines a mapping between a
+        servlet and a url pattern.
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="servlet-name"
+                   type="j2ee:servlet-nameType"/>
+      <xsd:element name="url-pattern"
+                   type="j2ee:url-patternType"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="servlet-nameType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The servlet-name element contains the canonical name of the
+        servlet. Each servlet name is unique within the web
+        application.
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:extension base="j2ee:nonEmptyStringType"/>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="servletType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The servletType is used to declare a servlet.
+        It contains the declarative data of a
+        servlet. If a jsp-file is specified and the load-on-startup
+        element is present, then the JSP should be pre-compiled and
+        loaded.
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="servlet-name"
+                   type="j2ee:servlet-nameType"/>
+      <xsd:choice>
+        <xsd:element name="servlet-class"
+                     type="j2ee:fully-qualified-classType">
+          <xsd:annotation>
+            <xsd:documentation>
+
+              The servlet-class element contains the fully
+              qualified class name of the servlet.
+
+            </xsd:documentation>
+          </xsd:annotation>
+        </xsd:element>
+
+        <xsd:element name="jsp-file"
+                     type="j2ee:jsp-fileType"/>
+
+      </xsd:choice>
+
+      <xsd:element name="init-param"
+                   type="j2ee:param-valueType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+      <xsd:element name="load-on-startup"
+                   type="j2ee:xsdIntegerType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The load-on-startup element indicates that this
+            servlet should be loaded (instantiated and have
+            its init() called) on the start-up of the web
+            application. The optional contents of these
+            element must be an integer indicating the order in
+            which the servlet should be loaded. If the value
+            is a negative integer, or the element is not
+            present, the container is free to load the servlet
+            whenever it chooses. If the value is a positive
+            integer or 0, the container must load and
+            initialize the servlet as the application is
+            deployed. The container must guarantee that
+            servlets marked with lower integers are loaded
+            before servlets marked with higher integers. The
+            container may choose the order of loading of
+            servlets with the same load-on-start-up value.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="run-as"
+                   type="j2ee:run-asType"
+                   minOccurs="0"/>
+      <xsd:element name="security-role-ref"
+                   type="j2ee:security-role-refType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="session-configType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The session-configType defines the session parameters
+        for this web application.
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="session-timeout"
+                   type="j2ee:xsdIntegerType"
+                   minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The session-timeout element defines the default
+            session timeout interval for all sessions created
+            in this web application. The specified timeout
+            must be expressed in a whole number of minutes.
+            If the timeout is 0 or less, the container ensures
+            the default behaviour of sessions is never to time
+            out. If this element is not specified, the container
+            must set its default timeout period.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="transport-guaranteeType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The transport-guaranteeType specifies that the communication
+        between client and server should be NONE, INTEGRAL, or
+        CONFIDENTIAL. NONE means that the application does not
+        require any transport guarantees. A value of INTEGRAL means
+        that the application requires that the data sent between the
+        client and server be sent in such a way that it can't be
+        changed in transit. CONFIDENTIAL means that the application
+        requires that the data be transmitted in a fashion that
+        prevents other entities from observing the contents of the
+        transmission. In most cases, the presence of the INTEGRAL or
+        CONFIDENTIAL flag will indicate that the use of SSL is
+        required.
+
+        Used in: user-data-constraint
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:enumeration value="NONE"/>
+        <xsd:enumeration value="INTEGRAL"/>
+        <xsd:enumeration value="CONFIDENTIAL"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="user-data-constraintType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The user-data-constraintType is used to indicate how
+        data communicated between the client and container should be
+        protected.
+
+        Used in: security-constraint
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="transport-guarantee"
+                   type="j2ee:transport-guaranteeType"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="war-pathType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The elements that use this type designate a path starting
+        with a "/" and interpreted relative to the root of a WAR
+        file.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:simpleContent>
+      <xsd:restriction base="j2ee:string">
+        <xsd:pattern value="/.*"/>
+      </xsd:restriction>
+    </xsd:simpleContent>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:simpleType name="web-app-versionType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        This type contains the recognized versions of
+        web-application supported. It is used to designate the
+        version of the web application.
+
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:token">
+      <xsd:enumeration value="2.4"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="web-appType">
+
+    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+      <xsd:group ref="j2ee:descriptionGroup"/>
+      <xsd:element name="distributable"
+                   type="j2ee:emptyType"/>
+      <xsd:element name="context-param"
+                   type="j2ee:param-valueType">
+
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The context-param element contains the declaration
+            of a web application's servlet context
+            initialization parameters.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+
+      <xsd:element name="filter"
+                   type="j2ee:filterType"/>
+      <xsd:element name="filter-mapping"
+                   type="j2ee:filter-mappingType"/>
+      <xsd:element name="listener"
+                   type="j2ee:listenerType"/>
+      <xsd:element name="servlet"
+                   type="j2ee:servletType"/>
+      <xsd:element name="servlet-mapping"
+                   type="j2ee:servlet-mappingType"/>
+      <xsd:element name="session-config"
+                   type="j2ee:session-configType"/>
+      <xsd:element name="mime-mapping"
+                   type="j2ee:mime-mappingType"/>
+      <xsd:element name="welcome-file-list"
+                   type="j2ee:welcome-file-listType"/>
+      <xsd:element name="error-page"
+                   type="j2ee:error-pageType"/>
+      <xsd:element name="jsp-config"
+                   type="j2ee:jsp-configType"/>
+      <xsd:element name="security-constraint"
+                   type="j2ee:security-constraintType"/>
+      <xsd:element name="login-config"
+                   type="j2ee:login-configType"/>
+      <xsd:element name="security-role"
+                   type="j2ee:security-roleType"/>
+      <xsd:group ref="j2ee:jndiEnvironmentRefsGroup"/>
+      <xsd:element name="message-destination"
+                   type="j2ee:message-destinationType"/>
+      <xsd:element name="locale-encoding-mapping-list"
+                   type="j2ee:locale-encoding-mapping-listType"/>
+    </xsd:choice>
+
+    <xsd:attribute name="version"
+                   type="j2ee:web-app-versionType"
+                   use="required"/>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="web-resource-collectionType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The web-resource-collectionType is used to identify a subset
+        of the resources and HTTP methods on those resources within
+        a web application to which a security constraint applies. If
+        no HTTP methods are specified, then the security constraint
+        applies to all HTTP methods.
+
+        Used in: security-constraint
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="web-resource-name"
+                   type="j2ee:string">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The web-resource-name contains the name of this web
+            resource collection.
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="description"
+                   type="j2ee:descriptionType"
+                   minOccurs="0"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="url-pattern"
+                   type="j2ee:url-patternType"
+                   maxOccurs="unbounded"/>
+      <xsd:element name="http-method"
+                   type="j2ee:http-methodType"
+                   minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+<!-- **************************************************** -->
+
+  <xsd:complexType name="welcome-file-listType">
+    <xsd:annotation>
+      <xsd:documentation>
+
+        The welcome-file-list contains an ordered list of welcome
+        files elements.
+
+        Used in: web-app
+
+      </xsd:documentation>
+    </xsd:annotation>
+
+    <xsd:sequence>
+      <xsd:element name="welcome-file"
+                   type="xsd:string"
+                   maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>
+
+            The welcome-file element contains file name to use
+            as a default welcome file, such as index.html
+
+          </xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+    <xsd:attribute name="id" type="xsd:ID"/>
+  </xsd:complexType>
+
+</xsd:schema>
+

@@ -1,0 +1,15 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'war'
+archivesBaseName = 'spring-session'
+version = '0.0.1-SNAPSHOT'
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE'
+    compile 'org.springframework.session:spring-session-data-redis:1.3.0.RELEASE'
+    compile 'biz.paluch.redis:lettuce:3.5.0.Final'
+    compile 'jstl:jstl:1.2'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat:1.4.3.RELEASE'
+}

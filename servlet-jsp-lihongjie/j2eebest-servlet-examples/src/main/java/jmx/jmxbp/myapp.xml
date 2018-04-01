@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE application SYSTEM "mbean.dtd">
+
+<!-- Root element: application -->
+<application>
+
+<!--========================-->
+<!-- Queue MBean definition -->
+<!--========================-->
+
+<mbean className="Queue">
+<description>
+This MBean is a managed queue to which one or more supplier threads is adding items (objects) and one or more consumer threads is removing them.
+</description>
+
+<!-- ********** -->
+<!-- Attributes -->
+<!-- ********** -->
+<attribute name="NumberOfItemsProcessed">
+The number of items that have been removed from the queue.
+</attribute>
+
+<attribute name="AddWaitTime">
+The total amount of time (in milliseconds) supplier threads have waited to add items to the queue because it was full.
+</attribute>
+
+<attribute name="Suspended">
+Will be true if the queue is suspended.
+</attribute>
+
+<attribute name="QueueFull">
+Will be true if the queue is full.
+</attribute>
+
+<attribute name="QueueEmpty">
+Will be true if the queue is empty.
+</attribute>
+
+<attribute name="RemoveWaitTime">
+The total amount of time (in milliseconds) consumer threads have waited to remove items from the queue because it was empty.
+</attribute>
+
+<attribute name="QueueSize">
+The maximum number of items that may coexist in the queue at any one instant. Also referred to as the queue depth.
+</attribute>
+
+<!-- ********** -->
+<!-- Operations -->
+<!-- ********** -->
+<operation name="suspend">
+Suspends activity in the queue. All threads are blocked until the resume operation is invoked.
+</operation>
+
+<operation name="resume">
+Resumes activity in the queue.
+</operation>
+
+<operation name="enableTracing">
+Enables logging of trace-level information. To turn this feature off, invoke disableTracing.
+</operation>
+
+<!-- ************* -->
+<!-- Notifications -->
+<!-- ************* -->
+<notification type="jmxbp.ex2.Queue.queueStalled">
+This notification is sent when logic internal to the queue has determined that the queue is stalled in some way. This usually means that no processing has occurred for more than 10000 ms (10 seconds) and other attributes of the class need to be investigated to resolve the problem.
+</notification>
+
+</mbean>
+
+<!--=============================-->
+<!-- Controller MBean definition -->
+<!--=============================-->
+
+<mbean className="Controller">
+<description>This MBean is the controller for the application."</description>
+<!-- ********** -->
+<!-- Attributes -->
+<!-- ********** -->
+<attribute name="TraceOn">Indicates whether tracing is on or not.</attribute>
+<attribute name="DebugOn">Indicates whether or not debug level tracing is on.</attribute>
+<attribute name="NumberOfResets">The number of times reset has been invoked on this MBean.</attribute>
+<!-- ********** -->
+<!-- Operations -->
+<!-- ********** -->
+<operation name="enableTracing">Turns trace output on.</operation>
+<operation name="disableTracing">Turns trace output off.</operation>
+<operation name="createWorker">Creates a new worker thread.</operation>
+</mbean>
+
+<!--===========================-->
+<!-- Consumer MBean definition -->
+<!--===========================-->
+
+<mbean className="Consumer">
+<description>This MBean is a consumer of items from the Queue.</description>
+<!-- ********** -->
+<!-- Attributes -->
+<!-- ********** -->
+<attribute name="WorkFactor">The amount of work performed by this worker thread.</attribute>
+<attribute name="AverageUnitProcessingTime">The average time in milliseconds to process each item</attribute>
+<attribute name="NumberOfUnitsProcessed">The total number of items processed.</attribute>
+<attribute name="Suspended">Indicates whether or not this worker is suspended.</attribute>
+<attribute name="TraceOn">Indicates whether tracing is on or not.</attribute>
+<attribute name="DebugOn">Indicates whether or not debug level tracing is on.</attribute>
+<attribute name="NumberOfResets">The number of times reset has been invoked on this MBean.</attribute>
+<!-- ********** -->
+<!-- Operations -->
+<!-- ********** -->
+<operation name="enableTracing">Turns trace output on.</operation>
+<operation name="disableTracing">Turns trace output off.</operation>
+<operation name="enableDebugging">Turns debug level trace output on.</operation>
+<operation name="disableDebugging">Turns debug level trace output off.</operation>
+<operation name="stop">Stops this worker thread.</operation>
+<operation name="suspend">Suspends this worker thread.</operation>
+<operation name="resume">Resumes this worker thread.</operation>
+<operation name="reset">Resets the state of this MBean.</operation>
+</mbean>
+
+<!--===========================-->
+<!-- Supplier MBean definition -->
+<!--===========================-->
+
+<mbean className="Supplier">
+<description>This MBean is a supplier of items to the Queue.</description>
+<!-- ********** -->
+<!-- Attributes -->
+<!-- ********** -->
+<attribute name="WorkFactor">The amount of work performed by this worker thread.</attribute>
+<attribute name="AverageUnitProcessingTime">The average time in milliseconds to process each item</attribute>
+<attribute name="NumberOfUnitsProcessed">The total number of items processed.</attribute>
+<attribute name="Suspended">Indicates whether or not this worker is suspended.</attribute>
+<attribute name="TraceOn">Indicates whether tracing is on or not.</attribute>
+<attribute name="DebugOn">Indicates whether or not debug level tracing is on.</attribute>
+<attribute name="NumberOfResets">The number of times reset has been invoked on this MBean.</attribute>
+<!-- ********** -->
+<!-- Operations -->
+<!-- ********** -->
+<operation name="enableTracing">Turns trace output on.</operation>
+<operation name="disableTracing">Turns trace output off.</operation>
+<operation name="enableDebugging">Turns debug level trace output on.</operation>
+<operation name="disableDebugging">Turns debug level trace output off.</operation>
+<operation name="stop">Stops this worker thread.</operation>
+<operation name="suspend">Suspends this worker thread.</operation>
+<operation name="resume">Resumes this worker thread.</operation>
+<operation name="reset">Resets the state of this MBean.</operation>
+</mbean>
+
+</application>

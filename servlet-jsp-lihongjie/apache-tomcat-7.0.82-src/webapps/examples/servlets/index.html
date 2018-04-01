@@ -1,0 +1,180 @@
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (WinNT; I) [Netscape]">
+   <meta name="Author" content="Anil K. Vijendran">
+   <title>Servlet Examples</title>
+</head>
+<body bgcolor="#FFFFFF">
+<b><font face="Arial, Helvetica, sans-serif"><font size=+2>Servlet
+Examples with Code</font></font></b>
+<p>This is a collection of examples which demonstrate some of the more
+frequently used parts of the Servlet API. Familiarity with the Java(tm)
+Programming Language is assumed.
+<p>These examples will only work when viewed via an http URL. They will
+not work if you are viewing these pages via a "file://..." URL. Please
+refer to the <i>README</i> file provide with this Tomcat release regarding
+how to configure and start the provided web server.
+<p>Wherever you see a form, enter some data and see how the servlet reacts.
+When playing with the Cookie and Session Examples, jump back to the Headers
+Example to see exactly what your browser is sending the server.
+<p>To navigate your way through the examples, the following icons will
+help:
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=5 WIDTH="85%" >
+<tr VALIGN=TOP>
+<td WIDTH="30"><img SRC="images/execute.gif" ></td>
+
+<td>Execute the example</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td WIDTH="30"><img SRC="images/code.gif" height=24 width=24></td>
+
+<td>Look at the source code for the example</td>
+</tr>
+
+<tr VALIGN=TOP>
+<td WIDTH="30"><img SRC="images/return.gif" height=24 width=24></td>
+
+<td>Return to this screen</td>
+</tr>
+</table>
+
+<p>Tip: To see the cookie interactions with your browser, try turning on
+the "notify when setting a cookie" option in your browser preferences.
+This will let you see when a session is created and give some feedback
+when looking at the cookie demo.
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=5 WIDTH="85%" >
+<tr VALIGN=TOP>
+<td>Hello World</td>
+
+<td VALIGN=TOP WIDTH="30%"><a href="servlet/HelloWorldExample"><img SRC="images/execute.gif" HSPACE=4 BORDER=0  align=TOP></a><a href="servlet/HelloWorldExample">Execute</a></td>
+
+<td WIDTH="30%"><a href="helloworld.html"><img SRC="images/code.gif" HSPACE=4 BORDER=0 height=24 width=24 align=TOP></a><a href="helloworld.html">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Request Info</td>
+
+<td WIDTH="30%"><a href="servlet/RequestInfoExample"><img SRC="images/execute.gif" HSPACE=4 BORDER=0  align=TOP></a><a href="servlet/RequestInfoExample">Execute</a></td>
+
+<td WIDTH="30%"><a href="reqinfo.html"><img SRC="images/code.gif" HSPACE=4 BORDER=0 height=24 width=24 align=TOP></a><a href="reqinfo.html">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Request Headers</td>
+
+<td WIDTH="30%"><a href="servlet/RequestHeaderExample"><img SRC="images/execute.gif" HSPACE=4 BORDER=0  align=TOP></a><a href="servlet/RequestHeaderExample">Execute</a></td>
+
+<td WIDTH="30%"><a href="reqheaders.html"><img SRC="images/code.gif" HSPACE=4 BORDER=0 height=24 width=24 align=TOP></a><a href="reqheaders.html">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Request Parameters</td>
+
+<td WIDTH="30%"><a href="servlet/RequestParamExample"><img SRC="images/execute.gif" HSPACE=4 BORDER=0  align=TOP></a><a href="servlet/RequestParamExample">Execute</a></td>
+
+<td WIDTH="30%"><a href="reqparams.html"><img SRC="images/code.gif" HSPACE=4 BORDER=0 height=24 width=24 align=TOP></a><a href="reqparams.html">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Cookies</td>
+
+<td WIDTH="30%"><a href="servlet/CookieExample"><img SRC="images/execute.gif" HSPACE=4 BORDER=0  align=TOP></a><a href="servlet/CookieExample">Execute</a></td>
+
+<td WIDTH="30%"><a href="cookies.html"><img SRC="images/code.gif" HSPACE=4 BORDER=0 height=24 width=24 align=TOP></a><a href="cookies.html">Source</a></td>
+</tr>
+
+<tr VALIGN=TOP>
+<td>Sessions</td>
+
+<td WIDTH="30%"><a href="servlet/SessionExample"><img SRC="images/execute.gif" HSPACE=4 BORDER=0  align=TOP></a><a href="servlet/SessionExample">Execute</a></td>
+
+<td WIDTH="30%"><a href="sessions.html"><img SRC="images/code.gif" HSPACE=4 BORDER=0 height=24 width=24 align=TOP></a><a href="sessions.html">Source</a></td>
+</tr>
+</table>
+
+<p>Note: The source code for these examples does not contain all of the
+source code that is actually in the example, only the important sections
+of code. Code not important to understand the example has been removed
+for clarity.</p>
+
+<b><u><font size="+1">Other Examples</font></u></b><br>
+<table BORDER=0 CELLSPACING=5 WIDTH="85%" >
+
+<tr>
+  <td colspan="3">Servlet 3.0 Asynchronous processing examples:</td>
+</tr>
+<tr VALIGN=TOP>
+  <td>async0&nbsp;</td>
+  <td VALIGN=TOP WIDTH="30%">
+    <a href="../async/async0"><img SRC="images/execute.gif" HSPACE=4 BORDER=0 align=TOP> Execute</a>
+  </td>
+  <td WIDTH="30%"></td>
+</tr>
+<tr VALIGN=TOP>
+  <td>async1&nbsp;</td>
+  <td VALIGN=TOP WIDTH="30%">
+    <a href="../async/async1"><img SRC="images/execute.gif" HSPACE=4 BORDER=0 align=TOP> Execute</a>
+  </td>
+  <td WIDTH="30%"></td>
+</tr>
+<tr VALIGN=TOP>
+  <td>async2&nbsp;</td>
+  <td VALIGN=TOP WIDTH="30%">
+    <a href="../async/async2"><img SRC="images/execute.gif" HSPACE=4 BORDER=0 align=TOP> Execute</a>
+  </td>
+  <td WIDTH="30%"></td>
+</tr>
+<tr VALIGN=TOP>
+  <td>async3&nbsp;</td>
+  <td VALIGN=TOP WIDTH="30%">
+    <a href="../async/async3"><img SRC="images/execute.gif" HSPACE=4 BORDER=0 align=TOP> Execute</a>
+  </td>
+  <td WIDTH="30%"></td>
+</tr>
+<tr VALIGN=TOP>
+  <td>stockticker&nbsp;</td>
+  <td VALIGN=TOP WIDTH="30%">
+    <a href="../async/stockticker"><img SRC="images/execute.gif" HSPACE=4 BORDER=0 align=TOP> Execute</a>
+  </td>
+  <td WIDTH="30%"></td>
+</tr>
+
+<tr>
+  <td colspan="3">Comet processing example:<br />
+    See the <strong>"Advanced IO"</strong> chapter in the User Guide for
+    details. This example only works with the HTTP NIO or HTTP APR/native
+    connectors as these are the only connectors that support Comet.</td>
+</tr>
+<tr VALIGN=TOP>
+  <td>Comet Chat&nbsp;</td>
+  <td VALIGN=TOP WIDTH="30%">
+    <a href="chat/"><img SRC="images/execute.gif" HSPACE=4 BORDER=0 align=TOP> Execute</a>
+  </td>
+  <td WIDTH="30%"></td>
+</tr>
+
+</table>
+
+</body>
+</html>

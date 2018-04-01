@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd"
+        version="3.0"
+        metadata-complete="true">
+
+    <name>fragment1</name>
+    <servlet>
+        <servlet-name>fragment1Servlet</servlet-name>
+        <servlet-class>com.sishuok.chapter2.fragment1.web.servlet.Fragment1Servlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>fragment1Servlet</servlet-name>
+        <url-pattern>/fragment1</url-pattern>
+    </servlet-mapping>
+
+
+</web-fragment>

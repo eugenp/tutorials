@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain1">
+	<class name="User" table="USER"><!--不加入table标签，表明类名和表名相同  -->
+		<id name="id" column="USER_ID">
+<!-- 			<generator class="foreign">
+				<param name="property">person</param>
+			</generator> --><!-- 共享主键方式 一对一 -->
+			<generator class="native"/>
+		</id>
+		<property name="firstname" column="first_name"/>
+		<property name="lastname" column="last_name"/>
+		<property name="username" column="username"/>
+		<property name="password" column="password"/>
+		<property name="email" column="email"/>
+		<property name="ranking" column="ranking"/>
+		<property name="admin" column="admin"/>
+		<one-to-one name="shippingAddress" class="Address" cascade="save-update"/>
+	</class>
+</hibernate-mapping>
+

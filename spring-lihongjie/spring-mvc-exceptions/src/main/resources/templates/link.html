@@ -1,0 +1,22 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<img th:fragment="github" th:src="@{/extlink.png}" src="extlink.png"
+		title="View in github" />
+	<img th:fragment="spring" th:src="@{/extlink.png}" src="extlink.png"
+		title="View at Spring IO" />
+
+	<a th:fragment="blog" th:href="${blogUrl}">Blog</a>
+
+	<span th:fragment="simpleMappingExceptionResolver"> <code>SimpleMappingExceptionResolver</code>
+		<a
+		href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/servlet/handler/SimpleMappingExceptionResolver.html">
+			<img th:src="@{/extlink.png}" src="extlink.png"
+			title="Javadoc at Spring IO" />
+	</a>
+	</span>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="comments.html">
+
+  &project;
+
+  <properties>
+    <title>Documentation User Comments</title>
+  </properties>
+
+<body>
+
+<section name="Introduction">
+
+<p>The Tomcat documentation integrates the
+<a href="https://comments.apache.org/help.html">Apache Comments System</a>.
+It allows users to add comments to most documentation pages. The comments
+section can be found at the end of each page.</p>
+
+</section>
+
+<section name="Allowed Content">
+
+<p>Please use the Apache Comments System responsibly. We can only provide
+this service to the community as long as it isn't misused.</p>
+
+<p>The comments are not for general Q&amp;A.
+Comments should be pointed towards suggestions on improving the documentation
+or server. Questions on how to use Apache Tomcat should be directed
+to our <a href="http://tomcat.apache.org/lists.html">mailing lists</a>.</p>
+
+<p>Comments may be removed by moderators if they are either
+implemented or considered invalid/off-topic.</p>
+
+<p>HTML is not allowed in comments, and will just display as raw source code
+if attempted. Links that do not point to an Apache site (*.apache.org) will
+need approval by a moderator before the comment is visible to regular visitors.</p>
+
+</section>
+
+<section name="License">
+
+<p>Any submitted comments must be contributed under the terms of the
+<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.</p>
+
+</section>
+
+<section name="Verified Users">
+
+<p>Verified users gain the Apache feather next to their name,
+and may post comments with links in them without requiring approval
+by a moderator before the comments are shown. Being a verified user
+in itself does not give you moderating rights. If you are interested
+in becoming a verified user, please contact us on the
+<a href="http://tomcat.apache.org/lists.html#tomcat-users">users mailing list</a>.</p>
+
+<p>All ASF committers are automatically verified users.</p>
+
+</section>
+
+<section name="Moderators">
+
+<p>Moderators are allowed to mark comments as "Resolved", "Invalid"
+or "Sticky", remove marks, approve comments e.g. if they contain
+a link, and delete comments. Moderators can also subscribe to new
+comments and comment updates and use the dashboard to gain some
+overview over all comments of a site.</p>
+
+<p>To use the moderation features, you need to login to the comments
+system. Furthermore you will need to allow cookies to be set for
+comments.apache.org (this is done using a secure https cookie). Once
+logged in as a moderator you will see additional moderation
+options attached to each comment.</p>
+
+<p>If you are a long time follower of the Apache Tomcat projects
+and you are interested in becoming a moderator, please contact us on the
+<a href="http://tomcat.apache.org/lists.html#tomcat-users">users mailing list</a>.</p>
+
+</section>
+
+<section name="Privacy Policy">
+
+<p>No data except what you personally submit is kept on record.
+A cookie is used to keep track of moderators and other people
+who wish to create an account to avoid having to enter their
+credentials whenever they wish to post a comment.</p>
+
+<p>To prevent spam and unsolicited comments, we use a digest of
+visitors' IPs to keep track of comments posted by them.</p>
+
+<p>Entering an email address when you post a comment is completely
+optional, and will not be shared with anyone. If you enter an
+email address, it will be used to notify you when someone posts
+a reply to one of your comments, provided you have registered
+an account and validated your email address.</p>
+
+</section>
+
+</body>
+</document>

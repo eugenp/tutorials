@@ -1,0 +1,251 @@
+#bodyEmptyFiller {
+  height: 50px;
+}
+
+#resultsEmptyFillerHead {
+  height: 28px;
+}
+
+#resultsEmptyFillerFoot {
+  height: 20px;
+}
+
+
+#searchBar {
+  background: url("images/Bg_BrandBar.png") repeat scroll left top;
+/*  background-color: #eee; */
+/*  border: 1px solid #8FB345; */
+  border: 1px solid #ccc;
+  z-index: 1000;
+  position: fixed !important;
+  bottom: 0px;
+  left: 0px;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 100%;
+  width: 100%;
+  height: 32px;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+
+  -moz-border-radius-topleft: 7px;
+  -moz-border-radius-topright: 7px;
+  -webkit-border-radius-top-left: 7px;
+  -webkit-border-radius-top-right: 7px;
+
+/*  -moz-box-shadow: 5px 5px 25px #ccc; */
+/*  -webkit-box-shadow: 5px 5px 25px #ccc; */
+/*  box-shadow: 5px 5px 25px #ccc; */
+/*  filter: progid: DXImageTransform.Microsoft.dropshadow(OffX=5, OffY=5, Color='lightgrey', Positive='true') */
+/*  border-radius: 5px; */
+
+}
+
+#searchBar #collapseLink img {
+  height: 33px;
+  z-index: 1001;
+  position: fixed !important;
+}
+
+
+#searchBar #collapseLink.barOpen img {
+  width: 16px;
+  left: 0px;
+} 
+
+#searchBar #collapseLink.barClosed a img {
+/*  width: 83px; */
+  right: 0px;
+}
+ 
+#searchBar #searchFields {
+/*  position: absolute; */
+/*  right: 26px; */
+  width: 390px;
+}
+
+#searchBar #searchFields #searchLens {
+  cursor: pointer;
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  width: 30px;
+  height: 22px;
+}
+
+#searchBar #adArrow {
+/*  position: absolute; */
+  width: 28px;
+  height: 32px;
+  right: 0px;
+/*  margin-right: 3px; */
+  border-left: 1px solid #ccc;
+}
+
+#searchBar #adArrow #arrowImg {
+  cursor: pointer;
+  position: absolute; 
+  right: 20px; 
+  top: 11px; 
+}
+
+#searchBar #logoSpan {
+  float: left;
+  padding-left: 6px;
+  padding-right: 6px;
+  padding-top: 6px;
+  padding-bottom: 3px;
+  position: absolute;
+  left: 19px;
+  bottom: -2px;
+}
+
+#searchBar #subscribeLinkDiv {
+  bottom: 8px;
+  float: left;
+  left: 200px;
+  position: absolute;
+}
+
+#searchBar p, 
+#searchBar span {
+  font-size: 11px;
+  color: #666;
+}
+
+#searchBar br,
+#searchBar p {
+  line-height: 130%;
+  padding: 4px;
+  margin: 0;
+} 
+
+#searchBar em, strong {
+  font-style: normal;
+  font-weight: bold;
+}
+
+#searchBar #siteLinks {
+  position: absolute;
+  top: 6px;
+  left: 200px;
+}
+
+
+#searchBar #siteLinks a {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#searchBar #searchKeys { 
+  font: 13px Arial,Helvetica,sans-serif;
+  color: #ccc;
+  border: 1px solid #999;
+  width: 235px;
+  margin-left: 10px;
+  padding-left: 5px;
+  position: absolute;
+  right: 75px;
+  top: 6px;
+}
+
+
+#searchBar #searchWhat {
+  display: none;
+  font: 13px Arial,Helvetica,sans-serif;
+  cursor: pointer;
+  border: 1px solid #999;
+  width: 114px;
+  margin-left: 10px;
+  padding-left: 6px;
+  position: absolute;
+  right: 74px;
+  top: 6px;
+}
+
+#searchBar #daAd {
+/*  display: none; */
+  position: absolute;
+  width: 100%;
+}
+
+#searchBar #resultsDiv {
+  z-index: 1003;
+  display: none;
+  position: absolute;
+  bottom: 32px;
+  width: 480px;
+  right:  28px;
+  background: #fff;
+  border: 1px solid #999;
+
+  padding: 10px;
+  border-top: 4px solid #999;
+  border-left: 4px solid #999;
+  border-right: 4px solid #999;
+  -moz-border-radius-topleft: 11px;
+  -moz-border-radius-topright: 11px;
+  -webkit-border-radius-top-left: 11px;
+  -webkit-border-radius-top-right: 11px;
+}
+
+#searchBar .search-result-promotion a,
+#searchBar .search-result a {
+  font-weight: bolder;
+}
+
+#searchBar .search-result-promotion {
+  background-color: #DFEEB7;
+  width: 500px;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+#searchBar .search-result-promotion .promContent {
+  margin-left: 10px;
+  font-size: 11px;
+}
+
+#searchBar .search-result-url {
+  color: #8FB345;
+}
+
+#searchBar #resultsHead {
+  -moz-border-radius-topleft: 7px;
+  -moz-border-radius-topright: 7px;
+  -webkit-border-radius-top-left: 7px;
+  -webkit-border-radius-top-right: 7px;
+  background-color: #eee;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 500px;
+}
+
+#searchBar #resultsFoot {
+  background-color: #eee;
+  height: 28px;
+  left: 0;
+  position: absolute;
+  bottom: 0;
+  width: 500px;
+}
+
+#searchBar #resultsCount {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 2.2em;
+  padding: 10px;
+}
+
+#searchBar .resultsClose {
+  font-size: 12px;
+  float: right;
+  padding: 10px;
+  line-height: 0.7em;
+}
+
+#searchBar #emptyFiller {
+  height: 28px;
+}
+

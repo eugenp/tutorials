@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xmlns:amq="http://activemq.apache.org/schema/core"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+    http://www.springframework.org/schema/jdbc 
+    http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd 
+    http://activemq.apache.org/schema/core 
+    http://activemq.apache.org/schema/core/activemq-core.xsd">
+    <bean:import resource="classpath:ch07/job-context.xml"/>
+    
+    <job id="jmsWriteJob">
+        <step id="jmsWriteStep">
+            <tasklet transaction-manager="transactionManager">
+                <chunk reader="flatFileItemReader" processor="creditBillProcessor" 
+                    writer="jmsItemWriter" commit-interval="2">
+                    <listeners>
+                        <listener ref="jmsDetectItemWriteListener"/>
+                    </listeners>
+                </chunk>
+            </tasklet>
+        </step>
+    </job>
+    
+    <bean:bean id="jmsItemWriter" 
+        class="org.springframework.batch.item.jms.JmsItemWriter">
+		<bean:property name="jmsTemplate" ref="jmsTemplate" />
+	</bean:bean>
+	
+    <bean:bean id="jmsDetectItemWriteListener" 
+        class="com.juxtapose.example.ch07.jms.JMSDetectItemWriteListener">
+		<bean:property name="jmsTemplate" ref="jmsTemplate" />
+	</bean:bean>
+    
+    <bean:bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<bean:property name="connectionFactory" ref="jmsFactory"/>
+		<bean:property name="defaultDestination" ref="creditDestination"/>
+		<bean:property name="receiveTimeout" value="500"/>
+	</bean:bean> 
+	
+	<amq:broker useJmx="false" persistent="false" schedulerSupport="false">
+    	<amq:transportConnectors>
+			<amq:transportConnector uri="tcp://localhost:61616"/>
+		</amq:transportConnectors>
+	</amq:broker>
+
+	<amq:connectionFactory id="jmsFactory" brokerURL="tcp://localhost:61616"/>
+    <amq:queue id="creditDestination" physicalName="destination.creditBill" /> 
+    
+    
+    <bean:bean id="flatFileItemReader" scope="step"
+        class="org.springframework.batch.item.file.FlatFileItemReader">
+        <bean:property name="resource" 
+            value="classpath:ch07/data/flat/credit-card-bill-201310.csv"/>
+        <bean:property name="lineMapper" ref="lineMapper" />
+    </bean:bean>
+    
+	<bean:bean id="lineMapper" 
+	    class="org.springframework.batch.item.file.mapping.DefaultLineMapper" >
+	    <bean:property name="lineTokenizer" ref="delimitedLineTokenizer" />
+	    <bean:property name="fieldSetMapper" ref="creditBillFieldSetMapper"/>
+	</bean:bean>
+            
+    <bean:bean id="delimitedLineTokenizer" 
+        class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+        <bean:property name="delimiter" value=","/>
+        <bean:property name="names" value="accountID,name,amount,date,address" />
+    </bean:bean>
+
+    <bean:bean id="creditBillFieldSetMapper"
+        class="com.juxtapose.example.ch07.flat.CreditBillFieldSetMapper">
+    </bean:bean>
+    
+    <bean:bean id="creditBill" scope="prototype"
+        class="com.juxtapose.example.ch07.CreditBill">
+    </bean:bean>
+    
+    <bean:bean id="creditBillProcessor" scope="step"
+        class="com.juxtapose.example.ch07.CreditBillProcessor">
+    </bean:bean>
+    
+</bean:beans>

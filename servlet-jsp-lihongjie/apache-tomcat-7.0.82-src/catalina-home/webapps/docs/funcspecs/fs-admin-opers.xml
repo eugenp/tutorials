@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="fs-admin-opers.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig McClanahan</author>
+    <title>Administrative Apps - Supported Operations</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Supported Operations Overview">
+
+<p>This document defines the <em>Supported Operations</em> that may
+be performed against the <a href="fs-admin-objects.html">Administered
+Objects</a> that are supported by Tomcat administrative applications.
+Not all operations are required to be available through every administrative
+application that is implemented.  However, if a given operation is available,
+it should operate consistently with the descriptions found here.</p>
+
+<p>Supported Operations are described for the following Administered
+Objects:</p>
+<ul>
+<li><a href="#Access Logger">Access Logger</a></li>
+<li><a href="#Connector">Connector</a></li>
+<li><a href="#Context">Context</a></li>
+<li><a href="#Default Context">Default Context</a></li>
+<li><a href="#Engine">Engine</a></li>
+<li><a href="#Environment Entry">Environment Entry</a></li>
+<li><a href="#Host">Host</a></li>
+<li><a href="#JDBC Resource">JDBC Resource</a></li>
+<li><a href="#Loader">Loader</a></li>
+<li><a href="#Manager">Manager</a></li>
+<li><a href="#Realm">Realm</a></li>
+<li><a href="#Request Filter">Request Filter</a></li>
+<li><a href="#Server">Server</a></li>
+<li><a href="#Service">Service</a></li>
+</ul>
+
+</section>
+
+
+<section name="Access Logger">
+
+  <p>From the perspective of a particular <em>Access Logger</em>, it shall
+  be possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Engine</em>, <em>Host</em>, or
+      <em>Context</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  </ul>
+
+</section>
+
+
+<section name="Connector">
+
+  <p>From the perspective of a particular <em>Connector</em>, it shall be
+  possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Service</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  </ul>
+
+</section>
+
+
+<section name="Context">
+
+  <p>From the perspective of a particular <em>Context</em>, it shall be
+  possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Host</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  <li>Create and configure a new <em>Access Logger</em> associated
+      with this object.</li>
+  <li>Edit the configurable properties of the associated <em>Access
+      Logger</em>.</li>
+  <li>Remove the associated <em>Access Logger</em>.</li>
+  <li>Create and configure a new <em>Environment Entry</em> associated
+      with this object.</li>
+  <li>Select and edit the configurable properties of an associated
+      <em>Environment Entry</em>.</li>
+  <li>Remove an associated <em>Environment Entry</em>.</li>
+  <li>Create and configure a new <em>JDBC Resource</em> associated
+      with this object.</li>
+  <li>Select and edit the configurable properties of an associated
+      <em>JDBC Resource</em>.</li>
+  <li>Remove an associated <em>JDBC Resource</em>.</li>
+  <li>Create and configure a new <em>Loader</em> associated with
+      this object.</li>
+  <li>Edit the configurable properties of the associated <em>Loader</em>.</li>
+  <li>Remove the associated <em>Loader</em>.</li>
+  <li>Create and configure a new <em>Manager</em> associated with
+      this object.</li>
+  <li>Edit the configurable properties of the associated <em>Manager</em>.</li>
+  <li>Remove the associated <em>Manager</em>.</li>
+  <li>Create and configure a new <em>Realm</em> associated with
+      this object.</li>
+  <li>Edit the configurable properties of the associated <em>Realm</em>.</li>
+  <li>Remove the associated <em>Realm</em>.</li>
+  <li>Create and configure a new <em>Request Filter</em> associated with
+      this object.</li>
+  <li>Select and edit the configurable properties of an
+      associated <em>Request Filter</em></li>
+  <li>Remove an associated <em>Request Filter</em>.</li>
+  </ul>
+
+</section>
+
+
+<section name="Default Context">
+
+  <p>From the perspective of a particular <em>Default Context</em>, it shall
+  be possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Engine</em> or <em>Host</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  <li>Create and configure a new <em>Environment Entry</em> associated
+      with this object.</li>
+  <li>Select and edit the configurable properties of an associated
+      <em>Environment Entry</em>.</li>
+  <li>Remove an associated <em>Environment Entry</em>.</li>
+  <li>Create and configure a new <em>JDBC Resource</em> associated
+      with this object.</li>
+  <li>Select and edit the configurable properties of an associated
+      <em>JDBC Resource</em>.</li>
+  <li>Remove an associated <em>JDBC Resource</em>.</li>
+  </ul>
+
+</section>
+
+
+<section name="Engine">
+
+  <p>From the perspective of a particular <em>Engine</em>, it shall be
+  possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Service</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  <li>Create and configure a new <em>Access Logger</em> associated
+      with this object.</li>
+  <li>Edit the configurable properties of the associated <em>Access
+      Logger</em>.</li>
+  <li>Remove the associated <em>Access Logger</em>.</li>
+  <li>Create and configure a new <em>Default Context</em> associated
+      with this object.</li>
+  <li>Edit the configurable properties of the associated <em>Default
+      Context</em>.</li>
+  <li>Remove the associated <em>Default Context</em>.</li>
+  <li>Create and configure a new <em>Host</em> associated with
+      this object.</li>
+  <li>Select and edit the configurable properties of an
+      associated <em>Host</em>.</li>
+  <li>Remove an associated <em>Host</em>.</li>
+  <li>Create and configure a new <em>Realm</em> associated with
+      this object.</li>
+  <li>Edit the configurable properties of the associated <em>Realm</em>.</li>
+  <li>Remove the associated <em>Realm</em>.</li>
+  <li>Create and configure a new <em>Request Filter</em> associated with
+      this object.</li>
+  <li>Select and edit the configurable properties of an
+      associated <em>Request Filter</em></li>
+  <li>Remove an associated <em>Request Filter</em>.</li>
+  </ul>
+
+</section>
+
+
+<section name="Environment Entry">
+
+  <p>From the perspective of a particular <em>Environment Entry</em>, it shall
+  be possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Context</em> or <em>Default Context</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  </ul>
+
+</section>
+
+
+<section name="Host">
+
+  <p>From the perspective of a particular <em>Host</em>, it shall be
+  possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Engine</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  <li>Create and configure a new <em>Access Logger</em> associated
+      with this object.</li>
+  <li>Edit the configurable properties of the associated <em>Access
+      Logger</em>.</li>
+  <li>Remove the associated <em>Access Logger</em>.</li>
+  <li>Create and configure a new <em>Context</em> associated with
+      this object.</li>
+  <li>Select and edit the configurable properties of an associated
+      <em>Context</em>.</li>
+  <li>Remove an associated <em>Context</em>.</li>
+  <li>Create and configure a new <em>Default Context</em> associated
+      with this object.</li>
+  <li>Edit the configurable properties of the associated <em>Default
+      Context</em>.</li>
+  <li>Remove the associated <em>Default Context</em>.</li>
+  <li>Create and configure a new <em>Realm</em> associated with
+      this object.</li>
+  <li>Edit the configurable properties of the associated <em>Realm</em>.</li>
+  <li>Remove the associated <em>Realm</em>.</li>
+  <li>Create and configure a new <em>Request Filter</em> associated with
+      this object.</li>
+  <li>Select and edit the configurable properties of an
+      associated <em>Request Filter</em></li>
+  <li>Remove an associated <em>Request Filter</em>.</li>
+  </ul>
+
+</section>
+
+
+<section name="JDBC Resource">
+
+  <p>From the perspective of a particular <em>JDBC Resource</em>, it shall
+  be possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Context</em> or <em>Default Context</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  </ul>
+
+</section>
+
+
+<section name="Loader">
+
+  <p>From the perspective of a particular <em>Loader</em>, it shall
+  be possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Context</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  </ul>
+
+</section>
+
+
+<section name="Manager">
+
+  <p>From the perspective of a particular <em>Manager</em>, it shall
+  be possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Context</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  </ul>
+
+</section>
+
+
+<section name="Realm">
+
+  <p>From the perspective of a particular <em>Realm</em>, it shall
+  be possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Engine</em>, <em>Host</em>, or
+      <em>Context</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  </ul>
+
+</section>
+
+
+<section name="Request Filter">
+
+  <p>From the perspective of a particular <em>Request Filter</em>, it shall
+  be possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Engine</em>, <em>Host</em>, or
+      <em>Context</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  </ul>
+
+</section>
+
+
+<section name="Server">
+
+  <p>From the perspective of the overall <em>Server</em>, it shall be
+  possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Edit the configurable properties of this object.</li>
+  <li>Create and configure a new <em>Service</em> associated with
+      this object.</li>
+  <li>Select and edit the configurable properties of an associated
+      <em>Service</em>.</li>
+  </ul>
+
+</section>
+
+
+<section name="Service">
+
+  <p>From the perspective of a particular <em>Service</em>, it shall be
+  possible to perform the following administrative operations:</p>
+  <ul>
+  <li>Navigate to the owning <em>Server</em>.</li>
+  <li>Edit the configurable properties of this object.</li>
+  <li>Create and configure a new <em>Connector</em> associated with
+      this object.</li>
+  <li>Select and edit the configurable properties of an associated
+      <em>Connector</em>.</li>
+  <li>Remove an associated <em>Connector</em>.</li>
+  <li>Create and configure a new <em>Engine</em> associated with
+      this object.</li>
+  <li>Edit the configurable properties of the associated <em>Engine</em>.</li>
+  <li>Remove the associated <em>Engine</em>.</li>
+  </ul>
+
+</section>
+
+
+</body>
+
+</document>

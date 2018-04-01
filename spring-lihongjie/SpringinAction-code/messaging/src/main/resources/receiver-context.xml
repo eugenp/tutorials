@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:jms="http://www.springframework.org/schema/jms"
+ xmlns:amq="http://activemq.apache.org/schema/core"
+ xsi:schemaLocation="http://activemq.apache.org/schema/core 
+        http://activemq.apache.org/schema/core/activemq-core.xsd
+		http://www.springframework.org/schema/jms 
+        http://www.springframework.org/schema/jms/spring-jms.xsd
+		http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <!--<start id="activemq_connection_factory_amq"/>--> 
+  <amq:connectionFactory id="connectionFactory"
+      brokerURL="tcp://localhost:61616"/>
+  <!--<end id="activemq_connection_factory_amq"/>--> 
+
+  <!--<start id="activemq_queue_amq"/>--> 
+  <amq:queue id="queue" physicalName="spitter.queue" />
+  <!--<end id="activemq_queue_amq"/>--> 
+
+  <!--<start id="activemq_topic_amq"/>--> 
+  <amq:topic id="topic" physicalName="spitter.topic" />
+  <!--<end id="activemq_topic_amq"/>--> 
+
+  <bean id="messageGetter" class="com.springinaction.messaging.MessageGetter" />
+
+  <jms:listener-container>
+    <jms:listener destination="spitter.queue" ref="messageGetter" method="echo" />
+  </jms:listener-container>  
+</beans>

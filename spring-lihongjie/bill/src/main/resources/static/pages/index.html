@@ -1,0 +1,145 @@
+<!--
+<div>
+
+	<div id="billings" class="clear">
+		<table class="table table-bordered">
+
+			<tbody>
+			<tr style="background-color: #f5f5f5">
+				<th colspan="9">Billing list</th>
+			</tr>
+			<tr>
+				<td>Index</td>
+				<td>Name</td>
+				<td>Total price</td>
+				<td>Description</td>
+				<td>Created by</td>
+				<td>Created at</td>
+				<td>Last edit by</td>
+				<td>Last edit at</td>
+				<td>Operation</td>
+			</tr>
+			<tr ng-repeat="billing in billings" class="hover-pointer">
+				<td>{{$index + 1}}</td>
+				<td>{{billing.name}}</td>
+				<td>{{billing.totalPrice}}</td>
+				<td>{{billing.description}}</td>
+				<td>{{billing.createdBy}}</td>
+				<td>${#dates.format(billing.createdAt, 'yyyy/MM/dd HH:mm')}</td>
+				<td>{{billing.lastEditBy}}</td>
+				<td>${#dates.format(billing.lastEditAt, 'yyyy/MM/dd HH:mm')}</td>
+				<td><a class="pointer" ng-click="editBilling(billing)">Update</a> | <a class="pointer"
+																				 ng-click="deleteBilling(billing)">Remove</a>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<a class="btn btn-primary" ng-click="addBilling(billing)">Add billing</a>
+
+	<div class="btn-group pull-right" role="group">
+		<button type="button" ng-click="previousPage()" class="btn btn-default"
+				ng-disabled="!page.hasPrevious">Previous
+		</button>
+		<button type="button" ng-click="nextPage()" class="btn btn-default"
+				ng-disabled="!page.hasNext">Next
+		</button>
+	</div>
+
+	<div class="pull-right page-info">
+		<span>Current at page <b>{{page.number + 1}}</b>，
+		</span> <span>Total <b>{{page.totalPages}}</b> pages
+		</span>
+	</div>
+
+</div>
+
+<div class="modal fade" id="add-billing" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Add new billing</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+
+					<div class="form-group">
+						<label class="col-md-3">Name：</label>
+						<div class="col-md-5">
+							<input type="text" ng-model="add.password" class="form-control" required/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3">Total price：</label>
+						<div class="col-md-5">
+							<input type="text" ng-model="add.name" class="form-control" required/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3">Description: </label>
+						<div class="col-md-5">
+							<input type="text" ng-model="add.remark" class="form-control" required/>
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" ng-click="confirmAdd()">OK</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="modal fade" id="edit-billing" tabindex="-1" role="dialog">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Edit billing {{edit.name}}</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+
+					<div class="form-group">
+						<label class="col-md-3">Name：</label>
+						<div class="col-md-5">
+							<input type="text" ng-model="edit.name" class="form-control" required/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3">Total price: </label>
+						<div class="col-md-5">
+							<input type="text" ng-model="edit.totalPrice" class="form-control" required/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-md-3">Description: </label>
+						<div class="col-md-5">
+							<input type="text" ng-model="edit.remark" class="form-control" required/>
+						</div>
+					</div>
+				</form>
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" ng-click="confirmEdit()">OK</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+
+			</div>
+		</div>
+	</div>
+</div>-->

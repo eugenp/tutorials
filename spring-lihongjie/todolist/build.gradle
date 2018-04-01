@@ -1,0 +1,93 @@
+buildscript {
+	ext {
+		springBootVersion = '1.3.5.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath 'mysql:mysql-connector-java:5.1.16'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+mainClassName='cn.nonocast.TodolistApplication'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+def getProjectVersion() {
+    // 获取application.properties中的project.verion
+    def properties = new Properties()
+    def propertiesFile = new File('src/main/resources/application.properties')
+    propertiesFile.withInputStream {
+        properties.load(it)
+    }
+
+    return properties['project.version']
+}
+
+version = getProjectVersion()
+
+jar {
+    baseName = 'todoapp'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web'
+    compile "org.springframework.boot:spring-boot-starter-security"
+    compile "org.springframework.boot:spring-boot-devtools"
+    compile "org.springframework.boot:spring-boot-starter-freemarker"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa"
+    compile "org.springframework.boot:spring-boot-starter-redis"
+    compile "redis.clients:jedis:2.7.3"
+    compile "org.webjars:bootstrap:3.3.6"
+    compile "org.webjars:font-awesome:4.6.3"
+    compile "org.webjars:jquery:2.2.4"
+    compile "org.webjars:coffee-script:1.10.0"
+    compile "org.webjars:lodash:4.0.0"
+    compile "org.webjars:highcharts:4.2.5"
+    compile "org.webjars:react:15.2.1"
+    compile "org.webjars.npm:babel-core:5.8.19"
+    compile group: 'com.google.guava', name: 'guava', version: '19.0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    compile group: 'mysql', name: 'mysql-connector-java'
+    compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310'
+    testCompile "org.springframework.boot:spring-boot-starter-test"
+}
+
+task webpack(type: Exec) {
+    standardOutput = new ByteArrayOutputStream()
+    commandLine "webpack"
+
+    doLast {
+        String output = standardOutput.toString()
+
+        if(output.readLines().any{line->line.trim().toLowerCase().startsWith("error")}) {
+            throw new GradleException("error in webpack: \n${output}")
+        }
+    }
+}
+
+jar.dependsOn webpack
+
+task publish(dependsOn: build) << {
+    ["cp", "build/libs/todoapp-${version}.jar", "../todoapp"].execute()
+}
+
+eclipse {
+    classpath {
+        containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+        containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+    }
+}

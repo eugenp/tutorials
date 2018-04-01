@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cluster-manager.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>The ClusterManager object</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  <p>A cluster manager is an extension to Tomcat's session manager interface,
+  <code>org.apache.catalina.Manager</code>.
+  A cluster manager must implement the
+  <code>org.apache.catalina.ha.ClusterManager</code> and is solely  responsible
+  for how the session is replicated.<br/>
+  There are currently two different managers, the
+  <code>org.apache.catalina.ha.session.DeltaManager</code> replicates deltas of
+  session data to all members in the cluster. This implementation is proven and
+  works very well, but has a limitation as it requires the cluster members to be
+  homogeneous, all nodes must deploy the same applications and be exact
+  replicas. The <code>org.apache.catalina.ha.session.BackupManager</code> also
+  replicates deltas but only to one backup node. The location of the backup node
+  is known to all nodes in the cluster. It also supports heterogeneous
+  deployments, so the manager knows at what locations the web application is
+  deployed.</p>
+</section>
+
+<section name="The &lt;Manager&gt;">
+  <p>The <code>&lt;Manager&gt;</code> element defined inside the
+  <code>&lt;Cluster&gt;</code> element is the template defined for all web
+  applications that are marked <code>&lt;distributable/&gt;</code> in their
+  <code>web.xml</code> file. However, you can still override the manager
+  implementation on a per web application basis, by putting the
+  <code>&lt;Manager&gt;</code> inside the <code>&lt;Context&gt;</code> element
+  either in the <code><a href="context.html">context.xml</a></code> file or the
+  <code><a href="index.html">server.xml</a></code> file.</p>
+</section>
+
+<section name="Attributes">
+  <subsection name="Common Attributes">
+    <attributes>
+      <attribute name="className" required="true">
+      </attribute>
+      <attribute name="name" required="false">
+        <b>The name of this cluster manager, the name is used to identify a
+        session manager on a node. The name might get modified by the
+        <code>Cluster</code> element to make it unique in the container.</b>
+      </attribute>
+      <attribute name="notifyListenersOnReplication" required="false">
+        Set to <code>true</code> if you wish to have session listeners notified
+        when session attributes are being replicated or removed across Tomcat
+        nodes in the cluster.
+      </attribute>
+      <attribute name="expireSessionsOnShutdown" required="false">
+        When a web application is being shutdown, Tomcat issues an expire call
+        to each session to notify all the listeners. If you wish for all
+        sessions to expire on all nodes when a shutdown occurs on one node, set
+        this value to <code>true</code>. Default value is <code>false</code>.
+      </attribute>
+      <attribute name="maxInactiveInterval" required="false">
+        <p><strong>Deprecated</strong>: This should be configured via the
+        Context.</p>
+        <p>The initial maximum time interval, in seconds,
+        between client requests before a session is invalidated. A negative value
+        will result in sessions never timing out. If the attribute is not provided,
+        a default of 1800 seconds (30 minutes) is used.</p>
+        <p>This attribute provides the initial value whenever a
+        new session is created, but the interval may be dynamically
+        varied by a servlet via the
+        <code>setMaxInactiveInterval</code> method of the <code>HttpSession</code> object.</p>
+      </attribute>
+      <attribute name="sessionIdLength" required="false">
+       <p>The length of session ids created by this Manager, measured in bytes,
+        excluding subsequent conversion to a hexadecimal string and
+        excluding any JVM route information used for load balancing.
+        The default is 16. You should set the length on a nested
+        <strong>SessionIdGenerator</strong> element instead.</p>
+      </attribute>
+      <attribute name="processExpiresFrequency" required="false">
+        <p>Frequency of the session expiration, and related manager operations.
+        Manager operations will be done once for the specified amount of
+        backgroundProcess calls (i.e., the lower the amount, the more often the
+        checks will occur). The minimum value is 1, and the default value is 6.
+        </p>
+      </attribute>
+      <attribute name="secureRandomClass" required="false">
+        <p>Name of the Java class that extends
+        <code>java.security.SecureRandom</code> to use to generate session IDs.
+        If not specified, the default value is
+        <code>java.security.SecureRandom</code>.</p>
+      </attribute>
+      <attribute name="secureRandomProvider" required="false">
+        <p>Name of the provider to use to create the
+        <code>java.security.SecureRandom</code> instances that generate session
+        IDs. If an invalid algorithm and/or provider is specified, the Manager
+        will use the platform default provider and the default algorithm. If not
+        specified, the platform default provider will be used.</p>
+      </attribute>
+      <attribute name="secureRandomAlgorithm" required="false">
+        <p>Name of the algorithm to use to create the
+        <code>java.security.SecureRandom</code> instances that generate session
+        IDs. If an invalid algorithm and/or provider is specified, the Manager
+        will use the platform default provider and the default algorithm. If not
+        specified, the default algorithm of SHA1PRNG will be used. If the
+        default algorithm is not supported, the platform default will be used.
+        To specify that the platform default should be used, do not set the
+        secureRandomProvider attribute and set this attribute to the empty
+        string.</p>
+      </attribute>
+      <attribute name="recordAllActions" required="false">
+        <p>Flag whether send all actions for session across Tomcat cluster
+        nodes. If set to false, if already done something to the same attribute,
+        make sure don't send multiple actions across Tomcat cluster nodes.
+        In that case, sends only the actions that have been added at last.
+        Default is <code>false</code>.</p>
+      </attribute>
+    </attributes>
+  </subsection>
+  <subsection name="org.apache.catalina.ha.session.DeltaManager Attributes">
+    <attributes>
+      <attribute name="expireSessionsOnShutdown" required="false">
+        When a web application is being shutdown, Tomcat issues an expire call
+        to each session to notify all the listeners. If you wish for all
+        sessions to expire on all nodes when a shutdown occurs on one node, set
+        this value to <code>true</code>.
+        Default value is <code>false</code>.
+      </attribute>
+      <attribute name="maxActiveSessions" required="false">
+        The maximum number of active sessions that will be created by this
+        Manager, or -1 (the default) for no limit. For this manager, all
+        sessions are counted as active sessions irrespective if whether or not
+        the current node is the primary node for the session.
+      </attribute>
+      <attribute name="notifySessionListenersOnReplication" required="false">
+        Set to <code>true</code> if you wish to have session listeners notified
+        when sessions are created and expired across Tomcat nodes in the
+        cluster.
+      </attribute>
+      <attribute name="notifyContainerListenersOnReplication" required="false">
+        Set to <code>true</code> if you wish to have container listeners notified
+        across Tomcat nodes in the cluster.
+      </attribute>
+      <attribute name="stateTransferTimeout" required="false">
+        The time in seconds to wait for a session state transfer to complete
+        from another node when a node is starting up.
+        Default value is <code>60</code> seconds.
+      </attribute>
+      <attribute name="sendAllSessions" required="false">
+        Flag whether send sessions as split blocks.
+        If set to <code>true</code>, send all sessions as one big block.
+        If set to <code>false</code>, send sessions as split blocks.
+        Default value is <code>true</code>.
+      </attribute>
+      <attribute name="sendAllSessionsSize" required="false">
+        The number of sessions in a session block message. This value is
+        effective only when <code>sendAllSessions</code> is <code>false</code>.
+        Default is <code>1000</code>.
+      </attribute>
+      <attribute name="sendAllSessionsWaitTime" required="false">
+        Wait time between sending of session block messages. This value is
+        effective only when <code>sendAllSessions</code> is <code>false</code>.
+        Default is <code>2000</code> milliseconds.
+      </attribute>
+      <attribute name="sessionAttributeNameFilter" required="false">
+        <p>A regular expression used to filter which session attributes will be
+        replicated. An attribute will only be replicated if its name matches
+        this pattern. If the pattern is zero length or <code>null</code>, all
+        attributes are eligible for replication. The pattern is anchored so the
+        session attribute name must fully match the pattern. As an example, the
+        value <code>(userName|sessionHistory)</code> will only replicate the
+        two session attributes named <code>userName</code> and
+        <code>sessionHistory</code>. If not specified, the default value of
+        <code>null</code> will be used.</p>
+      </attribute>
+      <attribute name="sessionAttributeValueClassNameFilter" required="false">
+        <p>A regular expression used to filter which session attributes will be
+        replicated. An attribute will only be replicated if the implementation
+        class name of the value matches this pattern. If the pattern is zero
+        length or <code>null</code>, all attributes are eligible for
+        replication. The pattern is anchored so the fully qualified class name
+        must fully match the pattern. If not specified, the default value of
+        <code>null</code> will be used unless a <code>SecurityManager</code> is
+        enabled in which case the default will be
+        <code>java\\.lang\\.(?:Boolean|Integer|Long|Number|String)</code>.</p>
+      </attribute>
+      <attribute name="stateTimestampDrop" required="false">
+        When this node sends a <code>GET_ALL_SESSIONS</code> message to other
+        node, all session messages that are received as a response are queued.
+        If this attribute is set to <code>true</code>, the received session
+        messages (except any <code>GET_ALL_SESSIONS</code> sent by other nodes)
+        are filtered by their timestamp. A message is dropped if it is not a
+        <code>GET_ALL_SESSIONS</code> message and its timestamp is earlier than
+        the timestamp of our <code>GET_ALL_SESSIONS</code> message.
+        If set to <code>false</code>, all queued session messages are handled.
+        Default is <code>true</code>.
+      </attribute>
+      <attribute name="warnOnSessionAttributeFilterFailure" required="false">
+        <p>If <strong>sessionAttributeNameFilter</strong> or
+        <strong>sessionAttributeValueClassNameFilter</strong> blocks an
+        attribute, should this be logged at <code>WARN</code> level? If
+        <code>WARN</code> level logging is disabled then it will be logged at
+        <code>DEBUG</code>. The default value of this attribute is
+        <code>false</code> unless a <code>SecurityManager</code> is enabled in
+        which case the default will be <code>true</code>.</p>
+      </attribute>
+    </attributes>
+  </subsection>
+  <subsection name="org.apache.catalina.ha.session.BackupManager Attributes">
+    <attributes>
+      <attribute name="mapSendOptions" required="false">
+        The backup manager uses a replicated map, this map is sending and
+        receiving messages. You can setup the flag for how this map is sending
+        messages, the default value is <code>6</code>(synchronous).<br/>
+        Note that if you use asynchronous messaging it is possible for update
+        messages for a session to be processed by the receiving node in a
+        different order to the order in which they were sent.
+      </attribute>
+      <attribute name="maxActiveSessions" required="false">
+        The maximum number of active sessions that will be created by this
+        Manager, or -1 (the default) for no limit. For this manager, only
+        sessions where the current node is the primary node for the session are
+        considered active sessions.
+      </attribute>
+      <attribute name="rpcTimeout" required="false">
+        Timeout for RPC message used for broadcast and transfer state from
+        another map.
+        Default value is <code>15000</code> milliseconds.
+      </attribute>
+      <attribute name="sessionAttributeNameFilter" required="false">
+        <p>A regular expression used to filter which session attributes will be
+        replicated. An attribute will only be replicated if its name matches
+        this pattern. If the pattern is zero length or <code>null</code>, all
+        attributes are eligible for replication. The pattern is anchored so the
+        session attribute name must fully match the pattern. As an example, the
+        value <code>(userName|sessionHistory)</code> will only replicate the
+        two session attributes named <code>userName</code> and
+        <code>sessionHistory</code>. If not specified, the default value of
+        <code>null</code> will be used.</p>
+      </attribute>
+      <attribute name="sessionAttributeValueClassNameFilter" required="false">
+        <p>A regular expression used to filter which session attributes will be
+        replicated. An attribute will only be replicated if the implementation
+        class name of the value matches this pattern. If the pattern is zero
+        length or <code>null</code>, all attributes are eligible for
+        replication. The pattern is anchored so the fully qualified class name
+        must fully match the pattern. If not specified, the default value of
+        <code>null</code> will be used unless a <code>SecurityManager</code> is
+        enabled in which case the default will be
+        <code>java\\.lang\\.(?:Boolean|Integer|Long|Number|String)</code>.</p>
+      </attribute>
+      <attribute name="terminateOnStartFailure" required="false">
+        Set to true if you wish to terminate replication map when replication
+        map fails to start. If replication map is terminated, associated context
+        will fail to start. If you set this attribute to false, replication map
+        does not end. It will try to join the map membership in the heartbeat.
+        Default value is <code>false</code> .
+      </attribute>
+      <attribute name="warnOnSessionAttributeFilterFailure" required="false">
+        <p>If <strong>sessionAttributeNameFilter</strong> or
+        <strong>sessionAttributeValueClassNameFilter</strong> blocks an
+        attribute, should this be logged at <code>WARN</code> level? If
+        <code>WARN</code> level logging is disabled then it will be logged at
+        <code>DEBUG</code>. The default value of this attribute is
+        <code>false</code> unless a <code>SecurityManager</code> is enabled in
+        which case the default will be <code>true</code>.</p>
+      </attribute>
+      <attribute name="accessTimeout" required="false">
+        The timeout for a ping message. If a remote map does not respond within
+        this timeout period, its regarded as disappeared.
+        Default value is <code>5000</code> milliseconds.
+      </attribute>
+    </attributes>
+  </subsection>
+</section>
+<section name="Nested Components">
+  <h3>All Manager Implementations</h3>
+  <p>All Manager implementations allow nesting of a
+  <strong>&lt;SessionIdGenerator&gt;</strong> element. It defines
+  the behavior of session id generation.  All implementations
+  of the <a href="sessionidgenerator.html">SessionIdGenerator</a> allow the
+  following attributes:
+  </p>
+  <attributes>
+    <attribute name="sessionIdLength" required="false">
+      <p>The length of the session ID may be changed with the
+      <strong>sessionIdLength</strong> attribute.
+      </p>
+    </attribute>
+  </attributes>
+</section>
+</body>
+</document>

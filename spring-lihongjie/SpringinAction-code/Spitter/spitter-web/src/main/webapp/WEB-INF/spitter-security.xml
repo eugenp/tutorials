@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns="http://www.springframework.org/schema/security"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/security 
+        http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+                        
+  <!--
+    Automatically registers a login form, BASIC authentication, anonymous authentication, 
+    logout services, remember-me and servlet-api-integration.
+  -->
+  <http auto-config="true" use-expressions="true">
+    <form-login login-page="/login"
+                login-processing-url="/static/j_spring_security_check"  
+                authentication-failure-url="/login"/>
+    <logout logout-url="/static/j_spring_security_logout"/>
+    <intercept-url pattern="/favicon.ico" access="permitAll" />
+    <intercept-url pattern="/home" access="hasRole('ROLE_SPITTER')"/>
+    <intercept-url pattern="/admin/**" 
+        access="isAuthenticated() and principal.username=='habuma'"/>
+    <intercept-url pattern="/login" requires-channel="https"/>
+    <intercept-url pattern="/spitter/form" requires-channel="https"/>
+
+    <remember-me key="spitterKey"
+        token-validity-seconds="2419200" />    
+        
+  </http>
+
+<!--<start id="authentication_manager"/>-->
+  <authentication-manager alias="authenticationManager">
+    <authentication-provider user-service-ref="userService" />
+  </authentication-manager>
+<!--<end id="authentication_manager"/>-->
+
+  <!-- ...or spitter-security-ldap.xml, or spitter-security-inmemory.xml -->
+  <beans:import resource="spitter-security-ldap.xml"/>
+
+<!--<start id="globalMethodSecurity_securedAnnotations"/>--> 
+  <global-method-security secured-annotations="enabled" /> 
+<!--<end id="globalMethodSecurity_securedAnnotations"/>--> 
+</beans:beans>

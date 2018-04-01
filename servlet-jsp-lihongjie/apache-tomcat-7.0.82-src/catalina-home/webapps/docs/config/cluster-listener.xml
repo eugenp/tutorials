@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cluster-listener.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>The ClusterListener object</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  <p>
+    The <code>org.apache.catalina.ha.ClusterListener</code> base class
+    lets you listen in on messages that are received by the <code>Cluster</code> component.
+  </p>
+
+</section>
+<section name="org.apache.catalina.ha.session.ClusterSessionListener">
+  <p>
+   When using the DeltaManager, the messages are received by the Cluster object and are propagated to the
+   to the manager through this listener.
+   </p>
+</section>
+<section name="org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener">
+  <p>
+   Listens for session Id changes. This listener is only used if you are using mod_jk
+   along with the <code>jvmRoute</code> attribute where the session Id can change.
+   In the event of a change, the <code>JvmRouteBinderValve</code> will broadcast the
+   session change and it will get picked up by this listener.
+   </p>
+</section>
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+  <attributes>
+
+    <attribute name="className" required="true">
+
+    </attribute>
+
+
+  </attributes>
+
+
+  </subsection>
+
+
+</section>
+
+
+</body>
+
+</document>

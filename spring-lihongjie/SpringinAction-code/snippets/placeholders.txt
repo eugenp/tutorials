@@ -1,0 +1,118 @@
+<!--<start id="bean_dataSource"/>--> 
+<bean id="dataSource" 
+   class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+  p:driverClassName="org.hsqldb.jdbcDriver"
+  p:url="jdbc:hsqldb:hsql://localhost/spitter/spitter"
+  p:username="spitterAdmin"
+  p:password="t0ps3cr3t" />
+<!--<end id="bean_dataSource"/>--> 
+
+<!--<start id="bean_dataSource_placeholders"/>--> 
+<bean id="dataSource" 
+   class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+  p:driverClassName="${jdbc.driverClassName}"
+  p:url="${jdbc.url}"
+  p:username="${jdbc.username}"
+  p:password="${jdbc.password}" />
+<!--<end id="bean_dataSource_placeholders"/>--> 
+
+<!--<start id="jdbc_properties"/>--> 
+jdbc.driverClassName=org.hsqldb.jdbcDriver
+jdbc.url=jdbc:hsqldb:hsql://localhost/spitter/spitter
+jdbc.username=spitterAdmin
+jdbc.password=t0ps3cr3t
+<!--<end id="jdbc_properties"/>--> 
+
+<!--<start id="jdbc_properties_internal"/>--> 
+jdbc.protocol=hsqldb:hsql
+db.server=localhost
+db.name=spitter
+jdbc.url=jdbc:${jdbc.protocol}://${db.server}/${db.name}/${db.name}
+<!--<end id="jdbc_properties_internal"/>--> 
+
+
+<!--<start id="at_value_placeholder"/>--> 
+@Value("${jdbc.url}")
+String databaseUrl;
+<!--<end id="at_value_placeholder"/>--> 
+
+<!--<start id="context_propertyPlaceholder"/>--> 
+<context:property-placeholder 
+    location="classpath:/db.properties" />
+<!--<end id="context_propertyPlaceholder"/>--> 
+
+<!--<start id="context_propertyPlaceholder_filesystem"/>--> 
+<context:property-placeholder 
+    location="file:///etc/db.properties" />
+<!--<end id="context_propertyPlaceholder_filesystem"/>--> 
+
+<!--<start id="context_propertyPlaceholder_ignore"/>--> 
+<context:property-placeholder
+  location="file:///etc/myconfig.properties"
+  ignore-resource-not-found="true"
+  ignore-unresolvable="true" 
+  properties-ref="defaultConfiguration"/>
+<!--<end id="context_propertyPlaceholder_ignore"/>--> 
+
+<!--<start id="context_propertyPlaceholder_override"/>--> 
+<context:property-placeholder
+  location="file:///etc/myconfig.properties"
+  ignore-resource-not-found="true"
+  ignore-unresolvable="true" 
+  properties-ref="defaultConfiguration"
+  system-properties-mode="OVERRIDE"/>
+<!--<end id="context_propertyPlaceholder_override"/>-->
+
+<!--<start id="defaultConfiguration"/>--> 
+<util:properties id="defaultConfiguration">
+  <prop key="jdbc.url">jdbc:hsqldb:hsql://localhost/spitter/spitter</prop>
+  <prop key="jdbc.driverClassName">org.hsqldb.jdbcDriver</prop>
+  <prop key="jdbc.username">spitterAdmin</prop>
+  <prop key="jdbc.password">t0ps3cr3t</prop>
+</util:properties>
+<!--<end id="defaultConfiguration"/>--> 
+
+<!--<start id="context_propertyOverride"/>--> 
+<context:property-override 
+    location="classpath:/db.properties" />
+<!--<end id="context_propertyOverride"/>-->
+
+<!--<start id="jdbc_properties_2"/>--> 
+dataSource.driverClassName=org.hsqldb.jdbcDriver
+dataSource.url=jdbc:hsqldb:hsql://localhost/spitter/spitter
+dataSource.username=spitterAdmin
+dataSource.password=t0ps3cr3t
+<!--<end id="jdbc_properties_2"/>-->
+
+
+
+
+
+<!--<start id="bean_environmentStringPBEConfig"/>--> 
+<bean id="environmentConfig" class=
+     "org.jasypt.encryption.pbe.config.EnvironmentStringPBEConfig"
+    p:algorithm="PBEWithMD5AndDES"
+    p:passwordEnvName="DB_ENCRYPTION_PWD" />
+<!--<end id="bean_environmentStringPBEConfig"/>-->
+
+<!--<start id="bean_standardPBEStringEncryptor"/>--> 
+<bean id="stringEncrypter" 
+      class="org.jasypt.encryption.pbe.StandardPBEStringEncryptor"
+    p:config-ref="environmentConfig" />
+<!--<end id="bean_standardPBEStringEncryptor"/>--> 
+
+<!--<start id="bean_encryptablePropertyPlaceholderConfigurer"/>--> 
+<bean class=
+   "org.jasypt.spring.properties.EncryptablePropertyPlaceholderConfigurer"
+   p:location="file:///etc/db.properties">
+  <constructor-arg ref="stringEncrypter" />
+</bean>
+<!--<end id="bean_encryptablePropertyPlaceholderConfigurer"/>--> 
+
+<!--<start id="bean_encryptablePropertyOverrideConfigurer"/>--> 
+<bean class=
+     "org.jasypt.spring.properties.EncryptablePropertyOverrideConfigurer"
+    p:location="file:///etc/db.properties">
+  <constructor-arg ref="stringEncrypter" />
+</bean>
+<!--<end id="bean_encryptablePropertyOverrideConfigurer"/>--> 

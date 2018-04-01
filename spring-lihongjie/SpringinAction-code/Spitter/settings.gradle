@@ -1,0 +1,35 @@
+rootProject.name = 'spitter'
+
+include 'spitter-domain-plain'
+include 'spitter-domain-jpa'
+include 'spitter-jmx'
+include 'spitter-persistence-common'
+include 'spitter-persistence-jdbc-conventional'
+include 'spitter-persistence-jdbc-template'
+include 'spitter-persistence-jdbc-dao-support'
+include 'spitter-persistence-hibernate-template'
+include 'spitter-persistence-hibernate-contextual-sessions'
+include 'spitter-persistence-jpa'
+include 'spitter-service-common'
+include 'spitter-service-programmatic-tx'
+include 'spitter-service-declarative-tx'
+include 'spitter-service-annotation-tx'
+include 'spitter-web'
+
+include 'spitter-email'
+
+include 'remoting-clients'
+include 'remoting-hessian'
+include 'remoting-httpinvoker'
+include 'remoting-jaxrpc'
+include 'remoting-jaxws'
+include 'remoting-jaxws-standalone'
+include 'remoting-rmi'
+
+include 'async'
+
+include 'jms'
+include 'jms-rpc'
+include 'lingo-rpc'
+
+include 'spitter-jmx'

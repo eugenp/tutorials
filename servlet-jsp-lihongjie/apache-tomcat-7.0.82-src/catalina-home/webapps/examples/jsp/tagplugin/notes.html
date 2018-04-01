@@ -1,0 +1,41 @@
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+  <head>
+    <title>Tag Plugin Introduction</title>
+  </head>
+  <body>
+    <h2>Tag Plugins: Introductory Notes</h2>
+    <p>
+      Tomcat provides a framework for implementing tag plugins.  The
+      plugins instruct Jasper, at translation time, to replace tag handler
+      calls with Java scriptlets.
+      The framework allows tag library authors to implement plugins for
+      their tags.
+    </p>
+    <p>
+      Tomcat is released with plugins for several JSTL tags.  Note
+      that these plugins work with JSTL 1.1 as well as JSTL 1.0, though
+      the examples uses JSTL 1.1 and JSP 2.0.
+      These plugins are not complete (for instance, some item types are not
+      handled in &lt;c:if>).
+      They do serve as examples to show plugins in action (just
+      examine the generated Java files), and how they can be implemented.
+    </p>
+  </body>
+</html>
+

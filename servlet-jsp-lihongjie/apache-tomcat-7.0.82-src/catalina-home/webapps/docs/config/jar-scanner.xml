@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="jar-scanner.html">
+
+  &project;
+
+  <properties>
+    <title>The Jar Scanner Component</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>The <strong>Jar Scanner</strong> element represents the component that is
+  used to scan the web application for JAR files. It is typically used during
+  web application start to identify configuration files such as TLDs or
+  web-fragment.xml files that must be processed as part of the web application
+  initialisation.</p>
+
+  <p>A Jar Scanner element MAY be nested inside a
+  <a href="context.html">Context</a> component.  If it is not included,
+  a default Jar Scanner configuration will be created automatically, which
+  is sufficient for most requirements.</p>
+
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+    <p>All implementations of <strong>Jar Scanner</strong>
+    support the following attributes:</p>
+
+    <attributes>
+
+      <attribute name="className" required="false">
+        <p>Java class name of the implementation to use.  This class must
+        implement the <code>org.apache.tomcat.JarScanner</code> interface.
+        If not specified, the standard value (defined below) will be used.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+  <subsection name="Standard Implementation">
+
+    <p>The standard implementation of <strong>Jar Scanner</strong> is
+    <strong>org.apache.tomcat.util.scan.StandardJarScanner</strong>.
+    Additional attributes that it supports (in addition to the common attributes
+    listed above) are listed in the table.</p>
+
+    <p>There are several
+    <a href="systemprops.html#JAR_Scanning">system properties</a>
+    that control what JAR files are skipped by JarScanner.
+    Those properties are lists of file name pattern. The
+    patterns are separated by comma (','). The leading and trailing whitespace
+    characters in a pattern are ignored. The patterns are matched
+    case-sensitively. The following two special characters are supported:</p>
+
+    <ul>
+      <li>'*' &#151; means zero or more characters,</li>
+      <li>'?' &#151; means one and only one character.</li>
+    </ul>
+
+    <attributes>
+
+      <attribute name="scanAllDirectories" required="false">
+       <p>If <code>true</code>, any directories found on the classpath will be
+       checked to see if they are expanded JAR files.
+       The default is <code>false</code>.</p>
+       <p>Tomcat determines if a directory is an expanded JAR file by looking
+       for a META-INF sub-directory. Only if the META-INF sub-directory exists,
+       the directory is assumed to be an expanded JAR file.</p>
+      </attribute>
+
+      <attribute name="scanAllFiles" required="false">
+       <p>If <code>true</code>, any files found on the classpath will be checked
+       to see if they are Jar files rather than relying on the file extension
+       being <code>.jar</code>. The default is <code>false</code>.</p>
+      </attribute>
+
+      <attribute name="scanClassPath" required="false">
+       <p>If <code>true</code>, the full web application classpath, including
+       the shared and common classloaders and the system classpath (but not the
+       bootstrap classpath) will be scanned for Jar files in addition to the web
+       application. The default is <code>true</code>. </p>
+      </attribute>
+
+      <attribute name="scanBootstrapClassPath" required="false">
+       <p>If <strong>scanClassPath</strong> is <code>true</code> and this is
+       <code>true</code> the bootstrap classpath will also be scanned for Jar
+       files. The default is <code>false</code>.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Nested Components">
+  <p>No components may be nested inside a <strong>Jar Scanner</strong> element.
+  </p>
+</section>
+
+
+<section name="Special Features">
+  <p>No special features are associated with a <strong>Jar Scanner</strong>
+  element.</p>
+</section>
+
+</body>
+
+</document>

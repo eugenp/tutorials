@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+ 
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/hibernate_example_annotations</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
+        
+        <!-- JDBC connection pool (use the C3P0) -->        
+        <property name="hibernate.c3p0.min_size">5</property>
+	  	<property name="hibernate.c3p0.max_size">20</property>
+	  	<property name="hibernate.c3p0.timeout">300</property>
+	  	<property name="hibernate.c3p0.max_statements">50</property>
+	  	<property name="hibernate.c3p0.idle_test_period">3000</property>
+        
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+        
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+        
+        <property name="hbm2ddl.auto">create</property>
+ 
+ 		<mapping class="in.codelearn.model.Employee"/>
+ 		
+ 		 
+    </session-factory>
+</hibernate-configuration>

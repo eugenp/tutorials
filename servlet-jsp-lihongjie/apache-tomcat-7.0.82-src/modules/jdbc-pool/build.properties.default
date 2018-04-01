@@ -1,0 +1,105 @@
+# -----------------------------------------------------------------------------
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+# -----------------------------------------------------------------------------
+# build.properties.sample
+#
+# This is an example "build.properties" file, used to customize building
+# Tomcat JDBC Pool for your local environment.  It defines the location of all external
+# modules that Tomcat JDBC Pool depends on.  Copy this file to "build.properties"
+# in the top-level source directory, and customize it as needed.
+# -----------------------------------------------------------------------------
+
+# ----- Version Control Flags -----
+version.major=1
+version.minor=1
+version.build=0
+version.patch=1
+version.suffix=
+
+# ----- Default Base Path for Dependent Packages -----
+# Please note this path must be absolute, not relative,
+# as it is referenced with different working directory
+# contexts by the various build scripts.
+base.path=${basedir}/includes
+
+compile.source=1.5
+compile.target=1.5
+compile.debug=true
+
+# ----- Settings for Junit test database.
+
+# Common settings
+testdb.username=root
+testdb.password=password
+
+# H2
+testdb.url=jdbc:h2:~/.h2/test;QUERY_TIMEOUT=0;DB_CLOSE_ON_EXIT=TRUE;LOCK_TIMEOUT=50000;DEFAULT_LOCK_TIMEOUT=50000
+testdb.driverClassName=org.h2.Driver
+testdb.validationQuery=SELECT 1
+
+# MySQL
+#testdb.url=jdbc:mysql://localhost:3306/mysql?autoReconnect=true
+#testdb.driverClassName=com.mysql.jdbc.Driver
+#testdb.validationQuery=SELECT 1
+
+# Derby
+#testdb.url=jdbc:derby:derbyDB;create=true
+#testdb.driverClassName=org.apache.derby.jdbc.EmbeddedDriver
+#testdb.validationQuery=VALUES 1
+
+# JUnit Unit Test Suite
+junit.version=4.11
+junit.home=${base.path}/junit-${junit.version}
+junit.jar=${junit.home}/junit-${junit.version}.jar
+junit.loc=http://repo.maven.apache.org/maven2/junit/junit/${junit.version}/junit-${junit.version}.jar
+
+# Hamcrest Library, used by JUnit
+hamcrest.version=1.3
+hamcrest.home=${base.path}/hamcrest-${hamcrest.version}
+hamcrest.jar=${hamcrest.home}/hamcrest-core-${hamcrest.version}.jar
+hamcrest.loc=http://repo.maven.apache.org/maven2/org/hamcrest/hamcrest-core/${hamcrest.version}/hamcrest-core-${hamcrest.version}.jar
+
+c3p0.home=${base.path}/c3p0-0.9.1.2
+c3p0.jar=${c3p0.home}/lib/c3p0-0.9.1.2.jar
+c3p0.loc=http://superb-east.dl.sourceforge.net/sourceforge/c3p0/c3p0-0.9.1.2.bin.zip
+
+mysql.home=${base.path}/mysql-connector-java-5.1.12
+mysql.jar=${mysql.home}/mysql-connector-java-5.1.12-bin.jar
+mysql.loc=http://mysql.mirrors.hoobly.com/Downloads/Connector-J/mysql-connector-java-5.1.12.zip
+
+dbcp.home=${base.path}/commons-dbcp-1.3
+dbcp.jar=${dbcp.home}/commons-dbcp-1.3.jar
+dbcp.loc=http://archive.apache.org/dist/commons/dbcp/binaries/commons-dbcp-1.3.zip
+
+tomcat.version=6.0.32
+tomcat.home=${base.path}/apache-tomcat-${tomcat.version}
+tomcat.dbcp.jar=${tomcat.home}/lib/tomcat-dbcp.jar
+tomcat.juli.jar=${tomcat.home}/bin/tomcat-juli.jar
+tomcat.loc=http://archive.apache.org/dist/tomcat/tomcat-6/v${tomcat.version}/bin/apache-tomcat-${tomcat.version}.zip
+
+tomcat.project.loc=http://svn.apache.org/repos/asf/tomcat/trunk/webapps/docs/project.xml
+tomcat.project.dest=${base.path}/project.xml
+
+tomcat.xsl.loc=http://svn.apache.org/repos/asf/tomcat/trunk/webapps/docs/tomcat-docs.xsl
+tomcat.xsl.dest=${base.path}/tomcat-docs.xsl
+
+derby.home=${base.path}/db-derby-10.5.1.1-bin
+derby.loc=http://archive.apache.org/dist/db/derby/db-derby-10.5.1.1/db-derby-10.5.1.1-bin.tar.gz
+derby.jar=${derby.home}/lib/derby.jar
+
+h2.home=${base.path}/h2
+h2.loc=http://h2database.googlecode.com/files/h2-2010-02-19.zip
+h2.jar=${h2.home}/bin/h2-1.2.129.jar

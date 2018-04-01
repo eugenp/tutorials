@@ -1,0 +1,15 @@
+<!--<start id="ivy_spring_security"/>-->
+<dependency org="org.springframework.security" 
+    name="spring-security-core" rev="3.0.0.RELEASE"/>
+<dependency org="org.springframework.security" 
+    name="spring-security-config" rev="3.0.0.RELEASE"/>
+<!--<end id="ivy_spring_security"/>-->
+
+<!--<start id="gradle_spring_security"/>-->
+compile group: 'org.springframework.security', 
+         name: 'spring-security-core', 
+         version: '3.0.0.RELEASE'
+compile group: 'org.springframework.security', 
+         name: 'spring-security-config', 
+         version: '3.0.0.RELEASE'
+<!--<end id="gradle_spring_security"/>-->

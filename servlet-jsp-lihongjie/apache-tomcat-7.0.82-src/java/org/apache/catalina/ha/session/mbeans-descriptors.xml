@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE mbeans-descriptors PUBLIC
+"-//Apache Software Foundation//DTD Model MBeans Configuration File"
+"http://jakarta.apache.org/commons/dtds/mbeans-descriptors.dtd">
+<mbeans-descriptors>
+  <mbean
+    name="JvmRouteBinderValve"
+    description="mod_jk jvmRoute jsessionid cookie backup correction"
+    domain="Catalina"
+    group="Valve"
+    type="org.apache.catalina.ha.session.JvmRouteBinderValve">
+    <attribute
+      name="asyncSupported"
+      description="Does this valve support async reporting? "
+      is="true"
+      type="boolean"/>
+    <attribute
+      name="className"
+      description="Fully qualified class name of the managed object"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="enabled"
+      description="enable a jvm Route check"
+      type="boolean"/>
+    <attribute
+      name="info"
+      description="describe version"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="numberOfSessions"
+      description="number of jvmRoute session corrections"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="sessionIdAttribute"
+      description="Name of attribute with sessionid value before turnover a session"
+      type="java.lang.String"/>
+    <attribute name="stateName"
+      description="The name of the LifecycleState that this component is currently in"
+      type="java.lang.String"
+      writeable="false"/>
+    <operation
+      name="start"
+      description="Stops the Cluster JvmRouteBinderValve"
+      impact="ACTION"
+      returnType="void"/>
+    <operation
+      name="stop"
+      description="Stops the Cluster JvmRouteBinderValve"
+      impact="ACTION"
+      returnType="void"/>
+  </mbean>
+  <mbean
+    name="JvmRouteSessionIDBinderListener"
+    description="Monitors the jvmRoute activity"
+    domain="Catalina"
+    group="Listener"
+    type="org.apache.catalina.ha.session.JvmRouteSessionIDBinderListener">
+    <attribute
+      name="info"
+      description="describe version"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="numberOfSessions"
+      description="number of jvmRoute session corrections"
+      type="long"
+      writeable="false"/>
+  </mbean>
+  <mbean
+    name="DeltaManager"
+    description="Cluster Manager implementation of the Manager interface"
+    domain="Catalina"
+    group="Manager"
+    type="org.apache.catalina.ha.session.DeltaManager">
+    <attribute
+      name="activeSessions"
+      description="Number of active sessions at this moment"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="className"
+      description="Fully qualified class name of the managed object"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="counterNoStateTransfered"
+      description="Count the failed session transfers noStateTransfered"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_GET_ALL_SESSIONS"
+      description="Count receive EVT_GET_ALL_SESSIONS messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_ALL_SESSION_DATA"
+      description="Count receive EVT_ALL_SESSION_DATA messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_SESSION_CREATED"
+      description="Count receive EVT_SESSION_CREATED messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_SESSION_DELTA"
+      description="Count receive EVT_SESSION_DELTA messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_SESSION_ACCESSED"
+      description="Count receive EVT_SESSION_ACCESSED messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_SESSION_EXPIRED"
+      description="Count receive EVT_SESSION_EXPIRED messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_ALL_SESSION_TRANSFERCOMPLETE"
+      description="Count receive EVT_ALL_SESSION_TRANSFERCOMPLETE messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_CHANGE_SESSION_ID"
+      description="Count receive EVT_CHANGE_SESSION_ID messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterReceive_EVT_ALL_SESSION_NOCONTEXTMANAGER"
+      description="Count receive EVT_ALL_SESSION_NOCONTEXTMANAGER messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterSend_EVT_GET_ALL_SESSIONS"
+      description="Count send EVT_GET_ALL_SESSIONS messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterSend_EVT_ALL_SESSION_DATA"
+      description="Count send EVT_ALL_SESSION_DATA messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterSend_EVT_SESSION_CREATED"
+      description="Count send EVT_SESSION_CREATED messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterSend_EVT_SESSION_DELTA"
+      description="Count send EVT_SESSION_DELTA messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterSend_EVT_SESSION_ACCESSED"
+      description="Count send EVT_SESSION_ACCESSED messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterSend_EVT_SESSION_EXPIRED"
+      description="Count send EVT_SESSION_EXPIRED messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterSend_EVT_ALL_SESSION_TRANSFERCOMPLETE"
+      description="Count send EVT_ALL_SESSION_TRANSFERCOMPLETE messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="counterSend_EVT_CHANGE_SESSION_ID"
+      description="Count send EVT_CHANGE_SESSION_ID messages"
+      type="long"
+      writeable="false"/>
+    <attribute
+      name="distributable"
+      description="The distributable flag for Sessions created by this Manager"
+      type="boolean"/>
+    <attribute
+      name="duplicates"
+      description="Number of duplicated session ids generated"
+      type="int"/>
+    <attribute
+      name="expiredSessions"
+      description="Number of sessions that expired ( doesn't include explicit invalidations )"
+      type="long"/>
+    <attribute
+      name="expireSessionsOnShutdown"
+      is="true"
+      description="expire all sessions cluster wide as one node goes down"
+      type="boolean"/>
+    <attribute
+      name="info"
+      description="describe version"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="invalidatedSessions"
+      description="describe version"
+      type="[Ljava.lang.String;"
+      writeable="false"/>
+    <attribute
+      name="maxActive"
+      description="Maximum number of active sessions so far"
+      type="int"/>
+    <attribute
+      name="maxActiveSessions"
+      description="The maximum number of active Sessions allowed, or -1 for no limit"
+      type="int"/>
+    <attribute
+      name="maxInactiveInterval"
+      description="The default maximum inactive interval for Sessions created by this Manager"
+      type="int"/>
+    <attribute
+      name="name"
+      description="The descriptive name of this Manager implementation (for logging)"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="notifyListenersOnReplication"
+      is="true"
+      description="Send session attribute change events on backup nodes"
+      type="boolean"/>
+    <attribute
+      name="notifySessionListenersOnReplication"
+      is="true"
+      description="Send session start/stop events on backup nodes"
+      type="boolean"/>
+    <attribute
+      name="notifyContainerListenersOnReplication"
+      is="true"
+      description="Send container events on backup nodes"
+      type="boolean"/>
+    <attribute
+      name="processExpiresFrequency"
+      description="The frequency of the manager checks (expiration and passivation)"
+      type="int"/>
+    <attribute
+      name="processingTime"
+      description="Time spent doing housekeeping and expiration"
+      type="long"/>
+    <attribute
+      name="sendAllSessions"
+      is="true"
+      description="Send all sessions at one big block"
+      type="boolean"/>
+    <attribute
+      name="sendAllSessionsSize"
+      description="session block size when sendAllSessions=false (default=1000)"
+      type="int"/>
+    <attribute
+      name="sendAllSessionsWaitTime"
+      description="wait time between send session block (default 2 sec)"
+      type="int"/>
+    <attribute
+      name="sessionAverageAliveTime"
+      description="Average time an expired session had been alive"
+      type="int"/>
+    <attribute
+      name="sessionCounter"
+      description="Total number of sessions created by this manager"
+      type="long"/>
+    <attribute
+      name="sessionIdLength"
+      description="The session id length (in bytes) of Sessions created by this Manager"
+      type="int"/>
+    <attribute
+      name="sessionMaxAliveTime"
+      description="Longest time an expired session had been alive"
+      type="int"/>
+    <attribute
+      name="sessionReplaceCounter"
+      description="Total number of replaced sessions that load from external nodes"
+      type="long"
+      writeable="false"/>
+    <attribute name="stateName"
+      description="The name of the LifecycleState that this component is currently in"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="stateTransfered"
+      description="Is session state transfered complete? "
+      type="boolean"/>  
+    <attribute
+      name="stateTransferTimeout"
+      description="state transfer timeout in sec"
+      type="int"/>
+    <attribute
+      name="receivedQueueSize"
+      description="length of receive queue size when session received from other node"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="rejectedSessions"
+      description="Number of sessions we rejected due to maxActive being reached"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="noContextManagerReceived"
+      is="true"
+      description="Is no context manager message received? "
+      type="boolean"/>
+    <attribute
+      name="secureRandomAlgorithm"
+      description="The secure random number generator algorithm name"
+      type="java.lang.String"/>
+    <attribute
+      name="secureRandomClass"
+      description="The secure random number generator class name"
+      type="java.lang.String"/>
+    <attribute
+      name="secureRandomProvider"
+      description="The secure random number generator provider name"
+      type="java.lang.String"/>
+    <attribute
+      name="stateTimestampDrop"
+      is="true"
+      description="All session messages before state transfer message creation are dropped."
+      type="boolean"/>
+    <attribute
+      name="recordAllActions"
+      is="true"
+      description="Flag whether send all actions for session across Tomcat cluster nodes."
+      type="boolean"/>
+    <attribute
+      name="sessionAttributeNameFilter"
+      description="The string pattern used for including session attributes in replication. Null means all attributes are included."
+      type="java.lang.String"/>
+    <attribute
+      name="sessionAttributeValueClassNameFilter"
+      description="The regular expression used to filter session attributes based on the implementation class of the value. The regular expression is anchored and must match the fully qualified class name."
+      type="java.lang.String"/>
+    <attribute
+      name="warnOnSessionAttributeFilterFailure"
+      description="Should a WARN level log message be generated if a session attribute fails to match sessionAttributeNameFilter or sessionAttributeClassNameFilter?"
+      type="boolean"/>
+    <operation
+      name="expireSession"
+      description="Expired the given session"
+      impact="ACTION"
+      returnType="void">
+      <parameter
+        name="sessionId"
+        description="The session id for the session to be expired"
+        type="java.lang.String"/>
+    </operation>
+    <operation
+      name="expireAllLocalSessions"
+      description="expire all active local sessions and replicate the invalid sessions"
+      impact="ACTION"
+      returnType="void"/>
+    <operation
+      name="findSession"
+      description="Return the active Session, associated with this Manager, with the specified session id (if any)"
+      impact="ACTION"
+      returnType="org.apache.catalina.Session">
+      <parameter
+        name="id"
+        description="The session id for the session to be returned"
+        type="java.lang.String"/>
+    </operation>
+    <operation
+      name="findSessions"
+      description="Return the set of active Sessions associated with this Manager."
+      impact="ACTION"
+      returnType="[Lorg.apache.catalina.Session;">
+    </operation>  
+    <operation
+      name="getAllClusterSessions"
+      description="send to oldest cluster member that this node need all cluster sessions (resync member)"
+      impact="ACTION"
+      returnType="void"/>
+    <operation
+      name="getCreationTime"
+      description="Return the creation time for this session"
+      impact="ACTION"
+      returnType="java.lang.String">
+      <parameter
+        name="sessionId"
+        description="The session id for the session "
+        type="java.lang.String"/>
+    </operation>   
+    <operation
+      name="getLastAccessedTime"
+      description="Get the last access time. This one gets updated whenever a request finishes. "
+      impact="ACTION"
+      returnType="java.lang.String">
+      <parameter
+        name="sessionId"
+        description="Id of the session"
+        type="java.lang.String"/>
+    </operation> 
+    <operation
+      name="getSessionAttribute"
+      description="Return a session attribute"
+      impact="ACTION"
+      returnType="java.lang.String">
+      <parameter
+        name="sessionId"
+        description="Id of the session"
+        type="java.lang.String"/>
+      <parameter
+        name="key"
+        description="key of the attribute"
+        type="java.lang.String"/>
+    </operation>
+    <operation
+      name="getThisAccessedTime"
+      description="Get the last access time. This one gets updated whenever a request starts. "
+      impact="ACTION"
+      returnType="java.lang.String">
+      <parameter
+        name="sessionId"
+        description="Id of the session"
+        type="java.lang.String"/>
+    </operation> 
+    <operation
+      name="listSessionIds"
+      description="Return the list of active primary session ids"
+      impact="ACTION"
+      returnType="java.lang.String"/>
+    <operation
+      name="processExpires"
+      description="Invalidate all sessions that have expired.s"
+      impact="ACTION"
+      returnType="void"/>
+    <operation
+      name="resetStatistics"
+      description="Reset all statistics"
+      impact="ACTION"
+      returnType="void"/>
+  </mbean>
+  <mbean
+    name="BackupManager"
+    description="Cluster Manager implementation of the Manager interface"
+    domain="Catalina"
+    group="Manager"
+    type="org.apache.catalina.ha.session.BackupManager">
+    <attribute
+      name="activeSessions"
+      description="Number of active primary sessions at this moment"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="activeSessionsFull"
+      description="Number of active sessions at this moment"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="className"
+      description="Fully qualified class name of the managed object"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="distributable"
+      description="The distributable flag for Sessions created by this Manager"
+      type="boolean"/>
+    <attribute
+      name="duplicates"
+      description="Number of duplicated session ids generated"
+      type="int"/>
+    <attribute
+      name="expiredSessions"
+      description="Number of sessions that expired ( doesn't include explicit invalidations )"
+      type="long"/>
+    <attribute
+      name="expireSessionsOnShutdown"
+      is="true"
+      description="expire all sessions cluster wide as one node goes down"
+      type="boolean"/>
+    <attribute
+      name="invalidatedSessions"
+      description="Get the list of invalidated session."
+      type="[Ljava.lang.String;"/>
+    <attribute
+      name="mapName"
+      description="mapName"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="mapSendOptions"
+      description="mapSendOptions"
+      type="int"
+      writeable="false"/>
+    <attribute
+      name="maxActive"
+      description="Maximum number of active sessions so far"
+      type="int"/>
+    <attribute
+      name="maxActiveSessions"
+      description="The maximum number of active Sessions allowed, or -1 for no limit"
+      type="int"/>
+    <attribute
+      name="maxInactiveInterval"
+      description="The default maximum inactive interval for Sessions created by this Manager"
+      type="int"/>
+    <attribute
+      name="name"
+      description="The name of component. "
+      type="java.lang.String"/>
+    <attribute
+      name="notifyListenersOnReplication"
+      is="true"
+      description="Send session attribute change events on backup nodes"
+      type="boolean"/>
+    <attribute
+      name="processExpiresFrequency"
+      description="The frequency of the manager checks (expiration and passivation)"
+      type="int"/>
+    <attribute
+      name="processingTime"
+      description="Time spent doing housekeeping and expiration"
+      type="long"/>
+    <attribute
+      name="sessionAverageAliveTime"
+      description="Average time an expired session had been alive"
+      type="int"/>
+    <attribute
+      name="sessionCounter"
+      description="Total number of sessions created by this manager"
+      type="long"/>
+    <attribute
+      name="sessionIdLength"
+      description="The session id length (in bytes) of Sessions created by this Manager"
+      type="int"/>
+    <attribute
+      name="sessionMaxAliveTime"
+      description="Longest time an expired session had been alive"
+      type="int"/>
+    <attribute name="stateName"
+      description="The name of the LifecycleState that this component is currently in"
+      type="java.lang.String"
+      writeable="false"/>
+    <attribute
+      name="rejectedSessions"
+      description="Number of sessions we rejected due to maxActive being reached"
+      type="int"/>
+    <attribute
+      name="rpcTimeout"
+      description="Timeout for RPC messages, how long we will wait for a reply"
+      type="long"/>
+    <attribute
+      name="terminateOnStartFailure"
+      description="Flag for whether to terminate this map that failed to start."
+      is="true"
+      type="boolean"/>
+    <attribute
+      name="secureRandomAlgorithm"
+      description="The secure random number generator algorithm name"
+      type="java.lang.String"/>
+    <attribute
+      name="secureRandomClass"
+      description="The secure random number generator class name"
+      type="java.lang.String"/>
+    <attribute
+      name="secureRandomProvider"
+      description="The secure random number generator provider name"
+      type="java.lang.String"/>
+    <attribute
+      name="recordAllActions"
+      is="true"
+      description="Flag whether send all actions for session across Tomcat cluster nodes."
+      type="boolean"/>
+    <attribute
+      name="sessionAttributeNameFilter"
+      description="The string pattern used for including session attributes in replication. Null means all attributes are included."
+      type="java.lang.String"/>
+    <attribute
+      name="sessionAttributeValueClassNameFilter"
+      description="The regular expression used to filter session attributes based on the implementation class of the value. The regular expression is anchored and must match the fully qualified class name."
+      type="java.lang.String"/>
+    <attribute
+      name="warnOnSessionAttributeFilterFailure"
+      description="Should a WARN level log message be generated if a session attribute fails to match sessionAttributeNameFilter or sessionAttributeClassNameFilter?"
+      type="boolean"/>
+    <attribute
+      name="accessTimeout"
+      description="The timeout for a ping message in replication map."
+      type="long"/>
+    <operation
+      name="expireSession"
+      description="Expired the given session"
+      impact="ACTION"
+      returnType="void">
+      <parameter
+        name="sessionId"
+        description="The session id for the session to be expired"
+        type="java.lang.String"/>
+    </operation>
+    <operation
+      name="findSession"
+      description="Return the active Session, associated with this Manager, with the specified session id (if any)"
+      impact="ACTION"
+      returnType="org.apache.catalina.Session">
+      <parameter
+        name="id"
+        description="The session id for the session to be returned"
+        type="java.lang.String"/>
+    </operation>
+    <operation
+      name="findSessions"
+      description="Return the set of active Sessions associated with this Manager."
+      impact="ACTION"
+      returnType="[Lorg.apache.catalina.Session;">
+    </operation>  
+    <operation
+      name="getCreationTime"
+      description="Return the creation time for this session"
+      impact="ACTION"
+      returnType="java.lang.String">
+      <parameter
+        name="sessionId"
+        description="The session id for the session "
+        type="java.lang.String"/>
+    </operation>   
+    <operation
+      name="getLastAccessedTime"
+      description="Get the last access time. This one gets updated whenever a request finishes. "
+      impact="ACTION"
+      returnType="java.lang.String">
+      <parameter
+        name="sessionId"
+        description="Id of the session"
+        type="java.lang.String"/>
+    </operation> 
+    <operation
+      name="getSessionAttribute"
+      description="Return a session attribute"
+      impact="ACTION"
+      returnType="java.lang.String">
+      <parameter
+        name="sessionId"
+        description="Id of the session"
+        type="java.lang.String"/>
+      <parameter
+        name="key"
+        description="key of the attribute"
+        type="java.lang.String"/>
+    </operation>
+    <operation
+      name="getThisAccessedTime"
+      description="Get the last access time. This one gets updated whenever a request starts. "
+      impact="ACTION"
+      returnType="java.lang.String">
+      <parameter
+        name="sessionId"
+        description="Id of the session"
+        type="java.lang.String"/>
+    </operation> 
+    <operation
+      name="listSessionIds"
+      description="Return the list of active primary session ids"
+      impact="ACTION"
+      returnType="java.lang.String"/>
+    <operation
+      name="getSessionIdsFull"
+      description="Returns the list of all sessions IDS (primary, backup and proxy)."
+      impact="ACTION"
+      returnType="java.util.Set"/>
+    <operation
+      name="processExpires"
+      description="Invalidate all sessions that have expired.s"
+      impact="ACTION"
+      returnType="void"/>
+  </mbean>
+</mbeans-descriptors>

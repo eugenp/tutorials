@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<antlib>
+  <!-- Pure Catalina tasks -->
+  <typedef
+        name="list"
+        classname="org.apache.catalina.ant.ListTask" />
+  <typedef
+        name="deploy"
+        classname="org.apache.catalina.ant.DeployTask" />
+  <typedef
+        name="start"
+        classname="org.apache.catalina.ant.StartTask" />
+  <typedef
+        name="reload"
+        classname="org.apache.catalina.ant.ReloadTask" />
+  <typedef
+        name="stop"
+        classname="org.apache.catalina.ant.StopTask" />        
+  <typedef
+        name="undeploy"
+        classname="org.apache.catalina.ant.UndeployTask" />
+  <typedef
+        name="resources"
+        classname="org.apache.catalina.ant.ResourcesTask" />
+  <typedef
+        name="sessions"
+        classname="org.apache.catalina.ant.SessionsTask" />
+  <typedef
+        name="findleaks"
+        classname="org.apache.catalina.ant.FindLeaksTask" />  
+  <typedef
+        name="vminfo"
+        classname="org.apache.catalina.ant.VminfoTask" />
+  <typedef
+        name="threaddump"
+        classname="org.apache.catalina.ant.ThreaddumpTask" />
+  <!-- Jk Task -->
+  <typedef
+        name="jkstatus"
+        classname="org.apache.catalina.ant.JKStatusUpdateTask" />
+  <typedef
+        name="jkupdate"
+        classname="org.apache.catalina.ant.JKStatusUpdateTask" />
+  <!-- Manager JMX -->
+  <typedef
+        name="jmxManagerSet"
+        classname="org.apache.catalina.ant.JMXSetTask" />
+  <typedef
+        name="jmxManagerGet"
+        classname="org.apache.catalina.ant.JMXGetTask" />
+  <typedef
+        name="jmxManagerQuery"
+        classname="org.apache.catalina.ant.JMXQueryTask" />
+  <!-- Other -->
+<!-- These tasks are deliberately omitted here,
+  because they depend on other Tomcat components besides catalina-ant.jar
+  and thus are hard to use with antlib.
+  <typedef
+        name="validator"
+        classname="org.apache.catalina.ant.ValidatorTask" />
+  <typedef
+        name="jasper"
+        classname="org.apache.jasper.JspC" />
+  <typedef
+        name="jasper2"
+        classname="org.apache.jasper.JspC" />
+-->
+</antlib>

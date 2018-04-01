@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean:beans xmlns="http://www.springframework.org/schema/batch"    
+    xmlns:bean="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"    
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:tx="http://www.springframework.org/schema/tx"    
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context-2.5.xsd
+    http://www.springframework.org/schema/batch 
+    http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+    http://www.springframework.org/schema/jdbc 
+    http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+    <bean:import resource="classpath:ch07/job-context.xml"/>
+    
+    <jdbc:initialize-database data-source="dataSource">
+		<jdbc:script location="classpath:/ch07/db/create-tables-mysql.sql" />
+	</jdbc:initialize-database>
+    
+    <job id="hibernateWriteJob">
+        <step id="hibernateWriteStep">
+            <tasklet transaction-manager="transactionManager">
+                <chunk reader="hibernateItemReader" processor="creditBillProcessor" 
+                    writer="hibernateItemWriter" commit-interval="2"></chunk>
+            </tasklet>
+        </step>
+    </job>
+    
+    <bean:bean id="hibernateItemWriter" class="org.springframework.batch.item.database.HibernateItemWriter">
+    	<bean:property name="hibernateTemplate" ref="hibernateTemplate" />
+  	</bean:bean>
+  	
+    
+    
+    <!-- hibernate读取数据库 -->
+    <bean:bean id="hibernateItemReader"
+		class="org.springframework.batch.item.database.HibernateCursorItemReader" scope="step">
+		<bean:property name="sessionFactory" ref="sessionFactory"/>
+		<bean:property name="queryString" value="from CreditBill where id between 1 and 5"/>
+	</bean:bean>
+	
+    <bean:bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <bean:property name="sessionFactory" ref="sessionFactory" />
+    </bean:bean>
+    
+     <bean:bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<bean:property name="dataSource" ref="dataSource"/>
+		<bean:property name="configurationClass"
+			value="org.hibernate.cfg.AnnotationConfiguration"/>
+		<bean:property name="configLocation"
+			value="classpath:/ch07/cfg/hibernate.cfg.xml"/>
+		<bean:property name="hibernateProperties">
+			<bean:value>
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+				hibernate.show_sql=true
+			</bean:value>
+		</bean:property>
+	</bean:bean>
+    
+    <bean:bean id="creditBillProcessor" scope="step"
+        class="com.juxtapose.example.ch07.hibernate.CreditBillProcessor">
+    </bean:bean>
+    
+</bean:beans>

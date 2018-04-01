@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.mybatis3.mappers.AddressMapper">
+	
+  	<resultMap type="Address" id="AddressResult">
+  		<id property="addrId" column="addr_id"/>
+		<result property="street" column="street"/>
+		<result property="city" column="city"/>
+		<result property="state" column="state"/>
+		<result property="zip" column="zip"/>
+		<result property="country" column="country"/>
+  	</resultMap>
+  	
+  	<select id="selectAddressById" parameterType="int" resultMap="AddressResult">
+  		select * from addresses where addr_id=#{addrId}
+  	</select>
+  	
+</mapper>

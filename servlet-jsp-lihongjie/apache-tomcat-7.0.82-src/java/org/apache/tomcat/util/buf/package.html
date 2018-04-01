@@ -1,0 +1,38 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html><body>
+<H1>Buffers and Encodings</h1>
+
+This package contains buffers and utils to perform encoding/decoding of buffers. That includes byte to char
+conversions, URL encodings, etc.
+
+<p>
+Encoding is a critical operation for performance. There are few tricks in this package - the C2B and
+B2C converters are caching a ISReader/OSWriter and keep everything allocated to do the conversions
+in any VM without any garbage.
+
+<p>
+This package must accomodate future extensions and additional converters ( most important: the nio.charset,
+which should be detected and used if available ). Also, we do have one hand-written UTF8Decoder, and
+other tuned encoders could be added.
+
+<p>
+My benchmarks ( I'm costin :-) show only small differences between C2B, B2C and hand-written codders/decoders,
+so UTF8Decoder may be disabled.
+
+<p>
+</body></html>

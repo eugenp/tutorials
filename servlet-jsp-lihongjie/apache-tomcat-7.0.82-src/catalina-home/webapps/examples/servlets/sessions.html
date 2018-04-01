@@ -1,0 +1,70 @@
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF">
+<p><font color="#0000FF"><a href="servlet/SessionExample"><img src="images/execute.gif" align="right" border="0"></a><a href="index.html"><img src="images/return.gif" width="24" height="24" align="right" border="0"></a></font></p>
+<h3>Source Code for Session Example<font color="#0000FF"><br>
+  </font> </h3>
+<font color="#0000FF"></font>
+<pre><font color="#0000FF">import</font> java.io.*;
+<font color="#0000FF">import</font> java.util.*;
+<font color="#0000FF">import</font> javax.servlet.*;
+<font color="#0000FF">import</font> javax.servlet.http.*;
+
+<font color="#0000FF">public class</font> SessionExample <font color="#0000FF">extends</font> HttpServlet {
+
+    <font color="#0000FF">public void</font> doGet(HttpServletRequest request, HttpServletResponse response)
+    <font color="#0000FF">throws</font> IOException, ServletException
+    {
+        response.setContentType(&quot;<font color="#009900">text/html</font>&quot;);
+        PrintWriter out = response.getWriter();
+
+        HttpSession session = request.getSession(true);
+
+        <font color="#CC0000">// print session info</font>
+
+        Date created = new Date(session.getCreationTime());
+        Date accessed = new Date(session.getLastAccessedTime());
+        out.println(&quot;<font color="#009900">ID </font>&quot; + session.getId());
+        out.println(&quot;<font color="#009900">Created: </font>&quot; + created);
+        out.println(&quot;<font color="#009900">Last Accessed: </font>&quot; + accessed);
+
+        <font color="#CC0000">// set session info if needed</font>
+
+        String dataName = request.getParameter(&quot;<font color="#009900">dataName</font>&quot;);
+        if (dataName != null &amp;&amp; dataName.length() &gt; 0) {
+            String dataValue = request.getParameter(&quot;<font color="#009900">dataValue</font>&quot;);
+            session.setAttribute(dataName, dataValue);
+        }
+
+        // print session contents
+
+        Enumeration e = session.getAttributeNames();
+        while (e.hasMoreElements()) {
+            String name = (String)e.nextElement();
+            String value = session.getAttribute(name).toString();
+            out.println(name + &quot; <font color="#009900">= </font>&quot; + value);
+        }
+    }
+}</pre>
+</body>
+</html>

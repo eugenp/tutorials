@@ -1,0 +1,89 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="header :: copy"></head>
+
+<body>
+
+	<h1>Exceptions Demo 2</h1>
+	<h2>Controller Advice Exception Handling</h2>
+
+	<h3>Summary</h3>
+	<ul>
+		<li>Demo running with profiles: <i th:text="${profiles}">profiles</i>
+		</li>
+		<li>Key classes: <code>ControllerWithoutExceptionHandlers</code>,
+			<code>GlobalExceptionHandlingControllerAdvice</code>.
+		</li>
+		<li>See <a th:substituteby="link :: blog"></a> for more details.
+		</li>
+	</ul>
+
+	<h3>Details</h3>
+	<p>
+		The exceptions below are are not handled by the controller that threw
+		them, but rely on a
+		<code>ControllerAdvice</code>
+		<a
+			href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html#mvc-ann-controller-advice">
+			<img th:replace="link :: spring"></img>
+		</a> instead.
+	</p>
+	<ul>
+		<li>Controller: <code>demo2.web.ControllerWithoutExceptionHandlers</code>
+			<a href="ControllerWithoutExceptionHandlers.java"
+			th:href="${gitHubSrc + '/java/demo2/web/ControllerWithoutExceptionHandlers.java'}">
+				<img th:replace="link :: github" />
+		</a></li>
+		<li>Controller Advice: <code>demo2.web.GlobalExceptionHandlingControllerAdvice</code>
+			<a href="GlobalExceptionHandlingControllerAdvice.java"
+			th:href="${gitHubSrc + '/java/demo2/web/GlobalExceptionHandlingControllerAdvice.java'}">
+				<img th:replace="link :: github" />
+		</a></li>
+	</ul>
+
+	<p>To fully understand this demo, review the output in the server
+		(console) log as you click the links below.</p>
+
+	<p>
+		The behavior of this demo is the same as <a th:href="@{/local/}">Demo 1</a> -
+		just implemented differently.
+	</p>
+
+	<h3>Demo</h3>
+	<ul class="openlist">
+		<li>Throw <a th:href="@{/global/orderNotFound}">OrderNotFoundException</a>
+			- should generate a 404 (in the Spring Boot error page).
+		</li>
+		<li>Throw <a th:href="@{/global/dataIntegrityViolation}">DataIntegrityViolationException</a>
+			- should generate a 409 (in the Spring Boot error page).
+		</li>
+		<li>Throw <a th:href="@{/global/databaseError1}">SQLException</a> -
+			should return a specific database-error page.
+		</li>
+		<li>Throw <a th:href="@{/global/databaseError2}">DataAccessException</a>
+			- should also return the database-error page. Demonstrates catching
+			multiple exceptions with one handler.
+		</li>
+		<li>Throw <a th:href="@{/global/supportInfoException}">SupportInfoException</a>
+			- should generate a support oriented error page with hidden
+			stack-trace hidden in the page source. Whether this is a good idea,
+			is debatable! but it shows how to add extra information into the
+			model for the exception view to use.
+		</li>
+	</ul>
+
+	<p th:if="${profiles == 'demo-config'}">
+		Demo 3: <a th:href="@{/simpleMappingExceptionResolver/on}">Using a
+			Simple Mapping Exception Handler</a>.
+	</p>
+	<p th:unless="${profiles == 'demo-config'}">
+		Demo 3: <a th:href="@{/unannotated}">Using a Simple Mapping Exception
+			Handler</a>.
+	</p>
+
+	<div th:replace="footer :: copy"></div>
+
+</body>
+</html>

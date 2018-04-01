@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<project name="Application Developer's Guide"
+        href="http://tomcat.apache.org/">
+
+    <title>Application Developer's Guide</title>
+
+    <logo href="/images/tomcat.gif">
+      The Apache Tomcat Servlet/JSP Container
+    </logo>
+
+
+    <body>
+
+    <menu name="Links">
+        <item name="Docs Home"             href="../index.html"/>
+        <item name="App Dev Guide Home"    href="index.html"/>
+        <item name="FAQ"                   href="http://wiki.apache.org/tomcat/FAQ" />
+        <item name="User Comments"         href="#comments_section"/>
+    </menu>
+
+    <menu name="Contents">
+        <item name="Contents"              href="index.html"/>
+        <item name="Introduction"          href="introduction.html"/>
+        <item name="Installation"          href="installation.html"/>
+        <item name="Deployment"            href="deployment.html"/>
+        <item name="Source Code"           href="source.html"/>
+        <item name="Processes"             href="processes.html"/>
+        <item name="Example App"           href="sample/"/>
+    </menu>
+
+    </body>
+</project>

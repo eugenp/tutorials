@@ -1,0 +1,240 @@
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : 192.168.80.130
+Source Server Version : 50628
+Source Host           : 192.168.80.130:3306
+Source Database       : bill
+
+Target Server Type    : MYSQL
+Target Server Version : 50628
+File Encoding         : 65001
+
+Date: 2017-07-19 12:29:04
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `billing`
+-- ----------------------------
+DROP TABLE IF EXISTS `billing`;
+CREATE TABLE `billing` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `total_price` double NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` bigint(20) NOT NULL,
+  `last_edit_at` datetime NOT NULL,
+  `last_edit_by` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of billing
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `SECURITY_GROUP`
+-- ----------------------------
+DROP TABLE IF EXISTS `SECURITY_GROUP`;
+CREATE TABLE `SECURITY_GROUP` (
+  `GROUP_ID` varchar(20) NOT NULL,
+  `DESCRIPTION` varchar(255) DEFAULT NULL,
+  `LAST_UPDATED_STAMP` datetime DEFAULT NULL,
+  `LAST_UPDATED_TX_STAMP` datetime DEFAULT NULL,
+  `CREATED_STAMP` datetime DEFAULT NULL,
+  `CREATED_TX_STAMP` datetime DEFAULT NULL,
+  PRIMARY KEY (`GROUP_ID`),
+  KEY `SCRT_GRP_TXSTMP` (`LAST_UPDATED_TX_STAMP`),
+  KEY `SCRT_GRP_TXCRTS` (`CREATED_TX_STAMP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of SECURITY_GROUP
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `SECURITY_GROUP_PERMISSION`
+-- ----------------------------
+DROP TABLE IF EXISTS `SECURITY_GROUP_PERMISSION`;
+CREATE TABLE `SECURITY_GROUP_PERMISSION` (
+  `GROUP_ID` varchar(20) NOT NULL,
+  `PERMISSION_ID` varchar(60) NOT NULL,
+  `LAST_UPDATED_STAMP` datetime DEFAULT NULL,
+  `LAST_UPDATED_TX_STAMP` datetime DEFAULT NULL,
+  `CREATED_STAMP` datetime DEFAULT NULL,
+  `CREATED_TX_STAMP` datetime DEFAULT NULL,
+  PRIMARY KEY (`GROUP_ID`,`PERMISSION_ID`),
+  KEY `SEC_GRP_PERM_GRP` (`GROUP_ID`),
+  KEY `SCT_GRP_PRMN_TXSTP` (`LAST_UPDATED_TX_STAMP`),
+  KEY `SCT_GRP_PRMN_TXCRS` (`CREATED_TX_STAMP`),
+  CONSTRAINT `SEC_GRP_PERM_GRP` FOREIGN KEY (`GROUP_ID`) REFERENCES `SECURITY_GROUP` (`GROUP_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of SECURITY_GROUP_PERMISSION
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `SECURITY_PERMISSION`
+-- ----------------------------
+DROP TABLE IF EXISTS `SECURITY_PERMISSION`;
+CREATE TABLE `SECURITY_PERMISSION` (
+  `PERMISSION_ID` varchar(60) NOT NULL,
+  `DESCRIPTION` varchar(255) DEFAULT NULL,
+  `LAST_UPDATED_STAMP` datetime DEFAULT NULL,
+  `LAST_UPDATED_TX_STAMP` datetime DEFAULT NULL,
+  `CREATED_STAMP` datetime DEFAULT NULL,
+  `CREATED_TX_STAMP` datetime DEFAULT NULL,
+  PRIMARY KEY (`PERMISSION_ID`),
+  KEY `SCRT_PRMSSN_TXSTMP` (`LAST_UPDATED_TX_STAMP`),
+  KEY `SCRT_PRMSSN_TXCRTS` (`CREATED_TX_STAMP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of SECURITY_PERMISSION
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `USER_LOGIN`
+-- ----------------------------
+DROP TABLE IF EXISTS `USER_LOGIN`;
+CREATE TABLE `USER_LOGIN` (
+  `USER_LOGIN_ID` varchar(250) NOT NULL,
+  `USERNAME` varchar(100) DEFAULT NULL,
+  `SALUTATION` varchar(100) DEFAULT NULL,
+  `EMAIL` varchar(100) DEFAULT NULL,
+  `GENDER` char(1) DEFAULT NULL,
+  `CURRENT_PASSWORD` varchar(60) DEFAULT NULL,
+  `PASSWORD_HINT` varchar(255) DEFAULT NULL,
+  `HEIGHT` double DEFAULT NULL,
+  `WEIGHT` double DEFAULT NULL,
+  `BIRTH_DATE` date DEFAULT NULL,
+  `MARITAL_STATUS` char(1) DEFAULT NULL,
+  `IS_SYSTEM` char(1) DEFAULT NULL,
+  `ENABLED` char(1) DEFAULT NULL,
+  `HAS_LOGGED_OUT` char(1) DEFAULT NULL,
+  `REQUIRE_PASSWORD_CHANGE` char(1) DEFAULT NULL,
+  `LAST_CURRENCY_UOM` varchar(20) DEFAULT NULL,
+  `LAST_LOCALE` varchar(10) DEFAULT NULL,
+  `LAST_TIME_ZONE` varchar(60) DEFAULT NULL,
+  `DISABLED_DATE_TIME` datetime DEFAULT NULL,
+  `SUCCESSIVE_FAILED_LOGINS` decimal(20,0) DEFAULT NULL,
+  `EXTERNAL_AUTH_ID` varchar(250) DEFAULT NULL,
+  `USER_LDAP_DN` varchar(250) DEFAULT NULL,
+  `LAST_UPDATED_STAMP` datetime DEFAULT NULL,
+  `LAST_UPDATED_TX_STAMP` datetime DEFAULT NULL,
+  `CREATED_STAMP` datetime DEFAULT NULL,
+  `CREATED_TX_STAMP` datetime DEFAULT NULL,
+  PRIMARY KEY (`USER_LOGIN_ID`),
+  KEY `USER_LOGIN_TXSTMP` (`LAST_UPDATED_TX_STAMP`),
+  KEY `USER_LOGIN_TXCRTS` (`CREATED_TX_STAMP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of USER_LOGIN
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `USER_LOGIN_HISTORY`
+-- ----------------------------
+DROP TABLE IF EXISTS `USER_LOGIN_HISTORY`;
+CREATE TABLE `USER_LOGIN_HISTORY` (
+  `USER_LOGIN_ID` varchar(250) NOT NULL,
+  `VISIT_ID` varchar(20) DEFAULT NULL,
+  `FROM_DATE` datetime NOT NULL,
+  `THRU_DATE` datetime DEFAULT NULL,
+  `PASSWORD_USED` varchar(255) DEFAULT NULL,
+  `SUCCESSFUL_LOGIN` char(1) DEFAULT NULL,
+  `LAST_UPDATED_STAMP` datetime DEFAULT NULL,
+  `LAST_UPDATED_TX_STAMP` datetime DEFAULT NULL,
+  `CREATED_STAMP` datetime DEFAULT NULL,
+  `CREATED_TX_STAMP` datetime DEFAULT NULL,
+  `PARTY_ID` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`USER_LOGIN_ID`,`FROM_DATE`),
+  KEY `USER_LH_USER` (`USER_LOGIN_ID`),
+  KEY `USER_LH_PARTY` (`PARTY_ID`),
+  KEY `USR_LGN_HSR_TXSTMP` (`LAST_UPDATED_TX_STAMP`),
+  KEY `USR_LGN_HSR_TXCRTS` (`CREATED_TX_STAMP`),
+  CONSTRAINT `USER_LH_PARTY` FOREIGN KEY (`PARTY_ID`) REFERENCES `PARTY` (`PARTY_ID`),
+  CONSTRAINT `USER_LH_USER` FOREIGN KEY (`USER_LOGIN_ID`) REFERENCES `USER_LOGIN` (`USER_LOGIN_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of USER_LOGIN_HISTORY
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `USER_LOGIN_PASSWORD_HISTORY`
+-- ----------------------------
+DROP TABLE IF EXISTS `USER_LOGIN_PASSWORD_HISTORY`;
+CREATE TABLE `USER_LOGIN_PASSWORD_HISTORY` (
+  `USER_LOGIN_ID` varchar(250) NOT NULL,
+  `FROM_DATE` datetime NOT NULL,
+  `THRU_DATE` datetime DEFAULT NULL,
+  `CURRENT_PASSWORD` varchar(60) DEFAULT NULL,
+  `LAST_UPDATED_STAMP` datetime DEFAULT NULL,
+  `LAST_UPDATED_TX_STAMP` datetime DEFAULT NULL,
+  `CREATED_STAMP` datetime DEFAULT NULL,
+  `CREATED_TX_STAMP` datetime DEFAULT NULL,
+  PRIMARY KEY (`USER_LOGIN_ID`,`FROM_DATE`),
+  KEY `USER_LPH_USER` (`USER_LOGIN_ID`),
+  KEY `USR_LGN_PSD_HSR_TP` (`LAST_UPDATED_TX_STAMP`),
+  KEY `USR_LGN_PSD_HSR_TS` (`CREATED_TX_STAMP`),
+  CONSTRAINT `USER_LPH_USER` FOREIGN KEY (`USER_LOGIN_ID`) REFERENCES `USER_LOGIN` (`USER_LOGIN_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of USER_LOGIN_PASSWORD_HISTORY
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `USER_LOGIN_SECURITY_GROUP`
+-- ----------------------------
+DROP TABLE IF EXISTS `USER_LOGIN_SECURITY_GROUP`;
+CREATE TABLE `USER_LOGIN_SECURITY_GROUP` (
+  `USER_LOGIN_ID` varchar(250) NOT NULL,
+  `GROUP_ID` varchar(20) NOT NULL,
+  `FROM_DATE` datetime NOT NULL,
+  `THRU_DATE` datetime DEFAULT NULL,
+  `LAST_UPDATED_STAMP` datetime DEFAULT NULL,
+  `LAST_UPDATED_TX_STAMP` datetime DEFAULT NULL,
+  `CREATED_STAMP` datetime DEFAULT NULL,
+  `CREATED_TX_STAMP` datetime DEFAULT NULL,
+  PRIMARY KEY (`USER_LOGIN_ID`,`GROUP_ID`,`FROM_DATE`),
+  KEY `USER_SECGRP_USER` (`USER_LOGIN_ID`),
+  KEY `USER_SECGRP_GRP` (`GROUP_ID`),
+  KEY `USR_LGN_SCT_GRP_TP` (`LAST_UPDATED_TX_STAMP`),
+  KEY `USR_LGN_SCT_GRP_TS` (`CREATED_TX_STAMP`),
+  CONSTRAINT `USER_SECGRP_GRP` FOREIGN KEY (`GROUP_ID`) REFERENCES `SECURITY_GROUP` (`GROUP_ID`),
+  CONSTRAINT `USER_SECGRP_USER` FOREIGN KEY (`USER_LOGIN_ID`) REFERENCES `USER_LOGIN` (`USER_LOGIN_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of USER_LOGIN_SECURITY_GROUP
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `USER_LOGIN_SESSION`
+-- ----------------------------
+DROP TABLE IF EXISTS `USER_LOGIN_SESSION`;
+CREATE TABLE `USER_LOGIN_SESSION` (
+  `USER_LOGIN_ID` varchar(250) NOT NULL,
+  `SAVED_DATE` datetime DEFAULT NULL,
+  `SESSION_DATA` longtext,
+  `LAST_UPDATED_STAMP` datetime DEFAULT NULL,
+  `LAST_UPDATED_TX_STAMP` datetime DEFAULT NULL,
+  `CREATED_STAMP` datetime DEFAULT NULL,
+  `CREATED_TX_STAMP` datetime DEFAULT NULL,
+  PRIMARY KEY (`USER_LOGIN_ID`),
+  KEY `USER_SESSION_USER` (`USER_LOGIN_ID`),
+  KEY `USR_LGN_SSN_TXSTMP` (`LAST_UPDATED_TX_STAMP`),
+  KEY `USR_LGN_SSN_TXCRTS` (`CREATED_TX_STAMP`),
+  CONSTRAINT `USER_SESSION_USER` FOREIGN KEY (`USER_LOGIN_ID`) REFERENCES `USER_LOGIN` (`USER_LOGIN_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of USER_LOGIN_SESSION
+-- ----------------------------

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="in.codelearn.model">
+
+    <class name="EmployeeDetail" table="EMPLOYEEDETAIL">
+
+ 		<id name="employeeId" type="java.lang.Long">
+			<column name="EMPLOYEE_ID" />
+			<generator class="foreign">
+				<param name="property">employee</param>
+			</generator>
+		</id>
+		<one-to-one name="employee" class="in.codelearn.model.Employee"
+			constrained="true"></one-to-one>
+		
+        <property name="street" column="STREET"/>
+        <property name="city" column="CITY"/>
+        <property name="state" column="STATE"/>
+        <property name="country" column="COUNTRY"/>
+	</class>
+
+</hibernate-mapping>

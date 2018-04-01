@@ -1,0 +1,543 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="security-howto.html">
+
+    &project;
+
+  <properties>
+    <title>Security Considerations</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Introduction">
+    <p>Tomcat is configured to be reasonably secure for most use cases by
+    default. Some environments may require more, or less, secure configurations.
+    This page is to provide a single point of reference for configuration
+    options that may impact security and to offer some commentary on the
+    expected impact of changing those options. The intention is to provide a
+    list of configuration options that should be considered when assessing the
+    security of a Tomcat installation.</p>
+
+    <p><strong>Note</strong>: Reading this page is not a substitute for reading
+    and understanding the detailed configuration documentation. Fuller
+    descriptions of these attributes may be found in the relevant documentation
+    pages.</p>
+  </section>
+
+  <section name="Non-Tomcat settings">
+    <p>Tomcat configuration should not be the only line of defense. The other
+    components in the system (operating system, network, database, etc.) should
+    also be secured.</p>
+    <p>Tomcat should not be run under the root user. Create a dedicated user for
+    the Tomcat process and provide that user with the minimum necessary
+    permissions for the operating system. For example, it should not be possible
+    to log on remotely using the Tomcat user.</p>
+    <p>File permissions should also be suitably restricted. Taking the Tomcat
+    instances at the ASF as an example (where auto-deployment is disabled and
+    web applications are deployed as exploded directories), the standard
+    configuration is to have all Tomcat files owned by root with group Tomcat
+    and whilst owner has read/write privileges, group only has read and world
+    has no permissions. The exceptions are the logs, temp and work directory
+    that are owned by the Tomcat user rather than root. This means that even if
+    an attacker compromises the Tomcat process, they can&apos;t change the
+    Tomcat configuration, deploy new web applications or modify existing web
+    applications. The Tomcat process runs with a umask of 007 to maintain these
+    permissions.</p>
+    <p>At the network level, consider using a firewall to limit both incoming
+    and outgoing connections to only those connections you  expect to be
+    present.</p>
+
+    <subsection name="JMX">
+      <p>The security of the JMX connection is dependent on the implementation
+      provided by the JRE and therefore falls outside the control of Tomact.</p>
+
+      <p>Typically, access control is very limited (either read-only to
+      everything or read-write to everything). Tomcat exposes a large amount
+      of internal information and control via JMX to aid debugging, monitoring
+      and management. Give the limited access control available, JMX access
+      should be treated as equivalent to local root/admin access and restricted
+      accordingly.</p>
+
+      <p>The JMX access control provided by most (all?) JRE vendors does not
+      log failed authentication attempts, nor does it provide an account
+      lock-out feature after repeated failed authentications. This makes a
+      brute force attack easy to mount and difficult to detect.</p>
+
+      <p>Given all of the above, care should be taken to ensure that, if used,
+      the JMX interface is appropriately secured. Options you may wish to
+      consider to secure the JMX interface include:</p>
+
+      <ul>
+        <li>configuring a strong password for all JMX users;</li>
+        <li>binding the JMX listener only to an internal network;</li>
+        <li>limiting network access to the JMX port to trusted clients; and</li>
+        <li>providing an application specific health page for use by external
+            monitoring systems.</li>
+      </ul>
+    </subsection>
+
+  </section>
+
+  <section name="Default web applications">
+
+    <subsection name="General">
+      <p>Tomcat ships with a number of web applications that are enabled by
+      default. Vulnerabilities have been discovered in these applications in the
+      past. Applications that are not required should be removed so the system
+      will not be at risk if another vulnerability is discovered.</p>
+    </subsection>
+
+    <subsection name="ROOT">
+      <p>The ROOT web application presents a very low security risk but it does
+      include the version of Tomcat that is being used. The ROOT web application
+      should normally be removed from a publicly accessible Tomcat instance, not
+      for security reasons, but so that a more appropriate default page is shown
+      to users.</p>
+    </subsection>
+
+    <subsection name="Documentation">
+      <p>The documentation web application presents a very low security risk but
+      it does identify the version of Tomcat that is being used. It should
+      normally be removed from a publicly accessible Tomcat instance.</p>
+    </subsection>
+
+    <subsection name="Examples">
+      <p>The examples web application should always be removed from any security
+      sensitive installation. While the examples web application does not
+      contain any known vulnerabilities, it is known to contain features
+      (particularly the cookie examples that display the contents of all
+      received and allow new cookies to be set) that may be used by an attacker
+      in conjunction with a vulnerability in another application deployed on the
+      Tomcat instance to obtain additional information that would otherwise be
+      unavailable.</p>
+    </subsection>
+
+    <subsection name="Manager">
+      <p>The Manager application allows the remote deployment of web
+      applications and is frequently targeted by attackers due to the widespread
+      use of weak passwords and publicly accessible Tomcat instances with the
+      Manager application enabled. The Manager application is not accessible by
+      default as no users are configured with the necessary access. If the
+      Manager application is enabled then guidance in the section
+      <strong>Securing Management Applications</strong> section should be
+      followed.</p>
+    </subsection>
+
+    <subsection name="Host Manager">
+      <p>The Host Manager application allows the creation and management of
+      virtual hosts - including the enabling of the Manager application for a
+      virtual host. The Host Manager application is not accessible by default
+      as no users are configured with the necessary access. If the Host Manager
+      application is enabled then guidance in the section <strong>Securing
+      Management Applications</strong> section should be followed.</p>
+    </subsection>
+
+   <subsection name="Securing Management Applications">
+     <p>When deploying a web application that provides management functions for
+     the Tomcat instance, the following guidelines should be followed:</p>
+     <ul>
+       <li>Ensure that any users permitted to access the management application
+           have strong passwords.</li>
+       <li>Do not remove the use of the <a
+           href="config/realm.html#LockOut_Realm_-_org.apache.catalina.realm.LockOutRealm">LockOutRealm</a>
+           which prevents brute force attacks against user passwords.</li>
+       <li>Uncomment the <a href="config/valve.html#Remote_Address_Filter">RemoteAddrValve</a>
+           in <code>/META-INF/context.xml</code> which limits access to
+           localhost. If remote access is required, limit it to specific IP
+           addresses using this valve.</li>
+     </ul>
+   </subsection>
+  </section>
+
+  <section name="Security manager">
+    <p>Enabling the security manager causes web applications to be run in a
+    sandbox, significantly limiting a web application's ability to perform
+    malicious actions such as calling System.exit(), establishing network
+    connections or accessing the file system outside of the web application's
+    root and temporary directories. However, it should be noted that there are
+    some malicious actions, such as triggering high CPU consumption via an
+    infinite loop, that the security manager cannot prevent.</p>
+
+    <p>Enabling the security manager is usually done to limit the potential
+    impact, should an attacker find a way to compromise a trusted web
+    application . A security manager may also be used to reduce the risks of
+    running untrusted web applications (e.g. in hosting environments) but it
+    should be noted that the security manager only reduces the risks of
+    running untrusted web applications, it does not eliminate them. If running
+    multiple untrusted web applications, it is recommended that each web
+    application is deployed to a separate Tomcat instance (and ideally separate
+    hosts) to reduce the ability of a malicious web application impacting the
+    availability of other applications.</p>
+
+    <p>Tomcat is tested with the security manager enabled; but the majority of
+    Tomcat users do not run with a security manager, so Tomcat is not as well
+    user-tested in this configuration. There have been, and continue to be,
+    bugs reported that are triggered by running under a security manager.</p>
+
+    <p>The restrictions imposed by a security manager are likely to break most
+    applications if the security manager is enabled. The security manager should
+    not be used without extensive testing. Ideally, the use of a security
+    manager should be introduced at the start of the development cycle as it can
+    be time-consuming to track down and fix issues caused by enabling a security
+    manager for a mature application.</p>
+
+    <p>Enabling the security manager changes the defaults for the following
+    settings:</p>
+    <ul>
+      <li>The default value for the <strong>deployXML</strong> attribute of the
+      <strong>Host</strong> element is changed to <code>false</code>.</li>
+    </ul>
+  </section>
+
+  <section name="server.xml">
+    <subsection name="General">
+      <p>The default server.xml contains a large number of comments, including
+      some example component definitions that are commented out. Removing these
+      comments makes it considerably easier to read and comprehend
+      server.xml.</p>
+      <p>If a component type is not listed, then there are no settings for that
+      type that directly impact security.</p>
+    </subsection>
+
+    <subsection name="Server">
+      <p>Setting the <strong>port</strong> attribute to <code>-1</code> disables
+      the shutdown port.</p>
+      <p>If the shutdown port is not disabled, a strong password should be
+      configured for <strong>shutdown</strong>.</p>
+    </subsection>
+
+    <subsection name="Listeners">
+      <p>The APR Lifecycle Listener is not stable if compiled on Solaris using
+      gcc. If using the APR/native connector on Solaris, compile it with the
+      Sun Studio compiler.</p>
+
+      <p>The Security Listener should be enabled and configured as appropriate.
+      </p>
+    </subsection>
+
+    <subsection name="Connectors">
+      <p>By default, an HTTP and an AJP connector are configured. Connectors
+      that will not be used should be removed from server.xml.</p>
+
+      <p>The <strong>address</strong> attribute may be used to control which IP
+      address the connector listens on for connections. By default, the
+      connector listens on all configured IP addresses.</p>
+
+      <p>The <strong>allowTrace</strong> attribute may be used to enable TRACE
+      requests which can be useful for debugging. Due to the way some browsers
+      handle the response from a TRACE request (which exposes the browser to an
+      XSS attack), support for TRACE requests is disabled by default.</p>
+
+      <p>The <strong>maxPostSize</strong> attribute controls the maximum size
+      of a POST request that will be parsed for parameters. The parameters are
+      cached for the duration of the request so this is limited to 2MB by
+      default to reduce exposure to a DOS attack.</p>
+
+      <p>The <strong>maxSavePostSize</strong> attribute controls the saving of
+      POST requests during FORM and CLIENT-CERT authentication. The parameters
+      are cached for the duration of the authentication (which may be many
+      minutes) so this is limited to 4KB by default to reduce exposure to a DOS
+      attack.</p>
+
+      <p>The <strong>maxParameterCount</strong> attribute controls the
+      maximum number of parameter and value pairs (GET plus POST) that can
+      be parsed and stored in the request. Excessive parameters are ignored.
+      If you want to reject such requests, configure a
+      <a href="config/filter.html">FailedRequestFilter</a>.</p>
+
+      <p>The <strong>xpoweredBy</strong> attribute controls whether or not the
+      X-Powered-By HTTP header is sent with each request. If sent, the value of
+      the header contains the Servlet and JSP specification versions, the full
+      Tomcat version (e.g. Apache Tomcat/7.0.0), the name of the JVM vendor and
+      the version of the JVM. This header is disabled by default. This header
+      can provide useful information to both legitimate clients and attackers.
+      </p>
+
+      <p>The <strong>server</strong> attribute controls the value of the Server
+      HTTP header. The default value of this header for Tomcat 4.1.x, 5.0.x,
+      5.5.x, 6.0.x and 7.0.x is Apache-Coyote/1.1. This header can provide
+      limited information to both legitimate clients and attackers.</p>
+
+      <p>The <strong>SSLEnabled</strong>, <strong>scheme</strong> and
+      <strong>secure</strong> attributes may all be independently set. These are
+      normally used when Tomcat is located behind a reverse proxy and the proxy
+      is connecting to Tomcat via HTTP or HTTPS. They allow Tomcat to see the
+      SSL attributes of the connections between the client and the proxy rather
+      than the proxy and Tomcat. For example, the client may connect to the
+      proxy over HTTPS but the proxy connects to Tomcat using HTTP. If it is
+      necessary for Tomcat to be able to distinguish between secure and
+      non-secure connections received by a proxy, the proxy must use separate
+      connectors to pass secure and non-secure requests to Tomcat. If the
+      proxy uses AJP then the SSL attributes of the client connection are
+      passed via the AJP protocol and separate connectors are not needed.</p>
+
+      <p>The <strong>sslEnabledProtocols</strong> attribute determines which
+      versions of the SSL/TLS protocol are used.  Since the POODLE attack in
+      2014, all SSL protocols are considered unsafe and a secure setting for
+      this attribute in a standalone Tomcat setup might be
+      <code>sslEnabledProtocols="TLSv1,TLSv1.1,TLSv1.2"</code></p>
+
+      <p>The <strong>ciphers</strong> attribute controls the ciphers used for
+      SSL connections. By default, the default ciphers for the JVM will be used.
+      This usually means that the weak export grade ciphers will be included in
+      the list of available ciphers. Secure environments will normally want to
+      configure a more limited set of ciphers.</p>
+
+      <p>The <strong>tomcatAuthentication</strong> and
+      <strong>tomcatAuthorization</strong> attributes are used with the
+      AJP connectors to determine if Tomcat should handle all authentication and
+      authorisation or if authentication should be delegated to the reverse
+      proxy (the authenticated user name is passed to Tomcat as part of the AJP
+      protocol) with the option for Tomcat to still perform authorization.</p>
+
+      <p>The <strong>allowUnsafeLegacyRenegotiation</strong> attribute provides
+      a workaround for
+      <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-3555">
+      CVE-2009-3555</a>, a TLS man in the middle attack. This workaround applies
+      to the BIO connector. It is only necessary if the underlying SSL
+      implementation is vulnerable to CVE-2009-3555. For more information on the
+      current state of this vulnerability and the work-arounds available see the
+      <a href="http://tomcat.apache.org/security-7.html">Tomcat 7 security
+      page</a>.</p>
+
+      <p>The <strong>requiredSecret</strong> attribute in AJP connectors
+      configures shared secret between Tomcat and reverse proxy in front of
+      Tomcat. It is used to prevent unauthorized connections over AJP protocol.</p>
+    </subsection>
+
+    <subsection name="Host">
+      <p>The host element controls deployment. Automatic deployment allows for
+      simpler management but also makes it easier for an attacker to deploy a
+      malicious application. Automatic deployment is controlled by the
+      <strong>autoDeploy</strong> and <strong>deployOnStartup</strong>
+      attributes. If both are <code>false</code>, only Contexts defined in
+      server.xml will be deployed and any changes will require a Tomcat restart.
+      </p>
+
+      <p>In a hosted environment where web applications may not be trusted, set
+      the <strong>deployXML</strong> attribute to <code>false</code> to ignore
+      any context.xml packaged with the web application that may try to assign
+      increased privileges to the web application. Note that if the security
+      manager is enabled that the <strong>deployXML</strong> attribute will
+      default to <code>false</code>.</p>
+    </subsection>
+
+    <subsection name="Context">
+      <p>This applies to <a href="config/context.html">Context</a>
+      elements in all places where they can be defined:
+      <code>server.xml</code> file,
+      default <code>context.xml</code> file,
+      per-host <code>context.xml.default</code> file,
+      web application context file in per-host configuration directory
+      or inside the web application.</p>
+
+      <p>The <strong>crossContext</strong> attribute controls if a context is
+      allowed to access the resources of another context. It is
+      <code>false</code> by default and should only be changed for trusted web
+      applications.</p>
+
+      <p>The <strong>privileged</strong> attribute controls if a context is
+      allowed to use container provided servlets like the Manager servlet. It is
+      <code>false</code> by default and should only be changed for trusted web
+      applications.</p>
+
+      <p>The <strong>allowLinking</strong> attribute controls if a context is
+      allowed to use linked files. If enabled and the context is undeployed, the
+      links will be followed when deleting the context resources. To avoid this
+      behaviour, use the <strong>aliases</strong> attribute. Changing this
+      setting from the default of <code>false</code> on case insensitive
+      operating systems (this includes Windows) will disable a number of
+      security measures and allow, among other things, direct access to the
+      WEB-INF directory.</p>
+
+      <p>The <strong>sessionCookiePathUsesTrailingSlash</strong> can be used to
+      work around a bug in a number of browsers (Internet Explorer, Safari and
+      Edge) to prevent session cookies being exposed across applications when
+      applications share a common path prefix. However, enabling this option
+      can create problems for applications with Servlets mapped to
+      <code>/*</code>. It should also be noted the RFC6265 section 8.5 makes it
+      clear that different paths should not be considered sufficient to isolate
+      cookies from other applications.</p>
+    </subsection>
+
+    <subsection name="Valves">
+      <p>It is strongly recommended that an AccessLogValve is configured. The
+      default Tomcat configuration includes an AccessLogValve. These are
+      normally configured per host but may also be configured per engine or per
+      context as required.</p>
+
+      <p>Any administrative application should be protected by a
+      RemoteAddrValve. (Note that this Valve is also available as a Filter.)
+      The <strong>allow</strong> attribute should be used to limit access to a
+      set of known trusted hosts.</p>
+
+      <p>The default ErrorReportValve includes the Tomcat version number in the
+      response sent to clients. To avoid this, custom error handling can be
+      configured within each web application. Alternatively, you can explicitly
+      configure an <a href="config/valve.html">ErrorReportValve</a> and set its
+      <strong>showServerInfo</strong> attribute to <code>false</code>.
+      Alternatively, the version number can be changed by creating the file
+      CATALINA_BASE/lib/org/apache/catalina/util/ServerInfo.properties with
+      content as follows:</p>
+      <source>
+server.info=Apache Tomcat/7.0.x
+      </source>
+      <p>Modify the values as required. Note that this will also change the version
+      number reported in some of the management tools and may make it harder to
+      determine the real version installed. The CATALINA_HOME/bin/version.bat|sh
+      script will still report the version number.</p>
+
+      <p>The default ErrorReportValve can display stack traces and/or JSP
+      source code to clients when an error occurs. To avoid this, custom error
+      handling can be configured within each web application. Alternatively, you
+      can explicitly configure an <a href="config/valve.html">ErrorReportValve</a>
+      and set its <strong>showReport</strong> attribute to <code>false</code>.</p>
+    </subsection>
+
+    <subsection name="Realms">
+      <p>The MemoryRealm is not intended for production use as any changes to
+      tomcat-users.xml require a restart of Tomcat to take effect.</p>
+
+      <p>The JDBCRealm is not recommended for production use as it is single
+      threaded for all authentication and authorization options. Use the
+      DataSourceRealm instead.</p>
+
+      <p>The UserDatabaseRealm is not intended for large-scale installations. It
+      is intended for small-scale, relatively static environments.</p>
+
+      <p>The JAASRealm is not widely used and therefore the code is not as
+      mature as the other realms. Additional testing is recommended before using
+      this realm.</p>
+
+      <p>By default, the realms do not implement any form of account lock-out.
+      This means that brute force attacks can be successful. To prevent a brute
+      force attack, the chosen realm should be wrapped in a LockOutRealm.</p>
+    </subsection>
+
+    <subsection name="Manager">
+      <p>The manager component is used to generate session IDs.</p>
+
+      <p>The class used to generate random session IDs may be changed with
+      the <strong>randomClass</strong> attribute.</p>
+
+      <p>The length of the session ID may be changed with the
+      <strong>sessionIdLength</strong> attribute.</p>
+    </subsection>
+
+    <subsection name="Cluster">
+      <p>The cluster implementation is written on the basis that a secure,
+      trusted network is used for all of the cluster related network traffic. It
+      is not safe to run a cluster on a insecure, untrusted network.</p>
+    </subsection>
+  </section>
+
+  <section name="System Properties">
+    <p>Setting <strong>org.apache.catalina.connector.RECYCLE_FACADES</strong>
+    system property to <code>true</code> will cause a new facade object to be
+    created for each request. This reduces the chances of a bug in an
+    application exposing data from one request to another.</p>
+
+    <p>The <strong>
+    org.apache.catalina.connector.CoyoteAdapter.ALLOW_BACKSLASH</strong> and
+    <strong>org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH</strong>
+    system properties allow non-standard parsing of the request URI. Using
+    these options when behind a reverse proxy may enable an attacker to bypass
+    any security constraints enforced by the proxy.</p>
+
+    <p>The <strong>
+    org.apache.catalina.connector.Response.ENFORCE_ENCODING_IN_GET_WRITER
+    </strong> system property has security implications if disabled. Many user
+    agents, in breach of RFC2616, try to guess the character encoding of text
+    media types when the specification-mandated default of ISO-8859-1 should be
+    used. Some browsers will interpret as UTF-7 a response containing characters
+    that are safe for ISO-8859-1 but trigger an XSS vulnerability if interpreted
+    as UTF-7.</p>
+  </section>
+
+  <section name="web.xml">
+    <p>This applies to the default <code>conf/web.xml</code> file and
+    <code>WEB-INF/web.xml</code> files in web applications if they define
+    the components mentioned here.</p>
+
+    <p>The <a href="default-servlet.html">DefaultServlet</a> is configured
+    with <strong>readonly</strong> set to
+    <code>true</code>. Changing this to <code>false</code> allows clients to
+    delete or modify static resources on the server and to upload new
+    resources. This should not normally be changed without requiring
+    authentication.</p>
+
+    <p>The DefaultServlet is configured with <strong>listings</strong> set to
+    <code>false</code>. This isn't because allowing directory listings is
+    considered unsafe but because generating listings of directories with
+    thousands of files can consume significant CPU leading to a DOS attack.
+    </p>
+
+    <p>The DefaultServlet is configured with <strong>showServerInfo</strong>
+    set to <code>true</code>. When the directory listings is enabled the Tomcat
+    version number is included in the response sent to clients. To avoid this,
+    you can explicitly configure a DefaultServlet and set its
+    <strong>showServerInfo</strong> attribute to false.
+    Alternatively, the version number can be changed by creating the file
+    CATALINA_BASE/lib/org/apache/catalina/util/ServerInfo.properties with
+    content as follows:</p>
+    <source>server.info=Apache Tomcat/<version-major-minor/>.x</source>
+    <p>Modify the values as required. Note that this will also change the version
+    number reported in some of the management tools and may make it harder to
+    determine the real version installed. The CATALINA_HOME/bin/version.bat|sh
+    script will still report the version number.
+    </p>
+
+    <p>The CGI Servlet is disabled by default. If enabled, the debug
+    initialisation parameter should not be set to <code>10</code> or higher on a
+    production system because the debug page is not secure.</p>
+
+    <p><a href="config/filter.html">FailedRequestFilter</a>
+    can be configured and used to reject requests that had errors during
+    request parameter parsing. Without the filter the default behaviour is
+    to ignore invalid or excessive parameters.</p>
+
+    <p><a href="config/filter.html">HttpHeaderSecurityFilter</a> can be
+    used to add headers to responses to improve security. If clients access
+    Tomcat directly, then you probably want to enable this filter and all the
+    headers it sets unless your application is already setting them. If Tomcat
+    is accessed via a reverse proxy, then the configuration of this filter needs
+    to be co-ordinated with any headers that the reverse proxy sets.</p>
+  </section>
+
+  <section name="General">
+    <p>BASIC and FORM authentication pass user names and passwords in clear
+    text. Web applications using these authentication mechanisms with clients
+    connecting over untrusted networks should use SSL.</p>
+
+    <p>The session cookie for a session with an authenticated user are nearly
+    as useful as the user's password to an attacker and in nearly all
+    circumstances should be afforded the same level of protection as the
+    password itself. This usually means authenticating over SSL and continuing
+    to use SSL until the session ends.</p>
+  </section>
+
+</body>
+</document>

@@ -1,0 +1,17 @@
+<!--<start id="servletMapping_service"/>--> 
+<servlet-mapping>
+  <servlet-name>spitter</servlet-name> 
+  <url-pattern>*.service</url-pattern>
+</servlet-mapping>
+<!--<end id="servletMapping_service"/>--> 
+
+<!--<start id="urlMapping_hessianService"/>-->
+<bean id="urlMapping" class=
+    "org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+  <property name="mappings"> 
+    <value>
+      /spitter.service=hessianSpitterService
+    </value>
+  </property>
+</bean>
+<!--<end id="urlMapping_hessianService"/>-->

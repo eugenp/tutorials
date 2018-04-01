@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="requestProcess.html">
+
+  &project;
+
+  <properties>
+    <author email="yoavs@apache.org">Yoav Shapira</author>
+    <title>Request Process Flow</title>
+  </properties>
+
+<body>
+
+
+<section name="Request Process Flow">
+
+<p>
+This page describes the process used by Tomcat to handle
+an incoming request.  This process is largely defined by
+the Servlet Specification, which outlines the order
+of events that must take place.
+</p>
+
+<subsection name="description">
+<p>
+TODO
+</p>
+</subsection>
+
+<subsection name="diagrams">
+<p>
+A UML sequence diagram of the request process is available
+<a href="requestProcess/request-process.png">here.</a>
+</p>
+<p>
+A UML sequence diagram of the authentication process is available
+<a href="requestProcess/authentication-process.png">here.</a>
+</p>
+
+</subsection>
+
+<subsection name="comments">
+<p>
+The Servlet Specification provides many opportunities for
+listening in (using Listeners) or modifying (using Filters)
+the request handling process even before the request arrives
+at the servlet that will handle it.
+</p>
+
+</subsection>
+
+</section>
+
+
+</body>
+</document>

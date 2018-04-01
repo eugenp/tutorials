@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:oauth="http://spring-security-oauth.codehaus.org/3.0"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://spring-security-oauth.codehaus.org/3.0 http://spring-security-oauth.codehaus.org/schema/spring-security-oauth-3.0.xsd http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-2.0.4.xsd">
+
+	<sec:http access-denied-page="/login.jsp">
+		<sec:intercept-url pattern="/linkedin.do**" access="ROLE_USER" />
+		<sec:intercept-url pattern="/**"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<sec:form-login />
+		<sec:logout />
+	</sec:http>
+
+	<sec:authentication-provider>
+		<sec:user-service>
+			<sec:user name="admin" password="admin" authorities="ROLE_USER" />
+		</sec:user-service>
+	</sec:authentication-provider>
+
+	<oauth:consumer resource-details-service-ref="linkedInResourceDetails"
+		oauth-failure-page="/oauth_error.jsp">
+		<oauth:url pattern="/linkedin.do**" resources="linkedIn" />
+	</oauth:consumer>
+
+	<bean id="oauthConsumerSupport"
+		class="org.springframework.security.oauth.consumer.CoreOAuthConsumerSupport">
+		<property name="protectedResourceDetailsService" ref="linkedInResourceDetails" />
+	</bean>
+
+	<oauth:resource-details-service id="linkedInResourceDetails">
+		<oauth:resource id="linkedIn"
+			key="***"
+			secret="***"
+			request-token-url="https://api.linkedin.com/uas/oauth/requestToken"
+			user-authorization-url="https://www.linkedin.com/uas/oauth/authorize"
+			access-token-url="https://api.linkedin.com/uas/oauth/accessToken" />
+	</oauth:resource-details-service>
+
+
+</beans>

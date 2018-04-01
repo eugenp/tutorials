@@ -1,0 +1,21 @@
+<html>
+<head>
+    <title></title>
+    <link type="text/css" rel="stylesheet" href="${contextPath}/static/bigpipe/index.css">
+    <script src="${contextPath}/static/jquery.1.10.2.js"></script>
+    <script src="${contextPath}/static/bigpipe/bigpipe.js"></script>
+</head>
+<body>
+
+    <div>${msg}</div>
+
+    <div id="part1">
+    </div>
+
+    <div id="part2">
+    </div>
+
+    <div id="part3">
+    </div>
+</body>
+</html>

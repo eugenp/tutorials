@@ -1,0 +1,249 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="deployment.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <title>Deployment</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Background">
+
+<p>Before describing how to organize your source code directories,
+it is useful to examine the runtime organization of a web application.
+Prior to the Servlet API Specification, version 2.2, there was little
+consistency between server platforms.  However, servers that conform
+to the 2.2 (or later) specification are required to accept a
+<em>Web Application Archive</em> in a standard format, which is discussed
+further below.</p>
+
+<p>A web application is defined as a hierarchy of directories and files
+in a standard layout.  Such a hierarchy can be accessed in its "unpacked"
+form, where each directory and file exists in the filesystem separately,
+or in a "packed" form known as a Web ARchive, or WAR file.  The former format
+is more useful during development, while the latter is used when you
+distribute your application to be installed.</p>
+
+<p>The top-level directory of your web application hierarchy is also the
+<em>document root</em> of your application.  Here, you will place the HTML
+files and JSP pages that comprise your application's user interface.  When the
+system administrator deploys your application into a particular server, he
+or she assigns a <em>context path</em> to your application (a later section
+of this manual describes deployment on Tomcat).  Thus, if the
+system administrator assigns your application to the context path
+<code>/catalog</code>, then a request URI referring to
+<code>/catalog/index.html</code> will retrieve the <code>index.html</code>
+file from your document root.</p>
+
+</section>
+
+
+<section name="Standard Directory Layout">
+
+<p>To facilitate creation of a Web Application Archive file in the required
+format, it is convenient to arrange the "executable" files of your web
+application (that is, the files that Tomcat actually uses when executing
+your app) in the same organization as required by the WAR format itself.
+To do this, you will end up with the following contents in your
+application's "document root" directory:</p>
+<ul>
+<li><strong>*.html, *.jsp, etc.</strong> - The HTML and JSP pages, along
+    with other files that must be visible to the client browser (such as
+    JavaScript, stylesheet files, and images) for your application.
+    In larger applications you may choose to divide these files into
+    a subdirectory hierarchy, but for smaller apps, it is generally
+    much simpler to maintain only a single directory for these files.
+    <br/><br/></li>
+<li><strong>/WEB-INF/web.xml</strong> - The <em>Web Application Deployment
+    Descriptor</em> for your application.  This is an XML file describing
+    the servlets and other components that make up your application,
+    along with any initialization parameters and container-managed
+    security constraints that you want the server to enforce for you.
+    This file is discussed in more detail in the following subsection.
+    <br/><br/></li>
+<li><strong>/WEB-INF/classes/</strong> - This directory contains any Java
+    class files (and associated resources) required for your application,
+    including both servlet and non-servlet classes, that are not combined
+    into JAR files.  If your classes are organized into Java packages,
+    you must reflect this in the directory hierarchy under
+    <code>/WEB-INF/classes/</code>.  For example, a Java class named
+    <code>com.mycompany.mypackage.MyServlet</code>
+    would need to be stored in a file named
+    <code>/WEB-INF/classes/com/mycompany/mypackage/MyServlet.class</code>.
+    <br/><br/></li>
+<li><strong>/WEB-INF/lib/</strong> - This directory contains JAR files that
+    contain Java class files (and associated resources) required for your
+    application, such as third party class libraries or JDBC drivers.</li>
+</ul>
+
+<p>When you install an application into Tomcat (or any other 2.2 or later
+Servlet container), the classes in the <code>WEB-INF/classes/</code>
+directory, as well as all classes in JAR files found in the
+<code>WEB-INF/lib/</code> directory, are made visible to other classes
+within your particular web application.  Thus, if
+you include all of the required library classes in one of these places (be
+sure to check licenses for redistribution rights for any third party libraries
+you utilize), you will simplify the installation of your web application --
+no adjustment to the system class path (or installation of global library
+files in your server) will be necessary.</p>
+
+<p>Much of this information was extracted from Chapter 9 of the Servlet
+API Specification, version 2.3, which you should consult for more details.</p>
+
+</section>
+
+
+<section name="Shared Library Files">
+
+<p>Like most servlet containers, Tomcat also supports mechanisms to install
+library JAR files (or unpacked classes) once, and make them visible to all
+installed web applications (without having to be included inside the web
+application itself).  The details of how Tomcat locates and shares such
+classes are described in the
+<a href="../class-loader-howto.html">Class Loader HOW-TO</a> documentation.
+The location commonly used within a Tomcat installation for shared code is
+<strong>$CATALINA_HOME/lib</strong>. JAR files placed here are visible both to
+web applications and internal Tomcat code. This is a good place to put JDBC
+drivers that are required for both your application or internal Tomcat use
+(such as for a JDBCRealm).</p>
+
+<p>Out of the box, a standard Tomcat installation includes a variety
+of pre-installed shared library files, including:</p>
+<ul>
+<li>The <em>Servlet 3.0</em> and <em>JSP 2.2</em> APIs that are fundamental
+    to writing servlets and JavaServer Pages.<br/><br/></li>
+</ul>
+
+</section>
+
+
+<section name="Web Application Deployment Descriptor">
+
+<p>As mentioned above, the <code>/WEB-INF/web.xml</code> file contains the
+Web Application Deployment Descriptor for your application.  As the filename
+extension implies, this file is an XML document, and defines everything about
+your application that a server needs to know (except the <em>context path</em>,
+which is assigned by the system administrator when the application is
+deployed).</p>
+
+<p>The complete syntax and semantics for the deployment descriptor is defined
+in Chapter 13 of the Servlet API Specification, version 2.3.  Over time, it
+is expected that development tools will be provided that create and edit the
+deployment descriptor for you.  In the meantime, to provide a starting point,
+a <a href="web.xml.txt" target="_blank">basic web.xml file</a>
+is provided.  This file includes comments that describe the purpose of each
+included element.</p>
+
+<p><strong>NOTE</strong> - The Servlet Specification includes a Document
+Type Descriptor (DTD) for the web application deployment descriptor, and
+Tomcat enforces the rules defined here when processing your application's
+<code>/WEB-INF/web.xml</code> file.  In particular, you <strong>must</strong>
+enter your descriptor elements (such as <code>&lt;filter&gt;</code>,
+<code>&lt;servlet&gt;</code>, and <code>&lt;servlet-mapping&gt;</code> in
+the order defined by the DTD (see Section 13.3).</p>
+
+</section>
+
+
+<section name="Tomcat Context Descriptor">
+
+<p>A /META-INF/context.xml file can be used to define Tomcat specific
+configuration options, such as an access log, data sources, session manager
+configuration and more. This XML file must contain one Context element, which
+will be considered as if it was the child of the Host element corresponding
+to the Host to which the web application is being deployed. The
+<a href="../config/context.html">Tomcat configuration documentation</a> contains
+information on the Context element.</p>
+
+</section>
+
+
+<section name="Deployment With Tomcat">
+
+    <p><em>The description below uses the variable name $CATALINA_BASE to refer the
+    base directory against which most relative paths are resolved. If you have
+    not configured Tomcat for multiple instances by setting a CATALINA_BASE
+    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
+    the directory into which you have installed Tomcat.</em></p>
+
+<p>In order to be executed, a web application must be deployed on
+a servlet container.  This is true even during development.
+We will describe using Tomcat to provide the execution environment.
+A web application can be deployed in Tomcat by one of the following
+approaches:</p>
+<ul>
+<li><em>Copy unpacked directory hierarchy into a subdirectory in directory
+    <code>$CATALINA_BASE/webapps/</code></em>.  Tomcat will assign a
+    context path to your application based on the subdirectory name you
+    choose.  We will use this technique in the <code>build.xml</code>
+    file that we construct, because it is the quickest and easiest approach
+    during development.  Be sure to restart Tomcat after installing or
+    updating your application.
+    <br/><br/></li>
+<li><em>Copy the web application archive file into directory
+    <code>$CATALINA_BASE/webapps/</code></em>.  When Tomcat is started, it will
+    automatically expand the web application archive file into its unpacked
+    form, and execute the application that way.  This approach would typically
+    be used to install an additional application, provided by a third party
+    vendor or by your internal development staff, into an existing
+    Tomcat installation.  <strong>NOTE</strong> - If you use this approach,
+    and wish to update your application later, you must both replace the
+    web application archive file <strong>AND</strong> delete the expanded
+    directory that Tomcat created, and then restart Tomcat, in order to reflect
+    your changes.
+    <br/><br/></li>
+<li><em>Use the Tomcat "Manager" web application to deploy and undeploy
+    web applications</em>.  Tomcat includes a web application, deployed
+    by default on context path <code>/manager</code>, that allows you to
+    deploy and undeploy applications on a running Tomcat server without
+    restarting it. See <a href="../manager-howto.html">Manager App HOW-TO</a>
+    for more information on using the Manager web application.<br/><br/></li>
+<li><em>Use "Manager" Ant Tasks In Your Build Script</em>.  Tomcat
+    includes a set of custom task definitions for the <code>Ant</code>
+    build tool that allow you to automate the execution of commands to the
+    "Manager" web application.  These tasks are used in the Tomcat deployer.
+    <br/><br/></li>
+<li><em>Use the Tomcat Deployer</em>.  Tomcat includes a packaged tool
+    bundling the Ant tasks, and can be used to automatically precompile JSPs
+    which are part of the web application before deployment to the server.
+    <br/><br/></li>
+</ul>
+
+<p>Deploying your app on other servlet containers will be specific to each
+container, but all containers compatible with the Servlet API Specification
+(version 2.2 or later) are required to accept a web application archive file.
+Note that other containers are <strong>NOT</strong> required to accept an
+unpacked directory structure (as Tomcat does), or to provide mechanisms for
+shared library files, but these features are commonly available.</p>
+
+</section>
+
+
+</body>
+</document>

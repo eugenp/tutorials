@@ -1,0 +1,606 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean name="AccessLogValve"
+         description="Valve that generates a web server access log"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.AccessLogValve">
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="buffered"
+               description="Flag to buffering."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="checkExists"
+               description="Check for file existence before logging."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="condition"
+               description="The value to look for conditional logging. The same as conditionUnless."
+               type="java.lang.String"/>
+
+    <attribute name="conditionIf"
+               description="The value to look for conditional logging."
+               type="java.lang.String"/>
+
+    <attribute name="conditionUnless"
+               description="The value to look for conditional logging."
+               type="java.lang.String"/>
+
+    <attribute name="directory"
+               description="The directory in which log files are created"
+               type="java.lang.String"/>
+
+    <attribute name="enabled"
+               description="Enable Access Logging"
+               is="false"
+               type="boolean"/>
+
+    <attribute name="encoding"
+               description="Character set used to write the log file"
+               type="java.lang.String"/>
+
+    <attribute name="fileDateFormat"
+               description="The format for the date for date based log rotation"
+               type="java.lang.String"/>
+
+    <attribute name="info"
+               description="Information about this implementation"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="locale"
+               description="The locale used to format timestamps in the access log lines"
+               type="java.lang.String"/>
+
+    <attribute name="pattern"
+               description="The pattern used to format our access log lines"
+               type="java.lang.String"/>
+
+    <attribute name="prefix"
+               description="The prefix that is added to log file filenames"
+               type="java.lang.String"/>
+
+    <attribute name="resolveHosts"
+               description="Resolve hosts"
+               is="true"
+               type="boolean"/>
+
+    <attribute name="rotatable"
+               description="Flag to indicate automatic log rotation."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="renameOnRotate"
+               description="Flag to defer inclusion of the date stamp in the log file name until rotation."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="suffix"
+               description="The suffix that is added to log file filenames"
+               type="java.lang.String"/>
+
+    <operation name="rotate"
+               description="Check if the log file is due to be rotated and rotate if it is"
+               impact="ACTION"
+               returnType="void">
+    </operation>
+
+    <operation name="rotate"
+               description="Move the existing log file to a new name"
+               impact="ACTION"
+               returnType="boolean">
+      <parameter name="newFileName"
+                 description="File name to move the log file to."
+                 type="java.lang.String"/>
+    </operation>
+
+  </mbean>
+
+  <mbean name="CrawlerSessionManagerValve"
+         description="Valve that ensures web crawlers always use sessions even if no session ID is presented by the client"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.CrawlerSessionManagerValve">
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="clientIpSessionId"
+               description="Current Map of client IP address to session ID managed by this Valve"
+               type="java.util.Map"
+               writeable="false"/>
+
+    <attribute name="crawlerUserAgents"
+               description="Specify the regular expression used to identify crawlers based in the User-Agent header provided."
+               type="java.lang.String"
+               writeable="true"/>
+
+    <attribute name="sessionInactiveInterval"
+               description="Specify the session timeout (in seconds) for a crawler's session."
+               type="int"
+               writeable="true"/>
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"
+               writeable="false"/>
+
+  </mbean>
+
+  <mbean name="ErrorReportValve"
+         description="Implementation of a Valve that outputs HTML error pages"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.ErrorReportValve">
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="info"
+               description="Information about this implementation"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="showReport"
+               description="Enables/Disables full error reports"
+               is="true"
+               type="boolean"/>
+
+    <attribute name="showServerInfo"
+               description="Enables/Disables server info on error pages"
+               is="true"
+               type="boolean"/>
+
+  </mbean>
+
+  <mbean name="ExtendedAccessLogValve"
+         description="Valve that generates a web server access log"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.ExtendedAccessLogValve">
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="buffered"
+               description="Flag to buffering."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="checkExists"
+               description="Check for file existence before logging."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="condition"
+               description="The value to look for conditional logging. The same as conditionUnless."
+               type="java.lang.String"/>
+
+    <attribute name="conditionIf"
+               description="The value to look for conditional logging."
+               type="java.lang.String"/>
+
+    <attribute name="conditionUnless"
+               description="The value to look for conditional logging."
+               type="java.lang.String"/>
+
+    <attribute name="directory"
+               description="The directory in which log files are created"
+               type="java.lang.String"/>
+
+    <attribute name="enabled"
+               description="Enable Access Logging"
+               is="false"
+               type="boolean"/>
+
+    <attribute name="encoding"
+               description="Character set used to write the log file"
+               type="java.lang.String"/>
+
+    <attribute name="fileDateFormat"
+               description="The format for the date date based log rotation."
+               type="java.lang.String"/>
+
+    <attribute name="info"
+               description="Information about this implementation"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="locale"
+               description="The locale used to format timestamps in the access log lines"
+               type="java.lang.String"/>
+
+    <attribute   name="pattern"
+               description="The pattern used to format our access log lines"
+               type="java.lang.String"/>
+
+    <attribute name="prefix"
+               description="The prefix that is added to log file filenames"
+               type="java.lang.String"/>
+
+    <attribute name="resolveHosts"
+               description="Resolve hosts"
+               is="true"
+               type="boolean"/>
+
+    <attribute name="rotatable"
+               description="Flag to indicate automatic log rotation."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="renameOnRotate"
+               description="Flag to defer inclusion of the date stamp in the log file name until rotation."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="suffix"
+               description="The suffix that is added to log file filenames"
+               type="java.lang.String"/>
+
+    <operation name="rotate"
+               description="Check if the log file is due to be rotated and rotate if it is"
+               impact="ACTION"
+               returnType="void">
+    </operation>
+
+    <operation name="rotate"
+               description="Move the existing log file to a new name"
+               impact="ACTION"
+               returnType="boolean">
+      <parameter name="newFileName"
+                 description="File name to move the log file to."
+                 type="java.lang.String"/>
+    </operation>
+
+  </mbean>
+
+  <mbean name="SemaphoreValve"
+         description="Valve that does concurrency control"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.SemaphoreValve">
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="block"
+               description="Should this be blocked until a permit is available?"
+               type="boolean"/>
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="concurrency"
+               description="Desired concurrency level"
+               type="int"/>
+
+    <attribute name="fairness"
+               description="Use a fair semaphore"
+               type="boolean"/>
+
+    <attribute name="info"
+               description="Information about this implementation"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="interruptible"
+               description="Should this be blocked interruptibly until a permit is available?"
+               type="boolean"/>
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"
+               writeable="false"/>
+
+  </mbean>
+
+  <mbean name="RemoteAddrValve"
+         description="Concrete implementation of RequestFilterValve that filters based on the string representation of the remote client's IP address"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.RemoteAddrValve">
+
+    <attribute name="addConnectorPort"
+               description="Append the server connector port to the client IP separated by a semicolon"
+               type="boolean"/>
+
+    <attribute name="allow"
+               description="The allow expression"
+               type="java.lang.String"/>
+
+    <attribute name="allowValid"
+               description="Becomes false if assigned value of allow expression is not syntactically correct"
+               is="true"
+               type="boolean"
+               writeable="false"/>
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="deny"
+               description="The deny expression"
+               type="java.lang.String"/>
+
+    <attribute name="denyStatus"
+               description="HTTP response status code that is used when rejecting denied request"
+               type="int"/>
+
+    <attribute name="denyValid"
+               description="Becomes false if assigned value of deny expression is not syntactically correct"
+               is="true"
+               type="boolean"
+               writeable="false"/>
+
+    <attribute name="info"
+               description="Information about this implementation"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="invalidAuthenticationWhenDeny"
+               description="Send an invalid authentication header instead of deny"
+               type="boolean"/>
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <operation name="isAllowed"
+               description="Tests whether a client with this IP address value is allowed access by the current valve configuration"
+               impact="INFO"
+               returnType="boolean">
+      <parameter name="ipAddress"
+          description="IP address to be tested"
+                 type="java.lang.String"/>
+    </operation>
+  </mbean>
+
+  <mbean name="RemoteHostValve"
+         description="Concrete implementation of RequestFilterValve that filters based on the string representation of the remote client's host name"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.RemoteHostValve">
+
+    <attribute name="addConnectorPort"
+               description="Append the server connector port to the client IP separated by a semicolon"
+               type="boolean"/>
+
+    <attribute name="allow"
+               description="The allow expression"
+               type="java.lang.String"/>
+
+    <attribute name="allowValid"
+               description="Becomes false if assigned value of allow expression is not syntactically correct"
+               is="true"
+               type="boolean"
+               writeable="false"/>
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="deny"
+               description="The deny expression"
+               type="java.lang.String"/>
+
+    <attribute name="denyStatus"
+               description="HTTP response status code that is used when rejecting denied request"
+               type="int"/>
+
+    <attribute name="denyValid"
+               description="Becomes false if assigned value of deny expression is not syntactically correct"
+               is="true"
+               type="boolean"
+               writeable="false"/>
+
+    <attribute name="info"
+               description="Information about this implementation"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="invalidAuthenticationWhenDeny"
+               description="Send an invalid authentication header instead of deny"
+               type="boolean"/>
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <operation name="isAllowed"
+               description="Tests whether a client with this host name is allowed access by the current valve configuration"
+               impact="INFO"
+               returnType="boolean">
+      <parameter name="hostName"
+          description="host name to be tested"
+                 type="java.lang.String"/>
+    </operation>
+  </mbean>
+
+  <mbean name="RemoteIpValve"
+         description="Valve that sets client information (eg IP address) based on data from a trusted proxy"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.RemoteIpValve">
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="httpServerPort"
+               description="Value returned by ServletRequest.getServerPort() when the protocolHeader indicates http protocol"
+               type="java.lang.String"
+               writeable="false" />
+
+    <attribute name="httpsServerPort"
+               description="Value returned by ServletRequest.getServerPort() when the protocolHeader indicates https protocol"
+               type="java.lang.String"
+               writeable="false" />
+
+    <attribute name="info"
+               description="Information about this implementation"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="internalProxies"
+               description="Regular expression that matches IP addresses of internal proxies"
+               type="java.lang.String"
+               writeable="false" />
+
+    <attribute name="protocolHeader"
+               description="The protocol header (e.g. &quot;X-Forwarded-Proto&quot;)"
+               type="java.lang.String"
+               writeable="false" />
+
+    <attribute name="protocolHeaderHttpsValue"
+               description="The value of the protocol header for incoming https request (e.g. &quot;https&quot;)"
+               type="java.lang.String"
+               writeable="false" />
+
+    <attribute name="proxiesHeader"
+               description="The proxies header name (e.g. &quot;X-Forwarded-By&quot;)"
+               type="java.lang.String"
+               writeable="false" />
+
+    <attribute name="remoteIpHeader"
+               description="The remote IP header name (e.g. &quot;X-Forwarded-For&quot;)"
+               type="java.lang.String"
+               writeable="false" />
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="trustedProxies"
+               description="Regular expression that matches IP addresses of trusted proxies"
+               type="java.lang.String"
+               writeable="false" />
+
+  </mbean>
+
+  <mbean name="StuckThreadDetectionValve"
+         description="Detect long requests for which their thread might be stuck"
+         domain="Catalina"
+         group="Valve"
+         type="org.apache.catalina.valves.StuckThreadDetectionValve">
+
+    <attribute name="asyncSupported"
+               description="Does this valve support async reporting."
+               is="true"
+               type="boolean"/>
+
+    <attribute name="className"
+               description="Fully qualified class name of the managed object"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="info"
+               description="Information about this implementation"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="stateName"
+               description="The name of the LifecycleState that this component is currently in"
+               type="java.lang.String"
+               writeable="false"/>
+
+    <attribute name="stuckThreadCount"
+               description="Count of the threads currently considered stuck"
+               type="int"
+               writeable="false"/>
+
+    <attribute name="stuckThreadIds"
+               description="IDs of the threads currently considered stuck. Each ID can then be used with the Threading MBean to retrieve data about it."
+               type="long[]"
+               writeable="false"/>
+
+    <attribute name="stuckThreadNames"
+               description="Names of the threads currently considered stuck."
+               type="java.lang.String[]"
+               writeable="false"/>
+
+    <attribute name="threshold"
+               description="Duration in seconds after which a request is considered as stuck"
+               type="int"/>
+
+  </mbean>
+</mbeans-descriptors>

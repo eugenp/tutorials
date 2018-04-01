@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="in.codelearn.model">
+ <class name="Employee" table="EMPLOYEE">
+  <id column="EMPLOYEE_ID" name="employeeId">
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="firstname"/>
+  <property column="lastname" generated="never" lazy="false" name="lastname"/>
+  <property column="birth_date" generated="never" lazy="false"
+   name="birthDate" type="date"/>
+  <property column="cell_phone" generated="never" lazy="false" name="cellphone"/>
+  <many-to-one class="in.codelearn.model.Department"
+   insert="false" name="department" not-null="true" update="false">
+   <column name="department_id"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

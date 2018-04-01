@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+    <description>A tag library exercising SimpleTag handlers.</description>
+    <tlib-version>1.0</tlib-version>
+    <short-name>SimpleTagLibrary</short-name>
+    <uri>http://tomcat.apache.org/jsp2-example-taglib</uri>
+    <tag>
+        <description>Outputs Hello, World</description>
+        <name>helloWorld</name>
+        <tag-class>jsp2.examples.simpletag.HelloWorldSimpleTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+    <tag>
+        <description>Repeats the body of the tag 'num' times</description>
+        <name>repeat</name>
+        <tag-class>jsp2.examples.simpletag.RepeatSimpleTag</tag-class>
+        <body-content>scriptless</body-content>
+        <variable>
+            <description>Current invocation count (1 to num)</description>
+            <name-given>count</name-given>
+        </variable>
+        <attribute>
+            <name>num</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Populates the page context with a BookBean</description>
+        <name>findBook</name>
+        <tag-class>jsp2.examples.simpletag.FindBookSimpleTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>var</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    <tag>
+        <description>
+            Takes 3 fragments and invokes them in a random order
+        </description>
+        <name>shuffle</name>
+        <tag-class>jsp2.examples.simpletag.ShuffleSimpleTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>fragment1</name>
+            <required>true</required>
+            <fragment>true</fragment>
+        </attribute>
+        <attribute>
+            <name>fragment2</name>
+            <required>true</required>
+            <fragment>true</fragment>
+        </attribute>
+        <attribute>
+            <name>fragment3</name>
+            <required>true</required>
+            <fragment>true</fragment>
+        </attribute>
+    </tag>
+    <tag>
+        <description>Outputs a colored tile</description>
+        <name>tile</name>
+        <tag-class>jsp2.examples.simpletag.TileSimpleTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>color</name>
+            <required>true</required>
+        </attribute>
+        <attribute>
+            <name>label</name>
+            <required>true</required>
+        </attribute>
+    </tag>
+    <tag>
+        <description>
+          Tag that echoes all its attributes and body content
+        </description>
+        <name>echoAttributes</name>
+        <tag-class>jsp2.examples.simpletag.EchoAttributesTag</tag-class>
+        <body-content>empty</body-content>
+        <dynamic-attributes>true</dynamic-attributes>
+    </tag>
+    <function>
+        <description>Reverses the characters in the given String</description>
+        <name>reverse</name>
+        <function-class>jsp2.examples.el.Functions</function-class>
+        <function-signature>java.lang.String reverse( java.lang.String )</function-signature>
+    </function>
+    <function>
+        <description>Counts the number of vowels (a,e,i,o,u) in the given String</description>
+        <name>countVowels</name>
+        <function-class>jsp2.examples.el.Functions</function-class>
+        <function-signature>java.lang.String numVowels( java.lang.String )</function-signature>
+    </function>
+    <function>
+        <description>Converts the string to all caps</description>
+        <name>caps</name>
+        <function-class>jsp2.examples.el.Functions</function-class>
+        <function-signature>java.lang.String caps( java.lang.String )</function-signature>
+    </function>
+</taglib>
+

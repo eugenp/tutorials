@@ -1,0 +1,38 @@
+<%--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+--%>
+<p>00-${1+1}</p>
+<p>01-\${1+1}</p>
+<p>02-\\${1+1}</p>
+<p>03-\\\${1+1}</p>
+<p>04-\$500</p>
+<p>05-${'\\$'}</p>
+<p>06-${'\\${'}</p>
+<tags:echo echo="10-${1+1}" />
+<tags:echo echo="11-\${1+1}" />
+<tags:echo echo="12-\\${1+1}" />
+<tags:echo echo="13-\\\${1+1}" />
+<tags:echo echo="14-\\\\${1+1}" />
+<tags:echo echo="15-\$500" />
+<tags:echo echo="16-${'\\\\$'}" />
+<tags:echo echo="17-${'\\\\${'}" />
+<tags:echo-deferred echo="20-#{1+1}" />
+<tags:echo-deferred echo="21-\#{1+1}" />
+<tags:echo-deferred echo="22-\\#{1+1}" />
+<tags:echo-deferred echo="23-\\\#{1+1}" />
+<tags:echo-deferred echo="24-\\\\#{1+1}" />
+<tags:echo-deferred echo="25-#{'\\\\#'}" />
+<tags:echo-deferred echo="26-#{'\\\\#{'}" />

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="in.codelearn.model">
+
+	<class name="Employee" table="EMPLOYEE">
+		<id name="employeeId" column="EMPLOYEE_ID">
+			<generator class="native" />
+		</id>
+		<one-to-one name="employeeDetail" class="in.codelearn.model.EmployeeDetail"
+			cascade="save-update"></one-to-one>
+		
+		<property name="firstname" />
+		<property name="lastname" column="lastname" />
+		<property name="birthDate" type="date" column="birth_date" />
+		<property name="cellphone" column="cell_phone" />
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,547 @@
+<?xml version="1.0" ?>
+<FindBugsFilter>
+    <Match class="AUnitExample2">
+        <BugCode name="OS"/>
+        <!--AUnitExample2.exceptionExample() may fail to close stream  At AUnitExample2.java:[line 21]-->
+    </Match>
+    <Match class="BangBean2">
+        <BugCode name="IS2"/>
+        <!--Inconsistent synchronization of BangBean2.fontSize; locked 66% of time  Unsynchronized access at BangBean2.java:[line 74]-->
+        <!--Inconsistent synchronization of BangBean2.tColor; locked 66% of time  Unsynchronized access at BangBean2.java:[line 73]-->
+    </Match>
+    <Match class="Beetle">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Beetle.main(String[])  At Beetle.java:[line 30]-->
+    </Match>
+    <Match class="BerryBrokers$1">
+        <BugCode name="DE"/>
+        <!--BerryBrokers$1.<clinit>() might ignore java.lang.NoSuchFieldError  At Thwonk.java:[line 90]-->
+    </Match>
+    <Match class="BigEgg$Yolk">
+        <BugCode name="SIC"/>
+        <!--Should BigEgg$Yolk be a _static_ inner class?-->
+    </Match>
+    <Match class="Bird">
+        <BugCode name="UuF"/>
+        <!--Unused field: Bird.i-->
+    </Match>
+    <Match class="BlankFinal">
+        <BugCode name="SS"/>
+        <!--Unread field: BlankFinal.i; should this field be static?-->
+    </Match>
+    <Match class="Blip2">
+        <BugCode name="Se"/>
+        <!--Blip2 is Externalizable but doesn't define a void constructor-->
+    </Match>
+    <Match class="ButtonGroups">
+        <BugCode name="REC"/>
+        <!--Method ButtonGroups.makeBPanel(Class,String[]) catches Exception, but Exception is not thrown in the try block and RuntimeException is not explicitly caught  At ButtonGroups.java:[line 29]-->
+    </Match>
+    <Match class="Card">
+        <BugCode name="UrF"/>
+        <!--Unread field: Card.t1-->
+        <!--Unread field: Card.t2-->
+        <!--Unread field: Card.t3-->
+    </Match>
+    <Match class="Cartoon">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Cartoon.main(String[])  At Cartoon.java:[line 16]-->
+    </Match>
+    <Match class="Casting">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Casting.main(String[])  At Casting.java:[line 11]-->
+        <!--Dead store to local variable in method ClassCasting.main(String[])  At ClassCasting.java:[line 7]-->
+    </Match>
+    <Match class="CheckCloneable">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method CheckCloneable.main(String[])  At CheckCloneable.java:[line 81]-->
+    </Match>
+    <Match class="Chef">
+        <BugCode name="UW"/>
+        <!--Unconditional wait in Chef.run()  At Restaurant.java:[line 45]-->
+        <!--(It's not clear to me why this is a problem. I think it's a false positive)-->
+    </Match>
+    <Match class="Chess">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Chess.main(String[])  At Chess.java:[line 24]-->
+    </Match>
+    <Match class="ChocolateChip">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method ChocolateChip.main(String[])  At ChocolateChip.java:[line 10]-->
+    </Match>
+    <Match class="ClassAsFactory">
+        <BugCode name="UrF"/>
+        <!--Unread field: ClassAsFactory.x-->
+    </Match>
+    <Match class="ClassCasting">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method ClassCasting.main(String[])  At ClassCasting.java:[line 7]-->
+    </Match>
+    <Match class="CloseResource">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method CloseResource.main(String[])  At CloseResource.java:[line 12]-->
+    </Match>
+    <Match class="CovariantGenerics">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method CovariantGenerics.main(String[])  At CovariantGenerics.java:[line 11]-->
+    </Match>
+    <Match class="Cupboard">
+        <BugCode name="UrF"/>
+        <!--Unread field: Cupboard.b3-->
+    </Match>
+    <Match class="DefaultConstructor">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method DefaultConstructor.main(String[])  At DefaultConstructor.java:[line 9]-->
+    </Match>
+    <Match class="Dinner">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Dinner.main(String[])  At Dinner.java:[line 7]-->
+    </Match>
+    <Match class="Dinosaur">
+        <BugCode name="UrF"/>
+        <!--Unread field: Dinosaur.i-->
+        <!--Unread field: Dinosaur.x-->
+    </Match>
+    <Match class="Egg">
+        <BugCode name="UrF"/>
+        <!--Unread field: Egg.y-->
+    </Match>
+    <Match class="Egg$Yolk">
+        <BugCode name="SIC"/>
+        <!--Should BigEgg$Yolk be a _static_ inner class?-->
+        <!--Should Egg$Yolk be a _static_ inner class?-->
+    </Match>
+<!-------- Checked to here ------------------------------------------------->
+    <Match class="Equivalence">
+        <BugCode name="RC"/>
+        <!--Suspicious comparison of java.lang.Integer references in Equivalence.main(String[])  At Equivalence.java:[line 7]-->
+    </Match>
+    <Match class="Faces">
+        <BugCode name="UI"/>
+        <!--Usage of GetResource in Faces.<init>() may be unsafe if class is extended  At Faces.java:[line 13]-->
+    </Match>
+    <Match class="FillTest">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method FillTest.main(String[])  At Fill.java:[line 40]-->
+    </Match>
+    <Match class="FinalArguments">
+        <BugCode name="IP"/>
+        <!--A parameter to FinalArguments.without(Gizmo) is dead upon entry but overwritten  At FinalArguments.java:[line 13]-->
+    </Match>
+    <Match class="FinalData">
+        <BugCode name="SS"/>
+        <!--Unread field: FinalData.valueOne; should this field be static?-->
+    </Match>
+    <Match class="FinalData">
+        <BugCode name="UrF"/>
+        <!--Unread field: FinalData.v1-->
+    </Match>
+    <Match class="Foo2">
+        <BugCode name="UrF"/>
+        <!--Unread field: Foo2.x-->
+    </Match>
+    <Match class="GreenhouseControls">
+        <BugCode name="UrF"/>
+        <!--Unread field: GreenhouseControls.light-->
+        <!--Unread field: GreenhouseControls.thermostat-->
+        <!--Unread field: GreenhouseControls.water-->
+    </Match>
+    <Match class="Holder">
+        <BugCode name="EC"/>
+        <!--Call to equals() comparing different types in Holder.main(String[])  At Holder.java:[line 28]-->
+        <!--Call to equals() comparing different types in WildcardRules.f(Holder)  At WildcardRules.java:[line 11]-->
+        <!--Call to equals() comparing different types in WildcardRules.g(Holder)  At WildcardRules.java:[line 17]-->
+    </Match>
+    <Match class="Holder">
+        <BugCode name="HE"/>
+        <!--Holder defines equals and uses Object.hashCode()-->
+    </Match>
+    <Match class="IInterface$Inner">
+        <BugCode name="UuF"/>
+        <!--Unused field: IInterface$Inner.i-->
+        <!--Unused field: IInterface$Inner.k-->
+    </Match>
+    <Match class="InheritInner">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method InheritInner.main(String[])  At InheritInner.java:[line 15]-->
+    </Match>
+    <Match class="InitialValues">
+        <BugCode name="UwF"/>
+        <!--Unwritten field: InitialValues.b-->
+        <!--Unwritten field: InitialValues.c-->
+        <!--Unwritten field: InitialValues.d-->
+        <!--Unwritten field: InitialValues.f-->
+        <!--Unwritten field: InitialValues.i-->
+        <!--Unwritten field: InitialValues.l-->
+        <!--Unwritten field: InitialValues.s-->
+        <!--Unwritten field: InitialValues.t-->
+    </Match>
+    <Match class="InnerRunnable1">
+        <BugCode name="UrF"/>
+        <!--Unread field: InnerRunnable1.inner-->
+    </Match>
+    <Match class="InnerThread1">
+        <BugCode name="UrF"/>
+        <!--Unread field: InnerThread1.inner-->
+    </Match>
+    <Match class="Insect">
+        <BugCode name="UR"/>
+        <!--Uninitialized read of Insect.j in Insect.<init>()  At Beetle.java:[line 9]-->
+    </Match>
+    <Match class="InstantiateGenericType">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method InstantiateGenericType.main(String[])  At InstantiateGenericType.java:[line 19]-->
+        <!--Dead store to local variable in method InstantiateGenericType.main(String[])  At InstantiateGenericType.java:[line 23]-->
+    </Match>
+    <Match class="JUnitDemo">
+        <BugCode name="IJU"/>
+        <!--TestCase JUnitDemo implements setUp but doesn't call super.setUp()  At JUnitDemo.java:[lines 30-31]-->
+        <!--TestCase JUnitDemo implements tearDown but doesn't call super.tearDown()  At JUnitDemo.java:[lines 36-37]-->
+    </Match>
+    <Match class="Joining">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Joining.main(String[])  At Joining.java:[line 47]-->
+        <!--Dead store to local variable in method Joining.main(String[])  At Joining.java:[line 48]-->
+    </Match>
+    <Match class="LibTest">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method LibTest.main(String[])  At LibTest.java:[line 7]-->
+        <!--Dead store to local variable in method LibTest.main(String[])  At LibTest.java:[line 8]-->
+    </Match>
+    <Match class="Literals">
+        <BugCode name="UrF"/>
+        <!--Unread field: Literals.b-->
+        <!--Unread field: Literals.c-->
+        <!--Unread field: Literals.d1-->
+        <!--Unread field: Literals.d2-->
+        <!--Unread field: Literals.d3-->
+        <!--Unread field: Literals.f1-->
+        <!--Unread field: Literals.f2-->
+        <!--Unread field: Literals.f3-->
+        <!--Unread field: Literals.f4-->
+        <!--Unread field: Literals.f5-->
+        <!--Unread field: Literals.i1-->
+        <!--Unread field: Literals.i2-->
+        <!--Unread field: Literals.i3-->
+        <!--Unread field: Literals.n1-->
+        <!--Unread field: Literals.n2-->
+        <!--Unread field: Literals.n3-->
+        <!--Unread field: Literals.s-->
+    </Match>
+    <Match class="LockingMappedFiles">
+        <BugCode name="RV"/>
+        <!--LockingMappedFiles.main(String[]) ignores return value of LockingMappedFiles$LockAndModify.<init>(java.nio.ByteBuffer,int,int)  At LockingMappedFiles.java:[line 19]-->
+        <!--LockingMappedFiles.main(String[]) ignores return value of LockingMappedFiles$LockAndModify.<init>(java.nio.ByteBuffer,int,int)  At LockingMappedFiles.java:[line 20]-->
+    </Match>
+    <Match class="Lunch">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Lunch.test()  At Lunch.java:[line 30]-->
+    </Match>
+    <Match class="MPair">
+        <BugCode name="HE"/>
+        <!--MPair defines equals and uses Object.hashCode()-->
+    </Match>
+    <Match class="MappedIO$4">
+        <BugCode name="OS"/>
+        <!--MappedIO$4.test() may fail to close stream  At MappedIO.java:[line 61]-->
+    </Match>
+    <Match class="Mugs">
+        <BugCode name="UrF"/>
+        <!--Unread field: Mugs.c1-->
+        <!--Unread field: Mugs.c2-->
+    </Match>
+    <Match class="NIOInterruption">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method NIOInterruption.main(String[])  At NIOInterruption.java:[line 31]-->
+    </Match>
+    <Match class="Parcel1">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Parcel1.ship(String)  At Parcel1.java:[line 19]-->
+        <!--Dead store to local variable in method Parcel11.main(String[])  At Parcel11.java:[line 18]-->
+        <!--Dead store to local variable in method Parcel11.main(String[])  At Parcel11.java:[line 19]-->
+    </Match>
+    <Match class="Parcel1$Contents">
+        <BugCode name="SIC"/>
+        <!--Should Parcel1$Contents be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel1$Destination">
+        <BugCode name="SIC"/>
+        <!--Should Parcel1$Destination be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel11">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method Parcel11.main(String[])  At Parcel11.java:[line 18]-->
+        <!--Dead store to local variable in method Parcel11.main(String[])  At Parcel11.java:[line 19]-->
+    </Match>
+    <Match class="Parcel11$Contents">
+        <BugCode name="SIC"/>
+        <!--Should Parcel11$Contents be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel11$Destination">
+        <BugCode name="SIC"/>
+        <!--Should Parcel11$Destination be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel2$Contents">
+        <BugCode name="SIC"/>
+        <!--Should Parcel2$Contents be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel2$Destination">
+        <BugCode name="SIC"/>
+        <!--Should Parcel2$Destination be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel3$PContents">
+        <BugCode name="SIC"/>
+        <!--Should Parcel3$PContents be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel3$PDestination">
+        <BugCode name="SIC"/>
+        <!--Should Parcel3$PDestination be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel4$1PDestination">
+        <BugCode name="SIC"/>
+        <!--Should Parcel4$1PDestination be a _static_ inner class?-->
+    </Match>
+    <Match class="Parcel5$1TrackingSlip">
+        <BugCode name="SIC"/>
+        <!--Should Parcel5$1TrackingSlip be a _static_ inner class?-->
+    </Match>
+    <Match class="PlaceSetting">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method PlaceSetting.main(String[])  At PlaceSetting.java:[line 66]-->
+    </Match>
+    <Match class="PlaceSetting">
+        <BugCode name="UrF"/>
+        <!--Unread field: PlaceSetting.frk-->
+        <!--Unread field: PlaceSetting.kn-->
+        <!--Unread field: PlaceSetting.pl-->
+        <!--Unread field: PlaceSetting.sp-->
+    </Match>
+    <Match class="Pool">
+        <BugCode name="UrF"/>
+        <!--Unread field: Pool.classObject-->
+    </Match>
+    <Match class="Poppet">
+        <BugCode name="UrF"/>
+        <!--Unread field: Poppet.i-->
+    </Match>
+    <Match class="References">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method References.main(String[])  At References.java:[line 45]-->
+        <!--Dead store to local variable in method References.main(String[])  At References.java:[line 47]-->
+    </Match>
+    <Match class="ResponsiveUI">
+        <BugCode name="RV"/>
+        <!--ResponsiveUI.main(String[]) ignores return value of ResponsiveUI.<init>()  At ResponsiveUI.java:[line 27]-->
+    </Match>
+    <Match class="ResponsiveUI">
+        <BugCode name="SC"/>
+        <!--ResponsiveUI.<init>() invokes ResponsiveUI.start()  At ResponsiveUI.java:[line 18]-->
+    </Match>
+    <Match class="ReversibleArrayList$1$1">
+        <BugCode name="It"/>
+        <!--ReversibleArrayList$1$1.next() can't throw NoSuchElement exception  At AdapterMethodIdiom.java:[line 14]-->
+    </Match>
+    <Match class="RobotPool">
+        <BugCode name="Wa"/>
+        <!--Wait not in loop in RobotPool.hire(Class,Assembler)  At CarBuilder.java:[line 168]-->
+    </Match>
+    <Match class="SelfManaged">
+        <BugCode name="SC"/>
+        <!--SelfManaged.<init>() invokes java.lang.Thread.start()  At SelfManaged.java:[line 7]-->
+    </Match>
+    <Match class="SimpleQueue">
+        <BugCode name="RV"/>
+        <!--SimpleQueue.add(Object) ignores return value of java.util.LinkedList.offer(Object)  At SimpleQueue.java:[line 7]-->
+    </Match>
+    <Match class="SimpleThread">
+        <BugCode name="RV"/>
+        <!--SimpleThread.main(String[]) ignores return value of SimpleThread.<init>()  At SimpleThread.java:[line 23]-->
+    </Match>
+    <Match class="SimpleThread">
+        <BugCode name="SC"/>
+        <!--SimpleThread.<init>() invokes SimpleThread.start()  At SimpleThread.java:[line 9]-->
+    </Match>
+    <Match class="SprinklerSystem">
+        <BugCode name="UwF"/>
+        <!--Unwritten field: SprinklerSystem.f-->
+        <!--Unwritten field: SprinklerSystem.i-->
+        <!--Unwritten field: SprinklerSystem.source-->
+        <!--Unwritten field: SprinklerSystem.valve1-->
+        <!--Unwritten field: SprinklerSystem.valve2-->
+        <!--Unwritten field: SprinklerSystem.valve3-->
+        <!--Unwritten field: SprinklerSystem.valve4-->
+    </Match>
+    <Match class="TellerManager">
+        <BugCode name="RV"/>
+        <!--TellerManager.adjustTellerNumber() ignores return value of java.util.PriorityQueue.offer(Object)  At BankTellerSimulation.java:[line 127]-->
+        <!--TellerManager.reassignOneTeller() ignores return value of java.util.Queue.offer(Object)  At BankTellerSimulation.java:[line 150]-->
+    </Match>
+    <Match class="TemperatureReading">
+        <BugCode name="UrF"/>
+        <!--Unread field: TemperatureReading.time-->
+    </Match>
+    <Match class="URShift">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method URShift.main(String[])  At URShift.java:[line 8]-->
+        <!--Dead store to local variable in method URShift.main(String[])  At URShift.java:[line 10]-->
+        <!--Dead store to local variable in method URShift.main(String[])  At URShift.java:[line 12]-->
+    </Match>
+    <Match class="UsingStringBuilder">
+        <BugCode name="MS"/>
+        <!--UsingStringBuilder.rand isn't final but should be-->
+    </Match>
+    <Match class="VeryBig">
+        <BugCode name="UrF"/>
+        <!--Unread field: VeryBig.d-->
+    </Match>
+    <Match class="WaitPerson">
+        <BugCode name="UW"/>
+        <!--Unconditional wait in WaitPerson.run()  At Restaurant.java:[line 22]-->
+    </Match>
+    <Match class="WhitherStringBuilder">
+        <BugCode name="SBSC"/>
+        <!--Method WhitherStringBuilder.implicit(String[]) concatenates strings using + in a loop  At WhitherStringBuilder.java:[line 7]-->
+    </Match>
+    <Match class="WildcardRules">
+        <BugCode name="EC"/>
+        <!--Call to equals() comparing different types in WildcardRules.f(Holder)  At WildcardRules.java:[line 11]-->
+        <!--Call to equals() comparing different types in WildcardRules.g(Holder)  At WildcardRules.java:[line 17]-->
+    </Match>
+    <Match class="Derived">
+        <BugCode name="EC"/>
+    </Match>
+    <Match class="WildcardRules">
+        <BugCode name="RV"/>
+        <!--WildcardRules.f(Holder) ignores return value of Holder.equals(Object)  At WildcardRules.java:[line 11]-->
+        <!--WildcardRules.g(Holder) ignores return value of Holder.equals(Object)  At WildcardRules.java:[line 17]-->
+    </Match>
+    <Match class="annotations.database.Member">
+        <BugCode name="UwF"/>
+        <!--Unwritten field: annotations.database.Member.age-->
+        <!--Unwritten field: annotations.database.Member.firstName-->
+        <!--Unwritten field: annotations.database.Member.handle-->
+        <!--Unwritten field: annotations.database.Member.lastName-->
+    </Match>
+    <Match class="cloning.HorrorFlick">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method cloning.HorrorFlick.main(String[])  At HorrorFlick.java:[line 24]-->
+        <!--Dead store to local variable in method cloning.HorrorFlick.main(String[])  At HorrorFlick.java:[line 25]-->
+    </Match>
+    <Match class="discovering.DocletTestClass">
+        <BugCode name="UuF"/>
+        <!--Unused field: discovering.DocletTestClass.BadCapitalizationField-->
+        <!--Unused field: discovering.DocletTestClass.i-->
+        <!--Unused field: discovering.DocletTestClass$BadInner.BadCapitalizationFieldInner-->
+    </Match>
+    <Match class="discovering.DocletTestClass$BadInner">
+        <BugCode name="UuF"/>
+        <!--Unused field: discovering.DocletTestClass$BadInner.BadCapitalizationFieldInner-->
+    </Match>
+    <Match class="discovering.DocletTestClass$BadInner$badCapitalizationClassInner">
+        <BugCode name="SIC"/>
+        <!--Should discovering.DocletTestClass$BadInner$badCapitalizationClassInner be a _static_ inner class?-->
+    </Match>
+    <Match class="discovering.DocletTestClass$Inner">
+        <BugCode name="SIC"/>
+        <!--Should discovering.DocletTestClass$Inner be a _static_ inner class?-->
+    </Match>
+    <Match class="discovering.DocletTestClass$badCapitalizationClass">
+        <BugCode name="SIC"/>
+        <!--Should discovering.DocletTestClass$badCapitalizationClass be a _static_ inner class?-->
+    </Match>
+    <Match class="holding.MapOfList">
+        <BugCode name="MS"/>
+        <!--holding.MapOfList.petPeople isn't final but should be-->
+    </Match>
+    <Match class="interfaces.nesting.A$BImp">
+        <BugCode name="SIC"/>
+        <!--Should interfaces.nesting.A$BImp be a _static_ inner class?-->
+    </Match>
+    <Match class="interfaces.nesting.A$CImp">
+        <BugCode name="SIC"/>
+        <!--Should interfaces.nesting.A$CImp be a _static_ inner class?-->
+    </Match>
+    <Match class="interfaces.nesting.A$DImp">
+        <BugCode name="SIC"/>
+        <!--Should interfaces.nesting.A$DImp be a _static_ inner class?-->
+    </Match>
+    <Match class="interfaces.nesting.NestingInterfaces$BImp">
+        <BugCode name="SIC"/>
+        <!--Should interfaces.nesting.NestingInterfaces$BImp be a _static_ inner class?-->
+    </Match>
+    <Match class="interfaces.nesting.NestingInterfaces$CImp">
+        <BugCode name="SIC"/>
+        <!--Should interfaces.nesting.NestingInterfaces$CImp be a _static_ inner class?-->
+    </Match>
+    <Match class="interfaces.nesting.NestingInterfaces$EGImp">
+        <BugCode name="SIC"/>
+        <!--Should interfaces.nesting.NestingInterfaces$EGImp be a _static_ inner class?-->
+    </Match>
+    <Match class="interfaces.nesting.NestingInterfaces$EImp">
+        <BugCode name="SIC"/>
+        <!--Should interfaces.nesting.NestingInterfaces$EImp be a _static_ inner class?-->
+        <!--Should interfaces.nesting.NestingInterfaces$EImp2$EG be a _static_ inner class?-->
+    </Match>
+    <Match class="interfaces.nesting.NestingInterfaces$EImp2$EG">
+        <BugCode name="SIC"/>
+        <!--Should interfaces.nesting.NestingInterfaces$EImp2$EG be a _static_ inner class?-->
+    </Match>
+    <Match class="net.mindview.util.AUnit">
+        <BugCode name="SBSC"/>
+        <!--Method net.mindview.util.AUnit.main(String[]) concatenates strings using + in a loop  At unknown source line-->
+    </Match>
+    <Match class="net.mindview.util.AbstractGenerator$Basic">
+        <BugCode name="It"/>
+        <!--net.mindview.util.AbstractGenerator$Basic.next() can't throw NoSuchElement exception  At unknown source line-->
+    </Match>
+    <Match class="net.mindview.util.ClassNameFinder">
+        <BugCode name="DLS"/>
+        <!--Dead store to local variable in method net.mindview.util.ClassNameFinder.thisClass(byte[])  At <Unknown>:[line -1]-->
+    </Match>
+    <Match class="net.mindview.util.ClassNameFinder">
+        <BugCode name="REC"/>
+        <!--Method net.mindview.util.ClassNameFinder.thisClass(byte[]) catches Exception, but Exception is not thrown in the try block and RuntimeException is not explicitly caught  At unknown source line-->
+    </Match>
+    <Match class="net.mindview.util.Collections2">
+        <BugCode name="MS"/>
+        <!--net.mindview.util.Collections2.rsp isn't final but should be-->
+        <!--net.mindview.util.Collections2.simpleStrings isn't final but should be-->
+        <!--net.mindview.util.Collections2.geography isn't final but should be-->
+        <!--net.mindview.util.Collections2.countries isn't final but should be-->
+        <!--net.mindview.util.Collections2.capitals isn't final but should be-->
+    </Match>
+    <Match class="net.mindview.util.Collections2$StringGenerator">
+        <BugCode name="EI2"/>
+        <!--net.mindview.util.Collections2$StringGenerator.<init>(String[][],int) may expose internal representation by storing an externally mutable object into net.mindview.util.Collections2$StringGenerator.d  At unknown source line-->
+    </Match>
+    <Match class="net.mindview.util.Collections2$StringPairGenerator">
+        <BugCode name="EI2"/>
+        <!--net.mindview.util.Collections2$StringPairGenerator.<init>(String[][]) may expose internal representation by storing an externally mutable object into net.mindview.util.Collections2$StringPairGenerator.d  At unknown source line-->
+    </Match>
+    <Match class="net.mindview.util.CountryCapitals">
+        <BugCode name="MS"/>
+        <!--net.mindview.util.CountryCapitals.pairs is a mutable array-->
+    </Match>
+    <Match class="net.mindview.util.OSExecute">
+        <BugCode name="OS"/>
+        <!--net.mindview.util.OSExecute.command(String) may fail to close stream  At <Unknown>:[line -1]-->
+    </Match>
+    <Match class="polymorphism.Sandwich">
+        <BugCode name="UrF"/>
+        <!--Unread field: polymorphism.Sandwich.b-->
+        <!--Unread field: polymorphism.Sandwich.c-->
+        <!--Unread field: polymorphism.Sandwich.l-->
+    </Match>
+    <Match class="polymorphism.music4.Instrument">
+        <BugCode name="UuF"/>
+        <!--Unused field: polymorphism.music4.Instrument.i-->
+    </Match>
+    <Match class="typeinfo.pets.ForNameCreator">
+        <BugCode name="EI"/>
+        <!--typeinfo.pets.ForNameCreator.getTypes() may expose internal representation by returning typeinfo.pets.ForNameCreator.types  At unknown source line-->
+    </Match>
+    <Match class="typeinfo.pets.LiteralPetCreator">
+        <BugCode name="EI"/>
+        <!--typeinfo.pets.LiteralPetCreator.getTypes() may expose internal representation by returning typeinfo.pets.LiteralPetCreator.types  At unknown source line-->
+    </Match>
+</FindBugsFilter>

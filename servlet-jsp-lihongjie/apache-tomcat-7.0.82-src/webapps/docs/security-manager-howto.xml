@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+  <!ENTITY defaultpolicy SYSTEM "../../conf/catalina.policy">
+]>
+<document url="security-manager-howto.html">
+
+    &project;
+
+    <properties>
+        <author email="glenn@voyager.apg.more.net">Glenn Nielsen</author>
+        <author email="jeanfrancois.arcand@sun.com">Jean-Francois Arcand</author>
+        <title>Security Manager HOW-TO</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Background">
+
+  <p>The Java <strong>SecurityManager</strong> is what allows a web browser
+  to run an applet in its own sandbox to prevent untrusted code from
+  accessing files on the local file system, connecting to a host other
+  than the one the applet was loaded from, and so on.  In the same way
+  the SecurityManager protects you from an untrusted applet running in
+  your browser, use of a SecurityManager while running Tomcat can protect
+  your server from trojan servlets, JSPs, JSP beans, and tag libraries.
+  Or even inadvertent mistakes.</p>
+
+  <p>Imagine if someone who is authorized to publish JSPs on your site
+  inadvertently included the following in their JSP:</p>
+<source>
+&lt;% System.exit(1); %&gt;
+</source>
+
+  <p>Every time this JSP was executed by Tomcat, Tomcat would exit.
+  Using the Java SecurityManager is just one more line of defense a
+  system administrator can use to keep the server secure and reliable.</p>
+
+  <p><strong>WARNING</strong> - A security audit
+  have been conducted using the Tomcat codebase. Most of the critical
+  package have been protected and a new security package protection mechanism
+  has been implemented. Still, make sure that you are satisfied with your SecurityManager
+  configuration before allowing untrusted users to publish web applications,
+  JSPs, servlets, beans, or tag libraries.  <strong>However, running with a
+  SecurityManager is definitely better than running without one.</strong></p>
+
+</section>
+
+
+<section name="Permissions">
+
+  <p>Permission classes are used to define what Permissions a class loaded
+  by Tomcat will have.  There are a number of Permission classes that are
+  a standard part of the JDK, and you can create your own Permission class
+  for use in your own web applications.  Both techniques are used in
+  Tomcat.</p>
+
+
+  <subsection name="Standard Permissions">
+
+    <p>This is just a short summary of the standard system SecurityManager
+    Permission classes applicable to Tomcat.  See
+    <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/security/">
+    http://docs.oracle.com/javase/7/docs/technotes/guides/security/</a>
+    for more information.</p>
+
+    <ul>
+    <li><strong>java.util.PropertyPermission</strong> - Controls read/write
+        access to JVM properties such as <code>java.home</code>.</li>
+    <li><strong>java.lang.RuntimePermission</strong> - Controls use of
+        some System/Runtime functions like <code>exit()</code> and
+        <code>exec()</code>. Also control the package access/definition.</li>
+    <li><strong>java.io.FilePermission</strong> - Controls read/write/execute
+        access to files and directories.</li>
+    <li><strong>java.net.SocketPermission</strong> - Controls use of
+        network sockets.</li>
+    <li><strong>java.net.NetPermission</strong> - Controls use of
+        multicast network connections.</li>
+    <li><strong>java.lang.reflect.ReflectPermission</strong> - Controls
+        use of reflection to do class introspection.</li>
+    <li><strong>java.security.SecurityPermission</strong> - Controls access
+        to Security methods.</li>
+    <li><strong>java.security.AllPermission</strong> - Allows access to all
+        permissions, just as if you were running Tomcat without a
+        SecurityManager.</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Tomcat Custom Permissions">
+
+    <p>Tomcat utilizes a custom permission class called
+    <strong>org.apache.naming.JndiPermission</strong>.  This permission
+    controls read access to JNDI named file based resources.  The permission
+    name is the JNDI name and there are no actions.  A trailing "*" can be
+    used to do wild card matching for a JNDI named file resource when
+    granting permission.  For example, you might include the following
+    in your policy file:</p>
+<source>
+permission  org.apache.naming.JndiPermission  "jndi://localhost/examples/*";
+</source>
+
+    <p>A Permission entry like this is generated dynamically for each web
+    application that is deployed, to allow it to read its own static resources
+    but disallow it from using file access to read any other files (unless
+    permissions for those files are explicitly granted).</p>
+
+    <p>Also, Tomcat always dynamically creates the following file permissions:</p>
+<source>
+permission java.io.FilePermission "** your application context**", "read";
+
+permission java.io.FilePermission
+  "** application working directory**", "read,write";
+permission java.io.FilePermission
+  "** application working directory**/-", "read,write,delete";
+</source>
+    <p>Where **your application context** equals the folder (or WAR file) under which
+    your application has been deployed and **application working directory** is the
+    temporary directory provided to your application as required by the
+    Servlet Specification.</p>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Configuring Tomcat With A SecurityManager">
+
+  <h3>Policy File Format</h3>
+
+  <p>The security policies implemented by the Java SecurityManager are
+  configured in the <code>$CATALINA_BASE/conf/catalina.policy</code> file.
+  This file completely replaces the <code>java.policy</code> file present
+  in your JDK system directories.  The <code>catalina.policy</code> file
+  can be edited by hand, or you can use the
+  <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/security/PolicyGuide.html">policytool</a>
+  application that comes with Java 1.2 or later.</p>
+
+  <p>Entries in the <code>catalina.policy</code> file use the standard
+  <code>java.policy</code> file format, as follows:</p>
+<source>
+// Example policy file entry
+
+grant [signedBy &lt;signer&gt;,] [codeBase &lt;code source&gt;] {
+  permission  &lt;class&gt;  [&lt;name&gt; [, &lt;action list&gt;]];
+};
+</source>
+
+  <p>The <strong>signedBy</strong> and <strong>codeBase</strong> entries are
+  optional when granting permissions.  Comment lines begin with "//" and
+  end at the end of the current line.  The <code>codeBase</code> is in the
+  form of a URL, and for a file URL can use the <code>${java.home}</code>
+  and <code>${catalina.home}</code> properties (which are expanded out to
+  the directory paths defined for them by the <code>JAVA_HOME</code>,
+  <code>CATALINA_HOME</code> and <code>CATALINA_BASE</code> environment
+  variables).</p>
+
+  <h3>The Default Policy File</h3>
+
+  <p>The default <code>$CATALINA_BASE/conf/catalina.policy</code> file
+  looks like this:</p>
+
+<!-- The following pulls in the conf/catalina.policy file when the
+ documentation is built -->
+<source>&defaultpolicy;</source>
+
+  <h3>Starting Tomcat With A SecurityManager</h3>
+
+  <p>Once you have configured the <code>catalina.policy</code> file for use
+  with a SecurityManager, Tomcat can be started with a SecurityManager in
+  place by using the "-security" option:</p>
+<source>
+$CATALINA_HOME/bin/catalina.sh start -security    (Unix)
+%CATALINA_HOME%\bin\catalina start -security      (Windows)
+</source>
+
+</section>
+<section name="Configuring Package Protection in Tomcat">
+  <p>Starting with Tomcat 5, it is now possible to configure which Tomcat
+  internal package are protected against package definition and access. See
+  <a href="http://www.oracle.com/technetwork/java/seccodeguide-139067.html">
+    http://www.oracle.com/technetwork/java/seccodeguide-139067.html</a>
+    for more information.</p>
+
+
+  <p><strong>WARNING</strong>: Be aware that removing the default package protection
+  could possibly open a security hole</p>
+
+  <h3>The Default Properties File</h3>
+
+  <p>The default <code>$CATALINA_BASE/conf/catalina.properties</code> file
+  looks like this:</p>
+<source>
+#
+# List of comma-separated packages that start with or equal this string
+# will cause a security exception to be thrown when
+# passed to checkPackageAccess unless the
+# corresponding RuntimePermission ("accessClassInPackage."+package) has
+# been granted.
+package.access=sun.,org.apache.catalina.,org.apache.coyote.,org.apache.tomcat.,
+org.apache.jasper.
+#
+# List of comma-separated packages that start with or equal this string
+# will cause a security exception to be thrown when
+# passed to checkPackageDefinition unless the
+# corresponding RuntimePermission ("defineClassInPackage."+package) has
+# been granted.
+#
+# by default, no packages are restricted for definition, and none of
+# the class loaders supplied with the JDK call checkPackageDefinition.
+#
+package.definition=sun.,java.,org.apache.catalina.,org.apache.coyote.,
+org.apache.tomcat.,org.apache.jasper.
+</source>
+  <p>Once you have configured the <code>catalina.properties</code> file for use
+  with a SecurityManager, remember to re-start Tomcat.</p>
+</section>
+
+<section name="Troubleshooting">
+
+  <p>If your web application attempts to execute an operation that is
+  prohibited by lack of a required Permission, it will throw an
+  <code>AccessControLException</code> or a <code>SecurityException</code>
+  when the SecurityManager detects the violation.  Debugging the permission
+  that is missing can be challenging, and one option is to turn on debug
+  output of all security decisions that are made during execution.  This
+  is done by setting a system property before starting Tomcat.  The easiest
+  way to do this is via the <code>CATALINA_OPTS</code> environment variable.
+  Execute this command:</p>
+<source>
+export CATALINA_OPTS=-Djava.security.debug=all    (Unix)
+set CATALINA_OPTS=-Djava.security.debug=all       (Windows)
+</source>
+
+  <p>before starting Tomcat.</p>
+
+  <p><strong>WARNING</strong> - This will generate <em>many megabytes</em>
+  of output!  However, it can help you track down problems by searching
+  for the word "FAILED" and determining which permission was being checked
+  for.  See the Java security documentation for more options that you can
+  specify here as well.</p>
+
+</section>
+
+
+</body>
+
+</document>

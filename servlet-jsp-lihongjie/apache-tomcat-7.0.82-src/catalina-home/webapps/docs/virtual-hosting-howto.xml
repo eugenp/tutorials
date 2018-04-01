@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="virtual-hosting-howto.html">
+
+    &project;
+
+  <properties>
+    <title>Virtual Hosting and Tomcat</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+  <section name="Assumptions">
+    <p>
+      For the sake of this how-to, assume you have a development host with two
+      host names, <code>ren</code> and <code>stimpy</code>. Let's also assume
+      one instance of Tomcat running, so <code>$CATALINA_HOME</code> refers to
+      wherever it's installed, perhaps <code>/usr/local/tomcat</code>.
+    </p>
+    <p>
+      Also, this how-to uses Unix-style path separators and commands; if you're
+      on Windows modify accordingly.
+    </p>
+  </section>
+
+  <section name="server.xml">
+    <p>
+      At the simplest, edit the <a href="config/engine.html">Engine</a> portion
+      of your <code>server.xml</code> file to look like this:
+    </p>
+    <source>
+&lt;Engine name="Catalina" defaultHost="ren"&gt;
+    &lt;Host name="ren"    appBase="renapps"/&gt;
+    &lt;Host name="stimpy" appBase="stimpyapps"/&gt;
+&lt;/Engine&gt;
+    </source>
+    <p>
+      Note that the directory structures under the appBase for each host should
+      not overlap each other.
+    </p>
+    <p>
+      Consult the configuration documentation for other attributes of the
+      <a href="config/engine.html">Engine</a> and <a href="config/host.html">
+      Host</a> elements.
+    </p>
+  </section>
+
+  <section name="Webapps Directory">
+    <p>
+      Create directories for each of the virtual hosts:
+    </p>
+    <source>
+mkdir $CATALINA_HOME/renapps
+mkdir $CATALINA_HOME/stimpyapps
+    </source>
+  </section>
+
+  <section name="Configuring Your Contexts">
+    <subsection name="General">
+      <p>Contexts are normally located underneath the appBase directory. For
+       example, to deploy the <code>foobar</code> context as a war file in
+       the <code>ren</code> host, use
+       <code>$CATALINA_HOME/renapps/foobar.war</code>. Note that the
+       default or ROOT context for <code>ren</code> would be deployed as
+       <code>$CATALINA_HOME/renapps/ROOT.war</code> (WAR) or
+       <code>$CATALINA_HOME/renapps/ROOT</code> (directory).
+      </p>
+      <p><strong>NOTE: The <code>docBase</code> for a context should never be
+        the same as the <code>appBase</code> for a host.</strong>
+      </p>
+    </subsection>
+    <subsection name="context.xml - approach #1">
+      <p>
+        Within your Context, create a <code>META-INF</code> directory and then
+        place your Context definition in it in a file named
+        <code>context.xml</code>. i.e.
+        <code>$CATALINA_HOME/renapps/ROOT/META-INF/context.xml</code>
+        This makes deployment easier, particularly if you're distributing a WAR
+        file.
+      </p>
+    </subsection>
+    <subsection name="context.xml - approach #2">
+      <p>
+        Create a structure under <code>$CATALINA_HOME/conf/Catalina</code>
+        corresponding to your virtual hosts, e.g.:
+      </p>
+      <source>
+mkdir $CATALINA_HOME/conf/Catalina/ren
+mkdir $CATALINA_HOME/conf/Catalina/stimpy
+      </source>
+      <p>
+        Note that the ending directory name "Catalina" represents the
+        <code>name</code> attribute of the
+        <a href="config/engine.html">Engine</a> element as shown above.
+      </p>
+      <p>
+        Now, for your default webapps, add:
+      </p>
+      <source>
+$CATALINA_HOME/conf/Catalina/ren/ROOT.xml
+$CATALINA_HOME/conf/Catalina/stimpy/ROOT.xml
+      </source>
+      <p>
+        If you want to use the Tomcat manager webapp for each host, you'll also
+        need to add it here:
+      </p>
+      <source>
+cd $CATALINA_HOME/conf/Catalina
+cp localhost/manager.xml ren/
+cp localhost/manager.xml stimpy/
+      </source>
+    </subsection>
+    <subsection name="Further Information">
+      <p>
+        Consult the configuration documentation for other attributes of the
+        <a href="config/context.html">Context</a> element.
+      </p>
+    </subsection>
+  </section>
+</body>
+</document>

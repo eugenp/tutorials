@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean         name="WebappLoader"
+          description="Classloader implementation which is specialized for handling web applications"
+               domain="Catalina"
+                group="Loader"
+                 type="org.apache.catalina.loader.WebappLoader">
+                 
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="delegate"
+          description="The 'follow standard delegation model' flag that will be used to configure our ClassLoader"
+                 type="boolean"/>
+
+    <attribute   name="reloadable"
+          description="The reloadable flag for this Loader"
+                 type="boolean"/>
+
+    <attribute   name="searchExternalFirst"
+          description="The searchExternalFirst flag for this Loader"
+                 type="boolean"/>
+
+    <attribute   name="repositories"
+          description="Extra repositories managed by this loader"
+                 type="[Ljava.lang.String;"/>
+
+    <attribute   name="repositoriesString"
+          description="Extra repositories managed by this loader"
+             writeable="false" 
+                 type="java.lang.String"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="loaderRepositories"
+          description="Repositories set in the real loader"
+                 type="[Ljava.lang.String;"
+            writeable="false" />
+
+    <attribute   name="loaderRepositoriesString"
+          description="Repositories set in the real loader"
+                 type="java.lang.String"
+             writeable="false" />
+
+    <operation   name="toString"
+          description="Info about the loader"
+               impact="INFO"
+           returnType="String">
+    </operation>
+  </mbean>
+
+
+  <mbean         name="VirtualWebappLoader"
+          description="Extension of the webapp class loader with additional features"
+               domain="Catalina"
+                group="Loader"
+                 type="org.apache.catalina.loader.VirtualWebappLoader">
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="delegate"
+          description="The 'follow standard delegation model' flag that will be used to configure our ClassLoader"
+                 type="boolean"/>
+
+    <attribute   name="reloadable"
+          description="The reloadable flag for this Loader"
+                 type="boolean"/>
+
+    <attribute   name="searchVirtualFirst"
+          description="The searchVirtualFirst flag for this Loader"
+                 type="boolean"/>
+
+    <attribute   name="repositories"
+          description="Extra repositories managed by this loader"
+                 type="[Ljava.lang.String;"/>
+
+    <attribute   name="repositoriesString"
+          description="Extra repositories managed by this loader"
+             writeable="false" 
+                 type="java.lang.String"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="loaderRepositories"
+          description="Repositories set in the real loader"
+                 type="[Ljava.lang.String;"
+            writeable="false" />
+
+    <attribute   name="loaderRepositoriesString"
+          description="Repositories set in the real loader"
+                 type="java.lang.String"
+             writeable="false" />
+
+    <operation   name="toString"
+          description="Info about the loader"
+               impact="INFO"
+           returnType="String">
+    </operation>
+  </mbean>
+
+
+  <mbean         name="WebappClassLoader"
+          description="Classloader implementation which is specialized for handling web applications"
+               domain="Catalina"
+                group="Loader"
+                 type="org.apache.catalina.loader.WebappClassLoader">
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="contextName"
+          description="Name of the webapp context"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="delegate"
+          description="The 'follow standard delegation model' flag that will be used to configure our ClassLoader"
+                 type="boolean"/>
+
+    <attribute   name="antiJARLocking"
+          description="The antiJARLocking flag for this Loader"
+                 type="boolean"/>
+
+    <attribute   name="searchExternalFirst"
+          description="The searchExternalFirst flag for this Loader"
+                 type="boolean"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="URLs"
+          description="The URLs of this loader"
+                 type="[Ljava.net.URL;"/>
+
+    <attribute   name="jarPath"
+          description="The jarPath of this loader"
+             writeable="false" 
+                 type="java.lang.String"/>
+
+  </mbean>
+
+  <mbean         name="ParallelWebappClassLoader"
+          description="Classloader implementation which is specialized for handling web applications"
+               domain="Catalina"
+                group="Loader"
+                 type="org.apache.catalina.loader.ParallelWebappClassLoader">
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="contextName"
+          description="Name of the webapp context"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="delegate"
+          description="The 'follow standard delegation model' flag that will be used to configure our ClassLoader"
+                 type="boolean"/>
+
+    <attribute   name="antiJARLocking"
+          description="The antiJARLocking flag for this Loader"
+                 type="boolean"/>
+
+    <attribute   name="searchExternalFirst"
+          description="The searchExternalFirst flag for this Loader"
+                 type="boolean"/>
+
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+                 writeable="false"/>
+
+    <attribute   name="URLs"
+          description="The URLs of this loader"
+                 type="[Ljava.net.URL;"/>
+
+    <attribute   name="jarPath"
+          description="The jarPath of this loader"
+             writeable="false" 
+                 type="java.lang.String"/>
+
+  </mbean>
+
+</mbeans-descriptors>

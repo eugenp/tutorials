@@ -1,0 +1,28 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="CaveatEmptor Integration" verbose="0">
+
+    <!-- Bug in TestNG IDEA plugin! Parameters can't be declared on a <test> level anymore, only here... -->
+    <parameter name="webXmlResource"
+               value="auction/test/web/hibernate-web.xml"/>
+
+    <test name="DBUnit">
+        <groups>
+            <run><include name="integration-hibernate.*"/></run>
+        </groups>
+        <packages>
+            <package name="auction.test.basic"/>
+         </packages>
+    </test>
+
+    <test name="WebFilters">
+        <groups>
+            <run><include name="integration-hibernate.*"/></run>
+        </groups>
+        <packages>
+            <package name="auction.test.web"/>
+         </packages>
+    </test>
+
+</suite>
+

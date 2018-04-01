@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>Billing web system</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/toastr.min.css}"/>
+	<link rel="stylesheet" th:href="@{/css/daterangepicker.css}"/>
+	<link rel="stylesheet" th:href="@{/css/bootstrap-toggle.css}"/>
+	<link rel="stylesheet" th:href="@{/css/common.css}"/>
+</head>
+<body ng-app="app">
+
+<div id="appPage">
+	<ng-view></ng-view>
+</div>
+
+<script th:src="@{/js/lib/jquery-2.min.js}"></script>
+<script th:src="@{/js/lib/jquery.cookie.js}"></script>
+<script th:src="@{/js/lib/jquery.rest.js}"></script>
+<script th:src="@{/js/lib/bootstrap.min.js}"></script>
+<script th:src="@{/js/lib/angular.min.js}"></script>
+<script th:src="@{/js/lib/angular-route.min.js}"></script>
+<script th:src="@{/js/lib/bootbox.min.js}"></script>
+<script th:src="@{/js/lib/toastr.min.js}"></script>
+<script th:src="@{/js/lib/moment.js}"></script>
+<script th:src="@{/js/lib/daterangepicker.js}"></script>
+<script th:src="@{/js/lib/bootstrap-toggle.js}"></script>
+
+<script th:src="@{/js/app.js}"></script>
+<script th:src="@{/js/billingController.js}"></script>
+
+</body>
+</html>

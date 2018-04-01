@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="default-servlet.html">
+
+    &project;
+
+    <properties>
+        <author email="funkman@apache.org">Tim Funk</author>
+        <title>Default Servlet Reference</title>
+    </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section anchor="what" name="What is the DefaultServlet">
+<p>
+The default servlet is the servlet which serves static resources as well
+as serves the directory listings (if directory listings are enabled).
+</p>
+</section>
+
+<section anchor="where" name="Where is it declared?">
+<p>
+It is declared globally in <i>$CATALINA_BASE/conf/web.xml</i>.
+By default here is it's declaration:
+</p>
+<source><![CDATA[    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>
+          org.apache.catalina.servlets.DefaultServlet
+        </servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+        <init-param>
+            <param-name>listings</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+...
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>]]></source>
+
+So by default, the default servlet is loaded at webapp startup and
+directory listings are disabled and debugging is turned off.
+</section>
+
+<section anchor="change" name="What can I change?">
+<p>
+  The DefaultServlet allows the following initParamters:
+</p>
+
+<properties>
+  <property name="debug">
+        Debugging level. It is not very useful unless you are a tomcat
+        developer. As
+        of this writing, useful values are 0, 1, 11, 1000. [0]
+  </property>
+  <property name="listings">
+        If no welcome file is present, can a directory listing be
+        shown?
+        value may be <b>true</b> or <b>false</b> [false]
+        <br />
+        Welcome files are part of the servlet api.
+        <br />
+        <b>WARNING:</b> Listings of directories containing many entries are
+        expensive. Multiple requests for large directory listings can consume
+        significant proportions of server resources.
+  </property>
+  <property name="readmeFile">
+        If a directory listing is presented, a readme file may also
+        be presented with the listing. This file is inserted as is
+        so it may contain HTML.
+  </property>
+  <property name="globalXsltFile">
+        If you wish to customize your directory listing, you
+        can use an XSL transformation. This value is a relative file name (to
+        either $CATALINA_BASE/conf/ or $CATALINA_HOME/conf/) which will be used
+        for all directory listings. This can be overridden per context and/or
+        per directory. See <strong>contextXsltFile</strong> and
+        <strong>localXsltFile</strong> below. The format of the xml is shown
+        below.
+  </property>
+  <property name="contextXsltFile">
+        You may also customize your directory listing by context by
+        configuring <code>contextXsltFile</code>. This must be a context
+        relative path (e.g.: <code>/path/to/context.xslt</code>) to a file with
+        a <code>.xsl</code> or <code>.xslt</code> extension. This overrides
+        <code>globalXsltFile</code>. If this value is present but a file does
+        not exist, then <code>globalXsltFile</code> will be used. If
+        <code>globalXsltFile</code> does not exist, then the default
+        directory listing will be shown.
+  </property>
+  <property name="localXsltFile">
+        You may also customize your directory listing by directory by
+        configuring <code>localXsltFile</code>. This must be a file in the
+        directory where the listing will take place to with a
+        <code>.xsl</code> or <code>.xslt</code> extension. This overrides
+        <code>globalXsltFile</code> and <code>contextXsltFile</code>. If this
+        value is present but a file does not exist, then
+        <code>contextXsltFile</code> will be used. If
+        <code>contextXsltFile</code> does not exist, then
+        <code>globalXsltFile</code> will be used. If
+        <code>globalXsltFile</code> does not exist, then the default
+        directory listing will be shown.
+  </property>
+  <property name="input">
+        Input buffer size (in bytes) when reading
+        resources to be served.  [2048]
+  </property>
+  <property name="output">
+        Output buffer size (in bytes) when writing
+        resources to be served.  [2048]
+  </property>
+  <property name="readonly">
+        Is this context "read only", so HTTP commands like PUT and
+        DELETE are rejected?  [true]
+  </property>
+  <property name="fileEncoding">
+        File encoding to be used when reading static resources.
+        [platform default]
+  </property>
+  <property name="sendfileSize">
+        If the connector used supports sendfile, this represents the minimal
+        file size in KB for which sendfile will be used. Use a negative value
+        to always disable sendfile. [48]
+  </property>
+  <property name="useAcceptRanges">
+        If true, the Accept-Ranges header will be set when appropriate for the
+        response. [true]
+  </property>
+  <property name="showServerInfo">
+        Should server information be presented in the response sent to clients
+        when directory listing is enabled. [true]
+  </property>
+</properties>
+</section>
+
+<section anchor="dir" name="How do I customize directory listings?">
+<p>You can override DefaultServlet with you own implementation and use that
+in your web.xml declaration. If you
+can understand what was just said, we will assume you can read the code
+to DefaultServlet servlet and make the appropriate adjustments. (If not,
+then that method isn't for you)
+</p>
+<p>
+You can use either  <code>localXsltFile</code> or
+<code>globalXsltFile</code> and DefaultServlet will create
+an xml document and run it through an xsl transformation based
+on the values provided in <code>localXsltFile</code> and
+<code>globalXsltFile</code>. <code>localXsltFile</code> is first
+checked, followed by <code>globalXsltFile</code>, then default
+behaviors takes place.
+</p>
+
+<p>
+Format:
+</p>
+<source><![CDATA[    <listing>
+     <entries>
+      <entry type='file|dir' urlPath='aPath' size='###' date='gmt date'>
+        fileName1
+      </entry>
+      <entry type='file|dir' urlPath='aPath' size='###' date='gmt date'>
+        fileName2
+      </entry>
+      ...
+     </entries>
+     <readme></readme>
+    </listing>]]></source>
+<ul>
+  <li>size will be missing if <code>type='dir'</code></li>
+  <li>Readme is a CDATA entry</li>
+</ul>
+
+<p>
+  The following is a sample xsl file which mimics the default tomcat behavior:
+</p>
+<source><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  version="3.0">
+
+  <xsl:output method="html" html-version="5.0"
+    encoding="UTF-8" indent="no"
+    doctype-system="about:legacy-compat"/>
+
+  <xsl:template match="listing">
+   <html>
+    <head>
+      <title>
+        Sample Directory Listing For
+        <xsl:value-of select="@directory"/>
+      </title>
+      <style>
+        h1 {color : white;background-color : #0086b2;}
+        h3 {color : white;background-color : #0086b2;}
+        body {font-family : sans-serif,Arial,Tahoma;
+             color : black;background-color : white;}
+        b {color : white;background-color : #0086b2;}
+        a {color : black;} HR{color : #0086b2;}
+        table td { padding: 5px; }
+      </style>
+    </head>
+    <body>
+      <h1>Sample Directory Listing For
+            <xsl:value-of select="@directory"/>
+      </h1>
+      <hr style="height: 1px;" />
+      <table style="width: 100%;">
+        <tr>
+          <th style="text-align: left;">Filename</th>
+          <th style="text-align: center;">Size</th>
+          <th style="text-align: right;">Last Modified</th>
+        </tr>
+        <xsl:apply-templates select="entries"/>
+        </table>
+      <xsl:apply-templates select="readme"/>
+      <hr style="height: 1px;" />
+      <h3>Apache Tomcat/8.0</h3>
+    </body>
+   </html>
+  </xsl:template>
+
+
+  <xsl:template match="entries">
+    <xsl:apply-templates select="entry"/>
+  </xsl:template>
+
+  <xsl:template match="readme">
+    <hr style="height: 1px;" />
+    <pre><xsl:apply-templates/></pre>
+  </xsl:template>
+
+  <xsl:template match="entry">
+    <tr>
+      <td style="text-align: left;">
+        <xsl:variable name="urlPath" select="@urlPath"/>
+        <a href="{$urlPath}">
+          <pre><xsl:apply-templates/></pre>
+        </a>
+      </td>
+      <td style="text-align: right;">
+        <pre><xsl:value-of select="@size"/></pre>
+      </td>
+      <td style="text-align: right;">
+        <pre><xsl:value-of select="@date"/></pre>
+      </td>
+    </tr>
+  </xsl:template>
+
+</xsl:stylesheet>]]></source>
+
+</section>
+
+<section anchor="secure" name="How do I secure directory listings?">
+Use web.xml in each individual webapp. See the security section of the
+Servlet specification.
+
+</section>
+
+</body>
+
+</document>

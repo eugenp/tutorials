@@ -1,0 +1,5 @@
+<!--<start id="bean_jaxWsExporter"/>--> 
+<bean class=
+  "org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter"
+  p:baseAddress="http://localhost:8888/services/"/>
+<!--<end id="bean_jaxWsExporter"/>--> 

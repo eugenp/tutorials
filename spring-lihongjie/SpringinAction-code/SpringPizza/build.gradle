@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'jetty'
+apply plugin: 'eclipse'
+
+version = '3.0.0'
+
+configurations.compile.transitive = true
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+        [group: 'org.springframework', name: 'spring-web', version: '3.0.5.RELEASE'],
+        [group: 'org.springframework', name: 'spring-webmvc', version: '3.0.5.RELEASE'],
+        [group: 'org.springframework', name: 'spring-aspects', version: '3.0.5.RELEASE'],
+        [group: 'log4j', name: 'log4j', version: '1.2.13'],
+        [group: 'org.springframework.webflow', name: 'spring-webflow', version: '2.2.1.RELEASE'],
+        [group: 'org.springframework.webflow', name: 'spring-binding', version: '2.2.1.RELEASE'],
+        [group: 'org.aspectj', name: 'aspectjweaver', version: '1.6.6'],
+        [group: 'org.tuckey', name: 'urlrewritefilter', version:'3.1.0'],
+	    [group: 'commons-lang', name: 'commons-lang', version: '2.4']
+    )
+    testCompile( 
+        [group: 'junit', name: 'junit', version: '4.7'],
+        [group: 'org.mockito', name: 'mockito-all', version: '1.8.0']
+    )
+}

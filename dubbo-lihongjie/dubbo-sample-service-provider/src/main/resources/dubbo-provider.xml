@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="hello-world-app"/>
+
+    <!-- 使用multicast广播注册中心暴露服务地址
+    <dubbo:registry address="multicast://224.5.6.7:1234"
+            /> -->
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://192.168.31.23:2181" />
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="com.alibaba.dubbo.provider.service.DemoService" ref="demoService"/>
+
+    <!-- 具体的实现bean -->
+    <bean id="demoService" class="com.alibaba.dubbo.provider.service.impl.DemoServiceImpl" />
+
+</beans>

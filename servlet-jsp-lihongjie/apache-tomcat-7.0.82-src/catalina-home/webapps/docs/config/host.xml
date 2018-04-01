@@ -1,0 +1,643 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="host.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig R. McClanahan</author>
+    <author email="remm@apache.org">Remy Maucherat</author>
+    <author email="yoavs@apache.org">Yoav Shapira</author>
+    <title>The Host Container</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>The <strong>Host</strong> element represents a <em>virtual host</em>,
+  which is an association of a network name for a server (such as
+  "www.mycompany.com") with the particular server on which Tomcat is running.
+  For clients to be able to connect to a Tomcat server using its network name,
+  this name must be registered in the <em>Domain Name Service</em> (DNS) server
+  that manages the Internet domain you belong to - contact your Network
+  Administrator for more information.</p>
+
+  <p>In many cases, System Administrators wish to associate more than
+  one network name (such as <code>www.mycompany.com</code> and
+  <code>company.com</code>) with the same virtual host and applications.
+  This can be accomplished using the <a href="#Host_Name_Aliases">Host
+  Name Aliases</a> feature discussed below.</p>
+
+  <p>One or more <strong>Host</strong> elements are nested inside an
+  <a href="engine.html">Engine</a> element.  Inside the Host element, you
+  can nest <a href="context.html">Context</a> elements for the web
+  applications associated with this virtual host.  Exactly one of the Hosts
+  associated with each Engine MUST have a name matching the
+  <code>defaultHost</code> attribute of that Engine.</p>
+
+  <p>Clients normally use host names to identify the server they wish to connect
+  to. This host name is also included in the HTTP request headers. Tomcat
+  extracts the host name from the HTTP headers and looks for a
+  <strong>Host</strong> with a matching name. If no match is found, the request
+  is routed to the default host. The name of the default host does not have to
+  match a DNS name (although it can) since any request where the DNS name does
+  not match the name of a <strong>Host</strong> element will be routed to the
+  default host.</p>
+
+    <p><em>The description below uses the variable name $CATALINA_BASE to refer the
+    base directory against which most relative paths are resolved. If you have
+    not configured Tomcat for multiple instances by setting a CATALINA_BASE
+    directory, then $CATALINA_BASE will be set to the value of $CATALINA_HOME,
+    the directory into which you have installed Tomcat.</em></p>
+
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+    <p>All implementations of <strong>Host</strong>
+    support the following attributes:</p>
+
+    <attributes>
+
+      <attribute name="appBase" required="true">
+        <p>The <em>Application Base</em> directory for this virtual host.
+        This is the pathname of a directory that may contain web applications
+        to be deployed on this virtual host.  You may specify an
+        absolute pathname, or a pathname that is relative to the
+        <code>$CATALINA_BASE</code> directory.  See
+        <a href="#Automatic_Application_Deployment">Automatic Application
+        Deployment</a> for more information on automatic recognition and
+        deployment of web applications. If not specified, the default of
+        <code>webapps</code> will be used.</p>
+      </attribute>
+
+      <attribute name="xmlBase" required="false">
+        <p>The <em>XML Base</em> directory for this virtual host.
+        This is the pathname of a directory that may contain context XML
+        descriptors to be deployed on this virtual host.  You may specify an
+        absolute pathname for this directory, or a pathname that is relative
+        to the <code>$CATALINA_BASE</code> directory.  See
+        <a href="#Automatic_Application_Deployment">Automatic Application
+        Deployment</a> for more information on automatic recognition and
+        deployment of web applications. If not specified the default of
+        <code>conf/&lt;engine_name&gt;/&lt;host_name&gt;</code> will be used.</p>
+      </attribute>
+
+      <attribute name="createDirs" required="false">
+        <p>If set to true, Tomcat will attempt to create the directories defined
+        by the  attributes <code>appBase</code> and <code>xmlBase</code> during
+        the startup phase. The default value is <code>true</code>. If set to
+        true, and directory creation fails, an error message will be printed out
+        but will not halt the startup sequence.</p>
+      </attribute>
+
+      <attribute name="autoDeploy" required="false">
+        <p>This flag value indicates if Tomcat should check periodically for new
+        or updated web applications while Tomcat is running. If true, Tomcat
+        periodically checks the <code>appBase</code> and <code>xmlBase</code>
+        directories and deploys any new web applications or context XML
+        descriptors found. Updated web applications or context XML descriptors
+        will trigger a reload of the web application. The flag's value defaults
+        to true.  See
+        <a href="#Automatic_Application_Deployment">Automatic Application
+        Deployment</a> for more information.</p>
+      </attribute>
+
+      <attribute name="backgroundProcessorDelay" required="false">
+        <p>This value represents the delay in seconds between the
+        invocation of the backgroundProcess method on this host and
+        its child containers, including all contexts.
+        Child containers will not be invoked if their delay value is not
+        negative (which would mean they are using their own processing
+        thread). Setting this to a positive value will cause
+        a thread to be spawn. After waiting the specified amount of time,
+        the thread will invoke the backgroundProcess method on this host
+        and all its child containers. A host will use background processing to
+        perform live web application deployment related tasks. If not
+        specified, the default value for this attribute is -1, which means
+        the host will rely on the background processing thread of its parent
+        engine.</p>
+      </attribute>
+
+      <attribute name="className" required="false">
+        <p>Java class name of the implementation to use.  This class must
+        implement the <code>org.apache.catalina.Host</code> interface.
+        If not specified, the standard value (defined below) will be used.</p>
+      </attribute>
+
+      <attribute name="deployIgnore" required="false">
+        <p>A regular expression defining paths to ignore when
+        <code>autoDeploy</code> and <code>deployOnStartup</code> are set. This
+        allows you to keep your configuration in a version control system, for
+        example, and not deploy a .svn or CVS folder that happens to be in the
+        <code>appBase</code>.</p>
+        <p>This regular expression is relative to <code>appBase</code>. It is
+        also <em>anchored</em>, meaning the match is performed against the
+        entire file/directory name. So, <code>foo</code> matches only a file or
+        directory named <code>foo</code> but not <code>foo.war</code>,
+        <code>foobar</code>, or <code>myfooapp</code>. To match anything with
+        &quot;foo&quot;, you could use <code>.*foo.*</code>.</p>
+        <p>See <a href="#Automatic_Application_Deployment">Automatic Application
+        Deployment</a> for more information.</p>
+      </attribute>
+
+      <attribute name="deployOnStartup" required="false">
+        <p>This flag value indicates if web applications from this host should
+        be automatically deployed when Tomcat starts. The flag's value defaults
+        to true.  See
+        <a href="#Automatic_Application_Deployment">Automatic Application
+        Deployment</a> for more information.</p>
+      </attribute>
+
+      <attribute name="failCtxIfServletStartFails" required="false">
+        <p>Set to <code>true</code> to have each child contexts fail its startup
+        if any of its servlet that has load-on-startup &gt;=0 fails its own
+        startup.</p>
+        <p>Each child context may override this attribute.</p>
+        <p>If not specified, the default value of <code>false</code> is
+        used.</p>
+      </attribute>
+
+      <attribute name="name" required="true">
+        <p>Usually the network name of this virtual host, as registered in your
+        <em>Domain Name Service</em> server. Regardless of the case used to
+        specify the host name, Tomcat will convert it to lower case internally.
+        One of the Hosts nested within an <a href="engine.html">Engine</a> MUST
+        have a name that matches the <code>defaultHost</code> setting for that
+        Engine.  See <a href="#Host_Name_Aliases">Host Name Aliases</a> for
+        information on how to assign more than one network name to the same
+        virtual host.</p>
+      </attribute>
+
+      <attribute name="startStopThreads" required="false">
+        <p>The number of threads this <strong>Host</strong> will use to start
+        child <a href="context.html">Context</a> elements in parallel. The same
+        thread pool will be used to deploy new
+        <a href="context.html">Context</a>s if automatic deployment is being
+        used. The special value of 0 will result in the value of
+        <code>Runtime.getRuntime().availableProcessors()</code> being used.
+        Negative values will result in
+        <code>Runtime.getRuntime().availableProcessors() + value</code> being
+        used unless this is less than 1 in which case 1 thread will be used. If
+        not specified, the default value of 1 will be used.</p>
+      </attribute>
+
+      <attribute name="undeployOldVersions" required="false">
+        <p>This flag determines if Tomcat, as part of the auto deployment
+        process, will check for old, unused versions of web applications
+        deployed using parallel deployment and, if any are found, remove them.
+        This flag only applies if <code>autoDeploy</code> is true. If not
+        specified the default value of false will be used.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+  <subsection name="Standard Implementation">
+
+    <p>The standard implementation of <strong>Host</strong> is
+    <strong>org.apache.catalina.core.StandardHost</strong>.
+    It supports the following additional attributes (in addition to the
+    common attributes listed above):</p>
+
+    <attributes>
+
+      <attribute name="copyXML" required="false">
+        <p>Set to <code>true</code> if you want a context XML descriptor
+        embedded inside the application (located at
+        <code>/META-INF/context.xml</code>) to be copied to <code>xmlBase</code>
+        when the application is deployed. On subsequent starts, the copied
+        context XML descriptor will be used in preference to any context XML
+        descriptor embedded inside the application even if the descriptor
+        embedded inside the application is more recent. The flag's value
+        defaults to <code>false</code>.  Note if <strong>deployXML</strong>
+        is <code>false</code>, this attribute will have no effect.</p>
+      </attribute>
+
+      <attribute name="deployXML" required="false">
+        <p>Set to <code>false</code> if you want to disable parsing the context
+        XML descriptor embedded inside the application (located at
+        <code>/META-INF/context.xml</code>). Security conscious environments
+        should set this to <code>false</code> to prevent applications from
+        interacting with the container's configuration. The  administrator will
+        then be responsible for providing an external context configuration
+        file, and putting it in the location defined by the
+        <strong>xmlBase</strong> attribute. If this flag is <code>false</code>,
+        a descriptor is located at <code>/META-INF/context.xml</code> and no
+        descriptor is present in <strong>xmlBase</strong> then the context will
+        fail to start in case the descriptor contains necessary configuration
+        for secure deployment (such as a RemoteAddrValve) which should not be
+        ignored. The flag's value defaults to <code>true</code> unless a
+        security manager is enabled when the default is <code>false</code>.
+        When running under a security manager this may be enabled on a per web
+        application basis by granting the
+        <code>org.apache.catalina.security.DeployXmlPermission</code> to the web
+        application. The Manager and Host Manager applications are granted this
+        permission by default so that they continue to work when running under a
+        security manager.</p>
+      </attribute>
+
+      <attribute name="errorReportValveClass" required="false">
+        <p>Java class name of the error reporting valve which will be used
+        by this Host. The responsibility of this valve is to output error
+        reports. Setting this property allows to customize the look of the
+        error pages which will be generated by Tomcat. This class must
+        implement the
+        <code>org.apache.catalina.Valve</code> interface. If none is specified,
+        the value <code>org.apache.catalina.valves.ErrorReportValve</code>
+        will be used by default.</p>
+      </attribute>
+
+      <attribute name="unpackWARs" required="false">
+        <p>Set to <code>true</code> if you want web applications that are
+        placed in the <code>appBase</code> directory as web application
+        archive (WAR) files to be unpacked into a corresponding disk directory
+        structure, <code>false</code> to run such web applications directly
+        from a WAR file. WAR files located outside of the Host's
+        <strong>appBase</strong> will not be expanded. See
+        <a href="#Automatic_Application_Deployment">Automatic Application
+        Deployment</a> for more information.</p>
+      </attribute>
+
+      <attribute name="workDir" required="false">
+        <p>Pathname to a scratch directory to be used by applications for
+        this Host. Each application will have its own sub directory with
+        temporary read-write use.  Configuring a Context workDir will override
+        use of the Host workDir configuration.  This directory will be made
+        visible to servlets in the web application by a servlet context
+        attribute (of type <code>java.io.File</code>) named
+        <code>javax.servlet.context.tempdir</code> as described in the
+        Servlet Specification.  If not specified, a suitable directory
+        underneath <code>$CATALINA_BASE/work</code> will be provided.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Nested Components">
+
+  <p>You can nest one or more <a href="context.html">Context</a> elements
+  inside this <strong>Host</strong> element, each representing a different web
+  application associated with this virtual host.</p>
+
+  <p>You can nest at most one instance of the following utility components
+  by nesting a corresponding element inside your <strong>Host</strong>
+  element:</p>
+  <ul>
+  <li><a href="realm.html"><strong>Realm</strong></a> -
+      Configure a realm that will allow its
+      database of users, and their associated roles, to be shared across all
+      <a href="context.html">Contexts</a> nested inside this Host (unless
+      overridden by a <a href="realm.html">Realm</a> configuration
+      at a lower level).</li>
+  </ul>
+
+</section>
+
+
+<section name="Special Features">
+
+
+  <subsection name="Logging">
+
+    <p>A host is associated with the
+       <code>org.apache.catalina.core.ContainerBase.[engine_name].[host_name]</code>
+       log category.  Note that the brackets are part of the name,
+       don't omit them.</p>
+
+  </subsection>
+
+
+  <subsection name="Access Logs">
+
+    <p>When you run a web server, one of the output files normally generated
+    is an <em>access log</em>, which generates one line of information for
+    each request processed by the server, in a standard format.  Catalina
+    includes an optional <a href="valve.html">Valve</a> implementation that
+    can create access logs in the same standard format created by web servers,
+    or in any number of custom formats.</p>
+
+    <p>You can ask Catalina to create an access log for all requests
+    processed by an <a href="engine.html">Engine</a>,
+    <a href="host.html">Host</a>, or <a href="context.html">Context</a>
+    by nesting a <a href="valve.html">Valve</a> element like this:</p>
+
+<source><![CDATA[<Host name="localhost" ...>
+  ...
+  <Valve className="org.apache.catalina.valves.AccessLogValve"
+         prefix="localhost_access_log." suffix=".txt"
+         pattern="common"/>
+  ...
+</Host>]]></source>
+
+    <p>See <a href="valve.html#Access_Logging">Access Logging Valves</a>
+    for more information on the configuration attributes that are
+    supported.</p>
+
+  </subsection>
+
+
+  <subsection name="Automatic Application Deployment">
+
+    <p>If you are using the standard <strong>Host</strong> implementation with
+    default settings then applications in the <em>appBase</em> or with context
+    files in the <em>configBase</em> are automatically deployed when Tomcat
+    starts (the <code>deployOnStartup</code> property defaults to
+    <code>true</code>) and reloaded or redeployed (as appropriate) when a change
+    is detected while Tomcat is running (the <code>autoDeploy</code> attribute
+    also defaults to <code>true</code>).</p>
+
+    <p><code>deployOnStartup</code> and <code>autoDeploy</code> trigger
+    execution of exactly the same code so the behaviour is very similar.
+    However, there is one key difference. When Tomcat starts it has no knowledge
+    of which files are the same, which have been changed and which are new. It
+    therefore treats all files as new. While Tomcat is running, it can
+    differentiate between unchanged, modified and new files. This leads to some
+    differences in behaviour between files being modified while Tomcat is
+    running and files being modified while Tomcat is stopped.</p>
+
+    <p>When you use automatic deployment, related files (a web application may
+    have a context.xml file, a WAR and a directory) that exist in the
+    <strong>Host</strong>&apos;s <em>appBase</em> and/or <em>configBase</em>
+    must conform to the expected <a href="context.html#Naming">naming
+    convention</a>. In short, this means files for the same web application must
+    share the same <em>base name</em>.</p>
+
+    <p>The automatic deployment process identifies new and/or modified web
+    applications using the following search order:</p>
+
+    <ol>
+      <li>Web applications with a context.xml file located in the Host&apos;s
+      <em>configBase</em>.</li>
+      <li>Web applications with a WAR file located in the Host&apos;s
+      <em>appBase</em> that have not already been identified during the scan for
+      context.xml files.</li>
+      <li>Web applications with a directory located in the Host&apos;s
+      <em>appBase</em> that have not already been identified during the scans
+      for context.xml and/or WAR files.</li>
+    </ol>
+
+    <p>When <code>autoDeploy</code> is <code>true</code>, the automatic
+    deployment process will monitor the deployed web applications for changes.
+    Depending on exactly what changes, the web application will either be
+    re-deployed or reloaded. Re-deployment involves the creation of a new web
+    application and, if using the standard session manager, user sessions will
+    not be retained. Reloading uses the existing web application but re-parses
+    the web.xml and reloads any classes. If using the standard session manager,
+    user sessions will be persisted.</p>
+
+    <p>Users may add to the files that the automatic deployment process monitors
+    for reloading (i.e. any change to one of these files triggers a reload of
+    the web application) by adding a <em>WatchedResources</em> element to the
+    context.xml file. See the
+    <a href="context.html#Nested_Components">Context</a> documentation for
+    further details.</p>
+
+    <p>When using automatic deployment, the <code>docBase</code> defined by
+    an XML <a href="context.html">Context</a> file should be outside of the
+    <code>appBase</code> directory. If this is not the case, difficulties
+    may be experienced deploying the web application or the application may
+    be deployed twice. The <code>deployIgnore</code> attribute can be used
+    to avoid this situation.</p>
+
+    <p>Note that if you are defining contexts explicitly in server.xml, you
+    should probably turn off automatic application deployment or specify
+    <code>deployIgnore</code> carefully. Otherwise, the web applications
+    will each be deployed twice, and that may cause problems for the
+    applications.</p>
+
+    <p>There are many possible combinations of settings, new files, changed
+    files and deleted files. A separate page describes the
+    <a href="automatic-deployment.html">expected behaviour of the automatic
+    deployment process</a> in many of these scenarios.</p>
+
+  </subsection>
+
+
+  <subsection name="Host Name Aliases">
+
+    <p>In many server environments, Network Administrators have configured
+    more than one network name (in the <em>Domain Name Service</em> (DNS)
+    server), that resolve to the IP address of the same server.  Normally,
+    each such network name would be configured as a separate
+    <strong>Host</strong> element in <code>conf/server.xml</code>, each
+    with its own set of web applications.</p>
+
+    <p>However, in some circumstances, it is desirable that two or more
+    network names should resolve to the <strong>same</strong> virtual host,
+    running the same set of applications.  A common use case for this
+    scenario is a corporate web site, where it is desirable that users
+    be able to utilize either <code>www.mycompany.com</code> or
+    <code>company.com</code> to access exactly the same content and
+    applications.</p>
+
+    <p>This is accomplished by utilizing one or more <strong>Alias</strong>
+    elements nested inside your <strong>Host</strong> element.  For
+    example:</p>
+<source><![CDATA[<Host name="www.mycompany.com" ...>
+  ...
+  <Alias>mycompany.com</Alias>
+  ...
+</Host>]]></source>
+
+    <p>In order for this strategy to be effective, all of the network names
+    involved must be registered in your DNS server to resolve to the
+    same computer that is running this instance of Catalina.</p>
+
+  </subsection>
+
+
+  <subsection name="Lifecycle Listeners">
+
+    <p>If you have implemented a Java object that needs to know when this
+    <strong>Host</strong> is started or stopped, you can declare it by
+    nesting a <strong>Listener</strong> element inside this element.  The
+    class name you specify must implement the
+    <code>org.apache.catalina.LifecycleListener</code> interface, and
+    it will be notified about the occurrence of the corresponding
+    lifecycle events.  Configuration of such a listener looks like this:</p>
+
+<source><![CDATA[<Host name="localhost" ...>
+  ...
+  <Listener className="com.mycompany.mypackage.MyListener" ... >
+  ...
+</Host>]]></source>
+
+    <p>Note that a Listener can have any number of additional properties
+    that may be configured from this element.  Attribute names are matched
+    to corresponding JavaBean property names using the standard property
+    method naming patterns.</p>
+
+  </subsection>
+
+
+  <subsection name="Request Filters">
+
+    <p>You can ask Catalina to check the IP address, or host name, on every
+    incoming request directed to the surrounding
+    <a href="engine.html">Engine</a>, <a href="host.html">Host</a>, or
+    <a href="context.html">Context</a> element.  The remote address or name
+    will be checked against configured "accept" and/or "deny"
+    filters, which are defined using <code>java.util.regex</code> Regular
+    Expression syntax.  Requests that come from locations that are
+    not accepted will be rejected with an HTTP "Forbidden" error.
+    Example filter declarations:</p>
+
+<source><![CDATA[<Host name="localhost" ...>
+  ...
+  <Valve className="org.apache.catalina.valves.RemoteHostValve"
+         allow=".*\.mycompany\.com|www\.yourcompany\.com"/>
+  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         deny="192\.168\.1\.\d+"/>
+  ...
+</Host>]]></source>
+
+  <p>See <a href="valve.html#Remote_Address_Filter">Remote Address Filter</a>
+  and <a href="valve.html#Remote_Host_Filter">Remote Host Filter</a> for
+  more information about the configuration options that are supported.</p>
+
+  </subsection>
+
+
+  <subsection name="Single Sign On">
+
+    <p>In many environments, but particularly in portal environments, it
+    is desirable to have a user challenged to authenticate themselves only
+    once over a set of web applications deployed on a particular virtual
+    host.  This can be accomplished by nesting an element like this inside
+    the Host element for this virtual host:</p>
+
+<source><![CDATA[<Host name="localhost" ...>
+  ...
+  <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
+  ...
+</Host>]]></source>
+
+    <p>The Single Sign On facility operates according to the following rules:
+    </p>
+    <ul>
+    <li>All web applications configured for this virtual host must share the
+        same <a href="realm.html">Realm</a>.  In practice, that means you can
+        nest the Realm element inside this Host element (or the surrounding
+        <a href="engine.html">Engine</a> element), but not inside a
+        <a href="context.html">Context</a> element for one of the involved
+        web applications.</li>
+    <li>As long as the user accesses only unprotected resources in any of the
+        web applications on this virtual host, they will not be challenged
+        to authenticate themselves.</li>
+    <li>As soon as the user accesses a protected resource in
+        <strong>any</strong> web application associated with this virtual
+        host, the user will be challenged to authenticate himself or herself,
+        using the login method defined for the web application currently
+        being accessed.</li>
+    <li>Once authenticated, the roles associated with this user will be
+        utilized for access control decisions across <strong>all</strong>
+        of the associated web applications, without challenging the user
+        to authenticate themselves to each application individually.</li>
+    <li>As soon as the user logs out of one web application (for example,
+        by invalidating the corresponding session if form
+        based login is used), the user's sessions in <strong>all</strong>
+        web applications will be invalidated.  Any subsequent attempt to
+        access a protected resource in any application will require the
+        user to authenticate himself or herself again.</li>
+    <li>The Single Sign On feature utilizes HTTP cookies to transmit a token
+        that associates each request with the saved user identity, so it can
+        only be utilized in client environments that support cookies.</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="User Web Applications">
+
+    <p>Many web servers can automatically map a request URI starting with
+    a tilde character ("~") and a username to a directory (commonly named
+    <code>public_html</code>) in that user's home directory on the server.
+    You can accomplish the same thing in Catalina by using a special
+    <strong>Listener</strong> element like this (on a Unix system that
+    uses the <code>/etc/passwd</code> file to identify valid users):</p>
+
+<source><![CDATA[<Host name="localhost" ...>
+  ...
+  <Listener className="org.apache.catalina.startup.UserConfig"
+            directoryName="public_html"
+            userClass="org.apache.catalina.startup.PasswdUserDatabase"/>
+  ...
+</Host>]]></source>
+
+    <p>On a server where <code>/etc/passwd</code> is not in use, you can
+    request Catalina to consider all directories found in a specified base
+    directory (such as <code>c:\Homes</code> in this example) to be
+    considered "user home" directories for the purposes of this directive:</p>
+
+<source><![CDATA[<Host name="localhost" ...>
+  ...
+  <Listener className="org.apache.catalina.startup.UserConfig"
+            directoryName="public_html"
+            homeBase="c:\Homes"
+            userClass="org.apache.catalina.startup.HomesUserDatabase"/>
+  ...
+</Host>]]></source>
+
+    <p>If a user home directory has been set up for a user named
+    <code>craigmcc</code>, then its contents will be visible from a
+    client browser by making a request to a URL like:</p>
+
+<source>http://www.mycompany.com:8080/~craigmcc</source>
+
+    <p>Successful use of this feature requires recognition of the following
+    considerations:</p>
+    <ul>
+    <li>Each user web application will be deployed with characteristics
+        established by the global and host level default context settings.</li>
+    <li>It is legal to include more than one instance of this Listener
+        element.  This would only be useful, however, in circumstances
+        where you wanted to configure more than one "homeBase" directory.</li>
+    <li>The operating system username under which Catalina is executed
+        MUST have read access to each user's web application directory,
+        and all of its contents.</li>
+    </ul>
+
+  </subsection>
+
+
+</section>
+
+
+</body>
+
+
+</document>

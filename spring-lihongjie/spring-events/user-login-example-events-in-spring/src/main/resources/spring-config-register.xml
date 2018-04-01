@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       " default-lazy-init="true">
+
+    <context:component-scan base-package="com.github.lihongjie.userlogin.register"/>
+    
+    <!-- 开启@AspectJ AOP代理 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+    <!-- 任务调度器 -->
+    <task:scheduler id="scheduler" pool-size="10"/>
+
+    <!-- 任务执行器 -->
+    <task:executor id="executor" pool-size="10"/>
+
+    <!--开启注解调度支持 @Async @Scheduled-->
+    <task:annotation-driven executor="executor" scheduler="scheduler" proxy-target-class="true"/>
+
+    <!--<task:executor id="executor" pool-size="10" />-->
+    <!--&lt;!&ndash; 名字必须是applicationEventMulticaster和messageSource是一样的，默认找这个名字的对象 &ndash;&gt;-->
+    <!--&lt;!&ndash; 名字必须是applicationEventMulticaster，因为AbstractApplicationContext默认找个 &ndash;&gt;-->
+    <!--&lt;!&ndash; 如果找不到就new一个，但不是异步调用而是同步调用 &ndash;&gt;-->
+    <!--<bean id="applicationEventMulticaster" class="org.springframework.context.event.SimpleApplicationEventMulticaster">-->
+        <!--&lt;!&ndash; 注入任务执行器 这样就实现了异步调用（缺点是全局的，要么全部异步，要么全部同步（删除这个属性即是同步））  &ndash;&gt;-->
+        <!--<property name="taskExecutor" ref="executor"/>-->
+    <!--</bean>-->
+    
+    
+
+</beans>

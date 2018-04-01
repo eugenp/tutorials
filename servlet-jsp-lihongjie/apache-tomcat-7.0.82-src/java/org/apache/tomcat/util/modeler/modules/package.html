@@ -1,0 +1,59 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html>
+<head>
+<title>org.apache.commons.modeler.modules</title>
+</head>
+<body>
+<p>Implementation classes - should not be used directly. The API is not stable
+but eventually the code will be refactored as a collection of mbeans that will be useable 
+( more or less ) independently.</p>
+
+<p>The MbeanDescriptors* classes are used to extract metadata from different sources. They
+are result of few stages of refactoring - now they look very similar with ant tasks and are
+close to normal mbeans, with an execute() method. DOM, SER, Introspection and Dynamic mbean 
+will load metadata from the corresponding sources.
+</p>
+
+<p>MbeansSource will load an extended MLET file, similar with jboss. It is not completely
+implemented - only modeler mbeans and dynamic mbeans are loaded. The important characteristic
+is that all declared mbeans will be registered in the mbean server as model mbeans. For
+regular java classes, the description will be used to construct the model mbean. DynamicMbeans
+metadata will be converted to model mbean and the model mbean wrapper will be loaded.</p>
+
+<p>The goal of MbeansSource is to implement a simple persistence mechanism. Since all components
+are model mbeans, we can detect all changes. The source will be loaded as DOM and modifications
+will be made to the tree. The save() method will save the DOM tree - preserving all comments
+and having only the changes that are needed.</p>
+
+<p>There are few remaining issues. First, we need to use the persistence metadata to avoid
+saving transient fields ( we save an attribute when we detect a change - but we don't know
+if this attribute should be saved ). The solution is to use the persistence fields in the
+spec - with some reasonable defaults or patterns for introspection or backward compat.
+</p>
+
+<p>Another problem is implementing adding and removing components. In catalina, a 
+factory is used to create the components, and save will operate on all mbeans. 
+For creation we need to also use a factory - using the "Type" as a parameter. This
+will also work very well with Ant1.6 where we can use the component factory to 
+do a "natural" mapping ( i.e. mbeans can be treated as tasks, with attributes as
+task attributes ). The second part can be solve by either using a parameter on
+the factory method ( saveTo ? ), or by having a single mbeans source per domain.
+</p>
+
+</body>
+</html>

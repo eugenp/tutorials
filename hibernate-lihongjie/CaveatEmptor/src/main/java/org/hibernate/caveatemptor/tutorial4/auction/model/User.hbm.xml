@@ -1,0 +1,430 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+[
+<!ENTITY % globals SYSTEM "classpath://auction/persistence/globals.dtd">
+%globals;
+]>
+<!--
+
+Mapping file for the User class of CaveatEmptor.
+
+A User is a versioned entity, with some special properties.
+One is the username, it is immutable and unique. The
+defaultBillingDetails property points to one of the
+BillingDetails in the collection of all BillingDetails.
+
+We never load any BillingDetails when a User is retrieved.
+
+SQL customization examples:
+
+- custom SQL for loading a User
+- custom SQL for loading a collection of item on sale for a User
+- custom SQL for inserting a User
+- custom SQL stored procedure for updating a User
+- Hibernate-generated SQL (default) for deleting a User
+- various stored procedures and functions mapped as named queries
+
+Note that the stored procedures and functions have to
+be enabled, and only work on an Oracle DBMS.
+
+@author Christian Bauer
+-->
+<hibernate-mapping package="auction.model" default-access="field">
+
+<class name="User" table="USERS" batch-size="10">
+
+    <!-- Common id property -->
+	<id name="id" type="long" column="USER_ID">
+		<generator class="&idgenerator;"/>
+	</id>
+
+    <!-- A versioned entity -->
+	<version name="version" column="OBJ_VERSION"/>
+
+	<property   name="firstname"
+				type="string"
+				column="FIRSTNAME"
+				length="255"
+				not-null="true"/>
+
+	<property   name="lastname"
+				type="string"
+				column="LASTNAME"
+				length="255"
+				not-null="true"/>
+
+	<!-- We don't change the username, so map it with update="false".
+		 This is an immutable property, it is also unique.
+		 If your DBMS supports regex functions, add this:
+		 check="REGEXP_LIKE(ENAME,'^[[:alpha:]]+$')"
+		 -->
+	<property   name="username"
+				type="string"
+				update="false">
+	    <column name="USERNAME"
+                length="16"
+                not-null="true"
+                unique="true"/>
+	</property>
+
+	<!-- Password is a keyword in some databases, so we quote it. In practice, rename it. -->
+	<property   name="password"
+				type="string"
+				column="`PASSWORD`"
+				length="12"
+				not-null="true"/>
+
+	<property   name="email"
+				type="string"
+				column="EMAIL"
+				length="255"
+				not-null="true"/>
+
+	<property   name="ranking"
+				type="int"
+				column="RANK"
+				not-null="true"/>
+
+	<property   name="admin"
+				type="boolean"
+				column="IS_ADMIN"
+				not-null="true"/>
+
+    <!-- Immutable property -->
+	<property   name="created"
+				column="CREATED"
+				type="timestamp"
+				update="false"
+				not-null="true"/>
+
+	<!-- The default billing strategy, may be null if no BillingDetails exist -->
+	<many-to-one name="defaultBillingDetails"
+				 class="BillingDetails"
+				 column="DEFAULT_BILLING_DETAILS_ID"
+				 not-null="false"
+				 foreign-key="FK_DEFAULT_BILLING_DETAILS_ID"/>
+
+	<!-- Regular component mapping -->
+    <component name="homeAddress" class="Address">
+
+        <property   name="street"
+                    type="string"
+                    column="HOME_STREET"
+                    length="255"/>
+
+        <property   name="zipcode"
+                    type="string"
+                    column="HOME_ZIPCODE"
+                    length="16"/>
+
+        <property   name="city"
+                    type="string"
+                    column="HOME_CITY"
+                    length="255"/>
+    </component>
+
+    <!-- A one-to-one shared primary key entity association -->
+    <one-to-one name="shippingAddress"
+                class="AddressEntity"
+                cascade="save-update"/>
+
+    <!-- This inverse bag is efficient, it avoids initialization when the collection
+         is modified in the constructor of Item. -->
+    <bag name="itemsForSale" inverse="true">
+        <key column="SELLER_ID"/>
+        <one-to-many class="Item"/>
+        <loader query-ref="loadItemsSoldByUser"/> <!-- Custom SQL! -->
+    </bag>
+
+    <!-- Regular inverse one-to-many association with a set -->
+    <set name="billingDetails" cascade="save-update" inverse="true">
+        <key column="USER_ID" not-null="true"/>
+        <one-to-many class="BillingDetails"/>
+    </set>
+
+    <!-- Mapping for the optional one-to-many association to bought items, across a join table -->
+    <set name="boughtItems" table="ITEM_BUYER">
+        <key column="USER_ID" foreign-key="FK_ITEM_BUYER_USER_ID"/>
+        <many-to-many class="Item"
+                      column="ITEM_ID"
+                      unique="true"
+                      foreign-key="FK_ITEM_BUYER_ITEM_ID"/>
+    </set>
+
+    <!-- Example legacy mapping of a component to a separate table. -->
+    <join table="BILLING_ADDRESS" optional="true">
+        <key column="USER_ID" foreign-key="FK_BILLING_ADDRESS"/>
+        <component name="billingAddress" class="Address">
+            <property   name="street"
+                        type="string"
+                        column="STREET"
+                        length="255"/>
+            <property   name="zipcode"
+                        type="string"
+                        column="ZIPCODE"
+                        length="16"/>
+            <property   name="city"
+                        type="string"
+                        column="CITY"
+                        length="255"/>
+        </component>
+
+        <!-- Custom SQL! -->
+        <sql-insert>
+            insert into BILLING_ADDRESS
+                            (STREET, ZIPCODE, CITY, USER_ID)
+            values (?, ?, ?, ?)
+        </sql-insert>
+
+        <!-- Custom SQL (for Oracle only)!
+        <sql-update callable="true">
+            { call UPDATE_BILLING_ADDRESS(?, ?, ?, ?, ?) }
+        </sql-update>
+        -->
+    </join>
+
+    <!-- Custom SQL! -->
+    <loader query-ref="loadUser"/>
+
+    <!-- Custom SQL! -->
+    <sql-insert>
+        insert into USERS (OBJ_VERSION, FIRSTNAME, LASTNAME, USERNAME,
+                           "PASSWORD", EMAIL, RANK, IS_ADMIN,
+                           CREATED, DEFAULT_BILLING_DETAILS_ID,
+                           HOME_STREET, HOME_ZIPCODE, HOME_CITY,
+                           USER_ID)
+        values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    </sql-insert>
+
+    <!-- Custom SQL (for Oracle only)!
+    <sql-update callable="true">
+        { call UPDATE_USER(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) }
+    </sql-update>
+    -->
+
+</class>
+
+<!-- These two queries could also be in a separate file, names are global... -->
+<sql-query name="loadUser">
+    <return alias="u" class="User"/>
+    select
+        us.USER_ID      as {u.id},
+        us.OBJ_VERSION  as {u.version},
+        us.FIRSTNAME    as {u.firstname},
+        us.LASTNAME     as {u.lastname},
+        us.USERNAME     as {u.username},
+        us."PASSWORD"   as {u.password},
+        us.EMAIL        as {u.email},
+        us.RANK         as {u.ranking},
+        us.IS_ADMIN     as {u.admin},
+        us.CREATED      as {u.created},
+        us.HOME_STREET  as {u.homeAddress.street},
+        us.HOME_ZIPCODE as {u.homeAddress.zipcode},
+        us.HOME_CITY    as {u.homeAddress.city},
+        ba.STREET       as {u.billingAddress.street},
+        ba.ZIPCODE      as {u.billingAddress.zipcode},
+        ba.CITY         as {u.billingAddress.city},
+        us.DEFAULT_BILLING_DETAILS_ID as {u.defaultBillingDetails}
+    from
+        USERS us
+    left outer join
+        BILLING_ADDRESS ba
+            on us.USER_ID = ba.USER_ID
+    where
+        us.USER_ID = :id
+</sql-query>
+
+<sql-query name="loadItemsSoldByUser">
+    <load-collection alias="i" role="User.itemsForSale"/>
+    select
+        {i.*}
+    from
+        ITEM i
+    where
+        i.SELLER_ID = ?
+</sql-query>
+
+<!-- Only call the following queries when you run on Oracle9Dialect -->
+<sql-query name="loadUsersByRank" callable="true">
+    <return alias="u" class="User">
+        <return-property name="id"          column="USER_ID"/>
+        <return-property name="version"     column="OBJ_VERSION"/>
+        <return-property name="firstname"   column="FIRSTNAME"/>
+        <return-property name="lastname"    column="LASTNAME"/>
+        <return-property name="username"    column="USERNAME"/>
+        <return-property name="password"    column="PASSWORD"/>
+        <return-property name="email"       column="EMAIL"/>
+        <return-property name="ranking"     column="RANK"/>
+        <return-property name="admin"       column="IS_ADMIN"/>
+        <return-property name="created"     column="CREATED"/>
+        <return-property name="homeAddress">
+            <return-column name="HOME_STREET"/>
+            <return-column name="HOME_ZIPCODE"/>
+            <return-column name="HOME_CITY"/>
+        </return-property>
+        <return-property name="billingAddress">
+            <return-column name="STREET"/>
+            <return-column name="ZIPCODE"/>
+            <return-column name="CITY"/>
+        </return-property>
+        <return-property name="defaultBillingDetails"
+                         column="DEFAULT_BILLING_DETAILS_ID"/>
+   </return>
+   { call SELECT_USERS_BY_RANK(?, :rank) }
+</sql-query>
+
+<sql-query name="loadUsersByRankAuto" callable="true">
+    <return class="User"/>
+   { call SELECT_USERS_BY_RANK(?, :rank) }
+</sql-query>
+
+<!-- TODO: http://opensource2.atlassian.com/projects/hibernate/browse/HHH-1020 -->
+<sql-query name="getUserRank" callable="true">
+    <return-scalar column="RANK" type="integer"/>
+   { ? = call GET_USER_RANK(:userId) }
+</sql-query>
+
+
+<!-- These stored procedures and functions will only be created if you run with Oracle9Dialect -->
+<database-object>
+    <create>
+        create or replace procedure SELECT_USERS_BY_RANK
+        (
+         OUT_RESULT out SYS_REFCURSOR,
+         IN_RANK    in  int
+        ) as
+        begin
+         open OUT_RESULT for
+         select
+             us.USER_ID         as USER_ID,
+             us.OBJ_VERSION     as OBJ_VERSION,
+             us.FIRSTNAME       as FIRSTNAME,
+             us.LASTNAME        as LASTNAME,
+             us.USERNAME        as USERNAME,
+             us.PASSWORD        as PASSWORD,
+             us.EMAIL           as EMAIL,
+             us.RANK            as RANK,
+             us.IS_ADMIN        as IS_ADMIN,
+             us.CREATED         as CREATED,
+             us.HOME_STREET     as HOME_STREET,
+             us.HOME_ZIPCODE    as HOME_ZIPCODE,
+             us.HOME_CITY       as HOME_CITY,
+             ba.STREET          as STREET,
+             ba.ZIPCODE         as ZIPCODE,
+             ba.CITY            as CITY,
+             us.DEFAULT_BILLING_DETAILS_ID as DEFAULT_BILLING_DETAILS_ID
+         from
+             USERS us
+         left outer join
+             BILLING_ADDRESS ba
+                 on us.USER_ID = ba.USER_ID
+
+            where
+                us.RANK >= IN_RANK;
+        end;
+    </create>
+    <drop>
+        drop procedure SELECT_USERS_BY_RANK
+    </drop>
+    <dialect-scope name="org.hibernate.dialect.Oracle9Dialect"/>
+</database-object>
+
+<database-object>
+    <create>
+        create or replace function GET_USER_RANK
+         (IN_USER_ID int)
+        return int is
+         USER_RANK int;
+        begin
+            select
+                RANK
+            into
+                USER_RANK
+            from
+                USERS
+            where
+                USER_ID = IN_USER_ID;
+
+            return USER_RANK;
+        end;
+    </create>
+    <drop>
+        drop function GET_USER_RANK
+    </drop>
+    <dialect-scope name="org.hibernate.dialect.Oracle9Dialect"/>
+</database-object>
+
+<database-object>
+    <create>
+        create or replace procedure UPDATE_USER
+        (
+         OUT_ROWCOUNT                   out number,
+         IN_NEW_VERSION                 in number,
+         IN_FIRSTNAME                   in varchar,
+         IN_LASTNAME                    in varchar,
+         IN_PASSWORD                    in varchar,
+         IN_EMAIL                       in varchar,
+         IN_RANK                        in number,
+         IN_IS_ADMIN                    in number,
+         IN_DEFAULT_BILLING_DETAILS_ID  in number,
+         IN_HOME_STREET                 in varchar,
+         IN_HOME_ZIPCODE                in varchar,
+         IN_HOME_CITY                   in varchar,
+         IN_USER_ID                     in number,
+         IN_OLD_VERSION                 in number
+        ) as
+        begin
+
+            update USERS set
+                VERSION = IN_NEW_VERSION,
+                FIRSTNAME = IN_FIRSTNAME,
+                LASTNAME = IN_LASTNAME,
+                "PASSWORD" = IN_PASSWORD,
+                EMAIL = IN_EMAIL,
+                RANK = IN_RANK,
+                IS_ADMIN = IN_IS_ADMIN,
+                DEFAULT_BILLING_DETAILS_ID = IN_DEFAULT_BILLING_DETAILS_ID,
+                HOME_STREET = IN_HOME_STREET,
+                HOME_ZIPCODE = IN_HOME_ZIPCODE,
+                HOME_CITY = IN_HOME_CITY
+                where
+                    USER_ID = IN_USER_ID
+                and VERSION = IN_OLD_VERSION;
+
+            OUT_ROWCOUNT := sql%rowcount;
+        end;
+    </create>
+    <drop>
+        drop procedure UPDATE_USER
+    </drop>
+    <dialect-scope name="org.hibernate.dialect.Oracle9Dialect"/>
+</database-object>
+
+<database-object>
+    <create>
+        create or replace procedure UPDATE_BILLING_ADDRESS
+        (
+         OUT_ROWCOUNT              out number,
+         IN_STREET                 in varchar2,
+         IN_ZIPCODE                in varchar2,
+         IN_CITY                   in varchar2,
+         IN_USER_ID                in number
+        ) as
+        begin
+            update BILLING_ADDRESS set
+                STREET = IN_STREET,
+                ZIPCODE = IN_ZIPCODE,
+                CITY = IN_CITY
+                where USER_ID = IN_USER_ID;
+
+            OUT_ROWCOUNT := sql%rowcount;
+        end;
+    </create>
+    <drop>
+        drop procedure UPDATE_BILLING_ADDRESS
+    </drop>
+    <dialect-scope name="org.hibernate.dialect.Oracle9Dialect"/>
+</database-object>
+
+</hibernate-mapping>

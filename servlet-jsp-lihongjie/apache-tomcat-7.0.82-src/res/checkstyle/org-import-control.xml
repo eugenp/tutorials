@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE import-control PUBLIC
+    "-//Puppy Crawl//DTD Import Control 1.1//EN"
+    "http://www.puppycrawl.com/dtds/import_control_1_1.dtd">
+
+<import-control pkg="org.apache">
+  <!-- Anything in J2SE is OK but need to list javax by package as not
+       all javax packages are in J2SE -->
+  <allow pkg="java"/>
+  <allow class="javax.imageio.ImageIO"/>
+  <allow pkg="javax.management"/>
+  <allow pkg="javax.naming"/>
+  <allow pkg="javax.net"/>
+  <allow pkg="javax.rmi"/>
+  <allow pkg="javax.security"/>
+  <allow pkg="javax.sql"/>
+  <allow pkg="javax.xml"/>
+  <allow pkg="org.w3c.dom"/>
+  <allow pkg="org.xml.sax"/>
+  <allow pkg="org.ietf.jgss"/>
+  <subpackage name="catalina">
+    <allow pkg="javax.annotation"/>
+    <allow pkg="javax.ejb"/>
+    <allow pkg="javax.persistence"/>
+    <allow pkg="javax.servlet"/>
+    <allow pkg="org.apache.catalina"/>
+    <disallow pkg="org.apache.catalina.ha"/>
+    <disallow pkg="org.apache.catalina.tribes"/>
+    <allow pkg="org.apache.coyote"/>
+    <allow pkg="org.apache.juli"/>
+    <allow pkg="org.apache.naming"/>
+    <allow pkg="org.apache.tomcat"/>
+    <subpackage name="ant">
+      <allow pkg="org.apache.tools.ant"/>
+      <allow class="org.apache.tomcat.util.Base64"/>
+      <disallow pkg="javax.annotation"/>
+      <disallow pkg="javax.ejb"/>
+      <disallow pkg="javax.persistence"/>
+      <disallow pkg="javax.servlet"/>
+      <disallow pkg="org.apache.coyote"/>
+      <disallow pkg="org.apache.juli"/>
+      <disallow pkg="org.apache.naming"/>
+    </subpackage>
+    <subpackage name="ha">
+      <disallow pkg="javax.annotation"/>
+      <disallow pkg="javax.ejb"/>
+      <disallow pkg="javax.persistence"/>
+      <disallow pkg="org.apache.coyote"/>
+      <disallow pkg="org.apache.naming"/>
+      <allow pkg="org.apache.catalina.ha"/>
+      <allow pkg="org.apache.catalina.tribes"/>
+    </subpackage>
+    <subpackage name="tribes">
+      <disallow pkg="javax.annotation"/>
+      <disallow pkg="javax.ejb"/>
+      <disallow pkg="javax.persistence"/>
+      <disallow pkg="javax.servlet"/>
+      <disallow pkg="org.apache.catalina"/>
+      <disallow pkg="org.apache.coyote"/>
+      <disallow pkg="org.apache.naming"/>
+      <disallow pkg="org.apache.tomcat"/>
+      <allow pkg="org.apache.catalina.tribes"/>
+    </subpackage>
+  </subpackage>
+  <subpackage name="coyote">
+    <allow pkg="javax.servlet"/>
+    <allow pkg="org.apache.coyote"/>
+    <allow pkg="org.apache.juli"/>
+    <allow pkg="org.apache.tomcat.jni"/>
+    <allow pkg="org.apache.tomcat.util"/>
+  </subpackage>
+  <subpackage name="el">
+    <allow pkg="javax.el"/>
+    <allow pkg="org.apache.el"/>
+  </subpackage>
+  <subpackage name="jasper">
+    <allow pkg="javax.el"/>
+    <allow pkg="javax.servlet"/>
+    <allow pkg="org.apache.jasper"/>
+    <allow pkg="org.apache.juli"/>
+    <allow pkg="org.apache.tomcat" exact-match="true"/>
+    <allow pkg="org.apache.tomcat.util.descriptor"/>
+    <allow pkg="org.apache.tomcat.util.scan"/>
+    <allow pkg="org.apache.tomcat.util.security"/>
+    <allow pkg="org.apache.tools.ant"/>
+    <allow pkg="org.eclipse.jdt"/>
+  </subpackage>
+  <subpackage name="juli">
+    <allow pkg="org.apache.juli"/>
+  </subpackage>
+  <subpackage name="naming">
+    <allow pkg="javax.mail"/>
+    <allow pkg="javax.wsdl"/>
+    <allow pkg="org.apache.naming"/>
+    <allow class="org.apache.tomcat.util.buf.UDecoder"/>
+    <allow class="org.apache.tomcat.util.buf.UEncoder"/>
+    <allow class="org.apache.tomcat.util.http.FastHttpDateFormat"/>
+    <allow class="org.apache.tomcat.util.http.RequestUtil"/>
+    <subpackage name="factory.webservices">
+    </subpackage>
+  </subpackage>
+  <subpackage name="tomcat">
+    <allow pkg="javax.servlet"/>
+    <subpackage name="buildutil">
+      <allow pkg="org.apache.tools.ant"/>
+    </subpackage>
+    <subpackage name="jni"/>
+    <subpackage name="util">
+      <allow pkg="org.apache.juli"/>
+      <allow pkg="org.apache.tomcat.jni"/>
+      <allow pkg="org.apache.tomcat.util"/>
+      <disallow pkg="org.apache.util.scan"/>
+      <subpackage name="scan">
+        <allow pkg="org.apache.tomcat" exact-match="true"/>
+      </subpackage>
+    </subpackage>
+    <subpackage name="websocket">
+      <allow pkg="javax.websocket"/>
+      <!-- Require to access HTTP Upgrade API -->
+      <allow pkg="org.apache.catalina.connector"/>
+      <!-- The Servlet 3.1 API replacement classes are in this package -->
+      <allow pkg="org.apache.coyote.http11.upgrade"/>
+      <allow pkg="org.apache.juli"/>
+      <allow pkg="org.apache.tomcat"/>
+      <allow pkg="org.apache.tomcat.util"/>
+      <!-- Ideally want to remove this -->
+      <allow pkg="org.apache.tomcat.websocket.pojo"/>
+      <disallow pkg="javax.servlet"/>
+      <subpackage name="pojo">
+        <allow pkg="org.apache.tomcat.websocket"/>
+      </subpackage>
+      <subpackage name="server">
+        <allow pkg="javax.servlet"/>
+        <allow pkg="org.apache.tomcat.websocket"/>
+      </subpackage>
+    </subpackage>
+  </subpackage>
+</import-control>

@@ -1,0 +1,428 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean         name="StandardManager"
+          description="Standard implementation of the Manager interface"
+               domain="Catalina"
+                group="Manager"
+                 type="org.apache.catalina.session.StandardManager">
+                 
+    <attribute   name="activeSessions"
+          description="Number of active sessions at this moment"
+                 type="int" 
+            writeable="false"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="distributable"
+          description="The distributable flag for Sessions created by this
+                       Manager"
+                 type="boolean"/>
+                 
+    <attribute   name="duplicates"
+          description="Number of duplicated session ids generated"
+                 type="int" />
+
+    <attribute   name="expiredSessions"
+          description="Number of sessions that expired ( doesn't include explicit invalidations )"
+                 type="long" />
+                 
+    <attribute   name="jvmRoute"
+          description="Retrieve the JvmRoute for the enclosing Engine"
+                 type="java.lang.String"
+           writeable = "false" />
+                 
+    <attribute   name="maxActive"
+          description="Maximum number of active sessions so far"
+                 type="int" />
+
+    <attribute   name="maxActiveSessions"
+          description="The maximum number of active Sessions allowed, or -1
+                       for no limit"
+                 type="int"/>
+
+    <attribute   name="maxInactiveInterval"
+          description="The default maximum inactive interval for Sessions
+                       created by this Manager"
+                 type="int"/>
+
+    <attribute   name="name"
+          description="The descriptive name of this Manager implementation
+                       (for logging)"
+                 type="java.lang.String"
+            writeable="false"/>
+            
+    <attribute   name="pathname"
+          description="Path name of the disk file in which active sessions"
+                 type="java.lang.String"/>
+
+    <attribute   name="processExpiresFrequency"
+          description="The frequency of the manager checks (expiration and passivation)"
+                 type="int"/>
+
+    <attribute   name="processingTime"
+          description="Time spent doing housekeeping and expiration"
+                 type="long" />
+               
+    <attribute   name="secureRandomAlgorithm"
+          description="The secure random number generator algorithm name"
+                 type="java.lang.String"/>
+
+    <attribute   name="secureRandomClass"
+          description="The secure random number generator class name"
+                 type="java.lang.String"/>
+
+    <attribute   name="secureRandomProvider"
+          description="The secure random number generator provider name"
+                 type="java.lang.String"/>
+
+    <attribute   name="sessionAverageAliveTime"
+          description="Average time an expired session had been alive"
+                 type="int"
+            writeable="false" />
+
+    <attribute   name="sessionCreateRate"
+          description="Session creation rate in sessions per minute"
+                 type="int"
+            writeable="false" />
+
+    <attribute   name="sessionCounter"
+          description="Total number of sessions created by this manager"
+                 type="long" />
+                 
+    <attribute   name="sessionExpireRate"
+          description="Session expiration rate in sessions per minute"
+                 type="int"
+            writeable="false" />
+                 
+    <attribute   name="sessionIdLength"
+          description="The session id length (in bytes) of Sessions
+                       created by this Manager"
+                 type="int"/>
+
+    <attribute   name="sessionMaxAliveTime"
+          description="Longest time an expired session had been alive"
+                 type="int" />
+                 
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="rejectedSessions"
+          description="Number of sessions we rejected due to maxActive being reached"
+                 type="int"
+            writeable="false"/>
+                 
+    <attribute   name="sessionAttributeNameFilter"
+          description="The string pattern used for including session attributes in distribution. Null means all attributes are included."
+                 type="java.lang.String"/>
+
+    <attribute   name="sessionAttributeValueClassNameFilter"
+          description="The regular expression used to filter session attributes based on the implementation class of the value. The regular expression is anchored and must match the fully qualified class name."
+                 type="java.lang.String"/>
+
+    <attribute   name="warnOnSessionAttributeFilterFailure"
+          description="Should a WARN level log message be generated if a session attribute fails to match sessionAttributeNameFilter or sessionAttributeClassNameFilter?"
+                 type="boolean"/>
+
+    <operation   name="backgroundProcess"
+          description="Invalidate all sessions that have expired."
+               impact="ACTION"
+           returnType="void">
+    </operation>
+                 
+    <operation   name="expireSession"
+          description="Expire a session"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="getCreationTime"
+          description="Get the creation time"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="getCreationTimestamp"
+          description="Get the creation timestamp"
+               impact="ACTION"
+           returnType="long">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="getLastAccessedTime"
+          description="Get the last access time"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+
+   <operation   name="getLastAccessedTimestamp"
+          description="Get the last access timestamp"
+               impact="ACTION"
+           returnType="long">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="getSessionAttribute"
+          description="Return a session attribute"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+      <parameter name="key"
+          description="key of the attribute"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="listSessionIds"
+          description="Return the list of active session ids"
+               impact="ACTION"
+           returnType="java.lang.String">
+    </operation>
+
+  </mbean>
+
+  <mbean         name="PersistentManager"
+          description="Persistent Manager"
+               domain="Catalina"
+                group="Manager"
+                 type="org.apache.catalina.session.PersistentManager">
+
+    <attribute   name="activeSessions"
+          description="Number of active sessions at this moment"
+                 type="int" 
+            writeable="false"/>
+
+    <attribute   name="className"
+          description="Fully qualified class name of the managed object"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="distributable"
+          description="The distributable flag for Sessions created by this Manager"
+                 type="boolean"/>
+                 
+    <attribute   name="duplicates"
+          description="Number of duplicated session ids generated"
+                 type="int" />
+
+    <attribute   name="expiredSessions"
+          description="Number of sessions that expired ( doesn't include explicit invalidations )"
+                 type="long" />
+                 
+    <attribute   name="jvmRoute"
+          description="Retrieve the JvmRoute for the enclosing Engine"
+                 type="java.lang.String"
+           writeable = "false" />
+                 
+    <attribute   name="maxActive"
+          description="Maximum number of active sessions so far"
+                 type="int" />
+
+    <attribute   name="maxActiveSessions"
+          description="The maximum number of active Sessions allowed, or -1
+                       for no limit"
+                 type="int"/>
+                 
+    <attribute   name="maxIdleBackup"
+          description="Indicates how many seconds old a session can get, after its last use in a request, before it should be backed up to the store. -1 means sessions are not backed up."
+                 type="int"/>
+                 
+    <attribute   name="maxIdleSwap"
+          description="Indicates how many seconds old a session can get, after its last use in a request, before it should be backed up to the store. -1 means sessions are not backed up."
+                 type="int"/>
+
+    <attribute   name="maxInactiveInterval"
+          description="The default maximum inactive interval for Sessions created by this Manager"
+                 type="int"/>
+                 
+    <attribute   name="minIdleSwap"
+          description=" The minimum time in seconds that a session must be idle before it can be swapped out of memory, or -1 if it can be swapped out at any time."
+                 type="int"/>
+
+    <attribute   name="name"
+          description="The descriptive name of this Manager implementation (for logging)"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="processExpiresFrequency"
+          description="The frequency of the manager checks (expiration and passivation)"
+                 type="int"/>
+
+    <attribute   name="processingTime"
+          description="Time spent doing housekeeping and expiration"
+                 type="long" />
+                 
+    <attribute   name="saveOnRestart"
+          description="Indicates whether sessions are saved when the Manager is shut down properly. This requires the unload() method to be called."
+                 type="boolean" />
+               
+    <attribute   name="secureRandomClass"
+          description="The random number generator class name"
+                 type="java.lang.String"/>
+
+    <attribute   name="sessionAverageAliveTime"
+          description="Average time an expired session had been alive"
+                 type="int"
+            writeable="false" />
+
+    <attribute   name="sessionCreateRate"
+          description="Session creation rate in sessions per minute"
+                 type="int"
+            writeable="false" />
+
+    <attribute   name="sessionCounter"
+          description="Total number of sessions created by this manager"
+                 type="long" />
+                 
+    <attribute   name="sessionExpireRate"
+          description="Session expiration rate in sessions per minute"
+                 type="int"
+            writeable="false" />
+
+    <attribute   name="sessionIdLength"
+          description="The session id length (in bytes) of Sessions
+                       created by this Manager"
+                 type="int"/>
+
+    <attribute   name="sessionMaxAliveTime"
+          description="Longest time an expired session had been alive"
+                 type="int" />
+                 
+    <attribute   name="stateName"
+          description="The name of the LifecycleState that this component is currently in"
+                 type="java.lang.String"
+            writeable="false"/>
+
+    <attribute   name="rejectedSessions"
+          description="Number of sessions we rejected due to maxActive being reached"
+                 type="int"
+            writeable="false"/>
+
+    <attribute   name="sessionAttributeNameFilter"
+          description="The string pattern used for including session attributes in distribution. Null means all attributes are included."
+                 type="java.lang.String"/>
+
+    <attribute   name="sessionAttributeValueClassNameFilter"
+          description="The regular expression used to filter session attributes based on the implementation class of the value. The regular expression is anchored and must match the fully qualified class name."
+                 type="java.lang.String"/>
+
+    <attribute   name="warnOnSessionAttributeFilterFailure"
+          description="Should a WARN level log message be generated if a session attribute fails to match sessionAttributeNameFilter or sessionAttributeClassNameFilter?"
+                 type="boolean"/>
+
+    <operation   name="backgroundProcess"
+          description="Invalidate all sessions that have expired."
+               impact="ACTION"
+           returnType="void">
+    </operation>
+                 
+    <operation   name="expireSession"
+          description="Expire a session"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="getCreationTime"
+          description="Get the creation time"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="getCreationTimestamp"
+          description="Get the creation timestamp"
+               impact="ACTION"
+           returnType="long">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="getLastAccessedTime"
+          description="Get the last access time"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+
+   <operation   name="getLastAccessedTimestamp"
+          description="Get the last access timestamp"
+               impact="ACTION"
+           returnType="long">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="getSessionAttribute"
+          description="Return a session attribute"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+      <parameter name="key"
+          description="key of the attribute"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="listSessionIds"
+          description="Return the list of active session ids"
+               impact="ACTION"
+           returnType="java.lang.String">
+    </operation>
+
+    <operation   name="isLoaded"
+          description="If the session id is loaded in memory?"
+               impact="ACTION"
+           returnType="boolean">
+      <parameter name="sessionId"
+          description="Id of the session"
+                 type="java.lang.String"/>
+    </operation>
+
+  </mbean>
+
+</mbeans-descriptors>

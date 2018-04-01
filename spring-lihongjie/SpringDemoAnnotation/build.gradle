@@ -1,0 +1,10 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+archivesBaseName = 'SpringDemo'
+version = '1' 
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter:1.2.7.RELEASE'
+} 

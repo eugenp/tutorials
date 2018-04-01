@@ -1,0 +1,52 @@
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!--
+  - This example is based off the textRotate.svg example that comes
+  - with Apache Batik.  The original example was written by Bill Haneman.
+  - This version by Mark Roth.
+  -->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="450" height="500" viewBox="0 0 450 500"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:jsp="http://java.sun.com/JSP/Page">
+  <jsp:directive.page contentType="image/svg+xml" />
+  <title>JSP 2.0 JSPX</title>
+  <!-- select name parameter, or default to JSPX -->
+  <c:set var="name" value='${empty fn:escapeXml(param["name"]) ? "JSPX" : fn:escapeXml(param["name"])}'/>
+  <g id="testContent">
+    <text class="title" x="50%" y="10%" font-size="15" text-anchor="middle" >
+            JSP 2.0 XML Syntax (.jspx) Demo</text>
+    <text class="title" x="50%" y="15%" font-size="15" text-anchor="middle" >
+            Try changing the name parameter!</text>
+    <g opacity="1.0" transform="translate(225, 250)" id="rotatedText">
+      <c:forEach var="i" begin="1" end="24">
+        <jsp:text>
+          <![CDATA[<g opacity="0.95" transform="scale(1.05) rotate(15)">]]>
+        </jsp:text>
+        <text x="0" y="0" transform="scale(1.6, 1.6)" fill="DarkSlateBlue"
+              text-anchor="middle" font-size="40" font-family="Serif"
+              id="words">${name}</text>
+      </c:forEach>
+      <c:forEach var="i" begin="1" end="24">
+        <jsp:text><![CDATA[</g>]]></jsp:text>
+      </c:forEach>
+      <text style="font-size:75;font-family:Serif;fill:white"
+            text-anchor="middle">${name}</text>
+    </g>
+  </g>
+</svg>

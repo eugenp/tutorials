@@ -1,0 +1,66 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.akhikhl.gretty'
+
+// JDK 7
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+configurations.all {
+   exclude group: "commons-logging", module: "commons-logging"
+}
+   
+dependencies {
+ 
+ 	compile 'org.slf4j:jcl-over-slf4j:1.7.12'
+	compile 'ch.qos.logback:logback-classic:1.1.3'
+	compile 'org.springframework:spring-webmvc:4.1.6.RELEASE'
+	compile 'javax.servlet:jstl:1.2'
+	providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+}
+
+//Gretty
+buildscript {
+  repositories {
+    jcenter()
+  }
+
+  dependencies {
+    classpath 'org.akhikhl.gretty:gretty:+'
+  }
+}
+
+gretty {
+  port = 8080
+  contextPath = 'spring-mvc-logback'
+  servletContainer = 'jetty9'
+}
+
+// Fixed : Eclipse unable to attach source code
+eclipse.classpath.file {
+    withXml { xml ->
+        def node = xml.asNode()
+        node.remove( node.find { it.@path == 'org.eclipse.jst.j2ee.internal.web.container' } )
+        node.appendNode( 'classpathentry', [ kind: 'con', path: 'org.eclipse.jst.j2ee.internal.web.container', exported: 'true'])
+    }
+}
+
+//For Eclipse IDE only
+eclipse {
+
+  wtp {
+    component {
+      
+      //define context path, default to project folder name
+      contextPath = 'spring-mvc-logback'
+      
+    }
+    
+  }
+}
+

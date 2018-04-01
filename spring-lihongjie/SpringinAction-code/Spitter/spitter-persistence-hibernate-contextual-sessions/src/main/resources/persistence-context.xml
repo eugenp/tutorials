@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+ <!--<start id="bean_sessionFactory" />--> 
+ <bean id="sessionFactory"
+  class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+  <property name="dataSource" ref="dataSource" />
+  <property name="packagesToScan" 
+      value="com.habuma.spitter.domain" />  
+  <property name="hibernateProperties">
+   <props>
+    <prop key="dialect">org.hibernate.dialect.HSQLDialect</prop>
+   </props>
+  </property>
+ </bean>
+ <!--<end id="bean_sessionFactory" />-->
+
+
+<!-- 
+<start id="property_packagesToScan_asList" />    
+<property name="packagesToScan">
+    <list>
+        <value>com.habuma.spitter.domain</value>
+    </list>
+</property>
+    <end id="property_packagesToScan_asList" />
+-->
+
+<!-- 
+<start id="bean_sessionFactory_withAnnotatedClasses" />    
+<property name="annotatedClasses">
+    <list>
+        <value>com.habuma.spitter.domain.Spitter</value>
+        <value>com.habuma.spitter.domain.Spittle</value>
+   </list>
+</property>  
+    <end id="bean_sessionFactory_withAnnotatedClasses" />
+-->
+
+ <!--<start id="bean_exception_translation_post_processor" />--> 
+<bean class=
+  "org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+ <!--<end id="bean_exception_translation_post_processor" />-->
+
+ <!--<start id="bean_component_scan" />--> 
+ <context:component-scan 
+     base-package="com.habuma.spitter.persistence" />
+ <!--<end id="bean_component_scan" /> -->
+</beans>

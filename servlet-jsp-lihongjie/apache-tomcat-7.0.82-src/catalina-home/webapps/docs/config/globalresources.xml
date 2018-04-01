@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="globalresources.html">
+
+  &project;
+
+  <properties>
+    <author email="remm@apache.org">Remy Maucherat</author>
+    <author email="yoavs@apache.org">Yoav Shapira</author>
+    <title>The GlobalNamingResources Component</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+
+  <p>The <strong>GlobalNamingResources</strong> element defines the global
+  JNDI resources for the <a href="server.html">Server</a>.</p>
+
+  <p>These resources are listed in the server's global JNDI resource context.
+   This context is distinct from the per-web-application JNDI contexts
+  described in
+  the <a href="../jndi-resources-howto.html">JNDI Resources HOW-TO</a>.
+  The resources defined in this element are <strong>not</strong> visible in
+  the per-web-application contexts unless you explicitly link them with
+  <a href="context.html#Resource_Links">&lt;ResourceLink&gt;</a> elements.
+  </p>
+
+</section>
+
+
+<section name="Attributes">
+
+</section>
+
+
+<section name="Nested Components">
+
+</section>
+
+
+<section name="Special Features">
+
+
+  <subsection name="Environment Entries">
+
+  <p>You can configure named values that will be made visible to all
+    web applications as environment entry resources by nesting
+    <code>&lt;Environment&gt;</code> entries inside this element. For
+    example, you can create an environment entry like this:</p>
+<source><![CDATA[<GlobalNamingResources ...>
+  ...
+  <Environment name="maxExemptions" value="10"
+         type="java.lang.Integer" override="false"/>
+  ...
+</GlobalNamingResources>]]></source>
+
+    <p>This is equivalent to the inclusion of the following element in the
+    web application deployment descriptor (<code>/WEB-INF/web.xml</code>):
+    </p>
+<source><![CDATA[<env-entry>
+  <env-entry-name>maxExemptions</env-entry-name>
+  <env-entry-value>10</env-entry-value>
+  <env-entry-type>java.lang.Integer</env-entry-type>
+</env-entry>]]></source>
+    <p>but does <em>not</em> require modification of the deployment descriptor
+    to customize this value.</p>
+
+    <p>The valid attributes for an <code>&lt;Environment&gt;</code> element
+    are as follows:</p>
+
+    <attributes>
+
+      <attribute name="description" required="false">
+        <p>Optional, human-readable description of this environment entry.</p>
+      </attribute>
+
+      <attribute name="name" required="true">
+        <p>The name of the environment entry to be created, relative to the
+        <code>java:comp/env</code> context.</p>
+      </attribute>
+
+      <attribute name="override" required="false">
+        <p>Set this to <code>false</code> if you do <strong>not</strong> want
+        an <code>&lt;env-entry&gt;</code> for the same environment entry name,
+        found in the web application deployment descriptor, to override the
+        value specified here.  By default, overrides are allowed.</p>
+      </attribute>
+
+      <attribute name="type" required="true">
+        <p>The fully qualified Java class name expected by the web application
+        for this environment entry.  Must be a legal value for
+        <code>&lt;env-entry-type&gt;</code> in the web application deployment
+        descriptor.</p>
+      </attribute>
+
+      <attribute name="value" required="true">
+        <p>The parameter value that will be presented to the application
+        when requested from the JNDI context.  This value must be convertable
+        to the Java type defined by the <code>type</code> attribute.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+
+  <subsection name="Resource Definitions">
+
+    <p>You can declare the characteristics of resources
+    to be returned for JNDI lookups of <code>&lt;resource-ref&gt;</code> and
+    <code>&lt;resource-env-ref&gt;</code> elements in the web application
+    deployment descriptor by defining them in this element and then linking
+    them with <a href="context.html#Resource_Links">&lt;ResourceLink&gt;</a>
+    elements
+    in the <code><strong>&lt;Context&gt;</strong></code> element.
+
+    You <strong>MUST</strong> also define any other needed parameters using
+    attributes on the Resource element, to configure
+    the object factory to be used (if not known to Tomcat already), and
+    the properties used to configure that object factory.</p>
+
+    <p>For example, you can create a resource definition like this:</p>
+<source><![CDATA[<GlobalNamingResources ...>
+  ...
+  <Resource name="jdbc/EmployeeDB" auth="Container"
+            type="javax.sql.DataSource"
+     description="Employees Database for HR Applications"/>
+  ...
+</GlobalNamingResources>]]></source>
+
+    <p>This is equivalent to the inclusion of the following element in the
+    web application deployment descriptor (<code>/WEB-INF/web.xml</code>):</p>
+<source><![CDATA[<resource-ref>
+  <description>Employees Database for HR Applications</description>
+  <res-ref-name>jdbc/EmployeeDB</res-ref-name>
+  <res-ref-type>javax.sql.DataSource</res-ref-type>
+  <res-auth>Container</res-auth>
+</resource-ref>]]></source>
+
+    <p>but does <em>not</em> require modification of the deployment
+    descriptor to customize this value.</p>
+
+    <p>The valid attributes for a <code>&lt;Resource&gt;</code> element
+    are as follows:</p>
+
+    <attributes>
+
+      <attribute name="auth" required="false">
+        <p>Specify whether the web Application code signs on to the
+        corresponding resource manager programmatically, or whether the
+        Container will sign on to the resource manager on behalf of the
+        application.  The value of this attribute must be
+        <code>Application</code> or <code>Container</code>.  This
+        attribute is <strong>required</strong> if the web application
+        will use a <code>&lt;resource-ref&gt;</code> element in the web
+        application deployment descriptor, but is optional if the
+        application uses a <code>&lt;resource-env-ref&gt;</code> instead.</p>
+      </attribute>
+
+      <attribute name="closeMethod" required="false">
+        <p>Name of the zero-argument method to call on a singleton resource when
+        it is no longer required. This is intended to speed up clean-up of
+        resources that would otherwise happen as part of garbage collection.
+        This attribute is ignored if the <code>singleton</code> attribute is
+        false. If not specified, no default is defined and no close method will
+        be called.</p>
+        <p>For Apache Commons DBCP and Apache Tomcat JDBC connection pools
+        you can use <code>closeMethod="close"</code>.</p>
+      </attribute>
+
+      <attribute name="description" required="false">
+        <p>Optional, human-readable description of this resource.</p>
+      </attribute>
+
+      <attribute name="name" required="true">
+        <p>The name of the resource to be created, relative to the
+        <code>java:comp/env</code> context.</p>
+      </attribute>
+
+      <attribute name="scope" required="false">
+        <p>Specify whether connections obtained through this resource
+        manager can be shared.  The value of this attribute must be
+        <code>Shareable</code> or <code>Unshareable</code>.  By default,
+        connections are assumed to be shareable.</p>
+      </attribute>
+
+      <attribute name="singleton" required="false">
+        <p>Specify whether this resource definition is for a singleton resource,
+        i.e. one where there is only a single instance of the resource. If this
+        attribute is <code>true</code>, multiple JNDI lookups for this resource
+        will return the same object. If this attribute is <code>false</code>,
+        multiple JNDI lookups for this resource will return different objects.
+        This attribute must be <code>true</code> for
+        <code>javax.sql.DataSource</code> resources to enable JMX registration
+        of the DataSource. The value of this attribute must be <code>true</code>
+        or <code>false</code>. By default, this attribute is <code>true</code>.
+        </p>
+      </attribute>
+
+      <attribute name="type" required="true">
+        <p>The fully qualified Java class name expected by the web
+        application when it performs a lookup for this resource.</p>
+      </attribute>
+
+    </attributes>
+
+
+  </subsection>
+
+  <subsection name="Resource Links">
+    <p>Use <a href="context.html#Resource_Links"><code>&lt;ResourceLink&gt;</code></a>
+    elements to link resources from the global context into
+    per-web-application contexts. Here is an example of making a custom
+    factory available to an application, based on the example definition in the
+    <a href="../jndi-resources-howto.html#Generic_JavaBean_Resources">
+    JNDI Resource HOW-TO</a>:
+    </p>
+
+    <source><![CDATA[<Context>
+  <ResourceLink
+    name="bean/MyBeanFactory"
+    global="bean/MyBeanFactory"
+    type="com.mycompany.MyBean"
+  />
+</Context>]]></source>
+
+   </subsection>
+
+  <subsection name="Transaction">
+
+    <p>You can declare the characteristics of the UserTransaction
+    to be returned for JNDI lookup for <code>java:comp/UserTransaction</code>.
+    You <strong>MUST</strong> define an object factory class to instantiate
+    this object as well as the needed resource parameters as attributes of the
+    <code>Transaction</code>
+    element, and the properties used to configure that object factory.</p>
+
+    <p>The valid attributes for the <code>&lt;Transaction&gt;</code> element
+    are as follows:</p>
+
+    <attributes>
+
+      <attribute name="factory" required="true">
+        <p>The class name for the JNDI object factory.</p>
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+</section>
+
+
+</body>
+
+
+</document>

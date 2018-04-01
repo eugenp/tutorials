@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+html,body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden !important;
+    position: fixed;
+}
+body {
+    background: #fff;
+}
+.navbar-custom {
+    border-radius: 0;
+    border: none;
+    background: #48CFAD;
+    box-shadow: 0px 1px 2px 0px #BEC0C2;
+    margin-bottom: 0;
+    width: 100%;
+    z-index: 1030;
+}
+.navbar-brand {
+    color: white !important;
+}
+.nav>li>.avater {
+    position: relative;
+    display: block;
+    padding: 7px 17px;
+    border-left: 1px solid #37BC9B;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #eee;
+    border-color: #BEC0C2;
+}
+.btn-green {
+    background: #48CFAD;
+    border-color: #37BC9B;
+    padding: 6px 24px;
+    color: white;
+}
+.btn-green:hover, .btn-green:active, .btn-green:focus, .btn-green.active.focus, .btn-green.active:focus, .btn-green.active:hover, .btn-green:active.focus, .btn-green:active:focus, .btn-green:active:hover {
+    color: white;
+    background-color: #37BC9B;
+    border-color: #37BC9B;
+}
+.btn-gray:hover, .btn-gray:active, .btn-gray:focus, .btn-gray.active.focus, .btn-gray.active:focus, .btn-gray.active:hover, .btn-gray:active.focus, .btn-gray:active:focus, .btn-gray:active:hover {
+    color: white;
+    background-color: #37BC9B;
+    border-color: #37BC9B;
+}
+.sub-nav {
+    text-align: right;
+}
+#search-input {
+    display: inline-block;
+    height: 35px;
+    width: 50%;
+}
+.data-table {
+    margin-top: 10px;
+}
+.table {
+    background: white;
+    border: 1px solid #BEC0C2;
+}
+.table>thead>tr>th {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #999;
+    border: none;
+    padding: 0 15px !important;
+}
+.table>tbody>tr {
+    border: 1px solid #BEC0C2;
+}
+.table>tbody>tr>td, .table>tbody>tr>th {
+    height: 40px;
+    font-size: 12px;
+    line-height: 40px;
+    border: none;
+    padding: 0 15px !important;
+
+}
+.td-btn {
+    border-left: 1px solid #BEC0C2 !important;
+    width: 60px;
+}
+.btn-table {
+    margin: 0 -15px !important;
+    display: block;
+    font-size: 16px;
+    color: #BEC0C2;
+}
+.btn-table:hover, .btn-table:active, .btn-table:focus, .btn-table.active.focus, .btn-table.active:focus, .btn-table.active:hover, .btn-table:active.focus, .btn-table:active:focus, .btn-table:active:hover {
+    color: #48CFAD;
+    transition: ease-in-out 0.2s;
+}
+.paginations {
+    margin-top: -20px;
+}
+.pagination-text {
+    color: #37BC9B;
+    margin: 20px 0;
+    line-height: 34px;
+}
+.pagination>li>a {
+    color: #37BC9B;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    background: #48CFAD;
+    border-color: #37BC9B;
+}
+.modal-body {
+    font-size: 12px;
+}
+.form-control {
+    box-shadow: none !important;
+    transition: none !important;
+}
+.form-control[readonly] {
+    background: white;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #eee;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.card-header {
+    border-bottom: 1px solid #eee;
+    margin: -10px 0 10px;
+}
+.card-header::after {
+    display: table;
+    clear: both;
+    content: "";
+}
+.card {
+    margin: 0 auto;
+    max-width: 620px;
+    text-align: left;
+    background: white;
+    box-shadow: 0px 1px 2px 0px #BEC0C2;
+    padding: 15px 15px;
+    overflow: hidden;
+}
+.card-footer {
+    text-align: right;
+}
+.control-label {
+    font-weight: normal;
+}
+.btn-icon {
+    font-size: 18px;
+    padding: 7px;
+    border: none;
+    color: #37BC9B;
+    float: right;
+}
+.card-title {
+    float: left;
+    font-size: 18px;
+    color: #666;
+}
+.modal-body {
+    font-size: 14px;
+}
+.subtitle {
+    margin: 10px 0 20px 20px;
+}
+.error {
+    margin: 4px 0 2px 2px;
+    color: #a94442;
+}
+.form-title {
+    margin: 10px 0 40px 20px;
+    border-bottom: 1px solid #f0f3fa;
+}
+.form-body {
+    padding: 0 140px 0 20px;
+    border-bottom: 1px solid #f0f3fa;
+    margin-bottom: 15px;
+}
+.form-row {
+    margin-left: 40px;
+    margin-bottom: 0;
+}
+.item-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #292c33;
+}
+
+.form-submit {
+    padding: 0 140px 0 20px;
+}
+.help {
+    color: #999999;
+    padding-top: .6em;
+    padding-bottom: .6em;
+    display: block;
+}
+
+/* bootstrap clear button */
+::-ms-clear {
+    display: none;
+}
+
+.form-control-clear {
+    z-index: 10;
+    pointer-events: auto;
+    cursor: pointer;
+}

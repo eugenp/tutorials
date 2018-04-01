@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application
+  xmlns:mx="http://www.macromedia.com/2003/mxml"
+  backgroundColor="#B9CAD2" pageTitle="Flex Song Manager"
+  initialize="getSongs()">
+  <mx:Script source="songScript.as" />
+  <mx:Style source="songStyles.css"/>
+  <mx:Panel id="songListPanel"
+    titleStyleDeclaration="headerText"
+    title="Flex MP3 Library">
+    <mx:HBox verticalAlign="bottom">
+      <mx:DataGrid id="songGrid"
+        cellPress="selectSong(event)" rowCount="8">
+        <mx:columns>
+          <mx:Array>
+            <mx:DataGridColumn columnName="name"
+              headerText="Song Name" width="120" />
+            <mx:DataGridColumn columnName="artist"
+              headerText="Artist" width="180" />
+            <mx:DataGridColumn columnName="album"
+              headerText="Album" width="160" />
+          </mx:Array>
+        </mx:columns>
+      </mx:DataGrid>
+      <mx:VBox>
+        <mx:HBox height="100" >
+          <mx:Image id="albumImage" source=""
+            height="80" width="100"
+            mouseOverEffect="resizeBig"
+            mouseOutEffect="resizeSmall" />
+          <mx:TextArea id="songInfo"
+            styleName="boldText" height="100%" width="120"
+            vScrollPolicy="off" borderStyle="none" />
+        </mx:HBox>
+        <mx:MediaPlayback id="songPlayer"
+          contentPath=""
+          mediaType="MP3"
+          height="70"
+          width="230"
+          controllerPolicy="on"
+          autoPlay="false"
+          visible="false" />
+      </mx:VBox>
+    </mx:HBox>
+    <mx:ControlBar horizontalAlign="right">
+      <mx:Button id="refreshSongsButton"
+        label="Refresh Songs" width="100"
+        toolTip="Refresh Song List"
+        click="songService.getSongs()" />
+    </mx:ControlBar>
+  </mx:Panel>
+  <mx:Effect>
+    <mx:Resize name="resizeBig" heightTo="100"
+      duration="500"/>
+    <mx:Resize name="resizeSmall" heightTo="80"
+      duration="500"/>
+  </mx:Effect>
+  <mx:RemoteObject id="songService"
+    source="gui.flex.SongService"
+    result="onSongs(event.result)"
+    fault="alert(event.fault.faultstring, 'Error')">
+    <mx:method name="getSongs"/>
+  </mx:RemoteObject>
+</mx:Application>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<jsp:root version="2.2"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:jsp="http://java.sun.com/JSP/Page"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <jsp:directive.page contentType="text/plain; charset=ISO-8859-1"/>
+
+    <!-- Test 1a: Use \\ in EL in tag attribute -->
+    <c:set var="asd1" value="${'01a\\?resize01a'}" />
+    <c:out value="${asd1}"/>
+
+    <c:set var="asd2" value="01b\\x${'\\?resize01b'}" />
+    <c:out value="${asd2}"/>
+
+    <!-- Test 2a: Use \\\\ in template text -->
+    <set data-value="${'02a\\\\?resize02a'}" />
+
+    <!-- Test 2b: Use \\\\ in template text -->
+    <set data-value="02b\\\\x${'\\\\?resize02b'}" />
+
+    <!-- Test 3a: Use \\ in template text -->
+    <set data-value="${'03a\\?resize03a'}" />
+
+    <!-- Test 3b: Use \\ in template text -->
+    <set data-value="03b\\x${'\\?resize03b'}" />
+
+    <!-- Test 4a: Use \\ in jsp:element -->
+    <jsp:element name="${'04a\\?resize04a'}"></jsp:element>
+
+    <jsp:element name="04b\\x${'\\?resize04b'}"></jsp:element>
+
+    <!-- Test 5: Use \$, \# in template text -->
+    <set data-value="05a\$\${&amp;" />
+    <set data-value="05b\$\${&amp;${1+1}" />
+    <set data-value="05c\#\#{&gt;${'hello'}&lt;" />
+    <!-- Test for BZ 56561 -->
+    05x:<set data-value="" />
+
+    <!-- Test 6: nonTaglibXmlnsAttributes on a Node.UninterpretedTag -->
+    <set xmlns:foo="urn:06a\bar\baz" />
+
+    <!-- 7. Tests for bug 56334 comment 15 -->
+    07a:<set data-value="${'\\?resize'}" />
+    07b:<set data-content="${fn:escapeXml('\\?resize=.+')}" />
+    07c:<set data-content="${fn:escapeXml( '\\?resize=.+')}" />
+    07d:<set data-content="${fn:contains(some_value,'\\?resize=.+')}" />
+    07e:<set data-content="${fn:contains(some_value, '\\?resize=.+')}" />
+    07f:<set data-content="${fn:toLowerCase('\\\'someThing\'')}" />
+    07g:<set data-content="${fn:toLowerCase( '\\\'someThing\'')}" />
+</jsp:root>

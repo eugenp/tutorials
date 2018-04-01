@@ -1,0 +1,181 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cluster-sender.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>The Cluster Sender object</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  <p>
+  The channel sender component is responsible for delivering outgoing cluster messages over the network.
+  In the default implementation, <code>org.apache.catalina.tribes.transport.ReplicationTransmitter</code>,
+  the sender is a fairly empty shell with not much logic around a fairly complex <code>&lt;Transport&gt;</code>
+  component the implements the actual delivery mechanism.
+  </p>
+</section>
+
+<section name="Concurrent Parallel Delivery">
+  <p>
+  In the default <code>transport</code> implementation, <code>org.apache.catalina.tribes.transport.nio.PooledParallelSender</code>,
+  Apache Tribes implements what we like to call &quot;Concurrent Parallel Delivery&quot;.
+  This means that we can send a message to more than one destination at the same time(parallel), and
+  deliver two messages to the same destination at the same time(concurrent). Combine these two and we have
+  &quot;Concurrent Parallel Delivery&quot;.
+  </p>
+  <p>
+  When is this useful? The simplest example we can think of is when part of your code is sending a 10MB message,
+  like a war file being deployed, and you need to push through a small 10KB message, say a session being replicated,
+  you don't have to wait for the 10MB message to finish, as a separate thread will push in the small message
+  transmission at the same time. Currently there is no interrupt, pause or priority mechanism available, but check back soon.
+  </p>
+</section>
+
+<section name="Nested Elements">
+ <p>
+   The nested element <code>&lt;Transport&gt;</code> is not required, but encouraged, as this is where
+   you would set all the socket options for the outgoing messages. Please see its attributes below.
+   There are two implementations, in a similar manner to the <a href="cluster-receiver.html">receiver</a>, one is non-blocking
+   based and the other is built using blocking IO. <br/>
+   <code>org.apache.catalina.tribes.transport.bio.PooledMultiSender</code> is the blocking implementation and
+   <code>org.apache.catalina.tribes.transport.nio.PooledParallelSender</code>.
+   Parallel delivery is not available for the blocking implementation due to the fact that it is blocking a thread on sending data.
+ </p>
+</section>
+
+<section name="Attributes">
+  <subsection name="Common Sender Attributes">
+    <attributes>
+      <attribute name="className" required="true">
+        Required, only available implementation is <code>org.apache.catalina.tribes.transport.ReplicationTransmitter</code>
+      </attribute>
+    </attributes>
+  </subsection>
+  <subsection name="Common Transport Attributes">
+    <attributes>
+      <attribute name="className" required="true">
+        Required, an implementation of the <code>org.apache.catalina.tribes.transport.MultiPointSender</code>.<br/>
+        Non-blocking implementation is <code>org.apache.catalina.tribes.transport.nio.PooledParallelSender</code><br/>
+        Blocking implementation is <code>org.apache.catalina.tribes.transport.bio.PooledMultiSender</code>
+      </attribute>
+      <attribute name="rxBufSize" required="false">
+        The receive buffer size on the socket.
+        Default value is <code>25188</code> bytes.
+      </attribute>
+      <attribute name="txBufSize" required="false">
+       The send buffer size on the socket.
+       Default value is <code>43800</code> bytes.
+      </attribute>
+      <attribute name="udpRxBufSize" required="false">
+        The receive buffer size on the datagram socket.
+        Default value is <code>25188</code> bytes.
+      </attribute>
+      <attribute name="udpTxBufSize" required="false">
+       The send buffer size on the datagram socket.
+       Default value is <code>43800</code> bytes.
+      </attribute>
+      <attribute name="directBuffer" required="false">
+       Possible values are <code>true</code> or <code>false</code>.
+       Set to true if you want the receiver to use direct bytebuffers when writing data
+       to the sockets. Default value is <code>false</code>
+      </attribute>
+      <attribute name="keepAliveCount" required="false">
+       The number of requests that can go through the socket before the socket is closed, and reopened
+       for the next request. The default value is <code>-1</code>, which is unlimited.
+      </attribute>
+      <attribute name="keepAliveTime" required="false">
+       The number of milliseconds a connection is kept open after its been opened.
+       The default value is <code>-1</code>, which is unlimited.
+      </attribute>
+      <attribute name="timeout" required="false">
+        Sets the SO_TIMEOUT option on the socket. The value is in milliseconds and the default value is <code>3000</code>
+        milliseconds.(3 seconds) This timeout starts when a message send attempt is starting, until the transfer has been completed.
+        For the NIO sockets, this will mean, that the caller can guarantee that we will not attempt sending the message
+        longer than this timeout value. For the blocking IO implementation, this translated directly to the soTimeout.<br/>
+        A timeout will not spawn a retry attempt, in order to guarantee the return of the application thread.
+      </attribute>
+      <attribute name="maxRetryAttempts" required="false">
+        How many times do we retry a failed message, that received a IOException at the socket level.
+        The default value is <code>1</code>, meaning we will retry a message that has failed once.
+        In other words, we will attempt a message send no more than twice. One is the original send, and one is the
+        <code>maxRetryAttempts</code>.
+      </attribute>
+      <attribute name="ooBInline" required="false">
+        Boolean value for the socket OOBINLINE option. Possible values are <code>true</code> or <code>false</code>.
+      </attribute>
+      <attribute name="soKeepAlive" required="false">
+        Boolean value for the socket SO_KEEPALIVE option. Possible values are <code>true</code> or <code>false</code>.
+      </attribute>
+      <attribute name="soLingerOn" required="false">
+        Boolean value to determine whether to use the SO_LINGER socket option.
+        Possible values are <code>true</code> or <code>false</code>. Default value is <code>true</code>.
+      </attribute>
+      <attribute name="soLingerTime" required="false">
+        Sets the SO_LINGER socket option time value. The value is in seconds.
+        The default value is <code>3</code> seconds.
+      </attribute>
+      <attribute name="soReuseAddress" required="false">
+       Boolean value for the socket SO_REUSEADDR option. Possible values are <code>true</code> or <code>false</code>.
+      </attribute>
+      <attribute name="soTrafficClass" required="false">
+       Sets the traffic class level for the socket, the value is between 0 and 255.
+       Default value is <code>int soTrafficClass = 0x04 | 0x08 | 0x010;</code>
+       Different values are defined in <a href="http://docs.oracle.com/javase/6/docs/api/java/net/Socket.html#setTrafficClass(int)">
+       java.net.Socket#setTrafficClass(int)</a>.
+      </attribute>
+      <attribute name="tcpNoDelay" required="false">
+       Boolean value for the socket TCP_NODELAY option. Possible values are <code>true</code> or <code>false</code>.
+       The default value is <code>true</code>
+      </attribute>
+      <attribute name="throwOnFailedAck" required="false">
+       Boolean value, default value is <code>true</code>.
+       If set to true, the sender will throw a <code>org.apache.catalina.tribes.RemoteProcessException</code>
+       when we receive a negative ack from the remote member.
+       Set to false, and Tribes will treat a positive ack the same way as a negative ack, that the message was received.
+      </attribute>
+    </attributes>
+  </subsection>
+  <subsection name="Common PooledSender Attributes">
+    <attributes>
+      <attribute name="poolSize" required="false">
+        The maximum number of concurrent connections from A to B.
+        The value is based on a per-destination count.
+        The default value is <code>25</code>
+      </attribute>
+      <attribute name="maxWait" required="false">
+        The maximum number of milliseconds that the senderPool will wait when
+        there are no available senders. The default value is <code>3000</code>
+        milliseconds.(3 seconds).
+      </attribute>
+    </attributes>
+  </subsection>
+</section>
+</body>
+</document>

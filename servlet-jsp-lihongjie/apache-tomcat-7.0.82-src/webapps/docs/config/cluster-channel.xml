@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cluster-channel.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>The Cluster Channel object</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  The cluster channel is the main component of a small framework we've nicknamed Apache Tribes.<br/>
+  The channel manages a set of sub components and together they create a group communication framework.<br/>
+  This framework is then used internally by the components that need to send messages between different Tomcat instances.
+  <br/>
+  A few examples of these components would be the SimpleTcpCluster that does the messaging for the DeltaManager,
+  or the BackupManager that uses a different replication strategy. The ReplicatedContext object does also
+  use the channel object to communicate context attribute changes.
+</section>
+<section name="Nested Components">
+  <p><b><a href="cluster-membership.html">Channel/Membership</a>:</b> <br/>
+    The Membership component is responsible for auto discovering new nodes in the cluster
+    and also to provide for notifications for any nodes that have not responded with a heartbeat.
+    The default implementation uses multicast.<br/>
+    In the membership component you configure how your nodes, aka. members, are to be discovered and/or
+    divided up.
+    You can always find out more about <a href="../tribes/introduction.html">Apache Tribes</a>
+  </p>
+  <p><b><a href="cluster-sender.html">Channel/Sender</a>:</b> <br/>
+    The Sender component manages all outbound connections and data messages that are sent
+    over the network from one node to another.
+    This component allows messages to be sent in parallel.
+    The default implementation uses TCP client sockets, and socket tuning for outgoing messages are
+    configured here.<br/>
+    You can always find out more about <a href="../tribes/introduction.html">Apache Tribes</a>
+  </p>
+  <p><b><a href="cluster-sender.html#transport">Channel/Sender/Transport</a>:</b> <br/>
+    The Transport component is the bottom IO layer for the sender component.
+    The default implementation uses non-blocking TCP client sockets.<br/>
+    You can always find out more about <a href="../tribes/introduction.html">Apache Tribes</a>
+  </p>
+  <p><b><a href="cluster-receiver.html">Channel/Receiver</a>:</b> <br/>
+    The receiver component listens for messages from other nodes.
+    Here you will configure the cluster thread pool, as it will dispatch incoming
+    messages to a thread pool for faster processing.
+    The default implementation uses non-blocking TCP server sockets.<br/>
+    You can always find out more about <a href="../tribes/introduction.html">Apache Tribes</a>
+  </p>
+  <p><b><a href="cluster-interceptor.html">Channel/Interceptor</a>:</b> <br/>
+    The channel will send messages through an interceptor stack. Because of this, you have the ability to
+    customize the way messages are sent and received, and even how membership is handled.<br/>
+    You can always find out more about <a href="../tribes/introduction.html">Apache Tribes</a>
+  </p>
+</section>
+
+
+<section name="Attributes">
+
+  <subsection name="Common Attributes">
+
+  <attributes>
+
+    <attribute name="className" required="true">
+       The default value here is <code>org.apache.catalina.tribes.group.GroupChannel</code> and is
+       currently the only implementation available.
+    </attribute>
+
+
+  </attributes>
+
+
+  </subsection>
+
+  <subsection name="org.apache.catalina.tribes.group.GroupChannel Attributes">
+
+    <attributes>
+
+      <attribute name="heartbeat" required="false">
+         Flag whether the channel manages its own heartbeat.
+         If set to true,  the channel start a local thread for the heart beat.
+         If set this flag to false, you must set SimpleTcpCluster#heartbeatBackgroundEnabled
+         to true. default value is true.
+      </attribute>
+
+      <attribute name="heartbeatSleeptime" required="false">
+        If heartbeat == true, specifies the interval of heartbeat thread in milliseconds.
+        The default is 5000 (5 seconds).
+      </attribute>
+
+      <attribute name="optionCheck" required="false">
+        If set to true, the GroupChannel will check the option flags that each
+        interceptor is using. Reports an error if two interceptor share the same
+        flag. The default is false.
+      </attribute>
+
+    </attributes>
+
+  </subsection>
+
+</section>
+
+
+</body>
+
+</document>

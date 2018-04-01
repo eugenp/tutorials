@@ -1,0 +1,727 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="systemprops.html">
+
+  &project;
+
+  <properties>
+    <title>System Properties</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  <p>The following sections list the system properties that may be set to modify
+  the default Tomcat behaviour.</p>
+</section>
+
+<section name="Property replacements">
+  <properties>
+    <property name="org.apache.tomcat.util.digester. PROPERTY_SOURCE">
+      <p>Set this to a fully qualified name of a class that implements
+         <code>org.apache.tomcat.util.IntrospectionUtils.PropertySource</code>.
+         Required to have a public constructor with no arguments.</p>
+      <p>Use this to add a property source, that will be invoked when <code>${parameter}</code>
+         denoted parameters are found in the XML files that Tomcat parses.</p>
+    </property>
+  </properties>
+
+</section>
+
+<section name="Clustering">
+  <properties>
+
+    <property name="org.apache.catalina. tribes.dns_lookups">
+      <p>If <code>true</code>, the clustering module will attempt to use DNS to
+      resolve any host names provided in the cluster configuration.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+  </properties>
+
+</section>
+
+<section name="Expression Language">
+  <properties>
+
+    <property name="org.apache.el.BeanELResolver. CACHE_SIZE">
+      <p>The number of javax.el.BeanELResolver.BeanProperties objects that will
+      be cached by the EL Parser.</p>
+      <p>If not specified, the default of <code>1000</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.el.ExpressionBuilder. CACHE_SIZE">
+      <p>The number of parsed EL expressions that will be cached by the EL
+      Parser.</p>
+      <p>If not specified, the default of <code>5000</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.el.parser. COERCE_TO_ZERO">
+      <p>If <code>true</code>, when coercing expressions to numbers
+      <code>""</code> and <code>null</code> will be coerced to zero as required
+      by the specification.</p>
+      <p>If not specified, the default value of <code>true</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.el.parser. SKIP_IDENTIFIER_CHECK">
+      <p>If <code>true</code>, when parsing expressions, identifiers will not be
+      checked to ensure that they conform to the Java Language Specification for
+      Java identifiers.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+  </properties>
+</section>
+
+<section name="Jasper">
+  <properties>
+
+    <property name="org.apache.jasper.compiler. Generator.POOL_TAGS_WITH_EXTENDS">
+      <p>By default, JSPs that use their own base class via the extends
+      attribute of the page directive, will have Tag pooling disabled since
+      Jasper cannot guarantee that the necessary initialisation will have taken
+      place. This can have a negative impact on performance. Providing the
+      alternative base class calls _jspInit() from Servlet.init(), setting  this
+      property to <code>true</code> will enable pooling with an alternative base
+      class. If the alternative base class does not call _jspInit() and this
+      property is <code>true</code>, NPEs will occur when attempting to use
+      tags.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.
+      </p>
+    </property>
+
+    <property name="org.apache.jasper.compiler. Generator.STRICT_GET_PROPERTY">
+      <p>If <code>true</code>, the requirement to have the object referenced in
+      <code>jsp:getProperty</code> action to be previously "introduced"
+      to the JSP processor, as specified in the chapter JSP.5.3 of JSP 2.0 and
+      later specifications, is enforced.</p>
+      <p>If not specified, the specification compliant default of
+      <code>true</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.compiler. Generator.VAR_EXPRESSIONFACTORY">
+      <p>The name of the variable to use for the expression language expression
+      factory.</p>
+      <p>If not specified, the default value of <code>_el_expressionfactory</code>
+      will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.compiler. Generator.VAR_INSTANCEMANAGER">
+      <p>The name of the variable to use for the instance manager factory.</p>
+      <p>If not specified, the default value of <code>_jsp_instancemanager</code>
+      will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.compiler. Parser.STRICT_QUOTE_ESCAPING">
+      <p>If <code>false</code> the requirements for escaping quotes in JSP
+      attributes will be relaxed so that an unescaped quote will not
+      cause an error.</p>
+      <p>If not specified, the specification compliant default of
+      <code>true</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.compiler. Parser.STRICT_WHITESPACE">
+      <p>If <code>false</code> the requirements for whitespace before an
+      attribute name will be relaxed so that the lack of whitespace will not
+      cause an error.</p>
+      <p>If not specified, the specification compliant default of
+      <code>true</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.runtime. BodyContentImpl.LIMIT_BUFFER">
+      <p>If <code>true</code>, any tag buffer that expands beyond
+      <code>org.apache.jasper.Constants.DEFAULT_TAG_BUFFER_SIZE</code> will be
+      destroyed and a new buffer created of the default size.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.runtime. JspFactoryImpl.USE_POOL">
+      <p>If <code>true</code>, a ThreadLocal <code>PageContext</code> pool will
+      be used.</p>
+      <p>If not specified, the default value of <code>true</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.runtime. JspFactoryImpl.POOL_SIZE">
+      <p>The size of the ThreadLocal <code>PageContext</code>.</p>
+      <p>If not specified, the default value of <code>8</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. JSP_SERVLET_BASE">
+      <p>The base class of the Servlets generated from the JSPs.</p>
+      <p>If not specified, the default value of
+      <code>org.apache.jasper.runtime.HttpJspBase</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. SERVICE_METHOD_NAME">
+      <p>The name of the service method called by the base class.</p>
+      <p>If not specified, the default value of <code>_jspService</code>
+      will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. SERVLET_CLASSPATH">
+      <p>The name of the ServletContext attribute that provides the classpath
+      for the JSP.</p>
+      <p>If not specified, the default value of
+      <code>org.apache.catalina.jsp_classpath</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. JSP_FILE">
+      <p>The name of the request attribute for <code>&lt;jsp-file&gt;</code>
+      element of a servlet definition. If present on a request, this overrides
+      the value returned by <code>request.getServletPath()</code> to select the
+      JSP page to be executed.</p>
+      <p>If not specified, the default value of
+      <code>org.apache.catalina.jsp_file</code> will be used.</p>
+      <p><strong>Deprecated:</strong> This will be removed in Tomcat 9.0.x
+      onwards. It is replaced by the use of the jspFile servlet initialisation
+      parameter</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. PRECOMPILE">
+      <p>The name of the query parameter that causes the JSP engine to just
+      pregenerate the servlet but not invoke it.</p>
+      <p>If not specified, the default value of <code>jsp_precompile</code>
+      will be used, as defined by JSP specification (JSP.11.4.2).</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. JSP_PACKAGE_NAME">
+      <p>The default package name for compiled jsp pages.</p>
+      <p>If not specified, the default value of <code>org.apache.jsp</code>
+      will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. TAG_FILE_PACKAGE_NAME">
+      <p>The default package name for tag handlers generated from tag files.</p>
+      <p>If not specified, the default value of <code>org.apache.jsp.tag</code>
+      will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. ALT_DD_ATTR">
+      <p>The servlet context attribute under which the alternate deployment
+      descriptor for this web application is stored.</p>
+      <p>If not specified, the default value of
+      <code>org.apache.catalina.deploy.alt_dd</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. TEMP_VARIABLE_NAME_PREFIX">
+      <p>Prefix to use for generated temporary variable names.</p>
+      <p>If not specified, the default value of <code>_jspx_temp</code>
+      will be used.</p>
+    </property>
+
+    <property name="org.apache.jasper.Constants. USE_INSTANCE_MANAGER_FOR_TAGS">
+      <p>If <code>true</code>, the instance manager is used to obtain tag
+      handler instances.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+  </properties>
+
+</section>
+
+
+<section name="Security">
+
+  <properties>
+
+    <property name="org.apache.catalina.connector. RECYCLE_FACADES">
+      <p>If this is <code>true</code> or if a security manager is in use a new
+      facade object will be created for each request.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+    <property
+    name="org.apache.catalina.connector. CoyoteAdapter.ALLOW_BACKSLASH">
+      <p>If this is <code>true</code> the '\' character will be permitted as a
+      path delimiter.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+    <property
+    name="org.apache.tomcat.util.buf. UDecoder.ALLOW_ENCODED_SLASH">
+      <p>If this is <code>true</code> '%2F' and '%5C' will be permitted as path
+      delimiters.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+  </properties>
+
+</section>
+
+
+<section name="Specification">
+
+  <properties>
+
+    <property name="org.apache.catalina. STRICT_SERVLET_COMPLIANCE">
+      <p>The default value of this system property is <code>false</code>.</p>
+      <p>If this is <code>true</code> the default values will be changed for:</p>
+      <ul>
+      <li><code>org.apache.catalina.core.<br/>ApplicationContext.GET_RESOURCE_REQUIRE_SLASH</code></li>
+      <li><code>org.apache.catalina.core.<br/>ApplicationDispatcher.WRAP_SAME_OBJECT</code></li>
+      <li><code>org.apache.catalina.core.<br/>StandardHostValve.ACCESS_SESSION</code></li>
+      <li><code>org.apache.catalina.session.<br/>StandardSession.ACTIVITY_CHECK</code></li>
+      <li><code>org.apache.catalina.session.<br/>StandardSession.LAST_ACCESS_AT_START</code></li>
+      <li><code>org.apache.tomcat.util.http.<br/>ServerCookie.ALWAYS_ADD_EXPIRES</code></li>
+      <li><code>org.apache.tomcat.util.http.<br/>ServerCookie.FWD_SLASH_IS_SEPARATOR</code></li>
+      <li><code>org.apache.tomcat.util.http.<br/>ServerCookie.PRESERVE_COOKIE_HEADER</code></li>
+      <li><code>org.apache.tomcat.util.http.<br/>ServerCookie.STRICT_NAMING</code></li>
+      <li>The <code>resourceOnlyServlets</code> attribute of any
+          <a href="context.html">Context</a> element.</li>
+      <li>The <code>tldValidation</code> attribute of any
+          <a href="context.html">Context</a> element.</li>
+      <li>The <code>useRelativeRedirects</code> attribute of any
+          <a href="context.html">Context</a> element.</li>
+      <li>The <code>xmlNamespaceAware</code> attribute of any
+          <a href="context.html">Context</a> element.</li>
+      <li>The <code>xmlValidation</code> attribute of any
+          <a href="context.html">Context</a> element.</li>
+      </ul>
+
+      <p>Note that changing a number of the above defaults is likely to break
+      the majority of systems as some browsers are unable to correctly handle
+      the cookie headers that result from a strict adherence to the
+      specifications. Defaults, regardless of whether or not they have been
+      changed by setting
+      <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> can always be
+      overridden by explicitly setting the appropriate system property or element
+      attribute.</p>
+    </property>
+
+    <property name="org.apache.catalina.connector. Response.ENFORCE_ENCODING_IN_GET_WRITER">
+      <p>If this is <code>true</code> then
+      a call to <code>Response.getWriter()</code> if no character encoding
+      has been specified will result in subsequent calls to
+      <code>Response.getCharacterEncoding()</code> returning
+      <code>ISO-8859-1</code> and the <code>Content-Type</code> response header
+      will include a <code>charset=ISO-8859-1</code> component. (SRV.15.2.22.1)</p>
+      <p>If not specified, the default specification compliant value of
+      <code>true</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.catalina.core.ApplicationContext .GET_RESOURCE_REQUIRE_SLASH">
+      <p>If this is <code>true</code> then the path passed to
+      <code>ServletContext.getResource()</code> or
+      <code>ServletContext.getResourceAsStream()</code> must start with
+      &quot;/&quot;. If <code>false</code>, code like
+      <code>getResource("myfolder/myresource.txt")</code> will work.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>true</code>,
+      else the default value will be <code>false</code>.</p>
+    </property>
+
+    <property name="org.apache.catalina.core. ApplicationDispatcher.WRAP_SAME_OBJECT">
+      <p>If this is <code>true</code> then any wrapped request or response
+      object passed to an application dispatcher will be checked to ensure that
+      it has wrapped the original request or response.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>true</code>,
+      else the default value will be <code>false</code>.</p>
+    </property>
+
+    <property
+    name="org.apache.tomcat.util.http. ServerCookie.ALLOW_EQUALS_IN_VALUE">
+      <p>If this is <code>true</code> Tomcat will allow '<code>=</code>'
+      characters when parsing unquoted cookie values. If <code>false</code>,
+      cookie values containing '<code>=</code>' will be terminated when the
+      '<code>=</code>' is encountered and the remainder of the cookie value will
+      be dropped.</p>
+      <p>If not specified, the default value specification compliant value of
+      <code>false</code> will be used.</p>
+    </property>
+
+    <property
+    name="org.apache.tomcat.util.http. ServerCookie.ALLOW_HTTP_SEPARATORS_IN_V0">
+      <p>If this is <code>true</code> Tomcat will allow HTTP separators in
+      cookie names and values.</p>
+      <p>If not specified, the default specification compliant value of
+      <code>false</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.tomcat.util.http. ServerCookie.ALLOW_NAME_ONLY">
+      <p>If this is <code>false</code> then the requirements of the cookie
+      specifications that cookies must have values will be enforced and cookies
+      consisting only of a name but no value will be ignored.</p>
+      <p>If not specified, the default specification compliant value of
+      <code>false</code> will be used.</p>
+    </property>
+
+    <property
+    name="org.apache.tomcat.util.http. ServerCookie.ALWAYS_ADD_EXPIRES">
+      <p>If this is <code>true</code> Tomcat will always add an expires
+      parameter to a SetCookie header even for cookies with version greater than
+      zero. This is to work around a known IE6 and IE7 bug that causes IE to
+      ignore the Max-Age parameter in a SetCookie header.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>false</code>,
+      else the default value will be <code>true</code>.</p>
+    </property>
+
+    <property
+    name="org.apache.tomcat.util.http. ServerCookie.FWD_SLASH_IS_SEPARATOR">
+      <p> If this is true then the <code>/</code> (forward slash) character will
+      be treated as a separator. Note that this character is frequently used in
+      cookie path attributes and some browsers will fail to process a cookie if
+      the path attribute is quoted as is required by a strict adherence to the
+      specifications. This is highly likely to break session tracking using
+      cookies.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>true</code>,
+      else the default value will be <code>false</code>.</p>
+    </property>
+
+    <property name="org.apache.tomcat.util.http. ServerCookie.PRESERVE_COOKIE_HEADER">
+      <p>If this is <code>true</code> Tomcat will ensure that cookie
+      processing does not modify cookie header returned by
+      <code>HttpServletRequest.getHeader()</code>.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>true</code>,
+      else the default value will be <code>false</code>.</p>
+    </property>
+
+    <property name="org.apache.tomcat.util.http. ServerCookie.STRICT_NAMING">
+      <p> If this is true then the requirements of the Servlet specification
+      that Cookie names must adhere to RFC2109 (no use of separators) will be
+      enforced.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>true</code>,
+      else the default value will be <code>false</code>.</p>
+    </property>
+
+  </properties>
+
+</section>
+
+
+<section name="Sessions">
+
+  <properties>
+
+    <property name="org.apache.catalina.authenticator.
+                    Constants.SSO_SESSION_COOKIE_NAME">
+      <p>An alternative name for the single sign on session cookie. Defaults to
+      <code>JSESSIONIDSSO</code>.</p>
+    </property>
+
+    <property name="org.apache.catalina.core. StandardHostValve.ACCESS_SESSION">
+      <p>If this is <code>true</code>, every request that is associated with a
+      session will cause the session's last accessed time to be updated
+      regardless of whether or not the request explicitly accesses the session.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>true</code>,
+      else the default value will be <code>false</code>.</p>
+    </property>
+
+    <property
+    name="org.apache.catalina.session. StandardSession.ACTIVITY_CHECK">
+      <p>If this is <code>true</code>, Tomcat will track the number of active
+      requests for each session. When determining if a session is valid, any
+      session with at least one active request will always be considered valid.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>true</code>,
+      else the default value will be <code>false</code>.</p>
+    </property>
+
+    <property
+    name="org.apache.catalina.session. StandardSession.LAST_ACCESS_AT_START">
+      <p>If this is <code>true</code>, the last accessed time for sessions will
+      be calculated from the beginning of the previous request. If
+      <code>false</code>, the last accessed time for sessions will be calculated
+      from the end of the previous request. This also affects how the idle time
+      is calculated.</p>
+      <p>If <code>org.apache.catalina.STRICT_SERVLET_COMPLIANCE</code> is set to
+      <code>true</code>, the default of this setting will be <code>true</code>,
+      else the default value will be <code>false</code>.</p>
+    </property>
+
+  </properties>
+
+</section>
+
+<section name="Logging">
+
+  <properties>
+
+    <property name="org.apache.juli.formatter">
+      <p>If no logging configuration file is specified and no logging configuration class is specified
+         using the <code>java.util.logging.config.class</code> and <code>java.util.logging.config.file</code>
+         properties the default logging framework <code>org.apache.juli</code> will use the default
+         <code>java.util.logging.SimpleFormatter</code> for all console output.
+         To simply override the console output formatter, one can use the described property. Example:
+         <code>-Dorg.apache.juli.formatter=org.apache.juli.OneLineFormatter</code></p>
+    </property>
+
+    <property name="org.apache.juli. AsyncOverflowDropType">
+      <p>When the memory limit of records has been reached the system needs to determine what action to take.
+         Currently there are three actions that can be taken:
+      </p>
+         <ul>
+           <li><code>int OVERFLOW_DROP_LAST = 1</code> - the record that caused the overflow will be dropped and not logged</li>
+           <li><code>int OVERFLOW_DROP_FIRST = 2</code> - the record that is next in line to be logged will be dropped to make room for the latest record on the queue</li>
+           <li><code>int OVERFLOW_DROP_FLUSH = 3</code> - suspend the thread while the queue empties out and flushes the entries to the write buffer</li>
+           <li><code>int OVERFLOW_DROP_CURRENT = 4</code> - drop the current log entry</li>
+         </ul>
+      <p>The default value is <code>1</code> (OVERFLOW_DROP_LAST).</p>
+    </property>
+
+    <property name="org.apache.juli. AsyncMaxRecordCount">
+      <p>The max number of log records that the async logger will keep in memory. When this limit is reached and a new record is being logged by the
+         JULI framework the system will take an action based on the <code>org.apache.juli.AsyncOverflowDropType</code> setting.</p>
+      <p>The default value is <code>10000</code> records.
+         This number represents the global number of records, not on a per handler basis.
+      </p>
+    </property>
+
+    <property name="org.apache.juli. AsyncLoggerPollInterval">
+      <p>The poll interval in milliseconds for the asynchronous logger thread in milliseconds.
+         If the log queue is empty, the async thread will issue a poll(poll interval)
+         in order to not wake up too often.</p>
+      <p>The default value is <code>1000</code> milliseconds.</p>
+    </property>
+
+    <property name="org.apache.juli.logging. UserDataHelper.CONFIG">
+      <p>The type of logging to use for errors generated by invalid input data.
+         The options are: <code>DEBUG_ALL</code>, <code>INFO_THEN_DEBUG</code>,
+         <code>INFO_ALL</code> and <code>NONE</code>. When
+         <code>INFO_THEN_DEBUG</code> is used, the period for which errors are
+         logged at DEBUG rather than INFO is controlled by the system property
+         <code>org.apache.juli.logging.UserDataHelper.SUPPRESSION_TIME</code>.
+         </p>
+      <p>The default value is <code>INFO_THEN_DEBUG</code>.</p>
+      <p>The errors currently logged using this system are:</p>
+         <ul>
+         <li>invalid cookies;</li>
+         <li>invalid parameters;</li>
+         <li>too many headers, too many parameters (hitting
+           <code>maxHeaderCount</code> or <code>maxParameterCount</code> limits
+           of a <a href="http.html">connector</a>).</li>
+         </ul>
+         <p>Other errors triggered by invalid input data may be added to this
+         system in later versions.</p>
+    </property>
+
+    <property name="org.apache.juli.logging. UserDataHelper.SUPPRESSION_TIME">
+      <p>When using <code>INFO_THEN_DEBUG</code> for
+         <code>org.apache.juli.logging.UserDataHelper.CONFIG</code> this system
+         property controls how long messages are logged at DEBUG after a message
+         has been logged at INFO. Once this period has elapsed, the next message
+         will be logged at INFO followed by a new suppression period where
+         messages are logged at DEBUG and so on. The value is measured
+         in seconds.</p>
+      <p>A value of <code>0</code> is equivalent to using <code>INFO_ALL</code>
+         for <code>org.apache.juli.logging.UserDataHelper.CONFIG</code>.</p>
+      <p>A negative value means an infinite suppression period.</p>
+      <p>The default value is <code>86400</code> (24 hours).</p>
+    </property>
+  </properties>
+
+</section>
+
+<section name="JAR Scanning">
+
+  <properties>
+    <property name="tomcat.util.scan. DefaultJarScanner.jarsToSkip">
+      <p>The comma-separated list of file name patterns of JARs that Tomcat will
+         not scan for configuration information when using the
+         <a href="jar-scanner.html">JarScanner</a> functionality. The file name
+         pattern syntax is described in
+         <a href="jar-scanner.html">JarScanner</a> documentation. Note that
+         there are additional system properties that enable JARs to be excluded
+         from specific scans rather than all scans.</p>
+      <p>The coded default is that no JARs are skipped however the system
+         property is set in a default Tomcat installation via the
+         <code>$CATALINA_BASE/conf/catalina.properties</code> file.</p>
+    </property>
+
+    <property name="org.apache.catalina.startup. ContextConfig.jarsToSkip">
+      <p>The comma-separated list of additional filenames of JARs that Tomcat
+         will not scan for Servlet 3.0 pluggability features.</p>
+      <p>The coded default is that no JARs are skipped however the system
+         property is set in a default Tomcat installation via the
+         <code>$CATALINA_BASE/conf/catalina.properties</code> file.</p>
+    </property>
+
+    <property name="org.apache.catalina.startup. TldConfig.jarsToSkip">
+      <p>The comma-separated list of additional filenames of JARs that Tomcat
+         will not scan for TLDs.</p>
+      <p>The coded default is that no JARs are skipped however the system
+         property is set in a default Tomcat installation via the
+         <code>$CATALINA_BASE/conf/catalina.properties</code> file.</p>
+    </property>
+  </properties>
+
+</section>
+
+<section name="Websockets">
+
+  <properties>
+
+    <property name="org.apache.tomcat .websocket.ALLOW_UNSUPPORTED_EXTENSIONS">
+      <p>If <code>true</code>, allow unknown extensions to be declared by
+      the user.</p>
+      <p>The default value is <code>false</code>.</p>
+    </property>
+
+    <property name="org.apache.tomcat. websocket.DEFAULT_ORIGIN_HEADER_VALUE">
+      <p>Default value of the origin header that will be sent by the client
+         during the upgrade handshake.</p>
+      <p>The default is null so that no origin header is sent.</p>
+    </property>
+
+    <property name="org.apache.tomcat. websocket.DEFAULT_PROCESS_PERIOD">
+      <p>The number of periodic ticks between periodic processing which
+         involves in particular session expiration checks.</p>
+      <p>The default value is <code>10</code> which corresponds to 10
+         seconds.</p>
+    </property>
+
+    <property name="org.apache.tomcat. websocket.DISABLE_BUILTIN_EXTENSIONS">
+      <p>If <code>true</code>, disable all built-in extensions provided by the
+         server, such as message compression.</p>
+      <p>The default value is <code>false</code>.</p>
+    </property>
+
+    <property name="org.apache.tomcat. websocket.STREAMS_DROP_EMPTY_MESSAGES">
+      <p>If <code>true</code>, streams provided to the user (writer and output
+      stream) will not send an empty message when flushing and there is no
+      data to flush, or when it is closed without having been used (for
+      example if an error occurs).</p>
+      <p>The default value is <code>false</code>.</p>
+    </property>
+
+  </properties>
+
+</section>
+
+<section name="Other">
+
+  <properties>
+
+    <property
+    name="org.apache.coyote. USE_CUSTOM_STATUS_MSG_IN_HEADER"><p>If this is
+      <code>true</code>, custom HTTP status messages will be used within HTTP
+      headers. If a custom message is specified that is not valid for use in an
+      HTTP header (as defined by RFC2616) then the custom message will be
+      ignored and the default message used.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+    <property name="catalina.useNaming">
+      <p>If this is <code>false</code> it will override the
+      <code>useNaming</code> attribute for all <a href="context.html">
+      Context</a> elements.</p>
+    </property>
+
+    <property name="javax.sql.DataSource.Factory">
+      <p>The class name of the factory to use to create resources of type
+      <code>javax.sql.DataSource</code>. If not specified the default of
+      <code>org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory</code> is used
+      which is a package renamed (to avoid conflicts) copy of
+      <a href="http://commons.apache.org/dbcp">Apache Commons DBCP</a>.</p>
+    </property>
+
+    <property name="javax.mail.Session.Factory">
+      <p>The class name of the factory to use to create resources of type
+      <code>javax.mail.Session</code>. If not specified the default of
+      <code>org.apache.naming.factory.MailSessionFactory</code> is used.</p>
+    </property>
+
+    <property name="jvmRoute">
+      <p>Provides a default value for the <code>jvmRoute</code> attribute of the
+      <a href="engine.html">Engine</a> element. It does not override the value
+      configured on the <a href="engine.html">Engine</a> element.</p>
+    </property>
+
+    <property name="catalina.config">
+      <p>The URL for the catalina.properties configuration file.</p>
+    </property>
+
+    <property name="tomcat.util.buf.StringCache.byte.enabled">
+      <p>If <code>true</code>, the String cache is enabled for
+      <code>ByteChunk</code>.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+    <property name="tomcat.util.buf.StringCache.char.enabled">
+      <p>If <code>true</code>, the String cache is enabled for
+      <code>CharChunk</code>.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+    <property name="tomcat.util.buf.StringCache.trainThreshold">
+      <p>The number of times <code>toString()</code> must be called before the
+      cache is activated.</p>
+      <p>If not specified, the default value of <code>20000</code> will be used.</p>
+    </property>
+
+    <property name="tomcat.util.buf.StringCache.cacheSize">
+      <p>The size of the String cache.</p>
+      <p>If not specified, the default value of <code>200</code> will be used.</p>
+    </property>
+
+    <property name="tomcat.util.buf.StringCache.maxStringSize">
+      <p>The maximum length of String that will be cached.</p>
+      <p>If not specified, the default value of <code>128</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.tomcat.util. http.FastHttpDateFormat.CACHE_SIZE">
+      <p>The size of the cache to use parsed and formatted date value.</p>
+      <p>If not specified, the default value of <code>1000</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.tomcat.util. net.NioSelectorShared">
+      <p>If <code>true</code>, use a shared selector for servlet write/read.</p>
+      <p>If not specified, the default value of <code>true</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.catalina.startup. EXIT_ON_INIT_FAILURE">
+      <p>If <code>true</code>, the server will exit if an exception happens
+         during the server initialization phase.</p>
+      <p>If not specified, the default value of <code>false</code> will be used.</p>
+    </property>
+
+    <property name="org.apache.catalina.startup. RealmRuleSet.MAX_NESTED_REALM_LEVELS">
+      <p>The CombinedRealm allows nested Realms. This property controls the
+      maximum permitted number of levels of nesting.</p>
+      <p>If not specified, the default value of <code>3</code> will be used.</p>
+    </property>
+
+    <property name="tomcat.util.http.parser.HttpParser. requestTargetAllow">
+      <p>A string comprised of characters the server should allow even when they are not encoded.
+      These characters would normally result in a 400 status.</p>
+      <p>The acceptable characters for this property are: <code>|</code>, <code>{</code>
+      , and <code>}</code></p>
+      <p><strong>WARNING</strong>: Use of this option will expose the server to CVE-2016-6816.
+      </p>
+      <p>If not specified, the default value of <code>null</code> will be used.</p>
+    </property>
+
+  </properties>
+
+</section>
+
+
+</body>
+</document>

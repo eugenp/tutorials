@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+			"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+[
+<!ENTITY % globals SYSTEM "classpath://auction/persistence/globals.dtd">
+%globals;
+]>
+<!--
+
+Mapping file for the Comment class of CaveatEmptor.
+
+A comment is mapped as an entity, with associations to
+Item and User. Both associations are eagerly fetched,
+as we usually need both objects to display a comment.
+All properties of a comment are immutable, except for
+the free text field. The comment text may be edited
+by system administrators. The text field limit of
+4000 characters is basically an Oracle limit, so we
+might change it later to a real LONGTEXT type instead of a
+simple VARCHAR on a real DBMS.
+
+@author Christian Bauer
+
+-->
+<hibernate-mapping package="auction.model" default-access="field">
+
+<class name="Comment" table="COMMENT">
+
+    <!-- Common id property -->
+	<id name="id" type="long" column="COMMENT_ID">
+		<generator class="&idgenerator;"/>
+	</id>
+
+    <!-- A versioned entity -->
+	<version name="version" column="OBJ_VERSION"/>
+
+	<!-- Custom UserType for this enumeration -->
+	<property   name="rating"
+				column="RATING"
+				type="rating"
+				not-null="true"
+				update="false"/>
+
+	<!-- Simple property (4000 is the maximum length for VARCHAR fields in Oracle...) -->
+	<property   name="text"
+				column="COMMENT_TEXT"
+				type="string"
+				length="4000"
+				not-null="false"/>
+
+    <!-- Immutable property -->
+	<property   name="created"
+				column="CREATED"
+				type="timestamp"
+				update="false"
+				not-null="true"/>
+
+	<!-- A simple uni-directional one-to-many association to User -->
+	<many-to-one
+				name="fromUser"
+				column="FROM_USER_ID"
+				update="false"
+				class="User"
+				not-null="true"
+                fetch="join"
+                foreign-key="FK_FROM_USER_ID"/>
+
+    <!-- A simple uni-directional one-to-many association to Item -->
+    <many-to-one
+                name="item"
+                column="ABOUT_ITEM_ID"
+                update="false"
+                class="Item"
+                not-null="true"
+                fetch="join"
+                foreign-key="FK_ABOUT_ITEM_ID"/>
+</class>
+
+</hibernate-mapping>

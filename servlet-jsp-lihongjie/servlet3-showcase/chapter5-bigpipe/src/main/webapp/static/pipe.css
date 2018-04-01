@@ -1,0 +1,27 @@
+#part1{
+    float: left;
+    width: 200px;
+    height: 100px;
+    background: #eee;
+    font-size: 20px;
+    color: red;
+    margin: 10px;
+}
+#part2{
+    float: left;
+    width: 200px;
+    height: 100px;
+    background: #eee;
+    font-size: 20px;
+    color: blue;
+    margin: 10px;
+}
+#part3{
+    float: left;
+    width: 200px;
+    height: 100px;
+    background: #eee;
+    font-size: 20px;
+    color: #000000;
+    margin: 10px;
+}

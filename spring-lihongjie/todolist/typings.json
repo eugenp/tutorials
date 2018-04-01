@@ -1,0 +1,19 @@
+{
+  "globalDependencies": {
+    "classnames": "registry:dt/classnames#0.0.0+20160316155526",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "moment": "registry:dt/moment#2.8.0+20160316155526",
+    "moment-node": "registry:dt/moment-node#2.11.1+20160511043338",
+    "react": "registry:dt/react#0.14.0+20160720060442",
+    "react-addons-create-fragment": "registry:dt/react-addons-create-fragment#0.14.0+20160709044614",
+    "react-addons-css-transition-group": "registry:dt/react-addons-css-transition-group#0.14.0+20160316155526",
+    "react-addons-linked-state-mixin": "registry:dt/react-addons-linked-state-mixin#0.14.0+20160316155526",
+    "react-addons-perf": "registry:dt/react-addons-perf#15.1.0+20160619031933",
+    "react-addons-pure-render-mixin": "registry:dt/react-addons-pure-render-mixin#0.14.0+20160316155526",
+    "react-addons-test-utils": "registry:dt/react-addons-test-utils#0.14.0+20160427035638",
+    "react-addons-transition-group": "registry:dt/react-addons-transition-group#0.14.0+20160701001352",
+    "react-addons-update": "registry:dt/react-addons-update#0.14.0+20160316155526",
+    "react-dom": "registry:dt/react-dom#0.14.0+20160412154040",
+    "react-global": "registry:dt/react-global#0.14.0+20160316155526"
+  }
+}

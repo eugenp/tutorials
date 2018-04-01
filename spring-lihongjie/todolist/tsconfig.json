@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/tmp/ts",
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": false,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "filesGlob": [
+    "**/*.ts",
+    "**/*.tsx",
+    "!node_modules/**"
+  ],
+  "files": [
+    "./typings/index.d.ts",
+    "./src/main/ts/app.d.ts",
+    "./src/main/ts/misc/constants.ts",
+    "./src/main/ts/misc/utils.ts",
+    "./src/main/ts/components/task.tsx",
+    "./src/main/ts/app.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

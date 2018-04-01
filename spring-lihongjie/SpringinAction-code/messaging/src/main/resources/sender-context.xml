@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:jms="http://www.springframework.org/schema/jms"
+ xsi:schemaLocation="http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+  <!--<start id="activemq_connection_factory_bean"/>--> 
+  <bean id="connectionFactory" 
+        class="org.apache.activemq.spring.ActiveMQConnectionFactory">
+    <property name="brokerURL" value="tcp://localhost:61616"/>
+  </bean>
+  <!--<end id="activemq_connection_factory_bean"/>--> 
+  
+  <!--<start id="activemq_queue_bean"/>--> 
+  <bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+    <constructor-arg value="spitter.queue"/>
+  </bean>
+  <!--<end id="activemq_queue_bean"/>--> 
+  
+  <!--<start id="activemq_topic_bean"/>--> 
+  <bean id="topic" class="org.apache.activemq.command.ActiveMQTopic">
+    <constructor-arg value="spitter.topic"/>
+  </bean>
+  <!--<end id="activemq_topic_bean"/>--> 
+  
+  <!--<start id="bean_jmsTemplate"/>--> 
+  <bean id="jmsTemplate" 
+        class="org.springframework.jms.core.JmsTemplate">
+    <property name="connectionFactory" ref="connectionFactory" />
+  </bean>
+  <!--<end id="bean_jmsTemplate"/>-->  
+</beans>

@@ -1,0 +1,28 @@
+package com.habuma.spitter.mvc;
+import javax.inject.Inject;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import com.habuma.spitter.service.SpitterService;
+
+@Controller  //<co id="co_at_controller"/> 
+public class HomeController {
+  public static final int DEFAULT_SPITTLES_PER_PAGE = 25;
+
+  private SpitterService spitterService;
+
+  @Inject                     //<co id="co_inject_service"/>
+  public HomeController(SpitterService spitterService) {
+    this.spitterService = spitterService;
+  }
+
+  @RequestMapping({"/","/home"})        //<co id="co_handle_home"/> 
+  public String showHomePage(Map<String, Object> model) {
+  
+    model.put("spittles", spitterService.getRecentSpittles(
+              DEFAULT_SPITTLES_PER_PAGE)); //<co id="co_fill_model"/> 
+              
+    return "home"; //<co id="co_return_view_name"/>
+  }
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head th:substituteby="header :: copy"></head>
+
+<body>
+
+	<h1>Exceptions Demo 3</h1>
+	<h2>Using Simple Mapping Exception Resolver</h2>
+	<h3>Summary</h3>
+	<ul>
+		<li>Demo running with profiles: <i th:text="${profiles}">profiles</i></li>
+		<li th:switch="${profiles}"><i th:text="${profiles}">SECOND-PROFILE-NAME</i>:
+			Exceptions not handled elsewhere are <!-- JAVA Profile enabled --> <span
+			th:case="'java-config'">passed to a <span
+				th:replace="link :: simpleMappingExceptionResolver"></span> created
+				via Java Configuration - see <code>ExceptionConfiguration</code><a
+				th:href="${gitHubSrc +'/java/demo/config/ExceptionConfiguration.java'}"><img
+					th:replace="link :: github"></img> </a>.
+		</span> <!-- XML Profile enabled --> <span th:case="'xml-config'">passed
+				to a <span th:replace="link :: simpleMappingExceptionResolver"></span>
+				created via XML Configuration - see <code>mvc-configuration.xml</code><a
+				th:href="${gitHubSrc +'/resources/mvc-configuration.xml'}"> <img
+					th:replace="link :: github"></img>
+			</a>.
+		</span> <!-- DEMO Profile enabled --> <span th:case="'demo-config'">passed
+				to a switchable <span
+				th:replace="link :: simpleMappingExceptionResolver"></span> that may
+				or may not choose to handle the exception - see <code>DemoExceptionConfiguration</code>
+				<a
+				th:href="${gitHubSrc +'/java/demo3/config/DemoExceptionConfiguration.java'}">
+					<img th:replace="link :: github"></img>
+			</a>. Switch state = <i th:text="${switchState}">on/off</i>. <span
+				th:switch="${switchState}"> Resolver is <span th:case="'on'">enabled
+						(<a href="/simpleMappingExceptionResolver/off">disable</a>)
+				</span> <span th:case="'off'">disabled (<a
+						href="/simpleMappingExceptionResolver/on">enable</a>)
+				</span>
+			</span>
+		</span></li>
+		<li>See <a th:replace="link :: blog"></a> for more details.
+		</li>
+	</ul>
+
+	<h3>Details</h3>
+	<p>
+		The exceptions below show the use of a
+		<code>SimpleMappingExceptionResolver</code>
+		- the oldest way of handling exceptions in Spring dating back to V1
+		and still commonly used. It is equivalent to using a ControllerAdvice
+		- your choice.
+	</p>
+
+	<p>To fully understand this demo, review the output in the server
+		(console) log as you click the links below.</p>
+
+	<h3>Demo</h3>
+	<ul class="openlist">
+
+		<li>Throw <a th:href="@{/throw/databaseException}">DatabaseException</a>
+			- should generate a specific database-error page due to configuration
+			of <code>SimpleMappingExceptionResolver</code>.
+		</li>
+		<li>Throw <a th:href="@{/throw/invalidCreditCard}">InvalidCreditCardException</a>
+			- should generate a specific credit-card error page due to
+			configuration of <code>SimpleMappingExceptionResolver</code>.
+		</li>
+		<li>Throw <a th:href="@{/throw/unhandledException}">UnhandledException</a>
+			- should invoke the default (fall-back) error page defined by <code>SimpleMappingExceptionResolver</code>.
+			<p th:if="${#strings.substringAfter(profiles,', ') != 'none'}">
+				Note how uninformative it is. Subclass
+				<code>SimpleMappingExceptionResolver</code>
+				and override its
+				<code>doResolveException()</code>
+				method to make additional context available in the model and in the
+				error page - see
+				<code>ExampleSimpleMappingExceptionResolver</code>
+				<a
+					th:href="${gitHubSrc +'/java/demo/example/ExampleSimpleMappingExceptionResolver.java'}">
+					<img th:replace="link :: github"></img>
+				</a>.
+			</p>
+		</li>
+		<li>A genuinely <a th:href="@{/unknown}">Unknown page</a>. There is no
+			handler for this URL, so the framework will generate a 404. (No
+			exception handler in the application does this, this is the standard
+			Spring MVC response to a URL it has no handler for).
+		</li>
+	</ul>
+
+	<p th:if="${profiles == 'demo-config'}">
+		Demo 4: <a th:href="@{/simpleMappingExceptionResolver/off}">No Handler</a>.
+		For comparison, the same exceptions with no Simple Mapping Exception
+		Resolver.
+	</p>
+	<p th:unless="${profiles == 'demo-config'}">
+		Demo 5: <a th:href="@{/demo5}">Working with Spring Boot</a>.
+	</p>
+
+	<div th:substituteby="footer :: copy"></div>
+
+</body>
+</html>

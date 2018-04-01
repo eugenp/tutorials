@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean         name="MBeanFactory"
+                 type="org.apache.catalina.mbeans.MBeanFactory"
+          description="Factory for MBeans and corresponding components"
+               domain="Catalina">
+
+    <!-- IMPLEMENTATION NOTE - all of the createXxxxx methods create a new  -->
+    <!-- component and attach it to Catalina's component tree.  The return  -->
+    <!-- value is the object name of the corresponding MBean for the new    -->
+    <!-- component.                                                         -->
+
+    <operation   name="createAccessLoggerValve"
+          description="Create a new AccessLoggerValve"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createAjpConnector"
+          description="Create a new AjpConnector"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+      <parameter name="address"
+          description="The IP address on which to bind"
+                 type="java.lang.String"/>
+      <parameter name="port"
+          description="TCP port number to listen on"
+                 type="int"/>
+    </operation>
+
+    <operation   name="createDataSourceRealm"
+          description="Create a new DataSource Realm"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+      <parameter name="dataSourceName"
+          description="The JNDI named JDBC DataSource"
+                 type="java.lang.String"/>
+      <parameter name="roleNameCol"
+          description="The column in the user role table that names a role"
+                 type="java.lang.String"/>
+      <parameter name="userCredCol"
+          description="The column in the user table that holds the user's
+                        credentials"
+                 type="java.lang.String"/>
+      <parameter name="userNameCol"
+          description="The column in the user table that holds the user's
+                        username"
+                 type="java.lang.String"/>
+      <parameter name="userRoleTable"
+          description="The table that holds the relation between user's and
+                        roles"
+                 type="java.lang.String"/>
+      <parameter name="userTable"
+          description="The table that holds user data"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createHttpConnector"
+          description="Create a new HttpConnector"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+     <parameter name="address"
+          description="The IP address on which to bind"
+                 type="java.lang.String"/>
+      <parameter name="port"
+          description="TCP port number to listen on"
+                 type="int"/>
+    </operation>
+
+    <operation   name="createHttpsConnector"
+          description="Create a new HttpsConnector"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+      <parameter name="address"
+          description="The IP address on which to bind"
+                 type="java.lang.String"/>
+      <parameter name="port"
+          description="TCP port number to listen on"
+                 type="int"/>
+    </operation>
+
+    <operation   name="createJDBCRealm"
+          description="Create a new JDBC Realm"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createJNDIRealm"
+          description="Create a new JNDI Realm"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createMemoryRealm"
+          description="Create a new Memory Realm"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+    
+    <operation   name="createUserDatabaseRealm"
+          description="Create a new  UserDatabaseRealm"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+      <parameter name="resourceName"
+          description="Global JNDI resource name of the associated"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createRemoteAddrValve"
+          description="Create a new Remote Address Filter Valve"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createRemoteHostValve"
+          description="Create a new Remote Host Filter Valve"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createSingleSignOn"
+          description="Create a new Single Sign On Valve"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createStandardContext"
+          description="Create a new StandardContext"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+      <parameter name="path"
+          description="The context path for this Context"
+                 type="java.lang.String"/>
+      <parameter name="docBase"
+          description="Document base directory (or WAR) for this Context"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createStandardServiceEngine"
+          description="Create a new StandardService and StandardEngine"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="domain"
+          description="Domain used for MBeans associated with the new Service"
+                 type="java.lang.String"/>
+      <parameter name="defaultHost"
+          description="Default host name for the new Engine"
+                 type="java.lang.String"/>
+      <parameter name="baseDir"
+          description="Base directory value for the new Engine"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createStandardHost"
+          description="Create a new StandardHost"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+      <parameter name="name"
+          description="Unique name of this Host"
+                 type="java.lang.String"/>
+      <parameter name="appBase"
+          description="set host deployment directory"
+                 type="java.lang.String"/>
+      <parameter name="autoDeploy"
+          description="The auto deploy flag for this Host"
+               type="boolean"/>           
+      <parameter name="deployOnStartup"
+          description="The deploy on startup flag for this Host"
+               type="boolean"/>
+      <parameter name="deployXML"
+          description="deploy Context XML config files property"
+               type="boolean"/> 
+      <parameter name="unpackWARs"
+          description="Unpack WARs property"
+               type="boolean"/>
+    </operation>
+
+
+    <operation   name="createStandardManager"
+          description="Create a new StandardManager"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createUserDatabaseRealm"
+          description="Create a new UserDatabase Realm"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+      <parameter name="resourceName"
+          description="Global JNDI resource name of our UserDatabase instance"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createValve"
+          description="Create a new Valve for the given Container"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="className"
+          description="Fully qualified class name of the Valve to create"
+                 type="java.lang.String"/>
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="createWebappLoader"
+          description="Create a new Web Application Loader"
+               impact="ACTION"
+           returnType="java.lang.String">
+      <parameter name="parent"
+          description="MBean Name of the associated parent component"
+                 type="java.lang.String"/>
+    </operation>
+
+    <!-- IMPLEMENTATION NOTE - all of the removeXxxxx methods cause the     -->
+    <!-- corresponding Catalina component (and any related child            -->
+    <!-- components to be stopped (if necessary) and removed, and the       -->
+    <!-- corresponding MBeans to be destroyed.                              -->
+
+    <operation   name="removeConnector"
+          description="Remove an existing Connector"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="name"
+          description="MBean Name of the component to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeContext"
+          description="Remove an existing Context"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="name"
+          description="MBean Name of the component to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeHost"
+          description="Remove an existing Host"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="name"
+          description="MBean Name of the component to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeLoader"
+          description="Remove an existing Loader"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="name"
+          description="MBean Name of the component to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeManager"
+          description="Remove an existing Manager"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="name"
+          description="MBean Name of the component to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeRealm"
+          description="Remove an existing Realm"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="name"
+          description="MBean Name of the component to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeService"
+          description="Remove an existing Service"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="name"
+          description="MBean Name of the component to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeValve"
+          description="Remove an existing Valve"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="name"
+          description="MBean Name of the component to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+  </mbean>
+
+</mbeans-descriptors>

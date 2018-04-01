@@ -1,0 +1,29 @@
+<!--<start id="beans_template" />-->
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd"> 
+
+  <!-- Bean declarations go here --> 
+
+</beans>
+<!--<end id="beans_template" />-->
+
+//<start id="duke_in_essence" /> 
+new com.springinaction.springidol.Juggler();
+//<end id="duke_in_essence" />
+
+
+//<start id="load_context_duke" /> 
+ApplicationContext ctx = new ClassPathXmlApplicationContext(
+    "com/springinaction/springidol/spring-idol.xml"); 
+
+Performer performer = (Performer) ctx.getBean("duke");
+performer.perform();
+//<end id="load_context_duke" />
+
+//<start id="poetic_juggler_in_essence" /> 
+Poem sonnet29 = new Sonnet29(); 
+Performer duke = new PoeticJuggler(15, sonnet29); 
+//<end id="poetic_juggler_in_essence" />

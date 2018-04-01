@@ -1,0 +1,20 @@
+<!--<start id="listOfCities"/>--> 
+<util:list id="cities">
+  <bean class="com.habuma.spel.cities.City" 
+     p:name="Chicago" p:state="IL" p:population="2853114"/>
+  <bean class="com.habuma.spel.cities.City" 
+     p:name="Atlanta" p:state="GA" p:population="537958"/>
+  <bean class="com.habuma.spel.cities.City" 
+     p:name="Dallas" p:state="TX" p:population="1279910"/>
+  <bean class="com.habuma.spel.cities.City" 
+     p:name="Houston" p:state="TX" p:population="2242193"/>
+  <bean class="com.habuma.spel.cities.City" 
+     p:name="Odessa" p:state="TX" p:population="90943"/>
+  <bean class="com.habuma.spel.cities.City" 
+     p:name="El Paso" p:state="TX" p:population="613190"/>
+  <bean class="com.habuma.spel.cities.City" 
+     p:name="Jal" p:state="NM" p:population="1996"/>
+  <bean class="com.habuma.spel.cities.City" 
+     p:name="Las Cruces" p:state="NM" p:population="91865"/>
+</util:list>
+<!--<end id="listOfCities"/>--> 

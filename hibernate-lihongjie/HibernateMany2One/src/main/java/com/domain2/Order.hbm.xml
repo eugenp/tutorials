@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.domain2">
+
+    <class name="Order" table="order001">
+
+        <id name="id" type="long" column="ID">
+            <generator class="increment"/>
+        </id>
+
+        <property name="orderNumber" type="string" >
+            <column name="ORDER_NUMBER" length="15" />
+        </property>
+
+<!--        <many-to-one
+                name="customer"
+                column="CUSTOMER_ID"
+                class="Customer"
+                not-null="true"
+                lazy="false"
+        />-->
+
+        <!-- mapping with cascade -->
+              <many-to-one
+                name="customer"
+                column="CUSTOMER_ID"
+                class="com.domain2.Customer"
+                cascade="delete"
+                not-null="true"
+                lazy="false"
+              />
+
+    </class>
+
+</hibernate-mapping>

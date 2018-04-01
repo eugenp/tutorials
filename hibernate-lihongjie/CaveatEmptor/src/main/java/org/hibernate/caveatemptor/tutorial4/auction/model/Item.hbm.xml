@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping SYSTEM
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"
+[
+<!ENTITY % globals SYSTEM "classpath://auction/persistence/globals.dtd">
+%globals;
+]>
+
+<!--
+
+Mapping file for the Item class of CaveatEmptor.
+
+The 4000 character limit of Oracle VARCHAR columns for the text description.
+Every other database on the planet supports arbitrary length text datatypes
+without CLOBs.
+
+@author Christian Bauer
+-->
+<hibernate-mapping package="auction.model" default-access="field">
+
+<class name="Item" table="ITEM" check="START_DATE &lt; END_DATE">
+
+    <!-- Common id property -->
+	<id name="id" type="long" column="ITEM_ID">
+		<generator class="&idgenerator;"/>
+	</id>
+
+    <!-- A versioned entity -->
+	<version name="version" column="OBJ_VERSION"/>
+
+	<!-- Immutable property -->
+	<property   name="name" 
+				type="string"
+				length="255"
+				not-null="true"
+				update="false"
+                column="ITEM_NAME"/>
+
+	<!-- Limit item description to 4000 characters, Oracle -->
+	<property   name="description"
+                type="string"
+                column="DESCRIPTION"
+				length="4000"
+				not-null="true"/>
+
+	<!-- UserType for prices, length is precision of decimal field for DDL -->
+	<property   name="initialPrice"
+				type="monetary_amount_usd">
+        <column name="INITIAL_PRICE" length="2" not-null="true" index="IDX_INITIAL_PRICE"/>
+        <column name="INITIAL_PRICE_CURRENCY" length="3" not-null="true" index="IDX_INITIAL_PRICE"/>
+	</property>
+
+	<!-- UserTpe for prices, length is precision of decimal field for DDL -->
+	<property   name="reservePrice"
+				type="monetary_amount_usd">
+		<column name="RESERVE_PRICE" length="2" not-null="true"/>
+		<column name="RESERVE_PRICE_CURRENCY" length="3" not-null="true"/>
+	</property>
+
+	<!-- Immutable property -->
+	<property   name="startDate"
+				column="START_DATE"
+				type="timestamp"
+				update="false"
+				not-null="true"/>
+
+    <!-- Immutable property -->
+	<property   name="endDate"
+				column="END_DATE"
+				type="timestamp"
+				update="false"
+				not-null="true"
+                index="IDX_END_DATE"/> <!-- Standard database index -->
+
+	<!-- Custom usertype to map the enumeration -->
+	<property   name="state"
+				column="ITEM_STATE"
+				type="item_state"
+				not-null="true"/>
+
+	<property   name="approvalDatetime"
+				column="APPROVAL_DATETIME"
+				type="timestamp"
+				not-null="false"/>
+
+    <!-- Immutable property -->
+	<property   name="created"
+				column="CREATED"
+				type="timestamp"
+				update="false"
+				not-null="true"/>
+
+	<!-- Who approved this auction -->
+	<many-to-one name="approvedBy"
+				 class="User"
+				 column="APPROVED_BY_USER_ID"
+				 not-null="false"
+				 foreign-key="FK_APPROVED_BY_USER_ID"/>
+
+    <!-- Immutable property, bi-directional with bag on the other side -->
+	<many-to-one name="seller"
+                 class="User"
+				 column="SELLER_ID"
+				 update="false"
+				 not-null="true"
+                 foreign-key="FK_SELLER_ID"/>
+
+	<!-- Mark the successful bid, normal FK, non-legacy schema:
+	<many-to-one name="successfulBid"
+				 class="Bid"
+				 column="SUCCESSFUL_BID_ID"
+				 not-null="false"
+				 foreign-key="FK_SUCCESSFUL_BID_ID"/>
+    -->
+
+    <!-- Successful bid in legacy formula mapping with property-ref trick.
+         TODO-106: Hibernate doesn't support proxies for property-ref at time of writing -->
+    <one-to-one name="successfulBid" lazy="no-proxy"
+                property-ref="successReference">
+        <formula>'T'</formula>
+        <formula>ITEM_ID</formula>
+    </one-to-one>
+
+    <!-- We use a one-to-many association to express the relationship
+         to a set of categories. There is an intermediate entity class,
+         CategorizedItem, which effectively makes this a many-to-many
+         association between Item and Category.
+    -->
+	<set    name="categorizedItems"
+			cascade="all, delete-orphan"
+			inverse="true">
+        <key column="ITEM_ID" not-null="true"/>
+        <one-to-many class="CategorizedItem"/>
+	</set>
+
+	<!-- Use a standard parent/child relationship for bids, this a persistent list -->
+	<list name="bids" cascade="all" batch-size="10">
+		<key not-null="true"> <!-- NOT NULL has to be here! -->
+            <column name="ITEM_ID"/>
+        </key>
+        <list-index column="BID_POSITION"/>
+		<one-to-many class="Bid"/>
+	</list>
+
+	<!-- Map images (they are just filenames) to their own table, and allow
+	     duplicates with an <idbag> and a surrogate primary key column for
+	     the collection table. The "native" generator is not implemented for
+	     this mapping technique! -->
+	<idbag  name="images" table="ITEM_IMAGES">
+	    <collection-id column="ITEM_IMAGE_ID" type="int">
+            <generator class="&idgenerator;"/>
+	    </collection-id>
+        <key column="ITEM_ID" foreign-key="FK_ITEM_IMAGE_ITEM_ID"/>
+        <element column="FILENAME" type="string"/>
+	</idbag>
+
+    <!-- Legacy example, not very useful -->
+    <map name="bidsByIdentifier">
+        <key column="ITEM_ID"/>
+        <map-key type="long" column="BID_ID"/>
+        <one-to-many class="Bid"/>
+    </map>
+
+    <!-- The bidirectional association for the optional buyer (breaks custom SQL queries!)-->
+    <join table="ITEM_BUYER" optional="true" inverse="true" fetch="select">
+        <key column="ITEM_ID"/>
+        <many-to-one name="buyer" class="User" column="USER_ID"/>
+    </join>
+
+    <!-- Dynamic data filter -->
+    <filter name="limitItemsByUserRank"
+            condition=":currentUserRank >=
+                       (select u.RANK from USERS u where u.USER_ID = SELLER_ID)"/>
+
+</class>
+
+</hibernate-mapping>

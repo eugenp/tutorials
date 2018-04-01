@@ -1,0 +1,207 @@
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!--
+
+   This is the DTD defining the JavaServer Pages 1.1 Tag Library
+   descriptor (.tld) (XML) file format/syntax.
+
+   A Tag Library is a JAR file containing a valid instance of a Tag Library
+   Descriptor (taglib.tld) file in the META-INF subdirectory, along with the
+   appropriate implementing classes, and other resources required to
+   implement the tags defined therein.
+
+   Use is subject to license terms.
+  -->
+
+<!--
+The taglib tag is the document root, it defines:
+
+tlibversion the version of the tag library implementation
+jspversion  the version of JSP the tag library depends upon
+
+shortname   a simple default short name that could be used by
+            a JSP authoring tool to create names with a mnemonic
+            value; for example, the it may be used as the prefered
+            prefix value in taglib directives
+uri         a uri uniquely identifying this taglib
+info        a simple string describing the "use" of this taglib,
+            should be user discernable
+-->
+
+<!ELEMENT taglib (tlibversion, jspversion?, shortname, uri?, info?, tag+) >
+<!ATTLIST taglib id ID #IMPLIED
+          xmlns CDATA #FIXED
+                "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd"
+>
+
+<!--
+Describes this version (number) of the taglibrary (dewey decimal)
+
+#PCDATA ::= [0-9]*{ "."[0-9] }0..3
+-->
+
+<!ELEMENT tlibversion (#PCDATA) >
+
+<!--
+Describes the JSP version (number) this taglibrary requires in
+order to function (dewey decimal)
+
+The default is 1.1
+
+#PCDATA ::= [0-9]*{ "."[0-9] }0..3
+-->
+
+<!ELEMENT jspversion  (#PCDATA) >
+
+<!--
+Defines a short (default) shortname to be used for tags and
+variable names used/created by this tag library.  Do not use
+white space, and do not start with digits or underscore.
+
+#PCDATA ::= NMTOKEN
+-->
+
+<!ELEMENT shortname   (#PCDATA) >
+
+<!--
+Defines a public URI that uniquely identifies this version of
+the taglibrary Leave it empty if it does not apply.
+-->
+
+<!ELEMENT uri         (#PCDATA) >
+
+<!--
+Defines an arbitrary text string descirbing the tag library
+-->
+
+<!ELEMENT info        (#PCDATA) >
+
+<!--
+The tag defines a unique tag in this tag library, defining:
+
+- the unique tag/element name
+- the subclass of javax.servlet.jsp.tagext.Tag implementation class
+- an optional subclass of javax.servlet.jsp.tagext.TagExtraInfo
+- the body content type (hint)
+- optional tag-specific information
+- any attributes
+-->
+
+<!ELEMENT tag (name, tagclass, teiclass?, bodycontent?, info?, attribute*) >
+
+<!--
+Defines the subclass of javax.serlvet.jsp.tagext.Tag that implements
+the request time semantics for this tag. (required)
+
+#PCDATA ::= fully qualified Java class name
+-->
+
+<!ELEMENT tagclass (#PCDATA) >
+
+<!--
+Defines the subclass of javax.servlet.jsp.tagext.TagExtraInfo for
+this tag. (optional)
+
+If this is not given, the class is not consulted at translation time.
+
+#PCDATA ::= fully qualified Java class name
+-->
+
+<!ELEMENT teiclass (#PCDATA) >
+
+<!--
+Provides a hint as to the content of the body of this tag. Primarily
+intended for use by page composition tools.
+
+There are currently three values specified:
+
+tagdependent    The body of the tag is interpreted by the tag
+                implementation itself, and is most likely in a
+                different "langage", e.g embedded SQL statements.
+
+JSP             The body of the tag contains nested JSP syntax
+
+empty           The body must be empty
+
+The default (if not defined) is JSP
+
+#PCDATA ::=  tagdependent | JSP | empty
+
+-->
+
+<!ELEMENT bodycontent (#PCDATA) >
+
+<!--
+The attribute tag defines an attribute for the nesting tag
+
+An attribute definition is composed of:
+
+- the attributes name (required)
+- if the attribute is required or optional (optional)
+- if the attributes value may be dynamically calculated at runtime
+  by a scriptlet expression (optional)
+
+-->
+
+<!ELEMENT attribute (name, required? , rtexprvalue?) >
+
+<!--
+Defines the canonical name of a tag or attribute being defined
+
+#PCDATA ::= NMTOKEN
+-->
+
+<!ELEMENT name        (#PCDATA) >
+
+<!--
+Defines if the nesting attribute is required or optional.
+
+#PCDATA ::= true | false | yes | no
+
+If not present then the default is "false", i.e the attribute
+is optional.
+-->
+
+<!ELEMENT required    (#PCDATA) >
+
+<!--
+Defines if the nesting attribute can have scriptlet expressions as
+a value, i.e the value of the attribute may be dynamically calculated
+at request time, as opposed to a static value determined at translation
+time.
+
+#PCDATA ::= true | false | yes | no
+
+If not present then the default is "false", i.e the attribute
+has a static value
+-->
+
+<!ELEMENT rtexprvalue (#PCDATA) >
+
+<!ATTLIST tlibversion id ID #IMPLIED>
+<!ATTLIST jspversion id ID #IMPLIED>
+<!ATTLIST shortname id ID #IMPLIED>
+<!ATTLIST uri id ID #IMPLIED>
+<!ATTLIST info id ID #IMPLIED>
+<!ATTLIST tag id ID #IMPLIED>
+<!ATTLIST tagclass id ID #IMPLIED>
+<!ATTLIST teiclass id ID #IMPLIED>
+<!ATTLIST bodycontent id ID #IMPLIED>
+<!ATTLIST attribute id ID #IMPLIED>
+<!ATTLIST name id ID #IMPLIED>
+<!ATTLIST required id ID #IMPLIED>
+<!ATTLIST rtexprvalue id ID #IMPLIED>

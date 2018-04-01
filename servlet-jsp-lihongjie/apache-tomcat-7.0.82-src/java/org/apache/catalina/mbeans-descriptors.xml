@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<mbeans-descriptors>
+
+  <mbean name="Group"
+         className="org.apache.catalina.mbeans.GroupMBean"
+          description="Group from a user database"
+               domain="Users"
+                group="Group"
+                 type="org.apache.catalina.Group">
+
+    <attribute   name="description"
+          description="Description of this group"
+                 type="java.lang.String"/>
+
+    <attribute   name="groupname"
+          description="Group name of this group"
+                 type="java.lang.String"/>
+
+    <attribute   name="roles"
+          description="MBean Names of roles for this group"
+                 type="[Ljava.lang.String;"
+            writeable="false"/>
+
+    <attribute   name="users"
+          description="MBean Names of user members of this group"
+                 type="[Ljava.lang.String;"
+            writeable="false"/>
+
+    <operation   name="addRole"
+          description="Add a new authorized role for this group"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="role"
+          description="Role to be added"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeRole"
+          description="Remove an old authorized role for this group"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="role"
+          description="Role to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeRoles"
+          description="Remove all authorized roles for this group"
+               impact="ACTION"
+           returnType="void">
+    </operation>
+
+  </mbean>
+
+  <mbean         name="Role"
+            className="org.apache.catalina.mbeans.RoleMBean"
+          description="Security role from a user database"
+               domain="Users"
+                group="Role"
+                 type="org.apache.catalina.Role">
+
+    <attribute   name="description"
+          description="Description of this role"
+                 type="java.lang.String"/>
+
+    <attribute   name="rolename"
+          description="Role name of this role"
+                 type="java.lang.String"
+            writeable="false"/>
+
+  </mbean>
+
+  <mbean         name="User"
+            className="org.apache.catalina.mbeans.UserMBean"
+          description="User from a user database"
+               domain="Users"
+                group="User"
+                 type="org.apache.catalina.User">
+
+    <attribute   name="fullName"
+          description="Full name of this user"
+                 type="java.lang.String"/>
+
+    <attribute   name="groups"
+          description="MBean Names of groups this user is a member of"
+                 type="[Ljava.lang.String;"
+            writeable="false"/>
+
+    <attribute   name="password"
+          description="Password of this user"
+                 type="java.lang.String"/>
+
+    <attribute   name="roles"
+          description="MBean Names of roles for this user"
+                 type="[Ljava.lang.String;"
+            writeable="false"/>
+
+    <attribute   name="username"
+          description="User name of this user"
+                 type="java.lang.String"/>
+
+    <operation   name="addGroup"
+          description="Add a new group membership for this user"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="groupname"
+          description="Group name of the new group"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="addRole"
+          description="Add a new authorized role for this user"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="role"
+          description="Role to be added"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeGroup"
+          description="Remove an old group membership for this user"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="groupname"
+          description="Group name of the old group"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeGroups"
+          description="Remove all group memberships for this user"
+               impact="ACTION"
+           returnType="void">
+    </operation>
+
+    <operation   name="removeRole"
+          description="Remove an old authorized role for this user"
+               impact="ACTION"
+           returnType="void">
+      <parameter name="role"
+          description="Role to be removed"
+                 type="java.lang.String"/>
+    </operation>
+
+    <operation   name="removeRoles"
+          description="Remove all authorized roles for this user"
+               impact="ACTION"
+           returnType="void">
+    </operation>
+
+  </mbean>
+
+</mbeans-descriptors>

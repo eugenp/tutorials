@@ -1,0 +1,22 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-width: 920px;
+    height: 100%;
+    padding: 30px;
+}
+
+.page-info {
+    margin-right: 10px;
+    padding-top: 8px;
+}
+
+#date-range {
+    margin-top: 30px;
+}
+
+.align-center {
+    text-align: center;
+}

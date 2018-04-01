@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="fs-default.html">
+
+  &project;
+
+  <properties>
+    <author email="craigmcc@apache.org">Craig McClanahan</author>
+    <title>Default Servlet</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Overview">
+
+
+  <subsection name="Introduction">
+
+    <p>The purpose of the <strong>Default Servlet</strong> is to serve
+    static resources of a web application in response to client requests.
+    As the name implies, it is generally configured as the "default"
+    servlet for a web application, by being mapped to a URL pattern "/".</p>
+
+  </subsection>
+
+
+  <subsection name="External Specifications">
+
+    <p>The following external specifications have provisions which
+    partially define the correct behavior of the default servlet:</p>
+    <ul>
+    <li><a href="http://java.sun.com/products/servlet/download.html">
+        Servlet Specification</a> (Version 2.3 PFD2)</li>
+    <li><a href="http://www.rfc-editor.org/rfc/rfc2046.txt">Multipurpose
+        Internet Mail Extensions (MIME) Part Two: Media Types</a></li>
+    <li><a href="http://www.rfc-editor.org/rfc/rfc2616.txt">Hypertext
+        Transfer Protocol -- HTTP/1.1</a></li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Implementation Requirements">
+
+    <p>The implementation of this functionality shall conform to the
+    following requirements:</p>
+    <ul>
+    <li>Must be implemented as a servlet.</li>
+    <li>Must support configurable parameters for debugging detail level,
+        input buffer size, output buffer size, whether or not to produce
+        directory listings when no welcome file is present, and whether or not
+        modifications are supported via DELETE and PUT.</li>
+    <li>Log debugging and operational messages (suitably internationalized)
+        via the <code>getServletContext().log()</code> method.</li>
+    </ul>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Dependencies">
+
+
+  <subsection name="Environmental Dependencies">
+
+    <p>The following environmental dependencies must be met in order for
+    the default servlet to operate correctly:</p>
+    <ul>
+    <li>The default servlet must be registered in the application deployment
+        descriptor (or the default deployment descriptor in file
+        <code>$CATALINA_BASE/conf/web.xml</code>) using a "default servlet"
+        servlet mapping, signified by URL pattern "/".</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Container Dependencies">
+
+    <p>Correct operation of the default servlet depends on the following
+    specific features of the surrounding container:</p>
+    <ul>
+    <li>The container shall provide a servlet context attribute that
+        lists the welcome file names that have been defined for this
+        web application.</li>
+    <li>The container shall provide a servlet context attribute that
+        contains a <code>javax.naming.directory.DirContext</code>
+        implementation representing the static resources of this
+        web application.</li>
+    </ul>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Functionality">
+
+
+  <subsection name="Initialization Functionality">
+
+    <p>The following processing must be performed when the <code>init()</code>
+    method of the default servlet is called:</p>
+    <ul>
+    <li>Process and sanity check configuration parameters.</li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Per-Request Functionality">
+
+
+    <p>For all HTTP request methods, the resource path is determined from
+    the path information provided to this request, either as request attribute
+    <code>javax.servlet.include.path_info</code> (for a request dispatcher
+    access to a static resource) or by calling
+    <code>request.getPathInfo()</code> directly.</p>
+
+    <p>On each HTTP DELETE request processed by this servlet, the following
+    processing shall be performed:</p>
+    <ul>
+    <li>If modifications to the static resources are not allowed (set by a
+        configuration parameter), return HTTP status 403 (forbidden).</li>
+    <li>If an attempt is made to delete a resource from <code>/META-INF</code>
+        or <code>/WEB-INF</code>, return HTTP status 403 (forbidden).</li>
+    <li>If the requested resource does not exist, return HTTP status 404
+        (not found)</li>
+    <li>Unbind the resource from the directory context containing the
+        static resources for this web application.  If successful, return
+        HTTP status 204 (no content).  Otherwise, return HTTP status 405
+        (method not allowed).</li>
+    </ul>
+
+
+    <p>On each HTTP GET request processed by this servlet, the following
+    processing shall be performed:</p>
+    <ul>
+    <li>If the request is for a resource under <code>/META-INF</code> or
+        <code>/WEB-INF</code>, return HTTP status 404 (not found).</li>
+    <li>If the requested resource does not exist, return HTTP status 404
+        (not found).</li>
+    <li>If the requested resource is not a directory, but the resource
+        path ends in "/" or "\", return HTTP status 404 (not found).</li>
+    <li>If the requested resource is a directory:
+        <ul>
+        <li>If the request path does not end with "/", redirect to a
+            corresponding path with "/" appended so that relative references
+            in welcome files are resolved correctly.</li>
+        <li>If one of the specified welcome files exists, redirect to the
+            path for that welcome file so that it will be served explicitly.
+            </li>
+        </ul></li>
+    <li>If the request being processed contains an <code>If-Range</code>
+        header, perform the processing described in the HTTP/1.1 specification
+        to determine whether the client's information is up to date.</li>
+    <li>Determine the content type of the response, by looking up the
+        corresponding MIME type in our servlet context.</li>
+    <li>If the requested resource is a directory:
+        <ul>
+        <li>If directory listings are suppressed, return HTTP status 404
+            (not found).</li>
+        <li>Set the content type to <code>text/html</code>.</li>
+        </ul></li>
+    <li>Determine the range(s) to be returned, based on the existence of
+        any <code>If-Range</code> and <code>Range</code> headers.</li>
+    <li>If the requested resource is a directory, include an <code>ETag</code>
+        header in the response, with the value calculated based on the content
+        of the directory.</li>
+    <li>Include a <code>Last-Modified</code> header in the response documenting
+        the date/time that the resource was last modified.</li>
+    <li>Unless we are processing a HEAD request, include the appropriate
+        content (or content ranges) in the response.</li>
+    </ul>
+
+    <p>On each HTTP HEAD request processed by this servlet, the following
+    processing shall be performed:</p>
+    <ul>
+    <li>Processed identically to an HTTP GET request, except that the data
+        content is not transmitted after the headers.</li>
+    </ul>
+
+    <p>On each HTTP POST request processed by this servlet, the following
+    processing shall be performed:</p>
+    <ul>
+    <li>Processed identically to an HTTP GET request.</li>
+    </ul>
+
+
+    <p>On each HTTP PUT request processed by this servlet, the following
+    processing shall be performed:</p>
+    <ul>
+    <li>If modifications to the static resources are not allowed (set by a
+        configuration parameter), return HTTP status 403 (forbidden).</li>
+    <li>If an attempt is made to delete a resource from <code>/META-INF</code>
+        or <code>/WEB-INF</code>, return HTTP status 403 (forbidden).</li>
+    <li>Create a new resource from the body of this request.</li>
+    <li>Bind or rebind the specified path to the new resource (depending on
+        whether it currently exists or not).  Return HTTP status as follows:
+        <ul>
+        <li>If binding was unsuccessful, return HTTP status 409 (conflict).
+            </li>
+        <li>If binding was successful and the resource did not previously
+            exist, return HTTP status 201 (created).</li>
+        <li>If binding was successful and the resource previously existed,
+            return HTTP status 204 (no content).</li>
+        </ul></li>
+    </ul>
+
+  </subsection>
+
+
+  <subsection name="Finalization Functionality">
+
+    <p>No specific processing is required when the <code>destroy()</code>
+    method is called:</p>
+
+  </subsection>
+
+
+</section>
+
+
+<section name="Testable Assertions">
+
+  <p>In addition to the assertions implied by the functionality requirements
+  listed above, the following additional assertions shall be tested to
+  validate the behavior of the default servlet:</p>
+  <ul>
+  <li>Requests for resources that do not exist in the web application must
+      return HTTP status 404 (not found).</li>
+  <li>The default servlet must operate identically for web applications that
+      are run out of a WAR file directly, or from an unpacked directory
+      structure.</li>
+  <li>If the web application is running out of an unpacked directory
+      structure, the default servlet must recognize cases where the resource
+      has been updated through external means.</li>
+  </ul>
+
+</section>
+
+
+</body>
+
+</document>

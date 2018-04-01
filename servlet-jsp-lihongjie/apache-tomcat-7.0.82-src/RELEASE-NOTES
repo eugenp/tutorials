@@ -1,0 +1,230 @@
+================================================================================
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+================================================================================
+
+
+                     Apache Tomcat Version @VERSION@
+                            Release Notes
+
+
+=========
+CONTENTS:
+=========
+
+* Dependency Changes
+* API Stability
+* JNI Based Applications
+* Bundled APIs
+* Web application reloading and static fields in shared libraries
+* Tomcat on Linux
+* Enabling SSI and CGI Support
+* Security manager URLs
+* Symlinking static resources
+* Viewing the Tomcat Change Log
+* Cryptographic software notice
+* When all else fails
+
+
+===================
+Dependency Changes:
+===================
+Tomcat @VERSION_MAJOR_MINOR@ is designed to run on Java SE 6 and later.
+
+In addition, Tomcat @VERSION_MAJOR_MINOR@ uses the Eclipse JDT Java compiler for
+compiling JSP pages.  This means you no longer need to have the complete
+Java Development Kit (JDK) to run Tomcat, but a Java Runtime Environment
+(JRE) is sufficient.  The Eclipse JDT Java compiler is bundled with the
+binary Tomcat distributions.  Tomcat can also be configured to use the
+compiler from the JDK to compile JSPs, or any other Java compiler supported
+by Apache Ant.
+
+
+==============
+API Stability:
+==============
+The public interfaces for the following classes are fixed and will not be
+changed at all during the remaining lifetime of the 7.x series:
+- javax/**/*
+
+The public interfaces for the following classes may be added to in order to
+resolve bugs and/or add new features. No existing interface will be removed or
+changed although it may be deprecated.
+- org/apache/catalina/*
+- org/apache/catalina/comet/*
+
+Note: As Tomcat 7 matures, the above list will be added to. The list is not
+      considered complete at this time.
+
+The remaining classes are considered part of the Tomcat internals and may change
+without notice between point releases.
+
+
+=======================
+JNI Based Applications:
+=======================
+Applications that require native libraries must ensure that the libraries have
+been loaded prior to use.  Typically, this is done with a call like:
+
+  static {
+    System.loadLibrary("path-to-library-file");
+  }
+
+in some class.  However, the application must also ensure that the library is
+not loaded more than once.  If the above code were placed in a class inside
+the web application (i.e. under /WEB-INF/classes or /WEB-INF/lib), and the
+application were reloaded, the loadLibrary() call would be attempted a second
+time.
+
+To avoid this problem, place classes that load native libraries outside of the
+web application, and ensure that the loadLibrary() call is executed only once
+during the lifetime of a particular JVM.
+
+
+=============
+Bundled APIs:
+=============
+A standard installation of Tomcat @VERSION_MAJOR_MINOR@ makes all of the following APIs available
+for use by web applications (by placing them in "lib"):
+* annotations-api.jar (Annotations package)
+* catalina.jar (Tomcat Catalina implementation)
+* catalina-ant.jar (Tomcat Catalina Ant tasks)
+* catalina-ha.jar (High availability package)
+* catalina-tribes.jar (Group communication)
+* ecj-@JDT_VERSION@.jar (Eclipse JDT Java compiler)
+* el-api.jar (EL 2.2 API)
+* jasper.jar (Jasper 2 Compiler and Runtime)
+* jasper-el.jar (Jasper 2 EL implementation)
+* jsp-api.jar (JSP 2.2 API)
+* servlet-api.jar (Servlet 3.0 API)
+* tomcat7-websocket.jar (WebSocket 1.1 implementation)
+* tomcat-api.jar (Interfaces shared by Catalina and Jasper)
+* tomcat-coyote.jar (Tomcat connectors and utility classes)
+* tomcat-dbcp.jar (package renamed database connection pool based on Commons DBCP)
+* tomcat-jdbc.jar (Tomcat's database connection pooling solution)
+* tomcat-util.jar (Various utilities)
+* websocket-api.jar (WebSocket 1.1 API)
+
+You can make additional APIs available to all of your web applications by
+putting unpacked classes into a "classes" directory (not created by default),
+or by placing them in JAR files in the "lib" directory.
+
+To override the XML parser implementation or interfaces, use the endorsed
+mechanism of the JVM. The default configuration defines JARs located in
+"endorsed" as endorsed.
+
+
+================================================================
+Web application reloading and static fields in shared libraries:
+================================================================
+Some shared libraries (many are part of the JDK) keep references to objects
+instantiated by the web application. To avoid class loading related problems
+(ClassCastExceptions, messages indicating that the classloader
+is stopped, etc.), the shared libraries state should be reinitialized.
+
+Something which might help is to avoid putting classes which would be
+referenced by a shared static field in the web application classloader,
+and putting them in the shared classloader instead (JARs should be put in the
+"lib" folder, and classes should be put in the "classes" folder).
+
+
+================
+Tomcat on Linux:
+================
+GLIBC 2.2 / Linux 2.4 users should define an environment variable:
+export LD_ASSUME_KERNEL=2.2.5
+
+Redhat Linux 9.0 users should use the following setting to avoid
+stability problems:
+export LD_ASSUME_KERNEL=2.4.1
+
+There are some Linux bugs reported against the NIO sendfile behavior, make sure you
+have a JDK that is up to date, or disable sendfile behavior in the Connector.<br/>
+6427312: (fc) FileChannel.transferTo() throws IOException "system call interrupted"<br/>
+5103988: (fc) FileChannel.transferTo should return -1 for EAGAIN instead throws IOException<br/>
+6253145: (fc) FileChannel.transferTo on Linux fails when going beyond 2GB boundary<br/>
+6470086: (fc) FileChannel.transferTo(2147483647, 1, channel) cause "Value too large" exception<br/>
+
+
+=============================
+Enabling SSI and CGI Support:
+=============================
+Because of the security risks associated with CGI and SSI available
+to web applications, these features are disabled by default.  
+
+To enable and configure CGI support, please see the cgi-howto.html page.
+
+To enable and configue SSI support, please see the ssi-howto.html page.
+
+
+======================
+Security manager URLs:
+======================
+In order to grant security permissions to JARs located inside the
+web application repository, use URLs of of the following format
+in your policy file:
+
+file:${catalina.base}/webapps/examples/WEB-INF/lib/driver.jar
+
+
+============================
+Symlinking static resources:
+============================
+By default, Unix symlinks will not work when used in a web application to link
+resources located outside the web application root directory.
+
+This behavior is optional, and the "allowLinking" flag may be used to disable
+the check.
+
+
+==============================
+Viewing the Tomcat Change Log:
+==============================
+See changelog.html in this directory.
+
+
+=============================
+Cryptographic software notice
+=============================
+This distribution includes cryptographic software.  The country in
+which you currently reside may have restrictions on the import,
+possession, use, and/or re-export to another country, of
+encryption software.  BEFORE using any encryption software, please
+check your country's laws, regulations and policies concerning the
+import, possession, or use, and re-export of encryption software, to
+see if this is permitted.  See <http://www.wassenaar.org/> for more
+information.
+
+The U.S. Government Department of Commerce, Bureau of Industry and
+Security (BIS), has classified this software as Export Commodity
+Control Number (ECCN) 5D002.C.1, which includes information security
+software using or performing cryptographic functions with asymmetric
+algorithms.  The form and manner of this Apache Software Foundation
+distribution makes it eligible for export under the License Exception
+ENC Technology Software Unrestricted (TSU) exception (see the BIS
+Export Administration Regulations, Section 740.13) for both object
+code and source code.
+
+The following provides more details on the included cryptographic
+software:
+  - Tomcat includes code designed to work with JSSE
+  - Tomcat includes code designed to work with OpenSSL
+
+
+====================
+When all else fails:
+====================
+See the FAQ
+http://tomcat.apache.org/faq/

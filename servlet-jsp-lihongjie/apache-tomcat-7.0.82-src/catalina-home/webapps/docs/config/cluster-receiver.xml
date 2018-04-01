@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!DOCTYPE document [
+  <!ENTITY project SYSTEM "project.xml">
+]>
+<document url="cluster-receiver.html">
+
+  &project;
+
+  <properties>
+    <author email="fhanik@apache.org">Filip Hanik</author>
+    <title>The Cluster Receiver object</title>
+  </properties>
+
+<body>
+
+<section name="Table of Contents">
+<toc/>
+</section>
+
+<section name="Introduction">
+  <p>
+  The receiver component is responsible for receiving cluster messages.
+  As you might notice through the configuration, is that the receiving of messages
+  and sending of messages are two different components, this is different from many other
+  frameworks, but there is a good reason for it, to decouple the logic for how messages are sent from
+  how messages are received.<br/>
+  The receiver is very much like the Tomcat Connector, its the base of the thread pool
+  for incoming cluster messages. The receiver is straight forward, but all the socket settings
+  for incoming traffic are managed here.
+  </p>
+</section>
+
+<section name="Blocking vs Non-Blocking Receiver">
+  <p>
+  The receiver supports both a non blocking, <code>org.apache.catalina.tribes.transport.nio.NioReceiver</code>, and a
+  blocking, <code>org.apache.catalina.tribes.transport.bio.BioReceiver</code>. It is preferred to use the non blocking receiver
+  to be able to grow your cluster without running into thread starvation.<br/>
+  Using the non blocking receiver allows you to with a very limited thread count to serve a large number of messages.
+  Usually the rule is to use 1 thread per node in the cluster for small clusters, and then depending on your message frequency
+  and your hardware, you'll find an optimal number of threads peak out at a certain number.
+  </p>
+</section>
+
+<section name="Attributes">
+  <subsection name="Common Attributes">
+  <attributes>
+    <attribute name="className" required="true">
+      The implementation of the receiver component. Two implementations available,
+      <code>org.apache.catalina.tribes.transport.nio.NioReceiver</code> and
+      <code>org.apache.catalina.tribes.transport.bio.BioReceiver</code>.<br/>
+      The <code>org.apache.catalina.tribes.transport.nio.NioReceiver</code> is the
+      preferred implementation
+    </attribute>
+    <attribute name="address" required="false">
+      The address (network interface) to listen for incoming traffic.
+      Same as the bind address. The default value is <code>auto</code> and translates to
+      <code>java.net.InetAddress.getLocalHost().getHostAddress()</code>.
+    </attribute>
+    <attribute name="direct" required="false">
+      Possible values are <code>true</code> or <code>false</code>.
+      Set to true if you want the receiver to use direct bytebuffers when reading data
+      from the sockets.
+    </attribute>
+    <attribute name="port" required="false">
+      The listen port for incoming data. The default value is <code>4000</code>.
+      To avoid port conflicts the receiver will automatically bind to a free port within the range of
+      <code> port &lt;= bindPort &lt; port+autoBind</code>
+      So for example, if port is 4000, and autoBind is set to 10, then the receiver will open up
+      a server socket on the first available port in the range 4000-4009.
+    </attribute>
+    <attribute name="autoBind" required="false">
+      Default value is <code>100</code>.
+      Use this value if you wish to automatically avoid port conflicts the cluster receiver will try to open a
+      server socket on the <code>port</code> attribute port, and then work up <code>autoBind</code> number of times.
+    </attribute>
+    <attribute name="securePort" required="false">
+      The secure listen port. This port is SSL enabled. If this attribute is omitted no SSL port is opened up.
+      There default value is unset, meaning there is no SSL socket available.
+    </attribute>
+    <attribute name="udpPort" required="false">
+      The UDP listen port. If this attribute is omitted no UDP port is opened up.
+      There default value is unset, meaning there is no UDP listener available.
+    </attribute>
+    <attribute name="selectorTimeout" required="false">
+      The value in milliseconds for the polling timeout in the <code>NioReceiver</code>. On older versions of the JDK
+      there have been bugs, that should all now be cleared out where the selector never woke up.
+      The default value is a very high <code>5000</code> milliseconds.
+    </attribute>
+    <attribute name="maxThreads" required="false">
+      The maximum number of threads in the receiver thread pool. The default value is <code>6</code>
+      Adjust this value relative to the number of nodes in the cluster, the number of messages being exchanged and
+      the hardware you are running on. A higher value doesn't mean more efficiency, tune this value according to your
+      own test results.
+    </attribute>
+    <attribute name="minThreads" required="false">
+      Minimum number of threads to be created when the receiver is started up. Default value is <code>6</code>
+    </attribute>
+    <attribute name="maxIdleTime" required="false">
+      Maximum number of milliseconds of until Idle thread terminates. Default value is <code>60000</code> milliseconds.
+    </attribute>
+    <attribute name="ooBInline" required="false">
+      Boolean value for the socket OOBINLINE option. Possible values are <code>true</code> or <code>false</code>.
+    </attribute>
+    <attribute name="rxBufSize" required="false">
+      The receiver buffer size on the receiving sockets. Value is in bytes, the default value is <code>43800</code> bytes.
+    </attribute>
+    <attribute name="txBufSize" required="false">
+      The sending buffer size on the receiving sockets. Value is in bytes, the default value is <code>25188</code> bytes.
+    </attribute>
+    <attribute name="udpRxBufSize" required="false">
+        The receive buffer size on the datagram socket.
+        Default value is <code>25188</code> bytes.
+    </attribute>
+    <attribute name="udpTxBufSize" required="false">
+       The send buffer size on the datagram socket.
+       Default value is <code>43800</code> bytes.
+    </attribute>
+    <attribute name="soKeepAlive" required="false">
+      Boolean value for the socket SO_KEEPALIVE option. Possible values are <code>true</code> or <code>false</code>.
+    </attribute>
+    <attribute name="soLingerOn" required="false">
+      Boolean value to determine whether to use the SO_LINGER socket option.
+      Possible values are <code>true</code> or <code>false</code>. Default value is <code>true</code>.
+    </attribute>
+    <attribute name="soLingerTime" required="false">
+      Sets the SO_LINGER socket option time value. The value is in seconds.
+      The default value is <code>3</code> seconds.
+    </attribute>
+    <attribute name="soReuseAddress" required="false">
+     Boolean value for the socket SO_REUSEADDR option. Possible values are <code>true</code> or <code>false</code>.
+    </attribute>
+    <attribute name="tcpNoDelay" required="false">
+     Boolean value for the socket TCP_NODELAY option. Possible values are <code>true</code> or <code>false</code>.
+     The default value is <code>true</code>
+    </attribute>
+    <attribute name="timeout" required="false">
+     Sets the SO_TIMEOUT option on the socket. The value is in milliseconds and the default value is <code>3000</code>
+     milliseconds.
+    </attribute>
+    <attribute name="useBufferPool" required="false">
+     Boolean value whether to use a shared buffer pool of cached <code>org.apache.catalina.tribes.io.XByteBuffer</code>
+     objects. If set to true, the XByteBuffer that is used to pass a message up the channel, will be recycled at the end
+     of the requests. This means that interceptors in the channel must not maintain a reference to the object
+     after the <code>org.apache.catalina.tribes.ChannelInterceptor#messageReceived</code> method has exited.
+    </attribute>
+  </attributes>
+  </subsection>
+  <subsection name="NioReceiver">
+  </subsection>
+  <subsection name="BioReceiver">
+  </subsection>
+
+</section>
+</body>
+</document>
