@@ -73,5 +73,6 @@
     <modules>
         <module>ejb-remote-for-spring</module>
         <module>spring-ejb-client</module>
+        <module>singleton-ejb-bean</module>
     </modules>
 </project>
