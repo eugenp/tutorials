@@ -10,6 +10,9 @@
     </title>
 </head>
 <body>
+<h1>
+    <c:out value="${pageTitle}"/>
+</h1>
 <div>
     <h3>
         <c:out value="<fmt:formatNumber> Example"/>
