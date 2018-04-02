@@ -18,7 +18,7 @@ public class Kitchen {
                 break;
 
             case PIZZA:
-                cookFor(20);
+                cookFor(10);
                 greeting = "Pepperoni special!";
                 break;
 
