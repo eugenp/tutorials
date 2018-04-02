@@ -19,5 +19,24 @@
 	
 	<bean id="textFormatterBean" class="com.baeldung.dependencyinjectiontypes.TextFormatter">
 	</bean>
-	
+
+	<bean id="carWithConstructorInjectionBean"
+		  class="com.baeldung.dependencyinjectiontypes.car.CarWithConstructorInjection">
+		<constructor-arg ref="engine" />
+	</bean>
+
+	<bean id="carWithSetterInjectionBean"
+		  class="com.baeldung.dependencyinjectiontypes.car.CarWithSetterInjection">
+		<property name="engine" ref="engine2" />
+	</bean>
+
+	<bean id="engine" class="com.baeldung.dependencyinjectiontypes.car.Engine">
+		<constructor-arg index="0" value="V8" />
+		<constructor-arg index="1" value="335" />
+	</bean>
+
+	<bean id="engine2" class="com.baeldung.dependencyinjectiontypes.car.Engine">
+		<constructor-arg index="0" value="V12" />
+		<constructor-arg index="1" value="645" />
+	</bean>
 </beans>
