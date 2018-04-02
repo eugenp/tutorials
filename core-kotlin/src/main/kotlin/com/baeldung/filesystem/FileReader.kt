@@ -3,7 +3,6 @@ package com.baeldung.filesystem
 import java.io.BufferedReader
 import java.io.File
 import java.io.InputStream
-import java.nio.charset.StandardCharsets
 
 class FileReader {
 
@@ -25,16 +24,16 @@ class FileReader {
     }
 
     fun readFileAsLinesUsingReadLines(fileName: String): List<String> {
-        return File(fileName).readLines(StandardCharsets.UTF_8)
+        return File(fileName).readLines()
     }
 
     fun readFileAsTextUsingInputStream(fileName: String): String {
         val inputStream: InputStream = File(fileName).inputStream()
-        return inputStream.readBytes().toString(StandardCharsets.UTF_8)
+        return inputStream.readBytes().toString(Charsets.UTF_8)
     }
 
     fun readFileDirectlyAsText(fileName: String): String {
-        return File(fileName).readText(StandardCharsets.UTF_8)
+        return File(fileName).readText(Charsets.UTF_8)
     }
 
 }
