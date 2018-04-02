@@ -101,6 +101,12 @@ public class JSTLController {
         return new FileSystemResource(new File(servletContext.getRealPath("/WEB-INF/items.xsl")));
     }
 
+    @RequestMapping(value = "/function_tags", method = RequestMethod.GET)
+    public ModelAndView functionTags(final Model model) {
+        ModelAndView mv = new ModelAndView("function_tags");
+        return mv;
+    }
+
 
     private void generateDummy(Connection connection) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO USERS " +
