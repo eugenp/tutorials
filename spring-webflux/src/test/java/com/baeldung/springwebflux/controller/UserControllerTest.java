@@ -19,13 +19,25 @@ public class UserControllerTest {
 
     @Test
     public void getUserName() {
-        EntityExchangeResult<String> result = webTestClient.get().uri("/users/fabio")
+        EntityExchangeResult<String> result = webTestClient.get().uri("/users/baeldung")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class)
                 .returnResult();
 
-        assertEquals(result.getResponseBody(), "fabio");
+        assertEquals(result.getResponseBody(), "baeldung");
+        assertEquals(result.getResponseHeaders().getFirst("web-filter"), "web-filter-test");
+    }
+
+    @Test
+    public void getUserNameTest() {
+        EntityExchangeResult<String> result = webTestClient.get().uri("/users/test")
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(String.class)
+                .returnResult();
+
+        assertEquals(result.getResponseBody(), "test");
         assertEquals(result.getResponseHeaders().getFirst("web-filter"), "web-filter-test");
     }
 }

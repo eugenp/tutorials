@@ -19,13 +19,13 @@ public class PlayerHandlerTest {
 
     @Test
     public void getPlayerName() {
-        EntityExchangeResult<String> result = webTestClient.get().uri("/players/fabio")
+        EntityExchangeResult<String> result = webTestClient.get().uri("/players/baeldung")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class)
                 .returnResult();
 
-        assertEquals(result.getResponseBody(), "fabio");
+        assertEquals(result.getResponseBody(), "baeldung");
         assertEquals(result.getResponseHeaders().getFirst("web-filter"), "web-filter-test");
     }
 
