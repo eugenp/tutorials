@@ -32,3 +32,8 @@ dependencies {
 springBoot {
     mainClassName = 'org.baeldung.DemoApplication'
 }
+
+bootJar {
+//    This is overridden by the mainClassName in springBoot{} and added here for reference purposes.
+    mainClassName = 'org.baeldung.DemoApplication'
+}
