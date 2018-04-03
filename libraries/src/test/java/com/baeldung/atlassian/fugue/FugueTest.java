@@ -42,7 +42,11 @@ public class FugueTest {
 
     @Test
     public void whenNullOption_thenSome() {
-        Option<Object> some = Option.some("value").map(x -> null);
+        Option<String> some = Option.some("value") .map(String::toUpperCase);
+
+        assertEquals("VALUE", some.get());
+
+        some = some.map(x -> null);
 
         assertNull(some.get());
         some.forEach(Assert::assertNull);
@@ -113,6 +117,7 @@ public class FugueTest {
 
         assertTrue(either.isRight());
         assertEquals("value", either.right().get());
+        either.right().forEach(x -> assertEquals("value", x));
     }
 
     private static String decodeSQLErrorCode(Integer x) {
