@@ -21,3 +21,4 @@
 - [Using a Spring Cloud App Starter](http://www.baeldung.com/using-a-spring-cloud-app-starter)
 - [Spring Cloud Connectors and Heroku](http://www.baeldung.com/spring-cloud-heroku)
 - [An Example of Load Balancing with Zuul and Eureka](http://www.baeldung.com/zuul-load-balancing)
+- [An Intro to Spring Cloud Contract](http://www.baeldung.com/spring-cloud-contract)

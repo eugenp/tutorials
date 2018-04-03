@@ -1,15 +1,21 @@
-package com.baeldung.jpa
+package com.baeldung.kotlin.jpa
 
+import javax.persistence.CascadeType
+import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
-import javax.persistence.Table
+import javax.persistence.OneToMany
 
 @Entity
-@Table(name = "person")
-data class Person(
+data class Person @JvmOverloads constructor(
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         val id: Int,
-        val name: String)
+        @Column(nullable = false)
+        val name: String,
+        @Column(nullable = true)
+        val email: String? = null,
+        @OneToMany(cascade = [CascadeType.ALL])
+        val phoneNumbers: List<PhoneNumber>? = null)

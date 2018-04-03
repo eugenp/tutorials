@@ -19,8 +19,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hibernate.version>5.2.13.Final</hibernate.version>
-        <kotlin.version>1.2.21</kotlin.version>
+        <hibernate.version>5.2.15.Final</hibernate.version>
+        <kotlin.version>1.2.30</kotlin.version>
         <spring.version>4.3.10.RELEASE</spring.version>
         <thymeleaf.version>3.0.7.RELEASE</thymeleaf.version>
         <h2.version>1.4.196</h2.version>

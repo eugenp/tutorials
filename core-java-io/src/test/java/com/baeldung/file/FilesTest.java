@@ -42,19 +42,14 @@ public class FilesTest {
         CharSink chs = com.google.common.io.Files.asCharSink(file, Charsets.UTF_8, FileWriteMode.APPEND);
         chs.write("Spain\r\n");
 
-        assertThat(StreamUtils.getStringFromInputStream(
-          new FileInputStream(fileName)))
-          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
+        assertThat(StreamUtils.getStringFromInputStream(new FileInputStream(fileName))).isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
     }
-
 
     @Test
     public void whenAppendToFileUsingFiles_thenCorrect() throws IOException {
         Files.write(Paths.get(fileName), "Spain\r\n".getBytes(), StandardOpenOption.APPEND);
 
-        assertThat(StreamUtils.getStringFromInputStream(
-          new FileInputStream(fileName)))
-          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
+        assertThat(StreamUtils.getStringFromInputStream(new FileInputStream(fileName))).isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
     }
 
     @Test
@@ -62,9 +57,7 @@ public class FilesTest {
         File file = new File(fileName);
         FileUtils.writeStringToFile(file, "Spain\r\n", StandardCharsets.UTF_8, true);
 
-        assertThat(StreamUtils.getStringFromInputStream(
-          new FileInputStream(fileName)))
-          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
+        assertThat(StreamUtils.getStringFromInputStream(new FileInputStream(fileName))).isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
     }
 
     @Test
@@ -73,9 +66,7 @@ public class FilesTest {
         fos.write("Spain\r\n".getBytes());
         fos.close();
 
-        assertThat(StreamUtils.getStringFromInputStream(
-          new FileInputStream(fileName)))
-          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
+        assertThat(StreamUtils.getStringFromInputStream(new FileInputStream(fileName))).isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
     }
 
     @Test
@@ -86,9 +77,6 @@ public class FilesTest {
         bw.newLine();
         bw.close();
 
-        assertThat(
-          StreamUtils.getStringFromInputStream(
-            new FileInputStream(fileName)))
-          .isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\n");
+        assertThat(StreamUtils.getStringFromInputStream(new FileInputStream(fileName))).isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\n");
     }
 }

@@ -24,9 +24,7 @@ public class StreamUtilsTests {
     public void givenStream_whenZipWithIndex_shouldReturnZippedStreamWithIndex() {
         Stream<String> source = Stream.of("Foo", "Bar", "Baz");
 
-        List<Indexed<String>> zipped = StreamUtils
-          .zipWithIndex(source)
-          .collect(Collectors.toList());
+        List<Indexed<String>> zipped = StreamUtils.zipWithIndex(source).collect(Collectors.toList());
 
         assertThat(zipped, contains(Indexed.index(0, "Foo"), Indexed.index(1, "Bar"), Indexed.index(2, "Baz")));
     }
@@ -36,9 +34,7 @@ public class StreamUtilsTests {
         Stream<String> streamA = Stream.of("A", "B", "C");
         Stream<String> streamB = Stream.of("Apple", "Banana", "Carrot");
 
-        List<String> zipped = StreamUtils
-          .zip(streamA, streamB, (a, b) -> a + " is for " + b)
-          .collect(Collectors.toList());
+        List<String> zipped = StreamUtils.zip(streamA, streamB, (a, b) -> a + " is for " + b).collect(Collectors.toList());
 
         assertThat(zipped, contains("A is for Apple", "B is for Banana", "C is for Carrot"));
     }
@@ -49,15 +45,13 @@ public class StreamUtilsTests {
         Stream<String> streamB = Stream.of("aggravating", "banausic", "complaisant");
         Stream<String> streamC = Stream.of("Apple", "Banana", "Carrot");
 
-        List<String> zipped = StreamUtils
-          .zip(streamA, streamB, streamC, (a, b, c) -> a + " is for " + b + " " + c)
-          .collect(Collectors.toList());
+        List<String> zipped = StreamUtils.zip(streamA, streamB, streamC, (a, b, c) -> a + " is for " + b + " " + c).collect(Collectors.toList());
 
         assertThat(zipped, contains("A is for aggravating Apple", "B is for banausic Banana", "C is for complaisant Carrot"));
     }
 
     @Test
-    //givenThreeStreams_whenMerge_shouldReturnMergedStream
+    // givenThreeStreams_whenMerge_shouldReturnMergedStream
     public void givenThreeStreams_whenMerge_shouldReturnMergedStream() {
         Stream<String> streamA = Stream.of("A", "B", "C");
         Stream<String> streamB = Stream.of("apple", "banana", "carrot", "date");
@@ -69,7 +63,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    //givenThreeStreams_whenInterleave_shouldReturnRoundRobinInterleavingStream
+    // givenThreeStreams_whenInterleave_shouldReturnRoundRobinInterleavingStream
     public void givenThreeStreams_whenInterleave_shouldReturnRoundRobinInterleavingStream() {
         Stream<String> streamA = Stream.of("Peter", "Paul", "Mary");
         Stream<String> streamB = Stream.of("A", "B", "C", "D", "E");
@@ -81,7 +75,7 @@ public class StreamUtilsTests {
     }
 
     @Test
-    //givenInfiniteStream_whenTakeWhile10_shouldReturnStreamOfSize10
+    // givenInfiniteStream_whenTakeWhile10_shouldReturnStreamOfSize10
     public void givenInfiniteStream_whenTakeWhile10_shouldReturnStream() {
         Stream<Integer> infiniteInts = Stream.iterate(0, i -> i + 1);
         Stream<Integer> finiteInts = StreamUtils.takeWhile(infiniteInts, i -> i < 10);
@@ -125,9 +119,7 @@ public class StreamUtilsTests {
     @Test
     public void giveIntegerStream_whenGroupRuns_shouldReturnListGroupItems() {
         Stream<Integer> integerStream = Stream.of(1, 1, 2, 2, 3, 4, 5);
-        List<List<Integer>> runs = StreamUtils
-          .groupRuns(integerStream)
-          .collect(toList());
+        List<List<Integer>> runs = StreamUtils.groupRuns(integerStream).collect(toList());
 
         assertThat(runs, contains(asList(1, 1), asList(2, 2), asList(3), asList(4), asList(5)));
     }
@@ -143,21 +135,17 @@ public class StreamUtilsTests {
     public void givenIntegerStream_whenWindowed_shouldReturnListOfListOfItemsOfWindowSize() {
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
 
-        List<List<Integer>> windows = StreamUtils
-          .windowed(integerStream, 2)
-          .collect(toList());
+        List<List<Integer>> windows = StreamUtils.windowed(integerStream, 2).collect(toList());
 
         assertThat(windows, contains(asList(1, 2), asList(2, 3), asList(3, 4), asList(4, 5)));
     }
 
     @Test
-    //givenIntegerStream_whenWindowedWithWindowSizeAndSkip_shouldReturnListOfListOfWindowSizeAddingASkip
+    // givenIntegerStream_whenWindowedWithWindowSizeAndSkip_shouldReturnListOfListOfWindowSizeAddingASkip
     public void givenIntegerStream_whenWindowedWithWindowSizeAndSkip_shouldReturnListOfListOfWindowSizeAddingASkip() {
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
 
-        List<List<Integer>> windows = StreamUtils
-          .windowed(integerStream, 3, 2)
-          .collect(toList());
+        List<List<Integer>> windows = StreamUtils.windowed(integerStream, 3, 2).collect(toList());
 
         assertThat(windows, contains(asList(1, 2, 3), asList(3, 4, 5)));
     }
@@ -166,15 +154,9 @@ public class StreamUtilsTests {
     public void givenEmptyStream_whenWindowed_shouldReturnIterableWithSizeZero() {
         ArrayList<Integer> ints = new ArrayList<>();
 
-        ints
-          .stream()
-          .collect(maxBy((a, b) -> a
-            .toString()
-            .compareTo(b.toString())));
+        ints.stream().collect(maxBy((a, b) -> a.toString().compareTo(b.toString())));
 
-        List<List<Integer>> windows = StreamUtils
-          .windowed(ints.stream(), 2)
-          .collect(toList());
+        List<List<Integer>> windows = StreamUtils.windowed(ints.stream(), 2).collect(toList());
 
         assertThat(windows, iterableWithSize(0));
     }
@@ -183,18 +165,14 @@ public class StreamUtilsTests {
     public void givenIntegerStream_whenWindowedWithWindowSizeAndSkipAndAllowLesserSize_shouldReturnListOfListOfInteger() {
         Stream<Integer> integerStream = Stream.of(1, 2, 3, 4, 5);
 
-        List<List<Integer>> windows = StreamUtils
-          .windowed(integerStream, 2, 2, true)
-          .collect(toList());
+        List<List<Integer>> windows = StreamUtils.windowed(integerStream, 2, 2, true).collect(toList());
 
         assertThat(windows, contains(asList(1, 2), asList(3, 4), asList(5)));
     }
 
     @Test
     public void givenLimit_withIndices_shouldReturnLongStreamUptoLimit() {
-        LongStream indices = StreamUtils
-          .indices()
-          .limit(500);
+        LongStream indices = StreamUtils.indices().limit(500);
 
         assertThat(indices.count(), equalTo(500));
     }

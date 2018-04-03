@@ -43,6 +43,7 @@ public class ElasticSearchIntegrationTest {
     public void before() {
         elasticsearchTemplate.deleteIndex(Article.class);
         elasticsearchTemplate.createIndex(Article.class);
+        // don't call putMapping() to test the default mappings
 
         Article article = new Article("Spring Data Elasticsearch");
         article.setAuthors(asList(johnSmith, johnDoe));
