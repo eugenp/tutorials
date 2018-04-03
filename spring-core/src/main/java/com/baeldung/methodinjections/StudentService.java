@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 public abstract class StudentService {
 
     @Lookup
-    public abstract SchoolNotification getSchoolNotification(String message);
+    public abstract SchoolNotification getSchoolNotification(String name, int marks);
 
+    public String checkResult(String name, int marks) {
+        return getSchoolNotification(name, marks).checkResult();
+    }
 }

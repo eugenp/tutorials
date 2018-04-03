@@ -12,7 +12,7 @@ public class Student {
      * Injects a prototype bean SchoolNotification into Singleton student
      */
     @Lookup
-    public SchoolNotification getNotification(String message) {
+    public SchoolNotification getNotification(String name, int marks) {
         // spring overrides and returns a SchoolNotification instance
         return null;
     }

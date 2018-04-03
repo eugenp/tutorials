@@ -7,12 +7,9 @@
 
     <context:component-scan base-package="com.baeldung.methodinjections" />
     
+    <bean id="schoolNotification" class="com.baeldung.methodinjections.SchoolNotification" scope="prototype"/>
+    	        
     <bean id="studentService" class="com.baeldung.methodinjections.StudentService" scope="prototype" >
     	<lookup-method name="getSchoolNotification" bean="schoolNotification"/>
-    </bean>
-        
-    <bean id="schoolNotification" class="com.baeldung.methodinjections.SchoolNotification">
-    	<constructor-arg  type="java.lang.String" value="Test"></constructor-arg>
-        
-    </bean>    
+    </bean>     
 </beans>
