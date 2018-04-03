@@ -122,6 +122,14 @@
 
     </build>
 
+    <repositories>
+        <repository>
+            <id>1</id>
+            <name>jstl</name>
+            <url>https://mvnrepository.com/artifact/javax.servlet/jstl</url>
+        </repository>
+    </repositories>
+
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
