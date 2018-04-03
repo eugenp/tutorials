@@ -69,7 +69,7 @@
     <h3>
         <c:out value="<x:forEach> Example"/>
     </h3>
-    <ul class="list">
+    <ul class="items">
         <x:forEach select="$output/items/item/name" var="item">
             <li>Item Name: <x:out select="$item"/></li>
         </x:forEach>
