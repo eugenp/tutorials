@@ -16,6 +16,7 @@
 - [Self-Contained Testing Using an In-Memory Database](http://www.baeldung.com/spring-jpa-test-in-memory-database)
 - [Spring Data JPA – Adding a Method in All Repositories](http://www.baeldung.com/spring-data-jpa-method-in-all-repositories)
 - [A Guide to Spring AbstractRoutingDatasource](http://www.baeldung.com/spring-abstract-routing-data-source)
+- [Advanced Tagging Implementation with JPA] (http://www.baeldung.com/jpa-tagging-advanced)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

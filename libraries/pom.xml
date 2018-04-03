@@ -11,6 +11,20 @@
     </parent>
 
     <dependencies>
+       	<!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.12</artifactId>
+            <version>2.5.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-testkit_2.12</artifactId>
+            <version>2.5.11</version>
+            <scope>test</scope>
+        </dependency>
+        
         <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
         <dependency>
             <groupId>org.asynchttpclient</groupId>
@@ -100,6 +114,13 @@
             <artifactId>jetty-webapp</artifactId>
             <version>${jetty.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.nats</groupId>
+            <artifactId>jnats</artifactId>
+            <version>${jnats.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
@@ -273,6 +294,19 @@
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- JetS3t -->
+        <dependency>
+            <groupId>org.lucee</groupId>
+            <artifactId>jets3t</artifactId>
+            <version>${jets3t-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lucee</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec-version}</version>
+        </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>spring-mock-mvc</artifactId>
@@ -783,6 +817,8 @@
         <commons.dbutils.version>1.6</commons.dbutils.version>
         <h2.version>1.4.196</h2.version>
         <jetty.version>9.4.8.v20171121</jetty.version>
+        <jnats.version>1.0</jnats.version>
+
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
         <flink.version>1.2.0</flink.version>
@@ -827,6 +863,8 @@
         <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
         <unirest.version>1.4.9</unirest.version>
+        <commons-codec-version>1.10.L001</commons-codec-version>
+        <jets3t-version>0.9.4.0006L</jets3t-version>
     </properties>
 
 </project>

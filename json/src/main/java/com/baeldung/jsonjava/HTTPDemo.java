@@ -5,10 +5,10 @@ import org.json.JSONObject;
 
 public class HTTPDemo {
     public static void main(String[] args) {
-        System.out.println("9.1. Converting JSONObject to HTTP Header: ");
+        System.out.println("10.1. Converting JSONObject to HTTP Header: ");
         jSONObjectToHTTPHeader();
         
-        System.out.println("\n9.2. Converting HTTP Header String Back to JSONObject: ");
+        System.out.println("\n10.2. Converting HTTP Header String Back to JSONObject: ");
         hTTPHeaderToJSONObject();
     }
     

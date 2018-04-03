@@ -99,6 +99,7 @@ public class FugueTest {
     }
 
     @Test
+
     public void whenLeft_thenEither() {
         Either<Integer, String> right = Either.right("value");
         Either<Integer, String> left = Either.left(-1);
@@ -117,6 +118,7 @@ public class FugueTest {
 
         assertTrue(either.isRight());
         assertEquals("value", either.right().get());
+
         either.right().forEach(x -> assertEquals("value", x));
     }
 
