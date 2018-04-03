@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class SearchController {
 
-    public static final int PAGE_ITEMS_COUNT = 30;
+    public static final int PAGE_ITEMS_COUNT = 10;
 
     @FXML
     private TextField searchField;
@@ -41,8 +41,7 @@ public class SearchController {
         // search panel
         searchButton.setText("Search");
         searchButton.setOnAction(event -> loadData());
-
-        searchButton.setStyle("-fx-background-color: slateblue; -fx-text-fill: white;");
+        searchButton.setStyle("-fx-background-color: #457ecd; -fx-text-fill: #ffffff;");
 
         searchField.setOnKeyPressed(event -> {
             if (event.getCode().equals(KeyCode.ENTER)) {
@@ -59,7 +58,7 @@ public class SearchController {
 
     private Node createPage(Integer pageIndex) {
 
-        VBox iconContainer = new VBox();
+        VBox dataContainer = new VBox();
 
         TableView<Person> tableView = new TableView<>(masterData);
         TableColumn id = new TableColumn("ID");
@@ -67,29 +66,28 @@ public class SearchController {
         TableColumn employed = new TableColumn("EMPLOYED");
 
         tableView.getColumns().addAll(id, name, employed);
-        iconContainer.getChildren().add(tableView);
+        dataContainer.getChildren().add(tableView);
 
-        return iconContainer;
+        return dataContainer;
     }
 
     private void loadData() {
 
         String searchText = searchField.getText();
 
-        Task<List<Person>> task = new Task<List<Person>>() {
+        Task<ObservableList<Person>> task = new Task<ObservableList<Person>>() {
             @Override
-            protected List<Person> call() throws Exception {
+            protected ObservableList<Person> call() throws Exception {
                 updateMessage("Loading data");
-                return masterData
+                return FXCollections.observableArrayList(masterData
                         .stream()
                         .filter(value -> value.getName().toLowerCase().contains(searchText))
-                        .collect(Collectors.toList());
+                        .collect(Collectors.toList()));
             }
         };
 
         task.setOnSucceeded(event -> {
-            List<Person> data = task.getValue();
-            data.forEach(p -> masterData.add(p));
+            masterData = task.getValue();
             pagination.setVisible(true);
             pagination.setPageCount(masterData.size() / PAGE_ITEMS_COUNT);
         });
