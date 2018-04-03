@@ -1,5 +1,6 @@
 package com.baeldung.springintegration.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -8,9 +9,9 @@ import javax.el.ELContextListener;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-@ManagedBean(name = "helloPrimefacesBean")
+@ManagedBean(name = "helloPFBean")
 @ViewScoped
-public class HelloPrimefacesBean {
+public class HelloPFBean {
 	
 	private String firstName;
 	private String lastName;
@@ -26,6 +27,20 @@ public class HelloPrimefacesBean {
     public void init() {
 		firstName = "Hello";
 		lastName = "Primefaces";
+		
+		technologies = new ArrayList<Technology>();
+		
+		Technology technology1 = new Technology();
+		technology1.setCurrentVersion("10");
+		technology1.setName("Java");
+		
+		technologies.add(technology1);
+		
+		Technology technology2 = new Technology();
+		technology2.setCurrentVersion("5.0");
+		technology2.setName("Spring");
+		
+		technologies.add(technology2);
     }
 	
 	public void onBlurEvent() {
@@ -77,9 +92,7 @@ public class HelloPrimefacesBean {
 		this.outputText = outputText;
 	}
 
-
-
-	class Technology {
+	public class Technology {
         private String name;
         private String currentVersion;
         

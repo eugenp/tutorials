@@ -14,22 +14,21 @@
 	<h:form id="primeForm">
 
 		<p:panelGrid columns="2">
-			<h:outputText value="#{helloPrimefacesBean.firstName}" />
-			<h:outputText value="#{helloPrimefacesBean.lastName}" />
+			<h:outputText value="#{helloPFBean.firstName}" />
+			<h:outputText value="#{helloPFBean.lastName}" />
 		</p:panelGrid>
 
 		<h:panelGrid columns="2">
 			<p:outputLabel for="jsfCompSuite" value="Component Suite" />
 			<p:selectOneRadio id="jsfCompSuite"
-				value="#{helloPrimefacesBean.componentSuite}">
+				value="#{helloPFBean.componentSuite}">
 				<f:selectItem itemLabel="ICEfaces" itemValue="ICEfaces" />
 				<f:selectItem itemLabel="RichFaces" itemValue="RichFaces" />
-				<f:selectItem itemLabel="Primefaces" itemValue="Primefaces" />
 			</p:selectOneRadio>
 		</h:panelGrid>
 
 		<p:dataTable var="technology"
-			value="#{helloPrimefacesBean.technologies}">
+			value="#{helloPFBean.technologies}">
 			<p:column headerText="Name">
 				<h:outputText value="#{technology.name}" />
 			</p:column>
@@ -41,11 +40,11 @@
 
 		<h:panelGrid columns="3">
 			<h:outputText value="Blur event " />
-			<p:inputText id="inputTextId" value="#{helloPrimefacesBean.inputText}}">
+			<p:inputText id="inputTextId" value="#{helloPFBean.inputText}">
 				<p:ajax event="blur" update="outputTextId"
-					listener="#{helloPrimefacesBean.onBlurEvent}" />
+					listener="#{helloPFBean.onBlurEvent}" />
 			</p:inputText>
-			<h:outputText id="outputTextId" value="#{helloPrimefacesBean.outputText}" />
+			<h:outputText id="outputTextId" value="#{helloPFBean.outputText}" />
 		</h:panelGrid>
 
 	</h:form>
