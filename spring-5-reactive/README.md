@@ -13,3 +13,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [The SpringJUnitConfig and SpringJUnitWebConfig Annotations in Spring 5](http://www.baeldung.com/spring-5-junit-config)
 - [Spring Security 5 for Reactive Applications](http://www.baeldung.com/spring-security-5-reactive)
 - [Spring 5 Testing with @EnabledIf Annotation](https://github.com/eugenp/tutorials/tree/master/spring-5)
+- [Reactive WebSockets with Spring 5](http://www.baeldung.com/spring-5-reactive-websockets)
+- [Spring Boot Actuator](http://www.baeldung.com/spring-boot-actuators)

@@ -39,31 +39,21 @@ public class GenericEntityController {
 
     @RequestMapping("/entity/findby/{id}")
     public GenericEntity findById(@PathVariable Long id) {
-        return entityList.stream()
-            .filter(entity -> entity.getId()
-                .equals(id))
-            .findFirst()
-            .get();
+        return entityList.stream().filter(entity -> entity.getId().equals(id)).findFirst().get();
     }
 
     @GetMapping("/entity/findbydate/{date}")
     public GenericEntity findByDate(@PathVariable("date") LocalDateTime date) {
-        return entityList.stream()
-            .findFirst()
-            .get();
+        return entityList.stream().findFirst().get();
     }
 
     @GetMapping("/entity/findbymode/{mode}")
     public GenericEntity findByEnum(@PathVariable("mode") Modes mode) {
-        return entityList.stream()
-            .findFirst()
-            .get();
+        return entityList.stream().findFirst().get();
     }
 
     @GetMapping("/entity/findbyversion")
     public ResponseEntity findByVersion(@Version String version) {
-        return version != null ? new ResponseEntity(entityList.stream()
-            .findFirst()
-            .get(), HttpStatus.OK) : new ResponseEntity(HttpStatus.NOT_FOUND);
+        return version != null ? new ResponseEntity(entityList.stream().findFirst().get(), HttpStatus.OK) : new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 }

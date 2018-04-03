@@ -31,14 +31,10 @@ public class PartitionPatternTest {
                 return each > 30;
             }
         });
-        MutableList<Integer> greaterThanThirty = partitionedFolks.getSelected()
-            .sortThis();
-        MutableList<Integer> smallerThanThirty = partitionedFolks.getRejected()
-            .sortThis();
+        MutableList<Integer> greaterThanThirty = partitionedFolks.getSelected().sortThis();
+        MutableList<Integer> smallerThanThirty = partitionedFolks.getRejected().sortThis();
 
-        Assertions.assertThat(smallerThanThirty)
-            .containsExactly(1, 5, 8, 17, 23);
-        Assertions.assertThat(greaterThanThirty)
-            .containsExactly(31, 38, 41);
+        Assertions.assertThat(smallerThanThirty).containsExactly(1, 5, 8, 17, 23);
+        Assertions.assertThat(greaterThanThirty).containsExactly(31, 38, 41);
     }
 }

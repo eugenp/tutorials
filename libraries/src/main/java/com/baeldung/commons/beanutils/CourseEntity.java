@@ -24,7 +24,7 @@ public class CourseEntity {
     public void setCodes(List<String> codes) {
         this.codes = codes;
     }
-    
+
     public void setStudent(String id, Student student) {
         students.put(id, student);
     }

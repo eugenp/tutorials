@@ -12,7 +12,6 @@ public class ConvertContainerToAnotherTest {
     public void whenConvertContainerToAnother_thenCorrect() {
         MutableList<String> cars = (MutableList) ConvertContainerToAnother.convertToList();
 
-        Assertions.assertThat(cars)
-            .containsExactlyElementsOf(FastList.newListWith("Volkswagen", "Toyota", "Mercedes"));
+        Assertions.assertThat(cars).containsExactlyElementsOf(FastList.newListWith("Volkswagen", "Toyota", "Mercedes"));
     }
 }

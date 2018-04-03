@@ -120,10 +120,10 @@ public class DancingLinks {
     }
 
     private static void printSolution(int[][] result) {
-        int N = result.length;
+        int size = result.length;
         for (int[] aResult : result) {
             StringBuilder ret = new StringBuilder();
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < size; j++) {
                 ret.append(aResult[j]).append(" ");
             }
             System.out.println(ret);

@@ -1,6 +1,5 @@
 package com.baeldung.javassist;
 
-
 import javassist.CannotCompileException;
 import javassist.ClassPool;
 import javassist.NotFoundException;
@@ -33,20 +32,20 @@ import static org.junit.Assert.assertTrue;
 public class JavasisstUnitTest {
     @Test
     public void givenJavasisstAPI_whenConstructClass_thenGenerateAClassFile() throws CannotCompileException, IOException, ClassNotFoundException, IllegalAccessException, InstantiationException {
-        //given
+        // given
         String classNameWithPackage = "com.baeldung.JavassistGeneratedClass";
         ClassFile cf = new ClassFile(false, classNameWithPackage, null);
-        cf.setInterfaces(new String[]{"java.lang.Cloneable"});
+        cf.setInterfaces(new String[] { "java.lang.Cloneable" });
 
         FieldInfo f = new FieldInfo(cf.getConstPool(), "id", "I");
         f.setAccessFlags(AccessFlag.PUBLIC);
         cf.addField(f);
 
-        //when
+        // when
         String className = "JavassistGeneratedClass.class";
         cf.write(new DataOutputStream(new FileOutputStream(className)));
 
-        //then
+        // then
         ClassPool classPool = ClassPool.getDefault();
         Field[] fields = classPool.makeClass(cf).toClass().getFields();
         assertEquals(fields[0].getName(), "id");
@@ -57,14 +56,14 @@ public class JavasisstUnitTest {
 
     @Test
     public void givenJavaClass_whenLoadAtByJavassist_thenTraversWholeClass() throws NotFoundException, CannotCompileException, BadBytecode {
-        //given
+        // given
         ClassPool cp = ClassPool.getDefault();
         ClassFile cf = cp.get("com.baeldung.javasisst.Point").getClassFile();
         MethodInfo minfo = cf.getMethod("move");
         CodeAttribute ca = minfo.getCodeAttribute();
         CodeIterator ci = ca.iterator();
 
-        //when
+        // when
         List<String> operations = new LinkedList<>();
         while (ci.hasNext()) {
             int index = ci.next();
@@ -72,22 +71,20 @@ public class JavasisstUnitTest {
             operations.add(Mnemonic.OPCODE[op]);
         }
 
-        //then
-        assertEquals(operations,
-          Arrays.asList("aload_0", "iload_1", "putfield", "aload_0", "iload_2", "putfield", "return"));
+        // then
+        assertEquals(operations, Arrays.asList("aload_0", "iload_1", "putfield", "aload_0", "iload_2", "putfield", "return"));
 
     }
 
     @Test
     public void givenTableOfInstructions_whenAddNewInstruction_thenShouldConstructProperSequence() throws NotFoundException, BadBytecode, CannotCompileException, IllegalAccessException, InstantiationException {
-        //given
+        // given
         ClassFile cf = ClassPool.getDefault().get("com.baeldung.javasisst.ThreeDimensionalPoint").getClassFile();
 
-        //when
+        // when
         FieldInfo f = new FieldInfo(cf.getConstPool(), "id", "I");
         f.setAccessFlags(AccessFlag.PUBLIC);
         cf.addField(f);
-
 
         ClassPool classPool = ClassPool.getDefault();
         Field[] fields = classPool.makeClass(cf).toClass().getFields();
@@ -98,19 +95,19 @@ public class JavasisstUnitTest {
 
     @Test
     public void givenLoadedClass_whenAddConstructorToClass_shouldCreateClassWithConstructor() throws NotFoundException, CannotCompileException, BadBytecode {
-        //given
+        // given
         ClassFile cf = ClassPool.getDefault().get("com.baeldung.javasisst.Point").getClassFile();
         Bytecode code = new Bytecode(cf.getConstPool());
         code.addAload(0);
         code.addInvokespecial("java/lang/Object", MethodInfo.nameInit, "()V");
         code.addReturn(null);
 
-        //when
+        // when
         MethodInfo minfo = new MethodInfo(cf.getConstPool(), MethodInfo.nameInit, "()V");
         minfo.setCodeAttribute(code.toCodeAttribute());
         cf.addMethod(minfo);
 
-        //then
+        // then
         CodeIterator ci = code.toCodeAttribute().iterator();
         List<String> operations = new LinkedList<>();
         while (ci.hasNext()) {
@@ -119,9 +116,7 @@ public class JavasisstUnitTest {
             operations.add(Mnemonic.OPCODE[op]);
         }
 
-        assertEquals(operations,
-          Arrays.asList("aload_0", "invokespecial", "return"));
-
+        assertEquals(operations, Arrays.asList("aload_0", "invokespecial", "return"));
 
     }
 }
