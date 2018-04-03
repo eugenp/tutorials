@@ -13,12 +13,12 @@ import org.junit.Test;
 public class ChunkerTest {
 
     @Test
-    public void givenSentence_whenChunk_thenGetChunks() throws Exception {
+    public void givenChunkerModel_whenChunk_thenChunksAreDetected() throws Exception {
 
         SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
         String[] tokens = tokenizer.tokenize("He reckons the current account deficit will narrow to only 8 billion.");
 
-        InputStream inputStreamPOSTagger = new FileInputStream("src/main/resources/models/en-pos-maxent.bin");
+        InputStream inputStreamPOSTagger = getClass().getResourceAsStream("/models/en-pos-maxent.bin");
         POSModel posModel = new POSModel(inputStreamPOSTagger);
         POSTaggerME posTagger = new POSTaggerME(posModel);
         String tags[] = posTagger.tag(tokens);

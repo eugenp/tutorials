@@ -1,7 +1,5 @@
 package com.baeldung.apache.opennlp;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import opennlp.tools.lemmatizer.DictionaryLemmatizer;
 import opennlp.tools.postag.POSModel;
@@ -13,16 +11,16 @@ import org.junit.Test;
 public class LemmetizerTest {
 
     @Test
-    public void givenSentence_whenLemmetize_thenGetLemmas() throws Exception {
+    public void givenEnglishDictionary_whenLemmatize_thenLemmasAreDetected() throws Exception {
 
         SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
         String[] tokens = tokenizer.tokenize("John has a sister named Penny.");
 
-        InputStream inputStreamPOSTagger = new FileInputStream("src/main/resources/models/en-pos-maxent.bin");
+        InputStream inputStreamPOSTagger = getClass().getResourceAsStream("/models/en-pos-maxent.bin");
         POSModel posModel = new POSModel(inputStreamPOSTagger);
         POSTaggerME posTagger = new POSTaggerME(posModel);
         String tags[] = posTagger.tag(tokens);
-        InputStream dictLemmatizer = new FileInputStream("src/main/resources/models/en-lemmatizer.dict");
+        InputStream dictLemmatizer = getClass().getResourceAsStream("/models/en-lemmatizer.dict");
         DictionaryLemmatizer lemmatizer = new DictionaryLemmatizer(dictLemmatizer);
         String[] lemmas = lemmatizer.lemmatize(tokens, tags);
 

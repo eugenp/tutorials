@@ -18,10 +18,10 @@ import opennlp.tools.util.TrainingParameters;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
-public class LanguageDetectorAndTrainingData {
+public class LanguageDetectorAndTrainingDataTest {
 
     @Test
-    public void test() throws FileNotFoundException, IOException {
+    public void givenLanguageDictionary_whenLanguageDetect_thenLanguageIsDetected() throws FileNotFoundException, IOException {
         InputStreamFactory dataIn = new MarkableFileInputStreamFactory(new File("src/main/resources/models/DoccatSample.txt"));
         ObjectStream lineStream = new PlainTextByLineStream(dataIn, "UTF-8");
         LanguageDetectorSampleStream sampleStream = new LanguageDetectorSampleStream(lineStream);

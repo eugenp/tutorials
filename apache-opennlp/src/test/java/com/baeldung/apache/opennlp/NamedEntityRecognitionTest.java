@@ -1,6 +1,5 @@
 package com.baeldung.apache.opennlp;
 
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,12 +14,12 @@ import org.junit.Test;
 public class NamedEntityRecognitionTest {
 
     @Test
-    public void givenTextWithPersonNames_whenNER_thenGetPersonNamesList() throws Exception {
+    public void givenEnglishPersonModel_whenNER_thenPersonsAreDetected() throws Exception {
         
         SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
         String[] tokens = tokenizer.tokenize("John is 26 years old. His best friend's name is Leonard. He has a sister named Penny.");
         
-        InputStream inputStreamNameFinder = new FileInputStream("src/main/resources/models/en-ner-person.bin");
+        InputStream inputStreamNameFinder = getClass().getResourceAsStream("/models/en-ner-person.bin");
         TokenNameFinderModel model = new TokenNameFinderModel(inputStreamNameFinder);
         NameFinderME nameFinderME = new NameFinderME(model);
         List<Span> spans = Arrays.asList(nameFinderME.find(tokens));

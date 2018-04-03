@@ -1,6 +1,6 @@
 package com.baeldung.apache.opennlp;
 
-import java.io.FileInputStream;
+import java.io.InputStream;
 import opennlp.tools.tokenize.SimpleTokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
@@ -11,23 +11,23 @@ import org.junit.Test;
 public class TokenizerTest {
 
     @Test
-    public void givenString_whenTokenize_thenGetTokens() throws Exception {
-         FileInputStream fileInputStream = new FileInputStream("src/main/resources/models/en-token.bin");
-        TokenizerModel model = new TokenizerModel(fileInputStream);
+    public void givenEnglishModel_whenTokenize_thenTokensAreDetected() throws Exception {
+        InputStream inputStream = getClass().getResourceAsStream("/models/en-token.bin");
+        TokenizerModel model = new TokenizerModel(inputStream);
         TokenizerME tokenizer = new TokenizerME(model);
         String[] tokens = tokenizer.tokenize("Baeldung is a Spring Resource.");
         assertThat(tokens).contains("Baeldung", "is", "a", "Spring", "Resource", ".");
     }
     
     @Test
-    public void givenString_whenWhitespaceTokenizer_thenGetTokens() throws Exception {
+    public void givenWhitespaceTokenizer_whenTokenize_thenTokensAreDetected() throws Exception {
         WhitespaceTokenizer tokenizer = WhitespaceTokenizer.INSTANCE;
         String[] tokens = tokenizer.tokenize("Baeldung is a Spring Resource.");
         assertThat(tokens).contains("Baeldung", "is", "a", "Spring", "Resource.");
     }
     
     @Test
-    public void givenString_whenSimpleTokenizer_thenGetTokens() throws Exception {
+    public void givenSimpleTokenizer_whenTokenize_thenTokensAreDetected() throws Exception {
         SimpleTokenizer tokenizer = SimpleTokenizer.INSTANCE;
         String[] tokens = tokenizer.tokenize("Baeldung is a Spring Resource.");
         assertThat(tokens).contains("Baeldung", "is", "a", "Spring", "Resource", ".");
