@@ -47,7 +47,7 @@ public class Java8MaxMinUnitTest {
     }
 
     @Test
-    public void whenArrayIsOfIntegerThenMinCanBeDoneUsingIntegerComparator() {
+    public void whenArrayIsOfIntegerThenMinUsesIntegerComparator() {
         int[] integers = new int[] { 20, 98, 12, 7, 35 };
 
         int min = Arrays.stream(integers)
@@ -58,7 +58,7 @@ public class Java8MaxMinUnitTest {
     }
 
     @Test
-    public void whenArrayIsOfPersonObjectThenMaxCanBeDoneUsingCustomComparatorThroughLambda() {
+    public void whenArrayIsOfCustomTypeThenMaxUsesCustomComparator() {
         final Car porsche = new Car("Porsche 959", 319);
         final Car ferrari = new Car("Ferrari 288 GTO", 303);
         final Car bugatti = new Car("Bugatti Veyron 16.4 Super Sport", 415);
