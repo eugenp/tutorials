@@ -4,7 +4,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 
-public class IsOnlyNumbers extends TypeSafeMatcher<String> {
+public class IsOnlyDigits extends TypeSafeMatcher<String> {
 
     @Override
     protected boolean matchesSafely(String s) {
@@ -18,10 +18,10 @@ public class IsOnlyNumbers extends TypeSafeMatcher<String> {
 
     @Override
     public void describeTo(Description description) {
-        description.appendText("only numbers");
+        description.appendText("only digits");
     }
 
-    public static Matcher<String> onlyNumbers() {
-        return new IsOnlyNumbers();
+    public static Matcher<String> onlyDigits() {
+        return new IsOnlyDigits();
     }
 }
