@@ -1,122 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>libraries</artifactId>
+    <name>libraries</name>
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-    <artifactId>libraries</artifactId>
-    <name>libraries</name>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.felix</groupId>
-                        <artifactId>maven-bundle-plugin</artifactId>
-                        <version>3.3.0</version>
-                        <type>maven-plugin</type>
-                    </dependency>
-                </dependencies>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.20</version>
-                <configuration>
-                    <systemProperties>
-                        <webdriver.chrome.driver>chromedriver</webdriver.chrome.driver>
-                    </systemProperties>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>net.serenity-bdd.maven.plugins</groupId>
-                <artifactId>serenity-maven-plugin</artifactId>
-                <version>${serenity.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>serenity-reports</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>aggregate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- JDO Plugin -->
-            <plugin>
-                <groupId>org.datanucleus</groupId>
-                <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>5.0.2</version>
-                <configuration>
-                    <api>JDO</api>
-                    <props>${basedir}/datanucleus.properties</props>
-                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
-                    <verbose>true</verbose>
-                    <fork>false</fork>
-                    <!-- Solve windows line too long error -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- Neuroph -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/log4j.properties</exclude>
-                    </excludes>
-                    <archive>
-                        <manifest>
-                            <mainClass>com.baeldung.neuroph.NeurophXOR</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-                <executions>
-                    <execution>
-                        <id>test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>test</goal>
-                        </goals>
-                        <configuration>
-                            <includes>
-                                <include>test/java/com/baeldung/neuroph/XORTest.java</include>
-                            </includes>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <!-- /Neuroph -->
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+
     <dependencies>
-    	<!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+       	<!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.12</artifactId>
+            <version>2.5.11</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-testkit_2.12</artifactId>
+            <version>2.5.11</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
         <dependency>
             <groupId>org.asynchttpclient</groupId>
             <artifactId>async-http-client</artifactId>
@@ -200,11 +109,18 @@
             <artifactId>jetty-servlet</artifactId>
             <version>${jetty.version}</version>
         </dependency>
-		<dependency>
-		    <groupId>org.eclipse.jetty</groupId>
-		    <artifactId>jetty-webapp</artifactId>
-		   	 <version>${jetty.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.nats</groupId>
+            <artifactId>jnats</artifactId>
+            <version>${jnats.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>rome</groupId>
             <artifactId>rome</artifactId>
@@ -378,6 +294,19 @@
             <version>${serenity.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- JetS3t -->
+        <dependency>
+            <groupId>org.lucee</groupId>
+            <artifactId>jets3t</artifactId>
+            <version>${jets3t-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lucee</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec-version}</version>
+        </dependency>
+
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>spring-mock-mvc</artifactId>
@@ -640,14 +569,14 @@
             <version>${googleclient.version}</version>
         </dependency>
         <dependency>
-          <groupId>com.google.http-client</groupId>
-          <artifactId>google-http-client-jackson2</artifactId>
-          <version>${googleclient.version}</version>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-jackson2</artifactId>
+            <version>${googleclient.version}</version>
         </dependency>
         <dependency>
-          <groupId>com.google.http-client</groupId>
-          <artifactId>google-http-client-gson</artifactId>
-          <version>${googleclient.version}</version>
+            <groupId>com.google.http-client</groupId>
+            <artifactId>google-http-client-gson</artifactId>
+            <version>${googleclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.infinispan</groupId>
@@ -655,7 +584,7 @@
             <version>${infinispan.version}</version>
         </dependency>
 
-        <!--Java Docker API Client-->
+        <!--Java Docker API Client -->
         <dependency>
             <groupId>com.github.docker-java</groupId>
             <artifactId>docker-java</artifactId>
@@ -680,23 +609,23 @@
             <artifactId>jersey-client</artifactId>
             <version>1.19.4</version>
         </dependency>
-        <!--Java Docker API Client-->
+        <!--Java Docker API Client -->
 
         <!-- google api -->
         <dependency>
-          <groupId>com.google.api-client</groupId>
-          <artifactId>google-api-client</artifactId>
-          <version>${google-api.version}</version>
+            <groupId>com.google.api-client</groupId>
+            <artifactId>google-api-client</artifactId>
+            <version>${google-api.version}</version>
         </dependency>
         <dependency>
-          <groupId>com.google.oauth-client</groupId>
-          <artifactId>google-oauth-client-jetty</artifactId>
-          <version>${google-api.version}</version>
+            <groupId>com.google.oauth-client</groupId>
+            <artifactId>google-oauth-client-jetty</artifactId>
+            <version>${google-api.version}</version>
         </dependency>
         <dependency>
-          <groupId>com.google.apis</groupId>
-          <artifactId>google-api-services-sheets</artifactId>
-          <version>${google-sheets.version}</version>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-sheets</artifactId>
+            <version>${google-sheets.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.kafka</groupId>
@@ -733,6 +662,18 @@
             <artifactId>milyn-smooks-all</artifactId>
             <version>${smooks.version}</version>
         </dependency>
+                <dependency>
+            <groupId>com.mashape.unirest</groupId>
+            <artifactId>unirest-java</artifactId>
+            <version>${unirest.version}</version>
+        </dependency>
+
+        <!-- Atlassian Fugue -->
+        <dependency>
+            <groupId>io.atlassian.fugue</groupId>
+            <artifactId>fugue</artifactId>
+            <version>4.5.1</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
@@ -753,6 +694,108 @@
             <url>https://repository.apache.org/content/groups/staging</url>
         </repository>
     </repositories>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.felix</groupId>
+                        <artifactId>maven-bundle-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <type>maven-plugin</type>
+                    </dependency>
+                </dependencies>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.20</version>
+                <configuration>
+                    <systemProperties>
+                        <webdriver.chrome.driver>chromedriver</webdriver.chrome.driver>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>net.serenity-bdd.maven.plugins</groupId>
+                <artifactId>serenity-maven-plugin</artifactId>
+                <version>${serenity.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>serenity-reports</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- JDO Plugin -->
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-maven-plugin</artifactId>
+                <version>5.0.2</version>
+                <configuration>
+                    <api>JDO</api>
+                    <props>${basedir}/datanucleus.properties</props>
+                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
+                    <verbose>true</verbose>
+                    <fork>false</fork>
+                    <!-- Solve windows line too long error -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Neuroph -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/log4j.properties</exclude>
+                    </excludes>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.baeldung.neuroph.NeurophXOR</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+            <!-- /Neuroph -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
@@ -774,6 +817,8 @@
         <commons.dbutils.version>1.6</commons.dbutils.version>
         <h2.version>1.4.196</h2.version>
         <jetty.version>9.4.8.v20171121</jetty.version>
+        <jnats.version>1.0</jnats.version>
+
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
         <flink.version>1.2.0</flink.version>
@@ -817,5 +862,9 @@
         <tomcat.version>8.5.24</tomcat.version>
         <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
+        <unirest.version>1.4.9</unirest.version>
+        <commons-codec-version>1.10.L001</commons-codec-version>
+        <jets3t-version>0.9.4.0006L</jets3t-version>
     </properties>
+
 </project>

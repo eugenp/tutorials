@@ -1,5 +1,6 @@
 package org.baeldung.taskletsvschunks.tasklets;
 
+import org.baeldung.taskletsvschunks.config.TaskletsConfig;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:/taskletsvschunks/tasklets.xml")
+@ContextConfiguration(classes = TaskletsConfig.class)
 public class TaskletsTest {
 
     @Autowired private JobLauncherTestUtils jobLauncherTestUtils;

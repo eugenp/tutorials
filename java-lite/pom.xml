@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.baeldung</groupId>
@@ -22,10 +21,15 @@
         <mysql.connector.java.version>5.1.45</mysql.connector.java.version>
         <sun.tools.version>1.7.0</sun.tools.version>
         <jackson.version>1.8.2</jackson.version>
-        <junit.version>4.11</junit.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/webapp/WEB-INF</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
@@ -85,7 +89,14 @@
             <scope>system</scope>
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
-
+        
+        <dependency>
+            <groupId>org.javalite</groupId>
+            <artifactId>activeweb-testing</artifactId>
+            <version>1.15</version>
+            <scope>test</scope>
+        </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

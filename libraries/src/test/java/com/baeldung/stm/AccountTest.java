@@ -1,6 +1,5 @@
 package com.baeldung.stm;
 
-
 import org.junit.Test;
 
 import java.util.concurrent.CountDownLatch;
@@ -16,34 +15,34 @@ public class AccountTest {
 
     @Test
     public void givenAccount_whenDecrement_thenShouldReturnProperValue() {
-        //given
+        // given
         Account a = new Account(10);
 
-        //when
+        // when
         a.adjustBy(-5);
 
-        //then
+        // then
         assertThat(a.getBalance()).isEqualTo(5);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void givenAccount_whenDecrementTooMuch_thenShouldThrow() {
-        //given
+        // given
         Account a = new Account(10);
 
-        //when
+        // when
         a.adjustBy(-11);
     }
 
     @Test
     public void givenTwoThreads_whenBothApplyOperation_thenShouldThrow() throws InterruptedException {
-        //given
+        // given
         ExecutorService ex = Executors.newFixedThreadPool(2);
         Account a = new Account(10);
         CountDownLatch countDownLatch = new CountDownLatch(1);
         AtomicBoolean exceptionThrown = new AtomicBoolean(false);
 
-        //when
+        // when
         ex.submit(() -> {
             try {
                 countDownLatch.await();
@@ -74,44 +73,44 @@ public class AccountTest {
         ex.awaitTermination(1, TimeUnit.SECONDS);
         ex.shutdown();
 
-        //then
+        // then
         assertTrue(exceptionThrown.get());
     }
 
     @Test
     public void givenTwoAccounts_whenFailedWhileTransferring_thenShouldRollbackTransaction() {
-        //given
+        // given
         final Account a = new Account(10);
         final Account b = new Account(10);
 
-        //when
+        // when
         a.transferTo(b, 5);
 
-        //then
+        // then
         assertThat(a.getBalance()).isEqualTo(5);
         assertThat(b.getBalance()).isEqualTo(15);
 
-        //and
+        // and
         try {
             a.transferTo(b, 20);
         } catch (final IllegalArgumentException e) {
             System.out.println("failed to transfer money");
         }
 
-        //then
+        // then
         assertThat(a.getBalance()).isEqualTo(5);
         assertThat(b.getBalance()).isEqualTo(15);
     }
 
     @Test
     public void givenTwoThreads_whenBothTryToTransfer_thenShouldNotDeadlock() throws InterruptedException {
-        //given
+        // given
         ExecutorService ex = Executors.newFixedThreadPool(2);
         final Account a = new Account(10);
         final Account b = new Account(10);
         CountDownLatch countDownLatch = new CountDownLatch(1);
 
-        //when
+        // when
         ex.submit(() -> {
             try {
                 countDownLatch.await();
@@ -134,10 +133,9 @@ public class AccountTest {
         ex.awaitTermination(1, TimeUnit.SECONDS);
         ex.shutdown();
 
-        //then
+        // then
         assertThat(a.getBalance()).isEqualTo(1);
         assertThat(b.getBalance()).isEqualTo(19);
     }
-
 
 }

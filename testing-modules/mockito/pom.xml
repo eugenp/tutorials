@@ -47,6 +47,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>java-hamcrest</artifactId>
+            <version>${hamcrest.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -67,6 +73,7 @@
 
         <!-- testing -->
         <powermock.version>1.7.0</powermock.version>
+        <hamcrest.version>2.0.0.0</hamcrest.version>
 
     </properties>
 

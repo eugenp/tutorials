@@ -1,8 +1,8 @@
 package com.baeldung.spring.controller.rss;
 
-import com.rometools.rome.feed.synd.*;
-import com.rometools.rome.io.FeedException;
-import com.rometools.rome.io.SyndFeedOutput;
+import com.rometools.rome.feed.rss.Channel;
+import com.rometools.rome.feed.rss.Description;
+import com.rometools.rome.feed.rss.Item;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,46 +14,58 @@ import java.util.List;
 @Controller
 public class ArticleRssController {
 
-    @GetMapping(value = "/rssMvc")
+    @GetMapping(value = "/rss1")
     public String articleMvcFeed() {
         return "articleFeedView";
     }
 
-    @GetMapping(value = "/rssRest", produces = "application/rss+xml")
+    @GetMapping(value = "/rss2", produces = {"application/rss+xml", "application/rss+json"})
     @ResponseBody
-    public String articleRestFeed() throws FeedException {
-        SyndFeed feed = new SyndFeedImpl();
-        feed.setFeedType("rss_2.0");
-        feed.setLink("http://localhost:8080/spring-mvc-simple/rss");
-        feed.setTitle("Article Feed");
-        feed.setDescription("Article Feed Description");
-        feed.setPublishedDate(new Date());
-
-        List list = new ArrayList<SyndEntry>();
-
-        SyndEntry item1 = new SyndEntryImpl();
+    public Channel articleHttpFeed() {
+        List<Article> items = new ArrayList<>();
+        Article item1 = new Article();
         item1.setLink("http://www.baeldung.com/netty-exception-handling");
         item1.setTitle("Exceptions in Netty");
-        SyndContent description1 = new SyndContentImpl();
-        description1.setValue("In this quick article, we’ll be looking at exception handling in Netty.");
-        item1.setDescription(description1);
+        item1.setDescription("In this quick article, we’ll be looking at exception handling in Netty.");
         item1.setPublishedDate(new Date());
         item1.setAuthor("Carlos");
 
-        SyndEntry item2 = new SyndEntryImpl();
+        Article item2 = new Article();
         item2.setLink("http://www.baeldung.com/cockroachdb-java");
         item2.setTitle("Guide to CockroachDB in Java");
-        SyndContent description2 = new SyndContentImpl();
-        description2.setValue("This tutorial is an introductory guide to using CockroachDB with Java.");
-        item2.setDescription(description2);
+        item2.setDescription("This tutorial is an introductory guide to using CockroachDB with Java.");
         item2.setPublishedDate(new Date());
         item2.setAuthor("Baeldung");
 
-        list.add(item1);
-        list.add(item2);
-        feed.setEntries(list);
+        items.add(item1);
+        items.add(item2);
+        Channel channelData = buildChannel(items);
 
-        return new SyndFeedOutput().outputString(feed);
+        return channelData;
+    }
+
+    private Channel buildChannel(List<Article> articles){
+        Channel channel = new Channel("rss_2.0");
+        channel.setLink("http://localhost:8080/spring-mvc-simple/rss");
+        channel.setTitle("Article Feed");
+        channel.setDescription("Article Feed Description");
+        channel.setPubDate(new Date());
+
+        List<Item> items = new ArrayList<>();
+        for (Article article : articles) {
+            Item item = new Item();
+            item.setLink(article.getLink());
+            item.setTitle(article.getTitle());
+            Description description1 = new Description();
+            description1.setValue(article.getDescription());
+            item.setDescription(description1);
+            item.setPubDate(article.getPublishedDate());
+            item.setAuthor(article.getAuthor());
+            items.add(item);
+        }
+
+        channel.setItems(items);
+        return channel;
     }
 
 }

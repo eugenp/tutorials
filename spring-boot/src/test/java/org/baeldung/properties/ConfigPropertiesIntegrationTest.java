@@ -23,30 +23,21 @@ public class ConfigPropertiesIntegrationTest {
 
     @Test
     public void whenListPropertyQueriedthenReturnsProperty() throws Exception {
-        Assert.assertTrue("Couldn't bind list property!", properties.getDefaultRecipients()
-            .size() == 2);
-        Assert.assertTrue("Incorrectly bound list property. Expected 2 entries!", properties.getDefaultRecipients()
-            .size() == 2);
+        Assert.assertTrue("Couldn't bind list property!", properties.getDefaultRecipients().size() == 2);
+        Assert.assertTrue("Incorrectly bound list property. Expected 2 entries!", properties.getDefaultRecipients().size() == 2);
     }
 
     @Test
     public void whenMapPropertyQueriedthenReturnsProperty() throws Exception {
         Assert.assertTrue("Couldn't bind map property!", properties.getAdditionalHeaders() != null);
-        Assert.assertTrue("Incorrectly bound map property. Expected 3 Entries!", properties.getAdditionalHeaders()
-            .size() == 3);
+        Assert.assertTrue("Incorrectly bound map property. Expected 3 Entries!", properties.getAdditionalHeaders().size() == 3);
     }
 
     @Test
     public void whenObjectPropertyQueriedthenReturnsProperty() throws Exception {
         Assert.assertTrue("Couldn't bind map property!", properties.getCredentials() != null);
-        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials()
-            .getAuthMethod()
-            .equals("SHA1"));
-        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials()
-            .getUsername()
-            .equals("john"));
-        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials()
-            .getPassword()
-            .equals("password"));
+        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getAuthMethod().equals("SHA1"));
+        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getUsername().equals("john"));
+        Assert.assertTrue("Incorrectly bound object property!", properties.getCredentials().getPassword().equals("password"));
     }
 }

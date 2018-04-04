@@ -9,7 +9,7 @@ import org.infinispan.manager.DefaultCacheManager;
 import org.junit.After;
 import org.junit.Before;
 
-import java.util.concurrent.Callable;
+import java.util.function.Supplier;
 
 public class ConfigurationTest {
 
@@ -27,27 +27,19 @@ public class ConfigurationTest {
 
         cacheManager = configuration.cacheManager();
 
-        Cache<String, Integer> transactionalCache =
-          configuration.transactionalCache(cacheManager, listener);
+        Cache<String, Integer> transactionalCache = configuration.transactionalCache(cacheManager, listener);
 
-        Cache<String, String> simpleHelloWorldCache =
-          configuration.simpleHelloWorldCache(cacheManager, listener);
+        Cache<String, String> simpleHelloWorldCache = configuration.simpleHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> expiringHelloWorldCache =
-          configuration.expiringHelloWorldCache(cacheManager, listener);
+        Cache<String, String> expiringHelloWorldCache = configuration.expiringHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> evictingHelloWorldCache =
-          configuration.evictingHelloWorldCache(cacheManager, listener);
+        Cache<String, String> evictingHelloWorldCache = configuration.evictingHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> passivatingHelloWorldCache =
-          configuration.passivatingHelloWorldCache(cacheManager, listener);
+        Cache<String, String> passivatingHelloWorldCache = configuration.passivatingHelloWorldCache(cacheManager, listener);
 
-        this.helloWorldService = new HelloWorldService(repository,
-          listener, simpleHelloWorldCache, expiringHelloWorldCache, evictingHelloWorldCache,
-          passivatingHelloWorldCache);
+        this.helloWorldService = new HelloWorldService(repository, listener, simpleHelloWorldCache, expiringHelloWorldCache, evictingHelloWorldCache, passivatingHelloWorldCache);
 
         this.transactionalService = new TransactionalService(transactionalCache);
-
     }
 
     @After
@@ -55,15 +47,9 @@ public class ConfigurationTest {
         cacheManager.stop();
     }
 
-    protected long timeThis(Callable callable) {
-        try {
-            long milis = System.currentTimeMillis();
-            callable.call();
-            return System.currentTimeMillis() - milis;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return 0l;
+    protected <T> long timeThis(Supplier<T> supplier) {
+        long millis = System.currentTimeMillis();
+        supplier.get();
+        return System.currentTimeMillis() - millis;
     }
-
 }
