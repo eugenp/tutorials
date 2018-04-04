@@ -3,11 +3,13 @@ package com.baeldung.rxjava.filters;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import rx.Observable;
 import rx.observers.TestSubscriber;
 
+@Ignore("Manual only")
 public class RxJavaTimeFilteringOperatorsTest {
 
     @Test
