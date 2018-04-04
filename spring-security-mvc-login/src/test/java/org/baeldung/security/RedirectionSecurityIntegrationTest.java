@@ -1,12 +1,18 @@
 package org.baeldung.security;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpSession;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -16,38 +22,30 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
-import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrlPattern;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({ "/RedirectionWebSecurityConfig.xml", "/mvc-servlet.xml" })
+@ContextConfiguration({ "/RedirectionWebSecurityConfig.xml",
+        "/mvc-servlet.xml" })
 @WebAppConfiguration
 public class RedirectionSecurityIntegrationTest {
+
+    private final String USERNAME = "user1";
+    private final String PASSWORD = "user1Pass";
 
     @Autowired
     private WebApplicationContext context;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
     private MockMvc mvc;
-    private UserDetails userDetails;
 
     @Before
     public void setup() {
         mvc = MockMvcBuilders.webAppContextSetup(context)
             .apply(springSecurity())
             .build();
-        userDetails = userDetailsService.loadUserByUsername("user1");
     }
 
     @Test
-    public void givenSecuredResource_whenAccessUnauthenticated_thenRequiresAuthentication() throws Exception {
+    public void givenSecuredResource_whenAccessUnauthenticated_thenRequiresAuthentication()
+        throws Exception {
         mvc.perform(get("/secured"))
             .andExpect(status().is3xxRedirection())
             .andExpect(redirectedUrlPattern("**/login"));
@@ -55,24 +53,27 @@ public class RedirectionSecurityIntegrationTest {
     }
 
     @Test
-    public void givenCredentials_whenAccessSecuredResource_thenSuccess() throws Exception {
-        mvc.perform(get("/secured").with(user(userDetails)))
+    public void givenCredentials_whenAccessSecuredResource_thenSuccess()
+        throws Exception {
+        mvc.perform(get("/secured").with(user(USERNAME)))
             .andExpect(status().isOk());
     }
 
     @Test
-    public void givenAccessSecuredResource_whenAuthenticated_thenRedirectedBack() throws Exception {
+    public void givenAccessSecuredResource_whenAuthenticated_thenRedirectedBack()
+        throws Exception {
         MockHttpServletRequestBuilder securedResourceAccess = get("/secured");
         MvcResult unauthenticatedResult = mvc.perform(securedResourceAccess)
             .andExpect(status().is3xxRedirection())
             .andReturn();
 
-        MockHttpSession session = (MockHttpSession) unauthenticatedResult.getRequest()
+        MockHttpSession session = (MockHttpSession) unauthenticatedResult
+            .getRequest()
             .getSession();
         String loginUrl = unauthenticatedResult.getResponse()
             .getRedirectedUrl();
-        mvc.perform(post(loginUrl).param("username", userDetails.getUsername())
-            .param("password", userDetails.getPassword())
+        mvc.perform(post(loginUrl).param("username", USERNAME)
+            .param("password", PASSWORD)
             .session(session)
             .with(csrf()))
             .andExpect(status().is3xxRedirection())

@@ -16,10 +16,11 @@ public class RedirectionSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(final AuthenticationManagerBuilder auth)
+        throws Exception {
         auth.inMemoryAuthentication()
             .withUser("user1")
-            .password("user1Pass")
+            .password("{noop}user1Pass")
             .roles("USER");
     }
 
@@ -32,7 +33,8 @@ public class RedirectionSecurityConfig extends WebSecurityConfigurerAdapter {
             .authenticated()
             .and()
             .formLogin()
-            .successHandler(new SavedRequestAwareAuthenticationSuccessHandler());
+            .successHandler(
+                new SavedRequestAwareAuthenticationSuccessHandler());
         // .successHandler(new RefererAuthenticationSuccessHandler())
     }
 

@@ -7,7 +7,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @EnableWebSecurity
-public class MultipleAuthProvidersSecurityConfig extends WebSecurityConfigurerAdapter {
+public class MultipleAuthProvidersSecurityConfig
+    extends WebSecurityConfigurerAdapter {
 
     @Autowired
     CustomAuthenticationProvider customAuthProvider;
@@ -19,7 +20,7 @@ public class MultipleAuthProvidersSecurityConfig extends WebSecurityConfigurerAd
 
         auth.inMemoryAuthentication()
             .withUser("memuser")
-            .password("pass")
+            .password("{noop}pass")
             .roles("USER");
     }
 
