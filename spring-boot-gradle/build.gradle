@@ -36,4 +36,13 @@ springBoot {
 bootJar {
 //    This is overridden by the mainClassName in springBoot{} and added here for reference purposes.
     mainClassName = 'org.baeldung.DemoApplication'
+
+//    This block serves the same purpose as the above thus commented out. Added here for reference purposes
+//    manifest {
+//        attributes 'Start-Class': 'org.baeldung.DemoApplication'
+//    }
+}
+
+bootJar {
+
 }
