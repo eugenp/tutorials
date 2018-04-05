@@ -289,7 +289,7 @@
         <module>persistence-modules/java-jdbi</module>
         <module>jersey</module>
         <module>java-spi</module>
-  </modules>
+    </modules>
 
     <dependencies>
         <!-- logging -->
