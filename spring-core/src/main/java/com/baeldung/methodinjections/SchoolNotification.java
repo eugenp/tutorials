@@ -1,5 +1,9 @@
 package com.baeldung.methodinjections;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -7,21 +11,20 @@ import org.springframework.stereotype.Component;
 @Component("schoolNotification")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SchoolNotification {
-    private String name;
-    private int marks;
+    @Autowired
+    Grader grader;
 
-    public SchoolNotification(String name, int marks) {
-        this.setName(name);
-        this.setMarks(marks);
+    private String name;
+    private Collection<Integer> marks;
+
+    public SchoolNotification(String name) {
+        this.name = name;
+        this.marks = new ArrayList<Integer>();
     }
 
-    public String checkResult() {
-        if (marks >= 70) {
-            return this.name + ":FIRST_CLASS";
-        } else if (marks < 70 && marks > 45) {
-            return this.name + ":SECOND_CLASS";
-        }
-        return this.name + ":FAIL";
+    public String addMark(Integer mark) {
+        this.marks.add(mark);
+        return this.grader.grade(this.marks);
     }
 
     public String getName() {
@@ -32,11 +35,11 @@ public class SchoolNotification {
         this.name = name;
     }
 
-    public int getMarks() {
+    public Collection<Integer> getMarks() {
         return marks;
     }
 
-    public void setMarks(int marks) {
+    public void setMarks(Collection<Integer> marks) {
         this.marks = marks;
     }
 }

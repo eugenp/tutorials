@@ -9,7 +9,7 @@
     
     <bean id="schoolNotification" class="com.baeldung.methodinjections.SchoolNotification" scope="prototype"/>
     	        
-    <bean id="studentService" class="com.baeldung.methodinjections.StudentService" scope="prototype" >
-    	<lookup-method name="getSchoolNotification" bean="schoolNotification"/>
+    <bean id="studentServices" class="com.baeldung.methodinjections.StudentServices" scope="prototype" >
+    	<lookup-method name="getNotification" bean="schoolNotification"/>
     </bean>     
 </beans>

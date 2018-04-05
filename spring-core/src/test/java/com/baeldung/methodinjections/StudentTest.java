@@ -14,20 +14,18 @@ public class StudentTest {
         Student student2 = context.getBean("studentBean", Student.class);
 
         Assert.assertEquals(student1, student2);
-        Assert.assertNotEquals(student1.getNotification("Sam", 76), student2.getNotification("Paul", 44));
+        Assert.assertNotEquals(student1.getNotification("Alex"), student2.getNotification("Bethany"));
         context.close();
     }
 
     @Test
     public void whenAbstractGetterMethodInjects_thenNewInstanceReturned() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-        StudentService service = context.getBean("studentService", StudentService.class);
-        String name = "Alex";
-        int marks = 96;
-        String expectedResult = name + ":FIRST_CLASS";
+        StudentServices services = context.getBean("studentServices", StudentServices.class);
 
-        String actualResult = service.checkResult(name, marks);
-        Assert.assertEquals(expectedResult, actualResult);
+        Assert.assertEquals("PASS", services.appendMark("Alex", 76));
+        Assert.assertEquals("FAIL", services.appendMark("Bethany", 44));
+        Assert.assertEquals("PASS", services.appendMark("Claire", 96));
         context.close();
     }
 }
