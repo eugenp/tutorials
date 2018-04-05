@@ -1,13 +1,13 @@
 package com.baeldung.rxjava.filters;
 
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-
 import org.junit.Ignore;
 import org.junit.Test;
-
 import rx.Observable;
 import rx.observers.TestSubscriber;
+import rx.schedulers.TestScheduler;
+
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 @Ignore("Manual only")
 public class RxJavaTimeFilteringOperatorsTest {
@@ -15,21 +15,23 @@ public class RxJavaTimeFilteringOperatorsTest {
     @Test
     public void givenTimedObservable_whenSampling_thenOnlySampleItemsAreEmitted() throws InterruptedException {
 
+        TestScheduler testScheduler = new TestScheduler();
+
         Observable<Integer> timedObservable =
           Observable.just(1, 2, 3, 4, 5, 6)
-                    .zipWith(
-                      Observable.interval(0, 1, TimeUnit.SECONDS),
-                      (item, time) -> item
-                    );
+            .zipWith(
+              Observable.interval(0, 1, TimeUnit.SECONDS, testScheduler),
+              (item, time) -> item
+            );
 
-        TestSubscriber<Integer> subscriber = new TestSubscriber();
+        TestSubscriber<Integer> subscriber = new TestSubscriber<>();
 
         Observable<Integer> sampledObservable =
-          timedObservable.sample(Observable.interval(2500L, TimeUnit.MILLISECONDS));
+          timedObservable.sample(Observable.interval(2500L, TimeUnit.MILLISECONDS, testScheduler));
 
         sampledObservable.subscribe(subscriber);
 
-        Thread.sleep(7000);
+        testScheduler.advanceTimeBy(10, TimeUnit.SECONDS);
 
         subscriber.assertCompleted();
         subscriber.assertNoErrors();
@@ -41,12 +43,12 @@ public class RxJavaTimeFilteringOperatorsTest {
 
         Observable<Integer> timedObservable =
           Observable.just(1, 2, 3, 4, 5, 6)
-                    .zipWith(
-                      Observable.interval(0, 1, TimeUnit.SECONDS),
-                      (item, time) -> item
-                    );
+            .zipWith(
+              Observable.interval(0, 1, TimeUnit.SECONDS),
+              (item, time) -> item
+            );
 
-        TestSubscriber<Integer> subscriber = new TestSubscriber();
+        TestSubscriber<Integer> subscriber = new TestSubscriber<>();
 
         Observable<Integer> filteredObservable = timedObservable.throttleLast(3100L, TimeUnit.MILLISECONDS);
 
@@ -64,12 +66,12 @@ public class RxJavaTimeFilteringOperatorsTest {
 
         Observable<Integer> timedObservable =
           Observable.just(1, 2, 3, 4, 5, 6)
-                    .zipWith(
-                      Observable.interval(0, 1, TimeUnit.SECONDS),
-                      (item, time) -> item
-                    );
+            .zipWith(
+              Observable.interval(0, 1, TimeUnit.SECONDS),
+              (item, time) -> item
+            );
 
-        TestSubscriber<Integer> subscriber = new TestSubscriber();
+        TestSubscriber<Integer> subscriber = new TestSubscriber<>();
 
         Observable<Integer> filteredObservable =
           timedObservable.throttleFirst(4100L, TimeUnit.MILLISECONDS);
@@ -88,12 +90,12 @@ public class RxJavaTimeFilteringOperatorsTest {
 
         Observable<Integer> timedObservable =
           Observable.just(1, 2, 3, 4, 5, 6)
-                    .zipWith(
-                      Observable.interval(0, 1, TimeUnit.SECONDS),
-                      (item, time) -> item
-                    );
+            .zipWith(
+              Observable.interval(0, 1, TimeUnit.SECONDS),
+              (item, time) -> item
+            );
 
-        TestSubscriber<Integer> subscriber = new TestSubscriber();
+        TestSubscriber<Integer> subscriber = new TestSubscriber<>();
 
         Observable<Integer> filteredObservable = timedObservable.throttleWithTimeout(2000L, TimeUnit.MILLISECONDS);
 
@@ -111,12 +113,12 @@ public class RxJavaTimeFilteringOperatorsTest {
 
         Observable<Integer> timedObservable =
           Observable.just(1, 2, 3, 4, 5, 6)
-                    .zipWith(
-                      Observable.interval(0, 1, TimeUnit.SECONDS),
-                      (item, time) -> item
-                    );
+            .zipWith(
+              Observable.interval(0, 1, TimeUnit.SECONDS),
+              (item, time) -> item
+            );
 
-        TestSubscriber<Integer> subscriber = new TestSubscriber();
+        TestSubscriber<Integer> subscriber = new TestSubscriber<>();
 
         Observable<Integer> filteredObservable = timedObservable.debounce(2000L, TimeUnit.MILLISECONDS);
 
@@ -134,12 +136,12 @@ public class RxJavaTimeFilteringOperatorsTest {
 
         Observable<Integer> timedObservable =
           Observable.just(1, 2, 3, 4, 5, 6)
-                    .zipWith(
-                      Observable.interval(0, 1, TimeUnit.SECONDS),
-                      (item, time) -> item
-                    );
+            .zipWith(
+              Observable.interval(0, 1, TimeUnit.SECONDS),
+              (item, time) -> item
+            );
 
-        TestSubscriber<Integer> subscriber = new TestSubscriber();
+        TestSubscriber<Integer> subscriber = new TestSubscriber<>();
 
         Observable<Integer> filteredObservable = timedObservable.timeout(500L, TimeUnit.MILLISECONDS);
 
@@ -156,16 +158,15 @@ public class RxJavaTimeFilteringOperatorsTest {
 
         Observable<Integer> timedObservable =
           Observable.just(1, 2, 3, 4, 5, 6)
-                    .zipWith(
-                      Observable.interval(0, 1, TimeUnit.SECONDS),
-                      (item, time) -> item
-                    );
-
+            .zipWith(
+              Observable.interval(0, 1, TimeUnit.SECONDS),
+              (item, time) -> item
+            );
 
         Observable<Integer> delayedObservable = Observable.just(1)
-                                                          .delay(3000, TimeUnit.MILLISECONDS);
+          .delay(3000, TimeUnit.MILLISECONDS);
 
-        TestSubscriber<Integer> subscriber = new TestSubscriber();
+        TestSubscriber<Integer> subscriber = new TestSubscriber<>();
 
         Observable<Integer> filteredObservable = timedObservable.skipUntil(delayedObservable);
 
@@ -183,15 +184,15 @@ public class RxJavaTimeFilteringOperatorsTest {
 
         Observable<Integer> timedObservable =
           Observable.just(1, 2, 3, 4, 5, 6)
-                    .zipWith(
-                      Observable.interval(0, 1, TimeUnit.SECONDS),
-                      (item, time) -> item
-                    );
+            .zipWith(
+              Observable.interval(0, 1, TimeUnit.SECONDS),
+              (item, time) -> item
+            );
 
-        TestSubscriber subscriber = new TestSubscriber();
+        TestSubscriber subscriber = new TestSubscriber<>();
 
         Observable<Integer> delayedObservable = Observable.just(1)
-                                                          .delay(3000, TimeUnit.MILLISECONDS);
+          .delay(3000, TimeUnit.MILLISECONDS);
 
         Observable<Integer> filteredObservable = timedObservable.takeUntil(delayedObservable);
 
