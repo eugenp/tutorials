@@ -42,6 +42,7 @@
         <module>apache-thrift</module>
         <module>apache-curator</module>
         <module>apache-zookeeper</module>
+        <module>apache-opennlp</module>
         <module>autovalue</module>
         <module>axon</module>
         <module>bootique</module>
@@ -122,6 +123,7 @@
         <!-- <module>kotlin</module> -->
         <module>mapstruct</module>
         <!-- <module>metrics</module> -->
+        <module>maven</module>
         <module>mesos-marathon</module>
         <module>testing-modules/mockito</module>
         <module>testing-modules/mockito-2</module>
@@ -284,10 +286,11 @@
         <module>lucene</module>
         <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+	      <module>spring-security-thymeleaf</module>
         <module>persistence-modules/java-jdbi</module>
         <module>jersey</module>
         <module>java-spi</module>
-  </modules>
+    </modules>
 
     <dependencies>
         <!-- logging -->

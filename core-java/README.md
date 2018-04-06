@@ -141,4 +141,5 @@
 - [Comparing Strings in Java](http://www.baeldung.com/java-compare-strings)
 - [Guide to Inheritance in Java](http://www.baeldung.com/java-inheritance)
 - [Guide to Externalizable Interface in Java](http://www.baeldung.com/java-externalizable)
+- [The “final” Keyword in Java](http://www.baeldung.com/java-final)
 

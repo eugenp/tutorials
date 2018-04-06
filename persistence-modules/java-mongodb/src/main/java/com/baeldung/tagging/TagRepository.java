@@ -135,7 +135,6 @@ public class TagRepository implements Closeable {
 	private static Post documentToPost(Document document) {
 		Post post = new Post();
 		post.setTitle(document.getString(DBCollection.ID_FIELD_NAME));
-		post.setArticle(document.getString("article"));
 		post.setAuthor(document.getString("author"));
 		post.setTags((List<String>) document.get(TAGS_FIELD));
 		return post;
