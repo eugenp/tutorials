@@ -681,6 +681,7 @@
             <version>4.5.1</version>
         </dependency>
     </dependencies>
+    
     <repositories>
         <repository>
             <id>maven2-repository.dev.java.net</id>
@@ -776,18 +777,6 @@
                             <mainClass>com.baeldung.neuroph.NeurophXOR</mainClass>
                         </manifest>
                     </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                        <exclude>**/*ManualTest.java</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
 
