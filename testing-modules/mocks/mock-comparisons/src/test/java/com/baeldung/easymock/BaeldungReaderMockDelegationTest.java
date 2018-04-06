@@ -10,7 +10,7 @@ public class BaeldungReaderMockDelegationTest {
     EasyMockSupport easyMockSupport = new EasyMockSupport();
 
     @Test
-    public void givenBaeldungReader_whenReadAndWrite_thenOperationSupported() {
+    public void givenBaeldungReader_whenReadAndWriteSequencially_thenWorks() {
         ArticleReader mockArticleReader = easyMockSupport.createMock(ArticleReader.class);
         IArticleWriter mockArticleWriter = easyMockSupport.createMock(IArticleWriter.class);
         BaeldungReader baeldungReader = new BaeldungReader(mockArticleReader, mockArticleWriter);
