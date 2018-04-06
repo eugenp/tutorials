@@ -24,7 +24,7 @@ import org.springframework.web.servlet.FlashMap;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TodoControllerWithSessionAttributesTest {
+public class TodoControllerWithSessionAttributesIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
