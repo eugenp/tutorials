@@ -270,6 +270,12 @@
             <groupId>net.openhft</groupId>
             <artifactId>chronicle</artifactId>
             <version>3.6.4</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.java</groupId>
+                    <artifactId>tools</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -780,6 +786,7 @@
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>

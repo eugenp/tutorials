@@ -16,7 +16,7 @@ import static org.awaitility.Awaitility.setDefaultTimeout;
 import static org.awaitility.proxy.AwaitilityClassProxy.to;
 import static org.hamcrest.Matchers.equalTo;
 
-public class AsyncServiceLongRunningUnitTest {
+public class AsyncServiceLongRunningManualTest {
     private AsyncService asyncService;
 
     @Before

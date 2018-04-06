@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class Docx4jReadAndWriteTest {
+public class Docx4jReadAndWriteIntegrationTest {
 
     private static final String imagePath = "src/main/resources/image.jpg";
     private static final String outputPath = "helloWorld.docx";

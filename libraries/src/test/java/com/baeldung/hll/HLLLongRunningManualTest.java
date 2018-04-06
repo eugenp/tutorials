@@ -10,7 +10,7 @@ import java.util.stream.LongStream;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class HLLLongRunningUnitTest {
+public class HLLLongRunningManualTest {
 
     @Test
     public void givenHLL_whenAddHugeAmountOfNumbers_thenShouldReturnEstimatedCardinality() {

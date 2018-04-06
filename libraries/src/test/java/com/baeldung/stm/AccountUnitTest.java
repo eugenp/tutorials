@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 
-public class AccountTest {
+public class AccountUnitTest {
 
     @Test
     public void givenAccount_whenDecrement_thenShouldReturnProperValue() {

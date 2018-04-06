@@ -14,7 +14,7 @@ import javax.cache.spi.CachingProvider;
 
 import static org.junit.Assert.assertEquals;
 
-public class EventListenerTest {
+public class EventListenerIntegrationTest {
 
     private static final String CACHE_NAME = "MyCache";
 
