@@ -5,6 +5,8 @@ import au.com.dius.pact.consumer.PactProviderRuleMk2;
 import au.com.dius.pact.consumer.PactVerification;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
 import au.com.dius.pact.model.RequestResponsePact;
+
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;
@@ -34,6 +36,7 @@ public class PactConsumerDrivenContractUnitTest {
     }
 
     @Test
+    @Ignore
     @PactVerification()
     public void givenGet_whenSendRequest_shouldReturn200WithProperHeaderAndBody() {
         // when

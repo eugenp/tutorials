@@ -27,3 +27,6 @@ http://localhost:8082/spring-thymeleaf/addStudent/
 http://localhost:8082/spring-thymeleaf/listStudents/
 
 The first URL is the home page of the application. The home page has links to the other two pages.
+
+### Security
+The user/password required is: user1/user1Pass

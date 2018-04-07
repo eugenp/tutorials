@@ -136,4 +136,10 @@
 - [The Trie Data Structure in Java](http://www.baeldung.com/trie-java)
 - [Introduction to Javadoc](http://www.baeldung.com/javadoc)
 - [How to TDD a List Implementation](http://jira.baeldung.com/browse/BAEL-1537)
+- [How to Make a Deep Copy of an Object in Java](http://www.baeldung.com/java-deep-copy)
+- [Check if a String is a Palindrome](http://www.baeldung.com/java-palindrome)
+- [Comparing Strings in Java](http://www.baeldung.com/java-compare-strings)
+- [Guide to Inheritance in Java](http://www.baeldung.com/java-inheritance)
+- [Guide to Externalizable Interface in Java](http://www.baeldung.com/java-externalizable)
+- [The “final” Keyword in Java](http://www.baeldung.com/java-final)
 
