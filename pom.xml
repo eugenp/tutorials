@@ -22,8 +22,9 @@
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
         <!-- plugins -->
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
 
     <modules>
@@ -42,6 +43,7 @@
         <module>apache-thrift</module>
         <module>apache-curator</module>
         <module>apache-zookeeper</module>
+        <module>apache-opennlp</module>
         <module>autovalue</module>
         <module>axon</module>
         <module>bootique</module>
@@ -64,6 +66,7 @@
         <!--<module>ejb</module> -->
 
         <module>feign</module>
+        <module>flips</module>
 
         <!-- <module>testing-modules/gatling</module> --> <!-- not meant to run as part of the standard build -->
 
@@ -121,6 +124,7 @@
         <!-- <module>kotlin</module> -->
         <module>mapstruct</module>
         <!-- <module>metrics</module> -->
+        <module>maven</module>
         <module>mesos-marathon</module>
         <module>testing-modules/mockito</module>
         <module>testing-modules/mockito-2</module>
@@ -149,6 +153,7 @@
         <module>testing-modules/selenium-junit-testng</module>
         <module>persistence-modules/solr</module>
         <module>spark-java</module>
+        <module>spring-4</module>
         <module>spring-5</module>
         <module>spring-5-reactive</module>
         <module>spring-5-mvc</module>
@@ -282,10 +287,11 @@
         <module>lucene</module>
         <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
+	      <module>spring-security-thymeleaf</module>
         <module>persistence-modules/java-jdbi</module>
         <module>jersey</module>
         <module>java-spi</module>
-  </modules>
+    </modules>
 
     <dependencies>
         <!-- logging -->
@@ -345,14 +351,16 @@
 
     <build>
         <plugins>
+        
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <executable>maven</executable>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -367,9 +375,9 @@
                         <exclude>**/JdbcTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
-
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -379,7 +387,9 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            
         </plugins>
+        
         <extensions>
             <extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
@@ -387,5 +397,7 @@
                 <version>3.4</version>
             </extension>
         </extensions>
+        
     </build>
+    
 </project>
