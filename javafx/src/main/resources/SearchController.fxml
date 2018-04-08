@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml"
             xmlns="http://javafx.com/javafx"
-            fx:controller="com.baeldung.javafx.view.SearchController"
+            fx:controller="com.baeldung.view.SearchController"
             prefHeight="400.0" prefWidth="600.0">
     <children>
 
