@@ -2,7 +2,6 @@ package com.baeldung.atlassian.fugue;
 
 import io.atlassian.fugue.*;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;

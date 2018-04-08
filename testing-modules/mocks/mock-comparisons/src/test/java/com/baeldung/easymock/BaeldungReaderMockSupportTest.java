@@ -17,7 +17,7 @@ public class BaeldungReaderMockSupportTest extends EasyMockSupport {
     @Mock IArticleWriter mockArticleWriter;
 
     @Test
-    public void givenBaeldungReader_whenReadAndWrite_thenOperationSupported() {
+    public void givenBaeldungReader_whenReadAndWriteSequencially_thenWorks() {
         expect(mockArticleReader.next())
           .andReturn(null)
           .times(2)
