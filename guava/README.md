@@ -30,3 +30,4 @@
 - [Guide to Guava MinMaxPriorityQueue and EvictingQueue](http://www.baeldung.com/guava-minmax-priority-queue-and-evicting-queue)
 - [Guide to Mathematical Utilities in Guava](http://www.baeldung.com/guava-math)
 - [Bloom Filter in Java using Guava](http://www.baeldung.com/guava-bloom-filter)
+- [Using Guava CountingOutputStream](http://www.baeldung.com/guava-counting-outputstream)

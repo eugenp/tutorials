@@ -19,7 +19,7 @@ public class LoginServlet extends HttpServlet {
         Optional<String> uiColor = cookieReader.readCookie("uiColor");
         Optional<String> userName = cookieReader.readCookie("userName");
 
-        request.setAttribute("uiColor", uiColor.isPresent() ? uiColor.get() : "blue");
+        request.setAttribute("uiColor", uiColor.orElse("blue"));
 
         if (!userName.isPresent()) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
