@@ -31,7 +31,7 @@ public class CarEngineFacadeTest {
 
 
     @Test
-    public void testStartEngine() {
+    public void whenStartEngine_thenAllNecessaryActionsPerformed() {
         CarEngineFacade carEngineFacade = new CarEngineFacade();
         carEngineFacade.startEngine();
         assertTrue(appender.logContains("Fuel injector ready to inject fuel."));
@@ -49,7 +49,7 @@ public class CarEngineFacadeTest {
 
 
     @Test
-    public void testStopEngine() {
+    public void whenStopEngine_thenAllNecessaryActionsPerformed() {
         CarEngineFacade carEngineFacade = new CarEngineFacade();
         carEngineFacade.stopEngine();
         assertTrue(appender.logContains("Stopping Fuel injector..."));
