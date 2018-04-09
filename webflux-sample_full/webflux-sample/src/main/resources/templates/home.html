@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+
+        h4 {
+            color: blue;
+        }
+
+        .center {
+            text-align: left;
+            border: 5px solid black;
+        }
+
+
+        #data-table th {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            text-align: left;
+            background-color: cadetblue;
+            color: white;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <h3 style="text-align: center">Stream event Sample</h3>
+    <div class="table-responsive">
+        <table class="table" id="data-table">
+            <thead>
+            <tr>             
+                <th>Name</th>
+                <th>Address</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<script>
+    var streamEvt = new EventSource("http://localhost:8080/stream/students");
+    streamEvt.onmessage = function (event) {
+        var data = JSON.parse(event.data);
+        var table = document.getElementById("data-table");
+        var row = table.insertRow(1);
+        var cell0 = row.insertCell(0);
+        var cell1 = row.insertCell(1);
+        cell0.innerHTML = '<td>' + data.fullName + '</td>';
+        cell1.innerHTML = '<td>' + data.address + '</td>';
+    }
+</script>
+
+</body>
+</html>
