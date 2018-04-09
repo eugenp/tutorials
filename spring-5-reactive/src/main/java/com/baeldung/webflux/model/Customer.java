@@ -1,4 +1,4 @@
-package com.example.webflex.customer;
+package com.baeldung.webflex.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 

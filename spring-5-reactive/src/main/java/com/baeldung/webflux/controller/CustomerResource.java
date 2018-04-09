@@ -1,5 +1,4 @@
-package com.example.webflex.customer;
-
+package com.baeldung.webflex.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
+
+import com.baeldung.webflex.service.CustomerService;
 
 import java.io.IOException;
 
@@ -21,13 +22,6 @@ public class CustomerResource {
 
     public CustomerResource(CustomerService customerService) {
         this.customerService = customerService;
-    }
-
-    @PostMapping("/customers/initial-set-up")
-    public void initialSetUp() throws IOException {
-        log.debug("REST Starting Initial Set up");
-        customerService.csvToDB();
-        log.debug("REST Done with Initialized set up");
     }
 
     @GetMapping(value = "/api/customers", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
