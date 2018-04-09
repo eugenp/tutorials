@@ -48,6 +48,13 @@
             <version>1.5.0-RELEASE</version>
         </dependency>
 
+        <!-- Web3j -->
+        <dependency>
+            <groupId>org.web3j</groupId>
+            <artifactId>core</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+
         <!-- JSTL/JSP -->
         <dependency>
             <groupId>javax.servlet</groupId>
