@@ -1,7 +1,7 @@
-package com.baeldung.javafx.view;
+package com.baeldung.view;
 
 
-import com.baeldung.javafx.model.Person;
+import com.baeldung.model.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class SearchController {
