@@ -2,7 +2,6 @@ package com.baeldung.webflex.service;
 
 
 import com.github.javafaker.Faker;
-import com.opencsv.CSVReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -10,10 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.util.function.Tuple2;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.UUID;
