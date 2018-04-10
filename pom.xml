@@ -410,6 +410,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
                     <aggregate>true</aggregate>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
