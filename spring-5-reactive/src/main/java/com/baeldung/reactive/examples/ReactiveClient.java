@@ -3,8 +3,9 @@ package com.baeldung.reactive.examples;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import com.baeldung.reactive.examples.ReactiveController.DateTimeDto;
 
 @SpringBootApplication
 public class ReactiveClient implements CommandLineRunner {
@@ -16,11 +17,13 @@ public class ReactiveClient implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         WebClient.create("http://localhost:8080")
+
             .get()
             .uri("/example/time")
-            .accept(MediaType.TEXT_EVENT_STREAM)
             .retrieve()
-            .bodyToFlux(String.class)
+
+            .bodyToFlux(DateTimeDto.class)
+            .map(DateTimeDto::getDateTime)
             .subscribe(System.out::println);
     }
 
