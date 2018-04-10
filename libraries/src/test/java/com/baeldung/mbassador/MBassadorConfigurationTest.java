@@ -6,8 +6,6 @@ import net.engio.mbassy.bus.error.PublicationError;
 import net.engio.mbassy.listener.Handler;
 import org.junit.Before;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -25,8 +23,8 @@ public class MBassadorConfigurationTest implements IPublicationErrorHandler {
     @Before
     public void prepareTests() {
 
-      dispatcher = new MBassador<String>(this);
-      dispatcher.subscribe(this);
+        dispatcher = new MBassador<String>(this);
+        dispatcher.subscribe(this);
     }
 
     @Test

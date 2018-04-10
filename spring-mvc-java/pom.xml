@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-mvc-java</artifactId>
@@ -7,38 +7,42 @@
     <name>spring-mvc-java</name>
 
     <parent>
+        <artifactId>parent-boot-5</artifactId>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-5</relativePath>
     </parent>
 
     <dependencies>
-        <!-- Spring -->
+        <!-- Spring Boot Dependencies -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-            <version>${org.springframework.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-            <version>${org.springframework.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
         <!-- Jackson -->
@@ -63,11 +67,6 @@
         </dependency>
 
         <!-- AOP -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
@@ -118,7 +117,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -294,10 +292,8 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
         <thymeleaf.version>2.1.5.RELEASE</thymeleaf.version>
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.4</jackson.version>
 
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
@@ -317,7 +313,7 @@
         <!-- testing -->
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <rest-assured.version>2.9.0</rest-assured.version>
+        <rest-assured.version>3.0.7</rest-assured.version>
         <net.sourceforge.htmlunit>2.23</net.sourceforge.htmlunit>
 
         <!-- maven plugins -->

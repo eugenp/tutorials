@@ -32,6 +32,19 @@
         </dependency>
 
         <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava-string</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+      
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
             <version>1.7.0</version>
@@ -57,6 +70,11 @@
             <artifactId>guava</artifactId>
             <version>22.0</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jakewharton.rxrelay2</groupId>
+            <artifactId>rxrelay</artifactId>
+            <version>2.0.0</version>
         </dependency>
     </dependencies>
 

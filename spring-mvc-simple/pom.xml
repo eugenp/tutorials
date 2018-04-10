@@ -31,9 +31,18 @@
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
         <junit.platform.version>1.0.2</junit.platform.version>
         <rome.version>1.9.0</rome.version>
+        <jackson.version>2.9.4</jackson.version>
+        <xstream.version>1.4.9</xstream.version>
+        <scribejava.version>5.1.0</scribejava.version>
+        <json.version>20180130</json.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-oxm</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -120,6 +129,21 @@
             <groupId>com.rometools</groupId>
             <artifactId>rome</artifactId>
             <version>${rome.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>${xstream.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.scribejava</groupId>
+            <artifactId>scribejava-apis</artifactId>
+            <version>${scribejava.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
         </dependency>
     </dependencies>
     <build>

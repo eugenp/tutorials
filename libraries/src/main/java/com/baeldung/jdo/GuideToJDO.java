@@ -42,8 +42,8 @@ public class GuideToJDO {
         listXMLProducts();
     }
 
-    public void CreateH2Properties(){
-        
+    public void CreateH2Properties() {
+
         pumd = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
         pumd.addClassName("com.baeldung.jdo.Product");
         pumd.setExcludeUnlistedClasses();
@@ -51,18 +51,18 @@ public class GuideToJDO {
         pumd.addProperty("javax.jdo.option.ConnectionURL", "jdbc:h2:mem:mypersistence");
         pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");
         pumd.addProperty("javax.jdo.option.ConnectionPassword", "");
-        pumd.addProperty("datanucleus.autoCreateSchema", "true");        
-        
+        pumd.addProperty("datanucleus.autoCreateSchema", "true");
+
     }
-    
-    public void CreateXMLProperties(){
+
+    public void CreateXMLProperties() {
         pumdXML = new PersistenceUnitMetaData("dynamic-unit", "RESOURCE_LOCAL", null);
         pumdXML.addClassName("com.baeldung.jdo.ProductXML");
         pumdXML.setExcludeUnlistedClasses();
         pumdXML.addProperty("javax.jdo.option.ConnectionURL", "xml:file:myPersistence.xml");
-        pumdXML.addProperty("datanucleus.autoCreateSchema", "true");        
+        pumdXML.addProperty("datanucleus.autoCreateSchema", "true");
     }
-    
+
     public void CreateProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -91,7 +91,7 @@ public class GuideToJDO {
     }
 
     @SuppressWarnings("rawtypes")
-    public void UpdateProducts(){
+    public void UpdateProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -105,13 +105,13 @@ public class GuideToJDO {
         } finally {
             if (tx.isActive()) {
                 tx.rollback();
-            }   
+            }
             pm.close();
         }
     }
-    
+
     @SuppressWarnings("rawtypes")
-    public void DeleteProducts(){
+    public void DeleteProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -125,11 +125,11 @@ public class GuideToJDO {
         } finally {
             if (tx.isActive()) {
                 tx.rollback();
-            }   
+            }
             pm.close();
         }
     }
-    
+
     @SuppressWarnings({ "rawtypes", "unchecked" })
     public void ListProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
@@ -155,9 +155,9 @@ public class GuideToJDO {
             pm.close();
         }
     }
-    
+
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void QueryJDOQL (){
+    public void QueryJDOQL() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -177,7 +177,7 @@ public class GuideToJDO {
                 LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[] { p.name, p.price });
             }
             LOGGER.log(Level.INFO, "--------------------------------------------------------------");
-            
+
             tx.commit();
         } finally {
             if (tx.isActive()) {
@@ -187,28 +187,28 @@ public class GuideToJDO {
             pm.close();
         }
     }
-    
+
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void QuerySQL (){
+    public void QuerySQL() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
 
-            //SQL :
+            // SQL :
             LOGGER.log(Level.INFO, "SQL --------------------------------------------------------------");
             Query query = pm.newQuery("javax.jdo.query.SQL", "SELECT * FROM PRODUCT");
             query.setClass(Product.class);
             List<Product> results = query.executeList();
-            
+
             Iterator<Product> iter = results.iterator();
             while (iter.hasNext()) {
                 Product p = iter.next();
                 LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[] { p.name, p.price });
             }
             LOGGER.log(Level.INFO, "--------------------------------------------------------------");
-            
+
             tx.commit();
         } finally {
             if (tx.isActive()) {
@@ -218,27 +218,27 @@ public class GuideToJDO {
             pm.close();
         }
     }
-    
+
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void QueryJPQL (){
+    public void QueryJPQL() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
 
-            //JPQL :
+            // JPQL :
             LOGGER.log(Level.INFO, "JPQL --------------------------------------------------------------");
-            Query q = pm.newQuery("JPQL", "SELECT p FROM "+Product.class.getName()+" p WHERE p.name = 'Laptop'");
-            List results = (List)q.execute();
-            
+            Query q = pm.newQuery("JPQL", "SELECT p FROM " + Product.class.getName() + " p WHERE p.name = 'Laptop'");
+            List results = (List) q.execute();
+
             Iterator<Product> iter = results.iterator();
             while (iter.hasNext()) {
                 Product p = iter.next();
                 LOGGER.log(Level.WARNING, "Product name: {0} - Price: {1}", new Object[] { p.name, p.price });
             }
             LOGGER.log(Level.INFO, "--------------------------------------------------------------");
-            
+
             tx.commit();
         } finally {
             if (tx.isActive()) {
@@ -248,18 +248,18 @@ public class GuideToJDO {
             pm.close();
         }
     }
-    
-    public void persistXML(){
+
+    public void persistXML() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumdXML, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
-            ProductXML productXML = new ProductXML(0,"Tablet", 80.0);
+            ProductXML productXML = new ProductXML(0, "Tablet", 80.0);
             pm.makePersistent(productXML);
-            ProductXML productXML2 = new ProductXML(1,"Phone", 20.0);
+            ProductXML productXML2 = new ProductXML(1, "Phone", 20.0);
             pm.makePersistent(productXML2);
-            ProductXML productXML3 = new ProductXML(2,"Laptop", 200.0);
+            ProductXML productXML3 = new ProductXML(2, "Laptop", 200.0);
             pm.makePersistent(productXML3);
             tx.commit();
         } finally {
@@ -269,9 +269,9 @@ public class GuideToJDO {
             pm.close();
         }
     }
-    
+
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void listXMLProducts(){
+    public void listXMLProducts() {
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumdXML, null);
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();

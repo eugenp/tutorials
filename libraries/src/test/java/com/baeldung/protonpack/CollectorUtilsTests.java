@@ -35,32 +35,21 @@ public class CollectorUtilsTests {
 
     @Test
     public void givenEmptyStream_withCollectorUnique_shouldReturnEmpty() {
-        assertThat(Stream
-          .empty()
-          .collect(CollectorUtils.unique()), equalTo(Optional.empty()));
+        assertThat(Stream.empty().collect(CollectorUtils.unique()), equalTo(Optional.empty()));
     }
 
     @Test
     public void givenIntegerStream_withCollectorUnique_shouldReturnUniqueValue() {
-        assertThat(Stream
-          .of(1, 2, 3)
-          .filter(i -> i > 2)
-          .collect(CollectorUtils.unique()), equalTo(Optional.of(3)));
+        assertThat(Stream.of(1, 2, 3).filter(i -> i > 2).collect(CollectorUtils.unique()), equalTo(Optional.of(3)));
     }
 
     @Test
     public void givenIntegerStream_withUniqueNullable_shouldReturnUniqueValue() {
-        assertThat(Stream
-          .of(1, 2, 3)
-          .filter(i -> i > 2)
-          .collect(CollectorUtils.uniqueNullable()), equalTo(3));
+        assertThat(Stream.of(1, 2, 3).filter(i -> i > 2).collect(CollectorUtils.uniqueNullable()), equalTo(3));
     }
 
     @Test(expected = NonUniqueValueException.class)
     public void givenIntegerStream_withCollectorUnique_shouldThrowNonUniqueValueException() {
-        Stream
-          .of(1, 2, 3)
-          .filter(i -> i > 1)
-          .collect(CollectorUtils.unique());
+        Stream.of(1, 2, 3).filter(i -> i > 1).collect(CollectorUtils.unique());
     }
 }

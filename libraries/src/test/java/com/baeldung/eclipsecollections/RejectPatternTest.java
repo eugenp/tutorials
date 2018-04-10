@@ -20,10 +20,8 @@ public class RejectPatternTest {
 
     @Test
     public void whenReject_thenCorrect() {
-        MutableList<Integer> notGreaterThanThirty = list.reject(Predicates.greaterThan(30))
-            .sortThis();
+        MutableList<Integer> notGreaterThanThirty = list.reject(Predicates.greaterThan(30)).sortThis();
 
-        Assertions.assertThat(notGreaterThanThirty)
-            .containsExactlyElementsOf(this.expectedList);
+        Assertions.assertThat(notGreaterThanThirty).containsExactlyElementsOf(this.expectedList);
     }
 }

@@ -40,8 +40,7 @@ public class SpringBootWithServletComponentIntegrationTest {
         FilterRegistration filterRegistration = servletContext.getFilterRegistration("hello filter");
 
         assertNotNull(filterRegistration);
-        assertTrue(filterRegistration.getServletNameMappings()
-            .contains("echo servlet"));
+        assertTrue(filterRegistration.getServletNameMappings().contains("echo servlet"));
     }
 
     @Autowired
