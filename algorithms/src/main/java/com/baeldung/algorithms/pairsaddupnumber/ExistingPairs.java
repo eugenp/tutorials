@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * Find all different pairs of numbers in an array that add up to a given sum - Complexity O(n^2) "Brute force"
+ * Find all existing pairs of numbers in an array that add up to a given sum - Complexity O(n^2) "Brute force"
  */
 public class ExistingPairs {
 
