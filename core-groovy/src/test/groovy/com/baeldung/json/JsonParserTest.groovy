@@ -1,5 +1,6 @@
 package com.baeldung.json
 
+import spock.lang.Ignore
 import spock.lang.Specification
 
 import java.text.SimpleDateFormat
@@ -24,6 +25,7 @@ class JsonParserTest extends Specification {
             account.value == 15.6
     }
 
+	@Ignore
     def 'Should parse to Account given Json String with date property' () {
         given:
             def json = '{"id":"1234","value":15.6,"createdAt":"2018-01-01T00:00:00+0000"}'
@@ -38,6 +40,7 @@ class JsonParserTest extends Specification {
             account.createdAt == Date.parse('yyyy-MM-dd', '2018-01-01')
     }
 
+    @Ignore
     def 'Should parse to Json given an Account object' () {
         given:
             Account account = new Account(
