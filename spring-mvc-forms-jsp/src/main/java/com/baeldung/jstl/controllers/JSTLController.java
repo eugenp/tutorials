@@ -91,6 +91,7 @@ public class JSTLController {
 
     @RequestMapping(value = "/xml_tags", method = RequestMethod.GET)
     public ModelAndView xmlTags(final Model model) {
+        System.out.println("dddddddddddddddddffffffffffffff");
         ModelAndView mv = new ModelAndView("xml_tags");
         return mv;
     }
