@@ -11,10 +11,10 @@ public class UnitTestNamingConventionRule extends AbstractJavaRule {
 
     private static List<String> allowedEndings = Arrays.asList(
       "IntegrationTest",
-      "LongRunningUnitTest",
       "ManualTest",
       "JdbcTest",
-      "LiveTest");
+      "LiveTest",
+      "UnitTest");
 
     public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
         String className = node.getImage();
