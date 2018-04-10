@@ -28,7 +28,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
-public class GeoQueriesTest {
+public class GeoQueriesIntegrationTest {
 
     private static final String WONDERS_OF_WORLD = "wonders-of-world";
     private static final String WONDERS = "Wonders";
