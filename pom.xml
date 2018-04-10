@@ -414,11 +414,12 @@
 				</dependencies>
 				<configuration>
 					<linkXRef>true</linkXRef>
+					<failOnViolation>false</failOnViolation>
 					<includeTests>true</includeTests>
 					<sourceEncoding>UTF-8</sourceEncoding>
 					<targetJdk>1.8</targetJdk>
 					<rulesets>
-						<ruleset>${user.dir}\baeldung-pmd-rules.xml</ruleset>
+						<ruleset>${user.dir}/baeldung-pmd-rules.xml</ruleset>
 					</rulesets>
 				</configuration>
 				<executions>
