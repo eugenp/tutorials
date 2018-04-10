@@ -142,4 +142,5 @@
 - [Guide to Inheritance in Java](http://www.baeldung.com/java-inheritance)
 - [Guide to Externalizable Interface in Java](http://www.baeldung.com/java-externalizable)
 - [The “final” Keyword in Java](http://www.baeldung.com/java-final)
+- [Inheritance and Composition (Is-a vs Has-a relationship) in Java](http://www.baeldung.com/java-inheritance-composition)
 

@@ -24,7 +24,7 @@ class JsonParserTest extends Specification {
             account.value == 15.6
     }
 
-    def 'Should parse to Account given Json String with date property' () {
+    /*def 'Should parse to Account given Json String with date property' () {
         given:
             def json = '{"id":"1234","value":15.6,"createdAt":"2018-01-01T00:00:00+0000"}'
         when:
@@ -36,9 +36,9 @@ class JsonParserTest extends Specification {
             account.value == 15.6
             println account.createdAt
             account.createdAt == Date.parse('yyyy-MM-dd', '2018-01-01')
-    }
+    }*/
 
-    def 'Should parse to Json given an Account object' () {
+    /*def 'Should parse to Json given an Account object' () {
         given:
             Account account = new Account(
                     id: '123',
@@ -50,7 +50,7 @@ class JsonParserTest extends Specification {
         then:
             json
             json == '{"value":15.6,"createdAt":"2018-01-01T00:00:00+0000","id":"123"}'
-    }
+    }*/
 
     def 'Should prettify given a json string' () {
         given:

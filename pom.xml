@@ -22,8 +22,9 @@
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
         <!-- plugins -->
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
 
     <modules>
@@ -100,6 +101,7 @@
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
+        <module>javafx</module>
         <module>jgroups</module>
         <module>jee-7</module>
         <!-- <module>jhipster/jhipster-monolithic</module> -->
@@ -112,7 +114,9 @@
         <module>testing-modules/junit-5</module>
         <module>jws</module>
 
+		<!--
         <module>libraries</module>
+		-->
         <module>libraries-data</module>
         <module>linkrest</module>
         <module>logging-modules/log-mdc</module>
@@ -350,14 +354,16 @@
 
     <build>
         <plugins>
+        
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <executable>maven</executable>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -372,9 +378,9 @@
                         <exclude>**/JdbcTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
-
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -384,7 +390,9 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            
         </plugins>
+        
         <extensions>
             <extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
@@ -392,5 +400,7 @@
                 <version>3.4</version>
             </extension>
         </extensions>
+        
     </build>
+    
 </project>
