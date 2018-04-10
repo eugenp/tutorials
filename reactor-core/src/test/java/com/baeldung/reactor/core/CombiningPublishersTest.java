@@ -2,6 +2,7 @@ package com.baeldung.reactor.core;
 
 import java.time.Duration;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import reactor.core.publisher.Flux;
@@ -32,7 +33,7 @@ public class CombiningPublishersTest {
     }
     
     
-    /*@Test
+    @Ignore
     public void givenFluxes_whenMergeWithDelayedElementsIsInvoked_thenMergeWithDelayedElements() {
         Flux<Integer> fluxOfIntegers = Flux.merge(
                 evenNumbers.delayElements(Duration.ofMillis(2000L)), 
@@ -46,7 +47,7 @@ public class CombiningPublishersTest {
         .expectNext(4)
         .expectComplete()
         .verify();
-    }*/
+    }
     
     @Test
     public void givenFluxes_whenConcatIsInvoked_thenConcat() {

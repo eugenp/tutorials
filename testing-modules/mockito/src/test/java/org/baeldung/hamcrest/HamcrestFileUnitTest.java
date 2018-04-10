@@ -16,6 +16,7 @@ import static org.junit.Assert.assertThat;
 
 import java.io.File;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class HamcrestFileUnitTest {
@@ -54,11 +55,11 @@ public class HamcrestFileUnitTest {
         assertThat(file, aFileWithSize(greaterThan(1L)));;
     }
 
-    /*@Test
+    @Ignore
     public final void whenVerifyingFilePath_thenCorrect() {
         File file = new File("src/test/resources/test1.in");
         
         assertThat(file, aFileWithCanonicalPath(containsString("src/test/resources")));
         assertThat(file, aFileWithAbsolutePath(containsString("src/test/resources")));
-    }*/
+    }
 }
