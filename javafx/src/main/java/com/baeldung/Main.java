@@ -1,4 +1,4 @@
-package com.baeldung.javafx;
+package com.baeldung;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

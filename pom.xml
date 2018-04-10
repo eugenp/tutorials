@@ -101,6 +101,7 @@
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
+        <module>javafx</module>
         <module>jgroups</module>
         <module>jee-7</module>
         <!-- <module>jhipster/jhipster-monolithic</module> -->
@@ -113,7 +114,9 @@
         <module>testing-modules/junit-5</module>
         <module>jws</module>
 
+		<!--
         <module>libraries</module>
+		-->
         <module>libraries-data</module>
         <module>linkrest</module>
         <module>logging-modules/log-mdc</module>

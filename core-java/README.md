@@ -141,7 +141,6 @@
 - [Comparing Strings in Java](http://www.baeldung.com/java-compare-strings)
 - [Guide to Inheritance in Java](http://www.baeldung.com/java-inheritance)
 - [Guide to Externalizable Interface in Java](http://www.baeldung.com/java-externalizable)
-- [The “final” Keyword in Java](http://www.baeldung.com/java-final)
 - [The Observer Pattern in Java](https://github.com/eugenp/tutorials/tree/master/core-java)
 - [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
 - [Object Type Casting in Java](http://www.baeldung.com/java-type-casting)
@@ -151,5 +150,5 @@
 - [ASCII Art in Java](http://www.baeldung.com/ascii-art-in-java)
 - [An Advanced Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging-advanced)
 - [Handling Daylight Savings Time in Java](http://www.baeldung.com/java-daylight-savings)
-
+- [Inheritance and Composition (Is-a vs Has-a relationship) in Java](http://www.baeldung.com/java-inheritance-composition)
 

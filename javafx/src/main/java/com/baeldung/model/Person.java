@@ -1,4 +1,4 @@
-package com.baeldung.javafx.model;
+package com.baeldung.model;
 
 import javafx.beans.property.*;
 
