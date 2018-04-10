@@ -26,6 +26,16 @@
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+		</plugins>
+	</reporting>
 
     <modules>
         <module>custom-pmd</module>
@@ -404,8 +414,8 @@
 				</dependencies>
 				<configuration>
 					<linkXRef>true</linkXRef>
+					<includeTests>true</includeTests>
 					<sourceEncoding>UTF-8</sourceEncoding>
-					<minimumTokens>100</minimumTokens>
 					<targetJdk>1.8</targetJdk>
 					<rulesets>
 						<ruleset>${user.dir}\baeldung-pmd-rules.xml</ruleset>
