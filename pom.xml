@@ -26,9 +26,20 @@
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
+	
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+		</plugins>
+	</reporting>
 
     <modules>
-        <module>parent-boot-5</module>
+        <module>custom-pmd</module>
+		<module>parent-boot-5</module>
         <module>asm</module>
         <module>atomix</module>
         <module>apache-cayenne</module>
@@ -294,7 +305,7 @@
         <module>persistence-modules/java-jdbi</module>
         <module>jersey</module>
         <module>java-spi</module>
-    </modules>
+  </modules>
 
     <dependencies>
         <!-- logging -->
@@ -390,7 +401,36 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.9.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.baeldung.pmd</groupId>
+						<artifactId>custom-pmd</artifactId>
+						<version>0.0.1-SNAPSHOT</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<linkXRef>true</linkXRef>
+					<failOnViolation>false</failOnViolation>
+					<includeTests>true</includeTests>
+					<sourceEncoding>UTF-8</sourceEncoding>
+					<targetJdk>1.8</targetJdk>
+					<rulesets>
+						<ruleset>${user.dir}/baeldung-pmd-rules.xml</ruleset>
+					</rulesets>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
         </plugins>
         
         <extensions>
@@ -402,5 +442,4 @@
         </extensions>
         
     </build>
-    
 </project>
