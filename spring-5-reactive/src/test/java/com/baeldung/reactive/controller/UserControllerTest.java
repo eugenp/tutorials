@@ -18,7 +18,7 @@ public class UserControllerTest {
     private WebTestClient webTestClient;
 
     @Test
-    public void getUserName() {
+    public void whenUserNameIsBaeldung_thenWebFilterIsApplied() {
         EntityExchangeResult<String> result = webTestClient.get().uri("/users/baeldung")
                 .exchange()
                 .expectStatus().isOk()
@@ -30,14 +30,9 @@ public class UserControllerTest {
     }
 
     @Test
-    public void getUserNameTest() {
-        EntityExchangeResult<String> result = webTestClient.get().uri("/users/test")
+    public void whenUserNameIsTest_thenHandlerFilterFunctionIsNotApplied() {
+        webTestClient.get().uri("/users/test")
                 .exchange()
-                .expectStatus().isOk()
-                .expectBody(String.class)
-                .returnResult();
-
-        assertEquals(result.getResponseBody(), "test");
-        assertEquals(result.getResponseHeaders().getFirst("web-filter"), "web-filter-test");
+                .expectStatus().isOk();
     }
 }

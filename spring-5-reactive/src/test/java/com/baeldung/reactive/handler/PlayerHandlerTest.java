@@ -18,7 +18,7 @@ public class PlayerHandlerTest {
     private WebTestClient webTestClient;
 
     @Test
-    public void getPlayerName() {
+    public void whenPlayerNameIsBaeldung_thenWebFilterIsApplied() {
         EntityExchangeResult<String> result = webTestClient.get().uri("/players/baeldung")
                 .exchange()
                 .expectStatus().isOk()
@@ -30,7 +30,7 @@ public class PlayerHandlerTest {
     }
 
     @Test
-    public void getForbiddenIfPlayerNameIsTest() {
+    public void whenPlayerNameIsTest_thenHandlerFilterFunctionIsApplied() {
         webTestClient.get().uri("/players/test")
                 .exchange()
                 .expectStatus().isForbidden();
