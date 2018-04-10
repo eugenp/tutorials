@@ -49,7 +49,7 @@ public class StudentController {
                 .save(student);
 }
     
-@GetMapping("/{id}")
+@GetMapping("/delete/{id}")
 public Mono<Void> deleteByStudentId(@PathVariable("id") final int id) {
     return studrepo.findById(id).flatMap(i -> studrepo.delete(i));
 }
