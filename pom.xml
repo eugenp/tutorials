@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
@@ -26,20 +27,20 @@
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
-	
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>2.3</version>
-			</plugin>
-		</plugins>
-	</reporting>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <modules>
         <module>custom-pmd</module>
-		<module>parent-boot-5</module>
+        <module>parent-boot-5</module>
         <module>asm</module>
         <module>atomix</module>
         <module>apache-cayenne</module>
@@ -297,11 +298,11 @@
         <module>lucene</module>
         <module>vraptor</module>
         <module>persistence-modules/java-cockroachdb</module>
-	      <module>spring-security-thymeleaf</module>
+        <module>spring-security-thymeleaf</module>
         <module>persistence-modules/java-jdbi</module>
         <module>jersey</module>
         <module>java-spi</module>
-  </modules>
+    </modules>
 
     <dependencies>
         <!-- logging -->
@@ -361,7 +362,7 @@
 
     <build>
         <plugins>
-        
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -370,7 +371,7 @@
                     <executable>maven</executable>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -387,7 +388,7 @@
                     </excludes>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -397,39 +398,39 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.9.0</version>
-				<dependencies>
-					<dependency>
-						<groupId>org.baeldung.pmd</groupId>
-						<artifactId>custom-pmd</artifactId>
-						<version>0.0.1-SNAPSHOT</version>
-					</dependency>
-				</dependencies>
-				<configuration>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.9.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.baeldung.pmd</groupId>
+                        <artifactId>custom-pmd</artifactId>
+                        <version>0.0.1-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
                     <aggregate>true</aggregate>
                     <verbose>true</verbose>
-					<linkXRef>true</linkXRef>
-					<includeTests>true</includeTests>
-					<sourceEncoding>UTF-8</sourceEncoding>
-					<targetJdk>1.8</targetJdk>
-					<rulesets>
-						<ruleset>${user.dir}/baeldung-pmd-rules.xml</ruleset>
-					</rulesets>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+                    <linkXRef>true</linkXRef>
+                    <includeTests>true</includeTests>
+                    <sourceEncoding>UTF-8</sourceEncoding>
+                    <targetJdk>1.8</targetJdk>
+                    <rulesets>
+                        <ruleset>${user.dir}/baeldung-pmd-rules.xml</ruleset>
+                    </rulesets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
-        
+
         <extensions>
             <extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
@@ -437,6 +438,6 @@
                 <version>3.4</version>
             </extension>
         </extensions>
-        
+
     </build>
 </project>
