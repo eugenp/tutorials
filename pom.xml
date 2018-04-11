@@ -412,14 +412,14 @@
                 <configuration>
                     <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
                     <aggregate>true</aggregate>
-                    <failOnViolation>false</failOnViolation>
+                    <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
                     <sourceEncoding>UTF-8</sourceEncoding>
                     <targetJdk>1.8</targetJdk>
                     <rulesets>
-                        <ruleset>${user.dir}/baeldung-pmd-rules.xml</ruleset>
+                        <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
                     </rulesets>
                 </configuration>
                 <executions>
@@ -428,6 +428,27 @@
                         <goals>
                             <goal>check</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.commonjava.maven.plugins</groupId>
+                <artifactId>directory-maven-plugin</artifactId>
+                <version>0.1</version>
+                <executions>
+                    <execution>
+                        <id>directories</id>
+                        <goals>
+                            <goal>directory-of</goal>
+                        </goals>
+                        <phase>initialize</phase>
+                        <configuration>
+                            <property>tutorialsproject.basedir</property>
+                            <project>
+                                <groupId>com.baeldung</groupId>
+                                <artifactId>parent-modules</artifactId>
+                            </project>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
