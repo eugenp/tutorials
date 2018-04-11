@@ -1,6 +1,7 @@
-package com.baeldung.webflex.service;
+package com.baeldung.webflux.service;
 
 
+import com.baeldung.webflux.model.Customer;
 import com.github.javafaker.Faker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

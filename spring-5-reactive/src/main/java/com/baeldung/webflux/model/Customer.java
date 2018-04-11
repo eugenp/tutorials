@@ -1,11 +1,8 @@
-package com.baeldung.webflex.model;
+package com.baeldung.webflux.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import java.io.Serializable;
 import java.time.LocalDate;
 
-@Document(collection = "customer")
+
 public class Customer {
     private static final long serialVersionUID = 1L;
 

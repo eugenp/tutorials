@@ -1,4 +1,4 @@
-package com.baeldung.webflex.controller;
+package com.baeldung.webflux.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
-import com.baeldung.webflex.service.CustomerService;
+import com.baeldung.webflux.model.Customer;
+import com.baeldung.webflux.service.CustomerService;
 
-import java.io.IOException;
 
 @RestController
 @RequestMapping("/api")
