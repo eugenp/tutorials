@@ -1,5 +1,6 @@
 package com.baeldung.stream;
 
+import com.baeldung.model.Employee;
 import org.apache.ignite.configuration.CacheConfiguration;
 
 import javax.cache.configuration.FactoryBuilder;
@@ -9,17 +10,15 @@ import java.util.concurrent.TimeUnit;
 
 
 public class CacheConfig {
-    public static CacheConfiguration<String, Long> wordCache() {
-        CacheConfiguration<String, Long> cfg = new CacheConfiguration<>("words");
 
-        // Index the words and their counts,
-        // so we can use them for fast SQL querying.
-        cfg.setIndexedTypes(String.class, Long.class);
+    public static CacheConfiguration<Integer, Employee> employeeCache() {
 
-        // Sliding window of 5 seconds.
-        cfg.setExpiryPolicyFactory(FactoryBuilder.factoryOf(
+        CacheConfiguration<Integer, Employee> config = new CacheConfiguration<>("baeldungEmployees");
+
+        config.setIndexedTypes(Integer.class, Employee.class);
+        config.setExpiryPolicyFactory(FactoryBuilder.factoryOf(
                 new CreatedExpiryPolicy(new Duration(TimeUnit.SECONDS, 5))));
 
-        return cfg;
+        return config;
     }
 }

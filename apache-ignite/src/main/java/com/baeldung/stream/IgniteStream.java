@@ -1,5 +1,7 @@
 package com.baeldung.stream;
 
+import com.baeldung.model.Employee;
+import com.google.gson.Gson;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.IgniteDataStreamer;
@@ -14,46 +16,31 @@ import java.util.stream.Stream;
 public class IgniteStream {
 
     public static void main(String[] args) throws Exception {
-        // Mark this cluster member as client.
+
         Ignition.setClientMode(true);
 
-        try (Ignite ignite = Ignition.start()) {
-            IgniteCache<String, Long> stmCache = ignite.getOrCreateCache(CacheConfig.wordCache());
+        Ignite ignite = Ignition.start();
 
-            // Create a streamer to stream words into the cache.
-            try (IgniteDataStreamer<String, Long> stmr = ignite.dataStreamer(stmCache.getName())) {
-                // Allow data updates.
-                stmr.allowOverwrite(true);
+        IgniteCache<Integer, Employee> cache = ignite.getOrCreateCache(CacheConfig.employeeCache());
+        IgniteDataStreamer<Integer, Employee> streamer = ignite.dataStreamer(cache.getName());
+        streamer.allowOverwrite(true);
 
-                // Configure data transformation to count instances of the same word.
-                stmr.receiver(StreamTransformer.from((e, arg) -> {
-                    // Get current count.
-                    Long val = e.getValue();
+        streamer.receiver(StreamTransformer.from((e, arg) -> {
 
-                    // Increment current count by 1.
-                    e.setValue(val == null ? 1L : val + 1);
+            Employee employee = e.getValue();
+            employee.setEmployed(true);
+            e.setValue(employee);
 
-                    return null;
-                }));
+            return null;
+        }));
 
-                // Stream words from "alice-in-wonderland" book.
-                while (true) {
-                    Path path = Paths.get(IgniteStream.class.getResource("employees.txt").toURI());
+        Path path = Paths.get(IgniteStream.class.getResource("employees.txt").toURI());
 
-                    // Read words from a text file.
-                    try (Stream<String> lines = Files.lines(path)) {
-                        lines.forEach(line -> {
-                            Stream<String> words = Stream.of(line.split(" "));
+        Stream<String> lines = Files.lines(path);
+        lines.forEach(line -> {
+            Stream<Employee> employees = Stream.of(new Gson().fromJson(line, Employee.class));
+            employees.forEach(employee -> streamer.addData(employee.getId(), employee));
+        });
 
-                            // Stream words into Ignite streamer.
-                            words.forEach(word -> {
-                                if (!word.trim().isEmpty())
-                                    stmr.addData(word, 1L);
-                            });
-                        });
-                    }
-                }
-            }
-        }
     }
 }
