@@ -263,6 +263,8 @@
         <module>spring-state-machine</module>
         <module>spring-thymeleaf</module>
         <module>spring-userservice</module>
+	<module>Spring-WebClient-consumer</module>
+	<module>Spring-webflux-producer</module>
         <module>spring-zuul</module>
         <module>spring-reactor</module>
         <module>spring-vertx</module>
