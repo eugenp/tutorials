@@ -27,7 +27,8 @@ public class ReactiveController {
     public Flux<DateTimeDto> time() {
         final Flux<DateTimeDto> dateTimeFlux = Flux.fromStream(Stream.generate(DateTimeDto::new));
         final Flux<Long> emmitFlux = Flux.interval(Duration.ofSeconds(1));
-        return Flux.zip(dateTimeFlux, emmitFlux)
+        return Flux
+            .zip(dateTimeFlux, emmitFlux)
             .map(Tuple2::getT1);
     }
 
