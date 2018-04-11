@@ -64,6 +64,13 @@
 - [Exceptions in Netty](http://www.baeldung.com/netty-exception-handling)
 - [Creating and Configuring Jetty 9 Server in Java](http://www.baeldung.com/jetty-java-programmatic)
 - [Introduction to Akka Actors in Java] (http://www.baeldung.com/akka-actors-java)
+- [Asynchronous HTTP with async-http-client in Java](https://github.com/eugenp/tutorials/tree/master/libraries)
+- [Introduction to Smooks](http://www.baeldung.com/smooks)
+- [WebSockets with AsyncHttpClient](http://www.baeldung.com/async-http-client-websockets)
+- [A Guide to Infinispan in Java](http://www.baeldung.com/infinispan)
+- [Introduction to OpenCSV](http://www.baeldung.com/opencsv)
+- [A Guide to Unirest](http://www.baeldung.com/unirest)
+- [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
