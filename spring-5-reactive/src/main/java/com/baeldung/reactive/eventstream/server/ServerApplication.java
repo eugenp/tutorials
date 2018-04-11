@@ -28,14 +28,14 @@ public class ServerApplication {
 
     @Bean
     RouterFunction<ServerResponse> routes() {
-        return RouterFunctions.route(GET("/foos").and(contentType(TEXT_EVENT_STREAM)),
-                serverRequest ->
-                        ServerResponse.ok().contentType(TEXT_EVENT_STREAM).body(fooInfiniteStream(), Foo.class));
+        return RouterFunctions.route(GET("/foos").and(contentType(TEXT_EVENT_STREAM)), serverRequest -> ServerResponse.ok()
+            .contentType(TEXT_EVENT_STREAM)
+            .body(fooInfiniteStream(), Foo.class));
     }
 
     private Flux<Foo> fooInfiniteStream() {
         return Flux.interval(Duration.ofSeconds(1))
-                .map(i -> new Foo(i, randomAlphabetic(8)))
-                .doOnNext(f -> log.info(f.toString()));
+            .map(i -> new Foo(i, randomAlphabetic(8)))
+            .doOnNext(f -> log.info(f.toString()));
     }
 }

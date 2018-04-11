@@ -31,9 +31,8 @@ public class ClientApplication implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        fromStream()
-                .doOnNext(this::doSomethingOnArrival)
-                .blockLast();
+        fromStream().doOnNext(this::doSomethingOnArrival)
+            .blockLast();
     }
 
     private void doSomethingOnArrival(Bar event) {
@@ -41,10 +40,11 @@ public class ClientApplication implements CommandLineRunner {
     }
 
     private Flux<Bar> fromStream() {
-        return webClient.get().uri("/foos")
-                .header(HttpHeaders.CONTENT_TYPE, TEXT_EVENT_STREAM_VALUE)
-                .retrieve()
-                .bodyToFlux(Bar.class);
+        return webClient.get()
+            .uri("/foos")
+            .header(HttpHeaders.CONTENT_TYPE, TEXT_EVENT_STREAM_VALUE)
+            .retrieve()
+            .bodyToFlux(Bar.class);
     }
 
     @Bean
