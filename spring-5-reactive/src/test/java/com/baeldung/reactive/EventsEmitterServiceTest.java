@@ -12,7 +12,7 @@ import com.baeldung.reactive.components.EventsEmitterService;
 public class EventsEmitterServiceTest {
     
     @Test
-    public void givenEventsEmitterService_whenSubscribe_thenEventsPresent() throws InterruptedException
+    public void whenSubscribe_thenEventsPresent() throws InterruptedException
     {
         List<Long> events = new ArrayList<>();
         EventsEmitterService.getInstance().subscribe(events::add);

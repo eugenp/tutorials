@@ -18,7 +18,7 @@ import com.baeldung.reactive.components.EventsConsumerService;
 public class EventsConsumerServiceTest {
     
     @Test
-    public void givenEventsConsumerService_whenSubscribe_thenEventPresent() throws InterruptedException {
+    public void whenSubscribe_thenEventPresent() throws InterruptedException {
         List<Long> events = new ArrayList<>();
         EventsConsumerService.consume().subscribe(events::add);
         Thread.sleep(5000);
