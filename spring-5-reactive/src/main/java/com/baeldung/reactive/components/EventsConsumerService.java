@@ -13,8 +13,6 @@ import reactor.core.publisher.Flux;
  */
 public class EventsConsumerService {
     
-    private static Logger LOG = LoggerFactory.getLogger(EventsConsumerService.class);
-    
     public static Flux<Long> consume()
     {
         WebClient client = WebClient.create("http://localhost:8080");
@@ -25,16 +23,6 @@ public class EventsConsumerService {
           .accept(MediaType.TEXT_EVENT_STREAM)
           .retrieve()
           .bodyToFlux(Long.class);
-    }
-    
-    public static void main(String[] args) throws InterruptedException
-    {
-        EventsConsumerService.consume()
-          .map(a -> a.toString()) 
-          .retry() //retry if exception is occurred
-          .subscribe(LOG::info); //Do something with an event
-      
-        Thread.currentThread().join();
     }
     
 }
