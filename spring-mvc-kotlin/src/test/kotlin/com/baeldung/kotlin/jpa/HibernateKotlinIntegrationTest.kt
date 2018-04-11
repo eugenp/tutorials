@@ -1,7 +1,5 @@
 package com.baeldung.kotlin.jpa
 
-import com.baeldung.jpa.Person
-import com.baeldung.jpa.PhoneNumber
 import org.hibernate.cfg.Configuration
 import org.hibernate.testing.junit4.BaseCoreFunctionalTestCase
 import org.hibernate.testing.transaction.TransactionUtil.doInHibernate
@@ -31,12 +29,25 @@ class HibernateKotlinIntegrationTest : BaseCoreFunctionalTestCase() {
     }
 
     @Test
-    fun givenPerson_whenSaved_thenFound() {
+    fun givenPersonWithFullData_whenSaved_thenFound() {
         doInHibernate(({ this.sessionFactory() }), { session ->
             val personToSave = Person(0, "John", "jhon@test.com", Arrays.asList(PhoneNumber(0, "202-555-0171"), PhoneNumber(0, "202-555-0102")))
             session.persist(personToSave)
             val personFound = session.find(Person::class.java, personToSave.id)
             session.refresh(personFound)
+
+            assertTrue(personToSave == personFound)
+        })
+    }
+
+    @Test
+    fun givenPerson_whenSaved_thenFound() {
+        doInHibernate(({ this.sessionFactory() }), { session ->
+            val personToSave = Person(0, "John")
+            session.persist(personToSave)
+            val personFound = session.find(Person::class.java, personToSave.id)
+            session.refresh(personFound)
+
             assertTrue(personToSave == personFound)
         })
     }
@@ -48,6 +59,7 @@ class HibernateKotlinIntegrationTest : BaseCoreFunctionalTestCase() {
             session.persist(personToSave)
             val personFound = session.find(Person::class.java, personToSave.id)
             session.refresh(personFound)
+
             assertTrue(personToSave == personFound)
         })
     }

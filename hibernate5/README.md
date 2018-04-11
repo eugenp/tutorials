@@ -7,3 +7,5 @@
 - [A Guide to Multitenancy in Hibernate 5](http://www.baeldung.com/hibernate-5-multitenancy)
 - [Introduction to Hibernate Spatial](http://www.baeldung.com/hibernate-spatial)
 - [Hibernate Interceptors](http://www.baeldung.com/hibernate-interceptor)
+- [JPA Attribute Converters](http://www.baeldung.com/jpa-attribute-converters)
+- [Mapping LOB Data in Hibernate](http://www.baeldung.com/hibernate-lob)
