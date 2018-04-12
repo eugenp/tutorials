@@ -407,7 +407,7 @@
                         <artifactId>custom-pmd</artifactId>
                         <version>0.0.1</version>
                         <scope>system</scope>
-                        <systemPath>${project.basedir}/pmd/custom-pmd-0.0.1.jar</systemPath>
+                        <systemPath>${tutorialsproject.basedir}/pmd/custom-pmd-0.0.1.jar</systemPath>
                     </dependency>
                 </dependencies>
                 <configuration>
