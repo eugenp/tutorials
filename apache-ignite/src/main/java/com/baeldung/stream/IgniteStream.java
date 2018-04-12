@@ -18,7 +18,6 @@ public class IgniteStream {
     public static void main(String[] args) throws Exception {
 
         Ignition.setClientMode(true);
-
         Ignite ignite = Ignition.start();
 
         IgniteCache<Integer, Employee> cache = ignite.getOrCreateCache(CacheConfig.employeeCache());
