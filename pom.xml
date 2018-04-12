@@ -398,6 +398,7 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+<!-- TODO till we sort it out
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -410,7 +411,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
+                    <failurePriority>5</failurePriority> &lt;!&ndash; TODO change to 0 after fixing the project &ndash;&gt;
                     <aggregate>true</aggregate>
                     <failOnViolation>false</failOnViolation>
                     <verbose>true</verbose>
@@ -431,6 +432,7 @@
                     </execution>
                 </executions>
             </plugin>
+-->
         </plugins>
 
         <extensions>
