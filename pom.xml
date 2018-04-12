@@ -401,6 +401,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.9.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.baeldung.pmd</groupId>
+                        <artifactId>custom-pmd</artifactId>
+                        <version>0.0.1</version>
+                        <scope>system</scope>
+                        <systemPath>${project.basedir}/pmd</systemPath>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
                     <aggregate>true</aggregate>
