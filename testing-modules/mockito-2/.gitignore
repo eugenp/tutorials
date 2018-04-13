@@ -12,3 +12,4 @@
 *.jar
 *.war
 *.ear
+/bin/

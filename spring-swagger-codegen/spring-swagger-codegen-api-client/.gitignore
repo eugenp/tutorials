@@ -19,3 +19,4 @@ hs_err_pid*
 target
 .gradle
 build
+/bin/
