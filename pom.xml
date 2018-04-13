@@ -361,7 +361,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -370,30 +369,6 @@
                     <executable>maven</executable>
                 </configuration>
             </plugin>
-
-            <plugin>
-			   <groupId>org.apache.maven.plugins</groupId>
-			   <artifactId>maven-install-plugin</artifactId>
-			   <version>2.5.1</version>
-			   <configuration>
-				  <groupId>org.baeldung.pmd</groupId>
-				  <artifactId>custom-pmd</artifactId>
-				  <version>0.0.1</version>
-				  <packaging>jar</packaging>
-				  <file>${tutorialsproject.basedir}/custom-pmd-0.0.1.jar</file>
-				  <generatePom>true</generatePom>
-			   </configuration>
-			   <executions>
-				  <execution>
-					 <id>install-jar-lib</id>
-					 <goals>
-						<goal>install-file</goal>
-					 </goals>
-					 <phase>validate</phase>
-				  </execution>
-			   </executions>
-			</plugin>
-			
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -410,7 +385,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -434,7 +408,7 @@
                 <configuration>
                     <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
                     <aggregate>true</aggregate>
-                    <failOnViolation>false</failOnViolation>
+                    <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
@@ -463,7 +437,7 @@
                         <goals>
                             <goal>directory-of</goal>
                         </goals>
-                        <phase>initialize</phase>
+                        <phase>validate</phase>
                         <configuration>
                             <property>tutorialsproject.basedir</property>
                             <project>
@@ -474,6 +448,28 @@
                     </execution>
                 </executions>
             </plugin>
+			<plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+			   <artifactId>maven-install-plugin</artifactId>
+			   <version>2.5.1</version>
+			   <configuration>
+				  <groupId>org.baeldung.pmd</groupId>
+				  <artifactId>custom-pmd</artifactId>
+				  <version>0.0.1</version>
+				  <packaging>jar</packaging>
+				  <file>${tutorialsproject.basedir}/custom-pmd-0.0.1.jar</file>
+				  <generatePom>true</generatePom>
+			   </configuration>
+			   <executions>
+				  <execution>
+					 <id>install-jar-lib</id>
+					 <goals>
+						<goal>install-file</goal>
+					 </goals>
+					 <phase>validate</phase>
+				  </execution>
+			   </executions>
+			</plugin>
         </plugins>
 
         <extensions>
