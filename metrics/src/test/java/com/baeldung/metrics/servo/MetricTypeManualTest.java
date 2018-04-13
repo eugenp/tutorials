@@ -32,7 +32,7 @@ import com.netflix.servo.monitor.StepCounter;
 import com.netflix.servo.monitor.Stopwatch;
 import com.netflix.servo.stats.StatsConfig;
 
-public class MetricTypeTest {
+public class MetricTypeManualTest {
 
     @Test
     public void givenDefaultCounter_whenManipulate_thenCountValid() {
