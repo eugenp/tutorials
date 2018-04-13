@@ -1,45 +1,34 @@
 package com.baeldung.algorithms.pairsaddupnumber;
 
 import org.junit.Test;
-
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
+
 
 public class ExistingPairsUnitTest {
 
     /* All existing pairs */
 
     @Test
-    public void getAllExistingPairsWithForLoop() {
+    public void whenTraditionalLoop_thenReturnAllExistingPairs() {
         /* Data */
-        final int[] input = {2, 4, 3, 3};
+        final int[] input = {2, 4, 3, 3, 8};
         final int sum = 6;
         /* Call service */
         final List<Integer> pairs = ExistingPairs.findPairsWithForLoop(input, sum);
         /* Check results */
-        assertNotNull(pairs);
-        assertEquals(pairs.size(),4);
-        assertEquals(pairs.get(0), new Integer(2));
-        assertEquals(pairs.get(1),new Integer(4));
-        assertEquals(pairs.get(2),new Integer(3));
-        assertEquals(pairs.get(3),new Integer(3));
+        assertThat(pairs).hasSize(4).contains(2,4,3,3).doesNotContain(8);
     }
 
     @Test
-    public void getAllExistingPairsWithStreamApi() {
+    public void whenStreamApi_thenReturnAllExistingPairs() {
         /* Data */
-        final int[] input = {2, 4, 3, 3};
+        final int[] input = {2, 4, 3, 3, 8};
         final int sum = 6;
         /* Call service */
         final List<Integer> pairs = ExistingPairs.findPairsWithStreamApi(input, sum);
         /* Check results */
-        assertNotNull(pairs);
-        assertEquals(pairs.size(),4);
-        assertEquals(pairs.get(0), new Integer(2));
-        assertEquals(pairs.get(1),new Integer(4));
-        assertEquals(pairs.get(2),new Integer(3));
-        assertEquals(pairs.get(3),new Integer(3));
+        assertThat(pairs).hasSize(4).contains(2,4,3,3).doesNotContain(8);
     }
 }
