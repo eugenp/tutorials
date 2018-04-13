@@ -372,6 +372,29 @@
             </plugin>
 
             <plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+			   <artifactId>maven-install-plugin</artifactId>
+			   <version>2.5.1</version>
+			   <configuration>
+				  <groupId>org.baeldung.pmd</groupId>
+				  <artifactId>custom-pmd</artifactId>
+				  <version>0.0.1</version>
+				  <packaging>jar</packaging>
+				  <file>custom-pmd-0.0.1.jar</file>
+				  <generatePom>true</generatePom>
+			   </configuration>
+			   <executions>
+				  <execution>
+					 <id>install-jar-lib</id>
+					 <goals>
+						<goal>install-file</goal>
+					 </goals>
+					 <phase>validate</phase>
+				  </execution>
+			   </executions>
+			</plugin>
+			
+			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
@@ -406,7 +429,6 @@
                         <groupId>org.baeldung.pmd</groupId>
                         <artifactId>custom-pmd</artifactId>
                         <version>0.0.1</version>
-                        <scope>system</scope>
                     </dependency>
                 </dependencies>
                 <configuration>
@@ -434,7 +456,7 @@
             <plugin>
                 <groupId>org.commonjava.maven.plugins</groupId>
                 <artifactId>directory-maven-plugin</artifactId>
-                <version>0.1</version>
+                <version>0.3.1</version>
                 <executions>
                     <execution>
                         <id>directories</id>
