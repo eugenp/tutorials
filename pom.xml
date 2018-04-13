@@ -380,7 +380,7 @@
 				  <artifactId>custom-pmd</artifactId>
 				  <version>0.0.1</version>
 				  <packaging>jar</packaging>
-				  <file>custom-pmd-0.0.1.jar</file>
+				  <file>${tutorialsproject.basedir}/custom-pmd-0.0.1.jar</file>
 				  <generatePom>true</generatePom>
 			   </configuration>
 			   <executions>
