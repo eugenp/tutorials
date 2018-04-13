@@ -39,7 +39,7 @@ public class JetS3tLiveTest {
     public static void connectS3() throws Exception {
 
         // Replace with your keys
-        String awsAccessKey = "your key";
+        String awsAccessKey = "your access key";
         String awsSecretKey = "your secret key";
 
         // Create credentials
@@ -197,7 +197,6 @@ public class JetS3tLiveTest {
         numbers.add(3);
         numbers.add(5);
         numbers.add(7);
-
 
         // Serialize ArrayList
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
