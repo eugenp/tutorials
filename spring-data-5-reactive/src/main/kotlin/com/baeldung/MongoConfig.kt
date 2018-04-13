@@ -1,4 +1,4 @@
-package org.jetbrains.kotlin.demo
+package com.baeldung
 
 import com.mongodb.reactivestreams.client.MongoClient
 import com.mongodb.reactivestreams.client.MongoClients

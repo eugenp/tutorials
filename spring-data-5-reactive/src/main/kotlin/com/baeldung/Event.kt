@@ -1,4 +1,4 @@
-package org.jetbrains.kotlin.demo
+package com.baeldung
 
 import org.springframework.data.mongodb.core.mapping.Document
 
