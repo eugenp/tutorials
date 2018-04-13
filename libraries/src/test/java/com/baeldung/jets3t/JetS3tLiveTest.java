@@ -39,8 +39,8 @@ public class JetS3tLiveTest {
     public static void connectS3() throws Exception {
 
         // Replace with your keys
-        String awsAccessKey = "AKIAJ45SCIWEL5PMWJJA";
-        String awsSecretKey = "9exbfY0+os8LlY2reG2rvptSSIE4BnSWaP9xRBI1";
+        String awsAccessKey = "your key";
+        String awsSecretKey = "your secret key";
 
         // Create credentials
         AWSCredentials awsCredentials = new AWSCredentials(awsAccessKey, awsSecretKey);
