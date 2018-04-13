@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -38,11 +40,17 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("SELECT u FROM User u WHERE u.status = ?1")
     User findUserByStatus(Integer status);
 
+    @Query(value = "SELECT * FROM Users u WHERE u.status = ?1", nativeQuery = true)
+    User findUserByStatusNative(Integer status);
+
     @Query("SELECT u FROM User u WHERE u.status = ?1 and u.name = ?2")
     User findUserByStatusAndName(Integer status, String name);
 
     @Query("SELECT u FROM User u WHERE u.status = :status and u.name = :name")
     User findUserByStatusAndNameNamedParams(@Param("status") Integer status, @Param("name") String name);
+
+    @Query(value = "SELECT * FROM Users u WHERE u.status = :status AND u.name = :name", nativeQuery = true)
+    User findUserByStatusAndNameNamedParamsNative(@Param("status") Integer status, @Param("name") String name);
 
     @Query("SELECT u FROM User u WHERE u.status = :status and u.name = :name")
     User findUserByUserStatusAndUserName(@Param("status") Integer userStatus, @Param("name") String userName);
@@ -59,11 +67,18 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "SELECT u FROM User u")
     List<User> findAllUsers(Sort sort);
 
-    @Query(value = "SELECT * FROM Users ORDER BY id \n-- #pageable\n", countQuery = "SELECT count(*) FROM Users", nativeQuery = true)
+    @Query(value = "SELECT u FROM User u ORDER BY id")
     Page<User> findAllUsersWithPagination(Pageable pageable);
+
+    @Query(value = "SELECT * FROM Users ORDER BY id \n-- #pageable\n", countQuery = "SELECT count(*) FROM Users", nativeQuery = true)
+    Page<User> findAllUsersWithPaginationNative(Pageable pageable);
 
     @Modifying
     @Query("update User u set u.status = :status where u.name = :name")
     int updateUserSetStatusForName(@Param("status") Integer status, @Param("name") String name);
+
+    @Modifying
+    @Query(value = "UPDATE Users u SET u.status = ? WHERE u.name = ?", nativeQuery = true)
+    int updateUserSetStatusForNameNative(Integer status, String name);
 
 }

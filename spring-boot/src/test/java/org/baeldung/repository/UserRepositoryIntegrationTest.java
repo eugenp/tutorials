@@ -156,6 +156,18 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
+    public void shouldReturnOneUserWithStatusWhenUsingQueryAnnotationNative() {
+        User user = new User();
+        user.setName(USER_NAME_ADAM);
+        user.setStatus(ACTIVE_STATUS);
+        userRepository.save(user);
+
+        User userByStatus = userRepository.findUserByStatusNative(ACTIVE_STATUS);
+
+        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+    }
+
+    @Test
     public void shouldReturnOneUserWithStatusAndNameWhenUsingQueryAnnotation() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
@@ -185,6 +197,23 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(user2);
 
         User userByStatus = userRepository.findUserByStatusAndNameNamedParams(ACTIVE_STATUS, USER_NAME_ADAM);
+
+        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+    }
+
+    @Test
+    public void shouldReturnOneUserWithStatusAndNameWhenUsingQueryAnnotationNamedParamNative() {
+        User user = new User();
+        user.setName(USER_NAME_ADAM);
+        user.setStatus(ACTIVE_STATUS);
+        userRepository.save(user);
+
+        User user2 = new User();
+        user2.setName(USER_NAME_PETER);
+        user2.setStatus(ACTIVE_STATUS);
+        userRepository.save(user2);
+
+        User userByStatus = userRepository.findUserByStatusAndNameNamedParamsNative(ACTIVE_STATUS, USER_NAME_ADAM);
 
         assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
     }
@@ -276,11 +305,30 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(new User(USER_NAME_PETER, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", INACTIVE_STATUS));
 
+        userRepository.findAllUsers(new Sort("name"));
+
         List<User> usersSortByNameLength = userRepository.findAllUsers(JpaSort.unsafe("LENGTH(name)"));
 
         assertThat(usersSortByNameLength
           .get(0)
           .getName(), equalTo(USER_NAME_ADAM));
+    }
+
+    @Test
+    public void shouldAllowPaginationQueryAnnotationJPQL() {
+        userRepository.save(new User(USER_NAME_ADAM, ACTIVE_STATUS));
+        userRepository.save(new User(USER_NAME_PETER, ACTIVE_STATUS));
+        userRepository.save(new User("SAMPLE", INACTIVE_STATUS));
+        userRepository.save(new User("SAMPLE1", INACTIVE_STATUS));
+        userRepository.save(new User("SAMPLE2", INACTIVE_STATUS));
+        userRepository.save(new User("SAMPLE3", INACTIVE_STATUS));
+
+        Page<User> usersPage = userRepository.findAllUsersWithPagination(new PageRequest(1, 3));
+
+        assertThat(usersPage
+          .getContent()
+          .get(0)
+          .getName(), equalTo("SAMPLE1"));
     }
 
     @Test
@@ -292,7 +340,7 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(new User("SAMPLE2", INACTIVE_STATUS));
         userRepository.save(new User("SAMPLE3", INACTIVE_STATUS));
 
-        Page<User> usersSortByNameLength = userRepository.findAllUsersWithPagination(new PageRequest(1, 3));
+        Page<User> usersSortByNameLength = userRepository.findAllUsersWithPaginationNative(new PageRequest(1, 3));
 
         assertThat(usersSortByNameLength
           .getContent()
@@ -309,6 +357,20 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(new User("SAMPLE3", ACTIVE_STATUS));
 
         int updatedUsersSize = userRepository.updateUserSetStatusForName(INACTIVE_STATUS, "SAMPLE");
+
+        assertThat(updatedUsersSize, equalTo(2));
+    }
+
+    @Test
+    @Transactional
+    public void shouldUpdateUserStatusForNameWhenUsingModifyingAnnotationNative() {
+        userRepository.save(new User("SAMPLE", ACTIVE_STATUS));
+        userRepository.save(new User("SAMPLE1", ACTIVE_STATUS));
+        userRepository.save(new User("SAMPLE", ACTIVE_STATUS));
+        userRepository.save(new User("SAMPLE3", ACTIVE_STATUS));
+        userRepository.flush();
+
+        int updatedUsersSize = userRepository.updateUserSetStatusForNameNative(INACTIVE_STATUS, "SAMPLE");
 
         assertThat(updatedUsersSize, equalTo(2));
     }
