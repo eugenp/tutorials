@@ -39,7 +39,6 @@
     </reporting>
 
     <modules>
-        <module>custom-pmd</module>
         <module>parent-boot-5</module>
         <module>asm</module>
         <module>atomix</module>
@@ -362,7 +361,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -371,8 +369,7 @@
                     <executable>maven</executable>
                 </configuration>
             </plugin>
-
-            <plugin>
+			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
@@ -388,7 +385,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -398,7 +394,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-<!-- TODO till we sort it out
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
@@ -407,11 +402,11 @@
                     <dependency>
                         <groupId>org.baeldung.pmd</groupId>
                         <artifactId>custom-pmd</artifactId>
-                        <version>0.0.1-SNAPSHOT</version>
+                        <version>0.0.1</version>
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <failurePriority>5</failurePriority> &lt;!&ndash; TODO change to 0 after fixing the project &ndash;&gt;
+                    <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
                     <aggregate>true</aggregate>
                     <failOnViolation>false</failOnViolation>
                     <verbose>true</verbose>
@@ -420,7 +415,7 @@
                     <sourceEncoding>UTF-8</sourceEncoding>
                     <targetJdk>1.8</targetJdk>
                     <rulesets>
-                        <ruleset>${user.dir}/baeldung-pmd-rules.xml</ruleset>
+                        <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
                     </rulesets>
                 </configuration>
                 <executions>
@@ -432,7 +427,49 @@
                     </execution>
                 </executions>
             </plugin>
--->
+            <plugin>
+                <groupId>org.commonjava.maven.plugins</groupId>
+                <artifactId>directory-maven-plugin</artifactId>
+                <version>0.3.1</version>
+                <executions>
+                    <execution>
+                        <id>directories</id>
+                        <goals>
+                            <goal>directory-of</goal>
+                        </goals>
+                        <phase>validate</phase>
+                        <configuration>
+                            <property>tutorialsproject.basedir</property>
+                            <project>
+                                <groupId>com.baeldung</groupId>
+                                <artifactId>parent-modules</artifactId>
+                            </project>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+			   <artifactId>maven-install-plugin</artifactId>
+			   <version>2.5.1</version>
+			   <configuration>
+				  <groupId>org.baeldung.pmd</groupId>
+				  <artifactId>custom-pmd</artifactId>
+				  <version>0.0.1</version>
+				  <packaging>jar</packaging>
+				  <file>${tutorialsproject.basedir}/custom-pmd-0.0.1.jar</file>
+				  <generatePom>true</generatePom>
+			   </configuration>
+			   <executions>
+				  <execution>
+					 <id>install-jar-lib</id>
+					 <goals>
+						<goal>install-file</goal>
+					 </goals>
+					 <phase>validate</phase>
+				  </execution>
+			   </executions>
+			</plugin>
         </plugins>
 
         <extensions>
