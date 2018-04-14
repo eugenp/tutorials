@@ -15,6 +15,7 @@ import org.junit.Test;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -191,14 +192,25 @@ public class JetS3tLiveTest {
         S3Bucket bucket = createBucket();
         assertNotNull(bucket);
 
-        // Create a stream
-        ByteArrayInputStream testStream = new ByteArrayInputStream("test stream".getBytes());
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(2);
+        numbers.add(3);
+        numbers.add(5);
+        numbers.add(7);
+
+        // Serialize ArrayList
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(bytes);
+        objectOutputStream.writeObject(numbers);
+
+        // Wrap bytes
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes.toByteArray());
 
         // Create and populate object
         S3Object streamObject = new S3Object("stream");
-        streamObject.setDataInputStream(testStream);
-        streamObject.setContentLength(testStream.available());
-        streamObject.setContentType("text/plain");
+        streamObject.setDataInputStream(byteArrayInputStream);
+        streamObject.setContentLength(byteArrayInputStream.available());
+        streamObject.setContentType("binary/octet-stream");
 
         // Put it
         s3Service.putObject(BucketName, streamObject);
@@ -206,11 +218,14 @@ public class JetS3tLiveTest {
         // Get it
         S3Object newStreamObject = s3Service.getObject(BucketName, "stream");
 
-        // Convert back to string
-        String testString = new BufferedReader(new InputStreamReader(newStreamObject.getDataInputStream()))
-            .lines().collect(Collectors.joining("\n"));
+        // Convert back to ArrayList
+        ObjectInputStream objectInputStream = new ObjectInputStream(newStreamObject.getDataInputStream());
+        ArrayList<Integer> newNumbers = (ArrayList<Integer>)objectInputStream.readObject();
 
-        assertTrue("test stream".equals(testString));
+        assertEquals(2, (int)newNumbers.get(0));
+        assertEquals(3, (int)newNumbers.get(1));
+        assertEquals(5, (int)newNumbers.get(2));
+        assertEquals(7, (int)newNumbers.get(3));
 
         // Clean up
         deleteObject("stream");
