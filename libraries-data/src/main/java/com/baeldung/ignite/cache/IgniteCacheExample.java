@@ -1,6 +1,6 @@
-package com.baeldung.cache;
+package com.baeldung.ignite.cache;
 
-import com.baeldung.model.Employee;
+import com.baeldung.ignite.model.Employee;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;
 import org.apache.ignite.Ignition;

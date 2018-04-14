@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.ignite.model;
 
 
 public class Employee {

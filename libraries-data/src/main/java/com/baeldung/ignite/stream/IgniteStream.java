@@ -1,6 +1,6 @@
-package com.baeldung.stream;
+package com.baeldung.ignite.stream;
 
-import com.baeldung.model.Employee;
+import com.baeldung.ignite.model.Employee;
 import com.google.gson.Gson;
 import org.apache.ignite.Ignite;
 import org.apache.ignite.IgniteCache;

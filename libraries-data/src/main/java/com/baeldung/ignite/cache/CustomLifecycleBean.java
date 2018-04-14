@@ -1,4 +1,4 @@
-package com.baeldung.cache;
+package com.baeldung.ignite.cache;
 
 import org.apache.ignite.IgniteException;
 import org.apache.ignite.lifecycle.LifecycleBean;

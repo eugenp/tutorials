@@ -1,6 +1,6 @@
-package com.baeldung.stream;
+package com.baeldung.ignite.stream;
 
-import com.baeldung.model.Employee;
+import com.baeldung.ignite.model.Employee;
 import org.apache.ignite.configuration.CacheConfiguration;
 
 import javax.cache.configuration.FactoryBuilder;

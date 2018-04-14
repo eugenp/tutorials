@@ -54,7 +54,6 @@
         <module>apache-thrift</module>
         <module>apache-curator</module>
         <module>apache-zookeeper</module>
-        <module>apache-ignite</module>
         <module>apache-opennlp</module>
         <module>autovalue</module>
         <module>axon</module>
