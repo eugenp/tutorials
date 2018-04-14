@@ -6,7 +6,7 @@ import kotlin.test.assertTrue
 internal class SliceTest {
 
     @Test
-    fun q() {
+    fun whenSlicingAnArray_ThenListEqualsTheSlice() {
         val original = arrayOf(1, 2, 3, 2, 1)
         val filteredList1 = original.slice(1..3)
         val filteredList2 = original.slice(3 downTo 0)

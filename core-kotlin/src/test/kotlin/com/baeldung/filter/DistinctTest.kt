@@ -7,7 +7,7 @@ internal class DistinctTest {
     data class SmallClass(val key: String, val num: Int)
 
     @Test
-    fun q() {
+    fun givenArrayOfSomeDuplicateValues_whenApplyingDistinct_thenReturnListOfNoDuplicateValues() {
         val array = arrayOf(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5, 6, 7, 8, 9)
         val result = array.distinct()
         val expected = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
@@ -16,9 +16,9 @@ internal class DistinctTest {
     }
 
     @Test
-    fun w() {
+    fun givenArrayOfClassObjects_whenApplyingDistinctOnClassProperty_thenReturnListDistinctOnThatValue() {
 
-        val originalMap = arrayOf(
+        val originalArray = arrayOf(
                 SmallClass("key1", 1),
                 SmallClass("key2", 2),
                 SmallClass("key3", 3),
@@ -27,9 +27,9 @@ internal class DistinctTest {
                 SmallClass("er", 10),
                 SmallClass("er", 11))
 
-        val filteredMap = originalMap.distinctBy { it.key }
+        val filteredList = originalArray.distinctBy { it.key }
 
-        val expectedMap = listOf(
+        val expectedList = listOf(
                 SmallClass("key1", 1),
                 SmallClass("key2", 2),
                 SmallClass("key3", 3),
@@ -37,14 +37,14 @@ internal class DistinctTest {
                 SmallClass("er", 9))
 
         // {key1=1}
-        // original map has not changed println(originalMap)
+        // original map has not changed println(originalArray)
         // {key1=1, key2=2, key3=3}
 
-        assertTrue { expectedMap == filteredMap }
+        assertTrue { expectedList == filteredList }
     }
 
     @Test
-    fun e() {
+    fun givenArrayOfClassObjects_whenApplyingComplicatedSelector_thenReturnFirstElementToMatchEachSelectorValue() {
         val array = arrayOf(
                 SmallClass("key1", 1),
                 SmallClass("key2", 2),

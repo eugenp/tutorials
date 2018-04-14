@@ -15,7 +15,7 @@ internal class DropTest {
     }
 
     @Test
-    fun w() {
+    fun givenArray_whenDroppingLastElement_thenReturnListWithoutLastElement() {
         val array = arrayOf("1", "2", "3", "4")
         val result = array.dropLast(1)
         val expected = listOf("1", "2", "3")
@@ -24,7 +24,7 @@ internal class DropTest {
     }
 
     @Test
-    fun q() {
+    fun givenArrayOfFloats_whenDroppingLastUntilPredicateIsFalse_thenReturnSubsetListOfFloats() {
         val array = arrayOf(1f, 1f, 1f, 1f, 1f, 2f, 1f, 1f, 1f)
         val result = array.dropLastWhile { it == 1f }
         val expected = listOf(1f, 1f, 1f, 1f, 1f, 2f)

@@ -6,7 +6,7 @@ import kotlin.test.assertTrue
 internal class ChunkedTest {
 
     @Test
-    fun q() {
+    fun givenMapOfCodonsAndDNAFragment_whenChunkingDNAStringWithAndWithoutTransformer_thenProduceListOfChunksAndMappedTransforms() {
         val codonTable = mapOf("ATT" to "Isoleucine", "CAA" to "Glutamine", "CGC" to "Arginine", "GGC" to "Glycine")
         val dnaFragment = "ATTCGCGGCCGCCAA"
 
