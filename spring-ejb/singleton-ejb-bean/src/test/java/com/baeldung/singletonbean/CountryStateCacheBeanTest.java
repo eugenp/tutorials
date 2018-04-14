@@ -27,11 +27,23 @@ public class CountryStateCacheBeanTest {
     }
 
     @Test
-    public void whenCallGetStates_ReturnsStatesForCountry() throws Exception {
+    public void whenCallGetStatesFromContainerManagedBean_ReturnsStatesForCountry() throws Exception {
 
         String[] actualStates = { "Texas", "Alabama", "Alaska", "Arizona", "Arkansas" };
 
-        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateCacheBean");
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateContainerManagedBean");
+        List<String> states = countryStateBean.getStates("UnitedStates");
+        if (states != null) {
+            assertArrayEquals(states.toArray(), actualStates);
+        }
+    }
+
+    @Test
+    public void whenCallGetStatesFromBeanManagedBean_ReturnsStatesForCountry() throws Exception {
+
+        String[] actualStates = { "Texas", "Alabama", "Alaska", "Arizona", "Arkansas" };
+
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateBeanManagedBean");
         List<String> states = countryStateBean.getStates("UnitedStates");
         if (states != null) {
             assertArrayEquals(states.toArray(), actualStates);
