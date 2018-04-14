@@ -13,7 +13,6 @@ public class SharedObjectManualTest {
         Thread writer = new Thread(() -> sharedObject.increamentCount());
         writer.start();
         Thread.sleep(100);
-        System.out.println(sharedObject.getCount());
 
         Thread readerOne = new Thread(() -> {
             int valueReadByThread2 = sharedObject.getCount();
