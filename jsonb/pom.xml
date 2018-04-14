@@ -10,6 +10,11 @@
 
 	<name>json-b</name>
 	<description>json-b sample project</description>
+	<parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 	<profiles>
 		<profile>
 			<id>yasson</id>

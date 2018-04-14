@@ -4,7 +4,12 @@
 	<groupId>log4j2-example</groupId>
 	<artifactId>log4j2-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>        
+    </parent>
 	<dependencies>
 		<!-- This is the needed core component. -->
 		<dependency>

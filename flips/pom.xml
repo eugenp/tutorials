@@ -8,7 +8,12 @@
     <packaging>jar</packaging>
 
     <name>flips</name>
-
+	<parent>
+        <artifactId>parent-boot-5</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-5</relativePath>
+    </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
