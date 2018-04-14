@@ -11,7 +11,6 @@ import org.apache.ignite.stream.StreamTransformer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.stream.Stream;
 
 public class IgniteStream {
 
@@ -35,11 +34,11 @@ public class IgniteStream {
 
         Path path = Paths.get(IgniteStream.class.getResource("employees.txt").toURI());
 
-        Stream<String> lines = Files.lines(path);
-        lines.forEach(line -> {
-            Stream<Employee> employees = Stream.of(new Gson().fromJson(line, Employee.class));
-            employees.forEach(employee -> streamer.addData(employee.getId(), employee));
-        });
+        Files.lines(path)
+                .forEach(line -> {
+                    Employee employee = new Gson().fromJson(line, Employee.class);
+                    streamer.addData(employee.getId(), employee);
+                });
 
     }
 }
