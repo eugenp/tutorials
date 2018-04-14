@@ -8,6 +8,11 @@
   <version>0.0.1-SNAPSHOT</version>
   <url>https://github.com/swagger-api/swagger-codegen</url>
   <description>Swagger Java</description>
+  <parent>
+        <groupId>com.baeldung</groupId>
+		<artifactId>spring-swagger-codegen</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+    </parent>
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
     <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>

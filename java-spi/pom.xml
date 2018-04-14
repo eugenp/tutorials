@@ -8,13 +8,13 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>        
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <modules>
         <module>exchange-rate-api</module>
-	<module>exchange-rate-impl</module>
-	<module>exchange-rate-app</module>
+        <module>exchange-rate-impl</module>
+        <module>exchange-rate-app</module>
     </modules>
-         
+
 </project>
