@@ -5,6 +5,11 @@
     <groupId>com.baeldung.springsecuredsockets</groupId>
     <artifactId>spring-security-mvc-socket</artifactId>
     <packaging>war</packaging>
+	<parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
     <version>1.0.0</version>
     <name>spring-security-mvc-socket</name>
     <properties>

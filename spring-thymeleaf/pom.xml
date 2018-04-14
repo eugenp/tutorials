@@ -19,7 +19,7 @@
         <springframework-security.version>4.2.0.RELEASE</springframework-security.version>
         <javax.servlet-version>3.1.0</javax.servlet-version>
         <!-- thymeleaf -->
-        <org.thymeleaf-version>3.0.3.RELEASE</org.thymeleaf-version>
+        <org.thymeleaf-version>3.0.9.RELEASE</org.thymeleaf-version>
         <org.thymeleaf.extras-version>3.0.0.RELEASE</org.thymeleaf.extras-version>
         <thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
         <!-- validation -->
