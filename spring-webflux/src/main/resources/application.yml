@@ -1,0 +1,13 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    com.netflix: INFO
+    org.springframework.security: INFO
+    org.springframework.cloud: INFO
+    org.springframework.boot: INFO
+    io.netty: ERROR
+    reactor.ipc: ERROR
+    reactor: ERROR
+    com.spring.webflux: ERROR  
+    org.springframework.web.reactive: ERROR
