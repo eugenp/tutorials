@@ -8,7 +8,6 @@
 
     <name>core-java-8</name>
 
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
