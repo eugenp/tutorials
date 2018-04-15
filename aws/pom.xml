@@ -97,6 +97,19 @@
             <version>${dynamodblocal.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- JetS3t -->
+        <dependency>
+            <groupId>org.lucee</groupId>
+            <artifactId>jets3t</artifactId>
+            <version>${jets3t-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.lucee</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec-version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
