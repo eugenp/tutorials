@@ -12,6 +12,11 @@
         <activejdbc.version>1.4.13</activejdbc.version>
         <environments>development.test,development</environments>
     </properties>
+	<parent>
+        <artifactId>parent-modules</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
     <build>
         <plugins>
             <plugin>

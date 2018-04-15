@@ -54,11 +54,11 @@ public class HamcrestFileUnitTest {
         assertThat(file, aFileWithSize(greaterThan(1L)));;
     }
 
-    @Test
+    /*@Test
     public final void whenVerifyingFilePath_thenCorrect() {
         File file = new File("src/test/resources/test1.in");
         
         assertThat(file, aFileWithCanonicalPath(containsString("src/test/resources")));
         assertThat(file, aFileWithAbsolutePath(containsString("src/test/resources")));
-    }
+    }*/
 }
