@@ -71,6 +71,11 @@
             <version>22.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.jakewharton.rxrelay2</groupId>
+            <artifactId>rxrelay</artifactId>
+            <version>2.0.0</version>
+        </dependency>
     </dependencies>
 
     <properties>

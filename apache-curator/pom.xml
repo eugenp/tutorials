@@ -18,6 +18,7 @@
 
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
+        <avaitility.version>1.7.0</avaitility.version>
 
     </properties>
 
@@ -62,6 +63,13 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${avaitility.version}</version>
             <scope>test</scope>
         </dependency>
 	</dependencies>

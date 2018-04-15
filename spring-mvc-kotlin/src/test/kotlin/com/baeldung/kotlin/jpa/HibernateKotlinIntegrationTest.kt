@@ -1,6 +1,5 @@
 package com.baeldung.kotlin.jpa
 
-import com.baeldung.jpa.Person
 import org.hibernate.cfg.Configuration
 import org.hibernate.testing.junit4.BaseCoreFunctionalTestCase
 import org.hibernate.testing.transaction.TransactionUtil.doInHibernate
@@ -21,7 +20,7 @@ class HibernateKotlinIntegrationTest : BaseCoreFunctionalTestCase() {
         }
 
     override fun getAnnotatedClasses(): Array<Class<*>> {
-        return arrayOf(Person::class.java)
+        return arrayOf(Person::class.java, PhoneNumber::class.java)
     }
 
     override fun configure(configuration: Configuration) {
@@ -30,14 +29,37 @@ class HibernateKotlinIntegrationTest : BaseCoreFunctionalTestCase() {
     }
 
     @Test
-    fun givenPerson_whenSaved_thenFound() {
-        val personToSave = Person(0, "John")
+    fun givenPersonWithFullData_whenSaved_thenFound() {
         doInHibernate(({ this.sessionFactory() }), { session ->
+            val personToSave = Person(0, "John", "jhon@test.com", Arrays.asList(PhoneNumber(0, "202-555-0171"), PhoneNumber(0, "202-555-0102")))
             session.persist(personToSave)
-            assertTrue(session.contains(personToSave))
-        })
-        doInHibernate(({ this.sessionFactory() }), { session ->
             val personFound = session.find(Person::class.java, personToSave.id)
+            session.refresh(personFound)
+
+            assertTrue(personToSave == personFound)
+        })
+    }
+
+    @Test
+    fun givenPerson_whenSaved_thenFound() {
+        doInHibernate(({ this.sessionFactory() }), { session ->
+            val personToSave = Person(0, "John")
+            session.persist(personToSave)
+            val personFound = session.find(Person::class.java, personToSave.id)
+            session.refresh(personFound)
+
+            assertTrue(personToSave == personFound)
+        })
+    }
+
+    @Test
+    fun givenPersonWithNullFields_whenSaved_thenFound() {
+        doInHibernate(({ this.sessionFactory() }), { session ->
+            val personToSave = Person(0, "John", null, null)
+            session.persist(personToSave)
+            val personFound = session.find(Person::class.java, personToSave.id)
+            session.refresh(personFound)
+
             assertTrue(personToSave == personFound)
         })
     }
