@@ -29,7 +29,7 @@ public class IgniteStream {
             employee.setEmployed(true);
             e.setValue(employee);
 
-            return e;
+            return employee;
         }));
 
         Path path = Paths.get(IgniteStream.class.getResource("employees.txt").toURI());
