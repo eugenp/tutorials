@@ -15,3 +15,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring 5 Testing with @EnabledIf Annotation](http://www.baeldung.com/sring-5-enabledif)
 - [Introduction to Spring REST Docs](http://www.baeldung.com/spring-rest-docs)
 - [Spring Security 5 – OAuth2 Login](http://www.baeldung.com/spring-security-5-oauth2-login)
+- [Spring ResponseStatusException](http://www.baeldung.com/spring-response-status-exception)
