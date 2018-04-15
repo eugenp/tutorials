@@ -1,14 +1,12 @@
 package com.baeldung.jdbc.autogenkey;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.jdbc.autogenkey.repository.MessageRepositoryJDBCTemplate;
@@ -18,9 +16,7 @@ import com.baeldung.jdbc.autogenkey.repository.MessageRepositorySimpleJDBCInsert
 public class GetAutoGenKeyByJDBC {
 
     @Configuration
-    @EnableAutoConfiguration
-    @PropertySource("classpath:autogenkey-db.properties")
-    @ComponentScan(basePackages = { "com.baeldung.jdbc.autogenkey.repository" })
+    @ComponentScan(basePackages = { "com.baeldung.jdbc.autogenkey" })
     public static class SpringConfig {
 
     }
