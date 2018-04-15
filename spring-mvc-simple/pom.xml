@@ -1,17 +1,17 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-mvc-simple</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring MVC simple Maven Webapp</name>
     <url>http://maven.apache.org</url>
-	<parent>
-	    <groupId>com.baeldung</groupId>
-	    <artifactId>parent-modules</artifactId>
-	    <version>1.0.0-SNAPSHOT</version>
-	 </parent>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -19,7 +19,7 @@
         <springframework.version>5.0.2.RELEASE</springframework.version>
         <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
         <maven.compiler.version>3.7.0</maven.compiler.version>
-        <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
@@ -172,6 +172,14 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>${maven-surefire-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-test</id>
+                            <configuration>
+                                <skip>true</skip>
+                            </configuration>
+                        </execution>
+                    </executions>
                     <dependencies>
                         <dependency>
                             <groupId>org.junit.platform</groupId>
