@@ -3,12 +3,16 @@ package com.baeldung.keystore;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
+import java.security.UnrecoverableEntryException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
+import java.util.Enumeration;
 
 /**
  * Created by adi on 3/7/18.
@@ -17,60 +21,72 @@ public class JavaKeyStore {
 
     private KeyStore keyStore;
 
-    public JavaKeyStore(String keystoreType, String keystorePassword, String keystoreName) throws CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException {
-        this.keyStore = createKeyStore(keystoreType,keystorePassword,keystoreName);
+    private String keyStoreName;
+    private String keyStoreType;
+    private String keyStorePassword;
+
+    JavaKeyStore(String keyStoreType, String keyStorePassword, String keyStoreName) throws CertificateException, NoSuchAlgorithmException, KeyStoreException, IOException {
+        this.keyStoreName = keyStoreName;
+        this.keyStoreType = keyStoreType;
+        this.keyStorePassword = keyStorePassword;
     }
 
-    public KeyStore createKeyStore(String keystoreType, String keystorePassword, String keystoreName) throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException {
-        if(keystoreType==null || keystoreType.isEmpty()){
-            keystoreType = KeyStore.getDefaultType();
+    void createEmptyKeyStore() throws KeyStoreException, CertificateException, NoSuchAlgorithmException, IOException {
+        if(keyStoreType ==null || keyStoreType.isEmpty()){
+            keyStoreType = KeyStore.getDefaultType();
         }
-        KeyStore ks = KeyStore.getInstance(keystoreType);
+        keyStore = KeyStore.getInstance(keyStoreType);
         //load
-        char[] pwdArray = keystorePassword.toCharArray();
-        ks.load(null, pwdArray);
+        char[] pwdArray = keyStorePassword.toCharArray();
+        keyStore.load(null, pwdArray);
 
-        // Save the keystore
-        FileOutputStream fos = new FileOutputStream(keystoreName);
-        ks.store(fos, pwdArray);
+        // Save the keyStore
+        FileOutputStream fos = new FileOutputStream(keyStoreName);
+        keyStore.store(fos, pwdArray);
         fos.close();
-
-        return ks;
     }
 
-    public KeyStore loadKeyStore(String keystoreType, String keystorePassword, String keystoreName) throws IOException, KeyStoreException, CertificateException, NoSuchAlgorithmException {
-        if(keystoreType==null || keystoreType.isEmpty()){
-            keystoreType = KeyStore.getDefaultType();
+    void loadKeyStore() throws IOException, KeyStoreException, CertificateException, NoSuchAlgorithmException {
+        char[] pwdArray = keyStorePassword.toCharArray();
+        keyStore.load(new FileInputStream(keyStoreName), pwdArray);
+    }
+
+    void setEntry(String alias, KeyStore.SecretKeyEntry secretKeyEntry, KeyStore.ProtectionParameter protectionParameter) throws KeyStoreException {
+        keyStore.setEntry(alias, secretKeyEntry, protectionParameter);
+    }
+
+    KeyStore.Entry getEntry(String alias) throws UnrecoverableEntryException, NoSuchAlgorithmException, KeyStoreException {
+        KeyStore.ProtectionParameter protParam = new KeyStore.PasswordProtection(keyStorePassword.toCharArray());
+        return keyStore.getEntry(alias, protParam);
+    }
+
+    void setKeyEntry(String alias, PrivateKey privateKey, String keyPassword, Certificate[] certificateChain) throws KeyStoreException {
+        keyStore.setKeyEntry(alias, privateKey, keyPassword.toCharArray(), certificateChain);
+    }
+
+    void setCertificateEntry(String alias, Certificate certificate) throws KeyStoreException {
+        keyStore.setCertificateEntry(alias, certificate);
+    }
+
+    Certificate getCertificate(String alias) throws KeyStoreException {
+        return keyStore.getCertificate(alias);
+    }
+
+    void deleteEntry(String alias) throws KeyStoreException {
+        keyStore.deleteEntry(alias);
+    }
+
+    void deleteKeyStore() throws KeyStoreException, IOException {
+        Enumeration<String> aliases = keyStore.aliases();
+        while (aliases.hasMoreElements()) {
+            String alias = aliases.nextElement();
+            keyStore.deleteEntry(alias);
         }
-        KeyStore ks = KeyStore.getInstance(keystoreType);
-        char[] pwdArray = keystorePassword.toCharArray();
-        ks.load(new FileInputStream(keystoreName), pwdArray);
-        this.keyStore = ks;
-        return ks;
+        keyStore = null;
+        Files.delete(Paths.get(keyStoreName));
     }
 
-    public void setEntry(String alias, KeyStore.SecretKeyEntry secretKeyEntry, KeyStore.ProtectionParameter protectionParameter) throws KeyStoreException {
-        this.keyStore.setEntry(alias, secretKeyEntry, protectionParameter);
-    }
-
-    public void setKeyEntry(String alias, PrivateKey privateKey, String keyPassword, Certificate[] certificateChain) throws KeyStoreException {
-        this.keyStore.setKeyEntry(alias, privateKey, keyPassword.toCharArray(), certificateChain);
-    }
-
-    public void setCertificateEntry(String alias, Certificate certificate) throws KeyStoreException {
-        this.keyStore.setCertificateEntry(alias, certificate);
-    }
-
-    public void deleteEntry(String alias) throws KeyStoreException {
-        this.keyStore.deleteEntry(alias);
-    }
-
-
-    public KeyStore getKeyStore() {
-        return keyStore;
-    }
-
-    public void setKeyStore(KeyStore keyStore) {
-        this.keyStore = keyStore;
+    KeyStore getKeyStore() {
+        return this.keyStore;
     }
 }
