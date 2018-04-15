@@ -1,20 +1,44 @@
 package com.baeldung.filter
 
+import org.junit.jupiter.api.Assertions.assertIterableEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
-import kotlin.test.assertTrue
 
 internal class SliceTest {
 
     @Test
-    fun whenSlicingAnArray_ThenListEqualsTheSlice() {
+    fun whenSlicingAnArrayWithDotRange_ThenListEqualsTheSlice() {
         val original = arrayOf(1, 2, 3, 2, 1)
-        val filteredList1 = original.slice(1..3)
-        val filteredList2 = original.slice(3 downTo 0)
-        val expectedList1 = listOf(2, 3, 2)
-        val expectedList2 = listOf(2, 3, 2, 1)
+        val actual = original.slice(1..3)
+        val expected = listOf(2, 3, 2)
 
-        assertTrue { expectedList1 == filteredList1 }
-        assertTrue { expectedList2 == filteredList2 }
+        assertIterableEquals(expected, actual)
+    }
+
+    @Test
+    fun whenSlicingAnArrayWithDownToRange_thenListMadeUpOfReverseSlice() {
+        val original = arrayOf(1, 2, 3, 2, 1)
+        val actual = original.slice(3 downTo 0)
+        val expected = listOf(2, 3, 2, 1)
+
+        assertIterableEquals(expected, actual)
+    }
+
+    @Test
+    fun whenSlicingBeyondTheRangeOfTheArray_thenContainManyNulls() {
+        val original = arrayOf(12, 3, 34, 4)
+        val actual = original.slice(3..8)
+        val expected = listOf(4, null, null, null, null, null)
+
+        assertIterableEquals(expected, actual)
+    }
+
+    @Test
+    fun whenSlicingBeyondRangeOfArrayWithStep_thenOutOfBoundsException() {
+        assertThrows(ArrayIndexOutOfBoundsException::class.java) {
+            val original = arrayOf(12, 3, 34, 4)
+            original.slice(3..8 step 2)
+        }
     }
 
 }

@@ -1,7 +1,7 @@
 package com.baeldung.filter
 
+import org.junit.jupiter.api.Assertions.assertIterableEquals
 import org.junit.jupiter.api.Test
-import kotlin.test.assertTrue
 
 internal class DropTest {
 
@@ -11,7 +11,16 @@ internal class DropTest {
         val result = array.drop(2)
         val expected = listOf(3, 4)
 
-        assertTrue { expected == result }
+        assertIterableEquals(expected, result)
+    }
+
+    @Test
+    fun whenDroppingMoreItemsOfArray_thenEmptyList() {
+        val array = arrayOf(1, 2, 3, 4)
+        val result = array.drop(5)
+        val expected = listOf<Int>()
+
+        assertIterableEquals(expected, result)
     }
 
     @Test
@@ -20,7 +29,7 @@ internal class DropTest {
         val result = array.dropLast(1)
         val expected = listOf("1", "2", "3")
 
-        assertTrue { expected == result }
+        assertIterableEquals(expected, result)
     }
 
     @Test
@@ -29,6 +38,16 @@ internal class DropTest {
         val result = array.dropLastWhile { it == 1f }
         val expected = listOf(1f, 1f, 1f, 1f, 1f, 2f)
 
-        assertTrue { expected == result }
+        assertIterableEquals(expected, result)
     }
+
+    @Test
+    fun givenList_whenDroppingMoreThanAvailable_thenThrowException() {
+        val list = listOf('a', 'e', 'i', 'o', 'u')
+        val result = list.drop(6)
+        val expected: List<String> = listOf()
+
+        assertIterableEquals(expected, result)
+    }
+
 }

@@ -1,7 +1,7 @@
 package com.baeldung.filter
 
+import org.junit.jupiter.api.Assertions.assertIterableEquals
 import org.junit.jupiter.api.Test
-import kotlin.test.assertTrue
 
 internal class DistinctTest {
     data class SmallClass(val key: String, val num: Int)
@@ -12,13 +12,13 @@ internal class DistinctTest {
         val result = array.distinct()
         val expected = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
 
-        assertTrue { expected == result }
+        assertIterableEquals(expected, result)
     }
 
     @Test
     fun givenArrayOfClassObjects_whenApplyingDistinctOnClassProperty_thenReturnListDistinctOnThatValue() {
 
-        val originalArray = arrayOf(
+        val original = arrayOf(
                 SmallClass("key1", 1),
                 SmallClass("key2", 2),
                 SmallClass("key3", 3),
@@ -27,20 +27,17 @@ internal class DistinctTest {
                 SmallClass("er", 10),
                 SmallClass("er", 11))
 
-        val filteredList = originalArray.distinctBy { it.key }
+        val actual = original.distinctBy { it.key }
 
-        val expectedList = listOf(
+        val expected = listOf(
                 SmallClass("key1", 1),
                 SmallClass("key2", 2),
                 SmallClass("key3", 3),
                 SmallClass("key4", 3),
                 SmallClass("er", 9))
 
-        // {key1=1}
-        // original map has not changed println(originalArray)
-        // {key1=1, key2=2, key3=3}
 
-        assertTrue { expectedList == filteredList }
+        assertIterableEquals(expected, actual)
     }
 
     @Test
@@ -54,22 +51,21 @@ internal class DistinctTest {
                 SmallClass("er", 10),
                 SmallClass("er", 11),
                 SmallClass("er", 11),
+                SmallClass("er", 91),
                 SmallClass("blob", 22),
                 SmallClass("dob", 27),
                 SmallClass("high", 201_434_314))
 
-        val result = array.distinctBy { Math.floor(it.num / 10.0) }
-
-        // {key1=1}
-        // original map has not changed println(array)
-        // {key1=1, key2=2, key3=3}
+        val actual = array.distinctBy { Math.floor(it.num / 10.0) }
 
         val expected = listOf(
                 SmallClass("key1", 1),
                 SmallClass("er", 10),
+                SmallClass("er", 91),
                 SmallClass("blob", 22),
                 SmallClass("high", 201_434_314))
 
-        assertTrue { expected == result }
+        assertIterableEquals(expected, actual)
     }
+
 }
