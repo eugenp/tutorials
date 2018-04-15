@@ -39,7 +39,6 @@
     </reporting>
 
     <modules>
-        <module>custom-pmd</module>
         <module>parent-boot-5</module>
         <module>asm</module>
         <module>atomix</module>
@@ -407,7 +406,7 @@
                     <dependency>
                         <groupId>org.baeldung.pmd</groupId>
                         <artifactId>custom-pmd</artifactId>
-                        <version>0.0.1-SNAPSHOT</version>
+                        <version>0.0.1</version>
                     </dependency>
                 </dependencies>
                 <configuration>
