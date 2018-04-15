@@ -41,6 +41,5 @@ public class IgniteStream {
               Employee employee = GSON.fromJson(line, Employee.class);
               streamer.addData(employee.getId(), employee);
           });
-    }
-    
+    }    
 }
