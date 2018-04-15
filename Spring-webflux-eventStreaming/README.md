@@ -1,0 +1,1 @@
+This is a short example of real-time event streaming using Spring Webflux
