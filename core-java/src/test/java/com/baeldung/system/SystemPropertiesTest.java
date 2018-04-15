@@ -1,6 +1,7 @@
 package com.baeldung.system;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Properties;
@@ -44,6 +45,7 @@ public class SystemPropertiesTest {
     }
 
     @Test
+    @Ignore
     public void givenSystem_whenCalledClearProperties_thenDeleteAllPropertiesasResult() {
 
         // Clears all system properties. Use with care!

@@ -8,7 +8,12 @@
     <packaging>jar</packaging>
 
     <name>spring-4</name>
-
+	<parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>1.5.10.RELEASE</version>
+        <relativePath />
+    </parent>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
