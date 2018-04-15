@@ -9,3 +9,5 @@
 - [Mockito and JUnit 5 – Using ExtendWith](http://www.baeldung.com/mockito-junit-5-extension)
 - [JUnit 5 – @RunWith](http://www.baeldung.com/junit-5-runwith)
 - [JUnit 5 @Test Annotation](http://www.baeldung.com/junit-5-test-annotation)
+- [JUnit Assert an Exception is Thrown](http://www.baeldung.com/junit-assert-exception)
+

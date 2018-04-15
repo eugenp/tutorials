@@ -11,9 +11,7 @@ internal class FileReaderTest {
 
     @Test
     fun whenReadFileLineByLineUsingForEachLine_thenCorrect() {
-        val lines = fileReader.readFileLineByLineUsingForEachLine(fileName)
-
-        assertTrue { lines.contains("Hello to Kotlin. Its:") }
+        fileReader.readFileLineByLineUsingForEachLine(fileName)
     }
 
     @Test
