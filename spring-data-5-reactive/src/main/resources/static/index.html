@@ -11,19 +11,19 @@
 <div id="content"></div>
 
 <script>
-    var source = new EventSource("receiveChanges");
+    let source = new EventSource("receiveChanges");
 
     source.addEventListener('message', function (e) {
         console.log('New message is received');
         const index = JSON.parse(e.data);
-        const content = "New event added: " + index.name + "<br>";
+        const content = `New event added: ${index.name}<br>`;
         document.getElementById("content").innerHTML += content;
     }, false);
     source.addEventListener('open', function(e) {
         console.log('The connection has been opened');
     }, false);
     source.addEventListener('error', function(e) {
-        if (e.readyState == EventSource.CLOSED){
+        if (e.readyState === EventSource.CLOSED){
             console.log('The connection has been closed');
         }
     }, false);
