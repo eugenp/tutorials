@@ -99,7 +99,9 @@ public class Car {
         car.fuel();
 
         car.сhangeOil("oil");
-        car.сhangeOilWithIsNull(null);
+        
+        CarBattery carBattery = new CarBattery();
+        car.replaceBattery(carBattery);
 
         car.сhangeEngine(new ToyotaEngine());
 
