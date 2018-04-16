@@ -33,5 +33,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Quick Guide to Maven Wrapper](http://www.baeldung.com/maven-wrapper)
 - [An Introduction to Kong](http://www.baeldung.com/kong)
 - [Spring Boot Customize Whitelabel Error Page](http://www.baeldung.com/spring-boot-custom-error-page)
-- [http://www.baeldung.com/spring-boot-main-class](http://www.baeldung.com/spring-boot-main-class)
+- [Spring Boot: Configuring a Main Class](http://www.baeldung.com/spring-boot-main-class)
 
