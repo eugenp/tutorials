@@ -43,6 +43,11 @@ public class Car {
         Assert.isNull(oil, "oil must be null");
         // ...
     }
+    
+    public void replaceBattery(CarBattery carBattery){
+        Assert.isNull(carBattery.getCharge(), "to replace battery the charge must be null");
+        // ...
+    }
 
     public void сhangeEngine(Engine engine) {
         Assert.isInstanceOf(ToyotaEngine.class, engine);
