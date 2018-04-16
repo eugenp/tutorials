@@ -32,3 +32,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)
 - [A Quick Guide to Maven Wrapper](http://www.baeldung.com/maven-wrapper)
 - [An Introduction to Kong](http://www.baeldung.com/kong)
+- [Spring Boot Customize Whitelabel Error Page](http://www.baeldung.com/spring-boot-custom-error-page)
+
