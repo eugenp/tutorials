@@ -49,7 +49,7 @@ public class ClientApplication implements CommandLineRunner {
 
     @Bean
     WebClient client() {
-        return WebClient.create("http://localhost:8989");
+        return WebClient.create("http://localhost:8080");//just for prototyping
     }
 }
 
