@@ -1,11 +1,10 @@
 package com.baeldung.netty;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.nio.charset.Charset;
 
-import org.junit.Assert;
+import static org.assertj.core.api.Assertions.*;
+
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import io.netty.channel.embedded.EmbeddedChannel;
@@ -17,91 +16,82 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 
 public class EmbeddedChannelUnitTest {
-	
+
 	@Test
 	public void givenTwoChannelHandlers_testPipeline() {
-		
-		final FullHttpRequest httpRequest = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/calculate?a=10&b=5");
-        httpRequest.headers().add("Operator", "Add");
 
-        EmbeddedChannel channel = new EmbeddedChannel(
-                new HttpMessageHandler(), new CalculatorOperationHandler());
-        
-        channel.pipeline()
-                .addFirst(new HttpMessageHandler())
-                .addLast(new CalculatorOperationHandler());
+		final FullHttpRequest httpRequest = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET,
+				"/calculate?a=10&b=5");
+		httpRequest.headers().add("Operator", "Add");
 
+		EmbeddedChannel channel = new EmbeddedChannel(new HttpMessageHandler(), new CalculatorOperationHandler());
 
-        // send HTTP request to server and check that the message is on the inbound pipeline
-        assertTrue(channel.writeInbound(httpRequest));
+		channel.pipeline().addFirst(new HttpMessageHandler()).addLast(new CalculatorOperationHandler());
 
-        long inboundChannelResponse = channel.readInbound();
-        assertEquals(15, inboundChannelResponse);
+		// send HTTP request to server and check that the message is on the inbound pipeline
+		assertThat(channel.writeInbound(httpRequest)).isTrue();
 
-        // we should have an outbound message in the form of a HTTP response
-        assertEquals(1, channel.outboundMessages().size());
-        // Object response = channel.readOutbound();
+		long inboundChannelResponse = channel.readInbound();
+		assertThat(inboundChannelResponse).isEqualTo(15);
 
-        FullHttpResponse httpResponse = channel.readOutbound();
-        String httpResponseContent = httpResponse.content().toString(Charset.defaultCharset());
-        assertTrue("15".equalsIgnoreCase(httpResponseContent));
+		// we should have an outbound message in the form of a HTTP response
+		assertThat(channel.outboundMessages().size()).isEqualTo(1);
+		// Object response = channel.readOutbound();
+
+		FullHttpResponse httpResponse = channel.readOutbound();
+		String httpResponseContent = httpResponse.content().toString(Charset.defaultCharset());
+		assertThat(httpResponseContent).isEqualTo("15");
 	}
-	
+
 	@Test
 	public void givenTwoChannelHandlers_testExceptionHandlingInHttpMessageHandler() {
-		
-		EmbeddedChannel channel = new EmbeddedChannel(
-                new HttpMessageHandler(), new CalculatorOperationHandler());
 
-        final FullHttpRequest wrongHttpRequest = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.POST, "/calculate?a=10&b=5");
-        wrongHttpRequest.headers().add("Operator", "Add");
+		EmbeddedChannel channel = new EmbeddedChannel(new HttpMessageHandler(), new CalculatorOperationHandler());
 
-        try {
-            // send invalid HTTP request to server and expect and error
-            channel.pipeline().fireChannelRead(wrongHttpRequest);
-            channel.checkException();
-            // channel.writeInbound(wrongHttpRequest);
-            Assert.fail();
+		final FullHttpRequest wrongHttpRequest = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.POST,
+				"/calculate?a=10&b=5");
+		wrongHttpRequest.headers().add("Operator", "Add");
 
-        } catch (Exception ex) {
+		Throwable thrownException = catchThrowable(() -> {
+			// send invalid HTTP request to server and expect and error
+			channel.pipeline().fireChannelRead(wrongHttpRequest);
+			channel.checkException();
+			Assertions.failBecauseExceptionWasNotThrown(UnsupportedOperationException.class);
+		});
 
-            // the HttpMessageHandler does not handle the exception and throws it down the pipeline
-            assertTrue(ex instanceof UnsupportedOperationException);
-            assertTrue(ex.getMessage().equalsIgnoreCase("HTTP method not supported"));
+		assertThat(thrownException)
+			.isInstanceOf(UnsupportedOperationException.class)
+			.hasMessage("HTTP method not supported");
 
-            FullHttpResponse errorHttpResponse = channel.readOutbound();
-            String errorHttpResponseContent = errorHttpResponse.content().toString(Charset.defaultCharset());
-            assertTrue("Operation not defined".equalsIgnoreCase(errorHttpResponseContent));
-            assertEquals(HttpResponseStatus.INTERNAL_SERVER_ERROR, errorHttpResponse.status());
-        }
+		FullHttpResponse errorHttpResponse = channel.readOutbound();
+		String errorHttpResponseContent = errorHttpResponse.content().toString(Charset.defaultCharset());
+		assertThat(errorHttpResponseContent).isEqualToIgnoringCase("Operation not defined");
+		assertThat(errorHttpResponse.status()).isEqualTo(HttpResponseStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	
+
 	@Test
 	public void givenTwoChannelHandlers_testExceptionHandlingInCalculatorOperationHandler() {
-		EmbeddedChannel channel = new EmbeddedChannel(
-                new HttpMessageHandler(), new CalculatorOperationHandler());
+		EmbeddedChannel channel = new EmbeddedChannel(new HttpMessageHandler(), new CalculatorOperationHandler());
 
-        final FullHttpRequest wrongHttpRequest = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, "/calculate?a=10&b=5");
-        wrongHttpRequest.headers().add("Operator", "Invalid_operation");
+		final FullHttpRequest wrongHttpRequest = new DefaultFullHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET,
+				"/calculate?a=10&b=5");
+		wrongHttpRequest.headers().add("Operator", "Invalid_operation");
 
-        try {
-            // send invalid HTTP request to server and expect and error
-            channel.writeInbound(wrongHttpRequest);
-            Assert.fail();
+		Throwable thrownException = catchThrowable(() -> {
+			// send invalid HTTP request to server and expect and error
+			channel.writeInbound(wrongHttpRequest);
+			Assertions.failBecauseExceptionWasNotThrown(IllegalArgumentException.class);
+		});
 
-        } catch (Exception ex) {
+		// the HttpMessageHandler does not handle the exception and throws it down the
+		// pipeline
+		assertThat(thrownException).isInstanceOf(IllegalArgumentException.class).hasMessage("Operation not defined");
 
-            // the HttpMessageHandler does not handle the exception and throws it down the pipeline
-            assertTrue(ex instanceof IllegalArgumentException);
-            assertTrue(ex.getMessage().equalsIgnoreCase("Operation not defined"));
-
-            // the outbound message is a HTTP response with the status code 500
-            FullHttpResponse errorHttpResponse = channel.readOutbound();
-            String errorHttpResponseContent = errorHttpResponse.content().toString(Charset.defaultCharset());
-            assertTrue("Operation not defined".equalsIgnoreCase(errorHttpResponseContent));
-            assertEquals(HttpResponseStatus.INTERNAL_SERVER_ERROR, errorHttpResponse.status());
-        }
+		// the outbound message is a HTTP response with the status code 500
+		FullHttpResponse errorHttpResponse = channel.readOutbound();
+		String errorHttpResponseContent = errorHttpResponse.content().toString(Charset.defaultCharset());
+		assertThat(errorHttpResponseContent).isEqualToIgnoringCase("Operation not defined");
+		assertThat(errorHttpResponse.status()).isEqualTo(HttpResponseStatus.INTERNAL_SERVER_ERROR);
 	}
 
 }

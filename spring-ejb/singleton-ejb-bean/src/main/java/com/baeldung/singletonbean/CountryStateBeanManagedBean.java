@@ -15,14 +15,13 @@ import javax.ejb.Startup;
 
 @Singleton
 @Startup
-@ConcurrencyManagement(ConcurrencyManagementType.CONTAINER)
-public class CountryStateCacheBean implements CountryState {
+@ConcurrencyManagement(ConcurrencyManagementType.BEAN)
+public class CountryStateBeanManagedBean implements CountryState {
 
-    private Map<String, List<String>> countryStatesMap = new HashMap<String, List<String>>();
+    private volatile Map<String, List<String>> countryStatesMap = new HashMap<String, List<String>>();
 
-    @Lock(LockType.WRITE)
     @PostConstruct
-    public void initialize() {
+    public synchronized void initialize() {
 
         List<String> states = new ArrayList<String>();
         states.add("Texas");
@@ -34,7 +33,6 @@ public class CountryStateCacheBean implements CountryState {
         countryStatesMap.put("UnitedStates", states);
     }
 
-    @Lock(LockType.READ)
     public List<String> getStates(String country) {
         return countryStatesMap.get(country);
     }
