@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
@@ -18,6 +19,7 @@ import static org.springframework.http.MediaType.TEXT_EVENT_STREAM_VALUE;
 
 @Slf4j
 @SpringBootApplication
+@Profile("!test")
 public class ClientApplication implements CommandLineRunner {
     @Autowired
     private WebClient webClient;
