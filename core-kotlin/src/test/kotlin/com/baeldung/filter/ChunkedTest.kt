@@ -15,7 +15,7 @@ internal class ChunkedTest {
     }
 
     @Test
-    fun givenMapOfCodonsAndDNAFragment_whenChunkingDNAStringWithAndWithoutTransformer_thenProduceListOfChunksAndMappedTransforms() {
+    fun givenDNAString_whenChunkingWithTransformer_thenProduceTransformedList() {
         val codonTable = mapOf("ATT" to "Isoleucine", "CAA" to "Glutamine", "CGC" to "Arginine", "GGC" to "Glycine")
         val dnaFragment = "ATTCGCGGCCGCCAA"
 
