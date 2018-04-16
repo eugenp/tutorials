@@ -39,12 +39,7 @@ public class Car {
         // ...
     }
 
-    public void сhangeOilWithIsNull(String oil) {
-        Assert.isNull(oil, "oil must be null");
-        // ...
-    }
-    
-    public void replaceBattery(CarBattery carBattery){
+    public void replaceBattery(CarBattery carBattery) {
         Assert.isNull(carBattery.getCharge(), "to replace battery the charge must be null");
         // ...
     }
