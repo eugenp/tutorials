@@ -41,7 +41,7 @@ public class ClientApplication implements CommandLineRunner {
 
     private Flux<Bar> fromStream() {
         return webClient.get()
-            .uri("/foos")
+            .uri("http://localhost:8080/foos")//just for prototyping
             .header(HttpHeaders.CONTENT_TYPE, TEXT_EVENT_STREAM_VALUE)
             .retrieve()
             .bodyToFlux(Bar.class);
@@ -49,7 +49,7 @@ public class ClientApplication implements CommandLineRunner {
 
     @Bean
     WebClient client() {
-        return WebClient.create("http://localhost:8080");//just for prototyping
+        return WebClient.create();
     }
 }
 
