@@ -7,7 +7,7 @@ internal class DistinctTest {
     data class SmallClass(val key: String, val num: Int)
 
     @Test
-    fun givenArrayOfSomeDuplicateValues_whenApplyingDistinct_thenReturnListOfNoDuplicateValues() {
+    fun whenApplyingDistinct_thenReturnListOfNoDuplicateValues() {
         val array = arrayOf(1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 5, 6, 7, 8, 9)
         val result = array.distinct()
         val expected = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9)
