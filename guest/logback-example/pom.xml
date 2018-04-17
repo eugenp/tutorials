@@ -4,7 +4,12 @@
 	<groupId>com.stackify</groupId>
 	<artifactId>logback-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>        
+    </parent>
 	<dependencies>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>

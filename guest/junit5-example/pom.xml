@@ -4,7 +4,12 @@
 	<groupId>junit5-example</groupId>
 	<artifactId>junit5-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	<parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>        
+    </parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>

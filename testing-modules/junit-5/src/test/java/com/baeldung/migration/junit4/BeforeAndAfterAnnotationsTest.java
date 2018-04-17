@@ -3,6 +3,7 @@ package com.baeldung.migration.junit4;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.After;
@@ -23,21 +24,17 @@ public class BeforeAndAfterAnnotationsTest {
     @Before
     public void init() {
         LOG.info("startup");
-
-        list = new ArrayList<>();
-        list.add("test1");
-        list.add("test2");
+        list = new ArrayList<>(Arrays.asList("test1", "test2"));
     }
 
     @After
     public void finalize() {
         LOG.info("finalize");
-
         list.clear();
     }
 
     @Test
-    public void whenCheckingListSizeAtBeginning_ThenSizeEqualsToStartupSize() {
+    public void whenCheckingListSize_ThenSizeEqualsToInit() {
         LOG.info("executing test");
         assertEquals(2, list.size());
 
@@ -45,7 +42,7 @@ public class BeforeAndAfterAnnotationsTest {
     }
 
     @Test
-    public void whenCheckingListSizeAtBeginningAgain_ThenSizeEqualsToStartupSize() {
+    public void whenCheckingListSizeAgain_ThenSizeEqualsToInit() {
         LOG.info("executing another test");
         assertEquals(2, list.size());
 

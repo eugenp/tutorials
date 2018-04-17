@@ -1,6 +1,7 @@
 package com.baeldung.singletonbean;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -10,8 +11,6 @@ import javax.naming.Context;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.baeldung.singletonbean.CountryState;
 
 public class CountryStateCacheBeanTest {
 
@@ -27,15 +26,25 @@ public class CountryStateCacheBeanTest {
     }
 
     @Test
-    public void whenCallGetStates_ReturnsStatesForCountry() throws Exception {
+    public void whenCallGetStatesFromContainerManagedBean_ReturnsStatesForCountry() throws Exception {
 
-        String[] actualStates = { "Texas", "Alabama", "Alaska", "Arizona", "Arkansas" };
+        String[] expectedStates = { "Texas", "Alabama", "Alaska", "Arizona", "Arkansas" };
 
-        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateCacheBean");
-        List<String> states = countryStateBean.getStates("UnitedStates");
-        if (states != null) {
-            assertArrayEquals(states.toArray(), actualStates);
-        }
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateContainerManagedBean");
+        List<String> actualStates = countryStateBean.getStates("UnitedStates");
+        assertNotNull(actualStates);
+        assertArrayEquals(expectedStates, actualStates.toArray());
+    }
+
+    @Test
+    public void whenCallGetStatesFromBeanManagedBean_ReturnsStatesForCountry() throws Exception {
+
+        String[] expectedStates = { "Texas", "Alabama", "Alaska", "Arizona", "Arkansas" };
+
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateBeanManagedBean");
+        List<String> actualStates = countryStateBean.getStates("UnitedStates");
+        assertNotNull(actualStates);
+        assertArrayEquals(expectedStates, actualStates.toArray());
     }
 
     @After
