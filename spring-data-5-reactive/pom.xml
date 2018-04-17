@@ -8,8 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>kotlin-webflux-database</name>
-    <description>Demo project for Spring Boot</description>
+	<name>Spring-5-data-reactive</name>
+    <description>Spring-5-data-reactive with Springboot 2.0.1</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -35,20 +35,10 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.9-rc</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.ws.rs</groupId>
             <artifactId>javax.ws.rs-api</artifactId>
             <version>2.1</version>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
@@ -75,9 +65,8 @@
             <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
-
     </dependencies>
-
+	
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <plugins>
