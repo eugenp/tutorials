@@ -4,9 +4,8 @@ import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
 
-
 public class Tweet {
-	
+
     @NotEmpty
     private String id;
 
@@ -24,9 +23,9 @@ public class Tweet {
     }
 
     public static Tweet createTweet(String id, String text) {
-    	return new Tweet(id, text);    	
+        return new Tweet(id, text);
     }
-    
+
     public String getId() {
         return id;
     }

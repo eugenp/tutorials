@@ -21,60 +21,56 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 import reactor.core.publisher.Mono;
 
-
 @RestController
 public class TweetController {
-	
-	@Autowired
-    private Validator validator;
-    
-	private static List<Tweet> tweets = new ArrayList<Tweet>();
-	
-	static {
-		Tweet tweet = Tweet.createTweet("1", "default tweet");
-		tweets.add(tweet);
-	}
-	
-	@Bean
-	public RouterFunction<ServerResponse> createTweetRoute(TweetController controller) {
-		return route(GET("/tweets/{id}"), controller::getTweetById)
-				.and
-			   (route(POST("/tweets/addTweets"), controller::addTweets));
-	}
-	
-    private Mono<ServerResponse> getTweetById(ServerRequest request) {
-    	String id = request.pathVariable("id");
-		Tweet tweet = Tweet.createTweet(String.valueOf(System.currentTimeMillis()), "Tweet not available");
 
-		for (Tweet currentTweet: tweets) {
-			if (currentTweet.getId().equals(id)) {
-				tweet = currentTweet;
-			}
-		}
-		return ok().contentType(MediaType.APPLICATION_JSON).body(Mono.just(tweet), Tweet.class);
+    @Autowired
+    private Validator validator;
+
+    private static List<Tweet> tweets = new ArrayList<Tweet>();
+
+    static {
+        Tweet tweet = Tweet.createTweet("1", "default tweet");
+        tweets.add(tweet);
     }
 
-    private Mono<ServerResponse> addTweets(ServerRequest request) {
-    	return validateTweet(body -> {
+    @Bean
+    public RouterFunction<ServerResponse> createTweetRoute(TweetController controller) {
+        return route(GET("/tweets/{id}"), controller::getTweetById).and(route(POST("/tweets/addTweet"), controller::addTweet));
+    }
+
+    private Mono<ServerResponse> getTweetById(ServerRequest request) {
+        String id = request.pathVariable("id");
+        Tweet tweet = Tweet.createTweet(String.valueOf(System.currentTimeMillis()), "Tweet not available");
+
+        for (Tweet currentTweet : tweets) {
+            if (currentTweet.getId()
+                .equals(id)) {
+                tweet = currentTweet;
+            }
+        }
+        return ok().contentType(MediaType.APPLICATION_JSON)
+            .body(Mono.just(tweet), Tweet.class);
+    }
+
+    private Mono<ServerResponse> addTweet(ServerRequest request) {
+        return validateTweet(body -> {
 
             Mono<Tweet> monoTweet = body.map(newTweet -> Tweet.createTweet(newTweet.getId(), newTweet.getText()));
             tweets.add(monoTweet.block());
-            return ServerResponse.ok().body(Mono.just("Tweet Successfully Added"), String.class);       
-    		
-    	}, request, Tweet.class);
-    }
-    
-    private <T> Mono<ServerResponse> validateTweet(
-            Function<Mono<T>, Mono<ServerResponse>> block,
-            ServerRequest request, Class<T> bodyClass) {
+            return ServerResponse.ok()
+                .body(Mono.just("Tweet Successfully Added"), String.class);
 
-        return request
-                .bodyToMono(bodyClass)
-                .flatMap(
-                        body -> validator.validate(body).isEmpty()
-                                	? block.apply(Mono.just(body))
-                                	: ServerResponse.unprocessableEntity().build()
-                );
+        }, request, Tweet.class);
     }
-    
+
+    private <T> Mono<ServerResponse> validateTweet(Function<Mono<T>, Mono<ServerResponse>> block, ServerRequest request, Class<T> bodyClass) {
+
+        return request.bodyToMono(bodyClass)
+            .flatMap(body -> validator.validate(body)
+                .isEmpty() ? block.apply(Mono.just(body))
+                    : ServerResponse.unprocessableEntity()
+                        .build());
+    }
+
 }
