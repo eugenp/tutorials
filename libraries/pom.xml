@@ -791,7 +791,6 @@
                     </archive>
                 </configuration>
             </plugin>
-
             <!-- /Neuroph -->
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -838,7 +837,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 
