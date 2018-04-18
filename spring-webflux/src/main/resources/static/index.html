@@ -1,0 +1,17 @@
+<html>
+<head></head>
+<body>
+<h1>Hello</h1>
+<ol id="messages-list">
+</ol>
+<script>
+    var evtSource = new EventSource("http://localhost:8080/hello");
+    evtSource.onmessage = function (event) {
+        var list = document.getElementById("messages-list");
+        var entry = document.createElement("li");
+        entry.appendChild(document.createTextNode(event.data));
+        list.appendChild(entry)
+    }
+</script>
+</body>
+</html>
