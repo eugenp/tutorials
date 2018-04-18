@@ -273,7 +273,7 @@
 
         <module>testing-modules/testing</module>
         <module>testing-modules/testng</module>
-
+        <module>spring-webflux-sse</module>
         <module>video-tutorials</module>
 
         <module>xml</module>
