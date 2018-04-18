@@ -19,7 +19,6 @@
         <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql.version>6.0.5</mysql.version>
         <commons-io.version>2.5</commons-io.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
     </properties>
 
     <build>

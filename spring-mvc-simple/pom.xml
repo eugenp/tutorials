@@ -7,11 +7,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>Spring MVC simple Maven Webapp</name>
     <url>http://maven.apache.org</url>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -163,11 +165,6 @@
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                         <outputDirectory>${deploy-path}</outputDirectory>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven.compiler.version}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
