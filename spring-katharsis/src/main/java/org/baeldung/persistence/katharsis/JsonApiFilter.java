@@ -1,8 +1,8 @@
 package org.baeldung.persistence.katharsis;
 
-import io.katharsis.invoker.KatharsisInvokerBuilder;
-import io.katharsis.locator.JsonServiceLocator;
-import io.katharsis.servlet.AbstractKatharsisFilter;
+import io.katharsis.invoker.internal.legacy.KatharsisInvokerBuilder;
+import io.katharsis.legacy.locator.JsonServiceLocator;
+import io.katharsis.servlet.legacy.AbstractKatharsisFilter;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;

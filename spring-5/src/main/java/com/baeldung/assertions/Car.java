@@ -39,8 +39,8 @@ public class Car {
         // ...
     }
 
-    public void сhangeOilWithIsNull(String oil) {
-        Assert.isNull(oil, "oil must be null");
+    public void replaceBattery(CarBattery carBattery) {
+        Assert.isNull(carBattery.getCharge(), "to replace battery the charge must be null");
         // ...
     }
 
@@ -99,7 +99,9 @@ public class Car {
         car.fuel();
 
         car.сhangeOil("oil");
-        car.сhangeOilWithIsNull(null);
+        
+        CarBattery carBattery = new CarBattery();
+        car.replaceBattery(carBattery);
 
         car.сhangeEngine(new ToyotaEngine());
 

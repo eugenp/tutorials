@@ -16,6 +16,7 @@ import opennlp.tools.util.ObjectStream;
 import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.TrainingParameters;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 import org.junit.Test;
 
 public class LanguageDetectorAndTrainingDataTest {
@@ -35,7 +36,9 @@ public class LanguageDetectorAndTrainingDataTest {
 
         LanguageDetector ld = new LanguageDetectorME(model);
         Language[] languages = ld.predictLanguages("estava em uma marcenaria na Rua Bruno");
-        assertThat(Arrays.asList(languages).toString()).contains("pob (0.9999999950605625)", "ita (4.939427661577956E-9)", "spa (9.665954064665144E-15)", 
-                "fra (8.250349924885834E-25)");
+        
+        assertThat(Arrays.asList(languages)).extracting("lang", "confidence").contains(tuple("pob", 0.9999999950605625),
+                 tuple("ita", 4.939427661577956E-9), tuple("spa", 9.665954064665144E-15),
+                tuple("fra", 8.250349924885834E-25));
     }
 }
