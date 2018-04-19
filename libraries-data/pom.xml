@@ -95,7 +95,7 @@
 			<!-- Reladomo -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
+				<version>${maven-antrun-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>generateMithra</id>
@@ -141,11 +141,10 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${build-helper-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<id>add-source</id>
@@ -180,23 +179,25 @@
 		</plugins>
 	</build>
 
-    <repositories>
-        <repository>
-            <id>Apache Staging</id>
-            <url>https://repository.apache.org/content/groups/staging</url>
-        </repository>
-    </repositories>
+	<repositories>
+		<repository>
+			<id>Apache Staging</id>
+			<url>https://repository.apache.org/content/groups/staging</url>
+		</repository>
+	</repositories>
 	
-    <properties>
-        <kryo.version>4.0.1</kryo.version>
-        <h2.version>1.4.196</h2.version>
-        <reladomo.version>16.5.1</reladomo.version>
-        <junit.version>4.12</junit.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <ormlite.version>5.0</ormlite.version>
-        <kafka.version>1.0.0</kafka.version>
-        <ignite.version>2.4.0</ignite.version>
-        <gson.version>2.8.2</gson.version>
-    </properties>
-
+	<properties>
+		<kryo.version>4.0.1</kryo.version>
+		<h2.version>1.4.196</h2.version>
+		<reladomo.version>16.5.1</reladomo.version>
+		<junit.version>4.12</junit.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+		<ormlite.version>5.0</ormlite.version>
+		<kafka.version>1.0.0</kafka.version>
+		<ignite.version>2.3.0</ignite.version>
+		<gson.version>2.8.2</gson.version>
+		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
+		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+	</properties>
+	
 </project>
