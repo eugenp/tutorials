@@ -1,4 +1,4 @@
-package com.baeldung.reactive.filter;
+package com.baeldung.reactive.filters;
 
 import org.springframework.web.reactive.function.server.HandlerFilterFunction;
 import org.springframework.web.reactive.function.server.HandlerFunction;
@@ -8,10 +8,10 @@ import reactor.core.publisher.Mono;
 
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 
-public class ExampleHandlerFilterFunction implements HandlerFilterFunction {
+public class ExampleHandlerFilterFunction implements HandlerFilterFunction<ServerResponse, ServerResponse> {
 
     @Override
-    public Mono filter(ServerRequest serverRequest, HandlerFunction handlerFunction) {
+    public Mono<ServerResponse> filter(ServerRequest serverRequest, HandlerFunction<ServerResponse> handlerFunction) {
         if (serverRequest.pathVariable("name").equalsIgnoreCase("test")) {
             return ServerResponse.status(FORBIDDEN).build();
         }
