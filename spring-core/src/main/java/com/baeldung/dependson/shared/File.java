@@ -1,11 +1,7 @@
 package com.baeldung.dependson.shared;
 
 import org.springframework.stereotype.Service;
-/**
- * Only for testing purpose
- * @author Sachin Pandey
- *
- */
+
 @Service
 public class File {
 
