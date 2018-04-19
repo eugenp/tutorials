@@ -14,7 +14,7 @@
     <properties>
         <maven.resources.version>3.0.2</maven.resources.version>
         <maven.compiler.version>3.7.0</maven.compiler.version>
-        <maven.surefire.version>2.21.0</maven.surefire.version>
+        <maven.surefire.version>2.20</maven.surefire.version>
         <maven.failsafe.version>2.21.0</maven.failsafe.version>
         <maven.verifier.version>1.1</maven.verifier.version>
         <maven.clean.version>3.0.0</maven.clean.version>

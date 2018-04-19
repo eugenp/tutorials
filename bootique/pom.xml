@@ -8,10 +8,6 @@
 	<name>bootique</name>
 	<url>http://maven.apache.org</url>
 
-	<properties>
-		<main.class>com.baeldung.bootique.App</main.class>
-	</properties>
-
 	<parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -23,7 +19,7 @@
 			<dependency>
 				<groupId>io.bootique.bom</groupId>
 				<artifactId>bootique-bom</artifactId>
-				<version>0.23</version>
+				<version>${bootique-bom.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -49,7 +45,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -63,4 +59,9 @@
 		</plugins>
 	</build>
 
+	<properties>
+		<main.class>com.baeldung.bootique.App</main.class>
+		<bootique-bom.version>0.23</bootique-bom.version>
+	</properties>
+	
 </project>

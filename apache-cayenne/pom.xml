@@ -6,7 +6,6 @@
 	<artifactId>apache-cayenne</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>apache-cayenne</name>
 	<description>Introduction to Apache Cayenne</description>
 
@@ -15,15 +14,6 @@
 		<artifactId>parent-modules</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-		<mysql.connector.version>5.1.44</mysql.connector.version>
-		<cayenne.version>4.0.M5</cayenne.version>
-		<junit.version>4.12</junit.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
@@ -56,4 +46,13 @@
 		</plugins>
 	</build>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<mysql.connector.version>5.1.44</mysql.connector.version>
+		<cayenne.version>4.0.M5</cayenne.version>
+		<junit.version>4.12</junit.version>
+	</properties>
+	
 </project>

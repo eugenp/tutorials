@@ -4,7 +4,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>apache-fop</artifactId>
     <version>0.1-SNAPSHOT</version>
-
     <name>apache-fop</name>
 
     <parent>
@@ -61,7 +60,7 @@
         <dependency>
             <groupId>org.dbdoclet</groupId>
             <artifactId>herold</artifactId>
-            <version>8.0.4</version>
+            <version>${org.dbdoclet.herold.version}</version>
         </dependency>
 
         <dependency>
@@ -69,7 +68,6 @@
             <artifactId>jtidy</artifactId>
             <version>${jtidy.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -87,6 +85,7 @@
         <avalon-framework.version>4.3</avalon-framework.version>
         <dbdoclet.version>8.0.2</dbdoclet.version>
         <jtidy.version>r938</jtidy.version>
+		<org.dbdoclet.herold.version>8.0.4</org.dbdoclet.herold.version>
     </properties>
 
 </project>
