@@ -13,7 +13,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
@@ -26,13 +25,12 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-	
-	<dependency>
+		<dependency>
             <groupId>io.projectreactor</groupId>
-	    <artifactId>reactor-test</artifactId>
+			<artifactId>reactor-test</artifactId>
             <version>${reactor-core.version}</version>
-	    <scope>test</scope>
-	</dependency>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <properties>

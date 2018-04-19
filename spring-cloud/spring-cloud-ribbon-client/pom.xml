@@ -15,10 +15,6 @@
         <relativePath>../../parent-boot-5</relativePath>
     </parent>
 
-    <properties>
-        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -60,5 +56,9 @@
             </snapshots>
         </repository>
     </repositories>
+
+    <properties>
+        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+    </properties>
 	
 </project>

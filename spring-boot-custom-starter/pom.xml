@@ -11,10 +11,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
      </parent>
-     
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <modules>
         <module>greeter</module>
@@ -22,5 +18,9 @@
         <module>greeter-spring-boot-starter</module>
         <module>greeter-spring-boot-sample-app</module>
     </modules>
+     
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
 </project>

@@ -8,19 +8,9 @@
     <name>Parent Boot 5</name>
     <description>Parent for all spring boot 1.5 modules</description>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <rest-assured.version>3.0.6</rest-assured.version>        
-        <!-- plugins -->
-        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>      
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>  
-   </properties>
-
     <parent>
-        <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.10.RELEASE</version>
         <relativePath />
     </parent>
@@ -69,8 +59,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>                
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>      
         </plugins>
@@ -116,4 +106,17 @@
             </build>
         </profile>
     </profiles>
+	
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <rest-assured.version>3.0.6</rest-assured.version>        
+        <!-- plugins -->
+        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>      
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>  
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+   </properties>
+	
 </project>

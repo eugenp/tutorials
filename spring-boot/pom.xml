@@ -134,7 +134,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.6</version>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
 
         <dependency>
@@ -248,6 +248,7 @@
         <h2.version>1.4.194</h2.version>
         <togglz.version>2.4.1.Final</togglz.version>
         <rome.version>1.9.0</rome.version>
+		<mysql-connector-java.version>6.0.6</mysql-connector-java.version>
     </properties>
 
 </project>

@@ -7,7 +7,6 @@
 	<artifactId>spring-data-spring-security</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-
 	<name>intro-spring-data-spring-security</name>
 	<description>Spring Data with Spring Security</description>
 
@@ -62,6 +61,5 @@
 	<build>
 		<finalName>${project.artifactId}</finalName>
 	</build>
-
 
 </project>

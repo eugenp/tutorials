@@ -11,25 +11,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cxf.version>3.1.8</cxf.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <surefire.version>2.19.1</surefire.version>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.baeldung.cxf.jaxrs.implementation.RestfulServer</mainClass>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -53,4 +34,24 @@
             </exclusions>
         </dependency>
     </dependencies>
+	
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.cxf.jaxrs.implementation.RestfulServer</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+	
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <cxf.version>3.1.8</cxf.version>
+        <httpclient.version>4.5.2</httpclient.version>
+        <surefire.version>2.19.1</surefire.version>
+    </properties>
+	
 </project>

@@ -14,17 +14,6 @@
         <relativePath>../../</relativePath>        
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>5.0.3.RELEASE</spring.version>
-        <spring-data-redis>2.0.3.RELEASE</spring-data-redis>
-        <cglib.version>3.2.4</cglib.version>
-        <jedis.version>2.9.0</jedis.version>
-        <nosqlunit.version>0.10.0</nosqlunit.version>
-        <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
-        
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.data</groupId>
@@ -82,5 +71,15 @@
     		<version>${spring-data-commons.version}</version>
 		</dependency>
     </dependencies>
+	
+	<properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>5.0.3.RELEASE</spring.version>
+        <spring-data-redis>2.0.3.RELEASE</spring-data-redis>
+        <cglib.version>3.2.4</cglib.version>
+        <jedis.version>2.9.0</jedis.version>
+        <nosqlunit.version>0.10.0</nosqlunit.version>
+        <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
+    </properties>
 
 </project>

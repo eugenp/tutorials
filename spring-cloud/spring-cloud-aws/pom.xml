@@ -7,7 +7,6 @@
     <artifactId>spring-cloud-aws</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>Spring Cloud AWS</name>
     <description>Spring Cloud AWS Examples</description>
 
@@ -17,14 +16,6 @@
         <version>1.5.8.RELEASE</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
-
-    <properties>
-        <start-class>com.baeldung.spring.cloud.aws.SpringCloudAwsApplication</start-class>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -83,5 +74,12 @@
         </plugins>
     </build>
 
+    <properties>
+        <start-class>com.baeldung.spring.cloud.aws.SpringCloudAwsApplication</start-class>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
+    </properties>
 
 </project>
