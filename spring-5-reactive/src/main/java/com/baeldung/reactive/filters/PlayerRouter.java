@@ -1,7 +1,5 @@
-package com.baeldung.reactive.router;
+package com.baeldung.reactive.filters;
 
-import com.baeldung.reactive.filter.ExampleHandlerFilterFunction;
-import com.baeldung.reactive.handler.PlayerHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -17,6 +15,6 @@ public class PlayerRouter {
     public RouterFunction<ServerResponse> route(PlayerHandler playerHandler) {
         return RouterFunctions
                 .route(GET("/players/{name}"), playerHandler::getName)
-                .filter(new ExampleHandlerFilterFunction()::filter);
+                .filter(new ExampleHandlerFilterFunction());
     }
 }
