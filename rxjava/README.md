@@ -10,3 +10,7 @@
 - [Schedulers in RxJava](http://www.baeldung.com/rxjava-schedulers)
 - [Mathematical and Aggregate Operators in RxJava](http://www.baeldung.com/rxjava-math)
 - [Combining Observables in RxJava](http://www.baeldung.com/rxjava-combine-observables)
+- [RxJava 2 – Flowable](http://www.baeldung.com/rxjava-2-flowable)
+- [RxJava StringObservable](http://www.baeldung.com/rxjava-string)
+- [RxJava Maybe](http://www.baeldung.com/rxjava-maybe)
+- [Introduction to RxRelay for RxJava](http://www.baeldung.com/rx-relay)
