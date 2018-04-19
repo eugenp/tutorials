@@ -103,7 +103,7 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
 	<properties>
 		<maven.resources.version>3.0.2</maven.resources.version>
 		<maven.compiler.version>3.7.0</maven.compiler.version>
