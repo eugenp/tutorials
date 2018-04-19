@@ -7,6 +7,12 @@
     <groupId>com.baeldung</groupId>
     <artifactId>mockserver</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+	<parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>        
+    </parent>
     <properties>
         <mock-sever-netty-version>3.10.8</mock-sever-netty-version>
         <apche-http-version>4.4.1</apche-http-version>
@@ -35,20 +41,5 @@
             <artifactId>httpcore</artifactId>
             <version>${apche-http-version}</version>
         </dependency>
-
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/**LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-
-    </build>
 </project>

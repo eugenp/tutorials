@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung.spring.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,13 +1,12 @@
-package org.baeldung;
+package com.baeldung.spring.servlets;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
-
 import javax.servlet.ServletException;
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WelcomeServletTest {
     @Test
