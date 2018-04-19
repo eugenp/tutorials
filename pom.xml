@@ -74,6 +74,7 @@
         <module>dozer</module>
 
         <module>ethereumj</module>
+        <module>web3j</module>
 
         <!--<module>ejb</module>-->
 
