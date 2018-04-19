@@ -2,39 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.baeldung</groupId>
 	<artifactId>jee-7</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<description>JavaEE 7 Arquillian Archetype Sample</description>
-
-
+	
 	<parent>
 		<groupId>com.baeldung</groupId>
 		<artifactId>parent-modules</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
-
-	<properties>
-		<java.min.version>1.8</java.min.version>
-		<maven.min.version>3.0.0</maven.min.version>
-
-		<javaee_api.version>7.0</javaee_api.version>
-		<arquillian_core.version>1.1.11.Final</arquillian_core.version>
-		<wildfly.version>8.2.1.Final</wildfly.version>
-		<awaitility.version>1.7.0</awaitility.version>
-		<undertow-websockets-jsr.version>1.4.6.Final</undertow-websockets-jsr.version>
-		<resteasy.version>3.0.19.Final</resteasy.version>
-		<glassfish-embedded-all.version>4.1.1</glassfish-embedded-all.version>
-		<javax.json.version>1.0.4</javax.json.version>
-		<tyrus.version>1.13</tyrus.version>
-		<jersey.version>2.25</jersey.version>
-		<arquillian-glassfish.version>1.0.0.Final</arquillian-glassfish.version>
-
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
-	</properties>
 
 	<prerequisites>
 		<maven>${maven.min.version}</maven>
@@ -52,7 +30,7 @@
 			<dependency>
 				<groupId>org.jboss.arquillian.extension</groupId>
 				<artifactId>arquillian-drone-bom</artifactId>
-				<version>2.0.1.Final</version>
+				<version>${arquillian-drone-bom.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -75,7 +53,7 @@
 		<dependency>
 			<groupId>org.jboss.arquillian.graphene</groupId>
 			<artifactId>graphene-webdriver</artifactId>
-			<version>2.1.0.Final</version>
+			<version>${graphene-webdriver.version}</version>
 			<type>pom</type>
 			<scope>test</scope>
 		</dependency>
@@ -101,43 +79,43 @@
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>4.5</version>
+			<version>${httpclient.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
+			<version>${commons-io.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.2.14</version>
+			<version>${com.sun.faces.jsf.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>2.2.14</version>
+			<version>${com.sun.faces.jsf.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>
+			<version>${jstl.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
+			<version>${javax.servlet-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>jsp-api</artifactId>
-			<version>2.2</version>
+			<version>${jsp-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>taglibs</groupId>
 			<artifactId>standard</artifactId>
-			<version>1.1.2</version>
+			<version>${taglibs.standard.version}</version>
 		</dependency>
 
 		<dependency>
@@ -148,7 +126,7 @@
 		<dependency>
 			<groupId>org.glassfish.ozark</groupId>
 			<artifactId>ozark</artifactId>
-			<version>20160715</version>
+			<version>${ozark.version}</version>
 		</dependency>
 
 		<dependency>
@@ -184,7 +162,6 @@
 	</build>
 
 	<profiles>
-
 		<profile>
 			<id>wildfly-managed-arquillian</id>
 			<activation>
@@ -226,12 +203,13 @@
 					<scope>test</scope>
 				</dependency>
 			</dependencies>
+			
 			<build>
 				<pluginManagement>
 					<plugins>
 						<plugin>
 							<artifactId>maven-dependency-plugin</artifactId>
-							<version>2.8</version>
+							<version>${maven-dependency-plugin.version}</version>
 							<configuration>
 								<skip>${maven.test.skip}</skip>
 							</configuration>
@@ -259,7 +237,7 @@
 						</plugin>
 						<plugin>
 							<artifactId>maven-surefire-plugin</artifactId>
-							<version>2.17</version>
+							<version>${maven-surefire-plugin.version}</version>
 							<configuration>
 								<environmentVariables>
 									<JBOSS_HOME>${project.build.directory}/wildfly-${wildfly.version}</JBOSS_HOME>
@@ -402,7 +380,6 @@
 				<browser>chrome</browser>
 			</properties>
 		</profile>
-
 		<profile>
 			<id>webdriver-firefox</id>
 			<properties>
@@ -424,4 +401,35 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	
+	<properties>
+		<java.min.version>1.8</java.min.version>
+		<maven.min.version>3.0.0</maven.min.version>
+		<javaee_api.version>7.0</javaee_api.version>
+		<arquillian_core.version>1.1.11.Final</arquillian_core.version>
+		<wildfly.version>8.2.1.Final</wildfly.version>
+		<awaitility.version>1.7.0</awaitility.version>
+		<undertow-websockets-jsr.version>1.4.6.Final</undertow-websockets-jsr.version>
+		<resteasy.version>3.0.19.Final</resteasy.version>
+		<glassfish-embedded-all.version>4.1.1</glassfish-embedded-all.version>
+		<javax.json.version>1.0.4</javax.json.version>
+		<tyrus.version>1.13</tyrus.version>
+		<jersey.version>2.25</jersey.version>
+		<arquillian-glassfish.version>1.0.0.Final</arquillian-glassfish.version>
+		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
+		<maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
+		<taglibs.standard.version>1.1.2</taglibs.standard.version>
+		<commons-io.version>2.4</commons-io.version>
+		<com.sun.faces.jsf.version>2.2.14</com.sun.faces.jsf.version>
+		<httpclient.version>4.5</httpclient.version>
+		<arquillian-drone-bom.version>2.0.1.Final</arquillian-drone-bom.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<graphene-webdriver.version>2.1.0.Final</graphene-webdriver.version>
+		<maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
+		<jstl.version>1.2</jstl.version>
+		<jsp-api.version>2.2</jsp-api.version>
+		<ozark.version>20160715</ozark.version>
+	</properties>
+	
 </project>
