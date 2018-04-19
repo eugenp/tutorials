@@ -27,8 +27,7 @@
 			</p:selectOneRadio>
 		</h:panelGrid>
 
-		<p:dataTable var="technology"
-			value="#{helloPFBean.technologies}">
+		<p:dataTable var="technology" value="#{helloPFBean.technologies}">
 			<p:column headerText="Name">
 				<h:outputText value="#{technology.name}" />
 			</p:column>
@@ -45,7 +44,13 @@
 					listener="#{helloPFBean.onBlurEvent}" />
 			</p:inputText>
 			<h:outputText id="outputTextId" value="#{helloPFBean.outputText}" />
+			<p:commandButton value="Open Dialog" icon="ui-icon-note" onclick="PF('exDialog').show();">
+			</p:commandButton>
 		</h:panelGrid>
+
+		<p:dialog header="Example dialog" widgetVar="exDialog" minHeight="40">
+			<h:outputText value="Hello Baeldung!" />
+		</p:dialog>
 
 	</h:form>
 
