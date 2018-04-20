@@ -5,13 +5,16 @@
 	<artifactId>spring-swagger-codegen</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	
 	<parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+	
 	<modules>
 		<module>spring-swagger-codegen-api-client</module>
 		<module>spring-swagger-codegen-app</module>
 	</modules>
+	
 </project>

@@ -154,22 +154,18 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
-
 	     <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
-
         <org.springframework.security.version>4.2.1.RELEASE</org.springframework.security.version>
         <org.springframework.data.version>1.10.6.RELEASE</org.springframework.data.version>
-
 
         <!-- persistence -->
         <hibernate.version>5.2.10.Final</hibernate.version>
         <hibernatesearch.version>5.8.2.Final</hibernatesearch.version>
-	<mysql-connector-java.version>8.0.7-dmr</mysql-connector-java.version>
+		<mysql-connector-java.version>8.0.7-dmr</mysql-connector-java.version>
         <tomcat-dbcp.version>9.0.0.M26</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
         <h2.version>1.4.195</h2.version>
-
 
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
@@ -183,14 +179,11 @@
         <guava.version>21.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
 
-
         <!-- testing -->
         <org.hamcrest.version>1.3</org.hamcrest.version>
         <junit.version>4.12</junit.version>
-
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>
-
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- maven plugins -->
