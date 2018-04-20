@@ -13,10 +13,13 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
 
 import java.time.Duration;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class Server {
     public static void main(String[] args) {
+        new ScheduledThreadPoolExecutor(1).schedule(() -> new Client().connect(), 30, TimeUnit.SECONDS);
         SpringApplication.run(Server.class, args);
     }
 
