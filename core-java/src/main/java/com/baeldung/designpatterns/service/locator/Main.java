@@ -6,7 +6,13 @@ package com.baeldung.designpatterns.service.locator;
 public class Main {
 
     public static void main(String[] args) {
+
         MessagingService service = ServiceLocator.getService("EmailService");
-        service.getMessageBody();
+        String email = service.getMessageBody();
+        System.out.println(email);
+
+        service = ServiceLocator.getService("SMSService");
+        String sms = service.getMessageBody();
+        System.out.println(sms);
     }
 }
