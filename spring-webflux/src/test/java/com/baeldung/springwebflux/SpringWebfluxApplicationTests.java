@@ -1,4 +1,4 @@
-package com.baeldung.springwebflux;
+/*package com.baeldung.springwebflux;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,3 +14,4 @@ public class SpringWebfluxApplicationTests {
 	}
 
 }
+*/
