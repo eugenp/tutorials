@@ -31,7 +31,7 @@ public class Server {
             );
         }
 
-        static Flux<ServerSentEvent<Message>> messages() {
+        private static Flux<ServerSentEvent<Message>> messages() {
             return Flux.interval(Duration.ofSeconds(1)).
                     map(id -> ServerSentEvent.<Message>builder()
                             .event("message")
