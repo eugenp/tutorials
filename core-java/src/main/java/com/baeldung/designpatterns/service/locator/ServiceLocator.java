@@ -4,6 +4,7 @@ package com.baeldung.designpatterns.service.locator;
  * Created by Gebruiker on 4/20/2018.
  */
 public class ServiceLocator {
+
     private static Cache cache;
 
     static {
