@@ -1,4 +1,4 @@
-package com.baeldung.reactive.filter;
+package com.baeldung.reactive.filters;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
