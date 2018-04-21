@@ -36,7 +36,7 @@ public class TweetController {
 
     @Bean
     public RouterFunction<ServerResponse> createTweetRoute(TweetController controller) {
-        return route(GET("/tweets/{id}"), controller::getTweetById).and(route(POST("/tweets/addTweet"), controller::addTweet));
+        return route(GET("/tweet/{id}"), controller::getTweetById).and(route(POST("/tweet"), controller::addTweet));
     }
 
     private Mono<ServerResponse> getTweetById(ServerRequest request) {

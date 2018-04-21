@@ -1,8 +1,6 @@
 package com.baeldung.server;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.springframework.http.HttpStatus.NOT_FOUND;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.HttpStatus.UNPROCESSABLE_ENTITY;
 import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD;
@@ -26,7 +24,7 @@ public class TweetControllerTests {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void whenCallingDefaultTweet_thenTweetWithDefaultTextReturns() throws Exception {
+    public void getTweetById_whenDefaultTweetId_thenReturnsDefaultTweet() {
         ResponseEntity<Tweet> response = getTweetById("1");
         assertEquals(OK, response.getStatusCode());
         assertEquals("default tweet", response.getBody()
@@ -34,9 +32,9 @@ public class TweetControllerTests {
     }
 
     @Test
-    public void whenSendingValidTweet_thenValidationSuccess() throws Exception {
+    public void addTweet_whenSendingValidTweet_thenReturnsSuccess() {
         Tweet tweet = Tweet.createTweet("2", "My first sample tweet");
-        ResponseEntity<Void> addTweetResponse = restTemplate.postForEntity("/tweets/addTweet", tweet, Void.class);
+        ResponseEntity<Void> addTweetResponse = restTemplate.postForEntity("/tweet", tweet, Void.class);
         assertEquals(OK, addTweetResponse.getStatusCode());
 
         ResponseEntity<Tweet> getTweetResponse = getTweetById("2");
@@ -48,32 +46,23 @@ public class TweetControllerTests {
     }
 
     @Test
-    public void whenSendingTweetWithBlankId_thenValidationFails() throws Exception {
+    public void addTweet_whenSendingBlankId_thenReturnsError() {
         Tweet tweet = Tweet.createTweet("", "testTweet");
         assertUnProcessedEntity(tweet);
-        ResponseEntity<Tweet> getTweetResponse = getTweetById("");
-        assertEquals(NOT_FOUND, getTweetResponse.getStatusCode());
     }
 
     @Test
-    public void whenSendingTweetWithBlankText_thenValidationFails() throws Exception {
+    public void addTweet_whenSendingBlankText_thenReturnsError() {
         Tweet tweet = Tweet.createTweet("3", "");
         assertUnProcessedEntity(tweet);
-
-        ResponseEntity<Tweet> getTweetResponse = getTweetById("3");
-        assertEquals(OK, getTweetResponse.getStatusCode());
-        assertNotEquals("3", getTweetResponse.getBody()
-            .getId());
-        assertNotEquals("", getTweetResponse.getBody()
-            .getText());
     }
 
-    private ResponseEntity<Tweet> getTweetById(String tweetId) throws Exception {
-        return restTemplate.getForEntity("/tweets/" + tweetId, Tweet.class);
+    private ResponseEntity<Tweet> getTweetById(String tweetId) {
+        return restTemplate.getForEntity("/tweet/" + tweetId, Tweet.class);
     }
 
     private void assertUnProcessedEntity(Tweet tweet) {
-        ResponseEntity<Void> addTweetResponse = restTemplate.postForEntity("/tweets/addTweet", tweet, Void.class);
+        ResponseEntity<Void> addTweetResponse = restTemplate.postForEntity("/tweet", tweet, Void.class);
         assertEquals(UNPROCESSABLE_ENTITY, addTweetResponse.getStatusCode());
     }
 }
