@@ -16,6 +16,13 @@ public class FindElementInAList<T> {
         return null;
     }
 
+    public T findUsingContains(T element, List<T> list) {
+        if (list.contains(element)) {
+            return element;
+        }
+        return null;
+    }
+
     public boolean findUsingListIterator(T element, List<T> list) {
         ListIterator<T> listIterator = list.listIterator();
         while (listIterator.hasNext()) {
