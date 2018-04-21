@@ -7,7 +7,6 @@ import org.junit.BeforeClass;
 
 public class TextFileUnitTest {
     
-    
     private static TextFile textFile;
     
     @BeforeClass

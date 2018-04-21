@@ -12,7 +12,6 @@ import org.junit.BeforeClass;
 
 public class TextFileOperationExecutorUnitTest {
     
-    
     private static TextFileOperationExecutor textFileOperationExecutor;
     
     @BeforeClass

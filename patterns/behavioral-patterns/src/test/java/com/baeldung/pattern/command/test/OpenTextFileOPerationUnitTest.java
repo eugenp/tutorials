@@ -8,7 +8,6 @@ import static org.assertj.core.api.Assertions.*;
 
 public class OpenTextFileOPerationUnitTest {
     
-    
     @Test
     public void givenOpenTextFileOperationIntance_whenCalledExecuteMethod_thenOneAssertion() {
         TextFileOperation openTextFileOperation = new OpenTextFileOperation(new TextFile("file1.txt"));
