@@ -11,7 +11,7 @@ public class SetterInjectionTest {
 
     @Test
     public void givenXMLConfiguration_WhenSetterArgPassed_ThenDependencyValid() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("typesofdi-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("beaninjectiontypes-context.xml");
         User user = (User) context.getBean("userWithSI");
 
         String expectedOutput = "User Address : Washington D.C., USA";

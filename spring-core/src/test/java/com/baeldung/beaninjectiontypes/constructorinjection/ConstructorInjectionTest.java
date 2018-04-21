@@ -11,7 +11,7 @@ public class ConstructorInjectionTest {
 
     @Test
     public void givenXMLConfiguration_WhenConstructorArgPassed_ThenDependencyValid() {
-        ApplicationContext context = new ClassPathXmlApplicationContext("typesofdi-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("beaninjectiontypes-context.xml");
         User user = (User) context.getBean("userWithCI");
 
         String expectedOutput = "User Address: California, USA";
