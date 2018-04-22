@@ -17,7 +17,7 @@ public class FluxUnitTest {
     @Test
     public void whenFluxIsConstructed_thenCorrect() {
         final Flux<Foo> flux = Flux.<Foo> create(fluxSink -> {
-            while (true) {
+            for (int i = 0 ; i < 100 ; i++) {
                 fluxSink.next(new Foo(new Random().nextLong(), randomAlphabetic(6)));
             }
         }).sample(Duration.ofSeconds(1)).log();
