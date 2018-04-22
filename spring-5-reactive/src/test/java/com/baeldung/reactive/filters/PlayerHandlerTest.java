@@ -1,4 +1,4 @@
-package com.baeldung.reactive.controller;
+package com.baeldung.reactive.filters;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,14 +12,14 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class UserControllerTest {
+public class PlayerHandlerTest {
 
     @Autowired
     private WebTestClient webTestClient;
 
     @Test
-    public void whenUserNameIsBaeldung_thenWebFilterIsApplied() {
-        EntityExchangeResult<String> result = webTestClient.get().uri("/users/baeldung")
+    public void whenPlayerNameIsBaeldung_thenWebFilterIsApplied() {
+        EntityExchangeResult<String> result = webTestClient.get().uri("/players/baeldung")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(String.class)
@@ -30,9 +30,10 @@ public class UserControllerTest {
     }
 
     @Test
-    public void whenUserNameIsTest_thenHandlerFilterFunctionIsNotApplied() {
-        webTestClient.get().uri("/users/test")
+    public void whenPlayerNameIsTest_thenHandlerFilterFunctionIsApplied() {
+        webTestClient.get().uri("/players/test")
                 .exchange()
-                .expectStatus().isOk();
+                .expectStatus().isForbidden();
     }
+
 }
