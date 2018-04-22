@@ -177,6 +177,7 @@
 					<excludes>
 						<exclude>**/*IntegrationTest.java</exclude>
 						<exclude>**/*LiveTest.java</exclude>
+						<exclude>**/*TweetControllerTest.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
