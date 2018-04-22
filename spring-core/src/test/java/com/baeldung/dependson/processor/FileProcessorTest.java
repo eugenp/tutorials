@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -34,8 +35,8 @@ public class FileProcessorTest {
         context.getBean("dummyFileProcessor");
     }
     
-    @Test(expected=NoSuchBeanDefinitionException.class)
-    public void whenCircularDependency_ThrowsNoSuchBeanDefinitionException(){
+    @Test(expected=BeanCreationException.class)
+    public void whenCircularDependency_ThrowsBeanCreationException(){
         context.getBean("dummyFileReaderCircular");
     }
 }
