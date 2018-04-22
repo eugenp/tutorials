@@ -8,18 +8,12 @@ public class MultiVitamin {
     private int calcium;    // in mg
     private int iron;       // in mg
 
-    public MultiVitamin() {}
-
     public MultiVitamin(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getVitaminA() {

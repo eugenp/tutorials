@@ -15,15 +15,15 @@ public class MultiVitaminOverloading {
     }
 
     public MultiVitaminOverloading(String name, int vitaminA) {
-        this(name, 0, 0);
+        this(name, vitaminA, 0);
     }
 
     public MultiVitaminOverloading(String name, int vitaminA, int vitaminC) {
-        this(name, 0, 0, 0);
+        this(name, vitaminA, vitaminC, 0);
     }
 
     public MultiVitaminOverloading(String name, int vitaminA, int vitaminC, int calcium) {
-        this(name, 0, 0, 0, DEFAULT_IRON_AMOUNT);
+        this(name, vitaminA, vitaminC, calcium, DEFAULT_IRON_AMOUNT);
     }
 
     public MultiVitaminOverloading(String name, int vitaminA, int vitaminC, int calcium, int iron) {

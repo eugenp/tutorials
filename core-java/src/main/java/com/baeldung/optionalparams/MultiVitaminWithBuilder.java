@@ -20,16 +20,13 @@ public class MultiVitaminWithBuilder {
         return name;
     }
 
-
     public int getVitaminA() {
         return vitaminA;
     }
 
-
     public int getVitaminC() {
         return vitaminC;
     }
-
 
     public int getCalcium() {
         return calcium;
@@ -78,4 +75,5 @@ public class MultiVitaminWithBuilder {
             return new MultiVitaminWithBuilder(this);
         }
     }
+
 }
