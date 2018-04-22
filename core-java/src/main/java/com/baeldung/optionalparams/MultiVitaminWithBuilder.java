@@ -32,7 +32,6 @@ public class MultiVitaminWithBuilder {
         return calcium;
     }
 
-
     public int getIron() {
         return iron;
     }
@@ -75,5 +74,4 @@ public class MultiVitaminWithBuilder {
             return new MultiVitaminWithBuilder(this);
         }
     }
-
 }
