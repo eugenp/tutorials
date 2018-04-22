@@ -22,8 +22,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Stream;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by adam.
@@ -40,29 +39,27 @@ public class UserRepositoryIntegrationTest {
     @Autowired private UserRepository userRepository;
 
     @Test
-    public void shouldReturnEmptyOptionalWhenSearchByNameInEmptyDB() {
+    public void givenEmptyDBWhenFindOneByNameThenReturnEmptyOptional() {
         Optional<User> foundUser = userRepository.findOneByName(USER_NAME_ADAM);
 
-        assertThat(foundUser.isPresent(), equalTo(false));
+        assertThat(foundUser.isPresent()).isEqualTo(false);
     }
 
     @Test
-    public void shouldReturnOptionalWithPresentUserWhenExistsWithGivenName() {
+    public void givenUserInDBWhenFindOneByNameThenReturnOptionalWithUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         userRepository.save(user);
 
         Optional<User> foundUser = userRepository.findOneByName(USER_NAME_ADAM);
 
-        assertThat(foundUser.isPresent(), equalTo(true));
-        assertThat(foundUser
-          .get()
-          .getName(), equalTo(USER_NAME_ADAM));
+        assertThat(foundUser.isPresent()).isEqualTo(true);
+        assertThat(foundUser.get().getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
     @Transactional
-    public void shouldReturnStreamOfUsersWithNameWhenExistWithSameGivenName() {
+    public void givenUsersWithSameNameInDBWhenFindAllByNameThenReturnStreamOfUsers() {
         User user1 = new User();
         user1.setName(USER_NAME_ADAM);
         userRepository.save(user1);
@@ -80,12 +77,12 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(user4);
 
         try (Stream<User> foundUsersStream = userRepository.findAllByName(USER_NAME_ADAM)) {
-            assertThat(foundUsersStream.count(), equalTo(3l));
+            assertThat(foundUsersStream.count()).isEqualTo(3l);
         }
     }
 
     @Test
-    public void shouldReturnUserWithGivenStatusAsync() throws ExecutionException, InterruptedException {
+    public void givenUserInDBWhenFindOneByStatusAsyncThenReturnCompletableFutureUser() throws ExecutionException, InterruptedException {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -93,14 +90,11 @@ public class UserRepositoryIntegrationTest {
 
         CompletableFuture<User> userByStatus = userRepository.findOneByStatus(ACTIVE_STATUS);
 
-        assertThat(userByStatus
-          .get()
-          .getName(), equalTo(USER_NAME_ADAM));
-
+        assertThat(userByStatus.get().getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnAllActiveUsersWhenUsingQueryAnnotation() {
+    public void givenUsersInDBWhenFindAllWithQueryAnnotationThenReturnCollectionWithActiveUsers() {
         User user1 = new User();
         user1.setName(USER_NAME_ADAM);
         user1.setStatus(ACTIVE_STATUS);
@@ -118,11 +112,11 @@ public class UserRepositoryIntegrationTest {
 
         Collection<User> allActiveUsers = userRepository.findAllActiveUsers();
 
-        assertThat(allActiveUsers.size(), equalTo(2));
+        assertThat(allActiveUsers.size()).isEqualTo(2);
     }
 
     @Test
-    public void shouldReturnAllActiveUsersUsingWhenUsingQueryAnnotationNative() {
+    public void givenUsersInDBWhenFindAllWithQueryAnnotationNativeThenReturnCollectionWithActiveUsers() {
         User user1 = new User();
         user1.setName(USER_NAME_ADAM);
         user1.setStatus(ACTIVE_STATUS);
@@ -140,11 +134,11 @@ public class UserRepositoryIntegrationTest {
 
         Collection<User> allActiveUsers = userRepository.findAllActiveUsersNative();
 
-        assertThat(allActiveUsers.size(), equalTo(2));
+        assertThat(allActiveUsers.size()).isEqualTo(2);
     }
 
     @Test
-    public void shouldReturnOneUserWithStatusWhenUsingQueryAnnotation() {
+    public void givenUserInDBWhenFindUserByStatusWithQueryAnnotationThenReturnActiveUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -152,11 +146,11 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByStatus(ACTIVE_STATUS);
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnOneUserWithStatusWhenUsingQueryAnnotationNative() {
+    public void givenUserInDBWhenFindUserByStatusWithQueryAnnotationNativeThenReturnActiveUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -164,11 +158,11 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByStatusNative(ACTIVE_STATUS);
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnOneUserWithStatusAndNameWhenUsingQueryAnnotation() {
+    public void givenUsersInDBWhenFindUserByStatusAndNameWithQueryAnnotationIndexedParamsThenReturnOneUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -181,11 +175,11 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByStatusAndName(ACTIVE_STATUS, USER_NAME_ADAM);
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnOneUserWithStatusAndNameWhenUsingQueryAnnotationNamedParam() {
+    public void givenUsersInDBWhenFindUserByStatusAndNameWithQueryAnnotationNamedParamsThenReturnOneUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -198,11 +192,11 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByStatusAndNameNamedParams(ACTIVE_STATUS, USER_NAME_ADAM);
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnOneUserWithStatusAndNameWhenUsingQueryAnnotationNamedParamNative() {
+    public void givenUsersInDBWhenFindUserByStatusAndNameWithQueryAnnotationNativeNamedParamsThenReturnOneUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -215,11 +209,11 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByStatusAndNameNamedParamsNative(ACTIVE_STATUS, USER_NAME_ADAM);
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnOneUserWithUserStatusAndUserNameWhenUsingQueryAnnotation() {
+    public void givenUsersInDBWhenFindUserByStatusAndNameWithQueryAnnotationNamedParamsCustomNamesThenReturnOneUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -232,11 +226,11 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByUserStatusAndUserName(ACTIVE_STATUS, USER_NAME_ADAM);
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnUserWithNameLikeWhenUsingQueryAnnotation() {
+    public void givenUsersInDBWhenFindUserByNameLikeWithQueryAnnotationIndexedParamsThenReturnUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -244,11 +238,11 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByNameLike("Ad");
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnUserWithNameLikeWhenUsingQueryAnnotationNamedParam() {
+    public void givenUsersInDBWhenFindUserByNameLikeWithQueryAnnotationNamedParamsThenReturnUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -256,11 +250,11 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByNameLikeNamedParam("Ad");
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldReturnUserWithNameLikeWhenUsingQueryAnnotationNative() {
+    public void givenUsersInDBWhenFindUserByNameLikeWithQueryAnnotationNativeThenReturnUser() {
         User user = new User();
         user.setName(USER_NAME_ADAM);
         user.setStatus(ACTIVE_STATUS);
@@ -268,24 +262,22 @@ public class UserRepositoryIntegrationTest {
 
         User userByStatus = userRepository.findUserByNameLikeNative("Ad");
 
-        assertThat(userByStatus.getName(), equalTo(USER_NAME_ADAM));
+        assertThat(userByStatus.getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldFindAllUsersSortByNameAsc() {
+    public void givenUsersInDBWhenFindAllWithSortByNameThenReturnUsersSorted() {
         userRepository.save(new User(USER_NAME_ADAM, ACTIVE_STATUS));
         userRepository.save(new User(USER_NAME_PETER, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", INACTIVE_STATUS));
 
         List<User> usersSortByName = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
 
-        assertThat(usersSortByName
-          .get(0)
-          .getName(), equalTo(USER_NAME_ADAM));
+        assertThat(usersSortByName.get(0).getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test(expected = PropertyReferenceException.class)
-    public void shouldThrownExceptionWhenSortWithFunctionJPQL() {
+    public void givenUsersInDBWhenFindAllSortWithFunctionThenThrowException() {
         userRepository.save(new User(USER_NAME_ADAM, ACTIVE_STATUS));
         userRepository.save(new User(USER_NAME_PETER, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", INACTIVE_STATUS));
@@ -294,13 +286,11 @@ public class UserRepositoryIntegrationTest {
 
         List<User> usersSortByNameLength = userRepository.findAll(new Sort("LENGTH(name)"));
 
-        assertThat(usersSortByNameLength
-          .get(0)
-          .getName(), equalTo(USER_NAME_ADAM));
+        assertThat(usersSortByNameLength.get(0).getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldAllowToSortWithFunctionForQueryAnnotationNative() {
+    public void givenUsersInDBWhenFindAllSortWithFunctionQueryAnnotationJPQLThenReturnUsersSorted() {
         userRepository.save(new User(USER_NAME_ADAM, ACTIVE_STATUS));
         userRepository.save(new User(USER_NAME_PETER, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", INACTIVE_STATUS));
@@ -309,13 +299,11 @@ public class UserRepositoryIntegrationTest {
 
         List<User> usersSortByNameLength = userRepository.findAllUsers(JpaSort.unsafe("LENGTH(name)"));
 
-        assertThat(usersSortByNameLength
-          .get(0)
-          .getName(), equalTo(USER_NAME_ADAM));
+        assertThat(usersSortByNameLength.get(0).getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
-    public void shouldAllowPaginationQueryAnnotationJPQL() {
+    public void givenUsersInDBWhenFindAllWithPageRequestQueryAnnotationJPQLThenReturnPageOfUsers() {
         userRepository.save(new User(USER_NAME_ADAM, ACTIVE_STATUS));
         userRepository.save(new User(USER_NAME_PETER, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", INACTIVE_STATUS));
@@ -325,14 +313,11 @@ public class UserRepositoryIntegrationTest {
 
         Page<User> usersPage = userRepository.findAllUsersWithPagination(new PageRequest(1, 3));
 
-        assertThat(usersPage
-          .getContent()
-          .get(0)
-          .getName(), equalTo("SAMPLE1"));
+        assertThat(usersPage.getContent().get(0).getName()).isEqualTo("SAMPLE1");
     }
 
     @Test
-    public void shouldAllowToSortWithMethodForQueryAnnotationNativeSQL() {
+    public void givenUsersInDBWhenFindAllWithPageRequestQueryAnnotationNativeThenReturnPageOfUsers() {
         userRepository.save(new User(USER_NAME_ADAM, ACTIVE_STATUS));
         userRepository.save(new User(USER_NAME_PETER, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", INACTIVE_STATUS));
@@ -342,15 +327,12 @@ public class UserRepositoryIntegrationTest {
 
         Page<User> usersSortByNameLength = userRepository.findAllUsersWithPaginationNative(new PageRequest(1, 3));
 
-        assertThat(usersSortByNameLength
-          .getContent()
-          .get(0)
-          .getName(), equalTo("SAMPLE1"));
+        assertThat(usersSortByNameLength.getContent().get(0).getName()).isEqualTo("SAMPLE1");
     }
 
     @Test
     @Transactional
-    public void shouldUpdateUserStatusForNameWhenUsingModifyingAnnotation() {
+    public void givenUsersInDBWhenUpdateStatusForNameModifyingQueryAnnotationJPQLThenModifyMatchingUsers() {
         userRepository.save(new User("SAMPLE", ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE1", ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", ACTIVE_STATUS));
@@ -358,12 +340,12 @@ public class UserRepositoryIntegrationTest {
 
         int updatedUsersSize = userRepository.updateUserSetStatusForName(INACTIVE_STATUS, "SAMPLE");
 
-        assertThat(updatedUsersSize, equalTo(2));
+        assertThat(updatedUsersSize).isEqualTo(2);
     }
 
     @Test
     @Transactional
-    public void shouldUpdateUserStatusForNameWhenUsingModifyingAnnotationNative() {
+    public void givenUsersInDBWhenUpdateStatusForNameModifyingQueryAnnotationNativeThenModifyMatchingUsers() {
         userRepository.save(new User("SAMPLE", ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE1", ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", ACTIVE_STATUS));
@@ -372,7 +354,7 @@ public class UserRepositoryIntegrationTest {
 
         int updatedUsersSize = userRepository.updateUserSetStatusForNameNative(INACTIVE_STATUS, "SAMPLE");
 
-        assertThat(updatedUsersSize, equalTo(2));
+        assertThat(updatedUsersSize).isEqualTo(2);
     }
 
     @After
