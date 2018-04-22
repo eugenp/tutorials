@@ -5,11 +5,11 @@ package com.baeldung.designpatterns.service.locator;
  */
 public class InitialContext {
 
-    public Object lookup(String jndiName) {
+    public Object lookup(String serviceName) {
 
-        if (jndiName.equalsIgnoreCase("EmailService")) {
+        if (serviceName.equalsIgnoreCase("EmailService")) {
             return new EmailService();
-        } else if (jndiName.equalsIgnoreCase("SMSService")) {
+        } else if (serviceName.equalsIgnoreCase("SMSService")) {
             return new SMSService();
         }
         return null;
