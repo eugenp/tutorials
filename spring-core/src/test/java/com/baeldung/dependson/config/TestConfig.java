@@ -14,7 +14,7 @@ import com.baeldung.dependson.shared.File;
 
 @Configuration
 @ComponentScan("com.baeldung.dependson")
-public class Config {
+public class TestConfig {
     
     @Autowired
     File file;
@@ -34,5 +34,26 @@ public class Config {
     @Bean("fileWriter")
     public FileWriter fileWriter(){
         return new FileWriter(file);
+    }
+    
+    @Bean("dummyFileProcessor")
+    @DependsOn({"dummyfileWriter"})
+    @Lazy
+    public FileProcessor dummyFileProcessor(){
+        return new FileProcessor(file);
+    }
+    
+    @Bean("dummyFileProcessorCircular")
+    @DependsOn({"dummyFileReaderCircular"})
+    @Lazy
+    public FileProcessor dummyFileProcessorCircular(){
+        return new FileProcessor(file);
+    }
+    
+    @Bean("dummyFileReaderCircular")
+    @DependsOn({"dummyFileProcessorCircular"})
+    @Lazy
+    public FileReader dummyFileReaderCircular(){
+        return new FileReader(file);
     }
 }

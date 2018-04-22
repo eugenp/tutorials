@@ -10,11 +10,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.baeldung.dependson.config.Config;
+import com.baeldung.dependson.config.TestConfig;
 import com.baeldung.dependson.shared.File;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = Config.class)
+@ContextConfiguration(classes = TestConfig.class)
 public class FileProcessorTest {
 
     @Autowired
