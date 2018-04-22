@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.BeanCreationException;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -29,13 +29,13 @@ public class FileProcessorTest {
         assertTrue(file.getText().endsWith("processed"));
     }
 
-    @Test(expected=BeanCreationException.class)
-    public void whenDependentBeanNotAvailable_ThrowsBeanCreationException(){
+    @Test(expected=NoSuchBeanDefinitionException.class)
+    public void whenDependentBeanNotAvailable_ThrowsNoSuchBeanDefinitionException(){
         context.getBean("dummyFileProcessor");
     }
     
-    @Test(expected=BeanCreationException.class)
-    public void whenCircularDependency_ThrowsBeanCreationException(){
+    @Test(expected=NoSuchBeanDefinitionException.class)
+    public void whenCircularDependency_ThrowsNoSuchBeanDefinitionException(){
         context.getBean("dummyFileReaderCircular");
     }
 }
