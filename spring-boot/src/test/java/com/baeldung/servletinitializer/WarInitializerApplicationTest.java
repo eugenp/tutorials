@@ -24,9 +24,9 @@ public class WarInitializerApplicationTest {
     @Test
     public void whenContextRootUrlIsAccessed_thenStatusIsOk() throws Exception {
         mockMvc.perform(get("/"))
-        .andExpect(status().is(200));
+            .andExpect(status().is(200));
     }
-    
+
     @Test
     public void whenContextRootUrlIsAccesed_thenCorrectStringIsReturned() throws Exception {
         mockMvc.perform(get("/"))

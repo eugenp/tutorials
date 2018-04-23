@@ -1,8 +1,5 @@
 package com.baeldung.servletinitializer;
 
-
-
-
 import java.time.LocalDateTime;
 
 import org.springframework.boot.SpringApplication;
@@ -17,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class WarInitializerApplication extends SpringBootServletInitializer {
 
     @Override
-    protected SpringApplicationBuilder configure (SpringApplicationBuilder builder) {
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
         return builder.sources(WarInitializerApplication.class);
     }
-    
-    public static void main (String[] args) {
+
+    public static void main(String[] args) {
         SpringApplication sa = new SpringApplication(WarInitializerApplication.class);
         sa.setLogStartupInfo(false);
         sa.run(args);
@@ -31,9 +28,8 @@ public class WarInitializerApplication extends SpringBootServletInitializer {
     public static class WarInitializerController {
 
         @RequestMapping("/")
-        public String handler (Model model) {
-            model.addAttribute("date",
-                               LocalDateTime.now());
+        public String handler(Model model) {
+            model.addAttribute("date", LocalDateTime.now());
             return "WarInitializerApplication is up and running!";
         }
     }
