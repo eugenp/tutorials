@@ -3,7 +3,7 @@ package com.baeldung.parameterpassing;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PrimitivesIntegrationTest {
+public class PrimitivesUnitTest {
     @Test
     public void whenModifyingPrimitives_thenOriginalValuesNotModified() {
         
@@ -14,9 +14,15 @@ public class PrimitivesIntegrationTest {
         Assert.assertEquals(x, 1);
         Assert.assertEquals(y, 2);
         
-        Primitives.modify(x, y);
+        modify(x, y);
         
+        // After Modification
         Assert.assertEquals(x, 1);
         Assert.assertEquals(y, 2);
+    }
+    
+    public static void modify(int x1, int y1) {
+        x1 = 5;
+        y1 = 10;
     }
 }
