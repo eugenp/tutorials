@@ -20,7 +20,7 @@ public class Customer {
 
     @Override
     public int hashCode() {
-        return id * 20 + name.hashCode();
+        return id * 20;
     }
 
     @Override
@@ -32,5 +32,6 @@ public class Customer {
         }
         return false;
     }
+
 
 }
