@@ -151,4 +151,4 @@
 - [An Advanced Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging-advanced)
 - [Handling Daylight Savings Time in Java](http://www.baeldung.com/java-daylight-savings)
 - [Inheritance and Composition (Is-a vs Has-a relationship) in Java](http://www.baeldung.com/java-inheritance-composition)
-
+- [Display All Time Zones With GMT And UTC in Java](http://www.baeldung.com/java-time-zones)
