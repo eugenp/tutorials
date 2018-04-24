@@ -16,7 +16,7 @@ import com.baeldung.Spring5Application;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Spring5Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class TweetControllerTest {
+public class TweetControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
