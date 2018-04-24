@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Baeldung: Spring 5 Reactive Webflux - real time event streaming</title>
+	
+	<style type="text/css">
+		tr:nth-child(even) {background: lightgray}
+		tr:nth-child(odd) {background: white}
+		th {background: gray; text-align: left;}
+	</style>
+
+</head>
+
+<body>
+	<h1>Events streamed...</h1>
+
+	<table id="events-table" >
+		<thead>
+			<tr>
+				<th>Event Id</th>
+				<th>Event Body</th>
+			</tr>
+		</thead>
+		
+	</table>
+	
+<script>
+    var eventSource = new EventSource("/events");
+    
+    eventSource.onmessage = function (event) {
+        var data = JSON.parse(event.data);
+        var table = document.getElementById("events-table");
+        var row = table.insertRow(1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+
+        
+        cell1.innerHTML = '<td>' + data.id + '</td>';
+        cell2.innerHTML = '<td>' + data.body + '</td>';
+    }
+</script>
+	
+</body>
+</html>
