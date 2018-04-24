@@ -14,5 +14,9 @@ public class Main {
         service = ServiceLocator.getService("SMSService");
         String sms = service.getMessageBody();
         System.out.println(sms);
+
+        service = ServiceLocator.getService("EmailService");
+        String newEmail = service.getMessageBody();
+        System.out.println(newEmail);
     }
 }
