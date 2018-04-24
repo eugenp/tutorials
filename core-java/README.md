@@ -151,4 +151,5 @@
 - [An Advanced Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging-advanced)
 - [Handling Daylight Savings Time in Java](http://www.baeldung.com/java-daylight-savings)
 - [Inheritance and Composition (Is-a vs Has-a relationship) in Java](http://www.baeldung.com/java-inheritance-composition)
+- [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
 
