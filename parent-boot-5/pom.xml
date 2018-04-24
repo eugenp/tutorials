@@ -113,7 +113,7 @@
         <java.version>1.8</java.version>
         <rest-assured.version>3.0.6</rest-assured.version>        
         <!-- plugins -->
-        <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>      
+        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>      
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>  
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
