@@ -22,7 +22,7 @@ public class TweetControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void getTweetById_whenDefaultTweetId_thenReturnsDefaultTweet() {
+    public void givenTweetId_whenGet_thenSuccess() {
         ResponseEntity<Tweet> response = getTweetById("1");
         assertEquals(OK, response.getStatusCode());
         assertEquals("default tweet", response.getBody()
@@ -30,7 +30,7 @@ public class TweetControllerTest {
     }
 
     @Test
-    public void addTweet_whenSendingValidTweet_thenReturnsSuccess() {
+    public void givenValidTweet_whenPost_thenSuccess() {
         Tweet tweet = Tweet.createTweet("2", "My first sample tweet");
         ResponseEntity<Void> addTweetResponse = restTemplate.postForEntity("/tweet", tweet, Void.class);
         assertEquals(OK, addTweetResponse.getStatusCode());
@@ -44,13 +44,13 @@ public class TweetControllerTest {
     }
 
     @Test
-    public void addTweet_whenSendingBlankId_thenReturnsError() {
+    public void givenTweetWithBlankId_whenPost_thenError() {
         Tweet tweet = Tweet.createTweet("", "testTweet");
         assertUnProcessedEntity(tweet);
     }
 
     @Test
-    public void addTweet_whenSendingBlankText_thenReturnsError() {
+    public void givenTweetWithBlankText_whenPost_thenError() {
         Tweet tweet = Tweet.createTweet("3", "");
         assertUnProcessedEntity(tweet);
     }
