@@ -86,7 +86,7 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<properties>
 		<mockito.version>1.10.19</mockito.version>
 		<mockito.spring.boot.version>1.4.4.RELEASE</mockito.spring.boot.version>

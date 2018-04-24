@@ -30,5 +30,5 @@
 		<commons-config.version>1.10</commons-config.version>
 		<rxjava.version>1.2.10</rxjava.version>
 	</properties>
-	
+
 </project>

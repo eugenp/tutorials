@@ -5,7 +5,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>lucene</name>
 	<description>An Apache Lucene demo application</description>
-	
+
 	<parent>
 		<groupId>com.baeldung</groupId>
 		<artifactId>parent-modules</artifactId>
@@ -31,16 +31,16 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
+
 	<properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- lombok: https://projectlombok.org/changelog.html -->
-        <lombok.version>1.16.18</lombok.version>
-        <!-- various -->
-        <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
-        <!-- delombok maven plugin -->
-        <delombok-maven-plugin.version>1.16.10.0</delombok-maven-plugin.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- lombok: https://projectlombok.org/changelog.html -->
+		<lombok.version>1.16.18</lombok.version>
+		<!-- various -->
+		<hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
+		<!-- delombok maven plugin -->
+		<delombok-maven-plugin.version>1.16.10.0</delombok-maven-plugin.version>
 		<lucene.version>7.1.0</lucene.version>
-    </properties>
-	
+	</properties>
+
 </project>

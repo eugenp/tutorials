@@ -9,10 +9,10 @@
 	<url>http://maven.apache.org</url>
 
 	<parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-modules</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
 
 	<dependencyManagement>
 		<dependencies>
@@ -63,5 +63,5 @@
 		<main.class>com.baeldung.bootique.App</main.class>
 		<bootique-bom.version>0.23</bootique-bom.version>
 	</properties>
-	
+
 </project>

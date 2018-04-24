@@ -28,21 +28,21 @@
 			<scope>runtime</scope>
 		</dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
-            <plugin>
-                <groupId>org.apache.cayenne.plugins</groupId>
-                <artifactId>cayenne-modeler-maven-plugin</artifactId>
-                <version>${cayenne.version}</version>
-            </plugin>
+			<plugin>
+				<groupId>org.apache.cayenne.plugins</groupId>
+				<artifactId>cayenne-modeler-maven-plugin</artifactId>
+				<version>${cayenne.version}</version>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -54,5 +54,5 @@
 		<cayenne.version>4.0.M5</cayenne.version>
 		<junit.version>4.12</junit.version>
 	</properties>
-	
+
 </project>
