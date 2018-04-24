@@ -12,9 +12,9 @@ import reactor.core.publisher.Flux;
 public class EventStreamController {
 
     @GetMapping(value = "/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Event> getMessages() {
+    public Flux<Event> getEvents() {
         return Flux.interval(Duration.ofMillis(1000))
-            .map(tick -> new Event(tick, "This is Message #" + tick));
+            .map(tick -> new Event(tick, "This is Event #" + tick));
     }
 
 }

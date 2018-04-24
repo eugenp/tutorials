@@ -32,12 +32,12 @@
         var data = JSON.parse(event.data);
         var table = document.getElementById("events-table");
         var row = table.insertRow(1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
+        var cellId = row.insertCell(0);
+        var cellBody = row.insertCell(1);
 
         
-        cell1.innerHTML = '<td>' + data.id + '</td>';
-        cell2.innerHTML = '<td>' + data.body + '</td>';
+        cellId.innerHTML = '<td>' + data.id + '</td>';
+        cellBody.innerHTML = '<td>' + data.body + '</td>';
     }
 </script>
 	
