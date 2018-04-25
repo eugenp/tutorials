@@ -1,3 +1,7 @@
+/**
+  This class invokes the configuration factory with static initialization,
+  as defined in section 4.1 of the "Programmatic Configuration with Log4j 2"
+**/
 package com.baeldung.log4j2.logtest;
 
 import org.apache.logging.log4j.LogManager;

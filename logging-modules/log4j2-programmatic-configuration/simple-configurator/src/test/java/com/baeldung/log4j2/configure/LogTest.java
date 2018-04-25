@@ -1,3 +1,8 @@
+/**
+  This class demonstrates how to use ConfigurationBuilderFactory directly, 
+  as described in Section 3 of "Programmatic Configuration with Log4j 2"
+**/
+
 package com.baeldung.log4j2.configure;
 
 import org.apache.logging.log4j.Level;

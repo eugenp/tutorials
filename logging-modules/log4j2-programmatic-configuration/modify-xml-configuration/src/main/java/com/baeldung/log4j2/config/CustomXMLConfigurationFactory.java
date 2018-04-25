@@ -1,3 +1,8 @@
+/**
+  This class demonstrates on modifying the loaded xml configuration by
+  extending XMLConfigurationFactory as defined in section 4.4 of 
+  "Programmatic Configuration with Log4j 2"
+**/
 package com.baeldung.log4j2.config;
 
 import org.apache.logging.log4j.core.LoggerContext;

@@ -1,3 +1,7 @@
+/**
+  This class demonstrates on overriding the configuration loaded through xml
+  as defined in section 4.4 of "Programmatic Configuration with Log4j 2"
+**/
 package com.baeldung.log4j2.config;
 
 import org.apache.logging.log4j.Level;

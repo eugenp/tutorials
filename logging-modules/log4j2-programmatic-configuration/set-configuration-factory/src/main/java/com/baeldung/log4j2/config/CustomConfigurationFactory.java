@@ -1,3 +1,8 @@
+/**
+  This class demonstrates how to build the components of 
+  the configuration factory, as described in Section 3 of 
+  "Programmatic Configuration with Log4j 2"
+**/
 package com.baeldung.log4j2.config;
 
 import java.io.IOException;
