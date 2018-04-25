@@ -22,3 +22,4 @@
 - [Java 9 Variable Handles Demistyfied](http://www.baeldung.com/java-variable-handles)
 - [Exploring the New HTTP Client in Java 9](http://www.baeldung.com/java-9-http-client)
 - [Method Handles in Java](http://www.baeldung.com/java-method-handles)
+- [Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
