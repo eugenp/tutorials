@@ -23,3 +23,4 @@
 - [A Guide To NIO2 File Attribute APIs](http://www.baeldung.com/java-nio2-file-attribute)
 - [Introduction to the Java NIO2 File API](http://www.baeldung.com/java-nio-2-file-api)
 - [Zipping and Unzipping in Java](http://www.baeldung.com/java-compress-and-uncompress)
+- [A Guide to WatchService in Java NIO2](http://www.baeldung.com/java-nio2-watchservice)
