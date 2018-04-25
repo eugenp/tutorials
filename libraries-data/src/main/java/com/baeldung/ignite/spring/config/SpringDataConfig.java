@@ -19,14 +19,9 @@ public class SpringDataConfig {
     @Bean
     public Ignite igniteInstance() {
         IgniteConfiguration config = new IgniteConfiguration();
-        // Setting some custom name for the node.
-        //config.setIgniteInstanceName("springDataNode");
-        // Enabling peer-class loading feature.
-        //config.setPeerClassLoadingEnabled(true);
-        // Defining and creating a new cache to be used by Ignite Spring Data
-        // repository.
+        
         CacheConfiguration cache = new CacheConfiguration("baeldungCache");
-        // Setting SQL schema for the cache.
+        
         cache.setIndexedTypes(Integer.class, EmployeeDTO.class);
         config.setCacheConfiguration(cache);
         return Ignition.start(config);
