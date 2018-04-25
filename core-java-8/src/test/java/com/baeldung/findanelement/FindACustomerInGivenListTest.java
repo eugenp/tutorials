@@ -67,7 +67,7 @@ public class FindACustomerInGivenListTest {
 
     @Test
     public void givenName_whenCustomerWithNameFoundUsingListIterator_thenReturnCustomer() {
-        Customer james = findACustomerInGivenList.findUsingListIterator("James", customers);
+        Customer james = findACustomerInGivenList.findUsingIterator("James", customers);
 
         assertEquals("James", james.getName());
         assertEquals(2, james.getId());
@@ -75,7 +75,7 @@ public class FindACustomerInGivenListTest {
 
     @Test
     public void givenName_whenCustomerWithNameNotFoundUsingListIterator_thenReturnNull() {
-        Customer john = findACustomerInGivenList.findUsingListIterator("John", customers);
+        Customer john = findACustomerInGivenList.findUsingIterator("John", customers);
 
         assertNull(john);
     }

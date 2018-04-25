@@ -1,7 +1,7 @@
 package com.baeldung.findanelement;
 
+import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.apache.commons.collections4.IterableUtils;
 
@@ -24,10 +24,10 @@ public class FindACustomerInGivenList {
         return customers.contains(customer);
     }
 
-    public Customer findUsingListIterator(String name, List<Customer> customers) {
-        ListIterator<Customer> listIterator = customers.listIterator();
-        while (listIterator.hasNext()) {
-            Customer customer = listIterator.next();
+    public Customer findUsingIterator(String name, List<Customer> customers) {
+        Iterator<Customer> iterator = customers.iterator();
+        while (iterator.hasNext()) {
+            Customer customer = iterator.next();
             if (customer.getName().equals(name)) {
                 return customer;
             }
