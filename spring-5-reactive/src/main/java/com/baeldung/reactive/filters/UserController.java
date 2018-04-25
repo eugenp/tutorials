@@ -1,4 +1,4 @@
-package com.baeldung.reactive.controller;
+package com.baeldung.reactive.filters;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
