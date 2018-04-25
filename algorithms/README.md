@@ -20,3 +20,4 @@
 - [A Maze Solver in Java](http://www.baeldung.com/java-solve-maze)
 - [Create a Sudoku Solver in Java](http://www.baeldung.com/java-sudoku)
 - [Displaying Money Amounts in Words](http://www.baeldung.com/java-money-into-words)
+- [A Collaborative Filtering Recommendation System in Java](http://www.baeldung.com/java-collaborative-filtering-recommendations)
