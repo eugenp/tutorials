@@ -28,9 +28,9 @@ JNIEXPORT jobject JNICALL Java_com_baeldung_jni_ExampleObjectsJNI_createUser
 /*
  * Class:     com_baeldung_jni_ExampleObjectsJNI
  * Method:    printUserData
- * Signature: (Lcom/baeldung/jni/UserData;)V
+ * Signature: (Lcom/baeldung/jni/UserData;)Ljava/lang/String;
  */
-JNIEXPORT void JNICALL Java_com_baeldung_jni_ExampleObjectsJNI_printUserData
+JNIEXPORT jstring JNICALL Java_com_baeldung_jni_ExampleObjectsJNI_printUserData
   (JNIEnv *env, jobject thisObject, jobject userData){
   	
   	// Find the class method id
@@ -42,5 +42,7 @@ JNIEXPORT void JNICALL Java_com_baeldung_jni_ExampleObjectsJNI_printUserData
 	
     // Print the result
     std::cout << "C++: User data is: " << env->GetStringUTFChars(result, NULL) << std::endl;
+    
+    return result;
   }
 

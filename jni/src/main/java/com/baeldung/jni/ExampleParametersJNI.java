@@ -13,8 +13,8 @@ public class ExampleParametersJNI {
     }
     
     // Declare another method sumIntegers that receives two integers and return a long with the sum
-    private native long sumIntegers(int first, int second);
+    public native long sumIntegers(int first, int second);
     
     // Declare another method sayHelloToMe that receives the name and gender and returns the proper salutation
-    private native String sayHelloToMe(String name, boolean isFemale);
+    public native String sayHelloToMe(String name, boolean isFemale);
 }

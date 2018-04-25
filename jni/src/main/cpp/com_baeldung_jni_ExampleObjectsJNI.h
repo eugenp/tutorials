@@ -20,7 +20,7 @@ JNIEXPORT jobject JNICALL Java_com_baeldung_jni_ExampleObjectsJNI_createUser
  * Method:    printUserData
  * Signature: (Lcom/baeldung/jni/UserData;)V
  */
-JNIEXPORT void JNICALL Java_com_baeldung_jni_ExampleObjectsJNI_printUserData
+JNIEXPORT jstring JNICALL Java_com_baeldung_jni_ExampleObjectsJNI_printUserData
   (JNIEnv *, jobject, jobject);
 
 #ifdef __cplusplus

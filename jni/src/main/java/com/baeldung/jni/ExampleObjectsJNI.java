@@ -14,6 +14,6 @@ public class ExampleObjectsJNI {
     
     public native UserData createUser(String name, double balance);
     
-    public native void printUserData(UserData user);
+    public native String printUserData(UserData user);
 
 }
