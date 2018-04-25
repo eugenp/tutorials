@@ -18,11 +18,11 @@ public class LogTest {
     @Test
     public void simpleProgrammaticConfiguration() {
         ConfigurationBuilder<BuiltConfiguration> builder = ConfigurationBuilderFactory.newConfigurationBuilder();
-        AppenderComponentBuilder appenderBuilder = builder.newAppender("Stdout", "CONSOLE")
+        AppenderComponentBuilder console = builder.newAppender("Stdout", "CONSOLE")
             .addAttribute("target", ConsoleAppender.Target.SYSTEM_OUT);
-        appenderBuilder.add(builder.newLayout("PatternLayout")
+        console.add(builder.newLayout("PatternLayout")
             .addAttribute("pattern", "%d [%t] %-5level: %msg%n%throwable"));
-        builder.add(appenderBuilder);
+        builder.add(console);
         builder.add(builder.newLogger("com", Level.DEBUG)
             .add(builder.newAppenderRef("Stdout"))
             .addAttribute("additivity", false));

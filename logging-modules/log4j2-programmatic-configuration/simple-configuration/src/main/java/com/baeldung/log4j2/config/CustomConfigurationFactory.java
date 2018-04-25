@@ -33,8 +33,7 @@ public class CustomConfigurationFactory extends ConfigurationFactory {
         filter.addAttribute("marker", "FLOW");
         console.add(filter);
         builder.add(console);
-
-        ComponentBuilder triggeringPolicy = builder.newComponent("Policies")
+        ComponentBuilder triggeringPolicies = builder.newComponent("Policies")
             .addComponent(builder.newComponent("CronTriggeringPolicy")
                 .addAttribute("schedule", "0 0 0 * * ?"))
             .addComponent(builder.newComponent("SizeBasedTriggeringPolicy")
@@ -43,18 +42,8 @@ public class CustomConfigurationFactory extends ConfigurationFactory {
         rollingFile.addAttribute("fileName", "target/rolling.log");
         rollingFile.addAttribute("filePattern", "target/archive/rolling-%d{MM-dd-yy}.log.gz");
         rollingFile.add(layout);
-        rollingFile.addComponent(triggeringPolicy);
+        rollingFile.addComponent(triggeringPolicies);
         builder.add(rollingFile);
-
-        /*AppenderComponentBuilder syslog = builder.newAppender("syslogAppender", "Syslog");
-        syslog.addAttribute("protocol", "TCP");
-        syslog.addAttribute("host", "localhost");
-        syslog.addAttribute("port", 5201);
-        syslog.addAttribute("facility", "LOCAL");
-        syslog.addAttribute("immediateFlush", true);
-        syslog.addAttribute("newLine", true);
-        builder.add(syslog);*/
-
         AppenderComponentBuilder file = builder.newAppender("FileSystem", "File");
         file.addAttribute("fileName", "target/logging.log");
         file.add(layout);
@@ -62,14 +51,13 @@ public class CustomConfigurationFactory extends ConfigurationFactory {
         LoggerComponentBuilder logger = builder.newLogger("com", Level.DEBUG);
         logger.add(builder.newAppenderRef("Stdout"));
         logger.add(builder.newAppenderRef("rolling"));
-       // logger.add(builder.newAppenderRef("syslogAppender"));
         logger.add(builder.newAppenderRef("FileSystem"));
         logger.addAttribute("additivity", false);
         builder.add(logger);
         RootLoggerComponentBuilder rootLogger = builder.newRootLogger(Level.ERROR);
         rootLogger.add(builder.newAppenderRef("Stdout"));
         rootLogger.add(builder.newAppenderRef("rolling"));
-        //rootLogger.add(builder.newAppenderRef("syslogAppender"));
+        // rootLogger.add(builder.newAppenderRef("syslogAppender"));
         rootLogger.add(builder.newAppenderRef("FileSystem"));
         rootLogger.addAttribute("additivity", false);
         builder.add(rootLogger);

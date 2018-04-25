@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.junit.Test;
 
-
 public class LogTest {
     @Test
     public void simpleProgrammaticConfiguration() {

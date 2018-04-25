@@ -17,6 +17,7 @@ public class LogTest {
         CustomConfigurationFactory customConfigurationFactory = new CustomConfigurationFactory();
         ConfigurationFactory.setConfigurationFactory(customConfigurationFactory);
     }
+
     @Test
     public void simpleProgrammaticConfiguration() {
         Logger logger = LogManager.getLogger();
