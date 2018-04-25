@@ -12,10 +12,10 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.Spring5Application;
+import com.baeldung.SpringSecurity5Application;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Spring5Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = SpringSecurity5Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TweetControllerIntegrationTest {
 
     @Autowired
