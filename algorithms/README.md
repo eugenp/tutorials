@@ -17,3 +17,7 @@
 - [How to Calculate Levenshtein Distance in Java?](http://www.baeldung.com/java-levenshtein-distance)
 - [How to Find the Kth Largest Element in Java](http://www.baeldung.com/java-kth-largest-element)
 - [Multi-Swarm Optimization Algorithm in Java](http://www.baeldung.com/java-multi-swarm-algorithm)
+- [A Maze Solver in Java](http://www.baeldung.com/java-solve-maze)
+- [Create a Sudoku Solver in Java](http://www.baeldung.com/java-sudoku)
+- [Displaying Money Amounts in Words](http://www.baeldung.com/java-money-into-words)
+- [A Collaborative Filtering Recommendation System in Java](http://www.baeldung.com/java-collaborative-filtering-recommendations)
