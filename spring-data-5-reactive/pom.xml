@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
 	<name>Spring-5-data-reactive</name>
-    <description>Spring-5-data-reactive with Springboot 2.0.1</description>
+	<description>Spring-5-data-reactive with Springboot 2.0.1</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
