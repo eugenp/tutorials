@@ -72,6 +72,7 @@
 - [Introduction to OpenCSV](http://www.baeldung.com/opencsv)
 - [A Guide to Unirest](http://www.baeldung.com/unirest)
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
+- [A Guide to Byte Buddy](http://www.baeldung.com/byte-buddy)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
