@@ -1,43 +1,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.baeldung</groupId>
-	<artifactId>json</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.baeldung</groupId>
+    <artifactId>json</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.everit.json</groupId>
-			<artifactId>org.everit.json.schema</artifactId>
-			<version>${everit.json.schema.version}</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>${fastjson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>20171018</version>
-		</dependency>
-	</dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>org.everit.json</groupId>
+            <artifactId>org.everit.json.schema</artifactId>
+            <version>${everit.json.schema.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20171018</version>
+        </dependency>
+    </dependencies>
 
-	<properties>
-		<everit.json.schema.version>1.4.1</everit.json.schema.version>
-		<fastjson.version>1.2.21</fastjson.version>
-	</properties>
+    <properties>
+        <everit.json.schema.version>1.4.1</everit.json.schema.version>
+        <fastjson.version>1.2.21</fastjson.version>
+    </properties>
 
 </project>

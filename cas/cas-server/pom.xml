@@ -7,14 +7,14 @@
     <artifactId>cas-server</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
-	
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>${org.springframework.boot.spring-boot-starter-parent.version}</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
-	
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>${org.springframework.boot.spring-boot-starter-parent.version}</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>org.apereo.cas</groupId>
@@ -24,22 +24,22 @@
             <scope>runtime</scope>
         </dependency>
         <dependency>
-          <groupId>org.apereo.cas</groupId>
-          <artifactId>cas-server-support-json-service-registry</artifactId>
-          <version>${cas.version}</version>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-json-service-registry</artifactId>
+            <version>${cas.version}</version>
         </dependency>
         <dependency>
-          <groupId>org.apereo.cas</groupId>
-          <artifactId>cas-server-support-jdbc</artifactId>
-          <version>${cas.version}</version>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-jdbc</artifactId>
+            <version>${cas.version}</version>
         </dependency>
         <dependency>
-          <groupId>org.apereo.cas</groupId>
-          <artifactId>cas-server-support-jdbc-drivers</artifactId>
-          <version>${cas.version}</version>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-jdbc-drivers</artifactId>
+            <version>${cas.version}</version>
         </dependency>
     </dependencies>
-	
+
     <build>
         <plugins>
             <plugin>
@@ -93,8 +93,8 @@
         </plugins>
         <finalName>cas</finalName>
     </build>
-	
-	<profiles>
+
+    <profiles>
         <profile>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -161,15 +161,15 @@
         <cas.version>5.1.4</cas.version>
         <springboot.version>1.5.3.RELEASE</springboot.version>
         <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
-        <app.server>-tomcat</app.server> 
+        <app.server>-tomcat</app.server>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.springframework.boot.spring-boot-starter-parent.version>2.0.0.M7</org.springframework.boot.spring-boot-starter-parent.version>
-		<wrapper-maven-plugin.version>0.0.4</wrapper-maven-plugin.version>
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
-		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-		<pgpverify-maven-plugin.version>1.1.0</pgpverify-maven-plugin.version>
+        <org.springframework.boot.spring-boot-starter-parent.version>2.0.0.M7</org.springframework.boot.spring-boot-starter-parent.version>
+        <wrapper-maven-plugin.version>0.0.4</wrapper-maven-plugin.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <pgpverify-maven-plugin.version>1.1.0</pgpverify-maven-plugin.version>
     </properties>
-    
+
 </project>

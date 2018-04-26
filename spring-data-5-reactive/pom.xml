@@ -112,12 +112,12 @@
             </plugin>
         </plugins>
     </build>
-	
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <kotlin.version>1.2.20</kotlin.version>
-		<javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
+        <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
     </properties>
-	
+
 </project>

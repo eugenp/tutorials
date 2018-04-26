@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-thymeleaf</artifactId>
@@ -151,8 +151,8 @@
             </plugin>
         </plugins>
     </build>
-	
-	<properties>
+
+    <properties>
         <java-version>1.8</java-version>
         <!-- spring -->
         <org.springframework-version>4.3.4.RELEASE</org.springframework-version>
@@ -172,5 +172,5 @@
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
     </properties>
-	
+
 </project>

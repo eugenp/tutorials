@@ -12,10 +12,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-		<version>${spring-boot-starter-parent.version}</version>
+        <version>${spring-boot-starter-parent.version}</version>
         <relativePath/>
     </parent>
-	
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -55,7 +55,7 @@
             </snapshots>
         </repository>
     </repositories>
-	
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-milestones</id>
@@ -71,7 +71,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <thymeleaf-spring5.version>3.0.8.RELEASE</thymeleaf-spring5.version>
-		<spring-boot-starter-parent.version>2.0.0.M6</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>2.0.0.M6</spring-boot-starter-parent.version>
     </properties>
 
 </project>

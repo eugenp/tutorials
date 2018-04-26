@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-			<version>${httpcore.version}</version>
+            <version>${httpcore.version}</version>
         </dependency>
     </dependencies>
 
@@ -72,15 +72,15 @@
             </resource>
         </resources>
     </build>
-	
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <ratpack.version>1.4.6</ratpack.version>
-		<httpclient.version>4.5.3</httpclient.version>
-		<httpcore.version>4.4.6</httpcore.version>
-		<h2database.version>1.4.193</h2database.version>
+        <httpclient.version>4.5.3</httpclient.version>
+        <httpcore.version>4.4.6</httpcore.version>
+        <h2database.version>1.4.193</h2database.version>
     </properties>
 
 </project>

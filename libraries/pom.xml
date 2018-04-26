@@ -11,7 +11,7 @@
     </parent>
 
     <dependencies>
-       	<!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
+        <!-- https://mvnrepository.com/artifact/com.typesafe.akka/akka-actor -->
         <dependency>
             <groupId>com.typesafe.akka</groupId>
             <artifactId>akka-actor_2.12</artifactId>
@@ -24,7 +24,7 @@
             <version>${typesafe-akka.version}</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
         <dependency>
             <groupId>org.asynchttpclient</groupId>
@@ -674,7 +674,7 @@
             <artifactId>milyn-smooks-all</artifactId>
             <version>${smooks.version}</version>
         </dependency>
-                <dependency>
+        <dependency>
             <groupId>com.mashape.unirest</groupId>
             <artifactId>unirest-java</artifactId>
             <version>${unirest.version}</version>
@@ -693,7 +693,7 @@
             <version>${jctools.version}</version>
         </dependency>
     </dependencies>
-    
+
     <repositories>
         <repository>
             <id>maven2-repository.dev.java.net</id>
@@ -903,7 +903,7 @@
         <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <jctools.version>2.1.2</jctools.version>
-		<typesafe-akka.version>2.5.11</typesafe-akka.version>
+        <typesafe-akka.version>2.5.11</typesafe-akka.version>
     </properties>
-	
+
 </project>

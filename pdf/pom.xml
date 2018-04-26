@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>pdf</artifactId>
     <name>pdf</name>
@@ -12,7 +12,7 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
@@ -72,8 +72,8 @@
             </resource>
         </resources>
     </build>
-	
-	<properties>
+
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <pdfbox-tools.version>2.0.3</pdfbox-tools.version>
         <pdf2dom.version>1.6</pdf2dom.version>
@@ -83,5 +83,5 @@
         <batik-transcoder.version>1.8</batik-transcoder.version>
         <poi-ooxml.version>3.15</poi-ooxml.version>
     </properties>
-	
+
 </project>

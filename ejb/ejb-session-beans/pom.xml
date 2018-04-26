@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <artifactId>ejb-session-beans</artifactId>
-  
-	<parent>
-		<groupId>com.baeldung.ejb</groupId>
-		<artifactId>ejb</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>ejb-session-beans</artifactId>
+
+    <parent>
+        <groupId>com.baeldung.ejb</groupId>
+        <artifactId>ejb</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <dependencyManagement>
         <dependencies>
@@ -74,8 +74,8 @@
             </plugin>
         </plugins>
     </build>
-  
-	<properties>
+
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <arquillian-bom.version>1.1.12.Final</arquillian-bom.version>
         <shrinkwrap-resolver-impl-maven.version>2.2.6</shrinkwrap-resolver-impl-maven.version>
@@ -83,7 +83,7 @@
         <arquillian-glassfish-embedded-3.1.version>1.0.0.Final</arquillian-glassfish-embedded-3.1.version>
         <junit.version>4.12</junit.version>
         <javaee-api.version>7.0</javaee-api.version>
-		<arquillian-glassfish-embedded-3.1.version>1.0.0.CR4</arquillian-glassfish-embedded-3.1.version>
+        <arquillian-glassfish-embedded-3.1.version>1.0.0.CR4</arquillian-glassfish-embedded-3.1.version>
     </properties>
-  
+
 </project>

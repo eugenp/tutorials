@@ -7,13 +7,13 @@
     <version>1.0-SNAPSHOT</version>
     <name>checker-plugin</name>
     <url>http://maven.apache.org</url>
-	
-	<parent>
+
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-	
+
     <dependencies>
         <!-- Annotations from the Checker Framework: nullness, interning, locking, ... -->
         <dependency>
@@ -101,18 +101,18 @@
             </plugin>
         </plugins>
     </build>
-	
-	<properties>
+
+    <properties>
         <!-- These properties will be set by the Maven Dependency plugin -->
         <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
         <!-- Uncomment to use the Type Annotations compiler. -->
         <!--
         <typeAnnotationsJavac>${org.checkerframework:compiler:jar}</typeAnnotationsJavac>
         -->
-		<checker-qual.version>2.3.1</checker-qual.version>
-		<checker.version>2.3.1</checker.version>
-		<jdk8.version>2.3.1</jdk8.version>
-		<checkerframework.compiler.version>2.3.1</checkerframework.compiler.version>
+        <checker-qual.version>2.3.1</checker-qual.version>
+        <checker.version>2.3.1</checker.version>
+        <jdk8.version>2.3.1</jdk8.version>
+        <checkerframework.compiler.version>2.3.1</checkerframework.compiler.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>

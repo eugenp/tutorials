@@ -7,8 +7,8 @@
     <version>1.0-SNAPSHOT</version>
     <name>jmh</name>
     <url>http://maven.apache.org</url>
-	
-	<parent>
+
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
@@ -53,12 +53,12 @@
             </plugin>
         </plugins>
     </build>
-	
-	<properties>
+
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <guava.version>21.0</guava.version>
-		<openjdk.jmh.version>1.19</openjdk.jmh.version>
+        <openjdk.jmh.version>1.19</openjdk.jmh.version>
     </properties>
 
 </project>

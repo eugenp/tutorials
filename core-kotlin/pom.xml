@@ -128,7 +128,7 @@
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                </configuration>                
+                </configuration>
                 <executions>
                     <!-- Replacing default-compile as it is treated specially 
                         by maven -->
@@ -195,14 +195,14 @@
         <kotlinx.version>0.15</kotlinx.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
         <kodein.version>4.1.0</kodein.version>
-		<khttp.version>0.1.0</khttp.version>
+        <khttp.version>0.1.0</khttp.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <junit.jupiter.version>5.0.0</junit.jupiter.version>
         <junit.platform.version>1.0.0</junit.platform.version>
         <junit.vintage.version>4.12.0</junit.vintage.version>
         <junit4.version>4.12</junit4.version>
         <assertj.version>3.9.1</assertj.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 

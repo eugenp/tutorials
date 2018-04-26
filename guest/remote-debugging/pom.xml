@@ -34,11 +34,11 @@
             </plugin>
         </plugins>
     </build>
-	
-	<properties>
+
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<spring-boot-starter-parent.version>1.5.8.RELEASE</spring-boot-starter-parent.version>
+        <spring-boot-starter-parent.version>1.5.8.RELEASE</spring-boot-starter-parent.version>
     </properties>
 
 </project>
