@@ -10,6 +10,7 @@
 		<artifactId>parent-modules</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
+	
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -21,4 +22,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	
 </project>
