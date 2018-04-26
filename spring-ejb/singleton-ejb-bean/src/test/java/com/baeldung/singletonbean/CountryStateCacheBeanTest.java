@@ -3,6 +3,8 @@ package com.baeldung.singletonbean;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import javax.ejb.embeddable.EJBContainer;
@@ -24,7 +26,7 @@ public class CountryStateCacheBeanTest {
         ejbContainer = EJBContainer.createEJBContainer();
         context = ejbContainer.getContext();
     }
-
+    
     @Test
     public void whenCallGetStatesFromContainerManagedBean_ReturnsStatesForCountry() throws Exception {
 
@@ -35,7 +37,7 @@ public class CountryStateCacheBeanTest {
         assertNotNull(actualStates);
         assertArrayEquals(expectedStates, actualStates.toArray());
     }
-
+    
     @Test
     public void whenCallGetStatesFromBeanManagedBean_ReturnsStatesForCountry() throws Exception {
 
@@ -46,7 +48,33 @@ public class CountryStateCacheBeanTest {
         assertNotNull(actualStates);
         assertArrayEquals(expectedStates, actualStates.toArray());
     }
-
+    
+    @Test
+    public void whenCallSetStatesFromContainerManagedBean_SetsStatesForCountry() throws Exception {
+        
+        String[] expectedStates = { "California", "Florida", "Hawaii", "Pennsylvania", "Michigan" };
+        
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateContainerManagedBean");
+        countryStateBean.setStates("UnitedStates", Arrays.asList(expectedStates));
+        
+        List<String> actualStates = countryStateBean.getStates("UnitedStates");
+        assertNotNull(actualStates);
+        assertArrayEquals(expectedStates, actualStates.toArray());
+    }
+    
+    @Test
+    public void whenCallSetStatesFromBeanManagedBean_SetsStatesForCountry() throws Exception {
+        
+        String[] expectedStates = { "California", "Florida", "Hawaii", "Pennsylvania", "Michigan" };
+        
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateBeanManagedBean");
+        countryStateBean.setStates("UnitedStates", Arrays.asList(expectedStates));
+        
+        List<String> actualStates = countryStateBean.getStates("UnitedStates");
+        assertNotNull(actualStates);
+        assertArrayEquals(expectedStates, actualStates.toArray());
+    }
+    
     @After
     public void close() {
         if (ejbContainer != null)

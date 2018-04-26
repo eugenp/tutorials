@@ -19,7 +19,7 @@ public class CountryStateBeanManagedBean implements CountryState {
     private final Map<String, List<String>> countryStatesMap = new HashMap<String, List<String>>();
 
     @PostConstruct
-    public synchronized void initialize() {
+    public void initialize() {
 
         List<String> states = new ArrayList<String>();
         states.add("Texas");
@@ -33,5 +33,9 @@ public class CountryStateBeanManagedBean implements CountryState {
 
     public List<String> getStates(String country) {
         return countryStatesMap.get(country);
+    }
+
+    public synchronized void setStates(String country, List<String> states) {
+        countryStatesMap.put(country, states);
     }
 }
