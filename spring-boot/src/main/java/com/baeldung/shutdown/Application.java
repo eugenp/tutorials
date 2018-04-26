@@ -34,12 +34,9 @@ public class Application {
 
         ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class).web(false).run();
 
-        int exitCode = SpringApplication.exit(ctx, new ExitCodeGenerator() {
-            @Override
-            public int getExitCode() {
-                // return the error code
-                return 0;
-            }
+        int exitCode = SpringApplication.exit(ctx, () -> {
+            // return the error code
+            return 0;
         });
 
         System.out.println("Exit Spring Boot");
