@@ -22,6 +22,7 @@
         <module>spring-cloud-consul</module>
         <module>spring-cloud-zuul-eureka-integration</module>
         <module>spring-cloud-contract</module>
+        <module>spring-cloud-kubernetes</module>
     </modules>
     <packaging>pom</packaging>
 
