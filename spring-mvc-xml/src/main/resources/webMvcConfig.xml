@@ -23,7 +23,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
     
-    <context:component-scan base-package="com.baeldung.spring.controller, com.baeldung.jstl.controllers"/>
+    <context:component-scan base-package="com.baeldung.spring.controller"/>
     
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"/>
