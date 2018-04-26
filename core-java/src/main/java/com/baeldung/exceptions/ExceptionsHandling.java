@@ -1,6 +1,6 @@
 package com.baeldung.exceptions;
 
-public class ExceptionsService {
+public class ExceptionsHandling {
     
     private static String VALUE_VALID = "valid value";
     private static String VALUE_NA = "NA";
