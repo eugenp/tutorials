@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>querydsl</artifactId>
@@ -13,7 +13,7 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>        
+        <relativePath>../../</relativePath>
     </parent>
 
     <dependencies>
@@ -145,8 +145,8 @@
             </plugin>
         </plugins>
     </build>
-	
-	<properties>
+
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <spring.version>4.3.4.RELEASE</spring.version>
@@ -158,5 +158,5 @@
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
     </properties>
-	
+
 </project>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-state-machine</artifactId>
-	
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
@@ -28,11 +28,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-	
-	<properties>
+
+    <properties>
         <spring-statemachine-core.version>1.2.3.RELEASE</spring-statemachine-core.version>
-		<spring-test.version>4.3.7.RELEASE</spring-test.version>
-		<jayway.awaitility.version>1.7.0</jayway.awaitility.version>
+        <spring-test.version>4.3.7.RELEASE</spring-test.version>
+        <jayway.awaitility.version>1.7.0</jayway.awaitility.version>
     </properties>
 
 </project>

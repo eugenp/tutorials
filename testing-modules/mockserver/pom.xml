@@ -6,12 +6,12 @@
     <groupId>com.baeldung</groupId>
     <artifactId>mockserver</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    
-	<parent>
+
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>        
+        <relativePath>../../</relativePath>
     </parent>
 
     <dependencies>
@@ -38,10 +38,10 @@
             <version>${apche-http-version}</version>
         </dependency>
     </dependencies>
-    
+
     <properties>
         <mock-sever-netty-version>3.10.8</mock-sever-netty-version>
         <apche-http-version>4.4.1</apche-http-version>
     </properties>
-    
+
 </project>

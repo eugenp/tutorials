@@ -1,12 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>core-java-9</artifactId>
     <version>0.2-SNAPSHOT</version>
     <name>core-java-9</name>
-	
-	<parent>
+
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
@@ -63,8 +63,8 @@
             </plugin>
         </plugins>
     </build>
-	
-	<pluginRepositories>
+
+    <pluginRepositories>
         <pluginRepository>
             <id>apache.snapshots</id>
             <url>http://repository.apache.org/snapshots/</url>
@@ -74,7 +74,7 @@
     <properties>
         <!-- project build encoding -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    
+
         <!-- logging -->
         <org.slf4j.version>1.7.21</org.slf4j.version>
         <ch.qos.logback.version>1.2.1</ch.qos.logback.version>
@@ -87,7 +87,7 @@
         <junit.version>4.12</junit.version>
         <mockito.version>1.10.19</mockito.version>
         <awaitility.version>1.7.0</awaitility.version>
-		<maven.compiler.source>1.9</maven.compiler.source>
+        <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
 

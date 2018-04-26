@@ -15,7 +15,7 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
-	
+
     <modules>
         <module>spring-cloud-config</module>
         <module>spring-cloud-eureka</module>

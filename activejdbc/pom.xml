@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>activejdbc</artifactId>
@@ -7,14 +7,14 @@
     <packaging>jar</packaging>
     <name>activejdbc</name>
     <url>http://maven.apache.org</url>
-    
-	<parent>
+
+    <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-	
-	<dependencies>
+
+    <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -43,7 +43,7 @@
             <version>${org.slf4j.version}</version>
         </dependency>
     </dependencies>
-	
+
     <build>
         <plugins>
             <plugin>
@@ -118,7 +118,7 @@
             </snapshots>
         </repository>
     </repositories>
-	
+
     <pluginRepositories>
         <pluginRepository>
             <id>snapshots2</id>
@@ -131,13 +131,13 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-	
-	<properties>
+
+    <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <activejdbc.version>1.4.13</activejdbc.version>
         <environments>development.test,development</environments>
-		<org.slf4j.version>1.7.9</org.slf4j.version>
-		<mysql.connector.version>5.1.34</mysql.connector.version>
+        <org.slf4j.version>1.7.9</org.slf4j.version>
+        <mysql.connector.version>5.1.34</mysql.connector.version>
     </properties>
-	
+
 </project>

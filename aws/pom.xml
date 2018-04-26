@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>aws</artifactId>
@@ -136,8 +136,8 @@
             <url>${dynamodblocal.repository.url}</url>
         </repository>
     </repositories>
-	
-	<properties>
+
+    <properties>
         <commons-io.version>2.5</commons-io.version>
         <aws-lambda-java-events.version>1.3.0</aws-lambda-java-events.version>
         <aws-lambda-java-core.version>1.1.0</aws-lambda-java-core.version>
@@ -150,8 +150,8 @@
         <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
         <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
-		<maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
-		<maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+        <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
+        <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
     </properties>
 
 </project>
