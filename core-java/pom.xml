@@ -209,7 +209,6 @@
 			<artifactId>spring-boot-starter</artifactId>
 			<version>${springframework.boot.spring-boot-starter.version}</version>
 		</dependency>
-        <dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
