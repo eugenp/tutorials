@@ -3,11 +3,9 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.baeldung</groupId>
     <artifactId>spring-cloud-stream</artifactId>
     <packaging>pom</packaging>
-
     <name>spring-cloud-stream</name>
 
     <parent>
@@ -20,11 +18,6 @@
         <module>spring-cloud-stream-rabbit</module>
     </modules>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -32,13 +25,11 @@
                 <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
                 <version>${spring-cloud-stream.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream</artifactId>
                 <version>${spring-cloud-stream.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream-test-support</artifactId>
@@ -47,4 +38,10 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+    </properties>
+
 </project>
