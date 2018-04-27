@@ -75,6 +75,7 @@
 - [A Guide to Apache Commons Collections CollectionUtils](http://www.baeldung.com/apache-commons-collection-utils)
 - [A Guide to Byte Buddy](http://www.baeldung.com/byte-buddy)
 - [Introduction to jOOL](http://www.baeldung.com/jool)
+- [Consumer Driven Contracts with Pact](http://www.baeldung.com/pact-junit-consumer-driven-contracts)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
