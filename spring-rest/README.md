@@ -17,3 +17,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Exploring the Spring Boot TestRestTemplate](http://www.baeldung.com/spring-boot-testresttemplate)
 - [Spring – Log Incoming Requests](http://www.baeldung.com/spring-http-logging)
 - [RequestBody and ResponseBody Annotations](http://www.baeldung.com/requestbody-and-responsebody-annotations)
+- [Introduction to CheckStyle](http://www.baeldung.com/checkstyle-java)
