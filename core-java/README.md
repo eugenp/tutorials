@@ -155,3 +155,4 @@
 - [The "final" Keyword in Java](http://www.baeldung.com/java-final)
 - [What is the serialVersionUID?](http://www.baeldung.com/java-serial-version-uid)
 - [A Guide To UDP In Java](http://www.baeldung.com/udp-in-java)
+- [A Guide to the Java LinkedList](http://www.baeldung.com/java-linkedlist)
