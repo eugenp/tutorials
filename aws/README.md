@@ -7,4 +7,5 @@
 - [http://www.baeldung.com/aws-s3-multipart-upload](https://github.com/eugenp/tutorials/tree/master/aws)
 - [Multipart Uploads in Amazon S3 with Java](http://www.baeldung.com/aws-s3-multipart-upload)
 - [Integration Testing with a Local DynamoDB Instance](http://www.baeldung.com/dynamodb-local-integration-tests)
+- [Using the JetS3t Java Client With Amazon S3](http://www.baeldung.com/jets3t-amazon-s3)
 
