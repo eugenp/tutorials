@@ -47,51 +47,46 @@ public class Web3Service {
         return "0x" + binary;
     }
 
-    @Async
     public CompletableFuture<EthBlockNumber> getBlockNumber() {
         EthBlockNumber result = new EthBlockNumber();
         try {
-            this.web3j.ethBlockNumber().sendAsync().thenApply(r -> r.getBlockNumber());
+            result = this.web3j.ethBlockNumber().sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
         return CompletableFuture.completedFuture(result);
     }
 
-    @Async
     public CompletableFuture<EthAccounts> getEthAccounts() {
         EthAccounts result = new EthAccounts();
         try {
-            this.web3j.ethAccounts().sendAsync().thenApply(r -> r.getAccounts());
+             result = this.web3j.ethAccounts().sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
         return CompletableFuture.completedFuture(result);
     }
 
-    @Async
     public CompletableFuture<EthGetTransactionCount> getTransactionCount() {
         EthGetTransactionCount result = new EthGetTransactionCount();
         try {
-            this.web3j.ethGetTransactionCount(DEFAULT_ADDRESS, DefaultBlockParameter.valueOf("latest")).sendAsync().thenApply(r -> r.getTransactionCount());
+             result = this.web3j.ethGetTransactionCount(DEFAULT_ADDRESS, DefaultBlockParameter.valueOf("latest")).sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
         return CompletableFuture.completedFuture(result);
     }
 
-    @Async
     public CompletableFuture<EthGetBalance> getEthBalance() {
         EthGetBalance result = new EthGetBalance();
         try {
-            this.web3j.ethGetBalance(DEFAULT_ADDRESS, DefaultBlockParameter.valueOf("latest")).sendAsync().thenApply(r -> r.getBalance());
+            result = this.web3j.ethGetBalance(DEFAULT_ADDRESS, DefaultBlockParameter.valueOf("latest")).sendAsync().get();
         } catch (Exception ex) {
             System.out.println(GENERIC_EXCEPTION);
         }
         return CompletableFuture.completedFuture(result);
     }
 
-    @Async
     public CompletableFuture<String> fromScratchContractExample() {
 
         String contractAddress = "";

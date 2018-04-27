@@ -8,7 +8,7 @@
     <version>1.0.0</version>
     <name>web3j</name>
 
-     <properties>
+    <properties>
         <hamcrest.version>1.3</hamcrest.version>
         <jackson.version>2.9.3</jackson.version>
         <javax-jsp.version>2.3.1</javax-jsp.version>
