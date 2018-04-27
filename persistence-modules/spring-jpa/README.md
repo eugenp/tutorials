@@ -18,6 +18,7 @@
 - [A Guide to Spring AbstractRoutingDatasource](http://www.baeldung.com/spring-abstract-routing-data-source)
 - [Advanced Tagging Implementation with JPA] (http://www.baeldung.com/jpa-tagging-advanced)
 - [A Guide to Hibernate with Spring 4](http://www.baeldung.com/the-persistence-layer-with-spring-and-jpa)
+- [Testing REST with multiple MIME types](http://www.baeldung.com/testing-rest-api-with-multiple-media-types)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
