@@ -141,7 +141,7 @@
 - [Comparing Strings in Java](http://www.baeldung.com/java-compare-strings)
 - [Guide to Inheritance in Java](http://www.baeldung.com/java-inheritance)
 - [Guide to Externalizable Interface in Java](http://www.baeldung.com/java-externalizable)
-- [The Observer Pattern in Java](https://github.com/eugenp/tutorials/tree/master/core-java)
+- [The Observer Pattern in Java](http://www.baeldung.com/java-observer-pattern)
 - [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
 - [Object Type Casting in Java](http://www.baeldung.com/java-type-casting)
 - [A Practical Guide to DecimalFormat](http://www.baeldung.com/java-decimalformat)
