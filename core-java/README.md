@@ -153,3 +153,4 @@
 - [Inheritance and Composition (Is-a vs Has-a relationship) in Java](http://www.baeldung.com/java-inheritance-composition)
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [The "final" Keyword in Java](http://www.baeldung.com/java-final)
+- [What is the serialVersionUID?](http://www.baeldung.com/java-serial-version-uid)
