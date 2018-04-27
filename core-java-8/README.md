@@ -44,3 +44,4 @@
 - [Java 8 StringJoiner](http://www.baeldung.com/java-string-joiner)
 - [Introduction to Spliterator in Java](http://www.baeldung.com/java-spliterator)
 - [Java 8 Math New Methods](http://www.baeldung.com/java-8-math)
+- [Overview of Java Built-in Annotations](http://www.baeldung.com/java-default-annotations)
