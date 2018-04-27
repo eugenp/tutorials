@@ -79,6 +79,7 @@
 - [Apache Commons BeanUtils](http://www.baeldung.com/apache-commons-beanutils)
 - [Apache Commons Collections BidiMap](http://www.baeldung.com/commons-collections-bidi-map)
 - [Introduction to Atlassian Fugue](http://www.baeldung.com/java-fugue)
+- [Publish and Receive Messages with Nats Java Client](http://www.baeldung.com/nats-java-client)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
