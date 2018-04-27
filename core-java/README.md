@@ -157,3 +157,4 @@
 - [A Guide To UDP In Java](http://www.baeldung.com/udp-in-java)
 - [A Guide to the Java LinkedList](http://www.baeldung.com/java-linkedlist)
 - [A Guide to Java Enums](http://www.baeldung.com/a-guide-to-java-enums)
+- [A Guide to the ResourceBundle](http://www.baeldung.com/java-resourcebundle)
