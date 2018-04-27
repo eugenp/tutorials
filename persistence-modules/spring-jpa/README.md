@@ -17,6 +17,7 @@
 - [Spring Data JPA – Adding a Method in All Repositories](http://www.baeldung.com/spring-data-jpa-method-in-all-repositories)
 - [A Guide to Spring AbstractRoutingDatasource](http://www.baeldung.com/spring-abstract-routing-data-source)
 - [Advanced Tagging Implementation with JPA] (http://www.baeldung.com/jpa-tagging-advanced)
+- [A Guide to Hibernate with Spring 4](http://www.baeldung.com/the-persistence-layer-with-spring-and-jpa)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  
