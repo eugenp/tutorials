@@ -17,4 +17,6 @@ public class MyBeanFactory implements BeanFactoryAware {
         this.beanFactory = beanFactory;
         System.out.println(beanFactory);
     }
+
+
 }
