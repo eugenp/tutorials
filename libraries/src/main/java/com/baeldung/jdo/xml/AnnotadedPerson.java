@@ -1,9 +1,7 @@
 package com.baeldung.jdo.xml;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.jdo.annotations.Element;
 import javax.jdo.annotations.PersistenceCapable;
@@ -12,10 +10,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 
-@PersistenceCapable(
-        schema="/myproduct/people",
-        table="person"
-        )
+@PersistenceCapable(schema = "/myproduct/people", table = "person")
 public class AnnotadedPerson {
     @XmlAttribute
     private long personNum;
@@ -24,11 +19,10 @@ public class AnnotadedPerson {
     private String firstName;
     private String lastName;
 
-    @XmlElementWrapper(name="phone-numbers")
-    @XmlElement(name="phone-number")
-    @Element(types=String.class)
+    @XmlElementWrapper(name = "phone-numbers")
+    @XmlElement(name = "phone-number")
+    @Element(types = String.class)
     private List phoneNumbers = new ArrayList();
-
 
     public AnnotadedPerson(long personNum, String firstName, String lastName) {
         super();

@@ -5,3 +5,4 @@
 - [The Guide to RestTemplate](http://www.baeldung.com/rest-template)
 - [Spring RequestMapping](http://www.baeldung.com/spring-requestmapping)
 - [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
+- [Spring and Apache FileUpload](http://www.baeldung.com/spring-apache-file-upload)

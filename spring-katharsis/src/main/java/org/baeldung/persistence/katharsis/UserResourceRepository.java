@@ -1,7 +1,7 @@
 package org.baeldung.persistence.katharsis;
 
-import io.katharsis.queryParams.RequestParams;
-import io.katharsis.repository.ResourceRepository;
+import io.katharsis.legacy.queryParams.QueryParams;
+import io.katharsis.legacy.repository.ResourceRepository;
 
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.User;
@@ -15,17 +15,17 @@ public class UserResourceRepository implements ResourceRepository<User, Long> {
     private UserRepository userRepository;
 
     @Override
-    public User findOne(Long id, RequestParams params) {
+    public User findOne(Long id, QueryParams params) {
         return userRepository.findOne(id);
     }
 
     @Override
-    public Iterable<User> findAll(RequestParams params) {
+    public Iterable<User> findAll(QueryParams params) {
         return userRepository.findAll();
     }
 
     @Override
-    public Iterable<User> findAll(Iterable<Long> ids, RequestParams params) {
+    public Iterable<User> findAll(Iterable<Long> ids, QueryParams params) {
         return userRepository.findAll(ids);
     }
 

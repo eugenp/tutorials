@@ -6,10 +6,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AnnotationMethodHandlerAdapterExample {
-	@RequestMapping("/annotedName")
-	public ModelAndView getEmployeeName() {
-		ModelAndView model = new ModelAndView("Greeting");
-		model.addObject("message", "Dinesh");
-		return model;
-	}
+    @RequestMapping("/annotedName")
+    public ModelAndView getEmployeeName() {
+        ModelAndView model = new ModelAndView("Greeting");
+        model.addObject("message", "Dinesh");
+        return model;
+    }
 }

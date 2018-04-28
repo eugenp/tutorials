@@ -16,11 +16,9 @@ public class JoolMergeStreamsTest {
         Stream<Integer> seq1 = Stream.of(1, 3, 5);
         Stream<Integer> seq2 = Stream.of(2, 4, 6);
 
-        Stream<Integer> resultingSeq = Seq.ofType(seq1, Integer.class)
-          .append(seq2);
+        Stream<Integer> resultingSeq = Seq.ofType(seq1, Integer.class).append(seq2);
 
-        assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6),
-          resultingSeq.collect(Collectors.toList()));
+        assertEquals(Arrays.asList(1, 3, 5, 2, 4, 6), resultingSeq.collect(Collectors.toList()));
     }
 
     @Test
@@ -29,11 +27,8 @@ public class JoolMergeStreamsTest {
         Stream<String> openingBracketSeq = Stream.of("[");
         Stream<String> closingBracketSeq = Stream.of("]");
 
-        Stream<String> resultingStream = Seq.ofType(seq, String.class)
-          .append(closingBracketSeq)
-          .prepend(openingBracketSeq);
+        Stream<String> resultingStream = Seq.ofType(seq, String.class).append(closingBracketSeq).prepend(openingBracketSeq);
 
-        Assert.assertEquals(Arrays.asList("[", "foo", "bar", "]"),
-          resultingStream.collect(Collectors.toList()));
+        Assert.assertEquals(Arrays.asList("[", "foo", "bar", "]"), resultingStream.collect(Collectors.toList()));
     }
 }
