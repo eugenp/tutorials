@@ -7,11 +7,11 @@
     <packaging>jar</packaging>
     <parent>
         <groupId>com.baeldung.patterns</groupId>
-	   <artifactId>patterns-parent</artifactId>
-	   <version>1.0.0-SNAPSHOT</version>
-	   <relativePath>..</relativePath>
-    </parent>	
-   
+        <artifactId>patterns-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>..</relativePath>
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -24,5 +24,5 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>	
+    </properties>
 </project>
