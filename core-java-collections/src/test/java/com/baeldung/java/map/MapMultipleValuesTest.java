@@ -53,9 +53,6 @@ public class MapMultipleValuesTest {
         assertThat(map.get("key1").get(0)).isEqualTo("value1");
         assertThat(map.get("key1").get(1)).isEqualTo("value2");
     }
-    
-    
-    
 
     @Test
     public void givenMultiValueMap_whenPuttingTwice_thenReturningValues() {
