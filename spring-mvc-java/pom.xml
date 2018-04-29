@@ -148,6 +148,13 @@
             <artifactId>javax.el</artifactId>
             <version>2.2.4</version>
         </dependency>
+
+        <!-- Web socket to user example -->
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
