@@ -27,5 +27,4 @@
 - [A Guide to HashSet in Java](http://www.baeldung.com/java-hashset)
 - [A Guide to TreeSet in Java](http://www.baeldung.com/java-tree-set)
 - [Java TreeMap vs HashMap](http://www.baeldung.com/java-treemap-vs-hashmap)
-- [How to TDD a List Implementation](http://jira.baeldung.com/browse/BAEL-1537)
 - [How to TDD a List Implementation in Java](http://www.baeldung.com/java-test-driven-list)
