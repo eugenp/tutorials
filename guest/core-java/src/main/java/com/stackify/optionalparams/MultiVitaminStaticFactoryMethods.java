@@ -1,4 +1,4 @@
-package com.baeldung.optionalparams;
+package com.stackify.optionalparams;
 
 public class MultiVitaminStaticFactoryMethods {
 
