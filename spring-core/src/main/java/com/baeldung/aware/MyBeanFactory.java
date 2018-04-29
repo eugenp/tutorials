@@ -13,10 +13,12 @@ public class MyBeanFactory implements BeanFactoryAware {
 
     @Override
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-
         this.beanFactory = beanFactory;
-        System.out.println(beanFactory);
     }
 
+    public void getMyBeanName() {
+        MyBeanName myBeanName = beanFactory.getBean(MyBeanName.class);
+        System.out.println(beanFactory.isSingleton("myCustomBeanName"));
+    }
 
 }
