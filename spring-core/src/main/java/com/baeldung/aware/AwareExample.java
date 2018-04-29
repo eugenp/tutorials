@@ -13,5 +13,8 @@ public class AwareExample {
                 = new AnnotationConfigApplicationContext(Config.class);
 
         MyBeanName myBeanName = context.getBean(MyBeanName.class);
+
+        MyBeanFactory myBeanFactory = context.getBean(MyBeanFactory.class);
+        myBeanFactory.getMyBeanName();
     }
 }

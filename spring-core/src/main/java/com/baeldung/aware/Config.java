@@ -10,4 +10,9 @@ public class Config {
     public MyBeanName getMyBeanName() {
         return new MyBeanName();
     }
+
+    @Bean
+    public MyBeanFactory getMyBeanFactory() {
+        return new MyBeanFactory();
+    }
 }
