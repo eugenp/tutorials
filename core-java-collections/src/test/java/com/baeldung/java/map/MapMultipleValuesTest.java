@@ -46,6 +46,15 @@ public class MapMultipleValuesTest {
     }
 
     @Test
+    public void givenCollectionAsValueAndJava8_whenPuttingTwice_thenReturningCollection() {
+        Map<String, List<String>> map = new HashMap<>();
+        map.computeIfAbsent("key1", k -> new ArrayList<>()).add("value1");
+        map.computeIfAbsent("key1", k -> new ArrayList<>()).add("value2");
+        assertThat(map.get("key1").get(0)).isEqualTo("value1");
+        assertThat(map.get("key1").get(1)).isEqualTo("value2");
+    }
+
+    @Test
     public void givenMultiValueMap_whenPuttingTwice_thenReturningValues() {
         MultiMap<String, String> map = new MultiValueMap<>();
         map.put("key1", "value1");
