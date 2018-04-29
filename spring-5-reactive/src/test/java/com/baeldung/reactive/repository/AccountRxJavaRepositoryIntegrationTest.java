@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
@@ -32,20 +33,20 @@ public class AccountRxJavaRepositoryIntegrationTest {
     }
 
     @Test
-    public void shouldFindAccount_GivenValue() {
+    public void givenValue_WhenFindAllByValue_ShouldFindAccounts() {
         Observable<Account> accountObservable = repository.findAllByValue(12.3);
         Account account = accountObservable.blockingFirst();
-        assert account.getOwner().equals("bruno");
-        assert account.getValue().equals(12.3);
+        assertEquals("bruno", account.getOwner());
+        assertEquals(Double.valueOf(12.3), account.getValue());
         assertNotNull(account.getId());
     }
 
     @Test
-    public void shouldFindAccount_GivenOwner() {
+    public void givenOwner_WhenFindFirstByOwner_ShouldFindAccount() {
         Single<Account> accountSingle = repository.findFirstByOwner(Single.just("bruno"));
         Account account = accountSingle.blockingGet();
-        assert account.getOwner().equals("bruno");
-        assert account.getValue().equals(12.3);
+        assertEquals("bruno", account.getOwner());
+        assertEquals(Double.valueOf(12.3), account.getValue());
         assertNotNull(account.getId());
     }
 

@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @ExtendWith(SpringExtension.class)
@@ -33,25 +34,25 @@ public class AccountCrudRepositoryIntegrationTest {
     }
 
     @Test
-    public void shouldFindAccount_GivenValue() {
+    public void givenValue_WhenFindAllByValue_ShouldFindAccount() {
         Flux<Account> accountFlux = repository.findAllByValue(12.3);
         Account account = accountFlux.next().block();
-        assert account.getOwner().equals("bruno");
-        assert account.getValue().equals(12.3);
+        assertEquals("bruno", account.getOwner());
+        assertEquals(Double.valueOf(12.3) , account.getValue());
         assertNotNull(account.getId());
     }
 
     @Test
-    public void shouldFindAccount_GivenOwner() {
+    public void GivenOwner_WhenFindFirstByOwner_ShouldFindAccount() {
         Mono<Account> accountMono = repository.findFirstByOwner(Mono.just("bruno"));
         Account account = accountMono.block();
-        assert account.getOwner().equals("bruno");
-        assert account.getValue().equals(12.3);
+        assertEquals("bruno", account.getOwner());
+        assertEquals(Double.valueOf(12.3) , account.getValue());
         assertNotNull(account.getId());
     }
 
     @Test
-    public void shouldSave_GivenAnAccount() {
+    public void givenAccount_WhenSave_ShouldSave() {
         Mono<Account> accountMono = repository.save(new Account(null, "bruno", 12.3));
         assertNotNull(accountMono.block().getId());
     }

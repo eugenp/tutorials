@@ -29,13 +29,13 @@ class AccountTemplateOperationsIntegrationTest {
     }
 
     @Test
-    void shouldSave_GivenAccount() {
+    void givenAccount_WhenSave_ShouldSave() {
         Account account = accountTemplate.save(Mono.just(new Account(null, "bruno", 12.3))).block();
         assertNotNull( account.getId() );
     }
 
     @Test
-    void shouldFind_GivenId() {
+    void givenId_WhenFindById_ShouldFindAccount() {
         Mono<Account> accountMono = accountTemplate.save(Mono.just(new Account(null, "bruno", 12.3)));
         Mono<Account> accountMonoResult = accountTemplate.findById(accountMono.block().getId());
         assertNotNull(accountMonoResult.block().getId());
@@ -43,7 +43,7 @@ class AccountTemplateOperationsIntegrationTest {
     }
 
     @Test
-    void shouldFindAll() {
+    void whenFindAll_ShouldFindAllAccounts() {
         accountTemplate.save(Mono.just(new Account(null, "bruno", 12.3))).block();
         accountTemplate.save(Mono.just(new Account(null, "bruno torrao", 13.3))).block();
         Flux<Account> accountFlux = accountTemplate.findAll();
