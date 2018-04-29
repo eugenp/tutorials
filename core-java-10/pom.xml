@@ -38,8 +38,8 @@
 	</build>
 
 	<properties>
-		<maven.compiler.source.version>1.8</maven.compiler.source.version>
-		<maven.compiler.target.version>1.8</maven.compiler.target.version>
+		<maven.compiler.source.version>10</maven.compiler.source.version>
+		<maven.compiler.target.version>10</maven.compiler.target.version>
 	</properties>
 
 </project>
