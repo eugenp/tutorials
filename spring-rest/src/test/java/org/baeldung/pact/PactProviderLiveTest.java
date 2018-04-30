@@ -17,7 +17,7 @@ import au.com.dius.pact.provider.junit.target.TestTarget;
 @RunWith(PactRunner.class)
 @Provider("test_provider")
 @PactFolder("pacts")
-public class PactProviderTest {
+public class PactProviderLiveTest {
 
     @TestTarget
     public final Target target = new HttpTarget("http", "localhost", 8082, "/spring-rest");
