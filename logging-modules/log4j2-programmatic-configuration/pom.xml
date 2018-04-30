@@ -10,10 +10,7 @@
 		<module>simple-configuration</module>
 		<module>set-configuration-factory</module>
 		<module>simple-configurator</module>
-		<module>modifying-existing-config</module>
 		<module>simple-configuration-xml</module>
-		<module>custom-appender</module>
-		<module>custom-appenders</module>
 		<module>modify-xml-configuration</module>
 	</modules>
 	<dependencies>
