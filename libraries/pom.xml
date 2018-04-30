@@ -647,6 +647,13 @@
             <artifactId>unirest-java</artifactId>
             <version>${unirest.version}</version>
         </dependency>
+
+        <!-- javalin -->
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <version>1.6.0</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>
