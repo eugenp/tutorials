@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d [%t] %-5level: %msg%n%throwable" />
+			<MarkerFilter marker="FLOW" onMatch="ACCEPT" onMismatch="DENY" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="com" level="DEBUG" additivity="false">
+			<AppenderRef ref="console" />
+		</Logger>
+		<Root level="ERROR" additivity="false">
+			<AppenderRef ref="console" />
+		</Root>
+	</Loggers>
+</Configuration>
