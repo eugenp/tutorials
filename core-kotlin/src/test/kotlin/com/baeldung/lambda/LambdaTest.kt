@@ -53,6 +53,30 @@ class LambdaTest {
     }
 
     @Test
+    fun whenUsingLambda_thenCalculateGrade() {
+        val gradeCalculation = getCalculationLambda()
+
+        assertEquals(false, gradeCalculation(-40))
+        assertEquals("Pass", gradeCalculation(50))
+    }
+
+    @Test
+    fun whenUsingReturnStatementLambda_thenCalculateGrade() {
+        val gradeCalculation: Int.() -> String = getCalculationLambdaWithReturn()
+
+        assertEquals("Distinction", 80.gradeCalculation())
+        assertEquals("Error", 244_234_324.gradeCalculation())
+    }
+
+    @Test
+    fun whenUsingAnonymousFunction_thenCalculateGrade() {
+        val gradeCalculation = getCalculationAnonymousFunction()
+
+        assertEquals("Error", gradeCalculation(244_234_324))
+        assertEquals("Pass", gradeCalculation(50))
+    }
+
+    @Test
     fun whenPassingAFunctionReference_thenCallTriggerLambda() {
         val reference = Double::isFinite
         val result = invokeLambda(reference)

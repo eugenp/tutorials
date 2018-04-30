@@ -37,3 +37,48 @@ fun extendString(arg: String, num: Int): String {
 
     return arg.another(num)
 }
+
+fun getCalculationLambda(): (Int) -> Any {
+    val calculateGrade = { grade: Int ->
+        when (grade) {
+            in 0..40 -> "Fail"
+            in 41..70 -> "Pass"
+            in 71..100 -> "Distinction"
+            else -> false
+        }
+    }
+
+    return calculateGrade
+}
+
+fun getCalculationLambdaWithReturn(): (Int) -> String {
+    val calculateGrade: Int.() -> String = lambda@{
+        if (this < 0 || this > 100) {
+            return@lambda "Error"
+        } else if (this < 40) {
+            return@lambda "Fail"
+        } else if (this < 70) {
+            return@lambda "Pass"
+        }
+
+        "Distinction"
+    }
+
+    return calculateGrade
+}
+
+fun getCalculationAnonymousFunction(): (Int) -> String {
+    val calculateGrade = fun(grade: Int): String {
+        if (grade < 0 || grade > 100) {
+            return "Error"
+        } else if (grade < 40) {
+            return "Fail"
+        } else if (grade < 70) {
+            return "Pass"
+        }
+
+        return "Distinction"
+    }
+
+    return calculateGrade
+}
