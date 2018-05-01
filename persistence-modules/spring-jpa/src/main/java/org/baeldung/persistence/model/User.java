@@ -1,4 +1,4 @@
-package org.baeldung.model;
+package org.baeldung.persistence.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,6 +14,14 @@ public class User {
     private Integer id;
     private String name;
     private Integer status;
+
+    public User() {
+    }
+
+    public User(String name, Integer status) {
+        this.name = name;
+        this.status = status;
+    }
 
     public Integer getId() {
         return id;
