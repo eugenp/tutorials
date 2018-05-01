@@ -45,6 +45,7 @@ public class UserRepositoryIntegrationTest {
         Optional<User> foundUser = userRepository.findOneByName(USER_NAME_ADAM);
 
         assertThat(foundUser.isPresent()).isEqualTo(true);
+
         assertThat(foundUser
           .get()
           .getName()).isEqualTo(USER_NAME_ADAM);

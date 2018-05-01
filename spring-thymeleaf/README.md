@@ -10,6 +10,8 @@
 - [Spring MVC + Thymeleaf 3.0: New Features](http://www.baeldung.com/spring-thymeleaf-3)
 - [How to Work with Dates in Thymeleaef](http://www.baeldung.com/dates-in-thymeleaf)
 - [How to Create an Executable JAR with Maven](http://www.baeldung.com/executable-jar-with-maven)
+- [Working with Booleans in Thymeleaf](http://www.baeldung.com/working-with-booleans-in-thymeleaf)
+- [Working with Fragments in Thymeleaf](http://www.baeldung.com/spring-thymeleaf-fragments)
 
 ### Build the Project
 
@@ -22,11 +24,12 @@ mvn cargo:run
 
 Access the pages using the URLs:
 
-http://localhost:8082/spring-thymeleaf/
-http://localhost:8082/spring-thymeleaf/addStudent/
-http://localhost:8082/spring-thymeleaf/listStudents/
+ - http://localhost:8082/spring-thymeleaf/
+ - http://localhost:8082/spring-thymeleaf/addStudent/
+ - http://localhost:8082/spring-thymeleaf/listStudents/
+ - http://localhost:8082/spring-thymeleaf/booleans/
 
-The first URL is the home page of the application. The home page has links to the other two pages.
+The first URL is the home page of the application. The home page has links to the second and third pages.
 
 ### Security
 The user/password required is: user1/user1Pass
