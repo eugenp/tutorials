@@ -3,3 +3,7 @@
 - [Introduction to ORMLite](http://www.baeldung.com/ormlite)
 - [Introduction To Kryo](http://www.baeldung.com/kryo)
 - [Introduction to KafkaStreams in Java](http://www.baeldung.com/java-kafka-streams)
+- [Guide to Java Data Objects](http://www.baeldung.com/jdo)
+- [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
+- [Introduction to HikariCP](http://www.baeldung.com/hikaricp)
+- [Introduction to JCache](http://www.baeldung.com/jcache)
