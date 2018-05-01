@@ -7,3 +7,4 @@
 - [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
 - [Introduction to HikariCP](http://www.baeldung.com/hikaricp)
 - [Introduction to JCache](http://www.baeldung.com/jcache)
+- [Apache Ignite with Spring Data](http://www.baeldung.com/apache-ignite-spring-data)
