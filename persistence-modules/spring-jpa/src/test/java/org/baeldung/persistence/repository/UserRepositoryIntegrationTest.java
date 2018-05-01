@@ -32,7 +32,8 @@ public class UserRepositoryIntegrationTest {
     private final Integer INACTIVE_STATUS = 0;
     private final Integer ACTIVE_STATUS = 1;
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
     public void givenUsersInDBWhenFindAllWithQueryAnnotationThenReturnCollectionWithActiveUsers() {

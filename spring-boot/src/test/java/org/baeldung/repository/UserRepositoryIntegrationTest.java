@@ -27,7 +27,8 @@ public class UserRepositoryIntegrationTest {
     private final String USER_NAME_ADAM = "Adam";
     private final Integer ACTIVE_STATUS = 1;
 
-    @Autowired private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Test
     public void givenEmptyDBWhenFindOneByNameThenReturnEmptyOptional() {

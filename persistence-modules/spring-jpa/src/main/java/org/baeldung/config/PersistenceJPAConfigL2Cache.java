@@ -27,7 +27,8 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = { "org.baeldung.persistence.dao", "org.baeldung.persistence.repository" })
 public class PersistenceJPAConfigL2Cache {
 
-    @Autowired private Environment env;
+    @Autowired
+    private Environment env;
 
     public PersistenceJPAConfigL2Cache() {
         super();
