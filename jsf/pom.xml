@@ -80,10 +80,10 @@
         
          <!-- Primefaces -->
         <dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>6.2</version>
-		</dependency>
+		<groupId>org.primefaces</groupId>
+		<artifactId>primefaces</artifactId>
+		<version>6.2</version>
+	</dependency>
     </dependencies>
     <build>
         <plugins>
