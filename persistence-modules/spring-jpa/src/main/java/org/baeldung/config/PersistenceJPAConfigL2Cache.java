@@ -24,7 +24,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-h2.properties" })
 @ComponentScan({ "org.baeldung.persistence" })
-@EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao")
+@EnableJpaRepositories(basePackages = { "org.baeldung.persistence.dao", "org.baeldung.persistence.repository" })
 public class PersistenceJPAConfigL2Cache {
 
     @Autowired
