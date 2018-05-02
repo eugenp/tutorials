@@ -3,12 +3,8 @@ package com.baeldung.web3j.services;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.concurrent.CompletableFuture;
-
-import static com.baeldung.web3j.constants.Constants.PLEASE_SUPPLY_REAL_DATA;
 
 public class EthereumContractUnitTest {
 
