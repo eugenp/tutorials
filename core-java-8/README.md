@@ -47,3 +47,7 @@
 - [Overview of Java Built-in Annotations](http://www.baeldung.com/java-default-annotations)
 - [Finding Min/Max in an Array with Java](http://www.baeldung.com/java-array-min-max)
 - [Internationalization and Localization in Java 8](http://www.baeldung.com/java-8-localization)
+- [Filtering Kotlin Collections](http://www.baeldung.com/kotlin-filter-collection)
+- [How to Find an Element in a List with Java](http://www.baeldung.com/find-list-element-java)
+- [Measure Elapsed Time in Java](http://www.baeldung.com/java-measure-elapsed-time)
+
