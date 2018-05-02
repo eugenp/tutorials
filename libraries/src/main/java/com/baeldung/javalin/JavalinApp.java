@@ -11,6 +11,6 @@ public class JavalinApp {
 
         app.get("/hello", ctx -> ctx.html("Hello, Javalin!"));
         app.get("/users", UserController.fetchAllUsernames);
-        app.get("/users/lookup", UserController.fetchByUsername);
+        app.get("/users/:id", UserController.fetchById);
     }
 }

@@ -4,12 +4,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class UserDao {
+class UserDao {
 
     private final List<User> users = Arrays.asList(
-            new User("Steve"),
-            new User("Rogers"),
-            new User("Captain America")
+            new User(0, "Steve Rogers"),
+            new User(1, "Tony Stark"),
+            new User(2, "Carol Danvers")
     );
 
     private static UserDao userDao = null;
@@ -17,18 +17,18 @@ public class UserDao {
     private UserDao() {
     }
 
-    public static UserDao instance() {
+    static UserDao instance() {
         if (userDao == null) {
             userDao = new UserDao();
         }
         return userDao;
     }
 
-    public User getUserByUsername(String name) {
-        return users.stream().filter(u -> u.name.equals(name)).findFirst().orElse(null);
+    User getUserById(int id) {
+        return users.stream().filter(u -> u.id == id).findFirst().orElse(null);
     }
 
-    public Iterable<String> getAllUsernames() {
+    Iterable<String> getAllUsernames() {
         return users.stream().map(user -> user.name).collect(Collectors.toList());
     }
 }
