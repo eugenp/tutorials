@@ -140,3 +140,6 @@
 - [Type Erasure in Java Explained](http://www.baeldung.com/java-type-erasure)
 - [BigDecimal and BigInteger in Java](http://www.baeldung.com/java-bigdecimal-biginteger)
 - [Display All Time Zones With GMT And UTC in Java](http://www.baeldung.com/java-time-zones)
+- [Join and Split Arrays and Collections in Java](http://www.baeldung.com/java-join-and-split)
+- [Check If Two Lists are Equal in Java](http://www.baeldung.com/java-test-a-list-for-ordinality-and-equality)
+- [Sending Emails with Java](http://www.baeldung.com/java-email)
