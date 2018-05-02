@@ -136,3 +136,7 @@
 - [Class Loaders in Java](http://www.baeldung.com/java-classloaders)
 - [Find Sum and Average in a Java Array](http://www.baeldung.com/java-array-sum-average)
 - [Java List UnsupportedOperationException](http://www.baeldung.com/java-list-unsupported-operation-exception)
+- [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
+- [Type Erasure in Java Explained](http://www.baeldung.com/java-type-erasure)
+- [BigDecimal and BigInteger in Java](http://www.baeldung.com/java-bigdecimal-biginteger)
+- [Display All Time Zones With GMT And UTC in Java](http://www.baeldung.com/java-time-zones)
