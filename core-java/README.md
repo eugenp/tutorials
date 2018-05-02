@@ -128,3 +128,4 @@
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [The "final" Keyword in Java](http://www.baeldung.com/java-final)
 - [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
+- [Type Erasure in Java Explained](http://www.baeldung.com/java-type-erasure)
