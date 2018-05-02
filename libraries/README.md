@@ -74,6 +74,12 @@
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
 - [A Guide to Apache Commons Collections CollectionUtils](http://www.baeldung.com/apache-commons-collection-utils)
 - [A Guide to Byte Buddy](http://www.baeldung.com/byte-buddy)
+- [Introduction to jOOL](http://www.baeldung.com/jool)
+- [Consumer Driven Contracts with Pact](http://www.baeldung.com/pact-junit-consumer-driven-contracts)
+- [Apache Commons BeanUtils](http://www.baeldung.com/apache-commons-beanutils)
+- [Apache Commons Collections BidiMap](http://www.baeldung.com/commons-collections-bidi-map)
+- [Introduction to Atlassian Fugue](http://www.baeldung.com/java-fugue)
+- [Publish and Receive Messages with Nats Java Client](http://www.baeldung.com/nats-java-client)
 - [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
 - [Apache Commons Collections MapUtils](http://www.baeldung.com/apache-commons-map-utils)
 
