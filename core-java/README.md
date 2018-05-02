@@ -143,3 +143,6 @@
 - [Join and Split Arrays and Collections in Java](http://www.baeldung.com/java-join-and-split)
 - [Check If Two Lists are Equal in Java](http://www.baeldung.com/java-test-a-list-for-ordinality-and-equality)
 - [Sending Emails with Java](http://www.baeldung.com/java-email)
+- [Introduction to SSL in Java](http://www.baeldung.com/java-ssl)
+- [Java KeyStore API](http://www.baeldung.com/java-keystore)
+- [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
