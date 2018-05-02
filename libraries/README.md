@@ -75,6 +75,7 @@
 - [A Guide to Apache Commons Collections CollectionUtils](http://www.baeldung.com/apache-commons-collection-utils)
 - [A Guide to Byte Buddy](http://www.baeldung.com/byte-buddy)
 - [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
+- [Apache Commons Collections MapUtils](http://www.baeldung.com/apache-commons-map-utils)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
