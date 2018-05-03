@@ -1,4 +1,4 @@
-package com.baeldung.propertyeditor;
+package com.baeldung.propertyeditor.creditcard;
 
 import java.beans.PropertyEditorSupport;
 
