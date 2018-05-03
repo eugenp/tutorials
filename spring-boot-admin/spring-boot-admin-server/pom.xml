@@ -2,11 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>spring-boot-admin-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>spring-boot-admin-server</name>
     <description>Spring Boot Admin Server</description>
 
@@ -31,7 +29,7 @@
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- dependencies used to enable admin server and UI-->
+        <!-- dependencies used to enable admin server and UI -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-server</artifactId>
@@ -43,7 +41,7 @@
             <version>${spring-boot-admin-server.version}</version>
         </dependency>
 
-        <!--Add login page and logout feature-->
+        <!--Add login page and logout feature -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-server-ui-login</artifactId>
@@ -57,17 +55,17 @@
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast</artifactId>
         </dependency>
-        <!--declare the admin server as a client, for self monitoring-->
+        <!--declare the admin server as a client, for self monitoring -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${spring-boot-admin-starter-client.version}</version>
         </dependency>
-        <!--mail notifications-->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-mail</artifactId>-->
-        <!--</dependency>-->
+        <!--mail notifications -->
+        <!--<dependency> -->
+        <!--<groupId>org.springframework.boot</groupId> -->
+        <!--<artifactId>spring-boot-starter-mail</artifactId> -->
+        <!--</dependency> -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
