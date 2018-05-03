@@ -6,6 +6,7 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class LazyUnitTest {
     @Test
@@ -42,7 +43,7 @@ class LazyUnitTest {
         //then
         executorService.awaitTermination(1, TimeUnit.SECONDS)
         executorService.shutdown()
-        assertEquals(numberOfInitializations.get(), 2)
+        assertTrue(numberOfInitializations.get() >= 1)
     }
 
     class ClassWithHeavyInitialization {

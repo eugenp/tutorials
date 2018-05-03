@@ -46,13 +46,13 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jre8</artifactId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin-stdlib.version}</version>
         </dependency>
         <dependency>
             <groupId>khttp</groupId>
             <artifactId>khttp</artifactId>
-            <version>0.1.0</version>
+            <version>${khttp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -88,13 +88,19 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.beust</groupId>
+            <artifactId>klaxon</artifactId>
+            <version>${klaxon.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
                 <version>${kotlin-maven-plugin.version}</version>
                 <executions>
                     <execution>
@@ -166,7 +172,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${maven-failsafe-plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.junit.platform</groupId>
@@ -194,17 +200,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin-maven-plugin.version>1.1.2</kotlin-maven-plugin.version>
-        <kotlin-test-junit.version>1.1.2</kotlin-test-junit.version>
-        <kotlin-stdlib.version>1.1.2</kotlin-stdlib.version>
-        <kotlin-reflect.version>1.1.2</kotlin-reflect.version>
-        <kotlinx.version>0.15</kotlinx.version>
+        <kotlin-maven-plugin.version>1.2.41</kotlin-maven-plugin.version>
+        <kotlin-test-junit.version>1.2.41</kotlin-test-junit.version>
+        <kotlin-stdlib.version>1.2.41</kotlin-stdlib.version>
+        <kotlin-reflect.version>1.2.41</kotlin-reflect.version>
+        <kotlinx.version>0.22.5</kotlinx.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
         <kodein.version>4.1.0</kodein.version>
+        <klaxon.version>2.0.11</klaxon.version>
+        <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+        <khttp.version>0.1.0</khttp.version>
 
-        <junit.jupiter.version>5.0.0</junit.jupiter.version>
-        <junit.platform.version>1.0.0</junit.platform.version>
-        <junit.vintage.version>4.12.0</junit.vintage.version>
+        <junit.jupiter.version>5.2.0</junit.jupiter.version>
+        <junit.platform.version>1.2.0</junit.platform.version>
+        <junit.vintage.version>5.2.0</junit.vintage.version>
         <junit4.version>4.12</junit4.version>
         <assertj.version>3.9.1</assertj.version>
     </properties>
