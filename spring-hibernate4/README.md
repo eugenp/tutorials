@@ -14,6 +14,7 @@
 - [Hibernate Criteria Queries](http://www.baeldung.com/hibernate-criteria-queries)
 - [Hibernate One to Many Annotation Tutorial](http://www.baeldung.com/hibernate-one-to-many)
 - [Guide to @Immutable Annotation in Hibernate](http://www.baeldung.com/hibernate-immutable)
+- [The DAO with Spring and Hibernate](http://www.baeldung.com/persistence-layer-with-spring-and-hibernate)
 
 ### Quick Start
 

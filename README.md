@@ -34,3 +34,8 @@ CI - Jenkins
 ================================
 This tutorials project is being built **[>> HERE](https://rest-security.ci.cloudbees.com/job/tutorials-unit/)**
 
+### Relevant Articles: 
+================================
+
+- [Apache Maven Standard Directory Layout](http://www.baeldung.com/maven-directory-structure)
+- [Apache Maven Tutorial](http://www.baeldung.com/maven)
