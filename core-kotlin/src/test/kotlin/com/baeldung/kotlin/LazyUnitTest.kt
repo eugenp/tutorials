@@ -43,7 +43,7 @@ class LazyUnitTest {
         //then
         executorService.awaitTermination(1, TimeUnit.SECONDS)
         executorService.shutdown()
-        assertTrue(numberOfInitializations.get() >= 1)
+        assertEquals(numberOfInitializations.get(), 2)
     }
 
     class ClassWithHeavyInitialization {
