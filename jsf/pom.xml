@@ -73,6 +73,13 @@
             <scope>provided</scope>
             <version>${javax.servlet.version}</version>
         </dependency>
+        
+         <!-- Primefaces -->
+        <dependency>
+		<groupId>org.primefaces</groupId>
+		<artifactId>primefaces</artifactId>
+		<version>6.2</version>
+	</dependency>
     </dependencies>
 
     <build>
@@ -103,6 +110,6 @@
 
         <!-- maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-    </properties>
 
+    </properties>
 </project>
