@@ -14,6 +14,7 @@ public class IsDivisibleBy extends TypeSafeMatcher<Integer> {
 
     @Override
     protected boolean matchesSafely(Integer dividend) {
+        if (divider == 0) return false;
         return ((dividend % divider) == 0);
     }
 
