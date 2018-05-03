@@ -70,6 +70,7 @@ class KlaxonUnitTest {
         )
     }
 
+    @Suppress("UNCHECKED_CAST")
     @Test
     fun giveJsonStringArray_whenParser_thenGetJsonArray() {
         val jsonString = StringBuilder("""[{ "name": "Magazine" }, { "product": "Kotlin" }, { "price": 15 }]""")
