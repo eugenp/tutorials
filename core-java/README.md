@@ -146,3 +146,4 @@
 - [Introduction to SSL in Java](http://www.baeldung.com/java-ssl)
 - [Java KeyStore API](http://www.baeldung.com/java-keystore)
 - [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
+- [Guide to Java Clock Class](http://www.baeldung.com/java-clock)
