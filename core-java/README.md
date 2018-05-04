@@ -125,7 +125,6 @@
 - [An Advanced Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging-advanced)
 - [Handling Daylight Savings Time in Java](http://www.baeldung.com/java-daylight-savings)
 - [Inheritance and Composition (Is-a vs Has-a relationship) in Java](http://www.baeldung.com/java-inheritance-composition)
-- [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [The "final" Keyword in Java](http://www.baeldung.com/java-final)
 - [What is the serialVersionUID?](http://www.baeldung.com/java-serial-version-uid)
