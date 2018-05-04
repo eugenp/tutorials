@@ -20,10 +20,17 @@
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <spring.version>4.3.6.RELEASE</spring.version>
+        <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
 
 </project>
