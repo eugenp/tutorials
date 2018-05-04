@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-mvc-tiles</artifactId>
@@ -13,16 +13,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <springframework.version>4.3.4.RELEASE</springframework.version>
-        <apache-tiles.version>3.0.7</apache-tiles.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
-        <jstl.version>1.2</jstl.version>
-
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-    </properties>
 
     <dependencies>
         <!-- Spring -->
@@ -90,4 +80,14 @@
         </pluginManagement>
         <finalName>spring-mvc-tiles</finalName>
     </build>
+
+    <properties>
+        <springframework.version>4.3.4.RELEASE</springframework.version>
+        <apache-tiles.version>3.0.7</apache-tiles.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+        <jstl.version>1.2</jstl.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+    </properties>
+
 </project>
