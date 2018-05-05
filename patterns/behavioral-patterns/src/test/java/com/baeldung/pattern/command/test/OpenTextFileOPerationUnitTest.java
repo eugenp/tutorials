@@ -6,7 +6,7 @@ import com.baeldung.pattern.command.receiver.TextFile;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
 
-public class OpenTextFileOPerationUnitTest {
+public class OpenTextFileOperationUnitTest {
     
     @Test
     public void givenOpenTextFileOperationIntance_whenCalledExecuteMethod_thenOneAssertion() {
