@@ -10,6 +10,8 @@
 
     <modules>
         <module>parent-boot-5</module>
+		<module>parent-spring</module>
+		<module>parent-java</module>
         <module>asm</module>
         <module>atomix</module>
         <module>apache-cayenne</module>
@@ -286,6 +288,12 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
             <version>${org.hamcrest.version}</version>
@@ -516,6 +524,7 @@
         <jstl.version>1.2</jstl.version>
         <jackson-databind.version>2.5.0</jackson-databind.version>
         <commons-fileupload.version>1.3</commons-fileupload.version>
+        <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
 
 </project>
