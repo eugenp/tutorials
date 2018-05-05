@@ -11,11 +11,15 @@
     </configuration>
 
     <mapping>
-        <class-a>com.baeldung.performancetests.model.destination.Order</class-a>
+        <class-a>com.baeldung.performancetests.model.source.SourceOrder</class-a>
         <class-b>com.baeldung.performancetests.model.destination.Order</class-b>
         <field>
             <a>status</a>
             <b>orderStatus</b>
         </field>
+    </mapping>
+    <mapping>
+        <class-a>com.baeldung.performancetests.model.source.SourceCode</class-a>
+        <class-b>com.baeldung.performancetests.model.destination.DestinationCode</class-b>
     </mapping>
 </mappings>

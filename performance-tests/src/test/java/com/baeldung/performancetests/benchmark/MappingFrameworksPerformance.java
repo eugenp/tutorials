@@ -3,11 +3,13 @@ package com.baeldung.performancetests.benchmark;
 import com.baeldung.performancetests.dozer.DozerConverter;
 import com.baeldung.performancetests.jmapper.JMapperConverter;
 import com.baeldung.performancetests.mapstruct.MapStructConverter;
+import com.baeldung.performancetests.model.destination.DestinationCode;
 import com.baeldung.performancetests.model.source.*;
 import com.baeldung.performancetests.model.destination.Order;
 import com.baeldung.performancetests.modelmapper.ModelMapperConverter;
 import com.baeldung.performancetests.orika.OrikaConverter;
 import org.junit.Assert;
+import org.junit.Test;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.RunnerException;
 
@@ -17,10 +19,12 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-@State(Scope.Thread)
+@State(Scope.Group)
 public class MappingFrameworksPerformance {
     SourceOrder sourceOrder = null;
+    SourceCode sourceCode =  null;
     @Setup
     public void setUp() {
         User user = new User("John", "John@doe.com", AccountStatus.ACTIVE);
@@ -60,17 +64,22 @@ public class MappingFrameworksPerformance {
           shop,
           1
         );
+
+        sourceCode = new SourceCode("This is source code!");
     }
 
-    public static void main(String[] args) throws IOException, RunnerException {
-        org.openjdk.jmh.Main.main(args);
+    @Test
+    public void test() throws IOException, RunnerException {
+        org.openjdk.jmh.Main.main(new String[0]);
     }
 
 
     @Benchmark
+    @Group("realLifeTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
-    @Fork(value = 2, warmups = 1)
-    public void orikaMapperBenchmark() {
+    public void orikaMapperRealLifeBenchmark() {
         OrikaConverter orikaConverter = new OrikaConverter();
         Order mappedOrder = orikaConverter.convert(sourceOrder);
         Assert.assertEquals(mappedOrder, sourceOrder);
@@ -78,18 +87,22 @@ public class MappingFrameworksPerformance {
     }
 
     @Benchmark
+    @Group("realLifeTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
-    @Fork(value = 2, warmups = 1)
-    public void jmapperBenchmark() {
+    public void jmapperRealLifeBenchmark() {
         JMapperConverter jmapperConverter = new JMapperConverter();
         Order mappedOrder = jmapperConverter.convert(sourceOrder);
         Assert.assertEquals(mappedOrder, sourceOrder);
     }
 
     @Benchmark
+    @Group("realLifeTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
-    @Fork(value = 2, warmups = 1)
-    public void modelMapperBenchmark() {
+    public void modelMapperRealLifeBenchmark() {
         ModelMapperConverter modelMapperConverter = new ModelMapperConverter();
         Order mappedOrder = modelMapperConverter.convert(sourceOrder);
         Assert.assertEquals(mappedOrder, sourceOrder);
@@ -97,9 +110,11 @@ public class MappingFrameworksPerformance {
 
 
     @Benchmark
+    @Group("realLifeTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
-    @Fork(value = 2, warmups = 1)
-    public void dozerMapperBenchmark() {
+    public void dozerMapperRealLifeBenchmark() {
         DozerConverter dozerConverter = new DozerConverter();
         Order mappedOrder = dozerConverter.convert(sourceOrder);
         Assert.assertEquals(mappedOrder, sourceOrder);
@@ -107,12 +122,71 @@ public class MappingFrameworksPerformance {
     }
 
     @Benchmark
+    @Group("realLifeTest")
+    @Fork(value = 1, warmups = 1)
     @BenchmarkMode(Mode.All)
-    @Fork(value = 2, warmups = 1)
-    public void mapStructMapperBenchmark() {
+    public void mapStructRealLifeMapperBenchmark() {
         MapStructConverter converter = MapStructConverter.MAPPER;
         Order mappedOrder = converter.convert(sourceOrder);
         Assert.assertEquals(mappedOrder, sourceOrder);
+    }
+
+    @Benchmark
+    @Group("simpleTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    @BenchmarkMode(Mode.All)
+    public void orikaMapperSimpleBenchmark() {
+        OrikaConverter orikaConverter = new OrikaConverter();
+        DestinationCode mappedCode = orikaConverter.convert(sourceCode);
+        Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
+
+    }
+
+    @Benchmark
+    @Group("simpleTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    @BenchmarkMode(Mode.All)
+    public void jmapperSimpleBenchmark() {
+        JMapperConverter jmapperConverter = new JMapperConverter();
+        DestinationCode mappedCode = jmapperConverter.convert(sourceCode);
+        Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
+    }
+
+    @Benchmark
+    @Group("simpleTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    @BenchmarkMode(Mode.All)
+    public void modelMapperBenchmark() {
+        ModelMapperConverter modelMapperConverter = new ModelMapperConverter();
+        DestinationCode mappedCode = modelMapperConverter.convert(sourceCode);
+        Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
+    }
+
+
+    @Benchmark
+    @Group("simpleTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    @BenchmarkMode(Mode.All)
+    public void dozerMapperSimpleBenchmark() {
+        DozerConverter dozerConverter = new DozerConverter();
+        Order mappedOrder = dozerConverter.convert(sourceOrder);
+        Assert.assertEquals(mappedOrder, sourceOrder);
+
+    }
+
+    @Benchmark
+    @Group("simpleTest")
+    @Fork(value = 1, warmups = 1)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
+    @BenchmarkMode(Mode.All)
+    public void mapStructMapperSimpleBenchmark() {
+        MapStructConverter converter = MapStructConverter.MAPPER;
+        DestinationCode mappedCode = converter.convert(sourceCode);
+        Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
     }
 
 

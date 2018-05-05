@@ -1,6 +1,8 @@
 package com.baeldung.performancetests.orika;
 
 import com.baeldung.performancetests.Converter;
+import com.baeldung.performancetests.model.destination.DestinationCode;
+import com.baeldung.performancetests.model.source.SourceCode;
 import com.baeldung.performancetests.model.source.SourceOrder;
 import com.baeldung.performancetests.model.destination.Order;
 import ma.glasnost.orika.MapperFacade;
@@ -20,5 +22,10 @@ public class OrikaConverter implements Converter{
     @Override
     public Order convert(SourceOrder sourceOrder) {
         return mapperFacade.map(sourceOrder, Order.class);
+    }
+
+    @Override
+    public DestinationCode convert(SourceCode sourceCode) {
+        return mapperFacade.map(sourceCode, DestinationCode.class);
     }
 }
