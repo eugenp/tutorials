@@ -13,6 +13,7 @@
 - [Working with Booleans in Thymeleaf](http://www.baeldung.com/working-with-booleans-in-thymeleaf)
 - [Working with Fragments in Thymeleaf](http://www.baeldung.com/spring-thymeleaf-fragments)
 - [Conditionals in Thymeleaf](http://www.baeldung.com/spring-thymeleaf-conditionals)
+- [Iteration in Thymeleaf](http://www.baeldung.com/thymeleaf-iteration)
 
 ### Build the Project
 
