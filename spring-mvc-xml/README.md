@@ -15,3 +15,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Geolocation by IP in Java](http://www.baeldung.com/geolocation-by-ip-with-maxmind)
 - [Guide to JavaServer Pages (JSP)](http://www.baeldung.com/jsp)
 - [Exploring SpringMVC’s Form Tag Library](http://www.baeldung.com/spring-mvc-form-tags)
+- [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
