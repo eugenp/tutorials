@@ -13,7 +13,7 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [REST API Discoverability and HATEOAS](http://www.baeldung.com/restful-web-service-discoverability)
 - [ETags for REST with Spring](http://www.baeldung.com/2013/01/11/etags-for-rest-with-spring/)
 - [Integration Testing with the Maven Cargo plugin](http://www.baeldung.com/integration-testing-with-the-maven-cargo-plugin)
-- [Introduction to Spring Data JPA](http://www.baeldung.com/2011/12/22/the-persistence-layer-with-spring-data-jpa/)
+- [Introduction to Spring Data JPA](http://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
 - [Project Configuration with Spring](http://www.baeldung.com/project-configuration-with-spring)
 - [Metrics for your Spring REST API](http://www.baeldung.com/spring-rest-api-metrics)
 - [Spring RestTemplate Tutorial](http://www.baeldung.com/rest-template)
