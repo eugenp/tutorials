@@ -6,14 +6,14 @@ import java.util.List;
 /**
  * Created by Gebruiker on 5/1/2018.
  */
-public class GeneralDepartment implements Department {
+public class HeadDepartment implements Department {
 
     private Integer id;
     private String name;
 
     private List<Department> childDepartments;
 
-    public GeneralDepartment(Integer id, String name) {
+    public HeadDepartment(Integer id, String name) {
         this.id = id;
         this.name = name;
         this.childDepartments = new ArrayList<Department>();
