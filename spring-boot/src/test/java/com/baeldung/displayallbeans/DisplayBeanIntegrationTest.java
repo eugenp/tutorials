@@ -60,11 +60,8 @@ public class DisplayBeanIntegrationTest {
         @SuppressWarnings("rawtypes")
         ResponseEntity<List> entity = this.testRestTemplate.getForEntity("http://localhost:" + this.mgt + "/springbeans", List.class);
 
-        List<Map<String, Object>> allBeans = (List) ((Map) entity.getBody()
-            .get(0)).get("beans");
-        List<String> beanNamesList = allBeans.stream()
-            .map(x -> (String) x.get("bean"))
-            .collect(Collectors.toList());
+        List<Map<String, Object>> allBeans = (List) ((Map) entity.getBody().get(0)).get("beans");
+        List<String> beanNamesList = allBeans.stream().map(x -> (String) x.get("bean")).collect(Collectors.toList());
 
         assertThat(beanNamesList, hasItem("fooController"));
         assertThat(beanNamesList, hasItem("fooService"));

@@ -3,9 +3,7 @@ package com.baeldung.web.reactive.client;
 import org.reactivestreams.Publisher;
 import org.reactivestreams.Subscriber;
 import org.springframework.http.*;
-import org.springframework.http.client.reactive.ClientHttpRequest;
 import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -50,7 +48,7 @@ public class WebClientController {
         map.add("key1", "value1");
         map.add("key2", "value2");
 
-        BodyInserter<MultiValueMap<String, ?>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
+        // BodyInserter<MultiValueMap<String, ?>, ClientHttpRequest> inserter2 = BodyInserters.fromMultipartData(map);
         BodyInserter<String, ReactiveHttpOutputMessage> inserter3 = BodyInserters.fromObject("body");
 
         // responses
