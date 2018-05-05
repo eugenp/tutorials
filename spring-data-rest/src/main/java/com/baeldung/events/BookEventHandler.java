@@ -12,10 +12,12 @@ public class BookEventHandler {
         @HandleBeforeCreate
         public void handleBookBeforeCreate(Book book){
                 System.out.println("Inside Book Before Create ....");
+                book.getAuthors();
         }
 
         @HandleBeforeCreate
         public void handleAuthorBeforeCreate(Author author){
                 System.out.println("Inside Author Before Create ....");
+                author.getBooks();
         }
 }

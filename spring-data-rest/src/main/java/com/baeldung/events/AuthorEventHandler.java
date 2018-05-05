@@ -9,15 +9,20 @@ import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 
 @RepositoryEventHandler
 public class AuthorEventHandler {
+        public AuthorEventHandler(){
+                super();
+        }
 
         @HandleAfterDelete
         public void handleAuthorAfterDelete(Author author){
                 System.out.println("Inside  Author After Delete ....");
+                String name = author.getName();
         }
 
         @HandleBeforeCreate
         public void handleAuthorBeforeCreate(Author author){
                 System.out.println("Inside  Author Before Create....");
+                String name = author.getName();
         }
 
 }
