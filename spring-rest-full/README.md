@@ -9,7 +9,7 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
 - [REST Pagination in Spring](http://www.baeldung.com/rest-api-pagination-in-spring)
-- [HATEOAS for a Spring REST Service](http://www.baeldung.com/2011/11/13/rest-service-discoverability-with-spring-part-5/)
+- [HATEOAS for a Spring REST Service](http://www.baeldung.com/rest-api-discoverability-with-spring)
 - [REST API Discoverability and HATEOAS](http://www.baeldung.com/restful-web-service-discoverability)
 - [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
 - [Integration Testing with the Maven Cargo plugin](http://www.baeldung.com/integration-testing-with-the-maven-cargo-plugin)
