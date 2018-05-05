@@ -68,9 +68,9 @@ public class MappingFrameworksPerformance {
         sourceCode = new SourceCode("This is source code!");
     }
 
-    @Test
-    public void test() throws IOException, RunnerException {
-        org.openjdk.jmh.Main.main(new String[0]);
+
+    public void main(String[] args) throws IOException, RunnerException {
+        org.openjdk.jmh.Main.main(args);
     }
 
 
