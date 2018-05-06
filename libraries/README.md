@@ -65,7 +65,7 @@
 - [Creating and Configuring Jetty 9 Server in Java](http://www.baeldung.com/jetty-java-programmatic)
 - [Introduction To OpenCSV](http://www.baeldung.com/opencsv)
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
-- [Asynchronous HTTP with async-http-client in Java](https://github.com/eugenp/tutorials/tree/master/libraries)
+- [Asynchronous HTTP with async-http-client in Java](http://www.baeldung.com/async-http-client)
 - [Introduction to Smooks](http://www.baeldung.com/smooks)
 - [WebSockets with AsyncHttpClient](http://www.baeldung.com/async-http-client-websockets)
 - [A Guide to Infinispan in Java](http://www.baeldung.com/infinispan)
