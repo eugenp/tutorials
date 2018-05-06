@@ -23,8 +23,8 @@ public class BookClient {
             .exchange()
             .log()
             .flatMapMany(clientResponse -> clientResponse.bodyToFlux(Book.class))
-            .subscribe(clientResponse -> {
-                logger.info("Received {}", clientResponse.toString());
+            .subscribe(book -> {
+                logger.info("Received {}", book.toString());
             });
 
     }
