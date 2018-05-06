@@ -42,7 +42,7 @@ public class AccountCrudRepositoryTest {
     }
 
     @Test
-    public void givenAccount_whenSave_thenSave() {
+    public void givenAccount_whenSave_thenSaveAccount() {
         Mono<Account> accountMono = repository.save(new Account(null, "Bill", 12.3));
         assertNotNull(accountMono.block().getId());
     }
