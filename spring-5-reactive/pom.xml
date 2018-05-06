@@ -134,11 +134,12 @@
         <dependency>
             <groupId>de.flapdoodle.embed</groupId>
             <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.reactivex.rxjava2</groupId>
             <artifactId>rxjava</artifactId>
-            <version>2.1.12</version>
+            <version>${rxjava-version}</version>
         </dependency>
 
     </dependencies>
@@ -176,9 +177,10 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <junit.platform.version>1.0.0</junit.platform.version>
-        <junit.jupiter.version>5.0.0</junit.jupiter.version>
+        <junit.jupiter.version>5.0.2</junit.jupiter.version>
         <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
+        <rxjava-version>2.1.12</rxjava-version>
         <johnzon.version>1.1.3</johnzon.version>
         <jsonb-api.version>1.0</jsonb-api.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
