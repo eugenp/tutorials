@@ -1,0 +1,8 @@
+info:
+  app:
+    name: A short example of real-time event streaming using Spring Webflux
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
