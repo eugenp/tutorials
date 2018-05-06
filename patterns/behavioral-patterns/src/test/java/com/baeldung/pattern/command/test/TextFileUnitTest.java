@@ -9,6 +9,7 @@ public class TextFileUnitTest {
     
     private static TextFile textFile;
     
+    
     @BeforeClass
     public static void setUpTextFileInstance() {
         textFile = new TextFile("file1.txt");
