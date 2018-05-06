@@ -16,7 +16,7 @@ import com.baeldung.servletinitializer.WarInitializerApplication.WarInitializerC
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = WarInitializerController.class)
-public class WarInitializerApplicationTest {
+public class WarInitializerApplicationIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
