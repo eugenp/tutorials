@@ -2,6 +2,7 @@ package com.baeldung.javalin.User;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 class UserDao {
@@ -24,9 +25,7 @@ class UserDao {
         return userDao;
     }
 
-    User getUserById(int id) {
-        return users.stream().filter(u -> u.id == id).findFirst().orElse(null);
-    }
+    Optional<User> getUserById(int id) { return users.stream().filter(u -> u.id == id).findFirst(); }
 
     Iterable<String> getAllUsernames() {
         return users.stream().map(user -> user.name).collect(Collectors.toList());
