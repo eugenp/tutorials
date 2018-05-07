@@ -25,13 +25,13 @@ public class Application {
 
     @PostConstruct private void initializeData() {
         // Create John
-        final Address johnsAddress = new Address(UUID.randomUUID().toString(), "Fake Street 1", "Fake country");
+        final Address johnsAddress = new Address(UUID.randomUUID().toString(), "Fake Street 1", "Fake Country");
         addressRepository.save(johnsAddress);
         final Person john = new Person(UUID.randomUUID().toString(), "John", johnsAddress);
         personRepository.save(john);
 
         // Create Lisa
-        final Address lisasAddress = new Address(UUID.randomUUID().toString(), "Real Street 1", "Real country");
+        final Address lisasAddress = new Address(UUID.randomUUID().toString(), "Real Street 1", "Real Country");
         addressRepository.save(lisasAddress);
         final Person lisa = new Person(UUID.randomUUID().toString(), "Lisa", lisasAddress);
         personRepository.save(lisa);
