@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.ethereumj</groupId>
     <artifactId>ethereumj</artifactId>
@@ -23,7 +25,6 @@
     </repositories>
 
     <dependencies>
-
         <!-- Spring Boot Dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -33,28 +34,24 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
-
         <!-- Unit Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <!-- Ethereum -->
         <dependency>
             <groupId>org.ethereum</groupId>
             <artifactId>ethereumj-core</artifactId>
-            <version>1.5.0-RELEASE</version>
+            <version>${ethereumj-core.version}</version>
         </dependency>
-
         <!-- Web3j -->
         <dependency>
             <groupId>org.web3j</groupId>
             <artifactId>core</artifactId>
-            <version>3.3.1</version>
+            <version>${web3j.core.version}</version>
         </dependency>
-
         <!-- JSTL/JSP -->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -63,7 +60,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.5.0</version>
+            <version>${jackson-databind.version}</version>
         </dependency>
     </dependencies>
 
@@ -81,6 +78,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <tomcat.version>8.5.4</tomcat.version>
+        <ethereumj-core.version>1.5.0-RELEASE</ethereumj-core.version>
+        <web3j.core.version>3.3.1</web3j.core.version>
+        <jackson-databind.version>2.5.0</jackson-databind.version>
     </properties>
 
 </project>

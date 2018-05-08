@@ -138,7 +138,7 @@
         </plugins>
 
     </build>
-	
+
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>org.baeldung.boot.DemoApplication</start-class>
