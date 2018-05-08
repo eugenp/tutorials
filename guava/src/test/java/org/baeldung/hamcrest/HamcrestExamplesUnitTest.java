@@ -57,7 +57,6 @@ public class HamcrestExamplesUnitTest {
     public final void givenCollectionIsEmpty_whenChecking_thenEmpty() {
         final List<String> collection = Lists.newArrayList();
         assertThat(collection, empty());
-        assertThat(collection, emptyIterable());
     }
     
     @Test
