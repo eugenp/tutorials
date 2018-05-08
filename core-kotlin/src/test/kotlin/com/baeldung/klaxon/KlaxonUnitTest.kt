@@ -5,82 +5,118 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.JsonReader
 import com.beust.klaxon.Klaxon
 import com.beust.klaxon.Parser
-import com.beust.klaxon.double
-import com.beust.klaxon.int
-import org.junit.jupiter.api.Assertions.assertAll
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.SoftAssertions.assertSoftly
+import org.junit.Assert
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.function.Executable
 import java.io.StringReader
-import kotlin.test.assertEquals
 
 class KlaxonUnitTest {
 
     @Test
-    fun giveJsonString_whenSerialize_thenGetPerson() {
-        val result = Klaxon().parse<Person>("""
+    fun giveJsonString_whenSerialize_thenGetProduct() {
+        val user = Product("HDD")
+        val result = Klaxon().toJsonString(user)
+
+        assertThat(result).isEqualTo("""{"name" : "HDD"}""")
+    }
+
+    @Test
+    fun giveProduct_whenDeserialize_thenGetJsonString() {
+        val result = Klaxon().parse<Product>("""
             {
-                "name": "John"
+                "name" : "RAM"
             }
         """)
 
-        assertEquals("John", result?.name)
+        assertThat(result?.name).isEqualTo("RAM")
     }
 
     @Test
-    fun givePerson_whenDeserialize_thenGetJsonString() {
-        val person = Person("John")
-        val result = Klaxon().toJsonString(person)
-
-        assertEquals("""{"name" : "John"}""", result)
-    }
-
-    @Test
-    fun giveJsonArray_whenStreaming_thenGetPersonArray() {
-        val jsonArray = """[
-            { "name": "John", "age": 31 },
-            { "name": "Mary", "age": 30 }
+    fun giveJsonArray_whenStreaming_thenGetUserArray() {
+        val jsonArray = """
+        [
+            { "name" : "HDD", "capacityInGb" : 512 },
+            { "name" : "RAM", "capacityInGb" : 16 }
         ]"""
-        val expectedArray = arrayListOf(PersonData("John", 31),
-                PersonData("Mary", 30))
+        val expectedArray = arrayListOf(ProductData("HDD", 512),
+                ProductData("RAM", 16))
         val klaxon = Klaxon()
-        val personArray = arrayListOf<PersonData>()
+        val productArray = arrayListOf<ProductData>()
         JsonReader(StringReader(jsonArray)).use { reader ->
             reader.beginArray {
                 while (reader.hasNext()) {
-                    val person = klaxon.parse<PersonData>(reader)
-                    personArray.add(person!!)
+                    val product = klaxon.parse<ProductData>(reader)
+                    productArray.add(product!!)
                 }
             }
         }
 
-        assertEquals(expectedArray, personArray)
+        assertThat(productArray).hasSize(2).isEqualTo(expectedArray)
     }
 
     @Test
     fun giveJsonString_whenParser_thenGetJsonObject() {
-        val jsonString = StringBuilder("""{ "name": "David", "age": 35, "language": "EN"}""")
+        val jsonString = StringBuilder("""
+            {
+                "name" : "HDD",
+                "capacityInGb" : 512,
+                "sizeInInch" : 2.5
+            }
+        """)
         val parser = Parser()
         val json = parser.parse(jsonString) as JsonObject
 
-        assertAll(
-                Executable { assertEquals("David", json["name"]) },
-                Executable { assertEquals(35, json["age"]) },
-                Executable { assertEquals("EN", json["language"]) }
-        )
+        assertThat(json).hasSize(3).containsEntry("name", "HDD").containsEntry("capacityInGb", 512).containsEntry("sizeInInch", 2.5)
     }
 
     @Test
     fun giveJsonStringArray_whenParser_thenGetJsonArray() {
-        val jsonString = StringBuilder("""[{ "name": "Magazine" }, { "product": "Kotlin" }, { "price": 15 }]""")
+        val jsonString = StringBuilder("""
+        [
+            { "name" : "SDD" },
+            { "madeIn" : "Taiwan" },
+            { "warrantyInYears" : 5 }
+        ]""")
         val parser = Parser()
         val json = parser.parse(jsonString) as JsonArray<JsonObject>
 
-        assertAll(
-                Executable { assertEquals("Magazine", json[0]["name"]) },
-                Executable { assertEquals("Kotlin", json[1]["product"]) },
-                Executable { assertEquals(15, json[2].int("price")) }
-        )
+        assertSoftly({ softly ->
+            softly.assertThat(json).hasSize(3)
+            softly.assertThat(json[0]["name"]).isEqualTo("SDD")
+            softly.assertThat(json[1]["madeIn"]).isEqualTo("Taiwan")
+            softly.assertThat(json[2]["warrantyInYears"]).isEqualTo(5)
+        })
     }
 
+    @Test
+    fun givenJsonString_whenStreaming_thenProcess() {
+        val jsonString = """
+        {
+             "name" : "HDD",
+             "madeIn" : "Taiwan",
+             "warrantyInYears" : 5
+             "hasStock" : true
+             "capacitiesInTb" : [ 1, 2 ],
+             "features" : { "cacheInMb" : 64, "speedInRpm" : 7200 }
+        }"""
+
+        JsonReader(StringReader(jsonString)).use { reader ->
+            reader.beginObject {
+                while (reader.hasNext()) {
+                    val readName = reader.nextName()
+                    when (readName) {
+                        "name" -> assertThat(reader.nextString()).isEqualTo("HDD")
+                        "madeIn" -> assertThat(reader.nextString()).isEqualTo("Taiwan")
+                        "warrantyInYears" -> assertThat(reader.nextInt()).isEqualTo(5)
+                        "hasStock" -> assertThat(reader.nextBoolean()).isEqualTo(true)
+                        "capacitiesInTb" -> assertThat(reader.nextArray()).contains(1, 2)
+                        "features" -> assertThat(reader.nextObject()).containsEntry("cacheInMb", 64).containsEntry("speedInRpm", 7200)
+                        else -> Assert.fail("Unexpected name: $readName")
+                    }
+                }
+            }
+        }
+
+    }
 }
