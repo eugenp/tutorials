@@ -87,8 +87,6 @@ public class SpringBootBootstrapIntegrationTest {
         final Book book = createRandomBook();
         final String location = createBookAsUri(book);
 
-        System.out.println(location);
-        
         book.setId(Long.parseLong(location.split("api/books/")[1]));
         book.setAuthor("newAuthor");
         Response response = RestAssured.given()
@@ -130,7 +128,6 @@ public class SpringBootBootstrapIntegrationTest {
             .contentType(MediaType.APPLICATION_JSON_VALUE)
             .body(book)
             .post(API_ROOT);
-        System.out.println(response.asString());
         return API_ROOT + "/" + response.jsonPath()
             .get("id");
     }
