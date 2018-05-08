@@ -20,7 +20,7 @@ public class HeadDepartment implements Department {
     }
 
     public void printDepartmentName() {
-        childDepartments.stream().forEach(Department::printDepartmentName);
+        childDepartments.forEach(Department::printDepartmentName);
     }
 
     public void addDepartMent(Department department) {
