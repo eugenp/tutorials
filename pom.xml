@@ -256,6 +256,7 @@
         <module>persistence-modules/java-jdbi</module>
         <module>jersey</module>
         <module>java-spi</module>
+        <module>performance-tests</module>
     </modules>
 
     <dependencies>
