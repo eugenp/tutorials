@@ -4,30 +4,29 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
-public class AnnotationsBasedApplicationAndServletInitializer extends AbstractDispatcherServletInitializer {
+public class SecureAnnotationsBasedApplicationAndServletInitializer extends AbstractDispatcherServletInitializer {
 
     @Override
     protected WebApplicationContext createRootApplicationContext() {
-        //AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        //rootContext.register(RootApplicationConfig.class);
-        //return rootContext;
         return null;
     }
 
     @Override
     protected WebApplicationContext createServletApplicationContext() {
-        AnnotationConfigWebApplicationContext normalWebAppContext = new AnnotationConfigWebApplicationContext();
-        normalWebAppContext.register(NormalWebAppConfig.class);
-        return normalWebAppContext;
+        AnnotationConfigWebApplicationContext secureWebAppContext = new AnnotationConfigWebApplicationContext();
+        secureWebAppContext.register(SecureWebAppConfig.class);
+        return secureWebAppContext;
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/api/*" };
+        return new String[] { "/s/api/*" };
     }
+
 
     @Override
     protected String getServletName() {
-        return "normal-dispatcher";
+        return "secure-dispatcher";
     }
+
 }

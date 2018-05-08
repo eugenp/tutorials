@@ -25,11 +25,11 @@ public class ApplicationInitializer implements WebApplicationInitializer {
         //Registration
         //servletContext.addListener(new ContextLoaderListener(rootContext));
         
-        XmlWebApplicationContext normalWebAppContext = new XmlWebApplicationContext();
-        normalWebAppContext.setConfigLocation("/WEB-INF/normal-webapp-servlet.xml");
-        ServletRegistration.Dynamic normal = servletContext.addServlet("normal-webapp", new DispatcherServlet(normalWebAppContext));
-        normal.setLoadOnStartup(1);
-        normal.addMapping("/api/*");
+//        XmlWebApplicationContext normalWebAppContext = new XmlWebApplicationContext();
+//        normalWebAppContext.setConfigLocation("/WEB-INF/normal-webapp-servlet.xml");
+//        ServletRegistration.Dynamic normal = servletContext.addServlet("normal-webapp", new DispatcherServlet(normalWebAppContext));
+//        normal.setLoadOnStartup(1);
+//        normal.addMapping("/api/*");
     }
 
 }
