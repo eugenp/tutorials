@@ -21,7 +21,7 @@ public class SpringBootJPAIntegrationTest {
     @Test
     public void givenGenericEntityRepository_whenSaveAndRetreiveEntity_thenOK() {
         GenericEntity genericEntity = genericEntityRepository.save(new GenericEntity("test"));
-        GenericEntity foundEntity = genericEntityRepository.findOne(genericEntity.getId());
+        GenericEntity foundEntity = genericEntityRepository.findById(genericEntity.getId()).orElse(null);
         assertNotNull(foundEntity);
         assertEquals(genericEntity.getValue(), foundEntity.getValue());
     }
