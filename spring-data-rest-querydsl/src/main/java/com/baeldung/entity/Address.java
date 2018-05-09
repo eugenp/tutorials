@@ -1,29 +1,36 @@
 package com.baeldung.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity public class Address {
+import javax.persistence.*;
 
-    @Id private String id;
-    private String address;
-    private String country;
+@Entity @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) public class Address {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id", unique = true, nullable = false) private Long id;
+    @Column private String address;
+    @Column private String country;
+    @OneToOne(fetch = FetchType.LAZY) @JoinColumn(name = "address_id") @JsonBackReference private AddressAvailability
+            addressAvailability;
+    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "user_id") @JsonBackReference private User user;
 
     public Address() {
     }
 
-    public Address(String id, String address, String country) {
+    public Address(String address, String country, AddressAvailability addressAvailability, User user) {
         this.id = id;
         this.address = address;
         this.country = country;
+        this.addressAvailability = addressAvailability;
+        this.user = user;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -41,5 +48,13 @@ import javax.persistence.Id;
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public AddressAvailability getAddressAvailability() {
+        return addressAvailability;
+    }
+
+    public void setAddressAvailability(AddressAvailability addressAvailability) {
+        this.addressAvailability = addressAvailability;
     }
 }
