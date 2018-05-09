@@ -11,6 +11,7 @@ public class NumberUtilsIsParsableUnitTest {
 		assertThat(NumberUtils.isParsable("22")).isTrue();
 		assertThat(NumberUtils.isParsable("-23")).isTrue();
 		assertThat(NumberUtils.isParsable("2.2")).isTrue();
+		assertThat(NumberUtils.isParsable("10.0d")).isTrue();
 		
 		assertThat(NumberUtils.isParsable("6.2F")).isFalse();
 		assertThat(NumberUtils.isParsable("9.8d")).isFalse();
