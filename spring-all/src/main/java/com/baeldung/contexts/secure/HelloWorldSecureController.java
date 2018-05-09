@@ -43,7 +43,7 @@ public class HelloWorldSecureController {
     @RequestMapping(path = "/welcome")
     public ModelAndView helloWorld() {
         processContext();
-        String message = "<br><div style='text-align:center;'>" + "<h3> " + greeterService.greet() + "</h3></div>";
+        String message = "<br><div style='text-align:center;'>" + "<h3>Secure " + greeterService.greet() + "</h3></div>";
         return new ModelAndView("welcome", "message", message);
     }
 }
