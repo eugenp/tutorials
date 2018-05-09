@@ -1,4 +1,4 @@
-package com.baeldung.servlets;
+package com.baeldung.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
+import java.util.concurrent.ForkJoinPool;
+
 @RestController
 public class DeferredResultController {
 
@@ -16,14 +18,18 @@ public class DeferredResultController {
 
 	@GetMapping("/async-deferredresult")
 	public DeferredResult<ResponseEntity<?>> handleReqDefResult(Model model) {
-		LOG.info("Received async-deferredresult request");
-		DeferredResult<ResponseEntity<?>> output = new DeferredResult<>();
-		new Thread(() -> {
-			LOG.info("Processing in separate thread");
-			output.setResult(ResponseEntity.ok("ok"));
-		}).start();
-		LOG.info("servlet thread freed");
-		return output;
+	    LOG.info("Received async-deferredresult request");
+	    DeferredResult<ResponseEntity<?>> output = new DeferredResult<>();
+	    ForkJoinPool.commonPool().submit(() -> {
+	        LOG.info("Processing in separate thread");
+	        try {
+			    Thread.sleep(6000);
+	        } catch (InterruptedException e) {
+	        }
+	        output.setResult(ResponseEntity.ok("ok"));
+	    });
+	    LOG.info("servlet thread freed");
+	    return output;
 	}
 
 	public DeferredResult<ResponseEntity<?>> handleReqWithTimeouts(Model model) {
@@ -36,8 +42,7 @@ public class DeferredResultController {
 						ResponseEntity.status(HttpStatus.REQUEST_TIMEOUT).body("Request timeout occurred."));
 			}
 		});
-
-		new Thread(() -> {
+		ForkJoinPool.commonPool().submit(() -> {
 			LOG.info("Processing in separate thread");
 			try {
 				Thread.sleep(600l);
@@ -48,14 +53,14 @@ public class DeferredResultController {
 						.body("INTERNAL_SERVER_ERROR occurred."));
 			}
 
-		}).start();
+		});
 		LOG.info("servlet thread freed");
 		return deferredResult;
 	}
 
 	public DeferredResult<ResponseEntity<?>> handleAsyncFailedRequest(Model model) {
 		DeferredResult<ResponseEntity<?>> deferredResult = new DeferredResult<>();
-		new Thread(() -> {
+		ForkJoinPool.commonPool().submit(() -> {
 			try {
 				// Exception occurred in processing
 				throw new Exception();
@@ -64,7 +69,7 @@ public class DeferredResultController {
 				deferredResult.setErrorResult(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 						.body("INTERNAL_SERVER_ERROR occurred."));
 			}
-		}).start();
+		});
 		return deferredResult;
 	}
 
