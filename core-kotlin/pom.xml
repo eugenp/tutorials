@@ -92,7 +92,6 @@
             <groupId>com.beust</groupId>
             <artifactId>klaxon</artifactId>
             <version>${klaxon.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

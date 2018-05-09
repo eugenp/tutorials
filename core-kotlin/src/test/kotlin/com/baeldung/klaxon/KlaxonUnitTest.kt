@@ -14,15 +14,15 @@ import java.io.StringReader
 class KlaxonUnitTest {
 
     @Test
-    fun giveJsonString_whenSerialize_thenGetProduct() {
-        val user = Product("HDD")
-        val result = Klaxon().toJsonString(user)
+    fun giveProduct_whenSerialize_thenGetJsonString() {
+        val product = Product("HDD")
+        val result = Klaxon().toJsonString(product)
 
         assertThat(result).isEqualTo("""{"name" : "HDD"}""")
     }
 
     @Test
-    fun giveProduct_whenDeserialize_thenGetJsonString() {
+    fun giveJsonString_whenDeserialize_thenGetProduct() {
         val result = Klaxon().parse<Product>("""
             {
                 "name" : "RAM"
@@ -33,7 +33,15 @@ class KlaxonUnitTest {
     }
 
     @Test
-    fun giveJsonArray_whenStreaming_thenGetUserArray() {
+    fun giveCustomProduct_whenSerialize_thenGetJsonString() {
+        val product = CustomProduct("HDD", 1)
+        val result = Klaxon().toJsonString(product)
+
+        assertThat(result).isEqualTo("""{"productName" : "HDD"}""")
+    }
+
+    @Test
+    fun giveJsonArray_whenStreaming_thenGetProductArray() {
         val jsonArray = """
         [
             { "name" : "HDD", "capacityInGb" : 512 },
