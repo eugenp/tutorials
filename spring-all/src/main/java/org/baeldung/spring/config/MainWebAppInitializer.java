@@ -26,8 +26,8 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
         root.scan("org.baeldung.spring.config");
         // root.getEnvironment().setDefaultProfiles("embedded");
 
-        // Manages the lifecycle of the root application context
-        //Conflicts with other root contexts in the application
+        //Manages the lifecycle of the root application context.
+        //Conflicts with other root contexts in the application, so we've manually set the parent below.
         //sc.addListener(new ContextLoaderListener(root));
 
         // Handles requests into the application

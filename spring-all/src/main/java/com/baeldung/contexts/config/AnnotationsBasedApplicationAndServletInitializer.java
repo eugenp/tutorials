@@ -8,6 +8,9 @@ public class AnnotationsBasedApplicationAndServletInitializer extends AbstractDi
 
     @Override
     protected WebApplicationContext createRootApplicationContext() {
+        //If this is not the only class declaring a root context, we return null because it would clash
+        //with other classes, as there can only be a single root context.
+
         //AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
         //rootContext.register(RootApplicationConfig.class);
         //return rootContext;

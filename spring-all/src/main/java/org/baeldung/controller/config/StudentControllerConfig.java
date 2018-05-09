@@ -19,8 +19,8 @@ public class StudentControllerConfig implements WebApplicationInitializer {
 
         root.setServletContext(sc);
 
-        // Manages the lifecycle of the root application context
-        //Conflicts with other root contexts in the application
+        //Manages the lifecycle of the root application context.
+        //Conflicts with other root contexts in the application, so we've manually set the parent below.
         //sc.addListener(new ContextLoaderListener(root));
 
         GenericWebApplicationContext webApplicationContext = new GenericWebApplicationContext();
