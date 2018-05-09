@@ -21,7 +21,7 @@ import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatc
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Spring5ReactiveApplication.class)
-public class AccountMongoRepositoryTest {
+public class AccountMongoRepositoryIntegrationTest {
 
     @Autowired
     AccountMongoRepository repository;
