@@ -36,7 +36,7 @@ public class FaviconConfiguration {
     //@Controller
     static class FaviconController {
         
-        @RequestMapping("favicon.ico")
+        @RequestMapping(value="favicon.ico", method="RequestMethod.GET")
         @ResponseBody
         void favicon() {}
     }
