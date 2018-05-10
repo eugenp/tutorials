@@ -6,7 +6,7 @@ public class IsNumericDriver {
     private static IsNumeric isNumeric;
     
     static {
-    	isNumeric =new IsNumeric();
+        isNumeric =new IsNumeric();
     }
     
     public static void main(String[] args) {
