@@ -1,5 +1,5 @@
 
-package com.baeldung.java9.optional;
+package com.baeldung.optional;
 
 import static org.junit.Assert.assertEquals;
 
