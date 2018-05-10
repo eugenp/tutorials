@@ -22,54 +22,64 @@ public class PessimisticLockScopesIntegrationTest {
     EntityManagerFactory entityManagerFactory;
 
     @Test
-    public void givenEclipseEntityWithJoinInheritance_whenNormalLock_thenShouldChildAndParentEntity() {
+    public void givenEntityWithJoinInheritance_whenLock_thenNormalAndExtendScopesLockParentAndChildEntity() {
         EntityManager em = getEntityManagerWithOpenTransaction();
-        Employee employee = new Employee(1L, "A", "B", new BigDecimal(4.5));
+        Employee employee = new Employee(1L, "JOE", "DOE", new BigDecimal(4.5));
         em.persist(employee);
         em.getTransaction()
             .commit();
         em.close();
 
         // NORMAL SCOPE
-        em = getEntityManagerWithOpenTransaction();
-        Employee foundEmployee = em.find(Employee.class, 1L, LockModeType.PESSIMISTIC_WRITE);
-        em.getTransaction()
+        EntityManager em2 = getEntityManagerWithOpenTransaction();
+        Employee foundEmployee = em2.find(Employee.class, 1L, LockModeType.PESSIMISTIC_WRITE);
+        em2.getTransaction()
             .rollback();
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
         map.put("javax.persistence.lock.scope", PessimisticLockScope.EXTENDED);
 
-        em = getEntityManagerWithOpenTransaction();
-        foundEmployee = em.find(Employee.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
+        EntityManager em3 = getEntityManagerWithOpenTransaction();
+        foundEmployee = em3.find(Employee.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
+        em3.getTransaction()
+            .rollback();
+
+        em2.close();
+        em3.close();
     }
 
     @Test
-    public void givenEclipseEntityWithElementCollection_whenNormalLock_thenShouldLockOnlyOwningEntity() {
+    public void givenEntityWithElementCollection_whenLock_thenExtendScopeLocksAlsoCollectionTable() {
         EntityManager em = getEntityManagerWithOpenTransaction();
         Address address = new Address("Poland", "Warsaw");
-        Customer customer = new Customer(1L, "A", "B", Arrays.asList(address));
+        Customer customer = new Customer(1L, "JOHN", "SMITH", Arrays.asList(address));
         em.persist(customer);
         em.getTransaction()
             .commit();
         em.close();
 
         // NORMAL SCOPE
-        em = getEntityManagerWithOpenTransaction();
-        Customer foundCustomer = em.find(Customer.class, 1L, LockModeType.PESSIMISTIC_WRITE);
-        em.getTransaction()
+        EntityManager em2 = getEntityManagerWithOpenTransaction();
+        Customer foundCustomer = em2.find(Customer.class, 1L, LockModeType.PESSIMISTIC_WRITE);
+        em2.getTransaction()
             .rollback();
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
         map.put("javax.persistence.lock.scope", PessimisticLockScope.EXTENDED);
 
-        em = getEntityManagerWithOpenTransaction();
-        foundCustomer = em.find(Customer.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
+        EntityManager em3 = getEntityManagerWithOpenTransaction();
+        foundCustomer = em3.find(Customer.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
+        em3.getTransaction()
+            .rollback();
+
+        em2.close();
+        em3.close();
     }
 
     @Test
-    public void givenEclipseEntityWithOneToMany_whenNormalLock_thenShouldLockOnlyOwningEntity() {
+    public void givenEclipseEntityWithOneToMany_whenLock_thenExtendedLockAlsoJoinTable() {
         EntityManager em = getEntityManagerWithOpenTransaction();
         Student student = new Student(1L, "JOE");
         Course course = new Course(1L, "COURSE", student);
@@ -81,17 +91,22 @@ public class PessimisticLockScopesIntegrationTest {
         em.close();
 
         // NORMAL SCOPE
-        em = getEntityManagerWithOpenTransaction();
-        Course foundCourse = em.find(Course.class, 1L, LockModeType.PESSIMISTIC_WRITE);
-        em.getTransaction()
+        EntityManager em2 = getEntityManagerWithOpenTransaction();
+        Course foundCourse = em2.find(Course.class, 1L, LockModeType.PESSIMISTIC_WRITE);
+        em2.getTransaction()
             .rollback();
 
         // EXTENDED SCOPE
         Map<String, Object> map = new HashMap<>();
         map.put("javax.persistence.lock.scope", PessimisticLockScope.EXTENDED);
 
-        em = getEntityManagerWithOpenTransaction();
-        foundCourse = em.find(Course.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
+        EntityManager em3 = getEntityManagerWithOpenTransaction();
+        foundCourse = em3.find(Course.class, 1L, LockModeType.PESSIMISTIC_WRITE, map);
+        em3.getTransaction()
+            .rollback();
+
+        em2.close();
+        em3.close();
     }
 
     protected EntityManager getEntityManagerWithOpenTransaction() {
