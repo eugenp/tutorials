@@ -1,11 +1,9 @@
 package org.baeldung.hamcrest;
 
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.nio.file.Paths;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -27,7 +25,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenDifferentStaticTypeTestInput_WhenUsingEqualToObject_ThenCorrect(){
+    public void givenDifferentStaticTypeTestInput_WhenUsingEqualToObject_ThenCorrect() {
 
         // GIVEN
         Object original = 100;
@@ -37,19 +35,19 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingInstanceOfForClassTypeCheck(){
+    public void givenTestInput_WhenUsingInstanceOfForClassTypeCheck() {
 
         assertThat("hamcrest", is(instanceOf(String.class)));
     }
 
     @Test
-    public void givenTestInput_WhenUsingIsA_ThenAssertType(){
+    public void givenTestInput_WhenUsingIsA_ThenAssertType() {
 
         assertThat("hamcrest core", isA(String.class));
     }
 
     @Test
-    public void givenTestInput_WhenUsingEqualToMatcherForEquality(){
+    public void givenTestInput_WhenUsingEqualToMatcherForEquality() {
 
         // GIVEN
         String actualString = "Hamcrest Core";
@@ -61,7 +59,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingNotForMatch(){
+    public void givenTestInput_WhenUsingNotForMatch() {
 
         // GIVEN
         String testString = "hamcrest";
@@ -73,7 +71,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingNullValueForNullCheck(){
+    public void givenTestInput_WhenUsingNullValueForNullCheck() {
 
         // GIVEN
         Integer nullObject = null;
@@ -84,7 +82,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingNotNullValueForNotNullCheck(){
+    public void givenTestInput_WhenUsingNotNullValueForNotNullCheck() {
 
         // GIVEN
         Integer testNumber = 123;
@@ -95,7 +93,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenString_WhenStartsWith_ThenCorrect(){
+    public void givenString_WhenStartsWith_ThenCorrect() {
 
         // GIVEN
         String testString = "hamcrest core";
@@ -105,7 +103,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void giveString_WhenStartsWithIgnoringCase_ThenCorrect(){
+    public void giveString_WhenStartsWithIgnoringCase_ThenCorrect() {
 
         // GIVEN
         String testString = "hamcrest core";
@@ -115,7 +113,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenString_WhenEndsWith_ThenCorrect(){
+    public void givenString_WhenEndsWith_ThenCorrect() {
 
         // GIVEN
         String testString = "hamcrest core";
@@ -125,7 +123,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenString_WhenEndsWithIgnoringCase_ThenCorrect(){
+    public void givenString_WhenEndsWithIgnoringCase_ThenCorrect() {
 
         // GIVEN
         String testString = "hamcrest core";
@@ -135,7 +133,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenString_WhenContainsString_ThenCorrect(){
+    public void givenString_WhenContainsString_ThenCorrect() {
 
         // GIVEN
         String testString = "hamcrest core";
@@ -145,7 +143,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenString_WhenContainsStringIgnoringCase_ThenCorrect(){
+    public void givenString_WhenContainsStringIgnoringCase_ThenCorrect() {
 
 
         // GIVEN
@@ -156,7 +154,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingHasItemInCollection(){
+    public void givenTestInput_WhenUsingHasItemInCollection() {
 
         // GIVEN
         List<String> list = Lists.newArrayList("java", "spring", "baeldung");
@@ -168,7 +166,7 @@ public class HamcrestCommonCoreMatchersTest {
 
 
     @Test
-    public void givenTestInput_WhenUsingHasItemsInCollection(){
+    public void givenTestInput_WhenUsingHasItemsInCollection() {
 
         // GIVEN
         List<String> list = Lists.newArrayList("java", "spring", "baeldung");
@@ -179,14 +177,14 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingAnyForClassType(){
+    public void givenTestInput_WhenUsingAnyForClassType() {
 
         assertThat("hamcrest", is(any(String.class)));
         assertThat("hamcrest", is(any(Object.class)));
     }
 
     @Test
-    public void givenTestInput_WhenUsingAllOfForAllMatchers(){
+    public void givenTestInput_WhenUsingAllOfForAllMatchers() {
 
         // GIVEN
         String testString = "Hamcrest Core";
@@ -196,7 +194,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingAnyOfForAnyMatcher(){
+    public void givenTestInput_WhenUsingAnyOfForAnyMatcher() {
 
         // GIVEN
         String testString = "Hamcrest Core";
@@ -206,7 +204,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingBothForMatcher(){
+    public void givenTestInput_WhenUsingBothForMatcher() {
 
         // GIVEN
         String testString = "Hamcrest Core Matchers";
@@ -216,7 +214,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTestInput_WhenUsingEitherForMatcher(){
+    public void givenTestInput_WhenUsingEitherForMatcher() {
 
         // GIVEN
         String testString = "Hamcrest Core Matchers";
@@ -227,7 +225,7 @@ public class HamcrestCommonCoreMatchersTest {
 
 
     @Test
-    public void givenTestInput_WhenUsingEveryItemForMatchInCollection(){
+    public void givenTestInput_WhenUsingEveryItemForMatchInCollection() {
 
         // GIVEN
         List<String> testItems = Lists.newArrayList("Common", "Core", "Combinable");
@@ -237,7 +235,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTwoTestInputs_WhenUsingSameInstanceForMatch(){
+    public void givenTwoTestInputs_WhenUsingSameInstanceForMatch() {
 
         // GIVEN
         String string1 = "hamcrest";
@@ -248,7 +246,7 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
     @Test
-    public void givenTwoTestInputs_WhenUsingTheInstanceForMatch(){
+    public void givenTwoTestInputs_WhenUsingTheInstanceForMatch() {
         // GIVEN
         String string1 = "hamcrest";
         String string2 = string1;
@@ -258,3 +256,4 @@ public class HamcrestCommonCoreMatchersTest {
     }
 
 }
+
