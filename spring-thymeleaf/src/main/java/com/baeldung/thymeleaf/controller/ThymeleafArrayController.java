@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ThymeleafArrayController {
-    @GetMapping("/")
+    @GetMapping("/arrays")
     public String arrayController(Model model) {
         String[] continents = new String[7];
 
