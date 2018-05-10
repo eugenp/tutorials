@@ -82,6 +82,8 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(PointEntity.class);
         metadataSources.addAnnotatedClass(PolygonEntity.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.pojo.Person.class);
+        metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Student.class);
+        metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.VersionedStudent.class);
 
         Metadata metadata = metadataSources.buildMetadata();
         return metadata.getSessionFactoryBuilder()
