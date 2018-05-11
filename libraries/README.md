@@ -59,12 +59,12 @@
 - [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
 - [Guide to google-http-client](http://www.baeldung.com/google-http-client)
 - [Interact with Google Sheets from Java](http://www.baeldung.com/google-sheets-java-client)
-- [Programatically Create, Configure, and Run a Tomcat Server] (http://www.baeldung.com/tomcat-programmatic-setup)
+- [Programatically Create, Configure, and Run a Tomcat Server](http://www.baeldung.com/tomcat-programmatic-setup)
 - [A Docker Guide for Java](http://www.baeldung.com/docker-java-api)
 - [Exceptions in Netty](http://www.baeldung.com/netty-exception-handling)
 - [Creating and Configuring Jetty 9 Server in Java](http://www.baeldung.com/jetty-java-programmatic)
 - [Introduction To OpenCSV](http://www.baeldung.com/opencsv)
-- [Introduction to Akka Actors in Java] (http://www.baeldung.com/akka-actors-java)
+- [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
 - [Asynchronous HTTP with async-http-client in Java](https://github.com/eugenp/tutorials/tree/master/libraries)
 - [Introduction to Smooks](http://www.baeldung.com/smooks)
 - [WebSockets with AsyncHttpClient](http://www.baeldung.com/async-http-client-websockets)
@@ -72,6 +72,9 @@
 - [Introduction to OpenCSV](http://www.baeldung.com/opencsv)
 - [A Guide to Unirest](http://www.baeldung.com/unirest)
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
+- [A Guide to Apache Commons Collections CollectionUtils](http://www.baeldung.com/apache-commons-collection-utils)
+- [A Guide to Byte Buddy](http://www.baeldung.com/byte-buddy)
+- [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

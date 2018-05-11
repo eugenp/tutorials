@@ -8,8 +8,6 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.ConcurrencyManagement;
 import javax.ejb.ConcurrencyManagementType;
-import javax.ejb.Lock;
-import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
@@ -18,7 +16,7 @@ import javax.ejb.Startup;
 @ConcurrencyManagement(ConcurrencyManagementType.BEAN)
 public class CountryStateBeanManagedBean implements CountryState {
 
-    private volatile Map<String, List<String>> countryStatesMap = new HashMap<String, List<String>>();
+    private final Map<String, List<String>> countryStatesMap = new HashMap<String, List<String>>();
 
     @PostConstruct
     public synchronized void initialize() {

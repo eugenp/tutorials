@@ -28,7 +28,7 @@ public class RatingRetrieverUnitTest {
     private List<Rating> ratings;
     
     @Test
-    public void shouldAutowireByOrderValue() {
+    public void givenOrderOnComponents_whenInjected_thenAutowireByOrderValue() {
         assertThat(ratings.get(0).getRating(), is(equalTo(1)));
         assertThat(ratings.get(1).getRating(), is(equalTo(2)));
         assertThat(ratings.get(2).getRating(), is(equalTo(3)));
