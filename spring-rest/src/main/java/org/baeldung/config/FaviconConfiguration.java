@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.handler.SimpleUrlHandlerMapping;
 import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
@@ -36,7 +37,7 @@ public class FaviconConfiguration {
     //@Controller
     static class FaviconController {
         
-        @RequestMapping(value="favicon.ico", method="RequestMethod.GET")
+        @RequestMapping(value="favicon.ico", method=RequestMethod.GET)
         @ResponseBody
         void favicon() {}
     }
