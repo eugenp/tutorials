@@ -17,3 +17,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot Actuator](http://www.baeldung.com/spring-boot-actuators)
 - [Spring Webflux Filters](http://www.baeldung.com/spring-webflux-filters)
 - [Reactive Flow with MongoDB, Kotlin, and Spring WebFlux](http://www.baeldung.com/kotlin-mongodb-spring-webflux)
+- [A short example of real-time event streaming using Spring Webflux](http://inprogress.baeldung.com/?p=86195&preview=true) 
