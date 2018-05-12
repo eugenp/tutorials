@@ -19,10 +19,13 @@ public class StudentControllerConfig implements WebApplicationInitializer {
 
         root.setServletContext(sc);
 
-        // Manages the lifecycle of the root application context
-        sc.addListener(new ContextLoaderListener(root));
+        //Manages the lifecycle of the root application context.
+        //Conflicts with other root contexts in the application, so we've manually set the parent below.
+        //sc.addListener(new ContextLoaderListener(root));
 
-        DispatcherServlet dv = new DispatcherServlet(new GenericWebApplicationContext());
+        GenericWebApplicationContext webApplicationContext = new GenericWebApplicationContext();
+        webApplicationContext.setParent(root);
+        DispatcherServlet dv = new DispatcherServlet(webApplicationContext);
 
         ServletRegistration.Dynamic appServlet = sc.addServlet("test-mvc", dv);
         appServlet.setLoadOnStartup(1);

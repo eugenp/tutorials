@@ -11,4 +11,4 @@ The application uses [Spring Boot](http://projects.spring.io/spring-boot/), so i
 To view the running application, visit [http://localhost:8080](http://localhost:8080) in your browser
 
 ###Relevant Articles:
-- [Spring Data with Spring Security](http://www.baeldung.com/spring-data-with-spring-security)
+- [Spring Data with Spring Security](http://www.baeldung.com/spring-data-security)

@@ -12,6 +12,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
+import static org.hamcrest.Matchers.emptyIterable;
 
 import java.util.Collections;
 import java.util.List;
@@ -56,6 +57,12 @@ public class HamcrestExamplesUnitTest {
     public final void givenCollectionIsEmpty_whenChecking_thenEmpty() {
         final List<String> collection = Lists.newArrayList();
         assertThat(collection, empty());
+    }
+    
+    @Test
+    public final void givenIterableIsEmpty_whenChecking_thenEmpty() {
+        final Iterable<String> collection = Lists.newArrayList();
+        assertThat(collection, emptyIterable());
     }
 
     @Test
