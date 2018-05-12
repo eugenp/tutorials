@@ -140,3 +140,4 @@
 - [Introduction to SSL in Java](http://www.baeldung.com/java-ssl)
 - [Java KeyStore API](http://www.baeldung.com/java-keystore)
 - [Using Java Assertions](http://www.baeldung.com/java-assert)
+- [Guide to Java Clock Class](http://www.baeldung.com/java-clock)
