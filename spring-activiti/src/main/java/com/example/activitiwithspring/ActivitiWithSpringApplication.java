@@ -10,3 +10,4 @@ public class ActivitiWithSpringApplication {
         SpringApplication.run(ActivitiWithSpringApplication.class, args);
     }
 }
+
