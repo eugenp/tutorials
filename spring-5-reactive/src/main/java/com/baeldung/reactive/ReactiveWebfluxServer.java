@@ -5,7 +5,6 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.stream.Stream;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,10 +28,6 @@ public class ReactiveWebfluxServer {
 
     private String getCurrentTimeStamp() {
         return new SimpleDateFormat("yyyy-MM-dd:HH-mm-ss").format(new Date());
-    }
-
-    public static void main(String[] args) {
-        SpringApplication.run(ReactiveWebfluxServer.class, args);
     }
 
 }
