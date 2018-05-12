@@ -147,3 +147,4 @@
 - [Java KeyStore API](http://www.baeldung.com/java-keystore)
 - [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
 - [Guide to the Java Clock Class](http://www.baeldung.com/java-clock)
+- [Using Java Assertions](http://www.baeldung.com/java-assert)
