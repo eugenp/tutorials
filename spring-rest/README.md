@@ -18,3 +18,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring – Log Incoming Requests](http://www.baeldung.com/spring-http-logging)
 - [RequestBody and ResponseBody Annotations](http://www.baeldung.com/requestbody-and-responsebody-annotations)
 - [Introduction to CheckStyle](http://www.baeldung.com/checkstyle-java)
+- [Guide to DeferredResult in Spring](http://www.baeldung.com/spring-deferred-result)
+- [Spring Custom Property Editor](http://www.baeldung.com/spring-mvc-custom-property-editor)
