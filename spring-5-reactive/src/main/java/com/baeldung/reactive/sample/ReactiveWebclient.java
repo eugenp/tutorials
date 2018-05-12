@@ -1,4 +1,4 @@
-package com.baeldung.reactive;
+package com.baeldung.reactive.sample;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,11 +1,10 @@
-package com.baeldung.reactive;
+package com.baeldung.reactive.sample;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.stream.Stream;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.util.function.Tuple2;
 
-@SpringBootApplication
 @RestController
 public class ReactiveWebfluxServer {
 
