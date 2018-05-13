@@ -1,8 +1,8 @@
 grammar ServerLog;
 
 log : logEntry+ EOF ;
-logEntry : datetime WS level WS message NEWLINE;
-datetime : date WS dateTime;
+logEntry : serverTime WS level WS message NEWLINE;
+serverTime : date WS dateTime;
 message : (WORD | WS)+ ;
 level : ('DEBUG' | 'INFO' | 'ERROR');
 date : NUMBER PAUSE month PAUSE NUMBER;
