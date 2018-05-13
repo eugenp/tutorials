@@ -12,4 +12,13 @@
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/uploadFile</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>MultiPartServlet</servlet-name>
+    <servlet-class>com.baeldung.servlets.MultipartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MultiPartServlet</servlet-name>
+    <url-pattern>/multiPartServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
