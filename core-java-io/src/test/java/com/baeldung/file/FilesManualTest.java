@@ -77,6 +77,6 @@ public class FilesManualTest {
         bw.newLine();
         bw.close();
 
-        assertThat(StreamUtils.getStringFromInputStream(new FileInputStream(fileName))).isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\n");
+        assertThat(StreamUtils.getStringFromInputStream(new FileInputStream(fileName))).isEqualTo("UK\r\n" + "US\r\n" + "Germany\r\n" + "Spain\r\n");
     }
 }
