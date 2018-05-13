@@ -40,12 +40,6 @@
     <bean id="helloController" class="com.baeldung.spring.controller.HelloController"/>
     <!-- End: Mapping by SimpleUrlHandlerMapping -->
 
-    <!-- Start: Mapping by ControllerClassNameHandlerMapping -->
-    <bean
-            class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
-        <property name="caseSensitive" value="true"/>
-        <property name="order" value="0"/>
-    </bean>
 
     <bean class="com.baeldung.spring.controller.HelloGuestController"/>
     <!-- End: Mapping by ControllerClassNameHandlerMapping -->

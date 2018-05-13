@@ -3,6 +3,7 @@ package com.baeldung.internationalization;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -32,7 +33,7 @@ public class NumbersCurrenciesFormattingUnitTest {
         Locale usLocale = Locale.US;
         Locale plLocale = new Locale("pl", "PL");
         Locale deLocale = Locale.GERMANY;
-        double number = 102_300.456d;
+        BigDecimal number = new BigDecimal(102_300.456d);
 
         NumberFormat usNumberFormat = NumberFormat.getCurrencyInstance(usLocale);
         NumberFormat plNumberFormat = NumberFormat.getCurrencyInstance(plLocale);
@@ -46,7 +47,7 @@ public class NumbersCurrenciesFormattingUnitTest {
     @Test
     public void givenLocaleAndNumber_whenSpecificDecimalFormat_thenSpecificOutput() {
         Locale.setDefault(Locale.FRANCE);
-        double number = 102_300.456d;
+        BigDecimal number = new BigDecimal(102_300.456d);
 
         DecimalFormat zeroDecimalFormat = new DecimalFormat("000000000.0000");
         DecimalFormat hashDecimalFormat = new DecimalFormat("###,###.#");
@@ -60,7 +61,7 @@ public class NumbersCurrenciesFormattingUnitTest {
     @Test
     public void givenLocaleAndNumber_whenSpecificDecimalFormatSymbols_thenSpecificOutput() {
         Locale.setDefault(Locale.FRANCE);
-        double number = 102_300.456d;
+        BigDecimal number = new BigDecimal(102_300.456d);
 
         DecimalFormatSymbols decimalFormatSymbols = DecimalFormatSymbols.getInstance();
         decimalFormatSymbols.setGroupingSeparator('^');

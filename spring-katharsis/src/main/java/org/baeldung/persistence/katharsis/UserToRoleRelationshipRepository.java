@@ -1,7 +1,7 @@
 package org.baeldung.persistence.katharsis;
 
-import io.katharsis.queryParams.QueryParams;
-import io.katharsis.repository.RelationshipRepository;
+import io.katharsis.legacy.queryParams.QueryParams;
+import io.katharsis.legacy.repository.RelationshipRepository;
 
 import java.util.HashSet;
 import java.util.Set;
