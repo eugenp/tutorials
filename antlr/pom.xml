@@ -1,12 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>antlr</artifactId>
-    <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
     <name>antlr</name>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -19,7 +15,7 @@
             <plugin>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
-                <version>4.7.1</version>
+                <version>${antlr.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -31,6 +27,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${mojo.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -77,5 +74,6 @@
         <java.version>1.8</java.version>
         <antlr.version>4.7.1</antlr.version>
         <junit.version>4.12</junit.version>
+        <mojo.version>3.0.0</mojo.version>
     </properties>
 </project>
