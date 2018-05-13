@@ -3,6 +3,7 @@ package com.baeldung.antlr;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import com.baeldung.antlr.log.ServerLogWalker;
 import com.baeldung.antlr.log.model.LogLevel;
 import com.baeldung.antlr.log.model.LogEntry;
 import org.antlr.v4.runtime.CommonTokenStream;
