@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import org.junit.Test;
 
@@ -78,6 +79,13 @@ public class CollectionsInteroperabilityUnitTest {
     List<String> vavrList = List.of("Java", "Haskell", "Scala", "Java");
     LinkedHashSet<String> linkedSet = (LinkedHashSet<String>) vavrList.toLinkedSet();
     assertEquals(3, linkedSet.size());
+  }
+
+  @Test
+  public void givenParams_WhenVavrList_thenReturnJavaOptional() {
+    List<String> vavrList = List.of("Java");
+    Optional<String> optional = vavrList.toJavaOptional();
+    assertEquals("Java", optional.get());
   }
 
 }
