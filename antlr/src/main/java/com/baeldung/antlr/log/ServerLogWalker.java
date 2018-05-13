@@ -45,7 +45,7 @@ public class ServerLogWalker extends ServerLogBaseListener {
     }
 
     @Override
-    public void enterDatetime(ServerLogParser.DatetimeContext ctx) {
+    public void enterServerTime(ServerLogParser.ServerTimeContext ctx) {
         currentLogEntry.setDateTime(LocalDateTime.parse(ctx.getText(), DEFAULT_DATETIME_FORMATTER));
     }
 
