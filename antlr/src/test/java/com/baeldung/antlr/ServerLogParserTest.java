@@ -1,6 +1,5 @@
 package com.baeldung.antlr;
 
-import com.baeldung.antlr.log.ServerLogWalker;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
