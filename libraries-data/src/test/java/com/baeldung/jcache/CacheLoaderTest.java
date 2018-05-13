@@ -21,7 +21,8 @@ public class CacheLoaderTest {
 
     @Before
     public void setup() {
-        CachingProvider cachingProvider = Caching.getCachingProvider();
+        // Adding fully qualified class name because of multiple Cache Provider (Ignite and Hazelcast)
+        CachingProvider cachingProvider = Caching.getCachingProvider("com.hazelcast.cache.HazelcastCachingProvider");
         CacheManager cacheManager = cachingProvider.getCacheManager();
         MutableConfiguration<Integer, String> config = new MutableConfiguration<Integer, String>().setReadThrough(true).setCacheLoaderFactory(new FactoryBuilder.SingletonFactory<>(new SimpleCacheLoader()));
         this.cache = cacheManager.createCache("SimpleCache", config);
@@ -29,7 +30,7 @@ public class CacheLoaderTest {
 
     @After
     public void tearDown() {
-        Caching.getCachingProvider().getCacheManager().destroyCache(CACHE_NAME);
+        Caching.getCachingProvider("com.hazelcast.cache.HazelcastCachingProvider").getCacheManager().destroyCache(CACHE_NAME);
     }
 
     @Test
