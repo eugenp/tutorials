@@ -61,7 +61,7 @@
 - [Creating and Configuring Jetty 9 Server in Java](http://www.baeldung.com/jetty-java-programmatic)
 - [Introduction To OpenCSV](http://www.baeldung.com/opencsv)
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
-- [Asynchronous HTTP with async-http-client in Java](https://github.com/eugenp/tutorials/tree/master/libraries)
+- [Asynchronous HTTP with async-http-client in Java](http://www.baeldung.com/async-http-client)
 - [Introduction to Smooks](http://www.baeldung.com/smooks)
 - [WebSockets with AsyncHttpClient](http://www.baeldung.com/async-http-client-websockets)
 - [A Guide to Infinispan in Java](http://www.baeldung.com/infinispan)
@@ -70,7 +70,16 @@
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
 - [A Guide to Apache Commons Collections CollectionUtils](http://www.baeldung.com/apache-commons-collection-utils)
 - [A Guide to Byte Buddy](http://www.baeldung.com/byte-buddy)
+- [Introduction to jOOL](http://www.baeldung.com/jool)
+- [Consumer Driven Contracts with Pact](http://www.baeldung.com/pact-junit-consumer-driven-contracts)
+- [Apache Commons BeanUtils](http://www.baeldung.com/apache-commons-beanutils)
+- [Apache Commons Collections BidiMap](http://www.baeldung.com/commons-collections-bidi-map)
+- [Introduction to Atlassian Fugue](http://www.baeldung.com/java-fugue)
+- [Publish and Receive Messages with Nats Java Client](http://www.baeldung.com/nats-java-client)
 - [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
+- [Apache Commons Collections MapUtils](http://www.baeldung.com/apache-commons-map-utils)
+- [Testing Netty with EmbeddedChannel](http://www.baeldung.com/testing-netty-embedded-channel)
+
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

@@ -25,3 +25,5 @@
 - [Zipping and Unzipping in Java](http://www.baeldung.com/java-compress-and-uncompress)
 - [Java NIO2 Path API](http://www.baeldung.com/java-nio-2-path)
 - [A Guide to WatchService in Java NIO2](http://www.baeldung.com/java-nio2-watchservice)
+- [Guide to Java NIO2 Asynchronous Channel APIs](http://www.baeldung.com/java-nio-2-async-channels)
+- [A Guide to NIO2 Asynchronous Socket Channel](http://www.baeldung.com/java-nio2-async-socket-channel)

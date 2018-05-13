@@ -47,7 +47,7 @@ public class ToggleIntegrationTest {
 
         mockMvc.perform(post("/increaseSalary").param("id", emp.getId() + "")).andExpect(status().is(200));
 
-        emp = employeeRepository.findOne(1L);
+        emp = employeeRepository.findById(1L).orElse(null);
         assertEquals("salary incorrect", 2000, emp.getSalary(), 0.5);
     }
 
@@ -60,7 +60,7 @@ public class ToggleIntegrationTest {
 
         mockMvc.perform(post("/increaseSalary").param("id", emp.getId() + "")).andExpect(status().is(200));
 
-        emp = employeeRepository.findOne(1L);
+        emp = employeeRepository.findById(1L).orElse(null);
         assertEquals("salary incorrect", 2200, emp.getSalary(), 0.5);
     }
 }
