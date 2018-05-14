@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-import com.baeldung.optional.Optionals;
+import com.baeldung.java9.optional.Optionals;
 
 public class OptionalsTest {
 
@@ -39,7 +39,7 @@ public class OptionalsTest {
     public void givenGuavaOptional_whenInvoke_thenOptional() {
         String name = "Filan Fisteku";
         com.google.common.base.Optional<String> stringOptional = com.google.common.base.Optional.of(name);
-        assertEquals(name, Optionals.getOptionalGuavaName(stringOptional));
+        assertEquals(stringOptional, Optionals.getOptionalGuavaName(stringOptional));
     }
 
     @Test
