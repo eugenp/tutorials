@@ -27,11 +27,11 @@ public class SuperPublic {
         privateMethod();
         defaultMethod();
         protectedMethod();
-        publicMethod();    
+        publicMethod(); // Available in the same class only.
     }
 }
 
-//Only public or default access modifiers are permitted
+// Only public or default access modifiers are permitted
 class SuperDefault {
     public void publicMethod() {
         System.out.println(this.getClass().getName() + " publicMethod()");
