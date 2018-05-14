@@ -1,5 +1,6 @@
 package com.baeldung.servlets;
 
+import javax.servlet.annotation.WebServlet;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -14,6 +15,10 @@ import java.util.List;
 
 import static com.baeldung.Constants.*;
 
+@WebServlet(
+    name = "UploadServlet",
+    urlPatterns = {"/uploadFile"}
+)
 public class UploadServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
