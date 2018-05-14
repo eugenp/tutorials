@@ -8,5 +8,11 @@ public class VariableHidingDemo {
         HideVariable variable = new HideVariable();
         variable.printLocalVariable();
         variable.printInstanceVariable();
+
+        ParentVariable parentVariable = new ParentVariable();
+        ParentVariable childVariable = new ChildVariable();
+
+        parentVariable.printInstanceVariable();
+        childVariable.printInstanceVariable();
     }
 }

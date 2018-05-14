@@ -5,5 +5,9 @@ package com.baeldung.scope.variable;
  */
 public class ChildVariable extends ParentVariable {
 
-    String instanceVariable = "parent variable";
+    String instanceVariable = "child variable";
+
+    public void printInstanceVariable() {
+        System.out.println(instanceVariable);
+    }
 }
