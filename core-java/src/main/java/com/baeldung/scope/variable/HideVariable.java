@@ -5,19 +5,19 @@ package com.baeldung.scope.variable;
  */
 public class HideVariable {
 
-    private String instanceVariable = "this is instance variable";
+    private String message = "this is instance variable";
 
     HideVariable() {
-        instanceVariable = "constructor local variable";
-        System.out.println(instanceVariable);
+        String message = "constructor local variable";
+        System.out.println(message);
     }
 
     public void printLocalVariable() {
-        instanceVariable = "method local variable";
-        System.out.println(instanceVariable);
+        String message = "method local variable";
+        System.out.println(message);
     }
 
     public void printInstanceVariable() {
-        System.out.println(this.instanceVariable);
+        System.out.println(this.message);
     }
 }
