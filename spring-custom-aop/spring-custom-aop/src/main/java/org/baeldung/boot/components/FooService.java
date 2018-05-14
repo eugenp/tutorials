@@ -10,11 +10,11 @@ public class FooService {
 
     @Autowired
     private FooRepository fooRepository;
-    
+
     public Foo getFooWithId(Integer id) throws Exception {
         return fooRepository.findOne(id);
     }
-    
+
     public Foo getFooWithName(String name) {
         return fooRepository.findByName(name);
     }

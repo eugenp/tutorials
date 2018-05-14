@@ -1,5 +1,12 @@
 package com.baeldung.annotation.servletcomponentscan;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
+import javax.servlet.FilterRegistration;
+import javax.servlet.ServletContext;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,20 +18,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.servlet.FilterRegistration;
-import javax.servlet.ServletContext;
-
-import static org.junit.Assert.*;
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootPlainApp.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = SpringBootPlainApp.class)
 @AutoConfigureMockMvc
 @TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithoutServletComponentIntegrationTest {
 
-    @Autowired private ServletContext servletContext;
+    @Autowired
+    private ServletContext servletContext;
 
-    @Autowired private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
     @Test
     public void givenServletContext_whenAccessAttrs_thenNotFound() {
@@ -46,5 +50,3 @@ public class SpringBootWithoutServletComponentIntegrationTest {
     }
 
 }
-
-

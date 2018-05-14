@@ -16,7 +16,6 @@ public class FooJsonIntegrationTest {
 
     @Autowired
     private JacksonTester<Foo> json;
-  
 
     @Test
     public void testSerialize() throws Exception {
@@ -30,6 +29,6 @@ public class FooJsonIntegrationTest {
     public void testDeserialize() throws Exception {
         String content = "{\"id\":4,\"name\":\"Foo_Name_4\"}";
         assertThat(this.json.parseObject(content).getName()).isEqualTo("Foo_Name_4");
-        assertThat(this.json.parseObject(content).getId()==4);
+        assertThat(this.json.parseObject(content).getId() == 4);
     }
 }

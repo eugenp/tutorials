@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
 
     @RequestMapping("/")
-    public String root(){
+    public String root() {
         return "Index Page";
     }
-    
+
     @RequestMapping("/local")
-    public String local(){
+    public String local() {
         return "/local";
     }
 }
