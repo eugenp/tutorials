@@ -8,13 +8,6 @@
     <name>ratpack</name>
     <url>http://maven.apache.org</url>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <ratpack.version>1.4.6</ratpack.version>
-    </properties>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -22,14 +15,12 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>io.ratpack</groupId>
             <artifactId>ratpack-spring-boot-starter</artifactId>
             <version>${ratpack.version}</version>
             <type>pom</type>
         </dependency>
-
         <dependency>
             <groupId>io.ratpack</groupId>
             <artifactId>ratpack-core</artifactId>
@@ -59,18 +50,17 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.193</version>
+            <version>${h2database.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.3</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore</artifactId>
-            <version>4.4.6</version>
+            <version>${httpcore.version}</version>
         </dependency>
     </dependencies>
 
@@ -82,5 +72,15 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <ratpack.version>1.4.6</ratpack.version>
+        <httpclient.version>4.5.3</httpclient.version>
+        <httpcore.version>4.4.6</httpcore.version>
+        <h2database.version>1.4.193</h2database.version>
+    </properties>
 
 </project>

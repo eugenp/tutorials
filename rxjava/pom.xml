@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>rxjava</artifactId>
@@ -8,8 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-java</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    	<relativePath>../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -36,7 +37,7 @@
             <artifactId>rxjava-string</artifactId>
             <version>1.1.1</version>
         </dependency>
-      
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -50,26 +51,20 @@
             <version>1.7.0</version>
         </dependency>
         <dependency>
-    		<groupId>com.github.davidmoten</groupId>
-    		<artifactId>rxjava-jdbc</artifactId>
-    		<version>${rx.java.jdbc.version}</version>
-		</dependency>
-		<dependency>
-		    <groupId>com.h2database</groupId>
-		    <artifactId>h2</artifactId>
-		    <version>${h2.version}</version>
-		    <scope>runtime</scope>
-		</dependency>
-		<dependency>
+            <groupId>com.github.davidmoten</groupId>
+            <artifactId>rxjava-jdbc</artifactId>
+            <version>${rx.java.jdbc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>22.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.jakewharton.rxrelay2</groupId>
@@ -79,7 +74,7 @@
     </dependencies>
 
     <properties>
-    	<assertj.version>3.8.0</assertj.version>
+        <assertj.version>3.8.0</assertj.version>
         <rx.java.version>1.2.5</rx.java.version>
         <rx.java.jdbc.version>0.7.11</rx.java.jdbc.version>
         <h2.version>1.4.196</h2.version>
