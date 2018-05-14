@@ -12,7 +12,7 @@ public class Optionals {
     }
 
     public static Optional<String> getName(Optional<String> name) {
-        return Optional.ofNullable(name).orElse(Optional.empty());
+        return name.or(() -> Optional.empty());
     }
 
     public static com.google.common.base.Optional<String> getOptionalGuavaName(com.google.common.base.Optional<String> name) {
