@@ -1,0 +1,11 @@
+package com.baeldung.accessmodifiers.another;
+
+import com.baeldung.accessmodifiers.SuperPublic;
+
+public class AnotherSubClass extends SuperPublic {
+    public void AnotherSubClass() {
+        SuperPublic.publicMethod(); // Available everywhere
+        SuperPublic.protectedMethod(); // Available in subclass
+    }
+
+}
