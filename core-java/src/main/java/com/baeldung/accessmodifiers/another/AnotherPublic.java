@@ -6,5 +6,4 @@ public class AnotherPublic {
     public AnotherPublic() {
         SuperPublic.publicMethod(); // Available everywhere
     }
-
 }

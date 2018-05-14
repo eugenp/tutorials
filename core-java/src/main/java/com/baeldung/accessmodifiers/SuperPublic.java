@@ -17,7 +17,7 @@ public class SuperPublic {
         System.out.println(SuperPublic.class.getName() + " protectedMethod()");
     }
     
-    // Only available within the same class only
+    // Available within the same class only
     static private void privateMethod() {
         System.out.println(SuperPublic.class.getName() + " privateMethod()");
     }
