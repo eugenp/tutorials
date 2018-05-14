@@ -43,13 +43,13 @@ public class EmployeeRepositoryIntegrationTest {
         Employee emp = new Employee("test");
         entityManager.persistAndFlush(emp);
 
-        Employee fromDb = employeeRepository.findById(emp.getId());
+        Employee fromDb = employeeRepository.findById(emp.getId()).orElse(null);
         assertThat(fromDb.getName()).isEqualTo(emp.getName());
     }
 
     @Test
     public void whenInvalidId_thenReturnNull() {
-        Employee fromDb = employeeRepository.findById(-11L);
+        Employee fromDb = employeeRepository.findById(-11l).orElse(null);
         assertThat(fromDb).isNull();
     }
 

@@ -9,3 +9,4 @@
 - [Hibernate Interceptors](http://www.baeldung.com/hibernate-interceptor)
 - [JPA Attribute Converters](http://www.baeldung.com/jpa-attribute-converters)
 - [Mapping LOB Data in Hibernate](http://www.baeldung.com/hibernate-lob)
+- [@Immutable in Hibernate](http://www.baeldung.com/hibernate-immutable)

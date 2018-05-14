@@ -8,12 +8,44 @@
     <packaging>war</packaging>
     <version>1.0</version>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>${org.springframework.boot.spring-boot-starter-parent.version}</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-webapp${app.server}</artifactId>
+            <version>${cas.version}</version>
+            <type>war</type>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-json-service-registry</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-jdbc</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-jdbc-drivers</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>com.rimerosolutions.maven.plugins</groupId>
                 <artifactId>wrapper-maven-plugin</artifactId>
-                <version>0.0.4</version>
+                <version>${wrapper-maven-plugin.version}</version>
                 <configuration>
                     <verifyDownload>true</verifyDownload>
                     <checksumAlgorithm>MD5</checksumAlgorithm>
@@ -31,7 +63,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <warName>cas</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -52,50 +84,47 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
         </plugins>
         <finalName>cas</finalName>
     </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.apereo.cas</groupId>
-            <artifactId>cas-server-webapp${app.server}</artifactId>
-            <version>${cas.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-          <groupId>org.apereo.cas</groupId>
-          <artifactId>cas-server-support-json-service-registry</artifactId>
-          <version>${cas.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>org.apereo.cas</groupId>
-          <artifactId>cas-server-support-jdbc</artifactId>
-          <version>${cas.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>org.apereo.cas</groupId>
-          <artifactId>cas-server-support-jdbc-drivers</artifactId>
-          <version>${cas.version}</version>
-        </dependency>
-    </dependencies>
-
-    <properties>
-        <cas.version>5.1.4</cas.version>
-        <springboot.version>1.5.3.RELEASE</springboot.version>
-        <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
-        <app.server>-tomcat</app.server> 
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <id>pgp</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.github.s4u.plugins</groupId>
+                        <artifactId>pgpverify-maven-plugin</artifactId>
+                        <version>${pgpverify-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <pgpKeyServer>hkp://pool.sks-keyservers.net</pgpKeyServer>
+                            <pgpKeysCachePath>${settings.localRepository}/pgpkeys-cache</pgpKeysCachePath>
+                            <scope>test</scope>
+                            <verifyPomFiles>true</verifyPomFiles>
+                            <failNoSignature>false</failNoSignature>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <repositories>
         <repository>
@@ -128,35 +157,19 @@
         </repository>
     </repositories>
 
-    <profiles>
-        <profile>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <id>pgp</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.github.s4u.plugins</groupId>
-                        <artifactId>pgpverify-maven-plugin</artifactId>
-                        <version>1.1.0</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>check</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <pgpKeyServer>hkp://pool.sks-keyservers.net</pgpKeyServer>
-                            <pgpKeysCachePath>${settings.localRepository}/pgpkeys-cache</pgpKeysCachePath>
-                            <scope>test</scope>
-                            <verifyPomFiles>true</verifyPomFiles>
-                            <failNoSignature>false</failNoSignature>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    <properties>
+        <cas.version>5.1.4</cas.version>
+        <springboot.version>1.5.3.RELEASE</springboot.version>
+        <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
+        <app.server>-tomcat</app.server>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.springframework.boot.spring-boot-starter-parent.version>2.0.0.M7</org.springframework.boot.spring-boot-starter-parent.version>
+        <wrapper-maven-plugin.version>0.0.4</wrapper-maven-plugin.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <pgpverify-maven-plugin.version>1.1.0</pgpverify-maven-plugin.version>
+    </properties>
+
 </project>

@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>testing</artifactId>
@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <artifactId>parent-java</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    	<relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -18,11 +18,6 @@
             <groupId>com.insightfullogic</groupId>
             <artifactId>lambda-behave</artifactId>
             <version>0.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -64,7 +59,7 @@
             <version>${pitest.version}</version>
             <type>pom</type>
         </dependency>
-        
+
         <dependency>
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>
@@ -87,7 +82,7 @@
             <artifactId>jgotesting</artifactId>
             <version>${jgotesting.version}</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.jukito</groupId>
             <artifactId>jukito</artifactId>

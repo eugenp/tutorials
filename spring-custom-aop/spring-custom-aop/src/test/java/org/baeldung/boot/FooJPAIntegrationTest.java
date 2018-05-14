@@ -27,8 +27,8 @@ public class FooJPAIntegrationTest {
         this.entityManager.persist(new Foo("Foo_Name_2"));
         Foo foo = this.repository.findByName("Foo_Name_2");
         assertNotNull(foo);
-        assertEquals("Foo_Name_2",foo.getName());
-        // Due to having Insert query for Foo with Id 1, so TestEntityManager generates new Id of 2       
-        assertEquals(2l,foo.getId().longValue());
+        assertEquals("Foo_Name_2", foo.getName());
+        // Due to having Insert query for Foo with Id 1, so TestEntityManager generates new Id of 2
+        assertEquals(2l, foo.getId().longValue());
     }
 }

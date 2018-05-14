@@ -23,9 +23,7 @@ import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.doReturn;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(
-  classes = DemoApplication.class,
-  webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = DemoApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class FooComponentIntegrationTest {
 
     @Autowired
