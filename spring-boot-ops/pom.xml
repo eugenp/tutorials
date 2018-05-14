@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baeldung</groupId>
-	<artifactId>spring-boot-tomcat</artifactId>
+	<artifactId>spring-boot-ops</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>spring-boot-tomcat</name>
-	<description>Demo project for Spring Boot and Tomcat setup</description>
+	<name>spring-boot-ops</name>
+	<description>Demo project for Spring Boot</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
