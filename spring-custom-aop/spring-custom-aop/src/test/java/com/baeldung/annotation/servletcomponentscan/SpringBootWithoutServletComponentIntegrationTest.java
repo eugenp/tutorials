@@ -22,9 +22,11 @@ import static org.junit.Assert.*;
 @TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithoutServletComponentIntegrationTest {
 
-    @Autowired private ServletContext servletContext;
+    @Autowired
+    private ServletContext servletContext;
 
-    @Autowired private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
     @Test
     public void givenServletContext_whenAccessAttrs_thenNotFound() {
@@ -46,5 +48,3 @@ public class SpringBootWithoutServletComponentIntegrationTest {
     }
 
 }
-
-

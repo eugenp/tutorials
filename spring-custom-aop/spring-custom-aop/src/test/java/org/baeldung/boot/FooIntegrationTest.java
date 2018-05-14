@@ -1,4 +1,5 @@
 package org.baeldung.boot;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,28 +17,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes=DemoApplication.class,webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = DemoApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
 public class FooIntegrationTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
-    
-    
+
     @Test
-    public void givenInquiryingFooWithId_whenIdIsValid_thenHttpStatusOK(){
-        Map<String,String> pathVariables = new HashMap<String,String>();
+    public void givenInquiryingFooWithId_whenIdIsValid_thenHttpStatusOK() {
+        Map<String, String> pathVariables = new HashMap<String, String>();
         pathVariables.put("id", "1");
         ResponseEntity<Foo> fooResponse = testRestTemplate.getForEntity("/{id}", Foo.class, pathVariables);
         Assert.assertNotNull(fooResponse);
-        Assert.assertEquals(HttpStatus.OK,fooResponse.getStatusCode());
+        Assert.assertEquals(HttpStatus.OK, fooResponse.getStatusCode());
     }
-    
+
     @Test
-    public void givenInquiryingFooWithName_whenNameIsValid_thenHttpStatusOK(){
-        Map<String,String> pathVariables = new HashMap<String,String>();
+    public void givenInquiryingFooWithName_whenNameIsValid_thenHttpStatusOK() {
+        Map<String, String> pathVariables = new HashMap<String, String>();
         pathVariables.put("name", "Foo_Name");
         ResponseEntity<Foo> fooResponse = testRestTemplate.getForEntity("/?name={name}", Foo.class, pathVariables);
         Assert.assertNotNull(fooResponse);
-        Assert.assertEquals(HttpStatus.OK,fooResponse.getStatusCode());
+        Assert.assertEquals(HttpStatus.OK, fooResponse.getStatusCode());
     }
 }
