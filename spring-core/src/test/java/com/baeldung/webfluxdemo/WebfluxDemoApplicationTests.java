@@ -1,6 +1,6 @@
 package com.baeldung.webfluxdemo;
 
-import com.example.webfluxdemo.model.Event;
+import com.baeldung.webfluxdemo.model.Event;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

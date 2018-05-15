@@ -1,8 +1,9 @@
 package com.baeldung.webfluxdemo.repository;
 
-import com.example.webfluxdemo.model.Event;
+
+import com.baeldung.webfluxdemo.model.Event;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 
 
-public interface EventRepository extends ReactiveMongoRepository<Event, String> {
+public interface EventRepo extends ReactiveMongoRepository<Event, String> {
 }
