@@ -7,12 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages="com.baeldung.utils")
+@ComponentScan(basePackages = "com.baeldung.utils")
 public class Application {
 
-	@RolesAllowed("*")
-	public static void main(String[] args) {
-            SpringApplication.run(Application.class, args);
-	}
+    @RolesAllowed("*")
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 }

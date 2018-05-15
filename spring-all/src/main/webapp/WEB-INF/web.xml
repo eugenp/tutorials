@@ -8,8 +8,8 @@
          application initializers. -->
     <!--<absolute-ordering>
     </absolute-ordering>-->
-	
-	 <!-- load root application context -->
+
+    <!-- root application context -->
     <!--<listener>
         <listener-class>
             org.springframework.web.context.ContextLoaderListener

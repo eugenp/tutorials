@@ -22,7 +22,8 @@ import static org.junit.Assert.*;
 @TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithServletComponentIntegrationTest {
 
-    @Autowired private ServletContext servletContext;
+    @Autowired
+    private ServletContext servletContext;
 
     @Test
     public void givenServletContext_whenAccessAttrs_thenFoundAttrsPutInServletListner() {
@@ -37,12 +38,11 @@ public class SpringBootWithServletComponentIntegrationTest {
         FilterRegistration filterRegistration = servletContext.getFilterRegistration("hello filter");
 
         assertNotNull(filterRegistration);
-        assertTrue(filterRegistration
-          .getServletNameMappings()
-          .contains("echo servlet"));
+        assertTrue(filterRegistration.getServletNameMappings().contains("echo servlet"));
     }
 
-    @Autowired private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
     @Test
     public void givenServletFilter_whenGetHello_thenRequestFiltered() {
@@ -58,8 +58,4 @@ public class SpringBootWithServletComponentIntegrationTest {
         assertEquals("filtering echo", responseEntity.getBody());
     }
 
-
-
 }
-
-
