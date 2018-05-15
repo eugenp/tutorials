@@ -196,6 +196,12 @@
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>2.4.5</version>
+        </dependency>
     </dependencies>
 
     <build>
