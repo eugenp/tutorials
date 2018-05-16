@@ -32,7 +32,7 @@ public class CountryStateCacheBeanTest {
 
         String[] expectedStates = { "Texas", "Alabama", "Alaska", "Arizona", "Arkansas" };
 
-        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateContainerManagedBean");
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/ejb-beans/CountryStateContainerManagedBean");
         List<String> actualStates = countryStateBean.getStates("UnitedStates");
         assertNotNull(actualStates);
         assertArrayEquals(expectedStates, actualStates.toArray());
@@ -43,7 +43,7 @@ public class CountryStateCacheBeanTest {
 
         String[] expectedStates = { "Texas", "Alabama", "Alaska", "Arizona", "Arkansas" };
 
-        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateBeanManagedBean");
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/ejb-beans/CountryStateBeanManagedBean");
         List<String> actualStates = countryStateBean.getStates("UnitedStates");
         assertNotNull(actualStates);
         assertArrayEquals(expectedStates, actualStates.toArray());
@@ -54,7 +54,7 @@ public class CountryStateCacheBeanTest {
         
         String[] expectedStates = { "California", "Florida", "Hawaii", "Pennsylvania", "Michigan" };
         
-        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateContainerManagedBean");
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/ejb-beans/CountryStateContainerManagedBean");
         countryStateBean.setStates("UnitedStates", Arrays.asList(expectedStates));
         
         List<String> actualStates = countryStateBean.getStates("UnitedStates");
@@ -67,7 +67,7 @@ public class CountryStateCacheBeanTest {
         
         String[] expectedStates = { "California", "Florida", "Hawaii", "Pennsylvania", "Michigan" };
         
-        CountryState countryStateBean = (CountryState) context.lookup("java:global/singleton-ejb-bean/CountryStateBeanManagedBean");
+        CountryState countryStateBean = (CountryState) context.lookup("java:global/ejb-beans/CountryStateBeanManagedBean");
         countryStateBean.setStates("UnitedStates", Arrays.asList(expectedStates));
         
         List<String> actualStates = countryStateBean.getStates("UnitedStates");
