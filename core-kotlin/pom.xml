@@ -206,7 +206,7 @@
         <kotlinx.version>0.22.5</kotlinx.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
         <kodein.version>4.1.0</kodein.version>
-        <klaxon.version>3.0.2</klaxon.version>
+        <klaxon.version>3.0.3</klaxon.version>
         <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <khttp.version>0.1.0</khttp.version>
 
@@ -214,7 +214,7 @@
         <junit.platform.version>1.2.0</junit.platform.version>
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <junit4.version>4.12</junit4.version>
-        <assertj.version>3.9.1</assertj.version>
+        <assertj.version>3.10.0</assertj.version>
     </properties>
 
 </project>
