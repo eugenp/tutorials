@@ -24,3 +24,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring MVC Custom Validation](http://www.baeldung.com/spring-mvc-custom-validator)
 - [web.xml vs Initializer with Spring](http://www.baeldung.com/spring-xml-vs-java-config)
 - [The HttpMediaTypeNotAcceptableException in Spring MVC](http://www.baeldung.com/spring-httpmediatypenotacceptable)
+- [Spring MVC and the @ModelAttribute Annotation](http://www.baeldung.com/spring-mvc-and-the-modelattribute-annotation)
+- [The Spring @Controller and @RestController Annotations](http://www.baeldung.com/spring-controller-vs-restcontroller)
+- [Spring MVC @PathVariable with a dot (.) gets truncated](http://www.baeldung.com/spring-mvc-pathvariable-dot)

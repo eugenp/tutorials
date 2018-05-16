@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>apache-shiro</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -11,14 +10,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.2.RELEASE</version>
+        <version>${org.springframework.boot.spring-boot-starter-parent.version}</version>
     </parent>
-
-    <properties>
-        <apache-shiro-core-version>1.4.0</apache-shiro-core-version>
-        <log4j-version>1.2.17</log4j-version>
-        <slf4j-version>1.7.25</slf4j-version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -57,7 +50,6 @@
             <version>${log4j-version}</version>
             <scope>runtime</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -74,5 +66,11 @@
         </plugins>
     </build>
 
-    
+    <properties>
+        <apache-shiro-core-version>1.4.0</apache-shiro-core-version>
+        <log4j-version>1.2.17</log4j-version>
+        <slf4j-version>1.7.25</slf4j-version>
+        <org.springframework.boot.spring-boot-starter-parent.version>1.5.2.RELEASE</org.springframework.boot.spring-boot-starter-parent.version>
+    </properties>
+
 </project>

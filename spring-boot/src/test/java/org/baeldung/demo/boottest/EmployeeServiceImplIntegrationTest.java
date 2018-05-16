@@ -50,9 +50,9 @@ public class EmployeeServiceImplIntegrationTest {
         Mockito.when(employeeRepository.findByName(john.getName())).thenReturn(john);
         Mockito.when(employeeRepository.findByName(alex.getName())).thenReturn(alex);
         Mockito.when(employeeRepository.findByName("wrong_name")).thenReturn(null);
-        Mockito.when(employeeRepository.findById(john.getId())).thenReturn(john);
+        Mockito.when(employeeRepository.findById(john.getId()).orElse(null)).thenReturn(john);
         Mockito.when(employeeRepository.findAll()).thenReturn(allEmployees);
-        Mockito.when(employeeRepository.findById(-99L)).thenReturn(null);
+        Mockito.when(employeeRepository.findById(-99L).orElse(null)).thenReturn(null);
     }
 
     @Test
