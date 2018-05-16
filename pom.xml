@@ -143,6 +143,7 @@
         <module>spring-boot-admin</module>
         <module>spring-boot-ops</module>
         <module>spring-boot-security</module>
+        <module>spring-boot-mvc</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>

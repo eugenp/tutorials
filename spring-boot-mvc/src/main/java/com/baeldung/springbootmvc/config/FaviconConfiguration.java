@@ -1,4 +1,4 @@
-package org.baeldung.config;
+package com.baeldung.springbootmvc.config;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -28,7 +27,7 @@ public class FaviconConfiguration {
     @Bean
     protected ResourceHttpRequestHandler faviconRequestHandler() {
         ResourceHttpRequestHandler requestHandler = new ResourceHttpRequestHandler();
-        ClassPathResource classPathResource = new ClassPathResource("com/baeldung/produceimage/images");
+        ClassPathResource classPathResource = new ClassPathResource("com/baeldung/images");
         List<Resource> locations = Arrays.asList(classPathResource);
         requestHandler.setLocations(locations);
         return requestHandler;
