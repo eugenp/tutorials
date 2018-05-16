@@ -31,8 +31,15 @@ public class ThisKeyword {
         return this;
     }
 
-    class ThiInnerClass {
+    class ThisInnerClass {
 
+        boolean isInnerClass = true;
+
+        public ThisInnerClass() {
+            ThisKeyword thisKeyword = ThisKeyword.this;
+            String outerString = ThisKeyword.this.name;
+            System.out.println(this.isInnerClass);
+        }
     }
 
     @Override
