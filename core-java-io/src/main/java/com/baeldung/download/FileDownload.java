@@ -15,12 +15,9 @@ import java.util.concurrent.ExecutionException;
 
 public class FileDownload {
 
-    static String FILE_URL = "http://ovh.net/files/10Mio.dat";
-    static String FILE_NAME = "file.dat";
+    public static void downloadWithJavaIO(String url, String localFilename) {
 
-    private static void downloadWithJavaIO() {
-
-        try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream()); FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
+        try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream()); FileOutputStream fileOutputStream = new FileOutputStream(localFilename)) {
 
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
@@ -32,43 +29,43 @@ public class FileDownload {
         }
     }
 
-    private static void downloadWithJava7IO() {
+    public static void downloadWithJava7IO(String url, String localFilename) {
 
-        try (InputStream in = new URL(FILE_URL).openStream()) {
-            Files.copy(in, Paths.get(FILE_NAME), StandardCopyOption.REPLACE_EXISTING);
+        try (InputStream in = new URL(url).openStream()) {
+            Files.copy(in, Paths.get(localFilename), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    private static void downloadWithJavaNIO() throws IOException {
+    public static void downloadWithJavaNIO(String fileURL, String localFilename) throws IOException {
 
-        URL url = new URL(FILE_URL);
+        URL url = new URL(fileURL);
         try (ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream()); 
-            FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME); FileChannel fileChannel = fileOutputStream.getChannel()) {
+            FileOutputStream fileOutputStream = new FileOutputStream(localFilename); FileChannel fileChannel = fileOutputStream.getChannel()) {
 
             fileChannel.transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
         }
     }
 
-    private static void downloadWithApacheCommons() {
+    public static void downloadWithApacheCommons(String url, String localFilename) {
 
         int CONNECT_TIMEOUT = 10000;
         int READ_TIMEOUT = 10000;
         try {
-            FileUtils.copyURLToFile(new URL(FILE_URL), new File(FILE_NAME), CONNECT_TIMEOUT, READ_TIMEOUT);
+            FileUtils.copyURLToFile(new URL(url), new File(localFilename), CONNECT_TIMEOUT, READ_TIMEOUT);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
 
-    private static void downloadWithAHC() throws ExecutionException, InterruptedException, IOException {
+    public static void downloadWithAHC(String url, String localFilename) throws ExecutionException, InterruptedException, IOException {
 
-        FileOutputStream stream = new FileOutputStream(FILE_NAME);
+        FileOutputStream stream = new FileOutputStream(localFilename);
         AsyncHttpClient client = Dsl.asyncHttpClient();
 
-        client.prepareGet(FILE_URL)
+        client.prepareGet(url)
             .execute(new AsyncCompletionHandler<FileOutputStream>() {
 
                 @Override

@@ -1,0 +1,75 @@
+package com.baeldung.download;
+
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.ExecutionException;
+
+import javax.xml.bind.DatatypeConverter;
+
+import org.junit.Test;
+
+public class FileDownloadIntegrationTest {
+    
+    static String FILE_URL = "http://ovh.net/files/1Mio.dat";
+    static String FILE_NAME = "file.dat";
+    static String FILE_MD5_HASH = "6cb91af4ed4c60c11613b75cd1fc6116";
+    
+    @Test
+    public void giveJavaIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
+        
+        FileDownload.downloadWithJavaIO(FILE_URL, FILE_NAME);
+        assertTrue(checkMd5Hash(FILE_NAME));
+    }
+    
+    @Test
+    public void giveJavaNIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
+        
+        FileDownload.downloadWithJavaNIO(FILE_URL, FILE_NAME);
+        assertTrue(checkMd5Hash(FILE_NAME));
+    }
+    
+    @Test
+    public void giveJava7IO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
+        
+        FileDownload.downloadWithJava7IO(FILE_URL, FILE_NAME);
+        assertTrue(checkMd5Hash(FILE_NAME));
+    }
+    
+    @Test
+    public void giveAHCLibrary_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException, ExecutionException, InterruptedException {
+        
+        FileDownload.downloadWithAHC(FILE_URL, FILE_NAME);
+        assertTrue(checkMd5Hash(FILE_NAME));
+    }
+    
+    @Test
+    public void giveApacheCommonsIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
+        
+        FileDownload.downloadWithApacheCommons(FILE_URL, FILE_NAME);
+        assertTrue(checkMd5Hash(FILE_NAME));
+    }
+    
+    @Test
+    public void giveJavaIO_whenDownloadingFileStops_thenDownloadShouldBeResumedCorrectly() throws NoSuchAlgorithmException, IOException, URISyntaxException {
+        
+        ResumableDownload.downloadFileWithResume(FILE_URL, FILE_NAME);
+        assertTrue(checkMd5Hash(FILE_NAME));
+    }
+    
+    private boolean checkMd5Hash(String filename) throws IOException, NoSuchAlgorithmException {
+        
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(Files.readAllBytes(Paths.get(filename)));
+        byte[] digest = md.digest();
+        String myChecksum = DatatypeConverter.printHexBinary(digest);
+        
+        return myChecksum.equals(FILE_MD5_HASH);
+    }
+}
