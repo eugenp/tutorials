@@ -13,11 +13,17 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import com.google.gson.Gson;
+
 @Path("/menu")
 public class MenuService {
 
     private List<Meal> meals = new ArrayList<Meal>();
-
+    
+    public MenuService() {
+        meals.add(new Meal("Java beans",42.0f));
+    }
+    
     @GET
     @Path("/")
     @Produces({ "application/json" })
@@ -35,6 +41,7 @@ public class MenuService {
             .entity(meals.get(id))
             .build();
     }
+    
 
     @POST
     @Path("/")
