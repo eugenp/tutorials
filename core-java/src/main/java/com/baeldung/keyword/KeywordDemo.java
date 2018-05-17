@@ -1,6 +1,6 @@
 package com.baeldung.keyword;
 
-import com.baeldung.keyword.superkeyword.SubClass;
+import com.baeldung.keyword.superkeyword.SuperSub;
 import com.baeldung.keyword.thiskeyword.ThisKeyword;
 
 /**
@@ -11,6 +11,6 @@ public class KeywordDemo {
     public static void main(String[] args) {
         ThisKeyword keyword = new ThisKeyword();
 
-        SubClass child = new SubClass("message from the child class");
+        SuperSub child = new SuperSub("message from the child class");
     }
 }

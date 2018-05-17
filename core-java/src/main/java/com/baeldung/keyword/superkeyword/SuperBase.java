@@ -3,14 +3,14 @@ package com.baeldung.keyword.superkeyword;
 /**
  * Created by Gebruiker on 5/14/2018.
  */
-public class SuperKeyword {
+public class SuperBase {
 
     String message = "super class";
 
-    public SuperKeyword() {
+    public SuperBase() {
     }
 
-    public SuperKeyword(String message) {
+    public SuperBase(String message) {
         this.message = message;
     }
 

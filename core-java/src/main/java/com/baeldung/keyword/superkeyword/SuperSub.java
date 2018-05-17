@@ -3,15 +3,15 @@ package com.baeldung.keyword.superkeyword;
 /**
  * Created by Gebruiker on 5/15/2018.
  */
-public class SubClass extends SuperKeyword {
+public class SuperSub extends SuperBase {
 
     String message = "child class";
 
-    public SubClass(String message) {
+    public SuperSub(String message) {
         super(message);
     }
 
-    public SubClass() {
+    public SuperSub() {
         super.printMessage();
         printMessage();
     }
