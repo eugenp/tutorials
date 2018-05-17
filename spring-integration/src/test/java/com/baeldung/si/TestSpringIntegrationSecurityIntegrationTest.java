@@ -22,7 +22,7 @@ import com.baeldung.si.security.SecurityConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SecurityConfig.class, SecuredDirectChannel.class, MessageConsumer.class })
-public class TestSpringIntegrationSecurity {
+public class TestSpringIntegrationSecurityIntegrationTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
