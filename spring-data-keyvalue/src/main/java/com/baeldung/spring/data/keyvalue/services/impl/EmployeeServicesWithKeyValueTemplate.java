@@ -27,9 +27,8 @@ public class EmployeeServicesWithKeyValueTemplate implements EmployeeService {
 	}
 
 	@Override
-	public Employee get(Integer id) {
-		Optional<Employee> employee = keyValueTemplate.findById(id, Employee.class);
-		return employee.isPresent() ? employee.get() : null;
+	public Optional<Employee> get(Integer id) {
+		return keyValueTemplate.findById(id, Employee.class);
 	}
 
 	@Override
@@ -49,7 +48,7 @@ public class EmployeeServicesWithKeyValueTemplate implements EmployeeService {
 
 	@Override
 	public Iterable<Employee> getSortedListOfEmployeesBySalary() {
-		KeyValueQuery query = new KeyValueQuery();
+		KeyValueQuery<Employee> query = new KeyValueQuery<Employee>();
 		query.setSort(new Sort(Sort.Direction.DESC, "salary"));
 		return keyValueTemplate.find(query, Employee.class);
 	}
