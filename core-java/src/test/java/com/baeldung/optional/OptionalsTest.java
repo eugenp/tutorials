@@ -7,13 +7,11 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-import com.baeldung.java9.optional.Optionals;
-
 public class OptionalsTest {
 
     @Test
-    public void givenOptional_whenEmptyValue_thenEmpty() {
-        assertEquals(Optional.empty(), Optionals.getName(Optional.ofNullable(null)));
+    public void givenOptional_whenEmptyValue_thenCustomMessage() {
+        assertEquals(Optional.of("Name not provided"), Optionals.getName(Optional.ofNullable(null)));
     }
 
     @Test
@@ -31,8 +29,8 @@ public class OptionalsTest {
     }
 
     @Test
-    public void givenOptional_whenNull_thenEmptyOptional() {
-        assertEquals(Optional.empty(), Optionals.getNameJava8(Optional.ofNullable(null)));
+    public void givenOptional_whenNull_thenCustomMessage() {
+        assertEquals(Optional.of("Name not provided"), Optionals.getNameJava8(Optional.ofNullable(null)));
     }
 
     @Test

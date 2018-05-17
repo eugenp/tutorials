@@ -8,11 +8,15 @@ public class Optionals {
         if (name.isPresent()) {
             return name;
         }
-        return Optional.empty();
+        return getMissingNameCustomMessage();
     }
 
     public static Optional<String> getName(Optional<String> name) {
-        return name.or(() -> Optional.empty());
+        return name.or(() -> getMissingNameCustomMessage());
+    }
+
+    private static Optional<String> getMissingNameCustomMessage() {
+        return Optional.of("Name not provided");
     }
 
     public static com.google.common.base.Optional<String> getOptionalGuavaName(com.google.common.base.Optional<String> name) {
