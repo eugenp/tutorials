@@ -34,7 +34,7 @@ public class CustomerController {
         return customerService.getCustomerDetail(customerId);
     }
 
-    @RequestMapping(value = "/{customerId}/{orderId}")
+    @RequestMapping(value = "/{customerId}/{orderId}", method = RequestMethod.GET)
     public Order getOrderById(@PathVariable final String customerId, @PathVariable final String orderId) {
         return orderService.getOrderByIdForCustomer(customerId, orderId);
     }
