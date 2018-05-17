@@ -248,6 +248,7 @@
         <module>persistence-modules/liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>testing-modules/mockserver</module>
+        <module>testing-modules/test-containers</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
         <module>saas</module>
