@@ -1,4 +1,4 @@
-package com.baeldung.rxjava;
+package com.baeldung;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -7,14 +7,13 @@ import io.reactivex.Observable;
 import io.reactivex.exceptions.MissingBackpressureException;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subscribers.TestSubscriber;
-
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -58,8 +57,8 @@ public class FlowableTest {
         testSubscriber.awaitTerminalEvent();
         List<Integer> receivedInts = testSubscriber.getEvents().get(0).stream().mapToInt(object -> (int) object).boxed().collect(Collectors.toList());
 
-        assertThat(receivedInts.size() < testList.size());
-        assertThat(!receivedInts.contains(100000));
+        Assertions.assertThat(receivedInts.size() < testList.size());
+        Assertions.assertThat(!receivedInts.contains(100000));
     }
 
     @Test public void whenMissingStrategyUsed_thenException() {
@@ -86,8 +85,8 @@ public class FlowableTest {
         testSubscriber.awaitTerminalEvent();
         List<Integer> receivedInts = testSubscriber.getEvents().get(0).stream().mapToInt(object -> (int) object).boxed().collect(Collectors.toList());
 
-        assertThat(receivedInts.size() < testList.size());
-        assertThat(receivedInts.contains(100000));
+        Assertions.assertThat(receivedInts.size() < testList.size());
+        Assertions.assertThat(receivedInts.contains(100000));
     }
 
 }
