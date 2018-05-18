@@ -34,6 +34,10 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot Customize Whitelabel Error Page](http://www.baeldung.com/spring-boot-custom-error-page)
 - [Spring Boot: Configuring a Main Class](http://www.baeldung.com/spring-boot-main-class)
 - [Shutdown a Spring Boot Application](http://www.baeldung.com/spring-boot-shutdown)
+<<<<<<< HEAD
+- [A Quick Intro to the SpringBootServletInitializer](http://www.baeldung.com/spring-boot-servlet-initializer)
+=======
 - [A Quick Intro to the SpringBootServletInitializer](http://www.baeldung.com/spring-boot-servlet-initializer)
 - [How to Change the Default Port in Spring Boot](http://www.baeldung.com/spring-boot-change-port)
 
+>>>>>>> upstream/master

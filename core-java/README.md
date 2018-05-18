@@ -2,7 +2,7 @@
 
 ## Core Java Cookbooks and Examples
 
-### Relevant Articles: 
+### Relevant Articles:
 - [Java – Random Long, Float, Integer and Double](http://www.baeldung.com/java-generate-random-long-float-integer-double)
 - [Java – Generate Random String](http://www.baeldung.com/java-random-string)
 - [Java Timer](http://www.baeldung.com/java-timer-and-timertask)
@@ -113,6 +113,8 @@
 - [Comparing Strings in Java](http://www.baeldung.com/java-compare-strings)
 - [Guide to Inheritance in Java](http://www.baeldung.com/java-inheritance)
 - [Guide to Externalizable Interface in Java](http://www.baeldung.com/java-externalizable)
+- [The Observer Pattern in Java](http://www.baeldung.com/java-observer-pattern)
+- [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
 - [Object Type Casting in Java](http://www.baeldung.com/java-type-casting)
 - [A Practical Guide to DecimalFormat](http://www.baeldung.com/java-decimalformat)
 - [How to Detect the OS Using Java](http://www.baeldung.com/java-detect-os)
@@ -131,6 +133,7 @@
 - [Class Loaders in Java](http://www.baeldung.com/java-classloaders)
 - [Find Sum and Average in a Java Array](http://www.baeldung.com/java-array-sum-average)
 - [Java List UnsupportedOperationException](http://www.baeldung.com/java-list-unsupported-operation-exception)
+- [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
 - [Type Erasure in Java Explained](http://www.baeldung.com/java-type-erasure)
 - [BigDecimal and BigInteger in Java](http://www.baeldung.com/java-bigdecimal-biginteger)
 - [Display All Time Zones With GMT And UTC in Java](http://www.baeldung.com/java-time-zones)
@@ -139,5 +142,4 @@
 - [Sending Emails with Java](http://www.baeldung.com/java-email)
 - [Introduction to SSL in Java](http://www.baeldung.com/java-ssl)
 - [Java KeyStore API](http://www.baeldung.com/java-keystore)
-- [Using Java Assertions](http://www.baeldung.com/java-assert)
-- [Guide to Java Clock Class](http://www.baeldung.com/java-clock)
+- [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)

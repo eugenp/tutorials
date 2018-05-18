@@ -23,7 +23,11 @@ public class SpringBootApplication {
 
     private static ApplicationContext applicationContext;
 
+<<<<<<< HEAD
+    @RequestMapping("/")
+=======
     @GetMapping("/")
+>>>>>>> upstream/master
     String home() {
         return "TADA!!! You are in Spring Boot Actuator test application.";
     }
