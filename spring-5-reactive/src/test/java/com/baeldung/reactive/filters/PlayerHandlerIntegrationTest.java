@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PlayerHandlerTest {
+public class PlayerHandlerIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
