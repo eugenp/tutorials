@@ -22,20 +22,18 @@ public class RestTemplateLoggingInterceptor implements ClientHttpRequestIntercep
     }
 
     private void logRequest(byte[] body) {
-        String payLoad = StringUtils.EMPTY;
         if (body.length > 0) {
-            payLoad = new String(body, StandardCharsets.UTF_8);
+            String payLoad = new String(body, StandardCharsets.UTF_8);
+            System.out.println(payLoad);
         }
-        System.out.println("Request Body > " + payLoad);
     }
 
     private void logResponse(ClientHttpResponse response) throws IOException {
-        String payLoad = StringUtils.EMPTY;
         long contentLength = response.getHeaders()
             .getContentLength();
         if (contentLength != 0) {
-            payLoad = StreamUtils.copyToString(response.getBody(), StandardCharsets.UTF_8);
+           String payLoad = StreamUtils.copyToString(response.getBody(), StandardCharsets.UTF_8);
+           System.out.println(payLoad);
         }
-        System.out.println("Response Body > " + payLoad);
     }
 }
