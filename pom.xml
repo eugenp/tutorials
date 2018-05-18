@@ -259,6 +259,7 @@
         <module>jersey</module>
         <module>java-spi</module>
         <module>performance-tests</module>
+        <module>twilio</module>
     </modules>
 
     <dependencies>
