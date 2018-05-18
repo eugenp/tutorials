@@ -30,7 +30,7 @@ public class EmployeeServletTest {
 	Employee employee;
 	
 	@Test
-    public void whenPostRequestToEmployeeServlet_thenCorrect() throws Exception {
+    public void whenPostRequestToEmployeeServlet_thenEmployeeReturnedAsJson() throws Exception {
 
 		//Given
 		int id = 1;
