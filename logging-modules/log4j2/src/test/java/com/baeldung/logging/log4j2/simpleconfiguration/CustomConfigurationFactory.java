@@ -3,7 +3,7 @@
   the configuration factory, as described in Section 3 of 
   "Programmatic Configuration with Log4j 2"
 **/
-package com.baeldung.logging.log4j2.configuration;
+package com.baeldung.logging.log4j2.simpleconfiguration;
 
 import java.io.IOException;
 import java.net.URI;
@@ -25,7 +25,7 @@ import org.apache.logging.log4j.core.config.builder.api.RootLoggerComponentBuild
 import org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration;
 import org.apache.logging.log4j.core.config.plugins.Plugin;
 
-@Plugin(name = "CustomConfigurationFactory", category = ConfigurationFactory.CATEGORY)
+@Plugin(name = "simple", category = ConfigurationFactory.CATEGORY)
 @Order(50)
 public class CustomConfigurationFactory extends ConfigurationFactory {
 
