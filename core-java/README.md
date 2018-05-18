@@ -2,7 +2,7 @@
 
 ## Core Java Cookbooks and Examples
 
-### Relevant Articles: 
+### Relevant Articles:
 - [Java – Random Long, Float, Integer and Double](http://www.baeldung.com/java-generate-random-long-float-integer-double)
 - [Java – Generate Random String](http://www.baeldung.com/java-random-string)
 - [Java Timer](http://www.baeldung.com/java-timer-and-timertask)
@@ -74,17 +74,14 @@
 - [CharSequence vs. String in Java](http://www.baeldung.com/java-char-sequence-string)
 - [Period and Duration in Java](http://www.baeldung.com/java-period-duration)
 - [Guide to the Diamond Operator in Java](http://www.baeldung.com/java-diamond-operator)
-- [Singletons in Java](http://www.baeldung.com/java-singleton)
 - [“Sneaky Throws” in Java](http://www.baeldung.com/java-sneaky-throws)
 - [OutOfMemoryError: GC Overhead Limit Exceeded](http://www.baeldung.com/java-gc-overhead-limit-exceeded)
 - [StringBuilder and StringBuffer in Java](http://www.baeldung.com/java-string-builder-string-buffer)
 - [Number of Digits in an Integer in Java](http://www.baeldung.com/java-number-of-digits-in-int)
-- [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
 - [Creating a Java Compiler Plugin](http://www.baeldung.com/java-build-compiler-plugin)
 - [A Guide to the Static Keyword in Java](http://www.baeldung.com/java-static)
 - [Initializing Arrays in Java](http://www.baeldung.com/java-initialize-array)
 - [Guide to Java String Pool](http://www.baeldung.com/java-string-pool)
-- [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
 - [Quick Example - Comparator vs Comparable in Java](http://www.baeldung.com/java-comparator-comparable)
 - [Quick Guide to Java Stack](http://www.baeldung.com/java-stack)
 - [The Java continue and break Keywords](http://www.baeldung.com/java-continue-and-break)

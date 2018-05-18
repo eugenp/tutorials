@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ExecutorService;
@@ -23,7 +23,11 @@ public class SpringBootApplication {
 
     private static ApplicationContext applicationContext;
 
+<<<<<<< HEAD
     @RequestMapping("/")
+=======
+    @GetMapping("/")
+>>>>>>> upstream/master
     String home() {
         return "TADA!!! You are in Spring Boot Actuator test application.";
     }
