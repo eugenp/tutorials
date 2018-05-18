@@ -8,18 +8,26 @@ public class Optionals {
         if (name.isPresent()) {
             return name;
         }
-        return getMissingNameCustomMessage();
+        return getCustomMessage();
+    }
+
+    public static <T> Optional<T> or(Optional<T> optional, Optional<T> fallback) {
+        return optional.isPresent() ? optional : fallback;
     }
 
     public static Optional<String> getName(Optional<String> name) {
-        return name.or(() -> getMissingNameCustomMessage());
-    }
-
-    private static Optional<String> getMissingNameCustomMessage() {
-        return Optional.of("Name not provided");
+        return name.or(() -> getCustomMessage());
     }
 
     public static com.google.common.base.Optional<String> getOptionalGuavaName(com.google.common.base.Optional<String> name) {
-        return name.or(com.google.common.base.Optional.absent());
+        return name.or(getCustomMessageGuava());
+    }
+
+    private static Optional<String> getCustomMessage() {
+        return Optional.of("Name not provided");
+    }
+
+    private static com.google.common.base.Optional<String> getCustomMessageGuava() {
+        return com.google.common.base.Optional.of("Name not provided");
     }
 }

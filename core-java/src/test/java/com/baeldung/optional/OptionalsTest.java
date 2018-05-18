@@ -20,6 +20,23 @@ public class OptionalsTest {
         Optional<String> optionalString = Optional.ofNullable(name);
         assertEquals(optionalString, Optionals.getName(optionalString));
     }
+    
+    @Test
+    public void givenOptional_whenValue_thenOptionalGeneralMethod() {
+        String name = "Filan Fisteku";
+        String missingOptional = "Name not provided";
+        Optional<String> optionalString = Optional.ofNullable(name);
+        Optional<String> fallbackOptionalString = Optional.ofNullable(missingOptional);
+        assertEquals(optionalString, Optionals.or(optionalString, fallbackOptionalString));
+    }
+    
+    @Test
+    public void givenEmptyOptional_whenValue_thenOptionalGeneralMethod() {
+        String missingOptional = "Name not provided";
+        Optional<String> optionalString = Optional.empty();
+        Optional<String> fallbackOptionalString = Optional.ofNullable(missingOptional);
+        assertEquals(fallbackOptionalString, Optionals.or(optionalString, fallbackOptionalString));
+    }
 
     @Test
     public void givenOptional_whenValue_thenCustomOptional() {
@@ -42,6 +59,6 @@ public class OptionalsTest {
 
     @Test
     public void givenGuavaOptional_whenNull_thenDefaultText() {
-        assertEquals(com.google.common.base.Optional.absent(), Optionals.getOptionalGuavaName(com.google.common.base.Optional.fromNullable(null)));
+        assertEquals(com.google.common.base.Optional.of("Name not provided"), Optionals.getOptionalGuavaName(com.google.common.base.Optional.fromNullable(null)));
     }
 }
