@@ -4,13 +4,6 @@ import java.util.Optional;
 
 public class Optionals {
 
-    public static Optional<String> getNameJava8(Optional<String> name) {
-        if (name.isPresent()) {
-            return name;
-        }
-        return getCustomMessage();
-    }
-
     public static <T> Optional<T> or(Optional<T> optional, Optional<T> fallback) {
         return optional.isPresent() ? optional : fallback;
     }

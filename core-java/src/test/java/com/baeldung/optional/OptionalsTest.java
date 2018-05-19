@@ -39,18 +39,6 @@ public class OptionalsTest {
     }
 
     @Test
-    public void givenOptional_whenValue_thenCustomOptional() {
-        String name = "Filan Fisteku";
-        Optional<String> optionalString = Optional.ofNullable(name);
-        assertEquals(optionalString, Optionals.getNameJava8(optionalString));
-    }
-
-    @Test
-    public void givenOptional_whenNull_thenCustomMessage() {
-        assertEquals(Optional.of("Name not provided"), Optionals.getNameJava8(Optional.ofNullable(null)));
-    }
-
-    @Test
     public void givenGuavaOptional_whenInvoke_thenOptional() {
         String name = "Filan Fisteku";
         com.google.common.base.Optional<String> stringOptional = com.google.common.base.Optional.of(name);
