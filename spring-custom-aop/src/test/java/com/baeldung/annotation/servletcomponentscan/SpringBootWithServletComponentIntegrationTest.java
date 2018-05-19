@@ -17,7 +17,7 @@ import javax.servlet.ServletContext;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootAnnotatedApp.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = SpringBootAnnotatedApp.class)
 @AutoConfigureMockMvc
 @TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithServletComponentIntegrationTest {
