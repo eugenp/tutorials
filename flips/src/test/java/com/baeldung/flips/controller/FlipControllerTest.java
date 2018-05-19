@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
     "first.active.after=2999-03-15T00:00:00Z",
     "logging.level.org.flips=info"
 
-})
+}, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @ActiveProfiles("dev")
 public class FlipControllerTest {
