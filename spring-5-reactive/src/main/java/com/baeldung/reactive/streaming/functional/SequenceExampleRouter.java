@@ -12,13 +12,10 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 
 @Configuration
 public class SequenceExampleRouter {
-
     @Bean
     public RouterFunction<ServerResponse> route(SequenceExampleHandler sequenceExampleHandler) {
-        return RouterFunctions
-                .route(
-                    GET("/sequence").and(RequestPredicates.accept(MediaType.APPLICATION_STREAM_JSON)),
-                    sequenceExampleHandler::sequence);
+        return RouterFunctions.route(
+          GET("/sequence").and(RequestPredicates.accept(MediaType.APPLICATION_STREAM_JSON)),
+          sequenceExampleHandler::sequence);
     }
-
 }

@@ -10,13 +10,10 @@ import java.util.stream.Stream;
 
 @RestController
 public class SequenceExampleController {
-
     @RequestMapping("/sequenceController")
     public Flux<Integer> stockTransactionEvents(){
         Flux<Long> interval = Flux.interval(Duration.ofSeconds(1));
         Flux<Integer> sequence = Flux.fromStream(Stream.iterate(1, incSeq -> incSeq + 1));
-
         return Flux.zip(interval, sequence).map(Tuple2::getT2);
     }
-
 }
