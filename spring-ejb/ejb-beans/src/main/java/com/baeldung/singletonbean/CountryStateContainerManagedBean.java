@@ -38,4 +38,9 @@ public class CountryStateContainerManagedBean implements CountryState {
     public List<String> getStates(String country) {
         return countryStatesMap.get(country);
     }
+
+    @Lock(LockType.WRITE)
+    public void setStates(String country, List<String> states) {
+        countryStatesMap.put(country, states);
+    }
 }
