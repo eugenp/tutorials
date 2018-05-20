@@ -9,15 +9,15 @@ public class Extension {
         return FilenameUtils.getExtension(fileName);
     }
 
-    public String getExtensionByStringHandling(String filename) {
+    public String getExtensionByStringHandling(String fileName) {
         String fileExtension = "";
-        if (filename.contains(".") && filename.lastIndexOf(".") != 0) {
-            fileExtension = filename.substring(filename.lastIndexOf(".") + 1);
+        if (fileName.contains(".") && fileName.lastIndexOf(".") != 0) {
+            fileExtension = fileName.substring(fileName.lastIndexOf(".") + 1);
         }
         return fileExtension;
     }
 
-    public String getExtensionByGuava(String filename) {
-        return Files.getFileExtension(filename);
+    public String getExtensionByGuava(String fileName) {
+        return Files.getFileExtension(fileName);
     }
 }
