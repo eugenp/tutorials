@@ -19,6 +19,11 @@
 			<version>${javax.servlet.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${gson.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>${org.apache.httpcomponents.version}</version>
@@ -29,11 +34,6 @@
 					<groupId>commons-logging</groupId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>${gson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
