@@ -1,17 +1,16 @@
-package org.baeldung.rolesauthorities;
+package org.baeldung.custom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan("org.baeldung.rolesauthorities")
-public class RolesAuthoritiesApplication extends SpringBootServletInitializer {
+@SpringBootApplication
+public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) {
-    	System.setProperty("spring.profiles.default", "rolesauthorities");
-        SpringApplication.run(RolesAuthoritiesApplication.class, args);
+        SpringApplication.run(Application.class, args);
     }
 }
