@@ -18,7 +18,7 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = Application.class)
 @AutoConfigureMockMvc
-public class ShutdownApplicationTest {
+public class ShutdownApplicationIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
