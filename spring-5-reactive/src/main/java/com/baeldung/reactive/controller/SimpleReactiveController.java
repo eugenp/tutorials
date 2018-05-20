@@ -18,9 +18,9 @@ public class SimpleReactiveController {
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/events")
     public Flux<Event> getEvents() {
-        final Flux<Event> eventsFlux = Flux.fromStream(Stream.generate(() -> new Event(new Random().nextInt(), generateRandomEventName())));
-        return Flux.zip(eventsFlux, Flux.interval(Duration.ofSeconds(1)))
-            .map(Tuple2::getT1);
+        Flux<Event> events = Flux.fromStream(Stream.generate(() -> new Event(new Random().nextInt(), generateRandomEventName())));
+        Flux<Long> interval = Flux.interval(Duration.ofSeconds(1)); 
+        return Flux.zip(interval, events).map(Tuple2::getT2);
     }
 
     private String generateRandomEventName() {
