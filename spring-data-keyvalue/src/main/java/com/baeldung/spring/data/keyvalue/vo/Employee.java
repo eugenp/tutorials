@@ -1,12 +1,10 @@
 package com.baeldung.spring.data.keyvalue.vo;
 
-import java.io.Serializable;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.keyvalue.annotation.KeySpace;
 
 @KeySpace("employees")
-public class Employee implements Serializable {
+public class Employee {
 
     @Id
     private Integer id;
