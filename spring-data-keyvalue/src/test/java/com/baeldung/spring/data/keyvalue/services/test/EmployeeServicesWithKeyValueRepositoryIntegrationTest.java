@@ -22,7 +22,7 @@ import com.baeldung.spring.data.keyvalue.vo.Employee;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = SpringDataKeyValueApplication.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class EmployeeServicesWithKeyValueTemplateTest {
+public class EmployeeServicesWithKeyValueRepositoryIntegrationTest {
 	
 	@Autowired
 	@Qualifier("employeeServicesWithKeyValueTemplate")
