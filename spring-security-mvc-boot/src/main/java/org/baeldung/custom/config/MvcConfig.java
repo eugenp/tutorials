@@ -1,4 +1,4 @@
-package org.baeldung.rolesauthorities.config;
+package org.baeldung.custom.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,13 +30,8 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/home");
-		registry.addViewController("/protectedbynothing").setViewName("rolesauthorities/protectedbynothing");
-		registry.addViewController("/protectedbyrole").setViewName("rolesauthorities/protectedbyrole");
-		registry.addViewController("/protectedbyauthority").setViewName("rolesauthorities/protectedbyauthority");
-		registry.addViewController("/login").setViewName("rolesauthorities/login");
-		registry.addViewController("/home").setViewName("rolesauthorities/home");
-		registry.addViewController("/logout");
+        registry.addViewController("/").setViewName("forward:/index");
+        registry.addViewController("/index");
     }
 
     @Override
