@@ -20,41 +20,41 @@ import com.google.gson.Gson;
 
 @RunWith(MockitoJUnitRunner.class)
 public class EmployeeServletTest {
-	
+
 	@Mock
 	HttpServletRequest httpServletRequest;
-	
+
 	@Mock
 	HttpServletResponse httpServletResponse;
-	
+
 	Employee employee;
-	
+
 	@Test
-    public void whenPostRequestToEmployeeServlet_thenEmployeeReturnedAsJson() throws Exception {
+	public void whenPostRequestToEmployeeServlet_thenEmployeeReturnedAsJson() throws Exception {
 
 		//Given
 		int id = 1;
-        String name = "Karan Khanna";
-        String department = "IT";
-        Double salary = 5000.0;
-        employee = new Employee(id, name, department, salary);
-        
-        //when
-		when(httpServletRequest.getParameter("id")).thenReturn(String.valueOf(id));
-        when(httpServletRequest.getParameter("name")).thenReturn(name);
-        when(httpServletRequest.getParameter("department")).thenReturn(department);
-        when(httpServletRequest.getParameter("salary")).thenReturn(String.valueOf(salary));
-        
-        StringWriter sw = new StringWriter();
-        PrintWriter pw = new PrintWriter(sw);
-        when(httpServletResponse.getWriter()).thenReturn(pw);
+		String name = "Karan Khanna";
+		String department = "IT";
+		Double salary = 5000.0;
+		employee = new Employee(id, name, department, salary);
 
-        EmployeeServlet employeeServlet = new EmployeeServlet();
-        employeeServlet.doPost(httpServletRequest, httpServletResponse);
-        
-        String employeeJsonString = sw.getBuffer().toString().trim();
-        Employee fetchedEmployee = new Gson().fromJson(employeeJsonString, Employee.class);
-        assertEquals(fetchedEmployee, employee);
-    }
+		//when
+		when(httpServletRequest.getParameter("id")).thenReturn(String.valueOf(id));
+		when(httpServletRequest.getParameter("name")).thenReturn(name);
+		when(httpServletRequest.getParameter("department")).thenReturn(department);
+		when(httpServletRequest.getParameter("salary")).thenReturn(String.valueOf(salary));
+
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		when(httpServletResponse.getWriter()).thenReturn(pw);
+
+		EmployeeServlet employeeServlet = new EmployeeServlet();
+		employeeServlet.doPost(httpServletRequest, httpServletResponse);
+
+		String employeeJsonString = sw.getBuffer().toString().trim();
+		Employee fetchedEmployee = new Gson().fromJson(employeeJsonString, Employee.class);
+		assertEquals(fetchedEmployee, employee);
+	}
 
 }
