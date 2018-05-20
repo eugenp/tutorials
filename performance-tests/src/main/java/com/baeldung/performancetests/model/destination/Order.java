@@ -5,6 +5,7 @@ import com.google.common.base.Objects;
 import com.googlecode.jmapper.annotations.JMap;
 import com.googlecode.jmapper.annotations.JMapConversion;
 
+import java.util.Date;
 import java.util.List;
 public class Order {
     @JMap
@@ -14,9 +15,9 @@ public class Order {
     @JMap("status")
     private OrderStatus orderStatus;
     @JMap
-    private String orderDate;
+    private Date orderDate;
     @JMap
-    private String orderFinishDate;
+    private Date orderFinishDate;
     @JMap
     private PaymentType paymentType;
     @JMap
@@ -88,19 +89,19 @@ public class Order {
         this.orderStatus = status;
     }
 
-    public String getOrderDate() {
+    public Date getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(Date orderDate) {
         this.orderDate = orderDate;
     }
 
-    public String getOrderFinishDate() {
+    public Date getOrderFinishDate() {
         return orderFinishDate;
     }
 
-    public void setOrderFinishDate(String orderFinishDate) {
+    public void setOrderFinishDate(Date orderFinishDate) {
         this.orderFinishDate = orderFinishDate;
     }
 
@@ -137,7 +138,7 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Order(User orderingUser, List<Product> orderedProducts, OrderStatus orderStatus, String orderDate, String orderFinishDate, PaymentType paymentType, Discount discount, int orderId, DeliveryData deliveryData, Shop offeringShop) {
+    public Order(User orderingUser, List<Product> orderedProducts, OrderStatus orderStatus, Date orderDate, Date orderFinishDate, PaymentType paymentType, Discount discount, int orderId, DeliveryData deliveryData, Shop offeringShop) {
 
         this.orderingUser = orderingUser;
         this.orderedProducts = orderedProducts;

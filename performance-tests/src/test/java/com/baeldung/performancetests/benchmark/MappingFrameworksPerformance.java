@@ -18,6 +18,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +39,7 @@ public class MappingFrameworksPerformance {
           refundPolicy
         );
 
-        Discount discount = new Discount(Instant.now().toString(), Instant.now().toString(), BigDecimal.valueOf(5.99));
+        Discount discount = new Discount(Date.from(Instant.now()), Date.from(Instant.now()), BigDecimal.valueOf(5.99));
         Address deliveryAddress = new Address("Washington Street 5", "New York", "55045", "USA");
         DeliveryData deliveryData = new DeliveryData(deliveryAddress, true, "", 10);
         Address shopAddress = new Address("Roosvelt Street 9", "Boston", "55042", "USA");
@@ -54,8 +55,8 @@ public class MappingFrameworksPerformance {
         Shop shop = new Shop("Super Shop", shopAddress,"www.super-shop.com",reviewList);
 
         sourceOrder = new SourceOrder(OrderStatus.CONFIRMED,
-          Instant.now().toString(),
-          Instant.MAX.toString(),
+          Date.from(Instant.MIN),
+          Date.from(Instant.MAX),
           PaymentType.TRANSFER,
           discount,
           deliveryData,

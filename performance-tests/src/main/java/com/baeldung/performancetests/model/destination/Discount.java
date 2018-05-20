@@ -4,17 +4,18 @@ import com.google.common.base.Objects;
 import com.googlecode.jmapper.annotations.JGlobalMap;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 @JGlobalMap
 public class Discount {
-    private String startTime;
-    private String endTime;
+    private Date startTime;
+    private Date endTime;
     private BigDecimal discountPrice;
 
     public Discount() {
     }
 
-    public String getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
@@ -41,15 +42,15 @@ public class Discount {
         return Objects.hashCode(startTime, endTime, discountPrice);
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -61,7 +62,7 @@ public class Discount {
         this.discountPrice = discountPrice;
     }
 
-    public Discount(String startTime, String endTime, BigDecimal discountPrice) {
+    public Discount(Date startTime, Date endTime, BigDecimal discountPrice) {
 
         this.startTime = startTime;
         this.endTime = endTime;
