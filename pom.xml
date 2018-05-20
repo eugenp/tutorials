@@ -94,7 +94,6 @@
         <module>logging-modules/log-mdc</module>
         <module>logging-modules/log4j</module>
         <module>logging-modules/log4j2</module>
-        <module>logging-modules/log4j2-programmatic-configuration</module>
         <module>logging-modules/logback</module>
         <module>lombok</module>
         <module>mapstruct</module>
@@ -260,6 +259,7 @@
         <module>jersey</module>
         <module>java-spi</module>
         <module>performance-tests</module>
+        <module>twilio</module>
     </modules>
 
     <dependencies>
