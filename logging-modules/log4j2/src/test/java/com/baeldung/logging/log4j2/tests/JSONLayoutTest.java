@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 
+import com.baeldung.logging.log4j2.Log4j2Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
@@ -13,7 +14,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class JSONLayoutTest {
+public class JSONLayoutTest extends Log4j2Test {
 
     private static Logger logger;
     private ByteArrayOutputStream consoleOutput = new ByteArrayOutputStream();

@@ -8,5 +8,4 @@ import java.util.Optional;
 
 public interface BookRepository extends CrudRepository<Book, Long> {
     List<Book> findByTitle(String title);
-    Optional<Book> findOne(long id);
 }

@@ -18,10 +18,29 @@
             <artifactId>auto-value</artifactId>
             <version>${auto-value.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.auto.factory</groupId>
+            <artifactId>auto-factory</artifactId>
+            <version>${auto-factory.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <auto-value.version>1.3</auto-value.version>
+        <auto-factory.version>1.0-beta5</auto-factory.version>
+        <guice.version>4.2.0</guice.version>
     </properties>
 
 </project>

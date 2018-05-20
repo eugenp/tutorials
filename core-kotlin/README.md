@@ -25,3 +25,4 @@
 - [Objects in Kotlin](http://www.baeldung.com/kotlin-objects)
 - [Reading from a File in Kotlin](http://www.baeldung.com/kotlin-read-file)
 - [Guide to Kotlin @JvmField](http://www.baeldung.com/kotlin-jvm-field-annotation)
+- [Filtering Kotlin Collections](http://www.baeldung.com/kotlin-filter-collection)
