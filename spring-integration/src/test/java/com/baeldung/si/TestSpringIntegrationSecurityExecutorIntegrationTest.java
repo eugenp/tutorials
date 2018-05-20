@@ -23,7 +23,7 @@ import com.baeldung.si.security.SecurityPubSubChannel;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SecurityPubSubChannel.class, MessageConsumer.class, SecurityConfig.class })
-public class TestSpringIntegrationSecurityExecutor {
+public class TestSpringIntegrationSecurityExecutorIntegrationTest {
 
     @Autowired
     SubscribableChannel startPSChannel;
