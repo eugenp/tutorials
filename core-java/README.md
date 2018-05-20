@@ -141,3 +141,4 @@
 - [Java KeyStore API](http://www.baeldung.com/java-keystore)
 - [Using Java Assertions](http://www.baeldung.com/java-assert)
 - [Guide to Java Clock Class](http://www.baeldung.com/java-clock)
+- [Exception Handling in Java](http://inprogress.baeldung.com/wp-admin/post.php?post=51626&action=edit)
