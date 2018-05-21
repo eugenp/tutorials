@@ -18,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 /**
+ * This is exactly the same test as for controller. The code is intentionally duplicated to show that nothing (except of EVENT_URI) had to change.
  * @author goobar
  *
  */
