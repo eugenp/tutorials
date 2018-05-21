@@ -32,7 +32,7 @@ public class EventClient {
      */
     public void consumeEvents(int eventsToConsume, Consumer<Event> consumer) {
         webClient.get()
-            .uri("/controller/events")
+            .uri(EventController.EVENT_URI)
             .accept(MediaType.APPLICATION_STREAM_JSON)
             .retrieve()
             .bodyToFlux(Event.class)
