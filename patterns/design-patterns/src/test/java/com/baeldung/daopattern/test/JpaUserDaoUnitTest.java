@@ -1,7 +1,7 @@
 package com.baeldung.pattern.daopattern.test;
 
-import com.baeldung.pattern.daopattern.daos.JpaUserDao;
-import com.baeldung.pattern.daopattern.entities.User;
+import com.baeldung.daopattern.daos.JpaUserDao;
+import com.baeldung.daopattern.entities.User;
 import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
