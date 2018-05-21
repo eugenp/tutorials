@@ -1,4 +1,4 @@
-package com.baeldung.pattern.daopattern.test;
+package com.baeldung.daopattern.test;
 
 import com.baeldung.daopattern.daos.UserDao;
 import com.baeldung.daopattern.entities.User;
