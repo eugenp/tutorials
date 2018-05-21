@@ -5,10 +5,6 @@
     <artifactId>daopattern</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <groupId>com.baeldung.design-patterns</groupId>
-    <artifactId>design-patterns</artifactId>
-    <version>1.0</version>
-    <packaging>jar</packaging>
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>patterns-parent</artifactId>
