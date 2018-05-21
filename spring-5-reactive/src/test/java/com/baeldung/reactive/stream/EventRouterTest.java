@@ -3,6 +3,7 @@
  */
 package com.baeldung.reactive.stream;
 
+import static com.baeldung.reactive.stream.EventFixture.event;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
@@ -24,7 +25,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @SuppressWarnings("javadoc")
 public class EventRouterTest {
-    private static final String EVENT_URI_ROUTER = EventRouter.EVENT_URI;
+    private static final String EVENT_URI = EventRouter.EVENT_URI;
     @Autowired
     private WebTestClient testClient;
 
@@ -32,7 +33,7 @@ public class EventRouterTest {
     public void whenGetEvents_ThenReceive3Events() throws Exception {
         // when
         List<Event> first3Events = testClient.get()
-            .uri(EVENT_URI_ROUTER)
+            .uri(EVENT_URI)
             .accept(MediaType.APPLICATION_STREAM_JSON)
             .exchange()
             .returnResult(Event.class)
@@ -49,21 +50,13 @@ public class EventRouterTest {
     public void whenGetEvents_ThenReceiveOkStatus() {
         // when
         testClient.get()
-            .uri(EVENT_URI_ROUTER)
+            .uri(EVENT_URI)
             .accept(MediaType.APPLICATION_STREAM_JSON)
             .exchange()
 
             // then
             .expectStatus()
             .isOk();
-    }
-
-    /**
-     * @param msg
-     * @return
-     */
-    private Event event(String msg) {
-        return new Event(msg);
     }
 
 }
