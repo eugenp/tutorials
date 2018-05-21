@@ -33,7 +33,7 @@ public class UserUnitTest {
     }
     
     @Test
-    public void givenUserInstance_whenCalledgeEmail_thenOneAssertion() {
+    public void givenUserInstance_whenCalledgetEmail_thenOneAssertion() {
         assertThat(user.getEmail()).isEqualTo("jake@domain.com");
     }
 }
