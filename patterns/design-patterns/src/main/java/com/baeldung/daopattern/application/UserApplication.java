@@ -1,8 +1,8 @@
 package com.baeldung.daopattern.application;
 
-import com.baeldung.pattern.daopattern.daos.Dao;
-import com.baeldung.pattern.daopattern.daos.JpaUserDao;
-import com.baeldung.pattern.daopattern.entities.User;
+import com.baeldung.daopattern.daos.Dao;
+import com.baeldung.daopattern.daos.JpaUserDao;
+import com.baeldung.daopattern.entities.User;
 import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
