@@ -10,9 +10,10 @@ import org.togglz.core.context.FeatureContext;
 
 public enum MyFeatures implements Feature {
 
-    @Label("Employee Management Feature") @EnabledByDefault @DefaultActivationStrategy(id = SystemPropertyActivationStrategy.ID, 
-            parameters = { @ActivationParameter(name = SystemPropertyActivationStrategy.PARAM_PROPERTY_NAME, value = "employee.feature"),
-            @ActivationParameter(name = SystemPropertyActivationStrategy.PARAM_PROPERTY_VALUE, value = "true") }) 
+    @Label("Employee Management Feature")
+    @EnabledByDefault
+    @DefaultActivationStrategy(id = SystemPropertyActivationStrategy.ID, parameters = { @ActivationParameter(name = SystemPropertyActivationStrategy.PARAM_PROPERTY_NAME, value = "employee.feature"),
+            @ActivationParameter(name = SystemPropertyActivationStrategy.PARAM_PROPERTY_VALUE, value = "true") })
     EMPLOYEE_MANAGEMENT_FEATURE;
 
     public boolean isActive() {

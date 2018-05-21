@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class XMLSerializeDeserializeUnitTest {
 
@@ -35,8 +36,7 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaGotFromXmlStr_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
-        SimpleBean value = xmlMapper.readValue(
-                "<SimpleBean><x>1</x><y>2</y></SimpleBean>", SimpleBean.class);
+        SimpleBean value = xmlMapper.readValue("<SimpleBean><x>1</x><y>2</y></SimpleBean>", SimpleBean.class);
         assertTrue(value.getX() == 1 && value.getY() == 2);
     }
 
@@ -47,6 +47,24 @@ public class XMLSerializeDeserializeUnitTest {
         String xml = inputStreamToString(new FileInputStream(file));
         SimpleBean value = xmlMapper.readValue(xml, SimpleBean.class);
         assertTrue(value.getX() == 1 && value.getY() == 2);
+    }
+
+    @Test 
+    public void whenJavaGotFromXmlStrWithCapitalElem_thenCorrect() throws IOException {
+        XmlMapper xmlMapper = new XmlMapper();
+        SimpleBeanForCapitalizedFields value = xmlMapper.
+            readValue("<SimpleBeanForCapitalizedFields><X>1</X><y>2</y></SimpleBeanForCapitalizedFields>",
+                SimpleBeanForCapitalizedFields.class);
+        assertTrue(value.getX() == 1 && value.getY() == 2);
+    }
+
+    @Test
+    public void whenJavaSerializedToXmlFileWithCapitalizedField_thenCorrect() throws IOException {
+        XmlMapper xmlMapper = new XmlMapper();
+        xmlMapper.writeValue(new File("target/simple_bean_capitalized.xml"),
+            new SimpleBeanForCapitalizedFields());
+        File file = new File("target/simple_bean_capitalized.xml");
+        assertNotNull(file);
     }
 
     private static String inputStreamToString(InputStream is) throws IOException {
@@ -83,4 +101,26 @@ class SimpleBean {
         this.y = y;
     }
 
+}
+
+class SimpleBeanForCapitalizedFields { 
+    @JsonProperty("X") 
+    private int x = 1; 
+    private int y = 2; 
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 }

@@ -16,7 +16,8 @@ public class JwtResponse {
         SUCCESS, ERROR
     }
 
-    public JwtResponse() {}
+    public JwtResponse() {
+    }
 
     public JwtResponse(String jwt) {
         this.jwt = jwt;

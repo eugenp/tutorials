@@ -1,8 +1,9 @@
 package org.baeldung;
 
+import org.baeldung.boot.Application;
+import org.baeldung.boot.domain.GenericEntity;
+import org.baeldung.boot.repository.GenericEntityRepository;
 import org.baeldung.config.H2TestProfileJPAConfig;
-import org.baeldung.domain.GenericEntity;
-import org.baeldung.repository.GenericEntityRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class SpringBootProfileIntegrationTest {
     @Test
     public void givenGenericEntityRepository_whenSaveAndRetreiveEntity_thenOK() {
         GenericEntity genericEntity = genericEntityRepository.save(new GenericEntity("test"));
-        GenericEntity foundEntity = genericEntityRepository.findOne(genericEntity.getId());
+        GenericEntity foundEntity = genericEntityRepository.findById(genericEntity.getId()).orElse(null);
         assertNotNull(foundEntity);
         assertEquals(genericEntity.getValue(), foundEntity.getValue());
     }
