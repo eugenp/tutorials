@@ -1,6 +1,6 @@
 package com.baeldung.daopattern.test;
 
-import com.baeldung.pattern.daopattern.entities.User;
+import com.baeldung.daopattern.entities.User;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.BeforeClass;
 import org.junit.Test;
