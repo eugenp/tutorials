@@ -10,10 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
-import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
-
-import reactor.core.publisher.Mono;
 
 /**
  * An example how to configure request mapping using {@link RouterFunction}.
@@ -26,32 +23,16 @@ public class EventRouter {
      * Event stream URI.
      */
     public static final String EVENT_URI = "/router/events";
-    private final EventStreamGenerator generator;
 
     /**
-     * @param generator an events generator
-     */
-    public EventRouter(EventStreamGenerator generator) {
-        super();
-        this.generator = generator;
-    }
-
-    /**
+     * @param generator an event stream generator strategy
      * @return the configured {@link RouterFunction} that will route to event stream handler
      */
     @Bean
-    public RouterFunction<ServerResponse> routerFunction() {
-        return RouterFunctions.route(GET(EVENT_URI), this::response);
-    }
-
-    /**
-     * @param request
-     * @return
-     */
-    private Mono<ServerResponse> response(ServerRequest request) {
-        return ServerResponse.ok()
+    public RouterFunction<ServerResponse> routerFunction(EventStreamGenerator generator) {
+        return RouterFunctions.route(GET(EVENT_URI), request -> ServerResponse.ok()
             .contentType(MediaType.APPLICATION_STREAM_JSON)
-            .body(generator.events(), Event.class);
+            .body(generator.events(), Event.class));
     }
 
 }
