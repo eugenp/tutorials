@@ -1,6 +1,6 @@
 package com.baeldung.daopattern.daos;
 
-import com.baeldung.pattern.daopattern.entities.User;
+import com.baeldung.daopattern.entities.User;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -34,7 +34,7 @@ public class JpaUserDao implements Dao<User> {
     }
     
     @Override
-    public void update(User user, String[] params) throws NullPointerException {
+    public void update(User user, String[] params) {
         user.setName(Objects.requireNonNull(params[0], "Name cannot be null"));
         user.setEmail(Objects.requireNonNull(params[1], "Email cannot be null"));
         executeInsideTransaction(entityManager -> entityManager.merge(user));
