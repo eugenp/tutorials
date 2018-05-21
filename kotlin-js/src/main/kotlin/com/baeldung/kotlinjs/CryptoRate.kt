@@ -10,8 +10,7 @@ fun main(args: Array<String>) {
     val app = express()
 
     app.get("/crypto", { _, res ->
-            println(generateCryptoRates())
-            res.send(generateCryptoRates())
+        res.send(generateCryptoRates())
     })
 
     app.listen(3000, {
@@ -19,8 +18,10 @@ fun main(args: Array<String>) {
     })
 }
 fun generateCryptoRates(): Array<CryptoCurrency>{
-    val crytoCurrency = arrayOf<CryptoCurrency>(CryptoCurrency("Bitcoin",
-            90000F), CryptoCurrency("ETH",1000F),
-            CryptoCurrency("TRX",10F));
-    return crytoCurrency
+    val cryptoCurrency = arrayOf<CryptoCurrency>(
+            CryptoCurrency("Bitcoin", 90000F),
+            CryptoCurrency("ETH",1000F),
+            CryptoCurrency("TRX",10F)
+    );
+    return cryptoCurrency
 }
