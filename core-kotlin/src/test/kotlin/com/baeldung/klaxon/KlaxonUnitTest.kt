@@ -5,11 +5,13 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.JsonReader
 import com.beust.klaxon.Klaxon
 import com.beust.klaxon.Parser
+import com.beust.klaxon.PathMatcher
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.Assert
 import org.junit.jupiter.api.Test
 import java.io.StringReader
+import java.util.regex.Pattern
 
 class KlaxonUnitTest {
 
@@ -127,5 +129,35 @@ class KlaxonUnitTest {
             }
         }
 
+    }
+
+    @Test
+    fun givenDiskInventory_whenRegexMatches_thenGetTypes() {
+        val jsonString = """
+    {
+       "inventory" : {
+           "disks" : [
+               {
+                   "type" : "HDD",
+                   "sizeInGb" : 1000
+               },
+               {
+                   "type" : "SDD",
+                   "sizeInGb" : 512
+               }
+           ]
+       }
+    }"""
+        val pathMatcher = object : PathMatcher {
+            override fun pathMatches(path: String) = Pattern.matches(".*inventory.*disks.*type.*", path)
+
+            override fun onMatch(path: String, value: Any) {
+                when (path) {
+                    "$.inventory.disks[0].type" -> assertThat(value).isEqualTo("HDD")
+                    "$.inventory.disks[1].type" -> assertThat(value).isEqualTo("SDD")
+                }
+            }
+        }
+        Klaxon().pathMatcher(pathMatcher).parseJsonObject(StringReader(jsonString))
     }
 }
