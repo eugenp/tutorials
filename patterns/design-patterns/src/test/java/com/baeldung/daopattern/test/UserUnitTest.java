@@ -1,4 +1,4 @@
-package com.baeldung.pattern.daopattern.test;
+package com.baeldung.daopattern.test;
 
 import com.baeldung.pattern.daopattern.entities.User;
 import static org.assertj.core.api.Assertions.assertThat;
