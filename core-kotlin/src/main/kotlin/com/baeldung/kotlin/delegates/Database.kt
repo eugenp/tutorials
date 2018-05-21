@@ -4,12 +4,12 @@ val data = arrayOf<MutableMap<String, Any?>>(
         mutableMapOf(
                 "id" to 1,
                 "name" to "George",
-                "capacityInGb" to 4
+                "age" to 4
         ),
         mutableMapOf(
                 "id" to 2,
                 "name" to "Charlotte",
-                "capacityInGb" to 2
+                "age" to 2
         )
 )
 
