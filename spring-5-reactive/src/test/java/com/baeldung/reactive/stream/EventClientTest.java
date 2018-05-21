@@ -3,12 +3,13 @@
  */
 package com.baeldung.reactive.stream;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.util.function.Consumer;
+import java.util.List;
+import java.util.function.Function;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import reactor.core.publisher.Flux;
 
 /**
  * @author goobar
@@ -29,25 +32,28 @@ public class EventClientTest {
     private EventClient client;
 
     @Test
-    public void given3EventsToConsume_whenConsumeEventsFor4Seconds_Then3EventsAreConsumed() throws Exception {
+    public void given3EventsToConsume_whenMapEvents_ThenMapExactly3Events() throws Exception {
         // given
         int eventsToConsume = 3;
-        Consumer<Event> consumer = mockConsumer();
+        Function<Event, String> mapper = mockConsumer();
 
         // when
-        client.consumeEvents(eventsToConsume, consumer);
-        Thread.sleep(4_000);
+        Flux<String> mappedEventsFlux = client.mapEvents(eventsToConsume, mapper);
 
         // then
-        verify(consumer, times(3)).accept(any(Event.class));
+        List<String> mappedEvents = mappedEventsFlux.collectList()
+            .block();
+        assertThat(mappedEvents).hasSize(eventsToConsume);
     }
 
     /**
      * @return
      */
     @SuppressWarnings("unchecked")
-    private Consumer<Event> mockConsumer() {
-        return mock(Consumer.class);
+    private Function<Event, String> mockConsumer() {
+        Function<Event, String> mock = mock(Function.class);
+        when(mock.apply(any(Event.class))).thenReturn("event mock string");
+        return mock;
     }
 
 }

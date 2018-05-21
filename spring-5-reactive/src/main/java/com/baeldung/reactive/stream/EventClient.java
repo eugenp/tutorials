@@ -3,14 +3,16 @@
  */
 package com.baeldung.reactive.stream;
 
-import java.util.function.Consumer;
+import java.util.function.Function;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import reactor.core.publisher.Flux;
+
 /**
- * A simple client to consume the Webflux endpoint.
+ * A simple client to map events from the Webflux endpoint.
  * @author goobar
  *
  */
@@ -27,17 +29,20 @@ public class EventClient {
     }
 
     /**
+     * Maps events from original Webflux endpoint into a type determined by given {@code mapper}.
+     * @param <T> a type event will mapped into
      * @param eventsToConsume a number of events to consume
-     * @param consumer a consumer that will consume each event separately
+     * @param mapper a mapper that will be applied for each of the original events
+     * @return the flux of mapped events
      */
-    public void consumeEvents(int eventsToConsume, Consumer<Event> consumer) {
-        webClient.get()
+    public <T> Flux<T> mapEvents(int eventsToConsume, Function<Event, T> mapper) {
+        return webClient.get()
             .uri(EventController.EVENT_URI)
             .accept(MediaType.APPLICATION_STREAM_JSON)
             .retrieve()
             .bodyToFlux(Event.class)
             .log()
-            .take(eventsToConsume)
-            .subscribe(consumer);
+            .map(mapper)
+            .take(eventsToConsume);
     }
 }
