@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.keyvalue.annotation.KeySpace;
 
 @KeySpace("employees")
-public class Employee implements Serializable {
+public class Employee {
 
     @Id
     private Integer id;
