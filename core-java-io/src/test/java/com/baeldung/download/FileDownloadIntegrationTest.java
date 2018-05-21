@@ -13,6 +13,8 @@ import java.util.concurrent.ExecutionException;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.junit.After;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class FileDownloadIntegrationTest {
@@ -70,6 +72,20 @@ public class FileDownloadIntegrationTest {
         byte[] digest = md.digest();
         String myChecksum = DatatypeConverter.printHexBinary(digest);
         
-        return myChecksum.equals(FILE_MD5_HASH);
+        return myChecksum.equalsIgnoreCase(FILE_MD5_HASH);
+    }
+    
+    @BeforeClass
+    public static void setup() throws IOException {
+        if (Files.exists(Paths.get(FILE_NAME))) {
+            Files.delete(Paths.get(FILE_NAME));
+        }
+    }
+    
+    @After
+    public void cleanup() throws IOException {
+        if (Files.exists(Paths.get(FILE_NAME))) {
+            Files.delete(Paths.get(FILE_NAME));
+        }
     }
 }
