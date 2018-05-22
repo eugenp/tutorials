@@ -1,7 +1,9 @@
 package com.baeldung.collection;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 import java.util.*;
 
@@ -28,16 +30,20 @@ public class CollectionConfig {
     }
 
     @Bean
+    @Qualifier("CollectionsBean")
+    @Order(2)
     public BaeldungBean getElement() {
         return new BaeldungBean();
     }
 
     @Bean
+    @Order(3)
     public BaeldungBean getAnotherElement() {
         return new BaeldungBean();
     }
 
     @Bean
+    @Order(1)
     public BaeldungBean getOneMoreElement() {
         return new BaeldungBean();
     }
