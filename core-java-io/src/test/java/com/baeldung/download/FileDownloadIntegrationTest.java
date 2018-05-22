@@ -24,42 +24,42 @@ public class FileDownloadIntegrationTest {
     static String FILE_MD5_HASH = "6cb91af4ed4c60c11613b75cd1fc6116";
     
     @Test
-    public void giveJavaIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
+    public void givenJavaIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
         
         FileDownload.downloadWithJavaIO(FILE_URL, FILE_NAME);
         assertTrue(checkMd5Hash(FILE_NAME));
     }
     
     @Test
-    public void giveJavaNIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
+    public void givenJavaNIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
         
         FileDownload.downloadWithJavaNIO(FILE_URL, FILE_NAME);
         assertTrue(checkMd5Hash(FILE_NAME));
     }
     
     @Test
-    public void giveJava7IO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
+    public void givenJava7IO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
         
         FileDownload.downloadWithJava7IO(FILE_URL, FILE_NAME);
         assertTrue(checkMd5Hash(FILE_NAME));
     }
     
     @Test
-    public void giveAHCLibrary_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException, ExecutionException, InterruptedException {
+    public void givenAHCLibrary_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException, ExecutionException, InterruptedException {
         
         FileDownload.downloadWithAHC(FILE_URL, FILE_NAME);
         assertTrue(checkMd5Hash(FILE_NAME));
     }
     
     @Test
-    public void giveApacheCommonsIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
+    public void givenApacheCommonsIO_whenDownloadingFile_thenDownloadShouldBeCorrect() throws NoSuchAlgorithmException, IOException {
         
         FileDownload.downloadWithApacheCommons(FILE_URL, FILE_NAME);
         assertTrue(checkMd5Hash(FILE_NAME));
     }
     
     @Test
-    public void giveJavaIO_whenDownloadingFileStops_thenDownloadShouldBeResumedCorrectly() throws NoSuchAlgorithmException, IOException, URISyntaxException {
+    public void givenJavaIO_whenDownloadingFileStops_thenDownloadShouldBeResumedCorrectly() throws NoSuchAlgorithmException, IOException, URISyntaxException {
         
         ResumableDownload.downloadFileWithResume(FILE_URL, FILE_NAME);
         assertTrue(checkMd5Hash(FILE_NAME));
