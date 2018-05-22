@@ -18,6 +18,9 @@ public class CollectionsBean {
 
     private Map<Integer, String> nameMap;
 
+    @Autowired
+    private List<BaeldungBean> beanList;
+
     public CollectionsBean() {
     }
 
@@ -40,5 +43,9 @@ public class CollectionsBean {
 
     public void printNameMap() {
         System.out.println(nameMap);
+    }
+
+    public void printBeanList() {
+        System.out.println(beanList);
     }
 }

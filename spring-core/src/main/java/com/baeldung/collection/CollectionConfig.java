@@ -26,4 +26,19 @@ public class CollectionConfig {
         nameMap.put(3, "Harry");
         return nameMap;
     }
+
+    @Bean
+    public BaeldungBean getElement() {
+        return new BaeldungBean();
+    }
+
+    @Bean
+    public BaeldungBean getAnotherElement() {
+        return new BaeldungBean();
+    }
+
+    @Bean
+    public BaeldungBean getOneMoreElement() {
+        return new BaeldungBean();
+    }
 }

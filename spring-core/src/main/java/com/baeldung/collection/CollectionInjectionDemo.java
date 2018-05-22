@@ -15,5 +15,6 @@ public class CollectionInjectionDemo {
         collectionsBean.printNameList();
         collectionsBean.printNameSet();
         collectionsBean.printNameMap();
+        collectionsBean.printBeanList();
     }
 }
