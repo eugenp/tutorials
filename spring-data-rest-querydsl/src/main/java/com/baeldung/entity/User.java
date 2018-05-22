@@ -1,17 +1,22 @@
 package com.baeldung.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
-import java.util.List;
 
 
-@Entity @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) public class User {
+@Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class User {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id", unique = true, nullable = false) private Long id;
-    @Column private String name;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user") @JsonManagedReference private List<Address> addresses;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false)
+    private Long id;
+    @Column
+    private String name;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "user")
+    private Address address;
 
     public User() {
     }
@@ -36,11 +41,11 @@ import java.util.List;
         this.name = name;
     }
 
-    public List<Address> getAddresses() {
-        return addresses;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
