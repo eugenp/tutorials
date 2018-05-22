@@ -1,8 +1,8 @@
-package com.baeldung.web;
+package com.baeldung.ctx1;
 
 import org.springframework.stereotype.Service;
 
-import com.baeldung.services.IHomeService;
+import com.baeldung.parent.IHomeService;
 
 @Service
 public class GreetingService implements IHomeService {

@@ -1,4 +1,4 @@
-package com.baeldung.rest;
+package com.baeldung.ctx2;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@ComponentScan("com.baeldung.rest")
+@ComponentScan("com.baeldung.ctx2")
 @EnableAutoConfiguration
-@PropertySource("classpath:rest-app.properties")
-public class RestConfig {
+@PropertySource("classpath:ctx2.properties")
+public class Ctx2Config {
 
 }
