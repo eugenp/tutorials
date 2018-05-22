@@ -8,12 +8,15 @@ import com.baeldung.performancetests.model.destination.Order;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 
-    public class DozerConverter implements Converter {
+import java.util.Collections;
+
+public class DozerConverter implements Converter {
         private final Mapper mapper;
 
         public DozerConverter() {
             DozerBeanMapper mapper = new DozerBeanMapper();
             mapper.addMapping(DozerConverter.class.getResourceAsStream("/dozer-mapping.xml"));
+            mapper.setMappingFiles(Collections.singletonList("dozerJdk8Converters.xml"));
             this.mapper = mapper;
         }
 

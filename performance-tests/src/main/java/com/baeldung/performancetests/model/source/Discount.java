@@ -1,29 +1,29 @@
 package com.baeldung.performancetests.model.source;
 
-import com.googlecode.jmapper.annotations.JGlobalMap;
-
 import java.math.BigDecimal;
+import java.time.LocalDate;
+
 public class Discount {
-    private String startTime;
-    private String endTime;
+    private LocalDate startTime;
+    private LocalDate endTime;
     private BigDecimal discountPrice;
 
     public Discount() {
     }
 
-    public String getStartTime() {
+    public LocalDate getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(LocalDate startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public LocalDate getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(LocalDate endTime) {
         this.endTime = endTime;
     }
 
@@ -35,7 +35,7 @@ public class Discount {
         this.discountPrice = discountPrice;
     }
 
-    public Discount(String startTime, String endTime, BigDecimal discountPrice) {
+    public Discount(LocalDate startTime, LocalDate endTime, BigDecimal discountPrice) {
 
         this.startTime = startTime;
         this.endTime = endTime;

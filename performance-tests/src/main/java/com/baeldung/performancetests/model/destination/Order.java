@@ -5,6 +5,8 @@ import com.google.common.base.Objects;
 import com.googlecode.jmapper.annotations.JMap;
 import com.googlecode.jmapper.annotations.JMapConversion;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 public class Order {
     @JMap
@@ -14,9 +16,9 @@ public class Order {
     @JMap("status")
     private OrderStatus orderStatus;
     @JMap
-    private String orderDate;
+    private LocalDate orderDate;
     @JMap
-    private String orderFinishDate;
+    private LocalDate orderFinishDate;
     @JMap
     private PaymentType paymentType;
     @JMap
@@ -88,19 +90,19 @@ public class Order {
         this.orderStatus = status;
     }
 
-    public String getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
-    public String getOrderFinishDate() {
+    public LocalDate getOrderFinishDate() {
         return orderFinishDate;
     }
 
-    public void setOrderFinishDate(String orderFinishDate) {
+    public void setOrderFinishDate(LocalDate orderFinishDate) {
         this.orderFinishDate = orderFinishDate;
     }
 
@@ -137,7 +139,7 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Order(User orderingUser, List<Product> orderedProducts, OrderStatus orderStatus, String orderDate, String orderFinishDate, PaymentType paymentType, Discount discount, int orderId, DeliveryData deliveryData, Shop offeringShop) {
+    public Order(User orderingUser, List<Product> orderedProducts, OrderStatus orderStatus, LocalDate orderDate, LocalDate orderFinishDate, PaymentType paymentType, Discount discount, int orderId, DeliveryData deliveryData, Shop offeringShop) {
 
         this.orderingUser = orderingUser;
         this.orderedProducts = orderedProducts;
