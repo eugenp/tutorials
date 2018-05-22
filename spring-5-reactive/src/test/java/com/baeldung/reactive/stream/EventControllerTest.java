@@ -24,6 +24,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@DisableEmbeddedMongo
 @SuppressWarnings("javadoc")
 public class EventControllerTest {
 

@@ -26,6 +26,7 @@ import reactor.core.publisher.Flux;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
+@DisableEmbeddedMongo
 @SuppressWarnings("javadoc")
 public class EventClientTest {
     @Autowired

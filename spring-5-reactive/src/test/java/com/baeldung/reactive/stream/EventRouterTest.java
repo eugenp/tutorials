@@ -24,9 +24,12 @@ import org.springframework.test.web.reactive.server.WebTestClient;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@DisableEmbeddedMongo
 @SuppressWarnings("javadoc")
 public class EventRouterTest {
+
     private static final String EVENT_URI = EventRouter.EVENT_URI;
+
     @Autowired
     private WebTestClient testClient;
 
