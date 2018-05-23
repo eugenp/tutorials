@@ -1,13 +1,10 @@
 package org.baeldung.web.handler;
 
-import org.baeldung.web.dto.Bazz;
 import org.baeldung.web.exception.NotFoundException;
 import org.baeldung.web.model.Bar;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -24,31 +21,28 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = {NotFoundException.class, Bar.class})
+@ContextConfiguration(classes = { NotFoundException.class, Bar.class })
 @RestClientTest
 public class RestTemplateResponseErrorHandlerIntegrationTest {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(RestTemplateResponseErrorHandler.class);
+    @Autowired private MockRestServiceServer server;
+    @Autowired private RestTemplateBuilder builder;
 
-  @Autowired private MockRestServiceServer server;
-  @Autowired private RestTemplateBuilder builder;
+    @Test(expected = NotFoundException.class)
+    public void givenRemoteApiCall_when404Error_thenThrowNotFound() {
+        Assert.assertNotNull(this.builder);
+        Assert.assertNotNull(this.server);
 
+        RestTemplate restTemplate = this.builder
+          .errorHandler(new RestTemplateResponseErrorHandler())
+          .build();
 
-  @Test(expected = NotFoundException.class)
-  public void givenCallToRemoteApi_when404ErrorReceived_throwNotFoundException() {
-    Assert.assertNotNull(this.builder);
-    Assert.assertNotNull(this.server);
+        this.server
+          .expect(ExpectedCount.once(), requestTo("/bars/4242"))
+          .andExpect(method(HttpMethod.GET))
+          .andRespond(withStatus(HttpStatus.NOT_FOUND));
 
-    RestTemplate restTemplate = this.builder
-      .errorHandler(new RestTemplateResponseErrorHandler())
-      .build();
-
-    this.server
-      .expect(ExpectedCount.once(), requestTo("/bars/4242"))
-      .andExpect(method(HttpMethod.GET))
-      .andRespond(withStatus(HttpStatus.NOT_FOUND));
-
-    Bar response = restTemplate.getForObject("/bars/4242", Bar.class);
-    this.server.verify();
-  }
+        Bar response = restTemplate.getForObject("/bars/4242", Bar.class);
+        this.server.verify();
+    }
 }
