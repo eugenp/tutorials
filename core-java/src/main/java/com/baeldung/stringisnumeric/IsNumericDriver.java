@@ -1,12 +1,13 @@
 package com.baeldung.stringisnumeric;
 
-import static com.baeldung.designpatterns.util.LogerUtil.LOG;
+import org.apache.log4j.Logger;
 
 public class IsNumericDriver {
     private static IsNumeric isNumeric;
-    
+    private static Logger LOG = Logger.getLogger(IsNumericDriver.class);
     static {
         isNumeric =new IsNumeric();
+        
     }
     
     public static void main(String[] args) {
