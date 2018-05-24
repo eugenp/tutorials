@@ -26,11 +26,10 @@ public class SpringWebfluxServerApplication {
     @GetMapping(value = "/quotes", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<Quote> getQuotes() {
 
-        Flux<Quote> quotesFlux = Flux.fromStream(Stream.generate(() -> new Quote("XYZ", 5.0 + random.nextDouble())));
-        Flux<Long> emmitFlux = Flux.interval(Duration.ofSeconds(1));
+        Flux<Quote> quotesFlux = Flux.interval(Duration.ofSeconds(1))
+            .map(l -> new Quote("XYZ", 5.0 + random.nextDouble()));
 
-        return Flux.zip(quotesFlux, emmitFlux)
-            .map(Tuple2::getT1);
+        return quotesFlux;
 
     }
 
