@@ -6,19 +6,17 @@ import org.springframework.web.reactive.function.client.WebClient.RequestHeaders
 
 import com.baeldung.reactive.model.Stock;
 
+import reactor.core.publisher.Flux;
+
 public class StockClient {
 
-	public void getStockUpdates(String stockCode) {
-		WebClient client = WebClient.create("localhost:9111");
-		RequestHeadersSpec<?> request = client.get().uri("/rtes/stocks/"+stockCode).accept(MediaType.TEXT_EVENT_STREAM);
-		request.retrieve().bodyToFlux(Stock.class).toStream().forEach(System.out::println);
-	}
-
-	public static void main(String[] args) throws InterruptedException {
-		new StockClient().getStockUpdates("GOOGL");
-
-		while(true) {
-			Thread.sleep(1000L);
-		}
-	}
+    public Flux<Stock> getStockUpdates(String stockCode) {
+        WebClient client = WebClient.create("localhost:8080");
+        RequestHeadersSpec<?> request = client.get()
+            .uri("/rtes/stocks/" + stockCode)
+            .accept(MediaType.TEXT_EVENT_STREAM);
+        return request.retrieve()
+            .bodyToFlux(Stock.class)
+            .log();
+    }
 }

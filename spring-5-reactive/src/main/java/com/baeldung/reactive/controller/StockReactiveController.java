@@ -23,16 +23,14 @@ public class StockReactiveController {
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/stocks/{code}")
     public Flux<Stock> getStocks(@PathVariable String code) {
         BigDecimal startingPrice = new BigDecimal("100");
-        Flux<Stock> stockFlux = Flux.fromStream(Stream.generate(() -> new Stock(
-                        code,
-                        new Random().nextBoolean() ? 
-                                startingPrice.add(BigDecimal.valueOf(new Random().nextDouble())): 
-                                startingPrice.subtract(BigDecimal.valueOf(new Random().nextDouble())))));
+        Flux<Stock> stockFlux = Flux.fromStream(Stream.generate(() -> new Stock(code, getLatestPrice(startingPrice))));
         Flux<Long> emmitFlux = Flux.interval(Duration.ofSeconds(1));
-        return Flux.zip(stockFlux, emmitFlux).map(Tuple2::getT1);
+        return Flux.zip(stockFlux, emmitFlux)
+            .map(Tuple2::getT1);
     }
 
-    public static void main(String [] args) {
-
+    private BigDecimal getLatestPrice(BigDecimal startingPrice) {
+        BigDecimal priceChange = BigDecimal.valueOf(new Random().nextDouble());
+        return new Random().nextBoolean() ? startingPrice.add(priceChange) : startingPrice.subtract(priceChange);
     }
 }
