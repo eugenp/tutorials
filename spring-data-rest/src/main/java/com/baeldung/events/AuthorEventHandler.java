@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 @RepositoryEventHandler
 public class AuthorEventHandler {
-        Logger logger = Logger.getLogger("Class BookEventHandler");
+        Logger logger = Logger.getLogger("Class AuthorEventHandler");
         public AuthorEventHandler(){
                 super();
         }
