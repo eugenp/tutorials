@@ -6,8 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.context.support.GenericWebApplicationContext;
 
 import com.baeldung.functional.Spring5JavaApplication;
 
@@ -17,7 +17,7 @@ import com.baeldung.functional.Spring5JavaApplication;
 public class NearestAirportBeanConfigurationIntegrationTest {
 
     @Autowired
-    private GenericWebApplicationContext webApplicationcontext;
+    private GenericApplicationContext webApplicationcontext;
 
     @Test
     public void testRegisterBeanWithNameAndAutowareCandidate_thenOk() {

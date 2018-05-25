@@ -6,15 +6,15 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import com.baeldung.functional.model.CityAirport;
-import com.baeldung.functional.repository.NearestAirportRepository;
+import com.baeldung.functional.repository.FurthestAirportRepository;
 
 import reactor.core.publisher.Mono;
 
 @Service
-public class NearestAirportHandler {
+public class FurthestAirportHandler {
 
     @Autowired
-    private NearestAirportRepository cityAirportRepository;
+    private FurthestAirportRepository cityAirportRepository;
 
     public Mono<ServerResponse> handleGetCityAirports(ServerRequest request) {
         return ServerResponse.ok().body(cityAirportRepository.getCityAirports(), CityAirport.class);

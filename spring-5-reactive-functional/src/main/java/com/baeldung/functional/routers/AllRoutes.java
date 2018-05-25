@@ -9,22 +9,28 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.server.RouterFunction;
 
+import com.baeldung.functional.handler.FurthestAirportHandler;
 import com.baeldung.functional.handler.NearestAirportHandler;
 
 @Configuration
 public class AllRoutes {
 
     private NearestAirportHandler nearestAirportHandler;
+    
+    private FurthestAirportHandler furthestAirportHandler;
 
-    public AllRoutes(NearestAirportHandler nearestAirportHandler) {
+    public AllRoutes(NearestAirportHandler nearestAirportHandler, FurthestAirportHandler furthestAirportHandler) {
         this.nearestAirportHandler = nearestAirportHandler;
+        this.furthestAirportHandler = furthestAirportHandler;
     }
 
     @Bean
     public RouterFunction<?> routerFunction() {
         return
-                route(GET("/api/city").and(accept(MediaType.APPLICATION_JSON)), nearestAirportHandler::handleGetCityAirports)
-                .and(route(GET("/api/city/{city}").and(accept(MediaType.APPLICATION_JSON)), nearestAirportHandler::handleGetAirportByCityName));
+                route(GET("/api/nearestcity").and(accept(MediaType.APPLICATION_JSON)), nearestAirportHandler::handleGetCityAirports)
+           .and(route(GET("/api/nearestcity/{city}").and(accept(MediaType.APPLICATION_JSON)), nearestAirportHandler::handleGetAirportByCityName))
+           .and(route(GET("/api/furthestcity").and(accept(MediaType.APPLICATION_JSON)), furthestAirportHandler::handleGetCityAirports))
+           .and(route(GET("/api/furthestcity/{city}").and(accept(MediaType.APPLICATION_JSON)), furthestAirportHandler::handleGetAirportByCityName));
 
     }
 }

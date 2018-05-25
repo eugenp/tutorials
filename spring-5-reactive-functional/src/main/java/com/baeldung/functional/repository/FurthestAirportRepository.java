@@ -1,9 +1,6 @@
 package com.baeldung.functional.repository;
 
-import java.util.Arrays;
 import java.util.List;
-
-import org.springframework.stereotype.Repository;
 
 import com.baeldung.functional.model.CityAirport;
 
@@ -11,12 +8,15 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 /**
- * Annotation based bean registration
+ * Functional bean registration
  */
-@Repository
-public class NearestAirportRepository {
+public class FurthestAirportRepository {
 
-    private final List<CityAirport> cityNameAirports = Arrays.asList(new CityAirport("New York", "JFK"), new CityAirport("Kolkata", "NSCBI"));
+    private List<CityAirport> cityNameAirports;
+    
+    public FurthestAirportRepository(List<CityAirport> cityNameAirports) {
+        this.cityNameAirports = cityNameAirports;
+    }
 
     public Mono<CityAirport> getAirportByCity(String cityName) {
         return Mono.justOrEmpty(cityNameAirports.stream().filter(user -> {
@@ -27,5 +27,4 @@ public class NearestAirportRepository {
     public Flux<CityAirport> getCityAirports() {
         return Flux.fromIterable(cityNameAirports);
     }
-
 }

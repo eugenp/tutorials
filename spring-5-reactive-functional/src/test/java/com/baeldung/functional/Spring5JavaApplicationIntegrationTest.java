@@ -24,7 +24,7 @@ public class Spring5JavaApplicationIntegrationTest {
     @Test
     public void givenRouter_whenGetTest_thenGotAllResult() throws Exception {
         client.get()
-            .uri("/api/city")
+            .uri("/api/nearestcity")
             .exchange()
             .expectStatus()
             .isOk()
@@ -35,7 +35,7 @@ public class Spring5JavaApplicationIntegrationTest {
     @Test
     public void givenRouter_whenGetTest_thenGotSingleResult() throws Exception {
         client.get()
-            .uri("/api/city/Kolkata")
+            .uri("/api/nearestcity/Kolkata")
             .exchange()
             .expectStatus()
             .isOk()

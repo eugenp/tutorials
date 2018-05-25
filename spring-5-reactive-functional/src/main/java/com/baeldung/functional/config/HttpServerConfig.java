@@ -16,7 +16,7 @@ public class HttpServerConfig {
     public HttpServer httpServer(RouterFunction<?> routerFunction) {
         HttpHandler httpHandler = RouterFunctions.toHttpHandler(routerFunction);
         ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(httpHandler);
-        HttpServer server = HttpServer.create("localhost", Integer.valueOf(9000));
+        HttpServer server = HttpServer.create("localhost", 9000);
         server.newHandler(adapter);
         return server;
     }
