@@ -1,13 +1,15 @@
 package com.baeldung.springwebflux.model;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
+
+import java.io.Serializable;
 
 @Builder
 @ToString
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Equity {
-    private final int equityId;
-    private final double equityPrice;
+    private int equityId;
+    private double equityPrice;
 }
