@@ -1,8 +1,10 @@
 package com.baeldung.springwebflux.model;
 
-import lombok.*;
-
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Builder
 @ToString

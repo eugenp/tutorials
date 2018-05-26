@@ -22,13 +22,13 @@ public class EquityPriceBroadcastController {
 
     private Mono<Equity> createEquityInstance() {
         return Mono.fromCallable(DataRepository::generateEquityPriceChanges)
-                .subscribeOn(scheduler);
+            .subscribeOn(scheduler);
     }
 
     @GetMapping(path = "/getEquityPrice", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<Equity> broadcastEquityPrices(ServerHttpResponse response) {
         return createEquityInstance().delayElement(Duration.ofSeconds(1))
-                .repeat();
+            .repeat();
     }
 
 }
