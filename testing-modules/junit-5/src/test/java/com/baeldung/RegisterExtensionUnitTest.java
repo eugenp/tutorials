@@ -14,12 +14,12 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 public class RegisterExtensionUnitTest {
 
     @RegisterExtension
-    static RegisterExtensionSampleExtension staticExtension = new
-            RegisterExtensionSampleExtension("static version");
+    static RegisterExtensionSampleExtension staticExtension 
+      = new RegisterExtensionSampleExtension("static version");
 
     @RegisterExtension
-    RegisterExtensionSampleExtension instanceLevelExtension = new
-            RegisterExtensionSampleExtension("instance version");
+    RegisterExtensionSampleExtension instanceLevelExtension 
+      = new RegisterExtensionSampleExtension("instance version");
 
     @Test
     public void demoTest() {
