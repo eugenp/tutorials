@@ -1,12 +1,12 @@
 package com.baeldung.reactive.alex.comsa;
 
-public class AirPlane {
+public class Plane {
 
     private String flightNumber;
     private String destination;
     private String airplaneType;
 
-    public AirPlane(String flightNumber, String destination, String airplaneType) {
+    public Plane(String flightNumber, String destination, String airplaneType) {
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.airplaneType = airplaneType;
