@@ -1,7 +1,7 @@
 package com.baeldung.reactive.alex.comsa.functional;
 
 
-import com.baeldung.reactive.alex.comsa.Plane;
+import com.baeldung.reactive.alex.comsa.AirPlane;
 import com.baeldung.reactive.alex.comsa.annotation.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -20,6 +20,6 @@ public class FlightHandler {
 
 
         return ServerResponse.ok().contentType(MediaType.APPLICATION_STREAM_JSON).
-                body(flightService.getFlightsData(), Plane.class);
+                body(flightService.getFlightsData(), AirPlane.class);
     }
 }

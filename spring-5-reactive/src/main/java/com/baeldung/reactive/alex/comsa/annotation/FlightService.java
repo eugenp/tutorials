@@ -1,6 +1,6 @@
 package com.baeldung.reactive.alex.comsa.annotation;
 
-import com.baeldung.reactive.alex.comsa.Plane;
+import com.baeldung.reactive.alex.comsa.AirPlane;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -15,9 +15,9 @@ public class FlightService {
 
     private AtomicLong flightNumberGenerator = new AtomicLong();
 
-    public Flux<Plane> getFlightsData() {
+    public Flux<AirPlane> getFlightsData() {
 
-        Flux<Plane> flightData = Flux.fromStream(Stream.generate(() -> new Plane(
+        Flux<AirPlane> flightData = Flux.fromStream(Stream.generate(() -> new AirPlane(
                 getFlightNumber(),
                 getDestionation(),
                 getAirplaneType()

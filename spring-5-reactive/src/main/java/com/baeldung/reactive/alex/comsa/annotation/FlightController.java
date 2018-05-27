@@ -1,7 +1,7 @@
 package com.baeldung.reactive.alex.comsa.annotation;
 
 
-import com.baeldung.reactive.alex.comsa.Plane;
+import com.baeldung.reactive.alex.comsa.AirPlane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +18,7 @@ public class FlightController {
     private FlightService flightService;
 
     @GetMapping(produces = MediaType.APPLICATION_STREAM_JSON_VALUE, path = "/flight")
-    public Flux<Plane> getFlux() {
+    public Flux<AirPlane> getFlux() {
         return flightService.getFlightsData();
 
     }
