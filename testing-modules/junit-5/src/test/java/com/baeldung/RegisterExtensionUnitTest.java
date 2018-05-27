@@ -11,15 +11,13 @@ import org.junit.jupiter.api.extension.RegisterExtension;
  * 1. Once as instance level field: Only method level callbacks are called.
  * 2. Once as class level static field: All methods are called.
  */
-public class RegisterExtensionDemoTest {
+public class RegisterExtensionUnitTest {
 
     @RegisterExtension
-    static RegisterExtensionSampleExtension staticExtension = new
-            RegisterExtensionSampleExtension("static version");
+    static RegisterExtensionSampleExtension staticExtension = new RegisterExtensionSampleExtension("static version");
 
     @RegisterExtension
-    RegisterExtensionSampleExtension instanceLevelExtension = new
-            RegisterExtensionSampleExtension("instance version");
+    RegisterExtensionSampleExtension instanceLevelExtension = new RegisterExtensionSampleExtension("instance version");
 
     @Test
     public void demoTest() {

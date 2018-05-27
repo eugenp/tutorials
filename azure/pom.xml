@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.baeldung.springboot</groupId>
+    <groupId>com.baeldung</groupId>
     <artifactId>azure</artifactId>
     <version>0.1</version>
     <packaging>war</packaging>
@@ -11,18 +11,14 @@
     <description>Demo project for Spring Boot on Azure</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.2.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <artifactId>parent-boot-2</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-
-        <azure.containerRegistry>aietdocker</azure.containerRegistry>
+        <azure.containerRegistry>baeldungadr</azure.containerRegistry>
         <docker.image.prefix>${azure.containerRegistry}.azurecr.io</docker.image.prefix>
     </properties>
 
@@ -54,11 +50,6 @@
             <version>5.1.6</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
