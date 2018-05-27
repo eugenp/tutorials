@@ -1,18 +1,15 @@
 package com.baeldung.shutdown;
 
-import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
-import org.springframework.boot.ExitCodeGenerator;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.system.ApplicationPidFileWriter;
+import org.springframework.boot.context.ApplicationPidFileWriter;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import javax.annotation.security.RolesAllowed;
-
-@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
+@SpringBootApplication
 public class Application {
-
+    
     public static void main(String[] args) {
 
         SpringApplication.run(Application.class, args);
@@ -24,7 +21,7 @@ public class Application {
 
     private static void closeApplication() {
 
-        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class).web(false).run();
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class).web(WebApplicationType.NONE).run();
         System.out.println("Spring Boot application started");
         ctx.getBean(TerminateBean.class);
         ctx.close();
@@ -32,7 +29,7 @@ public class Application {
 
     private static void exitApplication() {
 
-        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class).web(false).run();
+        ConfigurableApplicationContext ctx = new SpringApplicationBuilder(Application.class).web(WebApplicationType.NONE).run();
 
         int exitCode = SpringApplication.exit(ctx, () -> {
             // return the error code
@@ -45,8 +42,9 @@ public class Application {
     }
 
     private static void writePID() {
-        SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class).web(false);
+        SpringApplicationBuilder app = new SpringApplicationBuilder(Application.class).web(WebApplicationType.NONE);
         app.build().addListeners(new ApplicationPidFileWriter("./bin/shutdown.pid"));
         app.run();
     }
+
 }

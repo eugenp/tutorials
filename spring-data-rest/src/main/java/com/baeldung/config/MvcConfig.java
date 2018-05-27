@@ -1,5 +1,7 @@
 package com.baeldung.config;
 
+import com.baeldung.events.AuthorEventHandler;
+import com.baeldung.events.BookEventHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +22,16 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
+    }
+
+    @Bean
+    AuthorEventHandler authorEventHandler() {
+        return new AuthorEventHandler();
+    }
+
+    @Bean
+    BookEventHandler bookEventHandler(){
+        return new BookEventHandler();
     }
 
 }
