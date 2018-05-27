@@ -1,20 +1,17 @@
 package com.baeldung.keyword.thiskeyword;
 
-/**
- * Created by Gebruiker on 5/14/2018.
- */
-public class ThisKeyword {
+public class KeywordTest {
 
     private String name;
     private int age;
 
-    public ThisKeyword() {
+    public KeywordTest() {
         this("John", 27);
         this.printMessage();
         printInstance(this);
     }
 
-    public ThisKeyword(String name, int age) {
+    public KeywordTest(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -23,11 +20,11 @@ public class ThisKeyword {
         System.out.println("invoked by this");
     }
 
-    public void printInstance(ThisKeyword thisKeyword) {
+    public void printInstance(KeywordTest thisKeyword) {
         System.out.println(thisKeyword);
     }
 
-    public ThisKeyword getCurrentInstance() {
+    public KeywordTest getCurrentInstance() {
         return this;
     }
 
@@ -36,15 +33,15 @@ public class ThisKeyword {
         boolean isInnerClass = true;
 
         public ThisInnerClass() {
-            ThisKeyword thisKeyword = ThisKeyword.this;
-            String outerString = ThisKeyword.this.name;
+            KeywordTest thisKeyword = KeywordTest.this;
+            String outerString = KeywordTest.this.name;
             System.out.println(this.isInnerClass);
         }
     }
 
     @Override
     public String toString() {
-        return "ThisKeyword{" +
+        return "KeywordTest{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
