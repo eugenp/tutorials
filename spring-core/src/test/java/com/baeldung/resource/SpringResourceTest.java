@@ -18,7 +18,7 @@ public class SpringResourceTest {
 
     @Autowired
     private ClassPathResourceReader classPathResourceReader;
-    
+
     static final String testData = "This is a sample text to demonstrate usage of Spring Resource.";
 
     @Test
@@ -52,6 +52,13 @@ public class SpringResourceTest {
     @Test
     public void whenResourceUtils_thenReadSuccessful() throws IOException {
         String fileData = classPathResourceReader.listResourceContentsUsingFile(classPathResourceReader.retrieveFileUsingResourceUtils());
+        assertEquals(testData, fileData);
+    }
+
+    @Test
+    public void whenResourceAsStream_thenReadSuccessful() throws IOException {
+        Resource resource = classPathResourceReader.retrieveResourceUsingResourceLoader();
+        String fileData = classPathResourceReader.listResourceContentsUsingInputStream(resource.getInputStream());
         assertEquals(testData, fileData);
     }
 }
