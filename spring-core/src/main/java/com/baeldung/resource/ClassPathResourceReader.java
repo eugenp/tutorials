@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -68,7 +71,7 @@ public class ClassPathResourceReader {
     }
 
     /**
-     * Utility method to list contents ofa file.
+     * Utility method to list contents of a file.
      * 
      * @param fileResource
      * @return
@@ -83,8 +86,27 @@ public class ClassPathResourceReader {
             fileData.append(dataLine);
             dataLine = bufReader.readLine();
         }
-
+        bufReader.close();
         fileReader.close();
+        return fileData.toString();
+    }
+
+    /**
+     * Utility method to list contents of a stream 
+     * 
+     * @param ipStream
+     * @return
+     * @throws IOException
+     */
+    public String listResourceContentsUsingInputStream(InputStream ipStream) throws IOException {
+        BufferedReader bufReader = new BufferedReader(new InputStreamReader(ipStream, "UTF-8"));
+        String dataLine = bufReader.readLine();
+        StringBuilder fileData = new StringBuilder();
+        while (null != dataLine) {
+            fileData.append(dataLine);
+            dataLine = bufReader.readLine();
+        }
+        bufReader.close();
         return fileData.toString();
     }
 
