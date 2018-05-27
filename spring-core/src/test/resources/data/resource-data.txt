@@ -1,0 +1,1 @@
+This is a sample text to demonstrate usage of Spring Resource.
