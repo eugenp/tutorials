@@ -4,36 +4,35 @@ import com.baeldung.linkedlist.LinkedList.Node;
 
 public class MiddleElementLookup {
 
-    public static String findMiddleElement(LinkedList list) {
-        if (list == null || list.head() == null) {
+    public static String findMiddleElement(Node head) {
+        if (head == null) {
             return null;
         }
 
-        int size = 0;
-
         // calculate the size of the list
-        Node current = list.head();
+        Node current = head;
+        int size = 1;
         while (current.hasNext()) {
-            size++;
             current = current.next();
+            size++;
         }
 
         // iterate till the middle element
-        current = list.head();
-        for (int i = 0; i < size / 2; i++) {
+        current = head;
+        for (int i = 0; i < (size - 1) / 2; i++) {
             current = current.next();
         }
 
         return current.data();
     }
 
-    public static String findMiddleElement1PassRecursively(LinkedList list) {
-        if (list == null || list.head() == null) {
+    public static String findMiddleElement1PassRecursively(Node head) {
+        if (head == null) {
             return null;
         }
-        
+
         MiddleAuxRecursion middleAux = new MiddleAuxRecursion();
-        findMiddleRecursively(list.head(), middleAux);
+        findMiddleRecursively(head, middleAux);
         return middleAux.middle.data();
     }
 
@@ -50,17 +49,17 @@ public class MiddleElementLookup {
             // found the middle
             middleAux.middle = node;
         }
-        
+
         middleAux.length--;
     }
 
-    public static String findMiddleElement1PassIteratively(LinkedList list) {
-        if (list == null || list.head() == null) {
+    public static String findMiddleElement1PassIteratively(Node head) {
+        if (head == null) {
             return null;
         }
 
-        Node slowPointer = list.head();
-        Node fastPointer = list.head();
+        Node slowPointer = head;
+        Node fastPointer = head;
 
         while (fastPointer.hasNext() && fastPointer.next()
             .hasNext()) {
