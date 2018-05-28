@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.baeldung.algorithms.numberwordconverter.NumberWordConverter;
 
-public class NumberWordConverterTest {
+public class NumberWordConverterUnitTest {
 
     @Test
     public void whenMoneyNegative_thenReturnInvalidInput() {

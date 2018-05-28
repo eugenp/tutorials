@@ -12,7 +12,7 @@ import org.jgrapht.graph.SimpleWeightedGraph;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CompleteGraphTest {
+public class CompleteGraphUnitTest {
 
     static SimpleWeightedGraph<String, DefaultEdge> completeGraph;
     static int size = 10;

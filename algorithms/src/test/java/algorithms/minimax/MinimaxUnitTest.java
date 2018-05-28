@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 import com.baeldung.algorithms.minimax.MiniMax;
 import com.baeldung.algorithms.minimax.Tree;
 
-public class MinimaxTest {
+public class MinimaxUnitTest {
     private Tree gameTree;
     private MiniMax miniMax;
 

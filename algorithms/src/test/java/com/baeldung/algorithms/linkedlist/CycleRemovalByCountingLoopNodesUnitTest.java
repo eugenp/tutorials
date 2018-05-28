@@ -6,11 +6,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(value = Parameterized.class)
-public class CycleRemovalByCountingLoopNodesTest extends CycleDetectionTestBase {
+public class CycleRemovalByCountingLoopNodesUnitTest extends CycleDetectionTestBase {
     boolean cycleExists;
     Node<Integer> head;
 
-    public CycleRemovalByCountingLoopNodesTest(Node<Integer> head, boolean cycleExists) {
+    public CycleRemovalByCountingLoopNodesUnitTest(Node<Integer> head, boolean cycleExists) {
         super();
         this.cycleExists = cycleExists;
         this.head = head;

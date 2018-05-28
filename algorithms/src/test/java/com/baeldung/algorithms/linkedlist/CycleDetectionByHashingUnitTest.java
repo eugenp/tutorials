@@ -6,11 +6,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(value = Parameterized.class)
-public class CycleDetectionByFastAndSlowIteratorsTest extends CycleDetectionTestBase {
+public class CycleDetectionByHashingUnitTest extends CycleDetectionTestBase {
     boolean cycleExists;
     Node<Integer> head;
 
-    public CycleDetectionByFastAndSlowIteratorsTest(Node<Integer> head, boolean cycleExists) {
+    public CycleDetectionByHashingUnitTest(Node<Integer> head, boolean cycleExists) {
         super();
         this.cycleExists = cycleExists;
         this.head = head;
@@ -18,6 +18,6 @@ public class CycleDetectionByFastAndSlowIteratorsTest extends CycleDetectionTest
 
     @Test
     public void givenList_detectLoop() {
-        Assert.assertEquals(cycleExists, CycleDetectionByFastAndSlowIterators.detectCycle(head).cycleExists);
+        Assert.assertEquals(cycleExists, CycleDetectionByHashing.detectCycle(head).cycleExists);
     }
 }

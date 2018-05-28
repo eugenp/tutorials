@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class PrimeGeneratorTest {
+public class PrimeGeneratorUnitTest {
     @Test
     public void whenBruteForced_returnsSuccessfully() {
         final List<Integer> primeNumbers = primeNumbersBruteForce(20);

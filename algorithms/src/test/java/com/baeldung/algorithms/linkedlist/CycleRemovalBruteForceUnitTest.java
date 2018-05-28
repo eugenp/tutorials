@@ -6,11 +6,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(value = Parameterized.class)
-public class CycleRemovalWithoutCountingLoopNodesTest extends CycleDetectionTestBase {
+public class CycleRemovalBruteForceUnitTest extends CycleDetectionTestBase {
     boolean cycleExists;
     Node<Integer> head;
 
-    public CycleRemovalWithoutCountingLoopNodesTest(Node<Integer> head, boolean cycleExists) {
+    public CycleRemovalBruteForceUnitTest(Node<Integer> head, boolean cycleExists) {
         super();
         this.cycleExists = cycleExists;
         this.head = head;
@@ -18,7 +18,7 @@ public class CycleRemovalWithoutCountingLoopNodesTest extends CycleDetectionTest
 
     @Test
     public void givenList_ifLoopExists_thenDetectAndRemoveLoop() {
-        Assert.assertEquals(cycleExists, CycleRemovalWithoutCountingLoopNodes.detectAndRemoveCycle(head));
+        Assert.assertEquals(cycleExists, CycleRemovalBruteForce.detectAndRemoveCycle(head));
         Assert.assertFalse(CycleDetectionByFastAndSlowIterators.detectCycle(head).cycleExists);
     }
 }

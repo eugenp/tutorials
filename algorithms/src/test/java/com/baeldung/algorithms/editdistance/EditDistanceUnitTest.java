@@ -7,13 +7,13 @@ import org.junit.runners.Parameterized;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class EditDistanceTest extends EditDistanceDataProvider {
+public class EditDistanceUnitTest extends EditDistanceDataProvider {
 
     private String x;
     private String y;
     private int result;
 
-    public EditDistanceTest(String a, String b, int res) {
+    public EditDistanceUnitTest(String a, String b, int res) {
         super();
         x = a;
         y = b;

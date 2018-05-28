@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class HillClimbingAlgorithmTest {
+public class HillClimbingAlgorithmUnitTest {
     private Stack<String> initStack;
     private Stack<String> goalStack;
 

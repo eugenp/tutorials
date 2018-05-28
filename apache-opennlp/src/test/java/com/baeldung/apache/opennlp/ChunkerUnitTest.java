@@ -10,7 +10,7 @@ import opennlp.tools.tokenize.SimpleTokenizer;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
-public class ChunkerTest {
+public class ChunkerUnitTest {
 
     @Test
     public void givenChunkerModel_whenChunk_thenChunksAreDetected() throws Exception {
