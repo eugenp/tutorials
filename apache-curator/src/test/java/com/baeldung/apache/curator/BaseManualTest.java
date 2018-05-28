@@ -6,7 +6,7 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.RetryNTimes;
 import org.junit.Before;
 
-public abstract class BaseTest {
+public abstract class BaseManualTest {
 
     @Before
     public void setup() {

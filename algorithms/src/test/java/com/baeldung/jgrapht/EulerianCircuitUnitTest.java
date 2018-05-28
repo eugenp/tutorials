@@ -12,7 +12,7 @@ import org.jgrapht.graph.SimpleWeightedGraph;
 import org.junit.Before;
 import org.junit.Test;
 
-public class EulerianCircuitTest {
+public class EulerianCircuitUnitTest {
     SimpleWeightedGraph<String, DefaultEdge> simpleGraph;
 
     @Before

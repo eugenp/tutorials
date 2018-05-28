@@ -24,7 +24,7 @@ import org.jgrapht.traverse.DepthFirstIterator;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DirectedGraphTests {
+public class DirectedGraphUnitTests {
     DirectedGraph<String, DefaultEdge> directedGraph;
 
     @Before

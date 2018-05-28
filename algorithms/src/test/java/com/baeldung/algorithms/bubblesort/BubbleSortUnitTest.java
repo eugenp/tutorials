@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class BubbleSortTest {
+public class BubbleSortUnitTest {
 
     @Test
     public void givenIntegerArray_whenSortedWithBubbleSort_thenGetSortedArray() {

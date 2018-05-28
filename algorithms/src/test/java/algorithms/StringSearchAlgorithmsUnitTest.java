@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.baeldung.algorithms.string.search.StringSearchAlgorithms;
 
-public class StringSearchAlgorithmsTest {
+public class StringSearchAlgorithmsUnitTest {
 	
 	
 	@Test

@@ -15,7 +15,7 @@ import com.baeldung.algorithms.mcts.tictactoe.Board;
 import com.baeldung.algorithms.mcts.tictactoe.Position;
 import com.baeldung.algorithms.mcts.tree.Tree;
 
-public class MCTSTest {
+public class MCTSUnitTest {
     private Tree gameTree;
     private MonteCarloTreeSearch mcts;
 
