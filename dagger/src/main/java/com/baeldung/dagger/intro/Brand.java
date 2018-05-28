@@ -1,4 +1,4 @@
-package com.baeldung.dagger;
+package com.baeldung.dagger.intro;
 
 /**
  * Brand of a {@link Car}.

@@ -1,4 +1,4 @@
-package com.baeldung.dagger;
+package com.baeldung.dagger.intro;
 
 import org.junit.Assert;
 import org.junit.Test;
