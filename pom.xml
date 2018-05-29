@@ -260,6 +260,7 @@
         <module>java-spi</module>
         <module>performance-tests</module>
         <module>twilio</module>
+		<module>java-ee-8-security-api</module>
     </modules>
 
     <dependencies>
