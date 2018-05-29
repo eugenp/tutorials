@@ -15,9 +15,9 @@ public class EventService {
 
 	public Flux<EventData> publishEvent() {
 		Flux<Long> interval = Flux.interval(Duration.ofSeconds(1));
-		Flux<EventData> stockTransactionFlux = Flux
+		Flux<EventData> eventTransactionFlux = Flux
 				.fromStream(Stream.generate(() -> new EventData( UUID.randomUUID().toString(), new Date())));
-		return Flux.zip(interval, stockTransactionFlux).map(Tuple2::getT2);
+		return Flux.zip(interval, eventTransactionFlux).map(Tuple2::getT2);
 	}
 
 }
