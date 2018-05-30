@@ -92,7 +92,7 @@
         <AsyncLogger name="org.openid4java" level="warn" />
         <AsyncLogger name="org.ldaptive" level="warn" />
         <AsyncLogger name="com.hazelcast" level="warn" />
-        <AsyncLogger name="org.jasig.spring" level="warn" />
+        <AsyncLogger name="org.apereo.spring" level="warn" />
 
         <!-- Log perf stats only to perfStats.log -->
         <AsyncLogger name="perfStatsLogger" level="info" additivity="false" includeLocation="true">

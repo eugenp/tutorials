@@ -30,6 +30,7 @@
         <module>apache-opennlp</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>azure</module>
         <module>bootique</module>
         <module>cdi</module>
         <!--<module>core-java-9</module>-->
@@ -94,7 +95,6 @@
         <module>logging-modules/log-mdc</module>
         <module>logging-modules/log4j</module>
         <module>logging-modules/log4j2</module>
-        <module>logging-modules/log4j2-programmatic-configuration</module>
         <module>logging-modules/logback</module>
         <module>lombok</module>
         <module>mapstruct</module>
@@ -141,6 +141,7 @@
         <module>spring-boot-keycloak</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-admin</module>
+        <module>spring-boot-ops</module>
         <module>spring-boot-security</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
@@ -152,6 +153,7 @@
         <module>spring-data-couchbase-2</module>
         <module>persistence-modules/spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
+        <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>persistence-modules/spring-data-neo4j</module>
         <module>persistence-modules/spring-data-redis</module>
@@ -257,6 +259,8 @@
         <module>jersey</module>
         <module>java-spi</module>
         <module>performance-tests</module>
+        <module>twilio</module>
+		<module>java-ee-8-security-api</module>
     </modules>
 
     <dependencies>

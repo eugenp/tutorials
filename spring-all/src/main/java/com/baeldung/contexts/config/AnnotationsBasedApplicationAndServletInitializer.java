@@ -1,6 +1,5 @@
 package com.baeldung.contexts.config;
 
-import org.springframework.web.context.AbstractContextLoaderInitializer;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
@@ -9,20 +8,29 @@ public class AnnotationsBasedApplicationAndServletInitializer extends AbstractDi
 
     @Override
     protected WebApplicationContext createRootApplicationContext() {
-        AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-        rootContext.register(RootApplicationConfig.class);
-        return rootContext;
+        //If this is not the only class declaring a root context, we return null because it would clash
+        //with other classes, as there can only be a single root context.
+
+        //AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
+        //rootContext.register(RootApplicationConfig.class);
+        //return rootContext;
+        return null;
     }
 
     @Override
     protected WebApplicationContext createServletApplicationContext() {
-        AnnotationConfigWebApplicationContext secureWebAppContext = new AnnotationConfigWebApplicationContext();
-        secureWebAppContext.register(SecureWebAppConfig.class);
-        return secureWebAppContext;
+        AnnotationConfigWebApplicationContext normalWebAppContext = new AnnotationConfigWebApplicationContext();
+        normalWebAppContext.register(NormalWebAppConfig.class);
+        return normalWebAppContext;
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] { "/s/api/*" };
+        return new String[] { "/api/*" };
+    }
+
+    @Override
+    protected String getServletName() {
+        return "normal-dispatcher";
     }
 }
