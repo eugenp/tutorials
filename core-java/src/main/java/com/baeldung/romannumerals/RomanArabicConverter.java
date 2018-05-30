@@ -28,7 +28,7 @@ class RomanArabicConverter {
 
         while (number > 0 && i < romanNumerals.length) {
             RomanNumeral currentSymbol = romanNumerals[i];
-            if (currentSymbol.getValue() < number) {
+            if (currentSymbol.getValue() <= number) {
                 sb.append(currentSymbol.name());
                 number -= currentSymbol.getValue();
             } else {
