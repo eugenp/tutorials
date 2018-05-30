@@ -33,18 +33,18 @@ public class CollectionConfig {
     @Qualifier("CollectionsBean")
     @Order(2)
     public BaeldungBean getElement() {
-        return new BaeldungBean();
+        return new BaeldungBean("John");
     }
 
     @Bean
     @Order(3)
     public BaeldungBean getAnotherElement() {
-        return new BaeldungBean();
+        return new BaeldungBean("Adam");
     }
 
     @Bean
     @Order(1)
     public BaeldungBean getOneMoreElement() {
-        return new BaeldungBean();
+        return new BaeldungBean("Harry");
     }
 }
