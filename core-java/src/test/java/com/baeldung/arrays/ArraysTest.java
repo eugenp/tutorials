@@ -5,85 +5,94 @@ import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class ArraysTest {
-    private String[] storyIntro = new String[] { "once", "upon", "a", "time" };
+    private String[] intro = new String[] { "once", "upon", "a", "time" };
 
     @Test
     public void testArraysCopyOfRange() {
-        String[] abridgement = Arrays.copyOfRange(storyIntro, 0, 3);
+        String[] abridgement = Arrays.copyOfRange(intro, 0, 3);
 
-        Assert.assertArrayEquals(new String[]{"once", "upon", "a"}, abridgement);
-        Assert.assertFalse(Arrays.equals(storyIntro, abridgement));
+        Assert.assertArrayEquals(new String[] { "once", "upon", "a" }, abridgement);
+        Assert.assertFalse(Arrays.equals(intro, abridgement));
     }
 
     @Test
     public void testArraysCopyOf(){
-        String[] editedIntro = Arrays.copyOf(storyIntro, 3);
-        String[] draftIntro = Arrays.copyOf(storyIntro, 5);
+        String[] revised = Arrays.copyOf(intro, 3);
+        String[] expanded = Arrays.copyOf(intro, 5);
 
-        Assert.assertArrayEquals(Arrays.copyOfRange(storyIntro, 0, 3), editedIntro);
-        Assert.assertNull(draftIntro[4]);
+        Assert.assertArrayEquals(Arrays.copyOfRange(intro, 0, 3), revised);
+        Assert.assertNull(expanded[4]);
     }
 
     @Test
     public void testArraysFill(){
-        String[] repetitiveIntro = new String[4];
-        Arrays.fill(repetitiveIntro, "once");
+        String[] stutter = new String[3];
+        Arrays.fill(stutter, "once");
 
-        Assert.assertEquals(repetitiveIntro[0], repetitiveIntro[3]);
+        Assert.assertTrue(Stream.of(stutter)
+                .allMatch(el -> "once".equals(el)));
     }
 
     @Test
     public void testArraysEquals(){
-        Assert.assertTrue(Arrays.equals(new String[]{"once","upon","a","time"}, storyIntro));
-        Assert.assertFalse(Arrays.equals(new String[]{"once","upon","a", null}, storyIntro));
+        Assert.assertTrue(Arrays.equals(new String[]{"once","upon","a","time"}, intro));
+        Assert.assertFalse(Arrays.equals(new String[]{"once","upon","a", null}, intro));
     }
 
     @Test
     public void testArraysDeepEquals() {
-        Object[] metaStoryIntro = new Object[] { storyIntro, "In the beginning",  new String[]{"In a universe..."} };
-        Object[] metaStoryIntro2 = new Object[] { storyIntro, "In the beginning", new String[]{"In a universe..."} };
+        String[] end = {"the", "end"};
+        Object[] story =
+                new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
+        Object[] copy =
+                new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
 
-        Assert.assertFalse(Arrays.equals(metaStoryIntro, metaStoryIntro2));
-        Assert.assertTrue(Arrays.deepEquals(metaStoryIntro, metaStoryIntro2));
+        Assert.assertTrue(Arrays.deepEquals(story, copy));
+        Assert.assertFalse(Arrays.equals(story, copy));
     }
 
     @Test
     public void testArraysSort(){
-        Arrays.sort(storyIntro);
+        String[] sorted = Arrays.copyOf(intro, 4);
+        Arrays.sort(sorted);
 
-        Assert.assertArrayEquals(new String[]{"a", "once", "time", "upon"}, storyIntro);
+        Assert.assertArrayEquals(new String[]{"a", "once", "time", "upon"}, sorted);
     }
 
     @Test
     public void testArraysBinarySearch(){
-        Arrays.sort(storyIntro);
-        int index = Arrays.binarySearch(storyIntro, "time", String::compareToIgnoreCase);
+        String[] sorted = Arrays.copyOf(intro, 4);
+        Arrays.sort(intro);
+        int exact = Arrays.binarySearch(sorted, "time");
+        int caseInsensitive = Arrays.binarySearch(sorted, "TiMe", String::compareToIgnoreCase);
 
-        Assert.assertEquals("time", storyIntro[index]);
-        Assert.assertEquals(2 , index);
+        Assert.assertEquals("time", sorted[exact]);
+        Assert.assertEquals(2, exact);
+        Assert.assertEquals(exact, caseInsensitive);
     }
 
     @Test
     public void testArraysHashCode(){
-        int beforeChange = Arrays.hashCode(storyIntro);
-        storyIntro[3] = "foo";
-        int afterChange = Arrays.hashCode(storyIntro);
+        int beforeChange = Arrays.hashCode(intro);
+        intro[3] = null;
+        int afterChange = Arrays.hashCode(intro);
 
         Assert.assertNotEquals(beforeChange, afterChange);
     }
 
     @Test
     public void testArraysDeepHash(){
-        String[][] loopingIntro = new String[][] { storyIntro, storyIntro };
-        int deepHashBefore = Arrays.deepHashCode(loopingIntro);
-        int hashBefore = Arrays.hashCode(loopingIntro);
+        Object[] looping = new Object[]{ intro, intro };
+        int deepHashBefore = Arrays.deepHashCode(looping);
+        int hashBefore = Arrays.hashCode(looping);
 
-        storyIntro[3] = null;
+        intro[3] = null;
 
-        int hashAfter = Arrays.hashCode(loopingIntro);
-        int deepHashAfter = Arrays.deepHashCode(loopingIntro);
+        int hashAfter = Arrays.hashCode(looping);
+        int deepHashAfter = Arrays.deepHashCode(looping);
 
         Assert.assertEquals(hashAfter, hashBefore);
         Assert.assertNotEquals(deepHashAfter, deepHashBefore);
@@ -91,12 +100,12 @@ public class ArraysTest {
 
     @Test
     public void testArraysToString(){
-        Assert.assertEquals("[once, upon, a, time]", Arrays.toString(storyIntro));
+        Assert.assertEquals("[once, upon, a, time]", Arrays.toString(intro));
     }
 
     @Test
     public void testArraysAsList() {
-        List<String> rets = Arrays.asList(storyIntro);
+        List<String> rets = Arrays.asList(intro);
 
         Assert.assertTrue(rets.contains("upon"));
         Assert.assertTrue(rets.contains("time"));
