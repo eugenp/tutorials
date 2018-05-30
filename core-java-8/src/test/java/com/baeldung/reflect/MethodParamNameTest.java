@@ -5,29 +5,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import  static java.util.stream.Collectors.toList;
 import org.junit.Test;
 
 public class MethodParamNameTest {
 
     @Test
-    public void whenGetConstructorParams_thenOk() throws NoSuchMethodException, SecurityException {
+    public void whenGetConstructorParams_thenOk() 
+    		throws NoSuchMethodException, SecurityException {
     	List<Parameter> parameters 
-    		= Arrays.asList(
-    				Person.class.getConstructor(String.class, String.class, Integer.class)
-    					.getParameters());
-    	List<String> parameterNames 
-    		= parameters.stream().map(Parameter::getName).collect(toList());
-    	assertThat(parameterNames)
-    		.containsExactlyInAnyOrder("lastName", "firstName", "age");    
+    		= Arrays.asList(Person.class.getConstructor(String.class).getParameters());
+    	Optional<Parameter> parameter 
+    		= parameters.stream().filter(Parameter::isNamePresent).findFirst();
+    	assertThat(parameter.get().getName()).isEqualTo("fullName");  
     }
 
     @Test
-    public void whenGetMethodParams_thenOk() throws NoSuchMethodException, SecurityException {
+    public void whenGetMethodParams_thenOk() 
+    		throws NoSuchMethodException, SecurityException {
     	List<Parameter> parameters 
     		= Arrays.asList(
-    				Person.class.getMethod("setLastName", String.class).getParameters());
-    	assertThat(parameters.get(0).getName()).isEqualTo("lastName");
+    			Person.class.getMethod("setFullName", String.class).getParameters());
+    	Optional<Parameter> parameter 
+			= parameters.stream().filter(Parameter::isNamePresent).findFirst();
+    	assertThat(parameter.get().getName()).isEqualTo("fullName");
     }
 }
