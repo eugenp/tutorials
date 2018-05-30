@@ -1,6 +1,7 @@
 package com.baeldung.daopattern.config;
 
 import com.baeldung.daopattern.entities.User;
+import com.mysql.cj.jdbc.MysqlDataSource;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
