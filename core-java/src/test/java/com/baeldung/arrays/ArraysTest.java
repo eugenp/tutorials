@@ -65,7 +65,7 @@ public class ArraysTest {
     @Test
     public void testArraysBinarySearch(){
         String[] sorted = Arrays.copyOf(intro, 4);
-        Arrays.sort(intro);
+        Arrays.sort(sorted);
         int exact = Arrays.binarySearch(sorted, "time");
         int caseInsensitive = Arrays.binarySearch(sorted, "TiMe", String::compareToIgnoreCase);
 
