@@ -98,6 +98,13 @@
             <version>${springframework-security.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Spring data -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>${springFramework-data.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -117,7 +124,7 @@
                 <configuration>
                     <wait>true</wait>
                     <container>
-                        <containerId>jetty8x</containerId>
+                        <containerId>jetty9x</containerId>
                         <type>embedded</type>
                         <systemProperties>
                         </systemProperties>
@@ -157,6 +164,7 @@
         <!-- spring -->
         <org.springframework-version>4.3.4.RELEASE</org.springframework-version>
         <springframework-security.version>4.2.0.RELEASE</springframework-security.version>
+        <springFramework-data.version>2.0.7.RELEASE</springFramework-data.version>
         <javax.servlet-version>3.1.0</javax.servlet-version>
         <!-- thymeleaf -->
         <org.thymeleaf-version>3.0.9.RELEASE</org.thymeleaf-version>
