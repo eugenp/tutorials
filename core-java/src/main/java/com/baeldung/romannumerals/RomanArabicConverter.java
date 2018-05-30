@@ -8,7 +8,7 @@ class RomanArabicConverter {
 
         int i = 0;
 
-        while (romanNumeral.length() > 0) {
+        while (romanNumeral.length() > 0 && i < romanNumerals.length) {
             RomanNumeral symbol = romanNumerals[i];
             if (romanNumeral.startsWith(symbol.name())) {
                 result += symbol.getValue();
@@ -26,7 +26,7 @@ class RomanArabicConverter {
         int i = 0;
         StringBuilder sb = new StringBuilder();
 
-        while (number > 0) {
+        while (number > 0 && i < romanNumerals.length) {
             RomanNumeral currentSymbol = romanNumerals[i];
             if (currentSymbol.getValue() < number) {
                 sb.append(currentSymbol.name());
