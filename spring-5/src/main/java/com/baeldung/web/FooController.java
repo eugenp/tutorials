@@ -23,7 +23,8 @@ public class FooController {
     @ResponseBody
     @Validated
     public Foo findById(@PathVariable @Min(0) final long id) {
-        return repo.findById(id).orElse(null);
+        return repo.findById(id)
+            .orElse(null);
     }
 
     @GetMapping
@@ -36,7 +37,8 @@ public class FooController {
     @ResponseBody
     @Validated
     public List<Foo> findPaginated(@RequestParam("page") @Min(0) final int page, @Max(100) @RequestParam("size") final int size) {
-        return repo.findAll(PageRequest.of(page, size)).getContent();
+        return repo.findAll(PageRequest.of(page, size))
+            .getContent();
     }
 
     // API - write

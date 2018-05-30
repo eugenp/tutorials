@@ -20,13 +20,15 @@ public class JsoupParserIntegrationTest {
 
     @Before
     public void setUp() throws IOException {
-        doc = Jsoup.connect("https://spring.io/blog").get();
+        doc = Jsoup.connect("https://spring.io/blog")
+            .get();
     }
 
     @Test
     public void loadDocument404() throws IOException {
         try {
-            doc = Jsoup.connect("https://spring.io/will-not-be-found").get();
+            doc = Jsoup.connect("https://spring.io/will-not-be-found")
+                .get();
         } catch (HttpStatusException ex) {
             assertEquals(404, ex.getStatusCode());
         }
@@ -35,13 +37,13 @@ public class JsoupParserIntegrationTest {
     @Test
     public void loadDocumentCustomized() throws IOException {
         doc = Jsoup.connect("https://spring.io/blog")
-                .userAgent("Mozilla")
-                .timeout(5000)
-                .cookie("cookiename", "val234")
-                .cookie("anothercookie", "ilovejsoup")
-                .referrer("http://google.com")
-                .header("headersecurity", "xyz123")
-                .get();
+            .userAgent("Mozilla")
+            .timeout(5000)
+            .cookie("cookiename", "val234")
+            .cookie("anothercookie", "ilovejsoup")
+            .referrer("http://google.com")
+            .header("headersecurity", "xyz123")
+            .get();
     }
 
     @Test
@@ -77,10 +79,13 @@ public class JsoupParserIntegrationTest {
 
     @Test
     public void examplesExtracting() {
-        Element firstArticle = doc.select("article").first();
-        Element timeElement = firstArticle.select("time").first();
+        Element firstArticle = doc.select("article")
+            .first();
+        Element timeElement = firstArticle.select("time")
+            .first();
         String dateTimeOfFirstArticle = timeElement.attr("datetime");
-        Element sectionDiv = firstArticle.select("section div").first();
+        Element sectionDiv = firstArticle.select("section div")
+            .first();
         String sectionDivText = sectionDiv.text();
         String articleHtml = firstArticle.html();
         String outerHtml = firstArticle.outerHtml();
@@ -88,24 +93,30 @@ public class JsoupParserIntegrationTest {
 
     @Test
     public void examplesModifying() {
-        Element firstArticle = doc.select("article").first();
-        Element timeElement = firstArticle.select("time").first();
-        Element sectionDiv = firstArticle.select("section div").first();
+        Element firstArticle = doc.select("article")
+            .first();
+        Element timeElement = firstArticle.select("time")
+            .first();
+        Element sectionDiv = firstArticle.select("section div")
+            .first();
 
         String dateTimeOfFirstArticle = timeElement.attr("datetime");
         timeElement.attr("datetime", "2016-12-16 15:19:54.3");
         sectionDiv.text("foo bar");
-        firstArticle.select("h2").html("<div><span></span></div>");
+        firstArticle.select("h2")
+            .html("<div><span></span></div>");
 
-        Element link = new Element(Tag.valueOf("a"), "")
-          .text("Checkout this amazing website!")
-          .attr("href", "http://baeldung.com")
-          .attr("target", "_blank");
+        Element link = new Element(Tag.valueOf("a"), "").text("Checkout this amazing website!")
+            .attr("href", "http://baeldung.com")
+            .attr("target", "_blank");
         firstArticle.appendChild(link);
 
-        doc.select("li.navbar-link").remove();
-        firstArticle.select("img").remove();
+        doc.select("li.navbar-link")
+            .remove();
+        firstArticle.select("img")
+            .remove();
 
-        assertTrue(doc.html().contains("http://baeldung.com"));
+        assertTrue(doc.html()
+            .contains("http://baeldung.com"));
     }
 }

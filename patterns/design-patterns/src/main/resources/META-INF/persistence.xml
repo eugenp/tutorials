@@ -8,6 +8,12 @@
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/testdb"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.password" value="sawstudio2567"/>
+    <class>com.baeldung.daopattern.entities.User</class>
+    <properties>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://url/to/database"/>
+      <property name="javax.persistence.jdbc.user" value="username"/>
+      <property name="javax.persistence.jdbc.password" value="passsword"/>
       <!-- Hibernate Properties -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
       <property name="hibernate.show_sql" value="true"/>

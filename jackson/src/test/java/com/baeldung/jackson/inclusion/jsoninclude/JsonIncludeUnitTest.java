@@ -28,7 +28,6 @@ public class JsonIncludeUnitTest {
         assertThat(from(result).getString("firstName")).isEqualTo("Alex");
         assertThat(result).doesNotContain("lastName");
 
-
         /*
             {
               "id": "e8bb4802-6e0c-4fa5-9f68-c233272399cd",

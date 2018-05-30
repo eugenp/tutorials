@@ -6,9 +6,13 @@ import com.baeldung.daopattern.daos.JpaUserDao;
 import com.baeldung.daopattern.entities.User;
 import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
 public class UserApplication {
-            
+    
+    private static JpaUserDao jpaUserDao;
+    
     public static void main(String[] args) {
         User user1 = getUser(1);
         System.out.println(user1);

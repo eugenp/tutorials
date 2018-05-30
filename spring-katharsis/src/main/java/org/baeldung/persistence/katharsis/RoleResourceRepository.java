@@ -1,7 +1,7 @@
 package org.baeldung.persistence.katharsis;
 
-import io.katharsis.queryParams.RequestParams;
-import io.katharsis.repository.ResourceRepository;
+import io.katharsis.legacy.queryParams.QueryParams;
+import io.katharsis.legacy.repository.ResourceRepository;
 
 import org.baeldung.persistence.dao.RoleRepository;
 import org.baeldung.persistence.model.Role;
@@ -11,21 +11,20 @@ import org.springframework.stereotype.Component;
 @Component
 public class RoleResourceRepository implements ResourceRepository<Role, Long> {
 
-    @Autowired
-    private RoleRepository roleRepository;
+    @Autowired private RoleRepository roleRepository;
 
     @Override
-    public Role findOne(Long id, RequestParams params) {
+    public Role findOne(Long id, QueryParams params) {
         return roleRepository.findOne(id);
     }
 
     @Override
-    public Iterable<Role> findAll(RequestParams params) {
+    public Iterable<Role> findAll(QueryParams params) {
         return roleRepository.findAll();
     }
 
     @Override
-    public Iterable<Role> findAll(Iterable<Long> ids, RequestParams params) {
+    public Iterable<Role> findAll(Iterable<Long> ids, QueryParams params) {
         return roleRepository.findAll(ids);
     }
 

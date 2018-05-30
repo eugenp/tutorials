@@ -16,18 +16,16 @@ class Spring5Java8NewFeaturesIntegrationTest {
     }
 
     public class StringUtils {
-        FunctionalInterfaceExample<String, String>
-          functionLambdaString = s -> Pattern.compile(" +").splitAsStream(s)
-          .map(word -> new StringBuilder(word).reverse())
-          .collect(Collectors.joining(" "));
+        FunctionalInterfaceExample<String, String> functionLambdaString = s -> Pattern.compile(" +")
+            .splitAsStream(s)
+            .map(word -> new StringBuilder(word).reverse())
+            .collect(Collectors.joining(" "));
     }
 
     @Test
-    void givenStringUtil_whenSupplierCall_thenFunctionalInterfaceReverseString()
-      throws Exception {
+    void givenStringUtil_whenSupplierCall_thenFunctionalInterfaceReverseString() throws Exception {
         Supplier<StringUtils> stringUtilsSupplier = StringUtils::new;
 
-        assertEquals(stringUtilsSupplier.get().functionLambdaString
-          .reverseString("hello"), "olleh");
+        assertEquals(stringUtilsSupplier.get().functionLambdaString.reverseString("hello"), "olleh");
     }
 }

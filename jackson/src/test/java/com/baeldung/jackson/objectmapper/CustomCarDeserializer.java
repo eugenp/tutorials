@@ -25,8 +25,6 @@ public class CustomCarDeserializer extends StdDeserializer<Car> {
         super(vc);
     }
 
-
-
     @Override
     public Car deserialize(final JsonParser parser, final DeserializationContext deserializer) throws IOException {
         final Car car = new Car();

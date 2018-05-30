@@ -1,6 +1,7 @@
 package org.baeldung;
 
-import org.baeldung.domain.Modes;
+import org.baeldung.boot.Application;
+import org.baeldung.boot.domain.Modes;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

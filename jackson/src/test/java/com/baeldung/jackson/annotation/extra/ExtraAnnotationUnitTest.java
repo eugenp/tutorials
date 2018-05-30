@@ -47,9 +47,10 @@ public class ExtraAnnotationUnitTest {
         ObjectMapper mapper = new ObjectMapper();
 
         BeanWithoutAppend bean = new BeanWithoutAppend(2, "Bean Without Append Annotation");
-        ObjectWriter writer = mapper.writerFor(BeanWithoutAppend.class).withAttribute("version", "1.0");
+        ObjectWriter writer = mapper.writerFor(BeanWithoutAppend.class)
+            .withAttribute("version", "1.0");
         String jsonString = writer.writeValueAsString(bean);
-        
+
         assertThat(jsonString, not(containsString("version")));
         assertThat(jsonString, not(containsString("1.0")));
     }
@@ -59,9 +60,10 @@ public class ExtraAnnotationUnitTest {
         ObjectMapper mapper = new ObjectMapper();
 
         BeanWithAppend bean = new BeanWithAppend(2, "Bean With Append Annotation");
-        ObjectWriter writer = mapper.writerFor(BeanWithAppend.class).withAttribute("version", "1.0");
+        ObjectWriter writer = mapper.writerFor(BeanWithAppend.class)
+            .withAttribute("version", "1.0");
         String jsonString = writer.writeValueAsString(bean);
-        
+
         assertThat(jsonString, containsString("version"));
         assertThat(jsonString, containsString("1.0"));
     }
@@ -71,7 +73,7 @@ public class ExtraAnnotationUnitTest {
         ObjectMapper mapper = new ObjectMapper();
         NamingBean bean = new NamingBean(3, "Naming Bean");
         String jsonString = mapper.writeValueAsString(bean);
-        
+
         assertThat(jsonString, containsString("bean_name"));
     }
 

@@ -5,15 +5,15 @@ public class GeoIP {
     private String city;
     private String latitude;
     private String longitude;
-    
+
     public GeoIP() {
-        
+
     }
-    
+
     public GeoIP(String ipAddress) {
         this.ipAddress = ipAddress;
     }
-    
+
     public GeoIP(String ipAddress, String city, String latitude, String longitude) {
         this.ipAddress = ipAddress;
         this.city = city;
@@ -52,5 +52,5 @@ public class GeoIP {
     public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
-    
+
 }

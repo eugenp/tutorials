@@ -14,7 +14,8 @@ public class EchoIntegrationTest {
 
     @BeforeClass
     public static void start() throws InterruptedException {
-        Executors.newSingleThreadExecutor().submit(() -> new EchoServer().start(PORT));
+        Executors.newSingleThreadExecutor()
+            .submit(() -> new EchoServer().start(PORT));
         Thread.sleep(500);
     }
 
