@@ -13,8 +13,8 @@ public class BatchProcessing {
 
     public void getConnection(){
         try {
-            Class.forName("org.hsqldb.jdbcDriver");
-            connection = DriverManager.getConnection("jdbc:hsqldb:file:C:\\EMPLOYEEDB", "SA", "");
+            Class.forName("org.h2.Driver");
+            connection = DriverManager.getConnection("jdbc:h2:mem:db", "SA", "");
             connection.setAutoCommit(false);
         } catch (Exception e) {
             e.printStackTrace(System.out);
