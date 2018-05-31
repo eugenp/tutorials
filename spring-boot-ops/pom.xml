@@ -19,9 +19,13 @@
 	</parent>
 
 	<properties>
+		<!-- The main class to start by executing java -jar -->
+		<start-class>org.baeldung.demo.DemoApplication</start-class>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<jquery.version>3.1.1</jquery.version>
+		<bootstrap.version>3.3.7-1</bootstrap.version>
 	</properties>
 
 	<dependencies>
@@ -53,6 +57,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.graphql-java</groupId>
+			<artifactId>graphql-spring-boot-starter</artifactId>
+			<version>3.6.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
@@ -81,6 +91,24 @@
 			<artifactId>subethasmtp</artifactId>
 			<version>3.1.7</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.graphql-java</groupId>
+			<artifactId>graphql-java-tools</artifactId>
+			<version>3.2.0</version>
 		</dependency>
 
 	</dependencies>
