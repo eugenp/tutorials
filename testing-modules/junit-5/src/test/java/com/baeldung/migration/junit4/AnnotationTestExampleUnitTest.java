@@ -5,9 +5,9 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import com.baeldung.migration.junit4.categories.Annotations;
-import com.baeldung.migration.junit4.categories.JUnit4Tests;
+import com.baeldung.migration.junit4.categories.JUnit4UnitTest;
 
-@Category(value = { Annotations.class, JUnit4Tests.class })
+@Category(value = { Annotations.class, JUnit4UnitTest.class })
 public class AnnotationTestExampleUnitTest {
     @Test(expected = Exception.class)
     public void shouldRaiseAnException() throws Exception {
