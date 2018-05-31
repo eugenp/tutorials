@@ -1,7 +1,12 @@
 package com.baeldung.chainofresponsibility;
 
 import org.junit.Test;
-
+import com.baeldung.pattern.chainofresponsibility.AuthenticationProcessor;
+import com.baeldung.pattern.chainofresponsibility.OAuthAuthenticationProcessor;
+import com.baeldung.pattern.chainofresponsibility.OAuthTokenProvider;
+import com.baeldung.pattern.chainofresponsibility.UsernamePasswordProvider;
+import com.baeldung.pattern.chainofresponsibility.SamlAuthenticationProvider;
+import com.baeldung.pattern.chainofresponsibility.UsernamePasswordAuthenticationProcessor;
 import static org.junit.Assert.assertTrue;
 
 public class ChainOfResponsibilityIntegrationTest {
