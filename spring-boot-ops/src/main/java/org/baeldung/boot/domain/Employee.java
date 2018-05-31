@@ -1,4 +1,4 @@
-package com.baeldung.toggle;
+package org.baeldung.boot.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
