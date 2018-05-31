@@ -27,3 +27,5 @@
 - [Guide to Kotlin @JvmField](http://www.baeldung.com/kotlin-jvm-field-annotation)
 - [Filtering Kotlin Collections](http://www.baeldung.com/kotlin-filter-collection)
 - [Writing to a File in Kotlin](http://www.baeldung.com/kotlin-write-file)
+- [Lambda Expressions in Kotlin](http://www.baeldung.com/kotlin-lambda-expressions)
+- [Writing Specifications with Kotlin and Spek](http://www.baeldung.com/kotlin-spek)
