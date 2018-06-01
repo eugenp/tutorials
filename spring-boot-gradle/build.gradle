@@ -23,6 +23,12 @@ repositories {
     mavenCentral()
 }
 
+buildscript {
+    def wrapperVersion = '1.0.11.RELEASE'
+    dependencies {
+        classpath("org.springframework.boot.experimental:spring-boot-thin-gradle-plugin:${wrapperVersion}")
+    }
+}
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter')
@@ -42,3 +48,7 @@ bootJar {
 //        attributes 'Start-Class': 'org.baeldung.DemoApplication'
 //    }
 }
+
+//add tasks thinJar and thinResolve for thin JAR deployments
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot.experimental.thin-launcher'
