@@ -17,3 +17,4 @@
 - [Hamcrest Text Matchers](http://www.baeldung.com/hamcrest-text-matchers)
 - [Hamcrest File Matchers](http://www.baeldung.com/hamcrest-file-matchers)
 - [Hamcrest Custom Matchers](http://www.baeldung.com/hamcrest-custom-matchers)
+- [Hamcrest Common Core Matchers](http://www.baeldung.com/hamcrest-core-matchers)

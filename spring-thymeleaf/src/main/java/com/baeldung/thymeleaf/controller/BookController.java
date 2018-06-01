@@ -8,6 +8,7 @@ import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-
+  
     @RequestMapping(value = "/listBooks", method = RequestMethod.GET)
     public String listBooks(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         page.ifPresent(p -> currentPage = p);
