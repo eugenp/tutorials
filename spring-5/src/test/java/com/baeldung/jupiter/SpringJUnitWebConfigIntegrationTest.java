@@ -16,8 +16,8 @@ import org.springframework.web.context.WebApplicationContext;
  * @ContextConfiguration(classes = SpringJUnitWebConfigTest.Config.class )
  *
  */
-@SpringJUnitWebConfig(SpringJUnitWebConfigTest.Config.class)
-public class SpringJUnitWebConfigTest {
+@SpringJUnitWebConfig(SpringJUnitWebConfigIntegrationTest.Config.class)
+public class SpringJUnitWebConfigIntegrationTest {
 
     @Configuration
     static class Config {
