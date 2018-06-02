@@ -74,9 +74,7 @@ public class ThreadJoinTest {
       throws InterruptedException {
         SampleThread t4 = new SampleThread(1);
         t4.start();
-        do {
-            Thread.sleep(100);
-        } while (t4.isAlive());
+        Thread.sleep(10000);
         assertEquals(t4.processingCount, 0); // may fail
     }
 
@@ -85,9 +83,7 @@ public class ThreadJoinTest {
       throws InterruptedException {
         SampleThread t4 = new SampleThread(1);
         t4.start();
-        do {
-            Thread.sleep(100);
-        } while (t4.isAlive());
+        Thread.sleep(10000);
         t4.join();
         assertEquals(t4.processingCount, 0); // guaranteed.
     }
