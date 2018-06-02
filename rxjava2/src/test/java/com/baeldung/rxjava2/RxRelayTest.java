@@ -1,5 +1,7 @@
-package com.baeldung.rxjava;
+//version 2
+package com.baeldung.rxjava2;
 
+import com.baeldung.rxjava2.RandomRelay;
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.jakewharton.rxrelay2.PublishRelay;
 import com.jakewharton.rxrelay2.ReplayRelay;

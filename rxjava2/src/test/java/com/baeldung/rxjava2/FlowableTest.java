@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.rxjava2;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;

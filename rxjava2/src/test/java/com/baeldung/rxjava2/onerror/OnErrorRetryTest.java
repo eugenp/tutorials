@@ -1,4 +1,5 @@
-package com.baeldung.rxjava.onerror;
+//version 1
+package com.baeldung.rxjava2.onerror;
 
 import io.reactivex.Observable;
 import io.reactivex.observers.TestObserver;
