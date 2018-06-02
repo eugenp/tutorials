@@ -374,7 +374,7 @@
                 <configuration>
                     <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
                     <aggregate>true</aggregate>
-                    <failOnViolation>false</failOnViolation>
+                    <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
