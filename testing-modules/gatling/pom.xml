@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
     <artifactId>gatling</artifactId>
     <version>1.0-SNAPSHOT</version>
-	<parent>
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
@@ -13,10 +13,11 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <scala.version>2.11.7</scala.version>
         <encoding>UTF-8</encoding>
-        <gatling.version>2.2.0</gatling.version>
-        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
+        <scala.version>2.11.12</scala.version> <!--2.11.12--> <!--2.12.6-->
+        <gatling.version>2.2.5</gatling.version> <!--2.2.5--> <!--2.3.1-->
+        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version> <!--3.2.2--> <!--3.3.2-->
+        <gatling-maven-plugin.version>2.2.1</gatling-maven-plugin.version> <!--2.2.1--> <!--2.2.4-->
     </properties>
 
     <dependencyManagement>
@@ -85,7 +86,7 @@
                         </goals>
                         <configuration>
                             <args>
-                                <arg>-Ybackend:GenBCode</arg>
+                                <!--<arg>-Ybackend:GenBCode</arg>-->
                                 <arg>-Ydelambdafy:method</arg>
                                 <arg>-target:jvm-1.8</arg>
                                 <arg>-deprecation</arg>
@@ -101,11 +102,13 @@
             <plugin>
                 <groupId>io.gatling</groupId>
                 <artifactId>gatling-maven-plugin</artifactId>
-                <version>${gatling.version}</version>
+                <version>${gatling-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>test</phase>
-                        <goals><goal>execute</goal></goals>
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

@@ -3,18 +3,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.baeldung</groupId>
 	<artifactId>spring-core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-
 	<name>spring-core</name>
 
 	<parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<artifactId>parent-spring</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-spring</relativePath>
 	</parent>
 
 	<dependencies>
@@ -26,11 +25,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
@@ -86,11 +80,9 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-
 		</plugins>
-
 	</build>
-	
+
 	<properties>
 		<mockito.version>1.10.19</mockito.version>
 		<mockito.spring.boot.version>1.4.4.RELEASE</mockito.spring.boot.version>
