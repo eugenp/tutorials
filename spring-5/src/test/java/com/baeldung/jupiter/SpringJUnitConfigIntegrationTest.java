@@ -15,8 +15,8 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
  * @ContextConfiguration(classes = SpringJUnitConfigTest.Config.class )
  *
  */
-@SpringJUnitConfig(SpringJUnitConfigTest.Config.class)
-public class SpringJUnitConfigTest {
+@SpringJUnitConfig(SpringJUnitConfigIntegrationTest.Config.class)
+public class SpringJUnitConfigIntegrationTest {
 
     @Configuration
     static class Config {

@@ -29,7 +29,7 @@ import com.baeldung.loginextrafieldssimple.User;
 @RunWith(SpringRunner.class)
 @SpringJUnitWebConfig
 @SpringBootTest(classes = ExtraLoginFieldsApplication.class)
-public class LoginFieldsSimpleTest extends AbstractExtraLoginFieldsTest {
+public class LoginFieldsSimpleIntegrationTest extends AbstractExtraLoginFieldsIntegrationTest {
 
     @Test
     public void givenAccessSecuredResource_whenAuthenticated_thenAuthHasExtraFields() throws Exception {
