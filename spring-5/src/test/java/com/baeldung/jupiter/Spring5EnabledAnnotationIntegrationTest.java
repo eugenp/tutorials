@@ -9,9 +9,9 @@ import org.springframework.test.context.junit.jupiter.DisabledIf;
 import org.springframework.test.context.junit.jupiter.EnabledIf;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-@SpringJUnitConfig(Spring5EnabledAnnotationTest.Config.class)
+@SpringJUnitConfig(Spring5EnabledAnnotationIntegrationTest.Config.class)
 @TestPropertySource(properties = { "tests.enabled=true" })
-public class Spring5EnabledAnnotationTest {
+public class Spring5EnabledAnnotationIntegrationTest {
     
     @Configuration
     static class Config {
