@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring</artifactId>
+        <artifactId>parent-spring-4</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../../parent-spring</relativePath>
+    	<relativePath>../../parent-spring-4</relativePath>
     </parent>
 
     <dependencies>
@@ -47,7 +47,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.4.RELEASE</spring.version>
         <spring-data-solr.version>2.0.5.RELEASE</spring-data-solr.version>
     </properties>
 
