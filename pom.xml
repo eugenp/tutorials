@@ -11,7 +11,8 @@
     <modules>
         <module>parent-boot-5</module>
         <module>parent-boot-2</module>
-        <module>parent-spring</module>
+        <module>parent-spring-4</module>
+        <module>parent-spring-5</module>
         <module>parent-java</module>
         <module>asm</module>
         <module>atomix</module>
@@ -30,6 +31,7 @@
         <module>apache-opennlp</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>azure</module>
         <module>bootique</module>
         <module>cdi</module>
         <!--<module>core-java-9</module>-->
@@ -260,6 +262,7 @@
         <module>performance-tests</module>
         <module>twilio</module>
         <module>spring-boot-ctx-fluent</module>
+        <module>java-ee-8-security-api</module>
     </modules>
 
     <dependencies>
@@ -373,7 +376,7 @@
                 <configuration>
                     <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
                     <aggregate>true</aggregate>
-                    <failOnViolation>false</failOnViolation>
+                    <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
