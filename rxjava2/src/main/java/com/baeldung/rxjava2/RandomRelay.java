@@ -1,4 +1,3 @@
-//version 1
 package com.baeldung.rxjava2;
 
 import com.jakewharton.rxrelay2.Relay;

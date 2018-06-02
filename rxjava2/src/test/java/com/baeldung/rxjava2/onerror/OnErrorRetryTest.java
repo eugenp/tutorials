@@ -1,4 +1,3 @@
-//version 1
 package com.baeldung.rxjava2.onerror;
 
 import io.reactivex.Observable;
