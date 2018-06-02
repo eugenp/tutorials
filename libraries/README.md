@@ -82,7 +82,6 @@
 - [Creating REST Microservices with Javalin](http://www.baeldung.com/javalin-rest-microservices)
 
 
-
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
 The code examples related to different libraries should go in a new package.
