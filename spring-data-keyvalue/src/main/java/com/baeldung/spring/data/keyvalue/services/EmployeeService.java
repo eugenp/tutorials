@@ -1,12 +1,14 @@
 package com.baeldung.spring.data.keyvalue.services;
 
+import java.util.Optional;
+
 import com.baeldung.spring.data.keyvalue.vo.Employee;
 
 public interface EmployeeService {
 	
 	void save(Employee employee);
 
-    Employee get(Integer id);
+    Optional<Employee> get(Integer id);
 
     Iterable<Employee> fetchAll();
 
