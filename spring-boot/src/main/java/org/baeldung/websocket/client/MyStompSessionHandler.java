@@ -1,6 +1,7 @@
 package org.baeldung.websocket.client;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.messaging.simp.stomp.StompCommand;
 import org.springframework.messaging.simp.stomp.StompHeaders;
 import org.springframework.messaging.simp.stomp.StompSession;
@@ -18,7 +19,7 @@ import java.lang.reflect.Type;
  */
 public class MyStompSessionHandler extends StompSessionHandlerAdapter {
 
-    private Logger logger = Logger.getLogger(MyStompSessionHandler.class);
+    private Logger logger = LogManager.getLogger(MyStompSessionHandler.class);
 
     @Override
     public void afterConnected(StompSession session, StompHeaders connectedHeaders) {
