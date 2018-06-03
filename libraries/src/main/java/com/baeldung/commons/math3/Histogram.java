@@ -22,7 +22,6 @@ public class Histogram {
 
     }
 
-
     private CategoryChart buildChart(List xData, List yData) {
 
         // Create Chart
@@ -83,7 +82,6 @@ public class Histogram {
 
         return distributionMap;
     }
-
 
     public static void main(String[] args) {
         new Histogram();
