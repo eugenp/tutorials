@@ -17,7 +17,6 @@ public class Histogram {
 
         distributionMap = new TreeMap();
         classWidth = 10;
-
         Map distributionMap = processRawData();
         List yData = new ArrayList();
         yData.addAll(distributionMap.values());
