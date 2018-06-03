@@ -196,6 +196,12 @@
             <version>${hsqldb.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.asynchttpclient/async-http-client -->
+        <dependency>
+            <groupId>org.asynchttpclient</groupId>
+            <artifactId>async-http-client</artifactId>
+            <version>${async-http-client.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -365,6 +371,7 @@
         <hsqldb.version>2.4.0</hsqldb.version>
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
+        <async-http-client.version>2.4.5</async-http-client.version>
     </properties>
 
 </project>
