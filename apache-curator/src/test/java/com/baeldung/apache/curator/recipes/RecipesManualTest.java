@@ -10,9 +10,9 @@ import org.apache.curator.framework.recipes.shared.SharedCount;
 import org.apache.curator.framework.state.ConnectionState;
 import org.junit.Test;
 
-import com.baeldung.apache.curator.BaseTest;
+import com.baeldung.apache.curator.BaseManualTest;
 
-public class RecipesManualTest extends BaseTest {
+public class RecipesManualTest extends BaseManualTest {
 
     @Test
     public void givenRunningZookeeper_whenUsingLeaderElection_thenNoErrors() {
