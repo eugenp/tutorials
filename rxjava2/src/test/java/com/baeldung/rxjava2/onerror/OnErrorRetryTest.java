@@ -124,7 +124,7 @@ public class OnErrorRetryTest {
     @Test
     public void givenSubscriberAndError_whenRetryWhenForMultipleTimesOnError_thenResumed() {
         TestObserver<String> testObserver = new TestObserver<>();
-        long before = System.currentTimeMillis();
+        long before;
 
         Observable
           .<String>error(UNKNOWN_ERROR)
@@ -139,6 +139,7 @@ public class OnErrorRetryTest {
         testObserver.assertNoErrors();
         testObserver.assertComplete();
         testObserver.assertNoValues();
+        before  = System.currentTimeMillis();
         long secondsElapsed = (System.currentTimeMillis() - before) / 1000;
         assertTrue("6 seconds should elapse", secondsElapsed == 6);
     }

@@ -11,8 +11,15 @@ import java.util.Random;
 public class RandomRelay extends Relay<Integer> {
     transient Random random = new Random();
 
+    public List<Observer<? super Integer>> getObservers() {
+        return observers;
+    }
 
-    transient List<Observer<? super Integer>> observers = new ArrayList<>();
+    public void setObservers(List<Observer<? super Integer>> observers) {
+        this.observers = observers;
+    }
+
+    List<Observer<? super Integer>> observers = new ArrayList<>();
 
     @Override
     public void accept(Integer integer) {
