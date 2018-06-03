@@ -1,4 +1,4 @@
-package com.baeldung.rxjava;
+package com.baeldung.rxjava2;
 
 import com.jakewharton.rxrelay2.BehaviorRelay;
 import com.jakewharton.rxrelay2.PublishRelay;

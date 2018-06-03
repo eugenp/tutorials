@@ -1,4 +1,4 @@
-package com.baeldung.rxjava;
+package com.baeldung.rxjava2;
 
 import org.junit.Test;
 
