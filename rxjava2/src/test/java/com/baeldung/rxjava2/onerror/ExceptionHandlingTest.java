@@ -11,8 +11,8 @@ import static org.junit.Assert.assertTrue;
 
 public class ExceptionHandlingTest {
 
-    private Error UNKNOWN_ERROR = new Error("unknown error");
-    private Exception UNKNOWN_EXCEPTION = new Exception("unknown exception");
+    private transient Error UNKNOWN_ERROR = new Error("unknown error");
+    private transient Exception UNKNOWN_EXCEPTION = new Exception("unknown exception");
 
     @Test
     public void givenSubscriberAndError_whenHandleOnErrorReturn_thenResumed() {

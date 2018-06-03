@@ -9,9 +9,10 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomRelay extends Relay<Integer> {
-    Random random = new Random();
+    transient Random random = new Random();
 
-    List<Observer<? super Integer>> observers = new ArrayList<>();
+
+    transient List<Observer<? super Integer>> observers = new ArrayList<>();
 
     @Override
     public void accept(Integer integer) {

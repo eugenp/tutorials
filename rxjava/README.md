@@ -10,4 +10,3 @@
 - [Mathematical and Aggregate Operators in RxJava](http://www.baeldung.com/rxjava-math)
 - [Combining Observables in RxJava](http://www.baeldung.com/rxjava-combine-observables)
 - [RxJava StringObservable](http://www.baeldung.com/rxjava-string)
-- [RxJava Maybe](http://www.baeldung.com/rxjava-maybe)

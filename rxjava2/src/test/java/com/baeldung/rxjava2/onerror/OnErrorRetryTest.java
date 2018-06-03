@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 
 public class OnErrorRetryTest {
 
-    private Error UNKNOWN_ERROR = new Error("unknown error");
+    private transient Error UNKNOWN_ERROR = new Error("unknown error");
 
     @Test
     public void givenSubscriberAndError_whenRetryOnError_thenRetryConfirmed() {
