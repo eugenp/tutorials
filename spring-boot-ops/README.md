@@ -10,3 +10,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Shutdown a Spring Boot Application](http://www.baeldung.com/spring-boot-shutdown)
 - [Create a Fat Jar App with Spring Boot](http://www.baeldung.com/deployable-fat-jar-spring-boot)
 - [Spring Boot Dependency Management with a Custom Parent](http://www.baeldung.com/spring-boot-dependency-management-custom-parent)
+- [Deploy a Spring Boot WAR into a Tomcat Server](http://www.baeldung.com/spring-boot-war-tomcat-deploy)
