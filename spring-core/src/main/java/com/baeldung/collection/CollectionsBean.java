@@ -3,6 +3,7 @@ package com.baeldung.collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class CollectionsBean {
 
     @Autowired(required = false)
     @Qualifier("CollectionsBean")
-    private List<BaeldungBean> beanList;
+    private List<BaeldungBean> beanList = new ArrayList<>();
 
     public CollectionsBean() {
     }
