@@ -20,12 +20,12 @@ public class RegisterExtensionSampleExtension implements BeforeAllCallback, Befo
 
     @Override
     public void beforeAll(ExtensionContext extensionContext) throws Exception {
-        logger.info(String.format("Type %s In beforeAll : %s", type, extensionContext.getDisplayName()));
+        logger.info("Type {} In beforeAll : {}", type, extensionContext.getDisplayName());
     }
 
     @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
-        logger.info(String.format("Type %s In beforeEach : %s", type, extensionContext.getDisplayName()));
+        logger.info("Type {} In beforeEach : {}", type, extensionContext.getDisplayName());
     }
 
     public String getType() {
