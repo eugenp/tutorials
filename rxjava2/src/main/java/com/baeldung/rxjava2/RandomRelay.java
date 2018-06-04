@@ -9,15 +9,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomRelay extends Relay<Integer> {
-    transient Random random = new Random();
-
-    public List<Observer<? super Integer>> getObservers() {
-        return observers;
-    }
-
-    public void setObservers(List<Observer<? super Integer>> observers) {
-        this.observers = observers;
-    }
+    Random random = new Random();
 
     List<Observer<? super Integer>> observers = new ArrayList<>();
 

@@ -9,9 +9,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.Assert.assertTrue;
 
-public class OnErrorRetryTest {
+public class OnErrorRetryIntegrationTest {
 
-    private transient Error UNKNOWN_ERROR = new Error("unknown error");
+    private Error UNKNOWN_ERROR = new Error("unknown error");
 
     @Test
     public void givenSubscriberAndError_whenRetryOnError_thenRetryConfirmed() {

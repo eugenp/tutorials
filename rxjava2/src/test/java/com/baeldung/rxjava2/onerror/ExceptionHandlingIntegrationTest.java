@@ -1,4 +1,4 @@
-package com.baeldung.rxjava.onerror;
+package com.baeldung.rxjava2.onerror;
 
 import io.reactivex.Observable;
 import io.reactivex.exceptions.CompositeException;

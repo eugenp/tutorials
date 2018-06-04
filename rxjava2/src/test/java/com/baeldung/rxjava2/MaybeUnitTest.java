@@ -5,7 +5,7 @@ import org.junit.Test;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 
-public class MaybeTest {
+public class MaybeUnitTest {
     @Test
     public void whenEmitsSingleValue_thenItIsObserved() {
         Maybe<Integer> maybe = Flowable.just(1, 2, 3, 4, 5)
