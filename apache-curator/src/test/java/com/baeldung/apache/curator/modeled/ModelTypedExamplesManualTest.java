@@ -11,9 +11,9 @@ import org.apache.curator.x.async.modeled.ModeledFramework;
 import org.apache.curator.x.async.modeled.ZPath;
 import org.junit.Test;
 
-import com.baeldung.apache.curator.BaseTest;
+import com.baeldung.apache.curator.BaseManualTest;
 
-public class ModelTypedExamplesManualTest extends BaseTest {
+public class ModelTypedExamplesManualTest extends BaseManualTest {
 
     @Test
     public void givenPath_whenStoreAModel_thenNodesAreCreated()
