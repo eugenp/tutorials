@@ -19,7 +19,7 @@ public class CollectionsBean {
 
     private Map<Integer, String> nameMap;
 
-    @Autowired
+    @Autowired(required = false)
     @Qualifier("CollectionsBean")
     private List<BaeldungBean> beanList;
 
