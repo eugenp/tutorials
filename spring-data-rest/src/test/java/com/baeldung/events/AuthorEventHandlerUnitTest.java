@@ -7,7 +7,7 @@ import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 
 import static org.mockito.Mockito.mock;
 
-public class AuthorEventHandlerTest {
+public class AuthorEventHandlerUnitTest {
 
         @Test
         public void whenCreateAuthorThenSuccess() {
