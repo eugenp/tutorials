@@ -1,6 +1,6 @@
 package com.baeldung.cdi.imagefileeditors;
 
-import com.baeldung.qualifiers.JpgFileEditorQualifier;
+import com.baeldung.cdi.qualifiers.JpgFileEditorQualifier;
 
 @JpgFileEditorQualifier
 public class JpgFileEditor implements ImageFileEditor {
