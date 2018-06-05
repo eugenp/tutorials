@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import org.junit.Test;
 
-public class MethodParamNameTest {
+public class MethodParamNameUnitTest {
 
     @Test
     public void whenGetConstructorParams_thenOk() 
