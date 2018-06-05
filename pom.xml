@@ -533,5 +533,4 @@
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
-
 </project>
