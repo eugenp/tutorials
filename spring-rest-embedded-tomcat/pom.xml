@@ -10,9 +10,9 @@
     
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring</artifactId>
+        <artifactId>parent-spring-5</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../parent-spring</relativePath>
+    	<relativePath>../parent-spring-5</relativePath>
     </parent>
     
     <dependencies>
@@ -85,7 +85,6 @@
     </build>
 
     <properties>
-        <spring.version>5.0.2.RELEASE</spring.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <jackson.library>2.9.2</jackson.library>
         <maven.compiler.source>1.8</maven.compiler.source>
