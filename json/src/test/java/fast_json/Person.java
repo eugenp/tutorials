@@ -32,10 +32,9 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person [age=" + age + ", lastName=" + lastName + ", firstName="
-                + firstName + ", dateOfBirth=" + dateOfBirth + "]";
+        return "Person [age=" + age + ", lastName=" + lastName + ", firstName=" + firstName + ", dateOfBirth=" + dateOfBirth + "]";
     }
-    
+
     public int getAge() {
         return age;
     }

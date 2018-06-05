@@ -1,0 +1,7 @@
+{
+    "main": {
+        "title" : "INTRODUCTION TO YARG",
+        "name" : "Baeldung",
+        "content" : "This is the content of the letter, can be anything we like."
+    }
+}

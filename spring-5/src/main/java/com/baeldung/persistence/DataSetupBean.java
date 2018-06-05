@@ -20,7 +20,8 @@ public class DataSetupBean implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        IntStream.range(1, 20).forEach(i -> repo.save(new Foo(randomAlphabetic(8))));
+        IntStream.range(1, 20)
+            .forEach(i -> repo.save(new Foo(randomAlphabetic(8))));
     }
 
 }

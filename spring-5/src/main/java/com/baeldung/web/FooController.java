@@ -7,12 +7,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import java.util.List;
 
 @RestController("/foos")
 public class FooController {
+
+    @PostConstruct
+    public void init(){
+        System.out.println("test");
+    }
 
     @Autowired
     private FooRepository repo;
@@ -23,7 +29,8 @@ public class FooController {
     @ResponseBody
     @Validated
     public Foo findById(@PathVariable @Min(0) final long id) {
-        return repo.findById(id).orElse(null);
+        return repo.findById(id)
+            .orElse(null);
     }
 
     @GetMapping
@@ -36,7 +43,8 @@ public class FooController {
     @ResponseBody
     @Validated
     public List<Foo> findPaginated(@RequestParam("page") @Min(0) final int page, @Max(100) @RequestParam("size") final int size) {
-        return repo.findAll(PageRequest.of(page, size)).getContent();
+        return repo.findAll(PageRequest.of(page, size))
+            .getContent();
     }
 
     // API - write

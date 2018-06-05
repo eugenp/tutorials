@@ -28,7 +28,6 @@ public class JsonRawValueUnitTest {
         // assert
         assertThat(result.contains(customerConfig));
 
-
         /*
             {
               "firstName": "Alex",

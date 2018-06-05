@@ -1,6 +1,5 @@
 package com.baeldung.jackson.streaming;
 
-
 import com.fasterxml.jackson.core.*;
 import org.junit.Test;
 
@@ -18,12 +17,12 @@ public class JacksonStreamingAPIUnitTest {
 
     @Test
     public void givenJsonGenerator_whenAppendJsonToIt_thenGenerateJson() throws IOException {
-        //given
+        // given
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         JsonFactory jfactory = new JsonFactory();
         JsonGenerator jGenerator = jfactory.createGenerator(stream, JsonEncoding.UTF8);
 
-        //when
+        // when
         jGenerator.writeStartObject();
         jGenerator.writeStringField("name", "Tom");
         jGenerator.writeNumberField("age", 25);
@@ -35,14 +34,14 @@ public class JacksonStreamingAPIUnitTest {
         jGenerator.writeEndObject();
         jGenerator.close();
 
-        //then
+        // then
         String json = new String(stream.toByteArray(), "UTF-8");
         assertEquals(json, "{\"name\":\"Tom\",\"age\":25,\"address\":[\"Poland\",\"5th avenue\"]}");
     }
 
     @Test
     public void givenJson_whenReadItUsingStreamAPI_thenShouldCreateProperJsonObject() throws IOException {
-        //given
+        // given
         String json = "{\"name\":\"Tom\",\"age\":25,\"address\":[\"Poland\",\"5th avenue\"]}";
         JsonFactory jfactory = new JsonFactory();
         JsonParser jParser = jfactory.createParser(json);
@@ -51,7 +50,7 @@ public class JacksonStreamingAPIUnitTest {
         Integer parsedAge = null;
         List<String> addresses = new LinkedList<>();
 
-        //when
+        // when
         while (jParser.nextToken() != JsonToken.END_OBJECT) {
 
             String fieldname = jParser.getCurrentName();
@@ -78,7 +77,7 @@ public class JacksonStreamingAPIUnitTest {
         }
         jParser.close();
 
-        //then
+        // then
         assertEquals(parsedName, "Tom");
         assertEquals(parsedAge, (Integer) 25);
         assertEquals(addresses, Arrays.asList("Poland", "5th avenue"));
@@ -87,7 +86,7 @@ public class JacksonStreamingAPIUnitTest {
 
     @Test
     public void givenJson_whenWantToExtractPartOfIt_thenShouldExtractOnlyNeededFieldWithoutGoingThroughWholeJSON() throws IOException {
-        //given
+        // given
         String json = "{\"name\":\"Tom\",\"age\":25,\"address\":[\"Poland\",\"5th avenue\"]}";
         JsonFactory jfactory = new JsonFactory();
         JsonParser jParser = jfactory.createParser(json);
@@ -96,7 +95,7 @@ public class JacksonStreamingAPIUnitTest {
         Integer parsedAge = null;
         List<String> addresses = new LinkedList<>();
 
-        //when
+        // when
         while (jParser.nextToken() != JsonToken.END_OBJECT) {
 
             String fieldname = jParser.getCurrentName();
@@ -110,7 +109,7 @@ public class JacksonStreamingAPIUnitTest {
         }
         jParser.close();
 
-        //then
+        // then
         assertNull(parsedName);
         assertEquals(parsedAge, (Integer) 25);
         assertTrue(addresses.isEmpty());
