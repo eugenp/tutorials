@@ -1,6 +1,6 @@
 package com.baeldung.test.cdi;
 
-import com.baeldung.imagefileeditors.GifFileEditor;
+import com.baeldung.cdi.imagefileeditors.GifFileEditor;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.BeforeClass;
 import org.junit.Test;
