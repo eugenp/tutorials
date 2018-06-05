@@ -15,7 +15,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TodoMustacheServiceTest {
+public class TodoMustacheServiceUnitTest {
 
     private String executeTemplate(Mustache m, Map<String, Object> context) throws IOException {
         StringWriter writer = new StringWriter();

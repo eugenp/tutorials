@@ -10,7 +10,7 @@ import com.baeldung.propertyeditor.creditcard.CreditCard;
 import com.baeldung.propertyeditor.creditcard.CreditCardEditor;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CreditCardEditorTest {
+public class CreditCardEditorUnitTest {
     
     private CreditCardEditor creditCardEditor;
     
