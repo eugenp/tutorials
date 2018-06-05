@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Created by Paul Jervis on 24/04/2018.
  */
-class LambdaKotlinTest {
+class LambdaKotlinUnitTest {
 
     @Test
     void givenJava6_whenUsingAnonnymousClass_thenReturnLambdaResult() {
