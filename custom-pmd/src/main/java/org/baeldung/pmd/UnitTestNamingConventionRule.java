@@ -17,15 +17,15 @@ public class UnitTestNamingConventionRule extends AbstractJavaRule {
       "UnitTest",
       "jmhTest");
 
-	public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
-		String className = node.getImage();
-		Objects.requireNonNull(className);
+    public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
+        String className = node.getImage();
+        Objects.requireNonNull(className);
 
-		if (className.endsWith("Tests")
-				|| (className.endsWith("Test") && allowedEndings.stream().noneMatch(className::endsWith))) {
-			addViolation(data, node);
-		}
+        if (className.endsWith("Tests")
+                || (className.endsWith("Test") && allowedEndings.stream().noneMatch(className::endsWith))) {
+            addViolation(data, node);
+        }
 
-		return data;
-	}
+        return data;
+    }
 }
