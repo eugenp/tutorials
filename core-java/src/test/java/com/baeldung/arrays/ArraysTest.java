@@ -1,7 +1,9 @@
 package com.baeldung.arrays;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +11,9 @@ import java.util.stream.Stream;
 
 public class ArraysTest {
     private String[] intro = new String[] { "once", "upon", "a", "time" };
+
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
 
     @Test
     public void testArraysCopyOfRange() {
@@ -99,8 +104,37 @@ public class ArraysTest {
     }
 
     @Test
+    public void testStream(){
+        Assert.assertEquals(Arrays.stream(intro).count(), 4);
+
+        exception.expect(ArrayIndexOutOfBoundsException.class);
+        Arrays.stream(intro, 2, 1).count();
+    }
+
+    @Test
+    public void testSetAll(){
+        String[] longAgo = new String[4];
+        Arrays.setAll(longAgo, i -> this.getWord(i));
+        Assert.assertArrayEquals(longAgo, new String[]{"A","long","time","ago"});
+    }
+
+    public String getWord(int i){
+        String[] introWords = new String[]{"A","long","time","ago"};
+        return introWords[i];
+    }
+
+    @Test
     public void testArraysToString(){
         Assert.assertEquals("[once, upon, a, time]", Arrays.toString(intro));
+    }
+
+    @Test
+    public void testDeepToString(){
+        String[] end = {"the", "end"};
+        Object[] story =
+                new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
+        Assert.assertEquals("[[once, upon, a, time], [chapter one, chapter two], [the, end]]",
+                Arrays.deepToString(story));
     }
 
     @Test
