@@ -9,7 +9,7 @@ public class ArrayBenchmarkRunner {
   public static void main(String[] args) throws Exception {
 
     Options options = new OptionsBuilder()
-        .include(SearchArrayTest.class.getSimpleName()).threads(1)
+        .include(SearchArrayUnitTest.class.getSimpleName()).threads(1)
         .forks(1).shouldFailOnError(true).shouldDoGC(true)
         .jvmArgs("-server").build();
 
