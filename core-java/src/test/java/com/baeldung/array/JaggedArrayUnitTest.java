@@ -10,7 +10,7 @@ import java.io.PrintStream;
 
 import org.junit.Test;
 
-public class JaggedArrayTest {
+public class JaggedArrayUnitTest {
 
     private JaggedArray obj = new JaggedArray();
 
