@@ -20,8 +20,7 @@ public class CacheConfiguration {
     public static final String TRANSACTIONAL_CACHE = "transactional-cache";
 
     public DefaultCacheManager cacheManager() {
-        DefaultCacheManager cacheManager = new DefaultCacheManager();
-        return cacheManager;
+        return new DefaultCacheManager();
     }
 
     public Cache<String, Integer> transactionalCache(DefaultCacheManager cacheManager, CacheListener listener) {
@@ -44,8 +43,7 @@ public class CacheConfiguration {
         return this.buildCache(PASSIVATING_HELLO_WORLD_CACHE, cacheManager, listener, passivatingConfiguration());
     }
 
-    private <K, V> Cache<K, V> buildCache(String cacheName, DefaultCacheManager cacheManager,
-      CacheListener listener, Configuration configuration) {
+    private <K, V> Cache<K, V> buildCache(String cacheName, DefaultCacheManager cacheManager, CacheListener listener, Configuration configuration) {
 
         cacheManager.defineConfiguration(cacheName, configuration);
         Cache<K, V> cache = cacheManager.getCache(cacheName);
@@ -54,32 +52,19 @@ public class CacheConfiguration {
     }
 
     private Configuration expiringConfiguration() {
-        return new ConfigurationBuilder().expiration().lifespan(1, TimeUnit.SECONDS)
-          .build();
+        return new ConfigurationBuilder().expiration().lifespan(1, TimeUnit.SECONDS).build();
     }
 
     private Configuration evictingConfiguration() {
-        return new ConfigurationBuilder()
-          .memory().evictionType(EvictionType.COUNT).size(1)
-          .build();
+        return new ConfigurationBuilder().memory().evictionType(EvictionType.COUNT).size(1).build();
     }
 
     private Configuration passivatingConfiguration() {
-        return new ConfigurationBuilder()
-          .memory().evictionType(EvictionType.COUNT).size(1)
-          .persistence()
-          .passivation(true)
-          .addSingleFileStore()
-          .purgeOnStartup(true)
-          .location(System.getProperty("java.io.tmpdir"))
-          .build();
+        return new ConfigurationBuilder().memory().evictionType(EvictionType.COUNT).size(1).persistence().passivation(true).addSingleFileStore().purgeOnStartup(true).location(System.getProperty("java.io.tmpdir")).build();
     }
 
     private Configuration transactionalConfiguration() {
-        return new ConfigurationBuilder()
-          .transaction().transactionMode(TransactionMode.TRANSACTIONAL)
-          .lockingMode(LockingMode.PESSIMISTIC)
-          .build();
+        return new ConfigurationBuilder().transaction().transactionMode(TransactionMode.TRANSACTIONAL).lockingMode(LockingMode.PESSIMISTIC).build();
     }
 
 }

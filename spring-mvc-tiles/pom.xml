@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-mvc-tiles</artifactId>
@@ -9,27 +9,18 @@
     <description>Integrating Spring MVC with Apache Tiles</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-
-    <properties>
-        <springframework.version>4.3.4.RELEASE</springframework.version>
-        <apache-tiles.version>3.0.7</apache-tiles.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
-        <jstl.version>1.2</jstl.version>
-
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-    </properties>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-spring-4</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-spring-4</relativePath>
+	</parent>
 
     <dependencies>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -40,12 +31,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <!-- Apache Tiles -->
         <dependency>
@@ -90,4 +81,13 @@
         </pluginManagement>
         <finalName>spring-mvc-tiles</finalName>
     </build>
+
+    <properties>
+        <apache-tiles.version>3.0.7</apache-tiles.version>
+        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+        <jstl.version>1.2</jstl.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+    </properties>
+
 </project>

@@ -19,10 +19,10 @@ public class CloudSiteController {
         return "Hello From Baeldung!";
     }
 
-    @GetMapping("/person")
+    @GetMapping("/personInfo")
     public ModelAndView person() {
         ModelAndView mav = new ModelAndView("personinfo");
-        String personResourceUrl = "http://localhost:9000/personResource";
+        String personResourceUrl = "http://localhost:9000/person";
         mav.addObject("person", restOperations.getForObject(personResourceUrl, String.class));
         return mav;
     }

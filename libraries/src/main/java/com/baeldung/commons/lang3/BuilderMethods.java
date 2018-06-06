@@ -26,9 +26,7 @@ public class BuilderMethods {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder().append(this.intValue)
-            .append(this.strSample)
-            .toHashCode();
+        return new HashCodeBuilder().append(this.intValue).append(this.strSample).toHashCode();
     }
 
     @Override
@@ -41,16 +39,12 @@ public class BuilderMethods {
         }
         final BuilderMethods otherObject = (BuilderMethods) obj;
 
-        return new EqualsBuilder().append(this.intValue, otherObject.intValue)
-            .append(this.strSample, otherObject.strSample)
-            .isEquals();
+        return new EqualsBuilder().append(this.intValue, otherObject.intValue).append(this.strSample, otherObject.strSample).isEquals();
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).append("INTVALUE", this.intValue)
-            .append("STRINGVALUE", this.strSample)
-            .toString();
+        return new ToStringBuilder(this).append("INTVALUE", this.intValue).append("STRINGVALUE", this.strSample).toString();
     }
 
     public static void main(final String[] arguments) {
@@ -58,21 +52,21 @@ public class BuilderMethods {
         System.out.println(simple1.getName());
         System.out.println(simple1.hashCode());
         System.out.println(simple1.toString());
-        
+
         SampleLazyInitializer sampleLazyInitializer = new SampleLazyInitializer();
-        
+
         try {
             sampleLazyInitializer.get();
         } catch (ConcurrentException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        
+
         SampleBackgroundInitializer sampleBackgroundInitializer = new SampleBackgroundInitializer();
         sampleBackgroundInitializer.start();
-        
+
         // Proceed with other tasks instead of waiting for the SampleBackgroundInitializer task to finish.
-        
+
         try {
             Object result = sampleBackgroundInitializer.get();
         } catch (ConcurrentException e) {
@@ -81,13 +75,13 @@ public class BuilderMethods {
     }
 }
 
-class SampleBackgroundInitializer extends BackgroundInitializer<String>{
+class SampleBackgroundInitializer extends BackgroundInitializer<String> {
 
     @Override
     protected String initialize() throws Exception {
         return null;
     }
-    
+
     // Any complex task that takes some time
-    
+
 }

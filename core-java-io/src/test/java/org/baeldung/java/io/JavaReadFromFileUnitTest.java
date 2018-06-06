@@ -18,7 +18,6 @@ import static org.junit.Assert.assertTrue;
 
 public class JavaReadFromFileUnitTest {
 
-
     private static final Logger LOG = LoggerFactory.getLogger(JavaReadFromFileUnitTest.class);
 
     @Test
@@ -112,6 +111,7 @@ public class JavaReadFromFileUnitTest {
         final String currentLine = reader.readLine();
         reader.close();
         LOG.debug(currentLine);
+        
         assertEquals(expected_value, currentLine);
     }
 

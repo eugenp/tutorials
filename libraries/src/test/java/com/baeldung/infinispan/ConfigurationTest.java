@@ -9,13 +9,15 @@ import org.infinispan.manager.DefaultCacheManager;
 import org.junit.After;
 import org.junit.Before;
 
+import java.util.function.Supplier;
+
 public class ConfigurationTest {
 
     private DefaultCacheManager cacheManager;
 
     private HelloWorldRepository repository = new HelloWorldRepository();
 
-    protected  HelloWorldService helloWorldService;
+    protected HelloWorldService helloWorldService;
     protected TransactionalService transactionalService;
 
     @Before
@@ -25,27 +27,19 @@ public class ConfigurationTest {
 
         cacheManager = configuration.cacheManager();
 
-        Cache<String, Integer> transactionalCache =
-          configuration.transactionalCache(cacheManager, listener);
+        Cache<String, Integer> transactionalCache = configuration.transactionalCache(cacheManager, listener);
 
-        Cache<String, String> simpleHelloWorldCache =
-          configuration.simpleHelloWorldCache(cacheManager, listener);
+        Cache<String, String> simpleHelloWorldCache = configuration.simpleHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> expiringHelloWorldCache =
-          configuration.expiringHelloWorldCache(cacheManager, listener);
+        Cache<String, String> expiringHelloWorldCache = configuration.expiringHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> evictingHelloWorldCache =
-          configuration.evictingHelloWorldCache(cacheManager, listener);
+        Cache<String, String> evictingHelloWorldCache = configuration.evictingHelloWorldCache(cacheManager, listener);
 
-        Cache<String, String> passivatingHelloWorldCache =
-          configuration.passivatingHelloWorldCache(cacheManager, listener);
+        Cache<String, String> passivatingHelloWorldCache = configuration.passivatingHelloWorldCache(cacheManager, listener);
 
-        this.helloWorldService = new HelloWorldService(repository,
-          listener, simpleHelloWorldCache, expiringHelloWorldCache, evictingHelloWorldCache,
-          passivatingHelloWorldCache);
+        this.helloWorldService = new HelloWorldService(repository, listener, simpleHelloWorldCache, expiringHelloWorldCache, evictingHelloWorldCache, passivatingHelloWorldCache);
 
         this.transactionalService = new TransactionalService(transactionalCache);
-
     }
 
     @After
@@ -53,4 +47,9 @@ public class ConfigurationTest {
         cacheManager.stop();
     }
 
+    protected <T> long timeThis(Supplier<T> supplier) {
+        long millis = System.currentTimeMillis();
+        supplier.get();
+        return System.currentTimeMillis() - millis;
+    }
 }
