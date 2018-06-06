@@ -10,9 +10,9 @@
 
     <parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>parent-spring</artifactId>
+		<artifactId>parent-spring-4</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../../parent-spring</relativePath>
+		<relativePath>../../parent-spring-4</relativePath>
 	</parent>
 
     <dependencies>
@@ -80,7 +80,6 @@
     </dependencies>
 
     <properties>
-        <spring.version>4.3.4.RELEASE</spring.version>
         <log4j.version>1.2.17</log4j.version>
         <log4j2.version>2.7</log4j2.version>
         <disruptor.version>3.3.6</disruptor.version>
