@@ -4,7 +4,7 @@ import com.baeldung.cdi.imagefileeditors.GifFileEditor;
 import com.baeldung.cdi.imagefileeditors.JpgFileEditor;
 import com.baeldung.cdi.imagefileeditors.PngFileEditor;
 import com.baeldung.cdi.imageprocessors.ImageFileProcessor;
-import com.baeldung.cdi.dependencyinjection.loggers.TimeLogger;
+com.baeldung.cdi.dependencyinjection.loggers;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import static org.assertj.core.api.Assertions.assertThat;
