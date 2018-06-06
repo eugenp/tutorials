@@ -10,8 +10,13 @@ import java.util.*;
 
 public class Histogram {
 
+    private Map distributionMap;
+    private int classWidth;
+
     public Histogram() {
 
+        distributionMap = new TreeMap();
+        classWidth = 10;
         Map distributionMap = processRawData();
         List yData = new ArrayList();
         yData.addAll(distributionMap.values());
@@ -46,41 +51,41 @@ public class Histogram {
         Frequency frequency = new Frequency();
         datasetList.forEach(d -> frequency.addValue(Double.parseDouble(d.toString())));
 
-        int classWidth = 10;
-
-        Map distributionMap = new TreeMap();
         List processed = new ArrayList();
         datasetList.forEach(d -> {
+          double observation = Double.parseDouble(d.toString());
 
-            double observation = Double.parseDouble(d.toString());
+          if(processed.contains(observation))
+            return;
 
-            if(processed.contains(observation))
-                return;
+          long observationFrequency = frequency.getCount(observation);
+          int upperBoundary = (observation > classWidth) ? Math.multiplyExact( (int) Math.ceil(observation / classWidth), classWidth) : classWidth;
+          int lowerBoundary = (upperBoundary > classWidth) ? Math.subtractExact(upperBoundary, classWidth) : 0;
+          String bin = lowerBoundary + "-" + upperBoundary;
 
-            long observationFrequency = frequency.getCount(observation);
-            int upperBoundary = (observation > classWidth) ? Math.multiplyExact( (int) Math.ceil(observation / classWidth), classWidth) : classWidth;
-            int lowerBoundary = (upperBoundary > classWidth) ? Math.subtractExact(upperBoundary, classWidth) : 0;
-            String bin = lowerBoundary + "-" + upperBoundary;
+          updateDistributionMap(lowerBoundary, bin, observationFrequency);
 
-            int prevUpperBoundary = lowerBoundary;
-            int prevLowerBoundary = (lowerBoundary > classWidth) ? lowerBoundary - classWidth : 0;
-            String prevBin = prevLowerBoundary + "-" + prevUpperBoundary;
-            if(!distributionMap.containsKey(prevBin))
-                distributionMap.put(prevBin, 0);
-
-            if(!distributionMap.containsKey(bin)) {
-                distributionMap.put(bin, observationFrequency);
-            }
-            else {
-                long oldFrequency = Long.parseLong(distributionMap.get(bin).toString());
-                distributionMap.replace(bin, oldFrequency + observationFrequency);
-            }
-
-            processed.add(observation);
+          processed.add(observation);
 
         });
 
         return distributionMap;
+    }
+
+    private void updateDistributionMap(int lowerBoundary, String bin, long observationFrequency) {
+
+        int prevLowerBoundary = (lowerBoundary > classWidth) ? lowerBoundary - classWidth : 0;
+        String prevBin = prevLowerBoundary + "-" + lowerBoundary;
+        if(!distributionMap.containsKey(prevBin))
+            distributionMap.put(prevBin, 0);
+
+        if(!distributionMap.containsKey(bin)) {
+            distributionMap.put(bin, observationFrequency);
+        }
+        else {
+            long oldFrequency = Long.parseLong(distributionMap.get(bin).toString());
+            distributionMap.replace(bin, oldFrequency + observationFrequency);
+        }
     }
 
     public static void main(String[] args) {
