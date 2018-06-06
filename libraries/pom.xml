@@ -680,6 +680,12 @@
             <version>${unirest.version}</version>
         </dependency>
 
+        <!-- javalin -->
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <version>1.6.0</version>
+        </dependency>
         <!-- Atlassian Fugue -->
         <dependency>
             <groupId>io.atlassian.fugue</groupId>
@@ -691,6 +697,17 @@
             <groupId>org.jctools</groupId>
             <artifactId>jctools-core</artifactId>
             <version>${jctools.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>${common-math3-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.knowm.xchart</groupId>
+            <artifactId>xchart</artifactId>
+            <version>${xchart-version}</version>
         </dependency>
     </dependencies>
 
@@ -904,6 +921,8 @@
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <jctools.version>2.1.2</jctools.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
+        <common-math3-version>3.6.1</common-math3-version>
+        <xchart-version>3.5.2</xchart-version>
     </properties>
 
 </project>
