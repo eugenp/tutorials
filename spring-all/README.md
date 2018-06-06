@@ -12,7 +12,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Properties with Spring](http://www.baeldung.com/properties-with-spring) - checkout the `org.baeldung.properties` package for all scenarios of properties injection and usage
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
 - [A Spring Custom Annotation for a Better DAO](http://www.baeldung.com/spring-annotation-bean-pre-processor)
-- [What's New in Spring 4.3?](http://www.baeldung.com/whats-new-in-spring-4-3/)
+- [What's New in Spring 4.3?](http://www.baeldung.com/whats-new-in-spring-4-3)
 - [Guide To Running Logic on Startup in Spring](http://www.baeldung.com/running-setup-logic-on-startup-in-spring)
 - [Quick Guide to Spring Controllers](http://www.baeldung.com/spring-controllers)
 - [Quick Guide to Spring Bean Scopes](http://www.baeldung.com/spring-bean-scopes)
@@ -26,3 +26,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Model, ModelMap, and ModelView in Spring MVC](http://www.baeldung.com/spring-mvc-model-model-map-model-view)
 - [A Guide To Caching in Spring](http://www.baeldung.com/spring-cache-tutorial)
 - [How To Do @Async in Spring](http://www.baeldung.com/spring-async)
+- [Quick Guide to the Spring @Order Annotation](http://www.baeldung.com/spring-order)
+- [Spring Web Contexts](http://www.baeldung.com/spring-web-contexts)
+- [Spring Cache – Creating a Custom KeyGenerator](http://www.baeldung.com/spring-cache-custom-keygenerator)

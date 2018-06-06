@@ -13,10 +13,11 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <scala.version>2.11.7</scala.version>
         <encoding>UTF-8</encoding>
-        <gatling.version>2.2.0</gatling.version>
-        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version>
+        <scala.version>2.11.12</scala.version> <!--2.11.12--> <!--2.12.6-->
+        <gatling.version>2.2.5</gatling.version> <!--2.2.5--> <!--2.3.1-->
+        <scala-maven-plugin.version>3.2.2</scala-maven-plugin.version> <!--3.2.2--> <!--3.3.2-->
+        <gatling-maven-plugin.version>2.2.1</gatling-maven-plugin.version> <!--2.2.1--> <!--2.2.4-->
     </properties>
 
     <dependencyManagement>
@@ -85,7 +86,7 @@
                         </goals>
                         <configuration>
                             <args>
-                                <arg>-Ybackend:GenBCode</arg>
+                                <!--<arg>-Ybackend:GenBCode</arg>-->
                                 <arg>-Ydelambdafy:method</arg>
                                 <arg>-target:jvm-1.8</arg>
                                 <arg>-deprecation</arg>
@@ -101,7 +102,7 @@
             <plugin>
                 <groupId>io.gatling</groupId>
                 <artifactId>gatling-maven-plugin</artifactId>
-                <version>${gatling.version}</version>
+                <version>${gatling-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>test</phase>
