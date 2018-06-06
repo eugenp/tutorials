@@ -16,7 +16,7 @@ import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 
-public class CayenneOperationIntegrationTest {
+public class CayenneOperationLiveTest {
     private static ObjectContext context = null;
 
     @BeforeClass

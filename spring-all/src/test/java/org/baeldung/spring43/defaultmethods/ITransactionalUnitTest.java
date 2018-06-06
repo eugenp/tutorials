@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.test.context.transaction.AfterTransaction;
 import org.springframework.test.context.transaction.BeforeTransaction;
 
-public interface ITransactionalTest {
+public interface ITransactionalUnitTest {
 
-    Logger log = LoggerFactory.getLogger(ITransactionalTest.class);
+    Logger log = LoggerFactory.getLogger(ITransactionalUnitTest.class);
 
     @BeforeTransaction
     default void beforeTransaction() {
