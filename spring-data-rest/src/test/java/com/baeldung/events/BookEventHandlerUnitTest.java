@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 
 import static org.mockito.Mockito.mock;
 
-public class BookEventHandlerTest {
+public class BookEventHandlerUnitTest {
         @Test
         public void whenCreateBookThenSuccess() {
                 Book book = mock(Book.class);
