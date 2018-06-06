@@ -53,6 +53,7 @@ public class JdkFtpClientIntegrationTest {
         URLConnection urlConnection = new URL(ftpUrl).openConnection();
         InputStream inputStream = urlConnection.getInputStream();
         Files.copy(inputStream, new File("downloaded_buz.txt").toPath());
+        inputStream.close();
 
         assertThat(new File("downloaded_buz.txt")).exists();
 
