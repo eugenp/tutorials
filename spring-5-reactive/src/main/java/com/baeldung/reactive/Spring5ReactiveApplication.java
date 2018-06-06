@@ -6,6 +6,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
+import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import java.time.Duration;
 
 @SpringBootApplication
 public class Spring5ReactiveApplication{
@@ -22,4 +26,16 @@ public class Spring5ReactiveApplication{
         return new ReactiveMongoTemplate(mongoClient, "test");
     }
 
+    @Bean
+    public WebClient client() {
+        WebClient client = WebClient.create("http://localhost:8080");
+        client.get()
+                .uri("/heartBeat")
+                .accept(MediaType.TEXT_EVENT_STREAM)
+                .retrieve()
+                .bodyToFlux(String.class)
+                .delayElements(Duration.ofMillis(100))
+                .subscribe(System.out::println);
+        return client;
+    }
 }
