@@ -23,7 +23,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 }, webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @ActiveProfiles("dev")
-public class FlipControllerTest {
+public class FlipControllerIntegrationTest {
 
     @Autowired private MockMvc mvc;
 
