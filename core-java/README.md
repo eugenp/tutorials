@@ -139,5 +139,15 @@
 - [Sending Emails with Java](http://www.baeldung.com/java-email)
 - [Introduction to SSL in Java](http://www.baeldung.com/java-ssl)
 - [Java KeyStore API](http://www.baeldung.com/java-keystore)
-- [Using Java Assertions](http://www.baeldung.com/java-assert)
+- [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
 - [Guide to Java Clock Class](http://www.baeldung.com/java-clock)
+- [Using Java Assertions](http://www.baeldung.com/java-assert)
+- [Pass-By-Value as a Parameter Passing Mechanism in Java](http://www.baeldung.com/java-pass-by-value-or-pass-by-reference)
+- [Check If a String Is Numeric in Java](http://www.baeldung.com/java-check-string-number)
+- [Variable and Method Hiding in Java](http://www.baeldung.com/java-variable-method-hiding)
+- [Access Modifiers in Java](http://www.baeldung.com/java-access-modifiers)
+- [NaN in Java](http://www.baeldung.com/java-not-a-number)
+- [Infinite Loops in Java](http://www.baeldung.com/infinite-loops-java)
+- [Why Use char[] Array Over a String for Storing Passwords in Java?](http://www.baeldung.com/java-storing-passwords)
+
+
