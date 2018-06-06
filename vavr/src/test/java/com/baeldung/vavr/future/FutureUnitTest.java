@@ -13,7 +13,7 @@ import static java.util.concurrent.Executors.newSingleThreadExecutor;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class FutureTest {
+public class FutureUnitTest {
 
     private static final String error = "Failed to get underlying value.";
     private static final String HELLO = "Welcome to Baeldung!";

@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.baeldung.web.controller.SimpleBookController;
 
-public class SimpleBookRestControllerTest {
+public class SimpleBookControllerIntegrationTest {
 
     private MockMvc mockMvc;
     private static final String CONTENT_TYPE = "application/json;charset=UTF-8";

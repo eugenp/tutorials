@@ -23,7 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration({"classpath:test-mvc.xml"})
-public class PassParametersControllerTest {
+public class PassParametersControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
