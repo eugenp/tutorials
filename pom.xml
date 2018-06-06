@@ -374,8 +374,8 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
-                    <aggregate>true</aggregate>
+                    <failurePriority>5</failurePriority>
+                    <aggregate>false</aggregate>
                     <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
@@ -534,5 +534,4 @@
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
-
 </project>
