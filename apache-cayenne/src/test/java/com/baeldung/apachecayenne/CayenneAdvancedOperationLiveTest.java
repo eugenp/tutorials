@@ -19,7 +19,7 @@ import java.util.List;
 import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class CayenneAdvancedOperationIntegrationTest {
+public class CayenneAdvancedOperationLiveTest {
     private static ObjectContext context = null;
 
     @BeforeClass

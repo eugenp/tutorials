@@ -6,9 +6,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @Configuration
 @ComponentScan("org.baeldung.test")
-public class ConfigTest extends WebMvcConfigurerAdapter {
+public class ConfigIntegrationTest extends WebMvcConfigurerAdapter {
 
-    public ConfigTest() {
+    public ConfigIntegrationTest() {
         super();
     }
 
