@@ -2,6 +2,7 @@ package com.baeldung.jdbc.autogenkey;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import com.baeldung.jdbc.autogenkey.repository.MessageRepositoryJDBCTemplate;
 import com.baeldung.jdbc.autogenkey.repository.MessageRepositorySimpleJDBCInsert;
 
 @RunWith(SpringRunner.class)
+@Ignore
 public class GetAutoGenKeyByJDBC {
 
     @Configuration

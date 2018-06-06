@@ -11,7 +11,8 @@
     <modules>
         <module>parent-boot-5</module>
         <module>parent-boot-2</module>
-        <module>parent-spring</module>
+        <module>parent-spring-4</module>
+        <module>parent-spring-5</module>
         <module>parent-java</module>
         <module>asm</module>
         <module>atomix</module>
@@ -30,6 +31,7 @@
         <module>apache-opennlp</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>azure</module>
         <module>bootique</module>
         <module>cdi</module>
         <!--<module>core-java-9</module>-->
@@ -94,7 +96,6 @@
         <module>logging-modules/log-mdc</module>
         <module>logging-modules/log4j</module>
         <module>logging-modules/log4j2</module>
-        <module>logging-modules/log4j2-programmatic-configuration</module>
         <module>logging-modules/logback</module>
         <module>lombok</module>
         <module>mapstruct</module>
@@ -141,6 +142,7 @@
         <module>spring-boot-keycloak</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-admin</module>
+        <module>spring-boot-ops</module>
         <module>spring-boot-security</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
@@ -152,6 +154,7 @@
         <module>spring-data-couchbase-2</module>
         <module>persistence-modules/spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
+        <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>persistence-modules/spring-data-neo4j</module>
         <module>persistence-modules/spring-data-redis</module>
@@ -257,6 +260,8 @@
         <module>jersey</module>
         <module>java-spi</module>
         <module>performance-tests</module>
+        <module>twilio</module>
+		<module>java-ee-8-security-api</module>
     </modules>
 
     <dependencies>
@@ -368,9 +373,9 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
-                    <aggregate>true</aggregate>
-                    <failOnViolation>false</failOnViolation>
+                    <failurePriority>5</failurePriority>
+                    <aggregate>false</aggregate>
+                    <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
@@ -528,5 +533,4 @@
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
-
 </project>
