@@ -16,20 +16,20 @@ public class MiddleElementLookupUnitTest {
 
     @Test
     public void whenFindingMiddleFromHead_thenMiddleFound() {
-        assertEquals("3", MiddleElementLookup.findMiddleElementFromHead(createNodeList(5)));
-        assertEquals("2", MiddleElementLookup.findMiddleElementFromHead(createNodeList(4)));
+        assertEquals("3", MiddleElementLookup.findMiddleElementFromHead(createNodesList(5)));
+        assertEquals("2", MiddleElementLookup.findMiddleElementFromHead(createNodesList(4)));
     }
 
     @Test
     public void whenFindingMiddleFromHead1PassRecursively_thenMiddleFound() {
-        assertEquals("3", MiddleElementLookup.findMiddleElementFromHead1PassRecursively(createNodeList(5)));
-        assertEquals("2", MiddleElementLookup.findMiddleElementFromHead1PassRecursively(createNodeList(4)));
+        assertEquals("3", MiddleElementLookup.findMiddleElementFromHead1PassRecursively(createNodesList(5)));
+        assertEquals("2", MiddleElementLookup.findMiddleElementFromHead1PassRecursively(createNodesList(4)));
     }
 
     @Test
     public void whenFindingMiddleFromHead1PassIteratively_thenMiddleFound() {
-        assertEquals("3", MiddleElementLookup.findMiddleElementFromHead1PassIteratively(createNodeList(5)));
-        assertEquals("2", MiddleElementLookup.findMiddleElementFromHead1PassIteratively(createNodeList(4)));
+        assertEquals("3", MiddleElementLookup.findMiddleElementFromHead1PassIteratively(createNodesList(5)));
+        assertEquals("2", MiddleElementLookup.findMiddleElementFromHead1PassIteratively(createNodesList(4)));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class MiddleElementLookupUnitTest {
         return list;
     }
 
-    private static Node createNodeList(int n) {
+    private static Node createNodesList(int n) {
         Node head = new Node("1");
         Node current = head;
 
