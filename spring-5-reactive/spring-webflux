@@ -1,0 +1,318 @@
+Spring webflux represents the reactor factor in Spring using the Subscriber/Publisher model. Original framweworks like RxJava and ReactiveX used this model consisting of Observables and Observers. Observable emit events which Observers subscribe to.
+
+Spring Webflux makes use of Observables named Flux and Mono. Flux is a push source that emits 0 or more items, so that several methods can be called on it such as onNext, onCompletion and onError. On the other hand Mono can only emit 0 or 1 item, at most 1 item, and is relevant when for example, onCompletion is the only event needed.
+
+In this tutorial, we will be exploring the use of Spring Webflux in a basic CRUD application. The pre-requisites for this application are:
+
+Java 8
+
+Spring Boot 2.0.x
+
+Web Reactive
+
+Spring Initializr online tool is recommended to initialize your application and can be found at https://start.spring.io/. Maven users can use the POM file below:
+
+4.0.0
+
+com.ehidiamen
+simplewebflux-hello2
+0.0.1-SNAPSHOT
+jar
+
+simplewebflux-hello2
+Demo project for Spring Boot
+
+org.springframework.boot
+spring-boot-starter-parent
+2.0.2.RELEASE
+
+UTF-8
+UTF-8
+1.8
+
+org.springframework.boot
+spring-boot-starter-data-cassandra-reactive
+
+org.springframework.boot
+spring-boot-starter-webflux
+
+org.springframework.boot
+spring-boot-starter-test
+test
+
+io.projectreactor
+reactor-test
+test
+
+org.springframework.data
+spring-data-commons
+
+org.springframework.boot
+spring-boot-maven-plugin
+
+We would like to monitor train arrivals at various train stations. The train arrivals times represent the stream events we want to observe. The components that make up our application include model objects, repository for our data, handler, and a router.
+
+Find the project structure below:
+
+package
+|
+|____model
+|
+|____handler
+|
+|____repository
+
+We will be creating the model objects in the model folder. The data objects required are TrainStation and TrainArrival. TrainStation has id and name attributes with corresponding getter and setter methods.
+
+package com.ehidiamen.simplewebfluxhello2.model;
+
+public class TrainStation {
+
+private String id;
+private String name;
+
+public TrainStation(String id, String name) {
+this.id = id;
+this.name = name;
+}
+
+public String getId() {
+return id;
+}
+
+public void setId(String id) {
+this.id = id;
+}
+
+public String getName() {
+return name;
+}
+
+public void setName(String name) {
+this.name = name;
+}
+}
+
+TrainArrival has id and arrivalTime attributes.
+
+package com.ehidiamen.simplewebfluxhello2.model;
+
+public class TrainArrival {
+private String id;
+private String arrivalTime;
+
+public TrainArrival(String id, String arrivalTime) {
+super();
+this.id = id;
+this.arrivalTime = arrivalTime;
+}
+
+public String getId() {
+return id;
+}
+
+public void setId(String id) {
+this.id = id;
+}
+
+public String getArrivalTime() {
+return arrivalTime;
+}
+
+public void setArrivalTime(String arrivalTime) {
+this.arrivalTime = arrivalTime;
+}
+
+}
+
+The next step involves creating the data repository, and we will be implementing the interface methods in ReactiveCrudRepository interface. This interface consists of the basic CRUD methods, and the spring-data-commons dependency is required, as found in my sample POM extract above.
+
+Our repository class will be called TrainRepository.
+
+@Repository
+public class TrainRepository implements ReactiveCrudRepository {
+
+@Override
+public Mono save(S s) {
+return null;
+}
+
+@Override
+public Flux saveAll(Iterable iterable) {
+return null;
+}
+
+@Override
+public Flux saveAll(Publisher publisher) {
+return null;
+}
+
+@Override
+public Mono findById(String s) {
+return null;
+}
+
+@Override
+public Mono findById(Publisher publisher) {
+return null;
+}
+
+@Override
+public Mono existsById(String s) {
+return null;
+}
+
+@Override
+public Mono existsById(Publisher publisher) {
+return null;
+}
+
+@Override
+public Flux findAll() {
+return null;
+}
+
+@Override
+public Flux findAllById(Iterable iterable) {
+return null;
+}
+
+@Override
+public Flux findAllById(Publisher publisher) {
+return null;
+}
+
+@Override
+public Mono count() {
+return null;
+}
+
+@Override
+public Mono deleteById(String s) {
+return null;
+}
+
+@Override
+public Mono deleteById(Publisher publisher) {
+return null;
+}
+
+@Override
+public Mono delete(TrainStation trainStation) {
+return null;
+}
+
+@Override
+public Mono deleteAll(Iterable iterable) {
+return null;
+}
+
+@Override
+public Mono deleteAll(Publisher publisher) {
+return null;
+}
+
+@Override
+public Mono deleteAll() {
+return null;
+}
+
+}
+
+Our record store will be in memory using a Map object to store our TrainStation information. Lets add this to the TrainRepository class.
+
+private final Map trainsMap = new ConcurrentHashMap();
+
+public TrainRepository() {
+trainsMap.put("1", new TrainStation("1", "Station1"));
+trainsMap.put("2", new TrainStation("2", "Station2"));
+trainsMap.put("3", new TrainStation("3", "Station3"));
+trainsMap.put("4", new TrainStation("4", "Station4"));
+}
+
+Following this, we shall implement findById method.
+
+@Override
+public Mono findById(String s) {
+return Mono.justOrEmpty(trainsMap.get(s));
+}
+
+The Handler is the object handling or servicing requests to the repository from web clients, and is similar to service in Spring MVC. We will create a handler to view each TrainStation by id.
+
+package com.ehidiamen.simplewebfluxhello2.handler;
+
+@Component
+public class TrainStationHandler {
+
+private final TrainRepository trainRepository;
+
+public TrainStationHandler(TrainRepository trainRepository) {
+
+this.trainRepository = trainRepository;
+
+}
+
+public Mono getId(ServerRequest serverRequest) {
+String id = serverRequest.pathVariable("id");
+Mono trainStation = this.trainRepository.findById(id);
+return ServerResponse.ok().body(trainStation, TrainStation.class);
+}
+
+}
+
+Following this is the routing, that maps URL requests to the right handler. This logic is done in the WebConfig class file as can be seen below:
+
+package com.ehidiamen.simplewebfluxhello2;
+
+@Configuration
+@EnableWebFlux
+public class WebConfig implements WebFluxConfigurer {
+
+@Bean
+public RouterFunction routeTrains(TrainStationHandler trainStationHandler) {
+return RouterFunctions
+.route(RequestPredicates.GET("/trains/{id}"), trainStationHandler::getId);
+}
+}
+
+Run the application and go to the URL http://localhost:8080/trains/1. This should be the output on the browser:
+
+{"id":"1","name":"Station1"}
+
+Now to demonstrate streaming events using Spring Webflux, we shall generate train arrivals on the specified train station. To accomplish this, we shall use the generate method of Flux, which takes a Consumer as parameter of type SynchronousSink.
+
+First we create a TrainArrivalHandler and a handler method for arrival events. If this is left to run as is, we would get a heavy flood of events, hence we put a delay of 2 seconds
+
+package com.ehidiamen.simplewebfluxhello2.handler;
+
+@Component
+public class TrainArrivalHandler {
+
+public Mono arrivals(ServerRequest serverRequest) {
+String trainStationId = serverRequest.pathVariable("id");
+Flux events = Flux.generate(sink -> sink.next(new TrainArrival(trainStationId, new Date()))).delayElements(Duration.ofSeconds(1));
+return ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM).body(events, TrainArrival.class);
+}
+}
+
+The next step is to add a route for this handler method, also making sure to start with the more specific route first.
+
+@Bean
+public RouterFunction routeTrains(TrainStationHandler trainStationHandler, TrainArrivalHandler trainArrivalHandler) {
+return RouterFunctions
+.route(RequestPredicates.GET("/trains/{id}/arrivals"), trainArrivalHandler::arrivals)
+.andRoute(RequestPredicates.GET("/trains/{id}"), trainStationHandler::getId);
+}
+}
+
+Run the application and go to the URL http://localhost:8080/trains/1/arrivals. This should be the output on the browser every 1 second:
+
+data:{"id":"1","date":1528397553843}
+
+data:{"id":"1","date":1528397554862}
+
+data:{"id":"1","date":1528397555864}
+
+Conclusion
+
+This tutorial showed some of the functionality of Spring Webflux. This could be applied to real-world projects where clients subscribe to our Web services for regular updates, and exciting times lay ahead for Spring users.
