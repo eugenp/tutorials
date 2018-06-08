@@ -17,9 +17,9 @@ class RomanArabicConverter {
             } else {
                 i++;
             }
-            if (romanNumeral.length() > 0) {
-                throw new IllegalArgumentException(input + " cannot be converted to a Roman Numeral");
-            }
+        }
+        if (romanNumeral.length() > 0) {
+            throw new IllegalArgumentException(input + " cannot be converted to a Roman Numeral");
         }
 
         return result;
