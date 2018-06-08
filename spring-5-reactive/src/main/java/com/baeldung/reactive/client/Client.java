@@ -46,7 +46,7 @@ public class Client {
     /**
      * A mock for the function that handles the errors. 
      * The current implementation just prints out the error message.
-     * @param e
+     * @param t
      */
     private void onError(Throwable t) {
         System.out.println(t.getMessage());
