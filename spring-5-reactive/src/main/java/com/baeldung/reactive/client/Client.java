@@ -29,14 +29,26 @@ public class Client {
      * Subscribe to the stream of data
      */
     public void consume() {
-        flux.subscribe(i -> store(i), e -> System.out.println(e.getMessage()));
+        flux.subscribe(i -> onDataReceived(i), e -> onError(e));
     }
 
     /**
-     * A mock for the function that stores integer numbers from the stream.
+     * A mock for the function that receives integer numbers from the stream.
+     * 
+     * The current implementation just prints the received number.
+    *  
      * @param number single stream's number 
      */
-    private void store(Long number) {
-        System.out.println("Storing: " + number);
+    private void onDataReceived(Long number) {
+        System.out.println("Received number: " + number);
+    }
+
+    /**
+     * A mock for the function that handles the errors. 
+     * The current implementation just prints out the error message.
+     * @param e
+     */
+    private void onError(Throwable t) {
+        System.out.println(t.getMessage());
     }
 }
