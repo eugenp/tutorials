@@ -117,7 +117,7 @@
                             <dependency>
                                 <groupId>org.springframework.boot.experimental</groupId>
                                 <artifactId>spring-boot-thin-layout</artifactId>
-                                <version>${wrapper.version}</version>
+                                <version>${thin.version}</version>
                             </dependency>
                         </dependencies>
                     </plugin>
@@ -134,7 +134,7 @@
         <!-- plugins -->
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <wrapper.version>1.0.11.RELEASE</wrapper.version>
+        <thin.version>1.0.11.RELEASE</thin.version>
     </properties>
 
 </project>

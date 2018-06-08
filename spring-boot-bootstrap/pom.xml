@@ -114,7 +114,7 @@
                     <plugin>
                         <groupId>org.springframework.boot.experimental</groupId>
                         <artifactId>spring-boot-thin-maven-plugin</artifactId>
-                        <version>${wrapper.version}</version>
+                        <version>${thin.version}</version>
                         <executions>
                             <execution>
                                 <!-- Download the dependencies at build time -->

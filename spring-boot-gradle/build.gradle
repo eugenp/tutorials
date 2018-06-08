@@ -1,14 +1,16 @@
 buildscript {
     ext {
+        springBootPlugin = 'org.springframework.boot:spring-boot-gradle-plugin'
         springBootVersion = '2.0.2.RELEASE'
-        wrapperVersion = '1.0.11.RELEASE'
+        thinPlugin = 'org.springframework.boot.experimental:spring-boot-thin-gradle-plugin'
+        thinVersion = '1.0.11.RELEASE'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("org.springframework.boot.experimental:spring-boot-thin-gradle-plugin:${wrapperVersion}")
+        classpath("${springBootPlugin}:${springBootVersion}")
+        classpath("${thinPlugin}:${thinVersion}")
     }
 }
 
@@ -51,14 +53,15 @@ apply plugin: 'maven'
 
 //If you want to customize the generated pom.xml you can edit this task and add it as a dependency to the bootJar task
 task createPom {
+    def basePath = 'build/resources/main/META-INF/maven'
     doLast {
         pom {
             withXml(dependencyManagement.pomConfigurer)
-        }.writeTo("build/resources/main/META-INF/maven/${project.group}/${project.name}/pom.xml")
+        }.writeTo("${basePath}/${project.group}/${project.name}/pom.xml")
     }
 }
 //Uncomment the following to use your custom generated pom.xml
-//bootJar.dependsOn = [createPom]
+bootJar.dependsOn = [createPom]
 
 //Enable this to generate and use a thin.properties file
 //bootJar.dependsOn = [thinProperties]
