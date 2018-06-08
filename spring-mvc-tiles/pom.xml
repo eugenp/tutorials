@@ -10,9 +10,9 @@
 
     <parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>parent-spring</artifactId>
+		<artifactId>parent-spring-4</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../parent-spring</relativePath>
+		<relativePath>../parent-spring-4</relativePath>
 	</parent>
 
     <dependencies>
@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -31,12 +31,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <!-- Apache Tiles -->
         <dependency>
@@ -83,7 +83,6 @@
     </build>
 
     <properties>
-        <springframework.version>4.3.4.RELEASE</springframework.version>
         <apache-tiles.version>3.0.7</apache-tiles.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
