@@ -117,6 +117,7 @@
                         <version>${wrapper.version}</version>
                         <executions>
                             <execution>
+                                <!-- Download the dependencies at build time -->
                                 <id>resolve</id>
                                 <goals>
                                     <goal>resolve</goal>

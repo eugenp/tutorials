@@ -1,12 +1,14 @@
 buildscript {
     ext {
-        springBootVersion = '2.0.0.RELEASE'
+        springBootVersion = '2.0.2.RELEASE'
+        wrapperVersion = '1.0.11.RELEASE'
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot.experimental:spring-boot-thin-gradle-plugin:${wrapperVersion}")
     }
 }
 
@@ -14,6 +16,8 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+//add tasks thinJar and thinResolve for thin JAR deployments
+apply plugin: 'org.springframework.boot.experimental.thin-launcher'
 
 group = 'org.baeldung'
 version = '0.0.1-SNAPSHOT'
@@ -21,13 +25,6 @@ sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
-}
-
-buildscript {
-    def wrapperVersion = '1.0.11.RELEASE'
-    dependencies {
-        classpath("org.springframework.boot.experimental:spring-boot-thin-gradle-plugin:${wrapperVersion}")
-    }
 }
 
 dependencies {
@@ -49,6 +46,19 @@ bootJar {
 //    }
 }
 
-//add tasks thinJar and thinResolve for thin JAR deployments
+//Enable this to generate and use a pom.xml file
 apply plugin: 'maven'
-apply plugin: 'org.springframework.boot.experimental.thin-launcher'
+
+//If you want to customize the generated pom.xml you can edit this task and add it as a dependency to the bootJar task
+task createPom {
+    doLast {
+        pom {
+            withXml(dependencyManagement.pomConfigurer)
+        }.writeTo("build/resources/main/META-INF/maven/${project.group}/${project.name}/pom.xml")
+    }
+}
+//Uncomment the following to use your custom generated pom.xml
+//bootJar.dependsOn = [createPom]
+
+//Enable this to generate and use a thin.properties file
+//bootJar.dependsOn = [thinProperties]
