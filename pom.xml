@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>parent-boot-5</module>
+        <module>parent-boot-1</module>
         <module>parent-boot-2</module>
         <module>parent-spring-4</module>
         <module>parent-spring-5</module>

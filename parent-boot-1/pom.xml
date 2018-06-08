@@ -2,16 +2,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>parent-boot-5</artifactId>
+    <artifactId>parent-boot-1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Parent Boot 5</name>
-    <description>Parent for all spring boot 1.5 modules</description>
+    <description>Parent for all Spring Boot 1.x modules</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.10.RELEASE</version>
+        <version>1.5.13.RELEASE</version>
         <relativePath/>
     </parent>
 
