@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.view.ViewResult;
 import com.couchbase.client.java.view.ViewRow;
-
+@Ignore
 public class StudentGradeServiceIntegrationTest {
     private static final Logger logger = LoggerFactory.getLogger(StudentGradeServiceIntegrationTest.class);
             
