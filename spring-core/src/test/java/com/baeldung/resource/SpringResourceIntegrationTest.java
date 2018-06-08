@@ -31,7 +31,7 @@ import org.springframework.util.ResourceUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class)
-public class SpringResourceTest {
+public class SpringResourceIntegrationTest {
     /**
      * Resource loader instance for lazily loading resources.
      */
