@@ -17,7 +17,7 @@ import java.util.Collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class FtpClientTest {
+public class FtpClientIntegrationTest {
 
     private FakeFtpServer fakeFtpServer;
 
@@ -55,7 +55,7 @@ public class FtpClientTest {
 
     @Test
     public void givenRemoteFile_whenDownloading_thenItIsOnTheLocalFilesystem() throws IOException {
-        ftpClient.downloadFile("/buz.txt", "downloaded_buz.txt");
+        ftpClient.downloadFile("/foobar.txt", "downloaded_buz.txt");
 
         assertThat(new File("downloaded_buz.txt")).exists();
         new File("downloaded_buz.txt").delete(); // cleanup
@@ -63,7 +63,7 @@ public class FtpClientTest {
 
     @Test
     public void givenLocalFile_whenUploadingIt_thenItExistsOnRemoteLocation() throws URISyntaxException, IOException {
-        File file = new File(getClass().getClassLoader().getResource("baz.txt").toURI());
+        File file = new File(getClass().getClassLoader().getResource("ftp/baz.txt").toURI());
 
         ftpClient.putFileToPath(file, "/buz.txt");
 

@@ -14,7 +14,7 @@ public class UserController {
     public static Handler fetchById = ctx -> {
         int id = Integer.parseInt(Objects.requireNonNull(ctx.param("id")));
         UserDao dao = UserDao.instance();
-        User user = dao.getUserById(id);
+        User user = dao.getUserById(id).get();
         if (user == null) {
             ctx.html("Not Found");
         } else {
