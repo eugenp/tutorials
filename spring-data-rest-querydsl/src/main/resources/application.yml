@@ -5,7 +5,7 @@ spring:
             pool-name: hikari-pool
         url: jdbc:mysql://localhost:3306/baeldung?verifyServerCertificate=false&useSSL=false&requireSSL=false
         username: root
-        password: admin
+
     jpa:
         hibernate:
             ddl-auto: create
