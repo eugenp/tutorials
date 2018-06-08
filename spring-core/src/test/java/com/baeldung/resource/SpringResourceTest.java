@@ -2,63 +2,100 @@ package com.baeldung.resource;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.util.ResourceUtils;
+
+/**
+ * Test class illustrating various methods of accessing a file from the classpath using Resource.
+ * @author tritty
+ *
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = AppConfig.class)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class)
 public class SpringResourceTest {
+    /**
+     * Resource loader instance for lazily loading resources.
+     */
+    @Autowired
+    private ResourceLoader resourceLoader;
 
     @Autowired
-    private ClassPathResourceReader classPathResourceReader;
+    private ApplicationContext appContext;
 
-    static final String testData = "This is a sample text to demonstrate usage of Spring Resource.";
+    /**
+     * Injecting resource
+     */
+    @Value("classpath:data/employees.dat")
+    private Resource resourceFile;
 
-    @Test
-    public void whenManualInstance_thenReadSuccessful() throws IOException {
-        Resource resource = classPathResourceReader.constructResourceManually();
-        String fileData = classPathResourceReader.listResourceContentsUsingFile(resource.getFile());
-        assertEquals(testData, fileData);
-    }
+    /**
+     * Data in data/employee.dat
+     */
+    private static final String EMPLOYEES_EXPECTED = "Joe Employee,Jan Employee,James T. Employee";
 
     @Test
     public void whenResourceLoader_thenReadSuccessful() throws IOException {
-        Resource resource = classPathResourceReader.retrieveResourceUsingResourceLoader();
-        String fileData = classPathResourceReader.listResourceContentsUsingFile(resource.getFile());
-        assertEquals(testData, fileData);
+        final Resource resource = resourceLoader.getResource("classpath:data/employees.dat");
+        final String employees = new String(Files.readAllBytes(resource.getFile()
+            .toPath()));
+        assertEquals(EMPLOYEES_EXPECTED, employees);
     }
 
     @Test
     public void whenApplicationContext_thenReadSuccessful() throws IOException {
-        Resource resource = classPathResourceReader.retrieveResourceUsingApplicationContext();
-        String fileData = classPathResourceReader.listResourceContentsUsingFile(resource.getFile());
-        assertEquals(testData, fileData);
+        final Resource resource = appContext.getResource("classpath:data/employees.dat");
+        final String employees = new String(Files.readAllBytes(resource.getFile()
+            .toPath()));
+        assertEquals(EMPLOYEES_EXPECTED, employees);
     }
 
     @Test
     public void whenAutowired_thenReadSuccessful() throws IOException {
-        Resource resource = classPathResourceReader.getSampleFile();
-        String fileData = classPathResourceReader.listResourceContentsUsingFile(resource.getFile());
-        assertEquals(testData, fileData);
+        final String employees = new String(Files.readAllBytes(resourceFile.getFile()
+            .toPath()));
+        assertEquals(EMPLOYEES_EXPECTED, employees);
     }
 
     @Test
     public void whenResourceUtils_thenReadSuccessful() throws IOException {
-        String fileData = classPathResourceReader.listResourceContentsUsingFile(classPathResourceReader.retrieveFileUsingResourceUtils());
-        assertEquals(testData, fileData);
+        final String employees = new String(Files.readAllBytes(ResourceUtils.getFile("classpath:data/employees.dat")
+            .toPath()));
+        assertEquals(EMPLOYEES_EXPECTED, employees);
     }
 
     @Test
     public void whenResourceAsStream_thenReadSuccessful() throws IOException {
-        Resource resource = classPathResourceReader.retrieveResourceUsingResourceLoader();
-        String fileData = classPathResourceReader.listResourceContentsUsingInputStream(resource.getInputStream());
-        assertEquals(testData, fileData);
+        final InputStream resource = new ClassPathResource("data/employees.dat").getInputStream();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(resource))) {
+            final String employees = reader.lines()
+                .collect(Collectors.joining("\n"));
+            assertEquals(EMPLOYEES_EXPECTED, employees);
+        }
+    }
+
+    @Test
+    public void whenResourceAsFile_thenReadSuccessful() throws IOException {
+        final File resource = new ClassPathResource("data/employees.dat").getFile();
+        final String employees = new String(Files.readAllBytes(resource.toPath()));
+        assertEquals(EMPLOYEES_EXPECTED, employees);
     }
 }
