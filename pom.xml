@@ -102,6 +102,7 @@
         <module>metrics</module>
         <module>maven</module>
         <module>mesos-marathon</module>
+        <module>msf4j</module>
         <module>testing-modules/mockito</module>
         <module>testing-modules/mockito-2</module>
         <module>testing-modules/mocks</module>
