@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
-public class RomanArabicConverterTest {
+public class RomanArabicConverterUnitTest {
 
     @Test
     public void given2018Roman_WhenConvertingToArabic_ThenReturn2018() {
