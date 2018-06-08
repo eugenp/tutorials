@@ -23,6 +23,9 @@ import java.util.concurrent.TimeUnit;
 
 @State(Scope.Group)
 public class MappingFrameworksPerformance {
+    
+    final static OrikaConverter ORIKA_INSTANCE = new OrikaConverter();
+    
     SourceOrder sourceOrder = null;
     SourceCode sourceCode =  null;
     @Setup
@@ -80,7 +83,7 @@ public class MappingFrameworksPerformance {
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public void orikaMapperRealLifeBenchmark() {
-        OrikaConverter orikaConverter = new OrikaConverter();
+        OrikaConverter orikaConverter = ORIKA_INSTANCE;
         Order mappedOrder = orikaConverter.convert(sourceOrder);
         Assert.assertEquals(mappedOrder, sourceOrder);
 
@@ -137,7 +140,7 @@ public class MappingFrameworksPerformance {
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public void orikaMapperSimpleBenchmark() {
-        OrikaConverter orikaConverter = new OrikaConverter();
+        OrikaConverter orikaConverter = ORIKA_INSTANCE;
         DestinationCode mappedCode = orikaConverter.convert(sourceCode);
         Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
 
