@@ -98,7 +98,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public Order orikaMapperRealLifeBenchmark() {
@@ -107,7 +107,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public Order jmapperRealLifeBenchmark() {
@@ -116,7 +116,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public Order modelMapperRealLifeBenchmark() {
@@ -125,7 +125,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public Order dozerMapperRealLifeBenchmark() {
@@ -134,7 +134,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @BenchmarkMode(Mode.All)
     public Order mapStructRealLifeMapperBenchmark() {
         return MapStructConverter.MAPPER.convert(sourceOrder);
@@ -142,7 +142,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public DestinationCode orikaMapperSimpleBenchmark() {
@@ -151,7 +151,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public DestinationCode jmapperSimpleBenchmark() {
@@ -160,7 +160,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public DestinationCode modelMapperBenchmark() {
@@ -169,7 +169,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public Order dozerMapperSimpleBenchmark() {
@@ -178,7 +178,7 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
+    @Fork(value = 1, warmups = 5)
     @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @BenchmarkMode(Mode.All)
     public DestinationCode mapStructMapperSimpleBenchmark() {
