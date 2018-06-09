@@ -26,7 +26,7 @@ public class JaxbIntegrationTest {
     private JAXBContext context;
 
     @Before
-    public void before() throws JAXBException, IOException {
+    public void before() throws JAXBException {
         book = new Book();
         book.setId(1L);
         book.setName("Book1");
