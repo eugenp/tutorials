@@ -15,7 +15,9 @@ import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.junit.runners.MethodSorters;
 
 import com.baeldung.jaxb.Book;
@@ -24,15 +26,20 @@ import com.baeldung.jaxb.Book;
 public class JaxbIntegrationTest {
     private Book book;
     private JAXBContext context;
+    private String tempPath;
+    
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Before
-    public void before() throws JAXBException {
+    public void before() throws JAXBException, IOException {
         book = new Book();
         book.setId(1L);
         book.setName("Book1");
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         book.setDate(new Date(1481909329718L));
         context = JAXBContext.newInstance(Book.class);
+        tempPath = tempFolder.newFolder().getAbsolutePath();
     }
 
     @Test
@@ -44,7 +51,7 @@ public class JaxbIntegrationTest {
         File bookFile = new File(this.getClass().getResource("/book.xml").getFile());
         String sampleBookXML = FileUtils.readFileToString(sampleBookFile, "UTF-8");
         String marshallerBookXML = FileUtils.readFileToString(bookFile, "UTF-8");
-        Assert.assertEquals(sampleBookXML, marshallerBookXML);
+        Assert.assertEquals(sampleBookXML.replace("\r", "").replace("\n", ""), marshallerBookXML.replace("\r", "").replace("\n", ""));
     }
 
     @Test
