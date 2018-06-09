@@ -1,0 +1,45 @@
+.stock-widget {
+	border: 1px solid #e0e0e0;
+	background: #f9f7f7;
+	width: 400px;
+	display: inline-block;
+	margin-right: 8px;
+	margin-bottom: 10px;
+	padding: 8px 16px;
+	border-radius: 4px;
+}
+
+.stock-widget h1 {
+	font-size: 18px;
+	color: #e24e01;
+}
+
+.stock-widget h2 {
+	font-size: 14px;
+	margin: 0px;
+}
+
+.stock-widget .current-price {
+	color: #348e30;
+	font-weight: bold;
+	font-size: 50px;
+	float: right;
+	display: inline-block;
+}
+
+.stock-widget .currency-symbol {
+	font-size: 60%;
+}
+
+p {
+	font-weight: bold;
+	background-color: #ffff6d;
+	font-weight: italic;
+}
+
+pre {
+	border: 1px solid #e0e0e0;
+	background: #f9f7f7;
+	padding: 4px 8px;
+	margin-top: 0px;
+}
