@@ -24,6 +24,7 @@ import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
 import org.openjdk.jmh.annotations.Group;
+import org.openjdk.jmh.annotations.Measurement;
 import org.openjdk.jmh.annotations.Mode;
 import org.openjdk.jmh.annotations.OutputTimeUnit;
 import org.openjdk.jmh.annotations.Scope;
@@ -39,6 +40,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+@Fork(value = 1, warmups = 5)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@BenchmarkMode(Mode.All)
+@Measurement(iterations = 5)
 @State(Scope.Group)
 public class MappingFrameworksPerformance {
     private SourceOrder sourceOrder = null;
@@ -98,89 +103,60 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public Order orikaMapperRealLifeBenchmark() {
         return ORIKA_CONVERTER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public Order jmapperRealLifeBenchmark() {
         return JMAPPER_CONVERTER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public Order modelMapperRealLifeBenchmark() {
         return MODEL_MAPPER_CONVERTER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public Order dozerMapperRealLifeBenchmark() {
         return DOZER_CONVERTER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 5)
-    @BenchmarkMode(Mode.All)
     public Order mapStructRealLifeMapperBenchmark() {
         return MapStructConverter.MAPPER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public DestinationCode orikaMapperSimpleBenchmark() {
         return ORIKA_CONVERTER.convert(sourceCode);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public DestinationCode jmapperSimpleBenchmark() {
         return JMAPPER_CONVERTER.convert(sourceCode);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public DestinationCode modelMapperBenchmark() {
         return MODEL_MAPPER_CONVERTER.convert(sourceCode);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public Order dozerMapperSimpleBenchmark() {
         return DOZER_CONVERTER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 5)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
     public DestinationCode mapStructMapperSimpleBenchmark() {
         return MapStructConverter.MAPPER.convert(sourceCode);
     }
