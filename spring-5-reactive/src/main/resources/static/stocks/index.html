@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Stock Prices</title>
+<link rel="stylesheet" type="text/css" href="./style.css"/>
+</head>
+<body>
+
+	<h1>Stock Prices</h1>
+	<div class="stocks-container"><!-- stock widgets go here --></div>
+	<p>Use the following command to trigger update to a stock price (*change current price to a new one):</p>
+	<pre>curl --header "Content-Type: application/json" \
+--request PUT \
+--data '[{"symbol":"FB", "name":"Facebook Inc. Cl A", "currentPrice":192}]' \
+http://localhost:8080/stocks</pre>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="./stocks.js"></script>
+</body>
+</html>
