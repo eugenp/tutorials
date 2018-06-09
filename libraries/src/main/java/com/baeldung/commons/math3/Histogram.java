@@ -47,27 +47,29 @@ public class Histogram {
 
     private Map processRawData() {
 
-        List<Integer> datasetList = Arrays.asList(36, 25, 38, 46, 55, 68, 72, 55, 36, 38, 67, 45, 22, 48, 91, 46, 52, 61, 58, 55);
+        List<Integer> datasetList = Arrays.asList(
+          36, 25, 38, 46, 55, 68, 72,
+          55, 36, 38, 67, 45, 22, 48,
+          91, 46, 52, 61, 58, 55);
         Frequency frequency = new Frequency();
         datasetList.forEach(d -> frequency.addValue(Double.parseDouble(d.toString())));
 
-        List processed = new ArrayList();
-        datasetList.forEach(d -> {
-          double observation = Double.parseDouble(d.toString());
+        datasetList.stream()
+          .map(d -> Double.parseDouble(d.toString()))
+          .distinct()
+          .forEach(observation -> {
+             long observationFrequency = frequency.getCount(observation);
+             int upperBoundary = (observation > classWidth)
+               ? Math.multiplyExact( (int) Math.ceil(observation / classWidth), classWidth)
+               : classWidth;
+             int lowerBoundary = (upperBoundary > classWidth)
+               ? Math.subtractExact(upperBoundary, classWidth)
+               : 0;
+             String bin = lowerBoundary + "-" + upperBoundary;
 
-          if(processed.contains(observation))
-            return;
+             updateDistributionMap(lowerBoundary, bin, observationFrequency);
 
-          long observationFrequency = frequency.getCount(observation);
-          int upperBoundary = (observation > classWidth) ? Math.multiplyExact( (int) Math.ceil(observation / classWidth), classWidth) : classWidth;
-          int lowerBoundary = (upperBoundary > classWidth) ? Math.subtractExact(upperBoundary, classWidth) : 0;
-          String bin = lowerBoundary + "-" + upperBoundary;
-
-          updateDistributionMap(lowerBoundary, bin, observationFrequency);
-
-          processed.add(observation);
-
-        });
+          });
 
         return distributionMap;
     }

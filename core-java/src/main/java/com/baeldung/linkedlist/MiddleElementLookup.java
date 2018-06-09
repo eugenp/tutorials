@@ -1,10 +1,20 @@
 package com.baeldung.linkedlist;
 
-import com.baeldung.linkedlist.LinkedList.Node;
+import java.util.LinkedList;
+
+import com.baeldung.linkedlist.Node;
 
 public class MiddleElementLookup {
 
-    public static String findMiddleElement(Node head) {
+    public static String findMiddleElementLinkedList(LinkedList<String> linkedList) {
+        if (linkedList == null || linkedList.isEmpty()) {
+            return null;
+        }
+
+        return linkedList.get((linkedList.size() - 1) / 2);
+    }
+
+    public static String findMiddleElementFromHead(Node head) {
         if (head == null) {
             return null;
         }
@@ -26,7 +36,7 @@ public class MiddleElementLookup {
         return current.data();
     }
 
-    public static String findMiddleElement1PassRecursively(Node head) {
+    public static String findMiddleElementFromHead1PassRecursively(Node head) {
         if (head == null) {
             return null;
         }
@@ -53,7 +63,7 @@ public class MiddleElementLookup {
         middleAux.length--;
     }
 
-    public static String findMiddleElement1PassIteratively(Node head) {
+    public static String findMiddleElementFromHead1PassIteratively(Node head) {
         if (head == null) {
             return null;
         }
