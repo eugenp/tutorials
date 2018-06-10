@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pm="http://primefaces.org/mobile">
+<f:view renderKitId="PRIMEFACES_MOBILE" />
+<h:head>
+</h:head>
+<h:body>
+	<pm:page id="enter">
+		<pm:header>
+			<p:outputLabel value="Introduction to PFM"></p:outputLabel>
+		</pm:header>
+		<pm:content>
+			<h:form id="enterForm">
+				<pm:field>
+					<p:outputLabel value="Enter Magic Word"></p:outputLabel>
+					<p:inputText id="magicWord" value="#{helloPFMBean.magicWord}"></p:inputText>
+				</pm:field>
+				<p:commandButton value="Go!" action="#{helloPFMBean.go}"></p:commandButton>
+			</h:form>
+		</pm:content>
+	</pm:page>
+	<pm:page id="success">
+		<pm:content>
+			<p:outputLabel value="Correct!"></p:outputLabel>
+			<p:button value="Back" outcome="pm:enter?transition=flow"></p:button>
+		</pm:content>
+	</pm:page>
+	<pm:page id="failure">
+		<pm:content>
+			<p:outputLabel value="That is not the magic word"></p:outputLabel>
+			<p:button value="Back" outcome="pm:enter?transition=flow"></p:button>
+		</pm:content>
+	</pm:page>
+</h:body>
+</html>

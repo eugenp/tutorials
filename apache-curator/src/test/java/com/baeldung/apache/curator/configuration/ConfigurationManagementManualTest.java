@@ -12,9 +12,9 @@ import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.x.async.AsyncCuratorFramework;
 import org.junit.Test;
 
-import com.baeldung.apache.curator.BaseTest;
+import com.baeldung.apache.curator.BaseManualTest;
 
-public class ConfigurationManagementManualTest extends BaseTest {
+public class ConfigurationManagementManualTest extends BaseManualTest {
 
     private static final String KEY_FORMAT = "/%s";
 

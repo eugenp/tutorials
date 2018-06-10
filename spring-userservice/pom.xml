@@ -7,10 +7,11 @@
     <packaging>war</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-spring-4</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-spring-4</relativePath>
+	</parent>
 
     <dependencies>
 
@@ -19,12 +20,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- persistence -->
@@ -99,14 +100,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -117,12 +118,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
@@ -215,8 +216,7 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
+        <org.springframework.security.version>4.2.6.RELEASE</org.springframework.security.version>
         <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
         <javassist.version>3.21.0-GA</javassist.version>
 
