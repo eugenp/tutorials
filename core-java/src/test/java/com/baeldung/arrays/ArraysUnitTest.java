@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ArraysTest {
+public class ArraysUnitTest {
     private String[] intro;
 
     @Rule
@@ -23,7 +23,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysCopyOfRange() {
+    public void whenCopyOfRange_thenAbridgedArray() {
         String[] abridgement = Arrays.copyOfRange(intro, 0, 3);
 
         assertArrayEquals(new String[] { "once", "upon", "a" }, abridgement);
@@ -31,7 +31,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysCopyOf() {
+    public void whenCopyOf_thenNullElement() {
         String[] revised = Arrays.copyOf(intro, 3);
         String[] expanded = Arrays.copyOf(intro, 5);
 
@@ -40,7 +40,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysFill() {
+    public void whenFill_thenAllMatch() {
         String[] stutter = new String[3];
         Arrays.fill(stutter, "once");
 
@@ -48,13 +48,13 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysEquals() {
+    public void whenEqualsContent_thenMatch() {
         assertTrue(Arrays.equals(new String[] { "once", "upon", "a", "time" }, intro));
         assertFalse(Arrays.equals(new String[] { "once", "upon", "a", null }, intro));
     }
 
     @Test
-    public void testArraysDeepEquals() {
+    public void whenNestedArrays_thenDeepEqualsPass() {
         String[] end = { "the", "end" };
         Object[] story = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
         Object[] copy = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
@@ -64,7 +64,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysSort() {
+    public void whenSort_thenArraySorted() {
         String[] sorted = Arrays.copyOf(intro, 4);
         Arrays.sort(sorted);
 
@@ -72,7 +72,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysBinarySearch() {
+    public void whenBinarySearch_thenFindElements() {
         String[] sorted = Arrays.copyOf(intro, 4);
         Arrays.sort(sorted);
         int exact = Arrays.binarySearch(sorted, "time");
@@ -84,7 +84,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysHashCode() {
+    public void whenNullElement_thenArraysHashCodeNotEqual() {
         int beforeChange = Arrays.hashCode(intro);
         int before = intro.hashCode();
         intro[3] = null;
@@ -96,7 +96,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysDeepHash() {
+    public void whenNestedArrayNullElement_thenEqualsFailDeepHashPass() {
         Object[] looping = new Object[] { intro, intro };
         int deepHashBefore = Arrays.deepHashCode(looping);
         int hashBefore = Arrays.hashCode(looping);
@@ -111,7 +111,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testStream() {
+    public void whenStreamBadIndex_thenException() {
         assertEquals(Arrays.stream(intro).count(), 4);
 
         exception.expect(ArrayIndexOutOfBoundsException.class);
@@ -119,7 +119,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testSetAll() {
+    public void whenSetAllToUpper_thenAppliedToAllElements() {
         String[] longAgo = new String[4];
         Arrays.setAll(longAgo, i -> intro[i].toUpperCase());
 
@@ -127,12 +127,12 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysToString() {
+    public void whenToString_thenFormattedArrayString() {
         assertEquals("[once, upon, a, time]", Arrays.toString(intro));
     }
 
     @Test
-    public void testDeepToString() {
+    public void whenNestedArrayDeepString_thenFormattedArraysString() {
         String[] end = { "the", "end" };
         Object[] story = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
 
@@ -140,7 +140,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysAsList() {
+    public void whenAsList_thenImmutableArray() {
         List<String> rets = Arrays.asList(intro);
 
         assertTrue(rets.contains("upon"));
