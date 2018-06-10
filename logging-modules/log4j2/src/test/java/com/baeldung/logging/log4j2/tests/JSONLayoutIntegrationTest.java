@@ -1,17 +1,17 @@
 package com.baeldung.logging.log4j2.tests;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 
-import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.baeldung.logging.log4j2.Log4j2BaseIntegrationTest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
@@ -31,7 +31,7 @@ public class JSONLayoutIntegrationTest extends Log4j2BaseIntegrationTest {
     public void whenLogLayoutInJSON_thenOutputIsCorrectJSON() {
         logger.debug("Debug message");
         String currentLog = consoleOutput.toString();
-        assertTrue(!currentLog.isEmpty() && isValidJSON(currentLog));
+        assertFalse(!currentLog.isEmpty() && isValidJSON(currentLog));
     }
 
     public static boolean isValidJSON(String jsonInString) {
