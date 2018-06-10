@@ -14,7 +14,7 @@ import rx.Observable;
 public class ReturnKeysIntegrationTest {
 
     private Observable<Boolean> begin = null;
-    private Observable<Integer> createStatement = null;
+    private Observable<Integer> truncateStatement = null;
 
     private ConnectionProvider connectionProvider = Connector.connectionProvider;
     private Database db = Database.from(connectionProvider);
@@ -22,15 +22,18 @@ public class ReturnKeysIntegrationTest {
     @Before
     public void setup() {
         begin = db.beginTransaction();
-        createStatement = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int auto_increment primary key, name varchar(255))")
+        Observable<Integer> createStatement = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int auto_increment primary key, name varchar(255))")
           .dependsOn(begin)
           .count();
+        truncateStatement = db.update("TRUNCATE TABLE EMPLOYEE")
+                .dependsOn(createStatement)
+                .count();
     }
 
     @Test
     public void whenInsertAndReturnGeneratedKey_thenCorrect() {
         Integer key = db.update("INSERT INTO EMPLOYEE(name) VALUES('John')")
-          .dependsOn(createStatement)
+          .dependsOn(truncateStatement)
           .returnGeneratedKeys()
           .getAs(Integer.class)
           .count()
@@ -42,7 +45,7 @@ public class ReturnKeysIntegrationTest {
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-          .dependsOn(createStatement);
+          .dependsOn(truncateStatement);
         connectionProvider.close();
     }
 }
