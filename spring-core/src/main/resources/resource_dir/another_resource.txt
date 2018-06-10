@@ -1,0 +1,2 @@
+sample line 1 in subdir resource file
+sample line 2 in subdir resource file
