@@ -1,6 +1,8 @@
 package com.baeldung.arrays;
 
-import org.junit.Assert;
+import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -10,17 +12,21 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class ArraysTest {
-    private String[] intro = new String[] { "once", "upon", "a", "time" };
+    private String[] intro;
 
     @Rule
     public final ExpectedException exception = ExpectedException.none();
 
+    @Before
+    public void setup(){
+        intro = new String[] { "once", "upon", "a", "time" };
+    }
     @Test
     public void testArraysCopyOfRange() {
         String[] abridgement = Arrays.copyOfRange(intro, 0, 3);
 
-        Assert.assertArrayEquals(new String[] { "once", "upon", "a" }, abridgement);
-        Assert.assertFalse(Arrays.equals(intro, abridgement));
+        assertArrayEquals(new String[] { "once", "upon", "a" }, abridgement);
+        assertFalse(Arrays.equals(intro, abridgement));
     }
 
     @Test
@@ -28,8 +34,8 @@ public class ArraysTest {
         String[] revised = Arrays.copyOf(intro, 3);
         String[] expanded = Arrays.copyOf(intro, 5);
 
-        Assert.assertArrayEquals(Arrays.copyOfRange(intro, 0, 3), revised);
-        Assert.assertNull(expanded[4]);
+        assertArrayEquals(Arrays.copyOfRange(intro, 0, 3), revised);
+        assertNull(expanded[4]);
     }
 
     @Test
@@ -37,14 +43,14 @@ public class ArraysTest {
         String[] stutter = new String[3];
         Arrays.fill(stutter, "once");
 
-        Assert.assertTrue(Stream.of(stutter)
+        assertTrue(Stream.of(stutter)
                 .allMatch(el -> "once".equals(el)));
     }
 
     @Test
     public void testArraysEquals(){
-        Assert.assertTrue(Arrays.equals(new String[]{"once","upon","a","time"}, intro));
-        Assert.assertFalse(Arrays.equals(new String[]{"once","upon","a", null}, intro));
+        assertTrue(Arrays.equals(new String[]{ "once", "upon", "a", "time" }, intro));
+        assertFalse(Arrays.equals(new String[]{ "once", "upon", "a", null }, intro));
     }
 
     @Test
@@ -55,8 +61,8 @@ public class ArraysTest {
         Object[] copy =
                 new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
 
-        Assert.assertTrue(Arrays.deepEquals(story, copy));
-        Assert.assertFalse(Arrays.equals(story, copy));
+        assertTrue(Arrays.deepEquals(story, copy));
+        assertFalse(Arrays.equals(story, copy));
     }
 
     @Test
@@ -64,7 +70,7 @@ public class ArraysTest {
         String[] sorted = Arrays.copyOf(intro, 4);
         Arrays.sort(sorted);
 
-        Assert.assertArrayEquals(new String[]{"a", "once", "time", "upon"}, sorted);
+        assertArrayEquals(new String[]{ "a", "once", "time", "upon" }, sorted);
     }
 
     @Test
@@ -74,18 +80,21 @@ public class ArraysTest {
         int exact = Arrays.binarySearch(sorted, "time");
         int caseInsensitive = Arrays.binarySearch(sorted, "TiMe", String::compareToIgnoreCase);
 
-        Assert.assertEquals("time", sorted[exact]);
-        Assert.assertEquals(2, exact);
-        Assert.assertEquals(exact, caseInsensitive);
+        assertEquals("time", sorted[exact]);
+        assertEquals(2, exact);
+        assertEquals(exact, caseInsensitive);
     }
 
     @Test
     public void testArraysHashCode(){
         int beforeChange = Arrays.hashCode(intro);
+        int before = intro.hashCode();
         intro[3] = null;
+        int after = intro.hashCode();
         int afterChange = Arrays.hashCode(intro);
 
-        Assert.assertNotEquals(beforeChange, afterChange);
+        assertNotEquals(beforeChange, afterChange);
+        assertEquals(before, after);
     }
 
     @Test
@@ -99,13 +108,13 @@ public class ArraysTest {
         int hashAfter = Arrays.hashCode(looping);
         int deepHashAfter = Arrays.deepHashCode(looping);
 
-        Assert.assertEquals(hashAfter, hashBefore);
-        Assert.assertNotEquals(deepHashAfter, deepHashBefore);
+        assertEquals(hashAfter, hashBefore);
+        assertNotEquals(deepHashAfter, deepHashBefore);
     }
 
     @Test
     public void testStream(){
-        Assert.assertEquals(Arrays.stream(intro).count(), 4);
+        assertEquals(Arrays.stream(intro).count(), 4);
 
         exception.expect(ArrayIndexOutOfBoundsException.class);
         Arrays.stream(intro, 2, 1).count();
@@ -114,26 +123,21 @@ public class ArraysTest {
     @Test
     public void testSetAll(){
         String[] longAgo = new String[4];
-        Arrays.setAll(longAgo, i -> this.getWord(i));
-        Assert.assertArrayEquals(longAgo, new String[]{"A","long","time","ago"});
-    }
-
-    public String getWord(int i){
-        String[] introWords = new String[]{"A","long","time","ago"};
-        return introWords[i];
+        Arrays.setAll(longAgo, i -> intro[i].toUpperCase());
+        assertArrayEquals(longAgo, new String[]{ "ONCE", "UPON", "A", "TIME" });
     }
 
     @Test
     public void testArraysToString(){
-        Assert.assertEquals("[once, upon, a, time]", Arrays.toString(intro));
+        assertEquals("[once, upon, a, time]", Arrays.toString(intro));
     }
 
     @Test
     public void testDeepToString(){
-        String[] end = {"the", "end"};
+        String[] end = { "the", "end" };
         Object[] story =
                 new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
-        Assert.assertEquals("[[once, upon, a, time], [chapter one, chapter two], [the, end]]",
+        assertEquals("[[once, upon, a, time], [chapter one, chapter two], [the, end]]",
                 Arrays.deepToString(story));
     }
 
@@ -141,8 +145,11 @@ public class ArraysTest {
     public void testArraysAsList() {
         List<String> rets = Arrays.asList(intro);
 
-        Assert.assertTrue(rets.contains("upon"));
-        Assert.assertTrue(rets.contains("time"));
-        Assert.assertEquals(rets.size(), 4);
+        assertTrue(rets.contains("upon"));
+        assertTrue(rets.contains("time"));
+        assertEquals(rets.size(), 4);
+
+        exception.expect(UnsupportedOperationException.class);
+        rets.add("the");
     }
 }
