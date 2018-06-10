@@ -18,9 +18,10 @@ public class ArraysTest {
     public final ExpectedException exception = ExpectedException.none();
 
     @Before
-    public void setup(){
+    public void setup() {
         intro = new String[] { "once", "upon", "a", "time" };
     }
+
     @Test
     public void testArraysCopyOfRange() {
         String[] abridgement = Arrays.copyOfRange(intro, 0, 3);
@@ -30,7 +31,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysCopyOf(){
+    public void testArraysCopyOf() {
         String[] revised = Arrays.copyOf(intro, 3);
         String[] expanded = Arrays.copyOf(intro, 5);
 
@@ -39,42 +40,39 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysFill(){
+    public void testArraysFill() {
         String[] stutter = new String[3];
         Arrays.fill(stutter, "once");
 
-        assertTrue(Stream.of(stutter)
-                .allMatch(el -> "once".equals(el)));
+        assertTrue(Stream.of(stutter).allMatch(el -> "once".equals(el)));
     }
 
     @Test
-    public void testArraysEquals(){
-        assertTrue(Arrays.equals(new String[]{ "once", "upon", "a", "time" }, intro));
-        assertFalse(Arrays.equals(new String[]{ "once", "upon", "a", null }, intro));
+    public void testArraysEquals() {
+        assertTrue(Arrays.equals(new String[] { "once", "upon", "a", "time" }, intro));
+        assertFalse(Arrays.equals(new String[] { "once", "upon", "a", null }, intro));
     }
 
     @Test
     public void testArraysDeepEquals() {
-        String[] end = {"the", "end"};
-        Object[] story =
-                new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
-        Object[] copy =
-                new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
+        String[] end = { "the", "end" };
+        Object[] story = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
+        Object[] copy = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
 
         assertTrue(Arrays.deepEquals(story, copy));
         assertFalse(Arrays.equals(story, copy));
     }
 
     @Test
-    public void testArraysSort(){
+    public void testArraysSort() {
         String[] sorted = Arrays.copyOf(intro, 4);
         Arrays.sort(sorted);
 
-        assertArrayEquals(new String[]{ "a", "once", "time", "upon" }, sorted);
+        assertArrayEquals(new String[] { "a", "once", "time", "upon" }, sorted);
     }
 
     @Test
-    public void testArraysBinarySearch(){
+    public void testArraysBinarySearch() {
         String[] sorted = Arrays.copyOf(intro, 4);
         Arrays.sort(sorted);
         int exact = Arrays.binarySearch(sorted, "time");
@@ -86,7 +84,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysHashCode(){
+    public void testArraysHashCode() {
         int beforeChange = Arrays.hashCode(intro);
         int before = intro.hashCode();
         intro[3] = null;
@@ -98,8 +96,8 @@ public class ArraysTest {
     }
 
     @Test
-    public void testArraysDeepHash(){
-        Object[] looping = new Object[]{ intro, intro };
+    public void testArraysDeepHash() {
+        Object[] looping = new Object[] { intro, intro };
         int deepHashBefore = Arrays.deepHashCode(looping);
         int hashBefore = Arrays.hashCode(looping);
 
@@ -113,7 +111,7 @@ public class ArraysTest {
     }
 
     @Test
-    public void testStream(){
+    public void testStream() {
         assertEquals(Arrays.stream(intro).count(), 4);
 
         exception.expect(ArrayIndexOutOfBoundsException.class);
@@ -121,24 +119,24 @@ public class ArraysTest {
     }
 
     @Test
-    public void testSetAll(){
+    public void testSetAll() {
         String[] longAgo = new String[4];
         Arrays.setAll(longAgo, i -> intro[i].toUpperCase());
-        assertArrayEquals(longAgo, new String[]{ "ONCE", "UPON", "A", "TIME" });
+
+        assertArrayEquals(longAgo, new String[] { "ONCE", "UPON", "A", "TIME" });
     }
 
     @Test
-    public void testArraysToString(){
+    public void testArraysToString() {
         assertEquals("[once, upon, a, time]", Arrays.toString(intro));
     }
 
     @Test
-    public void testDeepToString(){
+    public void testDeepToString() {
         String[] end = { "the", "end" };
-        Object[] story =
-                new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
-        assertEquals("[[once, upon, a, time], [chapter one, chapter two], [the, end]]",
-                Arrays.deepToString(story));
+        Object[] story = new Object[] { intro, new String[] { "chapter one", "chapter two" }, end };
+
+        assertEquals("[[once, upon, a, time], [chapter one, chapter two], [the, end]]", Arrays.deepToString(story));
     }
 
     @Test
