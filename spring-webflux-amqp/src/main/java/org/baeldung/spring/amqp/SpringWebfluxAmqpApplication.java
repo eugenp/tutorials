@@ -1,17 +1,11 @@
 package org.baeldung.spring.amqp;
 
-import java.time.Duration;
-import java.time.temporal.TemporalUnit;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.UUID;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 import org.baeldung.spring.amqp.DestinationsConfig.DestinationInfo;
-import org.reactivestreams.Publisher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;
@@ -20,22 +14,14 @@ import org.springframework.amqp.core.Exchange;
 import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.QueueBuilder;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.listener.MessageListenerContainer;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.integration.amqp.dsl.Amqp;
-import org.springframework.integration.dsl.IntegrationFlows;
-import org.springframework.integration.dsl.channel.MessageChannels;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,12 +47,6 @@ public class SpringWebfluxAmqpApplication {
 
     @Autowired
     private DestinationsConfig destinationsConfig;
-
-    @Autowired
-    private ConnectionFactory amqpConnectionFactory;
-    
-    @Autowired
-    private MessageListenerContainer container;
 
 
     public static void main(String[] args) {
@@ -113,7 +93,7 @@ public class SpringWebfluxAmqpApplication {
     }
 
     @Bean
-    public CommandLineRunner setupTopicDestinations(AmqpAdmin amqpAdmin) {
+    public CommandLineRunner setupTopicDestinations(AmqpAdmin amqpAdmin, DestinationsConfig destinationsConfig) {
 
         return (args) -> {
 
@@ -158,7 +138,11 @@ public class SpringWebfluxAmqpApplication {
     }
     
     
-
+    /**
+     * Receive messages for the given queue
+     * @param name
+     * @return
+     */
     @GetMapping(value = "/queue/{name}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<?> receiveMessagesFromQueue(@PathVariable String name) {
 
@@ -184,7 +168,6 @@ public class SpringWebfluxAmqpApplication {
         
         return Flux
                 .fromStream(s)
-                .onTerminateDetach()
                 .subscribeOn(Schedulers.elastic());
         
     }
@@ -226,31 +209,31 @@ public class SpringWebfluxAmqpApplication {
         }
         
         final Queue topicQueue = createTopicQueue(d);
-        
-        //Publisher<?> p = IntegrationFlows
-        //    .from(Amqp.inboundAdapter(amqpConnectionFactory,topicQueue))
-        //    .toReactivePublisher();
-        
+                
         Stream<String> s = Stream.generate(() -> {
             String queueName = topicQueue.getName();
             
             log.info("[I137] Polling {}", queueName);
             
-            Object payload = amqpTemplate.receiveAndConvert(queueName,5000);
-            if ( payload == null ) {
-                payload = "No news is good news...";
-            } 
-            
-            return payload.toString();
+            try {
+                Object payload = amqpTemplate.receiveAndConvert(queueName,5000);
+                if ( payload == null ) {
+                    payload = "No news is good news...";
+                } 
+                
+                return payload.toString();
+            }
+            catch(AmqpException ex) {
+                log.warn("[W247] Received an AMQP Exception: {}", ex.getMessage());
+                return null;
+            }
         });
-        
-        //container.setupMessageListener(messageListener);
         
 
         return Flux.fromStream(s)
-            .doOnTerminate(() -> {
-                log.info("[I246] Removing topic queue: {}", topicQueue.getName());
-                amqpAdmin.deleteQueue(topicQueue.getName());
+            .doOnCancel(() -> {
+              log.info("[I250] doOnCancel()");
+              amqpAdmin.deleteQueue(topicQueue.getName());
             })
             .subscribeOn(Schedulers.elastic());
         
