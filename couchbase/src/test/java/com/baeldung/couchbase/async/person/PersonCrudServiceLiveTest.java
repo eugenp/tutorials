@@ -11,7 +11,6 @@ import java.util.UUID;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +22,10 @@ import com.baeldung.couchbase.async.AsyncIntegrationTest;
 import com.baeldung.couchbase.async.service.BucketService;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.document.JsonDocument;
-@Ignore
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PersonCrudServiceIntegrationTestConfig.class})
-public class PersonCrudServiceIntegrationTest extends AsyncIntegrationTest {
+public class PersonCrudServiceLiveTest extends AsyncIntegrationTest {
 
     @Autowired
     private PersonCrudService personService;
