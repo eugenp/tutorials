@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public class Extension {
     //Instead of file name we can also specify full path of a file eg. /baeldung/com/demo/abc.java
-    public String getExtensionByApacheCommonLib(String fileName) {
-        return FilenameUtils.getExtension(fileName);
+    public String getExtensionByApacheCommonLib(String filename) {
+        return FilenameUtils.getExtension(filename);
     }
 
     public static Optional<String> getExtensionByStringHandling(String filename) {
