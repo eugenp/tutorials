@@ -1,5 +1,23 @@
 package com.baeldung.couchbase.n1ql;
 
+import static com.baeldung.couchbase.n1ql.CodeSnippets.extractJsonResult;
+import static com.couchbase.client.java.query.Select.select;
+import static com.couchbase.client.java.query.dsl.Expression.i;
+import static com.couchbase.client.java.query.dsl.Expression.s;
+import static com.couchbase.client.java.query.dsl.Expression.x;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.Cluster;
 import com.couchbase.client.java.document.JsonDocument;
@@ -10,28 +28,13 @@ import com.couchbase.client.java.query.N1qlQueryResult;
 import com.couchbase.client.java.query.N1qlQueryRow;
 import com.couchbase.client.java.query.Statement;
 import com.fasterxml.jackson.databind.JsonNode;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 import rx.Observable;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import static com.baeldung.couchbase.n1ql.CodeSnippets.extractJsonResult;
-import static com.couchbase.client.java.query.Select.select;
-import static com.couchbase.client.java.query.dsl.Expression.*;
-import static org.junit.Assert.assertNotNull;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { IntegrationTestConfig.class })
-public class N1QLIntegrationTest {
+public class N1QLLiveTest {
 
 
     @Autowired
