@@ -33,7 +33,7 @@ public class JsonPathUnitTest {
     @Test
     public void shouldMatchCountOfObjects() {
         Map<String, String> objectMap = JsonPath.read(json, "$");
-        assertEquals(1, objectMap.keySet()
+        assertEquals(3, objectMap.keySet()
             .size());
     }
 
