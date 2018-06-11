@@ -15,7 +15,7 @@ import org.junit.Test;
  * @author Donato Rimenti
  *
  */
-public class SingletonSynchronizationUnitTest {
+public class SingletonSynchronizationIntegrationTest {
 
 	/**
 	 * Size of the thread pools used.
@@ -33,7 +33,7 @@ public class SingletonSynchronizationUnitTest {
 	@Test
 	public void givenDraconianSingleton_whenMultithreadInstancesEquals_thenTrue() {
 		ExecutorService executor = Executors.newFixedThreadPool(POOL_SIZE);
-		Set<DraconianSingleton> resultSet = Collections.synchronizedSet(new HashSet<DraconianSingleton>());
+		Set<DraconianSingleton> resultSet = Collections.synchronizedSet(new HashSet<>());
 
 		// Submits the instantiation tasks.
 		for (int i = 0; i < TASKS_TO_SUBMIT; i++) {
@@ -51,7 +51,7 @@ public class SingletonSynchronizationUnitTest {
 	@Test
 	public void givenDclSingleton_whenMultithreadInstancesEquals_thenTrue() {
 		ExecutorService executor = Executors.newFixedThreadPool(POOL_SIZE);
-		Set<DclSingleton> resultSet = Collections.synchronizedSet(new HashSet<DclSingleton>());
+		Set<DclSingleton> resultSet = Collections.synchronizedSet(new HashSet<>());
 
 		// Submits the instantiation tasks.
 		for (int i = 0; i < TASKS_TO_SUBMIT; i++) {
@@ -69,7 +69,7 @@ public class SingletonSynchronizationUnitTest {
 	@Test
 	public void givenEarlyInitSingleton_whenMultithreadInstancesEquals_thenTrue() {
 		ExecutorService executor = Executors.newFixedThreadPool(POOL_SIZE);
-		Set<EarlyInitSingleton> resultSet = Collections.synchronizedSet(new HashSet<EarlyInitSingleton>());
+		Set<EarlyInitSingleton> resultSet = Collections.synchronizedSet(new HashSet<>());
 
 		// Submits the instantiation tasks.
 		for (int i = 0; i < TASKS_TO_SUBMIT; i++) {
@@ -87,7 +87,7 @@ public class SingletonSynchronizationUnitTest {
 	@Test
 	public void givenInitOnDemandSingleton_whenMultithreadInstancesEquals_thenTrue() {
 		ExecutorService executor = Executors.newFixedThreadPool(POOL_SIZE);
-		Set<InitOnDemandSingleton> resultSet = Collections.synchronizedSet(new HashSet<InitOnDemandSingleton>());
+		Set<InitOnDemandSingleton> resultSet = Collections.synchronizedSet(new HashSet<>());
 
 		// Submits the instantiation tasks.
 		for (int i = 0; i < TASKS_TO_SUBMIT; i++) {
@@ -105,7 +105,7 @@ public class SingletonSynchronizationUnitTest {
 	@Test
 	public void givenEnumSingleton_whenMultithreadInstancesEquals_thenTrue() {
 		ExecutorService executor = Executors.newFixedThreadPool(POOL_SIZE);
-		Set<EnumSingleton> resultSet = Collections.synchronizedSet(new HashSet<EnumSingleton>());
+		Set<EnumSingleton> resultSet = Collections.synchronizedSet(new HashSet<>());
 
 		// Submits the instantiation tasks.
 		for (int i = 0; i < TASKS_TO_SUBMIT; i++) {
