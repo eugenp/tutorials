@@ -137,7 +137,8 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<mainClass>org.baeldung.boot.Application</mainClass>
+							<mainClass>com.baeldung.webjar.WebjarsdemoApplication</mainClass>
+							<outputDirectory>${project.basedir}/docker</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
