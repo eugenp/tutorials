@@ -1,15 +1,15 @@
 package com.baeldung.reactive.webflux;
 
+import static org.mockito.BDDMockito.given;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import static org.mockito.BDDMockito.given;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
@@ -27,7 +27,6 @@ public class EmployeeControllerTest {
     private EmployeeRepository employeeRepository;
 
     @Test
-    @WithMockUser
     public void givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee() {
 
         Employee employee = new Employee("1", "Employee 1 Name");
@@ -42,7 +41,6 @@ public class EmployeeControllerTest {
     }
 
     @Test
-    @WithMockUser
     public void whenGetAllEmployees_thenCorrectEmployees() {
 
         List<Employee> employeeList = new ArrayList<>();
@@ -69,7 +67,6 @@ public class EmployeeControllerTest {
     }
 
     @Test
-    @WithMockUser
     public void givenEmployeeId_whenGetEmployeeAccessKey_thenCorrectAccessKey() {
 
         String employeeAccessKey = "Employee Access Key";

@@ -28,9 +28,8 @@ public class EmployeeWebSecurityConfig {
         http.authorizeExchange()
             .pathMatchers("/employees/access-key/**")
             .hasRole("ADMIN")
-            .anyExchange()
-            .authenticated()
-            .and().formLogin();
+            .pathMatchers("/**").permitAll()
+            .and().httpBasic();
         return http.build();
     }
 }
