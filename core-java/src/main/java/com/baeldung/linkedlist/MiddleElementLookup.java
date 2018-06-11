@@ -3,6 +3,8 @@ package com.baeldung.linkedlist;
 import java.util.LinkedList;
 import java.util.Optional;
 
+import com.baeldung.linkedlist.Node;
+
 public class MiddleElementLookup {
 
     public static Optional<String> findMiddleElementLinkedList(LinkedList<String> linkedList) {

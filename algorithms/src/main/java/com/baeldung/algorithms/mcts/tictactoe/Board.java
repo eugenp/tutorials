@@ -148,7 +148,7 @@ public class Board {
             System.out.println("Game Draw");
             break;
         case IN_PROGRESS:
-            System.out.println("Game In rogress");
+            System.out.println("Game In Progress");
             break;
         }
     }
