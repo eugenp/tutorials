@@ -26,7 +26,7 @@ public class EmployeeWebSecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
-            .pathMatchers("/employees-secured/access-key/**")
+            .pathMatchers("/employees/access-key/**")
             .hasRole("ADMIN")
             .anyExchange()
             .authenticated()

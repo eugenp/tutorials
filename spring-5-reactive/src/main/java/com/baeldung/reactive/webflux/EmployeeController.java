@@ -29,7 +29,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/access-key/{id}")
-    private Mono<String> getAdminAllEmployees(@PathVariable String id)
+    private Mono<String> getEmployeeAccessKey(@PathVariable String id)
     {
         return employeeRepository.findEmployeeAccessKey(id);
     }
