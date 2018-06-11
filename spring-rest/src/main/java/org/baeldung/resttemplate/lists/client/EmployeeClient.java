@@ -24,7 +24,7 @@ public class EmployeeClient
         System.out.println("Calling GET using wrapper class");
         employeeClient.getAllEmployeesUsingWrapperClass();
 
-        System.out.println("Calling POST using ParameterizedTypeReference");
+        System.out.println("Calling POST using normal lists");
         employeeClient.createEmployeesUsingLists();
 
         System.out.println("Calling POST using wrapper class");
@@ -42,7 +42,7 @@ public class EmployeeClient
 
         ResponseEntity<List<Employee>> response =
                 restTemplate.exchange(
-                        "http://localhost:8080/employees/",
+                        "http://localhost:8080/spring-rest/employees/",
                         HttpMethod.GET,
                         null,
                         new ParameterizedTypeReference<List<Employee>>(){});
@@ -60,7 +60,7 @@ public class EmployeeClient
 
         EmployeeListDTO response =
                 restTemplate.getForObject(
-                        "http://localhost:8080/employees/v2",
+                        "http://localhost:8080/spring-rest/employees/v2",
                         EmployeeListDTO.class);
 
         List<Employee> employees = response.getEmployees();
@@ -78,12 +78,9 @@ public class EmployeeClient
         newEmployees.add(new Employee(3, "John", "Smith", "Intern"));
         newEmployees.add(new Employee(4, "Lisa", "Davis", "CEO"));
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
         restTemplate.postForObject(
-                "http://localhost:8080/employees/",
-                new HttpEntity<>(newEmployees, headers),
+                "http://localhost:8080/spring-rest/employees/",
+                newEmployees,
                 ResponseEntity.class);
     }
 
@@ -96,7 +93,7 @@ public class EmployeeClient
         newEmployees.add(new Employee(4, "Lisa", "Davis", "CEO"));
 
         restTemplate.postForObject(
-                "http://localhost:8080/employees/v2/",
+                "http://localhost:8080/spring-rest/employees/v2/",
                 new EmployeeListDTO(newEmployees),
                 ResponseEntity.class);
     }

@@ -4,6 +4,7 @@ import org.baeldung.resttemplate.lists.dto.Employee;
 import org.baeldung.resttemplate.lists.dto.EmployeeListDTO;
 import org.baeldung.resttemplate.lists.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
