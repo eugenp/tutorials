@@ -15,7 +15,7 @@ import org.junit.Test;
 
 import com.baeldung.jpa.model.Car;
 
-public class StoredProcedureIntegrationTest {
+public class StoredProcedureLiveTest {
 
     private static EntityManagerFactory factory = null;
     private static EntityManager entityManager = null;

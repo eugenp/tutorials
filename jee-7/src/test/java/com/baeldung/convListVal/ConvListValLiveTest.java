@@ -22,7 +22,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @RunWith(Arquillian.class)
-public class ConvListValIntegrationTest {
+public class ConvListValLiveTest {
 
     @ArquillianResource
     private URL deploymentUrl;
