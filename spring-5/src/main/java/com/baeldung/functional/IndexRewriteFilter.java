@@ -16,8 +16,6 @@ class IndexRewriteFilter implements WebFilter {
             .equals("/")) {
             return webFilterChain.filter(serverWebExchange.mutate()
                 .request(builder -> builder.method(request.getMethod())
-                    .contextPath(request.getPath()
-                        .toString())
                     .path("/test"))
                 .build());
         }
