@@ -2,7 +2,7 @@ package com.baeldung.console;
 
 import java.util.Scanner;
 
-public class ConsoleDemo {
+public class ConsoleScanner {
     
     public static void main(String[] args)
     {
