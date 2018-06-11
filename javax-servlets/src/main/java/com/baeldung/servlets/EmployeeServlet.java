@@ -14,18 +14,15 @@ import com.google.gson.Gson;
 
 @WebServlet(name = "EmployeeServlet", urlPatterns = "/employeeServlet")
 public class EmployeeServlet extends HttpServlet {
+	
+	private Gson gson = new Gson();
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws IOException {
 
-		int id = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("name");
-		String department = request.getParameter("department");
-		Double salary = Double.parseDouble(request.getParameter("salary"));
-
-		Employee employee = new Employee(id, name, department, salary);
-		String employeeJsonString = new Gson().toJson(employee);
+		Employee employee = new Employee(1, "Karan", "IT", 5000);
+		String employeeJsonString = this.gson.toJson(employee);
 
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
