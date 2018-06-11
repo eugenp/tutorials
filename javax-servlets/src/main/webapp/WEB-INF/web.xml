@@ -5,14 +5,10 @@
 
     <!-- HTTP error status mapping-->
     <error-page>
-        <error-code>403</error-code>
-        <location>/error-403.html</location>
+        <error-code>404</error-code>
+        <location>/error-404.html</location> <!-- /src/main/webapp/error-403.html-->
     </error-page>
 
-    <error-page>
-        <error-code>404</error-code>
-        <location>/error-404.html</location>
-    </error-page>
     <!-- exception type mapping -->
     <error-page>
         <exception-type>java.lang.Exception</exception-type>

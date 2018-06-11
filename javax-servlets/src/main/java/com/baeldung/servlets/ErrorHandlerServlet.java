@@ -1,6 +1,5 @@
 package com.baeldung.servlets;
 
-import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.*;
 import java.io.*;
@@ -11,11 +10,11 @@ import static javax.servlet.RequestDispatcher.*;
 /***
  * Servlet that throws HTTP error responses and runtime exceptions.
  */
-@WebServlet(name = "ErrorHandler", urlPatterns = "/errorHandler")
+@WebServlet(urlPatterns = "/errorHandler")
 public class ErrorHandlerServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/html; charset=utf-8");
         try (PrintWriter writer = resp.getWriter()) {
             writer.write("<html><head><title>Error description</title></head><body>");
@@ -29,8 +28,8 @@ public class ErrorHandlerServlet extends HttpServlet {
         }
 
         Exception exception = (Exception) req.getAttribute(ERROR_EXCEPTION);
-        if (ArithmeticException.class.isInstance(exception)) {
-            getServletContext().log("Error on an arithmetic operation", exception);
+        if (IllegalArgumentException.class.isInstance(exception)) {
+            getServletContext().log("Error on an application argument", exception);
         }
     }
 
