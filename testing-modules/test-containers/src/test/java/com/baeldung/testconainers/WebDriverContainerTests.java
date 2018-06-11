@@ -12,18 +12,17 @@ import org.testcontainers.DockerClientFactory;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.containers.GenericContainer;
 
-import net.codestory.http.WebServer;
-
 public class WebDriverContainerTests {
     @Rule
     public BrowserWebDriverContainer chrome = new BrowserWebDriverContainer().withDesiredCapabilities(DesiredCapabilities.chrome());
 
     @Test
-    public void when() {
+    public void whenNavigatedToPage_thenHeadingIsInThePage() {
         RemoteWebDriver driver = chrome.getWebDriver();
         driver.get("https://saucelabs.com/test/guinea-pig");
         String heading = driver.findElement(By.xpath("/html/body/h1"))
             .getText();
         assertEquals("This page is a Selenium sandbox", heading);
     }
+    
 }
