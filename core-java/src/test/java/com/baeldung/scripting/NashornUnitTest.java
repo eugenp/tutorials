@@ -104,7 +104,7 @@ public class NashornUnitTest {
     public void loadExamples() throws ScriptException {
         Object loadResult = engine.eval("load('classpath:js/script.js');" + "increment(5)");
 
-        Assert.assertEquals(6.0, loadResult);
+        Assert.assertEquals(6, ((Double) loadResult).intValue());
 
         Object math = engine.eval("var math = loadWithNewGlobal('classpath:js/math_module.js');" + "math.increment(5);");
 

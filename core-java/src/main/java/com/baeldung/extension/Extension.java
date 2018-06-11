@@ -2,7 +2,6 @@ package com.baeldung.extension;
 
 import com.google.common.io.Files;
 import org.apache.commons.io.FilenameUtils;
-
 import java.util.Optional;
 
 public class Extension {
