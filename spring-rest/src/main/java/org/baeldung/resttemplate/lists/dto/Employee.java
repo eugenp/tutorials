@@ -3,8 +3,6 @@ package org.baeldung.resttemplate.lists.dto;
 public class Employee {
 
     public long id;
-    public String firstName;
-    public String lastName;
     public String title;
 
     public Employee()
@@ -12,11 +10,9 @@ public class Employee {
 
     }
 
-    public Employee(long id, String firstName, String lastName, String title)
+    public Employee(long id, String title)
     {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.title = title;
     }
 
@@ -26,22 +22,6 @@ public class Employee {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getTitle() {
@@ -55,6 +35,6 @@ public class Employee {
     @Override
     public String toString()
     {
-        return "Employee #" + id + "[" + lastName + ", " + firstName +  " - " + title + "]";
+        return "Employee #" + id + "["  + title + "]";
     }
 }

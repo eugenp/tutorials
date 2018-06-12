@@ -1,7 +1,7 @@
 package org.baeldung.resttemplate.lists.client;
 
 import org.baeldung.resttemplate.lists.dto.Employee;
-import org.baeldung.resttemplate.lists.dto.EmployeeListDTO;
+import org.baeldung.resttemplate.lists.dto.EmployeeList;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
@@ -58,10 +58,10 @@ public class EmployeeClient
     {
         RestTemplate restTemplate = new RestTemplate();
 
-        EmployeeListDTO response =
+        EmployeeList response =
                 restTemplate.getForObject(
                         "http://localhost:8080/spring-rest/employees/v2",
-                        EmployeeListDTO.class);
+                        EmployeeList.class);
 
         List<Employee> employees = response.getEmployees();
 
@@ -75,8 +75,8 @@ public class EmployeeClient
         RestTemplate restTemplate = new RestTemplate();
 
         List<Employee> newEmployees = new ArrayList<>();
-        newEmployees.add(new Employee(3, "John", "Smith", "Intern"));
-        newEmployees.add(new Employee(4, "Lisa", "Davis", "CEO"));
+        newEmployees.add(new Employee(3, "Intern"));
+        newEmployees.add(new Employee(4, "CEO"));
 
         restTemplate.postForObject(
                 "http://localhost:8080/spring-rest/employees/",
@@ -89,12 +89,12 @@ public class EmployeeClient
         RestTemplate restTemplate = new RestTemplate();
 
         List<Employee> newEmployees = new ArrayList<>();
-        newEmployees.add(new Employee(3, "John", "Smith", "Intern"));
-        newEmployees.add(new Employee(4, "Lisa", "Davis", "CEO"));
+        newEmployees.add(new Employee(3, "Intern"));
+        newEmployees.add(new Employee(4, "CEO"));
 
         restTemplate.postForObject(
                 "http://localhost:8080/spring-rest/employees/v2/",
-                new EmployeeListDTO(newEmployees),
+                new EmployeeList(newEmployees),
                 ResponseEntity.class);
     }
 }

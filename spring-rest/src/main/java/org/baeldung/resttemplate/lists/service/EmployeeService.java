@@ -12,8 +12,8 @@ public class EmployeeService
     public List<Employee> getAllEmployees()
     {
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee(1, "Jane", "Doe", "Manager"));
-        employees.add(new Employee(2, "John", "Doe", "Java Developer"));
+        employees.add(new Employee(1, "Manager"));
+        employees.add(new Employee(2, "Java Developer"));
         return employees;
     }
 

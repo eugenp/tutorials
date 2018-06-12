@@ -3,16 +3,16 @@ package org.baeldung.resttemplate.lists.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeListDTO
+public class EmployeeList
 {
     public List<Employee> employees;
 
-    public EmployeeListDTO()
+    public EmployeeList()
     {
         employees = new ArrayList<>();
     }
 
-    public EmployeeListDTO(List<Employee> employees)
+    public EmployeeList(List<Employee> employees)
     {
         this.employees = employees;
     }

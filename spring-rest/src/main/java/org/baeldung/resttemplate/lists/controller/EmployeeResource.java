@@ -1,10 +1,9 @@
 package org.baeldung.resttemplate.lists.controller;
 
 import org.baeldung.resttemplate.lists.dto.Employee;
-import org.baeldung.resttemplate.lists.dto.EmployeeListDTO;
+import org.baeldung.resttemplate.lists.dto.EmployeeList;
 import org.baeldung.resttemplate.lists.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,10 +25,10 @@ public class EmployeeResource
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/v2")
-    public EmployeeListDTO getEmployeesUsingWrapperClass()
+    public EmployeeList getEmployeesUsingWrapperClass()
     {
         List<Employee> employees = employeeService.getAllEmployees();
-        return new EmployeeListDTO(employees);
+        return new EmployeeList(employees);
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/")
@@ -39,7 +38,7 @@ public class EmployeeResource
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/v2")
-    public void addEmployeesUsingWrapperClass(@RequestBody EmployeeListDTO employeeWrapper)
+    public void addEmployeesUsingWrapperClass(@RequestBody EmployeeList employeeWrapper)
     {
         employeeService.addEmployees(employeeWrapper.getEmployees());
     }
