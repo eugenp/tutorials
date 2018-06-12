@@ -1,5 +1,7 @@
 package com.baeldung.hibernate;
 
+import com.baeldung.hibernate.optimisticlocking.OptimisticLockingCourse;
+import com.baeldung.hibernate.optimisticlocking.OptimisticLockingStudent;
 import com.baeldung.hibernate.pessimisticlocking.Individual;
 import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingCourse;
 import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingEmployee;
@@ -70,6 +72,8 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(PessimisticLockingCourse.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Customer.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Address.class);
+        metadataSources.addAnnotatedClass(OptimisticLockingCourse.class);
+        metadataSources.addAnnotatedClass(OptimisticLockingStudent.class);
 
         Metadata metadata = metadataSources.buildMetadata();
         return metadata.getSessionFactoryBuilder()
