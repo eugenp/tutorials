@@ -27,7 +27,9 @@ public class RedissonConfigurationIntegrationTest {
     @AfterClass
     public static void destroy() {
         redisServer.stop();
-        client.shutdown();
+        if (client != null) {
+            client.shutdown();
+        }
     }
 
     @Test
