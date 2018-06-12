@@ -21,7 +21,8 @@ public class BasicOptimisticLockingIntegrationTest {
         course.setStudent(student);
         entityManager.persist(course);
         entityManager.persist(student);
-        entityManager.getTransaction().commit();
+        entityManager.getTransaction()
+            .commit();
         entityManager.close();
     }
 
@@ -32,7 +33,8 @@ public class BasicOptimisticLockingIntegrationTest {
         OptimisticLockingStudent student = entityManager.find(OptimisticLockingStudent.class, 1L);
         entityManager.remove(course);
         entityManager.remove(student);
-        entityManager.getTransaction().commit();
+        entityManager.getTransaction()
+            .commit();
         entityManager.close();
     }
 
@@ -45,12 +47,14 @@ public class BasicOptimisticLockingIntegrationTest {
         OptimisticLockingStudent student2 = em2.find(OptimisticLockingStudent.class, 1L);
         student2.setName("RICHARD");
         em2.persist(student2);
-        em2.getTransaction().commit();
+        em2.getTransaction()
+            .commit();
         em2.close();
 
         student.setName("JOHN");
         em.persist(student);
-        em.getTransaction().commit();
+        em.getTransaction()
+            .commit();
         em.close();
     }
 
@@ -63,12 +67,14 @@ public class BasicOptimisticLockingIntegrationTest {
         OptimisticLockingStudent student2 = em2.find(OptimisticLockingStudent.class, 1L, LockModeType.OPTIMISTIC_FORCE_INCREMENT);
         student2.setName("RICHARD");
         em2.persist(student2);
-        em2.getTransaction().commit();
+        em2.getTransaction()
+            .commit();
         em2.close();
 
         student.setName("JOHN");
         em.persist(student);
-        em.getTransaction().commit();
+        em.getTransaction()
+            .commit();
         em.close();
     }
 
@@ -83,12 +89,14 @@ public class BasicOptimisticLockingIntegrationTest {
         em.refresh(student, LockModeType.OPTIMISTIC_FORCE_INCREMENT);
         student2.setName("RICHARD");
         em2.persist(student2);
-        em2.getTransaction().commit();
+        em2.getTransaction()
+            .commit();
         em2.close();
 
         student.setName("JOHN");
         em.persist(student);
-        em.getTransaction().commit();
+        em.getTransaction()
+            .commit();
         em.close();
     }
 
@@ -103,21 +111,23 @@ public class BasicOptimisticLockingIntegrationTest {
         em.lock(student, LockModeType.OPTIMISTIC_FORCE_INCREMENT);
         student2.setName("RICHARD");
         em2.persist(student2);
-        em2.getTransaction().commit();
+        em2.getTransaction()
+            .commit();
         em2.close();
 
         student.setName("JOHN");
         em.persist(student);
-        em.getTransaction().commit();
+        em.getTransaction()
+            .commit();
         em.close();
     }
 
     protected static EntityManager getEntityManagerWithOpenTransaction() throws IOException {
         String propertyFileName = "hibernate-pessimistic-locking.properties";
         EntityManager entityManager = HibernateUtil.getSessionFactory(propertyFileName)
-                .openSession();
+            .openSession();
         entityManager.getTransaction()
-                .begin();
+            .begin();
 
         return entityManager;
     }

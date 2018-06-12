@@ -7,7 +7,9 @@ public class OptimisticLockingCourse {
 
     @Id
     private Long id;
+
     private String name;
+
     @ManyToOne
     @JoinTable(name = "optimistic_student_course")
     private OptimisticLockingStudent student;
