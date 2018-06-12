@@ -3,7 +3,7 @@ FROM openjdk:8-jre-alpine
 RUN apk add --no-cache bash
 
 # copy fat WAR
-COPY spring-boot-ops.war /app.war
+COPY spring-boot-app-0.0.1-SNAPSHOT.war /app.war
 
 # copy fat WAR
 COPY logback.xml /logback.xml
