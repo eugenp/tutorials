@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.baeldung.couchbase.spring.IntegrationTest;
 
-public class PersonCrudServiceIntegrationTest extends IntegrationTest {
+public class PersonCrudServiceLiveTest extends IntegrationTest {
 
     private static final String CLARK_KENT = "Clark Kent";
     private static final String SMALLVILLE = "Smallville";

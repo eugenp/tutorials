@@ -20,7 +20,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
 @RunWith(Arquillian.class)
-public class ScheduleTimerBeanIntegrationTest {
+public class ScheduleTimerBeanLiveTest {
 
     private final static long TIMEOUT = 5000l;
     private final static long TOLERANCE = 1000l;

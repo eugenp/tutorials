@@ -1,27 +1,31 @@
 package com.baeldung.couchbase.async.person;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.annotation.PostConstruct;
-
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.baeldung.couchbase.async.AsyncIntegrationTest;
-import com.baeldung.couchbase.async.person.Person;
-import com.baeldung.couchbase.async.person.PersonCrudService;
-import com.baeldung.couchbase.async.person.PersonDocumentConverter;
 import com.baeldung.couchbase.async.service.BucketService;
 import com.couchbase.client.java.Bucket;
 import com.couchbase.client.java.document.JsonDocument;
 
-public class PersonCrudServiceIntegrationTest extends AsyncIntegrationTest {
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = {PersonCrudServiceIntegrationTestConfig.class})
+public class PersonCrudServiceLiveTest extends AsyncIntegrationTest {
 
     @Autowired
     private PersonCrudService personService;
@@ -35,8 +39,8 @@ public class PersonCrudServiceIntegrationTest extends AsyncIntegrationTest {
 
     private Bucket bucket;
 
-    @PostConstruct
-    private void init() {
+    @Before
+    public void init() {
         bucket = bucketService.getBucket();
     }
 

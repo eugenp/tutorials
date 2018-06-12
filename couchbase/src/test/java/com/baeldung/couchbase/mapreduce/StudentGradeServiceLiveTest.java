@@ -14,8 +14,8 @@ import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.view.ViewResult;
 import com.couchbase.client.java.view.ViewRow;
 
-public class StudentGradeServiceIntegrationTest {
-    private static final Logger logger = LoggerFactory.getLogger(StudentGradeServiceIntegrationTest.class);
+public class StudentGradeServiceLiveTest {
+    private static final Logger logger = LoggerFactory.getLogger(StudentGradeServiceLiveTest.class);
             
     static StudentGradeService studentGradeService;
     static Set<String> gradeIds = new HashSet<>();
