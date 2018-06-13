@@ -263,6 +263,7 @@
         <module>performance-tests</module>
         <module>twilio</module>
 		<module>java-ee-8-security-api</module>
+		<module>spring-webflux-amqp</module>
     </modules>
 
     <dependencies>
