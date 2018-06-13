@@ -16,7 +16,7 @@ import com.baeldung.dependson.shared.File;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestConfig.class)
-public class FileProcessorTest {
+public class FileProcessorIntegrationTest {
 
     @Autowired
     ApplicationContext context;
