@@ -24,7 +24,7 @@ public class MockitoMockIntegrationTest {
     }
 
     @Rule
-    private ExpectedException thrown = ExpectedException.none();
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void whenUsingSimpleMock_thenCorrect() {
