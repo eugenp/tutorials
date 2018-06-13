@@ -1,8 +1,11 @@
 package com.baeldung.algorithms.analysis;
 
-public class AnalysisRunner {
+import org.junit.Test;
 
-    public static void main(String[] args) {
+public class AnalysisRunnerLiveTest {
+
+    @Test
+    public void analysisTests() {
 
         int n = 10;
 
