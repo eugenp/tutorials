@@ -1,12 +1,23 @@
 package com.baeldung.linkedlist;
 
-import com.baeldung.linkedlist.LinkedList.Node;
+import java.util.LinkedList;
+import java.util.Optional;
+
+import com.baeldung.linkedlist.Node;
 
 public class MiddleElementLookup {
 
-    public static String findMiddleElement(Node head) {
+    public static Optional<String> findMiddleElementLinkedList(LinkedList<String> linkedList) {
+        if (linkedList == null || linkedList.isEmpty()) {
+            return Optional.empty();
+        }
+
+        return Optional.ofNullable(linkedList.get((linkedList.size() - 1) / 2));
+    }
+
+    public static Optional<String> findMiddleElementFromHead(Node head) {
         if (head == null) {
-            return null;
+            return Optional.empty();
         }
 
         // calculate the size of the list
@@ -23,17 +34,17 @@ public class MiddleElementLookup {
             current = current.next();
         }
 
-        return current.data();
+        return Optional.ofNullable(current.data());
     }
 
-    public static String findMiddleElement1PassRecursively(Node head) {
+    public static Optional<String> findMiddleElementFromHead1PassRecursively(Node head) {
         if (head == null) {
-            return null;
+            return Optional.empty();
         }
 
         MiddleAuxRecursion middleAux = new MiddleAuxRecursion();
         findMiddleRecursively(head, middleAux);
-        return middleAux.middle.data();
+        return Optional.ofNullable(middleAux.middle.data());
     }
 
     private static void findMiddleRecursively(Node node, MiddleAuxRecursion middleAux) {
@@ -53,9 +64,9 @@ public class MiddleElementLookup {
         middleAux.length--;
     }
 
-    public static String findMiddleElement1PassIteratively(Node head) {
+    public static Optional<String> findMiddleElementFromHead1PassIteratively(Node head) {
         if (head == null) {
-            return null;
+            return Optional.empty();
         }
 
         Node slowPointer = head;
@@ -68,7 +79,7 @@ public class MiddleElementLookup {
             slowPointer = slowPointer.next();
         }
 
-        return slowPointer.data();
+        return Optional.ofNullable(slowPointer.data());
     }
 
     private static class MiddleAuxRecursion {
