@@ -30,6 +30,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 			JSONObject event = (JSONObject) parser.parse(reader);
 
 			if (event.get("body") != null) {
+
 				JSONObject body = (JSONObject) parser.parse((String) event.get("body"));
 				Person person = new Person(body.toString());
 
@@ -75,8 +76,10 @@ public class APIDemoHandler implements RequestStreamHandler {
 			JSONObject responseBody = new JSONObject();
 
 			if (event.get("pathParameters") != null) {
+
 				JSONObject pps = (JSONObject) event.get("pathParameters");
 				if (pps.get("id") != null) {
+
 					int id = Integer.parseInt((String) pps.get("id"));
 					result = dynamoDb.getTable(DYNAMODB_TABLE_NAME).getItem("id", id);
 				}
@@ -87,6 +90,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 				responseBody.put("Person", result.toJSON());
 				responseJson.put("statusCode", 200);
 			} else {
+
 				responseBody.put("message", "No item found");
 				responseJson.put("statusCode", 404);
 			}
@@ -122,8 +126,10 @@ public class APIDemoHandler implements RequestStreamHandler {
 			JSONObject responseBody = new JSONObject();
 
 			if (event.get("queryStringParameters") != null) {
+
 				JSONObject qps = (JSONObject) event.get("queryStringParameters");
 				if (qps.get("id") != null) {
+
 					int id = Integer.parseInt((String) qps.get("id"));
 					result = dynamoDb.getTable(DYNAMODB_TABLE_NAME).getItem("id", id);
 				}
@@ -134,6 +140,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 				responseBody.put("Person", result.toJSON());
 				responseJson.put("statusCode", 200);
 			} else {
+
 				responseBody.put("message", "No item found");
 				responseJson.put("statusCode", 404);
 			}
