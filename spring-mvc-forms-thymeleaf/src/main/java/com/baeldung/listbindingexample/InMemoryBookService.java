@@ -12,16 +12,16 @@ import java.util.stream.Collectors;
 @Service
 public class InMemoryBookService implements BookService {
 
-	static Map<Long, Book> booksDB = new HashMap<>();
+    static Map<Long, Book> booksDB = new HashMap<>();
 
-	@Override
-	public List<Book> findAll() {
-		return new ArrayList(booksDB.values());
-	}
+    @Override
+    public List<Book> findAll() {
+        return new ArrayList<>(booksDB.values());
+    }
 
-	@Override
-	public void saveAll(List<Book> books) {
-	    long nextId = getNextId();
+    @Override
+    public void saveAll(List<Book> books) {
+        long nextId = getNextId();
         for (Book book : books) {
             if (book.getId() == 0) {
                 book.setId(nextId++);
@@ -29,14 +29,14 @@ public class InMemoryBookService implements BookService {
         }
 
         Map<Long, Book> bookMap = books.stream()
-			.collect(Collectors.toMap(
-				Book::getId, Function.identity()));
+            .collect(Collectors.toMap(Book::getId, Function.identity()));
 
-		booksDB.putAll(bookMap);
-	}
+        booksDB.putAll(bookMap);
+    }
 
-	private Long getNextId(){
-        return booksDB.keySet().stream()
+    private Long getNextId() {
+        return booksDB.keySet()
+            .stream()
             .mapToLong(value -> value)
             .max()
             .orElse(0) + 1;
