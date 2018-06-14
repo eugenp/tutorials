@@ -137,7 +137,7 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<mainClass>org.baeldung.boot.Application</mainClass>
+							<mainClass>com.baeldung.webjar.WebjarsdemoApplication</mainClass>
 						</configuration>
 					</execution>
 				</executions>
