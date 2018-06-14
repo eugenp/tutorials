@@ -13,17 +13,22 @@ import org.junit.Test;
 import org.testcontainers.containers.DockerComposeContainer;
 
 public class DockerComposeContainerTests {
-@ClassRule
-public static DockerComposeContainer compose = new DockerComposeContainer(new File("src/test/resources/test-compose.yml"))
-	.withExposedService("simpleWebServer_1", 80);
-    
+    @ClassRule
+    public static DockerComposeContainer compose = 
+      new DockerComposeContainer(
+        new File("src/test/resources/test-compose.yml"))
+          .withExposedService("simpleWebServer_1", 80);
+
     @Test
-    public void when() throws Exception {
-        String address ="http://" + compose.getServiceHost("simpleWebServer_1", 80)+ ":"+ compose.getServicePort("simpleWebServer_1", 80);
+    public void givenSimpleWebServerContainer_whenGetReuqest_thenReturnsResponse()
+      throws Exception {
+        String address = "http://" + compose.getServiceHost("simpleWebServer_1", 80)
+          + ":" + compose.getServicePort("simpleWebServer_1", 80);
         String response = simpleGetRequest(address);
+        
         assertEquals(response, "Hello World!");
     }
-    
+
     private String simpleGetRequest(String address) throws Exception {
         URL url = new URL(address);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
