@@ -39,3 +39,4 @@ This tutorials project is being built **[>> HERE](https://rest-security.ci.cloud
 
 - [Apache Maven Standard Directory Layout](http://www.baeldung.com/maven-directory-structure)
 - [Apache Maven Tutorial](http://www.baeldung.com/maven)
+- [Designing a User Friendly Java Library](http://www.baeldung.com/design-a-user-friendly-java-library)

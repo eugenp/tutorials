@@ -156,3 +156,7 @@
 - [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
 - [The Observer Pattern in Java](http://www.baeldung.com/java-observer-pattern)
 - [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
+- [The Thread.join() Method in Java](http://www.baeldung.com/java-thread-join)
+- [Guide to the super Java Keyword](http://www.baeldung.com/java-super)
+- [Guide to the this Java Keyword](http://www.baeldung.com/java-this)
+- [Jagged Arrays In Java](http://www.baeldung.com/java-jagged-arrays)
