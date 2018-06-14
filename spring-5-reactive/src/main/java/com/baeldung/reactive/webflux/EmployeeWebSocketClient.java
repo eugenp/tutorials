@@ -16,6 +16,6 @@ public class EmployeeWebSocketClient {
             .map(WebSocketMessage::getPayloadAsText)
             .doOnNext(System.out::println)
             .then())
-            .block();
+            .block(); // to subscribe and return the value
     }
 }

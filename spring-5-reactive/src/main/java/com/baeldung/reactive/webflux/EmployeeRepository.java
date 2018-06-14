@@ -52,8 +52,13 @@ public class EmployeeRepository {
         return Flux.fromIterable(employeeData.values());
     }
     
-    public Mono<String> findEmployeeAccessKey(String id)
+    public Mono<Employee> updateEmployee(Employee employee)
     {
-        return Mono.just(employeeAccessData.get(id));
+        Employee existingEmployee=employeeData.get(employee.getId());
+        if(existingEmployee!=null)
+        {
+            existingEmployee.setName(employee.getName());
+        }
+        return Mono.just(existingEmployee);
     }
 }

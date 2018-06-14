@@ -65,18 +65,4 @@ public class EmployeeControllerTest {
             .hasSize(3)
             .isEqualTo(employeeList);
     }
-
-    @Test
-    public void givenEmployeeId_whenGetEmployeeAccessKey_thenCorrectAccessKey() {
-
-        String employeeAccessKey = "Employee Access Key";
-        given(employeeRepository.findEmployeeAccessKey("1")).willReturn(Mono.just(employeeAccessKey));
-        testClient.get()
-            .uri("/employees/access-key/1")
-            .exchange()
-            .expectStatus()
-            .isOk()
-            .expectBody(String.class)
-            .isEqualTo(employeeAccessKey);
-    }
 }
