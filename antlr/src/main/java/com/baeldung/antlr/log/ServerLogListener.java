@@ -18,9 +18,7 @@ public class ServerLogListener extends ServerLogBaseListener {
             = DateTimeFormatter.ofPattern("yyyy-MMM-dd HH:mm:ss", Locale.ENGLISH);
 
 
-    private List<LogEntry> errors = new ArrayList<>();
-    private List<LogEntry> debugs = new ArrayList<>();
-    private List<LogEntry> infos = new ArrayList<>();
+    private List<LogEntry> entries = new ArrayList<>();
 
     private LogEntry currentLogEntry;
 
@@ -31,17 +29,7 @@ public class ServerLogListener extends ServerLogBaseListener {
 
     @Override
     public void exitLogEntry(ServerLogParser.LogEntryContext ctx) {
-        switch (currentLogEntry.getLevel()) {
-            case INFO:
-                infos.add(currentLogEntry);
-                break;
-            case DEBUG:
-                debugs.add(currentLogEntry);
-                break;
-            case ERROR:
-                errors.add(currentLogEntry);
-                break;
-        }
+        entries.add(currentLogEntry);
     }
 
     @Override
@@ -59,15 +47,7 @@ public class ServerLogListener extends ServerLogBaseListener {
         currentLogEntry.setLevel(LogLevel.valueOf(ctx.getText()));
     }
 
-    public List<LogEntry> getErrors() {
-        return Collections.unmodifiableList(errors);
-    }
-
-    public List<LogEntry> getDebugs() {
-        return Collections.unmodifiableList(debugs);
-    }
-
-    public List<LogEntry> getInfos() {
-        return Collections.unmodifiableList(infos);
+    public List<LogEntry> getEntries() {
+        return Collections.unmodifiableList(entries);
     }
 }
