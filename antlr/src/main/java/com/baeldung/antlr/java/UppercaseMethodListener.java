@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class JavaMethodDeclarationWalker extends Java8BaseListener {
+public class UppercaseMethodListener extends Java8BaseListener {
 
     private List<String> errors = new ArrayList<String>();
 
