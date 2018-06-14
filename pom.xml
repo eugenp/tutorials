@@ -9,9 +9,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>parent-boot-5</module>
+        <module>parent-boot-1</module>
         <module>parent-boot-2</module>
-        <module>parent-spring</module>
+        <module>parent-spring-4</module>
+        <module>parent-spring-5</module>
         <module>parent-java</module>
         <module>asm</module>
         <module>atomix</module>
@@ -30,6 +31,7 @@
         <module>apache-opennlp</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>azure</module>
         <module>bootique</module>
         <module>cdi</module>
         <!--<module>core-java-9</module>-->
@@ -94,13 +96,13 @@
         <module>logging-modules/log-mdc</module>
         <module>logging-modules/log4j</module>
         <module>logging-modules/log4j2</module>
-        <module>logging-modules/log4j2-programmatic-configuration</module>
         <module>logging-modules/logback</module>
         <module>lombok</module>
         <module>mapstruct</module>
         <module>metrics</module>
         <module>maven</module>
         <module>mesos-marathon</module>
+        <module>msf4j</module>
         <module>testing-modules/mockito</module>
         <module>testing-modules/mockito-2</module>
         <module>testing-modules/mocks</module>
@@ -259,6 +261,9 @@
         <module>jersey</module>
         <module>java-spi</module>
         <module>performance-tests</module>
+        <module>twilio</module>
+		<module>java-ee-8-security-api</module>
+		<module>spring-webflux-amqp</module>
     </modules>
 
     <dependencies>
@@ -370,9 +375,9 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
-                    <aggregate>true</aggregate>
-                    <failOnViolation>false</failOnViolation>
+                    <failurePriority>5</failurePriority>
+                    <aggregate>false</aggregate>
+                    <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
@@ -530,5 +535,4 @@
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
-
 </project>

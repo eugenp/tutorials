@@ -22,7 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.FlashMap;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 public class TodoControllerWithSessionAttributesIntegrationTest {
 

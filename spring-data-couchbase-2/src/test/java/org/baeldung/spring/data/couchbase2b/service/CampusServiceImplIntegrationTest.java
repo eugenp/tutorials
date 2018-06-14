@@ -10,7 +10,7 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 
 import org.baeldung.spring.data.couchbase.model.Campus;
-import org.baeldung.spring.data.couchbase2b.MultiBucketIntegationTest;
+import org.baeldung.spring.data.couchbase2b.MultiBucketIntegrationTest;
 import org.baeldung.spring.data.couchbase2b.repos.CampusRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
 
-public class CampusServiceImplIntegrationTest extends MultiBucketIntegationTest {
+public class CampusServiceImplIntegrationTest extends MultiBucketIntegrationTest {
 
     @Autowired
     private CampusServiceImpl campusService;
