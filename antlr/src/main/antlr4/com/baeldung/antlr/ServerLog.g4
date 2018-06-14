@@ -5,7 +5,7 @@ logEntry : serverTime WS level WS message NEWLINE;
 serverTime : date WS dateTime;
 message : (WORD | WS)+ ;
 level : ('DEBUG' | 'INFO' | 'ERROR');
-date : NUMBER PAUSE month PAUSE NUMBER;
+date : NUMBER DASH month DASH NUMBER;
 dateTime : NUMBER COLON NUMBER COLON NUMBER;
 
 month
@@ -29,6 +29,6 @@ fragment DIGIT : [0-9];
 WORD                : (LOWERCASE | UPPERCASE | '_')+ ;
 WS          : (' ' | '\t') ;
 NEWLINE             : ('\r'? '\n' | '\r')+ ;
-PAUSE               : '-';
+DASH               : '-';
 COLON               : ':';
 NUMBER : DIGIT+;
