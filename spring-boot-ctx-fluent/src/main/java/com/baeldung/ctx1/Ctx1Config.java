@@ -1,4 +1,4 @@
-package com.baeldung.web;
+package com.baeldung.ctx1;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -6,16 +6,17 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import com.baeldung.services.IHomeService;
+import com.baeldung.parent.IHomeService;
 
 @Configuration
-@ComponentScan("com.baeldung.web")
+@ComponentScan("com.baeldung.ctx1")
+@PropertySource("classpath:ctx1.properties")
 @EnableAutoConfiguration
-@PropertySource("classpath:web-app.properties")
-public class WebConfig {
+public class Ctx1Config {
     
     @Bean
     public IHomeService homeService() {
         return new GreetingService();
     }
+
 }

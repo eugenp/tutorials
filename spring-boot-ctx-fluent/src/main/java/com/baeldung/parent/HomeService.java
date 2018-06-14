@@ -1,4 +1,4 @@
-package com.baeldung.services;
+package com.baeldung.parent;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.baeldung.services;
+package com.baeldung.parent;
 
 public interface IHomeService {
 
