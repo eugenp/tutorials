@@ -35,6 +35,19 @@ public class PasswordStoreExamplesUnitTest {
 	}
 
 	@Test
+	public void givenStringHashCode_WhenStringValueReplaced_ThenHashCodesEqualAndValesEqual() {
+		String originalHashCode = Integer.toHexString(stringPassword.hashCode());
+
+		String newString = "********";
+		stringPassword.replace(stringPassword, newString);
+
+		String hashCodeAfterReplace = Integer.toHexString(stringPassword.hashCode());
+
+		assertThat(originalHashCode).isEqualTo(hashCodeAfterReplace);
+		assertThat(stringPassword).isEqualTo("password");
+	}
+
+	@Test
 	public void givenCharArrayHashCode_WhenArrayElementsValueChanged_ThenHashCodesEqualAndValesNotEqual() {
 		String originalHashCode = Integer.toHexString(charPassword.hashCode());
 
