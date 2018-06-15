@@ -77,8 +77,8 @@ public class SpringResourceIntegrationTest {
 
     @Test
     public void whenResourceUtils_thenReadSuccessful() throws IOException {
-        final String employees = new String(Files.readAllBytes(ResourceUtils.getFile("classpath:data/employees.dat")
-            .toPath()));
+        final File employeeFile = ResourceUtils.getFile("classpath:data/employees.dat");
+        final String employees = new String(Files.readAllBytes(employeeFile.toPath()));
         assertEquals(EMPLOYEES_EXPECTED, employees);
     }
 
