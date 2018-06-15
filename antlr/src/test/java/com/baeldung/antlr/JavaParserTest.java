@@ -25,6 +25,6 @@ public class JavaParserTest {
 
         assertThat(uppercaseMethodListener.getErrors().size(), is(1));
         assertThat(uppercaseMethodListener.getErrors().get(0),
-                is("Method DoSomething starts with uppercase!"));
+                is("Method DoSomething is uppercased!"));
     }
 }
