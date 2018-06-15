@@ -18,7 +18,7 @@ public class UppercaseMethodListener extends Java8BaseListener {
         String methodName = node.getText();
 
         if (Character.isUpperCase(methodName.charAt(0))){
-            errors.add(String.format("Method %s starts with uppercase!", methodName));
+            errors.add(String.format("Method %s is uppercased!", methodName));
         }
     }
 
