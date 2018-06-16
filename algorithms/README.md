@@ -21,3 +21,4 @@
 - [Create a Sudoku Solver in Java](http://www.baeldung.com/java-sudoku)
 - [Displaying Money Amounts in Words](http://www.baeldung.com/java-money-into-words)
 - [A Collaborative Filtering Recommendation System in Java](http://www.baeldung.com/java-collaborative-filtering-recommendations)
+- [Find All Pairs of Numbers in an Array That Add Up to a Given Sum](http://www.baeldung.com/java-algorithm-number-pairs-sum)
