@@ -15,12 +15,13 @@ import static org.junit.Assert.assertEquals;
 public class EntryProcessorIntegrationTest {
 
     private static final String CACHE_NAME = "MyCache";
+    private static final String CACHE_PROVIDER_NAME = "com.hazelcast.cache.HazelcastCachingProvider";
 
     private Cache<String, String> cache;
 
     @Before
     public void instantiateCache() {
-        CachingProvider cachingProvider = Caching.getCachingProvider();
+        CachingProvider cachingProvider = Caching.getCachingProvider(CACHE_PROVIDER_NAME);
         CacheManager cacheManager = cachingProvider.getCacheManager();
         MutableConfiguration<String, String> config = new MutableConfiguration<>();
         this.cache = cacheManager.createCache(CACHE_NAME, config);
@@ -29,7 +30,7 @@ public class EntryProcessorIntegrationTest {
 
     @After
     public void tearDown() {
-        Caching.getCachingProvider().getCacheManager().destroyCache(CACHE_NAME);
+        Caching.getCachingProvider(CACHE_PROVIDER_NAME).getCacheManager().destroyCache(CACHE_NAME);
     }
 
     @Test
