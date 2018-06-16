@@ -16,6 +16,9 @@
  */
 package baeldung.controller;
 
+import baeldung.model.Member;
+import baeldung.service.MemberRegistration;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
@@ -24,9 +27,6 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import baeldung.model.Member;
-import baeldung.service.MemberRegistration;
-
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an
 // EL name
 // Read more about the @Model stereotype in this FAQ:
@@ -34,11 +34,9 @@ import baeldung.service.MemberRegistration;
 @Model
 public class MemberController {
 
-    @Inject
-    private FacesContext facesContext;
+    @Inject private FacesContext facesContext;
 
-    @Inject
-    private MemberRegistration memberRegistration;
+    @Inject private MemberRegistration memberRegistration;
 
     @Produces
     @Named
