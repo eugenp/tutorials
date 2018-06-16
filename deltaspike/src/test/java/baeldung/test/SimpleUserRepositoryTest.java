@@ -38,6 +38,13 @@ public class SimpleUserRepositoryTest {
     }
 
     @Test
+    public void givenTwoUsersWithSpecifiedNameWhenFindAnyByFirstNameShouldReturnTwoUsers() {
+        assertThat(simpleUserRepository
+          .findAnyByFirstName("Adam")
+          .size(), equalTo(2));
+    }
+
+    @Test
     public void givenTwoUsersWithSpecifiedNameWhenCountByFirstNameShouldReturnSizeTwo() {
         assertThat(simpleUserRepository.count(), equalTo(4));
     }
