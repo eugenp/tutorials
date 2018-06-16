@@ -38,7 +38,7 @@ public class UnsignedArithmeticUnitTest {
         assertEquals(1, Integer.divideUnsigned(negative, positive));
 
         assertEquals(-1, negative % positive);
-        assertEquals(1, Integer.divideUnsigned(negative, positive));
+        assertEquals(1, Integer.remainderUnsigned(negative, positive));
     }
 
     @Test
