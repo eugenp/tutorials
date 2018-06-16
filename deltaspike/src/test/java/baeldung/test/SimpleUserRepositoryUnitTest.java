@@ -17,7 +17,7 @@ import static org.junit.Assert.assertThat;
  * Created by adam.
  */
 @RunWith(CdiTestRunner.class)
-public class SimpleUserRepositoryTest {
+public class SimpleUserRepositoryUnitTest {
 
     @Inject private EntityManager entityManager;
 

@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
  * Created by adam.
  */
 @RunWith(CdiTestRunner.class)
-public class UserRepositoryTest {
+public class UserRepositoryUnitTest {
 
     @Inject private UserRepository userRepository;
 
