@@ -1,9 +1,7 @@
-package com.baeldung.linkedlist;
+package com.baeldung.algorithms.middleelementlookup;
 
 import java.util.LinkedList;
 import java.util.Optional;
-
-import com.baeldung.linkedlist.Node;
 
 public class MiddleElementLookup {
 
