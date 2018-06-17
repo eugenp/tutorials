@@ -16,6 +16,8 @@
  */
 package baeldung.data;
 
+import baeldung.model.Member;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.event.Observes;
@@ -25,13 +27,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
-import baeldung.model.Member;
-
 @RequestScoped
 public class MemberListProducer {
 
-    @Inject
-    private MemberRepository memberRepository;
+    @Inject private MemberRepository memberRepository;
 
     private List<Member> members;
 
