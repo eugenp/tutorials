@@ -60,7 +60,7 @@
         <module>guava-modules/guava-21</module>
         <module>guice</module>
         <module>disruptor</module>
-        <module>handling-spring-static-resources</module>
+        <module>spring-static-resources</module>
         <module>hazelcast</module>
         <module>hbase</module>
         <!--<module>hibernate5</module> -->
