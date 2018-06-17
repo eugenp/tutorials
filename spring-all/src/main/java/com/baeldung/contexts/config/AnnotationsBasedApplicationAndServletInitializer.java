@@ -19,19 +19,19 @@ public class AnnotationsBasedApplicationAndServletInitializer //extends Abstract
         return null;
     }
 
-    @Override
+    //@Override
     protected WebApplicationContext createServletApplicationContext() {
         AnnotationConfigWebApplicationContext normalWebAppContext = new AnnotationConfigWebApplicationContext();
         normalWebAppContext.register(NormalWebAppConfig.class);
         return normalWebAppContext;
     }
 
-    @Override
+    //@Override
     protected String[] getServletMappings() {
         return new String[] { "/api/*" };
     }
 
-    @Override
+    //@Override
     protected String getServletName() {
         return "normal-dispatcher";
     }
