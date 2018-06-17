@@ -1,11 +1,13 @@
-package com.baeldung.linkedlist;
+package algorithms;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import com.baeldung.algorithms.middleelementlookup.MiddleElementLookup;
+import com.baeldung.algorithms.middleelementlookup.Node;
+import org.junit.Test;
 
 import java.util.LinkedList;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class MiddleElementLookupUnitTest {
 

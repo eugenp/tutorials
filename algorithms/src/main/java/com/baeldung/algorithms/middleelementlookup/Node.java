@@ -1,4 +1,4 @@
-package com.baeldung.linkedlist;
+package com.baeldung.algorithms.middleelementlookup;
 
 public class Node {
     private Node next;
