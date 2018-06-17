@@ -1,6 +1,6 @@
 package com.baeldung.test.dependencyinjection;
 
-import com.baeldung.dependencyinjectionn.imagefileeditors.PngFileEditor;
+import com.baeldung.dependencyinjection.imagefileeditors.PngFileEditor;
 import com.baeldung.dependencyinjection.qualifiers.PngFileEditorQualifier;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.BeforeClass;
