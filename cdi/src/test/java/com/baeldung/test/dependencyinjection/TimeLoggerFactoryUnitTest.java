@@ -1,7 +1,7 @@
 package com.baeldung.test.dependencyinjection;
 
 import com.baeldung.dependencyinjection.factories.TimeLoggerFactory;
-import com.baeldung.dependency-injection.loggers.TimeLogger;
+import com.baeldung.dependencyinjection.loggers.TimeLogger;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
