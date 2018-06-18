@@ -13,7 +13,7 @@ import org.junit.platform.commons.annotation.Testable;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 @Testable
-public class PostgreSqlContainerTests {
+public class PostgreSqlContainerUnitTest {
     @Rule
     public PostgreSQLContainer postgresContainer = new PostgreSQLContainer();
 
