@@ -32,8 +32,8 @@ public class EmployeeWebSocketHandler implements WebSocketHandler {
             }
         });
 
-        return webSocketSession.send(employeeCreationEvent.map(webSocketSession::textMessage)
+        return webSocketSession.send(employeeCreationEvent
+            .map(webSocketSession::textMessage)
             .delayElements(Duration.ofSeconds(1)));
     }
-
 }
