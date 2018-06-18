@@ -37,7 +37,7 @@ repositories {
 dependencies {
     compile "io.ktor:ktor-server-netty:$ktor_version"
     compile "ch.qos.logback:logback-classic:1.2.1"
-    compile "com.google.code.gson:gson:2.8.1"
+    compile "io.ktor:ktor-gson:$ktor_version"
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
 }
