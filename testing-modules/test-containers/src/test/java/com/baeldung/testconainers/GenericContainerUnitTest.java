@@ -13,7 +13,7 @@ import org.junit.platform.commons.annotation.Testable;
 import org.testcontainers.containers.GenericContainer;
 
 @Testable
-public class GenericContainerTests {
+public class GenericContainerUnitTest {
     @ClassRule
     public static GenericContainer simpleWebServer =
       new GenericContainer("alpine:3.2")

@@ -12,7 +12,7 @@ import org.testcontainers.DockerClientFactory;
 import org.testcontainers.containers.BrowserWebDriverContainer;
 import org.testcontainers.containers.GenericContainer;
 
-public class WebDriverContainerTests {
+public class WebDriverContainerUnitTest {
     @Rule
     public BrowserWebDriverContainer chrome
       = new BrowserWebDriverContainer()

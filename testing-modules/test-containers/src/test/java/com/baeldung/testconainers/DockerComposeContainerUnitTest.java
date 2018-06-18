@@ -12,7 +12,7 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.testcontainers.containers.DockerComposeContainer;
 
-public class DockerComposeContainerTests {
+public class DockerComposeContainerUnitTest {
     @ClassRule
     public static DockerComposeContainer compose = 
       new DockerComposeContainer(
