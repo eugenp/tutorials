@@ -3,23 +3,26 @@ package com.baeldung.kotlin.reflection
 import org.junit.Assert
 import org.junit.Test
 import java.math.BigDecimal
-import kotlin.reflect.KClass
 import kotlin.reflect.full.*
 
 class KClassTest {
     @Test
     fun testKClassDetails() {
-        classDetails(String::class)
-        classDetails(List::class)
-    }
+        val stringClass = String::class
+        Assert.assertEquals("kotlin.String", stringClass.qualifiedName)
+        Assert.assertFalse(stringClass.isData)
+        Assert.assertFalse(stringClass.isCompanion)
+        Assert.assertFalse(stringClass.isAbstract)
+        Assert.assertTrue(stringClass.isFinal)
+        Assert.assertFalse(stringClass.isSealed)
 
-    private fun classDetails(cls: KClass<*>) {
-        println("Name: ${cls.qualifiedName}")
-        println("Data class: ${cls.isData}")
-        println("Companion class: ${cls.isCompanion}")
-        println("Abstract class: ${cls.isAbstract}")
-        println("Final class: ${cls.isFinal}")
-        println("Sealed class: ${cls.isSealed}")
+        val listClass = List::class
+        Assert.assertEquals("kotlin.collections.List", listClass.qualifiedName)
+        Assert.assertFalse(listClass.isData)
+        Assert.assertFalse(listClass.isCompanion)
+        Assert.assertTrue(listClass.isAbstract)
+        Assert.assertFalse(listClass.isFinal)
+        Assert.assertFalse(listClass.isSealed)
     }
 
     @Test

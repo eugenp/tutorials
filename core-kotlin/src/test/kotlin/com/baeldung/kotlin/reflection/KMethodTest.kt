@@ -4,7 +4,7 @@ import org.junit.Assert
 import org.junit.Test
 import java.io.ByteArrayInputStream
 import java.nio.charset.Charset
-import kotlin.reflect.*
+import kotlin.reflect.KMutableProperty
 import kotlin.reflect.full.starProjectedType
 
 class KMethodTest {
@@ -40,16 +40,19 @@ class KMethodTest {
 
     @Test
     fun testMethodDetails() {
-        methodDetails(String::codePoints)
-        methodDetails(String::byteInputStream)
-    }
+        val codePoints = String::codePoints
+        Assert.assertEquals("codePoints", codePoints.name)
+        Assert.assertFalse(codePoints.isSuspend)
+        Assert.assertFalse(codePoints.isExternal)
+        Assert.assertFalse(codePoints.isInline)
+        Assert.assertFalse(codePoints.isOperator)
 
-    private fun methodDetails(method: KFunction<*>) {
-        println("Name: ${method.name}")
-        println("Suspend: ${method.isSuspend}")
-        println("External: ${method.isExternal}")
-        println("Inline: ${method.isInline}")
-        println("Operator: ${method.isOperator}")
+        val byteInputStream = String::byteInputStream
+        Assert.assertEquals("byteInputStream", byteInputStream.name)
+        Assert.assertFalse(byteInputStream.isSuspend)
+        Assert.assertFalse(byteInputStream.isExternal)
+        Assert.assertTrue(byteInputStream.isInline)
+        Assert.assertFalse(byteInputStream.isOperator)
     }
 
     val readOnlyProperty: Int = 42
@@ -57,15 +60,17 @@ class KMethodTest {
 
     @Test
     fun testPropertyDetails() {
-        propertyDetails(this::readOnlyProperty)
-        propertyDetails(this::mutableProperty)
-    }
+        val roProperty = this::readOnlyProperty
+        Assert.assertEquals("readOnlyProperty", roProperty.name)
+        Assert.assertFalse(roProperty.isLateinit)
+        Assert.assertFalse(roProperty.isConst)
+        Assert.assertFalse(roProperty is KMutableProperty<*>)
 
-    private fun propertyDetails(field: KProperty<*>) {
-        println("Name: ${field.name}")
-        println("Late Init: ${field.isLateinit}")
-        println("Const: ${field.isConst}")
-        println("Mutable: ${field is KMutableProperty}")
+        val mProperty = this::mutableProperty
+        Assert.assertEquals("mutableProperty", mProperty.name)
+        Assert.assertTrue(mProperty.isLateinit)
+        Assert.assertFalse(mProperty.isConst)
+        Assert.assertTrue(mProperty is KMutableProperty<*>)
     }
 
     @Test
