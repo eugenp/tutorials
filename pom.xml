@@ -60,7 +60,7 @@
         <module>guava-modules/guava-21</module>
         <module>guice</module>
         <module>disruptor</module>
-        <module>handling-spring-static-resources</module>
+        <module>spring-static-resources</module>
         <module>hazelcast</module>
         <module>hbase</module>
         <!--<module>hibernate5</module> -->
@@ -183,7 +183,6 @@
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
-        <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
@@ -262,7 +261,9 @@
         <module>java-spi</module>
         <module>performance-tests</module>
         <module>twilio</module>
-		<module>java-ee-8-security-api</module>
+        <module>spring-boot-ctx-fluent</module> 
+        <module>java-ee-8-security-api</module>
+		    <module>spring-webflux-amqp</module>
     </modules>
 
     <dependencies>
