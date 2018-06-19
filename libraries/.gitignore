@@ -1,9 +1,8 @@
 *.class
 
 # Folders #
+/gensrc
 /target
-.idea/
-*/META-INF/*
 
 # Packaged files #
 *.jar
