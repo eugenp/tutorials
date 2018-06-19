@@ -183,7 +183,6 @@
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
-        <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
@@ -249,6 +248,7 @@
         <module>persistence-modules/liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>testing-modules/mockserver</module>
+        <module>testing-modules/test-containers</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
         <module>saas</module>
