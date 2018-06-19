@@ -11,10 +11,6 @@ public class Person {
 	private int age;
 	private String address;
 
-	public Person() {
-
-	}
-
 	public Person(String json) {
 		Gson gson = new Gson();
 		Person request = gson.fromJson(json, Person.class);

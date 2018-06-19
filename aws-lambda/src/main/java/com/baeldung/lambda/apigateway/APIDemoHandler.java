@@ -18,6 +18,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 	private JSONParser parser = new JSONParser();
 	private String DYNAMODB_TABLE_NAME = "Person";
 
+	@Override
 	public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
 
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
@@ -31,7 +32,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 
 			if (event.get("body") != null) {
 
-				JSONObject body = (JSONObject) parser.parse((String) event.get("body"));
+				JSONObject body = (JSONObject)event.get("body");
 				Person person = new Person(body.toString());
 
 				dynamoDb.getTable(DYNAMODB_TABLE_NAME)
@@ -87,7 +88,8 @@ public class APIDemoHandler implements RequestStreamHandler {
 			}
 			if (result != null) {
 
-				responseBody.put("Person", result.toJSON());
+				Person person = new Person(result.toJSON());
+				responseBody.put("Person", person);
 				responseJson.put("statusCode", 200);
 			} else {
 
@@ -137,7 +139,8 @@ public class APIDemoHandler implements RequestStreamHandler {
 
 			if (result != null) {
 
-				responseBody.put("Person", result.toJSON());
+				Person person = new Person(result.toJSON());
+				responseBody.put("Person", person);
 				responseJson.put("statusCode", 200);
 			} else {
 
