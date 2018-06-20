@@ -1,6 +1,6 @@
 package com.baeldung.immutableobjects;
 
-//4. Immutability in Java
+// 4. Immutability in Java
 public final class Money {
     private final double amount;
     private final Currency currency;
