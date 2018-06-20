@@ -32,8 +32,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 
 			if (event.get("body") != null) {
 
-				JSONObject body = (JSONObject)event.get("body");
-				Person person = new Person(body.toString());
+				Person person = new Person((String) event.get("body"));
 
 				dynamoDb.getTable(DYNAMODB_TABLE_NAME)
 						.putItem(new PutItemSpec().withItem(new Item().withNumber("id", person.getId())
@@ -50,7 +49,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 
 			responseJson.put("statusCode", 200);
 			responseJson.put("headers", headerJson);
-			responseJson.put("body", responseBody.toJSONString());
+			responseJson.put("body", responseBody.toString());
 
 		} catch (ParseException pex) {
 			responseJson.put("statusCode", 400);
@@ -101,7 +100,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 			headerJson.put("x-custom-header", "my custom header value");
 
 			responseJson.put("headers", headerJson);
-			responseJson.put("body", responseBody.toJSONString());
+			responseJson.put("body", responseBody.toString());
 
 		} catch (ParseException pex) {
 			responseJson.put("statusCode", 400);
@@ -152,7 +151,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 			headerJson.put("x-custom-header", "my custom header value");
 
 			responseJson.put("headers", headerJson);
-			responseJson.put("body", responseBody.toJSONString());
+			responseJson.put("body", responseBody.toString());
 
 		} catch (ParseException pex) {
 			responseJson.put("statusCode", 400);
