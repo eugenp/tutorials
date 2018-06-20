@@ -28,12 +28,4 @@
    <!-- Force the use of the Servlet 3.0 protocol with all containers, as it is the most mature -->
    <defaultProtocol type="Servlet 3.0" />
 
-     <!-- Example configuration for a remote WildFly instance -->
-   <container qualifier="jboss" default="true">
-        <!-- By default, arquillian will use the JBOSS_HOME environment variable.  Alternatively, the configuration below can be uncommented. -->
-       <configuration>
-           <property name="jbossHome">target\wildfly-run\wildfly-10.0.0.Final</property>
-       </configuration>
-   </container>
-
 </arquillian>
