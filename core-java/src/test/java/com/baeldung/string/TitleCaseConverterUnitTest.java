@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class TitleCaseConverterTest {
+public class TitleCaseConverterUnitTest {
 
     private static final String TEXT = "tHis IS a tiTLe";
     private static final String TEXT_EXPECTED = "This Is A Title";

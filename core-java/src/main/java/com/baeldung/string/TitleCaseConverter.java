@@ -54,7 +54,7 @@ public class TitleCaseConverter {
             return text;
         }
 
-        return UCharacter.toTitleCase(text, null);
+        return UCharacter.toTitleCase(text, BreakIterator.getTitleInstance());
     }
 
     public static String convertToTileCaseWordUtilsFull(String text) {
