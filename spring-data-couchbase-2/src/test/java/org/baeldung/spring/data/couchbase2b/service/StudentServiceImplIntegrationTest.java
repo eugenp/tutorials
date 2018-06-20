@@ -11,7 +11,7 @@ import javax.validation.ConstraintViolationException;
 
 import org.baeldung.spring.data.couchbase.model.Student;
 import org.baeldung.spring.data.couchbase2b.MultiBucketCouchbaseConfig;
-import org.baeldung.spring.data.couchbase2b.MultiBucketIntegationTest;
+import org.baeldung.spring.data.couchbase2b.MultiBucketIntegrationTest;
 import org.joda.time.DateTime;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import com.couchbase.client.java.CouchbaseCluster;
 import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.document.json.JsonObject;
 
-public class StudentServiceImplIntegrationTest extends MultiBucketIntegationTest {
+public class StudentServiceImplIntegrationTest extends MultiBucketIntegrationTest {
 
     static final String typeField = "_class";
     static final String joe = "Joe";
