@@ -257,6 +257,7 @@
         <module>jersey</module>
         <module>java-spi</module>
         <module>performance-tests</module>
+        <module>SampleApplication</module>
     </modules>
 
     <dependencies>
