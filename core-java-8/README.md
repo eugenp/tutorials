@@ -50,4 +50,6 @@
 - [Filtering Kotlin Collections](http://www.baeldung.com/kotlin-filter-collection)
 - [How to Find an Element in a List with Java](http://www.baeldung.com/find-list-element-java)
 - [Measure Elapsed Time in Java](http://www.baeldung.com/java-measure-elapsed-time)
-
+- [Java Optional – orElse() vs orElseGet()](http://www.baeldung.com/java-optional-or-else-vs-or-else-get)
+- [An Introduction to Java.util.Hashtable Class](http://www.baeldung.com/java-hash-table)
+- [Method Parameter Reflection in Java](http://www.baeldung.com/java-parameter-reflection)

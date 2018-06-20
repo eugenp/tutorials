@@ -2,9 +2,9 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
     xsi:schemaLocation="
 		http://www.springframework.org/schema/security 
-        http://www.springframework.org/schema/security/spring-security-4.2.xsd
+        http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans 
-        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
 
     <http use-expressions="true">
@@ -24,11 +24,11 @@
 
     <beans:bean id="myAuthenticationSuccessHandler" class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
 
-    <authentication-manager>
+    <authentication-manager id="authenticationManager">
         <authentication-provider>
             <user-service>
-                <user name="user1" password="user1Pass" authorities="ROLE_USER"/>
-                <user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN"/>
+                <user name="user1" password="{noop}user1Pass" authorities="ROLE_USER" />
+                <user name="admin1" password="{noop}admin1Pass" authorities="ROLE_ADMIN"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
