@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class StringTests {
+public class ImmutableObjectsUnitTest {
 
     @Test
     public void whenCallingStringReplace_thenStringDoesNotMutate() {
