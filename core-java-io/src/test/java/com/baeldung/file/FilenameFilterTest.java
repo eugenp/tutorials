@@ -8,18 +8,25 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class FilenameFilterTest {
+	
+	private static File directory;
+	
+	@BeforeClass
+	public static void setupClass() {
+		directory = new File(FilenameFilterTest.class.getClassLoader()
+            .getResource("testFolder")
+            .getFile()); 
+	}
 
     @Test
     public void whenFilteringFilesEndingWithJson_thenEqualExpectedFiles() {
         FilenameFilter filter = (dir, name) -> name.endsWith(".json");
 
-        String[] expectedFiles = { "people.json", "students.json" };
-        File directory = new File(getClass().getClassLoader()
-            .getResource("testFolder")
-            .getFile());
+        String[] expectedFiles = { "people.json", "students.json" };        
         String[] actualFiles = directory.list(filter);
 
         Assert.assertArrayEquals(expectedFiles, actualFiles);
@@ -30,9 +37,6 @@ public class FilenameFilterTest {
         Predicate<String> predicate = (name) -> name.endsWith(".xml");
 
         String[] expectedFiles = { "teachers.xml", "workers.xml" };
-        File directory = new File(getClass().getClassLoader()
-            .getResource("testFolder")
-            .getFile());
         List<String> files = Arrays.stream(directory.list())
             .filter(predicate)
             .collect(Collectors.toList());
