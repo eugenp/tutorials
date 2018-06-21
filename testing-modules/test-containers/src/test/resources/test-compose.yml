@@ -1,0 +1,3 @@
+simpleWebServer:
+  image: alpine:3.2
+  command: ["/bin/sh", "-c", "while true; do echo 'HTTP/1.1 200 OK\n\nHello World!' | nc -l -p 80; done"]

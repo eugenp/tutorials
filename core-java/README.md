@@ -141,6 +141,7 @@
 - [Java KeyStore API](http://www.baeldung.com/java-keystore)
 - [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
 - [Guide to Java Clock Class](http://www.baeldung.com/java-clock)
+- [Infinite Loops in Java](http://www.baeldung.com/infinite-loops-java)
 - [Using Java Assertions](http://www.baeldung.com/java-assert)
 - [Pass-By-Value as a Parameter Passing Mechanism in Java](http://www.baeldung.com/java-pass-by-value-or-pass-by-reference)
 - [Check If a String Is Numeric in Java](http://www.baeldung.com/java-check-string-number)
@@ -149,5 +150,13 @@
 - [NaN in Java](http://www.baeldung.com/java-not-a-number)
 - [Infinite Loops in Java](http://www.baeldung.com/infinite-loops-java)
 - [Why Use char[] Array Over a String for Storing Passwords in Java?](http://www.baeldung.com/java-storing-passwords)
-
-
+- [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
+- [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
+- [Singletons in Java](http://www.baeldung.com/java-singleton)
+- [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
+- [The Observer Pattern in Java](http://www.baeldung.com/java-observer-pattern)
+- [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
+- [The Thread.join() Method in Java](http://www.baeldung.com/java-thread-join)
+- [Guide to the super Java Keyword](http://www.baeldung.com/java-super)
+- [Guide to the this Java Keyword](http://www.baeldung.com/java-this)
+- [Jagged Arrays In Java](http://www.baeldung.com/java-jagged-arrays)

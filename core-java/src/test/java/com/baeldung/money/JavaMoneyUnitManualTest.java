@@ -179,7 +179,7 @@ public class JavaMoneyUnitManualTest {
         MonetaryAmountFormat customFormat = MonetaryFormats.getAmountFormat(AmountFormatQueryBuilder
           .of(Locale.US)
           .set(CurrencyStyle.NAME)
-          .set("pattern", "00000.00 �")
+          .set("pattern", "00000.00 US Dollar")
           .build());
         String customFormatted = customFormat.format(oneDollar);
 
