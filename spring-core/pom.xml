@@ -11,9 +11,9 @@
 
 	<parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>parent-spring</artifactId>
+		<artifactId>parent-spring-4</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../parent-spring</relativePath>
+		<relativePath>../parent-spring-4</relativePath>
 	</parent>
 
 	<dependencies>
@@ -86,7 +86,6 @@
 	<properties>
 		<mockito.version>1.10.19</mockito.version>
 		<mockito.spring.boot.version>1.4.4.RELEASE</mockito.spring.boot.version>
-		<spring.version>4.3.4.RELEASE</spring.version>
 		<javax.inject.version>1</javax.inject.version>
 		<guava.version>20.0</guava.version>
 		<maven-war-plugin.version>2.6</maven-war-plugin.version>

@@ -18,7 +18,10 @@ package baeldung.data;
 
 import baeldung.model.Member;
 import baeldung.model.QMember;
-import org.apache.deltaspike.data.api.*;
+import org.apache.deltaspike.data.api.AbstractEntityRepository;
+import org.apache.deltaspike.data.api.EntityManagerConfig;
+import org.apache.deltaspike.data.api.Query;
+import org.apache.deltaspike.data.api.Repository;
 
 import java.util.List;
 
@@ -35,6 +38,9 @@ public abstract class MemberRepository extends AbstractEntityRepository<Member, 
 
     public List<Member> findAllOrderedByNameWithQueryDSL() {
         final QMember member = QMember.member;
-        return jpaQuery().from(member).orderBy(member.email.asc()).list(member);
+        return jpaQuery()
+          .from(member)
+          .orderBy(member.email.asc())
+          .list(member);
     }
 }
