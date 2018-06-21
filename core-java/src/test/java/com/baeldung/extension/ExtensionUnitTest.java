@@ -20,7 +20,7 @@ public class ExtensionUnitTest {
         String expectedExtension = "java";
         Optional<String> actualExtension = extension.getExtensionByStringHandling("Demo.java");
         Assert.assertTrue(actualExtension.isPresent());
-        actualExtension.ifPresent(ext -> Assert.assertEquals(expectedExtension,ext));
+        Assert.assertEquals(expectedExtension, actualExtension.get());
     }
 
     @Test
