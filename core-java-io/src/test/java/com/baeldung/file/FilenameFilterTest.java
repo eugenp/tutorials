@@ -1,0 +1,44 @@
+package com.baeldung.file;
+
+import java.io.File;
+import java.io.FilenameFilter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class FilenameFilterTest {
+
+    @Test
+    public void whenFilteringFilesEndingWithJson_thenEqualExpectedFiles() {
+        FilenameFilter filter = (dir, name) -> name.endsWith(".json");
+
+        String[] expectedFiles = { "people.json", "students.json" };
+        File directory = new File(getClass().getClassLoader()
+            .getResource("testFolder")
+            .getFile());
+        String[] actualFiles = directory.list(filter);
+
+        Assert.assertArrayEquals(expectedFiles, actualFiles);
+    }
+
+    @Test
+    public void whenFilteringFilesEndingWithXml_thenEqualExpectedFiles() {
+        Predicate<String> predicate = (name) -> name.endsWith(".xml");
+
+        String[] expectedFiles = { "teachers.xml", "workers.xml" };
+        File directory = new File(getClass().getClassLoader()
+            .getResource("testFolder")
+            .getFile());
+        List<String> files = Arrays.stream(directory.list())
+            .filter(predicate)
+            .collect(Collectors.toList());
+        String[] actualFiles = files.toArray(new String[files.size()]);
+
+        Assert.assertArrayEquals(expectedFiles, actualFiles);
+    }
+
+}
