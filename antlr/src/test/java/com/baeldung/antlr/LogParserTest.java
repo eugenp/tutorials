@@ -14,7 +14,7 @@ import org.junit.Test;
 import java.time.LocalDateTime;
 
 
-public class ServerLogParserTest {
+public class LogParserTest {
 
     @Test
     public void whenLogContainsOneErrorLogEntry_thenOneErrorIsReturned() throws Exception {
