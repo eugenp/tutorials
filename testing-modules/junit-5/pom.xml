@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- NOT NEEDED - JSP <groupId>com.baeldung</groupId>-->
+    <!-- NOT NEEDED - JSP <groupId>com.baeldung</groupId> -->
     <artifactId>junit-5</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -58,9 +58,25 @@
     <dependencies>
         <dependency>
             <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-engine</artifactId>
+            <version>${junit.platform.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
             <version>${junit.platform.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>${junit.platform.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
@@ -96,8 +112,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <junit.jupiter.version>5.1.0</junit.jupiter.version>
-        <junit.platform.version>1.0.1</junit.platform.version>
-        <junit.vintage.version>4.12.1</junit.vintage.version>
+        <junit.platform.version>1.1.0</junit.platform.version>
+        <junit.vintage.version>5.2.0</junit.vintage.version>
         <log4j2.version>2.8.2</log4j2.version>
         <h2.version>1.4.196</h2.version>
         <mockito.version>2.11.0</mockito.version>
@@ -106,5 +122,5 @@
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <spring.version>5.0.1.RELEASE</spring.version>
     </properties>
-    
+
 </project>
