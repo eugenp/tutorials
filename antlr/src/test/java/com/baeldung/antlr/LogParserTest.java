@@ -31,6 +31,6 @@ public class LogParserTest {
         LogEntry error = logWalker.getEntries().get(1);
         assertThat(error.getLevel(), is(LogLevel.ERROR));
         assertThat(error.getMessage(), is("Bad thing happened"));
-        assertThat(error.getDateTime(), is(LocalDateTime.of(2018,5,5,14,20,24)));
+        assertThat(error.getTimestamp(), is(LocalDateTime.of(2018,5,5,14,20,24)));
     }
 }

@@ -7,7 +7,7 @@ public class LogEntry {
 
     private LogLevel level;
     private String message;
-    private LocalDateTime dateTime;
+    private LocalDateTime timestamp;
 
     public LogLevel getLevel() {
         return level;
@@ -25,11 +25,11 @@ public class LogEntry {
         this.message = message;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 }

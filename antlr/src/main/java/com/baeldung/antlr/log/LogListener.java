@@ -32,7 +32,7 @@ public class LogListener extends LogBaseListener {
 
     @Override
     public void enterTimestamp(LogParser.TimestampContext ctx) {
-        currentLogEntry.setDateTime(LocalDateTime.parse(ctx.getText(), DEFAULT_DATETIME_FORMATTER));
+        currentLogEntry.setTimestamp(LocalDateTime.parse(ctx.getText(), DEFAULT_DATETIME_FORMATTER));
     }
 
     @Override
