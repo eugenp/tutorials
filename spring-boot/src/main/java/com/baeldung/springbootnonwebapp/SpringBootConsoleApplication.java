@@ -16,12 +16,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootConsoleApplication implements CommandLineRunner {
 
-	private static final Logger LOG = LoggerFactory.getLogger(SpringBootConsoleApplication.class);
+	private static Logger LOG = LoggerFactory.getLogger(SpringBootConsoleApplication.class);
 
 	public static void main(String[] args) {
 		LOG.info("STARTING THE APPLICATION");
 		SpringApplication.run(SpringBootConsoleApplication.class, args);
-		LOG.info("APPLICATION STARTED");
+		LOG.info("APPLICATION FINISHED");
 	}
 
 	/**
@@ -30,8 +30,6 @@ public class SpringBootConsoleApplication implements CommandLineRunner {
 	 */
 	@Override
 	public void run(String... args) throws Exception {
-		LOG.info("START : command line runner");
 		LOG.info("EXECUTING : command line runner");
-		LOG.info("END   : command line runner");
 	}
 }
