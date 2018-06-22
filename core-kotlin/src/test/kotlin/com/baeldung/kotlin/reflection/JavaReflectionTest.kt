@@ -1,18 +1,21 @@
 package com.baeldung.kotlin.reflection
 
 import org.junit.Test
+import org.slf4j.LoggerFactory
 
 class JavaReflectionTest {
+    private val LOG = LoggerFactory.getLogger(KClassTest::class.java)
+
     @Test
     fun listJavaClassMethods() {
         Exception::class.java.methods
-                .forEach(::println)
+                .forEach { method -> LOG.info("Method: {}", method) }
     }
 
     @Test
     fun listKotlinClassMethods() {
         JavaReflectionTest::class.java.methods
-                .forEach(::println)
+                .forEach { method -> LOG.info("Method: {}", method) }
     }
 
     @Test
@@ -20,7 +23,7 @@ class JavaReflectionTest {
         data class ExampleDataClass(val name: String, var enabled: Boolean)
 
         ExampleDataClass::class.java.methods
-                .forEach(::println)
+                .forEach { method -> LOG.info("Method: {}", method) }
     }
 
 
