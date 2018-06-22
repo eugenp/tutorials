@@ -5,7 +5,6 @@
     <groupId>com.example</groupId>
     <artifactId>spring-boot-camel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Spring-Boot - Camel API</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

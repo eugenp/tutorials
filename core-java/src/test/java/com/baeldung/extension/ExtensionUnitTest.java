@@ -3,6 +3,8 @@ package com.baeldung.extension;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Optional;
+
 public class ExtensionUnitTest {
     private Extension extension = new Extension();
 
@@ -16,8 +18,8 @@ public class ExtensionUnitTest {
     @Test
     public void getExtension_whenStringHandle_thenExtensionIsTrue() {
         String expectedExtension = "java";
-        String actualExtension = extension.getExtensionByStringHandling("Demo.java");
-        Assert.assertEquals(expectedExtension, actualExtension);
+        Optional<String> actualExtension = extension.getExtensionByStringHandling("Demo.java");
+        Assert.assertEquals(expectedExtension, actualExtension.get());
     }
 
     @Test

@@ -9,16 +9,16 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring</artifactId>
+        <artifactId>parent-spring-4</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../parent-spring</relativePath>
+    	<relativePath>../parent-spring-4</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -53,7 +53,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -80,7 +80,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
         <spring-data-elasticsearch.version>2.0.5.RELEASE</spring-data-elasticsearch.version>
         <jna.version>4.2.2</jna.version>
         <elasticsearch.version>2.4.2</elasticsearch.version>
