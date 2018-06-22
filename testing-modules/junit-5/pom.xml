@@ -41,7 +41,6 @@
                         <version>5.0.0-M4</version>
                     </dependency>
                 </dependencies>
-            </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
