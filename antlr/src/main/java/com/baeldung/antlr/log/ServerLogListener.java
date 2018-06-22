@@ -1,7 +1,7 @@
 package com.baeldung.antlr.log;
 
-import com.baeldung.antlr.ServerLogBaseListener;
-import com.baeldung.antlr.ServerLogParser;
+import com.baeldung.antlr.LogBaseListener;
+import com.baeldung.antlr.LogParser;
 import com.baeldung.antlr.log.model.LogLevel;
 import com.baeldung.antlr.log.model.LogEntry;
 
@@ -12,38 +12,36 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-public class ServerLogListener extends ServerLogBaseListener {
+public class ServerLogListener extends LogBaseListener {
 
     private static final DateTimeFormatter DEFAULT_DATETIME_FORMATTER
             = DateTimeFormatter.ofPattern("yyyy-MMM-dd HH:mm:ss", Locale.ENGLISH);
 
-
     private List<LogEntry> entries = new ArrayList<>();
-
     private LogEntry currentLogEntry;
 
     @Override
-    public void enterLogEntry(ServerLogParser.LogEntryContext ctx) {
+    public void enterEntry(LogParser.EntryContext ctx) {
         this.currentLogEntry = new LogEntry();
     }
 
     @Override
-    public void exitLogEntry(ServerLogParser.LogEntryContext ctx) {
+    public void exitEntry(LogParser.EntryContext ctx) {
         entries.add(currentLogEntry);
     }
 
     @Override
-    public void enterServerTime(ServerLogParser.ServerTimeContext ctx) {
+    public void enterTimestamp(LogParser.TimestampContext ctx) {
         currentLogEntry.setDateTime(LocalDateTime.parse(ctx.getText(), DEFAULT_DATETIME_FORMATTER));
     }
 
     @Override
-    public void enterMessage(ServerLogParser.MessageContext ctx) {
+    public void enterMessage(LogParser.MessageContext ctx) {
         currentLogEntry.setMessage(ctx.getText());
     }
 
     @Override
-    public void enterLevel(ServerLogParser.LevelContext ctx) {
+    public void enterLevel(LogParser.LevelContext ctx) {
         currentLogEntry.setLevel(LogLevel.valueOf(ctx.getText()));
     }
 
