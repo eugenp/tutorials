@@ -1,4 +1,4 @@
-grammar ServerLog;
+grammar Log;
 
 log : entry+;
 entry : timestamp ' ' level ' ' message CRLF;
