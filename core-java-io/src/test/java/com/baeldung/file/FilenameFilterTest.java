@@ -12,21 +12,21 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class FilenameFilterTest {
-	
-	private static File directory;
-	
-	@BeforeClass
-	public static void setupClass() {
-		directory = new File(FilenameFilterTest.class.getClassLoader()
+
+    private static File directory;
+
+    @BeforeClass
+    public static void setupClass() {
+        directory = new File(FilenameFilterTest.class.getClassLoader()
             .getResource("testFolder")
-            .getFile()); 
-	}
+            .getFile());
+    }
 
     @Test
     public void whenFilteringFilesEndingWithJson_thenEqualExpectedFiles() {
         FilenameFilter filter = (dir, name) -> name.endsWith(".json");
 
-        String[] expectedFiles = { "people.json", "students.json" };        
+        String[] expectedFiles = { "people.json", "students.json" };
         String[] actualFiles = directory.list(filter);
 
         Assert.assertArrayEquals(expectedFiles, actualFiles);
