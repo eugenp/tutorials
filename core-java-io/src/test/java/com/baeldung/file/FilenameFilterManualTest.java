@@ -11,13 +11,13 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class FilenameFilterTest {
+public class FilenameFilterManualTest {
 
     private static File directory;
 
     @BeforeClass
     public static void setupClass() {
-        directory = new File(FilenameFilterTest.class.getClassLoader()
+        directory = new File(FilenameFilterManualTest.class.getClassLoader()
             .getResource("testFolder")
             .getFile());
     }
