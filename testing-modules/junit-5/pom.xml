@@ -35,7 +35,13 @@
                         <artifactId>junit-platform-surefire-provider</artifactId>
                         <version>${junit.platform.version}</version>
                     </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>5.0.0-M4</version>
+                    </dependency>
                 </dependencies>
+            </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
