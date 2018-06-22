@@ -1,5 +1,5 @@
 package com.baeldung.antlr.log.model;
 
-public enum  LogLevel {
+public enum LogLevel {
     DEBUG, INFO, ERROR
 }
