@@ -262,6 +262,7 @@
         <module>performance-tests</module>
         <module>twilio</module>
 		<module>java-ee-8-security-api</module>
+		<module>antlr</module>
     </modules>
 
     <dependencies>
