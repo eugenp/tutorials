@@ -1,34 +1,16 @@
 grammar ServerLog;
 
-log : logEntry+ EOF ;
-logEntry : serverTime WS level WS message NEWLINE;
-serverTime : date WS dateTime;
-message : (WORD | WS)+ ;
-level : ('DEBUG' | 'INFO' | 'ERROR');
-date : NUMBER DASH month DASH NUMBER;
-dateTime : NUMBER COLON NUMBER COLON NUMBER;
+log : entry+;
+entry : timestamp ' ' level ' ' message CRLF;
+timestamp : DATE ' ' TIME;
+level : 'ERROR' | 'INFO' | 'DEBUG';
+message : TEXT;
 
-month
-   : 'Jan'
-   | 'Feb'
-   | 'Mar'
-   | 'Apr'
-   | 'May'
-   | 'Jun'
-   | 'Jul'
-   | 'Aug'
-   | 'Sep'
-   | 'Oct'
-   | 'Nov'
-   | 'Dec'
-   ;
-
-fragment LOWERCASE  : [a-z] ;
-fragment UPPERCASE  : [A-Z] ;
 fragment DIGIT : [0-9];
-WORD                : (LOWERCASE | UPPERCASE | '_')+ ;
-WS          : (' ' | '\t') ;
-NEWLINE             : ('\r'? '\n' | '\r')+ ;
-DASH               : '-';
-COLON               : ':';
-NUMBER : DIGIT+;
+fragment TWODIGIT : DIGIT DIGIT;
+fragment LETTER : [A-Za-z];
+
+DATE : TWODIGIT TWODIGIT '-' LETTER LETTER LETTER '-' TWODIGIT;
+TIME : TWODIGIT ':' TWODIGIT ':' TWODIGIT;
+TEXT   : ~[\t\n\r"]+ ;
+CRLF : '\r'? '\n' | '\r';
