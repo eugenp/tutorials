@@ -1,8 +1,10 @@
 package com.baeldung.kotlin.reflection
 
+import org.junit.Ignore
 import org.junit.Test
 import org.slf4j.LoggerFactory
 
+@Ignore
 class JavaReflectionTest {
     private val LOG = LoggerFactory.getLogger(KClassTest::class.java)
 

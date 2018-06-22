@@ -1,6 +1,7 @@
 package com.baeldung.kotlin.reflection
 
 import org.junit.Assert
+import org.junit.Ignore
 import org.junit.Test
 import org.slf4j.LoggerFactory
 import java.math.BigDecimal
@@ -46,6 +47,7 @@ class KClassTest {
     }
 
     @Test
+    @Ignore
     fun testMembers() {
         val bigDecimalClass = BigDecimal::class
 
