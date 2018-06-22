@@ -15,7 +15,6 @@ import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 import org.junit.platform.launcher.listeners.TestExecutionSummary;
 
-import com.baeldung.junit4.runfromjava.ListNodeTest;
 
 public class RunJUnit5Tests {
     SummaryGeneratingListener listener = new SummaryGeneratingListener();
