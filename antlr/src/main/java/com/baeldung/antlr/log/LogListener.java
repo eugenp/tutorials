@@ -12,7 +12,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-public class ServerLogListener extends LogBaseListener {
+public class LogListener extends LogBaseListener {
 
     private static final DateTimeFormatter DEFAULT_DATETIME_FORMATTER
             = DateTimeFormatter.ofPattern("yyyy-MMM-dd HH:mm:ss", Locale.ENGLISH);
