@@ -16,7 +16,7 @@ import java.io.*;
 public class APIDemoHandler implements RequestStreamHandler {
 
 	private JSONParser parser = new JSONParser();
-	private String DYNAMODB_TABLE_NAME = "Person";
+	private  static final String DYNAMODB_TABLE_NAME = System.getenv("TABLE_NAME");
 
 	@Override
 	public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
