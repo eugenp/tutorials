@@ -20,7 +20,7 @@ public interface PersonRepository extends MyUtilityRepository<Person, Long> {
     Person findByName(@Param("name") String name);
 
     @Query(value = "SELECT AVG(p.age) FROM person p", nativeQuery = true)
-    Person getAverageAge();
+    int getAverageAge();
 
     @Procedure(name = "count_by_name")
     long getCountByName(@Param("name") String name);
