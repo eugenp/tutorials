@@ -31,7 +31,8 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!-- Spring -->
@@ -240,7 +241,7 @@
                 <artifactId>cargo-maven2-plugin</artifactId>
                 <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
-                    <wait>true</wait>
+                    <!--<wait>true</wait> caused errors on commit-->
                     <container>
                         <containerId>tomcat8x</containerId>
                         <type>embedded</type>
