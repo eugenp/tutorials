@@ -55,6 +55,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>**/*IntegrationTest.java</exclude>
+                        		<exclude>**/*IntTest.java</exclude>
                             </excludes>
                             <!-- Run only tests whose name end with "UnitTest" -->
                             <includes>
