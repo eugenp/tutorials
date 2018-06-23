@@ -16,14 +16,14 @@ public class Config implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
+        registry.addViewController("/")
+            .setViewName("index");
         registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
     }
 
     @Bean
     public ITemplateResolver templateResolver() {
-        ClassLoaderTemplateResolver resolver
-            = new ClassLoaderTemplateResolver();
+        ClassLoaderTemplateResolver resolver = new ClassLoaderTemplateResolver();
         resolver.setPrefix("templates/books/");
         resolver.setSuffix(".html");
         resolver.setTemplateMode(TemplateMode.HTML);
