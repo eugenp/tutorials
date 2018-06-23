@@ -243,6 +243,8 @@
         <module>mockserver</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
+        <module>boot-2-parent</module>
+        <module>spring-5-reactive</module>
     </modules>
 
     <dependencies>
