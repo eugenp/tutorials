@@ -265,6 +265,7 @@
         <module>spring-boot-ctx-fluent</module> 
         <module>java-ee-8-security-api</module>
 		    <module>spring-webflux-amqp</module>
+		<module>RESTful-maven-archetype</module>						
     </modules>
 
     <dependencies>
