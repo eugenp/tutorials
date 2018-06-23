@@ -59,16 +59,16 @@ public class SampleApplication implements EntryPoint {
         class MyHandler implements ClickHandler, KeyUpHandler {
 
             public void onClick(ClickEvent event) {
-                sendNameToServer();
+                sendMessageToServer();
             }
 
             public void onKeyUp(KeyUpEvent event) {
                 if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-                    sendNameToServer();
+                    sendMessageToServer();
                 }
             }
 
-            private void sendNameToServer() {
+            private void sendMessageToServer() {
 
                 warningLabel.setText("");
                 String textToServer = nameField.getText();
@@ -82,7 +82,6 @@ public class SampleApplication implements EntryPoint {
                 serverResponseLabel.setText("");
                 messageServiceAsync.sendMessage(textToServer, new AsyncCallback<String>() {
                     public void onFailure(Throwable caught) {
-
                         serverResponseLabel.addStyleName("serverResponseLabelError");
                         serverResponseLabel.setHTML("server error occurred");
                         closeButton.setFocus(true);
