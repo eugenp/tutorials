@@ -47,14 +47,14 @@ public class AppConfig {
     }
     
     @Bean
-    public Function<String, PrototypeBeanWithParam> beanFactory() {
+    public Function<String, PrototypeBean> beanFactory() {
         return name -> prototypeBeanWithParam(name);
     } 
 
     @Bean
     @Scope(value = "prototype")
-    public PrototypeBeanWithParam prototypeBeanWithParam(String name) {
-       return new PrototypeBeanWithParam(name);
+    public PrototypeBean prototypeBeanWithParam(String name) {
+       return new PrototypeBean(name);
     }
     
     @Bean
