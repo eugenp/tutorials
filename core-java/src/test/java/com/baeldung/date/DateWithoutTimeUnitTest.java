@@ -6,12 +6,11 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
-import java.time.temporal.TemporalField;
 import java.util.Calendar;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotEquals;
 
 public class DateWithoutTimeUnitTest {
 
@@ -30,18 +29,21 @@ public class DateWithoutTimeUnitTest {
         assertEquals(0, calendar.get(Calendar.SECOND));
         assertEquals(0, calendar.get(Calendar.MILLISECOND));
 
-        // now check the difference with the current Date with time is less than a day.
-        assertTrue(new Date().getTime() - dateWithoutTime.getTime() < MILLISECONDS_PER_DAY);
+        // we get the day of the date
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // if we add the mills of one day minus 1 we should get the same day
+        calendar.setTimeInMillis(dateWithoutTime.getTime() + MILLISECONDS_PER_DAY - 1);
+        assertEquals(day, calendar.get(Calendar.DAY_OF_MONTH));
+
+        // if we add one full day in millis we should get a different day
+        calendar.setTimeInMillis(dateWithoutTime.getTime() + MILLISECONDS_PER_DAY);
+        assertNotEquals(day, calendar.get(Calendar.DAY_OF_MONTH));
     }
 
     @Test
-    public void whenGettingDateWithoutTimeUsingFormat_thenReturnDateWithoutTime() {
-        Date dateWithoutTime = null;
-        try {
-            dateWithoutTime = DateWithoutTime.getDateWithoutTimeUsingFormat();
-        } catch (ParseException e) {
-            Assert.fail();
-        }
+    public void whenGettingDateWithoutTimeUsingFormat_thenReturnDateWithoutTime() throws ParseException {
+        Date dateWithoutTime = DateWithoutTime.getDateWithoutTimeUsingFormat();
 
         // first check the time is set to 0
         Calendar calendar = Calendar.getInstance();
@@ -52,8 +54,16 @@ public class DateWithoutTimeUnitTest {
         assertEquals(0, calendar.get(Calendar.SECOND));
         assertEquals(0, calendar.get(Calendar.MILLISECOND));
 
-        // now check the difference with the current Date with time is less than a day.
-        assertTrue(new Date().getTime() - dateWithoutTime.getTime() < MILLISECONDS_PER_DAY);
+        // we get the day of the date
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // if we add the mills of one day minus 1 we should get the same day
+        calendar.setTimeInMillis(dateWithoutTime.getTime() + MILLISECONDS_PER_DAY - 1);
+        assertEquals(day, calendar.get(Calendar.DAY_OF_MONTH));
+
+        // if we add one full day in millis we should get a different day
+        calendar.setTimeInMillis(dateWithoutTime.getTime() + MILLISECONDS_PER_DAY);
+        assertNotEquals(day, calendar.get(Calendar.DAY_OF_MONTH));
     }
 
     @Test
@@ -69,12 +79,14 @@ public class DateWithoutTimeUnitTest {
             .getOffset())
           .toEpochMilli();
 
+        Calendar calendar = Calendar.getInstance();
+        // if we add the millis of one day minus 1 we should get the same day
+        calendar.setTimeInMillis(millisLocalDate + MILLISECONDS_PER_DAY - 1);
+        assertEquals(localDate.getDayOfMonth(), calendar.get(Calendar.DAY_OF_MONTH));
 
-        // get current millis from Date with time
-        long millisDate = new Date().getTime();
-
-        // the difference in time has to be less than a day
-        assertTrue(millisDate - millisLocalDate < MILLISECONDS_PER_DAY);
+        // if we add one full day in millis we should get a different day
+        calendar.setTimeInMillis(millisLocalDate + MILLISECONDS_PER_DAY);
+        assertNotEquals(localDate.getDayOfMonth(), calendar.get(Calendar.DAY_OF_MONTH));
     }
 
 }
