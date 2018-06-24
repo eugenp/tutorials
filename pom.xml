@@ -18,6 +18,7 @@
         <module>atomix</module>
         <module>apache-cayenne</module>
         <module>aws</module>
+        <module>aws-lambda</module>
         <module>akka-streams</module>
         <module>algorithms</module>
         <module>annotations</module>
@@ -348,6 +349,7 @@
                     <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                         <exclude>**/JdbcTest.java</exclude>
@@ -473,6 +475,7 @@
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>
