@@ -60,19 +60,4 @@ public class PrototypeBeanInjectionIntegrationTest {
         Assert.assertTrue("New instance expected", firstInstance != secondInstance);
     }
     
-
-    @Test
-    public void givenPrototypeInjection_WhenFunction_ThenNewInstanceReturn() {
-
-        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-
-        SingletonFunctionBean firstContext = context.getBean(SingletonFunctionBean.class);
-        SingletonFunctionBean secondContext = context.getBean(SingletonFunctionBean.class);
-
-        PrototypeBean firstInstance = firstContext.getPrototypeInstance("instance1");
-        PrototypeBean secondInstance = secondContext.getPrototypeInstance("instance2");
-
-        Assert.assertTrue("New instance expected", firstInstance != secondInstance);
-    }
-    
 }

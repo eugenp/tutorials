@@ -3,11 +3,8 @@ package com.baeldung.scope;
 import com.baeldung.scope.prototype.PrototypeBean;
 import com.baeldung.scope.singletone.SingletonAppContextBean;
 import com.baeldung.scope.singletone.SingletonBean;
-import com.baeldung.scope.singletone.SingletonFunctionBean;
 import com.baeldung.scope.singletone.SingletonObjectFactoryBean;
 import com.baeldung.scope.singletone.SingletonProviderBean;
-
-import java.util.function.Function;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
@@ -45,19 +42,4 @@ public class AppConfig {
         return new SingletonObjectFactoryBean();
     }
     
-    @Bean
-    public Function<String, PrototypeBean> beanFactory() {
-        return name -> prototypeBeanWithParam(name);
-    } 
-
-    @Bean
-    @Scope(value = "prototype")
-    public PrototypeBean prototypeBeanWithParam(String name) {
-       return new PrototypeBean(name);
-    }
-    
-    @Bean
-    public SingletonFunctionBean singletonFunctionBean() {
-        return new SingletonFunctionBean();
-    }
 }
