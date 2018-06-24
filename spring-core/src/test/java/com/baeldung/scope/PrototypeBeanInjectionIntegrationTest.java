@@ -1,6 +1,8 @@
 package com.baeldung.scope;
 
 import com.baeldung.scope.prototype.PrototypeBean;
+import com.baeldung.scope.prototype.PrototypeBeanWithParam;
+import com.baeldung.scope.singletone.SingletonFunctionBean;
 import com.baeldung.scope.singletone.SingletonLookupBean;
 import com.baeldung.scope.singletone.SingletonObjectFactoryBean;
 import com.baeldung.scope.singletone.SingletonProviderBean;
@@ -58,4 +60,20 @@ public class PrototypeBeanInjectionIntegrationTest {
 
         Assert.assertTrue("New instance expected", firstInstance != secondInstance);
     }
+    
+
+    @Test
+    public void givenPrototypeInjection_WhenFunction_ThenNewInstanceReturn() {
+
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+
+        SingletonFunctionBean firstContext = context.getBean(SingletonFunctionBean.class);
+        SingletonFunctionBean secondContext = context.getBean(SingletonFunctionBean.class);
+
+        PrototypeBeanWithParam firstInstance = firstContext.getPrototypeInstance("instance1");
+        PrototypeBeanWithParam secondInstance = secondContext.getPrototypeInstance("instance2");
+
+        Assert.assertTrue("New instance expected", firstInstance != secondInstance);
+    }
+    
 }
