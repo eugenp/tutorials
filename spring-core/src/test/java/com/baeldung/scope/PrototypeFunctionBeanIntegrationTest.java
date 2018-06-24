@@ -9,19 +9,18 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.baeldung.factorybean.FactoryBeanAppConfig;
+import com.baeldung.config.scope.AppConfigFunctionBean;
 import com.baeldung.scope.prototype.PrototypeBean;
 import com.baeldung.scope.singletone.SingletonFunctionBean;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = FactoryBeanAppConfig.class)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = AppConfigFunctionBean.class)
 public class PrototypeFunctionBeanIntegrationTest {
-
 
     @Test
     public void givenPrototypeInjection_WhenFunction_ThenNewInstanceReturn() {
 
-        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AbstractApplicationContext context = new AnnotationConfigApplicationContext(AppConfigFunctionBean.class);
 
         SingletonFunctionBean firstContext = context.getBean(SingletonFunctionBean.class);
         SingletonFunctionBean secondContext = context.getBean(SingletonFunctionBean.class);

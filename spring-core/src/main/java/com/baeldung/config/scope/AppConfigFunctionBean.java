@@ -1,8 +1,7 @@
-package com.baeldung.scope;
+package com.baeldung.config.scope;
 
 import java.util.function.Function;
 
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;

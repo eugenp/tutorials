@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
-@ComponentScan("com.baeldung.scope")
+@ComponentScan(value="com.baeldung.scope")
 public class AppConfig {
 
     @Bean
