@@ -5,7 +5,6 @@ import com.baeldung.scope.singletone.SingletonAppContextBean;
 import com.baeldung.scope.singletone.SingletonBean;
 import com.baeldung.scope.singletone.SingletonObjectFactoryBean;
 import com.baeldung.scope.singletone.SingletonProviderBean;
-
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
-@ComponentScan(value="com.baeldung.scope")
+@ComponentScan("com.baeldung.scope")
 public class AppConfig {
 
     @Bean
