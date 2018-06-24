@@ -1,7 +1,6 @@
 package com.baeldung.scope;
 
 import com.baeldung.scope.prototype.PrototypeBean;
-import com.baeldung.scope.prototype.PrototypeBeanWithParam;
 import com.baeldung.scope.singletone.SingletonAppContextBean;
 import com.baeldung.scope.singletone.SingletonBean;
 import com.baeldung.scope.singletone.SingletonFunctionBean;
