@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class JavaParserTest {
+public class JavaParserUnitTest {
 
     @Test
     public void whenOneMethodStartsWithUpperCase_thenOneErrorReturned() throws Exception{
