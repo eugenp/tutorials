@@ -9,9 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring</artifactId>
+        <artifactId>parent-spring-5</artifactId>
     	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../../parent-spring</relativePath>
+    	<relativePath>../../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -74,7 +74,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>5.0.3.RELEASE</spring.version>
         <spring-data-redis>2.0.3.RELEASE</spring-data-redis>
         <cglib.version>3.2.4</cglib.version>
         <jedis.version>2.9.0</jedis.version>
