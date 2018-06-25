@@ -68,6 +68,15 @@ public class Resilience4jUnitTest {
         Bulkhead bulkhead = registry.bulkhead("my");
         Function<Integer, Integer> decorated = Bulkhead.decorateFunction(bulkhead, service::process);
 
+        Future<?> taskInProgress = callAndBlock(decorated);
+        try {
+            assertThat(bulkhead.isCallPermitted()).isFalse();
+        } finally {
+            taskInProgress.cancel(true);
+        }
+    }
+
+    private Future<?> callAndBlock(Function<Integer, Integer> decoratedService) throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(1);
         when(service.process(anyInt())).thenAnswer(invocation -> {
             latch.countDown();
@@ -75,19 +84,11 @@ public class Resilience4jUnitTest {
             return null;
         });
 
-        ForkJoinTask<?> task = ForkJoinPool.commonPool().submit(() -> {
-            try {
-                decorated.apply(1);
-            } finally {
-                bulkhead.onComplete();
-            }
+        ForkJoinTask<?> result = ForkJoinPool.commonPool().submit(() -> {
+            decoratedService.apply(1);
         });
         latch.await();
-        try {
-            assertThat(bulkhead.isCallPermitted()).isFalse();
-        } finally {
-            task.cancel(true);
-        }
+        return result;
     }
 
     @Test
