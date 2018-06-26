@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <input type="text" id="symbol" />
+        <button id="add-button">Add</button>
+        <div id="container"></div>
+    </div>
+    <script>
+        function connect() {
+            var source = new EventSource("http://localhost:8080/quotes/" + $("#symbol").val());
+
+            source.onopen = function(event) {
+                $("#container").append('<label>' + $("#symbol").val() + '</label>');
+                $("#container").append('<div id="' + $("#symbol").val() + '"></div>');
+            };
+
+            source.onmessage = function(event) {
+                var quote = JSON.parse(event.data);
+                $("#" + quote.symbol).html(quote.price);
+            };
+        }
+
+        $(function() {
+
+            $("#add-button").click(function() {
+                connect();
+            });
+
+        });
+    </script>
+</body>
+</html>
