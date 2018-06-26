@@ -2,8 +2,8 @@ package com.baeldung.junit4.runfromjava;
 
 import org.junit.Test;
 
-import com.baeldung.junit4.runfromjava.listnode.ListNode;
-import com.baeldung.junit4.runfromjava.listnode.SwapNodes;
+import com.baeldung.junit5.runfromjava.listnode.ListNode;
+import com.baeldung.junit5.runfromjava.listnode.SwapNodes;
 
 import junit.framework.TestCase;
 

@@ -27,7 +27,7 @@ public class RunJUnit4Tests {
             System.out.println(failure.toString());
         }
 
-        resultReport(result);
+        System.out.println(resultReport(result));
     }
 
     public static void runSuiteOfClasses() {
@@ -37,16 +37,16 @@ public class RunJUnit4Tests {
             System.out.println(failure.toString());
         }
 
-        resultReport(result);
+        System.out.println(resultReport(result));
 
     }
 
     public static String resultReport(Result result) {
-        System.out.println("Finished. Result " + ". Failures: " + 
+        return "Finished. Result " + ". Failures: " + 
                 result.getFailureCount() + ". Ignored: " +
                 result.getIgnoreCount() + ". Tests runt: " + 
                 result.getRunCount() + ". Time: " + 
-                result.getRunTime() + "ms.");
+                result.getRunTime() + "ms.";
     }
 
     public static void runRepeated() {

@@ -15,6 +15,7 @@ import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 import org.junit.platform.launcher.listeners.TestExecutionSummary;
 
+import com.baeldung.junit4.runfromjava.ListNodeTest;
 
 public class RunJUnit5Tests {
     SummaryGeneratingListener listener = new SummaryGeneratingListener();
@@ -27,6 +28,7 @@ public class RunJUnit5Tests {
         Launcher launcher = LauncherFactory.create();
 
         TestPlan testPlan = launcher.discover(request);
+        System.out.println("Tests for one: " + testPlan.containsTests());
 
         launcher.registerTestExecutionListeners(listener);
 
@@ -44,6 +46,7 @@ public class RunJUnit5Tests {
         Launcher launcher = LauncherFactory.create();
 
         TestPlan testPlan = launcher.discover(request);
+        System.out.println("Tests: " + testPlan.containsTests());
 
         launcher.registerTestExecutionListeners(listener);
 
