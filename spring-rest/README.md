@@ -22,4 +22,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to DeferredResult in Spring](http://www.baeldung.com/spring-deferred-result)
 - [Spring Custom Property Editor](http://www.baeldung.com/spring-mvc-custom-property-editor)
 - [Using the Spring RestTemplate Interceptor](http://www.baeldung.com/spring-rest-template-interceptor)
+- [Configure a RestTemplate with RestTemplateBuilder](http://www.baeldung.com/spring-rest-template-builder)
 

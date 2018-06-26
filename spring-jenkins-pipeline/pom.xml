@@ -9,10 +9,10 @@
     <description>Intro to Jenkins 2 and the power of pipelines</description>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-5</relativePath>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
@@ -55,6 +55,7 @@
                         <configuration>
                             <excludes>
                                 <exclude>**/*IntegrationTest.java</exclude>
+                        		<exclude>**/*IntTest.java</exclude>
                             </excludes>
                             <!-- Run only tests whose name end with "UnitTest" -->
                             <includes>
