@@ -203,6 +203,11 @@
             <artifactId>mail</artifactId>
             <version>1.5.0-b01</version>
         </dependency>
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>${icu4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -473,6 +478,7 @@
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
+        <icu4j.version>61.1</icu4j.version>
     </properties>
 
 </project>
