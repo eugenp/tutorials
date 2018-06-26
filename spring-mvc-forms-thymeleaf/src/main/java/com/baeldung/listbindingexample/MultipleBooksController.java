@@ -15,45 +15,47 @@ import java.util.List;
 @RequestMapping("/books")
 public class MultipleBooksController {
 
-	@Autowired
-	private BookService bookService;
+    @Autowired
+    private BookService bookService;
 
-	@GetMapping(value = "/all")
-	public String showAll(Model model) {
-		model.addAttribute("books", bookService.findAll());
+    @GetMapping(value = "/all")
+    public String showAll(Model model) {
+        model.addAttribute("books", bookService.findAll());
 
-		return "allBooks";
-	}
+        return "allBooks";
+    }
 
-	@GetMapping(value = "/create")
-	public String showCreateForm(Model model) {
-		BooksCreationDto booksForm = new BooksCreationDto();
+    @GetMapping(value = "/create")
+    public String showCreateForm(Model model) {
+        BooksCreationDto booksForm = new BooksCreationDto();
 
-		for (int i = 1; i <= 3; i++) {
-			booksForm.addBook(new Book());
-		}
+        for (int i = 1; i <= 3; i++) {
+            booksForm.addBook(new Book());
+        }
 
-		model.addAttribute("form", booksForm);
+        model.addAttribute("form", booksForm);
 
-		return "createBooksForm";
-	}
+        return "createBooksForm";
+    }
 
-	@GetMapping(value = "/edit")
-	public String showEditForm(Model model) {
-		List<Book> books = new ArrayList<>();
-		bookService.findAll().iterator().forEachRemaining(books::add);
+    @GetMapping(value = "/edit")
+    public String showEditForm(Model model) {
+        List<Book> books = new ArrayList<>();
+        bookService.findAll()
+            .iterator()
+            .forEachRemaining(books::add);
 
-		model.addAttribute("form", new BooksCreationDto(books));
+        model.addAttribute("form", new BooksCreationDto(books));
 
-		return "editBooksForm";
-	}
+        return "editBooksForm";
+    }
 
-	@PostMapping(value = "/save")
-	public String saveBooks(@ModelAttribute BooksCreationDto form, Model model) {
-		bookService.saveAll(form.getBooks());
+    @PostMapping(value = "/save")
+    public String saveBooks(@ModelAttribute BooksCreationDto form, Model model) {
+        bookService.saveAll(form.getBooks());
 
-		model.addAttribute("books", bookService.findAll());
+        model.addAttribute("books", bookService.findAll());
 
-		return "redirect:/books/all";
-	}
+        return "redirect:/books/all";
+    }
 }
