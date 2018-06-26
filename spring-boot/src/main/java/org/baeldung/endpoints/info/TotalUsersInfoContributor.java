@@ -3,7 +3,7 @@ package org.baeldung.endpoints.info;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.baeldung.repository.UserRepository;
+import org.baeldung.boot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.info.Info;
 import org.springframework.boot.actuate.info.InfoContributor;
