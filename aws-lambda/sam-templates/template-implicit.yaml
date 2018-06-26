@@ -1,0 +1,75 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Baeldung Serverless Application Model Example with Implicit API Definition
+Globals:
+  Api:
+    EndpointConfiguration: REGIONAL
+    Name: "TestAPI"
+Resources:
+  PersonTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+          Name: id
+          Type: Number
+      TableName: Person
+  StorePersonFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleRequest
+      Runtime: java8
+      Timeout: 15
+      MemorySize: 512
+      CodeUri: ../target/aws-lambda-0.1.0-SNAPSHOT.jar
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref PersonTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref PersonTable
+      Events:
+        StoreApi:
+          Type: Api
+          Properties:
+            Path: /persons
+            Method: PUT
+  GetPersonByPathParamFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByPathParam
+      Runtime: java8
+      Timeout: 15
+      MemorySize: 512
+      CodeUri: ../target/aws-lambda-0.1.0-SNAPSHOT.jar
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref PersonTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref PersonTable
+      Events:
+        GetByPathApi:
+          Type: Api
+          Properties:
+            Path: /persons/{id}
+            Method: GET
+  GetPersonByQueryParamFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByQueryParam
+      Runtime: java8
+      Timeout: 15
+      MemorySize: 512
+      CodeUri: ../target/aws-lambda-0.1.0-SNAPSHOT.jar
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref PersonTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref PersonTable
+      Events:
+        GetByQueryApi:
+          Type: Api
+          Properties:
+            Path: /persons
+            Method: GET

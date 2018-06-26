@@ -1,0 +1,127 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Baeldung Serverless Application Model Example with Inline Swagger API Definition
+Resources:
+  PersonTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+          Name: id
+          Type: Number
+      TableName: Person
+  StorePersonFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleRequest
+      Runtime: java8
+      Timeout: 15
+      MemorySize: 512
+      CodeUri: ../target/aws-lambda-0.1.0-SNAPSHOT.jar
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref PersonTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref PersonTable
+      Events:
+        StoreApi:
+          Type: Api
+          Properties:
+            Path: /persons
+            Method: PUT
+            RestApiId:
+                Ref: MyApi
+  GetPersonByPathParamFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByPathParam
+      Runtime: java8
+      Timeout: 15
+      MemorySize: 512
+      CodeUri: ../target/aws-lambda-0.1.0-SNAPSHOT.jar
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref PersonTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref PersonTable
+      Events:
+        GetByPathApi:
+          Type: Api
+          Properties:
+            Path: /persons/{id}
+            Method: GET
+            RestApiId:
+                Ref: MyApi
+  GetPersonByQueryParamFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByQueryParam
+      Runtime: java8
+      Timeout: 15
+      MemorySize: 512
+      CodeUri: ../target/aws-lambda-0.1.0-SNAPSHOT.jar
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref PersonTable
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref PersonTable
+      Events:
+        GetByQueryApi:
+          Type: Api
+          Properties:
+            Path: /persons
+            Method: GET
+            RestApiId:
+                Ref: MyApi
+  MyApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: test
+      EndpointConfiguration: REGIONAL
+      DefinitionBody:
+        swagger: "2.0"
+        info:
+          title: "TestAPI"
+        paths:
+          /persons:
+            get:
+              parameters:
+              - name: "id"
+                in: "query"
+                required: true
+                type: "string"
+              x-amazon-apigateway-request-validator: "Validate query string parameters and\
+                \ headers"
+              x-amazon-apigateway-integration:
+                uri:
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetPersonByQueryParamFunction.Arn}/invocations
+                responses: {}
+                httpMethod: "POST"
+                type: "aws_proxy"
+            put:
+              x-amazon-apigateway-integration:
+                uri:
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${StorePersonFunction.Arn}/invocations
+                responses: {}
+                httpMethod: "POST"
+                type: "aws_proxy"
+          /persons/{id}:
+            get:
+              parameters:
+              - name: "id"
+                in: "path"
+                required: true
+                type: "string"
+              responses: {}
+              x-amazon-apigateway-integration:
+                uri:
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetPersonByPathParamFunction.Arn}/invocations
+                responses: {}
+                httpMethod: "POST"
+                type: "aws_proxy"
+        x-amazon-apigateway-request-validators:
+          Validate query string parameters and headers:
+            validateRequestParameters: true
+            validateRequestBody: false
