@@ -3,6 +3,7 @@ package com.baeldung.datetime;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 
@@ -43,4 +44,30 @@ class UseLocalDate {
         LocalDateTime startofDay = localDate.atStartOfDay();
         return startofDay;
     }
+
+    LocalDateTime getStartOfDayOfLocalDate(LocalDate localDate) {
+        LocalDateTime startofDay = LocalDateTime.of(localDate, LocalTime.MIDNIGHT);
+        return startofDay;
+    }
+
+    LocalDateTime getStartOfDayAtMinTime(LocalDate localDate) {
+        LocalDateTime startofDay = localDate.atTime(LocalTime.MIN);
+        return startofDay;
+    }
+
+    LocalDateTime getStartOfDayAtMidnightTime(LocalDate localDate) {
+        LocalDateTime startofDay = localDate.atTime(LocalTime.MIDNIGHT);
+        return startofDay;
+    }
+
+    LocalDateTime getEndOfDay(LocalDate localDate) {
+        LocalDateTime endOfDay = localDate.atTime(LocalTime.MAX);
+        return endOfDay;
+    }
+
+    LocalDateTime getEndOfDayFromLocalTime(LocalDate localDate) {
+        LocalDateTime endOfDate = LocalTime.MAX.atDate(localDate);
+        return endOfDate;
+    }
+
 }
