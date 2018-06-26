@@ -79,6 +79,8 @@
 - [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
 - [Apache Commons Collections MapUtils](http://www.baeldung.com/apache-commons-map-utils)
 - [Testing Netty with EmbeddedChannel](http://www.baeldung.com/testing-netty-embedded-channel)
+- [Creating REST Microservices with Javalin](http://www.baeldung.com/javalin-rest-microservices)
+
 
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
