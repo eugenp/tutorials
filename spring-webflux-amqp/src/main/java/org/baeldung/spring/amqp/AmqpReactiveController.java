@@ -1,6 +1,7 @@
 package org.baeldung.spring.amqp;
 
 import java.time.Duration;
+import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
@@ -32,56 +33,52 @@ import reactor.core.scheduler.Schedulers;
 
 @RestController
 public class AmqpReactiveController {
-    
+
     private static Logger log = LoggerFactory.getLogger(AmqpReactiveController.class);
-    
+
     @Autowired
     private AmqpTemplate amqpTemplate;
-    
+
     @Autowired
     private AmqpAdmin amqpAdmin;
 
     @Autowired
     private DestinationsConfig destinationsConfig;
-    
+
     @Autowired
     private MessageListenerContainerFactory messageListenerContainerFactory;
-    
-    
+
     @PostConstruct
     public void setupQueueDestinations() {
 
-
         log.info("[I48] Creating Destinations...");
-    
+
         destinationsConfig.getQueues()
             .forEach((key, destination) -> {
-    
+
                 log.info("[I54] Creating directExchange: key={}, name={}, routingKey={}", key, destination.getExchange(), destination.getRoutingKey());
-    
-                Exchange ex = ExchangeBuilder
-                                .directExchange(destination.getExchange())
-                                .durable(true)
-                                .build();
-                
+
+                Exchange ex = ExchangeBuilder.directExchange(destination.getExchange())
+                    .durable(true)
+                    .build();
+
                 amqpAdmin.declareExchange(ex);
-    
-                Queue q = QueueBuilder
-                            .durable(destination.getRoutingKey())
-                            .build();
-                
+
+                Queue q = QueueBuilder.durable(destination.getRoutingKey())
+                    .build();
+
                 amqpAdmin.declareQueue(q);
-    
+
                 Binding b = BindingBuilder.bind(q)
                     .to(ex)
                     .with(destination.getRoutingKey())
                     .noargs();
-                amqpAdmin.declareBinding(b);
-    
-                log.info("[I70] Binding successfully created.");
-    
-            });
 
+                amqpAdmin.declareBinding(b);
+
+                log.info("[I70] Binding successfully created.");
+
+            });
     }
 
     @PostConstruct
@@ -89,7 +86,7 @@ public class AmqpReactiveController {
 
         // For topic each consumer will have its own Queue, so no binding
         destinationsConfig.getTopics()
-            .forEach((key, destination) -> {
+          .forEach((key, destination) -> {
 
                 log.info("[I98] Creating TopicExchange: name={}, exchange={}", key, destination.getExchange());
 
@@ -103,31 +100,32 @@ public class AmqpReactiveController {
 
             });
     }
-    
-        
+
     @PostMapping(value = "/queue/{name}")
     public Mono<ResponseEntity<?>> sendMessageToQueue(@PathVariable String name, @RequestBody String payload) {
 
         // Lookup exchange details
         final DestinationInfo d = destinationsConfig.getQueues()
             .get(name);
+
         if (d == null) {
             // Destination not found.
-            return Mono.just(ResponseEntity.notFound().build());
+            return Mono.just(ResponseEntity.notFound()
+                .build());
         }
-        
+
         return Mono.fromCallable(() -> {
 
             log.info("[I51] sendMessageToQueue: queue={}, routingKey={}", d.getExchange(), d.getRoutingKey());
             amqpTemplate.convertAndSend(d.getExchange(), d.getRoutingKey(), payload);
-            
-            return  ResponseEntity.accepted().build();
+
+            return ResponseEntity.accepted()
+                .build();
 
         });
 
     }
-    
-    
+
     /**
      * Receive messages for the given queue
      * @param name
@@ -137,61 +135,62 @@ public class AmqpReactiveController {
     @GetMapping(value = "/queue/{name}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<?> receiveMessagesFromQueue(@PathVariable String name) {
 
-        DestinationInfo d = destinationsConfig.getQueues().get(name);
+        DestinationInfo d = destinationsConfig.getQueues()
+            .get(name);
 
         if (d == null) {
-            return Flux.just(ResponseEntity.notFound().build());
+            return Flux.just(ResponseEntity.notFound()
+                .build());
         }
-        
+
         MessageListenerContainer mlc = messageListenerContainerFactory.createMessageListenerContainer(d.getRoutingKey());
-        
-        Flux<String> f = Flux.<String>create(emitter -> {
-           
-            log.info("[I168] Adding listener, queue={}",d.getRoutingKey());            
-            mlc.setupMessageListener( (MessageListener)m -> {
-                
-                String qname = m.getMessageProperties().getConsumerQueue();
-                
+
+        Flux<String> f = Flux.<String> create(emitter -> {
+
+            log.info("[I168] Adding listener, queue={}", d.getRoutingKey());
+            mlc.setupMessageListener((MessageListener) m -> {
+
+                String qname = m.getMessageProperties()
+                    .getConsumerQueue();
+
                 log.info("[I137] Message received, queue={}", qname);
-                
-                if ( emitter.isCancelled()) {
+
+                if (emitter.isCancelled()) {
                     log.info("[I166] cancelled, queue={}", qname);
                     mlc.stop();
                     return;
                 }
-                
+
                 String payload = new String(m.getBody());
                 emitter.next(payload);
-                
+
                 log.info("[I176] Message sent to client, queue={}", qname);
-                
+
             });
 
             emitter.onRequest(v -> {
-                log.info("[I171] Starting container, queue={}",d.getRoutingKey());            
-                mlc.start();                
+                log.info("[I171] Starting container, queue={}", d.getRoutingKey());
+                mlc.start();
             });
-            
-            emitter.onDispose(() -> {                
-              log.info("[I176] onDispose: queue={}", d.getRoutingKey());
-              mlc.stop();
+
+            emitter.onDispose(() -> {
+                log.info("[I176] onDispose: queue={}", d.getRoutingKey());
+                mlc.stop();
             });
-            
-            
-            log.info("[I171] Container started, queue={}",d.getRoutingKey());  
-                                  
-        }).subscribeOn(Schedulers.single());
-                     
+
+            log.info("[I171] Container started, queue={}", d.getRoutingKey());
+
+        });
+        
 
         return Flux.interval(Duration.ofSeconds(5))
-            .map( v -> {
+            .map(v -> {
                 log.info("[I209] sending keepalive message...");
                 return "No news is good news";
             })
-            .subscribeOn(Schedulers.single())            
-            .mergeWith(f);              
+            .mergeWith(f);
     }
-    
+
     /**
      * send message to a given topic
      * @param name
@@ -202,109 +201,108 @@ public class AmqpReactiveController {
     public Mono<ResponseEntity<?>> sendMessageToTopic(@PathVariable String name, @RequestBody String payload) {
 
         // Lookup exchange details
-        final DestinationInfo d = destinationsConfig.getTopics().get(name);
+        final DestinationInfo d = destinationsConfig.getTopics()
+            .get(name);
         if (d == null) {
             // Destination not found.
-            return Mono.just(ResponseEntity.notFound().build());
+            return Mono.just(ResponseEntity.notFound()
+                .build());
         }
-        
+
         return Mono.fromCallable(() -> {
 
             log.info("[I51] sendMessageToTopic: topic={}, routingKey={}", d.getExchange(), d.getRoutingKey());
             amqpTemplate.convertAndSend(d.getExchange(), d.getRoutingKey(), payload);
-            
-            return  ResponseEntity.accepted().build();
+
+            return ResponseEntity.accepted()
+                .build();
 
         });
     }
-    
-    
+
     @GetMapping(value = "/topic/{name}", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<?> receiveMessagesFromTopic(@PathVariable String name) {
 
-        DestinationInfo d = destinationsConfig.getTopics().get(name);
+        DestinationInfo d = destinationsConfig.getTopics()
+            .get(name);
 
         if (d == null) {
-            return Flux.just(ResponseEntity.notFound().build());
+            return Flux.just(ResponseEntity.notFound()
+                .build());
         }
-       
-        final Queue topicQueue = createTopicQueue(d);
+
+        Queue topicQueue = createTopicQueue(d);
         String qname = topicQueue.getName();
-        
+
         MessageListenerContainer mlc = messageListenerContainerFactory.createMessageListenerContainer(qname);
-        
-        Flux<String> f = Flux.<String>create(emitter -> {
-           
-            log.info("[I168] Adding listener, queue={}",qname);  
-            
-            mlc.setupMessageListener( (MessageListener)m -> {
-                
+
+        Flux<String> f = Flux.<String> create(emitter -> {
+
+            log.info("[I168] Adding listener, queue={}", qname);
+
+            mlc.setupMessageListener((MessageListener) m -> {
+
                 log.info("[I137] Message received, queue={}", qname);
-                
-                if ( emitter.isCancelled()) {
+
+                if (emitter.isCancelled()) {
                     log.info("[I166] cancelled, queue={}", qname);
                     mlc.stop();
                     return;
                 }
-                
+
                 String payload = new String(m.getBody());
                 emitter.next(payload);
-                
+
                 log.info("[I176] Message sent to client, queue={}", qname);
-                
+
             });
 
             emitter.onRequest(v -> {
-                log.info("[I171] Starting container, queue={}",qname);            
-                mlc.start();                
+                log.info("[I171] Starting container, queue={}", qname);
+                mlc.start();
             });
-            
-            emitter.onDispose(() -> {                
-              log.info("[I176] onDispose: queue={}", qname);
-              mlc.stop();
-              amqpAdmin.deleteQueue(qname);              
-            });
-            
-            
-            log.info("[I171] Container started, queue={}",qname);  
-                                  
-        }).subscribeOn(Schedulers.single());
 
+            emitter.onDispose(() -> {
+                log.info("[I176] onDispose: queue={}", qname);
+                amqpAdmin.deleteQueue(qname);
+                mlc.stop();
+            });            
+
+            log.info("[I171] Container started, queue={}", qname);
+
+          });
+        
         return Flux.interval(Duration.ofSeconds(5))
-            .map( v -> {
+            .map(v -> {
                 log.info("[I209] sending keepalive message...");
                 return "No news is good news";
             })
             .mergeWith(f);
-        
+
     }
-    
-    
+
     private Queue createTopicQueue(DestinationInfo destination) {
 
         Exchange ex = ExchangeBuilder.topicExchange(destination.getExchange())
-            .durable(true)
-            .build();
+          .durable(true)
+          .build();
 
         amqpAdmin.declareExchange(ex);
 
         // Create a durable queue
-        Queue q = QueueBuilder
-            .durable()
-            .build();
-        
+        Queue q = QueueBuilder.nonDurable()
+          .build();
+
         amqpAdmin.declareQueue(q);
 
         Binding b = BindingBuilder.bind(q)
-            .to(ex)
-            .with(destination.getRoutingKey())
-            .noargs();
-        
+          .to(ex)
+          .with(destination.getRoutingKey())
+          .noargs();
+
         amqpAdmin.declareBinding(b);
 
         return q;
-    }    
-    
-    
+    }
 
 }

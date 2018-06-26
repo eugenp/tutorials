@@ -9,22 +9,21 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MessageListenerContainerFactory {
-    
+
     @Autowired
     private ConnectionFactory connectionFactory;
 
-    
-    public MessageListenerContainerFactory() {}
-    
-    
+    public MessageListenerContainerFactory() {
+    }
+
     public MessageListenerContainer createMessageListenerContainer(String queueName) {
-        
-        SimpleMessageListenerContainer dlmc = new SimpleMessageListenerContainer(connectionFactory);
-        
-        dlmc.addQueueNames(queueName);
-        dlmc.setAcknowledgeMode(AcknowledgeMode.MANUAL);
-        
-        return dlmc;
+
+        SimpleMessageListenerContainer mlc = new SimpleMessageListenerContainer(connectionFactory);
+
+        mlc.addQueueNames(queueName);
+        mlc.setAcknowledgeMode(AcknowledgeMode.AUTO);
+
+        return mlc;
     }
 
 }
