@@ -273,11 +273,11 @@ public class AmqpReactiveController {
           });
         
         return Flux.interval(Duration.ofSeconds(5))
-            .map(v -> {
+          .map(v -> {
                 log.info("[I209] sending keepalive message...");
                 return "No news is good news";
-            })
-            .mergeWith(f);
+          })
+          .mergeWith(f);
 
     }
 
