@@ -54,6 +54,7 @@
         <module>geotools</module>
         <module>testing-modules/groovy-spock</module>
         <module>google-cloud</module>
+        <module>google-web-toolkit</module>
         <module>gson</module>
         <module>guava</module>
         <module>guava-modules/guava-18</module>
@@ -250,7 +251,6 @@
         <module>persistence-modules/liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>testing-modules/mockserver</module>
-        <module>testing-modules/test-containers</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
         <module>saas</module>
@@ -264,7 +264,7 @@
         <module>java-spi</module>
         <module>performance-tests</module>
         <module>twilio</module>
-        <module>spring-boot-ctx-fluent</module> 
+        <module>spring-boot-ctx-fluent</module>
         <module>java-ee-8-security-api</module>
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
