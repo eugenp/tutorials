@@ -6,9 +6,9 @@
 
     <parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>parent-spring</artifactId>
+		<artifactId>parent-spring-4</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../parent-spring</relativePath>
+		<relativePath>../parent-spring-4</relativePath>
 	</parent>
 
     <dependencies>
@@ -54,7 +54,6 @@
         <http-component-version>4.4.6</http-component-version>
         <drools-version>7.4.1.Final</drools-version>
         <apache-poi-version>3.13</apache-poi-version>
-        <spring.version>4.3.6.RELEASE</spring.version>
     </properties>
 
 </project>

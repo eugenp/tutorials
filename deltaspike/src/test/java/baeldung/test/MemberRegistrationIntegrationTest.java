@@ -16,19 +16,12 @@
  */
 package baeldung.test;
 
-import static org.junit.Assert.assertNotNull;
-
-import java.io.File;
-import java.util.logging.Logger;
-
-import javax.inject.Inject;
-
 import baeldung.data.*;
-import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
 import baeldung.model.Member;
 import baeldung.service.MemberRegistration;
 import baeldung.util.Resources;
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
@@ -37,24 +30,39 @@ import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import javax.inject.Inject;
+import java.io.File;
+import java.util.logging.Logger;
+
+import static org.junit.Assert.assertNotNull;
+
 @RunWith(Arquillian.class)
 public class MemberRegistrationIntegrationTest {
     @Deployment
     public static Archive<?> createTestArchive() {
-        File[] files = Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve().withTransitivity().asFile();
+        File[] files = Maven
+          .resolver()
+          .loadPomFromFile("pom.xml")
+          .importRuntimeDependencies()
+          .resolve()
+          .withTransitivity()
+          .asFile();
 
-        return ShrinkWrap.create(WebArchive.class, "test.war")
-                .addClasses(EntityManagerProducer.class, Member.class, MemberRegistration.class, MemberRepository.class, Resources.class, QueryDslRepositoryExtension.class, QueryDslSupport.class, SecondaryPersistenceUnit.class,
-                        SecondaryEntityManagerProducer.class, SecondaryEntityManagerResolver.class)
-                .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml").addAsResource("META-INF/apache-deltaspike.properties").addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml").addAsWebInfResource("test-ds.xml")
-                .addAsWebInfResource("test-secondary-ds.xml").addAsLibraries(files);
+        return ShrinkWrap
+          .create(WebArchive.class, "test.war")
+          .addClasses(EntityManagerProducer.class, Member.class, MemberRegistration.class, MemberRepository.class, Resources.class, QueryDslRepositoryExtension.class, QueryDslSupport.class, SecondaryPersistenceUnit.class, SecondaryEntityManagerProducer.class,
+            SecondaryEntityManagerResolver.class)
+          .addAsResource("META-INF/persistence.xml", "META-INF/persistence.xml")
+          .addAsResource("META-INF/apache-deltaspike.properties")
+          .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
+          .addAsWebInfResource("test-ds.xml")
+          .addAsWebInfResource("test-secondary-ds.xml")
+          .addAsLibraries(files);
     }
 
-    @Inject
-    MemberRegistration memberRegistration;
+    @Inject MemberRegistration memberRegistration;
 
-    @Inject
-    Logger log;
+    @Inject Logger log;
 
     @Test
     public void testRegister() throws Exception {

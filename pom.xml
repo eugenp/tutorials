@@ -9,14 +9,16 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>parent-boot-5</module>
+        <module>parent-boot-1</module>
         <module>parent-boot-2</module>
-        <module>parent-spring</module>
+        <module>parent-spring-4</module>
+        <module>parent-spring-5</module>
         <module>parent-java</module>
         <module>asm</module>
         <module>atomix</module>
         <module>apache-cayenne</module>
         <module>aws</module>
+        <module>aws-lambda</module>
         <module>akka-streams</module>
         <module>algorithms</module>
         <module>annotations</module>
@@ -30,6 +32,7 @@
         <module>apache-opennlp</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>azure</module>
         <module>bootique</module>
         <module>cdi</module>
         <!--<module>core-java-9</module>-->
@@ -59,7 +62,7 @@
         <module>guava-modules/guava-21</module>
         <module>guice</module>
         <module>disruptor</module>
-        <module>handling-spring-static-resources</module>
+        <module>spring-static-resources</module>
         <module>hazelcast</module>
         <module>hbase</module>
         <!--<module>hibernate5</module> -->
@@ -95,13 +98,13 @@
         <module>logging-modules/log-mdc</module>
         <module>logging-modules/log4j</module>
         <module>logging-modules/log4j2</module>
-        <module>logging-modules/log4j2-programmatic-configuration</module>
         <module>logging-modules/logback</module>
         <module>lombok</module>
         <module>mapstruct</module>
         <module>metrics</module>
         <module>maven</module>
         <module>mesos-marathon</module>
+        <module>msf4j</module>
         <module>testing-modules/mockito</module>
         <module>testing-modules/mockito-2</module>
         <module>testing-modules/mocks</module>
@@ -142,7 +145,9 @@
         <module>spring-boot-keycloak</module>
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-admin</module>
+        <module>spring-boot-ops</module>
         <module>spring-boot-security</module>
+        <module>spring-boot-mvc</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -153,6 +158,7 @@
         <module>spring-data-couchbase-2</module>
         <module>persistence-modules/spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
+        <module>spring-data-keyvalue</module>
         <module>spring-data-mongodb</module>
         <module>persistence-modules/spring-data-neo4j</module>
         <module>persistence-modules/spring-data-redis</module>
@@ -180,7 +186,6 @@
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
-        <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
@@ -246,6 +251,7 @@
         <module>persistence-modules/liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>testing-modules/mockserver</module>
+        <module>testing-modules/test-containers</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
         <module>saas</module>
@@ -258,6 +264,12 @@
         <module>jersey</module>
         <module>java-spi</module>
         <module>performance-tests</module>
+        <module>twilio</module>
+        <module>spring-boot-ctx-fluent</module> 
+        <module>java-ee-8-security-api</module>
+        <module>spring-webflux-amqp</module>
+        <module>antlr</module>
+	      <module>maven-archetype</module>
     </modules>
 
     <dependencies>
@@ -341,6 +353,7 @@
                     <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                         <exclude>**/JdbcTest.java</exclude>
@@ -369,9 +382,9 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <failurePriority>5</failurePriority> <!-- TODO change to 0 after fixing the project -->
-                    <aggregate>true</aggregate>
-                    <failOnViolation>false</failOnViolation>
+                    <failurePriority>5</failurePriority>
+                    <aggregate>false</aggregate>
+                    <failOnViolation>true</failOnViolation>
                     <verbose>true</verbose>
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
@@ -466,6 +479,7 @@
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>
@@ -529,5 +543,4 @@
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
-
 </project>
