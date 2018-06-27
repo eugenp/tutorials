@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class ConsoleScannerClass {
 
@@ -48,6 +49,24 @@ public class ConsoleScannerClass {
         }
 
         System.out.println("You are a " + (i > 5 ? "great" : "good") + " developer!");
+
+        int sum = 0, count = 0;
+
+        System.out.println("Please enter your college degrees. To finish, enter baeldung website url");
+
+        while (scanner.hasNextInt()) {
+            int nmbr = scanner.nextInt();
+            sum += nmbr;
+            count++;
+        }
+        int mean = sum / count;
+
+        System.out.println("Your average degree is " + mean);
+
+        if (scanner.hasNext(Pattern.compile("www.baeldung.com")))
+            System.out.println("Correct!");
+        else
+            System.out.println("Baeldung website url is www.baeldung.com");
 
         if (scanner != null)
             scanner.close();
