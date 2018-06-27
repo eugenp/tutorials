@@ -1,6 +1,6 @@
-package com.baeldung.junit5.runfromjava.listnode;
+package com.baeldung.junit.runfromjava.listnode;
 
-import com.baeldung.junit5.runfromjava.listnode.ListNode;
+import com.baeldung.junit.runfromjava.listnode.ListNode;
 
 public class RemovedNthElement {
     public ListNode removeNthFromEnd(ListNode head, int n) {
@@ -8,7 +8,7 @@ public class RemovedNthElement {
         ListNode start = new ListNode(0);
         start.setNext(head);
 
-        ListNode fast = start; 
+        ListNode fast = start;
         ListNode slow = start;
 
         for (int i = 0; i < n + 1 && fast != null; i++) {
@@ -19,10 +19,10 @@ public class RemovedNthElement {
             fast = fast.getNext();
             slow = slow.getNext();
         }
-       
+
         slow.setNext(slow.getNext()
             .getNext());
-        
+
         return start.getNext();
     }
 }

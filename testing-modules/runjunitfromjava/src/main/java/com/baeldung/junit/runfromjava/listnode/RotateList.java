@@ -1,14 +1,14 @@
-package com.baeldung.junit5.runfromjava.listnode;
+package com.baeldung.junit.runfromjava.listnode;
 
-import com.baeldung.junit5.runfromjava.listnode.ListNode;
+import com.baeldung.junit.runfromjava.listnode.ListNode;
 
 public class RotateList {
     public ListNode rotateRight(ListNode list, int n) {
-        
+
         if (list == null || list.getNext() == null) {
             return list;
         }
-        
+
         ListNode tmpList = new ListNode(0);
         tmpList.setNext(list);
         ListNode fast = tmpList;

@@ -2,20 +2,19 @@ package com.baeldung.junit4.runfromjava;
 
 import org.junit.Test;
 
-import com.baeldung.junit5.runfromjava.listnode.ListNode;
+import com.baeldung.junit.runfromjava.listnode.ListNode;
 
 import junit.framework.TestCase;
 
-
-
 public class ListNodeTest extends TestCase {
 
-    public ListNodeTest() {}
+    public ListNodeTest() {
+    }
 
     public ListNodeTest(String name) {
         super(name);
     }
-    
+
     @Test
     public void whenListHasOneElement_thenGetExpectedValue() {
         ListNode listNode = new ListNode(42);
@@ -26,7 +25,8 @@ public class ListNodeTest extends TestCase {
     public void whenInitSimpleList_thenGettersGiveExpectedValues() {
         ListNode listNode = new ListNode(42, new ListNode(666, null));
         assertEquals(listNode.getValue(), 42);
-        assertEquals(listNode.getNext().getValue(), 666);
+        assertEquals(listNode.getNext()
+            .getValue(), 666);
     }
 
     @Test

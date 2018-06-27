@@ -27,7 +27,7 @@ public class RunJUnit4Tests {
             System.out.println(failure.toString());
         }
 
-        System.out.println(resultReport(result));
+        resultReport(result);
     }
 
     public static void runSuiteOfClasses() {
@@ -37,16 +37,16 @@ public class RunJUnit4Tests {
             System.out.println(failure.toString());
         }
 
-        System.out.println(resultReport(result));
+        resultReport(result);
 
     }
 
-    public static String resultReport(Result result) {
-        return "Finished. Result " + ". Failures: " + 
-                result.getFailureCount() + ". Ignored: " +
+    public static void resultReport(Result result) {
+        System.out.println("Finished. Result " + ". Failures: " + 
+                result.getFailureCount() + ". Ignored: " + 
                 result.getIgnoreCount() + ". Tests runt: " + 
                 result.getRunCount() + ". Time: " + 
-                result.getRunTime() + "ms.";
+                result.getRunTime() + "ms.");
     }
 
     public static void runRepeated() {
@@ -57,10 +57,8 @@ public class RunJUnit4Tests {
     public static void runRepeatedTestMethod() {
         TestSuite mySuite = new ActiveTestSuite();
 
-        mySuite.addTest(new RepeatedTest(
-            new MergeListsTest("whenMergingNormalLists_thenGetExpectedString"), 50));
-        mySuite.addTest(new RepeatedTest(
-            new MergeListsTest("twhenMergingNullLists_thenGetNull"), 10));
+        mySuite.addTest(new RepeatedTest(new MergeListsTest("whenMergingNormalLists_thenGetExpectedString"), 50));
+        mySuite.addTest(new RepeatedTest(new MergeListsTest("twhenMergingNullLists_thenGetNull"), 10));
 
         junit.textui.TestRunner.run(mySuite);
     }

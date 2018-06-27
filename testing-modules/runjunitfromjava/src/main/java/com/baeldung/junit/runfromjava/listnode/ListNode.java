@@ -1,4 +1,4 @@
-package com.baeldung.junit5.runfromjava.listnode;
+package com.baeldung.junit.runfromjava.listnode;
 
 public class ListNode {
     private int value;
