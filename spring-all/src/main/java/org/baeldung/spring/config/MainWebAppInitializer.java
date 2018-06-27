@@ -6,13 +6,16 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.context.support.GenericWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class MainWebAppInitializer implements WebApplicationInitializer {
+public class MainWebAppInitializer implements WebApplicationInitializer
+{
 
     /**
      * Register and configure all Servlet container components necessary to power the web application.
@@ -26,14 +29,11 @@ public class MainWebAppInitializer implements WebApplicationInitializer {
         root.scan("org.baeldung.spring.config");
         // root.getEnvironment().setDefaultProfiles("embedded");
 
-        //Manages the lifecycle of the root application context.
-        //Conflicts with other root contexts in the application, so we've manually set the parent below.
-        //sc.addListener(new ContextLoaderListener(root));
+        sc.addListener(new ContextLoaderListener(root));
 
-        // Handles requests into the application
-        GenericWebApplicationContext webApplicationContext = new GenericWebApplicationContext();
-        webApplicationContext.setParent(root);
-        final ServletRegistration.Dynamic appServlet = sc.addServlet("mvc", new DispatcherServlet(webApplicationContext));
+        DispatcherServlet dv = new DispatcherServlet(root);
+        
+        final ServletRegistration.Dynamic appServlet = sc.addServlet("mvc",dv);
         appServlet.setLoadOnStartup(1);
         final Set<String> mappingConflicts = appServlet.addMapping("/");
         if (!mappingConflicts.isEmpty()) {

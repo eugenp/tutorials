@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<security:http use-expressions="true">
+
+	<security:intercept-url pattern="/login*" access="permitAll"/>
+        <security:intercept-url pattern="/logout*" access="permitAll"/>
+        <security:intercept-url pattern="/home*" access="permitAll"/>
+        <security:intercept-url pattern="/files/**" access="permitAll"/>
+        <security:intercept-url pattern="/resources/**" access="permitAll"/>
+        <security:intercept-url pattern="/js/**" access="permitAll"/>
+        <security:intercept-url pattern="/other-files/**" access="permitAll"/>
+        <security:intercept-url pattern="/invalidSession*" access="isAnonymous()"/>
+        <security:intercept-url pattern="/**" access="isAuthenticated()"/>
+
+        <security:form-login login-page='/login.html' authentication-failure-url="/login.html?error=true" authentication-success-handler-ref="myAuthenticationSuccessHandler"
+            default-target-url="/home"/>
+        <security:session-management invalid-session-url="/invalidSession.html" session-fixation-protection="none"/>
+        <security:logout invalidate-session="false" logout-success-url="/logout.html?logSucc=true" delete-cookies="JSESSIONID"/>
+	</security:http>
+
+    <bean id="myAuthenticationSuccessHandler" class="org.baeldung.security.MySimpleUrlAuthenticationSuccessHandler"/>
+    
+	<security:authentication-manager>
+		<security:authentication-provider>
+			<security:user-service>
+				<security:user name="user1" password="user1Pass" authorities="ROLE_USER"/>
+                <security:user name="admin1" password="admin1Pass" authorities="ROLE_ADMIN"/>
+			</security:user-service>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>

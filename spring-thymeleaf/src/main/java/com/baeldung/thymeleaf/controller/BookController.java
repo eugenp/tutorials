@@ -5,6 +5,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.baeldung.thymeleaf.model.Book;
-import com.baeldung.thymeleaf.model.Page;
-import com.baeldung.thymeleaf.utils.BookUtils;
+import com.baeldung.thymeleaf.service.BookService;
 
 @Controller
 public class BookController {
@@ -21,22 +24,20 @@ public class BookController {
     private static int currentPage = 1;
     private static int pageSize = 5;
 
+    @Autowired
+    private BookService bookService;
+  
     @RequestMapping(value = "/listBooks", method = RequestMethod.GET)
     public String listBooks(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
         page.ifPresent(p -> currentPage = p);
         size.ifPresent(s -> pageSize = s);
 
-        List<Book> books = BookUtils.buildBooks();
-        Page<Book> bookPage = new Page<Book>(books, pageSize, currentPage);
+        Page<Book> bookPage = bookService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
-        model.addAttribute("books", bookPage.getList());
-        model.addAttribute("selectedPage", bookPage.getCurrentPage());
-        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("bookPage", bookPage);
 
         int totalPages = bookPage.getTotalPages();
-        model.addAttribute("totalPages", totalPages);
-
-        if (totalPages > 1) {
+        if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
                 .boxed()
                 .collect(Collectors.toList());
