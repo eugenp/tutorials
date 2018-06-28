@@ -14,7 +14,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -24,7 +24,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator" })
-public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
+public class ApplicationConfiguration implements WebMvcConfigurer {
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
@@ -59,7 +59,5 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
         converters.add(new StringHttpMessageConverter());
         converters.add(new RssChannelHttpMessageConverter());
         converters.add(new JsonChannelHttpMessageConverter());
-
-        super.configureMessageConverters(converters);
     }
 }
