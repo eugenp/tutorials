@@ -1,6 +1,5 @@
 package com.baeldung.algorithms.romannumerals;
 
-import java.util.Collections;
 import java.util.List;
 
 class RomanArabicConverter {
@@ -9,8 +8,7 @@ class RomanArabicConverter {
         String romanNumeral = input.toUpperCase();
         int result = 0;
         
-        List<RomanNumeral> romanNumerals = RomanNumeral.getSortedValues();
-        Collections.reverse(romanNumerals);
+        List<RomanNumeral> romanNumerals = RomanNumeral.getReverseSortedValues();
 
         int i = 0;
 
@@ -35,8 +33,7 @@ class RomanArabicConverter {
             throw new IllegalArgumentException(number + " is not in range (0,4000]");
         }
 
-        List<RomanNumeral> romanNumerals = RomanNumeral.getSortedValues();
-        Collections.reverse(romanNumerals);
+        List<RomanNumeral> romanNumerals = RomanNumeral.getReverseSortedValues();
 
         int i = 0;
         StringBuilder sb = new StringBuilder();
