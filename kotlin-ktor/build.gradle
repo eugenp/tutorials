@@ -5,7 +5,7 @@ version '1.0-SNAPSHOT'
 
 
 buildscript {
-    ext.kotlin_version = '1.2.40'
+    ext.kotlin_version = '1.2.41'
     ext.ktor_version = '0.9.2'
 
     repositories {
