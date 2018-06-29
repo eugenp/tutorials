@@ -8,9 +8,7 @@
     <artifactId>spring-boot-logging-log4j2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <name>spring-boot-logging</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Demo project for Spring Boot Logging with Log4J2</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
