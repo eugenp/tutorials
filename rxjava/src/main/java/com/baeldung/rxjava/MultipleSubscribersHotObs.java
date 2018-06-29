@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JFrame;
 import rx.Observable;
@@ -18,9 +19,9 @@ public class MultipleSubscribersHotObs {
     private static final Logger LOGGER = LoggerFactory.getLogger(MultipleSubscribersHotObs.class);
     private static JFrame frame;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, InvocationTargetException {
 
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+        javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
             public void run() {
                 try {
                     createAndShowGUI();
@@ -29,7 +30,6 @@ public class MultipleSubscribersHotObs {
                 }
             }
         });
-        Thread.sleep(2000); // wait for GUI
 
         defaultBehaviour();
         // subscribeBeforeConnect();
