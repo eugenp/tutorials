@@ -1,4 +1,4 @@
-package org.baeldung.model;
+package org.baeldung.boot.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

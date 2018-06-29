@@ -266,8 +266,9 @@
         <module>twilio</module>
         <module>spring-boot-ctx-fluent</module> 
         <module>java-ee-8-security-api</module>
-	<module>spring-webflux-amqp</module>
-	<module>maven-archetype</module>
+        <module>spring-webflux-amqp</module>
+        <module>antlr</module>
+	      <module>maven-archetype</module>
     </modules>
 
     <dependencies>

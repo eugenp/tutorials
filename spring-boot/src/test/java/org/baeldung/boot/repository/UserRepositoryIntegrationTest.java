@@ -1,7 +1,7 @@
-package org.baeldung.repository;
+package org.baeldung.boot.repository;
 
 import org.baeldung.boot.config.H2JpaConfig;
-import org.baeldung.model.User;
+import org.baeldung.boot.domain.User;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,8 +27,7 @@ public class UserRepositoryIntegrationTest {
     private final String USER_NAME_ADAM = "Adam";
     private final Integer ACTIVE_STATUS = 1;
 
-    @Autowired
-    private UserRepository userRepository;
+    @Autowired private UserRepository userRepository;
 
     @Test
     public void givenEmptyDBWhenFindOneByNameThenReturnEmptyOptional() {
