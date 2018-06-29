@@ -14,6 +14,18 @@ import com.google.common.collect.Lists;
 public class ReverseIterator {
 
     /**
+     * Iterate using the for loop.
+     *
+     * @param list the list
+     */
+    public void iterateUsingForLoop(final List<String> list) {
+
+        for (int i = list.size(); i-- > 0; ) {
+            System.out.println(list.get(i));
+        }
+    }
+
+    /**
      * Iterate using the Java {@link ListIterator}.
      *
      * @param list the list
