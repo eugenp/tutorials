@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>apache-solrj</artifactId>
@@ -17,7 +17,12 @@
         <dependency>
             <groupId>org.apache.solr</groupId>
             <artifactId>solr-solrj</artifactId>
-            <version>6.4.0</version>
+            <version>${org.apache.solr.solr-solrj.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <org.apache.solr.solr-solrj.version>6.4.0</org.apache.solr.solr-solrj.version>
+    </properties>
+
 </project>

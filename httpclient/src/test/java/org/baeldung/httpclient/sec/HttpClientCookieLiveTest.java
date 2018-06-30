@@ -1,13 +1,5 @@
 package org.baeldung.httpclient.sec;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -18,9 +10,15 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.HttpContext;
+import org.baeldung.httpclient.ResponseUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
 
 public class HttpClientCookieLiveTest {
 
@@ -35,25 +33,13 @@ public class HttpClientCookieLiveTest {
 
     @After
     public final void after() throws IllegalStateException, IOException {
-        if (response == null) {
-            return;
-        }
-
-        try {
-            final HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                final InputStream instream = entity.getContent();
-                instream.close();
-            }
-        } finally {
-            response.close();
-        }
+        ResponseUtil.closeResponse(response);
     }
 
     // tests
 
     @Test
-    public final void whenSettingCookiesOnARequest_thenCorrect() throws ClientProtocolException, IOException {
+    public final void whenSettingCookiesOnARequest_thenCorrect() throws IOException {
         instance = HttpClientBuilder.create().build();
         final HttpGet request = new HttpGet("http://www.github.com");
         request.setHeader("Cookie", "JSESSIONID=1234");
@@ -64,7 +50,7 @@ public class HttpClientCookieLiveTest {
     }
 
     @Test
-    public final void givenUsingDeprecatedApi_whenSettingCookiesOnTheHttpClient_thenCorrect() throws ClientProtocolException, IOException {
+    public final void givenUsingDeprecatedApi_whenSettingCookiesOnTheHttpClient_thenCorrect() throws IOException {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
         cookie.setDomain(".github.com");
@@ -80,7 +66,7 @@ public class HttpClientCookieLiveTest {
     }
 
     @Test
-    public final void whenSettingCookiesOnTheHttpClient_thenCookieSentCorrectly() throws ClientProtocolException, IOException {
+    public final void whenSettingCookiesOnTheHttpClient_thenCookieSentCorrectly() throws IOException {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
         cookie.setDomain(".github.com");
@@ -96,7 +82,7 @@ public class HttpClientCookieLiveTest {
     }
 
     @Test
-    public final void whenSettingCookiesOnTheRequest_thenCookieSentCorrectly() throws ClientProtocolException, IOException {
+    public final void whenSettingCookiesOnTheRequest_thenCookieSentCorrectly() throws IOException {
         final BasicCookieStore cookieStore = new BasicCookieStore();
         final BasicClientCookie cookie = new BasicClientCookie("JSESSIONID", "1234");
         cookie.setDomain(".github.com");

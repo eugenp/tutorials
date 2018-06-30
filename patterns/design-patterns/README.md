@@ -1,0 +1,12 @@
+### Relevant Articles:
+- [Facade Design Pattern in Java](http://www.baeldung.com/java-facade-pattern)
+- [Singletons in Java](http://www.baeldung.com/java-singleton)
+- [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
+- [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
+- [The Observer Pattern in Java](http://www.baeldung.com/java-observer-pattern)
+- [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
+- [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
+- [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
+- [Composite Design Pattern in Java](http://www.baeldung.com/java-composite-pattern)
+- [Visitor Design Pattern in Java](http://www.baeldung.com/java-visitor-pattern)
+- [The DAO Pattern in Java](http://www.baeldung.com/java-dao-pattern)

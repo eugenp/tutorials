@@ -1,11 +1,11 @@
 package org.baeldung.repository;
 
-import java.util.Map;
-
 import org.baeldung.web.dto.HeavyResource;
 import org.baeldung.web.dto.HeavyResourceAddressOnly;
 
-public class HeavyResourceRepository { 
+import java.util.Map;
+
+public class HeavyResourceRepository {
 
     public void save(HeavyResource heavyResource) {
     }
@@ -21,6 +21,7 @@ public class HeavyResourceRepository {
     public void save(HeavyResource heavyResource, String id) {
 
     }
+
     public void save(HeavyResourceAddressOnly partialUpdate, String id) {
 
     }

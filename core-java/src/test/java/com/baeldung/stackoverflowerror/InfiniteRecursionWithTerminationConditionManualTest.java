@@ -1,8 +1,8 @@
 package com.baeldung.stackoverflowerror;
 
-import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Test;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class InfiniteRecursionWithTerminationConditionManualTest {
     @Test
@@ -23,9 +23,9 @@ public class InfiniteRecursionWithTerminationConditionManualTest {
 
     @Test(expected = StackOverflowError.class)
     public void givenNegativeInt_whenCalcFact_thenThrowsException() {
-            int numToCalcFactorial = -1;
-            InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
+        int numToCalcFactorial = -1;
+        InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
-            irtc.calculateFactorial(numToCalcFactorial);
+        irtc.calculateFactorial(numToCalcFactorial);
     }
 }

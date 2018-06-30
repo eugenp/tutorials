@@ -15,7 +15,7 @@ public class IntegrationTest {
 
         final double i = integrator.integrate(100, function, 0, 10);
 
-        Assert.assertEquals(16 + 2d/3d, i, 1e-7);
+        Assert.assertEquals(16 + 2d / 3d, i, 1e-7);
     }
 
 }

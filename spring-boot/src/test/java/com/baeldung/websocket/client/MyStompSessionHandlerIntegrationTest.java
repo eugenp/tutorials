@@ -6,11 +6,6 @@ import org.mockito.Mockito;
 import org.springframework.messaging.simp.stomp.StompHeaders;
 import org.springframework.messaging.simp.stomp.StompSession;
 
-/**
- * Test class for MyStompSessionHandler
- * @author Kalyan
- *
- */
 public class MyStompSessionHandlerIntegrationTest {
 
     @Test
@@ -23,4 +18,3 @@ public class MyStompSessionHandlerIntegrationTest {
         Mockito.verify(mockSession).send(Mockito.anyString(), Mockito.anyObject());
     }
 }
-

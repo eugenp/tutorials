@@ -13,7 +13,7 @@ public class NettyServer {
 
     private int port;
 
-    public NettyServer(int port) {
+    private NettyServer(int port) {
         this.port = port;
     }
 
@@ -27,7 +27,7 @@ public class NettyServer {
         new NettyServer(port).run();
     }
 
-    public void run() throws Exception {
+    private void run() throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {

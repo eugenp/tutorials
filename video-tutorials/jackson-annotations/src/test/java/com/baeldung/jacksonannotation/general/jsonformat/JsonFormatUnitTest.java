@@ -32,8 +32,8 @@ public class JsonFormatUnitTest {
         Date date = df.parse(toParse);
 
         Book book = new Book(
-                "Design Patterns: Elements of Reusable Object-oriented Software",
-                new Author("The", "GoF")
+          "Design Patterns: Elements of Reusable Object-oriented Software",
+          new Author("The", "GoF")
         );
         book.setPublished(date);
 

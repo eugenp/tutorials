@@ -1,17 +1,23 @@
 package com.baeldung.vavr;
 
+import io.vavr.MatchError;
+import io.vavr.control.Option;
+import org.junit.Test;
+
 import static io.vavr.API.$;
 import static io.vavr.API.Case;
 import static io.vavr.API.Match;
 import static io.vavr.API.run;
-import static io.vavr.Predicates.*;
+import static io.vavr.Predicates.allOf;
+import static io.vavr.Predicates.anyOf;
+import static io.vavr.Predicates.instanceOf;
+import static io.vavr.Predicates.is;
+import static io.vavr.Predicates.isIn;
+import static io.vavr.Predicates.isNotNull;
+import static io.vavr.Predicates.isNull;
+import static io.vavr.Predicates.noneOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
-import io.vavr.MatchError;
-import io.vavr.control.Option;
 
 public class PatternMatchingUnitTest {
     @Test
@@ -100,13 +106,11 @@ public class PatternMatchingUnitTest {
         })));
     }
 
-
-
-    public void displayEven() {
+    private void displayEven() {
         System.out.println("Input is even");
     }
 
-    public void displayOdd() {
+    private void displayOdd() {
         System.out.println("Input is odd");
     }
 }

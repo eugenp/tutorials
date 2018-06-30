@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>drools</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
-
-    <properties>
-        <http-component-version>4.4.6</http-component-version>
-        <drools-version>7.1.0.Beta2</drools-version>
-        <apache-poi-version>3.13</apache-poi-version>
-    </properties>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-spring-4</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-spring-4</relativePath>
+	</parent>
 
     <dependencies>
         <dependency>
@@ -37,7 +28,6 @@
             <artifactId>drools-decisiontables</artifactId>
             <version>${drools-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-core</artifactId>
@@ -53,19 +43,17 @@
             <artifactId>poi</artifactId>
             <version>${apache-poi-version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${apache-poi-version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>4.3.6.RELEASE</version>
-        </dependency>
-
     </dependencies>
+
+    <properties>
+        <http-component-version>4.4.6</http-component-version>
+        <drools-version>7.4.1.Final</drools-version>
+        <apache-poi-version>3.13</apache-poi-version>
+    </properties>
 
 </project>

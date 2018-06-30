@@ -11,5 +11,4 @@
 	</bean>
 
 	<bean id="helm" class="org.baeldung.bean.injection.Helm" />
-
 </beans>

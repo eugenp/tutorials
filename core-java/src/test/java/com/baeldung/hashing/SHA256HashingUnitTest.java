@@ -2,7 +2,7 @@ package com.baeldung.hashing;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class SHA256HashingUnitTest {
 

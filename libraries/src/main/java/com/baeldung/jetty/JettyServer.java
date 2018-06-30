@@ -6,11 +6,11 @@ import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 
-public class JettyServer {
+class JettyServer {
 
     private Server server;
 
-    public void start() throws Exception {
+    void start() throws Exception {
 
         int maxThreads = 100;
         int minThreads = 10;
@@ -21,7 +21,7 @@ public class JettyServer {
         server = new Server(threadPool);
         ServerConnector connector = new ServerConnector(server);
         connector.setPort(8090);
-        server.setConnectors(new Connector[]{connector});
+        server.setConnectors(new Connector[] { connector });
 
         ServletHandler servletHandler = new ServletHandler();
         server.setHandler(servletHandler);
@@ -33,7 +33,7 @@ public class JettyServer {
 
     }
 
-    public void stop() throws Exception {
+    void stop() throws Exception {
         server.stop();
     }
 }

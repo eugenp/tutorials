@@ -1,11 +1,7 @@
 package org.baeldung.httpclient;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.apache.http.Header;
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -20,7 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.util.List;
 
 public class HttpClientHeadersLiveTest {
 
@@ -37,19 +34,7 @@ public class HttpClientHeadersLiveTest {
 
     @After
     public final void after() throws IllegalStateException, IOException {
-        if (response == null) {
-            return;
-        }
-
-        try {
-            final HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                final InputStream instream = entity.getContent();
-                instream.close();
-            }
-        } finally {
-            response.close();
-        }
+        ResponseUtil.closeResponse(response);
     }
 
     // tests - headers - deprecated

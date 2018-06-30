@@ -4,27 +4,24 @@ public class RequestData {
     private int intValue;
     private String stringValue;
 
-    public int getIntValue() {
+    int getIntValue() {
         return intValue;
     }
 
-    public void setIntValue(int intValue) {
+    void setIntValue(int intValue) {
         this.intValue = intValue;
     }
 
-    public String getStringValue() {
+    String getStringValue() {
         return stringValue;
     }
 
-    public void setStringValue(String stringValue) {
+    void setStringValue(String stringValue) {
         this.stringValue = stringValue;
     }
 
     @Override
     public String toString() {
-        return "RequestData{" +
-                "intValue=" + intValue +
-                ", stringValue='" + stringValue + '\'' +
-                '}';
+        return "RequestData{" + "intValue=" + intValue + ", stringValue='" + stringValue + '\'' + '}';
     }
 }

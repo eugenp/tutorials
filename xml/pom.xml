@@ -1,10 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>xml</artifactId>
     <version>0.1-SNAPSHOT</version>
-
     <name>xml</name>
 
     <parent>
@@ -158,15 +157,6 @@
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <source>${java-version}</source>
-                            <target>${java-version}</target>
-                        </configuration>
-                    </plugin>
-
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
@@ -245,8 +235,8 @@
                         </configuration>
                     </plugin>
                     <plugin>
-                        <!-- NOTE: We don't need a groupId specification 
-                            because the group is org.apache.maven.plugins ...which is assumed by default. -->
+                        <!-- NOTE: We don't need a groupId specification because the group
+                            is org.apache.maven.plugins ...which is assumed by default. -->
                         <artifactId>maven-assembly-plugin</artifactId>
                         <configuration>
                             <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
@@ -265,10 +255,8 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <id>make-assembly</id><!-- this is used for 
-                                    inheritance merges -->
-                                <phase>package</phase><!-- append to the 
-                                    packaging phase. -->
+                                <id>make-assembly</id><!-- this is used for inheritance merges -->
+                                <phase>package</phase><!-- append to the packaging phase. -->
                                 <goals>
                                     <goal>attached</goal><!-- goals == mojos -->
                                 </goals>
@@ -293,7 +281,6 @@
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-lang.version>2.4</commons-lang.version>
         <java-version>1.8</java-version>
-
 
 
         <!-- maven plugins -->

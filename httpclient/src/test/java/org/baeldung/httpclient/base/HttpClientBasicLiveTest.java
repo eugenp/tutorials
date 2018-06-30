@@ -1,13 +1,5 @@
 package org.baeldung.httpclient.base;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.notNullValue;
-import static org.junit.Assert.assertThat;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -16,9 +8,16 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.baeldung.httpclient.ResponseUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
 public class HttpClientBasicLiveTest {
 
@@ -35,19 +34,7 @@ public class HttpClientBasicLiveTest {
 
     @After
     public final void after() throws IllegalStateException, IOException {
-        if (response == null) {
-            return;
-        }
-
-        try {
-            final HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                final InputStream instream = entity.getContent();
-                instream.close();
-            }
-        } finally {
-            response.close();
-        }
+        ResponseUtil.closeResponse(response);
     }
 
     // tests

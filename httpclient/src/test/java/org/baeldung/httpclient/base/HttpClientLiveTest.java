@@ -11,12 +11,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.BasicHttpClientConnectionManager;
+import org.baeldung.httpclient.ResponseUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 import static org.hamcrest.Matchers.emptyArray;
 import static org.hamcrest.Matchers.not;
@@ -37,19 +37,7 @@ public class HttpClientLiveTest {
 
     @After
     public final void after() throws IllegalStateException, IOException {
-        if (response == null) {
-            return;
-        }
-
-        try {
-            final HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                final InputStream instream = entity.getContent();
-                instream.close();
-            }
-        } finally {
-            response.close();
-        }
+        ResponseUtil.closeResponse(response);
     }
 
     // tests

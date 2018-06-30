@@ -1,22 +1,7 @@
 package org.baeldung.httpclient;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
@@ -29,6 +14,20 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class HttpClientMultipartLiveTest {
 
@@ -48,7 +47,7 @@ public class HttpClientMultipartLiveTest {
     @Before
     public final void before() {
         client = HttpClientBuilder.create()
-            .build();
+          .build();
         post = new HttpPost(SERVER);
     }
 
@@ -67,15 +66,7 @@ public class HttpClientMultipartLiveTest {
             LOGGER.log(Level.SEVERE, e.getMessage(), e);
             throw e;
         }
-        try {
-            final HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                final InputStream instream = entity.getContent();
-                instream.close();
-            }
-        } finally {
-            response.close();
-        }
+        ResponseUtil.closeResponse(response);
     }
 
     // tests
@@ -83,8 +74,8 @@ public class HttpClientMultipartLiveTest {
     @Test
     public final void givenFileandMultipleTextParts_whenUploadwithAddPart_thenNoExceptions() throws IOException {
         final URL url = Thread.currentThread()
-            .getContextClassLoader()
-            .getResource("uploads/" + TEXTFILENAME);
+          .getContextClassLoader()
+          .getResource("uploads/" + TEXTFILENAME);
 
         final File file = new File(url.getPath());
         final FileBody fileBody = new FileBody(file, ContentType.DEFAULT_BINARY);
@@ -102,7 +93,7 @@ public class HttpClientMultipartLiveTest {
         response = client.execute(post);
 
         final int statusCode = response.getStatusLine()
-            .getStatusCode();
+          .getStatusCode();
         final String responseString = getContent();
         final String contentTypeInHeader = getContentTypeHeader();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
@@ -113,10 +104,10 @@ public class HttpClientMultipartLiveTest {
     }
 
     @Test
-    public final void givenFileandTextPart_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoExeption() throws ClientProtocolException, IOException {
+    public final void givenFileandTextPart_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoExeption() throws IOException {
         final URL url = Thread.currentThread()
-            .getContextClassLoader()
-            .getResource("uploads/" + TEXTFILENAME);
+          .getContextClassLoader()
+          .getResource("uploads/" + TEXTFILENAME);
         final File file = new File(url.getPath());
         final String message = "This is a multipart post";
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -127,7 +118,7 @@ public class HttpClientMultipartLiveTest {
         post.setEntity(entity);
         response = client.execute(post);
         final int statusCode = response.getStatusLine()
-            .getStatusCode();
+          .getStatusCode();
         final String responseString = getContent();
         final String contentTypeInHeader = getContentTypeHeader();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
@@ -138,13 +129,13 @@ public class HttpClientMultipartLiveTest {
     }
 
     @Test
-    public final void givenFileAndInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws ClientProtocolException, IOException {
+    public final void givenFileAndInputStreamandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws IOException {
         final URL url = Thread.currentThread()
-            .getContextClassLoader()
-            .getResource("uploads/" + ZIPFILENAME);
+          .getContextClassLoader()
+          .getResource("uploads/" + ZIPFILENAME);
         final URL url2 = Thread.currentThread()
-            .getContextClassLoader()
-            .getResource("uploads/" + IMAGEFILENAME);
+          .getContextClassLoader()
+          .getResource("uploads/" + IMAGEFILENAME);
         final InputStream inputStream = new FileInputStream(url.getPath());
         final File file = new File(url2.getPath());
         final String message = "This is a multipart post";
@@ -157,7 +148,7 @@ public class HttpClientMultipartLiveTest {
         post.setEntity(entity);
         response = client.execute(post);
         final int statusCode = response.getStatusLine()
-            .getStatusCode();
+          .getStatusCode();
         final String responseString = getContent();
         final String contentTypeInHeader = getContentTypeHeader();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
@@ -169,7 +160,7 @@ public class HttpClientMultipartLiveTest {
     }
 
     @Test
-    public final void givenCharArrayandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws ClientProtocolException, IOException {
+    public final void givenCharArrayandText_whenUploadwithAddBinaryBodyandAddTextBody_ThenNoException() throws IOException {
         final String message = "This is a multipart post";
         final byte[] bytes = "binary code".getBytes();
         final MultipartEntityBuilder builder = MultipartEntityBuilder.create();
@@ -180,7 +171,7 @@ public class HttpClientMultipartLiveTest {
         post.setEntity(entity);
         response = client.execute(post);
         final int statusCode = response.getStatusLine()
-            .getStatusCode();
+          .getStatusCode();
         final String responseString = getContent();
         final String contentTypeInHeader = getContentTypeHeader();
         assertThat(statusCode, equalTo(HttpStatus.SC_OK));
@@ -192,21 +183,21 @@ public class HttpClientMultipartLiveTest {
 
     // UTIL
 
-    final String getContent() throws IOException {
+    private String getContent() throws IOException {
         rd = new BufferedReader(new InputStreamReader(response.getEntity()
-            .getContent()));
+          .getContent()));
         String body = "";
-        String content = "";
+        StringBuilder content = new StringBuilder();
         while ((body = rd.readLine()) != null) {
-            content += body + "\n";
+            content.append(body).append("\n");
         }
-        return content.trim();
+        return content.toString().trim();
     }
 
-    final String getContentTypeHeader() throws IOException {
+    private String getContentTypeHeader() throws IOException {
         return post.getEntity()
-            .getContentType()
-            .toString();
+          .getContentType()
+          .toString();
     }
 
 }

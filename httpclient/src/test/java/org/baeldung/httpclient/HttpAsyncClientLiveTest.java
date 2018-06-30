@@ -101,12 +101,7 @@ public class HttpAsyncClientLiveTest {
 
     @Test
     public void whenUseSSLWithHttpAsyncClient_thenCorrect() throws Exception {
-        final TrustStrategy acceptingTrustStrategy = new TrustStrategy() {
-            @Override
-            public final boolean isTrusted(final X509Certificate[] certificate, final String authType) {
-                return true;
-            }
-        };
+        final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
         final SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, acceptingTrustStrategy).build();
 
         final CloseableHttpAsyncClient client = HttpAsyncClients.custom().setSSLHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER).setSSLContext(sslContext).build();
@@ -160,7 +155,7 @@ public class HttpAsyncClientLiveTest {
         private final HttpContext context;
         private final HttpGet request;
 
-        public GetThread(final CloseableHttpAsyncClient client, final HttpGet request) {
+        GetThread(final CloseableHttpAsyncClient client, final HttpGet request) {
             this.client = client;
             context = HttpClientContext.create();
             this.request = request;
