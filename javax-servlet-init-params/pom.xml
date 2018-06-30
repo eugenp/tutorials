@@ -4,6 +4,13 @@
     <groupId>com.baeldung.javax-servlet-init-params</groupId>
     <artifactId>javax-servlet-init-params</artifactId>
     <version>1.0</version>
+    
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+   </parent>
+   
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
