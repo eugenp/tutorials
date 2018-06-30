@@ -197,6 +197,11 @@
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>${javax.mail.version}</version>
+      </dependency>
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>${icu4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -476,7 +481,7 @@
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
-
+        <icu4j.version>61.1</icu4j.version>
     </properties>
 
 </project>

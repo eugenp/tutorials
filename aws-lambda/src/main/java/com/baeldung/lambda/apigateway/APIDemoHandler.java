@@ -15,152 +15,152 @@ import java.io.*;
 
 public class APIDemoHandler implements RequestStreamHandler {
 
-	private JSONParser parser = new JSONParser();
-	private  static final String DYNAMODB_TABLE_NAME = System.getenv("TABLE_NAME");
+    private JSONParser parser = new JSONParser();
+    private  static final String DYNAMODB_TABLE_NAME = System.getenv("TABLE_NAME");
 
-	@Override
-	public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
+    @Override
+    public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-		JSONObject responseJson = new JSONObject();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        JSONObject responseJson = new JSONObject();
 
-		AmazonDynamoDB client = AmazonDynamoDBClientBuilder.defaultClient();
-		DynamoDB dynamoDb = new DynamoDB(client);
+        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.defaultClient();
+        DynamoDB dynamoDb = new DynamoDB(client);
 
-		try {
-			JSONObject event = (JSONObject) parser.parse(reader);
+        try {
+            JSONObject event = (JSONObject) parser.parse(reader);
 
-			if (event.get("body") != null) {
+            if (event.get("body") != null) {
 
-				Person person = new Person((String) event.get("body"));
+                Person person = new Person((String) event.get("body"));
 
-				dynamoDb.getTable(DYNAMODB_TABLE_NAME)
-						.putItem(new PutItemSpec().withItem(new Item().withNumber("id", person.getId())
-								.withString("firstName", person.getFirstName())
-								.withString("lastName", person.getLastName()).withNumber("age", person.getAge())
-								.withString("address", person.getAddress())));
-			}
+                dynamoDb.getTable(DYNAMODB_TABLE_NAME)
+                        .putItem(new PutItemSpec().withItem(new Item().withNumber("id", person.getId())
+                                .withString("firstName", person.getFirstName())
+                                .withString("lastName", person.getLastName()).withNumber("age", person.getAge())
+                                .withString("address", person.getAddress())));
+            }
 
-			JSONObject responseBody = new JSONObject();
-			responseBody.put("message", "New item created");
+            JSONObject responseBody = new JSONObject();
+            responseBody.put("message", "New item created");
 
-			JSONObject headerJson = new JSONObject();
-			headerJson.put("x-custom-header", "my custom header value");
+            JSONObject headerJson = new JSONObject();
+            headerJson.put("x-custom-header", "my custom header value");
 
-			responseJson.put("statusCode", 200);
-			responseJson.put("headers", headerJson);
-			responseJson.put("body", responseBody.toString());
+            responseJson.put("statusCode", 200);
+            responseJson.put("headers", headerJson);
+            responseJson.put("body", responseBody.toString());
 
-		} catch (ParseException pex) {
-			responseJson.put("statusCode", 400);
-			responseJson.put("exception", pex);
-		}
+        } catch (ParseException pex) {
+            responseJson.put("statusCode", 400);
+            responseJson.put("exception", pex);
+        }
 
-		OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
-		writer.write(responseJson.toString());
-		writer.close();
-	}
+        OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
+        writer.write(responseJson.toString());
+        writer.close();
+    }
 
-	public void handleGetByPathParam(InputStream inputStream, OutputStream outputStream, Context context)
-			throws IOException {
+    public void handleGetByPathParam(InputStream inputStream, OutputStream outputStream, Context context)
+            throws IOException {
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-		JSONObject responseJson = new JSONObject();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        JSONObject responseJson = new JSONObject();
 
-		AmazonDynamoDB client = AmazonDynamoDBClientBuilder.defaultClient();
-		DynamoDB dynamoDb = new DynamoDB(client);
+        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.defaultClient();
+        DynamoDB dynamoDb = new DynamoDB(client);
 
-		Item result = null;
-		try {
-			JSONObject event = (JSONObject) parser.parse(reader);
-			JSONObject responseBody = new JSONObject();
+        Item result = null;
+        try {
+            JSONObject event = (JSONObject) parser.parse(reader);
+            JSONObject responseBody = new JSONObject();
 
-			if (event.get("pathParameters") != null) {
+            if (event.get("pathParameters") != null) {
 
-				JSONObject pps = (JSONObject) event.get("pathParameters");
-				if (pps.get("id") != null) {
+                JSONObject pps = (JSONObject) event.get("pathParameters");
+                if (pps.get("id") != null) {
 
-					int id = Integer.parseInt((String) pps.get("id"));
-					result = dynamoDb.getTable(DYNAMODB_TABLE_NAME).getItem("id", id);
-				}
+                    int id = Integer.parseInt((String) pps.get("id"));
+                    result = dynamoDb.getTable(DYNAMODB_TABLE_NAME).getItem("id", id);
+                }
 
-			}
-			if (result != null) {
+            }
+            if (result != null) {
 
-				Person person = new Person(result.toJSON());
-				responseBody.put("Person", person);
-				responseJson.put("statusCode", 200);
-			} else {
+                Person person = new Person(result.toJSON());
+                responseBody.put("Person", person);
+                responseJson.put("statusCode", 200);
+            } else {
 
-				responseBody.put("message", "No item found");
-				responseJson.put("statusCode", 404);
-			}
+                responseBody.put("message", "No item found");
+                responseJson.put("statusCode", 404);
+            }
 
-			JSONObject headerJson = new JSONObject();
-			headerJson.put("x-custom-header", "my custom header value");
+            JSONObject headerJson = new JSONObject();
+            headerJson.put("x-custom-header", "my custom header value");
 
-			responseJson.put("headers", headerJson);
-			responseJson.put("body", responseBody.toString());
+            responseJson.put("headers", headerJson);
+            responseJson.put("body", responseBody.toString());
 
-		} catch (ParseException pex) {
-			responseJson.put("statusCode", 400);
-			responseJson.put("exception", pex);
-		}
+        } catch (ParseException pex) {
+            responseJson.put("statusCode", 400);
+            responseJson.put("exception", pex);
+        }
 
-		OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
-		writer.write(responseJson.toString());
-		writer.close();
-	}
+        OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
+        writer.write(responseJson.toString());
+        writer.close();
+    }
 
-	public void handleGetByQueryParam(InputStream inputStream, OutputStream outputStream, Context context)
-			throws IOException {
+    public void handleGetByQueryParam(InputStream inputStream, OutputStream outputStream, Context context)
+            throws IOException {
 
-		BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-		JSONObject responseJson = new JSONObject();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        JSONObject responseJson = new JSONObject();
 
-		AmazonDynamoDB client = AmazonDynamoDBClientBuilder.defaultClient();
-		DynamoDB dynamoDb = new DynamoDB(client);
+        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.defaultClient();
+        DynamoDB dynamoDb = new DynamoDB(client);
 
-		Item result = null;
-		try {
-			JSONObject event = (JSONObject) parser.parse(reader);
-			JSONObject responseBody = new JSONObject();
+        Item result = null;
+        try {
+            JSONObject event = (JSONObject) parser.parse(reader);
+            JSONObject responseBody = new JSONObject();
 
-			if (event.get("queryStringParameters") != null) {
+            if (event.get("queryStringParameters") != null) {
 
-				JSONObject qps = (JSONObject) event.get("queryStringParameters");
-				if (qps.get("id") != null) {
+                JSONObject qps = (JSONObject) event.get("queryStringParameters");
+                if (qps.get("id") != null) {
 
-					int id = Integer.parseInt((String) qps.get("id"));
-					result = dynamoDb.getTable(DYNAMODB_TABLE_NAME).getItem("id", id);
-				}
-			}
+                    int id = Integer.parseInt((String) qps.get("id"));
+                    result = dynamoDb.getTable(DYNAMODB_TABLE_NAME).getItem("id", id);
+                }
+            }
 
-			if (result != null) {
+            if (result != null) {
 
-				Person person = new Person(result.toJSON());
-				responseBody.put("Person", person);
-				responseJson.put("statusCode", 200);
-			} else {
+                Person person = new Person(result.toJSON());
+                responseBody.put("Person", person);
+                responseJson.put("statusCode", 200);
+            } else {
 
-				responseBody.put("message", "No item found");
-				responseJson.put("statusCode", 404);
-			}
+                responseBody.put("message", "No item found");
+                responseJson.put("statusCode", 404);
+			 }
 
-			JSONObject headerJson = new JSONObject();
-			headerJson.put("x-custom-header", "my custom header value");
+            JSONObject headerJson = new JSONObject();
+            headerJson.put("x-custom-header", "my custom header value");
 
-			responseJson.put("headers", headerJson);
-			responseJson.put("body", responseBody.toString());
+            responseJson.put("headers", headerJson);
+            responseJson.put("body", responseBody.toString());
 
-		} catch (ParseException pex) {
-			responseJson.put("statusCode", 400);
-			responseJson.put("exception", pex);
-		}
+        } catch (ParseException pex) {
+            responseJson.put("statusCode", 400);
+            responseJson.put("exception", pex);
+        }
 
-		OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
-		writer.write(responseJson.toString());
-		writer.close();
-	}
+        OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
+        writer.write(responseJson.toString());
+        writer.close();
+    }
 
 }
