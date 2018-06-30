@@ -1,17 +1,15 @@
 package com.baeldung;
 
-import java.math.BigDecimal;
-
 public class Quote {
 
     private String symbol;
 
-    private BigDecimal price;
+    private Double price;
 
     public Quote(String symbol, Double price) {
         super();
         this.symbol = symbol;
-        this.price = BigDecimal.valueOf(price);
+        this.price = price;
     }
 
     public String getSymbol() {
@@ -22,11 +20,11 @@ public class Quote {
         this.symbol = symbol;
     }
 
-    public BigDecimal getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

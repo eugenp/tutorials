@@ -1,7 +1,7 @@
 package com.baeldung;
 
 import java.time.Duration;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,6 @@ public class QuoteController {
     @RequestMapping(path = "/{symbol}", method = RequestMethod.GET)
     Flux<Quote> subscribe(@PathVariable("symbol") String symbol) {
         return Flux.interval(pushInterval)
-            .map(index -> new Quote(symbol, ThreadLocalRandom.current()
-                .nextDouble()));
+          .map(index -> new Quote(symbol, new Random().nextDouble()));
     }
 }
