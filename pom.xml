@@ -130,6 +130,7 @@
         <module>spring-4</module>
         <module>spring-5</module>
         <module>spring-5-reactive</module>
+        <module>spring-5-reactive-webapp-sse</module>
         <module>spring-5-mvc</module>
         <module>spring-5-security</module>
         <module>spring-activiti</module>
