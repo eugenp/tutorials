@@ -2,6 +2,7 @@ package com.baeldung.gregorian.calendar;
 
 import static org.junit.Assert.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -51,7 +52,6 @@ public class GregorianCalendarTester {
         assertTrue(31 == calendar.getMaximum(calendar.DAY_OF_MONTH));
         assertTrue(1 == calendar.getMinimum(calendar.DAY_OF_MONTH));
         assertTrue(52 == calendar.getWeeksInWeekYear());
-
     }
 
     @Test
@@ -60,8 +60,15 @@ public class GregorianCalendarTester {
         GregorianCalendar firstDate = new GregorianCalendar(2018, 6, 28);
         GregorianCalendar secondDate = new GregorianCalendar(2018, 5, 28);
         assertTrue(1 == calendarDemo.compareDates(firstDate, secondDate));
-
     }
+    
+    @Test
+    public void test_CompareFirstDateGreaterSecondDate() {
+        GregorianCalendar firstDate = new GregorianCalendar(2018, 6, 28);
+        GregorianCalendar secondDate = new GregorianCalendar(2018, 5, 28);
+        assertTrue(1 == firstDate.compareTo(secondDate));
+    }
+
 
     @Test
     public void test_Compare_Date_FirstDate_Smaller_SecondDate() {
@@ -69,7 +76,13 @@ public class GregorianCalendarTester {
         GregorianCalendar firstDate = new GregorianCalendar(2018, 5, 28);
         GregorianCalendar secondDate = new GregorianCalendar(2018, 6, 28);
         assertTrue(-1 == calendarDemo.compareDates(firstDate, secondDate));
-
+    }
+    
+    @Test
+    public void test_CompareFirstDateSmallerSecondDate() {
+        GregorianCalendar firstDate = new GregorianCalendar(2018, 5, 28);
+        GregorianCalendar secondDate = new GregorianCalendar(2018, 6, 28);
+        assertTrue(-1 == firstDate.compareTo(secondDate));
     }
 
     @Test
@@ -78,7 +91,13 @@ public class GregorianCalendarTester {
         GregorianCalendar firstDate = new GregorianCalendar(2018, 6, 28);
         GregorianCalendar secondDate = new GregorianCalendar(2018, 6, 28);
         assertTrue(0 == calendarDemo.compareDates(firstDate, secondDate));
-
+    }
+    
+    @Test
+    public void test_CompareDatesEqual() {
+        GregorianCalendar firstDate = new GregorianCalendar(2018, 6, 28);
+        GregorianCalendar secondDate = new GregorianCalendar(2018, 6, 28);
+        assertTrue(0 == firstDate.compareTo(secondDate));
     }
 
     @Test
@@ -89,6 +108,13 @@ public class GregorianCalendarTester {
     }
 
     @Test
+    public void test_dateFormatdMMMuuuu() {
+        String expectedDate = new GregorianCalendar(2018, 6, 28).toZonedDateTime()
+            .format(DateTimeFormatter.ofPattern("d MMM uuuu"));
+        assertEquals("28 Jul 2018", expectedDate);
+    }
+
+    @Test
     public void test_addDays() {
         GregorianCalendarExample calendarDemo = new GregorianCalendarExample();
         GregorianCalendar calendarActual = new GregorianCalendar(2018, 6, 28);
@@ -96,7 +122,22 @@ public class GregorianCalendarTester {
         calendarExpected.add(Calendar.DATE, 1);
         Date expectedDate = calendarExpected.getTime();
         assertEquals(expectedDate, calendarDemo.addDays(calendarActual, 1));
+    }
 
+    @Test
+    public void test_addOneDay() {
+        final int finalDay29 = 29;
+        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
+        calendarExpected.add(Calendar.DATE, 1);
+        assertEquals(calendarExpected.get(Calendar.DATE), finalDay29);
+    }
+
+    @Test
+    public void test_subtractOneDay() {
+        final int finalDay27 = 27;
+        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
+        calendarExpected.add(Calendar.DATE, -1);
+        assertEquals(calendarExpected.get(Calendar.DATE), finalDay27);
     }
 
     @Test
@@ -107,7 +148,6 @@ public class GregorianCalendarTester {
         calendarExpected.add(Calendar.DATE, -1);
         Date expectedDate = calendarExpected.getTime();
         assertEquals(expectedDate, calendarDemo.subtractDays(calendarActual, 1));
-
     }
 
     @Test
@@ -118,6 +158,24 @@ public class GregorianCalendarTester {
         calendarExpected.roll(Calendar.MONTH, 8);
         Date expectedDate = calendarExpected.getTime();
         assertEquals(expectedDate, calendarDemo.rollAdd(calendarActual, 8));
+    }
+
+    @Test
+    public void test_rollAddEightMonths() {
+        final int rolledUpMonthMarch = 2, orginalYear2018 = 2018;
+        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
+        calendarExpected.roll(Calendar.MONTH, 8);
+        assertEquals(calendarExpected.get(Calendar.MONTH), rolledUpMonthMarch);
+        assertEquals(calendarExpected.get(Calendar.YEAR), orginalYear2018);
+    }
+
+    @Test
+    public void test_rollSubstractEightMonths() {
+        final int rolledDownMonthNovember = 10, orginalYear2018 = 2018;
+        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
+        calendarExpected.roll(Calendar.MONTH, -8);
+        assertEquals(calendarExpected.get(Calendar.MONTH), rolledDownMonthNovember);
+        assertEquals(calendarExpected.get(Calendar.YEAR), orginalYear2018);
     }
 
     @Test
@@ -138,7 +196,16 @@ public class GregorianCalendarTester {
         calendarExpected.set(Calendar.MONTH, 3);
         Date expectedDate = calendarExpected.getTime();
         assertEquals(expectedDate, calendarDemo.setMonth(calendarActual, 3));
+    }
 
+    @Test
+    public void test_setMonthApril() {
+        final int setMonthApril = 3, orginalYear2018 = 2018, originalDate28 = 28;
+        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
+        calendarExpected.set(Calendar.MONTH, 3);
+        assertEquals(calendarExpected.get(Calendar.MONTH), setMonthApril);
+        assertEquals(calendarExpected.get(Calendar.YEAR), orginalYear2018);
+        assertEquals(calendarExpected.get(Calendar.DATE), originalDate28);
     }
 
     @Test
@@ -149,7 +216,6 @@ public class GregorianCalendarTester {
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
         XMLGregorianCalendar expectedXMLGregorianCalendar = datatypeFactory.newXMLGregorianCalendar(calendarExpected);
         assertEquals(expectedXMLGregorianCalendar, calendarDemo.toXMLGregorianCalendar(calendarActual));
-
     }
 
     @Test
@@ -164,5 +230,14 @@ public class GregorianCalendarTester {
         GregorianCalendarExample calendarDemo = new GregorianCalendarExample();
         assertEquals(false, calendarDemo.isLeapYearExample(2018));
 
+    }
+    
+    @Test
+    public void test_toDate() throws DatatypeConfigurationException {
+        GregorianCalendar calendarActual = new GregorianCalendar(2018, 6, 28);
+        DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
+        XMLGregorianCalendar expectedXMLGregorianCalendar = datatypeFactory.newXMLGregorianCalendar(calendarActual);
+        expectedXMLGregorianCalendar.toGregorianCalendar().getTime();
+        assertEquals(calendarActual.getTime(), expectedXMLGregorianCalendar.toGregorianCalendar().getTime() );
     }
 }
