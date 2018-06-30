@@ -149,6 +149,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                    <!--My environment mark the next to row as error. Should I fix it now?-->
                     <forkCount>3</forkCount>
                     <reuseForks>true</reuseForks>
                     <parallel>methods</parallel>
