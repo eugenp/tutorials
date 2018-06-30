@@ -1,17 +1,18 @@
 package com.baeldung.jdo;
 
-import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
-import org.datanucleus.metadata.PersistenceUnitMetaData;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Query;
 import javax.jdo.Transaction;
-import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import org.datanucleus.api.jdo.JDOPersistenceManagerFactory;
+import org.datanucleus.metadata.PersistenceUnitMetaData;
+import org.junit.Test;
 
 public class GuideToJDOIntegrationTest {
     @Test
@@ -24,6 +25,7 @@ public class GuideToJDOIntegrationTest {
         pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");
         pumd.addProperty("javax.jdo.option.ConnectionPassword", "");
         pumd.addProperty("datanucleus.autoCreateSchema", "true");
+        pumd.addProperty("datanucleus.schema.autoCreateTables", "true");
 
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -58,6 +60,7 @@ public class GuideToJDOIntegrationTest {
         pumd.addProperty("javax.jdo.option.ConnectionUserName", "sa");
         pumd.addProperty("javax.jdo.option.ConnectionPassword", "");
         pumd.addProperty("datanucleus.autoCreateSchema", "true");
+        pumd.addProperty("datanucleus.schema.autoCreateTables", "true");
 
         PersistenceManagerFactory pmf = new JDOPersistenceManagerFactory(pumd, null);
         PersistenceManager pm = pmf.getPersistenceManager();

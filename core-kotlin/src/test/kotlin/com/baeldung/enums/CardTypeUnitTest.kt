@@ -1,5 +1,6 @@
 package com.baeldung.enums
 
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -49,4 +50,35 @@ internal class CardTypeUnitTest {
     fun givenPlatinumCardType_whenCheckColor_thenReturnColor() {
         assertEquals("black", CardType.PLATINUM.color)
     }
+
+    @Test
+    fun whenGetCardTypeByColor_thenSilverCardType() {
+        Assertions.assertEquals(CardType.SILVER, CardType.getCardTypeByColor("gray"))
+    }
+
+    @Test
+    fun whenGetCardTypeByColor_thenGoldCardType() {
+        Assertions.assertEquals(CardType.GOLD, CardType.getCardTypeByColor("yellow"))
+    }
+
+    @Test
+    fun whenGetCardTypeByColor_thenPlatinumCardType() {
+        Assertions.assertEquals(CardType.PLATINUM, CardType.getCardTypeByColor("black"))
+    }
+
+    @Test
+    fun whenGetCardTypeByName_thenSilverCardType() {
+        Assertions.assertEquals(CardType.SILVER, CardType.getCardTypeByName("silver"))
+    }
+
+    @Test
+    fun whenGetCardTypeByName_thenGoldCardType() {
+        Assertions.assertEquals(CardType.GOLD, CardType.getCardTypeByName("gold"))
+    }
+
+    @Test
+    fun whenGetCardTypeByName_thenPlatinumCardType() {
+        Assertions.assertEquals(CardType.PLATINUM, CardType.getCardTypeByName("platinum"))
+    }
+
 }

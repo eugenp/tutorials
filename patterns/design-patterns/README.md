@@ -8,4 +8,4 @@
 - [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
 - [Double-Checked Locking with Singleton](http://www.baeldung.com/java-singleton-double-checked-locking)
 - [Composite Design Pattern in Java](http://www.baeldung.com/java-composite-pattern)
-
+- [Visitor Design Pattern in Java](http://www.baeldung.com/java-visitor-pattern)
