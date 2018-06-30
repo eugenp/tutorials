@@ -1,6 +1,6 @@
-package org.baeldung.boot.repository;
+package org.baeldung.repository;
 
-import org.baeldung.boot.domain.User;
+import org.baeldung.model.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
