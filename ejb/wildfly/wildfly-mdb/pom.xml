@@ -2,7 +2,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>widlfly-mdb</artifactId>
-    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung.wildfly</groupId>
@@ -17,13 +16,6 @@
             <artifactId>javaee-api</artifactId>
             <version>${javaee-api.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- Dependency for web module -->
-        <dependency>
-            <groupId>com.baeldung.wildfly</groupId>
-            <artifactId>wildlfy-web</artifactId>
-            <version>${wildlfy.version}</version>
-            <type>war</type>
         </dependency>
     </dependencies>
 </project>

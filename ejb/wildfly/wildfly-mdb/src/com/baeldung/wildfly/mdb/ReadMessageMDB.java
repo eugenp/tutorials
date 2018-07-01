@@ -1,4 +1,4 @@
-package baeldung.com.example.mdb;
+package com.baeldung.wildfly.mdb;
 
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
