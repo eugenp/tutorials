@@ -31,6 +31,7 @@
     <properties>
         <spring.version>5.0.6.RELEASE</spring.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
+		<jackson-databind.version>2.9.6</jackson-databind.version>
     </properties>
 
 </project>
