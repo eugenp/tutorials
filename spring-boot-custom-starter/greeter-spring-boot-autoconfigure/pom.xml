@@ -40,7 +40,7 @@
 
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>greeter</artifactId>
+            <artifactId>greeter-library</artifactId>
             <version>${greeter.version}</version>
             <optional>true</optional>
         </dependency>

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>greeter</artifactId>
+    <artifactId>greeter-library</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <parent>
         <artifactId>parent-boot-1</artifactId>
