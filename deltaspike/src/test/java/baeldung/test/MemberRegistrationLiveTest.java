@@ -37,7 +37,7 @@ import java.util.logging.Logger;
 import static org.junit.Assert.assertNotNull;
 
 @RunWith(Arquillian.class)
-public class MemberRegistrationIntegrationTest {
+public class MemberRegistrationLiveTest {
     @Deployment
     public static Archive<?> createTestArchive() {
         File[] files = Maven

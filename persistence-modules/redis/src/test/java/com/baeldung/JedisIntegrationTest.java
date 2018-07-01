@@ -1,28 +1,45 @@
 package com.baeldung;
 
-import org.junit.*;
-import redis.clients.jedis.*;
-import redis.embedded.RedisServer;
-
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
+import redis.clients.jedis.Pipeline;
+import redis.clients.jedis.Response;
+import redis.clients.jedis.Transaction;
+import redis.embedded.RedisServer;
+
 public class JedisIntegrationTest {
 
-    private Jedis jedis;
+    private static Jedis jedis;
     private static RedisServer redisServer;
-
-    public JedisIntegrationTest() {
-        jedis = new Jedis();
-    }
+    private static int port;
 
     @BeforeClass
     public static void setUp() throws IOException {
-        redisServer = new RedisServer(6379);
+        
+        // Take an available port
+        ServerSocket s = new ServerSocket(0);
+        port = s.getLocalPort();
+        s.close();
+        
+        redisServer = new RedisServer(port);
         redisServer.start();
+        
+        // Configure JEDIS
+        jedis = new Jedis("localhost", port);
     }
 
     @AfterClass
@@ -178,7 +195,7 @@ public class JedisIntegrationTest {
     public void givenAPoolConfiguration_thenCreateAJedisPool() {
         final JedisPoolConfig poolConfig = buildPoolConfig();
 
-        try (JedisPool jedisPool = new JedisPool(poolConfig, "localhost"); Jedis jedis = jedisPool.getResource()) {
+        try (JedisPool jedisPool = new JedisPool(poolConfig, "localhost", port); Jedis jedis = jedisPool.getResource()) {
 
             // do simple operation to verify that the Jedis resource is working
             // properly

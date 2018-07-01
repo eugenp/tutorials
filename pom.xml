@@ -145,8 +145,10 @@
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-ops</module>
+        <module>spring-boot-persistence</module>
         <module>spring-boot-security</module>
         <module>spring-boot-mvc</module>
+        <module>spring-boot-logging-log4j2</module>	    
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
