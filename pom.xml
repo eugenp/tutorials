@@ -149,7 +149,7 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-security</module>
         <module>spring-boot-mvc</module>
-        <module>spring-boot-logging-log4j2</module>	    
+        <module>spring-boot-logging-log4j2</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -267,11 +267,12 @@
         <module>java-spi</module>
         <module>performance-tests</module>
         <module>twilio</module>
-        <module>spring-boot-ctx-fluent</module> 
+        <module>spring-boot-ctx-fluent</module>
         <module>java-ee-8-security-api</module>
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
 	      <module>maven-archetype</module>
+        <module>apache-meecrowave</module>
     </modules>
 
     <dependencies>
