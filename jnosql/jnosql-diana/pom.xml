@@ -12,12 +12,6 @@
 
     <artifactId>jnosql-diana</artifactId>
 
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <jnosql.version>0.0.6</jnosql.version>
-    </properties>
-
     <build>
         <plugins>
             <plugin>
@@ -36,18 +30,6 @@
         <dependency>
             <groupId>org.jnosql.diana</groupId>
             <artifactId>mongodb-driver</artifactId>
-            <version>${jnosql.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jnosql.diana</groupId>
-            <artifactId>arangodb-driver</artifactId>
-            <version>${jnosql.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jnosql.diana</groupId>
-            <artifactId>hbase-driver</artifactId>
             <version>${jnosql.version}</version>
         </dependency>
 

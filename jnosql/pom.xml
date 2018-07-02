@@ -12,7 +12,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <jnosql.version>0.0.6</jnosql.version>
+        <jnosql.version>0.0.5</jnosql.version>
     </properties>
 
     <modules>
