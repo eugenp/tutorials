@@ -23,11 +23,7 @@ public class MultipleSubscribersHotObs {
 
         javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
             public void run() {
-                try {
-                    createAndShowGUI();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                createAndShowGUI();
             }
         });
 
@@ -38,7 +34,7 @@ public class MultipleSubscribersHotObs {
         // refCountAndSubscribe();
     }
 
-    private static void createAndShowGUI() throws InterruptedException {
+    private static void createAndShowGUI() {
         frame = new JFrame("Hot Observable Demo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setBackground(Color.GRAY);
