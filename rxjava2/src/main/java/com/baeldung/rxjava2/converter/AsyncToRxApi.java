@@ -29,7 +29,6 @@ public class AsyncToRxApi {
                     try {
                         channel.close();
                     } catch (IOException e) {
-                        System.out.println("Error in completion handler");
                         emitter.onError(e);
                         return;
                     }
@@ -41,7 +40,6 @@ public class AsyncToRxApi {
                     try {
                         channel.close();
                     } catch (IOException e) {
-                        System.out.println("Error in failure handler");
                         // ignore
                     }
                     emitter.onError(error);
