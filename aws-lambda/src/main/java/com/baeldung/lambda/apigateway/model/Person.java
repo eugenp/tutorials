@@ -6,19 +6,13 @@ import com.google.gson.GsonBuilder;
 public class Person {
 
     private int id;
-    private String firstName;
-    private String lastName;
-    private int age;
-    private String address;
+    private String name;
 
     public Person(String json) {
         Gson gson = new Gson();
         Person request = gson.fromJson(json, Person.class);
         this.id = request.getId();
-        this.firstName = request.getFirstName();
-        this.lastName = request.getLastName();
-        this.age = request.getAge();
-        this.address = request.getAddress();
+        this.name = request.getName();
     }
 
     public String toString() {
@@ -34,35 +28,11 @@ public class Person {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-	}
 }
