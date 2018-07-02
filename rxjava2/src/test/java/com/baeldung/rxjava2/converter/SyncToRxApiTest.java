@@ -30,7 +30,7 @@ public class SyncToRxApiTest {
             () -> System.out.println("Completed"));
     }
 
-    @Test
+    @Test @Ignore
     public void getMemberListWithAntiPattern() throws IOException {
         sample
           .getMemberListAntiPattern("members.json")
