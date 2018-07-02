@@ -94,6 +94,11 @@
             <artifactId>streamex</artifactId>
             <version>${streamex.version}</version>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.10</version>
+        </dependency>
     </dependencies>
 
     <build>
