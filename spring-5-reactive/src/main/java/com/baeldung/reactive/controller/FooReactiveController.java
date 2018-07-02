@@ -31,7 +31,8 @@ public class FooReactiveController {
     public Flux<Foo> getAllFoos2() {
         final Flux<Foo> foosFlux = Flux.fromStream(Stream.generate(() -> new Foo(new Random().nextLong(), randomAlphabetic(6))));
         final Flux<Long> emmitFlux = Flux.interval(Duration.ofSeconds(1));
-        return Flux.zip(foosFlux, emmitFlux).map(Tuple2::getT1);
+        return Flux.zip(foosFlux, emmitFlux)
+            .map(Tuple2::getT1);
     }
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/foos2")
@@ -40,17 +41,17 @@ public class FooReactiveController {
             while (true) {
                 fluxSink.next(new Foo(new Random().nextLong(), randomAlphabetic(6)));
             }
-        }).sample(Duration.ofSeconds(1)).log();
+        })
+            .sample(Duration.ofSeconds(1))
+            .log();
 
         return flux;
     }
-    
+
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/foo-events")
     public Flux<Foo> getAllFooEvents() {
-    	return Flux.interval(Duration.ofSeconds(1))
-    			.map(val -> 
-    					new Foo(val, "Foo Event")
-    			);
+        return Flux.interval(Duration.ofSeconds(1))
+            .map(val -> new Foo(val, "Foo Event"));
     }
 
 }

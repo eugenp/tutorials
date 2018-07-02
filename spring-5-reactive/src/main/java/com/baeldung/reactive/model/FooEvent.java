@@ -6,6 +6,6 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class FooEvent {
-	private long id;
-	private String name;
+    private long id;
+    private String name;
 }

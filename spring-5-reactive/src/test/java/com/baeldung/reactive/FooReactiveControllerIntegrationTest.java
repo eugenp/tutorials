@@ -1,9 +1,5 @@
 package com.baeldung.reactive;
 
-
-
-
-
 import static org.junit.Assert.assertEquals;
 
 //import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -24,26 +20,26 @@ import reactor.test.StepVerifier;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FooReactiveControllerIntegrationTest {
 
-	@Autowired
-	WebTestClient webTestClient;
-	
-	@Test
+    @Autowired
+    WebTestClient webTestClient;
+
+    @Test
     public void whenGetAllFooEvents_thenCorrect() {
         Foo expectedFooEvent = new Foo(0L, "Foo Event");
-        
-		FluxExchangeResult<Foo> result =
-        		webTestClient.get().uri("/foo-events")
-                .accept(MediaType.TEXT_EVENT_STREAM)
-        		.exchange()
-                .expectStatus().isOk()
-                .returnResult(Foo.class);
-		
-		StepVerifier.create(result.getResponseBody())
-		        .expectNext(expectedFooEvent)
-		        .expectNextCount(2)
-		        .consumeNextWith(event ->
-		        		assertEquals(3, event.getId()))
-		        .thenCancel()
-		        .verify();
+
+        FluxExchangeResult<Foo> result = webTestClient.get()
+            .uri("/foo-events")
+            .accept(MediaType.TEXT_EVENT_STREAM)
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .returnResult(Foo.class);
+
+        StepVerifier.create(result.getResponseBody())
+            .expectNext(expectedFooEvent)
+            .expectNextCount(2)
+            .consumeNextWith(event -> assertEquals(3, event.getId()))
+            .thenCancel()
+            .verify();
     }
 }
