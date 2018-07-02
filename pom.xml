@@ -270,7 +270,8 @@
         <module>java-ee-8-security-api</module>
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
-	      <module>maven-archetype</module>
+	<module>maven-archetype</module>
+	<module>jnosql</module>
     </modules>
 
     <dependencies>
