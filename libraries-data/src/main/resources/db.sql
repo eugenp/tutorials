@@ -1,3 +1,7 @@
+drop table if exists emp;
+drop table if exists dept;
+
+
 create table dept(
   deptno numeric,
   dname  varchar(14),

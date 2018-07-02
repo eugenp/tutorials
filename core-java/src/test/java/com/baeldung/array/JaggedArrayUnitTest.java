@@ -46,7 +46,7 @@ public class JaggedArrayUnitTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         obj.printElements(jaggedArr);
-        assertEquals("[1, 2]\n[3, 4, 5]\n[6, 7, 8, 9]\n", outContent.toString());
+        assertEquals("[1, 2][3, 4, 5][6, 7, 8, 9]", outContent.toString().replace("\r", "").replace("\n", ""));
         System.setOut(System.out);
     }
 

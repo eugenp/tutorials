@@ -18,6 +18,7 @@ public class TutorialBucketService extends AbstractBucketService {
     @Autowired
     public TutorialBucketService(ClusterService clusterService) {
         super(clusterService);
+        openBucket();
     }
 
     @Override

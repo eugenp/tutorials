@@ -13,15 +13,16 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-spring-5</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -65,11 +66,10 @@
             <artifactId>commons-fileupload</artifactId>
             <version>${fileupload.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
+            <version>${jackson-databind.version}</version>
         </dependency>
 
 
@@ -104,24 +104,14 @@
         </profile>
     </profiles>
 
-    <repositories>
-        <repository>
-            <id>1</id>
-            <name>jstl</name>
-            <url>https://mvnrepository.com/artifact/javax.servlet/jstl</url>
-        </repository>
-    </repositories>
-
     <properties>
-        <springframework.version>4.3.7.RELEASE</springframework.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <deploy-path>server default deploy directory</deploy-path>
-        <fileupload.version>1.3.2</fileupload.version>
-        <jackson.version>2.8.7</jackson.version><!-- persistence -->
+        <fileupload.version>1.3.3</fileupload.version>
         <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
     </properties>

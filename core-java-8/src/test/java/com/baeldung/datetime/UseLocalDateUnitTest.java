@@ -1,12 +1,14 @@
 package com.baeldung.datetime;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 public class UseLocalDateUnitTest {
 
@@ -55,6 +57,35 @@ public class UseLocalDateUnitTest {
     @Test
     public void givenLocalDate_whenUsingAtStartOfDay_thenReturnMidnight() {
         assertEquals(LocalDateTime.parse("2016-05-22T00:00:00"), useLocalDate.getStartOfDay(LocalDate.parse("2016-05-22")));
+    }
+
+    @Test
+    public void givenLocalDate_whenSettingStartOfDay_thenReturnMidnightInAllCases() {
+        LocalDate given = LocalDate.parse("2018-06-23");
+
+        LocalDateTime startOfDayWithMethod = useLocalDate.getStartOfDay(given);
+        LocalDateTime startOfDayOfLocalDate = useLocalDate.getStartOfDayOfLocalDate(given);
+        LocalDateTime startOfDayWithMin = useLocalDate.getStartOfDayAtMinTime(given);
+        LocalDateTime startOfDayWithMidnight = useLocalDate.getStartOfDayAtMidnightTime(given);
+
+        assertThat(startOfDayWithMethod).isEqualTo(startOfDayWithMin)
+            .isEqualTo(startOfDayWithMidnight)
+            .isEqualTo(startOfDayOfLocalDate)
+            .isEqualTo(LocalDateTime.parse("2018-06-23T00:00:00"));
+        assertThat(startOfDayWithMin.toLocalTime()).isEqualTo(LocalTime.MIDNIGHT);
+        assertThat(startOfDayWithMin.toString()).isEqualTo("2018-06-23T00:00");
+    }
+
+    @Test
+    public void givenLocalDate_whenSettingEndOfDay_thenReturnLastMomentOfDay() {
+        LocalDate given = LocalDate.parse("2018-06-23");
+
+        LocalDateTime endOfDayWithMax = useLocalDate.getEndOfDay(given);
+        LocalDateTime endOfDayFromLocalTime = useLocalDate.getEndOfDayFromLocalTime(given);
+
+        assertThat(endOfDayWithMax).isEqualTo(endOfDayFromLocalTime);
+        assertThat(endOfDayWithMax.toLocalTime()).isEqualTo(LocalTime.MAX);
+        assertThat(endOfDayWithMax.toString()).isEqualTo("2018-06-23T23:59:59.999999999");
     }
 
 }

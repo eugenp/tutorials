@@ -98,6 +98,7 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                        				<exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*LiveTest.java</include>
