@@ -19,12 +19,23 @@ public class AsyncToRxApiTest {
     }
 
     @Test
-    public void givenMemberJsonFile_whenAsyncLoaded_thenReturnMemberAsFlowable()
-                                                        throws InterruptedException {
+    public void giventMemberListAsyncAsFlowable_whenSubscribing_thenWaitForCompleted()
+      throws InterruptedException {
         this.sample
           .getMemberListAsyncAsFlowable()
           .subscribe(System.out::println,
                     Throwable::printStackTrace);
         Thread.sleep(2000);
     }
+    
+    @Test
+    public void giventMemberListAsyncAsFlowable_whenSubscribing_thenLatchOnCompleted() 
+      throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(1);
+        this.sample
+          .getMemberListAsyncAsFlowable()
+          .subscribe(member -> System.out.println(member), Throwable::getMessage, () -> latch.countDown());
+        latch.await();
+    }
+    
 }
