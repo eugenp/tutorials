@@ -8,7 +8,7 @@ import java.nio.file.Path;
 
 import org.junit.Test;
 
-public class SymLinkExampleTest {
+public class SymLinkExampleUnitTest {
 
 	@Test
 	public void testCreateSymbolicLink() throws IOException {
