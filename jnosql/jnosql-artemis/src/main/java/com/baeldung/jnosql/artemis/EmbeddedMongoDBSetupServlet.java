@@ -38,7 +38,7 @@ public class EmbeddedMongoDBSetupServlet extends HttpServlet {
 
     private void initdb() throws IOException {
         _mongodExe = starter.prepare(new MongodConfigBuilder()
-                .version(Version.Main.PRODUCTION)
+                .version(Version.Main.DEVELOPMENT)
                 .net(new Net(MONGODB_HOST, MONGODB_PORT, Network.localhostIsIPv6()))
                 .build());
         _mongod = _mongodExe.start();
