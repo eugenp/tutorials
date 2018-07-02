@@ -5,34 +5,34 @@ import java.util.List;
 
 public class InstrumentationExample {
 
-    public static void printObjectSize(final Object object) {
+    public static void printObjectSize(Object object) {
         System.out.println("Object type: " + object.getClass() + ", size: " + InstrumentationAgent.getObjectSize(object) + " bytes");
     }
 
-    public static void main(final String[] arguments) {
-        final String emptyString = "";
-        final String string = "Estimating Object Size Using Instrumentation";
-        final String[] stringArray = { emptyString, string, "com.baeldung" };
-        final String[] anotherStringArray = new String[100];
-        final List<String> stringList = new ArrayList<>();
-        final StringBuilder stringBuilder = new StringBuilder(100);
-        final int maxIntPrimitive = Integer.MAX_VALUE;
-        final int minIntPrimitive = Integer.MIN_VALUE;
-        final Integer maxInteger = Integer.MAX_VALUE;
-        final Integer minInteger = Integer.MIN_VALUE;
-        final long zeroLong = 0L;
-        final double zeroDouble = 0.0;
-        final boolean falseBoolean = false;
-        final Object object = new Object();
+    public static void main(String[] arguments) {
+        String emptyString = "";
+        String string = "Estimating Object Size Using Instrumentation";
+        String[] stringArray = { emptyString, string, "com.baeldung" };
+        String[] anotherStringArray = new String[100];
+        List<String> stringList = new ArrayList<>();
+        StringBuilder stringBuilder = new StringBuilder(100);
+        int maxIntPrimitive = Integer.MAX_VALUE;
+        int minIntPrimitive = Integer.MIN_VALUE;
+        Integer maxInteger = Integer.MAX_VALUE;
+        Integer minInteger = Integer.MIN_VALUE;
+        long zeroLong = 0L;
+        double zeroDouble = 0.0;
+        boolean falseBoolean = false;
+        Object object = new Object();
 
         class EmptyClass {
         }
-        final EmptyClass emptyClass = new EmptyClass();
+        EmptyClass emptyClass = new EmptyClass();
 
         class StringClass {
             public String s;
         }
-        final StringClass stringClass = new StringClass();
+        StringClass stringClass = new StringClass();
 
         printObjectSize(emptyString);
         printObjectSize(string);
