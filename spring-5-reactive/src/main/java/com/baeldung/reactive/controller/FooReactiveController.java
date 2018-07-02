@@ -3,7 +3,9 @@ package com.baeldung.reactive.controller;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import java.time.Duration;
+import java.time.temporal.TemporalUnit;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
 
 import org.springframework.http.MediaType;
@@ -41,6 +43,14 @@ public class FooReactiveController {
         }).sample(Duration.ofSeconds(1)).log();
 
         return flux;
+    }
+    
+    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/foo-events")
+    public Flux<Foo> getAllFooEvents() {
+    	return Flux.interval(Duration.ofSeconds(1))
+    			.map(val -> 
+    					new Foo(val, "Foo Event")
+    			);
     }
 
 }
