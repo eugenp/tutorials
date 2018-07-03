@@ -17,9 +17,7 @@
 - [Introduction to Quartz](http://www.baeldung.com/quartz)
 - [How to Warm Up the JVM](http://www.baeldung.com/java-jvm-warmup)
 - [Apache Commons Collections SetUtils](http://www.baeldung.com/apache-commons-setutils)
-- [Guide to Java Data Objects](http://www.baeldung.com/jdo)
 - [Software Transactional Memory in Java Using Multiverse](http://www.baeldung.com/java-multiverse-stm)
-- [Introduction to HikariCP](http://www.baeldung.com/hikaricp)
 - [Serenity BDD with Spring and JBehave](http://www.baeldung.com/serenity-spring-jbehave)
 - [Locality-Sensitive Hashing in Java Using Java-LSH](http://www.baeldung.com/locality-sensitive-hashing)
 - [Apache Commons Collections OrderedMap](http://www.baeldung.com/apache-commons-ordered-map)
@@ -47,7 +45,6 @@
 - [Guide to JDeferred](http://www.baeldung.com/jdeferred)
 - [Integrating Retrofit with RxJava](http://www.baeldung.com/retrofit-rxjava)
 - [Introduction to MBassador](http://www.baeldung.com/mbassador)
-- [Introduction to JCache](http://www.baeldung.com/jcache)
 - [Introduction to Retrofit](http://www.baeldung.com/retrofit)
 - [Using Pairs in Java](http://www.baeldung.com/java-pairs)
 - [Apache Commons Collections Bag](http://www.baeldung.com/apache-commons-bag)
@@ -56,7 +53,6 @@
 - [Introduction To Docx4J](http://www.baeldung.com/docx4j)
 - [Introduction to StreamEx](http://www.baeldung.com/streamex)
 - [Introduction to BouncyCastle with Java](http://www.baeldung.com/java-bouncy-castle)
-- [Intro to JDO Queries 2/2](http://www.baeldung.com/jdo-queries)
 - [Guide to google-http-client](http://www.baeldung.com/google-http-client)
 - [Interact with Google Sheets from Java](http://www.baeldung.com/google-sheets-java-client)
 - [Programatically Create, Configure, and Run a Tomcat Server](http://www.baeldung.com/tomcat-programmatic-setup)
@@ -65,7 +61,7 @@
 - [Creating and Configuring Jetty 9 Server in Java](http://www.baeldung.com/jetty-java-programmatic)
 - [Introduction To OpenCSV](http://www.baeldung.com/opencsv)
 - [Introduction to Akka Actors in Java](http://www.baeldung.com/akka-actors-java)
-- [Asynchronous HTTP with async-http-client in Java](https://github.com/eugenp/tutorials/tree/master/libraries)
+- [Asynchronous HTTP with async-http-client in Java](http://www.baeldung.com/async-http-client)
 - [Introduction to Smooks](http://www.baeldung.com/smooks)
 - [WebSockets with AsyncHttpClient](http://www.baeldung.com/async-http-client-websockets)
 - [A Guide to Infinispan in Java](http://www.baeldung.com/infinispan)
@@ -82,6 +78,10 @@
 - [Publish and Receive Messages with Nats Java Client](http://www.baeldung.com/nats-java-client)
 - [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
 - [Apache Commons Collections MapUtils](http://www.baeldung.com/apache-commons-map-utils)
+- [Testing Netty with EmbeddedChannel](http://www.baeldung.com/testing-netty-embedded-channel)
+- [Creating REST Microservices with Javalin](http://www.baeldung.com/javalin-rest-microservices)
+
+
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

@@ -7,7 +7,7 @@
     <packaging>war</packaging>
 
     <parent>
-        <groupId>com.baeldung.patterns</groupId>
+        <groupId>com.baeldung</groupId>
         <artifactId>patterns-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>..</relativePath>

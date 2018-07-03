@@ -9,17 +9,18 @@
     <packaging>war</packaging>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-spring-4</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-spring-4</relativePath>
+	</parent>
 
     <dependencies>
         <!-- Spring Dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -30,7 +31,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -41,7 +42,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -83,12 +84,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-messaging</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -173,8 +174,7 @@
     </build>
 
     <properties>
-        <springframework.version>4.3.8.RELEASE</springframework.version>
-        <springsecurity.version>4.2.3.RELEASE</springsecurity.version>
+        <springsecurity.version>4.2.6.RELEASE</springsecurity.version>
         <jackson.version>2.8.7</jackson.version>
         <slf4j.version>1.7.25</slf4j.version>
         <hibernate-core.version>5.2.10.Final</hibernate-core.version>

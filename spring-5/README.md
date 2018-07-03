@@ -16,3 +16,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Introduction to Spring REST Docs](http://www.baeldung.com/spring-rest-docs)
 - [Spring Security 5 – OAuth2 Login](http://www.baeldung.com/spring-security-5-oauth2-login)
 - [Spring ResponseStatusException](http://www.baeldung.com/spring-response-status-exception)
+- [Spring Assert Statements](http://www.baeldung.com/spring-assert)

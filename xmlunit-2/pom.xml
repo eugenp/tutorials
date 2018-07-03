@@ -4,7 +4,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>xmlunit-2</artifactId>
     <version>1.0</version>
-    <name>XMLUnit-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

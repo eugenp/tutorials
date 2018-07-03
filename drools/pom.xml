@@ -5,10 +5,11 @@
     <artifactId>drools</artifactId>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-    </parent>
+		<groupId>com.baeldung</groupId>
+		<artifactId>parent-spring-4</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-spring-4</relativePath>
+	</parent>
 
     <dependencies>
         <dependency>
@@ -47,18 +48,12 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${apache-poi-version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring-core.version}</version>
-        </dependency>
     </dependencies>
 
     <properties>
         <http-component-version>4.4.6</http-component-version>
         <drools-version>7.4.1.Final</drools-version>
         <apache-poi-version>3.13</apache-poi-version>
-        <spring-core.version>4.3.6.RELEASE</spring-core.version>
     </properties>
 
 </project>
