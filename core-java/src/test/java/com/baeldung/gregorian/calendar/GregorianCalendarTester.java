@@ -161,20 +161,20 @@ public class GregorianCalendarTester {
     }
 
     @Test
-    public void test_rollAddEightMonths() {
-        final int rolledUpMonthMarch = 2, orginalYear2018 = 2018;
+    public void test_whenRollUpOneMonth_thenYearIsUnchanged() {
+        final int rolledUpMonthJuly = 7, orginalYear2018 = 2018;
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
-        calendarExpected.roll(Calendar.MONTH, 8);
-        assertEquals(calendarExpected.get(Calendar.MONTH), rolledUpMonthMarch);
+        calendarExpected.roll(Calendar.MONTH, 1);
+        assertEquals(calendarExpected.get(Calendar.MONTH), rolledUpMonthJuly);
         assertEquals(calendarExpected.get(Calendar.YEAR), orginalYear2018);
     }
 
     @Test
-    public void test_rollSubstractEightMonths() {
-        final int rolledDownMonthNovember = 10, orginalYear2018 = 2018;
+    public void test_whenRollDownOneMonth_thenYearIsUnchanged() {
+        final int rolledDownMonthJune = 5, orginalYear2018 = 2018;
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
-        calendarExpected.roll(Calendar.MONTH, -8);
-        assertEquals(calendarExpected.get(Calendar.MONTH), rolledDownMonthNovember);
+        calendarExpected.roll(Calendar.MONTH, -1);
+        assertEquals(calendarExpected.get(Calendar.MONTH), rolledDownMonthJune);
         assertEquals(calendarExpected.get(Calendar.YEAR), orginalYear2018);
     }
 
@@ -214,8 +214,10 @@ public class GregorianCalendarTester {
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
         GregorianCalendar calendarActual = new GregorianCalendar(2018, 6, 28);
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
-        XMLGregorianCalendar expectedXMLGregorianCalendar = datatypeFactory.newXMLGregorianCalendar(calendarExpected);
-        assertEquals(expectedXMLGregorianCalendar, calendarDemo.toXMLGregorianCalendar(calendarActual));
+        XMLGregorianCalendar expectedXMLGregorianCalendar = datatypeFactory
+            .newXMLGregorianCalendar(calendarExpected);
+        assertEquals(expectedXMLGregorianCalendar, 
+            calendarDemo.toXMLGregorianCalendar(calendarActual));
     }
 
     @Test
@@ -236,8 +238,10 @@ public class GregorianCalendarTester {
     public void test_toDate() throws DatatypeConfigurationException {
         GregorianCalendar calendarActual = new GregorianCalendar(2018, 6, 28);
         DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
-        XMLGregorianCalendar expectedXMLGregorianCalendar = datatypeFactory.newXMLGregorianCalendar(calendarActual);
+        XMLGregorianCalendar expectedXMLGregorianCalendar = datatypeFactory
+            .newXMLGregorianCalendar(calendarActual);
         expectedXMLGregorianCalendar.toGregorianCalendar().getTime();
-        assertEquals(calendarActual.getTime(), expectedXMLGregorianCalendar.toGregorianCalendar().getTime() );
+        assertEquals(calendarActual.getTime(), 
+            expectedXMLGregorianCalendar.toGregorianCalendar().getTime() );
     }
 }
