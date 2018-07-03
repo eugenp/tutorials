@@ -6,43 +6,28 @@ import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Optional;
+import static java.nio.file.StandardOpenOption.*;
 import java.util.stream.IntStream;
 
 public class SymLinkExample {
 
-	public Optional<Path> createSymbolicLink(String linkPath, Path target) {
-		try {
-			Path link = Paths.get(linkPath);
-			if (Files.exists(link))
-				Files.delete(link);
-			Files.createSymbolicLink(link, target);
-			return Optional.of(link);
-		} catch (IOException e) {
-			// process IO error
-		}
-		return Optional.empty();
+	public void createSymbolicLink(Path link, Path target) throws IOException {
+		if (Files.exists(link))
+			Files.delete(link);
+		Files.createSymbolicLink(link, target);
 	}
 
-	public Optional<Path> createHardLink(String linkPath, Path target) {
-		try {
-			Path link = Paths.get(linkPath);
-			if (Files.exists(link))
-				Files.delete(link);
-			Files.createLink(link, target);
-			return Optional.of(link);
-		} catch (IOException e) {
-			// process IO error
-		}
-		return Optional.empty();
+	public void createHardLink(Path link, Path target) throws IOException {
+		if (Files.exists(link))
+			Files.delete(link);
+		Files.createLink(link, target);
 	}
 
 	public Path createTextFile() throws IOException {
 		byte[] content = IntStream.range(0, 10000).mapToObj(i -> i + System.lineSeparator()).reduce("", String::concat)
 				.getBytes(StandardCharsets.UTF_8);
-		Path filePath = Paths.get("", "target_link.txt");
-		Files.write(filePath, content, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+		Path filePath = Paths.get(".", "target_link.txt");
+		Files.write(filePath, content, CREATE, TRUNCATE_EXISTING);
 		return filePath;
 	}
 
@@ -56,9 +41,9 @@ public class SymLinkExample {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) throws IOException {
-		new SymLinkExample().printLinkFiles(Paths.get(""));
+		new SymLinkExample().printLinkFiles(Paths.get("."));
 	}
 
 }
