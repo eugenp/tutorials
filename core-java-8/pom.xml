@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>core-java-8</artifactId>
@@ -10,8 +10,8 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-java</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../parent-java</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -170,8 +170,7 @@
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </transformer>
                             </transformers>
@@ -195,16 +194,16 @@
                     </execution>
                 </executions>
             </plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<compilerArgument>-parameters</compilerArgument>
-				</configuration>
-			</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <compilerArgument>-parameters</compilerArgument>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -225,7 +224,6 @@
 
     <properties>
         <!-- util -->
-        <guava.version>21.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <commons-io.version>2.5</commons-io.version>

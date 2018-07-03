@@ -29,7 +29,7 @@
     </dependencies>
 
     <build>
-        <finalName>springamqp</finalName>
+        <finalName>spring-amqp</finalName>
     </build>
 
     <properties>
