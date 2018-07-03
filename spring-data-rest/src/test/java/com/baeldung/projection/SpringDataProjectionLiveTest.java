@@ -25,7 +25,7 @@ import com.baeldung.repositories.BookRepository;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringDataRestApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 
-public class SpringDataProjectionIntegrationTest {
+public class SpringDataProjectionLiveTest {
     private static final String BOOK_ENDPOINT = "http://localhost:8080/books";
     private static final String AUTHOR_ENDPOINT = "http://localhost:8080/authors";
 
