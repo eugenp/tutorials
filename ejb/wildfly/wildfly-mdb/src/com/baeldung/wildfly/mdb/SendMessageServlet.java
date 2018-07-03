@@ -25,19 +25,15 @@ public class SendMessageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String text = req.getParameter("text") != null ? req.getParameter("text") : "Hello World";
-    	/*
-        Context ic;
-        ConnectionFactory cf;
-        Connection connection = null;
- */
+
         try (
-        	Context ic = new InitialContext();
+            Context ic = new InitialContext();
  
-        	ConnectionFactory cf = (ConnectionFactory) ic.lookup("/ConnectionFactory");
+            ConnectionFactory cf = (ConnectionFactory) ic.lookup("/ConnectionFactory");
             Queue queue = (Queue) ic.lookup("queue/tutorialQueue");
  
-        		Connection connection = cf.createConnection();
-        		) {
+            Connection connection = cf.createConnection();
+        ) {
             Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
             MessageProducer publisher = session.createProducer(queue);
  
@@ -47,19 +43,9 @@ public class SendMessageServlet extends HttpServlet {
             publisher.send(message);
  
         } catch (NamingException | JMSException e) {
-        	res.getWriter().println("Error while trying to send <" + text + "> message: " + e.getMessage());
-		} 
-        /*
-        finally {
-            if (connection !=null) {
-                try {
-                    connection.close();
-                } catch (JMSException e) {
-                    System.out.println("Error while trying to close the connection: " + e.getMessage());
-                }
-            }
-        }
-        */
+            res.getWriter().println("Error while trying to send <" + text + "> message: " + e.getMessage());
+        } 
+
         res.getWriter().println("Message sent: " + text);
     }
  
