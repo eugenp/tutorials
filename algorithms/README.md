@@ -5,7 +5,6 @@
 - [Ant Colony Optimization](http://www.baeldung.com/java-ant-colony-optimization)
 - [Validating Input With Finite Automata in Java](http://www.baeldung.com/java-finite-automata)
 - [Introduction to Jenetics Library](http://www.baeldung.com/jenetics)
-- [Check If a Number Is Prime in Java](http://www.baeldung.com/java-prime-numbers)
 - [Example of Hill Climbing Algorithm](http://www.baeldung.com/java-hill-climbing-algorithm)
 - [Monte Carlo Tree Search for Tic-Tac-Toe Game](http://www.baeldung.com/java-monte-carlo-tree-search)
 - [String Search Algorithms for Large Texts](http://www.baeldung.com/java-full-text-search-algorithms)
@@ -21,4 +20,3 @@
 - [Create a Sudoku Solver in Java](http://www.baeldung.com/java-sudoku)
 - [Displaying Money Amounts in Words](http://www.baeldung.com/java-money-into-words)
 - [A Collaborative Filtering Recommendation System in Java](http://www.baeldung.com/java-collaborative-filtering-recommendations)
-- [Find All Pairs of Numbers in an Array That Add Up to a Given Sum](http://www.baeldung.com/java-algorithm-number-pairs-sum)
