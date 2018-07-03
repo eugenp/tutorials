@@ -67,7 +67,7 @@ public class MappingFrameworksPerformance {
           refundPolicy
         );
 
-        Discount discount = new Discount(Instant.now().toString(), Instant.now().toString(), BigDecimal.valueOf(5.99));
+        Discount discount = new Discount(LocalDate.of(2018, 10, 20), LocalDate.of(2018, 10, 30), BigDecimal.valueOf(5.99));
         Address deliveryAddress = new Address("Washington Street 5", "New York", "55045", "USA");
         DeliveryData deliveryData = new DeliveryData(deliveryAddress, true, "", 10);
         Address shopAddress = new Address("Roosvelt Street 9", "Boston", "55042", "USA");
@@ -83,8 +83,8 @@ public class MappingFrameworksPerformance {
         Shop shop = new Shop("Super Shop", shopAddress, "www.super-shop.com", reviewList);
 
         sourceOrder = new SourceOrder(OrderStatus.CONFIRMED,
-          Instant.now().toString(),
-          Instant.MAX.toString(),
+          LocalDate.of(2018, 10, 1),
+          LocalDate.of(2018, 10, 31),
           PaymentType.TRANSFER,
           discount,
           deliveryData,

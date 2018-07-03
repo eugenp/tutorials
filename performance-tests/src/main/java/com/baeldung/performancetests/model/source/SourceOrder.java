@@ -1,9 +1,10 @@
 package com.baeldung.performancetests.model.source;
 
 
+import java.time.LocalDate;
 import java.util.List;
 public class SourceOrder {
-    private String orderFinishDate;
+    private LocalDate orderFinishDate;
     private PaymentType paymentType;
     private Discount discount;
     private DeliveryData deliveryData;
@@ -12,7 +13,7 @@ public class SourceOrder {
     private Shop offeringShop;
     private int orderId;
     private OrderStatus status;
-    private String orderDate;
+    private LocalDate orderDate;
     public SourceOrder() {
     }
 
@@ -40,19 +41,19 @@ public class SourceOrder {
         this.status = status;
     }
 
-    public String getOrderDate() {
+    public LocalDate getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(String orderDate) {
+    public void setOrderDate(LocalDate orderDate) {
         this.orderDate = orderDate;
     }
 
-    public String getOrderFinishDate() {
+    public LocalDate getOrderFinishDate() {
         return orderFinishDate;
     }
 
-    public void setOrderFinishDate(String orderFinishDate) {
+    public void setOrderFinishDate(LocalDate orderFinishDate) {
         this.orderFinishDate = orderFinishDate;
     }
 
@@ -100,7 +101,7 @@ public class SourceOrder {
         this.orderId = orderId;
     }
 
-    public SourceOrder(OrderStatus status, String orderDate, String orderFinishDate, PaymentType paymentType, Discount discount, DeliveryData deliveryData, User orderingUser, List<Product> orderedProducts, Shop offeringShop, int orderId) {
+    public SourceOrder(OrderStatus status, LocalDate orderDate, LocalDate orderFinishDate, PaymentType paymentType, Discount discount, DeliveryData deliveryData, User orderingUser, List<Product> orderedProducts, Shop offeringShop, int orderId) {
 
         this.status = status;
         this.orderDate = orderDate;
