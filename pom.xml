@@ -18,6 +18,7 @@
         <module>atomix</module>
         <module>apache-cayenne</module>
         <module>aws</module>
+        <module>aws-lambda</module>
         <module>akka-streams</module>
         <module>algorithms</module>
         <module>annotations</module>
@@ -144,7 +145,10 @@
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-ops</module>
+        <module>spring-boot-persistence</module>
         <module>spring-boot-security</module>
+        <module>spring-boot-mvc</module>
+        <module>spring-boot-logging-log4j2</module>	    
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -264,7 +268,9 @@
         <module>twilio</module>
         <module>spring-boot-ctx-fluent</module> 
         <module>java-ee-8-security-api</module>
-		    <module>spring-webflux-amqp</module>
+        <module>spring-webflux-amqp</module>
+        <module>antlr</module>
+	      <module>maven-archetype</module>
     </modules>
 
     <dependencies>

@@ -160,3 +160,4 @@
 - [Guide to the super Java Keyword](http://www.baeldung.com/java-super)
 - [Guide to the this Java Keyword](http://www.baeldung.com/java-this)
 - [Jagged Arrays In Java](http://www.baeldung.com/java-jagged-arrays)
+- [Importance of Main Manifest Attribute in a Self-Executing JAR](http://www.baeldung.com/java-jar-executable-manifest-main-class)
