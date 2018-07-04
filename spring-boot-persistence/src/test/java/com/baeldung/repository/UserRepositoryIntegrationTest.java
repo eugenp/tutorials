@@ -1,6 +1,6 @@
-package org.baeldung.boot.repository;
+package com.baeldung.repository;
 
-import org.baeldung.boot.domain.User;
+import com.baeldung.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class UserRepositoryDataJpaIntegrationTest {
+public class UserRepositoryIntegrationTest {
 
     @Autowired private UserRepository userRepository;
 
@@ -24,7 +24,7 @@ public class UserRepositoryDataJpaIntegrationTest {
     public void givenTwoImportFilesWhenFindAllShouldReturnSixUsers() {
         Collection<User> users = userRepository.findAll();
 
-        assertThat(users.size()).isEqualTo(6);
+        assertThat(users.size()).isEqualTo(9);
     }
 
 }
