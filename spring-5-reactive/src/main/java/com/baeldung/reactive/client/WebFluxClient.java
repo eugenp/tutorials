@@ -11,18 +11,18 @@ import static org.springframework.boot.SpringApplication.run;
 @SpringBootApplication
 public class WebFluxClient {
 
-  public static void main(String[] args) {
+    public static void main(String[] args) {
     run(WebFluxClient.class, args);
   }
 
-  @Bean
-  public CommandLineRunner printBookNames() {
-    return args -> {
-      WebClient client = WebClient.create("http://localhost:8080");
+    @Bean
+    public CommandLineRunner printBookNames() {
+        return args -> {
+            WebClient client = WebClient.create("http://localhost:8080");
 
-      client.get().uri("/books/names").exchange()
-        .flatMapMany(bookName -> bookName.bodyToFlux(String.class))
-        .subscribe(System.out::println);
-    };
-  }
+            client.get().uri("/books/names").exchange()
+              .flatMapMany(bookName -> bookName.bodyToFlux(String.class))
+              .subscribe(System.out::println);
+        };
+    }
 }
