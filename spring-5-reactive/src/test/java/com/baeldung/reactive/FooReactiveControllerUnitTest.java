@@ -18,7 +18,7 @@ import reactor.test.StepVerifier;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class FooReactiveControllerIntegrationTest {
+public class FooReactiveControllerUnitTest {
 
     @Autowired
     WebTestClient webTestClient;
