@@ -1,10 +1,10 @@
 package com.baeldung.prime;
 
-import static com.baeldung.prime.PrimeGenerator.*;
-
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
+
+import static com.baeldung.prime.PrimeGenerator.*;
 import static org.junit.Assert.*;
 
 public class PrimeGeneratorUnitTest {

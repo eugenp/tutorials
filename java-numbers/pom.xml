@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-numbers</artifactId>
     <version>0.1.0-SNAPSHOT</version>
@@ -12,8 +13,13 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-java</relativePath>
     </parent>
-	<dependencies>
-		<dependency>
+    <dependencies>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${org.slf4j.version}</version>
@@ -22,19 +28,18 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-            <!-- <scope>runtime</scope> -->
         </dependency>
-		<dependency>
-			<groupId>org.openjdk.jmh</groupId>
-			<artifactId>jmh-core</artifactId>
-			<version>${jmh-core.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.openjdk.jmh</groupId>
-			<artifactId>jmh-generator-annprocess</artifactId>
-			<version>${jmh-generator-annprocess.version}</version>
-		</dependency>
-		<dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-generator-annprocess.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
             <version>${commons-math3.version}</version>
@@ -55,9 +60,9 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-	</dependencies>
-	
-	<build>
+    </dependencies>
+
+    <build>
         <finalName>java-numbers</finalName>
         <resources>
             <resource>
@@ -147,7 +152,7 @@
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
                                 <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </transformer>
                             </transformers>
@@ -185,7 +190,7 @@
                         <argument>-Xmx300m</argument>
                         <argument>-XX:+UseParallelGC</argument>
                         <argument>-classpath</argument>
-                        <classpath/>
+                        <classpath />
                         <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
                     </arguments>
                 </configuration>
@@ -247,7 +252,7 @@
                                     <executable>java</executable>
                                     <arguments>
                                         <argument>-classpath</argument>
-                                        <classpath/>
+                                        <classpath />
                                         <argument>org.openjdk.jmh.Main</argument>
                                         <argument>.*</argument>
                                     </arguments>
@@ -259,17 +264,17 @@
             </build>
         </profile>
     </profiles>
-	
-	<properties>
-		<commons-math3.version>3.6.1</commons-math3.version>
-        <decimal4j.version>1.0.3</decimal4j.version>
-		<commons-lang3.version>3.5</commons-lang3.version>
 
-		<assertj.version>3.6.1</assertj.version>
-	
-		<org.slf4j.version>1.7.21</org.slf4j.version>
+    <properties>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <decimal4j.version>1.0.3</decimal4j.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+
+        <assertj.version>3.6.1</assertj.version>
+
+        <org.slf4j.version>1.7.21</org.slf4j.version>
         <logback.version>1.1.7</logback.version>
-		<jmh-core.version>1.19</jmh-core.version>
+        <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
 
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
@@ -277,5 +282,5 @@
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
-	</properties>
+    </properties>
 </project>

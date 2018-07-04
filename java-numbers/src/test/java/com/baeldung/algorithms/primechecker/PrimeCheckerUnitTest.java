@@ -1,4 +1,4 @@
-package com.baeldung.prime;
+package com.baeldung.algorithms.primechecker;
 
 import org.junit.Test;
 
@@ -8,16 +8,16 @@ import static org.junit.Assert.assertTrue;
 public class PrimeCheckerUnitTest {
 
     private final BigIntegerPrimeChecker primeChecker = new BigIntegerPrimeChecker();
-    
+
     @Test
-    public void whenCheckIsPrime_thenTrue(){
+    public void whenCheckIsPrime_thenTrue() {
         assertTrue(primeChecker.isPrime(13l));
         assertTrue(primeChecker.isPrime(1009L));
         assertTrue(primeChecker.isPrime(74207281L));
     }
-    
+
     @Test
-    public void whenCheckIsPrime_thenFalse(){
+    public void whenCheckIsPrime_thenFalse() {
         assertTrue(!primeChecker.isPrime(50L));
         assertTrue(!primeChecker.isPrime(1001L));
         assertTrue(!primeChecker.isPrime(74207282L));
@@ -26,28 +26,27 @@ public class PrimeCheckerUnitTest {
     private final BruteForcePrimeChecker bfPrimeChecker = new BruteForcePrimeChecker();
 
     @Test
-    public void whenBFCheckIsPrime_thenTrue(){
+    public void whenBFCheckIsPrime_thenTrue() {
         assertTrue(bfPrimeChecker.isPrime(13));
         assertTrue(bfPrimeChecker.isPrime(1009));
     }
 
     @Test
-    public void whenBFCheckIsPrime_thenFalse(){
+    public void whenBFCheckIsPrime_thenFalse() {
         assertFalse(bfPrimeChecker.isPrime(50));
         assertFalse(bfPrimeChecker.isPrime(1001));
     }
 
-
     private final OptimisedPrimeChecker optimisedPrimeChecker = new OptimisedPrimeChecker();
 
     @Test
-    public void whenOptCheckIsPrime_thenTrue(){
+    public void whenOptCheckIsPrime_thenTrue() {
         assertTrue(optimisedPrimeChecker.isPrime(13));
         assertTrue(optimisedPrimeChecker.isPrime(1009));
     }
 
     @Test
-    public void whenOptCheckIsPrime_thenFalse(){
+    public void whenOptCheckIsPrime_thenFalse() {
         assertFalse(optimisedPrimeChecker.isPrime(50));
         assertFalse(optimisedPrimeChecker.isPrime(1001));
     }
@@ -65,5 +64,5 @@ public class PrimeCheckerUnitTest {
         assertFalse(primesPrimeChecker.isPrime(50));
         assertFalse(primesPrimeChecker.isPrime(1001));
     }
-    
+
 }

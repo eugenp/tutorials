@@ -1,4 +1,4 @@
-package com.baeldung.prime;
+package com.baeldung.algorithms.primechecker;
 
 public interface PrimeChecker <T> {
     
