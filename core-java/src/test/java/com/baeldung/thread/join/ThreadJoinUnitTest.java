@@ -14,7 +14,7 @@ import org.junit.Test;
  */
 public class ThreadJoinUnitTest {
 
-    final static Logger LOGGER = Logger.getLogger(ThreadJoinTest.class.getName());
+    final static Logger LOGGER = Logger.getLogger(ThreadJoinUnitTest.class.getName());
 
     class SampleThread extends Thread {
         public int processingCount = 0;
