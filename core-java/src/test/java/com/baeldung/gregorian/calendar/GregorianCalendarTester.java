@@ -125,7 +125,7 @@ public class GregorianCalendarTester {
     }
 
     @Test
-    public void test_addOneDay() {
+    public void test_whenAddOneDay_thenMonthIsUnchanged() {
         final int finalDay29 = 29;
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
         calendarExpected.add(Calendar.DATE, 1);
@@ -133,7 +133,7 @@ public class GregorianCalendarTester {
     }
 
     @Test
-    public void test_subtractOneDay() {
+    public void test_whenSubtractOneDay_thenMonthIsUnchanged() {
         final int finalDay27 = 27;
         GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
         calendarExpected.add(Calendar.DATE, -1);
