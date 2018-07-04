@@ -112,6 +112,7 @@
 					<reuseForks>true</reuseForks>
 					<excludes>
 						<exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
 					</excludes>
 					<systemPropertyVariables>
 						<!-- <provPersistenceTarget>h2</provPersistenceTarget> -->

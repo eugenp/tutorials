@@ -65,6 +65,7 @@
                     <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                         <exclude>**/JdbcTest.java</exclude>

@@ -137,7 +137,7 @@
 							<goal>repackage</goal>
 						</goals>
 						<configuration>
-							<mainClass>org.baeldung.boot.Application</mainClass>
+							<mainClass>com.baeldung.webjar.WebjarsdemoApplication</mainClass>
 						</configuration>
 					</execution>
 				</executions>
@@ -163,6 +163,7 @@
                                     <excludes>
                                         <exclude>**/*LiveTest.java</exclude>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                        				<exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/AutoconfigurationTest.java</include>

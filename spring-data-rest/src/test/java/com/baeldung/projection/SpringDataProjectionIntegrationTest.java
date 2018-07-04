@@ -38,7 +38,7 @@ public class SpringDataProjectionIntegrationTest {
     
     @Before
     public void setup(){
-        if(bookRepo.findOne(1L) == null){
+        if(bookRepo.findById(1L) == null){
             Book book = new Book("Animal Farm");
             book.setIsbn("978-1943138425");
             book = bookRepo.save(book);

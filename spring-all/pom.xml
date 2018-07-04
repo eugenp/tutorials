@@ -8,10 +8,10 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -39,7 +39,6 @@
         <dependency>
             <groupId>org.springframework.retry</groupId>
             <artifactId>spring-retry</artifactId>
-            <version>${springretry.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.shell</groupId>
@@ -55,11 +54,11 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
+            <version>${javassist.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -74,6 +73,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.version}</version>
         </dependency>
         <!-- web -->
         <dependency>
@@ -112,7 +112,6 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -139,17 +138,14 @@
         <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
-            <version>${ehcache.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
         </dependency>
     </dependencies>
 
@@ -187,6 +183,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -197,22 +194,23 @@
     <properties>
         <start-class>org.baeldung.sample.App</start-class>
         <!-- Spring -->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
-        <springretry.version>1.1.5.RELEASE</springretry.version>
+        <org.springframework.version>5.0.6.RELEASE</org.springframework.version>
+        <org.springframework.security.version>5.0.6.RELEASE</org.springframework.security.version>
+        <springretry.version>1.2.2.RELEASE</springretry.version>
         <org.springframework.shell.version>1.2.0.RELEASE</org.springframework.shell.version>
 
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
 
         <!-- util -->
-        <guava.version>19.0</guava.version>
-        <ehcache.version>3.1.3</ehcache.version>
-        <easymock.version>3.4</easymock.version>
+        <guava.version>25.1-jre</guava.version>
+        <ehcache.version>3.5.2</ehcache.version>
+        <easymock.version>3.6</easymock.version>
         <assertj.version>3.6.1</assertj.version>
-        <jasperreports.version>6.4.0</jasperreports.version>
+        <jasperreports.version>6.6.0</jasperreports.version>
 
         <log4j.version>2.8.2</log4j.version>
+        <javassist.version>3.22.0-GA</javassist.version>
 
     </properties>
 

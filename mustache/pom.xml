@@ -95,6 +95,7 @@
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>
@@ -125,6 +126,7 @@
                                     <excludes>
                                         <exclude>**/*LiveTest.java</exclude>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                        				<exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/AutoconfigurationTest.java</include>

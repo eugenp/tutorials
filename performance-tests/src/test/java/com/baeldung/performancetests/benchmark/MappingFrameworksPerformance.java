@@ -4,13 +4,32 @@ import com.baeldung.performancetests.dozer.DozerConverter;
 import com.baeldung.performancetests.jmapper.JMapperConverter;
 import com.baeldung.performancetests.mapstruct.MapStructConverter;
 import com.baeldung.performancetests.model.destination.DestinationCode;
-import com.baeldung.performancetests.model.source.*;
 import com.baeldung.performancetests.model.destination.Order;
+import com.baeldung.performancetests.model.source.AccountStatus;
+import com.baeldung.performancetests.model.source.Address;
+import com.baeldung.performancetests.model.source.DeliveryData;
+import com.baeldung.performancetests.model.source.Discount;
+import com.baeldung.performancetests.model.source.OrderStatus;
+import com.baeldung.performancetests.model.source.PaymentType;
+import com.baeldung.performancetests.model.source.Product;
+import com.baeldung.performancetests.model.source.RefundPolicy;
+import com.baeldung.performancetests.model.source.Review;
+import com.baeldung.performancetests.model.source.Shop;
+import com.baeldung.performancetests.model.source.SourceCode;
+import com.baeldung.performancetests.model.source.SourceOrder;
+import com.baeldung.performancetests.model.source.User;
 import com.baeldung.performancetests.modelmapper.ModelMapperConverter;
 import com.baeldung.performancetests.orika.OrikaConverter;
-import org.junit.Assert;
-import org.junit.Test;
-import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Fork;
+import org.openjdk.jmh.annotations.Group;
+import org.openjdk.jmh.annotations.Measurement;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.Setup;
+import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.runner.RunnerException;
 
 import java.io.IOException;
@@ -21,14 +40,24 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+@Fork(value = 1, warmups = 5)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@BenchmarkMode(Mode.All)
+@Measurement(iterations = 5)
 @State(Scope.Group)
 public class MappingFrameworksPerformance {
-    SourceOrder sourceOrder = null;
-    SourceCode sourceCode =  null;
+    private SourceOrder sourceOrder = null;
+    private SourceCode sourceCode = null;
+    private static final OrikaConverter ORIKA_CONVERTER = new OrikaConverter();
+    private static final JMapperConverter JMAPPER_CONVERTER = new JMapperConverter();
+    private static final ModelMapperConverter MODEL_MAPPER_CONVERTER = new ModelMapperConverter();
+    private static final DozerConverter DOZER_CONVERTER = new DozerConverter();
+
     @Setup
     public void setUp() {
         User user = new User("John", "John@doe.com", AccountStatus.ACTIVE);
-        RefundPolicy refundPolicy = new RefundPolicy(true, 30, Collections.singletonList("Refundable only if not used!"));
+        RefundPolicy refundPolicy = new RefundPolicy(true, 30, Collections
+          .singletonList("Refundable only if not used!"));
 
         Product product = new Product(BigDecimal.valueOf(10.99),
           100,
@@ -51,7 +80,7 @@ public class MappingFrameworksPerformance {
         List<Review> reviewList = new ArrayList<>();
         reviewList.add(review);
         reviewList.add(negativeReview);
-        Shop shop = new Shop("Super Shop", shopAddress,"www.super-shop.com",reviewList);
+        Shop shop = new Shop("Super Shop", shopAddress, "www.super-shop.com", reviewList);
 
         sourceOrder = new SourceOrder(OrderStatus.CONFIRMED,
           Instant.now().toString(),
@@ -68,126 +97,67 @@ public class MappingFrameworksPerformance {
         sourceCode = new SourceCode("This is source code!");
     }
 
-
     public void main(String[] args) throws IOException, RunnerException {
         org.openjdk.jmh.Main.main(args);
     }
 
-
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void orikaMapperRealLifeBenchmark() {
-        OrikaConverter orikaConverter = new OrikaConverter();
-        Order mappedOrder = orikaConverter.convert(sourceOrder);
-        Assert.assertEquals(mappedOrder, sourceOrder);
-
+    public Order orikaMapperRealLifeBenchmark() {
+        return ORIKA_CONVERTER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void jmapperRealLifeBenchmark() {
-        JMapperConverter jmapperConverter = new JMapperConverter();
-        Order mappedOrder = jmapperConverter.convert(sourceOrder);
-        Assert.assertEquals(mappedOrder, sourceOrder);
+    public Order jmapperRealLifeBenchmark() {
+        return JMAPPER_CONVERTER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void modelMapperRealLifeBenchmark() {
-        ModelMapperConverter modelMapperConverter = new ModelMapperConverter();
-        Order mappedOrder = modelMapperConverter.convert(sourceOrder);
-        Assert.assertEquals(mappedOrder, sourceOrder);
-    }
-
-
-    @Benchmark
-    @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void dozerMapperRealLifeBenchmark() {
-        DozerConverter dozerConverter = new DozerConverter();
-        Order mappedOrder = dozerConverter.convert(sourceOrder);
-        Assert.assertEquals(mappedOrder, sourceOrder);
-
+    public Order modelMapperRealLifeBenchmark() {
+        return MODEL_MAPPER_CONVERTER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("realLifeTest")
-    @Fork(value = 1, warmups = 1)
-    @BenchmarkMode(Mode.All)
-    public void mapStructRealLifeMapperBenchmark() {
-        MapStructConverter converter = MapStructConverter.MAPPER;
-        Order mappedOrder = converter.convert(sourceOrder);
-        Assert.assertEquals(mappedOrder, sourceOrder);
+    public Order dozerMapperRealLifeBenchmark() {
+        return DOZER_CONVERTER.convert(sourceOrder);
+    }
+
+    @Benchmark
+    @Group("realLifeTest")
+    public Order mapStructRealLifeMapperBenchmark() {
+        return MapStructConverter.MAPPER.convert(sourceOrder);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void orikaMapperSimpleBenchmark() {
-        OrikaConverter orikaConverter = new OrikaConverter();
-        DestinationCode mappedCode = orikaConverter.convert(sourceCode);
-        Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
-
+    public DestinationCode orikaMapperSimpleBenchmark() {
+        return ORIKA_CONVERTER.convert(sourceCode);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void jmapperSimpleBenchmark() {
-        JMapperConverter jmapperConverter = new JMapperConverter();
-        DestinationCode mappedCode = jmapperConverter.convert(sourceCode);
-        Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
+    public DestinationCode jmapperSimpleBenchmark() {
+        return JMAPPER_CONVERTER.convert(sourceCode);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void modelMapperBenchmark() {
-        ModelMapperConverter modelMapperConverter = new ModelMapperConverter();
-        DestinationCode mappedCode = modelMapperConverter.convert(sourceCode);
-        Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
-    }
-
-
-    @Benchmark
-    @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void dozerMapperSimpleBenchmark() {
-        DozerConverter dozerConverter = new DozerConverter();
-        Order mappedOrder = dozerConverter.convert(sourceOrder);
-        Assert.assertEquals(mappedOrder, sourceOrder);
-
+    public DestinationCode modelMapperBenchmark() {
+        return MODEL_MAPPER_CONVERTER.convert(sourceCode);
     }
 
     @Benchmark
     @Group("simpleTest")
-    @Fork(value = 1, warmups = 1)
-    @OutputTimeUnit(TimeUnit.MILLISECONDS)
-    @BenchmarkMode(Mode.All)
-    public void mapStructMapperSimpleBenchmark() {
-        MapStructConverter converter = MapStructConverter.MAPPER;
-        DestinationCode mappedCode = converter.convert(sourceCode);
-        Assert.assertEquals(mappedCode.getCode(), sourceCode.getCode());
+    public DestinationCode dozerMapperSimpleBenchmark() {
+        return DOZER_CONVERTER.convert(sourceCode);
     }
 
-
+    @Benchmark
+    @Group("simpleTest")
+    public DestinationCode mapStructMapperSimpleBenchmark() {
+        return MapStructConverter.MAPPER.convert(sourceCode);
+    }
 }

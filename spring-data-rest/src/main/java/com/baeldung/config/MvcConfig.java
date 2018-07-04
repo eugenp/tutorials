@@ -3,17 +3,14 @@ package com.baeldung.config;
 import com.baeldung.events.AuthorEventHandler;
 import com.baeldung.events.BookEventHandler;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-public class MvcConfig extends WebMvcConfigurerAdapter{
+public class MvcConfig implements WebMvcConfigurer {
     
     public MvcConfig(){
         super();
