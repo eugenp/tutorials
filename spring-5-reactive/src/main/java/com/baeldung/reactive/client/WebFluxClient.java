@@ -12,8 +12,8 @@ import static org.springframework.boot.SpringApplication.run;
 public class WebFluxClient {
 
     public static void main(String[] args) {
-    run(WebFluxClient.class, args);
-  }
+        run(WebFluxClient.class, args);
+    }
 
     @Bean
     public CommandLineRunner printBookNames() {
