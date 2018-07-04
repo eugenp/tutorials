@@ -9,10 +9,10 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-5</relativePath>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
@@ -286,6 +286,7 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                        				<exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*LiveTest.java</include>

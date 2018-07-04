@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>parent-boot-5</module>
+        <module>parent-boot-1</module>
         <module>parent-boot-2</module>
         <module>parent-spring-4</module>
         <module>parent-spring-5</module>
@@ -18,6 +18,7 @@
         <module>atomix</module>
         <module>apache-cayenne</module>
         <module>aws</module>
+        <module>aws-lambda</module>
         <module>akka-streams</module>
         <module>algorithms</module>
         <module>annotations</module>
@@ -60,7 +61,7 @@
         <module>guava-modules/guava-21</module>
         <module>guice</module>
         <module>disruptor</module>
-        <module>handling-spring-static-resources</module>
+        <module>spring-static-resources</module>
         <module>hazelcast</module>
         <module>hbase</module>
         <!--<module>hibernate5</module> -->
@@ -102,6 +103,7 @@
         <module>metrics</module>
         <module>maven</module>
         <module>mesos-marathon</module>
+        <module>msf4j</module>
         <module>testing-modules/mockito</module>
         <module>testing-modules/mockito-2</module>
         <module>testing-modules/mocks</module>
@@ -143,7 +145,10 @@
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-ops</module>
+        <module>spring-boot-persistence</module>
         <module>spring-boot-security</module>
+        <module>spring-boot-mvc</module>
+        <module>spring-boot-logging-log4j2</module>	    
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -182,7 +187,6 @@
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
-        <module>spring-mvc-tiles</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
@@ -248,6 +252,7 @@
         <module>persistence-modules/liquibase</module>
         <module>spring-boot-property-exp</module>
         <module>testing-modules/mockserver</module>
+        <module>testing-modules/test-containers</module>
         <module>undertow</module>
         <module>vertx-and-rxjava</module>
         <module>saas</module>
@@ -261,7 +266,11 @@
         <module>java-spi</module>
         <module>performance-tests</module>
         <module>twilio</module>
-		<module>java-ee-8-security-api</module>
+        <module>spring-boot-ctx-fluent</module> 
+        <module>java-ee-8-security-api</module>
+        <module>spring-webflux-amqp</module>
+        <module>antlr</module>
+	      <module>maven-archetype</module>
     </modules>
 
     <dependencies>
@@ -345,6 +354,7 @@
                     <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                         <exclude>**/JdbcTest.java</exclude>
@@ -470,6 +480,7 @@
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>

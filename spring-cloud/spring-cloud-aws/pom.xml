@@ -66,6 +66,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>

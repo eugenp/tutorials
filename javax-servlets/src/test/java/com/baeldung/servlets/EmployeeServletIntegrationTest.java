@@ -36,21 +36,15 @@ public class EmployeeServletIntegrationTest {
 		int id = 1;
 		String name = "Karan Khanna";
 		String department = "IT";
-		Double salary = 5000.0;
+		long salary = 5000;
 		employee = new Employee(id, name, department, salary);
-
-		//when
-		when(httpServletRequest.getParameter("id")).thenReturn(String.valueOf(id));
-		when(httpServletRequest.getParameter("name")).thenReturn(name);
-		when(httpServletRequest.getParameter("department")).thenReturn(department);
-		when(httpServletRequest.getParameter("salary")).thenReturn(String.valueOf(salary));
 
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		when(httpServletResponse.getWriter()).thenReturn(pw);
 
 		EmployeeServlet employeeServlet = new EmployeeServlet();
-		employeeServlet.doPost(httpServletRequest, httpServletResponse);
+		employeeServlet.doGet(httpServletRequest, httpServletResponse);
 
 		String employeeJsonString = sw.getBuffer().toString().trim();
 		Employee fetchedEmployee = new Gson().fromJson(employeeJsonString, Employee.class);

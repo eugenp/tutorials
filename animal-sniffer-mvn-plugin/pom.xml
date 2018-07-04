@@ -5,7 +5,7 @@
     <artifactId>animal-sniffer-mvn-plugin</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>example-animal-sniffer-mvn-plugin</name>
+    <name>animal-sniffer-mvn-plugin</name>
     <url>http://maven.apache.org</url>
 
     <parent>
