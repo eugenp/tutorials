@@ -12,7 +12,7 @@ import org.junit.Test;
  * Demonstrates Thread.join behavior.
  *
  */
-public class ThreadJoinTest {
+public class ThreadJoinUnitTest {
 
     final static Logger LOGGER = Logger.getLogger(ThreadJoinTest.class.getName());
 
