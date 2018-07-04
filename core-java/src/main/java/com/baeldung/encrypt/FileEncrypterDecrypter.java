@@ -2,10 +2,7 @@ package com.baeldung.encrypt;
 
 import javax.crypto.*;
 import javax.crypto.spec.IvParameterSpec;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -43,14 +40,16 @@ class FileEncrypterDecrypter {
             fileIn.read(fileIv);
             cipher.init(Cipher.DECRYPT_MODE, secretKey, new IvParameterSpec(fileIv));
 
-            try (CipherInputStream cipherIn = new CipherInputStream(fileIn, cipher)) {
-                InputStreamReader inReader = new InputStreamReader(cipherIn);
+            try (
+                    CipherInputStream cipherIn = new CipherInputStream(fileIn, cipher);
+                    InputStreamReader inputReader = new InputStreamReader(cipherIn);
+                    BufferedReader reader = new BufferedReader(inputReader)
+                ) {
 
                 StringBuilder sb = new StringBuilder();
-                int c = inReader.read();
-                while (c != -1) {
-                    sb.append((char) c);
-                    c = inReader.read();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
                 }
                 content = sb.toString();
             }
