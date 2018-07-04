@@ -15,14 +15,14 @@ import reactor.core.publisher.Flux;
  */
 @RestController
 @RequestMapping(value = "/v1")
-public class Controller {
+public class DiceController {
 
     private static Random random = new Random();
 
     @GetMapping("/dice")
     public Flux<Integer> rollDice() {
         return Flux.interval(Duration.ofSeconds(1))
-            .map(pulse -> random.nextInt(5) + 1);
+            .map(pulse -> {System.out.println(random.nextInt(5) + 1);return random.nextInt(5) + 1;});
     }
     
 }

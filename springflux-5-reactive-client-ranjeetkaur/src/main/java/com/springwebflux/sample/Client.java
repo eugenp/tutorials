@@ -4,6 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import reactor.core.publisher.Flux;
+
 /**
  * @author ranjeetkaur
  *
@@ -18,11 +20,12 @@ public class Client {
             .baseUrl("http://localhost:8090")
             .build();
 
-        webClient.get()
+        Flux<Integer> flux = webClient.get()
             .uri("/v1/dice")
             .retrieve()
-            .bodyToFlux(Integer.class)
-            .log();
+            .bodyToFlux(Integer.class);
+        
+        flux.log();
 
         Thread.sleep(10000);
     }
