@@ -14,3 +14,5 @@
 - [Injecting Prototype Beans into a Singleton Instance in Spring](http://www.baeldung.com/spring-inject-prototype-bean-into-singleton)
 - [How to Inject a Property Value Into a Class Not Managed by Spring?](http://www.baeldung.com/inject-properties-value-non-spring-class)
 - [@Lookup Annotation in Spring](http://www.baeldung.com/spring-lookup)
+- [BeanNameAware and BeanFactoryAware Interfaces in Spring](http://www.baeldung.com/spring-bean-name-factory-aware)
+- [Spring – Injecting Collections](http://www.baeldung.com/spring-injecting-collections)

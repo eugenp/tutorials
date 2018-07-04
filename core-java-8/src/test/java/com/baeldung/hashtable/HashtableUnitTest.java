@@ -233,7 +233,7 @@ public class HashtableUnitTest {
         Hashtable<String, Integer> table = new Hashtable<String, Integer>();
         String[] animals = { "cat", "dog", "dog", "cat", "bird", "mouse", "mouse" };
         for (String animal : animals) {
-            table.compute(animal, (key, value) -> (value == null ? Integer.valueOf(1) : Integer.valueOf(value) + 1));
+            table.compute(animal, (key, value) -> (value == null ? 1 : value + 1));
         }
         assertThat(table.values(), hasItems(2, 2, 2, 1));
 

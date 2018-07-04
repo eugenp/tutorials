@@ -12,6 +12,7 @@ import io.vavr.collection.HashMap;
 import io.vavr.collection.LinkedHashSet;
 import io.vavr.collection.List;
 import io.vavr.collection.Map;
+import io.vavr.collection.Set;
 import io.vavr.collection.Stream;
 
 public class CollectionsInteroperabilityUnitTest {
@@ -77,8 +78,9 @@ public class CollectionsInteroperabilityUnitTest {
   @Test
   public void givenParams_WhenVavarListConvertedToLinkedSet_thenReturnLinkedSet() {
     List<String> vavrList = List.of("Java", "Haskell", "Scala", "Java");
-    LinkedHashSet<String> linkedSet = (LinkedHashSet<String>) vavrList.toLinkedSet();
+    Set<String> linkedSet = vavrList.toLinkedSet();
     assertEquals(3, linkedSet.size());
+    assertTrue(linkedSet instanceof LinkedHashSet);
   }
 
   @Test

@@ -1,6 +1,6 @@
 ## Spring REST Example Project
 
-###The Course
+### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
@@ -18,3 +18,9 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring – Log Incoming Requests](http://www.baeldung.com/spring-http-logging)
 - [RequestBody and ResponseBody Annotations](http://www.baeldung.com/requestbody-and-responsebody-annotations)
 - [Introduction to CheckStyle](http://www.baeldung.com/checkstyle-java)
+- [How to Change the Default Port in Spring Boot](http://www.baeldung.com/spring-boot-change-port)
+- [Guide to DeferredResult in Spring](http://www.baeldung.com/spring-deferred-result)
+- [Spring Custom Property Editor](http://www.baeldung.com/spring-mvc-custom-property-editor)
+- [Using the Spring RestTemplate Interceptor](http://www.baeldung.com/spring-rest-template-interceptor)
+- [Configure a RestTemplate with RestTemplateBuilder](http://www.baeldung.com/spring-rest-template-builder)
+
