@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-public class SyncToRxApiTest {
+public class SyncToRxApiUnitTest {
 
     private SyncToRxApi sample;
 
@@ -25,17 +25,10 @@ public class SyncToRxApiTest {
     public void givenMemberJsonFile_whenSyncLoaded_thenReturnMemberAsFlowable() throws IOException {
         sample
           .getMemberListAsFlowable("members.json")
-          .subscribe(member -> Assert.assertNotEquals("", member.getFirstName()),
+          .subscribe(
+            member -> Assert.assertNotEquals("", member.getFirstName()),
             Throwable::getMessage,
             () -> System.out.println("Completed"));
     }
 
-    @Test
-    public void getMemberListWithAntiPattern() throws IOException {
-        sample
-          .getMemberListAntiPattern("members.json")
-          .subscribe(member -> Assert.assertNotEquals("", member.getFirstName()),
-            Throwable::getMessage,
-            () -> System.out.println("Completed"));
-    }
 }
