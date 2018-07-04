@@ -31,10 +31,10 @@ Resources:
             Method: PUT
             RestApiId:
                 Ref: MyApi
-  GetPersonByPathParamFunction:
+  GetPersonByHTTPParamFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByPathParam
+      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByParam
       Runtime: java8
       Timeout: 15
       MemorySize: 512
@@ -53,21 +53,6 @@ Resources:
             Method: GET
             RestApiId:
                 Ref: MyApi
-  GetPersonByQueryParamFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByQueryParam
-      Runtime: java8
-      Timeout: 15
-      MemorySize: 512
-      CodeUri: ../target/aws-lambda-0.1.0-SNAPSHOT.jar
-      Policies:
-        - DynamoDBReadPolicy:
-            TableName: !Ref PersonTable
-      Environment:
-        Variables:
-          TABLE_NAME: !Ref PersonTable
-      Events:
         GetByQueryApi:
           Type: Api
           Properties:
@@ -96,7 +81,7 @@ Resources:
                 \ headers"
               x-amazon-apigateway-integration:
                 uri:
-                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetPersonByQueryParamFunction.Arn}/invocations
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetPersonByHTTPParamFunction.Arn}/invocations
                 responses: {}
                 httpMethod: "POST"
                 type: "aws_proxy"
@@ -117,7 +102,7 @@ Resources:
               responses: {}
               x-amazon-apigateway-integration:
                 uri:
-                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetPersonByPathParamFunction.Arn}/invocations
+                  Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetPersonByHTTPParamFunction.Arn}/invocations
                 responses: {}
                 httpMethod: "POST"
                 type: "aws_proxy"
