@@ -122,6 +122,7 @@
         <module>testing-modules/rest-testing</module>
         <module>resteasy</module>
         <module>rxjava</module>
+        <module>rxjava2</module>
         <module>spring-swagger-codegen</module>
         <module>testing-modules/selenium-junit-testng</module>
         <module>persistence-modules/solr</module>
