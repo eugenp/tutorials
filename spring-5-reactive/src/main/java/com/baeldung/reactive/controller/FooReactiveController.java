@@ -3,6 +3,8 @@ package com.baeldung.reactive.controller;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.stream.Stream;
 
@@ -30,6 +32,26 @@ public class FooReactiveController {
         final Flux<Foo> foosFlux = Flux.fromStream(Stream.generate(() -> new Foo(new Random().nextLong(), randomAlphabetic(6))));
         final Flux<Long> emmitFlux = Flux.interval(Duration.ofSeconds(1));
         return Flux.zip(foosFlux, emmitFlux).map(Tuple2::getT1);
+    }
+
+    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, path = "/books/names")
+    public Flux<String> getRecommendedBookNames() {
+
+        Flux<Long> interval = Flux.interval(Duration.ofSeconds(1));
+
+        Flux<String> randomBookNames = Flux.fromStream(Stream.generate(this::randomBookNames));
+
+        return Flux.zip(interval, randomBookNames).map(Tuple2::getT2);
+    }
+
+    private String randomBookNames() {
+        List<String> bookNames = Arrays.asList("Fellowship of the ring",
+          "Return of the king",
+          "The two towers",
+          "Harry potter",
+          "Game of thrones");
+
+        return bookNames.get(new Random().nextInt(bookNames.size()));
     }
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/foos2")
