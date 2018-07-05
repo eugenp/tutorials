@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-5-data-reactive</artifactId>
@@ -8,20 +8,13 @@
     <packaging>jar</packaging>
     <name>Spring-5-data-reactive</name>
     <description>Spring-5-data-reactive with Springboot 2.0.1</description>
-  
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.1.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <kotlin.version>1.2.40</kotlin.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -80,7 +73,7 @@
             <version>${kotlin.version}</version>
         </dependency>
     </dependencies>
-    
+
     <repositories>
         <repository>
             <id>spring-libs-snapshot</id>
@@ -88,7 +81,7 @@
             <url>http://repo.spring.io/libs-snapshot</url>
         </repository>
     </repositories>
-    
+
     <build>
         <sourceDirectory>src/main/kotlin</sourceDirectory>
         <plugins>
@@ -135,4 +128,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <kotlin.version>1.2.40</kotlin.version>
+    </properties>
+
 </project>

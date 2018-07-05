@@ -55,9 +55,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <properties>
-        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
-        <spring-cloud-starter-hystrix.version>1.2.3.RELEASE</spring-cloud-starter-hystrix.version>
-        <spring-boot-starter-web.version>1.4.2.RELEASE</spring-boot-starter-web.version>
-    </properties>
 </project>

@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.baeldung</groupId>
     <artifactId>spring-thymeleaf</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -98,13 +99,13 @@
             <version>${springframework-security.version}</version>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- Spring data -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-commons</artifactId>
-			<version>${springFramework-data.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>${springFramework-data.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -160,7 +161,6 @@
     </build>
 
     <properties>
-        <java-version>1.8</java-version>
         <!-- spring -->
         <org.springframework-version>4.3.4.RELEASE</org.springframework-version>
         <springframework-security.version>4.2.0.RELEASE</springframework-security.version>
@@ -174,7 +174,6 @@
         <javax.validation-version>1.1.0.Final</javax.validation-version>
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <org.hibernate-version>5.2.5.Final</org.hibernate-version>
-
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
