@@ -1,7 +1,12 @@
 package com.baeldung.pcollections;
 
 import org.junit.Test;
-import org.pcollections.*;
+import org.pcollections.HashPMap;
+import org.pcollections.HashTreePMap;
+import org.pcollections.HashTreePSet;
+import org.pcollections.MapPSet;
+import org.pcollections.PVector;
+import org.pcollections.TreePVector;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,7 +32,7 @@ public class PCollectionsUnitTest {
 
     @Test
     public void givenExistingHashMap_whenFrom_thenCreateHashPMap() {
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
         map.put("mkey1", "mval1");
         map.put("mkey2", "mval2");
 
@@ -41,7 +46,7 @@ public class PCollectionsUnitTest {
         HashPMap<String, String> pmap = HashTreePMap.empty();
         HashPMap<String, String> pmap0 = pmap.plus("key1", "value1");
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
         map.put("key2", "val2");
         map.put("key3", "val3");
 
@@ -57,22 +62,24 @@ public class PCollectionsUnitTest {
 
     @Test
     public void whenTreePVectorMethods_thenPerformOperations() {
-        TreePVector pVector = TreePVector.empty();
+        TreePVector<String> pVector = TreePVector.empty();
 
-        TreePVector pV1 = pVector.plus("e1");
-        TreePVector pV2 = pV1.plusAll(Arrays.asList("e2", "e3", "e4"));
+        TreePVector<String> pV1 = pVector.plus("e1");
+        TreePVector<String> pV2 = pV1.plusAll(Arrays.asList("e2", "e3", "e4"));
+
         assertEquals(1, pV1.size());
         assertEquals(4, pV2.size());
 
-        TreePVector pV3 = pV2.minus("e1");
-        TreePVector pV4 = pV3.minusAll(Arrays.asList("e2", "e3", "e4"));
+        TreePVector<String> pV3 = pV2.minus("e1");
+        TreePVector<String> pV4 = pV3.minusAll(Arrays.asList("e2", "e3", "e4"));
+
         assertEquals(pV3.size(), 3);
         assertEquals(pV4.size(), 0);
 
-        TreePVector pSub = pV2.subList(0, 2);
+        TreePVector<String> pSub = pV2.subList(0, 2);
         assertTrue(pSub.contains("e1") && pSub.contains("e2"));
 
-        TreePVector pVW = (TreePVector) pV2.with(0, "e10");
+        PVector<String> pVW = pV2.with(0, "e10");
         assertEquals(pVW.get(0), "e10");
     }
 
@@ -80,7 +87,7 @@ public class PCollectionsUnitTest {
     public void whenMapPSetMethods_thenPerformOperations() {
 
         MapPSet pSet = HashTreePSet.empty()
-                .plusAll(Arrays.asList("e1","e2","e3","e4"));
+          .plusAll(Arrays.asList("e1", "e2", "e3", "e4"));
         assertEquals(pSet.size(), 4);
 
         MapPSet pSet1 = pSet.minus("e4");

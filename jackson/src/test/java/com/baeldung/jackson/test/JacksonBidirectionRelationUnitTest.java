@@ -93,7 +93,8 @@ public class JacksonBidirectionRelationUnitTest {
     public void givenBidirectionRelation_whenDeserializingUsingIdentity_thenCorrect() throws JsonProcessingException, IOException {
         final String json = "{\"id\":2,\"itemName\":\"book\",\"owner\":{\"id\":1,\"name\":\"John\",\"userItems\":[2]}}";
 
-        final ItemWithIdentity item = new ObjectMapper().readerFor(ItemWithIdentity.class).readValue(json);
+        final ItemWithIdentity item = new ObjectMapper().readerFor(ItemWithIdentity.class)
+            .readValue(json);
 
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
@@ -104,7 +105,8 @@ public class JacksonBidirectionRelationUnitTest {
     public void givenBidirectionRelation_whenUsingCustomDeserializer_thenCorrect() throws JsonProcessingException, IOException {
         final String json = "{\"id\":2,\"itemName\":\"book\",\"owner\":{\"id\":1,\"name\":\"John\",\"userItems\":[2]}}";
 
-        final ItemWithSerializer item = new ObjectMapper().readerFor(ItemWithSerializer.class).readValue(json);
+        final ItemWithSerializer item = new ObjectMapper().readerFor(ItemWithSerializer.class)
+            .readValue(json);
         assertEquals(2, item.id);
         assertEquals("book", item.itemName);
         assertEquals("John", item.owner.name);
@@ -116,7 +118,8 @@ public class JacksonBidirectionRelationUnitTest {
         final ItemWithView item = new ItemWithView(2, "book", user);
         user.addItem(item);
 
-        final String result = new ObjectMapper().writerWithView(Views.Public.class).writeValueAsString(item);
+        final String result = new ObjectMapper().writerWithView(Views.Public.class)
+            .writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("John"));
@@ -129,7 +132,8 @@ public class JacksonBidirectionRelationUnitTest {
         final ItemWithView item = new ItemWithView(2, "book", user);
         user.addItem(item);
 
-        new ObjectMapper().writerWithView(Views.Internal.class).writeValueAsString(item);
+        new ObjectMapper().writerWithView(Views.Internal.class)
+            .writeValueAsString(item);
     }
 
 }

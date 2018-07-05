@@ -1,6 +1,5 @@
 package com.baeldung.jackson.general.reference;
 
-
 import java.util.List;
 
 /**
@@ -11,7 +10,9 @@ import java.util.List;
  */
 public class Course extends Item {
 
-    public enum Medium {CLASSROOM, ONLINE}
+    public enum Medium {
+        CLASSROOM, ONLINE
+    }
 
     public enum Level {
         BEGINNER("Beginner", 1), INTERMEDIATE("Intermediate", 2), ADVANCED("Advanced", 3);

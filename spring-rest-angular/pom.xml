@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <project
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-    xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-rest-angular</artifactId>
     <name>spring-rest-angular</name>
-    <groupId>com.baeldung</groupId>
     <version>1.0</version>
     <packaging>war</packaging>
 
@@ -95,6 +94,7 @@
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
+                                        <include>**/*UnitTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>
@@ -113,6 +113,7 @@
     <properties>
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
+        <start-class>org.baeldung.web.main.Application</start-class>
     </properties>
 
 </project>
