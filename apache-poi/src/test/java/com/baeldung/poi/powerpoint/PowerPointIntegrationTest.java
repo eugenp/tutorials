@@ -1,25 +1,30 @@
 package com.baeldung.poi.powerpoint;
 
+import java.io.File;
+import java.util.List;
+
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFShape;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
-
-import java.io.File;
-import java.util.List;
+import org.junit.rules.TemporaryFolder;
 
 public class PowerPointIntegrationTest {
 
     private PowerPointHelper pph;
     private String fileLocation;
     private static final String FILE_NAME = "presentation.pptx";
+    
+    @Rule
+    public TemporaryFolder tempFolder = new TemporaryFolder();
 
     @Before
     public void setUp() throws Exception {
-        File currDir = new File(".");
+        File currDir = tempFolder.newFolder();
         String path = currDir.getAbsolutePath();
         fileLocation = path.substring(0, path.length() - 1) + FILE_NAME;
 

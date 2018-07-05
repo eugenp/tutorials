@@ -52,16 +52,12 @@ public class EmbeddedChannelUnitTest {
 				"/calculate?a=10&b=5");
 		wrongHttpRequest.headers().add("Operator", "Add");
 
-		Throwable thrownException = catchThrowable(() -> {
-			// send invalid HTTP request to server and expect and error
-			channel.pipeline().fireChannelRead(wrongHttpRequest);
-			channel.checkException();
-			Assertions.failBecauseExceptionWasNotThrown(UnsupportedOperationException.class);
-		});
-
-		assertThat(thrownException)
-			.isInstanceOf(UnsupportedOperationException.class)
-			.hasMessage("HTTP method not supported");
+		assertThatThrownBy(() -> {
+            // send invalid HTTP request to server and expect and error
+            channel.pipeline().fireChannelRead(wrongHttpRequest);
+            channel.checkException();
+        }).isInstanceOf(UnsupportedOperationException.class)
+          .hasMessage("HTTP method not supported");
 
 		FullHttpResponse errorHttpResponse = channel.readOutbound();
 		String errorHttpResponseContent = errorHttpResponse.content().toString(Charset.defaultCharset());
@@ -77,15 +73,11 @@ public class EmbeddedChannelUnitTest {
 				"/calculate?a=10&b=5");
 		wrongHttpRequest.headers().add("Operator", "Invalid_operation");
 
-		Throwable thrownException = catchThrowable(() -> {
-			// send invalid HTTP request to server and expect and error
-			channel.writeInbound(wrongHttpRequest);
-			Assertions.failBecauseExceptionWasNotThrown(IllegalArgumentException.class);
-		});
-
-		// the HttpMessageHandler does not handle the exception and throws it down the
-		// pipeline
-		assertThat(thrownException).isInstanceOf(IllegalArgumentException.class).hasMessage("Operation not defined");
+		// the HttpMessageHandler does not handle the exception and throws it down the pipeline
+        assertThatThrownBy(() -> {
+            channel.writeInbound(wrongHttpRequest);
+        }).isInstanceOf(IllegalArgumentException.class)
+          .hasMessage("Operation not defined");
 
 		// the outbound message is a HTTP response with the status code 500
 		FullHttpResponse errorHttpResponse = channel.readOutbound();

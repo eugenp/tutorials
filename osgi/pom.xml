@@ -3,15 +3,9 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>osgi-intro</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>osgi-intro-sample-activator</module>
-        <module>osgi-intro-sample-service</module>
-        <module>osgi-intro-sample-client</module>
-    </modules>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -20,33 +14,34 @@
         <relativePath>..</relativePath>
     </parent>
 
+    <modules>
+        <module>osgi-intro-sample-activator</module>
+        <module>osgi-intro-sample-service</module>
+        <module>osgi-intro-sample-client</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
-
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>osgi-intro-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>osgi-intro-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>osgi-intro-gxyz</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>osgi-intro-mapquest</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>

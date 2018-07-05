@@ -1,27 +1,21 @@
 <?xml version="1.0"?>
 <project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
-	<groupId>com.baeldung</groupId>
-	<artifactId>hibernate5</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>hibernate5</name>
-	<url>http://maven.apache.org</url>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- Maven plugins -->
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <hibernate.version>5.2.12.Final</hibernate.version>
-        <mysql.version>6.0.6</mysql.version>
-        <mariaDB4j.version>2.2.3</mariaDB4j.version>
-    </properties>
-	<dependencies>
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+        xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>hibernate5</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>hibernate5</name>
+    <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -30,18 +24,18 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.8.0</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.196</version>
+            <version>${h2database.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -58,8 +52,9 @@
             <artifactId>mariaDB4j</artifactId>
             <version>${mariaDB4j.version}</version>
         </dependency>
-	</dependencies>
-	<build>
+    </dependencies>
+
+    <build>
         <finalName>hibernate5</finalName>
         <resources>
             <resource>
@@ -68,4 +63,16 @@
             </resource>
         </resources>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Maven plugins -->
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <hibernate.version>5.2.12.Final</hibernate.version>
+        <mysql.version>6.0.6</mysql.version>
+        <mariaDB4j.version>2.2.3</mariaDB4j.version>
+        <h2database.version>1.4.196</h2database.version>
+        <assertj-core.version>3.8.0</assertj-core.version>
+    </properties>
+
 </project>

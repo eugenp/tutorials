@@ -7,54 +7,40 @@
     <version>1.0-SNAPSHOT</version>
     <name>checker-plugin</name>
     <url>http://maven.apache.org</url>
-	<parent>
+
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <!-- https://checkerframework.org/manual/#maven -->
-
-    <properties>
-        <!-- These properties will be set by the Maven Dependency plugin -->
-        <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
-        <!-- Uncomment to use the Type Annotations compiler. -->
-        <!--
-        <typeAnnotationsJavac>${org.checkerframework:compiler:jar}</typeAnnotationsJavac>
-        -->
-    </properties>
-
     <dependencies>
-
-
         <!-- Annotations from the Checker Framework: nullness, interning, locking, ... -->
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker-qual</artifactId>
-            <version>2.3.1</version>
+            <version>${checker-qual.version}</version>
         </dependency>
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>checker</artifactId>
-            <version>2.3.1</version>
+            <version>${checker.version}</version>
         </dependency>
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>jdk8</artifactId>
-            <version>2.3.1</version>
+            <version>${jdk8.version}</version>
         </dependency>
         <!-- The Type Annotations compiler. Uncomment if using annotations in comments. -->
         <dependency>
             <groupId>org.checkerframework</groupId>
             <artifactId>compiler</artifactId>
-            <version>2.3.1</version>
+            <version>${checkerframework.compiler.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <!-- This plugin will set properties values using dependency information -->
                 <groupId>org.apache.maven.plugins</groupId>
@@ -78,10 +64,10 @@
 
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <!-- Uncomment the following line to use the type annotations compiler. -->
                     <!-- <fork>true</fork> -->
                     <compilerArguments>
@@ -115,5 +101,20 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <!-- These properties will be set by the Maven Dependency plugin -->
+        <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
+        <!-- Uncomment to use the Type Annotations compiler. -->
+        <!--
+        <typeAnnotationsJavac>${org.checkerframework:compiler:jar}</typeAnnotationsJavac>
+        -->
+        <checker-qual.version>2.3.1</checker-qual.version>
+        <checker.version>2.3.1</checker.version>
+        <jdk8.version>2.3.1</jdk8.version>
+        <checkerframework.compiler.version>2.3.1</checkerframework.compiler.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
 </project>

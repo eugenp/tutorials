@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>annotation-processing</artifactId>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -10,13 +11,6 @@
         <artifactId>annotations</artifactId>
         <relativePath>../</relativePath>
     </parent>
-
-    <artifactId>annotation-processing</artifactId>
-
-    <properties>
-        <auto-service.version>1.0-rc2</auto-service.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -26,4 +20,9 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <auto-service.version>1.0-rc2</auto-service.version>
+    </properties>
+
 </project>

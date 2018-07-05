@@ -1,32 +1,38 @@
 <html>
 <body>
 
-<form method="get" action="/saveEvent">
+<!-- Save new event -->
+<form method="get" action="/save">
     <input type="text" name="eventName">
     <button type="submit">Save new event</button>
 </form>
 
 
-<!-- Here will be painted each new received Server-Sent event's content-->
+<!-- Receive saved event -->
 <div id="content"></div>
 
 <script>
-    var source = new EventSource("receiveChanges");
+
+
+    let source = new EventSource("save");
 
     source.addEventListener('message', function (e) {
         console.log('New message is received');
         const index = JSON.parse(e.data);
-        const content = "New event added: " + index.name + "<br>";
+        const content = `New event added: ${index.name}<br>`;
         document.getElementById("content").innerHTML += content;
     }, false);
+
     source.addEventListener('open', function(e) {
         console.log('The connection has been opened');
     }, false);
+
     source.addEventListener('error', function(e) {
         if (e.readyState == EventSource.CLOSED){
             console.log('The connection has been closed');
         }
     }, false);
+
 
 </script>
 </body>

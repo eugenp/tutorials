@@ -60,11 +60,11 @@ public class ArgumentMatchersUnitTest {
     
     //============= anyX
     @Test
-    public void givenUserService_whenSearchForUserByFirstName_thenFound() {        
-        expect(userService.findByFirstName(anyString())).andReturn(Collections.emptyList());
+    public void givenUserService_whenSearchForUserByEmail_thenFound() {        
+        expect(userService.findByEmail(anyString())).andReturn(Collections.emptyList());
         replay(userService);
 
-        List<User> result = userService.findByFirstName("joe");
+        List<User> result = userService.findByEmail("test@example.com");
         verify(userService);
         assertEquals(0,result.size());
     }    
@@ -191,21 +191,21 @@ public class ArgumentMatchersUnitTest {
     //================ custom matcher
     
     @Test
-    public void givenUserService_whenSearchForUserByLastName_thenFound() {        
-        expect(userService.findByLastName(charCount(3))).andReturn(Collections.emptyList());
+    public void givenUserService_whenSearchForUserByEmailCharCount_thenFound() {        
+        expect(userService.findByEmail(minCharCount(5))).andReturn(Collections.emptyList());
         replay(userService);
 
-        List<User> result = userService.findByLastName("doe");
+        List<User> result = userService.findByEmail("test@example.com");
         verify(userService);
         assertEquals(0,result.size());
     }
     
-    public static String charCount(int value){
+    public static String minCharCount(int value){
         EasyMock.reportMatcher(new IArgumentMatcher() {
             @Override
             public boolean matches(Object argument) {
                 return argument instanceof String 
-                  && ((String) argument).length() == value;
+                  && ((String) argument).length() >= value;
             }
      
             @Override

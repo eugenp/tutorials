@@ -42,3 +42,9 @@ spring-check-if-a-property-is-null/.mvn/wrapper/maven-wrapper.properties
 *.springBeans
 
 20171220-JMeter.csv
+
+.factorypath
+dependency-reduced-pom.xml
+*.so
+*.dylib
+*.dll

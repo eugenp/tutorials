@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-boot-dynamodb</artifactId>
@@ -9,25 +9,11 @@
     <description>This is simple boot application for Spring boot actuator test</description>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-5</relativePath>
+        <relativePath>../../parent-boot-1</relativePath>
     </parent>
-
-    <properties>
-        <!-- The main class to start by executing java -jar -->
-        <start-class>com.baeldung.Application</start-class>
-        <spring.version>4.3.4.RELEASE</spring.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <spring-data-dynamodb.version>4.4.1</spring-data-dynamodb.version>
-        <aws-java-sdk-dynamodb.version>1.11.64</aws-java-sdk-dynamodb.version>
-        <bootstrap.version>3.3.7-1</bootstrap.version>
-        <sqlite4java.version>1.0.392</sqlite4java.version>
-        <dynamodb.version>1.11.106</dynamodb.version>
-        <dynamodblocal.version>1.11.86</dynamodblocal.version>
-        <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -50,22 +36,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -79,13 +61,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
             <version>${bootstrap.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.amazonaws</groupId>
             <artifactId>aws-java-sdk-dynamodb</artifactId>
@@ -108,7 +88,7 @@
             <version>${httpclient.version}</version>
         </dependency>
         <!-- ================================================== -->
-        <!-- DynamoDBLocal dependencies                         -->
+        <!-- DynamoDBLocal dependencies -->
         <!-- ================================================== -->
         <dependency>
             <groupId>com.amazonaws</groupId>
@@ -170,7 +150,6 @@
         </resources>
 
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -194,9 +173,7 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
-
     </build>
 
     <repositories>
@@ -240,5 +217,20 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
+
+
+    <properties>
+        <!-- The main class to start by executing java -jar -->
+        <start-class>com.baeldung.Application</start-class>
+        <spring.version>4.3.4.RELEASE</spring.version>
+        <httpclient.version>4.5.2</httpclient.version>
+        <spring-data-dynamodb.version>4.4.1</spring-data-dynamodb.version>
+        <aws-java-sdk-dynamodb.version>1.11.64</aws-java-sdk-dynamodb.version>
+        <bootstrap.version>3.3.7-1</bootstrap.version>
+        <sqlite4java.version>1.0.392</sqlite4java.version>
+        <dynamodb.version>1.11.106</dynamodb.version>
+        <dynamodblocal.version>1.11.86</dynamodblocal.version>
+        <dynamodblocal.repository.url>https://s3-us-west-2.amazonaws.com/dynamodb-local/release</dynamodblocal.repository.url>
+    </properties>
 
 </project>
