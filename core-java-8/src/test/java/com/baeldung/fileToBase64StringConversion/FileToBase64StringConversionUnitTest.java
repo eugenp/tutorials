@@ -3,7 +3,6 @@ package com.baeldung.fileToBase64StringConversion;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Base64;
 
@@ -12,38 +11,33 @@ import org.junit.Test;
 
 public class FileToBase64StringConversionUnitTest {
 
-	private String inputFilePath = "";
-	private String outputFilePath = "";
+    private String inputFilePath = "test_image.jpg";
+    private String outputFilePath = "test_image_copy.jpg";
 
-	@Test
-	// file paths are from environment arguments:
-	// mvn test
-	// -Dtest=com.baeldung.fileToBase64StringConversion.FileToBase64StringConversionUnitTest
-	// -DinputFilePath="abc.png" -DoutFilePath="abc.png"
+    @Test
+    public void fileToBase64StringConversion() throws IOException {
+        //load file from /src/test/resources
+        ClassLoader classLoader = getClass().getClassLoader();
+        File inputFile = new File(classLoader
+          .getResource(inputFilePath)
+          .getFile());
 
-	public void fileToBase64StringConversion() throws FileNotFoundException, IOException {
-		inputFilePath = System.getProperty("inputFilePath");
-		outputFilePath = System.getProperty("outputFilePath");
+        byte[] fileContent = FileUtils.readFileToByteArray(inputFile);
+        String encodedString = Base64
+          .getEncoder()
+          .encodeToString(fileContent);
 
-		if (inputFilePath == null || outputFilePath == null)
-			return;
+        //create output file
+        File outputFile = new File(inputFile
+          .getParentFile()
+          .getAbsolutePath() + File.pathSeparator + outputFilePath);
 
-		File outputFile = new File(outputFilePath);
-		File inputFile = new File(inputFilePath);
+        // decode the string and write to file
+        byte[] decodedBytes = Base64
+          .getDecoder()
+          .decode(encodedString);
+        FileUtils.writeByteArrayToFile(outputFile, decodedBytes);
 
-		if (!inputFile.exists())
-			return;
-
-		byte[] fileContent = FileUtils.readFileToByteArray(inputFile);
-		String encodedString = Base64.getEncoder().encodeToString(fileContent);
-
-		// print encoded base64 String
-		System.out.println(encodedString);
-
-		// decode the string and write to file
-		byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
-		FileUtils.writeByteArrayToFile(outputFile, decodedBytes);
-
-		assertTrue(outputFile.length() == fileContent.length);
-	}
+        assertTrue(FileUtils.contentEquals(inputFile, outputFile));
+    }
 }
