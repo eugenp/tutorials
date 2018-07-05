@@ -92,7 +92,7 @@
         <module>jsoup</module>
         <module>testing-modules/junit-5</module>
         <module>jws</module>
-        <!--<module>libraries</module>-->
+        <module>libraries</module>
         <module>libraries-data</module>
         <module>linkrest</module>
         <module>logging-modules/log-mdc</module>
