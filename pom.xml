@@ -46,7 +46,7 @@
         <module>couchbase</module>
         <module>deltaspike</module>
         <module>dozer</module>
-        <module>ethereumj</module>
+        <module>ethereum</module>
         <!--<module>ejb</module>-->
         <module>feign</module>
         <module>flips</module>
