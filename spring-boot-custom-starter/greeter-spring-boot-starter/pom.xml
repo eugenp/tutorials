@@ -1,56 +1,38 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>greeter-spring-boot-starter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <parent>
         <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../parent-boot-1</relativePath>
     </parent>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <greeter.version>0.0.1-SNAPSHOT</greeter.version>
-        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
-    </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>greeter-spring-boot-autoconfigure</artifactId>
             <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>greeter</artifactId>
             <version>${greeter.version}</version>
         </dependency>
-
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <greeter.version>0.0.1-SNAPSHOT</greeter.version>
+        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
+    </properties>
 </project>
