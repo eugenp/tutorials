@@ -1,4 +1,4 @@
-package com.baeldung.rxjava;
+package com.baeldung.rxjava2;
 
 import com.jakewharton.rxrelay2.Relay;
 import io.reactivex.Observer;
