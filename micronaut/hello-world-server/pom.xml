@@ -4,7 +4,7 @@
   <artifactId>hello-world-server</artifactId>
   <version>0.1</version>
   <properties>
-    <exec.mainClass>hello.world.server.Application</exec.mainClass>
+    <exec.mainClass>com.baeldung.micronaut.server.ServerApplication</exec.mainClass>
     <micronaut.version>1.0.0.M2</micronaut.version>
     <jdk.version>9</jdk.version>
   </properties>
@@ -69,7 +69,12 @@
           <version>4.12</version>
           <scope>test</scope>
         </dependency>
-    </dependencies>
+      <dependency>
+          <groupId>io.projectreactor</groupId>
+          <artifactId>reactor-core</artifactId>
+          <version>3.1.6.RELEASE</version>
+      </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>
