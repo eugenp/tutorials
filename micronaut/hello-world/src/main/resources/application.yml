@@ -2,4 +2,4 @@ micronaut:
     application:
         name: hello-world-server
     server:
-        port: 8080
+        port: 9080
