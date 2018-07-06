@@ -66,7 +66,6 @@
 		<!-- util -->
 		<commons-lang3.version>3.5</commons-lang3.version>
 		<commons-collections4.version>4.1</commons-collections4.version>
-		<commons-io.version>2.5</commons-io.version>
 		<joda-time.version>2.9.6</joda-time.version>
         <lombok.version>1.16.10</lombok.version>
 	</properties>

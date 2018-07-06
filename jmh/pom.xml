@@ -45,8 +45,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <openjdk.jmh.version>1.19</openjdk.jmh.version>
     </properties>
 
