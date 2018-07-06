@@ -1,4 +1,4 @@
-package com.baeldung.micronaut.client;
+package com.baeldung.micronaut.helloworld.client;
 
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.runtime.server.EmbeddedServer;
@@ -15,19 +15,18 @@ public class GreetingClientTest {
     @Before
     public void setup()
     {
-        this.server = ApplicationContext.run(EmbeddedServer.class);
-        this.client = server.getApplicationContext().getBean(GreetingClient.class);
-    }
-
-    @Test
-    public void shouldReturnName() {
-        String response = client.greet("Mike");
-        assertEquals(response, "Hello Mike");
+        server = ApplicationContext.run(EmbeddedServer.class);
+        client = server.getApplicationContext().getBean(GreetingClient.class);
     }
 
     @After
     public void cleanup()
     {
-        this.server.stop();
+        server.stop();
+    }
+
+    @Test
+    public void testGreeting() {
+        assertEquals(client.greet("Mike"), "Hello Mike");
     }
 }
