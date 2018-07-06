@@ -46,7 +46,7 @@
         <module>couchbase</module>
         <module>deltaspike</module>
         <module>dozer</module>
-        <module>ethereumj</module>
+        <module>ethereum</module>
         <!--<module>ejb</module>-->
         <module>feign</module>
         <module>flips</module>
@@ -54,6 +54,7 @@
         <module>geotools</module>
         <module>testing-modules/groovy-spock</module>
         <module>google-cloud</module>
+        <module>google-web-toolkit</module>
         <module>gson</module>
         <module>guava</module>
         <module>guava-modules/guava-18</module>
