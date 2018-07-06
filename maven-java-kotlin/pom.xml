@@ -10,6 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>maven-java-kotlin</artifactId>
+  <packaging>jar</packaging>
 
   <properties>
 	<java.version>1.8</java.version>
