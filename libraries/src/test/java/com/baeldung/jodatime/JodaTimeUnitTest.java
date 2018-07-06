@@ -181,9 +181,6 @@ public class JodaTimeUnitTest {
 
         DateTime convertedDateTime = localDateTimeInChicago.toDateTime(DateTimeZone.forID("Europe/Bucharest"));
         assertEquals("2018-06-21T15:26:23.288+03:00", convertedDateTime.toString());
-
-        Date convertedDate = localDateTimeInChicago.toDate(TimeZone.getTimeZone("Europe/Bucharest"));
-        assertEquals("Thu Jun 21 17:56:23 IST 2018", convertedDate.toString());
     }
 
 }
