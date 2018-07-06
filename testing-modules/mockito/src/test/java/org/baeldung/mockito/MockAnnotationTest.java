@@ -1,6 +1,6 @@
-package org.baeldung;
+package org.baeldung.mockito;
 
-import org.baeldung.repository.UserRepository;
+import org.baeldung.mockito.repository.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,6 +28,6 @@ public class MockAnnotationTest {
         Mockito.when(localMockRepository.count()).thenReturn(111L);
         long userCount = localMockRepository.count();
         Assert.assertEquals(111L, userCount);
-        Mockito.verify(localMockRepository).count();  
+        Mockito.verify(localMockRepository).count();
     }
 }
