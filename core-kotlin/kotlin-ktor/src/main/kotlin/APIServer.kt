@@ -33,7 +33,7 @@ fun main(args: Array<String>) {
             header("X-Developer", "Baeldung")
         }
         install(CallLogging) {
-            level = Level.INFO
+            level = Level.DEBUG
             filter { call -> call.request.path().startsWith("/todo") }
             filter { call -> call.request.path().startsWith("/author") }
         }
