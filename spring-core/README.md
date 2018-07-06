@@ -16,3 +16,4 @@
 - [@Lookup Annotation in Spring](http://www.baeldung.com/spring-lookup)
 - [BeanNameAware and BeanFactoryAware Interfaces in Spring](http://www.baeldung.com/spring-bean-name-factory-aware)
 - [Spring – Injecting Collections](http://www.baeldung.com/spring-injecting-collections)
+- [Access a File from the Classpath in a Spring Application](http://www.baeldung.com/spring-classpath-file-access)
