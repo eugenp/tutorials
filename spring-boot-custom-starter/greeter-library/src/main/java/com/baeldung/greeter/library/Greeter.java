@@ -1,6 +1,6 @@
-package com.baeldung.greeter;
+package com.baeldung.greeter.library;
 
-import static com.baeldung.greeter.GreeterConfigParams.*;
+import static com.baeldung.greeter.library.GreeterConfigParams.*;
 
 import java.time.LocalDateTime;
 

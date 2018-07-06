@@ -1,10 +1,12 @@
 package com.baeldung.greeter;
 
-import static com.baeldung.greeter.GreeterConfigParams.*;
+import static com.baeldung.greeter.library.GreeterConfigParams.*;
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDateTime;
 
+import com.baeldung.greeter.library.Greeter;
+import com.baeldung.greeter.library.GreetingConfig;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

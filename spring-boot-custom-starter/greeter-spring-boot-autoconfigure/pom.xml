@@ -5,12 +5,14 @@
     <groupId>com.baeldung</groupId>
     <artifactId>greeter-spring-boot-autoconfigure</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>spring-boot-custom-starter</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../spring-boot-custom-starter</relativePath>
     </parent>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
@@ -40,7 +42,7 @@
 
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>greeter</artifactId>
+            <artifactId>greeter-library</artifactId>
             <version>${greeter.version}</version>
             <optional>true</optional>
         </dependency>

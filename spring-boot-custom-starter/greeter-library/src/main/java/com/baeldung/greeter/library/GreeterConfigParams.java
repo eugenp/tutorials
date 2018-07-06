@@ -1,4 +1,4 @@
-package com.baeldung.greeter;
+package com.baeldung.greeter.library;
 
 public class GreeterConfigParams {
 
