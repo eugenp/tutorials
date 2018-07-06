@@ -55,7 +55,7 @@
    * RBE
    */
 
-  xhr('http://localhost:8080/javamvcasync/rbe').then(function(success){
+  xhr('http://localhost:8080/rbe').then(function(success){
     var el = document.getElementById('rbe');
     el.appendChild(document.createTextNode(success));
     el.appendChild(document.createElement('br'))
@@ -65,7 +65,7 @@
    * SSE
    */
 
-  var sse = new EventSource('http://localhost:8080/javamvcasync/sse');
+  var sse = new EventSource('http://localhost:8080/sse');
   sse.onmessage = function (evt) {
     var el = document.getElementById('sse');
     el.appendChild(document.createTextNode(evt.data));
@@ -76,7 +76,7 @@
    * SRB
    */
 
-  xhr('http://localhost:8080/javamvcasync/srb').then(function(success){
+  xhr('http://localhost:8080/srb').then(function(success){
     var el = document.getElementById('srb');
     el.appendChild(document.createTextNode(success));
     el.appendChild(document.createElement('br'))
