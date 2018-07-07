@@ -11,8 +11,4 @@
         <param-name>country</param-name>
         <param-value>Argentina</param-value>
     </context-param>
-<<<<<<< HEAD
 </web-app>
-=======
-</web-app>
->>>>>>> contextinitparams
