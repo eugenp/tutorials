@@ -34,6 +34,11 @@
             <artifactId>jenetics</artifactId>
             <version>3.7.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.jgrapht</groupId>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

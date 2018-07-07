@@ -1,31 +1,26 @@
 package com.baeldung.springmustache.controller;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.IntStream;
-
+import com.baeldung.springmustache.model.Article;
 import org.fluttercode.datafactory.impl.DataFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.baeldung.springmustache.model.Article;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Controller
 public class ArticleController {
 
-    @RequestMapping("/article")
+    @GetMapping("/article")
     public ModelAndView displayArticle(Map<String, Object> model) {
 
-        List<Article> articles = new LinkedList<>();
-        IntStream.range(0, 10)
-         .forEach(count -> {
-            articles.add(generateArticle("Article Title " + count));
-          });
+        List<Article> articles = IntStream.range(0, 10)
+          .mapToObj(i -> generateArticle("Article Title " + i))
+          .collect(Collectors.toList());
 
         Map<String, Object> modelMap = new HashMap<>();
         modelMap.put("articles", articles);

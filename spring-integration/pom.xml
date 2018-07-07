@@ -22,7 +22,7 @@
         <spring-social.version>1.1.4.RELEASE</spring-social.version>
         <javax-mail.version>1.4.7</javax-mail.version>
         <javax-activation.version>1.1.1</javax-activation.version>
-
+        <junit.version>4.12</junit.version>
         <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
         <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
     </properties>
@@ -56,7 +56,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>${exec-maven-plugin.version}</version>
                 <configuration>
-                    <mainClass>com.baeldung.samples.Main</mainClass>
+                    <mainClass>com.baeldung.samples.FileCopyConfig</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -105,6 +105,12 @@
             <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-file</artifactId>
             <version>${spring.integration.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

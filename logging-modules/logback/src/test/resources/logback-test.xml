@@ -1,0 +1,14 @@
+<configuration debug="true">
+
+    <appender name="map" class="com.baeldung.logback.MapAppender">
+        <prefix>test</prefix>
+    </appender>
+
+    <appender name="badMap" class="com.baeldung.logback.MapAppender"/>
+
+    <root level="debug">
+        <appender-ref ref="map"/>
+        <appender-ref ref="badMap"/>
+    </root>
+
+</configuration>

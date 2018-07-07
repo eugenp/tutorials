@@ -26,4 +26,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [How to Get All Spring-Managed Beans?](http://www.baeldung.com/spring-show-all-beans)
 - [A Java Client for a WebSockets API](http://www.baeldung.com/websockets-api-java-spring-client)
 - [Spring Boot and Togglz Aspect](http://www.baeldung.com/spring-togglz)
-
+- [Getting Started with GraphQL and Spring Boot](http://www.baeldung.com/spring-graphql)
+- [Guide to Spring Type Conversions](http://www.baeldung.com/spring-type-conversions)
+- [Quick Guide on data.sql and schema.sql Files in Spring Boot](http://www.baeldung.com/spring-boot-data-sql-and-schema-sql)
