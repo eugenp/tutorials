@@ -5,3 +5,4 @@
 - [Uploading Files with Servlets and JSP](http://www.baeldung.com/upload-file-servlet)
 - [Example of Downloading File in a Servlet](http://www.baeldung.com/servlet-download-file)
 - [Returning a JSON Response from a Servlet](http://www.baeldung.com/servlet-json-response)
+- [Java EE Servlet Exception Handling](http://www.baeldung.com/servlet-exceptions)
