@@ -1,6 +1,21 @@
 package com.baeldung.metrics.servo;
 
-import com.netflix.servo.monitor.*;
+import com.netflix.servo.monitor.BasicCounter;
+import com.netflix.servo.monitor.BasicGauge;
+import com.netflix.servo.monitor.BasicInformational;
+import com.netflix.servo.monitor.BasicTimer;
+import com.netflix.servo.monitor.BucketConfig;
+import com.netflix.servo.monitor.BucketTimer;
+import com.netflix.servo.monitor.Counter;
+import com.netflix.servo.monitor.Gauge;
+import com.netflix.servo.monitor.MaxGauge;
+import com.netflix.servo.monitor.Monitor;
+import com.netflix.servo.monitor.MonitorConfig;
+import com.netflix.servo.monitor.Monitors;
+import com.netflix.servo.monitor.PeakRateCounter;
+import com.netflix.servo.monitor.StatsTimer;
+import com.netflix.servo.monitor.StepCounter;
+import com.netflix.servo.monitor.Stopwatch;
 import com.netflix.servo.stats.StatsConfig;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -9,13 +24,12 @@ import java.util.Map;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static java.util.stream.Collectors.toMap;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.hasEntry;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-/**
- * Unit test for simple App.
- */
 public class MetricTypeTest {
 
     @Test
@@ -113,7 +127,7 @@ public class MetricTypeTest {
         BucketTimer timer = new BucketTimer(MonitorConfig
           .builder("test")
           .build(), new BucketConfig.Builder()
-          .withBuckets(new long[] { 2L, 5L })
+          .withBuckets(new long[]{2L, 5L})
           .withTimeUnit(SECONDS)
           .build(), SECONDS);
         timer.record(3);
@@ -150,7 +164,7 @@ public class MetricTypeTest {
           .builder("test")
           .build(), new StatsConfig.Builder()
           .withComputeFrequencyMillis(2000)
-          .withPercentiles(new double[] { 99.0, 95.0, 90.0 })
+          .withPercentiles(new double[]{99.0, 95.0, 90.0})
           .withPublishMax(true)
           .withPublishMin(true)
           .withPublishCount(true)

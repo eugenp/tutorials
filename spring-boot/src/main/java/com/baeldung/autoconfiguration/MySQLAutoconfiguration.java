@@ -92,21 +92,19 @@ public class MySQLAutoconfiguration {
 
     static class HibernateCondition extends SpringBootCondition {
 
-        private static final String[] CLASS_NAMES = {
-          "org.hibernate.ejb.HibernateEntityManager",
-          "org.hibernate.jpa.HibernateEntityManager" };
+        private static final String[] CLASS_NAMES = { "org.hibernate.ejb.HibernateEntityManager", "org.hibernate.jpa.HibernateEntityManager" };
 
         @Override
         public ConditionOutcome getMatchOutcome(ConditionContext context, AnnotatedTypeMetadata metadata) {
             ConditionMessage.Builder message = ConditionMessage.forCondition("Hibernate");
 
             return Arrays.stream(CLASS_NAMES)
-              .filter(className -> ClassUtils.isPresent(className, context.getClassLoader()))
-              .map(className -> ConditionOutcome
-                .match(message.found("class").items(Style.NORMAL, className)))
-              .findAny()
-              .orElseGet(() -> ConditionOutcome
-                .noMatch(message.didNotFind("class", "classes").items(Style.NORMAL, Arrays.asList(CLASS_NAMES))));
+                .filter(className -> ClassUtils.isPresent(className, context.getClassLoader()))
+                .map(className -> ConditionOutcome.match(message.found("class")
+                    .items(Style.NORMAL, className)))
+                .findAny()
+                .orElseGet(() -> ConditionOutcome.noMatch(message.didNotFind("class", "classes")
+                    .items(Style.NORMAL, Arrays.asList(CLASS_NAMES))));
         }
 
     }

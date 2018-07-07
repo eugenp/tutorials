@@ -57,7 +57,7 @@
     </build>
 
     <properties>
-        <apacheds.version>1.5.7</apacheds.version>
+        <apacheds.version>1.5.5</apacheds.version>
     </properties>
 
 </project>

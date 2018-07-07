@@ -9,6 +9,7 @@
     <modules>
         <module>front-controller</module>
         <module>intercepting-filter</module>
+        <module>behavioral-patterns</module>
     </modules>
 
     <parent>

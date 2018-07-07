@@ -16,7 +16,7 @@ import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
  * <code>@ServletComponentScan(basePackageClasses = {AttrListener.class, HelloFilter.class, HelloServlet.class, EchoServlet.class})</code>
  * </li></ul>
  */
-@SpringBootApplication(exclude=MySQLAutoconfiguration.class)
+@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
 @ServletComponentScan("com.baeldung.annotation.servletcomponentscan.components")
 public class SpringBootAnnotatedApp {
 

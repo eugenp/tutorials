@@ -28,7 +28,7 @@
             <artifactId>spring-security-config</artifactId>
             <version>${org.springframework.security.version}</version>
         </dependency>
-
+        
         <!-- Spring -->
 
         <dependency>
