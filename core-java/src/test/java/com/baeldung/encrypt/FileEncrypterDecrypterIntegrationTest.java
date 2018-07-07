@@ -29,5 +29,4 @@ public class FileEncrypterDecrypterIntegrationTest {
 
         new File("baz.enc").delete(); // cleanup
     }
-
 }
