@@ -1,4 +1,4 @@
-package com.baeldung.test;
+package com.baeldung.servlets;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
