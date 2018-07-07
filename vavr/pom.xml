@@ -5,12 +5,13 @@
     <artifactId>vavr</artifactId>
     <version>1.0</version>
     <name>vavr</name>
-	
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.BUILD-SNAPSHOT</version>
-        <relativePath />
+        <version>1.5.6.RELEASE</version>
+        <relativePath/>
+        <!--  lookup parent from repository  -->
     </parent>
 
     <dependencies>
@@ -35,11 +36,19 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-     
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
+        
+        <dependency>
+    <groupId>org.awaitility</groupId>
+    <artifactId>awaitility</artifactId>
+    <version>${awaitility.version}</version>
+    <scope>test</scope>
+</dependency>
     </dependencies>
 	
     <repositories>
@@ -67,8 +76,31 @@
 	
     <properties>
         <java.version>1.8</java.version>
-        <vavr.version>0.9.0</vavr.version>
+        <vavr.version>0.9.1</vavr.version>
         <junit.version>4.12</junit.version>
+        <awaitility.version>3.0.0</awaitility.version>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <forkCount>3</forkCount>
+                    <reuseForks>true</reuseForks>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*LongRunningUnitTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
+                        <exclude>**/JdbcTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

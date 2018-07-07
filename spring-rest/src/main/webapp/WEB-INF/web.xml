@@ -19,10 +19,10 @@
         <param-value>org.baeldung.config</param-value>
     </context-param>
  
-    <listener>
+<!--     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
+ -->
     <!-- Spring child -->
     <servlet>
         <servlet-name>api</servlet-name>

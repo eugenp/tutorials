@@ -16,7 +16,8 @@ public class LoginServiceImpl implements LoginService {
 
     public boolean login(String userName, char[] password) {
         boolean success;
-        if (userName.equals("admin") && "secret".toCharArray().equals(password)) {
+        if (userName.equals("admin") && "secret".toCharArray()
+            .equals(password)) {
             counterService.increment("counter.login.success");
             success = true;
         } else {

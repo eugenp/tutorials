@@ -1,7 +1,5 @@
 package org.baeldung.web;
 
-import java.util.List;
-
 import org.baeldung.persistence.model.Book;
 import org.baeldung.persistence.repo.BookRepository;
 import org.baeldung.web.exception.BookIdMismatchException;
@@ -17,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/books")
@@ -36,12 +36,9 @@ public class BookController {
     }
 
     @GetMapping("/{id}")
-    public Book findOne(@PathVariable Long id) {
-        final Book book = bookRepository.findOne(id);
-        if (book == null) {
-            throw new BookNotFoundException();
-        }
-        return book;
+    public Book findOne(@PathVariable long id) {
+        return bookRepository.findOne(id)
+          .orElseThrow(BookNotFoundException::new);
     }
 
     @PostMapping
@@ -51,24 +48,19 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        final Book book = bookRepository.findOne(id);
-        if (book == null) {
-            throw new BookNotFoundException();
-        }
+    public void delete(@PathVariable long id) {
+        bookRepository.findOne(id)
+          .orElseThrow(BookNotFoundException::new);
         bookRepository.delete(id);
     }
 
     @PutMapping("/{id}")
-    public Book updateBook(@RequestBody Book book, @PathVariable Long id) {
+    public Book updateBook(@RequestBody Book book, @PathVariable long id) {
         if (book.getId() != id) {
             throw new BookIdMismatchException();
         }
-        final Book old = bookRepository.findOne(id);
-        if (old == null) {
-            throw new BookNotFoundException();
-        }
+        bookRepository.findOne(id)
+          .orElseThrow(BookNotFoundException::new);
         return bookRepository.save(book);
     }
-
 }

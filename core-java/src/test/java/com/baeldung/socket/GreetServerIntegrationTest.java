@@ -17,7 +17,8 @@ public class GreetServerIntegrationTest {
 
     @BeforeClass
     public static void start() throws InterruptedException {
-        Executors.newSingleThreadExecutor().submit(() -> new GreetServer().start(PORT));
+        Executors.newSingleThreadExecutor()
+            .submit(() -> new GreetServer().start(PORT));
         Thread.sleep(500);
     }
 

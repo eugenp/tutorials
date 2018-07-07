@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.M1</version>
+        <version>2.0.0.M3</version>
         <relativePath/>
         <!-- lookup parent from repository -->
     </parent>
@@ -66,7 +66,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
-            <version>2.8.7</version>
         </dependency>
 
         <!-- runtime and test scoped -->
@@ -153,7 +152,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
+
                     <failIfNoTests>false</failIfNoTests>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
@@ -167,14 +166,6 @@
 
     <repositories>
         <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>
             <url>https://repo.spring.io/milestone</url>
@@ -184,14 +175,6 @@
         </repository>
     </repositories>
     <pluginRepositories>
-        <pluginRepository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>https://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
         <pluginRepository>
             <id>spring-milestones</id>
             <name>Spring Milestones</name>

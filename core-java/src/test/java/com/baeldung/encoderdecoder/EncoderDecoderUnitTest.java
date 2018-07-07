@@ -1,20 +1,23 @@
 package com.baeldung.encoderdecoder;
 
-import org.hamcrest.CoreMatchers;
-import org.junit.Assert;
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static java.util.stream.Collectors.joining;
+import static org.hamcrest.CoreMatchers.is;
 
 import java.io.UnsupportedEncodingException;
-import java.net.*;
+import java.net.URL;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.util.stream.Collectors.joining;
-import static org.hamcrest.CoreMatchers.*;
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.util.UriUtils;
 
 public class EncoderDecoderUnitTest {
 
@@ -76,19 +79,20 @@ public class EncoderDecoderUnitTest {
 
     private String encodePath(String path) {
         try {
-            path = new URI(null, null, path, null).getPath();
-        } catch (URISyntaxException e) {
+            path = UriUtils.encodePath(path, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
             LOGGER.error("Error encoding parameter {}", e.getMessage(), e);
         }
         return path;
     }
 
     @Test
-    public void givenPath_thenEncodeDecodePath() throws URISyntaxException {
-        URI uri = new URI(null, null, "/Path 1/Path+2", null);
-
-        Assert.assertEquals("/Path 1/Path+2", uri.getPath());
-        Assert.assertEquals("/Path%201/Path+2", uri.getRawPath());
+    public void givenPathSegment_thenEncodeDecode() throws UnsupportedEncodingException {
+        String pathSegment = "/Path 1/Path+2";
+        String encodedPathSegment = encodePath(pathSegment);
+        String decodedPathSegment = UriUtils.decode(encodedPathSegment, "UTF-8");
+        Assert.assertEquals("/Path%201/Path+2", encodedPathSegment);
+        Assert.assertEquals("/Path 1/Path+2", decodedPathSegment);
     }
 
     @Test

@@ -1,25 +1,35 @@
-apply plugin: 'java'
-apply plugin: 'maven'
-
-repositories{
-   mavenCentral()
+allprojects {
+    repositories {
+        jcenter() 
+    }
 }
 
-dependencies{ 
-     compile 'org.springframework:spring-context:4.3.5.RELEASE' 
-} 
 
-task hello {   
-    println "this Baeldung's tutorial is ${awesomeness}"  
+subprojects {
+
+    version = '1.0'
 }
 
-uploadArchives {  
-    repositories {  
-        mavenDeployer {  
-            repository(url: 'http://yourmavenrepo/repository') {  
-                authentication(userName: 'user', password: 'password');  
-            }  
-      
-        }  
-    }  
+apply plugin: 'eclipse'
+
+println 'This will be executed during the configuration phase.'
+
+task configured {
+    println 'This will also be executed during the configuration phase.'
+}
+
+task execFirstTest {
+    doLast {
+        println 'This will be executed during the execution phase.'
+    }
+}
+
+task execSecondTest {
+    doFirst {
+      println 'This will be executed first during the execution phase.'
+    }
+    doLast {
+      println 'This will be executed last during the execution phase.'
+    }
+    println 'This will be executed during the configuration phase as well.'
 }
