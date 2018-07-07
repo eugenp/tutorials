@@ -1,23 +1,16 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
+    <groupId>com.baeldung.javax-servlets</groupId>
     <artifactId>javax-servlets</artifactId>
     <version>1.0-SNAPSHOT</version>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-
-
     <dependencies>
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -43,75 +36,35 @@
             <scope>test</scope>
         </dependency>
 
+	<!-- File Uploading -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${org.apache.httpcomponents.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-    </dependencies>
-
-    <properties>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-        <org.apache.httpcomponents.version>4.5.3</org.apache.httpcomponents.version>
-    </properties>
-
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<artifactId>javax-servlets</artifactId>
-	<version>1.0-SNAPSHOT</version>
-
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-	</parent>
-
-	<dependencies>
-		<!-- File Uploading -->
-		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.3</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.6</version>
-		</dependency>
-
-		<!-- Servlet -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp.jstl</groupId>
-			<artifactId>jstl-api</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<dependency>
+	    <groupId>commons-fileupload</groupId>
+	    <artifactId>commons-fileupload</artifactId>
+	    <version>1.3.3</version>
+	</dependency>
+	<dependency>
+	    <groupId>commons-io</groupId>
+	    <artifactId>commons-io</artifactId>
+	    <version>2.6</version>
+	</dependency>
+	
+	<!-- Servlet -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>4.0.1</version>
+	</dependency>
+	<dependency>
+	    <groupId>javax.servlet.jsp.jstl</groupId>
+	    <artifactId>jstl-api</artifactId>
+	    <version>1.2</version>
+	</dependency>
+	<dependency>
+	    <groupId>javax.servlet.jsp</groupId>
+	    <artifactId>javax.servlet.jsp-api</artifactId>
+	    <version>2.3.1</version>
+	</dependency>
+	<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
@@ -139,13 +92,30 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring-test.version}</version>
 			<scope>test</scope>
-		</dependency>
-	</dependencies>
+		</dependency>    
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${org.apache.httpcomponents.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-	<properties>
-		<org.apache.httpcomponents.version>4.5.3</org.apache.httpcomponents.version>
-		<spring-test.version>5.0.5.RELEASE</spring-test.version>
-		<gson.version>2.8.2</gson.version>
-	</properties>
->>>>>>> 559cfeb05fcd102d7c70eacea8f0d4095780c259
+    </dependencies>
+
+    <properties>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <org.apache.httpcomponents.version>4.5.3</org.apache.httpcomponents.version>
+	<gson.version>2.8.2</gson.version>    
+    </properties>
 </project>
