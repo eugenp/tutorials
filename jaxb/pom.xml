@@ -1,11 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>jaxb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>jaxb</name>
-
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -19,30 +18,31 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>${jaxb.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-core</artifactId>
             <version>${jaxb.version}</version>
         </dependency>
-
         <!-- utils -->
         <dependency>
             <groupId>com.sun.istack</groupId>
             <artifactId>istack-commons-runtime</artifactId>
-            <version>3.0.2</version>
+            <version>${istack-commons-runtime.version}</version>
         </dependency>
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.5</version>
+            <version>${commons-io.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.5</version>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1</version>
         </dependency>
     </dependencies>
 
@@ -60,7 +60,7 @@
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
+                    <version>${lifecycle-mapping-plugin.version}</version>
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>
@@ -75,7 +75,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute />
+                                        <execute/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -116,13 +116,13 @@
             </plugin>
 
             <!-- schemagen -->
-            <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId> 
-                <version>${jaxb2-maven-plugin.version}</version> <executions> <execution> 
-                <id>schemagen</id> <goals> <goal>schemagen</goal> </goals> </execution> </executions> 
-                <configuration> <sources> <source>src/main/java/com/baeldung/jaxb/gen</source> 
-                </sources> <outputDirectory>src/main/resources</outputDirectory> <clearOutputDir>false</clearOutputDir> 
-                <transformSchemas> <transformSchema> <uri>http://www.baeldung.com/jaxb/gen</uri> 
-                <toPrefix>user</toPrefix> <toFile>gen-schema.xsd</toFile> </transformSchema> 
+            <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId>
+                <version>${jaxb2-maven-plugin.version}</version> <executions> <execution>
+                <id>schemagen</id> <goals> <goal>schemagen</goal> </goals> </execution> </executions>
+                <configuration> <sources> <source>src/main/java/com/baeldung/jaxb/gen</source>
+                </sources> <outputDirectory>src/main/resources</outputDirectory> <clearOutputDir>false</clearOutputDir>
+                <transformSchemas> <transformSchema> <uri>http://www.baeldung.com/jaxb/gen</uri>
+                <toPrefix>user</toPrefix> <toFile>gen-schema.xsd</toFile> </transformSchema>
                 </transformSchemas> </configuration> </plugin> -->
         </plugins>
     </build>
@@ -133,6 +133,10 @@
 
         <!-- maven plugins -->
         <jaxb2-maven-plugin.version>2.3</jaxb2-maven-plugin.version>
+        <istack-commons-runtime.version>3.0.2</istack-commons-runtime.version>
+        <commons-io.version>2.5</commons-io.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
     </properties>
 
 </project>

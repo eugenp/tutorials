@@ -1,0 +1,137 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>rest-testing</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <name>rest-testing</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    	<relativePath>../../parent-java</relativePath>
+    </parent>
+
+    <dependencies>
+
+        <!-- utils -->
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
+        <!-- http client -->
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>${httpcore.version}</version>
+        </dependency>
+
+        <!-- marshalling -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <!-- test scoped -->
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>info.cukes</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <version>${jbehave.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-apache</artifactId>
+            <version>${karate.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.intuit.karate</groupId>
+            <artifactId>karate-junit4</artifactId>
+            <version>${karate.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>rest-testing</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+    </build>
+
+    <properties>
+        <!-- marshalling -->
+        <jackson.version>2.8.5</jackson.version>
+
+        <!-- util -->
+        <guava.version>19.0</guava.version>
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-io.version>2.5</commons-io.version>
+
+        <!-- testing -->
+        <rest-assured.version>2.9.0</rest-assured.version>
+        <cucumber.version>1.2.5</cucumber.version>
+        <wiremock.version>2.4.1</wiremock.version>
+        <karate.version>0.6.1</karate.version>
+
+        <httpcore.version>4.4.5</httpcore.version>
+        <httpclient.version>4.5.2</httpclient.version>
+
+        <jbehave.version>4.1</jbehave.version>
+
+        <!-- maven plugins -->
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+
+    </properties>
+
+</project>

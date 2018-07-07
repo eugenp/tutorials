@@ -22,9 +22,6 @@ public class RequestData {
 
     @Override
     public String toString() {
-        return "RequestData{" +
-          "intValue=" + intValue +
-          ", stringValue='" + stringValue + '\'' +
-          '}';
+        return "RequestData{" + "intValue=" + intValue + ", stringValue='" + stringValue + '\'' + '}';
     }
 }
