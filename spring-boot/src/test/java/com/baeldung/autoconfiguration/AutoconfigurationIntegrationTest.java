@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = AutoconfigurationApplication.class)
-@EnableJpaRepositories(basePackages = {"com.baeldung.autoconfiguration.example"})
+@EnableJpaRepositories(basePackages = { "com.baeldung.autoconfiguration.example" })
 public class AutoconfigurationIntegrationTest {
 
     @Autowired

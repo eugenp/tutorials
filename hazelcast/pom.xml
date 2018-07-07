@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.hazelcast</groupId>
             <artifactId>hazelcast-client</artifactId>
-            <version>3.7.2</version>
+            <version>${hazelcast.version}</version>
         </dependency>
 
     </dependencies>
@@ -39,7 +39,7 @@
 
     <properties>
         <!-- hazelcast -->
-        <hazelcast.version>3.7.4</hazelcast.version>
+        <hazelcast.version>3.8.4</hazelcast.version>
     </properties>
 
 </project>

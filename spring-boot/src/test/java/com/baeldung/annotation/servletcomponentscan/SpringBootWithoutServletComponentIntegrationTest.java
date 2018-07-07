@@ -21,7 +21,7 @@ import static org.junit.Assert.assertNull;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootPlainApp.class)
 @AutoConfigureMockMvc
-@TestPropertySource(properties = {"security.basic.enabled=false"})
+@TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithoutServletComponentIntegrationTest {
 
     @Autowired
@@ -50,5 +50,3 @@ public class SpringBootWithoutServletComponentIntegrationTest {
     }
 
 }
-
-

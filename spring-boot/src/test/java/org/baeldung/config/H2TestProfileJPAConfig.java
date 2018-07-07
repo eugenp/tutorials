@@ -41,7 +41,7 @@ public class H2TestProfileJPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "org.baeldung.domain", "org.baeldung.boot.model", "org.baeldung.boot.boottest" });
+        em.setPackagesToScan(new String[] { "org.baeldung.domain", "org.baeldung.boot.domain", "org.baeldung.boot.boottest","org.baeldung.model" });
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;

@@ -50,13 +50,17 @@ public class StoredProcedureIntegrationTest {
     public void findCarsByYearNamedProcedure() {
         final StoredProcedureQuery findByYearProcedure = entityManager.createNamedStoredProcedureQuery("findByYearProcedure");
         final StoredProcedureQuery storedProcedure = findByYearProcedure.setParameter("p_year", 2015);
-        storedProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
+        storedProcedure.getResultList()
+            .forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
     }
 
     @Test
     public void findCarsByYearNoNamed() {
-        final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class).registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN).setParameter(1, 2015);
-        storedProcedure.getResultList().forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
+        final StoredProcedureQuery storedProcedure = entityManager.createStoredProcedureQuery("FIND_CAR_BY_YEAR", Car.class)
+            .registerStoredProcedureParameter(1, Integer.class, ParameterMode.IN)
+            .setParameter(1, 2015);
+        storedProcedure.getResultList()
+            .forEach(c -> Assert.assertEquals(new Integer(2015), ((Car) c).getYear()));
     }
 
     @AfterClass

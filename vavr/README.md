@@ -5,3 +5,6 @@
 - [Property Testing Example With Vavr](http://www.baeldung.com/javaslang-property-testing)
 - [Exceptions in Lambda Expression Using Vavr](http://www.baeldung.com/exceptions-using-vavr)
 - [Vavr (ex-Javaslang) Support in Spring Data](http://www.baeldung.com/spring-vavr)
+- [Introduction to Vavr’s Validation API](http://www.baeldung.com/vavr-validation-api)
+- [Guide to Collections API in Vavr](http://www.baeldung.com/vavr-collections)
+- [Collection Factory Methods for Vavr](http://www.baeldung.com/vavr-collection-factory-methods)

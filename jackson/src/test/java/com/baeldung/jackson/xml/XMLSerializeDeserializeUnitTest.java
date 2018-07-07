@@ -35,8 +35,7 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaGotFromXmlStr_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
-        SimpleBean value = xmlMapper.readValue(
-                "<SimpleBean><x>1</x><y>2</y></SimpleBean>", SimpleBean.class);
+        SimpleBean value = xmlMapper.readValue("<SimpleBean><x>1</x><y>2</y></SimpleBean>", SimpleBean.class);
         assertTrue(value.getX() == 1 && value.getY() == 2);
     }
 
