@@ -3,12 +3,5 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <context-param>
-        <param-name>province</param-name>
-        <param-value>Mendoza</param-value>
-    </context-param>
-    <context-param>
-        <param-name>country</param-name>
-        <param-value>Argentina</param-value>
-    </context-param>
+
 </web-app>
