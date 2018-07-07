@@ -20,6 +20,7 @@ public class CustomListSerializer extends StdSerializer<List<ItemWithSerializer>
     public CustomListSerializer(final Class<List<ItemWithSerializer>> t) {
         super(t);
     }
+
     @Override
     public void serialize(final List<ItemWithSerializer> items, final JsonGenerator generator, final SerializerProvider provider) throws IOException, JsonProcessingException {
         final List<Integer> ids = new ArrayList<Integer>();

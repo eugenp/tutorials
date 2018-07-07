@@ -1,10 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>jackson-annotations</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
     <name>jacksonannotation</name>
 
     <parent>
@@ -16,12 +15,6 @@
     <dependencies>
 
         <!-- utils -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -140,7 +133,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 
     <properties>
@@ -165,12 +157,9 @@
 
         <!-- testing -->
         <mockito.version>2.8.9</mockito.version>
-
         <httpcore.version>4.4.1</httpcore.version>
         <httpclient.version>4.5</httpclient.version>
-
         <rest-assured.version>2.9.0</rest-assured.version>
-
         <assertj-core.version>3.6.1</assertj-core.version>
         <json-schema-validator.version>2.2.6</json-schema-validator.version>
         <json-path.version>3.0.1</json-path.version>

@@ -1,0 +1,120 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>checker-plugin</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>checker-plugin</name>
+    <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- Annotations from the Checker Framework: nullness, interning, locking, ... -->
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+            <version>${checker-qual.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker</artifactId>
+            <version>${checker.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>jdk8</artifactId>
+            <version>${jdk8.version}</version>
+        </dependency>
+        <!-- The Type Annotations compiler. Uncomment if using annotations in comments. -->
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>compiler</artifactId>
+            <version>${checkerframework.compiler.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- This plugin will set properties values using dependency information -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--
+                            Goal that sets a property pointing to the artifact file for each project dependency.
+                            For each dependency (direct and transitive) a project property will be set which
+                            follows the:
+
+                               groupId:artifactId:type:[classifier]
+
+                            form and contains the path to the resolved artifact. -->
+                            <goal>properties</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <!-- Uncomment the following line to use the type annotations compiler. -->
+                    <!-- <fork>true</fork> -->
+                    <compilerArguments>
+                        <Xmaxerrs>10000</Xmaxerrs>
+                        <Xmaxwarns>10000</Xmaxwarns>
+                    </compilerArguments>
+                    <annotationProcessors>
+                        <!-- Add all the checkers you want to enable here -->
+                        <annotationProcessor>org.checkerframework.checker.nullness.NullnessChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.interning.InterningChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.fenum.FenumChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.formatter.FormatterChecker</annotationProcessor>
+                        <annotationProcessor>org.checkerframework.checker.regex.RegexChecker</annotationProcessor>
+                    </annotationProcessors>
+                    <compilerArgs>
+                        <arg>-AprintErrorStack</arg>
+
+                        <!-- location of the annotated JDK, which comes from a Maven dependency -->
+                        <arg>-Xbootclasspath/p:${annotatedJdk}</arg>
+                        <!--
+                        -->
+
+                        <!-- Uncomment the following line to use the type annotations compiler. -->
+                        <!--
+                        <arg>-J-Xbootclasspath/p:${typeAnnotationsJavac}</arg>
+                        -->
+                        <!-- Uncomment the following line to turn type-checking warnings into errors. -->
+                        <arg>-Awarns</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <!-- These properties will be set by the Maven Dependency plugin -->
+        <annotatedJdk>${org.checkerframework:jdk8:jar}</annotatedJdk>
+        <!-- Uncomment to use the Type Annotations compiler. -->
+        <!--
+        <typeAnnotationsJavac>${org.checkerframework:compiler:jar}</typeAnnotationsJavac>
+        -->
+        <checker-qual.version>2.3.1</checker-qual.version>
+        <checker.version>2.3.1</checker.version>
+        <jdk8.version>2.3.1</jdk8.version>
+        <checkerframework.compiler.version>2.3.1</checkerframework.compiler.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+</project>

@@ -11,10 +11,10 @@
     <description>Parent for all projects related to Spring Remoting.</description>
 
     <parent>
-        <artifactId>parent-boot-4</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-4</relativePath>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <dependencyManagement>

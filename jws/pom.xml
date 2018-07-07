@@ -1,12 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
     <artifactId>jws</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-
     <name>jws-example</name>
 
     <parent>
@@ -14,13 +12,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
-        <jardiff.version>7.0</jardiff.version>
-        <jnlp-servlet.version>7.0</jnlp-servlet.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -37,7 +28,6 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/java-core-samples-lib/jardiff.jar</systemPath>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -63,7 +53,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -88,5 +77,12 @@
         </plugins>
         <finalName>${project.artifactId}</finalName>
     </build>
+
+    <properties>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+        <jardiff.version>7.0</jardiff.version>
+        <jnlp-servlet.version>7.0</jnlp-servlet.version>
+    </properties>
 
 </project>

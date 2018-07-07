@@ -14,4 +14,3 @@ public class BlockingServlet extends HttpServlet {
         response.getWriter().println("{ \"status\": \"ok\"}");
     }
 }
-

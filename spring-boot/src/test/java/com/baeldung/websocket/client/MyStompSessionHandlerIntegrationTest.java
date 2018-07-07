@@ -18,4 +18,3 @@ public class MyStompSessionHandlerIntegrationTest {
         Mockito.verify(mockSession).send(Mockito.anyString(), Mockito.anyObject());
     }
 }
-
