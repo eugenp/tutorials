@@ -10,8 +10,8 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-java</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../parent-java</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -197,12 +197,7 @@
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
             <version>${javax.mail.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>1.5.0-b01</version>
-        </dependency>
+      </dependency>
         <dependency>
             <groupId>com.ibm.icu</groupId>
             <artifactId>icu4j</artifactId>
@@ -255,6 +250,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -293,6 +289,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven-shade-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -314,6 +311,7 @@
             <plugin>
                 <groupId>com.jolira</groupId>
                 <artifactId>onejar-maven-plugin</artifactId>
+                <version>${onejar-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <configuration>
@@ -331,6 +329,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -478,6 +477,10 @@
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
+        <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
+        <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <icu4j.version>61.1</icu4j.version>
     </properties>
 
