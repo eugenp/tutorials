@@ -166,3 +166,4 @@
 - [Convert a String to Title Case](http://www.baeldung.com/java-string-title-case)
 - [How to Get the File Extension of a File in Java](http://www.baeldung.com/java-file-extension)
 - [Immutable Objects in Java](http://www.baeldung.com/java-immutable-object)
+- [Console I/O in Java](http://www.baeldung.com/java-console-input-output)
