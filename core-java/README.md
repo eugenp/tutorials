@@ -161,3 +161,8 @@
 - [Guide to the this Java Keyword](http://www.baeldung.com/java-this)
 - [Jagged Arrays In Java](http://www.baeldung.com/java-jagged-arrays)
 - [Importance of Main Manifest Attribute in a Self-Executing JAR](http://www.baeldung.com/java-jar-executable-manifest-main-class)
+- [Extracting Year, Month and Day from Date in Java](http://www.baeldung.com/java-year-month-day)
+- [Get Date Without Time in Java](http://www.baeldung.com/java-date-without-time)
+- [Convert a String to Title Case](http://www.baeldung.com/java-string-title-case)
+- [How to Get the File Extension of a File in Java](http://www.baeldung.com/java-file-extension)
+- [Immutable Objects in Java](http://www.baeldung.com/java-immutable-object)

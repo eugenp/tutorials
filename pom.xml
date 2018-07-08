@@ -46,7 +46,7 @@
         <module>couchbase</module>
         <module>deltaspike</module>
         <module>dozer</module>
-        <module>ethereumj</module>
+        <module>ethereum</module>
         <!--<module>ejb</module>-->
         <module>feign</module>
         <module>flips</module>
@@ -54,6 +54,7 @@
         <module>geotools</module>
         <module>testing-modules/groovy-spock</module>
         <module>google-cloud</module>
+        <module>google-web-toolkit</module>
         <module>gson</module>
         <module>guava</module>
         <module>guava-modules/guava-18</module>
@@ -91,7 +92,7 @@
         <module>jsoup</module>
         <module>testing-modules/junit-5</module>
         <module>jws</module>
-        <!--<module>libraries</module>-->
+        <module>libraries</module>
         <module>libraries-data</module>
         <module>linkrest</module>
         <module>logging-modules/log-mdc</module>
@@ -374,8 +375,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.9.0</version>
-                <dependencies>
+                <version>3.8</version>
+				<dependencies>
                     <dependency>
                         <groupId>org.baeldung.pmd</groupId>
                         <artifactId>custom-pmd</artifactId>
@@ -394,6 +395,9 @@
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
                     </rulesets>
+					<excludeRoots>
+						<excludeRoot>target/generated-sources</excludeRoot>
+					</excludeRoots>
                 </configuration>
                 <executions>
                     <execution>

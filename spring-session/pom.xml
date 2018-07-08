@@ -30,6 +30,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.kstyrc</groupId>
+            <artifactId>embedded-redis</artifactId>
+            <version>${embedded-redis.version}</version>
+        </dependency>
     </dependencies>
+    
+    <properties>
+    	<embedded-redis.version>0.6</embedded-redis.version>
+    </properties>
 
 </project>
