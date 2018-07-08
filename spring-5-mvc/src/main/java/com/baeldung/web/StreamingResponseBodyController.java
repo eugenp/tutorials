@@ -11,14 +11,13 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 @Controller
 public class StreamingResponseBodyController {
 
-  @RequestMapping(Constants.API_SRB)
-  public ResponseEntity<StreamingResponseBody> handleRbe() {
-    StreamingResponseBody stream = out -> {
-      String msg = Constants.API_SRB_MSG + " @ " + new Date();
-      out.write(msg.getBytes());
-    };
-
-    return new ResponseEntity(stream, HttpStatus.OK);
-  }
+    @RequestMapping(Constants.API_SRB)
+    public ResponseEntity<StreamingResponseBody> handleRbe() {
+        StreamingResponseBody stream = out -> {
+            String msg = Constants.API_SRB_MSG + " @ " + new Date();
+            out.write(msg.getBytes());
+        };
+        return new ResponseEntity(stream, HttpStatus.OK);
+      }
 
 }

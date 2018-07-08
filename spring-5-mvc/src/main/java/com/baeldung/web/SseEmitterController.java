@@ -10,22 +10,21 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 @Controller
 public class SseEmitterController {
 
-  @RequestMapping(Constants.API_SSE)
-  public SseEmitter handleSse() {
-    SseEmitter emitter = new SseEmitter();
+    @RequestMapping(Constants.API_SSE)
+    public SseEmitter handleSse() {
+        SseEmitter emitter = new SseEmitter();
 
-    ExecutorService nonBlockingService = Executors.newSingleThreadExecutor();
-    nonBlockingService.execute(() -> {
-      try {
-        emitter.send(Constants.API_SSE_MSG + " @ " + new Date());
-        emitter.complete();
-      } catch (Exception ex) {
-        System.out.println(Constants.GENERIC_EXCEPTION);
-        emitter.completeWithError(ex);
-      }
-    });
-
-    return emitter;
-  }
+        ExecutorService nonBlockingService = Executors.newSingleThreadExecutor();
+        nonBlockingService.execute(() -> {
+            try {
+                emitter.send(Constants.API_SSE_MSG + " @ " + new Date());
+                emitter.complete();
+            } catch (Exception ex) {
+                System.out.println(Constants.GENERIC_EXCEPTION);
+                emitter.completeWithError(ex);
+            }
+        });
+        return emitter;
+    }
 
 }
