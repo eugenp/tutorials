@@ -94,6 +94,11 @@
             <artifactId>streamex</artifactId>
             <version>${streamex.version}</version>
         </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>${joda-time.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -241,6 +246,7 @@
         <avaitility.version>1.7.0</avaitility.version>
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator.version>1.19</jmh-generator.version>
+        <joda-time.version>2.10</joda-time.version>
     </properties>
 
 </project>
