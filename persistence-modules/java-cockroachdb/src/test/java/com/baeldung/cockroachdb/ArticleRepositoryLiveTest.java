@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class ArticleRepositoryIntegrationTest {
+public class ArticleRepositoryLiveTest {
 
     private static final String TABLE_NAME = "articles";
 

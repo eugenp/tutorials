@@ -21,7 +21,7 @@ import com.baeldung.transfer.LoginForm;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RestClientConfig.class)
-public class RestTemplateIntegrationTest {
+public class RestTemplateLiveTest {
 
     @Autowired
     RestTemplate restTemplate;
