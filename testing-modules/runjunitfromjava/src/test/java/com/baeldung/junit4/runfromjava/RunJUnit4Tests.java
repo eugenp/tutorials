@@ -3,7 +3,9 @@ package com.baeldung.junit4.runfromjava;
 import junit.extensions.ActiveTestSuite;
 import junit.extensions.RepeatedTest;
 import org.junit.extensions.cpsuite.ClasspathSuite;
+
 import static org.junit.extensions.cpsuite.SuiteType.*;
+
 import junit.framework.TestSuite;
 
 import org.junit.extensions.cpsuite.ClasspathSuite.SuiteTypes;
@@ -21,7 +23,7 @@ public class RunJUnit4Tests {
     }
 
     public static void runAllClasses() {
-        Result result = JUnitCore.runClasses(RunJUnit4Tests.class);
+        Result result = JUnitCore.runClasses(ListNodeUnitTest.class, MergeListsUnitTest.class, RemovedNthElementUnitTest.class, RotateListUnitTest.class, RunJUnit4Tests.class, SwapNodesUnitTest.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
@@ -42,10 +44,10 @@ public class RunJUnit4Tests {
     }
 
     public static void resultReport(Result result) {
-        System.out.println("Finished. Result " + ". Failures: " + 
-                result.getFailureCount() + ". Ignored: " + 
-                result.getIgnoreCount() + ". Tests runt: " + 
-                result.getRunCount() + ". Time: " + 
+        System.out.println("Finished. Result " + ". Failures: " +
+                result.getFailureCount() + ". Ignored: " +
+                result.getIgnoreCount() + ". Tests runt: " +
+                result.getRunCount() + ". Time: " +
                 result.getRunTime() + "ms.");
     }
 
