@@ -191,7 +191,6 @@
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
-        <module>spring-mvc-simple</module>
         <module>spring-mvc-kotlin</module>
         <module>spring-security-openid</module>
         <module>spring-protobuf</module>
