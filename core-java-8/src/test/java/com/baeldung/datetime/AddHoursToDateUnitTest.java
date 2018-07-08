@@ -1,6 +1,6 @@
 package com.baeldung.datetime;
 
-import static org.junit.Assert.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -22,7 +22,7 @@ public class AddHoursToDateUnitTest {
         Date actualDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 5, 0).getTime();
         Date expectedDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 7, 0).getTime();
 
-        assertEquals(expectedDate, addHoursToDateObj.addHoursToJavaUtilDate(actualDate, 2));
+        assertThat(expectedDate).isEqualTo(addHoursToDateObj.addHoursToJavaUtilDate(actualDate, 2));
     }
 
     @Test
@@ -30,7 +30,7 @@ public class AddHoursToDateUnitTest {
         Date actualDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 5, 0).getTime();
         Date expectedDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 3, 0).getTime();
 
-        assertEquals(expectedDate, addHoursToDateObj.addHoursToJavaUtilDate(actualDate, -2));
+        assertThat(expectedDate).isEqualTo(addHoursToDateObj.addHoursToJavaUtilDate(actualDate, -2));
     }
 
     @Test
@@ -38,8 +38,7 @@ public class AddHoursToDateUnitTest {
         Date actualDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 5, 0).getTime();
         Date expectedDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 7, 0).getTime();
 
-        assertEquals(expectedDate, addHoursToDateObj.addHoursToDateUsingInstant(actualDate, 2));
-
+        assertThat(expectedDate).isEqualTo(addHoursToDateObj.addHoursToDateUsingInstant(actualDate, 2));
     }
 
     @Test
@@ -47,7 +46,7 @@ public class AddHoursToDateUnitTest {
         Date actualDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 5, 0).getTime();
         Date expectedDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 3, 0).getTime();
 
-        assertEquals(expectedDate, addHoursToDateObj.addHoursToDateUsingInstant(actualDate, -2));
+        assertThat(expectedDate).isEqualTo(addHoursToDateObj.addHoursToDateUsingInstant(actualDate, -2));
     }
 
     @Test
@@ -55,7 +54,7 @@ public class AddHoursToDateUnitTest {
         LocalDateTime actualDateTime = LocalDateTime.of(2018, Month.JUNE, 25, 5, 0);
         LocalDateTime expectedDateTime = LocalDateTime.of(2018, Month.JUNE, 25, 7, 0);
 
-        assertEquals(expectedDateTime, addHoursToDateObj.addHoursToLocalDateTime(actualDateTime, 2));
+        assertThat(expectedDateTime).isEqualTo(addHoursToDateObj.addHoursToLocalDateTime(actualDateTime, 2));
     }
 
     @Test
@@ -63,7 +62,7 @@ public class AddHoursToDateUnitTest {
         LocalDateTime actualDateTime = LocalDateTime.of(2018, Month.JUNE, 25, 5, 0);
         LocalDateTime expectedDateTime = LocalDateTime.of(2018, Month.JUNE, 25, 3, 0);
 
-        assertEquals(expectedDateTime, addHoursToDateObj.subtractHoursToLocalDateTime(actualDateTime, 2));
+        assertThat(expectedDateTime).isEqualTo(addHoursToDateObj.subtractHoursToLocalDateTime(actualDateTime, 2));
     }
 
     @Test
@@ -71,7 +70,7 @@ public class AddHoursToDateUnitTest {
         ZonedDateTime actualZonedDateTime = ZonedDateTime.of(LocalDateTime.of(2018, Month.JUNE, 25, 5, 0), ZoneId.systemDefault());
         ZonedDateTime expectedZonedDateTime = ZonedDateTime.of(LocalDateTime.of(2018, Month.JUNE, 25, 7, 0), ZoneId.systemDefault());
 
-        assertEquals(expectedZonedDateTime, addHoursToDateObj.addHoursToZonedDateTime(actualZonedDateTime, 2));
+        assertThat(expectedZonedDateTime).isEqualTo(addHoursToDateObj.addHoursToZonedDateTime(actualZonedDateTime, 2));
     }
 
     @Test
@@ -79,7 +78,7 @@ public class AddHoursToDateUnitTest {
         ZonedDateTime actualZonedDateTime = ZonedDateTime.of(LocalDateTime.of(2018, Month.JUNE, 25, 5, 0), ZoneId.systemDefault());
         ZonedDateTime expectedZonedDateTime = ZonedDateTime.of(LocalDateTime.of(2018, Month.JUNE, 25, 3, 0), ZoneId.systemDefault());
 
-        assertEquals(expectedZonedDateTime, addHoursToDateObj.subtractHoursToZonedDateTime(actualZonedDateTime, 2));
+        assertThat(expectedZonedDateTime).isEqualTo(addHoursToDateObj.subtractHoursToZonedDateTime(actualZonedDateTime, 2));
     }
 
     @Test
@@ -87,7 +86,7 @@ public class AddHoursToDateUnitTest {
         Date actualDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 5, 0).getTime();
         Date expectedDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 7, 0).getTime();
 
-        assertEquals(expectedDate, addHoursToDateObj.addHoursWithApacheCommons(actualDate, 2));
+        assertThat(expectedDate).isEqualTo(addHoursToDateObj.addHoursWithApacheCommons(actualDate, 2));
     }
 
     @Test
@@ -95,7 +94,7 @@ public class AddHoursToDateUnitTest {
         Date actualDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 7, 0).getTime();
         Date expectedDate = new GregorianCalendar(2018, Calendar.JUNE, 25, 5, 0).getTime();
 
-        assertEquals(expectedDate, addHoursToDateObj.addHoursWithApacheCommons(actualDate, -2));
+        assertThat(expectedDate).isEqualTo(addHoursToDateObj.addHoursWithApacheCommons(actualDate, -2));
     }
 
     @Test
@@ -103,7 +102,7 @@ public class AddHoursToDateUnitTest {
         Instant actualValue = Instant.parse("2018-06-25T05:12:35Z");
         Instant expectedValue = Instant.parse("2018-06-25T07:12:35Z");
 
-        assertEquals(expectedValue, addHoursToDateObj.addHoursToInstant(actualValue, 2));
+        assertThat(expectedValue).isEqualTo(addHoursToDateObj.addHoursToInstant(actualValue, 2));
     }
 
     @Test
@@ -111,7 +110,7 @@ public class AddHoursToDateUnitTest {
         Instant actualValue = Instant.parse("2018-06-25T07:12:35Z");
         Instant expectedValue = Instant.parse("2018-06-25T05:12:35Z");
 
-        assertEquals(expectedValue, addHoursToDateObj.subtractHoursToInstant(actualValue, 2));
+        assertThat(expectedValue).isEqualTo(addHoursToDateObj.subtractHoursToInstant(actualValue, 2));
     }
 
 }
