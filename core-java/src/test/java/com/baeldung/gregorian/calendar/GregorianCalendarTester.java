@@ -56,14 +56,6 @@ public class GregorianCalendarTester {
 
     @Test
     public void test_Compare_Date_FirstDate_Greater_SecondDate() {
-        GregorianCalendarExample calendarDemo = new GregorianCalendarExample();
-        GregorianCalendar firstDate = new GregorianCalendar(2018, 6, 28);
-        GregorianCalendar secondDate = new GregorianCalendar(2018, 5, 28);
-        assertTrue(1 == calendarDemo.compareDates(firstDate, secondDate));
-    }
-    
-    @Test
-    public void test_CompareFirstDateGreaterSecondDate() {
         GregorianCalendar firstDate = new GregorianCalendar(2018, 6, 28);
         GregorianCalendar secondDate = new GregorianCalendar(2018, 5, 28);
         assertTrue(1 == firstDate.compareTo(secondDate));
@@ -72,14 +64,6 @@ public class GregorianCalendarTester {
 
     @Test
     public void test_Compare_Date_FirstDate_Smaller_SecondDate() {
-        GregorianCalendarExample calendarDemo = new GregorianCalendarExample();
-        GregorianCalendar firstDate = new GregorianCalendar(2018, 5, 28);
-        GregorianCalendar secondDate = new GregorianCalendar(2018, 6, 28);
-        assertTrue(-1 == calendarDemo.compareDates(firstDate, secondDate));
-    }
-    
-    @Test
-    public void test_CompareFirstDateSmallerSecondDate() {
         GregorianCalendar firstDate = new GregorianCalendar(2018, 5, 28);
         GregorianCalendar secondDate = new GregorianCalendar(2018, 6, 28);
         assertTrue(-1 == firstDate.compareTo(secondDate));
@@ -87,14 +71,6 @@ public class GregorianCalendarTester {
 
     @Test
     public void test_Compare_Date_Both_Dates_Equal() {
-        GregorianCalendarExample calendarDemo = new GregorianCalendarExample();
-        GregorianCalendar firstDate = new GregorianCalendar(2018, 6, 28);
-        GregorianCalendar secondDate = new GregorianCalendar(2018, 6, 28);
-        assertTrue(0 == calendarDemo.compareDates(firstDate, secondDate));
-    }
-    
-    @Test
-    public void test_CompareDatesEqual() {
         GregorianCalendar firstDate = new GregorianCalendar(2018, 6, 28);
         GregorianCalendar secondDate = new GregorianCalendar(2018, 6, 28);
         assertTrue(0 == firstDate.compareTo(secondDate));
@@ -125,19 +101,24 @@ public class GregorianCalendarTester {
     }
 
     @Test
-    public void test_whenAddOneDay_thenMonthIsUnchanged() {
-        final int finalDay29 = 29;
-        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
+    public void test_whenAddOneDay_thenMonthIsChanged() {
+        final int finalDay1 = 1;
+        final int finalMonthJul = 6; 
+        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 5, 30);
         calendarExpected.add(Calendar.DATE, 1);
-        assertEquals(calendarExpected.get(Calendar.DATE), finalDay29);
+        System.out.println(calendarExpected.getTime());
+        assertEquals(calendarExpected.get(Calendar.DATE), finalDay1);
+        assertEquals(calendarExpected.get(Calendar.MONTH), finalMonthJul);
     }
 
     @Test
-    public void test_whenSubtractOneDay_thenMonthIsUnchanged() {
-        final int finalDay27 = 27;
-        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 6, 28);
+    public void test_whenSubtractOneDay_thenMonthIsChanged() {
+        final int finalDay31 = 31;
+        final int finalMonthMay = 4; 
+        GregorianCalendar calendarExpected = new GregorianCalendar(2018, 5, 1);
         calendarExpected.add(Calendar.DATE, -1);
-        assertEquals(calendarExpected.get(Calendar.DATE), finalDay27);
+        assertEquals(calendarExpected.get(Calendar.DATE), finalDay31);
+        assertEquals(calendarExpected.get(Calendar.MONTH), finalMonthMay);
     }
 
     @Test
