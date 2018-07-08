@@ -1,9 +1,8 @@
-package com.baeldung.spring.controllers;
+package com.baeldung.spring.controller;
 
 import com.baeldung.spring.mail.EmailServiceImpl;
-import com.baeldung.spring.web.dto.MailObject;
+import com.baeldung.spring.domain.MailObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
@@ -61,6 +60,11 @@ public class MailController {
         props.put("messageLabel", "Message");
         props.put("additionalInfo", "To make sure that you send an attachment with this email, change the value for the 'attachment.invoice' in the application.properties file to the path to the attachment.");
         labels.put("sendAttachment", props);
+    }
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public String showEmailsPage() {
+        return "emails";
     }
 
     @RequestMapping(value = {"/send", "/sendTemplate", "/sendAttachment"}, method = RequestMethod.GET)
