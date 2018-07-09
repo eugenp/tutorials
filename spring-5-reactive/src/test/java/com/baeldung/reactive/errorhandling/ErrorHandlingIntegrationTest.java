@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.baeldung.reactive.errorhandling;
 
 import java.io.IOException;
@@ -18,18 +13,15 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
-public class ApplicationTest {
+public class ErrorHandlingIntegrationTest {
 
     @Autowired
     private WebTestClient webTestClient;
 
     @Test
-    public void testLocalErrorHandlingUsingOnErrorReturn() throws IOException {
+    public void givenErrorReturn_whenUsernamePresent_thenOk() throws IOException {
 
-        System.out.println("Testing local error handling using onErrorReturn");
-
-        // Pass a username
-        String i = webTestClient.get()
+        String s = webTestClient.get()
             .uri("/api/endpoint1?name={username}", "Tony")
             .accept(MediaType.TEXT_PLAIN)
             .exchange()
@@ -37,10 +29,14 @@ public class ApplicationTest {
             .getResponseBody()
             .blockFirst();
 
-        assertEquals("Hello, Tony", i);
+        assertEquals("Hello, Tony", s);
 
-        // Do not pass a username
-        i = webTestClient.get()
+    }
+
+    @Test
+    public void givenErrorReturn_whenNoUsername_thenOk() throws IOException {
+
+        String s = webTestClient.get()
             .uri("/api/endpoint1")
             .accept(MediaType.TEXT_PLAIN)
             .exchange()
@@ -48,17 +44,13 @@ public class ApplicationTest {
             .getResponseBody()
             .blockFirst();
 
-        assertEquals("Hello, Stranger", i);
-
+        assertEquals("Hello, Stranger", s);
     }
 
     @Test
-    public void testLocalErrorHandlingUsingOnErrorResumeWithFallback() throws IOException {
+    public void givenResumeFallback_whenUsernamePresent_thenOk() throws IOException {
 
-        System.out.println("Testing local error handling using onErrorResume with fallback");
-
-        // Pass a username
-        String i = webTestClient.get()
+        String s = webTestClient.get()
             .uri("/api/endpoint2?name={username}", "Tony")
             .accept(MediaType.TEXT_PLAIN)
             .exchange()
@@ -66,10 +58,12 @@ public class ApplicationTest {
             .getResponseBody()
             .blockFirst();
 
-        assertEquals("Hello, Tony", i);
+        assertEquals("Hello, Tony", s);
+    }
 
-        // Do not pass a username
-        i = webTestClient.get()
+    @Test
+    public void givenResumeFallback_whenNoUsername_thenOk() throws IOException {
+        String s = webTestClient.get()
             .uri("/api/endpoint2")
             .accept(MediaType.TEXT_PLAIN)
             .exchange()
@@ -77,17 +71,14 @@ public class ApplicationTest {
             .getResponseBody()
             .blockFirst();
 
-        assertEquals("Hello, Stranger", i);
+        assertEquals("Hello, Stranger", s);
 
     }
 
     @Test
-    public void testLocalErrorHandlingUsingOnErrorResumeWithDynamicFallbackValue() throws IOException {
+    public void givenResumeDynamicValue_whenUsernamePresent_thenOk() throws IOException {
 
-        System.out.println("Testing local error handling using onErrorResume with dynamic fallback value");
-
-        // Pass a username
-        String i = webTestClient.get()
+        String s = webTestClient.get()
             .uri("/api/endpoint3?name={username}", "Tony")
             .accept(MediaType.TEXT_PLAIN)
             .exchange()
@@ -95,10 +86,12 @@ public class ApplicationTest {
             .getResponseBody()
             .blockFirst();
 
-        assertEquals("Hello, Tony", i);
+        assertEquals("Hello, Tony", s);
+    }
 
-        // Do not pass a username
-        i = webTestClient.get()
+    @Test
+    public void givenResumeDynamicValue_whenNoUsername_thenOk() throws IOException {
+        String s = webTestClient.get()
             .uri("/api/endpoint3")
             .accept(MediaType.TEXT_PLAIN)
             .exchange()
@@ -106,17 +99,12 @@ public class ApplicationTest {
             .getResponseBody()
             .blockFirst();
 
-        assertEquals("Hi, I looked around for your name but found: No value present", i);
-
+        assertEquals("Hi, I looked around for your name but found: No value present", s);
     }
-    
+
     @Test
-    public void testLocalErrorHandlingUsingOnErrorResumeWithCatchAndRethrow() throws IOException {
-
-        System.out.println("Testing local error handling using onErrorResume with catch and rethrow");
-
-        // Pass a username
-        String i = webTestClient.get()
+    public void givenResumeRethrow_whenUsernamePresent_thenOk() throws IOException {
+        String s = webTestClient.get()
             .uri("/api/endpoint4?name={username}", "Tony")
             .accept(MediaType.TEXT_PLAIN)
             .exchange()
@@ -124,9 +112,12 @@ public class ApplicationTest {
             .getResponseBody()
             .blockFirst();
 
-        assertEquals("Hello, Tony", i);
+        assertEquals("Hello, Tony", s);
+    }
 
-        // Do not pass a username
+    @Test
+    public void givenResumeRethrow_whenNoUsername_thenOk() throws IOException {
+
         webTestClient.get()
             .uri("/api/endpoint4")
             .accept(MediaType.TEXT_PLAIN)
@@ -140,16 +131,12 @@ public class ApplicationTest {
             .isNotEmpty()
             .jsonPath("$.message")
             .isEqualTo("please provide a name");
-
     }
-        
+
     @Test
-    public void testGlobalErrorHandlingUsingErrorWebExceptionHandler() throws IOException {
+    public void givenGlobalErrorHandling_whenUsernamePresent_thenOk() throws IOException {
 
-        System.out.println("Testing local error handling using ErrorWebExceptionHandler");
-
-        // Pass a username
-        String i = webTestClient.get()
+        String s = webTestClient.get()
             .uri("/api/endpoint5?name={username}", "Tony")
             .accept(MediaType.TEXT_PLAIN)
             .exchange()
@@ -157,9 +144,11 @@ public class ApplicationTest {
             .getResponseBody()
             .blockFirst();
 
-        assertEquals("Hello, Tony", i);
-
-        // Do not pass a username
+        assertEquals("Hello, Tony", s);
+    }
+    
+    @Test
+    public void givenGlobalErrorHandling_whenNoUsername_thenOk() throws IOException {
         webTestClient.get()
             .uri("/api/endpoint5")
             .accept(MediaType.TEXT_PLAIN)
@@ -175,5 +164,5 @@ public class ApplicationTest {
             .isEqualTo("please provide a name");
 
     }
-            
+
 }
