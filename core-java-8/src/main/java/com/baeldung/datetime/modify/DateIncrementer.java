@@ -23,7 +23,6 @@ public class DateIncrementer {
 
     public static String addOneDayJodaTime(String date) {
         DateTime dateTime = new DateTime(date);
-        // increment dateTime by one day and return in yyyy-MM-dd format
         return dateTime
           .plusDays(INCREMENT_BY_IN_DAYS)
           .toString("yyyy-MM-dd");
@@ -44,7 +43,6 @@ public class DateIncrementer {
     }
 
     public static void main(String[] args) throws ParseException {
-        // String representation of current date
         String date = LocalDate
           .now()
           .toString();
