@@ -8,13 +8,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter;
 
 @Controller
 public class ResponseBodyEmitterController {
 
-    @RequestMapping(Constants.API_RBE)
+    @GetMapping(Constants.API_RBE)
     public ResponseEntity<ResponseBodyEmitter> handleRbe() {
         ResponseBodyEmitter emitter = new ResponseBodyEmitter();
         ExecutorService nonBlockingService = Executors.newSingleThreadExecutor();

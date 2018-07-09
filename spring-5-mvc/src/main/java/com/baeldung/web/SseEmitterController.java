@@ -1,16 +1,17 @@
 package com.baeldung.web;
+
 import com.baeldung.Constants;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Controller
 public class SseEmitterController {
 
-    @RequestMapping(Constants.API_SSE)
+    @GetMapping(Constants.API_SSE)
     public SseEmitter handleSse() {
         SseEmitter emitter = new SseEmitter();
 
@@ -24,6 +25,7 @@ public class SseEmitterController {
                 emitter.completeWithError(ex);
             }
         });
+
         return emitter;
     }
 
