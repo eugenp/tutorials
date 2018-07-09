@@ -9,10 +9,10 @@
     <packaging>pom</packaging>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <modules>
@@ -22,7 +22,24 @@
     </modules>
 
     <properties>
-        <rest-assured.version>3.0.1</rest-assured.version>
+        <rest-assured.version>3.1.0</rest-assured.version>
+        <oauth.version>2.3.3.RELEASE</oauth.version>        
+        <oauth-auto.version>2.0.1.RELEASE</oauth-auto.version>        
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>    
+        
 </project>
