@@ -47,6 +47,7 @@
                     <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
@@ -88,8 +89,8 @@
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
-                                        <include>*/EthControllerTestOne.java</include>
                                         <include>**/*IntTest.java</include>
+                                        <include>*/EthControllerTestOne.java</include>
                                         <include>**/*EntryPointsTest.java</include>
                                     </includes>
                                 </configuration>

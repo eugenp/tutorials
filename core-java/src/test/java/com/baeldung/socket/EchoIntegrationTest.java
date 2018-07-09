@@ -1,21 +1,29 @@
 package com.baeldung.socket;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.concurrent.Executors;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.util.concurrent.Executors;
-
-import static org.junit.Assert.assertEquals;
-
 public class EchoIntegrationTest {
-    private static final Integer PORT = 4444;
+    private static int port;
 
     @BeforeClass
-    public static void start() throws InterruptedException {
+    public static void start() throws InterruptedException, IOException {
+        
+        // Take an available port
+        ServerSocket s = new ServerSocket(0);
+        port = s.getLocalPort();
+        s.close();
+
         Executors.newSingleThreadExecutor()
-            .submit(() -> new EchoServer().start(PORT));
+            .submit(() -> new EchoServer().start(port));
         Thread.sleep(500);
     }
 
@@ -23,7 +31,7 @@ public class EchoIntegrationTest {
 
     @Before
     public void init() {
-        client.startConnection("127.0.0.1", PORT);
+        client.startConnection("127.0.0.1", port);
     }
 
     @After

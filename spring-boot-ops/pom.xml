@@ -138,7 +138,6 @@
 						</goals>
 						<configuration>
 							<mainClass>com.baeldung.webjar.WebjarsdemoApplication</mainClass>
-							<outputDirectory>${project.basedir}/docker</outputDirectory>
 						</configuration>
 					</execution>
 				</executions>
@@ -164,6 +163,7 @@
                                     <excludes>
                                         <exclude>**/*LiveTest.java</exclude>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                        				<exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/AutoconfigurationTest.java</include>
