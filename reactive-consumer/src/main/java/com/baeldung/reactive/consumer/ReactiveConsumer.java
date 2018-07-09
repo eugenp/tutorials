@@ -1,8 +1,6 @@
 package com.baeldung.reactive.consumer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Collections;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,11 +22,11 @@ public class ReactiveConsumer {
     CommandLineRunner demo(WebClient client) {
         return args -> {
             client.get()
-                    .uri("/integers")
+                    .uri("/stockprice")
                     .accept(MediaType.TEXT_EVENT_STREAM)
                     .exchange()
-                    .flatMapMany(cr -> cr.bodyToFlux(Integer.class))
-                    .subscribe(new ExampleSubscriber<Integer>());
+                    .flatMapMany(cr -> cr.bodyToFlux(StockPriceEvent.class))
+                    .subscribe(new StockPriceEventSubscriber());
                     
         };
 
@@ -36,6 +34,7 @@ public class ReactiveConsumer {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(ReactiveConsumer.class)
+        .properties(Collections.singletonMap("server.port", "9000"))
                 .run(args);            
     }
 
