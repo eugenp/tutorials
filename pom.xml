@@ -184,14 +184,12 @@
         <module>spring-katharsis</module>
         <module>spring-ldap</module>
         <module>spring-mockito</module>
-        <module>spring-mvc-email</module>
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
-        <module>spring-mvc-simple</module>
         <module>spring-mvc-kotlin</module>
         <module>spring-security-openid</module>
         <module>spring-protobuf</module>
@@ -267,12 +265,13 @@
         <module>java-spi</module>
         <module>performance-tests</module>
         <module>twilio</module>
-        <module>spring-boot-ctx-fluent</module> 
+        <module>spring-boot-ctx-fluent</module>
         <module>java-ee-8-security-api</module>
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
         <module>maven-archetype</module>
         <module>maven-java-kotlin</module>
+        <module>apache-meecrowave</module>
     </modules>
 
     <dependencies>

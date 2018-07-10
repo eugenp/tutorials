@@ -38,13 +38,6 @@
         <!-- web -->
 
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.2</version>
-        </dependency>
-
-
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet.version}</version>
@@ -127,10 +120,8 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
 
         <!-- persistence -->
-        <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
 
         <!-- http -->
@@ -138,19 +129,16 @@
         <httpclient.version>4.5.2</httpclient.version>
 
         <!-- various -->
-        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.6</jackson.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-io.version>2.5</commons-io.version>
         <geoip2.version>2.8.0</geoip2.version>
-
-        <!-- testing -->
-        <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
