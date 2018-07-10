@@ -52,7 +52,7 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud.version>Camden.SR4</spring-cloud.version>
+        <spring-cloud.version>Edgware.SR4</spring-cloud.version>
     </properties>
 
 </project>
