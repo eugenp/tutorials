@@ -272,6 +272,7 @@
         <module>maven-archetype</module>
         <module>maven-java-kotlin</module>
         <module>apache-meecrowave</module>
+        <module>spring-boot-property-json</module>
     </modules>
 
     <dependencies>
