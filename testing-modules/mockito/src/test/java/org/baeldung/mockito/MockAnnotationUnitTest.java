@@ -9,7 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MockAnnotationTest {
+public class MockAnnotationUnitTest {
     
     @Mock
     UserRepository mockRepository;
