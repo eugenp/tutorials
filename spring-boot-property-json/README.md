@@ -4,5 +4,5 @@
  - Extending the YamlPropertySourceLoader class and register the factory in spring factories
  
 ### Module Dependencies
- This module has spring-boot-starter-web as the main dependency with jackson libraries.
+ This module has spring-boot-starter and jackson-databind as key dependencies.
  
