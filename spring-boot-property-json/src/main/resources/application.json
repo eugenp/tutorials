@@ -1,0 +1,6 @@
+{
+  "outerName": "Outer Name",
+  "inner": {
+    "name": "Inner Name"
+  }
+}

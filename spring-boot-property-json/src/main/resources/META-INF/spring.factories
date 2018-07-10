@@ -1,0 +1,8 @@
+#In order to get desirable results, make sure only one of the below configs is uncommented
+
+#Example 1 - implementing PropertySourceLoader interface
+org.springframework.boot.env.PropertySourceLoader=com.baeldung.property.json.factories.JsonPropertySourceLoader
+
+
+#Example 2 - extending YamlPropertySourceLoader class
+#org.springframework.boot.env.PropertySourceLoader=com.baeldung.property.json.factories.JsonYamlPropertySourceLoader
