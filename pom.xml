@@ -269,8 +269,9 @@
         <module>java-ee-8-security-api</module>
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
-	      <module>maven-archetype</module>
+        <module>maven-archetype</module>
         <module>apache-meecrowave</module>
+        <module>jnosql</module>
     </modules>
 
     <dependencies>
@@ -375,7 +376,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.8</version>
-				<dependencies>
+                <dependencies>
                     <dependency>
                         <groupId>org.baeldung.pmd</groupId>
                         <artifactId>custom-pmd</artifactId>
@@ -394,9 +395,9 @@
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
                     </rulesets>
-					<excludeRoots>
-						<excludeRoot>target/generated-sources</excludeRoot>
-					</excludeRoots>
+                    <excludeRoots>
+                        <excludeRoot>target/generated-sources</excludeRoot>
+                    </excludeRoots>
                 </configuration>
                 <executions>
                     <execution>
