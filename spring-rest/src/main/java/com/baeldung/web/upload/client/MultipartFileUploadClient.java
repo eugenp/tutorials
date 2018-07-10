@@ -1,6 +1,5 @@
 package com.baeldung.web.upload.client;
 
-
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpEntity;
@@ -18,14 +17,36 @@ import java.nio.file.Path;
 public class MultipartFileUploadClient {
 
     public static void main(String[] args) throws IOException {
-        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-        HttpHeaders headers = new HttpHeaders();
-        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+        uploadSingleFile();
+        uploadMultipleFile();
+    }
 
-        body.add("file", getTestFile());
+    private static void uploadSingleFile() throws IOException {
+        HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 
-        String serverUrl = "http://localhost:8080/fileserver/";
+        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+        body.add("file", getTestFile());
+
+
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+        String serverUrl = "http://localhost:8080/fileserver/singlefileupload/";
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
+        System.out.println("Response code: " + response.getStatusCode());
+    }
+
+    private static void uploadMultipleFile() throws IOException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
+
+        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+        body.add("files", getTestFile());
+        body.add("files", getTestFile());
+        body.add("files", getTestFile());
+
+        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
+        String serverUrl = "http://localhost:8080/fileserver/multiplefileupload/";
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
         System.out.println("Response code: " + response.getStatusCode());
