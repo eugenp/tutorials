@@ -149,11 +149,8 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-security</module>
         <module>spring-boot-mvc</module>
-<<<<<<< HEAD
         <module>spring-boot-vue</module>
-=======
         <module>spring-boot-logging-log4j2</module>
->>>>>>> upstream/master
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
