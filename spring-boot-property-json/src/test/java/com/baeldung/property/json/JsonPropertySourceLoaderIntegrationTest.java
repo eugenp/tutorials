@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {JsonPropertyApplication.class})
-public class JsonPropertSourceLoaderIntegrationTest {
+public class JsonPropertySourceLoaderIntegrationTest {
 
     @Autowired
     private Environment env;
