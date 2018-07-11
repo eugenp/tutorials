@@ -10,7 +10,7 @@ public class MonteCarloTreeSearch {
 
     private static final int WIN_SCORE = 10;
     private int level;
-    private int oponent;
+    private int opponent;
 
     public MonteCarloTreeSearch() {
         this.level = 3;
@@ -32,11 +32,11 @@ public class MonteCarloTreeSearch {
         long start = System.currentTimeMillis();
         long end = start + 60 * getMillisForCurrentLevel();
 
-        oponent = 3 - playerNo;
+        opponent = 3 - playerNo;
         Tree tree = new Tree();
         Node rootNode = tree.getRoot();
         rootNode.getState().setBoard(board);
-        rootNode.getState().setPlayerNo(oponent);
+        rootNode.getState().setPlayerNo(opponent);
 
         while (System.currentTimeMillis() < end) {
             // Phase 1 - Selection
@@ -93,7 +93,7 @@ public class MonteCarloTreeSearch {
         State tempState = tempNode.getState();
         int boardStatus = tempState.getBoard().checkStatus();
 
-        if (boardStatus == oponent) {
+        if (boardStatus == opponent) {
             tempNode.getParent().getState().setWinScore(Integer.MIN_VALUE);
             return boardStatus;
         }

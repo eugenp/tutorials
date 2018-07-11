@@ -1,27 +1,55 @@
 package com.baeldung.spring.session;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.*;
-import redis.clients.jedis.Jedis;
-
-import java.util.Set;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
+import java.util.Set;
+
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import redis.clients.jedis.Jedis;
+import redis.embedded.RedisServer;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = SessionWebApplication.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 public class SessionControllerIntegrationTest {
 
     private Jedis jedis;
+    private static RedisServer redisServer;
     private TestRestTemplate testRestTemplate;
     private TestRestTemplate testRestTemplateWithAuth;
     private String testUrl = "http://localhost:8080/";
 
+    @BeforeClass
+    public static void startRedisServer() throws IOException {
+        redisServer = new RedisServer(6379);
+        redisServer.start();
+    }
+    
+    @AfterClass
+    public static void stopRedisServer() throws IOException {
+        redisServer.stop();
+    }
+    
     @Before
     public void clearRedisData() {
+        
         testRestTemplate = new TestRestTemplate();
-        testRestTemplateWithAuth = new TestRestTemplate("admin", "password", null);
+        testRestTemplateWithAuth = new TestRestTemplate("admin", "password");
 
         jedis = new Jedis("localhost", 6379);
         jedis.flushAll();

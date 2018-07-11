@@ -98,6 +98,19 @@
             <version>${springframework-security.version}</version>
             <scope>test</scope>
         </dependency>
+             
+<!--         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.0.1.RELEASE</version>
+            <type>jar</type>
+        </dependency>
+             
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency> -->
         
         <!-- Spring data -->
 		<dependency>
@@ -105,6 +118,7 @@
 			<artifactId>spring-data-commons</artifactId>
 			<version>${springFramework-data.version}</version>
 		</dependency>
+
     </dependencies>
 
     <build>
@@ -117,6 +131,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
@@ -136,6 +151,7 @@
                     </configuration>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
