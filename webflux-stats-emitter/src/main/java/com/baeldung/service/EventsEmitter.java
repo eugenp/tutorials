@@ -16,6 +16,10 @@ public class EventsEmitter {
 
     private final Runtime runtime = Runtime.getRuntime();
 
+    /**
+     * Emits Memory Status objects once in 5 seconds.
+     * @return Flux<MemoryStats>
+     */
     public Flux<MemoryStats> emitMemoryStats() {
         return Flux.interval(Duration.ofSeconds(5))
                 .map(seq -> Tuples.of(new Date(), (runtime.freeMemory() / 1024), (runtime.totalMemory() / 1024)))
