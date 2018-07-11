@@ -5,8 +5,8 @@
     <artifactId>spring-boot-dynamodb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Spring Boot Actuator</name>
-    <description>This is simple boot application for Spring boot actuator test</description>
+    <name>spring-boot-dynamodb</name>
+    <description>This is simple boot application for Spring boot dynamodb test</description>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>
