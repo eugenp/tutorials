@@ -64,16 +64,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 <script type="text/babel">
-    var app = new Vue({
-        el: '#contents',
-        data: {
-            players: [
-                {id: "1", name: "Lionel Messi", description: "Argentina"},
-                {id: "2", name: "Christiano Ronaldo", description: "Portugal"}
-            ]
-        }
-    });
-
     // player-card is now a Vue component that generates a 'card' showing a player
     // It can be used
     // declaratively like <player-card v-bind:player="someplayer">
@@ -92,6 +82,17 @@
                     </div>
                 </div>`
     });
+
+    var app = new Vue({
+        el: '#contents',
+        data: {
+            players: [
+                {id: "1", name: "Lionel Messi", description: "Argentina's superstar"},
+                {id: "2", name: "Christiano Ronaldo", description: "Portugal top-ranked player"}
+            ]
+        }
+    });
+
 </script>
 </body>
 </html>
