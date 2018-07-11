@@ -17,7 +17,7 @@ public class MemoryStatsController {
     @Autowired private EventsEmitter eventsEmitter;
 
     /**
-     * MemoryStats API to send stream of Memory Status once in 5 seconds.
+     * MemoryStats API to send stream of Memory Status once in 1 seconds.
      * @return
      */
     @GetMapping(value = "/api/memoryStats", produces = "application/stream+json")
