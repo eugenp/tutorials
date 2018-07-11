@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class JsonPropertySourceLoader implements PropertySourceLoader /*extends YamlPropertySourceLoader*/{
+public class JsonPropertySourceLoader implements PropertySourceLoader {
 
     @Override
     public String[] getFileExtensions() {

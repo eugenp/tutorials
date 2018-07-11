@@ -7,7 +7,7 @@ import java.util.*;
 public class JsonMapProcessor {
 
     public static Map<String, Object> getFlattenedMap(Map<String, Object> source) {
-        Map<String, Object> result = new LinkedHashMap();
+        Map<String, Object> result = new LinkedHashMap<String, Object>();
         buildFlattenedMap(result, source, (String)null);
         return result;
     }
