@@ -270,7 +270,6 @@
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
         <module>maven-archetype</module>
-        <module>maven-java-kotlin</module>
         <module>apache-meecrowave</module>
         <module>spring-boot-property-json</module>
     </modules>
