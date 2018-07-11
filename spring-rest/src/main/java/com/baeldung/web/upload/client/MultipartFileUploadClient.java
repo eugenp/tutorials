@@ -30,7 +30,7 @@ public class MultipartFileUploadClient {
 
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-        String serverUrl = "http://localhost:8080/fileserver/singlefileupload/";
+        String serverUrl = "http://localhost:8082/fileserver/singlefileupload/";
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
         System.out.println("Response code: " + response.getStatusCode());
@@ -46,7 +46,7 @@ public class MultipartFileUploadClient {
         body.add("files", getTestFile());
 
         HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
-        String serverUrl = "http://localhost:8080/fileserver/multiplefileupload/";
+        String serverUrl = "http://localhost:8082/fileserver/multiplefileupload/";
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<String> response = restTemplate.postForEntity(serverUrl, requestEntity, String.class);
         System.out.println("Response code: " + response.getStatusCode());
