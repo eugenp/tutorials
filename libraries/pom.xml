@@ -206,6 +206,12 @@
             <artifactId>serenity-core</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
+            <exclusions>
+            	<exclusion>
+            		<groupId>org.asciidoctor</groupId>
+					<artifactId>asciidoctorj</artifactId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -699,6 +705,37 @@
             <version>${jctools.version}</version>
         </dependency>
 
+        <!-- resilience4j -->
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-circuitbreaker</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-ratelimiter</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-bulkhead</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-retry</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-cache</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-timelimiter</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
@@ -877,7 +914,7 @@
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
-        <cglib.version>3.2.4</cglib.version>
+        <cglib.version>3.2.7</cglib.version>
         <commons-lang.version>3.6</commons-lang.version>
         <commons-text.version>1.1</commons-text.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
@@ -901,10 +938,10 @@
         <flink.version>1.2.0</flink.version>
         <jackson.version>2.8.5</jackson.version>
         <neuroph.version>2.92</neuroph.version>
-        <serenity.version>1.4.0</serenity.version>
-        <serenity.jbehave.version>1.24.0</serenity.jbehave.version>
-        <serenity.jira.version>1.1.3-rc.5</serenity.jira.version>
-        <serenity.plugin.version>1.4.0</serenity.plugin.version>
+        <serenity.version>1.9.26</serenity.version>
+        <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
+        <serenity.jira.version>1.9.0</serenity.jira.version>
+        <serenity.plugin.version>1.9.27</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <netty.version>4.1.20.Final</netty.version>
         <commons.collections.version>4.1</commons.collections.version>
@@ -921,15 +958,14 @@
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
         <geotools.version>15.2</geotools.version>
-        <joda-time.version>2.9.9</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <retrofit.version>2.3.0</retrofit.version>
-        <joda-time.version>2.9.9</joda-time.version>
+        <joda-time.version>2.10</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
-        <protonpack.version>1.14</protonpack.version>
+        <protonpack.version>1.15</protonpack.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <cache.version>1.0.0</cache.version>
-        <hazelcast.version>3.8.4</hazelcast.version>
+        <hazelcast.version>3.10.2</hazelcast.version>
         <caffeine.version>2.5.5</caffeine.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
@@ -946,6 +982,7 @@
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <jctools.version>2.1.2</jctools.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
+        <resilience4j.version>0.12.1</resilience4j.version>
         <common-math3-version>3.6.1</common-math3-version>
         <xchart-version>3.5.2</xchart-version>
         <commons-net.version>3.6</commons-net.version>

@@ -20,3 +20,6 @@
 - [Create a Sudoku Solver in Java](http://www.baeldung.com/java-sudoku)
 - [Displaying Money Amounts in Words](http://www.baeldung.com/java-money-into-words)
 - [A Collaborative Filtering Recommendation System in Java](http://www.baeldung.com/java-collaborative-filtering-recommendations)
+- [Converting Between Roman and Arabic Numerals in Java](http://www.baeldung.com/java-convert-roman-arabic)
+- [Practical Java Examples of the Big O Notation](http://www.baeldung.com/java-algorithm-complexity)
+- [Find the Middle Element of a Linked List](http://www.baeldung.com/java-linked-list-middle-element)
