@@ -34,26 +34,6 @@ public class FooReactiveController {
         return Flux.zip(foosFlux, emmitFlux).map(Tuple2::getT1);
     }
 
-    @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, path = "/books/names")
-    public Flux<String> getRecommendedBookNames() {
-
-        Flux<Long> interval = Flux.interval(Duration.ofSeconds(1));
-
-        Flux<String> randomBookNames = Flux.fromStream(Stream.generate(this::randomBookNames));
-
-        return Flux.zip(interval, randomBookNames).map(Tuple2::getT2);
-    }
-
-    private String randomBookNames() {
-        List<String> bookNames = Arrays.asList("Fellowship of the ring",
-          "Return of the king",
-          "The two towers",
-          "Harry potter",
-          "Game of thrones");
-
-        return bookNames.get(new Random().nextInt(bookNames.size()));
-    }
-
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/foos2")
     public Flux<Foo> getAllFoos() {
         final Flux<Foo> flux = Flux.<Foo> create(fluxSink -> {
