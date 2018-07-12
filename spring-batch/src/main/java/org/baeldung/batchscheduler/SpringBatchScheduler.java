@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-
 import org.baeldung.batchscheduler.model.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

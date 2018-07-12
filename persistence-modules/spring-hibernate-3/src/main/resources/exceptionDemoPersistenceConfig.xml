@@ -17,7 +17,7 @@
  
     <context:annotation-config />
     <context:component-scan base-package="org.baeldung.persistence" />
-    <context:property-placeholder location="classpath:persistence-mysql.properties"/>
+    <context:property-placeholder location="classpath:persistence-h2.properties"/>
 
 
  
