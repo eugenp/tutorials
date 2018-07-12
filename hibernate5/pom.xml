@@ -68,7 +68,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Maven plugins -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <hibernate.version>5.2.12.Final</hibernate.version>
+        <hibernate.version>5.3.2.Final</hibernate.version>
         <mysql.version>6.0.6</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <h2database.version>1.4.196</h2database.version>

@@ -1,5 +1,19 @@
 package com.baeldung.hibernate;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+
+import javax.persistence.Query;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 import com.baeldung.hibernate.pojo.PointEntity;
 import com.baeldung.hibernate.pojo.PolygonEntity;
 import com.vividsolutions.jts.geom.Coordinate;
@@ -9,22 +23,8 @@ import com.vividsolutions.jts.geom.Polygon;
 import com.vividsolutions.jts.io.ParseException;
 import com.vividsolutions.jts.io.WKTReader;
 import com.vividsolutions.jts.util.GeometricShapeFactory;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 
-import javax.persistence.Query;
-import java.io.IOException;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-
-import static org.junit.Assert.assertTrue;
-
-public class HibernateSpatialTest {
+public class HibernateSpatialIntegrationTest {
 
     private Session session;
     private Transaction transaction;

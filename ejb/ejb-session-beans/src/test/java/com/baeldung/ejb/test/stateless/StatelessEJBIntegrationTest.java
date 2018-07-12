@@ -17,7 +17,7 @@ import javax.inject.Inject;
 
 
 @RunWith(Arquillian.class)
-public class StatelessEJBTest {
+public class StatelessEJBIntegrationTest {
 
     @Inject
     private EJBClient1 ejbClient1;
