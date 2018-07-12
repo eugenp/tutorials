@@ -16,7 +16,7 @@ import java.io.*;
 public class APIDemoHandler implements RequestStreamHandler {
 
     private JSONParser parser = new JSONParser();
-    private  static final String DYNAMODB_TABLE_NAME = System.getenv("TABLE_NAME");
+    private static final String DYNAMODB_TABLE_NAME = System.getenv("TABLE_NAME");
 
     @Override
     public void handleRequest(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
@@ -35,10 +35,8 @@ public class APIDemoHandler implements RequestStreamHandler {
                 Person person = new Person((String) event.get("body"));
 
                 dynamoDb.getTable(DYNAMODB_TABLE_NAME)
-                        .putItem(new PutItemSpec().withItem(new Item().withNumber("id", person.getId())
-                                .withString("firstName", person.getFirstName())
-                                .withString("lastName", person.getLastName()).withNumber("age", person.getAge())
-                                .withString("address", person.getAddress())));
+                    .putItem(new PutItemSpec().withItem(new Item().withNumber("id", person.getId())
+                        .withString("name", person.getName())));
             }
 
             JSONObject responseBody = new JSONObject();
@@ -61,8 +59,7 @@ public class APIDemoHandler implements RequestStreamHandler {
         writer.close();
     }
 
-    public void handleGetByPathParam(InputStream inputStream, OutputStream outputStream, Context context)
-            throws IOException {
+    public void handleGetByParam(InputStream inputStream, OutputStream outputStream, Context context) throws IOException {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         JSONObject responseJson = new JSONObject();
@@ -81,61 +78,20 @@ public class APIDemoHandler implements RequestStreamHandler {
                 if (pps.get("id") != null) {
 
                     int id = Integer.parseInt((String) pps.get("id"));
-                    result = dynamoDb.getTable(DYNAMODB_TABLE_NAME).getItem("id", id);
+                    result = dynamoDb.getTable(DYNAMODB_TABLE_NAME)
+                        .getItem("id", id);
                 }
 
-            }
-            if (result != null) {
-
-                Person person = new Person(result.toJSON());
-                responseBody.put("Person", person);
-                responseJson.put("statusCode", 200);
-            } else {
-
-                responseBody.put("message", "No item found");
-                responseJson.put("statusCode", 404);
-            }
-
-            JSONObject headerJson = new JSONObject();
-            headerJson.put("x-custom-header", "my custom header value");
-
-            responseJson.put("headers", headerJson);
-            responseJson.put("body", responseBody.toString());
-
-        } catch (ParseException pex) {
-            responseJson.put("statusCode", 400);
-            responseJson.put("exception", pex);
-        }
-
-        OutputStreamWriter writer = new OutputStreamWriter(outputStream, "UTF-8");
-        writer.write(responseJson.toString());
-        writer.close();
-    }
-
-    public void handleGetByQueryParam(InputStream inputStream, OutputStream outputStream, Context context)
-            throws IOException {
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        JSONObject responseJson = new JSONObject();
-
-        AmazonDynamoDB client = AmazonDynamoDBClientBuilder.defaultClient();
-        DynamoDB dynamoDb = new DynamoDB(client);
-
-        Item result = null;
-        try {
-            JSONObject event = (JSONObject) parser.parse(reader);
-            JSONObject responseBody = new JSONObject();
-
-            if (event.get("queryStringParameters") != null) {
+            } else if (event.get("queryStringParameters") != null) {
 
                 JSONObject qps = (JSONObject) event.get("queryStringParameters");
                 if (qps.get("id") != null) {
 
                     int id = Integer.parseInt((String) qps.get("id"));
-                    result = dynamoDb.getTable(DYNAMODB_TABLE_NAME).getItem("id", id);
+                    result = dynamoDb.getTable(DYNAMODB_TABLE_NAME)
+                        .getItem("id", id);
                 }
             }
-
             if (result != null) {
 
                 Person person = new Person(result.toJSON());
@@ -145,7 +101,7 @@ public class APIDemoHandler implements RequestStreamHandler {
 
                 responseBody.put("message", "No item found");
                 responseJson.put("statusCode", 404);
-			 }
+            }
 
             JSONObject headerJson = new JSONObject();
             headerJson.put("x-custom-header", "my custom header value");
@@ -162,5 +118,4 @@ public class APIDemoHandler implements RequestStreamHandler {
         writer.write(responseJson.toString());
         writer.close();
     }
-
 }

@@ -69,6 +69,11 @@
             <artifactId>spring-data-commons</artifactId>
             <version>${spring-data-commons.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.kstyrc</groupId>
+            <artifactId>embedded-redis</artifactId>
+            <version>${embedded-redis.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -77,6 +82,7 @@
         <jedis.version>2.9.0</jedis.version>
         <nosqlunit.version>0.10.0</nosqlunit.version>
         <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
+        <embedded-redis.version>0.6</embedded-redis.version>
     </properties>
 
 </project>
