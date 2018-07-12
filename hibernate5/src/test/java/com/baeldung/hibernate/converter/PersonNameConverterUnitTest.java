@@ -14,7 +14,7 @@ import com.baeldung.hibernate.pojo.PersonName;
 
 import static org.junit.Assert.assertEquals;
 
-public class PersonNameConverterTest {
+public class PersonNameConverterUnitTest {
 
     private Session session;
     private Transaction transaction;
