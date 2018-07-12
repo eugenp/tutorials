@@ -32,3 +32,4 @@
 - [Processing JSON with Kotlin and Klaxson](http://www.baeldung.com/kotlin-json-klaxson)
 - [Kotlin String Templates](http://www.baeldung.com/kotlin-string-template)
 - [Java EE 8 Security API](http://www.baeldung.com/java-ee-8-security)
+- [Kotlin with Ktor](http://www.baeldung.com/kotlin-ktor)

@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>antlr</artifactId>
     <name>antlr</name>
@@ -45,22 +45,14 @@
         </plugins>
     </build>
     <dependencies>
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr4-runtime</artifactId>
-			<version>${antlr.version}</version>
-		</dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+            <version>${antlr.version}</version>
         </dependency>
     </dependencies>
     <properties>
-        <java.version>1.8</java.version>
         <antlr.version>4.7.1</antlr.version>
-        <junit.version>4.12</junit.version>
         <mojo.version>3.0.0</mojo.version>
     </properties>
 </project>

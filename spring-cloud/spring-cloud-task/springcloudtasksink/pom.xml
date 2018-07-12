@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
     <artifactId>SpringCloudTaskSink</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>SpringCloudTaskSink</name>
     <description>Demo project for Spring Boot</description>
 
@@ -15,16 +14,8 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.10.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-cloud-task.version>1.2.2.RELEASE</spring-cloud-task.version>
-        <spring-cloud.version>Edgware.SR2</spring-cloud.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -54,7 +45,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-deployer-local</artifactId>
-            <version>1.3.0.RELEASE</version>
+            <version>${spring-cloud-deployer.version}</version>
         </dependency>
     </dependencies>
 
@@ -85,4 +76,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud-task.version>1.2.2.RELEASE</spring-cloud-task.version>
+        <spring-cloud.version>Edgware.SR2</spring-cloud.version>
+        <spring-cloud-deployer.version>1.3.0.RELEASE</spring-cloud-deployer.version>
+    </properties>
+
 </project>
