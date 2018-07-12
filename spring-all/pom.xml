@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-all</artifactId>
@@ -195,8 +195,6 @@
         <start-class>org.baeldung.sample.App</start-class>
         <!-- Spring -->
         <org.springframework.version>5.0.6.RELEASE</org.springframework.version>
-        <org.springframework.security.version>5.0.6.RELEASE</org.springframework.security.version>
-        <springretry.version>1.2.2.RELEASE</springretry.version>
         <org.springframework.shell.version>1.2.0.RELEASE</org.springframework.shell.version>
 
         <!-- persistence -->
@@ -209,9 +207,7 @@
         <assertj.version>3.6.1</assertj.version>
         <jasperreports.version>6.6.0</jasperreports.version>
 
-        <log4j.version>2.8.2</log4j.version>
         <javassist.version>3.22.0-GA</javassist.version>
-
     </properties>
 
 </project>

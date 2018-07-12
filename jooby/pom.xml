@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jooby</artifactId>
     <groupId>com.baeldung.jooby</groupId>
@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.jooby</groupId>
         <artifactId>modules</artifactId>
-        <version>${jooby.modules.version}</version>
+        <version>1.1.3</version>
     </parent>
 
     <dependencies>
@@ -52,7 +52,6 @@
         <jooby.version>1.1.3</jooby.version>
         <application.class>com.baeldung.jooby.App</application.class>
         <jooby-jedis.version>1.1.3</jooby-jedis.version>
-        <jooby.modules.version>1.1.3</jooby.modules.version>
     </properties>
 
 </project>

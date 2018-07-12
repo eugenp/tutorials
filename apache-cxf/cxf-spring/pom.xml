@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cxf-spring</artifactId>
     <packaging>war</packaging>
@@ -101,11 +101,7 @@
     </profiles>
 
     <properties>
-        <cxf.version>3.1.8</cxf.version>
         <spring.version>4.3.4.RELEASE</spring.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <surefire.version>2.19.1</surefire.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 

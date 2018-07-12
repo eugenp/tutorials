@@ -33,10 +33,10 @@ Resources:
           Properties:
             Path: /persons
             Method: PUT
-  GetPersonByPathParamFunction:
+  GetPersonByHTTPParamFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByPathParam
+      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByParam
       Runtime: java8
       Timeout: 15
       MemorySize: 512
@@ -53,21 +53,6 @@ Resources:
           Properties:
             Path: /persons/{id}
             Method: GET
-  GetPersonByQueryParamFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: com.baeldung.lambda.apigateway.APIDemoHandler::handleGetByQueryParam
-      Runtime: java8
-      Timeout: 15
-      MemorySize: 512
-      CodeUri: ../target/aws-lambda-0.1.0-SNAPSHOT.jar
-      Policies:
-        - DynamoDBReadPolicy:
-            TableName: !Ref PersonTable
-      Environment:
-        Variables:
-          TABLE_NAME: !Ref PersonTable
-      Events:
         GetByQueryApi:
           Type: Api
           Properties:
