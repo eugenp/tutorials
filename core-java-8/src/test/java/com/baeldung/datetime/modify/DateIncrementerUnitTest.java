@@ -11,24 +11,24 @@ public class DateIncrementerUnitTest {
     @Test
     public void givenDate_whenUsingJava8_thenAddOneDay() throws Exception {
         String incrementedDate = DateIncrementer.addOneDay(DATE_TO_INCREMENT);
-        assertEquals(incrementedDate, EXPECTED_DATE);
+        assertEquals(EXPECTED_DATE, incrementedDate);
     }
 
     @Test
     public void givenDate_whenUsingJodaTime_thenAddOneDay() throws Exception {
         String incrementedDate = DateIncrementer.addOneDayJodaTime(DATE_TO_INCREMENT);
-        assertEquals(incrementedDate, EXPECTED_DATE);
+        assertEquals(EXPECTED_DATE, incrementedDate);
     }
 
     @Test
     public void givenDate_whenUsingCalendar_thenAddOneDay() throws Exception {
         String incrementedDate = DateIncrementer.addOneDayCalendar(DATE_TO_INCREMENT);
-        assertEquals(incrementedDate, EXPECTED_DATE);
+        assertEquals(EXPECTED_DATE, incrementedDate);
     }
 
     @Test
     public void givenDate_whenUsingApacheCommons_thenAddOneDay() throws Exception {
         String incrementedDate = DateIncrementer.addOneDayApacheCommons(DATE_TO_INCREMENT);
-        assertEquals(incrementedDate, EXPECTED_DATE);
+        assertEquals(EXPECTED_DATE, incrementedDate);
     }
 }
