@@ -15,7 +15,7 @@ public class MockAnnotationUnitTest {
     UserRepository mockRepository;
 
     @Test
-    public void testMockAnnotation() {
+    public void whenCountMethodIsMocked_ThenMockedValueIsReturned() {
         Mockito.when(mockRepository.count()).thenReturn(123L);
         long userCount = mockRepository.count();
         Assert.assertEquals(123L, userCount);
@@ -23,7 +23,7 @@ public class MockAnnotationUnitTest {
     }
     
     @Test
-    public void testMockitoMockMethod() {
+    public void whenLocalMockVariableIsUsed_ThenMockedValueFromLocalMockVariableIsReturned() {
         UserRepository localMockRepository = Mockito.mock(UserRepository.class);
         Mockito.when(localMockRepository.count()).thenReturn(111L);
         long userCount = localMockRepository.count();
