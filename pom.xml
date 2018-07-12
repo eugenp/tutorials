@@ -271,6 +271,8 @@
         <module>antlr</module>
         <module>maven-archetype</module>
         <module>apache-meecrowave</module>
+        <module>webflux-stats-emitter</module>
+        <module>webflux-stats-client</module>
     </modules>
 
     <dependencies>
