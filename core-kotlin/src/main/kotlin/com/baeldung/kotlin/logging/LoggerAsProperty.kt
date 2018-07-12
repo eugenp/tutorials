@@ -1,6 +1,6 @@
 package com.baeldung.kotlin.logging
 
-class LoggerAsProperty {
+open class LoggerAsProperty {
     private val logger = logger(javaClass)
 
     fun log(s: String) {
@@ -9,6 +9,9 @@ class LoggerAsProperty {
 
 }
 
+class PropertySubclass : LoggerAsProperty()
+
 fun main(args: Array<String>) {
     LoggerAsProperty().log("test")
+    PropertySubclass().log("sub")
 }

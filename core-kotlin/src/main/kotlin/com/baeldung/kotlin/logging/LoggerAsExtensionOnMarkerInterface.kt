@@ -10,7 +10,7 @@ inline fun <reified T : Logging> T.logger(): Logger =
         //LoggerFactory.getLogger(javaClass.name + " w/interface")
         LoggerFactory.getLogger(getClassForLogging(T::class.java).name + " w/interface")
 
-class LoggerAsExtensionOnMarkerInterface : Logging {
+open class LoggerAsExtensionOnMarkerInterface : Logging {
     companion object : Logging {
         val logger = logger()
     }
@@ -21,7 +21,10 @@ class LoggerAsExtensionOnMarkerInterface : Logging {
     }
 }
 
+class MarkerExtensionSubclass : LoggerAsExtensionOnMarkerInterface()
+
 fun main(args: Array<String>) {
     LoggerAsExtensionOnMarkerInterface().log("test")
+    MarkerExtensionSubclass().log("sub")
     "foo".logger().info("foo")
 }

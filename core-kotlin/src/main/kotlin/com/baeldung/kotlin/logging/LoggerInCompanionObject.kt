@@ -1,6 +1,6 @@
 package com.baeldung.kotlin.logging
 
-class LoggerInCompanionObject {
+open class LoggerInCompanionObject {
     companion object {
         private val loggerWithExplicitClass = logger(LoggerInCompanionObject::class.java)
         @Suppress("JAVA_CLASS_ON_COMPANION")
@@ -35,7 +35,10 @@ class LoggerInCompanionObject {
 
 }
 
+class CompanionSubclass : LoggerInCompanionObject()
+
 fun main(args: Array<String>) {
     LoggerInCompanionObject().log("test")
     LoggerInCompanionObject.Inner().log("test")
+    CompanionSubclass().log("sub")
 }
