@@ -5,7 +5,7 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"
 >
 
-    <context:property-placeholder location="classpath:persistence-mysql.properties"/>
+    <context:property-placeholder location="classpath:persistence-h2.properties"/>
 
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>

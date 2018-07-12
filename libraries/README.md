@@ -80,7 +80,11 @@
 - [Apache Commons Collections MapUtils](http://www.baeldung.com/apache-commons-map-utils)
 - [Testing Netty with EmbeddedChannel](http://www.baeldung.com/testing-netty-embedded-channel)
 - [Creating REST Microservices with Javalin](http://www.baeldung.com/javalin-rest-microservices)
-
+- [Introduction to JavaPoet](http://www.baeldung.com/java-poet)
+- [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
+- [Implementing a FTP-Client in Java](http://www.baeldung.com/java-ftp-client)
+- [Convert String to Date in Java](http://www.baeldung.com/java-string-to-date)
+- [Histograms with Apache Commons Frequency](http://www.baeldung.com/apache-commons-frequency)
 
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
