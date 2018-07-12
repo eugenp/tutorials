@@ -132,6 +132,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>mockwebserver</artifactId>
+            <version>${mock-web-server}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -198,6 +204,7 @@
         <jsonb-api.version>1.0</jsonb-api.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
+        <mock-web-server>3.2.0</mock-web-server>
     </properties>
 
 </project>
