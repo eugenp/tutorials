@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.stackify.guest</groupId>
     <artifactId>spring-security</artifactId>
@@ -12,8 +11,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>${spring-boot-starter-parent.version}</version>
-        <relativePath/>
+        <version>2.0.0.M6</version>
+        <relativePath />
     </parent>
 
     <dependencies>
@@ -49,7 +48,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <thymeleaf-spring5.version>3.0.8.RELEASE</thymeleaf-spring5.version>
-        <spring-boot-starter-parent.version>2.0.0.M6</spring-boot-starter-parent.version>
     </properties>
 
 </project>
