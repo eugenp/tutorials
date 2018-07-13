@@ -17,6 +17,7 @@ addons:
       - oracle-java8-installer
 
 cache:
+  timeout: 900
   directories:
   - .autoconf
   - $HOME/.m2
