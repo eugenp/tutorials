@@ -11,10 +11,10 @@
     <description>Demo project for Spring Boot</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.3.RELEASE</version>
+        <relativePath />
     </parent>
 
     <dependencies>
