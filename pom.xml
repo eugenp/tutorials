@@ -218,7 +218,7 @@
         <module>spring-security-mvc-session</module>
         <module>spring-security-mvc-socket</module>
         <module>spring-security-openid</module>
-        <module>spring-security-react</module>
+        <!--<module>spring-security-react</module>-->
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
         <module>spring-security-rest</module>
