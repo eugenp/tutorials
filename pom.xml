@@ -192,7 +192,6 @@
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-kotlin</module>
-        <module>spring-security-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest-angular</module>
@@ -218,6 +217,8 @@
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-session</module>
         <module>spring-security-mvc-socket</module>
+        <module>spring-security-openid</module>
+        <!--<module>spring-security-react</module>-->
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
         <module>spring-security-rest</module>
