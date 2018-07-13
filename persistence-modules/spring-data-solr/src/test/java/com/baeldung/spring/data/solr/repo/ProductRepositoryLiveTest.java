@@ -20,7 +20,7 @@ import com.baeldung.spring.data.solr.repository.ProductRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SolrConfig.class)
-public class ProductRepositoryIntegrationTest {
+public class ProductRepositoryLiveTest {
 
     @Autowired
     private ProductRepository productRepository;
