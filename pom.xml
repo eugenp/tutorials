@@ -272,6 +272,7 @@
         <module>antlr</module>
         <module>maven-archetype</module>
         <module>apache-meecrowave</module>
+        <module>jnosql</module>
     </modules>
 
     <dependencies>
@@ -395,9 +396,9 @@
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
                     </rulesets>
-					<excludeRoots>
-						<excludeRoot>target/generated-sources</excludeRoot>
-					</excludeRoots>
+                    <excludeRoots>
+                        <excludeRoot>target/generated-sources</excludeRoot>
+                    </excludeRoots>
                 </configuration>
                 <executions>
                     <execution>
