@@ -13,12 +13,6 @@
         <relativePath>../../spring-boot-custom-starter</relativePath>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <greeter.version>0.0.1-SNAPSHOT</greeter.version>
-        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
-    </properties>
-
     <dependencies>
 
         <dependency>
@@ -46,13 +40,19 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <greeter.version>0.0.1-SNAPSHOT</greeter.version>
+        <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
+    </properties>
 
 </project>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -149,7 +150,7 @@
         <module>spring-boot-persistence</module>
         <module>spring-boot-security</module>
         <module>spring-boot-mvc</module>
-        <module>spring-boot-logging-log4j2</module>	    
+        <module>spring-boot-logging-log4j2</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -184,14 +185,12 @@
         <module>spring-katharsis</module>
         <module>spring-ldap</module>
         <module>spring-mockito</module>
-        <module>spring-mvc-email</module>
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
-        <module>spring-mvc-simple</module>
         <module>spring-mvc-kotlin</module>
         <module>spring-security-openid</module>
         <module>spring-protobuf</module>
@@ -267,11 +266,12 @@
         <module>java-spi</module>
         <module>performance-tests</module>
         <module>twilio</module>
-        <module>spring-boot-ctx-fluent</module> 
+        <module>spring-boot-ctx-fluent</module>
         <module>java-ee-8-security-api</module>
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
-	    <module>maven-archetype</module>
+        <module>maven-archetype</module>
+        <module>apache-meecrowave</module>
     </modules>
 
     <dependencies>
@@ -368,19 +368,19 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.8</version>
-				<dependencies>
+                <version>${maven-pmd-plugin.version}</version>
+				        <dependencies>
                     <dependency>
                         <groupId>org.baeldung.pmd</groupId>
                         <artifactId>custom-pmd</artifactId>
-                        <version>0.0.1</version>
+                        <version>${custom-pmd.version}</version>
                     </dependency>
                 </dependencies>
                 <configuration>
@@ -391,7 +391,7 @@
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
                     <sourceEncoding>UTF-8</sourceEncoding>
-                    <targetJdk>1.8</targetJdk>
+                    <targetJdk>${java.version}</targetJdk>
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
                     </rulesets>
@@ -411,7 +411,7 @@
             <plugin>
                 <groupId>org.commonjava.maven.plugins</groupId>
                 <artifactId>directory-maven-plugin</artifactId>
-                <version>0.3.1</version>
+                <version>${directory-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>directories</id>
@@ -432,13 +432,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>${maven-install-plugin.version}</version>
                 <configuration>
                     <groupId>org.baeldung.pmd</groupId>
                     <artifactId>custom-pmd</artifactId>
-                    <version>0.0.1</version>
+                    <version>${custom-pmd.version}</version>
                     <packaging>jar</packaging>
-                    <file>${tutorialsproject.basedir}/custom-pmd-0.0.1.jar</file>
+                    <file>${tutorialsproject.basedir}/custom-pmd-${custom-pmd.version}.jar</file>
                     <generatePom>true</generatePom>
                 </configuration>
                 <executions>
@@ -452,15 +452,13 @@
                 </executions>
             </plugin>
         </plugins>
-
         <extensions>
             <extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
                 <artifactId>gitflow-incremental-builder</artifactId>
-                <version>3.4</version>
+                <version>${gitflow-incremental-builder.version}</version>
             </extension>
         </extensions>
-
     </build>
 
     <profiles>
@@ -505,13 +503,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
+                <version>${maven-jxr-plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
         <gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
         <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
@@ -547,5 +546,13 @@
         <jackson-databind.version>2.5.0</jackson-databind.version>
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
+        <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
+        <maven-install-plugin.version>2.5.1</maven-install-plugin.version>
+        <custom-pmd.version>0.0.1</custom-pmd.version>
+        <gitflow-incremental-builder.version>3.4</gitflow-incremental-builder.version>
+        <maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
+        <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
+        <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
     </properties>
+
 </project>
