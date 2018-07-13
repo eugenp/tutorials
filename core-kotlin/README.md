@@ -33,3 +33,4 @@
 - [Kotlin String Templates](http://www.baeldung.com/kotlin-string-template)
 - [Java EE 8 Security API](http://www.baeldung.com/java-ee-8-security)
 - [Kotlin with Ktor](http://www.baeldung.com/kotlin-ktor)
+- [Working with Enums in Kotlin](http://www.baeldung.com/kotlin-enum)

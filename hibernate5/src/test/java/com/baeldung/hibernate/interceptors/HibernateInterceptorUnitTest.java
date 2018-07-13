@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import com.baeldung.hibernate.interceptors.entity.User;
 
-public class HibernateInterceptorTest {
+public class HibernateInterceptorUnitTest {
     private static SessionFactory sessionFactory;
     private static Serializable userId;
 

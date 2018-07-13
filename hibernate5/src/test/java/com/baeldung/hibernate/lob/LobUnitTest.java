@@ -18,7 +18,7 @@ import org.junit.Test;
 
 import com.baeldung.hibernate.lob.model.User;
 
-public class LobTest {
+public class LobUnitTest {
 
 	private Session session;
 	

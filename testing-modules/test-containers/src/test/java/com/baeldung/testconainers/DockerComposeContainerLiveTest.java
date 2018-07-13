@@ -3,30 +3,27 @@ package com.baeldung.testconainers;
 import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.junit.ClassRule;
 import org.junit.Test;
-import org.junit.platform.commons.annotation.Testable;
-import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.DockerComposeContainer;
 
-@Testable
-public class GenericContainerUnitTest {
+public class DockerComposeContainerLiveTest {
     @ClassRule
-    public static GenericContainer simpleWebServer =
-      new GenericContainer("alpine:3.2")
-        .withExposedPorts(80)
-        .withCommand("/bin/sh", "-c", "while true; do echo "
-          + "\"HTTP/1.1 200 OK\n\nHello World!\" | nc -l -p 80; done");
+    public static DockerComposeContainer compose = 
+      new DockerComposeContainer(
+        new File("src/test/resources/test-compose.yml"))
+          .withExposedService("simpleWebServer_1", 80);
 
     @Test
     public void givenSimpleWebServerContainer_whenGetReuqest_thenReturnsResponse()
       throws Exception {
-        String address = "http://" 
-          + simpleWebServer.getContainerIpAddress() 
-          + ":" + simpleWebServer.getMappedPort(80);
+        String address = "http://" + compose.getServiceHost("simpleWebServer_1", 80)
+          + ":" + compose.getServicePort("simpleWebServer_1", 80);
         String response = simpleGetRequest(address);
         
         assertEquals(response, "Hello World!");
@@ -37,8 +34,7 @@ public class GenericContainerUnitTest {
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
 
-        BufferedReader in = new BufferedReader(
-          new InputStreamReader(con.getInputStream()));
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer content = new StringBuffer();
         while ((inputLine = in.readLine()) != null) {

@@ -12,7 +12,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
-class KhttpTest {
+class KhttpLiveTest {
 
     @Test
     fun whenHttpGetRequestIsMade_thenArgsAreReturned() {
