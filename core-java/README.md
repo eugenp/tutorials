@@ -168,3 +168,4 @@
 - [Immutable Objects in Java](http://www.baeldung.com/java-immutable-object)
 - [Console I/O in Java](http://www.baeldung.com/java-console-input-output)
 - [Guide to the java.util.Arrays Class](http://www.baeldung.com/java-util-arrays)
+- [Create a Custom Exception in Java](http://www.baeldung.com/java-new-custom-exception)
