@@ -272,6 +272,7 @@
         <module>antlr</module>
         <module>maven-archetype</module>
         <module>apache-meecrowave</module>
+        <module>spring-5-reactive-webflux</module>
     </modules>
 
     <dependencies>
