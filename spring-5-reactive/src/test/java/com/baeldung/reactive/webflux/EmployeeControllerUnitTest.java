@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
 
 @RunWith(SpringRunner.class)
 @WebFluxTest(EmployeeController.class)
-public class EmployeeControllerTest {
+public class EmployeeControllerUnitTest {
 
     @Autowired
     private WebTestClient testClient;
