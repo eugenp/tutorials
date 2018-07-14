@@ -194,6 +194,7 @@
         <module>spring-mvc-kotlin</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
+        <module>spring-reactive-kotlin</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-full</module>
         <module>spring-rest-query-language</module>
