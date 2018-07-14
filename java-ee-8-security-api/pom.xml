@@ -26,11 +26,12 @@
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${liberty-maven-plugin.version}</version>
                 <configuration>
-                    <install>
-                        <runtimeUrl>
-                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2018-05-25_1422/openliberty-all-20180525-1300.zip
-                        </runtimeUrl>
-                    </install>
+                      <assemblyArtifact>
++                        <groupId>io.openliberty</groupId>
++                        <artifactId>openliberty-webProfile8</artifactId>
++                        <version>RELEASE</version>
++                        <type>zip</type>
++                    </assemblyArtifact>
                     <looseApplication>true</looseApplication>
                     <installAppPackages>project</installAppPackages>
                     <configFile>src/main/liberty/config/server.xml</configFile>
