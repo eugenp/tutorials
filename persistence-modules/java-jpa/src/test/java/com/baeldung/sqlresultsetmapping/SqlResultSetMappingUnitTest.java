@@ -31,8 +31,8 @@ public class SqlResultSetMappingUnitTest {
     @Test
     public void whenNamedQuery_thenConstructorResult() {
         List<ScheduledDay> scheduleDays = Collections.checkedList(em.createNamedQuery("Schedules", ScheduledDay.class).getResultList(), ScheduledDay.class);
-        assertEquals(3, scheduleDays.size());
-        assertTrue(scheduleDays.stream().allMatch(c -> c.getHourIn().longValue() == 8));
+        assertEquals(2, scheduleDays.size());
+        assertTrue(scheduleDays.stream().allMatch(c -> c.getEmployeeId().longValue() == 3));
     }
 
     @Test
@@ -44,8 +44,7 @@ public class SqlResultSetMappingUnitTest {
 
     @Test
     public void whenNamedQuery_thenMultipleEntityResult() {
-        final Query query = em.createNativeQuery("SELECT e.id, e.name, d.id, d.employeeId, "
-                                                    + " d.dayOfWeek, d.hourIn, d.hourOut "
+        final Query query = em.createNativeQuery("SELECT e.id, e.name, d.id, d.employeeId, d.dayOfWeek "
                                                     + " FROM employee e, schedule_days d "
                                                     + " WHERE e.id = d.employeeId", "EmployeeScheduleResults");
         List<Object[]> results = query.getResultList();

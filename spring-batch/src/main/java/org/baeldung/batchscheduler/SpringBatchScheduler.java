@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
-
+import java.util.concurrent.atomic.AtomicInteger;
 import org.baeldung.batchscheduler.model.Book;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -45,7 +45,7 @@ public class SpringBatchScheduler {
 
     private AtomicBoolean enabled = new AtomicBoolean(true);
 
-    private Date currentLaunchDate;
+    private AtomicInteger batchRunCounter = new AtomicInteger(0);
 
     private final Map<Object, ScheduledFuture<?>> scheduledTasks = new IdentityHashMap<>();
 
@@ -60,16 +60,12 @@ public class SpringBatchScheduler {
         Date date = new Date();
         logger.debug("scheduler starts at " + date);
         if (enabled.get()) {
-            currentLaunchDate = date;
-            JobExecution jobExecution = jobLauncher().run(job(), new JobParametersBuilder().addDate("launchDate", currentLaunchDate)
+            JobExecution jobExecution = jobLauncher().run(job(), new JobParametersBuilder().addDate("launchDate", date)
                 .toJobParameters());
+            batchRunCounter.incrementAndGet();
             logger.debug("Batch job ends with status as " + jobExecution.getStatus());
         }
         logger.debug("scheduler ends ");
-    }
-
-    public Date getCurrentLaunchDate() {
-        return currentLaunchDate;
     }
 
     public void stop() {
@@ -167,6 +163,10 @@ public class SpringBatchScheduler {
 
             }
         };
+    }
+
+    public AtomicInteger getBatchRunCounter() {
+        return batchRunCounter;
     }
 
 }
