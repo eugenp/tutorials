@@ -57,10 +57,6 @@ public class CabService {
      */
     private CabLocation retrieveNewLocation(String cabId) {
         logger.debug("Retrieveing location for cab: {}", cabId);
-        CabLocation location = new CabLocation();
-        location.setCabId(cabId);
-        location.setLatititude(random.nextDouble());
-        location.setLongitude(random.nextDouble());
-        return location;
+        return new CabLocation(cabId, random.nextDouble(), random.nextDouble());
     }
 }

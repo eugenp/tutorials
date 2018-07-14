@@ -17,8 +17,19 @@ public class CabLocation implements Serializable {
     private static final long serialVersionUID = -3923503044822400093L;
 
     private String cabId;
-    private double latititude;
+    private double latitude;
     private double longitude;
+    
+    // default constructor
+    public CabLocation() {
+        // create a CabLocation with empty values
+    }
+
+    public CabLocation(String cabId, double latt, double longt) {
+        this.cabId = cabId;
+        this.latitude = latt;
+        this.longitude = longt;
+    }
 
     public String getCabId() {
         return cabId;
@@ -28,12 +39,12 @@ public class CabLocation implements Serializable {
         this.cabId = cabId;
     }
 
-    public double getLatititude() {
-        return latititude;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setLatititude(double latititude) {
-        this.latititude = latititude;
+    public void setLatitude(double latititude) {
+        this.latitude = latititude;
     }
 
     public double getLongitude() {
@@ -46,7 +57,7 @@ public class CabLocation implements Serializable {
 
     @Override
     public String toString() {
-        return "CabLocation [cabId=" + cabId + ", latititude=" + latititude + ", longitude=" + longitude + "]";
+        return "CabLocation [cabId=" + cabId + ", latitude=" + latitude + ", longitude=" + longitude + "]";
     }
 
 }
