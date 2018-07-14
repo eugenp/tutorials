@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-mongodb</artifactId>
@@ -9,8 +9,8 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-4</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../parent-spring-4</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-4</relativePath>
     </parent>
 
     <dependencies>
@@ -70,7 +70,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.springframework.data.version>1.10.4.RELEASE</org.springframework.data.version>
         <rest-assured.version>2.9.0</rest-assured.version>
         <querydsl.version>4.1.4</querydsl.version>
