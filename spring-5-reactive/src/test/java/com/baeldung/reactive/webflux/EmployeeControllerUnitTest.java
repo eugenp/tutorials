@@ -5,10 +5,12 @@ import static org.mockito.BDDMockito.given;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -17,7 +19,8 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RunWith(SpringRunner.class)
-@WebFluxTest(EmployeeController.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EmployeeControllerUnitTest {
 
     @Autowired
@@ -30,6 +33,7 @@ public class EmployeeControllerUnitTest {
     public void givenEmployeeId_whenGetEmployeeById_thenCorrectEmployee() {
 
         Employee employee = new Employee("1", "Employee 1 Name");
+        
         given(employeeRepository.findEmployeeById("1")).willReturn(Mono.just(employee));
         testClient.get()
             .uri("/employees/1")
