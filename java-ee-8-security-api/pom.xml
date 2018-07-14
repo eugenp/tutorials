@@ -22,13 +22,6 @@
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-war-plugin</artifactId>                
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <packagingExcludes>pom.xml</packagingExcludes>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${liberty-maven-plugin.version}</version>
@@ -60,11 +53,10 @@
         <defaultHttpsPort>9443</defaultHttpsPort>
 
         <javaee-version>8.0</javaee-version>
-        <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
-        <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
+        <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
+        <openliberty-runtime.version>18.0.0.2</openliberty-runtime.version>
         <h2-version>1.4.197</h2-version>
-        
-        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+        <failOnMissingWebXml>false</failOnMissingWebXml>        
     </properties>
 
     <modules>
