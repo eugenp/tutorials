@@ -28,7 +28,7 @@
                 <configuration>
                       <assemblyArtifact>
 +                        <groupId>io.openliberty</groupId>
-+                        <artifactId>openliberty-runtime</artifactId>
++                        <artifactId>openliberty-webProfile8</artifactId>
 +                        <version>${openliberty-runtime.version}</version>
 +                        <type>zip</type>
 +                    </assemblyArtifact>
