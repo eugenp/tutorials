@@ -1,31 +1,27 @@
 package com.baeldung.datetime;
 
-
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
 public class UseTimeZoneUnitTest {
 
-    String pattern = "yyyy-MM-dd HH:mm";
-    String timeZone = "UTC";
+    /* https://en.wikipedia.org/wiki/List_of_tz_database_time_zones */
+    String timeZone = "Asia/Singapore";
 
     @Test
     public void setTimeZoneUsingJava7_success() {
-        String time = UseTimeZone.setTimeZoneUsingJava7(pattern, timeZone);
-        assertNotNull(time);
+        assertNotNull(UseTimeZone.setTimeZoneUsingJava7(timeZone));
     }
 
     @Test
     public void setTimeZoneUsingJava8_success() {
-        String time = UseTimeZone.setTimeZoneUsingJava8(pattern, timeZone);
-        assertNotNull(time);
+        assertNotNull(UseTimeZone.setTimeZoneUsingJava8(timeZone));
     }
 
     @Test
     public void setTimeZoneUsingJodaTime_success() {
-        String time = UseTimeZone.setTimeZoneUsingJodaTime(pattern, timeZone);
-        assertNotNull(time);
+        assertNotNull(UseTimeZone.setTimeZoneUsingJodaTime(timeZone));
     }
 
 }
