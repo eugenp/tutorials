@@ -14,7 +14,8 @@ import java.util.Scanner;
  */
 public class Application {
 
-    // Web Client pulls data from Server API and prints in the console. By entering the character 'c', the application can be stopped.
+    // Web Client pulls data from Server API and prints in the console.
+    //  By entering the character 'c', the application can be stopped.
     public static void main(String[] args) throws InterruptedException {
         WebClient webClient = WebClient.create("http://localhost:8080");
 
