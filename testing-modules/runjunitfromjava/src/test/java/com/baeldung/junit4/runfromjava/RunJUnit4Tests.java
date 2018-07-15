@@ -54,12 +54,12 @@ public class RunJUnit4Tests {
         junit.textui.TestRunner.run(repeatedTest);
     }
 
-    public static void runRepeatedTestMethod() {
+    public static void runRepeatedSuiteMethod() {
         TestSuite mySuite = new ActiveTestSuite();
 
-        mySuite.addTest(new RepeatedTest(new MergeListsUnitTest("whenMergingNormalLists_thenGetExpectedString"), 50));
-        mySuite.addTest(new RepeatedTest(new MergeListsUnitTest("whenMergingNullLists_thenGetNull"), 10));
-
+       mySuite.addTest(new RepeatedTest(new TestSuite(ListNodeUnitTest.class), 5));
+       mySuite.addTest(new RepeatedTest(new TestSuite(SwapNodesUnitTest.class), 3));
+       
         junit.textui.TestRunner.run(mySuite);
     }
 
@@ -77,7 +77,7 @@ public class RunJUnit4Tests {
         runRepeated();
 
         System.out.println("\nRunning repeated tests on specific test methods:");
-        runRepeatedTestMethod();
+        runRepeatedSuiteMethod();
 
     }
 
