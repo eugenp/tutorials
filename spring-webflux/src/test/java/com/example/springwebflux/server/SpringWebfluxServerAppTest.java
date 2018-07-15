@@ -20,7 +20,7 @@ public class SpringWebfluxServerAppTest {
 	}
 
 	@Test
-	public void testGetTrainSchByName() {
+	public void whenGetTrainSchByNameIsCalled_ThenReturnScheduleForTheTrain() {
 		this.webTestClient.get()
 		.uri("/trainschedule/Heartbeat:")
 		.accept(MediaType.APPLICATION_JSON_UTF8)
