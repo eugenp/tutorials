@@ -40,7 +40,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-ear-plugin</artifactId>
-                <version>2.10.1</version>
+                <version>${maven-ear-plugin.version}</version>
                 <configuration>
                     <defaultLibBundleDir>lib/</defaultLibBundleDir>
                     <version>7</version>
@@ -56,8 +56,13 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.2.0.Final</version>
+                <version>${wildfly-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <maven-ear-plugin.version>2.10.1</maven-ear-plugin.version>
+        <wildfly-maven-plugin.version>1.2.0.Final</wildfly-maven-plugin.version>
+    </properties>
 </project>
