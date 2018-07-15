@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = com.baeldung.springbootsecurity.form_login.SpringBootSecurityApplication.class)
-public class FormLoginIntegrationTest {
+public class FormLoginUnitTest {
 
     @Autowired
     private WebApplicationContext context;
