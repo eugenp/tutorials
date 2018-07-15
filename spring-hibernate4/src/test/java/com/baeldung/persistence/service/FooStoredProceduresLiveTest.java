@@ -26,9 +26,9 @@ import com.baeldung.spring.PersistenceConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class FooStoredProceduresIntegrationTest {
+public class FooStoredProceduresLiveTest {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(FooStoredProceduresIntegrationTest.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FooStoredProceduresLiveTest.class);
 
     @Autowired
     private SessionFactory sessionFactory;
