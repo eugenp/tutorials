@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-elasticsearch</artifactId>
@@ -10,8 +10,8 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-4</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../parent-spring-4</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-4</relativePath>
     </parent>
 
     <dependencies>
@@ -75,9 +75,7 @@
         </dependency>
     </dependencies>
 
-
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-data-elasticsearch.version>2.0.5.RELEASE</spring-data-elasticsearch.version>

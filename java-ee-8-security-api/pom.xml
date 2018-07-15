@@ -9,20 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <defaultHttpPort>9080</defaultHttpPort>
-        <defaultHttpsPort>9443</defaultHttpsPort>
-
-        <javaee-version>8.0</javaee-version>
-        <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
-        <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
-        <h2-version>1.4.197</h2-version>
-    </properties>
-
     <modules>
         <module>app-auth-basic-store-db</module>
         <module>app-auth-form-store-ldap</module>
@@ -70,4 +56,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <defaultHttpPort>9080</defaultHttpPort>
+        <defaultHttpsPort>9443</defaultHttpsPort>
+
+        <javaee-version>8.0</javaee-version>
+        <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
+        <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
+        <h2-version>1.4.197</h2-version>
+    </properties>
+
 </project>
