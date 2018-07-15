@@ -2,11 +2,11 @@ package com.baeldung.kotlin.logging
 
 open class LoggerInCompanionObject {
     companion object {
-        private val loggerWithExplicitClass = logger(LoggerInCompanionObject::class.java)
+        private val loggerWithExplicitClass = getLogger(LoggerInCompanionObject::class.java)
         @Suppress("JAVA_CLASS_ON_COMPANION")
-        private val loggerWithWrongClass = logger(javaClass)
+        private val loggerWithWrongClass = getLogger(javaClass)
         @Suppress("JAVA_CLASS_ON_COMPANION")
-        private val logger = logger(javaClass.enclosingClass)
+        private val logger = getLogger(javaClass.enclosingClass)
     }
 
     fun log(s: String) {
@@ -17,13 +17,13 @@ open class LoggerInCompanionObject {
 
     class Inner {
         companion object {
-            private val loggerWithExplicitClass = logger(Inner::class.java)
+            private val loggerWithExplicitClass = getLogger(Inner::class.java)
             @Suppress("JAVA_CLASS_ON_COMPANION")
             @JvmStatic
-            private val loggerWithWrongClass = logger(javaClass)
+            private val loggerWithWrongClass = getLogger(javaClass)
             @Suppress("JAVA_CLASS_ON_COMPANION")
             @JvmStatic
-            private val logger = logger(javaClass.enclosingClass)
+            private val logger = getLogger(javaClass.enclosingClass)
         }
 
         fun log(s: String) {

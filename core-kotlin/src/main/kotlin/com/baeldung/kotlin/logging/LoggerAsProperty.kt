@@ -1,7 +1,7 @@
 package com.baeldung.kotlin.logging
 
 open class LoggerAsProperty {
-    private val logger = logger(javaClass)
+    private val logger = getLogger(javaClass)
 
     fun log(s: String) {
         logger.info(s)

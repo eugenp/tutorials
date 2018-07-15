@@ -32,7 +32,7 @@ class DelegateSubclass : LoggerAsPropertyDelegate() {
 }
 
 fun lazyLogger(forClass: Class<*>): Lazy<Logger> =
-        lazy { logger(getClassForLogging(forClass)) }
+        lazy { getLogger(getClassForLogging(forClass)) }
 
 fun <T : Any> T.lazyLogger(): Lazy<Logger> = lazyLogger(javaClass)
 
@@ -43,5 +43,5 @@ fun main(args: Array<String>) {
 
 class LoggerDelegate<in R : Any> : ReadOnlyProperty<R, Logger> {
     override fun getValue(thisRef: R, property: KProperty<*>) =
-        logger(getClassForLogging(thisRef.javaClass))
+        getLogger(getClassForLogging(thisRef.javaClass))
 }

@@ -1,7 +1,6 @@
 package com.baeldung.kotlin.logging
 
 import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 
 open class LoggerAsExtensionOnAny {
     val logger = logger()
@@ -14,7 +13,7 @@ open class LoggerAsExtensionOnAny {
 
 class ExtensionSubclass : LoggerAsExtensionOnAny()
 
-fun <T : Any> T.logger(): Logger = logger(getClassForLogging(javaClass))
+fun <T : Any> T.logger(): Logger = getLogger(getClassForLogging(javaClass))
 
 fun main(args: Array<String>) {
     LoggerAsExtensionOnAny().log("test")
