@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-hibernate4</artifactId>
@@ -138,12 +138,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
-        <plugins>
-
-
-        </plugins>
-
     </build>
 
     <properties>
@@ -177,7 +171,6 @@
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <!-- <hibernate4-maven-plugin.version>1.1.0</hibernate4-maven-plugin.version> -->
-
     </properties>
 
 </project>
