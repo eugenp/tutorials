@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.baeldung</groupId>
     <artifactId>parent-modules</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -35,25 +36,26 @@
         <module>azure</module>
         <module>bootique</module>
         <module>cdi</module>
-        <!--<module>core-java-9</module>-->
+        <!--<module>core-java-9</module>--> <!-- Commented because we have still not upgraded to java 9 -->
         <module>core-java</module>
         <module>core-java-collections</module>
         <module>core-java-io</module>
         <module>core-java-8</module>
-        <!--<module>core-kotlin</module>-->
+        <module>core-kotlin</module>
         <module>core-groovy</module>
         <module>core-java-concurrency</module>
         <module>couchbase</module>
         <module>deltaspike</module>
         <module>dozer</module>
-        <module>ethereumj</module>
-        <!--<module>ejb</module>-->
+        <module>ethereum</module>
+        <module>ejb</module>
         <module>feign</module>
         <module>flips</module>
-        <!--<module>testing-modules/gatling</module> -->
+        <module>testing-modules/gatling</module>
         <module>geotools</module>
         <module>testing-modules/groovy-spock</module>
         <module>google-cloud</module>
+        <module>google-web-toolkit</module>
         <module>gson</module>
         <module>guava</module>
         <module>guava-modules/guava-18</module>
@@ -64,16 +66,17 @@
         <module>spring-static-resources</module>
         <module>hazelcast</module>
         <module>hbase</module>
-        <!--<module>hibernate5</module> -->
+        <module>hibernate5</module>
         <module>httpclient</module>
         <module>hystrix</module>
-        <!--<module>image-processing</module>-->
+        <module>image-processing</module>
         <module>immutables</module>
         <module>influxdb</module>
         <module>jackson</module>
-        <!--<module>persistence-modules/java-cassandra</module>-->
+        <module>persistence-modules/java-cassandra</module>
         <module>vavr</module>
         <module>java-lite</module>
+        <module>java-numbers</module>
         <module>java-rmi</module>
         <module>java-vavr-stream</module>
         <module>javax-servlets</module>
@@ -82,7 +85,7 @@
         <module>javafx</module>
         <module>jgroups</module>
         <module>jee-7</module>
-        <!--<module>jhipster/jhipster-monolithic</module>-->
+        <module>jhipster/jhipster-monolithic</module>
         <module>jjwt</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
@@ -91,7 +94,7 @@
         <module>jsoup</module>
         <module>testing-modules/junit-5</module>
         <module>jws</module>
-        <!--<module>libraries</module>-->
+        <module>libraries</module>
         <module>libraries-data</module>
         <module>linkrest</module>
         <module>logging-modules/log-mdc</module>
@@ -145,8 +148,10 @@
         <module>spring-boot-bootstrap</module>
         <module>spring-boot-admin</module>
         <module>spring-boot-ops</module>
+        <module>spring-boot-persistence</module>
         <module>spring-boot-security</module>
         <module>spring-boot-mvc</module>
+        <module>spring-boot-logging-log4j2</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
@@ -173,7 +178,7 @@
         <module>spring-integration</module>
         <module>spring-jenkins-pipeline</module>
         <module>spring-jersey</module>
-        <!--<module>jmeter</module> -->
+        <module>jmeter</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
         <module>persistence-modules/spring-jpa</module>
@@ -181,16 +186,13 @@
         <module>spring-katharsis</module>
         <module>spring-ldap</module>
         <module>spring-mockito</module>
-        <module>spring-mvc-email</module>
         <module>spring-mvc-forms-jsp</module>
         <module>spring-mvc-forms-thymeleaf</module>
         <module>spring-mvc-java</module>
         <module>spring-mvc-velocity</module>
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
-        <module>spring-mvc-simple</module>
         <module>spring-mvc-kotlin</module>
-        <module>spring-security-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest-angular</module>
@@ -216,6 +218,8 @@
         <module>spring-security-mvc-persisted-remember-me</module>
         <module>spring-security-mvc-session</module>
         <module>spring-security-mvc-socket</module>
+        <module>spring-security-openid</module>
+        <!--<module>spring-security-react</module>-->
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
         <module>spring-security-rest</module>
@@ -264,11 +268,12 @@
         <module>java-spi</module>
         <module>performance-tests</module>
         <module>twilio</module>
-        <module>spring-boot-ctx-fluent</module> 
+        <module>spring-boot-ctx-fluent</module>
         <module>java-ee-8-security-api</module>
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
-	      <module>maven-archetype</module>
+        <module>maven-archetype</module>
+        <module>apache-meecrowave</module>
     </modules>
 
     <dependencies>
@@ -365,19 +370,19 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.9.0</version>
-                <dependencies>
+                <version>${maven-pmd-plugin.version}</version>
+				        <dependencies>
                     <dependency>
                         <groupId>org.baeldung.pmd</groupId>
                         <artifactId>custom-pmd</artifactId>
-                        <version>0.0.1</version>
+                        <version>${custom-pmd.version}</version>
                     </dependency>
                 </dependencies>
                 <configuration>
@@ -388,10 +393,13 @@
                     <linkXRef>true</linkXRef>
                     <includeTests>true</includeTests>
                     <sourceEncoding>UTF-8</sourceEncoding>
-                    <targetJdk>1.8</targetJdk>
+                    <targetJdk>${java.version}</targetJdk>
                     <rulesets>
                         <ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
                     </rulesets>
+					<excludeRoots>
+						<excludeRoot>target/generated-sources</excludeRoot>
+					</excludeRoots>
                 </configuration>
                 <executions>
                     <execution>
@@ -405,7 +413,7 @@
             <plugin>
                 <groupId>org.commonjava.maven.plugins</groupId>
                 <artifactId>directory-maven-plugin</artifactId>
-                <version>0.3.1</version>
+                <version>${directory-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>directories</id>
@@ -426,13 +434,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
-                <version>2.5.1</version>
+                <version>${maven-install-plugin.version}</version>
                 <configuration>
                     <groupId>org.baeldung.pmd</groupId>
                     <artifactId>custom-pmd</artifactId>
-                    <version>0.0.1</version>
+                    <version>${custom-pmd.version}</version>
                     <packaging>jar</packaging>
-                    <file>${tutorialsproject.basedir}/custom-pmd-0.0.1.jar</file>
+                    <file>${tutorialsproject.basedir}/custom-pmd-${custom-pmd.version}.jar</file>
                     <generatePom>true</generatePom>
                 </configuration>
                 <executions>
@@ -446,15 +454,13 @@
                 </executions>
             </plugin>
         </plugins>
-
         <extensions>
             <extension>
                 <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
                 <artifactId>gitflow-incremental-builder</artifactId>
-                <version>3.4</version>
+                <version>${gitflow-incremental-builder.version}</version>
             </extension>
         </extensions>
-
     </build>
 
     <profiles>
@@ -499,13 +505,14 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.3</version>
+                <version>${maven-jxr-plugin.version}</version>
             </plugin>
         </plugins>
     </reporting>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
         <gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
         <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
@@ -541,5 +548,13 @@
         <jackson-databind.version>2.5.0</jackson-databind.version>
         <commons-fileupload.version>1.3</commons-fileupload.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
+        <directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
+        <maven-install-plugin.version>2.5.1</maven-install-plugin.version>
+        <custom-pmd.version>0.0.1</custom-pmd.version>
+        <gitflow-incremental-builder.version>3.4</gitflow-incremental-builder.version>
+        <maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
+        <!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
+        <maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
     </properties>
+
 </project>

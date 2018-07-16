@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>osgi-intro</artifactId>
     <packaging>pom</packaging>
@@ -45,22 +44,22 @@
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
-                <version>3.9.0</version>
+                <version>${okhttp.version}</version>
             </dependency>
             <dependency>
                 <groupId>javax.json</groupId>
                 <artifactId>javax.json-api</artifactId>
-                <version>1.1</version>
+                <version>${javax.json.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.glassfish</groupId>
                 <artifactId>javax.json</artifactId>
-                <version>1.1</version>
+                <version>${javax.json.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.osgi</groupId>
                 <artifactId>org.osgi.core</artifactId>
-                <version>6.0.0</version>
+                <version>${osgi.version}</version>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -72,11 +71,18 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>${maven-bundle-plugin.version}</version>
                     <extensions>true</extensions>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <okhttp.version>3.9.0</okhttp.version>
+        <javax.json.version>1.1</javax.json.version>
+        <osgi.version>6.0.0</osgi.version>
+        <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
+    </properties>
 
 </project>
