@@ -23,15 +23,6 @@ public class BasicConnectionPool implements ConnectionPool {
         return new BasicConnectionPool(url, user, password, pool);
     }
     
-    public static BasicConnectionPool createFromMysqlDataSource(String url, String user, String password) throws SQLException {
-        List<Connection> pool = new ArrayList<>(MAX_CONNECTIONS);
-        for (int i = 0; i < MAX_CONNECTIONS; i++) {
-            MysqlDataSource ds = new MysqlDataSource();
-            pool.add(ds.getConnection(user, password));
-        }
-        return new BasicConnectionPool(url, user, password, pool);
-    }
-    
     BasicConnectionPool(String url, String user, String password, List<Connection> connectionPool) {
         this.url = url;
         this.user = user;
