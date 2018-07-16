@@ -16,7 +16,7 @@ public class C3poDataSource {
             cpds.setUser("user");
             cpds.setPassword("password");
         } catch (PropertyVetoException e) {
-            // handle the exception
+            e.printStackTrace();
         }
     }
     
