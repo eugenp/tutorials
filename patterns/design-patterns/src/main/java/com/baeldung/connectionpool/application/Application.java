@@ -15,11 +15,6 @@ public class Application {
         Connection con1 = cp1.getConnection(0);
         System.out.println(con1);
         cp1.releaseConnection(con1);
-
-        ConnectionPool cp2 = BasicConnectionPool.createFromMysqlDataSource("jdbc:mysql://localhost:3306/mydb", "user", "password");
-        Connection con2 = cp2.getConnection(0);
-        System.out.println(con2);
-        cp2.releaseConnection(con2);
         
         Connection con3 = DBCPDataSource.getConnection();
         System.out.println(con3);
