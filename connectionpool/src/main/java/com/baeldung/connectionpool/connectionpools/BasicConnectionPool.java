@@ -32,7 +32,7 @@ public class BasicConnectionPool implements ConnectionPool {
         return new BasicConnectionPool(url, user, password, pool);
     }
     
-    BasicConnectionPool(String url, String user, String password, List<Connection> connectionPool) {
+    private BasicConnectionPool(String url, String user, String password, List<Connection> connectionPool) {
         this.url = url;
         this.user = user;
         this.password = password;
