@@ -16,7 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  * Test for {@link RssFeedApplication}.
  * 
- * @author Donato
+ * @author Donato Rimenti
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
