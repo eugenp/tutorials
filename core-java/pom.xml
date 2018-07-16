@@ -444,5 +444,4 @@
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <icu4j.version>61.1</icu4j.version>
     </properties>
-
 </project>

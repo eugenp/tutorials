@@ -5,7 +5,9 @@ import io.vavr.Function1;
 import io.vavr.Function2;
 import io.vavr.Function5;
 import io.vavr.Lazy;
-import io.vavr.*;
+import io.vavr.Tuple;
+import io.vavr.Tuple2;
+import io.vavr.Tuple3;
 import io.vavr.collection.List;
 import io.vavr.collection.Seq;
 import io.vavr.control.Option;
@@ -13,23 +15,25 @@ import io.vavr.control.Try;
 import io.vavr.control.Validation;
 import org.junit.Test;
 
-import com.baeldung.vavr.Person;
-import com.baeldung.vavr.PersonValidator;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-import static io.vavr.API.*;
-import static org.junit.Assert.*;
+import static io.vavr.API.$;
+import static io.vavr.API.Case;
+import static io.vavr.API.Match;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class VavrUnitTest {
     @Test
     public void givenList_whenSorts_thenCorrect() {
         List<Integer> sortedList = List.of(3, 2, 1)
-            .sorted();
+          .sorted();
     }
 
     /*
@@ -123,7 +127,7 @@ public class VavrUnitTest {
     @Test
     public void whenCreatesFunction_thenCorrect0() {
         Function0<String> getClazzName = () -> this.getClass()
-            .getName();
+          .getName();
         String clazzName = getClazzName.apply();
         assertEquals("com.baeldung.vavr.VavrUnitTest", clazzName);
     }
@@ -212,11 +216,11 @@ public class VavrUnitTest {
         assertEquals(-1, errorSentinel);
     }
 
-    // @Test(expected = ArithmeticException.class)
-    // public void givenBadCode_whenTryHandles_thenCorrect3() {
-    // Try<Integer> result = Try.of(() -> 1 / 0);
-    // result.getOrElseThrow(ArithmeticException::new);
-    // }
+     @Test(expected = RuntimeException.class)
+     public void givenBadCode_whenTryHandles_thenCorrect3() {
+        Try<Integer> result = Try.of(() -> 1 / 0);
+        result.getOrElseThrow(e->new RuntimeException(e));//re-throw different ex type
+     }
 
     // lazy
     @Test
@@ -257,7 +261,7 @@ public class VavrUnitTest {
     public void whenSumsJava8List_thenCorrect() {
         // Arrays.asList(1, 2, 3).stream().reduce((i, j) -> i + j);
         int sum = IntStream.of(1, 2, 3)
-            .sum();
+          .sum();
         assertEquals(6, sum);
     }
 
@@ -273,8 +277,8 @@ public class VavrUnitTest {
     @Test
     public void whenSumsVavrList_thenCorrect() {
         int sum = List.of(1, 2, 3)
-            .sum()
-            .intValue();
+          .sum()
+          .intValue();
         assertEquals(6, sum);
     }
 
@@ -307,21 +311,21 @@ public class VavrUnitTest {
         int input = 2;
         String output;
         switch (input) {
-        case 0:
-            output = "zero";
-            break;
-        case 1:
-            output = "one";
-            break;
-        case 2:
-            output = "two";
-            break;
-        case 3:
-            output = "three";
-            break;
-        default:
-            output = "unknown";
-            break;
+            case 0:
+                output = "zero";
+                break;
+            case 1:
+                output = "one";
+                break;
+            case 2:
+                output = "two";
+                break;
+            case 3:
+                output = "three";
+                break;
+            default:
+                output = "unknown";
+                break;
         }
         assertEquals("two", output);
     }

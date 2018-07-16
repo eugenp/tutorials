@@ -1,11 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <version>0.1-SNAPSHOT</version>
     <artifactId>apache-velocity</artifactId>
-
     <packaging>war</packaging>
     <name>apache-velocity</name>
 
@@ -14,15 +12,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <jdk.version>1.8</jdk.version>
-        <jstl.version>1.2</jstl.version>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <org.apache.httpcomponents.version>4.5.2</org.apache.httpcomponents.version>
-        <velocity-version>1.7</velocity-version>
-        <velocity-tools-version>2.0</velocity-tools-version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -48,6 +37,7 @@
             </exclusions>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>apache-velocity</finalName>
         <resources>
@@ -67,4 +57,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <jstl.version>1.2</jstl.version>
+        <org.apache.httpcomponents.version>4.5.2</org.apache.httpcomponents.version>
+        <velocity-version>1.7</velocity-version>
+        <velocity-tools-version>2.0</velocity-tools-version>
+    </properties>
+
 </project>

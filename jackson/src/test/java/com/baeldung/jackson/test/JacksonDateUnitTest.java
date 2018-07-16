@@ -130,7 +130,8 @@ public class JacksonDateUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setDateFormat(df);
 
-        final Event event = mapper.readerFor(Event.class).readValue(json);
+        final Event event = mapper.readerFor(Event.class)
+            .readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 
@@ -141,7 +142,8 @@ public class JacksonDateUnitTest {
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         final ObjectMapper mapper = new ObjectMapper();
 
-        final EventWithSerializer event = mapper.readerFor(EventWithSerializer.class).readValue(json);
+        final EventWithSerializer event = mapper.readerFor(EventWithSerializer.class)
+            .readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 

@@ -1,0 +1,78 @@
+AWSTemplateFormatVersion: 2010-09-09
+Metadata:
+  'AWS::CloudFormation::Designer':
+    157e7d5f-5cb3-4a23-a50c-97e7f6c57173:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 450
+        'y': 90
+      z: 0
+      embeds: []
+    9bbaaa55-9cba-4555-a7c6-fb6ac248fd3a:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 260
+        'y': 90
+      z: 0
+      embeds: []
+      isassociatedwith:
+        - 157e7d5f-5cb3-4a23-a50c-97e7f6c57173
+    a7348729-a594-4dca-9b0a-e1c8d777dc3b:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 70
+        'y': 90
+      z: 0
+      embeds: []
+Resources:
+  IAMRoleBaeldung:
+    Type: 'AWS::IAM::Role'
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      ManagedPolicyArns:
+        - 'arn:aws:iam::aws:policy/AmazonS3FullAccess'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 157e7d5f-5cb3-4a23-a50c-97e7f6c57173
+  InstanceProfileBaeldung:
+    Type: 'AWS::IAM::InstanceProfile'
+    Properties:
+      Roles:
+        - !Ref IAMRoleBaeldung
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 9bbaaa55-9cba-4555-a7c6-fb6ac248fd3a
+  EC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: ami-2581aa40
+      InstanceType: t2.micro
+      IamInstanceProfile: !Ref InstanceProfileBaeldung
+      KeyName: Satish-Ohio
+      UserData: !Base64 
+        'Fn::Join':
+          - ''
+          - - |
+              #!/bin/bash
+            - |
+              apt -y install openjdk-8-jre-headless
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: a7348729-a594-4dca-9b0a-e1c8d777dc3b
+    DependsOn:
+      - InstanceProfileBaeldung
+
