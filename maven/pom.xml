@@ -55,10 +55,12 @@
                 <configuration>
                     <excludes>
                         <exclude>DataTest.java</exclude>
+                        <exclude>DataCheck.java</exclude>
                     </excludes>
                     <includes>
-                        <include>DataCheck.java</include>
+                        <include>TestFail.java</include>
                     </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>
