@@ -14,8 +14,10 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
+import java.util.UUID;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.equalTo;
@@ -110,6 +112,19 @@ public class JavaInputStreamToXUnitTest {
         IOUtils.copy(inputStream, writer, encoding);
 
         assertThat(writer.toString(), equalTo(originalString));
+    }
+    
+    @Test
+    public final void givenUsingTempFile_whenConvertingAnInputStreamToAString_thenCorrect() throws IOException {
+        final String originalString = randomAlphabetic(DEFAULT_SIZE);
+        final InputStream inputStream = new ByteArrayInputStream(originalString.getBytes());
+
+        // When
+        Path tempFile = java.nio.file.Files.createTempDirectory("").resolve(UUID.randomUUID().toString() + ".tmp");
+        java.nio.file.Files.copy(inputStream, tempFile, StandardCopyOption.REPLACE_EXISTING);
+        String result = new String(java.nio.file.Files.readAllBytes(tempFile));
+
+        assertThat(result, equalTo(originalString));
     }
 
     // tests - InputStream to byte[]
