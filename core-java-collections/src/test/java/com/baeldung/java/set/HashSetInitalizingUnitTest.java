@@ -54,13 +54,6 @@ public class HashSetInitalizingUnitTest {
         assertEquals(3, set.size());
     }
 
-    // Requires Java9 - uncomment if you are using Java 9 or higher
-    /*@Test
-    public void whenUsingJava9_usingCollectOnStream_thenCorrectSize() {
-        Set set = Set.of("a", "b", "c");
-        assertEquals(3, set.size());
-    }*/
-
     @Test
     public void whenUsingGoogleGuava_createMutableSet_thenCorrectSize() {
         Set<String> set = Sets.newHashSet("a", "b", "c");
