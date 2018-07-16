@@ -50,13 +50,7 @@ public class HashSetInitalizingUnitTest {
 
     @Test
     public void whenUsingJava8_usingCollectOnStream_thenCorrectSize() {
-        Set<String> set = Stream.of("a", "b", "c").collect(Collectors.toSet());
-        assertEquals(3, set.size());
-    }
-    @Test
-    public void whenUsingJava8_fromStringArray_thenCorrectSize() {
-        String[] stringArray = {"a","b","c"};
-        Set<String> set = Arrays.stream(stringArray).collect(Collectors.toCollection(HashSet::new));
+        Set<String> set = Stream.of("a", "b", "c").collect(Collectors.toCollection(HashSet::new));
         assertEquals(3, set.size());
     }
 
