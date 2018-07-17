@@ -9,11 +9,9 @@ INSERT INTO EMPLOYEE VALUES (3, 'FRANK');
 CREATE TABLE SCHEDULE_DAYS
 (id IDENTITY,
  employeeId BIGINT,
- hourIn     int,
- hourOut    int,
  dayOfWeek  VARCHAR(10));
 
-INSERT INTO SCHEDULE_DAYS (employeeId, hourIn, hourOut, dayOfWeek) VALUES (1, 13, 21, 'FRIDAY');
-INSERT INTO SCHEDULE_DAYS (employeeId, hourIn, hourOut, dayOfWeek) VALUES (2, 8, 4, 'SATURDAY');
-INSERT INTO SCHEDULE_DAYS (employeeId, hourIn, hourOut, dayOfWeek) VALUES (3, 8, 4, 'MONDAY');
-INSERT INTO SCHEDULE_DAYS (employeeId, hourIn, hourOut, dayOfWeek) VALUES (3, 8, 4, 'FRIDAY');
+INSERT INTO SCHEDULE_DAYS (employeeId, dayOfWeek) VALUES (1, 'FRIDAY');
+INSERT INTO SCHEDULE_DAYS (employeeId, dayOfWeek) VALUES (2, 'SATURDAY');
+INSERT INTO SCHEDULE_DAYS (employeeId, dayOfWeek) VALUES (3, 'MONDAY');
+INSERT INTO SCHEDULE_DAYS (employeeId, dayOfWeek) VALUES (3, 'FRIDAY');

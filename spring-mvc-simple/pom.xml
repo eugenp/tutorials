@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-mvc-simple</artifactId>
     <packaging>war</packaging>
@@ -10,8 +10,8 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-5</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../parent-spring-5</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -20,6 +20,15 @@
             <artifactId>spring-oxm</artifactId>
             <version>${spring-oxm.version}</version>
         </dependency>
+        <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+</dependency>
+<dependency>
+    <groupId>com.sun.mail</groupId>
+    <artifactId>javax.mail</artifactId>
+    <version>1.6.1</version>
+</dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
@@ -88,8 +97,8 @@
             <artifactId>spring-jade4j</artifactId>
             <version>${jade.version}</version>
         </dependency>
-        
-         <dependency>
+
+        <dependency>
             <groupId>org.apache.tiles</groupId>
             <artifactId>tiles-jsp</artifactId>
             <version>${apache-tiles.version}</version>
@@ -166,28 +175,25 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-        <finalName>springMvcSimple</finalName>
+        <finalName>spring-mvc-simple</finalName>
     </build>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-war-plugin.version>3.2.0</maven-war-plugin.version>
         <maven.compiler.version>3.7.0</maven.compiler.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <jstl.version>1.2</jstl.version>
         <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
         <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
-        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
         <deploy-path>enter-location-of-server</deploy-path>
         <fileupload.version>1.3.2</fileupload.version>
-        <java.version>1.8</java.version>
         <org.thymeleaf-version>3.0.7.RELEASE</org.thymeleaf-version>
         <groovy.version>2.4.12</groovy.version>
         <freemarker.version>2.3.27-incubating</freemarker.version>
         <jade.version>1.2.5</jade.version>
-        <junit.jupiter.version>5.0.2</junit.jupiter.version>
         <junit.platform.version>1.0.2</junit.platform.version>
         <rome.version>1.9.0</rome.version>
         <jackson.version>2.9.4</jackson.version>
