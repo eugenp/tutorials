@@ -199,7 +199,7 @@
             <artifactId>maven-pmd-plugin</artifactId>
             <version>2.7.1</version>
             <configuration>
-                <targetJdk>1.8</targetJdk>
+                <targetJdk>1.6</targetJdk>
                 <linkXref>false</linkXref>
                 <failOnViolation>false</failOnViolation>
                 <failurePriority>1</failurePriority>
