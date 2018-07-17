@@ -92,7 +92,7 @@ public class GuavaStringUnitTest {
     @Test
     public void whenSplitStringOnMultipleSeparator_thenSplit() {
         final String input = "apple.banana,,orange,,.";
-        final List<String> result = Splitter.onPattern("[.|,]").omitEmptyStrings().splitToList(input);
+        final List<String> result = Splitter.onPattern("[.,]").omitEmptyStrings().splitToList(input);
 
         assertThat(result, contains("apple", "banana", "orange"));
     }

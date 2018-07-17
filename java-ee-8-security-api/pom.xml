@@ -3,32 +3,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>java-ee-8-security-api</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <modules>
-        <module>app-auth-basic-store-db</module>
-        <module>app-auth-form-store-ldap</module>
-        <module>app-auth-custom-form-store-custom</module>
-        <module>app-auth-custom-no-store</module>
-    </modules>
-
     <dependencies>
+    
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>${javaee-version}</version>
             <scope>provided</scope>
         </dependency>
+        
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                     <packagingExcludes>pom.xml</packagingExcludes>
@@ -69,6 +64,15 @@
         <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
         <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
         <h2-version>1.4.197</h2-version>
+        
+        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
     </properties>
+
+    <modules>
+        <module>app-auth-basic-store-db</module>
+        <module>app-auth-form-store-ldap</module>
+        <module>app-auth-custom-form-store-custom</module>
+        <module>app-auth-custom-no-store</module>
+    </modules>
 
 </project>

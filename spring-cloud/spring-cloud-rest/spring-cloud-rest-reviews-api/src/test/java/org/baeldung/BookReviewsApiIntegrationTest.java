@@ -1,36 +1,43 @@
 package org.baeldung;
 
-import java.io.IOException;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
-import redis.embedded.RedisServer;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BookReviewsApiIntegrationTest {
-    
-    private static RedisServer redisServer;
-    private static int port;
-
-    @BeforeClass
-    public static void setUp() throws IOException {
-
-        redisServer = new RedisServer(6379);
-        redisServer.start();
-    }
-
-    @AfterClass
-    public static void destroy() {
-        redisServer.stop();
-    }
 
     @Test
     public void contextLoads() {
     }
 
+    @EnableRedisHttpSession
+    @Configuration
+    static class Config {
+
+        @Bean
+        @SuppressWarnings("unchecked")
+        public RedisSerializer<Object> defaultRedisSerializer() {
+            return Mockito.mock(RedisSerializer.class);
+        }
+
+        @Bean
+        public RedisConnectionFactory connectionFactory() {
+
+            RedisConnectionFactory factory = Mockito.mock(RedisConnectionFactory.class);
+            RedisConnection connection = Mockito.mock(RedisConnection.class);
+            Mockito.when(factory.getConnection()).thenReturn(connection);
+
+            return factory;
+        }
+    }
 }
