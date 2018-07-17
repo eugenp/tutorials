@@ -1,4 +1,4 @@
-package com.baeldung.reactive.webflux.model;
+package com.baeldung.reactive.webfluxapplication.model;
 
 
 public class WebFluxEvent {

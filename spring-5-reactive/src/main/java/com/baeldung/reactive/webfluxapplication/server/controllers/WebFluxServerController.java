@@ -1,4 +1,4 @@
-package com.baeldung.reactive.webflux.server.controllers;
+package com.baeldung.reactive.webfluxapplication.server.controllers;
 
 import java.time.Duration;
 import java.util.UUID;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.reactive.webflux.model.WebFluxEvent;
+import com.baeldung.reactive.webfluxapplication.model.WebFluxEvent;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -18,6 +18,11 @@ import reactor.util.function.Tuple2;
 @RestController
 @RequestMapping("/wfserver")
 public class WebFluxServerController {
+    
+    @GetMapping("/hello-annotation")
+    public Mono<String> sayHello() {
+        return Mono.just("hello");
+    }
     
     @GetMapping(value = "/token", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<WebFluxEvent> getToken() {

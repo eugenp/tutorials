@@ -1,4 +1,4 @@
-package com.baeldung.reactive.webflux.server.handlers;
+package com.baeldung.reactive.webfluxapplication.server.handlers;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;

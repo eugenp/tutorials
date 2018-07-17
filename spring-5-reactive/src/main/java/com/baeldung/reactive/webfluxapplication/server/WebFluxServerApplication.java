@@ -1,4 +1,4 @@
-package com.baeldung.reactive.webflux.server;
+package com.baeldung.reactive.webfluxapplication.server;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;

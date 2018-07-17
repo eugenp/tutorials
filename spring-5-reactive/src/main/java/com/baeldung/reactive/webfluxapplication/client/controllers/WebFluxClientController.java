@@ -1,11 +1,11 @@
-package com.baeldung.reactive.webflux.client.controllers;
+package com.baeldung.reactive.webfluxapplication.client.controllers;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import com.baeldung.reactive.webflux.model.WebFluxEvent;
+import com.baeldung.reactive.webfluxapplication.model.WebFluxEvent;
 
 import reactor.core.publisher.Flux;
 

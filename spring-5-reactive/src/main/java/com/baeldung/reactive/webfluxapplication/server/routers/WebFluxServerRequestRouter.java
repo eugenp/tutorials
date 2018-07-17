@@ -1,4 +1,4 @@
-package com.baeldung.reactive.webflux.server.routers;
+package com.baeldung.reactive.webfluxapplication.server.routers;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.baeldung.reactive.webflux.server.handlers.WebFluxServerRequestHandler;
+import com.baeldung.reactive.webfluxapplication.server.handlers.WebFluxServerRequestHandler;
 
 @Component
 public class WebFluxServerRequestRouter {
