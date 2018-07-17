@@ -3,8 +3,6 @@ package com.baeldung.reactive.webfluxapplication.client;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import com.baeldung.reactive.webfluxapplication.server.WebFluxServerApplication;
-
 @SpringBootApplication
 public class WebFluxClientApplication {
     
