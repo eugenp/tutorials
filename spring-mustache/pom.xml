@@ -7,7 +7,6 @@
     <artifactId>spring-mustache</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>spring-mustache</name>
     <description>Demo project for Spring Boot</description>
 
@@ -18,12 +17,6 @@
         <relativePath/>
         <!-- lookup parent from repository -->
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -39,12 +32,12 @@
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>3.3.7</version>
+            <version>${bootstrap.version}</version>
         </dependency>
         <dependency>
             <groupId>org.fluttercode.datafactory</groupId>
             <artifactId>datafactory</artifactId>
-            <version>0.8</version>
+            <version>${datafactory.version}</version>
         </dependency>
     </dependencies>
 
@@ -57,5 +50,12 @@
         </plugins>
     </build>
 
-
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <bootstrap.version>3.3.7</bootstrap.version>
+        <datafactory.version>0.8</datafactory.version>
+    </properties>
+    
 </project>

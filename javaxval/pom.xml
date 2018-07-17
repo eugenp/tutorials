@@ -5,14 +5,6 @@
     <artifactId>javaxval</artifactId>
     <version>0.1-SNAPSHOT</version>
 
-    <properties>
-        <validation-api.version>1.1.0.Final</validation-api.version>
-        <hibernate-validator.version>5.3.4.Final</hibernate-validator.version>
-        <javax.el-api.version>3.0.0</javax.el-api.version>
-        <javax.el.version>2.2.6</javax.el.version>
-    </properties>
-
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -20,37 +12,44 @@
     </parent>
 
     <dependencies>
-
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${validation-api.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator-annotation-processor</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
-
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
             <version>${javax.el-api.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
             <version>${javax.el.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+        <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
+        <javax.el-api.version>3.0.0</javax.el-api.version>
+        <javax.el.version>2.2.6</javax.el.version>
+        <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
+    </properties>
 
 </project>

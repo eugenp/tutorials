@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.elasticsearch.node.NodeBuilder.nodeBuilder;
 import static org.junit.Assert.assertEquals;
@@ -78,12 +79,9 @@ public class ElasticSearchManualTest {
         SearchHit[] searchHits = response
           .getHits()
           .getHits();
-        List<Person> results = new ArrayList<>();
-        for (SearchHit hit : searchHits) {
-            String sourceAsString = hit.getSourceAsString();
-            Person person = JSON.parseObject(sourceAsString, Person.class);
-            results.add(person);
-        }
+        List<Person> results = Arrays.stream(searchHits)
+          .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
+          .collect(Collectors.toList());
     }
 
     @Test
@@ -125,11 +123,10 @@ public class ElasticSearchManualTest {
           .actionGet();
         response2.getHits();
         response3.getHits();
-        List<SearchHit> searchHits = Arrays.asList(response
-          .getHits()
-          .getHits());
-        final List<Person> results = new ArrayList<>();
-        searchHits.forEach(hit -> results.add(JSON.parseObject(hit.getSourceAsString(), Person.class)));
+
+        final List<Person> results = Arrays.stream(response.getHits().getHits())
+          .map(hit -> JSON.parseObject(hit.getSourceAsString(), Person.class))
+          .collect(Collectors.toList());
     }
 
     @Test
