@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>core-java</artifactId>
@@ -89,7 +89,7 @@
             <scope>test</scope>
         </dependency>
         <!-- DBCP2 -->
-	  <dependency>
+        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>2.4.0</version>
@@ -195,23 +195,65 @@
 
         <plugins>
             <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-pmd-plugin</artifactId>
-            <version>2.7.1</version>
-            <configuration>
-                <targetJdk>1.6</targetJdk>
-                <linkXref>false</linkXref>
-                <failOnViolation>false</failOnViolation>
-                <failurePriority>1</failurePriority>
-            </configuration>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>check</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>2.7.1</version>
+                <configuration>
+                    <targetJdk>1.6</targetJdk>
+                    <linkXref>false</linkXref>
+                    <failOnViolation>false</failOnViolation>
+                    <failurePriority>1</failurePriority>
+                    <rulesets>
+
+                        <!-- used rule sets -->
+                        <!-- http://pmd.sourceforge.net/rules/java/basic.html -->
+                        <ruleset>/rulesets/basic.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/braces.html -->
+                        <ruleset>/rulesets/braces.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/clone.html -->
+                        <ruleset>/rulesets/clone.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/codesize.html -->
+                        <ruleset>/rulesets/codesize.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/controversial.html -->
+                        <ruleset>/rulesets/controversial.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/coupling.html -->
+                        <ruleset>/rulesets/coupling.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/design.html -->
+                        <ruleset>/rulesets/design.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/finalizers.html -->
+                        <ruleset>/rulesets/finalizers.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/imports.html -->
+                        <ruleset>/rulesets/imports.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/j2ee.html -->
+                        <ruleset>/rulesets/j2ee.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/junit.html -->
+                        <ruleset>/rulesets/junit.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/javabeans.html -->
+                        <ruleset>/rulesets/javabeans.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/migrating.html -->
+                        <ruleset>/rulesets/migrating.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/optimizations.html -->
+                        <ruleset>/rulesets/optimizations.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/strictexception.html -->
+                        <ruleset>/rulesets/strictexception.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/strings.html -->
+                        <ruleset>/rulesets/strings.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/sunsecure.html -->
+                        <ruleset>/rulesets/sunsecure.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/typeresolution.html -->
+                        <ruleset>/rulesets/typeresolution.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/unusedcode.html -->
+                        <ruleset>/rulesets/unusedcode.xml</ruleset>
+                    </rulesets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
