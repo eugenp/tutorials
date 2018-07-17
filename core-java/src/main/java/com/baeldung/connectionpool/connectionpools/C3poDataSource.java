@@ -11,12 +11,12 @@ public class C3poDataSource {
 
     static {
         try {
-            cpds.setDriverClass("com.mysql.jdbc.Driver");
-            cpds.setJdbcUrl("jdbc:mysql://localhost:3306/mydb");
-            cpds.setUser("user");
-            cpds.setPassword("password");
+            cpds.setDriverClass("org.h2.Driver");
+            cpds.setJdbcUrl("jdbc:h2:mem:test");
+            cpds.setUser("root");
+            cpds.setPassword("sawstudio2567");
         } catch (PropertyVetoException e) {
-            // handle the exception
+            e.printStackTrace();
         }
     }
     

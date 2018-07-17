@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface ConnectionPool {
 
-    Connection getConnection(int id);
+    Connection getConnection();
     
-    void releaseConnection(Connection connection);
+    boolean releaseConnection(Connection connection);
     
     List<Connection> getConnectionPool();
     

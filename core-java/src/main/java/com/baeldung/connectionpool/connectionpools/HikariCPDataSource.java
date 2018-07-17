@@ -5,15 +5,15 @@ import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class HirakiDataSource {
+public class HikariCPDataSource {
     
     private static final HikariConfig config = new HikariConfig();
     private static final HikariDataSource ds;
     
     static {
-        config.setJdbcUrl("jdbc:mysql://localhost:3306/mydb");
-        config.setUsername("user");
-        config.setPassword("password");
+        config.setJdbcUrl("jdbc:h2:mem:test");
+        config.setUsername("root");
+        config.setPassword("sawstudio2567");
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
@@ -24,5 +24,5 @@ public class HirakiDataSource {
         return ds.getConnection();
     }
     
-    private HirakiDataSource(){}
+    private HikariCPDataSource(){}
 }

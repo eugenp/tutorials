@@ -1,11 +1,11 @@
 package com.baeldung.connectionpool.connectionpools;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BasicConnectionPool implements ConnectionPool {
 
@@ -13,21 +13,14 @@ public class BasicConnectionPool implements ConnectionPool {
     private final String user;
     private final String password;
     private final List<Connection> connectionPool;
-    private static final int MAX_CONNECTIONS = 10;
+    private final List<Connection> usedConnections = new ArrayList<>();
+    private static final int INITIAL_POOL_SIZE = 10;
+    private final int MAX_POOL_SIZE = 20;
     
-    public static BasicConnectionPool createFromDriverManager(String url, String user, String password) throws SQLException {
-        List<Connection> pool = new ArrayList<>(MAX_CONNECTIONS);
-        for (int i = 0; i < MAX_CONNECTIONS; i++) {
+    public static BasicConnectionPool create(String url, String user, String password) throws SQLException {
+        List<Connection> pool = new ArrayList<>(INITIAL_POOL_SIZE);
+        for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
             pool.add(DriverManager.getConnection(url, user, password));
-        }
-        return new BasicConnectionPool(url, user, password, pool);
-    }
-    
-    public static BasicConnectionPool createFromMysqlDataSource(String url, String user, String password) throws SQLException {
-        List<Connection> pool = new ArrayList<>(MAX_CONNECTIONS);
-        for (int i = 0; i < MAX_CONNECTIONS; i++) {
-            MysqlDataSource ds = new MysqlDataSource();
-            pool.add(ds.getConnection(user, password));
         }
         return new BasicConnectionPool(url, user, password, pool);
     }
@@ -38,20 +31,24 @@ public class BasicConnectionPool implements ConnectionPool {
         this.password = password;
         this.connectionPool = connectionPool;
     }
-
+    
     @Override
-    public Connection getConnection(int id) {
-        if (id < 0 || id > MAX_CONNECTIONS) {
-            throw new RuntimeException();
+    public Connection getConnection() {
+        Connection connection = connectionPool.remove(connectionPool.size() - 1);
+        Objects.requireNonNull(connection, "No connection was returned from the pool");
+        usedConnections.add(connection);
+        return connection;
+    }
+    
+    @Override
+    public boolean releaseConnection(Connection connection) {
+        if (connectionPool.size() == MAX_POOL_SIZE) {
+            throw new RuntimeException("Maximun pool size reached. Releasing the connection is not possible");
         }
-        return connectionPool.get(id);
-    }
-
-    @Override
-    public void releaseConnection(Connection connection) {
         connectionPool.add(connection);
+        return usedConnections.remove(connection);
     }
-
+    
     @Override
     public List<Connection> getConnectionPool() {
         return connectionPool;
