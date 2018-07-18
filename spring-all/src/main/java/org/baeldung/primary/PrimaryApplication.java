@@ -12,4 +12,5 @@ public class PrimaryApplication {
         Employee employee = context.getBean(Employee.class);
         System.out.println(employee);
     }
+    
 }
