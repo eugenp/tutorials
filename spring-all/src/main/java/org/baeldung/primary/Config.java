@@ -9,12 +9,12 @@ public class Config {
 
     @Bean
     public Employee firstEmployee(){
-        return new Employee();
+        return new Employee("John");
     }
 
     @Bean
     @Primary
     public Employee secondEmployee(){
-        return new Employee();
+        return new Employee("Tony");
     }
 }
