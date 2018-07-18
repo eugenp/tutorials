@@ -507,7 +507,7 @@
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
 				
-				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				
 				<module>asm</module>
 				<module>atomix</module>
@@ -544,9 +544,9 @@
 				<module>ejb</module>
 				<module>feign</module>
 				<module>flips</module>
-				<module>testing-modules/gatling</module>
 				<module>geotools</module>
 				<module>testing-modules/groovy-spock</module>
+				<module>testing-modules/gatling</module>
 				<module>google-cloud</module>
 				<module>google-web-toolkit</module>
 				<module>gson</module>
