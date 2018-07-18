@@ -509,7 +509,7 @@
 				
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				
-				<!-- <module>asm</module>
+				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
 				<module>aws</module>
@@ -599,12 +599,11 @@
 				<module>metrics</module>
 				<module>maven</module>
 				<module>mesos-marathon</module>
-				<module>msf4j</module> -->
+				<module>msf4j</module>
 				
-				<!-- group 1 - OK - 39 min, 3 test failures -->
+				<!-- group 1 - ? -->
 				
-				
-				<module>testing-modules/mockito</module>
+				<!-- <module>testing-modules/mockito</module>
 				<module>testing-modules/mockito-2</module>
 				<module>testing-modules/mocks</module>
 				<module>mustache</module>
@@ -696,7 +695,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
-				<module>spring-rest-simple</module>
+				<module>spring-rest-simple</module> -->
 				
 				<!-- group 2 - ? -->
 				
