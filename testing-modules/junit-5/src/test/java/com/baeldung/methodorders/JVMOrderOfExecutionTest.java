@@ -1,4 +1,4 @@
-package com.baeldung.junit5;
+package com.baeldung.methodorders;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;

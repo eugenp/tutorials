@@ -1,4 +1,4 @@
-package com.baeldung.junit5;
+package com.baeldung.methodorders;
 
 import static org.junit.Assert.assertEquals;
 
