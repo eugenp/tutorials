@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
-public class HikariCPiDataSourceUnitTest {
+public class HikariCPDataSourceUnitTest {
     
     @Test
     public void givenHikariDataSourceClass_whenCalledgetConnection_thenCorrect() throws SQLException {
