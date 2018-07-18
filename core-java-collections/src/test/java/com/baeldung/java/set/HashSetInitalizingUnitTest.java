@@ -65,4 +65,5 @@ public class HashSetInitalizingUnitTest {
         Set<String> set = ImmutableSet.of("a", "b", "c");
         assertEquals(3, set.size());
     }
+  
 }
