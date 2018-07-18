@@ -500,12 +500,16 @@
 			</build>
 
 			<modules>
+			
 				<module>parent-boot-1</module>
 				<module>parent-boot-2</module>
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-				<module>asm</module>
+				
+				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				
+				<!-- <module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
 				<module>aws</module>
@@ -526,7 +530,6 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
-				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java</module>
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
@@ -596,8 +599,12 @@
 				<module>metrics</module>
 				<module>maven</module>
 				<module>mesos-marathon</module>
-				<module>msf4j</module>
-				<!-- <module>testing-modules/mockito</module>
+				<module>msf4j</module> -->
+				
+				<!-- group 1 - OK - 39 min, 3 test failures -->
+				
+				
+				<module>testing-modules/mockito</module>
 				<module>testing-modules/mockito-2</module>
 				<module>testing-modules/mocks</module>
 				<module>mustache</module>
@@ -690,7 +697,10 @@
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
 				<module>spring-rest-simple</module>
-				<module>spring-security-acl</module>
+				
+				<!-- group 2 - ? -->
+				
+				<!-- <module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
 				<module>spring-security-client/spring-security-jsp-authentication</module>
 				<module>spring-security-client/spring-security-jsp-authorize</module>
