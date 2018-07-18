@@ -16,7 +16,7 @@ public class JMapperRelationalIntegrationTest {
 
     
     @Test
-    public void giventUser_whenUseAnnotation_thenConverted(){
+    public void givenUser_whenUseAnnotation_thenConverted(){
         RelationalJMapper<User> relationalMapper = new RelationalJMapper<>(User.class);
         
         User user = new User(1L,"john@test.com");
@@ -34,7 +34,7 @@ public class JMapperRelationalIntegrationTest {
     //======================= XML
     
     @Test
-    public void giventUser_whenUseXml_thenConverted(){
+    public void givenUser_whenUseXml_thenConverted(){
         RelationalJMapper<User> relationalMapper = new RelationalJMapper<>(User.class,"user_jmapper2.xml");
         
         User user = new User(1L,"john@test.com");
@@ -53,7 +53,7 @@ public class JMapperRelationalIntegrationTest {
     // ===== API
     
     @Test
-    public void giventUser_whenUseApi_thenConverted(){
+    public void givenUser_whenUseApi_thenConverted(){
         JMapperAPI jmapperApi = new JMapperAPI() 
         .add(mappedClass(User.class)
             .add(attribute("id").value("id").targetClasses(UserDto1.class,UserDto2.class))
