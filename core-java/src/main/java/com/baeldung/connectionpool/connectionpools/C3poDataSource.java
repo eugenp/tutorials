@@ -13,8 +13,8 @@ public class C3poDataSource {
         try {
             cpds.setDriverClass("org.h2.Driver");
             cpds.setJdbcUrl("jdbc:h2:mem:test");
-            cpds.setUser("root");
-            cpds.setPassword("sawstudio2567");
+            cpds.setUser("user");
+            cpds.setPassword("password");
         } catch (PropertyVetoException e) {
             e.printStackTrace();
         }

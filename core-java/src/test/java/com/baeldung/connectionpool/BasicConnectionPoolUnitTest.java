@@ -16,7 +16,7 @@ public class BasicConnectionPoolUnitTest {
     
     @BeforeClass
     public static void setUpBasicConnectionPoolInstance() throws SQLException {
-        connectionPool = BasicConnectionPool.create("jdbc:h2:mem:test", "root", "sawstudio2567");
+        connectionPool = BasicConnectionPool.create("jdbc:h2:mem:test", "user", "password");
     }
     
     @Test
@@ -42,11 +42,11 @@ public class BasicConnectionPoolUnitTest {
     
     @Test
     public void givenBasicConnectionPoolInstance_whenCalledgetUser_thenCorrect() {
-        assertThat(connectionPool.getUser()).isEqualTo("root");
+        assertThat(connectionPool.getUser()).isEqualTo("user");
     }
     
     @Test
     public void givenBasicConnectionPoolInstance_whenCalledgetPassword_thenCorrect() {
-        assertThat(connectionPool.getPassword()).isEqualTo("sawstudio2567");
+        assertThat(connectionPool.getPassword()).isEqualTo("password");
     }
 }
