@@ -66,4 +66,3 @@ public class HashSetInitalizingUnitTest {
         assertEquals(3, set.size());
     }
 }
-
