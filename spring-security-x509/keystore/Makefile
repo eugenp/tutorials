@@ -86,4 +86,3 @@ add-client:
 clean:
 	# Remove generated artifacts
 	find . \( -name "$(CLIENTNAME)*" -o -name "$(HOSTNAME)*" -o -name "$(KEYSTORE)" -o -name "$(TRUSTSTORE)" -o -name ca.crt \) -type f -exec rm -f {} \;
-
