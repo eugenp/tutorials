@@ -17,7 +17,7 @@ public class JMapperIntegrationTest {
 
     
     @Test
-    public void giventUser_whenUseAnnotation_thenConverted(){
+    public void givenUser_whenUseAnnotation_thenConverted(){
         JMapper<UserDto, User> userMapper = new JMapper<>(UserDto.class, User.class);
         
         User user = new User(1L,"john@test.com", LocalDate.of(1980,8,20));
@@ -29,7 +29,7 @@ public class JMapperIntegrationTest {
     }
     
     @Test
-    public void giventUser_whenUseGlobalMapAnnotation_thenConverted(){
+    public void givenUser_whenUseGlobalMapAnnotation_thenConverted(){
         JMapper<UserDto1, User> userMapper= new JMapper<>(UserDto1.class, User.class);
         
         User user = new User(1L,"john@test.com", LocalDate.of(1980,8,20));
@@ -41,7 +41,7 @@ public class JMapperIntegrationTest {
     }  
     
     @Test
-    public void giventUser_whenUseAnnotationExplicitConversion_thenConverted(){
+    public void givenUser_whenUseAnnotationExplicitConversion_thenConverted(){
         JMapper<UserDto, User> userMapper = new JMapper<>(UserDto.class, User.class);
         
         User user = new User(1L,"john@test.com", LocalDate.of(1980,8,20));
@@ -56,7 +56,7 @@ public class JMapperIntegrationTest {
     //======================= XML
     
     @Test
-    public void giventUser_whenUseXml_thenConverted(){
+    public void givenUser_whenUseXml_thenConverted(){
         JMapper<UserDto, User> userMapper = new JMapper<>(UserDto.class, User.class,"user_jmapper.xml");
         
         User user = new User(1L,"john@test.com", LocalDate.of(1980,8,20));
@@ -68,7 +68,7 @@ public class JMapperIntegrationTest {
     }
     
     @Test
-    public void giventUser_whenUseXmlGlobal_thenConverted(){
+    public void givenUser_whenUseXmlGlobal_thenConverted(){
         JMapper<UserDto1, User> userMapper = new JMapper<>(UserDto1.class, User.class,"user_jmapper1.xml");
         
         User user = new User(1L,"john@test.com", LocalDate.of(1980,8,20));
@@ -82,7 +82,7 @@ public class JMapperIntegrationTest {
     // ===== API
     
     @Test
-    public void giventUser_whenUseApi_thenConverted(){
+    public void givenUser_whenUseApi_thenConverted(){
         JMapperAPI jmapperApi = new JMapperAPI() .add(mappedClass(UserDto.class)
                  .add(attribute("id").value("id"))
                  .add(attribute("username").value("email"))
@@ -98,7 +98,7 @@ public class JMapperIntegrationTest {
     }
     
     @Test
-    public void giventUser_whenUseApiGlobal_thenConverted(){
+    public void givenUser_whenUseApiGlobal_thenConverted(){
         JMapperAPI jmapperApi = new JMapperAPI() .add(mappedClass(UserDto.class)
                 .add(global())
             ) ;
