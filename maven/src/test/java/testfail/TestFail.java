@@ -11,4 +11,5 @@ public class TestFail {
         message = null;
         assertNotNull(message);
     }
+    
 }
