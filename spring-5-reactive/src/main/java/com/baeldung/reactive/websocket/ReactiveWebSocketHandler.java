@@ -2,6 +2,7 @@ package com.baeldung.reactive.websocket;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketMessage;
@@ -14,6 +15,7 @@ import java.time.Duration;
 import static java.time.LocalDateTime.now;
 import static java.util.UUID.randomUUID;
 
+@Primary
 @Component
 public class ReactiveWebSocketHandler implements WebSocketHandler {
 
