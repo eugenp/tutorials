@@ -9,14 +9,14 @@ import java.util.Map;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ConvertListServiceUnitTest {
+public class ConvertListToMapServiceUnitTest {
     List<Animal> list;
 
-    private ConvertListService convertListService;
+    private ConvertListToMapService convertListService;
 
     @Before
     public void init() {
-        this.convertListService = new ConvertListService();
+        this.convertListService = new ConvertListToMapService();
         this.list = new ArrayList<>();
 
         Animal cat = new Animal(1, "Cat");
@@ -35,6 +35,7 @@ public class ConvertListServiceUnitTest {
     public void givenAList_whenConvertBeforeJava8_thenReturnMapWithTheSameElements() {
 
         Map<Integer, Animal> map = convertListService.convertListBeforeJava8(list);
+
         assertThat(map.values(), containsInAnyOrder(list.toArray()));
     }
 
@@ -42,6 +43,7 @@ public class ConvertListServiceUnitTest {
     public void givenAList_whenConvertAfterJava8_thenReturnMapWithTheSameElements() {
 
         Map<Integer, Animal> map = convertListService.convertListAfterJava8(list);
+
         assertThat(map.values(), containsInAnyOrder(list.toArray()));
     }
 
@@ -49,6 +51,7 @@ public class ConvertListServiceUnitTest {
     public void givenAList_whenConvertWithGuava_thenReturnMapWithTheSameElements() {
 
         Map<Integer, Animal> map = convertListService.convertListWithGuava(list);
+
         assertThat(map.values(), containsInAnyOrder(list.toArray()));
     }
 
@@ -56,6 +59,7 @@ public class ConvertListServiceUnitTest {
     public void givenAList_whenConvertWithApacheCommons1_thenReturnMapWithTheSameElements() {
 
         Map<Integer, Animal> map = convertListService.convertListWithApacheCommons1(list);
+
         assertThat(map.values(), containsInAnyOrder(list.toArray()));
     }
 
@@ -63,6 +67,7 @@ public class ConvertListServiceUnitTest {
     public void givenAList_whenConvertWithApacheCommons2_thenReturnMapWithTheSameElements() {
 
         Map<Integer, Animal> map = convertListService.convertListWithApacheCommons2(list);
+
         assertThat(map.values(), containsInAnyOrder(list.toArray()));
     }
 }
