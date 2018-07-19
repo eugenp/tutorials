@@ -73,45 +73,21 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>1.3</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- DBCP2 -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-            <version>2.4.0</version>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-core</artifactId>
+            <version>${hamcrest-core.version}</version>
+            <scope>test</scope>
         </dependency>
-        <!-- HikariCP -->
-        <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-        <!-- C3PO -->
-        <dependency>
-            <groupId>c3p0</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
-        </dependency>
-        <!-- MySQL Connector -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.11</version>
-        </dependency>	
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -182,6 +158,21 @@
             <artifactId>icu4j</artifactId>
             <version>${icu4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${commons-dbcp2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -194,66 +185,6 @@
         </resources>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>2.7.1</version>
-                <configuration>
-                    <targetJdk>1.6</targetJdk>
-                    <linkXref>false</linkXref>
-                    <failOnViolation>false</failOnViolation>
-                    <failurePriority>1</failurePriority>
-                    <rulesets>
-
-                        <!-- used rule sets -->
-                        <!-- http://pmd.sourceforge.net/rules/java/basic.html -->
-                        <ruleset>/rulesets/basic.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/braces.html -->
-                        <ruleset>/rulesets/braces.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/clone.html -->
-                        <ruleset>/rulesets/clone.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/codesize.html -->
-                        <ruleset>/rulesets/codesize.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/controversial.html -->
-                        <ruleset>/rulesets/controversial.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/coupling.html -->
-                        <ruleset>/rulesets/coupling.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/design.html -->
-                        <ruleset>/rulesets/design.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/finalizers.html -->
-                        <ruleset>/rulesets/finalizers.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/imports.html -->
-                        <ruleset>/rulesets/imports.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/j2ee.html -->
-                        <ruleset>/rulesets/j2ee.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/junit.html -->
-                        <ruleset>/rulesets/junit.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/javabeans.html -->
-                        <ruleset>/rulesets/javabeans.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/migrating.html -->
-                        <ruleset>/rulesets/migrating.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/optimizations.html -->
-                        <ruleset>/rulesets/optimizations.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/strictexception.html -->
-                        <ruleset>/rulesets/strictexception.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/strings.html -->
-                        <ruleset>/rulesets/strings.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/sunsecure.html -->
-                        <ruleset>/rulesets/sunsecure.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/typeresolution.html -->
-                        <ruleset>/rulesets/typeresolution.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/unusedcode.html -->
-                        <ruleset>/rulesets/unusedcode.xml</ruleset>
-                    </rulesets>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -397,6 +328,67 @@
                     </arguments>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${maven-pmd-plugin.version}</version>
+                <configuration>
+                    <targetJdk>1.6</targetJdk>
+                    <linkXref>false</linkXref>
+                    <failOnViolation>false</failOnViolation>
+                    <failurePriority>1</failurePriority>
+                    <rulesets>
+
+                        <!-- used rule sets -->
+                        <!-- http://pmd.sourceforge.net/rules/java/basic.html -->
+                        <ruleset>/rulesets/basic.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/braces.html -->
+                        <ruleset>/rulesets/braces.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/clone.html -->
+                        <ruleset>/rulesets/clone.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/codesize.html -->
+                        <ruleset>/rulesets/codesize.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/controversial.html -->
+                        <ruleset>/rulesets/controversial.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/coupling.html -->
+                        <ruleset>/rulesets/coupling.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/design.html -->
+                        <ruleset>/rulesets/design.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/finalizers.html -->
+                        <ruleset>/rulesets/finalizers.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/imports.html -->
+                        <ruleset>/rulesets/imports.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/j2ee.html -->
+                        <ruleset>/rulesets/j2ee.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/junit.html -->
+                        <ruleset>/rulesets/junit.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/javabeans.html -->
+                        <ruleset>/rulesets/javabeans.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/migrating.html -->
+                        <ruleset>/rulesets/migrating.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/optimizations.html -->
+                        <ruleset>/rulesets/optimizations.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/strictexception.html -->
+                        <ruleset>/rulesets/strictexception.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/strings.html -->
+                        <ruleset>/rulesets/strings.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/sunsecure.html -->
+                        <ruleset>/rulesets/sunsecure.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/typeresolution.html -->
+                        <ruleset>/rulesets/typeresolution.xml</ruleset>
+                        <!-- http://pmd.sourceforge.net/rules/java/unusedcode.html -->
+                        <ruleset>/rulesets/unusedcode.xml</ruleset>
+                    </rulesets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -444,6 +436,7 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
+                        <version>${exe</version>
                         <executions>
                             <execution>
                                 <id>run-benchmarks</id>
@@ -471,6 +464,7 @@
     </profiles>
 
     <properties>
+        
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
         <gson.version>2.8.2</gson.version>
@@ -491,16 +485,26 @@
         <vavr.version>0.9.0</vavr.version>
 
         <!-- testing -->
-        <assertj.version>3.6.1</assertj.version>
-
+        <junit.version>4.12</junit.version>
+        <assertj-core.version>3.10.0</assertj-core.version>
+        <hamcrest-core.version>1.3</hamcrest-core.version>
+        
+        <!-- JDBC pooling frameworks -->
+        <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
+        <HikariCP.version>3.2.0</HikariCP.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+        
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
         <springframework.boot.spring-boot-starter.version>1.5.8.RELEASE</springframework.boot.spring-boot-starter.version>
+        
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <h2database.version>1.4.197</h2database.version>
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-core.version>1.19</jmh-core.version>
+        <maven-pmd-plugin.version>2.7.1</maven-pmd-plugin.version>
+       
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
@@ -508,6 +512,8 @@
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <icu4j.version>61.1</icu4j.version>
     </properties>
+
 </project>

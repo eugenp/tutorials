@@ -1,4 +1,4 @@
-package com.baeldung.connectionpool;
+package com.baeldung.connectionpool.test;
 
 import com.baeldung.connectionpool.connectionpools.DBCPDataSource;
 import java.sql.Connection;
