@@ -615,7 +615,12 @@
 				<module>spring-all</module>
 				<module>spring-amqp-simple</module>
 				<module>spring-apache-camel</module>
-				<module>spring-batch</module>
+				<module>spring-batch</module> -->
+				
+				<!-- group 2 - X -->
+				
+				<!-- group 3 -->
+				
 				<module>spring-bom</module>
 				<module>spring-boot</module>
 				<module>spring-boot-keycloak</module>
@@ -673,13 +678,13 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
-				<module>spring-rest-simple</module> -->
+				<module>spring-rest-simple</module>
 
-				<!-- group 2 - Fail, 19 min, 5,794 KB log, 45 failed tests -->
+				<!-- group 3 - X -->
 
-				<!-- group 3 -->
+				<!-- group 4 -->
 
-				<module>spring-security-acl</module>
+				<!-- <module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
 				<module>spring-security-client/spring-security-jsp-authentication</module>
 				<module>spring-security-client/spring-security-jsp-authorize</module>
@@ -752,7 +757,9 @@
 				<module>spring-webflux-amqp</module>
 				<module>antlr</module>
 				<module>maven-archetype</module>
-				<module>apache-meecrowave</module>
+				<module>apache-meecrowave</module> -->
+				
+				<!-- group 4 - OK, 12 min, 3,961 KB log, 12 failed tests -->
 
 				<!-- <module>libraries</module> -->
 
