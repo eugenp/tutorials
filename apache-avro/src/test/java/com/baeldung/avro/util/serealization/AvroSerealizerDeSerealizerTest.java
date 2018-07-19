@@ -24,8 +24,10 @@ public class AvroSerealizerDeSerealizerTest {
         serealizer = new AvroSerealizer();
         deSerealizer = new AvroDeSerealizer();
 
-        ClientIdentifier clientIdentifier = ClientIdentifier.newBuilder().
-                setHostName("localhost").setIpAddress("255.255.255.0").build();
+        ClientIdentifier clientIdentifier = ClientIdentifier.newBuilder()
+            .setHostName("localhost")
+            .setIpAddress("255.255.255.0")
+            .build();
 
         List<CharSequence> employees = new ArrayList();
         employees.add("James");
@@ -33,43 +35,47 @@ public class AvroSerealizerDeSerealizerTest {
         employees.add("David");
         employees.add("Han");
 
-        request = AvroHttpRequest.newBuilder().setRequestTime(01l)
-                .setActive(Active.YES).setClientIdentifier(clientIdentifier)
-                .setEmployeeNames(employees).build();
+        request = AvroHttpRequest.newBuilder()
+            .setRequestTime(01l)
+            .setActive(Active.YES)
+            .setClientIdentifier(clientIdentifier)
+            .setEmployeeNames(employees)
+            .build();
     }
 
     @After
     public void tearDown() throws Exception {
     }
 
-@Test
-public void WhenSerialized_UsingJSONEncoder_ObjectGetsSerialized(){
-    byte[] data = serealizer.serealizeAvroHttpRequestJSON(request);
-    assertTrue(Objects.nonNull(data));
-    assertTrue(data.length > 0);
-}
+    @Test
+    public void WhenSerialized_UsingJSONEncoder_ObjectGetsSerialized() {
+        byte[] data = serealizer.serealizeAvroHttpRequestJSON(request);
+        assertTrue(Objects.nonNull(data));
+        assertTrue(data.length > 0);
+    }
 
-@Test
-public void WhenSerialized_UsingBinaryEncoder_ObjectGetsSerialized(){
-    byte[] data = serealizer.serealizeAvroHttpRequestBinary(request);
-    assertTrue(Objects.nonNull(data));
-    assertTrue(data.length > 0);
-}
+    @Test
+    public void WhenSerialized_UsingBinaryEncoder_ObjectGetsSerialized() {
+        byte[] data = serealizer.serealizeAvroHttpRequestBinary(request);
+        assertTrue(Objects.nonNull(data));
+        assertTrue(data.length > 0);
+    }
 
-@Test
-public void WhenDeserialize_UsingJSONDecoder_ActualAndExpectedObjectsAreEqual(){
-    byte[] data = serealizer.serealizeAvroHttpRequestJSON(request);
-    AvroHttpRequest actualRequest = deSerealizer.deSerealizeAvroHttpRequestJSON(data);
-    assertEquals(actualRequest,request);
-    assertTrue(actualRequest.getRequestTime().equals(request.getRequestTime()));
-}
+    @Test
+    public void WhenDeserialize_UsingJSONDecoder_ActualAndExpectedObjectsAreEqual() {
+        byte[] data = serealizer.serealizeAvroHttpRequestJSON(request);
+        AvroHttpRequest actualRequest = deSerealizer.deSerealizeAvroHttpRequestJSON(data);
+        assertEquals(actualRequest, request);
+        assertTrue(actualRequest.getRequestTime()
+            .equals(request.getRequestTime()));
+    }
 
-@Test
-public void WhenDeserialize_UsingBinaryecoder_ActualAndExpectedObjectsAreEqual(){
-    byte[] data = serealizer.serealizeAvroHttpRequestBinary(request);
-    AvroHttpRequest actualRequest = deSerealizer.deSerealizeAvroHttpRequestBinary(data);
-    assertEquals(actualRequest,request);
-    assertTrue(actualRequest.getRequestTime().equals(request.getRequestTime()));
+    @Test
+    public void WhenDeserialize_UsingBinaryecoder_ActualAndExpectedObjectsAreEqual() {
+        byte[] data = serealizer.serealizeAvroHttpRequestBinary(request);
+        AvroHttpRequest actualRequest = deSerealizer.deSerealizeAvroHttpRequestBinary(data);
+        assertEquals(actualRequest, request);
+        assertTrue(actualRequest.getRequestTime()
+            .equals(request.getRequestTime()));
+    }
 }
-}
-
