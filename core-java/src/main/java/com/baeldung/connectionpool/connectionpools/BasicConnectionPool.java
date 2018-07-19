@@ -1,6 +1,5 @@
 package com.baeldung.connectionpool.connectionpools;
 
-import com.sun.istack.internal.logging.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
