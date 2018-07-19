@@ -31,7 +31,7 @@ import org.springframework.web.client.RestTemplate;
 import io.specto.hoverfly.junit.core.SimulationSource;
 import io.specto.hoverfly.junit.rule.HoverflyRule;
 
-public class HoverflyApiIntegrationTest {
+public class HoverflyApiLiveTest {
 
     private static final SimulationSource source = dsl(service("http://www.baeldung.com").get("/api/courses/1").willReturn(success().body(jsonWithSingleQuotes("{'id':'1','name':'HCI'}")))
 
