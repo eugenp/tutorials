@@ -219,10 +219,11 @@
 									<excludes>
 										<exclude>**/*ManualTest.java</exclude>
 										<exclude>**/*LiveTest.java</exclude>
+										<exclude>**/*IntegrationTest.java</exclude>
+										<exclude>**/*IntTest.java</exclude>
 									</excludes>
 									<includes>
-										<include>**/*IntegrationTest.java</include>
-										<include>**/*IntTest.java</include>
+										<include>**/*UnitTest.java</include>
 									</includes>
 								</configuration>
 							</execution>
