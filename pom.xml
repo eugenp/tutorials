@@ -624,7 +624,6 @@
 				<module>jsoup</module>
 				<module>testing-modules/junit-5</module>
 				<module>jws</module>
-				<module>libraries</module>
 				<module>libraries-data</module>
 				<module>linkrest</module>
 				<module>logging-modules/log-mdc</module>
@@ -640,7 +639,9 @@
 
 				<!-- group 1 - OK, 31min, 34 failusres -->
 
-				<!-- <module>testing-modules/mockito</module>
+				<!-- <module>
+				<module>libraries</module>
+				testing-modules/mockito</module>
 				<module>testing-modules/mockito-2</module>
 				<module>testing-modules/mocks</module>
 				<module>mustache</module>
