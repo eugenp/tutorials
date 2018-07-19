@@ -546,7 +546,7 @@
 
 				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 
-				<module>asm</module>
+				<!-- <module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
 				<module>aws</module>
@@ -635,13 +635,12 @@
 				<module>metrics</module>
 				<module>maven</module>
 				<module>mesos-marathon</module>
-				<module>msf4j</module>
+				<module>msf4j</module> -->
 
-				<!-- group 1 - OK, 31min, 34 failusres -->
+				<!-- group 1 - OK, 27min, 7911Kb log, 8 failusres -->
 
-				<!-- <module>
-				<module>libraries</module>
-				testing-modules/mockito</module>
+				<!-- group 2 -->
+				<module>testing-modules/mockito</module>
 				<module>testing-modules/mockito-2</module>
 				<module>testing-modules/mocks</module>
 				<module>mustache</module>
@@ -733,12 +732,14 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
-				<module>spring-rest-simple</module> -->
+				<module>spring-rest-simple</module>
 
 				<!-- group 2 - ? -->
 
-				<!-- <module>spring-security-acl</module> <module>spring-security-cache-control</module> 
-					<module>spring-security-client/spring-security-jsp-authentication</module> 
+				<!-- 
+					<module>libraries</module>
+					<module>spring-security-acl</module> 
+					<module>spring-security-cache-control</module> <module>spring-security-client/spring-security-jsp-authentication</module> 
 					<module>spring-security-client/spring-security-jsp-authorize</module> <module>spring-security-client/spring-security-jsp-config</module> 
 					<module>spring-security-client/spring-security-mvc</module> <module>spring-security-client/spring-security-thymeleaf-authentication</module> 
 					<module>spring-security-client/spring-security-thymeleaf-authorize</module> 
