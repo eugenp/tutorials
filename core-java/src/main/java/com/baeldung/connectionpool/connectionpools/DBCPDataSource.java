@@ -10,8 +10,8 @@ public class DBCPDataSource {
     
     static {
         ds.setUrl("jdbc:h2:mem:test");
-        ds.setUsername("root");
-        ds.setPassword("sawstudio2567");
+        ds.setUsername("user");
+        ds.setPassword("password");
         ds.setMinIdle(5);
         ds.setMaxIdle(10);
         ds.setMaxOpenPreparedStatements(100);
