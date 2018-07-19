@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-ejb-client</artifactId>
@@ -16,12 +16,6 @@
         <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -31,14 +25,14 @@
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
-            <version>12.0.0.Final</version>
+            <version>${wildfly-ejb.version}</version>
             <type>pom</type>
         </dependency>
 
         <dependency>
             <groupId>com.baeldung.spring.ejb</groupId>
             <artifactId>ejb-remote-for-spring</artifactId>
-            <version>1.0.1</version>
+            <version>${ejb-remote-for-spring.version}</version>
             <type>ejb</type>
         </dependency>
 
@@ -47,12 +41,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-servlet</artifactId>
         </dependency>
-        
+
     </dependencies>
 
     <build>
@@ -63,5 +57,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <ejb-remote-for-spring.version>1.0.1</ejb-remote-for-spring.version>
+        <wildfly-ejb.version>12.0.0.Final</wildfly-ejb.version>
+    </properties>
 
 </project>
