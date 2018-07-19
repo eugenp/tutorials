@@ -657,7 +657,6 @@
 				<module>spring-integration</module>
 				<module>spring-jenkins-pipeline</module>
 				<module>spring-jersey</module>
-				<module>jmeter</module>
 				<module>spring-jms</module>
 				<module>spring-jooq</module>
 				<module>persistence-modules/spring-jpa</module>
@@ -680,7 +679,7 @@
 				<module>spring-rest</module>
 				<module>spring-rest-simple</module>
 
-				<!-- group 3 - X -->
+				<!-- group 3 - Fail, 21 min, 35 tests failed, 8,624 KB -->
 
 				<!-- group 4 -->
 
@@ -761,7 +760,10 @@
 				
 				<!-- group 4 - OK, 12 min, 3,961 KB log, 12 failed tests -->
 
-				<!-- <module>libraries</module> -->
+				<!-- 
+				<module>libraries</module>
+				<module>jmeter</module>
+				 -->
 
 			</modules>
 
