@@ -1,14 +1,12 @@
 package com.baeldung.methodorders;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.AfterClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class NameAscendingOrderOfExecutionTest {
+@FixMethodOrder(MethodSorters.JVM)
+public class JVMOrderOfExecutionUnitTest {
+
     private static StringBuilder output = new StringBuilder("");
 
     @Test
@@ -24,10 +22,5 @@ public class NameAscendingOrderOfExecutionTest {
     @Test
     public void firstTest() {
         output.append("a");
-    }
-
-    @AfterClass
-    public static void assertOutput() {
-        assertEquals(output.toString(), "abc");
     }
 }
