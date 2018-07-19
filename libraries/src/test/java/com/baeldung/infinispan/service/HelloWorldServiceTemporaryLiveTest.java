@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-public class HelloWorldServiceIntegrationTest extends AbstractIntegrationTest {
+public class HelloWorldServiceTemporaryLiveTest extends AbstractIntegrationTest {
 
     @Test
     public void whenGetIsCalledTwoTimes_thenTheSecondShouldHitTheCache() {
