@@ -14,4 +14,3 @@
 - [Migrating from JUnit 4 to JUnit 5](http://www.baeldung.com/junit-5-migration)
 - [JUnit5 Programmatic Extension Registration with @RegisterExtension](http://www.baeldung.com/junit-5-registerextension-annotation)
 - [The Order of Tests in JUnit](http://www.baeldung.com/junit-5-test-order)
-
