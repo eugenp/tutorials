@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class BasicConnectionPool implements ConnectionPool {
 
@@ -20,7 +19,7 @@ public class BasicConnectionPool implements ConnectionPool {
     public static BasicConnectionPool create(String url, String user, String password) throws SQLException {
         List<Connection> pool = new ArrayList<>(INITIAL_POOL_SIZE);
         for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
-            pool.add(DriverManager.getConnection(url, user, password));
+            pool.add(createConnection(url, user, password));
         }
         return new BasicConnectionPool(url, user, password, pool);
     }
@@ -34,19 +33,31 @@ public class BasicConnectionPool implements ConnectionPool {
     
     @Override
     public Connection getConnection() {
+        if (connectionPool.size() + usedConnections.size() == MAX_POOL_SIZE) {
+            throw new RuntimeException("Maximun pool size reached");
+        }
+        
+        if (connectionPool.size() > INITIAL_POOL_SIZE) {
+            try {
+                connectionPool.add(createConnection(url, user, password));
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        
         Connection connection = connectionPool.remove(connectionPool.size() - 1);
-        Objects.requireNonNull(connection, "No connection was returned from the pool");
         usedConnections.add(connection);
         return connection;
     }
     
     @Override
     public boolean releaseConnection(Connection connection) {
-        if (connectionPool.size() == MAX_POOL_SIZE) {
-            throw new RuntimeException("Maximun pool size reached. Releasing the connection is not possible");
-        }
         connectionPool.add(connection);
         return usedConnections.remove(connection);
+    }
+    
+    private static Connection createConnection(String url, String user, String password) throws SQLException {
+        return DriverManager.getConnection(url, user, password);
     }
     
     @Override
