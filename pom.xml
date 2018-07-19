@@ -498,6 +498,7 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
+				<module>jnosql</module>
 			</modules>
 
 		</profile>
