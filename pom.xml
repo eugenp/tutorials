@@ -581,7 +581,7 @@
 
 				<!-- group 2 -->
 				
-				<!-- <module>testing-modules/mockito</module>
+				<module>testing-modules/mockito</module>
 				<module>testing-modules/mockito-2</module>
 				<module>testing-modules/mocks</module>
 				<module>mustache</module>
@@ -615,12 +615,13 @@
 				<module>spring-all</module>
 				<module>spring-amqp-simple</module>
 				<module>spring-apache-camel</module>
-				<module>spring-batch</module> -->
+				<module>spring-batch</module>
 				
 				<!-- group 2 - X -->
 				
 				<!-- group 3 -->
 				
+				<!-- 
 				<module>spring-bom</module>
 				<module>spring-boot</module>
 				<module>spring-boot-keycloak</module>
@@ -677,10 +678,12 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
-				<module>spring-rest-simple</module>
+				<module>spring-rest-simple</module> 
+				-->
 
 				<!-- group 3 - Fail, 21 min, 35 tests failed, 8,624 KB -->
-
+				<!--  https://rest-security.ci.cloudbees.com/job/github-projects-Jobs/job/tutorials-integration/192/ -->
+				
 				<!-- group 4 -->
 
 				<!-- <module>spring-security-acl</module>
