@@ -1070,17 +1070,8 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-                
 				<module>ejb</module>
-                <module>hibernate5</module>
                 <module>persistence-modules/java-cassandra</module>
-                
-				<!-- problematic - temp -->
-				<!-- 
-				<module>ejb</module>
-                <module>hibernate5</module>
-                <module>persistence-modules/java-cassandra</module>
-				 -->
 				 
 				<!-- heavy -->
 				<!-- 
@@ -1095,7 +1086,7 @@
 				<module>core-java</module>
 				<module>google-web-toolkit</module>
                 <module>spring-security-mvc-custom</module>
-				 -->
+				-->
                  
 			</modules>
 
@@ -1154,6 +1145,7 @@
                 <module>core-java</module>
                 <module>google-web-toolkit</module>
                 <module>spring-security-mvc-custom</module>
+                <module>hibernate5</module>
                  
             </modules>
 
