@@ -958,7 +958,6 @@
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
 				<module>spring-aop</module>
-				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
 				<module>persistence-modules/spring-data-dynamodb</module>
 				<module>spring-data-keyvalue</module>
@@ -1072,9 +1071,15 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-				<module>ejb</module>
+				
+                
+                <!-- problematic -->
+                <!-- 
+                <module>ejb</module>
                 <module>persistence-modules/java-cassandra</module>
-				 
+                <module>persistence-modules/spring-data-cassandra</module>
+				-->
+                
 				<!-- heavy -->
 				<!-- 
 				<module>libraries</module>
@@ -1089,7 +1094,8 @@
 				<module>google-web-toolkit</module>
                 <module>spring-security-mvc-custom</module>
 				-->
-                 
+                
+                <!-- 30:32 min -->
 			</modules>
 
 		</profile>
