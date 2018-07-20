@@ -876,7 +876,6 @@
 				<module>immutables</module>
 				<module>influxdb</module>
 				<module>jackson</module>
-				<module>persistence-modules/java-cassandra</module>
 				<module>vavr</module>
 				<module>java-lite</module>
 				<module>java-numbers</module>
@@ -1077,6 +1076,7 @@
 				<!-- 
 				<module>ejb</module>
                 <module>hibernate5</module>
+                <module>persistence-modules/java-cassandra</module>
                 
 				 -->
 				 
