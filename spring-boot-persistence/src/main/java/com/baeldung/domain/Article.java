@@ -9,8 +9,6 @@ public class Article {
     @Id
     @GeneratedValue
     private Integer id;
-    private String name;
-    private String text;
     @Temporal(TemporalType.DATE)
     private Date publicationDate;
     @Temporal(TemporalType.TIME)
@@ -21,4 +19,5 @@ public class Article {
     public Integer getId() {
         return id;
     }
+
 }
