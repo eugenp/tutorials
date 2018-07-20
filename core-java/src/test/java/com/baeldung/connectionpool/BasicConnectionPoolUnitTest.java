@@ -1,4 +1,4 @@
-package com.baeldung.connectionpool.test;
+package com.baeldung.connectionpool;
 
 import com.baeldung.connectionpool.connectionpools.BasicConnectionPool;
 import com.baeldung.connectionpool.connectionpools.ConnectionPool;
@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -20,8 +21,8 @@ public class BasicConnectionPoolUnitTest {
     }
     
     @Test
-    public void givenBasicConnectionPoolInstance_whenCalledgetConnection_thenCorrect() {
-        assertThat(connectionPool.getConnection()).isInstanceOf(Connection.class);
+    public void givenBasicConnectionPoolInstance_whenCalledgetConnection_thenCorrect() throws SQLException {
+        assertTrue(connectionPool.getConnection().isValid(1));
     }
     
     @Test

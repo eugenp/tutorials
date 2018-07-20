@@ -88,6 +88,7 @@
             <version>${hamcrest-core.version}</version>
             <scope>test</scope>
         </dependency>
+             
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
@@ -331,67 +332,6 @@
             
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>${maven-pmd-plugin.version}</version>
-                <configuration>
-                    <targetJdk>1.6</targetJdk>
-                    <linkXref>false</linkXref>
-                    <failOnViolation>false</failOnViolation>
-                    <failurePriority>1</failurePriority>
-                    <rulesets>
-
-                        <!-- used rule sets -->
-                        <!-- http://pmd.sourceforge.net/rules/java/basic.html -->
-                        <ruleset>/rulesets/basic.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/braces.html -->
-                        <ruleset>/rulesets/braces.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/clone.html -->
-                        <ruleset>/rulesets/clone.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/codesize.html -->
-                        <ruleset>/rulesets/codesize.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/controversial.html -->
-                        <ruleset>/rulesets/controversial.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/coupling.html -->
-                        <ruleset>/rulesets/coupling.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/design.html -->
-                        <ruleset>/rulesets/design.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/finalizers.html -->
-                        <ruleset>/rulesets/finalizers.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/imports.html -->
-                        <ruleset>/rulesets/imports.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/j2ee.html -->
-                        <ruleset>/rulesets/j2ee.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/junit.html -->
-                        <ruleset>/rulesets/junit.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/javabeans.html -->
-                        <ruleset>/rulesets/javabeans.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/migrating.html -->
-                        <ruleset>/rulesets/migrating.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/optimizations.html -->
-                        <ruleset>/rulesets/optimizations.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/strictexception.html -->
-                        <ruleset>/rulesets/strictexception.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/strings.html -->
-                        <ruleset>/rulesets/strings.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/sunsecure.html -->
-                        <ruleset>/rulesets/sunsecure.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/typeresolution.html -->
-                        <ruleset>/rulesets/typeresolution.xml</ruleset>
-                        <!-- http://pmd.sourceforge.net/rules/java/unusedcode.html -->
-                        <ruleset>/rulesets/unusedcode.xml</ruleset>
-                    </rulesets>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
@@ -488,7 +428,7 @@
         <junit.version>4.12</junit.version>
         <assertj-core.version>3.10.0</assertj-core.version>
         <hamcrest-core.version>1.3</hamcrest-core.version>
-        
+
         <!-- JDBC pooling frameworks -->
         <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
         <HikariCP.version>3.2.0</HikariCP.version>
@@ -503,7 +443,6 @@
         <h2database.version>1.4.197</h2database.version>
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-core.version>1.19</jmh-core.version>
-        <maven-pmd-plugin.version>2.7.1</maven-pmd-plugin.version>
        
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>

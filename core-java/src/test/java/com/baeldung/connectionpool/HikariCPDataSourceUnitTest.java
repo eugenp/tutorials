@@ -1,15 +1,14 @@
-package com.baeldung.connectionpool.test;
+package com.baeldung.connectionpool;
 
 import com.baeldung.connectionpool.connectionpools.HikariCPDataSource;
-import java.sql.Connection;
 import java.sql.SQLException;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class HikariCPDataSourceUnitTest {
     
     @Test
     public void givenHikariDataSourceClass_whenCalledgetConnection_thenCorrect() throws SQLException {
-        assertThat(HikariCPDataSource.getConnection()).isInstanceOf(Connection.class);
+        assertTrue(HikariCPDataSource.getConnection().isValid(1));
     }   
 }
