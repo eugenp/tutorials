@@ -19,10 +19,10 @@ import org.powermock.modules.junit4.PowerMockRunner;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(AbstractPrivateMethods.class)
-public class AbstractPrivateMethodsTest {
+public class AbstractPrivateMethodsUnitTest {
 
     @Test
-    public void nonAbstractCallingPrivateMethod_mockPrivateMethod_verifyResult() throws Exception {
+    public void givenNonAbstractMethodAndCallPrivateMethod_whenMockPrivateMethod_thenVerifyBehaviour() throws Exception {
         AbstractPrivateMethods mockClass = PowerMockito.mock(AbstractPrivateMethods.class);
         PowerMockito.doCallRealMethod()
             .when(mockClass)

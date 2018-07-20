@@ -7,7 +7,7 @@ import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.reflect.Whitebox;
 
-public class AbstractInstanceFieldsTest {
+public class AbstractInstanceFieldsUnitTest {
 
     @Test
     public void protectedInstanceField_MockClassCountGt5_testNonAbstractMethod() {
@@ -26,7 +26,7 @@ public class AbstractInstanceFieldsTest {
     }
 
     @Test
-    public void privateInstanceField_PowerMockitoActiveFieldTrue_testRespectiveOp() {
+    public void givenNonAbstractMethodAndPrivateField_whenPowerMockitoAndActiveFieldTrue_thenCorrectBehaviour() {
         AbstractInstanceFields instClass = PowerMockito.mock(AbstractInstanceFields.class);
         PowerMockito.doCallRealMethod()
             .when(instClass)

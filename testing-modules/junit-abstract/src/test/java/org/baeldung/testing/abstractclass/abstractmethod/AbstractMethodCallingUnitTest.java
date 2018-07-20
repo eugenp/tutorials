@@ -5,10 +5,10 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-public class AbstractMethodCallingTest {
+public class AbstractMethodCallingUnitTest {
 
     @Test
-    public void defaultImpl_mockAbstractFunc_testBehaviour() {
+    public void givenDefaultImpl_whenMockAbstractFunc_thenExpectedBehaviour() {
 
         // mock classes and call real methods available
         AbstractMethodCalling cls = Mockito.mock(AbstractMethodCalling.class);
