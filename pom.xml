@@ -581,7 +581,7 @@
 
 				<!-- group 2 -->
 				
-				<module>testing-modules/mockito</module>
+				<!-- <module>testing-modules/mockito</module>
 				<module>testing-modules/mockito-2</module>
 				<module>testing-modules/mocks</module>
 				<module>mustache</module>
@@ -615,14 +615,13 @@
 				<module>spring-all</module>
 				<module>spring-amqp-simple</module>
 				<module>spring-apache-camel</module>
-				<module>spring-batch</module>
+				<module>spring-batch</module> -->
 				
-				<!-- group 2 - X -->
+				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
 				
-				<!-- group 3 -->
+				<!-- group 3.1 -->
 				
-				<!-- 
-				<module>spring-bom</module>
+				<!-- <module>spring-bom</module>
 				<module>spring-boot</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
@@ -646,7 +645,12 @@
 				<module>spring-data-mongodb</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 				<module>persistence-modules/spring-data-redis</module>
-				<module>spring-data-rest</module>
+				<module>spring-data-rest</module> -->
+				
+				<!-- group 3.1 - X -->
+				
+				<!-- group 3.2 -->
+				
 				<module>persistence-modules/spring-data-solr</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-exceptions</module>
@@ -679,11 +683,8 @@
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
 				<module>spring-rest-simple</module> 
-				-->
 
-				<!-- group 3 - Fail, 21 min, 35 tests failed, 8,624 KB -->
-				<!-- group 3 - Fail, 24 min, 34 tests failed, 9,353 KB -->
-				<!--  https://rest-security.ci.cloudbees.com/job/github-projects-Jobs/job/tutorials-integration/192/ -->
+				<!-- group 3.2 - X -->
 				
 				<!-- group 4 -->
 
