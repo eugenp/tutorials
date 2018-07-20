@@ -203,7 +203,7 @@
 			<id>default</id>
 			<build>
 				<plugins>
-				
+
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-surefire-plugin</artifactId>
@@ -573,19 +573,43 @@
 
 				<!-- group 2 -->
 
-				<!-- <module>testing-modules/mockito</module> <module>testing-modules/mockito-2</module> 
-					<module>testing-modules/mocks</module> <module>mustache</module> <module>mvn-wrapper</module> 
-					<module>noexception</module> <module>orientdb</module> <module>osgi</module> 
-					<module>orika</module> <module>patterns</module> <module>pdf</module> <module>protobuffer</module> 
-					<module>persistence-modules/querydsl</module> <module>reactor-core</module> 
-					<module>persistence-modules/redis</module> <module>testing-modules/rest-assured</module> 
-					<module>testing-modules/rest-testing</module> <module>resteasy</module> <module>rxjava</module> 
-					<module>spring-swagger-codegen</module> <module>testing-modules/selenium-junit-testng</module> 
-					<module>persistence-modules/solr</module> <module>spark-java</module> <module>spring-4</module> 
-					<module>spring-5</module> <module>spring-5-reactive</module> <module>spring-5-mvc</module> 
-					<module>spring-5-security</module> <module>spring-activiti</module> <module>spring-akka</module> 
-					<module>spring-amqp</module> <module>spring-all</module> <module>spring-amqp-simple</module> 
-					<module>spring-apache-camel</module> <module>spring-batch</module> -->
+				<!-- -->
+				<module>testing-modules/mockito</module>
+				<module>testing-modules/mockito-2</module>
+				<module>testing-modules/mocks</module>
+				<module>mustache</module>
+				<module>mvn-wrapper</module>
+				<module>noexception</module>
+				<module>orientdb</module>
+				<module>osgi</module>
+				<module>orika</module>
+				<module>patterns</module>
+				<module>pdf</module>
+				<module>protobuffer</module>
+				<module>persistence-modules/querydsl</module>
+				<module>reactor-core</module>
+				<module>persistence-modules/redis</module>
+				<module>testing-modules/rest-assured</module>
+				<module>testing-modules/rest-testing</module>
+				<module>resteasy</module>
+				<module>rxjava</module>
+				<module>spring-swagger-codegen</module>
+				<module>testing-modules/selenium-junit-testng</module>
+				<module>persistence-modules/solr</module>
+				<module>spark-java</module>
+				<module>spring-4</module>
+				<module>spring-5</module>
+				<module>spring-5-reactive</module>
+				<module>spring-5-mvc</module>
+				<module>spring-5-security</module>
+				<module>spring-activiti</module>
+				<module>spring-akka</module>
+				<module>spring-amqp</module>
+				<module>spring-all</module>
+				<module>spring-amqp-simple</module>
+				<module>spring-apache-camel</module>
+				<module>spring-batch</module>
+
 
 				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
 
@@ -658,6 +682,7 @@
 
 				<!-- group 3.2 - Pass, 8 minutes, 1 failed test, 2,294 KB log -->
 				<!-- group 3 - Pass, 25 minutes, 36 failed tests, 10,163 KB log -->
+				<!-- group 3 - Pass, 23 minutes, 31 failed tests, 8,693 KB log -->
 
 				<!-- group 4 -->
 
