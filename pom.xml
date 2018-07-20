@@ -545,6 +545,7 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
+        <module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
 			</modules>
 
@@ -734,6 +735,7 @@
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
 				<module>spring-rest-simple</module>
+        <module>spring-reactive-kotlin</module>
 
 
 				<!-- group 3.2 - Pass, 8 minutes, 1 failed test, 2,294 KB log -->
