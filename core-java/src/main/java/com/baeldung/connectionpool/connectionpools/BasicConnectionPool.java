@@ -32,19 +32,15 @@ public class BasicConnectionPool implements ConnectionPool {
     }
     
     @Override
-    public Connection getConnection() {
-        if (connectionPool.size() + usedConnections.size() == MAX_POOL_SIZE) {
-            throw new RuntimeException("Maximum pool size reached");
-        }
-        
-        if (connectionPool.size() > INITIAL_POOL_SIZE) {
-            try {
+    public Connection getConnection() throws SQLException {
+        if (connectionPool.size() == 0) {
+            if (usedConnections.size() < MAX_POOL_SIZE) {
                 connectionPool.add(createConnection(url, user, password));
-            } catch (SQLException ex) {
-                
+            } else {
+                throw new RuntimeException("Maximum pool size reached, no available connections!");
             }
         }
-        
+
         Connection connection = connectionPool.remove(connectionPool.size() - 1);
         usedConnections.add(connection);
         return connection;
@@ -78,5 +74,15 @@ public class BasicConnectionPool implements ConnectionPool {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public void shutdown() throws SQLException {
+        for (Connection c : usedConnections) {
+            this.releaseConnection(c);
+        }
+        for (Connection c : connectionPool) {
+            c.close();
+        }
+        connectionPool.clear();
     }
 }

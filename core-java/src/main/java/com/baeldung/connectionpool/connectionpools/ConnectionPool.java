@@ -1,11 +1,12 @@
 package com.baeldung.connectionpool.connectionpools;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public interface ConnectionPool {
 
-    Connection getConnection();
+    Connection getConnection() throws SQLException;
     
     boolean releaseConnection(Connection connection);
     
