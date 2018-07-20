@@ -1008,7 +1008,6 @@
 				<module>spring-security-client/spring-security-thymeleaf-config</module>
 				<module>spring-security-core</module>
 				<module>spring-security-mvc-boot</module>
-				<module>spring-security-mvc-custom</module>
 				<module>spring-security-mvc-digest-auth</module>
 				<module>spring-security-mvc-ldap</module>
 				<module>spring-security-mvc-login</module>
@@ -1071,13 +1070,16 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-				
+                
+				<module>ejb</module>
+                <module>hibernate5</module>
+                <module>persistence-modules/java-cassandra</module>
+                
 				<!-- problematic - temp -->
 				<!-- 
 				<module>ejb</module>
                 <module>hibernate5</module>
                 <module>persistence-modules/java-cassandra</module>
-                
 				 -->
 				 
 				<!-- heavy -->
@@ -1092,7 +1094,9 @@
 				<module>core-kotlin</module>
 				<module>core-java</module>
 				<module>google-web-toolkit</module>
+                <module>spring-security-mvc-custom</module>
 				 -->
+                 
 			</modules>
 
 		</profile>
