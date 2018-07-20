@@ -647,11 +647,12 @@
 				<module>persistence-modules/spring-data-redis</module>
 				<module>spring-data-rest</module>
 				
-				<!-- group 3.1 - X -->
+				<!-- group 3.1 - Pass, 23 min, 35 failed tests, 7,942 KB -->
 				
 				<!-- group 3.2 -->
 				
-				<!-- <module>persistence-modules/spring-data-solr</module>
+				<!--  -->
+				<module>persistence-modules/spring-data-solr</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-exceptions</module>
 				<module>spring-freemarker</module>
@@ -682,9 +683,11 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
-				<module>spring-rest-simple</module> -->
+				<module>spring-rest-simple</module>
+				
 
 				<!-- group 3.2 - Pass, 8 minutes, 1 failed test, 2,294 KB log -->
+				<!-- group 3 - X -->
 				
 				<!-- group 4 -->
 
