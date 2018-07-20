@@ -870,7 +870,6 @@
 				<module>spring-static-resources</module>
 				<module>hazelcast</module>
 				<module>hbase</module>
-				<module>hibernate5</module>
 				<module>httpclient</module>
 				<module>hystrix</module>
 				<module>image-processing</module>
@@ -1077,6 +1076,8 @@
 				<!-- problematic - temp -->
 				<!-- 
 				<module>ejb</module>
+                <module>hibernate5</module>
+                
 				 -->
 				 
 				<!-- heavy -->
