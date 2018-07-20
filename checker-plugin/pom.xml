@@ -66,8 +66,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <!-- Uncomment the following line to use the type annotations compiler. -->
                     <!-- <fork>true</fork> -->
                     <compilerArguments>
@@ -113,8 +113,6 @@
         <checker.version>2.3.1</checker.version>
         <jdk8.version>2.3.1</jdk8.version>
         <checkerframework.compiler.version>2.3.1</checkerframework.compiler.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 </project>

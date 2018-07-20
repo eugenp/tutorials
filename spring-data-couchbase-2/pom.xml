@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
     <artifactId>spring-data-couchbase-2</artifactId>
@@ -61,9 +61,7 @@
     </dependencies>
 
     <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring-framework.version>4.3.4.RELEASE</spring-framework.version>
+       <spring-framework.version>4.3.4.RELEASE</spring-framework.version>
         <spring-data-couchbase.version>2.1.5.RELEASE</spring-data-couchbase.version>
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <joda-time.version>2.9.6</joda-time.version>

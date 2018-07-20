@@ -32,7 +32,6 @@
 - [“Stream has already been operated upon or closed” Exception in Java](http://www.baeldung.com/java-stream-operated-upon-or-closed-exception)
 - [Display All Time Zones With GMT And UTC in Java](http://www.baeldung.com/java-time-zones)
 - [Copy a File with Java](http://www.baeldung.com/java-copy-file)
-- [Generating Prime Numbers in Java](http://www.baeldung.com/java-generate-prime-numbers)
 - [Static and Default Methods in Interfaces in Java](http://www.baeldung.com/java-static-default-methods)
 - [Iterable to Stream in Java](http://www.baeldung.com/java-iterable-to-stream)
 - [Converting String to Stream of chars](http://www.baeldung.com/java-string-to-stream)
@@ -52,4 +51,7 @@
 - [Measure Elapsed Time in Java](http://www.baeldung.com/java-measure-elapsed-time)
 - [Java Optional – orElse() vs orElseGet()](http://www.baeldung.com/java-optional-or-else-vs-or-else-get)
 - [An Introduction to Java.util.Hashtable Class](http://www.baeldung.com/java-hash-table)
-
+- [Method Parameter Reflection in Java](http://www.baeldung.com/java-parameter-reflection)
+- [Java 8 Unsigned Arithmetic Support](http://www.baeldung.com/java-unsigned-arithmetic)
+- [How to Get the Start and the End of a Day using Java](http://www.baeldung.com/java-day-start-end)
+- [Generalized Target-Type Inference in Java](http://www.baeldung.com/java-generalized-target-type-inference)

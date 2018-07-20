@@ -1,6 +1,7 @@
 package org.baeldung.java.io;
 
 import org.junit.Test;
+import org.junit.Ignore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -105,6 +106,7 @@ public class JavaReadFromFileUnitTest {
     }
 
     @Test
+    @Ignore // TODO
     public void whenReadUTFEncodedFile_thenCorrect() throws IOException {
         final String expected_value = "青空";
         final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/test_read7.in"), "UTF-8"));
