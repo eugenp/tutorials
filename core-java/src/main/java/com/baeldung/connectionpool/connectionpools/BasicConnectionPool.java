@@ -34,7 +34,7 @@ public class BasicConnectionPool implements ConnectionPool {
     @Override
     public Connection getConnection() {
         if (connectionPool.size() + usedConnections.size() == MAX_POOL_SIZE) {
-            throw new RuntimeException("Maximun pool size reached");
+            throw new RuntimeException("Maximum pool size reached");
         }
         
         if (connectionPool.size() > INITIAL_POOL_SIZE) {
