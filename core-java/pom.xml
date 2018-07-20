@@ -158,7 +158,7 @@
             <version>${HikariCP.version}</version>
         </dependency>
         <dependency>
-            <groupId>c3p0</groupId>
+            <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
             <version>${c3p0.version}</version>
         </dependency>
@@ -418,7 +418,7 @@
         <!-- JDBC pooling frameworks -->
         <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
         <HikariCP.version>3.2.0</HikariCP.version>
-        <c3p0.version>0.9.1.2</c3p0.version>
+        <c3p0.version>0.9.5.2</c3p0.version>
         
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>

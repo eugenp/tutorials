@@ -33,11 +33,6 @@ public class BasicConnectionPoolUnitTest {
     }
     
     @Test
-    public void givenBasicConnectionPoolInstance_whenCalledgetConnectionPool_thenCorrect() {
-        assertThat(connectionPool.getConnectionPool()).isInstanceOf(List.class);
-    }
-    
-    @Test
     public void givenBasicConnectionPoolInstance_whenCalledgetUrl_thenCorrect() {
         assertThat(connectionPool.getUrl()).isEqualTo("jdbc:h2:mem:test");
     }
@@ -66,9 +61,9 @@ public class BasicConnectionPoolUnitTest {
     @Test
     public void givenBasicConnectionPoolInstance_whenSutdown_thenEmpty() throws Exception {
         ConnectionPool cp = BasicConnectionPool.create("jdbc:h2:mem:test", "user", "password");
-        assertThat(cp.getConnectionPool().size()).isEqualTo(10);
+        assertThat(((BasicConnectionPool)cp).getSize()).isEqualTo(10);
 
         ((BasicConnectionPool) cp).shutdown();
-        assertThat(cp.getConnectionPool().size()).isEqualTo(0);
+        assertThat(((BasicConnectionPool)cp).getSize()).isEqualTo(0);
     }
 }

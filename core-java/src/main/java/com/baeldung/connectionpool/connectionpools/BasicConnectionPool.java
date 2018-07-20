@@ -56,9 +56,8 @@ public class BasicConnectionPool implements ConnectionPool {
         return DriverManager.getConnection(url, user, password);
     }
     
-    @Override
-    public List<Connection> getConnectionPool() {
-        return connectionPool;
+    public int getSize() {
+        return connectionPool.size() + usedConnections.size();
     }
 
     @Override

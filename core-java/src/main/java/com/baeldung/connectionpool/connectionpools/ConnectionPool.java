@@ -10,8 +10,6 @@ public interface ConnectionPool {
     
     boolean releaseConnection(Connection connection);
     
-    List<Connection> getConnectionPool();
-    
     String getUrl();
     
     String getUser();
