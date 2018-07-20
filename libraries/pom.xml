@@ -772,6 +772,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.googlecode.jmapper-framework</groupId>
+            <artifactId>jmapper-core</artifactId>
+            <version>${jmapper.version}</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -1015,6 +1021,7 @@
         <jersey.version>1.19.4</jersey.version>
         <javalin.version>1.6.0</javalin.version>
         <fugue.version>4.5.1</fugue.version>
+        <jmapper.version>1.6.0.1</jmapper.version>
         <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     </properties>
