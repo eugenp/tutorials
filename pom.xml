@@ -847,18 +847,15 @@
 				<module>bootique</module>
 				<module>cdi</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
-				<module>core-java</module>
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
-				<module>core-kotlin</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
 				<module>couchbase</module>
 				<module>deltaspike</module>
 				<module>dozer</module>
 				<module>ethereum</module>
-				<module>ejb</module>
 				<module>feign</module>
 				<module>flips</module>
 				<module>testing-modules/groovy-spock</module>
@@ -1078,6 +1075,11 @@
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
 				
+				<!-- problematic - temp -->
+				<!-- 
+				<module>ejb</module>
+				 -->
+				 
 				<!-- heavy -->
 				<!-- 
 				<module>libraries</module>
@@ -1087,6 +1089,8 @@
 				<module>spring-boot</module>
 				<module>spring-boot-ops</module>
 				<module>spring-5</module>
+				<module>core-kotlin</module>
+				<module>core-java</module>
 				 -->
 			</modules>
 
