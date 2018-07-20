@@ -7,9 +7,9 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.10.RELEASE</version>
+        <groupId>com.baeldung</groupId>
+        <artifactId>spring-swagger-codegen</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -21,6 +21,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
 
@@ -36,6 +37,7 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-swagger-codegen-api-client.version>0.0.1-SNAPSHOT</spring-swagger-codegen-api-client.version>
+        <spring.version>1.5.10.RELEASE</spring.version>
     </properties>
 
 </project>
