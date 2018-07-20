@@ -79,3 +79,4 @@ public class AvroSerealizerDeSerealizerTest {
             .equals(request.getRequestTime()));
     }
 }
+
