@@ -1101,6 +1101,64 @@
 
 		</profile>
 
+        <profile>
+            <id>integration-heavy</id>
+            
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*ManualTest.java</exclude>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>parent-boot-1</module>
+                <module>parent-boot-2</module>
+                <module>parent-spring-4</module>
+                <module>parent-spring-5</module>
+                <module>parent-java</module>
+                
+                <module>libraries</module>
+                <module>geotools</module>
+                <module>jhipster/jhipster-monolithic</module>
+                <module>testing-modules/gatling</module>
+                <module>spring-boot</module>
+                <module>spring-boot-ops</module>
+                <module>spring-5</module>
+                <module>core-kotlin</module>
+                <module>core-java</module>
+                <module>google-web-toolkit</module>
+                <module>spring-security-mvc-custom</module>
+                 
+            </modules>
+
+        </profile>
+
 
 	</profiles>
 
