@@ -1,12 +1,14 @@
-package com.baeldung.junit5;
+package com.baeldung.methodorders;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.AfterClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-@FixMethodOrder(MethodSorters.JVM)
-public class JVMOrderOfExecutionTest {
-
+@FixMethodOrder(MethodSorters.DEFAULT)
+public class DefaultOrderOfExecutionUnitTest {
     private static StringBuilder output = new StringBuilder("");
 
     @Test
@@ -22,5 +24,10 @@ public class JVMOrderOfExecutionTest {
     @Test
     public void firstTest() {
         output.append("a");
+    }
+
+    @AfterClass
+    public static void assertOutput() {
+        assertEquals(output.toString(), "cab");
     }
 }
