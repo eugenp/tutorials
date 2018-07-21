@@ -1,4 +1,0 @@
-logging:
-  level:
-    springframework:
-      error
