@@ -5,6 +5,7 @@ import org.baeldung.inmemory.persistence.dao.StudentRepository;
 import org.baeldung.inmemory.persistence.model.Student;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -20,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { StudentJpaConfig.class }, loader = AnnotationConfigContextLoader.class)
 @Transactional
+@DirtiesContext
 public class InMemoryDBIntegrationTest {
 
     @Resource

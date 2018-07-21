@@ -4,4 +4,5 @@
 - [Implementing the Template Method Pattern in Java](http://www.baeldung.com/java-template-method-pattern)
 - [Chain of Responsibility Design Pattern in Java](http://www.baeldung.com/chain-of-responsibility-pattern)
 - [The Command Pattern in Java](http://www.baeldung.com/java-command-pattern)
+- [The DAO Pattern in Java](http://www.baeldung.com/java-dao-pattern)
 

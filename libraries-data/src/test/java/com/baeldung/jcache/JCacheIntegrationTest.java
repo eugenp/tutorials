@@ -14,7 +14,7 @@ public class JCacheIntegrationTest {
 
     @Test
     public void instantiateCache() {
-        CachingProvider cachingProvider = Caching.getCachingProvider();
+        CachingProvider cachingProvider = Caching.getCachingProvider("com.hazelcast.cache.HazelcastCachingProvider");
         CacheManager cacheManager = cachingProvider.getCacheManager();
         MutableConfiguration<String, String> config = new MutableConfiguration<>();
         Cache<String, String> cache = cacheManager.createCache("simpleCache", config);

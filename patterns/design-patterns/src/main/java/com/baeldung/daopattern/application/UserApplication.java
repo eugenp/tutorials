@@ -1,5 +1,6 @@
 package com.baeldung.daopattern.application;
 
+import com.baeldung.daopattern.config.JpaEntityManagerFactory;
 import com.baeldung.daopattern.daos.Dao;
 import com.baeldung.daopattern.daos.JpaUserDao;
 import com.baeldung.daopattern.entities.User;
@@ -21,17 +22,17 @@ public class UserApplication {
         getAllUsers().forEach(user -> System.out.println(user.getName()));
     }
     
+    private static class JpaUserDaoHolder {
+        private static final JpaUserDao jpaUserDao = new JpaUserDao(new JpaEntityManagerFactory().getEntityManager());
+    }
+    
     public static Dao getJpaUserDao() {
-        if (jpaUserDao == null) {
-            EntityManager entityManager = Persistence.createEntityManagerFactory("user-unit").createEntityManager();
-            jpaUserDao = new JpaUserDao(entityManager);
-        }
-        return jpaUserDao;
+        return JpaUserDaoHolder.jpaUserDao;
     }
     
     public static User getUser(long id) {
         Optional<User> user = getJpaUserDao().get(id);
-        return user.orElse(new User("Non-existing user", "no-email"));
+        return user.orElseGet(()-> {return new User("non-existing user", "no-email");});
     }
     
     public static List<User> getAllUsers() {

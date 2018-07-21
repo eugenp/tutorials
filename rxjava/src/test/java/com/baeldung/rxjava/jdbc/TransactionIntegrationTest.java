@@ -24,8 +24,11 @@ public class TransactionIntegrationTest {
           .update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
           .dependsOn(begin)
           .count();
+        Observable<Integer> truncateStatement = db.update("TRUNCATE TABLE EMPLOYEE")
+                .dependsOn(createStatement)
+                .count();
         Observable<Integer> insertStatement = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'John')")
-          .dependsOn(createStatement)
+          .dependsOn(truncateStatement)
           .count();
         Observable<Integer> updateStatement = db.update("UPDATE EMPLOYEE SET name = 'Tom' WHERE id = 1")
           .dependsOn(insertStatement)

@@ -14,6 +14,9 @@
 - [Working with Fragments in Thymeleaf](http://www.baeldung.com/spring-thymeleaf-fragments)
 - [Conditionals in Thymeleaf](http://www.baeldung.com/spring-thymeleaf-conditionals)
 - [Iteration in Thymeleaf](http://www.baeldung.com/thymeleaf-iteration)
+- [Working With Arrays in Thymeleaf](http://www.baeldung.com/thymeleaf-arrays)
+- [Spring with Thymeleaf Pagination for a List](http://www.baeldung.com/spring-thymeleaf-pagination)
+- [Working with Select and Option in Thymeleaf](http://www.baeldung.com/thymeleaf-select-option)
 
 ### Build the Project
 

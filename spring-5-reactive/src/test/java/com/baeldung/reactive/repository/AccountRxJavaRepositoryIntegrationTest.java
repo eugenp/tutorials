@@ -21,23 +21,38 @@ public class AccountRxJavaRepositoryIntegrationTest {
     AccountRxJavaRepository repository;
 
     @Test
-    public void givenValue_whenFindAllByValue_thenFindAccounts() {
+    public void givenValue_whenFindAllByValue_thenFindAccounts() throws InterruptedException {
         repository.save(new Account(null, "bruno", 12.3)).blockingGet();
         Observable<Account> accountObservable = repository.findAllByValue(12.3);
-        Account account = accountObservable.filter(x -> x.getOwner().equals("bruno")).blockingFirst();
-        assertEquals("bruno", account.getOwner());
-        assertEquals(Double.valueOf(12.3), account.getValue());
-        assertNotNull(account.getId());
+
+        accountObservable
+                .test()
+                .await()
+                .assertComplete()
+                .assertValueAt(0, account -> {
+                    assertEquals("bruno", account.getOwner());
+                    assertEquals(Double.valueOf(12.3), account.getValue());
+                    return true;
+                });
+
     }
 
     @Test
-    public void givenOwner_whenFindFirstByOwner_thenFindAccount() {
+    public void givenOwner_whenFindFirstByOwner_thenFindAccount() throws InterruptedException {
         repository.save(new Account(null, "bruno", 12.3)).blockingGet();
         Single<Account> accountSingle = repository.findFirstByOwner(Single.just("bruno"));
-        Account account = accountSingle.blockingGet();
-        assertEquals("bruno", account.getOwner());
-        assertEquals(Double.valueOf(12.3), account.getValue());
-        assertNotNull(account.getId());
+
+        accountSingle
+                .test()
+                .await()
+                .assertComplete()
+                .assertValueAt(0, account -> {
+                    assertEquals("bruno", account.getOwner());
+                    assertEquals(Double.valueOf(12.3), account.getValue());
+                    assertNotNull(account.getId());
+                    return true;
+                });
+
     }
 
 }

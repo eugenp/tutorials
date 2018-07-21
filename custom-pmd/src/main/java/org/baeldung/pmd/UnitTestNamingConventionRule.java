@@ -11,20 +11,20 @@ public class UnitTestNamingConventionRule extends AbstractJavaRule {
 
     private static List<String> allowedEndings = Arrays.asList(
       "IntegrationTest",
+      "IntTest",
       "ManualTest",
       "JdbcTest",
       "LiveTest",
-      "UnitTest");
+      "UnitTest",
+      "jmhTest");
 
     public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
         String className = node.getImage();
         Objects.requireNonNull(className);
 
-        if (className.endsWith("Test") || className.endsWith("Tests")) {
-            if (allowedEndings.stream()
-              .noneMatch(className::endsWith)) {
-                addViolation(data, node);
-            }
+        if (className.endsWith("Tests")
+                || (className.endsWith("Test") && allowedEndings.stream().noneMatch(className::endsWith))) {
+            addViolation(data, node);
         }
 
         return data;
