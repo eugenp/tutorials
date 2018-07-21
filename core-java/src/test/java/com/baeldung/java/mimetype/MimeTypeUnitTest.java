@@ -26,7 +26,7 @@ import net.sf.jmimemagic.MagicParseException;
  * @author tritty
  *
  */
-public class MimeTypeIntegrationTest {
+public class MimeTypeUnitTest {
     /**
      * Expected Ouput.
      */
