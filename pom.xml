@@ -545,8 +545,9 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-        <module>spring-reactive-kotlin</module>
+				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
+				<module>testing-modules/junit-abstract</module>
 			</modules>
 
 		</profile>
@@ -666,6 +667,7 @@
 				<module>spring-amqp-simple</module>
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
+				<module>testing-modules/junit-abstract</module>
 
 
 				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
@@ -1071,7 +1073,7 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-				
+				<module>testing-modules/junit-abstract</module>
                 
                 <!-- problematic -->
                 <!-- 
