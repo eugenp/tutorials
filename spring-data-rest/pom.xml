@@ -6,7 +6,7 @@
     <artifactId>spring-data-rest</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
-    <name>intro-spring-data-rest</name>
+    <name>spring-data-rest</name>
     <description>Intro to Spring Data REST</description>
 
     <parent>

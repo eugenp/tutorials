@@ -6,7 +6,6 @@ import com.baeldung.algorithms.ga.annealing.SimulatedAnnealing;
 import com.baeldung.algorithms.ga.ant_colony.AntColonyOptimization;
 import com.baeldung.algorithms.ga.binary.SimpleGeneticAlgorithm;
 import com.baeldung.algorithms.slope_one.SlopeOne;
-import com.baeldung.algorithms.pairsaddupnumber.FindPairs;
 
 public class RunAlgorithm {
 
@@ -38,12 +37,6 @@ public class RunAlgorithm {
 			break;
 		case 5:
 			System.out.println("Please run the DijkstraAlgorithmTest.");
-			break;
-		case 6:
-			final FindPairs findPairs = new FindPairs();
-			final int[] input = {1, 4, 3, 2, 1, 4, 4, 3, 3};
-			final int sum = 6;
-			findPairs.execute(input, sum);
 			break;
 		default:
 			System.out.println("Unknown option");

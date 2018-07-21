@@ -127,6 +127,12 @@
             <version>${hsqldb.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -153,6 +159,7 @@
         <tomcat-dbcp.version>8.5.8</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
+        <h2.version>1.4.193</h2.version>
 
         <!-- various -->
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
