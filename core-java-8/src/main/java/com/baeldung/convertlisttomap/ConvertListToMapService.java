@@ -33,7 +33,7 @@ public class ConvertListToMapService {
 
     public Map<Integer, Animal> convertListWithApacheCommons(List<Animal> list) {
 
-        Map<Integer, Animal> map = new HashMap<Integer, Animal>();
+        Map<Integer, Animal> map = new HashMap<>();
 
         MapUtils.populateMap(map, list, Animal::getId);
 
