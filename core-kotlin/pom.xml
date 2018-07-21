@@ -60,7 +60,6 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
             <version>${kotlin-reflect.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
@@ -224,10 +223,11 @@
     </build>
 
     <properties>
-        <kotlin-maven-plugin.version>1.2.41</kotlin-maven-plugin.version>
-        <kotlin-test-junit.version>1.2.41</kotlin-test-junit.version>
-        <kotlin-stdlib.version>1.2.41</kotlin-stdlib.version>
-        <kotlin-reflect.version>1.2.41</kotlin-reflect.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <kotlin-maven-plugin.version>1.2.51</kotlin-maven-plugin.version>
+        <kotlin-test-junit.version>1.2.51</kotlin-test-junit.version>
+        <kotlin-stdlib.version>1.2.51</kotlin-stdlib.version>
+        <kotlin-reflect.version>1.2.51</kotlin-reflect.version>
         <kotlinx.version>0.22.5</kotlinx.version>
         <ktor.io.version>0.9.2</ktor.io.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
