@@ -507,6 +507,7 @@
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
 				<module>spring-jinq</module>
+				<module>spring-webflux</module>
 				<module>spring-rest-embedded-tomcat</module>
 				<module>testing-modules/testing</module>
 				<module>testing-modules/testng</module>
