@@ -6,7 +6,6 @@
     <artifactId>groovy-spock</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Spock Framework - Example Project</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
