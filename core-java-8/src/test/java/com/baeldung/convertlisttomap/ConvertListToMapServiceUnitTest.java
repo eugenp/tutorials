@@ -29,6 +29,7 @@ public class ConvertListToMapServiceUnitTest {
         list.add(cow);
         Animal goat = new Animal(5, "Goat");
         list.add(goat);
+
     }
 
     @Test
@@ -56,18 +57,11 @@ public class ConvertListToMapServiceUnitTest {
     }
 
     @Test
-    public void givenAList_whenConvertWithApacheCommons1_thenReturnMapWithTheSameElements() {
+    public void givenAList_whenConvertWithApacheCommons_thenReturnMapWithTheSameElements() {
 
-        Map<Integer, Animal> map = convertListService.convertListWithApacheCommons1(list);
-
-        assertThat(map.values(), containsInAnyOrder(list.toArray()));
-    }
-
-    @Test
-    public void givenAList_whenConvertWithApacheCommons2_thenReturnMapWithTheSameElements() {
-
-        Map<Integer, Animal> map = convertListService.convertListWithApacheCommons2(list);
+        Map<Integer, Animal> map = convertListService.convertListWithApacheCommons(list);
 
         assertThat(map.values(), containsInAnyOrder(list.toArray()));
     }
+
 }

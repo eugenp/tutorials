@@ -4,15 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.apache.commons.collections4.IterableUtils;
 import org.apache.commons.collections4.MapUtils;
 import com.google.common.collect.Maps;
 
 public class ConvertListToMapService {
 
     public Map<Integer, Animal> convertListBeforeJava8(List<Animal> list) {
-        Map<Integer, Animal> map = new HashMap<Integer, Animal>();
+        Map<Integer, Animal> map = new HashMap<>();
         for (Animal animal : list) {
             map.put(animal.getId(), animal);
         }
@@ -30,20 +28,9 @@ public class ConvertListToMapService {
         return map;
     }
 
-    public Map<Integer, Animal> convertListWithApacheCommons1(List<Animal> list) {
+    public Map<Integer, Animal> convertListWithApacheCommons(List<Animal> list) {
 
-        Map<Integer, Animal> map = new HashMap<Integer, Animal>();
-
-        IterableUtils.forEach(list, animal -> {
-            map.put(animal.getId(), animal);
-        });
-
-        return map;
-    }
-
-    public Map<Integer, Animal> convertListWithApacheCommons2(List<Animal> list) {
-
-        Map<Integer, Animal> map = new HashMap<Integer, Animal>();
+        Map<Integer, Animal> map = new HashMap<>();
 
         MapUtils.populateMap(map, list, Animal::getId);
 
