@@ -12,7 +12,6 @@ public class PushController {
     public String demoWithPush(PushBuilder pushBuilder) {
         if (null != pushBuilder) {
             pushBuilder.path("resources/logo.png")
-                .addHeader("Content-Type", "image/png")
                 .push();
         }
         return "demo";
