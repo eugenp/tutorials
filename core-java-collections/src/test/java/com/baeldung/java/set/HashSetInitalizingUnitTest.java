@@ -50,22 +50,9 @@ public class HashSetInitalizingUnitTest {
 
     @Test
     public void whenUsingJava8_usingCollectOnStream_thenCorrectSize() {
-        Set<String> set = Stream.of("a", "b", "c").collect(Collectors.toSet());
+        Set<String> set = Stream.of("a", "b", "c").collect(Collectors.toCollection(HashSet::new));
         assertEquals(3, set.size());
     }
-    @Test
-    public void whenUsingJava8_fromStringArray_thenCorrectSize() {
-        String[] stringArray = {"a","b","c"};
-        Set<String> set = Arrays.stream(stringArray).collect(Collectors.toCollection(HashSet::new));
-        assertEquals(3, set.size());
-    }
-
-    // Requires Java9 - uncomment if you are using Java 9 or higher
-    /*@Test
-    public void whenUsingJava9_usingCollectOnStream_thenCorrectSize() {
-        Set set = Set.of("a", "b", "c");
-        assertEquals(3, set.size());
-    }*/
 
     @Test
     public void whenUsingGoogleGuava_createMutableSet_thenCorrectSize() {
@@ -78,4 +65,6 @@ public class HashSetInitalizingUnitTest {
         Set<String> set = ImmutableSet.of("a", "b", "c");
         assertEquals(3, set.size());
     }
+  
 }
+
