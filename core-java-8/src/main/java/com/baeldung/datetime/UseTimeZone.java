@@ -23,27 +23,29 @@ public class UseTimeZone {
     public static TimeZone setTimeZoneUsingJava7(String timeZone) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(PATTERN);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
-        Date date = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        TimeZone tzone = TimeZone.getTimeZone(timeZone);
-        calendar.setTimeZone(tzone);
-
+        
+        Date nowUtc = new Date();
+        TimeZone asiaSingapore = TimeZone.getTimeZone(timeZone);
+        
+        Calendar nowAsiaSingapore = Calendar.getInstance(asiaSingapore);
+        nowAsiaSingapore.setTime(nowUtc);
+        
         System.out.println(String.format("Java7: Time now in '%s' is '%s'", 
-            calendar.getTimeZone().getID(), simpleDateFormat.format(calendar.getTime())));
+            nowAsiaSingapore.getTimeZone().getID(), simpleDateFormat.format(nowAsiaSingapore.getTime())));
 
-        return calendar.getTimeZone();
+        return nowAsiaSingapore.getTimeZone();
     }
 
     public static ZoneId setTimeZoneUsingJava8(String timeZone) {
-        Instant instant = Instant.now();
-        ZoneId zoneId = ZoneId.of(timeZone);
-        ZonedDateTime zonedDateTime = ZonedDateTime.ofInstant(instant, zoneId);
+        Instant nowUtc = Instant.now();
+        ZoneId asiaSingapore = ZoneId.of(timeZone);
+        
+        ZonedDateTime nowAsiaSingapore = ZonedDateTime.ofInstant(nowUtc, asiaSingapore);
 
         System.out.println(String.format("Java8: Time now in '%s' is '%s'", 
-            zonedDateTime.getZone(), zonedDateTime.format(DateTimeFormatter.ofPattern(PATTERN))));
+            nowAsiaSingapore.getZone(), nowAsiaSingapore.format(DateTimeFormatter.ofPattern(PATTERN))));
 
-        return zonedDateTime.getZone();
+        return nowAsiaSingapore.getZone();
     }
 
     public static DateTimeZone setTimeZoneUsingJodaTime(String timeZone) {
