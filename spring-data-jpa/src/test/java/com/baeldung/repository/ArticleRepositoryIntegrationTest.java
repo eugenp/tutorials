@@ -1,6 +1,7 @@
 package com.baeldung.repository;
 
 import com.baeldung.domain.Article;
+import com.baeldung.repository.ArticleRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
