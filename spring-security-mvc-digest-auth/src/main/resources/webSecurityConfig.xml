@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
     xsi:schemaLocation="
-		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
 >
 
     <beans:bean id="digestFilter" class="org.springframework.security.web.authentication.www.DigestAuthenticationFilter">
@@ -12,6 +12,7 @@
     <beans:bean id="digestEntryPoint" class="org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint">
         <beans:property name="realmName" value="Contacts Realm via Digest Authentication"/>
         <beans:property name="key" value="acegi"/>
+        <beans:property name="nonceValiditySeconds" value="10"/>
     </beans:bean>
 
     <!-- the security namespace configuration -->
@@ -24,7 +25,7 @@
     <authentication-manager>
         <authentication-provider>
             <user-service id="userService">
-                <user name="user1" password="user1Pass" authorities="ROLE_USER"/>
+                <user name="user1" password="{noop}user1Pass" authorities="ROLE_USER"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>

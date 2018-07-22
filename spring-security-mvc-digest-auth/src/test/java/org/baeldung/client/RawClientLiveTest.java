@@ -29,7 +29,7 @@ public class RawClientLiveTest {
         int timeout = 20; // seconds
         RequestConfig requestConfig = RequestConfig.custom().setConnectionRequestTimeout(timeout)
           .setConnectTimeout(timeout).setSocketTimeout(timeout).build();
-        HttpGet getMethod = new HttpGet("http://localhost:8082/spring-security-rest-basic-auth/api/bars/1");
+        HttpGet getMethod = new HttpGet("http://localhost:8082/spring-security-mvc-digest-auth/homepage");
         getMethod.setConfig(requestConfig);
 
         int hardTimeout = 5; // seconds

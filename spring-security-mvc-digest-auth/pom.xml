@@ -10,9 +10,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-4</artifactId>
+        <artifactId>parent-spring-5</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-4</relativePath>
+        <relativePath>../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -22,12 +22,12 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -199,9 +199,6 @@
     </build>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.security.version>4.2.6.RELEASE</org.springframework.security.version>
-
         <!-- various -->
         <jstl.version>1.2</jstl.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
