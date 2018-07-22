@@ -42,28 +42,4 @@ public class CurrentDateTimeUnitTest {
 
         assertEquals(clock.instant().getEpochSecond(), now.getEpochSecond());
     }
-
-    @Test
-    public void shouldSetANewCurrentTimeForJodaDateTimeByFixed() {
-        DateTime now = DateTime.now();
-        Long millis = now.getMillis();
-        DateTimeUtils.setCurrentMillisFixed(millis + 2000);
-
-        DateTime currentNow = DateTime.now();
-        assertEquals(currentNow.getMillis(), millis + 2000);
-
-        DateTimeUtils.setCurrentMillisSystem();
-    }
-
-    @Test
-    public void shouldSetANewCurrentTimeForJodaDateTimeByOffset() {
-        DateTime now = DateTime.now();
-        Long millis = now.getMillis();
-        DateTimeUtils.setCurrentMillisOffset(2000);
-
-        DateTime currentNow = DateTime.now();
-        assertTrue(currentNow.getMillis() >= millis + 2000);
-
-        DateTimeUtils.setCurrentMillisSystem();
-    }
 }
