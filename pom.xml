@@ -548,6 +548,7 @@
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
 				<module>testing-modules/junit-abstract</module>
+				<module>sse-jaxrs</module>
 			</modules>
 
 		</profile>
