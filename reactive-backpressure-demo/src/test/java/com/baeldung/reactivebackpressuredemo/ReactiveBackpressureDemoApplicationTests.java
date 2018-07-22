@@ -15,9 +15,9 @@ import reactor.core.Disposable;
 public class ReactiveBackpressureDemoApplicationTests {
 
     @Test
-    public void testVehiclesFlowingAll() {
-        FooWebClient vehiclesWebClient = new FooWebClient();
-        Disposable disposable = vehiclesWebClient.newFooResourceDetected();
+    public void testFooBackPressure() {
+        FooWebClient fooWebClient = new FooWebClient();
+        Disposable disposable = fooWebClient.newFooResourceDetected();
         try {
             Thread.sleep(32000);
         } catch (InterruptedException e) {
