@@ -27,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class SpringSessionJdbcApplicationTests {
+public class SpringSessionJdbcIntegrationTest {
 
     @LocalServerPort
     private int port;
@@ -42,50 +42,40 @@ public class SpringSessionJdbcApplicationTests {
 
     @Test
     public void givenApiHasStarted_whenH2DbIsQueried_thenSessionTablesAreEmpty() throws SQLException {
-        Assert.assertEquals(0,
-                getSessionIdsFromDatabase("SELECT * FROM SPRING_SESSION").size());
-        Assert.assertEquals(
-                0, getSessionAttributeBytesFromDatabase(
-                        "SELECT * FROM SPRING_SESSION_ATTRIBUTES").size());
+        Assert.assertEquals(0, getSessionIdsFromDatabase().size());
+        Assert.assertEquals(0, getSessionAttributeBytesFromDatabase().size());
     }
 
     @Test
-    public void givenGetInvoked_whenH2DbIsQueried_thenOneSessionIsCreated()
-            throws SQLException {
-        assertThat(this.testRestTemplate.getForObject("http://localhost:" +
-                port + "/", String.class)).isNotEmpty();
-        Assert.assertEquals(1,
-                getSessionIdsFromDatabase(
-                        "SELECT * FROM SPRING_SESSION").size());
+    public void givenGetInvoked_whenH2DbIsQueried_thenOneSessionIsCreated() throws SQLException {
+        assertThat(this.testRestTemplate.getForObject("http://localhost:" + port + "/", String.class)).isNotEmpty();
+        Assert.assertEquals(1, getSessionIdsFromDatabase().size());
     }
 
     @Test
-    public void givenPostInvoked_whenH2DbIsQueried_thenSessionAttributeIsRetrieved()
-            throws ClassNotFoundException, SQLException, IOException {
+    public void givenPostInvoked_whenH2DbIsQueried_thenSessionAttributeIsRetrieved() throws ClassNotFoundException, SQLException, IOException {
         MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
         map.add("color", "red");
-        this.testRestTemplate.postForObject("http://localhost:" +
-                port + "/saveColor", map, String.class);
-        List<byte[]> queryResponse = getSessionAttributeBytesFromDatabase(
-                "SELECT * FROM SPRING_SESSION_ATTRIBUTES");
+        this.testRestTemplate.postForObject("http://localhost:" + port + "/saveColor", map, String.class);
+        List<byte[]> queryResponse = getSessionAttributeBytesFromDatabase();
         Assert.assertEquals(1, queryResponse.size());
         ObjectInput in = new ObjectInputStream(new ByteArrayInputStream(queryResponse.get(0)));
         List<String> obj = (List<String>) in.readObject(); //Deserialize byte[] to object
         Assert.assertEquals("red", obj.get(0));
     }
 
-    private List<String> getSessionIdsFromDatabase(String sql) throws SQLException {
+    private List<String> getSessionIdsFromDatabase() throws SQLException {
         List<String> result = new ArrayList<>();
-        ResultSet rs = getResultSet(sql);
+        ResultSet rs = getResultSet("SELECT * FROM SPRING_SESSION");
         while (rs.next()) {
             result.add(rs.getString("SESSION_ID"));
         }
         return result;
     }
 
-    private List<byte[]> getSessionAttributeBytesFromDatabase(String sql) throws SQLException {
+    private List<byte[]> getSessionAttributeBytesFromDatabase() throws SQLException {
         List<byte[]> result = new ArrayList<>();
-        ResultSet rs = getResultSet(sql);
+        ResultSet rs = getResultSet("SELECT * FROM SPRING_SESSION_ATTRIBUTES");
         while (rs.next()) {
             result.add(rs.getBytes("ATTRIBUTE_BYTES"));
         }
@@ -93,8 +83,7 @@ public class SpringSessionJdbcApplicationTests {
     }
 
     private ResultSet getResultSet(String sql) throws SQLException {
-        Connection conn = DriverManager
-                .getConnection("jdbc:h2:mem:testdb", "sa", "");
+        Connection conn = DriverManager.getConnection("jdbc:h2:mem:testdb", "sa", "");
         Statement stat = conn.createStatement();
         return stat.executeQuery(sql);
     }
