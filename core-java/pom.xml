@@ -173,6 +173,16 @@
             <artifactId>c3p0</artifactId>
             <version>${c3p0.version}</version>
         </dependency>
+        <dependency>
+    		<groupId>org.slf4j</groupId>
+    		<artifactId>slf4j-api</artifactId>
+    		<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.slf4j</groupId>
+    		<artifactId>slf4j-simple</artifactId>
+    		<version>${slf4j.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -422,6 +432,7 @@
         <protonpack.version>1.13</protonpack.version>
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
+        <slf4j.version>1.7.25</slf4j.version>
 
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
