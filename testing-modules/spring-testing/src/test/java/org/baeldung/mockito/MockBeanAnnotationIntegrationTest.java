@@ -20,7 +20,7 @@ public class MockBeanAnnotationIntegrationTest {
     ApplicationContext context;
     
     @Test
-    public void givenCountMethodMocked_WhenCountInvokedOnBeanFromContext_ThenMockValueReturned() {
+    public void givenCountMethodMocked_WhenCountInvoked_ThenMockValueReturned() {
         Mockito.when(mockRepository.count()).thenReturn(123L);
 
         UserRepository userRepoFromContext = context.getBean(UserRepository.class);
