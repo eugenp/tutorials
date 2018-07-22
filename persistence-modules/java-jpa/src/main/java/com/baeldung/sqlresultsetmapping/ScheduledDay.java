@@ -7,8 +7,6 @@ import javax.persistence.*;
         classes = { @ConstructorResult(targetClass = com.baeldung.sqlresultsetmapping.ScheduledDay.class,
         columns = { @ColumnResult(name = "id", type = Long.class),
                     @ColumnResult(name = "employeeId", type = Long.class),
-                    @ColumnResult(name = "hourIn"),
-                    @ColumnResult(name = "hourOut"),
                     @ColumnResult(name = "dayOfWeek") }) }),
     @SqlResultSetMapping(name = "FridayEmployeeResult",
                          columns = { @ColumnResult(name = "employeeId") }),
@@ -21,7 +19,7 @@ import javax.persistence.*;
         resultSetMapping = "FridayEmployeeResult")
 
 @NamedNativeQuery(name = "Schedules",
-        query = "SELECT * FROM schedule_days WHERE hourIn = 8",
+        query = "SELECT * FROM schedule_days WHERE employeeId = 3",
         resultSetMapping = "ScheduleResult")
 @Entity
 @Table(name = "SCHEDULE_DAYS")
@@ -31,18 +29,14 @@ public class ScheduledDay {
     @GeneratedValue
     private Long id;
     private Long employeeId;
-    private Integer hourIn;
-    private Integer hourOut;
     private String dayOfWeek;
 
     public ScheduledDay() {
     }
 
-    public ScheduledDay(Long id, Long employeeId, Integer hourIn, Integer hourOut, String dayofWeek) {
+    public ScheduledDay(Long id, Long employeeId, String dayofWeek) {
         this.id = id;
         this.employeeId = employeeId;
-        this.hourIn = hourIn;
-        this.hourOut = hourOut;
         this.dayOfWeek = dayofWeek;
     }
 
@@ -52,22 +46,6 @@ public class ScheduledDay {
 
     public void setEmployeeId(Long employeeId) {
         this.employeeId = employeeId;
-    }
-
-    public Integer getHourIn() {
-        return hourIn;
-    }
-
-    public void setHourIn(Integer hourIn) {
-        this.hourIn = hourIn;
-    }
-
-    public Integer getHourOut() {
-        return hourOut;
-    }
-
-    public void setHourOut(Integer hourOut) {
-        this.hourOut = hourOut;
     }
 
     public String getDayOfWeek() {

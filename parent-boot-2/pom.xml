@@ -5,8 +5,7 @@
     <artifactId>parent-boot-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Parent Boot 2</name>
-    <description>Parent for all spring boot 2 modules</description>
+    <description>Parent for all Spring Boot 2 modules</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
