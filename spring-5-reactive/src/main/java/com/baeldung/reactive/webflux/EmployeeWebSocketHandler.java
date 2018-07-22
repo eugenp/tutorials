@@ -5,6 +5,7 @@ import static java.util.UUID.randomUUID;
 
 import java.time.Duration;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.socket.WebSocketHandler;
 import org.springframework.web.reactive.socket.WebSocketSession;
