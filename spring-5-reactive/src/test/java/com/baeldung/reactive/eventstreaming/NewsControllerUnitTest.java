@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.willReturn;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -36,7 +36,7 @@ public class NewsControllerUnitTest {
         events.add(new NewsEvent(2, LocalDateTime.now(), "News event #2"));
         events.add(new NewsEvent(3, LocalDateTime.now(), "News event #3"));
 
-        given(newsRepository.getEvents()).willReturn(events);
+        willReturn(events).given(newsRepository).getEvents();
         testClient.get()
                 .uri("/news/stream")
                 .exchange()
