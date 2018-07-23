@@ -433,6 +433,7 @@
 				<module>spring-data-couchbase-2</module>
 				<module>persistence-modules/spring-data-dynamodb</module>
 				<module>spring-data-elasticsearch</module>
+				<module>spring-data-jpa</module>
 				<module>spring-data-keyvalue</module>
 				<module>spring-data-mongodb</module>
 				<module>persistence-modules/spring-data-neo4j</module>
@@ -545,8 +546,9 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-        <module>spring-reactive-kotlin</module>
+				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
+				<module>testing-modules/junit-abstract</module>
 			</modules>
 
 		</profile>
@@ -666,6 +668,7 @@
 				<module>spring-amqp-simple</module>
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
+				<module>testing-modules/junit-abstract</module>
 
 
 				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
@@ -1071,7 +1074,7 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-				
+				<module>testing-modules/junit-abstract</module>
                 
                 <!-- problematic -->
                 <!-- 
