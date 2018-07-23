@@ -1,45 +1,55 @@
 
 import org.junit.jupiter.api.Test
 import java.util.concurrent.ThreadLocalRandom
+import kotlin.test.assertTrue
 
 class RandomNumberTest {
 
     @Test
-    fun givenUsingJavaUtilMath_whenGeneratingRandomNumber_thenCorrect() {
+    fun whenRandomNumberWithJavaUtilMath_thenResultIsBetween0And1() {
         val randomNumber = Math.random()
-        println(randomNumber)
+        assertTrue { randomNumber >=0 }
+        assertTrue { randomNumber <= 1 }
     }
 
     @Test
-    fun givenUsingThreadLocalRandom_whenGeneratingRandomNumber_thenCorrect() {
+    fun whenRandomNumberWithJavaThreadLocalRandom_thenResultsInDefaultRanges() {
         val randomDouble = ThreadLocalRandom.current().nextDouble()
         val randomInteger = ThreadLocalRandom.current().nextInt()
         val randomLong = ThreadLocalRandom.current().nextLong()
-        println(randomDouble)
-        println(randomInteger)
-        println(randomLong)
+        assertTrue { randomDouble >= 0 }
+        assertTrue { randomDouble <= 1 }
+        assertTrue { randomInteger >= Integer.MIN_VALUE }
+        assertTrue { randomInteger <= Integer.MAX_VALUE }
+        assertTrue { randomLong >= Long.MIN_VALUE }
+        assertTrue { randomLong <= Long.MAX_VALUE }
     }
 
     @Test
-    fun givenUsingKotlinJsMath_whenGeneratingRandomNumber_thenCorrect() {
+    fun whenRandomNumberWithKotlinJSMath_thenResultIsBetween0And1() {
         val randomDouble = Math.random()
-        println(randomDouble)
+        assertTrue { randomDouble >=0 }
+        assertTrue { randomDouble <= 1 }
     }
 
     @Test
-    fun givenUsingKotlinNumberRange_whenGeneratingRandomNumberInGivenRange_thenCorrect() {
+    fun whenRandomNumberWithKotlinNumberRange_thenResultInGivenRange() {
         val randomInteger = (1..12).shuffled().first()
-        println(randomInteger)
+        assertTrue { randomInteger >= 1 }
+        assertTrue { randomInteger <= 12 }
     }
 
     @Test
-    fun givenUsingThreadLocalRandom_whenGeneratingRandomNumberInGivenRange_thenCorrect() {
+    fun whenRandomNumberWithJavaThreadLocalRandom_thenResultsInGivenRanges() {
         val randomDouble = ThreadLocalRandom.current().nextDouble(1.0, 10.0)
         val randomInteger = ThreadLocalRandom.current().nextInt(1, 10)
         val randomLong = ThreadLocalRandom.current().nextLong(1, 10)
-        println(randomDouble)
-        println(randomInteger)
-        println(randomLong)
+        assertTrue { randomDouble >= 1 }
+        assertTrue { randomDouble <= 10 }
+        assertTrue { randomInteger >= 1 }
+        assertTrue { randomInteger <= 10 }
+        assertTrue { randomLong >= 1 }
+        assertTrue { randomLong <= 10 }
     }
 
 }
