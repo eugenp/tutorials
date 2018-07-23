@@ -10,12 +10,14 @@ import org.springframework.web.reactive.socket.client.WebSocketClient;
 
 public class EventWebSocketClient {
 
-	public static void main(String[] args) throws URISyntaxException {
+	private static final String REMOTE_URL = "ws://localhost:8080/events";
+
+    public static void main(String[] args) throws URISyntaxException {
 		
 		WebSocketClient client = new ReactorNettyWebSocketClient();
 		
 		client.execute(
-		          URI.create("ws://localhost:8080/events"), 
+		          URI.create(REMOTE_URL), 
 		          session -> session.receive()
 		              .map(WebSocketMessage::getPayloadAsText)
 		              .log().then())
