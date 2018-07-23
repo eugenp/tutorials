@@ -1,4 +1,4 @@
-package com.baeldung.reactive.websocket;
+package com.baeldung.websocket;
 
 import java.net.URI;
 import java.time.Duration;

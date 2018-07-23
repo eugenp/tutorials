@@ -15,13 +15,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import com.baeldung.reactive.Spring5ReactiveApplication;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes=Spring5ReactiveApplication.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class EmployeeControllerUnitTest {
+public class EmployeeControllerIntegrationTest {
 
     @Autowired
     private WebTestClient testClient;

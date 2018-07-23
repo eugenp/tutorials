@@ -1,4 +1,4 @@
-package com.baeldung.reactive.websocket;
+package com.baeldung.websocket;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

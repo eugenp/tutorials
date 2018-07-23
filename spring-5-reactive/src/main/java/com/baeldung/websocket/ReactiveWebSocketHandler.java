@@ -1,4 +1,4 @@
-package com.baeldung.reactive.websocket;
+package com.baeldung.websocket;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
