@@ -1,12 +1,12 @@
 package com.baeldung.convertlisttomap;
 
+import com.google.common.collect.Maps;
+import org.apache.commons.collections4.MapUtils;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
-import org.apache.commons.collections4.MapUtils;
-import com.google.common.collect.Maps;
 
 public class ConvertListToMapService {
 
