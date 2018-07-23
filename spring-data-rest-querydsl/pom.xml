@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-rest-querydsl</artifactId>
     <version>1.0</version>
-
     <name>spring-data-rest-querydsl</name>
 
     <parent>
@@ -46,6 +44,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -94,8 +93,5 @@
             </plugin>
         </plugins>
     </build>
-<<<<<<< HEAD
+
 </project>
-=======
-</project>
->>>>>>> 19a1633c35d6d49f9c51b8ecc3dbe127c91d75c3
