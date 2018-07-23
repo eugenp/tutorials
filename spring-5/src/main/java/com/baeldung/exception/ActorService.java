@@ -1,4 +1,4 @@
-package com.baeldung.execption;
+package com.baeldung.exception;
 
 import java.util.Arrays;
 import java.util.List;

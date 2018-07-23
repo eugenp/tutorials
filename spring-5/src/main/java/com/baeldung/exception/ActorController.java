@@ -1,4 +1,4 @@
-package com.baeldung.execption;
+package com.baeldung.exception;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

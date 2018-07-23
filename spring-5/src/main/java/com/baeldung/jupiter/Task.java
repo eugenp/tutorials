@@ -1,4 +1,4 @@
-package com.baeldung.web.reactive;
+package com.baeldung.jupiter;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
