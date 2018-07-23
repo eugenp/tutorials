@@ -1,5 +1,7 @@
 package com.baeldung.nested
 
+import org.slf4j.LoggerFactory
+
 class Computer(val model: String) {
 
     companion object {
@@ -7,6 +9,8 @@ class Computer(val model: String) {
         fun getBuiltDate(): String {
             return "2018-05-23"
         }
+
+        val log = LoggerFactory.getLogger(Computer.javaClass)
     }
 
     //Nested class
@@ -25,19 +29,33 @@ class Computer(val model: String) {
 
     fun powerOn(): String {
         //Local class
+        var defaultColor = "Blue"
+
         class Led(val color: String) {
             fun blink(): String {
                 return "blinking $color"
             }
+
+            fun changeDefaultPowerOnColor() {
+                defaultColor = "Violet"
+            }
         }
 
         val powerLed = Led("Green")
+        log.debug("defaultColor is $defaultColor")
+        powerLed.changeDefaultPowerOnColor()
+        log.debug("defaultColor changed inside Led class to $defaultColor")
         //Anonymous class
         val powerSwitch = object : Switcher {
             override fun on(): String {
                 return powerLed.blink()
             }
+            fun changeDefaultPowerOnColor() {
+                defaultColor = "Yellow"
+            }
         }
+        powerSwitch.changeDefaultPowerOnColor()
+        log.debug("defaultColor changed inside powerSwitch anonymous class to $defaultColor")
         return powerSwitch.on()
     }
 
