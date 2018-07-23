@@ -224,6 +224,7 @@
     </build>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <kotlin-maven-plugin.version>1.2.51</kotlin-maven-plugin.version>
         <kotlin-test-junit.version>1.2.51</kotlin-test-junit.version>
         <kotlin-stdlib.version>1.2.51</kotlin-stdlib.version>
