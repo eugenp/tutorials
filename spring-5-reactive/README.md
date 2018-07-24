@@ -10,3 +10,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Security 5 for Reactive Applications](http://www.baeldung.com/spring-security-5-reactive)
 - [Reactive WebSockets with Spring 5](http://www.baeldung.com/spring-5-reactive-websockets)
 - [Spring Webflux Filters](http://www.baeldung.com/spring-webflux-filters)
+- [How to Set a Header on a Response with Spring 5](http://www.baeldung.com/spring-response-header)
