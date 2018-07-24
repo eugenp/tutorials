@@ -550,6 +550,7 @@
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
 				<module>testing-modules/junit-abstract</module>
+				<module>snakeyaml</module>
 			</modules>
 
 		</profile>
@@ -670,6 +671,7 @@
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
 				<module>testing-modules/junit-abstract</module>
+				<module>snakeyaml</module>
 
 
 				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
@@ -1076,6 +1078,7 @@
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
 				<module>testing-modules/junit-abstract</module>
+				<module>snakeyaml</module>
                 
                 <!-- problematic -->
                 <!-- 

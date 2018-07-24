@@ -1,0 +1,4 @@
+!!com.baeldung.snakeyaml.model.Customer
+firstName: "John"
+lastName: "Doe"
+age: 20
