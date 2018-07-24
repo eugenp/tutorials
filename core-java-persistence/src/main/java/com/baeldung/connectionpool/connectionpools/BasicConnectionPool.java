@@ -61,6 +61,11 @@ public class BasicConnectionPool implements ConnectionPool {
     }
 
     @Override
+    public List<Connection> getConnectionPool() {
+        return connectionPool;
+    }
+    
+    @Override
     public String getUrl() {
         return url;
     }

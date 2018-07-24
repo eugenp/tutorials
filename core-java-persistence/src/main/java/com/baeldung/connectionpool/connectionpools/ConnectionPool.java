@@ -12,6 +12,8 @@ public interface ConnectionPool {
     
     List<Connection> getConnectionPool();
     
+    int getSize();
+    
     String getUrl();
     
     String getUser();
