@@ -10,3 +10,4 @@
 - [Composite Design Pattern in Java](http://www.baeldung.com/java-composite-pattern)
 - [Visitor Design Pattern in Java](http://www.baeldung.com/java-visitor-pattern)
 - [The DAO Pattern in Java](http://www.baeldung.com/java-dao-pattern)
+- [Interpreter Design Pattern in Java](https://github.com/eugenp/tutorials/tree/master/patterns/design-patterns)
