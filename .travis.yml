@@ -1,7 +1,7 @@
 language: java
 
 before_install: 
-  - echo "MAVEN_OPTS='-Xmx2048M -Xss128M -XX:+CMSClassUnloadingEnabled -XX:+UseG1GC -XX:-UseGCOverheadLimit'" > ~/.mavenrc
+  - echo "MAVEN_OPTS='-Xmx2048M -XX:+CMSClassUnloadingEnabled -XX:-UseGCOverheadLimit'" > ~/.mavenrc
 
 install: skip
 script: travis_wait 60 mvn -q install -Pdefault
@@ -9,7 +9,7 @@ script: travis_wait 60 mvn -q install -Pdefault
 sudo: required
 
 jdk:
-  - oraclejdk8
+  - oraclejdk10
 
 addons:
   apt:
