@@ -141,6 +141,13 @@
             <artifactId>hazelcast</artifactId>
             <version>${hazelcast.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>com.googlecode.jmapper-framework</groupId>
+            <artifactId>jmapper-core</artifactId>
+            <version>${jmapper.version}</version>
+        </dependency>
+                
     </dependencies>
 
     <build>
@@ -275,6 +282,7 @@
         <datanucleus-maven-plugin.version>5.0.2</datanucleus-maven-plugin.version>
         <datanucleus-xml.version>5.0.0-release</datanucleus-xml.version>
         <datanucleus-jdo-query.version>5.0.4</datanucleus-jdo-query.version>
+        <jmapper.version>1.6.0.1</jmapper.version>        
     </properties>
 
 </project>
