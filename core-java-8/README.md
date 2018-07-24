@@ -54,3 +54,5 @@
 - [Java 8 Unsigned Arithmetic Support](http://www.baeldung.com/java-unsigned-arithmetic)
 - [How to Get the Start and the End of a Day using Java](http://www.baeldung.com/java-day-start-end)
 - [Generalized Target-Type Inference in Java](http://www.baeldung.com/java-generalized-target-type-inference)
+- [Image to Base64 String Conversion](http://www.baeldung.com/java-base64-image-string)
+- [Calculate Age in Java](http://www.baeldung.com/java-get-age)

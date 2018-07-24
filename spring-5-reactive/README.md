@@ -18,3 +18,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Webflux Filters](http://www.baeldung.com/spring-webflux-filters)
 - [Reactive Flow with MongoDB, Kotlin, and Spring WebFlux](http://www.baeldung.com/kotlin-mongodb-spring-webflux)
 - [Spring Data Reactive Repositories with MongoDB](http://www.baeldung.com/spring-data-mongodb-reactive)
+- [How to Set a Header on a Response with Spring 5](http://www.baeldung.com/spring-response-header)
