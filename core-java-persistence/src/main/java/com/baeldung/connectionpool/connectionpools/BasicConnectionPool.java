@@ -81,6 +81,7 @@ public class BasicConnectionPool implements ConnectionPool {
         return password;
     }
     
+    @Override
     public void shutdown() throws SQLException {
         usedConnections.forEach(ConnectionPool::releaseConnection);
         for (Connection c : connectionPool) {
