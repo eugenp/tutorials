@@ -51,10 +51,7 @@
 				<SizeBasedTriggeringPolicy size="17 kB" />
 			</Policies>
 		</RollingFile>
-		<MapAppender name="MapAppender">
-			<PatternLayout
-				pattern=" Date: %d |  level:%level | class name:%logger | method name:%M() |  line number:%L |  Location: %l | message:%m%n" />
-		</MapAppender>
+		<MapAppender name="MapAppender"/>
 	</Appenders>
 	<Loggers>
 		<Logger name="CONSOLE_PATTERN_APPENDER_MARKER" level="TRACE"
