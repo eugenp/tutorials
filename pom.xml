@@ -422,6 +422,7 @@
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
+                                <module>spring-boot-vue</module>
 				<module>spring-boot-logging-log4j2</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
@@ -433,6 +434,7 @@
 				<module>spring-data-couchbase-2</module>
 				<module>persistence-modules/spring-data-dynamodb</module>
 				<module>spring-data-elasticsearch</module>
+				<module>spring-data-jpa</module>
 				<module>spring-data-keyvalue</module>
 				<module>spring-data-mongodb</module>
 				<module>persistence-modules/spring-data-neo4j</module>
@@ -1223,3 +1225,4 @@
 	</properties>
 
 </project>
+

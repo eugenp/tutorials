@@ -32,3 +32,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Scheduling Annotations](http://www.baeldung.com/spring-scheduling-annotations)
 - [Spring Web Annotations](http://www.baeldung.com/spring-mvc-annotations)
 - [Spring Core Annotations](http://www.baeldung.com/spring-core-annotations)
+- [Using Spring ResponseEntity to Manipulate the HTTP Response](http://www.baeldung.com/spring-response-entity)
+- [Using Spring @ResponseStatus to Set HTTP Status Code](http://www.baeldung.com/spring-response-status)

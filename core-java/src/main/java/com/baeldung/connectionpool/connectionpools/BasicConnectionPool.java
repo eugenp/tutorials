@@ -33,7 +33,7 @@ public class BasicConnectionPool implements ConnectionPool {
     
     @Override
     public Connection getConnection() throws SQLException {
-        if (connectionPool.size() == 0) {
+        if (connectionPool.isEmpty()) {
             if (usedConnections.size() < MAX_POOL_SIZE) {
                 connectionPool.add(createConnection(url, user, password));
             } else {
@@ -76,9 +76,7 @@ public class BasicConnectionPool implements ConnectionPool {
     }
 
     public void shutdown() throws SQLException {
-        for (Connection c : usedConnections) {
-            this.releaseConnection(c);
-        }
+        usedConnections.forEach(this::releaseConnection);
         for (Connection c : connectionPool) {
             c.close();
         }
