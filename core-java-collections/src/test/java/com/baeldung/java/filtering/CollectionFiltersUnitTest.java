@@ -27,15 +27,13 @@ public class CollectionFiltersUnitTest {
 
     @Test
     public void givenAnIntegerCollection_whenFilteringEvenValues_thenObtainTheFilteredCollectionForAllCases() {
-        Collection<Integer> filteredWithStreams1 = StreamsCollectionFilter.findEvenNumbersUsingLambda(BASE_INTEGER_COLLECTION);
-        Collection<Integer> filteredWithStreams2 = StreamsCollectionFilter.findEvenNumbersUsingPredicate(BASE_INTEGER_COLLECTION);
+        Collection<Integer> filteredWithStreams1 = StreamsCollectionFilter.findEvenNumbers(BASE_INTEGER_COLLECTION);
         Collection<Integer> filteredWithCollectionUtils = CollectionUtilsCollectionFilter.findEvenNumbers(new ArrayList<>(BASE_INTEGER_COLLECTION));
         Collection<Integer> filteredWithEclipseCollections = EclipseCollectionsCollectionFilter.findEvenNumbers(BASE_INTEGER_COLLECTION);
         Collection<Integer> filteredWithEclipseCollectionsUsingIterate = EclipseCollectionsCollectionFilter.findEvenNumbersUsingIterate(BASE_INTEGER_COLLECTION);
         Collection<Integer> filteredWithGuava = GuavaCollectionFilter.findEvenNumbers(BASE_INTEGER_COLLECTION);
 
-        assertThat(filteredWithStreams1).hasSameElementsAs(filteredWithStreams2)
-            .hasSameElementsAs(filteredWithCollectionUtils)
+        assertThat(filteredWithStreams1).hasSameElementsAs(filteredWithCollectionUtils)
             .hasSameElementsAs(filteredWithEclipseCollections)
             .hasSameElementsAs(filteredWithEclipseCollectionsUsingIterate)
             .hasSameElementsAs(filteredWithEclipseCollectionsUsingIterate)

@@ -18,7 +18,6 @@ public class CollectionFilterUnitTest {
 
     private static final Collection<Integer> BASE_INTEGER_COLLECTION = Arrays.asList(9, 12, 55, 56, 101, 115, 8002, 223, 2668, 19, 8);
     private static final Map<Integer, List<Integer>> EXPECTED_EVEN_FILTERED_AFTER_GROUPING_MAP = createExpectedFilterAfterGroupingMap();
-
     private static Map<Integer, List<Integer>> createExpectedFilterAfterGroupingMap() {
         Map<Integer, List<Integer>> map = new HashMap<>();
         map.put(1, Arrays.asList(8));
@@ -30,7 +29,6 @@ public class CollectionFilterUnitTest {
     }
 
     private static final Map<Integer, List<Integer>> EXPECTED_EVEN_FILTERED_BEFORE_GROUPING_MAP = createExpectedFilterBeforeGroupingMap();
-
     private static Map<Integer, List<Integer>> createExpectedFilterBeforeGroupingMap() {
         Map<Integer, List<Integer>> map = new HashMap<>();
         map.put(1, Arrays.asList(8));
