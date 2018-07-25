@@ -17,12 +17,15 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- Maven plugins -->
         <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-	</properties>
+        <hibernate.version>5.2.12.Final</hibernate.version>
+        <mysql.version>6.0.6</mysql.version>
+        <mariaDB4j.version>2.2.3</mariaDB4j.version>
+    </properties>
 	<dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.9.Final</version>
+            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -30,9 +33,30 @@
             <version>4.12</version>
         </dependency>
         <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.8.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.194</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-spatial</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.vorburger.mariaDB4j</groupId>
+            <artifactId>mariaDB4j</artifactId>
+            <version>${mariaDB4j.version}</version>
         </dependency>
 	</dependencies>
 	<build>

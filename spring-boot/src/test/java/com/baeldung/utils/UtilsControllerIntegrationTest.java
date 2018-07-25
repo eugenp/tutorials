@@ -22,18 +22,16 @@ public class UtilsControllerIntegrationTest {
     public void setup() {
         MockitoAnnotations.initMocks(this);
         this.mockMvc = MockMvcBuilders.standaloneSetup(utilsController)
-          .build();
+            .build();
 
     }
 
     @Test
     public void givenParameter_setRequestParam_andSetSessionAttribute() throws Exception {
         String param = "testparam";
-        this.mockMvc.perform(
-          post("/setParam")
-            .param("param", param)
+        this.mockMvc.perform(post("/setParam").param("param", param)
             .sessionAttr("parameter", param))
-          .andExpect(status().isOk());
+            .andExpect(status().isOk());
     }
 
 }

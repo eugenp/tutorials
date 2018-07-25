@@ -199,7 +199,6 @@
 				<artifactId>cargo-maven2-plugin</artifactId>
 				<version>${cargo-maven2-plugin.version}</version>
 				<configuration>
-					<wait>true</wait>
 					<container>
 						<containerId>tomcat8x</containerId>
 						<type>embedded</type>
@@ -240,6 +239,7 @@
 									</excludes>
 									<includes>
 										<include>**/*IntegrationTest.java</include>
+                                        <include>**/*UnitTest.java</include>
 									</includes>
 								</configuration>
 							</execution>

@@ -28,7 +28,9 @@
     </properties>
 
     <modules>
-	<module>spring-activiti</module>
+        <module>asm</module>     
+        <module>atomix</module>
+        <module>apache-cayenne</module>
         <module>aws</module>
         <module>akka-streams</module>
         <module>algorithms</module>
@@ -39,29 +41,33 @@
         <module>apache-thrift</module>
         <module>autovalue</module>
         <module>axon</module>
+        <module>bootique</module>
 
         <module>cdi</module>
         <!-- <module>core-java-9</module> -->
         <module>core-java</module>
-        <module>couchbase-sdk</module>
+        <module>core-java-8</module>
+        <module>core-java-concurrency</module>
+        <module>couchbase</module>
 
         <module>deltaspike</module>
         <module>dozer</module>
 
+        <module>ethereumj</module>
+
         <!--<module>ejb</module>-->
 
         <module>feign</module>
-        <module>flyway</module>
 
-        <!-- <module>gatling</module> --> <!-- not meant to run as part of the standard build -->
+        <!-- <module>testing-modules/gatling</module> --> <!-- not meant to run as part of the standard build -->
 
-
-        <module>groovy-spock</module>
+        <module>geotools</module>
+        <module>testing-modules/groovy-spock</module>
         <module>gson</module>
         <module>guava</module>
-        <module>guava18</module>
-        <module>guava19</module>
-        <module>guava21</module>
+        <module>guava-modules/guava-18</module>
+        <module>guava-modules/guava-19</module>
+        <module>guava-modules/guava-21</module>
         <module>guice</module>
         <module>disruptor</module>
 
@@ -76,58 +82,65 @@
         <module>immutables</module>
 
         <module>jackson</module>
-        <!--         <module>java-cassandra</module> -->
+        <!--         <module>persistence-modules/java-cassandra</module> -->
         <module>vavr</module>
         <module>javax-servlets</module>
         <module>javaxval</module>
         <module>jaxb</module>
-        <!--<module>jee7</module>-->
+        <module>jee-7</module>
         <!-- <module>jhipster/jhipster-monolithic</module> -->
         <module>jjwt</module>
-        <module>jooq</module>
         <module>jpa-storedprocedure</module>
         <module>jsf</module>
         <module>json-path</module>
         <module>json</module>
         <module>jsoup</module>
-        <module>junit5</module>
+        <module>testing-modules/junit-5</module>
         <module>jws</module>
 
         <module>libraries</module>
-        <module>log-mdc</module>
-        <module>log4j</module>
-        <module>log4j2</module>
+        <module>libraries-data</module>
+        <module>linkrest</module>        
+        <module>logging-modules/log-mdc</module>
+        <module>logging-modules/log4j</module>
+        <module>logging-modules/log4j2</module>
+        <module>logging-modules/logback</module>
         <module>lombok</module>
        <!-- <module>kotlin</module>-->
         <module>mapstruct</module>
         <module>metrics</module>
         <module>mesos-marathon</module>
-        <module>mockito</module>
-        <module>mockito2</module>
-        <module>mocks</module>
+        <module>testing-modules/mockito</module>
+        <module>testing-modules/mockito-2</module>
+        <module>testing-modules/mocks</module>
         <module>mustache</module>
+        <module>noexception</module>
 
+        <module>osgi</module>
         <module>orika</module>
 
         <module>patterns</module>
         <module>pdf</module>
         <module>protobuffer</module>
 
-        <module>querydsl</module>
+        <module>persistence-modules/querydsl</module>
 
         <!-- <module>raml</module> -->
         <module>reactor-core</module>
-        <module>redis</module>
-        <module>rest-assured</module>
-        <module>rest-testing</module>
+        <module>persistence-modules/redis</module>
+        <module>testing-modules/rest-assured</module>
+        <module>testing-modules/rest-testing</module>
         <module>resteasy</module>
         <module>rxjava</module>
+        <module>spring-swagger-codegen</module>
 
-        <module>selenium-junit-testng</module>
-        <module>solr</module>
+        <module>testing-modules/selenium-junit-testng</module>
+        <module>persistence-modules/solr</module>
         <module>spark-java</module>
       <!--  <module>spring-5</module>-->
+        <module>spring-5-reactive</module>
         <module>spring-5-mvc</module>
+        <module>spring-activiti</module>
         <module>spring-akka</module>
         <module>spring-amqp</module>
         <module>spring-all</module>
@@ -136,31 +149,36 @@
         <module>spring-batch</module>
         <module>spring-bom</module>
         <module>spring-boot</module>
+	    <module>spring-boot-keycloak</module>
+        <module>spring-boot-bootstrap</module>
         <module>spring-cloud-data-flow</module>
         <module>spring-cloud</module>
         <module>spring-core</module>
         <module>spring-cucumber</module>
         <module>spring-aop</module>
-        <module>spring-data-cassandra</module>
+        <module>persistence-modules/spring-data-cassandra</module>
         <module>spring-data-couchbase-2</module>
-        <module>spring-data-dynamodb</module>
+        <module>persistence-modules/spring-data-dynamodb</module>
         <module>spring-data-elasticsearch</module>
         <module>spring-data-mongodb</module>
-        <module>spring-data-neo4j</module>
-        <module>spring-data-redis</module>
+        <module>persistence-modules/spring-data-neo4j</module>
+        <module>persistence-modules/spring-data-redis</module>
         <module>spring-data-rest</module>
-        <module>spring-data-solr</module>
+        <module>persistence-modules/spring-data-solr</module>
         <module>spring-dispatcher-servlet</module>
         <module>spring-exceptions</module>
         <module>spring-freemarker</module>
-        <module>spring-hibernate3</module>
+        <module>persistence-modules/spring-hibernate-3</module>
         <module>spring-hibernate4</module>
-        <module>spring-hibernate5</module>
+        <module>persistence-modules/spring-hibernate-5</module>
+        <module>persistence-modules/spring-data-eclipselink</module>
         <module>spring-integration</module>
+        <module>spring-jenkins-pipeline</module>
         <module>spring-jersey</module>
+        <module>jmeter</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
-        <module>spring-jpa</module>
+        <module>persistence-modules/spring-jpa</module>
         <module>spring-kafka</module>
         <module>spring-katharsis</module>
         <module>spring-ldap</module>
@@ -173,13 +191,17 @@
         <module>spring-mvc-webflow</module>
         <module>spring-mvc-xml</module>
         <module>spring-mvc-simple</module>
+        <module>spring-mvc-kotlin</module>
         <module>spring-security-openid</module>
         <module>spring-protobuf</module>
         <module>spring-quartz</module>
         <module>spring-rest-angular</module>
         <module>spring-rest-docs</module>
+        <module>spring-rest-full</module>
+        <module>spring-rest-query-language</module>
         <module>spring-rest</module>
         <module>spring-rest-simple</module>
+        <module>spring-security-acl</module>
         <module>spring-security-cache-control</module>
         <module>spring-security-client/spring-security-jsp-authentication</module>
         <module>spring-security-client/spring-security-jsp-authorize</module>
@@ -199,7 +221,6 @@
         <module>spring-security-mvc-socket</module>
         <module>spring-security-rest-basic-auth</module>
         <module>spring-security-rest-custom</module>
-        <module>spring-security-rest-full</module>
         <module>spring-security-rest</module>
         <module>spring-security-sso</module>
         <module>spring-security-x509</module>
@@ -213,28 +234,37 @@
         <module>spring-zuul</module>
         <module>spring-reactor</module>
         <module>spring-vertx</module>
+		
+		<module>spring-rest-embedded-tomcat</module>
         
 
-        <module>testing</module>
-        <module>testng</module>
+        <module>testing-modules/testing</module>
+        <module>testing-modules/testng</module>
 
         <module>video-tutorials</module>
 
         <module>xml</module>
-        <module>xmlunit2</module>
-        <module>struts2</module>
+        <module>xmlunit-2</module>
+        <module>struts-2</module>
         <module>apache-velocity</module>
         <module>apache-solrj</module>
 
         <module>rabbitmq</module>
         <module>vertx</module>
-        <module>spring-data-gemfire</module>
+        <module>persistence-modules/spring-data-gemfire</module>
         <module>mybatis</module>
         <module>spring-drools</module>
         <module>drools</module>
-        <module>liquibase</module>
+        <module>persistence-modules/liquibase</module>
         <module>spring-boot-property-exp</module>
-        <module>mockserver</module>
+        <module>testing-modules/mockserver</module>
+        <module>undertow</module>
+        <module>vertx-and-rxjava</module>
+        <module>saas</module>
+        <module>deeplearning4j</module>
+        <module>spring-boot-admin</module>
+        <module>lucene</module>
+		<module>vraptor</module>
     </modules>
 
     <dependencies>
@@ -317,7 +347,7 @@
                         <exclude>**/JdbcTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
-                    <testFailureIgnore>true</testFailureIgnore>
+
                 </configuration>
             </plugin>
             <plugin>

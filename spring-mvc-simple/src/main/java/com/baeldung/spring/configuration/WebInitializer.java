@@ -15,6 +15,10 @@ public class WebInitializer implements WebApplicationInitializer {
 
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
 		ctx.register(ApplicationConfiguration.class);
+		//ctx.register(ThymeleafConfiguration.class);
+		//ctx.register(FreemarkerConfiguration.class);
+		//ctx.register(GroovyConfiguration.class);
+		//ctx.register(JadeTemplateConfiguration.class);
 		ctx.setServletContext(container);
 
 		// Manage the lifecycle of the root application context
