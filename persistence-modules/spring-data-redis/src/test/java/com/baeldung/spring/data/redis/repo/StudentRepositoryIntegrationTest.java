@@ -3,13 +3,17 @@ package com.baeldung.spring.data.redis.repo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -18,10 +22,24 @@ import com.baeldung.spring.data.redis.model.Student;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = RedisConfig.class)
+@DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 public class StudentRepositoryIntegrationTest {
 
     @Autowired
     private StudentRepository studentRepository;
+    
+    private static redis.embedded.RedisServer redisServer;
+    
+    @BeforeClass
+    public static void startRedisServer() throws IOException {
+        redisServer = new redis.embedded.RedisServer(6379);
+        redisServer.start();
+    }
+    
+    @AfterClass
+    public static void stopRedisServer() throws IOException {
+        redisServer.stop();
+    }
 
     @Test
     public void whenSavingStudent_thenAvailableOnRetrieval() throws Exception {

@@ -176,7 +176,6 @@
     </build>
 
     <properties>
-        <java-version>1.8</java-version>
         <!-- spring -->
         <org.springframework-version>4.3.4.RELEASE</org.springframework-version>
         <springframework-security.version>4.2.0.RELEASE</springframework-security.version>

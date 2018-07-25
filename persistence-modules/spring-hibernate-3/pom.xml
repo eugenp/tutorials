@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-hibernate-3</artifactId>
@@ -86,24 +86,15 @@
     <properties>
         <!-- Spring -->
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
         <javassist.version>3.21.0-GA</javassist.version>
         <!-- persistence -->
         <hibernate.version>3.6.10.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <tomcat-dbcp.version>8.5.8</tomcat-dbcp.version>
         <h2.version>1.4.193</h2.version>
-        <!-- various -->
-        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <httpcore.version>4.4.5</httpcore.version>
-        <httpclient.version>4.5.2</httpclient.version>
-        <rest-assured.version>2.9.0</rest-assured.version>
-        <!-- maven plugins -->
-        <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
     </properties>
 
 </project>

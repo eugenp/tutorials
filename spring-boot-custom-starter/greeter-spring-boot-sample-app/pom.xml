@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
@@ -13,19 +13,16 @@
         <relativePath>../../parent-boot-1</relativePath>
     </parent>
 
-    <properties>
-        <greeter-starter.version>0.0.1-SNAPSHOT</greeter-starter.version>
-    </properties>
-
     <dependencies>
-
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>greeter-spring-boot-starter</artifactId>
             <version>${greeter-starter.version}</version>
         </dependency>
-
     </dependencies>
 
+    <properties>
+        <greeter-starter.version>0.0.1-SNAPSHOT</greeter-starter.version>
+    </properties>
 
 </project>
