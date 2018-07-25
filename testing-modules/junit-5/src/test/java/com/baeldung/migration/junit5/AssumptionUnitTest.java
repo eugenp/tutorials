@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.migration.junit5;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assumptions.assumeFalse;
@@ -11,13 +11,13 @@ public class AssumptionUnitTest {
 
     @Test
     void trueAssumption() {
-        assumeTrue(5 > 1);
+        assumeTrue(5 > 1, () -> "5 is greater the 1");
         assertEquals(5 + 2, 7);
     }
 
     @Test
     void falseAssumption() {
-        assumeFalse(5 < 1);
+        assumeFalse(5 < 1, () -> "5 is less then 1");
         assertEquals(5 + 2, 7);
     }
 
