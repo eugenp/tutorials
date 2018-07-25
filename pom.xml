@@ -311,7 +311,6 @@
                 <module>core-kotlin</module>
                 <module>core-groovy</module>
                 <module>core-java-concurrency</module>
-                <module>core-java-persistence</module>
                 <module>couchbase</module>
                 <module>deltaspike</module>
                 <module>dozer</module>
