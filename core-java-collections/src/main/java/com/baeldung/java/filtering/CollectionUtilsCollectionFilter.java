@@ -8,13 +8,7 @@ import org.apache.commons.collections4.Predicate;
 public class CollectionUtilsCollectionFilter {
 
     static public Collection<Integer> findEvenNumbers(Collection<Integer> baseCollection) {
-        Predicate<Integer> apacheEventNumberPredicate = new Predicate<Integer>() {
-
-            @Override
-            public boolean evaluate(Integer object) {
-                return object % 2 == 0;
-            }
-        };
+        Predicate<Integer> apacheEventNumberPredicate = item -> item % 2 == 0;
 
         CollectionUtils.filter(baseCollection, apacheEventNumberPredicate);
         return baseCollection;

@@ -16,22 +16,11 @@ public class StreamsCollectionFilter {
         return filterCollectionHelperMethod(baseCollection, item -> item % 2 == 0);
     }
 
-    static public Collection<Integer> findEvenNumbersUsingLambda(Collection<Integer> baseCollection) {
-        return baseCollection.stream()
-            .filter(item -> item % 2 == 0)
-            .collect(Collectors.toList());
-    }
-
-    static public Collection<Integer> findEvenNumbersUsingPredicate(Collection<Integer> baseCollection) {
-        Predicate<Integer> evenNumberPredicate = new Predicate<Integer>() {
-            @Override
-            public boolean test(Integer i) {
-                return i % 2 == 0;
-            }
-        };
+    static public Collection<Integer> findEvenNumbers(Collection<Integer> baseCollection) {
+        Predicate<Integer> streamsPredicate = item -> item % 2 == 0;
 
         return baseCollection.stream()
-            .filter(evenNumberPredicate)
+            .filter(streamsPredicate)
             .collect(Collectors.toList());
     }
 }

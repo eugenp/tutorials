@@ -39,12 +39,12 @@
         <dependency>
             <groupId>org.eclipse.collections</groupId>
             <artifactId>eclipse-collections-api</artifactId>
-            <version>9.2.0</version>
+            <version>${eclipse.collections.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.collections</groupId>
             <artifactId>eclipse-collections</artifactId>
-            <version>9.2.0</version>
+            <version>${eclipse.collections.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
@@ -67,5 +67,6 @@
         <collections-generic.version>4.01</collections-generic.version>
         <avaitility.version>1.7.0</avaitility.version>
         <assertj.version>3.6.1</assertj.version>
+        <eclipse.collections.version>9.2.0</eclipse.collections.version>
     </properties>
 </project>
