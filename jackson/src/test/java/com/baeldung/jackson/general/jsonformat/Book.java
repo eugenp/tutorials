@@ -17,9 +17,7 @@ public class Book extends Item {
 
     private String ISBN;
 
-    @JsonFormat(
-            shape = JsonFormat.Shape.STRING,
-            pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private Date published;
     private BigDecimal pages;
 

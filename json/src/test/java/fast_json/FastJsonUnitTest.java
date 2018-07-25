@@ -32,11 +32,7 @@ public class FastJsonUnitTest {
     @Test
     public void whenJavaList_thanConvertToJsonCorrect() {
         String personJsonFormat = JSON.toJSONString(listOfPersons);
-        assertEquals(
-                personJsonFormat,
-                "[{\"FIRST NAME\":\"Doe\",\"LAST NAME\":\"John\",\"DATE OF BIRTH\":"
-                        + "\"24/07/2016\"},{\"FIRST NAME\":\"Doe\",\"LAST NAME\":\"Janette\",\"DATE OF BIRTH\":"
-                        + "\"24/07/2016\"}]");
+        assertEquals(personJsonFormat, "[{\"FIRST NAME\":\"Doe\",\"LAST NAME\":\"John\",\"DATE OF BIRTH\":" + "\"24/07/2016\"},{\"FIRST NAME\":\"Doe\",\"LAST NAME\":\"Janette\",\"DATE OF BIRTH\":" + "\"24/07/2016\"}]");
     }
 
     @Test
@@ -44,8 +40,10 @@ public class FastJsonUnitTest {
         String personJsonFormat = JSON.toJSONString(listOfPersons.get(0));
         Person newPerson = JSON.parseObject(personJsonFormat, Person.class);
         assertEquals(newPerson.getAge(), 0); // serialize is set to false for age attribute
-        assertEquals(newPerson.getFirstName(), listOfPersons.get(0).getFirstName());
-        assertEquals(newPerson.getLastName(), listOfPersons.get(0).getLastName());
+        assertEquals(newPerson.getFirstName(), listOfPersons.get(0)
+            .getFirstName());
+        assertEquals(newPerson.getLastName(), listOfPersons.get(0)
+            .getLastName());
     }
 
     @Test
@@ -58,18 +56,13 @@ public class FastJsonUnitTest {
             jsonObject.put("DATE OF BIRTH", "2016/12/12 12:12:12");
             jsonArray.add(jsonObject);
         }
-        assertEquals(
-                jsonArray.toString(),
-                "[{\"LAST NAME\":\"Doe0\",\"DATE OF BIRTH\":"
-                        + "\"2016/12/12 12:12:12\",\"FIRST NAME\":\"John0\"},{\"LAST NAME\":\"Doe1\","
-                        + "\"DATE OF BIRTH\":\"2016/12/12 12:12:12\",\"FIRST NAME\":\"John1\"}]");
+        assertEquals(jsonArray.toString(), "[{\"LAST NAME\":\"Doe0\",\"DATE OF BIRTH\":" + "\"2016/12/12 12:12:12\",\"FIRST NAME\":\"John0\"},{\"LAST NAME\":\"Doe1\"," + "\"DATE OF BIRTH\":\"2016/12/12 12:12:12\",\"FIRST NAME\":\"John1\"}]");
     }
 
     @Test
     public void givenContextFilter_whenJavaObject_thanJsonCorrect() {
         ContextValueFilter valueFilter = new ContextValueFilter() {
-            public Object process(BeanContext context, Object object,
-                                  String name, Object value) {
+            public Object process(BeanContext context, Object object, String name, Object value) {
                 if (name.equals("DATE OF BIRTH")) {
                     return "NOT TO DISCLOSE";
                 }
@@ -87,18 +80,16 @@ public class FastJsonUnitTest {
     public void givenSerializeConfig_whenJavaObject_thanJsonCorrect() {
         NameFilter formatName = new NameFilter() {
             public String process(Object object, String name, Object value) {
-                return name.toLowerCase().replace(" ", "_");
+                return name.toLowerCase()
+                    .replace(" ", "_");
             }
         };
-        SerializeConfig.getGlobalInstance().addFilter(Person.class, formatName);
-        String jsonOutput = JSON.toJSONStringWithDateFormat(listOfPersons,
-                "yyyy-MM-dd");
-        assertEquals(
-                jsonOutput,
-                "[{\"first_name\":\"Doe\",\"last_name\":\"John\","
-                        + "\"date_of_birth\":\"2016-07-24\"},{\"first_name\":\"Doe\",\"last_name\":"
-                        + "\"Janette\",\"date_of_birth\":\"2016-07-24\"}]");
+        SerializeConfig.getGlobalInstance()
+            .addFilter(Person.class, formatName);
+        String jsonOutput = JSON.toJSONStringWithDateFormat(listOfPersons, "yyyy-MM-dd");
+        assertEquals(jsonOutput, "[{\"first_name\":\"Doe\",\"last_name\":\"John\"," + "\"date_of_birth\":\"2016-07-24\"},{\"first_name\":\"Doe\",\"last_name\":" + "\"Janette\",\"date_of_birth\":\"2016-07-24\"}]");
         // resetting custom serializer
-        SerializeConfig.getGlobalInstance().put(Person.class, null);
+        SerializeConfig.getGlobalInstance()
+            .put(Person.class, null);
     }
 }

@@ -12,9 +12,7 @@ public class WordCount {
     public static DataSet<Tuple2<String, Integer>> startWordCount(ExecutionEnvironment env, List<String> lines) throws Exception {
         DataSet<String> text = env.fromCollection(lines);
 
-        return text.flatMap(new LineSplitter())
-                .groupBy(0)
-                .aggregate(Aggregations.SUM, 1);
+        return text.flatMap(new LineSplitter()).groupBy(0).aggregate(Aggregations.SUM, 1);
 
     }
 }

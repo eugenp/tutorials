@@ -1,5 +1,6 @@
 package org.baeldung.boot;
 
+import org.baeldung.demo.DemoApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

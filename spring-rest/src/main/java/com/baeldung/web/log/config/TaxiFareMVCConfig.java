@@ -4,10 +4,10 @@ import com.baeldung.web.log.app.TaxiFareRequestInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class TaxiFareMVCConfig extends WebMvcConfigurerAdapter {
+public class TaxiFareMVCConfig implements WebMvcConfigurer {
 
     @Autowired
     private TaxiFareRequestInterceptor taxiFareRequestInterceptor;

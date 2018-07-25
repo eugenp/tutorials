@@ -11,10 +11,9 @@ public class Person {
     private Date dateOfBirth;
 
     public Person() {
-
     }
 
-    public Person(int age, String fullName, Date dateOfBirth) {
+    Person(int age, String fullName, Date dateOfBirth) {
         super();
         this.age = age;
         this.fullName = fullName;
