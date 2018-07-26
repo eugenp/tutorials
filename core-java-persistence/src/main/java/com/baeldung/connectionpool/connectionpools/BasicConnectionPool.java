@@ -83,7 +83,7 @@ public class BasicConnectionPool implements ConnectionPool {
     
     @Override
     public void shutdown() {
-        usedConnections.forEach(ConnectionPool::releaseConnection);
+        usedConnections.forEach(this::releaseConnection);
         for (Connection c : connectionPool) {
             c.close();
         }
