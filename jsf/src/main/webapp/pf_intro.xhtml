@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Hello Primefaces</title>
+</h:head>
+<h:body>
+	<h:form id="primeForm">
+
+		<p:panelGrid columns="2">
+			<h:outputText value="#{helloPFBean.firstName}" />
+			<h:outputText value="#{helloPFBean.lastName}" />
+		</p:panelGrid>
+
+		<h:panelGrid columns="2">
+			<p:outputLabel for="jsfCompSuite" value="Component Suite" />
+			<p:selectOneRadio id="jsfCompSuite"
+				value="#{helloPFBean.componentSuite}">
+				<f:selectItem itemLabel="ICEfaces" itemValue="ICEfaces" />
+				<f:selectItem itemLabel="RichFaces" itemValue="RichFaces" />
+			</p:selectOneRadio>
+		</h:panelGrid>
+
+		<p:dataTable var="technology" value="#{helloPFBean.technologies}">
+			<p:column headerText="Name">
+				<h:outputText value="#{technology.name}" />
+			</p:column>
+
+			<p:column headerText="Version">
+				<h:outputText value="#{technology.currentVersion}" />
+			</p:column>
+		</p:dataTable>
+
+		<h:panelGrid columns="3">
+			<h:outputText value="Blur event " />
+			<p:inputText id="inputTextId" value="#{helloPFBean.inputText}">
+				<p:ajax event="blur" update="outputTextId"
+					listener="#{helloPFBean.onBlurEvent}" />
+			</p:inputText>
+			<h:outputText id="outputTextId" value="#{helloPFBean.outputText}" />
+			<p:commandButton value="Open Dialog" icon="ui-icon-note"
+				onclick="PF('exDialog').show();">
+			</p:commandButton>
+		</h:panelGrid>
+
+		<p:dialog header="Example dialog" widgetVar="exDialog" minHeight="40">
+			<h:outputText value="Hello Baeldung!" />
+		</p:dialog>
+
+	</h:form>
+
+</h:body>
+</html>

@@ -23,10 +23,13 @@ public class JsonSetterUnitTest {
         String json = "{\"firstName\":\"Alex\",\"lastName\":\"Theedom\",\"publications\":[{\"title\":\"Professional Java EE Design Patterns\"}]}";
 
         // act
-        Author author = new ObjectMapper().readerFor(Author.class).readValue(json);
+        Author author = new ObjectMapper().readerFor(Author.class)
+            .readValue(json);
 
         // assert
-        assertThat(from(json).getList("publications").size()).isEqualTo(author.getItems().size());
+        assertThat(from(json).getList("publications")
+            .size()).isEqualTo(author.getItems()
+                .size());
 
     }
 }

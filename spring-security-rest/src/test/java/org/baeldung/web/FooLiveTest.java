@@ -17,17 +17,20 @@ import com.jayway.restassured.specification.RequestSpecification;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { TestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class FooLiveTest {
-    private static final String URL_PREFIX = "http://localhost:8082/spring-security-rest";
+    private static final String URL_PREFIX = "http://localhost:8080/spring-security-rest";
     // private FormAuthConfig formConfig = new FormAuthConfig(URL_PREFIX + "/login", "temporary", "temporary");
 
     private String cookie;
 
     private RequestSpecification givenAuth() {
         // return RestAssured.given().auth().form("user", "userPass", formConfig);
-        if (cookie == null) {
-            cookie = RestAssured.given().contentType("application/x-www-form-urlencoded").formParam("password", "userPass").formParam("username", "user").post(URL_PREFIX + "/login").getCookie("JSESSIONID");
-        }
-        return RestAssured.given().cookie("JSESSIONID", cookie);
+        // if (cookie == null) {
+        // cookie = RestAssured.given().contentType("application/x-www-form-urlencoded").formParam("password", "userPass").formParam("username", "user").post(URL_PREFIX + "/login").getCookie("JSESSIONID");
+        // }
+        // return RestAssured.given().cookie("JSESSIONID", cookie);
+        return RestAssured.given()
+            .auth()
+            .basic("user", "userPass");
     }
 
     @Test

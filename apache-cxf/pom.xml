@@ -19,10 +19,6 @@
         <module>cxf-aegis</module>
     </modules>
 
-    <properties>
-        <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
-    </properties>
-
     <build>
         <defaultGoal>install</defaultGoal>
         <pluginManagement>
@@ -35,4 +31,9 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <cxf.version>3.1.8</cxf.version>
+    </properties>
+
 </project>

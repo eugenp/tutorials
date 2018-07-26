@@ -66,7 +66,8 @@ public class JacksonCollectionDeserializationUnitTest {
         final String jsonArray = mapper.writeValueAsString(listOfDtos);
         // [{"stringValue":"a","intValue":1,"booleanValue":true},{"stringValue":"bc","intValue":3,"booleanValue":false}]
 
-        final CollectionType javaType = mapper.getTypeFactory().constructCollectionType(List.class, MyDto.class);
+        final CollectionType javaType = mapper.getTypeFactory()
+            .constructCollectionType(List.class, MyDto.class);
         final List<MyDto> asList = mapper.readValue(jsonArray, javaType);
         assertThat(asList.get(0), instanceOf(MyDto.class));
     }

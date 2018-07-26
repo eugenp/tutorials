@@ -1,0 +1,12 @@
+<div th:fragment="formField (field, value, size)">
+    <div>
+        <label th:for="${#strings.toLowerCase(field)}"> <span
+            th:text="${field}">Field</span>
+        </label>
+    </div>
+    <div>
+        <input type="text" th:id="${#strings.toLowerCase(field)}"
+            th:name="${#strings.toLowerCase(field)}" th:value="${value}"
+            th:size="${size}">
+    </div>
+</div>

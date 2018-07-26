@@ -26,7 +26,7 @@ public class JavaTuplesUnitTest {
 
         Pair<String, String> pairFromList = Pair.fromIterable(collectionOfNames, 2);
 
-        String[] names = new String[]{"john", "doe", "anne"};
+        String[] names = new String[] { "john", "doe", "anne" };
         Triplet<String, String, String> triplet2 = Triplet.fromArray(names);
     }
 
