@@ -3,16 +3,18 @@ package com.baeldung.vavr.exception.handling;
 import com.baeldung.vavr.exception.handling.client.ClientException;
 import com.baeldung.vavr.exception.handling.client.HttpClient;
 import com.baeldung.vavr.exception.handling.client.Response;
-import com.baeldung.vavr.exception.handling.VavrTry;
-
 import io.vavr.collection.Stream;
 import io.vavr.control.Option;
 import io.vavr.control.Try;
 import org.junit.Test;
 
-import static io.vavr.API.*;
+import static io.vavr.API.$;
+import static io.vavr.API.Case;
+import static io.vavr.API.Match;
 import static io.vavr.Predicates.instanceOf;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 public class VavrTryUnitTest {
 
@@ -26,8 +28,8 @@ public class VavrTryUnitTest {
         //when
         Try<Response> response = new VavrTry(httpClient).getResponse();
         Integer chainedResult = response
-                .map(this::actionThatTakesResponse)
-                .getOrElse(defaultChainedResult);
+          .map(this::actionThatTakesResponse)
+          .getOrElse(defaultChainedResult);
         Stream<String> stream = response.toStream().map(it -> it.id);
 
         //then
@@ -49,8 +51,8 @@ public class VavrTryUnitTest {
         //when
         Try<Response> response = new VavrTry(httpClient).getResponse();
         Integer chainedResult = response
-                .map(this::actionThatTakesResponse)
-                .getOrElse(defaultChainedResult);
+          .map(this::actionThatTakesResponse)
+          .getOrElse(defaultChainedResult);
         Option<Response> optionalResponse = response.toOption();
 
         //then
@@ -70,9 +72,9 @@ public class VavrTryUnitTest {
 
         //when
         Try<Response> recovered = new VavrTry(httpClient).getResponse()
-                .recover(r -> Match(r).of(
-                        Case($(instanceOf(ClientException.class)), defaultResponse)
-                ));
+          .recover(r -> Match(r).of(
+            Case($(instanceOf(ClientException.class)), defaultResponse)
+          ));
 
         //then
         assertTrue(recovered.isFailure());
@@ -92,10 +94,10 @@ public class VavrTryUnitTest {
 
         //when
         Try<Response> recovered = new VavrTry(httpClient).getResponse()
-                .recover(r -> Match(r).of(
-                        Case($(instanceOf(ClientException.class)), defaultResponse),
-                        Case($(instanceOf(IllegalArgumentException.class)), defaultResponse)
-                ));
+          .recover(r -> Match(r).of(
+            Case($(instanceOf(ClientException.class)), defaultResponse),
+            Case($(instanceOf(IllegalArgumentException.class)), defaultResponse)
+          ));
 
         //then
         assertTrue(recovered.isSuccess());
@@ -106,7 +108,7 @@ public class VavrTryUnitTest {
         return response.id.hashCode();
     }
 
-    public int actionThatTakesTryResponse(Try<Response> response, int defaultTransformation){
+    public int actionThatTakesTryResponse(Try<Response> response, int defaultTransformation) {
         return response.transform(responses -> response.map(it -> it.id.hashCode()).getOrElse(defaultTransformation));
     }
 
