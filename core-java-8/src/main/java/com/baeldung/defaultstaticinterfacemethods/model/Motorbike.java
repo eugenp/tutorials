@@ -7,12 +7,12 @@ public class Motorbike implements Vehicle {
     public Motorbike(String brand) {
         this.brand = brand;
     }
-
+    
     @Override
     public String getBrand() {
         return brand;
     }
-
+    
     @Override
     public String speedUp() {
         return "The motorbike is speeding up.";
