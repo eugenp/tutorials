@@ -1,5 +1,7 @@
 package com.baeldung.snakeyaml;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.StringWriter;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -8,7 +10,7 @@ import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.nodes.Tag;
 
-import com.baeldung.snakeyaml.model.Customer;
+import com.baeldung.snakeyaml.Customer;
 
 public class JavaToYAMLSerializationUnitTest {
 
@@ -22,7 +24,8 @@ public class JavaToYAMLSerializationUnitTest {
         StringWriter writer = new StringWriter();
         yaml.dump(data, writer);
         System.out.println(writer.toString());
-        
+        String expectedYaml = "name: Silenthand Olleander\nrace: Human\ntraits: [ONE_HAND, ONE_EYE]\n";
+        assertEquals(expectedYaml, writer.toString());
     }
 
     @Test
@@ -33,8 +36,9 @@ public class JavaToYAMLSerializationUnitTest {
         customer.setLastName("McDowell");
         Yaml yaml = new Yaml();
         StringWriter writer = new StringWriter();
-        yaml.dump(customer, writer);
-        System.out.println(writer.toString());
+        yaml.dump(customer, writer);        
+        String expectedYaml = "!!com.baeldung.snakeyaml.Customer {age: 45, contactDetails: null, firstName: Greg,\n  homeAddress: null, lastName: McDowell}\n";
+        assertEquals(expectedYaml, writer.toString());
     }
 
     @Test
@@ -44,8 +48,9 @@ public class JavaToYAMLSerializationUnitTest {
         customer.setFirstName("Greg");
         customer.setLastName("McDowell");
         Yaml yaml = new Yaml();
-        yaml.dumpAs(customer, Tag.MAP, null);
         System.out.println(yaml.dumpAs(customer, Tag.MAP, null));
+        String expectedYaml = "{age: 45, contactDetails: null, firstName: Greg, homeAddress: null, lastName: McDowell}\n";
+        assertEquals(expectedYaml, yaml.dumpAs(customer, Tag.MAP, null));
     }
 
 }

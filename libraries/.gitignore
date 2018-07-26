@@ -6,3 +6,4 @@
 
 # Packaged files #
 *.jar
+/bin/

@@ -11,8 +11,3 @@ homeAddress:
    city: "City Y"
    state: "State Y"
    zip: 345657
-officeAddress:
-   line: "Xyz, Office Street"
-   city: "City Y"
-   state: "State Y"
-   zip: 345657

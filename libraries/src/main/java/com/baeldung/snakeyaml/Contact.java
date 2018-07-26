@@ -1,4 +1,4 @@
-package com.baeldung.snakeyaml.model;
+package com.baeldung.snakeyaml;
 
 public class Contact {
 

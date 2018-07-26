@@ -1,4 +1,4 @@
-package com.baeldung.snakeyaml.model;
+package com.baeldung.snakeyaml;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ public class Customer {
     private Integer age;
     private List<Contact> contactDetails;
     private Address homeAddress;
-    private Address officeAddress;
 
     public String getFirstName() {
         return firstName;
@@ -49,14 +48,6 @@ public class Customer {
 
     public void setHomeAddress(Address homeAddress) {
         this.homeAddress = homeAddress;
-    }
-
-    public Address getOfficeAddress() {
-        return officeAddress;
-    }
-
-    public void setOfficeAddress(Address officeAddress) {
-        this.officeAddress = officeAddress;
-    }
+    }    
 
 }
