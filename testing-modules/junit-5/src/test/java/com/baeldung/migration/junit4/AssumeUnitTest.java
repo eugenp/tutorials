@@ -36,13 +36,13 @@ import org.junit.Test;
 public class AssumeUnitTest {
 
     @Test
-    void trueAssumption() {
+    public void trueAssumption() {
         assumeTrue("5 is greater the 1", 5 > 1);
         assertEquals(5 + 2, 7);
     }
 
     @Test
-    void falseAssumption() {
+    public void falseAssumption() {
         assumeFalse("5 is less then 1", 5 < 1);
         assertEquals(5 + 2, 7);
     }
