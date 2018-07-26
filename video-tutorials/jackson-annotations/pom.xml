@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.baeldung</groupId>
     <artifactId>jackson-annotations</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
     <name>jacksonannotation</name>
 
     <parent>
@@ -16,12 +16,6 @@
     <dependencies>
 
         <!-- utils -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -91,7 +85,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>3.0.1</version>
+            <version>${rest-assured.version}</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -105,7 +99,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>json-schema-validator</artifactId>
-            <version>3.0.0</version>
+            <version>${rest-assured-json-schema-validator.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -140,37 +134,25 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
     </build>
 
     <properties>
-
-        <!-- persistence -->
-        <hibernate.version>4.3.11.Final</hibernate.version>
-        <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
 
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
 
         <!-- various -->
-        <hibernate-validator.version>5.1.3.Final</hibernate-validator.version>
         <joda-time.version>2.9.6</joda-time.version>
         <gson.version>2.8.0</gson.version>
         <commons-collections4.version>4.1</commons-collections4.version>
 
         <!-- util -->
-        <guava.version>20.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-io.version>2.5</commons-io.version>
 
         <!-- testing -->
-        <mockito.version>2.8.9</mockito.version>
-
-        <httpcore.version>4.4.1</httpcore.version>
-        <httpclient.version>4.5</httpclient.version>
-
-        <rest-assured.version>2.9.0</rest-assured.version>
-
+        <rest-assured.version>3.0.1</rest-assured.version>
+        <rest-assured-json-schema-validator.version>3.0.0</rest-assured-json-schema-validator.version>
         <assertj-core.version>3.6.1</assertj-core.version>
         <json-schema-validator.version>2.2.6</json-schema-validator.version>
         <json-path.version>3.0.1</json-path.version>
@@ -178,5 +160,3 @@
     </properties>
 
 </project>
-
-

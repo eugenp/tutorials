@@ -1,8 +1,5 @@
 package com.baeldung.persistence.service;
 
-import com.baeldung.persistence.model.Child;
-import com.baeldung.persistence.model.Parent;
-import com.baeldung.spring.PersistenceConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +8,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.persistence.model.Child;
+import com.baeldung.persistence.model.Parent;
+import com.baeldung.spring.config.PersistenceTestConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class ParentServicePersistenceIntegrationTest {
 
     @Autowired

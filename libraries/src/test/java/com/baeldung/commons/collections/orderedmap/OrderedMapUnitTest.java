@@ -14,8 +14,8 @@ import static org.junit.Assert.assertEquals;
 
 public class OrderedMapUnitTest {
 
-    private String[] names = {"Emily", "Mathew", "Rose", "John", "Anna"};
-    private Integer[] ages = {37, 28, 40, 36, 21};
+    private String[] names = { "Emily", "Mathew", "Rose", "John", "Anna" };
+    private Integer[] ages = { 37, 28, 40, 36, 21 };
 
     private int RUNNERS_COUNT = names.length;
 

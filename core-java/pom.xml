@@ -5,98 +5,58 @@
     <artifactId>core-java</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>core-java</name>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-java</relativePath>
+    </parent>
+
     <dependencies>
-
-        <!-- utils -->
-        <dependency>
-            <groupId>net.sourceforge.collections</groupId>
-            <artifactId>collections-generic</artifactId>
-            <version>${collections-generic.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <version>${commons-collections4.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${commons-math3.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.decimal4j</groupId>
-            <artifactId>decimal4j</artifactId>
-            <version>${decimal4j.version}</version>
-        </dependency>
-
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
             <version>${bouncycastle.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.unix4j</groupId>
             <artifactId>unix4j-command</artifactId>
             <version>${unix4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.googlecode.grep4j</groupId>
             <artifactId>grep4j</artifactId>
             <version>${grep4j.version}</version>
         </dependency>
         <!-- web -->
-
         <!-- marshalling -->
-
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
+        </dependency>
         <!-- logging -->
-
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-            <!-- <scope>runtime</scope> -->
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-            <!-- <scope>runtime</scope> --> <!-- some spring dependencies need to compile against jcl -->
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
         </dependency>
         <dependency> <!-- needed to bridge to slf4j for projects that use the log4j APIs directly -->
             <groupId>org.slf4j</groupId>
@@ -109,53 +69,11 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- test scoped -->
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>1.3</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jayway.awaitility</groupId>
-            <artifactId>awaitility</artifactId>
-            <version>${avaitility.version}</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -164,23 +82,109 @@
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
-            <version>1.1</version>
+            <version>${javamoney.moneta.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.owasp.esapi</groupId>
             <artifactId>esapi</artifactId>
-            <version>2.1.0.1</version>
+            <version>${esapi.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.sun.messaging.mq</groupId>
             <artifactId>fscontext</artifactId>
             <version>${fscontext.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.codepoetics</groupId>
+            <artifactId>protonpack</artifactId>
+            <version>${protonpack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>one.util</groupId>
+            <artifactId>streamex</artifactId>
+            <version>${streamex.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vavr</groupId>
+            <artifactId>vavr</artifactId>
+            <version>${vavr.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-generator-annprocess.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${springframework.spring-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${springframework.boot.spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2database.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>${icu4j.version}</version>
+        </dependency>
+        <!-- Mime Type Resolution Libraries -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>${tika.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jmimemagic</groupId>
+            <artifactId>jmimemagic</artifactId>
+            <version>${jmime-magic.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${commons-dbcp2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
+        </dependency>
+        <!-- instrumentation -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javaassist.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.8.0</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -194,23 +198,14 @@
         </resources>
 
         <plugins>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
                     <excludes>
+                        <exclude>**/*LiveTest.java</exclude>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                     </excludes>
@@ -238,6 +233,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -276,6 +272,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven-shade-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -284,8 +281,7 @@
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </transformer>
                             </transformers>
@@ -297,6 +293,7 @@
             <plugin>
                 <groupId>com.jolira</groupId>
                 <artifactId>onejar-maven-plugin</artifactId>
+                <version>${onejar-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <configuration>
@@ -314,6 +311,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -330,7 +328,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <executable>java</executable>
                     <mainClass>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</mainClass>
@@ -338,13 +336,22 @@
                         <argument>-Xmx300m</argument>
                         <argument>-XX:+UseParallelGC</argument>
                         <argument>-classpath</argument>
-                        <classpath/>
+                        <classpath />
                         <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
                     </arguments>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
         </plugins>
-
     </build>
 
     <profiles>
@@ -367,6 +374,7 @@
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>
@@ -377,44 +385,194 @@
                             </systemPropertyVariables>
                         </configuration>
                     </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>${exec-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>run-benchmarks</id>
+                                <!-- <phase>integration-test</phase> -->
+                                <phase>none</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <classpathScope>test</classpathScope>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-classpath</argument>
+                                        <classpath />
+                                        <argument>org.openjdk.jmh.Main</argument>
+                                        <argument>.*</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- java instrumentation profiles to build jars -->
+        <profile>
+            <id>buildAgentLoader</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>agentLoader</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/application/AgentLoader.class</include>
+                                        <include>com/baeldung/instrumentation/application/Launcher.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>buildApplication</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>application</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/application/MyAtm.class</include>
+                                        <include>com/baeldung/instrumentation/application/MyAtmApplication.class</include>
+                                        <include>com/baeldung/instrumentation/application/Launcher.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>buildAgent</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>agent</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/agent/AtmTransformer.class</include>
+                                        <include>com/baeldung/instrumentation/agent/MyInstrumentationAgent.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
     </profiles>
 
-    <properties>    	
+    <properties>
+        
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
-
-        <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
+        <gson.version>2.8.2</gson.version>
 
         <!-- util -->
-        <guava.version>22.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <bouncycastle.version>1.55</bouncycastle.version>
         <commons-codec.version>1.10</commons-codec.version>
+        <commons-io.version>2.5</commons-io.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <decimal4j.version>1.0.3</decimal4j.version>
-        <commons-io.version>2.5</commons-io.version>
-        <commons-collections4.version>4.1</commons-collections4.version>
-        <collections-generic.version>4.01</collections-generic.version>
         <unix4j.version>0.4</unix4j.version>
         <grep4j.version>1.8.7</grep4j.version>
         <lombok.version>1.16.12</lombok.version>
         <fscontext.version>4.6-b01</fscontext.version>
+        <protonpack.version>1.13</protonpack.version>
+        <streamex.version>0.6.5</streamex.version>
+        <vavr.version>0.9.0</vavr.version>
 
         <!-- testing -->
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <junit.version>4.12</junit.version>
-        <mockito.version>2.8.9</mockito.version>
-        <assertj.version>3.6.1</assertj.version>
-        <avaitility.version>1.7.0</avaitility.version>
+        <assertj-core.version>3.10.0</assertj-core.version>
 
+        <!-- JDBC pooling frameworks -->
+        <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
+        <HikariCP.version>3.2.0</HikariCP.version>
+        <c3p0.version>0.9.5.2</c3p0.version>
+        
         <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-
+        <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
+        <springframework.boot.spring-boot-starter.version>1.5.8.RELEASE</springframework.boot.spring-boot-starter.version>
+        
+        <javamoney.moneta.version>1.1</javamoney.moneta.version>
+        <h2database.version>1.4.197</h2database.version>
+        <esapi.version>2.1.0.1</esapi.version>
+        <jmh-core.version>1.19</jmh-core.version>
+       
+        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
+        <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
+        <javax.mail.version>1.5.0-b01</javax.mail.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
+        <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
+        <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <icu4j.version>61.1</icu4j.version>
+        <!-- Mime Type Libraries -->
+        <tika.version>1.18</tika.version>
+        <jmime-magic.version>0.1.5</jmime-magic.version>
+        <!-- instrumentation -->
+        <javaassist.version>3.21.0-GA</javaassist.version>
     </properties>
+
 </project>
