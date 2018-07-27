@@ -10,6 +10,12 @@
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
 	<dependencyManagement>
 		<dependencies>
 			<!-- ensure all GWT deps use the same version (unless overridden) -->
