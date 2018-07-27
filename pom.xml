@@ -980,7 +980,7 @@
 				<module>spring-integration</module>
 				<module>spring-jenkins-pipeline</module>
 				<module>spring-jersey</module>
-				<module>jmeter</module>
+				
 				<module>spring-jms</module>
 				<module>spring-jooq</module>
 				<module>persistence-modules/spring-jpa</module>
@@ -1090,6 +1090,8 @@
                 <module>vertx</module>
                 <module>metrics</module>
                 <module>httpclient</module>
+                
+                <module>jmeter</module>
 				-->
                 
 				<!-- heavy -->
