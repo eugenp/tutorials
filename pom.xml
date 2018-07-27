@@ -906,7 +906,7 @@
 				<module>linkrest</module>
 				<module>logging-modules/log-mdc</module>
 				<module>logging-modules/log4j</module>
-				<module>logging-modules/log4j2</module>
+				
 				<module>logging-modules/logback</module>
 				<module>lombok</module>
 				<module>mapstruct</module>
@@ -962,19 +962,19 @@
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
 				<module>spring-aop</module>
-				<module>spring-data-couchbase-2</module>
+				
 				<module>persistence-modules/spring-data-dynamodb</module>
 				<module>spring-data-keyvalue</module>
 				<module>spring-data-mongodb</module>
 				<module>persistence-modules/spring-data-neo4j</module>
-				<module>persistence-modules/spring-data-redis</module>
+				
 				<module>spring-data-rest</module>
 				<module>persistence-modules/spring-data-solr</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-exceptions</module>
 				<module>spring-freemarker</module>
 				<module>persistence-modules/spring-hibernate-3</module>
-				<module>spring-hibernate4</module>
+				
 				<module>persistence-modules/spring-hibernate-5</module>
 				<module>persistence-modules/spring-data-eclipselink</module>
 				<module>spring-integration</module>
@@ -1041,13 +1041,13 @@
 				<module>testing-modules/testing</module>
 				<module>testing-modules/testng</module>
 				<module>video-tutorials</module>
-				<module>xml</module>
+				
 				<module>xmlunit-2</module>
 				<module>struts-2</module>
 				<module>apache-velocity</module>
 				<module>apache-solrj</module>
 				<module>rabbitmq</module>
-				<module>vertx</module>
+				
 				<module>persistence-modules/spring-data-gemfire</module>
 				<module>mybatis</module>
 				<module>spring-drools</module>
@@ -1082,6 +1082,13 @@
                 <module>ejb</module>
                 <module>persistence-modules/java-cassandra</module>
                 <module>persistence-modules/spring-data-cassandra</module>
+                <module>logging-modules/log4j2</module>
+                <module>spring-data-couchbase-2</module>
+                <module>persistence-modules/spring-data-redis</module>
+                <module>spring-hibernate4</module>
+                <module>xml</module>
+                <module>vertx</module>
+                
 				-->
                 
 				<!-- heavy -->
