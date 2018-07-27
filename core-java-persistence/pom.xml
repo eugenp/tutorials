@@ -14,12 +14,6 @@
     </parent>
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
@@ -56,7 +50,6 @@
         </resources>
     </build>    
     <properties>
-        <junit.version>4.12</junit.version>
         <assertj-core.version>3.10.0</assertj-core.version>
         <h2database.version>1.4.197</h2database.version>
         <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
