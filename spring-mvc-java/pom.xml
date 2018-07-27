@@ -294,6 +294,9 @@
         <rome.version>1.10.0</rome.version>
 
         <javax.el.version>2.2.4</javax.el.version>
+		
+		<!-- Initial application class for Spring Boot -->        
+        <start-class>com.baeldung.app.Application</start-class>
     </properties>
 
 </project>
