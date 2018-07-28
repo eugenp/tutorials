@@ -859,7 +859,7 @@
 				<module>core-java-io</module>
 				<module>core-java-8</module>
 				<module>core-groovy</module>
-				<module>core-java-concurrency</module>
+				
 				<module>couchbase</module>
 				<module>deltaspike</module>
 				<module>dozer</module>
@@ -1078,6 +1078,12 @@
 				<module>apache-meecrowave</module>
 				<module>testing-modules/junit-abstract</module>
                 
+                <module>spring-hibernate4</module>
+                <module>xml</module>
+                <module>vertx</module>
+                <module>metrics</module>
+                <module>httpclient</module>
+                
                 <!-- problematic -->
                 <!-- 
                 <module>ejb</module>
@@ -1086,11 +1092,6 @@
                 <module>logging-modules/log4j2</module>
                 <module>spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-redis</module>
-                <module>spring-hibernate4</module>
-                <module>xml</module>
-                <module>vertx</module>
-                <module>metrics</module>
-                <module>httpclient</module>
 
                 <module>jmeter</module>
 				-->
@@ -1108,6 +1109,7 @@
 				<module>core-java</module>
 				<module>google-web-toolkit</module>
                 <module>spring-security-mvc-custom</module>
+                <module>core-java-concurrency</module>
 				-->
                 
                 <!-- 30:32 min -->
@@ -1170,7 +1172,7 @@
                 <module>spring-security-mvc-custom</module>
                 <module>hibernate5</module>
                 <module>spring-data-elasticsearch</module>
-                 
+                <module>core-java-concurrency</module>
             </modules>
 
         </profile>
