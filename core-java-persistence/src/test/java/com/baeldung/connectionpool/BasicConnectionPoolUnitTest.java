@@ -1,10 +1,8 @@
 package com.baeldung.connectionpool;
 
-import com.baeldung.connectionpool.connectionpools.BasicConnectionPool;
-import com.baeldung.connectionpool.connectionpools.ConnectionPool;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
