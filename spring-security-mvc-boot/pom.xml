@@ -7,7 +7,6 @@
     <artifactId>spring-security-mvc-boot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-
     <name>spring-security-mvc-boot</name>
     <description>Spring Security MVC Boot</description>
 
@@ -19,7 +18,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -32,53 +30,42 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
         </dependency>
-
-        <!-- -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
@@ -88,18 +75,15 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl-api</artifactId>
             <version>${jstl.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
@@ -111,7 +95,7 @@
         <dependency>
             <groupId>net.sf.ehcache</groupId>
             <artifactId>ehcache-core</artifactId>
-            <version>2.6.11</version>
+            <version>${ehcache-core.version}</version>
             <type>jar</type>
         </dependency>
 
@@ -211,6 +195,7 @@
                                     <excludes>
                                         <exclude>**/*LiveTest.java</exclude>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                        				<exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*EntryPointsTest.java</include>
@@ -245,6 +230,7 @@
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
         <jstl.version>1.2</jstl.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <ehcache-core.version>2.6.11</ehcache-core.version>
     </properties>
 
 </project>

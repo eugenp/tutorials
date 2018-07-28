@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>spring-5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -36,16 +35,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectreactor</groupId>
-            <artifactId>reactor-spring</artifactId>
-            <version>${reactor-spring.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.json.bind</groupId>
@@ -109,7 +99,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.1</version>
+            <version>${commons-collections4.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -142,16 +132,9 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.restdocs</groupId>
-            <artifactId>spring-restdocs-webtestclient</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.restdocs</groupId>
             <artifactId>spring-restdocs-restassured</artifactId>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -175,6 +158,7 @@
                     <useUnlimitedThreads>true</useUnlimitedThreads>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
                 </configuration>
@@ -206,15 +190,12 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
         <junit.platform.version>1.0.0</junit.platform.version>
-        <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
         <spring.version>5.0.2.RELEASE</spring.version>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
     </properties>
 

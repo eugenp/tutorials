@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.stackify</groupId>
     <artifactId>tomcat-app</artifactId>
@@ -30,14 +30,10 @@
             <version>${rest-assured.version}</version>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -55,7 +51,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <warSourceDirectory>WebContent</warSourceDirectory>
                 </configuration>
@@ -64,13 +60,13 @@
     </build>
 
     <properties>
-        <logback-classic.version>1.2.3</logback-classic.version>
         <jersey-container-servlet.version>2.25.1</jersey-container-servlet.version>
         <h2database.version>1.4.195</h2database.version>
         <rest-assured.version>3.0.3</rest-assured.version>
         <log4j-core.version>2.8.2</log4j-core.version>
         <javamelody-core.version>1.69.0</javamelody-core.version>
         <jersey-media-moxy.version>2.25.1</jersey-media-moxy.version>
+        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
     </properties>
 
 </project>
