@@ -6,9 +6,15 @@
 	<!-- POM file generated with GWT webAppCreator -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.baeldung</groupId>
-	<artifactId>google-web-toolkit</artifactId>
+	<artifactId>google_web_toolkit</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
 	<dependencyManagement>
 		<dependencies>
