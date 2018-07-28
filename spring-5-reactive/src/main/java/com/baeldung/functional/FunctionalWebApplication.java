@@ -12,13 +12,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.apache.catalina.Context;
-import org.apache.catalina.startup.Tomcat;
-import org.springframework.boot.web.embedded.tomcat.TomcatWebServer;
-import org.springframework.boot.web.server.WebServer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.server.reactive.HttpHandler;
-import org.springframework.http.server.reactive.ServletHttpHandlerAdapter;
+import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -26,6 +22,8 @@ import org.springframework.web.server.WebHandler;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 
 import reactor.core.publisher.Flux;
+import reactor.ipc.netty.NettyContext;
+import reactor.ipc.netty.http.server.HttpServer;
 
 public class FunctionalWebApplication {
 
@@ -50,24 +48,15 @@ public class FunctionalWebApplication {
             });
     }
 
-    WebServer start() throws Exception {
+    NettyContext start() throws Exception {
         WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
         HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler)
             .filter(new IndexRewriteFilter())
             .build();
 
-        Tomcat tomcat = new Tomcat();
-        tomcat.setHostname("localhost");
-        tomcat.setPort(9090);
-        Context rootContext = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
-        ServletHttpHandlerAdapter servlet = new ServletHttpHandlerAdapter(httpHandler);
-        Tomcat.addServlet(rootContext, "httpHandlerServlet", servlet);
-        rootContext.addServletMappingDecoded("/", "httpHandlerServlet");
-
-        TomcatWebServer server = new TomcatWebServer(tomcat);
-        server.start();
-        return server;
-
+        ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(httpHandler);
+        HttpServer server = HttpServer.create("localhost", 9090);
+        return server.newHandler(adapter).block();
     }
 
     public static void main(String[] args) {

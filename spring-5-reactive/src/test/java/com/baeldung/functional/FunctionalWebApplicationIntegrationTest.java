@@ -1,9 +1,13 @@
 package com.baeldung.functional;
 
+import static org.springframework.web.reactive.function.BodyInserters.fromObject;
+import static org.springframework.web.reactive.function.BodyInserters.fromResource;
+
+import java.net.InetSocketAddress;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.springframework.boot.web.server.WebServer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
@@ -12,25 +16,25 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.reactive.function.BodyInserters;
 
-import static org.springframework.web.reactive.function.BodyInserters.fromObject;
-import static org.springframework.web.reactive.function.BodyInserters.fromResource;
+import reactor.ipc.netty.NettyContext;
 
 public class FunctionalWebApplicationIntegrationTest {
 
     private static WebTestClient client;
-    private static WebServer server;
+    private static NettyContext server;
 
     @BeforeClass
     public static void setup() throws Exception {
         server = new FunctionalWebApplication().start();
+        InetSocketAddress serverAddress = server.address();
         client = WebTestClient.bindToServer()
-            .baseUrl("http://localhost:" + server.getPort())
+            .baseUrl("http://" + serverAddress.getHostName() + ":" + serverAddress.getPort())
             .build();
     }
 
     @AfterClass
     public static void destroy() {
-        server.stop();
+        server.dispose();
     }
 
     @Test
