@@ -24,12 +24,11 @@ public class EngineTemperatureSensorLiveTest {
     @Test
     public void whenSendSingleMessage_thenSuccess() throws Exception {
 
-        String senderId = UUID.randomUUID().toString();
-        MqttClient sender = new MqttClient("tcp://iot.eclipse.org:1883",senderId);
+        String publisherId = UUID.randomUUID().toString();
+        MqttClient publisher = new MqttClient("tcp://iot.eclipse.org:1883",publisherId);
         
-        String receiverId = UUID.randomUUID().toString();
-        MqttClient receiver = new MqttClient("tcp://iot.eclipse.org:1883",receiverId);
-        
+        String subscriberId = UUID.randomUUID().toString();
+        MqttClient subscriber = new MqttClient("tcp://iot.eclipse.org:1883",subscriberId);
         
         MqttConnectOptions options = new MqttConnectOptions();
         options.setAutomaticReconnect(true);
@@ -37,33 +36,34 @@ public class EngineTemperatureSensorLiveTest {
         options.setConnectionTimeout(10);
         
         
-        receiver.connect(options);
-        sender.connect(options);
+        subscriber.connect(options);
+        publisher.connect(options);
         
         CountDownLatch receivedSignal = new CountDownLatch(1);
         
-        receiver.subscribe(EngineTemperatureSensor.TOPIC, (topic, msg) -> {
-            log.info("[I41] Message received: topic={}, payload={}", topic, new String(msg.getPayload()));
+        subscriber.subscribe(EngineTemperatureSensor.TOPIC, (topic, msg) -> {
+            byte[] payload = msg.getPayload();
+            log.info("[I46] Message received: topic={}, payload={}", topic, new String(payload));
             receivedSignal.countDown();
         });
         
         
-        Callable<Void> target = new EngineTemperatureSensor(sender);
+        Callable<Void> target = new EngineTemperatureSensor(publisher);
         target.call();
 
         receivedSignal.await(1, TimeUnit.MINUTES);
 
-        log.info("[I51] Success !");
+        log.info("[I56] Success !");
     }
     
     @Test
     public void whenSendMultipleMessages_thenSuccess() throws Exception {
 
-        String senderId = UUID.randomUUID().toString();
-        MqttClient sender = new MqttClient("tcp://iot.eclipse.org:1883",senderId);
+        String publisherId = UUID.randomUUID().toString();
+        MqttClient publisher = new MqttClient("tcp://iot.eclipse.org:1883",publisherId);
         
-        String receiverId = UUID.randomUUID().toString();
-        MqttClient receiver = new MqttClient("tcp://iot.eclipse.org:1883",receiverId);
+        String subscriberId = UUID.randomUUID().toString();
+        MqttClient subscriber = new MqttClient("tcp://iot.eclipse.org:1883",subscriberId);
         
         
         MqttConnectOptions options = new MqttConnectOptions();
@@ -72,18 +72,19 @@ public class EngineTemperatureSensorLiveTest {
         options.setConnectionTimeout(10);
         
 
-        sender.connect(options);        
-        receiver.connect(options);
+        publisher.connect(options);        
+        subscriber.connect(options);
         
         CountDownLatch receivedSignal = new CountDownLatch(10);
         
-        receiver.subscribe(EngineTemperatureSensor.TOPIC, (topic, msg) -> {
-            log.info("[I41] Message received: topic={}, payload={}", topic, new String(msg.getPayload()));
+        subscriber.subscribe(EngineTemperatureSensor.TOPIC, (topic, msg) -> {
+            byte[] payload = msg.getPayload();
+            log.info("[I82] Message received: topic={}, payload={}", topic, new String(payload));
             receivedSignal.countDown();
         });
         
         
-        Callable<Void> target = new EngineTemperatureSensor(sender);
+        Callable<Void> target = new EngineTemperatureSensor(publisher);
         
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(() -> {
@@ -96,12 +97,12 @@ public class EngineTemperatureSensorLiveTest {
           }, 1, 1, TimeUnit.SECONDS);
         
 
-        receivedSignal.await(1, TimeUnit.DAYS);
+        receivedSignal.await(1, TimeUnit.MINUTES);
         executor.shutdown();
         
         assertTrue(receivedSignal.getCount() == 0 , "Countdown should be zero");
 
-        log.info("[I51] Success !");
+        log.info("[I105] Success !");
     }
     
 
