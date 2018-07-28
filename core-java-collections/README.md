@@ -30,3 +30,4 @@
 - [How to TDD a List Implementation in Java](http://www.baeldung.com/java-test-driven-list)
 - [How to Store Duplicate Keys in a Map in Java?](http://www.baeldung.com/java-map-duplicate-keys)
 - [Getting the Size of an Iterable in Java](http://www.baeldung.com/java-iterable-size)
+- [Iterating Backward Through a List](http://www.baeldung.com/java-list-iterate-backwards)
