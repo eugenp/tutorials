@@ -1,0 +1,14 @@
+security:
+  oauth2:
+    client:
+      clientId: 89a7c4facbb3434d599d
+      clientSecret: 9b3b08e4a340bd20e866787e4645b54f73d74b6a
+      accessTokenUri: https://github.com/login/oauth/access_token
+      userAuthorizationUri: https://github.com/login/oauth/authorize
+      clientAuthenticationScheme: form
+      scope: read:user,user:email
+    resource:
+      userInfoUri: https://api.github.com/user
+spring:
+  thymeleaf:
+    cache: false
