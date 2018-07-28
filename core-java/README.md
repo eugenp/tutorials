@@ -163,3 +163,8 @@
 - [Console I/O in Java](http://www.baeldung.com/java-console-input-output)
 - [Guide to the java.util.Arrays Class](http://www.baeldung.com/java-util-arrays)
 - [Create a Custom Exception in Java](http://www.baeldung.com/java-new-custom-exception)
+- [Guide to java.util.GregorianCalendar](http://www.baeldung.com/java-gregorian-calendar)
+- [Java Global Exception Handler](http://www.baeldung.com/java-global-exception-handler)
+- [Encrypting and Decrypting Files in Java](http://www.baeldung.com/java-cipher-input-output-stream)
+- [How to Get the Size of an Object in Java](http://www.baeldung.com/java-size-of-object)
+- [Exception Handling in Java](http://www.baeldung.com/java-exceptions)
