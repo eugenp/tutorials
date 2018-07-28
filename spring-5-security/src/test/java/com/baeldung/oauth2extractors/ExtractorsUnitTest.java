@@ -1,5 +1,6 @@
-import org.baeldung.Application;
-import org.baeldung.configuration.SecurityConfig;
+package com.baeldung.oauth2extractors;
+
+import com.baeldung.oauth2extractors.configuration.SecurityConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,9 +19,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = ExtractorsApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ContextConfiguration(classes = {SecurityConfig.class})
-public class ApplicationUnitTest {
+public class ExtractorsUnitTest {
 
     @Autowired
     private WebApplicationContext context;

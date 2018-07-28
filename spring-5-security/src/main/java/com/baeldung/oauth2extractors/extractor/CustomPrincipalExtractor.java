@@ -1,4 +1,4 @@
-package org.baeldung.extractor;
+package com.baeldung.oauth2extractors.extractor;
 
 import org.springframework.boot.autoconfigure.security.oauth2.resource.PrincipalExtractor;
 

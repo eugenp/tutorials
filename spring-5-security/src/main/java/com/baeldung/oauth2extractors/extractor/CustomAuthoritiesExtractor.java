@@ -1,4 +1,4 @@
-package org.baeldung.extractor;
+package com.baeldung.oauth2extractors.extractor;
 
 import org.springframework.boot.autoconfigure.security.oauth2.resource.AuthoritiesExtractor;
 import org.springframework.security.core.GrantedAuthority;
@@ -10,8 +10,10 @@ import java.util.Map;
 import java.util.Objects;
 
 public class CustomAuthoritiesExtractor implements AuthoritiesExtractor {
-    private static final List<GrantedAuthority> GITHUB_FREE_AUTHORITIES = AuthorityUtils.commaSeparatedStringToAuthorityList("GITHUB_USER,GITHUB_USER_FREE");
-    private static final List<GrantedAuthority> GITHUB_SUBSCRIBED_AUTHORITIES = AuthorityUtils.commaSeparatedStringToAuthorityList("GITHUB_USER,GITHUB_USER_SUBSCRIBED");
+    private List<GrantedAuthority> GITHUB_FREE_AUTHORITIES = AuthorityUtils
+            .commaSeparatedStringToAuthorityList("GITHUB_USER,GITHUB_USER_FREE");
+    private List<GrantedAuthority> GITHUB_SUBSCRIBED_AUTHORITIES = AuthorityUtils
+            .commaSeparatedStringToAuthorityList("GITHUB_USER,GITHUB_USER_SUBSCRIBED");
 
     @Override
     public List<GrantedAuthority> extractAuthorities(Map<String, Object> map) {

@@ -19,7 +19,6 @@
         <module>spring-security-sso-auth-server</module>
         <module>spring-security-sso-ui</module>
         <module>spring-security-sso-ui-2</module>
-        <module>spring-security-principal-authorities-extractor</module>
     </modules>
 
     <properties>
