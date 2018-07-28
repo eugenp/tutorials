@@ -12,8 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class WebFluxEventClient {
     private WebClient client;
-    static DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-    static DecimalFormat nf = new DecimalFormat("##0.00");
+    private DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    private DecimalFormat nf = new DecimalFormat("##0.00");
 
     public WebFluxEventClient(String url) {
         client = WebClient.create(url);
