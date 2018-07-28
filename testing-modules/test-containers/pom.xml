@@ -106,7 +106,7 @@
         <h2.version>1.4.196</h2.version>
         <mockito.version>2.11.0</mockito.version>
         <spring.version>5.0.1.RELEASE</spring.version>
-        <testcontainers.version>1.7.2</testcontainers.version>
+        <testcontainers.version>1.8.0</testcontainers.version>
         <postgresql.version>42.2.2</postgresql.version>
         <selenium-remote-driver.version>3.12.0</selenium-remote-driver.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
