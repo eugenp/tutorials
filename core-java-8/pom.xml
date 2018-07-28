@@ -109,6 +109,12 @@
             <artifactId>aspectjweaver</artifactId>
             <version>${asspectj.version}</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>        
     </dependencies>
 
     <build>
@@ -184,6 +190,7 @@
         <avaitility.version>1.7.0</avaitility.version>
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator.version>1.19</jmh-generator.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
 </project>
