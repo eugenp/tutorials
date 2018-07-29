@@ -5,6 +5,7 @@ import java.net.InetSocketAddress;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.boot.web.server.WebServer;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import reactor.ipc.netty.NettyContext;
@@ -12,20 +13,19 @@ import reactor.ipc.netty.NettyContext;
 public class ExploreSpring5URLPatternUsingRouterFunctionsIntegrationTest {
 
     private static WebTestClient client;
-    private static NettyContext server;
+    private static WebServer server;
 
     @BeforeClass
     public static void setup() throws Exception {
         server = new ExploreSpring5URLPatternUsingRouterFunctions().start();
-        InetSocketAddress serverAddress = server.address();
         client = WebTestClient.bindToServer()
-            .baseUrl("http://" + serverAddress.getHostName() + ":" + serverAddress.getPort())
+            .baseUrl("http://localhost:" + server.getPort())
             .build();
     }
 
     @AfterClass
     public static void destroy() {
-        server.dispose();
+        server.stop();
     }
 
     @Test

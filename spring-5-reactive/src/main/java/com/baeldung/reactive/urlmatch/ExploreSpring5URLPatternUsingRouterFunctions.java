@@ -6,17 +6,19 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 import static org.springframework.web.reactive.function.server.RouterFunctions.toHttpHandler;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.Wrapper;
+import org.apache.catalina.startup.Tomcat;
+import org.springframework.boot.web.embedded.tomcat.TomcatWebServer;
+import org.springframework.boot.web.server.WebServer;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.server.reactive.HttpHandler;
-import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
+import org.springframework.http.server.reactive.ServletHttpHandlerAdapter;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.WebHandler;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
-
-import reactor.ipc.netty.NettyContext;
-import reactor.ipc.netty.http.server.HttpServer;
 
 public class ExploreSpring5URLPatternUsingRouterFunctions {
 
@@ -29,15 +31,24 @@ public class ExploreSpring5URLPatternUsingRouterFunctions {
             .and(RouterFunctions.resources("/files/{*filepaths}", new ClassPathResource("files/")));
     }
 
-    NettyContext start() throws Exception {
+    WebServer start() throws Exception {
         WebHandler webHandler = (WebHandler) toHttpHandler(routingFunction());
         HttpHandler httpHandler = WebHttpHandlerBuilder.webHandler(webHandler)
             .filter(new IndexRewriteFilter())
             .build();
 
-        ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(httpHandler);
-        HttpServer server = HttpServer.create("localhost", 9090);
-        return server.newHandler(adapter).block();
+        Tomcat tomcat = new Tomcat();
+        tomcat.setHostname("localhost");
+        tomcat.setPort(9090);
+        Context rootContext = tomcat.addContext("", System.getProperty("java.io.tmpdir"));
+        ServletHttpHandlerAdapter servlet = new ServletHttpHandlerAdapter(httpHandler);
+        Wrapper servletWrapper = Tomcat.addServlet(rootContext, "httpHandlerServlet", servlet);
+        servletWrapper.setAsyncSupported(true);
+        rootContext.addServletMappingDecoded("/", "httpHandlerServlet");
+
+        TomcatWebServer server = new TomcatWebServer(tomcat);
+        server.start();
+        return server;
 
     }
 
