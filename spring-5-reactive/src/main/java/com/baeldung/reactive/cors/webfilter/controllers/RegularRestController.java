@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Mono;
 
-@RestController
-@RequestMapping("/web-filter-on-annotated")
+//@RestController
+//@RequestMapping("/web-filter-on-annotated")
 public class RegularRestController {
 
     @PutMapping("/regular-put-endpoint")

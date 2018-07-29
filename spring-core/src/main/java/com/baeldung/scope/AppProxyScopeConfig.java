@@ -2,6 +2,7 @@ package com.baeldung.scope;
 
 import com.baeldung.scope.prototype.PrototypeBean;
 import com.baeldung.scope.singletone.SingletonBean;
+
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.*;
 
@@ -19,4 +20,5 @@ public class AppProxyScopeConfig {
     public SingletonBean singletonBean() {
         return new SingletonBean();
     }
+    
 }
