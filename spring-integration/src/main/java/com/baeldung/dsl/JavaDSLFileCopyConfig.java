@@ -24,16 +24,16 @@ import org.springframework.messaging.MessageHandler;
 @IntegrationComponentScan
 public class JavaDSLFileCopyConfig {
 
-    public final String INPUT_DIR = "source";
-    public final String OUTPUT_DIR = "target";
-    public final String FILE_PATTERN = "*.jpg";
+    public static final String INPUT_DIR = "source";
+    public static final String OUTPUT_DIR = "target";
+    public static final String FILE_PATTERN = "*.jpg";
 
     @Bean
     public MessageSource<File> fileReadingMessageSource() {
-        FileReadingMessageSource sourceReader = new FileReadingMessageSource();
-        sourceReader.setDirectory(new File(INPUT_DIR));
-        sourceReader.setFilter(new SimplePatternFileListFilter(FILE_PATTERN));
-        return sourceReader;
+        FileReadingMessageSource messageSource = new FileReadingMessageSource();
+        messageSource.setDirectory(new File(INPUT_DIR));
+        messageSource.setFilter(new SimplePatternFileListFilter(FILE_PATTERN));
+        return messageSource;
     }
 
     @Bean
