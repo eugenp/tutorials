@@ -3,11 +3,10 @@
  */
 package org.baeldung.testing.abstractclass.privatemethod;
 
-import static org.junit.Assert.assertEquals;
-
 import java.time.LocalDateTime;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
@@ -24,17 +23,16 @@ public class AbstractPrivateMethodsUnitTest {
     @Test
     public void givenNonAbstractMethodAndCallPrivateMethod_whenMockPrivateMethod_thenVerifyBehaviour() throws Exception {
         AbstractPrivateMethods mockClass = PowerMockito.mock(AbstractPrivateMethods.class);
-        PowerMockito.doCallRealMethod()
-            .when(mockClass)
-            .defaultImpl();
 
         String dateTime = LocalDateTime.now()
             .toString();
+        PowerMockito.doCallRealMethod()
+            .when(mockClass)
+            .defaultImpl();
         PowerMockito.doReturn(dateTime)
-            .when(mockClass, "getCurrentDateTime");
-
+            .when(mockClass, "getCurrentDateTime");// .thenReturn(dateTime);
         String actual = mockClass.defaultImpl();
-        assertEquals(dateTime + "DEFAULT-1", actual);
+        Assertions.assertEquals(dateTime + "DEFAULT-1", actual);
     }
 
 }
