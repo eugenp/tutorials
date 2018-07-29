@@ -8,3 +8,5 @@
 - **greeter-spring-boot-starter**: The custom starter for the library.
 
 - **greeter-spring-boot-sample-app**: The sample project that uses the custom starter.
+
+- [Multi-Module Project With Spring Boot](http://www.baeldung.com/spring-boot-multiple-modules)
