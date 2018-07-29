@@ -1,14 +1,10 @@
 package com.baeldung.reactive.urlmatch;
 
-import java.net.InetSocketAddress;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.test.web.reactive.server.WebTestClient;
-
-import reactor.ipc.netty.NettyContext;
 
 public class ExploreSpring5URLPatternUsingRouterFunctionsIntegrationTest {
 
