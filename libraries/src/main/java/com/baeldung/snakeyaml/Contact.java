@@ -4,7 +4,8 @@ public class Contact {
 
     private String type;
 
-    private Integer number;
+    private int number;
+
 
     public String getType() {
         return type;
@@ -14,11 +15,11 @@ public class Contact {
         this.type = type;
     }
 
-    public Integer getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 

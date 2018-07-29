@@ -23,7 +23,6 @@ public class JavaToYAMLSerializationUnitTest {
         Yaml yaml = new Yaml();
         StringWriter writer = new StringWriter();
         yaml.dump(data, writer);
-        System.out.println(writer.toString());
         String expectedYaml = "name: Silenthand Olleander\nrace: Human\ntraits: [ONE_HAND, ONE_EYE]\n";
         assertEquals(expectedYaml, writer.toString());
     }
@@ -48,7 +47,6 @@ public class JavaToYAMLSerializationUnitTest {
         customer.setFirstName("Greg");
         customer.setLastName("McDowell");
         Yaml yaml = new Yaml();
-        System.out.println(yaml.dumpAs(customer, Tag.MAP, null));
         String expectedYaml = "{age: 45, contactDetails: null, firstName: Greg, homeAddress: null, lastName: McDowell}\n";
         assertEquals(expectedYaml, yaml.dumpAs(customer, Tag.MAP, null));
     }
