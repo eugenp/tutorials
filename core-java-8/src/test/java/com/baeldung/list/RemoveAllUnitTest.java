@@ -8,11 +8,11 @@ import static com.baeldung.list.RemoveAll.removeWithForLoopDecrementOnRemove;
 import static com.baeldung.list.RemoveAll.removeWithForLoopIncrementIfRemains;
 import static com.baeldung.list.RemoveAll.removeWithIterator;
 import static com.baeldung.list.RemoveAll.removeWithRemoveIf;
-import static com.baeldung.list.RemoveAll.removeWithStandardForLoopUsingElement;
 import static com.baeldung.list.RemoveAll.removeWithStandardForLoopUsingIndex;
 import static com.baeldung.list.RemoveAll.removeWithStreamFilter;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static com.baeldung.list.RemoveAll.*;
+
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,16 +28,53 @@ public class RemoveAllUnitTest {
     }
 
     @Test
-    public void givenAList_whenRemovingElementsWithStandardForLoopUsingElement_thenTheResultIsIncorrect() {
+    public void givenAList_whenRemovingElementsWithWhileLoopUsingPrimitiveElement_thenTheResultCorrect() {
         // given
         List<Integer> list = list(1, 2, 3);
         int valueToRemove = 1;
 
         // when
-        removeWithStandardForLoopUsingElement(list, valueToRemove);
+        assertThatThrownBy(() -> removeWithWhileLoopPrimitiveElement(list, valueToRemove))
+            .isInstanceOf(IndexOutOfBoundsException.class);
+    }
+
+    @Test
+    public void givenAList_whenRemovingElementsWithWhileLoopUsingNonPrimitiveElement_thenTheResultCorrect() {
+        // given
+        List<Integer> list = list(1, 2, 3);
+        int valueToRemove = 1;
+
+        // when
+        removeWithWhileLoopNonPrimitiveElement(list, valueToRemove);
 
         // then
-        assertThat(list).isEqualTo(list(1, 3));
+        assertThat(list).isEqualTo(list(2, 3));
+    }
+    
+    @Test
+    public void givenAList_whenRemovingElementsWithWhileLoopStoringFirstOccurrenceIndex_thenTheResultCorrect() {
+        // given
+        List<Integer> list = list(1, 2, 3);
+        int valueToRemove = 1;
+        
+        // when
+        removeWithWhileLoopStoringFirstOccurrenceIndex(list, valueToRemove);
+        
+        // then
+        assertThat(list).isEqualTo(list(2, 3));
+    }
+
+    @Test
+    public void givenAList_whenRemovingElementsWithCallingRemoveUntilModifies_thenTheResultIsCorrect() {
+        // given
+        List<Integer> list = list(1, 1, 2, 3);
+        int valueToRemove = 1;
+
+        // when
+        removeWithCallingRemoveUntilModifies(list, valueToRemove);
+
+        // then
+        assertThat(list).isEqualTo(list(2, 3));
     }
 
     @Test
@@ -99,7 +136,8 @@ public class RemoveAllUnitTest {
         int valueToRemove = 1;
 
         // when
-        assertThrows(ConcurrentModificationException.class, () -> removeWithForEachLoop(list, valueToRemove));
+        assertThatThrownBy(() -> removeWithForEachLoop(list, valueToRemove))
+            .isInstanceOf(ConcurrentModificationException.class);
     }
 
     @Test
@@ -136,19 +174,6 @@ public class RemoveAllUnitTest {
 
         // when
         removeWithCollectingRemainingElementsAndAddingToOriginalList(list, valueToRemove);
-
-        // then
-        assertThat(list).isEqualTo(list(2, 3));
-    }
-
-    @Test
-    public void givenAList_whenRemovingElementsWithCallingRemoveUntilModifies_thenTheResultIsCorrect() {
-        // given
-        List<Integer> list = list(1, 1, 2, 3);
-        int valueToRemove = 1;
-
-        // when
-        removeWithCallingRemoveUntilModifies(list, valueToRemove);
 
         // then
         assertThat(list).isEqualTo(list(2, 3));

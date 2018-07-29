@@ -8,12 +8,28 @@ import java.util.stream.Collectors;
 
 public class RemoveAll {
 
-    static void removeWithStandardForLoopUsingElement(List<Integer> list, int element) {
-        for (int i = 0; i < list.size(); i++) {
-            if (Objects.equals(element, list.get(i))) {
-                list.remove(element);
-            }
+    static void removeWithWhileLoopPrimitiveElement(List<Integer> list, int element) {
+        while (list.contains(element)) {
+            list.remove(element);
         }
+    }
+
+    static void removeWithWhileLoopNonPrimitiveElement(List<Integer> list, Integer element) {
+        while (list.contains(element)) {
+            list.remove(element);
+        }
+    }
+
+    static void removeWithWhileLoopStoringFirstOccurrenceIndex(List<Integer> list, Integer element) {
+        int index;
+        while ((index = list.indexOf(element)) >= 0) {
+            list.remove(index);
+        }
+    }
+
+    static void removeWithCallingRemoveUntilModifies(List<Integer> list, Integer element) {
+        while (list.remove(element))
+            ;
     }
 
     static void removeWithStandardForLoopUsingIndex(List<Integer> list, int element) {
@@ -80,11 +96,6 @@ public class RemoveAll {
 
         list.clear();
         list.addAll(remainingElements);
-    }
-
-    static void removeWithCallingRemoveUntilModifies(List<Integer> list, Integer element) {
-        while (list.remove(element))
-            ;
     }
 
     static List<Integer> removeWithStreamFilter(List<Integer> list, Integer element) {
