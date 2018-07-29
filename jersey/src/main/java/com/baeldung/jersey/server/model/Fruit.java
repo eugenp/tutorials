@@ -17,7 +17,4 @@ public class Fruit {
     public String getColour() {
         return colour;
     }
-
-    
-
 }
