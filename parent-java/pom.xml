@@ -8,11 +8,13 @@
     <name>parent-java</name>
     <description>Parent for all java modules</description>
 
+    <!--
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
+    -->
 
     <dependencies>
         <!-- utils -->
