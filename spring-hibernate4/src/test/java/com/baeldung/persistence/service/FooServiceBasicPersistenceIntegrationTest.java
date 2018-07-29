@@ -2,8 +2,6 @@ package com.baeldung.persistence.service;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
-import com.baeldung.persistence.model.Foo;
-import com.baeldung.spring.PersistenceConfig;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -15,8 +13,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.persistence.model.Foo;
+import com.baeldung.spring.config.PersistenceTestConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class FooServiceBasicPersistenceIntegrationTest {
 
     @Autowired
