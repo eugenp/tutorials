@@ -12,10 +12,10 @@ import static java.util.stream.IntStream.range;
 /**
  * Correctness tests for Stack in multi threaded environment.
  */
-public class MultithreadingCorrectnessStackTests {
+public class MultithreadingCorrectnessStackUnitTest {
 
     @Test
-    public void test_multithreading_correctness_with_synchronized_deque() {
+    public void givenSynchronizedDeque_whenExecutedParallel_thenWorkRight() {
 
         DequeBasedSynchronizedStack<Integer> deque = new DequeBasedSynchronizedStack<>();
 
@@ -41,7 +41,7 @@ public class MultithreadingCorrectnessStackTests {
     }
 
     @Test
-    public void test_multithreading_correctness_with_concurrent_linked_queue() {
+    public void givenConcurrentLinkedQueue_whenExecutedParallel_thenWorkRight() {
 
         ConcurrentLinkedDeque<Integer> deque = new ConcurrentLinkedDeque<>();
 
@@ -67,7 +67,7 @@ public class MultithreadingCorrectnessStackTests {
     }
 
     @Test
-    public void test_multithreading_correctness_with_array_deque() {
+    public void givenArrayDeque_whenExecutedParallel_thenShouldFail() {
 
         ArrayDeque<Integer> deque = new ArrayDeque<>();
 
