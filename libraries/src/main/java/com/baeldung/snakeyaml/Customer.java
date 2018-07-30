@@ -6,7 +6,7 @@ public class Customer {
 
     private String firstName;
     private String lastName;
-    private Integer age;
+    private int age;
     private List<Contact> contactDetails;
     private Address homeAddress;
 
@@ -26,11 +26,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public Integer getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(int age) {
         this.age = age;
     }
 

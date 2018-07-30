@@ -1,9 +1,20 @@
 package com.baeldung.spring.data.es;
 
-import com.baeldung.spring.data.es.config.Config;
-import com.baeldung.spring.data.es.model.Article;
-import com.baeldung.spring.data.es.model.Author;
-import com.baeldung.spring.data.es.service.ArticleService;
+import static java.util.Arrays.asList;
+import static java.util.stream.Collectors.toList;
+import static org.elasticsearch.index.query.Operator.AND;
+import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
+import static org.elasticsearch.index.query.QueryBuilders.matchPhraseQuery;
+import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
+import static org.elasticsearch.index.query.QueryBuilders.multiMatchQuery;
+import static org.elasticsearch.index.query.QueryBuilders.nestedQuery;
+import static org.elasticsearch.index.query.QueryBuilders.termQuery;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.lucene.search.join.ScoreMode;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.common.unit.Fuzziness;
@@ -14,7 +25,7 @@ import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.MultiBucketsAggregation;
 import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
-import org.elasticsearch.search.aggregations.bucket.terms.TermsBuilder;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,20 +36,10 @@ import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-
-import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.toList;
-import static org.elasticsearch.index.query.MatchQueryBuilder.Operator.AND;
-import static org.elasticsearch.index.query.QueryBuilders.boolQuery;
-import static org.elasticsearch.index.query.QueryBuilders.matchPhraseQuery;
-import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
-import static org.elasticsearch.index.query.QueryBuilders.multiMatchQuery;
-import static org.elasticsearch.index.query.QueryBuilders.nestedQuery;
-import static org.elasticsearch.index.query.QueryBuilders.termQuery;
-import static org.junit.Assert.assertEquals;
+import com.baeldung.spring.data.es.config.Config;
+import com.baeldung.spring.data.es.model.Article;
+import com.baeldung.spring.data.es.model.Author;
+import com.baeldung.spring.data.es.service.ArticleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
@@ -124,7 +125,7 @@ public class ElasticSearchQueryIntegrationTest {
 
     @Test
     public void givenNestedObject_whenQueryByAuthorsName_thenFoundArticlesByThatAuthor() {
-        final QueryBuilder builder = nestedQuery("authors", boolQuery().must(termQuery("authors.name", "smith")));
+        final QueryBuilder builder = nestedQuery("authors", boolQuery().must(termQuery("authors.name", "smith")), ScoreMode.None);
 
         final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder).build();
         final List<Article> articles = elasticsearchTemplate.queryForList(searchQuery, Article.class);
@@ -134,7 +135,7 @@ public class ElasticSearchQueryIntegrationTest {
 
     @Test
     public void givenAnalyzedQuery_whenMakeAggregationOnTermCount_thenEachTokenCountsSeparately() {
-        final TermsBuilder aggregation = AggregationBuilders.terms("top_tags").field("title");
+        final TermsAggregationBuilder aggregation = AggregationBuilders.terms("top_tags").field("title");
         final SearchResponse response = client.prepareSearch("blog").setTypes("article").addAggregation(aggregation)
           .execute().actionGet();
 
@@ -150,8 +151,8 @@ public class ElasticSearchQueryIntegrationTest {
 
     @Test
     public void givenNotAnalyzedQuery_whenMakeAggregationOnTermCount_thenEachTermCountsIndividually() {
-        final TermsBuilder aggregation = AggregationBuilders.terms("top_tags").field("tags")
-          .order(Terms.Order.aggregation("_count", false));
+        final TermsAggregationBuilder aggregation = AggregationBuilders.terms("top_tags").field("tags")
+          .order(Terms.Order.count(false));
         final SearchResponse response = client.prepareSearch("blog").setTypes("article").addAggregation(aggregation)
           .execute().actionGet();
 
@@ -194,7 +195,7 @@ public class ElasticSearchQueryIntegrationTest {
 
     @Test
     public void givenBoolQuery_whenQueryByAuthorsName_thenFoundArticlesByThatAuthorAndFilteredTag() {
-        final QueryBuilder builder = boolQuery().must(nestedQuery("authors", boolQuery().must(termQuery("authors.name", "doe"))))
+        final QueryBuilder builder = boolQuery().must(nestedQuery("authors", boolQuery().must(termQuery("authors.name", "doe")), ScoreMode.None))
             .filter(termQuery("tags", "elasticsearch"));
 
         final SearchQuery searchQuery = new NativeSearchQueryBuilder().withQuery(builder)
