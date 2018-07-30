@@ -23,7 +23,6 @@ public class YAMLToJavaDeserialisationUnitTest {
         assertEquals("John", obj.get("firstName"));
         assertEquals("Doe", obj.get("lastName"));
         assertEquals(20, obj.get("age"));
-        System.out.println(obj);
     }
 
     @Test
@@ -36,7 +35,6 @@ public class YAMLToJavaDeserialisationUnitTest {
         assertEquals("John", customer.getFirstName());
         assertEquals("Doe", customer.getLastName());
         assertEquals(20, customer.getAge());
-        System.out.println(customer);
     }
 
     @Test
@@ -49,7 +47,6 @@ public class YAMLToJavaDeserialisationUnitTest {
         assertEquals("John", customer.getFirstName());
         assertEquals("Doe", customer.getLastName());
         assertEquals(20, customer.getAge());
-        System.out.println(customer);
     }
 
     @Test
