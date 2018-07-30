@@ -1,8 +1,7 @@
 package org.baeldung.testing.abstractclass.instancefields;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.reflect.Whitebox;
@@ -22,11 +21,12 @@ public class AbstractInstanceFieldsUnitTest {
         instClass.count = 7;
 
         // compare the result
-        assertEquals("Overflow", instClass.testFunc());
+        Assertions.assertEquals("Overflow", instClass.testFunc());
     }
 
     @Test
     public void givenNonAbstractMethodAndPrivateField_whenPowerMockitoAndActiveFieldTrue_thenCorrectBehaviour() {
+
         AbstractInstanceFields instClass = PowerMockito.mock(AbstractInstanceFields.class);
         PowerMockito.doCallRealMethod()
             .when(instClass)
@@ -34,7 +34,7 @@ public class AbstractInstanceFieldsUnitTest {
         Whitebox.setInternalState(instClass, "active", true);
 
         // compare the expected result with actual
-        assertEquals("Added", instClass.testFunc());
+        Assertions.assertEquals("Added", instClass.testFunc());
     }
 
 }
