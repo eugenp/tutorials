@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung.junit</groupId>
@@ -10,9 +10,14 @@
     <name>applicationtesting</name>
     <url>http://maven.apache.org</url>
 
-    <!-- parent> <groupId>com.baeldung</groupId> <artifactId>parent-modules</artifactId> 
-        <version>1.0.0-SNAPSHOT</version> <relativePath>../../</relativePath> </parent -->
-
+<!--
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
+    </parent>
+-->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,37 +26,19 @@
         <junit-launcher.version>1.2.0</junit-launcher.version>
         <junit4.version>4.12</junit4.version>
         <takari-cpsuite.version>1.2.7</takari-cpsuite.version>
-        <junit-vintage-engine>4.12.1</junit-vintage-engine>
-        <junit-platform.version>1.0.1</junit-platform.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     </properties>
-
 
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version> <!-- matters until now -->
-                <dependencies>
-                    <!-- to let surefire to run JUnit 4 but also JUnit 5 
-                        tests -->
-                    <dependency>
-                        <groupId>org.junit.platform</groupId>
-                        <artifactId>junit-platform-surefire-provider</artifactId>
-                        <version>${junit-platform.version}</version>
-                    </dependency>
-                    <!-- JUnit vintage engine to run JUnit 3 or JUnit 4 tests -->
-                    <dependency>
-                        <groupId>org.junit.vintage</groupId>
-                        <artifactId>junit-vintage-engine</artifactId>
-                        <version>${junit-vintage-engine}</version>
-                    </dependency>
-                    <!-- JUnit 5 engine to run JUnit 5 tests -->
-                    <dependency>
-                        <groupId>org.junit.jupiter</groupId>
-                        <artifactId>junit-jupiter-engine</artifactId>
-                        <version>${junit-jupiter.version}</version>
-                    </dependency>
-                </dependencies>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

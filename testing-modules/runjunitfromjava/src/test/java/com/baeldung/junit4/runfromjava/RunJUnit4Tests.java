@@ -7,6 +7,7 @@ import static org.junit.extensions.cpsuite.SuiteType.*;
 import junit.framework.TestSuite;
 
 import org.junit.extensions.cpsuite.ClasspathSuite.SuiteTypes;
+import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.RunWith;
@@ -17,11 +18,16 @@ import org.junit.runner.notification.Failure;
 public class RunJUnit4Tests {
 
     public static void runOne() {
-        junit.textui.TestRunner.run(new TestSuite(MergeListsUnitTest.class));
+        JUnitCore junit = new JUnitCore();
+        junit.addListener(new TextListener(System.out));
+        junit.run(MergeListsUnitTest.class);
     }
 
     public static void runAllClasses() {
-        Result result = JUnitCore.runClasses(RunJUnit4Tests.class);
+        JUnitCore junit = new JUnitCore();
+        junit.addListener(new TextListener(System.out));
+
+        Result result = junit.run(ListNodeUnitTest.class, MergeListsUnitTest.class, RemovedNthElementUnitTest.class, RotateListUnitTest.class, SwapNodesUnitTest.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
@@ -31,7 +37,9 @@ public class RunJUnit4Tests {
     }
 
     public static void runSuiteOfClasses() {
-        Result result = JUnitCore.runClasses(MyTestSuite.class);
+        JUnitCore junit = new JUnitCore();
+        junit.addListener(new TextListener(System.out));
+        Result result = junit.run(MyTestSuite.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
@@ -42,11 +50,11 @@ public class RunJUnit4Tests {
     }
 
     public static void resultReport(Result result) {
-        System.out.println("Finished. Result " + ". Failures: " + 
-                result.getFailureCount() + ". Ignored: " + 
-                result.getIgnoreCount() + ". Tests runt: " + 
-                result.getRunCount() + ". Time: " + 
-                result.getRunTime() + "ms.");
+        System.out.println("Finished. Result " + ". Failures: " +
+          result.getFailureCount() + ". Ignored: " +
+          result.getIgnoreCount() + ". Tests runt: " +
+          result.getRunCount() + ". Time: " +
+          result.getRunTime() + "ms.");
     }
 
     public static void runRepeated() {
@@ -57,9 +65,9 @@ public class RunJUnit4Tests {
     public static void runRepeatedSuiteMethod() {
         TestSuite mySuite = new ActiveTestSuite();
 
-       mySuite.addTest(new RepeatedTest(new TestSuite(ListNodeUnitTest.class), 5));
-       mySuite.addTest(new RepeatedTest(new TestSuite(SwapNodesUnitTest.class), 3));
-       
+        mySuite.addTest(new RepeatedTest(new TestSuite(ListNodeUnitTest.class), 5));
+        mySuite.addTest(new RepeatedTest(new TestSuite(SwapNodesUnitTest.class), 3));
+
         junit.textui.TestRunner.run(mySuite);
     }
 
