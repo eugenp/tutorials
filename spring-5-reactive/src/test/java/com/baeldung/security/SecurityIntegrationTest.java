@@ -28,7 +28,7 @@ public class SecurityIntegrationTest {
 
     @Test
     public void whenNoCredentials_thenRedirectToLogin() {
-        this.rest.get().uri("/").exchange().expectStatus().is4xxClientError();
+        this.rest.get().uri("/").exchange().expectStatus().is3xxRedirection();
     }
 
     @Test
