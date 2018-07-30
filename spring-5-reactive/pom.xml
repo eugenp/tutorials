@@ -43,7 +43,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+        </dependency>
         <!-- Dependencies for Yasson -->
         <!-- <dependency> -->
         <!-- <groupId>org.eclipse</groupId> -->
@@ -147,6 +150,11 @@
 	        <artifactId>spring-security-test</artifactId>
 	        <scope>test</scope>
 	    </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
