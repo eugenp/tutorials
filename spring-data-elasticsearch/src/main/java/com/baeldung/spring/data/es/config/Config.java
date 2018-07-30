@@ -1,15 +1,13 @@
 package com.baeldung.spring.data.es.config;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 import org.elasticsearch.client.Client;
+import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.settings.Settings;
-import org.elasticsearch.node.NodeBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.elasticsearch.transport.client.PreBuiltTransportClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -23,35 +21,26 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @ComponentScan(basePackages = { "com.baeldung.spring.data.es.service" })
 public class Config {
 
-    @Value("${elasticsearch.home:/usr/local/Cellar/elasticsearch/2.3.2}")
+    @Value("${elasticsearch.home:/usr/local/Cellar/elasticsearch/5.6.0}")
     private String elasticsearchHome;
 
-    private static Logger logger = LoggerFactory.getLogger(Config.class);
+    @Value("${elasticsearch.cluster.name:elasticsearch}")
+    private String clusterName;
 
     @Bean
     public Client client() {
+        TransportClient client = null;
         try {
-            final Path tmpDir = Files.createTempDirectory(Paths.get(System.getProperty("java.io.tmpdir")), "elasticsearch_data");
-            logger.debug(tmpDir.toAbsolutePath().toString());
-            
-            // @formatter:off
-
-            final Settings.Builder elasticsearchSettings =
-                    Settings.settingsBuilder().put("http.enabled", "false")
-                                              .put("path.data", tmpDir.toAbsolutePath().toString())
-                                              .put("path.home", elasticsearchHome);
-            
-            return new NodeBuilder()
-                    .local(true)
-                    .settings(elasticsearchSettings)
-                    .node()
-                    .client();
-            
-            // @formatter:on
-        } catch (final IOException ioex) {
-            logger.error("Cannot create temp dir", ioex);
-            throw new RuntimeException();
+            final Settings elasticsearchSettings = Settings.builder()
+              .put("client.transport.sniff", true)
+              .put("path.home", elasticsearchHome)
+              .put("cluster.name", clusterName).build();
+            client = new PreBuiltTransportClient(elasticsearchSettings);
+            client.addTransportAddress(new InetSocketTransportAddress(InetAddress.getByName("127.0.0.1"), 9300));
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
         }
+        return client;
     }
 
     @Bean
