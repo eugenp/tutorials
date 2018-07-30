@@ -30,7 +30,7 @@ public class ClientOrchestration {
     Client client = ClientBuilder.newClient();
     WebTarget userIdService = client.target("http://localhost:8080/serviceA/id?limit=10");
     WebTarget nameService = client.target("http://localhost:8080/serviceA/{empId}/name");
-    WebTarget hashService = client.target("http://localhost:8080/serviceA/{comboIDandName}/address");
+    WebTarget hashService = client.target("http://localhost:8080/serviceA/{comboIDandName}/hash");
 
     Logger logger = Logger.getLogger("ClientOrchestrator");
 
