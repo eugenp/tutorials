@@ -28,9 +28,9 @@ import rx.Observable;
 public class ClientOrchestration {
 
     Client client = ClientBuilder.newClient();
-    WebTarget userIdService = client.target("http:localhost:8080/serviceA/id?limit=10");
-    WebTarget nameService = client.target("http:localhost:8080/serviceA/{empId}/name");
-    WebTarget hashService = client.target("http:localhost:8080/serviceA/{comboIDandName}/address");
+    WebTarget userIdService = client.target("http://localhost:8080/serviceA/id?limit=10");
+    WebTarget nameService = client.target("http://localhost:8080/serviceA/{empId}/name");
+    WebTarget hashService = client.target("http://localhost:8080/serviceA/{comboIDandName}/address");
 
     Logger logger = Logger.getLogger("ClientOrchestrator");
 
@@ -73,6 +73,7 @@ public class ClientOrchestration {
                                                 }
                                             });
                                         }
+
                                         @Override
                                         public void failed(Throwable throwable) {
                                             completionTracker.countDown();
@@ -80,7 +81,7 @@ public class ClientOrchestration {
                                         }
                                     });
                         });
-                     
+
                         try {
                             if (!completionTracker.await(10, TimeUnit.SECONDS)) { //wait for inner requests to complete in 10 seconds
                                 logger.warning("Some requests didn't complete within the timeout");
@@ -88,7 +89,7 @@ public class ClientOrchestration {
                         } catch (InterruptedException ex) {
                             Logger.getLogger(ClientOrchestration.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                       
+
                     }
 
                     @Override
@@ -109,12 +110,8 @@ public class ClientOrchestration {
                     return null;
                 });
 
-        CompletionStage<List<CompletionStage<String>>> completedNameStage = userIdStage.thenApplyAsync(list -> list.stream().map((Long id) -> {
-            CompletionStage nameStage = nameService.resolveTemplate("empId", id).request().rx().get(String.class);
-        }).collect(Collectors.toList()));
-
         userIdStage.thenAcceptAsync(listOfIds -> {
-            listOfIds.stream().map((Long id) -> {
+            listOfIds.stream().forEach((Long id) -> {
                 CompletableFuture<String> completable = nameService.resolveTemplate("empId", id)
                         .request()
                         .rx()
@@ -143,10 +140,7 @@ public class ClientOrchestration {
     public void observableJavaOrchestrate() {
 
         logger.info("Orchestrating with Observables");
-
-        client.register(RxObservableInvokerProvider.class);
-
-        Observable<List<Long>> userIdObservable = userIdService.request()
+        Observable<List<Long>> userIdObservable = userIdService.register(RxObservableInvokerProvider.class).request()
                 .rx(RxObservableInvoker.class)
                 .get(new GenericType<List<Long>>() {
                 });
@@ -173,10 +167,7 @@ public class ClientOrchestration {
     public void flowableJavaOrchestrate() {
 
         logger.info("Orchestrating with Flowable");
-
-        client.register(RxFlowableInvokerProvider.class);
-
-        Flowable<List<Long>> userIdObservable = userIdService.request()
+        Flowable<List<Long>> userIdObservable = userIdService.register(RxFlowableInvokerProvider.class).request()
                 .rx(RxFlowableInvoker.class)
                 .get(new GenericType<List<Long>>() {
                 });
