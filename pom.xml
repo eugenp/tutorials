@@ -550,6 +550,7 @@
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
+				<module>sse-jaxrs</module>
 				<module>testing-modules/junit-abstract</module>				
 			</modules>
 
