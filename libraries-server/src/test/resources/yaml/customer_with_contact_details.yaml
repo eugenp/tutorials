@@ -1,7 +1,0 @@
-firstName: "John"
-lastName: "Doe"
-age: 31
-contactDetails:
-   - { type: "mobile", number: 123456789}
-   - { type: "landline", number: 456786868}
-   
