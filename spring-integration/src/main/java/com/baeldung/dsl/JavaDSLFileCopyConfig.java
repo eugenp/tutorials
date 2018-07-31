@@ -8,17 +8,25 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.integration.annotation.IntegrationComponentScan;
+import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.core.MessageSelector;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.Pollers;
 import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.FileWritingMessageHandler;
-import org.springframework.integration.file.filters.SimplePatternFileListFilter;
 import org.springframework.integration.file.support.FileExistsMode;
+import org.springframework.integration.filter.MessageFilter;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
+/**
+ * JavaDSLFileCopyConfig contains various Integration Flows created from various spring integration components.
+ * Activate only one flow at a time by un-commenting @Bean annotation from IntegrationFlow beans. 
+ */
 @Configuration
 @EnableIntegration
 @IntegrationComponentScan
@@ -29,15 +37,26 @@ public class JavaDSLFileCopyConfig {
     public static final String FILE_PATTERN = "*.jpg";
 
     @Bean
-    public MessageSource<File> fileReadingMessageSource() {
+    public MessageSource<File> anInputSource() {
         FileReadingMessageSource messageSource = new FileReadingMessageSource();
         messageSource.setDirectory(new File(INPUT_DIR));
-        messageSource.setFilter(new SimplePatternFileListFilter(FILE_PATTERN));
         return messageSource;
     }
 
     @Bean
-    public MessageHandler fileWritingMessageHandler() {
+    public MessageFilter aFilter() {
+        return new MessageFilter(new MessageSelector() {
+
+            @Override
+            public boolean accept(Message<?> message) {
+                return ((File) message).getName()
+                    .endsWith(".txt");
+            }
+        });
+    }
+
+    @Bean
+    public MessageHandler aServiceActivator() {
         FileWritingMessageHandler handler = new FileWritingMessageHandler(new File(OUTPUT_DIR));
         handler.setFileExistsMode(FileExistsMode.REPLACE);
         handler.setExpectReply(false);
@@ -46,8 +65,79 @@ public class JavaDSLFileCopyConfig {
 
     @Bean
     public IntegrationFlow flow() {
-        return IntegrationFlows.from(fileReadingMessageSource(), e -> e.poller(Pollers.fixedDelay(10000)))
-            .handle(fileWritingMessageHandler())
+        return IntegrationFlows.from(anInputSource())
+            .filter(aFilter())
+            .handle(aServiceActivator())
+            .get();
+    }
+
+    // @Bean
+    public IntegrationFlow flowWithLambda() {
+        return IntegrationFlows.from(anInputSource())
+            .filter(source -> ((File) source).getName()
+                .endsWith(".jpg"))
+            .handle(aServiceActivator())
+            .get();
+    }
+
+    // @Bean
+    public IntegrationFlow flowWithPoller() {
+        return IntegrationFlows.from(anInputSource(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
+            .filter(aFilter())
+            .channel(aChannel())
+            .bridge()
+            .channel(destinationChannel1())
+            .channel(destinationChannel2())
+            .handle(aServiceActivator())
+            .get();
+    }
+
+    @Bean
+    public MessageChannel aChannel() {
+        return new DirectChannel();
+    }
+
+    // @Bean
+    public IntegrationFlow flowInitializeFromChannel() {
+        return IntegrationFlows.from(aChannel())
+            .filter(aFilter())
+            .handle(aServiceActivator())
+            .get();
+    }
+
+    // @Bean
+    public IntegrationFlow flowPipeChannel() {
+        return IntegrationFlows.from(anInputSource())
+            .filter(aFilter())
+            .channel(aChannel())
+            .handle(aServiceActivator())
+            .get();
+    }
+
+    @Bean
+    public MessageChannel sourceChannel() {
+        return new DirectChannel();
+    }
+
+    @Bean
+    public MessageChannel destinationChannel1() {
+        return new DirectChannel();
+    }
+
+    @Bean
+    public MessageChannel destinationChannel2() {
+        return new DirectChannel();
+    }
+
+    // @Bean
+    public IntegrationFlow flowWithBridge() {
+        return IntegrationFlows.from(anInputSource())
+            .filter(aFilter())
+            .channel(sourceChannel())
+            .bridge()
+            .channel(destinationChannel1())
+            .channel(destinationChannel2())
+            .handle(aServiceActivator())
             .get();
     }
 
