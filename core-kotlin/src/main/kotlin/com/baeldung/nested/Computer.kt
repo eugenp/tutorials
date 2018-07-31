@@ -27,6 +27,10 @@ class Computer(val model: String) {
         fun on(): String
     }
 
+    interface Protector {
+        fun smart()
+    }
+
     fun powerOn(): String {
         //Local class
         var defaultColor = "Blue"
@@ -45,11 +49,16 @@ class Computer(val model: String) {
         log.debug("defaultColor is $defaultColor")
         powerLed.changeDefaultPowerOnColor()
         log.debug("defaultColor changed inside Led class to $defaultColor")
-        //Anonymous class
-        val powerSwitch = object : Switcher {
+        //Anonymous object
+        val powerSwitch = object : Switcher, Protector {
             override fun on(): String {
                 return powerLed.blink()
             }
+
+            override fun smart() {
+                log.debug("Smart protection is implemented")
+            }
+
             fun changeDefaultPowerOnColor() {
                 defaultColor = "Yellow"
             }
