@@ -1,4 +1,4 @@
-package com.baeldung.migration.junit5;
+package com.baeldung.junit5;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.*;
