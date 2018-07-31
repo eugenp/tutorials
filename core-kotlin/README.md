@@ -36,3 +36,4 @@
 - [Working with Enums in Kotlin](http://www.baeldung.com/kotlin-enum)
 - [Create a Java and Kotlin Project with Maven](http://www.baeldung.com/kotlin-maven-java-project)
 - [Reflection with Kotlin](http://www.baeldung.com/kotlin-reflection)
+- [Get a Random Number in Kotlin](http://www.baeldung.com/kotlin-random-number)
