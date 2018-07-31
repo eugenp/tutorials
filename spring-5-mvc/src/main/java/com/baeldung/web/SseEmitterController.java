@@ -10,12 +10,12 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Controller
 public class SseEmitterController {
+    private ExecutorService nonBlockingService = Executors.newSingleThreadExecutor();
 
     @GetMapping(Constants.API_SSE)
     public SseEmitter handleSse() {
         SseEmitter emitter = new SseEmitter();
 
-        ExecutorService nonBlockingService = Executors.newSingleThreadExecutor();
         nonBlockingService.execute(() -> {
             try {
                 emitter.send(Constants.API_SSE_MSG + " @ " + new Date());
