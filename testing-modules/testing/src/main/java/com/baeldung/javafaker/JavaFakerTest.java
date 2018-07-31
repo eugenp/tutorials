@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.javafaker;
 
 import com.github.javafaker.Faker;
 import com.github.javafaker.service.FakeValuesService;
