@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-@Component
+@Component("EmployeeWebSocketHandler")
 public class EmployeeWebSocketHandler implements WebSocketHandler {
 
     ObjectMapper om = new ObjectMapper();

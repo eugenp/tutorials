@@ -34,3 +34,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot Exit Codes](http://www.baeldung.com/spring-boot-exit-codes)
 - [Guide to the Favicon in Spring Boot](http://www.baeldung.com/spring-boot-favicon)
 - [Spring Shutdown Callbacks](http://www.baeldung.com/spring-shutdown-callbacks)
+- [Spring Boot Integration Testing with Embedded MongoDB](http://www.baeldung.com/spring-boot-embedded-mongodb)
