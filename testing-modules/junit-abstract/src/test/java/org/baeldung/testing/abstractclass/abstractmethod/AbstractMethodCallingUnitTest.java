@@ -16,23 +16,22 @@ public class AbstractMethodCallingUnitTest {
 
     @Test
     public void givenDefaultImpl_whenMockAbstractFunc_thenExpectedBehaviour() {
-        // mock classes and call real methods available
-        Mockito.when(cls.abstractFunc())
-            .thenReturn("Abstract");
-        // Mockito.doReturn("Abstract")
-        // .when(cls)
-        // .abstractFunc();
-        Mockito.doCallRealMethod()
-            .when(cls)
-            .defaultImpl();
+        Mockito
+          .when(cls.abstractFunc())
+          .thenReturn("Abstract");
+        Mockito
+          .doCallRealMethod()
+          .when(cls)
+          .defaultImpl();
 
         // validate result by mock abstractFunc's behaviour
         Assertions.assertEquals("Abstract Default", cls.defaultImpl());
 
         // check the value with null response from abstract method
-        Mockito.doReturn(null)
-            .when(cls)
-            .abstractFunc();
+        Mockito
+          .doReturn(null)
+          .when(cls)
+          .abstractFunc();
         Assertions.assertEquals("Default", cls.defaultImpl());
     }
 

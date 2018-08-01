@@ -9,13 +9,14 @@ import org.powermock.reflect.Whitebox;
 public class AbstractInstanceFieldsUnitTest {
 
     @Test
-    public void protectedInstanceField_MockClassCountGt5_testNonAbstractMethod() {
+    public void givenProtectedInstanceField_whenMockClassCountGt5_thenTestNonAbstractMethod() {
 
         // mock
         AbstractInstanceFields instClass = Mockito.mock(AbstractInstanceFields.class);
-        Mockito.doCallRealMethod()
-            .when(instClass)
-            .testFunc();
+        Mockito
+          .doCallRealMethod()
+          .when(instClass)
+          .testFunc();
 
         // set counter greater than 5
         instClass.count = 7;
@@ -28,9 +29,10 @@ public class AbstractInstanceFieldsUnitTest {
     public void givenNonAbstractMethodAndPrivateField_whenPowerMockitoAndActiveFieldTrue_thenCorrectBehaviour() {
 
         AbstractInstanceFields instClass = PowerMockito.mock(AbstractInstanceFields.class);
-        PowerMockito.doCallRealMethod()
-            .when(instClass)
-            .testFunc();
+        PowerMockito
+          .doCallRealMethod()
+          .when(instClass)
+          .testFunc();
         Whitebox.setInternalState(instClass, "active", true);
 
         // compare the expected result with actual
