@@ -1,4 +1,4 @@
-package com.baeldung.list;
+package com.baeldung.list.removeall;
 
 import java.util.ArrayList;
 import java.util.Iterator;
