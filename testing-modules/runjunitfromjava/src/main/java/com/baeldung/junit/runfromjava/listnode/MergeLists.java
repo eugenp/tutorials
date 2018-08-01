@@ -1,7 +1,5 @@
 package com.baeldung.junit.runfromjava.listnode;
 
-import com.baeldung.junit.runfromjava.listnode.ListNode;
-
 public class MergeLists {
 
     public ListNode merge(ListNode list1, ListNode list2) {

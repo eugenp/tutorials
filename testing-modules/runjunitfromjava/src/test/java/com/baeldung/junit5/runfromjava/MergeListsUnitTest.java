@@ -24,8 +24,9 @@ class MergeListsUnitTest {
 
     @RepeatedTest(10)
     void whenMergingNormalLists_thenGetExpectedString() {
-        assertEquals(mergeLists.merge(listNode1, listNode2)
-            .toString(), "1->2->3->4->5->6->7->8");
+        assertEquals(mergeLists
+          .merge(listNode1, listNode2)
+          .toString(), "1->2->3->4->5->6->7->8");
     }
 
     @RepeatedTest(5)

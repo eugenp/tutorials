@@ -1,7 +1,5 @@
 package com.baeldung.junit.runfromjava.listnode;
 
-import com.baeldung.junit.runfromjava.listnode.ListNode;
-
 public class RemovedNthElement {
     public ListNode removeNthFromEnd(ListNode head, int n) {
 

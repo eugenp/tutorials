@@ -18,23 +18,18 @@ public class RunJUnit5Tests {
     SummaryGeneratingListener listener = new SummaryGeneratingListener();
 
     public void runOne() {
-
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder
           .request()
-          .selectors(selectClass("com.baeldung.junit5.runfromjava.RotateListUnitTest"))
+          .selectors(selectClass(RotateListUnitTest.class))
           .build();
         Launcher launcher = LauncherFactory.create();
-
         TestPlan testPlan = launcher.discover(request);
 
         launcher.registerTestExecutionListeners(listener);
-
         launcher.execute(request);
-
     }
 
     public void runAll() {
-
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder
           .request()
           .selectors(selectPackage("com.baeldung.junit5.runfromjava"))
@@ -47,7 +42,6 @@ public class RunJUnit5Tests {
         launcher.registerTestExecutionListeners(listener);
 
         launcher.execute(request);
-
     }
 
     public static void main(String[] args) {

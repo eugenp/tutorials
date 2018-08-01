@@ -2,19 +2,14 @@ package com.baeldung.junit4.runfromjava;
 
 import junit.extensions.ActiveTestSuite;
 import junit.extensions.RepeatedTest;
-import org.junit.extensions.cpsuite.ClasspathSuite;
-import static org.junit.extensions.cpsuite.SuiteType.*;
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
 import junit.framework.TestSuite;
-
-import org.junit.extensions.cpsuite.ClasspathSuite.SuiteTypes;
 import org.junit.internal.TextListener;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
-import org.junit.runner.RunWith;
 import org.junit.runner.notification.Failure;
 
-@RunWith(ClasspathSuite.class)
-@SuiteTypes({ TEST_CLASSES })
 public class RunJUnit4Tests {
 
     public static void runOne() {
@@ -46,29 +41,36 @@ public class RunJUnit4Tests {
         }
 
         resultReport(result);
-
-    }
-
-    public static void resultReport(Result result) {
-        System.out.println("Finished. Result " + ". Failures: " +
-          result.getFailureCount() + ". Ignored: " +
-          result.getIgnoreCount() + ". Tests runt: " +
-          result.getRunCount() + ". Time: " +
-          result.getRunTime() + "ms.");
     }
 
     public static void runRepeated() {
-        RepeatedTest repeatedTest = new RepeatedTest(new TestSuite(MergeListsUnitTest.class), 5);
-        junit.textui.TestRunner.run(repeatedTest);
+        Test test = new JUnit4TestAdapter(MergeListsUnitTest.class);
+        RepeatedTest repeatedTest = new RepeatedTest(test, 5);
+
+        JUnitCore junit = new JUnitCore();
+        junit.addListener(new TextListener(System.out));
+
+        junit.run(repeatedTest);
     }
 
-    public static void runRepeatedSuiteMethod() {
+    public static void runRepeatedSuite() {
         TestSuite mySuite = new ActiveTestSuite();
 
-        mySuite.addTest(new RepeatedTest(new TestSuite(ListNodeUnitTest.class), 5));
-        mySuite.addTest(new RepeatedTest(new TestSuite(SwapNodesUnitTest.class), 3));
+        JUnitCore junit = new JUnitCore();
+        junit.addListener(new TextListener(System.out));
 
-        junit.textui.TestRunner.run(mySuite);
+        mySuite.addTest(new RepeatedTest(new JUnit4TestAdapter(MergeListsUnitTest.class), 5));
+        mySuite.addTest(new RepeatedTest(new JUnit4TestAdapter(RemovedNthElementUnitTest.class), 3));
+
+        junit.run(mySuite);
+    }
+
+    public static void resultReport(Result result) {
+        System.out.println("Finished. Result: Failures: " +
+          result.getFailureCount() + ". Ignored: " +
+          result.getIgnoreCount() + ". Tests run: " +
+          result.getRunCount() + ". Time: " +
+          result.getRunTime() + "ms.");
     }
 
     public static void main(String[] args) {
@@ -84,9 +86,8 @@ public class RunJUnit4Tests {
         System.out.println("\nRunning repeated tests:");
         runRepeated();
 
-        System.out.println("\nRunning repeated tests on specific test methods:");
-        runRepeatedSuiteMethod();
-
+        System.out.println("\nRunning repeated suite tests:");
+        runRepeatedSuite();
     }
 
 }

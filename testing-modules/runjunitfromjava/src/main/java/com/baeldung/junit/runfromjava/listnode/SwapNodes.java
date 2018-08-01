@@ -1,7 +1,5 @@
 package com.baeldung.junit.runfromjava.listnode;
 
-import com.baeldung.junit.runfromjava.listnode.ListNode;
-
 public class SwapNodes {
     public ListNode swapPairs(ListNode listHead) {
 
@@ -10,20 +8,24 @@ public class SwapNodes {
 
         ListNode current = result;
 
-        while (current.getNext() != null && current.getNext()
-            .getNext() != null) {
+        while (current.getNext() != null && current
+          .getNext()
+          .getNext() != null) {
 
             ListNode first = current.getNext();
-            ListNode second = current.getNext()
-                .getNext();
+            ListNode second = current
+              .getNext()
+              .getNext();
 
             first.setNext(second.getNext());
             current.setNext(second);
-            current.getNext()
-                .setNext(first);
+            current
+              .getNext()
+              .setNext(first);
 
-            current = current.getNext()
-                .getNext();
+            current = current
+              .getNext()
+              .getNext();
         }
 
         return result.getNext();

@@ -1,7 +1,5 @@
 package com.baeldung.junit.runfromjava.listnode;
 
-import com.baeldung.junit.runfromjava.listnode.ListNode;
-
 public class RotateList {
     public ListNode rotateRight(ListNode list, int n) {
 
