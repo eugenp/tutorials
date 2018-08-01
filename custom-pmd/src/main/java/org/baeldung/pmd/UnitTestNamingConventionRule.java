@@ -11,6 +11,7 @@ public class UnitTestNamingConventionRule extends AbstractJavaRule {
 
     private static List<String> allowedEndings = Arrays.asList(
       "IntegrationTest",
+      "IntTest",
       "ManualTest",
       "JdbcTest",
       "LiveTest",

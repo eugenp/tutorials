@@ -2,72 +2,73 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>performancetests</artifactId>
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>performancetests</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>ma.glasnost.orika</groupId>
             <artifactId>orika-core</artifactId>
-            <version>1.5.2</version>
+            <version>${orika.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>
-            <version>5.5.1</version>
+            <version>${dozer.version}</version>
         </dependency>
         <dependency>
             <groupId>io.craftsman</groupId>
             <artifactId>dozer-jdk8-support</artifactId>
-            <version>1.0.2</version>
+            <version>${dozer-jdk8-support.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-jdk8</artifactId>
-            <version>1.2.0.Final</version>
+            <version>${mapstruct-jdk8.version}</version>
         </dependency>
         <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
-            <version>1.1.0</version>
+            <version>${modelmapper.version}</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.jmapper-framework</groupId>
             <artifactId>jmapper-core</artifactId>
-            <version>1.6.0.1</version>
+            <version>${jmapper.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>1.20</version>
+            <version>${jmh.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>1.20</version>
+            <version>${jmh.version}</version>
         </dependency>
     </dependencies>
+    
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.5.1</version>
+                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
                         <annotationProcessorPaths>
                             <path>
                                 <groupId>org.mapstruct</groupId>
                                 <artifactId>mapstruct-processor</artifactId>
-                                <version>1.2.0.Final</version>
+                                <version>${mapstruct-processor.version}</version>
                             </path>
                         </annotationProcessorPaths>
                     </configuration>
@@ -75,5 +76,16 @@
             </plugins>
         </pluginManagement>
     </build>
+    
+    <properties>
+        <orika.version>1.5.2</orika.version>
+        <dozer.version>5.5.1</dozer.version>
+        <dozer-jdk8-support.version>1.0.2</dozer-jdk8-support.version>
+        <mapstruct-jdk8.version>1.2.0.Final</mapstruct-jdk8.version>
+        <modelmapper.version>1.1.0</modelmapper.version>
+        <jmapper.version>1.6.0.1</jmapper.version>
+        <jmh.version>1.20</jmh.version>
+        <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
+    </properties>
 
 </project>

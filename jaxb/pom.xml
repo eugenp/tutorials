@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>jaxb</artifactId>
@@ -42,7 +42,7 @@
         <dependency>
             <groupId>javax.activation</groupId>
             <artifactId>activation</artifactId>
-            <version>1.1</version>
+            <version>${javax.activation.version}</version>
         </dependency>
     </dependencies>
 
@@ -75,7 +75,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <execute/>
+                                        <execute />
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -116,13 +116,9 @@
             </plugin>
 
             <!-- schemagen -->
-            <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>${jaxb2-maven-plugin.version}</version> <executions> <execution>
-                <id>schemagen</id> <goals> <goal>schemagen</goal> </goals> </execution> </executions>
-                <configuration> <sources> <source>src/main/java/com/baeldung/jaxb/gen</source>
-                </sources> <outputDirectory>src/main/resources</outputDirectory> <clearOutputDir>false</clearOutputDir>
-                <transformSchemas> <transformSchema> <uri>http://www.baeldung.com/jaxb/gen</uri>
-                <toPrefix>user</toPrefix> <toFile>gen-schema.xsd</toFile> </transformSchema>
+            <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>jaxb2-maven-plugin</artifactId> <version>${jaxb2-maven-plugin.version}</version> <executions> <execution> 
+                <id>schemagen</id> <goals> <goal>schemagen</goal> </goals> </execution> </executions> <configuration> <sources> <source>src/main/java/com/baeldung/jaxb/gen</source> </sources> <outputDirectory>src/main/resources</outputDirectory> 
+                <clearOutputDir>false</clearOutputDir> <transformSchemas> <transformSchema> <uri>http://www.baeldung.com/jaxb/gen</uri> <toPrefix>user</toPrefix> <toFile>gen-schema.xsd</toFile> </transformSchema> 
                 </transformSchemas> </configuration> </plugin> -->
         </plugins>
     </build>
@@ -137,6 +133,8 @@
         <commons-io.version>2.5</commons-io.version>
         <commons-lang3.version>3.5</commons-lang3.version>
         <lifecycle-mapping-plugin.version>1.0.0</lifecycle-mapping-plugin.version>
+
+        <javax.activation.version>1.1</javax.activation.version>
     </properties>
 
 </project>
