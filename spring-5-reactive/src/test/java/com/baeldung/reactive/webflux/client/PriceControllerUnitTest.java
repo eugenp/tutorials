@@ -1,6 +1,7 @@
 package com.baeldung.reactive.webflux.client;
 
 import com.baeldung.reactive.webflux.server.controller.PriceController;
+import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +12,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
+
+import java.time.Duration;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -32,7 +35,15 @@ public class PriceControllerUnitTest {
 
         StepVerifier.create(responseBody)
                 .expectSubscription()
-                .expectNextCount(5).thenCancel().verify();
+                .thenAwait(Duration.ofSeconds(1))
+                .assertNext(x-> Assert.assertTrue(isValueDoubleType(x)))
+                .thenAwait(Duration.ofSeconds(1))
+                .assertNext(x-> Assert.assertTrue(isValueDoubleType(x)))
+                .thenCancel().verify();
 
+    }
+
+    boolean isValueDoubleType(Object value){
+        return value instanceof Double;
     }
 }
