@@ -368,6 +368,7 @@
 				<module>jws</module>
 				<module>libraries</module>
 				<module>libraries-data</module>
+				<module>libraries-server</module>
 				<module>linkrest</module>
 				<module>logging-modules/log-mdc</module>
 				<module>logging-modules/log4j</module>
