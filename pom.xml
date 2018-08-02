@@ -366,6 +366,7 @@
 				<module>jsoup</module>
 				<module>testing-modules/junit-5</module>
 				<module>jws</module>
+				<module>jmh</module>
 				<module>libraries</module>
 				<module>libraries-data</module>
 				<module>linkrest</module>
