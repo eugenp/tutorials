@@ -1,4 +1,4 @@
-package com.baeldung.final_finally_and_finalize.finalize;
+package com.baeldung.keywords.finalize;
 
 public class FinalizeObject {
 

@@ -1,4 +1,4 @@
-package com.baeldung.final_finally_and_finalize.finalkeyword;
+package com.baeldung.keywords.finalkeyword;
 
 /*public class GrandChild extends Child {
     // Compilation error

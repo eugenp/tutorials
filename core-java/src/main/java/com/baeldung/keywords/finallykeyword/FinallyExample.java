@@ -1,4 +1,4 @@
-package com.baeldung.final_finally_and_finalize.finallykeyword;
+package com.baeldung.keywords.finallykeyword;
 
 public class FinallyExample {
 
