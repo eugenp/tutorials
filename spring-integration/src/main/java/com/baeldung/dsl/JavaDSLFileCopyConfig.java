@@ -10,7 +10,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
-import org.springframework.integration.core.MessageSelector;
+import org.springframework.integration.core.GenericSelector;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
@@ -18,8 +18,6 @@ import org.springframework.integration.dsl.Pollers;
 import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.FileWritingMessageHandler;
 import org.springframework.integration.file.support.FileExistsMode;
-import org.springframework.integration.filter.MessageFilter;
-import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
@@ -34,7 +32,6 @@ public class JavaDSLFileCopyConfig {
 
     public static final String INPUT_DIR = "source";
     public static final String OUTPUT_DIR = "target";
-    public static final String FILE_PATTERN = "*.jpg";
 
     @Bean
     public MessageSource<File> anInputSource() {
@@ -44,15 +41,14 @@ public class JavaDSLFileCopyConfig {
     }
 
     @Bean
-    public MessageFilter aFilter() {
-        return new MessageFilter(new MessageSelector() {
+    public GenericSelector<File> aFilter() {
+        return new GenericSelector<File>() {
 
             @Override
-            public boolean accept(Message<?> message) {
-                return ((File) message).getName()
-                    .endsWith(".txt");
+            public boolean accept(File source) {
+                return source.getName().endsWith("*.jpg");
             }
-        });
+        };
     }
 
     @Bean
@@ -65,7 +61,7 @@ public class JavaDSLFileCopyConfig {
 
     @Bean
     public IntegrationFlow flow() {
-        return IntegrationFlows.from(anInputSource())
+        return IntegrationFlows.from(anInputSource(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
             .filter(aFilter())
             .handle(aServiceActivator())
             .get();
@@ -73,7 +69,7 @@ public class JavaDSLFileCopyConfig {
 
     // @Bean
     public IntegrationFlow flowWithLambda() {
-        return IntegrationFlows.from(anInputSource())
+        return IntegrationFlows.from(anInputSource(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
             .filter(source -> ((File) source).getName()
                 .endsWith(".jpg"))
             .handle(aServiceActivator())
@@ -107,7 +103,7 @@ public class JavaDSLFileCopyConfig {
 
     // @Bean
     public IntegrationFlow flowPipeChannel() {
-        return IntegrationFlows.from(anInputSource())
+        return IntegrationFlows.from(anInputSource(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
             .filter(aFilter())
             .channel(aChannel())
             .handle(aServiceActivator())
