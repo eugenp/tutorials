@@ -3,4 +3,4 @@ Jira BAEL-1911
 
 ### Relevant Articles: 
 
-- [Spring Session with JDBC](http://www.baeldung.com)
+- [Spring Session with JDBC](http://www.baeldung.com/spring-session-jdbc)
