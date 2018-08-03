@@ -1,11 +1,5 @@
 package com.baeldung.junit5.runfromjava;
 
-import static org.junit.platform.engine.discovery.ClassNameFilter.includeClassNamePatterns;
-import static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;
-import static org.junit.platform.engine.discovery.DiscoverySelectors.selectPackage;
-
-import java.io.PrintWriter;
-
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;
 import org.junit.platform.launcher.TestPlan;
@@ -14,13 +8,19 @@ import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 import org.junit.platform.launcher.listeners.TestExecutionSummary;
 
+import java.io.PrintWriter;
+
+import static org.junit.platform.engine.discovery.ClassNameFilter.includeClassNamePatterns;
+import static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;
+import static org.junit.platform.engine.discovery.DiscoverySelectors.selectPackage;
+
 public class RunJUnit5Tests {
     SummaryGeneratingListener listener = new SummaryGeneratingListener();
 
     public void runOne() {
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder
           .request()
-          .selectors(selectClass(RotateListUnitTest.class))
+          .selectors(selectClass(FirstUnitTest.class))
           .build();
         Launcher launcher = LauncherFactory.create();
         TestPlan testPlan = launcher.discover(request);

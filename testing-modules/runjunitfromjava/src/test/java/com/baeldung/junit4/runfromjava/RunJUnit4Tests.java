@@ -15,14 +15,14 @@ public class RunJUnit4Tests {
     public static void runOne() {
         JUnitCore junit = new JUnitCore();
         junit.addListener(new TextListener(System.out));
-        junit.run(MergeListsUnitTest.class);
+        junit.run(FirstUnitTest.class);
     }
 
     public static void runAllClasses() {
         JUnitCore junit = new JUnitCore();
         junit.addListener(new TextListener(System.out));
 
-        Result result = junit.run(ListNodeUnitTest.class, MergeListsUnitTest.class, RemovedNthElementUnitTest.class, RotateListUnitTest.class, SwapNodesUnitTest.class);
+        Result result = junit.run(FirstUnitTest.class, SecondUnitTest.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
@@ -44,7 +44,7 @@ public class RunJUnit4Tests {
     }
 
     public static void runRepeated() {
-        Test test = new JUnit4TestAdapter(MergeListsUnitTest.class);
+        Test test = new JUnit4TestAdapter(SecondUnitTest.class);
         RepeatedTest repeatedTest = new RepeatedTest(test, 5);
 
         JUnitCore junit = new JUnitCore();
@@ -59,8 +59,8 @@ public class RunJUnit4Tests {
         JUnitCore junit = new JUnitCore();
         junit.addListener(new TextListener(System.out));
 
-        mySuite.addTest(new RepeatedTest(new JUnit4TestAdapter(MergeListsUnitTest.class), 5));
-        mySuite.addTest(new RepeatedTest(new JUnit4TestAdapter(RemovedNthElementUnitTest.class), 3));
+        mySuite.addTest(new RepeatedTest(new JUnit4TestAdapter(FirstUnitTest.class), 5));
+        mySuite.addTest(new RepeatedTest(new JUnit4TestAdapter(SecondUnitTest.class), 3));
 
         junit.run(mySuite);
     }
