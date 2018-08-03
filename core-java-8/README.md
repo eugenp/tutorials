@@ -56,3 +56,7 @@
 - [Generalized Target-Type Inference in Java](http://www.baeldung.com/java-generalized-target-type-inference)
 - [Image to Base64 String Conversion](http://www.baeldung.com/java-base64-image-string)
 - [Calculate Age in Java](http://www.baeldung.com/java-get-age)
+- [Overriding System Time for Testing in Java](http://www.baeldung.com/java-override-system-time)
+- [Copy a List to Another List in Java](http://www.baeldung.com/java-copy-list-to-another)
+- [Increment Date in Java](http://www.baeldung.com/java-increment-date)
+- [Add Hours To a Date In Java](http://www.baeldung.com/java-add-hours-date)
