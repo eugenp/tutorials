@@ -168,3 +168,7 @@
 - [Encrypting and Decrypting Files in Java](http://www.baeldung.com/java-cipher-input-output-stream)
 - [How to Get the Size of an Object in Java](http://www.baeldung.com/java-size-of-object)
 - [Exception Handling in Java](http://www.baeldung.com/java-exceptions)
+- [Guide to Java Instrumentation](http://www.baeldung.com/java-instrumentation)
+- [Getting a File’s Mime Type in Java](http://www.baeldung.com/java-file-mime-type)
+- [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
+
