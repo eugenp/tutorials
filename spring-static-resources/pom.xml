@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-static-resources</artifactId>
@@ -11,8 +11,8 @@
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-spring-5</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    	<relativePath>../parent-spring-5</relativePath>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -140,7 +140,6 @@
             <artifactId>handlebars</artifactId>
             <version>${handlebars.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -174,9 +173,9 @@
                 </configuration>
             </plugin>
             <plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-war-plugin</artifactId>
-  <version>3.2.2</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
                 <configuration>
                     <webResources>
                         <resource>
@@ -189,8 +188,6 @@
     </build>
 
     <properties>
-        <java-version>1.8</java-version>
-
         <!-- Spring -->
         <org.springframework.security.version>5.0.6.RELEASE</org.springframework.security.version>
 
