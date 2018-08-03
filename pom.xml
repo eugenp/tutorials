@@ -366,7 +366,6 @@
 				<module>jsoup</module>
 				<module>testing-modules/junit-5</module>
 				<module>jws</module>
-				<module>jmh</module>
 				<module>libraries</module>
 				<module>libraries-data</module>
 				<module>linkrest</module>
@@ -673,7 +672,7 @@
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
 				<module>testing-modules/junit-abstract</module>				
-
+				<module>jmh</module>
 
 				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
 
