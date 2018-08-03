@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration xmlns:xi="http://www.w3.org/2001/XInclude"
-    status="WARN">
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" 
+    packages="com.baeldung" status="WARN">
     <Appenders>
         <xi:include
             href="log4j2-includes/console-appender_pattern-layout_colored.xml" />
@@ -50,6 +50,7 @@
                     size="17 kB" />
             </Policies>
         </RollingFile>
+        <MapAppender name="MapAppender"/>
     </Appenders>
     <Loggers>
         <Logger name="CONSOLE_PATTERN_APPENDER_MARKER" level="TRACE"
@@ -82,6 +83,7 @@
         </Logger>
         <Root level="DEBUG">
             <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="MapAppender" />
         </Root>
     </Loggers>
 </Configuration>

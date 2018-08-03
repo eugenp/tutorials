@@ -6,7 +6,7 @@
     <artifactId>jhipster-monolithic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>JHipster Monolithic Application</name>
+    <description>JHipster Monolithic Application</description>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>
@@ -347,7 +347,7 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <plugin>
+            <!-- <plugin>
                 <groupId>com.github.ekryd.sortpom</groupId>
                 <artifactId>sortpom-maven-plugin</artifactId>
                 <version>${sortpom-maven-plugin.version}</version>
@@ -367,7 +367,7 @@
                     <keepBlankLines>true</keepBlankLines>
                     <expandEmptyElements>false</expandEmptyElements>
                 </configuration>
-            </plugin>
+            </plugin> -->
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>

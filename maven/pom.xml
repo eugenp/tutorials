@@ -48,8 +48,10 @@
                         <exclude>DataTest.java</exclude>
                     </excludes>
                     <includes>
+                        <include>TestFail.java</include>
                         <include>DataCheck.java</include>
                     </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
             <plugin>
