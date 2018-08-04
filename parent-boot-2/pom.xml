@@ -61,6 +61,9 @@
         </plugins>
     </build>
 
+	<modules>
+		<module>custom-validation-messagesource</module>
+	</modules>
     <profiles>
         <profile>
             <id>integration</id>
