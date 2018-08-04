@@ -6,7 +6,7 @@ class FoodOrder(
   val meat: String?,
   val fish: String?
 ) {
-    class Builder(
+    data class Builder(
       var bread: String? = null,
       var condiments: String? = null,
       var meat: String? = null,
