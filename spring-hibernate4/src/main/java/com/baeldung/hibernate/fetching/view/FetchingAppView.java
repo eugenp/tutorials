@@ -20,7 +20,7 @@ public class FetchingAppView {
     public Set<OrderDetail> lazyLoaded() {
         final Session sessionLazy = HibernateUtil.getHibernateSession("lazy");
         List<UserLazy> users = sessionLazy.createQuery("From UserLazy").list();
-        UserLazy userLazyLoaded = users.get(3);
+        UserLazy userLazyLoaded = users.get(0);
         // since data is lazyloaded so data won't be initialized
         return (userLazyLoaded.getOrderDetail());
     }
@@ -31,7 +31,7 @@ public class FetchingAppView {
         // data should be loaded in the following line
         // also note the queries generated
         List<UserEager> user = sessionEager.createQuery("From UserEager").list();
-        UserEager userEagerLoaded = user.get(3);
+        UserEager userEagerLoaded = user.get(0);
         return userEagerLoaded.getOrderDetail();
     }
 

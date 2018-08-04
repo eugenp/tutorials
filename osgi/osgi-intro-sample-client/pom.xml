@@ -2,23 +2,22 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- mvn:com.baeldung/osgi-intro-sample-client/1.0-SNAPSHOT -->
+    <artifactId>osgi-intro-sample-client</artifactId>
+    <packaging>bundle</packaging>
+
     <parent>
         <artifactId>osgi-intro</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <!-- mvn:com.baeldung/osgi-intro-sample-client/1.0-SNAPSHOT -->
-    <artifactId>osgi-intro-sample-client</artifactId>
-
-    <packaging>bundle</packaging>
 
     <dependencies>
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>osgi-intro-sample-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${osgi-intro-sample-service.version}</version>
         </dependency>
         <dependency>
             <groupId>org.osgi</groupId>
@@ -46,4 +45,7 @@
         </plugins>
     </build>
 
+    <properties>
+        <osgi-intro-sample-service.version>1.0-SNAPSHOT</osgi-intro-sample-service.version>
+    </properties>
 </project>
