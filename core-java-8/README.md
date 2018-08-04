@@ -56,3 +56,4 @@
 - [Generalized Target-Type Inference in Java](http://www.baeldung.com/java-generalized-target-type-inference)
 - [Image to Base64 String Conversion](http://www.baeldung.com/java-base64-image-string)
 - [Calculate Age in Java](http://www.baeldung.com/java-get-age)
+- [Add Hours To a Date In Java](http://www.baeldung.com/java-add-hours-date)
