@@ -7,17 +7,7 @@ import java.util.Scanner;
 
 public class ScannerIntExample {
 
-    private static final String FILENAME = "src/resources/num.txt";
-
-    public static void main(String[] args) {
-        try {
-            System.out.println(generateArrayListFromFile(FILENAME));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static ArrayList<Integer> generateArrayListFromFile(String filename) throws IOException {
+    protected static ArrayList<Integer> generateArrayListFromFile(String filename) throws IOException {
         
         ArrayList<Integer> result = new ArrayList<>();
 
