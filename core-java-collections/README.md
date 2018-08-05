@@ -31,3 +31,6 @@
 - [How to Store Duplicate Keys in a Map in Java?](http://www.baeldung.com/java-map-duplicate-keys)
 - [Getting the Size of an Iterable in Java](http://www.baeldung.com/java-iterable-size)
 - [Iterating Backward Through a List](http://www.baeldung.com/java-list-iterate-backwards)
+- [Remove the First Element from a List](http://www.baeldung.com/java-remove-first-element-from-list)
+- [How to Convert List to Map in Java](http://www.baeldung.com/java-list-to-map)
+- [Initializing HashSet at the Time of Construction](http://www.baeldung.com/java-initialize-hashset)
