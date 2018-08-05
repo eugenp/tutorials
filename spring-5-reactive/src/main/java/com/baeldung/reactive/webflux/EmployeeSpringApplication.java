@@ -12,6 +12,9 @@ public class EmployeeSpringApplication {
 
         EmployeeWebClient employeeWebClient = new EmployeeWebClient();
         employeeWebClient.consume();
+
+        EmployeeMonitoringWebClient monitoringWebClient = new EmployeeMonitoringWebClient();
+        monitoringWebClient.subscribe();
     }
 
 }
