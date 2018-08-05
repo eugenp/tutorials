@@ -83,7 +83,6 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <javaee-api.version>7.0</javaee-api.version>
         <wildfly-javaee7.version>10.1.0.Final</wildfly-javaee7.version>
         <hibernate-core.version>5.2.3.Final</hibernate-core.version>

@@ -13,7 +13,7 @@
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
-                <version>1.1.13.Final</version>
+                <version>${arquillian-bom.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -26,12 +26,6 @@
             <artifactId>javaee-api</artifactId>
             <version>${javaee-api.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
@@ -56,7 +50,7 @@
                 <dependency>
                     <groupId>org.glassfish.main.extras</groupId>
                     <artifactId>glassfish-embedded-all</artifactId>
-                    <version>3.1.2</version>
+                    <version>${glassfish-embedded-all.version}</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
@@ -67,7 +61,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.4</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -77,13 +71,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <arquillian-bom.version>1.1.12.Final</arquillian-bom.version>
+        <arquillian-bom.version>1.1.13.Final</arquillian-bom.version>
         <shrinkwrap-resolver-impl-maven.version>2.2.6</shrinkwrap-resolver-impl-maven.version>
         <arquillian-junit-container.version>1.1.12.Final</arquillian-junit-container.version>
         <arquillian-glassfish-embedded-3.1.version>1.0.0.Final</arquillian-glassfish-embedded-3.1.version>
         <junit.version>4.12</junit.version>
         <javaee-api.version>7.0</javaee-api.version>
         <arquillian-glassfish-embedded-3.1.version>1.0.0.CR4</arquillian-glassfish-embedded-3.1.version>
+        <glassfish-embedded-all.version>3.1.2</glassfish-embedded-all.version>
     </properties>
 
 </project>
