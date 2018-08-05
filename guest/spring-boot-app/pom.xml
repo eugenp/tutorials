@@ -7,8 +7,8 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>org.springframework.boot</artifactId>
-        <groupId>spring-boot-starter-parent</groupId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.3.RELEASE</version>
     </parent>
 
