@@ -19,7 +19,7 @@ public class MyServletContainerCustomizationBean implements WebServerFactoryCust
         container.setContextPath("/springbootapp");
 
         container.addErrorPages(new ErrorPage(HttpStatus.BAD_REQUEST, "/400"));
-        container.addErrorPages(new ErrorPage("/errorHeaven"));
+        container.addErrorPages(new ErrorPage("/errorHaven"));
     }
 
 }
