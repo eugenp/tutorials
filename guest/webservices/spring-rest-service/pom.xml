@@ -7,10 +7,9 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-1</relativePath>
+        <artifactId>org.springframework.boot</artifactId>
+        <groupId>spring-boot-starter-parent</groupId>
+        <version>1.5.4.RELEASE</version>
     </parent>
 
     <dependencies>

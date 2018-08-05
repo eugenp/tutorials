@@ -10,10 +10,10 @@
     <description>Spring MVC sample project</description>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <artifactId>org.springframework.boot</artifactId>
+        <groupId>spring-boot-starter-parent</groupId>
+        <version>2.0.0.M5</version>
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <dependencies>
