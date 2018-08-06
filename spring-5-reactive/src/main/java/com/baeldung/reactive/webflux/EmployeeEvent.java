@@ -11,6 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class EmployeeEvent {
 
-	private Employee employee;
-	private Date date;
+    private Employee employee;
+    private Date date;
+    
+    // constructors, getters and setters
 }
