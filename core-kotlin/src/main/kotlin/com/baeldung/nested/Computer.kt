@@ -65,7 +65,7 @@ class Computer(val model: String) {
             }
         }
         powerSwitch.changeDefaultPowerOnColor()
-        log.debug("defaultColor changed inside powerSwitch anonymous class to $defaultColor")
+        log.debug("defaultColor changed inside powerSwitch anonymous object to $defaultColor")
         return powerSwitch.on()
     }
 
