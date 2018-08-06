@@ -1,5 +1,6 @@
 package com.baeldung.nested
 
+import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 class Computer(val model: String) {
@@ -10,7 +11,7 @@ class Computer(val model: String) {
             return "2018-05-23"
         }
 
-        val log = LoggerFactory.getLogger(Computer.javaClass)
+        val log: Logger = LoggerFactory.getLogger(Computer::class.java)
     }
 
     //Nested class
