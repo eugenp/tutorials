@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.tuple.Tuple1;
-import reactor.tuple.Tuple2;
 
 @RestController
 @RequestMapping("/employees")
@@ -43,7 +41,7 @@ public class EmployeeController {
     }
     
     @GetMapping(value="/{id}/track", produces=MediaType.TEXT_EVENT_STREAM_VALUE)
-    private Flux<EmployeeEvent> trackEmployeeChanges(@PathVariable String id){
+    private Flux<EmployeeEvent> trackEmployee(@PathVariable String id){
     	return employeeRepository.findEmployeeById(id)
     			.flatMapMany(employee -> {
     				
