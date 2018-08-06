@@ -13,27 +13,27 @@ import reactor.test.StepVerifier;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest()
-public class SpringReactiveApplicationTests {
+public class SpringReactiveApplicationUnitTest {
 
 	@Test
-	public void testGetMessages() {
+	public void whenSendingAGet_theStreamOfMessages() {
 		
 		WebTestClient webTestClient = WebTestClient
-				.bindToController(new ReactiveController()).build();
+		    .bindToController(new ReactiveController()).build();
 
 		FluxExchangeResult<String> result = webTestClient.get().uri("/messages")
-				.accept(MediaType.TEXT_EVENT_STREAM)
-				.exchange()
-				.expectStatus().isOk()
-				.returnResult(String.class);
+		    .accept(MediaType.TEXT_EVENT_STREAM)
+		    .exchange()
+		    .expectStatus().isOk()
+		    .returnResult(String.class);
 		
 		Flux<String> messageFlux = result.getResponseBody();
 		
 		StepVerifier.create(messageFlux)
-				.expectNextCount(1)
-				.consumeNextWith(System.out::println)
-				.thenCancel()
-				.verify();
+		    .expectNextCount(1)
+		    .consumeNextWith(System.out::println)
+		    .thenCancel()
+		    .verify();
 	}
 
 }

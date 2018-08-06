@@ -16,9 +16,9 @@ import reactor.core.publisher.Flux;
 public class SpringReactiveApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringReactiveApplication.class, args);
+	    SpringApplication.run(SpringReactiveApplication.class, args);
 		
-		ReactiveClient reactiveClient = new ReactiveClient();
+	    ReactiveClient reactiveClient = new ReactiveClient();
     	reactiveClient.consume();
 	}
 }
@@ -29,17 +29,15 @@ class ReactiveController {
     @GetMapping(value = "/messages", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> getAllmessages() {
         final Flux<String> flux = Flux
-        		.interval(Duration.ofMillis(1000))
-        		.map((interval) -> {
-        			return (new StringBuilder("Time at: ")
-        					.append(interval).append(" : ")
-        					.append(Calendar.getInstance().getTime())
-        					.toString());
+            .interval(Duration.ofMillis(1000))
+        	.map((interval) -> {
+        	    return (new StringBuilder("Time at: ")
+        		    .append(interval).append(" : ")
+        			.append(Calendar.getInstance().getTime())
+        			.toString());
         		});
-        
         return flux;
     }
-    
 }
 
 class ReactiveClient {
@@ -47,7 +45,6 @@ class ReactiveClient {
     WebClient client = WebClient.create("http://localhost:8080");
     
     public void consume() {
-        
         Flux<String> messageFlux = client.get()
             .uri("/messages")
             .retrieve()
