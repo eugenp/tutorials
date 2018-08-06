@@ -171,4 +171,3 @@
 - [Guide to Java Instrumentation](http://www.baeldung.com/java-instrumentation)
 - [Getting a File’s Mime Type in Java](http://www.baeldung.com/java-file-mime-type)
 - [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
-
