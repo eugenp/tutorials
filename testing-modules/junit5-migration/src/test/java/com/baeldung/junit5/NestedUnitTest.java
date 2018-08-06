@@ -1,13 +1,9 @@
-package com.baeldung;
+package com.baeldung.junit5;
+
+import org.junit.jupiter.api.*;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
-
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
 
 public class NestedUnitTest {
 
