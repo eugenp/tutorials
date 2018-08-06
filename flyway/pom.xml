@@ -27,7 +27,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql-connector-java.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -63,11 +63,7 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
         <flyway-core.version>5.0.2</flyway-core.version>
-        <mysql-connector-java.version>6.0.3</mysql-connector-java.version>
         <flyway-maven-plugin.version>5.0.2</flyway-maven-plugin.version>
     </properties>
 
