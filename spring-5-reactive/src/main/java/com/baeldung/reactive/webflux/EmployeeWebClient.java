@@ -1,5 +1,6 @@
 package com.baeldung.reactive.webflux;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import reactor.core.publisher.Flux;
@@ -24,5 +25,14 @@ public class EmployeeWebClient {
             .bodyToFlux(Employee.class);
         
         employeeFlux.subscribe(System.out::println);
+        
+        Flux<EmployeeEvent> employeeEvents = client.get()
+        		.uri("/employees/{id}/track", "1")
+        		.accept(MediaType.TEXT_EVENT_STREAM)
+        		.exchange()
+        		.flatMapMany(e -> e.bodyToFlux(EmployeeEvent.class));
+        
+        employeeEvents.subscribe(System.out::println);
+     
     }
 }
