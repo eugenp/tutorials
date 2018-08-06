@@ -13,6 +13,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Reactive WebSockets with Spring 5](http://www.baeldung.com/spring-5-reactive-websockets)
 - [Spring Webflux Filters](http://www.baeldung.com/spring-webflux-filters)
 - [How to Set a Header on a Response with Spring 5](http://www.baeldung.com/spring-response-header)
+- [Spring Webflux and CORS](http://www.baeldung.com/spring-webflux-cors)
 - [Handling Errors in Spring WebFlux](http://www.baeldung.com/spring-webflux-errors)
 - [Guide to Spring 5 WebFlux](http://www.baeldung.com/spring-webflux)
-- [Spring Webflux and CORS](http://www.baeldung.com/spring-webflux-cors)
