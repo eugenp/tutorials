@@ -1,4 +1,4 @@
-package org.baeldung.testing.abstractclass.indepedentmethod;
+package com.baeldung.abstractclass.indepedentmethod;
 
 public class ConcreteImpl extends AbstractIndependent {
 

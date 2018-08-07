@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.baeldung.testing.abstractclass.abstractmethod;
+package com.baeldung.abstractclass.abstractmethod;
 
 /**
  * When method calls abstract method.

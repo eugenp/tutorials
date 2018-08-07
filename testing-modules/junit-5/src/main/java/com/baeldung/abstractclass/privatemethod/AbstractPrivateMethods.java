@@ -1,4 +1,4 @@
-package org.baeldung.testing.abstractclass.privatemethod;
+package com.baeldung.abstractclass.privatemethod;
 
 import java.time.LocalDateTime;
 
