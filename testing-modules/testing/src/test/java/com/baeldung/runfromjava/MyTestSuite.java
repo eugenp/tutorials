@@ -1,4 +1,4 @@
-package com.baeldung.junit4.runfromjava;
+package com.baeldung.runfromjava;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

@@ -1,4 +1,4 @@
-package com.baeldung.junit5.runfromjava;
+package com.baeldung.runfromjava;
 
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;
@@ -14,7 +14,7 @@ import static org.junit.platform.engine.discovery.ClassNameFilter.includeClassNa
 import static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;
 import static org.junit.platform.engine.discovery.DiscoverySelectors.selectPackage;
 
-public class RunJUnit5Tests {
+public class RunJUnit5TestsFromJava {
     SummaryGeneratingListener listener = new SummaryGeneratingListener();
 
     public void runOne() {
@@ -32,7 +32,7 @@ public class RunJUnit5Tests {
     public void runAll() {
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder
           .request()
-          .selectors(selectPackage("com.baeldung.junit5.runfromjava"))
+          .selectors(selectPackage("com.baeldung.runfromjava"))
           .filters(includeClassNamePatterns(".*Test"))
           .build();
         Launcher launcher = LauncherFactory.create();
@@ -45,7 +45,7 @@ public class RunJUnit5Tests {
     }
 
     public static void main(String[] args) {
-        RunJUnit5Tests runner = new RunJUnit5Tests();
+        RunJUnit5TestsFromJava runner = new RunJUnit5TestsFromJava();
         runner.runAll();
 
         TestExecutionSummary summary = runner.listener.getSummary();
