@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-protobuf</artifactId>
@@ -12,11 +12,6 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-boot-1</relativePath>
     </parent>
-
-    <properties>
-        <protobuf-java.version>3.1.0</protobuf-java.version>
-        <protobuf-java-format.version>1.4</protobuf-java-format.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -52,4 +47,10 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <protobuf-java.version>3.1.0</protobuf-java.version>
+        <protobuf-java-format.version>1.4</protobuf-java-format.version>
+    </properties>
+
 </project>
