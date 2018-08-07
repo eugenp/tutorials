@@ -1,0 +1,56 @@
+<idea-plugin>
+  <id>com.your.baeldung.intellij.stackoverflow</id>
+  <name>Stack Overflow Utility</name>
+  <version>1.0.0</version>
+  <vendor email="eugen@baeldung.com" url="http://www.baeldung.com">Baeldung</vendor>
+
+  <description><![CDATA[
+      An IntelliJ plugin that adds convenient hooks in the UI for Stack Overflow.
+    ]]></description>
+
+  <change-notes><![CDATA[
+      1.0.0 - Initial release
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="182"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+
+    <!-- Create 2 tools menu items -->
+    <group id="StackOverflowToolsMenu" text="Stack Overflow" popup="true">
+      <action id="StackOverflowHome" class="com.baeldung.intellij.plugin.stackoverflow.action.StackOverflowToolsHomeAction" text="Home">
+          <add-to-group group-id="ToolsMenu" anchor="last"/>
+      </action>
+      <action id="StackOverflowNewQuestion" class="com.baeldung.intellij.plugin.stackoverflow.action.StackOverflowToolsNewQuestionAction" text="New Question">
+        <add-to-group group-id="ToolsMenu" anchor="last"/>
+      </action>
+    </group>
+
+    <!-- Create menu item in editor popup -->
+    <group id="StackOverflowEditorPopup" text="Ask on Stack Overflow" popup="true">
+      <action id="StackOverflowHomeFromEditor" class="com.baeldung.intellij.plugin.stackoverflow.action.StackOverflowToolsNewQuestionAction" text="Ask on Stack Overflow">
+        <add-to-group group-id="EditorActions" anchor="last"/>
+      </action>
+    </group>
+
+    <!-- Create menu item in console output -->
+    <group id="StackOverflowConsolePopup" text="Ask on Stack Overflow" popup="true">
+      <action id="StackOverflowSearch" class="com.baeldung.intellij.plugin.stackoverflow.action.StackOverflowSearch" text="Search StackOverflow">
+        <add-to-group group-id="ConsoleEditorPopupMenu" anchor="last"/>
+      </action>
+    </group>
+  </actions>
+
+</idea-plugin>
