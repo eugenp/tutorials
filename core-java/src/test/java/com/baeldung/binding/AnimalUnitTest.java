@@ -19,11 +19,11 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 
 /**
-*https://gist.github.com/bloodredsun/a041de13e57bf3c6c040
+ * Created by madhumita.g on 01-08-2018.
  */
-@RunWith(MockitoJUnitRunner.class)
-public class AnimalActivityUnitTest {
 
+@RunWith(MockitoJUnitRunner.class)
+public class AnimalUnitTest {
     @Mock
     private Appender mockAppender;
     @Captor
@@ -42,11 +42,11 @@ public class AnimalActivityUnitTest {
     }
 
     @Test
-    public void givenAnimalReference__whenRefersAnimalObject_shouldCallFunctionWithAnimalParam() {
+    public void overloadinTesting() {
 
         Animal animal = new Animal();
 
-        AnimalActivity.sleep(animal);
+        animal.makeNoise();
 
         verify(mockAppender).doAppend(captorLoggingEvent.capture());
 
@@ -55,40 +55,17 @@ public class AnimalActivityUnitTest {
         assertThat(loggingEvent.getLevel(), is(Level.INFO));
 
         assertThat(loggingEvent.getFormattedMessage(),
-                is("Animal is sleeping"));
-    }
+                is("generic animal noise"));
 
-    @Test
-    public void givenDogReference__whenRefersDogObject_shouldCallFunctionWithAnimalParam() {
-
-        Cat cat = new Cat();
-
-        AnimalActivity.sleep(cat);
-
-        verify(mockAppender).doAppend(captorLoggingEvent.capture());
-
-        final LoggingEvent loggingEvent = captorLoggingEvent.getValue();
+        animal.makeNoise(3);
 
         assertThat(loggingEvent.getLevel(), is(Level.INFO));
 
         assertThat(loggingEvent.getFormattedMessage(),
-                is("Cat is sleeping"));
+                is("generic animal noise countdown 3\n"
+                        + "generic animal noise countdown 2\n"
+                        + "generic animal noise countdown 1\n"));
+
     }
 
-    @Test
-    public void givenAnimaReference__whenRefersDogObject_shouldCallFunctionWithAnimalParam() {
-
-        Animal cat = new Cat();
-
-        AnimalActivity.sleep(cat);
-
-        verify(mockAppender).doAppend(captorLoggingEvent.capture());
-
-        final LoggingEvent loggingEvent = captorLoggingEvent.getValue();
-
-        assertThat(loggingEvent.getLevel(), is(Level.INFO));
-
-        assertThat(loggingEvent.getFormattedMessage(),
-                is("Animal is sleeping"));
-    }
 }

@@ -71,7 +71,7 @@ public class RegexUnitTest {
 
     @Test
     public void givenNORSet_whenMatchesAllExceptElements_thenCorrect() {
-        int matches = runTest("[^bcr]at", "sat mat eat");
+        int matches = runTest("[^bcr]at", "sat mat sleep");
         assertTrue(matches > 0);
     }
 
@@ -343,19 +343,19 @@ public class RegexUnitTest {
 
     @Test
     public void givenRegexWithDefaultMatcher_whenMatchFailsOnDifferentCases_thenCorrect() {
-        int matches = runTest("dog", "This is a Dog");
+        int matches = runTest("dog", "This is a Cat");
         assertFalse(matches > 0);
     }
 
     @Test
     public void givenRegexWithCaseInsensitiveMatcher_whenMatchesOnDifferentCases_thenCorrect() {
-        int matches = runTest("dog", "This is a Dog", Pattern.CASE_INSENSITIVE);
+        int matches = runTest("dog", "This is a Cat", Pattern.CASE_INSENSITIVE);
         assertTrue(matches > 0);
     }
 
     @Test
     public void givenRegexWithEmbeddedCaseInsensitiveMatcher_whenMatchesOnDifferentCases_thenCorrect() {
-        int matches = runTest("(?i)dog", "This is a Dog");
+        int matches = runTest("(?i)dog", "This is a Cat");
         assertTrue(matches > 0);
     }
 

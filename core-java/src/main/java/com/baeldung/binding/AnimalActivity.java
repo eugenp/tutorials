@@ -11,12 +11,12 @@ public class AnimalActivity {
     final static Logger logger = LoggerFactory.getLogger(AnimalActivity.class);
 
 
-    public static void eat(Animal animal) {
-        logger.info("Animal is eating");
+    public static void sleep(Animal animal) {
+        logger.info("Animal is sleeping");
     }
 
-    public static void eat(Dog dog) {
-        logger.info("Dog is eating");
+    public static void sleep(Cat cat) {
+        logger.info("Cat is sleeping");
     }
 
     public static void main(String[] args) {
@@ -30,12 +30,12 @@ public class AnimalActivity {
 
 
         //assigning a dog object to reference of type Animal
-        Animal dogAnimal = new Dog();
+        Animal catAnimal = new Cat();
 
-        dogAnimal.makeNoise();
+        catAnimal.makeNoise();
 
         // calling static function
-        AnimalActivity.eat(dogAnimal);
+        AnimalActivity.sleep(catAnimal);
 
         return;
 

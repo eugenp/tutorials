@@ -6,13 +6,13 @@ import org.slf4j.LoggerFactory;
 /**
  * Created by madhumita.g on 25-07-2018.
  */
-public class Dog extends Animal {
+public class Cat extends Animal {
 
-    final static Logger logger = LoggerFactory.getLogger(Dog.class);
+    final static Logger logger = LoggerFactory.getLogger(Cat.class);
 
     public void makeNoise() {
 
-        logger.info("woof woof!");
+        logger.info("meow");
     }
 
 }
