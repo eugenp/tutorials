@@ -1,5 +1,10 @@
 package com.baeldung.reactive.webflux;
 
+import java.time.Duration;
+import java.util.Date;
+import java.util.stream.Stream;
+
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,6 +38,21 @@ public class EmployeeController {
     @PostMapping("/update")
     private Mono<Employee> updateEmployee(@RequestBody Employee employee) {
         return employeeRepository.updateEmployee(employee);
+    }
+
+    @GetMapping(value = "/{id}/track", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    private Flux<EmployeeEvent> trackEmployee(@PathVariable String id) {
+        return employeeRepository.findEmployeeById(id)
+            .flatMapMany(employee -> {
+
+                Flux<EmployeeEvent> employeeEvents = Flux.fromStream(Stream.generate(() -> new EmployeeEvent(employee, new Date())));
+
+                Flux<Long> interval = Flux.interval(Duration.ofSeconds(1));
+
+                return Flux.zip(interval, employeeEvents)
+                    .map(objects -> objects.getT2());
+
+            });
     }
 
 }
