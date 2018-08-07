@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.baeldung.testing.abstractclass.indepedentmethod;
+package com.baeldung.abstractclass.indepedentmethod;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

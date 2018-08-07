@@ -551,7 +551,6 @@
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
-				<module>testing-modules/junit-abstract</module>
 				<module>sse-jaxrs</module>
 				<module>spring-boot-angular-ecommerce</module>
 			</modules>
@@ -673,7 +672,6 @@
 				<module>spring-amqp-simple</module>
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
-				<module>testing-modules/junit-abstract</module>				
 				<module>jmh</module>
 
 				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
@@ -1080,7 +1078,6 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-				<module>testing-modules/junit-abstract</module>
 
                 <module>spring-hibernate4</module>
                 <module>xml</module>

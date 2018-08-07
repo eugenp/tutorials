@@ -1,4 +1,4 @@
-package org.baeldung.testing.abstractclass.instancefields;
+package com.baeldung.abstractclass.instancefields;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

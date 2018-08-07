@@ -1,9 +1,7 @@
 /**
  *
  */
-package org.baeldung.testing.abstractclass.privatemethod;
-
-import java.time.LocalDateTime;
+package com.baeldung.abstractclass.privatemethod;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -11,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+
+import java.time.LocalDateTime;
 
 /**
  * Providing custom values for private methods using powermock
