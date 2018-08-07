@@ -1,4 +1,4 @@
-package com.baeldung.junit5.runfromjava;
+package com.baeldung.runfromjava;
 
 import org.junit.jupiter.api.RepeatedTest;
 

@@ -1,4 +1,4 @@
-package com.baeldung.junit4.runfromjava;
+package com.baeldung.runfromjava;
 
 import junit.extensions.ActiveTestSuite;
 import junit.extensions.RepeatedTest;

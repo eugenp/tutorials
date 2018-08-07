@@ -1,4 +1,4 @@
-package com.baeldung.junit5.runfromjava;
+package com.baeldung.runfromjava;
 
 import org.junit.platform.launcher.Launcher;
 import org.junit.platform.launcher.LauncherDiscoveryRequest;
@@ -32,7 +32,7 @@ public class RunJUnit5Tests {
     public void runAll() {
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder
           .request()
-          .selectors(selectPackage("com.baeldung.junit5.runfromjava"))
+          .selectors(selectPackage("com.baeldung.runfromjava"))
           .filters(includeClassNamePatterns(".*Test"))
           .build();
         Launcher launcher = LauncherFactory.create();
