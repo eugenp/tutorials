@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = InMemoryAuthApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class InMemoryAuthControllerTest {
+public class InMemoryAuthControllerIntegrationTest {
 
     @Autowired
     private TestRestTemplate template;
