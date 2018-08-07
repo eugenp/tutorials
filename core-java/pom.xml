@@ -158,20 +158,18 @@
             <artifactId>jmimemagic</artifactId>
             <version>${jmime-magic.version}</version>
         </dependency>
+        <!-- instrumentation -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-dbcp2</artifactId>
-            <version>${commons-dbcp2.version}</version>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>${javaassist.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${HikariCP.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>${c3p0.version}</version>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.8.0</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
     </dependencies>
 
@@ -400,6 +398,111 @@
                 </plugins>
             </build>
         </profile>
+
+        <!-- java instrumentation profiles to build jars -->
+        <profile>
+            <id>buildAgentLoader</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>agentLoader</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/application/AgentLoader.class</include>
+                                        <include>com/baeldung/instrumentation/application/Launcher.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>buildApplication</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>application</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/application/MyAtm.class</include>
+                                        <include>com/baeldung/instrumentation/application/MyAtmApplication.class</include>
+                                        <include>com/baeldung/instrumentation/application/Launcher.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>buildAgent</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>agent</classifier>
+                                    <classesDirectory>target/classes</classesDirectory>
+                                    <archive>
+                                        <manifest>
+                                            <addClasspath>true</addClasspath>
+                                        </manifest>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                                    </archive>
+
+                                    <includes>
+                                        <include>com/baeldung/instrumentation/agent/AtmTransformer.class</include>
+                                        <include>com/baeldung/instrumentation/agent/MyInstrumentationAgent.class</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
     <properties>
@@ -426,11 +529,6 @@
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
 
-        <!-- JDBC pooling frameworks -->
-        <commons-dbcp2.version>2.4.0</commons-dbcp2.version>
-        <HikariCP.version>3.2.0</HikariCP.version>
-        <c3p0.version>0.9.5.2</c3p0.version>
-        
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
@@ -453,6 +551,8 @@
         <!-- Mime Type Libraries -->
         <tika.version>1.18</tika.version>
         <jmime-magic.version>0.1.5</jmime-magic.version>
+        <!-- instrumentation -->
+        <javaassist.version>3.21.0-GA</javaassist.version>
     </properties>
 
 </project>

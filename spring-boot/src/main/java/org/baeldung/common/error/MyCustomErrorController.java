@@ -13,7 +13,7 @@ public class MyCustomErrorController implements ErrorController {
 
     @GetMapping(value = PATH)
     public String error() {
-        return "Error heaven";
+        return "Error haven";
     }
 
     @Override

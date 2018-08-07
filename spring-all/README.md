@@ -29,3 +29,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Quick Guide to the Spring @Order Annotation](http://www.baeldung.com/spring-order)
 - [Spring Web Contexts](http://www.baeldung.com/spring-web-contexts)
 - [Spring Cache – Creating a Custom KeyGenerator](http://www.baeldung.com/spring-cache-custom-keygenerator)
+- [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
