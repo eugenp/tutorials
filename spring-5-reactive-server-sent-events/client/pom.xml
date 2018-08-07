@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baeldung</groupId>
-	<artifactId>spring-5-reactive-web-client</artifactId>
+	<artifactId>spring-5-reactive</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>spring-5-reactive-web-client</name>
+	<name>spring-5-reactive</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
