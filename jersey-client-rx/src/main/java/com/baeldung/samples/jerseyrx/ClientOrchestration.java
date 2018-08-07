@@ -2,6 +2,7 @@ package com.baeldung.samples.jerseyrx;
 
 import io.reactivex.Flowable;
 import io.reactivex.disposables.Disposable;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
@@ -31,6 +32,7 @@ public class ClientOrchestration {
     WebTarget userIdService = client.target("http://localhost:8080/serviceA/id");
     WebTarget nameService = client.target("http://localhost:8080/serviceA/{empId}/name");
     WebTarget hashService = client.target("http://localhost:8080/serviceA/{comboIDandName}/hash");
+    LinkedList<Throwable> failures = new LinkedList<>();
 
     Logger logger = Logger.getLogger("ClientOrchestrator");
 
@@ -72,6 +74,7 @@ public class ClientOrchestration {
                                                 @Override
                                                 public void failed(Throwable throwable) {
                                                     completionTracker.countDown();
+                                                    failures.add(throwable);
                                                     logger.log(Level.WARNING, "[InvocationCallback] An error has occurred in the hashing request step {0}", throwable.getMessage());
                                                 }
                                             });
@@ -80,6 +83,7 @@ public class ClientOrchestration {
                                         @Override
                                         public void failed(Throwable throwable) {
                                             completionTracker.countDown();
+                                            failures.add(throwable);
                                             logger.log(Level.WARNING, "[InvocationCallback] An error has occurred in the username request step {0}", throwable.getMessage());
                                         }
                                     });
@@ -90,6 +94,7 @@ public class ClientOrchestration {
                                 logger.warning("[InvocationCallback] Some requests didn't complete within the timeout");
                             }
                         } catch (InterruptedException ex) {
+                            failures.add(ex);
                             Logger.getLogger(ClientOrchestration.class.getName()).log(Level.SEVERE, null, ex);
                         }
 
@@ -97,6 +102,7 @@ public class ClientOrchestration {
 
                     @Override
                     public void failed(Throwable throwable) {
+                        failures.add(throwable);
                         logger.warning("Couldn't get the list of IDs");
                     }
                 });
@@ -108,7 +114,8 @@ public class ClientOrchestration {
                 .rx()
                 .get(new GenericType<EmployeeDTO>() {
                 })
-                .exceptionally((Throwable throwable) -> {
+                .exceptionally((throwable) -> {
+                    failures.add(throwable);
                     logger.warning("[CompletionStage] An error has occurred");
                     return null;
                 });
@@ -129,7 +136,8 @@ public class ClientOrchestration {
                             .get(String.class)
                             .toCompletableFuture()
                             .thenAcceptAsync(hashValue -> logger.log(Level.INFO, "[CompletionFuture] The hash output {0}", hashValue))
-                            .exceptionally((Throwable throwable) -> {
+                            .exceptionally((throwable) -> {
+                                failures.add(throwable);
                                 logger.log(Level.WARNING, "[CompletionStage] Hash computation failed for {0}", id);
                                 return null;
                             });
@@ -159,7 +167,10 @@ public class ClientOrchestration {
                             .rx(RxObservableInvoker.class)
                             .get(String.class)
                             .asObservable() //gotten the name for the given empId
-                            .doOnError(throwable -> logger.log(Level.WARNING, " [Observable] An error has occurred in the username request step {0}", throwable.getMessage()))
+                            .doOnError((throwable) -> {
+                                failures.add(throwable);
+                                logger.log(Level.WARNING, " [Observable] An error has occurred in the username request step {0}", throwable.getMessage());
+                            })
                             .subscribe(userName -> hashService
                             .register(RxObservableInvokerProvider.class)
                             .resolveTemplate("comboIDandName", userName + id)
@@ -167,13 +178,15 @@ public class ClientOrchestration {
                             .rx(RxObservableInvoker.class)
                             .get(String.class)
                             .asObservable() //gotten the hash value for empId+username
-                            .doOnError(throwable -> logger.log(Level.WARNING, " [Observable]An error has occurred in the hashing request step {0}", throwable.getMessage()))
+                            .doOnError((throwable) -> {
+                                failures.add(throwable);
+                                logger.log(Level.WARNING, " [Observable]An error has occurred in the hashing request step {0}", throwable.getMessage());
+                            })
                             .subscribe(hashValue -> logger.log(Level.INFO, "[Observable] The hash output {0}", hashValue))));
         });
 
     }
 
-    
     public void flowableJavaOrchestrate() {
 
         logger.info("Orchestrating with Flowable");
@@ -191,13 +204,19 @@ public class ClientOrchestration {
                             .request()
                             .rx(RxFlowableInvoker.class)
                             .get(String.class) //gotten the name for the given empId
-                            .doOnError(throwable -> logger.log(Level.WARNING, "[Flowable] An error has occurred in the username request step {0}", throwable.getMessage()))
+                            .doOnError((throwable) -> {
+                                failures.add(throwable);
+                                logger.log(Level.WARNING, "[Flowable] An error has occurred in the username request step {0}", throwable.getMessage());
+                            })
                             .subscribe(userName -> hashService.register(RxFlowableInvokerProvider.class)
                             .resolveTemplate("comboIDandName", userName + id)
                             .request()
                             .rx(RxFlowableInvoker.class)
                             .get(String.class) //gotten the hash value for empId+username
-                            .doOnError(throwable -> logger.warning(" [Flowable] An error has occurred in the hashing request step " + throwable.getMessage()))
+                            .doOnError((throwable) -> {
+                                failures.add(throwable);
+                                logger.warning(" [Flowable] An error has occurred in the hashing request step " + throwable.getMessage());
+                            })
                             .subscribe(hashValue -> logger.log(Level.INFO, "[Flowable] The hash output {0}", hashValue))));
         });
 
