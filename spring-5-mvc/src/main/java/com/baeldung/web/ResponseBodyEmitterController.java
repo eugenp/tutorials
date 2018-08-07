@@ -13,11 +13,11 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter
 
 @Controller
 public class ResponseBodyEmitterController {
+    private ExecutorService nonBlockingService = Executors.newSingleThreadExecutor();
 
     @GetMapping(Constants.API_RBE)
     public ResponseEntity<ResponseBodyEmitter> handleRbe() {
         ResponseBodyEmitter emitter = new ResponseBodyEmitter();
-        ExecutorService nonBlockingService = Executors.newSingleThreadExecutor();
 
             nonBlockingService.execute(() -> {
                 try {

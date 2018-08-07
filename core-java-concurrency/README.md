@@ -38,3 +38,4 @@
 - [Priority-based Job Scheduling in Java](http://www.baeldung.com/java-priority-job-schedule)
 - [A Custom Spring SecurityConfigurer](http://www.baeldung.com/spring-security-custom-configurer)
 - [Life Cycle of a Thread in Java](http://www.baeldung.com/java-thread-lifecycle)
+- [Runnable vs. Callable in Java](http://www.baeldung.com/java-runnable-callable)
