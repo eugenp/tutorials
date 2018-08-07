@@ -14,7 +14,7 @@ import static org.junit.platform.engine.discovery.ClassNameFilter.includeClassNa
 import static org.junit.platform.engine.discovery.DiscoverySelectors.selectClass;
 import static org.junit.platform.engine.discovery.DiscoverySelectors.selectPackage;
 
-public class RunJUnit5Tests {
+public class RunJUnit5TestsFromJava {
     SummaryGeneratingListener listener = new SummaryGeneratingListener();
 
     public void runOne() {
@@ -45,7 +45,7 @@ public class RunJUnit5Tests {
     }
 
     public static void main(String[] args) {
-        RunJUnit5Tests runner = new RunJUnit5Tests();
+        RunJUnit5TestsFromJava runner = new RunJUnit5TestsFromJava();
         runner.runAll();
 
         TestExecutionSummary summary = runner.listener.getSummary();
