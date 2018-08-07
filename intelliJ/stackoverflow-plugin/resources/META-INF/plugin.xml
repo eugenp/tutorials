@@ -1,20 +1,22 @@
 <idea-plugin>
-  <id>com.your.baeldung.intellij.stackoverflow</id>
-  <name>Stack Overflow Utility</name>
-  <version>1.0.0</version>
-  <vendor email="eugen@baeldung.com" url="http://www.baeldung.com">Baeldung</vendor>
+  <id>com.baeldung.intellij.stackoverflowplugin</id>
+  <name>Stack Overflow Plugin for IntelliJ</name>
+  <version>1.0</version>
+  <vendor email="eugene@baeldung.com" url="http://www.baeldung.com">Baeldung</vendor>
 
   <description><![CDATA[
-      An IntelliJ plugin that adds convenient hooks in the UI for Stack Overflow.
+      Plugin to help search Stack Overflow from inside IntelliJ
     ]]></description>
 
   <change-notes><![CDATA[
-      1.0.0 - Initial release
+      <ul>
+        <li>1.0 - Initial release</li>
+      </ul>
     ]]>
   </change-notes>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="182"/>
+  <idea-version since-build="173.0"/>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
        on how to target different products -->
@@ -28,29 +30,50 @@
 
   <actions>
 
-    <!-- Create 2 tools menu items -->
-    <group id="StackOverflowToolsMenu" text="Stack Overflow" popup="true">
-      <action id="StackOverflowHome" class="com.baeldung.intellij.plugin.stackoverflow.action.StackOverflowToolsHomeAction" text="Home">
-          <add-to-group group-id="ToolsMenu" anchor="last"/>
+    <group id="StackOverflowMenuGroup" text="Stack Overflow" popup="true">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <action id="StackOverflow.Home.ToolsMenu"
+              icon="so-icon-16x16.png"
+              class="com.baeldung.intellij.stackoverflowplugin.HomePageAction"
+              text="Open Stack Overflow"
+              description="Open the Stack Overflow Home Page">
+        <add-to-group group-id="StackOverflowMenuGroup" anchor="first"/>
       </action>
-      <action id="StackOverflowNewQuestion" class="com.baeldung.intellij.plugin.stackoverflow.action.StackOverflowToolsNewQuestionAction" text="New Question">
-        <add-to-group group-id="ToolsMenu" anchor="last"/>
+      <action id="StackOverflow.AskQuestion.ToolsMenu"
+              class="com.baeldung.intellij.stackoverflowplugin.AskQuestionAction"
+              text="Ask Question"
+              description="Ask a Question on Stack Overflow">
+        <add-to-group group-id="StackOverflowMenuGroup" anchor="last"/>
       </action>
     </group>
 
-    <!-- Create menu item in editor popup -->
-    <group id="StackOverflowEditorPopup" text="Ask on Stack Overflow" popup="true">
-      <action id="StackOverflowHomeFromEditor" class="com.baeldung.intellij.plugin.stackoverflow.action.StackOverflowToolsNewQuestionAction" text="Ask on Stack Overflow">
-        <add-to-group group-id="EditorActions" anchor="last"/>
-      </action>
-    </group>
+    <!-- Add actions to Tools Menu -->
+    <!--<action id="StackOverflow.Home.ToolsMenu"-->
+            <!--class="com.baeldung.intellij.stackoverflowplugin.HomePageAction"-->
+            <!--text="Open Stack Overflow"-->
+            <!--icon="so-icon-16x16.png"-->
+            <!--description="Open the Stack Overflow Home Page">-->
+      <!--<add-to-group group-id="ToolsMenu" anchor="last"/>-->
+    <!--</action>-->
 
-    <!-- Create menu item in console output -->
-    <group id="StackOverflowConsolePopup" text="Ask on Stack Overflow" popup="true">
-      <action id="StackOverflowSearch" class="com.baeldung.intellij.plugin.stackoverflow.action.StackOverflowSearch" text="Search StackOverflow">
-        <add-to-group group-id="ConsoleEditorPopupMenu" anchor="last"/>
-      </action>
-    </group>
+    <!-- Add action to search Stack Overflow from file editor -->
+    <action id="StackOverflow.Search.Editor"
+            class="com.baeldung.intellij.stackoverflowplugin.EditorSearchAction"
+            text="Search on Stack Overflow"
+            icon="so-icon-16x16.png"
+            description="Search on Stack Overflow">
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+    </action>
+
+    <!-- Add action to search Stack Overflow from console editor -->
+    <action id="StackOverflow.Search.Console"
+            class="com.baeldung.intellij.stackoverflowplugin.EditorSearchAction"
+            text="Search on Stack Overflow"
+            icon="so-icon-16x16.png"
+            description="Search on Stack Overflow">
+      <add-to-group group-id="ConsoleEditorPopupMenu" anchor="last"/>
+    </action>
+
   </actions>
 
 </idea-plugin>
