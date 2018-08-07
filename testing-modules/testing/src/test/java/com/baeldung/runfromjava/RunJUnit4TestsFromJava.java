@@ -1,4 +1,4 @@
-package com.baeldung.junit4.runfromjava;
+package com.baeldung.runfromjava;
 
 import junit.extensions.ActiveTestSuite;
 import junit.extensions.RepeatedTest;
@@ -10,7 +10,7 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-public class RunJUnit4Tests {
+public class RunJUnit4TestsFromJava {
 
     public static void runOne() {
         JUnitCore junit = new JUnitCore();
