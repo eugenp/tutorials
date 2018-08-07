@@ -34,3 +34,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Core Annotations](http://www.baeldung.com/spring-core-annotations)
 - [Using Spring ResponseEntity to Manipulate the HTTP Response](http://www.baeldung.com/spring-response-entity)
 - [Using Spring @ResponseStatus to Set HTTP Status Code](http://www.baeldung.com/spring-response-status)
+- [Display RSS Feed with Spring MVC](http://www.baeldung.com/spring-mvc-rss-feed)
