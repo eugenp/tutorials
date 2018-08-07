@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  *
- * @author SIGINT-X
+ * @author baeldung
  */
 public class EmployeeDTO {
 
