@@ -24,13 +24,13 @@ public class UserUnitTest {
     }
     
     @Test
-    public void givenUserIntanceCreatedWithcreateWithDefaultProvinceAndCountry_whenCalledgetEmail_thenCorrect() {
+    public void givenUserIntanceCreatedWithcreateWithDefaultCountry_whenCalledgetEmail_thenCorrect() {
         User user = User.createWithDefaultCountry("John", "john@domain.com");
         assertThat(user.getEmail()).isEqualTo("john@domain.com");
     }
     
     @Test
-    public void givenUserIntanceCreatedWithcreateWithDefaultProvinceAndCountry_whenCalledgetCountry_thenCorrect() {
+    public void givenUserIntanceCreatedWithcreateWithDefaultCountry_whenCalledgetCountry_thenCorrect() {
         User user = User.createWithDefaultCountry("John", "john@domain.com");
         assertThat(user.getCountry()).isEqualTo("Argentina");
     }
