@@ -9,7 +9,7 @@ import org.junit.Test;
 public class JsonPointerCrudTest {
 	
 	@Test
-	public void testJsonPointerCrud() {
+	public void testJsonPointerCrudForAddress() {
 		
 		JsonPointerCrud jsonPointerCrud = new JsonPointerCrud(JsonPointerCrudTest.class.getResourceAsStream("/address.json"));
 		
@@ -49,5 +49,15 @@ public class JsonPointerCrudTest {
 
 	}
 
+	@Test
+	public void testJsonPointerCrudForBooks() {
+		
+		JsonPointerCrud jsonPointerCrud = new JsonPointerCrud(JsonPointerCrudTest.class.getResourceAsStream("/books.json"));
+		
+		// fetch value
+		String book = jsonPointerCrud.fetchListValues("books/1");
+		
+		assertEquals(book, "{\"title\":\"Title 2\",\"author\":\"John Doe\"}");
 
+	}
 }

@@ -75,6 +75,13 @@ public class JsonPointerCrud {
 	    return jsonString.getString();
 	}
 	
+	public String fetchListValues(String key) {
+		JsonPointer jsonPointer = Json.createPointer("/" + key);
+	    JsonObject jsonObject = (JsonObject) jsonPointer.getValue(jsonStructure);
+	    
+	    return jsonObject.toString();
+	}
+	
 	public String fetchFullJSON() {
 		JsonPointer jsonPointer = Json.createPointer("");
 	    JsonObject jsonObject = (JsonObject) jsonPointer.getValue(jsonStructure);
