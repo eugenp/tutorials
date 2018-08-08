@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baeldung</groupId>
-	<artifactId>spring-5-reactive-server-sent-events</artifactId>
+	<artifactId>spring-5-reactive-sse-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>spring-5-reactive-server-sent-events</name>
+	<name>spring-5-reactive-sse-client</name>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
