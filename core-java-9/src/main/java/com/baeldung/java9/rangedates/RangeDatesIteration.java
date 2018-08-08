@@ -32,20 +32,6 @@ public class RangeDatesIteration {
         }
     }
 
-    public List<LocalDate> createRangeDates(LocalDate start, LocalDate end) {
-
-        List<LocalDate> dates = new ArrayList<>();
-        LocalDate current = start;
-
-        while (current.isBefore(end)) {
-            dates.add(current);
-
-            current = current.plus(1l, ChronoUnit.DAYS);
-        }
-
-        return dates;
-    }
-
     private Date nextDate(Date current) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(current);

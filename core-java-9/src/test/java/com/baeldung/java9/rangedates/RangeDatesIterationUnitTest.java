@@ -48,17 +48,6 @@ public class RangeDatesIterationUnitTest {
     }
 
     @Test
-    public void givenIterateBetweenDatesJava8_() {
-        LocalDate start = LocalDate.now();
-        LocalDate end = start.plus(10L, ChronoUnit.DAYS);
-        
-        RangeDatesIteration iteration = new RangeDatesIteration();
-        
-        iteration.createRangeDates(start, end).stream()
-            .forEach(System.out::println);
-    }
-
-    @Test
     public void givenIterateBetweenDatesJava7_WhenStartDateAsTodayAndEndDateAs10DaysAhead() {
         Calendar today = Calendar.getInstance();
         Calendar calendar = Calendar.getInstance();
