@@ -315,6 +315,7 @@
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
+                                <module>core-scala</module>
 				<module>core-java-concurrency</module>
 				<module>couchbase</module>
 				<module>deltaspike</module>
