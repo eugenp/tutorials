@@ -9,3 +9,4 @@
 - [Introduction to JCache](http://www.baeldung.com/jcache)
 - [A Guide to Apache Ignite](http://www.baeldung.com/apache-ignite)
 - [Apache Ignite with Spring Data](http://www.baeldung.com/apache-ignite-spring-data)
+- [Guide to JMapper](https://github.com/eugenp/tutorials/tree/master/libraries-data)

@@ -25,8 +25,4 @@
         </plugins>
     </build>
 
-    <properties>
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
-    </properties>
-
 </project>

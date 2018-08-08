@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd ">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd ">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>cas-server</artifactId>
     <packaging>war</packaging>
     <version>1.0</version>
-    
+
     <dependencies>
         <dependency>
-        <groupId>org.apereo.cas</groupId>
-        <artifactId>cas-server-support-json-service-registry</artifactId>
-        <version>${cas.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apereo.cas</groupId>
-        <artifactId>cas-server-support-jdbc</artifactId>
-        <version>${cas.version}</version>
-    </dependency>
-    <dependency>
-        <groupId>org.apereo.cas</groupId>
-        <artifactId>cas-server-support-jdbc-drivers</artifactId>
-        <version>${cas.version}</version>
-    </dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-json-service-registry</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-jdbc</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apereo.cas</groupId>
+            <artifactId>cas-server-support-jdbc-drivers</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -31,7 +30,7 @@
             <plugin>
                 <groupId>com.rimerosolutions.maven.plugins</groupId>
                 <artifactId>wrapper-maven-plugin</artifactId>
-                <version>0.0.4</version>
+                <version>${wrapper-maven-plugin.version}</version>
                 <configuration>
                     <verifyDownload>true</verifyDownload>
                     <checksumAlgorithm>MD5</checksumAlgorithm>
@@ -58,7 +57,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <warName>cas</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -78,26 +77,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>${maven-compiler-plugin.version}</version>
             </plugin>
         </plugins>
         <finalName>cas</finalName>
     </build>
-
-    <properties>
-        <cas.version>5.3.0-SNAPSHOT</cas.version>
-        <springboot.version>1.5.13.RELEASE</springboot.version>
-        <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
-        <app.server>-tomcat</app.server>
-
-        <mainClassName>org.springframework.boot.loader.WarLauncher</mainClassName>
-        <isExecutable>false</isExecutable>
-        <manifestFileToUse>${project.build.directory}/war/work/org.apereo.cas/cas-server-webapp${app.server}/META-INF/MANIFEST.MF</manifestFileToUse>
-
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <repositories>
         <repository>
@@ -140,9 +124,7 @@
                     <type>war</type>
                     <scope>runtime</scope>
                 </dependency>
-                <!--
-                ...Additional dependencies may be placed here...
-                -->
+                <!-- ...Additional dependencies may be placed here... -->
             </dependencies>
         </profile>
 
@@ -161,7 +143,7 @@
                     <plugin>
                         <groupId>com.soebes.maven.plugins</groupId>
                         <artifactId>echo-maven-plugin</artifactId>
-                        <version>0.3.0</version>
+                        <version>${echo-maven-plugin.version}</version>
                         <executions>
                             <execution>
                                 <phase>prepare-package</phase>
@@ -210,7 +192,7 @@
                     <plugin>
                         <groupId>com.github.s4u.plugins</groupId>
                         <artifactId>pgpverify-maven-plugin</artifactId>
-                        <version>1.1.0</version>
+                        <version>${pgpverify-maven-plugin.version}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -230,4 +212,25 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <cas.version>5.3.0-SNAPSHOT</cas.version>
+        <springboot.version>1.5.13.RELEASE</springboot.version>
+        <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
+        <app.server>-tomcat</app.server>
+
+        <mainClassName>org.springframework.boot.loader.WarLauncher</mainClassName>
+        <isExecutable>false</isExecutable>
+        <manifestFileToUse>${project.build.directory}/war/work/org.apereo.cas/cas-server-webapp${app.server}/META-INF/MANIFEST.MF</manifestFileToUse>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <wrapper-maven-plugin.version>0.0.4</wrapper-maven-plugin.version>
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        <echo-maven-plugin.version>0.3.0</echo-maven-plugin.version>
+        <pgpverify-maven-plugin.version>1.1.0</pgpverify-maven-plugin.version>
+    </properties>
+
 </project>
