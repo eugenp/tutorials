@@ -35,7 +35,6 @@ public class User {
             }
         }
         return instance;
-
     }
 
     private User(String name, String email, String country) {
