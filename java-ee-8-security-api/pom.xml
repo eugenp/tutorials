@@ -22,23 +22,16 @@
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <packagingExcludes>pom.xml</packagingExcludes>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
                 <version>${liberty-maven-plugin.version}</version>
                 <configuration>
-                    <install>
-                        <runtimeUrl>
-                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2018-05-25_1422/openliberty-all-20180525-1300.zip
-                        </runtimeUrl>
-                    </install>
+                      <assemblyArtifact>
++                        <groupId>io.openliberty</groupId>
++                        <artifactId>openliberty-webProfile8</artifactId>
++                        <version>${openliberty-runtime.version}</version>
++                        <type>zip</type>
++                    </assemblyArtifact>
                     <looseApplication>true</looseApplication>
                     <installAppPackages>project</installAppPackages>
                     <configFile>src/main/liberty/config/server.xml</configFile>
@@ -61,11 +54,10 @@
         <defaultHttpsPort>9443</defaultHttpsPort>
 
         <javaee-version>8.0</javaee-version>
-        <liberty-maven-plugin.version>2.3</liberty-maven-plugin.version>
-        <openliberty-runtime.version>18.0.0.1</openliberty-runtime.version>
+        <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
+        <openliberty-runtime.version>18.0.0.2</openliberty-runtime.version>
         <h2-version>1.4.197</h2-version>
-        
-        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+        <failOnMissingWebXml>false</failOnMissingWebXml>        
     </properties>
 
     <modules>
