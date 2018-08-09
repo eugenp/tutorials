@@ -16,8 +16,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import com.baeldung.reactive.webflux.Employee;
 import com.baeldung.reactive.webflux.EmployeeRepository;
 
-import reactor.core.publisher.Mono;
-
 @Configuration
 public class EmployeeFunctionalConfig {
 
@@ -37,12 +35,23 @@ public class EmployeeFunctionalConfig {
     }
 
     @Bean
-    RouterFunction<ServerResponse> updatedEmployee() {
-        return route(POST("/employees/update"), req -> {               
-            Employee employee = req.body(toMono(Employee.class)).block();
-            Mono<Employee> updated=employeeRepository().updateEmployee(employee);
-            return ok().body(updated, Employee.class);
-        });
+    RouterFunction<ServerResponse> updateEmployee() {
+        return route(POST("/employees/update"), req -> req.body(toMono(Employee.class))
+            .doOnNext(employeeRepository()::updateEmployee)
+            .then(ok().build()));
+    }
+
+    @Bean
+    RouterFunction<ServerResponse> composedRoutes() {
+        return 
+            route(GET("/employees"), 
+                req -> ok().body(employeeRepository().findAllEmployees(), Employee.class))
+            
+            .and(route(GET("/employees/{id}"), 
+                req -> ok().body(employeeRepository().findEmployeeById(req.pathVariable("id")), Employee.class)))
+            
+            .and(route(POST("/employees/update"), 
+                req -> req.body(toMono(Employee.class)).doOnNext(employeeRepository()::updateEmployee).then(ok().build())));
     }
 
     @Bean
