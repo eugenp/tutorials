@@ -1,20 +1,16 @@
 package com.baeldung.intellij.stackoverflowplugin;
 
-import com.intellij.execution.filters.TextConsoleBuilderFactory;
-import com.intellij.execution.impl.ConsoleViewUtil;
-import com.intellij.execution.ui.ConsoleView;
-import com.intellij.execution.ui.ConsoleViewContentType;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.lang.Language;
+import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.CommonDataKeys;
 import com.intellij.openapi.editor.CaretModel;
 import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.fileTypes.PlainSyntaxHighlighter;
-import com.intellij.openapi.fileTypes.SyntaxHighlighter;
+import com.intellij.psi.PsiFile;
 
-public class EditorSearchAction extends AnAction
+public class SearchAction extends AnAction
 {
    /**
     * Convert selected text to a URL friendly string.
@@ -26,12 +22,24 @@ public class EditorSearchAction extends AnAction
       final Editor editor = e.getRequiredData(CommonDataKeys.EDITOR);
       CaretModel caretModel = editor.getCaretModel();
 
-      // Get the file type so we can properly tag the search
-      Language lang = e.getData(CommonDataKeys.PSI_FILE).getLanguage();
+      // For searches from the editor, we should also get file type information
+      // to help add scope to the search using the Stack overflow search syntax.
+      //
+      // https://stackoverflow.com/help/searching
 
+      String languageTag = "";
+      PsiFile file = e.getData(CommonDataKeys.PSI_FILE);
+      if(file != null)
+      {
+         Language lang = e.getData(CommonDataKeys.PSI_FILE).getLanguage();
+         languageTag = "+[" + lang.getDisplayName().toLowerCase() + "]";
+      }
+
+      // The update method below is only called periodically so need
+      // to be careful to check for selected text
       if(caretModel.getCurrentCaret().hasSelection())
       {
-         String query = caretModel.getCurrentCaret().getSelectedText().replace(' ', '+') + "+[" + lang.getDisplayName().toLowerCase() + "]";
+         String query = caretModel.getCurrentCaret().getSelectedText().replace(' ', '+') + languageTag;
          BrowserUtil.browse("https://stackoverflow.com/search?q=" + query);
       }
    }

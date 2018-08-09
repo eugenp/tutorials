@@ -41,7 +41,7 @@
 
     <!-- Add action to search Stack Overflow from file editor -->
     <action id="StackOverflow.Search.Editor"
-            class="com.baeldung.intellij.stackoverflowplugin.EditorSearchAction"
+            class="com.baeldung.intellij.stackoverflowplugin.SearchAction"
             text="Search on Stack Overflow"
             icon="so-icon-16x16.png"
             description="Search on Stack Overflow">
@@ -50,7 +50,7 @@
 
     <!-- Add action to search Stack Overflow from console editor -->
     <action id="StackOverflow.Search.Console"
-            class="com.baeldung.intellij.stackoverflowplugin.EditorSearchAction"
+            class="com.baeldung.intellij.stackoverflowplugin.SearchAction"
             text="Search on Stack Overflow"
             icon="so-icon-16x16.png"
             description="Search on Stack Overflow">
