@@ -7,10 +7,10 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <parent>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <groupId>org.springframework.boot</groupId>
-        <version>1.4.4.RELEASE</version>
-        <relativePath />
+        <artifactId>parent-boot-1</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
