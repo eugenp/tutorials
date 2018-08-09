@@ -40,15 +40,11 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.json</groupId>
-            <artifactId>javax.json-api</artifactId>
-            <version>1.1</version>
-        </dependency>
+        <!-- https://search.maven.org/search?q=g:org.glassfish%20AND%20a:javax.json&core=gav  -->
         <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.json</artifactId>
-            <version>1.1</version>
+            <version>1.1.2</version>
         </dependency>
         
     </dependencies>
