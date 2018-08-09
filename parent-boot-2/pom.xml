@@ -18,7 +18,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-       			<version>2.0.4.RELEASE</version>
+       			<version>2.0.1.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -41,18 +41,7 @@
 			<plugin>
 			  <groupId>org.springframework.boot</groupId>
 			  <artifactId>spring-boot-maven-plugin</artifactId>
-			  <version>2.0.4.RELEASE</version>
-			  <configuration>
-				<mainClass>${start-class}</mainClass>
-				<layout>ZIP</layout>
-			  </configuration>
-			  <executions>
-				<execution>
-				  <goals>
-					<goal>repackage</goal>
-				  </goals>
-				</execution>
-			  </executions>
+			  <version>2.0.1.RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>
