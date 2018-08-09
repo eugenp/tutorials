@@ -222,6 +222,7 @@
         <graphql-spring-boot-starter.version>3.6.0</graphql-spring-boot-starter.version>
         <graphql-java-tools.version>3.2.0</graphql-java-tools.version>
         <guava.version>18.0</guava.version>
+		<junit-platform.version>1.2.0</junit-platform.version>
     </properties>
 
 </project>
