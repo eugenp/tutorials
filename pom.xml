@@ -587,7 +587,6 @@
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
-				<module>sse-jaxrs</module>
 				<module>spring-boot-angular-ecommerce</module>
 			</modules>
 
