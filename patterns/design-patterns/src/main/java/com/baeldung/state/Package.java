@@ -19,4 +19,8 @@ public class Package {
     public void nextState() {
         state.next(this);
     }
+
+    public void printStatus() {
+        state.printStatus();
+    }
 }

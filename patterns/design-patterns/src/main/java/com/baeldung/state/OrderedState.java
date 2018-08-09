@@ -13,6 +13,11 @@ public class OrderedState implements PackageState {
     }
 
     @Override
+    public void printStatus() {
+        System.out.println("Package ordered, not delivered to the office yet.");
+    }
+
+    @Override
     public String toString() {
         return "OrderedState{}";
     }

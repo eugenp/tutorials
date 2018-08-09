@@ -17,6 +17,11 @@ public class ReceivedState implements PackageState {
     }
 
     @Override
+    public void printStatus() {
+        System.out.println("Package was received by client.");
+    }
+
+    @Override
     public String toString() {
         return "ReceivedState{}";
     }
