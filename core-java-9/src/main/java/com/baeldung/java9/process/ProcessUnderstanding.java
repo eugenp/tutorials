@@ -1,13 +1,13 @@
 package com.baeldung.java9.process;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Optional;
 
 public class ProcessUnderstanding {
-
     
-    public static int compileAndRunJavaProgram() throws Exception {
+    public static int compileAndRunJavaProgram() throws IOException  {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
@@ -17,7 +17,7 @@ public class ProcessUnderstanding {
         return value;
     }
 
-    public static String getErrorStreamExample() throws Exception {
+    public static String getErrorStreamExample() throws IOException{
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -25,22 +25,20 @@ public class ProcessUnderstanding {
         return errorString;
     }
 
-    public static void creatingNewProcess() throws Exception {
+    public static void creatingNewProcess() throws IOException  {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
     }
 
-    public static int filterProcessWithStreamsInSpecificRangeReturnCount() throws Exception {
+    public static int filterProcessWithStreamsInSpecificRangeReturnCount()  {
         return (int) ProcessHandle.allProcesses().filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000)).count();        
     }
 
-
-    public static void destroyingProcessCreatedBySameProcess() throws Exception {
+    public static void destroyingProcessCreatedBySameProcess() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
         process.destroy();
-
     }
 
     public static void destroyingProcessCreatedByDifferentProcess() {
@@ -51,29 +49,27 @@ public class ProcessUnderstanding {
         processHandle.destroy();
     }
 
-    public static int waitForExample() throws Exception {
+    public static int waitForExample() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         return process.waitFor();
     }
 
-    public static int exitValueExample() throws Exception {
+    public static int exitValueExample() throws IOException  {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         process.destroy();
         return process.exitValue();
-
     }
 
-    public static void destroyExample() throws Exception {
+    public static void destroyExample() throws IOException , InterruptedException{
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
         process.destroy();
-
     }
 
-    public static void destroyForciblyExample() throws Exception {
+    public static void destroyForciblyExample() throws IOException , InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
