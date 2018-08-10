@@ -1,7 +1,6 @@
 package com.baeldung.samples.jerseyrx;
 
 import io.reactivex.Flowable;
-import io.reactivex.disposables.Disposable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -27,28 +26,22 @@ import rx.Observable;
  * @author baeldung
  */
 public class ClientOrchestration {
-
+    
     Client client = ClientBuilder.newClient();
+       
     WebTarget userIdService = client.target("http://localhost:8080/serviceA/id");
     WebTarget nameService = client.target("http://localhost:8080/serviceA/{empId}/name");
     WebTarget hashService = client.target("http://localhost:8080/serviceA/{comboIDandName}/hash");
+
+  
     LinkedList<Throwable> failures = new LinkedList<>();
-
+    
     Logger logger = Logger.getLogger("ClientOrchestrator");
-
-    public static void main(String[] args) {
-        ClientOrchestration orchestrator = new ClientOrchestration();
-
-        orchestrator.callBackOrchestrate();
-        orchestrator.rxOrchestrate();
-        orchestrator.observableJavaOrchestrate();
-        orchestrator.flowableJavaOrchestrate();
-
-    }
-
+    
     public void callBackOrchestrate() {
         logger.info("Orchestrating with the pyramid of doom");
-        userIdService.request().accept(MediaType.APPLICATION_JSON)
+        userIdService.request()
+                .accept(MediaType.APPLICATION_JSON)
                 .async()
                 .get(new InvocationCallback<EmployeeDTO>() {
                     @Override
@@ -61,7 +54,7 @@ public class ClientOrchestration {
                             nameService.resolveTemplate("empId", id).request()
                                     .async()
                                     .get(new InvocationCallback<String>() {
-
+                                        
                                         @Override
                                         public void completed(String response) {
                                             completionTracker.countDown();
@@ -70,7 +63,7 @@ public class ClientOrchestration {
                                                 public void completed(String response) {
                                                     logger.log(Level.INFO, "[InvocationCallback] The hash output {0}", response);
                                                 }
-
+                                                
                                                 @Override
                                                 public void failed(Throwable throwable) {
                                                     completionTracker.countDown();
@@ -79,7 +72,7 @@ public class ClientOrchestration {
                                                 }
                                             });
                                         }
-
+                                        
                                         @Override
                                         public void failed(Throwable throwable) {
                                             completionTracker.countDown();
@@ -88,7 +81,7 @@ public class ClientOrchestration {
                                         }
                                     });
                         });
-
+                        
                         try {
                             if (!completionTracker.await(10, TimeUnit.SECONDS)) { //wait for inner requests to complete in 10 seconds
                                 logger.warning("[InvocationCallback] Some requests didn't complete within the timeout");
@@ -97,9 +90,9 @@ public class ClientOrchestration {
                             failures.add(ex);
                             Logger.getLogger(ClientOrchestration.class.getName()).log(Level.SEVERE, null, ex);
                         }
-
+                        
                     }
-
+                    
                     @Override
                     public void failed(Throwable throwable) {
                         failures.add(throwable);
@@ -107,7 +100,7 @@ public class ClientOrchestration {
                     }
                 });
     }
-
+    
     public void rxOrchestrate() {
         logger.info("Orchestrating with a CompletionStage");
         CompletionStage<EmployeeDTO> userIdStage = userIdService.request().accept(MediaType.APPLICATION_JSON)
@@ -119,7 +112,7 @@ public class ClientOrchestration {
                     logger.warning("[CompletionStage] An error has occurred");
                     return null;
                 });
-
+        
         userIdStage.thenAcceptAsync(empIdDto -> {
             logger.info("[CompletionStage] Got all the IDs " + empIdDto.getEmpIds());
             empIdDto.getEmpIds().stream().forEach((Long id) -> {
@@ -128,7 +121,7 @@ public class ClientOrchestration {
                         .rx()
                         .get(String.class)
                         .toCompletableFuture();
-
+                
                 completable.thenAccept((String userName) -> {
                     hashService.resolveTemplate("comboIDandName", userName + id)
                             .request()
@@ -141,24 +134,24 @@ public class ClientOrchestration {
                                 logger.log(Level.WARNING, "[CompletionStage] Hash computation failed for {0}", id);
                                 return null;
                             });
-
+                    
                 });
-
+                
             });
         });
-
+        
     }
-
+    
     public void observableJavaOrchestrate() {
-
+        
         logger.info("Orchestrating with Observables");
-        Observable<EmployeeDTO> userIdObservable = userIdService.register(RxObservableInvokerProvider.class).request()
+        Observable<EmployeeDTO> observableUserIdService = userIdService.register(RxObservableInvokerProvider.class).request()
                 .accept(MediaType.APPLICATION_JSON)
                 .rx(RxObservableInvoker.class)
                 .get(new GenericType<EmployeeDTO>() {
-                });
-
-        userIdObservable.subscribe((EmployeeDTO empIdList) -> {
+                }).asObservable();
+        
+        observableUserIdService.subscribe((EmployeeDTO empIdList) -> {
             logger.info("[Observable] Got all the IDs " + empIdList.getEmpIds());
             Observable.from(empIdList.getEmpIds()).subscribe(id
                     -> nameService.register(RxObservableInvokerProvider.class)
@@ -171,8 +164,7 @@ public class ClientOrchestration {
                                 failures.add(throwable);
                                 logger.log(Level.WARNING, " [Observable] An error has occurred in the username request step {0}", throwable.getMessage());
                             })
-                            .subscribe(userName -> hashService
-                            .register(RxObservableInvokerProvider.class)
+                            .subscribe(userName -> hashService.register(RxObservableInvokerProvider.class)
                             .resolveTemplate("comboIDandName", userName + id)
                             .request()
                             .rx(RxObservableInvoker.class)
@@ -184,21 +176,21 @@ public class ClientOrchestration {
                             })
                             .subscribe(hashValue -> logger.log(Level.INFO, "[Observable] The hash output {0}", hashValue))));
         });
-
+        
     }
-
+    
     public void flowableJavaOrchestrate() {
-
-        logger.info("Orchestrating with Flowable");
-        Flowable<EmployeeDTO> userIdObservable = userIdService.register(RxFlowableInvokerProvider.class)
+        
+        Flowable<EmployeeDTO> userIdFlowable = userIdService.register(RxFlowableInvokerProvider.class)
                 .request()
                 .rx(RxFlowableInvoker.class)
                 .get(new GenericType<EmployeeDTO>() {
                 });
-
-        Disposable subscribe = userIdObservable.subscribe((EmployeeDTO dto) -> {
+        
+        userIdFlowable.subscribe((EmployeeDTO dto) -> {
+            logger.info("Orchestrating with Flowable");
             List<Long> listOfIds = dto.getEmpIds();
-            Observable.from(listOfIds).map(id
+            Flowable.just(listOfIds).subscribe(id
                     -> nameService.register(RxFlowableInvokerProvider.class)
                             .resolveTemplate("empId", id)
                             .request()
@@ -219,7 +211,7 @@ public class ClientOrchestration {
                             })
                             .subscribe(hashValue -> logger.log(Level.INFO, "[Flowable] The hash output {0}", hashValue))));
         });
-
+        
     }
-
+    
 }
