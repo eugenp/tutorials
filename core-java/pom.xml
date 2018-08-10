@@ -530,7 +530,7 @@
         <assertj-core.version>3.10.0</assertj-core.version>
 
         <!-- maven plugins -->
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
         <springframework.boot.spring-boot-starter.version>1.5.8.RELEASE</springframework.boot.spring-boot-starter.version>
         
