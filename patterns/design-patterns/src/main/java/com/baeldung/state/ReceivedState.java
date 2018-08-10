@@ -4,11 +4,7 @@ public class ReceivedState implements PackageState {
 
     @Override
     public void next(Package pkg) {
-        if (pkg.getState() instanceof ReceivedState) {
-            System.out.println("This package is already received by a client.");
-            return;
-        }
-        pkg.setState(this);
+        System.out.println("This package is already received by a client.");
     }
 
     @Override
