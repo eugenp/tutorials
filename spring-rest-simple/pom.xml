@@ -8,9 +8,10 @@
     <packaging>war</packaging>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.3.RELEASE</version>
+        <artifactId>parent-boot-1</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
@@ -154,7 +155,7 @@
         <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>${rest-assured.version}</version>
+            <version>${jayway-rest-assured.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.protobuf</groupId>
@@ -333,7 +334,7 @@
 
         <!-- util -->
         <guava.version>20.0</guava.version>
-        <rest-assured.version>2.9.0</rest-assured.version>
+        <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
 
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>
