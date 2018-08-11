@@ -35,3 +35,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Guide to the Favicon in Spring Boot](http://www.baeldung.com/spring-boot-favicon)
 - [Spring Shutdown Callbacks](http://www.baeldung.com/spring-shutdown-callbacks)
 - [Spring Boot Integration Testing with Embedded MongoDB](http://www.baeldung.com/spring-boot-embedded-mongodb)
+- [Container Configuration in Spring Boot 2](http://www.baeldung.com/embeddedservletcontainercustomizer-configurableembeddedservletcontainer-spring-boot)
