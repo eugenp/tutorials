@@ -26,6 +26,5 @@ public class GuavaMapInitializeUnitTest {
 
         assertThat(articles.get("Title"), equalTo("My New Article"));
         assertThat(articles.get("Title2"), equalTo("Second Article"));
-    }
-    
+    }   
 }
