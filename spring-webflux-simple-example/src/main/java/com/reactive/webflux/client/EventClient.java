@@ -15,28 +15,28 @@ public class EventClient {
     Logger logger = LoggerFactory.getLogger(EventClient.class);
 
     @Bean
-    CommandLineRunner logEvents(WebClient client) {
+    public CommandLineRunner logEvents(WebClient client) {
         return args -> {
             client.get()
-                .uri("/events")
-                .accept(MediaType.TEXT_EVENT_STREAM)
-                .retrieve()
-                .bodyToFlux(String.class)
-                .subscribe(msg -> {
-                    logger.info(msg);
-                });
-        };
+              .uri("/events")
+              .accept(MediaType.TEXT_EVENT_STREAM)
+              .retrieve()
+              .bodyToFlux(String.class)
+              .subscribe(msg -> {
+                  logger.info(msg);
+              });
+            };
     }
 
     @Bean
-    WebClient getWebClient() {
+    public WebClient getWebClient() {
         return WebClient.create("http://localhost:8081");
     }
 
-
     public static void main(String[] args) {
-        new SpringApplicationBuilder(EventClient.class).properties(java.util.Collections.singletonMap("server.port", "8081"))
-                                                       .run(args);
+        new SpringApplicationBuilder(EventClient.class).
+          properties(java.util.Collections.singletonMap("server.port", "8081"))
+          .run(args);
     }
 
 }

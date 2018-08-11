@@ -12,14 +12,23 @@ import reactor.core.publisher.Flux;
 @RestController
 public class EventsController {
 
-    private int eventNumber = 0;
+    protected int eventNumber = 0;
 
     @GetMapping(value = "/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> getEvent() {
-        return Flux.fromStream(Stream.generate(() -> getNextEvent())).delayElements(Duration.ofSeconds(1));
+        return Flux.fromStream(Stream.generate(() ->
+          getNextEvent())).delayElements(Duration.ofSeconds(1));
     }
 
-    private String getNextEvent() {
-        return "Event: "+ eventNumber++;
+    public String getNextEvent() {
+        return "Event: " + eventNumber++;
+    }
+
+    public int getEventNumber() {
+        return eventNumber;
+    }
+
+    public void setEventNumber(int eventNumber) {
+        this.eventNumber = eventNumber;
     }
 }
