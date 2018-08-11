@@ -25,9 +25,9 @@ public class CollectionsBenchmark {
         @Setup(Level.Trial)
         public void setUp() {
 
-            for (long ii = 0; ii < iterations; ii++) {
-                employeeSet.add(new Employee(ii, "John"));
-                employeeList.add(new Employee(ii, "John"));
+            for (long i = 0; i < iterations; i++) {
+                employeeSet.add(new Employee(i, "John"));
+                employeeList.add(new Employee(i, "John"));
             }
 
             employeeList.add(employee);
