@@ -19,7 +19,7 @@ public class HomeControllerTest {
 
     @Test
     public void home() throws Exception {
-        String body = this.restTemplate.withBasicAuth("ADMIN", SecurityConfig.DEFAULT_PASSWORD)
+        String body = this.restTemplate.withBasicAuth("testUser", SecurityConfig.DEFAULT_PASSWORD)
             .getForEntity("/", String.class)
             .getBody();
         System.out.println(body);
@@ -31,7 +31,7 @@ public class HomeControllerTest {
         assertTrue(body.contains("ADMIN ROLE"));
 
         // test <sec:authentication property="principal.username" />
-        assertTrue(body.contains("principal.username: ADMIN"));
+        assertTrue(body.contains("principal.username: testUser"));
 
         // test <sec:csrfInput />
         assertTrue(body.contains("<input type=\"hidden\" name=\"_csrf\" value=\""));

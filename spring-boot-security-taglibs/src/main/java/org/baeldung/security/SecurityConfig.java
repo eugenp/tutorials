@@ -25,28 +25,29 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String ROLE_PREFIX = "ROLE_";
     public static final String DEFAULT_PASSWORD = "password";
+
     @Bean
     static PasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder(10);
     }
-    
+
     @Bean
     UserDetailsService customUserDetailsService() {
         return new UserDetailsService() {
-			
-			@Override
-			public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-				//authenticate and return dummy user
-		        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
-				authorities.add(new SimpleGrantedAuthority(ROLE_PREFIX + username));
-				return new User(username, bCryptPasswordEncoder().encode(DEFAULT_PASSWORD), authorities);
-			}
-		};
+            @Override
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+                // authenticate, grant ADMIN role and return dummy user
+                Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+                authorities.add(new SimpleGrantedAuthority(ROLE_PREFIX + "ADMIN"));
+                return new User(username, bCryptPasswordEncoder().encode(DEFAULT_PASSWORD), authorities);
+            }
+        };
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserDetailsService()).passwordEncoder(bCryptPasswordEncoder());
+        auth.userDetailsService(customUserDetailsService())
+            .passwordEncoder(bCryptPasswordEncoder());
 
     }
 
@@ -59,11 +60,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf();
-        http.headers().frameOptions().sameOrigin();
-       
-        http.antMatcher("/**").userDetailsService(customUserDetailsService())
+        http.headers()
+            .frameOptions()
+            .sameOrigin();
+
+        http.antMatcher("/**")
+            .userDetailsService(customUserDetailsService())
             .authorizeRequests()
-            .antMatchers("/**").permitAll()
+            .antMatchers("/**")
+            .permitAll()
             .and()
             .httpBasic();
     }
