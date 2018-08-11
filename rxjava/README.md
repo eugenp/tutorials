@@ -15,3 +15,4 @@
 - [RxJava Maybe](http://www.baeldung.com/rxjava-maybe)
 - [Introduction to RxRelay for RxJava](http://www.baeldung.com/rx-relay)
 - [Filtering Observables in RxJava](http://www.baeldung.com/rxjava-filtering)
+- [RxJava One Observable, Multiple Subscribers](http://www.baeldung.com/rxjava-multiple-subscribers-observable)

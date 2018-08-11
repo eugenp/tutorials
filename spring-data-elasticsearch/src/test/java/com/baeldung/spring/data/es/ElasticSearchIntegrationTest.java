@@ -1,9 +1,15 @@
 package com.baeldung.spring.data.es;
 
-import com.baeldung.spring.data.es.config.Config;
-import com.baeldung.spring.data.es.model.Article;
-import com.baeldung.spring.data.es.model.Author;
-import com.baeldung.spring.data.es.service.ArticleService;
+import static java.util.Arrays.asList;
+import static org.elasticsearch.index.query.Operator.AND;
+import static org.elasticsearch.index.query.QueryBuilders.fuzzyQuery;
+import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
+import static org.elasticsearch.index.query.QueryBuilders.regexpQuery;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,15 +22,10 @@ import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static org.elasticsearch.index.query.MatchQueryBuilder.Operator.AND;
-import static org.elasticsearch.index.query.QueryBuilders.fuzzyQuery;
-import static org.elasticsearch.index.query.QueryBuilders.matchQuery;
-import static org.elasticsearch.index.query.QueryBuilders.regexpQuery;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.spring.data.es.config.Config;
+import com.baeldung.spring.data.es.model.Article;
+import com.baeldung.spring.data.es.model.Author;
+import com.baeldung.spring.data.es.service.ArticleService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
@@ -81,25 +82,25 @@ public class ElasticSearchIntegrationTest {
     public void givenPersistedArticles_whenSearchByAuthorsName_thenRightFound() {
 
         final Page<Article> articleByAuthorName = articleService
-          .findByAuthorName(johnSmith.getName(), new PageRequest(0, 10));
+          .findByAuthorName(johnSmith.getName(), PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenCustomQuery_whenSearchByAuthorsName_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("Smith", new PageRequest(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByAuthorNameUsingCustomQuery("Smith", PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenTagFilterQuery_whenSearchByTag_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByFilteredTagQuery("elasticsearch", new PageRequest(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByFilteredTagQuery("elasticsearch", PageRequest.of(0, 10));
         assertEquals(3L, articleByAuthorName.getTotalElements());
     }
 
     @Test
     public void givenTagFilterQuery_whenSearchByAuthorsName_thenArticleIsFound() {
-        final Page<Article> articleByAuthorName = articleService.findByAuthorsNameAndFilteredTagQuery("Doe", "elasticsearch", new PageRequest(0, 10));
+        final Page<Article> articleByAuthorName = articleService.findByAuthorsNameAndFilteredTagQuery("Doe", "elasticsearch", PageRequest.of(0, 10));
         assertEquals(2L, articleByAuthorName.getTotalElements());
     }
 
@@ -125,7 +126,7 @@ public class ElasticSearchIntegrationTest {
         article.setTitle(newTitle);
         articleService.save(article);
 
-        assertEquals(newTitle, articleService.findOne(article.getId()).getTitle());
+        assertEquals(newTitle, articleService.findOne(article.getId()).get().getTitle());
     }
 
     @Test
