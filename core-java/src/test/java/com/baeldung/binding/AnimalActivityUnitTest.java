@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.LoggerFactory;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -19,9 +19,10 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 
 /**
-*https://gist.github.com/bloodredsun/a041de13e57bf3c6c040
+ *https://gist.github.com/bloodredsun/a041de13e57bf3c6c040
  */
 @RunWith(MockitoJUnitRunner.class)
+
 public class AnimalActivityUnitTest {
 
     @Mock
@@ -59,7 +60,7 @@ public class AnimalActivityUnitTest {
     }
 
     @Test
-    public void givenDogReference__whenRefersDogObject_shouldCallFunctionWithAnimalParam() {
+    public void givenDogReference__whenRefersCatObject_shouldCallFunctionWithAnimalParam() {
 
         Cat cat = new Cat();
 

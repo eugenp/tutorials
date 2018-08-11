@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.LoggerFactory;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -42,7 +42,7 @@ public class AnimalUnitTest {
     }
 
     @Test
-    public void overloadinTesting() {
+    public void whenCalledWithoutParameters_shouldCallFunctionMakeNoiseWithoutParameters() {
 
         Animal animal = new Animal();
 
@@ -56,16 +56,31 @@ public class AnimalUnitTest {
 
         assertThat(loggingEvent.getFormattedMessage(),
                 is("generic animal noise"));
+    }
 
-        animal.makeNoise(3);
+    @Test
+    public void whenCalledWithParameters_shouldCallFunctionMakeNoiseWithParameters() {
 
-        assertThat(loggingEvent.getLevel(), is(Level.INFO));
+        Animal animal = new Animal();
 
-        assertThat(loggingEvent.getFormattedMessage(),
-                is("generic animal noise countdown 3\n"
-                        + "generic animal noise countdown 2\n"
-                        + "generic animal noise countdown 1\n"));
+        int testValue = 3;
+        animal.makeNoise(testValue);
 
+        verify(mockAppender).doAppend(captorLoggingEvent.capture());
+
+        final LoggingEvent loggingEvent = captorLoggingEvent.getValue();
+
+        while (testValue != 0) {
+            assertThat(loggingEvent.getLevel(), is(Level.INFO));
+
+            assertThat(loggingEvent.getFormattedMessage(),
+                    is("generic animal noise countdown 3\n"
+                            + "generic animal noise countdown 2\n"
+                            + "generic animal noise countdown 1\n"));
+
+            testValue-=1;
+
+        }
     }
 
 }
