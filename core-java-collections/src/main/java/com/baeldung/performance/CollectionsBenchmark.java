@@ -28,10 +28,10 @@ public class CollectionsBenchmark {
             for (long ii = 0; ii < iterations; ii++) {
                 employeeSet.add(new Employee(ii, "John"));
                 employeeList.add(new Employee(ii, "John"));
-
-                employeeList.add(employee);
-                employeeSet.add(employee);
             }
+
+            employeeList.add(employee);
+            employeeSet.add(employee);
         }
     }
 
