@@ -19,7 +19,7 @@ In additional to Spring, the following technologies are in focus: `core Java`, `
 
 Building the project
 ====================
-To do the full build, do: `mvn install -Dgib.enabled=false`
+To do the full build, do: `mvn install -Pdefault -Dgib.enabled=false`
 
 
 Working with the code in Eclipse
