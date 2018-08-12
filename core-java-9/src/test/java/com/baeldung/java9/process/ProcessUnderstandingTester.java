@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 class ProcessUnderstandingTester {
 
     @Test
-    public void givenSourceProgram_whenExecutedFromAnotherprogram_thenSuccess() throws IOException {
+    public void givenSourceProgram_whenExecutedFromAnotherprogram_thenSourceProgramOutput3() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
@@ -27,7 +27,7 @@ class ProcessUnderstandingTester {
     }
     
     @Test
-    public void givenSubProcess_whenfetchOutput_thenSuccess() throws IOException{
+    public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException{
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
@@ -38,7 +38,7 @@ class ProcessUnderstandingTester {
     }
 
     @Test
-    public void givenSubProcess_whenErrorOutput_thenSuccess() throws IOException {
+    public void givenSubProcess_whenEncounteringError_thenErrorStreamNotNull() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -54,7 +54,7 @@ class ProcessUnderstandingTester {
     }
     
     @Test
-    public void givenSubProcess_thenDestroySuccess() throws IOException, InterruptedException{
+    public void givenSubProcess_whenDestroying_thenProcessNotNull() throws IOException, InterruptedException{
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
@@ -63,7 +63,7 @@ class ProcessUnderstandingTester {
     }
     
     @Test
-    public void givenSubProcess_whenAlive_thenDestroyForciblySuccess() throws IOException, InterruptedException{
+    public void givenSubProcess_whenAlive_thenDestroyForcibly() throws IOException, InterruptedException{
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
@@ -75,7 +75,7 @@ class ProcessUnderstandingTester {
     }
 
     @Test
-    public void givenProcessNotCreated_fromWithinJavaApplication_thenDestroySuccessfully() {
+    public void givenProcessNotCreated_fromWithinJavaApplicationDestroying_thenProcessNotNull() {
         Optional<ProcessHandle> optionalProcessHandle = ProcessHandle.of(5232);
         ProcessHandle processHandle = optionalProcessHandle.get();
         processHandle.destroy();
@@ -83,21 +83,21 @@ class ProcessUnderstandingTester {
     }
     
     @Test
-    public void givenSubProcess_thenMainThreadWaitsIndefinitely_untilSubProcessEndsSuccessfully() throws IOException, InterruptedException{
+    public void givenSubProcess_whenCurrentThreadWaitsIndefinitelyuntilSubProcessEnds_thenProcessWaitForReturnsGrt0() throws IOException, InterruptedException{
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertThat(process.waitFor() >= 0);
     }
     
     @Test
-    public void givenSubProcess_thenMainThreadWaitsWillNotIndefinitely_forSubProcessToEndSuccessfully() throws IOException {
+    public void givenSubProcess_whenCurrentThreadWillNotWaitIndefinitelyforSubProcessToEnd_thenProcessExitValueReturnsGrt0() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertThat(process.exitValue() >= 0);
     }
     
     @Test
-    public void givenSubProcess_thenFilterOnProcessIdRange_Successfully(){
+    public void givenRunningProcesses_whenFilterOnProcessIdRange_thenGetSelectedProcessPid(){
         assertThat(((int) ProcessHandle.allProcesses()
             .filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000))
             .count()) > 0);
