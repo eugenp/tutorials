@@ -63,7 +63,7 @@ class ProcessUnderstandingTester {
     }
     
     @Test
-    public void givenSubProcess_thenDestroyForciblySuccess() throws IOException, InterruptedException{
+    public void givenSubProcess_whenAlive_thenDestroyForciblySuccess() throws IOException, InterruptedException{
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
