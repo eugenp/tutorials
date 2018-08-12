@@ -10,7 +10,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 @Controller
 public class SseEmitterController {
-    private ExecutorService nonBlockingService = Executors.newSingleThreadExecutor();
+    private ExecutorService nonBlockingService = Executors.newCachedThreadPool();
 
     @GetMapping(Constants.API_SSE)
     public SseEmitter handleSse() {
