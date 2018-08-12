@@ -1,32 +1,28 @@
 package com.baeldung.java9.rangedates;
 
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
-import java.util.function.Consumer;
 
 public class RangeDatesIteration {
 
-    public void iterateBetweenDatesJava9(LocalDate startDate, LocalDate endDate, Consumer<LocalDate> consumer) {
+    public void iterateBetweenDatesJava9(LocalDate startDate, LocalDate endDate) {
 
         startDate.datesUntil(endDate)
-            .forEach(consumer);
+            .forEach(this::processDate);
     }
 
-    public void iterateBetweenDatesJava8(LocalDate start, LocalDate end, Consumer<LocalDate> consumer) {
+    public void iterateBetweenDatesJava8(LocalDate start, LocalDate end) {
         for (LocalDate date = start; date.isBefore(end); date = date.plusDays(1)) {
-            consumer.accept(date);
+            processDate(date);
         }
     }
 
-    public void iterateBetweenDatesJava7(Date start, Date end, Execution<Date> execution) {
+    public void iterateBetweenDatesJava7(Date start, Date end) {
         Date current = start;
 
         while (current.before(end)) {
-            execution.execute(current);
+            processDate(current);
 
             current = nextDate(current);
         }
@@ -41,4 +37,11 @@ public class RangeDatesIteration {
         return calendar.getTime();
     }
 
+    private void processDate(LocalDate date) {
+        System.out.println(date);
+    }
+
+    private void processDate(Date date) {
+        System.out.println(date);
+    }
 }

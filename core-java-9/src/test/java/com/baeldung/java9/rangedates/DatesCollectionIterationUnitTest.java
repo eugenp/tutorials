@@ -1,13 +1,10 @@
 package com.baeldung.java9.rangedates;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.stream.Collectors;
 
 import org.junit.Test;
@@ -28,25 +25,13 @@ public class DatesCollectionIterationUnitTest {
     public void givenIteratingListOfDatesJava7_WhenStartTodayAndEnding10DaysAhead() {
         DatesCollectionIteration iterateInColleciton = new DatesCollectionIteration();
 
-        iterateInColleciton.iteratingRangeOfDatesJava7(dates, new DateAssertion());
+        iterateInColleciton.iteratingRangeOfDatesJava7(dates);
     }
 
     @Test
     public void givenIteratingListOfDatesJava8_WhenStartTodayAndEnd10DaysAhead() {
         DatesCollectionIteration iterateInColleciton = new DatesCollectionIteration();
 
-        iterateInColleciton.iteratingRangeOfDatesJava8(dates, new DateAssertion()::execute);
-    }
-
-    private class DateAssertion implements Execution<Date> {
-
-        Iterator<Date> iterator = dates.iterator();
-
-        @Override
-        public void execute(Date date) {
-            assertThat(date)
-                .isEqualTo(iterator.next());
-        }
-
+        iterateInColleciton.iteratingRangeOfDatesJava8(dates);
     }
 }

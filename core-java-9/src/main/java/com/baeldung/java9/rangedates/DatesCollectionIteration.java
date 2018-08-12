@@ -3,23 +3,26 @@ package com.baeldung.java9.rangedates;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 public class DatesCollectionIteration {
 
-    public void iteratingRangeOfDatesJava7(Collection<Date> dates, Execution<Date> execution) {
+    public void iteratingRangeOfDatesJava7(Collection<Date> dates) {
         Iterator<Date> iterator = dates.iterator();
 
         while (iterator.hasNext()) {
             Date date = iterator.next();
 
-            execution.execute(date);
+            processDate(date);
         }
     }
 
-    public void iteratingRangeOfDatesJava8(Collection<Date> dates, Consumer<Date> process) {
+    public void iteratingRangeOfDatesJava8(Collection<Date> dates) {
         dates.stream()
-            .forEach(process);
+            .forEach(this::processDate);
+    }
+
+    private void processDate(Date date) {
+        System.out.println(date);
     }
 
 }
