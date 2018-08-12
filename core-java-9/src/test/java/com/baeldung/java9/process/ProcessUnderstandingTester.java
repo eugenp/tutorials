@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 class ProcessUnderstandingTester {
 
     @Test
-    public void given_source_program_executed_successfully_from_another_program() throws IOException {
+    public void givenSourceProgram_whenExecutedFromAnotherprogram_thenSuccess() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
@@ -27,7 +27,7 @@ class ProcessUnderstandingTester {
     }
     
     @Test
-    public void given_sub_process_fetch_output_successfully() throws IOException{
+    public void givenSubProcess_whenfetchOutput_thenSuccess() throws IOException{
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
@@ -38,7 +38,7 @@ class ProcessUnderstandingTester {
     }
 
     @Test
-    public void given_sub_process_fetch_error_output_stream_successfully() throws IOException {
+    public void givenSubProcess_whenErrorOutput_thenSuccess() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -47,14 +47,14 @@ class ProcessUnderstandingTester {
     }
 
     @Test
-    public void given_sub_process_start_successfully() throws IOException {
+    public void givenSubProcess_thenStartSuccess() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertNotNull(process);
     }
     
     @Test
-    public void given_subProcess_destroy_successfully() throws IOException, InterruptedException{
+    public void givenSubProcess_thenDestroySuccess() throws IOException, InterruptedException{
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
@@ -63,16 +63,19 @@ class ProcessUnderstandingTester {
     }
     
     @Test
-    public void given_subProcess_destroy_forcibly() throws IOException, InterruptedException{
+    public void givenSubProcess_thenDestroyForciblySuccess() throws IOException, InterruptedException{
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
         process.destroy();
+        if (process.isAlive()) {
+            process.destroyForcibly();
+        }
         assertNotNull(process);
     }
 
     @Test
-    public void given_process_nt_created_from_within_java_application_destroy_successfully() {
+    public void givenProcessNotCreated_fromWithinJavaApplication_thenDestroySuccessfully() {
         Optional<ProcessHandle> optionalProcessHandle = ProcessHandle.of(5232);
         ProcessHandle processHandle = optionalProcessHandle.get();
         processHandle.destroy();
@@ -80,21 +83,21 @@ class ProcessUnderstandingTester {
     }
     
     @Test
-    public void given_sub_process_main_thread_waits_indefinitely_until_sub_process_ends() throws IOException, InterruptedException{
+    public void givenSubProcess_thenMainThreadWaitsIndefinitely_untilSubProcessEndsSuccessfully() throws IOException, InterruptedException{
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertThat(process.waitFor() >= 0);
     }
     
     @Test
-    public void given_sub_process_main_thread_will_not_wait_indefinitely_for_sub_process_to_end() throws IOException {
+    public void givenSubProcess_thenMainThreadWaitsWillNotIndefinitely_forSubProcessToEndSuccessfully() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertThat(process.exitValue() >= 0);
     }
     
     @Test
-    public void given_sub_processes_filter_based_on_process_id_range(){
+    public void givenSubProcess_thenFilterOnProcessIdRange_Successfully(){
         assertThat(((int) ProcessHandle.allProcesses()
             .filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000))
             .count()) > 0);
