@@ -13,16 +13,14 @@ public class User {
     private final String name;
     private final String email;
     private final String country;
-    private static LocalTime instantiationTime;
-
+    
     public static User createWithDefaultCountry(String name, String email) {
         return new User(name, email, "Argentina");
     }
 
     public static User createWithLoggedInstantiationTime(String name, String email, String country) {
         setLoggerProperties();
-        instantiationTime = LocalTime.now();
-        LOGGER.log(Level.INFO, "Creating User instance at : {0}", instantiationTime);
+        LOGGER.log(Level.INFO, "Creating User instance at : {0}", LocalTime.now());
         return new User(name, email, country);
     }
 
@@ -35,6 +33,7 @@ public class User {
             }
         }
         return instance;
+
     }
 
     private User(String name, String email, String country) {
@@ -54,11 +53,7 @@ public class User {
     public String getCountry() {
         return country;
     }
-
-    public static LocalTime getInstantiationTime() {
-        return instantiationTime;
-    }
-
+    
     private static void setLoggerProperties() {
         ConsoleHandler handler = new ConsoleHandler();
         handler.setLevel(Level.INFO);

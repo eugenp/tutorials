@@ -1,12 +1,6 @@
 package com.baeldung.constructorsstaticfactorymethods;
 
 import com.baeldung.constructorsstaticfactorymethods.entities.User;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Locale;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
@@ -38,13 +32,6 @@ public class UserUnitTest {
     @Test
     public void givenUserInstanceCreatedWithcreateWithInstantiationTime_whenCalledcreateWithInstantiationTime_thenCorrect() {
         assertThat(User.createWithLoggedInstantiationTime("John", "john@domain.com", "Argentina")).isInstanceOf(User.class);
-    }
-    
-    @Test
-    public void givenUserInstanceCreatedWithcreateWithInstantiationTime_whenCalledgetInstantiationTime_thenCorrect() {
-        User.createWithLoggedInstantiationTime("John", "john@domain.com", "Argentina");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-        assertThat(formatter.format(User.getInstantiationTime())).isEqualTo(formatter.format(LocalTime.now()));
     }
     
     @Test
