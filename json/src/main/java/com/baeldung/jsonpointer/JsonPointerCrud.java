@@ -2,7 +2,10 @@ package com.baeldung.jsonpointer;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -15,13 +18,10 @@ public class JsonPointerCrud {
 	
 	private JsonStructure jsonStructure = null;
 	
-	public JsonPointerCrud(String fileName) {
+	public JsonPointerCrud(String fileName) throws IOException {
 		
-		JsonReader reader;
-		try {
-			reader = Json.createReader(new FileReader(fileName));
+		try (JsonReader reader = Json.createReader(Files.newBufferedReader(Paths.get(fileName)))){
 			jsonStructure = reader.read();
-		    reader.close();
 		} catch (FileNotFoundException e) {
 			System.out.println("Error to open json file: " + e.getMessage());
 		}
