@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+@BenchmarkMode(Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@Warmup(iterations = 5)
 public class CollectionsBenchmark {
 
     @State(Scope.Thread)
@@ -35,19 +38,12 @@ public class CollectionsBenchmark {
         }
     }
 
-
     @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.NANOSECONDS)
-    @Warmup(iterations = 1)
     public boolean testArrayList(MyState state) {
         return state.employeeList.contains(state.employee);
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.AverageTime)
-    @OutputTimeUnit(TimeUnit.NANOSECONDS)
-    @Warmup(iterations = 1)
     public boolean testHashSet(MyState state) {
         return state.employeeSet.contains(state.employee);
     }
