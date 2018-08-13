@@ -26,7 +26,7 @@ public class JavaFakerTest {
 	  }
 
 	  @Test
-	  public void givenJavaFaker_whenAddressObjectCalled_checkValidAddressInfoGiven() throws Exception {
+	  public void validAddressInfoUnitTest() throws Exception {
 
 	    Faker faker = new Faker();
 
@@ -44,7 +44,7 @@ public class JavaFakerTest {
 	  }
 
 	  @Test
-	  public void givenJavaFakersWithSameSeed_whenNameCalled_CheckSameName() throws Exception {
+	  public void givenJavaFakersWithSameSeedWhenNameCalledCheckSameName() throws Exception {
 
 	    Faker faker1 = new Faker(new Random(24));
 	    Faker faker2 = new Faker(new Random(24));
@@ -53,7 +53,7 @@ public class JavaFakerTest {
 	  }
 
 	  @Test
-	  public void givenJavaFakersWithDifferentLocals_checkZipCodesMatchRegex() throws Exception {
+	  public void givenJavaFakersWithDifferentLocalsCheckZipCodesMatchRegex() throws Exception {
 
 	    Faker ukFaker = new Faker(new Locale("en-GB"));
 	    Faker usFaker = new Faker(new Locale("en-US"));
@@ -73,7 +73,7 @@ public class JavaFakerTest {
 	  }
 
 	  @Test
-	  public void givenJavaFakerService_testFakersCreated() throws Exception {
+	  public void givenJavaFakerServiceTestFakersCreated() throws Exception {
 
 	    RandomService randomService = new RandomService();
 
@@ -103,7 +103,7 @@ public class JavaFakerTest {
 
 
 	  @Test(expected = LocaleDoesNotExistException.class)
-	  public void givenWrongLocale_whenFakerIsInitialised_testLocaleDoesNotExistExceptionIsThrown() throws Exception {
+	  public void givenWrongLocaleWhenFakerIsInitialisedTestLocaleDoesNotExistExceptionIsThrown() throws Exception {
 
 	    Faker wrongLocaleFaker = new Faker(new Locale("en-seaWorld"));
 
