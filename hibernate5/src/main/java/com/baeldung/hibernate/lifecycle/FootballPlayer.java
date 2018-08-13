@@ -5,11 +5,15 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Football_Player")
 public class FootballPlayer {
-    @Id @GeneratedValue private long id;
+    @Id
+    @GeneratedValue
+    private long id;
 
-    @Column private String name;
+    @Column
+    private String name;
 
-    @Column private String team;
+    @Column
+    private String club;
 
     public long getId() {
         return id;
@@ -27,15 +31,16 @@ public class FootballPlayer {
         this.name = name;
     }
 
-    public String getTeam() {
-        return team;
+    public String getClub() {
+        return club;
     }
 
-    public void setTeam(String team) {
-        this.team = team;
+    public void setClub(String club) {
+        this.club = club;
     }
 
-    @Override public String toString() {
-        return "FootballPlayer{" + "id=" + id + ", name='" + name + '\'' + ", team='" + team + '\'' + '}';
+    @Override
+    public String toString() {
+        return "FootballPlayer{" + "id=" + id + ", name='" + name + '\'' + ", club='" + club + '\'' + '}';
     }
 }

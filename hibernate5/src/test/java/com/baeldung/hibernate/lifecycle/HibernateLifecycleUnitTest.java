@@ -97,6 +97,7 @@ public class HibernateLifecycleUnitTest {
             session.update(messi);
             transaction.commit();
             assertThat(getDirtyEntities()).size().isEqualTo(1);
+            assertThat(getDirtyEntities().get(0).getName()).isEqualTo("Leo Messi");
         }
     }
 
