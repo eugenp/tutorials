@@ -1,4 +1,4 @@
-package org.baeldung.java.collections;
+package com.baeldung.collection;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class StreamOperateAndRemoveUnitTest {
     }
 
     @Test
-    public void givenAList_operateUsingStreamsAndRemoveUsingRemoveIf_thenCorrect() {
+    public void givenAListOf10Items_whenOperateAndRemoveQualifiedItemsUsingRemoveIf_thenListContains5Items() {
 
         itemList.stream().filter(item -> item.isQualified()).forEach(item -> item.operate());
         itemList.removeIf(item -> item.isQualified());
@@ -30,7 +30,7 @@ public class StreamOperateAndRemoveUnitTest {
     }
 
     @Test
-    public void givenAList_operateUsingStreamsAndRemoveUsingRemoveAll_thenCorrect() {
+    public void givenAListOf10Items_whenOperateAndRemoveQualifiedItemsUsingRemoveAll_thenListContains5Items() {
 
         final List<Item> operatedList = new ArrayList<>();
         itemList.stream().filter(item -> item.isQualified()).forEach(item -> {
@@ -41,24 +41,24 @@ public class StreamOperateAndRemoveUnitTest {
 
         Assert.assertEquals(5, itemList.size());
     }
-}
 
-class Item {
+    class Item {
 
-    private final int value;
+        private final int value;
 
-    public Item(final int value) {
+        public Item(final int value) {
 
-        this.value = value;
-    }
+            this.value = value;
+        }
 
-    public boolean isQualified() {
+        public boolean isQualified() {
 
-        return value % 2 == 0;
-    }
+            return value % 2 == 0;
+        }
 
-    public void operate() {
+        public void operate() {
 
-        System.out.println("Even Number: " + this.value);
+            System.out.println("Even Number: " + this.value);
+        }
     }
 }
