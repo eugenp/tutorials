@@ -16,7 +16,7 @@ import com.github.javafaker.service.FakeValuesService;
 import com.github.javafaker.service.LocaleDoesNotExistException;
 import com.github.javafaker.service.RandomService;
 
-public class JavaFakerTest {
+public class JavaFakerUnitTest {
 
 	  private Faker faker;
 
