@@ -11,7 +11,7 @@ import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
 import reactor.ipc.netty.NettyContext;
 import reactor.ipc.netty.http.server.HttpServer;
 
-@ComponentScan(basePackages = {"com.baeldung.security"})
+@ComponentScan(basePackages = {"com.baeldung.reactive.security"})
 @EnableWebFlux
 public class SpringSecurity5Application {
 
