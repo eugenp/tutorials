@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class JsonPointerCrudTest {
+public class JsonPointerCrudUnitTest {
 
     @Test
     public void testJsonPointerCrudForAddress() {
 
-        JsonPointerCrud jsonPointerCrud = new JsonPointerCrud(JsonPointerCrudTest.class.getResourceAsStream("/address.json"));
+        JsonPointerCrud jsonPointerCrud = new JsonPointerCrud(JsonPointerCrudUnitTest.class.getResourceAsStream("/address.json"));
 
         assertFalse(jsonPointerCrud.check("city"));
 
@@ -48,7 +48,7 @@ public class JsonPointerCrudTest {
     @Test
     public void testJsonPointerCrudForBooks() {
 
-        JsonPointerCrud jsonPointerCrud = new JsonPointerCrud(JsonPointerCrudTest.class.getResourceAsStream("/books.json"));
+        JsonPointerCrud jsonPointerCrud = new JsonPointerCrud(JsonPointerCrudUnitTest.class.getResourceAsStream("/books.json"));
 
         // fetch value
         String book = jsonPointerCrud.fetchListValues("books/1");
