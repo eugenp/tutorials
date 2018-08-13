@@ -2,6 +2,7 @@ package com.baeldung.dsl;
 
 import java.io.File;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -15,9 +16,9 @@ import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlows;
 import org.springframework.integration.dsl.Pollers;
+import org.springframework.integration.dsl.channel.MessageChannels;
 import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.FileWritingMessageHandler;
-import org.springframework.integration.file.support.FileExistsMode;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
@@ -31,7 +32,8 @@ import org.springframework.messaging.MessageHandler;
 public class JavaDSLFileCopyConfig {
 
     public static final String INPUT_DIR = "source";
-    public static final String OUTPUT_DIR = "target";
+    public static final String OUTPUT_DIR = "target_first";
+    public static final String OUTPUT_DIR2 = "target_second";
 
     @Bean
     public MessageSource<File> anInputSource() {
@@ -46,7 +48,7 @@ public class JavaDSLFileCopyConfig {
 
             @Override
             public boolean accept(File source) {
-                return source.getName().endsWith("*.jpg");
+                return source.getName().endsWith(".jpg");
             }
         };
     }
@@ -54,11 +56,10 @@ public class JavaDSLFileCopyConfig {
     @Bean
     public MessageHandler aServiceActivator() {
         FileWritingMessageHandler handler = new FileWritingMessageHandler(new File(OUTPUT_DIR));
-        handler.setFileExistsMode(FileExistsMode.REPLACE);
-        handler.setExpectReply(false);
+        handler.setExpectReply(false); // end of pipeline, reply not needed
         return handler;
     }
-
+    
     @Bean
     public IntegrationFlow flow() {
         return IntegrationFlows.from(anInputSource(), configurer -> configurer.poller(Pollers.fixedDelay(10000)))
@@ -136,6 +137,42 @@ public class JavaDSLFileCopyConfig {
             .handle(aServiceActivator())
             .get();
     }
+    
+    @Bean
+    public MessageHandler aServiceActivator2() {
+        FileWritingMessageHandler handler = new FileWritingMessageHandler(new File(OUTPUT_DIR2));
+        handler.setExpectReply(false); // end of pipeline, reply not needed
+        return handler;
+    }
+
+    //@Bean
+    public MessageChannel filesQueueChannel() {
+        return MessageChannels.queue().get();
+    }
+    
+	//@Bean
+	public IntegrationFlow flowToQueue() {
+		return IntegrationFlows.from(anInputSource(), configurer -> configurer.poller(Pollers.fixedDelay(10)))
+		    .filter(aFilter())
+		    .channel(filesQueueChannel())
+		    .get();
+	}
+
+	//@Bean
+	public IntegrationFlow flowCopyToFirstDirectory() {
+		return IntegrationFlows.from(filesQueueChannel())
+		    .bridge(e -> e.poller(Pollers.fixedRate(1, TimeUnit.SECONDS, 20)))
+		    .handle(aServiceActivator())
+		    .get();
+	}
+
+	@Bean
+	public IntegrationFlow flowCopyToSecondDirectory() {
+		return IntegrationFlows.from(filesQueueChannel())
+		    .bridge(e -> e.poller(Pollers.fixedRate(2, TimeUnit.SECONDS, 10)))
+		    .handle(aServiceActivator2())
+		    .get();
+	}
 
     public static void main(final String... args) {
         final AbstractApplicationContext context = new AnnotationConfigApplicationContext(JavaDSLFileCopyConfig.class);
