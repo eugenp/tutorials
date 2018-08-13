@@ -1,6 +1,7 @@
 package com.baeldung.trie;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -51,6 +52,19 @@ public class TrieUnitTest {
         assertTrue(trie.containsNode("Programming"));
         trie.delete("Programming");
         assertFalse(trie.containsNode("Programming"));
+    }
+
+    @Test
+    public void givenATrie_whenDeletingOverlappingElements_thenDontDeleteSubElement() {
+
+        Trie trie1 = new Trie();
+
+        trie1.insert("pie");
+        trie1.insert("pies");
+
+        trie1.delete("pies");
+
+        Assertions.assertTrue(trie1.containsNode("pie"));
     }
 
     private Trie createExampleTrie() {
