@@ -183,6 +183,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -316,6 +317,7 @@
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <async-http-client.version>2.4.5</async-http-client.version>
+        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
 </project>
