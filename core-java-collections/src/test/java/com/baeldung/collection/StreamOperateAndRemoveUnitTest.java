@@ -2,10 +2,13 @@ package com.baeldung.collection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StreamOperateAndRemoveUnitTest {
 
@@ -18,6 +21,15 @@ public class StreamOperateAndRemoveUnitTest {
         for (int i = 0; i < 10; i++) {
             itemList.add(new Item(i));
         }
+    }
+
+    @Test
+    public void givenAListOf10Items_whenFilteredForQualifiedItems_thenFilteredListContains5Items() {
+
+        final List<Item> filteredList = itemList.stream().filter(item -> item.isQualified())
+            .collect(Collectors.toList());
+
+        Assert.assertEquals(5, filteredList.size());
     }
 
     @Test
@@ -44,6 +56,8 @@ public class StreamOperateAndRemoveUnitTest {
 
     class Item {
 
+        private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
+
         private final int value;
 
         public Item(final int value) {
@@ -58,7 +72,7 @@ public class StreamOperateAndRemoveUnitTest {
 
         public void operate() {
 
-            System.out.println("Even Number: " + this.value);
+            logger.info("Even Number: " + this.value);
         }
     }
 }
