@@ -30,7 +30,7 @@
     </dependencies>
 
     <properties>
-        <mockito.version>1.10.19</mockito.version>
+        <mockito.version>2.21.0</mockito.version>
     </properties>
 
 </project>
