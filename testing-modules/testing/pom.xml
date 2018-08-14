@@ -88,6 +88,11 @@
             <artifactId>javalite-common</artifactId>
             <version>${javalite.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>0.15</version>
+        </dependency>
     </dependencies>
 
     <build>
