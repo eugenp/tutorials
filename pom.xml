@@ -434,7 +434,8 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
-				<module>spring-swagger-codegen</module>
+				<module>spring-swagger-codegen/spring-swagger-codegen-api-client</module>
+				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
@@ -691,7 +692,8 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
-				<module>spring-swagger-codegen</module>
+				<module>spring-swagger-codegen/spring-swagger-codegen-api-client</module>
+				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
@@ -972,7 +974,8 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
-				<module>spring-swagger-codegen</module>
+				<module>spring-swagger-codegen/spring-swagger-codegen-api-client</module>
+				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
