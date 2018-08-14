@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Mono;
 
-@RestController
-@RequestMapping("/web-filter-and-more-on-annotated")
+//@RestController
+//@RequestMapping("/web-filter-and-more-on-annotated")
 public class FurtherCorsConfigsController {
 
     @DeleteMapping("/further-mixed-config-endpoint")

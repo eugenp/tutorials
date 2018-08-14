@@ -85,7 +85,9 @@
 - [Implementing a FTP-Client in Java](http://www.baeldung.com/java-ftp-client)
 - [Convert String to Date in Java](http://www.baeldung.com/java-string-to-date)
 - [Histograms with Apache Commons Frequency](http://www.baeldung.com/apache-commons-frequency)
-
+- [Guide to Resilience4j](http://www.baeldung.com/resilience4j)
+- [Parsing YAML with SnakeYAML](http://www.baeldung.com/java-snake-yaml)
+- [Guide to JMapper](http://www.baeldung.com/jmapper)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

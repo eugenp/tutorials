@@ -32,12 +32,13 @@ public class FaviconConfiguration {
         requestHandler.setLocations(locations);
         return requestHandler;
     }
-    
-    //@Controller
+
+    // @Controller
     static class FaviconController {
-        
-        @RequestMapping(value="favicon.ico", method=RequestMethod.GET)
+
+        @RequestMapping(value = "favicon.ico", method = RequestMethod.GET)
         @ResponseBody
-        void favicon() {}
+        void favicon() {
+        }
     }
 }
