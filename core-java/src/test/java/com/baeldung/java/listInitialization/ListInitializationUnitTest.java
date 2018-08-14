@@ -17,15 +17,7 @@ public class ListInitializationUnitTest {
     @Test
     public void givenAnonymousInnerClass_thenInitialiseList() {
         List<String> cities = new ArrayList() {
-            // Inside declaration of the subclass
-
-            // You can have multiple initializer block
             {
-                log.info("Inside the first initializer block.");
-            }
-
-            {
-                log.info("Inside the second initializer block.");
                 add("New York");
                 add("Rio");
                 add("Tokyo");
@@ -38,7 +30,7 @@ public class ListInitializationUnitTest {
     @Test
     public void givenArraysAsList_thenInitialiseList() {
         List<String> list = Arrays.asList("foo", "bar");
-        
+
         Assert.assertTrue(list.contains("foo"));
     }
 
