@@ -10,7 +10,7 @@
 <body>
     <sec:authorize access="isAuthenticated()">
         AUTHENTICATED
-     </sec:authorize>
+    </sec:authorize>
     <sec:authorize access="hasRole('ADMIN')">
         ADMIN ROLE
     </sec:authorize>
@@ -20,7 +20,8 @@
     </h2>
     <form method="post" action="/do/something">
         <sec:csrfInput />
-        Text Field:<br />
+        Text Field:
+        <br />
         <input type="text" name="textField" />
     </form>
 </body>
