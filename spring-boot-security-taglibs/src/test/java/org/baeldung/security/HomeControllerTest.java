@@ -19,7 +19,7 @@ public class HomeControllerTest {
 
     @Test
     public void home() throws Exception {
-        String body = this.restTemplate.withBasicAuth("testUser", SecurityConfig.DEFAULT_PASSWORD)
+        String body = this.restTemplate.withBasicAuth("testUser", ApplicationConfig.DEFAULT_PASSWORD)
             .getForEntity("/", String.class)
             .getBody();
         System.out.println(body);

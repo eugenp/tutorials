@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 @RequestMapping("/")
 public class HomeController {
-
     @RequestMapping("")
     public String home(HttpServletRequest request, HttpServletResponse response) {
         return "home";
     }
-
 }
