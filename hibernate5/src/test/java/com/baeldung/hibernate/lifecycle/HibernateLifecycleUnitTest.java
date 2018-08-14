@@ -12,20 +12,20 @@ import org.junit.Test;
 import java.util.List;
 
 import static com.baeldung.hibernate.lifecycle.DirtyDataInspector.getDirtyEntities;
-import static com.baeldung.hibernate.lifecycle.HibernateUtil.*;
+import static com.baeldung.hibernate.lifecycle.HibernateLifecycleUtil.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HibernateLifecycleUnitTest {
 
     @BeforeClass
     public static void setup() throws Exception {
-        HibernateUtil.init();
+        HibernateLifecycleUtil.init();
 
     }
 
     @AfterClass
     public static void tearDown() throws Exception {
-        HibernateUtil.tearDown();
+        HibernateLifecycleUtil.tearDown();
     }
 
     @Before
@@ -35,8 +35,8 @@ public class HibernateLifecycleUnitTest {
 
     @Test
     public void whenEntityLoaded_thenEntityManaged() throws Exception {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        try(Session session = sessionFactory.openSession()) {
+        SessionFactory sessionFactory = HibernateLifecycleUtil.getSessionFactory();
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = startTransaction(session);
 
             assertThat(getManagedEntities(session)).isEmpty();
@@ -46,10 +46,7 @@ public class HibernateLifecycleUnitTest {
 
             assertThat(getDirtyEntities()).isEmpty();
 
-            FootballPlayer gigiBuffon = players.stream()
-                                        .filter(p -> p.getId()==3)
-                                        .findFirst()
-                                        .get();
+            FootballPlayer gigiBuffon = players.stream().filter(p -> p.getId() == 3).findFirst().get();
 
             gigiBuffon.setName("Gianluigi Buffon");
             transaction.commit();
@@ -62,11 +59,11 @@ public class HibernateLifecycleUnitTest {
 
     @Test
     public void whenDetached_thenNotTracked() throws Exception {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        try(Session session = sessionFactory.openSession()) {
+        SessionFactory sessionFactory = HibernateLifecycleUtil.getSessionFactory();
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = startTransaction(session);
 
-            FootballPlayer cr7 = session.get(FootballPlayer.class, Long.valueOf(1));
+            FootballPlayer cr7 = session.get(FootballPlayer.class, 1L);
             assertThat(getManagedEntities(session)).size().isEqualTo(1);
             assertThat(getManagedEntities(session).get(0).getId()).isEqualTo(cr7.getId());
 
@@ -82,11 +79,11 @@ public class HibernateLifecycleUnitTest {
 
     @Test
     public void whenReattached_thenTrackedAgain() throws Exception {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        try(Session session = sessionFactory.openSession()) {
+        SessionFactory sessionFactory = HibernateLifecycleUtil.getSessionFactory();
+        try (Session session = sessionFactory.openSession()) {
             Transaction transaction = startTransaction(session);
 
-            FootballPlayer messi = session.get(FootballPlayer.class, Long.valueOf(2));
+            FootballPlayer messi = session.get(FootballPlayer.class, 2L);
 
             session.evict(messi);
             messi.setName("Leo Messi");
@@ -103,7 +100,7 @@ public class HibernateLifecycleUnitTest {
 
     @Test
     public void givenNewEntityWithID_whenReattached_thenManaged() throws Exception {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        SessionFactory sessionFactory = HibernateLifecycleUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = startTransaction(session);
 
@@ -121,7 +118,7 @@ public class HibernateLifecycleUnitTest {
 
     @Test
     public void givenTransientEntity_whenSave_thenManaged() throws Exception {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        SessionFactory sessionFactory = HibernateLifecycleUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = startTransaction(session);
 
@@ -148,7 +145,7 @@ public class HibernateLifecycleUnitTest {
 
     @Test()
     public void whenDelete_thenMarkDeleted() throws Exception {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        SessionFactory sessionFactory = HibernateLifecycleUtil.getSessionFactory();
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = startTransaction(session);
 

@@ -12,9 +12,6 @@ public class FootballPlayer {
     @Column
     private String name;
 
-    @Column
-    private String club;
-
     public long getId() {
         return id;
     }
@@ -31,16 +28,8 @@ public class FootballPlayer {
         this.name = name;
     }
 
-    public String getClub() {
-        return club;
-    }
-
-    public void setClub(String club) {
-        this.club = club;
-    }
-
     @Override
     public String toString() {
-        return "FootballPlayer{" + "id=" + id + ", name='" + name + '\'' + ", club='" + club + '\'' + '}';
+        return "FootballPlayer{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

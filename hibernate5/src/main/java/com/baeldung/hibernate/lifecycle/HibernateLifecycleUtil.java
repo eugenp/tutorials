@@ -12,10 +12,10 @@ import org.hibernate.engine.spi.EntityEntry;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.service.ServiceRegistry;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,18 +26,20 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.stream.Collectors;
 
-public class HibernateUtil {
+public class HibernateLifecycleUtil {
     private static SessionFactory sessionFactory;
     private static Connection connection;
 
     public static void init() throws Exception {
-        Connection dbConnection = null;
         Class.forName("org.h2.Driver");
+        Properties hbConfigProp = new Properties();
+        try (InputStream hbPropStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("hibernate-lifecycle.properties");
+            InputStream h2InitStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("lifecycle-init.sql");
+            InputStreamReader h2InitReader = new InputStreamReader(h2InitStream)) {
+            hbConfigProp.load(hbPropStream);
+            connection = DriverManager.getConnection(hbConfigProp.getProperty("hibernate.connection.url"), hbConfigProp.getProperty("hibernate.connection.username"), hbConfigProp.getProperty("hibernate.connection.password"));
 
-        connection = connection = DriverManager.getConnection("jdbc:h2:mem:lifecycledb;DB_CLOSE_DELAY=-1;", "sa", "");
-        File initFile = new File("src/test/resources/lifecycle-init.sql");
-        try(FileReader reader = new FileReader(initFile);) {
-            RunScript.execute(connection, reader);
+            RunScript.execute(connection, h2InitReader);
         }
 
         ServiceRegistry serviceRegistry = configureServiceRegistry();
@@ -77,12 +79,8 @@ public class HibernateUtil {
     }
 
     public static List<EntityEntry> getManagedEntities(Session session) {
-        Map.Entry<Object, EntityEntry>[] entries = ((SessionImplementor)session).getPersistenceContext().reentrantSafeEntityEntries();
-        return Arrays.asList(entries).stream().map(e -> e.getValue()).collect(Collectors.toList());
-    }
-
-    public static Connection getDBConnection() throws Exception {
-        return connection;
+        Map.Entry<Object, EntityEntry>[] entries = ((SessionImplementor) session).getPersistenceContext().reentrantSafeEntityEntries();
+        return Arrays.stream(entries).map(e -> e.getValue()).collect(Collectors.toList());
     }
 
     public static Transaction startTransaction(Session s) {
@@ -92,7 +90,7 @@ public class HibernateUtil {
     }
 
     public static int queryCount(String query) throws Exception {
-        try(ResultSet rs = connection.createStatement().executeQuery(query);) {
+        try (ResultSet rs = connection.createStatement().executeQuery(query)) {
             rs.next();
             return rs.getInt(1);
         }
