@@ -31,14 +31,12 @@ public class HibernateLifecycleUtil {
     private static Connection connection;
 
     public static void init() throws Exception {
-        Class.forName("org.h2.Driver");
-        Properties hbConfigProp = new Properties();
-        try (InputStream hbPropStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("hibernate-lifecycle.properties");
-            InputStream h2InitStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("lifecycle-init.sql");
-            InputStreamReader h2InitReader = new InputStreamReader(h2InitStream)) {
-            hbConfigProp.load(hbPropStream);
-            connection = DriverManager.getConnection(hbConfigProp.getProperty("hibernate.connection.url"), hbConfigProp.getProperty("hibernate.connection.username"), hbConfigProp.getProperty("hibernate.connection.password"));
+        Properties hbConfigProp = getHibernateProperties();
+        Class.forName(hbConfigProp.getProperty("hibernate.connection.driver_class"));
+        connection = DriverManager.getConnection(hbConfigProp.getProperty("hibernate.connection.url"), hbConfigProp.getProperty("hibernate.connection.username"), hbConfigProp.getProperty("hibernate.connection.password"));
 
+        try (InputStream h2InitStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("lifecycle-init.sql");
+            InputStreamReader h2InitReader = new InputStreamReader(h2InitStream)) {
             RunScript.execute(connection, h2InitReader);
         }
 
@@ -65,11 +63,11 @@ public class HibernateLifecycleUtil {
     }
 
     private static ServiceRegistry configureServiceRegistry() throws IOException {
-        Properties properties = getProperties();
+        Properties properties = getHibernateProperties();
         return new StandardServiceRegistryBuilder().applySettings(properties).build();
     }
 
-    private static Properties getProperties() throws IOException {
+    private static Properties getHibernateProperties() throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread().getContextClassLoader().getResource("hibernate-lifecycle.properties");
         try (FileInputStream inputStream = new FileInputStream(propertiesURL.getFile())) {
