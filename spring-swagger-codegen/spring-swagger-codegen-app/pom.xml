@@ -42,5 +42,4 @@
 		<spring.version>1.5.10.RELEASE</spring.version>
 		<spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
-
 </project>
