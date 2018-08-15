@@ -20,7 +20,6 @@ public class BasicAttribsIntegrationTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(BasicAttribsIntegrationTest.class);
 
-
     private static final String HOME = System.getProperty("user.home");
     private static BasicFileAttributes basicAttribs;
 

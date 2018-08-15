@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.jenkins-ci.plugins</groupId>
-        <artifactId>plugin</artifactId>
-        <version>2.33</version>
-        <relativePath />
-    </parent>
     <artifactId>jenkins-hello-world</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
-    <properties>
-        <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
-        <jenkins.version>2.7.3</jenkins.version>
-    </properties>
     <name>Hello World Plugin</name>
     <description>A sample Jenkins Hello World plugin</description>
     <url>https://wiki.jenkins-ci.org/display/JENKINS/TODO+Plugin</url>
@@ -23,52 +14,60 @@
             <url>http://opensource.org/licenses/MIT</url>
         </license>
     </licenses>
+
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>2.33</version>
+        <relativePath />
+    </parent>
+
     <dependencies>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>structs</artifactId>
-            <version>1.7</version>
+            <version>${structs.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-step-api</artifactId>
-            <version>2.12</version>
+            <version>${workflow-step-api.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-cps</artifactId>
-            <version>2.39</version>
+            <version>${workflow-cps.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-job</artifactId>
-            <version>2.11.2</version>
+            <version>${workflow-job.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-basic-steps</artifactId>
-            <version>2.6</version>
+            <version>${workflow-basic-steps.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-durable-task-step</artifactId>
-            <version>2.13</version>
+            <version>${workflow-durable-task-step.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-api</artifactId>
-            <version>2.20</version>
+            <version>${workflow-api.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-support</artifactId>
-            <version>2.14</version>
+            <version>${workflow-support.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -86,4 +85,19 @@
             <url>https://repo.jenkins-ci.org/public/</url>
         </pluginRepository>
     </pluginRepositories>
+
+    <properties>
+        <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
+        <jenkins.version>2.7.3</jenkins.version>
+
+        <structs.version>1.7</structs.version>
+        <workflow-step-api.version>2.12</workflow-step-api.version>
+        <workflow-cps.version>2.39</workflow-cps.version>
+        <workflow-job.version>2.11.2</workflow-job.version>
+        <workflow-basic-steps.version>2.6</workflow-basic-steps.version>
+        <workflow-durable-task-step.version>2.13</workflow-durable-task-step.version>
+        <workflow-api.version>2.20</workflow-api.version>
+        <workflow-support.version>2.14</workflow-support.version>
+
+    </properties>
 </project>

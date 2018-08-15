@@ -57,7 +57,8 @@ public class NetworkIntegrationTest {
             sender.join();
             receiver.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt(); 
+            System.out.println("Thread Interrupted");
         }
         
         assertEquals(expected, outContent.toString());

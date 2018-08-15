@@ -12,9 +12,7 @@ public class ThreadSafeDemo {
         DeferredManager dm = new DefaultDeferredManager();
         Deferred<String, String, String> deferred = new DeferredObject<>();
         Promise<String, String, String> p1 = deferred.promise();
-        Promise<String, String, String> p = dm.when(p1)
-          .done(r -> System.out.println("done"))
-          .fail(r -> System.out.println("fail"));
+        Promise<String, String, String> p = dm.when(p1).done(r -> System.out.println("done")).fail(r -> System.out.println("fail"));
 
         synchronized (p) {
             while (p.isPending()) {

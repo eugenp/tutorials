@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>log4j2</artifactId>
 
     <parent>
@@ -18,6 +17,13 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>${log4j-core.version}</version>
+        </dependency>
+        
+        <!-- This is the needed API component. -->
+        <dependency>
+          <groupId>org.apache.logging.log4j</groupId>
+          <artifactId>log4j-api</artifactId>
+          <version>${log4j-core.version}</version>
         </dependency>
 
         <!-- This is used by JSONLayout. -->
@@ -56,13 +62,63 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <proc>none</proc>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*ManualTest.java</exclude>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                                <logging.folder.path>${java.io.tmpdir}/${maven.build.timestamp}/logfile.json</logging.folder.path>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <properties>
-        <jackson.version>2.9.3</jackson.version>
+        <jackson.version>2.9.5</jackson.version>
         <h2.version>1.4.193</h2.version>
         <commons-dbcp2.version>2.1.1</commons-dbcp2.version>
-        <log4j-core.version>2.10.0</log4j-core.version>
+        <log4j-core.version>2.11.0</log4j-core.version>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
     </properties>
 
 </project>

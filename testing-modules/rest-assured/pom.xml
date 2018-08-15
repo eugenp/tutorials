@@ -8,9 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -120,11 +120,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.fge</groupId>
             <artifactId>btf</artifactId>
             <version>${btf.version}</version>
@@ -173,45 +168,7 @@
             <artifactId>commons-collections</artifactId>
             <version>${commons-collections.version}</version>
         </dependency>
-
     </dependencies>
-
-
-    <profiles>
-        <profile>
-            <id>integration</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/*IntegrationTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-
-            </build>
-        </profile>
-    </profiles>
 
     <properties>
         <jackson.version>2.8.5</jackson.version>
@@ -222,7 +179,6 @@
         <servlet-api.version>2.5</servlet-api.version>
         <javax.mail.version>1.4.7</javax.mail.version>
         <jetty.version>9.4.0.v20161208</jetty.version>
-
 
         <commons-lang3.version>3.5</commons-lang3.version>
         <commons-collections.version>3.2.2</commons-collections.version>

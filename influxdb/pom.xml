@@ -28,17 +28,11 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
-
-
     </dependencies>
 
     <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <influxdb.sdk.version>2.8</influxdb.sdk.version>
         <lombok.version>1.16.18</lombok.version>
-
     </properties>
 
 </project>

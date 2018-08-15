@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-mvc-kotlin</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>spring-mvc-kotlin</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -10,45 +13,55 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-mvc-kotlin</artifactId>
-    <version>0.1-SNAPSHOT</version>
-
-    <name>spring-mvc-kotlin</name>
-
-    <packaging>war</packaging>
-
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jre8</artifactId>
-            <version>1.1.4</version>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
+            <version>${kotlin.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.3.10.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.3.10.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf</artifactId>
-            <version>3.0.7.RELEASE</version>
+            <version>${thymeleaf.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring4</artifactId>
-            <version>3.0.7.RELEASE</version>
+            <version>${thymeleaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-testing</artifactId>
+            <version>${hibernate.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.3.10.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -60,12 +73,13 @@
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <version>1.1.4</version>
+                <version>${kotlin.version}</version>
                 <configuration>
                     <compilerPlugins>
                         <plugin>spring</plugin>
+                        <plugin>jpa</plugin>
                     </compilerPlugins>
-                    <jvmTarget>1.8</jvmTarget>
+                    <jvmTarget>${java.version}</jvmTarget>
                 </configuration>
                 <executions>
                     <execution>
@@ -87,11 +101,24 @@
                     <dependency>
                         <groupId>org.jetbrains.kotlin</groupId>
                         <artifactId>kotlin-maven-allopen</artifactId>
-                        <version>1.1.4-3</version>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-noarg</artifactId>
+                        <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
             </plugin>
         </plugins>
     </build>
-    
+
+    <properties>
+        <hibernate.version>5.2.15.Final</hibernate.version>
+        <kotlin.version>1.2.30</kotlin.version>
+        <spring.version>4.3.10.RELEASE</spring.version>
+        <thymeleaf.version>3.0.7.RELEASE</thymeleaf.version>
+        <h2.version>1.4.196</h2.version>
+    </properties>
+
 </project>

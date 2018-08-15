@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>ejb-remote</artifactId>
+    <packaging>ejb</packaging>
 
     <parent>
         <groupId>com.baeldung.ejb</groupId>
         <artifactId>ejb</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <artifactId>ejb-remote</artifactId>
-    <packaging>ejb</packaging>
 
     <dependencies>
         <dependency>
@@ -20,7 +19,6 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
 
     <profiles>
         <!-- mvn clean package cargo:run -->
@@ -59,7 +57,7 @@
             </build>
         </profile>
 
-        <!--mvn clean install wildfly:deploy -Pwildfly-runtime-->
+        <!--mvn clean install wildfly:deploy -Pwildfly-runtime -->
         <profile>
             <id>wildfly-runtime</id>
             <activation>
@@ -70,26 +68,24 @@
                     <plugin>
                         <groupId>org.wildfly.plugins</groupId>
                         <artifactId>wildfly-maven-plugin</artifactId>
-                        <version>1.1.0.Alpha5</version>
+                        <version>${wildfly-maven-plugin.version}</version>
                         <configuration>
                             <hostname>127.0.0.1</hostname>
                             <port>9990</port>
                             <username>testUser</username>
                             <password>admin1234!</password>
-                            <filename>${build.finalName}.jar</filename>
+                            <filename>${project.build.finalName}.jar</filename>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
         </profile>
-
     </profiles>
 
     <properties>
         <javaee-api.version>7.0</javaee-api.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <wildfly-maven-plugin.version>1.1.0.Alpha5</wildfly-maven-plugin.version>
     </properties>
 
 </project>
-
-

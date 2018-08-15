@@ -1,8 +1,8 @@
 ## Influx SDK Tutorial Project
 
 ### Relevant Article:
-- [Introduction to using InfluxDB with Java](http://www.baeldung.com/using-influxdb-with-java/)
 - [Using InfluxDB with Java](http://www.baeldung.com/java-influxdb)
+
 
 ### Overview
 This Maven project contains the Java code for the article linked above.

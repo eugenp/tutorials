@@ -5,6 +5,7 @@
 - [Spring Remoting with Hessian and Burlap](http://www.baeldung.com/spring-remoting-hessian-burlap)
 - [Spring Remoting with AMQP](http://www.baeldung.com/spring-remoting-amqp)
 - [Spring Remoting with JMS](http://www.baeldung.com/spring-remoting-jms)
+- [Spring Remoting with RMI](http://www.baeldung.com/spring-remoting-rmi)
 
 ### Overview
 This Maven project contains the Java source code for various modules used in the Spring Remoting series of articles.

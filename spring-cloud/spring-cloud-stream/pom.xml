@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.baeldung</groupId>
     <artifactId>spring-cloud-stream</artifactId>
     <packaging>pom</packaging>
-
     <name>spring-cloud-stream</name>
 
     <parent>
@@ -20,11 +17,6 @@
         <module>spring-cloud-stream-rabbit</module>
     </modules>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -32,13 +24,11 @@
                 <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
                 <version>${spring-cloud-stream.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream</artifactId>
                 <version>${spring-cloud-stream.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-stream-test-support</artifactId>
@@ -48,24 +38,4 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot-maven-plugin.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 </project>

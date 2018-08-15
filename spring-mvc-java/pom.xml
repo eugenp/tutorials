@@ -7,76 +7,68 @@
     <name>spring-mvc-java</name>
 
     <parent>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
-        <!-- Spring -->
+        <!-- Spring Boot Dependencies -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-logging</groupId>
-                    <artifactId>commons-logging</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-            <version>${org.springframework.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-            <version>${org.springframework.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
         <!-- Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
 
         <!-- web -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-            <scope>runtime</scope>
         </dependency>
 
         <!-- AOP -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <version>${aspectj.version}</version>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
         </dependency>
 
         <!-- common -->
@@ -88,7 +80,6 @@
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
-            <version>${net.sourceforge.htmlunit}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -112,13 +103,11 @@
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-            <version>${jsonpath.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -131,11 +120,6 @@
 
         <!-- Validation -->
         <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
-        </dependency>
-        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
@@ -143,13 +127,27 @@
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
-            <version>2.2.4</version>
+            <version>${javax.el.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
-            <version>2.2.4</version>
+            <version>${javax.el.version}</version>
         </dependency>
+
+        <!-- Web socket to user example -->
+
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        
+        <!-- ROME for RSS -->
+		<dependency>
+			<groupId>com.rometools</groupId>
+			<artifactId>rome</artifactId>
+			<version>${rome.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -165,13 +163,11 @@
 
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>${maven-resources-plugin.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
@@ -201,38 +197,6 @@
     </build>
 
     <profiles>
-        <profile>
-            <id>integration</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/*IntegrationTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
 
         <profile>
             <id>live</id>
@@ -250,6 +214,7 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                                        <exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*LiveTest.java</include>
@@ -293,20 +258,14 @@
     </profiles>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
-        <thymeleaf.version>2.1.5.RELEASE</thymeleaf.version>
-        <jackson.version>2.8.5</jackson.version>
+        <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
 
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
 
         <!-- various -->
-        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
-        <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
-        <jstl.version>1.2</jstl.version>
+        <hibernate-validator.version>6.0.10.Final</hibernate-validator.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
@@ -317,7 +276,7 @@
         <!-- testing -->
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
-        <rest-assured.version>2.9.0</rest-assured.version>
+        <rest-assured.version>3.0.7</rest-assured.version>
         <net.sourceforge.htmlunit>2.23</net.sourceforge.htmlunit>
 
         <!-- maven plugins -->
@@ -330,6 +289,14 @@
 
         <!-- excel -->
         <poi.version>3.16-beta1</poi.version>
+
+        <!-- ROME for RSS -->
+        <rome.version>1.10.0</rome.version>
+
+        <javax.el.version>2.2.4</javax.el.version>
+		
+		<!-- Initial application class for Spring Boot -->        
+        <start-class>com.baeldung.app.Application</start-class>
     </properties>
 
 </project>

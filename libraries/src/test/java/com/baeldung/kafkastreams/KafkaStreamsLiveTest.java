@@ -22,7 +22,7 @@ public class KafkaStreamsLiveTest {
     @Test
     @Ignore("it needs to have kafka broker running on local")
     public void shouldTestKafkaStreams() throws InterruptedException {
-        //given
+        // given
         String inputTopic = "inputTopic";
 
         Properties streamsConfiguration = new Properties();
@@ -35,15 +35,12 @@ public class KafkaStreamsLiveTest {
         // Use a temporary directory for storing state, which will be automatically removed after the test.
         streamsConfiguration.put(StreamsConfig.STATE_DIR_CONFIG, TestUtils.tempDirectory().getAbsolutePath());
 
-        //when
+        // when
         KStreamBuilder builder = new KStreamBuilder();
         KStream<String, String> textLines = builder.stream(inputTopic);
         Pattern pattern = Pattern.compile("\\W+", Pattern.UNICODE_CHARACTER_CLASS);
 
-        KTable<String, Long> wordCounts = textLines
-                .flatMapValues(value -> Arrays.asList(pattern.split(value.toLowerCase())))
-                .groupBy((key, word) -> word)
-                .count();
+        KTable<String, Long> wordCounts = textLines.flatMapValues(value -> Arrays.asList(pattern.split(value.toLowerCase()))).groupBy((key, word) -> word).count();
 
         wordCounts.foreach((word, count) -> System.out.println("word: " + word + " -> " + count));
 
@@ -55,7 +52,7 @@ public class KafkaStreamsLiveTest {
         KafkaStreams streams = new KafkaStreams(builder, streamsConfiguration);
         streams.start();
 
-        //then
+        // then
         Thread.sleep(30000);
         streams.close();
     }

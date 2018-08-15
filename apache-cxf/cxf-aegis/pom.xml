@@ -2,14 +2,13 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>cxf-aegis</artifactId>
+
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>apache-cxf</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <properties>
-        <cxf.version>3.1.8</cxf.version>
-    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -17,4 +16,5 @@
             <version>${cxf.version}</version>
         </dependency>
     </dependencies>
+
 </project>

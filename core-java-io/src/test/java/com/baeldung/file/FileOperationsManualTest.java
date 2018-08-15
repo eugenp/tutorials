@@ -3,7 +3,6 @@ package com.baeldung.file;
 import org.apache.commons.io.FileUtils;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.BufferedReader;

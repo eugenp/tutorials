@@ -10,27 +10,21 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>        
+        <artifactId>parent-spring-4</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-spring-4</relativePath>
     </parent>
 
     <dependencies>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -79,21 +73,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${springframework.version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
 
     </dependencies>
-
-    <properties>
-        <springframework.version>4.3.4.RELEASE</springframework.version>
-        <log4j.version>1.2.17</log4j.version>
-        <log4j2.version>2.7</log4j2.version>
-        <disruptor.version>3.3.6</disruptor.version>
-        <jbosslogging.version>3.3.0.Final</jbosslogging.version>
-        <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jackson.library>2.8.5</jackson.library>
-    </properties>
 
     <build>
         <pluginManagement>
@@ -101,7 +85,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>${maven-war-plugin.version}</version>
                     <configuration>
                         <warSourceDirectory>src/main/webapp</warSourceDirectory>
                         <warName>logging-service</warName>
@@ -112,4 +96,15 @@
         </pluginManagement>
         <finalName>logging-service</finalName>
     </build>
+
+    <properties>
+        <log4j.version>1.2.17</log4j.version>
+        <log4j2.version>2.7</log4j2.version>
+        <disruptor.version>3.3.6</disruptor.version>
+        <jbosslogging.version>3.3.0.Final</jbosslogging.version>
+        <javax.servlet.version>3.1.0</javax.servlet.version>
+        <jackson.library>2.8.5</jackson.library>
+        <maven-war-plugin.version>2.4</maven-war-plugin.version>
+    </properties>
+
 </project>

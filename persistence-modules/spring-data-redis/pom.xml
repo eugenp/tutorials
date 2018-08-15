@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-redis</artifactId>
@@ -9,19 +8,10 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>        
+        <artifactId>parent-spring-5</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-spring-5</relativePath>
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.7.RELEASE</spring.version>
-        <spring-data-redis>1.8.1.RELEASE</spring-data-redis>
-        <cglib.version>3.2.4</cglib.version>
-        <jedis.version>2.9.0</jedis.version>
-        <nosqlunit.version>0.10.0</nosqlunit.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -73,6 +63,26 @@
             <artifactId>nosqlunit-redis</artifactId>
             <version>${nosqlunit.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>${spring-data-commons.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kstyrc</groupId>
+            <artifactId>embedded-redis</artifactId>
+            <version>${embedded-redis.version}</version>
+        </dependency>
     </dependencies>
+
+    <properties>
+        <spring-data-redis>2.0.3.RELEASE</spring-data-redis>
+        <cglib.version>3.2.4</cglib.version>
+        <jedis.version>2.9.0</jedis.version>
+        <nosqlunit.version>0.10.0</nosqlunit.version>
+        <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
+        <embedded-redis.version>0.6</embedded-redis.version>
+    </properties>
 
 </project>

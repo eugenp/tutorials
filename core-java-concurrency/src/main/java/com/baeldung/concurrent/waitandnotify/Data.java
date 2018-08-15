@@ -1,7 +1,5 @@
 package com.baeldung.concurrent.waitandnotify;
 
-import org.slf4j.Logger;
-
 public class Data {
     private String packet;
     
@@ -14,6 +12,7 @@ public class Data {
             try {
                 wait();
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); 
                 System.out.println("Thread Interrupted");
             }
         }
@@ -28,6 +27,7 @@ public class Data {
             try { 
                 wait();
             } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); 
                 System.out.println("Thread Interrupted");
             }
         }

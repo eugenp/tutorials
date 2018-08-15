@@ -1,24 +1,15 @@
 package org.baeldung.boot.config;
 
-import org.baeldung.boot.converter.GenericBigDecimalConverter;
 import org.baeldung.boot.converter.StringToEmployeeConverter;
 import org.baeldung.boot.converter.StringToEnumConverterFactory;
-import org.baeldung.boot.web.resolver.HeaderVersionArgumentResolver;
+import org.baeldung.boot.converter.GenericBigDecimalConverter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.web.method.support.HandlerMethodArgumentResolver;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
-import java.util.List;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig extends WebMvcConfigurerAdapter {
-
-    @Override
-    public void addArgumentResolvers(final List<HandlerMethodArgumentResolver> argumentResolvers) {
-        argumentResolvers.add(new HeaderVersionArgumentResolver());
-    }
-
+public class WebConfig implements WebMvcConfigurer {
+	 
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addConverter(new StringToEmployeeConverter());
@@ -26,3 +17,4 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         registry.addConverter(new GenericBigDecimalConverter());
     }
 }
+

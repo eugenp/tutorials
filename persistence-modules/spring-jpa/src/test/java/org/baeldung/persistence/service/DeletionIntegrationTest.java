@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -23,6 +24,7 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { PersistenceJPAConfigDeletion.class }, loader = AnnotationConfigContextLoader.class)
+@DirtiesContext
 public class DeletionIntegrationTest {
 
     @PersistenceContext
@@ -117,9 +119,7 @@ public class DeletionIntegrationTest {
         entityManager.persist(foo);
         flushAndClear();
 
-        entityManager.createQuery("delete from Foo where id = :id")
-                .setParameter("id", foo.getId())
-                .executeUpdate();
+        entityManager.createQuery("delete from Foo where id = :id").setParameter("id", foo.getId()).executeUpdate();
 
         assertThat(entityManager.find(Foo.class, foo.getId()), nullValue());
     }
@@ -131,9 +131,7 @@ public class DeletionIntegrationTest {
         entityManager.persist(foo);
         flushAndClear();
 
-        entityManager.createNativeQuery("delete from FOO where ID = :id")
-                .setParameter("id", foo.getId())
-                .executeUpdate();
+        entityManager.createNativeQuery("delete from FOO where ID = :id").setParameter("id", foo.getId()).executeUpdate();
 
         assertThat(entityManager.find(Foo.class, foo.getId()), nullValue());
     }

@@ -15,18 +15,17 @@ public class QueryController {
     private static int REQUEST_COUNTER = 0;
 
     @GetMapping("/reqcount")
-    public int getReqCount(){
+    public int getReqCount() {
         return REQUEST_COUNTER;
     }
 
     @GetMapping("/{code}")
-    public String getStockPrice(@PathVariable String code){
+    public String getStockPrice(@PathVariable String code) {
         REQUEST_COUNTER++;
-        if("BTC".equalsIgnoreCase(code))
+        if ("BTC".equalsIgnoreCase(code))
             return "10000";
-        else return "N/A";
+        else
+            return "N/A";
     }
-
-
 
 }

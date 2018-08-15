@@ -11,10 +11,7 @@ public class CustomExceptionHandler extends ExceptionHandler {
     @Override
     public boolean handle(Throwable throwable) {
 
-        if (throwable.getClass()
-            .isAssignableFrom(RuntimeException.class)
-            || throwable.getClass()
-                .isAssignableFrom(Error.class)) {
+        if (throwable.getClass().isAssignableFrom(RuntimeException.class) || throwable.getClass().isAssignableFrom(Error.class)) {
             return false;
         } else {
             logger.error("Caught Exception ", throwable);

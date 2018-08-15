@@ -2,7 +2,8 @@ package com.baeldung.spring.form;
 
 import java.util.List;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Person {

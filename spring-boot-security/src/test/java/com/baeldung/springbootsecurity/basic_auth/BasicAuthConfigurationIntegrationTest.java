@@ -37,6 +37,7 @@ public class BasicAuthConfigurationIntegrationTest {
     @Test
     public void whenLoggedUserRequestsHomePage_ThenSuccess() throws IllegalStateException, IOException {
         ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
+
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertTrue(response
           .getBody()
@@ -47,6 +48,7 @@ public class BasicAuthConfigurationIntegrationTest {
     public void whenUserWithWrongCredentialsRequestsHomePage_ThenUnauthorizedPage() throws IllegalStateException, IOException {
         restTemplate = new TestRestTemplate("user", "wrongpassword");
         ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
+
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         assertTrue(response
           .getBody()

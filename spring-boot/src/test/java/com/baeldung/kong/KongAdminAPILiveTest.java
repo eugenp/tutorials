@@ -39,7 +39,8 @@ public class KongAdminAPILiveTest {
         System.setProperty("sun.net.http.allowRestrictedHeaders", "true");
     }
 
-    @Autowired TestRestTemplate restTemplate;
+    @Autowired
+    TestRestTemplate restTemplate;
 
     @Test
     public void givenEndpoint_whenQueryStockPrice_thenPriceCorrect() {

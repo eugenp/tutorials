@@ -1,6 +1,8 @@
 package com.baeldung.java8;
 
+import com.baeldung.java_8_features.Car;
 import com.baeldung.java_8_features.Person;
+
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -44,4 +46,29 @@ public class Java8MaxMinUnitTest {
         assertEquals("Should be Alex", alex, minByAge);
     }
 
+    @Test
+    public void whenArrayIsOfIntegerThenMinUsesIntegerComparator() {
+        int[] integers = new int[] { 20, 98, 12, 7, 35 };
+
+        int min = Arrays.stream(integers)
+            .min()
+            .getAsInt();
+
+        assertEquals(7, min);
+    }
+
+    @Test
+    public void whenArrayIsOfCustomTypeThenMaxUsesCustomComparator() {
+        final Car porsche = new Car("Porsche 959", 319);
+        final Car ferrari = new Car("Ferrari 288 GTO", 303);
+        final Car bugatti = new Car("Bugatti Veyron 16.4 Super Sport", 415);
+        final Car mcLaren = new Car("McLaren F1", 355);
+        final Car[] fastCars = { porsche, ferrari, bugatti, mcLaren };
+
+        final Car maxBySpeed = Arrays.stream(fastCars)
+            .max(Comparator.comparing(Car::getTopSpeed))
+            .orElseThrow(NoSuchElementException::new);
+
+        assertEquals(bugatti, maxBySpeed);
+    }
 }

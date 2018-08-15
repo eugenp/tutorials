@@ -15,16 +15,13 @@
     </parent>
 
     <dependencies>
-
         <!-- test scoped -->
-
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -41,7 +38,6 @@
                 <filtering>true</filtering>
             </testResource>
         </testResources>
-
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -60,13 +56,11 @@
                 </executions>
             </plugin>
         </plugins>
-
     </build>
 
     <properties>
         <!-- testing -->
         <testng.version>6.10</testng.version>
     </properties>
-
 
 </project>

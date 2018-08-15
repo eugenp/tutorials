@@ -35,7 +35,7 @@ public class LookupFSJNDIIntegrationTest {
 
     @Test
     public void givenInitialContext_whenLokupFileExists_thenSuccess() {
-            File file = fsjndi.getFile(FILENAME);
-         assertNotNull("File exists", file);
+        File file = fsjndi.getFile(FILENAME);
+        assertNotNull("File exists", file);
     }
 }
