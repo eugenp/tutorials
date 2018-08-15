@@ -5,8 +5,8 @@ public class BenchmarkRunner {
     public static void main(String[] args) throws Exception {
         new IntPrimitiveLookup().run();
         new IntegerWrapperLookup().run();
-        new FloatWrapperLookup().run();
         new FloatPrimitiveLookup().run();
+        new FloatWrapperLookup().run();
         new DoublePrimitiveLookup().run();
         new DoubleWrapperLookup().run();
         new ShortPrimitiveLookup().run();
@@ -17,5 +17,7 @@ public class BenchmarkRunner {
         new CharacterWrapperLookup().run();
         new BytePrimitiveLookup().run();
         new ByteWrapperLookup().run();
+        new LongPrimitiveLookup().run();
+        new LongWrapperLookup().run();
     }
 }
