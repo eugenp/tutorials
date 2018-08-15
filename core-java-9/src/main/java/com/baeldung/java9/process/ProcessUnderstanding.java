@@ -83,7 +83,7 @@ public class ProcessUnderstanding {
         }
     }
 
-    public static void outputStreamDemo() throws Exception {
+    public static void outputStreamDemo() throws IOException, InterruptedException {
         Process pr = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ChildProcess.java");
         final Process process = Runtime.getRuntime()
