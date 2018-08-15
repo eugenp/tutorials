@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.String;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.lang.Exception;
 import java.lang.Integer;
 
@@ -25,9 +26,9 @@ class ProcessUnderstandingTester {
         int value = Integer.parseInt(output.readLine());
         assertEquals(3, value);
     }
-    
+
     @Test
-    public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException{
+    public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
@@ -52,18 +53,18 @@ class ProcessUnderstandingTester {
         Process process = builder.start();
         assertNotNull(process);
     }
-    
+
     @Test
-    public void givenSubProcess_whenDestroying_thenProcessNotNull() throws IOException, InterruptedException{
+    public void givenSubProcess_whenDestroying_thenProcessNotNull() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
         process.destroy();
         assertNotNull(process);
     }
-    
+
     @Test
-    public void givenSubProcess_whenAlive_thenDestroyForcibly() throws IOException, InterruptedException{
+    public void givenSubProcess_whenAlive_thenDestroyForcibly() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
@@ -73,9 +74,9 @@ class ProcessUnderstandingTester {
         }
         assertNotNull(process);
     }
-    
+
     @Test
-    public void givenSubProcess_checkAlive() throws IOException, InterruptedException{
+    public void givenSubProcess_checkAlive() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
@@ -90,23 +91,30 @@ class ProcessUnderstandingTester {
         processHandle.destroy();
         assertNotNull(processHandle);
     }
-    
+
     @Test
-    public void givenSubProcess_whenCurrentThreadWaitsIndefinitelyuntilSubProcessEnds_thenProcessWaitForReturnsGrt0() throws IOException, InterruptedException{
+    public void givenSubProcess_whenCurrentThreadWaitsIndefinitelyuntilSubProcessEnds_thenProcessWaitForReturnsGrt0() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertThat(process.waitFor() >= 0);
     }
-    
+
+    @Test
+    public void givenSubProcess_whenCurrentThreadWaitsAndSubProcessNotTerminated_thenProcessWaitForReturnsFalse() throws IOException, InterruptedException {
+        ProcessBuilder builder = new ProcessBuilder("notepad.exe");
+        Process process = builder.start();
+        assertFalse(process.waitFor(1, TimeUnit.SECONDS));
+    }
+
     @Test
     public void givenSubProcess_whenCurrentThreadWillNotWaitIndefinitelyforSubProcessToEnd_thenProcessExitValueReturnsGrt0() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertThat(process.exitValue() >= 0);
     }
-    
+
     @Test
-    public void givenRunningProcesses_whenFilterOnProcessIdRange_thenGetSelectedProcessPid(){
+    public void givenRunningProcesses_whenFilterOnProcessIdRange_thenGetSelectedProcessPid() {
         assertThat(((int) ProcessHandle.allProcesses()
             .filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000))
             .count()) > 0);
