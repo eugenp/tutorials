@@ -73,6 +73,15 @@ class ProcessUnderstandingTester {
         }
         assertNotNull(process);
     }
+    
+    @Test
+    public void givenSubProcess_checkAlive() throws IOException, InterruptedException{
+        ProcessBuilder builder = new ProcessBuilder("notepad.exe");
+        Process process = builder.start();
+        Thread.sleep(10000);
+        process.destroy();
+        assertTrue(process.isAlive());
+    }
 
     @Test
     public void givenProcessNotCreated_fromWithinJavaApplicationDestroying_thenProcessNotNull() {
