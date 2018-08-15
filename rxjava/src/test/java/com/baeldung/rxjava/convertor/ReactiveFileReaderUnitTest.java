@@ -19,8 +19,8 @@ public class ReactiveFileReaderUnitTest {
     private ReactiveFileReader reader = new ReactiveFileReader("test.txt");
 
     @Test
-    public void whenReadFileInSynchronous_thenAllLinesAreReceived() {
-        Flowable<String> flowable = reader.readFileInSync();
+    public void givenSyncFileReader_whenConvertByGenerate_thenAllLinesAreReceived() {
+        Flowable<String> flowable = reader.readFileConvertSyncToObservablesByGenerate();
 
         TestSubscriber<String> testSubscriber = flowable.observeOn(Schedulers.computation())
             .test();
@@ -37,8 +37,26 @@ public class ReactiveFileReaderUnitTest {
     }
 
     @Test
-    public void whenReadFileInAsynchronous_thenAllLinesAreReceived() {
-        Flowable<String> flowable = reader.readFileInAsync();
+    public void givenSyncFileReader_whenConvertFromIterable_thenAllLinesAreReceived() {
+        Flowable<String> flowable = reader.readFileConvertSyncToObservablesFromIterable();
+
+        TestSubscriber<String> testSubscriber = flowable.observeOn(Schedulers.computation())
+            .test();
+
+        testSubscriber.awaitTerminalEvent();
+
+        List<String> receivedStrings = testSubscriber.getEvents()
+            .get(0)
+            .stream()
+            .map(v -> v.toString())
+            .collect(Collectors.toList());
+
+        assertEquals(testList, receivedStrings);
+    }
+
+    @Test
+    public void givenAsyncFileReader_whenConvertByCreate_thenAllLinesAreReceived() {
+        Flowable<String> flowable = reader.readFileConvertAsyncToObservablesByCreate();
 
         TestSubscriber<String> testSubscriber = flowable.observeOn(Schedulers.computation())
             .test();
@@ -55,4 +73,25 @@ public class ReactiveFileReaderUnitTest {
 
         assertEquals(testList, receivedStringList);
     }
+
+    @Test
+    public void givenAsyncFileReader_whenConvertFromCallable_thenAllLinesAreReceived() {
+        Flowable<String> flowable = reader.readFileConvertAsyncToObservablesFromCallable();
+
+        TestSubscriber<String> testSubscriber = flowable.observeOn(Schedulers.computation())
+            .test();
+
+        testSubscriber.awaitTerminalEvent();
+
+        String receivedString = testSubscriber.getEvents()
+            .get(0)
+            .stream()
+            .map(v -> v.toString())
+            .reduce("", String::concat);
+
+        List<String> receivedStringList = Arrays.asList(receivedString.split("\\r?\\n"));
+
+        assertEquals(testList, receivedStringList);
+    }
+
 }

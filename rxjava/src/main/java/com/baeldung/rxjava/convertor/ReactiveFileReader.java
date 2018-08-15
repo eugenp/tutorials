@@ -2,32 +2,37 @@ package com.baeldung.rxjava.convertor;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;
 import java.nio.channels.CompletionHandler;
+import java.util.concurrent.Callable;
+import java.util.concurrent.Future;
 
-import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
 import io.reactivex.Single;
 
 public class ReactiveFileReader {
 
-    private String filePath;
+    private File file;
+
+    public File getFile() {
+        return file;
+    }
 
     public ReactiveFileReader(String fileName) {
         super();
-        this.filePath = ReactiveFileReader.class.getClassLoader()
+        this.file = new File(ReactiveFileReader.class.getClassLoader()
             .getResource(fileName)
-            .getFile();
+            .getFile());
         ;
     }
 
-    public Flowable<String> readFileInSync() {
+    public Flowable<String> readFileConvertSyncToObservablesByGenerate() {
 
-        return Flowable.generate(() -> new BufferedReader(new FileReader(filePath)), (reader, emitter) -> {
+        return Flowable.generate(() -> new BufferedReader(new FileReader(file)), (reader, emitter) -> {
             final String line = reader.readLine();
             if (line != null) {
                 emitter.onNext(line);
@@ -37,8 +42,21 @@ public class ReactiveFileReader {
         }, reader -> reader.close());
     }
 
-    public Flowable<String> readFileInAsync() {
-        File file = new File(filePath);
+    public Flowable<String> readFileConvertSyncToObservablesFromIterable() {
+
+        return Flowable.fromIterable(() -> {
+            BufferedReader reader = null;
+            try {
+                reader = new BufferedReader(new FileReader(file));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            return reader.lines()
+                .iterator();
+        });
+    }
+
+    public Flowable<String> readFileConvertAsyncToObservablesByCreate() {
         return Single.<String> create(emitter -> {
             AsynchronousFileChannel channel = AsynchronousFileChannel.open(file.toPath());
             ByteBuffer buffer = ByteBuffer.allocate((int) file.length());
@@ -71,6 +89,25 @@ public class ReactiveFileReader {
             });
         })
             .toFlowable();
+    }
+
+    public Flowable<String> readFileConvertAsyncToObservablesFromCallable() {
+        return Flowable.fromCallable(new Callable<String>() {
+
+            @Override
+            public String call() throws Exception {
+                AsynchronousFileChannel channel = AsynchronousFileChannel.open(file.toPath());
+                ByteBuffer buffer = ByteBuffer.allocate((int) file.length());
+                Future<Integer> operation = channel.read(buffer, 0);
+
+                operation.get();
+
+                String content = new String(buffer.array()).trim();
+                buffer.clear();
+                return content;
+            }
+
+        });
     }
 
 }
