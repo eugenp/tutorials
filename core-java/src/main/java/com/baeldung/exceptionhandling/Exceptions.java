@@ -25,11 +25,7 @@ public class Exceptions {
     }
 
     public List<Player> loadAllPlayers(String playersFile) throws IOException{
-        try {
-            throw new IOException();
-        } catch(IOException ex) {
-            throw new IllegalStateException();
-        }
+        throw new IOException();
     }
 
     public int getPlayerScoreThrows(String playerFile) throws FileNotFoundException {		 
@@ -163,14 +159,8 @@ public class Exceptions {
         }
     }
 
-    public void throwAsGotoAntiPattern() {
-        try {
-            // bunch of code
-            throw new MyException();
-            // second bunch of code
-        } catch ( MyException e ) {
-            // third bunch of code
-        }
+    public void throwAsGotoAntiPattern() throws MyException {
+    	throw new MyException();
     }
 
     public int getPlayerScoreSwallowingExceptionAntiPattern(String playerFile) {
