@@ -188,6 +188,7 @@
         <module>spring-integration</module>
         <module>spring-jenkins-pipeline</module>
         <module>spring-jersey</module>
+        <module>jersey-client-rx</module>
         <module>jmeter</module>
         <module>spring-jms</module>
         <module>spring-jooq</module>
