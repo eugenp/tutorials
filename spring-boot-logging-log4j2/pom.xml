@@ -10,10 +10,10 @@
     <description>Demo project for Spring Boot Logging with Log4J2</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <artifactId>parent-boot-2</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
