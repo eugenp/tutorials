@@ -3,11 +3,13 @@ package com.baeldung.java9.process;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
 import java.util.Optional;
 
 public class ProcessUnderstanding {
-    
-    public static int compileAndRunJavaProgram() throws IOException  {
+
+    public static int compileAndRunJavaProgram() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()
@@ -17,7 +19,7 @@ public class ProcessUnderstanding {
         return value;
     }
 
-    public static String getErrorStreamExample() throws IOException{
+    public static String getErrorStreamExample() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
@@ -25,13 +27,15 @@ public class ProcessUnderstanding {
         return errorString;
     }
 
-    public static void creatingNewProcess() throws IOException  {
+    public static void creatingNewProcess() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
     }
 
-    public static int filterProcessWithStreamsInSpecificRangeReturnCount()  {
-        return (int) ProcessHandle.allProcesses().filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000)).count();        
+    public static int filterProcessWithStreamsInSpecificRangeReturnCount() {
+        return (int) ProcessHandle.allProcesses()
+            .filter(ph -> (ph.pid() > 10000 && ph.pid() < 50000))
+            .count();
     }
 
     public static void destroyingProcessCreatedBySameProcess() throws IOException, InterruptedException {
@@ -55,21 +59,21 @@ public class ProcessUnderstanding {
         return process.waitFor();
     }
 
-    public static int exitValueExample() throws IOException  {
+    public static int exitValueExample() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         process.destroy();
         return process.exitValue();
     }
 
-    public static void destroyExample() throws IOException , InterruptedException{
+    public static void destroyExample() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
         process.destroy();
     }
 
-    public static void destroyForciblyExample() throws IOException , InterruptedException {
+    public static void destroyForciblyExample() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
@@ -77,6 +81,28 @@ public class ProcessUnderstanding {
         if (process.isAlive()) {
             process.destroyForcibly();
         }
+    }
+
+    public static void outputStreamDemo() throws Exception {
+        Process pr = Runtime.getRuntime()
+            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ChildProcess.java");
+        final Process process = Runtime.getRuntime()
+            .exec("java -cp  src/main/java com.baeldung.java9.process.ChildProcess");
+        try (Writer w = new OutputStreamWriter(process.getOutputStream(), "UTF-8")) {
+            w.write("send to child\n");
+        }
+        new Thread(() -> {
+            try {
+                int c;
+                while ((c = process.getInputStream()
+                    .read()) != -1)
+                    System.out.write((byte) c);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+        // send to child
+        System.out.println("rc=" + process.waitFor());
     }
 
 }
