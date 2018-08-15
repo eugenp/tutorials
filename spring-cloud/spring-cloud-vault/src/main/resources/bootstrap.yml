@@ -1,0 +1,37 @@
+spring:
+  cloud:
+    vault:
+      uri: https://localhost:8200
+      connection-timeout: 5000
+      read-timeout: 15000
+      config:
+          order: -10
+          
+      token: b93d1b0d-15b5-f69e-d311-352a65fa7bc8
+      ssl:
+        trust-store: classpath:/vault.jks
+        trust-store-password: changeit
+      
+      generic:
+        enabled: true
+        application-name: fakebank
+        
+      kv:
+        enabled: true
+        backend: kv
+        application-name: fakebank
+        
+      database:
+        enabled: true
+        role: fakebank-accounts-rw
+#        username-property: spring.datasource.username
+#        password-property: spring.datasource.password
+        
+              
+        
+      
+      
+        
+      
+          
+          
