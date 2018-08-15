@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;
 import java.nio.channels.CompletionHandler;
-import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
 import io.reactivex.Flowable;
@@ -92,20 +91,17 @@ public class ReactiveFileReader {
     }
 
     public Flowable<String> readFileConvertAsyncToObservablesFromCallable() {
-        return Flowable.fromCallable(new Callable<String>() {
+        return Flowable.fromCallable(() -> {
 
-            @Override
-            public String call() throws Exception {
-                AsynchronousFileChannel channel = AsynchronousFileChannel.open(file.toPath());
-                ByteBuffer buffer = ByteBuffer.allocate((int) file.length());
-                Future<Integer> operation = channel.read(buffer, 0);
+            AsynchronousFileChannel channel = AsynchronousFileChannel.open(file.toPath());
+            ByteBuffer buffer = ByteBuffer.allocate((int) file.length());
+            Future<Integer> operation = channel.read(buffer, 0);
 
-                operation.get();
+            operation.get();
 
-                String content = new String(buffer.array()).trim();
-                buffer.clear();
-                return content;
-            }
+            String content = new String(buffer.array()).trim();
+            buffer.clear();
+            return content;
 
         });
     }
