@@ -58,5 +58,4 @@ public class HibernateInterceptorUnitTest {
         transaction.commit();
         session.close();
     }
-    
 }
