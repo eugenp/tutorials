@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class BinaryTreeTest {
+public class BinaryTreeUnitTest {
 
     @Test
     public void givenABinaryTree_WhenAddingElements_ThenTreeNotEmpty() {
@@ -68,6 +68,17 @@ public class BinaryTreeTest {
         bt.delete(99);
         assertFalse(bt.containsNode(99));
         assertEquals(initialSize, bt.getSize());
+    }
+
+    @Test
+    public void it_deletes_the_root() {
+        int value = 12;
+        BinaryTree bt = new BinaryTree();
+        bt.add(value);
+
+        assertTrue(bt.containsNode(value));
+        bt.delete(value);
+        assertFalse(bt.containsNode(value));
     }
 
     @Test

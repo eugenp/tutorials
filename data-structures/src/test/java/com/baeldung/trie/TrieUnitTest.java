@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class TrieTest {
+public class TrieUnitTest {
 
     @Test
     public void whenEmptyTrie_thenNoElements() {
