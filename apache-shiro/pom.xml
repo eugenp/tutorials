@@ -8,9 +8,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>${org.springframework.boot.spring-boot-starter-parent.version}</version>
+        <artifactId>parent-boot-1</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
@@ -57,10 +58,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -68,9 +69,10 @@
 
     <properties>
         <apache-shiro-core-version>1.4.0</apache-shiro-core-version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <java.version>1.8</java.version>
         <log4j-version>1.2.17</log4j-version>
         <slf4j-version>1.7.25</slf4j-version>
-        <org.springframework.boot.spring-boot-starter-parent.version>1.5.2.RELEASE</org.springframework.boot.spring-boot-starter-parent.version>
     </properties>
 
 </project>

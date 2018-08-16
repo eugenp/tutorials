@@ -23,4 +23,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Custom Property Editor](http://www.baeldung.com/spring-mvc-custom-property-editor)
 - [Using the Spring RestTemplate Interceptor](http://www.baeldung.com/spring-rest-template-interceptor)
 - [Configure a RestTemplate with RestTemplateBuilder](http://www.baeldung.com/spring-rest-template-builder)
-
+- [Get and Post Lists of Objects with RestTemplate](http://www.baeldung.com/spring-rest-template-list)
+- [How to Set a Header on a Response with Spring 5](http://www.baeldung.com/spring-response-header)
