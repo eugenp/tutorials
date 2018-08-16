@@ -43,7 +43,6 @@ public class HibernateCriteriaIntegrationTest {
         }
         session.close();
         assertArrayEquals(expectedChairCaseItems, av.likeCaseCriteria());
-
     }
 
     @Test
