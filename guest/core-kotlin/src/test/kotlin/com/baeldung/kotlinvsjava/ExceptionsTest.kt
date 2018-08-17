@@ -24,7 +24,7 @@ class ExceptionsTest {
     fun givenANullString_whenUsingElvisOperator_thenExceptionIsThrown() {
         val sampleString: String? = null
 
-        val length: Int = sampleString?.length ?: throw IllegalArgumentException("String must not be null")
+        sampleString?.length ?: throw IllegalArgumentException("String must not be null")
     }
 
     private fun funThrowingException(): Nothing {
