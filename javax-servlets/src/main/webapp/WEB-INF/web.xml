@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <context-param>
+        <param-name>province</param-name>
+        <param-value>Mendoza</param-value>
+    </context-param>
+    <context-param>
+        <param-name>country</param-name>
+        <param-value>Argentina</param-value>
+    </context-param>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error-404.html</location> <!-- /src/main/webapp/error-404.html-->
+    </error-page>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/errorHandler</location>
+    </error-page>
+</web-app>

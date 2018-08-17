@@ -1,15 +1,11 @@
-###The Course
+### The Course
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
 
 - [Quick Guide to @RestClientTest in Spring Boot](http://www.baeldung.com/restclienttest-in-spring-boot)
-- [Intro to Spring Boot Starters](http://www.baeldung.com/spring-boot-starters)
 - [A Guide to Spring in Eclipse STS](http://www.baeldung.com/eclipse-sts-spring)
-- [Introduction to WebJars](http://www.baeldung.com/maven-webjars)
-- [Create a Fat Jar App with Spring Boot](http://www.baeldung.com/deployable-fat-jar-spring-boot)
 - [The @ServletComponentScan Annotation in Spring Boot](http://www.baeldung.com/spring-servletcomponentscan)
-- [A Custom Data Binder in Spring MVC](http://www.baeldung.com/spring-mvc-custom-data-binder)
 - [Intro to Building an Application with Spring Boot](http://www.baeldung.com/intro-to-spring-boot)
 - [How to Register a Servlet in a Java Web Application](http://www.baeldung.com/register-servlet)
 - [Guide to Spring WebUtils and ServletRequestUtils](http://www.baeldung.com/spring-webutils-servletrequestutils)
@@ -20,10 +16,23 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Dynamic DTO Validation Config Retrieved from DB](http://www.baeldung.com/spring-dynamic-dto-validation)
 - [Custom Information in Spring Boot Info Endpoint](http://www.baeldung.com/spring-boot-info-actuator-custom)
 - [Using @JsonComponent in Spring Boot](http://www.baeldung.com/spring-boot-jsoncomponent)
-- [Create a Custom Auto-Configuration with Spring Boot](http://www.baeldung.com/spring-boot-custom-auto-configuration)
 - [Testing in Spring Boot](http://www.baeldung.com/spring-boot-testing)
 - [Guide to @ConfigurationProperties in Spring Boot](http://www.baeldung.com/configuration-properties-in-spring-boot)
 - [How to Get All Spring-Managed Beans?](http://www.baeldung.com/spring-show-all-beans)
 - [A Java Client for a WebSockets API](http://www.baeldung.com/websockets-api-java-spring-client)
 - [Spring Boot and Togglz Aspect](http://www.baeldung.com/spring-togglz)
-
+- [Getting Started with GraphQL and Spring Boot](http://www.baeldung.com/spring-graphql)
+- [Guide to Spring Type Conversions](http://www.baeldung.com/spring-type-conversions)
+- [Quick Guide on data.sql and schema.sql Files in Spring Boot](http://www.baeldung.com/spring-boot-data-sql-and-schema-sql)
+- [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)
+- [An Introduction to Kong](http://www.baeldung.com/kong)
+- [Spring Boot Customize Whitelabel Error Page](http://www.baeldung.com/spring-boot-custom-error-page)
+- [Spring Boot: Configuring a Main Class](http://www.baeldung.com/spring-boot-main-class)
+- [A Quick Intro to the SpringBootServletInitializer](http://www.baeldung.com/spring-boot-servlet-initializer)
+- [How to Define a Spring Boot Filter?](http://www.baeldung.com/spring-boot-add-filter)
+- [How to Change the Default Port in Spring Boot](http://www.baeldung.com/spring-boot-change-port)
+- [Spring Boot Exit Codes](http://www.baeldung.com/spring-boot-exit-codes)
+- [Guide to the Favicon in Spring Boot](http://www.baeldung.com/spring-boot-favicon)
+- [Spring Shutdown Callbacks](http://www.baeldung.com/spring-shutdown-callbacks)
+- [Spring Boot Integration Testing with Embedded MongoDB](http://www.baeldung.com/spring-boot-embedded-mongodb)
+- [Container Configuration in Spring Boot 2](http://www.baeldung.com/embeddedservletcontainercustomizer-configurableembeddedservletcontainer-spring-boot)

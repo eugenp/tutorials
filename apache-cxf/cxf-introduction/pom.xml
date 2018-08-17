@@ -11,32 +11,6 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <cxf.version>3.1.8</cxf.version>
-        <surefire.version>2.19.1</surefire.version>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <configuration>
-                    <mainClass>com.baeldung.cxf.introduction.Server</mainClass>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.cxf</groupId>
@@ -49,5 +23,17 @@
             <version>${cxf.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.baeldung.cxf.introduction.Server</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

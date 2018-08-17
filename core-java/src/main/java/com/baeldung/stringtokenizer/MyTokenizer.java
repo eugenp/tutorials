@@ -25,11 +25,7 @@ public class MyTokenizer {
     }
 
     public List<String> getTokensWithCollection(String str) {
-        return Collections
-          .list(new StringTokenizer(str, ","))
-          .stream()
-          .map(token -> (String) token)
-          .collect(Collectors.toList());
+        return Collections.list(new StringTokenizer(str, ",")).stream().map(token -> (String) token).collect(Collectors.toList());
     }
 
     public List<String> getTokensFromFile(String path, String delim) {

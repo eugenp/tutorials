@@ -12,7 +12,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.everit.json</groupId>
             <artifactId>org.everit.json.schema</artifactId>
@@ -24,17 +23,35 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20171018</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://search.maven.org/search?q=g:org.glassfish%20AND%20a:javax.json&core=gav  -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        
     </dependencies>
 
     <properties>
         <everit.json.schema.version>1.4.1</everit.json.schema.version>
         <fastjson.version>1.2.21</fastjson.version>
     </properties>
+
 </project>

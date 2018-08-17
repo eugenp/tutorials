@@ -1,8 +1,8 @@
 package org.baeldung.persistence.model;
 
 import io.katharsis.resource.annotations.JsonApiId;
+import io.katharsis.resource.annotations.JsonApiRelation;
 import io.katharsis.resource.annotations.JsonApiResource;
-import io.katharsis.resource.annotations.JsonApiToMany;
 
 import java.util.Set;
 
@@ -25,7 +25,7 @@ public class Role {
     private String name;
 
     @ManyToMany(mappedBy = "roles")
-    @JsonApiToMany
+    @JsonApiRelation
     private Set<User> users;
 
     //
@@ -66,23 +66,30 @@ public class Role {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         final Role other = (Role) obj;
         if (id == null) {
-            if (other.id != null)
+            if (other.id != null) {
                 return false;
-        } else if (!id.equals(other.id))
+            }
+        } else if (!id.equals(other.id)) {
             return false;
+        }
         if (name == null) {
-            if (other.name != null)
+            if (other.name != null) {
                 return false;
-        } else if (!name.equals(other.name))
+            }
+        } else if (!name.equals(other.name)) {
             return false;
+        }
         return true;
     }
 
