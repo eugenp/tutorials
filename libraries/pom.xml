@@ -171,6 +171,17 @@
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka-0.11_2.11</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-java_2.11</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
             <artifactId>flink-core</artifactId>
             <version>${flink.version}</version>
             <exclusions>
@@ -241,6 +252,11 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${jackson.version}</version>
         </dependency>
         <!-- JDO -->
@@ -947,7 +963,7 @@
 
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
-        <flink.version>1.2.0</flink.version>
+        <flink.version>1.5.0</flink.version>
         <jackson.version>2.8.5</jackson.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
