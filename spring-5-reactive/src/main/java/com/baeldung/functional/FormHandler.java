@@ -34,8 +34,7 @@ public class FormHandler {
 
     private AtomicLong extractData(List<DataBuffer> dataBuffers) {
         AtomicLong atomicLong = new AtomicLong(0);
-        dataBuffers.forEach(d -> atomicLong.addAndGet(d.asByteBuffer()
-            .array().length));
+        dataBuffers.forEach(d -> atomicLong.addAndGet(d.readableByteCount()));
         return atomicLong;
     }
 }

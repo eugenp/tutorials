@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-4</artifactId>
+        <artifactId>parent-spring-5</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-4</relativePath>
+        <relativePath>../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -56,12 +56,12 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${springsecurity.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${springsecurity.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
 
         <!-- Data -->
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-messaging</artifactId>
-            <version>${springsecurity.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
 
         <!-- Logging -->
@@ -176,8 +176,6 @@
     </build>
 
     <properties>
-        <springsecurity.version>4.2.6.RELEASE</springsecurity.version>
-        <jackson.version>2.8.7</jackson.version>
         <hibernate-core.version>5.2.10.Final</hibernate-core.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <h2database.version>1.4.196</h2database.version>
