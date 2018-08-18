@@ -1,12 +1,13 @@
 package com.baeldung.string;
 
-import com.google.common.base.Splitter;
-import org.apache.commons.lang.StringUtils;
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
+
+import com.google.common.base.Splitter;
 
 public class SplitUnitTest {
 

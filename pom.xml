@@ -342,6 +342,7 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java</module>
 				<module>core-java-collections</module>
@@ -891,6 +892,7 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
