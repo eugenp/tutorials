@@ -11,11 +11,11 @@ import com.baeldung.componentscan.ExampleBean;
 import com.baeldung.componentscan.springbootapp.flowers.Rose;
 
 @SpringBootApplication
-// @ComponentScan(basePackages = "com.baeldung.componentscan.springbootapp.animals")
-// @ComponentScan ( excludeFilters =// @ComponentScan.Filter(type=FilterType.REGEX,pattern="com\\.baeldung\\.componentscan\\.springbootapp\\.flowers\\..*"))
+//@ComponentScan(basePackages = "com.baeldung.componentscan.springbootapp.animals")
+//@ComponentScan ( excludeFilters = @ComponentScan.Filter(type=FilterType.REGEX,pattern="com\\.baeldung\\.componentscan\\.springbootapp\\.flowers\\..*"))
 //@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = Rose.class))
 
-public class SpringBootApp {
+public class SpringBootComponentScanApp {
     private static ApplicationContext applicationContext;
 
     @Bean
@@ -24,7 +24,7 @@ public class SpringBootApp {
     }
 
     public static void main(String[] args) {
-        applicationContext = SpringApplication.run(SpringBootApp.class, args);
+        applicationContext = SpringApplication.run(SpringBootComponentScanApp.class, args);
         checkBeansPresence("cat", "dog", "rose", "exampleBean", "springBootApp");
 
     }

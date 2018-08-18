@@ -18,8 +18,7 @@ import org.springframework.context.annotation.Configuration;
 //@ComponentScan(basePackages = "com.baeldung.componentscan.springapp")
 //@ComponentScan(basePackages = "com.baeldung.componentscan.springapp.animals")
 //@ComponentScan (excludeFilters = @ComponentScan.Filter(type=FilterType.REGEX,pattern="com\\.baeldung\\.componentscan\\.springapp\\.flowers\\..*"))
-//
-public class SpringApp {
+public class SpringComponentScanApp {
 
     private static ApplicationContext applicationContext;
 
@@ -29,7 +28,7 @@ public class SpringApp {
     }
 
     public static void main(String[] args) {
-        applicationContext = new AnnotationConfigApplicationContext(SpringApp.class);
+        applicationContext = new AnnotationConfigApplicationContext(SpringComponentScanApp.class);
 
         for (String beanName : applicationContext.getBeanDefinitionNames()) {
             System.out.println(beanName);
