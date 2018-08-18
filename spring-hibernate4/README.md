@@ -11,7 +11,6 @@
 - [Stored Procedures with Hibernate](http://www.baeldung.com/stored-procedures-with-hibernate-tutorial)
 - [Hibernate: save, persist, update, merge, saveOrUpdate](http://www.baeldung.com/hibernate-save-persist-update-merge-saveorupdate)
 - [Eager/Lazy Loading In Hibernate](http://www.baeldung.com/hibernate-lazy-eager-loading)
-- [Hibernate Criteria Queries](http://www.baeldung.com/hibernate-criteria-queries)
 - [Hibernate One to Many Annotation Tutorial](http://www.baeldung.com/hibernate-one-to-many)
 - [Guide to @Immutable Annotation in Hibernate](http://www.baeldung.com/hibernate-immutable)
 - [The DAO with Spring and Hibernate](http://www.baeldung.com/persistence-layer-with-spring-and-hibernate)
