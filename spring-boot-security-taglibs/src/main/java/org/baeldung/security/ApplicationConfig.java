@@ -1,40 +1,41 @@
 package org.baeldung.security;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @SpringBootApplication
 @Configuration
 @EnableWebSecurity
 public class ApplicationConfig extends WebSecurityConfigurerAdapter {
-    public static final String DEFAULT_PASSWORD = "password";
 
+    // Using withDefaultPasswordEncoder and InMemoryUserDetailsManager for demonstration and testing purpose
+    @Bean
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    public UserDetailsService userDetailsService() {
+        UserDetails user = User.withDefaultPasswordEncoder()
+            .username("testUser")
+            .password("password")
+            .roles("ADMIN")
+            .build();
 
-        auth.inMemoryAuthentication()
-            .passwordEncoder(encoder)
-            .withUser("testUser")
-            .password(encoder.encode(DEFAULT_PASSWORD))
-            .roles("ADMIN");
+        return new InMemoryUserDetailsManager(user);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf();
-
-        http.authorizeRequests()
-            .antMatchers("/**")
-            .permitAll()
-            .and()
-            .httpBasic();
+        // @formatter:off
+        http.csrf()
+                .and()
+            .authorizeRequests()
+                .anyRequest().permitAll().and().httpBasic();
+        // @formatter:on
     }
 }

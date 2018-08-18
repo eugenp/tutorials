@@ -1,5 +1,6 @@
 package org.baeldung.security;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -18,11 +19,13 @@ public class HomeControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void home() throws Exception {
-        String body = this.restTemplate.withBasicAuth("testUser", ApplicationConfig.DEFAULT_PASSWORD)
+    public void whenUserIsAuthenticatedThenAuthenticatedSectionsShowOnSite() throws Exception {
+        String body = this.restTemplate.withBasicAuth("testUser", "password")
             .getForEntity("/", String.class)
             .getBody();
-        System.out.println(body);
+
+        // test <sec:authorize access="isAnonymous()">
+        assertFalse(body.contains("ANONYMOUS"));
 
         // test <sec:authorize access="isAuthenticated()">
         assertTrue(body.contains("AUTHENTICATED"));
@@ -31,12 +34,24 @@ public class HomeControllerTest {
         assertTrue(body.contains("ADMIN ROLE"));
 
         // test <sec:authentication property="principal.username" />
-        assertTrue(body.contains("principal.username: testUser"));
+        assertTrue(body.contains("testUser"));
 
         // test <sec:csrfInput />
         assertTrue(body.contains("<input type=\"hidden\" name=\"_csrf\" value=\""));
 
         // test <sec:csrfMetaTags />
         assertTrue(body.contains("<meta name=\"_csrf_parameter\" content=\"_csrf\" />"));
+    }
+
+    @Test
+    public void whenUserIsNotAuthenticatedThenOnlyAnonymousSectionsShowOnSite() throws Exception {
+        String body = this.restTemplate.getForEntity("/", String.class)
+            .getBody();
+
+        // test <sec:authorize access="isAnonymous()">
+        assertTrue(body.contains("ANONYMOUS"));
+
+        // test <sec:authorize access="isAuthenticated()">
+        assertFalse(body.contains("AUTHENTICATED"));
     }
 }
