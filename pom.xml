@@ -442,6 +442,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -699,6 +700,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -980,6 +982,7 @@
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
