@@ -1,10 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>xmlunit-2</artifactId>
     <version>1.0</version>
-    <name>XMLUnit-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -18,7 +17,6 @@
             <artifactId>xmlunit-matchers</artifactId>
             <version>${xmlunit.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.xmlunit</groupId>
             <artifactId>xmlunit-core</artifactId>
@@ -28,7 +26,6 @@
     </dependencies>
 
     <properties>
-
         <!-- testing -->
         <xmlunit.version>2.3.0</xmlunit.version>
     </properties>

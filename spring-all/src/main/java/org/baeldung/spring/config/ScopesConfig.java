@@ -38,7 +38,7 @@ public class ScopesConfig {
     }
 
     @Bean
-    @Scope(value = WebApplicationContext.SCOPE_GLOBAL_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    @Scope(value = WebApplicationContext.SCOPE_APPLICATION, proxyMode = ScopedProxyMode.TARGET_CLASS)
     public HelloMessageGenerator globalSessionMessage() {
         return new HelloMessageGenerator();
     }

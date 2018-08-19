@@ -17,6 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class EventListenerIntegrationTest {
 
     private static final String CACHE_NAME = "MyCache";
+    private static final String CACHE_PROVIDER_NAME = "com.hazelcast.cache.HazelcastCachingProvider";
 
     private Cache<String, String> cache;
     private SimpleCacheEntryListener listener;
@@ -24,7 +25,7 @@ public class EventListenerIntegrationTest {
 
     @Before
     public void setup() {
-        CachingProvider cachingProvider = Caching.getCachingProvider();
+        CachingProvider cachingProvider = Caching.getCachingProvider(CACHE_PROVIDER_NAME);
         CacheManager cacheManager = cachingProvider.getCacheManager();
         MutableConfiguration<String, String> config = new MutableConfiguration<String, String>();
         this.cache = cacheManager.createCache("MyCache", config);
@@ -33,7 +34,7 @@ public class EventListenerIntegrationTest {
 
     @After
     public void tearDown() {
-        Caching.getCachingProvider().getCacheManager().destroyCache(CACHE_NAME);
+        Caching.getCachingProvider(CACHE_PROVIDER_NAME).getCacheManager().destroyCache(CACHE_NAME);
     }
 
     @Test
