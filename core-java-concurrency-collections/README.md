@@ -1,0 +1,16 @@
+=========
+
+## Core Java Concurrency Collections Examples
+
+### Relevant Articles: 
+- [Guide to java.util.concurrent.BlockingQueue](http://www.baeldung.com/java-blocking-queue)
+- [A Guide to ConcurrentMap](http://www.baeldung.com/java-concurrent-map)
+- [Guide to PriorityBlockingQueue in Java](http://www.baeldung.com/java-priority-blocking-queue)
+- [Avoiding the ConcurrentModificationException in Java](http://www.baeldung.com/java-concurrentmodificationexception)
+- [Custom Thread Pools In Java 8 Parallel Streams](http://www.baeldung.com/java-8-parallel-streams-custom-threadpool)
+- [Guide to java.util.concurrent.Locks](http://www.baeldung.com/java-concurrent-locks)
+- [Guide to DelayQueue](http://www.baeldung.com/java-delay-queue)
+- [A Guide to Java SynchronousQueue](http://www.baeldung.com/java-synchronous-queue)
+- [Guide to the Java TransferQueue](http://www.baeldung.com/java-transfer-queue)
+- [Guide to the ConcurrentSkipListMap](http://www.baeldung.com/java-concurrent-skip-list-map)
+- [Guide to CopyOnWriteArrayList](http://www.baeldung.com/java-copy-on-write-arraylist)
