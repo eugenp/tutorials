@@ -163,7 +163,7 @@ public class Exceptions {
         }
     }
 
-    public void throwAsGotoAntiPattern() {
+    public void throwAsGotoAntiPattern() throws MyException {
         try {
             // bunch of code
             throw new MyException();

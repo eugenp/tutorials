@@ -43,9 +43,15 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
+			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-core</artifactId>
@@ -69,6 +75,14 @@
 			<artifactId>mockito-core</artifactId>
 			<version>${mockito.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire-logger-api</artifactId>
+			<version>${maven-surefire-plugin.version}</version>
+			<!-- to get around bug https://github.com/junit-team/junit5/issues/801 -->
+			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
@@ -98,6 +112,23 @@
 						<exclude>**/*LiveTest.java</exclude>
 					</excludes>
 				</configuration>
+				<dependencies>
+	                <dependency>
+	                    <groupId>org.junit.platform</groupId>
+	                    <artifactId>junit-platform-surefire-provider</artifactId>
+	                    <version>${junit-platform.version}</version>
+	                </dependency>
+	                <dependency>
+	                    <groupId>org.junit.jupiter</groupId>
+	                    <artifactId>junit-jupiter-engine</artifactId>
+	                    <version>${junit-jupiter.version}</version>
+	                </dependency>
+					<dependency>
+						<groupId>org.junit.vintage</groupId>
+						<artifactId>junit-vintage-engine</artifactId>
+  	                    <version>${junit-jupiter.version}</version>
+					</dependency>
+            	</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -186,6 +217,10 @@
 						<phase>validate</phase>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
 			</plugin>
 		</plugins>
 		<extensions>
@@ -406,6 +441,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
 				<module>spring-activiti</module>
@@ -551,8 +587,6 @@
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
-				<module>testing-modules/junit-abstract</module>
-				<module>sse-jaxrs</module>
 				<module>spring-boot-angular-ecommerce</module>
 			</modules>
 
@@ -664,6 +698,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
 				<module>spring-activiti</module>
@@ -673,7 +708,6 @@
 				<module>spring-amqp-simple</module>
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
-				<module>testing-modules/junit-abstract</module>				
 				<module>jmh</module>
 
 				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
@@ -905,6 +939,7 @@
 				<module>json</module>
 				<module>jsoup</module>
 				<module>testing-modules/junit-5</module>
+				<module>testing-modules/junit5-migration</module>
 				<module>jws</module>
 				<module>libraries-data</module>
 				<module>linkrest</module>
@@ -943,6 +978,7 @@
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
 				<module>spring-activiti</module>
@@ -1079,7 +1115,6 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-				<module>testing-modules/junit-abstract</module>
 
                 <module>spring-hibernate4</module>
                 <module>xml</module>
@@ -1203,7 +1238,7 @@
 		<!-- <gib.enabled>false</gib.enabled> -->
 		<junit.version>4.12</junit.version>
 		<org.hamcrest.version>1.3</org.hamcrest.version>
-		<mockito.version>2.8.9</mockito.version>
+		<mockito.version>2.21.0</mockito.version>
 		<!-- logging -->
 		<org.slf4j.version>1.7.21</org.slf4j.version>
 		<logback.version>1.1.7</logback.version>
@@ -1222,7 +1257,7 @@
 		<maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
 		<commons-io.version>2.5</commons-io.version>
 		<commons-cli.version>1.4</commons-cli.version>
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
 		<jstl-api.version>1.2</jstl-api.version>
 		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
@@ -1230,7 +1265,8 @@
 		<jstl.version>1.2</jstl.version>
 		<jackson-databind.version>2.5.0</jackson-databind.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
-		<junit.jupiter.version>5.0.2</junit.jupiter.version>
+		<junit-platform.version>1.2.0</junit-platform.version>
+		<junit-jupiter.version>5.2.0</junit-jupiter.version>
 		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
 		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
 		<custom-pmd.version>0.0.1</custom-pmd.version>
