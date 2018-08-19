@@ -2,16 +2,12 @@ package com.baeldung.java9.rangedates;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 
 public class DatesCollectionIteration {
 
     public void iteratingRangeOfDatesJava7(Collection<Date> dates) {
-        Iterator<Date> iterator = dates.iterator();
 
-        while (iterator.hasNext()) {
-            Date date = iterator.next();
-
+        for (Date date : dates) {
             processDate(date);
         }
     }

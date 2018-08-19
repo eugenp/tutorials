@@ -24,17 +24,13 @@ public class RangeDatesIteration {
         while (current.before(end)) {
             processDate(current);
 
-            current = nextDate(current);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(current);
+
+            calendar.add(Calendar.DATE, 1);
+
+            current = calendar.getTime();
         }
-    }
-
-    private Date nextDate(Date current) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(current);
-
-        calendar.add(Calendar.DATE, 1);
-
-        return calendar.getTime();
     }
 
     private void processDate(LocalDate date) {
