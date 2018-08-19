@@ -8,6 +8,7 @@
 - [Introduction to Thread Pools in Java](http://www.baeldung.com/thread-pool-java-and-guava)
 - [Guide to java.util.concurrent.Future](http://www.baeldung.com/java-future)
 - [Guide to CountDownLatch in Java](http://www.baeldung.com/java-countdown-latch)
+- [Guide to java.util.concurrent.Locks](http://www.baeldung.com/java-concurrent-locks)
 - [An Introduction to ThreadLocal in Java](http://www.baeldung.com/java-threadlocal)
 - [Difference Between Wait and Sleep in Java](http://www.baeldung.com/java-wait-and-sleep)
 - [LongAdder and LongAccumulator in Java](http://www.baeldung.com/java-longadder-and-longaccumulator)

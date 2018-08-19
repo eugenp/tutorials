@@ -8,7 +8,6 @@
 - [Guide to PriorityBlockingQueue in Java](http://www.baeldung.com/java-priority-blocking-queue)
 - [Avoiding the ConcurrentModificationException in Java](http://www.baeldung.com/java-concurrentmodificationexception)
 - [Custom Thread Pools In Java 8 Parallel Streams](http://www.baeldung.com/java-8-parallel-streams-custom-threadpool)
-- [Guide to java.util.concurrent.Locks](http://www.baeldung.com/java-concurrent-locks)
 - [Guide to DelayQueue](http://www.baeldung.com/java-delay-queue)
 - [A Guide to Java SynchronousQueue](http://www.baeldung.com/java-synchronous-queue)
 - [Guide to the Java TransferQueue](http://www.baeldung.com/java-transfer-queue)
