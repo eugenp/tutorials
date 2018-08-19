@@ -14,9 +14,9 @@
         ANONYMOUS
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
-        AUTHENTICATED    
+        AUTHENTICATED Content 
         <sec:authorize access="hasRole('ADMIN')">
-            ADMIN ROLE
+            Content for users who have the "ADMIN" role.
         </sec:authorize>
         <h2>
             principal.username:
@@ -26,6 +26,9 @@
             <sec:csrfInput />
             Text Field: <br /> <input type="text" name="textField" />
         </form>
+        <sec:authorize url="/adminOnlyURL">
+            <a href="/adminOnlyURL">Go to Admin Only URL</a>
+        </sec:authorize>
     </sec:authorize>
 </body>
 </html>

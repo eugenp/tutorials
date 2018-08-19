@@ -35,6 +35,7 @@ public class ApplicationConfig extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .and()
             .authorizeRequests()
+                .antMatchers("/adminOnlyURL").hasRole("ADMIN")
                 .anyRequest().permitAll().and().httpBasic();
         // @formatter:on
     }

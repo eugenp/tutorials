@@ -31,11 +31,14 @@ public class HomeControllerTest {
         assertTrue(body.contains("AUTHENTICATED"));
 
         // test <sec:authorize access="hasRole('ADMIN')">
-        assertTrue(body.contains("ADMIN ROLE"));
+        assertTrue(body.contains("Content for users who have the \"ADMIN\" role."));
 
         // test <sec:authentication property="principal.username" />
         assertTrue(body.contains("testUser"));
 
+        // test <sec:authorize url="/adminOnlyURL">
+        assertTrue(body.contains("<a href=\"/adminOnlyURL\">"));
+        
         // test <sec:csrfInput />
         assertTrue(body.contains("<input type=\"hidden\" name=\"_csrf\" value=\""));
 
