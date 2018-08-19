@@ -28,7 +28,7 @@ public class HomeControllerTest {
         assertFalse(body.contains("ANONYMOUS"));
 
         // test <sec:authorize access="isAuthenticated()">
-        assertTrue(body.contains("AUTHENTICATED"));
+        assertTrue(body.contains("AUTHENTICATED Content"));
 
         // test <sec:authorize access="hasRole('ADMIN')">
         assertTrue(body.contains("Content for users who have the \"ADMIN\" role."));
@@ -52,9 +52,9 @@ public class HomeControllerTest {
             .getBody();
 
         // test <sec:authorize access="isAnonymous()">
-        assertTrue(body.contains("ANONYMOUS"));
+        assertTrue(body.contains("ANONYMOUS Content"));
 
         // test <sec:authorize access="isAuthenticated()">
-        assertFalse(body.contains("AUTHENTICATED"));
+        assertFalse(body.contains("AUTHENTICATED Content"));
     }
 }

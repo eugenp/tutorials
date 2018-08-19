@@ -11,7 +11,7 @@
 </head>
 <body>
     <sec:authorize access="isAnonymous()">
-        ANONYMOUS
+        ANONYMOUS Content
     </sec:authorize>
     <sec:authorize access="isAuthenticated()">
         AUTHENTICATED Content 
@@ -19,8 +19,7 @@
             Content for users who have the "ADMIN" role.
         </sec:authorize>
         <h2>
-            principal.username:
-            <sec:authentication property="principal.username" />
+            Welcome back, <sec:authentication property="name" />
         </h2>
         <form>
             <sec:csrfInput />
