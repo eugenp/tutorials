@@ -16,7 +16,10 @@ import org.slf4j.LoggerFactory;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+
+import java.util.List;
 
 /**
  * Created by madhumita.g on 01-08-2018.
@@ -66,20 +69,18 @@ public class AnimalUnitTest {
         int testValue = 3;
         animal.makeNoise(testValue);
 
-        verify(mockAppender).doAppend(captorLoggingEvent.capture());
+        verify(mockAppender,times(3)).doAppend(captorLoggingEvent.capture());
 
-        final LoggingEvent loggingEvent = captorLoggingEvent.getValue();
+        final List<LoggingEvent> loggingEvents = captorLoggingEvent.getAllValues();
 
-        while (testValue != 0) {
+        for(LoggingEvent loggingEvent : loggingEvents)
+        {
             assertThat(loggingEvent.getLevel(), is(Level.INFO));
 
             assertThat(loggingEvent.getFormattedMessage(),
-                    is("generic animal noise countdown 3\n"
-                            + "generic animal noise countdown 2\n"
-                            + "generic animal noise countdown 1\n"));
+                    is("generic animal noise countdown "+testValue));
 
-            testValue-=1;
-
+            testValue--;
         }
     }
 
