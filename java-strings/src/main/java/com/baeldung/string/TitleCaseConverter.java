@@ -1,11 +1,12 @@
 package com.baeldung.string;
 
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.BreakIterator;
-import org.apache.commons.lang.WordUtils;
-
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.text.WordUtils;
+
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.BreakIterator;
 
 public class TitleCaseConverter {
 

@@ -1,13 +1,14 @@
 package com.baeldung.java.countingChars;
 
-import com.google.common.base.CharMatcher;
-import org.apache.commons.lang.StringUtils;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.junit.Assert.assertEquals;
+import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
+
+import com.google.common.base.CharMatcher;
 
 
 /***
