@@ -21,7 +21,7 @@ public class ExceptionsUnitTest {
     @Test
     public void loadAllPlayers() {
         assertThatThrownBy(() -> exceptions.loadAllPlayers(""))
-            .isInstanceOf(IOException.class);
+            .isInstanceOf(IllegalStateException.class);
     }
 
     @Test
@@ -70,12 +70,6 @@ public class ExceptionsUnitTest {
     public void loadAllPlayersThrowable() {
         assertThatThrownBy(() -> exceptions.loadAllPlayersThrowable(""))
             .isInstanceOf(NullPointerException.class);
-    }
-    
-    @Test
-    public void throwAsGotoAntiPattern() {
-        assertThatThrownBy(() -> exceptions.throwAsGotoAntiPattern())
-            .isInstanceOf(MyException.class);
     }
     
     @Test

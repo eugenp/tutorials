@@ -4,6 +4,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,6 +47,16 @@ public class RemoveFirstElementUnitTest {
 
         assertThat(linkedList, hasSize(4));
         assertThat(linkedList, not(contains("cat")));
+    }
+
+    @Test
+    public void givenStringArray_whenRemovingFirstElement_thenArrayIsSmallerAndElementRemoved() {
+        String[] stringArray = {"foo", "bar", "baz"};
+
+        String[] modifiedArray = Arrays.copyOfRange(stringArray, 1, stringArray.length);
+
+        assertThat(modifiedArray.length, is(2));
+        assertThat(modifiedArray[0], is("bar"));
     }
 
 }
