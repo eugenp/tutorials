@@ -21,9 +21,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.server.reactive.HttpHandler;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -66,18 +63,6 @@ public class FunctionalSpringBootApplication {
         registrationBean.setLoadOnStartup(1);
         registrationBean.setAsyncSupported(true);
         return registrationBean;
-    }
-
-    @Configuration
-    @EnableWebSecurity
-    @Profile("!https")
-    static class SecurityConfig extends WebSecurityConfigurerAdapter {
-        @Override
-        protected void configure(final HttpSecurity http) throws Exception {
-            http.authorizeRequests()
-                .anyRequest()
-                .permitAll();
-        }
     }
 
     public static void main(String[] args) {
