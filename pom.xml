@@ -342,6 +342,7 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java</module>
 				<module>core-java-collections</module>
@@ -351,6 +352,7 @@
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
 				<module>couchbase</module>
 				<module>deltaspike</module>
 				<module>dozer</module>
@@ -441,6 +443,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -698,6 +701,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -891,6 +895,7 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
@@ -978,6 +983,7 @@
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -1211,6 +1217,7 @@
                 <module>hibernate5</module>
                 <module>spring-data-elasticsearch</module>
                 <module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
             </modules>
 
         </profile>
