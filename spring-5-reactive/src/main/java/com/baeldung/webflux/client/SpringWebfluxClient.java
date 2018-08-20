@@ -1,7 +1,6 @@
 package com.baeldung.webflux.client;
 
-import static org.apache.logging.log4j.LogManager.getLogger;
-
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.reactive.ReactiveSecurityAutoConfiguration;
@@ -10,7 +9,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.client.WebClient;
 
-@SpringBootApplication(exclude = { ReactiveSecurityAutoConfiguration.class, ReactiveUserDetailsServiceAutoConfiguration.class })
+@SpringBootApplication(
+        exclude = { ReactiveSecurityAutoConfiguration.class, ReactiveUserDetailsServiceAutoConfiguration.class })
 public class SpringWebfluxClient {
 
     @Bean
@@ -19,7 +19,7 @@ public class SpringWebfluxClient {
                 .get().uri("/time")
                 .retrieve()
                 .bodyToFlux(Long.class)
-                .subscribe(value -> getLogger(this.getClass()).info("Received {}", value));
+                .subscribe(value -> LoggerFactory.getLogger(this.getClass()).info("Received {}", value));
     }
 
     public static void main(String[] args) {

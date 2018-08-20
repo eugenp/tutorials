@@ -17,7 +17,8 @@ import java.util.stream.Stream;
 
 import static org.springframework.http.MediaType.TEXT_EVENT_STREAM;
 
-@SpringBootApplication(exclude = { ReactiveSecurityAutoConfiguration.class, ReactiveUserDetailsServiceAutoConfiguration.class })
+@SpringBootApplication(
+        exclude = { ReactiveSecurityAutoConfiguration.class, ReactiveUserDetailsServiceAutoConfiguration.class })
 public class SpringWebfluxServer {
 
     private static final Duration ONE_SEC = Duration.ofSeconds(1);
