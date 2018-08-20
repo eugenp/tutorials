@@ -28,8 +28,8 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
         CriteriaQuery<Book> cq = cb.createQuery(Book.class);
 
         Root<Book> book = cq.from(Book.class);
-        List<Predicate> predicates  = new ArrayList<>();
-        
+        List<Predicate> predicates = new ArrayList<>();
+
         if (authorName != null) {
             predicates.add(cb.equal(book.get("author"), authorName));
         }
