@@ -10,7 +10,7 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 
 @Entity
-class Office {
+public class Office {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
