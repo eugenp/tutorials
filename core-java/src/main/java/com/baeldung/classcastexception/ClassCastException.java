@@ -8,32 +8,16 @@ public class ClassCastException {
 
 	public static void main(String[] args) {
 
-		List<ArrayList<Person>> personList = new ArrayList<ArrayList<Person>>();
+		List<ArrayList<String>> strList = new ArrayList<ArrayList<String>>();
 		// To correct the Exception at line #18, modify the line #11 code as:
 		// List<List<Person>> personList = new ArrayList <List<Person>>();
 		// Line #18 code as personList.add(Arrays.asList(personArray));
-		Person p1 = new Person(1, "John");
-		Person p2 = new Person(2, "Snow");
-		Person[] personArray = new Person[] { p1, p2 };
-		personList.add((ArrayList<Person>) Arrays.asList(personArray));
-		System.out.println("Personlist: " + personList);
+		String p1 = new String("John");
+		String p2 = new String("Snow");
+		String[] strArray = new String[] { p1, p2 };
+		strList.add((ArrayList<String>) Arrays.asList(strArray));
+		System.out.println("String list: " + strList);
 
-	}
-
-}
-
-class Person {
-	int id;
-	String name;
-
-	Person(int id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return "Person [id=" + id + ", name=" + name + "]";
 	}
 
 }
