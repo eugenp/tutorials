@@ -187,5 +187,4 @@
         <jmh-generator.version>1.19</jmh-generator.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
-
 </project>
