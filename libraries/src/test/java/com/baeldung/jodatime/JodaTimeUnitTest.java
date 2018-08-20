@@ -86,7 +86,6 @@ public class JodaTimeUnitTest {
         DateTimeUtils.setCurrentMillisFixed(currentTimestamp);
         LocalDateTime currentDateAndTime  = LocalDateTime.now();
 
-        assertEquals(currentTimestamp, currentDateAndTime.toDate().getTime());
         assertEquals(new DateTime(currentTimestamp), currentDateAndTime.toDateTime());
         assertEquals(new LocalDate(currentTimestamp), currentDateAndTime.toLocalDate());
         assertEquals(new LocalTime(currentTimestamp), currentDateAndTime.toLocalTime());
@@ -182,9 +181,6 @@ public class JodaTimeUnitTest {
 
         DateTime convertedDateTime = localDateTimeInChicago.toDateTime(DateTimeZone.forID("Europe/Bucharest"));
         assertEquals("2018-06-21T15:26:23.288+03:00", convertedDateTime.toString());
-
-        Date convertedDate = localDateTimeInChicago.toDate(TimeZone.getTimeZone("Europe/Bucharest"));
-        assertEquals("Thu Jun 21 15:26:23 EEST 2018", convertedDate.toString());
     }
 
 }

@@ -14,8 +14,12 @@
 
     <repositories>
         <repository>
-            <id>central</id>
+            <id>jcenter</id>
             <url>http://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>kotlin-ktor</id>
+            <url>https://dl.bintray.com/kotlin/ktor/</url>
         </repository>
     </repositories>
 
@@ -56,7 +60,6 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
             <version>${kotlin-reflect.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
@@ -103,6 +106,22 @@
             <artifactId>klaxon</artifactId>
             <version>${klaxon.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.ktor</groupId>
+            <artifactId>ktor-server-netty</artifactId>
+            <version>${ktor.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ktor</groupId>
+            <artifactId>ktor-gson</artifactId>
+            <version>${ktor.io.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -143,17 +162,17 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
                 <executions>
-                    <!-- Replacing default-compile as it is treated specially 
+                    <!-- Replacing default-compile as it is treated specially
                         by maven -->
                     <execution>
                         <id>default-compile</id>
                         <phase>none</phase>
                     </execution>
-                    <!-- Replacing default-testCompile as it is treated specially 
+                    <!-- Replacing default-testCompile as it is treated specially
                         by maven -->
                     <execution>
                         <id>default-testCompile</id>
@@ -205,24 +224,20 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin-maven-plugin.version>1.2.41</kotlin-maven-plugin.version>
-        <kotlin-test-junit.version>1.2.41</kotlin-test-junit.version>
-        <kotlin-stdlib.version>1.2.41</kotlin-stdlib.version>
-        <kotlin-reflect.version>1.2.41</kotlin-reflect.version>
+        <kotlin-maven-plugin.version>1.2.60</kotlin-maven-plugin.version>
+        <kotlin-test-junit.version>1.2.60</kotlin-test-junit.version>
+        <kotlin-stdlib.version>1.2.60</kotlin-stdlib.version>
+        <kotlin-reflect.version>1.2.60</kotlin-reflect.version>
         <kotlinx.version>0.22.5</kotlinx.version>
+        <ktor.io.version>0.9.2</ktor.io.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
         <kodein.version>4.1.0</kodein.version>
         <klaxon.version>3.0.4</klaxon.version>
-        <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <khttp.version>0.1.0</khttp.version>
         <commons-math3.version>3.6.1</commons-math3.version>
-        <junit.jupiter.version>5.2.0</junit.jupiter.version>
-        <junit.platform.version>1.2.0</junit.platform.version>
+        <junit.platform.version>1.1.1</junit.platform.version>
         <junit.vintage.version>5.2.0</junit.vintage.version>
-        <junit4.version>4.12</junit4.version>
         <assertj.version>3.10.0</assertj.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 </project>

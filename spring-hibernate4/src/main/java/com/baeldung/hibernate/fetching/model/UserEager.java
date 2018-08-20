@@ -16,7 +16,7 @@ public class UserEager implements Serializable {
     @Column(name = "USER_ID")
     private Long userId;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<OrderDetail> orderDetail = new HashSet();
 
     public UserEager() {
