@@ -24,20 +24,20 @@ public class HomeControllerTest {
             .getForEntity("/", String.class)
             .getBody();
 
-        // test <sec:authorize access="isAnonymous()">
-        assertFalse(body.contains("ANONYMOUS"));
+        // test <sec:authorize access="!isAuthenticated()">
+        assertFalse(body.contains("Login"));
 
         // test <sec:authorize access="isAuthenticated()">
-        assertTrue(body.contains("AUTHENTICATED Content"));
+        assertTrue(body.contains("Logout"));
 
         // test <sec:authorize access="hasRole('ADMIN')">
-        assertTrue(body.contains("Content for users who have the \"ADMIN\" role."));
+        assertTrue(body.contains("Manage Users"));
 
         // test <sec:authentication property="principal.username" />
         assertTrue(body.contains("testUser"));
 
         // test <sec:authorize url="/adminOnlyURL">
-        assertTrue(body.contains("<a href=\"/adminOnlyURL\">"));
+        assertTrue(body.contains("<a href=\"/userManagement\">"));
         
         // test <sec:csrfInput />
         assertTrue(body.contains("<input type=\"hidden\" name=\"_csrf\" value=\""));
@@ -51,10 +51,10 @@ public class HomeControllerTest {
         String body = this.restTemplate.getForEntity("/", String.class)
             .getBody();
 
-        // test <sec:authorize access="isAnonymous()">
-        assertTrue(body.contains("ANONYMOUS Content"));
+        // test <sec:authorize access="!isAuthenticated()">
+        assertTrue(body.contains("Login"));
 
         // test <sec:authorize access="isAuthenticated()">
-        assertFalse(body.contains("AUTHENTICATED Content"));
+        assertFalse(body.contains("Logout"));
     }
 }

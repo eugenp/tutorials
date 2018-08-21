@@ -9,24 +9,28 @@
 <sec:csrfMetaTags />
 <title>Home Page</title>
 </head>
-<body>
-    <sec:authorize access="isAnonymous()">
-        ANONYMOUS Content
+<body>    
+    <sec:authorize access="!isAuthenticated()">
+        Login
     </sec:authorize>
+    
     <sec:authorize access="isAuthenticated()">
-        AUTHENTICATED Content 
-        <sec:authorize access="hasRole('ADMIN')">
-            Content for users who have the "ADMIN" role.
-        </sec:authorize>
+        Logout
+    </sec:authorize>
+    
+    <sec:authorize access="isAuthenticated()">
         <h2>
             Welcome back, <sec:authentication property="name" />
-        </h2>
+        </h2>         
+        <sec:authorize access="hasRole('ADMIN')">
+            Manage Users
+        </sec:authorize>
         <form>
             <sec:csrfInput />
             Text Field: <br /> <input type="text" name="textField" />
         </form>
-        <sec:authorize url="/adminOnlyURL">
-            <a href="/adminOnlyURL">Go to Admin Only URL</a>
+        <sec:authorize url="/userManagement">
+            <a href="/userManagement">Manage Users</a>
         </sec:authorize>
     </sec:authorize>
 </body>
