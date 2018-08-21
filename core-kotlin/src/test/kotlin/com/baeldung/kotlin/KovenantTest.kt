@@ -5,12 +5,14 @@ import nl.komponents.kovenant.Kovenant.deferred
 import nl.komponents.kovenant.combine.and
 import nl.komponents.kovenant.combine.combine
 import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
 import java.io.IOException
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 class KovenantTest {
+    @Before
     fun setupTestMode() {
         Kovenant.testMode { error ->
             println("An unexpected error occurred")
@@ -46,16 +48,14 @@ class KovenantTest {
         def.resolve(1L)
         try {
             def.resolve(1L)
-            Assert.fail("Expected an IllegalStateException")
-        } catch (e: IllegalStateException) {
-            // Expected
+        } catch (e: AssertionError) {
+            // Expected.
+            // This is slightly unusual. The AssertionError comes from Assert.fail() from setupTestMode()
         }
     }
 
     @Test
     fun testSuccessfulTask() {
-        setupTestMode()
-
         val promise = task { 1L }
         Assert.assertTrue(promise.isDone())
         Assert.assertTrue(promise.isSuccess())
@@ -64,8 +64,6 @@ class KovenantTest {
 
     @Test
     fun testFailedTask() {
-        setupTestMode()
-
         val promise = task { throw RuntimeException() }
         Assert.assertTrue(promise.isDone())
         Assert.assertFalse(promise.isSuccess())
@@ -74,8 +72,6 @@ class KovenantTest {
 
     @Test
     fun testCallbacks() {
-        setupTestMode()
-
         val promise = task { 1L }
 
         promise.success {
@@ -125,7 +121,7 @@ class KovenantTest {
 
     @Test
     fun testAnySucceeds() {
-        val number = any(
+        val promise = any(
                 task {
                     TimeUnit.SECONDS.sleep(3)
                     1L
@@ -140,7 +136,9 @@ class KovenantTest {
                 }
         )
 
-        Assert.assertEquals(3L, number.get())
+        Assert.assertTrue(promise.isDone())
+        Assert.assertTrue(promise.isSuccess())
+        Assert.assertFalse(promise.isFailure())
     }
 
     @Test
@@ -148,7 +146,7 @@ class KovenantTest {
         val runtimeException = RuntimeException()
         val ioException = IOException()
         val illegalStateException = IllegalStateException()
-        val number = any(
+        val promise = any(
                 task {
                     TimeUnit.SECONDS.sleep(3)
                     throw runtimeException
@@ -163,7 +161,9 @@ class KovenantTest {
                 }
         )
 
-        Assert.assertEquals(listOf(runtimeException, ioException, illegalStateException), number.getError())
+        Assert.assertTrue(promise.isDone())
+        Assert.assertFalse(promise.isSuccess())
+        Assert.assertTrue(promise.isFailure())
     }
 
     @Test
