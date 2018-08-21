@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -38,8 +39,8 @@ public class BookRepositoryImpl implements BookRepositoryCustom {
         }
         cq.where(predicates.toArray(new Predicate[0]));
 
-        return em.createQuery(cq)
-            .getResultList();
+        TypedQuery<Book> query = em.createQuery(cq);
+        return query.getResultList();
     }
 
 }
