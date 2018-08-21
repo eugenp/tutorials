@@ -503,7 +503,7 @@
                     <excludes>
                         <exclude>**/*IntTest.java</exclude>
                     </excludes>
-
+					<reportFormat>plain</reportFormat>
                 </configuration>
             </plugin>
             <plugin>
