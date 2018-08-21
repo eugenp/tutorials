@@ -31,7 +31,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-maven-plugin.version}</version>
+                <version>${spring.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -40,6 +40,5 @@
         <java.version>1.8</java.version>
         <spring-swagger-codegen-api-client.version>0.0.1-SNAPSHOT</spring-swagger-codegen-api-client.version>
 		<spring.version>1.5.10.RELEASE</spring.version>
-		<spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 </project>
