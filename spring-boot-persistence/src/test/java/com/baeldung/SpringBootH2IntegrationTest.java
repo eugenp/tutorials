@@ -1,7 +1,8 @@
-package org.baeldung;
+package com.baeldung;
 
-import org.baeldung.boot.Application;
-import org.baeldung.boot.config.H2JpaConfig;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import org.baeldung.boot.domain.GenericEntity;
 import org.baeldung.boot.repository.GenericEntityRepository;
 import org.junit.Test;
@@ -10,8 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import com.baeldung.boot.config.H2JpaConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = { Application.class, H2JpaConfig.class })

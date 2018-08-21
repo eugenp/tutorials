@@ -18,7 +18,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = { "org.baeldung.repository", "org.baeldung.boot.repository", "org.baeldung.boot.boottest" })
+@EnableJpaRepositories(basePackages = { "org.baeldung.repository", "org.baeldung.boot.repository" })
 @EnableTransactionManagement
 public class H2TestProfileJPAConfig {
 
@@ -41,7 +41,7 @@ public class H2TestProfileJPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "org.baeldung.domain", "org.baeldung.boot.domain", "org.baeldung.boot.boottest", "org.baeldung.model" });
+        em.setPackagesToScan(new String[] { "org.baeldung.domain", "org.baeldung.boot.domain" });
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;
