@@ -41,5 +41,5 @@ mysql -u root -p
 ### Use the REST Service
 
 ```
-curl http://localhost:8080/spring-rest-full/foos
+curl http://localhost:8082/spring-rest-full/auth/foos
 ```

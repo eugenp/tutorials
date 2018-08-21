@@ -39,6 +39,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
+                <version>${build-helper-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <phase>generate-sources</phase>
@@ -60,6 +61,7 @@
         <thrift.version>0.10.0</thrift.version>
         <maven-thrift.version>0.1.11</maven-thrift.version>
         <org.slf4j.slf4j-simple.version>1.7.12</org.slf4j.slf4j-simple.version>
+        <build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
     </properties>
 
 </project>
