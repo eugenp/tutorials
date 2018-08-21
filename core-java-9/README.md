@@ -17,7 +17,6 @@
 - [Java 9 Reactive Streams](http://www.baeldung.com/java-9-reactive-streams)
 - [How to Get All Dates Between Two Dates?](http://www.baeldung.com/java-between-dates)
 - [Java 9 java.util.Objects Additions](http://www.baeldung.com/java-9-objects-new)
-- [Compact Strings in Java 9](http://www.baeldung.com/java-9-compact-string)
 - [Convert Date to LocalDate or LocalDateTime and Back](http://www.baeldung.com/java-date-to-localdate-and-localdatetime)
 - [Java 9 Variable Handles Demistyfied](http://www.baeldung.com/java-variable-handles)
 - [Exploring the New HTTP Client in Java 9](http://www.baeldung.com/java-9-http-client)

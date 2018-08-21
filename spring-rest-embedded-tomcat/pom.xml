@@ -85,7 +85,6 @@
     </build>
 
     <properties>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
         <jackson.library>2.9.2</jackson.library>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
