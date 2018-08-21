@@ -151,3 +151,4 @@
 - [Getting a File’s Mime Type in Java](http://www.baeldung.com/java-file-mime-type)
 - [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
 - [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
+- [Differences Between Final, Finally and Finalize in Java](https://www.baeldung.com/java-final-finally-finalize)
