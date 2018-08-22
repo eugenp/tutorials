@@ -11,7 +11,7 @@ public class StringContainingCharactersUnitTest {
 
     private static final Pattern[] inputRegexes = new Pattern[4];
 
-    private static final String regex = "^(?=.*?\\p{Lu})(?=.*?[\\p{L}&&[^\\p{Lu}]])(?=.*?\\d)(?=.*?[`~!@#$%^&*()\\-_=+\\\\\\|\\[{\\]};:'\",<.>/?]).*$";
+    private static final String regex = "^(?=.*?\\p{Lu})(?=.*?\\p{Ll})(?=.*?\\d)(?=.*?[`~!@#$%^&*()\\-_=+\\\\|\\[{\\]};:'\",<.>/?]).*$";
 
     static {
         inputRegexes[0] = Pattern.compile(".*[A-Z].*");
