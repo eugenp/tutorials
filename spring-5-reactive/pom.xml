@@ -36,6 +36,10 @@
             <version>${reactor-spring.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
             <groupId>javax.json.bind</groupId>
             <artifactId>javax.json.bind-api</artifactId>
         </dependency>
@@ -111,6 +115,12 @@
 	        <artifactId>spring-security-test</artifactId>
 	        <scope>test</scope>
 	    </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -134,6 +144,7 @@
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <project-reactor-test>3.1.6.RELEASE</project-reactor-test>
+        <wiremock.version>2.18.0</wiremock.version>
     </properties>
 
 </project>
