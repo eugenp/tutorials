@@ -1,6 +1,3 @@
-
-
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +8,6 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 
 
@@ -28,7 +24,7 @@ public class StreamsOrderingTest {
   public void givenTwoCollections_whenStreamed_thenCheckOutputDifferent(){
 
     List<String> list = Arrays.asList("B", "A", "C", "D", "F");
-    Set<String> set = new HashSet<>(Arrays.asList("B", "A", "C", "D", "F"));
+    Set<String> set = new TreeSet<>(Arrays.asList("B", "A", "C", "D", "F"));
 
     Object[] listOutput = list.stream().toArray();
     Object[] setOutput = set.stream().toArray();
@@ -42,7 +38,7 @@ public class StreamsOrderingTest {
   public void givenTwoCollections_whenStreamedInParallel_thenCheckOutputDifferent(){
 
     List<String> list = Arrays.asList("B", "A", "C", "D", "F");
-    Set<String> set = new HashSet<>(Arrays.asList("B", "A", "C", "D", "F"));
+    Set<String> set = new TreeSet<>(Arrays.asList("B", "A", "C", "D", "F"));
 
     Object[] listOutput = list.stream().parallel().toArray();
     Object[] setOutput = set.stream().parallel().toArray();
@@ -87,11 +83,6 @@ public class StreamsOrderingTest {
 
   }
 
-
-
-
-
-
   @Test
   public void givenUnsortedStreamInput_whenStreamDistinct_thenShowTimeTaken(){
     long start, end;
@@ -118,7 +109,7 @@ public class StreamsOrderingTest {
     List<String> list = Arrays.asList("B", "A", "C", "D", "F");
 
     List<String> collectionList = list.stream().parallel().collect(Collectors.toList());
-    Set<String> collectionSet = list.stream().parallel().collect(Collectors.toSet());
+    Set<String> collectionSet = list.stream().parallel().collect(Collectors.toCollection(TreeSet::new));
 
     assertEquals("[B, A, C, D, F]", collectionList.toString());
     assertEquals("[A, B, C, D, F]", collectionSet.toString());
