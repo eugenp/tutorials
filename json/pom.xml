@@ -33,6 +33,20 @@
             <artifactId>json</artifactId>
             <version>20171018</version>
         </dependency>
+        
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://search.maven.org/search?q=g:org.glassfish%20AND%20a:javax.json&core=gav  -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+        
     </dependencies>
 
     <properties>

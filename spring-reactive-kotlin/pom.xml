@@ -12,15 +12,11 @@
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
-        <artifactId>parent-boot-2</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
-    </parent>
-
-	<properties>
-		<kotlin.version>1.2.41</kotlin.version>
-	</properties>
+		<artifactId>parent-boot-2</artifactId>
+		<groupId>com.baeldung</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../parent-boot-2</relativePath>
+	</parent>
 
 	<dependencies>
 		<dependency>
@@ -67,6 +63,7 @@
 			<plugin>
 				<artifactId>kotlin-maven-plugin</artifactId>
 				<groupId>org.jetbrains.kotlin</groupId>
+				<version>${kotlin-maven-plugin.version}</version>
 				<configuration>
 					<args>
 						<arg>-Xjsr305=strict</arg>
@@ -86,5 +83,8 @@
 		</plugins>
 	</build>
 
-
+	<properties>
+		<kotlin.version>1.2.41</kotlin.version>
+		<kotlin-maven-plugin.version>1.2.60</kotlin-maven-plugin.version>
+	</properties>
 </project>

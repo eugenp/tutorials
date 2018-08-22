@@ -9,28 +9,15 @@ import java.util.stream.Stream;
 import lombok.extern.java.Log;
 
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 @Log
 public class ListInitializationUnitTest {
 
-    @Rule
-    public ExpectedException exception = ExpectedException.none();
-
     @Test
     public void givenAnonymousInnerClass_thenInitialiseList() {
         List<String> cities = new ArrayList() {
-            // Inside declaration of the subclass
-
-            // You can have multiple initializer block
             {
-                log.info("Inside the first initializer block.");
-            }
-
-            {
-                log.info("Inside the second initializer block.");
                 add("New York");
                 add("Rio");
                 add("Tokyo");
@@ -47,11 +34,10 @@ public class ListInitializationUnitTest {
         Assert.assertTrue(list.contains("foo"));
     }
 
-    @Test
+    @Test(expected = UnsupportedOperationException.class)
     public void givenArraysAsList_whenAdd_thenUnsupportedException() {
         List<String> list = Arrays.asList("foo", "bar");
 
-        exception.expect(UnsupportedOperationException.class);
         list.add("baz");
     }
 
