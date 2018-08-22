@@ -94,6 +94,12 @@
             <version>${project-reactor-test}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>${wiremock.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -117,6 +123,7 @@
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <project-reactor-test>3.1.6.RELEASE</project-reactor-test>
+        <wiremock.version>2.18.0</wiremock.version>
     </properties>
 
 </project>
