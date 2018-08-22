@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-mvc-java</artifactId>
@@ -127,12 +127,12 @@
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
-            <version>2.2.4</version>
+            <version>${javax.el.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
-            <version>2.2.4</version>
+            <version>${javax.el.version}</version>
         </dependency>
 
         <!-- Web socket to user example -->
@@ -141,6 +141,13 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
+        
+        <!-- ROME for RSS -->
+		<dependency>
+			<groupId>com.rometools</groupId>
+			<artifactId>rome</artifactId>
+			<version>${rome.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -156,6 +163,7 @@
 
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -207,6 +215,7 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                                        <exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*LiveTest.java</include>
@@ -250,7 +259,7 @@
     </profiles>
 
     <properties>
-		<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
+        <thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
 
         <!-- persistence -->
         <hibernate.version>5.2.5.Final</hibernate.version>
@@ -275,12 +284,21 @@
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
 
         <!-- AspectJ -->
         <aspectj.version>1.8.9</aspectj.version>
 
         <!-- excel -->
         <poi.version>3.16-beta1</poi.version>
+
+        <!-- ROME for RSS -->
+        <rome.version>1.10.0</rome.version>
+
+        <javax.el.version>2.2.4</javax.el.version>
+		
+		<!-- Initial application class for Spring Boot -->        
+        <start-class>com.baeldung.app.Application</start-class>
     </properties>
 
 </project>

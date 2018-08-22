@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-rest-simple</artifactId>
@@ -8,15 +8,15 @@
     <packaging>war</packaging>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.3.RELEASE</version>
+        <artifactId>parent-boot-1</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
 
         <!-- Spring Boot Dependencies -->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -36,7 +36,6 @@
         </dependency>
 
         <!-- Spring -->
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -55,7 +54,6 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-oxm</artifactId>
         </dependency>
-
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
@@ -68,7 +66,6 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
@@ -81,12 +78,10 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.thoughtworks.xstream</groupId>
             <artifactId>xstream</artifactId>
@@ -100,7 +95,6 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -139,7 +133,6 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
@@ -150,25 +143,20 @@
             <artifactId>hamcrest-library</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.jayway.restassured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>${rest-assured.version}</version>
+            <version>${jayway-rest-assured.version}</version>
         </dependency>
-
-        <!-- -->
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
@@ -179,18 +167,15 @@
             <artifactId>protobuf-java-format</artifactId>
             <version>${protobuf-java-format.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
             <version>${kryo.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -201,7 +186,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
         <plugins>
 
             <plugin>
@@ -213,12 +197,10 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -227,21 +209,20 @@
                     <reuseForks>true</reuseForks>
                     <excludes>
                         <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
                         <exclude>**/*LongRunningUnitTest.java</exclude>
                         <exclude>**/*ManualTest.java</exclude>
                         <exclude>**/JdbcTest.java</exclude>
                         <exclude>**/*LiveTest.java</exclude>
                     </excludes>
-
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
                 <version>${cargo-maven2-plugin.version}</version>
                 <configuration>
-                    <!--<wait>true</wait> caused errors on commit-->
+                    <!--<wait>true</wait> caused errors on commit -->
                     <container>
                         <containerId>tomcat8x</containerId>
                         <type>embedded</type>
@@ -256,13 +237,10 @@
                     </configuration>
                 </configuration>
             </plugin>
-
         </plugins>
-
     </build>
 
     <profiles>
-
         <profile>
             <id>integration</id>
             <build>
@@ -282,6 +260,7 @@
                                     </excludes>
                                     <includes>
                                         <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>
@@ -291,7 +270,6 @@
                 </plugins>
             </build>
         </profile>
-
         <profile>
             <id>live</id>
             <build>
@@ -344,7 +322,6 @@
                 </plugins>
             </build>
         </profile>
-
     </profiles>
 
     <properties>
@@ -357,7 +334,7 @@
 
         <!-- util -->
         <guava.version>20.0</guava.version>
-        <rest-assured.version>2.9.0</rest-assured.version>
+        <jayway-rest-assured.version>2.9.0</jayway-rest-assured.version>
 
         <!-- Maven plugins -->
         <cargo-maven2-plugin.version>1.6.0</cargo-maven2-plugin.version>

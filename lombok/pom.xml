@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
@@ -66,8 +66,7 @@
                             <verbose>false</verbose>
                         </configuration>
                     </execution>
-                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id>
-                        <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals>
+                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id> <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals> 
                         <configuration> <verbose>false</verbose> </configuration> </execution> -->
                 </executions>
             </plugin>
@@ -75,7 +74,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- lombok: https://projectlombok.org/changelog.html -->
         <lombok.version>1.16.18</lombok.version>
         <!-- various -->

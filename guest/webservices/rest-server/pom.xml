@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.stackify</groupId>
     <artifactId>rest-server</artifactId>
@@ -29,11 +29,6 @@
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -49,7 +44,6 @@
     </build>
 
     <properties>
-        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <jersey-container-servlet.version>2.25.1</jersey-container-servlet.version>
         <rest-assured.version>3.0.3</rest-assured.version>
         <jersey-media-moxy.version>2.25.1</jersey-media-moxy.version>

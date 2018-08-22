@@ -5,11 +5,6 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import com.baeldung.persistence.model.Foo;
-import com.baeldung.persistence.service.IBarAuditableService;
-import com.baeldung.persistence.service.IFooAuditableService;
-import com.baeldung.spring.PersistenceConfig;
-import com.baeldung.persistence.model.Bar;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -26,8 +21,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.persistence.model.Bar;
+import com.baeldung.persistence.model.Foo;
+import com.baeldung.persistence.service.IBarAuditableService;
+import com.baeldung.persistence.service.IFooAuditableService;
+import com.baeldung.spring.config.PersistenceTestConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class EnversFooBarAuditIntegrationTest {
 
     private static Logger logger = LoggerFactory.getLogger(EnversFooBarAuditIntegrationTest.class);
