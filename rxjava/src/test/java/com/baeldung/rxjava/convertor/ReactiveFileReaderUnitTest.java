@@ -2,6 +2,7 @@ package com.baeldung.rxjava.convertor;
 
 import static org.junit.Assert.assertEquals;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -72,22 +73,30 @@ public class ReactiveFileReaderUnitTest {
         List<String> receivedStringList = Arrays.asList(receivedString.split("\\r?\\n"));
 
         assertEquals(testList, receivedStringList);
+        
+        reader.cleanBuffer();
+
     }
 
     @Test
-    public void givenAsyncFileReader_whenConvertFromCallable_thenAllLinesAreReceived() {
-        Flowable<String> flowable = reader.readFileConvertAsyncToObservablesFromCallable();
+    public void givenAsyncFileReader_whenConvertFromFuture_thenAllLinesAreReceived() {
 
-        TestSubscriber<String> testSubscriber = flowable.observeOn(Schedulers.computation())
+        Flowable<Integer> flowable = null;
+        try {
+            flowable = reader.readFileConvertAsyncToObservablesFromFuture();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        TestSubscriber<Integer> testSubscriber = flowable.observeOn(Schedulers.computation())
             .test();
 
         testSubscriber.awaitTerminalEvent();
 
-        String receivedString = testSubscriber.getEvents()
-            .get(0)
-            .stream()
-            .map(v -> v.toString())
-            .reduce("", String::concat);
+        String receivedString = new String(reader.getBuffer()
+            .array()).trim();
+
+        reader.cleanBuffer();
 
         List<String> receivedStringList = Arrays.asList(receivedString.split("\\r?\\n"));
 

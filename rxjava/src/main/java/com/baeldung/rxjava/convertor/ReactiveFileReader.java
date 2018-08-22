@@ -8,7 +8,10 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;
 import java.nio.channels.CompletionHandler;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Future;
+import java.util.stream.Collectors;
 
 import io.reactivex.Flowable;
 import io.reactivex.Single;
@@ -16,9 +19,14 @@ import io.reactivex.Single;
 public class ReactiveFileReader {
 
     private File file;
+    private ByteBuffer buffer;
 
     public File getFile() {
         return file;
+    }
+
+    public ByteBuffer getBuffer() {
+        return buffer;
     }
 
     public ReactiveFileReader(String fileName) {
@@ -26,7 +34,7 @@ public class ReactiveFileReader {
         this.file = new File(ReactiveFileReader.class.getClassLoader()
             .getResource(fileName)
             .getFile());
-        ;
+        this.buffer = ByteBuffer.allocate((int) file.length());
     }
 
     public Flowable<String> readFileConvertSyncToObservablesByGenerate() {
@@ -45,21 +53,30 @@ public class ReactiveFileReader {
 
         return Flowable.fromIterable(() -> {
             BufferedReader reader = null;
+            List<String> lines = new ArrayList<>();
             try {
                 reader = new BufferedReader(new FileReader(file));
+                lines = reader.lines()
+                    .map(line -> line)
+                    .collect(Collectors.toList());
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
+            } finally {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-            return reader.lines()
-                .iterator();
+
+            return lines.iterator();
         });
     }
 
     public Flowable<String> readFileConvertAsyncToObservablesByCreate() {
         return Single.<String> create(emitter -> {
             AsynchronousFileChannel channel = AsynchronousFileChannel.open(file.toPath());
-            ByteBuffer buffer = ByteBuffer.allocate((int) file.length());
-
+            
             channel.read(buffer, 0, buffer, new CompletionHandler<Integer, ByteBuffer>() {
 
                 @Override
@@ -71,9 +88,10 @@ public class ReactiveFileReader {
                         return;
                     }
                     attachment.flip();
-                    byte[] data = new byte[buffer.limit()];
-                    buffer.get(data);
+                    byte[] data = new byte[attachment.limit()];
+                    attachment.get(data);
                     emitter.onSuccess(new String(data));
+                    attachment.clear();
                 }
 
                 @Override
@@ -81,7 +99,7 @@ public class ReactiveFileReader {
                     try {
                         channel.close();
                     } catch (IOException e) {
-                        // e.printStackTrace();
+                        e.printStackTrace();
                     }
                     emitter.onError(error);
                 }
@@ -90,20 +108,16 @@ public class ReactiveFileReader {
             .toFlowable();
     }
 
-    public Flowable<String> readFileConvertAsyncToObservablesFromCallable() {
-        return Flowable.fromCallable(() -> {
+    public Flowable<Integer> readFileConvertAsyncToObservablesFromFuture() throws IOException {
 
-            AsynchronousFileChannel channel = AsynchronousFileChannel.open(file.toPath());
-            ByteBuffer buffer = ByteBuffer.allocate((int) file.length());
-            Future<Integer> operation = channel.read(buffer, 0);
+        AsynchronousFileChannel channel = AsynchronousFileChannel.open(file.toPath());
+        Future<Integer> operation = channel.read(buffer, 0);
+        return Flowable.fromFuture(operation);
 
-            operation.get();
+    }
 
-            String content = new String(buffer.array()).trim();
-            buffer.clear();
-            return content;
-
-        });
+    public void cleanBuffer() {
+        buffer.clear();
     }
 
 }
