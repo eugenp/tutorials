@@ -8,14 +8,12 @@ public class ClassCastException {
 
 	public static void main(String[] args) {
 
-		List<ArrayList<String>> strList = new ArrayList<ArrayList<String>>();
-		// To correct the Exception at line #18, modify the line #11 code as:
-		// List<List<Person>> personList = new ArrayList <List<Person>>();
-		// Line #18 code as personList.add(Arrays.asList(personArray));
 		String p1 = new String("John");
 		String p2 = new String("Snow");
 		String[] strArray = new String[] { p1, p2 };
-		strList.add((ArrayList<String>) Arrays.asList(strArray));
+		ArrayList<String> strList = (ArrayList<String>) Arrays.asList(strArray);
+		// To fix the ClassCastException at above line, modify the code as:
+		// List<String> strList = Arrays.asList(strArray);
 		System.out.println("String list: " + strList);
 
 	}
