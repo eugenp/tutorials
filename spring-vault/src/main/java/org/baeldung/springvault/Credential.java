@@ -4,10 +4,10 @@ public class Credential {
 
     private String username;
     private String password;
-    
+
     public Credential(String username, String password) {
-       this.username = username;
-       this.password = password;
+        this.username = username;
+        this.password = password;
     }
 
     public String getUsername() {
@@ -17,4 +17,10 @@ public class Credential {
     public String getPassword() {
         return password;
     }
+
+    @Override
+    public String toString() {
+        return "Credential [username=" + username + ", password=" + password + "]";
+    }
+
 }
