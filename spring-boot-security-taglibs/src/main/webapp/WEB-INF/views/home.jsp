@@ -25,9 +25,10 @@
         <sec:authorize access="hasRole('ADMIN')">
             Manage Users
         </sec:authorize>
-        <form>
+        <form method="post">
             <sec:csrfInput />
             Text Field: <br /> <input type="text" name="textField" />
+            <input type="submit" value="Submit form with CSRF input">
         </form>
         <sec:authorize url="/userManagement">
             <a href="/userManagement">Manage Users</a>
