@@ -352,6 +352,7 @@
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
 				<module>couchbase</module>
 				<module>deltaspike</module>
 				<module>dozer</module>
@@ -435,6 +436,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -693,6 +695,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -976,6 +979,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -1216,6 +1220,7 @@
                 <module>hibernate5</module>
                 <module>spring-data-elasticsearch</module>
                 <module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
             </modules>
 
         </profile>
