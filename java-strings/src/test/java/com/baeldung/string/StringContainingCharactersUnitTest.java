@@ -11,6 +11,8 @@ public class StringContainingCharactersUnitTest {
 
     private static final Pattern[] inputRegexes = new Pattern[4];
 
+    private static final String regex = "^(?=.*?\\p{Lu})(?=.*?[\\p{L}&&[^\\p{Lu}]])(?=.*?\\d)" + "(?=.*?[`~!@#$%^&*()\\-_=+\\\\\\|\\[{\\]};:'\",<.>/?]).*$";
+
     static {
         inputRegexes[0] = Pattern.compile(".*[A-Z].*");
         inputRegexes[1] = Pattern.compile(".*[a-z].*");
@@ -94,5 +96,26 @@ public class StringContainingCharactersUnitTest {
 
         invalidInput = "b3;";
         assertFalse(checkString(invalidInput));
+    }
+
+    @Test
+    public void givenSingleRegex_whenMatchingCorrectString_thenMatches() {
+        String validInput = "Ab3;";
+        assertTrue(Pattern.compile(regex).matcher(validInput).matches());
+    }
+
+    @Test
+    public void givenSingleRegex_whenMatchingWrongStrings_thenNotMatching() {
+        String invalidInput = "Ab3";
+        assertFalse(Pattern.compile(regex).matcher(invalidInput).matches());
+
+        invalidInput = "Ab;";
+        assertFalse(Pattern.compile(regex).matcher(invalidInput).matches());
+
+        invalidInput = "A3;";
+        assertFalse(Pattern.compile(regex).matcher(invalidInput).matches());
+
+        invalidInput = "b3;";
+        assertFalse(Pattern.compile(regex).matcher(invalidInput).matches());
     }
 }
