@@ -348,6 +348,7 @@
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
@@ -902,6 +903,7 @@
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
 				<module>core-groovy</module>
 
 				<module>couchbase</module>
