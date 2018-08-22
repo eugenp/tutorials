@@ -1,6 +1,6 @@
-package com.baeldung.spring-boot-persistence.tomcatconnectionpool.application.repositories;
+package com.baeldung.application.repositories;
 
-import com.baeldung.spring-boot-persistence.tomcatconnectionpool.application.entities.Customer;
+import com.baeldung.application.entities.Customer;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 

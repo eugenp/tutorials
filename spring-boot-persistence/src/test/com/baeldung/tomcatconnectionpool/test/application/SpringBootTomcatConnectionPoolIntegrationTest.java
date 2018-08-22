@@ -1,4 +1,4 @@
-package com.baeldung.spring-boot-persistence.tomcatconnectionpool.application.tests;
+package com.baeldung.tomcatconnectionpool.test.application;
 
 import javax.sql.DataSource;
 import org.junit.Test;

@@ -1,7 +1,7 @@
-package com.baeldung.spring-boot-persistence.tomcatconnectionpool.application.runners;
+package com.baeldung.application.runners;
 
-import com.baeldung.spring-boot-persistence.tomcatconnectionpool.application.entities.Customer;
-import com.baeldung.spring-boot-persistence.tomcatconnectionpool.application.repositories.CustomerRepository;
+import com.baeldung.application.entities.Customer;
+import com.baeldung.application.repositories.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

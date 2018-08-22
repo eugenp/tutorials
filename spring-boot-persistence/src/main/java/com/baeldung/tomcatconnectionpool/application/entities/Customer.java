@@ -1,4 +1,4 @@
-package com.baeldung.spring-boot-persistence.tomcatconnectionpool.application.entities;
+package com.baeldung.application.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
