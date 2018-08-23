@@ -3,7 +3,7 @@ package com.baeldung.algorithms.string;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class EnglishAlphabetLettersTest {
+public class EnglishAlphabetLettersUnitTest {
 
     @Test
     void givenString_whenContainsAllCharacter_thenTrue() {
