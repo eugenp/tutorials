@@ -8,7 +8,7 @@ import java.util.logging.SimpleFormatter;
 
 public class User {
 
-    private static User instance = null;
+    private static volatile User instance = null;
     private static final Logger LOGGER = Logger.getLogger(User.class.getName());
     private final String name;
     private final String email;
