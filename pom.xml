@@ -269,6 +269,7 @@
         <module>spring-webflux-amqp</module>
         <module>antlr</module>
 	      <module>maven-archetype</module>
+        <module>optaplanner</module>
     </modules>
 
     <dependencies>
