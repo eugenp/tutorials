@@ -1,6 +1,5 @@
 package com.baeldung.h2db.demo;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.annotation.PostConstruct;

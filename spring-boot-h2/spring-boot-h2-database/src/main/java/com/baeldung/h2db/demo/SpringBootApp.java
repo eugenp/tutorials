@@ -2,11 +2,11 @@ package com.baeldung.h2db.demo;
 
 import java.sql.SQLException;
 import javax.annotation.PostConstruct;
+import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.h2.tools.Server;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
