@@ -5,8 +5,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>hibernate5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hibernate5</name>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -59,7 +57,7 @@
     </build>
 
     <properties>
-        <hibernate.version>5.2.12.Final</hibernate.version>
+        <hibernate.version>5.3.2.Final</hibernate.version>
         <mysql.version>6.0.6</mysql.version>
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <h2database.version>1.4.196</h2database.version>

@@ -24,20 +24,19 @@ public class SpringSessionJdbcController {
     }
 
     @PostMapping("/saveColor")
-    public String saveMessage(@RequestParam("color") String color,
-                              HttpServletRequest request) {
+    public String saveMessage(@RequestParam("color") String color, HttpServletRequest request) {
         List<String> favoriteColors = getFavColors(request.getSession());
         if (!StringUtils.isEmpty(color)) {
             favoriteColors.add(color);
-            request.getSession().
-                    setAttribute("favoriteColors", favoriteColors);
+            request
+              .getSession()
+              .setAttribute("favoriteColors", favoriteColors);
         }
         return "redirect:/";
     }
 
     private List<String> getFavColors(HttpSession session) {
-        List<String> favoriteColors = (List<String>) session.
-                getAttribute("favoriteColors");
+        List<String> favoriteColors = (List<String>) session.getAttribute("favoriteColors");
         if (favoriteColors == null) {
             favoriteColors = new ArrayList<>();
         }

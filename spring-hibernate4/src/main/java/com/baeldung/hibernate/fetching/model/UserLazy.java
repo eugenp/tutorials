@@ -16,7 +16,7 @@ public class UserLazy implements Serializable {
     @Column(name = "USER_ID")
     private Long userId;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY)
     private Set<OrderDetail> orderDetail = new HashSet();
 
     public UserLazy() {

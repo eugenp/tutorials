@@ -74,7 +74,7 @@
                             <port>9990</port>
                             <username>testUser</username>
                             <password>admin1234!</password>
-                            <filename>${build.finalName}.jar</filename>
+                            <filename>${project.build.finalName}.jar</filename>
                         </configuration>
                     </plugin>
                 </plugins>
