@@ -5,8 +5,6 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -38,25 +36,23 @@ public class CopyOnWriteBenchmark {
         }
     }
 
-    //    @Benchmark
-//    public void testAdd(ArrayListBenchmark.MyState state) {
-//        for (long i = 0; i < state.iterations; i++) {
-//            state.employeeList.add(new Employee(i, "John"));
-//        }
-//    }
+        @Benchmark
+    public void testAdd(CopyOnWriteBenchmark.MyState state) {
+            state.employeeList.add(new Employee(state.iterations + 1, "John"));
+    }
 
     @Benchmark
-    public void testAddAt(ArrayListBenchmark.MyState state) {
+    public void testAddAt(CopyOnWriteBenchmark.MyState state) {
         state.employeeList.add((int) (state.iterations), new Employee(state.iterations, "John"));
     }
 
     @Benchmark
-    public boolean testContains(ArrayListBenchmark.MyState state) {
+    public boolean testContains(CopyOnWriteBenchmark.MyState state) {
         return state.employeeList.contains(state.employee);
     }
 
     @Benchmark
-    public int testIndexOf(ArrayListBenchmark.MyState state) {
+    public int testIndexOf(CopyOnWriteBenchmark.MyState state) {
         return state.employeeList.indexOf(state.employee);
     }
 

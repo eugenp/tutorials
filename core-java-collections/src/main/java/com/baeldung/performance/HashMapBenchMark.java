@@ -5,21 +5,29 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 5)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@Warmup(iterations = 10)
 public class HashMapBenchMark {
 
     @State(Scope.Thread)
     public static class MyState {
 
         Map<Long, Employee> employeeMap = new HashMap<>();
+        //LinkedHashMap<Long, Employee> employeeMap = new LinkedHashMap<>();
+        //IdentityHashMap<Long, Employee> employeeMap = new IdentityHashMap<>();
+        //WeakHashMap<Long, Employee> employeeMap = new WeakHashMap<>();
+        //ConcurrentHashMap<Long, Employee> employeeMap = new ConcurrentHashMap<>();
+        //ConcurrentSkipListMap<Long, Employee> employeeMap = new ConcurrentSkipListMap <>();
 
-        long iterations = 10000;
+        // TreeMap
+
+        long iterations = 100000;
 
         Employee employee = new Employee(100L, "Harry");
 
@@ -31,7 +39,7 @@ public class HashMapBenchMark {
                 employeeMap.put(i, new Employee(i, "John"));
             }
 
-            employeeMap.put(iterations, employee);
+            //employeeMap.put(iterations, employee);
         }
     }
 
@@ -43,6 +51,16 @@ public class HashMapBenchMark {
     @Benchmark
     public Employee testRemove(HashMapBenchMark.MyState state) {
         return state.employeeMap.remove(state.iterations);
+    }
+
+    @Benchmark
+    public Employee testPut(HashMapBenchMark.MyState state) {
+        return state.employeeMap.put(state.employee.getId(), state.employee);
+    }
+
+    @Benchmark
+    public Boolean testContainsKey(HashMapBenchMark.MyState state) {
+        return state.employeeMap.containsKey(state.employee.getId());
     }
 
 
