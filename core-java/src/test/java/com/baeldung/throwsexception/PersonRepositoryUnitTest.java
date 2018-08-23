@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PersonRepositoryUnitTest {
@@ -27,6 +28,16 @@ public class PersonRepositoryUnitTest {
                         Optional
                                 .ofNullable(personRepository.findNameById("id"))
                                 .orElseThrow(Exception::new));
+    }
+
+    @Test
+    public void whenIdIsNonNull_thenShouldReturnNameUpperCase() throws Exception {
+        String name = Optional
+                .ofNullable(personRepository.findNameById("id"))
+                .map(String::toUpperCase)
+                .orElseThrow(Exception::new);
+
+        assertEquals("NAME", name);
     }
 
 }
