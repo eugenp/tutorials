@@ -342,16 +342,20 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java</module>
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
 				<module>crunch</module>
+				<module>core-java-concurrency-collections</module>
+        <module>crunch</module>
 				<module>couchbase</module>
 				<module>deltaspike</module>
 				<module>dozer</module>
@@ -435,6 +439,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -442,6 +447,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -692,6 +698,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -699,6 +706,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -892,10 +900,12 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
 				<module>core-groovy</module>
 
 				<module>couchbase</module>
@@ -973,12 +983,14 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -1212,6 +1224,7 @@
                 <module>hibernate5</module>
                 <module>spring-data-elasticsearch</module>
                 <module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
             </modules>
 
         </profile>
@@ -1239,7 +1252,7 @@
 		<!-- <gib.enabled>false</gib.enabled> -->
 		<junit.version>4.12</junit.version>
 		<org.hamcrest.version>1.3</org.hamcrest.version>
-		<mockito.version>2.8.9</mockito.version>
+		<mockito.version>2.21.0</mockito.version>
 		<!-- logging -->
 		<org.slf4j.version>1.7.21</org.slf4j.version>
 		<logback.version>1.1.7</logback.version>

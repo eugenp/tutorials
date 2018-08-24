@@ -176,6 +176,7 @@
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
+                <version>${git-commit-id-plugin.version}</version>
             </plugin>
 
         </plugins>
@@ -230,6 +231,7 @@
         <graphql-java-tools.version>3.2.0</graphql-java-tools.version>
         <guava.version>18.0</guava.version>
 		<junit-platform.version>1.2.0</junit-platform.version>
+		<git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     </properties>
 
 </project>
