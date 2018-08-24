@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProcessUnderstanding {
 
@@ -84,6 +86,7 @@ public class ProcessUnderstanding {
     }
 
     public static void outputStreamDemo() throws IOException, InterruptedException {
+        Logger log = Logger.getLogger(ProcessUnderstanding.class.getName());
         Process pr = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ChildProcess.java");
         final Process process = Runtime.getRuntime()
@@ -102,7 +105,7 @@ public class ProcessUnderstanding {
             }
         }).start();
         // send to child
-        System.out.println("rc=" + process.waitFor());
+        log.log(Level.INFO, "rc=" + process.waitFor());
     }
 
 }
