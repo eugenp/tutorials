@@ -10,10 +10,14 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component("loggingFilter")
 public class CustomFilter implements Filter {
+    
+    private static Logger LOGGER = LoggerFactory.getLogger(CustomFilter.class);
 
     @Override
     public void init(FilterConfig config) throws ServletException {
@@ -23,7 +27,7 @@ public class CustomFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, 
             FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        System.out.println("Request Info : " + req);
+        LOGGER.info("Request Info : " + req);
         chain.doFilter(request, response);
     }
 
