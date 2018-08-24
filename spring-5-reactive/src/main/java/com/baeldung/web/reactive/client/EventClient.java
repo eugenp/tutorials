@@ -8,14 +8,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.reactive.function.client.WebClient;
 
-@SpringBootApplication(scanBasePackages = { "com.baeldung" })
 public class EventClient {
 
     Logger logger = LoggerFactory.getLogger(EventClient.class);
 
     @Bean
     WebClient getWebClient() {
-        return WebClient.create("http://localhost:8081");
+        return WebClient.create("http://localhost:8080");
     }
 
     @Bean
