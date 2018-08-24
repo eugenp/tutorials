@@ -48,7 +48,7 @@ class ProcessUnderstandingTester {
     }
 
     //@Test - windows specific
-    public void givenSubProcess_thenStartSuccess() throws IOException {
+    public void givenSubProcess_thenStartSuccessIsAlive() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         assertTrue(builder.start().isAlive());
     }
@@ -71,7 +71,7 @@ class ProcessUnderstandingTester {
         if (process.isAlive()) {
             process.destroyForcibly();
         }
-        assertFalse(builder.start().isAlive());
+        assertFalse(process.isAlive());
     }
 
     //@Test - windows specific
@@ -80,7 +80,7 @@ class ProcessUnderstandingTester {
         Process process = builder.start();
         Thread.sleep(10000);
         process.destroy();
-        assertTrue(process.isAlive());
+        assertFalse(process.isAlive());
     }
 
     @Test
