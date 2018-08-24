@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>crunch</artifactId>
+
+	<parent>
+		<artifactId>parent-modules</artifactId>
+		<groupId>com.baeldung</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
+		<org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+
+	<dependencies>
+		<!-- Some care is needed when adding new dependencies with Hadoop. There 
+			are lots of libraries on Hadoop's runtime classpath that the client or core 
+			POMs don't tell you about. When adding a new dependency, first check Hadoop's 
+			lib directory if it's already there. If it is, use the exact same version 
+			and set the scope to "provided". If there are dependency conflicts you cannot 
+			resolve, try setting the HADOOP_USER_CLASSPATH_FIRST environment variable 
+			to "true", giving your libraries precedence. -->
+		<dependency>
+			<groupId>org.apache.crunch</groupId>
+			<artifactId>crunch-core</artifactId>
+			<version>${org.apache.crunch.crunch-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.hadoop</groupId>
+			<artifactId>hadoop-client</artifactId>
+			<version>${org.apache.hadoop.hadoop-client}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- The following libraries come with Hadoop but are missing from the 
+			client POM. You need them if you want to use LocalJobRunner from the IDE. 
+			If you don't you can safely delete them. -->
+		<dependency>
+			<groupId>commons-cli</groupId>
+			<artifactId>commons-cli</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-codec</groupId>
+					<artifactId>commons-codec</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/hadoop-job.xml</descriptor>
+					</descriptors>
+					<archive>
+						<manifest>
+							<mainClass>com.baeldung.crunch.WordCount</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
