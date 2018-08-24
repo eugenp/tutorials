@@ -1,5 +1,7 @@
 package com.baeldung.spring.data.es.service;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -8,7 +10,7 @@ import com.baeldung.spring.data.es.model.Article;
 public interface ArticleService {
     Article save(Article article);
 
-    Article findOne(String id);
+    Optional<Article> findOne(String id);
 
     Iterable<Article> findAll();
 
