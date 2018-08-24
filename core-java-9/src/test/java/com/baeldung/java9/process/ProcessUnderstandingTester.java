@@ -24,7 +24,7 @@ class ProcessUnderstandingTester {
             .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
         BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
         int value = Integer.parseInt(output.readLine());
-        assertEquals(3, value);
+        assertEquals(3, value);            
     }
 
     //@Test - windows specific
