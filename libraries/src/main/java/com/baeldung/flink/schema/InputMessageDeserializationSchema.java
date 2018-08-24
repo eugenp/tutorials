@@ -1,6 +1,6 @@
-package com.baeldung.schema;
+package com.baeldung.flink.schema;
 
-import com.baeldung.model.InputMessage;
+import com.baeldung.flink.model.InputMessage;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.flink.api.common.serialization.DeserializationSchema;

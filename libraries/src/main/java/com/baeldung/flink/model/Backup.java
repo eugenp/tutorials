@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.flink.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -19,5 +19,9 @@ public class Backup {
         this.inputMessages = inputMessages;
         this.backupTimestamp = backupTimestamp;
         this.uuid = UUID.randomUUID();
+    }
+
+    public List<InputMessage> getInputMessages() {
+        return inputMessages;
     }
 }

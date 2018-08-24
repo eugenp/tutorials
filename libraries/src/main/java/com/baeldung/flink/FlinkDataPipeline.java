@@ -1,10 +1,11 @@
-package com.baeldung;
+package com.baeldung.flink;
 
-import com.baeldung.flink.BackupAggregator;
-import com.baeldung.flink.InputMessageTimestampAssigner;
-import com.baeldung.flink.WordsCapitalizer;
-import com.baeldung.model.Backup;
-import com.baeldung.model.InputMessage;
+
+import com.baeldung.flink.model.Backup;
+import com.baeldung.flink.model.InputMessage;
+import com.baeldung.flink.operator.BackupAggregator;
+import com.baeldung.flink.operator.InputMessageTimestampAssigner;
+import com.baeldung.flink.operator.WordsCapitalizer;
 import org.apache.flink.streaming.api.TimeCharacteristic;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -12,8 +13,8 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer011;
 
-import static com.baeldung.flink.Consumers.*;
-import static com.baeldung.flink.Producers.*;
+import static com.baeldung.flink.connector.Consumers.*;
+import static com.baeldung.flink.connector.Producers.*;
 
 public class FlinkDataPipeline {
 

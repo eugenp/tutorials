@@ -1,7 +1,7 @@
-package com.baeldung.flink;
+package com.baeldung.flink.connector;
 
-import com.baeldung.schema.InputMessageDeserializationSchema;
-import com.baeldung.model.InputMessage;
+import com.baeldung.flink.model.InputMessage;
+import com.baeldung.flink.schema.InputMessageDeserializationSchema;
 import org.apache.flink.api.common.serialization.SimpleStringSchema;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer011;
 

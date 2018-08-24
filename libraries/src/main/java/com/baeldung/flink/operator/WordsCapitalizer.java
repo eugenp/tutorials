@@ -1,4 +1,4 @@
-package com.baeldung.flink;
+package com.baeldung.flink.operator;
 
 import org.apache.flink.api.common.functions.MapFunction;
 
