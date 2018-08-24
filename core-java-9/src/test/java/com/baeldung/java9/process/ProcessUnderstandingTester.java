@@ -1,6 +1,7 @@
 package com.baeldung.java9.process;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.BufferedReader;
@@ -15,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 class ProcessUnderstandingTester {
 
-    @Test
+    //@Test - windows specific
     public void givenSourceProgram_whenExecutedFromAnotherprogram_thenSourceProgramOutput3() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
@@ -26,7 +27,7 @@ class ProcessUnderstandingTester {
         assertEquals(3, value);
     }
 
-    @Test
+    //@Test - windows specific
     public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
@@ -37,7 +38,7 @@ class ProcessUnderstandingTester {
         assertEquals(3, value);                   
     }
 
-    @Test
+    //@Test - windows specific
     public void givenSubProcess_whenEncounteringError_thenErrorStreamNotNull() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
@@ -46,23 +47,22 @@ class ProcessUnderstandingTester {
         assertNotNull(errorString);
     }
 
-    @Test
+    //@Test - windows specific
     public void givenSubProcess_thenStartSuccess() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
-        Process process = builder.start();
-        assertNotNull(process);
+        assertTrue(builder.start().isAlive());
     }
 
-    @Test
-    public void givenSubProcess_whenDestroying_thenProcessNotNull() throws IOException, InterruptedException {
+    //@Test - windows specific
+    public void givenSubProcess_whenDestroying_thenProcessNotAlive() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
         process.destroy();
-        assertNotNull(process);
+        assertFalse(process.isAlive());
     }
 
-    @Test
+    //@Test - windows specific
     public void givenSubProcess_whenAlive_thenDestroyForcibly() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
@@ -71,10 +71,10 @@ class ProcessUnderstandingTester {
         if (process.isAlive()) {
             process.destroyForcibly();
         }
-        assertNotNull(process);
+        assertFalse(builder.start().isAlive());
     }
 
-    @Test
+    //@Test - windows specific
     public void givenSubProcess_checkAlive() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
@@ -84,28 +84,28 @@ class ProcessUnderstandingTester {
     }
 
     @Test
-    public void givenProcessNotCreated_fromWithinJavaApplicationDestroying_thenProcessNotNull() {
+    public void givenProcessNotCreated_fromWithinJavaApplicationDestroying_thenProcessNotAlive() {
         Optional<ProcessHandle> optionalProcessHandle = ProcessHandle.of(5232);
         ProcessHandle processHandle = optionalProcessHandle.get();
         processHandle.destroy();
-        assertNotNull(processHandle);
+        assertFalse(processHandle.isAlive());
     }
 
-    @Test
+    //@Test - windows specific
     public void givenSubProcess_whenCurrentThreadWaitsIndefinitelyuntilSubProcessEnds_thenProcessWaitForReturnsGrt0() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertThat(process.waitFor() >= 0);
     }
 
-    @Test
+    //@Test - windows specific
     public void givenSubProcess_whenCurrentThreadWaitsAndSubProcessNotTerminated_thenProcessWaitForReturnsFalse() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         assertFalse(process.waitFor(1, TimeUnit.SECONDS));
     }
 
-    @Test
+    //@Test - windows specific
     public void givenSubProcess_whenCurrentThreadWillNotWaitIndefinitelyforSubProcessToEnd_thenProcessExitValueReturnsGrt0() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
