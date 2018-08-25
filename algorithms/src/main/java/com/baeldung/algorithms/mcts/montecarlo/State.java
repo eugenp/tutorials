@@ -87,7 +87,7 @@ public class State {
     void randomPlay() {
         List<Position> availablePositions = this.board.getEmptyPositions();
         int totalPossibilities = availablePositions.size();
-        int selectRandom = (int) (Math.random() * ((totalPossibilities - 1) + 1));
+        int selectRandom = (int) (Math.random() * totalPossibilities);
         this.board.performMove(this.playerNo, availablePositions.get(selectRandom));
     }
 

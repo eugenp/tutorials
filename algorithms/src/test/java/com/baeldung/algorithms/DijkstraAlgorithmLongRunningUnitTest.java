@@ -1,4 +1,4 @@
-package algorithms;
+package com.baeldung.algorithms;
 
 import org.junit.Test;
 
