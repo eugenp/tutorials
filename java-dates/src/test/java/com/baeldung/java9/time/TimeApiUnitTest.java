@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
-public class TimeApiTest {
+public class TimeApiUnitTest {
 
     @Test
     public void givenGetDatesBetweenWithUsingJava7_WhenStartEndDate_thenDatesList() {
@@ -18,7 +18,7 @@ public class TimeApiTest {
         Date endDate = endCalendar.getTime();
 
         List<Date> dates = TimeApi.getDatesBetweenUsingJava7(startDate, endDate);
-        assertEquals(dates.size(), 2);
+        assertEquals(dates.size(), 3);
 
         Calendar calendar = Calendar.getInstance();
         Date date1 = calendar.getTime();

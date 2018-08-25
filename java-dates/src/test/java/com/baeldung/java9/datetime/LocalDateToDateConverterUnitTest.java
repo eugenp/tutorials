@@ -18,7 +18,7 @@ import org.junit.Test;
  * @author abialas
  *
  */
-public class LocalDateToDateConverterTest {
+public class LocalDateToDateConverterUnitTest {
 
     @Test
     public void shouldReturn10thNovember2010WhenConvertViaInstant() {
