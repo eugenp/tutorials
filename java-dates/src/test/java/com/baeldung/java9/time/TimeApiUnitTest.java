@@ -18,7 +18,7 @@ public class TimeApiUnitTest {
         Date endDate = endCalendar.getTime();
 
         List<Date> dates = TimeApi.getDatesBetweenUsingJava7(startDate, endDate);
-        assertEquals(dates.size(), 3);
+        assertEquals(dates.size(), 2);
 
         Calendar calendar = Calendar.getInstance();
         Date date1 = calendar.getTime();
