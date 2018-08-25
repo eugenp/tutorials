@@ -20,7 +20,7 @@ import com.baeldung.java9.datetime.DateToLocalDateConverter;
  * @author abialas
  *
  */
-public class DateToLocalDateConverterTest {
+public class DateToLocalDateConverterUnitTest {
 
     @Test
     public void shouldReturn10thNovember2010WhenConvertViaInstant() {
