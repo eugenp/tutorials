@@ -14,7 +14,7 @@ import java.lang.Integer;
 
 import org.junit.jupiter.api.Test;
 
-class ProcessUnderstandingTester {
+class ProcessUnderstandingTest {
 
     //@Test - windows specific
     public void givenSourceProgram_whenExecutedFromAnotherprogram_thenSourceProgramOutput3() throws IOException {
