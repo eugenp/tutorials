@@ -28,7 +28,7 @@ public class FlowClientFunctional {
         FlowClientFunctional client = new FlowClientFunctional();
         Disposable disposable = client.handleFlow();
         try {
-            Thread.sleep(32000);
+            Thread.sleep(15000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

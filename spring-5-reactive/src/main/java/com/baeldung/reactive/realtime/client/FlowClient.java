@@ -16,7 +16,7 @@ public class FlowClient {
     public Disposable handleFlow(){
         return webClient.get()
                 .uri("/realtime-event/flow")
-                .accept(MediaType.TEXT_EVENT_STREAM)
+                .accept(MediaType.APPLICATION_STREAM_JSON)
                 .retrieve()
                 .bodyToFlux(Event.class)
                 .subscribe(event -> {
@@ -28,7 +28,7 @@ public class FlowClient {
         FlowClient client = new FlowClient();
         Disposable disposable = client.handleFlow();
         try {
-            Thread.sleep(32000);
+            Thread.sleep(15000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

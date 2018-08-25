@@ -16,7 +16,7 @@ public class RealtimeEventFlowController {
     @Autowired
     private RealtimeEventGeneratorService realtimeEventGeneratorService;
 
-    @GetMapping(value = "/flow", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    @GetMapping(value = "/flow", produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
     public Flux<Event> flow() {
         return realtimeEventGeneratorService.flow();
     }
