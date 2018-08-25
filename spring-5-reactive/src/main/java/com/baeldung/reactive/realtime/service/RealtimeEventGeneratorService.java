@@ -11,11 +11,11 @@ import java.util.stream.Stream;
 @Service
 public class RealtimeEventGeneratorService {
 
-    private static final Random rnd = new Random();
+    private static Random rnd = new Random();
 
-    public Flux<Event> flow(){
+    public Flux<Event> flow() {
         return Flux.fromStream(Stream.generate(() -> rnd.nextInt(100)))
-                .map(l -> new Event(l))
-                .delayElements(Duration.ofSeconds(1));
+            .map(l -> new Event(l))
+            .delayElements(Duration.ofSeconds(1));
     }
 }

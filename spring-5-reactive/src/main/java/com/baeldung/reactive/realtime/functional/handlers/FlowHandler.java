@@ -14,9 +14,10 @@ public class FlowHandler {
 
     @Autowired
     private RealtimeEventGeneratorService realtimeEventGeneratorService;
-    
+
     public Mono<ServerResponse> flow(final ServerRequest request) {
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_STREAM_JSON)
+        return ServerResponse.ok()
+            .contentType(MediaType.APPLICATION_STREAM_JSON)
             .body(realtimeEventGeneratorService.flow(), Event.class);
     }
 }

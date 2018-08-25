@@ -11,17 +11,19 @@ public class FlowClientFunctional {
 
     Logger logger = LoggerFactory.getLogger(FlowClientFunctional.class);
 
-    private WebClient webClient = WebClient.builder().baseUrl("http://localhost:8080").build();
+    private WebClient webClient = WebClient.builder()
+        .baseUrl("http://localhost:8080")
+        .build();
 
-    public Disposable handleFlow(){
+    public Disposable handleFlow() {
         return webClient.get()
-                .uri("/realtime-event/flow-functional")
-                .accept(MediaType.APPLICATION_STREAM_JSON)
-                .retrieve()
-                .bodyToFlux(Event.class)
-                .subscribe(event -> {
-                    logger.info("Functional Event received [id="+event.getId()+"]");
-                });
+            .uri("/realtime-event/flow-functional")
+            .accept(MediaType.APPLICATION_STREAM_JSON)
+            .retrieve()
+            .bodyToFlux(Event.class)
+            .subscribe(event -> {
+                logger.info("Functional Event received [id=" + event.getId() + "]");
+            });
     }
 
     public static void main(String[] args) {

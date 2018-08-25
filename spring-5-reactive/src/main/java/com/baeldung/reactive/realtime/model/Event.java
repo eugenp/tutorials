@@ -6,9 +6,10 @@ public class Event implements Serializable {
 
     private long id;
 
-    public Event(){}
+    public Event() {
+    }
 
-    public Event(long id){
+    public Event(long id) {
         this.id = id;
     }
 
