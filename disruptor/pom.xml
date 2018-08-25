@@ -112,6 +112,7 @@
             <plugin>
                 <groupId>com.jolira</groupId>
                 <artifactId>onejar-maven-plugin</artifactId>
+                <version>${onejar-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <configuration>
@@ -138,6 +139,7 @@
         
         <maven-shade-plugin.version>2.4.3</maven-shade-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
     </properties>
 
 </project>
