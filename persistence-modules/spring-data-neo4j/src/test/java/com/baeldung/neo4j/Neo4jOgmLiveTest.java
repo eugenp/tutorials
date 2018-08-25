@@ -17,7 +17,7 @@ public class Neo4jOgmLiveTest {
 
     @Test
     public void testOgm() {
-        Configuration conf =new Configuration.Builder().build();
+        Configuration conf = new Configuration.Builder().build();
 
         SessionFactory factory = new SessionFactory(conf, "com.baeldung.spring.data.neo4j.domain");
         Session session = factory.openSession();

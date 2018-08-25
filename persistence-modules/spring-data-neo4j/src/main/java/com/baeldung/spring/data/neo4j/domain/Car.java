@@ -7,7 +7,7 @@ import org.neo4j.ogm.annotation.Relationship;
 
 @NodeEntity
 public class Car {
-	@Id @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
 
     private String make;

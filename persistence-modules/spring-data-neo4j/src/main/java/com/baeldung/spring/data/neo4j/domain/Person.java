@@ -13,7 +13,7 @@ import java.util.List;
 @JsonIdentityInfo(generator = JSOGGenerator.class)
 @NodeEntity
 public class Person {
-	@Id @GeneratedValue
+    @Id @GeneratedValue
     Long id;
 
     private String name;
