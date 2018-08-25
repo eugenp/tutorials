@@ -1,4 +1,4 @@
-package algorithms;
+package com.baeldung.algorithms;
 
 import com.baeldung.algorithms.middleelementlookup.MiddleElementLookup;
 import com.baeldung.algorithms.middleelementlookup.Node;
