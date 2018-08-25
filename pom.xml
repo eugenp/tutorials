@@ -469,6 +469,7 @@
 				<module>spring-boot-logging-log4j2</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
+                <module>spring-cloud-cloudfoundry</module>
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
