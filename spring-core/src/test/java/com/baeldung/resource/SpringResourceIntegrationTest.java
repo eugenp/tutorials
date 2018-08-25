@@ -31,7 +31,7 @@ import org.springframework.util.ResourceUtils;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class)
-public class SpringResourceIntegrationTest {
+public class SpringResourceTest {
     /**
      * Resource loader instance for lazily loading resources.
      */
@@ -77,8 +77,8 @@ public class SpringResourceIntegrationTest {
 
     @Test
     public void whenResourceUtils_thenReadSuccessful() throws IOException {
-        final File employeeFile = ResourceUtils.getFile("classpath:data/employees.dat");
-        final String employees = new String(Files.readAllBytes(employeeFile.toPath()));
+        final String employees = new String(Files.readAllBytes(ResourceUtils.getFile("classpath:data/employees.dat")
+            .toPath()));
         assertEquals(EMPLOYEES_EXPECTED, employees);
     }
 
