@@ -18,4 +18,19 @@ public class Employee {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "employee")
     private List<Email> emails;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Email> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
+    }
 }
