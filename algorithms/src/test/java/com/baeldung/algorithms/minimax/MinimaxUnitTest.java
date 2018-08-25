@@ -1,4 +1,4 @@
-package algorithms.minimax;
+package com.baeldung.algorithms.minimax;
 
 import org.junit.Before;
 import org.junit.Test;
