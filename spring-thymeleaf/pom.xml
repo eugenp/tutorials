@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-thymeleaf</artifactId>
@@ -8,8 +8,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-spring-5</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-5</relativePath>
     </parent>
 
     <dependencies>
@@ -17,7 +18,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${org.springframework-version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <!-- Exclude Commons Logging in favor of SLF4j -->
                 <exclusion>
@@ -29,19 +30,38 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework-version}</version>
+            <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <version>${spring-data.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${javax.validation-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+
         <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${springframework-security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${springframework-security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
+        
         <!-- Thymeleaf -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -50,10 +70,9 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring4</artifactId>
+            <artifactId>thymeleaf-spring5</artifactId>
             <version>${org.thymeleaf-version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect -->
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
@@ -64,47 +83,30 @@
             <artifactId>thymeleaf-extras-java8time</artifactId>
             <version>${org.thymeleaf.extras-version}</version>
         </dependency>
+
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-version}</version>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- Validation -->
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax.validation-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-        <!-- test scoped -->
 
+        <!-- test scoped -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework-version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-test -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
-            <version>${springframework-security.version}</version>
+            <version>${spring-security.version}</version>
             <scope>test</scope>
         </dependency>
-        
-        <!-- Spring data -->
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-commons</artifactId>
-			<version>${springFramework-data.version}</version>
-		</dependency>
+
     </dependencies>
 
     <build>
@@ -117,6 +119,7 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
@@ -136,6 +139,7 @@
                     </configuration>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -160,23 +164,14 @@
     </build>
 
     <properties>
-        <java-version>1.8</java-version>
-        <!-- spring -->
-        <org.springframework-version>4.3.4.RELEASE</org.springframework-version>
-        <springframework-security.version>4.2.0.RELEASE</springframework-security.version>
-        <springFramework-data.version>2.0.7.RELEASE</springFramework-data.version>
-        <javax.servlet-version>3.1.0</javax.servlet-version>
-        <!-- thymeleaf -->
+        <spring-data.version>2.0.9.RELEASE</spring-data.version>
         <org.thymeleaf-version>3.0.9.RELEASE</org.thymeleaf-version>
-        <org.thymeleaf.extras-version>3.0.0.RELEASE</org.thymeleaf.extras-version>
-        <thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
-        <!-- validation -->
-        <javax.validation-version>1.1.0.Final</javax.validation-version>
-        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
-        <org.hibernate-version>5.2.5.Final</org.hibernate-version>
+        <org.thymeleaf.extras-version>3.0.1.RELEASE</org.thymeleaf.extras-version>
+        <thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
+        <javax.validation-version>2.0.1.Final</javax.validation-version>
+        <hibernate-validator.version>6.0.11.Final</hibernate-validator.version>
 
         <!-- Maven plugins -->
-        <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
     </properties>
