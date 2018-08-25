@@ -33,7 +33,6 @@ public class FloatWrapperLookup extends Lookup {
         while (!pivotWrapper.equals(elements[index])) {
             index++;
         }
-        assert index == s - 1 : "Wrong index";
         return index;
     }
 

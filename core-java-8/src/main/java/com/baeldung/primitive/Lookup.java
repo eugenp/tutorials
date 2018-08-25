@@ -23,7 +23,6 @@ public abstract class Lookup {
         Options opt = new OptionsBuilder()
                 .include(getSimpleClassName())
                 .forks(1)
-                .jvmArgs("-ea")
                 .build();
         return new Runner(opt).run();
     }
