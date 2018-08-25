@@ -1,15 +1,13 @@
 package com.baeldung.dependency.exception.app;
 
 import com.baeldung.dependency.exception.repository.InventoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PurchaseDeptService {
-    @Autowired
-    private InventoryRepository inventoryRepository;
+    private InventoryRepository repository;
 
-    public InventoryRepository getInventoryRepository() {
-        return inventoryRepository;
+    public PurchaseDeptService(InventoryRepository repository) {
+        this.repository = repository;
     }
 }
