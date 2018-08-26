@@ -1,13 +1,13 @@
 package com.baeldung.trie;
 
-public class Trie {
+class Trie {
     private TrieNode root;
 
     Trie() {
         root = new TrieNode();
     }
 
-    public void insert(String word) {
+    void insert(String word) {
         TrieNode current = root;
 
         for (int i = 0; i < word.length(); i++) {
@@ -16,11 +16,11 @@ public class Trie {
         current.setEndOfWord(true);
     }
 
-    public boolean delete(String word) {
+    boolean delete(String word) {
         return delete(root, word, 0);
     }
 
-    public boolean containsNode(String word) {
+    boolean containsNode(String word) {
         TrieNode current = root;
 
         for (int i = 0; i < word.length(); i++) {
@@ -34,7 +34,7 @@ public class Trie {
         return current.isEndOfWord();
     }
 
-    public boolean isEmpty() {
+    boolean isEmpty() {
         return root == null;
     }
 
@@ -51,7 +51,7 @@ public class Trie {
         if (node == null) {
             return false;
         }
-        boolean shouldDeleteCurrentNode = delete(node, word, index + 1);
+        boolean shouldDeleteCurrentNode = delete(node, word, index + 1) && !node.isEndOfWord();
 
         if (shouldDeleteCurrentNode) {
             current.getChildren().remove(ch);

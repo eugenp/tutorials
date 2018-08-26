@@ -65,12 +65,12 @@
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-spring-boot-starter</artifactId>
-            <version>3.6.0</version>
+            <version>${graphql-spring-boot-starter.version}</version>
         </dependency>
         <dependency>
             <groupId>com.graphql-java</groupId>
             <artifactId>graphql-java-tools</artifactId>
-            <version>3.2.0</version>
+            <version>${graphql-java-tools.version}</version>
         </dependency>
 
         <dependency>
@@ -107,7 +107,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <dependency>
@@ -115,16 +115,6 @@
             <artifactId>tomcat-servlet-api</artifactId>
             <version>${tomee-servlet-api.version}</version>
             <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
         </dependency>
 
         <dependency>
@@ -149,6 +139,12 @@
             <artifactId>rome</artifactId>
             <version>${rome.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>chaos-monkey-spring-boot</artifactId>
+            <version>${chaos.monkey.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -170,6 +166,7 @@
             <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
+                <version>${git-commit-id-plugin.version}</version>
             </plugin>
 
         </plugins>
@@ -213,13 +210,18 @@
         </profile>
     </profiles>
 
-
     <properties>
         <!-- The main class to start by executing java -jar -->
         <start-class>org.baeldung.demo.DemoApplication</start-class>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <togglz.version>2.4.1.Final</togglz.version>
         <rome.version>1.9.0</rome.version>
+        <chaos.monkey.version>2.0.0</chaos.monkey.version>
+        <graphql-spring-boot-starter.version>3.6.0</graphql-spring-boot-starter.version>
+        <graphql-java-tools.version>3.2.0</graphql-java-tools.version>
+        <guava.version>18.0</guava.version>
+		<junit-platform.version>1.2.0</junit-platform.version>
+		<git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     </properties>
 
 </project>
