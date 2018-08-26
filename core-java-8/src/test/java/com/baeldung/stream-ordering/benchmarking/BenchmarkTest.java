@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 
-public class TestBenchmark
+public class BenchmarkTest
 {
 
   @Test
