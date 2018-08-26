@@ -40,7 +40,8 @@ public class JavaReadWriteJsonExampleUnitTest {
         final ObjectMapper objectMapper = new ObjectMapper();
         final JsonNode jsonNode = objectMapper.readTree(EXAMPLE_JSON);
         assertNotNull(jsonNode);
-        assertThat(jsonNode.get("color").asText(), containsString("Black"));
+        assertThat(jsonNode.get("color")
+            .asText(), containsString("Black"));
     }
 
     @Test
