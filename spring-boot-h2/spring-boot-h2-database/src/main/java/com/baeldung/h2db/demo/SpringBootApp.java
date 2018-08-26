@@ -12,26 +12,29 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @SpringBootApplication
 public class SpringBootApp {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootApp.class, args);
-	}
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootApp.class, args);
+    }
 
-	@PostConstruct
-	private void initDb() {
-		System.out.println("****** Creating table: employees ******");
-		jdbcTemplate.execute("drop table employees if exists");
-		jdbcTemplate.execute("create table employees(id serial,first_name varchar(255),last_name varchar(255))");
+    @PostConstruct
+    private void initDb() {
+        System.out.println("****** Creating table: employees ******");
+        jdbcTemplate.execute("drop table employees if exists");
+        jdbcTemplate.execute(
+                "create table employees(id serial,first_name varchar(255),last_name varchar(255))");
 
-		System.out.println("****** Inserting Sample data in the table: employees ******");
-		jdbcTemplate.execute("insert into employees(first_name, last_name) values('Eugen','Paraschiv')");
-		jdbcTemplate.execute("insert into employees(first_name, last_name) values('Scott','Tiger')");
-	}
+        System.out.println("****** Inserting Sample data in the table: employees ******");
+        jdbcTemplate.execute(
+                "insert into employees(first_name, last_name) values('Eugen','Paraschiv')");
+        jdbcTemplate
+                .execute("insert into employees(first_name, last_name) values('Scott','Tiger')");
+    }
 
-	@Bean(initMethod = "start", destroyMethod = "stop")
-	public Server inMemoryH2DatabaseaServer() throws SQLException {
-		return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9090");
-	}
+    @Bean(initMethod = "start", destroyMethod = "stop")
+    public Server inMemoryH2DatabaseaServer() throws SQLException {
+        return Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9091");
+    }
 }

@@ -12,29 +12,31 @@ import org.springframework.jdbc.core.RowMapper;
 @SpringBootApplication
 public class SpringBootApp {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBootApp.class, args);
-	}
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-	@Autowired
-	private JdbcTemplate jdbcTemplate;
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootApp.class, args);
+    }
 
-	@PostConstruct
-	private void initDb() {
-		System.out.println("****** Inserting More Sample data in the table: employees ******");
-		jdbcTemplate.execute("insert into employees(first_name, last_name) values('Donald','Trump')");
-		jdbcTemplate.execute("insert into employees(first_name, last_name) values('Barack','Obama')");
+    @PostConstruct
+    private void initDb() {
+        System.out.println("****** Inserting More Sample data in the table: employees ******");
+        jdbcTemplate
+                .execute("insert into employees(first_name, last_name) values('Donald','Trump')");
+        jdbcTemplate
+                .execute("insert into employees(first_name, last_name) values('Barack','Obama')");
 
-		System.out.println("****** Fetching from table: employees ******");
-		jdbcTemplate.query("select id,first_name,last_name from employees",
-				new RowMapper<Object>() {
-			@Override
-			public Object mapRow(ResultSet rs, int i) throws SQLException {
-				System.out.println(rs.getString("id") + " " +
-						rs.getString("first_name") + " " +
-						rs.getString("last_name"));
-				return null;
-			}
-		});
-	}
+        System.out.println("****** Fetching from table: employees ******");
+        jdbcTemplate.query("select id,first_name,last_name from employees",
+                new RowMapper<Object>() {
+                    @Override
+                    public Object mapRow(ResultSet rs, int i) throws SQLException {
+                        System.out.println(rs.getString("id") + " " +
+                                rs.getString("first_name") + " " +
+                                rs.getString("last_name"));
+                        return null;
+                    }
+                });
+    }
 }
