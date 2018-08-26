@@ -6,7 +6,7 @@ html, body, main {
   position: absolute;
   height: 100%;
   width: 100%;
-  color: #fff;
+  color: white;
   font-family: 'Poiret One', sans-serif;
   opacity:.95;
 }
@@ -35,11 +35,11 @@ span, a {
 
 a {
   text-decoration: none;
-  color: deeppink;
+  color: white;
 }
 
 a:hover {
-  color: pink;
+  color: lightgray;
 }
 
 input {
@@ -47,7 +47,7 @@ input {
   background: none !important;
   border-radius: 25px;
   background-color: #fff;
-  color: deeppink;
+  color: white;
   outline: none;
   margin-left: 2px;
   padding-left: 25px;
@@ -62,7 +62,7 @@ button {
   background: transparent;
   border-radius: 25px;
   padding: 6px;
-  color: #fff;
+  color: white;
 }
 
 button:hover {
