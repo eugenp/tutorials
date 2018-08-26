@@ -48,33 +48,29 @@
   </dependencies>
     
     <build>
+	<finalName>spring-boot-persistence</finalName>    
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+		</plugin>
+		<resources>
+		    <resource>
+			<directory>src/main/resources</directory>
+			<filtering>true</filtering>
+		    </resource>
+		</resources>
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-war-plugin</artifactId>
+		</plugin>
+		<plugin>
+		    <groupId>pl.project13.maven</groupId>
+		    <artifactId>git-commit-id-plugin</artifactId>
+		    <version>${git-commit-id-plugin.version}</version>
+		</plugin>	
         </plugins>
     </build>
-	<build>
-		<finalName>spring-boot-persistence</finalName>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>pl.project13.maven</groupId>
-				<artifactId>git-commit-id-plugin</artifactId>
-				<version>${git-commit-id-plugin.version}</version>
-			</plugin>
-		</plugins>
-	</build>
 
   <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
