@@ -321,6 +321,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -458,6 +459,7 @@
 				<module>spring-batch</module>
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -515,6 +517,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -638,7 +641,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 
 				<!-- <module>asm</module> <module>atomix</module> <module>apache-cayenne</module>
@@ -723,6 +726,7 @@
 
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -783,6 +787,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
         <module>spring-reactive-kotlin</module>
 
@@ -876,7 +881,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -1052,6 +1057,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -1207,7 +1213,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-
+				<module>parent-kotlin</module>
                 <module>libraries</module>
                 <module>geotools</module>
                 <module>jhipster/jhipster-monolithic</module>
