@@ -104,7 +104,7 @@
         <junit.vintage.version>4.12.1</junit.vintage.version>
         <log4j2.version>2.8.2</log4j2.version>
         <h2.version>1.4.196</h2.version>
-        <mockito.version>2.11.0</mockito.version>
+        <mockito.version>2.21.0</mockito.version>
         <spring.version>5.0.1.RELEASE</spring.version>
         <testcontainers.version>1.7.2</testcontainers.version>
         <postgresql.version>42.2.2</postgresql.version>
