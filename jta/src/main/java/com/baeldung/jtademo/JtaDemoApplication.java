@@ -2,16 +2,21 @@ package com.baeldung.jtademo;
 
 import org.hsqldb.jdbc.pool.JDBCXADataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.jta.bitronix.BitronixXADataSourceWrapper;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication()
+@EnableAutoConfiguration
 @EnableTransactionManagement
+@Configuration
+@ComponentScan
 public class JtaDemoApplication {
 
     @Bean("dataSourceAccount")
