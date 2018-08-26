@@ -9,7 +9,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>spring-boot-app1</name>
   <description>Demo Spring Boot applications that starts H2 in memory database</description>
 
   <parent>

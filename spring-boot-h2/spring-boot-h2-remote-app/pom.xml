@@ -9,7 +9,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>spring-boot-app2</name>
   <description>Demo Spring Boot applications that access H2 in memory database created
     in another Spring Boot application
   </description>
