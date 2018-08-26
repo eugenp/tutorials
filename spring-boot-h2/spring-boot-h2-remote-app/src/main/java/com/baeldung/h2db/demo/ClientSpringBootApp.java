@@ -10,13 +10,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 @SpringBootApplication
-public class SpringBootApp {
+public class ClientSpringBootApp {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootApp.class, args);
+        SpringApplication.run(ClientSpringBootApp.class, args);
     }
 
     @PostConstruct
