@@ -11,9 +11,9 @@ import java.util.stream.IntStream;
 import static org.junit.Assert.assertEquals;
 
 
-public class StreamsOrderingTest {
+public class StreamsOrderingUnitTest {
 
-  Logger logger = Logger.getLogger( StreamsOrderingTest.class.getName());
+  Logger logger = Logger.getLogger( StreamsOrderingUnitTest.class.getName());
 
   @Before
   public void setUp() throws Exception {
