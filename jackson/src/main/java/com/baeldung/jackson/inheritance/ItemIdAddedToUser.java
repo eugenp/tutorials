@@ -12,10 +12,7 @@ public class ItemIdAddedToUser extends Event {
     private final Long quantity;
 
     @JsonCreator
-    public ItemIdAddedToUser(@JsonProperty("id") String id,
-                             @JsonProperty("timestamp") Long timestamp,
-                             @JsonProperty("itemId") String itemId,
-                             @JsonProperty("quantity") Long quantity) {
+    public ItemIdAddedToUser(@JsonProperty("id") String id, @JsonProperty("timestamp") Long timestamp, @JsonProperty("itemId") String itemId, @JsonProperty("quantity") Long quantity) {
         super(id, timestamp);
         this.itemId = itemId;
         this.quantity = quantity;

@@ -73,7 +73,7 @@ public class Customer implements Comparable<Customer> {
         this.name = name;
         this.phone = phone;
     }
-    
+
     public Customer(String name) {
         super();
         this.name = name;

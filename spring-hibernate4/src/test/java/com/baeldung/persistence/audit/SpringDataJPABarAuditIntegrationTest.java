@@ -6,9 +6,6 @@ import static org.junit.Assert.assertTrue;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import com.baeldung.persistence.model.Bar;
-import com.baeldung.persistence.service.IBarService;
-import com.baeldung.spring.PersistenceConfig;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,8 +21,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import com.baeldung.persistence.model.Bar;
+import com.baeldung.persistence.service.IBarService;
+import com.baeldung.spring.config.PersistenceTestConfig;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { PersistenceConfig.class }, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = { PersistenceTestConfig.class }, loader = AnnotationConfigContextLoader.class)
 public class SpringDataJPABarAuditIntegrationTest {
 
     private static Logger logger = LoggerFactory.getLogger(SpringDataJPABarAuditIntegrationTest.class);

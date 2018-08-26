@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>exchange-rate-app</artifactId>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>java-spi</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>exchange-rate-api</artifactId>
+            <version>${exchange-rate-api.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <exchange-rate-api.version>1.0.0-SNAPSHOT</exchange-rate-api.version>
+    </properties>
+
+</project>

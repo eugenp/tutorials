@@ -113,7 +113,8 @@ public class JavaSortingUnitTest {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
 
-        assertTrue(Arrays.equals(sortedMap.keySet().toArray(), sortedKeys));
+        assertTrue(Arrays.equals(sortedMap.keySet()
+            .toArray(), sortedKeys));
     }
 
     @Test
@@ -127,7 +128,8 @@ public class JavaSortingUnitTest {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
 
-        assertTrue(Arrays.equals(sortedMap.values().toArray(), sortedValues));
+        assertTrue(Arrays.equals(sortedMap.values()
+            .toArray(), sortedValues));
     }
 
     @Test

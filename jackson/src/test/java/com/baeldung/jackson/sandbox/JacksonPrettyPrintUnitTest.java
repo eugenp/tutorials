@@ -33,7 +33,8 @@ public class JacksonPrettyPrintUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
         try {
             final Object json = mapper.readValue(readFile(fileName, StandardCharsets.UTF_8), Object.class);
-            System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json));
+            System.out.println(mapper.writerWithDefaultPrettyPrinter()
+                .writeValueAsString(json));
         } catch (final IOException e) {
             e.printStackTrace();
         }
@@ -42,7 +43,8 @@ public class JacksonPrettyPrintUnitTest {
 
     static String readFile(final String path, final Charset encoding) throws IOException {
         final byte[] encoded = Files.readAllBytes(Paths.get(path));
-        return encoding.decode(ByteBuffer.wrap(encoded)).toString();
+        return encoding.decode(ByteBuffer.wrap(encoded))
+            .toString();
     }
 
 }
