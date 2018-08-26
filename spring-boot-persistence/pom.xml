@@ -53,22 +53,17 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-		</plugin>
-		<resources>
-		    <resource>
-			<directory>src/main/resources</directory>
-			<filtering>true</filtering>
-		    </resource>
-		</resources>
-		<plugin>
-		    <groupId>org.apache.maven.plugins</groupId>
-		    <artifactId>maven-war-plugin</artifactId>
-		</plugin>
-		<plugin>
-		    <groupId>pl.project13.maven</groupId>
-		    <artifactId>git-commit-id-plugin</artifactId>
-		    <version>${git-commit-id-plugin.version}</version>
-		</plugin>	
+	    </plugin>
+	    <resources>
+	        <resource>
+		    <directory>src/main/resources</directory>
+		    <filtering>true</filtering>
+		</resource>
+	    </resources>
+	    <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-war-plugin</artifactId>
+	    </plugin>
         </plugins>
     </build>
 
@@ -78,6 +73,5 @@
       <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
       <tomcat-jdbc.version>9.0.10</tomcat-jdbc.version>
       <h2database.version>1.4.197</h2database.version>
-      <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
   </properties>
 </project>
