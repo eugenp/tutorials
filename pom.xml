@@ -458,6 +458,7 @@
 				<module>spring-batch</module>
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -723,6 +724,7 @@
 
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
