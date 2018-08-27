@@ -58,12 +58,12 @@
     
     <build>
         <finalName>spring-boot-persistence</finalName>
-		    <resources>
-			      <resource>
-				        <directory>src/main/resources</directory>
-				        <filtering>true</filtering>
-			    </resource>
-		    </resources>
+        <resources>
+	    <resource>
+	        <directory>src/main/resources</directory>
+		<filtering>true</filtering>
+	    </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
