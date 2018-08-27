@@ -1,4 +1,4 @@
-package com.baeldung.application;
+package com.baeldung.tomcatconnectionpool.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
