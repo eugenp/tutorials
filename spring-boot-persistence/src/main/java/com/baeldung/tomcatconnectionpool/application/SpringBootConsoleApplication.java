@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
+@EnableJpaRepositories(basePackages = {"com.baeldung.application"})
 public class SpringBootConsoleApplication {
     
     public static void main(String[] args) {
