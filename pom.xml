@@ -321,6 +321,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -347,6 +348,7 @@
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
@@ -453,6 +455,7 @@
 				<module>spring-batch</module>
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -510,6 +513,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -577,6 +581,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
+				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
@@ -634,7 +639,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 
 				<!-- <module>asm</module> <module>atomix</module> <module>apache-cayenne</module>
@@ -717,6 +722,7 @@
 
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -777,6 +783,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
         <module>spring-reactive-kotlin</module>
 
@@ -870,7 +877,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -896,6 +903,7 @@
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
 				<module>core-groovy</module>
 
 				<module>couchbase</module>
@@ -1042,6 +1050,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -1107,6 +1116,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
+				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
@@ -1197,7 +1207,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-
+				<module>parent-kotlin</module>
                 <module>libraries</module>
                 <module>geotools</module>
                 <module>jhipster/jhipster-monolithic</module>
