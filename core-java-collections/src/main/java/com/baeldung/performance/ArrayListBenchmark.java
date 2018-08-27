@@ -5,10 +5,7 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
@@ -20,6 +17,7 @@ public class ArrayListBenchmark {
     public static class MyState {
 
         List<Employee> employeeList = new ArrayList<>();
+        //LinkedList<Employee> employeeList = new LinkedList<>();
 
         long iterations = 100000;
 
@@ -38,36 +36,36 @@ public class ArrayListBenchmark {
         }
     }
 
-//    @Benchmark
-//    public void testAddAt(ArrayListBenchmark.MyState state) {
-//        state.employeeList.add((int) (state.iterations), new Employee(state.iterations, "John"));
-//    }
-//
-//    @Benchmark
-//    public boolean testContains(ArrayListBenchmark.MyState state) {
-//        return state.employeeList.contains(state.employee);
-//    }
-//
-//    @Benchmark
-//    public int testIndexOf(ArrayListBenchmark.MyState state) {
-//        return state.employeeList.indexOf(state.employee);
-//    }
-//
-//    @Benchmark
-//    public Employee testGet(ArrayListBenchmark.MyState state) {
-//        return state.employeeList.get(state.employeeIndex);
-//    }
-//
-//    @Benchmark
-//    public boolean testRemove(ArrayListBenchmark.MyState state) {
-//        return state.employeeList.remove(state.employee);
-//    }
+    @Benchmark
+    public void testAddAt(ArrayListBenchmark.MyState state) {
+        state.employeeList.add((int) (state.iterations), new Employee(state.iterations, "John"));
+    }
 
     @Benchmark
-    public void testAdd(ArrayListBenchmark.MyState state) {
-        state.employeeList = new ArrayList<>();
-        state.employeeList.add(new Employee(state.iterations + 1, "John"));
+    public boolean testContains(ArrayListBenchmark.MyState state) {
+        return state.employeeList.contains(state.employee);
     }
+
+    @Benchmark
+    public int testIndexOf(ArrayListBenchmark.MyState state) {
+        return state.employeeList.indexOf(state.employee);
+    }
+
+    @Benchmark
+    public Employee testGet(ArrayListBenchmark.MyState state) {
+        return state.employeeList.get(state.employeeIndex);
+    }
+
+    @Benchmark
+    public boolean testRemove(ArrayListBenchmark.MyState state) {
+        return state.employeeList.remove(state.employee);
+    }
+
+//    @Benchmark
+//    public void testAdd(ArrayListBenchmark.MyState state) {
+//        state.employeeList = new ArrayList<>();
+//        state.employeeList.add(new Employee(state.iterations + 1, "John"));
+//    }
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()

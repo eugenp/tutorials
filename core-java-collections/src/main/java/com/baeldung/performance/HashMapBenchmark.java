@@ -6,14 +6,12 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Warmup(iterations = 10)
-public class HashMapBenchMark {
+public class HashMapBenchmark {
 
     @State(Scope.Thread)
     public static class MyState {
@@ -44,29 +42,29 @@ public class HashMapBenchMark {
     }
 
     @Benchmark
-    public Employee testGet(HashMapBenchMark.MyState state) {
+    public Employee testGet(HashMapBenchmark.MyState state) {
         return state.employeeMap.get(state.iterations);
     }
 
     @Benchmark
-    public Employee testRemove(HashMapBenchMark.MyState state) {
+    public Employee testRemove(HashMapBenchmark.MyState state) {
         return state.employeeMap.remove(state.iterations);
     }
 
     @Benchmark
-    public Employee testPut(HashMapBenchMark.MyState state) {
+    public Employee testPut(HashMapBenchmark.MyState state) {
         return state.employeeMap.put(state.employee.getId(), state.employee);
     }
 
     @Benchmark
-    public Boolean testContainsKey(HashMapBenchMark.MyState state) {
+    public Boolean testContainsKey(HashMapBenchmark.MyState state) {
         return state.employeeMap.containsKey(state.employee.getId());
     }
 
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
-                .include(HashMapBenchMark.class.getSimpleName()).threads(1)
+                .include(HashMapBenchmark.class.getSimpleName()).threads(1)
                 .forks(1).shouldFailOnError(true)
                 .shouldDoGC(true)
                 .jvmArgs("-server").build();
