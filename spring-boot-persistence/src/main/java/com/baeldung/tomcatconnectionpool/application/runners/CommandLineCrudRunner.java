@@ -1,4 +1,4 @@
-package com.baeldung.application.runners;
+package com.baeldung.tomcatconnectionpool.application.runners;
 
 import com.baeldung.application.entities.Customer;
 import com.baeldung.application.repositories.CustomerRepository;
