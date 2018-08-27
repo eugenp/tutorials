@@ -1,4 +1,4 @@
-package com.baeldung.application.entities;
+package com.baeldung.tomcactconnectionpool.application.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
