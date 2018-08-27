@@ -355,6 +355,7 @@
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
 				<module>core-java-concurrency-collections</module>
+				<module>crunch</module>
 				<module>couchbase</module>
 				<module>deltaspike</module>
 				<module>dozer</module>
