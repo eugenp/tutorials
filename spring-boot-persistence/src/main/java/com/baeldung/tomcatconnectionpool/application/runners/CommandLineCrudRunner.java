@@ -12,7 +12,9 @@ public class CommandLineCrudRunner implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(CommandLineCrudRunner.class);
     
     @Autowired
-    private final CustomerRepository customerRepository;
+    public CommandLineCrudRunner(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
     
     @Override
     public void run(String... args) throws Exception {
