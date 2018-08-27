@@ -1,11 +1,7 @@
 package com.baeldung.tomcatconnectionpool.application.runners;
 
 import com.baeldung.tomcatconnectionpool.application.entities.Customer;
-<<<<<<< HEAD
-import com.baeldung.tomcatconnectionpool.repositories.CustomerRepository;
-=======
 import com.baeldung.tomcatconnectionpool.application.repositories.CustomerRepository;
->>>>>>> 9220c0538c338db616bfe46a5bef0d036d6a559c
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
