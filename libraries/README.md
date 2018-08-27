@@ -35,7 +35,6 @@
 - [Introduction to Eclipse Collections](http://www.baeldung.com/eclipse-collections)
 - [DistinctBy in Java Stream API](http://www.baeldung.com/java-streams-distinct-by)
 - [Introduction to Apache Commons CSV](http://www.baeldung.com/apache-commons-csv)
-- [Difference Between Two Dates in Java](http://www.baeldung.com/java-date-difference)
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
 - [Apache Commons IO](http://www.baeldung.com/apache-commons-io)
 - [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
@@ -86,6 +85,8 @@
 - [Convert String to Date in Java](http://www.baeldung.com/java-string-to-date)
 - [Histograms with Apache Commons Frequency](http://www.baeldung.com/apache-commons-frequency)
 - [Guide to Resilience4j](http://www.baeldung.com/resilience4j)
+- [Parsing YAML with SnakeYAML](http://www.baeldung.com/java-snake-yaml)
+- [Guide to JMapper](http://www.baeldung.com/jmapper)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

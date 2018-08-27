@@ -41,18 +41,6 @@
             <groupId>javax.json.bind</groupId>
             <artifactId>javax.json.bind-api</artifactId>
         </dependency>
-        <!-- Dependencies for Yasson -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse</groupId> -->
-        <!-- <artifactId>yasson</artifactId> -->
-        <!-- <version>1.0</version> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.glassfish</groupId> -->
-        <!-- <artifactId>javax.json</artifactId> -->
-        <!-- <version>1.1.2</version> -->
-        <!-- </dependency> -->
-        <!-- Dependencies for Johnzon -->
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-json_1.1_spec</artifactId>
@@ -86,43 +74,19 @@
             <artifactId>spring-test</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collections4.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
         </dependency>
         <!-- restdocs -->
         <dependency>
@@ -145,22 +109,6 @@
                 <configuration>
                     <mainClass>com.baeldung.Spring5Application</mainClass>
                     <layout>JAR</layout>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <forkCount>3</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*IntTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
             <plugin>
@@ -190,9 +138,6 @@
     </build>
 
     <properties>
-        <junit.platform.version>1.0.0</junit.platform.version>
-        <spring.version>5.0.2.RELEASE</spring.version>
-        <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <geronimo-json_1.1_spec.version>1.0</geronimo-json_1.1_spec.version>
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
         <commons-collections4.version>4.1</commons-collections4.version>
