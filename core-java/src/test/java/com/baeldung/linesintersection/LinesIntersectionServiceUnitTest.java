@@ -8,7 +8,7 @@ import static org.hamcrest.Matchers.*;
 
 import org.junit.Test;
 
-public class LinesIntersectionServiceTest {
+public class LinesIntersectionServiceUnitTest {
     private LinesIntersectionService service = new LinesIntersectionService();
 
     @Test
