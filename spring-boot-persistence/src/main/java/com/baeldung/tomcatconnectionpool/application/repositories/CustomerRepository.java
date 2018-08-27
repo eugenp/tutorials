@@ -1,6 +1,6 @@
 package com.baeldung.tomcatconnectionpool.application.repositories;
 
-import com.baeldung.application.entities.Customer;
+import com.baeldung.tomcatconnectionpool.application.entities.Customer;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
