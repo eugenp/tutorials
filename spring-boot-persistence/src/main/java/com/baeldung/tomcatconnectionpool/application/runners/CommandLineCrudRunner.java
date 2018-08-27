@@ -1,7 +1,11 @@
 package com.baeldung.tomcatconnectionpool.application.runners;
 
 import com.baeldung.tomcatconnectionpool.application.entities.Customer;
+<<<<<<< HEAD
 import com.baeldung.tomcatconnectionpool.repositories.CustomerRepository;
+=======
+import com.baeldung.tomcatconnectionpool.application.repositories.CustomerRepository;
+>>>>>>> 9220c0538c338db616bfe46a5bef0d036d6a559c
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +16,9 @@ import org.springframework.stereotype.Component;
 public class CommandLineCrudRunner implements CommandLineRunner {
     
     private static final Logger logger = LoggerFactory.getLogger(CommandLineCrudRunner.class);
-    private final CustomerRepository repository;
     
     @Autowired
-    public CommandLineCrudRunner(CustomerRepository repository) {
-        this.repository = repository;
-    }
+    CustomerRepository repository;
     
     @Override
     public void run(String... args) throws Exception {

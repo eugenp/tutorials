@@ -15,7 +15,6 @@ public class JavaTimerLongRunningUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(JavaTimerLongRunningUnitTest.class);
 
-
     // tests
 
     @Test
@@ -23,7 +22,8 @@ public class JavaTimerLongRunningUnitTest {
         final TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                LOG.debug("Task performed on: " + new Date() + "\n" + "Thread's name: " + Thread.currentThread().getName());
+                LOG.debug("Task performed on: " + new Date() + "\n" + "Thread's name: " + Thread.currentThread()
+                    .getName());
             }
         };
         final Timer timer = new Timer("Timer");

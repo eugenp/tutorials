@@ -1,0 +1,21 @@
+# Make the application available at http://localhost:7070/authserver
+server:
+  port: 7070
+  contextPath: /authserver
+
+# Our certificate settings for enabling JWT tokens
+jwt:
+  certificate:
+    store:
+      file: classpath:/certificate/mykeystore.jks
+      password: abirkhan04
+    key:
+      alias: myauthkey
+      password: abirkhan04
+
+      
+security:
+  oauth2:
+    resource: 
+      filter-order: 3
+      

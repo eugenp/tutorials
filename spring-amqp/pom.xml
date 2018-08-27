@@ -1,12 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>springamqp</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>springamqp</name>
     <description>Introduction to Spring-AMQP</description>
 
@@ -16,15 +14,11 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
-            <version>1.6.6.RELEASE</version>
+            <version>${spring-rabbit}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -35,6 +29,11 @@
     </dependencies>
 
     <build>
-        <finalName>springamqp</finalName>
+        <finalName>spring-amqp</finalName>
     </build>
+
+    <properties>
+        <spring-rabbit>1.6.6.RELEASE</spring-rabbit>
+    </properties>
+
 </project>
