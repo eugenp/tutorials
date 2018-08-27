@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Course List</title>
+</head>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			url : "/spring-thymeleaf/js",
+		});
+	});
+</script>
+<body>
+	<h1>Course List</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th th:text="#{msg.id}" />
+				<th th:text="#{msg.name}" />
+				<th th:text="#{msg.gender}" />
+				<th th:text="#{msg.percent}" />
+				<th th:text="index" />
+				<th th:text="count" />
+				<th th:text="first" />
+				<th th:text="last" />
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="student, iStat : ${students}" th:style="${iStat.odd}? 'font-weight: bold;'" th:alt-title="${iStat.even}? 'even' : 'odd'">
+				<td th:text="${student.id}" />
+				<td th:text="${student.name}" />
+				<td th:switch="${student.gender}"><span th:case="'M'"
+					th:text="Male" /> <span th:case="'F'" th:text="Female" /></td>
+				<td th:text="${#conversions.convert(student.percentage, 'Integer')}" />
+				<td th:text="${iStat.index}" />
+				<td th:text="${iStat.count}" />
+				<td th:text="${iStat.first}" />
+				<td th:text="${iStat.last}" /> 
+			</tr>
+		</tbody>
+	</table>
+	<div>
+		<p>
+			<a th:href="@{/}" th:text="#{msg.Home}" />
+		</p>
+	</div>
+</body>
+</html>
+
+
