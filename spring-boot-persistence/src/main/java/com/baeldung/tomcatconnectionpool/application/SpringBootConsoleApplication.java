@@ -8,8 +8,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan({"com.baeldung.application"})
-@EntityScan("com.baeldung.application.entities")
-@EnableJpaRepositories("com.baeldung.application.repositories")public class SpringBootConsoleApplication {
+@EntityScan( basePackages = {"com.baeldung.application.entities"} )
+@EnableJpaRepositories("com.baeldung.application.repositories")
+public class SpringBootConsoleApplication {
     
     public static void main(String[] args) {
         SpringApplication.run(SpringBootConsoleApplication.class);
