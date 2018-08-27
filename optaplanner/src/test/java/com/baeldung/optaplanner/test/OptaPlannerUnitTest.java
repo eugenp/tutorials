@@ -37,6 +37,7 @@ public class OptaPlannerUnitTest {
         CourseSchedule solvedCourseSchedule = solver.solve(unsolvedCourseSchedule);
 
         Assert.assertNotNull(solvedCourseSchedule.getScore());
+        Assert.assertEquals(-4, solvedCourseSchedule.getScore().getHardScore());
     }
 
     @Test
@@ -47,5 +48,6 @@ public class OptaPlannerUnitTest {
         CourseSchedule solvedCourseSchedule = solver.solve(unsolvedCourseSchedule);
 
         Assert.assertNotNull(solvedCourseSchedule.getScore());
+        Assert.assertEquals(0, solvedCourseSchedule.getScore().getHardScore());
     }
 }
