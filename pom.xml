@@ -321,6 +321,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -342,15 +343,18 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java</module>
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
 				<module>couchbase</module>
 				<module>deltaspike</module>
 				<module>dozer</module>
@@ -434,6 +438,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -441,6 +446,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -453,6 +459,7 @@
 				<module>spring-batch</module>
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -510,6 +517,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -633,7 +641,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 
 				<!-- <module>asm</module> <module>atomix</module> <module>apache-cayenne</module>
@@ -691,6 +699,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -698,6 +707,7 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -716,6 +726,7 @@
 
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -776,6 +787,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
         <module>spring-reactive-kotlin</module>
 
@@ -869,7 +881,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -891,10 +903,12 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
 				<module>core-groovy</module>
 
 				<module>couchbase</module>
@@ -972,12 +986,14 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
@@ -1041,6 +1057,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -1196,7 +1213,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-
+				<module>parent-kotlin</module>
                 <module>libraries</module>
                 <module>geotools</module>
                 <module>jhipster/jhipster-monolithic</module>
@@ -1211,6 +1228,7 @@
                 <module>hibernate5</module>
                 <module>spring-data-elasticsearch</module>
                 <module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
             </modules>
 
         </profile>
@@ -1238,7 +1256,7 @@
 		<!-- <gib.enabled>false</gib.enabled> -->
 		<junit.version>4.12</junit.version>
 		<org.hamcrest.version>1.3</org.hamcrest.version>
-		<mockito.version>2.8.9</mockito.version>
+		<mockito.version>2.21.0</mockito.version>
 		<!-- logging -->
 		<org.slf4j.version>1.7.21</org.slf4j.version>
 		<logback.version>1.1.7</logback.version>
