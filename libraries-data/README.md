@@ -10,3 +10,4 @@
 - [A Guide to Apache Ignite](http://www.baeldung.com/apache-ignite)
 - [Apache Ignite with Spring Data](http://www.baeldung.com/apache-ignite-spring-data)
 - [Guide to JMapper](https://github.com/eugenp/tutorials/tree/master/libraries-data)
+- [A Guide to Apache Crunch](https://github.com/eugenp/tutorials/tree/master/libraries-data)
