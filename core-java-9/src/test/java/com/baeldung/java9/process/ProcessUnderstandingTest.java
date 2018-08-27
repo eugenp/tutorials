@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 class ProcessUnderstandingTest {
 
     //@Test - windows specific
-    public void givenSourceProgram_whenExecutedFromAnotherprogram_thenSourceProgramOutput3() throws IOException {
+    public void givenSourceProgram_whenExecutedFromAnotherProgram_thenSourceProgramOutput3() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
         process = Runtime.getRuntime()

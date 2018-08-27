@@ -107,5 +107,4 @@ public class ProcessUnderstanding {
         // send to child
         log.log(Level.INFO, "rc=" + process.waitFor());
     }
-
 }
