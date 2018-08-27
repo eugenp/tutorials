@@ -11,8 +11,8 @@
     <artifactId>spring-remoting-http</artifactId>
     <description>Parent for all modules related to HTTP Spring Remoting.</description>
     <packaging>pom</packaging>
-	<modules>
-		<module>server</module>
+    <modules>
+        <module>server</module>
         <module>client</module>
         <module>api</module>
     </modules>
