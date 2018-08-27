@@ -347,7 +347,7 @@
         <datanucleus-jdo-query.version>5.0.4</datanucleus-jdo-query.version>
         <jmapper.version>1.6.0.1</jmapper.version>
         <org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
-		<org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>   
+        <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>   
     </properties>
 
 </project>
