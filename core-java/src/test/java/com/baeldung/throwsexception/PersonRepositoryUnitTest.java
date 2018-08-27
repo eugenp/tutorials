@@ -31,7 +31,7 @@ public class PersonRepositoryUnitTest {
     }
 
     @Test
-    public void whenIdIsNonNull_thenShouldReturnNameUpperCase() {
+    public void whenIdNonNull_thenReturnsNameUpperCase() {
         String name = Optional
                 .ofNullable(personRepository.findNameById("id"))
                 .map(String::toUpperCase)
