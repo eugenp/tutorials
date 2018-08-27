@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories("com.baeldung.tomcatconnectionpool.application.repositories")
+@EntityScan("com.baeldung.tomcatconnectionpool.application.*") 
 public class SpringBootConsoleApplication {
     
     public static void main(String[] args) {
