@@ -65,7 +65,7 @@ public class Node {
 
     public Node getRandomChildNode() {
         int noOfPossibleMoves = this.childArray.size();
-        int selectRandom = (int) (Math.random() * ((noOfPossibleMoves - 1) + 1));
+        int selectRandom = (int) (Math.random() * noOfPossibleMoves);
         return this.childArray.get(selectRandom);
     }
 

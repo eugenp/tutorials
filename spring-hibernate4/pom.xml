@@ -4,7 +4,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-hibernate4</artifactId>
     <version>0.1-SNAPSHOT</version>
-
     <name>spring-hibernate4</name>
 
     <parent>
@@ -128,6 +127,12 @@
             <version>${hsqldb.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
 
@@ -139,12 +144,6 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
-
-        <plugins>
-
-
-        </plugins>
-
     </build>
 
     <properties>
@@ -160,6 +159,7 @@
         <tomcat-dbcp.version>8.5.8</tomcat-dbcp.version>
         <jta.version>1.1</jta.version>
         <hsqldb.version>2.3.4</hsqldb.version>
+        <h2.version>1.4.193</h2.version>
 
         <!-- various -->
         <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
@@ -178,7 +178,6 @@
         <maven-resources-plugin.version>2.7</maven-resources-plugin.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <!-- <hibernate4-maven-plugin.version>1.1.0</hibernate4-maven-plugin.version> -->
-
     </properties>
 
 </project>

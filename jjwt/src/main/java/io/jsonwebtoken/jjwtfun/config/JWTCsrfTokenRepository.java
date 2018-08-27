@@ -16,7 +16,8 @@ import java.util.UUID;
 
 public class JWTCsrfTokenRepository implements CsrfTokenRepository {
 
-    private static final String DEFAULT_CSRF_TOKEN_ATTR_NAME = CSRFConfig.class.getName().concat(".CSRF_TOKEN");
+    private static final String DEFAULT_CSRF_TOKEN_ATTR_NAME = CSRFConfig.class.getName()
+        .concat(".CSRF_TOKEN");
 
     private static final Logger log = LoggerFactory.getLogger(JWTCsrfTokenRepository.class);
     private byte[] secret;
@@ -27,10 +28,12 @@ public class JWTCsrfTokenRepository implements CsrfTokenRepository {
 
     @Override
     public CsrfToken generateToken(HttpServletRequest request) {
-        String id = UUID.randomUUID().toString().replace("-", "");
+        String id = UUID.randomUUID()
+            .toString()
+            .replace("-", "");
 
         Date now = new Date();
-        Date exp = new Date(System.currentTimeMillis() + (1000*30)); // 30 seconds
+        Date exp = new Date(System.currentTimeMillis() + (1000 * 30)); // 30 seconds
 
         String token = Jwts.builder()
             .setId(id)
@@ -50,8 +53,7 @@ public class JWTCsrfTokenRepository implements CsrfTokenRepository {
             if (session != null) {
                 session.removeAttribute(DEFAULT_CSRF_TOKEN_ATTR_NAME);
             }
-        }
-        else {
+        } else {
             HttpSession session = request.getSession();
             session.setAttribute(DEFAULT_CSRF_TOKEN_ATTR_NAME, token);
         }

@@ -1,8 +1,8 @@
 package com.baeldung.spring.data.es.model;
 
-import static org.springframework.data.elasticsearch.annotations.FieldIndex.not_analyzed;
+import static org.springframework.data.elasticsearch.annotations.FieldType.Keyword;
 import static org.springframework.data.elasticsearch.annotations.FieldType.Nested;
-import static org.springframework.data.elasticsearch.annotations.FieldType.String;
+import static org.springframework.data.elasticsearch.annotations.FieldType.Text;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,13 +19,13 @@ public class Article {
     @Id
     private String id;
 
-    @MultiField(mainField = @Field(type = String), otherFields = { @InnerField(index = not_analyzed, suffix = "verbatim", type = String) })
+    @MultiField(mainField = @Field(type = Text, fielddata = true), otherFields = { @InnerField(suffix = "verbatim", type = Keyword) })
     private String title;
 
-    @Field(type = Nested)
+    @Field(type = Nested, includeInParent = true)
     private List<Author> authors;
 
-    @Field(type = String, index = not_analyzed)
+    @Field(type = Keyword)
     private String[] tags;
 
     public Article() {

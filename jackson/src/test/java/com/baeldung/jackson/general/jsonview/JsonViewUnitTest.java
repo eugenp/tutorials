@@ -22,7 +22,8 @@ public class JsonViewUnitTest {
         Order order = new Order(120);
 
         // act
-        String result = new ObjectMapper().writerWithView(Views.Internal.class).writeValueAsString(order);
+        String result = new ObjectMapper().writerWithView(Views.Internal.class)
+            .writeValueAsString(order);
 
         // assert
         assertThat(from(result).getUUID("id")).isNotNull();
@@ -49,7 +50,8 @@ public class JsonViewUnitTest {
         Order order = new Order(120);
 
         // act
-        String result = new ObjectMapper().writerWithView(Views.Public.class).writeValueAsString(order);
+        String result = new ObjectMapper().writerWithView(Views.Public.class)
+            .writeValueAsString(order);
 
         // assert
         assertThat(from(result).getUUID("id")).isNotNull();
@@ -67,6 +69,5 @@ public class JsonViewUnitTest {
         */
 
     }
-
 
 }
