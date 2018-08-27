@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class CommandLineCrudRunner implements CommandLineRunner {
     
     private static final Logger logger = LoggerFactory.getLogger(CommandLineCrudRunner.class);
-    private final CustomerRepository repository;
     
     @Autowired
     CustomerRepository repository;
