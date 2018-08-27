@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories("com.baeldung.tomcatconnectionpool.application.repositories")
-@EntityScan("com.baeldung.tomcatconnectionpool.application.*") 
+@ComponentScan(basePackages = {"com.baeldung.tomcatconnectionpool.application.*"})
+@EntityScan("com.baeldung.tomcatconnectionpool.application.entities.*") 
 public class SpringBootConsoleApplication {
     
     public static void main(String[] args) {
