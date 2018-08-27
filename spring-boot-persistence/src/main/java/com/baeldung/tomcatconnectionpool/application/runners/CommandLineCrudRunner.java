@@ -10,12 +10,9 @@ import org.springframework.boot.CommandLineRunner;
 public class CommandLineCrudRunner implements CommandLineRunner {
     
     private static final Logger logger = LoggerFactory.getLogger(CommandLineCrudRunner.class);
-    private final CustomerRepository customerRepository;
     
     @Autowired
-    public CommandLineCrudRunner(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+    private final CustomerRepository customerRepository;
     
     @Override
     public void run(String... args) throws Exception {
