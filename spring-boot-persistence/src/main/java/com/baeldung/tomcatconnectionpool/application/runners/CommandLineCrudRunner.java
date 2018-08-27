@@ -15,9 +15,7 @@ public class CommandLineCrudRunner implements CommandLineRunner {
     private final CustomerRepository repository;
     
     @Autowired
-    public CommandLineCrudRunner(CustomerRepository repository) {
-        this.repository = repository;
-    }
+    CustomerRepository repository;
     
     @Override
     public void run(String... args) throws Exception {
