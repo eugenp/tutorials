@@ -1,7 +1,6 @@
 package com.baeldung.tomcatconnectionpool.application.runners;
 
 import com.baeldung.tomcatconnectionpool.application.entities.Customer;
-import com.baeldung.tomcatconnectionpool.repositories.CustomerRepository;
 import com.baeldung.tomcatconnectionpool.application.repositories.CustomerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
