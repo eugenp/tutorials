@@ -584,6 +584,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
+				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
@@ -1123,6 +1124,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
+				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
