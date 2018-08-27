@@ -1,4 +1,4 @@
-package com.baeldung.application.repositories;
+package com.baeldung.tomcatconnectionpool.application.repositories;
 
 import com.baeldung.application.entities.Customer;
 import java.util.List;
