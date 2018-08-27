@@ -1,3 +1,5 @@
+package com.baeldung.streamordering;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,10 +12,9 @@ import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertEquals;
 
+public class StreamsOrderingUnitTest {
 
-public class StreamsOrderingTest {
-
-  Logger logger = Logger.getLogger( StreamsOrderingTest.class.getName());
+  Logger logger = Logger.getLogger( StreamsOrderingUnitTest.class.getName());
 
   @Before
   public void setUp() throws Exception {
