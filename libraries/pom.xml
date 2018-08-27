@@ -484,17 +484,6 @@
         <dependency>
             <groupId>com.darwinsys</groupId>
             <artifactId>hirondelle-date4j</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.darwinsys</groupId>
-            <artifactId>hirondelle-date4j</artifactId>
             <version>${hirondelle-date4j.version}</version>
         </dependency>
         <dependency>
@@ -772,6 +761,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>            
+        </dependency>       
+
     </dependencies>
 
     <repositories>
@@ -909,6 +904,7 @@
     </build>
 
     <properties>
+        <snakeyaml.version>1.21</snakeyaml.version>
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>

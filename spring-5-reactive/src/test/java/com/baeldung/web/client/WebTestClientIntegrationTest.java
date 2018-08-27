@@ -53,7 +53,7 @@ public class WebTestClientIntegrationTest {
             .uri("/resource")
             .exchange()
             .expectStatus()
-            .is3xxRedirection()
+            .isOk()
             .expectBody();
     }
 

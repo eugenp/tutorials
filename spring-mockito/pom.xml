@@ -24,13 +24,13 @@
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
+            <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <mockito.version>1.10.19</mockito.version>
+        <mockito.version>2.21.0</mockito.version>
     </properties>
 
 </project>
