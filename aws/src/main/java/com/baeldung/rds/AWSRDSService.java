@@ -22,8 +22,12 @@ public class AWSRDSService {
     final static Logger logger = Logger.getLogger(AWSRDSService.class.getName());
     private AWSCredentialsProvider credentials;
     private AmazonRDS amazonRDS;
+    private String db_username;
+    private String db_password;
+    private String db_database;
+    private String db_hostname;
 
-    public AWSRDSService() {
+    public AWSRDSService() throws IOException {
         //Init RDS client with credentials and region.
         credentials = new
                 AWSStaticCredentialsProvider(new
@@ -31,6 +35,16 @@ public class AWSRDSService {
                 "<SECRET_KEY>"));
         amazonRDS = AmazonRDSClientBuilder.standard().withCredentials(credentials)
                 .withRegion(Regions.AP_SOUTHEAST_2).build();
+        Properties prop = new Properties();
+        InputStream input = AWSRDSService.class.getClassLoader().getResourceAsStream("db.properties");
+        prop.load(input);
+        db_username = prop.getProperty("db_username");
+        db_password = prop.getProperty("db_password");
+        db_database = prop.getProperty("db_database");
+    }
+
+    public AWSRDSService(AmazonRDS amazonRDS){
+        this.amazonRDS = amazonRDS;
     }
 
     //create and launch new RDS instance
@@ -42,9 +56,9 @@ public class AWSRDSService {
         request.setDBInstanceIdentifier("Sydney");
         request.setEngine("postgres");
         request.setMultiAZ(false);
-        request.setMasterUsername("username");
-        request.setMasterUserPassword("password");
-        request.setDBName("mydb");
+        request.setMasterUsername(db_username);
+        request.setMasterUserPassword(db_password);
+        request.setDBName(db_database);
         request.setStorageType("gp2");
         request.setAllocatedStorage(10);
 
@@ -115,10 +129,7 @@ public class AWSRDSService {
         Properties prop = new Properties();
         InputStream input = AWSRDSService.class.getClassLoader().getResourceAsStream("db.properties");
         prop.load(input);
-        String db_hostname = prop.getProperty("db_hostname");
-        String db_username = prop.getProperty("db_username");
-        String db_password = prop.getProperty("db_password");
-        String db_database = prop.getProperty("db_database");
+        db_hostname = prop.getProperty("db_hostname");
         String jdbc_url = "jdbc:postgresql://" + db_hostname + ":5432/" + db_database;
 
         // Create a connection using the JDBC driver
