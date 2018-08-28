@@ -8,24 +8,24 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.SECONDS)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Warmup(iterations = 10)
 public class StringPerformance {
 
     @State(Scope.Thread)
     public static class MyState {
-        int iterations = 1000;
+        int iterations = 10000;
 
         String result = "";
         String sample = "example";
     }
 
-    @Benchmark
-    public void benchmarkStringDynamicConcat(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            state.result += state.sample;
-        }
-    }
+//    @Benchmark
+//    public void benchmarkStringDynamicConcat(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            state.result += state.sample;
+//        }
+//    }
 
 //    @Benchmark
 //    public void benchmarkStringConstructor(StringPerformance.MyState state) {
@@ -47,6 +47,14 @@ public class StringPerformance {
 //            String s = String.format("hello %d", state.sample);
 //        }
 //    }
+
+    @Benchmark
+    public void benchmarkStringIntern(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            String number = Integer.toString( i );
+            String interned = number.intern();
+        }
+    }
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
