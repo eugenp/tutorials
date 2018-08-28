@@ -10,10 +10,9 @@
     <description>Spring EJB Client</description>
 
     <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-boot-2</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2</relativePath>
+        <groupId>com.baeldung.spring.ejb</groupId>
+        <artifactId>ejb-for-spring</artifactId>
+        <version>1.0.1</version>
     </parent>
 
     <dependencies>
@@ -25,14 +24,12 @@
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
-            <version>${wildfly-ejb.version}</version>
             <type>pom</type>
         </dependency>
 
         <dependency>
             <groupId>com.baeldung.spring.ejb</groupId>
             <artifactId>ejb-remote-for-spring</artifactId>
-            <version>${ejb-remote-for-spring.version}</version>
             <type>ejb</type>
         </dependency>
 

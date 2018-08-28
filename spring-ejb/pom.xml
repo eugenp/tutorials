@@ -9,10 +9,11 @@
     <name>ejb</name>
     <description>Spring EJB Tutorial</description>
 
-    <parent>
+   <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <repositories>
