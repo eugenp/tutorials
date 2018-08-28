@@ -14,23 +14,23 @@ public class CommandLineCrudRunner implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(CommandLineCrudRunner.class);
     
     @Autowired
-    private CustomerRepository repository;
+    private CustomerRepository customerRepository;
     
     @Override
     public void run(String... args) throws Exception {
-        repository.save(new Customer("John", "Doe"));
-        repository.save(new Customer("Jennifer", "Wilson"));
+        customerRepository.save(new Customer("John", "Doe"));
+        customerRepository.save(new Customer("Jennifer", "Wilson"));
         
         logger.info("Customers found with findAll():");
-        repository.findAll().forEach(c -> logger.info(c.toString()));
+        customerRepository.findAll().forEach(c -> logger.info(c.toString()));
         
         logger.info("Customer found with findById(1L):");
-        Customer customer = repository.findById(1L)
+        Customer customer = customerRepository.findById(1L)
                 .orElseGet(() -> new Customer("Non-existing customer", ""));
         logger.info(customer.toString());
         
         logger.info("Customer found with findByLastName('Wilson'):");
-        repository.findByLastName("Wilson").forEach(c -> {
+        customerRepository.findByLastName("Wilson").forEach(c -> {
             logger.info(c.toString());
         });
     }
