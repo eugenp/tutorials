@@ -29,7 +29,13 @@ public class EnglishAlphabetLetters {
         return c == 26;
     }
 
-    public static void main(String[] args) {
-        checkStringForAllLetterUsingStream("intit");
+    public static boolean checkStringForAllLetterUsingRegex(String input) {
+        // filter out all the characters except a-z
+        input = input.replaceAll("[^a-zA-Z]", "");
+        input = input.toLowerCase();
+        // remove duplicate elements
+        input = input.replaceAll("(.)(?=.*\\1)", "");
+        return input.length() == 26;
     }
+
 }
