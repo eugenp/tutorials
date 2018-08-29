@@ -1,4 +1,4 @@
-package com.baeldung.samples.jerseyrx;
+package com.baeldung.clientrx;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.*;
