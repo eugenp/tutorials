@@ -43,17 +43,5 @@ public class TestHelper {
         }
     }
 
-    public TransferLog lastTransferLog() {
-        return jdbcTemplateAudit.query("select FROM_ACCOUNT,TO_ACCOUNT,AMOUNT from AUDIT_LOG order by ID desc", (ResultSetExtractor<TransferLog>) (rs) -> {
-            if(!rs.next()) return null;
-            return new TransferLog(rs.getString(1), rs.getString(2), BigDecimal.valueOf(rs.getDouble(3)));
-        });
-    }
 
-    public BigDecimal balanceOf(String accountId) {
-        return jdbcTemplateAccount.query("select BALANCE from ACCOUNT where ID=?", new Object[] { accountId }, (ResultSetExtractor<BigDecimal>) (rs) -> {
-            rs.next();
-            return new BigDecimal(rs.getDouble(1));
-        });
-    }
 }
