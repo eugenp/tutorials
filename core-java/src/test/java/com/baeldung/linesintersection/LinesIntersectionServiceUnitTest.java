@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
 
 public class LinesIntersectionServiceUnitTest {
     private LinesIntersectionService service = new LinesIntersectionService();
@@ -21,8 +22,8 @@ public class LinesIntersectionServiceUnitTest {
         Optional<Point> point = service.calculateIntersectionPoint(m1, b1, m2, b2);
 
         assertTrue(point.isPresent());
-        assertTrue(point.get().getX() == 1);
-        assertTrue(point.get().getY() == 0);
+        assertEquals(point.get().x, 1);
+        assertEquals(point.get().y, 0);
     }
 
     @Test
