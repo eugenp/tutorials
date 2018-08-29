@@ -13,21 +13,31 @@ public class PersonRepositoryUnitTest {
     PersonRepository personRepository = new PersonRepository();
 
     @Test
-    public void whenIdIsNull_thenExceptionIsThrown() throws Exception {
-        assertThrows(Exception.class,
+    public void whenIdIsNull_thenExceptionIsThrown() {
+        assertThrows(IllegalArgumentException.class,
                 () ->
                         Optional
                                 .ofNullable(personRepository.findNameById(null))
-                                .orElseThrow(Exception::new));
+                                .orElseThrow(IllegalArgumentException::new));
     }
 
     @Test
-    public void whenIdIsNonNull_thenNoExceptionIsThrown() throws Exception {
+    public void whenIdIsNonNull_thenNoExceptionIsThrown() {
         assertAll(
                 () ->
                         Optional
                                 .ofNullable(personRepository.findNameById("id"))
-                                .orElseThrow(Exception::new));
+                                .orElseThrow(RuntimeException::new));
+    }
+
+    @Test
+    public void whenIdNonNull_thenReturnsNameUpperCase() {
+        String name = Optional
+                .ofNullable(personRepository.findNameById("id"))
+                .map(String::toUpperCase)
+                .orElseThrow(RuntimeException::new);
+
+        assertEquals("NAME", name);
     }
 
     @Test
