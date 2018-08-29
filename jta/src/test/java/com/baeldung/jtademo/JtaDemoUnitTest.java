@@ -1,17 +1,21 @@
 package com.baeldung.jtademo;
 
 import com.baeldung.jtademo.dto.TransferLog;
-import com.baeldung.jtademo.services.*;
+import com.baeldung.jtademo.services.AuditService;
+import com.baeldung.jtademo.services.BankAccountService;
+import com.baeldung.jtademo.services.TellerService;
+import com.baeldung.jtademo.services.TestHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.math.BigDecimal;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = JtaDemoApplication.class)

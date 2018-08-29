@@ -1,17 +1,14 @@
 package com.baeldung.jtademo.services;
 
-import com.baeldung.jtademo.dto.TransferLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -42,6 +39,5 @@ public class TestHelper {
             ScriptUtils.executeSqlScript(con, script);
         }
     }
-
 
 }
