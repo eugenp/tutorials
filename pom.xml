@@ -474,6 +474,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
@@ -741,6 +742,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
@@ -1018,6 +1020,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 
 				<module>persistence-modules/spring-data-dynamodb</module>
