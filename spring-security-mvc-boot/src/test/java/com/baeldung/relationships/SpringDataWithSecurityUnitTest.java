@@ -36,7 +36,7 @@ import com.baeldung.util.DummyContentUtil;
 @WebAppConfiguration
 @ContextConfiguration
 @DirtiesContext
-public class SpringDataWithSecurityTest {
+public class SpringDataWithSecurityUnitTest {
     AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
     @Autowired
     private ServletContext servletContext;
@@ -50,8 +50,8 @@ public class SpringDataWithSecurityTest {
         ctx.refresh();
         userRepository = ctx.getBean(UserRepository.class);
         tweetRepository = ctx.getBean(TweetRepository.class);
-        List<AppUser> appUsers = (List<AppUser>) userRepository.save(DummyContentUtil.generateDummyUsers());
-        tweetRepository.save(DummyContentUtil.generateDummyTweets(appUsers));
+        List<AppUser> appUsers = (List<AppUser>) userRepository.saveAll(DummyContentUtil.generateDummyUsers());
+        tweetRepository.saveAll(DummyContentUtil.generateDummyTweets(appUsers));
     }
 
     @AfterClass
