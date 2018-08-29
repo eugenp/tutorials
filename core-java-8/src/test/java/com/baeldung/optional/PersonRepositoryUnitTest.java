@@ -1,11 +1,11 @@
-package com.baeldung.throwsexception;
+package com.baeldung.optional;
 
 import org.junit.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PersonRepositoryUnitTest {
@@ -36,16 +36,6 @@ public class PersonRepositoryUnitTest {
                 .ofNullable(personRepository.findNameById("id"))
                 .map(String::toUpperCase)
                 .orElseThrow(RuntimeException::new);
-
-        assertEquals("NAME", name);
-    }
-
-    @Test
-    public void whenIdIsNonNull_thenShouldReturnNameUpperCase() throws Exception {
-        String name = Optional
-                .ofNullable(personRepository.findNameById("id"))
-                .map(String::toUpperCase)
-                .orElseThrow(Exception::new);
 
         assertEquals("NAME", name);
     }
