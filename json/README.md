@@ -8,3 +8,4 @@
 - [Introduction to JSONForms](http://www.baeldung.com/introduction-to-jsonforms)
 - [Introduction to JsonPath](http://www.baeldung.com/guide-to-jayway-jsonpath)
 - [Introduction to JSON-Java (org.json)](http://www.baeldung.com/java-org-json)
+- [Overview of JSON Pointer](https://www.baeldung.com/json-pointer)
