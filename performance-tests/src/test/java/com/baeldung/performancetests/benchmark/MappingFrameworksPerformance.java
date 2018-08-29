@@ -151,8 +151,8 @@ public class MappingFrameworksPerformance {
 
     @Benchmark
     @Group("simpleTest")
-    public Order dozerMapperSimpleBenchmark() {
-        return DOZER_CONVERTER.convert(sourceOrder);
+    public DestinationCode dozerMapperSimpleBenchmark() {
+        return DOZER_CONVERTER.convert(sourceCode);
     }
 
     @Benchmark
