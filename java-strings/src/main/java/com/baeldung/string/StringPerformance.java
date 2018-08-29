@@ -9,25 +9,25 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@OutputTimeUnit(TimeUnit.SECONDS)
 @Warmup(iterations = 10)
 public class StringPerformance {
 
     @State(Scope.Thread)
     public static class MyState {
-        int iterations = 10000;
+        int iterations = 100000;
 
         String sample = "example";
         String longString = "Hello, I am a bit longer than other Strings in average";
         String result = "";
     }
 
-//    @Benchmark
-//    public void benchmarkStringDynamicConcat(StringPerformance.MyState state) {
-//        for (int i = 0; i < state.iterations; i++) {
-//            state.result += state.sample;
-//        }
-//    }
+    @Benchmark
+    public void benchmarkStringDynamicConcat(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            state.result += state.sample;
+        }
+    }
 
 //    @Benchmark
 //    public void benchmarkStringConstructor(StringPerformance.MyState state) {
@@ -51,6 +51,13 @@ public class StringPerformance {
 //    }
 
 //    @Benchmark
+//    public void benchmarkStringConcat(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            state.result.concat(state.sample);
+//        }
+//    }
+
+//    @Benchmark
 //    public void benchmarkStringIntern(StringPerformance.MyState state) {
 //        for (int i = 0; i < state.iterations; i++) {
 //            String number = Integer.toString( i );
@@ -58,15 +65,15 @@ public class StringPerformance {
 //        }
 //    }
 
-    @Benchmark
-    public void benchmarkStringReplace(StringPerformance.MyState state) {
-        String replaced = state.longString.replace("average", " average !!!");
-    }
-
-    @Benchmark
-    public void benchmarkStringUtilsReplace(StringPerformance.MyState state) {
-        String replaced = StringUtils.replace(state.longString, "average", " average !!!");
-    }
+//    @Benchmark
+//    public void benchmarkStringReplace(StringPerformance.MyState state) {
+//        String replaced = state.longString.replace("average", " average !!!");
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringUtilsReplace(StringPerformance.MyState state) {
+//        String replaced = StringUtils.replace(state.longString, "average", " average !!!");
+//    }
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
