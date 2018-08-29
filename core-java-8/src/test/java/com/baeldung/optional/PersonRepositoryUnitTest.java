@@ -1,4 +1,4 @@
-package com.baeldung.throwsexception;
+package com.baeldung.optional;
 
 import org.junit.Test;
 
