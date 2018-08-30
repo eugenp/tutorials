@@ -55,7 +55,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query(value = "SELECT u FROM User u ORDER BY id")
     Page<User> findAllUsersWithPagination(Pageable pageable);
 
-    @Query(value = "SELECT * FROM Users ORDER BY id \n-- #pageable\n", countQuery = "SELECT count(*) FROM Users", nativeQuery = true)
+    @Query(value = "SELECT * FROM Users ORDER BY id", countQuery = "SELECT count(*) FROM Users", nativeQuery = true)
     Page<User> findAllUsersWithPaginationNative(Pageable pageable);
 
     @Modifying
