@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,6 +23,7 @@ public class DateToStringFormatterUnitTest {
 
     @BeforeClass
     public static void setUp() {
+        TimeZone.setDefault(TimeZone.getTimeZone("CET"));
         Calendar calendar = Calendar.getInstance();
         calendar.set(2018, Calendar.AUGUST, 1, 12, 0);
         date = calendar.getTime();
