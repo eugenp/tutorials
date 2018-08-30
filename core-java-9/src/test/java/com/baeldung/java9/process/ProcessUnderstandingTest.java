@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 class ProcessUnderstandingTest {
 
-    //@Test - windows specific
+    @Test
     public void givenSourceProgram_whenExecutedFromAnotherProgram_thenSourceProgramOutput3() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
@@ -27,7 +27,7 @@ class ProcessUnderstandingTest {
         assertEquals(3, value);            
     }
 
-    //@Test - windows specific
+    @Test
     public void givenSourceProgram_whenReadingInputStream_thenFirstLineEquals3() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\OutputStreamExample.java");
@@ -38,7 +38,7 @@ class ProcessUnderstandingTest {
         assertEquals(3, value);                   
     }
 
-    //@Test - windows specific
+    @Test
     public void givenSubProcess_whenEncounteringError_thenErrorStreamNotNull() throws IOException {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
