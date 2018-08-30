@@ -1,10 +1,10 @@
 package org.baeldung.properties;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
 
-@EnableAutoConfiguration
+@SpringBootApplication
 @ComponentScan(basePackageClasses = { ConfigProperties.class, JsonProperties.class, CustomJsonProperties.class })
 public class ConfigPropertiesDemoApplication {
     public static void main(String[] args) {

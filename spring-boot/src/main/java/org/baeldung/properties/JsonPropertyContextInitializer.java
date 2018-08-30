@@ -26,7 +26,7 @@ public class JsonPropertyContextInitializer implements ApplicationContextInitial
     @SuppressWarnings("unchecked")
     public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
         try {
-            Resource resource = configurableApplicationContext.getResource("classpath:configpropscustom.json");
+            Resource resource = configurableApplicationContext.getResource("classpath:configprops.json");
             Map readValue = new ObjectMapper().readValue(resource.getInputStream(), Map.class);
             Set<Map.Entry> set = readValue.entrySet();
             List<MapPropertySource> propertySources = convertEntrySet(set, Optional.empty());

@@ -1,9 +1,0 @@
-{
-  "host" : "mailer.custom@mail.com",
-  "port" : 8081,
-  "resend" : true,
-  "sender" : {
-    "name": "sender.custom",
-    "address": "street.custom"
-  }
-}

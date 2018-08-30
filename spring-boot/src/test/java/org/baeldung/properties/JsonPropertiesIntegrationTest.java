@@ -21,19 +21,19 @@ public class JsonPropertiesIntegrationTest {
     private CustomJsonProperties customJsonProperties;
 
     @Test
-    public void givenJsonPropertySource_whenPropertySourceFactoryUsed_thenLoadFlatValues() {
+    public void whenPropertiesLoadedViaJsonPropertySource_thenLoadFlatValues() {
         Assert.assertEquals("mailer@mail.com", jsonProperties.getHost());
         Assert.assertEquals(9090, jsonProperties.getPort());
         Assert.assertTrue(jsonProperties.isResend());
     }
 
     @Test
-    public void givenJsonPropertySource_whenPropertySourceFactoryUsed_thenLoadListValues() {
+    public void whenPropertiesLoadedViaJsonPropertySource_thenLoadListValues() {
         Assert.assertThat(jsonProperties.getTopics(), Matchers.is(Arrays.asList("spring", "boot")));
     }
 
     @Test
-    public void givenJsonPropertySource_whenPropertySourceFactoryUsed_thenNestedValuesLoadedAsMap() {
+    public void whenPropertiesLoadedViaJsonPropertySource_thenNestedLoadedAsMap() {
         Assert.assertEquals("sender", jsonProperties.getSender()
             .get("name"));
         Assert.assertEquals("street", jsonProperties.getSender()
@@ -41,18 +41,18 @@ public class JsonPropertiesIntegrationTest {
     }
 
     @Test
-    public void givenCustomJsonPropertySource_whenLoadedIntoEnvironment_thenFlatValuesPopulated() {
-        Assert.assertEquals("mailer.custom@mail.com", customJsonProperties.getHost());
-        Assert.assertEquals(8081, customJsonProperties.getPort());
+    public void whenLoadedIntoEnvironment_thenFlatValuesPopulated() {
+        Assert.assertEquals("mailer@mail.com", customJsonProperties.getHost());
+        Assert.assertEquals(9090, customJsonProperties.getPort());
         Assert.assertTrue(customJsonProperties.isResend());
     }
 
     @Test
-    public void givenCustomJsonPropertySource_whenLoadedIntoEnvironment_thenValuesLoadedIntoClassObject() {
+    public void whenLoadedIntoEnvironment_thenValuesLoadedIntoClassObject() {
         Assert.assertNotNull(customJsonProperties.getSender());
-        Assert.assertEquals("sender.custom", customJsonProperties.getSender()
+        Assert.assertEquals("sender", customJsonProperties.getSender()
             .getName());
-        Assert.assertEquals("street.custom", customJsonProperties.getSender()
+        Assert.assertEquals("street", customJsonProperties.getSender()
             .getAddress());
     }
 
