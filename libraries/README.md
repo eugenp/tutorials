@@ -35,7 +35,6 @@
 - [Introduction to Eclipse Collections](http://www.baeldung.com/eclipse-collections)
 - [DistinctBy in Java Stream API](http://www.baeldung.com/java-streams-distinct-by)
 - [Introduction to Apache Commons CSV](http://www.baeldung.com/apache-commons-csv)
-- [Difference Between Two Dates in Java](http://www.baeldung.com/java-date-difference)
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
 - [Apache Commons IO](http://www.baeldung.com/apache-commons-io)
 - [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
