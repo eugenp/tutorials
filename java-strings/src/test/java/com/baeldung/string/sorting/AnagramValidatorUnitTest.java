@@ -1,4 +1,4 @@
-package org.baeldung.java.sorting.string;
+package com.baeldung.string.sorting;
 
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
-import com.baeldung.sorting.string.anagram.AnagramValidator;
+import com.baeldung.string.sorting.AnagramValidator;
 
 class AnagramValidatorUnitTest {
     
