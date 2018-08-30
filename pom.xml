@@ -43,9 +43,15 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit.jupiter.version}</version>
+			<version>${junit-jupiter.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+        </dependency>
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-core</artifactId>
@@ -69,6 +75,14 @@
 			<artifactId>mockito-core</artifactId>
 			<version>${mockito.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire-logger-api</artifactId>
+			<version>${maven-surefire-plugin.version}</version>
+			<!-- to get around bug https://github.com/junit-team/junit5/issues/801 -->
+			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
@@ -98,6 +112,23 @@
 						<exclude>**/*LiveTest.java</exclude>
 					</excludes>
 				</configuration>
+				<dependencies>
+	                <dependency>
+	                    <groupId>org.junit.platform</groupId>
+	                    <artifactId>junit-platform-surefire-provider</artifactId>
+	                    <version>${junit-platform.version}</version>
+	                </dependency>
+	                <dependency>
+	                    <groupId>org.junit.jupiter</groupId>
+	                    <artifactId>junit-jupiter-engine</artifactId>
+	                    <version>${junit-jupiter.version}</version>
+	                </dependency>
+					<dependency>
+						<groupId>org.junit.vintage</groupId>
+						<artifactId>junit-vintage-engine</artifactId>
+  	                    <version>${junit-jupiter.version}</version>
+					</dependency>
+            	</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -186,6 +217,10 @@
 						<phase>validate</phase>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
 			</plugin>
 		</plugins>
 		<extensions>
@@ -286,6 +321,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -307,15 +343,18 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java</module>
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
 				<module>couchbase</module>
 				<module>deltaspike</module>
 				<module>dozer</module>
@@ -399,6 +438,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -406,6 +446,8 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
+				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
 				<module>spring-activiti</module>
@@ -417,6 +459,7 @@
 				<module>spring-batch</module>
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -431,6 +474,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
@@ -474,6 +518,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -540,6 +585,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
+				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
@@ -551,8 +597,6 @@
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
-				<module>testing-modules/junit-abstract</module>
-				<module>sse-jaxrs</module>
 				<module>spring-boot-angular-ecommerce</module>
 			</modules>
 
@@ -599,7 +643,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 
 				<!-- <module>asm</module> <module>atomix</module> <module>apache-cayenne</module>
@@ -657,6 +701,7 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
@@ -664,6 +709,8 @@
 				<module>spring-4</module>
 				<module>spring-5</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
+				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
 				<module>spring-activiti</module>
@@ -673,7 +720,6 @@
 				<module>spring-amqp-simple</module>
 				<module>spring-apache-camel</module>
 				<module>spring-batch</module>
-				<module>testing-modules/junit-abstract</module>				
 				<module>jmh</module>
 
 				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
@@ -682,6 +728,7 @@
 
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
@@ -695,6 +742,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
@@ -742,6 +790,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
         <module>spring-reactive-kotlin</module>
 
@@ -835,7 +884,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -857,10 +906,12 @@
 				<module>azure</module>
 				<module>bootique</module>
 				<module>cdi</module>
+				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
 				<module>core-groovy</module>
 
 				<module>couchbase</module>
@@ -905,6 +956,7 @@
 				<module>json</module>
 				<module>jsoup</module>
 				<module>testing-modules/junit-5</module>
+				<module>testing-modules/junit5-migration</module>
 				<module>jws</module>
 				<module>libraries-data</module>
 				<module>linkrest</module>
@@ -937,12 +989,15 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
+				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
 				<module>spring-5-security</module>
 				<module>spring-activiti</module>
@@ -965,6 +1020,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 
 				<module>persistence-modules/spring-data-dynamodb</module>
@@ -1005,6 +1061,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -1070,6 +1127,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
+				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
@@ -1079,7 +1137,6 @@
 				<module>antlr</module>
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
-				<module>testing-modules/junit-abstract</module>
 
                 <module>spring-hibernate4</module>
                 <module>xml</module>
@@ -1161,7 +1218,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-
+				<module>parent-kotlin</module>
                 <module>libraries</module>
                 <module>geotools</module>
                 <module>jhipster/jhipster-monolithic</module>
@@ -1176,6 +1233,7 @@
                 <module>hibernate5</module>
                 <module>spring-data-elasticsearch</module>
                 <module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
             </modules>
 
         </profile>
@@ -1203,7 +1261,7 @@
 		<!-- <gib.enabled>false</gib.enabled> -->
 		<junit.version>4.12</junit.version>
 		<org.hamcrest.version>1.3</org.hamcrest.version>
-		<mockito.version>2.8.9</mockito.version>
+		<mockito.version>2.21.0</mockito.version>
 		<!-- logging -->
 		<org.slf4j.version>1.7.21</org.slf4j.version>
 		<logback.version>1.1.7</logback.version>
@@ -1222,7 +1280,7 @@
 		<maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
 		<commons-io.version>2.5</commons-io.version>
 		<commons-cli.version>1.4</commons-cli.version>
-		<maven-war-plugin.version>2.6</maven-war-plugin.version>
+		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
 		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
 		<jstl-api.version>1.2</jstl-api.version>
 		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
@@ -1230,7 +1288,8 @@
 		<jstl.version>1.2</jstl.version>
 		<jackson-databind.version>2.5.0</jackson-databind.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
-		<junit.jupiter.version>5.0.2</junit.jupiter.version>
+		<junit-platform.version>1.2.0</junit-platform.version>
+		<junit-jupiter.version>5.2.0</junit-jupiter.version>
 		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
 		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
 		<custom-pmd.version>0.0.1</custom-pmd.version>
