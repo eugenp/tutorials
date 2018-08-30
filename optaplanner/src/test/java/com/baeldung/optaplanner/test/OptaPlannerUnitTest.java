@@ -11,10 +11,7 @@ import java.util.Arrays;
 
 public class OptaPlannerUnitTest {
 
-    static SolverFactory<CourseSchedule> solverFactory;
     static CourseSchedule unsolvedCourseSchedule;
-    static CourseSchedule solvedCourseSchedule;
-    static Solver<CourseSchedule> solver;
 
     @BeforeAll
     public static void setUp() {
@@ -33,7 +30,7 @@ public class OptaPlannerUnitTest {
     public void test_whenCustomJavaSolver() {
 
         SolverFactory<CourseSchedule> solverFactory = SolverFactory.createFromXmlResource("courseScheduleSolverConfiguration.xml");
-        solver = solverFactory.buildSolver();
+        Solver<CourseSchedule> solver = solverFactory.buildSolver();
         CourseSchedule solvedCourseSchedule = solver.solve(unsolvedCourseSchedule);
 
         Assert.assertNotNull(solvedCourseSchedule.getScore());
@@ -44,7 +41,7 @@ public class OptaPlannerUnitTest {
     public void test_whenDroolsSolver() {
 
         SolverFactory<CourseSchedule> solverFactory = SolverFactory.createFromXmlResource("courseScheduleSolverConfigDrools.xml");
-        solver = solverFactory.buildSolver();
+        Solver<CourseSchedule> solver = solverFactory.buildSolver();
         CourseSchedule solvedCourseSchedule = solver.solve(unsolvedCourseSchedule);
 
         Assert.assertNotNull(solvedCourseSchedule.getScore());
