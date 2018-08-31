@@ -23,7 +23,7 @@ public class LinesIntersectionServiceUnitTest {
 
         assertTrue(point.isPresent());
         assertEquals(point.get().getX(), 1, 0.001);
-        assertEquals(point.get().getX(), 1, 0.001);
+        assertEquals(point.get().getY(), 0, 0.001);
     }
 
     @Test
