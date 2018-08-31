@@ -1,15 +1,14 @@
 package com.baeldung.stream;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 public class PrimitiveStreamsUnitTest {
 
@@ -17,7 +16,7 @@ public class PrimitiveStreamsUnitTest {
 
     @Test
     public void givenAnArrayOfIntegersWhenMinIsCalledThenCorrectMinIsReturned() {
-        int[] integers = new int[] {20, 98, 12, 7, 35};
+        int[] integers = new int[] { 20, 98, 12, 7, 35 };
         int min = streams.min(integers); // returns 7
 
         assertEquals(7, min);
@@ -66,19 +65,14 @@ public class PrimitiveStreamsUnitTest {
     @Test
     public void givenAnArrayWhenSumIsCalledThenTheCorrectSumIsReturned() {
 
-        int sum = Stream.of(33,45)
-          .mapToInt(i -> i)
-          .sum();
+        int sum = Stream.of(33, 45).mapToInt(i -> i).sum();
 
         assertEquals(78, sum);
     }
 
     @Test
     public void givenAnIntStreamThenGetTheEvenIntegers() {
-        List<Integer> evenInts = IntStream.rangeClosed(1, 10)
-          .filter(i -> i % 2 == 0)
-          .boxed()
-          .collect(Collectors.toList());
+        List<Integer> evenInts = IntStream.rangeClosed(1, 10).filter(i -> i % 2 == 0).boxed().collect(Collectors.toList());
 
         List<Integer> expected = IntStream.of(2, 4, 6, 8, 10).boxed().collect(Collectors.toList());
 
