@@ -80,41 +80,62 @@ public class StringPerformance {
 //        String replaced = StringUtils.replace(state.longString, "average", " average !!!");
 //    }
 
+//    @Benchmark
+//    public void benchmarkStringSplit(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            List<String> list = Arrays.asList(state.longString.split(" "));
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringSplitPattern(StringPerformance.MyState state) {
+//        Pattern spacePattern = Pattern.compile(" ");
+//        for (int i = 0; i < state.iterations; i++) {
+//            List<String> list = Arrays.asList(spacePattern.split(state.longString, 0));
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringTokenizer(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            StringTokenizer st = new StringTokenizer(state.longString);
+//            List<String> list = new ArrayList<String>();
+//            while (st.hasMoreTokens()) {
+//                list.add(st.nextToken());
+//            }
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringIndexOf(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            List<String> list = new ArrayList<String>();
+//            int pos = 0, end;
+//            while ((end = state.longString.indexOf(' ', pos)) >= 0) {
+//                list.add(state.longString.substring(pos, end));
+//                pos = end + 1;
+//            }
+//        }
+//    }
+
     @Benchmark
-    public void benchmarkStringSplit(StringPerformance.MyState state) {
+    public void benchmarkIntegerToString(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            List<String> list = Arrays.asList(state.longString.split(" "));
+            String number = Integer.toString(i);
         }
     }
 
     @Benchmark
-    public void benchmarkStringSplitPattern(StringPerformance.MyState state) {
-        Pattern spacePattern = Pattern.compile(" ");
+    public void benchmarkStringValueOf(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            List<String> list = Arrays.asList(spacePattern.split(state.longString, 0));
+            String number = String.valueOf(i);
         }
     }
 
     @Benchmark
-    public void benchmarkStringTokenizer(StringPerformance.MyState state) {
+    public void benchmarkStringConvertPlus(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            StringTokenizer st = new StringTokenizer(state.longString);
-            List<String> list = new ArrayList<String>();
-            while (st.hasMoreTokens()) {
-                list.add(st.nextToken());
-            }
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringIndexOf(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            List<String> list = new ArrayList<String>();
-            int pos = 0, end;
-            while ((end = state.longString.indexOf(' ', pos)) >= 0) {
-                list.add(state.longString.substring(pos, end));
-                pos = end + 1;
-            }
+            String number = i + "";
         }
     }
 
