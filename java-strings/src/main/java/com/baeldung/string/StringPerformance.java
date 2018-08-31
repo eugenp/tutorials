@@ -6,10 +6,15 @@ import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.SECONDS)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Warmup(iterations = 10)
 public class StringPerformance {
 
@@ -17,17 +22,17 @@ public class StringPerformance {
     public static class MyState {
         int iterations = 100000;
 
-        String sample = "example";
+        String sample = "baeldung";
         String longString = "Hello, I am a bit longer than other Strings in average";
         String result = "";
     }
 
-    @Benchmark
-    public void benchmarkStringDynamicConcat(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            state.result += state.sample;
-        }
-    }
+//    @Benchmark
+//    public void benchmarkStringDynamicConcat(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            state.result += state.sample;
+//        }
+//    }
 
 //    @Benchmark
 //    public void benchmarkStringConstructor(StringPerformance.MyState state) {
@@ -46,7 +51,7 @@ public class StringPerformance {
 //    @Benchmark
 //    public void benchmarkStringFormat(StringPerformance.MyState state) {
 //        for (int i = 0; i < state.iterations; i++) {
-//            String s = String.format("hello %d", state.sample);
+//            String s = String.format("hello %s, nice to meet you", state.sample);
 //        }
 //    }
 
@@ -74,6 +79,44 @@ public class StringPerformance {
 //    public void benchmarkStringUtilsReplace(StringPerformance.MyState state) {
 //        String replaced = StringUtils.replace(state.longString, "average", " average !!!");
 //    }
+
+    @Benchmark
+    public void benchmarkStringSplit(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            List<String> list = Arrays.asList(state.longString.split(" "));
+        }
+    }
+
+    @Benchmark
+    public void benchmarkStringSplitPattern(StringPerformance.MyState state) {
+        Pattern spacePattern = Pattern.compile(" ");
+        for (int i = 0; i < state.iterations; i++) {
+            List<String> list = Arrays.asList(spacePattern.split(state.longString, 0));
+        }
+    }
+
+    @Benchmark
+    public void benchmarkStringTokenizer(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            StringTokenizer st = new StringTokenizer(state.longString);
+            List<String> list = new ArrayList<String>();
+            while (st.hasMoreTokens()) {
+                list.add(st.nextToken());
+            }
+        }
+    }
+
+    @Benchmark
+    public void benchmarkStringIndexOf(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            List<String> list = new ArrayList<String>();
+            int pos = 0, end;
+            while ((end = state.longString.indexOf(' ', pos)) >= 0) {
+                list.add(state.longString.substring(pos, end));
+                pos = end + 1;
+            }
+        }
+    }
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
