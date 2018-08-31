@@ -145,3 +145,4 @@
 - [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
 - [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
 - [Differences Between Final, Finally and Finalize in Java](https://www.baeldung.com/java-final-finally-finalize)
+- [ClassCastException: Arrays$ArrayList cannot be cast to ArrayList](https://www.baeldung.com/java-classcastexception-arrays-arraylist)
