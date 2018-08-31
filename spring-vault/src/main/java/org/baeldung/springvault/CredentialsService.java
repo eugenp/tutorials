@@ -29,10 +29,11 @@ public class CredentialsService {
     private String vaultUri;
 
     /**
-     * To Secure Credentials
-     * @return 
-     * @throws URISyntaxException
-     */
+    *  To Secure Credentials
+    * @param credentials
+    * @return VaultResponse
+    * @throws URISyntaxException
+    */
     public VaultResponse secureCredentials(Credentials credentials) throws URISyntaxException {
 
         VaultTemplate vaultTemplate = new VaultTemplate(VaultEndpoint.from(new URI(vaultUri)), new TokenAuthentication(token));
