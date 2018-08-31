@@ -55,7 +55,6 @@ public class VaultIntegrationTest {
      * @throws URISyntaxException
      */
     @Test
-    @Ignore
     public void givenCredentials_whenSecureCredentials_thenCredentialsSecured() throws URISyntaxException {
         try {
             // Given
@@ -77,7 +76,6 @@ public class VaultIntegrationTest {
      * @throws URISyntaxException
      */
     @Test
-    @Ignore
     public void whenAccessCredentials_thenCredentialsRetrieved() throws URISyntaxException {
 
         // Given
