@@ -3,10 +3,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.ejb</groupId>
-    <artifactId>ejb-for-spring</artifactId>
+    <artifactId>spring-ejb</artifactId>
     <version>1.0.1</version>
     <packaging>pom</packaging>
-    <name>ejb</name>
+    <name>spring-ejb</name>
     <description>Spring EJB Tutorial</description>
 
     <parent>
