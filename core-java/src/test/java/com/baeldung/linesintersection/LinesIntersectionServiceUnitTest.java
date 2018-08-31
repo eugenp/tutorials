@@ -14,24 +14,24 @@ public class LinesIntersectionServiceUnitTest {
     @Test
     public void givenNotParallelLines_whenCalculatePoint_thenPresent() {
 
-        float m1 = 0;
-        float b1 = 0;
-        float m2 = 1;
-        float b2 = -1;
+        double m1 = 0;
+        double b1 = 0;
+        double m2 = 1;
+        double b2 = -1;
 
         Optional<Point> point = service.calculateIntersectionPoint(m1, b1, m2, b2);
 
         assertTrue(point.isPresent());
-        assertEquals(point.get().x, 1);
-        assertEquals(point.get().y, 0);
+        assertEquals(point.get().getX(), 1, 0.001);
+        assertEquals(point.get().getX(), 1, 0.001);
     }
 
     @Test
     public void givenParallelLines_whenCalculatePoint_thenEmpty() {
-        float m1 = 1;
-        float b1 = 0;
-        float m2 = 1;
-        float b2 = -1;
+        double m1 = 1;
+        double b1 = 0;
+        double m2 = 1;
+        double b2 = -1;
 
         Optional<Point> point = service.calculateIntersectionPoint(m1, b1, m2, b2);
 
