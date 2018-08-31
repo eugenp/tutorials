@@ -3,11 +3,14 @@ package org.baeldung.springvault;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.vault.authentication.TokenAuthentication;
 import org.springframework.vault.client.VaultEndpoint;
 import org.springframework.vault.core.VaultTemplate;
+import org.springframework.vault.core.env.VaultPropertySource;
+import org.springframework.vault.support.VaultResponse;
 import org.springframework.vault.support.VaultResponseSupport;
 
 /**
@@ -23,21 +26,23 @@ public class CredentialsService {
     private String token;
 
     @Value("${vault.uri}")
-    private String vaultUri;;
+    private String vaultUri;
 
     /**
      * To Secure Credentials
+     * @return 
      * @throws URISyntaxException
      */
-    public void secureCredentials() throws URISyntaxException {
-        Credentials secrets = new Credentials("username", "password");
+    public VaultResponse secureCredentials(Credentials credentials) throws URISyntaxException {
+
         VaultTemplate vaultTemplate = new VaultTemplate(VaultEndpoint.from(new URI(vaultUri)), new TokenAuthentication(token));
-        vaultTemplate.write("secret/myapp", secrets);
+        VaultResponse vaultResponse = vaultTemplate.write("secret/myapp", credentials);
+        return vaultResponse;
     }
 
     /**
      * To Retrieve Credentials
-     * @return
+     * @return Credentials
      * @throws URISyntaxException
      */
     public Credentials accessCredentials() throws URISyntaxException {
