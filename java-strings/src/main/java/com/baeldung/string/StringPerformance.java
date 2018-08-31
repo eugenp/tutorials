@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 10)
 public class StringPerformance {
 
@@ -118,24 +118,52 @@ public class StringPerformance {
 //        }
 //    }
 
+//    @Benchmark
+//    public void benchmarkIntegerToString(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            String number = Integer.toString(i);
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringValueOf(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            String number = String.valueOf(i);
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringConvertPlus(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            String number = i + "";
+//        }
+//    }
+
     @Benchmark
-    public void benchmarkIntegerToString(StringPerformance.MyState state) {
+    public void benchmarkStringEquals(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            String number = Integer.toString(i);
+            boolean isEqual = state.longString.equals(state.sample);
         }
     }
 
     @Benchmark
-    public void benchmarkStringValueOf(StringPerformance.MyState state) {
+    public void benchmarkStringEqualsIgnoreCase(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            String number = String.valueOf(i);
+            boolean isEqual = state.longString.equalsIgnoreCase(state.sample);
         }
     }
 
     @Benchmark
-    public void benchmarkStringConvertPlus(StringPerformance.MyState state) {
+    public void benchmarkStringMatches(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            String number = i + "";
+            boolean ismatch = state.longString.matches(state.sample);
+        }
+    }
+
+    @Benchmark
+    public void benchmarkStringCompareTo(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            int result = state.longString.compareTo(state.sample);
         }
     }
 
