@@ -1,4 +1,4 @@
-package com.baeldung.list;
+package com.baeldung.java.list;
 
 import java.util.ArrayList;
 import java.util.Collections;
