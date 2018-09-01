@@ -398,7 +398,6 @@
 				<module>jee-7</module>
 				<module>jhipster/jhipster-monolithic</module>
 				<module>jjwt</module>
-				<module>jpa-storedprocedure</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
@@ -949,7 +948,6 @@
 				<module>jgroups</module>
 				<module>jee-7</module>
 				<module>jjwt</module>
-				<module>jpa-storedprocedure</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
