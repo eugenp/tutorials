@@ -1,11 +1,5 @@
 package org.baeldung.persistence.service;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.Arrays;
-
 import org.baeldung.config.ProductConfig;
 import org.baeldung.config.UserConfig;
 import org.baeldung.persistence.multiple.dao.product.ProductRepository;
@@ -23,6 +17,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Collections;
+import java.util.Optional;
+
+import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { UserConfig.class, ProductConfig.class })
@@ -50,12 +49,12 @@ public class JpaMultipleDBIntegrationTest {
         user.setAge(20);
         Possession p = new Possession("sample");
         p = possessionRepository.save(p);
-        user.setPossessionList(Arrays.asList(p));
+        user.setPossessionList(Collections.singletonList(p));
         user = userRepository.save(user);
-        final User result = userRepository.findOne(user.getId());
-        assertNotNull(result);
-        System.out.println(result.getPossessionList());
-        assertTrue(result.getPossessionList().size() == 1);
+        final Optional<User> result = userRepository.findById(user.getId());
+        assertTrue(result.isPresent());
+        System.out.println(result.get().getPossessionList());
+        assertEquals(1, result.get().getPossessionList().size());
     }
 
     @Test
@@ -66,7 +65,7 @@ public class JpaMultipleDBIntegrationTest {
         user1.setEmail("john@test.com");
         user1.setAge(20);
         user1 = userRepository.save(user1);
-        assertNotNull(userRepository.findOne(user1.getId()));
+        assertTrue(userRepository.findById(user1.getId()).isPresent());
 
         User user2 = new User();
         user2.setName("Tom");
@@ -92,7 +91,7 @@ public class JpaMultipleDBIntegrationTest {
         product.setPrice(20);
         product = productRepository.save(product);
 
-        assertNotNull(productRepository.findOne(product.getId()));
+        assertTrue(productRepository.findById(product.getId()).isPresent());
     }
 
 }
