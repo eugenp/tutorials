@@ -63,7 +63,6 @@ public class ArrayListBenchmark {
 
 //    @Benchmark
 //    public void testAdd(ArrayListBenchmark.MyState state) {
-//        state.employeeList = new ArrayList<>();
 //        state.employeeList.add(new Employee(state.iterations + 1, "John"));
 //    }
 
