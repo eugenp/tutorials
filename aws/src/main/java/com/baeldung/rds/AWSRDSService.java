@@ -27,6 +27,11 @@ public class AWSRDSService {
     private String db_database;
     private String db_hostname;
 
+    /*
+    * User access key and secret key must be set before execute any operation.
+    * Follow the link on how to get the user access and secret key
+    * https://aws.amazon.com/blogs/security/wheres-my-secret-access-key/
+    * **/
     public AWSRDSService() throws IOException {
         //Init RDS client with credentials and region.
         credentials = new
@@ -47,7 +52,11 @@ public class AWSRDSService {
         this.amazonRDS = amazonRDS;
     }
 
-    //create and launch new RDS instance
+    /**
+     * create the RDS instance.
+     * After instance creation, update the db_hostname with endpoint in db.properties.
+     * */
+
     public String launchInstance() {
 
         String identifier = "";
@@ -163,7 +172,9 @@ public class AWSRDSService {
         AWSRDSService awsrdsService = new AWSRDSService();
 
         String instanceName = awsrdsService.launchInstance();
+
         //Add some wait for instance creation.
+
         awsrdsService.listInstances();
 
         awsrdsService.runJdbcTests();
