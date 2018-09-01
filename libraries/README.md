@@ -72,7 +72,6 @@
 - [Publish and Receive Messages with Nats Java Client](http://www.baeldung.com/nats-java-client)
 - [Java Concurrency Utility with JCTools](http://www.baeldung.com/java-concurrency-jc-tools)
 - [Apache Commons Collections MapUtils](http://www.baeldung.com/apache-commons-map-utils)
-- [Testing Netty with EmbeddedChannel](http://www.baeldung.com/testing-netty-embedded-channel)
 - [Creating REST Microservices with Javalin](http://www.baeldung.com/javalin-rest-microservices)
 - [Introduction to JavaPoet](http://www.baeldung.com/java-poet)
 - [Introduction to Joda-Time](http://www.baeldung.com/joda-time)
