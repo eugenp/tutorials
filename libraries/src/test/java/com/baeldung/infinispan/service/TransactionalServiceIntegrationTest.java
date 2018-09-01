@@ -1,11 +1,11 @@
 package com.baeldung.infinispan.service;
 
-import com.baeldung.infinispan.ConfigurationTest;
+import com.baeldung.infinispan.AbstractIntegrationTest;
 import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-public class TransactionalServiceIntegrationTest extends ConfigurationTest {
+public class TransactionalServiceIntegrationTest extends AbstractIntegrationTest {
 
     @Test
     public void whenLockingAnEntry_thenItShouldBeInaccessible() throws InterruptedException {

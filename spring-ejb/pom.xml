@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.ejb</groupId>
     <artifactId>ejb-for-spring</artifactId>
@@ -37,19 +37,19 @@
             <dependency>
                 <groupId>com.baeldung.spring.ejb</groupId>
                 <artifactId>ejb-remote-for-spring</artifactId>
-                <version>1.0.1</version>
+                <version>${ejb-remote-for-spring.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
                 <groupId>javax</groupId>
                 <artifactId>javaee-api</artifactId>
-                <version>8.0</version>
+                <version>${javaee.version}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.wildfly</groupId>
                 <artifactId>wildfly-ejb-client-bom</artifactId>
-                <version>12.0.0.Final</version>
+                <version>${wildfly-ejb.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -61,9 +61,9 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-ejb-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>${maven-ejb-plugin.version}</version>
                     <configuration>
-                        <ejbVersion>3.2</ejbVersion>
+                        <ejbVersion>${ejb.version}</ejbVersion>
                     </configuration>
                 </plugin>
             </plugins>
@@ -72,7 +72,15 @@
 
     <modules>
         <module>ejb-remote-for-spring</module>
-        <module>spring-ejb-client</module>
         <module>ejb-beans</module>
     </modules>
+    
+    <properties>
+        <ejb-remote-for-spring.version>1.0.1</ejb-remote-for-spring.version>
+        <javaee.version>8.0</javaee.version>
+        <wildfly-ejb.version>12.0.0.Final</wildfly-ejb.version>
+        <maven-ejb-plugin.version>2.4</maven-ejb-plugin.version>
+        <ejb.version>3.2</ejb.version>
+    </properties>
+
 </project>
