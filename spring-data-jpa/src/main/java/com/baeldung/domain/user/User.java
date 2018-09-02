@@ -1,28 +1,31 @@
-package org.baeldung.persistence.multiple.model.user;
+package com.baeldung.domain.user;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(schema = "spring_jpa_user")
+@Table(name = "users", schema = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
-
+    private int age;
     @Column(unique = true, nullable = false)
     private String email;
-
-    private int age;
-
+    private Integer status;
     @OneToMany
     List<Possession> possessionList;
 
     public User() {
         super();
+    }
+
+    public User(String name, String email, Integer status) {
+        this.name = name;
+        this.email = email;
+        this.status = status;
     }
 
     public int getId() {
@@ -49,6 +52,14 @@ public class User {
         this.email = email;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public int getAge() {
         return age;
     }
@@ -71,4 +82,5 @@ public class User {
         builder.append("User [name=").append(name).append(", id=").append(id).append("]");
         return builder.toString();
     }
+
 }

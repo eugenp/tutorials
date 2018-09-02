@@ -1,9 +1,13 @@
-package org.baeldung.persistence.multiple.model.user;
+package com.baeldung.domain.user;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(schema = "spring_jpa_user")
+@Table(schema = "users")
 public class Possession {
 
     @Id
