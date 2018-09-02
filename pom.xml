@@ -592,6 +592,7 @@
 				<module>spring-webflux-amqp</module>
 				<module>antlr</module>
 				<module>maven-archetype</module>
+        		<module>optaplanner</module>
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
