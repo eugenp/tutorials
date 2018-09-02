@@ -9,14 +9,14 @@ package com.baeldung.synthetic;
  */
 public class SyntheticFieldDemo {
 
-	/**
-	 * Class which contains a synthetic field reference to the outer class.
-	 * 
-	 * @author Donato Rimenti
-	 *
-	 */
-	class NestedClass {
+    /**
+     * Class which contains a synthetic field reference to the outer class.
+     * 
+     * @author Donato Rimenti
+     *
+     */
+    class NestedClass {
 
-	}
+    }
 
 }
