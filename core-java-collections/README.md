@@ -36,3 +36,4 @@
 - [Remove the First Element from a List](http://www.baeldung.com/java-remove-first-element-from-list)
 - [How to Convert List to Map in Java](http://www.baeldung.com/java-list-to-map)
 - [Initializing HashSet at the Time of Construction](http://www.baeldung.com/java-initialize-hashset)
+- [Removing the First Element of an Array](https://www.baeldung.com/java-array-remove-first-element)

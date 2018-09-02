@@ -137,11 +137,6 @@
             <artifactId>mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.ibm.icu</groupId>
-            <artifactId>icu4j</artifactId>
-            <version>${icu4j.version}</version>
-        </dependency>
         <!-- Mime Type Resolution Libraries -->
         <dependency>
             <groupId>org.apache.tika</groupId>
