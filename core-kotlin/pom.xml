@@ -122,6 +122,26 @@
             <version>1.2.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.kittinunf.fuel</groupId>
+            <artifactId>fuel</artifactId>
+            <version>1.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kittinunf.fuel</groupId>
+            <artifactId>fuel-gson</artifactId>
+            <version>1.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kittinunf.fuel</groupId>
+            <artifactId>fuel-rxjava</artifactId>
+            <version>1.15.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kittinunf.fuel</groupId>
+            <artifactId>fuel-coroutines</artifactId>
+            <version>1.15.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -228,7 +248,7 @@
         <kotlin-test-junit.version>1.2.60</kotlin-test-junit.version>
         <kotlin-stdlib.version>1.2.60</kotlin-stdlib.version>
         <kotlin-reflect.version>1.2.60</kotlin-reflect.version>
-        <kotlinx.version>0.22.5</kotlinx.version>
+        <kotlinx.version>0.25.0</kotlinx.version>
         <ktor.io.version>0.9.2</ktor.io.version>
         <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
         <kodein.version>4.1.0</kodein.version>
