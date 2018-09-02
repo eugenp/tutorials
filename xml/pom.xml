@@ -1,8 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>xml</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>xml</name>
@@ -168,6 +166,10 @@
                             <excludes>
                                 <exclude>template-binding.xml</exclude>
                             </excludes>
+							<schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
+                            <includeSchemaBindings>
+                                <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
+                            </includeSchemaBindings>
                             <verbose>true</verbose>
                         </configuration>
                         <executions>
@@ -177,21 +179,7 @@
                                     <goal>bind</goal>
                                 </goals>
                             </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.jibx</groupId>
-                        <artifactId>maven-jibx-plugin</artifactId>
-                        <version>1.3.1</version>
-                        <configuration>
-                            <schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
-                            <includeSchemaBindings>
-                                <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
-                            </includeSchemaBindings>
-                            <verbose>true</verbose>
-                        </configuration>
-                        <executions>
-                            <execution>
+							<execution>
                                 <phase>process-test-classes</phase>
                                 <goals>
                                     <goal>test-bind</goal>
