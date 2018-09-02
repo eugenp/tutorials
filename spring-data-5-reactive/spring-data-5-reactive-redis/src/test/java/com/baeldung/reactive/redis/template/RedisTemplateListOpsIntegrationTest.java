@@ -17,35 +17,33 @@ import reactor.test.StepVerifier;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisReactiveApplication.class)
 public class RedisTemplateListOpsIntegrationTest {
 
-	@Autowired
-	private ReactiveRedisTemplate<String, String> redisTemplate;
+    @Autowired
+    private ReactiveRedisTemplate<String, String> redisTemplate;
 
-	private ReactiveListOperations<String,String> reactiveListOps;
+    private ReactiveListOperations<String, String> reactiveListOps;
 
-	private static final String LIST_NAME= "demo_list";
+    private static final String LIST_NAME = "demo_list";
 
-	@Before
-	public void setup(){
-		reactiveListOps = redisTemplate.opsForList();
-	}
+    @Before
+    public void setup() {
+        reactiveListOps = redisTemplate.opsForList();
+    }
 
-	@Test
-	public void givenListAndValues_whenBlockingLeftPushAndRightPop_thenLeftPushAndRightPop(){
-		Mono<Long> blockingPush = reactiveListOps.leftPushAll(LIST_NAME,"first","second").log("Pushed");
+    @Test
+    public void givenListAndValues_whenBlockingLeftPushAndRightPop_thenLeftPushAndRightPop() {
+        Mono<Long> blockingPush = reactiveListOps.leftPushAll(LIST_NAME, "first", "second")
+            .log("Pushed");
 
-		StepVerifier
-				.create(blockingPush)
-				.expectNext(2L)
-				.verifyComplete();
+        StepVerifier.create(blockingPush)
+            .expectNext(2L)
+            .verifyComplete();
 
-		Mono<String> blockingPop =reactiveListOps.leftPop(LIST_NAME).log("Popped");
+        Mono<String> blockingPop = reactiveListOps.leftPop(LIST_NAME)
+            .log("Popped");
 
-		StepVerifier
-				.create(blockingPop)
-				.expectNext("second")
-				.verifyComplete();
-	}
-
-
+        StepVerifier.create(blockingPop)
+            .expectNext("second")
+            .verifyComplete();
+    }
 
 }

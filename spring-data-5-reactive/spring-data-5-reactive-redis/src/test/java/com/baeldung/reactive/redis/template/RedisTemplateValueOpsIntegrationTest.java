@@ -18,53 +18,49 @@ import java.time.temporal.TemporalUnit;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisReactiveApplication.class)
 public class RedisTemplateValueOpsIntegrationTest {
 
-
     @Autowired
     private ReactiveRedisTemplate<String, Employee> redisTemplate;
 
     @Test
-    public void givenEmployee_whenSet_thenSet(){
+    public void givenEmployee_whenSet_thenSet() {
 
-        Mono<Boolean> result =redisTemplate.opsForValue().set("123",new Employee("123", "Bill", "Accounts"));
+        Mono<Boolean> result = redisTemplate.opsForValue()
+            .set("123", new Employee("123", "Bill", "Accounts"));
 
-        StepVerifier
-                .create(result)
-                .expectNext(true)
-                .verifyComplete();
+        StepVerifier.create(result)
+            .expectNext(true)
+            .verifyComplete();
     }
 
     @Test
-    public void givenEmployeeId_whenGet_thenReturnsEmployee(){
+    public void givenEmployeeId_whenGet_thenReturnsEmployee() {
 
-        Mono<Employee> fetchedEmployee = redisTemplate.opsForValue().get("123");
+        Mono<Employee> fetchedEmployee = redisTemplate.opsForValue()
+            .get("123");
 
-        StepVerifier
-                .create(fetchedEmployee)
-                .expectNext(new Employee("123", "Bill", "Accounts"))
-                .verifyComplete();
+        StepVerifier.create(fetchedEmployee)
+            .expectNext(new Employee("123", "Bill", "Accounts"))
+            .verifyComplete();
     }
 
     @Test
     public void givenEmployee_whenSetWithExpiry_thenSetsWithExpiryTime() throws InterruptedException {
 
-        Mono<Boolean> result =redisTemplate
-                .opsForValue()
-                .set("129",new Employee("129", "John", "Programming"), Duration.ofSeconds(1));
+        Mono<Boolean> result = redisTemplate.opsForValue()
+            .set("129", new Employee("129", "John", "Programming"), Duration.ofSeconds(1));
 
-        Mono<Employee> fetchedEmployee = redisTemplate.opsForValue().get("129");
+        Mono<Employee> fetchedEmployee = redisTemplate.opsForValue()
+            .get("129");
 
-        StepVerifier
-                .create(result)
-                .expectNext(true)
-                .verifyComplete();
+        StepVerifier.create(result)
+            .expectNext(true)
+            .verifyComplete();
 
         Thread.sleep(2000L);
 
         StepVerifier.create(fetchedEmployee)
-                .expectNextCount(0L)
-                .verifyComplete();
+            .expectNextCount(0L)
+            .verifyComplete();
     }
-
-
 
 }
