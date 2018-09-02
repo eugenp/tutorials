@@ -749,6 +749,7 @@
 				<module>spring-data-elasticsearch</module>
 				<module>spring-data-keyvalue</module>
 				<module>spring-data-mongodb</module>
+				<module>spring-data-jpa</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 				<module>persistence-modules/spring-data-redis</module>
 				<module>spring-data-rest</module>
