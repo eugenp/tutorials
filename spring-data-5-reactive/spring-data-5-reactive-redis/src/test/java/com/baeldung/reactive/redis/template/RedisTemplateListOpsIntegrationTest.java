@@ -1,7 +1,5 @@
 package com.baeldung.reactive.redis.template;
 
-import com.baeldung.reactive.redis.SpringRedisReactiveApplication;
-import com.baeldung.reactive.redis.model.Employee;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.ReactiveListOperations;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.reactive.redis.SpringRedisReactiveApplication;
+
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 

@@ -13,6 +13,10 @@ import java.io.Serializable;
 @RedisHash
 @EqualsAndHashCode
 public class Employee implements Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1603714798906422731L;
     @Id
     private String id;
     private String name;

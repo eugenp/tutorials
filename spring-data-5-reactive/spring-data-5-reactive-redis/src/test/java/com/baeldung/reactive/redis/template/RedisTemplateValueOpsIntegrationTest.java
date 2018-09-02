@@ -1,18 +1,19 @@
 package com.baeldung.reactive.redis.template;
 
-import com.baeldung.reactive.redis.SpringRedisReactiveApplication;
-import com.baeldung.reactive.redis.model.Employee;
+import java.time.Duration;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.reactive.redis.SpringRedisReactiveApplication;
+import com.baeldung.reactive.redis.model.Employee;
+
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-
-import java.time.Duration;
-import java.time.temporal.TemporalUnit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisReactiveApplication.class)
