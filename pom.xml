@@ -597,6 +597,7 @@
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
 				<module>spring-boot-angular-ecommerce</module>
+				<module>cdi-portable-extension</module>				
 			</modules>
 
 		</profile>
