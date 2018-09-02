@@ -2,4 +2,4 @@
 echo Setting environment variables to access local vault..
 set VAULT_ADDR=https://localhost:8200
 set VAULT_CACERT=%~dp0%/src/test/vault-config/localhost.cert
-set VAULT_TLS_SERVER_NAME=localhost
+rem set VAULT_TLS_SERVER_NAME=localhost

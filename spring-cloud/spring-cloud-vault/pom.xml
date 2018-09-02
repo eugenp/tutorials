@@ -60,7 +60,7 @@
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-vault-config-databases</artifactId>
+			<artifactId>	</artifactId>
 		</dependency>
 
 	</dependencies>
