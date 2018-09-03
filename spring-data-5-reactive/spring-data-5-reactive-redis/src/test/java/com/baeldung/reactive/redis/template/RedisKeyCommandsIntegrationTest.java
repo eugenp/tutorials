@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.connection.ReactiveKeyCommands;
 import org.springframework.data.redis.connection.ReactiveStringCommands;
+import org.springframework.data.redis.connection.ReactiveStringCommands.SetCommand;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.reactive.redis.SpringRedisReactiveApplication;
@@ -27,13 +28,13 @@ public class RedisKeyCommandsIntegrationTest {
     @Autowired
     private ReactiveStringCommands stringCommands;
 
-    @Before
-    public void setup() {
+    @Test
+    public void givenFluxOfKeys_whenSet_thenSet() {
         Flux<String> keys = Flux.just("key1", "key2", "key3", "key4");
 
-        Flux<ReactiveStringCommands.SetCommand> generator = keys.map(String::getBytes)
+        Flux<SetCommand> generator = keys.map(String::getBytes)
             .map(ByteBuffer::wrap)
-            .map(key -> ReactiveStringCommands.SetCommand.set(key)
+            .map(key -> SetCommand.set(key)
                 .value(key));
 
         StepVerifier.create(stringCommands.set(generator))

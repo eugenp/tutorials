@@ -18,12 +18,12 @@ import reactor.test.StepVerifier;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringRedisReactiveApplication.class)
 public class RedisTemplateListOpsIntegrationTest {
 
+    private static final String LIST_NAME = "demo_list";
+
     @Autowired
     private ReactiveRedisTemplate<String, String> redisTemplate;
 
     private ReactiveListOperations<String, String> reactiveListOps;
-
-    private static final String LIST_NAME = "demo_list";
 
     @Before
     public void setup() {
@@ -31,18 +31,18 @@ public class RedisTemplateListOpsIntegrationTest {
     }
 
     @Test
-    public void givenListAndValues_whenBlockingLeftPushAndRightPop_thenLeftPushAndRightPop() {
-        Mono<Long> blockingPush = reactiveListOps.leftPushAll(LIST_NAME, "first", "second")
+    public void givenListAndValues_whenLeftPushAndLeftPop_thenLeftPushAndLeftPop() {
+        Mono<Long> lPush = reactiveListOps.leftPushAll(LIST_NAME, "first", "second")
             .log("Pushed");
 
-        StepVerifier.create(blockingPush)
+        StepVerifier.create(lPush)
             .expectNext(2L)
             .verifyComplete();
 
-        Mono<String> blockingPop = reactiveListOps.leftPop(LIST_NAME)
+        Mono<String> lPop = reactiveListOps.leftPop(LIST_NAME)
             .log("Popped");
 
-        StepVerifier.create(blockingPop)
+        StepVerifier.create(lPop)
             .expectNext("second")
             .verifyComplete();
     }
