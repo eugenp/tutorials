@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
     classes = WebFluxEventsApplication.class,
     webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT
 )
-public class WebFluxEventsApplicationTests {
+public class WebFluxEventsApplicationIntegrationTest {
 
     private WebClient client;
 
