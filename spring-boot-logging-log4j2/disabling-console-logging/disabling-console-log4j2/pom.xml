@@ -4,7 +4,6 @@
     <groupId>com.baeldung</groupId>
     <version>0.0.1-SNAPSHOT</version>
     <artifactId>disabling-console-log4j2</artifactId>
-    <name>disabling-console-log4j2</name>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

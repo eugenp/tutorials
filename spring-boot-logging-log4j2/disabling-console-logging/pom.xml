@@ -6,7 +6,6 @@
     <artifactId>disabling-console-logging</artifactId>
     <packaging>pom</packaging>
     <description>Projects for Disabling Spring Boot Console Logging tutorials</description>
-    <name>disabling-console-logging</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -16,7 +15,6 @@
 
     <modules>
         <module>disabling-console-logback</module>
-        <module>disabling-console-logback-properties</module>
         <module>disabling-console-log4j2</module>
         <module>disabling-console-jul</module>
     </modules>

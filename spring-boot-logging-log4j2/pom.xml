@@ -8,7 +8,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>Projects for Spring Boot Logging tutorials</description>
-    <name>spring-boot-logging-log4j2</name>
 
     <parent>
         <artifactId>parent-boot-2</artifactId>
