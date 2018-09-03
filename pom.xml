@@ -398,7 +398,6 @@
 				<module>jee-7</module>
 				<module>jhipster/jhipster-monolithic</module>
 				<module>jjwt</module>
-				<module>jpa-storedprocedure</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
@@ -585,7 +584,6 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
-				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
@@ -594,6 +592,7 @@
 				<module>spring-webflux-amqp</module>
 				<module>antlr</module>
 				<module>maven-archetype</module>
+        		<module>optaplanner</module>
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
@@ -750,6 +749,7 @@
 				<module>spring-data-elasticsearch</module>
 				<module>spring-data-keyvalue</module>
 				<module>spring-data-mongodb</module>
+				<module>spring-data-jpa</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 				<module>persistence-modules/spring-data-redis</module>
 				<module>spring-data-rest</module>
@@ -950,7 +950,6 @@
 				<module>jgroups</module>
 				<module>jee-7</module>
 				<module>jjwt</module>
-				<module>jpa-storedprocedure</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>

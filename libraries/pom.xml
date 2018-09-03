@@ -106,21 +106,6 @@
             <artifactId>javers-core</artifactId>
             <version>${javers.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>io.nats</groupId>
@@ -171,6 +156,17 @@
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-kafka-0.11_2.11</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-java_2.11</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flink</groupId>
             <artifactId>flink-core</artifactId>
             <version>${flink.version}</version>
             <exclusions>
@@ -193,7 +189,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-test-utils_2.10</artifactId>
+            <artifactId>flink-test-utils_2.11</artifactId>
             <version>${flink.version}</version>
             <scope>test</scope>
         </dependency>
@@ -241,6 +237,11 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${jackson.version}</version>
         </dependency>
         <!-- JDO -->
@@ -378,11 +379,6 @@
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>${netty.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -658,13 +654,7 @@
             <classifier>test</classifier>
             <scope>test</scope>
         </dependency>
-
-        <!-- tomcat -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
+		
         <dependency>
             <groupId>org.milyn</groupId>
             <artifactId>milyn-smooks-all</artifactId>
@@ -924,12 +914,11 @@
         <commons.io.version>2.5</commons.io.version>
         <commons.dbutils.version>1.6</commons.dbutils.version>
         <h2.version>1.4.196</h2.version>
-        <jetty.version>9.4.8.v20171121</jetty.version>
         <jnats.version>1.0</jnats.version>
 
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
-        <flink.version>1.2.0</flink.version>
+        <flink.version>1.5.0</flink.version>
         <jackson.version>2.8.5</jackson.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
@@ -937,7 +926,6 @@
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>1.9.27</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
-        <netty.version>4.1.20.Final</netty.version>
         <commons.collections.version>4.1</commons.collections.version>
         <junit.version>4.12</junit.version>
         <java-lsh.version>0.10</java-lsh.version>
@@ -966,7 +954,6 @@
         <kafka.version>1.0.0</kafka.version>
         <smooks.version>1.7.0</smooks.version>
         <docker.version>3.0.14</docker.version>
-        <tomcat.version>8.5.24</tomcat.version>
         <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
         <opencsv.version>4.1</opencsv.version>
