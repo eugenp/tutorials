@@ -167,6 +167,13 @@ public class StringPerformance {
         }
     }
 
+    @Benchmark
+    public void benchmarkStringEqualsWithSign(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            boolean result = state.longString == state.sample;
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
                 .include(StringPerformance.class.getSimpleName()).threads(1)
