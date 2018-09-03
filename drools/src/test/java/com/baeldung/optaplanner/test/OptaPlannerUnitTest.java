@@ -1,13 +1,15 @@
 package com.baeldung.optaplanner.test;
 
-import com.baeldung.optaplanner.CourseSchedule;
-import com.baeldung.optaplanner.Lecture;
+import java.util.Arrays;
+
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.optaplanner.core.api.solver.Solver;
 import org.optaplanner.core.api.solver.SolverFactory;
-import java.util.Arrays;
+
+import com.baeldung.drools.optaplanner.CourseSchedule;
+import com.baeldung.drools.optaplanner.Lecture;
 
 public class OptaPlannerUnitTest {
 

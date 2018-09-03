@@ -1,4 +1,7 @@
-package com.baeldung.optaplanner;
+package com.baeldung.drools.optaplanner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.optaplanner.core.api.domain.solution.PlanningEntityCollectionProperty;
 import org.optaplanner.core.api.domain.solution.PlanningScore;
@@ -8,9 +11,6 @@ import org.optaplanner.core.api.domain.valuerange.ValueRangeProvider;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @PlanningSolution
 public class CourseSchedule {

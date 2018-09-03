@@ -1,10 +1,10 @@
-package com.baeldung.optaplanner;
+package com.baeldung.drools.optaplanner;
+
+import java.util.HashSet;
 
 import org.optaplanner.core.api.score.Score;
 import org.optaplanner.core.api.score.buildin.hardsoft.HardSoftScore;
 import org.optaplanner.core.impl.score.director.easy.EasyScoreCalculator;
-
-import java.util.HashSet;
 
 public class ScoreCalculator implements EasyScoreCalculator<CourseSchedule> {
 
