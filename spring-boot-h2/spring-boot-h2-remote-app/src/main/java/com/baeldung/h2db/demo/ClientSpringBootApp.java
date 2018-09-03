@@ -38,7 +38,7 @@ public class ClientSpringBootApp {
                 new RowMapper<Object>() {
                     @Override
                     public Object mapRow(ResultSet rs, int i) throws SQLException {
-                        System.out.println(String.format("id:%s,fitst_name:%s,last_name:%s",
+                        System.out.println(String.format("id:%s,first_name:%s,last_name:%s",
                                 rs.getString("id"),
                                 rs.getString("first_name"),
                                 rs.getString("last_name")));
