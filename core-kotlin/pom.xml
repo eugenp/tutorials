@@ -90,22 +90,22 @@
         <dependency>
             <groupId>com.github.kittinunf.fuel</groupId>
             <artifactId>fuel</artifactId>
-            <version>1.15.0</version>
+            <version>${fuel.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.kittinunf.fuel</groupId>
             <artifactId>fuel-gson</artifactId>
-            <version>1.15.0</version>
+            <version>${fuel.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.kittinunf.fuel</groupId>
             <artifactId>fuel-rxjava</artifactId>
-            <version>1.15.0</version>
+            <version>${fuel.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.kittinunf.fuel</groupId>
             <artifactId>fuel-coroutines</artifactId>
-            <version>1.15.0</version>
+            <version>${fuel.version}</version>
         </dependency>
     </dependencies>
 
@@ -128,6 +128,7 @@
         <assertj.version>3.10.0</assertj.version>
         <h2database.version>1.4.197</h2database.version>
         <exposed.version>0.10.4</exposed.version>
+        <fuel.version>1.15.0</fuel.version>
     </properties>
 
 </project>
