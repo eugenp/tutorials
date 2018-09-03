@@ -880,10 +880,6 @@
         </profile>
     </profiles>
 
-    <prerequisites>
-        <maven>${maven.version}</maven>
-    </prerequisites>
-
     <properties>
         <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx256m</argLine>
         <assertj.version>3.6.2</assertj.version>

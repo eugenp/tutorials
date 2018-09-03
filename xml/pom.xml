@@ -174,12 +174,14 @@
                         </configuration>
                         <executions>
                             <execution>
+                            	<id>process-classes</id>
                                 <phase>process-classes</phase>
                                 <goals>
                                     <goal>bind</goal>
                                 </goals>
                             </execution>
 							<execution>
+								<id>process-test-classes</id>
                                 <phase>process-test-classes</phase>
                                 <goals>
                                     <goal>test-bind</goal>

@@ -727,11 +727,6 @@
             <version>${resilience4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${common-math3.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.knowm.xchart</groupId>
             <artifactId>xchart</artifactId>
             <version>${xchart-version}</version>
