@@ -8,7 +8,7 @@
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
-        <artifactId>ejb-for-spring</artifactId>
+        <artifactId>spring-ejb</artifactId>
         <version>1.0.1</version>
     </parent>
 
