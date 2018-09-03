@@ -33,7 +33,7 @@ public class ClientSpringBootApp {
             jdbcTemplate.execute(sql);
         });
 
-        System.out.println(String.format("****** Fetching from table: %s ******","Employees"));
+        System.out.println(String.format("****** Fetching from table: %s ******", "Employees"));
         jdbcTemplate.query("select id,first_name,last_name from employees",
                 new RowMapper<Object>() {
                     @Override
