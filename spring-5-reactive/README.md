@@ -13,3 +13,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [How to Set a Header on a Response with Spring 5](http://www.baeldung.com/spring-response-header)
 - [Spring Webflux and CORS](http://www.baeldung.com/spring-webflux-cors)
 - [Handling Errors in Spring WebFlux](http://www.baeldung.com/spring-webflux-errors)
+- [Spring WebFlux and Event Streaming](http://www.baeldung.com/spring-webflux-events)
