@@ -48,7 +48,7 @@ class ProcessUnderstandingTest {
     }
 
     //@Test - windows specific
-    public void givenSubProcess_thenStartSuccessIsAlive() throws IOException {
+    public void givenSubProcess_whenStarted_thenStartSuccessIsAlive() throws IOException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         assertTrue(builder.start().isAlive());
     }
@@ -75,7 +75,7 @@ class ProcessUnderstandingTest {
     }
 
     //@Test - windows specific
-    public void givenSubProcess_checkAlive() throws IOException, InterruptedException {
+    public void givenSubProcess_whenDestroyed_thenCheckIfAlive() throws IOException, InterruptedException {
         ProcessBuilder builder = new ProcessBuilder("notepad.exe");
         Process process = builder.start();
         Thread.sleep(10000);
