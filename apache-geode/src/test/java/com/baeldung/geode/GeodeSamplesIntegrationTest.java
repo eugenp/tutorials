@@ -1,5 +1,6 @@
 package com.baeldung.geode;
 
+import com.baeldung.geode.functions.CustomerWithMaxAge;
 import com.baeldung.geode.functions.PrimeNumber;
 import org.apache.geode.cache.Region;
 import org.apache.geode.cache.client.ClientCache;
@@ -136,6 +137,19 @@ public class GeodeSamplesIntegrationTest {
             .execute();
         assertEquals(2, queryResults.size());
 
+    }
+
+    @Test
+    public void whenExecuteFindEldestCustomerFunction_thenReturnTheEldestCustomer() {
+        Execution execution = FunctionService.onRegion(this.queryRegion);
+
+        ResultCollector<Customer, Customer> result = execution.execute(CustomerWithMaxAge.ID);
+        List<Customer> resultList = (List<Customer>) result.getResult();
+        assertNotNull(resultList);
+        assertEquals(1, resultList.size());
+
+        Customer customer = resultList.get(0);
+        assertEquals(Integer.valueOf(46), customer.getAge());
     }
 
     @Test
