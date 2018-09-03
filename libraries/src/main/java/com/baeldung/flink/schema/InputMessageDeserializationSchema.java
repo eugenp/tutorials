@@ -1,6 +1,8 @@
 package com.baeldung.flink.schema;
 
 import com.baeldung.flink.model.InputMessage;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
@@ -11,13 +13,12 @@ import java.io.IOException;
 public class InputMessageDeserializationSchema implements
       DeserializationSchema<InputMessage> {
 
-    ObjectMapper objectMapper;
+    static ObjectMapper objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
+
 
     @Override
     public InputMessage deserialize(byte[] bytes) throws IOException {
-        if(objectMapper == null) {
-            objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
-        }
+
         return objectMapper.readValue(bytes, InputMessage.class);
     }
 

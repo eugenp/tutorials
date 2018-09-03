@@ -48,7 +48,7 @@ public static void createBackup () throws Exception {
     String inputTopic = "flink_input";
     String outputTopic = "flink_output";
     String consumerGroup = "baeldung";
-    String kafkaAddress = "192.168.99.100:9092";
+    String kafkaAddress = "localhost:9092";
 
     StreamExecutionEnvironment environment =
       StreamExecutionEnvironment.getExecutionEnvironment();
