@@ -360,6 +360,7 @@
 				<module>dozer</module>
 				<module>ethereum</module>
 				<module>ejb</module>
+				<module>ejb/ejb-client</module>
 				<module>feign</module>
 				<module>flips</module>
 				<module>testing-modules/gatling</module>
