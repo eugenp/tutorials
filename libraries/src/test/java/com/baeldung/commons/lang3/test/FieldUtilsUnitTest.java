@@ -46,14 +46,14 @@ public class FieldUtilsUnitTest {
     }
     
     @Test
-    public void givenFieldUtilsClass_whenCalledWriteField_thenCorrect() throws IllegalAccessException {
+    public void givenFieldUtilsClass_whenCalledwriteField_thenCorrect() throws IllegalAccessException {
         FieldUtils.writeField(user, "name", "Julie", true);
         assertThat(FieldUtils.readField(user, "name", true)).isEqualTo("Julie");
         
     }
     
     @Test
-    public void givenFieldUtilsClass_whenCalledWriteDeclaredField_thenCorrect() throws IllegalAccessException {
+    public void givenFieldUtilsClass_whenCalledwriteDeclaredField_thenCorrect() throws IllegalAccessException {
         FieldUtils.writeDeclaredField(user, "name", "Julie", true);
         assertThat(FieldUtils.readField(user, "name", true)).isEqualTo("Julie");    
     }
