@@ -10,12 +10,12 @@ public class SystemsUtilsUnitTest {
 
     @Test
     public void givenSystemUtilsClass_whenCalledgetJavaHome_thenCorrect() {
-        assertThat(SystemUtils.getJavaHome()).isEqualTo(new File("C:\\Program Files\\Java\\jdk1.8.0_74\\jre"));
+        assertThat(SystemUtils.getJavaHome()).isEqualTo(new File("/home/travis"));
     }
 
     @Test
     public void givenSystemUtilsClass_whenCalledgetUserHome_thenCorrect() {
-        assertThat(SystemUtils.getUserHome()).isEqualTo(new File("C:\\Users\\Alejandro\\"));
+        assertThat(SystemUtils.getUserHome()).isEqualTo(new File("/usr/lib/jvm/java-8-oracle/jre"));
     }
 
     @Test
