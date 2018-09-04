@@ -20,7 +20,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot and Togglz Aspect](http://www.baeldung.com/spring-togglz)
 - [Getting Started with GraphQL and Spring Boot](http://www.baeldung.com/spring-graphql)
 - [Guide to Spring Type Conversions](http://www.baeldung.com/spring-type-conversions)
-- [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)
 - [An Introduction to Kong](http://www.baeldung.com/kong)
 - [Spring Boot Customize Whitelabel Error Page](http://www.baeldung.com/spring-boot-custom-error-page)
 - [Spring Boot: Configuring a Main Class](http://www.baeldung.com/spring-boot-main-class)

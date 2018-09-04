@@ -18,7 +18,6 @@ import java.util.stream.IntStream;
 public class BenchmarkUnitTest
 {
 
-  @Test
   public void
   launchBenchmark() throws Exception {
 

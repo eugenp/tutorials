@@ -360,6 +360,7 @@
 				<module>dozer</module>
 				<module>ethereum</module>
 				<module>ejb</module>
+				<module>ejb/ejb-client</module>
 				<module>feign</module>
 				<module>flips</module>
 				<module>testing-modules/gatling</module>
@@ -398,7 +399,6 @@
 				<module>jee-7</module>
 				<module>jhipster/jhipster-monolithic</module>
 				<module>jjwt</module>
-				<module>jpa-storedprocedure</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
@@ -476,6 +476,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
@@ -587,7 +588,6 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
-				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
@@ -596,6 +596,7 @@
 				<module>spring-webflux-amqp</module>
 				<module>antlr</module>
 				<module>maven-archetype</module>
+        		<module>optaplanner</module>
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
@@ -746,6 +747,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
@@ -753,6 +755,7 @@
 				<module>spring-data-elasticsearch</module>
 				<module>spring-data-keyvalue</module>
 				<module>spring-data-mongodb</module>
+				<module>spring-data-jpa</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 				<module>persistence-modules/spring-data-redis</module>
 				<module>spring-data-rest</module>
@@ -953,7 +956,6 @@
 				<module>jgroups</module>
 				<module>jee-7</module>
 				<module>jjwt</module>
-				<module>jpa-storedprocedure</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
@@ -1025,6 +1027,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 
 				<module>persistence-modules/spring-data-dynamodb</module>
