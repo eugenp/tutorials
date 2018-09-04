@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>spring-remoting-http-server</artifactId>
+            <artifactId>remoting-http-server</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

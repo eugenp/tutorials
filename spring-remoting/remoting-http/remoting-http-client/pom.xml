@@ -25,7 +25,8 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>remoting-http-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

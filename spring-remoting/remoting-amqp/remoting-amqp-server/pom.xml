@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>remoting-http-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -25,13 +25,13 @@
         </dependency>
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>spring-remoting-http-server</artifactId>
-            <version>${spring-remoting-http-server.version}</version>
+            <artifactId>remoting-http-server</artifactId>
+            <version>${remoting-http-server.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <spring-remoting-http-server.version>1.0-SNAPSHOT</spring-remoting-http-server.version>
+        <remoting-http-server.version>1.0-SNAPSHOT</remoting-http-server.version>
     </properties>
 
 </project>
