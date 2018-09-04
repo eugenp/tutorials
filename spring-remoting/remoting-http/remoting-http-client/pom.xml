@@ -2,23 +2,20 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>remoting-http-client</artifactId>
+    <description>Shows how to invoke a remote service using Spring Remoting HTTP.</description>
+	
     <parent>
-        <artifactId>remoting-jms</artifactId>
         <groupId>com.baeldung</groupId>
+        <artifactId>remoting-http</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>remoting-jms-server</artifactId>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-activemq</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -27,10 +24,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.baeldung</groupId>
+            <groupId>${project.groupId}</groupId>
             <artifactId>remoting-http-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
 </project>

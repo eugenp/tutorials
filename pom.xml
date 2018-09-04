@@ -445,6 +445,7 @@
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -463,6 +464,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-ops</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
@@ -553,6 +555,7 @@
 				<module>spring-thymeleaf</module>
 				<module>spring-userservice</module>
 				<module>spring-zuul</module>
+				<module>spring-remoting</module>
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
 				<module>spring-jinq</module>
@@ -708,6 +711,7 @@
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -732,6 +736,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-ops</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
@@ -995,6 +1000,7 @@
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
 				<module>spring-4</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -1011,6 +1017,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
@@ -1095,6 +1102,7 @@
 				<module>spring-thymeleaf</module>
 				<module>spring-userservice</module>
 				<module>spring-zuul</module>
+				<module>spring-remoting</module>
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
 				<module>spring-jinq</module>
