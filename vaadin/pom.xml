@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.test</groupId>
-    <artifactId>vaadin-app</artifactId>
+    <artifactId>vaadin</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>vaadin-app</name>
+    <name>Vaadin</name>
     <prerequisites>
         <maven>3</maven>
     </prerequisites>
