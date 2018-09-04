@@ -38,7 +38,6 @@ public class SocketController {
      * Example of sending message to specific user using 'convertAndSendToUser()' and '/queue'
      */
     @MessageMapping(SECURED_CHAT_ROOM)
-    //@SendToUser(SECURED_CHAT_SPECIFIC_USER)
     public void sendSpecific(@Payload Message msg, Principal user, @Header("simpSessionId") String sessionId) throws Exception {
         OutputMessage out = new OutputMessage(msg.getFrom(), msg.getText(), new SimpleDateFormat("HH:mm").format(new Date()));
         simpMessagingTemplate.convertAndSendToUser(msg.getTo(), SECURED_CHAT_SPECIFIC_USER, out);
