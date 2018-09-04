@@ -23,7 +23,7 @@ public class StringPerformance {
         int iterations = 100000;
 
         String sample = "baeldung";
-        String longString = "Hello, I am a bit longer than other Strings in average";
+        String longString = "Hello, I am a bit longer than other Strings";
         String result = "";
     }
 
@@ -139,38 +139,52 @@ public class StringPerformance {
 //        }
 //    }
 
+//    @Benchmark
+//    public void benchmarkStringEquals(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            boolean isEqual = state.longString.equals(state.sample);
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringEqualsIgnoreCase(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            boolean isEqual = state.longString.equalsIgnoreCase(state.sample);
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringMatches(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            boolean ismatch = state.longString.matches(state.sample);
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringCompareTo(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            int result = state.longString.compareTo(state.sample);
+//        }
+//    }
+//
+//    @Benchmark
+//    public void benchmarkStringEqualsWithSign(StringPerformance.MyState state) {
+//        for (int i = 0; i < state.iterations; i++) {
+//            boolean result = state.longString == state.sample;
+//        }
+//    }
+
     @Benchmark
-    public void benchmarkStringEquals(StringPerformance.MyState state) {
+    public void benchmarkStringIsEmpty(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            boolean isEqual = state.longString.equals(state.sample);
+            boolean result = state.longString.isEmpty();
         }
     }
 
     @Benchmark
-    public void benchmarkStringEqualsIgnoreCase(StringPerformance.MyState state) {
+    public void benchmarkStringLengthZero(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            boolean isEqual = state.longString.equalsIgnoreCase(state.sample);
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringMatches(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            boolean ismatch = state.longString.matches(state.sample);
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringCompareTo(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            int result = state.longString.compareTo(state.sample);
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringEqualsWithSign(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            boolean result = state.longString == state.sample;
+            boolean result = state.longString.length() == 0;
         }
     }
 
