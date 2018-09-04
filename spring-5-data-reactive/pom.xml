@@ -2,9 +2,7 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-5-data-reactive</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -43,11 +41,6 @@
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlin.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
@@ -101,6 +94,7 @@
             </plugin>
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin-maven-plugin.version}</version>
                <executions>
                     <execution>
                         <id>compile</id>
@@ -204,6 +198,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <kotlin.version>1.2.40</kotlin.version>
+        <kotlin-maven-plugin.version>1.2.40</kotlin-maven-plugin.version>
         <junit.platform.version>1.0.0</junit.platform.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
