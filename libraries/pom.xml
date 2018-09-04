@@ -717,11 +717,6 @@
             <version>${resilience4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${common-math3-version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.knowm.xchart</groupId>
             <artifactId>xchart</artifactId>
             <version>${xchart-version}</version>
@@ -964,7 +959,6 @@
         <jctools.version>2.1.2</jctools.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
         <resilience4j.version>0.12.1</resilience4j.version>
-        <common-math3-version>3.6.1</common-math3-version>
         <xchart-version>3.5.2</xchart-version>
         <commons-net.version>3.6</commons-net.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
