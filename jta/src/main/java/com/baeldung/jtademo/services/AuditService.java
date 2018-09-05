@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.math.BigDecimal;
 
 @Service
@@ -25,8 +26,7 @@ public class AuditService {
 
     public TransferLog lastTransferLog() {
         return jdbcTemplate.query("select FROM_ACCOUNT,TO_ACCOUNT,AMOUNT from AUDIT_LOG order by ID desc", (ResultSetExtractor<TransferLog>) (rs) -> {
-            if (!rs.next())
-                return null;
+            if(!rs.next()) return null;
             return new TransferLog(rs.getString(1), rs.getString(2), BigDecimal.valueOf(rs.getDouble(3)));
         });
     }

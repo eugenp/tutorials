@@ -3,6 +3,7 @@ package com.baeldung.jtademo;
 import org.hsqldb.jdbc.pool.JDBCXADataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.jta.bitronix.BitronixXADataSourceWrapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
