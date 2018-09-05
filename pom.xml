@@ -139,7 +139,7 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${maven-pmd-plugin.version}</version>
@@ -174,7 +174,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<groupId>org.commonjava.maven.plugins</groupId>
 				<artifactId>directory-maven-plugin</artifactId>
@@ -1266,7 +1266,7 @@
 		<gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
 		<gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
 		<gib.failOnError>false</gib.failOnError>
-		<!-- <gib.enabled>false</gib.enabled> -->
+		<gib.enabled>false</gib.enabled>
 		<junit.version>4.12</junit.version>
 		<org.hamcrest.version>1.3</org.hamcrest.version>
 		<mockito.version>2.21.0</mockito.version>
