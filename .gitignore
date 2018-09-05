@@ -62,3 +62,5 @@ jmeter/src/main/resources/*-JMeter.csv
 **/dist
 **/tmp
 **/out-tsc
+jta/transaction-logs/part1.btm
+jta/transaction-logs/part2.btm
