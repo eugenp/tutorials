@@ -9,6 +9,9 @@ public class Result {
         this.departmentName = departmentName;
     }
 
+    public Result() {
+    }
+
     public String getEmployeeName() {
         return employeeName;
     }

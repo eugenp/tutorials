@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 public class Department {
@@ -13,7 +12,12 @@ public class Department {
     long id;
     String name;
     @OneToMany(mappedBy="department")
-    List<Employee> employees;
+    List<Manager> employees;
+
+    public Department(String name) {
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }
@@ -26,10 +30,10 @@ public class Department {
     public void setName(String name) {
         this.name = name;
     }
-    public List<Employee> getEmployees() {
+    public List<Manager> getEmployees() {
         return employees;
     }
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(List<Manager> employees) {
         this.employees = employees;
     }
 }
