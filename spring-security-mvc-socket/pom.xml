@@ -11,9 +11,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-spring-4</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <relativePath>../parent-spring-4</relativePath>
     </parent>
 
     <dependencies>
@@ -177,9 +177,11 @@
 
     <properties>
         <hibernate-core.version>5.2.10.Final</hibernate-core.version>
+        <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <h2database.version>1.4.196</h2database.version>
         <logback-classic.version>1.2.3</logback-classic.version>
+        <jackson.version>2.8.7</jackson.version>
     </properties>
 
 </project>
