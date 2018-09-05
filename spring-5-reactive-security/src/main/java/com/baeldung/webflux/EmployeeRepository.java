@@ -1,7 +1,11 @@
 package com.baeldung.webflux;
 
+import java.lang.Integer;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.stream.Stream;
 
 import org.springframework.stereotype.Repository;
 
@@ -60,5 +64,19 @@ public class EmployeeRepository {
             existingEmployee.setName(employee.getName());
         }
         return Mono.just(existingEmployee);
+    }
+
+    public Flux<Employee> getEmployeeOfTheSecond() {
+        Flux<Employee> employees = Flux.fromStream(
+            Stream.generate(() -> 
+                generateRandomEmployee()
+            )
+        );
+        return employees.delayElements(Duration.ofSeconds(1));
+    }
+
+    private Employee generateRandomEmployee() {
+        int id = new Random().nextInt(100);
+        return new Employee(Integer.toString(id), "<Your name goes here>");
     }
 }

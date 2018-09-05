@@ -24,5 +24,26 @@ public class EmployeeWebClient {
             .bodyToFlux(Employee.class);
         
         employeeFlux.subscribe(System.out::println);
+
+        // Let the main thread sleep for 5 seconds
+        // in order to make sure that the employees list has been displayed completely.
+        try {
+            Thread.sleep(5000);
+        } catch(InterruptedException e) {
+            System.out.println(e);
+        }
+
+        System.out.println();
+        System.out.println("*********************************");
+        System.out.println();
+        System.out.println("The Employee Of The Second");
+        System.out.println();
+
+        Flux<Employee> employeeOfTheSecondFlux = client.get()
+            .uri("/employees/current")
+            .retrieve()
+            .bodyToFlux(Employee.class);
+
+        employeeOfTheSecondFlux.subscribe(System.out::println);
     }
 }

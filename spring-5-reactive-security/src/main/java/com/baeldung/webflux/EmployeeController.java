@@ -1,5 +1,6 @@
 package com.baeldung.webflux;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,4 +36,8 @@ public class EmployeeController {
         return employeeRepository.updateEmployee(employee);
     }
 
+    @GetMapping(value="/current", produces=MediaType.TEXT_EVENT_STREAM_VALUE)
+    private Flux<Employee> getEmployeeOfTheSecond() {
+        return employeeRepository.getEmployeeOfTheSecond();
+    }
 }
