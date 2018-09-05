@@ -48,12 +48,18 @@
             <artifactId>poi-ooxml</artifactId>
             <version>${apache-poi-version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.optaplanner</groupId>
+            <artifactId>optaplanner-core</artifactId>
+            <version>${opta-planner-version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <http-component-version>4.4.6</http-component-version>
         <drools-version>7.4.1.Final</drools-version>
         <apache-poi-version>3.13</apache-poi-version>
+        <opta-planner-version>7.10.0.Final</opta-planner-version>
     </properties>
 
 </project>
