@@ -18,6 +18,7 @@ import org.apache.commons.collections4.ListUtils;
 import org.junit.Test;
 
 import com.baeldung.adapter.PersonAdapter;
+import com.baeldung.jsonb.Person;
 
 public class JsonbTest {
 
