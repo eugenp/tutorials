@@ -601,6 +601,7 @@
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
 				<module>spring-boot-angular-ecommerce</module>
+				<module>jta</module>
 			</modules>
 
 		</profile>
