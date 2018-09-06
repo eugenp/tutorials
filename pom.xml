@@ -579,6 +579,7 @@
 				<module>testing-modules/mockserver</module>
 				<module>testing-modules/test-containers</module>
 				<module>undertow</module>
+				<module>vaadin</module>
 				<module>vertx-and-rxjava</module>
 				<module>saas</module>
 				<module>deeplearning4j</module>
@@ -1126,6 +1127,7 @@
 				<module>testing-modules/mockserver</module>
 				<module>testing-modules/test-containers</module>
 				<module>undertow</module>
+				<module>vaadin</module>
 				<module>vertx-and-rxjava</module>
 				<module>saas</module>
 				<module>deeplearning4j</module>
