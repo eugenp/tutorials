@@ -10,14 +10,6 @@ public class EmployeeOfTheSecondWebClient {
     
     public void consume() {
 
-        // Let the main thread sleep for 5 seconds
-        // in order to make sure that the employees list has been displayed completely.
-        try {
-            Thread.sleep(5000);
-        } catch(InterruptedException e) {
-            System.out.println(e);
-        }
-
         System.out.println();
         System.out.println("*********************************");
         System.out.println();
