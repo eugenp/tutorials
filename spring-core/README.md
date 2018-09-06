@@ -19,3 +19,4 @@
 - [Access a File from the Classpath in a Spring Application](http://www.baeldung.com/spring-classpath-file-access)
 - [Controlling Bean Creation Order with @DependsOn Annotation](http://www.baeldung.com/spring-depends-on)
 - [Spring Autowiring of Generic Types](https://www.baeldung.com/spring-autowire-generics)
+- [Spring Application Context Events](https://www.baeldung.com/spring-context-events)
