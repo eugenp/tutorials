@@ -145,3 +145,7 @@
 - [Common Java Exceptions](http://www.baeldung.com/java-common-exceptions)
 - [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
 - [Differences Between Final, Finally and Finalize in Java](https://www.baeldung.com/java-final-finally-finalize)
+- [Static and Dynamic Binding in Java](https://www.baeldung.com/java-static-dynamic-binding)
+- [Java List Initialization in One Line](https://www.baeldung.com/java-init-list-one-line)
+- [Difference Between Throw and Throws in Java](https://www.baeldung.com/java-throw-throws)
+- [ClassCastException: Arrays$ArrayList cannot be cast to ArrayList](https://www.baeldung.com/java-classcastexception-arrays-arraylist)
