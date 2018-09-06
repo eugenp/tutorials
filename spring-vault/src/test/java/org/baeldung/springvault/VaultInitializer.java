@@ -27,18 +27,18 @@ public class VaultInitializer implements Closeable {
         return unSealKey;
     }
 
-    public static final VaultInitializer init() {
+    public static final VaultInitializer initializeValut() {
         VaultInitializer vaultProcess = new VaultInitializer();
         vaultProcess.start();
         // Secrets is by default enabled.
-        // vaultProcess.enableSecrets();
+        vaultProcess.enableSecrets();
         return vaultProcess;
     }
 
     @SuppressWarnings("unused")
     private void enableSecrets() {
-        System.out.println("Enabling Secrets...");
-        ProcessBuilder pb = new ProcessBuilder("/Users/bkotharu/vault", "secrets", "enable");
+        System.out.println("Enabling Secrets at path credentials/myapp...");
+        ProcessBuilder pb = new ProcessBuilder("vault", "secrets", "enable", "-path=credentials/myapp", "kv");
         Map<String, String> map = pb.environment();
         map.put("VAULT_ADDR", "http://127.0.0.1:8200");
         try {
@@ -55,7 +55,7 @@ public class VaultInitializer implements Closeable {
     public void start() {
         System.out.println("starting vault");
         // This starts the vault server.
-        ProcessBuilder pb = new ProcessBuilder("/Users/bkotharu/vault", "server", "-dev");
+        ProcessBuilder pb = new ProcessBuilder("vault", "server", "-dev");
 
         try {
             vaultProcess = pb.start();

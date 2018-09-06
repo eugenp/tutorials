@@ -22,11 +22,8 @@ import org.springframework.vault.support.VaultResponseSupport;
 @Service
 public class CredentialsService {
 
-    @Value("${vault.token}")
-    private String token;
-
-    @Value("${vault.uri}")
-    private String vaultUri;
+    @Autowired
+    private VaultTemplate vaultTemplate;
 
     /**
     *  To Secure Credentials
@@ -34,11 +31,9 @@ public class CredentialsService {
     * @return VaultResponse
     * @throws URISyntaxException
     */
-    public VaultResponse secureCredentials(Credentials credentials) throws URISyntaxException {
+    public void secureCredentials(Credentials credentials) throws URISyntaxException {
 
-        VaultTemplate vaultTemplate = new VaultTemplate(VaultEndpoint.from(new URI(vaultUri)), new TokenAuthentication(token));
-        VaultResponse vaultResponse = vaultTemplate.write("secret/myapp", credentials);
-        return vaultResponse;
+        vaultTemplate.write("credentials/myapp", credentials);
     }
 
     /**
@@ -47,8 +42,9 @@ public class CredentialsService {
      * @throws URISyntaxException
      */
     public Credentials accessCredentials() throws URISyntaxException {
-        VaultTemplate vaultTemplate = new VaultTemplate(VaultEndpoint.from(new URI(vaultUri)), new TokenAuthentication(token));
-        VaultResponseSupport<Credentials> response = vaultTemplate.read("secret/myapp", Credentials.class);
+
+        VaultResponseSupport<Credentials> response = vaultTemplate.read("credentials/myapp", Credentials.class);
         return response.getData();
     }
+
 }
