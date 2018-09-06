@@ -321,6 +321,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -348,6 +349,7 @@
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
 				<module>core-groovy</module>
@@ -358,6 +360,7 @@
 				<module>dozer</module>
 				<module>ethereum</module>
 				<module>ejb</module>
+				<module>ejb/ejb-client</module>
 				<module>feign</module>
 				<module>flips</module>
 				<module>testing-modules/gatling</module>
@@ -396,7 +399,6 @@
 				<module>jee-7</module>
 				<module>jhipster/jhipster-monolithic</module>
 				<module>jjwt</module>
-				<module>jpa-storedprocedure</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
@@ -436,12 +438,14 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -456,9 +460,11 @@
 				<module>spring-batch</module>
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-ops</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
@@ -470,6 +476,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
@@ -513,6 +520,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -547,6 +555,7 @@
 				<module>spring-thymeleaf</module>
 				<module>spring-userservice</module>
 				<module>spring-zuul</module>
+				<module>spring-remoting</module>
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
 				<module>spring-jinq</module>
@@ -587,6 +596,7 @@
 				<module>spring-webflux-amqp</module>
 				<module>antlr</module>
 				<module>maven-archetype</module>
+        		<module>optaplanner</module>
 				<module>apache-meecrowave</module>
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
@@ -636,7 +646,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 
 				<!-- <module>asm</module> <module>atomix</module> <module>apache-cayenne</module>
@@ -694,12 +704,14 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -720,9 +732,11 @@
 
 				<module>spring-bom</module>
 				<module>spring-boot</module>
+				<module>spring-boot-client</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-ops</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
@@ -733,6 +747,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
 				<module>spring-data-couchbase-2</module>
@@ -740,6 +755,7 @@
 				<module>spring-data-elasticsearch</module>
 				<module>spring-data-keyvalue</module>
 				<module>spring-data-mongodb</module>
+				<module>spring-data-jpa</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 				<module>persistence-modules/spring-data-redis</module>
 				<module>spring-data-rest</module>
@@ -780,6 +796,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
         <module>spring-reactive-kotlin</module>
 
@@ -873,7 +890,7 @@
 				<module>parent-spring-4</module>
 				<module>parent-spring-5</module>
 				<module>parent-java</module>
-
+				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
 				<module>apache-cayenne</module>
@@ -900,6 +917,7 @@
 				<module>core-java-collections</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
+				<module>java-streams</module>
 				<module>core-groovy</module>
 
 				<module>couchbase</module>
@@ -938,7 +956,6 @@
 				<module>jgroups</module>
 				<module>jee-7</module>
 				<module>jjwt</module>
-				<module>jpa-storedprocedure</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
@@ -977,11 +994,13 @@
 				<module>testing-modules/rest-testing</module>
 				<module>resteasy</module>
 				<module>rxjava</module>
+				<module>rxjava-2</module>
 				<module>spring-swagger-codegen</module>
 				<module>testing-modules/selenium-junit-testng</module>
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
 				<module>spring-4</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -998,6 +1017,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
@@ -1007,6 +1027,7 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
+				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 
 				<module>persistence-modules/spring-data-dynamodb</module>
@@ -1047,6 +1068,7 @@
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
 				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
 				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
@@ -1080,6 +1102,7 @@
 				<module>spring-thymeleaf</module>
 				<module>spring-userservice</module>
 				<module>spring-zuul</module>
+				<module>spring-remoting</module>
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
 				<module>spring-jinq</module>
@@ -1112,6 +1135,7 @@
 				<module>spring-security-thymeleaf</module>
 				<module>persistence-modules/java-jdbi</module>
 				<module>jersey</module>
+				<module>jersey-client-rx</module>
 				<module>java-spi</module>
 				<module>performance-tests</module>
 				<module>twilio</module>
@@ -1202,7 +1226,7 @@
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
-
+				<module>parent-kotlin</module>
                 <module>libraries</module>
                 <module>geotools</module>
                 <module>jhipster/jhipster-monolithic</module>

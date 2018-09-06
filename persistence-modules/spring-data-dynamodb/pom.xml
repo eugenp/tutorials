@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-boot-dynamodb</artifactId>
+    <artifactId>spring-data-dynamodb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>spring-boot-dynamodb</name>
+    <name>spring-data-dynamodb</name>
     <description>This is simple boot application for Spring boot dynamodb test</description>
 
     <parent>
