@@ -149,3 +149,8 @@
 - [Java List Initialization in One Line](https://www.baeldung.com/java-init-list-one-line)
 - [Difference Between Throw and Throws in Java](https://www.baeldung.com/java-throw-throws)
 - [ClassCastException: Arrays$ArrayList cannot be cast to ArrayList](https://www.baeldung.com/java-classcastexception-arrays-arraylist)
+- [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
+
+
+
+
