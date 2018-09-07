@@ -25,3 +25,4 @@
 - [Why Use char[] Array Over a String for Storing Passwords in Java?](http://www.baeldung.com/java-storing-passwords)
 - [Convert a String to Title Case](http://www.baeldung.com/java-string-title-case)
 - [Compact Strings in Java 9](http://www.baeldung.com/java-9-compact-string)
+- [Java Check a String for Lowercase/Uppercase Letter, Special Character and Digit](https://www.baeldung.com/java-lowercase-uppercase-special-character-digit-regex)
