@@ -795,8 +795,8 @@
             <url>http://dl.bintray.com/cuba-platform/main</url>
         </repository>
         <repository>
-            <id>Maven Central</id>
-            <url>https://repo.maven.apache.org/maven2/</url>
+            <id>Apache Staging</id>
+            <url>https://repository.apache.org/content/groups/staging</url>
         </repository>
     </repositories>
 
@@ -912,41 +912,6 @@
                 </executions>
             </plugin>
         </plugins>
-        <pluginManagement>
-        	<plugins>
-        		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-        		<plugin>
-        			<groupId>org.eclipse.m2e</groupId>
-        			<artifactId>lifecycle-mapping</artifactId>
-        			<version>1.0.0</version>
-        			<configuration>
-        				<lifecycleMappingMetadata>
-        					<pluginExecutions>
-        						<pluginExecution>
-        							<pluginExecutionFilter>
-        								<groupId>
-        									org.apache.maven.plugins
-        								</groupId>
-        								<artifactId>
-        									maven-pmd-plugin
-        								</artifactId>
-        								<versionRange>
-        									[3.8,)
-        								</versionRange>
-        								<goals>
-        									<goal>check</goal>
-        								</goals>
-        							</pluginExecutionFilter>
-        							<action>
-        								<ignore></ignore>
-        							</action>
-        						</pluginExecution>
-        					</pluginExecutions>
-        				</lifecycleMappingMetadata>
-        			</configuration>
-        		</plugin>
-        	</plugins>
-        </pluginManagement>
     </build>
 
     <properties>
