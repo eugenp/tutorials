@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>springamqp</artifactId>
+    <artifactId>spring-amqp</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>springamqp</name>
+    <name>spring-amqp</name>
     <description>Introduction to Spring-AMQP</description>
 
     <parent>

@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-data-neo4j</artifactId>
     <version>1.0</version>
 
@@ -73,11 +72,6 @@
             <artifactId>neo4j-ogm-test</artifactId>
             <version>${neo4j-ogm.version}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.neo4j</groupId>
-            <artifactId>neo4j-ogm-embedded-driver</artifactId>
-            <version>${neo4j-ogm.version}</version>
         </dependency>
         <dependency>
             <groupId>org.neo4j.test</groupId>
