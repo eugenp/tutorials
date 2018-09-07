@@ -962,6 +962,7 @@
 				<module>json-path</module>
 				<module>json</module>
 				<module>jsoup</module>
+				<module>jta</module>
 				<module>testing-modules/junit-5</module>
 				<module>testing-modules/junit5-migration</module>
 				<module>jws</module>
