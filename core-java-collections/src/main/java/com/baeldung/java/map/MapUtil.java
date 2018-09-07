@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.baeldung.map;
+package com.baeldung.java.map;
 
 import java.util.HashSet;
 import java.util.Map;
