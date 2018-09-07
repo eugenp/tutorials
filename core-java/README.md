@@ -150,7 +150,4 @@
 - [Difference Between Throw and Throws in Java](https://www.baeldung.com/java-throw-throws)
 - [ClassCastException: Arrays$ArrayList cannot be cast to ArrayList](https://www.baeldung.com/java-classcastexception-arrays-arraylist)
 - [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
-
-
-
-
+- [Add a Character to a String at a Given Position](https://www.baeldung.com/java-add-character-to-string)
