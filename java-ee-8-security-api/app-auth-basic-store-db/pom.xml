@@ -36,32 +36,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <artifactItems>
-                        <artifactItem>
-                            <groupId>com.h2database</groupId>
-                            <artifactId>h2</artifactId>
-                            <version>${h2-version}</version>
-                            <type>jar</type>
-                            <outputDirectory>
-                                ${project.build.directory}/liberty/wlp/usr/servers/defaultServer/lib/global
-                            </outputDirectory>
-                        </artifactItem>
-                    </artifactItems>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 

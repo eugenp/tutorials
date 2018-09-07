@@ -204,34 +204,6 @@
                 <pluginManagement>
                     <plugins>
                         <plugin>
-                            <artifactId>maven-dependency-plugin</artifactId>
-                            <version>${maven-dependency-plugin.version}</version>
-                            <configuration>
-                                <skip>${maven.test.skip}</skip>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>unpack</id>
-                                    <phase>process-test-classes</phase>
-                                    <goals>
-                                        <goal>unpack</goal>
-                                    </goals>
-                                    <configuration>
-                                        <artifactItems>
-                                            <artifactItem>
-                                                <groupId>org.wildfly</groupId>
-                                                <artifactId>wildfly-dist</artifactId>
-                                                <version>${wildfly.version}</version>
-                                                <type>zip</type>
-                                                <overWrite>false</overWrite>
-                                                <outputDirectory>${project.build.directory}</outputDirectory>
-                                            </artifactItem>
-                                        </artifactItems>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
-                        <plugin>
                             <artifactId>maven-surefire-plugin</artifactId>
                             <version>${maven-surefire-plugin.version}</version>
                             <configuration>
@@ -422,7 +394,6 @@
         <arquillian-drone-bom.version>2.0.1.Final</arquillian-drone-bom.version>
         <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
         <graphene-webdriver.version>2.1.0.Final</graphene-webdriver.version>
-        <maven-dependency-plugin.version>2.8</maven-dependency-plugin.version>
         <jstl.version>1.2</jstl.version>
         <jsp-api.version>2.2</jsp-api.version>
         <ozark.version>20160715</ozark.version>
