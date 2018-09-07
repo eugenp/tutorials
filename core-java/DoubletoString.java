@@ -17,6 +17,19 @@ public class DoubletoString {
         DecimalFormat df = new DecimalFormat("#");
         df.setRoundingMode(RoundingMode.FLOOR);
         System.out.println(df.format(doubleValue));
+        
+        Locale enlocale = new Locale("en", "US");
+        String pattern = "###,##";
+        df = (DecimalFormat) NumberFormat.getNumberInstance(enlocale);
+        df.applyPattern(pattern);
+        String format = df.format(doubleValue);
+        System.out.println(format);
+
+        Locale dalocale = new Locale("da", "DK");
+        df = (DecimalFormat) NumberFormat.getNumberInstance(dalocale);
+        df.applyPattern(pattern);
+        System.out.println(df.format(doubleValue));
+
 
     }
 
