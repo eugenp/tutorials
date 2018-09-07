@@ -112,7 +112,7 @@
 	<properties>
 		<scala.version>2.13.0-M5</scala.version>
 		<gatling.version>2.3.1</gatling.version>
-		<scala-maven-plugin.version>3.4.2</scala-maven-plugin.version>
+		<scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
 		<gatling-maven-plugin.version>3.0.0-M5</gatling-maven-plugin.version>
 	</properties>
 
