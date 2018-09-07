@@ -49,7 +49,12 @@
 			  	       </profiles>
 			        </configuration> -->
 			    </plugin>
-		    </plugins>
+				  <plugin>
+					    <groupId>org.springframework.boot</groupId>
+					    <artifactId>spring-boot-maven-plugin</artifactId>
+					    <version>2.0.4.RELEASE</version>
+				  </plugin>
+			  </plugins>
 		</pluginManagement>
 	</build>
 	

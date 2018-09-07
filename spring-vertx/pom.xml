@@ -4,10 +4,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>vertx-spring</artifactId>
+    <artifactId>spring-vertx</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>spring-vertx</name>
+    <name>Spring Vertx</name>
     <description>A demo project with vertx spring integration</description>
 
     <parent>
