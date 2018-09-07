@@ -1,5 +1,6 @@
 package com.baeldung.string;
 
+import com.google.common.base.Splitter;
 import org.apache.commons.lang3.StringUtils;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
@@ -7,7 +8,6 @@ import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
@@ -23,7 +23,7 @@ public class StringPerformance {
         int iterations = 100000;
 
         String sample = "baeldung";
-        String longString = "Hello, I am a bit longer than other Strings";
+        String longString = "Hello baeldung, I am a bit longer than other Strings";
         String result = "";
     }
 
@@ -100,10 +100,20 @@ public class StringPerformance {
         String replaced = StringUtils.replace(state.longString, "average", " average !!!");
     }
 
+
+    @Benchmark
+    public void benchmarkGuavaSplitter(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            List<String> resultList = Splitter.on(" ").trimResults()
+                    .omitEmptyStrings()
+                    .splitToList(state.longString);
+        }
+    }
+
     @Benchmark
     public void benchmarkStringSplit(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            List<String> list = Arrays.asList(state.longString.split(" "));
+            String [] list = state.longString.split(" ");
         }
     }
 
@@ -111,7 +121,7 @@ public class StringPerformance {
     public void benchmarkStringSplitPattern(StringPerformance.MyState state) {
         Pattern spacePattern = Pattern.compile(" ");
         for (int i = 0; i < state.iterations; i++) {
-            List<String> list = Arrays.asList(spacePattern.split(state.longString, 0));
+            String [] list = spacePattern.split(state.longString, 0);
         }
     }
 
@@ -177,6 +187,14 @@ public class StringPerformance {
     public void benchmarkStringMatches(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
             boolean ismatch = state.longString.matches(state.sample);
+        }
+    }
+
+    @Benchmark
+    public void benchmarkPrecompiledMatches(StringPerformance.MyState state) {
+        Pattern pattern = Pattern.compile(state.longString);
+        for (int i = 0; i < state.iterations; i++) {
+            boolean ismatch = pattern.matcher(state.sample).matches();
         }
     }
 
