@@ -11,5 +11,5 @@ import lombok.Getter;
 public class GetterBoolean {
 
     @Getter
-    private Boolean running;
+    private Boolean running = true;
 }
