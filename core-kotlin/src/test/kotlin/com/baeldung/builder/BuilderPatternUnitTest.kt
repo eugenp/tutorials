@@ -93,6 +93,7 @@ internal class BuilderPatternUnitTest {
         Assertions.assertNull(foodOrder.fish)
     }
 
+
     @Test
     fun whenBuildingFoodOrderApplySettingValues_thenFieldsNotNull() {
 
