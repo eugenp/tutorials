@@ -11,8 +11,7 @@ public class ConstructorUtilsUnitTest {
 
     @Test
     public void givenConstructorUtilsClass_whenCalledgetAccessibleConstructor_thenCorrect() {
-        Constructor constructor = ConstructorUtils.getAccessibleConstructor(User.class, String.class, String.class);
-        assertThat(constructor).isInstanceOf(Constructor.class);
+        assertThat(ConstructorUtils.getAccessibleConstructor(User.class, String.class, String.class)).isInstanceOf(Constructor.class);
     }
     
     @Test
