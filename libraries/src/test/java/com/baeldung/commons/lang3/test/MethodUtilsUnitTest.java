@@ -10,7 +10,6 @@ public class MethodUtilsUnitTest {
 
     @Test
     public void givenMethodUtilsClass_whenCalledgetAccessibleMethod_thenCorrect() {
-        Method method = MethodUtils.getAccessibleMethod(User.class, "getName");
-        assertThat(method).isInstanceOf(Method.class);
+        assertThat(MethodUtils.getAccessibleMethod(User.class, "getName")).isInstanceOf(Method.class);
     }   
 }
