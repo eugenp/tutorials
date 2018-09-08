@@ -2,6 +2,7 @@ package com.baeldung.protonpack;
 
 import com.codepoetics.protonpack.Indexed;
 import com.codepoetics.protonpack.StreamUtils;
+import com.codepoetics.protonpack.Streamable;
 import com.codepoetics.protonpack.collectors.CollectorUtils;
 import com.codepoetics.protonpack.collectors.NonUniqueValueException;
 import com.codepoetics.protonpack.selectors.Selector;
@@ -200,6 +201,15 @@ public class ProtonpackUnitTest {
         assertThatExceptionOfType(NonUniqueValueException.class).isThrownBy(() -> {
             multipleElement.collect(CollectorUtils.unique());
         });
+    }
+
+    @Test
+    public void givenStreamable_whenReused_thenNoExcpetion() {
+        Streamable<String> s = Streamable.of("a", "b", "c", "d");
+        List<String> collected1 = s.collect(Collectors.toList());
+        List<String> collected2 = s.map(val -> val + val).collect(Collectors.toList());
+        assertThat(collected1).hasSize(4);
+        assertThat(collected2).hasSize(4);
     }
 
 }
