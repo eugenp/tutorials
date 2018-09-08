@@ -1,6 +1,7 @@
 package com.baeldung.sessionattrs;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -22,7 +23,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
 @Import(TestConfig.class)
 public class TodoControllerWithScopedProxyIntegrationTest {
@@ -47,7 +48,7 @@ public class TodoControllerWithScopedProxyIntegrationTest {
             .andReturn();
 
         TodoItem item = (TodoItem) result.getModelAndView().getModel().get("todo");
-        assertTrue(StringUtils.isEmpty(item.getDescription()));
+        assertFalse(StringUtils.isEmpty(item.getDescription()));
     }
 
     @Test

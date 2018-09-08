@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
@@ -26,6 +26,12 @@
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <version>${hibernate-jpa-2.1-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -60,8 +66,7 @@
                             <verbose>false</verbose>
                         </configuration>
                     </execution>
-                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id>
-                        <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals>
+                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id> <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals> 
                         <configuration> <verbose>false</verbose> </configuration> </execution> -->
                 </executions>
             </plugin>
@@ -69,13 +74,13 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- lombok: https://projectlombok.org/changelog.html -->
         <lombok.version>1.16.18</lombok.version>
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <!-- delombok maven plugin -->
         <delombok-maven-plugin.version>1.16.10.0</delombok-maven-plugin.version>
+        <assertj-core.version>3.8.0</assertj-core.version>
     </properties>
 
 </project>

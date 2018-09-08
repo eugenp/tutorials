@@ -11,9 +11,7 @@ public class PushController {
     @GetMapping(path = "/demoWithPush")
     public String demoWithPush(PushBuilder pushBuilder) {
         if (null != pushBuilder) {
-            pushBuilder.path("resources/logo.png")
-                .addHeader("Content-Type", "image/png")
-                .push();
+            pushBuilder.path("resources/logo.png").push();
         }
         return "demo";
     }

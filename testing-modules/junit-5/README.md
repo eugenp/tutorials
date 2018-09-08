@@ -12,3 +12,7 @@
 - [JUnit Assert an Exception is Thrown](http://www.baeldung.com/junit-assert-exception)
 - [@Before vs @BeforeClass vs @BeforeEach vs @BeforeAll](http://www.baeldung.com/junit-before-beforeclass-beforeeach-beforeall)
 - [Migrating from JUnit 4 to JUnit 5](http://www.baeldung.com/junit-5-migration)
+- [JUnit5 Programmatic Extension Registration with @RegisterExtension](http://www.baeldung.com/junit-5-registerextension-annotation)
+- [The Order of Tests in JUnit](http://www.baeldung.com/junit-5-test-order)
+- [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)
+- [Testing an Abstract Class With JUnit](https://www.baeldung.com/junit-test-abstract-class)

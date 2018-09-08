@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>spring-userservice</groupId>
     <artifactId>spring-userservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -8,8 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-spring-4</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-spring-4</relativePath>
     </parent>
 
     <dependencies>
@@ -19,12 +21,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <!-- persistence -->
@@ -99,14 +101,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -117,12 +119,12 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
@@ -215,13 +217,12 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <spring-boot.version>1.4.2.RELEASE</spring-boot.version>
+        <org.springframework.security.version>4.2.6.RELEASE</org.springframework.security.version>
+        <spring-boot.version>1.5.14.RELEASE</spring-boot.version>
         <javassist.version>3.21.0-GA</javassist.version>
 
         <!-- persistence -->
-        <hibernate.version>5.2.5.Final</hibernate.version>
+        <hibernate.version>5.2.10.Final</hibernate.version>
         <mysql-connector-java.version>5.1.40</mysql-connector-java.version>
         <spring-data-jpa.version>1.10.5.RELEASE</spring-data-jpa.version>
         <h2.version>1.4.193</h2.version>
@@ -241,8 +242,6 @@
 
         <!-- maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-
     </properties>
-
 
 </project>

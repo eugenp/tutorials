@@ -6,6 +6,7 @@ import org.baeldung.web.exception.BookIdMismatchException;
 import org.baeldung.web.exception.BookNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,21 +38,22 @@ public class BookController {
 
     @GetMapping("/{id}")
     public Book findOne(@PathVariable long id) {
-        return bookRepository.findOne(id)
+        return bookRepository.findById(id)
           .orElseThrow(BookNotFoundException::new);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Book create(@RequestBody Book book) {
-        return bookRepository.save(book);
+        Book book1 = bookRepository.save(book);
+        return book1;
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable long id) {
-        bookRepository.findOne(id)
+        bookRepository.findById(id)
           .orElseThrow(BookNotFoundException::new);
-        bookRepository.delete(id);
+        bookRepository.deleteById(id);
     }
 
     @PutMapping("/{id}")
@@ -59,7 +61,7 @@ public class BookController {
         if (book.getId() != id) {
             throw new BookIdMismatchException();
         }
-        bookRepository.findOne(id)
+        bookRepository.findById(id)
           .orElseThrow(BookNotFoundException::new);
         return bookRepository.save(book);
     }

@@ -14,6 +14,8 @@ import java.nio.file.Paths;
 
 public class IgniteStream {
 
+    private static final Gson GSON = new Gson();
+
     public static void main(String[] args) throws Exception {
 
         Ignition.setClientMode(true);
@@ -29,16 +31,16 @@ public class IgniteStream {
             employee.setEmployed(true);
             e.setValue(employee);
 
-            return null;
+            return employee;
         }));
 
         Path path = Paths.get(IgniteStream.class.getResource("employees.txt").toURI());
 
         Files.lines(path)
-                .forEach(line -> {
-                    Employee employee = new Gson().fromJson(line, Employee.class);
-                    streamer.addData(employee.getId(), employee);
-                });
-
-    }
+          .forEach(line -> {
+              Employee employee = GSON.fromJson(line, Employee.class);
+              streamer.addData(employee.getId(), employee);
+          });
+    }    
+    
 }

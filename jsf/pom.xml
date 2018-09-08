@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jsf</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -38,11 +38,6 @@
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${org.springframework.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
@@ -72,6 +67,13 @@
             <artifactId>javax.servlet-api</artifactId>
             <scope>provided</scope>
             <version>${javax.servlet.version}</version>
+        </dependency>
+
+        <!-- Primefaces -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>${primefaces.version}</version>
         </dependency>
     </dependencies>
 
@@ -103,6 +105,8 @@
 
         <!-- maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
+
+        <primefaces.version>6.2</primefaces.version>
     </properties>
 
 </project>

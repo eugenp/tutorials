@@ -10,8 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.List;
@@ -25,8 +23,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     int countByStatus(int status);
 
     Optional<User> findOneByName(String name);
-
-    Stream<User> findAllByName(String name);
 
     @Async
     CompletableFuture<User> findOneByStatus(Integer status);

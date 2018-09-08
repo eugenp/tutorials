@@ -2,29 +2,20 @@ package baeldung.data;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Default;
-import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class SecondaryEntityManagerProducer {
-    @PersistenceUnit(unitName = "secondary")
-    private EntityManagerFactory entityManagerFactory;
+
+    @PersistenceContext(unitName = "secondary") private EntityManager entityManager;
 
     @Produces
-    @Default
     @RequestScoped
     @SecondaryPersistenceUnit
     public EntityManager create() {
-        return this.entityManagerFactory.createEntityManager();
+        return entityManager;
     }
 
-    public void dispose(@Disposes @Default EntityManager entityManager) {
-        if (entityManager.isOpen()) {
-            entityManager.close();
-        }
-    }
 }

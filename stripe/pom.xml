@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.baeldung.stripe</groupId>
     <artifactId>stripe</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -10,10 +11,10 @@
     <description>Demo project for Stripe API</description>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-5</relativePath>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
@@ -25,20 +26,23 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.16</version>
-            <!-- version is explicit here because the one provided with the
-            current spring-boot-starter-parent has a bug in NetBeans;
-            can be removed if spring-boot-starter-parent is upgraded -->
+            <version>${lombok.version}</version>
+            <!-- version is explicit here because the one provided with the current spring-boot-starter-parent has a bug in NetBeans; can be removed if spring-boot-starter-parent is 
+                upgraded -->
         </dependency>
         <dependency>
             <groupId>com.stripe</groupId>
             <artifactId>stripe-java</artifactId>
-            <version>4.2.0</version>
+            <version>${stripe.version}</version>
         </dependency>
     </dependencies>
+    
+    <properties>
+        <lombok.version>1.16.16</lombok.version>
+        <stripe.version>4.2.0</stripe.version>
+    </properties>
 
 </project>

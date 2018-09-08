@@ -9,8 +9,9 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
+        <artifactId>parent-java</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    	<relativePath>../parent-java</relativePath>
     </parent>
 
     <dependencies>
@@ -23,11 +24,6 @@
             <groupId>com.atlassian.fugue</groupId>
             <artifactId>fugue</artifactId>
             <version>${atlassian.fugue.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 
@@ -42,19 +38,9 @@
 
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <executable>java</executable>
                     <mainClass>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</mainClass>
@@ -78,11 +64,8 @@
     </repositories>
 
     <properties>
-        <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <jira-rest-java-client-core.version>4.0.0</jira-rest-java-client-core.version>
         <atlassian.fugue.version>2.6.1</atlassian.fugue.version>
-        <guava.version>19.0</guava.version>
     </properties>
 
 </project>
