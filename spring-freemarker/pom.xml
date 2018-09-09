@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.freemarker.example</groupId>
-    <artifactId>spring4-freemarker-example</artifactId>
+    <groupId>com.baeldung.freemarker</groupId>
+    <artifactId>spring-freemarker</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Spring Freemarker Example</name>
@@ -48,8 +48,8 @@
     </dependencies>
 
     <properties>
-        <spring.version>4.3.4.RELEASE</spring.version>
-        <freemarker.version>2.3.23</freemarker.version>
+        <spring.version>5.0.8.RELEASE</spring.version>
+        <freemarker.version>2.3.28</freemarker.version>
         <servletapi.version>3.1.0</servletapi.version>
         <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>

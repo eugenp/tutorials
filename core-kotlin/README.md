@@ -37,3 +37,8 @@
 - [Create a Java and Kotlin Project with Maven](http://www.baeldung.com/kotlin-maven-java-project)
 - [Reflection with Kotlin](http://www.baeldung.com/kotlin-reflection)
 - [Get a Random Number in Kotlin](http://www.baeldung.com/kotlin-random-number)
+- [Idiomatic Logging in Kotlin](http://www.baeldung.com/kotlin-logging)
+- [Kotlin Constructors](https://www.baeldung.com/kotlin-constructors)
+- [Creational Design Patterns in Kotlin: Builder](https://www.baeldung.com/kotlin-builder-pattern)
+- [Kotlin Nested and Inner Classes](https://www.baeldung.com/kotlin-inner-classes)
+- [Guide to the Kotlin Exposed Framework](https://www.baeldung.com/kotlin-exposed-persistence)

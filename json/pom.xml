@@ -33,11 +33,43 @@
             <artifactId>json</artifactId>
             <version>20171018</version>
         </dependency>
+		<dependency>
+            <groupId>javax.json.bind</groupId>
+            <artifactId>javax.json.bind-api</artifactId>
+            <version>${jsonb-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://search.maven.org/search?q=g:org.glassfish%20AND%20a:javax.json&core=gav  -->
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>javax.json</artifactId>
+            <version>1.1.2</version>
+        </dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>yasson</artifactId>
+			<version>${yasson.version}</version>
+        </dependency>
+		<!-- utils -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
         <everit.json.schema.version>1.4.1</everit.json.schema.version>
         <fastjson.version>1.2.21</fastjson.version>
+        <jsonb-api.version>1.0</jsonb-api.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
+        <yasson.version>1.0.1</yasson.version>
     </properties>
 
 </project>

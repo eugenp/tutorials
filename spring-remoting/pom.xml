@@ -32,7 +32,7 @@
         <module>remoting-hessian-burlap</module>
         <module>remoting-amqp</module>
         <module>remoting-jms</module>
-        <module>spring-remoting-rmi</module>
+        <module>remoting-rmi</module>
     </modules>
 
 </project>
