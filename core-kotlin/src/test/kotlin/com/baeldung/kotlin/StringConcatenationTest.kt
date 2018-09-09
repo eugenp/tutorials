@@ -3,7 +3,7 @@ package com.baeldung.kotlin
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class SealedTest {
+class StringConcatenationTest {
 
     @Test
     fun givenTwoStrings_concatenateWithTemplates_thenEquals() {
