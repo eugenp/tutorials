@@ -5,11 +5,13 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.reactive.security.SpringSecurity5Application;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class SpringBootBootstrapApplicationIntegrationTest {
+@SpringBootTest(classes = SpringSecurity5Application.class)
+public class SpringContextIntegrationTest {
 
     @Test
-    public void contextLoads() {
+    public void whenSpringContextIsBootstrapped_thenNoExceptions() {
     }
 }
