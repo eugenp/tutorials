@@ -24,7 +24,7 @@ public class UserRepositoryIntegrationTest {
     public void givenTwoImportFilesWhenFindAllShouldReturnSixUsers() {
         Collection<User> users = userRepository.findAll();
 
-        assertThat(users.size()).isEqualTo(9);
+        assertThat(users.size()).isEqualTo(3);
     }
 
 }
