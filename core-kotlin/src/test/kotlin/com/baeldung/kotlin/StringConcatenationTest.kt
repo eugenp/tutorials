@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 class SealedTest {
 
     @Test
-    fun givenTwoStrings_concatenateWithTemplates_thenCorrect() {
+    fun givenTwoStrings_concatenateWithTemplates_thenEquals() {
         val a = "Hello"
         val b = "Baeldung"
         val c = "$a $b"
@@ -15,7 +15,7 @@ class SealedTest {
     }
 
     @Test
-    fun givenTwoStrings_concatenateWithPlusOperator_thenCorrect() {
+    fun givenTwoStrings_concatenateWithPlusOperator_thenEquals() {
         val a = "Hello"
         val b = "Baeldung"
         val c = a + " " + b
@@ -24,7 +24,7 @@ class SealedTest {
     }
 
     @Test
-    fun givenTwoStrings_concatenateWithStringBuilder_thenCorrect() {
+    fun givenTwoStrings_concatenateWithStringBuilder_thenEquals() {
         val a = "Hello"
         val b = "Baeldung"
 
@@ -37,7 +37,7 @@ class SealedTest {
     }
 
     @Test
-    fun givenTwoStrings_concatenateWithPlusMethod_thenCorrect() {
+    fun givenTwoStrings_concatenateWithPlusMethod_thenEquals() {
         val a = "Hello"
         val b = "Baeldung"
         val c = a.plus(" ").plus(b)
