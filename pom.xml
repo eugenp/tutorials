@@ -360,6 +360,7 @@
 				<module>dozer</module>
 				<module>ethereum</module>
 				<module>ejb</module>
+				<module>ejb/ejb-client</module>
 				<module>feign</module>
 				<module>flips</module>
 				<module>testing-modules/gatling</module>
@@ -444,6 +445,7 @@
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -462,6 +464,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-ops</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
@@ -552,6 +555,7 @@
 				<module>spring-thymeleaf</module>
 				<module>spring-userservice</module>
 				<module>spring-zuul</module>
+				<module>spring-remoting</module>
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
 				<module>spring-jinq</module>
@@ -575,6 +579,7 @@
 				<module>testing-modules/mockserver</module>
 				<module>testing-modules/test-containers</module>
 				<module>undertow</module>
+				<module>vaadin</module>
 				<module>vertx-and-rxjava</module>
 				<module>saas</module>
 				<module>deeplearning4j</module>
@@ -597,6 +602,7 @@
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
 				<module>spring-boot-angular-ecommerce</module>
+				<module>jta</module>
 			</modules>
 
 		</profile>
@@ -707,6 +713,7 @@
 				<module>spark-java</module>
 				<module>spring-4</module>
 				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -731,6 +738,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-ops</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
@@ -749,6 +757,7 @@
 				<module>spring-data-elasticsearch</module>
 				<module>spring-data-keyvalue</module>
 				<module>spring-data-mongodb</module>
+				<module>spring-data-jpa</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 				<module>persistence-modules/spring-data-redis</module>
 				<module>spring-data-rest</module>
@@ -953,6 +962,7 @@
 				<module>json-path</module>
 				<module>json</module>
 				<module>jsoup</module>
+				<module>jta</module>
 				<module>testing-modules/junit-5</module>
 				<module>testing-modules/junit5-migration</module>
 				<module>jws</module>
@@ -993,6 +1003,7 @@
 				<module>persistence-modules/solr</module>
 				<module>spark-java</module>
 				<module>spring-4</module>
+				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
@@ -1009,6 +1020,7 @@
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
@@ -1093,8 +1105,10 @@
 				<module>spring-thymeleaf</module>
 				<module>spring-userservice</module>
 				<module>spring-zuul</module>
+				<module>spring-remoting</module>
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
+				<module>spring-vault</module>
 				<module>spring-jinq</module>
 				<module>spring-rest-embedded-tomcat</module>
 				<module>testing-modules/testing</module>
@@ -1116,6 +1130,7 @@
 				<module>testing-modules/mockserver</module>
 				<module>testing-modules/test-containers</module>
 				<module>undertow</module>
+				<module>vaadin</module>
 				<module>vertx-and-rxjava</module>
 				<module>saas</module>
 				<module>deeplearning4j</module>

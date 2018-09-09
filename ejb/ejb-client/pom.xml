@@ -16,7 +16,6 @@
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
             <type>pom</type>
-            <scope>import</scope>
         </dependency>
         <dependency>
             <groupId>com.baeldung.ejb</groupId>
