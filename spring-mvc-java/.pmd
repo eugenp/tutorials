@@ -1,0 +1,1572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd>
+    <useProjectRuleSet>false</useProjectRuleSet>
+    <ruleSetFile>.ruleset</ruleSetFile>
+    <excludePatterns/>
+    <includePatterns/>
+    <rules>
+        <rule>
+            <name>AbstractClassWithoutAbstractMethod</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AccessorClassGeneration</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AccessorMethodGeneration</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ApexUnitTestClassShouldHaveAsserts</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ApexUnitTestShouldNotUseSeeAllDataTrue</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ArrayIsStoredDirectly</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidGlobalModifier</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidLogicInTrigger</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidPrintStackTrace</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidReassigningParameters</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidReassigningParameters</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidStringBufferField</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidUsingHardCodedIP</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidWithStatement</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>CheckResultSet</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ConsistentReturn</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ConstantsInInterface</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>DefaultLabelNotLastInSwitchStmt</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>DontNestJsfInJstlIteration</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ForLoopCanBeForeach</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>GlobalVariable</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>GuardLogStatement</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>JUnit4SuitesShouldUseSuiteAnnotation</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>JUnit4TestShouldUseAfterAnnotation</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>JUnit4TestShouldUseBeforeAnnotation</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>JUnit4TestShouldUseTestAnnotation</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>JUnitAssertionsShouldIncludeMessage</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>JUnitTestContainsTooManyAsserts</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>JUnitTestsShouldIncludeAssert</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>JUnitUseExpected</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>LooseCoupling</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>MethodReturnsInternalArray</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>MissingOverride</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>NoClassAttribute</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>NoHtmlComments</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>NoJspForward</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>OneDeclarationPerLine</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>PositionLiteralsFirstInCaseInsensitiveComparisons</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>PositionLiteralsFirstInComparisons</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>PreserveStackTrace</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ReplaceEnumerationWithIterator</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ReplaceHashtableWithMap</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ReplaceVectorWithList</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>ScopeForInVariable</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>SwitchStmtsShouldHaveDefault</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>SystemPrintln</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>TomKytesDespair</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UnusedFormalParameter</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UnusedImports</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UnusedLocalVariable</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UnusedMacroParameter</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UnusedPrivateField</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UnusedPrivateMethod</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UseAssertEqualsInsteadOfAssertTrue</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UseAssertNullInsteadOfAssertTrue</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UseAssertSameInsteadOfAssertTrue</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UseAssertTrueInsteadOfAssertEquals</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UseBaseWithParseInt</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UseCollectionIsEmpty</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>UseVarargs</name>
+            <ruleset>Best Practices</ruleset>
+        </rule>
+        <rule>
+            <name>AbstractNaming</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AssignmentInOperand</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AtLeastOneConstructor</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDollarSigns</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidFinalLocalVariable</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidPrefixingMethodParameters</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidProtectedFieldInFinalClass</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidProtectedMethodInFinalClassNotExtending</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidUsingNativeCode</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>BooleanGetMethodName</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>CallSuperInConstructor</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ClassNamingConventions</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ClassNamingConventions</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>CommentDefaultAccessModifier</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ConfusingTernary</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ControlStatementBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>DefaultPackage</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>DontImportJavaLang</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>DuplicateImports</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>DuplicateJspImports</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyMethodInAbstractClassShouldBeAbstract</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ExtendsObject</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>FieldDeclarationsShouldBeAtStartOfClass</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ForLoopShouldBeWhileLoop</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ForLoopsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ForLoopsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ForLoopsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>GenericsNaming</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>IfElseStmtsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>IfElseStmtsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>IfElseStmtsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>IfStmtsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>IfStmtsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>IfStmtsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>LocalHomeNamingConvention</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>LocalInterfaceSessionNamingConvention</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>LocalVariableCouldBeFinal</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>LongVariable</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>MDBAndSessionBeanNamingConvention</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>MethodArgumentCouldBeFinal</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>MethodNamingConventions</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>MethodNamingConventions</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>MIsLeadingVariableName</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>MisplacedPragma</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>NoElseReturn</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>NoPackage</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>OnlyOneReturn</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>PackageCase</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>PrematureDeclaration</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>RemoteInterfaceNamingConvention</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>RemoteSessionInterfaceNamingConvention</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ShortClassName</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ShortMethodName</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>ShortVariable</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>SuspiciousConstantFieldName</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>TooManyStaticImports</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryAnnotationValueElement</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryBlock</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryConstructor</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryFullyQualifiedName</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryLocalBeforeReturn</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryModifier</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryParentheses</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryReturn</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UnreachableCode</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UseConcatOnce</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UselessParentheses</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>UselessQualifiedThis</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>VariableNamingConventions</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>VariableNamingConventions</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>WhileLoopsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>WhileLoopsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>WhileLoopsMustUseBraces</name>
+            <ruleset>Code Style</ruleset>
+        </rule>
+        <rule>
+            <name>AbstractClassWithoutAnyMethod</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidCatchingGenericException</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDeeplyNestedIfStmts</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDeeplyNestedIfStmts</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDeeplyNestedIfStmts</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidRethrowingException</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidThrowingNewInstanceOfSameException</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidThrowingNullPointerException</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidThrowingRawExceptionTypes</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ClassWithOnlyPrivateConstructorsShouldBeFinal</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>CollapsibleIfStatements</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>CollapsibleIfStatements</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>CouplingBetweenObjects</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>CyclomaticComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>CyclomaticComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>CyclomaticComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>DataClass</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>DoNotExtendJavaLangError</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExceptionAsFlowControl</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveClassLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveClassLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveImports</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveMethodLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveMethodLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveObjectLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessivePackageBodyLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessivePackageSpecificationLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveParameterList</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveParameterList</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveParameterList</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessivePublicCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessivePublicCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveTemplateLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ExcessiveTypeLength</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>FinalFieldCouldBeStatic</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>GodClass</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ImmutableField</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>LawOfDemeter</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>LogicInversion</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>LoosePackageCoupling</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>ModifiedCyclomaticComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssConstructorCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssConstructorCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssMethodCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssMethodCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssMethodCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssObjectCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssTypeCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NcssTypeCount</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoInlineJavaScript</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoInlineScript</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoInlineStyleInformation</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoInlineStyles</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoLongScripts</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NoScriptlets</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NPathComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>NPathComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>SignatureDeclareThrowsException</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>SimplifiedTernary</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>SimplifyBooleanAssertion</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>SimplifyBooleanExpressions</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>SimplifyBooleanReturns</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>SimplifyConditional</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>SingularField</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>StdCyclomaticComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>StdCyclomaticComplexity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>SwitchDensity</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>TooManyFields</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>TooManyFields</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>TooManyFields</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>TooManyMethods</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>TooManyMethods</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>UselessOverridingMethod</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>UseObjectForClearerAPI</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>UseUtilityClass</name>
+            <ruleset>Design</ruleset>
+        </rule>
+        <rule>
+            <name>CommentContent</name>
+            <ruleset>Documentation</ruleset>
+        </rule>
+        <rule>
+            <name>CommentRequired</name>
+            <ruleset>Documentation</ruleset>
+        </rule>
+        <rule>
+            <name>CommentSize</name>
+            <ruleset>Documentation</ruleset>
+        </rule>
+        <rule>
+            <name>UncommentedEmptyConstructor</name>
+            <ruleset>Documentation</ruleset>
+        </rule>
+        <rule>
+            <name>UncommentedEmptyMethodBody</name>
+            <ruleset>Documentation</ruleset>
+        </rule>
+        <rule>
+            <name>AssignmentInOperand</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AssignmentToNonFinalStatic</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidAccessibilityAlteration</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidAssertAsIdentifier</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidBranchingStatementAsLastInLoop</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidCallingFinalize</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidCatchingNPE</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidCatchingThrowable</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDecimalLiteralsInBigDecimalConstructor</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDirectAccessTriggerMap</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDuplicateLiterals</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidEnumAsIdentifier</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidFieldNameMatchingMethodName</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidFieldNameMatchingTypeName</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidHardcodingId</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidInstanceofChecksInCatchClause</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidLiteralsInIfCondition</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidLosingExceptionInformation</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidMultipleUnaryOperators</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidTrailingComma</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidUsingOctalValues</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>BadComparison</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>BeanMembersShouldSerialize</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>BrokenNullCheck</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CallSuperFirst</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CallSuperLast</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CheckSkipResult</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ClassCastExceptionWithToArray</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CloneMethodMustBePublic</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CloneMethodMustImplementCloneable</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CloneMethodReturnTypeMustMatchClassName</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CloneThrowsCloneNotSupportedException</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CloseResource</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>CompareObjectsWithEquals</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ConstructorCallsOverridableMethod</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>DataflowAnomalyAnalysis</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>DoNotCallGarbageCollectionExplicitly</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>DoNotCallSystemExit</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>DoNotExtendJavaLangThrowable</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>DoNotHardCodeSDCard</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>DoNotThrowExceptionInFinally</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>DontImportSun</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>DontUseFloatTypeForLoopIndices</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyCatchBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyCatchBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyFinalizer</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyFinallyBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyForeachStmt</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyIfStmt</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyIfStmt</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyIfStmt</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyInitializer</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyStatementBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyStatementBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyStatementNotInLoop</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptySwitchStatements</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptySynchronizedBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyTryBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyTryOrFinallyBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyWhileStmt</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EmptyWhileStmt</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EqualComparison</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>EqualsNull</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>FinalizeDoesNotCallSuperFinalize</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>FinalizeOnlyCallsSuperFinalize</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>FinalizeOverloaded</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>FinalizeShouldBeProtected</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>IdempotentOperations</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ImportFromSamePackage</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>InnaccurateNumericLiteral</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>InstantiationToGetClass</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>InvalidDependencyTypes</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>InvalidSlf4jMessageFormat</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>JspEncoding</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>JumbledIncrementer</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>JUnitSpelling</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>JUnitStaticSuite</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>LoggerIsNotStaticFinal</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>MethodWithSameNameAsEnclosingClass</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>MethodWithSameNameAsEnclosingClass</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>MisplacedNullCheck</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>MissingBreakInSwitch</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>MissingSerialVersionUID</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>MissingStaticMethodInNonInstantiatableClass</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>MistypedCDATASection</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>MoreThanOneLogger</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>NonCaseLabelInSwitchStatement</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>NonStaticInitializer</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>NullAssignment</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>OverrideBothEqualsAndHashcode</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ProjectVersionAsDependencyVersion</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ProperCloneImplementation</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ProperLogger</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ReturnEmptyArrayRatherThanNull</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>ReturnFromFinallyBlock</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>SimpleDateFormatNeedsLocale</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>SingleMethodSingleton</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>SingletonClassReturningNewInstance</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>StaticEJBFieldShouldBeFinal</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>StringBufferInstantiationWithChar</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>SuspiciousEqualsMethodName</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>SuspiciousHashcodeMethodName</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>SuspiciousOctalEscape</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>TestClassWithoutTestCases</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>TO_DATEWithoutDateFormat</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>TO_DATE_TO_CHAR</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>TO_TIMESTAMPWithoutDateFormat</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UnconditionalIfStatement</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryBooleanAssertion</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryCaseChange</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryConversionTemporary</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UnusedNullCheckInEquals</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UseCorrectExceptionLogging</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UseEqualsToCompareStrings</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UselessOperationOnImmutable</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UseLocaleWithCaseConversions</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>UseProperClassLoader</name>
+            <ruleset>Error Prone</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidSynchronizedAtMethodLevel</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidThreadGroup</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidUsingVolatile</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>DoNotUseThreads</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>DontCallThreadRun</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>DoubleCheckedLocking</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>NonThreadSafeSingleton</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>UnsynchronizedStaticDateFormatter</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>UseConcurrentHashMap</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>UseNotifyAllInsteadOfNotify</name>
+            <ruleset>Multithreading</ruleset>
+        </rule>
+        <rule>
+            <name>AddEmptyString</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AppendCharacterWithChar</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidArrayLoops</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidAxisNavigation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidDmlStatementsInLoops</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidFileStream</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidInstantiatingObjectsInLoops</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidSoqlInLoops</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidSoslInLoops</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>AvoidUsingShortType</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>BigIntegerInstantiation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>BooleanInstantiation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>ByteInstantiation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>ConsecutiveAppendsShouldReuse</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>ConsecutiveLiteralAppends</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>InefficientEmptyStringCheck</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>InefficientStringBuffering</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>InsufficientStringBufferDeclaration</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>IntegerInstantiation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>LongInstantiation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>OptimizableToArrayCall</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>RedundantFieldInitializer</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>ShortInstantiation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>SimplifyStartsWith</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>StringInstantiation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>StringToString</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>TooFewBranchesForASwitchStatement</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>UnnecessaryWrapperObjectCreation</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>UseArrayListInsteadOfVector</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>UseArraysAsList</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>UseIndexOfChar</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>UselessStringValueOf</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>UseStringBufferForStringAppends</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>UseStringBufferLength</name>
+            <ruleset>Performance</ruleset>
+        </rule>
+        <rule>
+            <name>ApexBadCrypto</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexCRUDViolation</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexCSRF</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexDangerousMethods</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexInsecureEndpoint</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexOpenRedirect</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexSharingViolations</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexSOQLInjection</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexSuggestUsingNamedCred</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexXSSFromEscapeFalse</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>ApexXSSFromURLParam</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>IframeMissingSrcAttribute</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>NoUnsanitizedJSPExpression</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>VfCsrf</name>
+            <ruleset>Security</ruleset>
+        </rule>
+        <rule>
+            <name>VfUnescapeEl</name>
+            <ruleset>Security</ruleset>
+        </rule>
+    </rules>
+    <includeDerivedFiles>false</includeDerivedFiles>
+    <violationsAsErrors>true</violationsAsErrors>
+    <fullBuildEnabled>true</fullBuildEnabled>
+</pmd>
