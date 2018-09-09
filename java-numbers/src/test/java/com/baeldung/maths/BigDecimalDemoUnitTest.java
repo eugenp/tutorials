@@ -1,3 +1,5 @@
+package com.baeldung.maths;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
@@ -14,14 +16,7 @@ import org.junit.jupiter.api.Test;
 public class BigDecimalDemoUnitTest {
 
     @Test
-    void test() {
-        System.out.println(BigDecimal.ONE
-            .divide(BigDecimal.valueOf(3), 4, RoundingMode.CEILING)
-            .precision());
-    }
-
-    @Test
-    void whenBigDecimalCreated_thenValueMatches() {
+    public void whenBigDecimalCreated_thenValueMatches() {
         BigDecimal bdFromString = new BigDecimal("0.1");
         BigDecimal bdFromCharArray = new BigDecimal(
             new char[] { '3', '.', '1', '6', '1', '5' });
@@ -38,13 +33,13 @@ public class BigDecimalDemoUnitTest {
     }
 
     @Test
-    void whenBigDecimalCreatedFromDouble_thenValueMayNotMatch() {
+    public void whenBigDecimalCreatedFromDouble_thenValueMayNotMatch() {
         BigDecimal bdFromDouble = new BigDecimal(0.1d);
         assertNotEquals("0.1", bdFromDouble.toString());
     }
 
     @Test
-    void whenBigDecimalCreatedUsingValueOf_thenValueMatches() {
+    public void whenBigDecimalCreatedUsingValueOf_thenValueMatches() {
         BigDecimal bdFromLong1 = BigDecimal.valueOf(123412345678901L);
         BigDecimal bdFromLong2 = BigDecimal.valueOf(123412345678901L, 2);
         BigDecimal bdFromDouble = BigDecimal.valueOf(0.1d);
@@ -55,7 +50,7 @@ public class BigDecimalDemoUnitTest {
     }
 
     @Test
-    void whenEqualsCalled_thenSizeAndScaleMatched() {
+    public void whenEqualsCalled_thenSizeAndScaleMatched() {
         BigDecimal bd1 = new BigDecimal("1.0");
         BigDecimal bd2 = new BigDecimal("1.00");
 
@@ -63,7 +58,7 @@ public class BigDecimalDemoUnitTest {
     }
 
     @Test
-    void whenComparingBigDecimals_thenExpectedResult() {
+    public void whenComparingBigDecimals_thenExpectedResult() {
         BigDecimal bd1 = new BigDecimal("1.0");
         BigDecimal bd2 = new BigDecimal("1.00");
         BigDecimal bd3 = new BigDecimal("2.0");
@@ -77,7 +72,7 @@ public class BigDecimalDemoUnitTest {
     }
 
     @Test
-    void whenPerformingArithmetic_thenExpectedResult() {
+    public void whenPerformingArithmetic_thenExpectedResult() {
         BigDecimal bd1 = new BigDecimal("4.0");
         BigDecimal bd2 = new BigDecimal("2.0");
 
@@ -93,7 +88,7 @@ public class BigDecimalDemoUnitTest {
     }
 
     @Test
-    void whenGettingAttributes_thenExpectedResult() {
+    public void whenGettingAttributes_thenExpectedResult() {
         BigDecimal bd = new BigDecimal("-12345.6789");
 
         assertEquals(9, bd.precision());
@@ -102,7 +97,7 @@ public class BigDecimalDemoUnitTest {
     }
 
     @Test
-    void whenRoundingDecimal_thenExpectedResult() {
+    public void whenRoundingDecimal_thenExpectedResult() {
         BigDecimal bd = new BigDecimal("2.5");
         // Round to 1 digit using HALF_EVEN
         BigDecimal rounded = bd
@@ -112,7 +107,7 @@ public class BigDecimalDemoUnitTest {
     }
 
     @Test
-    void givenPurchaseTxn_whenCalculatingTotalAmount_thenExpectedResult() {
+    public void givenPurchaseTxn_whenCalculatingTotalAmount_thenExpectedResult() {
         BigDecimal quantity = new BigDecimal("4.5");
         BigDecimal unitPrice = new BigDecimal("2.69");
         BigDecimal discountRate = new BigDecimal("0.10");
@@ -120,7 +115,6 @@ public class BigDecimalDemoUnitTest {
 
         BigDecimal amountToBePaid = BigDecimalDemo
             .calculateTotalAmount(quantity, unitPrice, discountRate, taxRate);
-
-        assertEquals("10.90", amountToBePaid.toString());
+        assertEquals("11.68", amountToBePaid.toString());
     }
 }

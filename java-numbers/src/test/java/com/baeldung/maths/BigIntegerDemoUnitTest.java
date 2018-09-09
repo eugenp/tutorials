@@ -1,3 +1,5 @@
+package com.baeldung.maths;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -9,7 +11,7 @@ import org.junit.jupiter.api.Test;
 public class BigIntegerDemoUnitTest {
 
     @Test
-    void whenBigIntegerCreatedFromConstructor_thenExpectedResult() {
+    public void whenBigIntegerCreatedFromConstructor_thenExpectedResult() {
         BigInteger biFromString = new BigInteger("1234567890987654321");
         BigInteger biFromByteArray = new BigInteger(
             new byte[] { 64, 64, 64, 64, 64, 64 });
@@ -22,14 +24,14 @@ public class BigIntegerDemoUnitTest {
     }
 
     @Test
-    void whenLongConvertedToBigInteger_thenValueMatches() {
+    public void whenLongConvertedToBigInteger_thenValueMatches() {
         BigInteger bi = BigInteger.valueOf(2305843009213693951L);
 
         assertEquals("2305843009213693951", bi.toString());
     }
 
     @Test
-    void givenBigIntegers_whentCompared_thenExpectedResult() {
+    public void givenBigIntegers_whentCompared_thenExpectedResult() {
         BigInteger i = new BigInteger("123456789012345678901234567890");
         BigInteger j = new BigInteger("123456789012345678901234567891");
         BigInteger k = new BigInteger("123456789012345678901234567892");
@@ -40,7 +42,7 @@ public class BigIntegerDemoUnitTest {
     }
 
     @Test
-    void givenBigIntegers_whenPerformingArithmetic_thenExpectedResult() {
+    public void givenBigIntegers_whenPerformingArithmetic_thenExpectedResult() {
         BigInteger i = new BigInteger("4");
         BigInteger j = new BigInteger("2");
 
@@ -56,7 +58,7 @@ public class BigIntegerDemoUnitTest {
     }
 
     @Test
-    void givenBigIntegers_whenPerformingBitOperations_thenExpectedResult() {
+    public void givenBigIntegers_whenPerformingBitOperations_thenExpectedResult() {
         BigInteger i = new BigInteger("17");
         BigInteger j = new BigInteger("7");
 
@@ -78,7 +80,7 @@ public class BigIntegerDemoUnitTest {
     }
 
     @Test
-    void givenBigIntegers_whenPerformingBitManipulations_thenExpectedResult() {
+    public void givenBigIntegers_whenPerformingBitManipulations_thenExpectedResult() {
         BigInteger i = new BigInteger("1018");
 
         int bitCount = i.bitCount();
@@ -99,7 +101,7 @@ public class BigIntegerDemoUnitTest {
     }
 
     @Test
-    void givenBigIntegers_whenModularCalculation_thenExpectedResult() {
+    public void givenBigIntegers_whenModularCalculation_thenExpectedResult() {
         BigInteger i = new BigInteger("31");
         BigInteger j = new BigInteger("24");
         BigInteger k = new BigInteger("16");
@@ -117,7 +119,7 @@ public class BigIntegerDemoUnitTest {
     }
 
     @Test
-    void givenBigIntegers_whenPrimeOperations_thenExpectedResult() {
+    public void givenBigIntegers_whenPrimeOperations_thenExpectedResult() {
         BigInteger i = BigInteger.probablePrime(100, new Random());
 
         boolean isProbablePrime = i.isProbablePrime(1000);
