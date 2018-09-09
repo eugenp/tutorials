@@ -51,7 +51,3 @@ dependencies {
     implementation 'com.beust:klaxon:3.0.1'
 
 }
-task runServer(type: JavaExec) {
-    main = 'APIServer'
-   classpath = sourceSets.main.runtimeClasspath
-}
