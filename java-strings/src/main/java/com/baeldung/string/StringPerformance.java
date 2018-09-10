@@ -78,7 +78,7 @@ public class StringPerformance {
     @Benchmark
     public void benchmarkStringFormat_d(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
-            String s = String.format("hello %d, nice to meet you", i);
+            String s = String.format("%d", i);
         }
     }
 
