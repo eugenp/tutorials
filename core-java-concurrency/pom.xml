@@ -81,6 +81,8 @@
 		<!-- testing -->
 		<assertj.version>3.6.1</assertj.version>
 		<avaitility.version>1.7.0</avaitility.version>
+		<maven.compiler.source>1.9</maven.compiler.source>
+		<maven.compiler.target>1.9</maven.compiler.target>
 	</properties>
 
 </project>
