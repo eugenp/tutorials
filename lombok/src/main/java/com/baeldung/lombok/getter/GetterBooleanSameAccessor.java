@@ -7,7 +7,7 @@ import lombok.Getter;
  * 3.1. A boolean Field Having the Same Name With Its Accessor
  *
  */
-public class GetterbooleanTricky {
+public class GetterBooleanSameAccessor {
     @Getter
     private boolean isRunning = true;
 }

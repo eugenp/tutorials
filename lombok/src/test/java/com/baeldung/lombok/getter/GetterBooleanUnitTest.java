@@ -15,7 +15,7 @@ public class GetterBooleanUnitTest {
 
     @Test
     public void whenBooleanFieldPrefixedWithIs_thenMethodNameIsSameAsFieldName() {
-        GetterbooleanTricky lombokExamples = new GetterbooleanTricky();
+        GetterBooleanSameAccessor lombokExamples = new GetterBooleanSameAccessor();
         assertTrue(lombokExamples.isRunning());
     }
 
