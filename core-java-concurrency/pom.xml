@@ -58,17 +58,17 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-<!-- 		<plugins> -->
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-compiler-plugin</artifactId> -->
-<!-- 				<version>${maven-compiler-plugin.version}</version> -->
-<!-- 				<configuration> -->
-<!-- 					<source>1.9</source> -->
-<!-- 					<target>1.9</target> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
-<!-- 		</plugins> -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>1.9</source>
+					<target>1.9</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 
 	<properties>
@@ -83,6 +83,7 @@
 		<avaitility.version>1.7.0</avaitility.version>
 		<maven.compiler.source>1.9</maven.compiler.source>
 		<maven.compiler.target>1.9</maven.compiler.target>
+		<java.version>1.9</java.version>
 	</properties>
 
 </project>
