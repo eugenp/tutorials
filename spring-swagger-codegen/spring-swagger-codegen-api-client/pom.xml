@@ -2,11 +2,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-swagger-codegen-api-client</artifactId>
     <packaging>jar</packaging>
     <name>spring-swagger-codegen-api-client</name>
-    <version>0.0.1-SNAPSHOT</version>
     <url>https://github.com/swagger-api/swagger-codegen</url>
     <description>Swagger Java</description>
     <scm>
@@ -14,9 +12,7 @@
         <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
         <url>https://github.com/swagger-api/swagger-codegen</url>
     </scm>
-    <prerequisites>
-        <maven>2.2.0</maven>
-    </prerequisites>
+
     <licenses>
         <license>
             <name>Unlicense</name>
@@ -57,20 +53,6 @@
                     <parallel>methods</parallel>
                     <forkMode>pertest</forkMode>
                 </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
 
             <!-- attach test jar -->

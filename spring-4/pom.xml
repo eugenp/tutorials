@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>spring-4</groupId>
     <artifactId>spring-4</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>spring-4</name>
 
@@ -21,6 +20,25 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.tomcat</groupId>
+                    <artifactId>tomcat-jdbc</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <dependency>
@@ -32,7 +50,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <!-- Check for the most recent available version: https://projectlombok.org/changelog.html -->
-            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -58,6 +75,7 @@
         <flips-web.version>1.0.1</flips-web.version>
         <lombok.version>1.16.18</lombok.version>
         <java.version>1.8</java.version>
+        <h2database.version>1.4.197</h2database.version>
     </properties>
 
 </project>
