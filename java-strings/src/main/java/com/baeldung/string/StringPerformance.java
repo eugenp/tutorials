@@ -69,11 +69,19 @@ public class StringPerformance {
     }
 
     @Benchmark
-    public void benchmarkStringFormat(StringPerformance.MyState state) {
+    public void benchmarkStringFormat_s(StringPerformance.MyState state) {
         for (int i = 0; i < state.iterations; i++) {
             String s = String.format("hello %s, nice to meet you", state.sample);
         }
     }
+
+    @Benchmark
+    public void benchmarkStringFormat_d(StringPerformance.MyState state) {
+        for (int i = 0; i < state.iterations; i++) {
+            String s = String.format("hello %d, nice to meet you", i);
+        }
+    }
+
 
     @Benchmark
     public void benchmarkStringConcat(StringPerformance.MyState state) {
@@ -205,12 +213,6 @@ public class StringPerformance {
         }
     }
 
-    @Benchmark
-    public void benchmarkStringEqualsWithSign(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            boolean result = state.longString == state.sample;
-        }
-    }
 
     @Benchmark
     public void benchmarkStringIsEmpty(StringPerformance.MyState state) {
