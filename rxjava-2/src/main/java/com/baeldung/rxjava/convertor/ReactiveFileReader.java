@@ -49,63 +49,30 @@ public class ReactiveFileReader {
         }, reader -> reader.close());
     }
 
-    public Flowable<String> readFileConvertSyncToObservablesFromIterable() {
-
+    Flowable<String> readFileConvertSyncToObservablesFromIterable() {
         return Flowable.fromIterable(() -> {
-            BufferedReader reader = null;
-            List<String> lines = new ArrayList<>();
-            try {
-                reader = new BufferedReader(new FileReader(file));
-                lines = reader.lines()
-                    .map(line -> line)
-                    .collect(Collectors.toList());
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                return reader.lines().iterator();
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
             }
-
-            return lines.iterator();
         });
     }
 
-    public Flowable<String> readFileConvertAsyncToObservablesByCreate() {
-        return Single.<String> create(emitter -> {
-            AsynchronousFileChannel channel = AsynchronousFileChannel.open(file.toPath());
-            
-            channel.read(buffer, 0, buffer, new CompletionHandler<Integer, ByteBuffer>() {
-
-                @Override
-                public void completed(Integer result, ByteBuffer attachment) {
-                    try {
-                        channel.close();
-                    } catch (IOException e) {
-                        emitter.onError(e);
-                        return;
-                    }
-                    attachment.flip();
-                    byte[] data = new byte[attachment.limit()];
-                    attachment.get(data);
-                    emitter.onSuccess(new String(data));
-                    attachment.clear();
+    Flowable<String> readFileConvertSyncToObservablesByGenerate() {
+        return Flowable.generate(() -> new BufferedReader(new FileReader(file)), (reader, emitter) -> {
+            try {
+                final String line = reader.readLine();
+                if (line != null) {
+                    emitter.onNext(line);
+                } else {
+                    emitter.onComplete();
                 }
+            } catch (IOException e) {
+                emitter.onError(e);
+            }
 
-                @Override
-                public void failed(Throwable error, ByteBuffer attachment) {
-                    try {
-                        channel.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    emitter.onError(error);
-                }
-            });
-        })
-            .toFlowable();
+        }, BufferedReader::close);
     }
 
     public Flowable<Integer> readFileConvertAsyncToObservablesFromFuture() throws IOException {
