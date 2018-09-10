@@ -7,13 +7,13 @@
 	<artifactId>gatling</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
-	<parent>
-		<groupId>com.baeldung</groupId>
-		<artifactId>parent-modules</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../../</relativePath>
-	</parent>
-
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../</relativePath>
+    </parent>
+    
 	<dependencies>
 		<dependency>
 			<groupId>io.gatling.highcharts</groupId>
@@ -78,6 +78,9 @@
 						<goals>
 							<goal>execute</goal>
 						</goals>
+						<configuration>
+  							<disableCompiler>true</disableCompiler>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -110,10 +113,13 @@
 	</dependencyManagement>
 
 	<properties>
-		<scala.version>2.13.0-M5</scala.version>
-		<gatling.version>2.3.1</gatling.version>
-		<scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
-		<gatling-maven-plugin.version>3.0.0-M5</gatling-maven-plugin.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<encoding>UTF-8</encoding>
+		<scala.version>2.12.6</scala.version> <!--2.11.12 --> <!--2.12.6 -->
+		<gatling.version>2.3.1</gatling.version> <!--2.2.5 --> <!--2.3.1 -->
+		<scala-maven-plugin.version>3.2.2</scala-maven-plugin.version> <!--3.2.2 --> <!--3.3.2 -->
+		<gatling-maven-plugin.version>2.2.4</gatling-maven-plugin.version> <!--2.2.1 --> <!--2.2.4 -->
 	</properties>
 
 </project>
