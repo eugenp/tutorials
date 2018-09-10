@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;
 import java.nio.channels.CompletionHandler;
@@ -38,38 +39,28 @@ public class ReactiveFileReader {
     }
 
     public Flowable<String> readFileConvertSyncToObservablesByGenerate() {
-
         return Flowable.generate(() -> new BufferedReader(new FileReader(file)), (reader, emitter) -> {
-            final String line = reader.readLine();
-            if (line != null) {
-                emitter.onNext(line);
-            } else {
-                emitter.onComplete();
+            try {
+                final String line = reader.readLine();
+                if (line != null) {
+                    emitter.onNext(line);
+                } else {
+                    emitter.onComplete();
+                }
+            } catch (IOException e) {
+                emitter.onError(e);
             }
-        }, reader -> reader.close());
+
+        }, BufferedReader::close);
     }
 
     public Flowable<String> readFileConvertSyncToObservablesFromIterable() {
-
         return Flowable.fromIterable(() -> {
-            BufferedReader reader = null;
-            List<String> lines = new ArrayList<>();
-            try {
-                reader = new BufferedReader(new FileReader(file));
-                lines = reader.lines()
-                    .map(line -> line)
-                    .collect(Collectors.toList());
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } finally {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                return reader.lines().iterator();
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
             }
-
-            return lines.iterator();
         });
     }
 
