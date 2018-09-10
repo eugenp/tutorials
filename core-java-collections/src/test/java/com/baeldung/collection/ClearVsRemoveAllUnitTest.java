@@ -1,4 +1,4 @@
-package com.baeldung.list.arraylist;
+package com.baeldung.collection;
 
 import org.junit.jupiter.api.Test;
 
