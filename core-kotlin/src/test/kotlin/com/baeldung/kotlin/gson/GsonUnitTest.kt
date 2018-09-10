@@ -1,10 +1,6 @@
 package com.baeldung.kotlin.gson
 
-import com.baeldung.datetime.UsePeriod
 import com.google.gson.Gson
-import com.google.gson.annotations.SerializedName
-import java.time.LocalDate
-import java.time.Period
 
 import org.junit.Assert
 import org.junit.Test
