@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @TestPropertySource(properties = {
   "spring.jpa.hibernate.naming.physical-strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy", "spring.jpa.hibernate.naming.implicit-strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
 })
-public class SpringBootDefaultNamingIntegrationTest extends NamingConfigTest {
+public class SpringBootDefaultNamingIntegrationTest extends NamingConfig {
 
     @Test
     public void givenDefaultBootNamingStrategy_whenCreateDatabase_thenGetStrategyNames() {

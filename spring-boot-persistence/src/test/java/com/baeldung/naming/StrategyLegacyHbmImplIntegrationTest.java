@@ -18,7 +18,7 @@ import java.util.Collection;
 @TestPropertySource(properties = {
   "spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl", "spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl"
 })
-public class StrategyLegacyHbmImplIntegrationTest extends NamingConfigTest {
+public class StrategyLegacyHbmImplIntegrationTest extends NamingConfig {
 
     @Test
     public void givenLegacyHbmImplNamingNamingStrategy_whenCreateDatabase_thenGetStrategyNames() {

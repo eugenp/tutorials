@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomi
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 
-public class NamingConfigTest {
+public class NamingConfig {
     @TestConfiguration
     static class Config {
         @Bean
