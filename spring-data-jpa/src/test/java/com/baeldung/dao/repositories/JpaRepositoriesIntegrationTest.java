@@ -9,28 +9,22 @@ import static junit.framework.TestCase.assertTrue;
 import java.util.List;
 import java.util.Optional;
 
-import com.baeldung.config.PersistenceConfiguration;
-import com.baeldung.config.PersistenceProductConfiguration;
-import com.baeldung.config.PersistenceUserConfiguration;
-import com.baeldung.dao.repositories.ItemTypeRepository;
-import com.baeldung.dao.repositories.LocationRepository;
-import com.baeldung.dao.repositories.ReadOnlyLocationRepository;
-import com.baeldung.dao.repositories.StoreRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.config.PersistenceConfiguration;
+import com.baeldung.config.PersistenceProductConfiguration;
+import com.baeldung.config.PersistenceUserConfiguration;
 import com.baeldung.domain.Item;
 import com.baeldung.domain.ItemType;
 import com.baeldung.domain.Location;
 import com.baeldung.domain.Store;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest(excludeAutoConfiguration = {PersistenceConfiguration.class, PersistenceUserConfiguration.class, PersistenceProductConfiguration.class})
+@DataJpaTest(excludeAutoConfiguration = { PersistenceConfiguration.class, PersistenceUserConfiguration.class, PersistenceProductConfiguration.class })
 public class JpaRepositoriesIntegrationTest {
     @Autowired
     private LocationRepository locationRepository;
