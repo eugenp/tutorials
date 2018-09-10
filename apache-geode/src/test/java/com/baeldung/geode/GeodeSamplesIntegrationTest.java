@@ -2,6 +2,7 @@ package com.baeldung.geode;
 
 import com.baeldung.geode.functions.CustomerWithMaxAge;
 import com.baeldung.geode.functions.PrimeNumber;
+import com.baeldung.geode.functions.UpperCaseNames;
 import org.apache.geode.cache.Region;
 import org.apache.geode.cache.client.ClientCache;
 import org.apache.geode.cache.client.ClientCacheFactory;
@@ -28,10 +29,8 @@ public class GeodeSamplesIntegrationTest {
 
     ClientCache cache = null;
     Region<String, String> region = null;
-    Region<Integer, Customer> partitionedRegion = null;
     Region<Integer, Customer> queryRegion = null;
-    Region<Integer, String> functionRegion = null;
-    Region<CustomerKey, Customer> customKeyRegion = null;
+    Region<CustomerKey, Customer> customerRegion = null;
 
     @Before
     public void connect() {
@@ -39,14 +38,8 @@ public class GeodeSamplesIntegrationTest {
             .create();
         this.region = this.cache.<String, String> createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
             .create("baeldung");
-        this.partitionedRegion = this.cache.<Integer, Customer> createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
-            .create("baeldung-partition");
-        this.queryRegion = this.cache.<Integer, Customer> createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
-            .create("baeldung-oql");
-        this.functionRegion = this.cache.<Integer, String> createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
-            .create("baeldung-function");
-        this.customKeyRegion = this.cache.<CustomerKey, Customer> createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
-            .create("baeldung-custom");
+        this.customerRegion = this.cache.<CustomerKey, Customer> createClientRegionFactory(ClientRegionShortcut.CACHING_PROXY)
+            .create("baeldung-customers");
     }
 
     @After
@@ -87,88 +80,35 @@ public class GeodeSamplesIntegrationTest {
         Map<CustomerKey, Customer> customerInfo = new HashMap<>();
         customerInfo.put(key, customer);
 
-        this.customKeyRegion.putAll(customerInfo);
+        this.customerRegion.putAll(customerInfo);
 
-        Customer storedCustomer = this.customKeyRegion.get(key);
+        Customer storedCustomer = this.customerRegion.get(key);
         assertEquals("William", storedCustomer.getFirstName());
         assertEquals("Russell", storedCustomer.getLastName());
 
     }
 
     @Test
-    public void whenSaveCustomerDataOnPartitionedRegion_thenDataSavedCorrectly() {
-        Customer customer1 = new Customer(new CustomerKey(1l), "Gheorge", "Manuc", 36);
-        Customer customer2 = new Customer(new CustomerKey(2l), "Allan", "McDowell", 43);
-        Customer customer3 = new Customer(new CustomerKey(3l), "Alan", "McClean", 23);
-        Customer customer4 = new Customer(new CustomerKey(4l), "Allan", "Donald", 46);
-
-        Map<Integer, Customer> customerData = new HashMap<>();
-        customerData.put(1, customer1);
-        customerData.put(2, customer2);
-        customerData.put(3, customer3);
-        customerData.put(4, customer4);
-
-        this.partitionedRegion.putAll(customerData);
-        // assert the size on the cache server.
-        assertEquals(4, this.partitionedRegion.sizeOnServer());
-    }
-
-    @Test
     public void whenFindACustomerUsingOQL_thenCorrectCustomerObject() throws NameResolutionException, TypeMismatchException, QueryInvocationTargetException, FunctionDomainException {
 
-        Customer customer1 = new Customer("Gheorge", "Manuc", 36);
-        Customer customer2 = new Customer("Allan", "McDowell", 43);
-        Customer customer3 = new Customer("Alan", "McClean", 23);
-        Customer customer4 = new Customer("Allan", "Donald", 46);
-
-        Map<Integer, Customer> customerData = new HashMap<>();
-        customerData.put(1, customer1);
-        customerData.put(2, customer2);
-        customerData.put(3, customer3);
-        customerData.put(4, customer4);
-
-        this.queryRegion.putAll(customerData);
-        // assert the size on the cache server.
-        assertEquals(4, this.queryRegion.sizeOnServer());
+        Map<CustomerKey, Customer> data = new HashMap<>();
+        data.put(new CustomerKey(1), new Customer("Gheorge", "Manuc", 36));
+        data.put(new CustomerKey(2), new Customer("Allan", "McDowell", 43));
+        this.customerRegion.putAll(data);
 
         QueryService queryService = this.cache.getQueryService();
-        String query = "select * from /baeldung-oql c where c.firstName = 'Allan'";
+        String query = "select * from /baeldung-customers c where c.firstName = 'Allan'";
         SelectResults<Customer> queryResults = (SelectResults<Customer>) queryService.newQuery(query)
             .execute();
-        assertEquals(2, queryResults.size());
+        assertEquals(1, queryResults.size());
 
     }
 
     @Test
-    public void whenExecuteFindEldestCustomerFunction_thenReturnTheEldestCustomer() {
-        Execution execution = FunctionService.onRegion(this.queryRegion);
-
-        ResultCollector<Customer, Customer> result = execution.execute(CustomerWithMaxAge.ID);
-        List<Customer> resultList = (List<Customer>) result.getResult();
-        assertNotNull(resultList);
-        assertEquals(1, resultList.size());
-
-        Customer customer = resultList.get(0);
-        assertEquals(Integer.valueOf(46), customer.getAge());
+    public void whenExecuteUppercaseNames_thenCustomerNamesAreUppercased() {
+        Execution execution = FunctionService.onRegion(this.customerRegion);
+        execution.execute(UpperCaseNames.class.getName());
+        Customer customer = this.customerRegion.get(new CustomerKey(1));
+        assertEquals("GHEORGE", customer.getFirstName());
     }
-
-    @Test
-    public void whenExecutePrimeNumberFunction_thenReturnOnlyPrimeNumbers() {
-
-        Execution execution = FunctionService.onRegion(this.functionRegion);
-
-        IntStream.rangeClosed(1, 5)
-            .forEach(i -> this.functionRegion.put(i, String.valueOf(i)));
-
-        ResultCollector<Integer, List> results = execution.execute(PrimeNumber.ID);
-        Set<Integer> primes = new HashSet<>();
-        List resultList = results.getResult();
-        assertNotNull(resultList);
-        assertEquals(1, resultList.size());
-
-        primes.addAll((List<? extends Integer>) resultList.iterator()
-            .next());
-        assertEquals(4, primes.size());
-    }
-
 }
