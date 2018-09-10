@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousFileChannel;
 import java.nio.channels.CompletionHandler;
@@ -39,28 +38,38 @@ public class ReactiveFileReader {
     }
 
     public Flowable<String> readFileConvertSyncToObservablesByGenerate() {
-        return Flowable.generate(() -> new BufferedReader(new FileReader(file)), (reader, emitter) -> {
-            try {
-                final String line = reader.readLine();
-                if (line != null) {
-                    emitter.onNext(line);
-                } else {
-                    emitter.onComplete();
-                }
-            } catch (IOException e) {
-                emitter.onError(e);
-            }
 
-        }, BufferedReader::close);
+        return Flowable.generate(() -> new BufferedReader(new FileReader(file)), (reader, emitter) -> {
+            final String line = reader.readLine();
+            if (line != null) {
+                emitter.onNext(line);
+            } else {
+                emitter.onComplete();
+            }
+        }, reader -> reader.close());
     }
 
     public Flowable<String> readFileConvertSyncToObservablesFromIterable() {
+
         return Flowable.fromIterable(() -> {
-            try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                return reader.lines().iterator();
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
+            BufferedReader reader = null;
+            List<String> lines = new ArrayList<>();
+            try {
+                reader = new BufferedReader(new FileReader(file));
+                lines = reader.lines()
+                    .map(line -> line)
+                    .collect(Collectors.toList());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+
+            return lines.iterator();
         });
     }
 
