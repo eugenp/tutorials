@@ -778,19 +778,6 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.felix</groupId>
-                        <artifactId>maven-bundle-plugin</artifactId>
-                        <version>${maven-bundle-plugin.version}</version>
-                        <type>maven-plugin</type>
-                    </dependency>
-                </dependencies>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
                 <configuration>

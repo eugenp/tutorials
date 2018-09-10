@@ -68,6 +68,14 @@
 					</execution>
 				</executions>
 			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>simulation</id>
+			<build>
+				<plugins>
 			<plugin>
 				<groupId>io.gatling</groupId>
 				<artifactId>gatling-maven-plugin</artifactId>
@@ -86,6 +94,8 @@
 			</plugin>
 		</plugins>
 	</build>
+		</profile>
+	</profiles>
 
 	<dependencyManagement>
 		<dependencies>
