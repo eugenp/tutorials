@@ -2,9 +2,7 @@ package com.baeldung.sort;
 
 import com.baeldung.performance.Employee;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class SortHashMap {
 
@@ -14,11 +12,28 @@ public class SortHashMap {
 
         initialize();
 
-        treeMapSortByKey();
+        //treeMapSortByKey();
+
+        //arrayListSortByValue();
+        //arrayListSortByKey();
+
+        treeSetByKey();
+        treeSetByValue();
     }
 
-    public static void treeMapSortByKey()
-    {
+    private static void treeSetByValue() {
+        Comparator<Employee> comp = (Employee o1, Employee o2) -> (o1.getId().compareTo(o2.getId()));
+        SortedSet<Employee> values = new TreeSet<>(comp);
+        values.addAll(map.values());
+        System.out.println(values);
+    }
+
+    private static void treeSetByKey() {
+        SortedSet<String> keys = new TreeSet<>(map.keySet());
+        System.out.println(keys);
+    }
+
+    private static void treeMapSortByKey() {
         TreeMap<String, Employee> sorted = new TreeMap<>(map);
         sorted.putAll(map);
 
@@ -27,6 +42,25 @@ public class SortHashMap {
                     ", Value = " + entry.getValue());
         }
 
+    }
+
+    private static void arrayListSortByValue() {
+        List<Employee> employeeById = new ArrayList<>(map.values());
+
+        Collections.sort(employeeById, new Comparator<Employee>() {
+
+            public int compare(Employee o1, Employee o2) {
+                return (int)(o1.getId() - o2.getId());
+            }
+        });
+
+        System.out.println(employeeById);
+    }
+
+    private static void arrayListSortByKey() {
+        List<String> employeeByKey = new ArrayList<>(map.keySet());
+        Collections.sort(employeeByKey);
+        System.out.println(employeeByKey);
     }
 
     private static void initialize() {
