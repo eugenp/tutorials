@@ -58,17 +58,17 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.9</source>
-					<target>1.9</target>
-				</configuration>
-			</plugin>
-		</plugins>
+<!-- 		<plugins> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-compiler-plugin</artifactId> -->
+<!-- 				<version>${maven-compiler-plugin.version}</version> -->
+<!-- 				<configuration> -->
+<!-- 					<source>1.9</source> -->
+<!-- 					<target>1.9</target> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+<!-- 		</plugins> -->
 	</build>
 
 	<properties>
