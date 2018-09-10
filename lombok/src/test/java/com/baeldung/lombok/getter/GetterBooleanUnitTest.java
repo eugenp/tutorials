@@ -1,13 +1,15 @@
 package com.baeldung.lombok.getter;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class GetterBooleanUnitTest {
 
     @Test
     public void whenBasicBooleanField_thenMethodNamePrefixedWithIsFollowedByFieldName() {
-        GetterbooleanTrivial lombokExamples = new GetterbooleanTrivial();
+        GetterBooleanPrimitive lombokExamples = new GetterBooleanPrimitive();
         assertFalse(lombokExamples.isRunning());
     }
 
@@ -19,14 +21,14 @@ public class GetterBooleanUnitTest {
 
     @Test
     public void whenTwoBooleanFieldsCauseNamingConflict_thenLombokMapsToFirstDeclaredField() {
-        GetterbooleanSameAccessor lombokExamples = new GetterbooleanSameAccessor();
+        GetterBooleanPrimitiveSameAccessor  lombokExamples = new GetterBooleanPrimitiveSameAccessor();
         assertTrue(lombokExamples.isRunning() == lombokExamples.running);
         assertFalse(lombokExamples.isRunning() == lombokExamples.isRunning);
     }
 
     @Test
     public void whenFieldOfBooleanType_thenLombokPrefixesMethodWithGetInsteadOfIs() {
-        GetterBoolean lombokExamples = new GetterBoolean();
+        GetterBooleanType lombokExamples = new GetterBooleanType();
         assertTrue(lombokExamples.getRunning());
     }
 }
