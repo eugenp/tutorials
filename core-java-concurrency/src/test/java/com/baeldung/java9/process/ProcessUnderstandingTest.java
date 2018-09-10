@@ -48,7 +48,7 @@ class ProcessUnderstandingTest {
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
         String errorString = error.readLine();
         assertNotNull(errorString);
-    }
+    }   
 
     //@Test - windows specific
     public void givenSubProcess_whenStarted_thenStartSuccessIsAlive() throws IOException {
