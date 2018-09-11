@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
 
-public class BenchmarkUnitTest
+public class BenchmarkManualTest
 {
 
   public void
