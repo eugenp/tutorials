@@ -9,7 +9,7 @@ script: travis_wait 60 mvn -q install -Pdefault
 sudo: required
 
 jdk:
-  - oraclejdk8
+  - oraclejdk9
 
 addons:
   apt:
