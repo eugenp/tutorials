@@ -1,4 +1,0 @@
-Hi,
-This is the lines
-from the test file.
-Thanks.
