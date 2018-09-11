@@ -17,8 +17,16 @@ public class SortHashMap {
         //arrayListSortByValue();
         //arrayListSortByKey();
 
-        treeSetByKey();
-        treeSetByValue();
+        //treeSetByKey();
+        //treeSetByValue();
+
+        sortStream();
+    }
+
+    private static void sortStream() {
+        map.entrySet().stream()
+                .sorted(Map.Entry.<String, Employee>comparingByKey().reversed())
+                .forEach(System.out::println);
     }
 
     private static void treeSetByValue() {
