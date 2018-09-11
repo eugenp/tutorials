@@ -1,8 +1,9 @@
 package com.baeldung.hibernate.pojo;
 
 public class Result {
-    String employeeName;
-    String departmentName;
+    private String employeeName;
+
+    private String departmentName;
     
     public Result(String employeeName, String departmentName) {
         this.employeeName = employeeName;

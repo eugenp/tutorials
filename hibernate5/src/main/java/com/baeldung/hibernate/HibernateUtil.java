@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 
+import com.baeldung.hibernate.entities.DeptEmployee;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -92,7 +93,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(PessimisticLockingCourse.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Customer.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Address.class);
-        metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Manager.class);
+        metadataSources.addAnnotatedClass(DeptEmployee.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
 
         Metadata metadata = metadataSources.buildMetadata();
