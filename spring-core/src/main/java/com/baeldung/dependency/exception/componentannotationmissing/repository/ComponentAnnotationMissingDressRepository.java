@@ -1,0 +1,4 @@
+package com.baeldung.dependency.exception.componentannotationmissing.repository;
+
+public class ComponentAnnotationMissingDressRepository implements ComponentAnnotationMissingInventoryRepository {
+}
