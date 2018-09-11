@@ -38,19 +38,9 @@
 
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>${exec-maven-plugin.version}</version>
                 <configuration>
                     <executable>java</executable>
                     <mainClass>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</mainClass>
@@ -74,11 +64,8 @@
     </repositories>
 
     <properties>
-        <!-- maven plugins -->
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <jira-rest-java-client-core.version>4.0.0</jira-rest-java-client-core.version>
         <atlassian.fugue.version>2.6.1</atlassian.fugue.version>
-        <guava.version>19.0</guava.version>
     </properties>
 
 </project>

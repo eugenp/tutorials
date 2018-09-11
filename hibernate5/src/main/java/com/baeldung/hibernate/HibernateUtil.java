@@ -6,6 +6,15 @@ import java.net.URL;
 import java.util.Properties;
 
 import com.baeldung.hibernate.entities.DeptEmployee;
+import com.baeldung.hibernate.optimisticlocking.OptimisticLockingCourse;
+import com.baeldung.hibernate.optimisticlocking.OptimisticLockingStudent;
+import com.baeldung.hibernate.pessimisticlocking.Individual;
+import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingCourse;
+import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingEmployee;
+import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingStudent;
+import com.baeldung.hibernate.pojo.*;
+import com.baeldung.hibernate.pojo.Person;
+import com.baeldung.hibernate.pojo.inheritance.*;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -13,10 +22,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
-import com.baeldung.hibernate.pessimisticlocking.Individual;
-import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingCourse;
-import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingEmployee;
-import com.baeldung.hibernate.pessimisticlocking.PessimisticLockingStudent;
 import com.baeldung.hibernate.pojo.Course;
 import com.baeldung.hibernate.pojo.Employee;
 import com.baeldung.hibernate.pojo.EntityDescription;
@@ -95,6 +100,8 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Address.class);
         metadataSources.addAnnotatedClass(DeptEmployee.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
+        metadataSources.addAnnotatedClass(OptimisticLockingCourse.class);
+        metadataSources.addAnnotatedClass(OptimisticLockingStudent.class);
 
         Metadata metadata = metadataSources.buildMetadata();
         return metadata.getSessionFactoryBuilder()

@@ -11,3 +11,4 @@
 - [Introduction to Future in Vavr](http://www.baeldung.com/vavr-future)
 - [Introduction to VRaptor in Java](http://www.baeldung.com/vraptor)
 - [Introduction to Vavr’s Either](http://www.baeldung.com/vavr-either)
+- [Interoperability Between Java and Vavr](http://www.baeldung.com/java-vavr)

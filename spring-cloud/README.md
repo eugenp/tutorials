@@ -26,3 +26,5 @@
 - [Instance Profile Credentials using Spring Cloud](http://www.baeldung.com/spring-cloud-instance-profiles)
 - [An Intro to Spring Cloud Security](http://www.baeldung.com/spring-cloud-security)
 - [An Intro to Spring Cloud Task](http://www.baeldung.com/spring-cloud-task) 
+- [Running Spring Boot Applications With Minikube](http://www.baeldung.com/spring-boot-minikube)
+- [Introduction to Netflix Archaius with Spring Cloud](https://www.baeldung.com/netflix-archaius-spring-cloud-integration)

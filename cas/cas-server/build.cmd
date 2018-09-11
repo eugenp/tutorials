@@ -23,8 +23,10 @@
 @if "%1" == "bootrun"  call:bootrun %2 %3 %4
 @if "%1" == "debug" call:debug %2 %3 %4
 @if "%1" == "run" call:run %2 %3 %4
+@if "%1" == "runalone" call:runalone %2 %3 %4
 @if "%1" == "help" call:help
 @if "%1" == "gencert" call:gencert
+@if "%1" == "cli" call:runcli %2 %3 %4
 
 @rem function section starts here
 @goto:eof
@@ -38,7 +40,7 @@
 @goto:eof
 
 :help
-    @echo "Usage: build.bat [copy|clean|package|run|debug|bootrun|gencert] [optional extra args for maven]"
+    @echo "Usage: build.bat [copy|clean|package|run|debug|bootrun|gencert|cli] [optional extra args for maven or cli]"
     @echo "To get started on a clean system, run "build.bat copy" and "build.bat gencert", then "build.bat run"
     @echo "Note that using the copy or gencert arguments will create and/or overwrite the %CAS_DIR% which is outside this project"
 @goto:eof
@@ -66,6 +68,10 @@
     call:package %1 %2 %3 & java %JAVA_ARGS% -jar target/cas.war
 @goto:eof
 
+:runalone
+    call:package %1 %2 %3 & target/cas.war
+@goto:eof
+
 :gencert
     where /q keytool
     if ERRORLEVEL 1 (
@@ -79,4 +85,18 @@
         @echo Exporting cert for use in trust store (used by cas clients)
         keytool -exportcert -alias cas -storepass changeit -keystore %CAS_DIR%\thekeystore -file %CAS_DIR%\cas.cer
     )
+@goto:eof
+
+:runcli
+    for /f %%i in ('call %MAVEN_CMD% -q --non-recursive "-Dexec.executable=cmd" "-Dexec.args=/C echo ${cas.version}" "org.codehaus.mojo:exec-maven-plugin:1.3.1:exec"') do set CAS_VERSION=%%i
+    @set CAS_VERSION=%CAS_VERSION: =%
+    @set DOWNLOAD_DIR=target
+    @set COMMAND_FILE=cas-server-support-shell-%CAS_VERSION%.jar
+    @if not exist %DOWNLOAD_DIR% mkdir %DOWNLOAD_DIR%
+    @if not exist %DOWNLOAD_DIR%\%COMMAND_FILE% ( 
+        @call mvn org.apache.maven.plugins:maven-dependency-plugin:3.0.2:get -DgroupId=org.apereo.cas -DartifactId=cas-server-support-shell -Dversion=%CAS_VERSION% -Dpackaging=jar -DartifactItem.outputDirectory=%DOWNLOAD_DIR% -DartifactItem.destFileName=%COMMAND_FILE% -DremoteRepositories=central::default::http://repo1.maven.apache.org/maven2,snapshots::::https://oss.sonatype.org/content/repositories/snapshots -Dtransitive=false
+        @call mvn org.apache.maven.plugins:maven-dependency-plugin:3.0.2:copy -Dmdep.useBaseVersion=true -Dartifact=org.apereo.cas:cas-server-support-shell:%CAS_VERSION%:jar -DoutputDirectory=%DOWNLOAD_DIR%
+    )
+    @call java %JAVA_ARGS% -jar %DOWNLOAD_DIR%\%COMMAND_FILE% %1 %2 %3
+
 @goto:eof

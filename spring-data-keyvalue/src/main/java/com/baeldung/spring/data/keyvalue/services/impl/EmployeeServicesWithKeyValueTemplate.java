@@ -27,9 +27,8 @@ public class EmployeeServicesWithKeyValueTemplate implements EmployeeService {
 	}
 
 	@Override
-	public Employee get(Integer id) {
-		Optional<Employee> employee = keyValueTemplate.findById(id, Employee.class);
-		return employee.isPresent() ? employee.get() : null;
+	public Optional<Employee> get(Integer id) {
+		return keyValueTemplate.findById(id, Employee.class);
 	}
 
 	@Override

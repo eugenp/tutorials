@@ -1,5 +1,7 @@
 package com.baeldung.spring.data.keyvalue.services.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +28,8 @@ public class EmployeeServicesWithRepository implements EmployeeService {
     }
 
     @Override
-    public Employee get(Integer id) {
-        return employeeRepository.findById(id).get();
+    public Optional<Employee> get(Integer id) {
+        return employeeRepository.findById(id);
     }
 
     @Override

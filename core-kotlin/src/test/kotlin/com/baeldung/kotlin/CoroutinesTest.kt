@@ -103,7 +103,7 @@ class CoroutinesTest {
             //given
             val job = launch(CommonPool) {
                 while (isActive) {
-                    println("is working")
+                    //println("is working")
                 }
             }
 

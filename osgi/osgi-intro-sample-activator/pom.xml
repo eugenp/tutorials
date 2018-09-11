@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Please, note this is not the usual 'jar'. -->
+    <packaging>bundle</packaging>
+    <artifactId>osgi-intro-sample-activator</artifactId>
 
     <!-- com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT -->
     <parent>
-        <artifactId>osgi-intro</artifactId>
+        <artifactId>osgi</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <!-- Please, note this is not the usual 'jar'. -->
-    <packaging>bundle</packaging>
-
-    <artifactId>osgi-intro-sample-activator</artifactId>
 
     <dependencies>
         <dependency>
@@ -38,11 +35,8 @@
                         <!-- Qualified name of the class that exposes the activator iface. -->
                         <Bundle-Activator>com.baeldung.osgi.sample.activator.HelloWorld</Bundle-Activator>
 
-                        <!-- One important thing to note:
-                        since you are not exporting the package "com.baeldung.osgi.sample.activator",
-                        you should at least add it to the Private-Package instruction.
-                        Otherwise, the classes inside the package will not be copied to your bundle,
-                        as the default value of this instruction is empty. -->
+                        <!-- One important thing to note: since you are not exporting the package "com.baeldung.osgi.sample.activator", you should at least add it to the Private-Package 
+                            instruction. Otherwise, the classes inside the package will not be copied to your bundle, as the default value of this instruction is empty. -->
 
                         <Private-Package>com.baeldung.osgi.sample.activator</Private-Package>
 
