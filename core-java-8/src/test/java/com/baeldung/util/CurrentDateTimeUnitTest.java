@@ -1,7 +1,6 @@
 package com.baeldung.util;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.time.Clock;
 import java.time.Instant;
@@ -10,8 +9,6 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.temporal.ChronoField;
 
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeUtils;
 import org.junit.Test;
 
 public class CurrentDateTimeUnitTest {

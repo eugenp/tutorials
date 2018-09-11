@@ -33,3 +33,4 @@
 - [Using Guava CountingOutputStream](http://www.baeldung.com/guava-counting-outputstream)
 - [Hamcrest Text Matchers](http://www.baeldung.com/hamcrest-text-matchers)
 - [Quick Guide to the Guava RateLimiter](http://www.baeldung.com/guava-rate-limiter)
+- [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)

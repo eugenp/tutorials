@@ -3,7 +3,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
 
-- [Quick Guide to @RestClientTest in Spring Boot](http://www.baeldung.com/restclienttest-in-spring-boot)
 - [A Guide to Spring in Eclipse STS](http://www.baeldung.com/eclipse-sts-spring)
 - [The @ServletComponentScan Annotation in Spring Boot](http://www.baeldung.com/spring-servletcomponentscan)
 - [Intro to Building an Application with Spring Boot](http://www.baeldung.com/intro-to-spring-boot)
@@ -12,19 +11,15 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Using Custom Banners in Spring Boot](http://www.baeldung.com/spring-boot-custom-banners)
 - [Guide to Internationalization in Spring Boot](http://www.baeldung.com/spring-boot-internationalization)
 - [Create a Custom FailureAnalyzer with Spring Boot](http://www.baeldung.com/spring-boot-failure-analyzer)
-- [Configuring Separate Spring DataSource for Tests](http://www.baeldung.com/spring-testing-separate-data-source)
 - [Dynamic DTO Validation Config Retrieved from DB](http://www.baeldung.com/spring-dynamic-dto-validation)
 - [Custom Information in Spring Boot Info Endpoint](http://www.baeldung.com/spring-boot-info-actuator-custom)
 - [Using @JsonComponent in Spring Boot](http://www.baeldung.com/spring-boot-jsoncomponent)
 - [Testing in Spring Boot](http://www.baeldung.com/spring-boot-testing)
 - [Guide to @ConfigurationProperties in Spring Boot](http://www.baeldung.com/configuration-properties-in-spring-boot)
 - [How to Get All Spring-Managed Beans?](http://www.baeldung.com/spring-show-all-beans)
-- [A Java Client for a WebSockets API](http://www.baeldung.com/websockets-api-java-spring-client)
 - [Spring Boot and Togglz Aspect](http://www.baeldung.com/spring-togglz)
 - [Getting Started with GraphQL and Spring Boot](http://www.baeldung.com/spring-graphql)
 - [Guide to Spring Type Conversions](http://www.baeldung.com/spring-type-conversions)
-- [Quick Guide on data.sql and schema.sql Files in Spring Boot](http://www.baeldung.com/spring-boot-data-sql-and-schema-sql)
-- [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)
 - [An Introduction to Kong](http://www.baeldung.com/kong)
 - [Spring Boot Customize Whitelabel Error Page](http://www.baeldung.com/spring-boot-custom-error-page)
 - [Spring Boot: Configuring a Main Class](http://www.baeldung.com/spring-boot-main-class)
@@ -36,3 +31,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Shutdown Callbacks](http://www.baeldung.com/spring-shutdown-callbacks)
 - [Spring Boot Integration Testing with Embedded MongoDB](http://www.baeldung.com/spring-boot-embedded-mongodb)
 - [Container Configuration in Spring Boot 2](http://www.baeldung.com/embeddedservletcontainercustomizer-configurableembeddedservletcontainer-spring-boot)
+- [Introduction to Chaos Monkey](https://www.baeldung.com/spring-boot-chaos-monkey)
+- [Spring Component Scanning](https://www.baeldung.com/spring-component-scanning)
