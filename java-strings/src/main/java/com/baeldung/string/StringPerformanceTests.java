@@ -1,12 +1,15 @@
 package com.baeldung.string;
 
 import com.google.common.base.Splitter;
+import org.openjdk.jmh.annotations.Scope;
+import org.openjdk.jmh.annotations.State;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
+@State(Scope.Thread)
 public class StringPerformanceTests {
 
     protected final int invocations_1000 = 1000;
@@ -153,7 +156,6 @@ public class StringPerformanceTests {
         return ismatch;
     }
 
-
     protected int stringCompareTo(int iterations) {
         int result = 0;
         for (int i = 0; i < iterations; i++) {
@@ -162,20 +164,18 @@ public class StringPerformanceTests {
         return result;
     }
 
-
     protected boolean stringIsEmpty(int iterations) {
         boolean result = false;
         for (int i = 0; i < iterations; i++) {
-            result = longString.isEmpty();
+            result = "".isEmpty();
         }
         return result;
     }
 
-
     protected boolean stringLengthZero(int iterations) {
         boolean result = false;
         for (int i = 0; i < iterations; i++) {
-            result = longString.length() == 0;
+            result = "".length() == 0;
         }
         return result;
     }
@@ -213,7 +213,6 @@ public class StringPerformanceTests {
         for (int i = 0; i < iterations; i++) {
             number = Integer.toString( i ).intern();
         }
-
         return number;
     }
 }

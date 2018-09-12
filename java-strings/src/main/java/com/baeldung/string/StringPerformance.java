@@ -21,24 +21,22 @@ public class StringPerformance extends StringPerformanceTests {
 
     @State(Scope.Thread)
     public static class MyState {
-        int iterations = 100000;
 
-        String sample = "baeldung";
         String longString = "Hello baeldung, I am a bit longer than other Strings";
         String result = "";
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
-    public String benchmarkStringDynamicConcat(StringPerformance.MyState state) {
-        return dynamicConcat(invocations_100_000);
+    @OperationsPerInvocation(invocations_10_000)
+    public String benchmarkStringDynamicConcat() {
+        return dynamicConcat(invocations_10_000);
     }
 
     @Benchmark
     public StringBuilder  benchmarkStringBuilder(StringPerformance.MyState state) {
         StringBuilder stringBuilder = new StringBuilder(state.result);
-        for (int i = 0; i < state.iterations; i++) {
-            stringBuilder.append(state.sample);
+        for (int i = 0; i < invocations_10_000; i++) {
+            stringBuilder.append(baeldung);
         }
 
         return stringBuilder;
@@ -47,47 +45,47 @@ public class StringPerformance extends StringPerformanceTests {
     @Benchmark
     public StringBuffer benchmarkStringBuffer(StringPerformance.MyState state) {
         StringBuffer stringBuffer = new StringBuffer(state.result);
-        for (int i = 0; i < state.iterations; i++) {
-            stringBuffer.append(state.sample);
+        for (int i = 0; i < invocations_10_000; i++) {
+            stringBuffer.append(baeldung);
         }
 
         return stringBuffer;
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
-    public String benchmarkStringConstructor(StringPerformance.MyState state) {
-        return StringConstructor(invocations_100_000);
+    @OperationsPerInvocation(invocations_1_000_000)
+    public String benchmarkStringConstructor() {
+        return StringConstructor(invocations_1_000_000);
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
+    @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringLiteral() {
-        return StringLiteral(invocations_100_000);
+        return StringLiteral(invocations_1_000_000);
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
+    @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringFormat_s() {
-        return stringFormat_s(invocations_100_000);
+        return stringFormat_s(invocations_1_000_000);
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
+    @OperationsPerInvocation(invocations_10_000)
     public String benchmarkStringFormat_d() {
-        return stringFormat_d(invocations_100_000);
+        return stringFormat_d(invocations_10_000);
     }
 
     @Benchmark
     @OperationsPerInvocation(invocations_100_000)
-    public String benchmarkStringConcat(StringPerformance.MyState state) {
+    public String benchmarkStringConcat() {
         return stringConcat(invocations_100_000);
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
-    public String benchmarkStringIntern(StringPerformance.MyState state) {
-        return stringIntern(invocations_100_000);
+    @OperationsPerInvocation(invocations_1000)
+    public String benchmarkStringIntern() {
+        return stringIntern(invocations_1000);
     }
 
     @Benchmark
@@ -147,9 +145,9 @@ public class StringPerformance extends StringPerformanceTests {
 
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
+    @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringConvertPlus() {
-        return stringConvertPlus(invocations_100_000);
+        return stringConvertPlus(invocations_1_000_000);
     }
 
 
@@ -184,16 +182,17 @@ public class StringPerformance extends StringPerformanceTests {
         return stringCompareTo(invocations_100_000);
     }
 
+
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
+    @OperationsPerInvocation(1)
     public boolean benchmarkStringIsEmpty() {
-        return stringIsEmpty(invocations_100_000);
+        return stringIsEmpty(1);
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
+    @OperationsPerInvocation(1)
     public boolean benchmarkStringLengthZero() {
-        return stringLengthZero(invocations_100_000);
+        return stringLengthZero(1);
     }
 
     public static void main(String[] args) throws Exception {
