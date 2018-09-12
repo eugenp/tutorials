@@ -3,6 +3,7 @@ package com.baeldung.string;
 import com.google.common.base.Splitter;
 import org.apache.commons.lang3.StringUtils;
 import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
@@ -14,9 +15,9 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 10)
-public class StringPerformance {
+public class StringPerformance extends StringPerformanceTests {
 
     @State(Scope.Thread)
     public static class MyState {
@@ -28,10 +29,9 @@ public class StringPerformance {
     }
 
     @Benchmark
-    public void benchmarkStringDynamicConcat(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            state.result += state.sample;
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringDynamicConcat(StringPerformance.MyState state) {
+        return dynamicConcat(invocations_100_000);
     }
 
     @Benchmark
@@ -55,177 +55,145 @@ public class StringPerformance {
     }
 
     @Benchmark
-    public void benchmarkStringConstructor(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String newString = new String(state.sample);
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringConstructor(StringPerformance.MyState state) {
+        return StringConstructor(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringLiteral(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String newString = state.sample;
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringLiteral() {
+        return StringLiteral(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringFormat_s(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String s = String.format("hello %s, nice to meet you", state.sample);
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringFormat_s() {
+        return stringFormat_s(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringFormat_d(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String s = String.format("%d", i);
-        }
-    }
-
-
-    @Benchmark
-    public void benchmarkStringConcat(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            state.result.concat(state.sample);
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringFormat_d() {
+        return stringFormat_d(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringIntern(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String number = Integer.toString( i );
-            String interned = number.intern();
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringConcat(StringPerformance.MyState state) {
+        return stringConcat(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringReplace(StringPerformance.MyState state) {
-        String replaced = state.longString.replace("average", " average !!!");
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringIntern(StringPerformance.MyState state) {
+        return stringIntern(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringUtilsReplace(StringPerformance.MyState state) {
-        String replaced = StringUtils.replace(state.longString, "average", " average !!!");
-    }
-
-
-    @Benchmark
-    public void benchmarkGuavaSplitter(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            List<String> resultList = Splitter.on(" ").trimResults()
-                    .omitEmptyStrings()
-                    .splitToList(state.longString);
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringReplace(StringPerformance.MyState state) {
+        return state.longString.replace("average", " average !!!");
     }
 
     @Benchmark
-    public void benchmarkStringSplit(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String [] list = state.longString.split(" ");
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringUtilsReplace(StringPerformance.MyState state) {
+        return StringUtils.replace(state.longString, "average", " average !!!");
     }
 
     @Benchmark
-    public void benchmarkStringSplitPattern(StringPerformance.MyState state) {
-        Pattern spacePattern = Pattern.compile(" ");
-        for (int i = 0; i < state.iterations; i++) {
-            String [] list = spacePattern.split(state.longString, 0);
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public List<String> benchmarkGuavaSplitter(StringPerformance.MyState state) {
+        return guavaSplitter(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringTokenizer(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            StringTokenizer st = new StringTokenizer(state.longString);
-            List<String> list = new ArrayList<String>();
-            while (st.hasMoreTokens()) {
-                list.add(st.nextToken());
-            }
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String [] benchmarkStringSplit(StringPerformance.MyState state) {
+        return stringSplit(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringIndexOf(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            List<String> list = new ArrayList<String>();
-            int pos = 0, end;
-            while ((end = state.longString.indexOf(' ', pos)) >= 0) {
-                list.add(state.longString.substring(pos, end));
-                pos = end + 1;
-            }
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String [] benchmarkStringSplitPattern(StringPerformance.MyState state) {
+        return stringSplitPattern(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkIntegerToString(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String number = Integer.toString(i);
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public List benchmarkStringTokenizer() {
+        return stringTokenizer(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringValueOf(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String number = String.valueOf(i);
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringConvertPlus(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            String number = i + "";
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringEquals(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            boolean isEqual = state.longString.equals(state.sample);
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringEqualsIgnoreCase(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            boolean isEqual = state.longString.equalsIgnoreCase(state.sample);
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringMatches(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            boolean ismatch = state.longString.matches(state.sample);
-        }
-    }
-
-    @Benchmark
-    public void benchmarkPrecompiledMatches(StringPerformance.MyState state) {
-        Pattern pattern = Pattern.compile(state.longString);
-        for (int i = 0; i < state.iterations; i++) {
-            boolean ismatch = pattern.matcher(state.sample).matches();
-        }
-    }
-
-    @Benchmark
-    public void benchmarkStringCompareTo(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            int result = state.longString.compareTo(state.sample);
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public List benchmarkStringIndexOf() {
+        return stringIndexOf(invocations_100_000);
     }
 
 
     @Benchmark
-    public void benchmarkStringIsEmpty(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            boolean result = state.longString.isEmpty();
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkIntegerToString() {
+        return stringIntegerToString(invocations_100_000);
     }
 
     @Benchmark
-    public void benchmarkStringLengthZero(StringPerformance.MyState state) {
-        for (int i = 0; i < state.iterations; i++) {
-            boolean result = state.longString.length() == 0;
-        }
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringValueOf() {
+        return stringValueOf(invocations_100_000);
+    }
+
+
+    @Benchmark
+    @OperationsPerInvocation(invocations_100_000)
+    public String benchmarkStringConvertPlus() {
+        return stringConvertPlus(invocations_100_000);
+    }
+
+
+    @Benchmark
+    @OperationsPerInvocation(invocations_100_000)
+    public boolean benchmarkStringEquals() {
+        return stringEquals(invocations_100_000);
+    }
+
+
+    @Benchmark
+    @OperationsPerInvocation(invocations_100_000)
+    public boolean benchmarkStringEqualsIgnoreCase() {
+        return stringEqualsIgnoreCase(invocations_100_000);
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(invocations_100_000)
+    public boolean benchmarkStringMatches() {
+        return stringIsMatch(invocations_100_000);
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(invocations_100_000)
+    public boolean benchmarkPrecompiledMatches() {
+        return precompiledMatches(invocations_100_000);
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(invocations_100_000)
+    public int benchmarkStringCompareTo() {
+        return stringCompareTo(invocations_100_000);
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(invocations_100_000)
+    public boolean benchmarkStringIsEmpty() {
+        return stringIsEmpty(invocations_100_000);
+    }
+
+    @Benchmark
+    @OperationsPerInvocation(invocations_100_000)
+    public boolean benchmarkStringLengthZero() {
+        return stringLengthZero(invocations_100_000);
     }
 
     public static void main(String[] args) throws Exception {
