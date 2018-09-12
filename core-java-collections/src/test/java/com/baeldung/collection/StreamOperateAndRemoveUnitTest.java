@@ -2,6 +2,7 @@ package com.baeldung.collection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.junit.Assert;
@@ -35,8 +36,9 @@ public class StreamOperateAndRemoveUnitTest {
     @Test
     public void givenAListOf10Items_whenOperateAndRemoveQualifiedItemsUsingRemoveIf_thenListContains5Items() {
 
-        itemList.stream().filter(item -> item.isQualified()).forEach(item -> item.operate());
-        itemList.removeIf(item -> item.isQualified());
+        final Predicate<Item> isQualified = item -> item.isQualified();
+        itemList.stream().filter(isQualified).forEach(item -> item.operate());
+        itemList.removeIf(isQualified);
 
         Assert.assertEquals(5, itemList.size());
     }

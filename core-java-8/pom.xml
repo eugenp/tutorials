@@ -90,11 +90,6 @@
             <version>${vavr.version}</version>
         </dependency>
         <dependency>
-            <groupId>one.util</groupId>
-            <artifactId>streamex</artifactId>
-            <version>${streamex.version}</version>
-        </dependency>
-        <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
             <version>${joda.version}</version>
@@ -121,23 +116,6 @@
         </resources>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/libs</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -177,7 +155,6 @@
         <lombok.version>1.16.12</lombok.version>
         <vavr.version>0.9.0</vavr.version>
         <protonpack.version>1.13</protonpack.version>
-        <streamex.version>0.6.5</streamex.version>
         <joda.version>2.10</joda.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>

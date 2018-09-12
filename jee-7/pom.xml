@@ -384,10 +384,6 @@
         </profile>
     </profiles>
 
-    <prerequisites>
-        <maven>${maven.min.version}</maven>
-    </prerequisites>
-
     <repositories>
         <repository>
             <id>bintray-mvc-spec-maven</id>
