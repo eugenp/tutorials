@@ -50,12 +50,26 @@ public class ReactiveFileReader {
     }
 
     public Flowable<String> readFileConvertSyncToObservablesFromIterable() {
+
         return Flowable.fromIterable(() -> {
-            try(BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                return reader.lines().iterator();
-            } catch (IOException e) {
-                throw new UncheckedIOException(e);
+            BufferedReader reader = null;
+            List<String> lines = new ArrayList<>();
+            try {
+                reader = new BufferedReader(new FileReader(file));
+                lines = reader.lines()
+                    .map(line -> line)
+                    .collect(Collectors.toList());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+
+            return lines.iterator();
         });
     }
 
