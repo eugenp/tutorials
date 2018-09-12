@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest(excludeAutoConfiguration = {PersistenceConfiguration.class})
-public class InventoryRepositoryTest {
+public class InventoryRepositoryIntegrationTest {
 
     private static final String ORIGINAL_TITLE = "Pair of Pants";
     private static final String UPDATED_TITLE = "Branded Luxury Pants";
