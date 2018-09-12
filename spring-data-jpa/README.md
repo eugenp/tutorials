@@ -10,6 +10,7 @@
 - [Spring Data Annotations](http://www.baeldung.com/spring-data-annotations)
 - [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)
 - [A Simple Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging)
+- [Spring Data Composable Repositories](https://www.baeldung.com/spring-data-composable-repositories)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

@@ -36,13 +36,15 @@
     </dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-			  <groupId>org.springframework.boot</groupId>
-			  <artifactId>spring-boot-maven-plugin</artifactId>
-			  <version>2.0.4.RELEASE</version>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>2.0.4.RELEASE</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 	
     <profiles>

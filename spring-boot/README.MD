@@ -31,3 +31,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Shutdown Callbacks](http://www.baeldung.com/spring-shutdown-callbacks)
 - [Spring Boot Integration Testing with Embedded MongoDB](http://www.baeldung.com/spring-boot-embedded-mongodb)
 - [Container Configuration in Spring Boot 2](http://www.baeldung.com/embeddedservletcontainercustomizer-configurableembeddedservletcontainer-spring-boot)
+- [Introduction to Chaos Monkey](https://www.baeldung.com/spring-boot-chaos-monkey)
+- [Spring Component Scanning](https://www.baeldung.com/spring-component-scanning)
