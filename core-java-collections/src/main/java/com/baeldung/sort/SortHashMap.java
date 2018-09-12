@@ -1,8 +1,11 @@
 package com.baeldung.sort;
 
 import com.baeldung.performance.Employee;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Ordering;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SortHashMap {
 
@@ -20,13 +23,36 @@ public class SortHashMap {
         //treeSetByKey();
         //treeSetByValue();
 
-        sortStream();
+        //sortStream();
+
+        sortGuava();
+    }
+
+    private static void sortGuava() {
+        Ordering<Map.Entry<String, Employee>> orderById = new Ordering<Map.Entry<String, Employee>>() {
+            @Override
+            public int compare(Map.Entry<String, Employee> left, Map.Entry<String, Employee> right) {
+                return left.getValue().getId().compareTo(right.getValue().getId());
+            }
+        };
+
+        List<Map.Entry<String, Employee>> toList = Lists.newArrayList(map.entrySet());
+        Collections.sort(toList, orderById);
+
+        toList.forEach(System.out::println);
     }
 
     private static void sortStream() {
         map.entrySet().stream()
                 .sorted(Map.Entry.<String, Employee>comparingByKey().reversed())
                 .forEach(System.out::println);
+
+        Map<String, Employee> result = map.entrySet().stream()
+                .sorted(Comparator.comparingLong(e -> e.getValue().getId()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+
+        result.entrySet().forEach(System.out::println);
     }
 
     private static void treeSetByValue() {
