@@ -1,4 +1,4 @@
-package com.baeldung.h2.server;
+package com.baeldung.h2db.demo;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 @SpringBootApplication
-@ComponentScan("com.baeldung.h2.server")
 public class SpringBootApp {
 
     @Autowired
