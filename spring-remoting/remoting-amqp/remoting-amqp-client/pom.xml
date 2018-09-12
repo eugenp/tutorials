@@ -26,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>com.baeldung</groupId>
-            <artifactId>api</artifactId>
+            <artifactId>remoting-http-api</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

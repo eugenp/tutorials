@@ -13,3 +13,4 @@
 - [Pessimistic Locking in JPA](http://www.baeldung.com/jpa-pessimistic-locking)
 - [Bootstrapping JPA Programmatically in Java](http://www.baeldung.com/java-bootstrap-jpa)
 - [Optimistic Locking in JPA](http://www.baeldung.com/jpa-optimistic-locking)
+- [Hibernate Entity Lifecycle](https://www.baeldung.com/hibernate-entity-lifecycle)

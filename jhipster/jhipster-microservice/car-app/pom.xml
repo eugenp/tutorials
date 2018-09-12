@@ -10,10 +10,10 @@
         <relativePath>../../../parent-boot-1</relativePath>
     </parent>
     <groupId>com.car.app</groupId>
-    <artifactId>carapp</artifactId>
+    <artifactId>car-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Carapp</name>
+    <name>car-app</name>
 
     <prerequisites>
         <maven>${maven.version}</maven>

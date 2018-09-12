@@ -2,7 +2,7 @@
 The "REST with Spring" Classes
 ==============================
 
-After 5 months of work, here's the Master Class of REST With Spring: <br/>
+Here's the Master Class of REST With Spring (price changes permanently next Friday): <br/>
 **[>> THE REST WITH SPRING MASTER CLASS](http://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=rws#master-class)**
 
 And here's the Master Class of Learn Spring Security: <br/>
