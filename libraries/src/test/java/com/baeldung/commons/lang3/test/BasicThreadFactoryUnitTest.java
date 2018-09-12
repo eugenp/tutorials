@@ -9,7 +9,7 @@ public class BasicThreadFactoryUnitTest {
     @Test
     public void givenBasicThreadFactoryInstance_whenCalledBuilder_thenCorrect() {
         BasicThreadFactory factory = new BasicThreadFactory.Builder()
-            .namingPattern("workerthread")
+            .namingPattern("workerthread-%d")
             .daemon(true)
             .priority(Thread.MAX_PRIORITY)
             .build();
