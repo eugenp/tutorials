@@ -63,8 +63,8 @@ public class SortHashMap {
     }
 
     private static void treeSetByKey() {
-        SortedSet<String> keys = new TreeSet<>(map.keySet());
-        System.out.println(keys);
+        SortedSet<String> keysSet = new TreeSet<>(map.keySet());
+        System.out.println(keysSet);
     }
 
     private static void treeMapSortByKey() {
