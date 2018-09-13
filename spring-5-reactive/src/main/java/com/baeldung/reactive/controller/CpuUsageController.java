@@ -25,7 +25,7 @@ public class CpuUsageController {
     }
 
     private CpuUsage currentCpuUsage() {
-        int usage = (int) (random.nextDouble()*100);
+        int usage = (int) (random.nextDouble() * 100);
         String severity = getSeverity(usage);
 
         CpuUsage cpuUsage = new CpuUsage(usage, severity);
