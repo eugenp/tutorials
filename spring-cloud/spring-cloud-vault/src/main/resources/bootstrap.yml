@@ -7,7 +7,6 @@ spring:
       config:
           order: -10
           
-      token: b93d1b0d-15b5-f69e-d311-352a65fa7bc8
       ssl:
         trust-store: classpath:/vault.jks
         trust-store-password: changeit
@@ -17,13 +16,14 @@ spring:
         application-name: fakebank
         
       kv:
-        enabled: true
+        enabled: false
         backend: kv
         application-name: fakebank
         
       database:
         enabled: true
         role: fakebank-accounts-rw
+#        backend: database
 #        username-property: spring.datasource.username
 #        password-property: spring.datasource.password
         
