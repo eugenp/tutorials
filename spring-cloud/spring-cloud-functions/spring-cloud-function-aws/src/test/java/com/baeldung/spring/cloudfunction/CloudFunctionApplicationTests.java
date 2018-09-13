@@ -22,7 +22,6 @@ public class CloudFunctionApplicationTests {
 
     @Test
     public void givenAString_whenReverseStringCloudFunctionInvoked_thenStringIsReversed() {  
-        System.out.println("Aravind");      	
         assertThat(this.testRestTemplate.getForObject("http://localhost:" + port + "/reverseString/HelloWorld", String.class)).isEqualTo("dlroWolleH");
     }
 
