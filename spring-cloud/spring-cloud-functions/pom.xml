@@ -13,15 +13,6 @@
 
     <modules>
         <module>spring-cloud-function-aws</module>
-        <module>spring-cloud-function-local</module>
     </modules>
-
-    <properties>
-        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-cloud-function.version>1.0.0.RELEASE</spring-cloud-function.version>
-    </properties>
     
 </project>
