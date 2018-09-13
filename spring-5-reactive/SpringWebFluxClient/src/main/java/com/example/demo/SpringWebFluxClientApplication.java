@@ -22,6 +22,7 @@ public class SpringWebFluxClientApplication {
 
 	}
 
+	
 	@Bean
 	WebClient client() {
 		return WebClient.create("http://localhost:8080");
