@@ -352,6 +352,7 @@
 				<module>java-streams</module>
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
+				<module>kotlin-libraries</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
 				<module>core-java-concurrency-collections</module>
@@ -602,6 +603,7 @@
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
 				<module>spring-boot-angular-ecommerce</module>
+				<module>jta</module>
 			</modules>
 
 		</profile>
@@ -961,6 +963,7 @@
 				<module>json-path</module>
 				<module>json</module>
 				<module>jsoup</module>
+				<module>jta</module>
 				<module>testing-modules/junit-5</module>
 				<module>testing-modules/junit5-migration</module>
 				<module>jws</module>
@@ -1106,6 +1109,7 @@
 				<module>spring-remoting</module>
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
+				<module>spring-vault</module>
 				<module>spring-jinq</module>
 				<module>spring-rest-embedded-tomcat</module>
 				<module>testing-modules/testing</module>
@@ -1237,6 +1241,7 @@
                 <module>spring-boot-ops</module>
                 <module>spring-5</module>
                 <module>core-kotlin</module>
+				<module>kotlin-libraries</module>
                 <module>core-java</module>
                 <module>google-web-toolkit</module>
                 <module>spring-security-mvc-custom</module>
