@@ -1,23 +1,18 @@
 package com.baeldung.string;
 
-import com.google.common.base.Splitter;
 import org.apache.commons.lang3.StringUtils;
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.infra.Blackhole;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Pattern;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 10)
-public class StringPerformance extends StringPerformanceTests {
+public class StringPerformance extends StringPerformanceHints {
 
     @State(Scope.Thread)
     public static class MyState {
@@ -181,7 +176,6 @@ public class StringPerformance extends StringPerformanceTests {
     public int benchmarkStringCompareTo() {
         return stringCompareTo(invocations_100_000);
     }
-
 
     @Benchmark
     @OperationsPerInvocation(1)

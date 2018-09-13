@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 @State(Scope.Thread)
-public class StringPerformanceTests {
+public class StringPerformanceHints {
 
     protected final int invocations_1000 = 1000;
     protected final int invocations_10_000 = 10000;
