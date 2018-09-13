@@ -28,7 +28,7 @@ public class StringPerformanceTests {
         return result;
     }
 
-    protected String StringConstructor(int iterations) {
+    protected String stringConstructor(int iterations) {
         String result = null;
         for (int i = 0; i < iterations; i++) {
             result = new String(baeldung);
@@ -36,7 +36,7 @@ public class StringPerformanceTests {
         return result;
     }
 
-    protected String StringLiteral(int iterations) {
+    protected String stringLiteral(int iterations) {
         String result = null;
         for (int i = 0; i < iterations; i++) {
             result = baeldung;

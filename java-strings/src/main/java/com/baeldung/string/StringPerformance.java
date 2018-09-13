@@ -55,13 +55,13 @@ public class StringPerformance extends StringPerformanceTests {
     @Benchmark
     @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringConstructor() {
-        return StringConstructor(invocations_1_000_000);
+        return stringConstructor(invocations_1_000_000);
     }
 
     @Benchmark
     @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringLiteral() {
-        return StringLiteral(invocations_1_000_000);
+        return stringLiteral(invocations_1_000_000);
     }
 
     @Benchmark
