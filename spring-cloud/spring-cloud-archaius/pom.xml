@@ -21,6 +21,8 @@
         <module>basic-config</module>
         <module>additional-sources-simple</module>
         <module>extra-configs</module>
+        <module>jdbc-config</module>
+        <module>dynamodb-config</module>
     </modules>
 
     <dependencies>
