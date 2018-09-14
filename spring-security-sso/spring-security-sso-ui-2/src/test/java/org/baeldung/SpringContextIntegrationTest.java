@@ -1,4 +1,4 @@
-package org.baeldung.test;
+package org.baeldung;
 
 import org.baeldung.config.UiApplication;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = UiApplication.class, webEnvironment = WebEnvironment.RANDOM_PORT)
-public class UiIntegrationTest {
+public class SpringContextIntegrationTest {
 
     @Test
     public void whenLoadApplication_thenSuccess() {
