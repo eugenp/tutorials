@@ -604,6 +604,7 @@
 				<module>jnosql</module>
 				<module>spring-boot-angular-ecommerce</module>
 				<module>jta</module>
+				<module>spring-boot-jib</module>
 			</modules>
 
 		</profile>
