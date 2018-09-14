@@ -1,6 +1,7 @@
 package com.baeldung.sort;
 
-import com.baeldung.performance.Employee;
+import com.google.common.base.Functions;
+import com.google.common.collect.ImmutableSortedMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 
@@ -15,31 +16,24 @@ public class SortHashMap {
 
         initialize();
 
-        //treeMapSortByKey();
+        treeMapSortByKey();
 
-        //arrayListSortByValue();
-        //arrayListSortByKey();
+        arrayListSortByValue();
+        arrayListSortByKey();
 
-        //treeSetByKey();
-        //treeSetByValue();
+        treeSetByKey();
+        treeSetByValue();
 
-        //sortStream();
+        sortStream();
 
         sortGuava();
     }
 
     private static void sortGuava() {
-        Ordering<Map.Entry<String, Employee>> orderById = new Ordering<Map.Entry<String, Employee>>() {
-            @Override
-            public int compare(Map.Entry<String, Employee> left, Map.Entry<String, Employee> right) {
-                return left.getValue().getId().compareTo(right.getValue().getId());
-            }
-        };
+        final Ordering<String> naturalReverseValueOrdering =
+                Ordering.natural().reverse().nullsLast().onResultOf(Functions.forMap(map, null));
 
-        List<Map.Entry<String, Employee>> toList = Lists.newArrayList(map.entrySet());
-        Collections.sort(toList, orderById);
-
-        toList.forEach(System.out::println);
+        System.out.println(ImmutableSortedMap.copyOf(map, naturalReverseValueOrdering));
     }
 
     private static void sortStream() {
@@ -48,7 +42,7 @@ public class SortHashMap {
                 .forEach(System.out::println);
 
         Map<String, Employee> result = map.entrySet().stream()
-                .sorted(Comparator.comparingLong(e -> e.getValue().getId()))
+                .sorted(Map.Entry.comparingByValue())
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                 (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
@@ -56,9 +50,7 @@ public class SortHashMap {
     }
 
     private static void treeSetByValue() {
-        Comparator<Employee> comp = (Employee o1, Employee o2) -> (o1.getId().compareTo(o2.getId()));
-        SortedSet<Employee> values = new TreeSet<>(comp);
-        values.addAll(map.values());
+        SortedSet<Employee> values = new TreeSet<>(map.values());
         System.out.println(values);
     }
 
@@ -81,12 +73,7 @@ public class SortHashMap {
     private static void arrayListSortByValue() {
         List<Employee> employeeById = new ArrayList<>(map.values());
 
-        Collections.sort(employeeById, new Comparator<Employee>() {
-
-            public int compare(Employee o1, Employee o2) {
-                return (int)(o1.getId() - o2.getId());
-            }
-        });
+        Collections.sort(employeeById);
 
         System.out.println(employeeById);
     }
