@@ -66,10 +66,8 @@ public class ProtonpackUnitTest {
         Stream<String> streamOfPlayers = Stream.of("Ronaldo", "Messi", "Salah");
         Stream<String> streamOfLeagues = Stream.of("Serie A", "La Liga", "Premier League");
 
-        Set<String> merged = StreamUtils.merge(() -> {
-            return "";
-        }, (valOne, valTwo) -> valOne + " " + valTwo, streamOfClubs, streamOfPlayers, streamOfLeagues)
-            .collect(Collectors.toSet());
+        Set<String> merged = StreamUtils.merge(() -> "", (valOne, valTwo) -> valOne + " " + valTwo, streamOfClubs,
+            streamOfPlayers, streamOfLeagues).collect(Collectors.toSet());
 
         assertThat(merged).contains(" Juventus Ronaldo Serie A", " Barcelona Messi La Liga", " Liverpool Salah Premier League",
             " PSG");
@@ -158,29 +156,29 @@ public class ProtonpackUnitTest {
     @Test
     public void whenAggregated_thenAggregated() {
         Integer[] numbers = { 1, 2, 2, 3, 4, 4, 4, 5 };
-        List<List<Integer>> aggregated = StreamUtils.aggregate(Arrays.stream(numbers), (int1, int2) -> int1.compareTo(int2) == 0)
+        List<List<Integer>> aggregated = StreamUtils.aggregate(stream(numbers), (int1, int2) -> int1.compareTo(int2) == 0)
             .collect(Collectors.toList());
         assertThat(aggregated).containsExactly(asList(1), asList(2, 2), asList(3), asList(4, 4, 4), asList(5));
 
-        List<List<Integer>> aggregatedFixSize = StreamUtils.aggregate(Arrays.stream(numbers), 5).collect(Collectors.toList());
+        List<List<Integer>> aggregatedFixSize = StreamUtils.aggregate(stream(numbers), 5).collect(Collectors.toList());
         assertThat(aggregatedFixSize).containsExactly(asList(1, 2, 2, 3, 4), asList(4, 4, 5));
     }
 
     @Test
     public void whenGroupedRun_thenGroupedRun() {
         Integer[] numbers = { 1, 1, 2, 3, 4, 4, 5 };
-        List<List<Integer>> grouped = StreamUtils.groupRuns(Arrays.stream(numbers)).collect(Collectors.toList());
+        List<List<Integer>> grouped = StreamUtils.groupRuns(stream(numbers)).collect(Collectors.toList());
         assertThat(grouped).containsExactly(asList(1, 1), asList(2), asList(3), asList(4, 4), asList(5));
 
         Integer[] numbers2 = { 1, 2, 3, 1 };
-        List<List<Integer>> grouped2 = StreamUtils.groupRuns(Arrays.stream(numbers2)).collect(Collectors.toList());
+        List<List<Integer>> grouped2 = StreamUtils.groupRuns(stream(numbers2)).collect(Collectors.toList());
         assertThat(grouped2).containsExactly(asList(1), asList(2), asList(3), asList(1));
     }
 
     @Test
     public void whenAggregatedOnListCondition_thenAggregatedOnListCondition() {
         Integer[] numbers = { 1, 1, 2, 3, 4, 4, 5 };
-        Stream<List<Integer>> aggregated = StreamUtils.aggregateOnListCondition(Arrays.stream(numbers),
+        Stream<List<Integer>> aggregated = StreamUtils.aggregateOnListCondition(stream(numbers),
             (currentList, nextInt) -> currentList.stream().mapToInt(Integer::intValue).sum() + nextInt <= 5);
         assertThat(aggregated).containsExactly(asList(1, 1, 2), asList(3), asList(4), asList(4), asList(5));
     }
@@ -197,7 +195,6 @@ public class ProtonpackUnitTest {
         Stream<Integer> singleElement = Stream.of(1);
         Optional<Integer> unique = singleElement.collect(CollectorUtils.unique());
         assertThat(unique.get()).isEqualTo(1);
-
 
     }
 
