@@ -49,7 +49,15 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.1.5</version>
+
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.projectreactor.addons/reactor-test -->
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+
+			<scope>test</scope>
 		</dependency>
 
 
