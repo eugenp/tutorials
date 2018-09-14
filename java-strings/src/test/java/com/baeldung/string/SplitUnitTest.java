@@ -2,10 +2,11 @@ package com.baeldung.string;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import com.google.common.base.Splitter;
 
@@ -54,4 +55,18 @@ public class SplitUnitTest {
         assertThat(resultList)
           .containsExactly("car", "jeep", "scooter");
     }
+    
+    @Test
+    public void givenStringContainsSpaces_whenSplitAndTrim_thenReturnsArray_using_Regex() {
+        assertThat(" car , jeep,  scooter ".trim()
+          .split("\\s*,\\s*")).containsExactly("car", "jeep", "scooter");
+
+    }
+    
+    @Test
+    public void givenStringContainsSpaces_whenSplitAndTrim_thenReturnsArray_using_java_8() {
+        assertThat(Arrays.stream(" car , jeep,  scooter ".split(","))
+          .map(String::trim)
+          .toArray(String[]::new)).containsExactly("car", "jeep", "scooter");
+    }   
 }
