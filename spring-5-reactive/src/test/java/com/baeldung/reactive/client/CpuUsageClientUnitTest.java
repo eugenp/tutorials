@@ -53,7 +53,7 @@ public class CpuUsageClientUnitTest {
     }
 
     @Test
-    public void test() {
+    public void whenCalled_ObtainsFluxAndPrintsResults() {
         CpuUsage cpuUsage1 = new CpuUsage(30, "Normal");
         CpuUsage cpuUsage2 = new CpuUsage(60, "Warning");
         CpuUsage cpuUsage3 = new CpuUsage(95, "Critical");
