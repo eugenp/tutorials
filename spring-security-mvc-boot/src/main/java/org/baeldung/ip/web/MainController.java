@@ -23,14 +23,18 @@ public class MainController {
     @Qualifier("springSecurityFilterChain")
     private Filter springSecurityFilterChain;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/filters")
     @ResponseBody
-    public Foo findById(@PathVariable final long id, HttpServletRequest request) {
+    public void getFilters() {
         FilterChainProxy filterChainProxy = (FilterChainProxy) springSecurityFilterChain;
         List<SecurityFilterChain> list = filterChainProxy.getFilterChains();
         list.forEach(chain -> chain.getFilters()
             .forEach(filter -> System.out.println(filter.getClass())));
-
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
+    @ResponseBody
+    public Foo findById(@PathVariable final long id, HttpServletRequest request) {
         return new Foo("Sample");
     }
 
