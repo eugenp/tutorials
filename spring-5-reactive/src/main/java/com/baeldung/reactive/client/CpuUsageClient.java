@@ -1,18 +1,19 @@
 package com.baeldung.reactive.client;
 
 import org.springframework.web.reactive.function.client.WebClient;
-
 import com.baeldung.reactive.model.CpuUsage;
 
+import lombok.Setter;
 import reactor.core.publisher.Flux;
 
 public class CpuUsageClient {
+    
+    @Setter
+    WebClient webClient = WebClient.create();
 
     public void runClient() {
-        WebClient client = WebClient.create("http://localhost:8080");
-
-        Flux<CpuUsage> cpuUsageFlux = client.get()
-            .uri("/cpu-usage")
+        Flux<CpuUsage> cpuUsageFlux = webClient.get()
+            .uri("http://localhost:8080/cpu-usage")
             .retrieve()
             .bodyToFlux(CpuUsage.class);
 

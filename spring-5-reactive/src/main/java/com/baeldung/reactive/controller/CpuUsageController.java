@@ -9,12 +9,11 @@ import reactor.util.function.Tuple2;
 
 import java.time.Duration;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
 @RestController
 public class CpuUsageController {
-
-    private Random random = new Random();
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/cpu-usage")
     public Flux<CpuUsage> getCpuUsage() {
@@ -25,7 +24,7 @@ public class CpuUsageController {
     }
 
     private CpuUsage currentCpuUsage() {
-        int usage = (int) (random.nextDouble() * 100);
+        int usage = (int) (ThreadLocalRandom.current().nextDouble() * 100);
         String severity = getSeverity(usage);
 
         CpuUsage cpuUsage = new CpuUsage(usage, severity);
