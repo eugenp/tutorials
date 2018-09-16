@@ -1,6 +1,6 @@
-package org.baeldung.persistence.criteria.repository;
+package org.baeldung.persistence.dao;
 
-import org.baeldung.persistence.criteria.model.Book;
+import org.baeldung.persistence.model.Book;
 import org.springframework.data.jpa.domain.Specification;
 
 public class BookSpecifications {

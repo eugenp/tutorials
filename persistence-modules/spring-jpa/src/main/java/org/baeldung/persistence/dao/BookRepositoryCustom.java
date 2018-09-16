@@ -1,8 +1,8 @@
-package org.baeldung.persistence.criteria.repository;
+package org.baeldung.persistence.dao;
 
 import java.util.List;
 
-import org.baeldung.persistence.criteria.model.Book;
+import org.baeldung.persistence.model.Book;
 
 public interface BookRepositoryCustom {
 
