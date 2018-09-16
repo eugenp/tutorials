@@ -1,8 +1,15 @@
 package org.baeldung.ip.web;
 
+import java.util.List;
+
+import javax.servlet.Filter;
 import javax.servlet.http.HttpServletRequest;
 
 import org.baeldung.custom.persistence.model.Foo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.web.FilterChainProxy;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +19,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class MainController {
 
+    @Autowired
+    @Qualifier("springSecurityFilterChain")
+    private Filter springSecurityFilterChain;
+
     @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
     @ResponseBody
     public Foo findById(@PathVariable final long id, HttpServletRequest request) {
+        FilterChainProxy filterChainProxy = (FilterChainProxy) springSecurityFilterChain;
+        List<SecurityFilterChain> list = filterChainProxy.getFilterChains();
+        list.forEach(chain -> chain.getFilters()
+            .forEach(filter -> System.out.println(filter.getClass())));
+
         return new Foo("Sample");
     }
 
