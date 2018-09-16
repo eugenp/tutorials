@@ -26,3 +26,4 @@
 - [Convert a String to Title Case](http://www.baeldung.com/java-string-title-case)
 - [Compact Strings in Java 9](http://www.baeldung.com/java-9-compact-string)
 - [Java Check a String for Lowercase/Uppercase Letter, Special Character and Digit](https://www.baeldung.com/java-lowercase-uppercase-special-character-digit-regex)
+- [Convert java.util.Date to String](https://www.baeldung.com/java-util-date-to-string)
