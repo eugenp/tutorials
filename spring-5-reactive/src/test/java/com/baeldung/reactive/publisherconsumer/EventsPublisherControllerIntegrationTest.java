@@ -11,7 +11,7 @@ import reactor.test.StepVerifier;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EventsPublisherApplication.class)
-public class EventsPublisherControllerTest {
+public class EventsPublisherControllerIntegrationTest {
 
     @Test
     public void whenStreamIsStarted_thenReceiveResponsesWithCorrectLength() {
