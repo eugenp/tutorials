@@ -72,8 +72,8 @@ public class CpuUsageClientUnitTest {
 
         verify(mockRequestHeadersUriSpec, times(1)).uri("http://localhost:8080/cpu-usage");
         assertThat(output).contains(cpuUsage1.toString());
-        assertThat(output.toString()).contains(cpuUsage2.toString());
-        assertThat(output.toString()).contains(cpuUsage3.toString());
+        assertThat(output).contains(cpuUsage2.toString());
+        assertThat(output).contains(cpuUsage3.toString());
     }
 
 }
