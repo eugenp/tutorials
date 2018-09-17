@@ -12,207 +12,122 @@ import java.util.regex.Pattern;
 @State(Scope.Thread)
 public class StringPerformanceHints {
 
-    protected final int invocations_1000 = 1000;
-    protected final int invocations_10_000 = 10000;
-    protected final int invocations_100_000 = 100000;
-    protected final int invocations_1_000_000 = 1000000;
-
     protected String baeldung = "baeldung";
     protected String longString = "Hello baeldung, I am a bit longer than other Strings";
+    protected String formatString = "hello %s, nice to meet you";
+    protected String formatDigit = "%d";
+    protected String emptyString = " ";
+    protected String result = "";
 
-    protected String dynamicConcat(int iterations) {
-        String result = "";
-        for (int i = 0; i < iterations; i++) {
-            result += baeldung;
-        }
+    protected int sampleNumber = 100;
+
+    protected Pattern spacePattern = Pattern.compile(emptyString);
+    protected Pattern longPattern = Pattern.compile(longString);
+    protected List<String> stringSplit = new ArrayList<>();
+    protected List<String> stringTokenizer = new ArrayList<>();
+
+    protected String dynamicConcat() {
+        result += baeldung;
         return result;
     }
 
-    protected String stringConstructor(int iterations) {
-        String result = null;
-        for (int i = 0; i < iterations; i++) {
-            result = new String(baeldung);
-        }
+    protected String stringConstructor() {
+        return new String(baeldung);
+    }
+
+    protected String stringLiteral() {
+        result = baeldung;
         return result;
     }
 
-    protected String stringLiteral(int iterations) {
-        String result = null;
-        for (int i = 0; i < iterations; i++) {
-            result = baeldung;
-        }
+    protected String stringFormat_s() {
+        return String.format(formatString, baeldung);
+    }
+
+    protected String stringFormat_d() {
+        return String.format(formatDigit, sampleNumber);
+    }
+
+    protected String stringConcat() {
+        result = result.concat(baeldung);
         return result;
     }
 
-    protected String stringFormat_s(int iterations) {
-        String result = null;
-        for (int i = 0; i < iterations; i++) {
-            result = String.format("hello %s, nice to meet you", baeldung);
+    protected List stringTokenizer() {
+        StringTokenizer st = new StringTokenizer(longString);
+        while (st.hasMoreTokens()) {
+            stringTokenizer.add(st.nextToken());
         }
-        return result;
+        return stringTokenizer;
     }
 
-    protected String stringFormat_d(int iterations) {
-        String result = null;
-        for (int i = 0; i < iterations; i++) {
-            result = String.format("%d", i);
+    protected List stringIndexOf() {
+        int pos = 0, end;
+        while ((end = longString.indexOf(' ', pos)) >= 0) {
+            stringSplit.add(longString.substring(pos, end));
+            pos = end + 1;
         }
-        return result;
+        return stringSplit;
     }
 
-    protected String stringConcat(int iterations) {
-        String result = "";
-        for (int i = 0; i < iterations; i++) {
-            result = result.concat(baeldung);
-        }
-        return result;
+    protected String stringIntegerToString() {
+        return Integer.toString(sampleNumber);
     }
 
-    protected List stringTokenizer(int iterations) {
-        List<String> result = null;
-        for (int i = 0; i < iterations; i++) {
-            StringTokenizer st = new StringTokenizer(longString);
-            List<String> list = new ArrayList<String>();
-            while (st.hasMoreTokens()) {
-                list.add(st.nextToken());
-            }
-
-            result = list;
-        }
-        return result;
-    }
-
-    protected List stringIndexOf(int iterations) {
-        List<String> result = null;
-        for (int i = 0; i < iterations; i++) {
-            List<String> list = new ArrayList<>();
-            int pos = 0, end;
-            while ((end = longString.indexOf(' ', pos)) >= 0) {
-                list.add(longString.substring(pos, end));
-                pos = end + 1;
-            }
-            result = list;
-        }
-        return result;
-    }
-
-    protected String stringIntegerToString(int iterations) {
-        String number = null;
-        for (int i = 0; i < iterations; i++) {
-            number = Integer.toString(i);
-        }
-        return number;
-    }
-
-    protected String stringValueOf(int iterations) {
-        String number = null;
-        for (int i = 0; i < iterations; i++) {
-            number = String.valueOf(i);
-        }
-        return number;
+    protected String stringValueOf() {
+        return String.valueOf(sampleNumber);
     }
 
 
-    protected String stringConvertPlus(int iterations) {
-        String number = null;
-        for (int i = 0; i < iterations; i++) {
-            number = i + "";
-        }
-        return number;
+    protected String stringConvertPlus() {
+        return sampleNumber + "";
     }
 
 
-    protected boolean stringEquals(int iterations) {
-        boolean isEqual = false;
-        for (int i = 0; i < iterations; i++) {
-            isEqual = longString.equals(baeldung);
-        }
-        return isEqual;
+    protected boolean stringEquals() {
+        return longString.equals(baeldung);
     }
 
 
-    protected boolean stringEqualsIgnoreCase(int iterations) {
-        boolean isEqual = false;
-        for (int i = 0; i < iterations; i++) {
-            isEqual = longString.equalsIgnoreCase(baeldung);
-        }
-        return isEqual;
+    protected boolean stringEqualsIgnoreCase() {
+        return longString.equalsIgnoreCase(baeldung);
     }
 
-    protected boolean stringIsMatch(int iterations) {
-        boolean isMatch = false;
-        for (int i = 0; i < iterations; i++) {
-            isMatch = longString.matches(baeldung);
-        }
-        return isMatch;
+    protected boolean stringIsMatch() {
+        return longString.matches(baeldung);
     }
 
-    protected boolean precompiledMatches(int iterations) {
-        boolean ismatch = false;
-        Pattern pattern = Pattern.compile(longString);
-        for (int i = 0; i < iterations; i++) {
-            ismatch = pattern.matcher(baeldung).matches();
-        }
-        return ismatch;
+    protected boolean precompiledMatches() {
+        return longPattern.matcher(baeldung).matches();
     }
 
-    protected int stringCompareTo(int iterations) {
-        int result = 0;
-        for (int i = 0; i < iterations; i++) {
-            result = longString.compareTo(baeldung);
-        }
-        return result;
+    protected int stringCompareTo() {
+        return longString.compareTo(baeldung);
     }
 
-    protected boolean stringIsEmpty(int iterations) {
-        boolean result = false;
-        for (int i = 0; i < iterations; i++) {
-            result = "".isEmpty();
-        }
-        return result;
+    protected boolean stringIsEmpty() {
+        return longString.isEmpty();
     }
 
-    protected boolean stringLengthZero(int iterations) {
-        boolean result = false;
-        for (int i = 0; i < iterations; i++) {
-            result = "".length() == 0;
-        }
-        return result;
+    protected boolean stringLengthZero() {
+        return longString.length() == 0;
     }
 
-    protected String [] stringSplitPattern(int iterations) {
-        String [] list = null;
-        Pattern spacePattern = Pattern.compile(" ");
-        for (int i = 0; i < iterations; i++) {
-            list = spacePattern.split(longString, 0);
-        }
-        return list;
+    protected String [] stringSplitPattern() {
+        return spacePattern.split(longString, 0);
     }
 
-    protected String [] stringSplit(int iterations) {
-        String [] list = null;
-        for (int i = 0; i < iterations; i++) {
-            list = longString.split(" ");
-        }
-        return list;
+    protected String [] stringSplit() {
+        return longString.split(emptyString);
     }
 
-    protected List<String> guavaSplitter(int iterations) {
-        List<String> result = null;
-        for (int i = 0; i < iterations; i++) {
-            result = Splitter.on(" ").trimResults()
-                    .omitEmptyStrings()
-                    .splitToList(longString);
-        }
-
-        return result;
+    protected List<String> guavaSplitter() {
+        return Splitter.on(" ").trimResults()
+                .omitEmptyStrings()
+                .splitToList(longString);
     }
 
-    protected String stringIntern(int iterations) {
-        String number = null;
-        for (int i = 0; i < iterations; i++) {
-            number = Integer.toString( i ).intern();
-        }
-        return number;
+    protected String stringIntern() {
+        return baeldung.intern();
     }
 }

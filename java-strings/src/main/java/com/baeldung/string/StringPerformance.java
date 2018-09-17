@@ -9,184 +9,147 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
-@Warmup(iterations = 10)
+@BenchmarkMode(Mode.SingleShotTime)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
+@Measurement(batchSize = 10000, iterations = 10)
+@Warmup(batchSize = 10000, iterations = 10)
 public class StringPerformance extends StringPerformanceHints {
 
-    @State(Scope.Thread)
-    public static class MyState {
-
-        String longString = "Hello baeldung, I am a bit longer than other Strings";
-        String result = "";
-    }
-
     @Benchmark
-    @OperationsPerInvocation(invocations_10_000)
     public String benchmarkStringDynamicConcat() {
-        return dynamicConcat(invocations_10_000);
+        return dynamicConcat();
     }
 
     @Benchmark
-    public StringBuilder  benchmarkStringBuilder(StringPerformance.MyState state) {
-        StringBuilder stringBuilder = new StringBuilder(state.result);
-        for (int i = 0; i < invocations_10_000; i++) {
-            stringBuilder.append(baeldung);
-        }
-
+    public StringBuilder  benchmarkStringBuilder() {
+        StringBuilder stringBuilder = new StringBuilder(result);
+        stringBuilder.append(baeldung);
         return stringBuilder;
     }
 
     @Benchmark
-    public StringBuffer benchmarkStringBuffer(StringPerformance.MyState state) {
-        StringBuffer stringBuffer = new StringBuffer(state.result);
-        for (int i = 0; i < invocations_10_000; i++) {
-            stringBuffer.append(baeldung);
-        }
-
+    public StringBuffer benchmarkStringBuffer() {
+        StringBuffer stringBuffer = new StringBuffer(result);
+        stringBuffer.append(baeldung);
         return stringBuffer;
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringConstructor() {
-        return stringConstructor(invocations_1_000_000);
+        return stringConstructor();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringLiteral() {
-        return stringLiteral(invocations_1_000_000);
+        return stringLiteral();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringFormat_s() {
-        return stringFormat_s(invocations_1_000_000);
+        return stringFormat_s();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_10_000)
-    public String benchmarkStringFormat_d() {
-        return stringFormat_d(invocations_10_000);
-    }
-
-    @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public String benchmarkStringConcat() {
-        return stringConcat(invocations_100_000);
+        return stringConcat();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_1000)
     public String benchmarkStringIntern() {
-        return stringIntern(invocations_1000);
+        return stringIntern();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
-    public String benchmarkStringReplace(StringPerformance.MyState state) {
-        return state.longString.replace("average", " average !!!");
+    public String benchmarkStringReplace() {
+        return longString.replace("average", " average !!!");
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
-    public String benchmarkStringUtilsReplace(StringPerformance.MyState state) {
-        return StringUtils.replace(state.longString, "average", " average !!!");
+    public String benchmarkStringUtilsReplace() {
+        return StringUtils.replace(longString, "average", " average !!!");
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
-    public List<String> benchmarkGuavaSplitter(StringPerformance.MyState state) {
-        return guavaSplitter(invocations_100_000);
+    public List<String> benchmarkGuavaSplitter() {
+        return guavaSplitter();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
-    public String [] benchmarkStringSplit(StringPerformance.MyState state) {
-        return stringSplit(invocations_100_000);
+    public String [] benchmarkStringSplit() {
+        return stringSplit();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
-    public String [] benchmarkStringSplitPattern(StringPerformance.MyState state) {
-        return stringSplitPattern(invocations_100_000);
+    public String [] benchmarkStringSplitPattern() {
+        return stringSplitPattern();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public List benchmarkStringTokenizer() {
-        return stringTokenizer(invocations_100_000);
+        return stringTokenizer();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public List benchmarkStringIndexOf() {
-        return stringIndexOf(invocations_100_000);
+        return stringIndexOf();
     }
 
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public String benchmarkIntegerToString() {
-        return stringIntegerToString(invocations_100_000);
+        return stringIntegerToString();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public String benchmarkStringValueOf() {
-        return stringValueOf(invocations_100_000);
+        return stringValueOf();
     }
 
 
     @Benchmark
-    @OperationsPerInvocation(invocations_1_000_000)
     public String benchmarkStringConvertPlus() {
-        return stringConvertPlus(invocations_1_000_000);
+        return stringConvertPlus();
     }
 
+        @Benchmark
+    public String benchmarkStringFormat_d() {
+        return stringFormat_d();
+    }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public boolean benchmarkStringEquals() {
-        return stringEquals(invocations_100_000);
+        return stringEquals();
     }
 
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public boolean benchmarkStringEqualsIgnoreCase() {
-        return stringEqualsIgnoreCase(invocations_100_000);
+        return stringEqualsIgnoreCase();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public boolean benchmarkStringMatches() {
-        return stringIsMatch(invocations_100_000);
+        return stringIsMatch();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public boolean benchmarkPrecompiledMatches() {
-        return precompiledMatches(invocations_100_000);
+        return precompiledMatches();
     }
 
     @Benchmark
-    @OperationsPerInvocation(invocations_100_000)
     public int benchmarkStringCompareTo() {
-        return stringCompareTo(invocations_100_000);
+        return stringCompareTo();
     }
 
     @Benchmark
-    @OperationsPerInvocation(1)
     public boolean benchmarkStringIsEmpty() {
-        return stringIsEmpty(1);
+        return stringIsEmpty();
     }
 
     @Benchmark
-    @OperationsPerInvocation(1)
     public boolean benchmarkStringLengthZero() {
-        return stringLengthZero(1);
+        return stringLengthZero();
     }
 
     public static void main(String[] args) throws Exception {
