@@ -3,8 +3,10 @@ package com.baeldung.heapdump;
 import com.sun.management.HotSpotDiagnosticMXBean;
 
 import javax.management.MBeanServer;
+
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
+import java.nio.file.Paths;
 
 public class HeapDump {
 
@@ -16,7 +18,7 @@ public class HeapDump {
     }
 
     public static void main(String[] args) throws IOException {
-        final String file = "/tmp/dump.hprof";
+        String file = Paths.get("dump.hprof").toFile().getPath();
 
         dumpHeap(file, true);
     }
