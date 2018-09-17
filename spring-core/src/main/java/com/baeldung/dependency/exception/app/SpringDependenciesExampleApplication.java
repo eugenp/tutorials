@@ -6,8 +6,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "com.baeldung.dependency.exception")
-public class CustomConfiguration {
+public class SpringDependenciesExampleApplication {
     public static void main(String[] args) {
-        SpringApplication.run(CustomConfiguration.class, args);
+        SpringApplication.run(SpringDependenciesExampleApplication.class, args);
     }
 }

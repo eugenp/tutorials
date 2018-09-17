@@ -46,6 +46,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                    <mainClass>com.baeldung.springbootmvc.SpringBootMvcApplication</mainClass>
+                    <layout>JAR</layout>
+                </configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -56,6 +60,7 @@
         <java.version>1.8</java.version>
           <!-- ROME for RSS -->
         <rome.version>1.10.0</rome.version>
+        <start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
     </properties>
 
 </project>

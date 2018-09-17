@@ -1,4 +1,4 @@
-package org.baeldung.persistence.criteria.dao;
+package org.baeldung.persistence.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.baeldung.persistence.criteria.model.Book;
-import org.baeldung.persistence.criteria.repository.BookRepositoryCustom;
+import org.baeldung.persistence.model.Book;
 import org.springframework.stereotype.Repository;
 
 @Repository
