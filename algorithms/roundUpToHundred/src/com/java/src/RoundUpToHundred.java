@@ -12,8 +12,8 @@ public class RoundUpToHundred {
         RoundUpToHundred.round(input);
     }
 
-    static int round(double input) {
-        int i = (int) Math.ceil(input);
+    static long round(double input) {
+        long i = (int) Math.ceil(input);
         return ((i + 99) / 100) * 100;
     };
 
