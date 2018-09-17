@@ -23,7 +23,6 @@ public class AgeCalculatorUnitTest {
         assertEquals(10, ageCalculator.calculateAgeWithJodaTime(new org.joda.time.LocalDate(2008, 5, 20), new org.joda.time.LocalDate(2018, 9, 20)));
     }
     
-    
     @Test
     public void givenDate_whenCalculateAge_thenOk() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
