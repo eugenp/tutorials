@@ -49,3 +49,4 @@
 - [Collections.emptyList() vs. New List Instance](https://www.baeldung.com/java-collections-emptylist-new-list)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
 - [](https://www.baeldung.com/java-hashset-arraylist-contains-performance)
+- [Differences Between Collection.clear() and Collection.removeAll()](https://www.baeldung.com/java-collection-clear-vs-removeall)
