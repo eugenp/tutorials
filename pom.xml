@@ -606,7 +606,7 @@
 				<module>jta</module>
 				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>java-websocket</module>
-				<!-- <module>activejdbc</module> --><!-- PMD voilation -->
+				<module>activejdbc</module>
 				<!-- <module>animal-sniffer-mvn-plugin</module> --><!-- PMD voilation -->
 				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
 				<module>apache-bval</module>
@@ -655,7 +655,7 @@
 				<module>wicket</module>
 				<module>xstream</module>
 				<module>cas/cas-secured-app</module>
-				<!-- <module>cas/cas-server</module> --><!-- Takes too much time -->
+				<module>cas/cas-server</module>
 				<!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
 				<!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
 				<!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
