@@ -408,6 +408,7 @@
 				<!-- <module>jws</module> --><!-- POM jar version repo download failure -->
 				<module>libraries</module>
 				<module>libraries-data</module>
+				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>linkrest</module>
 				<module>logging-modules/log-mdc</module>
