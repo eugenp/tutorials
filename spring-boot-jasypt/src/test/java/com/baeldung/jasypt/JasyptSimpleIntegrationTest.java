@@ -13,7 +13,7 @@ import com.baeldung.jasypt.simple.PropertyServiceForJasyptSimple;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class JasyptSimpleTest {
+public class JasyptSimpleIntegrationTest {
 
     @Autowired
     ApplicationContext appCtx;
