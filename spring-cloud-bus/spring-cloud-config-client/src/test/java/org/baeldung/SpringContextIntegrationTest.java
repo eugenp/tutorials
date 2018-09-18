@@ -1,13 +1,15 @@
-package com.baeldung;
+package org.baeldung;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.SpringCloudConfigClientApplication;
+
 @RunWith(SpringRunner.class)
-@SpringBootTest
-public class SpringCloudConfigClientLiveTest {
+@SpringBootTest(classes = SpringCloudConfigClientApplication.class)
+public class SpringContextIntegrationTest {
 
 	@Test
 	public void contextLoads() {
