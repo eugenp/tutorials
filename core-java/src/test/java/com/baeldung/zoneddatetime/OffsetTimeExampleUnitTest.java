@@ -2,9 +2,8 @@ package com.baeldung.zoneddatetime;
 
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDateTime;
 import java.time.OffsetTime;
-import java.time.ZoneId;
+import java.time.ZoneOffset;
 
 import org.junit.Test;
 
@@ -14,12 +13,10 @@ public class OffsetTimeExampleUnitTest {
 
     @Test
     public void givenZoneOffset_whenGetCurrentTime_thenResultHasZone() {
-        String zone = "Europe/Berlin";
-        OffsetTime time = offsetTimeExample.getCurrentTimeByZoneOffset(zone);   
+        String offset = "+02:00";
+        OffsetTime time = offsetTimeExample.getCurrentTimeByZoneOffset(offset);
 
         assertTrue(time.getOffset()
-            .equals(ZoneId.of(zone)
-                .getRules()
-                .getOffset(LocalDateTime.now())));
+            .equals(ZoneOffset.of(offset)));
     }
 }
