@@ -675,7 +675,7 @@
 				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
 				<module>spring-boot-custom-starter/greeter</module>
 				<module>spring-boot-h2/spring-boot-h2-database</module>
-				<module>spring-boot-h2/spring-boot-h2-remote-app</module>
+				<!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
 				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\rest-server</module> --><!-- PMD voilation -->
 				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
@@ -992,7 +992,7 @@
 				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
 				<module>spring-boot-custom-starter/greeter</module>
 				<module>spring-boot-h2/spring-boot-h2-database</module>
-				<module>spring-boot-h2/spring-boot-h2-remote-app</module>
+				<!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
 				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\rest-server</module> --><!-- PMD voilation -->
 				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
