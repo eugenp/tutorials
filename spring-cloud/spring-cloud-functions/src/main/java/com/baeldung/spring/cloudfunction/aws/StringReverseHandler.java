@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloudfunction;
+package com.baeldung.spring.cloudfunction.aws;
 
 import org.springframework.cloud.function.adapter.aws.SpringBootRequestHandler;
 
