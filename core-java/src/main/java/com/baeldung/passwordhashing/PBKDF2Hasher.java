@@ -84,16 +84,6 @@ public final class PBKDF2Hasher
     return ID + cost + '$' + enc.encodeToString(hash);
   }
 
-
-  public String hashSimple(String password) throws Exception{
-    byte[] salt = new byte[16];
-    random.nextBytes(salt);
-    KeySpec spec = new PBEKeySpec(password.toCharArray(), salt, 65536, 128);
-    SecretKeyFactory f = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-    byte[] hash = f.generateSecret(spec).getEncoded();
-    return String.valueOf(hash);
-  }
-
   /**
    * Authenticate with a password and a stored password token.
    *
