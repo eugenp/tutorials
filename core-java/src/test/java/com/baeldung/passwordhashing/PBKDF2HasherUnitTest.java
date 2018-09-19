@@ -1,6 +1,5 @@
 package com.baeldung.passwordhashing;
 
-import com.baeldung.passwordhashing.PBKDF2Hasher;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +21,7 @@ public class PBKDF2HasherUnitTest {
 
     String hash1 = mPBKDF2Hasher.hash(message1.toCharArray());
 
-    assertTrue(mPBKDF2Hasher.authenticate(message1.toCharArray(), hash1));
+    assertTrue(mPBKDF2Hasher.checkPassword(message1.toCharArray(), hash1));
 
   }
 
@@ -34,7 +33,7 @@ public class PBKDF2HasherUnitTest {
 
     String wrongPasswordAttempt = "IamWrong";
 
-    assertFalse(mPBKDF2Hasher.authenticate(wrongPasswordAttempt.toCharArray(), hash1));
+    assertFalse(mPBKDF2Hasher.checkPassword(wrongPasswordAttempt.toCharArray(), hash1));
 
   }
 

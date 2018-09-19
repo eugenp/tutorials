@@ -89,7 +89,7 @@ public final class PBKDF2Hasher
    *
    * @return true if the password and token match
    */
-  public boolean authenticate(char[] password, String token)
+  public boolean checkPassword(char[] password, String token)
   {
     Matcher m = layout.matcher(token);
     if (!m.matches())
@@ -137,13 +137,13 @@ public final class PBKDF2Hasher
    * Authenticate with a password in an immutable {@code String} and a stored
    * password token.
    *
-   * @deprecated Use {@link #authenticate(char[],String)} instead.
+   * @deprecated Use {@link #checkPassword(char[],String)} instead.
    * @see #hash(String)
    */
   @Deprecated
-  public boolean authenticate(String password, String token)
+  public boolean checkPassword(String password, String token)
   {
-    return authenticate(password.toCharArray(), token);
+    return checkPassword(password.toCharArray(), token);
   }
 
 }
