@@ -405,9 +405,10 @@
 				<module>json</module>
 				<module>jsoup</module>
 				<module>testing-modules/junit-5</module>
-				<module>jws</module>
+				<!-- <module>jws</module> --><!-- POM jar version repo download failure -->
 				<module>libraries</module>
 				<module>libraries-data</module>
+				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>linkrest</module>
 				<module>logging-modules/log-mdc</module>
@@ -604,6 +605,80 @@
 				<module>jnosql</module>
 				<module>spring-boot-angular-ecommerce</module>
 				<module>jta</module>
+				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				<module>java-websocket</module>
+				<!-- <module>activejdbc</module> --><!-- PMD voilation -->
+				<!-- <module>animal-sniffer-mvn-plugin</module> --><!-- PMD voilation -->
+				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
+				<module>apache-bval</module>
+				<module>apache-shiro</module>
+				<module>apache-spark</module>
+				<!-- <module>asciidoctor</module> --><!-- Malformed POM -->
+				<module>checker-plugin</module>
+				<!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
+				<!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
+				<module>core-java-sun</module>
+				<module>custom-pmd</module>
+				<module>dagger</module>
+				<module>data-structures</module>
+				<module>dubbo</module>
+				<!-- <module>flyway</module> --><!-- Malformed POM -->
+				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
+				<!-- <module>java-difference-date</module> --><!-- PMD voilation -->
+				<!-- <module>JGit</module> --><!-- Unit test failure -->
+				<module>jni</module>
+				<module>jooby</module>
+				<!-- <module>micronaut</module> --><!-- Not upgraded to java 9 -->
+				<!-- <module>microprofile</module> --><!-- Takes too much time : Downloads 93 MBs zip and .. -->
+				<!-- <module>muleesb</module> --><!-- load main class org.mule.munit.remote.RemoteRunner -->
+				<module>ratpack</module>
+				<!-- <module>rest-with-spark-java</module> --><!-- PMD voilation -->
+				<module>spring-boot-autoconfiguration</module>
+				<module>spring-boot-custom-starter</module>
+				<!-- <module>spring-boot-jasypt</module> --><!-- PMD voilation -->
+				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
+				<module>spring-data-rest-querydsl</module>
+				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
+				<module>spring-mobile</module>
+				<!-- <module>spring-mustache</module> --><!-- PMD voilation -->
+				<module>spring-mvc-simple</module>
+				<!-- <module>spring-mybatis</module> --><!-- Compilation failure -->
+				<module>spring-rest-hal-browser</module>
+				<module>spring-rest-shell</module>
+				<module>spring-rest-template</module>
+				<module>spring-roo</module>
+				<module>spring-security-stormpath</module>
+				<module>sse-jaxrs</module>
+				<!-- <module>static-analysis</module> --><!-- PMD voilation -->
+				<module>stripe</module>
+				<!-- <module>structurizr</module> --><!-- Artiifact not found -->
+				<!-- <module>Twitter4J</module> --><!-- Test failure -->
+				<module>wicket</module>
+				<module>xstream</module>
+				<module>cas/cas-secured-app</module>
+				<!-- <module>cas/cas-server</module> --><!-- Takes too much time -->
+				<!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
+				<!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
+				<!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
+				<!-- <module>guest/log4j2-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/logback-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
+				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-mvc</module> --><!-- Malformed POM -->
+				<!-- <module>guest/spring-security</module> --><!-- Malformed POM -->
+				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
+				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
+				<module>jenkins/hello-world</module>
+				<!-- <module>rule-engines/easy-rules</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
+				<module>spring-boot-custom-starter/greeter</module>
+				<module>spring-boot-h2/spring-boot-h2-database</module>
+				<module>spring-boot-h2/spring-boot-h2-remote-app</module>
+				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
+				<!-- <module>guest\webservices\rest-server</module> --><!-- PMD voilation -->
+				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
 			</modules>
 
 		</profile>
@@ -847,7 +922,80 @@
 				<!-- group 4 - OK, 12 min, 3,961 KB log, 12 failed tests -->
 
 				<!-- <module>libraries</module> <module>jmeter</module> -->
-
+				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				<module>java-websocket</module>
+				<!-- <module>activejdbc</module> --><!-- PMD voilation -->
+				<!-- <module>animal-sniffer-mvn-plugin</module> --><!-- PMD voilation -->
+				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
+				<module>apache-bval</module>
+				<module>apache-shiro</module>
+				<module>apache-spark</module>
+				<!-- <module>asciidoctor</module> --><!-- Malformed POM -->
+				<module>checker-plugin</module>
+				<!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
+				<!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
+				<module>core-java-sun</module>
+				<module>custom-pmd</module>
+				<module>dagger</module>
+				<module>data-structures</module>
+				<module>dubbo</module>
+				<!-- <module>flyway</module> --><!-- Malformed POM -->
+				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
+				<!-- <module>java-difference-date</module> --><!-- PMD voilation -->
+				<!-- <module>JGit</module> --><!-- Unit test failure -->
+				<module>jni</module>
+				<module>jooby</module>
+				<!-- <module>micronaut</module> --><!-- Not upgraded to java 9 -->
+				<!-- <module>microprofile</module> --><!-- Takes too much time : Downloads 93 MBs zip and .. -->
+				<!-- <module>muleesb</module> --><!-- load main class org.mule.munit.remote.RemoteRunner -->
+				<module>ratpack</module>
+				<!-- <module>rest-with-spark-java</module> --><!-- PMD voilation -->
+				<module>spring-boot-autoconfiguration</module>
+				<module>spring-boot-custom-starter</module>
+				<!-- <module>spring-boot-jasypt</module> --><!-- PMD voilation -->
+				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
+				<module>spring-data-rest-querydsl</module>
+				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
+				<module>spring-mobile</module>
+				<!-- <module>spring-mustache</module> --><!-- PMD voilation -->
+				<module>spring-mvc-simple</module>
+				<!-- <module>spring-mybatis</module> --><!-- Compilation failure -->
+				<module>spring-rest-hal-browser</module>
+				<module>spring-rest-shell</module>
+				<module>spring-rest-template</module>
+				<module>spring-roo</module>
+				<module>spring-security-stormpath</module>
+				<module>sse-jaxrs</module>
+				<!-- <module>static-analysis</module> --><!-- PMD voilation -->
+				<module>stripe</module>
+				<!-- <module>structurizr</module> --><!-- Artiifact not found -->
+				<!-- <module>Twitter4J</module> --><!-- Test failure -->
+				<module>wicket</module>
+				<module>xstream</module>
+				<module>cas/cas-secured-app</module>
+				<!-- <module>cas/cas-server</module> --><!-- Takes too much time -->
+				<!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
+				<!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
+				<!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
+				<!-- <module>guest/log4j2-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/logback-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
+				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-mvc</module> --><!-- Malformed POM -->
+				<!-- <module>guest/spring-security</module> --><!-- Malformed POM -->
+				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
+				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
+				<module>jenkins/hello-world</module>
+				<!-- <module>rule-engines/easy-rules</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
+				<module>spring-boot-custom-starter/greeter</module>
+				<module>spring-boot-h2/spring-boot-h2-database</module>
+				<module>spring-boot-h2/spring-boot-h2-remote-app</module>
+				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
+				<!-- <module>guest\webservices\rest-server</module> --><!-- PMD voilation -->
+				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
 			</modules>
 
 		</profile>
