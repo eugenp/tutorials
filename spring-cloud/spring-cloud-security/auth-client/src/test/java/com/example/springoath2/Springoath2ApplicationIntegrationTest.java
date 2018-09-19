@@ -9,7 +9,7 @@ import com.baeldung.CloudSite;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = CloudSite.class)
-public class Springoath2ApplicationTests {
+public class Springoath2ApplicationIntegrationTest {
 
 	@Test
 	public void contextLoads() {

@@ -10,18 +10,21 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.jasypt.Main;
+import com.baeldung.jasypt.starter.PropertyServiceForJasyptStarter;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {Main.class})
-public class CustomJasyptTest {
+@SpringBootTest
+public class JasyptWithStarterIntegrationTest {
 
     @Autowired
     ApplicationContext appCtx;
 
     @Test
-    public void whenConfiguredExcryptorUsed_ReturnCustomEncryptor() {
+    public void whenDecryptedPasswordNeeded_GetFromService() {
+        System.setProperty("jasypt.encryptor.password", "password");
+        PropertyServiceForJasyptStarter service = appCtx.getBean(PropertyServiceForJasyptStarter.class);
+        assertEquals("Password@1", service.getProperty());
         Environment environment = appCtx.getBean(Environment.class);
-        assertEquals("Password@3", environment.getProperty("encryptedv3.property"));
+        assertEquals("Password@1", service.getPasswordUsingEnvironment(environment));
     }
 }
