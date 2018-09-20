@@ -1,4 +1,4 @@
-package com.baeldung.spring.cloudfunction;
+package com.baeldung.spring.cloudfunction.aws;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
