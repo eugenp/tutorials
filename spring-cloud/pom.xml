@@ -35,6 +35,7 @@
         <module>spring-cloud-archaius</module>
         <module>spring-cloud-functions</module>        
         <module>spring-cloud-vault</module>
+		<module>spring-cloud-security</module>
     </modules>
 
     <build>
