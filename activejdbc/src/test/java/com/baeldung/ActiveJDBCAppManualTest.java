@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class ActiveJDBCAppTest extends DBSpec
+public class ActiveJDBCAppManualTest extends DBSpec
 {
     @Test
     public void ifEmployeeCreated_thenIsValid() {

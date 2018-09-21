@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
-public class SymLinkExampleUnitTest {
+public class SymLinkExampleManualTest {
 
     @Test
     public void whenUsingFiles_thenCreateSymbolicLink() throws IOException {
