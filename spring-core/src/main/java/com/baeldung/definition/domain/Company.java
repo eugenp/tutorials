@@ -7,10 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class Company {
     private Address address;
-    private Account account;
 
-    public Company(Address address, Account account) {
+    public Company(Address address) {
         this.address = address;
-        this.account = account;
     }
 }
