@@ -39,23 +39,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- only to initialize the config zk nodes -->
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-x-async</artifactId>
-            <version>${curator.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.apache.zookeeper</groupId>
-                    <artifactId>zookeeper</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
     </dependencies>
 
     <properties>
         <cloud.zookeeper.version>2.0.0.RELEASE</cloud.zookeeper.version>
         <zookeeper.version>3.4.13</zookeeper.version>
-        <curator.version>4.0.1</curator.version>
     </properties>
 </project>
