@@ -24,3 +24,5 @@
 - [Optional orElse Optional](http://www.baeldung.com/java-optional-or-else-optional)
 - [Java 9 java.lang.Module API](http://www.baeldung.com/java-9-module-api)
 - [Iterate Through a Range of Dates in Java](https://www.baeldung.com/java-iterate-date-range)
+- [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
+- [Java 9 Platform Logging API](https://www.baeldung.com/java-9-logging-api)
