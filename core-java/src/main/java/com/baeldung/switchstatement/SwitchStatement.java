@@ -2,10 +2,10 @@ package com.baeldung.switchstatement;
 
 public class SwitchStatement {
 
-    public String exampleOfIF() {
+    public String exampleOfIF(String animal) {
 
         String result;
-        String animal = "DOG";
+
         if (animal.equals("DOG") || animal.equals("CAT")) {
             result = "domestic animal";
         } else if (animal.equals("TIGER")) {
@@ -16,10 +16,10 @@ public class SwitchStatement {
         return result;
     }
 
-    public String exampleOfSwitch() {
+    public String exampleOfSwitch(String animal) {
 
         String result;
-        String animal = "DOG";
+
         switch (animal) {
         case "DOG":
         case "CAT":
@@ -35,91 +35,36 @@ public class SwitchStatement {
         return result;
     }
 
-    public String forgetBreakInSwitch() {
+    public String forgetBreakInSwitch(String animal) {
 
         String result;
-        String animal = "DOG";
+
         switch (animal) {
+
         case "DOG":
-        case "CAT":
             System.out.println("domestic animal");
             result = "domestic animal";
 
-        case "TIGER":
-            result = "wild animal";
-            System.out.println("wild animal");
         default:
-            result = "unknown animal";
             System.out.println("unknown animal");
-        }
-        return result;
-    }
-
-    public String nullValueAsSwitchArgument() {
-
-        String result;
-        String animal = null;
-        switch (animal) {
-        case "DOG":
-        case "CAT":
-            result = "domestic animal";
-            break;
-        case "TIGER":
-            result = "wild animal";
-            break;
-        default:
             result = "unknown animal";
-            break;
-        }
-        return result;
 
-    }
-
-    public String compileTimeConstantsForCase() {
-        final String cat = "CAT";
-        // String cat="CAT";
-
-        String result;
-        String animal = "DOG";
-        switch (animal) {
-        case "DOG":
-        case cat:
-            result = "domestic animal";
-            break;
-        case "TIGER":
-            result = "wild animal";
-            break;
-        default:
-            result = "unknown animal";
-            break;
         }
         return result;
     }
 
-    public boolean compareStringsByEqualityOperator() {
+    public String constantCaseValue(String animal) {
 
-        String animal = new String("TIGER");
-        final String tiger = "TIGER";
-        return animal == tiger;
-    }
+        String result = "";
 
-    public String compareStringsByEquals() {
-        String result;
-        String animal = new String("TIGER");
-        final String tiger = "TIGER";
+        final String dog = "DOG";
 
         switch (animal) {
-        case "DOG":
-        case "CAT":
+
+        case dog:
             result = "domestic animal";
-            break;
-        case tiger:
-            result = "wild animal";
-            break;
-        default:
-            result = "unknown animal";
-            break;
         }
         return result;
     }
+
 }

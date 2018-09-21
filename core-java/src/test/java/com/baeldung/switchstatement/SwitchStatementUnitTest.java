@@ -7,23 +7,32 @@ import org.junit.Assert;
 public class SwitchStatementUnitTest {
     private SwitchStatement s = new SwitchStatement();
 
+    
+    @Test
+    public void whenDog_thenDomesticAnimal() {
+        
+        String animal = "DOG";
+        Assert.assertEquals("domestic animal", s.exampleOfSwitch(animal));
+    }
+    
     @Test
     public void whenNoBreaks_thenGoThroughBlocks() {
-        Assert.assertEquals("unknown animal", s.forgetBreakInSwitch());
+        String animal = "DOG";
+        Assert.assertEquals("unknown animal", s.forgetBreakInSwitch(animal));
     }
     
     @Test(expected=NullPointerException.class)
     public void whenSwitchAgumentIsNull_thenNullPointerException() {
-         s.nullValueAsSwitchArgument();
+        String animal = null;
+        Assert.assertEquals("domestic animal", s.exampleOfSwitch(animal));
     }
     
-    @Test
-    public void whenCompareStringsByEqualityOperator_thenIncorrect() {
-        Assert.assertEquals(false, s.compareStringsByEqualityOperator());
-    }
-    
+       
     @Test
     public void whenCompareStrings_thenByEqual() {
-        Assert.assertEquals("wild animal", s.compareStringsByEquals());
+        String animal = new String("DOG");
+        Assert.assertEquals("domestic animal", s.exampleOfSwitch(animal));
     }
+    
+  
 }
