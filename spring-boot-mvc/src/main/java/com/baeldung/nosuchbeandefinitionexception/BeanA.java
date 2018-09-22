@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc.nosuchbeandefinitionexception;
+package com.baeldung.nosuchbeandefinitionexception;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
