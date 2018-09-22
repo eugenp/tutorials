@@ -109,20 +109,20 @@ public class MetricTypeManualTest {
             .build(), MILLISECONDS);
 
         Stopwatch stopwatch = timer.start();
-        MILLISECONDS.sleep(1);
-        timer.record(2, MILLISECONDS);
+        SECONDS.sleep(1);
+        timer.record(2, SECONDS);
         stopwatch.stop();
 
-        assertEquals("timer should count 1 millisecond", 1, timer
+        assertEquals("timer should count 1 second", 1000, timer
           .getValue()
-          .intValue());
-        assertEquals("timer should count 3 millisecond in total", 3, timer.getTotalTime()
-            .intValue());
+          .intValue(),1000);        
+        assertEquals("timer should count 3 second in total", 3000, timer.getTotalTime()
+            .intValue(),1000);
         assertEquals("timer should record 2 updates", 2, timer
           .getCount()
           .intValue());
 
-        assertEquals("timer should have max 2", 2, timer.getMax(), 0.01);
+        assertEquals("timer should have max 2", 2000, timer.getMax(), 0.01);
     }
 
     @Test
@@ -161,7 +161,6 @@ public class MetricTypeManualTest {
     }
 
     @Test
-    //==
     public void givenStatsTimer_whenExecuteTask_thenStatsCalculated() throws Exception {
         System.setProperty("netflix.servo", "1000");
         StatsTimer timer = new StatsTimer(MonitorConfig
@@ -178,21 +177,21 @@ public class MetricTypeManualTest {
             .build(), MILLISECONDS);
 
         Stopwatch stopwatch = timer.start();
-        MILLISECONDS.sleep(1);
-        timer.record(3, MILLISECONDS);
+        SECONDS.sleep(1);
+        timer.record(3, SECONDS);
         stopwatch.stop();
 
         stopwatch = timer.start();
-        timer.record(6, MILLISECONDS);
-        MILLISECONDS.sleep(2);
+        timer.record(6, SECONDS);
+        SECONDS.sleep(2);
         stopwatch.stop();
 
-        assertEquals("timer should count 12 milliseconds in total", 12, timer.getTotalTime());
-        assertEquals("timer should count 12 milliseconds in total", 12, timer.getTotalMeasurement());
+        assertEquals("timer should count 12 seconds in total", 12000, timer.getTotalTime(),500);
+        assertEquals("timer should count 12 seconds in total", 12000, timer.getTotalMeasurement(),500);
         assertEquals("timer should record 4 updates", 4, timer.getCount());
-        assertEquals("stats timer value time-cost/update should be 2", 3, timer
+        assertEquals("stats timer value time-cost/update should be 2", 3000, timer
           .getValue()
-          .intValue());
+          .intValue(),500);
 
         final Map<String, Number> metricMap = timer
           .getMonitors()
