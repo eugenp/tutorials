@@ -33,10 +33,10 @@ public class SortHashMap {
     }
 
     private static void sortGuava() {
-        final Ordering<String> naturalReverseValueOrdering =
-                Ordering.natural().reverse().nullsLast().onResultOf(Functions.forMap(map, null));
+        final Ordering naturalOrdering =
+        Ordering.natural().onResultOf(Functions.forMap(map, null));
 
-        System.out.println(ImmutableSortedMap.copyOf(map, naturalReverseValueOrdering));
+        System.out.println(ImmutableSortedMap.copyOf(map, naturalOrdering));
     }
 
     private static void sortStream() {
