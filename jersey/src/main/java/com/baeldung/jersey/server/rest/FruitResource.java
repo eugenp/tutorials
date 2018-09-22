@@ -5,7 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -15,7 +21,9 @@ import org.glassfish.jersey.server.mvc.ErrorTemplate;
 import org.glassfish.jersey.server.mvc.Template;
 import org.glassfish.jersey.server.mvc.Viewable;
 
+import com.baeldung.jersey.server.constraints.SerialNumber;
 import com.baeldung.jersey.server.model.Fruit;
+import com.baeldung.jersey.service.SimpleStorageService;
 
 @Path("/fruit")
 public class FruitResource {
@@ -52,4 +60,49 @@ public class FruitResource {
         return name;
     }
 
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void createFruit(
+        @NotNull(message = "Fruit name must not be null") @FormParam("name") String name, 
+        @NotNull(message = "Fruit colour must not be null") @FormParam("colour") String colour) {
+
+        Fruit fruit = new Fruit(name, colour);
+        SimpleStorageService.storeFruit(fruit);
+    }
+    
+    @PUT
+    @Path("/update")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public void updateFruit(@SerialNumber @FormParam("serial") String serial) {
+        Fruit fruit = new Fruit();
+        fruit.setSerial(serial);
+        SimpleStorageService.storeFruit(fruit);
+    }
+
+    @POST
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void createFruit(@Valid Fruit fruit) {
+        SimpleStorageService.storeFruit(fruit);
+    }
+
+    @GET
+    @Valid
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/search/{name}")
+    public Fruit findFruitByName(@PathParam("name") String name) {
+        return SimpleStorageService.findByName(name);
+    }
+
+    @GET
+    @Produces(MediaType.TEXT_HTML)
+    @Path("/exception")
+    @Valid
+    public Fruit exception() {
+        Fruit fruit = new Fruit();
+        fruit.setName("a");
+        fruit.setColour("b");
+        return fruit;
+    }
 }

@@ -20,3 +20,4 @@
 - [Custom Assertions with AssertJ](http://www.baeldung.com/assertj-custom-assertion)
 - [Using Conditions with AssertJ](http://www.baeldung.com/assertj-conditions)
 - [Guide to JavaFaker](https://www.baeldung.com/java-faker)
+- [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)

@@ -4,11 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example.jasypt</groupId>
-    <artifactId>JasyptDemo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>spring-boot-jasypt</artifactId>
     <packaging>jar</packaging>
-
-    <name>JasyptDemo</name>
+    <name>spring-boot-jasypt</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -53,9 +51,6 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
         <jasypt.version>2.0.0</jasypt.version>
     </properties>
 

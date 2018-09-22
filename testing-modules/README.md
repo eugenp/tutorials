@@ -13,3 +13,4 @@
 - [Headers, Cookies and Parameters with REST-assured](http://www.baeldung.com/rest-assured-header-cookie-parameter)
 - [JSON Schema Validation with REST-assured](http://www.baeldung.com/rest-assured-json-schema)
 - [Testing Callbacks with Mockito](http://www.baeldung.com/mockito-callbacks)
+- [Running JUnit Tests in Parallel with Maven](https://www.baeldung.com/maven-junit-parallel-tests)
