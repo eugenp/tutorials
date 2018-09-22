@@ -44,7 +44,7 @@ public class JaxbIntegrationTest {
         File bookFile = new File(this.getClass().getResource("/book.xml").getFile());
         String sampleBookXML = FileUtils.readFileToString(sampleBookFile, "UTF-8");
         String marshallerBookXML = FileUtils.readFileToString(bookFile, "UTF-8");
-        Assert.assertEquals(sampleBookXML, marshallerBookXML);
+        Assert.assertEquals(sampleBookXML.replace("\r", "").replace("\n", ""), marshallerBookXML.replace("\r", "").replace("\n", ""));
     }
 
     @Test

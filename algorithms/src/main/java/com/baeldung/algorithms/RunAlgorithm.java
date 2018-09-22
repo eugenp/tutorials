@@ -17,6 +17,7 @@ public class RunAlgorithm {
 		System.out.println("3 - Simple Genetic Algorithm");
 		System.out.println("4 - Ant Colony");
 		System.out.println("5 - Dijkstra");
+		System.out.println("6 - All pairs in an array that add up to a given sum");
 		int decision = in.nextInt();
 		switch (decision) {
 		case 1:

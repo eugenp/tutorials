@@ -12,6 +12,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.expression.WebExpressionVoter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -24,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         // @formatter: off
-        auth.inMemoryAuthentication().withUser("user").password("pass").roles("USER").and().withUser("admin").password("pass").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("user").password(passwordEncoder().encode("pass")).roles("USER").and().withUser("admin").password(passwordEncoder().encode("pass")).roles("ADMIN");
         // @formatter: on
     }
 
@@ -44,5 +46,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         List<AccessDecisionVoter<? extends Object>> decisionVoters = Arrays.asList(new WebExpressionVoter(), new RoleVoter(), new AuthenticatedVoter(), new MinuteBasedVoter());
         // @formatter: on
         return new UnanimousBased(decisionVoters);
+    }
+    
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 }
