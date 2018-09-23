@@ -31,15 +31,6 @@ public class StringPerformanceHints {
         return result;
     }
 
-    protected String stringConstructor() {
-        return new String(baeldung);
-    }
-
-    protected String stringLiteral() {
-        result = baeldung;
-        return result;
-    }
-
     protected String stringFormat_s() {
         return String.format(formatString, baeldung);
     }

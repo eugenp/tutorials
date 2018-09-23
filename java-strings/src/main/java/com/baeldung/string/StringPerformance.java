@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.SingleShotTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Measurement(batchSize = 10000, iterations = 10)
-@Warmup(batchSize = 10000, iterations = 10)
+@Measurement(batchSize = 100000, iterations = 10)
+@Warmup(batchSize = 100000, iterations = 10)
 public class StringPerformance extends StringPerformanceHints {
 
     @Benchmark
@@ -36,12 +36,14 @@ public class StringPerformance extends StringPerformanceHints {
 
     @Benchmark
     public String benchmarkStringConstructor() {
-        return stringConstructor();
+        String result = new String("baeldung");
+        return result;
     }
 
     @Benchmark
     public String benchmarkStringLiteral() {
-        return stringLiteral();
+        String result = "baeldung";
+        return result;
     }
 
     @Benchmark
@@ -56,7 +58,7 @@ public class StringPerformance extends StringPerformanceHints {
 
     @Benchmark
     public String benchmarkStringIntern() {
-        return stringIntern();
+        return baeldung.intern();
     }
 
     @Benchmark
