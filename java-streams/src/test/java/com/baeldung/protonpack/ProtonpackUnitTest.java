@@ -4,10 +4,9 @@ import com.codepoetics.protonpack.Indexed;
 import com.codepoetics.protonpack.StreamUtils;
 import com.codepoetics.protonpack.collectors.CollectorUtils;
 import com.codepoetics.protonpack.collectors.NonUniqueValueException;
-import com.codepoetics.protonpack.selectors.Selector;
+import com.codepoetics.protonpack.selectors.Selectors;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -92,20 +91,13 @@ public class ProtonpackUnitTest {
         Stream<String> streamOfPlayers = Stream.of("Ronaldo", "Messi");
         Stream<String> streamOfLeagues = Stream.of("Serie A", "La Liga");
 
-        AtomicInteger counter = new AtomicInteger(0);
-        Selector roundRobinSelector = (o) -> {
-            Object[] vals = (Object[]) o;
-            while (counter.get() >= vals.length || vals[counter.get()] == null) {
-                if (counter.incrementAndGet() >= vals.length)
-                    counter.set(0);
-            }
-            return counter.getAndIncrement();
-        };
-        Stream<String> interleavedStream = StreamUtils.interleave(roundRobinSelector, streamOfClubs, streamOfPlayers,
-            streamOfLeagues);
-        List<String> interleavedList = interleavedStream.collect(Collectors.toList());
-        assertThat(interleavedList).containsExactly("Juventus", "Ronaldo", "Serie A", "Barcelona", "Messi", "La Liga",
-            "Liverpool");
+        List<String> interleavedList = StreamUtils
+          .interleave(Selectors.roundRobin(), streamOfClubs, streamOfPlayers, streamOfLeagues)
+          .collect(Collectors.toList());
+
+        assertThat(interleavedList)
+          .hasSize(7)
+          .containsExactly("Juventus", "Ronaldo", "Serie A", "Barcelona", "Messi", "La Liga", "Liverpool");
     }
 
     @Test
