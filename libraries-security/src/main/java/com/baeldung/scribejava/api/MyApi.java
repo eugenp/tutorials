@@ -4,7 +4,7 @@ import com.github.scribejava.core.builder.api.DefaultApi20;
 
 public class MyApi extends DefaultApi20 {
 
-    public MyApi() {
+    private MyApi() {
     }
 
     private static class InstanceHolder {
