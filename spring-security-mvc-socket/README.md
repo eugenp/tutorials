@@ -7,4 +7,4 @@ To login, use credentials from the data.sql file in src/main/resource, eg: user/
 
 ### Relevant Articles: 
 - [Intro to Security and WebSockets](http://www.baeldung.com/spring-security-websockets)
-- [Spring WebSockets: Specific User Chat](http://www.baeldung.com/spring-websocket-specific-user-chat)
+- [Spring WebSockets: Specific User Chat](https://www.baeldung.com/spring-websockets-send-message-to-user)
