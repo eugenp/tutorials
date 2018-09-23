@@ -29,7 +29,7 @@
         <dependency>
             <groupId>com.github.scribejava</groupId>
             <artifactId>scribejava-apis</artifactId>
-            <version>5.6.0</version>
+            <version>${scribejava.version}</version>
         </dependency>
 
         <dependency>
@@ -41,8 +41,21 @@
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
     <properties>
         <junit.version>4.12</junit.version>
+        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
+        <scribejava.version>5.6.0</scribejava.version>
     </properties>
+
 
 </project>
