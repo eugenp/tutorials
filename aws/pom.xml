@@ -100,26 +100,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>copy-dependencies</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <includeScope>test</includeScope>
-                            <includeTypes>so,dll,dylib</includeTypes>
-                            <outputDirectory>${project.basedir}/native-libs</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
@@ -144,7 +124,6 @@
         <commons-codec-version>1.10.L001</commons-codec-version>
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <maven-shade-plugin.version>3.0.0</maven-shade-plugin.version>
-        <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
     </properties>
 
 </project>
