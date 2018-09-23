@@ -20,7 +20,6 @@ import static java.util.Arrays.stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-@SuppressWarnings("unchecked")
 public class ProtonpackUnitTest {
     @Test
     public void whenTakeWhile_thenTakenWhile() {
@@ -183,14 +182,14 @@ public class ProtonpackUnitTest {
     public void givenProjectionFunction_whenMaxedBy_thenMaxedBy() {
         Stream<String> clubs = Stream.of("Juventus", "Barcelona", "PSG");
         Optional<String> longestName = clubs.collect(CollectorUtils.maxBy(String::length));
-        assertThat(longestName.get()).isEqualTo("Barcelona");
+        assertThat(longestName).contains("Barcelona");
     }
 
     @Test
     public void givenStreamOfMultipleElem_whenUniqueCollector_thenValueReturned() {
         Stream<Integer> singleElement = Stream.of(1);
         Optional<Integer> unique = singleElement.collect(CollectorUtils.unique());
-        assertThat(unique.get()).isEqualTo(1);
+        assertThat(unique).contains(1);
     }
 
     @Test
