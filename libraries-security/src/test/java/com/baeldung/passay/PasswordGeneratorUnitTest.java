@@ -9,7 +9,7 @@ import org.passay.PasswordGenerator;
 
 import java.util.stream.Stream;
 
-public class PasswordGeneratorTest {
+public class PasswordGeneratorUnitTest {
 
     @Test
     public void givenDigitsGenerator_whenGeneratingPassword_thenPasswordContainsDigitsHasLength10() {

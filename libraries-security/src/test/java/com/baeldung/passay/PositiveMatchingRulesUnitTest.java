@@ -14,7 +14,7 @@ import org.passay.RuleResult;
 
 import static org.junit.Assert.*;
 
-public class PositiveMatchingRulesTest {
+public class PositiveMatchingRulesUnitTest {
 
     @Test
     public void givenPasswordValidationRules_whenValidatingPassword_thenPosswordIsNotValidWithSeveralErrors() {

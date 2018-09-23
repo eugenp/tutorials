@@ -30,7 +30,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class NegativeMatchingRulesTest {
+public class NegativeMatchingRulesUnitTest {
 
     @Test
     public void givenDictionaryRules_whenValidatePassword_thenFoundIllegalWordsFromDictionary() {
