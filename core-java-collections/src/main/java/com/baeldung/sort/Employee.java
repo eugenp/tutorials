@@ -1,6 +1,6 @@
-package com.baeldung.performance;
+package com.baeldung.sort;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
 
     private Long id;
     private String name;
@@ -51,5 +51,10 @@ public class Employee {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Employee employee) {
+        return (int)(this.id - employee.getId());
     }
 }
