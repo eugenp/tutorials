@@ -48,6 +48,11 @@
             <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.ibm.icu</groupId>
             <artifactId>icu4j</artifactId>
             <version>${icu4j.version}</version>
