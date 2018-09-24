@@ -39,7 +39,7 @@ public class EmployeeFunctionalConfig {
     }
 
     @Bean
-    RouterFunction<ServerResponse> updateEmployee() {
+    RouterFunction<ServerResponse> updateEmployeeRoute() {
       return route(POST("/employees/update"), 
         req -> req.body(toMono(Employee.class))
                   .doOnNext(employeeRepository()::updateEmployee)
