@@ -151,7 +151,7 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
+      
             <plugins>
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
@@ -171,7 +171,6 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
         <finalName>spring-security-mvc-socket</finalName>
     </build>
 

@@ -1,6 +1,7 @@
 package com.baeldung.file;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -119,5 +120,15 @@ public class FileOperationsManualTest {
         }
 
         return resultStringBuilder.toString();
+    }
+    
+    @Test
+    public void givenFileName_whenUsingIOUtils_thenFileData() throws IOException {
+        String expectedData = "This is a content of the file";
+
+        FileInputStream fis = new FileInputStream("src/test/resources/fileToRead.txt");
+        String data = IOUtils.toString(fis, "UTF-8");
+        
+        assertEquals(expectedData, data.trim());
     }
 }
