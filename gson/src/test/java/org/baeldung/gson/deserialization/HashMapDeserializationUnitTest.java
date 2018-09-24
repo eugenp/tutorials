@@ -24,8 +24,10 @@ public class HashMapDeserializationUnitTest {
 
         String jsonString = "{'employee.name':'Bob','employee.salary':10000, 'employee.active':true, "
                 + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+
         Gson gson = new Gson();
         HashMap map = gson.fromJson(jsonString, HashMap.class);
+
         logger.info("The converted map: {}", map);
         Assert.assertEquals(4, map.size());
         Assert.assertEquals(Double.class, map.get("employee.salary").getClass());
@@ -39,19 +41,24 @@ public class HashMapDeserializationUnitTest {
         String jsonString = "{'employee.name':'Bob', 'employee.name':'Jenny','employee.salary':10000, "
                 + "'employee.active':true, "
                 + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+
         Gson gson = new Gson();
         HashMap map = gson.fromJson(jsonString, HashMap.class);
+
         logger.info("The converted map: {}", map);
     }
 
     @Test
     public void whenUsingTypeToken_thenShouldReturnMapWithProperClass() {
+
         String jsonString = "{'Bob':{'id':10, 'name': 'Bob Willis', 'address':'UK'},"
                 + "'Jenny':{'id':10, 'name': 'Jenny McCarthy', 'address':'USA'}, "
                 + "'Steve':{'id':10, 'name': 'Steven Waugh', 'address':'Australia'}}";
+
         Gson gson = new Gson();
         Type empMapType = new TypeToken<HashMap<String, Employee>>() {}.getType();
         HashMap<String, Employee> nameEmployeeMap = gson.fromJson(jsonString, empMapType);
+
         logger.info("The converted map: {}", nameEmployeeMap);
         Assert.assertEquals(3, nameEmployeeMap.size());
         Assert.assertEquals(Employee.class, nameEmployeeMap.get("Bob").getClass());
@@ -62,11 +69,13 @@ public class HashMapDeserializationUnitTest {
 
         String jsonString = "{'employee.name':'Bob','employee.salary':10000, 'employee.active':true, "
                 + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+
         Type type = new TypeToken<HashMap<String, Object>>() {}.getType();
         Gson gson = new GsonBuilder()
                         .registerTypeAdapter(type, new HashMapDeserializer())
                         .create();
         HashMap<String, Object> blendedMap = gson.fromJson(jsonString, type);
+
         logger.info("The converted map: {}", blendedMap);
         Assert.assertEquals(4, blendedMap.size());
         Assert.assertEquals(Integer.class, blendedMap.get("employee.salary").getClass());
