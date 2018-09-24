@@ -1,9 +1,11 @@
 package com.baeldung.memoryleaks.finalize;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class FinalizeMemoryLeakUnitTest {
 	@Test
+	@Ignore // Test deliberately ignored as memory leak tests consume lots of resources
 	public void givenObjectWithFinalizer_whenCreatingAndDestroyingThisObject_thenMemoryLeak() {
 		BulkyObject[] stock = new BulkyObject[100000];
 		
@@ -14,6 +16,7 @@ public class FinalizeMemoryLeakUnitTest {
 	}
 	
 	@Test
+	@Ignore // Test deliberately ignored as memory leak tests consume lots of resources
 	public void givenObjectWithoutFinalizer_whenCreatingAndDestroyingThisObject_thenNoMemoryLeak() {
 		BulkyObjectOptimized[] stock = new BulkyObjectOptimized[100000];
 		

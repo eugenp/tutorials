@@ -3,6 +3,7 @@ package com.baeldung.memoryleaks.staticfields;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class StaticFieldsMemoryLeakUnitTest {
@@ -16,6 +17,7 @@ public class StaticFieldsMemoryLeakUnitTest {
     }
  
     @Test
+	@Ignore // Test deliberately ignored as memory leak tests consume lots of resources
     public void givenStaticLargeList_whenPopulatingList_thenListIsNotGarbageCollected() {
     	System.out.println("Debug Point 1");
         new StaticFieldsDemo().populateList();

@@ -1,6 +1,6 @@
 package com.baeldung.memoryleaks.innerclass;
 
-public class InnerClassTest {
+public class InnerClassDriver {
 	public static InnerClassWrapper.SimpleInnerClass getSimpleInnerClassObj() {
 		return new InnerClassWrapper().new SimpleInnerClass();
 	}
