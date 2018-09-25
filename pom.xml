@@ -398,7 +398,7 @@
 				<module>javafx</module>
 				<module>jgroups</module>
 				<module>jee-7</module>
-				<module>jhipster/jhipster-monolithic</module>
+				<module>jhipster</module>
 				<module>jjwt</module>
 				<module>jsf</module>
 				<module>json-path</module>
@@ -1383,7 +1383,7 @@
 				<module>parent-kotlin</module>
                 <module>libraries</module>
                 <module>geotools</module>
-                <module>jhipster/jhipster-monolithic</module>
+                <module>jhipster</module>
                 <module>testing-modules/gatling</module>
                 <module>spring-boot</module>
                 <module>spring-boot-ops</module>
