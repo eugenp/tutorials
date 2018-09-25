@@ -21,27 +21,34 @@ public class UserNotEmptyUnitTest {
     @Test
     public void whenNotEmptyName_thenNoConstraintViolations() {
         UserNotEmpty user = new UserNotEmpty("John");
+        
         Set<ConstraintViolation<UserNotEmpty>> violations = validator.validate(user);
+        
         assertThat(violations.size()).isEqualTo(0);
     }
     
     @Test
     public void whenEmptyName_thenOneConstraintViolation() {
         UserNotEmpty user = new UserNotEmpty("");
+        
         Set<ConstraintViolation<UserNotEmpty>> violations = validator.validate(user);
+        
         assertThat(violations.size()).isEqualTo(1);
     }
     
     @Test
     public void whenNullName_thenOneConstraintViolation() {
         UserNotEmpty user = new UserNotEmpty(null);
+        
         Set<ConstraintViolation<UserNotEmpty>> violations = validator.validate(user);
+        
         assertThat(violations.size()).isEqualTo(1);
     }
     
     @Test
     public void whenToString_thenCorrect() {
         UserNotEmpty user = new UserNotEmpty("John");
+        
         assertThat(user.toString()).isEqualTo("User{name=John}");
     }
 }
