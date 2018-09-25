@@ -3,7 +3,7 @@ package com.baeldung.asciidoctor;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class AsciidoctorDemoTest {
+public class AsciidoctorDemoIntegrationTest {
 
     @Test
     public void givenString_whenConverting_thenResultingHTMLCode() {
