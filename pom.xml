@@ -643,7 +643,7 @@
 				<module>spring-mobile</module>
 				<!-- <module>spring-mustache</module> --><!-- PMD voilation -->
 				<module>spring-mvc-simple</module>
-				<!-- <module>spring-mybatis</module> --><!-- Compilation failure -->
+				<module>spring-mybatis</module>
 				<module>spring-rest-hal-browser</module>
 				<module>spring-rest-shell</module>
 				<module>spring-rest-template</module>
@@ -960,7 +960,7 @@
 				<module>spring-mobile</module>
 				<!-- <module>spring-mustache</module> --><!-- PMD voilation -->
 				<module>spring-mvc-simple</module>
-				<!-- <module>spring-mybatis</module> --><!-- Compilation failure -->
+				<module>spring-mybatis</module>
 				<module>spring-rest-hal-browser</module>
 				<module>spring-rest-shell</module>
 				<module>spring-rest-template</module>
