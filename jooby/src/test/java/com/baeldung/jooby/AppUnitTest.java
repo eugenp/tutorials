@@ -9,7 +9,7 @@ import org.jooby.test.MockRouter;
 import org.junit.ClassRule;
 import org.junit.Test;
 
-public class AppTest {
+public class AppUnitTest {
 
 	@ClassRule
 	public static JoobyRule app = new JoobyRule(new App());
