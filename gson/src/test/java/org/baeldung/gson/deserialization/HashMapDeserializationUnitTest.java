@@ -24,7 +24,7 @@ public class HashMapDeserializationUnitTest {
     public void whenUsingHashMapClass_thenShouldReturnMapWithDefaultClasses() {
 
         String jsonString = "{'employee.name':'Bob','employee.salary':10000, 'employee.active':true, "
-                + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+          + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
         Gson gson = new Gson();
         HashMap map = gson.fromJson(jsonString, HashMap.class);
@@ -40,7 +40,7 @@ public class HashMapDeserializationUnitTest {
     public void whenUsingJsonStringWithDuplicateKey_thenShouldThrowJsonSyntaxException() {
 
         String jsonString = "{'employee.name':'Bob', 'employee.name':'Jenny','employee.salary':10000, "
-                + "'employee.active':true, " + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+          + "'employee.active':true, " + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
         Gson gson = new Gson();
         HashMap map = gson.fromJson(jsonString, HashMap.class);
@@ -52,12 +52,11 @@ public class HashMapDeserializationUnitTest {
     public void whenUsingTypeToken_thenShouldReturnMapWithProperClass() {
 
         String jsonString = "{'Bob':{'id':10, 'name': 'Bob Willis', 'address':'UK'},"
-                + "'Jenny':{'id':10, 'name': 'Jenny McCarthy', 'address':'USA'}, "
-                + "'Steve':{'id':10, 'name': 'Steven Waugh', 'address':'Australia'}}";
+          + "'Jenny':{'id':10, 'name': 'Jenny McCarthy', 'address':'USA'}, "
+          + "'Steve':{'id':10, 'name': 'Steven Waugh', 'address':'Australia'}}";
 
         Gson gson = new Gson();
-        Type empMapType = new TypeToken<HashMap<String, Employee>>() {
-        }.getType();
+        Type empMapType = new TypeToken<HashMap<String, Employee>>(){}.getType();
         HashMap<String, Employee> nameEmployeeMap = gson.fromJson(jsonString, empMapType);
 
         logger.info("The converted map: {}", nameEmployeeMap);
@@ -69,11 +68,12 @@ public class HashMapDeserializationUnitTest {
     public void whenUsingCustomDeserializer_thenShouldReturnMapWithProperClass() {
 
         String jsonString = "{'employee.name':'Bob','employee.salary':10000, 'employee.active':true, "
-                + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
+          + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
-        Type type = new TypeToken<HashMap<String, Object>>() {
-        }.getType();
-        Gson gson = new GsonBuilder().registerTypeAdapter(type, new HashMapDeserializer()).create();
+        Type type = new TypeToken<HashMap<String, Object>>(){}.getType();
+        Gson gson = new GsonBuilder()
+          .registerTypeAdapter(type, new HashMapDeserializer())
+          .create();
         HashMap<String, Object> blendedMap = gson.fromJson(jsonString, type);
 
         logger.info("The converted map: {}", blendedMap);
