@@ -1,5 +1,7 @@
 package org.baeldung;
 
+import com.baeldung.springmvcforms.configuration.ApplicationConfiguration;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
