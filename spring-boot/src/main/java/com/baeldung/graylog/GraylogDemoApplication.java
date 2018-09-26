@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.baeldung.graylog;
 
 import org.apache.log4j.Logger;
 import org.springframework.boot.SpringApplication;
