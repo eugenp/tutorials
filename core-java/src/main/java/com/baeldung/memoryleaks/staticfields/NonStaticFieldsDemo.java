@@ -3,8 +3,8 @@ package com.baeldung.memoryleaks.staticfields;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NonStaticFieldsDemo {
-    public List<Double> list = new ArrayList<>();
+public class StaticFieldsDemo {
+    public static List<Double> list = new ArrayList<>();
  
     public void populateList() {
         for (int i = 0; i < 10000000; i++) {
