@@ -36,6 +36,7 @@
         <module>spring-cloud-functions</module>        
         <module>spring-cloud-vault</module>
 		<module>spring-cloud-security</module>
+		<module>spring-cloud-task</module>
     </modules>
 
     <build>

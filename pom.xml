@@ -475,6 +475,7 @@
 				<module>spring-boot-logging-log4j2</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
@@ -641,7 +642,7 @@
 				<module>spring-data-rest-querydsl</module>
 				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
 				<module>spring-mobile</module>
-				<!-- <module>spring-mustache</module> --><!-- PMD voilation -->
+				<module>spring-mustache</module>
 				<module>spring-mvc-simple</module>
 				<module>spring-mybatis</module>
 				<module>spring-rest-hal-browser</module>
@@ -977,6 +978,7 @@
 				<module>spring-boot-logging-log4j2</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
@@ -1112,7 +1114,7 @@
 				<module>spring-data-rest-querydsl</module>
 				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
 				<module>spring-mobile</module>
-				<!-- <module>spring-mustache</module> --><!-- PMD voilation -->
+				<module>spring-mustache</module>
 				<module>spring-mvc-simple</module>
 				<module>spring-mybatis</module>
 				<module>spring-rest-hal-browser</module>
@@ -1331,6 +1333,7 @@
 				<module>spring-boot-logging-log4j2</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>

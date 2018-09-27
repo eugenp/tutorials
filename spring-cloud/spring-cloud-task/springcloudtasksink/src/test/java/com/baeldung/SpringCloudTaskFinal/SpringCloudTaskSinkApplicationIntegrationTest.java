@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringRunner.class)
 @SpringBootTest(
     classes = SpringCloudTaskSinkApplication.class)
-public class SpringCloudTaskSinkApplicationTests {
+public class SpringCloudTaskSinkApplicationIntegrationTest {
 
     @Autowired
     ApplicationContext context;
