@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.baeldung</groupId>
+    <artifactId>ebean</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>ebean</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.ebean</groupId>
+            <artifactId>ebean</artifactId>
+            <version>11.22.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.196</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <!-- Need to fix this pluginManagement -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.ebean</groupId>
+                    <artifactId>ebean-maven-plugin</artifactId>
+                    <version>11.11.2</version>
+                    <executions>
+                        <!-- enhance main classes -->
+                        <execution>
+                            <id>main</id>
+                            <phase>process-classes</phase>
+                            <configuration>
+                                <transformArgs>debug=1</transformArgs>
+                            </configuration>
+                            <goals>
+                                <goal>enhance</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>
