@@ -1,5 +1,7 @@
 package com.baeldung.stream.conditional;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
@@ -17,14 +19,24 @@ public class StreamForEachIfElseLogic {
 
     private static void ifElseLogic() {
 
-        Stream<Integer> integers = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> ints = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-        integers.forEach(i -> {
-            if (i.intValue() % 2 == 0) {
-                LOG.info("{} is even", i);
-            } else {
-                LOG.info("{} is odd", i);
-            }
-        });
+        ints.stream()
+            .forEach(i -> {
+                if (i.intValue() % 2 == 0) {
+                    LOG.info("{} is even", i);
+                } else {
+                    LOG.info("{} is odd", i);
+                }
+            });
+
+        Stream<Integer> evenIntegers = ints.stream()
+            .filter(i -> i.intValue() % 2 == 0);
+        Stream<Integer> oddIntegers = ints.stream()
+            .filter(i -> i.intValue() % 2 != 0);
+
+        evenIntegers.forEach(i -> LOG.info("{} is even", i));
+        oddIntegers.forEach(i -> LOG.info("{} is odd", i));
+
     }
 }
