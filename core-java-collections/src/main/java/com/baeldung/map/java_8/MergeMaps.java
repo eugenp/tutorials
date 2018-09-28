@@ -4,6 +4,8 @@ import com.baeldung.sort.Employee;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MergeMaps {
 
@@ -14,15 +16,49 @@ public class MergeMaps {
 
         initialize();
 
+        //mergeFunction();
+
+        //streamConcat();
+
+        streamOf();
+    }
+
+    private static void streamOf() {
+        Map<String, Employee> map3 = Stream.of(map1, map2)
+                .flatMap(map -> map.entrySet().stream())
+                .collect(
+                        Collectors.toMap(
+                                Map.Entry::getKey,
+                                Map.Entry::getValue,
+                                (v1, v2) -> new Employee(v1.getId(), v2.getName())
+                        )
+                );
+
+        map3.entrySet().forEach(System.out::println);
+    }
+
+    private static void streamConcat() {
+        Map<String, Employee> result = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream()).collect(Collectors.toMap(
+          Map.Entry::getKey,
+          Map.Entry::getValue,
+          (value1, value2) -> new Employee(value1.getId(), value2.getName())
+        ));
+
+        result.entrySet().forEach(System.out::println);
+    }
+
+    private static void mergeFunction() {
         Map<String, Employee> map3 = new HashMap<>(map1);
 
         map2.forEach(
-          (key, value) -> map3.merge(key, value, (v1, v2) ->
-          new Employee(v1.getId(),v2.getName()))
+                (key, value) -> map3.merge(key, value, (v1, v2) ->
+                        new Employee(v1.getId(),v2.getName()))
         );
 
         map3.entrySet().forEach(System.out::println);
     }
+
+
 
     private static void initialize() {
         Employee employee1 = new Employee(1L, "Henry");
