@@ -1,4 +1,4 @@
-package com.baeldung.collection;
+package com.baeldung.stream;
 
 import java.util.ArrayList;
 import java.util.List;
