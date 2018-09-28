@@ -3,7 +3,7 @@ package com.baeldung.percentage;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class PercentageCalculatorTest {
+public class PercentageCalculatorUnitTest {
     private PercentageCalculator pc = new PercentageCalculator();
 
     @Test
