@@ -44,9 +44,7 @@ public class PasswordGeneratorUnitTest {
 
     private boolean containsOnlyCharactersFromSet(String password, String setOfCharacters) {
         return Stream.of(password.split(""))
-                .allMatch(it -> setOfCharacters.contains(it));
+            .allMatch(it -> setOfCharacters.contains(it));
     }
 
 }
-
-
