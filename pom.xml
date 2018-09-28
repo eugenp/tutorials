@@ -379,6 +379,7 @@
 				<module>spring-static-resources</module>
 				<module>hazelcast</module>
 				<module>hbase</module>
+				<module>hex-architecture</module>
 				<module>hibernate5</module>
 				<module>httpclient</module>
 				<module>hystrix</module>
