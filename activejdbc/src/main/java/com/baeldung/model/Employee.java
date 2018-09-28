@@ -16,4 +16,8 @@ public class Employee extends Model {
         set("created_by",createdBy);
     }
 
+    public String getLastName() {
+        return getString("last_name");
+    }
+
 }

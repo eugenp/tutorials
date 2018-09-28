@@ -37,15 +37,16 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>1.5.15.RELEASE</version>
-			</plugin>
-		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>1.5.15.RELEASE</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
-
 
 	<properties>
 		<rest-assured.version>3.1.0</rest-assured.version>
