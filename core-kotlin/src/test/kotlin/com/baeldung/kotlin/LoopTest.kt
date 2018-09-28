@@ -10,14 +10,16 @@ class LoopTest {
     fun givenLoop_whenBreak_thenComplete() {
         var value = 0
 
-        for (i in 1..100) {
+        //break loop without label
+        for (i in 1..10) {
             value = i
-            if (value == 30)
+            if (value == 3)
                 break;
         }
 
-        assertEquals(value, 30)
+        assertEquals(value, 3)
 
+        //break loop with label
         outer_loop@ for (i in 1..10) {
             for (j in 1..10) {
                 value = i * j
@@ -27,6 +29,31 @@ class LoopTest {
         }
 
         assertEquals(value, 30)
+    }
+
+    @Test
+    fun givenLoop_whenContinue_thenComplete() {
+        var processedList = mutableListOf<Int>()
+        //continue loop without label
+        for (i in 1..10) {
+            if (i == 3)
+                continue;
+            processedList.add(i)
+        }
+
+        assert(processedList.all { it -> it != 3 })
+
+        //continue loop with label
+        processedList = mutableListOf<Int>()
+        outer_loop@ for (i in 1..10) {
+            for (j in 1..10) {
+                if (i == 3)
+                    continue@outer_loop;
+                processedList.add(i*j)
+            }
+        }
+
+        assertEquals(processedList.size, 90)
     }
 
     @Test
@@ -44,18 +71,14 @@ class LoopTest {
         var result = mutableListOf<Int>();
 
         listOf(1, 2, 3, 4, 5).forEach lit@{
-            if (it == 3){
+            if (it == 3) {
                 // local return to the caller of the lambda, i.e. the forEach loop
                 return@lit
             }
             result.add(it)
         }
 
-        assert(1 in result
-                && 2 in result
-                && 4 in result
-                && 5 in result)
-        assertFalse(3 in result)
+        assert(result.all { it -> it != 3 });
     }
 
     @Test
@@ -63,17 +86,36 @@ class LoopTest {
         var result = mutableListOf<Int>();
 
         listOf(1, 2, 3, 4, 5).forEach {
-            if (it == 3){
+            if (it == 3) {
                 // local return to the caller of the lambda, i.e. the forEach loop
                 return@forEach
             }
             result.add(it)
         }
 
-        assert(1 in result
-                && 2 in result
-                && 4 in result
-                && 5 in result)
-        assertFalse(3 in result)
+        assert(result.all { it -> it != 3 });
+    }
+
+    @Test
+    fun givenAnonymousFunction_return_thenComplete() {
+        var result = mutableListOf<Int>();
+        listOf(1, 2, 3, 4, 5).forEach(fun(element: Int) {
+            if (element == 3) return  // local return to the caller of the anonymous fun, i.e. the forEach loop
+            result.add(element);
+        })
+
+        assert(result.all { it -> it != 3 });
+    }
+
+    @Test
+    fun givenAnonymousFunction_returnToLabel_thenComplete() {
+        var value = 0;
+        run loop@{
+            listOf(1, 2, 3, 4, 5).forEach {
+                value = it;
+                if (it == 3) return@loop // non-local return from the lambda passed to run
+            }
+        }
+        assertEquals(value, 3)
     }
 }
