@@ -6,7 +6,9 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -14,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 
-public class DateDiffTest {
+public class DateDiffUnitTest {
     @Test
     public void givenTwoDatesBeforeJava8_whenDifferentiating_thenWeGetSix() throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy", Locale.ENGLISH);
@@ -35,6 +37,15 @@ public class DateDiffTest {
         Duration duration = Duration.between(now, sixDaysBehind);
         long diff = Math.abs(duration.toDays());
 
+        assertEquals(diff, 6);
+    }
+
+    @Test
+    public void givenTwoZonedDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
+        ZoneId z = ZoneId.of("America/Montreal");
+        ZonedDateTime zd1 = ZonedDateTime.now(z);
+        ZonedDateTime zd2 = zd1.plusMinutes(6);
+        long diff = ChronoUnit.MINUTES.between(zd1, zd2);
         assertEquals(diff, 6);
     }
 
