@@ -611,11 +611,11 @@
 				<module>java-websocket</module>
 				<module>activejdbc</module>
 				<!-- <module>animal-sniffer-mvn-plugin</module> --><!-- PMD voilation -->
-				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
+				<module>apache-avro</module>
 				<module>apache-bval</module>
 				<module>apache-shiro</module>
 				<module>apache-spark</module>
-				<!-- <module>asciidoctor</module> --><!-- Malformed POM -->
+				<module>asciidoctor</module>
 				<module>checker-plugin</module>
 				<!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
 				<!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
@@ -624,7 +624,7 @@
 				<module>dagger</module>
 				<module>data-structures</module>
 				<module>dubbo</module>
-				<!-- <module>flyway</module> --><!-- Malformed POM -->
+				<module>flyway</module>
 				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
 				<!-- <module>java-difference-date</module> --><!-- PMD voilation -->
 				<!-- <module>JGit</module> --><!-- Unit test failure -->
@@ -638,7 +638,7 @@
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-custom-starter</module>
 				<module>spring-boot-jasypt</module>
-				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
+				<module>spring-custom-aop</module>
 				<module>spring-data-rest-querydsl</module>
 				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
 				<module>spring-mobile</module>
@@ -667,8 +667,8 @@
 				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
 				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
 				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
-				<!-- <module>guest/spring-mvc</module> --><!-- Malformed POM -->
-				<!-- <module>guest/spring-security</module> --><!-- Malformed POM -->
+				<!-- <module>guest/spring-mvc</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-security</module> --><!-- guest post on different site -->
 				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
 				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
 				<module>jenkins/hello-world</module>
@@ -1096,9 +1096,9 @@
 				<module>dagger</module>
 				<module>data-structures</module>
 				<module>dubbo</module>
-				<!-- <module>flyway</module> --><!-- Malformed POM -->
+				<module>flyway</module>
 				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
-				<!-- <module>java-difference-date</module> --><!-- PMD voilation -->
+				<module>java-difference-date</module>
 				<!-- <module>JGit</module> --><!-- Unit test failure -->
 				<module>jni</module>
 				<module>jooby</module>
@@ -1106,13 +1106,13 @@
 				<!-- <module>microprofile</module> --><!-- Takes too much time : Downloads 93 MBs zip and .. -->
 				<!-- <module>muleesb</module> --><!-- load main class org.mule.munit.remote.RemoteRunner -->
 				<module>ratpack</module>
-				<!-- <module>rest-with-spark-java</module> --><!-- PMD voilation -->
+				<module>rest-with-spark-java</module>
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-custom-starter</module>
-				<!-- <module>spring-boot-jasypt</module> --><!-- PMD voilation -->
-				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
+				<module>spring-boot-jasypt</module>
+				<module>spring-custom-aop</module>
 				<module>spring-data-rest-querydsl</module>
-				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
+				<module>spring-groovy</module>
 				<module>spring-mobile</module>
 				<module>spring-mustache</module>
 				<module>spring-mvc-simple</module>
@@ -1123,7 +1123,7 @@
 				<module>spring-roo</module>
 				<module>spring-security-stormpath</module>
 				<module>sse-jaxrs</module>
-				<!-- <module>static-analysis</module> --><!-- PMD voilation -->
+				<module>static-analysis</module>
 				<module>stripe</module>
 				<!-- <module>structurizr</module> --><!-- Artiifact not found -->
 				<!-- <module>Twitter4J</module> --><!-- Test failure -->
@@ -1139,8 +1139,8 @@
 				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
 				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
 				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
-				<!-- <module>guest/spring-mvc</module> --><!-- Malformed POM -->
-				<!-- <module>guest/spring-security</module> --><!-- Malformed POM -->
+				<!-- <module>guest/spring-mvc</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-security</module> --><!-- guest post on different site -->
 				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
 				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
 				<module>jenkins/hello-world</module>
@@ -1151,7 +1151,7 @@
 				<module>spring-boot-h2/spring-boot-h2-database</module>
 				<!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
 				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
-				<!-- <module>guest\webservices\rest-server</module> --><!-- PMD voilation -->
+				<!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
 			</modules>
 
