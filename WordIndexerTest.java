@@ -1,9 +1,10 @@
 package BAEL2142;
 
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 
 public class WordIndexerTest {
 
@@ -11,7 +12,7 @@ public class WordIndexerTest {
     String theExpected;
     WordIndexer wordIndexer;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         wordIndexer = new WordIndexer();
 
