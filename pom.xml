@@ -1472,7 +1472,6 @@
                 <module>logging-modules/log4j2</module>
                 <module>spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-redis</module>
-
                 <module>jmeter</module>
 				-->
 
