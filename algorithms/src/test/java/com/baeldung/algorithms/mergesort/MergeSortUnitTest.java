@@ -14,13 +14,4 @@ public class MergeSortUnitTest {
         Assert.assertArrayEquals(expected, actual);
     }
 
-    @Test
-    public void negativeTest() {
-        int[] actual = { 5, 1, 6, 2, 3, 4 };
-        int[] expected = { 1, 2, 3, 4, 6, 5 };
-        MergeSort.mergeSort(actual, actual.length);
-        Assert.assertArrayEquals(expected, actual);
-
-    }
-
 }
