@@ -48,21 +48,19 @@ public class HashMapDeserializer implements JsonDeserializer<HashMap<String, Obj
     }
 
     private Long toLong(BigDecimal val) {
-        Long l = null;
         try {
-            l = val.toBigIntegerExact().longValue();
+            return val.toBigIntegerExact().longValue();
         } catch (ArithmeticException e) {
+            return null;
         }
-        return l;
     }
 
     private Integer toInteger(BigDecimal val) {
-        Integer i = null;
         try {
-            i = val.intValueExact();
+            return val.intValueExact();
         } catch (ArithmeticException e) {
+            return null;
         }
-        return i;
     }
 
 }
