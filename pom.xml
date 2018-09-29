@@ -1081,8 +1081,8 @@
 				<!-- <module>libraries</module> <module>jmeter</module> -->
 				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>java-websocket</module>
-				<!-- <module>activejdbc</module> --><!-- PMD voilation -->
-				<!-- <module>animal-sniffer-mvn-plugin</module> --><!-- PMD voilation -->
+				<module>activejdbc</module>
+				<module>animal-sniffer-mvn-plugin</module>
 				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
 				<module>apache-bval</module>
 				<module>apache-shiro</module>
@@ -1098,7 +1098,7 @@
 				<module>dubbo</module>
 				<!-- <module>flyway</module> --><!-- Malformed POM -->
 				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
-				<!-- <module>java-difference-date</module> --><!-- PMD voilation -->
+				<module>java-difference-date</module>
 				<!-- <module>JGit</module> --><!-- Unit test failure -->
 				<module>jni</module>
 				<module>jooby</module>
@@ -1106,13 +1106,13 @@
 				<!-- <module>microprofile</module> --><!-- Takes too much time : Downloads 93 MBs zip and .. -->
 				<!-- <module>muleesb</module> --><!-- load main class org.mule.munit.remote.RemoteRunner -->
 				<module>ratpack</module>
-				<!-- <module>rest-with-spark-java</module> --><!-- PMD voilation -->
+				<module>rest-with-spark-java</module>
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-custom-starter</module>
-				<!-- <module>spring-boot-jasypt</module> --><!-- PMD voilation -->
+				<module>spring-boot-jasypt</module>
 				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
 				<module>spring-data-rest-querydsl</module>
-				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
+				<module>spring-groovy</module>
 				<module>spring-mobile</module>
 				<module>spring-mustache</module>
 				<module>spring-mvc-simple</module>
@@ -1123,7 +1123,7 @@
 				<module>spring-roo</module>
 				<module>spring-security-stormpath</module>
 				<module>sse-jaxrs</module>
-				<!-- <module>static-analysis</module> --><!-- PMD voilation -->
+				<module>static-analysis</module>
 				<module>stripe</module>
 				<!-- <module>structurizr</module> --><!-- Artiifact not found -->
 				<!-- <module>Twitter4J</module> --><!-- Test failure -->
@@ -1134,8 +1134,8 @@
 				<!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
 				<!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
 				<!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
-				<!-- <module>guest/log4j2-example</module> --><!-- PMD voilation -->
-				<!-- <module>guest/logback-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/log4j2-example</module> --><!-- guest post on different site -->
+				<!-- <module>guest/logback-example</module> --><!-- guest post on different site -->
 				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
 				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
 				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
@@ -1151,7 +1151,7 @@
 				<module>spring-boot-h2/spring-boot-h2-database</module>
 				<!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
 				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
-				<!-- <module>guest\webservices\rest-server</module> --><!-- PMD voilation -->
+				<!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
 			</modules>
 
