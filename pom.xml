@@ -352,6 +352,7 @@
 				<module>java-streams</module>
                 <module>core-java-persistence</module>
 				<module>core-kotlin</module>
+				<module>kotlin-libraries</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
 				<module>core-java-concurrency-collections</module>
@@ -397,16 +398,17 @@
 				<module>javafx</module>
 				<module>jgroups</module>
 				<module>jee-7</module>
-				<module>jhipster/jhipster-monolithic</module>
+				<module>jhipster</module>
 				<module>jjwt</module>
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
 				<module>jsoup</module>
 				<module>testing-modules/junit-5</module>
-				<module>jws</module>
+				<!-- <module>jws</module> --><!-- POM jar version repo download failure -->
 				<module>libraries</module>
 				<module>libraries-data</module>
+				<module>libraries-security</module>
 				<module>libraries-server</module>
 				<module>linkrest</module>
 				<module>logging-modules/log-mdc</module>
@@ -469,10 +471,11 @@
 				<module>spring-boot-persistence</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
-                                <module>spring-boot-vue</module>
+                <module>spring-boot-vue</module>
 				<module>spring-boot-logging-log4j2</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
@@ -579,6 +582,7 @@
 				<module>testing-modules/mockserver</module>
 				<module>testing-modules/test-containers</module>
 				<module>undertow</module>
+				<module>vaadin</module>
 				<module>vertx-and-rxjava</module>
 				<module>saas</module>
 				<module>deeplearning4j</module>
@@ -601,6 +605,236 @@
 				<module>spring-reactive-kotlin</module>
 				<module>jnosql</module>
 				<module>spring-boot-angular-ecommerce</module>
+				<module>cdi-portable-extension</module>				
+				<module>jta</module>
+				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				<module>java-websocket</module>
+				<module>activejdbc</module>
+				<!-- <module>animal-sniffer-mvn-plugin</module> --><!-- PMD voilation -->
+				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
+				<module>apache-bval</module>
+				<module>apache-shiro</module>
+				<module>apache-spark</module>
+				<!-- <module>asciidoctor</module> --><!-- Malformed POM -->
+				<module>checker-plugin</module>
+				<!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
+				<!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
+				<module>core-java-sun</module>
+				<module>custom-pmd</module>
+				<module>dagger</module>
+				<module>data-structures</module>
+				<module>dubbo</module>
+				<!-- <module>flyway</module> --><!-- Malformed POM -->
+				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
+				<!-- <module>java-difference-date</module> --><!-- PMD voilation -->
+				<!-- <module>JGit</module> --><!-- Unit test failure -->
+				<module>jni</module>
+				<module>jooby</module>
+				<!-- <module>micronaut</module> --><!-- Not upgraded to java 9 -->
+				<!-- <module>microprofile</module> --><!-- Takes too much time : Downloads 93 MBs zip and .. -->
+				<!-- <module>muleesb</module> --><!-- load main class org.mule.munit.remote.RemoteRunner -->
+				<module>ratpack</module>
+				<!-- <module>rest-with-spark-java</module> --><!-- PMD voilation -->
+				<module>spring-boot-autoconfiguration</module>
+				<module>spring-boot-custom-starter</module>
+				<module>spring-boot-jasypt</module>
+				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
+				<module>spring-data-rest-querydsl</module>
+				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
+				<module>spring-mobile</module>
+				<module>spring-mustache</module>
+				<module>spring-mvc-simple</module>
+				<module>spring-mybatis</module>
+				<module>spring-rest-hal-browser</module>
+				<module>spring-rest-shell</module>
+				<module>spring-rest-template</module>
+				<module>spring-roo</module>
+				<module>spring-security-stormpath</module>
+				<module>sse-jaxrs</module>
+				<!-- <module>static-analysis</module> --><!-- PMD voilation -->
+				<module>stripe</module>
+				<!-- <module>structurizr</module> --><!-- Artiifact not found -->
+				<module>Twitter4J</module>
+				<module>wicket</module>
+				<module>xstream</module>
+				<module>cas/cas-secured-app</module>
+				<module>cas/cas-server</module>
+				<!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
+				<!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
+				<!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
+				<!-- <module>guest/log4j2-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/logback-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
+				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-mvc</module> --><!-- Malformed POM -->
+				<!-- <module>guest/spring-security</module> --><!-- Malformed POM -->
+				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
+				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
+				<module>jenkins/hello-world</module>
+				<!-- <module>rule-engines/easy-rules</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
+				<module>spring-boot-custom-starter/greeter</module>
+				<module>spring-boot-h2/spring-boot-h2-database</module>
+				<!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
+				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
+				<!-- <module>guest\webservices\rest-server</module> --><!-- PMD voilation -->
+				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
+			</modules>
+
+		</profile>
+		
+		<profile>
+			<id>spring-context</id>
+			<build>
+				<plugins>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${maven-surefire-plugin.version}</version>
+						<configuration>
+							<forkCount>3</forkCount>
+							<reuseForks>true</reuseForks>
+							<includes>
+								<include>**/*SpringContextIntegrationTest.java</include>
+							</includes>
+						</configuration>
+					</plugin>
+
+				</plugins>
+			</build>
+
+			<modules>
+				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
+				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-client</module>
+				<module>spring-5-reactive-security</module>
+				<module>spring-5-security</module>
+				<module>spring-activiti</module>
+				<module>spring-akka</module>
+				<module>spring-all</module>
+				<module>spring-aop</module>
+				<module>spring-apache-camel</module>
+				<module>spring-batch</module>
+				<module>spring-bom</module>
+				<module>spring-boot-admin/spring-boot-admin-client</module>
+				<module>spring-boot-admin/spring-boot-admin-server</module>
+				<module>spring-boot-bootstrap</module>
+				<module>spring-boot-bootstrap</module>
+				<module>spring-boot-camel</module>
+				<module>spring-boot-client</module>
+				<module>spring-boot-custom-starter</module>
+				<module>greeter-spring-boot-autoconfigure</module>
+				<module>greeter-spring-boot-sample-app</module>
+				<module>spring-boot-h2/spring-boot-h2-database</module>
+				<module>spring-boot-jasypt</module>
+				<module>spring-boot-keycloak</module>
+				<module>spring-boot-mvc</module>
+				<module>spring-boot-property-exp/property-exp-custom-config</module>
+				<module>spring-boot-property-exp/property-exp-default-config</module>
+				<module>spring-boot-vue</module>
+				<module>spring-cloud</module>
+				<module>spring-cloud/spring-cloud-archaius/basic-config</module>
+				<module>spring-cloud/spring-cloud-archaius/extra-configs</module>
+				<module>spring-cloud/spring-cloud-bootstrap/config</module>
+				<module>spring-cloud/spring-cloud-contract/spring-cloud-contract-consumer</module>
+				<module>spring-cloud/spring-cloud-contract/spring-cloud-contract-producer</module>
+				<module>spring-cloud/spring-cloud-gateway</module>
+				<module>spring-cloud/spring-cloud-kubernetes/demo-backend</module>
+				<module>spring-cloud/spring-cloud-rest/spring-cloud-rest-config-server</module>
+				<module>spring-cloud/spring-cloud-ribbon-client                </module>
+				<module>spring-cloud/spring-cloud-security/auth-client</module>
+				<module>spring-cloud/spring-cloud-security/auth-resource</module>
+				<module>spring-cloud/spring-cloud-security/auth-server</module>
+				<module>spring-cloud/spring-cloud-stream/spring-cloud-stream-rabbit</module>
+				<module>spring-cloud/spring-cloud-task/springcloudtasksink</module>
+				<module>spring-cloud/spring-cloud-zookeeper                     </module>
+				<module>spring-cloud/spring-cloud-bus/spring-cloud-config-server</module>
+				<module>spring-cloud/spring-cloud-data-flow/log-sink</module>
+				<module>spring-cloud/spring-cloud-data-flow/time-processor</module>
+				<module>spring-cloud/spring-cloud-data-flow/time-source</module>
+				<module>spring-cucumber</module>
+				<module>spring-data-keyvalue</module>
+				<module>spring-data-rest</module>
+				<module>spring-dispatcher-servlet</module>
+				<module>spring-drools</module>
+				<module>spring-freemarker</module>
+				<module>spring-hibernate-3</module>
+				<module>spring-hibernate4</module>
+				<module>spring-integration</module>
+				<module>spring-jenkins-pipeline</module>
+				<module>spring-jersey</module>
+				<module>spring-jinq</module>
+				<module>spring-jms</module>
+				<module>spring-kafka</module>
+				<module>spring-katharsis</module>
+				<module>spring-ldap</module>
+				<module>spring-mobile</module>
+				<module>spring-mockito</module>
+				<module>spring-mvc-forms-thymeleaf</module>
+				<module>spring-mvc-java</module>
+				<module>spring-mvc-velocity</module>
+				<module>spring-mvc-webflow</module>
+				<module>spring-protobuf</module>
+				<module>spring-quartz</module>
+				<module>remoting-hessian-burlap/spring-remoting-hessian-burlap-client</module>
+				<module>remoting-hessian-burlap/remoting-hessian-burlap-server</module>
+				<module>spring-reactor</module>
+				<module>spring-remoting/</module>
+				<module>spring-remoting/remoting-http/remoting-http-server</module>
+				<module>spring-remoting/remoting-jms/remoting-jms-client</module>
+				<module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
+				<module>spring-rest</module>
+				<module>spring-rest-angular</module>
+				<module>spring-rest-embedded-tomcat</module>
+				<module>spring-rest-full</module>
+				<module>spring-rest-simple</module>
+				<module>spring-resttemplate</module>
+				<module>spring-security-acl</module>
+				<module>spring-security-angular</module>
+				<module>spring-security-cache-control</module>
+				<module>spring-security-client/spring-security-jsp-authentication</module>
+				<module>spring-security-client/spring-security-jsp-authorize</module>
+				<module>spring-security-client/spring-security-jsp-config</module>
+				<module>spring-security-client/spring-security-mvc</module>
+				<module>spring-security-client/spring-security-thymeleaf-authentication</module>
+				<module>spring-security-client/spring-security-thymeleaf-authorize</module>
+				<module>spring-security-client/spring-security-thymeleaf-config</module>
+				<module>spring-security-core</module>
+				<module>spring-security-mvc-boot</module>
+				<module>spring-security-mvc-custom</module>
+				<module>spring-security-mvc-digest-auth</module>
+				<module>spring-security-mvc-ldap</module>
+				<module>spring-security-mvc-persisted-remember-me</module>
+				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc-socket</module>
+				<module>spring-security-rest</module>
+				<module>spring-security-sso/spring-security-sso-auth-server</module>
+				<module>spring-security-sso/spring-security-sso-ui</module>
+				<module>spring-security-sso/spring-security-sso-ui-2</module>
+				<module>spring-security-thymeleaf/spring-security-thymeleaf-authentication</module>
+				<module>spring-security-thymeleaf/spring-security-thymeleaf-authorize</module>
+				<module>spring-security-thymeleaf/spring-security-thymeleaf-config</module>
+				<module>spring-security-x509/spring-security-x509-basic-auth</module>
+				<module>spring-security-x509/spring-security-x509-client-auth</module>
+				<module>spring-session/spring-session-jdbc</module>
+				<module>spring-sleuth</module>
+				<module>spring-social-login</module>
+				<module>spring-spel</module>
+				<module>spring-state-machine</module>
+				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
+				<module>spring-thymeleaf</module>
+				<module>spring-userservice</module>
+				<module>spring-vault                                   </module>
+				<module>spring-vertx</module>
+				<module>spring-zuul/spring-zuul-foos-resource</module>
+				<module>persistence-modules/spring-data-dynamodb</module>
+				<module>persistence-modules/spring-data-eclipselink</module>
+				<module>persistence-modules/spring-data-solr</module>
+				<module>persistence-modules/spring-hibernate-5</module>
 			</modules>
 
 		</profile>
@@ -744,6 +978,7 @@
 				<module>spring-boot-logging-log4j2</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
@@ -844,7 +1079,80 @@
 				<!-- group 4 - OK, 12 min, 3,961 KB log, 12 failed tests -->
 
 				<!-- <module>libraries</module> <module>jmeter</module> -->
-
+				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				<module>java-websocket</module>
+				<!-- <module>activejdbc</module> --><!-- PMD voilation -->
+				<!-- <module>animal-sniffer-mvn-plugin</module> --><!-- PMD voilation -->
+				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
+				<module>apache-bval</module>
+				<module>apache-shiro</module>
+				<module>apache-spark</module>
+				<!-- <module>asciidoctor</module> --><!-- Malformed POM -->
+				<module>checker-plugin</module>
+				<!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
+				<!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
+				<module>core-java-sun</module>
+				<module>custom-pmd</module>
+				<module>dagger</module>
+				<module>data-structures</module>
+				<module>dubbo</module>
+				<!-- <module>flyway</module> --><!-- Malformed POM -->
+				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
+				<!-- <module>java-difference-date</module> --><!-- PMD voilation -->
+				<!-- <module>JGit</module> --><!-- Unit test failure -->
+				<module>jni</module>
+				<module>jooby</module>
+				<!-- <module>micronaut</module> --><!-- Not upgraded to java 9 -->
+				<!-- <module>microprofile</module> --><!-- Takes too much time : Downloads 93 MBs zip and .. -->
+				<!-- <module>muleesb</module> --><!-- load main class org.mule.munit.remote.RemoteRunner -->
+				<module>ratpack</module>
+				<!-- <module>rest-with-spark-java</module> --><!-- PMD voilation -->
+				<module>spring-boot-autoconfiguration</module>
+				<module>spring-boot-custom-starter</module>
+				<!-- <module>spring-boot-jasypt</module> --><!-- PMD voilation -->
+				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
+				<module>spring-data-rest-querydsl</module>
+				<!-- <module>spring-groovy</module> --><!-- PMD voilation -->
+				<module>spring-mobile</module>
+				<module>spring-mustache</module>
+				<module>spring-mvc-simple</module>
+				<module>spring-mybatis</module>
+				<module>spring-rest-hal-browser</module>
+				<module>spring-rest-shell</module>
+				<module>spring-rest-template</module>
+				<module>spring-roo</module>
+				<module>spring-security-stormpath</module>
+				<module>sse-jaxrs</module>
+				<!-- <module>static-analysis</module> --><!-- PMD voilation -->
+				<module>stripe</module>
+				<!-- <module>structurizr</module> --><!-- Artiifact not found -->
+				<!-- <module>Twitter4J</module> --><!-- Test failure -->
+				<module>wicket</module>
+				<module>xstream</module>
+				<module>cas/cas-secured-app</module>
+				<!-- <module>cas/cas-server</module> --><!-- Takes too much time -->
+				<!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
+				<!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
+				<!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
+				<!-- <module>guest/log4j2-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/logback-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
+				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-mvc</module> --><!-- Malformed POM -->
+				<!-- <module>guest/spring-security</module> --><!-- Malformed POM -->
+				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
+				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
+				<module>jenkins/hello-world</module>
+				<!-- <module>rule-engines/easy-rules</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
+				<module>spring-boot-custom-starter/greeter</module>
+				<module>spring-boot-h2/spring-boot-h2-database</module>
+				<!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
+				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
+				<!-- <module>guest\webservices\rest-server</module> --><!-- PMD voilation -->
+				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
 			</modules>
 
 		</profile>
@@ -960,6 +1268,7 @@
 				<module>json-path</module>
 				<module>json</module>
 				<module>jsoup</module>
+				<module>jta</module>
 				<module>testing-modules/junit-5</module>
 				<module>testing-modules/junit5-migration</module>
 				<module>jws</module>
@@ -1024,6 +1333,7 @@
 				<module>spring-boot-logging-log4j2</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
@@ -1105,6 +1415,7 @@
 				<module>spring-remoting</module>
 				<module>spring-reactor</module>
 				<module>spring-vertx</module>
+				<module>spring-vault</module>
 				<module>spring-jinq</module>
 				<module>spring-rest-embedded-tomcat</module>
 				<module>testing-modules/testing</module>
@@ -1126,6 +1437,7 @@
 				<module>testing-modules/mockserver</module>
 				<module>testing-modules/test-containers</module>
 				<module>undertow</module>
+				<module>vaadin</module>
 				<module>vertx-and-rxjava</module>
 				<module>saas</module>
 				<module>deeplearning4j</module>
@@ -1229,12 +1541,13 @@
 				<module>parent-kotlin</module>
                 <module>libraries</module>
                 <module>geotools</module>
-                <module>jhipster/jhipster-monolithic</module>
+                <module>jhipster</module>
                 <module>testing-modules/gatling</module>
                 <module>spring-boot</module>
                 <module>spring-boot-ops</module>
                 <module>spring-5</module>
                 <module>core-kotlin</module>
+				<module>kotlin-libraries</module>
                 <module>core-java</module>
                 <module>google-web-toolkit</module>
                 <module>spring-security-mvc-custom</module>

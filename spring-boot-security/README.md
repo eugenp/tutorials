@@ -9,3 +9,5 @@
 
 ### Relevant Articles:
 - [Spring Boot Security Auto-Configuration](http://www.baeldung.com/spring-boot-security-autoconfiguration)
+- [Spring Security for Spring Boot Integration Tests](https://www.baeldung.com/spring-security-integration-tests)
+- [Introduction to Spring Security Taglibs](https://www.baeldung.com/spring-security-taglibs)
