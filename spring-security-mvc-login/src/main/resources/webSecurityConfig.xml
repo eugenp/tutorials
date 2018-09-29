@@ -15,19 +15,21 @@
 
         <csrf disabled="true"/>
 
-        <form-login login-page='/login.html' login-processing-url="/perform_login" default-target-url="/homepage.html" authentication-failure-url="/login.html?error=true"
-            always-use-default-target="true"/>
+        <form-login login-page='/login.html' login-processing-url="/perform_login" default-target-url="/homepage.html"
+            always-use-default-target="true" authentication-failure-handler-ref="authenticationFailureHandler"/>
 
         <logout logout-url="/perform_logout" delete-cookies="JSESSIONID" success-handler-ref="customLogoutSuccessHandler"/>
 
         <!-- <access-denied-handler error-page="/accessDenied"/> -->
         <access-denied-handler ref="customAccessDeniedHandler"/>
-    	
+
     </http>
 
     <beans:bean name="customLogoutSuccessHandler" class="org.baeldung.security.CustomLogoutSuccessHandler"/>
 
     <beans:bean name="customAccessDeniedHandler" class="org.baeldung.security.CustomAccessDeniedHandler" />
+
+    <beans:bean id="authenticationFailureHandler" name="customAuthenticationFaiureHandler" class="org.baeldung.security.CustomAuthenticationFailureHandler"/>
 
     <authentication-manager>
         <authentication-provider>

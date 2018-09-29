@@ -27,3 +27,7 @@
 - [A Guide to WatchService in Java NIO2](http://www.baeldung.com/java-nio2-watchservice)
 - [Guide to Java NIO2 Asynchronous Channel APIs](http://www.baeldung.com/java-nio-2-async-channels)
 - [A Guide to NIO2 Asynchronous Socket Channel](http://www.baeldung.com/java-nio2-async-socket-channel)
+- [Download a File From an URL in Java](http://www.baeldung.com/java-download-file)
+- [Create a Symbolic Link with Java](http://www.baeldung.com/java-symlink)
+- [Quick Use of FilenameFilter](http://www.baeldung.com/java-filename-filter)
+- [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)

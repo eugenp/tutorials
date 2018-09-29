@@ -10,3 +10,7 @@
 - [JPA Attribute Converters](http://www.baeldung.com/jpa-attribute-converters)
 - [Mapping LOB Data in Hibernate](http://www.baeldung.com/hibernate-lob)
 - [@Immutable in Hibernate](http://www.baeldung.com/hibernate-immutable)
+- [Pessimistic Locking in JPA](http://www.baeldung.com/jpa-pessimistic-locking)
+- [Bootstrapping JPA Programmatically in Java](http://www.baeldung.com/java-bootstrap-jpa)
+- [Optimistic Locking in JPA](http://www.baeldung.com/jpa-optimistic-locking)
+- [Hibernate Entity Lifecycle](https://www.baeldung.com/hibernate-entity-lifecycle)

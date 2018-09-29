@@ -6,10 +6,11 @@ Generic CAS WAR overlay to exercise the latest versions of CAS. This overlay cou
 # Versions
 
 ```xml
-<cas.version>5.1.x</cas.version>
+<cas.version>5.3.x</cas.version>
 ```
 
 # Requirements
+
 * JDK 1.8+
 
 # Configuration
@@ -64,20 +65,23 @@ Run the CAS web application as an executable WAR via Spring Boot. This is most u
 
 ### Warning!
 
-Be careful with this method of deployment. `bootRun` is not designed to work with already executable WAR artifacts such that CAS server web application. YMMV. Today, uses of this mode ONLY work when there is **NO OTHER** dependency added to the build script and the `cas-server-webapp` is the only present module. See [this issue](https://github.com/apereo/cas/issues/2334) and [this issue](https://github.com/spring-projects/spring-boot/issues/8320) for more info.
+Be careful with this method of deployment. `bootRun` is not designed to work with already executable WAR artifacts such that CAS server web application. YMMV. Today, uses of this mode ONLY work when there is **NO OTHER** dependency added to the build script and the `cas-server-webapp` is the only present module. See [this issue](https://github.com/spring-projects/spring-boot/issues/8320) for more info.
 
 
 ## Spring Boot App Server Selection
-There is an app.server property in the pom.xml that can be used to select a spring boot application server.
-It defaults to "-tomcat" but "-jetty" and "-undertow" are supported. 
-It can also be set to an empty value (nothing) if you want to deploy CAS to an external application server of your choice and you don't want the spring boot libraries included. 
+
+There is an app.server property in the `pom.xml` that can be used to select a spring boot application server.
+It defaults to `-tomcat` but `-jetty` and `-undertow` are supported.
+
+It can also be set to an empty value (nothing) if you want to deploy CAS to an external application server of your choice.
 
 ```xml
 <app.server>-tomcat<app.server>
 ```
 
 ## Windows Build
-If you are building on windows, try build.cmd instead of build.sh. Arguments are similar but for usage, run:  
+
+If you are building on windows, try `build.cmd` instead of `build.sh`. Arguments are similar but for usage, run:
 
 ```
 build.cmd help
@@ -86,3 +90,12 @@ build.cmd help
 ## External
 
 Deploy resultant `target/cas.war`  to a servlet container of choice.
+
+
+## Command Line Shell
+
+Invokes the CAS Command Line Shell. For a list of commands either use no arguments or use `-h`. To enter the interactive shell use `-sh`.
+
+```bash
+./build.sh cli
+```

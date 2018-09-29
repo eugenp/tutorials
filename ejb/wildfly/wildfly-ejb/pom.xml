@@ -15,7 +15,7 @@
         <dependency>
             <groupId>javax.ejb</groupId>
             <artifactId>javax.ejb-api</artifactId>
-            <version>3.2</version>
+            <version>${ejb.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- Dependency for java ee -->
@@ -42,9 +42,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>
                 <configuration>
-                    <ejbVersion>3.2</ejbVersion>
+                    <ejbVersion>${ejb.version}</ejbVersion>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    
+    <properties>
+        <ejb.version>3.2</ejb.version>
+    </properties>
 </project>

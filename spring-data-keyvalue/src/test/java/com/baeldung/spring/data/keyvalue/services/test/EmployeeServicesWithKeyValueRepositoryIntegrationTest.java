@@ -50,7 +50,7 @@ public class EmployeeServicesWithKeyValueRepositoryIntegrationTest {
 
 	@Test
 	public void test2_whenEmployeeGet_thenEmployeeIsReturnedFromMap() {
-		Employee employeeFetched = employeeService.get(1);
+		Employee employeeFetched = employeeService.get(1).get();
 		assertEquals(employeeFetched, employee1);
 	}
 

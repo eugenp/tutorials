@@ -4,9 +4,11 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
 
-public class AnnotationsBasedApplicationAndServletInitializer extends AbstractDispatcherServletInitializer {
+public class AnnotationsBasedApplicationAndServletInitializer //extends AbstractDispatcherServletInitializer 
+{
 
-    @Override
+    //uncomment to run the multiple contexts example
+    //@Override
     protected WebApplicationContext createRootApplicationContext() {
         //If this is not the only class declaring a root context, we return null because it would clash
         //with other classes, as there can only be a single root context.
@@ -17,19 +19,19 @@ public class AnnotationsBasedApplicationAndServletInitializer extends AbstractDi
         return null;
     }
 
-    @Override
+    //@Override
     protected WebApplicationContext createServletApplicationContext() {
         AnnotationConfigWebApplicationContext normalWebAppContext = new AnnotationConfigWebApplicationContext();
         normalWebAppContext.register(NormalWebAppConfig.class);
         return normalWebAppContext;
     }
 
-    @Override
+    //@Override
     protected String[] getServletMappings() {
         return new String[] { "/api/*" };
     }
 
-    @Override
+    //@Override
     protected String getServletName() {
         return "normal-dispatcher";
     }

@@ -12,9 +12,10 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class ApplicationInitializer implements WebApplicationInitializer {
-
-    @Override
+public class ApplicationInitializer //implements WebApplicationInitializer 
+{
+    //uncomment to run the multiple contexts example
+    //@Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         //Here, we can define a root context and register servlets, among other things.
         //However, since we've later defined other classes to do the same and they would clash,

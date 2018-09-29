@@ -42,32 +42,11 @@
     <build>
         <plugins>
             <plugin>
-                <!-- This plugin will set properties values using dependency information -->
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <!--
-                            Goal that sets a property pointing to the artifact file for each project dependency.
-                            For each dependency (direct and transitive) a project property will be set which
-                            follows the:
-
-                               groupId:artifactId:type:[classifier]
-
-                            form and contains the path to the resolved artifact. -->
-                            <goal>properties</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <!-- Uncomment the following line to use the type annotations compiler. -->
                     <!-- <fork>true</fork> -->
                     <compilerArguments>
@@ -113,8 +92,6 @@
         <checker.version>2.3.1</checker.version>
         <jdk8.version>2.3.1</jdk8.version>
         <checkerframework.compiler.version>2.3.1</checkerframework.compiler.version>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
 </project>
