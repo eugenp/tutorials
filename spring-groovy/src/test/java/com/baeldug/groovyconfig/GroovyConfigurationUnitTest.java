@@ -7,7 +7,7 @@ import java.io.File;
 import org.junit.Test;
 import org.springframework.context.support.GenericGroovyApplicationContext;
 
-public class GroovyConfigurationTest {
+public class GroovyConfigurationUnitTest {
     
     private static final String FILE_NAME = "GroovyBeanConfig.groovy";
     private static final String FILE_PATH = "src/main/java/com/baeldug/groovyconfig/";

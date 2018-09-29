@@ -18,9 +18,9 @@ import org.junit.Test;
 import com.stackify.models.User;
 import com.stackify.services.MyService;
 
-public class MyServiceTest {
+public class MyServiceUnitTest {
 
-    private static final Logger logger = LogManager.getLogger(MyServiceTest.class);
+    private static final Logger logger = LogManager.getLogger(MyServiceUnitTest.class);
 
     @Test
     public void testService() {

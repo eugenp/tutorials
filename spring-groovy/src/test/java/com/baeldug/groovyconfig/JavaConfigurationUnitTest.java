@@ -5,7 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-public class JavaConfigurationTest {
+public class JavaConfigurationUnitTest {
 
     @Test
     public void whenJavaConfig_thenCorrectPerson() {
