@@ -15,12 +15,4 @@ class MergeSortTest {
         assertArrayEquals(expected, input);
     }
     
-    @Test
-    void  negativeTest() {
-        int[] input = { 5, 1, 6, 2, 3, 4 };
-        int[] expected = { 1, 2, 3, 4, 6 ,5};
-        MergeSort.mergeSort(input, input.length);
-        assertArrayEquals(expected, input);
-    }
-
 }
