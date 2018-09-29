@@ -106,21 +106,6 @@
             <artifactId>javers-core</artifactId>
             <version>${javers.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>io.nats</groupId>
@@ -169,34 +154,7 @@
             <artifactId>commons-dbutils</artifactId>
             <version>${commons.dbutils.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-core</artifactId>
-            <version>${flink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>${flink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-test-utils_2.10</artifactId>
-            <version>${flink.version}</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
@@ -243,6 +201,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+
         <!-- JDO -->
         <dependency>
             <groupId>org.datanucleus</groupId>
@@ -380,11 +339,6 @@
             <version>${jmh.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>${netty.version}</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -480,17 +434,6 @@
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
             <version>${logging-interceptor.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.darwinsys</groupId>
-            <artifactId>hirondelle-date4j</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
         </dependency>
         <dependency>
             <groupId>com.darwinsys</groupId>
@@ -669,13 +612,7 @@
             <classifier>test</classifier>
             <scope>test</scope>
         </dependency>
-
-        <!-- tomcat -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
+		
         <dependency>
             <groupId>org.milyn</groupId>
             <artifactId>milyn-smooks-all</artifactId>
@@ -738,11 +675,6 @@
             <version>${resilience4j.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${common-math3-version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.knowm.xchart</groupId>
             <artifactId>xchart</artifactId>
             <version>${xchart-version}</version>
@@ -772,6 +704,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>            
+        </dependency>       
+
     </dependencies>
 
     <repositories>
@@ -797,19 +735,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.felix</groupId>
-                        <artifactId>maven-bundle-plugin</artifactId>
-                        <version>${maven-bundle-plugin.version}</version>
-                        <type>maven-plugin</type>
-                    </dependency>
-                </dependencies>
-                <extensions>true</extensions>
-            </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
@@ -909,6 +834,7 @@
     </build>
 
     <properties>
+        <snakeyaml.version>1.21</snakeyaml.version>
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
@@ -928,12 +854,10 @@
         <commons.io.version>2.5</commons.io.version>
         <commons.dbutils.version>1.6</commons.dbutils.version>
         <h2.version>1.4.196</h2.version>
-        <jetty.version>9.4.8.v20171121</jetty.version>
         <jnats.version>1.0</jnats.version>
 
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
-        <flink.version>1.2.0</flink.version>
         <jackson.version>2.8.5</jackson.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
@@ -941,7 +865,6 @@
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>1.9.27</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
-        <netty.version>4.1.20.Final</netty.version>
         <commons.collections.version>4.1</commons.collections.version>
         <junit.version>4.12</junit.version>
         <java-lsh.version>0.10</java-lsh.version>
@@ -967,10 +890,9 @@
         <caffeine.version>2.5.5</caffeine.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
-        <kafka.version>1.0.0</kafka.version>
+        <kafka.version>2.0.0</kafka.version>
         <smooks.version>1.7.0</smooks.version>
         <docker.version>3.0.14</docker.version>
-        <tomcat.version>8.5.24</tomcat.version>
         <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
         <opencsv.version>4.1</opencsv.version>
@@ -981,7 +903,6 @@
         <jctools.version>2.1.2</jctools.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
         <resilience4j.version>0.12.1</resilience4j.version>
-        <common-math3-version>3.6.1</common-math3-version>
         <xchart-version>3.5.2</xchart-version>
         <commons-net.version>3.6</commons-net.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>

@@ -23,3 +23,8 @@
 - [Converting Between Roman and Arabic Numerals in Java](http://www.baeldung.com/java-convert-roman-arabic)
 - [Practical Java Examples of the Big O Notation](http://www.baeldung.com/java-algorithm-complexity)
 - [Find the Middle Element of a Linked List](http://www.baeldung.com/java-linked-list-middle-element)
+- [An Introduction to the Theory of Big-O Notation](http://www.baeldung.com/big-o-notation)
+- [Check If Two Rectangles Overlap In Java](https://www.baeldung.com/java-check-if-two-rectangles-overlap)
+- [Calculate the Distance Between Two Points in Java](https://www.baeldung.com/java-distance-between-two-points)
+- [Find the Intersection of Two Lines in Java](https://www.baeldung.com/java-intersection-of-two-lines)
+- [Check If a String Contains All The Letters of The Alphabet](https://www.baeldung.com/java-string-contains-all-letters)

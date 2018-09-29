@@ -7,3 +7,6 @@
 - [The Maven Failsafe Plugin](http://www.baeldung.com/maven-failsafe-plugin)
 - [The Maven Verifier Plugin](http://www.baeldung.com/maven-verifier-plugin)
 - [The Maven Clean Plugin](http://www.baeldung.com/maven-clean-plugin)
+- [Build a Jar with Maven and Ignore the Test Results](http://www.baeldung.com/maven-ignore-test-results)
+- [Maven Project with Multiple Source Directories](https://www.baeldung.com/maven-project-multiple-src-directories)
+- [Integration Testing with Maven](https://www.baeldung.com/maven-integration-test)
