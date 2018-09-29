@@ -1081,8 +1081,8 @@
 				<!-- <module>libraries</module> <module>jmeter</module> -->
 				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>java-websocket</module>
-				<!-- <module>activejdbc</module> --><!-- PMD voilation -->
-				<!-- <module>animal-sniffer-mvn-plugin</module> --><!-- PMD voilation -->
+				<module>activejdbc</module>
+				<module>animal-sniffer-mvn-plugin</module>
 				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
 				<module>apache-bval</module>
 				<module>apache-shiro</module>
@@ -1134,8 +1134,8 @@
 				<!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
 				<!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
 				<!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
-				<!-- <module>guest/log4j2-example</module> --><!-- PMD voilation -->
-				<!-- <module>guest/logback-example</module> --><!-- PMD voilation -->
+				<!-- <module>guest/log4j2-example</module> --><!-- guest post on different site -->
+				<!-- <module>guest/logback-example</module> --><!-- guest post on different site -->
 				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
 				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
 				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
