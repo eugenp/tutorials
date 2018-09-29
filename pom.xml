@@ -1619,9 +1619,3 @@
 		<maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
 	</properties>
 </project>
-
-
-
-
-    
-</project>
