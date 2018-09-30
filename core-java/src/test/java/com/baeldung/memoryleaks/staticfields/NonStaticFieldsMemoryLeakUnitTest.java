@@ -17,9 +17,9 @@ public class NonStaticFieldsMemoryLeakUnitTest {
     }
  
     @Test
-	@Ignore // Test deliberately ignored as memory leak tests consume lots of resources
+    @Ignore // Test deliberately ignored as memory leak tests consume lots of resources
     public void givenNonStaticLargeList_whenPopulatingList_thenListGarbageCollected() {
-    	System.out.println("Debug Point 1");
+        System.out.println("Debug Point 1");
         new NonStaticFieldsMemoryLeakUnitTest().populateList();
         System.out.println("Debug Point 3");
     }

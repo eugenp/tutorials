@@ -14,7 +14,7 @@ public class NonStaticFieldsDemo {
     }
  
     public static void main(String[] args) {
-    	System.out.println("Debug Point 1");
+        System.out.println("Debug Point 1");
         new NonStaticFieldsDemo().populateList();
         System.out.println("Debug Point 3");
     }

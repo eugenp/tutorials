@@ -17,9 +17,9 @@ public class StaticFieldsMemoryLeakUnitTest {
     }
  
     @Test
-	@Ignore // Test deliberately ignored as memory leak tests consume lots of resources
+    @Ignore // Test deliberately ignored as memory leak tests consume lots of resources
     public void givenStaticLargeList_whenPopulatingList_thenListIsNotGarbageCollected() {
-    	System.out.println("Debug Point 1");
+        System.out.println("Debug Point 1");
         new StaticFieldsDemo().populateList();
         System.out.println("Debug Point 3");
     }

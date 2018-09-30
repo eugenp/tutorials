@@ -14,7 +14,7 @@ public class StaticFieldsDemo {
     }
  
     public static void main(String[] args) {
-    	System.out.println("Debug Point 1");
+        System.out.println("Debug Point 1");
         new StaticFieldsDemo().populateList();
         System.out.println("Debug Point 3");
     }
