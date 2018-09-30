@@ -611,11 +611,11 @@
 				<module>java-websocket</module>
 				<module>activejdbc</module>
 				<module>animal-sniffer-mvn-plugin</module>
-				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
+				<module>apache-avro</module>
 				<module>apache-bval</module>
 				<module>apache-shiro</module>
 				<module>apache-spark</module>
-				<!-- <module>asciidoctor</module> --><!-- Malformed POM -->
+				<module>asciidoctor</module>
 				<module>checker-plugin</module>
 				<!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
 				<!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
@@ -624,7 +624,7 @@
 				<module>dagger</module>
 				<module>data-structures</module>
 				<module>dubbo</module>
-				<!-- <module>flyway</module> --><!-- Malformed POM -->
+				<module>flyway</module>
 				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
 				<module>java-difference-date</module>
 				<!-- <module>JGit</module> --><!-- Unit test failure -->
@@ -638,7 +638,7 @@
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-custom-starter</module>
 				<module>spring-boot-jasypt</module>
-				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
+				<module>spring-custom-aop</module>
 				<module>spring-data-rest-querydsl</module>
 				<module>spring-groovy</module>
 				<module>spring-mobile</module>
@@ -667,8 +667,8 @@
 				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
 				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
 				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
-				<!-- <module>guest/spring-mvc</module> --><!-- Malformed POM -->
-				<!-- <module>guest/spring-security</module> --><!-- Malformed POM -->
+				<!-- <module>guest/spring-mvc</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-security</module> --><!-- guest post on different site -->
 				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
 				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
 				<module>jenkins/hello-world</module>
@@ -1096,7 +1096,7 @@
 				<module>dagger</module>
 				<module>data-structures</module>
 				<module>dubbo</module>
-				<!-- <module>flyway</module> --><!-- Malformed POM -->
+				<module>flyway</module>
 				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
 				<module>java-difference-date</module>
 				<!-- <module>JGit</module> --><!-- Unit test failure -->
@@ -1110,7 +1110,7 @@
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-custom-starter</module>
 				<module>spring-boot-jasypt</module>
-				<!-- <module>spring-custom-aop</module> --><!-- Malformed POM -->
+				<module>spring-custom-aop</module>
 				<module>spring-data-rest-querydsl</module>
 				<module>spring-groovy</module>
 				<module>spring-mobile</module>
@@ -1139,8 +1139,8 @@
 				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
 				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
 				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
-				<!-- <module>guest/spring-mvc</module> --><!-- Malformed POM -->
-				<!-- <module>guest/spring-security</module> --><!-- Malformed POM -->
+				<!-- <module>guest/spring-mvc</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-security</module> --><!-- guest post on different site -->
 				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
 				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
 				<module>jenkins/hello-world</module>

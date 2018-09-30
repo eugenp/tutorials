@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 @ContextConfiguration(classes = FlywayCallbackTestConfig.class)
-public class FlywayApplicationTest {
+public class FlywayApplicationUnitTest {
 
     private Log log = LogFactory.getLog(getClass());
 
