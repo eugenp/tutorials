@@ -681,6 +681,7 @@
 				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
+				<module>flyway-cdi-extension</module>								
 			</modules>
 
 		</profile>
