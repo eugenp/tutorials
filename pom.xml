@@ -1083,11 +1083,11 @@
 				<module>java-websocket</module>
 				<module>activejdbc</module>
 				<module>animal-sniffer-mvn-plugin</module>
-				<!-- <module>apache-avro</module> --><!-- Malformed POM -->
+				<module>apache-avro</module>
 				<module>apache-bval</module>
 				<module>apache-shiro</module>
 				<module>apache-spark</module>
-				<!-- <module>asciidoctor</module> --><!-- Malformed POM -->
+				<module>asciidoctor</module>
 				<module>checker-plugin</module>
 				<!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
 				<!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
