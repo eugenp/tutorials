@@ -681,6 +681,9 @@
 				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
+				<module>maven-polyglot/maven-polyglot-yml-app</module>
+				<module>maven-polyglot/maven-polyglot-json-extension</module>
+				<module>maven-polyglot/maven-polyglot-json-app</module>
 			</modules>
 
 		</profile>
