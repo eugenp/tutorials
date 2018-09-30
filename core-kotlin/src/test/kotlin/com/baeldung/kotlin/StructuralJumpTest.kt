@@ -14,7 +14,7 @@ class StructuralJumpTest  {
         for (i in 1..10) {
             value = i
             if (value == 3)
-                break;
+                break
         }
 
         assertEquals(value, 3)
@@ -24,7 +24,7 @@ class StructuralJumpTest  {
             for (j in 1..10) {
                 value = i * j
                 if (value == 30)
-                    break@outer_loop;
+                    break@outer_loop
             }
         }
 
@@ -37,7 +37,7 @@ class StructuralJumpTest  {
         //continue loop without label
         for (i in 1..10) {
             if (i == 3)
-                continue;
+                continue
             processedList.add(i)
         }
 
@@ -48,7 +48,7 @@ class StructuralJumpTest  {
         outer_loop@ for (i in 1..10) {
             for (j in 1..10) {
                 if (i == 3)
-                    continue@outer_loop;
+                    continue@outer_loop
                 processedList.add(i*j)
             }
         }
@@ -63,12 +63,12 @@ class StructuralJumpTest  {
             assert(it < 3)
         }
         //this point is unreachable
-        assert(false);
+        assert(false)
     }
 
     @Test
     fun givenLambda_whenReturnWithExplicitLabel_thenComplete() {
-        var result = mutableListOf<Int>();
+        var result = mutableListOf<Int>()
 
         listOf(1, 2, 3, 4, 5).forEach lit@{
             if (it == 3) {
@@ -78,12 +78,12 @@ class StructuralJumpTest  {
             result.add(it)
         }
 
-        assert(result.all { it -> it != 3 });
+        assert(result.all { it -> it != 3 })
     }
 
     @Test
     fun givenLambda_whenReturnWithImplicitLabel_thenComplete() {
-        var result = mutableListOf<Int>();
+        var result = mutableListOf<Int>()
 
         listOf(1, 2, 3, 4, 5).forEach {
             if (it == 3) {
@@ -93,26 +93,26 @@ class StructuralJumpTest  {
             result.add(it)
         }
 
-        assert(result.all { it -> it != 3 });
+        assert(result.all { it -> it != 3 })
     }
 
     @Test
     fun givenAnonymousFunction_return_thenComplete() {
-        var result = mutableListOf<Int>();
+        var result = mutableListOf<Int>()
         listOf(1, 2, 3, 4, 5).forEach(fun(element: Int) {
             if (element == 3) return  // local return to the caller of the anonymous fun, i.e. the forEach loop
-            result.add(element);
+            result.add(element)
         })
 
-        assert(result.all { it -> it != 3 });
+        assert(result.all { it -> it != 3 })
     }
 
     @Test
     fun givenAnonymousFunction_returnToLabel_thenComplete() {
-        var value = 0;
+        var value = 0
         run loop@{
             listOf(1, 2, 3, 4, 5).forEach {
-                value = it;
+                value = it
                 if (it == 3) return@loop // non-local return from the lambda passed to run
             }
         }
