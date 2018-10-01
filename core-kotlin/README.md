@@ -34,3 +34,6 @@
 - [Kotlin Constructors](https://www.baeldung.com/kotlin-constructors)
 - [Creational Design Patterns in Kotlin: Builder](https://www.baeldung.com/kotlin-builder-pattern)
 - [Kotlin Nested and Inner Classes](https://www.baeldung.com/kotlin-inner-classes)
+- [Kotlin with Ktor](https://www.baeldung.com/kotlin-ktor)
+- [Fuel HTTP Library with Kotlin](https://www.baeldung.com/kotlin-fuel)
+- [Introduction to Kovenant Library for Kotlin](https://www.baeldung.com/kotlin-kovenant)
