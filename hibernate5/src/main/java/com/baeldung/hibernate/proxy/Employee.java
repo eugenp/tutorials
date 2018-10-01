@@ -1,9 +1,13 @@
 package com.baeldung.hibernate.proxy;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
+@BatchSize(size = 5)
 public class Employee implements Serializable {
 
     @Id
@@ -11,13 +15,17 @@ public class Employee implements Serializable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Boss boss;
+    private Company workplace;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "surname")
-    private String surname;
+    public Employee() { }
+
+    public Employee(Company workplace, String firstName) {
+        this.workplace = workplace;
+        this.firstName = firstName;
+    }
 
     public Long getId() {
         return id;
@@ -27,27 +35,34 @@ public class Employee implements Serializable {
         this.id = id;
     }
 
-    public Boss getBoss() {
-        return boss;
+    public Company getWorkplace() {
+        return workplace;
     }
 
-    public void setBoss(Boss boss) {
-        this.boss = boss;
+    public void setWorkplace(Company workplace) {
+        this.workplace = workplace;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getSurname() {
-        return surname;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(id, employee.id) &&
+                Objects.equals(workplace, employee.workplace) &&
+                Objects.equals(firstName, employee.firstName);
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, workplace, firstName);
     }
 }

@@ -30,7 +30,7 @@ public class HibernateUtil {
     private static SessionFactoryBuilder getSessionFactoryBuilder(ServiceRegistry serviceRegistry) {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
         metadataSources.addPackage("com.baeldung.hibernate.proxy");
-        metadataSources.addAnnotatedClass(Boss.class);
+        metadataSources.addAnnotatedClass(Company.class);
         metadataSources.addAnnotatedClass(Employee.class);
 
         Metadata metadata = metadataSources.buildMetadata();
