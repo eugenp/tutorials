@@ -332,6 +332,7 @@
 				<module>annotations</module>
 				<module>apache-cxf</module>
 				<module>apache-fop</module>
+				<module>apache-geode</module>
 				<module>apache-poi</module>
 				<module>apache-tika</module>
 				<module>apache-thrift</module>
