@@ -3,11 +3,14 @@ package com.baeldung.internationalization;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -42,5 +45,71 @@ public class DateTimeFormatterUnitTest {
 
         Assert.assertEquals("Monday, January 1, 2018 10:15:50 AM PST", formattedDateTime);
         Assert.assertEquals("lundi 1 janvier 2018 10 h 15 PST", frFormattedDateTime);
+    }
+
+    @Test
+    public void shoulPrintFormattedDate() {
+        String europeanDatePattern = "dd.MM.yyyy";
+        DateTimeFormatter europeanDateFormatter = DateTimeFormatter.ofPattern(europeanDatePattern);
+        LocalDate summerDay = LocalDate.of(2016, 7, 31);
+        Assert.assertEquals("31.07.2016", europeanDateFormatter.format(summerDay));
+    }
+
+    @Test
+    public void shouldPrintFormattedTime24() {
+        String timeColonPattern = "HH:mm:ss";
+        DateTimeFormatter timeColonFormatter = DateTimeFormatter.ofPattern(timeColonPattern);
+        LocalTime colonTime = LocalTime.of(17, 35, 50);
+        Assert.assertEquals("17:35:50", timeColonFormatter.format(colonTime));
+    }
+
+    @Test
+    public void shouldPrintFormattedTimeWithMillis() {
+        String timeColonPattern = "HH:mm:ss SSS";
+        DateTimeFormatter timeColonFormatter = DateTimeFormatter.ofPattern(timeColonPattern);
+        LocalTime colonTime = LocalTime.of(17, 35, 50).plus(329, ChronoUnit.MILLIS);
+        Assert.assertEquals("17:35:50 329", timeColonFormatter.format(colonTime));
+    }
+
+    @Test
+    public void shouldPrintFormattedTimePM() {
+        String timeColonPattern = "hh:mm:ss a";
+        DateTimeFormatter timeColonFormatter = DateTimeFormatter.ofPattern(timeColonPattern);
+        LocalTime colonTime = LocalTime.of(17, 35, 50);
+        Assert.assertEquals("05:35:50 PM", timeColonFormatter.format(colonTime));
+    }
+
+    @Test
+    public void shouldPrintFormattedUTCRelatedZonedDateTime() {
+        String newYorkDateTimePattern = "dd.MM.yyyy HH:mm z";
+        DateTimeFormatter newYorkDateFormatter = DateTimeFormatter.ofPattern(newYorkDateTimePattern);
+        LocalDateTime summerDay = LocalDateTime.of(2016, 7, 31, 14, 15);
+        Assert.assertEquals("31.07.2016 14:15 UTC-04:00", newYorkDateFormatter.format(ZonedDateTime.of(summerDay, ZoneId.of("UTC-4"))));
+    }
+
+    @Test
+    public void shouldPrintFormattedNewYorkZonedDateTime() {
+        String newYorkDateTimePattern = "dd.MM.yyyy HH:mm z";
+        DateTimeFormatter newYorkDateFormatter = DateTimeFormatter.ofPattern(newYorkDateTimePattern);
+        LocalDateTime summerDay = LocalDateTime.of(2016, 7, 31, 14, 15);
+        Assert.assertEquals("31.07.2016 14:15 EDT", newYorkDateFormatter.format(ZonedDateTime.of(summerDay, ZoneId.of("America/New_York"))));
+    }
+
+    @Test
+    public void shouldPrintStyledDate() {
+        LocalDate anotherSummerDay = LocalDate.of(2016, 8, 23);
+        Assert.assertEquals("Tuesday, August 23, 2016", DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL).format(anotherSummerDay));
+        Assert.assertEquals("August 23, 2016", DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).format(anotherSummerDay));
+        Assert.assertEquals("Aug 23, 2016", DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM).format(anotherSummerDay));
+        Assert.assertEquals("8/23/16", DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT).format(anotherSummerDay));
+    }
+
+    @Test
+    public void shouldPrintStyledDateTime() {
+        LocalDateTime anotherSummerDay = LocalDateTime.of(2016, 8, 23, 13, 12, 45);
+        Assert.assertEquals("Tuesday, August 23, 2016 1:12:45 PM EET", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).withZone(ZoneId.of("Europe/Helsinki")).format(anotherSummerDay));
+        Assert.assertEquals("August 23, 2016 1:12:45 PM EET", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).withZone(ZoneId.of("Europe/Helsinki")).format(anotherSummerDay));
+        Assert.assertEquals("Aug 23, 2016 1:12:45 PM", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withZone(ZoneId.of("Europe/Helsinki")).format(anotherSummerDay));
+        Assert.assertEquals("8/23/16 1:12 PM", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.of("Europe/Helsinki")).format(anotherSummerDay));
     }
 }
