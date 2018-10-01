@@ -21,11 +21,11 @@ public class MergeMaps {
 
         initialize();
 
-        //mergeFunction();
+        mergeFunction();
 
-        //streamConcat();
+        streamConcat();
 
-        //streamOf();
+        streamOf();
 
         streamEx();
     }
