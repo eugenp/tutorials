@@ -2,15 +2,6 @@ package com.baeldung.algorithms.quicksort;
 
 public class QuickSort {
 
-    public static void main(String[] args) {
-        int[] a = { 9, 5, 1, 0, 6, 2, 3, 4, 7, 8 };
-
-        quickSort(a, 0, a.length-1);
-
-        for (int i = 0; i < a.length; i++)
-            System.out.println(a[i]);
-    }
-
     public static void quickSort(int arr[], int begin, int end)
     {
         if (begin < end) {
