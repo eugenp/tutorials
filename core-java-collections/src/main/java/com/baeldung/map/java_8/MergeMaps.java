@@ -1,8 +1,13 @@
 package com.baeldung.map.java_8;
 
 import com.baeldung.sort.Employee;
+import one.util.streamex.EntryStream;
+import one.util.streamex.IntCollector;
+import one.util.streamex.StreamEx;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -20,7 +25,18 @@ public class MergeMaps {
 
         //streamConcat();
 
-        streamOf();
+        //streamOf();
+
+        streamEx();
+    }
+
+    private static void streamEx() {
+        Map<String, Employee> map3 = EntryStream.of(map1)
+                .append(EntryStream.of(map2))
+                .toMap((e1, e2) -> e1);
+
+        System.out.println(map3);
+
     }
 
     private static void streamOf() {
