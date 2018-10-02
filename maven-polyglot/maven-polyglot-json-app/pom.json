@@ -1,0 +1,34 @@
+{
+  "modelVersion": "4.0.0",
+  "groupId": "com.baeldung.maven.polyglot",
+  "artifactId": "maven-polyglot-json-app",
+  "version": "1.0-SNAPSHOT",
+  "name": "Json Maven Polyglot",
+  "parent": {
+    "groupId": "org.springframework.boot",
+    "artifactId": "spring-boot-starter-parent",
+    "version": "2.0.5.RELEASE",
+    "relativePath": null
+  },
+  "properties": {
+    "project.build.sourceEncoding": "UTF-8",
+    "project.reporting.outputEncoding": "UTF-8",
+    "maven.compiler.source": "1.8",
+    "maven.compiler.target": "1.8",
+    "java.version": "1.8"
+  },
+  "dependencies": [
+    {
+      "groupId": "org.springframework.boot",
+      "artifactId": "spring-boot-starter-web"
+    }
+  ],
+  "build": {
+    "plugins": [
+      {
+        "groupId": "org.springframework.boot",
+        "artifactId": "spring-boot-maven-plugin"
+      }
+    ]
+  }
+}
