@@ -9,12 +9,12 @@ class StructuralJumpTest {
     @Test
     fun givenLoop_whenBreak_thenComplete() {
         var value = ""
-        for (i in 'a'..'e') {
-            value += i.toString()
-            if (i == 'c')
+        for (i in "hello_world") {
+            if (i == '_')
                 break
+            value += i.toString()
         }
-        assertEquals("abc", value)
+        assertEquals("hello", value)
     }
     @Test
     fun givenLoop_whenBreakWithLabel_thenComplete() {
@@ -32,12 +32,12 @@ class StructuralJumpTest {
     @Test
     fun givenLoop_whenContinue_thenComplete() {
         var result = ""
-        for (i in 'a'..'d') {
-            if (i == 'b')
+        for (i in "hello_world") {
+            if (i == '_')
                 continue
             result += i
         }
-        assertEquals("acd", result)
+        assertEquals("helloworld", result)
     }
     @Test
     fun givenLoop_whenContinueWithLabel_thenComplete() {
@@ -73,26 +73,26 @@ class StructuralJumpTest {
     fun givenLambda_whenReturnWithExplicitLabel_thenComplete() {
         var result = ""
         "hello_world".forEach lit@{
-            if (it == 'o') {
+            if (it == '_') {
                 // local return to the caller of the lambda, i.e. the forEach loop
                 return@lit
             }
             result += it.toString()
         }
-        assertEquals("hell_wrld", result)
+        assertEquals("helloworld", result)
     }
 
     @Test
     fun givenLambda_whenReturnWithImplicitLabel_thenComplete() {
         var result = ""
         "hello_world".forEach {
-            if (it == 'o') {
+            if (it == '_') {
                 // local return to the caller of the lambda, i.e. the forEach loop
                 return@forEach
             }
             result += it.toString()
         }
-        assertEquals("hell_wrld", result)
+        assertEquals("helloworld", result)
     }
 
     @Test
@@ -100,10 +100,10 @@ class StructuralJumpTest {
         var result = ""
         "hello_world".forEach(fun(element) {
             // local return to the caller of the anonymous fun, i.e. the forEach loop
-            if (element == 'o') return
+            if (element == '_') return
             result += element.toString()
         })
-        assertEquals("hell_wrld", result)
+        assertEquals("helloworld", result)
     }
 
     @Test
