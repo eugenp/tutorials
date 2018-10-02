@@ -48,5 +48,7 @@
 - [Thread Safe LIFO Data Structure Implementations](https://www.baeldung.com/java-lifo-thread-safe)
 - [Collections.emptyList() vs. New List Instance](https://www.baeldung.com/java-collections-emptylist-new-list)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
-- [](https://www.baeldung.com/java-hashset-arraylist-contains-performance)
 - [Differences Between Collection.clear() and Collection.removeAll()](https://www.baeldung.com/java-collection-clear-vs-removeall)
+- [Performance of contains() in a HashSet vs ArrayList](https://www.baeldung.com/java-hashset-arraylist-contains-performance)
+- [Get the Key for a Value from a Java Map](https://www.baeldung.com/java-map-key-from-value)
+- [Time Complexity of Java Collections](https://www.baeldung.com/java-collections-complexity)

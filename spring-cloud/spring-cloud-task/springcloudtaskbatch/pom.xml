@@ -3,14 +3,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung.cloud</groupId>
     <artifactId>springcloudtaskbatch</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-	<name>springcloudtaskbatch</name>
+    <name>springcloudtaskbatch</name>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
-        <groupId>com.baeldung</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../../parent-boot-1</relativePath>
+        <artifactId>spring-cloud-task</artifactId>
+        <groupId>com.baeldung.spring.cloud</groupId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <dependencies>
@@ -47,18 +45,6 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-task-dependencies</artifactId>
-                <version>${spring-cloud-task.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -70,10 +56,6 @@
 
     <properties>
         <start-class>com.baeldung.TaskDemo</start-class>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-cloud-task.version>1.2.2.RELEASE</spring-cloud-task.version>
     </properties>
 
 </project>
