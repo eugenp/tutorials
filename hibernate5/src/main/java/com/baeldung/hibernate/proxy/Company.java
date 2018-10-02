@@ -2,9 +2,10 @@ package com.baeldung.hibernate.proxy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
-public class Boss implements Serializable {
+public class Company implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -13,14 +14,10 @@ public class Boss implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
-    private String surname;
+    public Company() { }
 
-    public Boss() { }
-
-    public Boss(String name, String surname) {
+    public Company(String name) {
         this.name = name;
-        this.surname = surname;
     }
 
     public Long getId() {
@@ -39,11 +36,17 @@ public class Boss implements Serializable {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Company company = (Company) o;
+        return Objects.equals(id, company.id) &&
+                Objects.equals(name, company.name);
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
