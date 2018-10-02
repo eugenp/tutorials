@@ -50,17 +50,63 @@ public class HibernateProxyUnitTest {
     }
 
     @Test(expected = ObjectNotFoundException.class)
-    public void givenAnInexistentEmployeeId_whenUseLoadMethod_thenThrowObjectNotFoundException() {
+    public void givenAnNonExistentEmployeeId_whenUseLoadMethod_thenThrowObjectNotFoundException() {
         Employee employee = session.load(Employee.class, 999L);
-        assertNull(employee);
-        employee.getId();
+        assertNotNull(employee);
+        employee.getFirstName();
     }
 
     @Test
-    public void givenAnInexistentEmployeeId_whenUseLoadMethod_thenReturnAProxy() {
+    public void givenAnNonExistentEmployeeId_whenUseLoadMethod_thenReturnAProxy() {
         Employee employee = session.load(Employee.class, 14L);
         assertNotNull(employee);
         assertTrue(employee instanceof HibernateProxy);
+    }
+
+    @Test
+    public void givenAnEmployeeFromACompany_whenUseLoadMethod_thenCompanyIsAProxy() {
+        Transaction tx = session.beginTransaction();
+
+        this.workplace = new Company("Bizco");
+        session.save(workplace);
+
+        this.albert = new Employee(workplace, "Albert");
+        session.save(albert);
+
+        session.flush();
+        session.clear();
+
+        tx.commit();
+        this.session = factory.openSession();
+
+        Employee proxyAlbert = session.load(Employee.class, albert.getId());
+        assertTrue(proxyAlbert instanceof HibernateProxy);
+
+        // with many-to-one lazy-loading, associations remain proxies
+        assertTrue(proxyAlbert.getWorkplace() instanceof HibernateProxy);
+    }
+
+    @Test
+    public void givenACompanyWithEmployees_whenUseLoadMethod_thenEmployeesAreProxies() {
+        Transaction tx = session.beginTransaction();
+
+        this.workplace = new Company("Bizco");
+        session.save(workplace);
+
+        this.albert = new Employee(workplace, "Albert");
+        session.save(albert);
+
+        session.flush();
+        session.clear();
+
+        tx.commit();
+        this.session = factory.openSession();
+
+        Company proxyBizco = session.load(Company.class, workplace.getId());
+        assertTrue(proxyBizco instanceof HibernateProxy);
+
+        // with one-to-many, associations aren't proxies
+        assertFalse(proxyBizco.getEmployees().iterator().next() instanceof HibernateProxy);
     }
 
     @Test
