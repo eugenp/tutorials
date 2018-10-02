@@ -28,6 +28,24 @@ public class MergeMaps {
         streamOf();
 
         streamEx();
+
+        streamMerge();
+    }
+
+    private static void streamMerge() {
+
+        Map<String, Employee> map3 = map2.entrySet()
+                .stream()
+                .collect(
+                        Collectors.toMap(
+                                Map.Entry::getKey,
+                                Map.Entry::getValue,
+                                (v1, v2) -> new Employee(v1.getId(), v2.getName()),
+                                () -> new HashMap<>(map1)
+                        )
+                );
+
+        System.out.println(map3);
     }
 
     private static void streamEx() {
@@ -55,9 +73,9 @@ public class MergeMaps {
 
     private static void streamConcat() {
         Map<String, Employee> result = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream()).collect(Collectors.toMap(
-          Map.Entry::getKey,
-          Map.Entry::getValue,
-          (value1, value2) -> new Employee(value1.getId(), value2.getName())
+                Map.Entry::getKey,
+                Map.Entry::getValue,
+                (value1, value2) -> new Employee(value1.getId(), value2.getName())
         ));
 
         result.entrySet().forEach(System.out::println);
@@ -68,12 +86,11 @@ public class MergeMaps {
 
         map2.forEach(
                 (key, value) -> map3.merge(key, value, (v1, v2) ->
-                        new Employee(v1.getId(),v2.getName()))
+                        new Employee(v1.getId(), v2.getName()))
         );
 
         map3.entrySet().forEach(System.out::println);
     }
-
 
 
     private static void initialize() {
