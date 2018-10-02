@@ -671,7 +671,7 @@
 				<!-- <module>guest/spring-security</module> --><!-- guest post on different site -->
 				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
 				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
-				<module>jenkins/hello-world</module>
+				<!-- <module>jenkins/hello-world</module> --> <!-- disabled in the default profile -->
 				<!-- <module>rule-engines/easy-rules</module> --><!-- Wrong Parent -->
 				<!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
 				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
