@@ -522,9 +522,9 @@
 				<module>spring-rest-angular</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-query-language</module>
-				<module>spring-rest</module>
+				<!-- <module>spring-rest</module> --> <!-- temporarily disabled -->
+				<!-- <module>spring-rest-simple</module> --> <!-- temporarily disabled -->
 				<module>spring-resttemplate</module>
-				<module>spring-rest-simple</module>
 				<module>spring-security-acl</module>
 				<module>spring-security-cache-control</module>
 				<module>spring-security-client/spring-security-jsp-authentication</module>
