@@ -28,3 +28,6 @@
 - [Java Check a String for Lowercase/Uppercase Letter, Special Character and Digit](https://www.baeldung.com/java-lowercase-uppercase-special-character-digit-regex)
 - [Convert java.util.Date to String](https://www.baeldung.com/java-util-date-to-string)
 - [String Not Empty Test Assertions in Java](https://www.baeldung.com/java-assert-string-not-empty)
+- [Converting a Stack Trace to a String in Java](https://www.baeldung.com/java-stacktrace-to-string)
+- [Sorting a String Alphabetically in Java](https://www.baeldung.com/java-sort-string-alphabetically)
+- [Remove Emojis from a Java String](https://www.baeldung.com/java-string-remove-emojis)
