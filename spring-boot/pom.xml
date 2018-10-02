@@ -118,16 +118,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-websocket</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.togglz</groupId>
             <artifactId>togglz-spring-boot-starter</artifactId>
             <version>${togglz.version}</version>
@@ -154,6 +144,20 @@
             <groupId>de.codecentric</groupId>
             <artifactId>chaos-monkey-spring-boot</artifactId>
             <version>${chaos.monkey.version}</version>
+        </dependency>
+
+        <!-- for Graylog demo -->
+        <dependency>
+            <!-- forcing spring boot 1.x sing log4j was dropped in spring boot 1.4 and beyond -->
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j</artifactId>
+            <version>1.3.8.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graylog2</groupId>
+            <artifactId>gelfj</artifactId>
+            <version>1.1.16</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
