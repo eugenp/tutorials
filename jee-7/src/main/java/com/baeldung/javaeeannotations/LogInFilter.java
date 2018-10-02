@@ -1,4 +1,4 @@
-package com.baeldung.javaeeannotations.JavaEEAnnotationsSample.src.main.java.com.baeldung.javaeeannotations;
+package com.baeldung.javaeeannotations;
 
 import java.io.IOException;
 
