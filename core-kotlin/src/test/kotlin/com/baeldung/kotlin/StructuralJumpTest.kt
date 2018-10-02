@@ -4,118 +4,118 @@ import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 
-class StructuralJumpTest  {
+class StructuralJumpTest {
 
     @Test
     fun givenLoop_whenBreak_thenComplete() {
-        var value = 0
-
-        //break loop without label
-        for (i in 1..10) {
-            value = i
-            if (value == 3)
+        var value = ""
+        for (i in 'a'..'e') {
+            value += i.toString()
+            if (i == 'c')
                 break
         }
-
-        assertEquals(value, 3)
-
-        //break loop with label
-        outer_loop@ for (i in 1..10) {
-            for (j in 1..10) {
-                value = i * j
-                if (value == 30)
+        assertEquals("abc", value)
+    }
+    @Test
+    fun givenLoop_whenBreakWithLabel_thenComplete() {
+        var value = ""
+        outer_loop@ for (i in 'a'..'d') {
+            for (j in 1..3) {
+                value += "" + i + j
+                if (i == 'b' && j == 1)
                     break@outer_loop
             }
         }
-
-        assertEquals(value, 30)
+        assertEquals("a1a2a3b1", value)
     }
 
     @Test
     fun givenLoop_whenContinue_thenComplete() {
-        var processedList = mutableListOf<Int>()
-        //continue loop without label
-        for (i in 1..10) {
-            if (i == 3)
+        var result = ""
+        for (i in 'a'..'d') {
+            if (i == 'b')
                 continue
-            processedList.add(i)
+            result += i
         }
-
-        assert(processedList.all { it -> it != 3 })
-
-        //continue loop with label
-        processedList = mutableListOf<Int>()
-        outer_loop@ for (i in 1..10) {
-            for (j in 1..10) {
-                if (i == 3)
+        assertEquals("acd", result)
+    }
+    @Test
+    fun givenLoop_whenContinueWithLabel_thenComplete() {
+        var result = ""
+        outer_loop@ for (i in 'a'..'c') {
+            for (j in 1..3) {
+                if (i == 'b')
                     continue@outer_loop
-                processedList.add(i*j)
+                result += "" + i + j
             }
         }
-
-        assertEquals(processedList.size, 90)
+        assertEquals("a1a2a3c1c2c3", result)
     }
 
     @Test
     fun givenLambda_whenReturn_thenComplete() {
-        listOf(1, 2, 3, 4, 5).forEach {
-            if (it == 3) return // non-local return directly to the caller
-            assert(it < 3)
+        var result = returnInLambda();
+        assertEquals("hello", result)
+    }
+
+    private fun returnInLambda(): String {
+        var result = ""
+        "hello_world".forEach {
+            // non-local return directly to the caller
+            if (it == '_') return result
+            result += it.toString()
         }
-        //this point is unreachable
-        assert(false)
+        //this line won't be reached
+        return result;
     }
 
     @Test
     fun givenLambda_whenReturnWithExplicitLabel_thenComplete() {
-        var result = mutableListOf<Int>()
-
-        listOf(1, 2, 3, 4, 5).forEach lit@{
-            if (it == 3) {
+        var result = ""
+        "hello_world".forEach lit@{
+            if (it == 'o') {
                 // local return to the caller of the lambda, i.e. the forEach loop
                 return@lit
             }
-            result.add(it)
+            result += it.toString()
         }
-
-        assert(result.all { it -> it != 3 })
+        assertEquals("hell_wrld", result)
     }
 
     @Test
     fun givenLambda_whenReturnWithImplicitLabel_thenComplete() {
-        var result = mutableListOf<Int>()
-
-        listOf(1, 2, 3, 4, 5).forEach {
-            if (it == 3) {
+        var result = ""
+        "hello_world".forEach {
+            if (it == 'o') {
                 // local return to the caller of the lambda, i.e. the forEach loop
                 return@forEach
             }
-            result.add(it)
+            result += it.toString()
         }
-
-        assert(result.all { it -> it != 3 })
+        assertEquals("hell_wrld", result)
     }
 
     @Test
     fun givenAnonymousFunction_return_thenComplete() {
-        var result = mutableListOf<Int>()
-        listOf(1, 2, 3, 4, 5).forEach(fun(element: Int) {
-            if (element == 3) return  // local return to the caller of the anonymous fun, i.e. the forEach loop
-            result.add(element)
+        var result = ""
+        "hello_world".forEach(fun(element) {
+            // local return to the caller of the anonymous fun, i.e. the forEach loop
+            if (element == 'o') return
+            result += element.toString()
         })
-
-        assert(result.all { it -> it != 3 })
+        assertEquals("hell_wrld", result)
     }
 
     @Test
     fun givenAnonymousFunction_returnToLabel_thenComplete() {
-        var value = 0
+        var result = ""
         run loop@{
-            listOf(1, 2, 3, 4, 5).forEach {
-                value = it
-                if (it == 3) return@loop // non-local return from the lambda passed to run
+            "hello_world".forEach {
+                // non-local return from the lambda passed to run
+                if (it == '_') return@loop
+                result += it.toString()
             }
         }
-        assertEquals(value, 3)
+        assertEquals("hello", result)
     }
 }
