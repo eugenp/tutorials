@@ -1,6 +1,5 @@
 package com.baeldung.jackson.serialization.jsonpropertyorder;
 
-
 import com.baeldung.jackson.domain.Item;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -13,7 +12,7 @@ import java.util.List;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-@JsonPropertyOrder({"items", "firstName", "lastName", "id"})
+@JsonPropertyOrder({ "items", "firstName", "lastName", "id" })
 public class Author extends Person {
 
     List<Item> items = new ArrayList<>();

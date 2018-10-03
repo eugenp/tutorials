@@ -45,4 +45,19 @@ public class FooController {
             .setName("Foo Name")
             .build();
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/foos/new")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public Foo createFoo(@RequestBody final Foo foo) {
+        return foo;
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/foos/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public long deleteFoo(@PathVariable final long id) {
+        return id;
+    }
+
 }

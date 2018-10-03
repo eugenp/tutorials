@@ -1,0 +1,32 @@
+=========
+
+## Java Strings Cookbooks and Examples
+
+### Relevant Articles: 
+- [String Operations with Java Streams](http://www.baeldung.com/java-stream-operations-on-strings)
+- [Converting String to Stream of chars](http://www.baeldung.com/java-string-to-stream)
+- [Java 8 StringJoiner](http://www.baeldung.com/java-string-joiner)
+- [Image to Base64 String Conversion](http://www.baeldung.com/java-base64-image-string)
+- [Java – Generate Random String](http://www.baeldung.com/java-random-string)
+- [Convert char to String in Java](http://www.baeldung.com/java-convert-char-to-string)
+- [Convert String to int or Integer in Java](http://www.baeldung.com/java-convert-string-to-int-or-integer)
+- [How to Convert String to different data types in Java](http://www.baeldung.com/java-string-conversions)
+- [Converting Strings to Enums in Java](http://www.baeldung.com/java-string-to-enum)
+- [Quick Guide to the Java StringTokenizer](http://www.baeldung.com/java-stringtokenizer)
+- [Count Occurrences of a Char in a String](http://www.baeldung.com/java-count-chars)
+- [Split a String in Java](http://www.baeldung.com/java-split-string)
+- [How to Remove the Last Character of a String?](http://www.baeldung.com/java-remove-last-character-of-string)
+- [CharSequence vs. String in Java](http://www.baeldung.com/java-char-sequence-string)
+- [StringBuilder and StringBuffer in Java](http://www.baeldung.com/java-string-builder-string-buffer)
+- [Guide to Java String Pool](http://www.baeldung.com/java-string-pool)
+- [Check if a String is a Palindrome](http://www.baeldung.com/java-palindrome)
+- [Comparing Strings in Java](http://www.baeldung.com/java-compare-strings)
+- [Check If a String Is Numeric in Java](http://www.baeldung.com/java-check-string-number)
+- [Why Use char[] Array Over a String for Storing Passwords in Java?](http://www.baeldung.com/java-storing-passwords)
+- [Convert a String to Title Case](http://www.baeldung.com/java-string-title-case)
+- [Compact Strings in Java 9](http://www.baeldung.com/java-9-compact-string)
+- [Java Check a String for Lowercase/Uppercase Letter, Special Character and Digit](https://www.baeldung.com/java-lowercase-uppercase-special-character-digit-regex)
+- [Convert java.util.Date to String](https://www.baeldung.com/java-util-date-to-string)
+- [Converting a Stack Trace to a String in Java](https://www.baeldung.com/java-stacktrace-to-string)
+- [Sorting a String Alphabetically in Java](https://www.baeldung.com/java-sort-string-alphabetically)
+- [Remove Emojis from a Java String](https://www.baeldung.com/java-string-remove-emojis)

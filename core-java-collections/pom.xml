@@ -71,7 +71,6 @@
 		        
     </dependencies>
 
-
     <properties>
         <openjdk.jmh.version>1.19</openjdk.jmh.version>
         <junit.platform.version>1.2.0</junit.platform.version>
