@@ -4,7 +4,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 
-class StructuralJumpTest {
+class StructuralJumpUnitTest {
 
     @Test
     fun givenLoop_whenBreak_thenComplete() {
