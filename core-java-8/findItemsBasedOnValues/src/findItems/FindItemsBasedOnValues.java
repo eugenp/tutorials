@@ -16,11 +16,11 @@ public class FindItemsBasedOnValues {
 
     public static void main(String[] args) throws ParseException {
         FindItemsBasedOnValues findItems = new FindItemsBasedOnValues();
-        findItems.findItemsImpl();
+        findItems.givenListOfCompanies_thenListOfClientsIsFilteredCorrectly();
     }
 
     @Test
-    public void findItemsImpl() throws ParseException {
+    public void givenListOfCompanies_thenListOfClientsIsFilteredCorrectly() throws ParseException {
         List<Client> expectedList = new ArrayList<Client>();
         Client expectedClient = new Client(1001, DATE_FORMAT.parse("01-02-2018"));
         expectedList.add(expectedClient);
