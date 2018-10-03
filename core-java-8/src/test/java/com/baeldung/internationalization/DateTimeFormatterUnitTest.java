@@ -48,7 +48,7 @@ public class DateTimeFormatterUnitTest {
     }
 
     @Test
-    public void shoulPrintFormattedDate() {
+    public void shouldPrintFormattedDate() {
         String europeanDatePattern = "dd.MM.yyyy";
         DateTimeFormatter europeanDateFormatter = DateTimeFormatter.ofPattern(europeanDatePattern);
         LocalDate summerDay = LocalDate.of(2016, 7, 31);
@@ -111,5 +111,12 @@ public class DateTimeFormatterUnitTest {
         Assert.assertEquals("August 23, 2016 1:12:45 PM EET", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.LONG).withZone(ZoneId.of("Europe/Helsinki")).format(anotherSummerDay));
         Assert.assertEquals("Aug 23, 2016 1:12:45 PM", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM).withZone(ZoneId.of("Europe/Helsinki")).format(anotherSummerDay));
         Assert.assertEquals("8/23/16 1:12 PM", DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.of("Europe/Helsinki")).format(anotherSummerDay));
+    }
+
+    @Test
+    public void shouldPrintFormattedDateTimeWithPredefined() {
+        Assert.assertEquals("2018-03-09", DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.of(2018, 3, 9)));
+        Assert.assertEquals("2018-03-09-03:00", DateTimeFormatter.ISO_OFFSET_DATE.format(LocalDate.of(2018, 3, 9).atStartOfDay(ZoneId.of("UTC-3"))));
+        Assert.assertEquals("Fri, 9 Mar 2018 00:00:00 -0300", DateTimeFormatter.RFC_1123_DATE_TIME.format(LocalDate.of(2018, 3, 9).atStartOfDay(ZoneId.of("UTC-3"))));
     }
 }
