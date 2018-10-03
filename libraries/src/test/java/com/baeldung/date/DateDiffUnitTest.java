@@ -39,6 +39,15 @@ public class DateDiffUnitTest {
     }
 
     @Test
+    public void givenTwoZonedDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
+        LocalDateTime ldt = LocalDateTime.now();
+        ZonedDateTime now = ldt.atZone(ZoneId.of("America/Montreal"));
+        ZonedDateTime sixDaysBehind = now.withZoneSameInstant(ZoneId.of("Asia/Singapore")).minusDays(6);
+        long diff = ChronoUnit.DAYS.between(sixDaysBehind, now);
+        assertEquals(diff, 6);
+    }
+
+    @Test
     public void givenTwoDatesInJodaTime_whenDifferentiating_thenWeGetSix() {
         org.joda.time.LocalDate now = org.joda.time.LocalDate.now();
         org.joda.time.LocalDate sixDaysBehind = now.minusDays(6);
