@@ -16,7 +16,14 @@ public class XMLDocumentWriterUnitTest {
         DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         InputStream stringInputStream = new ByteArrayInputStream("<Company><Department name=\"Sales\"><Employee name=\"John Smith\"/><Employee name=\"Tim Dellor\"/></Department></Company>".getBytes());
         Document document = documentBuilder.parse(stringInputStream);
-        new XMLDocumentWriter().write(document, "company.xml", false, false);
+        new XMLDocumentWriter().write(document, "company_simple.xml", false, false);
     }
 
+    @Test
+    public void givenXMLDocumentWhenWriteIsCalledWithPrettyPrintThenFormattedXMLIsWrittenToFile() throws Exception {
+        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        InputStream stringInputStream = new ByteArrayInputStream("<Company><Department name=\"Sales\"><Employee name=\"John Smith\"/><Employee name=\"Tim Dellor\"/></Department></Company>".getBytes());
+        Document document = documentBuilder.parse(stringInputStream);
+        new XMLDocumentWriter().write(document, "company_prettyprinted.xml", false, true);
+    }
 }
