@@ -21,11 +21,3 @@ In additional to Spring, the following technologies are in focus: `core Java`, `
 Building the project
 ====================
 To do the full build, do: `mvn install -Pdefault -Dgib.enabled=false`
-
-
-Working with the code in Eclipse
-================================
-Any IDE can be used to work with the projects, but if you're using Eclipse, consider the following. 
-
-- import the included **formatter** in Eclipse: 
-`https://github.com/eugenp/tutorials/tree/master/eclipse`
