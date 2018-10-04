@@ -2,12 +2,7 @@ package com.baeldung.map.java_8;
 
 import com.baeldung.sort.Employee;
 import one.util.streamex.EntryStream;
-import one.util.streamex.IntCollector;
-import one.util.streamex.StreamEx;
-
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -75,7 +70,7 @@ public class MergeMaps {
         Map<String, Employee> result = Stream.concat(map1.entrySet().stream(), map2.entrySet().stream()).collect(Collectors.toMap(
                 Map.Entry::getKey,
                 Map.Entry::getValue,
-                (value1, value2) -> new Employee(value1.getId(), value2.getName())
+                (value1, value2) -> new Employee(value2.getId(), value1.getName())
         ));
 
         result.entrySet().forEach(System.out::println);
@@ -103,7 +98,7 @@ public class MergeMaps {
 
         Employee employee4 = new Employee(2L, "George");
         map2.put(employee4.getName(), employee4);
-        Employee employee5 = new Employee(1L, "Henry");
+        Employee employee5 = new Employee(3L, "Henry");
         map2.put(employee5.getName(), employee5);
     }
 
