@@ -9,6 +9,7 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.FormatStyle;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
@@ -118,5 +119,40 @@ public class DateTimeFormatterUnitTest {
         Assert.assertEquals("2018-03-09", DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.of(2018, 3, 9)));
         Assert.assertEquals("2018-03-09-03:00", DateTimeFormatter.ISO_OFFSET_DATE.format(LocalDate.of(2018, 3, 9).atStartOfDay(ZoneId.of("UTC-3"))));
         Assert.assertEquals("Fri, 9 Mar 2018 00:00:00 -0300", DateTimeFormatter.RFC_1123_DATE_TIME.format(LocalDate.of(2018, 3, 9).atStartOfDay(ZoneId.of("UTC-3"))));
+    }
+
+    @Test
+    public void shouldParseDateTime() {
+        Assert.assertEquals(LocalDate.of(2018, 3, 12), LocalDate.from(DateTimeFormatter.ISO_LOCAL_DATE.parse("2018-03-09")).plusDays(3));
+    }
+
+    @Test
+    public void shouldParseFormatStyleFull() {
+        ZonedDateTime dateTime = ZonedDateTime.from(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL).parse("Tuesday, August 23, 2016 1:12:45 PM EET"));
+        Assert.assertEquals(ZonedDateTime.of(LocalDateTime.of(2016, 8, 23, 22, 12, 45), ZoneId.of("Europe/Bucharest")), dateTime.plusHours(9));
+    }
+
+    @Test
+    public void shouldParseDateWithCustomFormatter() {
+        DateTimeFormatter europeanDateFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        Assert.assertFalse(LocalDate.from(europeanDateFormatter.parse("15.08.2014")).isLeapYear());
+    }
+
+    @Test
+    public void shouldParseTimeWithCustomFormatter() {
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("hh:mm:ss a");
+        Assert.assertTrue(LocalTime.from(timeFormatter.parse("12:25:30 AM")).isBefore(LocalTime.NOON));
+    }
+
+    @Test
+    public void shouldParseZonedDateTimeWithCustomFormatter() {
+        DateTimeFormatter zonedFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm z");
+        Assert.assertEquals(7200, ZonedDateTime.from(zonedFormatter.parse("31.07.2016 14:15 GMT+02:00")).getOffset().getTotalSeconds());
+    }
+
+    @Test(expected = DateTimeParseException.class)
+    public void shouldExpectAnExceptionIfDateTimeStringNotMatchPattern() {
+        DateTimeFormatter zonedFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm z");
+        ZonedDateTime.from(zonedFormatter.parse("31.07.2016 14:15"));
     }
 }
