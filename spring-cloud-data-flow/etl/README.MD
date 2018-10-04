@@ -3,5 +3,7 @@ This is an example of a ETL stream pipeline, mixing a starter application with c
 
 # Applications
 JDBC Source - Application Starter distributed by default
+
 customer-transform - Custom application to transform the data
+
 customer-mongodb-sink - Custom application to sink the data
