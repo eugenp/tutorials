@@ -10,12 +10,13 @@ And here's the Master Class of Learn Spring Security: <br/>
 
 
 
-Spring Tutorials
+Java and Spring Tutorials
 ================
 
-This project is **a collection of small and focused tutorials** each covering a single and well defined area of development. 
-Most of the tutorial projects are focused on the `Spring Framework` (and `Spring Security`).  
+This project is **a collection of small and focused tutorials** - each covering a single and well defined area of development in the Java ecosystem. 
+A strong focus of these is, of course, the Spring Framework - Spring, Spring Boot and Spring Securiyt. 
 In additional to Spring, the following technologies are in focus: `core Java`, `Jackson`, `HttpClient`, `Guava`. 
+
 
 Building the project
 ====================
@@ -28,15 +29,3 @@ Any IDE can be used to work with the projects, but if you're using Eclipse, cons
 
 - import the included **formatter** in Eclipse: 
 `https://github.com/eugenp/tutorials/tree/master/eclipse`
-
-
-CI - Jenkins
-================================
-This tutorials project is being built **[>> HERE](https://rest-security.ci.cloudbees.com/job/tutorials-unit/)**
-
-### Relevant Articles: 
-================================
-
-- [Apache Maven Standard Directory Layout](http://www.baeldung.com/maven-directory-structure)
-- [Apache Maven Tutorial](http://www.baeldung.com/maven)
-- [Designing a User Friendly Java Library](http://www.baeldung.com/design-a-user-friendly-java-library)
