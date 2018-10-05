@@ -98,7 +98,7 @@ public class FindKthLargest {
 
     private int randomPartition(Integer arr[], int left, int right) {
         int n = right - left + 1;
-        int pivot = (int) (Math.random()) % n;
+        int pivot = (int) (Math.random() * n);
         swap(arr, left + pivot, right);
         return partition(arr, left, right);
     }
