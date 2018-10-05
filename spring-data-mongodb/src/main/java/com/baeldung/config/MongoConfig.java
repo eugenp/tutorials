@@ -9,7 +9,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
-import org.springframework.data.mongodb.core.convert.CustomConversions;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
@@ -50,9 +50,9 @@ public class MongoConfig extends AbstractMongoConfiguration {
     }
 
     @Override
-    public CustomConversions customConversions() {
+    public MongoCustomConversions customConversions() {
         converters.add(new UserWriterConverter());
-        return new CustomConversions(converters);
+        return new MongoCustomConversions(converters);
     }
 
     @Bean

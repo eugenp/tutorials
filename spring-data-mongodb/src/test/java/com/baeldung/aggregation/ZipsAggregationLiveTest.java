@@ -40,11 +40,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.baeldung.aggregation.model.StatePopulation;
 import com.baeldung.config.MongoConfig;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
-import com.mongodb.util.JSON;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -58,23 +56,22 @@ public class ZipsAggregationLiveTest {
     @BeforeClass
     public static void setupTests() throws Exception {
         client = new MongoClient();
-        DB testDB = client.getDB("test");
-        DBCollection zipsCollection = testDB.getCollection("zips");
+        MongoDatabase testDB = client.getDatabase("test");
+        MongoCollection<Document> zipsCollection = testDB.getCollection("zips");
         zipsCollection.drop();
 
         InputStream zipsJsonStream = ZipsAggregationLiveTest.class.getResourceAsStream("/zips.json");
         BufferedReader reader = new BufferedReader(new InputStreamReader(zipsJsonStream));
         reader.lines()
-          .forEach(line -> zipsCollection.insert((DBObject) JSON.parse(line)));
+          .forEach(line -> zipsCollection.insertOne(Document.parse(line)));
         reader.close();
-
     }
 
     @AfterClass
     public static void tearDown() throws Exception {
         client = new MongoClient();
-        DB testDB = client.getDB("test");
-        DBCollection zipsCollection = testDB.getCollection("zips");
+        MongoDatabase testDB = client.getDatabase("test");
+        MongoCollection<Document> zipsCollection = testDB.getCollection("zips");
         zipsCollection.drop();
         client.close();
     }
