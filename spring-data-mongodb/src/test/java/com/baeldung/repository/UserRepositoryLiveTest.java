@@ -5,8 +5,6 @@ import static org.junit.Assert.assertThat;
 
 import java.util.List;
 
-import com.baeldung.config.MongoConfig;
-import com.baeldung.model.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,6 +19,9 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.baeldung.config.MongoConfig;
+import com.baeldung.model.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -72,8 +73,7 @@ public class UserRepositoryLiveTest {
 
         user.setName("Jim");
         userRepository.save(user);
-
-        assertThat(mongoOps.findAll(User.class).size(), is(2));
+        assertThat(mongoOps.findAll(User.class).size(), is(1));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class UserRepositoryLiveTest {
         mongoOps.insert(user);
 
         user = mongoOps.findOne(Query.query(Criteria.where("name").is("Chris")), User.class);
-        final User foundUser = userRepository.findOne(user.getId());
+        final User foundUser = userRepository.findById(user.getId()).get();
 
         assertThat(user.getName(), is(foundUser.getName()));
     }
@@ -106,7 +106,7 @@ public class UserRepositoryLiveTest {
         mongoOps.insert(user);
 
         user = mongoOps.findOne(Query.query(Criteria.where("name").is("Harris")), User.class);
-        final boolean isExists = userRepository.exists(user.getId());
+        final boolean isExists = userRepository.existsById(user.getId());
 
         assertThat(isExists, is(true));
     }

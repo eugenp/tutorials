@@ -1,12 +1,24 @@
 package com.baeldung.aggregation;
 
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.util.JSON;
-import com.baeldung.aggregation.model.StatePopulation;
-import com.baeldung.config.MongoConfig;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.limit;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.match;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.sort;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import org.bson.Document;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -26,23 +38,13 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.limit;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.match;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.project;
-import static org.springframework.data.mongodb.core.aggregation.Aggregation.sort;
+import com.baeldung.aggregation.model.StatePopulation;
+import com.baeldung.config.MongoConfig;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+import com.mongodb.MongoClient;
+import com.mongodb.util.JSON;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -140,13 +142,13 @@ public class ZipsAggregationLiveTest {
 
         Aggregation aggregation = newAggregation(sumZips, sortByCount, groupFirstAndLast);
 
-        AggregationResults<DBObject> result = mongoTemplate.aggregate(aggregation, "zips", DBObject.class);
-        DBObject dbObject = result.getUniqueMappedResult();
+        AggregationResults<Document> result = mongoTemplate.aggregate(aggregation, "zips", Document.class);
+        Document document = result.getUniqueMappedResult();
 
-        assertEquals("DC", dbObject.get("minZipState"));
-        assertEquals(24, dbObject.get("minZipCount"));
-        assertEquals("TX", dbObject.get("maxZipState"));
-        assertEquals(1671, dbObject.get("maxZipCount"));
+        assertEquals("DC", document.get("minZipState"));
+        assertEquals(24, document.get("minZipCount"));
+        assertEquals("TX", document.get("maxZipState"));
+        assertEquals(1671, document.get("maxZipCount"));
     }
 
 }
