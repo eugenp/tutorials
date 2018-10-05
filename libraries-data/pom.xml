@@ -249,6 +249,18 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
+		
+		<dependency>
+            <groupId>io.ebean</groupId>
+            <artifactId>ebean</artifactId>
+            <version>11.22.4</version>
+        </dependency>
+       
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
 
     </dependencies>
 
@@ -332,27 +344,7 @@
             <!-- /Reladomo -->
 
             <!-- JDO Plugin -->
-            <plugin>
-                <groupId>org.datanucleus</groupId>
-                <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>${datanucleus-maven-plugin.version}</version>
-                <configuration>
-                    <api>JDO</api>
-                    <props>${basedir}/datanucleus.properties</props>
-                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
-                    <verbose>true</verbose>
-                    <fork>false</fork>
-                    <!-- Solve windows line too long error -->
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>enhance</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+           
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -380,6 +372,28 @@
 			</plugin>
 
         </plugins>
+		<pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>io.ebean</groupId>
+                    <artifactId>ebean-maven-plugin</artifactId>
+                    <version>11.11.2</version>
+                    <executions>
+                        <!-- enhance main classes -->
+                        <execution>
+                            <id>main</id>
+                            <phase>process-classes</phase>
+                            <configuration>
+                                <transformArgs>debug=1</transformArgs>
+                            </configuration>
+                            <goals>
+                                <goal>enhance</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <repositories>
