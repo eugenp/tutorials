@@ -551,18 +551,6 @@
 				<module>spring-security-rest</module>
 				<module>spring-security-sso</module>
 				<module>spring-security-x509</module>
-				<module>spring-session</module>
-				<module>spring-sleuth</module>
-				<module>spring-social-login</module>
-				<module>spring-spel</module>
-				<module>spring-state-machine</module>
-				<module>spring-thymeleaf</module>
-				<module>spring-userservice</module>
-				<module>spring-zuul</module>
-				<module>spring-remoting</module>
-				<module>spring-reactor</module>
-				<module>spring-vertx</module>
-				<module>spring-jinq</module>
 			</modules>
 
 		</profile>
@@ -601,6 +589,18 @@
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
+                <module>spring-session</module>
+                <module>spring-sleuth</module>
+                <module>spring-social-login</module>
+                <module>spring-spel</module>
+                <module>spring-state-machine</module>
+                <module>spring-thymeleaf</module>
+                <module>spring-userservice</module>
+                <module>spring-zuul</module>
+                <module>spring-remoting</module>
+                <module>spring-reactor</module>
+                <module>spring-vertx</module>
+                <module>spring-jinq</module>
                 <module>spring-rest-embedded-tomcat</module>
                 <module>testing-modules/testing</module>
                 <module>testing-modules/testng</module>
