@@ -29,7 +29,7 @@ public class RedisKeyCommandsIntegrationTest {
     private ReactiveStringCommands stringCommands;
 
     @Test
-    public void givenFluxOfKeys_whenSet_thenSet() {
+    public void givenFluxOfKeys_whenPerformOperations_thenPerformOperations() {
         Flux<String> keys = Flux.just("key1", "key2", "key3", "key4");
 
         Flux<SetCommand> generator = keys.map(String::getBytes)
@@ -40,10 +40,6 @@ public class RedisKeyCommandsIntegrationTest {
         StepVerifier.create(stringCommands.set(generator))
             .expectNextCount(4L)
             .verifyComplete();
-    }
-
-    @Test
-    public void givenKeyPattern_whenQueried_thenReturnsAllMatchingKeys() {
 
         Mono<Long> keyCount = keyCommands.keys(ByteBuffer.wrap("key*".getBytes()))
             .flatMapMany(Flux::fromIterable)
