@@ -33,6 +33,10 @@
         <module>spring-cloud-contract</module>
         <module>spring-cloud-kubernetes</module>
         <module>spring-cloud-archaius</module>
+        <module>spring-cloud-functions</module>        
+        <module>spring-cloud-vault</module>
+		<module>spring-cloud-security</module>
+		<module>spring-cloud-task</module>
     </modules>
 
     <build>

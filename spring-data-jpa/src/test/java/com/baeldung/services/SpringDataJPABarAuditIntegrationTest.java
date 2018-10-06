@@ -1,8 +1,16 @@
 package com.baeldung.services;
 
-import com.baeldung.config.PersistenceConfiguration;
-import com.baeldung.domain.Bar;
-import org.junit.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,15 +18,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import com.baeldung.config.PersistenceConfiguration;
+import com.baeldung.domain.Bar;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { PersistenceConfiguration.class }, loader = AnnotationConfigContextLoader.class)
