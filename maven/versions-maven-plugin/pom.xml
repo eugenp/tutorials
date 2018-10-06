@@ -6,8 +6,8 @@
     <artifactId>versions-maven-plugin-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <properties>
-        <versions.maven.plugin.version>2.7</versions.maven.plugin.version>
+    <properties>        
+        <commons-compress-version>1.15</commons-compress-version>
     </properties>
 
     <dependencies>
@@ -31,6 +31,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>${commons-compress-version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.1-SNAPSHOT</version>
@@ -43,13 +49,11 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>${versions.maven.plugin.version}</version>
+                <version>2.7</version>
                 <configuration>
-
                     <excludes>
                         <exclude>org.apache.commons:commons-collections4</exclude>
                     </excludes>
-
                 </configuration>
             </plugin>
         </plugins>
