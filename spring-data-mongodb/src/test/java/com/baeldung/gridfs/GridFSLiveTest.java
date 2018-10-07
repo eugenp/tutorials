@@ -205,10 +205,9 @@ public class GridFSLiveTest {
         DBObject metaData = new BasicDBObject();
         metaData.put("user", "alex");
         InputStream inputStream = null;
-        String id = "";
         try {
             inputStream = new FileInputStream("src/main/resources/test.png");
-            id = gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).toString();
+            gridFsTemplate.store(inputStream, "test.png", "image/png", metaData).toString();
         } catch (FileNotFoundException ex) {
             logger.error("File not found", ex);
         } finally {

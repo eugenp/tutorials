@@ -138,7 +138,7 @@ public class UserRepositoryLiveTest {
         user.setName("Adam");
         mongoOps.insert(user);
 
-        final Pageable pageableRequest = new PageRequest(0, 1);
+        final Pageable pageableRequest = PageRequest.of(0, 1);
 
         final Page<User> page = userRepository.findAll(pageableRequest);
         List<User> users = page.getContent();
