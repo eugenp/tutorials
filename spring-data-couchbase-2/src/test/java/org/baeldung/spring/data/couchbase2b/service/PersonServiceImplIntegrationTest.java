@@ -9,7 +9,7 @@ import java.util.List;
 
 import org.baeldung.spring.data.couchbase.model.Person;
 import org.baeldung.spring.data.couchbase2b.MultiBucketCouchbaseConfig;
-import org.baeldung.spring.data.couchbase2b.MultiBucketIntegationTest;
+import org.baeldung.spring.data.couchbase2b.MultiBucketIntegrationTest;
 import org.joda.time.DateTime;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -21,7 +21,7 @@ import com.couchbase.client.java.CouchbaseCluster;
 import com.couchbase.client.java.document.JsonDocument;
 import com.couchbase.client.java.document.json.JsonObject;
 
-public class PersonServiceImplIntegrationTest extends MultiBucketIntegationTest {
+public class PersonServiceImplIntegrationTest extends MultiBucketIntegrationTest {
 
     static final String typeField = "_class";
     static final String john = "John";

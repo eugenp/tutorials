@@ -1,0 +1,2 @@
+- [Jersey Filters and Interceptors](http://www.baeldung.com/jersey-filters-interceptors)
+- [Jersey MVC Support](https://www.baeldung.com/jersey-mvc)

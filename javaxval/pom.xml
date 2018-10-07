@@ -65,7 +65,11 @@
         <validation-api.version>2.0.1.Final</validation-api.version>
         <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>
+<<<<<<< HEAD
         <javax.el.version>3.0.0</javax.el.version>    
+=======
+        <javax.el.version>2.2.6</javax.el.version>    
+>>>>>>> c8e54a21c016557ae806f053c47931d2b5419aa0
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
         <junit.version>4.12</junit.version>
         <assertj.version>3.11.1</assertj.version>

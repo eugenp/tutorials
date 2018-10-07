@@ -2,8 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-ldap</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -13,17 +11,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <spring-ldap.version>2.3.1.RELEASE</spring-ldap.version>
-        <spring-context.version>4.3.6.RELEASE</spring-context.version>
-        <apacheds.version>1.5.5</apacheds.version>
-        <shared-ldap.version>0.9.15</shared-ldap.version>
-    </properties>
-
-    <build>
-        <finalName>spring-ldap</finalName>
-    </build>
 
     <dependencies>
 
@@ -97,7 +84,24 @@
             <scope>test</scope>
         </dependency>
 
+
+        <!-- Spring Data LDAP -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-ldap</artifactId>
+            <version>${spring-data-ldap.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
     </dependencies>
+
+    <build>
+        <finalName>spring-ldap</finalName>
+    </build>
+
 
     <profiles>
         <profile>
@@ -107,6 +111,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
                         <executions>
                             <execution>
                                 <phase>integration-test</phase>
@@ -116,6 +121,7 @@
                                 <configuration>
                                     <excludes>
                                         <exclude>**/*IntegrationTest.java</exclude>
+                                        <exclude>**/*IntTest.java</exclude>
                                     </excludes>
                                     <includes>
                                         <include>**/*LiveTest.java</include>
@@ -128,4 +134,14 @@
             </build>
         </profile>
     </profiles>
+
+    <properties>
+        <spring-ldap.version>2.3.1.RELEASE</spring-ldap.version>
+        <spring-context.version>4.3.6.RELEASE</spring-context.version>
+        <apacheds.version>1.5.5</apacheds.version>
+        <shared-ldap.version>0.9.15</shared-ldap.version>
+        <spring-data-ldap.version>1.0.6.RELEASE</spring-data-ldap.version>
+        <spring-data-jpa.version>1.11.6.RELEASE</spring-data-jpa.version>
+    </properties>
+
 </project>

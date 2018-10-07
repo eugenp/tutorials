@@ -7,25 +7,22 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-5</relativePath>
+        <relativePath>../../parent-boot-1</relativePath>
     </parent>
 
-    <properties>
-        <greeter-starter.version>0.0.1-SNAPSHOT</greeter-starter.version>
-    </properties>
-
     <dependencies>
-    
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>greeter-spring-boot-starter</artifactId>
             <version>${greeter-starter.version}</version>
         </dependency>
-
     </dependencies>
 
+    <properties>
+        <greeter-starter.version>0.0.1-SNAPSHOT</greeter-starter.version>
+    </properties>
 
 </project>

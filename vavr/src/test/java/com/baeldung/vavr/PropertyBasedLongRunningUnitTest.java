@@ -9,7 +9,9 @@ import org.junit.Test;
 
 import java.util.function.Predicate;
 
-import static io.vavr.API.*;
+import static io.vavr.API.$;
+import static io.vavr.API.Case;
+import static io.vavr.API.Match;
 
 public class PropertyBasedLongRunningUnitTest {
 
