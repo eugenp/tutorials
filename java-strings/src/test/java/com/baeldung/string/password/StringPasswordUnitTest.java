@@ -21,9 +21,6 @@ import org.passay.PasswordGenerator;
 /**
  * Examples of passwords conforming to various specifications, using different libraries.
  * 
- * 
- * @author tritty
- *
  */
 public class StringPasswordUnitTest {
     /**
@@ -35,10 +32,6 @@ public class StringPasswordUnitTest {
 
     Random random = new SecureRandom();
 
-    /**
-     * Password generated using Passay with minimum of 2 lowercase, 2 uppercase, 2 numbers and 2 special characters. 
-     * 
-     */
     @Test
     public void whenPasswordGeneratedUsingPassay_thenSuccessful() {
         PasswordGenerator gen = new PasswordGenerator();
@@ -72,10 +65,6 @@ public class StringPasswordUnitTest {
         assertTrue(specialCharCount > 2);
     }
 
-    /**
-     * 
-     * Password Generated using RandomStringGenerator conforming to the password requirements.
-     */
     @Test
     public void whenPasswordGeneratedUsingCommonsText_thenSuccessful() {
         String pwString = generateRandomSpecialCharacters(2).concat(generateRandomNumbers(2))
