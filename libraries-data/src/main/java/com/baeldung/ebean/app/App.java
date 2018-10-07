@@ -28,7 +28,7 @@ public class App {
     }
 
     public static void crudOperations() {
-
+    	
         Address a1 = new Address("5, Wide Street", null, "New York");
         Customer c1 = new Customer("John Wide", a1);
 

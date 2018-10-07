@@ -1,3 +1,0 @@
-<logger name="io.ebean.DDL" level="TRACE"/>
-<logger name="io.ebean.SQL" level="TRACE"/>
-<logger name="io.ebean.TXN" level="TRACE"/>

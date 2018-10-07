@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-data</artifactId>
@@ -13,6 +14,7 @@
     </parent>
 
     <dependencies>
+
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
@@ -99,36 +101,49 @@
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
             <version>${javax.jdo.version}</version>
+
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
             <version>${datanucleus.version}</version>
+
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
             <version>${datanucleus.version}</version>
+
+
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
             <version>${datanucleus.version}</version>
+
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-maven-plugin</artifactId>
             <version>${datanucleus-maven-plugin.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-xml</artifactId>
             <version>${datanucleus-xml.version}</version>
+
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-jdo-query</artifactId>
             <version>${datanucleus-jdo-query.version}</version>
+
         </dependency>
         <!-- Jcache -->
         <dependency>
@@ -141,49 +156,55 @@
             <artifactId>hazelcast</artifactId>
             <version>${hazelcast.version}</version>
         </dependency>
-        
+
         <dependency>
             <groupId>com.googlecode.jmapper-framework</groupId>
             <artifactId>jmapper-core</artifactId>
             <version>${jmapper.version}</version>
         </dependency>
-        <!--  crunch project  -->
-		<dependency>
-			<groupId>org.apache.crunch</groupId>
-			<artifactId>crunch-core</artifactId>
-			<version>${org.apache.crunch.crunch-core.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.hadoop</groupId>
-			<artifactId>hadoop-client</artifactId>
-			<version>${org.apache.hadoop.hadoop-client}</version>
-			<scope>provided</scope>
-		</dependency>
+        <!-- crunch project -->
+        <dependency>
+            <groupId>org.apache.crunch</groupId>
+            <artifactId>crunch-core</artifactId>
+            <version>${org.apache.crunch.crunch-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${org.apache.hadoop.hadoop-client}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-		<dependency>
-			<groupId>commons-cli</groupId>
-			<artifactId>commons-cli</artifactId>
-			<version>1.2</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.1</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>commons-httpclient</groupId>
-			<artifactId>commons-httpclient</artifactId>
-			<version>3.0.1</version>
-			<scope>provided</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>commons-codec</groupId>
-					<artifactId>commons-codec</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+        <dependency>
+            <groupId>commons-cli</groupId>
+            <artifactId>commons-cli</artifactId>
+            <version>1.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-codec</groupId>
+                    <artifactId>commons-codec</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-kafka-0.11_2.11</artifactId>
@@ -249,19 +270,32 @@
             <version>${awaitility.version}</version>
             <scope>test</scope>
         </dependency>
-		
-		<dependency>
+        <dependency>
             <groupId>io.ebean</groupId>
             <artifactId>ebean</artifactId>
-            <version>11.22.4</version>
+            <version>${ebean.version}</version>
         </dependency>
-       
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.3</version>
+            <version>${logback.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -280,16 +314,28 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                <property name="plugin_classpath" refid="maven.plugin.classpath" />
-                                <taskdef name="gen-reladomo" classpath="plugin_classpath" classname="com.gs.fw.common.mithra.generator.MithraGenerator" />
-                                <gen-reladomo xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml" generateGscListMethod="true"
-                                    generatedDir="${project.build.directory}/generated-sources/reladomo" nonGeneratedDir="${project.basedir}/src/main/java" />
+                                <property
+                                    name="plugin_classpath"
+                                    refid="maven.plugin.classpath" />
+                                <taskdef name="gen-reladomo"
+                                    classpath="plugin_classpath"
+                                    classname="com.gs.fw.common.mithra.generator.MithraGenerator" />
+                                <gen-reladomo
+                                    xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
+                                    generateGscListMethod="true"
+                                    generatedDir="${project.build.directory}/generated-sources/reladomo"
+                                    nonGeneratedDir="${project.basedir}/src/main/java" />
 
-                                <taskdef name="gen-ddl" classname="com.gs.fw.common.mithra.generator.dbgenerator.MithraDbDefinitionGenerator" loaderRef="reladomoGenerator">
-                                    <classpath refid="maven.plugin.classpath" />
+                                <taskdef name="gen-ddl"
+                                    classname="com.gs.fw.common.mithra.generator.dbgenerator.MithraDbDefinitionGenerator"
+                                    loaderRef="reladomoGenerator">
+                                    <classpath
+                                        refid="maven.plugin.classpath" />
                                 </taskdef>
-                                <gen-ddl xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
-                                    generatedDir="${project.build.directory}/generated-db/sql" databaseType="postgres" />
+                                <gen-ddl
+                                    xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
+                                    generatedDir="${project.build.directory}/generated-db/sql"
+                                    databaseType="postgres" />
                             </tasks>
                         </configuration>
                     </execution>
@@ -344,35 +390,35 @@
             <!-- /Reladomo -->
 
             <!-- JDO Plugin -->
-           
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<descriptors>
-						<descriptor>src/main/assembly/hadoop-job.xml</descriptor>
-					</descriptors>
-					<archive>
-						<manifest>
-							<mainClass>com.baeldung.crunch.WordCount</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
-				<executions>
-					<execution>
-						<id>make-assembly</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <descriptors>
+                        <descriptor>src/main/assembly/hadoop-job.xml</descriptor>
+                    </descriptors>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.baeldung.crunch.WordCount</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
-		<pluginManagement>
+        <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>io.ebean</groupId>
@@ -429,7 +475,10 @@
         <datanucleus-jdo-query.version>5.0.4</datanucleus-jdo-query.version>
         <jmapper.version>1.6.0.1</jmapper.version>
         <org.apache.crunch.crunch-core.version>0.15.0</org.apache.crunch.crunch-core.version>
-        <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>   
+        <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
+        <ebean.version>11.22.4</ebean.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <logback.version>1.0.1</logback.version>
     </properties>
 
 </project>

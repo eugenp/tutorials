@@ -14,13 +14,13 @@ public abstract class BaseModel {
 
     @Id
     protected long id;
-    
+
     @Version
     protected long version;
-    
+
     @WhenCreated
     protected Instant createdOn;
-    
+
     @WhenModified
     protected Instant modifiedOn;
 
@@ -55,5 +55,5 @@ public abstract class BaseModel {
     public void setVersion(long version) {
         this.version = version;
     }
-    
+
 }
