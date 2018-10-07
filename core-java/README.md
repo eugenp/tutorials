@@ -36,7 +36,6 @@
 - [Guide to sun.misc.Unsafe](http://www.baeldung.com/java-unsafe)
 - [How to Perform a Simple HTTP Request in Java](http://www.baeldung.com/java-http-request)
 - [Call Methods at Runtime Using Java Reflection](http://www.baeldung.com/java-method-reflection)
-- [Guide to UUID in JAVA](http://www.baeldung.com/guide-to-uuid-in-java)
 - [How to Add a Single Element to a Stream](http://www.baeldung.com/java-stream-append-prepend)
 - [Iterating Over Enum Values in Java](http://www.baeldung.com/java-enum-iteration)
 - [Kotlin Java Interoperability](http://www.baeldung.com/kotlin-java-interoperability)
