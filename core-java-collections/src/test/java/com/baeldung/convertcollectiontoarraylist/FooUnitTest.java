@@ -33,6 +33,9 @@ public class FooUnitTest {
         srcCollection.add(sam);
         srcCollection.add(alice);
         srcCollection.add(buffy);
+
+        // make sure the collection isn't sorted accidentally
+        assertFalse("Oops: source collection is already sorted!", isSorted(srcCollection));
     }
     
     /**
@@ -50,6 +53,7 @@ public class FooUnitTest {
     @Test
     public void whenUsingStream_thenVerifyShallowCopy() {
         ArrayList<Foo> newList = srcCollection.stream().collect(toCollection(ArrayList::new));
+
         verifyShallowCopy(srcCollection, newList);
     }
     
@@ -61,6 +65,7 @@ public class FooUnitTest {
         ArrayList<Foo> newList = srcCollection.stream()
           .map(foo -> foo.deepCopy())
           .collect(toCollection(ArrayList::new));
+
         verifyDeepCopy(srcCollection, newList);
     }
     
@@ -69,11 +74,11 @@ public class FooUnitTest {
      */
     @Test
     public void whenUsingSortedStream_thenVerifySortOrder() {
-        assertFalse("Oops: source collection is already sorted!", isSorted(srcCollection));
         ArrayList<Foo> newList = srcCollection.stream()
           .map(foo -> foo.deepCopy())
           .sorted(Comparator.comparing(Foo::getName))
           .collect(toCollection(ArrayList::new));
+
         assertTrue("ArrayList is not sorted by name", isSorted(newList));
     }
     
@@ -130,7 +135,7 @@ public class FooUnitTest {
      * @param c collection of Foo
      * @return true if the collection is sorted by name
      */
-    private boolean isSorted(Collection<Foo> c) {
+    private static boolean isSorted(Collection<Foo> c) {
         String prevName = null;
         for (Foo foo : c) {
             if (prevName == null || foo.getName().compareTo(prevName) > 0) {
