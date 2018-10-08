@@ -9,7 +9,7 @@ import org.junit.Test;
 public class SynchronizedSortedMapUnitTest {
     
     @Test
-    public void givenSynchronizedSorteMap_whenTwoThreadsAddElements_thenCorrectSetSize() throws InterruptedException {
+    public void givenSynchronizedSorteMap_whenTwoThreadsAddElements_thenCorrectSortedMapSize() throws InterruptedException {
         Map<Integer, String> syncSortedMap = Collections.synchronizedSortedMap(new TreeMap<>());
         
         Runnable sortedMapOperations = () -> {
