@@ -39,7 +39,7 @@ public class FooUnitTest {
      * Section 3. Using the ArrayList Constructor
      */
     @Test
-    public void testConstructor() {
+    public void whenUsingConstructor_thenVerifyShallowCopy() {
         ArrayList<Foo> newList = new ArrayList<>(srcCollection);
         verifyShallowCopy(srcCollection, newList);
     }
@@ -48,7 +48,7 @@ public class FooUnitTest {
      * Section 4. Using the Streams API
      */
     @Test
-    public void testStream() {
+    public void whenUsingStream_thenVerifyShallowCopy() {
         ArrayList<Foo> newList = srcCollection.stream().collect(toCollection(ArrayList::new));
         verifyShallowCopy(srcCollection, newList);
     }
@@ -57,7 +57,7 @@ public class FooUnitTest {
      * Section 5. Deep Copy
      */
     @Test
-    public void testStreamDeepCopy() {
+    public void whenUsingDeepCopy_thenVerifyDeepCopy() {
         ArrayList<Foo> newList = srcCollection.stream()
           .map(foo -> foo.deepCopy())
           .collect(toCollection(ArrayList::new));
@@ -68,7 +68,7 @@ public class FooUnitTest {
      * Section 6. Controlling the List Order
      */
     @Test
-    public void testSortOrder() {
+    public void whenUsingSortedStream_thenVerifySortOrder() {
         assertFalse("Oops: source collection is already sorted!", isSorted(srcCollection));
         ArrayList<Foo> newList = srcCollection.stream()
           .map(foo -> foo.deepCopy())
