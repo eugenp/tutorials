@@ -3,9 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-boot-ops</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>spring-boot-ops</name>
     <description>Demo project for Spring Boot</description>
@@ -18,10 +16,6 @@
     </parent>
 
     <dependencies>
-
-        <!-- add dependency management if you have a different parent pom <dependencyManagement> <dependencies> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-jpa</artifactId> 
-            <version>1.5.10.RELEASE</version> </dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-dependencies</artifactId> <version>1.5.10.RELEASE</version> 
-            <type>pom</type> <scope>import</scope> </dependency> </dependencies> </dependencyManagement> -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -95,13 +89,8 @@
     </dependencies>
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

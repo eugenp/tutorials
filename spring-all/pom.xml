@@ -45,6 +45,15 @@
             <artifactId>spring-shell</artifactId>
             <version>${org.springframework.shell.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+    	</dependency>
+    	<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+    	</dependency>
+ 
         <!-- aspectj -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -190,7 +199,24 @@
             </plugin>
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+    
     <properties>
         <start-class>org.baeldung.sample.App</start-class>
         <!-- Spring -->
