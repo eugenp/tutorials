@@ -150,3 +150,4 @@
 - [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
 - [Add a Character to a String at a Given Position](https://www.baeldung.com/java-add-character-to-string)
 - [Synthetic Constructs in Java](https://www.baeldung.com/java-synthetic)
+- [Calculating the nth Root in Java](https://www.baeldung.com/java-nth-root)
