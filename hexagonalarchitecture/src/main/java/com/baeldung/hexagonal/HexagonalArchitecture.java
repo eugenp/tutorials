@@ -7,14 +7,12 @@ public class HexagonalArchitecture {
 	};
 
 	public static class LengthPrinter implements Printer {
-//		@Override
 		public void print(Cube cube) {
 			System.out.println("Cube of side length = " + cube.getLength());
 		}
 	}
 
 	public static class VolumePrinter implements Printer {
-//		@Override
 		public void print(Cube cube) {
 			double volume = Math.pow(cube.getLength(), 3);
 			System.out.println("Cube of volume = " + volume);
