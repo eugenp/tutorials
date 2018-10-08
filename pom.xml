@@ -665,7 +665,6 @@
                 <module>dubbo</module>
                 <module>flyway</module>
                 <!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
-                <module>java-difference-date</module>
                 <!-- <module>JGit</module> --><!-- Unit test failure -->
                 <module>jni</module>
                 <module>jooby</module>
@@ -1138,7 +1137,6 @@
 				<module>dubbo</module>
 				<module>flyway</module>
 				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
-				<module>java-difference-date</module>
 				<!-- <module>JGit</module> --><!-- Unit test failure -->
 				<module>jni</module>
 				<module>jooby</module>
