@@ -1,0 +1,13 @@
+version: '2'
+services:
+    uaa-app:
+        image: uaa
+        environment:
+            # - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://uaa-mysql:3306/uaa?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+    uaa-mysql:
+        extends:
+            file: mysql.yml
+            service: uaa-mysql

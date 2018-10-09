@@ -1,0 +1,5 @@
+This file contains changes made to the base UAA project
+
+1. UaaWebSecurityConfiguration
+
+init() method should not throw a checked exception, since it is annotated with @PostCostruct.  
