@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns="http://java.sun.com/xml/ns/javaee" 
+		xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+		version="3.0">
   <!-- The bare minimum needed for JSF 2.2 is a servlet 2.5 or later
        declaration (this uses 3.0) and the mapping for the FacesServlet.
        Setting PROJECT_STAGE to Development is highly recommended
