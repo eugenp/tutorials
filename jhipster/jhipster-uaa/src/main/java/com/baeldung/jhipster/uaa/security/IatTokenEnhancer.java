@@ -28,9 +28,9 @@ public class IatTokenEnhancer implements TokenEnhancer {
         if (additionalInformation.isEmpty()) {
             additionalInformation = new LinkedHashMap<String, Object>();
         }
-        //add "iat" claim with current time in secs
-        //this is used for an inactive session timeout
-        additionalInformation.put("iat", new Integer((int)(System.currentTimeMillis()/1000L)));
+        // add "iat" claim with current time in secs
+        // this is used for an inactive session timeout
+        additionalInformation.put("iat", new Integer((int) (System.currentTimeMillis() / 1000L)));
         token.setAdditionalInformation(additionalInformation);
     }
 }

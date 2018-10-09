@@ -30,13 +30,11 @@ public class UaaWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @PostConstruct
-    public void init()  {
+    public void init() {
         try {
-            authenticationManagerBuilder
-                .userDetailsService(userDetailsService)
+            authenticationManagerBuilder.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new BeanInitializationException("Security configuration failed", e);
         }
     }

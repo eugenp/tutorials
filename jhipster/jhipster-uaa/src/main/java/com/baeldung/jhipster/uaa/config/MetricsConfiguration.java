@@ -86,12 +86,17 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter {
             hikariDataSource.setMetricsTrackerFactory(null);
             hikariDataSource.setMetricRegistry(metricRegistry);
         }
-        if (jHipsterProperties.getMetrics().getJmx().isEnabled()) {
+        if (jHipsterProperties.getMetrics()
+            .getJmx()
+            .isEnabled()) {
             log.debug("Initializing Metrics JMX reporting");
-            JmxReporter jmxReporter = JmxReporter.forRegistry(metricRegistry).build();
+            JmxReporter jmxReporter = JmxReporter.forRegistry(metricRegistry)
+                .build();
             jmxReporter.start();
         }
-        if (jHipsterProperties.getMetrics().getLogs().isEnabled()) {
+        if (jHipsterProperties.getMetrics()
+            .getLogs()
+            .isEnabled()) {
             log.info("Initializing Metrics Log reporting");
             Marker metricsMarker = MarkerFactory.getMarker("metrics");
             final Slf4jReporter reporter = Slf4jReporter.forRegistry(metricRegistry)
@@ -100,7 +105,9 @@ public class MetricsConfiguration extends MetricsConfigurerAdapter {
                 .convertRatesTo(TimeUnit.SECONDS)
                 .convertDurationsTo(TimeUnit.MILLISECONDS)
                 .build();
-            reporter.start(jHipsterProperties.getMetrics().getLogs().getReportFrequency(), TimeUnit.SECONDS);
+            reporter.start(jHipsterProperties.getMetrics()
+                .getLogs()
+                .getReportFrequency(), TimeUnit.SECONDS);
         }
     }
 }

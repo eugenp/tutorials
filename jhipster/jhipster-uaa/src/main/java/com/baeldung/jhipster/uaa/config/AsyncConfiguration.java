@@ -35,9 +35,12 @@ public class AsyncConfiguration implements AsyncConfigurer, SchedulingConfigurer
     public Executor getAsyncExecutor() {
         log.debug("Creating Async Task Executor");
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(jHipsterProperties.getAsync().getCorePoolSize());
-        executor.setMaxPoolSize(jHipsterProperties.getAsync().getMaxPoolSize());
-        executor.setQueueCapacity(jHipsterProperties.getAsync().getQueueCapacity());
+        executor.setCorePoolSize(jHipsterProperties.getAsync()
+            .getCorePoolSize());
+        executor.setMaxPoolSize(jHipsterProperties.getAsync()
+            .getMaxPoolSize());
+        executor.setQueueCapacity(jHipsterProperties.getAsync()
+            .getQueueCapacity());
         executor.setThreadNamePrefix("uaa-Executor-");
         return new ExceptionHandlingAsyncTaskExecutor(executor);
     }
@@ -46,7 +49,7 @@ public class AsyncConfiguration implements AsyncConfigurer, SchedulingConfigurer
     public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
         return new SimpleAsyncUncaughtExceptionHandler();
     }
-    
+
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
         taskRegistrar.setScheduler(scheduledTaskExecutor());
@@ -54,6 +57,7 @@ public class AsyncConfiguration implements AsyncConfigurer, SchedulingConfigurer
 
     @Bean
     public Executor scheduledTaskExecutor() {
-        return Executors.newScheduledThreadPool(jHipsterProperties.getAsync().getCorePoolSize());
+        return Executors.newScheduledThreadPool(jHipsterProperties.getAsync()
+            .getCorePoolSize());
     }
 }

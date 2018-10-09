@@ -25,11 +25,11 @@ public class UaaProperties {
      * Keystore configuration for signing and verifying JWT tokens.
      */
     public static class KeyStore {
-        //name of the keystore in the classpath
+        // name of the keystore in the classpath
         private String name = "config/tls/keystore.p12";
-        //password used to access the key
+        // password used to access the key
         private String password = "password";
-        //name of the alias to fetch
+        // name of the alias to fetch
         private String alias = "selfsigned";
 
         public String getName() {
@@ -58,9 +58,9 @@ public class UaaProperties {
     }
 
     public static class WebClientConfiguration {
-        //validity of the short-lived access token in secs (min: 60), don't make it too long
+        // validity of the short-lived access token in secs (min: 60), don't make it too long
         private int accessTokenValidityInSeconds = 5 * 60;
-        //validity of the refresh token in secs (defines the duration of "remember me")
+        // validity of the refresh token in secs (defines the duration of "remember me")
         private int refreshTokenValidityInSecondsForRememberMe = 7 * 24 * 60 * 60;
         private String clientId = "web_app";
         private String secret = "changeit";
