@@ -15,28 +15,29 @@ import com.google.common.base.Stopwatch;
 
 public class ByteArrayConverterTest {
 
-    private ByteArrayConverter byteArrayConverter;
+    private HexStringConverter hexStringConverter;
 
     @Before
     public void setup() {
-        byteArrayConverter = new ByteArrayConverter();
+        hexStringConverter = new HexStringConverter();
     }
 
     @Test
-    @Ignore("Ignoring as due to leading 0 problem woth Big Integer conversion")
     public void shouldEncodeByteArrayToHexStringUsingBigIntegerToString() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        String output = byteArrayConverter.encodeUsingBigIntegerToString(bytes);
+        if(hexString.charAt(0) == '0') {
+            hexString = hexString.substring(1);
+        }
+        String output = hexStringConverter.encodeUsingBigIntegerToString(bytes);
         assertThat(output, IsEqualIgnoringCase.equalToIgnoringCase(hexString));
     }
 
     @Test
-    @Ignore("Ignoring as due to leading 0 problem woth Big Integer conversion")
     public void shouldEncodeByteArrayToHexStringUsingBigIntegerStringFormat() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        String output = byteArrayConverter.encodeUsingBigIntegerToString(bytes);
+        String output = hexStringConverter.encodeUsingBigIntegerStringFormat(bytes);
         assertThat(output, IsEqualIgnoringCase.equalToIgnoringCase(hexString));
     }
 
@@ -44,7 +45,7 @@ public class ByteArrayConverterTest {
     public void shouldDecodeHexStringToByteArrayUsingBigInteger() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        byte[] output = byteArrayConverter.decodeUsingBigInteger(hexString);
+        byte[] output = hexStringConverter.decodeUsingBigInteger(hexString);
         assertArrayEquals(bytes, output);
     }
 
@@ -52,7 +53,7 @@ public class ByteArrayConverterTest {
     public void shouldEncodeByteArrayToHexStringUsingCharacterConversion() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        String output = byteArrayConverter.encodeToHexString(bytes);
+        String output = hexStringConverter.encodeHexString(bytes);
         assertThat(output, IsEqualIgnoringCase.equalToIgnoringCase(hexString));
     }
 
@@ -60,7 +61,7 @@ public class ByteArrayConverterTest {
     public void shouldDecodeHexStringToByteArrayUsingCharacterConversion() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        byte[] output = byteArrayConverter.decodeHexString(hexString);
+        byte[] output = hexStringConverter.decodeHexString(hexString);
         assertArrayEquals(bytes, output);
     }
 
@@ -68,7 +69,7 @@ public class ByteArrayConverterTest {
     public void shouldEncodeByteArrayToHexStringDataTypeConverter() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        String output = byteArrayConverter.encodeUsingDataTypeConverter(bytes);
+        String output = hexStringConverter.encodeUsingDataTypeConverter(bytes);
         assertThat(output, IsEqualIgnoringCase.equalToIgnoringCase(hexString));
     }
 
@@ -76,7 +77,7 @@ public class ByteArrayConverterTest {
     public void shouldDecodeHexStringToByteArrayUsingDataTypeConverter() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        byte[] output = byteArrayConverter.decodeUsingDataTypeConverter(hexString);
+        byte[] output = hexStringConverter.decodeUsingDataTypeConverter(hexString);
         assertArrayEquals(bytes, output);
     }
 
@@ -84,7 +85,7 @@ public class ByteArrayConverterTest {
     public void shouldEncodeByteArrayToHexStringUsingGuava() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        String output = byteArrayConverter.encodeUsingGuava(bytes);
+        String output = hexStringConverter.encodeUsingGuava(bytes);
         assertThat(output, IsEqualIgnoringCase.equalToIgnoringCase(hexString));
     }
 
@@ -92,7 +93,7 @@ public class ByteArrayConverterTest {
     public void shouldDecodeHexStringToByteArrayUsingGuava() {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        byte[] output = byteArrayConverter.decodeUsingGuava(hexString);
+        byte[] output = hexStringConverter.decodeUsingGuava(hexString);
         assertArrayEquals(bytes, output);
     }
 
@@ -100,7 +101,7 @@ public class ByteArrayConverterTest {
     public void shouldEncodeByteArrayToHexStringUsingApacheCommons() throws DecoderException {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        String output = byteArrayConverter.encodeUsingApacheCommons(bytes);
+        String output = hexStringConverter.encodeUsingApacheCommons(bytes);
         assertThat(output, IsEqualIgnoringCase.equalToIgnoringCase(hexString));
     }
 
@@ -108,7 +109,7 @@ public class ByteArrayConverterTest {
     public void shouldDecodeHexStringToByteArrayUsingApacheCommons() throws DecoderException {
         byte[] bytes = getSampleBytes();
         String hexString = getSampleHexString();
-        byte[] output = byteArrayConverter.decodeUsingApacheCommons(hexString);
+        byte[] output = hexStringConverter.decodeUsingApacheCommons(hexString);
         assertArrayEquals(bytes, output);
     }
 
@@ -118,78 +119,6 @@ public class ByteArrayConverterTest {
 
     private byte[] getSampleBytes() {
         return new byte[] { 10, -11, 12, 14, 45, 16 };
-    }
-
-    private byte[] getRandomBytes(int size) {
-        byte[] bytes = new byte[size];
-        new Random().nextBytes(bytes);
-        return bytes;
-    }
-
-    private String getRandomHexString(int size) {
-        Random random = new Random();
-        StringBuffer buffer = new StringBuffer();
-        while (buffer.length() < size) {
-            buffer.append(Integer.toHexString(random.nextInt()));
-        }
-        return buffer.toString()
-            .substring(0, size);
-    }
-
-    @Test
-    public void encodingPerformanceComparisionTest() throws DecoderException {
-        byte[] bytes = getRandomBytes(4000);
-        System.out.println("Performance for encoding Sample set of " + bytes.length);
-        Stopwatch stopwatch = Stopwatch.createStarted();
-        byteArrayConverter.encodeToHexString(bytes);
-        System.out.println("Time taken by Character Conversion\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.encodeUsingBigIntegerToString(bytes);
-        System.out.println("Time taken by BigInteger toString\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.encodeUsingBigIntegerStringFormat(bytes);
-        System.out.println("Time taken by BigInteger String Format\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.encodeUsingDataTypeConverter(bytes);
-        System.out.println("Time taken by Data Type Converter\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.encodeUsingApacheCommons(bytes);
-        System.out.println("Time taken by Apache Commons\t\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.encodeUsingGuava(bytes);
-        System.out.println("Time taken by Guava\t\t\t" + stopwatch);
-        stopwatch.stop();
-    }
-
-    @Test
-    public void decodingPerformanceComparisionTest() throws DecoderException {
-        String hexString = getRandomHexString(2000);
-        System.out.println("Performance for decoding Sample set of " + hexString.length());
-        Stopwatch stopwatch = Stopwatch.createStarted();
-        byteArrayConverter.decodeHexString(hexString);
-        System.out.println("Time taken by Character Conversion\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.decodeUsingBigInteger(hexString);
-        System.out.println("Time taken by BigInteger\t\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.decodeUsingDataTypeConverter(hexString);
-        System.out.println("Time taken by Data Type Converter\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.decodeUsingApacheCommons(hexString);
-        System.out.println("Time taken by Apache Commons\t\t" + stopwatch);
-        stopwatch.reset();
-        stopwatch.start();
-        byteArrayConverter.decodeUsingGuava(hexString);
-        System.out.println("Time taken by Guava\t\t\t" + stopwatch);
-        stopwatch.stop();
     }
 
 }

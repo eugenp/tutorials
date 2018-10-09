@@ -9,7 +9,7 @@ import org.apache.commons.codec.binary.Hex;
 
 import com.google.common.io.BaseEncoding;
 
-public class ByteArrayConverter {
+public class HexStringConverter {
 
     /**
      * Create a byte Array from String of hexadecimal digits using Character conversion 
@@ -23,7 +23,7 @@ public class ByteArrayConverter {
         byte[] bytes = new byte[hexString.length() / 2];
 
         for (int i = 0; i < hexString.length(); i += 2) {
-            bytes[i / 2] = (byte) ((Character.digit(hexString.charAt(i), 16) << 4) + Character.digit(hexString.charAt(i + 1), 16));
+            bytes[i / 2] = hexToByte(hexString.substring(i, i + 2));
         }
         return bytes;
     }
@@ -31,22 +31,16 @@ public class ByteArrayConverter {
     /**
      * Create a String of hexadecimal digits from a byte Array using Character conversion
      * @param byteArray - The byte Array
-     * @return Desired String of hexadecimal digits
+     * @return Desired String of hexadecimal digits in lower case
      */
-    public String encodeToHexString(byte[] byteArray) {
+    public String encodeHexString(byte[] byteArray) {
         StringBuffer hexStringBuffer = new StringBuffer();
         for (int i = 0; i < byteArray.length; i++) {
-            hexStringBuffer.append(Character.forDigit((byteArray[i] >> 4) & 0xF, 16))
-                .append(Character.forDigit(byteArray[i] & 0xF, 16));
+            hexStringBuffer.append(byteToHex(byteArray[i]));
         }
         return hexStringBuffer.toString();
     }
 
-    /**
-     * This method explains how byte to hexadecimal conversion works
-     * @param num - byte number to be converted
-     * @return - converted hex digits as String
-     */
     public String byteToHex(byte num) {
         char[] hexDigits = new char[2];
         hexDigits[0] = Character.forDigit((num >> 4) & 0xF, 16);
@@ -65,7 +59,7 @@ public class ByteArrayConverter {
 
     public String encodeUsingBigIntegerStringFormat(byte[] bytes) {
         BigInteger bigInteger = new BigInteger(1, bytes);
-        return String.format("%" + (bytes.length << 1) + "x", bigInteger);
+        return String.format("%0" + (bytes.length << 1) + "x", bigInteger);
     }
 
     public byte[] decodeUsingBigInteger(String hexString) {
