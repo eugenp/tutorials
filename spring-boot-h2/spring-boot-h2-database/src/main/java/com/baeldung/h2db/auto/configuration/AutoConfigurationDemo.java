@@ -7,8 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication(scanBasePackages = "com.baeldung.h2db.auto-configuration")
 public class AutoConfigurationDemo {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AutoConfigurationDemo.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AutoConfigurationDemo.class, args);
+    }
 
 }
