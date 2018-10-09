@@ -1,6 +1,5 @@
 package com.baeldung.algorithms.insertionsort;
 
-import com.baeldung.algorithms.insertionsort.InsertionSort;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
