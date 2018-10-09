@@ -11,9 +11,9 @@ import org.hibernate.annotations.Parameter;
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence-generator")
+    @GeneratedValue(generator = "sequence-generator")
     @GenericGenerator(
-        name = "genericGenerator",
+        name = "sequence-generator",
         strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
         parameters = {
                 @Parameter(name = "sequence_name", value = "user_sequence"),
