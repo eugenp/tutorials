@@ -75,7 +75,6 @@ public class FooUnitTest {
     @Test
     public void whenUsingSortedStream_thenVerifySortOrder() {
         ArrayList<Foo> newList = srcCollection.stream()
-          .map(foo -> foo.deepCopy())
           .sorted(Comparator.comparing(Foo::getName))
           .collect(toCollection(ArrayList::new));
 
