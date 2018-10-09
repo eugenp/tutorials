@@ -4,9 +4,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.commons.io.FileUtils;
+import org.junit.After;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+
+import java.io.File;
 
 public class XMLDocumentWriterUnitTest {
 
@@ -38,5 +42,11 @@ public class XMLDocumentWriterUnitTest {
         employee2.setAttribute("name", "Tim Dellor");
         departmentElement.appendChild(employee2);
         return document;
+    }
+
+    @After
+    public void cleanUp() throws Exception {
+        FileUtils.deleteQuietly(new File("company_simple.xml"));
+        FileUtils.deleteQuietly(new File("company_prettyprinted.xml"));
     }
 }

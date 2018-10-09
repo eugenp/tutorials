@@ -17,7 +17,7 @@ import org.w3c.dom.Document;
 public class XMLDocumentWriter {
     
     public void write(Document document, String fileName, boolean excludeDeclaration, boolean prettyPrint) {
-        try {
+        try(FileWriter writer = new FileWriter(new File(fileName))) {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             if(excludeDeclaration) {
@@ -28,15 +28,14 @@ public class XMLDocumentWriter {
                 transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             }
             DOMSource source = new DOMSource(document);
-            FileWriter writer = new FileWriter(new File(fileName));
             StreamResult result = new StreamResult(writer);
             transformer.transform(source, result);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException(e);
         } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
+            throw new IllegalStateException(e);
         } catch (TransformerException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException(e);
         }
     }
 }
