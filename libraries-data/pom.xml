@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries-data</artifactId>
@@ -14,7 +13,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>com.esotericsoftware</groupId>
             <artifactId>kryo</artifactId>
@@ -101,49 +99,36 @@
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
             <version>${javax.jdo.version}</version>
-
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
             <version>${datanucleus.version}</version>
-
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
             <version>${datanucleus.version}</version>
-
-
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
             <version>${datanucleus.version}</version>
-
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-maven-plugin</artifactId>
             <version>${datanucleus-maven-plugin.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-xml</artifactId>
             <version>${datanucleus-xml.version}</version>
-
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-jdo-query</artifactId>
             <version>${datanucleus-jdo-query.version}</version>
-
         </dependency>
         <!-- Jcache -->
         <dependency>
@@ -156,13 +141,13 @@
             <artifactId>hazelcast</artifactId>
             <version>${hazelcast.version}</version>
         </dependency>
-
+        
         <dependency>
             <groupId>com.googlecode.jmapper-framework</groupId>
             <artifactId>jmapper-core</artifactId>
             <version>${jmapper.version}</version>
         </dependency>
-        <!-- crunch project -->
+        <!--  crunch project  -->
         <dependency>
             <groupId>org.apache.crunch</groupId>
             <artifactId>crunch-core</artifactId>
@@ -173,12 +158,6 @@
             <artifactId>hadoop-client</artifactId>
             <version>${org.apache.hadoop.hadoop-client}</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -314,28 +293,16 @@
                         </goals>
                         <configuration>
                             <tasks>
-                                <property
-                                    name="plugin_classpath"
-                                    refid="maven.plugin.classpath" />
-                                <taskdef name="gen-reladomo"
-                                    classpath="plugin_classpath"
-                                    classname="com.gs.fw.common.mithra.generator.MithraGenerator" />
-                                <gen-reladomo
-                                    xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
-                                    generateGscListMethod="true"
-                                    generatedDir="${project.build.directory}/generated-sources/reladomo"
-                                    nonGeneratedDir="${project.basedir}/src/main/java" />
+                                <property name="plugin_classpath" refid="maven.plugin.classpath" />
+                                <taskdef name="gen-reladomo" classpath="plugin_classpath" classname="com.gs.fw.common.mithra.generator.MithraGenerator" />
+                                <gen-reladomo xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml" generateGscListMethod="true"
+                                    generatedDir="${project.build.directory}/generated-sources/reladomo" nonGeneratedDir="${project.basedir}/src/main/java" />
 
-                                <taskdef name="gen-ddl"
-                                    classname="com.gs.fw.common.mithra.generator.dbgenerator.MithraDbDefinitionGenerator"
-                                    loaderRef="reladomoGenerator">
-                                    <classpath
-                                        refid="maven.plugin.classpath" />
+                                <taskdef name="gen-ddl" classname="com.gs.fw.common.mithra.generator.dbgenerator.MithraDbDefinitionGenerator" loaderRef="reladomoGenerator">
+                                    <classpath refid="maven.plugin.classpath" />
                                 </taskdef>
-                                <gen-ddl
-                                    xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
-                                    generatedDir="${project.build.directory}/generated-db/sql"
-                                    databaseType="postgres" />
+                                <gen-ddl xml="${project.basedir}/src/main/resources/reladomo/ReladomoClassList.xml"
+                                    generatedDir="${project.build.directory}/generated-db/sql" databaseType="postgres" />
                             </tasks>
                         </configuration>
                     </execution>
@@ -390,7 +357,27 @@
             <!-- /Reladomo -->
 
             <!-- JDO Plugin -->
-
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-maven-plugin</artifactId>
+                <version>${datanucleus-maven-plugin.version}</version>
+                <configuration>
+                    <api>JDO</api>
+                    <props>${basedir}/datanucleus.properties</props>
+                    <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
+                    <verbose>true</verbose>
+                    <fork>false</fork>
+                    <!-- Solve windows line too long error -->
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -416,25 +403,25 @@
                     </execution>
                 </executions>
             </plugin>
-                <plugin>
-                    <groupId>io.ebean</groupId>
-                    <artifactId>ebean-maven-plugin</artifactId>
-                    <version>11.11.2</version>
-                    <executions>
-                        <!-- enhance main classes -->
-                        <execution>
-                            <id>main</id>
-                            <phase>process-classes</phase>
-                            <configuration>
-                                <transformArgs>debug=1</transformArgs>
-                            </configuration>
-                            <goals>
-                                <goal>enhance</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
+            <plugin>
+                <groupId>io.ebean</groupId>
+                <artifactId>ebean-maven-plugin</artifactId>
+                <version>11.11.2</version>
+                <executions>
+                    <!-- enhance main classes -->
+                    <execution>
+                        <id>main</id>
+                        <phase>process-classes</phase>
+                        <configuration>
+                            <transformArgs>debug=1</transformArgs>
+                        </configuration>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
     <repositories>
@@ -473,7 +460,7 @@
         <org.apache.hadoop.hadoop-client>2.2.0</org.apache.hadoop.hadoop-client>
         <ebean.version>11.22.4</ebean.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <logback.version>1.0.1</logback.version>
+        <logback.version>1.0.1</logback.version>        
     </properties>
 
 </project>
