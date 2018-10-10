@@ -26,12 +26,20 @@ public class EnumSets {
         EnumSet<Color> range = EnumSet.range(Color.YELLOW, Color.BLUE);
         System.out.println(range);
         
-        EnumSet<Color> blackAndWhiteCopy = EnumSet.copyOf(blackAndWhite);
+        EnumSet<Color> blackAndWhiteCopy = EnumSet.copyOf(EnumSet.of(Color.BLACK, Color.WHITE));
         System.out.println(blackAndWhiteCopy);
         
-        List<Color> colorsList = new ArrayList<>(blackAndWhite);
+        List<Color> colorsList = new ArrayList<>();
+        colorsList.add(Color.RED);
         EnumSet<Color> listCopy = EnumSet.copyOf(colorsList);
         System.out.println(listCopy);             
+        
+        EnumSet<Color> set = EnumSet.noneOf(Color.class);
+        set.add(Color.RED);
+        set.add(Color.YELLOW);        
+        set.contains(Color.RED);       
+        set.forEach(System.out::println);        
+        set.remove(Color.RED);        
     }
 
 
