@@ -4,13 +4,12 @@ import javax.mvc.annotation.Controller;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
-@Path("/login")
+@Path("/auth/login")
 @Controller
 public class LoginController {
 
     @GET
     public String login() {
-    	System.out.println("Login");
         return "login.jsp";
     }
 }
