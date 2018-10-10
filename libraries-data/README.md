@@ -11,3 +11,4 @@
 - [Apache Ignite with Spring Data](http://www.baeldung.com/apache-ignite-spring-data)
 - [Guide to JMapper](https://www.baeldung.com/jmapper)
 - [A Guide to Apache Crunch](https://www.baeldung.com/apache-crunch)
+- [Building a Data Pipeline with Flink and Kafka](https://www.baeldung.com/kafka-flink-data-pipeline)
