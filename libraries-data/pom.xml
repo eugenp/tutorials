@@ -416,10 +416,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-        </plugins>
-        <pluginManagement>
-            <plugins>
                 <plugin>
                     <groupId>io.ebean</groupId>
                     <artifactId>ebean-maven-plugin</artifactId>
@@ -439,7 +435,6 @@
                     </executions>
                 </plugin>
             </plugins>
-        </pluginManagement>
     </build>
 
     <repositories>
