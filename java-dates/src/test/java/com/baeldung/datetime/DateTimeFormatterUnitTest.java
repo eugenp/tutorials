@@ -1,4 +1,4 @@
-package com.baeldung.internationalization;
+package com.baeldung.datetime;
 
 import org.junit.Assert;
 import org.junit.Test;
