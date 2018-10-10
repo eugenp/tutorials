@@ -63,19 +63,12 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${openjdk.jmh.version}</version>
         </dependency>
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-exec</artifactId>
-		    <version>1.3</version>
-		</dependency>
-        <dependency>
-            <groupId>one.util</groupId>
-            <artifactId>streamex</artifactId>
-            <version>0.6.5</version>
-        </dependency>
-		        
+	    <dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-exec</artifactId>
+		<version>1.3</version>
+        </dependency>	        
     </dependencies>
-
 
     <properties>
         <openjdk.jmh.version>1.19</openjdk.jmh.version>
