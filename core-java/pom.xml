@@ -504,7 +504,7 @@
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
         <bouncycastle.version>1.55</bouncycastle.version>
-        <commons-codec.version>1.11</commons-codec.version>
+        <commons-codec.version>1.10</commons-codec.version>
         <commons-io.version>2.5</commons-io.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <decimal4j.version>1.0.3</decimal4j.version>
@@ -542,6 +542,7 @@
         <jmime-magic.version>0.1.5</jmime-magic.version>
         <!-- instrumentation -->
         <javaassist.version>3.21.0-GA</javaassist.version>
+        <java.home>C:\Java\jdk1.8.0_101\jre</java.home>
     </properties>
 
 </project>
