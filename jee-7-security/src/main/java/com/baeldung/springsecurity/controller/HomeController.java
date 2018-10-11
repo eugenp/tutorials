@@ -1,4 +1,4 @@
-package com.baeldung.springSecurity.controller;
+package com.baeldung.springsecurity.controller;
 
 import javax.mvc.annotation.Controller;
 import javax.ws.rs.GET;

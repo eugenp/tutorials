@@ -399,6 +399,7 @@
 				<module>javafx</module>
 				<module>jgroups</module>
 				<module>jee-7</module>
+				<module>jee-7-security</module>
 				<module>jhipster</module>
 				<module>jjwt</module>
 				<module>jsf</module>
@@ -1302,6 +1303,7 @@
 				<module>javafx</module>
 				<module>jgroups</module>
 				<module>jee-7</module>
+				<module>jee-7-security</module>
 				<module>jjwt</module>
 				<module>jsf</module>
 				<module>json-path</module>

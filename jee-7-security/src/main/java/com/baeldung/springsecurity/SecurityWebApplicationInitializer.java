@@ -1,4 +1,4 @@
-package com.baeldung.springSecurity;
+package com.baeldung.springsecurity;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

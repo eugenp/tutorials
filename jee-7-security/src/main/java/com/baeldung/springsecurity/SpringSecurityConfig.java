@@ -1,4 +1,4 @@
-package com.baeldung.springSecurity;
+package com.baeldung.springsecurity;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
