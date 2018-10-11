@@ -1,4 +1,4 @@
-package com.baeldung.converter;
+package com.baeldung.algorithms.conversion;
 
 import java.math.BigInteger;
 
@@ -48,8 +48,18 @@ public class HexStringConverter {
         return new String(hexDigits);
     }
 
-    public byte hexToByte(String hexNum) {
-        return (byte) ((Character.digit(hexNum.charAt(0), 16) << 4) + Character.digit(hexNum.charAt(1), 16));
+    public byte hexToByte(String hexString) {
+        int firstDigit = toDigit(hexString.charAt(0));
+        int secondDigit = toDigit(hexString.charAt(1));
+        return (byte) ((firstDigit << 4) + secondDigit);
+    }
+
+    private int toDigit(char hexChar) {
+        int digit = Character.digit(hexChar, 16);
+        if(digit == -1) {
+            throw new IllegalArgumentException("Invalid Hexadecimal Character: "+ hexChar);
+        }
+        return digit;
     }
 
     public String encodeUsingBigIntegerToString(byte[] bytes) {

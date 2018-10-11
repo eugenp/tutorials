@@ -1,19 +1,17 @@
-package com.baeldung.converter;
+package com.baeldung.algorithms.conversion;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-
-import java.util.Random;
 
 import org.apache.commons.codec.DecoderException;
 import org.hamcrest.text.IsEqualIgnoringCase;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
-import com.google.common.base.Stopwatch;
+import com.baeldung.algorithms.conversion.HexStringConverter;
 
-public class ByteArrayConverterTest {
+public class ByteArrayConverterUnitTest {
 
     private HexStringConverter hexStringConverter;
 
@@ -48,7 +46,7 @@ public class ByteArrayConverterTest {
         byte[] output = hexStringConverter.decodeUsingBigInteger(hexString);
         assertArrayEquals(bytes, output);
     }
-
+    
     @Test
     public void shouldEncodeByteArrayToHexStringUsingCharacterConversion() {
         byte[] bytes = getSampleBytes();
@@ -63,6 +61,11 @@ public class ByteArrayConverterTest {
         String hexString = getSampleHexString();
         byte[] output = hexStringConverter.decodeHexString(hexString);
         assertArrayEquals(bytes, output);
+    }
+    
+    @Test(expected=IllegalArgumentException.class)
+    public void shouldDecodeHexToByteWithInvalidHexCharacter() {
+        hexStringConverter.hexToByte("fg");
     }
 
     @Test
