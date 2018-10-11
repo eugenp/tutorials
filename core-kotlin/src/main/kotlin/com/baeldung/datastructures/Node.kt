@@ -1,5 +1,9 @@
 package com.baeldung.datastructures
 
+/**
+ * An ADT for a binary search tree.
+ * Note that this data type is neither immutable nor thread safe.
+ */
 class Node(
         var key: Int,
         var left: Node? = null,

@@ -1,5 +1,17 @@
 package com.baeldung.datastructures
 
+/**
+ * Example of how to use the {@link Node} class.
+ *
+ */
 fun main(args: Array<String>) {
-    print(Node(2, Node(1, Node(0), Node(3)), Node(4)).visit().joinToString { it.toString() })
+    val tree = Node(4)
+    val keys = arrayOf(1, 2, 5, 10, 2, 3, 4, 6, 11)
+    for (key in keys) {
+        tree.insert(key)
+    }
+    val node = tree.find(4)!!
+    print("Node with value ${node.key} [left = ${node.left?.key}, right = ${node.right?.key}]")
+    node.delete(3)
+    print(tree.visit().joinToString { it.toString() })
 }
