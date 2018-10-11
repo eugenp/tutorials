@@ -542,6 +542,7 @@
         <jmime-magic.version>0.1.5</jmime-magic.version>
         <!-- instrumentation -->
         <javaassist.version>3.21.0-GA</javaassist.version>
+        <java.home>C:\Java\jdk1.8.0_101\jre</java.home>
     </properties>
 
 </project>
