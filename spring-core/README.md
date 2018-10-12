@@ -21,3 +21,4 @@
 - [Spring Autowiring of Generic Types](https://www.baeldung.com/spring-autowire-generics)
 - [Spring Application Context Events](https://www.baeldung.com/spring-context-events)
 - [Unsatisfied Dependency in Spring](https://www.baeldung.com/spring-unsatisfied-dependency)
+- [What is a Spring Bean?](https://www.baeldung.com/spring-bean)
