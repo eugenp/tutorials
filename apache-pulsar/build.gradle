@@ -1,0 +1,26 @@
+apply plugin: 'java'
+ext{
+  pulsarVersion = '2.1.1-incubating'
+}
+
+repositories {
+  jcenter()
+  mavenCentral()
+  mavenLocal()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'com.baeldung.pulsar'
+archivesBaseName = 'pulsar-java-example'
+version = '0.0.1'
+
+
+
+
+dependencies {
+  compile group: 'org.apache.pulsar', name: 'pulsar-client', version: pulsarVersion
+
+}
+
