@@ -5,25 +5,22 @@
  */
 package com.baeldung.nullsafecollectionstreams;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.stream.Stream;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author Kwaje Anthony <kwajeanthony@gmail.com>
  */
 public class NullSafeCollectionStreamsUsingJava8OptionalContainerUnitTest {
-    
-    private final NullSafeCollectionStreamsUsingJava8OptionalContainer instance = 
-            new NullSafeCollectionStreamsUsingJava8OptionalContainer();
+
+    private final NullSafeCollectionStreamsUsingJava8OptionalContainer instance = new NullSafeCollectionStreamsUsingJava8OptionalContainer();
 
     @Test
     public void whenCollectionIsNull_thenExpectAnEmptyStream() {
@@ -49,5 +46,5 @@ public class NullSafeCollectionStreamsUsingJava8OptionalContainerUnitTest {
             assertEquals(iter1.next(), iter2.next());
         assert !iter1.hasNext() && !iter2.hasNext();
     }
-    
+
 }
