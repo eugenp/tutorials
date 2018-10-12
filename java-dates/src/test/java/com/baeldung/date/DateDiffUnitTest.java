@@ -5,7 +5,9 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -23,6 +25,17 @@ public class DateDiffUnitTest {
 
         long diffInMillies = Math.abs(secondDate.getTime() - firstDate.getTime());
         long diff = TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+
+        assertEquals(diff, 6);
+    }
+    
+    @Test
+    public void givenTwoDatesInJava8_whenDifferentiating_thenWeGetSix() {
+        LocalDate now = LocalDate.now();
+        LocalDate sixDaysBehind = now.minusDays(6);
+
+        Period period = Period.between(now, sixDaysBehind);
+        int diff = period.getDays();
 
         assertEquals(diff, 6);
     }

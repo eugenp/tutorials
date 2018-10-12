@@ -1,0 +1,3 @@
+entity-packages: com.baeldung.ebean.model
+transactional-packages: com.baeldung.ebean.app
+querybean-packages: com.baeldung.ebean.app
