@@ -6,5 +6,4 @@
 - [Writing Specifications with Kotlin and Spek](http://www.baeldung.com/kotlin-spek)
 - [Processing JSON with Kotlin and Klaxson](http://www.baeldung.com/kotlin-json-klaxson)
 - [Kotlin with Ktor](http://www.baeldung.com/kotlin-ktor)
-- [Idiomatic Logging in Kotlin](http://www.baeldung.com/kotlin-logging)
 - [Guide to the Kotlin Exposed Framework](https://www.baeldung.com/kotlin-exposed-persistence)
