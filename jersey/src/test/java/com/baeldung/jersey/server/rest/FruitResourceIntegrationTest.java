@@ -10,6 +10,7 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Form;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.test.JerseyTest;
 import org.glassfish.jersey.test.TestProperties;
@@ -65,6 +66,15 @@ public class FruitResourceIntegrationTest extends JerseyTest {
     }
 
     @Test
+    public void givenCreateFruit_whenJsonIsCorrect_thenResponseCodeIsCreated() {
+        Response response = target("fruit/created").request()
+            .post(Entity.json("{\"name\":\"strawberry\",\"weight\":20}"));
+
+        assertEquals("Http Response should be 201 ", Status.CREATED.getStatusCode(), response.getStatus());
+        assertThat(response.readEntity(String.class), containsString("Fruit saved : Fruit [name: strawberry colour: null]"));
+    }
+
+    @Test
     public void givenUpdateFruit_whenFormContainsBadSerialParam_thenResponseCodeIsBadRequest() {
         Form form = new Form();
         form.param("serial", "2345-2345");
@@ -101,6 +111,23 @@ public class FruitResourceIntegrationTest extends JerseyTest {
         final String json = target("fruit/search/strawberry").request()
             .get(String.class);
         assertThat(json, containsString("{\"name\":\"strawberry\",\"weight\":20}"));
+    }
+
+    @Test
+    public void givenFruitExists_whenSearching_thenResponseContainsFruitEntity() {
+        Fruit fruit = new Fruit();
+        fruit.setName("strawberry");
+        fruit.setWeight(20);
+        Response response = target("fruit/create").request(MediaType.APPLICATION_JSON_TYPE)
+            .post(Entity.entity(fruit, MediaType.APPLICATION_JSON_TYPE));
+
+        assertEquals("Http Response should be 204 ", 204, response.getStatus());
+
+        final Fruit entity = target("fruit/search/strawberry").request()
+            .get(Fruit.class);
+
+        assertEquals("Fruit name: ", "strawberry", entity.getName());
+        assertEquals("Fruit weight: ", Integer.valueOf(20), entity.getWeight());
     }
 
     @Test
