@@ -31,3 +31,5 @@
 - [Converting a Stack Trace to a String in Java](https://www.baeldung.com/java-stacktrace-to-string)
 - [Sorting a String Alphabetically in Java](https://www.baeldung.com/java-sort-string-alphabetically)
 - [Remove Emojis from a Java String](https://www.baeldung.com/java-string-remove-emojis)
+- [String Not Empty Test Assertions in Java](https://www.baeldung.com/java-assert-string-not-empty)
+- [String Performance Hints](https://www.baeldung.com/java-string-performance)
