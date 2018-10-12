@@ -16,3 +16,4 @@
 - [Hibernate Entity Lifecycle](https://www.baeldung.com/hibernate-entity-lifecycle)
 - [Mapping A Hibernate Query to a Custom Class](https://www.baeldung.com/hibernate-query-to-custom-class)
 - [@JoinColumn Annotation Explained](https://www.baeldung.com/jpa-join-column)
+- [Hibernate 5 Naming Strategy Configuration](https://www.baeldung.com/hibernate-naming-strategy)
