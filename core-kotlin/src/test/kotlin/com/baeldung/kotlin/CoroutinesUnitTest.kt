@@ -1,9 +1,8 @@
 package com.baeldung.kotlin
 
-import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.*
 import org.junit.Test
 import java.util.concurrent.atomic.AtomicInteger
-import kotlin.coroutines.experimental.buildSequence
 import kotlin.system.measureTimeMillis
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
@@ -14,7 +13,7 @@ class CoroutinesTest {
     @Test
     fun givenBuildSequence_whenTakeNElements_thenShouldReturnItInALazyWay() {
         //given
-        val fibonacciSeq = buildSequence {
+        val fibonacciSeq = sequence {
             var a = 0
             var b = 1
 
@@ -39,7 +38,7 @@ class CoroutinesTest {
     @Test
     fun givenLazySeq_whenTakeNElements_thenShouldReturnAllElements() {
         //given
-        val lazySeq = buildSequence {
+        val lazySeq = sequence {
             print("START ")
             for (i in 1..5) {
                 yield(i)
@@ -60,7 +59,7 @@ class CoroutinesTest {
         val res = mutableListOf<String>()
 
         //when
-        runBlocking<Unit> {
+        runBlocking {
             val promise = launch(CommonPool) { expensiveComputation(res) }
             res.add("Hello,")
             promise.join()

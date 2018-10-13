@@ -1,68 +1,53 @@
 package com.baeldung.thread
 
-import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.*
 import org.junit.jupiter.api.Test
 
 class CoroutineUnitTest {
 
     @Test
-    fun whenCreateLaunchCoroutineWithoutContext_thenRun() {
+    fun whenCreateCoroutineWithLaunchWithoutContext_thenRun() = runBlocking {
 
         val job = launch {
             println("${Thread.currentThread()} has run.")
         }
 
-        runBlocking {
-            job.join()
-        }
     }
 
     @Test
-    fun whenCreateLaunchCoroutineWithDefaultContext_thenRun() {
+    fun whenCreateCoroutineWithLaunchWithDefaultContext_thenRun() = runBlocking {
 
-        val job = launch(DefaultDispatcher) {
+        val job = launch(Dispatchers.Default) {
             println("${Thread.currentThread()} has run.")
         }
-
-        runBlocking {
-            job.join()
-        }
     }
 
     @Test
-    fun whenCreateLaunchCoroutineWithUnconfinedContext_thenRun() {
+    fun whenCreateCoroutineWithLaunchWithUnconfinedContext_thenRun() = runBlocking {
 
-        val job = launch(Unconfined) {
+        val job = launch(Dispatchers.Unconfined) {
             println("${Thread.currentThread()} has run.")
         }
-
-        runBlocking {
-            job.join()
-        }
     }
 
     @Test
-    fun whenCreateLaunchCoroutineWithDedicatedThread_thenRun() {
+    fun whenCreateCoroutineWithLaunchWithDedicatedThread_thenRun() = runBlocking {
 
         val job = launch(newSingleThreadContext("dedicatedThread")) {
             println("${Thread.currentThread()} has run.")
         }
 
-        runBlocking {
-            job.join()
-        }
     }
 
     @Test
-    fun whenCreateAsyncCoroutine_thenRun() {
+    fun whenCreateAsyncCoroutine_thenRun() = runBlocking {
 
-        val deferred = async(Unconfined) {
+        val deferred = async(Dispatchers.IO) {
             return@async "${Thread.currentThread()} has run."
         }
 
-        runBlocking {
-            val result = deferred.await()
-            println(result)
-        }
+
+        val result = deferred.await()
+        println(result)
     }
 }
