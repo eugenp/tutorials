@@ -1,8 +1,11 @@
 package com.baeldung.mongotemplate;
 
-import com.baeldung.config.MongoConfig;
-import com.baeldung.model.EmailAddress;
-import com.baeldung.model.User;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.nullValue;
+import static org.junit.Assert.assertThat;
+
+import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,11 +23,9 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.nullValue;
-import static org.junit.Assert.assertThat;
+import com.baeldung.config.MongoConfig;
+import com.baeldung.model.EmailAddress;
+import com.baeldung.model.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
@@ -104,7 +105,7 @@ public class MongoTemplateQueryLiveTest {
         user.setAge(35);
         mongoTemplate.insert(user);
 
-        final Pageable pageableRequest = new PageRequest(0, 2);
+        final Pageable pageableRequest = PageRequest.of(0, 2);
         Query query = new Query();
         query.with(pageableRequest);
 

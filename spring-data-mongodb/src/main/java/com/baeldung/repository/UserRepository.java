@@ -1,13 +1,14 @@
 package com.baeldung.repository;
 
-import com.baeldung.model.User;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
-import org.springframework.data.querydsl.QueryDslPredicateExecutor;
-
 import java.util.List;
 
-public interface UserRepository extends MongoRepository<User, String>, QueryDslPredicateExecutor<User> {
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
+
+import com.baeldung.model.User;
+
+public interface UserRepository extends MongoRepository<User, String>, QuerydslPredicateExecutor<User> {
     @Query("{ 'name' : ?0 }")
     List<User> findUsersByName(String name);
 
