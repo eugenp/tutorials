@@ -9,6 +9,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 import com.baeldung.validations.functional.handlers.ValidationsHandlers;
+import com.baeldung.validations.functional.handlers.impl.AnnotatedRequestEntityValidationHandler;
 import com.baeldung.validations.functional.handlers.impl.CustomRequestEntityValidationHandler;
 import com.baeldung.validations.functional.handlers.impl.OtherEntityValidationHandler;
 
@@ -16,9 +17,13 @@ import com.baeldung.validations.functional.handlers.impl.OtherEntityValidationHa
 public class ValidationsRouters {
 
     @Bean
-    public RouterFunction<ServerResponse> responseHeaderRoute(@Autowired CustomRequestEntityValidationHandler dryHandler, @Autowired ValidationsHandlers complexHandler, @Autowired OtherEntityValidationHandler otherHandler) {
+    public RouterFunction<ServerResponse> responseHeaderRoute(@Autowired CustomRequestEntityValidationHandler dryHandler,
+        @Autowired ValidationsHandlers complexHandler,
+        @Autowired OtherEntityValidationHandler otherHandler,
+        @Autowired AnnotatedRequestEntityValidationHandler annotatedEntityHandler) {
         return RouterFunctions.route(RequestPredicates.POST("/complex-handler-functional-validation"), complexHandler::handleRequest)
             .andRoute(RequestPredicates.POST("/dry-functional-validation"), dryHandler::handleRequest)
-            .andRoute(RequestPredicates.POST("/other-dry-functional-validation"), otherHandler::handleRequest);
+            .andRoute(RequestPredicates.POST("/other-dry-functional-validation"), otherHandler::handleRequest)
+            .andRoute(RequestPredicates.POST("/annotated-functional-validation"), annotatedEntityHandler::handleRequest);
     }
 }
