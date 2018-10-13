@@ -26,7 +26,7 @@ public class Fruit {
     public String getName() {
         return name;
     }
-
+    
     public void setName(String name) {
         this.name = name;
     }
@@ -46,7 +46,7 @@ public class Fruit {
     public void setWeight(Integer weight) {
         this.weight = weight;
     }
-
+    
     public String getSerial() {
         return serial;
     }
@@ -54,7 +54,7 @@ public class Fruit {
     public void setSerial(String serial) {
         this.serial = serial;
     }
-
+    
     @Override
     public String toString() {
         return "Fruit [name: " + getName() + " colour: " + getColour() + "]";

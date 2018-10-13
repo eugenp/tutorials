@@ -64,7 +64,7 @@ public class FruitResourceIntegrationTest extends JerseyTest {
         assertEquals("Http Response should be 400 ", 400, response.getStatus());
         assertThat(response.readEntity(String.class), containsString("Fruit colour must not be null"));
     }
-
+    
     @Test
     public void givenCreateFruit_whenJsonIsCorrect_thenResponseCodeIsCreated() {
         Response response = target("fruit/created").request()
@@ -112,7 +112,7 @@ public class FruitResourceIntegrationTest extends JerseyTest {
             .get(String.class);
         assertThat(json, containsString("{\"name\":\"strawberry\",\"weight\":20}"));
     }
-
+    
     @Test
     public void givenFruitExists_whenSearching_thenResponseContainsFruitEntity() {
         Fruit fruit = new Fruit();

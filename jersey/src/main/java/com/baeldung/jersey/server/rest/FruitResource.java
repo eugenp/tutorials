@@ -65,12 +65,25 @@ public class FruitResource {
     @POST
     @Path("/create")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public void createFruit(@NotNull(message = "Fruit name must not be null") @FormParam("name") String name, @NotNull(message = "Fruit colour must not be null") @FormParam("colour") String colour) {
+    public void createFruit(
+        @NotNull(message = "Fruit name must not be null") @FormParam("name") String name, 
+        @NotNull(message = "Fruit colour must not be null") @FormParam("colour") String colour) {
 
         Fruit fruit = new Fruit(name, colour);
         SimpleStorageService.storeFruit(fruit);
     }
-
+    
+    @POST
+    @Path("/created")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createNewFruit(@Valid Fruit fruit) {
+        String result = "Fruit saved : " + fruit;
+        return Response.status(Status.CREATED.getStatusCode())
+            .entity(result)
+            .build();
+    }
+    
+    
     @PUT
     @Path("/update")
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -85,16 +98,6 @@ public class FruitResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void createFruit(@Valid Fruit fruit) {
         SimpleStorageService.storeFruit(fruit);
-    }
-
-    @POST
-    @Path("/created")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response createNewFruit(@Valid Fruit fruit) {
-        String result = "Fruit saved : " + fruit;
-        return Response.status(Status.CREATED.getStatusCode())
-            .entity(result)
-            .build();
     }
 
     @GET
