@@ -25,7 +25,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.0</version>
         </dependency>
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -99,7 +98,6 @@
         <embedded-redis.version>0.6</embedded-redis.version>
         <junit.platform.version>1.0.0</junit.platform.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
-        <spring.version>5.0.6.RELEASE</spring.version>
     </properties>
 
 </project>
