@@ -1,10 +1,14 @@
 package org.baeldung.gson.deserialization;
 
 import java.lang.reflect.Type;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.HashMap;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.baeldung.gson.entities.Employee;
 import org.baeldung.gson.serialization.HashMapDeserializer;
+import org.baeldung.gson.serialization.StringDateHashMapDeserializer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -81,6 +85,27 @@ public class HashMapDeserializationUnitTest {
         Assert.assertEquals(Integer.class, blendedMap.get("employee.salary").getClass());
         Assert.assertEquals(Employee.class, blendedMap.get("employee").getClass());
 
+    }
+
+    @Test
+    public void whenUsingCustomDateDeserializer_thenShouldReturnMapWithDate() {
+        String jsonString = "{'Bob': '2017/06/01', 'Jennie':'2015/01/03'}";
+        Type type = new TypeToken<HashMap<String, Date>>(){}.getType();
+        Gson gson = new GsonBuilder()
+          .registerTypeAdapter(type, new StringDateHashMapDeserializer())
+          .create();
+        HashMap<String, Date> empJoiningDateMap = gson.fromJson(jsonString, type);
+
+        logger.info("The converted map: {}", empJoiningDateMap);
+        Assert.assertEquals(2, empJoiningDateMap.size());
+        Assert.assertEquals(Date.class, empJoiningDateMap.get("Bob").getClass());
+        Date dt = null;
+        try {
+            dt = DateUtils.parseDate("2017-06-01", "yyyy-MM-dd");
+            Assert.assertEquals(dt, empJoiningDateMap.get("Bob"));
+        } catch (ParseException e) {
+            logger.error("Could not parse date", e);
+        }
     }
 
 }
