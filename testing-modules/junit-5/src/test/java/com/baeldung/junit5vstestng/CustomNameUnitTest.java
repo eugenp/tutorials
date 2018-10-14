@@ -1,4 +1,4 @@
-package org.baeldung.java.customtestname;
+package com.baeldung.junit5vstestng;
 
 import static org.junit.Assert.assertNotNull;
 

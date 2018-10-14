@@ -1,4 +1,4 @@
-package org.baeldung.java.parameterisedsource;
+package com.baeldung.junit5vstestng;
 
 public enum PizzaDeliveryStrategy {
     EXPRESS,

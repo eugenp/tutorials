@@ -1,14 +1,13 @@
-package org.baeldung.java.suite.childpackage1;
+package com.baeldung.junit5vstestng;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Test;
 
-
-public class Class1UnitTest {
+public class Class2UnitTest {
 
     @Test
-    public void testCase_InClass1UnitTest() {
+    public void testCase_InClass2UnitTest() {
         assertTrue(true);
     }
     

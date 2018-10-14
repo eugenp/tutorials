@@ -1,4 +1,4 @@
-package com.baeldung.throwsexception;
+package com.baeldung.junit5vstestng;
 
 public class Calculator {
 
