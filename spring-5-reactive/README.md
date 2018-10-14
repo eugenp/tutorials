@@ -14,3 +14,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Webflux and CORS](http://www.baeldung.com/spring-webflux-cors)
 - [Handling Errors in Spring WebFlux](http://www.baeldung.com/spring-webflux-errors)
 - [Server-Sent Events in Spring](https://www.baeldung.com/spring-server-sent-events)
+- [Hexagonal Architecture: a Quick and Practical Example in Java](https://www.baeldung.com/hexagonal-architecture-a-quick-and-practical-example-in-java)
