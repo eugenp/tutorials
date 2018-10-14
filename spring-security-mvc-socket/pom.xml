@@ -56,12 +56,12 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${springsecurity.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${springsecurity.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
 
         <!-- Data -->
@@ -95,7 +95,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-messaging</artifactId>
-            <version>${springsecurity.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
 
         <!-- Logging -->
@@ -148,10 +148,18 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        
+        <!-- Test -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>1.5.10.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <build>
-        <pluginManagement>
+      
             <plugins>
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
@@ -171,17 +179,16 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
         <finalName>spring-security-mvc-socket</finalName>
     </build>
 
     <properties>
-        <springsecurity.version>4.2.6.RELEASE</springsecurity.version>
-        <jackson.version>2.8.7</jackson.version>
         <hibernate-core.version>5.2.10.Final</hibernate-core.version>
+        <spring-security.version>4.2.3.RELEASE</spring-security.version>
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <h2database.version>1.4.196</h2database.version>
         <logback-classic.version>1.2.3</logback-classic.version>
+        <jackson.version>2.8.7</jackson.version>
     </properties>
 
 </project>

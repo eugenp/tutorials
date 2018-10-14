@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import reactor.core.publisher.Mono;
 
-@RestController
+@RestController("FurtherCorsConfigsController-cors-on-global-config-and-more")
 @RequestMapping("/cors-on-global-config-and-more")
 public class FurtherCorsConfigsController {
 

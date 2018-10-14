@@ -9,6 +9,13 @@
 	<artifactId>google-web-toolkit</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
+	<name>google-web-toolkit</name>
+	
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
 	<dependencyManagement>
 		<dependencies>

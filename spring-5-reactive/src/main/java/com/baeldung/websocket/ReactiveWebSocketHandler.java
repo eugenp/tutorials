@@ -14,7 +14,7 @@ import java.time.Duration;
 import static java.time.LocalDateTime.now;
 import static java.util.UUID.randomUUID;
 
-@Component
+@Component("ReactiveWebSocketHandler")
 public class ReactiveWebSocketHandler implements WebSocketHandler {
 
     private static final ObjectMapper json = new ObjectMapper();
