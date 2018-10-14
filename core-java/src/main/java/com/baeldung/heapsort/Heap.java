@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Heap<E extends Comparable<E>> {
 
-    List<E> elements = new ArrayList<>();
+    private List<E> elements = new ArrayList<>();
 
     public static <E extends Comparable<E>> List<E> sort(Iterable<E> elements) {
         Heap<E> heap = of(elements);
@@ -35,7 +35,7 @@ public class Heap<E extends Comparable<E>> {
     public void add(E e) {
         elements.add(e);
         int elementIndex = elements.size() - 1;
-        while (elementIndex > 0 && !isCorrectChild(elementIndex)) {
+        while (!isRoot(elementIndex) && !isCorrectChild(elementIndex)) {
             int parentIndex = parentIndex(elementIndex);
             swap(elementIndex, parentIndex);
             elementIndex = parentIndex;
@@ -66,6 +66,10 @@ public class Heap<E extends Comparable<E>> {
     public boolean isEmpty() {
         return elements.isEmpty();
     }
+    
+    private boolean isRoot(int index) {
+        return index == 0;
+    }
 
     private int smallerChildIndex(int index) {
         int leftChildIndex = leftChildIndex(index);
@@ -95,7 +99,7 @@ public class Heap<E extends Comparable<E>> {
     }
 
     private boolean isCorrect(int parentIndex, int childIndex) {
-        if (!isValidIndex(childIndex)) {
+        if (!isValidIndex(parentIndex) || !isValidIndex(childIndex)) {
             return true;
         }
 
