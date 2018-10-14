@@ -1,0 +1,17 @@
+main {
+  background-color: black;
+}
+
+input[type="submit"] {
+  width: 100px;
+  align-content: center;
+  text-align: center;
+  background: transparent;
+  border-radius: 25px;
+  padding: 6px;
+  color: white;
+}
+
+input[type="submit"]:hover {
+  opacity:.6;
+}

@@ -19,6 +19,7 @@
         <module>time-processor</module>
         <module>log-sink</module>
         <module>batch-job</module>
+        <module>etl</module>
     </modules>
 
 </project>
