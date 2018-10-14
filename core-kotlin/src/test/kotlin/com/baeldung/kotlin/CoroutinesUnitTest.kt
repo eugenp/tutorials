@@ -60,7 +60,7 @@ class CoroutinesTest {
 
         //when
         runBlocking {
-            val promise = launch(CommonPool) { expensiveComputation(res) }
+            val promise = launch(Dispatchers.Default) { expensiveComputation(res) }
             res.add("Hello,")
             promise.join()
         }
@@ -84,7 +84,7 @@ class CoroutinesTest {
 
             //when
             val jobs = List(numberOfCoroutines) {
-                launch(CommonPool) {
+                launch(Dispatchers.Default) {
                     delay(1L)
                     counter.incrementAndGet()
                 }
@@ -100,7 +100,7 @@ class CoroutinesTest {
     fun givenCancellableJob_whenRequestForCancel_thenShouldQuit() {
         runBlocking<Unit> {
             //given
-            val job = launch(CommonPool) {
+            val job = launch(Dispatchers.Default) {
                 while (isActive) {
                     //println("is working")
                 }
@@ -134,8 +134,8 @@ class CoroutinesTest {
             val delay = 1000L
             val time = measureTimeMillis {
                 //given
-                val one = async(CommonPool) { someExpensiveComputation(delay) }
-                val two = async(CommonPool) { someExpensiveComputation(delay) }
+                val one = async(Dispatchers.Default) { someExpensiveComputation(delay) }
+                val two = async(Dispatchers.Default) { someExpensiveComputation(delay) }
 
                 //when
                 runBlocking {
@@ -155,8 +155,8 @@ class CoroutinesTest {
             val delay = 1000L
             val time = measureTimeMillis {
                 //given
-                val one = async(CommonPool, CoroutineStart.LAZY) { someExpensiveComputation(delay) }
-                val two = async(CommonPool, CoroutineStart.LAZY) { someExpensiveComputation(delay) }
+                val one = async(Dispatchers.Default, CoroutineStart.LAZY) { someExpensiveComputation(delay) }
+                val two = async(Dispatchers.Default, CoroutineStart.LAZY) { someExpensiveComputation(delay) }
 
                 //when
                 runBlocking {

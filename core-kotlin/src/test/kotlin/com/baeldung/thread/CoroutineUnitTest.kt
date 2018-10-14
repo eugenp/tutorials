@@ -46,7 +46,6 @@ class CoroutineUnitTest {
             return@async "${Thread.currentThread()} has run."
         }
 
-
         val result = deferred.await()
         println(result)
     }
