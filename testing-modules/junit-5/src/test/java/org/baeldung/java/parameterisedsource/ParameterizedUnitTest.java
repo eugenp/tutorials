@@ -1,6 +1,5 @@
 package org.baeldung.java.parameterisedsource;
 
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -12,8 +11,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import com.baeldung.enums.PizzaDeliveryStrategy;
 
 public class ParameterizedUnitTest {
 
