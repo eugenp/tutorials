@@ -21,7 +21,9 @@ public class BufferedReaderExample {
 
     public String readAllLines2(BufferedReader reader) {
         StringBuilder content = new StringBuilder();
-        reader.lines().forEach(line -> content.append(line).append(System.lineSeparator()));
+        reader.lines()
+            .forEach(line -> content.append(line)
+                .append(System.lineSeparator()));
         return content.toString();
     }
 
@@ -95,7 +97,7 @@ public class BufferedReaderExample {
     }
 
     public void readFileTryWithResources() {
-        try(BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/input.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/input.txt"))) {
             String content = readAllLines(reader);
             System.out.println(content);
         } catch (IOException e) {
