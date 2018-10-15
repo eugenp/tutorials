@@ -10,7 +10,7 @@ import org.apache.pulsar.client.api.SubscriptionType;
 
 import java.util.stream.IntStream;
 
-public class ExclusiveSubscriptionTutorial {
+public class ExclusiveSubscriptionTest {
     private static final String SERVICE_URL = "pulsar://localhost:6650";
     private static final String TOPIC_NAME = "test-topic";
     private static final String SUBSCRIPTION_NAME = "test-subscription";

@@ -11,7 +11,7 @@ import org.apache.pulsar.client.api.SubscriptionType;
 
 import java.util.stream.IntStream;
 
-public class    FailoverSubscriptionTutorial {
+public class FailoverSubscriptionTest {
     private static final String SERVICE_URL = "pulsar://localhost:6650";
     private static final String TOPIC_NAME = "failover-subscription-test-topic";
     private static final String SUBSCRIPTION_NAME = "test-subscription";
