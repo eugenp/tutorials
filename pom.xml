@@ -47,6 +47,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
 			<version>${junit-jupiter.version}</version>
@@ -451,6 +457,7 @@
 				<module>spring-5</module>
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
+				<module>spring-data-5-reactive/spring-5-data-reactive-redis</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>

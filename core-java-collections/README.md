@@ -52,3 +52,6 @@
 - [Performance of contains() in a HashSet vs ArrayList](https://www.baeldung.com/java-hashset-arraylist-contains-performance)
 - [Get the Key for a Value from a Java Map](https://www.baeldung.com/java-map-key-from-value)
 - [Time Complexity of Java Collections](https://www.baeldung.com/java-collections-complexity)
+- [Sort a HashMap in Java](https://www.baeldung.com/java-hashmap-sort)
+- [Finding the Highest Value in a Java Map](https://www.baeldung.com/java-find-map-max)
+- [Operating on and Removing an Item from Stream](https://www.baeldung.com/java-use-remove-item-stream)
