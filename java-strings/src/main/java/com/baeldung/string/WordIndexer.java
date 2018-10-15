@@ -1,32 +1,46 @@
 package com.baeldung.string.searching;
 
+import java.util.ArrayList;
+
 public class WordIndexer {
 
-    public String findWord(String textString, String word) {
+    public ArrayList findWord(String textString, String word) {
         int index = -1;
-        int count = 0;
+        ArrayList<Integer> indexes = new ArrayList<Integer>();
         StringBuilder output = new StringBuilder();
         boolean done = false;
         String lowerCaseTextString = textString.toLowerCase();
         String lowerCaseWord = word.toLowerCase();
+        int wordLength = word.length();
 
         while(!done){
-
-            index = lowerCaseTextString.indexOf(lowerCaseWord, index + 1);
+            index = lowerCaseTextString.indexOf(lowerCaseWord, index + wordLength);  // Slight improvement
             if (index != -1) {
-                count++;
-                String foundString = textString.substring(index);
-                if(foundString.length() > 17){
-                    output.append(index + " " + foundString.substring(0, 17) + "\n" );
-                }else{
-                    output.append(index + " " + foundString.substring(0,foundString.length()-1) + "\n" );
-                }
-
+                indexes.add(index);
             }else{
                 done = true;
             }
         }
-        output.append("\nThe string '" + word + "' was found " + count +" times.");
-        return output.toString();
+        return indexes;
+    }
+
+    public ArrayList findWordUpgrade(String textString, String word) {
+        int index = -1;
+        ArrayList<Integer> indexes = new ArrayList<Integer>();
+        StringBuilder output = new StringBuilder();
+        boolean done = false;
+        String lowerCaseTextString = textString.toLowerCase();
+        String lowerCaseWord = word.toLowerCase();
+        int wordLength = word.length();
+
+        while(!done){
+            index = lowerCaseTextString.indexOf(lowerCaseWord, index + wordLength);  // Slight improvement
+            if (index != -1) {
+                indexes.add(index);
+            }else{
+                done = true;
+            }
+        }
+        return indexes;
     }
 }
