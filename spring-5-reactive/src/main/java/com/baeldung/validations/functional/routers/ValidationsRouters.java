@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.baeldung.validations.functional.handlers.ValidationsHandlers;
+import com.baeldung.validations.functional.handlers.FunctionalHandler;
 import com.baeldung.validations.functional.handlers.impl.AnnotatedRequestEntityValidationHandler;
 import com.baeldung.validations.functional.handlers.impl.CustomRequestEntityValidationHandler;
 import com.baeldung.validations.functional.handlers.impl.OtherEntityValidationHandler;
@@ -18,7 +18,7 @@ public class ValidationsRouters {
 
     @Bean
     public RouterFunction<ServerResponse> responseHeaderRoute(@Autowired CustomRequestEntityValidationHandler dryHandler,
-        @Autowired ValidationsHandlers complexHandler,
+        @Autowired FunctionalHandler complexHandler,
         @Autowired OtherEntityValidationHandler otherHandler,
         @Autowired AnnotatedRequestEntityValidationHandler annotatedEntityHandler) {
         return RouterFunctions.route(RequestPredicates.POST("/complex-handler-functional-validation"), complexHandler::handleRequest)

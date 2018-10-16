@@ -1,13 +1,11 @@
 package com.baeldung.validations.functional.validators;
 
-import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.baeldung.validations.functional.model.OtherEntity;
 
-@Component
 public class OtherEntityValidator implements Validator {
 
     private static final int MIN_ITEM_QUANTITY = 1;

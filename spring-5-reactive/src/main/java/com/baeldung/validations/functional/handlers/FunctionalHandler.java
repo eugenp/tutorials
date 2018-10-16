@@ -16,18 +16,18 @@ import com.baeldung.validations.functional.validators.CustomRequestEntityValidat
 import reactor.core.publisher.Mono;
 
 @Component
-public class ValidationsHandlers {
+public class FunctionalHandler {
 
     public Mono<ServerResponse> handleRequest(final ServerRequest request) {
         Validator validator = new CustomRequestEntityValidator();
         Mono<String> responseBody = request.bodyToMono(CustomRequestEntity.class)
-            .map(cre -> {
-                Errors errors = new BeanPropertyBindingResult(cre, CustomRequestEntity.class.getName());
-                validator.validate(cre, errors);
+            .map(body -> {
+                Errors errors = new BeanPropertyBindingResult(body, CustomRequestEntity.class.getName());
+                validator.validate(body, errors);
 
                 if (errors == null || errors.getAllErrors()
                     .isEmpty()) {
-                    return String.format("Hi, %s [%s]!", cre.getName(), cre.getCode());
+                    return String.format("Hi, %s [%s]!", body.getName(), body.getCode());
 
                 } else {
                     throw new ResponseStatusException(HttpStatus.BAD_REQUEST, errors.getAllErrors()
