@@ -1,10 +1,10 @@
 package com.baeldung.storm.model;
 
 public class User {
-    String username;
-    String password;
-    String email;
-    int age;
+    private String username;
+    private String password;
+    private String email;
+    private int age;
 
     public String getUsername() {
         return username;

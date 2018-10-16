@@ -13,8 +13,8 @@ import java.util.Random;
 
 public class RandomIntSpout extends BaseRichSpout {
 
-    Random random;
-    SpoutOutputCollector outputCollector;
+    private Random random;
+    private SpoutOutputCollector outputCollector;
 
     @Override
     public void open(Map map, TopologyContext topologyContext, SpoutOutputCollector spoutOutputCollector) {

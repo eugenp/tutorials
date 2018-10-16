@@ -4,7 +4,6 @@ import com.baeldung.storm.model.AggregatedWindow;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import org.apache.storm.task.OutputCollector;
 import org.apache.storm.task.TopologyContext;
 import org.apache.storm.topology.OutputFieldsDeclarer;
@@ -20,9 +19,9 @@ import java.util.Map;
 
 public class FileWritingBolt extends BaseRichBolt {
     public static Logger logger = LoggerFactory.getLogger(FileWritingBolt.class);
-    BufferedWriter writer;
-    String filePath;
-    ObjectMapper objectMapper;
+    private BufferedWriter writer;
+    private String filePath;
+    private ObjectMapper objectMapper;
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         objectMapper = new ObjectMapper();
