@@ -28,3 +28,6 @@
 - [Calculate the Distance Between Two Points in Java](https://www.baeldung.com/java-distance-between-two-points)
 - [Find the Intersection of Two Lines in Java](https://www.baeldung.com/java-intersection-of-two-lines)
 - [Check If a String Contains All The Letters of The Alphabet](https://www.baeldung.com/java-string-contains-all-letters)
+- [Round Up to the Nearest Hundred](https://www.baeldung.com/java-round-up-nearest-hundred)
+- [Merge Sort in Java](https://www.baeldung.com/java-merge-sort)
+- [Calculate Percentage in Java](https://www.baeldung.com/java-calculate-percentage)

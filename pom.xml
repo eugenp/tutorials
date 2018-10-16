@@ -47,6 +47,12 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
 			<version>${junit-jupiter.version}</version>
@@ -372,6 +378,7 @@
 				<module>google-web-toolkit</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-collections</module>
 				<module>guava-modules/guava-18</module>
 				<module>guava-modules/guava-19</module>
 				<module>guava-modules/guava-21</module>
@@ -399,6 +406,7 @@
 				<module>javafx</module>
 				<module>jgroups</module>
 				<module>jee-7</module>
+				<module>jee-7-security</module>
 				<module>jhipster</module>
 				<module>jjwt</module>
 				<module>jsf</module>
@@ -450,6 +458,7 @@
 				<module>spring-5</module>
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
+				<module>spring-data-5-reactive/spring-5-data-reactive-redis</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
@@ -526,31 +535,6 @@
 				<!-- <module>spring-rest</module> --> <!-- temporarily disabled -->
 				<!-- <module>spring-rest-simple</module> --> <!-- temporarily disabled -->
 				<module>spring-resttemplate</module>
-				<module>spring-security-acl</module>
-				<module>spring-security-cache-control</module>
-				<module>spring-security-client/spring-security-jsp-authentication</module>
-				<module>spring-security-client/spring-security-jsp-authorize</module>
-				<module>spring-security-client/spring-security-jsp-config</module>
-				<module>spring-security-client/spring-security-mvc</module>
-				<module>spring-security-client/spring-security-thymeleaf-authentication</module>
-				<module>spring-security-client/spring-security-thymeleaf-authorize</module>
-				<module>spring-security-client/spring-security-thymeleaf-config</module>
-				<module>spring-security-core</module>
-				<module>spring-security-mvc-boot</module>
-				<module>spring-security-mvc-custom</module>
-				<module>spring-security-mvc-digest-auth</module>
-				<module>spring-security-mvc-ldap</module>
-				<module>spring-security-mvc-login</module>
-				<module>spring-security-mvc-persisted-remember-me</module>
-				<module>spring-security-mvc-session</module>
-				<module>spring-security-mvc-socket</module>
-				<module>spring-security-openid</module>
-				<!--<module>spring-security-react</module> -->
-				<module>spring-security-rest-basic-auth</module>
-				<module>spring-security-rest-custom</module>
-				<module>spring-security-rest</module>
-				<module>spring-security-sso</module>
-				<module>spring-security-x509</module>
 			</modules>
 
 		</profile>
@@ -719,7 +703,33 @@
                 <!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
                 <!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
                 <!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
-                <module>flyway-cdi-extension</module>                               
+                <module>flyway-cdi-extension</module>
+                
+                <module>spring-security-acl</module>
+                <module>spring-security-cache-control</module>
+                <module>spring-security-client/spring-security-jsp-authentication</module>
+                <module>spring-security-client/spring-security-jsp-authorize</module>
+                <module>spring-security-client/spring-security-jsp-config</module>
+                <module>spring-security-client/spring-security-mvc</module>
+                <module>spring-security-client/spring-security-thymeleaf-authentication</module>
+                <module>spring-security-client/spring-security-thymeleaf-authorize</module>
+                <module>spring-security-client/spring-security-thymeleaf-config</module>
+                <module>spring-security-core</module>
+                <module>spring-security-mvc-boot</module>
+                <module>spring-security-mvc-custom</module>
+                <module>spring-security-mvc-digest-auth</module>
+                <module>spring-security-mvc-ldap</module>
+                <module>spring-security-mvc-login</module>
+                <module>spring-security-mvc-persisted-remember-me</module>
+                <module>spring-security-mvc-session</module>
+                <module>spring-security-mvc-socket</module>
+                <module>spring-security-openid</module>
+                <!--<module>spring-security-react</module> -->
+                <module>spring-security-rest-basic-auth</module>
+                <module>spring-security-rest-custom</module>
+                <module>spring-security-rest</module>
+                <module>spring-security-sso</module>
+                <module>spring-security-x509</module>                   
             </modules>
 
         </profile>
@@ -1276,6 +1286,7 @@
 				<module>google-cloud</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-collections</module>
 				<module>guava-modules/guava-18</module>
 				<module>guava-modules/guava-19</module>
 				<module>guava-modules/guava-21</module>
@@ -1301,6 +1312,7 @@
 				<module>javafx</module>
 				<module>jgroups</module>
 				<module>jee-7</module>
+				<module>jee-7-security</module>
 				<module>jjwt</module>
 				<module>jsf</module>
 				<module>json-path</module>
