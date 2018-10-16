@@ -1,0 +1,1 @@
+insert into area  values ('M4C1B5' , 'Toronto', 'Ontario');
