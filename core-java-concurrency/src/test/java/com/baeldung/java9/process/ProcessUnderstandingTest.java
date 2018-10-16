@@ -11,6 +11,7 @@ import java.lang.String;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 import java.lang.Integer;
+import java.lang.ProcessHandle;
 
 import org.junit.jupiter.api.Test;
 
@@ -41,11 +42,13 @@ class ProcessUnderstandingTest {
     @Test
     public void givenSubProcess_whenEncounteringError_thenErrorStreamNotNull() throws IOException {
         Process process = Runtime.getRuntime()
-            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
+            .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessRunTimeError.java");
+        process = Runtime.getRuntime()
+            .exec("java -cp  src/main/java com.baeldung.java9.process.ProcessRunTimeError");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
         String errorString = error.readLine();
         assertNotNull(errorString);
-    }
+    }   
 
     //@Test - windows specific
     public void givenSubProcess_whenStarted_thenStartSuccessIsAlive() throws IOException {
