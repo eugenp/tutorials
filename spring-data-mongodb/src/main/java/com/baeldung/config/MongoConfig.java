@@ -1,20 +1,22 @@
 package com.baeldung.config;
 
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
-import com.baeldung.converter.UserWriterConverter;
-import com.baeldung.event.CascadeSaveMongoEventListener;
-import com.baeldung.event.UserCascadeSaveMongoEventListener;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.MongoTransactionManager;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
-import org.springframework.data.mongodb.core.convert.CustomConversions;
+import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.baeldung.converter.UserWriterConverter;
+import com.baeldung.event.CascadeSaveMongoEventListener;
+import com.baeldung.event.UserCascadeSaveMongoEventListener;
+import com.mongodb.MongoClient;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "com.baeldung.repository")
@@ -28,7 +30,7 @@ public class MongoConfig extends AbstractMongoConfiguration {
     }
 
     @Override
-    public Mongo mongo() throws Exception {
+    public MongoClient mongoClient() {
         return new MongoClient("127.0.0.1", 27017);
     }
 
@@ -48,13 +50,19 @@ public class MongoConfig extends AbstractMongoConfiguration {
     }
 
     @Override
-    public CustomConversions customConversions() {
+    public MongoCustomConversions customConversions() {
         converters.add(new UserWriterConverter());
-        return new CustomConversions(converters);
+        return new MongoCustomConversions(converters);
     }
 
     @Bean
     public GridFsTemplate gridFsTemplate() throws Exception {
         return new GridFsTemplate(mongoDbFactory(), mappingMongoConverter());
     }
+
+    @Bean
+    MongoTransactionManager transactionManager(MongoDbFactory dbFactory) {
+            return new MongoTransactionManager(dbFactory);
+    }
+    
 }
