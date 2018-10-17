@@ -17,14 +17,13 @@ public class EmployeeServiceUnitTest {
     private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceUnitTest.class);
 
     @Mock
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
-    @Spy
     @InjectMocks
-    EmployeeService empService = new EmployeeService();
+    private EmployeeService empService = new EmployeeService();
 
     @Before
-    public void initMocks() {
+    public void setup() {
         MockitoAnnotations.initMocks(this);
     }
 
