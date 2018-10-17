@@ -1,26 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
+
     <artifactId>spring-swagger-codegen-api-client</artifactId>
     <packaging>jar</packaging>
     <name>spring-swagger-codegen-api-client</name>
-    <version>0.0.1-SNAPSHOT</version>
     <url>https://github.com/swagger-api/swagger-codegen</url>
     <description>Swagger Java</description>
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>spring-swagger-codegen</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
     <scm>
         <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
         <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
         <url>https://github.com/swagger-api/swagger-codegen</url>
     </scm>
-    <prerequisites>
-        <maven>2.2.0</maven>
-    </prerequisites>
 
     <licenses>
         <license>
@@ -29,7 +20,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
     <developers>
         <developer>
             <name>Swagger</name>
@@ -39,44 +29,20 @@
         </developer>
     </developers>
 
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>spring-swagger-codegen</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../spring-swagger-codegen</relativePath>
+    </parent>
+
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12</version>
-                <configuration>
-                    <systemProperties>
-                        <property>
-                            <name>loggerPath</name>
-                            <value>conf/log4j.properties</value>
-                        </property>
-                    </systemProperties>
-                    <argLine>-Xms512m -Xmx1500m</argLine>
-                    <parallel>methods</parallel>
-                    <forkMode>pertest</forkMode>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>copy-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <!-- attach test jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.2</version>
+                <version>${maven-jar-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -92,7 +58,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.10</version>
+                <version>${build-helper-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>add_sources</id>
@@ -123,7 +89,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.4</version>
+                <version>${maven-javadoc-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -136,7 +102,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
+                <version>${maven-source-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -157,7 +123,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>1.5</version>
+                        <version>${maven-gpg-plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -218,22 +184,17 @@
             <artifactId>joda-time</artifactId>
             <version>${jodatime-version}</version>
         </dependency>
-
-        <!-- test dependencies -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit-version}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
+
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <swagger-annotations-version>1.5.15</swagger-annotations-version>
         <spring-web-version>4.3.9.RELEASE</spring-web-version>
         <jackson-version>2.8.9</jackson-version>
         <jodatime-version>2.9.9</jodatime-version>
-        <maven-plugin-version>1.0.0</maven-plugin-version>
-        <junit-version>4.12</junit-version>
+        <maven-jar-plugin.version>2.2</maven-jar-plugin.version>
+        <maven-gpg-plugin.version>1.5</maven-gpg-plugin.version>
+        <maven-source-plugin.version>2.2.1</maven-source-plugin.version>
+        <maven-javadoc-plugin.version>2.10.4</maven-javadoc-plugin.version>
+        <build-helper-maven-plugin.version>1.10</build-helper-maven-plugin.version>
     </properties>
 </project>

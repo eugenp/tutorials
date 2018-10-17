@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-custom-aop</artifactId>
@@ -101,7 +101,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>18.0</version>
+            <version>${guava.version}</version>
         </dependency>
 
         <dependency>
@@ -148,6 +148,8 @@
         <bootstrap.version>3.3.7-1</bootstrap.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
+        <guava.version>18.0</guava.version>
+        <tomcat.version>8.0.43</tomcat.version>
     </properties>
 
 </project>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>ejb-remote</artifactId>
     <packaging>ejb</packaging>
@@ -15,7 +15,6 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>${javaee-api.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -57,7 +56,7 @@
             </build>
         </profile>
 
-        <!--mvn clean install wildfly:deploy -Pwildfly-runtime-->
+        <!--mvn clean install wildfly:deploy -Pwildfly-runtime -->
         <profile>
             <id>wildfly-runtime</id>
             <activation>
@@ -74,7 +73,7 @@
                             <port>9990</port>
                             <username>testUser</username>
                             <password>admin1234!</password>
-                            <filename>${build.finalName}.jar</filename>
+                            <filename>${project.build.finalName}.jar</filename>
                         </configuration>
                     </plugin>
                 </plugins>

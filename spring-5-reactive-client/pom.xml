@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-5-reactive-client</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>spring-5-reactive-client</name>
     <description>spring 5 sample project about new features</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.M7</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-boot-2</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -42,20 +41,6 @@
             <groupId>javax.json.bind</groupId>
             <artifactId>javax.json.bind-api</artifactId>
         </dependency>
-
-        <!-- Dependencies for Yasson -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.eclipse</groupId> -->
-        <!-- <artifactId>yasson</artifactId> -->
-        <!-- <version>1.0</version> -->
-        <!-- </dependency> -->
-        <!-- <dependency> -->
-        <!-- <groupId>org.glassfish</groupId> -->
-        <!-- <artifactId>javax.json</artifactId> -->
-        <!-- <version>1.1.2</version> -->
-        <!-- </dependency> -->
-        <!-- Dependencies for Johnzon -->
-
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
             <artifactId>geronimo-json_1.1_spec</artifactId>
@@ -102,36 +87,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -144,54 +102,10 @@
                     <layout>JAR</layout>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <forkCount>3</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*IntTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <junit.platform.version>1.0.0</junit.platform.version>
-        <junit.jupiter.version>5.0.0</junit.jupiter.version>
-        <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
-        <spring.version>5.0.2.RELEASE</spring.version>
         <reactor-spring.version>1.0.1.RELEASE</reactor-spring.version>
         <johnzon.version>1.1.3</johnzon.version>
         <jsonb-api.version>1.0</jsonb-api.version>

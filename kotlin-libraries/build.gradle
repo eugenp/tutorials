@@ -1,0 +1,57 @@
+
+
+group 'com.baeldung.ktor'
+version '1.0-SNAPSHOT'
+
+
+buildscript {
+    ext.kotlin_version = '1.2.41'
+    ext.ktor_version = '0.9.2'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = 'APIServer.kt'
+
+sourceCompatibility = 1.8
+compileKotlin { kotlinOptions.jvmTarget = "1.8" }
+compileTestKotlin { kotlinOptions.jvmTarget = "1.8" }
+
+kotlin { experimental { coroutines "enable" } }
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "https://dl.bintray.com/kotlin/ktor" }
+}
+sourceSets {
+    main{
+        kotlin{
+            srcDirs 'com/baeldung/ktor'
+        }
+    }
+
+}
+
+dependencies {
+    compile "io.ktor:ktor-server-netty:$ktor_version"
+    compile "ch.qos.logback:logback-classic:1.2.1"
+    compile "io.ktor:ktor-gson:$ktor_version"
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'com.beust:klaxon:3.0.1'
+
+}
+task runServer(type: JavaExec) {
+    main = 'APIServer'
+   classpath = sourceSets.main.runtimeClasspath
+}

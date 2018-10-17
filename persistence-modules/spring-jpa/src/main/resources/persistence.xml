@@ -7,7 +7,7 @@
       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd"
 >
 
-    <context:property-placeholder location="classpath:persistence-mysql.properties"/>
+    <context:property-placeholder location="classpath:persistence-h2.properties"/>
 
     <bean id="myEmf" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -21,8 +21,6 @@
             <props>
                 <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
                 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.cache.use_second_level_cache">${hibernate.cache.use_second_level_cache}</prop>
-                <prop key="hibernate.cache.use_query_cache">${hibernate.cache.use_query_cache}</prop>
             </props>
         </property>
     </bean>

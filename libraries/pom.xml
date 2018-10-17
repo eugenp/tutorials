@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>libraries</artifactId>
     <name>libraries</name>
@@ -67,7 +68,7 @@
         <dependency>
             <groupId>tec.units</groupId>
             <artifactId>unit-ri</artifactId>
-            <version>1.0.3</version>
+            <version>${unit-ri.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -105,21 +106,6 @@
             <artifactId>javers-core</artifactId>
             <version>${javers.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-server</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-servlet</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-            <version>${jetty.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>io.nats</groupId>
@@ -135,7 +121,7 @@
         <dependency>
             <groupId>io.specto</groupId>
             <artifactId>hoverfly-java</artifactId>
-            <version>0.8.1</version>
+            <version>${hoverfly-java.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -168,44 +154,23 @@
             <artifactId>commons-dbutils</artifactId>
             <version>${commons.dbutils.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-core</artifactId>
-            <version>${flink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>${flink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-test-utils_2.10</artifactId>
-            <version>${flink.version}</version>
-            <scope>test</scope>
-        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
-            <version>3.6.1</version>
+            <version>${common-math3.version}</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
             <artifactId>serenity-core</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
+            <exclusions>
+            	<exclusion>
+            		<groupId>org.asciidoctor</groupId>
+					<artifactId>asciidoctorj</artifactId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -236,46 +201,47 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+
         <!-- JDO -->
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>javax.jdo</artifactId>
-            <version>3.2.0-m7</version>
+            <version>${javax.jdo.version}</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-core</artifactId>
-            <version>5.1.1</version>
+            <version>${datanucleus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-api-jdo</artifactId>
-            <version>5.1.1</version>
+            <version>${datanucleus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-rdbms</artifactId>
-            <version>5.1.1</version>
+            <version>${datanucleus.version}</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-maven-plugin</artifactId>
-            <version>5.0.2</version>
+            <version>${datanucleus-maven-plugin.version}</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-xml</artifactId>
-            <version>5.0.0-release</version>
+            <version>${datanucleus-xml.version}</version>
         </dependency>
         <dependency>
             <groupId>org.datanucleus</groupId>
             <artifactId>datanucleus-jdo-query</artifactId>
-            <version>5.0.2</version>
+            <version>${datanucleus-jdo-query.version}</version>
         </dependency>
         <dependency>
             <groupId>net.openhft</groupId>
             <artifactId>chronicle</artifactId>
-            <version>3.6.4</version>
+            <version>${chronicle.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.sun.java</groupId>
@@ -286,7 +252,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.3.8.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -322,7 +288,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>spring-mock-mvc</artifactId>
-            <version>3.0.3</version>
+            <version>${spring-mock-mvc.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -333,7 +299,7 @@
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
-            <version>2.6.3</version>
+            <version>${HikariCP.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -350,7 +316,7 @@
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-            <version>2.3.0</version>
+            <version>${quartz.version}</version>
         </dependency>
         <dependency>
             <groupId>one.util</groupId>
@@ -360,22 +326,17 @@
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>jool</artifactId>
-            <version>0.9.12</version>
+            <version>${jool.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-core</artifactId>
-            <version>1.19</version>
+            <version>${jmh.version}</version>
         </dependency>
         <dependency>
             <groupId>org.openjdk.jmh</groupId>
             <artifactId>jmh-generator-annprocess</artifactId>
-            <version>1.19</version>
-        </dependency>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-            <version>${netty.version}</version>
+            <version>${jmh.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -397,7 +358,8 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.4.10</version>
+            <type>pom</type>
+            <version>${groovy.version}</version>
         </dependency>
         <dependency>
             <groupId>org.awaitility</groupId>
@@ -440,7 +402,7 @@
         <dependency>
             <groupId>com.machinezoo.noexception</groupId>
             <artifactId>noexception</artifactId>
-            <version>1.1.0</version>
+            <version>${noexception.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.collections</groupId>
@@ -472,18 +434,7 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
-            <version>3.9.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.darwinsys</groupId>
-            <artifactId>hirondelle-date4j</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
+            <version>${logging-interceptor.version}</version>
         </dependency>
         <dependency>
             <groupId>com.darwinsys</groupId>
@@ -493,17 +444,17 @@
         <dependency>
             <groupId>com.haulmont.yarg</groupId>
             <artifactId>yarg</artifactId>
-            <version>2.0.4</version>
+            <version>${yarg.version}</version>
         </dependency>
         <dependency>
             <groupId>net.engio</groupId>
             <artifactId>mbassador</artifactId>
-            <version>1.3.1</version>
+            <version>${mbassador.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jdeferred</groupId>
             <artifactId>jdeferred-core</artifactId>
-            <version>1.2.6</version>
+            <version>${jdeferred.version}</version>
         </dependency>
         <dependency>
             <groupId>com.codepoetics</groupId>
@@ -513,22 +464,22 @@
         <dependency>
             <groupId>org.functionaljava</groupId>
             <artifactId>functionaljava</artifactId>
-            <version>4.7</version>
+            <version>${functionaljava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.functionaljava</groupId>
             <artifactId>functionaljava-java8</artifactId>
-            <version>4.7</version>
+            <version>${functionaljava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.functionaljava</groupId>
             <artifactId>functionaljava-quickcheck</artifactId>
-            <version>4.7</version>
+            <version>${functionaljava.version}</version>
         </dependency>
         <dependency>
             <groupId>org.functionaljava</groupId>
             <artifactId>functionaljava-java-core</artifactId>
-            <version>4.7</version>
+            <version>${functionaljava.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.cache</groupId>
@@ -543,7 +494,7 @@
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
-            <version>1.0.1</version>
+            <version>${jgrapht.version}</version>
         </dependency>
         <dependency>
             <groupId>com.netopyr.wurmloch</groupId>
@@ -553,12 +504,12 @@
         <dependency>
             <groupId>org.docx4j</groupId>
             <artifactId>docx4j</artifactId>
-            <version>3.3.5</version>
+            <version>${docx4j.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.1</version>
+            <version>${jaxb-api.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>
@@ -568,12 +519,12 @@
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcprov-jdk15on</artifactId>
-            <version>1.58</version>
+            <version>${bouncycastle.version}</version>
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcpkix-jdk15on</artifactId>
-            <version>1.58</version>
+            <version>${bouncycastle.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.http-client</groupId>
@@ -619,7 +570,7 @@
         <dependency>
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-client</artifactId>
-            <version>1.19.4</version>
+            <version>${jersey.version}</version>
         </dependency>
         <!--Java Docker API Client -->
 
@@ -662,13 +613,7 @@
             <classifier>test</classifier>
             <scope>test</scope>
         </dependency>
-
-        <!-- tomcat -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-catalina</artifactId>
-            <version>${tomcat.version}</version>
-        </dependency>
+		
         <dependency>
             <groupId>org.milyn</groupId>
             <artifactId>milyn-smooks-all</artifactId>
@@ -684,13 +629,13 @@
         <dependency>
             <groupId>io.javalin</groupId>
             <artifactId>javalin</artifactId>
-            <version>1.6.0</version>
+            <version>${javalin.version}</version>
         </dependency>
         <!-- Atlassian Fugue -->
         <dependency>
             <groupId>io.atlassian.fugue</groupId>
             <artifactId>fugue</artifactId>
-            <version>4.5.1</version>
+            <version>${fugue.version}</version>
         </dependency>
 
         <dependency>
@@ -699,10 +644,36 @@
             <version>${jctools.version}</version>
         </dependency>
 
+        <!-- resilience4j -->
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${common-math3-version}</version>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-circuitbreaker</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-ratelimiter</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-bulkhead</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-retry</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-cache</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-timelimiter</artifactId>
+            <version>${resilience4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.knowm.xchart</groupId>
@@ -734,6 +705,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${snakeyaml.version}</version>            
+        </dependency>       
+
     </dependencies>
 
     <repositories>
@@ -759,19 +736,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.felix</groupId>
-                        <artifactId>maven-bundle-plugin</artifactId>
-                        <version>3.3.0</version>
-                        <type>maven-plugin</type>
-                    </dependency>
-                </dependencies>
-                <extensions>true</extensions>
-            </plugin>
             <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>${maven-failsafe-plugin.version}</version>
@@ -799,7 +763,7 @@
             <plugin>
                 <groupId>org.datanucleus</groupId>
                 <artifactId>datanucleus-maven-plugin</artifactId>
-                <version>5.0.2</version>
+                <version>${datanucleus-maven-plugin.version}</version>
                 <configuration>
                     <api>JDO</api>
                     <props>${basedir}/datanucleus.properties</props>
@@ -821,7 +785,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>${maven-jar-plugin.version}</version>
                 <configuration>
                     <excludes>
                         <exclude>**/log4j.properties</exclude>
@@ -854,10 +818,7 @@
                             </transformers>
                             <filters>
                                 <filter>
-                                    <!--
-                                        Shading signed JARs will fail without this.
-                                        http://stackoverflow.com/questions/999489/invalid-signature-file-when-attempting-to-run-a-jar
-                                    -->
+                                    <!-- Shading signed JARs will fail without this. http://stackoverflow.com/questions/999489/invalid-signature-file-when-attempting-to-run-a-jar -->
                                     <artifact>*:*</artifact>
                                     <excludes>
                                         <exclude>META-INF/*.SF</exclude>
@@ -874,10 +835,11 @@
     </build>
 
     <properties>
+        <snakeyaml.version>1.21</snakeyaml.version>
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
         <multiverse.version>0.7.0</multiverse.version>
-        <cglib.version>3.2.4</cglib.version>
+        <cglib.version>3.2.7</cglib.version>
         <commons-lang.version>3.6</commons-lang.version>
         <commons-text.version>1.1</commons-text.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
@@ -893,20 +855,17 @@
         <commons.io.version>2.5</commons.io.version>
         <commons.dbutils.version>1.6</commons.dbutils.version>
         <h2.version>1.4.196</h2.version>
-        <jetty.version>9.4.8.v20171121</jetty.version>
         <jnats.version>1.0</jnats.version>
 
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
-        <flink.version>1.2.0</flink.version>
         <jackson.version>2.8.5</jackson.version>
         <neuroph.version>2.92</neuroph.version>
-        <serenity.version>1.4.0</serenity.version>
-        <serenity.jbehave.version>1.24.0</serenity.jbehave.version>
-        <serenity.jira.version>1.1.3-rc.5</serenity.jira.version>
-        <serenity.plugin.version>1.4.0</serenity.plugin.version>
+        <serenity.version>1.9.26</serenity.version>
+        <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
+        <serenity.jira.version>1.9.0</serenity.jira.version>
+        <serenity.plugin.version>1.9.27</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
-        <netty.version>4.1.20.Final</netty.version>
         <commons.collections.version>4.1</commons.collections.version>
         <junit.version>4.12</junit.version>
         <java-lsh.version>0.10</java-lsh.version>
@@ -921,22 +880,20 @@
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
         <geotools.version>15.2</geotools.version>
-        <joda-time.version>2.9.9</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
         <retrofit.version>2.3.0</retrofit.version>
-        <joda-time.version>2.9.9</joda-time.version>
+        <joda-time.version>2.10</joda-time.version>
         <hirondelle-date4j.version>1.5.1</hirondelle-date4j.version>
-        <protonpack.version>1.14</protonpack.version>
+        <protonpack.version>1.15</protonpack.version>
         <unit-ri.version>1.0.3</unit-ri.version>
         <cache.version>1.0.0</cache.version>
-        <hazelcast.version>3.8.4</hazelcast.version>
+        <hazelcast.version>3.10.2</hazelcast.version>
         <caffeine.version>2.5.5</caffeine.version>
         <google-api.version>1.23.0</google-api.version>
         <google-sheets.version>v4-rev493-1.21.0</google-sheets.version>
-        <kafka.version>1.0.0</kafka.version>
+        <kafka.version>2.0.0</kafka.version>
         <smooks.version>1.7.0</smooks.version>
         <docker.version>3.0.14</docker.version>
-        <tomcat.version>8.5.24</tomcat.version>
         <async.http.client.version>2.2.0</async.http.client.version>
         <infinispan.version>9.1.5.Final</infinispan.version>
         <opencsv.version>4.1</opencsv.version>
@@ -946,12 +903,42 @@
         <jets3t-version>0.9.4.0006L</jets3t-version>
         <jctools.version>2.1.2</jctools.version>
         <typesafe-akka.version>2.5.11</typesafe-akka.version>
-        <common-math3-version>3.6.1</common-math3-version>
+        <resilience4j.version>0.12.1</resilience4j.version>
         <xchart-version>3.5.2</xchart-version>
         <commons-net.version>3.6</commons-net.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <javapoet.version>1.10.0</javapoet.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
+        <hoverfly-java.version>0.8.1</hoverfly-java.version>
+        <common-math3.version>3.6.1</common-math3.version>
+        <javax.jdo.version>3.2.0-m7</javax.jdo.version>
+        <datanucleus.version>5.1.1</datanucleus.version>
+        <datanucleus-maven-plugin.version>5.0.2</datanucleus-maven-plugin.version>
+        <datanucleus-xml.version>5.0.0-release</datanucleus-xml.version>
+        <datanucleus-jdo-query.version>5.0.2</datanucleus-jdo-query.version>
+        <chronicle.version>3.6.4</chronicle.version>
+        <spring.version>4.3.8.RELEASE</spring.version>
+        <spring-mock-mvc.version>3.0.3</spring-mock-mvc.version>
+        <HikariCP.version>2.6.3</HikariCP.version>
+        <quartz.version>2.3.0</quartz.version>
+        <jool.version>0.9.12</jool.version>
+        <jmh.version>1.19</jmh.version>
+        <groovy.version>2.5.2</groovy.version>
+        <noexception.version>1.1.0</noexception.version>
+        <logging-interceptor.version>3.9.0</logging-interceptor.version>
+        <yarg.version>2.0.4</yarg.version>
+        <mbassador.version>1.3.1</mbassador.version>
+        <jdeferred.version>1.2.6</jdeferred.version>
+        <functionaljava.version>4.7</functionaljava.version>
+        <jgrapht.version>1.0.1</jgrapht.version>
+        <docx4j.version>3.3.5</docx4j.version>
+        <jaxb-api.version>2.1</jaxb-api.version>
+        <bouncycastle.version>1.58</bouncycastle.version>
+        <jersey.version>1.19.4</jersey.version>
+        <javalin.version>1.6.0</javalin.version>
+        <fugue.version>4.5.1</fugue.version>
+        <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
+        <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
     </properties>
 
 </project>
