@@ -3,7 +3,6 @@ package com.baeldung.bufferedreader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
 
 public class BufferedReaderExample {
 
@@ -19,7 +18,7 @@ public class BufferedReaderExample {
         return content.toString();
     }
 
-    public String readAllLines2(BufferedReader reader) {
+    public String readAllLinesWithStream(BufferedReader reader) {
         StringBuilder content = new StringBuilder();
         reader.lines()
             .forEach(line -> content.append(line)
@@ -38,18 +37,14 @@ public class BufferedReaderExample {
         return content.toString();
     }
 
-    public String readAllCharacters2(BufferedReader reader) throws IOException {
+    public String readAllCharactersUsingArray(BufferedReader reader) throws IOException {
         StringBuilder content = new StringBuilder();
 
-        String title = "text: ";
-        char[] buf = Arrays.copyOf(title.toCharArray(), 512);
-        int offset = title.length();
-
+        char[] buf = new char[512];
         int charsRead;
 
-        while ((charsRead = reader.read(buf, offset, buf.length - offset)) != -1) {
-            content.append(buf, 0, offset + charsRead);
-            content.append(" --- ");
+        while ((charsRead = reader.read(buf, 0, buf.length)) != -1) {
+            content.append(buf, 0, charsRead);
         }
 
         return content.toString();
@@ -67,24 +62,29 @@ public class BufferedReaderExample {
         return content.toString();
     }
 
-    public void markAndReset(BufferedReader reader) throws IOException {
+    public String markAndReset(BufferedReader reader) throws IOException {
+        StringBuilder content = new StringBuilder();
+
         reader.mark(512);
 
         for (int i = 0; i < 3; i++) {
-            System.out.println(reader.readLine());
+            content.append(reader.readLine());
             reader.reset();
             reader.mark(512);
         }
+
+        return content.toString();
     }
 
-    public void readFile() {
+    public String readFile() {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(new FileReader("src/main/resources/input.txt"));
             String content = readAllLines(reader);
-            System.out.println(content);
+            return content;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         } finally {
             try {
                 if (reader != null) {
@@ -96,12 +96,13 @@ public class BufferedReaderExample {
         }
     }
 
-    public void readFileTryWithResources() {
+    public String readFileTryWithResources() {
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/input.txt"))) {
             String content = readAllLines(reader);
-            System.out.println(content);
+            return content;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
 
