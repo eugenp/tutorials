@@ -378,6 +378,7 @@
 				<module>google-web-toolkit</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-collections</module>
 				<module>guava-modules/guava-18</module>
 				<module>guava-modules/guava-19</module>
 				<module>guava-modules/guava-21</module>
@@ -1285,6 +1286,7 @@
 				<module>google-cloud</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-collections</module>
 				<module>guava-modules/guava-18</module>
 				<module>guava-modules/guava-19</module>
 				<module>guava-modules/guava-21</module>
