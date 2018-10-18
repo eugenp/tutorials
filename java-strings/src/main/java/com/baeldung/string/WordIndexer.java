@@ -26,7 +26,7 @@ public class WordIndexer {
 
     public List<Integer> findWordUpgrade(String textString, String word) {
         int index = -1;
-        ArrayList<Integer> indexes = new ArrayList<Integer>();
+        List<Integer> indexes = new ArrayList<Integer>();
         StringBuilder output = new StringBuilder();
         boolean done = false;
         String lowerCaseTextString = textString.toLowerCase();
