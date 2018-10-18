@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class WordIndexer {
 
-    public ArrayList findWord(String textString, String word) {
+    public List<Integer> findWord(String textString, String word) {
         int index = -1;
         ArrayList<Integer> indexes = new ArrayList<Integer>();
         StringBuilder output = new StringBuilder();
