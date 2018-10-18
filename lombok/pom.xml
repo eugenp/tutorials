@@ -59,6 +59,7 @@
                         </goals>
                         <configuration>
                             <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/delombok</outputDirectory>
                             <addOutputDirectory>false</addOutputDirectory>
                             <formatPreferences>
                                 <javaLangAsFQN>skip</javaLangAsFQN>
