@@ -458,7 +458,6 @@
 				<module>spring-5</module>
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
-				<module>spring-data-5-reactive/spring-5-data-reactive-redis</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
