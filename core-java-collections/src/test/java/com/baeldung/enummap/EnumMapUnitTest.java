@@ -83,6 +83,7 @@ public class EnumMapUnitTest {
         assertThat(clubMap.containsValue("Juventus")).isFalse();
         clubMap.put(Club.Juventus, "Juventus");
         assertThat(clubMap.containsKey(Club.Juventus)).isTrue();
+        assertThat(clubMap.containsValue("Juventus")).isTrue();
 
         assertThat(clubMap.containsKey(Club.PSG)).isFalse();
         assertThat(clubMap.containsValue(null)).isFalse();
