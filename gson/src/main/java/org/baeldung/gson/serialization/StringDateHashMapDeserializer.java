@@ -6,7 +6,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+import org.baeldung.gson.entities.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,19 +27,25 @@ public class StringDateHashMapDeserializer implements JsonDeserializer<HashMap<S
     public HashMap<String, Date> deserialize(JsonElement elem,
           Type type,
           JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        HashMap<String, Date> map = new HashMap<>();
-        for (Map.Entry<String, JsonElement> entry : elem.getAsJsonObject().entrySet()) {
-            JsonElement jsonValue = entry.getValue();
-            if (jsonValue.isJsonPrimitive() && jsonValue.getAsJsonPrimitive().isString()) {
-                try {
-                    Date dt = format.parse(jsonValue.getAsString());
-                    map.put(entry.getKey(), dt);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return map;
+        return elem.getAsJsonObject()
+          .entrySet()
+          .stream()
+          .filter(e -> e.getValue().isJsonPrimitive()
+            && e.getValue().getAsJsonPrimitive().isString())
+          .collect(
+            Collectors.toMap(
+              e -> e.getKey(),
+              e -> {
+                  try {
+                      return format.parse(e.getValue().getAsString());
+                  } catch (ParseException ex) {
+                      throw new JsonParseException("Cannot parse date", ex);
+                  }
+              },
+              (v1, v2) -> v1,
+              HashMap::new
+            )
+          );
     }
 
 }
