@@ -378,6 +378,7 @@
 				<module>google-web-toolkit</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-collections</module>
 				<module>guava-modules/guava-18</module>
 				<module>guava-modules/guava-19</module>
 				<module>guava-modules/guava-21</module>
@@ -457,7 +458,6 @@
 				<module>spring-5</module>
 				<module>spring-5-data-reactive</module>
 				<module>spring-5-reactive</module>
-				<module>spring-data-5-reactive/spring-5-data-reactive-redis</module>
 				<module>spring-5-reactive-security</module>
 				<module>spring-5-reactive-client</module>
 				<module>spring-5-mvc</module>
@@ -482,6 +482,7 @@
 				<module>spring-boot-mvc</module>
                 <module>spring-boot-vue</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
 				<module>spring-cloud-bus</module>
@@ -1024,6 +1025,7 @@
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
 				<module>spring-cloud-bus</module>
@@ -1285,6 +1287,7 @@
 				<module>google-cloud</module>
 				<module>gson</module>
 				<module>guava</module>
+				<module>guava-collections</module>
 				<module>guava-modules/guava-18</module>
 				<module>guava-modules/guava-19</module>
 				<module>guava-modules/guava-21</module>
@@ -1379,6 +1382,7 @@
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
 				<module>spring-cloud-bus</module>

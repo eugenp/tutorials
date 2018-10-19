@@ -711,6 +711,12 @@
             <version>${snakeyaml.version}</version>            
         </dependency>       
 
+        <dependency>
+            <groupId>com.numericalmethod</groupId>
+            <artifactId>suanshu</artifactId>
+            <version>${suanshu.version}</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -730,6 +736,12 @@
         <repository>
             <id>Apache Staging</id>
             <url>https://repository.apache.org/content/groups/staging</url>
+        </repository>
+        <repository>
+            <id>nm-repo</id>
+            <name>Numerical Method's Maven Repository</name>
+            <url>http://repo.numericalmethod.com/maven/</url>
+            <layout>default</layout>
         </repository>
     </repositories>
 
@@ -835,6 +847,7 @@
     </build>
 
     <properties>
+        <suanshu.version>4.0.0</suanshu.version>
         <snakeyaml.version>1.21</snakeyaml.version>
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>

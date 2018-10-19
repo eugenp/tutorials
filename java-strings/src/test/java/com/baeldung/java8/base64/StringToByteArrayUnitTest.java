@@ -56,5 +56,4 @@ public class StringToByteArrayUnitTest {
         
         assertEquals("test input", new String(result));
     }
-    
 }
