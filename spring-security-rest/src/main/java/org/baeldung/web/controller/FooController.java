@@ -7,8 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.baeldung.persistence.model.Foo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,17 +23,9 @@ import com.google.common.collect.Lists;
 @RequestMapping(value = "/foos")
 public class FooController {
 
-    @Autowired
-    private ApplicationEventPublisher eventPublisher;
-
-    public FooController() {
-        super();
-    }
-
     // API
 
     // read - single
-
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Foo findById(@PathVariable("id") final Long id, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
@@ -43,7 +33,6 @@ public class FooController {
     }
 
     // read - multiple
-
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Foo> findAll() {
