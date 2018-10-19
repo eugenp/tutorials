@@ -18,3 +18,6 @@
 - [Guide to Guava RangeMap](http://www.baeldung.com/guava-rangemap)
 - [Guide to Guava MinMaxPriorityQueue and EvictingQueue](http://www.baeldung.com/guava-minmax-priority-queue-and-evicting-queue)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
+- [Guava Set + Function = Map](http://www.baeldung.com/guava-set-function-map-tutorial)
+- [Guide to Guava Table](http://www.baeldung.com/guava-table)
+- [Guide to Guava ClassToInstanceMap](http://www.baeldung.com/guava-class-to-instance-map)
