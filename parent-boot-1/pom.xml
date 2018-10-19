@@ -17,7 +17,7 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
-				<version>1.5.15.RELEASE</version>
+				<version>1.5.16.RELEASE</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>

@@ -55,3 +55,4 @@
 - [Sort a HashMap in Java](https://www.baeldung.com/java-hashmap-sort)
 - [Finding the Highest Value in a Java Map](https://www.baeldung.com/java-find-map-max)
 - [Operating on and Removing an Item from Stream](https://www.baeldung.com/java-use-remove-item-stream)
+- [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
