@@ -354,6 +354,8 @@
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java</module>
 				<module>core-java-collections</module>
+				<module>java-collections-conversions</module>
+				<module>java-collections-maps</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
 				<module>java-streams</module>
@@ -1270,6 +1272,8 @@
 				<module>java-strings</module>
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java-collections</module>
+				<module>java-collections-conversions</module>
+				<module>java-collections-maps</module>
 				<module>core-java-io</module>
 				<module>core-java-8</module>
 				<module>java-streams</module>
