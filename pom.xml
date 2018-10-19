@@ -484,6 +484,7 @@
 				<module>spring-boot-mvc</module>
                 <module>spring-boot-vue</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
 				<module>spring-cloud-bus</module>
@@ -1026,6 +1027,7 @@
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
 				<module>spring-cloud-bus</module>
@@ -1384,6 +1386,7 @@
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
 				<module>spring-cloud-data-flow</module>
 				<module>spring-cloud</module>
 				<module>spring-cloud-bus</module>
