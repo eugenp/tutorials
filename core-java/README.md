@@ -149,6 +149,7 @@
 - [Throw Exception in Optional in Java 8](https://www.baeldung.com/java-optional-throw-exception)
 - [Add a Character to a String at a Given Position](https://www.baeldung.com/java-add-character-to-string)
 - [Synthetic Constructs in Java](https://www.baeldung.com/java-synthetic)
+- [Calculating the nth Root in Java](https://www.baeldung.com/java-nth-root)
 - [Convert Double to String, Removing Decimal Places](https://www.baeldung.com/java-double-to-string)
 - [Different Ways to Capture Java Heap Dumps](https://www.baeldung.com/java-heap-dump-capture)
 - [How to Separate Double into Integer and Decimal Parts](https://www.baeldung.com/java-separate-double-into-integer-decimal-parts)
