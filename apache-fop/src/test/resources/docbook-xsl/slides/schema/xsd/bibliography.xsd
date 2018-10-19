@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: bibliography.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.relation.attribute">
+    <xs:attribute name="relation" use="required"/>
+  </xs:attributeGroup>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.biblioentry.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioentry.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="biblioentry">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="db:db.bibliographic.elements"/>
+      <xs:attributeGroup ref="db:db.biblioentry.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.bibliomixed.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliomixed.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="bibliomixed">
+    <xs:complexType mixed="true">
+      <xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="db:db._text"/>
+          <xs:element ref="db:honorific"/>
+          <xs:element ref="db:firstname"/>
+          <xs:element ref="db:surname"/>
+          <xs:element ref="db:lineage"/>
+          <xs:element ref="db:othername"/>
+          <xs:group ref="db:db.bibliographic.elements"/>
+        </xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="db:db._text"/>
+          <xs:element ref="db:honorific"/>
+          <xs:element ref="db:givenname"/>
+          <xs:element ref="db:surname"/>
+          <xs:element ref="db:lineage"/>
+          <xs:element ref="db:othername"/>
+          <xs:group ref="db:db.bibliographic.elements"/>
+        </xs:choice>
+      </xs:choice>
+      <xs:attributeGroup ref="db:db.bibliomixed.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.biblioset.relation.attribute">
+    <xs:attributeGroup ref="db:db.relation.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioset.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioset.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="relation"/>
+  </xs:attributeGroup>
+  <xs:element name="biblioset">
+    <xs:complexType>
+      <xs:group maxOccurs="unbounded" ref="db:db.bibliographic.elements"/>
+      <xs:attributeGroup ref="db:db.biblioset.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.bibliomset.relation.attribute">
+    <xs:attributeGroup ref="db:db.relation.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliomset.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliomset.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="relation"/>
+  </xs:attributeGroup>
+  <xs:element name="bibliomset">
+    <xs:complexType mixed="true">
+      <xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="db:db._text"/>
+          <xs:element ref="db:honorific"/>
+          <xs:element ref="db:firstname"/>
+          <xs:element ref="db:surname"/>
+          <xs:element ref="db:lineage"/>
+          <xs:element ref="db:othername"/>
+          <xs:group ref="db:db.bibliographic.elements"/>
+        </xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:group ref="db:db._text"/>
+          <xs:element ref="db:honorific"/>
+          <xs:element ref="db:givenname"/>
+          <xs:element ref="db:surname"/>
+          <xs:element ref="db:lineage"/>
+          <xs:element ref="db:othername"/>
+          <xs:group ref="db:db.bibliographic.elements"/>
+        </xs:choice>
+      </xs:choice>
+      <xs:attributeGroup ref="db:db.bibliomset.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.bibliomisc.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliomisc.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:element name="bibliomisc">
+    <xs:complexType mixed="true">
+      <xs:group ref="db:db._text"/>
+      <xs:attributeGroup ref="db:db.bibliomisc.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.bibliography.status.attrib">
+    <xs:attributeGroup ref="db:db.status.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliography.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliography.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="label"/>
+    <xs:attribute name="status"/>
+  </xs:attributeGroup>
+  <xs:group name="db.bibliography.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="bibliography">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.bibliography.info"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
+        <xs:choice>
+          <xs:element maxOccurs="unbounded" ref="db:bibliodiv"/>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element ref="db:biblioentry"/>
+            <xs:element ref="db:bibliomixed"/>
+          </xs:choice>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.bibliography.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.bibliodiv.status.attrib">
+    <xs:attributeGroup ref="db:db.status.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliodiv.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliodiv.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="label"/>
+    <xs:attribute name="status"/>
+  </xs:attributeGroup>
+  <xs:group name="db.bibliodiv.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.req"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="bibliodiv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group ref="db:db.bibliodiv.info"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="db:biblioentry"/>
+          <xs:element ref="db:bibliomixed"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.bibliodiv.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.bibliolist.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.bibliolist.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+  </xs:attributeGroup>
+  <xs:group name="db.bibliolist.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.only"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="bibliolist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:group minOccurs="0" ref="db:db.bibliolist.info"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
+        <xs:choice maxOccurs="unbounded">
+          <xs:element ref="db:biblioentry"/>
+          <xs:element ref="db:bibliomixed"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.bibliolist.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.biblioref.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioref.xrefstyle.attribute">
+    <xs:attributeGroup ref="db:db.xrefstyle.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioref.endterm.attribute">
+    <xs:attributeGroup ref="db:db.endterm.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioref.units.attribute">
+    <xs:attribute name="units" use="required" type="xs:token"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioref.begin.attribute">
+    <xs:attribute name="begin" use="required" type="xs:token"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioref.end.attribute">
+    <xs:attribute name="end" use="required" type="xs:token"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.biblioref.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.req.linking.attributes"/>
+    <xs:attribute name="xrefstyle"/>
+    <xs:attribute name="endterm" type="xs:IDREF"/>
+    <xs:attribute name="units" type="xs:token"/>
+    <xs:attribute name="begin" type="xs:token"/>
+    <xs:attribute name="end" type="xs:token"/>
+  </xs:attributeGroup>
+  <xs:element name="biblioref">
+    <xs:complexType>
+      <xs:attributeGroup ref="db:db.biblioref.attlist"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

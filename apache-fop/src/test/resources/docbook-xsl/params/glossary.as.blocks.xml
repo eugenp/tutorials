@@ -1,0 +1,38 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="glossary.as.blocks">
+<refmeta>
+<refentrytitle>glossary.as.blocks</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>glossary.as.blocks</refname>
+<refpurpose>Present glossarys using blocks instead of lists?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="glossary.as.blocks.frag">
+<xsl:param name="glossary.as.blocks" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, <tag>glossary</tag>s will be formatted as
+blocks.</para>
+
+<para>If you have long <tag>glossterm</tag>s, proper list
+markup in the FO case may produce unattractive lists. By setting this
+parameter, you can force the stylesheets to produce block markup
+instead of proper lists.</para>
+
+<para>You can override this setting with a processing instruction as the
+child of <tag>glossary</tag>: <tag class="xmlpi">dbfo
+glossary-presentation="blocks"</tag> or <tag class="xmlpi">dbfo
+glossary-presentation="list"</tag></para>
+
+</refsection>
+</refentry>

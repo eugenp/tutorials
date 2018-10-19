@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="equation.number.properties">
+<refmeta>
+<refentrytitle>equation.number.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>equation.number.properties</refname>
+<refpurpose>Properties that apply to the <tag>fo:table-cell</tag> containing the number
+of an <tag>equation</tag> that does not have a title.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="equation.number.properties.frag"><xsl:attribute-set name="equation.number.properties">
+  <xsl:attribute name="text-align">end</xsl:attribute>
+  <xsl:attribute name="display-align">center</xsl:attribute>
+</xsl:attribute-set></src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>Properties that apply to the fo:table-cell containing the number
+of an equation when it has no title. The number in an equation with a
+title is formatted along with the title, and this attribute-set does not apply.</para>
+</refsection>
+</refentry>

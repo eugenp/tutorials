@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="nav.table.summary">
+<refmeta>
+<refentrytitle>nav.table.summary</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>nav.table.summary</refname>
+<refpurpose>HTML Table summary attribute value for navigation tables</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="nav.table.summary.frag">
+<xsl:param name="nav.table.summary">Navigation</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The value of this parameter is used as the value of the table
+summary attribute for the navigation table.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>

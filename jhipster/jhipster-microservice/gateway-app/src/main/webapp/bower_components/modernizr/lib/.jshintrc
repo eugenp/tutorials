@@ -1,0 +1,14 @@
+{
+
+  // Import all rules in the root .jshintrc
+  "extends": "../.jshintrc",
+  /*
+   * ENVIRONMENTS
+   * =================
+   */
+
+  // Define globals exposed by modern browsers.
+  "browser": false,
+
+  "globals": null
+}

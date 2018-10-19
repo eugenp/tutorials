@@ -1,0 +1,78 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="prefer.internal.olink">
+<refmeta>
+<refentrytitle>prefer.internal.olink</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>prefer.internal.olink</refname>
+<refpurpose>Prefer a local olink reference to an external reference</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="prefer.internal.olink.frag">
+<xsl:param name="prefer.internal.olink" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If you are re-using XML content modules in multiple documents,
+you may want to redirect some of your olinks.  This parameter
+permits you to redirect an olink to the current document.
+</para>
+
+<para>For example: you are writing documentation for a  product, 
+which includes 3 manuals: a little installation
+booklet (booklet.xml), a user 
+guide (user.xml), and a reference manual (reference.xml).
+All 3 documents begin with the same introduction section (intro.xml) that 
+contains a reference to the customization section (custom.xml) which is 
+included in both user.xml and reference.xml documents.
+</para>
+
+<para>How do you write the link to custom.xml in intro.xml
+so that it is interpreted correctly in all 3 documents?</para>
+<itemizedlist>
+<listitem><para>If you use xref, it will fail in user.xml.</para>
+</listitem>
+<listitem><para>If you use olink (pointing to reference.xml),
+the reference in user.xml  
+will point to the customization section of the reference manual, while it is 
+actually available in user.xml.</para>
+</listitem>
+</itemizedlist>
+
+<para>If you set the <parameter>prefer.internal.olink</parameter>
+parameter to a non-zero value, then the processor will
+first look in the olink database
+for the olink's <tag>targetptr</tag> attribute value
+in document matching the <parameter>current.docid</parameter>
+parameter value.  If it isn't found there, then
+it tries the document in the database
+with the <tag>targetdoc</tag>
+value that matches the olink's <tag>targetdoc</tag>
+attribute.
+</para>
+
+<para>This feature permits an olink reference to resolve to
+the current document if there is an element
+with an id matching the olink's <tag>targetptr</tag>
+value.  The current document's olink data must be
+included in the target database for this to work.</para>
+
+<caution>
+<para>There is a potential for incorrect links if
+the same <tag>id</tag> attribute value is used for different
+content in different documents.
+Some of your olinks may be redirected to the current document
+when they shouldn't be.  It is not possible to control
+individual olink instances.</para>
+</caution>
+
+</refsection>
+</refentry>

@@ -1,0 +1,15 @@
+{
+  // Import all rules in the root .jshintrc
+  "extends": "../.jshintrc",
+
+  "mocha": true,
+
+  "jquery": true,
+
+  "globals": {
+    "_": true,
+    "expect": true, // Not included in Mocha
+    "requirejs": true,
+    "sinon": true
+  }
+}

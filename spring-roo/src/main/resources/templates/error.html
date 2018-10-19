@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-layout}">
+    <head id="head">
+
+      <title data-th-text="#{label_error}">Error - Spring Roo application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <h1 data-th-text="#{label_errorpage}">Error Page</h1>
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!-- CONTAINER -->
+    <div class="container bg-container">
+    <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content">
+        <div class="alert alert-danger fade in" role="alert">
+          <h4 data-th-text="#{label_errorpage_header}">¡Error!</h4>
+          <p>
+            <span data-th-text="#{info_error}">An unexpected error has occurred</span>
+            (type=<span data-th-text="${error}">Bad</span>, status=<span data-th-text="${status}">500</span>).
+          </p>
+          <div data-th-text="${message}"></div>
+        </div>
+      </section>
+
+    <footer class="container">
+      <!-- Content replaced by layout of the page displayed -->
+    </footer>
+
+  </div></body>
+
+</html>

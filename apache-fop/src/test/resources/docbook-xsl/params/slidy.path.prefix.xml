@@ -1,0 +1,29 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="slidy.path.prefix">
+<refmeta>
+<refentrytitle>slidy.path.prefix</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>slidy.path.prefix</refname>
+<refpurpose>Specifies the path to Slidy files</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <src:fragment xml:id="slidy.path.prefix.frag">
+    <xsl:param name="slidy.path.prefix">files/slidy/</xsl:param>
+  </src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies the path where Slidy CSS and
+  JavaScript files reside. All the CSS and JavaScript paths
+  will be generated relative to this directory.</para>
+
+</refsection>
+</refentry>

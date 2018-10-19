@@ -1,0 +1,39 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.indent.width">
+<refmeta>
+<refentrytitle>man.indent.width</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.indent.width</refname>
+<refpurpose>Specifies width used for adjusted indents</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.indent.width.frag">
+<xsl:param name="man.indent.width">4</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The <parameter>man.indent.width</parameter> parameter specifies
+the width used for adjusted indents. The value of
+<parameter>man.indent.width</parameter> is used for indenting of
+lists, verbatims, headings, and elsewhere, depending on whether the
+values of certain <literal>man.indent.*</literal> boolean parameters
+are non-zero.</para>
+
+<para>The value of <parameter>man.indent.width</parameter> should
+include a valid roff measurement unit (for example,
+<literal>n</literal> or <literal>u</literal>). The default value of
+<literal>4n</literal> specifies a 4-en width; when viewed on a
+console, that amounts to the width of four characters. For details
+about roff measurment units, see the <literal>Measurements</literal>
+node in the groff info page.</para>
+
+</refsection>
+</refentry>

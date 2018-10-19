@@ -1,0 +1,35 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="bibliography.style">
+<refmeta>
+<refentrytitle>bibliography.style</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">list</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">normal</refmiscinfo>
+<refmiscinfo class="other" otherclass="value">iso690</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>bibliography.style</refname>
+<refpurpose>Style used for formatting of biblioentries.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id='bibliography.style.frag'>
+<xsl:param name="bibliography.style">normal</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Currently only <literal>normal</literal> and
+<literal>iso690</literal> styles are supported.</para>
+
+<para>In order to use ISO690 style to the full extent you might need
+to use additional markup described on <link
+xlink:href="http://wiki.docbook.org/topic/ISO690Bibliography">the
+following WiKi page</link>.</para>
+
+</refsection>
+</refentry>

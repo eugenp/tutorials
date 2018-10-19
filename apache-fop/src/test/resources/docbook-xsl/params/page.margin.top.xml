@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="page.margin.top">
+<refmeta>
+<refentrytitle>page.margin.top</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>page.margin.top</refname>
+<refpurpose>The top margin of the page</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="page.margin.top.frag">
+<xsl:param name="page.margin.top">0.5in</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The top page margin is the distance from the physical top of the
+page to the top of the region-before.</para>
+
+</refsection>
+</refentry>

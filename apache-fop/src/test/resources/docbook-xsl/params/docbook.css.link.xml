@@ -1,0 +1,42 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="docbook.css.link">
+<refmeta>
+<refentrytitle>docbook.css.link</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>docbook.css.link</refname>
+<refpurpose>Insert a link referencing the default CSS stylesheet</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="docbook.css.link.frag">
+<xsl:param name="docbook.css.link" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The stylesheets are capable of generating a default
+CSS stylesheet file.  The parameters 
+<parameter>make.clean.html</parameter> and
+<parameter>docbook.css.source</parameter> control that feature.</para>
+
+<para>Normally if a default CSS file is generated, then 
+the stylesheet inserts a <tag>link</tag> tag in the HTML
+<tag>HEAD</tag> element to reference it.
+However, you can omit that <tag>link</tag> reference if
+you set the <parameter>docbook.css.link</parameter> to zero
+(1 is the default).</para>
+
+<para>This parameter is useful when you want to import the 
+default CSS into a custom CSS file generated using the
+<parameter>custom.css.source</parameter> parameter.
+</para>
+
+</refsection>
+</refentry>

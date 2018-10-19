@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="titlefoil.html">
+<refmeta>
+<refentrytitle>titlefoil.html</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>titlefoil.html</refname>
+<refpurpose>Name of title foil HTML file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="titlefoil.html.frag">
+<xsl:param name="titlefoil.html" select="concat('index', $html.ext)"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Sets the filename used for the slides titlepage.</para>
+
+</refsection>
+</refentry>

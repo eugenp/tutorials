@@ -1,0 +1,278 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>xml</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>xml</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- xml libraries -->
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>${dom4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>jaxen</groupId>
+            <artifactId>jaxen</artifactId>
+            <version>${jaxen.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+            <version>${jdom2.version}</version>
+        </dependency>
+
+        <!-- utils -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jibx</groupId>
+            <artifactId>jibx-run</artifactId>
+            <version>${jibx-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons-lang.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>xml</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>schemaGen</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>maven-jibx-plugin</artifactId>
+                        <version>${maven-jibx-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>generate-java-code-from-schema</id>
+                                <goals>
+                                    <goal>schema-codegen</goal>
+                                </goals>
+                                <configuration>
+                                    <directory>src/main/resources</directory>
+                                    <includes>
+                                        <include>Order.xsd</include>
+                                    </includes>
+                                    <verbose>true</verbose>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>compile-binding</id>
+                                <goals>
+                                    <goal>bind</goal>
+                                </goals>
+                                <configuration>
+                                    <directory>target/generated-sources</directory>
+                                    <load>true</load>
+                                    <validate>true</validate>
+                                    <!--<verbose>true</verbose> -->
+                                    <verify>true</verify>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>generate-test-code-from-schema</id>
+                                <phase>generate-test-sources</phase>
+                                <goals>
+                                    <goal>test-schema-codegen</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>compile-test-binding</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>test-bind</goal>
+                                </goals>
+                                <configuration>
+                                    <directory>target/generated-test-sources</directory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <excludes>
+                                <exclude>CustomerTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>bindGen</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jibx</groupId>
+                            <artifactId>maven-jibx-plugin</artifactId>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>maven-jibx-plugin</artifactId>
+                        <version>${maven-jibx-plugin.version}</version>
+                        <configuration>
+                            <directory>src/main/resources</directory>
+                            <includes>
+                                <includes>*-binding.xml</includes>
+                            </includes>
+                            <excludes>
+                                <exclude>template-binding.xml</exclude>
+                            </excludes>
+							<schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
+                            <includeSchemaBindings>
+                                <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
+                            </includeSchemaBindings>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <executions>
+                            <execution>
+                            	<id>process-classes</id>
+                                <phase>process-classes</phase>
+                                <goals>
+                                    <goal>bind</goal>
+                                </goals>
+                            </execution>
+							<execution>
+								<id>process-test-classes</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>test-bind</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java-version}</source>
+                            <target>${java-version}</target>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <!-- NOTE: We don't need a groupId specification because the group is org.apache.maven.plugins ...which is assumed by default. -->
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <configuration>
+                            <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
+                            <descriptorRefs>
+                                <descriptorRef>
+                                    jar-with-dependencies
+                                </descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        com.baeldung.xml.jibx.JiBXDemoApplication
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>make-assembly</id><!-- this is used for inheritance merges -->
+                                <phase>package</phase><!-- append to the packaging phase. -->
+                                <goals>
+                                    <goal>attached</goal><!-- goals == mojos -->
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <repositories>
+        <repository>
+            <id>jibx.sf.net</id>
+            <name>JiBX repository</name>
+            <url>http://jibx.sf.net/maven2</url>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jibx.sf.net</id>
+            <name>JiBX repository</name>
+            <url>http://jibx.sf.net/maven2</url>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
+        <dom4j.version>1.6.1</dom4j.version>
+        <jaxen.version>1.1.6</jaxen.version>
+        <jdom2.version>2.0.6</jdom2.version>
+        <commons-io.version>2.5</commons-io.version>
+        <commons-collections4.version>4.1</commons-collections4.version>
+        <jibx-version>1.2.4.5</jibx-version>
+
+        <!-- util -->
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang.version>2.4</commons-lang.version>
+        <java-version>1.8</java-version>
+
+        <!-- maven plugins -->
+        <maven-jibx-plugin.version>1.3.1</maven-jibx-plugin.version>
+    </properties>
+
+</project>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+Syntax highlighting definition for Lua 5.1 and 5.2
+
+xslthl - XSLT Syntax Highlighting
+http://sourceforge.net/projects/xslthl/
+Copyright (C) 2012 Patrick Rapin
+
+This software is provided 'as-is', without any express or implied
+warranty.  In no event will the authors be held liable for any damages
+arising from the use of this software.
+
+Permission is granted to anyone to use this software for any purpose,
+including commercial applications, and to alter it and redistribute it
+freely, subject to the following restrictions:
+
+1. The origin of this software must not be misrepresented; you must not
+   claim that you wrote the original software. If you use this software
+   in a product, an acknowledgment in the product documentation would be
+   appreciated but is not required.
+2. Altered source versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.
+3. This notice may not be removed or altered from any source distribution.
+
+ If you want to send an e-mail to Patrick Rapin, please execute the 
+ following decrypting script in Lua 5.1 or 5.2:
+    print(('oc mia.l@kmgrtci.naparip'):gsub('(..)(..)','%2%1'):reverse())
+-->
+
+<highlighters>
+  <highlighter type="keywords">
+    <keyword>and</keyword>
+    <keyword>break</keyword>
+    <keyword>do</keyword>
+    <keyword>else</keyword>
+    <keyword>elseif</keyword>
+    <keyword>end</keyword>
+    <keyword>false</keyword>
+    <keyword>for</keyword>
+    <keyword>function</keyword>
+    <keyword>goto</keyword>
+    <keyword>if</keyword>
+    <keyword>in</keyword>
+    <keyword>local</keyword>
+    <keyword>nil</keyword>
+    <keyword>not</keyword>
+    <keyword>or</keyword>
+    <keyword>repeat</keyword>
+    <keyword>return</keyword>
+    <keyword>then</keyword>
+    <keyword>true</keyword>
+    <keyword>until</keyword>
+    <keyword>while</keyword>
+  </highlighter>
+  
+  <!-- Multiline comments can have any number of equal signs 
+    between brackets. Let's support up to 4 -->
+  <highlighter type="multiline-comment">
+    <start>--[[</start>
+    <end>]]</end>
+  </highlighter>
+  <highlighter type="multiline-comment">
+    <start>--[=[</start>
+    <end>]=]</end>
+  </highlighter>
+  <highlighter type="multiline-comment">
+    <start>--[==[</start>
+    <end>]==]</end>
+  </highlighter>
+  <highlighter type="multiline-comment">
+    <start>--[===[</start>
+    <end>]===]</end>
+  </highlighter>
+  <highlighter type="multiline-comment">
+    <start>--[====[</start>
+    <end>]====]</end>
+  </highlighter>
+
+  <highlighter type="oneline-comment">
+    --
+  </highlighter>
+  
+  <highlighter type="string">
+    <string>"</string>
+    <endString>"</endString>
+    <escape>\</escape>
+    <spanNewLines/>
+  </highlighter>
+  
+  <highlighter type="string">
+    <string>'</string>
+    <endString>'</endString>
+    <escape>\</escape>
+    <spanNewLines/>
+  </highlighter>
+
+  <!-- Long strings can also have any number of equal signs. -->
+  <highlighter type="string">
+    <string>[[</string>
+    <endString>]]</endString>
+    <spanNewLines/>
+  </highlighter>
+  <highlighter type="string">
+    <string>[=[</string>
+    <endString>]=]</endString>
+    <spanNewLines/>
+  </highlighter>
+  <highlighter type="string">
+    <string>[==[</string>
+    <endString>]==]</endString>
+    <spanNewLines/>
+  </highlighter>
+  <highlighter type="string">
+    <string>[===[</string>
+    <endString>]===]</endString>
+    <spanNewLines/>
+  </highlighter>
+  <highlighter type="string">
+    <string>[====[</string>
+    <endString>]====]</endString>
+    <spanNewLines/>
+  </highlighter>
+
+  <highlighter type="number">
+    <point>.</point>
+    <pointStarts />
+    <exponent>e</exponent>
+    <ignoreCase />
+  </highlighter>
+
+  <highlighter type="hexnumber">
+    <prefix>0x</prefix>
+    <point>.</point>
+    <pointStarts />
+    <exponent>p</exponent>
+    <ignoreCase />
+  </highlighter>
+  
+</highlighters>

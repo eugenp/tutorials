@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="column.count.body">
+<refmeta>
+<refentrytitle>column.count.body</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>column.count.body</refname>
+<refpurpose>Number of columns on body pages</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="column.count.body.frag">
+<xsl:param name="column.count.body" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Number of columns on body pages.</para>
+
+</refsection>
+</refentry>

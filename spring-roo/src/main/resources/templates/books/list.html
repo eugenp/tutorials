@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" data-layout-decorate="~{layouts/default-list-layout}">
+
+  <head id="head">
+    <title data-th-text="#{label_list_entity(#{label_book_plural})}">
+    List Book - roo - SpringRoo Application</title>
+
+  </head>
+
+  <body id="body">
+
+    <header role="banner">
+      <!-- Content replaced by layout of the page displayed -->
+    </header>
+
+    <!--CONTAINER-->
+    <div class="container bg-container">
+      <!-- CONTENT -->
+      <!--
+        Only the inner content of the following tag "section" is included
+        within the template, in the section "content"
+      -->
+      <section data-layout-fragment="content">
+        <div class="container-fluid content">
+
+          <h1 data-th-text="#{label_book_plural}">Books</h1>
+
+          <!--TABLE-->
+          <div class="table-responsive" id="containerFields" data-th-with="collectionLink=${@linkBuilder.of('BooksCollectionThymeleafController')},itemLink=${@linkBuilder.of('BooksItemThymeleafController')}">
+              <table id="book-entity-table" style="width: 99.7%" class="table table-striped table-hover table-bordered" data-datatables="true" data-row-id="id" data-select="single" data-z="4f5c7d9f" data-order="[[ 1, &quot;asc&quot; ]]" data-data-load-url="${collectionLink.to('datatables')}" data-data-show-url="${itemLink.to('show').with('book', '_ID_')}" data-data-export-csv-url="${collectionLink.to('exportCsv')}" data-data-export-xls-url="${collectionLink.to('exportXls')}" data-data-export-pdf-url="${collectionLink.to('exportPdf')}" data-data-create-url="${collectionLink.to('createForm')}" data-data-edit-url="${itemLink.to('editForm').with('book', '_ID_')}" data-data-delete-url="${itemLink.to('delete').with('book', '_ID_')}" data-data-delete-batch-url="${collectionLink.to('deleteBatch').with('ids', '_ID_')}">
+                <caption class="sr-only" data-th-text="#{label_list_entity(#{label_book_plural})}">Book List</caption>
+                <thead>
+                  <tr>
+                    <th data-data="id" data-checkboxes="true"></th>
+                    <th data-data="title" data-th-text="#{label_book_title}">title</th>
+                    <th data-data="author" data-th-text="#{label_book_author}">author</th>
+                    <th data-data="isbn" data-th-text="#{label_book_isbn}">isbn</th>
+                    <th data-data="id" data-orderable="false" data-searchable="false" class="dttools" data-th-text="#{label_tools}">Tools</th>
+                  </tr>
+                </thead>
+                <tbody data-th-remove="all">
+                  <tr>
+                    <td></td>
+                    <td>title</td>
+                    <td>author</td>
+                    <td>isbn</td>
+                    <td data-th-text="#{label_tools}">Tools</td>
+                  </tr>
+                </tbody>
+              </table>
+                <!-- content replaced by modal-confirm fragment of modal-confirm.html -->
+                <div data-th-replace="~{fragments/modal-confirm-delete :: modalConfirmDelete(tableId='book-entity-table',
+                    title=#{label_delete_entity(#{label_book_plural})}, message=#{info_delete_item_confirm})}">
+                </div>
+                <div data-th-replace="~{fragments/modal-confirm-delete-batch :: modalConfirmDeleteBatch(tableId='book-entity-table',
+                    title=#{label_delete_entity(#{label_book_plural})}, message=#{info_delete_batch_confirm})}">
+                </div>
+              <div data-th-replace="~{fragments/modal-export-empty-error :: modalExportEmptyError(tableId='book-entity-table',
+                  title=#{label_export_empty_error(#{label_book_plural})}, message=#{info_export_empty_error})}">
+              </div>
+          </div>
+          <!-- /TABLE -->
+
+
+          <div class="clearfix">
+            <div class="pull-left">
+              <a href="../index.html" class="btn btn-default" data-th-href="@{/}">
+                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                 <span data-th-text="#{label_back}">Back</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+      <!-- /CONTENT -->
+    </div>
+    <!-- /CONTAINER -->
+
+    <footer class="container">
+      <!-- Content replaced by layout of the page displayed -->
+    </footer>
+
+    <!-- JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so that the pages load faster -->
+    <!-- JavaScript loaded by layout of the page displayed -->
+    <!--
+         Only the inner content of the following tag "javascript" is included
+         within the template, in the div "javascript"
+        -->
+    <div data-layout-fragment="javascript">
+    </div>
+
+  </body>
+
+</html>

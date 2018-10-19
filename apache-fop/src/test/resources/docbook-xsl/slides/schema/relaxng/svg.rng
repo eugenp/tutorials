@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: svg.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:svg="http://www.w3.org/2000/svg" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns="http://relaxng.org/ns/structure/1.0">
+  <define name="db.imageobject.content" combine="choice">
+    <ref name="db.imagedata.svg"/>
+  </define>
+  <!-- ============================================================ -->
+  <div>
+    <db:refname>imagedata</db:refname>
+    <db:refpurpose>An SVG drawing in a media object</db:refpurpose>
+    <define name="db.imagedata.svg.role.attribute">
+      <attribute name="role"/>
+    </define>
+    <define name="db.imagedata.svg.attlist">
+      <interleave>
+        <optional>
+          <ref name="db.imagedata.svg.role.attribute"/>
+        </optional>
+        <ref name="db.common.attributes"/>
+        <optional>
+          <attribute name="format">
+            <db:refpurpose>Specifies that the format of the data is SVG</db:refpurpose>
+            <value>svg</value>
+            <a:documentation>Specifies SVG.</a:documentation>
+          </attribute>
+        </optional>
+        <optional>
+          <ref name="db.imagedata.align.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.imagedata.valign.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.imagedata.width.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.imagedata.contentwidth.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.imagedata.scalefit.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.imagedata.scale.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.imagedata.depth.attribute"/>
+        </optional>
+        <optional>
+          <ref name="db.imagedata.contentdepth.attribute"/>
+        </optional>
+      </interleave>
+    </define>
+    <define name="db.imagedata.svg.info">
+      <ref name="db._info.title.forbidden"/>
+    </define>
+    <define name="db.imagedata.svg">
+      <element name="imagedata">
+        <ref name="db.imagedata.svg.attlist"/>
+        <ref name="db.imagedata.svg.info"/>
+        <oneOrMore>
+          <ref name="db._any.svg"/>
+        </oneOrMore>
+      </element>
+    </define>
+  </div>
+  <!-- ============================================================ -->
+  <div>
+    <db:refname>svg:*</db:refname>
+    <db:refpurpose>Any element from the SVG namespace</db:refpurpose>
+    <define name="db._any.svg">
+      <element>
+        <nsName ns="http://www.w3.org/2000/svg"/>
+        <zeroOrMore>
+          <choice>
+            <ref name="db._any.attribute"/>
+            <text/>
+            <ref name="db._any"/>
+          </choice>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+</grammar>

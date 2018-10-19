@@ -1,0 +1,76 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="index.links.to.section">
+<refmeta>
+<refentrytitle>index.links.to.section</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>index.links.to.section</refname>
+<refpurpose>HTML index entries link to container section title</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="index.links.to.section.frag">
+<xsl:param name="index.links.to.section" select="1"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If zero, then an index entry in an index links
+directly to the location of the
+generated <tag>anchor</tag> that is output
+for the indexterm. If two identical indexterm elements
+exist in the same section, then both entries appear
+in the index with the same title but link to different
+locations.</para>
+
+<para>If non-zero, then an index entry in an index links to the
+section title containing the <tag>indexterm</tag>, rather than
+directly to the <tag>anchor</tag> output for the indexterm.
+Duplicate indexterm entries in the same section are dropped.
+</para>
+
+<para>The default value is 1, so index entries link to
+section titles by default.</para>
+
+<para>In both cases, the link text in an index entry is the
+title of the section containing the indexterm.
+That is because HTML does not have numbered pages.
+It also provides the reader with context information
+for each link.</para>
+
+<para>This parameter lets you choose which style of
+index linking you want. </para>
+
+<itemizedlist>
+<listitem>
+<para>When set to 0, an index entry takes you 
+to the precise location of its corresponding indexterm.
+However, if you have a lot of duplicate
+entries in sections, then you have a lot of duplicate
+titles in the index, which makes it more cluttered.
+The reader may not recognize why duplicate titles
+appear until they follow the links. Also, the links
+may land the reader in the middle of a section where the
+section title is not visible, which may also be
+confusing to the reader.</para>
+</listitem>
+<listitem>
+<para>When set to 1, an index entry link is
+less precise, but duplicate titles in the
+index entries are eliminated. 
+Landing on the section title location may confirm the reader's
+expectation that a link that
+shows a section title will take them to that section title,
+not a location within the section.
+</para>
+</listitem>
+</itemizedlist>
+
+</refsection>
+</refentry>

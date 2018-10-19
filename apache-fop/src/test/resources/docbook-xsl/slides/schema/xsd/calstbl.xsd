@@ -1,0 +1,1425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This file is part of DocBook V5.0
+  
+  Copyright 1992-2008 HaL Computer Systems, Inc.,
+  O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
+  Corporation, Norman Walsh, Sun Microsystems, Inc., and the
+  Organization for the Advancement of Structured Information
+  Standards (OASIS).
+  
+  Release: $Id: calstbl.rnc 8931 2010-10-20 13:29:20Z nwalsh $
+  
+  Permission to use, copy, modify and distribute the DocBook schema
+  and its accompanying documentation for any purpose and without fee
+  is hereby granted in perpetuity, provided that the above copyright
+  notice and this paragraph appear in all copies. The copyright
+  holders make no representation about the suitability of the schema
+  for any purpose. It is provided "as is" without expressed or implied
+  warranty.
+  
+  If you modify the DocBook schema in any way, label your schema as a
+  variant of DocBook. See the reference documentation
+  (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
+  for more information.
+  
+  Please direct all questions, bug reports, or suggestions for changes
+  to the docbook@lists.oasis-open.org mailing list. For more
+  information, see http://www.oasis-open.org/docbook/.
+  
+  ======================================================================
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://docbook.org/ns/docbook" xmlns:dbs="http://docbook.org/ns/docbook-slides" xmlns:db="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:import namespace="http://docbook.org/ns/docbook-slides" schemaLocation="slides.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="xml.xsd"/>
+  <xs:attributeGroup name="db.char.attribute">
+    <xs:attribute name="char" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.charoff.attribute">
+    <xs:attribute name="charoff" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minExclusive value="0"/>
+          <xs:maxExclusive value="100"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.frame.attribute">
+    <xs:attribute name="frame" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="all">
+            <xs:annotation>
+              <xs:documentation>Frame all four sides of the table. In some environments with limited control over table border formatting, such as HTML, this may imply additional borders.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Frame only the bottom of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="none">
+            <xs:annotation>
+              <xs:documentation>Place no border on the table. In some environments with limited control over table border formatting, such as HTML, this may disable other borders as well.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="sides">
+            <xs:annotation>
+              <xs:documentation>Frame the left and right sides of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Frame the top of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="topbot">
+            <xs:annotation>
+              <xs:documentation>Frame the top and bottom of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.colsep.attribute">
+    <xs:attribute name="colsep" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No column separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a column separator rule on the right</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.rowsep.attribute">
+    <xs:attribute name="rowsep" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.orient.attribute">
+    <xs:attribute name="orient" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="land">
+            <xs:annotation>
+              <xs:documentation>90 degrees counter-clockwise from the rest of the text flow.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="port">
+            <xs:annotation>
+              <xs:documentation>The same orientation as the rest of the text flow.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.tabstyle.attribute">
+    <xs:attribute name="tabstyle" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.rowheader.attribute">
+    <xs:attribute name="rowheader" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="firstcol">
+            <xs:annotation>
+              <xs:documentation>Indicates that entries in the first column of the table are functionally row headers (analogous to the way that a thead provides column headers).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="norowheader">
+            <xs:annotation>
+              <xs:documentation>Indicates that entries in the first column have no special significance with respect to column headers.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.align.attribute">
+    <xs:attribute name="align" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="center">
+            <xs:annotation>
+              <xs:documentation>Centered.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="char">
+            <xs:annotation>
+              <xs:documentation>Aligned on a particular character.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="justify">
+            <xs:annotation>
+              <xs:documentation>Left and right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="left">
+            <xs:annotation>
+              <xs:documentation>Left justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="right">
+            <xs:annotation>
+              <xs:documentation>Right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.valign.attribute">
+    <xs:attribute name="valign" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.specify-col-by-colname.attributes">
+    <xs:attribute name="colname" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.specify-col-by-namest.attributes">
+    <xs:attribute name="namest" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.specify-span-by-spanspec.attributes">
+    <xs:attribute name="spanname" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.specify-span-directly.attributes">
+    <xs:attribute name="namest" use="required"/>
+    <xs:attribute name="nameend" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.column-spec.attributes">
+    <xs:attribute name="colname"/>
+    <xs:attribute name="namest"/>
+    <xs:attribute name="spanname"/>
+    <xs:attribute name="nameend"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.colname.attribute">
+    <xs:attribute name="colname" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.spanname.attribute">
+    <xs:attribute name="spanname" use="required"/>
+  </xs:attributeGroup>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.tgroup.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.tgroup.tgroupstyle.attribute">
+    <xs:attribute name="tgroupstyle" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.tgroup.cols.attribute">
+    <xs:attribute name="cols" use="required" type="xs:positiveInteger"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.tgroup.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="char"/>
+    <xs:attribute name="charoff">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minExclusive value="0"/>
+          <xs:maxExclusive value="100"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="tgroupstyle"/>
+    <xs:attributeGroup ref="db:db.tgroup.cols.attribute"/>
+    <xs:attribute name="colsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No column separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a column separator rule on the right</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="align">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="center">
+            <xs:annotation>
+              <xs:documentation>Centered.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="char">
+            <xs:annotation>
+              <xs:documentation>Aligned on a particular character.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="justify">
+            <xs:annotation>
+              <xs:documentation>Left and right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="left">
+            <xs:annotation>
+              <xs:documentation>Left justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="right">
+            <xs:annotation>
+              <xs:documentation>Right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="tgroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:colspec"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:spanspec"/>
+        <xs:group minOccurs="0" ref="db:db.cals.thead"/>
+        <xs:group minOccurs="0" ref="db:db.cals.tfoot"/>
+        <xs:group ref="db:db.cals.tbody"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.tgroup.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.colspec.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.colspec.colnum.attribute">
+    <xs:attribute name="colnum" use="required" type="xs:positiveInteger"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.colspec.colwidth.attribute">
+    <xs:attribute name="colwidth" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.colspec.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="colnum" type="xs:positiveInteger"/>
+    <xs:attribute name="char"/>
+    <xs:attribute name="colsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No column separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a column separator rule on the right</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="colwidth"/>
+    <xs:attribute name="charoff">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minExclusive value="0"/>
+          <xs:maxExclusive value="100"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="colname"/>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="align">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="center">
+            <xs:annotation>
+              <xs:documentation>Centered.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="char">
+            <xs:annotation>
+              <xs:documentation>Aligned on a particular character.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="justify">
+            <xs:annotation>
+              <xs:documentation>Left and right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="left">
+            <xs:annotation>
+              <xs:documentation>Left justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="right">
+            <xs:annotation>
+              <xs:documentation>Right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="colspec">
+    <xs:complexType>
+      <xs:attributeGroup ref="db:db.colspec.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.spanspec.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.spanspec.namest.attribute">
+    <xs:attribute name="namest" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.spanspec.nameend.attribute">
+    <xs:attribute name="nameend" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.spanspec.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attributeGroup ref="db:db.spanname.attribute"/>
+    <xs:attributeGroup ref="db:db.spanspec.namest.attribute"/>
+    <xs:attributeGroup ref="db:db.spanspec.nameend.attribute"/>
+    <xs:attribute name="char"/>
+    <xs:attribute name="colsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No column separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a column separator rule on the right</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="charoff">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minExclusive value="0"/>
+          <xs:maxExclusive value="100"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="align">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="center">
+            <xs:annotation>
+              <xs:documentation>Centered.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="char">
+            <xs:annotation>
+              <xs:documentation>Aligned on a particular character.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="justify">
+            <xs:annotation>
+              <xs:documentation>Left and right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="left">
+            <xs:annotation>
+              <xs:documentation>Left justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="right">
+            <xs:annotation>
+              <xs:documentation>Right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="spanspec">
+    <xs:complexType>
+      <xs:attributeGroup ref="db:db.spanspec.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.cals.thead.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cals.thead.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.cals.thead">
+    <xs:sequence>
+      <xs:element name="thead">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:colspec"/>
+            <xs:group maxOccurs="unbounded" ref="db:db.row"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="db:db.cals.thead.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.cals.tfoot.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cals.tfoot.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.cals.tfoot">
+    <xs:sequence>
+      <xs:element name="tfoot">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:colspec"/>
+            <xs:group maxOccurs="unbounded" ref="db:db.row"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="db:db.cals.tfoot.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.cals.tbody.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cals.tbody.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.cals.tbody">
+    <xs:sequence>
+      <xs:element name="tbody">
+        <xs:complexType>
+          <xs:group maxOccurs="unbounded" ref="db:db.row"/>
+          <xs:attributeGroup ref="db:db.cals.tbody.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.row.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.row.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.row">
+    <xs:sequence>
+      <xs:element name="row">
+        <xs:complexType>
+          <xs:choice maxOccurs="unbounded">
+            <xs:element ref="db:entry"/>
+            <xs:element ref="db:entrytbl"/>
+          </xs:choice>
+          <xs:attributeGroup ref="db:db.row.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.entry.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.entry.morerows.attribute">
+    <xs:attribute name="morerows" use="required" type="xs:integer"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.entry.rotate.attribute">
+    <xs:attribute name="rotate" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>Do not rotate the cell.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Rotate the cell 90 degrees counter-clockwise.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.entry.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="char"/>
+    <xs:attribute name="colsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No column separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a column separator rule on the right</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="charoff">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minExclusive value="0"/>
+          <xs:maxExclusive value="100"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="morerows" type="xs:integer"/>
+    <xs:attributeGroup ref="db:db.column-spec.attributes"/>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rotate">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>Do not rotate the cell.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Rotate the cell 90 degrees counter-clockwise.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="align">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="center">
+            <xs:annotation>
+              <xs:documentation>Centered.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="char">
+            <xs:annotation>
+              <xs:documentation>Aligned on a particular character.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="justify">
+            <xs:annotation>
+              <xs:documentation>Left and right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="left">
+            <xs:annotation>
+              <xs:documentation>Left justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="right">
+            <xs:annotation>
+              <xs:documentation>Right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="entry">
+    <xs:complexType mixed="true">
+      <xs:choice>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.inlines"/>
+        <xs:group minOccurs="0" maxOccurs="unbounded" ref="db:db.all.blocks"/>
+      </xs:choice>
+      <xs:attributeGroup ref="db:db.entry.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.entrytbl.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.entrytbl.tgroupstyle.attribute">
+    <xs:attribute name="tgroupstyle" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.entrytbl.cols.attribute">
+    <xs:attribute name="cols" use="required" type="xs:positiveInteger"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.entrytbl.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="char"/>
+    <xs:attribute name="charoff">
+      <xs:simpleType>
+        <xs:restriction base="xs:decimal">
+          <xs:minExclusive value="0"/>
+          <xs:maxExclusive value="100"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attributeGroup ref="db:db.column-spec.attributes"/>
+    <xs:attribute name="tgroupstyle"/>
+    <xs:attribute name="cols" type="xs:positiveInteger"/>
+    <xs:attribute name="colsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No column separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a column separator rule on the right</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="align">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="center">
+            <xs:annotation>
+              <xs:documentation>Centered.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="char">
+            <xs:annotation>
+              <xs:documentation>Aligned on a particular character.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="justify">
+            <xs:annotation>
+              <xs:documentation>Left and right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="left">
+            <xs:annotation>
+              <xs:documentation>Left justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="right">
+            <xs:annotation>
+              <xs:documentation>Right justified.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:element name="entrytbl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:colspec"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:spanspec"/>
+        <xs:group minOccurs="0" ref="db:db.cals.entrytbl.thead"/>
+        <xs:group ref="db:db.cals.entrytbl.tbody"/>
+      </xs:sequence>
+      <xs:attributeGroup ref="db:db.entrytbl.attlist"/>
+    </xs:complexType>
+  </xs:element>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.cals.entrytbl.thead.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cals.entrytbl.thead.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.cals.entrytbl.thead">
+    <xs:sequence>
+      <xs:element name="thead">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" ref="db:colspec"/>
+            <xs:group maxOccurs="unbounded" ref="db:db.entrytbl.row"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="db:db.cals.entrytbl.thead.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.cals.entrytbl.tbody.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cals.entrytbl.tbody.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.cals.entrytbl.tbody">
+    <xs:sequence>
+      <xs:element name="tbody">
+        <xs:complexType>
+          <xs:group maxOccurs="unbounded" ref="db:db.entrytbl.row"/>
+          <xs:attributeGroup ref="db:db.cals.entrytbl.tbody.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.entrytbl.row.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.entrytbl.row.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="valign">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Aligned on the bottom of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="middle">
+            <xs:annotation>
+              <xs:documentation>Aligned in the middle.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Aligned at the top of the entry.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.entrytbl.row">
+    <xs:sequence>
+      <xs:element name="row">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="db:entry"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="db:db.entrytbl.row.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.cals.table.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cals.table.label.attribute">
+    <xs:attributeGroup ref="db:db.label.attribute"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cals.table.attlist">
+    <xs:attribute name="role"/>
+    <xs:attribute name="label"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="tabstyle"/>
+    <xs:attribute name="floatstyle"/>
+    <xs:attribute name="orient">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="land">
+            <xs:annotation>
+              <xs:documentation>90 degrees counter-clockwise from the rest of the text flow.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="port">
+            <xs:annotation>
+              <xs:documentation>The same orientation as the rest of the text flow.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="colsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No column separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a column separator rule on the right</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="frame">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="all">
+            <xs:annotation>
+              <xs:documentation>Frame all four sides of the table. In some environments with limited control over table border formatting, such as HTML, this may imply additional borders.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Frame only the bottom of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="none">
+            <xs:annotation>
+              <xs:documentation>Place no border on the table. In some environments with limited control over table border formatting, such as HTML, this may disable other borders as well.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="sides">
+            <xs:annotation>
+              <xs:documentation>Frame the left and right sides of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Frame the top of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="topbot">
+            <xs:annotation>
+              <xs:documentation>Frame the top and bottom of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="pgwide" type="db:db.pgwide.enumeration"/>
+    <xs:attribute name="shortentry">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>Indicates that the full title should be used.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Indicates that the short short title (titleabbrev) should be used.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="tocentry">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>Indicates that the table should not occur in the List of Tables.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Indicates that the table should appear in the List of Tables.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rowheader">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="firstcol">
+            <xs:annotation>
+              <xs:documentation>Indicates that entries in the first column of the table are functionally row headers (analogous to the way that a thead provides column headers).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="norowheader">
+            <xs:annotation>
+              <xs:documentation>Indicates that entries in the first column have no special significance with respect to column headers.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.cals.table.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.onlyreq"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="db.cals.table">
+    <xs:sequence>
+      <xs:element name="table">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="db:db.cals.table.info"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="db:alt"/>
+              <xs:group ref="db:db.indexing.inlines"/>
+              <xs:element ref="db:textobject"/>
+            </xs:choice>
+            <xs:choice>
+              <xs:element maxOccurs="unbounded" ref="db:mediaobject"/>
+              <xs:element maxOccurs="unbounded" ref="db:tgroup"/>
+            </xs:choice>
+            <xs:group minOccurs="0" ref="db:db.caption"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="db:db.cals.table.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <!-- ====================================================================== -->
+  <xs:attributeGroup name="db.cals.informaltable.role.attribute">
+    <xs:attribute name="role" use="required"/>
+  </xs:attributeGroup>
+  <xs:attributeGroup name="db.cals.informaltable.attlist">
+    <xs:attribute name="role"/>
+    <xs:attributeGroup ref="dbs:db.common.attributes"/>
+    <xs:attributeGroup ref="db:db.common.linking.attributes"/>
+    <xs:attribute name="tabstyle"/>
+    <xs:attribute name="floatstyle"/>
+    <xs:attribute name="orient">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="land">
+            <xs:annotation>
+              <xs:documentation>90 degrees counter-clockwise from the rest of the text flow.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="port">
+            <xs:annotation>
+              <xs:documentation>The same orientation as the rest of the text flow.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="colsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No column separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a column separator rule on the right</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="rowsep">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="0">
+            <xs:annotation>
+              <xs:documentation>No row separator rule.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="1">
+            <xs:annotation>
+              <xs:documentation>Provide a row separator rule below</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="frame">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="all">
+            <xs:annotation>
+              <xs:documentation>Frame all four sides of the table. In some environments with limited control over table border formatting, such as HTML, this may imply additional borders.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="bottom">
+            <xs:annotation>
+              <xs:documentation>Frame only the bottom of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="none">
+            <xs:annotation>
+              <xs:documentation>Place no border on the table. In some environments with limited control over table border formatting, such as HTML, this may disable other borders as well.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="sides">
+            <xs:annotation>
+              <xs:documentation>Frame the left and right sides of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="top">
+            <xs:annotation>
+              <xs:documentation>Frame the top of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="topbot">
+            <xs:annotation>
+              <xs:documentation>Frame the top and bottom of the table.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="pgwide" type="db:db.pgwide.enumeration"/>
+    <xs:attribute name="rowheader">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="firstcol">
+            <xs:annotation>
+              <xs:documentation>Indicates that entries in the first column of the table are functionally row headers (analogous to the way that a thead provides column headers).</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="norowheader">
+            <xs:annotation>
+              <xs:documentation>Indicates that entries in the first column have no special significance with respect to column headers.</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="db.cals.informaltable.info">
+    <xs:sequence>
+      <xs:group ref="db:db._info.title.forbidden"/>
+    </xs:sequence>
+  </xs:group>
+  <xs:group name="db.cals.informaltable">
+    <xs:sequence>
+      <xs:element name="informaltable">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:group ref="db:db.cals.informaltable.info"/>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+              <xs:element ref="db:alt"/>
+              <xs:group ref="db:db.indexing.inlines"/>
+              <xs:element ref="db:textobject"/>
+            </xs:choice>
+            <xs:choice>
+              <xs:element maxOccurs="unbounded" ref="db:mediaobject"/>
+              <xs:element maxOccurs="unbounded" ref="db:tgroup"/>
+            </xs:choice>
+            <xs:group minOccurs="0" ref="db:db.caption"/>
+          </xs:sequence>
+          <xs:attributeGroup ref="db:db.cals.informaltable.attlist"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+</xs:schema>

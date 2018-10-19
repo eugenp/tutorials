@@ -1,0 +1,119 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="custom.css.source">
+  <refmeta>
+    <refentrytitle>custom.css.source</refentrytitle>
+    <refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+  </refmeta>
+  <refnamediv>
+    <refname>custom.css.source</refname>
+    <refpurpose>Name of a custom CSS input file</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <src:fragment xml:id="custom.css.source.frag"><xsl:param name="custom.css.source"></xsl:param></src:fragment>
+  </refsynopsisdiv>
+
+  <refsection><info><title>Description</title></info>
+
+<para>The <parameter>custom.css.source</parameter>
+parameter enables you to add CSS styles to DocBook's
+HTML output.</para>
+
+<para>The parameter
+specifies the name of a file containing custom
+CSS styles.  The file must be a well-formed XML file that
+consists of a single <tag>style</tag> root
+element that contains CSS styles as its text content.
+For example:</para>
+<programlisting><![CDATA[<?xml version="1.0"?>
+<style>
+h2 {
+  font-weight: bold;
+  color: blue;
+}
+...
+</style>
+]]></programlisting>
+
+<para>The filename specified by the parameter
+should have a <literal>.xml</literal>
+filename suffix, although that is not required.
+The default value of this parameter is blank.</para>
+
+<para>If <parameter>custom.css.source</parameter> is not blank, then
+the stylesheet takes the following actions.
+These actions take place regardless of the value of
+the <parameter>make.clean.html</parameter> parameter.</para>
+
+<orderedlist>
+  <listitem>
+    <para>The stylesheet uses the XSLT <literal>document()</literal>
+    function to open the file specified by the parameter and
+    load it into a variable.</para>
+  </listitem>
+  <listitem>
+    <para>The stylesheet forms an output pathname consisting of the
+    value of the <parameter>base.dir</parameter> parameter (if it is set)
+    and the value of <parameter>custom.css.source</parameter>,
+    with the <literal>.xml</literal> suffix stripped off.
+    </para>
+  </listitem>
+  <listitem>
+    <para>The stylesheet removes the <tag>style</tag>
+    wrapper element and writes just the CSS text content to the output file.</para>
+  </listitem>
+  <listitem>
+    <para>The stylesheet adds a <tag>link</tag> element to the
+    HTML <tag>HEAD</tag> element to reference this external CSS stylesheet.
+    For example:
+    <programlisting>&lt;link rel="stylesheet" href="custom.css" type="text/css"&gt;
+    </programlisting>
+    </para>
+  </listitem>
+</orderedlist>
+
+
+
+<para>If the <parameter>make.clean.html</parameter> parameter is nonzero
+(the default is zero),
+and if the <parameter>docbook.css.source</parameter> parameter
+is not blank (the default is not blank),
+then the stylesheet will also generate a default CSS file
+and add a <tag>link</tag> tag to reference it.
+The <tag>link</tag> to the custom CSS comes after the 
+<tag>link</tag> to the default, so it should cascade properly
+in most browsers.
+If you do not want two <tag>link</tag> tags, and
+instead want your custom CSS to import the default generated
+CSS file, then do the following:
+</para>
+
+<orderedlist>
+  <listitem>
+    <para>Add a line like the following to your custom CSS source file:</para>
+    <programlisting>@import url("docbook.css")
+    </programlisting>
+  </listitem>
+  <listitem>
+    <para>Set the <parameter>docbook.css.link</parameter> parameter 
+    to zero. This will omit the <tag>link</tag> tag
+    that references the default CSS file.</para>
+  </listitem>
+</orderedlist>
+
+<para>If you set <parameter>make.clean.html</parameter> to nonzero but
+you do not want the default CSS generated, then also set
+the <parameter>docbook.css.source</parameter> parameter to blank.
+Then no default CSS will be generated, and so
+all CSS styles must come from your custom CSS file.</para>
+
+<para>You can use the <parameter>generate.css.header</parameter>
+parameter to instead write the CSS to each HTML <tag>HEAD</tag>
+element in a <tag>style</tag> tag instead of an external CSS file.</para>
+
+  </refsection>
+</refentry>

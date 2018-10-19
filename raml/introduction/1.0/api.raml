@@ -1,0 +1,101 @@
+#%RAML 1.0
+title: Baeldung Foo REST Services API
+version: v1
+protocols: [ HTTPS ]
+baseUri: http://rest-api.baeldung.com/api/{version}
+mediaType: application/json
+securedBy: basicAuth
+securitySchemes:
+  - basicAuth:
+      description: Each request must contain the headers necessary for
+                   basic authentication
+      type: Basic Authentication
+      describedBy:
+        headers:
+          Authorization:
+            description: Used to send the Base64 encoded "username:password"
+                         credentials
+            type: string
+        responses:
+          401:
+            description: |
+              Unauthorized. Either the provided username and password
+              combination is invalid, or the user is not allowed to access
+              the content provided by the requested URL.
+types:
+  Foo:   !include types/Foo.raml
+  Error: !include types/Error.raml
+/foos:
+  get:
+    description: List all Foos matching query criteria, if provided;
+                 otherwise list all Foos
+    queryParameters:
+      name?: string
+      ownerName?: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Foo[]
+            example: !include examples/Foos.json
+  post:
+    description: Create a new Foo
+    body:
+      application/json:
+        type: Foo
+        example: !include examples/Foo.json
+    responses:
+      201:
+        body:
+          application/json:
+            type: Foo
+            example: !include examples/Foo.json
+  /{id}:
+    get:
+      description: Get a Foo by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: Foo
+              example: !include examples/Foo.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+    put:
+      description: Update a Foo by id
+      body:
+        application/json:
+          type: Foo
+          example: !include examples/Foo.json
+      responses:
+        200:
+          body:
+            application/json:
+              type: Foo
+              example: !include examples/Foo.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+    delete:
+      description: Delete a Foo by id
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include examples/Error.json
+  /name/{name}:
+    get:
+      description: List all Foos with a certain name
+      responses:
+        200:
+          body:
+            application/json:
+              type: Foo[]
+              example: !include examples/Foos.json

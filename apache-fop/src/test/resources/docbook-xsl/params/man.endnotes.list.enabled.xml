@@ -1,0 +1,105 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.endnotes.list.enabled">
+<refmeta>
+<refentrytitle>man.endnotes.list.enabled</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.endnotes.list.enabled</refname>
+<refpurpose>Display endnotes list at end of man page?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.endnotes.list.enabled.frag">
+<xsl:param name="man.endnotes.list.enabled">1</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the value of <parameter>man.endnotes.list.enabled</parameter> is
+non-zero (the default), then an endnotes list is added to the end of
+the output man page.</para>
+
+<para>If the value of <parameter>man.endnotes.list.enabled</parameter> is
+zero, the list is suppressed — unless link numbering is enabled (that
+is, if <parameter>man.endnotes.are.numbered</parameter> is non-zero), in
+which case, that setting overrides the
+<parameter>man.endnotes.list.enabled</parameter> setting, and the
+endnotes list is still displayed. The reason is that inline
+numbering of notesources associated with endnotes only makes sense
+if a (numbered) list of endnotes is also generated.</para>
+
+<note>
+  <para>Leaving
+  <parameter>man.endnotes.list.enabled</parameter> at its default
+  (non-zero) value ensures that no “out of line” information (such
+  as the URLs for hyperlinks and images) gets lost in your
+  man-page output. It just gets “rearranged”.</para>
+  <para>So if you’re thinking about disabling endnotes listing by
+    setting the value of
+    <parameter>man.endnotes.list.enabled</parameter> to zero:
+    Before you do so, first take some time to carefully consider
+    the information needs and experiences of your users. The “out
+    of line” information has value even if the presentation of it
+    in text output is not as interactive as it may be in other
+    output formats.</para>
+  <para>As far as the specific case of URLs: Even though the URLs
+    displayed in text output may not be “real” (clickable)
+    hyperlinks, many X terminals have convenience features for
+    recognizing URLs and can, for example, present users with
+    an options to open a URL in a browser with the user clicks on
+    the URL is a terminal window. And short of those, users with X
+    terminals can always manually cut and paste the URLs into a web
+    browser.</para>
+  <para>Also, note that various “man to html” tools, such as the
+    widely used <command><link xlink:href="http://users.actrix.gen.nz/michael/vhman2html.html">man2html</link></command> (<literal>VH-Man2html</literal>)
+    application, automatically mark up URLs with <literal>a@href</literal> markup
+  during conversion — resulting in “real” hyperlinks in HTML
+  output from those tools.</para>
+</note>
+
+<para>To “turn off” numbering of endnotes in the
+endnotes list, set <parameter>man.endnotes.are.numbered</parameter>
+to zero. The endnotes list will
+still be displayed; it will just be displayed without the
+numbers<footnote><para>It can still make sense to have
+the list of endnotes displayed even if you have endnotes numbering turned
+off. In that case, your endnotes list basically becomes a “list
+of references” without any association with specific text in
+your document. This is probably the best option if you find the inline
+endnotes numbering obtrusive. Your users will still have access to all the “out of line”
+such as URLs for hyperlinks.</para></footnote>
+</para>
+
+<para>The default heading for the endnotes list is
+<literal>NOTES</literal>. To change that, set a non-empty
+value for the <parameter>man.endnotes.list.heading</parameter>
+parameter.</para>
+
+<para>In the case of notesources that are links: Along with the
+URL for each link, the endnotes list includes the contents of the
+link. The list thus includes only non-empty<footnote>
+
+<para>A “non-empty” link is one that looks like
+this:<literallayout class="monospaced">  &lt;ulink url="http://docbook.sf.net/snapshot/xsl/doc/manpages/"&gt;manpages&lt;/ulink&gt;</literallayout>
+an “empty link” is on that looks like this:<literallayout class="monospaced">  &lt;ulink url="http://docbook.sf.net/snapshot/xsl/doc/manpages/"/&gt;</literallayout>
+</para></footnote> links.
+
+Empty links are never included, and never numbered. They are simply
+displayed inline, without any numbering.</para>
+
+<para>In addition, if there are multiple instances of links in a
+<tag>refentry</tag> that have the same URL, the URL is listed only
+once. The contents listed for that link in the endnotes list are
+the contents of the first link which has that URL.</para>
+
+<para>If you disable endnotes listing, you should probably also set
+<parameter>man.links.are.underlined</parameter> to zero (to disable
+link underlining).</para>
+</refsection>
+</refentry>

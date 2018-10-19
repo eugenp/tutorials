@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="crop.mark.offset">
+<refmeta>
+<refentrytitle>crop.mark.offset</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>crop.mark.offset</refname>
+<refpurpose>Length of crop marks.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="crop.mark.offset.frag">
+<xsl:param name="crop.mark.offset">24pt</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Length of crop marks. Crop marks are controlled by
+<parameter>crop.marks</parameter> parameter.</para>
+
+</refsection>
+</refentry>

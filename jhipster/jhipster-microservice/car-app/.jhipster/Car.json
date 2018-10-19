@@ -1,0 +1,25 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "make",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "brand",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20170503041524",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "car",
+    "pagination": "infinite-scroll",
+    "microserviceName": "carapp",
+    "searchEngine": false
+}

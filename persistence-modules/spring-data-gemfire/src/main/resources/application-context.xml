@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:gfe-data="http://www.springframework.org/schema/data/gemfire"
+       xmlns:gfe="http://www.springframework.org/schema/gemfire"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/data/gemfire http://www.springframework.org/schema/data/gemfire/spring-data-gemfire.xsd http://www.springframework.org/schema/gemfire http://www.springframework.org/schema/gemfire/spring-gemfire.xsd">
+
+    <context:component-scan base-package="com.baeldung.spring.data.gemfire"></context:component-scan>
+
+    <gfe:annotation-driven/>
+    <gfe-data:function-executions base-package="com.baeldung.spring.data.gemfire.function"/>
+    <!-- Declare GemFire Cache -->
+    <gfe:cache/>
+    <!-- Local region for being used by the Message -->
+    <gfe:local-region id="employee" value-constraint="com.baeldung.spring.data.gemfire.model.Employee" data-policy="PRELOADED"/>
+    <!-- Search for GemFire repositories -->
+    <gfe-data:repositories base-package="com.baeldung.spring.data.gemfire.repository"/>
+
+
+</beans>

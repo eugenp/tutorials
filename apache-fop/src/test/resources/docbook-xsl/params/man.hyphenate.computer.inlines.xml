@@ -1,0 +1,53 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.hyphenate.computer.inlines">
+<refmeta>
+<refentrytitle>man.hyphenate.computer.inlines</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.hyphenate.computer.inlines</refname>
+<refpurpose>Hyphenate computer inlines?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.hyphenate.computer.inlines.frag">
+<xsl:param name="man.hyphenate.computer.inlines">0</xsl:param></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If zero (the default), hyphenation is suppressed for
+<quote>computer inlines</quote> such as environment variables,
+constants, etc. This parameter current affects output of the following
+elements:
+<simplelist type="inline">
+  <?dbchoice choice="and" ?>
+  <member><tag>classname</tag></member>
+  <member><tag>constant</tag></member>
+  <member><tag>envar</tag></member>
+  <member><tag>errorcode</tag></member>
+  <member><tag>option</tag></member>
+  <member><tag>replaceable</tag></member>
+  <member><tag>userinput</tag></member>
+  <member><tag>type</tag></member>
+  <member><tag>varname</tag></member>
+</simplelist>
+</para>
+
+<note>
+  <para>If hyphenation is already turned off globally (that is, if
+  <parameter>man.hyphenate</parameter> is zero, setting the
+  <parameter>man.hyphenate.computer.inlines</parameter> is not
+  necessary.</para>
+</note>
+
+<para>If <parameter>man.hyphenate.computer.inlines</parameter> is
+non-zero, computer inlines will not be treated specially and will be
+hyphenated like other words when needed.</para>
+
+</refsection>
+</refentry>

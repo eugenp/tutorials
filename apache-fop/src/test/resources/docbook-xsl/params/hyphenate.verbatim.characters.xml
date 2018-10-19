@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="hyphenate.verbatim.characters">
+<refmeta>
+<refentrytitle>hyphenate.verbatim.characters</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>hyphenate.verbatim.characters</refname>
+<refpurpose>List of characters after which a line break can occur in listings</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="hyphenate.verbatim.characters.frag">
+<xsl:param name="hyphenate.verbatim.characters"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If you enable <parameter>hyphenate.verbatim</parameter> line
+breaks are allowed only on space characters. If this is not enough for
+your document, you can specify list of additional characters after
+which line break is allowed in this parameter.</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,29 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="callout.unicode.font">
+<refmeta>
+<refentrytitle>callout.unicode.font</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>callout.unicode.font</refname>
+<refpurpose>Specify a font for Unicode glyphs</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="callout.unicode.font.frag">
+<xsl:param name="callout.unicode.font">ZapfDingbats</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The name of the font to specify around Unicode callout glyphs.
+If set to the empty string, no font change will occur.
+</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,10 @@
+{
+  "name": "angular-aria",
+  "version": "1.5.8",
+  "license": "MIT",
+  "main": "./angular-aria.js",
+  "ignore": [],
+  "dependencies": {
+    "angular": "1.5.8"
+  }
+}

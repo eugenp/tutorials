@@ -1,0 +1,35 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="sidebar.float.width">
+<refmeta>
+<refentrytitle>sidebar.float.width</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>sidebar.float.width</refname>
+<refpurpose>Set the default width for sidebars</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="sidebar.float.width.frag">
+<xsl:param name="sidebar.float.width">1in</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Sets the default width for sidebars when used as a side float.
+The width determines the degree to which the sidebar block intrudes into
+the text area.
+</para>
+<para>If <parameter>sidebar.float.type</parameter> is
+<quote><literal>before</literal></quote> or 
+<quote><literal>none</literal></quote>, then 
+this parameter is ignored.
+</para>
+
+</refsection>
+</refentry>

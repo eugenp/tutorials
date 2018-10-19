@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN"
+          "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+<book>
+<bookinfo>
+<title>Unit Test: refentry.007</title>
+<releaseinfo role="CVS">$Id: refentry.007.xml 7282 2007-08-23 09:27:01Z xmldoc $</releaseinfo>
+<author><firstname>Norman</firstname><surname>Walsh</surname>
+        <affiliation><address><email>ndw@nwalsh.com</email></address></affiliation>
+</author>
+</bookinfo>
+<reference>
+<title>Reference</title>
+<refentry>
+  <refentryinfo>
+    <authorgroup>
+      <author>
+        <firstname>Norman</firstname><surname>Walsh</surname>
+        <email>ndw@nwalsh.com</email>
+        <personblurb>
+          <para>Wrote the original version of this document.</para>
+        </personblurb>
+      </author>
+      <editor>
+        <contrib>Added a bunch of test cases.</contrib>
+        <firstname>Michael(tm)</firstname><surname>Smith</surname>
+        <email>smith@sideshowbarker.net</email>
+      </editor>
+    </authorgroup>
+    <copyright>
+      <year>2003</year>
+      <holder>Norman Walsh</holder>
+    </copyright>
+    <copyright>
+      <year>2006</year>
+      <holder>Michael(tm) Smith</holder>
+    </copyright>
+    <legalnotice>
+      <para>This file is a product of the DocBook Project.</para>
+    </legalnotice>
+    <legalnotice>
+      <para>Share and share alike.</para>
+    </legalnotice>
+  </refentryinfo>
+<refnamediv>
+<refname>FirstName</refname>
+<refname>SecondName</refname>
+<refpurpose>Purpose for FirstName</refpurpose>
+</refnamediv>
+
+<refnamediv>
+<refname>ThirdName</refname>
+<refpurpose>Purpose for ThirdName</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <?dbfunclist ?>
+  <funcsynopsis>
+    <!-- * Yes, friend, Funcsynopsis is a verbatim -->
+    <funcsynopsisinfo
+>#include &lt;varargs.h&gt;
+#include &lt;mouteyh.h&gt;
+#include &lt;qlmppzj.h&gt;</funcsynopsisinfo>
+    <funcprototype>
+      <funcdef><type>float</type> <function>rand</function></funcdef>
+      <void/>
+    </funcprototype>
+
+    <funcprototype>
+      <funcdef>int <function>max</function></funcdef>
+      <varargs/>
+    </funcprototype>
+
+    <funcprototype>
+      <funcdef>int <function>idiv</function></funcdef>
+      <paramdef><type>int</type> <parameter>n</parameter></paramdef>
+      <paramdef><type>int</type> <parameter>m</parameter></paramdef>
+    </funcprototype>
+  </funcsynopsis>
+
+  <para>Another.</para>
+
+  <funcsynopsis>
+    <funcprototype>
+      <funcdef>void <function>qsort</function></funcdef>
+      <paramdef>void *<parameter>dataptr</parameter>[]</paramdef>
+      <paramdef>int <parameter>left</parameter></paramdef>
+      <paramdef>int <parameter>right</parameter></paramdef>
+      <paramdef>int (*<parameter>comp</parameter>)
+      <funcparams>void *, void *</funcparams></paramdef>
+    </funcprototype>
+  </funcsynopsis>
+
+  <funcsynopsis>
+    <funcprototype>
+      <funcdef>int <function>foo_frob_something</function></funcdef>
+      <paramdef>foo_sometype1 <parameter>foo_frob_parm1</parameter></paramdef>
+      <paramdef>foo_sometype1 <parameter>foo_frob_parm2</parameter></paramdef>
+      <paramdef>foo_sometype1 <parameter>foo_frob_parm3</parameter></paramdef>
+      <paramdef><type>int</type> (* <parameter>parm4</parameter> )
+      <funcparams>int a, int b, int c</funcparams>
+      </paramdef>
+      <paramdef>foo_sometype1 <parameter>foo_frob_parm5</parameter></paramdef>
+    </funcprototype>
+
+    <funcprototype>
+      <funcdef>int <function>foo_frob_something</function></funcdef>
+      <paramdef>foo_sometype1 <parameter>foo_frob_parm1</parameter></paramdef>
+      <paramdef>foo_sometype1 <parameter>foo_frob_parm2</parameter></paramdef>
+      <paramdef>foo_sometype1 <parameter>foo_frob_parm3</parameter></paramdef>
+      <paramdef><type>int</type> (* <parameter>parm4</parameter> )
+      <funcparams>int a, int b, int c</funcparams>
+      </paramdef>
+      <paramdef>foo_sometype1 <parameter>foo_frob_parm5</parameter></paramdef>
+    </funcprototype>
+  </funcsynopsis>
+</refsynopsisdiv>
+
+<refsect1>
+<title>Description</title>
+<para>This is a minimal RefEntry.</para>
+
+<para>The following is a Variablelist with a title.
+<variablelist>
+  <title>My variablelist</title>
+  <varlistentry>
+    <term>varlistentry term 1</term>
+    <listitem><para>some listitem text</para></listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>varlistentry term 2</term>
+    <listitem><para>some more listitem text</para></listitem>
+  </varlistentry>
+</variablelist>
+</para>
+<refsect2>
+<title>Subsection</title>
+<para>This is a minimal RefEntry.</para>
+
+<para>The following is a Variablelist with a title and a nested variablelist
+  <glosslist>
+    <title>My glosslist</title>
+  <glossentry>
+    <glossterm>glossentry term 1</glossterm>
+    <glossdef><para>some glossdef text</para></glossdef>
+  </glossentry>
+  <glossentry>
+    <glossterm>glossentry term 2</glossterm>
+    <glossdef>
+      <variablelist>
+        <varlistentry>
+          <term>nested variablelist term 1</term>
+          <listitem><para>some variablelist text</para></listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>nested variablelist term 2</term>
+          <listitem><para>some more variablelist text</para></listitem>
+        </varlistentry>
+      </variablelist>
+    </glossdef>
+  </glossentry>
+  </glosslist>
+</para>
+
+<refsect3>
+<title>Sub-subsection</title>
+<para>This is a minimal RefEntry.</para>
+</refsect3>
+</refsect2>
+</refsect1>
+
+<refsect1>
+<title>More Description</title>
+<para>This is a not-so minimal RefEntry.</para>
+<screen>
+This is a screen [break here]
+that starts with a line of space. [break here]
+And it ends with a line of space.
+</screen>
+
+<para>normal paragraph here</para>
+
+<screen>This is a screen [break here]
+that does not start with a line of space. [break here]
+And does not end with a line of space.</screen>
+
+<para>This is a normal paragraph that contains a screen.
+<screen>This is a screen within a normal paragraph [break here]
+that does not start with a line of space. [break here]
+And does not end with a line of space but is followed
+by a line of space.</screen>
+</para>
+
+<para>This is another  normal paragraph that contains a screen.
+<screen>This is a screen within a normal paragraph [break here]
+that does not start with a line of space. [break here]
+And does not end with a line of space and is not followed
+by a line of space.</screen></para>
+
+<para>This is another  normal paragraph that contains a screen.
+<screen>
+This is a screen within a normal paragraph [break here]
+that starts with a line of space. [break here]
+And ends with a line of space but is not followed by a line of space.
+</screen></para>
+
+<para>This is another  normal paragraph that contains a screen.
+<screen>
+This is a screen within a normal paragraph [break here]
+that starts with a line of space. [break here]
+And ends with a line of space and is followed by a line of space.
+</screen>
+</para>
+
+<para>This is another  normal paragraph that contains a screen.
+<screen>
+
+This is a screen within a normal paragraph [break here]
+that starts with a 2 lines of space. [break here]
+And ends with 3 lines of space and is followed by a line of space.
+
+
+</screen>
+</para>
+
+<para>This paragraph contains an itemizedlist with a title. The title
+is “Mrignkwolmcng”.
+<orderedlist>
+  <title>Mrignkwolmcng</title>
+  <listitem>
+    <para>itemizedlist listitem 1</para>
+  </listitem>
+  <listitem>
+    <para>itemizedlist listitem 2</para>
+  </listitem>
+</orderedlist>
+
+This is some useless text that follows the “Mrignkwolmcng” orderedlist
+in the same para.</para>
+
+<para>The following is a Variablelist with a title and with a nested itemizedlist.
+<variablelist>
+  <title>My variablelist</title>
+  <varlistentry>
+    <term>varlistentry term 1</term>
+    <listitem>
+      <itemizedlist>
+        <title>nested itemizedlist</title>
+        <listitem>
+          <para>itemizedlist listitem 1</para>
+        </listitem>
+        <listitem>
+          <para>itemizedlist listitem 2</para>
+        </listitem>
+      </itemizedlist>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>varlistentry term 2</term>
+    <listitem><para>some more listitem text</para></listitem>
+  </varlistentry>
+</variablelist>
+</para>
+
+<para>The following is a Variablelist with a title and with a
+nested Varlistentry that contains multiple Terms
+<variablelist>
+  <title>My nested-multi-term-per-varlistentry variablelist</title>
+  <varlistentry>
+    <term>Varlistentry term 1</term>
+    <listitem>
+      <variablelist>
+        <varlistentry>
+          <term>  varlistentry term 1.1</term>
+          <term>varlistentry term 1.2  </term>
+          <term>varlistentry         term 1.3</term>
+          <listitem><para>All 'bout terms 1.1, 1.2, and 1.3</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </listitem>
+  </varlistentry>
+  <varlistentry>
+    <term>varlistentry term 2</term>
+    <listitem><para>some more listitem text</para></listitem>
+  </varlistentry>
+</variablelist>
+</para>
+
+<refsect2>
+<title>Subsection</title>
+<para>This is a minimal RefEntry.</para>
+</refsect2>
+</refsect1>
+
+<refsect1>
+<title>Even More Description</title>
+<para>This is an even less minimal RefEntry.</para>
+
+<para>This is a paragraph. It contains the following segmentedlist,
+titled “Gibbererish”, with several segtitle elements.
+<segmentedlist>
+  <title>Gibbererish</title>
+  <segtitle>Floober</segtitle>
+  <segtitle>Buugler</segtitle>
+  <segtitle>Sstangooo</segtitle>
+  <segtitle>Borobinda</segtitle>
+  <seglistitem>
+  <seg>Bamalalaboonda Bamalalaboonda Bamalalaboonda Bamalalaboonda Bamalalaboonda Bamalalaboonda</seg>
+  <seg>Mondorotoluafu</seg>
+  <seg>Ganafutralinga</seg>
+  <seg>Patagularamakundra</seg>
+  </seglistitem>
+  <seglistitem>
+  <seg>Cadraracondar</seg>
+  <seg>Hentirotomaambu</seg>
+  <seg>BdomentriolaiaBdomentriolaiaBdomentriolaia</seg>
+  <seg>Candamalaturuanio</seg>
+  </seglistitem>
+</segmentedlist>
+This is some text that follows the segementedlist within the same
+paragraph. The next part of this same paragraph is an
+<sgmltag>important</sgmltag> admonition.
+<important>
+  <para>It is very important that you read this. That’s why it stands
+  out the way that it does.</para>
+</important>
+</para>
+
+<para>This is a para with a footnote
+  <footnote
+    ><para>Stuff here <programlisting>This is a program listing
+that's two lines long.</programlisting></para>
+    and stuff after the
+footnote</footnote></para>
+</refsect1>
+
+</refentry>
+</reference>
+</book>

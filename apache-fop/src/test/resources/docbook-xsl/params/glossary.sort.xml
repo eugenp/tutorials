@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="glossary.sort">
+<refmeta>
+<refentrytitle>glossary.sort</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>glossary.sort</refname>
+<refpurpose>Sort glossentry elements?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="glossary.sort.frag">
+<xsl:param name="glossary.sort" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, then the glossentry elements within a
+glossary, glossdiv, or glosslist are sorted on the glossterm, using
+the current lang setting.  If zero (the default), then
+glossentry elements are not sorted and are presented
+in document order.
+</para>
+
+</refsection>
+</refentry>

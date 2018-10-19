@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="htmlhelp.hhc">
+<refmeta>
+<refentrytitle>htmlhelp.hhc</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>htmlhelp.hhc</refname>
+<refpurpose>Filename of TOC file.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="htmlhelp.hhc.frag">
+<xsl:param name="htmlhelp.hhc">toc.hhc</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Set the name of the TOC file. The default is <filename>toc.hhc</filename>.</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,195 @@
+Note: This changelog is a record of descriptions of all changes
+made to the DocBook XSL manpages stylesheets during the time when
+they were maintained in their original home in the
+[cvs]/docbook/contrib/xsl/db2man area of the DocBook Project
+source-code repository at Sourceforge; that is, from October 2001
+(when they were contributed to the project by Martijn van Beers)
+until September 2002 (when they were moved to the
+[cvs]/docbook/xsl/manpages area and became a standard part of all
+subsequent DocBook XSL Stylesheets releases).
+
+2002-09-17  Norman Walsh <nwalsh@users.sourceforge.net>
+
+	* README, db2man.xsl, lists.xsl, sect23.xsl, synop.xsl, xref.xsl: 
+	Moved to docbook/xsl/manpages
+
+	* db2man.xsl, synop.xsl: Patch from Joe Orton
+
+2002-06-16  <lotr@users.sourceforge.net>
+
+	* db2man.xsl: commit patch sent by Joe Orton:
+	
+	  This patch adds support for using the productname, date and title out of
+	  a <referenceinfo> if one is present, rather than having to add each of
+	  these individually for every refentry.
+
+	* db2man.xsl: Tim Waugh sent:
+	
+	  This patch normalizes space in each refname before displaying it in
+	  the name section.
+
+2002-05-21  <lotr@users.sourceforge.net>
+
+	* xref.xsl: from Joe Orton:
+	this patch allows cross-referencing to a specific refname.  I
+	need this since I'm documenting several different (but related)
+	functions per refentry, and want to cross-reference them individually,
+	rather than just by the title used for the refentry as a whole.
+
+2002-05-17  <lotr@users.sourceforge.net>
+
+	* lists.xsl: apply glosslist support patch from twaugh
+
+2002-05-15  <lotr@users.sourceforge.net>
+
+	* db2man.xsl: slightly sanitize the filenames we generate. again from twaugh
+
+	* db2man.xsl: Apply twaugh's fix for making the entity transform stuff work
+
+2002-05-14  <lotr@users.sourceforge.net>
+
+	* db2man.xsl: generalize the tip template for all admonitions
+	(caution,important,note,tip,warning)
+
+	* db2man.xsl: Apply Joe Orton's <tip> patch, modified to be indented. Also show "Tip"
+	in the title.
+	
+	so if <tip><title>foo</title></tip>, you get
+	      Tip: foo
+
+	* synop.xsl: rewrote funcprototype. It used to convert all its children to a single
+	string and the split it up again through recursion. Now has a nice
+	foreach loop for the paramdefs, which seems much cleaner than throwing
+	everything in a big string before processing it.
+
+2002-05-10  <lotr@users.sourceforge.net>
+
+	* db2man.xsl: add support for simpara
+
+	* db2man.xsl, lists.xsl: fix refsect2 titles
+
+	* synop.xsl: also from twaugh:
+	
+	I found some input that goes wrong with the synop.xsl we have in CVS:
+	
+	<group choice="opt">
+	  <arg>-o <replaceable>FILE</replaceable></arg>
+	  <arg>--output=<replaceable>FILE</replaceable></arg>
+	</group>
+	
+	It gets rendered as (with *bold* and _italic_):
+	
+	[*-o FILE* | *--output=FILE*]
+	
+	The desired markup should look like:
+	The following macro does the trick:
+	
+	[\fB-o \fIFILE\fR\fR | \fB--output=\fIFILE\fR\fR]
+	
+	The trouble is that the named template 'bold' uses value-of, and so
+	strips <replaceable> of its significance.
+	
+	Another thing I found is that the arg/replaceable template is
+	superfluous altogether: db2man.xsl has a 'replaceable' template which
+	does the same thing.
+	
+	Here is a patch to make those two modifications.
+	
+	NOTE TO SELF: must try to fix bold template so we can use it everywhere
+
+2002-05-09  <lotr@users.sourceforge.net>
+
+	* db2man.xsl: oops, removed too much
+
+	* db2man.xsl: remove stuff that's apparently left-over from sect23.xsl
+
+	* db2man.xsl, lists.xsl, synop.xsl: batch of patches from twaugh:
+	* This patch (based on one from Jirka Kosek) adds support for
+	  block-level elements inside <para>s---<screen>s for example, or lists.
+	* This patch replaces entities (like '&#x8212;') with sensible
+	  characters or groups of characters.
+	* This patch adds support for sbr.
+	* This patch normalizes spaces in varlistentry terms.
+	* This patch normalizes spaces in terminal varlistentry terms.
+	* This patch allows variable lists to be nested (once).
+	* This patch prevents variable list item paragraphs from merging into
+	  one another.
+	* This patch improves the rendering of itemized lists, and adds support
+	  for ordered lists and procedures.
+	* This patch makes some small adjustments to group/arg: don't put extra
+	  spaces in where they aren't needed, and normalize the space of $arg.
+	* This patch makes adjustments to cmdsynopsis elements.  In particular,
+	  they can now be wrapped if no <sbr/> is provided.
+	* This patch adds funcsynopsis//* support.  Again, wrapping is done
+	  automatically.
+
+	* synop.xsl: make synopsises work for --arg=foo <arg>s too
+
+	* synop.xsl: remove unneccesary adding of whitespace for arg/replaceable
+
+2002-05-01  <lotr@users.sourceforge.net>
+
+	* db2man.xsl: This patch adds support for multiple refnames.
+	
+	(another twaugh patch)
+
+	* db2man.xsl: modified ulink patch from twaugh. Be nice to content-less ulinks. But we
+	don't accomodate silly people who don't understand ulink and put the
+	url as the content too.
+
+	* db2man.xsl, synop.xsl: db2man.xsl:
+	  * temporarily add some params that chunker.xsl needs
+	  * fix bold/italic templates
+	  * update calls to bold/italic templates for new syntax
+	synop.xsl:
+	  * add support for synopfragment
+	  * update calls to bold/italic templates for new syntax
+
+2002-04-30  <lotr@users.sourceforge.net>
+
+	* db2man.xsl: Add twaug's patch for xref support
+
+	* db2man.xsl: This patch adds support for:
+	
+	- Multiple authors.
+	- A (single) man page editor.
+	
+	(another patch from twaugh)
+
+	* db2man.xsl: more twaugh patches:
+	- Use refentrytitle, not refname[1], for title.
+	- Upper-case it.
+	- Use date, productname, and title.
+	- Pick up author from main document if not contained in refentry.
+	- Use refname[1] for man page filename, not refentrytitle.
+
+	* db2man.xsl: add varname support
+
+	* db2man.xsl: This patch makes userinput (an inline element) have inline formatting.
+
+	* db2man.xsl: This patch adds support for the top-level document being something
+	other than an article.
+	
+	It also emits a helpful warning if no refentry elements are found.
+
+	* db2man.xsl: next twaugh patch:
+	  Instead of writing to stdout, create a file for each
+	  refentry.  Plus, for bonus points, a file for each additional refname
+	  within that entry (pointing to the main page).
+
+	* db2man.xsl: Add named templates for bold-ifying and italicizing stuff. Inspired
+	by yet another twaugh patch
+
+	* db2man.xsl, lists.xsl, sect23.xsl: consistently use &#10; instead of a newline
+
+	* db2man.xsl, synop.xsl: * add support for informalexample, screen, errorcode, constant, type,
+	  quote, programlisting and citerefentry
+	* use the 'bold' and 'italic' named templates
+
+	* xref.xsl: New file.
+
+2001-12-01  Norman Walsh <nwalsh@users.sourceforge.net>
+
+	* README, db2man.xsl, lists.xsl, sect23.xsl, synop.xsl: 
+	New file.
+

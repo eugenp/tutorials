@@ -1,0 +1,8 @@
+#%RAML 1.0 Trait
+usage: Use this trait for resources whose response body is a collection of items
+responses:
+    200:
+      body:
+        application/json:
+          type: <<typeName>>[]
+          example: !include /examples/<<typeName|!pluralize>>.json

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+    <title><h:outputText value="#{msg['message.welcome']}"/></title>
+</h:head>
+<h:body>
+<h:form>
+    <h:panelGrid id="theGrid" columns="3">
+        <h:outputText value="Username"/>
+        <h:inputText id="firstName" binding="#{userName}" required="true" requiredMessage="#{msg['message.valueRequired']}"
+                     value="#{registration.userName}"/>
+        <h:message for="firstName" style="color:red;"/>
+        <h:commandButton value="#{msg['label.saveButton']}" action="#{registration.createNewUser}"
+                         process="@this"/>
+<!--
+        Accessing the Spring bean directly from the page
+        <h:commandButton value="Save"
+                         action="#{registration.userDao.createUser(userName.value)}"/>
+-->
+        <h:outputText value="#{registration.operationMessage}" style="color:green;"/>
+    </h:panelGrid>
+</h:form>
+</h:body>
+</html>
+

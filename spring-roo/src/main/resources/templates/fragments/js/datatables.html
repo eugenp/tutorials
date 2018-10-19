@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8"></meta>
+  <title>Session info</title>
+</head>
+<body>
+
+
+	<!--
+    Only the inner content of the following div is included
+    within the template, in the section "datatables"
+    -->
+	<div data-th-fragment="datatables-js">
+
+		<!-- Modal to show loading errors -->
+      <div data-th-replace="~{fragments/modal :: modal(id='datatablesError', title=#{info_error}, body = ~{::errorBody}, footer = ~{})}">
+      <p data-th-text="#{error_datatables_loading}" data-th-fragment="errorBody">Error</p>
+		</div>
+
+		<!-- Datatables -->
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.js"
+			data-th-src="@{/webjars/datatables/media/js/jquery.dataTables.js}"></script>
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.js"
+			data-th-src="@{/webjars/datatables.net-bs/js/dataTables.bootstrap.js}"></script>
+		<!-- Datatables responsive plugin -->
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/responsive/2.0.2/js/dataTables.responsive.js"
+			data-th-src="@{/webjars/datatables.net-responsive/js/dataTables.responsive.js}"></script>
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/responsive/2.0.2/js/responsive.bootstrap.js"
+			data-th-src="@{/webjars/datatables.net-responsive-bs/js/responsive.bootstrap.js}"></script>
+		<!-- Datatables buttons plugins -->
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/buttons/1.1.2/js/dataTables.buttons.js"
+			data-th-src="@{/webjars/datatables.net-buttons/js/dataTables.buttons.js}"></script>
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.bootstrap.js"
+			data-th-src="@{/webjars/datatables.net-buttons-bs/js/buttons.bootstrap.js}"></script>
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.colVis.js"
+			data-th-src="@{/webjars/datatables.net-buttons/js/buttons.colVis.js}"></script>
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.flash.js"
+			data-th-src="@{/webjars/datatables.net-buttons/js/buttons.flash.js}"></script>
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/buttons/1.1.2/js/buttons.html5.js"
+			data-th-src="@{/webjars/datatables.net-buttons/js/buttons.html5.js}"></script>
+		<!-- Datatables select plugin -->
+		<script type="text/javascript" charset="utf8"
+			src="https://cdn.datatables.net/select/1.1.2/js/dataTables.select.js"
+			data-th-src="@{/webjars/datatables.net-select/js/dataTables.select.js}"></script>
+    <!--  Datatables checkbox plugin -->
+    <script type="text/javascript" charset="utf8"
+        src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.1.2/js/dataTables.checkboxes.min.js"
+        data-th-src="@{/webjars/jquery-datatables-checkboxes/js/dataTables.checkboxes.min.js}"></script>
+    <!-- Datatables mark plugin -->
+    <script type="text/javascript" charset="utf8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.4.0/jquery.mark.min.js"
+        data-th-src="@{/webjars/mark.js/dist/jquery.mark.min.js}"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/plug-ins/1.10.13/features/mark.js/datatables.mark.min.js"
+        data-th-src="@{/webjars/github-com-julmot-datatables-mark-js/dist/datatables.mark.min.js}"></script>
+    <script type="text/javascript" charset="utf8"
+          src="../js/datatables-locale.js"
+          data-th-src="@{/js/datatables-locale.js(lang=${#locale})}"></script>
+    <script type="text/javascript" charset="utf8"
+        src="../../static/public/js/dataTables.advanced.js"
+        data-th-src="@{/public/js/dataTables.advanced.js}"></script>
+    <script type="text/javascript" charset="utf8"
+        src="../../static/public/js/datatables-defaults.js"
+        data-th-src="@{/public/js/datatables-defaults.js}"></script>
+
+	</div>
+</body>
+</html>

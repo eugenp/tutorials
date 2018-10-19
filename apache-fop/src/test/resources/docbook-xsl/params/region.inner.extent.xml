@@ -1,0 +1,51 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="region.inner.extent">
+<refmeta>
+<refentrytitle>region.inner.extent</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>region.inner.extent</refname>
+<refpurpose>Specifies the width of the inner side region</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="region.inner.extent.frag">
+<xsl:param name="region.inner.extent">0in</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The region inner extent is the width of the optional
+text area next to the inner side (binding side) of the
+body region.  </para>
+
+<para>For double-sided output, this side region 
+is <literal>fo:region-start</literal> on a odd-numbered page,
+and <literal>fo:region-end</literal> on an even-numbered page.</para>
+
+<para>For single-sided output, this side region
+is <literal>fo:region-start</literal> for all pages.</para>
+
+<para>This correspondence applies to all languages,
+both left-to-right and right-to-left writing modes.</para>
+
+<para>The default value of this parameter is zero.  If you enlarge this extent,
+be sure to also enlarge the <parameter>body.margin.inner</parameter>
+parameter to make room for its content, otherwise any text in
+the side region may overlap with the body text.</para>
+
+<para>See also
+<parameter>region.outer.extent</parameter>,
+<parameter>body.margin.inner</parameter>,
+<parameter>body.margin.outer</parameter>,
+<parameter>side.region.precedence</parameter>.
+</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,23 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="olink.fragid">
+<refmeta>
+<refentrytitle>olink.fragid</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>olink.fragid</refname>
+<refpurpose>Names the fragment identifier portion of an OLink resolver query</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<src:fragment xml:id="olink.fragid.frag">
+<xsl:param name="olink.fragid">fragid=</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>The fragment identifier portion of an <tag>olink</tag> target.</para>
+</refsection>
+</refentry>

@@ -1,0 +1,42 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="sidebar.properties">
+<refmeta>
+<refentrytitle>sidebar.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>sidebar.properties</refname>
+<refpurpose>Attribute set for sidebar properties</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="sidebar.properties.frag">
+<xsl:attribute-set name="sidebar.properties" use-attribute-sets="formal.object.properties">
+  <xsl:attribute name="border-style">solid</xsl:attribute>
+  <xsl:attribute name="border-width">1pt</xsl:attribute>
+  <xsl:attribute name="border-color">black</xsl:attribute>
+  <xsl:attribute name="background-color">#DDDDDD</xsl:attribute>
+  <xsl:attribute name="padding-start">12pt</xsl:attribute>
+  <xsl:attribute name="padding-end">12pt</xsl:attribute>
+  <xsl:attribute name="padding-top">6pt</xsl:attribute>
+  <xsl:attribute name="padding-bottom">6pt</xsl:attribute>
+  <xsl:attribute name="margin-{$direction.align.start}">0pt</xsl:attribute>
+  <xsl:attribute name="margin-{$direction.align.end}">0pt</xsl:attribute>
+<!--
+  <xsl:attribute name="margin-top">6pt</xsl:attribute>
+  <xsl:attribute name="margin-bottom">6pt</xsl:attribute>
+-->
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The styling for sidebars.</para>
+
+</refsection>
+</refentry>

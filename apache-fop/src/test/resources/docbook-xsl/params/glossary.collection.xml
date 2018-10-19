@@ -1,0 +1,271 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="glossary.collection">
+<refmeta>
+<refentrytitle>glossary.collection</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>glossary.collection</refname>
+<refpurpose>Name of the glossary collection file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="glossary.collection.frag">
+<xsl:param name="glossary.collection"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Glossaries maintained independently across a set of documents
+are likely to become inconsistent unless considerable effort is
+expended to keep them in sync. It makes much more sense, usually, to
+store all of the glossary entries in a single place and simply
+<quote>extract</quote> the ones you need in each document.</para>
+
+<para>That's the purpose of the
+<parameter>glossary.collection</parameter> parameter. To setup a global
+glossary <quote>database</quote>, follow these steps:</para>
+
+<refsection><info><title>Setting Up the Glossary Database</title></info>
+
+<para>First, create a stand-alone glossary document that contains all of
+the entries that you wish to reference. Make sure that each glossary
+entry has an ID.</para>
+
+<para>Here's an example glossary:</para>
+
+<informalexample>
+<programlisting>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;!DOCTYPE glossary
+  PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+  "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd"&gt;
+&lt;glossary&gt;
+&lt;glossaryinfo&gt;
+&lt;editor&gt;&lt;firstname&gt;Eric&lt;/firstname&gt;&lt;surname&gt;Raymond&lt;/surname&gt;&lt;/editor&gt;
+&lt;title&gt;Jargon File 4.2.3 (abridged)&lt;/title&gt;
+&lt;releaseinfo&gt;Just some test data&lt;/releaseinfo&gt;
+&lt;/glossaryinfo&gt;
+
+&lt;glossdiv&gt;&lt;title&gt;0&lt;/title&gt;
+
+&lt;glossentry&gt;
+&lt;glossterm&gt;0&lt;/glossterm&gt;
+&lt;glossdef&gt;
+&lt;para&gt;Numeric zero, as opposed to the letter `O' (the 15th letter of
+the English alphabet). In their unmodified forms they look a lot
+alike, and various kluges invented to make them visually distinct have
+compounded the confusion. If your zero is center-dotted and letter-O
+is not, or if letter-O looks almost rectangular but zero looks more
+like an American football stood on end (or the reverse), you're
+probably looking at a modern character display (though the dotted zero
+seems to have originated as an option on IBM 3270 controllers). If
+your zero is slashed but letter-O is not, you're probably looking at
+an old-style ASCII graphic set descended from the default typewheel on
+the venerable ASR-33 Teletype (Scandinavians, for whom /O is a letter,
+curse this arrangement). (Interestingly, the slashed zero long
+predates computers; Florian Cajori's monumental "A History of
+Mathematical Notations" notes that it was used in the twelfth and
+thirteenth centuries.) If letter-O has a slash across it and the zero
+does not, your display is tuned for a very old convention used at IBM
+and a few other early mainframe makers (Scandinavians curse &lt;emphasis&gt;this&lt;/emphasis&gt;
+arrangement even more, because it means two of their letters collide).
+Some Burroughs/Unisys equipment displays a zero with a &lt;emphasis&gt;reversed&lt;/emphasis&gt;
+slash. Old CDC computers rendered letter O as an unbroken oval and 0
+as an oval broken at upper right and lower left. And yet another
+convention common on early line printers left zero unornamented but
+added a tail or hook to the letter-O so that it resembled an inverted
+Q or cursive capital letter-O (this was endorsed by a draft ANSI
+standard for how to draw ASCII characters, but the final standard
+changed the distinguisher to a tick-mark in the upper-left corner).
+Are we sufficiently confused yet?&lt;/para&gt;
+&lt;/glossdef&gt;
+&lt;/glossentry&gt;
+
+&lt;glossentry&gt;
+&lt;glossterm&gt;1TBS&lt;/glossterm&gt;
+&lt;glossdef&gt;
+&lt;para role="accidence"&gt;
+&lt;phrase role="pronounce"&gt;&lt;/phrase&gt;
+&lt;phrase role="partsofspeach"&gt;n&lt;/phrase&gt;
+&lt;/para&gt;
+&lt;para&gt;The "One True Brace Style"&lt;/para&gt;
+&lt;glossseealso&gt;indent style&lt;/glossseealso&gt;
+&lt;/glossdef&gt;
+&lt;/glossentry&gt;
+
+&lt;!-- ... --&gt;
+
+&lt;/glossdiv&gt;
+
+&lt;!-- ... --&gt;
+
+&lt;/glossary&gt;</programlisting>
+</informalexample>
+
+</refsection>
+
+<refsection><info><title>Marking Up Glossary Terms</title></info>
+
+<para>That takes care of the glossary database, now you have to get the entries
+into your document. Unlike bibliography entries, which can be empty, creating
+<quote>placeholder</quote> glossary entries would be very tedious. So instead,
+support for <parameter>glossary.collection</parameter> relies on implicit linking.</para>
+
+<para>In your source document, simply use <tag>firstterm</tag> and
+<tag>glossterm</tag> to identify the terms you wish to have included
+in the glossary. The stylesheets assume that you will either set the
+<tag class="attribute">baseform</tag> attribute correctly, or that the
+content of the element exactly matches a term in your glossary.</para>
+
+<para>If you're using a <parameter>glossary.collection</parameter>, don't
+make explicit links on the terms in your document.</para>
+
+<para>So, in your document, you might write things like this:</para>
+
+<informalexample>
+<programlisting>&lt;para&gt;This is dummy text, without any real meaning.
+The point is simply to reference glossary terms like &lt;glossterm&gt;0&lt;/glossterm&gt;
+and the &lt;firstterm baseform="1TBS"&gt;One True Brace Style (1TBS)&lt;/firstterm&gt;.
+The &lt;glossterm&gt;1TBS&lt;/glossterm&gt;, as you can probably imagine, is a nearly
+religious issue.&lt;/para&gt;</programlisting>
+</informalexample>
+
+<para>If you set the <parameter>firstterm.only.link</parameter> parameter,
+only the terms marked with <tag>firstterm</tag> will be links.
+Otherwise, all the terms will be linked.</para>
+
+</refsection>
+
+<refsection><info><title>Marking Up the Glossary</title></info>
+
+<para>The glossary itself has to be identified for the stylesheets. For lack
+of a better choice, the <tag class="attribute">role</tag> is used.
+To identify the glossary as the target for automatic processing, set
+the role to <quote><literal>auto</literal></quote>. The title of this
+glossary (and any other information from the <tag>glossaryinfo</tag>
+that's rendered by your stylesheet) will be displayed, but the entries will
+come from the database.
+</para>
+
+<para>Unfortunately, the glossary can't be empty, so you must put in
+at least one <tag>glossentry</tag>. The content of this entry
+is irrelevant, it will not be rendered:</para>
+
+<informalexample>
+<programlisting>&lt;glossary role="auto"&gt;
+&lt;glossentry&gt;
+&lt;glossterm&gt;Irrelevant&lt;/glossterm&gt;
+&lt;glossdef&gt;
+&lt;para&gt;If you can see this, the document was processed incorrectly. Use
+the &lt;parameter&gt;glossary.collection&lt;/parameter&gt; parameter.&lt;/para&gt;
+&lt;/glossdef&gt;
+&lt;/glossentry&gt;
+&lt;/glossary&gt;</programlisting>
+</informalexample>
+
+<para>What about glossary divisions? If your glossary database has glossary
+divisions <emphasis>and</emphasis> your automatic glossary contains at least
+one <tag>glossdiv</tag>, the automic glossary will have divisions.
+If the <tag>glossdiv</tag> is missing from either location, no divisions
+will be rendered.</para>
+
+<para>Glossary entries (and divisions, if appropriate) in the glossary will
+occur in precisely the order they occur in your database.</para>
+
+</refsection>
+
+<refsection><info><title>Formatting the Document</title></info>
+
+<para>Finally, when you are ready to format your document, simply set the
+<parameter>glossary.collection</parameter> parameter (in either a
+customization layer or directly through your processor's interface) to
+point to your global glossary.</para>
+
+<para>A relative path in the parameter is interpreted in one
+of two ways:</para>
+<orderedlist numeration="loweralpha">
+  <listitem>
+    <para>If the parameter <literal>glossterm.auto.link</literal>
+    is set to zero, then the path is relative to the file containing
+    the empty <tag>glossary</tag> element in the document.</para>
+  </listitem>
+  <listitem>
+    <para>If the parameter <literal>glossterm.auto.link</literal>
+    is set to non-zero, then the path is relative to the file containing
+    the first inline <tag>glossterm</tag> or
+    <tag>firstterm</tag> in the document to be linked.</para>
+  </listitem>
+</orderedlist>
+<para>Once the collection file is opened by the first instance described
+above, it stays open for the current document
+and the relative path is not reinterpreted again.</para>
+
+<para>The stylesheets will format the glossary in your document as if
+all of the entries implicilty referenced appeared there literally.</para>
+</refsection>
+
+<refsection><info><title>Limitations</title></info>
+
+<para>Glossary cross-references <emphasis>within the glossary</emphasis> are
+not supported. For example, this <emphasis>will not</emphasis> work:</para>
+
+<informalexample>
+<programlisting>&lt;glossentry&gt;
+&lt;glossterm&gt;gloss-1&lt;/glossterm&gt;
+&lt;glossdef&gt;&lt;para&gt;A description that references &lt;glossterm&gt;gloss-2&lt;/glossterm&gt;.&lt;/para&gt;
+&lt;glossseealso&gt;gloss-2&lt;/glossseealso&gt;
+&lt;/glossdef&gt;
+&lt;/glossentry&gt;</programlisting>
+</informalexample>
+
+<para>If you put glossary cross-references in your glossary that way,
+you'll get the cryptic error: <computeroutput>Warning:
+glossary.collection specified, but there are 0 automatic
+glossaries</computeroutput>.</para>
+
+<para>Instead, you must do two things:</para>
+
+<orderedlist>
+<listitem>
+<para>Markup your glossary using <tag>glossseealso</tag>:</para>
+
+<informalexample>
+<programlisting>&lt;glossentry&gt;
+&lt;glossterm&gt;gloss-1&lt;/glossterm&gt;
+&lt;glossdef&gt;&lt;para&gt;A description that references &lt;glossterm&gt;gloss-2&lt;/glossterm&gt;.&lt;/para&gt;
+&lt;glossseealso&gt;gloss-2&lt;/glossseealso&gt;
+&lt;/glossdef&gt;
+&lt;/glossentry&gt;</programlisting>
+</informalexample>
+</listitem>
+
+<listitem>
+<para>Make sure there is at least one <tag>glossterm</tag> reference to
+<glossterm>gloss-2</glossterm> <emphasis>in your document</emphasis>. The
+easiest way to do that is probably within a <tag>remark</tag> in your
+automatic glossary:</para>
+
+<informalexample>
+<programlisting>&lt;glossary role="auto"&gt;
+&lt;remark&gt;Make sure there's a reference to &lt;glossterm&gt;gloss-2&lt;/glossterm&gt;.&lt;/remark&gt;
+&lt;glossentry&gt;
+&lt;glossterm&gt;Irrelevant&lt;/glossterm&gt;
+&lt;glossdef&gt;
+&lt;para&gt;If you can see this, the document was processed incorrectly. Use
+the &lt;parameter&gt;glossary.collection&lt;/parameter&gt; parameter.&lt;/para&gt;
+&lt;/glossdef&gt;
+&lt;/glossentry&gt;
+&lt;/glossary&gt;</programlisting>
+</informalexample>
+</listitem>
+</orderedlist>
+</refsection>
+
+</refsection>
+</refentry>

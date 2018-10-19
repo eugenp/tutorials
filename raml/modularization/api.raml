@@ -1,0 +1,47 @@
+#%RAML 1.0
+title: Baeldung Foo REST Services API
+uses:
+  security: !include libraries/security.raml
+version: v1
+protocols: [ HTTPS ]
+baseUri: http://rest-api.baeldung.com/api/{version}
+mediaType: application/json
+securedBy: [ security.basicAuth ]
+types:
+  Foo:   !include types/Foo.raml
+  Bar:   !include types/Bar.raml
+  Error: !include types/Error.raml
+resourceTypes:
+  - collection: !include resourceTypes/collection.raml
+  - item: !include resourceTypes/item.raml
+traits:
+  - hasRequestItem: !include traits/hasRequestItem.raml
+  - hasResponseItem: !include traits/hasResponseItem.raml
+  - hasResponseCollection: !include traits/hasResponseCollection.raml
+  - hasNotFound: !include traits/hasNotFound.raml
+/foos:
+  type: collection
+  typeName: Foo
+  get:
+    queryParameters:
+      name?: string
+      ownerName?: string
+  /{fooId}:
+    type: item
+    typeName: Foo
+  /name/{name}:
+    get:
+      description: List all foos with a certain name
+      typeName: Foo
+      is: [ hasResponseCollection ]
+/bars:
+  type: collection
+  typeName: Bar
+  /{barId}:
+    type: item
+    typeName: Bar
+  /fooId/{fooId}:
+    get:
+      description: Get all bars for the matching fooId
+      typeName: Bar
+      is: [ hasResponseCollection ]

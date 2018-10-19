@@ -1,0 +1,116 @@
+<?xml version='1.0'?>
+<!--
+
+  Bakalarska prace: Zvyraznovani syntaxe v XSLT
+  Michal Molhanec 2005
+
+  myxml-hl.xml - konfigurace zvyraznovace XML, ktera zvlast zvyrazni
+                 HTML elementy a XSL elementy
+
+-->
+<highlighters>
+
+<wholehighlighter type='xml'>
+  <elementSet>
+    <style>html</style>
+    <element>A</element>
+    <element>ABBR</element>
+    <element>ACRONYM</element>
+    <element>ADDRESS</element>
+    <element>APPLET</element>
+    <element>AREA</element>
+    <element>B</element>
+    <element>BASE</element>
+    <element>BASEFONT</element>
+    <element>BDO</element>
+    <element>BIG</element>
+    <element>BLOCKQUOTE</element>
+    <element>BODY</element>
+    <element>BR</element>
+    <element>BUTTON</element>
+    <element>CAPTION</element>
+    <element>CENTER</element>
+    <element>CITE</element>
+    <element>CODE</element>
+    <element>COL</element>
+    <element>COLGROUP</element>
+    <element>DD</element>
+    <element>DEL</element>
+    <element>DFN</element>
+    <element>DIR</element>
+    <element>DIV</element>
+    <element>DL</element>
+    <element>DT</element>
+    <element>EM</element>
+    <element>FIELDSET</element>
+    <element>FONT</element>
+    <element>FORM</element>
+    <element>FRAME</element>
+    <element>FRAMESET</element>
+    <element>H1</element>
+    <element>H2</element>
+    <element>H3</element>
+    <element>H4</element>
+    <element>H5</element>
+    <element>H6</element>
+    <element>HEAD</element>
+    <element>HR</element>
+    <element>HTML</element>
+    <element>I</element>
+    <element>IFRAME</element>
+    <element>IMG</element>
+    <element>INPUT</element>
+    <element>INS</element>
+    <element>ISINDEX</element>
+    <element>KBD</element>
+    <element>LABEL</element>
+    <element>LEGEND</element>
+    <element>LI</element>
+    <element>LINK</element>
+    <element>MAP</element>
+    <element>MENU</element>
+    <element>META</element>
+    <element>NOFRAMES</element>
+    <element>NOSCRIPT</element>
+    <element>OBJECT</element>
+    <element>OL</element>
+    <element>OPTGROUP</element>
+    <element>OPTION</element>
+    <element>P</element>
+    <element>PARAM</element>
+    <element>PRE</element>
+    <element>Q</element>
+    <element>S</element>
+    <element>SAMP</element>
+    <element>SCRIPT</element>
+    <element>SELECT</element>
+    <element>SMALL</element>
+    <element>SPAN</element>
+    <element>STRIKE</element>
+    <element>STRONG</element>
+    <element>STYLE</element>
+    <element>SUB</element>
+    <element>SUP</element>
+    <element>TABLE</element>
+    <element>TBODY</element>
+    <element>TD</element>
+    <element>TEXTAREA</element>
+    <element>TFOOT</element>
+    <element>TH</element>
+    <element>THEAD</element>
+    <element>TITLE</element>
+    <element>TR</element>
+    <element>TT</element>
+    <element>U</element>
+    <element>UL</element>
+    <element>VAR</element>
+    <element>XMP</element>
+    <ignoreCase/>
+  </elementSet>
+  <elementPrefix>
+    <style>xslt</style>
+    <prefix>xsl:</prefix>
+  </elementPrefix>
+</wholehighlighter>
+
+</highlighters>

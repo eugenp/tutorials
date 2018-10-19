@@ -1,0 +1,37 @@
+
+<div *ngIf="post">
+    <h2><span jhiTranslate="baeldungApp.post.detail.title">Post</span> {{post.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="baeldungApp.post.title">Title</span></dt>
+        <dd>
+            <span>{{post.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="baeldungApp.post.content">Content</span></dt>
+        <dd>
+            <span>{{post.content}}</span>
+        </dd>
+        <dt><span jhiTranslate="baeldungApp.post.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{post.creationDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="baeldungApp.post.creator">Creator</span></dt>
+        <dd>
+            {{post.creator?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'post/'+ post.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

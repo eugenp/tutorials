@@ -1,0 +1,15 @@
+<div class="authorize__btn authorize__btn_operation
+    {{#if isLogout}}
+        authorize__btn_operation_login
+    {{else}}
+        authorize__btn_operation_logout
+    {{/if}}
+">
+    {{#if scopes}}
+        <ul class="authorize-scopes">
+            {{#each scopes}}
+                <li class="authorize__scope" title="{{description}}">{{scope}}</li>
+            {{/each}}
+        </ul>
+    {{/if}}
+</div>

@@ -1,0 +1,33 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="linenumbering.everyNth">
+<refmeta>
+<refentrytitle>linenumbering.everyNth</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>linenumbering.everyNth</refname>
+<refpurpose>Indicate which lines should be numbered</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="linenumbering.everyNth.frag">
+<xsl:param name="linenumbering.everyNth">5</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If line numbering is enabled, everyNth line will be
+numbered. Note that numbering is one based, not zero based.
+</para>
+<para>See also <parameter>linenumbering.extension</parameter>,
+<parameter>linenumbering.separator</parameter>,
+<parameter>linenumbering.width</parameter> and
+<parameter>use.extensions</parameter></para>
+
+</refsection>
+</refentry>

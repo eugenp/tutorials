@@ -1,0 +1,49 @@
+<!DOCTYPE t:templates [
+<!ENTITY hsize0 "10pt">
+<!ENTITY hsize1 "12pt">
+<!ENTITY hsize2 "14.4pt">
+<!ENTITY hsize3 "17.28pt">
+<!ENTITY hsize4 "20.736pt">
+<!ENTITY hsize5 "24.8832pt">
+<!ENTITY hsize0space "7.5pt"> <!-- 0.75 * hsize0 -->
+<!ENTITY hsize1space "9pt"> <!-- 0.75 * hsize1 -->
+<!ENTITY hsize2space "10.8pt"> <!-- 0.75 * hsize2 -->
+<!ENTITY hsize3space "12.96pt"> <!-- 0.75 * hsize3 -->
+<!ENTITY hsize4space "15.552pt"> <!-- 0.75 * hsize4 -->
+<!ENTITY hsize5space "18.6624pt"> <!-- 0.75 * hsize5 -->
+]>
+<t:templates xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0"
+             xmlns:param="http://nwalsh.com/docbook/xsl/template/1.0/param"
+             xmlns:fo="http://www.w3.org/1999/XSL/Format"
+             xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+<!-- ==================================================================== -->
+
+<t:titlepage t:element="slides" t:wrapper="fo:block">
+  <t:titlepage-content t:side="recto">
+      <title t:named-template="presentation.title"
+	     xsl:use-attribute-sets="slides.titlepage.title.properties"/>
+
+    <subtitle xsl:use-attribute-sets="slides.titlepage.subtitle.properties"/>
+
+    <corpauthor xsl:use-attribute-sets="slides.titlepage.corpauthor.properties"/>
+    <authorgroup xsl:use-attribute-sets="slides.titlepage.authorgroup.properties"/>
+    <author xsl:use-attribute-sets="slides.titlepage.author.properties"/>
+
+    <pubdate xsl:use-attribute-sets="slides.titlepage.pubdate.properties"/>
+  </t:titlepage-content>
+
+  <t:titlepage-content t:side="verso">
+  </t:titlepage-content>
+
+  <t:titlepage-separator>
+  </t:titlepage-separator>
+
+  <t:titlepage-before t:side="recto">
+  </t:titlepage-before>
+
+  <t:titlepage-before t:side="verso">
+  </t:titlepage-before>
+</t:titlepage>
+
+</t:templates>

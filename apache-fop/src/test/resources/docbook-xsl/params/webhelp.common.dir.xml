@@ -1,0 +1,25 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="webhelp.common.dir">
+<refmeta>
+<refentrytitle>webhelp.common.dir</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>webhelp.common.dir</refname>
+<refpurpose>Path to the directory for the common webhelp resources (JavaScript, css, common images, etc).</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="webhelp.common.dir.frag">
+<xsl:param name="webhelp.common.dir">../common/</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>By default, webhelp creates a common directory containing resources such as JavaScript files, css, common images, etc. In some cases you may prefer to store these files in a standard location on your site and point all webhelp documents to that location. You can use this parameter to control the urls written to these common resources. For example, you might set this parameter to <code>/common</code> and create a single common directory at the root of your web server.  </para>
+</refsection>
+</refentry>

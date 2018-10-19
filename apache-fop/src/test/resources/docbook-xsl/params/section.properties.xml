@@ -1,0 +1,35 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="section.properties">
+<refmeta>
+<refentrytitle>section.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>section.properties</refname>
+<refpurpose>Properties for all section levels</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="section.properties.frag">
+<xsl:attribute-set name="section.properties">
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The properties that apply to the containing
+block of all section levels, and therefore apply to
+the whole section.  
+This attribute set is inherited by the
+more specific attribute sets such as
+<tag>section.level1.properties</tag>.
+The default is empty.
+</para>
+
+</refsection>
+</refentry>

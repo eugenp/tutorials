@@ -1,0 +1,38 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="base.dir">
+<refmeta>
+<refentrytitle>base.dir</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">uri</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>base.dir</refname>
+<refpurpose>The base directory of chunks</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="base.dir.frag">
+<xsl:param name="base.dir"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If specified, the <parameter>base.dir</parameter> parameter identifies
+the output directory for chunks. (If not specified, the output directory
+is system dependent.)</para>
+
+<para>Starting with version 1.77 of the stylesheets, 
+the param's value will have a trailing slash added if it does
+not already have one.</para>
+
+<caution><para>Do not use <parameter>base.dir</parameter>
+to add a filename prefix string to chunked  files. 
+Instead, use the <parameter>chunked.filename.prefix</parameter>
+parameter.</para></caution>
+
+</refsection>
+</refentry>

@@ -1,0 +1,32 @@
+#%RAML 1.0 Library
+# This is the file /libraries/traits.raml
+usage: This library defines some basic traits
+uses:
+  myDataTypes: !include dataTypes.raml
+traits:
+  hasRequestItem:
+    usage: Use this trait for resources whose request body is a single item
+    body:
+      application/json:
+        type: <<resourcePathName|!singularize>>
+  hasResponseItem:
+    usage: Use this trait for resources whose response body is a single item
+    responses:
+        200:
+          body:
+            application/json:
+              type: <<resourcePathName|!singularize>>
+  hasResponseCollection:
+    usage: Use this trait for resources whose response body is a collection of items
+    responses:
+        200:
+          body:
+            application/json:
+              type: <<resourcePathName|!singularize>>[]
+  hasNotFound:
+    usage: Use this trait for resources that could respond with a 404 status
+    responses:
+        404:
+          body:
+            application/json:
+              type: myDataTypes.Error

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Thymeleaf Spring Example</title>
+</head>
+<body>
+    Hello John!
+    <br></br>
+    <div>Please confirm your details</div>
+    <br></br>
+    <form action="#" th:action="@{/processForm}" th:object="${user}"
+        method="post">
+        <table>
+            <tr>
+                <td>Firstname :</td>
+                <td><input type="text" value="Firstname"
+                    th:field="*{firstname}" /></td>
+            </tr>
+            <tr>
+                <td>Lastname :</td>
+                <td><input type="text" value="Lastname"
+                    th:field="*{lastname}" /></td>
+            </tr>
+            <tr>
+                <td>EmailId :</td>
+                <td><input type="text" value="emailId"
+                    th:field="*{emailId}" /></td>
+            </tr>
+            <tr>
+                <td align="center"><input type="submit" /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

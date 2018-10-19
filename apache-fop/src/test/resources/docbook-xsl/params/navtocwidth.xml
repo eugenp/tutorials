@@ -1,0 +1,26 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="navtocwidth">
+<refmeta>
+<refentrytitle>navtocwidth</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">length</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>navtocwidth</refname>
+<refpurpose>Specifies the width of the navigation table TOC</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="navtocwidth.frag">
+<xsl:param name="navtocwidth">220</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+<para>The width, in pixels, of the navigation column.</para>
+<para>Only applies with the tabular presentation is being used.</para>
+</refsection>
+</refentry>

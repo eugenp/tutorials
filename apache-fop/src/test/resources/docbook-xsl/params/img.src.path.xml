@@ -1,0 +1,40 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="img.src.path">
+<refmeta>
+<refentrytitle>img.src.path</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>img.src.path</refname>
+<refpurpose>Path to HTML/FO image files</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="img.src.path.frag"><xsl:param name="img.src.path"/></src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Add a path prefix to the value of the <tag class="attribute">fileref</tag> 
+attribute of <tag>graphic</tag>, <tag>inlinegraphic</tag>, and <tag>imagedata</tag> elements. The resulting 
+compound path is used in the output as the value of the <tag class="attribute">src</tag> 
+attribute of <tag class="element">img</tag> (HTML) or <tag class="element">external-graphic</tag> (FO).
+</para>
+
+<para>
+The path given by <literal>img.src.path</literal> could be relative to the directory where the HTML/FO
+files are created, or it could be an absolute URI.
+The default value is empty.
+Be sure to include a trailing slash if needed.
+</para>
+
+<para>This prefix is not applied to any filerefs that start
+with "/" or contain "//:".
+</para>
+
+</refsection>
+</refentry>

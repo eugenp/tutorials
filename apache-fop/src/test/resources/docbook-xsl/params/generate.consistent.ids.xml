@@ -1,0 +1,53 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="generate.consistent.ids">
+<refmeta>
+<refentrytitle>generate.consistent.ids</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>generate.consistent.ids</refname>
+<refpurpose>Generate consistent id values if document is unchanged</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="generate.consistent.ids.frag">
+<xsl:param name="generate.consistent.ids" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>When the stylesheet assigns an id value to an output element,
+the generate-id() function may be used.  That function may not
+produce consistent values between runs.  Version control
+systems may misidentify the changing id values as changes
+to the document.</para>
+
+<para>If you set this parameter's value to 1, then the
+template named <literal>object.id</literal> will replace
+the use of the function generate-id() with
+<literal>&lt;xsl:number level="multiple" count="*"/&gt;</literal>.
+This counts preceding elements to generate a unique number for
+the id value.</para>
+
+<caution>
+<para>This param does not associate permanent unique id values
+with particular elements.
+The id values are consistent only as long as the document
+structure does not change.
+If the document structure changes, then the counting
+of elements changes, and all id values after
+the first such change may be different, even when there is
+no change to the element itself or its output.
+</para>
+</caution>
+
+<para>The default value of this parameter is zero, so generate-id() is used
+by default.</para>
+
+</refsection>
+</refentry>

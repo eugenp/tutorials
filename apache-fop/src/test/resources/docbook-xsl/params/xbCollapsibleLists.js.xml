@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="xbCollapsibleLists.js">
+<refmeta>
+<refentrytitle>xbCollapsibleLists.js</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>xbCollapsibleLists.js</refname>
+<refpurpose>xbCollapsibleLists JavaScript file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="xbCollapsibleLists.js.frag">
+<xsl:param name="xbCollapsibleLists.js">xbCollapsibleLists.js</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the filename of the xbCollapsibleLists JavaScript file. It's unlikely
+that you will ever need to change this parameter.</para>
+
+</refsection>
+</refentry>

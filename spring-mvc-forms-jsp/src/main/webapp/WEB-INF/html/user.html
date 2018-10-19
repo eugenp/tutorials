@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Users</title>
+<script
+    src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+
+<script src="js/app.js"></script>
+  <link rel="stylesheet" href="css/user.css">
+</head>
+<body ng-app="app" ng-controller="UserCtrl">
+
+<form name="userForm" method="POST" novalidate ng-class="{'form-error':submitted}" ng-submit="saveUser()" >
+
+<label class="form-label">Email:</label>
+<input type="email" name="email" required ng-model="user.email" class="form-input"/>
+ <div ng-messages="userForm.email.$error" ng-show="submitted && userForm.email.$invalid" class="error-messages">
+        <p ng-message="email">Invalid email!</p>
+        <p ng-message="required">Email is required!</p>
+    </div>
+<div class="check" ng-show="submitted && userForm.email.$valid">&#x2713;</div>
+
+<label class="form-label">Password:</label>
+<input type="password" name="password" required ng-model="user.password" ng-minlength="4" ng-maxlength="15" class="form-input"/>
+<div ng-messages="userForm.password.$error" ng-show="submitted && userForm.password.$invalid" class="error-messages">
+        <p ng-message="minlength">Password must be at least 4 characters!</p>
+        <p ng-message="maxlength">Password must not be longer than 15 characters!</p>
+        <p ng-message="required">Password is required!</p>
+    </div>
+<div class="check" ng-show="submitted && userForm.password.$valid">&#x2713;</div>
+
+<label class="form-label">Name:</label>
+<input type="text" name="name" ng-model="user.name" ng-trim="true" required class="form-input" />
+<div ng-messages="userForm.name.$error" ng-show="submitted && userForm.name.$invalid" class="error-messages">
+    <p ng-message="required">Name is required!</p>
+</div>
+<div class="check" ng-show="submitted && userForm.name.$valid">&#x2713;</div>
+
+    <label class="form-label">Age:</label>
+    <input type="number" name="age" ng-model="user.age" ng-min="18" class="form-input" required/>
+ <div ng-messages="userForm.age.$error" ng-show="submitted && userForm.age.$invalid" class="error-messages">
+        <p ng-message="min">Age must be greater than 18!</p>
+        <p ng-message="required">Age must be greater than 18!</p>
+    </div>
+    <div class="check" ng-show="submitted && userForm.age.$valid">&#x2713;</div>
+    <br />
+<button type="submit" class="form-button-save" >Save</button>
+<button type="reset" ng-click="resetForm()" class="form-button-reset">Reset</button>
+</form>
+
+<br />
+<div style="color:red;font-weight:bold">{{errorMessage}}</div>
+<div style="color:green;font-weight:bold">{{message}}</div>
+<br />
+
+All Users: <br />
+<table id="users">
+<tr>
+<th>Email</th><th>Name</th><th>Age</th>
+</tr>
+<tr ng-repeat="usr in users">
+<td>{{usr.email}}</td> <td>{{usr.name}}</td> <td>{{usr.age}}</td>
+</tr>
+</table>
+</body>
+</html>

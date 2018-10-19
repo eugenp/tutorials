@@ -1,0 +1,39 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="html.longdesc.link">
+<refmeta>
+<refentrytitle>html.longdesc.link</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>html.longdesc.link</refname>
+<refpurpose>Should a link to the longdesc be included in the HTML?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="html.longdesc.link.frag">
+<xsl:param name="html.longdesc.link" select="$html.longdesc"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, links will be created to the
+HTML files created for the
+<literal>longdesc</literal> attribute. It makes no
+sense to enable this option without also enabling the
+<parameter>html.longdesc</parameter> parameter.</para>
+
+<!--
+<para>The <literal>longdesc.link</literal> named template is called
+to construct the link.</para>
+Assumption. That this documentation is for the user, do they need to know
+how it's done?
+
+-->
+
+</refsection>
+</refentry>

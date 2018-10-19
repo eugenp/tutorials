@@ -1,0 +1,92 @@
+allprojects {
+    repositories {
+        jcenter() 
+    }
+}
+
+
+subprojects {
+
+    version = '1.0'
+}
+
+apply plugin: 'eclipse'
+
+println 'This will be executed during the configuration phase.'
+
+task configured {
+    println 'This will also be executed during the configuration phase.'
+}
+
+task execFirstTest {
+    doLast {
+        println 'This will be executed during the execution phase.'
+    }
+}
+
+task execSecondTest {
+    doFirst {
+      println 'This will be executed first during the execution phase.'
+    }
+    doLast {
+      println 'This will be executed last during the execution phase.'
+    }
+    println 'This will be executed during the configuration phase as well.'
+}
+
+task welcome {
+    doLast {
+        println 'Welcome on the Baeldung!'
+    }
+}
+
+task welcomeWithGroup {
+    group 'Sample category'
+    doLast {
+        println 'Welcome on the Baeldung!'
+    }
+}
+
+task welcomeWithGroupAndDescription {
+    group 'Sample category'
+    description 'Tasks which shows welcome message'
+    doLast {
+        println 'Welcome on the Baeldung!'
+    }
+}
+
+class PrintToolVersionTask extends DefaultTask {
+    String tool
+
+    @TaskAction
+    void printToolVersion() {
+        switch (tool) {
+            case 'java':
+                println System.getProperty("java.version")
+                break
+            case 'groovy':
+                println GroovySystem.version
+                break
+            default:
+                throw new IllegalArgumentException("Unknown tool")
+        }
+    }
+}
+
+task printJavaVersion(type : PrintToolVersionTask) {
+    tool 'java'
+}
+
+task printGroovyVersion(type : PrintToolVersionTask) {
+    tool 'groovy'
+}
+
+import com.baeldung.PrintToolVersionBuildSrcTask
+
+task printJavaVersionBuildSrc(type : PrintToolVersionBuildSrcTask) {
+    tool 'java'
+}
+
+task printGroovyVersionBuildSrc(type : PrintToolVersionBuildSrcTask) {
+    tool 'groovy'
+}

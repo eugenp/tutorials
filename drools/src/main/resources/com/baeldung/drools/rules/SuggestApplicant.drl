@@ -1,0 +1,31 @@
+package com.baeldung.drools.rules;
+
+import com.baeldung.drools.model.Applicant;
+
+global com.baeldung.drools.model.SuggestedRole suggestedRole;
+
+dialect  "mvel"
+
+rule "Suggest Manager Role"
+    when
+        Applicant(experienceInYears > 10)
+        Applicant(currentSalary > 1000000 && currentSalary <= 2500000)
+    then
+        suggestedRole.setRole("Manager");
+end
+
+rule "Suggest Senior developer Role"
+    when
+        Applicant(experienceInYears > 5 && experienceInYears <= 10)
+        Applicant(currentSalary > 500000 && currentSalary <= 1500000)
+    then
+        suggestedRole.setRole("Senior developer");
+end
+
+rule "Suggest Developer Role"
+    when
+        Applicant(experienceInYears > 0 && experienceInYears <= 5)
+        Applicant(currentSalary > 200000 && currentSalary <= 1000000)
+    then
+        suggestedRole.setRole("Developer");
+end

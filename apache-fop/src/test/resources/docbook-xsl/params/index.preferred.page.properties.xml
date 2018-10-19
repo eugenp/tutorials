@@ -1,0 +1,32 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="index.preferred.page.properties">
+<refmeta>
+<refentrytitle>index.preferred.page.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>index.preferred.page.properties</refname>
+<refpurpose>Properties used to emphasize page number references for
+significant index terms</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="index.preferred.page.properties.frag">
+<xsl:attribute-set name="index.preferred.page.properties">
+  <xsl:attribute name="font-weight">bold</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Properties used to emphasize page number references for
+significant index terms (<tag class="attribute">significance</tag>=<tag class="attvalue">preferred</tag>). Currently works only with
+XEP.</para>
+
+</refsection>
+</refentry>

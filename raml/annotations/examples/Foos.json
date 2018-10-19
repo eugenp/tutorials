@@ -1,0 +1,16 @@
+[
+	{
+	  "id" : 1,
+	  "name" : "First Foo",
+	  "ownerName" : "Jack Robinson"
+	},
+	{
+	  "id" : 2,
+	  "name" : "Second Foo"
+	},
+	{
+	  "id" : 3,
+	  "name" : "Third Foo",
+	  "ownerName" : "Chuck Norris"
+	}
+]

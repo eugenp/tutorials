@@ -1,0 +1,598 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<title>Registration &#8211; Activate a New Account by Email | Technical Articles</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="pingback" href="http://inprogress.baeldung.com/xmlrpc.php" />
+<meta name='robots' content='noindex,follow' />
+
+<!--  Mobile viewport scale -->
+<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport"/>
+<link rel="alternate" type="application/rss+xml" title="Technical Articles &raquo; Feed" href="http://inprogress.baeldung.com/?feed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="Technical Articles &raquo; Comments Feed" href="http://inprogress.baeldung.com/?feed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="Technical Articles &raquo; Registration &#8211; Activate a New Account by Email Comments Feed" href="http://inprogress.baeldung.com/?feed=rss2&#038;p=1092" />
+<link rel='stylesheet' id='open-sans-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A300italic%2C400italic%2C600italic%2C300%2C400%2C600&#038;subset=latin%2Clatin-ext&#038;ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='http://inprogress.baeldung.com/wp-includes/css/dashicons.min.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='admin-bar-css'  href='http://inprogress.baeldung.com/wp-includes/css/admin-bar.min.css?ver=4.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='digg-digg-css'  href='http://inprogress.baeldung.com/wp-content/plugins/digg-digg/css/diggdigg-style.css?ver=5.3.6' type='text/css' media='screen' />
+<link rel='stylesheet' id='theme-stylesheet-css'  href='http://inprogress.baeldung.com/wp-content/themes/canvas-child/style.css?ver=5.8.0' type='text/css' media='all' />
+<link rel='stylesheet' id='core3.0-css'  href='http://inprogress.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='core-Default3.0-css'  href='http://inprogress.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/styles/shCoreDefault.css?ver=3.0' type='text/css' media='all' />
+<link rel='stylesheet' id='theme-Default3.0-css'  href='http://inprogress.baeldung.com/wp-content/plugins/wp-syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link href="http://inprogress.baeldung.com/wp-content/themes/canvas/css/non-responsive.css" rel="stylesheet" type="text/css" />
+<style type="text/css">.col-full, #wrapper { width: 1150px; max-width: 1150px; } #inner-wrapper { padding: 0; } body.full-width #header, #nav-container, body.full-width #content, body.full-width #footer-widgets, body.full-width #footer { padding-left: 0; padding-right: 0; } body.fixed-mobile #top, body.fixed-mobile #header-container, body.fixed-mobile #footer-container, body.fixed-mobile #nav-container, body.fixed-mobile #footer-widgets-container { min-width: 1150px; padding: 0 1em; } body.full-width #content { width: auto; padding: 0 1em;}</style>
+<![endif]-->
+<script type='text/javascript' src='http://inprogress.baeldung.com/wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
+<script type='text/javascript' src='http://inprogress.baeldung.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='http://inprogress.baeldung.com/wp-content/plugins/q2w3-fixed-widget/js/q2w3-fixed-widget.min.js?ver=4.0.6'></script>
+<script type='text/javascript' src='http://inprogress.baeldung.com/wp-content/themes/canvas/includes/js/third-party.min.js?ver=4.0.1'></script>
+<script type='text/javascript' src='http://inprogress.baeldung.com/wp-content/themes/canvas/includes/js/modernizr.min.js?ver=2.6.2'></script>
+<script type='text/javascript' src='http://inprogress.baeldung.com/wp-content/themes/canvas/includes/js/general.min.js?ver=4.0.1'></script>
+
+<!-- Adjust the website width -->
+<style type="text/css">
+	.col-full, #wrapper { max-width: 1150px !important; }
+</style>
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://inprogress.baeldung.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://inprogress.baeldung.com/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='(published) Handling Static Resources With Spring' href='http://inprogress.baeldung.com/?p=653' />
+<link rel='next' title='Convert HTML to PDF using Apache FOP' href='http://inprogress.baeldung.com/?p=1430' />
+<meta name="generator" content="WordPress 4.0.1" />
+<link rel='shortlink' href='http://inprogress.baeldung.com/?p=1092' />
+
+<!-- Custom CSS Styling -->
+<style type="text/css">
+body {background-repeat:no-repeat;background-position:top left;background-attachment:scroll;border-top:0px solid #000000;}
+#header {background-repeat:no-repeat;background-position:left top;margin-top:0px;margin-bottom:0px;padding-top:10px;padding-bottom:10px;border:0px solid ;}
+#logo .site-title a {font:normal 40px/1em Arial, sans-serif;color:#222222;}
+#logo .site-description {font:300 13px/1em "Helvetica Neue", Helvetica, sans-serif;color:#999999;}
+body, p { font:normal 15px/1.5em Arial, sans-serif;color:#000000; }
+h1 { font:normal 28px/1.2em Arial, sans-serif;color:#222222; }h2 { font:normal 24px/1.2em Arial, sans-serif;color:#222222; }h3 { font:normal 20px/1.2em Arial, sans-serif;color:#222222; }h4 { font:normal 16px/1.2em Arial, sans-serif;color:#222222; }h5 { font:normal 14px/1.2em Arial, sans-serif;color:#222222; }h6 { font:normal 12px/1.2em Arial, sans-serif;color:#222222; }
+.page-title, .post .title, .page .title {font:bold 30px/1.1em Arial, sans-serif;color:#222222;}
+.post .title a:link, .post .title a:visited, .page .title a:link, .page .title a:visited {color:#222222}
+.post-meta { font:normal 11px/1.5em Arial, sans-serif;color:#868686; }
+.entry, .entry p{ font:normal 16px/1.5em Arial, sans-serif;color:#262626; }
+.post-more {font:normal 12px/1.5em Arial, sans-serif;color:#868686;border-top:4px solid #e6e6e6;border-bottom:0px solid #e6e6e6;}
+#post-author, #connect {border-top:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;border-left:1px solid #e6e6e6;border-right:1px solid #e6e6e6;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;background-color:#fafafa}
+.nav-entries, .woo-pagination {border-top:1px solid #e6e6e6;border-bottom:4px solid #e6e6e6; padding: 12px 0px; }
+.nav-entries a, .woo-pagination { font:italic 12px/1em Arial, sans-serif;color:#777777; }
+.woo-pagination a, .woo-pagination a:hover {color:#777777!important}
+.widget h3 {font:bold 14px/1.2em Arial, sans-serif;color:#555555;border-bottom:1px solid #e6e6e6;}
+.widget_recent_comments li, #twitter li { border-color: #e6e6e6;}
+.widget p, .widget .textwidget { font:normal 12px/1.5em Arial, sans-serif;color:#555555; }
+.widget {font:normal 12px/1.5em Arial, sans-serif;color:#555555;border-radius:1px;-moz-border-radius:1px;-webkit-border-radius:1px;}
+#tabs .inside li a, .widget_woodojo_tabs .tabbable .tab-pane li a { font:bold 12px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#555555; }
+#tabs .inside li span.meta, .widget_woodojo_tabs .tabbable .tab-pane li span.meta { font:300 11px/1.5em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+#tabs ul.wooTabs li a, .widget_woodojo_tabs .tabbable .nav-tabs li a { font:300 11px/2em "Helvetica Neue", Helvetica, sans-serif;color:#999999; }
+@media only screen and (min-width:768px) {
+ul.nav li a, #navigation ul.rss a, #navigation ul.cart a.cart-contents, #navigation .cart-contents #navigation ul.rss, #navigation ul.nav-search, #navigation ul.nav-search a { font:bold 15px/1.2em Arial, sans-serif;color:#555555; } #navigation ul.rss li a:before, #navigation ul.nav-search a.search-contents:before { color:#555555;}
+#navigation ul.nav li ul, #navigation ul.cart > li > ul > div  { border: 1px solid #dbdbdb; }
+#navigation ul.nav > li  { border-right: 1px solid #dbdbdb; }#navigation ul li:first-child, #navigation ul li:first-child a { border-radius:5px 0 0 5px; -moz-border-radius:5px 0 0 5px; -webkit-border-radius:5px 0 0 5px; }
+#navigation {border-top:1px solid #dbdbdb;border-bottom:1px solid #dbdbdb;border-left:1px solid #dbdbdb;border-right:1px solid #dbdbdb;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;}
+#top ul.nav li a { font:normal 14px/1.6em Arial, sans-serif;color:#ddd; }
+}
+#footer, #footer p { font:italic 13px/1.4em Arial, sans-serif;color:#777777; }
+#footer {border-top:4px solid #dbdbdb;border-bottom:0px solid ;border-left:0px solid ;border-right:0px solid ;border-radius:1px; -moz-border-radius:1px; -webkit-border-radius:1px;}
+.magazine #loopedSlider .content h2.title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-magazine .slide-title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.magazine #loopedSlider .content .excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-magazine .slide-content p, .wooslider-theme-magazine .slide-excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.magazine .block .post .title a {font:bold 18px/1.2em "Helvetica Neue", Helvetica, sans-serif;color:#222222; }
+#loopedSlider.business-slider .content h2 { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+#loopedSlider.business-slider .content h2.title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-business .has-featured-image .slide-title { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+.wooslider-theme-business .has-featured-image .slide-title a { font:bold 24px/1em Arial, sans-serif;color:#ffffff; }
+#wrapper #loopedSlider.business-slider .content p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-business .has-featured-image .slide-content p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.wooslider-theme-business .has-featured-image .slide-excerpt p { font:300 13px/1.5em Arial, sans-serif;color:#cccccc; }
+.archive_header { font:bold 18px/1em Arial, sans-serif;color:#222222; }
+.archive_header {border-bottom:1px solid #e6e6e6;}
+</style>
+
+<!-- Woo Shortcodes CSS -->
+<link href="http://inprogress.baeldung.com/wp-content/themes/canvas/functions/css/shortcodes.css" rel="stylesheet" type="text/css" />
+
+<!-- Custom Stylesheet -->
+<link href="http://inprogress.baeldung.com/wp-content/themes/canvas/custom.css" rel="stylesheet" type="text/css" />
+
+<!-- Theme version -->
+<meta name="generator" content="Canvas Child 5.6.3" />
+<meta name="generator" content="Canvas 5.8.4" />
+<meta name="generator" content="WooFramework 6.0.4" />
+<!-- All in one Favicon 4.3 -->
+<!-- All in One SEO Pack 2.2.3.1 by Michael Torbert of Semper Fi Web Design[68,148] -->
+<meta name="description"  content="1. Overview This article continues our ongoing Registration with Spring Security series by finishing the missing piece of the registration process - verifying" />
+
+<link rel="canonical" href="http://inprogress.baeldung.com/?p=1092" />
+<!-- /all in one seo pack -->
+<style type="text/css" media="print">#wpadminbar { display:none; }</style>
+<style type="text/css" media="screen">
+	html { margin-top: 32px !important; }
+	* html body { margin-top: 32px !important; }
+	@media screen and ( max-width: 782px ) {
+		html { margin-top: 46px !important; }
+		* html body { margin-top: 46px !important; }
+	}
+</style>
+<style type="text/css" id="syntaxhighlighteranchor"></style>
+</head>
+<body class="single single-post postid-1092 single-format-standard logged-in admin-bar no-customize-support chrome alt-style-default two-col-left width-1150 two-col-left-1150">
+<div id="wrapper">
+
+	<div id="inner-wrapper">
+
+	<h3 class="nav-toggle icon"><a href="#navigation">Navigation</a></h3>
+
+	<header id="header" class="col-full">
+
+		<div id="logo">
+<span class="site-title"><a href="http://inprogress.baeldung.com/">Technical Articles</a></span>
+</div>
+
+	</header>
+	<nav id="navigation" class="col-full" role="navigation">
+
+	
+	<section class="menus nav-icons nav-icons-1">
+
+		<a href="http://inprogress.baeldung.com" class="nav-home"><span>Home</span></a>
+
+			<ul id="main-nav" class="nav fl">
+			
+								<li class="page_item current_page_item"><a href="http://inprogress.baeldung.com/">Home</a></li>
+									</ul><!-- /#nav -->
+		<div class="side-nav">
+	<ul class="rss fr">
+						<li class="sub-rss"><a href="http://inprogress.baeldung.com/?feed=rss2"></a></li>
+			</ul>
+			</div><!-- /#side-nav -->
+
+	</section><!-- /.menus -->
+
+	<a href="#top" class="nav-close"><span>Return to Content</span></a>
+
+</nav>
+       
+    <!-- #content Starts -->
+	    <div id="content" class="col-full">
+    
+    	<div id="main-sidebar-container">    
+
+            <!-- #main Starts -->
+                        <section id="main">                       
+<article class="post-1092 post type-post status-publish format-standard hentry category-spring-security">
+	<header>
+		<span class="entry-title">
+			<h1 class="title">Registration &#8211; Activate a New Account by Email</h1>		</span>
+	</header>
+<div class="post-meta"><span class="small">By</span> <span class="author vcard"><span class="fn"><a href="http://inprogress.baeldung.com/?author=10" title="Posts by Elena" rel="author">Elena</a></span></span> <span class="small">on</span> <abbr class="date time published" title="2014-10-23T12:36:14+0000">October 23, 2014</abbr>  <span class="small">in</span> <span class="categories"><a href="http://inprogress.baeldung.com/?cat=9" rel="nofollow" title="View all items in Spring Security">Spring Security</a></span>  </div>
+	<section class="entry">
+<a id="dd_start"></a><h2><strong>1. Overview</strong></h2>
+<p>This article continues our ongoing <strong><em>Registration with Spring Security</em> series</strong> by finishing the missing piece of the registration process &#8211; <strong>verifying the email to confirm the user registration</strong>.</p>
+<p>The registration confirmation mechanism forces the user to respond to a &#8220;<em><strong>Confirm Registration</strong></em>&#8221; email sent after successful registration to verify his email address and activate his account. The user does this by clicking a unique account activation link sent to him as part of the email message.</p>
+<p>Following this logic, a newly registered user will not be able to log in until email/registration verification is completed.</p>
+<h2><strong>2. A Verification Token<br />
+</strong></h2>
+<p>We will make use of a simple verification token as the key artifact through which a user is verified.</p>
+<h3><strong>2.1. Adding a <em>VerificationToken</em> Entity to Our Model</strong></h3>
+<p>The <em>VerificationToken</em> entity must meet the following criteria:</p>
+<ol>
+<li>There will be one <em>VerificationToken </em>associated to a <em>User</em>. So, we need a one-to-one unidirectional association between the<em> VerificationToken</em> and the <em>User</em>.</li>
+<li>It will be created after the user registration data is persisted.</li>
+<li>It will expire in 24 hours following initial registration.</li>
+<li>Its value should be unique and randomly generated.</li>
+</ol>
+<p>Requirements 2 and 3 are part of the registration logic. The other two are implemented in a simple <em>VerificationToken</em> entity like the one in Example 2.1.:</p>
+<p><strong>Example 2.1.</strong></p>
+<pre class="brush: java; gutter: true">@Entity
+@Table
+public class VerificationToken {
+    private static final int EXPIRATION = 60 * 24;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @Column(name = &quot;token&quot;)
+    private String token;
+  
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = &quot;user_id&quot;)
+    private User user;
+    
+    @Column(name = &quot;expiry_date&quot;)
+    private Date expiryDate;
+
+    public VerificationToken() {
+        super();
+    }
+    public VerificationToken(String token, User user) {
+        super();
+        this.token = token;
+        this.user = user;
+        this.expiryDate = calculateExpiryDate(EXPIRATION);
+        this.verified = false;
+    } 
+    private Date calculateExpiryDate(int expiryTimeInMinutes) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Timestamp(cal.getTime().getTime()));
+        cal.add(Calendar.MINUTE, expiryTimeInMinutes);
+        return new Date(cal.getTime().getTime());
+    }
+    
+    // standard getters and setters
+}</pre>
+<h3><strong>2.2. Add an Enabled Flag to the<em> User</em> Entity</strong></h3>
+<p>We will set the value of this flag depending on the result of the registration confirmation use case. Lets jus add the following field to our <em>User</em> entity for now:</p>
+<pre class="brush: java; gutter: true">@Column(name = &quot;enabled&quot;)
+private boolean enabled;</pre>
+<h2><strong>3. The Account Registration Phase</strong></h2>
+<p>Lets add two additional pieces of business logic to the user registration use case:</p>
+<ol>
+<li>Generating a <em>VerificationToken</em> for the user and persisting it.</li>
+<li>Sending the account confirmation email message which includes a confirmation link with the <em>VerificationToken&#8217;s </em>value<em> </em>as a parameter.</li>
+</ol>
+<h3><strong>3.1. Using Spring Event Handling to Create the Token and Send the Verification Email</strong></h3>
+<p>These two additional pieces of logic should not be performed by the controller directly because they are &#8220;collateral&#8221; back-end tasks. The controller will publish a Spring <em>ApplicationEvent</em> to trigger the execution of these tasks. This is as simple as injecting an<em> ApplicationEventPublishe</em>r in the controller, and then using it to publish the registration completion. Example 3.1. shows this simple logic:</p>
+<p><strong>Example 3.1.</strong></p>
+<pre class="brush: java; gutter: true">@Autowired
+ApplicationEventPublisher
+@RequestMapping(value = &quot;/user/registration&quot;, method = RequestMethod.POST)
+public ModelAndView registerUserAccount(@ModelAttribute(&quot;user&quot;) @Valid UserDto accountDto,
+      BindingResult result, WebRequest request, Errors errors) {
+    User registered = new User();
+    String appUrl = request.getContextPath();
+    if (result.hasErrors()) {
+       return new ModelAndView(&quot;registration&quot;, &quot;user&quot;, accountDto);
+    }
+    registered = createUserAccount(accountDto);
+    if (registered == null) {
+        result.rejectValue(&quot;email&quot;, &quot;message.regError&quot;);
+    }
+    eventPublisher.publishEvent(new OnRegistrationCompleteEvent(registered, 
+      request.getLocale(), appUrl));
+    return new ModelAndView(&quot;successRegister&quot;, &quot;user&quot;, accountDto);
+}</pre>
+<h3><strong>3.2. Spring Event Handler Implementation</strong></h3>
+<p>The controller is using an <em>ApplicationEventPublisher</em> to start the <em>RegistrationListener</em> that will handle the verification token creation and confirmation email sending. So it  needs to have access to the implementation of the following interfaces:</p>
+<ol>
+<li>An <strong><em>AplicationEvent</em></strong> representing the completion of the user registration.</li>
+<li>An <strong><em>ApplicationListener</em></strong> bean which will listen to the published event and proceed to do all the work.</li>
+</ol>
+<p>The beans we will create are the <em>OnRegistrationCompleteEvent</em> , and the <em>RegistrationListener</em> shown Examples 3.2.1 &#8211; 3.2.2.</p>
+<p><strong>Example 3.2.1.</strong> &#8211; The <em>OnRegistrationCompleteEvent </em></p>
+<pre class="brush: javafx; gutter: true">@SuppressWarnings(&quot;serial&quot;)
+public class OnRegistrationCompleteEvent extends ApplicationEvent {
+    private final String appUrl;
+    private final Locale locale;
+    private final User user;
+
+    public OnRegistrationCompleteEvent(User user, Locale locale, String appUrl) {
+        super(user);
+        this.user = user;
+        this.locale = locale;
+        this.appUrl = appUrl;
+    }
+    
+    // standard getters and setters
+}</pre>
+<p><strong>Example 3.2.2. </strong>- <strong><em>The RegistrationListener</em></strong> Responds to the <em>OnRegistrationCompleteEvent </em></p>
+<pre class="brush: java; gutter: true">@Component
+public class RegistrationListener implements ApplicationListener&lt;OnRegistrationCompleteEvent&gt; {
+    @Autowired
+    private IUserService service;
+
+    @Autowired
+    private MessageSource messages;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Override
+    public void onApplicationEvent(OnRegistrationCompleteEvent event) {
+        this.confirmRegistration(event);
+    }
+
+    private void confirmRegistration(OnRegistrationCompleteEvent event) {
+        User user = event.getUser();
+        String token = UUID.randomUUID().toString();
+        service.addVerificationToken(user, token);
+        String recipientAddress = user.getEmail();
+        String subject = &quot;Registration Confirmation&quot;;
+        String confirmationUrl = event.getAppUrl() + &quot;/regitrationConfirm.html?token=&quot; + token;
+        String message = messages.getMessage(&quot;message.regSucc&quot;, null, event.getLocale());
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setTo(recipientAddress);
+        email.setSubject(subject);
+        email.setText(message + &quot; \r\n&quot; + &quot;http://localhost:8080&quot; + confirmationUrl);
+        mailSender.send(email);
+    }
+}</pre>
+<p>Here, the <em>confirmRegistration</em> method will receive the <em>OnRegistrationCompleteEvent</em>, extract all the necessary <em>User</em> information from it, create the verification token, persist it, and then send it as a parameter in the &#8220;Confirm Registration&#8221; link sent to the user.</p>
+<h3><strong>3.3. Processing the Verification Token Parameter</strong></h3>
+<p>When the user receives the &#8220;Confirm Registration&#8221; email, he will click on the attached link and fire a GET request. The controller will extract the value of the token parameter in the GET request and will use it to verify the user. Lets see this logic in Example 3.3.1.</p>
+<p><strong>Example 3.3.1. &#8211; <em>RegistrationController</em> Processing the Registration Confirmation Link</strong></p>
+<pre class="brush: java; gutter: true">private IUserService service;
+
+@Autowired
+public RegistrationController(IUserService service){
+    this.service = service
+}
+@RequestMapping(value = &quot;/regitrationConfirm&quot;, method = RequestMethod.GET)
+public String confirmRegistration(WebRequest request, Model model, 
+      @RequestParam(&quot;token&quot;) String token) {
+    VerificationToken verificationToken = service.getVerificationToken(token);
+    if (verificationToken == null) {
+        model.addAttribute(&quot;message&quot;, messages.getMessage(&quot;auth.message.invalidToken&quot;, 
+          null, request.getLocale()));
+        return &quot;redirect:/badUser.html?lang=&quot; + request.getLocale().getLanguage();
+    }
+    User user = verificationToken.getUser();
+    Calendar cal = Calendar.getInstance();
+    if (user == null) {
+        model.addAttribute(&quot;message&quot;, messages.getMessage(&quot;auth.message.invalidUser&quot;,
+          null, request.getLocale()));
+        return &quot;redirect:/badUser.html?lang=&quot; + request.getLocale().getLanguage();
+    }
+    if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) &lt;= 0) {
+        user.setEnabled(false);
+    } else {
+        user.setEnabled(true);
+    }
+    service.saveRegisteredUser(user);
+    return &quot;redirect:/login.html?lang=&quot; + request.getLocale().getLanguage();
+}</pre>
+<p>Notice that if there is no user associated with the <em>VerificationToken</em> or if the <em>VerificationToken</em> does not exist, the controller will return a<em> badUser.html</em> page with the corresponding error message (See Example 3.3.2.).</p>
+<p><strong>Example 3.3.2. &#8211; The<em> badUser.html</em></strong></p>
+<pre class="brush: javascript; gutter: true">&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot; %&gt;
+&lt;%@ taglib prefix=&quot;sec&quot; uri=&quot;http://www.springframework.org/security/tags&quot;%&gt;
+&lt;%@taglib uri=&quot;http://www.springframework.org/tags&quot; prefix=&quot;spring&quot;%&gt;
+&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/fmt&quot; prefix=&quot;fmt&quot;%&gt;
+&lt;fmt:setBundle basename=&quot;messages&quot; /&gt;
+&lt;%@ page session=&quot;true&quot;%&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;link href=&quot;&lt;c:url value=&quot;/resources/bootstrap.css&quot; /&gt;&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;title&gt;Expired&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;${message}&lt;/h1&gt;
+    &lt;br&gt;
+    &lt;a href=&quot;&lt;c:url value=&quot;/user/registration&quot; /&gt;&quot;&gt;
+        &lt;spring:message code=&quot;label.form.loginSignUp&quot;&gt;&lt;/spring:message&gt;
+    &lt;/a&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>If the token and user exist, the controller then proceeds to set the <em>User</em>&#8216;s <em>enabled</em> field after checking if the <em>VerificationToken</em> has expired.</p>
+<h2><strong>4. Adding Account Activation Checking to the Login Process</strong></h2>
+<p>We need to add the following verification logic to My<em>UserDetailsService&#8217;s </em><strong><em>l</em>o</strong><em><strong>adUserByUsername</strong></em> method:</p>
+<ul>
+<li>Make sure that the user is enabled before letting him log in.</li>
+</ul>
+<p>Example 4.1. shows the simple <em>isEnabled()</em> check.</p>
+<p><strong>Example 4.1. &#8211; </strong>Checking the VerificationToken<strong> in <em>MyUserDetailsService</em></strong></p>
+<pre class="brush: java; gutter: true">private UserRepository userRepository;
+@Autowired
+private IUserService service;
+@Autowired
+private MessageSource messages;
+
+@Autowired
+public MyUserDetailsService(UserRepository repository) {
+    this.userRepository = repository;
+}
+
+public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    boolean enabled = true;
+    boolean accountNonExpired = true;
+    boolean credentialsNonExpired = true;
+    boolean accountNonLocked = true;
+    try {
+        User user = userRepository.findByEmail(email);
+        if (user == null) {
+            return new org.springframework.security.core.userdetails.User(&quot; &quot;, &quot; &quot;, enabled, 
+                    true, true, true, getAuthorities(new Integer(1)));
+        }
+        if (!user.isEnabled()) {
+            accountNonExpired = false;
+            service.deleteUser(user);
+            return new org.springframework.security.core.userdetails.User(&quot; &quot;, &quot; &quot;, enabled, 
+              accountNonExpired, true, true, getAuthorities(new Integer(1)));
+        }
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), 
+          user.getPassword().toLowerCase(), 
+          enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, 
+          getAuthorities(user.getRole().getRole()));
+    } catch (Exception e) {
+        throw new RuntimeException(e);
+    }
+}</pre>
+<p>Notice that if the user is not enabled, the account is deleted and the method returns an <em>org.springframework.security.core.userdetails.User</em> with the <em>accountNonExpired</em> flag set to false. This will trigger a <strong><em>SPRING_SECURITY_LAST_EXCEPTION</em></strong> in the login process. This exception&#8217;s String value is:  &#8216;<em>User Account Has Expired</em>&#8216;.</p>
+<p>Now, we need to modify our<em> login.html</em> page to show this and any other exception messages resulting from en email verification error. The error checking code we added to <em>login.html</em> is shown in Example 4.2.<em>:</em></p>
+<p><strong>Example 4.2. &#8211; Adding Account Activation Error Checking t</strong>o l<em>ogin.html</em></p>
+<pre class="brush: javascript; gutter: true">&lt;c:if test=&quot;${param.error != null}&quot;&gt;
+    &lt;c:choose&gt;
+        &lt;c:when test=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message == &#039;User is disabled&#039;}&quot;&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+                &lt;spring:message code=&quot;auth.message.disabled&quot;&gt;&lt;/spring:message&gt;
+            &lt;/div&gt;
+        &lt;/c:when&gt;
+        &lt;c:when test=&quot;${SPRING_SECURITY_LAST_EXCEPTION.message == &#039;User account has expired&#039;}&quot;&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+                &lt;spring:message code=&quot;auth.message.expired&quot;&gt;&lt;/spring:message&gt;
+            &lt;/div&gt;
+        &lt;/c:when&gt;
+        &lt;c:otherwise&gt;
+            &lt;div class=&quot;alert alert-error&quot;&gt;
+	      &lt;spring:message code=&quot;message.badCredentials&quot;&gt;&lt;/spring:message&gt;
+           &lt;/div&gt;
+        &lt;/c:otherwise&gt;
+    &lt;/c:choose&gt;
+&lt;/c:if&gt;</pre>
+<h2>5. Adapting the Persistence Layer</h2>
+<p>We need to modify the API of the persistence layer by:</p>
+<ol>
+<li>Creating a <em>VerificationTokenRepository</em>. For<em> User</em> and <em>VerificationToken</em> access.</li>
+<li>Adding methods to the <em>IUserInterface</em> and its implementation for new CRUD operations needed.</li>
+</ol>
+<p>Examples 5.1 &#8211; 5.3. show the new interfaces and implementation:</p>
+<p><strong>Example 5.1.</strong> &#8211; The <em>VerificationTokenRepository</em></p>
+<pre class="brush: java; gutter: true">public interface VerificationTokenRepository extends JpaRepository&lt;VerificationToken, Long&gt; {
+
+    VerificationToken findByToken(String token);
+
+    VerificationToken findByUser(User user);
+}</pre>
+<p><strong>Example 5.2.</strong> &#8211; The <em>IUserService</em> Interface</p>
+<pre class="brush: java; gutter: true">public interface IUserService {
+    
+    User registerNewUserAccount(UserDto accountDto) throws EmailExistsException;
+
+    User getUser(String verificationToken);
+
+    void saveRegisteredUser(User user);
+
+    void addVerificationToken(User user, String token);
+
+    VerificationToken getVerificationToken(String VerificationToken);
+
+    void deleteUser(User user);
+}</pre>
+<p><strong>Example 5.3.</strong> The <em>UserService </em></p>
+<pre class="brush: java; gutter: true">@Service
+public class UserService implements IUserService {
+    @Autowired
+    private UserRepository repository;
+
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
+
+    @Transactional
+    @Override
+    public User registerNewUserAccount(UserDto accountDto) throws EmailExistsException {
+        if (emailExist(accountDto.getEmail())) {
+            throw new EmailExistsException(&quot;There is an account with that email adress: &quot; + 
+              accountDto.getEmail());
+        }
+        User user = new User();
+        user.setFirstName(accountDto.getFirstName());
+        user.setLastName(accountDto.getLastName());
+        user.setPassword(accountDto.getPassword());
+        user.setEmail(accountDto.getEmail());
+        user.setRole(new Role(Integer.valueOf(1), user));
+        return repository.save(user);
+    }
+
+    private boolean emailExist(String email) {
+        User user = repository.findByEmail(email);
+        if (user != null) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public User getUser(String verificationToken) {
+        User user = tokenRepository.findByToken(verificationToken).getUser();
+        return user;
+    }
+
+    @Override
+    public VerificationToken getVerificationToken(String VerificationToken) {
+        return tokenRepository.findByToken(VerificationToken);
+    }
+
+    @Transactional
+    @Override
+    public void saveRegisteredUser(User user) {
+        repository.save(user);
+    }
+
+    @Transactional
+    @Override
+    public void deleteUser(User user) {
+        repository.delete(user);
+    }
+
+    @Transactional
+    @Override
+    public void addVerificationToken(User user, String token) {
+        VerificationToken myToken = new VerificationToken(token, user);
+        tokenRepository.save(myToken);
+    }
+}</pre>
+<h2>6. Conclusion</h2>
+<p>We have expanded our Spring registration process to include an email based account activation procedure. The account activation logic requires sending a verification token to the user via email, so that he can send it back to the controller to verify his identity. A <i>Spring event handler layer </i>takes care of the back-end work needed to send the confirmation email after the controller persists a registered.</p>
+<a id="dd_end"></a><div class='dd_outer'><div class='dd_inner'><div id='dd_ajax_float'><div class='dd_button_v'><script type='text/javascript' src='https://apis.google.com/js/plusone.js'></script><g:plusone size='tall' href='http://inprogress.baeldung.com/?p=1092'></g:plusone></div><div style='clear:left'></div><div class='dd_button_v'><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://inprogress.baeldung.com/?p=1092" data-count="vertical" data-text="Registration - Activate a New Account by Email" data-via="" ></a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></div><div style='clear:left'></div></div></div></div><script type="text/javascript">var dd_offset_from_content = 40;var dd_top_offset_from_content = 0;var dd_override_start_anchor_id = "";var dd_override_top_offset = "";</script><script type="text/javascript" src="http://inprogress.baeldung.com/wp-content/plugins/digg-digg//js/diggdigg-floating-bar.js?ver=5.3.6"></script>	</section><!-- /.entry -->
+	<div class="fix"></div>
+		<aside id="connect">
+		<h3>Subscribe</h3>
+
+		<div >
+			<p>Subscribe to our e-mail newsletter to receive updates.</p>
+
+			
+			
+						<div class="social">
+		   				   		<a href="http://inprogress.baeldung.com/?feed=rss2" class="subscribe" title="RSS"></a>
+
+		   					</div>
+			
+		</div><!-- col-left -->
+
+		
+        <div class="fix"></div>
+	</aside>
+	<div class="post-utility"></div>
+</article><!-- /.post -->
+	        <div class="post-entries">
+	            <div class="nav-prev fl"><a href="http://inprogress.baeldung.com/?p=653" rel="prev"><i class="fa fa-angle-left"></i> (published) Handling Static Resources With Spring</a></div>
+	            <div class="nav-next fr"><a href="http://inprogress.baeldung.com/?p=1430" rel="next">Convert HTML to PDF using Apache FOP <i class="fa fa-angle-right"></i></a></div>
+	            <div class="fix"></div>
+	        </div>
+
+		<div id="comments"><h5 class="nocomments">No comments yet.</h5></div>								<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/?p=1092#respond" style="display:none;">Click here to cancel reply.</a></small></h3>
+									<form action="http://inprogress.baeldung.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="logged-in-as">Logged in as <a href="http://inprogress.baeldung.com/wp-admin/profile.php">odeskAuthor8</a>. <a href="http://inprogress.baeldung.com/wp-login.php?action=logout" title="Log out of this account">Log out?</a></p>																			<p class="comment-form-comment"><label class="hide" for="comment">Comment</label> <textarea tabindex="4" id="comment" name="comment" cols="50" rows="10" aria-required="true"></textarea></p>												<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Submit Comment" />
+							<input type='hidden' name='comment_post_ID' value='1092' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+											</form>
+							</div><!-- #respond -->
+			     
+            </section><!-- /#main -->
+                
+            
+		</div><!-- /#main-sidebar-container -->         
+
+		
+    </div><!-- /#content -->
+	
+	<footer id="footer" class="col-full">
+
+		
+		<div id="copyright" class="col-left">
+			<p>&copy; 2014 Technical Articles. All Rights Reserved. </p>		</div>
+
+		<div id="credit" class="col-right">
+					</div>
+
+	</footer>
+
+	
+	</div><!-- /#inner-wrapper -->
+
+</div><!-- /#wrapper -->
+
+<div class="fix"></div><!--/.fix-->
+
+
+
+</body>
+</html>

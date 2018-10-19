@@ -1,0 +1,34 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="blockquote.properties">
+<refmeta>
+  <refentrytitle>blockquote.properties</refentrytitle>
+  <refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>  
+<refnamediv>
+<refname>blockquote.properties</refname>
+<refpurpose>To set the style for block quotations.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="blockquote.properties.frag">
+<xsl:attribute-set name="blockquote.properties">
+<xsl:attribute name="margin-{$direction.align.start}">0.5in</xsl:attribute>
+<xsl:attribute name="margin-{$direction.align.end}">0.5in</xsl:attribute>
+<xsl:attribute name="space-after.minimum">0.5em</xsl:attribute>
+<xsl:attribute name="space-after.optimum">1em</xsl:attribute>
+<xsl:attribute name="space-after.maximum">2em</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The <parameter>blockquote.properties</parameter> attribute set specifies
+the formating properties of block quotations.</para>
+
+</refsection>
+</refentry>

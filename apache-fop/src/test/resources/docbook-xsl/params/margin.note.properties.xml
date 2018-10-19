@@ -1,0 +1,54 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="margin.note.properties">
+<refmeta>
+<refentrytitle>margin.note.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>margin.note.properties</refname>
+<refpurpose>Attribute set for margin.note properties</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="margin.note.properties.frag">
+<xsl:attribute-set name="margin.note.properties">
+  <xsl:attribute name="font-size">90%</xsl:attribute>
+  <xsl:attribute name="text-align">start</xsl:attribute>
+</xsl:attribute-set>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>The styling for margin notes.
+By default, margin notes are not implemented for any
+element. A stylesheet customization is needed to make
+use of this attribute-set.</para>
+
+<para>You can use a template named <quote>floater</quote>
+to create the customization.
+That template can create side floats by specifying the
+content and characteristics as template parameters.
+</para>
+
+<para>For example:</para>
+<programlisting>&lt;xsl:template match="para[@role='marginnote']"&gt;
+  &lt;xsl:call-template name="floater"&gt;
+    &lt;xsl:with-param name="position"&gt;
+      &lt;xsl:value-of select="$margin.note.float.type"/&gt;
+    &lt;/xsl:with-param&gt;
+    &lt;xsl:with-param name="width"&gt;
+      &lt;xsl:value-of select="$margin.note.width"/&gt;
+    &lt;/xsl:with-param&gt;
+    &lt;xsl:with-param name="content"&gt;
+      &lt;xsl:apply-imports/&gt;
+    &lt;/xsl:with-param&gt;
+  &lt;/xsl:call-template&gt;
+&lt;/xsl:template&gt;</programlisting>
+
+</refsection>
+</refentry>
