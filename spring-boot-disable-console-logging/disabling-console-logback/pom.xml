@@ -2,8 +2,16 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.baeldung</groupId>
-    <artifactId>disabling-console-logging</artifactId>
+    <artifactId>spring-boot-disable-console-logging</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>disabling-console-logback</artifactId>
+  
+  <dependencies>
+  	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
+  </dependencies>
+  
 </project>
