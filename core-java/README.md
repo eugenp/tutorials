@@ -29,7 +29,6 @@
 - [AWS Lambda With Java](http://www.baeldung.com/java-aws-lambda)
 - [Introduction to Nashorn](http://www.baeldung.com/java-nashorn)
 - [Chained Exceptions in Java](http://www.baeldung.com/java-chained-exceptions)
-- [A Quick JUnit vs TestNG Comparison](http://www.baeldung.com/junit-vs-testng)
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
 - [Java Money and the Currency API](http://www.baeldung.com/java-money-and-currency)
 - [JVM Log Forging](http://www.baeldung.com/jvm-log-forging)

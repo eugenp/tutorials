@@ -1,4 +1,4 @@
-package org.baeldung.java.suite;
+package com.baeldung.junit5vstestng;
 
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.SelectPackages;
