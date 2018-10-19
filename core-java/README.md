@@ -156,3 +156,4 @@
 - [ZoneOffset in Java](https://www.baeldung.com/java-zone-offset)
 - [Hashing a Password in Java](https://www.baeldung.com/java-password-hashing)
 - [Java Switch Statement](https://www.baeldung.com/java-switch)
+- [The Modulo Operator in Java](https://www.baeldung.com/modulo-java)
