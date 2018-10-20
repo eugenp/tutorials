@@ -3,46 +3,46 @@ package com.baeldung.hexagonal.architecture.core;
 import java.time.LocalDate;
 
 public class Employee {
-	
-	private int id;
-	
-	private String name;
-	
-	private LocalDate dob;
 
-	public Employee(int id, String name, LocalDate dob) {
-		this.id = id;
-		this.name = name;
-		this.dob = dob;
-	}
+    private int id;
 
-	public int getId() {
-		return id;
-	}
+    private String name;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    private LocalDate dob;
 
-	public String getName() {
-		return name;
-	}
+    public Employee(int id, String name, LocalDate dob) {
+        this.id = id;
+        this.name = name;
+        this.dob = dob;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public LocalDate getDob() {
-		return dob;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setDob(LocalDate dob) {
-		this.dob = dob;
-	}
+    public String getName() {
+        return name;
+    }
 
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + "]";
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [id=" + id + ", name=" + name + ", dob=" + dob + "]";
+    }
 
 }
