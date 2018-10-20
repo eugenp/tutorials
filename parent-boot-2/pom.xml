@@ -75,5 +75,4 @@
         <thin.version>1.0.11.RELEASE</thin.version>
         <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
     </properties>
-
 </project>
