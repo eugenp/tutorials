@@ -23,17 +23,19 @@ public class AkkaHttpServer extends AllDirectives {
     }
 
     public static void main(String[] args) throws Exception {
-            ActorSystem system = ActorSystem.create("helloAkkaHttpServer");
-            final ActorMaterializer materializer = ActorMaterializer.create(system);
+        ActorSystem system = ActorSystem.create("helloAkkaHttpServer");
+        final ActorMaterializer materializer = ActorMaterializer.create(system);
 
-            ActorRef userActorRef = system.actorOf(UserActor.props(), "userActor");
+        ActorRef userActorRef = system.actorOf(UserActor.props(), "userActor");
 
-            AkkaHttpServer app = new AkkaHttpServer(system, userActorRef);
+        AkkaHttpServer app = new AkkaHttpServer(system, userActorRef);
 
-            final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.userRoutes.routes().flow(system, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.userRoutes.routes()
+            .flow(system, materializer);
 
-            final CompletionStage<ServerBinding> binding = Http.get(system).bindAndHandle(routeFlow,
-                            ConnectHttp.toHost("localhost", 8080), materializer);
+        final CompletionStage<ServerBinding> binding = Http.get(system)
+            .bindAndHandle(routeFlow, ConnectHttp.toHost("localhost", 8080), materializer);
 
-            System.out.println("Server is online at http://localhost:8080/");
+        System.out.println("Server is online at http://localhost:8080/");
     }
+}

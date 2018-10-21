@@ -1,9 +1,11 @@
 package com.baeldung.akkahttp;
 
-import java.time.Duration;
 import java.util.Optional;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
+
+import com.baeldung.akkahttp.UserRegistryMessages.ActionPerformed;
+import com.baeldung.akkahttp.UserRegistryMessages.CreateUser;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
@@ -16,6 +18,7 @@ import akka.http.javadsl.server.PathMatchers;
 import akka.http.javadsl.server.Route;
 import akka.pattern.PatternsCS;
 import akka.util.Timeout;
+import scala.concurrent.duration.Duration;
 
 public class UserRoutes extends AllDirectives {
 

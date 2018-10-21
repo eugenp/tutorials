@@ -1,5 +1,7 @@
 package com.baeldung.akkahttp;
 
+import java.io.Serializable;
+
 /**
  * Defines all messages related to User Actor
  * 
