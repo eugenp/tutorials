@@ -1,4 +1,4 @@
-package com.example.activitiwithspring;
+package com.baeldung.activitiwithspring;
 
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngineConfiguration;

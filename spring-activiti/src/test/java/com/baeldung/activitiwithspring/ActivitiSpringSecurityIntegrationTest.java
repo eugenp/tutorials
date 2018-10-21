@@ -1,4 +1,4 @@
-package com.example.activitiwithspring;
+package com.baeldung.activitiwithspring;
 
 import org.activiti.engine.IdentityService;
 import org.junit.Test;
