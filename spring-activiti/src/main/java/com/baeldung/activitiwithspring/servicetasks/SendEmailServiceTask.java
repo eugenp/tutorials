@@ -1,4 +1,4 @@
-package com.example.activitiwithspring.servicetasks;
+package com.baeldung.activitiwithspring.servicetasks;
 
 import org.activiti.engine.delegate.DelegateExecution;
 import org.activiti.engine.delegate.JavaDelegate;
