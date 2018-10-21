@@ -1,4 +1,4 @@
-package com.example.activitiwithspring;
+package com.baeldung.activitiwithspring;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

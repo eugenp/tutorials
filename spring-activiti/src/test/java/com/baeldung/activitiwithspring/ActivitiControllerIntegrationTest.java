@@ -1,5 +1,6 @@
-package com.example.activitiwithspring;
+package com.baeldung.activitiwithspring;
 
+import com.baeldung.activitiwithspring.TaskRepresentation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.runtime.ProcessInstance;
