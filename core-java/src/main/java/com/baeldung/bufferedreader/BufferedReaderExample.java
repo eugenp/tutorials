@@ -3,6 +3,7 @@ package com.baeldung.bufferedreader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class BufferedReaderExample {
 
@@ -19,14 +20,12 @@ public class BufferedReaderExample {
     }
 
     public String readAllLinesWithStream(BufferedReader reader) {
-        StringBuilder content = new StringBuilder();
-        reader.lines()
-            .forEach(line -> content.append(line)
-                .append(System.lineSeparator()));
-        return content.toString();
+        return reader
+                .lines()
+                    .collect(Collectors.joining(System.lineSeparator()));
     }
 
-    public String readAllCharacters(BufferedReader reader) throws IOException {
+    public String readAllCharsOneByOne(BufferedReader reader) throws IOException {
         StringBuilder content = new StringBuilder();
 
         int value;
@@ -37,43 +36,18 @@ public class BufferedReaderExample {
         return content.toString();
     }
 
-    public String readAllCharactersUsingArray(BufferedReader reader) throws IOException {
-        StringBuilder content = new StringBuilder();
+    public String readMultipleChars(BufferedReader reader) throws IOException {
+        char[] chars = new char[5];
+        int charsRead = reader.read(chars, 0, 5);
 
-        char[] buf = new char[512];
-        int charsRead;
-
-        while ((charsRead = reader.read(buf, 0, buf.length)) != -1) {
-            content.append(buf, 0, charsRead);
+        String result;
+        if (charsRead != -1) {
+            result = new String(chars);
+        } else {
+            result = "";
         }
 
-        return content.toString();
-    }
-
-    public String readWithSkipping(BufferedReader reader) throws IOException {
-        StringBuilder content = new StringBuilder();
-
-        int value;
-        while ((value = reader.read()) != -1) {
-            content.append((char) value);
-            reader.skip(4);
-        }
-
-        return content.toString();
-    }
-
-    public String markAndReset(BufferedReader reader) throws IOException {
-        StringBuilder content = new StringBuilder();
-
-        reader.mark(512);
-
-        for (int i = 0; i < 3; i++) {
-            content.append(reader.readLine());
-            reader.reset();
-            reader.mark(512);
-        }
-
-        return content.toString();
+        return result;
     }
 
     public String readFile() {

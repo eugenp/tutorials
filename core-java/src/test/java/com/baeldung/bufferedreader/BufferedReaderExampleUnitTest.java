@@ -1,13 +1,14 @@
 package com.baeldung.bufferedreader;
 
 import org.junit.Test;
-import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringReader;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class BufferedReaderExampleUnitTest {
 
@@ -44,47 +45,25 @@ public class BufferedReaderExampleUnitTest {
     }
 
     @Test
-    public void givenBufferedReader_whenReadAllCharacters_thenReturnsContent() throws IOException {
+    public void givenBufferedReader_whenReadAllCharsOneByOne_thenReturnsContent() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
 
         BufferedReaderExample bre = new BufferedReaderExample();
-        String content = bre.readAllCharacters(reader);
+        String content = bre.readAllCharsOneByOne(reader);
 
         assertThat(content).isNotEmpty();
         assertThat(content).contains("Lorem ipsum");
     }
 
     @Test
-    public void givenBufferedReader_whenReadAllCharactersUsingArray_thenReturnsContent() throws IOException {
+    public void givenBufferedReader_whenReadMultipleChars_thenReturnsContent() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
 
         BufferedReaderExample bre = new BufferedReaderExample();
-        String content = bre.readAllCharactersUsingArray(reader);
+        String content = bre.readMultipleChars(reader);
 
         assertThat(content).isNotEmpty();
-        assertThat(content).contains("Lorem ipsum");
-    }
-
-    @Test
-    public void givenBufferedReader_whenReadWithSkipping_thenReturnsScrambledContent() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
-
-        BufferedReaderExample bre = new BufferedReaderExample();
-        String content = bre.readWithSkipping(reader);
-
-        assertThat(content).isNotEmpty();
-        assertThat(content).contains("L mottneas");
-    }
-
-    @Test
-    public void givenBufferedReader_whenMarkAndReset_thenReturnsRepeatedContent() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
-
-        BufferedReaderExample bre = new BufferedReaderExample();
-        String content = bre.markAndReset(reader);
-
-        assertThat(content.toString()).isNotEmpty();
-        assertThat(StringUtils.countOccurrencesOf(content.toString(), "Lorem ipsum")).isEqualTo(3);
+        assertThat(content).contains("Lorem");
     }
 
     @Test
@@ -93,6 +72,39 @@ public class BufferedReaderExampleUnitTest {
         String content = bre.readFileTryWithResources();
 
         assertThat(content.toString()).contains("Lorem ipsum");
+    }
+
+    @Test
+    public void givenBufferedReader_whenSkipUnderscores_thenOk() throws IOException {
+        StringBuilder result = new StringBuilder();
+
+        try (BufferedReader reader = new BufferedReader(new StringReader("1__2__3__4__5"))) {
+            int value;
+            while((value = reader.read()) != -1) {
+                result.append((char) value);
+                reader.skip(2L);
+            }
+        }
+
+        assertEquals("12345", result.toString());
+    }
+
+    @Test
+    public void givenBufferedReader_whenSkipsWhitespacesAtBeginning_thenOk() throws IOException {
+        String result;
+
+        try (BufferedReader reader = new BufferedReader(new StringReader("    Lorem ipsum dolor sit amet."))) {
+            reader.mark(1);
+
+            while (Character.isWhitespace(reader.read())) {
+                reader.mark(1);
+            }
+
+            reader.reset();
+            result = reader.readLine();
+        }
+
+        assertEquals("Lorem ipsum dolor sit amet.", result);
     }
 
 }
