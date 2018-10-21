@@ -63,7 +63,7 @@ public class BufferedReaderExampleUnitTest {
         String content = bre.readMultipleChars(reader);
 
         assertThat(content).isNotEmpty();
-        assertThat(content).contains("Lorem");
+        assertThat(content).isEqualTo("Lorem");
     }
 
     @Test
