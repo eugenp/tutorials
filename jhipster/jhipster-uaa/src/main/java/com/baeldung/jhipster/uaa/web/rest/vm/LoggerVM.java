@@ -13,8 +13,7 @@ public class LoggerVM {
 
     public LoggerVM(Logger logger) {
         this.name = logger.getName();
-        this.level = logger.getEffectiveLevel()
-            .toString();
+        this.level = logger.getEffectiveLevel().toString();
     }
 
     public LoggerVM() {
@@ -39,6 +38,9 @@ public class LoggerVM {
 
     @Override
     public String toString() {
-        return "LoggerVM{" + "name='" + name + '\'' + ", level='" + level + '\'' + '}';
+        return "LoggerVM{" +
+            "name='" + name + '\'' +
+            ", level='" + level + '\'' +
+            '}';
     }
 }

@@ -46,22 +46,20 @@ public class ExceptionTranslator implements ProblemHandling {
             .withType(Problem.DEFAULT_TYPE.equals(problem.getType()) ? ErrorConstants.DEFAULT_TYPE : problem.getType())
             .withStatus(problem.getStatus())
             .withTitle(problem.getTitle())
-            .with("path", request.getNativeRequest(HttpServletRequest.class)
-                .getRequestURI());
+            .with("path", request.getNativeRequest(HttpServletRequest.class).getRequestURI());
 
         if (problem instanceof ConstraintViolationProblem) {
-            builder.with("violations", ((ConstraintViolationProblem) problem).getViolations())
+            builder
+                .with("violations", ((ConstraintViolationProblem) problem).getViolations())
                 .with("message", ErrorConstants.ERR_VALIDATION);
         } else {
-            builder.withCause(((DefaultProblem) problem).getCause())
+            builder
+                .withCause(((DefaultProblem) problem).getCause())
                 .withDetail(problem.getDetail())
                 .withInstance(problem.getInstance());
-            problem.getParameters()
-                .forEach(builder::with);
-            if (!problem.getParameters()
-                .containsKey("message") && problem.getStatus() != null) {
-                builder.with("message", "error.http." + problem.getStatus()
-                    .getStatusCode());
+            problem.getParameters().forEach(builder::with);
+            if (!problem.getParameters().containsKey("message") && problem.getStatus() != null) {
+                builder.with("message", "error.http." + problem.getStatus().getStatusCode());
             }
         }
         return new ResponseEntity<>(builder.build(), entity.getHeaders(), entity.getStatusCode());
@@ -70,8 +68,7 @@ public class ExceptionTranslator implements ProblemHandling {
     @Override
     public ResponseEntity<Problem> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, @Nonnull NativeWebRequest request) {
         BindingResult result = ex.getBindingResult();
-        List<FieldErrorVM> fieldErrors = result.getFieldErrors()
-            .stream()
+        List<FieldErrorVM> fieldErrors = result.getFieldErrors().stream()
             .map(f -> new FieldErrorVM(f.getObjectName(), f.getField(), f.getCode()))
             .collect(Collectors.toList());
 

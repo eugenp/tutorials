@@ -34,7 +34,6 @@ public class LogsResource {
     @Timed
     public void changeLevel(@RequestBody LoggerVM jsonLogger) {
         LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
-        context.getLogger(jsonLogger.getName())
-            .setLevel(Level.valueOf(jsonLogger.getLevel()));
+        context.getLogger(jsonLogger.getName()).setLevel(Level.valueOf(jsonLogger.getLevel()));
     }
 }

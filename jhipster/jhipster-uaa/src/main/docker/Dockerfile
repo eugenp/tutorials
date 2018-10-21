@@ -14,7 +14,7 @@ USER jhipster
 
 ENTRYPOINT ["./entrypoint.sh"]
 
-EXPOSE 9999
+EXPOSE 9999 5701/udp
 
 ADD *.war app.war
 

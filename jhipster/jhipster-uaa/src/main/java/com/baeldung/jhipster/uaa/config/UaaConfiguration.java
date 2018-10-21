@@ -68,48 +68,37 @@ public class UaaConfiguration extends AuthorizationServerConfigurerAdapter imple
 
         @Override
         public void configure(HttpSecurity http) throws Exception {
-            http.exceptionHandling()
+            http
+                .exceptionHandling()
                 .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
-                .and()
+            .and()
                 .csrf()
                 .disable()
                 .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
                 .headers()
                 .frameOptions()
                 .disable()
-                .and()
+            .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
+            .and()
                 .authorizeRequests()
-                .antMatchers("/api/register")
-                .permitAll()
-                .antMatchers("/api/activate")
-                .permitAll()
-                .antMatchers("/api/authenticate")
-                .permitAll()
-                .antMatchers("/api/account/reset-password/init")
-                .permitAll()
-                .antMatchers("/api/account/reset-password/finish")
-                .permitAll()
-                .antMatchers("/api/**")
-                .authenticated()
-                .antMatchers("/management/health")
-                .permitAll()
-                .antMatchers("/management/**")
-                .hasAuthority(AuthoritiesConstants.ADMIN)
-                .antMatchers("/v2/api-docs/**")
-                .permitAll()
-                .antMatchers("/swagger-resources/configuration/ui")
-                .permitAll()
-                .antMatchers("/swagger-ui/index.html")
-                .hasAuthority(AuthoritiesConstants.ADMIN);
+                .antMatchers("/api/register").permitAll()
+                .antMatchers("/api/activate").permitAll()
+                .antMatchers("/api/authenticate").permitAll()
+                .antMatchers("/api/account/reset-password/init").permitAll()
+                .antMatchers("/api/account/reset-password/finish").permitAll()
+                .antMatchers("/api/**").authenticated()
+                .antMatchers("/management/health").permitAll()
+                .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+                .antMatchers("/v2/api-docs/**").permitAll()
+                .antMatchers("/swagger-resources/configuration/ui").permitAll()
+                .antMatchers("/swagger-ui/index.html").hasAuthority(AuthoritiesConstants.ADMIN);
         }
 
         @Override
         public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-            resources.resourceId("jhipster-uaa")
-                .tokenStore(tokenStore);
+            resources.resourceId("jhipster-uaa").tokenStore(tokenStore);
         }
     }
 
@@ -127,58 +116,44 @@ public class UaaConfiguration extends AuthorizationServerConfigurerAdapter imple
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        int accessTokenValidity = uaaProperties.getWebClientConfiguration()
-            .getAccessTokenValidityInSeconds();
+        int accessTokenValidity = uaaProperties.getWebClientConfiguration().getAccessTokenValidityInSeconds();
         accessTokenValidity = Math.max(accessTokenValidity, MIN_ACCESS_TOKEN_VALIDITY_SECS);
-        int refreshTokenValidity = uaaProperties.getWebClientConfiguration()
-            .getRefreshTokenValidityInSecondsForRememberMe();
+        int refreshTokenValidity = uaaProperties.getWebClientConfiguration().getRefreshTokenValidityInSecondsForRememberMe();
         refreshTokenValidity = Math.max(refreshTokenValidity, accessTokenValidity);
         /*
         For a better client design, this should be done by a ClientDetailsService (similar to UserDetailsService).
          */
         clients.inMemory()
-            .withClient(uaaProperties.getWebClientConfiguration()
-                .getClientId())
-            .secret(passwordEncoder.encode(uaaProperties.getWebClientConfiguration()
-                .getSecret()))
+            .withClient(uaaProperties.getWebClientConfiguration().getClientId())
+            .secret(passwordEncoder.encode(uaaProperties.getWebClientConfiguration().getSecret()))
             .scopes("openid")
             .autoApprove(true)
-            .authorizedGrantTypes("implicit", "refresh_token", "password", "authorization_code")
+            .authorizedGrantTypes("implicit","refresh_token", "password", "authorization_code")
             .accessTokenValiditySeconds(accessTokenValidity)
             .refreshTokenValiditySeconds(refreshTokenValidity)
             .and()
-            .withClient(jHipsterProperties.getSecurity()
-                .getClientAuthorization()
-                .getClientId())
-            .secret(passwordEncoder.encode(jHipsterProperties.getSecurity()
-                .getClientAuthorization()
-                .getClientSecret()))
+            .withClient(jHipsterProperties.getSecurity().getClientAuthorization().getClientId())
+            .secret(passwordEncoder.encode(jHipsterProperties.getSecurity().getClientAuthorization().getClientSecret()))
             .scopes("web-app")
             .authorities("ROLE_ADMIN")
             .autoApprove(true)
             .authorizedGrantTypes("client_credentials")
-            .accessTokenValiditySeconds((int) jHipsterProperties.getSecurity()
-                .getAuthentication()
-                .getJwt()
-                .getTokenValidityInSeconds())
-            .refreshTokenValiditySeconds((int) jHipsterProperties.getSecurity()
-                .getAuthentication()
-                .getJwt()
-                .getTokenValidityInSecondsForRememberMe());
+            .accessTokenValiditySeconds((int) jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSeconds())
+            .refreshTokenValiditySeconds((int) jHipsterProperties.getSecurity().getAuthentication().getJwt().getTokenValidityInSecondsForRememberMe());
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        // pick up all TokenEnhancers incl. those defined in the application
-        // this avoids changes to this class if an application wants to add its own to the chain
-        Collection<TokenEnhancer> tokenEnhancers = applicationContext.getBeansOfType(TokenEnhancer.class)
-            .values();
+        //pick up all  TokenEnhancers incl. those defined in the application
+        //this avoids changes to this class if an application wants to add its own to the chain
+        Collection<TokenEnhancer> tokenEnhancers = applicationContext.getBeansOfType(TokenEnhancer.class).values();
         TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
         tokenEnhancerChain.setTokenEnhancers(new ArrayList<>(tokenEnhancers));
-        endpoints.authenticationManager(authenticationManager)
+        endpoints
+            .authenticationManager(authenticationManager)
             .tokenStore(tokenStore())
             .tokenEnhancer(tokenEnhancerChain)
-            .reuseRefreshTokens(false); // don't reuse or we will run into session inactivity timeouts
+            .reuseRefreshTokens(false);             //don't reuse or we will run into session inactivity timeouts
     }
 
     @Autowired
@@ -203,18 +178,16 @@ public class UaaConfiguration extends AuthorizationServerConfigurerAdapter imple
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        KeyPair keyPair = new KeyStoreKeyFactory(new ClassPathResource(uaaProperties.getKeyStore()
-            .getName()), uaaProperties.getKeyStore()
-                .getPassword()
-                .toCharArray()).getKeyPair(uaaProperties.getKeyStore()
-                    .getAlias());
+        KeyPair keyPair = new KeyStoreKeyFactory(
+             new ClassPathResource(uaaProperties.getKeyStore().getName()), uaaProperties.getKeyStore().getPassword().toCharArray())
+             .getKeyPair(uaaProperties.getKeyStore().getAlias());
         converter.setKeyPair(keyPair);
         return converter;
     }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-        oauthServer.tokenKeyAccess("permitAll()")
-            .checkTokenAccess("isAuthenticated()");
+        oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess(
+                "isAuthenticated()");
     }
 }

@@ -22,6 +22,7 @@ public class DatabaseConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(DatabaseConfiguration.class);
 
+
     /**
      * Open the TCP port for the H2 database, so it is available remotely.
      *
