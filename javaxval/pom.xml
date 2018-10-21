@@ -33,7 +33,7 @@
             <version>${javax.el-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.glassfish.web</groupId>
+            <groupId>org.glassfish</groupId>
             <artifactId>javax.el</artifactId>
             <version>${javax.el.version}</version>
         </dependency>
@@ -63,9 +63,9 @@
     	
     <properties>
         <validation-api.version>2.0.1.Final</validation-api.version>
-        <hibernate-validator.version>6.0.7.Final</hibernate-validator.version>
+        <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
         <javax.el-api.version>3.0.0</javax.el-api.version>
-        <javax.el.version>2.2.6</javax.el.version>    
+        <javax.el.version>3.0.0</javax.el.version>    
         <org.springframework.version>5.0.2.RELEASE</org.springframework.version>
         <junit.version>4.12</junit.version>
         <assertj.version>3.11.1</assertj.version>

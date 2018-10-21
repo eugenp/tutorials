@@ -11,3 +11,4 @@ The "REST With Spring" Classes: http://github.learnspringsecurity.com
 - [Granted Authority Versus Role in Spring Security](http://www.baeldung.com/spring-security-granted-authority-vs-role)
 - [Spring Data with Spring Security](https://www.baeldung.com/spring-data-security)
 - [Spring Security – Whitelist IP Range](https://www.baeldung.com/spring-security-whitelist-ip-range)
+- [Find the Registered Spring Security Filters](https://www.baeldung.com/spring-security-registered-filters)
