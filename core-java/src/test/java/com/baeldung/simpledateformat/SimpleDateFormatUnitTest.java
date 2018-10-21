@@ -18,19 +18,19 @@ public class SimpleDateFormatUnitTest {
   private static final Logger logger = Logger.getLogger(SimpleDateFormatUnitTest.class.getName());
 
   @Test
-  public void givenSpecificDate_whenFormatted_checkFormatCorrect() throws Exception {
+  public void givenSpecificDate_whenFormatted_thenCheckFormatCorrect() throws Exception {
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     assertEquals("24-05-1977", formatter.format(new Date(233345223232L)));
   }
 
   @Test
-  public void givenSpecificDate_whenFormattedUsingDateFormat_checkFormatCorrect() throws Exception {
+  public void givenSpecificDate_whenFormattedUsingDateFormat_thenCheckFormatCorrect() throws Exception {
     DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT);
     assertEquals("5/24/77", formatter.format(new Date(233345223232L)));
   }
 
   @Test
-  public void givenStringDate_whenParsed_checkDateCorrect() throws Exception{
+  public void givenStringDate_whenParsed_thenCheckDateCorrect() throws Exception{
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     Date myDate = new Date(233276400000L);
     Date parsedDate = formatter.parse("24-05-1977");
@@ -38,14 +38,14 @@ public class SimpleDateFormatUnitTest {
   }
 
   @Test
-  public void givenFranceLocale_whenFormatted_checkFormatCorrect() throws Exception{
+  public void givenFranceLocale_whenFormatted_thenCheckFormatCorrect() throws Exception{
     SimpleDateFormat franceDateFormatter = new SimpleDateFormat("EEEEE dd-MMMMMMM-yyyy", Locale.FRANCE);
     Date myWednesday = new Date(1539341312904L);
     assertTrue(franceDateFormatter.format(myWednesday).startsWith("vendredi"));
   }
 
   @Test
-  public void given2TimeZones_whenFormatted_checkTimeDifference() throws Exception {
+  public void given2TimeZones_whenFormatted_thenCheckTimeDifference() throws Exception {
     Date now = new Date();
 
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("EEEE dd-MMM-yy HH:mm:ssZ");
