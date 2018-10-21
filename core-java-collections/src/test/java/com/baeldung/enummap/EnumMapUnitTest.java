@@ -2,42 +2,39 @@ package com.baeldung.enummap;
 
 import org.junit.Test;
 
-import java.util.AbstractMap;
-import java.util.EnumMap;
-import java.util.HashMap;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 
 public class EnumMapUnitTest {
-    public enum Club {
-        Juventus, PSG, Madrid, Liverpool, Milan, Lyon, Barcelona, MU
-    }
-
-    public enum Player {
-        Ronaldo, Neymar, Bale, Salah, Donnarumma, Tolisso, Messi, Pogba
+    public enum DayOfWeek {
+        MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
     }
 
     @Test
     public void whenContructedWithEnumType_ThenOnlyAcceptThatAsKey() {
-        EnumMap<Club, String> clubMap = new EnumMap<>(Club.class);
-        assertThatCode(() -> clubMap.put(Club.Juventus, "Juventus"))
-            .doesNotThrowAnyException();
+        EnumMap<DayOfWeek, String> dayMap = new EnumMap<>(DayOfWeek.class);
+        assertThatCode(() -> dayMap.put(DayOfWeek.MONDAY, "MONDAY"))
+                .doesNotThrowAnyException();
+        Map genericMap = dayMap;
+        assertThatCode(() -> genericMap.put(TimeUnit.NANOSECONDS, "NANOSECONDS"))
+                .isInstanceOf(ClassCastException.class);
     }
 
     @Test
     public void whenConstructedWithEnumMap_ThenSameKeyTypeAndInitialMappings() {
-        EnumMap<Club, String> clubMap = new EnumMap<>(Club.class);
-        clubMap.put(Club.Juventus, "Juventus");
-        clubMap.put(Club.PSG, "PSG");
+        EnumMap<DayOfWeek, String> dayMap = new EnumMap<>(DayOfWeek.class);
+        dayMap.put(DayOfWeek.MONDAY, "MONDAY");
+        dayMap.put(DayOfWeek.TUESDAY, "TUESDAY");
 
-        EnumMap<Club, String> newClubMap = new EnumMap<>(clubMap);
-        assertThat(newClubMap.size()).isEqualTo(2);
-        assertThat(newClubMap).containsExactly(
-            new AbstractMap.SimpleEntry<>(Club.Juventus, "Juventus"),
-            new AbstractMap.SimpleEntry<>(Club.PSG, "PSG")
+        EnumMap<DayOfWeek, String> dayHashMap = new EnumMap<>(dayMap);
+        assertThat(dayHashMap.size()).isEqualTo(2);
+        assertThat(dayHashMap).containsExactly(
+                new AbstractMap.SimpleEntry<>(DayOfWeek.MONDAY, "MONDAY"),
+                new AbstractMap.SimpleEntry<>(DayOfWeek.TUESDAY, "TUESDAY")
         );
     }
 
@@ -45,51 +42,106 @@ public class EnumMapUnitTest {
     public void givenEmptyMap_whenConstructedWithMap_ThenException() {
         HashMap ordinaryMap = new HashMap();
         assertThatCode(() -> new EnumMap(ordinaryMap))
-            .isInstanceOf(IllegalArgumentException.class)
-            .hasMessage("Specified map is empty");
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Specified map is empty");
     }
 
     @Test
     public void givenMapWithEntries_whenConstructedWithMap_ThenSucceed() {
         HashMap ordinaryMap = new HashMap();
-        ordinaryMap.put(Club.Juventus, "Juventus");
+        ordinaryMap.put(DayOfWeek.MONDAY, "MONDAY");
         assertThatCode(() -> new EnumMap(ordinaryMap))
-            .doesNotThrowAnyException();
+                .doesNotThrowAnyException();
     }
 
     @Test
     public void givenMapWithMultiTypeEntries_whenConstructedWithMap_ThenException() {
         HashMap ordinaryMap = new HashMap();
-        ordinaryMap.put(Club.Juventus, "Juventus");
-        ordinaryMap.put(Player.Ronaldo, "Ronaldo");
+        ordinaryMap.put(DayOfWeek.MONDAY, "MONDAY");
+        ordinaryMap.put(TimeUnit.MILLISECONDS, "MILLISECONDS");
         assertThatCode(() -> new EnumMap(ordinaryMap))
-            .isInstanceOf(ClassCastException.class)
-            .hasMessage("class com.baeldung.enummap.EnumMapUnitTest$Club != class com.baeldung.enummap.EnumMapUnitTest$Player");
+                .isInstanceOf(ClassCastException.class)
+                .hasMessage("class com.baeldung.enummap.EnumMapUnitTest$DayOfWeek != class java.util.concurrent.TimeUnit");
     }
 
     @Test
     public void whenPut_thenGet() {
-        EnumMap<Club, String> clubMap = new EnumMap(Club.class);
-        clubMap.put(Club.Juventus, "Juventus");
-        clubMap.put(Club.PSG, null);
-        assertThat(clubMap.get(Club.Juventus)).isEqualTo("Juventus");
-        assertThat(clubMap.get(Club.PSG)).isNull();
+        EnumMap<DayOfWeek, String> dayMap = new EnumMap(DayOfWeek.class);
+        dayMap.put(DayOfWeek.MONDAY, "MONDAY");
+        dayMap.put(DayOfWeek.TUESDAY, null);
+        assertThat(dayMap.get(DayOfWeek.MONDAY)).isEqualTo("MONDAY");
+        assertThat(dayMap.get(DayOfWeek.TUESDAY)).isNull();
     }
 
     @Test
     public void givenMapping_whenContains_thenTrue() {
-        EnumMap<Club, String> clubMap = new EnumMap(Club.class);
-        assertThat(clubMap.containsKey(Club.Juventus)).isFalse();
-        assertThat(clubMap.containsValue("Juventus")).isFalse();
-        clubMap.put(Club.Juventus, "Juventus");
-        assertThat(clubMap.containsKey(Club.Juventus)).isTrue();
-        assertThat(clubMap.containsValue("Juventus")).isTrue();
+        EnumMap<DayOfWeek, String> dayMap = new EnumMap(DayOfWeek.class);
+        assertThat(dayMap.containsKey(DayOfWeek.MONDAY)).isFalse();
+        assertThat(dayMap.containsValue("MONDAY")).isFalse();
+        dayMap.put(DayOfWeek.MONDAY, "MONDAY");
+        assertThat(dayMap.containsKey(DayOfWeek.MONDAY)).isTrue();
+        assertThat(dayMap.containsValue("MONDAY")).isTrue();
 
-        assertThat(clubMap.containsKey(Club.PSG)).isFalse();
-        assertThat(clubMap.containsValue(null)).isFalse();
-        clubMap.put(Club.PSG, null);
-        assertThat(clubMap.containsKey(Club.PSG)).isTrue();
-        assertThat(clubMap.containsValue(null)).isTrue();
+        assertThat(dayMap.containsKey(DayOfWeek.TUESDAY)).isFalse();
+        assertThat(dayMap.containsValue(null)).isFalse();
+        dayMap.put(DayOfWeek.TUESDAY, null);
+        assertThat(dayMap.containsKey(DayOfWeek.TUESDAY)).isTrue();
+        assertThat(dayMap.containsValue(null)).isTrue();
     }
 
+    @Test
+    public void whenRemove_thenRemoved() {
+        EnumMap<DayOfWeek, String> dayMap = new EnumMap(DayOfWeek.class);
+
+        dayMap.put(DayOfWeek.MONDAY, "MONDAY");
+        assertThat(dayMap.remove(DayOfWeek.MONDAY)).isEqualTo("MONDAY");
+        assertThat(dayMap.containsKey(DayOfWeek.MONDAY)).isFalse();
+
+        dayMap.put(DayOfWeek.MONDAY, "MONDAY");
+        assertThat(dayMap.remove(DayOfWeek.MONDAY, "AAA")).isEqualTo(false);
+        assertThat(dayMap.remove(DayOfWeek.MONDAY, "MONDAY")).isEqualTo(true);
+    }
+
+    @Test
+    public void whenSubView_thenSubViewOrdered() {
+        EnumMap<DayOfWeek, String> dayMap = new EnumMap(DayOfWeek.class);
+        dayMap.put(DayOfWeek.SATURDAY, "SATURDAY");
+        dayMap.put(DayOfWeek.WEDNESDAY, "WEDNESDAY");
+        dayMap.put(DayOfWeek.MONDAY, "MONDAY");
+
+        Collection<String> values = dayMap.values();
+        assertThat(values)
+                .containsExactly("MONDAY", "WEDNESDAY", "SATURDAY");
+
+        Set<DayOfWeek> keys = dayMap.keySet();
+        assertThat(keys)
+                .containsExactly(DayOfWeek.MONDAY, DayOfWeek.WEDNESDAY, DayOfWeek.SATURDAY);
+
+        assertThat(dayMap.entrySet())
+                .containsExactly(
+                        new AbstractMap.SimpleEntry<>(DayOfWeek.MONDAY, "MONDAY"),
+                        new AbstractMap.SimpleEntry<>(DayOfWeek.WEDNESDAY, "WEDNESDAY"),
+                        new AbstractMap.SimpleEntry<>(DayOfWeek.SATURDAY, "SATURDAY")
+                );
+    }
+
+    @Test
+    public void givenSubView_whenChange_thenReflected() {
+        EnumMap<DayOfWeek, String> dayMap = new EnumMap(DayOfWeek.class);
+        dayMap.put(DayOfWeek.SATURDAY, "SATURDAY");
+        dayMap.put(DayOfWeek.WEDNESDAY, "WEDNESDAY");
+        dayMap.put(DayOfWeek.MONDAY, "MONDAY");
+
+        Collection<String> values = dayMap.values();
+        assertThat(values)
+                .containsExactly("MONDAY", "WEDNESDAY", "SATURDAY");
+
+        dayMap.put(DayOfWeek.TUESDAY, "TUESDAY");
+        assertThat(values)
+                .containsExactly("MONDAY", "TUESDAY", "WEDNESDAY", "SATURDAY");
+
+        values.remove("WEDNESDAY");
+        assertThat(dayMap.containsKey(DayOfWeek.WEDNESDAY)).isFalse();
+        assertThat(dayMap.size()).isEqualTo(3);
+    }
 }
