@@ -34,3 +34,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Introduction to Chaos Monkey](https://www.baeldung.com/spring-boot-chaos-monkey)
 - [Spring Component Scanning](https://www.baeldung.com/spring-component-scanning)
 - [Load Spring Boot Properties From a JSON File](https://www.baeldung.com/spring-boot-json-properties)
+- [Display Auto-Configuration Report in Spring Boot](https://www.baeldung.com/spring-boot-auto-configuration-report)
