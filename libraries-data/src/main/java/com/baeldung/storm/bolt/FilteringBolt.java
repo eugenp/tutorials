@@ -10,7 +10,7 @@ public class FilteringBolt extends BaseBasicBolt {
     @Override
     public void execute(Tuple tuple, BasicOutputCollector basicOutputCollector) {
         int operation = tuple.getIntegerByField("operation");
-        if(operation >= 0 ) {
+        if(operation > 0 ) {
             basicOutputCollector.emit(tuple.getValues());
         }
     }
