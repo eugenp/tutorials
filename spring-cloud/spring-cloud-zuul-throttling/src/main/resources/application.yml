@@ -11,7 +11,7 @@ zuul:
     repository: JPA
     policy-list:
       serviceSimple:
-        - limit: 1
+        - limit: 5
           refresh-interval: 60
           type:
             - origin
