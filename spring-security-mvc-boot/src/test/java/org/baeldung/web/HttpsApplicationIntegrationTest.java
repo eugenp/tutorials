@@ -10,14 +10,15 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.Resource;
-import org.springframework.http.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
 import javax.net.ssl.SSLContext;
-import java.util.Base64;
+import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 
@@ -36,7 +37,7 @@ public class HttpsApplicationIntegrationTest {
 
     @Test
     public void whenGETanHTTPSResource_thenCorrectResponse() throws Exception {
-        ResponseEntity<String> response = restTemplate().exchange(WELCOME_URL, HttpMethod.GET, new HttpEntity<String>(withAuthorization("memuser", "pass")), String.class);
+        ResponseEntity<String> response = restTemplate().getForEntity(WELCOME_URL, String.class, Collections.emptyMap());
 
         assertEquals("<h1>Welcome to Secured Site</h1>", response.getBody());
         assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -52,16 +53,4 @@ public class HttpsApplicationIntegrationTest {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(httpClient);
         return new RestTemplate(factory);
     }
-
-    HttpHeaders withAuthorization(String userName, String password) {
-        return new HttpHeaders() {
-            {
-                String auth = userName + ":" + password;
-                String authHeader = "Basic " + new String(Base64.getEncoder()
-                    .encode(auth.getBytes()));
-                set("Authorization", authHeader);
-            }
-        };
-    }
-
 }
