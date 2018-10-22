@@ -15,6 +15,7 @@ public class BatchTestHelper {
 	    private BatchTestHelper() {
 	        throw new UnsupportedOperationException();
 	    }
+	    
 
 	    public static JobExecution keepTestAlive(JobExecution jobExecution) throws InterruptedException {
 	        System.out.println(" * Entering keepTestAlive, completed is: " + jobExecution.getBatchStatus().equals(BatchStatus.COMPLETED));
