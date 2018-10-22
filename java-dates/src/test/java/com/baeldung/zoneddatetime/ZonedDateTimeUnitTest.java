@@ -24,10 +24,10 @@ public class ZonedDateTimeUnitTest {
         LocalDateTime localDateTime = LocalDateTime.now();
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.of("UTC"));
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy - hh:mm:ss Z");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy - HH:mm:ss Z");
         String formattedString = zonedDateTime.format(formatter);
 
-        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MM/dd/yyyy - hh:mm:ss z");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("MM/dd/yyyy - HH:mm:ss z");
         String formattedString2 = zonedDateTime.format(formatter2);
 
         log.info(formattedString);
