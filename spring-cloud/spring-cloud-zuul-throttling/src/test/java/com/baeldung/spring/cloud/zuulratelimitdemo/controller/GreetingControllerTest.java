@@ -35,7 +35,7 @@ public class GreetingControllerTest {
   private TestRestTemplate restTemplate;
 
   @Test
-  public void testNotExceedingCapacityRequest() {
+  public void whenRequestNotExceedingCapacity_thenReturnOkResponse() {
     ResponseEntity<String> response = this.restTemplate.getForEntity(SIMPLE_GREETING, String.class);
     HttpHeaders headers = response.getHeaders();
     String key = "rate-limit-application_serviceSimple_127.0.0.1";
@@ -44,7 +44,7 @@ public class GreetingControllerTest {
   }
 
   @Test
-  public void testExceedingCapacity() throws InterruptedException {
+  public void whenRequestExceedingCapacity_thenReturnTooManyRequestsResponse() throws InterruptedException {
     ResponseEntity<String> response = this.restTemplate
         .getForEntity(ADVANCED_GREETING, String.class);
     HttpHeaders headers = response.getHeaders();
@@ -95,4 +95,6 @@ public class GreetingControllerTest {
       assertNotNull(reset);
     }
   }
+
+
 }
