@@ -7,4 +7,5 @@
 - [Spring Web Annotations](http://www.baeldung.com/spring-mvc-annotations)
 - [Spring Core Annotations](http://www.baeldung.com/spring-core-annotations)
 - [Display RSS Feed with Spring MVC](http://www.baeldung.com/spring-mvc-rss-feed)
-
+- [A Controller, Service and DAO Example with Spring Boot and JSF](https://www.baeldung.com/jsf-spring-boot-controller-service-dao)
+- [Cache Eviction in Spring Boot](https://www.baeldung.com/spring-boot-evict-cache)
