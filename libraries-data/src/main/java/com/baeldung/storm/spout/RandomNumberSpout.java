@@ -26,7 +26,7 @@ public class RandomNumberSpout extends BaseRichSpout {
     public void nextTuple() {
         Utils.sleep(1000);
         //This will select random int from the range (-1000, 1000)
-        int operation = random.nextInt(1000 + 1 + 1000) - 1000;
+        int operation = random.nextInt(101);
         long timestamp = System.currentTimeMillis();
 
         Values values = new Values(operation, timestamp);

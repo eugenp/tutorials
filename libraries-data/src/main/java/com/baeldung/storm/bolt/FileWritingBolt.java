@@ -22,6 +22,7 @@ public class FileWritingBolt extends BaseRichBolt {
     private BufferedWriter writer;
     private String filePath;
     private ObjectMapper objectMapper;
+
     @Override
     public void prepare(Map map, TopologyContext topologyContext, OutputCollector outputCollector) {
         objectMapper = new ObjectMapper();
@@ -53,6 +54,15 @@ public class FileWritingBolt extends BaseRichBolt {
 
     public FileWritingBolt(String filePath) {
         this.filePath = filePath;
+    }
+
+    @Override
+    public void cleanup() {
+        try {
+            writer.close();
+        } catch (IOException e) {
+            logger.error("Failed to close the writer!");
+        }
     }
 
     @Override
