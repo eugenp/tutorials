@@ -7,6 +7,10 @@
         <filter-name>dispatcher</filter-name>
         <filter-class>org.javalite.activeweb.RequestDispatcher</filter-class>
         <init-param>
+            <param-name>root_controller</param-name>
+            <param-value>home</param-value>
+        </init-param>
+        <init-param>
             <param-name>exclusions</param-name>
             <param-value>css,images,js,ico</param-value>
         </init-param>

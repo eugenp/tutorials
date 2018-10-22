@@ -1,6 +1,13 @@
 ### Spring Boot Security Auto-Configuration
 
 - mvn clean install 
-- uncomment in application.properties spring.profiles.active=basic # for basic auth config
-- uncomment in application.properties spring.profiles.active=form # for form based auth config
-- uncomment actuator dependency simultaneously with the line from main class
+- uncomment actuator dependency simultaneously with the line from basic auth main class
+- uncomment security properties for easy testing. If not random will be generated.
+
+### CURL commands
+- curl -X POST -u baeldung-admin:baeldung -d grant_type=client_credentials -d username=baeldung-admin -d password=baeldung http://localhost:8080/oauth/token
+
+### Relevant Articles:
+- [Spring Boot Security Auto-Configuration](http://www.baeldung.com/spring-boot-security-autoconfiguration)
+- [Spring Security for Spring Boot Integration Tests](https://www.baeldung.com/spring-security-integration-tests)
+- [Introduction to Spring Security Taglibs](https://www.baeldung.com/spring-security-taglibs)

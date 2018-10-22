@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.baeldung.boot.Application;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Application.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = Application.class)
 @AutoConfigureMockMvc
 public class StringToEmployeeConverterControllerIntegrationTest {
 
@@ -26,10 +26,6 @@ public class StringToEmployeeConverterControllerIntegrationTest {
 
     @Test
     public void getStringToEmployeeTest() throws Exception {
-        mockMvc.perform(get("/string-to-employee?employee=1,2000"))
-                .andDo(print())
-                .andExpect(jsonPath("$.id", is(1)))
-                .andExpect(jsonPath("$.salary", is(2000.0)))
-                .andExpect(status().isOk());
+        mockMvc.perform(get("/string-to-employee?employee=1,2000")).andDo(print()).andExpect(jsonPath("$.id", is(1))).andExpect(jsonPath("$.salary", is(2000.0))).andExpect(status().isOk());
     }
 }

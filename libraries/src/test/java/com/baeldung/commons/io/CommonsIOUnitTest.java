@@ -25,30 +25,23 @@ import java.nio.charset.Charset;
 public class CommonsIOUnitTest {
 
     @Test
-    public void whenCopyANDReadFileTesttxt_thenMatchExpectedData()
-        throws IOException {
+    public void whenCopyANDReadFileTesttxt_thenMatchExpectedData() throws IOException {
 
         String expectedData = "Hello World from fileTest.txt!!!";
 
-        File file = FileUtils.getFile(getClass().getClassLoader()
-            .getResource("fileTest.txt")
-            .getPath());
+        File file = FileUtils.getFile(getClass().getClassLoader().getResource("fileTest.txt").getPath());
         File tempDir = FileUtils.getTempDirectory();
         FileUtils.copyFileToDirectory(file, tempDir);
         File newTempFile = FileUtils.getFile(tempDir, file.getName());
-        String data = FileUtils.readFileToString(newTempFile,
-            Charset.defaultCharset());
+        String data = FileUtils.readFileToString(newTempFile, Charset.defaultCharset());
 
         Assert.assertEquals(expectedData, data.trim());
     }
 
     @Test
-    public void whenUsingFileNameUtils_thenshowdifferentFileOperations()
-        throws IOException {
+    public void whenUsingFileNameUtils_thenshowdifferentFileOperations() throws IOException {
 
-        String path = getClass().getClassLoader()
-            .getResource("fileTest.txt")
-            .getPath();
+        String path = getClass().getClassLoader().getResource("fileTest.txt").getPath();
 
         String fullPath = FilenameUtils.getFullPath(path);
         String extension = FilenameUtils.getExtension(path);
@@ -60,70 +53,54 @@ public class CommonsIOUnitTest {
     }
 
     @Test
-    public void whenUsingFileSystemUtils_thenDriveFreeSpace()
-        throws IOException {
+    public void whenUsingFileSystemUtils_thenDriveFreeSpace() throws IOException {
 
         long freeSpace = FileSystemUtils.freeSpaceKb("/");
     }
 
     @SuppressWarnings("resource")
     @Test
-    public void whenUsingTeeInputOutputStream_thenWriteto2OutputStreams()
-        throws IOException {
+    public void whenUsingTeeInputOutputStream_thenWriteto2OutputStreams() throws IOException {
 
         final String str = "Hello World.";
         ByteArrayInputStream inputStream = new ByteArrayInputStream(str.getBytes());
         ByteArrayOutputStream outputStream1 = new ByteArrayOutputStream();
         ByteArrayOutputStream outputStream2 = new ByteArrayOutputStream();
-        
-        FilterOutputStream teeOutputStream = new TeeOutputStream(outputStream1,outputStream2);
+
+        FilterOutputStream teeOutputStream = new TeeOutputStream(outputStream1, outputStream2);
         new TeeInputStream(inputStream, teeOutputStream, true).read(new byte[str.length()]);
-        
+
         Assert.assertEquals(str, String.valueOf(outputStream1));
         Assert.assertEquals(str, String.valueOf(outputStream2));
-     }
+    }
 
     @Test
-    public void whenGetFilewithNameFileFilter_thenFindfileTesttxt()
-        throws IOException {
+    public void whenGetFilewithNameFileFilter_thenFindfileTesttxt() throws IOException {
 
         final String testFile = "fileTest.txt";
 
-        String path = getClass().getClassLoader()
-            .getResource(testFile)
-            .getPath();
+        String path = getClass().getClassLoader().getResource(testFile).getPath();
         File dir = FileUtils.getFile(FilenameUtils.getFullPath(path));
 
         String[] possibleNames = { "NotThisOne", testFile };
 
-        Assert.assertEquals(testFile,
-            dir.list(new NameFileFilter(possibleNames, IOCase.INSENSITIVE))[0]);
+        Assert.assertEquals(testFile, dir.list(new NameFileFilter(possibleNames, IOCase.INSENSITIVE))[0]);
     }
 
     @Test
-    public void whenGetFilewith_ANDFileFilter_thenFindsampletxt()
-        throws IOException {
+    public void whenGetFilewith_ANDFileFilter_thenFindsampletxt() throws IOException {
 
-        String path = getClass().getClassLoader()
-            .getResource("fileTest.txt")
-            .getPath();
+        String path = getClass().getClassLoader().getResource("fileTest.txt").getPath();
         File dir = FileUtils.getFile(FilenameUtils.getFullPath(path));
 
-        Assert.assertEquals("sample.txt",
-            dir.list(new AndFileFilter(
-                new WildcardFileFilter("*ple*", IOCase.INSENSITIVE),
-                new SuffixFileFilter("txt")))[0]);
+        Assert.assertEquals("sample.txt", dir.list(new AndFileFilter(new WildcardFileFilter("*ple*", IOCase.INSENSITIVE), new SuffixFileFilter("txt")))[0]);
     }
 
     @Test
-    public void whenSortDirWithPathFileComparator_thenFirstFileaaatxt()
-        throws IOException {
+    public void whenSortDirWithPathFileComparator_thenFirstFileaaatxt() throws IOException {
 
-        PathFileComparator pathFileComparator = new PathFileComparator(
-            IOCase.INSENSITIVE);
-        String path = FilenameUtils.getFullPath(getClass().getClassLoader()
-            .getResource("fileTest.txt")
-            .getPath());
+        PathFileComparator pathFileComparator = new PathFileComparator(IOCase.INSENSITIVE);
+        String path = FilenameUtils.getFullPath(getClass().getClassLoader().getResource("fileTest.txt").getPath());
         File dir = new File(path);
         File[] files = dir.listFiles();
 
@@ -133,16 +110,11 @@ public class CommonsIOUnitTest {
     }
 
     @Test
-    public void whenSizeFileComparator_thenLargerFile()
-        throws IOException {
+    public void whenSizeFileComparator_thenLargerFile() throws IOException {
 
         SizeFileComparator sizeFileComparator = new SizeFileComparator();
-        File largerFile = FileUtils.getFile(getClass().getClassLoader()
-            .getResource("fileTest.txt")
-            .getPath());
-        File smallerFile = FileUtils.getFile(getClass().getClassLoader()
-            .getResource("sample.txt")
-            .getPath());
+        File largerFile = FileUtils.getFile(getClass().getClassLoader().getResource("fileTest.txt").getPath());
+        File smallerFile = FileUtils.getFile(getClass().getClassLoader().getResource("sample.txt").getPath());
 
         int i = sizeFileComparator.compare(largerFile, smallerFile);
 

@@ -13,18 +13,12 @@
     </parent>
 
     <dependencies>
-        <dependency>
-            <groupId>com.hazelcast</groupId>
-            <artifactId>hazelcast</artifactId>
-            <version>${hazelcast.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.hazelcast</groupId>
-            <artifactId>hazelcast-client</artifactId>
-            <version>${hazelcast.version}</version>
-        </dependency>
-
+        <!-- Hazelcast Jet -->
+		<dependency>
+          <groupId>com.hazelcast.jet</groupId>
+          <artifactId>hazelcast-jet</artifactId>
+          <version>${hazelcast.jet.version}</version>
+		</dependency>
     </dependencies>
 
     <build>
@@ -38,8 +32,8 @@
     </build>
 
     <properties>
-        <!-- hazelcast -->
-        <hazelcast.version>3.8.4</hazelcast.version>
+        <!-- hazelcast jet-->
+        <hazelcast.jet.version>0.6</hazelcast.jet.version>
     </properties>
 
 </project>

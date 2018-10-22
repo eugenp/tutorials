@@ -1,28 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.baeldung</groupId>
     <artifactId>rest-testing</artifactId>
     <version>0.1-SNAPSHOT</version>
-
     <name>rest-testing</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>        
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
 
         <!-- utils -->
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
@@ -112,44 +106,48 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        
+        <plugins>
+             <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <configuration>
+                    <parallel>classes</parallel>
+                    <threadCount>4</threadCount>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> 
+            <plugin>
+              <groupId>com.github.temyers</groupId>
+              <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+              <version>5.0.0</version>
+              <executions>
+                <execution>
+                  <id>generateRunners</id>
+                  <phase>generate-test-sources</phase>
+                  <goals>
+                    <goal>generateRunners</goal>
+                  </goals>
+                  <configuration>
+                    <glue>
+                      <package>com.baeldung.rest.cucumber</package>
+                    </glue>
+                    <featuresDirectory>src/test/resources/Feature/</featuresDirectory>
+                    <parallelScheme>SCENARIO</parallelScheme>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+        </plugins>
 
     </build>
-
-    <profiles>
-        <profile>
-            <id>integration</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*UnitTest.java</exclude>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/*IntegrationTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
 
     <properties>
         <!-- marshalling -->
@@ -158,7 +156,6 @@
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <commons-io.version>2.5</commons-io.version>
 
         <!-- testing -->
         <rest-assured.version>2.9.0</rest-assured.version>
@@ -173,7 +170,6 @@
 
         <!-- maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-
     </properties>
 
 </project>

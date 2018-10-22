@@ -24,6 +24,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -89,7 +90,7 @@ public class HttpClientAuthLiveTest {
     public final void givenAuthorizationHeaderIsSetManually_whenExecutingGetRequest_thenSuccess2() throws IOException {
         final HttpGet request = new HttpGet(URL_SECURED_BY_BASIC_AUTHENTICATION);
         final String auth = DEFAULT_USER + ":" + DEFAULT_PASS;
-        final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("ISO-8859-1")));
+        final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.ISO_8859_1));
         final String authHeader = "Basic " + new String(encodedAuth);
         request.setHeader(HttpHeaders.AUTHORIZATION, authHeader);
 
@@ -129,7 +130,7 @@ public class HttpClientAuthLiveTest {
 
     private String authorizationHeader(final String username, final String password) {
         final String auth = username + ":" + password;
-        final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("ISO-8859-1")));
+        final byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(StandardCharsets.ISO_8859_1));
 
         return "Basic " + new String(encodedAuth);
     }

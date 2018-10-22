@@ -1,15 +1,16 @@
 package org.baeldung.boot.converter.controller;
 
-import com.baeldung.toggle.Employee;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.baeldung.toggle.Employee;
 
 @RestController
-@RequestMapping("/string-to-employee")
 public class StringToEmployeeConverterController {
-
-    @GetMapping
+ 
+    @GetMapping("/string-to-employee")
     public ResponseEntity<Object> getStringToEmployee(@RequestParam("employee") Employee employee) {
         return ResponseEntity.ok(employee);
     }

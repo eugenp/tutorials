@@ -17,3 +17,7 @@
 - [Introduction to Jukito](http://www.baeldung.com/jukito)
 - [Custom JUnit 4 Test Runners](http://www.baeldung.com/junit-4-custom-runners)
 - [Guide to JSpec](http://www.baeldung.com/jspec)
+- [Custom Assertions with AssertJ](http://www.baeldung.com/assertj-custom-assertion)
+- [Using Conditions with AssertJ](http://www.baeldung.com/assertj-conditions)
+- [Guide to JavaFaker](https://www.baeldung.com/java-faker)
+- [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)

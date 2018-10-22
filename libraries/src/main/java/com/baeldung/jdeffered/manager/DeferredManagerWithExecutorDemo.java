@@ -16,9 +16,7 @@ class DeferredManagerWithExecutorDemo {
         Deferred<String, String, String> deferred = new DeferredObject<>();
         DeferredManager dm = new DefaultDeferredManager(executor);
         Promise<String, String, String> p1 = deferred.promise(), p2 = deferred.promise(), p3 = deferred.promise();
-        dm.when(p1, p2, p3)
-          .done(r -> System.out.println("done"))
-          .fail(r -> System.out.println("fail"));
+        dm.when(p1, p2, p3).done(r -> System.out.println("done")).fail(r -> System.out.println("fail"));
         deferred.resolve("done");
     }
 }

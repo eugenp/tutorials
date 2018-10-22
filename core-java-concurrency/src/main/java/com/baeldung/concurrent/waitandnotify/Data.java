@@ -11,7 +11,10 @@ public class Data {
         while (transfer) {
             try {
                 wait();
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); 
+                System.out.println("Thread Interrupted");
+            }
         }
         transfer = true;
 
@@ -23,7 +26,10 @@ public class Data {
         while (!transfer) {
             try { 
                 wait();
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); 
+                System.out.println("Thread Interrupted");
+            }
         }
         transfer = false;
         

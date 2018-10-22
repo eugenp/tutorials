@@ -7,8 +7,7 @@ public class GitHubBasicApp {
 
     public static void main(String[] args) throws IOException {
         String userName = "eugenp";
-        List<String> topContributors = new GitHubBasicService()
-          .getTopContributors(userName);
+        List<String> topContributors = new GitHubBasicService().getTopContributors(userName);
         topContributors.forEach(System.out::println);
     }
 }

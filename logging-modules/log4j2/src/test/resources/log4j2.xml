@@ -1,73 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" status="WARN">
+<Configuration xmlns:xi="http://www.w3.org/2001/XInclude" 
+    packages="com.baeldung" status="WARN">
     <Appenders>
-        <xi:include href="log4j2-includes/console-appender_pattern-layout_colored.xml" />
+        <xi:include
+            href="log4j2-includes/console-appender_pattern-layout_colored.xml" />
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable" />
+            <PatternLayout
+                pattern="%d [%t] %-5level %logger{36} - %msg%n%throwable" />
         </Console>
         <Console name="ConsoleRedAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%style{%message}{red}%n" />
             <MarkerFilter marker="CONN_TRACE" />
         </Console>
         <Console name="ConsoleGreenAppender" target="SYSTEM_OUT">
-            <PatternLayout pattern="%style{userId=%X{userId}:}{white} %style{%message}{green}%n" />
+            <PatternLayout
+                pattern="%style{userId=%X{userId}:}{white} %style{%message}{green}%n" />
         </Console>
-        <File name="JSONLogfileAppender" fileName="target/logfile.json">
+        <Console name="ConsoleJSONAppender" target="SYSTEM_OUT">
+            <JsonLayout complete="false" compact="false">
+                <KeyValuePair key="myCustomField" value="myCustomValue" />
+            </JsonLayout>
+        </Console>
+        <File name="JSONLogfileAppender" fileName="${sys:logging.folder.path}">
             <JSONLayout compact="true" eventEol="true" />
             <BurstFilter level="INFO" rate="2" maxBurst="10" />
         </File>
         <Async name="AsyncAppender" bufferSize="80">
             <AppenderRef ref="JSONLogfileAppender" />
         </Async>
-<!--
-        <Syslog name="Syslog" format="RFC5424" host="localhost" port="514" protocol="TCP" facility="local3" connectTimeoutMillis="10000" reconnectionDelayMillis="5000" mdcId="mdc" includeMDC="true" />
-        <Failover name="FailoverAppender" primary="Syslog">
-            <Failovers>
-                <AppenderRef ref="ConsoleAppender" />
-            </Failovers>
-        </Failover>
--->
+        <!-- <Syslog name="Syslog" format="RFC5424" host="localhost" port="514" 
+            protocol="TCP" facility="local3" connectTimeoutMillis="10000" reconnectionDelayMillis="5000" 
+            mdcId="mdc" includeMDC="true" /> <Failover name="FailoverAppender" primary="Syslog"> 
+            <Failovers> <AppenderRef ref="ConsoleAppender" /> </Failovers> </Failover> -->
         <JDBC name="JDBCAppender" tableName="logs">
-            <ConnectionFactory class="com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory" method="getConnection" />
+            <ConnectionFactory
+                class="com.baeldung.logging.log4j2.tests.jdbc.ConnectionFactory"
+                method="getConnection" />
             <Column name="when" isEventTimestamp="true" />
             <Column name="logger" pattern="%logger" />
             <Column name="level" pattern="%level" />
             <Column name="message" pattern="%message" />
             <Column name="throwable" pattern="%ex{full}" />
         </JDBC>
-        <RollingFile name="XMLRollingfileAppender" fileName="target/logfile.xml" filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
+        <RollingFile name="XMLRollingfileAppender" fileName="target/logfile.xml"
+            filePattern="target/logfile-%d{yyyy-MM-dd}-%i.log.gz">
             <XMLLayout />
             <Policies>
-                <SizeBasedTriggeringPolicy size="17 kB" />
+                <SizeBasedTriggeringPolicy
+                    size="17 kB" />
             </Policies>
         </RollingFile>
+        <MapAppender name="MapAppender"/>
     </Appenders>
     <Loggers>
-        <Logger name="CONSOLE_PATTERN_APPENDER_MARKER" level="TRACE" additivity="false">
+        <Logger name="CONSOLE_PATTERN_APPENDER_MARKER" level="TRACE"
+            additivity="false">
             <AppenderRef ref="ConsoleRedAppender" />
         </Logger>
-        <Logger name="CONSOLE_PATTERN_APPENDER_THREAD_CONTEXT" level="INFO" additivity="false">
+        <Logger name="CONSOLE_PATTERN_APPENDER_THREAD_CONTEXT"
+            level="INFO" additivity="false">
             <AppenderRef ref="ConsoleGreenAppender" />
             <ThreadContextMapFilter>
                 <KeyValuePair key="userId" value="1000" />
             </ThreadContextMapFilter>
         </Logger>
-        <Logger name="ASYNC_JSON_FILE_APPENDER" level="INFO" additivity="false">
+        <Logger name="ASYNC_JSON_FILE_APPENDER" level="INFO"
+            additivity="false">
             <AppenderRef ref="AsyncAppender" />
         </Logger>
-<!--
-        <Logger name="FAIL_OVER_SYSLOG_APPENDER" level="INFO" additivity="false">
-            <AppenderRef ref="FailoverAppender" />
-        </Logger>
--->
+        <!-- <Logger name="FAIL_OVER_SYSLOG_APPENDER" level="INFO" additivity="false"> 
+            <AppenderRef ref="FailoverAppender" /> </Logger> -->
         <Logger name="JDBC_APPENDER" level="INFO" additivity="false">
             <AppenderRef ref="JDBCAppender" />
         </Logger>
-        <Logger name="XML_ROLLING_FILE_APPENDER" level="INFO" additivity="false">
+        <Logger name="XML_ROLLING_FILE_APPENDER" level="INFO"
+            additivity="false">
             <AppenderRef ref="XMLRollingfileAppender" />
+        </Logger>
+        <Logger name="CONSOLE_JSON_APPENDER" level="TRACE"
+            additivity="false">
+            <AppenderRef ref="ConsoleJSONAppender" />
         </Logger>
         <Root level="DEBUG">
             <AppenderRef ref="ConsoleAppender" />
+            <AppenderRef ref="MapAppender" />
         </Root>
     </Loggers>
 </Configuration>

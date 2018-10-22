@@ -19,14 +19,11 @@ class PipeDemo {
 
         p.then((DonePipe<Integer, Integer, Exception, Void>) result -> {
             if (result < 90) {
-                return new DeferredObject<Integer, Exception, Void>()
-                  .resolve(result);
+                return new DeferredObject<Integer, Exception, Void>().resolve(result);
             } else {
-                return new DeferredObject<Integer, Exception, Void>()
-                  .reject(new Exception("Unacceptable value"));
+                return new DeferredObject<Integer, Exception, Void>().reject(new Exception("Unacceptable value"));
             }
-        }).done(r -> status = Result.SUCCESS)
-          .fail(r -> status = Result.FAILURE);
+        }).done(r -> status = Result.SUCCESS).fail(r -> status = Result.FAILURE);
 
         d.resolve(num);
 

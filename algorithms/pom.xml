@@ -5,12 +5,6 @@
     <artifactId>algorithms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <properties>
-        <exec-maven-plugin.version>1.5.0</exec-maven-plugin.version>
-        <lombok.version>1.16.12</lombok.version>
-        <commons-math3.version>3.6.1</commons-math3.version>
-    </properties>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -24,6 +18,11 @@
             <version>${commons-math3.version}</version>
         </dependency>
         <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
@@ -32,17 +31,22 @@
         <dependency>
             <groupId>io.jenetics</groupId>
             <artifactId>jenetics</artifactId>
-            <version>3.7.0</version>
+            <version>${io.jenetics.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jgrapht</groupId>
             <artifactId>jgrapht-core</artifactId>
-            <version>1.0.1</version>
+            <version>${org.jgrapht.core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>pl.allegro.finance</groupId>
+            <artifactId>tradukisto</artifactId>
+            <version>${tradukisto.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.9.0</version>
+            <version>${org.assertj.core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -58,6 +62,7 @@
             </plugins>
         </pluginManagement>
     </build>
+
     <reporting>
         <plugins>
             <plugin>
@@ -77,4 +82,15 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <properties>
+        <lombok.version>1.16.12</lombok.version>
+        <commons-math3.version>3.6.1</commons-math3.version>
+        <tradukisto.version>1.0.1</tradukisto.version>
+        <io.jenetics.version>3.7.0</io.jenetics.version>
+        <org.jgrapht.core.version>1.0.1</org.jgrapht.core.version>
+        <org.assertj.core.version>3.9.0</org.assertj.core.version>
+        <commons-codec.version>1.11</commons-codec.version>
+    </properties>
+
 </project>

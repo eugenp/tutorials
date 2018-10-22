@@ -4,7 +4,6 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
     <name>lombok</name>
     <artifactId>lombok</artifactId>
     <version>0.1-SNAPSHOT</version>
@@ -16,7 +15,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -24,17 +22,20 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.1-api</artifactId>
             <version>${hibernate-jpa-2.1-api.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
-
         <finalName>lombok</finalName>
         <resources>
             <resource>
@@ -58,6 +59,7 @@
                         </goals>
                         <configuration>
                             <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
+                            <outputDirectory>${project.build.directory}/delombok</outputDirectory>
                             <addOutputDirectory>false</addOutputDirectory>
                             <formatPreferences>
                                 <javaLangAsFQN>skip</javaLangAsFQN>
@@ -65,27 +67,21 @@
                             <verbose>false</verbose>
                         </configuration>
                     </execution>
-                    <!-- This is for delomboking also your tests sources. 
-                        <execution> <id>test-delombok</id> <phase>generate-test-sources</phase> <goals> 
-                        <goal>testDelombok</goal> </goals> <configuration> <verbose>false</verbose> 
-                        </configuration> </execution> -->
+                    <!-- This is for delomboking also your tests sources. <execution> <id>test-delombok</id> <phase>generate-test-sources</phase> <goals> <goal>testDelombok</goal> </goals> 
+                        <configuration> <verbose>false</verbose> </configuration> </execution> -->
                 </executions>
             </plugin>
-
         </plugins>
-
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- lombok: https://projectlombok.org/changelog.html -->
         <lombok.version>1.16.18</lombok.version>
-
         <!-- various -->
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
-
         <!-- delombok maven plugin -->
         <delombok-maven-plugin.version>1.16.10.0</delombok-maven-plugin.version>
+        <assertj-core.version>3.8.0</assertj-core.version>
     </properties>
 
 </project>

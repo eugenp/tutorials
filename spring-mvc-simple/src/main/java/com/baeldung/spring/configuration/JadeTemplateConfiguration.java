@@ -16,24 +16,24 @@ import de.neuland.jade4j.spring.view.JadeViewResolver;
 public class JadeTemplateConfiguration {
     @Bean
     public SpringTemplateLoader templateLoader() {
-            SpringTemplateLoader templateLoader = new SpringTemplateLoader();
-            templateLoader.setBasePath("/WEB-INF/views/");
-            templateLoader.setSuffix(".jade");
-            return templateLoader;
+        SpringTemplateLoader templateLoader = new SpringTemplateLoader();
+        templateLoader.setBasePath("/WEB-INF/views/");
+        templateLoader.setSuffix(".jade");
+        return templateLoader;
     }
 
     @Bean
     public JadeConfiguration jadeConfiguration() {
-            JadeConfiguration configuration = new JadeConfiguration();
-            configuration.setCaching(false);
-            configuration.setTemplateLoader(templateLoader());
-            return configuration;
+        JadeConfiguration configuration = new JadeConfiguration();
+        configuration.setCaching(false);
+        configuration.setTemplateLoader(templateLoader());
+        return configuration;
     }
 
     @Bean
     public ViewResolver viewResolver() {
-            JadeViewResolver viewResolver = new JadeViewResolver();
-            viewResolver.setConfiguration(jadeConfiguration());
-            return viewResolver;
+        JadeViewResolver viewResolver = new JadeViewResolver();
+        viewResolver.setConfiguration(jadeConfiguration());
+        return viewResolver;
     }
 }

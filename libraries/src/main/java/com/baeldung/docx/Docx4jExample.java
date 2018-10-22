@@ -53,16 +53,12 @@ class Docx4jExample {
 
         File image = new File(imagePath);
         byte[] fileContent = Files.readAllBytes(image.toPath());
-        BinaryPartAbstractImage imagePart = BinaryPartAbstractImage
-          .createImagePart(wordPackage, fileContent);
-        Inline inline = imagePart.createImageInline(
-          "Baeldung Image", "Alt Text", 1, 2, false);
+        BinaryPartAbstractImage imagePart = BinaryPartAbstractImage.createImagePart(wordPackage, fileContent);
+        Inline inline = imagePart.createImageInline("Baeldung Image", "Alt Text", 1, 2, false);
         P Imageparagraph = addImageToParagraph(inline);
         mainDocumentPart.getContent().add(Imageparagraph);
 
-        int writableWidthTwips = wordPackage.getDocumentModel()
-          .getSections().get(0).getPageDimensions()
-          .getWritableWidthTwips();
+        int writableWidthTwips = wordPackage.getDocumentModel().getSections().get(0).getPageDimensions().getWritableWidthTwips();
         int columnNumber = 3;
         Tbl tbl = TblFactory.createTable(3, 3, writableWidthTwips / columnNumber);
         List<Object> rows = tbl.getContent();

@@ -1,375 +1,1674 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
-    <artifactId>parent-modules</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <name>parent-modules</name>
-    <packaging>pom</packaging>
+	<groupId>com.baeldung</groupId>
+	<artifactId>parent-modules</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>parent-modules</name>
+	<packaging>pom</packaging>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gib.referenceBranch>refs/heads/master</gib.referenceBranch>
-        <gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
-        <gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
-        <gib.failOnError>false</gib.failOnError>
-        <!-- <gib.enabled>false</gib.enabled>-->
-        <junit.version>4.12</junit.version>
-        <org.hamcrest.version>1.3</org.hamcrest.version>
-        <mockito.version>2.8.9</mockito.version>
-        <!-- logging -->
-        <org.slf4j.version>1.7.21</org.slf4j.version>
-        <logback.version>1.1.7</logback.version>
-        <!-- plugins -->
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-    </properties>
+	<dependencies>
+		<!-- logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>${logback.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${org.slf4j.version}</version>
+		</dependency>
 
-    <modules>
-        <module>parent-boot-5</module>
-        <module>asm</module>     
-        <module>atomix</module>
-        <module>apache-cayenne</module>
-        <module>aws</module>
-        <module>akka-streams</module>
-        <module>algorithms</module>
-        <module>annotations</module>
-        <module>apache-cxf</module>
-        <module>apache-fop</module>
-        <module>apache-poi</module>
-        <module>apache-thrift</module>
-        <module>autovalue</module>
-        <module>axon</module>
-        <module>bootique</module>
+		<!-- test -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+        </dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>${org.hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>${org.hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>${org.hamcrest.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.surefire</groupId>
+			<artifactId>surefire-logger-api</artifactId>
+			<version>${maven-surefire-plugin.version}</version>
+			<!-- to get around bug https://github.com/junit-team/junit5/issues/801 -->
+			<scope>test</scope>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
 
-        <module>cdi</module>
-        <!-- <module>core-java-9</module> -->
-        <module>core-java</module>
-        <module>core-java-8</module>
-        <module>core-java-concurrency</module>
-        <module>couchbase</module>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${exec-maven-plugin.version}</version>
+				<configuration>
+					<executable>maven</executable>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<forkCount>3</forkCount>
+					<reuseForks>true</reuseForks>
+					<excludes>
+						<exclude>**/*IntegrationTest.java</exclude>
+						<exclude>**/*IntTest.java</exclude>
+						<exclude>**/*LongRunningUnitTest.java</exclude>
+						<exclude>**/*ManualTest.java</exclude>
+						<exclude>**/JdbcTest.java</exclude>
+						<exclude>**/*LiveTest.java</exclude>
+					</excludes>
+				</configuration>
+				<dependencies>
+	                <dependency>
+	                    <groupId>org.junit.platform</groupId>
+	                    <artifactId>junit-platform-surefire-provider</artifactId>
+	                    <version>${junit-platform.version}</version>
+	                </dependency>
+	                <dependency>
+	                    <groupId>org.junit.jupiter</groupId>
+	                    <artifactId>junit-jupiter-engine</artifactId>
+	                    <version>${junit-jupiter.version}</version>
+	                </dependency>
+					<dependency>
+						<groupId>org.junit.vintage</groupId>
+						<artifactId>junit-vintage-engine</artifactId>
+  	                    <version>${junit-jupiter.version}</version>
+					</dependency>
+            	</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>${maven-pmd-plugin.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.baeldung.pmd</groupId>
+						<artifactId>custom-pmd</artifactId>
+						<version>${custom-pmd.version}</version>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<failurePriority>5</failurePriority>
+					<aggregate>false</aggregate>
+					<failOnViolation>true</failOnViolation>
+					<verbose>true</verbose>
+					<linkXRef>true</linkXRef>
+					<includeTests>true</includeTests>
+					<sourceEncoding>UTF-8</sourceEncoding>
+					<targetJdk>${java.version}</targetJdk>
+					<rulesets>
+						<ruleset>${tutorialsproject.basedir}/baeldung-pmd-rules.xml</ruleset>
+					</rulesets>
+					<excludeRoots>
+						<excludeRoot>target/generated-sources</excludeRoot>
+					</excludeRoots>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.commonjava.maven.plugins</groupId>
+				<artifactId>directory-maven-plugin</artifactId>
+				<version>${directory-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>directories</id>
+						<goals>
+							<goal>directory-of</goal>
+						</goals>
+						<phase>validate</phase>
+						<configuration>
+							<property>tutorialsproject.basedir</property>
+							<project>
+								<groupId>com.baeldung</groupId>
+								<artifactId>parent-modules</artifactId>
+							</project>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>${maven-install-plugin.version}</version>
+				<configuration>
+					<groupId>org.baeldung.pmd</groupId>
+					<artifactId>custom-pmd</artifactId>
+					<version>${custom-pmd.version}</version>
+					<packaging>jar</packaging>
+					<file>${tutorialsproject.basedir}/custom-pmd-${custom-pmd.version}.jar</file>
+					<generatePom>true</generatePom>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install-jar-lib</id>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<phase>validate</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin.version}</version>
+			</plugin>
+		</plugins>
+		<extensions>
+			<extension>
+				<groupId>com.vackosar.gitflowincrementalbuilder</groupId>
+				<artifactId>gitflow-incremental-builder</artifactId>
+				<version>${gitflow-incremental-builder.version}</version>
+			</extension>
+		</extensions>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings
+					only. It has no influence on the Maven build itself. -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.commonjava.maven.plugins
+										</groupId>
+										<artifactId>
+											directory-maven-plugin
+										</artifactId>
+										<versionRange>
+											[0.3.1,)
+										</versionRange>
+										<goals>
+											<goal>directory-of</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-install-plugin
+										</artifactId>
+										<versionRange>
+											[2.5.1,)
+										</versionRange>
+										<goals>
+											<goal>install-file</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
-        <module>deltaspike</module>
-        <module>dozer</module>
+	<profiles>
 
-        <module>ethereumj</module>
+		<profile>
+			<id>default-first</id>
+			<build>
+				<plugins>
 
-        <!--<module>ejb</module>-->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${maven-surefire-plugin.version}</version>
+						<configuration>
+							<forkCount>3</forkCount>
+							<reuseForks>true</reuseForks>
+							<excludes>
+								<exclude>**/*IntegrationTest.java</exclude>
+								<exclude>**/*IntTest.java</exclude>
+								<exclude>**/*LongRunningUnitTest.java</exclude>
+								<exclude>**/*ManualTest.java</exclude>
+								<exclude>**/JdbcTest.java</exclude>
+								<exclude>**/*LiveTest.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
 
-        <module>feign</module>
+				</plugins>
+			</build>
 
-        <!-- <module>testing-modules/gatling</module> --> <!-- not meant to run as part of the standard build -->
+			<modules>
+				<module>parent-boot-1</module>
+				<module>parent-boot-2</module>
+				<module>parent-spring-4</module>
+				<module>parent-spring-5</module>
+				<module>parent-java</module>
+				<module>parent-kotlin</module>
+				<module>asm</module>
+				<module>atomix</module>
+				<module>apache-cayenne</module>
+				<module>aws</module>
+				<module>aws-lambda</module>
+				<module>akka-streams</module>
+				<module>algorithms</module>
+				<module>annotations</module>
+				<module>apache-cxf</module>
+				<module>apache-fop</module>
+				<module>apache-geode</module>
+				<module>apache-poi</module>
+				<module>apache-tika</module>
+				<module>apache-thrift</module>
+				<module>apache-curator</module>
+				<module>apache-zookeeper</module>
+				<module>apache-opennlp</module>
+				<module>autovalue</module>
+				<module>axon</module>
+				<module>azure</module>
+				<module>bootique</module>
+				<module>cdi</module>
+				<module>java-strings</module>
+				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				<module>core-java</module>
+				<module>core-java-collections</module>
+				<module>java-collections-conversions</module>
+				<module>java-collections-maps</module>
+				<module>core-java-io</module>
+				<module>core-java-8</module>
+				<module>java-streams</module>
+                <module>persistence-modules/core-java-persistence</module>
+				<module>core-kotlin</module>
+				<module>kotlin-libraries</module>
+				<module>core-groovy</module>
+				<module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
+				<module>couchbase</module>
+				<module>persistence-modules/deltaspike</module>
+				<module>dozer</module>
+				<module>ethereum</module>
+				<module>ejb</module>
+				<module>ejb/ejb-client</module>
+				<module>feign</module>
+				<module>flips</module>
+				<module>testing-modules/gatling</module>
+				<module>geotools</module>
+				<module>testing-modules/groovy-spock</module>
+				<module>google-cloud</module>
+				<module>google-web-toolkit</module>
+				<module>gson</module>
+				<module>guava</module>
+				<module>guava-collections</module>
+				<module>guava-modules/guava-18</module>
+				<module>guava-modules/guava-19</module>
+				<module>guava-modules/guava-21</module>
+				<module>guice</module>
+				<module>disruptor</module>
+				<module>spring-static-resources</module>
+				<module>hazelcast</module>
+				<module>hbase</module>
+				<module>hibernate5</module>
+				<module>httpclient</module>
+				<module>hystrix</module>
+				<module>image-processing</module>
+				<module>immutables</module>
+				<module>persistence-modules/influxdb</module>
+				<module>jackson</module>
+				<module>persistence-modules/java-cassandra</module>
+				<module>vavr</module>
+				<module>java-lite</module>
+				<module>java-numbers</module>
+				<module>java-rmi</module>
+				<module>java-vavr-stream</module>
+				<module>javax-servlets</module>
+				<module>javaxval</module>
+				<module>jaxb</module>
+				<module>javafx</module>
+				<module>jgroups</module>
+				<module>jee-7</module>
+				<module>jee-7-security</module>
+				<module>jhipster</module>
+				<module>jjwt</module>
+				<module>jsf</module>
+				<module>json-path</module>
+				<module>json</module>
+				<module>jsoup</module>
+				<module>testing-modules/junit-5</module>
+				<!-- <module>jws</module> --><!-- POM jar version repo download failure -->
+				<module>libraries</module>
+				<module>libraries-data</module>
+				<module>libraries-security</module>
+				<module>libraries-server</module>
+				<module>linkrest</module>
+				<module>logging-modules/log-mdc</module>
+				<module>logging-modules/log4j</module>
+				<module>logging-modules/log4j2</module>
+				<module>logging-modules/logback</module>
+				<module>lombok</module>
+				<module>mapstruct</module>
+				<module>metrics</module>
+				<module>maven</module>
+				<module>mesos-marathon</module>
+				<module>msf4j</module>
+				<module>testing-modules/mockito</module>
+				<module>testing-modules/mockito-2</module>
+				<module>testing-modules/mocks</module>
+				<module>mustache</module>
+				<module>mvn-wrapper</module>
+				<module>noexception</module>
+				<module>persistence-modules/orientdb</module>
+				<module>osgi</module>
+				<module>orika</module>
+				<module>patterns</module>
+				<module>pdf</module>
+				<module>protobuffer</module>
+				<module>persistence-modules/querydsl</module>
+				<module>reactor-core</module>
+				<module>persistence-modules/redis</module>
+				<module>testing-modules/rest-assured</module>
+				<module>testing-modules/rest-testing</module>
+				<module>resteasy</module>
+				<module>rxjava</module>
+				<module>rxjava-2</module>
+				<module>spring-swagger-codegen</module>
+				<module>testing-modules/selenium-junit-testng</module>
+				<module>persistence-modules/solr</module>
+				<module>spark-java</module>
+				<module>spring-4</module>
+				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
+				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
+				<module>spring-5-reactive-client</module>
+				<module>spring-5-mvc</module>
+				<module>spring-5-security</module>
+				<module>spring-activiti</module>
+				<module>spring-akka</module>
+				<module>spring-amqp</module>
+				<module>spring-all</module>
+				<module>spring-amqp-simple</module>
+				<module>spring-apache-camel</module>
+				<module>spring-batch</module>
+				<module>spring-bom</module>
+				<module>spring-boot</module>
+				<module>spring-boot-client</module>
+				<module>spring-boot-keycloak</module>
+				<module>spring-boot-bootstrap</module>
+				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
+				<module>spring-boot-ops</module>
+				<module>persistence-modules/spring-boot-persistence</module>
+				<module>spring-boot-security</module>
+				<module>spring-boot-mvc</module>
+                <module>spring-boot-vue</module>
+				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
+				<module>spring-cloud-data-flow</module>
+				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
+				<module>spring-core</module>
+				<module>spring-cucumber</module>
+				<module>spring-ejb</module>
+				<module>spring-aop</module>
+				<module>persistence-modules/spring-data-cassandra</module>
+				<module>spring-data-couchbase-2</module>
+				<module>persistence-modules/spring-data-dynamodb</module>
+				<module>persistence-modules/spring-data-elasticsearch</module>
+				<module>persistence-modules/spring-data-jpa</module>
+				<module>persistence-modules/spring-data-keyvalue</module>
+				<module>persistence-modules/spring-data-mongodb</module>
+				<module>persistence-modules/spring-data-neo4j</module>
+				<module>persistence-modules/spring-data-redis</module>
+				<module>spring-data-rest</module>
+				<module>persistence-modules/spring-data-solr</module>
+				<module>spring-dispatcher-servlet</module>
+				<module>spring-exceptions</module>
+				<module>spring-freemarker</module>
+				<module>persistence-modules/spring-hibernate-3</module>
+				<module>persistence-modules/spring-hibernate4</module>
+				<module>persistence-modules/spring-hibernate-5</module>
+				<module>persistence-modules/spring-data-eclipselink</module>
+				<module>spring-integration</module>
+				<module>spring-jenkins-pipeline</module>
+				<module>spring-jersey</module>
+				<module>jmeter</module>
+				<module>spring-jms</module>
+				<module>spring-jooq</module>
+				<module>persistence-modules/spring-jpa</module>
+				<module>spring-kafka</module>
+				<module>spring-katharsis</module>
+				<module>spring-ldap</module>
+				<module>spring-mockito</module>
+				<module>spring-mvc-forms-jsp</module>
+				<module>spring-mvc-forms-thymeleaf</module>
+				<module>spring-mvc-java</module>
+				<module>spring-mvc-velocity</module>
+				<module>spring-mvc-webflow</module>
+				<module>spring-mvc-xml</module>
+				<module>spring-mvc-kotlin</module>
+				<module>spring-protobuf</module>
+				<module>spring-quartz</module>
+				<module>spring-rest-angular</module>
+				<module>spring-rest-full</module>
+				<module>spring-rest-query-language</module>
+				<!-- <module>spring-rest</module> --> <!-- temporarily disabled -->
+				<!-- <module>spring-rest-simple</module> --> <!-- temporarily disabled -->
+				<module>spring-resttemplate</module>
+			</modules>
 
-        <module>geotools</module>
-        <module>testing-modules/groovy-spock</module>
-        <module>gson</module>
-        <module>guava</module>
-        <module>guava-modules/guava-18</module>
-        <module>guava-modules/guava-19</module>
-        <module>guava-modules/guava-21</module>
-        <module>guice</module>
-        <module>disruptor</module>
-
-        <module>handling-spring-static-resources</module>
-        <module>hazelcast</module>
-        <module>hbase</module>
-        <!--<module>hibernate5</module>-->
-        <module>httpclient</module>
-        <module>hystrix</module>
-
-        <module>image-processing</module>
-        <module>immutables</module>
-        <module>influxdb</module>
-
-        <module>jackson</module>
-        <!--         <module>persistence-modules/java-cassandra</module> -->
-        <module>vavr</module>
-		<module>java-lite</module>
-        <module>javax-servlets</module>
-        <module>javaxval</module>
-        <module>jaxb</module>
-        <module>jee-7</module>
-        <!-- <module>jhipster/jhipster-monolithic</module> -->
-        <module>jjwt</module>
-        <module>jpa-storedprocedure</module>
-        <module>jsf</module>
-        <module>json-path</module>
-        <module>json</module>
-        <module>jsoup</module>
-        <module>testing-modules/junit-5</module>
-        <module>jws</module>
-
-        <module>libraries</module>
-        <module>libraries-data</module>
-        <module>linkrest</module>        
-        <module>logging-modules/log-mdc</module>
-        <module>logging-modules/log4j</module>
-        <module>logging-modules/log4j2</module>
-        <module>logging-modules/logback</module>
-        <module>lombok</module>
-       <!-- <module>kotlin</module>-->
-        <module>mapstruct</module>
-        <module>metrics</module>
-        <module>mesos-marathon</module>
-        <module>testing-modules/mockito</module>
-        <module>testing-modules/mockito-2</module>
-        <module>testing-modules/mocks</module>
-        <module>mustache</module>
-        <module>noexception</module>
-        <module>orientdb</module>
-        <module>osgi</module>
-        <module>orika</module>
-
-        <module>patterns</module>
-        <module>pdf</module>
-        <module>protobuffer</module>
-
-        <module>persistence-modules/querydsl</module>
-
-        <!-- <module>raml</module> -->
-        <module>reactor-core</module>
-        <module>persistence-modules/redis</module>
-        <module>testing-modules/rest-assured</module>
-        <module>testing-modules/rest-testing</module>
-        <module>resteasy</module>
-        <module>rxjava</module>
-        <module>spring-swagger-codegen</module>
-
-        <module>testing-modules/selenium-junit-testng</module>
-        <module>persistence-modules/solr</module>
-        <module>spark-java</module>
-      <!--  <module>spring-5</module>-->
-        <module>spring-5-reactive</module>
-        <module>spring-5-mvc</module>
-        <module>spring-activiti</module>
-        <module>spring-akka</module>
-        <module>spring-amqp</module>
-        <module>spring-all</module>
-        <module>spring-amqp-simple</module>
-        <module>spring-apache-camel</module>
-        <module>spring-batch</module>
-        <module>spring-bom</module>
-        <module>spring-boot</module>
-	    <module>spring-boot-keycloak</module>
-        <module>spring-boot-bootstrap</module>
-        <module>spring-boot-admin</module>
-        <module>spring-boot-security</module>
-        <module>spring-cloud-data-flow</module>
-        <module>spring-cloud</module>
-        <module>spring-core</module>
-        <module>spring-cucumber</module>
-        <module>spring-aop</module>
-        <module>persistence-modules/spring-data-cassandra</module>
-        <module>spring-data-couchbase-2</module>
-        <module>persistence-modules/spring-data-dynamodb</module>
-        <module>spring-data-elasticsearch</module>
-        <module>spring-data-mongodb</module>
-        <module>persistence-modules/spring-data-neo4j</module>
-        <module>persistence-modules/spring-data-redis</module>
-        <module>spring-data-rest</module>
-        <module>persistence-modules/spring-data-solr</module>
-        <module>spring-dispatcher-servlet</module>
-        <module>spring-exceptions</module>
-        <module>spring-freemarker</module>
-        <module>persistence-modules/spring-hibernate-3</module>
-        <module>spring-hibernate4</module>
-        <module>persistence-modules/spring-hibernate-5</module>
-        <module>persistence-modules/spring-data-eclipselink</module>
-        <module>spring-integration</module>
-        <module>spring-jenkins-pipeline</module>
-        <module>spring-jersey</module>
-        <module>jmeter</module>
-        <module>spring-jms</module>
-        <module>spring-jooq</module>
-        <module>persistence-modules/spring-jpa</module>
-        <module>spring-kafka</module>
-        <module>spring-katharsis</module>
-        <module>spring-ldap</module>
-        <module>spring-mockito</module>
-        <module>spring-mvc-email</module>
-        <module>spring-mvc-forms</module>
-        <module>spring-mvc-java</module>
-        <module>spring-mvc-tiles</module>
-        <module>spring-mvc-velocity</module>
-        <module>spring-mvc-webflow</module>
-        <module>spring-mvc-xml</module>
-        <module>spring-mvc-simple</module>
-        <module>spring-mvc-kotlin</module>
-        <module>spring-security-openid</module>
-        <module>spring-protobuf</module>
-        <module>spring-quartz</module>
-        <module>spring-rest-angular</module>
-        <module>spring-rest-docs</module>
-        <module>spring-rest-full</module>
-        <module>spring-rest-query-language</module>
-        <module>spring-rest</module>
-        <module>spring-rest-simple</module>
-        <module>spring-security-acl</module>
-        <module>spring-security-cache-control</module>
-        <module>spring-security-client/spring-security-jsp-authentication</module>
-        <module>spring-security-client/spring-security-jsp-authorize</module>
-        <module>spring-security-client/spring-security-jsp-config</module>
-        <module>spring-security-client/spring-security-mvc</module>
-        <module>spring-security-client/spring-security-thymeleaf-authentication</module>
-        <module>spring-security-client/spring-security-thymeleaf-authorize</module>
-        <module>spring-security-client/spring-security-thymeleaf-config</module>
-        <module>spring-security-core</module>
-        <module>spring-security-mvc-boot</module>
-        <module>spring-security-mvc-custom</module>
-        <module>spring-security-mvc-digest-auth</module>
-        <module>spring-security-mvc-ldap</module>
-        <module>spring-security-mvc-login</module>
-        <module>spring-security-mvc-persisted-remember-me</module>
-        <module>spring-security-mvc-session</module>
-        <module>spring-security-mvc-socket</module>
-        <module>spring-security-rest-basic-auth</module>
-        <module>spring-security-rest-custom</module>
-        <module>spring-security-rest</module>
-        <module>spring-security-sso</module>
-        <module>spring-security-x509</module>
-        <module>spring-session</module>
-        <module>spring-sleuth</module>
-        <module>spring-social-login</module>
-        <module>spring-spel</module>
-        <module>spring-state-machine</module>
-        <module>spring-thymeleaf</module>
-        <module>spring-userservice</module>
-        <module>spring-zuul</module>
-        <module>spring-reactor</module>
-        <module>spring-vertx</module>
+		</profile>
 		
-		<module>spring-rest-embedded-tomcat</module>
+        <profile>
+            <id>default-second</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
+            <modules>
+                <module>parent-boot-1</module>
+                <module>parent-boot-2</module>
+                <module>parent-spring-4</module>
+                <module>parent-spring-5</module>
+                <module>parent-java</module>
+                <module>parent-kotlin</module>
+                
+                <module>spring-session</module>
+                <module>spring-sleuth</module>
+                <module>spring-social-login</module>
+                <module>spring-spel</module>
+                <module>spring-state-machine</module>
+                <module>spring-thymeleaf</module>
+                <module>spring-userservice</module>
+                <module>spring-zuul</module>
+                <module>spring-remoting</module>
+                <module>spring-reactor</module>
+                <module>spring-vertx</module>
+                <module>spring-jinq</module>
+                <module>spring-rest-embedded-tomcat</module>
+                <module>testing-modules/testing</module>
+                <module>testing-modules/testng</module>
+                <module>video-tutorials</module>
+                <module>xml</module>
+                <module>xmlunit-2</module>
+                <module>struts-2</module>
+                <module>apache-velocity</module>
+                <module>apache-solrj</module>
+                <module>rabbitmq</module>
+                <module>vertx</module>
+                <module>persistence-modules/spring-data-gemfire</module>
+                <module>mybatis</module>
+                <module>spring-drools</module>
+                <module>drools</module>
+                <module>persistence-modules/liquibase</module>
+                <module>spring-boot-property-exp</module>
+                <module>testing-modules/mockserver</module>
+                <module>testing-modules/test-containers</module>
+                <module>undertow</module>
+                <module>vaadin</module>
+                <module>vertx-and-rxjava</module>
+                <module>saas</module>
+                <module>deeplearning4j</module>
+                <module>lucene</module>
+                <module>vraptor</module>
+                <module>persistence-modules/java-cockroachdb</module>
+                <module>spring-security-thymeleaf</module>
+                <module>persistence-modules/java-jdbi</module>
+                <module>jersey</module>
+                <module>java-spi</module>
+                <module>performance-tests</module>
+                <module>twilio</module>
+                <module>spring-boot-ctx-fluent</module>
+                <module>java-ee-8-security-api</module>
+                <module>spring-webflux-amqp</module>
+                <module>antlr</module>
+                <module>maven-archetype</module>
+                <module>optaplanner</module>
+                <module>apache-meecrowave</module>
+                <module>spring-reactive-kotlin</module>
+                <module>jnosql</module>
+                <module>spring-boot-angular-ecommerce</module>
+                <module>cdi-portable-extension</module>             
+                <module>jta</module>
+                <!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+                <module>java-websocket</module>
+                <module>activejdbc</module>
+                <module>animal-sniffer-mvn-plugin</module>
+                <module>apache-avro</module>
+                <module>apache-bval</module>
+                <module>apache-shiro</module>
+                <module>apache-spark</module>
+                <module>asciidoctor</module>
+                <module>checker-plugin</module>
+                <!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
+                <!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
+                <module>core-java-sun</module>
+                <module>custom-pmd</module>
+                <module>dagger</module>
+                <module>data-structures</module>
+                <module>dubbo</module>
+                <module>flyway</module>
+                <!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
+                <!-- <module>JGit</module> --><!-- Unit test failure -->
+                <module>jni</module>
+                <module>jooby</module>
+                <!-- <module>micronaut</module> --><!-- Not upgraded to java 9 -->
+                <!-- <module>microprofile</module> --><!-- Takes too much time : Downloads 93 MBs zip and .. -->
+                <!-- <module>muleesb</module> --><!-- load main class org.mule.munit.remote.RemoteRunner -->
+                <module>ratpack</module>
+                <module>rest-with-spark-java</module>
+                <module>spring-boot-autoconfiguration</module>
+                <module>spring-boot-custom-starter</module>
+                <module>spring-boot-jasypt</module>
+                <module>spring-custom-aop</module>
+                <module>spring-data-rest-querydsl</module>
+                <module>spring-groovy</module>
+                <module>spring-mobile</module>
+                <module>spring-mustache</module>
+                <module>spring-mvc-simple</module>
+                <module>spring-mybatis</module>
+                <module>spring-rest-hal-browser</module>
+                <module>spring-rest-shell</module>
+                <module>spring-rest-template</module>
+                <module>spring-roo</module>
+                <module>spring-security-stormpath</module>
+                <module>sse-jaxrs</module>
+                <module>static-analysis</module>
+                <module>stripe</module>
+                <!-- <module>structurizr</module> --><!-- Artiifact not found -->
+                <module>Twitter4J</module>
+                <module>wicket</module>
+                <module>xstream</module>
+                <module>cas/cas-secured-app</module>
+                <module>cas/cas-server</module>
+                <!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
+                <!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
+                <!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
+                <!-- <module>guest/log4j2-example</module> --><!-- guest post on different site -->
+                <!-- <module>guest/logback-example</module> --><!-- guest post on different site -->
+                <!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
+                <!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
+                <!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
+                <!-- <module>guest/spring-mvc</module> --><!-- guest post on different site -->
+                <!-- <module>guest/spring-security</module> --><!-- guest post on different site -->
+                <!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
+                <!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
+                <!-- <module>jenkins/hello-world</module> --> <!-- disabled in the default profile -->
+                <!-- <module>rule-engines/easy-rules</module> --><!-- Wrong Parent -->
+                <!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
+                <!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
+                <module>spring-boot-custom-starter/greeter</module>
+                <module>spring-boot-h2/spring-boot-h2-database</module>
+                <!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
+                <!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
+                <!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
+                <!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
+                <module>flyway-cdi-extension</module>
+                
+                <module>spring-security-acl</module>
+                <module>spring-security-cache-control</module>
+                <module>spring-security-client/spring-security-jsp-authentication</module>
+                <module>spring-security-client/spring-security-jsp-authorize</module>
+                <module>spring-security-client/spring-security-jsp-config</module>
+                <module>spring-security-client/spring-security-mvc</module>
+                <module>spring-security-client/spring-security-thymeleaf-authentication</module>
+                <module>spring-security-client/spring-security-thymeleaf-authorize</module>
+                <module>spring-security-client/spring-security-thymeleaf-config</module>
+                <module>spring-security-core</module>
+                <module>spring-security-mvc-boot</module>
+                <module>spring-security-mvc-custom</module>
+                <module>spring-security-mvc-digest-auth</module>
+                <module>spring-security-mvc-ldap</module>
+                <module>spring-security-mvc-login</module>
+                <module>spring-security-mvc-persisted-remember-me</module>
+                <module>spring-security-mvc-session</module>
+                <module>spring-security-mvc-socket</module>
+                <module>spring-security-openid</module>
+                <!--<module>spring-security-react</module> -->
+                <module>spring-security-rest-basic-auth</module>
+                <module>spring-security-rest-custom</module>
+                <module>spring-security-rest</module>
+                <module>spring-security-sso</module>
+                <module>spring-security-x509</module>                   
+            </modules>
+
+        </profile>
         
+		<profile>
+			<id>spring-context</id>
+			<build>
+				<plugins>
 
-        <module>testing-modules/testing</module>
-        <module>testing-modules/testng</module>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>${maven-surefire-plugin.version}</version>
+						<configuration>
+							<forkCount>3</forkCount>
+							<reuseForks>true</reuseForks>
+							<includes>
+								<include>**/*SpringContextIntegrationTest.java</include>
+							</includes>
+						</configuration>
+					</plugin>
 
-        <module>video-tutorials</module>
+				</plugins>
+			</build>
 
-        <module>xml</module>
-        <module>xmlunit-2</module>
-        <module>struts-2</module>
-        <module>apache-velocity</module>
-        <module>apache-solrj</module>
+			<modules>
+				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
+				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-client</module>
+				<module>spring-5-reactive-security</module>
+				<module>spring-5-security</module>
+				<module>spring-activiti</module>
+				<module>spring-akka</module>
+				<module>spring-all</module>
+				<module>spring-aop</module>
+				<module>spring-apache-camel</module>
+				<module>spring-batch</module>
+				<module>spring-bom</module>
+				<module>spring-boot-admin/spring-boot-admin-client</module>
+				<module>spring-boot-admin/spring-boot-admin-server</module>
+				<module>spring-boot-bootstrap</module>
+				<module>spring-boot-bootstrap</module>
+				<module>spring-boot-camel</module>
+				<module>spring-boot-client</module>
+				<module>spring-boot-custom-starter</module>
+				<module>greeter-spring-boot-autoconfigure</module>
+				<module>greeter-spring-boot-sample-app</module>
+				<module>spring-boot-h2/spring-boot-h2-database</module>
+				<module>spring-boot-jasypt</module>
+				<module>spring-boot-keycloak</module>
+				<module>spring-boot-mvc</module>
+				<module>spring-boot-property-exp/property-exp-custom-config</module>
+				<module>spring-boot-property-exp/property-exp-default-config</module>
+				<module>spring-boot-vue</module>
+				<module>spring-cloud</module>
+				<module>spring-cloud/spring-cloud-archaius/basic-config</module>
+				<module>spring-cloud/spring-cloud-archaius/extra-configs</module>
+				<module>spring-cloud/spring-cloud-bootstrap/config</module>
+				<module>spring-cloud/spring-cloud-contract/spring-cloud-contract-consumer</module>
+				<module>spring-cloud/spring-cloud-contract/spring-cloud-contract-producer</module>
+				<module>spring-cloud/spring-cloud-gateway</module>
+				<module>spring-cloud/spring-cloud-kubernetes/demo-backend</module>
+				<module>spring-cloud/spring-cloud-rest/spring-cloud-rest-config-server</module>
+				<module>spring-cloud/spring-cloud-ribbon-client                </module>
+				<module>spring-cloud/spring-cloud-security/auth-client</module>
+				<module>spring-cloud/spring-cloud-security/auth-resource</module>
+				<module>spring-cloud/spring-cloud-security/auth-server</module>
+				<module>spring-cloud/spring-cloud-stream/spring-cloud-stream-rabbit</module>
+				<module>spring-cloud/spring-cloud-task/springcloudtasksink</module>
+				<module>spring-cloud/spring-cloud-zookeeper                     </module>
+				<module>spring-cloud/spring-cloud-bus/spring-cloud-config-server</module>
+				<module>spring-cloud/spring-cloud-data-flow/log-sink</module>
+				<module>spring-cloud/spring-cloud-data-flow/time-processor</module>
+				<module>spring-cloud/spring-cloud-data-flow/time-source</module>
+				<module>spring-cucumber</module>
+				<module>persistence-modules/spring-data-keyvalue</module>
+				<module>spring-data-rest</module>
+				<module>spring-dispatcher-servlet</module>
+				<module>spring-drools</module>
+				<module>spring-freemarker</module>
+				<module>persistence-modules/spring-hibernate-3</module>
+				<module>persistence-modules/spring-hibernate4</module>
+				<module>spring-integration</module>
+				<module>spring-jenkins-pipeline</module>
+				<module>spring-jersey</module>
+				<module>spring-jinq</module>
+				<module>spring-jms</module>
+				<module>spring-kafka</module>
+				<module>spring-katharsis</module>
+				<module>spring-ldap</module>
+				<module>spring-mobile</module>
+				<module>spring-mockito</module>
+				<module>spring-mvc-forms-thymeleaf</module>
+				<module>spring-mvc-java</module>
+				<module>spring-mvc-velocity</module>
+				<module>spring-mvc-webflow</module>
+				<module>spring-protobuf</module>
+				<module>spring-quartz</module>
+				<module>remoting-hessian-burlap/spring-remoting-hessian-burlap-client</module>
+				<module>remoting-hessian-burlap/remoting-hessian-burlap-server</module>
+				<module>spring-reactor</module>
+				<module>spring-remoting/</module>
+				<module>spring-remoting/remoting-http/remoting-http-server</module>
+				<module>spring-remoting/remoting-jms/remoting-jms-client</module>
+				<module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
+				<module>spring-rest</module>
+				<module>spring-rest-angular</module>
+				<module>spring-rest-embedded-tomcat</module>
+				<module>spring-rest-full</module>
+				<module>spring-rest-simple</module>
+				<module>spring-resttemplate</module>
+				<module>spring-security-acl</module>
+				<module>spring-security-angular</module>
+				<module>spring-security-cache-control</module>
+				<module>spring-security-client/spring-security-jsp-authentication</module>
+				<module>spring-security-client/spring-security-jsp-authorize</module>
+				<module>spring-security-client/spring-security-jsp-config</module>
+				<module>spring-security-client/spring-security-mvc</module>
+				<module>spring-security-client/spring-security-thymeleaf-authentication</module>
+				<module>spring-security-client/spring-security-thymeleaf-authorize</module>
+				<module>spring-security-client/spring-security-thymeleaf-config</module>
+				<module>spring-security-core</module>
+				<module>spring-security-mvc-boot</module>
+				<module>spring-security-mvc-custom</module>
+				<module>spring-security-mvc-digest-auth</module>
+				<module>spring-security-mvc-ldap</module>
+				<module>spring-security-mvc-persisted-remember-me</module>
+				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc-socket</module>
+				<module>spring-security-rest</module>
+				<module>spring-security-sso/spring-security-sso-auth-server</module>
+				<module>spring-security-sso/spring-security-sso-ui</module>
+				<module>spring-security-sso/spring-security-sso-ui-2</module>
+				<module>spring-security-thymeleaf/spring-security-thymeleaf-authentication</module>
+				<module>spring-security-thymeleaf/spring-security-thymeleaf-authorize</module>
+				<module>spring-security-thymeleaf/spring-security-thymeleaf-config</module>
+				<module>spring-security-x509/spring-security-x509-basic-auth</module>
+				<module>spring-security-x509/spring-security-x509-client-auth</module>
+				<module>spring-session/spring-session-jdbc</module>
+				<module>spring-sleuth</module>
+				<module>spring-social-login</module>
+				<module>spring-spel</module>
+				<module>spring-state-machine</module>
+				<module>spring-swagger-codegen/spring-swagger-codegen-app</module>
+				<module>spring-thymeleaf</module>
+				<module>spring-userservice</module>
+				<module>spring-vault                                   </module>
+				<module>spring-vertx</module>
+				<module>spring-zuul/spring-zuul-foos-resource</module>
+				<module>persistence-modules/spring-data-dynamodb</module>
+				<module>persistence-modules/spring-data-eclipselink</module>
+				<module>persistence-modules/spring-data-solr</module>
+				<module>persistence-modules/spring-hibernate-5</module>
+			</modules>
 
-        <module>rabbitmq</module>
-        <module>vertx</module>
-        <module>persistence-modules/spring-data-gemfire</module>
-        <module>mybatis</module>
-        <module>spring-drools</module>
-        <module>drools</module>
-        <module>persistence-modules/liquibase</module>
-        <module>spring-boot-property-exp</module>
-        <module>testing-modules/mockserver</module>
-        <module>undertow</module>
-        <module>vertx-and-rxjava</module>
-        <module>saas</module>
-        <module>deeplearning4j</module>
-        <module>lucene</module>
-		<module>vraptor</module>
-    </modules>
+		</profile>
 
-    <dependencies>
-        <!-- logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-core</artifactId>
-            <version>${logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
+		<profile>
+			<id>integration</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+								<configuration>
+									<excludes>
+										<exclude>**/*ManualTest.java</exclude>
+										<exclude>**/*LiveTest.java</exclude>
+									</excludes>
+									<includes>
+										<include>**/*IntegrationTest.java</include>
+										<include>**/*IntTest.java</include>
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+						<configuration>
+							<systemPropertyVariables>
+								<test.mime>json</test.mime>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 
-        <!--  test -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-core</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-library</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${org.hamcrest.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+			<modules>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <configuration>
-                    <executable>maven</executable>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <forkCount>3</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*LongRunningUnitTest.java</exclude>
-                        <exclude>**/*ManualTest.java</exclude>
-                        <exclude>**/JdbcTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
+				<module>parent-boot-1</module>
+				<module>parent-boot-2</module>
+				<module>parent-spring-4</module>
+				<module>parent-spring-5</module>
+				<module>parent-java</module>
+				<module>parent-kotlin</module>
+				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-        <extensions>
-            <extension>
-                <groupId>com.vackosar.gitflowincrementalbuilder</groupId>
-                <artifactId>gitflow-incremental-builder</artifactId>
-                <version>3.4</version>
-            </extension>
-        </extensions>
-    </build>
+				<!-- <module>asm</module> <module>atomix</module> <module>apache-cayenne</module>
+					<module>aws</module> <module>aws-lambda</module> <module>akka-streams</module>
+					<module>algorithms</module> <module>annotations</module> <module>apache-cxf</module>
+					<module>apache-fop</module> <module>apache-poi</module> <module>apache-tika</module>
+					<module>apache-thrift</module> <module>apache-curator</module> <module>apache-zookeeper</module>
+					<module>apache-opennlp</module> <module>autovalue</module> <module>axon</module>
+					<module>azure</module> <module>bootique</module> <module>cdi</module> <module>core-java</module>
+					<module>core-java-collections</module> <module>core-java-io</module> <module>core-java-8</module>
+					<module>core-kotlin</module> <module>core-groovy</module> <module>core-java-concurrency</module>
+					<module>couchbase</module> <module>persistence-modules/deltaspike</module> <module>dozer</module>
+					<module>ethereum</module> <module>ejb</module> <module>feign</module> <module>flips</module>
+					<module>geotools</module> <module>testing-modules/groovy-spock</module> <module>testing-modules/gatling</module>
+					<module>google-cloud</module> <module>google-web-toolkit</module> <module>gson</module>
+					<module>guava</module> <module>guava-modules/guava-18</module> <module>guava-modules/guava-19</module>
+					<module>guava-modules/guava-21</module> <module>guice</module> <module>disruptor</module>
+					<module>spring-static-resources</module> <module>hazelcast</module> <module>hbase</module>
+					<module>hibernate5</module> <module>httpclient</module> <module>hystrix</module>
+					<module>image-processing</module> <module>immutables</module> <module>persistence-modules/influxdb</module>
+					<module>jackson</module> <module>persistence-modules/java-cassandra</module>
+					<module>vavr</module> <module>java-lite</module> <module>java-numbers</module>
+					<module>java-rmi</module> <module>java-vavr-stream</module> <module>javax-servlets</module>
+					<module>javaxval</module> <module>jaxb</module> <module>javafx</module> <module>jgroups</module>
+					<module>jee-7</module> <module>jhipster/jhipster-monolithic</module> <module>jjwt</module>
+					<module>jpa-storedprocedure</module> <module>jsf</module> <module>json-path</module>
+					<module>json</module> <module>jsoup</module> <module>testing-modules/junit-5</module>
+					<module>jws</module> <module>libraries-data</module> <module>linkrest</module>
+					<module>logging-modules/log-mdc</module> <module>logging-modules/log4j</module>
+					<module>logging-modules/log4j2</module> <module>logging-modules/logback</module>
+					<module>lombok</module> <module>mapstruct</module> <module>metrics</module>
+					<module>maven</module> <module>mesos-marathon</module> <module>msf4j</module> -->
+
+				<!-- group 1 - OK, 27min, 7911Kb log, 8 failusres -->
+
+				<!-- group 2 -->
+
+				<!-- -->
+				<module>testing-modules/mockito</module>
+				<module>testing-modules/mockito-2</module>
+				<module>testing-modules/mocks</module>
+				<module>mustache</module>
+				<module>mvn-wrapper</module>
+				<module>noexception</module>
+				<module>persistence-modules/orientdb</module>
+				<module>osgi</module>
+				<module>orika</module>
+				<module>patterns</module>
+				<module>pdf</module>
+				<module>protobuffer</module>
+				<module>persistence-modules/querydsl</module>
+				<module>reactor-core</module>
+				<module>persistence-modules/redis</module>
+				<module>testing-modules/rest-assured</module>
+				<module>testing-modules/rest-testing</module>
+				<module>resteasy</module>
+				<module>rxjava</module>
+				<module>rxjava-2</module>
+				<module>spring-swagger-codegen</module>
+				<module>testing-modules/selenium-junit-testng</module>
+				<module>persistence-modules/solr</module>
+				<module>spark-java</module>
+				<module>spring-4</module>
+				<module>spring-5</module>
+				<module>spring-5-data-reactive</module>
+				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
+				<module>spring-5-reactive-client</module>
+				<module>spring-5-mvc</module>
+				<module>spring-5-security</module>
+				<module>spring-activiti</module>
+				<module>spring-akka</module>
+				<module>spring-amqp</module>
+				<module>spring-all</module>
+				<module>spring-amqp-simple</module>
+				<module>spring-apache-camel</module>
+				<module>spring-batch</module>
+				<module>jmh</module>
+
+				<!-- group 2 - Pass, 11-16 min, 42 test failures, 4,020 KB -->
+
+				<!-- group 3.1 -->
+
+				<module>spring-bom</module>
+				<module>spring-boot</module>
+				<module>spring-boot-client</module>
+				<module>spring-boot-keycloak</module>
+				<module>spring-boot-bootstrap</module>
+				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
+				<module>spring-boot-ops</module>
+				<module>persistence-modules/spring-boot-persistence</module>
+				<module>spring-boot-security</module>
+				<module>spring-boot-mvc</module>
+				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
+				<module>spring-cloud-data-flow</module>
+				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
+				<module>spring-core</module>
+				<module>spring-cucumber</module>
+				<module>spring-ejb</module>
+				<module>spring-aop</module>
+				<module>persistence-modules/spring-data-cassandra</module>
+				<module>spring-data-couchbase-2</module>
+				<module>persistence-modules/spring-data-dynamodb</module>
+				<module>persistence-modules/spring-data-elasticsearch</module>
+				<module>persistence-modules/spring-data-keyvalue</module>
+				<module>persistence-modules/spring-data-mongodb</module>
+				<module>persistence-modules/spring-data-jpa</module>
+				<module>persistence-modules/spring-data-neo4j</module>
+				<module>persistence-modules/spring-data-redis</module>
+				<module>spring-data-rest</module>
+
+				<!-- group 3.1 - Pass, 23 min, 35 failed tests, 7,942 KB -->
+
+				<!-- group 3.2 -->
+
+				<!-- -->
+				<module>persistence-modules/spring-data-solr</module>
+				<module>spring-dispatcher-servlet</module>
+				<module>spring-exceptions</module>
+				<module>spring-freemarker</module>
+				<module>persistence-modules/spring-hibernate-3</module>
+				<module>persistence-modules/spring-hibernate4</module>
+				<module>persistence-modules/spring-hibernate-5</module>
+				<module>persistence-modules/spring-data-eclipselink</module>
+				<module>spring-integration</module>
+				<module>spring-jenkins-pipeline</module>
+				<module>spring-jersey</module>
+				<module>spring-jms</module>
+				<module>spring-jooq</module>
+				<module>persistence-modules/spring-jpa</module>
+				<module>spring-kafka</module>
+				<module>spring-katharsis</module>
+				<module>spring-ldap</module>
+				<module>spring-mockito</module>
+				<module>spring-mvc-forms-jsp</module>
+				<module>spring-mvc-forms-thymeleaf</module>
+				<module>spring-mvc-java</module>
+				<module>spring-mvc-velocity</module>
+				<module>spring-mvc-webflow</module>
+				<module>spring-mvc-xml</module>
+				<module>spring-mvc-kotlin</module>
+				<module>spring-protobuf</module>
+				<module>spring-quartz</module>
+				<module>spring-rest-angular</module>
+				<module>spring-rest-full</module>
+				<module>spring-rest-query-language</module>
+				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
+				<module>spring-rest-simple</module>
+                <module>spring-reactive-kotlin</module>
+
+
+				<!-- group 3.2 - Pass, 8 minutes, 1 failed test, 2,294 KB log -->
+				<!-- group 3 - Pass, 25 minutes, 36 failed tests, 10,163 KB log -->
+				<!-- group 3 - Pass, 23 minutes, 31 failed tests, 8,693 KB log -->
+				<!-- group 2+3 - Fail, 12 minutes, 44 failed tests -->
+
+				<!-- group 4 -->
+
+				<!-- <module>spring-security-acl</module> <module>spring-security-cache-control</module>
+					<module>spring-security-client/spring-security-jsp-authentication</module>
+					<module>spring-security-client/spring-security-jsp-authorize</module> <module>spring-security-client/spring-security-jsp-config</module>
+					<module>spring-security-client/spring-security-mvc</module> <module>spring-security-client/spring-security-thymeleaf-authentication</module>
+					<module>spring-security-client/spring-security-thymeleaf-authorize</module>
+					<module>spring-security-client/spring-security-thymeleaf-config</module>
+					<module>spring-security-core</module> <module>spring-security-mvc-boot</module>
+					<module>spring-security-mvc-custom</module> <module>spring-security-mvc-digest-auth</module>
+					<module>spring-security-mvc-ldap</module> <module>spring-security-mvc-login</module>
+					<module>spring-security-mvc-persisted-remember-me</module> <module>spring-security-mvc-session</module>
+					<module>spring-security-mvc-socket</module> <module>spring-security-openid</module>
+					<module>spring-security-react</module> <module>spring-security-rest-basic-auth</module>
+					<module>spring-security-rest-custom</module> <module>spring-security-rest</module>
+					<module>spring-security-sso</module> <module>spring-security-x509</module>
+					<module>spring-session</module> <module>spring-sleuth</module> <module>spring-social-login</module>
+					<module>spring-spel</module> <module>spring-state-machine</module> <module>spring-thymeleaf</module>
+					<module>spring-userservice</module> <module>spring-zuul</module> <module>spring-reactor</module>
+					<module>spring-vertx</module> <module>spring-jinq</module> <module>spring-rest-embedded-tomcat</module>
+					<module>testing-modules/testing</module> <module>testing-modules/testng</module>
+					<module>video-tutorials</module> <module>xml</module> <module>xmlunit-2</module>
+					<module>struts-2</module> <module>apache-velocity</module> <module>apache-solrj</module>
+					<module>rabbitmq</module> <module>vertx</module> <module>persistence-modules/spring-data-gemfire</module>
+					<module>mybatis</module> <module>spring-drools</module> <module>drools</module>
+					<module>persistence-modules/liquibase</module> <module>spring-boot-property-exp</module>
+					<module>testing-modules/mockserver</module> <module>testing-modules/test-containers</module>
+					<module>undertow</module> <module>vertx-and-rxjava</module> <module>saas</module>
+					<module>deeplearning4j</module> <module>lucene</module> <module>vraptor</module>
+					<module>persistence-modules/java-cockroachdb</module> <module>spring-security-thymeleaf</module>
+					<module>persistence-modules/java-jdbi</module> <module>jersey</module> <module>java-spi</module>
+					<module>performance-tests</module> <module>twilio</module> <module>spring-boot-ctx-fluent</module>
+					<module>java-ee-8-security-api</module> <module>spring-webflux-amqp</module>
+					<module>antlr</module> <module>maven-archetype</module> <module>apache-meecrowave</module> -->
+
+				<!-- group 4 - OK, 12 min, 3,961 KB log, 12 failed tests -->
+
+				<!-- <module>libraries</module> <module>jmeter</module> -->
+				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				<module>java-websocket</module>
+				<module>activejdbc</module>
+				<module>animal-sniffer-mvn-plugin</module>
+				<module>apache-avro</module>
+				<module>apache-bval</module>
+				<module>apache-shiro</module>
+				<module>apache-spark</module>
+				<module>asciidoctor</module>
+				<module>checker-plugin</module>
+				<!-- <module>core-java-10</module> --><!-- Not upgraded to java 10 -->
+				<!-- <module>core-java-11</module> --><!-- Not upgraded to java 11 -->
+				<module>core-java-sun</module>
+				<module>custom-pmd</module>
+				<module>dagger</module>
+				<module>data-structures</module>
+				<module>dubbo</module>
+				<module>flyway</module>
+				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
+				<!-- <module>JGit</module> --><!-- Unit test failure -->
+				<module>jni</module>
+				<module>jooby</module>
+				<!-- <module>micronaut</module> --><!-- Not upgraded to java 9 -->
+				<!-- <module>microprofile</module> --><!-- Takes too much time : Downloads 93 MBs zip and .. -->
+				<!-- <module>muleesb</module> --><!-- load main class org.mule.munit.remote.RemoteRunner -->
+				<module>ratpack</module>
+				<module>rest-with-spark-java</module>
+				<module>spring-boot-autoconfiguration</module>
+				<module>spring-boot-custom-starter</module>
+				<module>spring-boot-jasypt</module>
+				<module>spring-custom-aop</module>
+				<module>spring-data-rest-querydsl</module>
+				<module>spring-groovy</module>
+				<module>spring-mobile</module>
+				<module>spring-mustache</module>
+				<module>spring-mvc-simple</module>
+				<module>spring-mybatis</module>
+				<module>spring-rest-hal-browser</module>
+				<module>spring-rest-shell</module>
+				<module>spring-rest-template</module>
+				<module>spring-roo</module>
+				<module>spring-security-stormpath</module>
+				<module>sse-jaxrs</module>
+				<module>static-analysis</module>
+				<module>stripe</module>
+				<!-- <module>structurizr</module> --><!-- Artiifact not found -->
+				<!-- <module>Twitter4J</module> --><!-- Test failure -->
+				<module>wicket</module>
+				<module>xstream</module>
+				<module>cas/cas-secured-app</module>
+				<!-- <module>cas/cas-server</module> --><!-- Takes too much time -->
+				<!-- <module>graphql/graphql-java</module> --><!-- Wrong parent -->
+				<!-- <module>guest/deep-jsf</module> --><!-- guest post on different site -->
+				<!-- <module>guest/junit5-example</module> --><!-- guest post on different site - Compilation failure -->
+				<!-- <module>guest/log4j2-example</module> --><!-- guest post on different site -->
+				<!-- <module>guest/logback-example</module> --><!-- guest post on different site -->
+				<!-- <module>guest/memory-leaks</module> --><!-- guest post on different site -->
+				<!-- <module>guest/remote-debugging</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-boot-app</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-mvc</module> --><!-- guest post on different site -->
+				<!-- <module>guest/spring-security</module> --><!-- guest post on different site -->
+				<!-- <module>guest/thread-pools</module> --><!-- guest post on different site -->
+				<!-- <module>guest/tomcat-app</module> --><!-- guest post on different site -->
+				<module>jenkins/hello-world</module>
+				<!-- <module>rule-engines/easy-rules</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
+				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
+				<module>spring-boot-custom-starter/greeter</module>
+				<module>spring-boot-h2/spring-boot-h2-database</module>
+				<!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
+				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
+				<!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
+				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
+			</modules>
+
+		</profile>
+
+		<profile>
+			<id>integration-lite</id>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>integration-test</phase>
+								<goals>
+									<goal>test</goal>
+								</goals>
+								<configuration>
+									<excludes>
+										<exclude>**/*ManualTest.java</exclude>
+										<exclude>**/*LiveTest.java</exclude>
+									</excludes>
+									<includes>
+										<include>**/*IntegrationTest.java</include>
+										<include>**/*IntTest.java</include>
+									</includes>
+								</configuration>
+							</execution>
+						</executions>
+						<configuration>
+							<systemPropertyVariables>
+								<test.mime>json</test.mime>
+							</systemPropertyVariables>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+
+			<modules>
+				<module>parent-boot-1</module>
+				<module>parent-boot-2</module>
+				<module>parent-spring-4</module>
+				<module>parent-spring-5</module>
+				<module>parent-java</module>
+				<module>parent-kotlin</module>
+				<module>asm</module>
+				<module>atomix</module>
+				<module>apache-cayenne</module>
+				<module>aws</module>
+				<module>aws-lambda</module>
+				<module>akka-streams</module>
+				<module>algorithms</module>
+				<module>annotations</module>
+				<module>apache-cxf</module>
+				<module>apache-fop</module>
+				<module>apache-poi</module>
+				<module>apache-tika</module>
+				<module>apache-thrift</module>
+				<module>apache-curator</module>
+				<module>apache-zookeeper</module>
+				<module>apache-opennlp</module>
+				<module>autovalue</module>
+				<module>axon</module>
+				<module>azure</module>
+				<module>bootique</module>
+				<module>cdi</module>
+				<module>java-strings</module>
+				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
+				<module>core-java-collections</module>
+				<module>java-collections-conversions</module>
+				<module>java-collections-maps</module>
+				<module>core-java-io</module>
+				<module>core-java-8</module>
+				<module>java-streams</module>
+				<module>core-groovy</module>
+
+				<module>couchbase</module>
+				<module>persistence-modules/deltaspike</module>
+				<module>dozer</module>
+				<module>ethereum</module>
+				<module>feign</module>
+				<module>flips</module>
+				<module>testing-modules/groovy-spock</module>
+				<module>google-cloud</module>
+				<module>gson</module>
+				<module>guava</module>
+				<module>guava-collections</module>
+				<module>guava-modules/guava-18</module>
+				<module>guava-modules/guava-19</module>
+				<module>guava-modules/guava-21</module>
+				<module>guice</module>
+				<module>disruptor</module>
+				<module>spring-static-resources</module>
+				<module>hazelcast</module>
+				<module>hbase</module>
+
+				<module>hystrix</module>
+				<module>image-processing</module>
+				<module>immutables</module>
+				<module>persistence-modules/influxdb</module>
+				<module>jackson</module>
+				<module>vavr</module>
+				<module>java-lite</module>
+				<module>java-numbers</module>
+				<module>java-rmi</module>
+				<module>java-vavr-stream</module>
+				<module>javax-servlets</module>
+				<module>javaxval</module>
+				<module>jaxb</module>
+				<module>javafx</module>
+				<module>jgroups</module>
+				<module>jee-7</module>
+				<module>jee-7-security</module>
+				<module>jjwt</module>
+				<module>jsf</module>
+				<module>json-path</module>
+				<module>json</module>
+				<module>jsoup</module>
+				<module>jta</module>
+				<module>testing-modules/junit-5</module>
+				<module>testing-modules/junit5-migration</module>
+				<module>jws</module>
+				<module>libraries-data</module>
+				<module>linkrest</module>
+				<module>logging-modules/log-mdc</module>
+				<module>logging-modules/log4j</module>
+
+				<module>logging-modules/logback</module>
+				<module>lombok</module>
+				<module>mapstruct</module>
+
+				<module>maven</module>
+				<module>mesos-marathon</module>
+				<module>msf4j</module>
+				<module>testing-modules/mockito</module>
+				<module>testing-modules/mockito-2</module>
+				<module>testing-modules/mocks</module>
+				<module>mustache</module>
+				<module>mvn-wrapper</module>
+				<module>noexception</module>
+				<module>persistence-modules/orientdb</module>
+				<module>osgi</module>
+				<module>orika</module>
+				<module>patterns</module>
+				<module>pdf</module>
+				<module>protobuffer</module>
+				<module>persistence-modules/querydsl</module>
+				<module>reactor-core</module>
+				<module>persistence-modules/redis</module>
+				<module>testing-modules/rest-assured</module>
+				<module>testing-modules/rest-testing</module>
+				<module>resteasy</module>
+				<module>rxjava</module>
+				<module>rxjava-2</module>
+				<module>spring-swagger-codegen</module>
+				<module>testing-modules/selenium-junit-testng</module>
+				<module>persistence-modules/solr</module>
+				<module>spark-java</module>
+				<module>spring-4</module>
+				<module>spring-5-data-reactive</module>
+				<module>spring-5-reactive</module>
+				<module>spring-5-reactive-security</module>
+				<module>spring-5-reactive-client</module>
+				<module>spring-5-mvc</module>
+				<module>spring-5-security</module>
+				<module>spring-activiti</module>
+				<module>spring-akka</module>
+				<module>spring-amqp</module>
+				<module>spring-all</module>
+				<module>spring-amqp-simple</module>
+				<module>spring-apache-camel</module>
+				<module>spring-batch</module>
+				<module>spring-bom</module>
+				<module>spring-boot-keycloak</module>
+				<module>spring-boot-bootstrap</module>
+				<module>spring-boot-admin</module>
+				<module>spring-boot-camel</module>
+				<module>persistence-modules/spring-boot-persistence</module>
+				<module>spring-boot-security</module>
+				<module>spring-boot-mvc</module>
+				<module>spring-boot-logging-log4j2</module>
+				<module>spring-boot-disable-console-logging</module>
+				<module>spring-cloud-data-flow</module>
+				<module>spring-cloud</module>
+				<module>spring-cloud-bus</module>
+				<module>spring-core</module>
+				<module>spring-cucumber</module>
+				<module>spring-ejb</module>
+				<module>spring-aop</module>
+
+				<module>persistence-modules/spring-data-dynamodb</module>
+				<module>persistence-modules/spring-data-keyvalue</module>
+				<module>persistence-modules/spring-data-mongodb</module>
+				<module>persistence-modules/spring-data-neo4j</module>
+
+				<module>spring-data-rest</module>
+				<module>persistence-modules/spring-data-solr</module>
+				<module>spring-dispatcher-servlet</module>
+				<module>spring-exceptions</module>
+				<module>spring-freemarker</module>
+				<module>persistence-modules/spring-hibernate-3</module>
+
+				<module>persistence-modules/spring-hibernate-5</module>
+				<module>persistence-modules/spring-data-eclipselink</module>
+				<module>spring-integration</module>
+				<module>spring-jenkins-pipeline</module>
+				<module>spring-jersey</module>
+
+				<module>spring-jms</module>
+				<module>spring-jooq</module>
+				<module>persistence-modules/spring-jpa</module>
+				<module>spring-kafka</module>
+				<module>spring-katharsis</module>
+				<module>spring-ldap</module>
+				<module>spring-mockito</module>
+				<module>spring-mvc-forms-jsp</module>
+				<module>spring-mvc-forms-thymeleaf</module>
+				<module>spring-mvc-java</module>
+				<module>spring-mvc-velocity</module>
+				<module>spring-mvc-webflow</module>
+				<module>spring-mvc-xml</module>
+				<module>spring-mvc-kotlin</module>
+				<module>spring-protobuf</module>
+				<module>spring-quartz</module>
+				<module>spring-rest-angular</module>
+				<module>spring-rest-full</module>
+				<module>spring-rest-query-language</module>
+				<module>spring-rest</module>
+				<module>spring-resttemplate</module>
+				<module>spring-rest-simple</module>
+				<module>spring-security-acl</module>
+				<module>spring-security-cache-control</module>
+				<module>spring-security-client/spring-security-jsp-authentication</module>
+				<module>spring-security-client/spring-security-jsp-authorize</module>
+				<module>spring-security-client/spring-security-jsp-config</module>
+				<module>spring-security-client/spring-security-mvc</module>
+				<module>spring-security-client/spring-security-thymeleaf-authentication</module>
+				<module>spring-security-client/spring-security-thymeleaf-authorize</module>
+				<module>spring-security-client/spring-security-thymeleaf-config</module>
+				<module>spring-security-core</module>
+				<module>spring-security-mvc-boot</module>
+				<module>spring-security-mvc-digest-auth</module>
+				<module>spring-security-mvc-ldap</module>
+				<module>spring-security-mvc-login</module>
+				<module>spring-security-mvc-persisted-remember-me</module>
+				<module>spring-security-mvc-session</module>
+				<module>spring-security-mvc-socket</module>
+				<module>spring-security-openid</module>
+				<!--<module>spring-security-react</module> -->
+				<module>spring-security-rest-basic-auth</module>
+				<module>spring-security-rest-custom</module>
+				<module>spring-security-rest</module>
+				<module>spring-security-sso</module>
+				<module>spring-security-x509</module>
+				<module>spring-session</module>
+				<module>spring-sleuth</module>
+				<module>spring-social-login</module>
+				<module>spring-spel</module>
+				<module>spring-state-machine</module>
+				<module>spring-thymeleaf</module>
+				<module>spring-userservice</module>
+				<module>spring-zuul</module>
+				<module>spring-remoting</module>
+				<module>spring-reactor</module>
+				<module>spring-vertx</module>
+				<module>spring-vault</module>
+				<module>spring-jinq</module>
+				<module>spring-rest-embedded-tomcat</module>
+				<module>testing-modules/testing</module>
+				<module>testing-modules/testng</module>
+				<module>video-tutorials</module>
+
+				<module>xmlunit-2</module>
+				<module>struts-2</module>
+				<module>apache-velocity</module>
+				<module>apache-solrj</module>
+				<module>rabbitmq</module>
+
+				<module>persistence-modules/spring-data-gemfire</module>
+				<module>mybatis</module>
+				<module>spring-drools</module>
+				<module>drools</module>
+				<module>persistence-modules/liquibase</module>
+				<module>spring-boot-property-exp</module>
+				<module>testing-modules/mockserver</module>
+				<module>testing-modules/test-containers</module>
+				<module>undertow</module>
+				<module>vaadin</module>
+				<module>vertx-and-rxjava</module>
+				<module>saas</module>
+				<module>deeplearning4j</module>
+				<module>lucene</module>
+				<module>vraptor</module>
+				<module>persistence-modules/java-cockroachdb</module>
+				<module>spring-security-thymeleaf</module>
+				<module>persistence-modules/java-jdbi</module>
+				<module>jersey</module>
+				<module>java-spi</module>
+				<module>performance-tests</module>
+				<module>twilio</module>
+				<module>spring-boot-ctx-fluent</module>
+				<module>java-ee-8-security-api</module>
+				<module>spring-webflux-amqp</module>
+				<module>antlr</module>
+				<module>maven-archetype</module>
+				<module>apache-meecrowave</module>
+
+                <module>persistence-modules/spring-hibernate4</module>
+                <module>xml</module>
+                <module>vertx</module>
+                <module>metrics</module>
+                <module>httpclient</module>
+
+                <!-- problematic -->
+                <!--
+                <module>ejb</module>
+                <module>persistence-modules/java-cassandra</module>
+                <module>persistence-modules/spring-data-cassandra</module>
+                <module>logging-modules/log4j2</module>
+                <module>spring-data-couchbase-2</module>
+                <module>persistence-modules/spring-data-redis</module>
+
+                <module>jmeter</module>
+				-->
+
+				<!-- heavy -->
+				<!--
+				<module>libraries</module>
+				<module>geotools</module>
+				<module>jhipster/jhipster-monolithic</module>
+				<module>testing-modules/gatling</module>
+				<module>spring-boot</module>
+				<module>spring-boot-ops</module>
+				<module>spring-5</module>
+				<module>core-kotlin</module>
+				<module>core-java</module>
+				<module>google-web-toolkit</module>
+                <module>spring-security-mvc-custom</module>
+                <module>core-java-concurrency</module>
+				-->
+
+                <!-- 30:32 min -->
+			</modules>
+
+		</profile>
+
+        <profile>
+            <id>integration-heavy</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*ManualTest.java</exclude>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                        <include>**/*IntTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>parent-boot-1</module>
+                <module>parent-boot-2</module>
+                <module>parent-spring-4</module>
+                <module>parent-spring-5</module>
+                <module>parent-java</module>
+				<module>parent-kotlin</module>
+                <module>libraries</module>
+                <module>geotools</module>
+                <module>jhipster</module>
+                <module>testing-modules/gatling</module>
+                <module>spring-boot</module>
+                <module>spring-boot-ops</module>
+                <module>spring-5</module>
+                <module>core-kotlin</module>
+				<module>kotlin-libraries</module>
+                <module>core-java</module>
+                <module>google-web-toolkit</module>
+                <module>spring-security-mvc-custom</module>
+                <module>hibernate5</module>
+                <module>persistence-modules/spring-data-elasticsearch</module>
+                <module>core-java-concurrency</module>
+				<module>core-java-concurrency-collections</module>
+            </modules>
+
+        </profile>
+
+
+	</profiles>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>${maven-jxr-plugin.version}</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<gib.referenceBranch>refs/heads/master</gib.referenceBranch>
+		<gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
+		<gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
+		<gib.failOnError>false</gib.failOnError>
+		<!-- <gib.enabled>false</gib.enabled> -->
+		<junit.version>4.12</junit.version>
+		<org.hamcrest.version>1.3</org.hamcrest.version>
+		<mockito.version>2.21.0</mockito.version>
+		<!-- logging -->
+		<org.slf4j.version>1.7.21</org.slf4j.version>
+		<logback.version>1.1.7</logback.version>
+		<!-- plugins -->
+		<maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+		<maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+		<java.version>1.8</java.version>
+		<log4j.version>1.2.17</log4j.version>
+		<moneta.version>1.1</moneta.version>
+		<esapi.version>2.1.0.1</esapi.version>
+		<jmh-core.version>1.19</jmh-core.version>
+		<jmh-generator.version>1.19</jmh-generator.version>
+		<hamcrest-all.version>1.3</hamcrest-all.version>
+		<exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+		<maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
+		<commons-io.version>2.5</commons-io.version>
+		<commons-cli.version>1.4</commons-cli.version>
+		<maven-war-plugin.version>3.0.0</maven-war-plugin.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<jstl-api.version>1.2</jstl-api.version>
+		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
+		<jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
+		<jstl.version>1.2</jstl.version>
+		<jackson-databind.version>2.5.0</jackson-databind.version>
+		<commons-fileupload.version>1.3</commons-fileupload.version>
+		<junit-platform.version>1.2.0</junit-platform.version>
+		<junit-jupiter.version>5.2.0</junit-jupiter.version>
+		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
+		<maven-install-plugin.version>2.5.1</maven-install-plugin.version>
+		<custom-pmd.version>0.0.1</custom-pmd.version>
+		<gitflow-incremental-builder.version>3.4</gitflow-incremental-builder.version>
+		<maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
+		<!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
+		<maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
+	</properties>
 </project>
