@@ -1,9 +1,5 @@
 package com.baeldung.java8;
 
-import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +10,10 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.function.Consumer;
+
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Java8ForEachUnitTest {
 
@@ -96,6 +96,16 @@ public class Java8ForEachUnitTest {
 
         namesMap.entrySet()
             .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+    }
+
+    @Test
+    public void givenMap_whenUsingBiConsumer_thenIterateAndPrintResults2() {
+        Map<Integer, String> namesMap = new HashMap<>();
+        namesMap.put(1, "Larry");
+        namesMap.put(2, "Steve");
+        namesMap.put(3, "James");
+
+        namesMap.forEach((key, value) -> System.out.println(key + " " + value));
     }
 
 }
