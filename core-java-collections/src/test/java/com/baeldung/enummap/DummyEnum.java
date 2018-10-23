@@ -1,5 +1,8 @@
 package com.baeldung.enummap;
 
+/**
+ * This enum is used for benchmarking, therefore has many values.
+ */
 public enum DummyEnum {
     CCC_000,
     CCC_001,CCC_002,CCC_003,CCC_004,CCC_005,CCC_006,CCC_007,CCC_008,CCC_009,CCC_010,

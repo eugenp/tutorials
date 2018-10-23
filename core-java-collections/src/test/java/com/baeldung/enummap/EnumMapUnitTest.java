@@ -60,8 +60,7 @@ public class EnumMapUnitTest {
         ordinaryMap.put(DayOfWeek.MONDAY, "MONDAY");
         ordinaryMap.put(TimeUnit.MILLISECONDS, "MILLISECONDS");
         assertThatCode(() -> new EnumMap(ordinaryMap))
-                .isInstanceOf(ClassCastException.class)
-                .hasMessage("class com.baeldung.enummap.EnumMapUnitTest$DayOfWeek != class java.util.concurrent.TimeUnit");
+                .isInstanceOf(ClassCastException.class);
     }
 
     @Test

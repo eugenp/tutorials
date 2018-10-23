@@ -13,7 +13,6 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 5)
 @Measurement(iterations = 5)
 public class EnumMapBenchmarkLiveTest {
-    public static volatile int _cnt =0;
 
     @State(Scope.Thread)
     public static class BenchmarkState {
@@ -39,71 +38,78 @@ public class EnumMapBenchmarkLiveTest {
             randomIndex = random.nextInt(len);
         }
 
-        @TearDown
-        public void tearDown() {
-            System.out.println("total cakll "+_cnt);
-        }
     }
 
     @Benchmark
-    public void benchmark01_EnumMapPut(BenchmarkState s) {
-        _cnt++;
+    public int benchmark01_EnumMapPut(BenchmarkState s) {
         s.enumMap.put(DummyEnum.values()[s.randomIndex], DummyEnum.values()[s.randomIndex].toString());
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark01_HashMapPut(BenchmarkState s) {
+    public int benchmark01_HashMapPut(BenchmarkState s) {
         s.hashMap.put(DummyEnum.values()[s.randomIndex], DummyEnum.values()[s.randomIndex].toString());
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark01_TreeMapPut(BenchmarkState s) {
+    public int benchmark01_TreeMapPut(BenchmarkState s) {
         s.treeMap.put(DummyEnum.values()[s.randomIndex], DummyEnum.values()[s.randomIndex].toString());
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark02_EnumMapGet(BenchmarkState s) {
+    public int benchmark02_EnumMapGet(BenchmarkState s) {
         s.enumMap.get(DummyEnum.values()[s.randomIndex]);
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark02_HashMapGet(BenchmarkState s) {
+    public int benchmark02_HashMapGet(BenchmarkState s) {
         s.hashMap.get(DummyEnum.values()[s.randomIndex]);
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark02_TreeMapGet(BenchmarkState s) {
+    public int benchmark02_TreeMapGet(BenchmarkState s) {
         s.treeMap.get(DummyEnum.values()[s.randomIndex]);
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark03_EnumMapContainsKey(BenchmarkState s) {
+    public int benchmark03_EnumMapContainsKey(BenchmarkState s) {
         s.enumMap.containsKey(DummyEnum.values()[s.randomIndex]);
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark03_HashMapContainsKey(BenchmarkState s) {
+    public int benchmark03_HashMapContainsKey(BenchmarkState s) {
         s.hashMap.containsKey(DummyEnum.values()[s.randomIndex]);
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark03_TreeMapContainsKey(BenchmarkState s) {
+    public int benchmark03_TreeMapContainsKey(BenchmarkState s) {
         s.treeMap.containsKey(DummyEnum.values()[s.randomIndex]);
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark04_EnumMapContainsValue(BenchmarkState s) {
+    public int benchmark04_EnumMapContainsValue(BenchmarkState s) {
         s.enumMap.containsValue(DummyEnum.values()[s.randomIndex].toString());
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark04_HashMapContainsValue(BenchmarkState s) {
+    public int benchmark04_HashMapContainsValue(BenchmarkState s) {
         s.hashMap.containsValue(DummyEnum.values()[s.randomIndex].toString());
+        return ++s.randomIndex;
     }
 
     @Benchmark
-    public void benchmark04_TreeMapContainsValue(BenchmarkState s) {
+    public int benchmark04_TreeMapContainsValue(BenchmarkState s) {
         s.treeMap.containsValue(DummyEnum.values()[s.randomIndex].toString());
+        return ++s.randomIndex;
     }
 
     public static void main(String[] args) throws Exception {
