@@ -222,6 +222,8 @@ internal class FuelHttpUnitTest {
 
     }
 
+
+// The new 1.3 coroutine APIs, aren't implemented yet in Fuel Library
 //    @Test
 //    fun whenMakeGETRequestUsingCoroutines_thenResponseStatusCode200() = runBlocking {
 //            val (request, response, result) = Fuel.get("http://httpbin.org/get").awaitStringResponse()
@@ -231,8 +233,8 @@ internal class FuelHttpUnitTest {
 //
 //            }, { error -> })
 //    }
-//
-//
+
+// The new 1.3 coroutine APIs, aren't implemented yet in Fuel Library
 //    @Test
 //    fun whenMakeGETRequestUsingCoroutines_thenDeserializeResponse() = runBlocking {
 //            Fuel.get("https://jsonplaceholder.typicode.com/posts?id=1").awaitObjectResult(Post.Deserializer())
