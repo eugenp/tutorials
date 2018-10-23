@@ -38,3 +38,4 @@
 - [Time Complexity of Java Collections](https://www.baeldung.com/java-collections-complexity)
 - [Operating on and Removing an Item from Stream](https://www.baeldung.com/java-use-remove-item-stream)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
+- [Guide to EnumSet](https://www.baeldung.com/java-enumset)

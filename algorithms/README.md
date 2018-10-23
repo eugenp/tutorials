@@ -31,3 +31,6 @@
 - [Round Up to the Nearest Hundred](https://www.baeldung.com/java-round-up-nearest-hundred)
 - [Merge Sort in Java](https://www.baeldung.com/java-merge-sort)
 - [Calculate Percentage in Java](https://www.baeldung.com/java-calculate-percentage)
+- [Quicksort Algorithm Implementation in Java](https://www.baeldung.com/java-quicksort)
+- [Insertion Sort in Java](https://www.baeldung.com/java-insertion-sort)
+- [Converting Between Byte Arrays and Hexadecimal Strings in Java](https://www.baeldung.com/java-byte-arrays-hex-strings)
