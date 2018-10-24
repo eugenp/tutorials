@@ -36,7 +36,7 @@ public class WordIndexerUnitTest {
     @Test
     public void findWord() {
         Integer array[] = {7, 122, 130, 221, 438};
-        List<Integer> expectedResult = Arrays.asList(array);
+        List<Integer> expectedResult = Arrays.asList(7, 122, 130, 221, 438);
 
         List<Integer> actualResult = wordIndexer.findWord(theString, "or");
 
