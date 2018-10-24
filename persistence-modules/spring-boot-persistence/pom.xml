@@ -61,7 +61,7 @@
         <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
         <tomcat-jdbc.version>9.0.10</tomcat-jdbc.version>
         <h2database.version>1.4.197</h2database.version>
-	<mockito.version>2.23.0</mockitoversion>    
+	<mockito.version>2.23.0</mockito.version>    
     </properties>
     
     <build>
