@@ -8,7 +8,7 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode({Mode.AverageTime})
+@BenchmarkMode({ Mode.AverageTime })
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 5)
 @Measurement(iterations = 5)
@@ -16,7 +16,7 @@ public class EnumMapBenchmarkLiveTest {
 
     @State(Scope.Thread)
     public static class BenchmarkState {
-        EnumMap<DummyEnum,String> enumMap = new EnumMap<>(DummyEnum.class);
+        EnumMap<DummyEnum, String> enumMap = new EnumMap<>(DummyEnum.class);
         HashMap<DummyEnum, String> hashMap = new HashMap<>();
         TreeMap<DummyEnum, String> treeMap = new TreeMap<>();
         int len = DummyEnum.values().length;
@@ -26,7 +26,7 @@ public class EnumMapBenchmarkLiveTest {
         @Setup(Level.Trial)
         public void setUp() {
             DummyEnum[] values = DummyEnum.values();
-            for(int i = 0; i < len; i++) {
+            for (int i = 0; i < len; i++) {
                 enumMap.put(values[i], values[i].toString());
                 hashMap.put(values[i], values[i].toString());
                 treeMap.put(values[i], values[i].toString());
@@ -113,11 +113,7 @@ public class EnumMapBenchmarkLiveTest {
     }
 
     public static void main(String[] args) throws Exception {
-        Options options = new OptionsBuilder()
-                .include(EnumMapBenchmarkLiveTest.class.getSimpleName()).threads(1)
-                .forks(0).shouldFailOnError(true)
-                .shouldDoGC(false)
-                .jvmArgs("-server").build();
+        Options options = new OptionsBuilder().include(EnumMapBenchmarkLiveTest.class.getSimpleName()).threads(1).forks(0).shouldFailOnError(true).shouldDoGC(false).jvmArgs("-server").build();
         new Runner(options).run();
     }
 }
