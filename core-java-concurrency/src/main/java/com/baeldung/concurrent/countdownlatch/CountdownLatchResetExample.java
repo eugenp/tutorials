@@ -23,10 +23,11 @@ public class CountdownLatchResetExample {
         ExecutorService es = Executors.newFixedThreadPool(threadCount);
         for (int i = 0; i < threadCount; i++) {
             es.execute(() -> {
-                if (countDownLatch.getCount() > 0) {
-                    outputScraper.add("Count Left : " + countDownLatch.getCount());
-                }
+                long prevValue = countDownLatch.getCount();
                 countDownLatch.countDown();
+                if (countDownLatch.getCount() != prevValue) {
+                    outputScraper.add("Count Updated");
+                }               
             });
         }
         

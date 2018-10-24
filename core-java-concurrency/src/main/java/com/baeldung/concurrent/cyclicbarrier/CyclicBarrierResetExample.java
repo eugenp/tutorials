@@ -28,8 +28,8 @@ public class CyclicBarrierResetExample {
             es.execute(() -> {
                 try {
                     if (cyclicBarrier.getNumberWaiting() > 0) {
-                        outputScraper.add("Waiting Count : " + cyclicBarrier.getNumberWaiting());
-                    }
+                        outputScraper.add("Count Updated");
+                    }   
                     cyclicBarrier.await();
                 } catch (InterruptedException | BrokenBarrierException e) {
                     e.printStackTrace();
@@ -41,7 +41,7 @@ public class CyclicBarrierResetExample {
     }
 
     public static void main(String[] args) {
-        CyclicBarrierResetExample ex = new CyclicBarrierResetExample(new ArrayList<String>(), 5, 20);
+        CyclicBarrierResetExample ex = new CyclicBarrierResetExample(new ArrayList<String>(), 7, 20);
         System.out.println("Count : " + ex.countWaits());
     }
 }

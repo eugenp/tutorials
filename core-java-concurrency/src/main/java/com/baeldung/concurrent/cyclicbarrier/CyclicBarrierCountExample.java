@@ -26,7 +26,7 @@ public class CyclicBarrierCountExample {
     }
 
     public static void main(String[] args) {
-        CyclicBarrierCountExample ex = new CyclicBarrierCountExample(1);
+        CyclicBarrierCountExample ex = new CyclicBarrierCountExample(7);
         System.out.println("Count : " + ex.callTwiceInSameThread());
     }
 }
