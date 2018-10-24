@@ -8,10 +8,12 @@
     <artifactId>spring-boot-persistence</artifactId>
     <version>0.1.0</version>
     
-    <artifactId>parent-boot-2</artifactId>
+    <parent>
+        <artifactId>parent-boot-2</artifactId>
 	    <groupId>com.baeldung</groupId>
 	    <version>0.0.1-SNAPSHOT</version>
-    <relativePath>../../parent-boot-2</relativePath>
+	    <relativePath>../../parent-boot-2</relativePath>
+    </parent>
     
     <dependencies>
         <dependency>
@@ -33,38 +35,42 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>${h2database.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
+	<dependency>
             <groupId>org.apache.tomcat</groupId>
-          <artifactId>tomcat-jdbc</artifactId>
+            <artifactId>tomcat-jdbc</artifactId>
+            <version>${tomcat-jdbc.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
+        <mysql-connector-java.version>8.0.12</mysql-connector-java.version>
+        <tomcat-jdbc.version>9.0.10</tomcat-jdbc.version>
+        <h2database.version>1.4.197</h2database.version>
+	<mockito.version>2.23.0</mockitoversion>    
     </properties>
     
     <build>
         <finalName>spring-boot-persistence</finalName>
         <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-	          <resource>
-	              <directory>src/main/resources</directory>
-		            <filtering>true</filtering>
-	          </resource>
+	    <resource>
+	        <directory>src/main/resources</directory>
+		<filtering>true</filtering>
+	    </resource>
         </resources>
         <plugins>
             <plugin>
