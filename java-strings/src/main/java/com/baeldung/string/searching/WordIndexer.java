@@ -5,7 +5,7 @@ import java.util.List;
 
 public class WordIndexer {
 
-    public List findWord(String textString, String word) {
+    public List<Integer> findWord(String textString, String word) {
         int index = -1;
         List<Integer> indexes = new ArrayList<Integer>();
         boolean done = false;
