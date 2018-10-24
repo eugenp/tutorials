@@ -1,0 +1,2 @@
+@EnableEurekaServer
+class Eureka {}

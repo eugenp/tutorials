@@ -29,65 +29,58 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 public class RedirectionSecurityIntegrationTest {
 
-    @Autowired private WebApplicationContext context;
+    @Autowired
+    private WebApplicationContext context;
 
-    @Autowired private UserDetailsService userDetailsService;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     private MockMvc mvc;
     private UserDetails userDetails;
 
     @Before
     public void setup() {
-        mvc = MockMvcBuilders
-          .webAppContextSetup(context)
-          .apply(springSecurity())
-          .build();
+        mvc = MockMvcBuilders.webAppContextSetup(context)
+            .apply(springSecurity())
+            .build();
         userDetails = userDetailsService.loadUserByUsername("user1");
     }
 
     @Test
     public void givenSecuredResource_whenAccessUnauthenticated_thenRequiresAuthentication() throws Exception {
-        mvc
-          .perform(get("/secured"))
-          .andExpect(status().is3xxRedirection())
-          .andExpect(redirectedUrlPattern("**/login"));
+        mvc.perform(get("/secured"))
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrlPattern("**/login"));
 
     }
 
     @Test
     public void givenCredentials_whenAccessSecuredResource_thenSuccess() throws Exception {
-        mvc
-          .perform(get("/secured").with(user(userDetails)))
-          .andExpect(status().isOk());
+        mvc.perform(get("/secured").with(user(userDetails)))
+            .andExpect(status().isOk());
     }
 
     @Test
     public void givenAccessSecuredResource_whenAuthenticated_thenRedirectedBack() throws Exception {
         MockHttpServletRequestBuilder securedResourceAccess = get("/secured");
-        MvcResult unauthenticatedResult = mvc
-          .perform(securedResourceAccess)
-          .andExpect(status().is3xxRedirection())
-          .andReturn();
+        MvcResult unauthenticatedResult = mvc.perform(securedResourceAccess)
+            .andExpect(status().is3xxRedirection())
+            .andReturn();
 
-        MockHttpSession session = (MockHttpSession) unauthenticatedResult
-          .getRequest()
-          .getSession();
-        String loginUrl = unauthenticatedResult
-          .getResponse()
-          .getRedirectedUrl();
-        mvc
-          .perform(post(loginUrl)
-            .param("username", userDetails.getUsername())
+        MockHttpSession session = (MockHttpSession) unauthenticatedResult.getRequest()
+            .getSession();
+        String loginUrl = unauthenticatedResult.getResponse()
+            .getRedirectedUrl();
+        mvc.perform(post(loginUrl).param("username", userDetails.getUsername())
             .param("password", userDetails.getPassword())
             .session(session)
             .with(csrf()))
-          .andExpect(status().is3xxRedirection())
-          .andExpect(redirectedUrlPattern("**/secured"))
-          .andReturn();
+            .andExpect(status().is3xxRedirection())
+            .andExpect(redirectedUrlPattern("**/secured"))
+            .andReturn();
 
-        mvc
-          .perform(securedResourceAccess.session(session))
-          .andExpect(status().isOk());
+        mvc.perform(securedResourceAccess.session(session))
+            .andExpect(status().isOk());
 
     }
 

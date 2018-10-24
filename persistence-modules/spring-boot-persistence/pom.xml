@@ -43,7 +43,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
+          <artifactId>tomcat-jdbc</artifactId>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -62,6 +62,10 @@
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
+	          <resource>
+	              <directory>src/main/resources</directory>
+		            <filtering>true</filtering>
+	          </resource>
         </resources>
         <plugins>
             <plugin>
