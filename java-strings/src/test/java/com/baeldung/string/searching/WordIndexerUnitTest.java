@@ -1,10 +1,8 @@
 package com.baeldung.string.searching;
 
-import com.baeldung.string.searching.WordIndexer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,6 +32,7 @@ public class WordIndexerUnitTest {
     }
 
     @Test
+
     public void givenWord_whenSearching_thenFindAllIndexedLocations() {
         List<Integer> expectedResult = Arrays.asList(7, 122, 130, 221, 438);
 
