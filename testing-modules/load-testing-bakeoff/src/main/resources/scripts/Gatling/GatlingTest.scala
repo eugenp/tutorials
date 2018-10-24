@@ -15,8 +15,6 @@ class RewardsScenario extends Simulation {
 						.acceptLanguageHeader("en-US,en;q=0.5")
 						.acceptEncodingHeader("gzip, deflate")
 						.userAgentHeader("Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0")
-
-  val rewardId = 1
   
   val scn = scenario("RewardsScenario")
 	.repeat(10){
@@ -26,12 +24,12 @@ class RewardsScenario extends Simulation {
 		.check(jsonPath("$.id").saveAs("txnId"))
 		.check(jsonPath("$.transactionDate").saveAs("txtDate"))
 		.check(jsonPath("$.customerId").saveAs("custId")))
-		.pause(5)
+		.pause(1)
 		
 		.exec(http("get_reward")
 		  .get("/rewards/find/${custId}")
 		  .check(jsonPath("$.id").saveAs("rwdId")))
-		.pause(5)
+		.pause(1)
 		
 		.doIf("${rwdId.isUndefined()}"){
 			exec(http("rewards_add")
@@ -43,7 +41,7 @@ class RewardsScenario extends Simulation {
 		.exec(http("transactions_add")
 		  .post("/transactions/add/")
 		  .body(StringBody("""{ "customerRewardsId":"${rwdId}","customerId":"${custId}","transactionDate":"${txtDate}" }""")).asJson)
-		.pause(5)
+		.pause(1)
 		
 		.exec(http("get_reward")
 		  .get("/transactions/findAll/${rwdId}"))
