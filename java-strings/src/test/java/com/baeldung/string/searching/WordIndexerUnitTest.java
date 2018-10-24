@@ -34,9 +34,8 @@ public class WordIndexerUnitTest {
     }
 
     @Test
-    public void findWord() {
-        Integer array[] = {7, 122, 130, 221, 438};
-        List<Integer> expectedResult = Arrays.asList(array);
+    public void givenWord_whenSearching_thenFindAllIndexedLocations() {
+        List<Integer> expectedResult = Arrays.asList(7, 122, 130, 221, 438);
 
         List<Integer> actualResult = wordIndexer.findWord(theString, "or");
 
@@ -44,19 +43,18 @@ public class WordIndexerUnitTest {
     }
 
     @Test
-    public void findWordUpgrade() {
-        Integer array[] = {7, 122, 130, 221, 438};
-        List<Integer> expectedResult = Arrays.asList(array);
+    public void givenWordWithNoRepeatCharacters_whenImprovedSearching_thenFindAllIndexedLocations() {
+        List<Integer> expectedResult = Arrays.asList(7, 122, 130, 221, 438);
 
         List<Integer> actualResult = wordIndexer.findWord(theString, "or");
 
         assertEquals(expectedResult, actualResult);
     }
 
+
     @Test
-    public void findEndWord() {
-        Integer array[] = {480};
-        List<Integer> expectedResult = Arrays.asList(array);
+    public void givenWord_whenSearching_thenFindAtEndOfString() {
+        List<Integer> expectedResult = Arrays.asList(480);
 
         List<Integer> actualResult = wordIndexer.findWord(theString, "come,");
 
