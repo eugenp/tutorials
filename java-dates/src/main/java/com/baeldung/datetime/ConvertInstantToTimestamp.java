@@ -16,8 +16,9 @@ public class ConvertInstantToTimestamp {
     public static void run() {
         Instant instant = Instant.now();
         Timestamp timestamp = Timestamp.from(instant); // same point on the time-line as Instant
+        instant = timestamp.toInstant();
 
-        System.out.println("Instant (milliseconds from epoch)" + instant.toEpochMilli());
+        System.out.println("Instant (milliseconds from epoch): " + instant.toEpochMilli());
         System.out.println("Timestamp (milliseconds from epoch): " + timestamp.getTime());
         System.out.print("\n");
 
