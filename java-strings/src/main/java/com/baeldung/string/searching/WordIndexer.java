@@ -23,7 +23,7 @@ public class WordIndexer {
         return indexes;
     }
 
-    public List findWordUpgrade(String textString, String word) {
+    public List<Integer> findWordUpgrade(String textString, String word) {
         int index = -1;
         List<Integer> indexes = new ArrayList<Integer>();
         StringBuilder output = new StringBuilder();
