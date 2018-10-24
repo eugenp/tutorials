@@ -47,7 +47,7 @@
     </build>
 
     <properties>
-        <scala.version>2.11.8</scala.version>
+        <scala.version>2.12.7</scala.version>
     </properties>
 </project>
 
