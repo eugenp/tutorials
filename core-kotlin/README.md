@@ -39,3 +39,4 @@
 - [Introduction to Kovenant Library for Kotlin](https://www.baeldung.com/kotlin-kovenant)
 - [Converting Kotlin Data Class from JSON using GSON](https://www.baeldung.com/kotlin-json-convert-data-class)
 - [Concatenate Strings in Kotlin](https://www.baeldung.com/kotlin-concatenate-strings)
+- [Mapping of Data Objects in Kotlin](https://www.baeldung.com/kotlin-data-objects-mapping)
