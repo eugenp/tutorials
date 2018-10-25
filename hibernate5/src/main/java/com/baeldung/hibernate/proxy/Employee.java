@@ -15,6 +15,7 @@ public class Employee implements Serializable {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "workplace_id")
     private Company workplace;
 
     @Column(name = "first_name")
