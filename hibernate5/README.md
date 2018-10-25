@@ -14,3 +14,7 @@
 - [Bootstrapping JPA Programmatically in Java](http://www.baeldung.com/java-bootstrap-jpa)
 - [Optimistic Locking in JPA](http://www.baeldung.com/jpa-optimistic-locking)
 - [Hibernate Entity Lifecycle](https://www.baeldung.com/hibernate-entity-lifecycle)
+- [Mapping A Hibernate Query to a Custom Class](https://www.baeldung.com/hibernate-query-to-custom-class)
+- [@JoinColumn Annotation Explained](https://www.baeldung.com/jpa-join-column)
+- [Hibernate 5 Naming Strategy Configuration](https://www.baeldung.com/hibernate-naming-strategy)
+- [Proxy in Hibernate load() Method](https://www.baeldung.com/hibernate-proxy-load-method)
