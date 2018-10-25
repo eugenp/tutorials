@@ -45,7 +45,7 @@ public class GraphImageGenerationUnitTest {
     }
 
     @Test
-    public void generatePNG() throws IOException {
+    public void givenAdaptedGraph_whenWriteBufferedImage_ThenFileShouldExist() throws IOException {
         JGraphXAdapter<String, DefaultEdge> graphAdapter = new JGraphXAdapter<String, DefaultEdge>(g);
 
         mxIGraphLayout layout = new mxCircleLayout(graphAdapter);
