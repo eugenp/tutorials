@@ -45,7 +45,7 @@ public class WordIndexerUnitTest {
     public void givenWordWithNoRepeatCharacters_whenImprovedSearching_thenFindAllIndexedLocations() {
         List<Integer> expectedResult = Arrays.asList(7, 122, 130, 221, 438);
 
-        List<Integer> actualResult = wordIndexer.findWord(theString, "or");
+        List<Integer> actualResult = wordIndexer.findWordUpgrade(theString, "or");
 
         assertEquals(expectedResult, actualResult);
     }
@@ -55,7 +55,7 @@ public class WordIndexerUnitTest {
     public void givenWord_whenSearching_thenFindAtEndOfString() {
         List<Integer> expectedResult = Arrays.asList(480);
 
-        List<Integer> actualResult = wordIndexer.findWord(theString, "come,");
+        List<Integer> actualResult = wordIndexer.findWordUpgrade(theString, "come,");
 
         assertEquals(expectedResult, actualResult);
     }

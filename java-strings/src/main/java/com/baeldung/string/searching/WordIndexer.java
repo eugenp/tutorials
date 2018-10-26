@@ -28,13 +28,14 @@ public class WordIndexer {
         StringBuilder output = new StringBuilder();
         String lowerCaseTextString = textString.toLowerCase();
         String lowerCaseWord = word.toLowerCase();
-        int wordLength = word.length();
+        int wordLength = 0;
 
         while(index != -1){
             index = lowerCaseTextString.indexOf(lowerCaseWord, index + wordLength);  // Slight improvement
             if (index != -1) {
                 indexes.add(index);
             }
+            wordLength = word.length();
         }
         return indexes;
     }
