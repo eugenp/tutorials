@@ -143,20 +143,6 @@
             <artifactId>chaos-monkey-spring-boot</artifactId>
             <version>${chaos.monkey.version}</version>
         </dependency>
-
-        <!-- for Graylog demo -->
-        <dependency>
-            <!-- forcing spring boot 1.x sing log4j was dropped in spring boot 1.4 and beyond -->
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j</artifactId>
-            <version>1.3.8.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.graylog2</groupId>
-            <artifactId>gelfj</artifactId>
-            <version>1.1.16</version>
-            <scope>compile</scope>
-        </dependency>
         
         <dependency>
         	<groupId>javax.validation</groupId>
@@ -229,7 +215,7 @@
 
     <properties>
         <!-- The main class to start by executing java -jar -->
-        <start-class>org.baeldung.demo.DemoApplication</start-class>
+        <start-class>com.baeldung.intro.App</start-class>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <togglz.version>2.4.1.Final</togglz.version>
         <rome.version>1.9.0</rome.version>
