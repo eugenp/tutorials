@@ -1,20 +1,19 @@
 package com.baeldung.concurrent.cyclicbarrier;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CyclicBarrierResetExample {
 
     private int count;
     private int threadCount;
-    private final List<String> outputScraper;
+    private final AtomicInteger updateCount;
 
-    CyclicBarrierResetExample(final List<String> outputScraper, int count, int threadCount) {
-        this.outputScraper = outputScraper;
+    CyclicBarrierResetExample(int count, int threadCount) {
+        updateCount = new AtomicInteger(0);
         this.count = count;
         this.threadCount = threadCount;
     }
@@ -28,7 +27,7 @@ public class CyclicBarrierResetExample {
             es.execute(() -> {
                 try {
                     if (cyclicBarrier.getNumberWaiting() > 0) {
-                        outputScraper.add("Count Updated");
+                        updateCount.incrementAndGet();
                     }   
                     cyclicBarrier.await();
                 } catch (InterruptedException | BrokenBarrierException e) {
@@ -37,11 +36,11 @@ public class CyclicBarrierResetExample {
             });
         }
         es.shutdown();
-        return outputScraper.size();
+        return updateCount.get();
     }
 
     public static void main(String[] args) {
-        CyclicBarrierResetExample ex = new CyclicBarrierResetExample(new ArrayList<String>(), 7, 20);
+        CyclicBarrierResetExample ex = new CyclicBarrierResetExample(7, 20);
         System.out.println("Count : " + ex.countWaits());
     }
 }

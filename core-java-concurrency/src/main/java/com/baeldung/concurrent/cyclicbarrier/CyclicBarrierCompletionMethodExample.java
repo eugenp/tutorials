@@ -1,20 +1,19 @@
 package com.baeldung.concurrent.cyclicbarrier;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CyclicBarrierCompletionMethodExample {
 
     private int count;
     private int threadCount;
-    private final List<String> outputScraper;
+    private final AtomicInteger updateCount;
     
-    CyclicBarrierCompletionMethodExample(final List<String> outputScraper, int count, int threadCount) {
-        this.outputScraper = outputScraper;
+    CyclicBarrierCompletionMethodExample(int count, int threadCount) {
+        updateCount = new AtomicInteger(0);
         this.count = count;
         this.threadCount = threadCount;
     }
@@ -22,7 +21,7 @@ public class CyclicBarrierCompletionMethodExample {
     public int countTrips() {
 
         CyclicBarrier cyclicBarrier = new CyclicBarrier(count, () -> {
-            outputScraper.add("Barrier is Tripped");
+            updateCount.incrementAndGet();
         });
 
         ExecutorService es = Executors.newFixedThreadPool(threadCount);
@@ -36,11 +35,11 @@ public class CyclicBarrierCompletionMethodExample {
             });
         }
         es.shutdown();
-        return outputScraper.size();
+        return updateCount.get();
     }
 
     public static void main(String[] args) {
-        CyclicBarrierCompletionMethodExample ex = new CyclicBarrierCompletionMethodExample(new ArrayList<String>(), 5, 20);
+        CyclicBarrierCompletionMethodExample ex = new CyclicBarrierCompletionMethodExample(5, 20);
         System.out.println("Count : " + ex.countTrips());
     }
 }

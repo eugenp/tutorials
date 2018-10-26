@@ -10,7 +10,7 @@ public class CountdownLatchResetExampleUnitTest {
     
     @Test
     public void whenCountDownLatch_noReset() {
-        CountdownLatchResetExample ex = new CountdownLatchResetExample(new ArrayList<>(),5,20);
+        CountdownLatchResetExample ex = new CountdownLatchResetExample(5,20);
         int lineCount = ex.countWaits();
         assertEquals(5, lineCount);
     }
