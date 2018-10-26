@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/greeting")
 public class GreetingController {
 
-  public static final String SIMPLE_RESPONSE = "Hi!";
-  public static final String ADVANCED_RESPONSE = "Hello, how you doing?";
+    public static final String SIMPLE_RESPONSE = "Hi!";
+    public static final String ADVANCED_RESPONSE = "Hello, how you doing?";
 
-  @GetMapping("/simple")
-  public ResponseEntity<String> serviceA() {
-    return ResponseEntity.ok(SIMPLE_RESPONSE);
-  }
+    @GetMapping("/simple")
+    public ResponseEntity<String> getSimple() {
+        return ResponseEntity.ok(SIMPLE_RESPONSE);
+    }
 
-  @GetMapping("/advanced")
-  public ResponseEntity<String> serviceB() {
-    return ResponseEntity.ok(ADVANCED_RESPONSE);
-  }
+    @GetMapping("/advanced")
+    public ResponseEntity<String> getAdvanced() {
+        return ResponseEntity.ok(ADVANCED_RESPONSE);
+    }
 }

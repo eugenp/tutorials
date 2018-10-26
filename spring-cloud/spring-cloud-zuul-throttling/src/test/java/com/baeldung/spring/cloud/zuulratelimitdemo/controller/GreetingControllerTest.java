@@ -28,73 +28,86 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class GreetingControllerTest {
 
-  private static final String SIMPLE_GREETING = "/greeting/simple";
-  private static final String ADVANCED_GREETING = "/greeting/advanced";
+    private static final String SIMPLE_GREETING = "/greeting/simple";
+    private static final String ADVANCED_GREETING = "/greeting/advanced";
 
-  @Autowired
-  private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-  @Test
-  public void whenRequestNotExceedingCapacity_thenReturnOkResponse() {
-    ResponseEntity<String> response = this.restTemplate.getForEntity(SIMPLE_GREETING, String.class);
-    HttpHeaders headers = response.getHeaders();
-    String key = "rate-limit-application_serviceSimple_127.0.0.1";
-    assertHeaders(headers, key, false, false);
-    assertEquals(OK, response.getStatusCode());
-  }
+    @Test
+    public void whenRequestNotExceedingCapacity_thenReturnOkResponse() {
+        ResponseEntity<String> response = this.restTemplate.getForEntity(SIMPLE_GREETING, String.class);
+        HttpHeaders headers = response.getHeaders();
+        String key = "rate-limit-application_serviceSimple_127.0.0.1";
 
-  @Test
-  public void whenRequestExceedingCapacity_thenReturnTooManyRequestsResponse() throws InterruptedException {
-    ResponseEntity<String> response = this.restTemplate
-        .getForEntity(ADVANCED_GREETING, String.class);
-    HttpHeaders headers = response.getHeaders();
-    String key = "rate-limit-application_serviceAdvanced_127.0.0.1";
-    assertHeaders(headers, key, false, false);
-    assertEquals(OK, response.getStatusCode());
+        String limit = headers.getFirst(HEADER_LIMIT + key);
+        String remaining = headers.getFirst(HEADER_REMAINING + key);
+        String reset = headers.getFirst(HEADER_RESET + key);
 
-    for (int i = 0; i < 2; i++) {
-      response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
+        assertEquals(limit, "5");
+        assertEquals(remaining, "4");
+        assertEquals(reset, "60000");
+
+        assertEquals(OK, response.getStatusCode());
     }
 
-    assertEquals(TOO_MANY_REQUESTS, response.getStatusCode());
-    assertNotEquals(GreetingController.ADVANCED_RESPONSE, response.getBody());
+    @Test
+    public void whenRequestExceedingCapacity_thenReturnTooManyRequestsResponse() throws InterruptedException {
+        ResponseEntity<String> response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
+        HttpHeaders headers = response.getHeaders();
+        String key = "rate-limit-application_serviceAdvanced_127.0.0.1";
+        assertHeaders(headers, key, false, false);
+        assertEquals(OK, response.getStatusCode());
 
-    TimeUnit.SECONDS.sleep(2);
+        for (int i = 0; i < 2; i++) {
+            response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
+        }
 
-    response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
-    headers = response.getHeaders();
-    assertHeaders(headers, key, false, false);
-    assertEquals(OK, response.getStatusCode());
-  }
+        headers = response.getHeaders();
+        String limit = headers.getFirst(HEADER_LIMIT + key);
+        String remaining = headers.getFirst(HEADER_REMAINING + key);
+        String reset = headers.getFirst(HEADER_RESET + key);
 
-  private void assertHeaders(HttpHeaders headers, String key, boolean nullable,
-      boolean quotaHeaders) {
-    String quota = headers.getFirst(HEADER_QUOTA + key);
-    String remainingQuota = headers.getFirst(HEADER_REMAINING_QUOTA + key);
-    String limit = headers.getFirst(HEADER_LIMIT + key);
-    String remaining = headers.getFirst(HEADER_REMAINING + key);
-    String reset = headers.getFirst(HEADER_RESET + key);
+        assertEquals(limit, "1");
+        assertEquals(remaining, "0");
+        assertNotEquals(reset, "2000");
 
-    if (nullable) {
-      if (quotaHeaders) {
-        assertNull(quota);
-        assertNull(remainingQuota);
-      } else {
-        assertNull(limit);
-        assertNull(remaining);
-      }
-      assertNull(reset);
-    } else {
-      if (quotaHeaders) {
-        assertNotNull(quota);
-        assertNotNull(remainingQuota);
-      } else {
-        assertNotNull(limit);
-        assertNotNull(remaining);
-      }
-      assertNotNull(reset);
+        assertEquals(TOO_MANY_REQUESTS, response.getStatusCode());
+        assertNotEquals(GreetingController.ADVANCED_RESPONSE, response.getBody());
+
+        TimeUnit.SECONDS.sleep(2);
+
+        response = this.restTemplate.getForEntity(ADVANCED_GREETING, String.class);
+        headers = response.getHeaders();
+        assertHeaders(headers, key, false, false);
+        assertEquals(OK, response.getStatusCode());
     }
-  }
 
+    private void assertHeaders(HttpHeaders headers, String key, boolean nullable, boolean quotaHeaders) {
+        String quota = headers.getFirst(HEADER_QUOTA + key);
+        String remainingQuota = headers.getFirst(HEADER_REMAINING_QUOTA + key);
+        String limit = headers.getFirst(HEADER_LIMIT + key);
+        String remaining = headers.getFirst(HEADER_REMAINING + key);
+        String reset = headers.getFirst(HEADER_RESET + key);
 
+        if (nullable) {
+            if (quotaHeaders) {
+                assertNull(quota);
+                assertNull(remainingQuota);
+            } else {
+                assertNull(limit);
+                assertNull(remaining);
+            }
+            assertNull(reset);
+        } else {
+            if (quotaHeaders) {
+                assertNotNull(quota);
+                assertNotNull(remainingQuota);
+            } else {
+                assertNotNull(limit);
+                assertNotNull(remaining);
+            }
+            assertNotNull(reset);
+        }
+    }
 }
