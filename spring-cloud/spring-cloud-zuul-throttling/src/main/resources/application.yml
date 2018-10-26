@@ -11,13 +11,13 @@ zuul:
     repository: JPA
     policy-list:
       serviceSimple:
-        - limit: 5
-          refresh-interval: 60
-          type:
-            - origin
+      - limit: 5
+        refresh-interval: 60
+        type:
+        - origin
       serviceAdvanced:
-        - limit: 1
-          refresh-interval: 2
-          type:
-            - origin
+      - limit: 1
+        refresh-interval: 2
+        type:
+        - origin
   strip-prefix: true
