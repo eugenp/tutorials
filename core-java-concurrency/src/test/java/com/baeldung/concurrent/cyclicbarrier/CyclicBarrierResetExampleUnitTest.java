@@ -8,8 +8,8 @@ public class CyclicBarrierResetExampleUnitTest {
     
     @Test
     public void whenCyclicBarrier_reset() {
-        CyclicBarrierResetExample ex = new CyclicBarrierResetExample(5,20);
+        CyclicBarrierResetExample ex = new CyclicBarrierResetExample(7,20);
         int lineCount = ex.countWaits();
-        assertEquals(16, lineCount);
+        assertEquals(17, lineCount);
     }
 }

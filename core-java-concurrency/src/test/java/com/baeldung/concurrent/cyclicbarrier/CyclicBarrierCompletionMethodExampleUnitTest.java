@@ -8,8 +8,8 @@ public class CyclicBarrierCompletionMethodExampleUnitTest {
     
     @Test
     public void whenCyclicBarrier_countTrips() {
-        CyclicBarrierCompletionMethodExample ex = new CyclicBarrierCompletionMethodExample(5,20);
+        CyclicBarrierCompletionMethodExample ex = new CyclicBarrierCompletionMethodExample(7,20);
         int lineCount = ex.countTrips();
-        assertEquals(4, lineCount);
+        assertEquals(2, lineCount);
     }
 }
