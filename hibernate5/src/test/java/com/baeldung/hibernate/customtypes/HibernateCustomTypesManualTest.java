@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 import static org.hibernate.testing.transaction.TransactionUtil.doInHibernate;
 
-public class HibernateCustomTypesUnitTest {
+public class HibernateCustomTypesManualTest {
 
     @Test
     public void givenEmployee_whenSavedWithCustomTypes_thenEntityIsSaved() throws IOException {
