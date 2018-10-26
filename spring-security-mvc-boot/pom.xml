@@ -220,7 +220,7 @@
 
 
     <properties>
-        <start-class>org.baeldung.Application</start-class>
+        <start-class>org.baeldung.custom.Application</start-class>
         <!--If you want to run the example with the voters comment the tag 
             above and uncomment the one below -->
         <!--<start-class>org.baeldung.voter.VoterApplication</start-class> -->
