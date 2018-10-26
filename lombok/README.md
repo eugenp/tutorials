@@ -3,3 +3,4 @@
 - [Using Lombok’s @Builder Annotation](http://www.baeldung.com/lombok-builder)
 - [Using Lombok’s @Getter for Boolean Fields](https://www.baeldung.com/lombok-getter-boolean)
 - [Lombok @Builder with Inheritance](https://www.baeldung.com/lombok-builder-inheritance)
+- [https://www.baeldung.com/lombok-builder-default-value](https://www.baeldung.com/lombok-builder-default-value)
