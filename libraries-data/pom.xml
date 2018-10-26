@@ -259,6 +259,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.storm</groupId>
+            <artifactId>storm-core</artifactId>
+            <version>${storm.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -432,6 +437,7 @@
     </repositories>
 
     <properties>
+        <storm.version>1.2.2</storm.version>
         <kryo.version>4.0.1</kryo.version>
         <h2.version>1.4.196</h2.version>
         <reladomo.version>16.5.1</reladomo.version>
