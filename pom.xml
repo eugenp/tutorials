@@ -1158,7 +1158,6 @@
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-custom-starter</module>
 				<module>spring-boot-jasypt</module>
-				<module>spring-custom-aop</module>
 				<module>spring-data-rest-querydsl</module>
 				<module>spring-groovy</module>
 				<module>spring-mobile</module>
