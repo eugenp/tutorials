@@ -6,14 +6,19 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 import javax.net.SocketFactory;
+import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 public class SimpleClient {
     private static void startClient(String host, int port) throws IOException {
         SocketFactory factory = SSLSocketFactory.getDefault();
-
         try (Socket connection = factory.createSocket(host, port)) {
-            BufferedReader input = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            ((SSLSocket) connection).setEnabledCipherSuites(
+                new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
+            ((SSLSocket) connection).setEnabledProtocols(
+                new String[] { "TLSv1.2"});
+            BufferedReader input = new BufferedReader(
+                new InputStreamReader(connection.getInputStream()));
             System.out.println(input.readLine());
         }
     }
