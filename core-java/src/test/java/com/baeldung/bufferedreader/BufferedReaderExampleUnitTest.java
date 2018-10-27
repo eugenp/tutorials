@@ -6,17 +6,19 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.StringReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class BufferedReaderExampleUnitTest {
 
-    public static final String FILE_NAME = "src/main/resources/input.txt";
+    public static final String FILE_PATH = "src/main/resources/input.txt";
 
     @Test
     public void givenBufferedReader_whenReadAllLines_thenReturnsContent() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
+        BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
 
         BufferedReaderExample bre = new BufferedReaderExample();
         String content = bre.readAllLines(reader);
@@ -27,7 +29,7 @@ public class BufferedReaderExampleUnitTest {
 
     @Test
     public void givenBufferedReader_whenReadAllLinesWithStream_thenReturnsContent() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
+        BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
 
         BufferedReaderExample bre = new BufferedReaderExample();
         String content = bre.readAllLinesWithStream(reader);
@@ -46,7 +48,7 @@ public class BufferedReaderExampleUnitTest {
 
     @Test
     public void givenBufferedReader_whenReadAllCharsOneByOne_thenReturnsContent() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
+        BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
 
         BufferedReaderExample bre = new BufferedReaderExample();
         String content = bre.readAllCharsOneByOne(reader);
@@ -57,7 +59,7 @@ public class BufferedReaderExampleUnitTest {
 
     @Test
     public void givenBufferedReader_whenReadMultipleChars_thenReturnsContent() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME));
+        BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH));
 
         BufferedReaderExample bre = new BufferedReaderExample();
         String content = bre.readMultipleChars(reader);
@@ -94,17 +96,27 @@ public class BufferedReaderExampleUnitTest {
         String result;
 
         try (BufferedReader reader = new BufferedReader(new StringReader("    Lorem ipsum dolor sit amet."))) {
-            reader.mark(1);
+            assertTrue(reader.markSupported());
 
-            while (Character.isWhitespace(reader.read())) {
+            do {
                 reader.mark(1);
-            }
+            } while(Character.isWhitespace(reader.read()));
 
             reader.reset();
             result = reader.readLine();
         }
 
         assertEquals("Lorem ipsum dolor sit amet.", result);
+    }
+
+    @Test
+    public void whenCreatesNewBufferedReader_thenOk() throws IOException {
+        BufferedReader reader = Files.newBufferedReader(Paths.get(FILE_PATH));
+
+        assertNotNull(reader);
+        assertTrue(reader.ready());
+
+        reader.close();
     }
 
 }

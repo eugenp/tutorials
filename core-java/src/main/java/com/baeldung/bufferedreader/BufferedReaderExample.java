@@ -37,12 +37,13 @@ public class BufferedReaderExample {
     }
 
     public String readMultipleChars(BufferedReader reader) throws IOException {
-        char[] chars = new char[5];
-        int charsRead = reader.read(chars, 0, 5);
+        int length = 5;
+        char[] chars = new char[length];
+        int charsRead = reader.read(chars, 0, length);
 
         String result;
         if (charsRead != -1) {
-            result = new String(chars);
+            result = new String(chars, charsRead, 0);
         } else {
             result = "";
         }
