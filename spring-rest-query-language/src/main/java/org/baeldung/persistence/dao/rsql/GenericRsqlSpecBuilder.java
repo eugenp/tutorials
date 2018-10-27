@@ -1,7 +1,7 @@
 package org.baeldung.persistence.dao.rsql;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.springframework.data.jpa.domain.Specifications;
@@ -28,8 +28,8 @@ public class GenericRsqlSpecBuilder<T> {
         List<Specifications<T>> specs = logicalNode.getChildren()
                 .stream()
                 .map(node -> createSpecification(node))
-                .filter(specifications -> specifications != null)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
         
         Specifications<T> initialSpec = specs.stream().findFirst().get();
         

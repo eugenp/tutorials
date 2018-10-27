@@ -51,7 +51,7 @@ public final class UserSpecificationsBuilder {
 
         final List<Specification<User>> specs = params.stream()
                 .map(UserSpecification::new)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
         
         Specification<User> result = specs.get(0);
 

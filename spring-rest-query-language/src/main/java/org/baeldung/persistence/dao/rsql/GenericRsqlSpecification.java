@@ -1,6 +1,5 @@
 package org.baeldung.persistence.dao.rsql;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -89,7 +88,7 @@ public class GenericRsqlSpecification<T> implements Specification<T> {
             }
             return obj;
             
-        }).collect(Collectors.toCollection(ArrayList::new));
+        }).collect(Collectors.toList());
 
         return args;
     }

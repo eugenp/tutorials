@@ -2,6 +2,7 @@ package org.baeldung.persistence.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.baeldung.web.util.SearchCriteria;
@@ -29,7 +30,7 @@ public final class MyUserPredicatesBuilder {
         final List<BooleanExpression> predicates = params.stream().map(param -> {
             MyUserPredicate predicate = new MyUserPredicate(param);
             return predicate.getPredicate();
-        }).filter(predicate -> predicate != null).collect(Collectors.toCollection(ArrayList::new));
+        }).filter(Objects::nonNull).collect(Collectors.toList());
         
         BooleanExpression result = Expressions.asBoolean(true).isTrue();
         for (BooleanExpression predicate : predicates) {
