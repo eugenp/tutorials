@@ -43,7 +43,7 @@ public class BufferedReaderExample {
 
         String result;
         if (charsRead != -1) {
-            result = new String(chars, charsRead, 0);
+            result = new String(chars, 0,  charsRead);
         } else {
             result = "";
         }
