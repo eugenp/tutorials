@@ -2,6 +2,7 @@ package org.baeldung.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,7 +64,7 @@ public class UserController {
     @ResponseBody
     public List<User> findAll(@RequestParam(value = "search", required = false) String search) {
         List<SearchCriteria> params = new ArrayList<SearchCriteria>();
-        if (search != null) {
+        if (Optional.ofNullable(search).isPresent()) {
             Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
             Matcher matcher = pattern.matcher(search + ",");
             while (matcher.find()) {
@@ -126,7 +127,7 @@ public class UserController {
     @ResponseBody
     public Iterable<MyUser> findAllByQuerydsl(@RequestParam(value = "search") String search) {
         MyUserPredicatesBuilder builder = new MyUserPredicatesBuilder();
-        if (search != null) {
+        if (Optional.ofNullable(search).isPresent()) {
             Pattern pattern = Pattern.compile("(\\w+?)(:|<|>)(\\w+?),");
             Matcher matcher = pattern.matcher(search + ",");
             while (matcher.find()) {
