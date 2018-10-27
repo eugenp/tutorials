@@ -13,7 +13,7 @@ import javax.net.ssl.SSLServerSocketFactory;
 public class SimpleServer {
     private static void startServer(int port) throws IOException {
         ServerSocketFactory factory = SSLServerSocketFactory.getDefault();
-        
+
         try (ServerSocket listener = factory.createServerSocket(port)) {
             ((SSLServerSocket) listener).setNeedClientAuth(true);
             while (true) {
