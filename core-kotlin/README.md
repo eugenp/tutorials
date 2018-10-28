@@ -41,3 +41,4 @@
 - [Concatenate Strings in Kotlin](https://www.baeldung.com/kotlin-concatenate-strings)
 - [Kotlin return, break, continue Keywords](https://www.baeldung.com/kotlin-return-break-continue)
 - [Mapping of Data Objects in Kotlin](https://www.baeldung.com/kotlin-data-objects-mapping)
+- [Initializing Arrays in Kotlin](https://www.baeldung.com/kotlin-initialize-array)
