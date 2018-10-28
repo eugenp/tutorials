@@ -30,3 +30,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Quick Example of Spring Websockets’ @SendToUser Annotation](http://www.baeldung.com/spring-websockets-sendtouser)
 - [Using Spring ResponseEntity to Manipulate the HTTP Response](http://www.baeldung.com/spring-response-entity)
 - [Using Spring @ResponseStatus to Set HTTP Status Code](http://www.baeldung.com/spring-response-status)
+- [Bootstrap a Web Application with Spring 5](https://www.baeldung.com/bootstraping-a-web-application-with-spring-and-java-based-configuration)
+- [Spring MVC Tutorial](https://www.baeldung.com/spring-mvc-tutorial)
+- [Working with Date Parameters in Spring](https://www.baeldung.com/spring-date-parameters)

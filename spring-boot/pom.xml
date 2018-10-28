@@ -1,9 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-boot</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>spring-boot</name>
     <description>This is simple boot application for Spring boot actuator test</description>
@@ -145,6 +143,11 @@
             <artifactId>chaos-monkey-spring-boot</artifactId>
             <version>${chaos.monkey.version}</version>
         </dependency>
+        
+        <dependency>
+        	<groupId>javax.validation</groupId>
+        	<artifactId>validation-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -212,7 +215,7 @@
 
     <properties>
         <!-- The main class to start by executing java -jar -->
-        <start-class>org.baeldung.demo.DemoApplication</start-class>
+        <start-class>com.baeldung.intro.App</start-class>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <togglz.version>2.4.1.Final</togglz.version>
         <rome.version>1.9.0</rome.version>
@@ -220,7 +223,6 @@
         <graphql-spring-boot-starter.version>3.6.0</graphql-spring-boot-starter.version>
         <graphql-java-tools.version>3.2.0</graphql-java-tools.version>
         <guava.version>18.0</guava.version>
-		<junit-platform.version>1.2.0</junit-platform.version>
 		<git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
     </properties>
 

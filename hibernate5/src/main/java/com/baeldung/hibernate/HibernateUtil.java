@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 
+import com.baeldung.hibernate.customtypes.LocalDateStringType;
+import com.baeldung.hibernate.customtypes.OfficeEmployee;
 import com.baeldung.hibernate.entities.DeptEmployee;
 import com.baeldung.hibernate.optimisticlocking.OptimisticLockingCourse;
 import com.baeldung.hibernate.optimisticlocking.OptimisticLockingStudent;
@@ -18,8 +20,10 @@ import com.baeldung.hibernate.pojo.inheritance.*;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataBuilder;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
 import com.baeldung.hibernate.pojo.Course;
@@ -66,6 +70,7 @@ public class HibernateUtil {
 
     private static SessionFactory makeSessionFactory(ServiceRegistry serviceRegistry) {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
+
         metadataSources.addPackage("com.baeldung.hibernate.pojo");
         metadataSources.addAnnotatedClass(Employee.class);
         metadataSources.addAnnotatedClass(Phone.class);
@@ -102,8 +107,12 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
         metadataSources.addAnnotatedClass(OptimisticLockingCourse.class);
         metadataSources.addAnnotatedClass(OptimisticLockingStudent.class);
+        metadataSources.addAnnotatedClass(OfficeEmployee.class);
 
-        Metadata metadata = metadataSources.buildMetadata();
+        Metadata metadata = metadataSources.getMetadataBuilder()
+                .applyBasicType(LocalDateStringType.INSTANCE)
+                .build();
+
         return metadata.getSessionFactoryBuilder()
                 .build();
 

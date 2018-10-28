@@ -28,8 +28,9 @@ public class MainController {
     public void getFilters() {
         FilterChainProxy filterChainProxy = (FilterChainProxy) springSecurityFilterChain;
         List<SecurityFilterChain> list = filterChainProxy.getFilterChains();
-        list.forEach(chain -> chain.getFilters()
-            .forEach(filter -> System.out.println(filter.getClass())));
+        list.stream()
+              .flatMap(chain -> chain.getFilters().stream())
+              .forEach(filter -> System.out.println(filter.getClass()));
     }
     
     @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")

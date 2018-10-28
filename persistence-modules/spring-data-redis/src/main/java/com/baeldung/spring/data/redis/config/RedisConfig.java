@@ -1,6 +1,8 @@
 package com.baeldung.spring.data.redis.config;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.baeldung.spring.data.redis.queue.MessagePublisher;
+import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
+import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,10 +14,6 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.serializer.GenericToStringSerializer;
-
-import com.baeldung.spring.data.redis.queue.MessagePublisher;
-import com.baeldung.spring.data.redis.queue.RedisMessagePublisher;
-import com.baeldung.spring.data.redis.queue.RedisMessageSubscriber;
 
 @Configuration
 @ComponentScan("com.baeldung.spring.data.redis")

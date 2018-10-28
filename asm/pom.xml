@@ -42,14 +42,6 @@
                     </archive>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <argLine>-javaagent:"C:\asm-1.0.jar"</argLine>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
