@@ -1,10 +1,14 @@
 package org.baeldung.persistence.dao;
 
-import com.querydsl.core.types.dsl.BooleanExpression;
-import org.baeldung.web.util.SearchCriteria;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import org.baeldung.web.util.SearchCriteria;
+
+import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.Expressions;
 
 public final class MyUserPredicatesBuilder {
     private final List<SearchCriteria> params;
@@ -22,21 +26,34 @@ public final class MyUserPredicatesBuilder {
         if (params.size() == 0) {
             return null;
         }
-
-        final List<BooleanExpression> predicates = new ArrayList<>();
-        MyUserPredicate predicate;
-        for (final SearchCriteria param : params) {
-            predicate = new MyUserPredicate(param);
-            final BooleanExpression exp = predicate.getPredicate();
-            if (exp != null) {
-                predicates.add(exp);
-            }
+        
+        final List<BooleanExpression> predicates = params.stream().map(param -> {
+            MyUserPredicate predicate = new MyUserPredicate(param);
+            return predicate.getPredicate();
+        }).filter(Objects::nonNull).collect(Collectors.toList());
+        
+        BooleanExpression result = Expressions.asBoolean(true).isTrue();
+        for (BooleanExpression predicate : predicates) {
+            result = result.and(predicate);
         }
-
-        BooleanExpression result = predicates.get(0);
-        for (int i = 1; i < predicates.size(); i++) {
-            result = result.and(predicates.get(i));
-        }
+        
         return result;
+    }
+    
+    static class BooleanExpressionWrapper {
+        
+        private BooleanExpression result;
+
+        public BooleanExpressionWrapper(final BooleanExpression result) {
+            super();
+            this.result = result;
+        }
+
+        public BooleanExpression getResult() {
+            return result;
+        }
+        public void setResult(BooleanExpression result) {
+            this.result = result;
+        }
     }
 }

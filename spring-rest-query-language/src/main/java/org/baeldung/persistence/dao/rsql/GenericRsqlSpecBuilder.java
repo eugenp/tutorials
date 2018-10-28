@@ -1,13 +1,15 @@
 package org.baeldung.persistence.dao.rsql;
 
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
+import org.springframework.data.jpa.domain.Specifications;
+
 import cz.jirutka.rsql.parser.ast.ComparisonNode;
 import cz.jirutka.rsql.parser.ast.LogicalNode;
 import cz.jirutka.rsql.parser.ast.LogicalOperator;
 import cz.jirutka.rsql.parser.ast.Node;
-import org.springframework.data.jpa.domain.Specifications;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class GenericRsqlSpecBuilder<T> {
 
@@ -22,29 +24,24 @@ public class GenericRsqlSpecBuilder<T> {
     }
 
     public Specifications<T> createSpecification(final LogicalNode logicalNode) {
-        final List<Specifications<T>> specs = new ArrayList<Specifications<T>>();
-        Specifications<T> temp;
-        for (final Node node : logicalNode.getChildren()) {
-            temp = createSpecification(node);
-            if (temp != null) {
-                specs.add(temp);
+        
+        List<Specifications<T>> specs = logicalNode.getChildren()
+                .stream()
+                .map(node -> createSpecification(node))
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+        
+        Specifications<T> initialSpec = specs.stream().findFirst().get();
+        
+        Specifications<T> result = specs.stream().skip(1).reduce(initialSpec, (firstSpec, secondSpec) -> {
+            if (logicalNode.getOperator() == LogicalOperator.AND) {
+                return Specifications.where(firstSpec).and(secondSpec);
+            } else if (logicalNode.getOperator() == LogicalOperator.OR) {
+                return Specifications.where(firstSpec).or(secondSpec);    
             }
-        }
-
-        Specifications<T> result = specs.get(0);
-
-        if (logicalNode.getOperator() == LogicalOperator.AND) {
-            for (int i = 1; i < specs.size(); i++) {
-                result = Specifications.where(result).and(specs.get(i));
-            }
-        }
-
-        else if (logicalNode.getOperator() == LogicalOperator.OR) {
-            for (int i = 1; i < specs.size(); i++) {
-                result = Specifications.where(result).or(specs.get(i));
-            }
-        }
-
+            return firstSpec;
+        });
+        
         return result;
     }
 
