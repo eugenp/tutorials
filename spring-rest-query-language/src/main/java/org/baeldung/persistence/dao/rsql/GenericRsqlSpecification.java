@@ -1,14 +1,16 @@
 package org.baeldung.persistence.dao.rsql;
 
-import cz.jirutka.rsql.parser.ast.ComparisonOperator;
-import org.springframework.data.jpa.domain.Specification;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
+
+import org.springframework.data.jpa.domain.Specification;
+
+import cz.jirutka.rsql.parser.ast.ComparisonOperator;
 
 public class GenericRsqlSpecification<T> implements Specification<T> {
 
@@ -71,18 +73,18 @@ public class GenericRsqlSpecification<T> implements Specification<T> {
     // === private
 
     private List<Object> castArguments(final Root<T> root) {
-        final List<Object> args = new ArrayList<Object>();
+        
         final Class<? extends Object> type = root.get(property).getJavaType();
-
-        for (final String argument : arguments) {
+        
+        final List<Object> args = arguments.stream().map(arg -> {
             if (type.equals(Integer.class)) {
-                args.add(Integer.parseInt(argument));
+               return Integer.parseInt(arg);
             } else if (type.equals(Long.class)) {
-                args.add(Long.parseLong(argument));
+               return Long.parseLong(arg);
             } else {
-                args.add(argument);
-            }
-        }
+                return arg;
+            }            
+        }).collect(Collectors.toList());
 
         return args;
     }
