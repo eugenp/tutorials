@@ -17,35 +17,35 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
-public class StringDateHashMapDeserializer implements JsonDeserializer<HashMap<String, Date>> {
+public class StringDateHashMapDeserializer implements JsonDeserializer<Map<String, Date>> {
 
     private static final Logger logger = LoggerFactory.getLogger(StringDateHashMapDeserializer.class);
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
-    @Override
-    public HashMap<String, Date> deserialize(JsonElement elem,
-          Type type,
-          JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-        return elem.getAsJsonObject()
-          .entrySet()
-          .stream()
-          .filter(e -> e.getValue().isJsonPrimitive()
-            && e.getValue().getAsJsonPrimitive().isString())
-          .collect(
-            Collectors.toMap(
-              e -> e.getKey(),
-              e -> {
-                  try {
-                      return format.parse(e.getValue().getAsString());
-                  } catch (ParseException ex) {
-                      throw new JsonParseException("Cannot parse date", ex);
-                  }
-              },
-              (v1, v2) -> v1,
-              HashMap::new
-            )
-          );
-    }
+        @Override
+        public Map<String, Date> deserialize(JsonElement elem,
+                Type type,
+                JsonDeserializationContext jsonDeserializationContext) {
+                System.out.println("Deserializer called");
+                logger.info("Deserializer called");
+                return elem.getAsJsonObject()
+                        .entrySet()
+                        .stream()
+                        .filter(e -> e.getValue().isJsonPrimitive())
+                        .filter(e -> e.getValue().getAsJsonPrimitive().isString())
+                        .collect(
+                                Collectors.toMap(
+                                        Map.Entry::getKey,
+                                        e -> formatDate(e.getValue())));
+        }
+
+        private Date formatDate(JsonElement value) {
+                try {
+                        return format.parse(value.getAsString());
+                } catch (ParseException ex) {
+                        throw new IllegalArgumentException(ex);
+                }
+        }
 
 }

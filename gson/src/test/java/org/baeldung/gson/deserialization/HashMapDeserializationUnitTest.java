@@ -4,6 +4,7 @@ import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.lang3.time.DateUtils;
 import org.baeldung.gson.entities.Employee;
@@ -94,9 +95,10 @@ public class HashMapDeserializationUnitTest {
         Gson gson = new GsonBuilder()
           .registerTypeAdapter(type, new StringDateHashMapDeserializer())
           .create();
-        HashMap<String, Date> empJoiningDateMap = gson.fromJson(jsonString, type);
+        Map<String, Date> empJoiningDateMap = gson.fromJson(jsonString, type);
 
         logger.info("The converted map: {}", empJoiningDateMap);
+        logger.info("The map class {}", empJoiningDateMap.getClass());
         Assert.assertEquals(2, empJoiningDateMap.size());
         Assert.assertEquals(Date.class, empJoiningDateMap.get("Bob").getClass());
         Date dt = null;
