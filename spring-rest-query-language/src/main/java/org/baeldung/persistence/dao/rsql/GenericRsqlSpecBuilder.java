@@ -31,16 +31,17 @@ public class GenericRsqlSpecBuilder<T> {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
         
-        Specifications<T> initialSpec = specs.stream().findFirst().get();
-        
-        Specifications<T> result = specs.stream().skip(1).reduce(initialSpec, (firstSpec, secondSpec) -> {
-            if (logicalNode.getOperator() == LogicalOperator.AND) {
-                return Specifications.where(firstSpec).and(secondSpec);
-            } else if (logicalNode.getOperator() == LogicalOperator.OR) {
-                return Specifications.where(firstSpec).or(secondSpec);    
-            }
-            return firstSpec;
-        });
+        Specifications<T> result = specs.get(0);
+        if (logicalNode.getOperator() == LogicalOperator.AND) {
+           for (int i = 1; i < specs.size(); i++) {
+               result = Specifications.where(result).and(specs.get(i));
+           }
+        }
+        else if (logicalNode.getOperator() == LogicalOperator.OR) {
+           for (int i = 1; i < specs.size(); i++) {
+               result = Specifications.where(result).or(specs.get(i));
+           }
+        }
         
         return result;
     }
