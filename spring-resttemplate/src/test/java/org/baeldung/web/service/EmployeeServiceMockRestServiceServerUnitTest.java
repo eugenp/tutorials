@@ -1,9 +1,12 @@
 package org.baeldung.web.service;
 
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.method;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withStatus;
+
 import java.net.URI;
 
 import org.baeldung.SpringTestConfig;
-import org.baeldung.web.dto.EmployeeDto;
 import org.baeldung.web.model.Employee;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,11 +22,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
-
-import static org.baeldung.web.service.EmployeeService.EMP_URL_PREFIX;
-import static org.baeldung.web.service.EmployeeService.URL_SEP;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.*;
-import static org.springframework.test.web.client.response.MockRestResponseCreators.*;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -45,33 +43,24 @@ public class EmployeeServiceMockRestServiceServerUnitTest {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Before
-    public void initMocks() {
+    public void init() {
         mockServer = MockRestServiceServer.createServer(restTemplate);
     }
 
     @Test
     public void givenMockingIsDoneByMockRestServiceServer_whenGetIsCalled_shouldReturnMockedObject() throws Exception {
-        String id = "E001";
-        Employee emp = new Employee();
-        emp.setId(id);
-        emp.setName("Eric Simmons");
-        emp.setSalary(10000.00d);
+        Employee emp = new Employee("E001", "Eric Simmons");
 
-        String fullUri = new StringBuilder().append(EMP_URL_PREFIX).append(URL_SEP)
-          .append(id).toString();
+        mockServer.expect(ExpectedCount.once(),
+          requestTo(new URI("http://localhost:8080/employee/E001")))
+            .andExpect(method(HttpMethod.GET))
+            .andRespond(withStatus(HttpStatus.OK)
+              .contentType(MediaType.APPLICATION_JSON)
+              .body(mapper.writeValueAsString(emp)));
 
-        mockServer.expect(ExpectedCount.once(), requestTo(new URI(fullUri)))
-          .andExpect(method(HttpMethod.GET))
-          .andRespond(withStatus(HttpStatus.OK)
-            .contentType(MediaType.APPLICATION_JSON)
-            .body(mapper.writeValueAsString(emp)));
-
-        EmployeeDto employeeDto = empService.getEmployee(id);
-        logger.info("Employee received as: {}", employeeDto);
-
+        Employee employee = empService.getEmployee("E001");
         mockServer.verify();
-        Assert.assertEquals(emp.getName(), employeeDto.getName());
-        Assert.assertEquals(emp.getId(), employeeDto.getId());
+        Assert.assertEquals(emp, employee);
     }
 
 }

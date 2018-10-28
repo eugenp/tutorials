@@ -7,7 +7,14 @@ public class Employee {
 
         private String id;
         private String name;
-        private Double salary;
+
+        public Employee(String id, String name) {
+                this.id = id;
+                this.name = name;
+        }
+
+        public Employee() {
+        }
 
         public String getId() {
                 return id;
@@ -25,29 +32,17 @@ public class Employee {
                 this.name = name;
         }
 
-        public Double getSalary() {
-                return salary;
-        }
-
-        public void setSalary(Double salary) {
-                this.salary = salary;
-        }
-
-        @Override public String toString() {
-                return "Employee{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", salary=" + salary + '}';
-        }
-
         @Override public boolean equals(Object o) {
                 if (this == o)
                         return true;
                 if (o == null || getClass() != o.getClass())
                         return false;
                 Employee employee = (Employee) o;
-                return Objects.equals(id, employee.id) && Objects.equals(name, employee.name) && Objects.equals(salary, employee.salary);
+                return Objects.equals(id, employee.id);
         }
 
         @Override public int hashCode() {
 
-                return Objects.hash(id, name, salary);
+                return Objects.hash(id);
         }
 }

@@ -1,6 +1,5 @@
 package org.baeldung.web.service;
 
-import org.baeldung.web.dto.EmployeeDto;
 import org.baeldung.web.model.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,31 +20,10 @@ public class EmployeeService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public EmployeeDto getEmployee(String id) throws Exception {
+    public Employee getEmployee(String id) {
 
-        Employee emp = null;
-        try {
-
-            ResponseEntity<Employee> resp = restTemplate.getForEntity(EMP_URL_PREFIX
-              + URL_SEP + id, Employee.class);
-
-            if (resp == null || resp.getStatusCode() != HttpStatus.OK
-              || resp.getBody() == null) {
-
-                throw new Exception("Employee details could not be fetched.");
-            }
-
-            emp = resp.getBody();
-
-            EmployeeDto dto = new EmployeeDto();
-            dto.setId(emp.getId());
-            dto.setName(emp.getName());
-            dto.setSalary(emp.getSalary());
-            return dto;
-
-        } catch (Exception e) {
-            logger.error("Error occurred while fetching employee details", e);
-            throw new Exception("Error occurred while fetching employee details", e);
-        }
+        ResponseEntity<Employee> resp = restTemplate.getForEntity("http://localhost:8080/employee/" + id,
+          Employee.class);
+        return resp.getStatusCode() == HttpStatus.OK ? resp.getBody() : null;
     }
 }

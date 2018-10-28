@@ -1,11 +1,13 @@
 package org.baeldung.web.service;
 
-import org.baeldung.web.dto.EmployeeDto;
 import org.baeldung.web.model.Employee;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -29,20 +31,13 @@ public class EmployeeServiceUnitTest {
 
     @Test
     public void givenMockingIsDoneByMockito_whenGetIsCalled_shouldReturnMockedObject() throws Exception {
-        String id = "E001";
-        Employee emp = new Employee();
-        emp.setId(id);
-        emp.setName("Eric Simmons");
-        emp.setSalary(10000.00d);
-        Mockito
-          .when(restTemplate.getForEntity(EmployeeService.EMP_URL_PREFIX
-            + EmployeeService.URL_SEP + id, Employee.class))
-          .thenReturn(new ResponseEntity<Employee>(emp, HttpStatus.OK));
+        Employee emp = new Employee("E001", "Eric Simmons");
+        Mockito.when(restTemplate.getForEntity("http://localhost:8080/employee/E001", Employee.class))
+          .thenReturn(new ResponseEntity(emp, HttpStatus.OK));
 
-        EmployeeDto employeeDto = empService.getEmployee(id);
-        logger.info("Employee received as: {}", employeeDto);
-        Assert.assertEquals(emp.getName(), employeeDto.getName());
-        Assert.assertEquals(emp.getSalary(), employeeDto.getSalary());
+        Employee employee = empService.getEmployee("E001");
+
+        Assert.assertEquals(emp, employee);
     }
 
 }
