@@ -45,26 +45,17 @@ public final class UserSpecificationsBuilder {
     }
 
     public Specification<User> build() {
-
         if (params.size() == 0)
             return null;
 
-        final List<Specification<User>> specs = params.stream()
-                .map(UserSpecification::new)
-                .collect(Collectors.toList());
-        
-        Specification<User> result = specs.get(0);
-
+        Specification<User> result = new UserSpecification(params.get(0));
+     
         for (int i = 1; i < params.size(); i++) {
-            result = params.get(i)
-                .isOrPredicate()
-                    ? Specifications.where(result)
-                        .or(specs.get(i))
-                    : Specifications.where(result)
-                        .and(specs.get(i));
-
+            result = params.get(i).isOrPredicate()
+              ? Specifications.where(result).or(new UserSpecification(params.get(i))) 
+              : Specifications.where(result).and(new UserSpecification(params.get(i)));
         }
-
+        
         return result;
     }
 
