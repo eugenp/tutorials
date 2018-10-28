@@ -334,7 +334,10 @@
 				<module>aws</module>
 				<module>aws-lambda</module>
 				<module>akka-streams</module>
-				<module>algorithms</module>
+				<module>algorithms-genetic</module>
+				<module>algorithms-miscellaneous-1</module>
+				<module>algorithms-miscellaneous-2</module>
+				<module>algorithms-sorting</module>
 				<module>annotations</module>
 				<module>apache-cxf</module>
 				<module>apache-fop</module>
@@ -1255,7 +1258,10 @@
 				<module>aws</module>
 				<module>aws-lambda</module>
 				<module>akka-streams</module>
-				<module>algorithms</module>
+				<module>algorithms-genetic</module>
+				<module>algorithms-miscellaneous-1</module>
+				<module>algorithms-miscellaneous-2</module>
+				<module>algorithms-sorting</module>
 				<module>annotations</module>
 				<module>apache-cxf</module>
 				<module>apache-fop</module>
