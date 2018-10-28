@@ -22,22 +22,22 @@ class UserTest {
 
     private fun buildUser(): User {
         return User(
-                "Java",
-                "Duke",
-                "Javastreet",
-                "42",
-                "1234567",
-                30,
-                "s3cr37"
+          "Java",
+          "Duke",
+          "Javastreet",
+          "42",
+          "1234567",
+          30,
+          "s3cr37"
         )
     }
 
     private fun assertUserView(pr: UserView) {
         assertAll(
-                { assertEquals("Java Duke", pr.name) },
-                { assertEquals("Javastreet 42", pr.address) },
-                { assertEquals("1234567", pr.telephone) },
-                { assertEquals(30, pr.age) }
+          { assertEquals("Java Duke", pr.name) },
+          { assertEquals("Javastreet 42", pr.address) },
+          { assertEquals("1234567", pr.telephone) },
+          { assertEquals(30, pr.age) }
         )
     }
 }
