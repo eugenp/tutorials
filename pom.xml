@@ -386,6 +386,7 @@
 				<module>guava-modules/guava-21</module>
 				<module>guice</module>
 				<module>disruptor</module>
+				<module>core-scala</module>
 				<module>spring-static-resources</module>
 				<module>hazelcast</module>
 				<module>persistence-modules/hbase</module>
