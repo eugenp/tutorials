@@ -15,4 +15,8 @@ public class Role extends Model {
         set("role_name",role);
         set("created_by",createdBy);
     }
+
+    public String getRoleName() {
+        return getString("role_name");
+    }
 }

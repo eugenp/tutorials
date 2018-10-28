@@ -63,6 +63,12 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${openjdk.jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-exec</artifactId>
+            <version>${commons-exec.version}</version>
+        </dependency>
+
     </dependencies>
 
 
@@ -75,5 +81,6 @@
         <avaitility.version>1.7.0</avaitility.version>
         <assertj.version>3.11.1</assertj.version>
         <eclipse.collections.version>7.1.0</eclipse.collections.version>
+        <commons-exec.version>1.3</commons-exec.version>
     </properties>
 </project>

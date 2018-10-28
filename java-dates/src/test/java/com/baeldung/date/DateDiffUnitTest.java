@@ -5,7 +5,9 @@ import org.junit.Test;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Period;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -26,6 +28,17 @@ public class DateDiffUnitTest {
 
         assertEquals(diff, 6);
     }
+    
+    @Test
+    public void givenTwoDatesInJava8_whenDifferentiating_thenWeGetSix() {
+        LocalDate now = LocalDate.now();
+        LocalDate sixDaysBehind = now.minusDays(6);
+
+        Period period = Period.between(now, sixDaysBehind);
+        int diff = period.getDays();
+
+        assertEquals(diff, 6);
+    }
 
     @Test
     public void givenTwoDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
@@ -35,6 +48,15 @@ public class DateDiffUnitTest {
         Duration duration = Duration.between(now, sixMinutesBehind);
         long diff = Math.abs(duration.toMinutes());
 
+        assertEquals(diff, 6);
+    }
+
+    @Test
+    public void givenTwoZonedDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
+        LocalDateTime ldt = LocalDateTime.now();
+        ZonedDateTime now = ldt.atZone(ZoneId.of("America/Montreal"));
+        ZonedDateTime sixDaysBehind = now.withZoneSameInstant(ZoneId.of("Asia/Singapore")).minusDays(6);
+        long diff = ChronoUnit.DAYS.between(sixDaysBehind, now);
         assertEquals(diff, 6);
     }
 

@@ -154,45 +154,7 @@
             <artifactId>commons-dbutils</artifactId>
             <version>${commons.dbutils.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka-0.11_2.11</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java_2.11</artifactId>
-            <version>${flink.version}</version>
-        </dependency>
 
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-core</artifactId>
-            <version>${flink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
-            <version>${flink.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-test-utils_2.11</artifactId>
-            <version>${flink.version}</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
@@ -239,11 +201,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
+
         <!-- JDO -->
         <dependency>
             <groupId>org.datanucleus</groupId>
@@ -400,6 +358,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
+            <type>pom</type>
             <version>${groovy.version}</version>
         </dependency>
         <dependency>
@@ -752,6 +711,12 @@
             <version>${snakeyaml.version}</version>            
         </dependency>       
 
+        <dependency>
+            <groupId>com.numericalmethod</groupId>
+            <artifactId>suanshu</artifactId>
+            <version>${suanshu.version}</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -771,6 +736,12 @@
         <repository>
             <id>Apache Staging</id>
             <url>https://repository.apache.org/content/groups/staging</url>
+        </repository>
+        <repository>
+            <id>nm-repo</id>
+            <name>Numerical Method's Maven Repository</name>
+            <url>http://repo.numericalmethod.com/maven/</url>
+            <layout>default</layout>
         </repository>
     </repositories>
 
@@ -876,6 +847,7 @@
     </build>
 
     <properties>
+        <suanshu.version>4.0.0</suanshu.version>
         <snakeyaml.version>1.21</snakeyaml.version>
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
@@ -900,7 +872,6 @@
 
         <httpclient.version>4.5.3</httpclient.version>
         <commons.io.version>2.5</commons.io.version>
-        <flink.version>1.5.0</flink.version>
         <jackson.version>2.8.5</jackson.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
@@ -965,7 +936,7 @@
         <quartz.version>2.3.0</quartz.version>
         <jool.version>0.9.12</jool.version>
         <jmh.version>1.19</jmh.version>
-        <groovy.version>2.4.10</groovy.version>
+        <groovy.version>2.5.2</groovy.version>
         <noexception.version>1.1.0</noexception.version>
         <logging-interceptor.version>3.9.0</logging-interceptor.version>
         <yarg.version>2.0.4</yarg.version>
