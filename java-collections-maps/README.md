@@ -16,3 +16,4 @@
 - [Sort a HashMap in Java](https://www.baeldung.com/java-hashmap-sort)
 - [Finding the Highest Value in a Java Map](https://www.baeldung.com/java-find-map-max)
 - [Merging Two Maps with Java 8](https://www.baeldung.com/java-merge-maps)
+- [How to Check If a Key Exists in a Map](https://www.baeldung.com/java-map-key-exists)

@@ -517,25 +517,7 @@
 				<module>spring-jms</module>
 				<module>spring-jooq</module>
 				<module>persistence-modules/spring-jpa</module>
-				<module>spring-kafka</module>
-				<module>spring-katharsis</module>
-				<module>spring-ldap</module>
-				<module>spring-mockito</module>
-				<module>spring-mvc-forms-jsp</module>
-				<module>spring-mvc-forms-thymeleaf</module>
-				<module>spring-mvc-java</module>
-				<module>spring-mvc-velocity</module>
-				<module>spring-mvc-webflow</module>
-				<module>spring-mvc-xml</module>
-				<module>spring-mvc-kotlin</module>
-				<module>spring-protobuf</module>
-				<module>spring-quartz</module>
-				<module>spring-rest-angular</module>
-				<module>spring-rest-full</module>
-				<module>spring-rest-query-language</module>
-				<!-- <module>spring-rest</module> --> <!-- temporarily disabled -->
-				<!-- <module>spring-rest-simple</module> --> <!-- temporarily disabled -->
-				<module>spring-resttemplate</module>
+				
 			</modules>
 
 		</profile>
@@ -661,7 +643,6 @@
                 <module>spring-boot-autoconfiguration</module>
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-jasypt</module>
-                <module>spring-custom-aop</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-groovy</module>
                 <module>spring-mobile</module>
@@ -730,7 +711,27 @@
                 <module>spring-security-rest-custom</module>
                 <module>spring-security-rest</module>
                 <module>spring-security-sso</module>
-                <module>spring-security-x509</module>                   
+                <module>spring-security-x509</module>
+                
+                <module>spring-kafka</module>
+                <module>spring-katharsis</module>
+                <module>spring-ldap</module>
+                <module>spring-mockito</module>
+                <module>spring-mvc-forms-jsp</module>
+                <module>spring-mvc-forms-thymeleaf</module>
+                <module>spring-mvc-java</module>
+                <module>spring-mvc-velocity</module>
+                <module>spring-mvc-webflow</module>
+                <module>spring-mvc-xml</module>
+                <module>spring-mvc-kotlin</module>
+                <module>spring-protobuf</module>
+                <module>spring-quartz</module>
+                <module>spring-rest-angular</module>
+                <module>spring-rest-full</module>
+                <module>spring-rest-query-language</module>
+                <!-- <module>spring-rest</module> --> <!-- temporarily disabled -->
+                <!-- <module>spring-rest-simple</module> --> <!-- temporarily disabled -->
+                <module>spring-resttemplate</module>
             </modules>
 
         </profile>
@@ -1159,7 +1160,6 @@
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-custom-starter</module>
 				<module>spring-boot-jasypt</module>
-				<module>spring-custom-aop</module>
 				<module>spring-data-rest-querydsl</module>
 				<module>spring-groovy</module>
 				<module>spring-mobile</module>
