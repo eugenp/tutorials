@@ -23,9 +23,9 @@ public class WebApplicationSecurity {
         ServerConfiguration serverConfig =
                 ServerConfiguration.fromConfig(config.get("server"));
 
-        Map<String, UserApp> users = new HashMap<>();
-        users.put("user", new UserApp("user", "user".toCharArray(), Arrays.asList("ROLE_USER")));
-        users.put("admin", new UserApp("admin", "admin".toCharArray(), Arrays.asList("ROLE_USER", "ROLE_ADMIN")));
+        Map<String, MyUser> users = new HashMap<>();
+        users.put("user", new MyUser("user", "user".toCharArray(), Arrays.asList("ROLE_USER")));
+        users.put("admin", new MyUser("admin", "admin".toCharArray(), Arrays.asList("ROLE_USER", "ROLE_ADMIN")));
         UserStore store = user -> Optional.ofNullable(users.get(user));
 
         HttpBasicAuthProvider httpBasicAuthProvider = HttpBasicAuthProvider.builder()
