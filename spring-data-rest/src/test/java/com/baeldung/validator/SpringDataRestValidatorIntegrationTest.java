@@ -1,5 +1,6 @@
 package com.baeldung.validator;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
@@ -84,4 +85,30 @@ public class SpringDataRestValidatorIntegrationTest {
         mockMvc.perform(post("/users", user).contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(user))).andExpect(status().isNotAcceptable()).andExpect(redirectedUrl(null));
     }
 
+    @Test
+    public void whenDeletingCorrectUser_thenCorrectStatusCodeAndResponse() throws Exception {
+        WebsiteUser user = new WebsiteUser();
+        user.setEmail("john.doe@john.com");
+        user.setName("John Doe");
+        mockMvc.perform(post("/users", user).contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(user))).andExpect(status().is2xxSuccessful()).andExpect(redirectedUrl("http://localhost/users/1"));
+        mockMvc.perform(delete("/users/1").contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(user))).andExpect(status().isMethodNotAllowed());
+    }
+
+    @Test
+    public void whenSearchingByEmail_thenCorrectStatusCodeAndResponse() throws Exception {
+        WebsiteUser user = new WebsiteUser();
+        user.setEmail("john.doe@john.com");
+        user.setName("John Doe");
+        mockMvc.perform(post("/users", user).contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(user))).andExpect(status().is2xxSuccessful()).andExpect(redirectedUrl("http://localhost/users/1"));
+        mockMvc.perform(get("/users/search/byEmail").param("email", user.getEmail()).contentType(MediaType.APPLICATION_JSON)).andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void whenSearchingByEmailWithOriginalMethodName_thenErrorStatusCodeAndResponse() throws Exception {
+        WebsiteUser user = new WebsiteUser();
+        user.setEmail("john.doe@john.com");
+        user.setName("John Doe");
+        mockMvc.perform(post("/users", user).contentType(MediaType.APPLICATION_JSON).content(new ObjectMapper().writeValueAsString(user))).andExpect(status().is2xxSuccessful()).andExpect(redirectedUrl("http://localhost/users/1"));
+        mockMvc.perform(get("/users/search/findByEmail").param("email", user.getEmail()).contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
+    }
 }
