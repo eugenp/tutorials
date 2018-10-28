@@ -1,4 +1,4 @@
-package org.baeldung.caching.eviction.cotrollers;
+package org.baeldung.caching.eviction.controllers;
 
 import org.baeldung.caching.eviction.service.CachingService;
 import org.springframework.beans.factory.annotation.Autowired;
