@@ -736,6 +736,7 @@
                 <!-- <module>spring-rest</module> --> <!-- temporarily disabled -->
                 <!-- <module>spring-rest-simple</module> --> <!-- temporarily disabled -->
                 <module>spring-resttemplate</module>
+				<module>helidon</module>
             </modules>
 
         </profile>
