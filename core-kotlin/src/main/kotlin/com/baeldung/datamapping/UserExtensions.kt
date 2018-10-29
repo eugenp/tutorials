@@ -3,10 +3,10 @@ package com.baeldung.datamapping
 import kotlin.reflect.full.memberProperties
 
 fun User.toUserView() = UserView(
-        name = "$firstName $lastName",
-        address = "$street $houseNumber",
-        telephone = phone,
-        age = age
+  name = "$firstName $lastName",
+  address = "$street $houseNumber",
+  telephone = phone,
+  age = age
 )
 
 fun User.toUserViewReflection() = with(::UserView) {
