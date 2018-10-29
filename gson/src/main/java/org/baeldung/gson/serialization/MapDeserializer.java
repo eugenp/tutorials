@@ -10,10 +10,10 @@ import org.baeldung.gson.entities.Employee;
 
 import com.google.gson.*;
 
-public class HashMapDeserializer implements JsonDeserializer<HashMap<String, Object>> {
+public class MapDeserializer implements JsonDeserializer<Map<String, Object>> {
 
     @Override
-    public HashMap<String, Object> deserialize(JsonElement elem, Type type, JsonDeserializationContext context) throws JsonParseException {
+    public Map<String, Object> deserialize(JsonElement elem, Type type, JsonDeserializationContext context) throws JsonParseException {
 
         return elem.getAsJsonObject()
           .entrySet()
@@ -22,9 +22,7 @@ public class HashMapDeserializer implements JsonDeserializer<HashMap<String, Obj
             Map.Entry::getKey,
             e -> e.getValue().isJsonPrimitive() ?
               toPrimitive(e.getValue().getAsJsonPrimitive(), context)
-              : context.deserialize(e.getValue(), Employee.class),
-            (v1, v2) -> v1,
-            HashMap::new
+              : context.deserialize(e.getValue(), Employee.class)
           ));
     }
 

@@ -4,22 +4,19 @@ import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.baeldung.gson.entities.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 
-public class StringDateHashMapDeserializer implements JsonDeserializer<Map<String, Date>> {
+public class StringDateMapDeserializer implements JsonDeserializer<Map<String, Date>> {
 
-    private static final Logger logger = LoggerFactory.getLogger(StringDateHashMapDeserializer.class);
+    private static final Logger logger = LoggerFactory.getLogger(StringDateMapDeserializer.class);
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
