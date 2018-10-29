@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import com.google.gson.JsonParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +42,7 @@ public class StringDateMapDeserializer implements JsonDeserializer<Map<String, D
                 try {
                         return format.parse(value.getAsString());
                 } catch (ParseException ex) {
-                        throw new IllegalArgumentException(ex);
+                        throw new JsonParseException(ex);
                 }
         }
 
