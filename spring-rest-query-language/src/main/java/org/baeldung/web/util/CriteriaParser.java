@@ -1,5 +1,6 @@
 package org.baeldung.web.util;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
@@ -45,7 +46,7 @@ public class CriteriaParser {
         Deque<Object> output = new LinkedList<>();
         Deque<String> stack = new LinkedList<>();
 
-        for (String token : searchParam.split("\\s+")) {
+        Arrays.stream(searchParam.split("\\s+")).forEach(token -> {
             if (ops.containsKey(token)) {
                 while (!stack.isEmpty() && isHigerPrecedenceOperator(token, stack.peek()))
                     output.push(stack.pop()
@@ -65,7 +66,7 @@ public class CriteriaParser {
                     output.push(new SpecSearchCriteria(matcher.group(1), matcher.group(2), matcher.group(3), matcher.group(4), matcher.group(5)));
                 }
             }
-        }
+        });
 
         while (!stack.isEmpty())
             output.push(stack.pop());
