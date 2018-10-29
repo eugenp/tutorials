@@ -330,11 +330,14 @@
 				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
-				<module>apache-cayenne</module>
+				<module>persistence-modules/apache-cayenne</module>
 				<module>aws</module>
 				<module>aws-lambda</module>
 				<module>akka-streams</module>
-				<module>algorithms</module>
+				<module>algorithms-genetic</module>
+				<module>algorithms-miscellaneous-1</module>
+				<module>algorithms-miscellaneous-2</module>
+				<module>algorithms-sorting</module>
 				<module>annotations</module>
 				<module>apache-cxf</module>
 				<module>apache-fop</module>
@@ -359,14 +362,14 @@
 				<module>core-java-io</module>
 				<module>core-java-8</module>
 				<module>java-streams</module>
-                <module>core-java-persistence</module>
+                <module>persistence-modules/core-java-persistence</module>
 				<module>core-kotlin</module>
 				<module>kotlin-libraries</module>
 				<module>core-groovy</module>
 				<module>core-java-concurrency</module>
 				<module>core-java-concurrency-collections</module>
 				<module>couchbase</module>
-				<module>deltaspike</module>
+				<module>persistence-modules/deltaspike</module>
 				<module>dozer</module>
 				<module>ethereum</module>
 				<module>ejb</module>
@@ -386,15 +389,16 @@
 				<module>guava-modules/guava-21</module>
 				<module>guice</module>
 				<module>disruptor</module>
+				<module>core-scala</module>
 				<module>spring-static-resources</module>
 				<module>hazelcast</module>
-				<module>hbase</module>
-				<module>hibernate5</module>
+				<module>persistence-modules/hbase</module>
+				<module>persistence-modules/hibernate5</module>
 				<module>httpclient</module>
 				<module>hystrix</module>
 				<module>image-processing</module>
 				<module>immutables</module>
-				<module>influxdb</module>
+				<module>persistence-modules/influxdb</module>
 				<module>jackson</module>
 				<module>persistence-modules/java-cassandra</module>
 				<module>vavr</module>
@@ -438,7 +442,7 @@
 				<module>mustache</module>
 				<module>mvn-wrapper</module>
 				<module>noexception</module>
-				<module>orientdb</module>
+				<module>persistence-modules/orientdb</module>
 				<module>osgi</module>
 				<module>orika</module>
 				<module>patterns</module>
@@ -479,7 +483,7 @@
 				<module>spring-boot-admin</module>
 				<module>spring-boot-camel</module>
 				<module>spring-boot-ops</module>
-				<module>spring-boot-persistence</module>
+				<module>persistence-modules/spring-boot-persistence</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
                 <module>spring-boot-vue</module>
@@ -491,15 +495,14 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
-				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
-				<module>spring-data-couchbase-2</module>
+				<module>persistence-modules/spring-data-couchbase-2</module>
 				<module>persistence-modules/spring-data-dynamodb</module>
-				<module>spring-data-elasticsearch</module>
-				<module>spring-data-jpa</module>
-				<module>spring-data-keyvalue</module>
-				<module>spring-data-mongodb</module>
+				<module>persistence-modules/spring-data-elasticsearch</module>
+				<module>persistence-modules/spring-data-jpa</module>
+				<module>persistence-modules/spring-data-keyvalue</module>
+				<module>persistence-modules/spring-data-mongodb</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 				<module>persistence-modules/spring-data-redis</module>
 				<module>spring-data-rest</module>
@@ -508,7 +511,7 @@
 				<module>spring-exceptions</module>
 				<module>spring-freemarker</module>
 				<module>persistence-modules/spring-hibernate-3</module>
-				<module>spring-hibernate4</module>
+				<module>persistence-modules/spring-hibernate4</module>
 				<module>persistence-modules/spring-hibernate-5</module>
 				<module>persistence-modules/spring-data-eclipselink</module>
 				<module>spring-integration</module>
@@ -518,25 +521,7 @@
 				<module>spring-jms</module>
 				<module>spring-jooq</module>
 				<module>persistence-modules/spring-jpa</module>
-				<module>spring-kafka</module>
-				<module>spring-katharsis</module>
-				<module>spring-ldap</module>
-				<module>spring-mockito</module>
-				<module>spring-mvc-forms-jsp</module>
-				<module>spring-mvc-forms-thymeleaf</module>
-				<module>spring-mvc-java</module>
-				<module>spring-mvc-velocity</module>
-				<module>spring-mvc-webflow</module>
-				<module>spring-mvc-xml</module>
-				<module>spring-mvc-kotlin</module>
-				<module>spring-protobuf</module>
-				<module>spring-quartz</module>
-				<module>spring-rest-angular</module>
-				<module>spring-rest-full</module>
-				<module>spring-rest-query-language</module>
-				<!-- <module>spring-rest</module> --> <!-- temporarily disabled -->
-				<!-- <module>spring-rest-simple</module> --> <!-- temporarily disabled -->
-				<module>spring-resttemplate</module>
+				
 			</modules>
 
 		</profile>
@@ -628,13 +613,13 @@
                 <module>optaplanner</module>
                 <module>apache-meecrowave</module>
                 <module>spring-reactive-kotlin</module>
-                <module>jnosql</module>
+                <module>persistence-modules/jnosql</module>
                 <module>spring-boot-angular-ecommerce</module>
                 <module>cdi-portable-extension</module>             
                 <module>jta</module>
                 <!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
                 <module>java-websocket</module>
-                <module>activejdbc</module>
+                <module>persistence-modules/activejdbc</module>
                 <module>animal-sniffer-mvn-plugin</module>
                 <module>apache-avro</module>
                 <module>apache-bval</module>
@@ -649,7 +634,7 @@
                 <module>dagger</module>
                 <module>data-structures</module>
                 <module>dubbo</module>
-                <module>flyway</module>
+                <module>persistence-modules/flyway</module>
                 <!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
                 <!-- <module>JGit</module> --><!-- Unit test failure -->
                 <module>jni</module>
@@ -662,7 +647,6 @@
                 <module>spring-boot-autoconfiguration</module>
                 <module>spring-boot-custom-starter</module>
                 <module>spring-boot-jasypt</module>
-                <module>spring-custom-aop</module>
                 <module>spring-data-rest-querydsl</module>
                 <module>spring-groovy</module>
                 <module>spring-mobile</module>
@@ -700,8 +684,8 @@
                 <!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
                 <!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
                 <module>spring-boot-custom-starter/greeter</module>
-                <module>spring-boot-h2/spring-boot-h2-database</module>
-                <!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
+                <module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
+                <!--module>persistence-modules/spring-boot-h2/spring-boot-h2-remote-app</module-->
                 <!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
                 <!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
                 <!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
@@ -731,7 +715,28 @@
                 <module>spring-security-rest-custom</module>
                 <module>spring-security-rest</module>
                 <module>spring-security-sso</module>
-                <module>spring-security-x509</module>                   
+                <module>spring-security-x509</module>
+                
+                <module>spring-kafka</module>
+                <module>spring-katharsis</module>
+                <module>spring-ldap</module>
+                <module>spring-mockito</module>
+                <module>spring-mvc-forms-jsp</module>
+                <module>spring-mvc-forms-thymeleaf</module>
+                <module>spring-mvc-java</module>
+                <module>spring-mvc-velocity</module>
+                <module>spring-mvc-webflow</module>
+                <module>spring-mvc-xml</module>
+                <module>spring-mvc-kotlin</module>
+                <module>spring-protobuf</module>
+                <module>spring-quartz</module>
+                <module>spring-rest-angular</module>
+                <module>spring-rest-full</module>
+                <module>spring-rest-query-language</module>
+                <!-- <module>spring-rest</module> --> <!-- temporarily disabled -->
+                <!-- <module>spring-rest-simple</module> --> <!-- temporarily disabled -->
+                <module>spring-resttemplate</module>
+				<module>helidon</module>
             </modules>
 
         </profile>
@@ -780,7 +785,7 @@
 				<module>spring-boot-custom-starter</module>
 				<module>greeter-spring-boot-autoconfigure</module>
 				<module>greeter-spring-boot-sample-app</module>
-				<module>spring-boot-h2/spring-boot-h2-database</module>
+				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
 				<module>spring-boot-jasypt</module>
 				<module>spring-boot-keycloak</module>
 				<module>spring-boot-mvc</module>
@@ -808,13 +813,13 @@
 				<module>spring-cloud/spring-cloud-data-flow/time-processor</module>
 				<module>spring-cloud/spring-cloud-data-flow/time-source</module>
 				<module>spring-cucumber</module>
-				<module>spring-data-keyvalue</module>
+				<module>persistence-modules/spring-data-keyvalue</module>
 				<module>spring-data-rest</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
 				<module>spring-freemarker</module>
-				<module>spring-hibernate-3</module>
-				<module>spring-hibernate4</module>
+				<module>persistence-modules/spring-hibernate-3</module>
+				<module>persistence-modules/spring-hibernate4</module>
 				<module>spring-integration</module>
 				<module>spring-jenkins-pipeline</module>
 				<module>spring-jersey</module>
@@ -934,7 +939,7 @@
 				<module>parent-kotlin</module>
 				<!-- <module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 
-				<!-- <module>asm</module> <module>atomix</module> <module>apache-cayenne</module>
+				<!-- <module>asm</module> <module>atomix</module> <module>persistence-modules/apache-cayenne</module>
 					<module>aws</module> <module>aws-lambda</module> <module>akka-streams</module>
 					<module>algorithms</module> <module>annotations</module> <module>apache-cxf</module>
 					<module>apache-fop</module> <module>apache-poi</module> <module>apache-tika</module>
@@ -943,15 +948,15 @@
 					<module>azure</module> <module>bootique</module> <module>cdi</module> <module>core-java</module>
 					<module>core-java-collections</module> <module>core-java-io</module> <module>core-java-8</module>
 					<module>core-kotlin</module> <module>core-groovy</module> <module>core-java-concurrency</module>
-					<module>couchbase</module> <module>deltaspike</module> <module>dozer</module>
+					<module>couchbase</module> <module>persistence-modules/deltaspike</module> <module>dozer</module>
 					<module>ethereum</module> <module>ejb</module> <module>feign</module> <module>flips</module>
 					<module>geotools</module> <module>testing-modules/groovy-spock</module> <module>testing-modules/gatling</module>
 					<module>google-cloud</module> <module>google-web-toolkit</module> <module>gson</module>
 					<module>guava</module> <module>guava-modules/guava-18</module> <module>guava-modules/guava-19</module>
 					<module>guava-modules/guava-21</module> <module>guice</module> <module>disruptor</module>
-					<module>spring-static-resources</module> <module>hazelcast</module> <module>hbase</module>
-					<module>hibernate5</module> <module>httpclient</module> <module>hystrix</module>
-					<module>image-processing</module> <module>immutables</module> <module>influxdb</module>
+					<module>spring-static-resources</module> <module>hazelcast</module> <module>persistence-modules/hbase</module>
+					<module>persistence-modules/hibernate5</module> <module>httpclient</module> <module>hystrix</module>
+					<module>image-processing</module> <module>immutables</module> <module>persistence-modules/influxdb</module>
 					<module>jackson</module> <module>persistence-modules/java-cassandra</module>
 					<module>vavr</module> <module>java-lite</module> <module>java-numbers</module>
 					<module>java-rmi</module> <module>java-vavr-stream</module> <module>javax-servlets</module>
@@ -976,7 +981,7 @@
 				<module>mustache</module>
 				<module>mvn-wrapper</module>
 				<module>noexception</module>
-				<module>orientdb</module>
+				<module>persistence-modules/orientdb</module>
 				<module>osgi</module>
 				<module>orika</module>
 				<module>patterns</module>
@@ -1023,7 +1028,7 @@
 				<module>spring-boot-admin</module>
 				<module>spring-boot-camel</module>
 				<module>spring-boot-ops</module>
-				<module>spring-boot-persistence</module>
+				<module>persistence-modules/spring-boot-persistence</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-logging-log4j2</module>
@@ -1034,15 +1039,14 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
-				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 				<module>persistence-modules/spring-data-cassandra</module>
-				<module>spring-data-couchbase-2</module>
+				<module>persistence-modules/spring-data-couchbase-2</module>
 				<module>persistence-modules/spring-data-dynamodb</module>
-				<module>spring-data-elasticsearch</module>
-				<module>spring-data-keyvalue</module>
-				<module>spring-data-mongodb</module>
-				<module>spring-data-jpa</module>
+				<module>persistence-modules/spring-data-elasticsearch</module>
+				<module>persistence-modules/spring-data-keyvalue</module>
+				<module>persistence-modules/spring-data-mongodb</module>
+				<module>persistence-modules/spring-data-jpa</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 				<module>persistence-modules/spring-data-redis</module>
 				<module>spring-data-rest</module>
@@ -1057,7 +1061,7 @@
 				<module>spring-exceptions</module>
 				<module>spring-freemarker</module>
 				<module>persistence-modules/spring-hibernate-3</module>
-				<module>spring-hibernate4</module>
+				<module>persistence-modules/spring-hibernate4</module>
 				<module>persistence-modules/spring-hibernate-5</module>
 				<module>persistence-modules/spring-data-eclipselink</module>
 				<module>spring-integration</module>
@@ -1133,7 +1137,7 @@
 				<!-- <module>libraries</module> <module>jmeter</module> -->
 				<!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>java-websocket</module>
-				<module>activejdbc</module>
+				<module>persistence-modules/activejdbc</module>
 				<module>animal-sniffer-mvn-plugin</module>
 				<module>apache-avro</module>
 				<module>apache-bval</module>
@@ -1148,7 +1152,7 @@
 				<module>dagger</module>
 				<module>data-structures</module>
 				<module>dubbo</module>
-				<module>flyway</module>
+				<module>persistence-modules/flyway</module>
 				<!-- <module>grpc</module> --><!-- protobuf-maven-plugin filecopy failure -->
 				<!-- <module>JGit</module> --><!-- Unit test failure -->
 				<module>jni</module>
@@ -1161,7 +1165,6 @@
 				<module>spring-boot-autoconfiguration</module>
 				<module>spring-boot-custom-starter</module>
 				<module>spring-boot-jasypt</module>
-				<module>spring-custom-aop</module>
 				<module>spring-data-rest-querydsl</module>
 				<module>spring-groovy</module>
 				<module>spring-mobile</module>
@@ -1199,8 +1202,8 @@
 				<!-- <module>rule-engines/openl-tablets</module> --><!-- Wrong Parent -->
 				<!-- <module>rule-engines/rulebook</module> --><!-- Wrong Parent -->
 				<module>spring-boot-custom-starter/greeter</module>
-				<module>spring-boot-h2/spring-boot-h2-database</module>
-				<!--module>spring-boot-h2/spring-boot-h2-remote-app</module-->
+				<module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
+				<!--module>persistence-modules/spring-boot-h2/spring-boot-h2-remote-app</module-->
 				<!-- <module>guest\webservices\rest-client</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\rest-server</module> --><!-- guest post on different site -->
 				<!-- <module>guest\webservices\spring-rest-service</module> --><!-- guest post on different site -->
@@ -1252,11 +1255,14 @@
 				<module>parent-kotlin</module>
 				<module>asm</module>
 				<module>atomix</module>
-				<module>apache-cayenne</module>
+				<module>persistence-modules/apache-cayenne</module>
 				<module>aws</module>
 				<module>aws-lambda</module>
 				<module>akka-streams</module>
-				<module>algorithms</module>
+				<module>algorithms-genetic</module>
+				<module>algorithms-miscellaneous-1</module>
+				<module>algorithms-miscellaneous-2</module>
+				<module>algorithms-sorting</module>
 				<module>annotations</module>
 				<module>apache-cxf</module>
 				<module>apache-fop</module>
@@ -1282,7 +1288,7 @@
 				<module>core-groovy</module>
 
 				<module>couchbase</module>
-				<module>deltaspike</module>
+				<module>persistence-modules/deltaspike</module>
 				<module>dozer</module>
 				<module>ethereum</module>
 				<module>feign</module>
@@ -1299,12 +1305,12 @@
 				<module>disruptor</module>
 				<module>spring-static-resources</module>
 				<module>hazelcast</module>
-				<module>hbase</module>
+				<module>persistence-modules/hbase</module>
 
 				<module>hystrix</module>
 				<module>image-processing</module>
 				<module>immutables</module>
-				<module>influxdb</module>
+				<module>persistence-modules/influxdb</module>
 				<module>jackson</module>
 				<module>vavr</module>
 				<module>java-lite</module>
@@ -1345,7 +1351,7 @@
 				<module>mustache</module>
 				<module>mvn-wrapper</module>
 				<module>noexception</module>
-				<module>orientdb</module>
+				<module>persistence-modules/orientdb</module>
 				<module>osgi</module>
 				<module>orika</module>
 				<module>patterns</module>
@@ -1382,7 +1388,7 @@
 				<module>spring-boot-bootstrap</module>
 				<module>spring-boot-admin</module>
 				<module>spring-boot-camel</module>
-				<module>spring-boot-persistence</module>
+				<module>persistence-modules/spring-boot-persistence</module>
 				<module>spring-boot-security</module>
 				<module>spring-boot-mvc</module>
 				<module>spring-boot-logging-log4j2</module>
@@ -1393,12 +1399,11 @@
 				<module>spring-core</module>
 				<module>spring-cucumber</module>
 				<module>spring-ejb</module>
-				<module>spring-ejb/spring-ejb-client</module>
 				<module>spring-aop</module>
 
 				<module>persistence-modules/spring-data-dynamodb</module>
-				<module>spring-data-keyvalue</module>
-				<module>spring-data-mongodb</module>
+				<module>persistence-modules/spring-data-keyvalue</module>
+				<module>persistence-modules/spring-data-mongodb</module>
 				<module>persistence-modules/spring-data-neo4j</module>
 
 				<module>spring-data-rest</module>
@@ -1513,7 +1518,7 @@
 				<module>maven-archetype</module>
 				<module>apache-meecrowave</module>
 
-                <module>spring-hibernate4</module>
+                <module>persistence-modules/spring-hibernate4</module>
                 <module>xml</module>
                 <module>vertx</module>
                 <module>metrics</module>
@@ -1525,7 +1530,7 @@
                 <module>persistence-modules/java-cassandra</module>
                 <module>persistence-modules/spring-data-cassandra</module>
                 <module>logging-modules/log4j2</module>
-                <module>spring-data-couchbase-2</module>
+                <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-redis</module>
 
                 <module>jmeter</module>
@@ -1606,8 +1611,8 @@
                 <module>core-java</module>
                 <module>google-web-toolkit</module>
                 <module>spring-security-mvc-custom</module>
-                <module>hibernate5</module>
-                <module>spring-data-elasticsearch</module>
+                <module>persistence-modules/hibernate5</module>
+                <module>persistence-modules/spring-data-elasticsearch</module>
                 <module>core-java-concurrency</module>
 				<module>core-java-concurrency-collections</module>
             </modules>
