@@ -26,6 +26,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
@@ -213,7 +215,23 @@ public class RestTemplateBasicLiveTest {
         }
     }
 
-    //
+    @Test
+    public void givenFooService_whenFormSubmit_thenResourceIsCreated() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+
+        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+        map.add("id", "1");
+
+        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+
+        ResponseEntity<String> response = restTemplate.postForEntity( fooResourceUrl+"/form", request , String.class);
+
+        assertThat(response.getStatusCode(), is(HttpStatus.CREATED));
+        final String fooResponse = response.getBody();
+        assertThat(fooResponse, notNullValue());
+        assertThat(fooResponse, is("1"));
+    }
 
     private HttpHeaders prepareBasicAuthHeaders() {
         final HttpHeaders headers = new HttpHeaders();

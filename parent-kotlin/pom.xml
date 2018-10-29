@@ -22,7 +22,18 @@
 			<id>kotlin-ktor</id>
 			<url>https://dl.bintray.com/kotlin/ktor/</url>
 		</repository>
+		<repository>
+			<id>kotlin-eap</id>
+			<url>http://dl.bintray.com/kotlin/kotlin-eap</url>
+		</repository>
 	</repositories>
+	
+	<pluginRepositories>
+        <pluginRepository>
+           <id>kotlin-eap</id>
+			<url>http://dl.bintray.com/kotlin/kotlin-eap</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 	<dependencyManagement>
 		<dependencies>
@@ -42,6 +53,11 @@
 			<artifactId>kotlin-stdlib-jdk8</artifactId>
 			<version>${kotlin.version}</version>
 		</dependency>
+		 <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-reflect</artifactId>
@@ -157,6 +173,7 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>${maven-failsafe-plugin.version}</version>
 				<dependencies>
@@ -185,8 +202,8 @@
 	</build>
 
 	<properties>
-		<kotlin.version>1.2.61</kotlin.version>
-		<kotlinx.version>0.25.0</kotlinx.version>
+		<kotlin.version>1.3.0-rc-146</kotlin.version>
+		<kotlinx.version>0.26.1-eap13</kotlinx.version>
 		<ktor.io.version>0.9.3</ktor.io.version>
 		<assertj.version>3.11.0</assertj.version>
 		<junit.platform.version>1.2.0</junit.platform.version>
