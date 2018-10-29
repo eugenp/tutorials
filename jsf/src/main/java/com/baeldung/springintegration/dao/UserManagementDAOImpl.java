@@ -1,6 +1,5 @@
 package com.baeldung.springintegration.dao;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -33,6 +32,5 @@ public class UserManagementDAOImpl implements UserManagementDAO {
 
     public UserManagementDAOImpl() {
     }
-
 
 }
