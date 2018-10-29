@@ -4,8 +4,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>com.baeldung</groupId>
-    <artifactId>spring-boot-persistence</artifactId>
+    <groupId>com.baeldung.spring-boot-crud</groupId>
+    <artifactId>spring-boot-crud</artifactId>
     <version>0.1.0</version>
     
     <parent>
@@ -41,14 +41,6 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,7 +48,7 @@
     </properties>
     
     <build>
-        <finalName>spring-boot-persistence</finalName>
+        <finalName>spring-boot-crud</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
