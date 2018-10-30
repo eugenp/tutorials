@@ -61,6 +61,11 @@
             <version>3.3.0</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>uy.kohesive.injekt</groupId>
+            <artifactId>injekt-core</artifactId>
+            <version>1.16.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
