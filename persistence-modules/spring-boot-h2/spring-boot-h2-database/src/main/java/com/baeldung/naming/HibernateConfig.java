@@ -6,6 +6,10 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomi
 import java.util.Collections;
 import java.util.Map;
 
+/**
+ * Custom implementation of the {@link org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer HibernatePropertiesCustomizer}.
+ * We can use it to set custom hibernate properties.
+ */
 public class HibernateConfig implements HibernatePropertiesCustomizer {
 
     @Override

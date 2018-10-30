@@ -5,6 +5,10 @@ import org.hibernate.boot.model.relational.Database;
 import org.hibernate.engine.spi.SessionFactoryImplementor;
 import org.hibernate.service.spi.SessionFactoryServiceRegistry;
 
+/**
+ * Custom implementation of the {@link org.hibernate.integrator.spi.Integrator Integrator} interface.
+ * We can use it to getting access to the binding metadata between entity mappings and database tables.
+ */
 public class MetadataExtractorIntegrator implements org.hibernate.integrator.spi.Integrator {
 
     public static final MetadataExtractorIntegrator INSTANCE = new MetadataExtractorIntegrator();
