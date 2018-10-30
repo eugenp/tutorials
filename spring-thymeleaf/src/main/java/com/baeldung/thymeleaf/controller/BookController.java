@@ -26,8 +26,8 @@ public class BookController {
 
     @RequestMapping(value = "/listBooks", method = RequestMethod.GET)
     public String listBooks(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
-        int currentPage = page.orElse(1);
-        int pageSize = size.orElse(5);
+        final int currentPage = page.orElse(1);
+        final int pageSize = size.orElse(5);
 
         Page<Book> bookPage = bookService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
