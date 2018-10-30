@@ -32,7 +32,7 @@ public class Message {
 
         private void verifyTextOrFile() {
             if (text != null && file != null) {
-                throw new IllegalArgumentException("Cannot send 'text' and 'file'.");
+                throw new IllegalStateException("Cannot send 'text' and 'file'.");
             }
         }
     }
