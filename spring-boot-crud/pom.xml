@@ -48,7 +48,7 @@
     </properties>
     
     <build>
-        <finalName>spring-boot-persistence</finalName>
+        <finalName>spring-boot-crud</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
