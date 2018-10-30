@@ -24,7 +24,7 @@ public class BuilderWithCustomSetterUnitTest {
             .build();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalStateException.class)
     public void givenBuilderWithCustomSetter_TestTextAndFile() {
         Message message = Message.builder()
             .sender("user@somedomain.com")
