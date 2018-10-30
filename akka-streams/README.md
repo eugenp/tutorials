@@ -1,3 +1,3 @@
 ### Relevant articles
 
-- [Guide to Akka Streams](http://www.baeldung.com/akka-streams)
+- [Microservices with Oracle Helidon](https://www.baeldung.com/microservices-oracle-helidon)
