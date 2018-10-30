@@ -2,7 +2,6 @@ package com.baeldung.thymeleaf.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -22,18 +21,15 @@ import com.baeldung.thymeleaf.service.BookService;
 @Controller
 public class BookController {
 
-
     @Autowired
     private BookService bookService;
 
     @RequestMapping(value = "/listBooks", method = RequestMethod.GET)
     public String listBooks(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
-        AtomicInteger currentPage = new AtomicInteger(1);
-        AtomicInteger pageSize = new AtomicInteger(5);
-        page.ifPresent(p -> currentPage.set(p));
-        size.ifPresent(s -> pageSize.set(s));
+        int currentPage = page.isPresent()?page.get():5;
+        int pageSize = size.isPresent()?size.get():1;
 
-        Page<Book> bookPage = bookService.findPaginated(PageRequest.of(currentPage.get() - 1, pageSize.get()));
+        Page<Book> bookPage = bookService.findPaginated(PageRequest.of(currentPage - 1, pageSize));
 
         model.addAttribute("bookPage", bookPage);
 
