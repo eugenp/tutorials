@@ -1,12 +1,9 @@
-package com.baeldung.algorithms.mercator;
+package com.mercator;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
 
 import static junit.framework.TestCase.assertEquals;
 
-@RunWith(MockitoJUnitRunner.class)
 public class EllipticalMercatorUnitTest {
 
     @Test
