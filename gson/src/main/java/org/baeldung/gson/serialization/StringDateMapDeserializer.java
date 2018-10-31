@@ -7,13 +7,13 @@ import java.util.Date;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import com.google.gson.JsonParseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
 public class StringDateMapDeserializer implements JsonDeserializer<Map<String, Date>> {
 
@@ -21,29 +21,24 @@ public class StringDateMapDeserializer implements JsonDeserializer<Map<String, D
 
     private SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
-        @Override
-        public Map<String, Date> deserialize(JsonElement elem,
-                Type type,
-                JsonDeserializationContext jsonDeserializationContext) {
-                System.out.println("Deserializer called");
-                logger.info("Deserializer called");
-                return elem.getAsJsonObject()
-                        .entrySet()
-                        .stream()
-                        .filter(e -> e.getValue().isJsonPrimitive())
-                        .filter(e -> e.getValue().getAsJsonPrimitive().isString())
-                        .collect(
-                                Collectors.toMap(
-                                        Map.Entry::getKey,
-                                        e -> formatDate(e.getValue())));
-        }
+    @Override
+    public Map<String, Date> deserialize(JsonElement elem, Type type, JsonDeserializationContext jsonDeserializationContext) {
+        System.out.println("Deserializer called");
+        logger.info("Deserializer called");
+        return elem.getAsJsonObject()
+          .entrySet()
+          .stream()
+          .filter(e -> e.getValue().isJsonPrimitive())
+          .filter(e -> e.getValue().getAsJsonPrimitive().isString())
+          .collect(Collectors.toMap(Map.Entry::getKey, e -> formatDate(e.getValue())));
+    }
 
-        private Date formatDate(JsonElement value) {
-                try {
-                        return format.parse(value.getAsString());
-                } catch (ParseException ex) {
-                        throw new JsonParseException(ex);
-                }
+    private Date formatDate(JsonElement value) {
+        try {
+            return format.parse(value.getAsString());
+        } catch (ParseException ex) {
+            throw new JsonParseException(ex);
         }
+    }
 
 }
