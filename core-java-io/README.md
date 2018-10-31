@@ -33,3 +33,4 @@
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
 - [Read a File into an ArrayList](https://www.baeldung.com/java-file-to-arraylist)
 - [Guide to Java OutputStream](https://www.baeldung.com/java-outputstream)
+- [Java - Load resources from classpath](https://baeldung.com/errors-while-loading-resources-from-classpath/)
