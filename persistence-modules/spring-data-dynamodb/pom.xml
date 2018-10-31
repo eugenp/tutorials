@@ -83,7 +83,7 @@
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            </dependency>
+        </dependency>
         <!-- ================================================== -->
         <!-- DynamoDBLocal dependencies -->
         <!-- ================================================== -->
