@@ -158,3 +158,4 @@
 - [Java Switch Statement](https://www.baeldung.com/java-switch)
 - [The Modulo Operator in Java](https://www.baeldung.com/modulo-java)
 - [Ternary Operator In Java](https://www.baeldung.com/java-ternary-operator)
+- [Merging java.util.Properties Objects](https://www.baeldung.com/java-merging-properties)
