@@ -41,7 +41,7 @@ public class RestAssured2IntegrationTest {
 
     @Test
     public void givenUrl_whenVerifiesOddPricesAccuratelyByStatus_thenCorrect() {
-        get("/odds").then().body("odds.findAll { it.status > 0 }.price", 
+        get("/odds").then().body("odds.findAll { it.status > 0 }.price",
           hasItems(5.25f, 1.2f));
     }
 
