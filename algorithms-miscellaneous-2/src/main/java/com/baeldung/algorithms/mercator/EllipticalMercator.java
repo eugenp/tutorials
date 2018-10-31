@@ -1,6 +1,7 @@
 package com.mercator;
 
 class EllipticalMercator extends Mercator {
+	
     @Override
     double yAxisProjection(double input) {
 
