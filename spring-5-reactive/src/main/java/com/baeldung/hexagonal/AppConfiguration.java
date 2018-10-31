@@ -14,8 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppConfiguration {
 
     @Bean
-    public ExchangeRateService exchangeRateService(ExchangeRateRepository<ExchangeRateDomain> repository,
-                                                   ExchangeRateRetrievalService retrievalService) {
+    public ExchangeRateService exchangeRateService(ExchangeRateRepository<ExchangeRateDomain> repository, ExchangeRateRetrievalService retrievalService) {
         return new ExchangeRateServiceImpl(retrievalService, repository);
     }
 }

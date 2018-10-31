@@ -18,8 +18,7 @@ public class ExchangeRate implements ExchangeRateDomain {
     private final BigDecimal rate;
 
     @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-    public ExchangeRate(@JsonProperty("date") LocalDate date, @JsonProperty("from") Currency from,
-                        @JsonProperty("to") Currency to, @JsonProperty("rate") BigDecimal rate) {
+    public ExchangeRate(@JsonProperty("date") LocalDate date, @JsonProperty("from") Currency from, @JsonProperty("to") Currency to, @JsonProperty("rate") BigDecimal rate) {
         this.date = date;
         this.from = from;
         this.to = to;

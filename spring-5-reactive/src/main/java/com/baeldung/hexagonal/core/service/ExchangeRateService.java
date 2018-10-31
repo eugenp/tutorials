@@ -21,8 +21,7 @@ public interface ExchangeRateService {
         final String message;
 
         public enum Status {
-            OK,
-            ERROR,
+            OK, ERROR,
         }
     }
 }

@@ -17,7 +17,8 @@ public class ExchangeRateInMemoryRepository implements ExchangeRateRepository<Ex
 
     @Override
     public void save(List<ExchangeRateDomain> exchangeRates) {
-        store.putAll(exchangeRates.stream().collect(Collectors.toMap(ExchangeRateDomain::getDate, Function.identity())));
+        store.putAll(exchangeRates.stream()
+            .collect(Collectors.toMap(ExchangeRateDomain::getDate, Function.identity())));
     }
 
     @Override
@@ -25,7 +26,9 @@ public class ExchangeRateInMemoryRepository implements ExchangeRateRepository<Ex
         List<ExchangeRateDomain> result = new ArrayList<>();
         for (LocalDate i = from; i.isBefore(to); i = i.plus(1, ChronoUnit.DAYS)) {
             ExchangeRateDomain item = store.get(i);
-            if (item != null && item.getFrom().equals(src) && item.getTo().equals(dest)) {
+            if (item != null && item.getFrom()
+                .equals(src) && item.getTo()
+                    .equals(dest)) {
                 result.add(item);
             }
         }

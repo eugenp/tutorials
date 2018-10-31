@@ -21,14 +21,13 @@ public class DummyRetrievalService implements ExchangeRateRetrievalService {
         return SampleData.generate(startDate, src, dest);
     }
 
-
     private static class SampleData {
 
         static List<ExchangeRateDomain> generate(LocalDate startDate, Currency src, Currency dest) {
             List<ExchangeRateDomain> result = new ArrayList<>();
             for (int i = 0; i < 10; i++) {
-                result.add(new ExchangeRate(startDate.plus(i, ChronoUnit.DAYS), src, dest,
-                        BigDecimal.valueOf(ThreadLocalRandom.current().nextDouble(10, 60))));
+                result.add(new ExchangeRate(startDate.plus(i, ChronoUnit.DAYS), src, dest, BigDecimal.valueOf(ThreadLocalRandom.current()
+                    .nextDouble(10, 60))));
             }
             return result;
         }

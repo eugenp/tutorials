@@ -22,8 +22,8 @@ public class Controller {
     private final ExchangeRateService exchangeRateService;
 
     @GetMapping("rates")
-    public List<ExchangeRateDomain> getRates(@RequestParam(required = false) LocalDate from, @RequestParam(required = false) LocalDate to,
-                                             @RequestParam(required = false, defaultValue = "USD") String src, @RequestParam(required = false, defaultValue = "EUR") String dest) {
+    public List<ExchangeRateDomain> getRates(@RequestParam(required = false) LocalDate from, @RequestParam(required = false) LocalDate to, @RequestParam(required = false, defaultValue = "USD") String src,
+        @RequestParam(required = false, defaultValue = "EUR") String dest) {
         if (from == null) {
             from = LocalDate.of(2018, 1, 1);
         }
@@ -35,11 +35,9 @@ public class Controller {
     }
 
     @PostMapping("rates")
-    public ResponseEntity<Object> updateRates(@RequestParam(required = false, defaultValue = "USD") String src,
-                                              @RequestParam(required = false, defaultValue = "EUR") String dest) {
+    public ResponseEntity<Object> updateRates(@RequestParam(required = false, defaultValue = "USD") String src, @RequestParam(required = false, defaultValue = "EUR") String dest) {
         ExchangeRateService.UpdateResult updateResult = exchangeRateService.update(Currency.getInstance(src), Currency.getInstance(dest));
-        return updateResult.getStatus() == ExchangeRateService.UpdateResult.Status.OK ?
-                ResponseEntity.accepted().body(updateResult.getMessage()) :
-                new ResponseEntity<>(updateResult.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return updateResult.getStatus() == ExchangeRateService.UpdateResult.Status.OK ? ResponseEntity.accepted()
+            .body(updateResult.getMessage()) : new ResponseEntity<>(updateResult.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

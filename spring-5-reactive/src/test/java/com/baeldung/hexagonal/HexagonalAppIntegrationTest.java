@@ -17,33 +17,33 @@ public class HexagonalAppIntegrationTest {
     @BeforeClass
     public static void setup() throws Exception {
         client = WebTestClient.bindToServer()
-                .baseUrl("http://localhost:8080")
-                .build();
+            .baseUrl("http://localhost:8080")
+            .build();
     }
 
     @Test
     public void givenRouter_whenPostRates_thenGotAccepted() throws Exception {
         client.post()
-                .uri("/rates")
-                .exchange()
-                .expectStatus()
-                .isAccepted();
+            .uri("/rates")
+            .exchange()
+            .expectStatus()
+            .isAccepted();
     }
 
     @Test
     public void givenRouter_whenGetRates_thenGotResponse() throws Exception {
         client.post()
-                .uri("/rates")
-                .exchange()
-                .expectStatus()
-                .isAccepted();
+            .uri("/rates")
+            .exchange()
+            .expectStatus()
+            .isAccepted();
 
         client.get()
-                .uri("/rates")
-                .exchange()
-                .expectStatus()
-                .isOk()
-                .expectBodyList(ExchangeRate.class)
-                .hasSize(10);
+            .uri("/rates")
+            .exchange()
+            .expectStatus()
+            .isOk()
+            .expectBodyList(ExchangeRate.class)
+            .hasSize(10);
     }
 }
