@@ -31,7 +31,7 @@ public class RestAssured2IntegrationTest {
         configureFor("localhost", PORT);
         RestAssured.port = PORT;
         stubFor(get(urlEqualTo(EVENTS_PATH)).willReturn(
-            aResponse().withStatus(200)
+          aResponse().withStatus(200)
             .withHeader("Content-Type", APPLICATION_JSON)
             .withBody(ODDS)));
         stubFor(post(urlEqualTo("/odds/new"))
@@ -42,7 +42,7 @@ public class RestAssured2IntegrationTest {
     @Test
     public void givenUrl_whenVerifiesOddPricesAccuratelyByStatus_thenCorrect() {
         get("/odds").then().body("odds.findAll { it.status > 0 }.price", 
-            hasItems(5.25f, 1.2f));
+          hasItems(5.25f, 1.2f));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class RestAssured2IntegrationTest {
 
     private static String getJson() {
         return Util.inputStreamToString(RestAssured2IntegrationTest.class
-            .getResourceAsStream("/odds.json"));
+          .getResourceAsStream("/odds.json"));
     }
 
     @AfterClass
