@@ -1,4 +1,4 @@
-package com.mercator;
+package com.baeldung.algorithms.mercator;
 
 import org.junit.Test;
 
