@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.simpledateformat;
 
 import org.junit.Test;
 
@@ -32,6 +32,7 @@ public class SimpleDateFormatUnitTest {
   @Test
   public void givenStringDate_whenParsed_thenCheckDateCorrect() throws Exception{
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    formatter.setTimeZone(TimeZone.getTimeZone("Europe/London"));
     Date myDate = new Date(233276400000L);
     Date parsedDate = formatter.parse("24-05-1977");
     assertEquals(myDate.getTime(), parsedDate.getTime());
