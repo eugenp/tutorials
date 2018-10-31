@@ -4,28 +4,26 @@ import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.baeldung.gson.entities.Employee;
 
 import com.google.gson.*;
 
-public class HashMapDeserializer implements JsonDeserializer<HashMap<String, Object>> {
+public class MapDeserializer implements JsonDeserializer<Map<String, Object>> {
 
     @Override
-    public HashMap<String, Object> deserialize(JsonElement elem, Type type, JsonDeserializationContext context) throws JsonParseException {
-        HashMap<String, Object> map = new HashMap<>();
-        for (Map.Entry<String, JsonElement> entry : elem.getAsJsonObject().entrySet()) {
-            JsonElement jsonValue = entry.getValue();
-            Object value = null;
-            if (jsonValue.isJsonPrimitive()) {
-                value = toPrimitive(jsonValue.getAsJsonPrimitive(), context);
-            } else {
-                value = context.deserialize(jsonValue, Employee.class);
-            }
-            map.put(entry.getKey(), value);
-        }
-        return map;
+    public Map<String, Object> deserialize(JsonElement elem, Type type, JsonDeserializationContext context) throws JsonParseException {
 
+        return elem.getAsJsonObject()
+          .entrySet()
+          .stream()
+          .collect(Collectors.toMap(
+            Map.Entry::getKey,
+            e -> e.getValue().isJsonPrimitive() ?
+              toPrimitive(e.getValue().getAsJsonPrimitive(), context)
+              : context.deserialize(e.getValue(), Employee.class)
+          ));
     }
 
     private Object toPrimitive(JsonPrimitive jsonValue, JsonDeserializationContext context) {
