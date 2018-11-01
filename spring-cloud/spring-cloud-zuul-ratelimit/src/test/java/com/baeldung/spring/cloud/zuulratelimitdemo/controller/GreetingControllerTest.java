@@ -73,7 +73,6 @@ public class GreetingControllerTest {
         assertNotEquals(reset, "2000");
 
         assertEquals(TOO_MANY_REQUESTS, response.getStatusCode());
-        assertNotEquals(GreetingController.ADVANCED_RESPONSE, response.getBody());
 
         TimeUnit.SECONDS.sleep(2);
 

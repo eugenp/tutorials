@@ -1,26 +1,21 @@
 package com.baeldung.spring.cloud.zuulratelimitdemo.controller;
 
-import org.springframework.cloud.client.SpringCloudApplication;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@EnableZuulProxy
-@SpringCloudApplication
+@Controller
 @RequestMapping("/greeting")
 public class GreetingController {
 
-    public static final String SIMPLE_RESPONSE = "Hi!";
-    public static final String ADVANCED_RESPONSE = "Hello, how you doing?";
-
     @GetMapping("/simple")
     public ResponseEntity<String> getSimple() {
-        return ResponseEntity.ok(SIMPLE_RESPONSE);
+        return ResponseEntity.ok("Hi!");
     }
 
     @GetMapping("/advanced")
     public ResponseEntity<String> getAdvanced() {
-        return ResponseEntity.ok(ADVANCED_RESPONSE);
+        return ResponseEntity.ok("Hello, how you doing?");
     }
 }
