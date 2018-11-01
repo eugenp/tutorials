@@ -4,16 +4,19 @@ import org.baeldung.web.model.Employee;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+@RunWith(MockitoJUnitRunner.class)
 public class EmployeeServiceUnitTest {
 
     private static final Logger logger = LoggerFactory.getLogger(EmployeeServiceUnitTest.class);
@@ -23,11 +26,6 @@ public class EmployeeServiceUnitTest {
 
     @InjectMocks
     private EmployeeService empService = new EmployeeService();
-
-    @Before
-    public void setup() {
-        MockitoAnnotations.initMocks(this);
-    }
 
     @Test
     public void givenMockingIsDoneByMockito_whenGetIsCalled_shouldReturnMockedObject() throws Exception {
