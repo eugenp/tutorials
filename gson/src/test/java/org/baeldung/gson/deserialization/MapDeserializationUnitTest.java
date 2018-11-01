@@ -1,10 +1,14 @@
 package org.baeldung.gson.deserialization;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
+import java.text.ParseException;
+import java.util.Date;
+import java.util.Map;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.baeldung.gson.entities.Employee;
-import org.baeldung.gson.serialization.HashMapDeserializer;
+import org.baeldung.gson.serialization.MapDeserializer;
+import org.baeldung.gson.serialization.StringDateMapDeserializer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -16,18 +20,18 @@ import com.google.gson.JsonSyntaxException;
 import com.google.gson.internal.LinkedTreeMap;
 import com.google.gson.reflect.TypeToken;
 
-public class HashMapDeserializationUnitTest {
+public class MapDeserializationUnitTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(HashMapDeserializationUnitTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(MapDeserializationUnitTest.class);
 
     @Test
-    public void whenUsingHashMapClass_thenShouldReturnMapWithDefaultClasses() {
+    public void whenUsingMapClass_thenShouldReturnMapWithDefaultClasses() {
 
         String jsonString = "{'employee.name':'Bob','employee.salary':10000, 'employee.active':true, "
           + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
         Gson gson = new Gson();
-        HashMap map = gson.fromJson(jsonString, HashMap.class);
+        Map map = gson.fromJson(jsonString, Map.class);
 
         logger.info("The converted map: {}", map);
         Assert.assertEquals(4, map.size());
@@ -43,7 +47,7 @@ public class HashMapDeserializationUnitTest {
           + "'employee.active':true, " + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
         Gson gson = new Gson();
-        HashMap map = gson.fromJson(jsonString, HashMap.class);
+        Map map = gson.fromJson(jsonString, Map.class);
 
         logger.info("The converted map: {}", map);
     }
@@ -56,8 +60,8 @@ public class HashMapDeserializationUnitTest {
           + "'Steve':{'id':10, 'name': 'Steven Waugh', 'address':'Australia'}}";
 
         Gson gson = new Gson();
-        Type empMapType = new TypeToken<HashMap<String, Employee>>(){}.getType();
-        HashMap<String, Employee> nameEmployeeMap = gson.fromJson(jsonString, empMapType);
+        Type empMapType = new TypeToken<Map<String, Employee>>(){}.getType();
+        Map<String, Employee> nameEmployeeMap = gson.fromJson(jsonString, empMapType);
 
         logger.info("The converted map: {}", nameEmployeeMap);
         Assert.assertEquals(3, nameEmployeeMap.size());
@@ -70,17 +74,39 @@ public class HashMapDeserializationUnitTest {
         String jsonString = "{'employee.name':'Bob','employee.salary':10000, 'employee.active':true, "
           + "'employee':{'id':10, 'name': 'Bob Willis', 'address':'London'}}";
 
-        Type type = new TypeToken<HashMap<String, Object>>(){}.getType();
+        Type type = new TypeToken<Map<String, Object>>(){}.getType();
         Gson gson = new GsonBuilder()
-          .registerTypeAdapter(type, new HashMapDeserializer())
+          .registerTypeAdapter(type, new MapDeserializer())
           .create();
-        HashMap<String, Object> blendedMap = gson.fromJson(jsonString, type);
+        Map<String, Object> blendedMap = gson.fromJson(jsonString, type);
 
         logger.info("The converted map: {}", blendedMap);
         Assert.assertEquals(4, blendedMap.size());
         Assert.assertEquals(Integer.class, blendedMap.get("employee.salary").getClass());
         Assert.assertEquals(Employee.class, blendedMap.get("employee").getClass());
 
+    }
+
+    @Test
+    public void whenUsingCustomDateDeserializer_thenShouldReturnMapWithDate() {
+        String jsonString = "{'Bob': '2017/06/01', 'Jennie':'2015/01/03'}";
+        Type type = new TypeToken<Map<String, Date>>(){}.getType();
+        Gson gson = new GsonBuilder()
+          .registerTypeAdapter(type, new StringDateMapDeserializer())
+          .create();
+        Map<String, Date> empJoiningDateMap = gson.fromJson(jsonString, type);
+
+        logger.info("The converted map: {}", empJoiningDateMap);
+        logger.info("The map class {}", empJoiningDateMap.getClass());
+        Assert.assertEquals(2, empJoiningDateMap.size());
+        Assert.assertEquals(Date.class, empJoiningDateMap.get("Bob").getClass());
+        Date dt = null;
+        try {
+            dt = DateUtils.parseDate("2017-06-01", "yyyy-MM-dd");
+            Assert.assertEquals(dt, empJoiningDateMap.get("Bob"));
+        } catch (ParseException e) {
+            logger.error("Could not parse date", e);
+        }
     }
 
 }
