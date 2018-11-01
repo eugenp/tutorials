@@ -9,7 +9,7 @@ import org.junit.Test;
 public class UppercaseFileReaderUnitTest {
 
     @Test
-    public void givenStandardFileReaderInstance_whenCalledreadFile_thenCorrect() throws Exception {
+    public void givenUppercaseFileReaderInstance_whenCalledreadFile_thenCorrect() throws Exception {
         String filePath = getClass().getClassLoader().getResource("files/test.txt").getPath().substring(1);
         BaseFileReader uppercaseFileReader = new UppercaseFileReader(filePath);
         
