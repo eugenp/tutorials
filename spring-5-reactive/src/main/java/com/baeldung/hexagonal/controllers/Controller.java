@@ -1,8 +1,9 @@
 package com.baeldung.hexagonal.controllers;
 
-import com.baeldung.hexagonal.core.model.ExchangeRateDomain;
-import com.baeldung.hexagonal.core.service.ExchangeRateService;
-import lombok.RequiredArgsConstructor;
+import java.time.LocalDate;
+import java.util.Currency;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,9 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.util.Currency;
-import java.util.List;
+import com.baeldung.hexagonal.core.model.ExchangeRate;
+import com.baeldung.hexagonal.core.service.ExchangeRateService;
+
+import lombok.RequiredArgsConstructor;
 
 @RestController("/")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -22,7 +24,7 @@ public class Controller {
     private final ExchangeRateService exchangeRateService;
 
     @GetMapping("rates")
-    public List<ExchangeRateDomain> getRates(@RequestParam(required = false) LocalDate from, @RequestParam(required = false) LocalDate to, @RequestParam(required = false, defaultValue = "USD") String src,
+    public List<ExchangeRate> getRates(@RequestParam(required = false) LocalDate from, @RequestParam(required = false) LocalDate to, @RequestParam(required = false, defaultValue = "USD") String src,
         @RequestParam(required = false, defaultValue = "EUR") String dest) {
         if (from == null) {
             from = LocalDate.of(2018, 1, 1);

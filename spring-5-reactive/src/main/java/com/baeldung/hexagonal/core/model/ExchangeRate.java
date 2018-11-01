@@ -1,16 +1,17 @@
 package com.baeldung.hexagonal.core.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.Currency;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.Getter;
+
 @Getter
-public class ExchangeRate implements ExchangeRateDomain {
+public class ExchangeRate {
 
     private final LocalDate date;
     private final Currency from;

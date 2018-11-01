@@ -1,15 +1,15 @@
 package com.baeldung.hexagonal.core.ports;
 
-import com.baeldung.hexagonal.core.model.ExchangeRateDomain;
-
 import java.time.LocalDate;
 import java.util.Currency;
 import java.util.List;
 
-public interface ExchangeRateRepository<T extends ExchangeRateDomain> {
+import com.baeldung.hexagonal.core.model.ExchangeRate;
 
-    void save(List<T> exchangeRates);
+public interface ExchangeRateRepository {
 
-    List<T> retrieve(LocalDate from, LocalDate to, Currency src, Currency dest);
+    void save(List<ExchangeRate> exchangeRates);
+
+    List<ExchangeRate> retrieve(LocalDate from, LocalDate to, Currency src, Currency dest);
 
 }
