@@ -1,0 +1,29 @@
+<configuration>
+    # Console appender
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            # Pattern of log message for console appender
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Pattern>
+        </layout>
+    </appender>
+
+    # File appender
+    <appender name="fout" class="ch.qos.logback.core.FileAppender">
+        # Name of a log file
+        <file>log4j/target/hexagonal-logback.log</file>
+        <append>false</append>
+        <encoder>
+            # Pattern of log message for file appender
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %p %m%n</pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="fout"/>
+    </root>
+    <root level="DEBUG">
+        <appender-ref ref="stdout"/>
+        <appender-ref ref="fout"/>
+    </root>
+
+</configuration>

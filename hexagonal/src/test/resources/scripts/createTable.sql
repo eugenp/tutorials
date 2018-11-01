@@ -1,0 +1,1 @@
+create table employee (id int auto_increment not null, name varchar(50) not null, address varchar(200) not null);

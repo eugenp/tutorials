@@ -1,0 +1,4 @@
+2018-11-01 20:11:07 INFO Inside EmployeeService.saveEmployee()
+2018-11-01 20:11:07 DEBUG Employee object saved to file successfully
+2018-11-01 20:11:08 INFO Inside EmployeeService.saveEmployee()
+2018-11-01 20:11:10 DEBUG Employee object saved to Database successfully
