@@ -1,11 +1,14 @@
 package org.baeldung.springevents.synchronous;
 
-public class GenericSpringEvent<T> {
+import org.springframework.context.ApplicationEvent;
+
+public class GenericSpringAppEvent<T> extends ApplicationEvent {
 
     private final T what;
     protected final boolean success;
 
-    public GenericSpringEvent(final T what, final boolean success) {
+    public GenericSpringAppEvent(final Object source, final T what, final boolean success) {
+        super(source);
         this.what = what;
         this.success = success;
     }
