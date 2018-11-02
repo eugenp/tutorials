@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.platform.runner.JUnitPlatform;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
@@ -23,9 +25,11 @@ import com.baeldung.junit5.mockito.service.Errors;
 import com.baeldung.junit5.mockito.service.UserService;
 
 @ExtendWith(MockitoExtension.class)
+@RunWith(JUnitPlatform.class)
 public class UserServiceUnitTest {
     
     UserService userService;
+    SettingRepository settingRepository;
     @Mock UserRepository userRepository;
     @Mock MailClient mailClient;
 
@@ -37,10 +41,11 @@ public class UserServiceUnitTest {
         lenient().when(settingRepository.getUserMinAge()).thenReturn(10);
         when(settingRepository.getUserNameMinLength()).thenReturn(4);
         lenient().when(userRepository.isUsernameAlreadyExists(any(String.class))).thenReturn(false);
+        this.settingRepository = settingRepository;
     }
     
     @Test
-    void givenValidUser_whenSaveUser_thenSucceed() {
+    void givenValidUser_whenSaveUser_thenSucceed(@Mock MailClient mailClient) {
         // Given
         user = new User("Jerry", 12);
         when(userRepository.insert(any(User.class))).then(new Answer<User>() {
@@ -53,7 +58,9 @@ public class UserServiceUnitTest {
                 return user;
             }
         });
-        
+
+        userService = new DefaultUserService(userRepository, settingRepository, mailClient);
+
         // When
         User insertedUser = userService.register(user);
         
