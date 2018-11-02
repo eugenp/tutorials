@@ -129,11 +129,13 @@ public class ArrayOperationsUnitTest {
         Integer[] array3 = null;
         Integer[] array4 = { null, null, null };
         Integer[] array5 = { null };
+        Integer[][] array6 = { {}, {}, {} };
         boolean output = ArrayOperations.isEmptyObjectArrayUsingUtils(defaultObjectArray);
         boolean output2 = ArrayOperations.isEmptyObjectArrayUsingUtils(array2);
         boolean output3 = ArrayOperations.isEmptyObjectArrayUsingUtils(array3);
         boolean output4 = ArrayOperations.isEmptyObjectArrayUsingUtils(array4);
         boolean output5 = ArrayOperations.isEmptyObjectArrayUsingUtils(array5);
+        boolean output6 = ArrayOperations.isEmptyObjectArrayUsingUtils(array6);
 
         assertThat(output).isFalse();
         assertThat(output2).isTrue();
@@ -141,6 +143,7 @@ public class ArrayOperationsUnitTest {
         // Mind these edge cases!
         assertThat(output4).isFalse();
         assertThat(output5).isFalse();
+        assertThat(output6).isFalse();
     }
 
     @Test
@@ -201,11 +204,14 @@ public class ArrayOperationsUnitTest {
         // Comparing to Arrays output:
         String wrongArraysOutput = Arrays.toString(defaultJaggedObjectArray);
         String differentFormatArraysOutput = Arrays.toString(defaultObjectArray);
+        // We should use Arrays.deepToString for jagged arrays
+        String differentFormatJaggedArraysOutput = Arrays.deepToString(defaultJaggedObjectArray);
 
         assertThat(output).isEqualTo("{3,5,2,5,14,4}");
         assertThat(jaggedOutput).isEqualTo("{{1,3},{5},{}}");
         assertThat(differentFormatArraysOutput).isEqualTo("[3, 5, 2, 5, 14, 4]");
         assertThat(wrongArraysOutput).contains("[[Ljava.lang.Integer;@");
+        assertThat(differentFormatJaggedArraysOutput).contains("[[1, 3], [5], []]");
     }
 
     @Test
@@ -247,6 +253,14 @@ public class ArrayOperationsUnitTest {
     }
 
     @Test
+    public void whenMapDividingObjectArray_thenReturnDividedArray() {
+        Double[] multipliedExpectedArray = new Double[] { 1.5, 2.5, 1.0, 2.5, 7.0, 2.0 };
+        Double[] output = ArrayOperations.mapObjectArray(defaultObjectArray, value -> value / 2.0, Double.class);
+
+        assertThat(output).containsExactly(multipliedExpectedArray);
+    }
+
+    @Test
     public void whenMapIntArrayToString_thenReturnArray() {
         String[] expectedArray = new String[] { "Value: 3", "Value: 5", "Value: 2", "Value: 5", "Value: 14",
                 "Value: 4" };
@@ -272,27 +286,11 @@ public class ArrayOperationsUnitTest {
         assertThat(output).containsExactly(expectedArray);
     }
 
-    // Operate on Arrays
-    @Test
-    public void whenOperateIntArrayToString_thenReturnAverage() {
-        Double output = ArrayOperations.operateAverageOnIntArray(defaultIntArray);
-
-        assertThat(output).isEqualTo(5.5);
-    }
-
-    @Test
-    public void whenOperateOnEachIntArrayToString_thenReturnDoubleArray() {
-        double[] expectedArray = { 10.77, 17.95, 7.18, 17.95, 50.26, 14.36 };
-        double[] output = ArrayOperations.operateCustomOnIntArray(defaultIntArray);
-
-        assertThat(output).containsExactly(expectedArray);
-    }
-
     // Insert between
     @Test
     public void whenInsertBetweenIntArrayToString_thenReturnNewArray() {
         int[] expectedArray = { 3, 5, 77, 88, 2, 5, 14, 4 };
-        int[] output = ArrayOperations.insertBetweenIntArray(defaultIntArray);
+        int[] output = ArrayOperations.insertBetweenIntArray(defaultIntArray, 77, 88);
 
         assertThat(output).containsExactly(expectedArray);
     }

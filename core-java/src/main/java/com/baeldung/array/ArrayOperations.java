@@ -56,7 +56,7 @@ public class ArrayOperations {
     }
 
     // Deep Compare (for nested arrays)
-    public static <T> boolean deepCompareObjectArrayUsingArrays(T[] array1, T[] array2) {
+    public static <T> boolean deepCompareObjectArrayUsingArrays(T[][] array1, T[][] array2) {
         // We can use Objects.deepEquals for a broader approach
         return Arrays.deepEquals(array1, array2);
     }
@@ -156,26 +156,13 @@ public class ArrayOperations {
 
     public static int[] filterIntArray(int[] array, IntPredicate predicate) {
         return Arrays.stream(array)
-            .filter(value -> value % 2 == 0)
-            .toArray();
-    }
-
-    // Operate on Arrays
-    public static Double operateAverageOnIntArray(int[] array) {
-        return Arrays.stream(array)
-            .average()
-            .getAsDouble();
-    }
-
-    public static double[] operateCustomOnIntArray(int[] array) {
-        return Arrays.stream(array)
-            .mapToDouble(value -> value * 3.59)
+            .filter(predicate)
             .toArray();
     }
 
     // Insert item between others
-    public static int[] insertBetweenIntArray(int[] array) {
-        return ArrayUtils.insert(2, array, 77, 88);
+    public static int[] insertBetweenIntArray(int[] array, int... values) {
+        return ArrayUtils.insert(2, array, values);
     }
 
     public static <T> T[] insertBetweenObjectArray(T[] array, T... values) {
