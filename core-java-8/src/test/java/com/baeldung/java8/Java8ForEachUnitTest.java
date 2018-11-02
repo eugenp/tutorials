@@ -1,12 +1,19 @@
 package com.baeldung.java8;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
+import java.util.function.Consumer;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
 
 public class Java8ForEachUnitTest {
 
@@ -29,8 +36,18 @@ public class Java8ForEachUnitTest {
         }
 
         // Java 8 - forEach
-        LOG.debug("--- forEach method ---");
-        names.forEach(name -> LOG.debug(name));
+        names.forEach(name -> {
+            System.out.println(name);
+        });
+
+        LOG.debug("--- Print Consumer ---");
+        Consumer<String> printConsumer = new Consumer<String>() {
+            public void accept(String name) {
+                System.out.println(name);
+            };
+        };
+
+        names.forEach(printConsumer);
 
         // Anonymous inner class that implements Consumer interface
         LOG.debug("--- Anonymous inner class ---");
@@ -40,17 +57,55 @@ public class Java8ForEachUnitTest {
             }
         });
 
-        // Create a Consumer implementation to then use in a forEach method
-        Consumer<String> consumerNames = name -> {
-            LOG.debug(name);
-        };
-        LOG.debug("--- Implementation of Consumer interface ---");
-        names.forEach(consumerNames);
+        // Java 8 - forEach - Lambda Syntax
+        LOG.debug("--- forEach method ---");
+        names.forEach(name -> LOG.debug(name));
 
-        // Print elements using a Method Reference
+        // Java 8 - forEach - Print elements using a Method Reference
         LOG.debug("--- Method Reference ---");
         names.forEach(LOG::debug);
+    }
 
+    @Test
+    public void givenList_thenIterateAndPrintResults() {
+        List<String> names = Arrays.asList("Larry", "Steve", "James");
+
+        names.forEach(System.out::println);
+    }
+
+    @Test
+    public void givenSet_thenIterateAndPrintResults() {
+        Set<String> uniqueNames = new HashSet<>(Arrays.asList("Larry", "Steve", "James"));
+
+        uniqueNames.forEach(System.out::println);
+    }
+
+    @Test
+    public void givenQueue_thenIterateAndPrintResults() {
+        Queue<String> namesQueue = new ArrayDeque<>(Arrays.asList("Larry", "Steve", "James"));
+
+        namesQueue.forEach(System.out::println);
+    }
+
+    @Test
+    public void givenMap_thenIterateAndPrintResults() {
+        Map<Integer, String> namesMap = new HashMap<>();
+        namesMap.put(1, "Larry");
+        namesMap.put(2, "Steve");
+        namesMap.put(3, "James");
+
+        namesMap.entrySet()
+            .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
+    }
+
+    @Test
+    public void givenMap_whenUsingBiConsumer_thenIterateAndPrintResults2() {
+        Map<Integer, String> namesMap = new HashMap<>();
+        namesMap.put(1, "Larry");
+        namesMap.put(2, "Steve");
+        namesMap.put(3, "James");
+
+        namesMap.forEach((key, value) -> System.out.println(key + " " + value));
     }
 
 }
