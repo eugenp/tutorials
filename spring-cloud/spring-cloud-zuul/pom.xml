@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.baeldung.spring.cloud</groupId>
-	<artifactId>spring-cloud-zuul-ratelimit</artifactId>
+	<artifactId>spring-cloud-zuul</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-cloud-zuul-ratelimit</name>
+	<name>spring-cloud-zuul</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
