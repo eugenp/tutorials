@@ -1,10 +1,10 @@
-package com.java.src;
+package com.baeldung.algorithms.roundedup;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class RoundUpToHundredTest {
+public class RoundUpToHundredUnitTest {
     @Test
     public void givenInput_whenRound_thenRoundUpToTheNearestHundred() {
         assertEquals("Rounded up to hundred", 100, RoundUpToHundred.round(99));
