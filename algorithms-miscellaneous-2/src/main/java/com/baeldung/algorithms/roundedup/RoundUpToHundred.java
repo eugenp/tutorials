@@ -1,4 +1,4 @@
-package com.java.src;
+package com.baeldung.algorithms.roundedup;
 
 import java.util.Scanner;
 
