@@ -66,6 +66,13 @@
             <artifactId>injekt-core</artifactId>
             <version>1.16.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.arrow-kt/arrow-core -->
+        <dependency>
+            <groupId>io.arrow-kt</groupId>
+            <artifactId>arrow-core</artifactId>
+            <version>0.7.3</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
