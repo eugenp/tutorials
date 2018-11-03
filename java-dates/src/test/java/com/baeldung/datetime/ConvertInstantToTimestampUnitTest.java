@@ -11,7 +11,7 @@ import java.util.TimeZone;
 
 import org.junit.Test;
 
-public class ConvertInstantToTimestampTest {
+public class ConvertInstantToTimestampUnitTest {
 
     @Test
     public void givenInstant_whenConvertedToTimestamp_thenGetTimestampWithSamePointOnTimeline() {
