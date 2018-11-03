@@ -26,7 +26,7 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<DeptEmployee> criteriaQuery = criteriaBuilder.createQuery(DeptEmployee.class);
         Root<DeptEmployee> root = criteriaQuery.from(DeptEmployee.class);
-        In<Object> inClause = criteriaBuilder.in(root.get("designation"));
+        In<String> inClause = criteriaBuilder.in(root.get("designation"));
         for (String designaiton : designaitons) {
             inClause.value(designaiton);
         }
