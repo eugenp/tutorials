@@ -1,5 +1,6 @@
 package org.baeldung.springevents.synchronous;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,12 @@ public class SynchronousCustomSpringEventsIntegrationTest {
     public void testGenericSpringEventNotProcessed() {
         isTrue(!listener.isHitSuccessfulEventHandler(), "The initial value should be false");
         publisher.publishGenericEvent("Hello world!!!", false);
-        isTrue(listener.isHitSuccessfulEventHandler(), "The value should still be false");
+        isTrue(!listener.isHitSuccessfulEventHandler(), "The value should still be false");
     }
 
+    @Ignore("fix me")
+    @Test
+    public void testContextStartedEvent() {
+        isTrue(listener.isHitContextStartedHandler(), "Start should be called once");
+    }
 }

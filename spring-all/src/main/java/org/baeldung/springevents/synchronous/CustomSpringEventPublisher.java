@@ -22,4 +22,10 @@ public class CustomSpringEventPublisher {
         applicationEventPublisher.publishEvent(genericSpringEvent);
     }
 
+    public void publishGenericAppEvent(final String message) {
+        System.out.println("Publishing generic event.");
+        final GenericSpringAppEvent<String> genericSpringEvent = new GenericStringSpringAppEvent(this, message);
+        applicationEventPublisher.publishEvent(genericSpringEvent);
+    }
+
 }
