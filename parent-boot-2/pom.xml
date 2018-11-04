@@ -78,5 +78,6 @@
         <!-- plugins -->
         <thin.version>1.0.11.RELEASE</thin.version>
         <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
+        <oauth-auto.version>2.1.0.RELEASE</oauth-auto.version>
     </properties>
 </project>
