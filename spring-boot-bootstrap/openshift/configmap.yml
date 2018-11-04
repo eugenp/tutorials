@@ -4,4 +4,4 @@ metadata:
   name: spring-boot-bootstrap
 data:
   application.properties: |-
-    spring.datasource.url=jdbc:mysql://baeldung-demo-db:3306/
+    spring.datasource.url=jdbc:mysql://baeldung-db:3306/baeldung_db

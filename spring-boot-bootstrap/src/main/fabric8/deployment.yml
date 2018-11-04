@@ -4,16 +4,16 @@ spec:
       containers:
       - env:
         - name: SPRING_PROFILES_ACTIVE
-          value: mysql,openshift
+          value: mysql
         - name: SPRING_DATASOURCE_USER
           valueFrom:
             secretKeyRef:
-              name: baeldung-demo-db
+              name: baeldung-db
               key: database-user
         - name: SPRING_DATASOURCE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: baeldung-demo-db
+              name: baeldung-db
               key: database-password
         livenessProbe:
           httpGet:
