@@ -16,15 +16,17 @@ import com.baeldung.hibernate.entities.DeptEmployee;
 public class EmployeeSearchServiceImpl implements EmployeeSearchService {
 
     private EntityManager entityManager;
+    private CriteriaBuilder criteriaBuilder;
 
     public EmployeeSearchServiceImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
+        this.criteriaBuilder = entityManager.getCriteriaBuilder();
+        
     }
 
     @Override
     public List<DeptEmployee> filterbyDesignationUsingCriteriaBuilder(List<String> designaitons) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<DeptEmployee> criteriaQuery = criteriaBuilder.createQuery(DeptEmployee.class);
+        CriteriaQuery<DeptEmployee> criteriaQuery = createCriteriaQuery(DeptEmployee.class);
         Root<DeptEmployee> root = criteriaQuery.from(DeptEmployee.class);
         In<String> inClause = criteriaBuilder.in(root.get("designation"));
         for (String designaiton : designaitons) {
@@ -38,8 +40,7 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
 
     @Override
     public List<DeptEmployee> filterbyDesignationUsingExpression(List<String> designaitons) {
-        CriteriaQuery<DeptEmployee> criteriaQuery = entityManager.getCriteriaBuilder()
-            .createQuery(DeptEmployee.class);
+        CriteriaQuery<DeptEmployee> criteriaQuery = createCriteriaQuery(DeptEmployee.class);
         Root<DeptEmployee> root = criteriaQuery.from(DeptEmployee.class);
         criteriaQuery.select(root)
             .where(root.get("designation")
@@ -50,8 +51,7 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
 
     @Override
     public List<DeptEmployee> searchByDepartmentQuery(String searchKey) {
-        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-        CriteriaQuery<DeptEmployee> criteriaQuery = criteriaBuilder.createQuery(DeptEmployee.class);
+        CriteriaQuery<DeptEmployee> criteriaQuery = createCriteriaQuery(DeptEmployee.class);
         Root<DeptEmployee> emp = criteriaQuery.from(DeptEmployee.class);
 
         Subquery<Department> subquery = criteriaQuery.subquery(Department.class);
@@ -68,6 +68,10 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
 
         TypedQuery<DeptEmployee> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
+    }
+    
+    private <T> CriteriaQuery<T> createCriteriaQuery(Class<T> klass) {
+        return criteriaBuilder.createQuery(klass);
     }
 
 }
