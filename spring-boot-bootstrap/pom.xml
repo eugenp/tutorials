@@ -298,7 +298,7 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<excludes>
-						<exclude>**/cloud/*.java</exclude>
+						<exclude>**/cloud/config/*.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
