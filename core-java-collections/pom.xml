@@ -61,11 +61,11 @@
     <properties>
         <openjdk.jmh.version>1.19</openjdk.jmh.version>
         <junit.platform.version>1.2.0</junit.platform.version>
-        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <collections-generic.version>4.01</collections-generic.version>
         <avaitility.version>1.7.0</avaitility.version>
-        <assertj.version>3.6.1</assertj.version>
+        <assertj.version>3.11.1</assertj.version>
         <eclipse.collections.version>7.1.0</eclipse.collections.version>
     </properties>
 </project>
