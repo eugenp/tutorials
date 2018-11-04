@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.array.operations;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -133,6 +133,7 @@ public class ArrayOperations {
     }
 
     // Map array values
+    @SuppressWarnings("unchecked")
     public static <T, U> U[] mapObjectArray(T[] array, Function<T, U> function, Class<U> targetClazz) {
         U[] newArray = (U[]) Array.newInstance(targetClazz, array.length);
         for (int i = 0; i < array.length; i++) {
@@ -165,6 +166,7 @@ public class ArrayOperations {
         return ArrayUtils.insert(2, array, values);
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> T[] insertBetweenObjectArray(T[] array, T... values) {
         return ArrayUtils.insert(2, array, values);
     }

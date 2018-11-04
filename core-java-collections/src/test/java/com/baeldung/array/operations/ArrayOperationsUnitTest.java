@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.array.operations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
