@@ -1,22 +1,20 @@
 package com.baeldung.concurrent.evenandodd;
 
-public class PrintEvenOdd {
+public class PrintEvenOddWaitNotify {
 
     public static void main(String... args) {
         Printer print = new Printer();
-        Thread t1 = new Thread(new TaskEvenOdd(print, 10, false));
-        t1.setName("Odd");
-        Thread t2 = new Thread(new TaskEvenOdd(print, 10, true));
-        t2.setName("Even");
+        Thread t1 = new Thread(new TaskEvenOdd(print, 10, false), "Odd");
+        Thread t2 = new Thread(new TaskEvenOdd(print, 10, true), "Even");
         t1.start();
         t2.start();
     }
 }
 
 class TaskEvenOdd implements Runnable {
-    private int max;
-    private Printer print;
-    private boolean isEvenNumber;
+    private final int max;
+    private final Printer print;
+    private final boolean isEvenNumber;
 
     TaskEvenOdd(Printer print, int max, boolean isEvenNumber) {
         this.print = print;
@@ -26,7 +24,7 @@ class TaskEvenOdd implements Runnable {
 
     @Override
     public void run() {
-        int number = isEvenNumber == true ? 2 : 1;
+        int number = isEvenNumber ? 2 : 1;
         while (number <= max) {
             if (isEvenNumber) {
                 print.printEven(number);
@@ -39,32 +37,30 @@ class TaskEvenOdd implements Runnable {
 }
 
 class Printer {
-    boolean isOdd = false;
+    private volatile boolean isOdd;
 
     synchronized void printEven(int number) {
-        while (isOdd == false) {
+        while (!isOdd) {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
-        System.out.println(Thread.currentThread()
-            .getName() + ":" + number);
+        System.out.println(Thread.currentThread().getName() + ":" + number);
         isOdd = false;
         notify();
     }
 
     synchronized void printOdd(int number) {
-        while (isOdd == true) {
+        while (isOdd) {
             try {
                 wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
-        System.out.println(Thread.currentThread()
-            .getName() + ":" + number);
+        System.out.println(Thread.currentThread().getName() + ":" + number);
         isOdd = true;
         notify();
     }

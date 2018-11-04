@@ -2,55 +2,47 @@ package com.baeldung.concurrent.evenandodd;
 
 import java.util.concurrent.Semaphore;
 
-public class SemaphoreDemo {
+public class PrintEvenOddSemaphore {
 
     public static void main(String[] args) {
-
         SharedPrinter sp = new SharedPrinter();
-        Thread odd = new Thread(new Odd(sp, 10));
-        odd.setName("Odd");
-        Thread even = new Thread(new Even(sp, 10));
-        even.setName("Even");
+        Thread odd = new Thread(new Odd(sp, 10), "Odd");
+        Thread even = new Thread(new Even(sp, 10), "Even");
 
         odd.start();
         even.start();
-
     }
-
 }
 
 class SharedPrinter {
 
-    Semaphore semEven = new Semaphore(0);
-    Semaphore semOdd = new Semaphore(1);
+    private final Semaphore semEven = new Semaphore(0);
+    private final Semaphore semOdd = new Semaphore(1);
 
-    public void printEvenNum(int num) {
+    void printEvenNum(int num) {
         try {
             semEven.acquire();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
-        System.out.println(Thread.currentThread()
-            .getName() + ":"+num);
+        System.out.println(Thread.currentThread().getName() + ":"+num);
         semOdd.release();
     }
 
-    public void printOddNum(int num) {
+    void printOddNum(int num) {
         try {
             semOdd.acquire();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
-        System.out.println(Thread.currentThread()
-            .getName() + ":"+ num);
+        System.out.println(Thread.currentThread().getName() + ":"+ num);
         semEven.release();
-
     }
 }
 
 class Even implements Runnable {
-    SharedPrinter sp;
-    int max;
+    private final SharedPrinter sp;
+    private final int max;
 
     Even(SharedPrinter sp, int max) {
         this.sp = sp;
@@ -66,8 +58,8 @@ class Even implements Runnable {
 }
 
 class Odd implements Runnable {
-    SharedPrinter sp;
-    int max;
+    private SharedPrinter sp;
+    private int max;
 
     Odd(SharedPrinter sp, int max) {
         this.sp = sp;
