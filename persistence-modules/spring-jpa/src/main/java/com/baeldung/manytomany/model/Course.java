@@ -1,41 +1,38 @@
-package com.baeldung.manytomany.extracolumn.model;
+package com.baeldung.manytomany.model;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Student {
+@Table(name = "course")
+public class Course {
 
     @Id
+    @Column(name = "id")
     private Long id;
 
-    @ManyToMany
-    @JoinTable(name = "course_like", joinColumns = @JoinColumn(name = "student_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
-    private Set<Course> likedCourses;
+    @ManyToMany(mappedBy = "likedCourses")
+    private Set<Student> likes;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "course")
     private Set<CourseRating> ratings;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "course")
     private Set<CourseRegistration> registrations;
 
     // additional properties
 
-    public Student() {
+    public Course() {
     }
 
     public Long getId() {
         return id;
-    }
-
-    public Set<Course> getLikedCourses() {
-        return likedCourses;
     }
 
     public Set<CourseRating> getRatings() {
@@ -62,7 +59,7 @@ public class Student {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Student other = (Student) obj;
+        Course other = (Course) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

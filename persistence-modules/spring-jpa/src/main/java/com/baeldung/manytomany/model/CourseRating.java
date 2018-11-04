@@ -1,12 +1,15 @@
-package com.baeldung.manytomany.extracolumn.model;
+package com.baeldung.manytomany.model;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "course_rating")
 public class CourseRating {
 
     @EmbeddedId
@@ -22,6 +25,7 @@ public class CourseRating {
     @JoinColumn(name = "course_id")
     private Course course;
 
+    @Column(name = "rating")
     private int rating;
 
     public CourseRating() {

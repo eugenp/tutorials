@@ -1,4 +1,4 @@
-package com.baeldung.manytomany.extracolumn.model;
+package com.baeldung.manytomany.model;
 
 import java.io.Serializable;
 

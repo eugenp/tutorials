@@ -1,16 +1,20 @@
-package com.baeldung.manytomany.extracolumn.model;
+package com.baeldung.manytomany.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "course_registration")
 public class CourseRegistration {
 
     @Id
+    @Column(name = "id")
     private Long id;
 
     @ManyToOne
@@ -21,8 +25,10 @@ public class CourseRegistration {
     @JoinColumn(name = "course_id")
     private Course course;
 
+    @Column(name = "registered_at")
     private LocalDateTime registeredAt;
 
+    @Column(name = "grade")
     private int grade;
 
     // additional properties
