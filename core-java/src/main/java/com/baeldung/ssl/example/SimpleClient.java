@@ -16,9 +16,9 @@ public class SimpleClient {
 
         try (Socket connection = factory.createSocket(host, port)) {
             ((SSLSocket) connection).setEnabledCipherSuites(
-                new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256", });
+              new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
             ((SSLSocket) connection).setEnabledProtocols(
-                new String[] { "TLSv1.2", });
+              new String[] { "TLSv1.2"});
             SSLParameters sslParams = new SSLParameters();
             sslParams.setEndpointIdentificationAlgorithm("HTTPS");
             ((SSLSocket) connection).setSSLParameters(sslParams);
