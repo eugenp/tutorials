@@ -1,4 +1,4 @@
-package org.baeldung.security;
+package com.baeldung.security;
 
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;

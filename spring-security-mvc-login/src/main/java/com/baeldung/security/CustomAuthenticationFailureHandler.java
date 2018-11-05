@@ -1,4 +1,4 @@
-package org.baeldung.security;
+package com.baeldung.security;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.AuthenticationException;

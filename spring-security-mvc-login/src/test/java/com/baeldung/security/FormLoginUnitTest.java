@@ -1,6 +1,5 @@
-package org.baeldung.security;
+package com.baeldung.security;
 
-import org.baeldung.spring.SecSecurityConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +11,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+
+import com.baeldung.spring.SecSecurityConfig;
 
 import javax.servlet.Filter;
 
