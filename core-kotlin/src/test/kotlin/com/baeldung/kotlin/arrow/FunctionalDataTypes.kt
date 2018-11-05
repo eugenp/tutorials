@@ -1,8 +1,6 @@
 package com.baeldung.kotlin.arrow
 
-import arrow.core.Id
-import arrow.core.Option
-import arrow.core.getOrElse
+import arrow.core.*
 import org.junit.Assert
 import org.junit.Test
 
@@ -66,8 +64,8 @@ class FunctionalDataTypes {
 
         Assert.assertNotEquals(constructor, fromNullable)
     }
-    
-    fun wrapper(x : Integer?) : Option<Int> = if (x == null) Option.just(-1) else Option.just(x.toInt()-1)
+
+    fun wrapper(x : Integer?) : Option<Int> = if (x == null) Option.just(-1) else Option.just(x.toInt())
 
     @Test
     fun whenOptionFromNullableCreated_thanItBreaksLeftIdentity(){
@@ -76,5 +74,20 @@ class FunctionalDataTypes {
         Assert.assertNotEquals(optionFromNull.flatMap(::wrapper), wrapper(null))
     }
 
+    @Test
+    fun whenEitherCreated_thanOneValueIsPresent(){
+        val either1 : Either<String,Int> = Either.right(42)
+        val either2 : Either<String,Int> = Either.left("foo")
+
+        Assert.assertTrue(either1.isRight())
+        Assert.assertTrue(either2.isLeft())
+        Assert.assertEquals(42, either1.getOrElse { -1 })
+        Assert.assertEquals(-1, either2.getOrElse { -1 })
+
+        Assert.assertEquals(0, either1.map { it % 2 }.getOrElse { -1 })
+        Assert.assertEquals(-1, either2.map { it % 2 }.getOrElse { -1 })
+        Assert.assertTrue(either1.flatMap { Either.Right(it % 2) }.isRight())
+        Assert.assertTrue(either2.flatMap { Either.Right(it % 2) }.isLeft())
+    }
 
 }
