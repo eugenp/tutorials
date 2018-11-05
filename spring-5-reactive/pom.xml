@@ -98,6 +98,19 @@
             <artifactId>spring-session-data-redis</artifactId>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql-connector.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
@@ -146,6 +159,8 @@
         <commons-collections4.version>4.1</commons-collections4.version>
         <project-reactor-test>3.1.6.RELEASE</project-reactor-test>
         <junit.platform.version>1.2.0</junit.platform.version>
+        <mysql-connector.version>6.0.6</mysql-connector.version>
+        <jackson-databind.version>2.8.4</jackson-databind.version>
     </properties>
 
 </project>
