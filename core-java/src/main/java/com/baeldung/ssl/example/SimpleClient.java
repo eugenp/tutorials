@@ -6,24 +6,28 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 import javax.net.SocketFactory;
+import javax.net.ssl.SSLParameters;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 public class SimpleClient {
-    static void startClient(String host, int port) throws IOException {
+    static String startClient(String host, int port) throws IOException {
         SocketFactory factory = SSLSocketFactory.getDefault();
         try (Socket connection = factory.createSocket(host, port)) {
             ((SSLSocket) connection).setEnabledCipherSuites(
               new String[] { "TLS_DHE_DSS_WITH_AES_256_CBC_SHA256"});
             ((SSLSocket) connection).setEnabledProtocols(
               new String[] { "TLSv1.2"});
+            SSLParameters sslParams = new SSLParameters();
+            sslParams.setEndpointIdentificationAlgorithm("HTTPS");
+            ((SSLSocket) connection).setSSLParameters(sslParams);
             BufferedReader input = new BufferedReader(
               new InputStreamReader(connection.getInputStream()));
-            System.out.println(input.readLine());
+            return input.readLine();
         }
     }
 
     public static void main(String[] args) throws IOException {
-        startClient("localhost", 1234);
+        System.out.println(startClient("localhost", 8443));
     }
 }
