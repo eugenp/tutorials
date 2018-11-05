@@ -45,6 +45,7 @@ public class FileDownload {
             FileOutputStream fileOutputStream = new FileOutputStream(localFilename); FileChannel fileChannel = fileOutputStream.getChannel()) {
 
             fileChannel.transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
+            fileOutputStream.close();
         }
     }
 
