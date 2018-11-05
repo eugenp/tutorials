@@ -5,7 +5,6 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class Car {
-	
 	String manufacturerName;
 	String fuleType;
 	String modelNo;
@@ -32,4 +31,5 @@ public class Car {
 	public void enableChildLock() {
 		//Enable child lock in the car
 	}
+
 }

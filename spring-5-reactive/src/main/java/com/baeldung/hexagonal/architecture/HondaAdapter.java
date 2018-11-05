@@ -7,22 +7,26 @@ public class HondaAdapter implements ManufacturingPort {
 
 	@Override
 	public void manufacturingMethodology(Car car) {
-		// Process for manufacturing honda car	
+		// Process for manufacturing honda car
+		
 	}
 
 	@Override
 	public void manufacturingLocation(String location) {
 		// Location at which honda manufacturing will take place
+		
 	}
 
 	@Override
 	public void logoForTheCar(Car car) {
 		// Put honda logo on the car
+		
 	}
 
 	@Override
 	public void timeToMarketForTheCar(Car car) {
 		// Find time to market for a particular honda car model
+		
 	}
 
 	@Override
@@ -40,4 +44,5 @@ public class HondaAdapter implements ManufacturingPort {
 	public void carCrashAndSafetyTest(Car car) {
 		//Do car crash test got honda car
 	}
+
 }
