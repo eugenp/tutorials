@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.commons.collections4.iterators.ReverseListIterator;
+
 /**
  *  Demonstrates the different ways to loop over
  *  the elements of a list.
