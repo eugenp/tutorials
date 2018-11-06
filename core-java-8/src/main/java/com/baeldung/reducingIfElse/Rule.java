@@ -4,5 +4,5 @@ public interface Rule {
 
     boolean evaluate(Expression expression);
 
-    int getResult();
+    Result getResult();
 }

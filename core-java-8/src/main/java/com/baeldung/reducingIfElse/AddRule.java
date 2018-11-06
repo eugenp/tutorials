@@ -15,7 +15,7 @@ public class AddRule implements Rule {
     }
 
     @Override
-    public int getResult() {
-        return result;
+    public Result getResult() {
+        return new Result(result);
     }
 }

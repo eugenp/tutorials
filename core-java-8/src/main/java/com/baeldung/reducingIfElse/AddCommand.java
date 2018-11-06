@@ -1,19 +1,17 @@
 package com.baeldung.reducingIfElse;
 
-public class AddCommand implements Command<Integer, Integer, Integer> {
+public class AddCommand implements Command {
 
     private int a;
     private int b;
 
-    @Override
-    public Integer execute() {
-        return a + b;
+    public AddCommand(int a, int b) {
+        this.a = a;
+        this.b = b;
     }
 
     @Override
-    public Command<Integer, Integer, Integer> takeInput(Integer a, Integer b) {
-        this.a = a;
-        this.b = b;
-        return this;
+    public Integer execute() {
+        return a + b;
     }
 }

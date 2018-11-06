@@ -77,8 +77,7 @@ public class Calculator {
         return targetOperation.apply(a, b);
     }
 
-    public int calculate(int a, int b, Command<Integer, Integer, Integer> command) {
-        return command.takeInput(a, b)
-            .execute();
+    public int calculate(Command command) {
+        return command.execute();
     }
 }

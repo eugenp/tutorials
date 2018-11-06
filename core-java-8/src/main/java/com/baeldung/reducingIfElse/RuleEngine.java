@@ -2,6 +2,7 @@ package com.baeldung.reducingIfElse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class RuleEngine {
@@ -12,9 +13,12 @@ public class RuleEngine {
         rules.add(new AddRule());
     }
 
-    public List<Rule> process(Expression expression) {
-        return rules.stream()
+    public Result process(Expression expression) {
+
+        Rule rule = rules.stream()
             .filter(r -> r.evaluate(expression))
-            .collect(Collectors.toList());
+            .findFirst()
+            .orElseThrow(() -> new IllegalArgumentException("Expression does not matches any Rule"));
+        return rule.getResult();
     }
 }
