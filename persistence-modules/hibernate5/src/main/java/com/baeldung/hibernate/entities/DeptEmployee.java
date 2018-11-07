@@ -22,6 +22,14 @@ public class DeptEmployee {
         this.employeeNumber = employeeNumber;
         this.department = department;
     }
+    
+    public DeptEmployee(String name, String employeeNumber, String designation, Department department) {
+        super();
+        this.name = name;
+        this.employeeNumber = employeeNumber;
+        this.designation = designation;
+        this.department = department;
+    }
 
     public long getId() {
         return id;
