@@ -58,7 +58,7 @@ class FunctionalDataTypes {
     }
 
     @Test
-    fun whenOptionCreated_thanConstructorDifferFromStaticFactory(){
+    fun whenOptionCreated_thanConstructorDifferFromFactory(){
         val constructor = Option(null)
         val fromNullable = Option.fromNullable(null)
 
@@ -88,6 +88,50 @@ class FunctionalDataTypes {
         Assert.assertEquals(-1, either2.map { it % 2 }.getOrElse { -1 })
         Assert.assertTrue(either1.flatMap { Either.Right(it % 2) }.isRight())
         Assert.assertTrue(either2.flatMap { Either.Right(it % 2) }.isLeft())
+    }
+
+    @Test
+    fun whenEvalNowUsed_thenMapEvaluatedLazily(){
+        val now = Eval.now(1)
+        Assert.assertEquals(1, now.value())
+
+        var counter : Int = 0
+        val map = now.map { x -> counter++; x+1 }
+        Assert.assertEquals(0, counter)
+        
+        val value = map.value()
+        Assert.assertEquals(2, value)
+        Assert.assertEquals(1, counter)
+    }
+
+    @Test
+    fun whenEvalLaterUsed_theResultIsMemoized(){
+        var counter : Int = 0
+        val later = Eval.later { counter++; counter }
+        Assert.assertEquals(0, counter)
+
+        val firstValue = later.value()
+        Assert.assertEquals(1, firstValue)
+        Assert.assertEquals(1, counter)
+
+        val secondValue = later.value()
+        Assert.assertEquals(1, secondValue)
+        Assert.assertEquals(1, counter)
+    }
+
+    @Test
+    fun whenEvalAlwaysUsed_theResultIsNotMemoized(){
+        var counter : Int = 0
+        val later = Eval.always { counter++; counter }
+        Assert.assertEquals(0, counter)
+
+        val firstValue = later.value()
+        Assert.assertEquals(1, firstValue)
+        Assert.assertEquals(1, counter)
+
+        val secondValue = later.value()
+        Assert.assertEquals(2, secondValue)
+        Assert.assertEquals(2, counter)
     }
 
 }
