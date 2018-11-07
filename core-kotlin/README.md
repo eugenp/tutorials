@@ -37,3 +37,8 @@
 - [Kotlin with Ktor](https://www.baeldung.com/kotlin-ktor)
 - [Fuel HTTP Library with Kotlin](https://www.baeldung.com/kotlin-fuel)
 - [Introduction to Kovenant Library for Kotlin](https://www.baeldung.com/kotlin-kovenant)
+- [Converting Kotlin Data Class from JSON using GSON](https://www.baeldung.com/kotlin-json-convert-data-class)
+- [Concatenate Strings in Kotlin](https://www.baeldung.com/kotlin-concatenate-strings)
+- [Kotlin return, break, continue Keywords](https://www.baeldung.com/kotlin-return-break-continue)
+- [Mapping of Data Objects in Kotlin](https://www.baeldung.com/kotlin-data-objects-mapping)
+- [Initializing Arrays in Kotlin](https://www.baeldung.com/kotlin-initialize-array)

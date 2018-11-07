@@ -37,6 +37,7 @@
         <module>spring-cloud-vault</module>
 		<module>spring-cloud-security</module>
 		<module>spring-cloud-task</module>
+        <module>spring-cloud-zuul</module>
     </modules>
 
     <build>
