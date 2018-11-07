@@ -11,10 +11,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <tika.version>1.17</tika.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.tika</groupId>
@@ -22,4 +18,9 @@
             <version>${tika.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <tika.version>1.17</tika.version>
+    </properties>
+
 </project>

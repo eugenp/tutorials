@@ -2,15 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung.patterns</groupId>
-    <artifactId>patterns-parent</artifactId>
+    <artifactId>patterns</artifactId>
     <packaging>pom</packaging>
-    <modules>
-        <module>front-controller</module>
-        <module>intercepting-filter</module>
-        <module>behavioral-patterns</module>
-    </modules>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -18,6 +11,12 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>..</relativePath>
     </parent>
+
+    <modules>
+        <module>front-controller</module>
+        <module>intercepting-filter</module>
+        <module>design-patterns</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -52,4 +51,5 @@
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
         <jetty-maven-plugin.version>9.4.0.v20161208</jetty-maven-plugin.version>
     </properties>
+
 </project>

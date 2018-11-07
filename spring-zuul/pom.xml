@@ -1,18 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    
     <groupId>com.baeldung</groupId>
     <artifactId>spring-zuul</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
     <name>spring-zuul</name>
     <packaging>pom</packaging>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-5</relativePath>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
     <modules>
@@ -24,7 +24,6 @@
         <finalName>spring-zuul</finalName>
         <pluginManagement>
             <plugins>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
@@ -33,22 +32,17 @@
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
-
             </plugins>
         </pluginManagement>
     </build>
 
-
     <properties>
         <!-- Spring -->
-        <spring-cloud.version>1.2.3.RELEASE</spring-cloud.version>
-
+        <spring-cloud.version>1.2.7.RELEASE</spring-cloud.version>
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
-
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-
     </properties>
 
 </project>

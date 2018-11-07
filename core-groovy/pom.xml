@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>core-groovy</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -12,34 +12,21 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>http://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy</artifactId>
-            <version>2.4.13</version>
+            <version>${groovy.version}</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>2.4.13</version>
+            <version>${groovy-all.version}</version>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-sql</artifactId>
-            <version>2.4.13</version>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
+            <version>${groovy-sql.version}</version>
         </dependency>
         <dependency>
             <groupId>org.junit.platform</groupId>
@@ -50,13 +37,13 @@
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>2.4.0</version>
+            <version>${hsqldb.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.spockframework</groupId>
             <artifactId>spock-core</artifactId>
-            <version>1.1-groovy-2.4</version>
+            <version>${spock-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -66,7 +53,7 @@
             <plugin>
                 <groupId>org.codehaus.gmavenplus</groupId>
                 <artifactId>gmavenplus-plugin</artifactId>
-                <version>1.6</version>
+                <version>${gmavenplus-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -79,12 +66,8 @@
                 </executions>
             </plugin>
             <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-            </plugin>
-            <plugin>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${maven-failsafe-plugin.version}</version>
                 <dependencies>
                     <dependency>
                         <groupId>org.junit.platform</groupId>
@@ -110,19 +93,21 @@
         </plugins>
     </build>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin-maven-plugin.version>1.1.2</kotlin-maven-plugin.version>
-        <kotlin-test-junit.version>1.1.2</kotlin-test-junit.version>
-        <kotlin-stdlib.version>1.1.2</kotlin-stdlib.version>
-        <kotlin-reflect.version>1.1.2</kotlin-reflect.version>
-        <kotlinx.version>0.15</kotlinx.version>
-        <mockito-kotlin.version>1.5.0</mockito-kotlin.version>
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>http://jcenter.bintray.com</url>
+        </repository>
+    </repositories>
 
-        <junit.jupiter.version>5.0.0</junit.jupiter.version>
+    <properties>
         <junit.platform.version>1.0.0</junit.platform.version>
-        <junit.vintage.version>4.12.0</junit.vintage.version>
-        <junit4.version>4.12</junit4.version>
+        <groovy.version>2.4.13</groovy.version>
+        <groovy-all.version>2.4.13</groovy-all.version>
+        <groovy-sql.version>2.4.13</groovy-sql.version>
+        <hsqldb.version>2.4.0</hsqldb.version>
+        <spock-core.version>1.1-groovy-2.4</spock-core.version>
+        <gmavenplus-plugin.version>1.6</gmavenplus-plugin.version>
     </properties>
 </project>
 

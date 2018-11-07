@@ -10,17 +10,14 @@
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-     </parent>
-     
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    </parent>
 
     <modules>
-        <module>greeter</module>
+        <module>greeter-library</module>
         <module>greeter-spring-boot-autoconfigure</module>
         <module>greeter-spring-boot-starter</module>
         <module>greeter-spring-boot-sample-app</module>
     </modules>
+	
 
 </project>

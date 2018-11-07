@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>microprofile</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <app.name>library</app.name>
-        <package.file>${project.build.directory}/${app.name}-service.jar</package.file>
-        <packaging.type>runnable</packaging.type>
-    </properties>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <dependency>
             <groupId>org.eclipse.microprofile</groupId>
             <artifactId>microprofile</artifactId>
-            <version>1.2</version>
+            <version>${microprofile.version}</version>
             <scope>provided</scope>
             <type>pom</type>
         </dependency>
@@ -41,12 +35,12 @@
             <plugin>
                 <groupId>net.wasdev.wlp.maven.plugins</groupId>
                 <artifactId>liberty-maven-plugin</artifactId>
-                <version>2.1.2</version>
+                <version>${liberty-maven-plugin.version}</version>
                 <configuration>
                     <assemblyArtifact>
                         <groupId>io.openliberty</groupId>
                         <artifactId>openliberty-runtime</artifactId>
-                        <version>17.0.0.4</version>
+                        <version>${openliberty-runtime.version}</version>
                         <type>zip</type>
                     </assemblyArtifact>
                     <configFile>${basedir}/src/main/liberty/config/server.xml</configFile>
@@ -83,5 +77,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <app.name>library</app.name>
+        <package.file>${project.build.directory}/${app.name}-service.jar</package.file>
+        <packaging.type>runnable</packaging.type>
+        <microprofile.version>1.2</microprofile.version>
+        <liberty-maven-plugin.version>2.1.2</liberty-maven-plugin.version>
+        <openliberty-runtime.version>17.0.0.4</openliberty-runtime.version>
+    </properties>
 
 </project>

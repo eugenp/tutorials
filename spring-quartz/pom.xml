@@ -11,47 +11,41 @@
     <description>Demo project for Scheduling in Spring with Quartz</description>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-5</relativePath>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
 
-    <properties>
-        <quartz.version>2.2.3</quartz.version>
-    </properties>
-
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
-
         <!-- spring's support for quartz -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
-
         <!-- quartz -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>${quartz.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
-
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>
-        
     </build>
+
+    <properties>
+        <quartz.version>2.2.3</quartz.version>
+    </properties>
 
 </project>

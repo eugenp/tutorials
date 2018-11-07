@@ -38,7 +38,7 @@ public class AssertJConditionUnitTest {
             assertThat(member).has(nameJohn);
             fail();
         } catch (AssertionError e) {
-            assertThat(e).hasMessageContaining("to have:\n <name John>");
+            assertThat(e).hasMessageContaining("<name John>");
         }
     }
 

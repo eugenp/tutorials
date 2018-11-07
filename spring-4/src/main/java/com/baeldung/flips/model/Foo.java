@@ -1,11 +1,12 @@
 package com.baeldung.flips.model;
 
 import lombok.Data;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
 public class Foo {
-  private final String name;
-  private final int id;
+    @NonNull private final String name;
+    @NonNull private final int id;
 }
