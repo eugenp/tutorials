@@ -522,6 +522,7 @@
 				<module>spring-jms</module>
 				<module>spring-jooq</module>
 				<module>persistence-modules/spring-jpa</module>
+				<module>ddd</module>
 				
 			</modules>
 
