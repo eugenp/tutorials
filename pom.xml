@@ -522,6 +522,7 @@
 				<module>spring-jms</module>
 				<module>spring-jooq</module>
 				<module>persistence-modules/spring-jpa</module>
+				<module>ddd</module>
 				
 			</modules>
 
@@ -616,7 +617,6 @@
                 <module>spring-reactive-kotlin</module>
                 <module>persistence-modules/jnosql</module>
                 <module>spring-boot-angular-ecommerce</module>
-                <module>cdi-portable-extension</module>             
                 <module>jta</module>
                 <!--<module>java-dates</module> --> <!-- Commented because we have still not upgraded to java 9 -->
                 <module>java-websocket</module>
