@@ -26,8 +26,10 @@ public class ArquillianLiveTest {
 
     @Deployment
     public static JavaArchive createDeployment() {
-        return ShrinkWrap.create(JavaArchive.class).addClasses(Component.class, CapsService.class, CapsConvertor.class, ConvertToLowerCase.class, Car.class, CarEJB.class).addAsResource("META-INF/persistence.xml").addAsManifestResource(EmptyAsset.INSTANCE,
-                "beans.xml");
+        return ShrinkWrap.create(JavaArchive.class)
+            .addClasses(Component.class, CapsService.class, CapsConvertor.class, ConvertToLowerCase.class, Car.class, CarEJB.class)
+            .addAsResource("META-INF/persistence.xml")
+            .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 
     @Inject
@@ -53,7 +55,8 @@ public class ArquillianLiveTest {
 
     @Test
     public void testCars() {
-        assertTrue(carEJB.findAllCars().isEmpty());
+        assertTrue(carEJB.findAllCars()
+            .isEmpty());
         Car c1 = new Car();
         c1.setName("Impala");
         Car c2 = new Car();
@@ -66,8 +69,10 @@ public class ArquillianLiveTest {
         carEJB.saveCar(c2);
         carEJB.saveCar(c3);
         carEJB.saveCar(c4);
-        assertEquals(4, carEJB.findAllCars().size());
+        assertEquals(4, carEJB.findAllCars()
+            .size());
         carEJB.deleteCar(c4);
-        assertEquals(3, carEJB.findAllCars().size());
+        assertEquals(3, carEJB.findAllCars()
+            .size());
     }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="flowJobSequence" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd"
+	version="1.0">
+	<flow id="flow1" next="firstBatchStepStep3">
+		<step id="firstChunkStepStep1" next="firstBatchStepStep2">
+			<chunk item-count="3">
+				<reader ref="simpleChunkItemReader" />
+				<processor ref="simpleChunkItemProcessor" />
+				<writer ref="simpleChunkWriter" />
+			</chunk>
+		</step>
+		<step id="firstBatchStepStep2">
+			<batchlet ref="simpleBatchLet" />
+		</step>
+	</flow>
+	<step id="firstBatchStepStep3">
+		<batchlet ref="simpleBatchLet" />
+	</step>
+</job>	

@@ -116,6 +116,60 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${org.springframework.security.version}</version>
 		</dependency>
+
+		<!-- Batch dependencies -->
+
+		<dependency>
+			<groupId>org.jboss.spec.javax.batch</groupId>
+			<artifactId>jboss-batch-api_1.0_spec</artifactId>
+			<version>1.0.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jberet</groupId>
+			<artifactId>jberet-core</artifactId>
+			<version>1.0.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jberet</groupId>
+			<artifactId>jberet-support</artifactId>
+			<version>1.0.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.transaction</groupId>
+			<artifactId>jboss-transaction-api_1.2_spec</artifactId>
+			<version>1.0.0.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.marshalling</groupId>
+			<artifactId>jboss-marshalling</artifactId>
+			<version>1.4.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.weld</groupId>
+			<artifactId>weld-core</artifactId>
+			<version>2.1.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se</artifactId>
+			<version>2.1.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jberet</groupId>
+			<artifactId>jberet-se</artifactId>
+			<version>1.0.2.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>1.4.178</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-jetty-servlet</artifactId>
+			<version>2.22.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -184,7 +238,21 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.195</version>
+			</dependency>
+			<dependency>
+				<groupId>fish.payara.arquillian</groupId>
+				<artifactId>payara-client-ee7</artifactId>
+				<version>1.0.Beta3-m1</version>
+				<scope>test</scope>
+			</dependency>
+
 		</dependencies>
+
 	</dependencyManagement>
 
 	<profiles>
@@ -474,6 +542,10 @@
 		<jstl.version>1.2</jstl.version>
 		<jsp-api.version>2.2</jsp-api.version>
 		<ozark.version>20160715</ozark.version>
+
+		<version.jboss.maven.plugin>7.4.Final</version.jboss.maven.plugin>
+		<version.jboss.spec.javaee.6.0>3.0.2.Final</version.jboss.spec.javaee.6.0>
+		<version.jboss.bom>1.0.4.Final</version.jboss.bom>
 	</properties>
 
 </project>
