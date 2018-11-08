@@ -159,3 +159,4 @@
 - [Understanding Memory Leaks in Java](https://www.baeldung.com/java-memory-leaks)
 - [Arrays in Java: A Reference Guide](https://www.baeldung.com/java-arrays-guide)
 - [A Guide to SimpleDateFormat](https://www.baeldung.com/java-simple-date-format)
+- [SSL Handshake Failures](https://www.baeldung.com/java-ssl-handshake-failures)
