@@ -50,9 +50,7 @@ public class SpringCastTest {
     @Test
     public void givenExecutorGeneric_whenQueryReturnsOneColumn_thenNoClassCastThrown() {
         List<DummyEntity> results = QueryExecutor.executeNativeQueryGeneric("select text from dummy", "textQueryMapping", em);
-        assertEquals("text", results
-          .get(0)
-          .getText());
+        assertEquals("text", results.get(0).getText());
     }
 
 }
