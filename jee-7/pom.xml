@@ -169,6 +169,11 @@
 			<artifactId>h2</artifactId>
 			<version>1.4.178</version>
 		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-jetty-servlet</artifactId>
+			<version>2.22.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

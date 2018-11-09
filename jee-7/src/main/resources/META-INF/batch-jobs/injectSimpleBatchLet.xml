@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="injectSimpleBatchLet" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd"
+    version="1.0">
+    <step id="firstStep" >
+        <batchlet ref="injectSimpleBatchLet">
+        	<properties>
+                <property name="name" value="hello there"/>
+            </properties>
+        </batchlet>
+    </step>
+</job>	
