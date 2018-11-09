@@ -1,4 +1,4 @@
-package org.baeldung.java.diamond;
+package com.baeldung.java.diamond;
 
 import static org.junit.Assert.assertNotNull;
 

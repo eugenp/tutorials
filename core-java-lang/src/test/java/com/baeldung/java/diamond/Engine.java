@@ -1,4 +1,4 @@
-package org.baeldung.java.diamond;
+package com.baeldung.java.diamond;
 
 public interface Engine {
 

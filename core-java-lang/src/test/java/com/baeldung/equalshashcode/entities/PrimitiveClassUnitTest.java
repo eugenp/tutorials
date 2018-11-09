@@ -1,9 +1,7 @@
-package org.baeldung.equalshashcode.entities;
+package com.baeldung.equalshashcode.entities;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import com.baeldung.equalshashcode.entities.PrimitiveClass;
 
 public class PrimitiveClassUnitTest {
 

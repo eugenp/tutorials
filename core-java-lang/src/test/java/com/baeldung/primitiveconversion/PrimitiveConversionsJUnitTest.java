@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.primitiveconversion;
 
 import org.junit.Test;
 import org.slf4j.Logger;
