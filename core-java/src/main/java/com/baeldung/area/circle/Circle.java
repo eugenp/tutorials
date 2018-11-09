@@ -16,10 +16,6 @@ public class Circle {
         this.radius = radius;
     }
 
-    public double getArea() {
-        return calculateArea();
-    }
-
     private double calculateArea() {
         return radius * radius * Math.PI;
     }
