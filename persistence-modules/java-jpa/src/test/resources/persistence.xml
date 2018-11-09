@@ -17,5 +17,40 @@
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
+
+	<persistence-unit name="jpa-h22">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>com.baeldung.jpa.stringcast.DummyEntity</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+			<property name="show_sql" value="true"/>
+			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="h2" transaction-type="RESOURCE_LOCAL">
+
+		<!-- add classes -->
+		<class>com.baeldung.jpa.stringcast.DummyEntity</class>
+
+		<properties>
+			<!-- Configuring JDBC properties -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"/>
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+
+			<!-- Hibernate properties -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="validate"/>
+			<property name="hibernate.format_sql" value="false"/>
+			<property name="hibernate.show_sql" value="true"/>
+
+		</properties>
+	</persistence-unit>
+
 </persistence>
 
