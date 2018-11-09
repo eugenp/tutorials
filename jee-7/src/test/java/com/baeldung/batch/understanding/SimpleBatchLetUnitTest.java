@@ -28,7 +28,16 @@ class SimpleBatchLetUnitTest {
     @Test
     public void givenBatchLetProperty_thenBatch_CompleteWithSuccess() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
-        Long executionId = jobOperator.start("injectSimpleBatchLet", new Properties());
+        Long executionId = jobOperator.start("injectionSimpleBatchLet", new Properties());
+        JobExecution jobExecution = jobOperator.getJobExecution(executionId);
+        jobExecution = BatchTestHelper.keepTestAlive(jobExecution);
+        assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
+    }
+    
+    @Test
+    public void givenBatchLetPartition_thenBatch_CompleteWithSuccess() throws Exception {
+        JobOperator jobOperator = BatchRuntime.getJobOperator();
+        Long executionId = jobOperator.start("partitionSimpleBatchLet", new Properties());
         JobExecution jobExecution = jobOperator.getJobExecution(executionId);
         jobExecution = BatchTestHelper.keepTestAlive(jobExecution);
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);

@@ -15,6 +15,6 @@ public class InjectSimpleBatchLet extends AbstractBatchlet {
     @Override
     public String process() throws Exception {
         System.out.println("Value passed in = " + nameString);
-        return BatchStatus.FAILED.toString();
+        return BatchStatus.COMPLETED.toString();
     }
 }
