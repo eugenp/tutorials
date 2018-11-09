@@ -1,6 +1,5 @@
 package org.baeldung.springevents.synchronous;
 
-import org.baeldung.springevents.synchronous.SynchronousSpringEventsConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,14 +11,18 @@ import static org.springframework.util.Assert.isTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { SynchronousSpringEventsConfig.class }, loader = AnnotationConfigContextLoader.class)
-public class ContextRefreshedListenerIntegrationTest {
+public class GenericAppEventListenerIntegrationTest {
 
     @Autowired
-    private ContextRefreshedListener listener;
+    private CustomSpringEventPublisher publisher;
+    @Autowired
+    private GenericSpringEventListener listener;
 
     @Test
-    public void testContextRefreshedListener() {
-        System.out.println("Test context re-freshed listener.");
-        isTrue(listener.isHitContextRefreshedHandler(), "Refresh should be called once");
+    public void testGenericSpringEvent() {
+        isTrue(!listener.isHitEventHandler(), "The initial value should be false");
+        publisher.publishGenericAppEvent("Hello world!!!");
+        isTrue(listener.isHitEventHandler(), "Now the value should be changed to true");
     }
+
 }
