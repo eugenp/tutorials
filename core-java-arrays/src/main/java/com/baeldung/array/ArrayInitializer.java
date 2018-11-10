@@ -2,7 +2,7 @@ package com.baeldung.array;
 
 import java.util.Arrays;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 public class ArrayInitializer {
 
