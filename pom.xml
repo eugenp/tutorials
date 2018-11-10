@@ -357,6 +357,7 @@
 				<!--<module>core-java-9</module> --> <!-- Commented because we have still not upgraded to java 9 -->
 				<module>core-java</module>
 				<module>core-java-lang</module>
+				<module>core-java-arrays</module>
 				<module>core-java-collections</module>
 				<module>java-collections-conversions</module>
 				<module>java-collections-maps</module>
