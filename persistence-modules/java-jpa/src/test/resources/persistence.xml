@@ -18,7 +18,7 @@
 		</properties>
 	</persistence-unit>
 
-	<persistence-unit name="jpa-h22">
+	<persistence-unit name="jpa-h2">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>com.baeldung.jpa.stringcast.DummyEntity</class>
 		<properties>
