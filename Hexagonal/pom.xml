@@ -22,9 +22,6 @@
         <junit.version>4.12</junit.version>
         <guice.version>4.0</guice.version>
         <compiler.version>3.0</compiler.version>
-         		<!-- logging -->
-		<org.slf4j.version>1.7.21</org.slf4j.version>
-		<logback.version>1.1.7</logback.version>
   </properties>
 
  <dependencyManagement>
@@ -59,29 +56,6 @@
                 <artifactId>guice</artifactId>
                 <version>${guice.version}</version>
             </dependency>
-            
-        <!-- logging -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-			<version>${logback.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>${org.slf4j.version}</version>
-		</dependency>
-    
   </dependencies>
   <modules>
   	<module>appcore</module>
