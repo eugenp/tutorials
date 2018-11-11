@@ -6,13 +6,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @ComponentScan("org.baeldung.web")
 @EnableWebMvc
-public class WebConfig extends WebMvcConfigurerAdapter {
+public class WebConfig implements WebMvcConfigurer {
 
     public WebConfig() {
         super();
@@ -29,7 +29,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     // API
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
-        super.addViewControllers(registry);
         registry.addViewController("/homepage.html");
     }
 
