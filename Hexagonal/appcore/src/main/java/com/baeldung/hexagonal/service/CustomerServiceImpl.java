@@ -20,7 +20,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     public Customer registerCustomer(Customer customer) {
 
-        return repo.CreateCustomer(customer);
+        return repo.createCustomer(customer);
 
     }
 
@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
             customer.setStatus(MemeberStatus.GOLD);
         }
 
-        return repo.UpdateCustomer(customer);
+        return repo.updateCustomer(customer);
 
     }
 
@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService {
             customer.setStatus(MemeberStatus.SILVER);
         }
 
-        return repo.UpdateCustomer(customer);
+        return repo.updateCustomer(customer);
 
     }
 

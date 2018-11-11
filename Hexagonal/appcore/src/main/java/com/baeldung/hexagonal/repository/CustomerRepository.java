@@ -8,9 +8,9 @@ import com.baeldung.hexagonal.exception.CustomerNotFoundException;
 
 public interface CustomerRepository {
 
-    public Customer CreateCustomer(Customer customer);
+    public Customer createCustomer(Customer customer);
 
-    public Customer UpdateCustomer(Customer customer) throws CustomerNotFoundException;
+    public Customer updateCustomer(Customer customer) throws CustomerNotFoundException;
 
     public List<Customer> findAll();
 
