@@ -1,5 +1,6 @@
 import org.apache.commons.lang3.RandomStringUtils
 import org.junit.jupiter.api.Test
+import java.util.concurrent.ThreadLocalRandom
 import kotlin.streams.asSequence
 import kotlin.test.assertEquals
 
@@ -15,7 +16,8 @@ class RandomStringTest {
         charPool.addAll('A'..'Z');
         charPool.addAll('0'..'9');
 
-        var randomString = java.util.Random().ints(STRING_LENGTH.toLong(), 0, charPool.size)
+        var randomString = ThreadLocalRandom.current()
+                .ints(STRING_LENGTH.toLong(), 0, charPool.size)
                 .asSequence()
                 .map(charPool::get)
                 .joinToString("")
