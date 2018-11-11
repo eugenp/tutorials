@@ -19,7 +19,7 @@ import org.springframework.web.context.request.RequestContextListener;
  */
 @EnableScheduling
 @EnableAutoConfiguration
-@ComponentScan("org.baeldung")
+@ComponentScan("com.baeldung")
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 

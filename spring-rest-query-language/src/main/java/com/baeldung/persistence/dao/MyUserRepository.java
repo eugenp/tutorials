@@ -1,6 +1,6 @@
 package com.baeldung.persistence.dao;
 
-import org.baeldung.persistence.model.QMyUser;
+import com.baeldung.persistence.model.QMyUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.querydsl.binding.QuerydslBinderCustomizer;
