@@ -1,8 +1,5 @@
-package org.baeldung.spring;
+package com.baeldung.spring;
 
-import org.baeldung.security.CustomAccessDeniedHandler;
-import org.baeldung.security.CustomAuthenticationFailureHandler;
-import org.baeldung.security.CustomLogoutSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -15,6 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+
+import com.baeldung.security.CustomAccessDeniedHandler;
+import com.baeldung.security.CustomAuthenticationFailureHandler;
+import com.baeldung.security.CustomLogoutSuccessHandler;
 
 @Configuration
 // @ImportResource({ "classpath:webSecurityConfig.xml" })
