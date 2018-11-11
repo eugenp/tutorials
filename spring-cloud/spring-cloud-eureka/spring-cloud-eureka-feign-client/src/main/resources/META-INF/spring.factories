@@ -1,0 +1,2 @@
+# bootstrap thymeleaf 3 config
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.baeldung.spring.cloud.feign.client.ThymeleafConfig

@@ -1,6 +1,9 @@
 spring:
   application:
     name: spring-cloud-eureka-feign-client
+  thymeleaf:
+    mode: HTML
+    cache: false
 
 server:
   port: 8080
