@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class SpringCastTest {
+public class SpringCastUnitTest {
 
     private static EntityManager em;
     private static EntityManagerFactory emFactory;
