@@ -1,5 +1,6 @@
 package com.baeldung.hexagonal.order.rest;
 
+import com.baeldung.hexagonal.HexagonalApplication;
 import com.baeldung.hexagonal.order.Order;
 import com.baeldung.hexagonal.order.OrderLine;
 import com.baeldung.hexagonal.order.Product;
@@ -16,10 +17,12 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.logging.Logger;
 
-@SpringJUnitConfig
-@SpringBootTest(classes = OrderController.class)
+@SpringJUnitConfig()
+@SpringBootTest(classes = {HexagonalApplication.class }, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class OrderRestIntegrationTest {
+    private final Logger logger = Logger.getLogger(OrderRestIntegrationTest.class.getName());
 
     @DisplayName("Testing creation")
     @Test
@@ -28,7 +31,8 @@ public class OrderRestIntegrationTest {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Order> entity = new HttpEntity<>(order);
 
-        ResponseEntity<Void> exchange = restTemplate.exchange("http://localhost:8080/orders/", HttpMethod.POST, entity, Void.class);
+        ResponseEntity<Void> exchange = restTemplate.exchange("http://localhost:8080/api/order", HttpMethod.POST, entity, Void.class);
+        logger.info("Status: " + exchange.getStatusCode());
         assert(exchange.getStatusCode() == HttpStatus.OK);
     }
 
