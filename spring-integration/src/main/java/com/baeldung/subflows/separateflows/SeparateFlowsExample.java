@@ -16,10 +16,8 @@ import org.springframework.integration.dsl.IntegrationFlow;
 @EnableIntegration
 @IntegrationComponentScan
 public class SeparateFlowsExample {
-
     @MessagingGateway
-    public interface I {
-
+    public interface NumbersClassifier {
         @Gateway(requestChannel = "multipleof3Flow.input")
         void multipleof3(Collection<Integer> is);
 
@@ -27,8 +25,7 @@ public class SeparateFlowsExample {
         void remainderIs1(Collection<Integer> is);
 
         @Gateway(requestChannel = "remainderIs2Flow.input")
-        void remainderIs2(Collection<Integer> is);
-
+        void remainderIs2(Collection<Integer> numbers);
     }
 
     @Bean
@@ -51,7 +48,6 @@ public class SeparateFlowsExample {
         return f -> f.split()
             .<Integer> filter(p -> p % 3 == 0)
             .channel("multipleof3Channel");
-
     }
 
     @Bean
@@ -59,7 +55,6 @@ public class SeparateFlowsExample {
         return f -> f.split()
             .<Integer> filter(p -> p % 3 == 1)
             .channel("remainderIs1Channel");
-
     }
 
     @Bean
@@ -67,33 +62,22 @@ public class SeparateFlowsExample {
         return f -> f.split()
             .<Integer> filter(p -> p % 3 == 2)
             .channel("remainderIs2Channel");
-
     }
 
     public static void main(String[] args) {
-
         final ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(SeparateFlowsExample.class);
-
         DirectChannel multipleof3Channel = ctx.getBean("multipleof3Channel", DirectChannel.class);
         multipleof3Channel.subscribe(x -> System.out.println("multipleof3Channel: " + x));
-
         DirectChannel remainderIs1Channel = ctx.getBean("remainderIs1Channel", DirectChannel.class);
         remainderIs1Channel.subscribe(x -> System.out.println("remainderIs1Channel: " + x));
-
         DirectChannel remainderIs2Channel = ctx.getBean("remainderIs2Channel", DirectChannel.class);
         remainderIs2Channel.subscribe(x -> System.out.println("remainderIs2Channel: " + x));
-
-        ctx.getBean(I.class)
+        ctx.getBean(NumbersClassifier.class)
             .multipleof3(Arrays.asList(1, 2, 3, 4, 5, 6));
-
-        ctx.getBean(I.class)
+        ctx.getBean(NumbersClassifier.class)
             .remainderIs1(Arrays.asList(1, 2, 3, 4, 5, 6));
-
-        ctx.getBean(I.class)
+        ctx.getBean(NumbersClassifier.class)
             .remainderIs2(Arrays.asList(1, 2, 3, 4, 5, 6));
-
         ctx.close();
-
     }
-
 }
