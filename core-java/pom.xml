@@ -157,7 +157,7 @@
         <dependency>
             <groupId>com.sun</groupId>
             <artifactId>tools</artifactId>
-            <version>1.8.0</version>
+            <version>${sun.tools.version}</version>
             <scope>system</scope>
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
@@ -542,6 +542,8 @@
         <jmime-magic.version>0.1.5</jmime-magic.version>
         <!-- instrumentation -->
         <javaassist.version>3.21.0-GA</javaassist.version>
+        
+        <sun.tools.version>1.8.0</sun.tools.version>
     </properties>
 
 </project>

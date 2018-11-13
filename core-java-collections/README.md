@@ -39,3 +39,7 @@
 - [Operating on and Removing an Item from Stream](https://www.baeldung.com/java-use-remove-item-stream)
 - [An Introduction to Synchronized Java Collections](https://www.baeldung.com/java-synchronized-collections)
 - [Guide to EnumSet](https://www.baeldung.com/java-enumset)
+- [Removing Elements from Java Collections](https://www.baeldung.com/java-collection-remove-elements)
+- [Converting a Collection to ArrayList in Java](https://www.baeldung.com/java-convert-collection-arraylist)
+- [Java 8 Streams: Find Items From One List Based On Values From Another List](https://www.baeldung.com/java-streams-find-list-items)
+- [Combining Different Types of Collections in Java](https://www.baeldung.com/java-combine-collections)
