@@ -19,7 +19,8 @@ public class StringToByteArrayUnitTest {
     @Test
     public void whenGetBytesWithDefaultCharset_thenOK() {
         final String inputString = "Hello World!";
-        final String defaultCharSet = Charset.defaultCharset().displayName();
+        final String defaultCharSet = Charset.defaultCharset()
+            .displayName();
 
         byte[] byteArrray = inputString.getBytes();
 
@@ -50,8 +51,8 @@ public class StringToByteArrayUnitTest {
 
     @Test
     public void whenGetBytesWithCharset_thenOK() {
-        final String inputString = "Hello World!";
-        final Charset charset = Charset.forName("UTF-8");
+        final String inputString = "Hello ਸੰਸਾਰ!";
+        final Charset charset = Charset.forName("ASCII");
 
         byte[] byteArrray = inputString.getBytes(charset);
 
@@ -59,8 +60,8 @@ public class StringToByteArrayUnitTest {
             "Using Charset:%s, Input String:%s, Output byte array:%s\n",
             charset, inputString, Arrays.toString(byteArrray));
 
-        assertArrayEquals(new byte[] { 72, 101, 108, 108, 111, 32, 87, 111, 114,
-                108, 100, 33 },
+        assertArrayEquals(
+            new byte[] { 72, 101, 108, 108, 111, 32, 63, 63, 63, 63, 63, 33 },
             byteArrray);
     }
 
@@ -82,37 +83,39 @@ public class StringToByteArrayUnitTest {
 
     @Test
     public void whenEncodeWithCharset_thenOK() {
-        final String inputString = "Hello World!";
-        final Charset charset = StandardCharsets.UTF_8;
+        final String inputString = "Hello ਸੰਸਾਰ!";
+        final Charset charset = StandardCharsets.US_ASCII;
 
-        byte[] byteArrray = charset.encode(inputString).array();
+        byte[] byteArrray = charset.encode(inputString)
+            .array();
 
         System.out.printf(
             "Using encode with Charset:%s, Input String:%s, Output byte array:%s\n",
             charset, inputString, Arrays.toString(byteArrray));
 
-        assertArrayEquals(new byte[] { 72, 101, 108, 108, 111, 32, 87, 111, 114,
-                108, 100, 33, 0 },
+        assertArrayEquals(
+            new byte[] { 72, 101, 108, 108, 111, 32, 63, 63, 63, 63, 63, 33 },
             byteArrray);
     }
 
     @Test
     public void whenUsingCharsetEncoder_thenOK()
         throws CharacterCodingException {
-        final String inputString = "Hello World!";
-        CharsetEncoder encoder = Charset.forName("UTF-8").newEncoder();
+        final String inputString = "Hello ਸੰਸਾਰ!";
+        CharsetEncoder encoder = StandardCharsets.US_ASCII.newEncoder();
         encoder.onMalformedInput(CodingErrorAction.IGNORE)
             .onUnmappableCharacter(CodingErrorAction.REPLACE)
             .replaceWith(new byte[] { 0 });
 
-        byte[] byteArrray = encoder.encode(CharBuffer.wrap(inputString)).array();
+        byte[] byteArrray = encoder.encode(CharBuffer.wrap(inputString))
+            .array();
 
         System.out.printf(
             "Using encode with CharsetEncoder:%s, Input String:%s, Output byte array:%s\n",
             encoder, inputString, Arrays.toString(byteArrray));
 
-        assertArrayEquals(new byte[] { 72, 101, 108, 108, 111, 32, 87, 111, 114,
-                108, 100, 33, 0 },
+        assertArrayEquals(
+            new byte[] { 72, 101, 108, 108, 111, 32, 0, 0, 0, 0, 0, 33 },
             byteArrray);
     }
 

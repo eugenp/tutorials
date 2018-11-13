@@ -62,30 +62,29 @@ public class ByteArrayToStringUnitTest {
 
     @Test
     public void whenDecodeWithCharset_thenOK() {
-        byte[] byteArrray = { 72, 101, 108, 108, 111, 32, 87, 111, 114, 108,
-                100, 33 };
-        final Charset charset = StandardCharsets.UTF_8;
+        byte[] byteArrray = { 72, 101, 108, 108, 111, 32, -10, 111, 114, 108, -63, 33 };
+        final Charset charset = StandardCharsets.US_ASCII;
 
         String string = charset.decode(ByteBuffer.wrap(byteArrray)).toString();
         System.out.println(string);
 
-        assertEquals("Hello World!", string);
+        assertEquals("Hello �orl�!", string);
     }
 
     @Test
     public void whenUsingCharsetDecoder_thenOK()
         throws CharacterCodingException {
-        byte[] byteArrray = { 72, 101, 108, 108, 111, 32, 87, 111, 114, 108,
-                100, 33 };
-        CharsetDecoder decoder = Charset.forName("UTF-8").newDecoder();
+        byte[] byteArrray = { 72, 101, 108, 108, 111, 32, -10, 111, 114, 108, -63, 33};
+        CharsetDecoder decoder = StandardCharsets.US_ASCII.newDecoder();
 
-        decoder.onMalformedInput(CodingErrorAction.IGNORE)
+        decoder.onMalformedInput(CodingErrorAction.REPLACE)
             .onUnmappableCharacter(CodingErrorAction.REPLACE)
             .replaceWith("?");
 
         String string = decoder.decode(ByteBuffer.wrap(byteArrray)).toString();
 
-        assertEquals("Hello World!", string);
+        assertEquals("Hello ?orl?!", string);
     }
+
 
 }
