@@ -10,6 +10,7 @@ public class LowercaseTextServiceUnitTest {
     @Test
     public void givenLowercaseTextServiceInstance_whenCalledparseText_thenCorrect() {
         TextService textService = new LowercaseTextService();
+        
         assertThat(textService.parseText("Baeldung")).isEqualTo("baeldung");
     }
 }
