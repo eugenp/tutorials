@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>spring-state-machine</artifactId>
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>spring-state-machine</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.statemachine</groupId>
             <artifactId>spring-statemachine-core</artifactId>
-            <version>1.2.3.RELEASE</version>
+            <version>${spring-statemachine-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>4.3.7.RELEASE</version>
+            <version>${spring-test.version}</version>
         </dependency>
-
         <dependency>
             <groupId>com.jayway.awaitility</groupId>
             <artifactId>awaitility</artifactId>
-            <version>1.7.0</version>
+            <version>${jayway.awaitility.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
+
+    <properties>
+        <spring-statemachine-core.version>1.2.3.RELEASE</spring-statemachine-core.version>
+        <spring-test.version>4.3.7.RELEASE</spring-test.version>
+        <jayway.awaitility.version>1.7.0</jayway.awaitility.version>
+    </properties>
 
 </project>

@@ -51,6 +51,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     // View H2
     @Bean(initMethod="start", destroyMethod="stop")
     public Server h2Console () throws SQLException {
-        return Server.createWebServer("-web","-webAllowOthers","-webDaemon","-webPort", "8082");
+        return Server.createWebServer("-web","-webAllowOthers","-webDaemon","-webPort", "8084");
     }
 }

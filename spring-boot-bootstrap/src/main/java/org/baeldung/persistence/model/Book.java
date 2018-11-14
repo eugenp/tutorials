@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -17,8 +18,6 @@ public class Book {
 
     @Column(nullable = false)
     private String author;
-
-    //
 
     public Book() {
         super();

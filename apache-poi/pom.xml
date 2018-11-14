@@ -11,11 +11,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <poi.version>3.15</poi.version>
-        <jexcel.version>1.0.6</jexcel.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -34,4 +29,10 @@
             </exclusions>
         </dependency>
     </dependencies>
+
+    <properties>
+        <poi.version>3.15</poi.version>
+        <jexcel.version>1.0.6</jexcel.version>
+    </properties>
+
 </project>

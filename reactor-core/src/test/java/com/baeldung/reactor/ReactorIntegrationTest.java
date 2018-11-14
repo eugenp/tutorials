@@ -37,14 +37,14 @@ public class ReactorIntegrationTest {
         Flux.just(1, 2, 3, 4)
                 .log()
                 .map(i -> i * 2)
-                .zipWith(Flux.range(0, Integer.MAX_VALUE).log(), (two, one) -> String.format("First Flux: %d, Second Flux: %d", one, two))
+                .zipWith(Flux.range(0, Integer.MAX_VALUE).log(), (one, two) -> String.format("First Flux: %d, Second Flux: %d", one, two))
                 .subscribe(elements::add);
 
         assertThat(elements).containsExactly(
-                "First Flux: 0, Second Flux: 2",
-                "First Flux: 1, Second Flux: 4",
-                "First Flux: 2, Second Flux: 6",
-                "First Flux: 3, Second Flux: 8");
+                "First Flux: 2, Second Flux: 0",
+                "First Flux: 4, Second Flux: 1",
+                "First Flux: 6, Second Flux: 2",
+                "First Flux: 8, Second Flux: 3");
     }
 
     @Test

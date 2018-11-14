@@ -3,6 +3,7 @@ package org.baeldung.web.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.baeldung.persistence.model.Customer;
 import org.baeldung.persistence.model.Order;
@@ -49,16 +50,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order getOrderByIdForCustomer(final String customerId, final String orderId) {
-
-        final List<Order> orders = (List<Order>) customerMap.get(customerId).getOrders().values();
-        Order selectedOrder = null;
-        for (final Order order : orders) {
-            if (order.getId().equals(orderId)) {
-                selectedOrder = order;
-            }
-        }
+        final Map<String, Order> orders = customerMap.get(customerId).getOrders();
+        Order selectedOrder = orders.get(orderId);
         return selectedOrder;
-
     }
 
 }
