@@ -16,10 +16,8 @@ public class Application {
 
         LibraryRegistry libraryRegistry = new LibraryRegistry(libraryRepository, libraryInput);
 
-        String result = libraryRegistry
-                .searchByTitle()
-                .map(t -> "Search Results: " + t)
-                .orElse("No Search Results");
+        String result =
+                libraryRegistry.searchByTitle().map(t -> "Search Results: " + t).orElse("No Search Results");
 
         System.out.println(result);
 
