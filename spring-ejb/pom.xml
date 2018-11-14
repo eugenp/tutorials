@@ -4,7 +4,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.ejb</groupId>
     <artifactId>spring-ejb</artifactId>
-    <version>1.0.1</version>
     <packaging>pom</packaging>
     <name>spring-ejb</name>
     <description>Spring EJB Tutorial</description>
@@ -36,8 +35,8 @@
         <dependencies>
             <dependency>
                 <groupId>com.baeldung.spring.ejb</groupId>
-                <artifactId>ejb-remote-for-spring</artifactId>
-                <version>${ejb-remote-for-spring.version}</version>
+                <artifactId>spring-ejb-remote</artifactId>
+                <version>${spring-ejb-remote.version}</version>
                 <type>ejb</type>
             </dependency>
             <dependency>
@@ -71,13 +70,14 @@
     </build>
 
     <modules>
-        <module>ejb-remote-for-spring</module>
+        <module>spring-ejb-remote</module>
         <module>ejb-beans</module>
 		<module>spring-ejb-client</module>
+		<module>wildfly</module>
     </modules>
     
     <properties>
-        <ejb-remote-for-spring.version>1.0.1</ejb-remote-for-spring.version>
+        <spring-ejb-remote.version>1.0.0-SNAPSHOT</spring-ejb-remote.version>
         <javaee.version>8.0</javaee.version>
         <wildfly-ejb.version>12.0.0.Final</wildfly-ejb.version>
         <maven-ejb-plugin.version>2.4</maven-ejb-plugin.version>
