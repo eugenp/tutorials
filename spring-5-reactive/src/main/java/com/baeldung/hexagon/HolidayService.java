@@ -2,6 +2,6 @@ package com.baeldung.hexagon;
 
 public interface HolidayService {
  
-	public boolean isHoliday(String dateInMMDDYYYYFormat);
+	public boolean dateExists(String dateInStringFormat);
 
 }

@@ -19,7 +19,7 @@ public class HolidayDBService implements HolidayService {
 	}
 
 	@Override
-	public boolean isHoliday(String dateInStringFormat) {
+	public boolean dateExists(String dateInStringFormat) {
 		boolean dateFound = false;
 		try {
 			connection = getConnection();

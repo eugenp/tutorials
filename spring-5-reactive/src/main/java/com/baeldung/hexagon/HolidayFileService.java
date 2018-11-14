@@ -9,7 +9,7 @@ import java.util.List;
 public class HolidayFileService implements HolidayService {
 
 	@Override
-	public boolean isHoliday(String dateInMMDDYYYYFormat) {
+	public boolean dateExists(String dateInMMDDYYYYFormat) {
 		boolean dateFound = false;
 		
 		try {
