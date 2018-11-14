@@ -10,6 +10,7 @@ public class UppercaseTextServiceUnitTest {
     @Test
     public void givenLowercaseTextServiceInstance_whenCalledparseText_thenCorrect() {
         TextService textService = new UppercaseTextService();
+        
         assertThat(textService.parseText("Baeldung")).isEqualTo("BAELDUNG");
     }
 }
