@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 public class ReflectionTestUtilsUnitTest {
 
     @Test
-    public void testNonPublicFields() {
+    public void whenNonPublicField_thenReflectionTestUtilsSetField() {
         Employee employee = new Employee();
         ReflectionTestUtils.setField(employee, "id", 1);
         assertTrue(employee.getId().equals(1));
@@ -22,7 +22,7 @@ public class ReflectionTestUtilsUnitTest {
     }
 
     @Test
-    public void testNonPublicMethods() {
+    public void whenNonPublicMethod_thenReflectionTestUtilsInvokeMethod() {
         Employee employee = new Employee();
         ReflectionTestUtils.setField(employee, "id", 1);
         employee.setName("Smith, John");
@@ -30,7 +30,7 @@ public class ReflectionTestUtilsUnitTest {
     }
 
     @Test
-    public void testDependencyInjection() {
+    public void whenInjectingMockOfDependency_thenReflectionTestUtilsSetField() {
         Employee employee = new Employee();
         ReflectionTestUtils.setField(employee, "id", 1);
         employee.setName("Smith, John");
