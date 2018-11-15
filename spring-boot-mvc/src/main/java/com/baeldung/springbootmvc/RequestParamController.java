@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -17,43 +16,37 @@ public class RequestParamController {
 
     @GetMapping("/api/foos")
     @ResponseBody
-    public String getFoos(@RequestParam int limit){
-        return "Limit: " + limit;
-    }
-    
-    @GetMapping("/api/bars")
-    @ResponseBody
-    public String getBars(@RequestParam(name = "query") String searchQuery){ 
-        return "Query: " + searchQuery;
-    }
-    
-    @GetMapping("/api/users")
-    @ResponseBody
-    public String getUsers(@RequestParam(required = false) String query){ 
-        return "Query: " + query;
-    }
-    
-    @GetMapping("/api/products")
-    @ResponseBody
-    public String getProducts(@RequestParam(defaultValue = "20") int limit){
-        return "Limit: " + limit;
+    public String getFoos(@RequestParam String id){
+        return "ID: " + id;
     }
     
     @PostMapping("/api/foos")
+    @ResponseBody
+    public String addFoo(@RequestParam(name = "id") String fooId, @RequestParam String name){ 
+        return "ID: " + fooId;
+    }
+    
+    @GetMapping("/api/foos2")
+    @ResponseBody
+    public String getFoos2(@RequestParam(required = false) String id){ 
+        return "ID: " + id;
+    }
+    
+    @GetMapping("/api/foos3")
+    @ResponseBody
+    public String getFoos3(@RequestParam(defaultValue = "test") String id){
+        return "ID: " + id;
+    }
+    
+    @PostMapping("/api/foos1")
     @ResponseBody
     public String updateFoos(@RequestParam Map<String,String> allParams){
         return "Parameters are " + allParams.entrySet();
     }
     
-    @PostMapping("/api/posts")
+    @GetMapping("/api/foos4")
     @ResponseBody
-    public String createPost(@RequestParam String content, @RequestParam MultipartFile file){
-        return "File size in bytes: " + file.getSize();
-    }
-    
-    @GetMapping("/api/posts")
-    @ResponseBody
-    public String getPosts(@RequestParam List<String> id){
+    public String getFoos4(@RequestParam List<String> id){
         return "ID are " + id;
     }
     
