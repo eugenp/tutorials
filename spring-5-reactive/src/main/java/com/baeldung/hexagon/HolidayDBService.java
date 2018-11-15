@@ -14,7 +14,7 @@ public class HolidayDBService implements HolidayService {
 	
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
        Class.forName("org.hsqldb.jdbc.JDBCDriver");
-       connection = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/holidaydb", "SA", "");
+       connection = DriverManager.getConnection("jdbc:hsqldb:mem://localhost/holidaydb", "SA", "");
 	   return connection;
 	}
 
@@ -24,8 +24,9 @@ public class HolidayDBService implements HolidayService {
 		try {
 			connection = getConnection();
 			statement = connection.createStatement();
-			resultset = statement.executeQuery(
-	            "SELECT COUNT(ID) DATECOUNT FROM HOLIDAYS WHERE DATE='" + dateInStringFormat + "'");
+			String query = "SELECT COUNT(ID) DATECOUNT FROM HOLIDAYS WHERE DATE='" + dateInStringFormat + "'";
+			System.out.println(query);
+			resultset = statement.executeQuery(query);
 	         
 	         while(resultset.next()) {
 	        	dateFound = resultset.getInt("DATECOUNT") > 0 ?  true : false;
@@ -33,6 +34,8 @@ public class HolidayDBService implements HolidayService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Internal Error!");
+		} finally {
+			// close connection here...
 		}
 		return dateFound;
 	}

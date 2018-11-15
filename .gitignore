@@ -66,3 +66,4 @@ jmeter/src/main/resources/*-JMeter.csv
 **/nb-configuration.xml
 core-scala/.cache-main
 core-scala/.cache-tests
+/bin/
