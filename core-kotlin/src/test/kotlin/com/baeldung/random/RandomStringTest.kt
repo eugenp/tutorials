@@ -14,7 +14,7 @@ const val ALPHANUMERIC_REGEX = "[a-zA-Z0-9]+"
 
 class RandomStringTest {
 
-    val charPool = ArrayList<Char>()
+    private val charPool = ArrayList<Char>()
 
     init {
         charPool.addAll('a'..'z')
