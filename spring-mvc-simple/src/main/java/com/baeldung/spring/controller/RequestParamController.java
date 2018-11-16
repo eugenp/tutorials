@@ -1,4 +1,4 @@
-package com.baeldung.springbootmvc;
+package com.baeldung.spring.controller;
 
 import java.util.List;
 import java.util.Map;
