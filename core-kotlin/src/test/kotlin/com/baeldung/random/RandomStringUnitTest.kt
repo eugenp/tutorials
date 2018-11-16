@@ -12,7 +12,7 @@ import kotlin.test.assertEquals
 const val STRING_LENGTH = 10
 const val ALPHANUMERIC_REGEX = "[a-zA-Z0-9]+"
 
-class RandomStringTest {
+class RandomStringUnitTest {
     private val charPool : List<Char> = ('a'..'z') + ('A'..'Z') + ('0'..'9')
 
     @Test
