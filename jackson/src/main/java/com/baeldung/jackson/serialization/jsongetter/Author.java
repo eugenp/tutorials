@@ -1,6 +1,5 @@
 package com.baeldung.jackson.serialization.jsongetter;
 
-
 import com.baeldung.jackson.domain.Item;
 import com.baeldung.jackson.domain.Person;
 import com.fasterxml.jackson.annotation.JsonGetter;

@@ -7,25 +7,52 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>spring-boot-custom-starter</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-5</relativePath>
+        <relativePath>../../spring-boot-custom-starter</relativePath>
     </parent>
-
-    <properties>
-        <greeter-starter.version>0.0.1-SNAPSHOT</greeter-starter.version>
-    </properties>
+	
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
-    
         <dependency>
             <groupId>com.baeldung</groupId>
             <artifactId>greeter-spring-boot-starter</artifactId>
             <version>${greeter-starter.version}</version>
         </dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
+    <properties>
+	    <spring-boot.version>1.5.15.RELEASE</spring-boot.version>
+        <greeter-starter.version>0.0.1-SNAPSHOT</greeter-starter.version>
+    </properties>
 
 </project>

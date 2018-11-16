@@ -20,8 +20,7 @@ import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = SpringBootAnnotatedApp.class)
-@AutoConfigureMockMvc
-@TestPropertySource(properties = {"security.basic.enabled=false"})
+@TestPropertySource(properties = { "security.basic.enabled=false" })
 public class SpringBootWithServletComponentIntegrationTest {
 
     @Autowired
@@ -40,9 +39,7 @@ public class SpringBootWithServletComponentIntegrationTest {
         FilterRegistration filterRegistration = servletContext.getFilterRegistration("hello filter");
 
         assertNotNull(filterRegistration);
-        assertTrue(filterRegistration
-          .getServletNameMappings()
-          .contains("echo servlet"));
+        assertTrue(filterRegistration.getServletNameMappings().contains("echo servlet"));
     }
 
     @Autowired
@@ -62,7 +59,4 @@ public class SpringBootWithServletComponentIntegrationTest {
         assertEquals("filtering echo", responseEntity.getBody());
     }
 
-
 }
-
-
