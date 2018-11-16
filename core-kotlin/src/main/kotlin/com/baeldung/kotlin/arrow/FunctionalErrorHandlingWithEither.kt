@@ -1,18 +1,17 @@
 package com.baeldung.kotlin.arrow
 
 import arrow.core.Either
-import arrow.core.Right
 import arrow.core.filterOrElse
 import kotlin.math.sqrt
 
 class FunctionalErrorHandlingWithEither {
 
-    sealed class ComputeException {
-        object OddNumber : ComputeException()
-        object NotANumber : ComputeException()
+    sealed class ComputeProblem {
+        object OddNumber : ComputeProblem()
+        object NotANumber : ComputeProblem()
     }
 
-    fun parseInput(s : String) : Either<ComputeException, Int> = Either.cond(s.toIntOrNull() != null, {-> s.toInt()}, {->ComputeException.NotANumber} )
+    fun parseInput(s : String) : Either<ComputeProblem, Int> = Either.cond(s.toIntOrNull() != null, {-> s.toInt()}, {->ComputeProblem.NotANumber} )
 
     fun isEven(x : Int) : Boolean = x % 2 == 0
 
@@ -33,9 +32,9 @@ class FunctionalErrorHandlingWithEither {
         return sqrt % 1.0 == 0.0
     }
 
-    fun computeWithEither(input : String) : Either<ComputeException, Boolean> {
+    fun computeWithEither(input : String) : Either<ComputeProblem, Boolean> {
         return parseInput(input)
-                .filterOrElse(::isEven) {->ComputeException.OddNumber}
+                .filterOrElse(::isEven) {->ComputeProblem.OddNumber}
                 .map (::biggestDivisor)
                 .map (::isSquareNumber)
     }
@@ -46,8 +45,8 @@ class FunctionalErrorHandlingWithEither {
         when(computeWithEither){
             is Either.Right -> "The greatest divisor is square number: ${computeWithEither.b}"
             is Either.Left -> when(computeWithEither.a){
-                is ComputeException.NotANumber -> "Wrong input! Not a number!"
-                is ComputeException.OddNumber -> "It is an odd number!"
+                is ComputeProblem.NotANumber -> "Wrong input! Not a number!"
+                is ComputeProblem.OddNumber -> "It is an odd number!"
             }
         }
     }

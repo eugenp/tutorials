@@ -1,8 +1,8 @@
 package com.baeldung.kotlin.arrow
 
 import arrow.core.Either
-import com.baeldung.kotlin.arrow.FunctionalErrorHandlingWithEither.ComputeException.NotANumber
-import com.baeldung.kotlin.arrow.FunctionalErrorHandlingWithEither.ComputeException.OddNumber
+import com.baeldung.kotlin.arrow.FunctionalErrorHandlingWithEither.ComputeProblem.NotANumber
+import com.baeldung.kotlin.arrow.FunctionalErrorHandlingWithEither.ComputeProblem.OddNumber
 import org.junit.Assert
 import org.junit.Test
 

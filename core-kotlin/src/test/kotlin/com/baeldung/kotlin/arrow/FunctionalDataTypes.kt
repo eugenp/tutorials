@@ -59,9 +59,15 @@ class FunctionalDataTypes {
 
     @Test
     fun whenOptionCreated_thanConstructorDifferFromFactory(){
-        val constructor = Option(null)
-        val fromNullable = Option.fromNullable(null)
+        val constructor : Option<String?> = Option(null)
+        val fromNullable : Option<String?> = Option.fromNullable(null)
 
+        try{
+            constructor.map { s -> s!!.length }
+            Assert.fail()
+        } catch (e : KotlinNullPointerException){
+            fromNullable.map { s->s!!.length }
+        }
         Assert.assertNotEquals(constructor, fromNullable)
     }
 
