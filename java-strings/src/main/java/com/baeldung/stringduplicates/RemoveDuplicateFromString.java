@@ -7,21 +7,43 @@ import java.util.Set;
 
 public class RemoveDuplicateFromString {
 
-    static String removeDuplicatesUsinglinkedHashSet(String str) {
+
+    String removeDuplicatesUsingCharArray(String str) {
+
+        char[] chars = str.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        int repeatedCtr;
+        for (int i = 0; i < chars.length; i++) {
+            repeatedCtr = 0;
+            for (int j = i + 1; j < chars.length; j++) {
+                if (chars[i] == chars[j]) {
+                    repeatedCtr++;
+                }
+            }
+            if (repeatedCtr == 0) {
+                sb.append(chars[i]);
+            }
+        }
+        return sb.toString();
+    }
+
+    String removeDuplicatesUsinglinkedHashSet(String str) {
 
         StringBuilder sb = new StringBuilder();
         Set<Character> linkedHashSet = new LinkedHashSet<>();
 
-        for (int i = 0; i < str.length(); i++)
+        for (int i = 0; i < str.length(); i++) {
             linkedHashSet.add(str.charAt(i));
+        }
 
-        for (Character c : linkedHashSet)
+        for (Character c : linkedHashSet) {
             sb.append(c);
+        }
 
         return sb.toString();
     }
 
-    static String removeDuplicatesUsingSorting(String str) {
+    String removeDuplicatesUsingSorting(String str) {
 
         char[] chars = str.toCharArray();
 
@@ -38,21 +60,23 @@ public class RemoveDuplicateFromString {
         return sb.toString();
     }
 
-    static String removeDuplicatesUsingHashSet(String str) {
+    String removeDuplicatesUsingHashSet(String str) {
 
         StringBuilder sb = new StringBuilder();
         Set<Character> hashSet = new HashSet<>();
 
-        for (int i = 0; i < str.length(); i++)
+        for (int i = 0; i < str.length(); i++) {
             hashSet.add(str.charAt(i));
+        }
 
-        for (Character c : hashSet)
+        for (Character c : hashSet) {
             sb.append(c);
+        }
 
         return sb.toString();
     }
 
-    static String removeDuplicatesUsingIndexOf(String str) {
+    String removeDuplicatesUsingIndexOf(String str) {
 
         StringBuilder sb = new StringBuilder();
         int idx;
@@ -65,24 +89,6 @@ public class RemoveDuplicateFromString {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-
-        System.out.println("Using LinkedHashSet: " + removeDuplicatesUsinglinkedHashSet("there are some moose on the loose and geeks for geeks"));
-        System.out.println("Using Sorting: " + removeDuplicatesUsingSorting("there are some moose on the loose and geeks for geeks"));
-        System.out.println("Using HashSet: " + removeDuplicatesUsingHashSet("there are some moose on the loose and geeks for geeks"));
-        System.out.println("Using IndexOf: " + removeDuplicatesUsingIndexOf("there are some moose on the loose and geeks for geeks"));
-        System.out.println("-------------------------------------------------------------------------");
-        System.out.println("Using LinkedHashSet: " + removeDuplicatesUsinglinkedHashSet("racecar"));
-        System.out.println("Using Sorting: " + removeDuplicatesUsingSorting("racecar"));
-        System.out.println("Using HashSet: " + removeDuplicatesUsingHashSet("racecar"));
-        System.out.println("Using IndexOf: " + removeDuplicatesUsingIndexOf("racecar"));
-        System.out.println("-------------------------------------------------------------------------");
-        System.out.println("Using LinkedHashSet: " + removeDuplicatesUsinglinkedHashSet("programming with j2ee"));
-        System.out.println("Using Sorting: " + removeDuplicatesUsingSorting("programming with j2ee"));
-        System.out.println("Using HashSet: " + removeDuplicatesUsingHashSet("programming with j2ee"));
-        System.out.println("Using IndexOf: " + removeDuplicatesUsingIndexOf("programming with j2ee"));
-
-    }
 }
 
 
