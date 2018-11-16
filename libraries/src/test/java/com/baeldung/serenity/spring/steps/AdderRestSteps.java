@@ -18,29 +18,18 @@ public class AdderRestSteps {
 
     @Step("get the current number")
     public void givenCurrentNumber() throws UnsupportedEncodingException {
-        currentNum = Integer.valueOf(given()
-          .when()
-          .get("/adder/current")
-          .mvcResult()
-          .getResponse()
-          .getContentAsString());
+        currentNum = Integer.valueOf(given().when().get("/adder/current").mvcResult().getResponse().getContentAsString());
     }
 
     @Step("adding {0}")
     public void whenAddNumber(int num) {
-        mockMvcResponse = given()
-          .queryParam("num", num)
-          .when()
-          .post("/adder");
+        mockMvcResponse = given().queryParam("num", num).when().post("/adder");
         currentNum += num;
     }
 
     @Step("got the sum")
     public void thenSummedUp() {
-        mockMvcResponse
-          .then()
-          .statusCode(200)
-          .body(equalTo(currentNum + ""));
+        mockMvcResponse.then().statusCode(200).body(equalTo(currentNum + ""));
     }
 
 }

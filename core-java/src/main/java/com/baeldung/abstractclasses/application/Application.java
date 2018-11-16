@@ -23,6 +23,6 @@ public class Application {
     }
     
     private Path getPathFromResourcesFile(String filePath) throws URISyntaxException {
-        return Paths.get(getClass().getClassLoader().getResource(filePath).toURI());
+        return Paths.get(getClass().getClassLoader().getResource(filePath).toURI());         
     }
 }

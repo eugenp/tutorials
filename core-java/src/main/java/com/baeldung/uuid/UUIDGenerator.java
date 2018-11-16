@@ -6,16 +6,16 @@ import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 public class UUIDGenerator {
-    
+
     /**
      * These are predefined UUID for name spaces
      */
-    private static final String NAMESPACE_DNS   = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
-    private static final String NAMESPACE_URL   = "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
-    private static final String NAMESPACE_OID   = "6ba7b812-9dad-11d1-80b4-00c04fd430c8";
-    private static final String NAMESPACE_X500  = "6ba7b814-9dad-11d1-80b4-00c04fd430c8";
+    private static final String NAMESPACE_DNS = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
+    private static final String NAMESPACE_URL = "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
+    private static final String NAMESPACE_OID = "6ba7b812-9dad-11d1-80b4-00c04fd430c8";
+    private static final String NAMESPACE_X500 = "6ba7b814-9dad-11d1-80b4-00c04fd430c8";
 
-    private static final  char[] hexArray = "0123456789ABCDEF".toCharArray();
+    private static final char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     public static void main(String[] args) {
         try {
@@ -35,7 +35,7 @@ public class UUIDGenerator {
         UUID uuid = UUID.randomUUID();
         return uuid;
     }
-    
+
     /**
      * Type 3 UUID Generation
      * 
@@ -47,7 +47,7 @@ public class UUIDGenerator {
         UUID uuid = UUID.nameUUIDFromBytes(bytes);
         return uuid;
     }
-    
+
     /**
      * Type 5 UUID Generation
      * 
@@ -59,8 +59,7 @@ public class UUIDGenerator {
         UUID uuid = type5UUIDFromBytes(bytes);
         return uuid;
     }
-    
-    
+
     public static UUID type5UUIDFromBytes(byte[] name) {
         MessageDigest md;
         try {
@@ -69,27 +68,26 @@ public class UUIDGenerator {
             throw new InternalError("MD5 not supported", nsae);
         }
         byte[] bytes = md.digest(name);
-        bytes[6]  &= 0x0f;  /* clear version        */
-        bytes[6]  |= 0x50;  /* set to version 5     */
-        bytes[8]  &= 0x3f;  /* clear variant        */
-        bytes[8]  |= 0x80;  /* set to IETF variant  */
+        bytes[6] &= 0x0f; /* clear version        */
+        bytes[6] |= 0x50; /* set to version 5     */
+        bytes[8] &= 0x3f; /* clear variant        */
+        bytes[8] |= 0x80; /* set to IETF variant  */
         return constructType5UUID(bytes);
     }
-    
+
     private static UUID constructType5UUID(byte[] data) {
         long msb = 0;
         long lsb = 0;
         assert data.length == 16 : "data must be 16 bytes in length";
-        
-        for (int i=0; i<8; i++)
+
+        for (int i = 0; i < 8; i++)
             msb = (msb << 8) | (data[i] & 0xff);
-        
-        for (int i=8; i<16; i++)
+
+        for (int i = 8; i < 16; i++)
             lsb = (lsb << 8) | (data[i] & 0xff);
         return new UUID(msb, lsb);
     }
 
-    
     /**
      * Unique Keys Generation Using Message Digest and Type 4 UUID
      * 
