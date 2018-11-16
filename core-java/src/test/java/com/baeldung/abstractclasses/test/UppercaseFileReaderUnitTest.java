@@ -22,7 +22,7 @@ public class UppercaseFileReaderUnitTest {
     @Test
     public void givenUppercaseFileReaderInstance_whenCalledMapFileLines_thenCorrect() throws Exception {
         Path path = Paths.get(getClass().getClassLoader().getResource("files/test.txt").toURI());
-        BaseFileReader uppercaseFileReaderr = new UppercaseFileReader(path);
+        BaseFileReader uppercaseFileReader = new UppercaseFileReader(path);
         
         assertThat(uppercaseFileReader.mapFileLines().get(0)).isEqualTo("THIS IS LINE 1");
     }
