@@ -1,24 +1,11 @@
+package com.baeldung.stringduplicates;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-
 public class RemoveDuplicateFromString {
-
-    static String removeDuplicatesUsingCharArray(String str) {
-
-        char[] chars = str.toCharArray();
-        StringBuilder sb = new StringBuilder();
-        sb.append(chars[0]);
-        for (int i = 1; i < chars.length; i++) {
-            if (chars[i] != chars[i - 1]) {
-                sb.append(chars[i]);
-            }
-        }
-        return sb.toString();
-    }
-
 
     static String removeDuplicatesUsinglinkedHashSet(String str) {
 
@@ -70,7 +57,7 @@ public class RemoveDuplicateFromString {
         StringBuilder sb = new StringBuilder();
         int idx;
         for (int i = 0; i < str.length(); i++) {
-            idx = str.indexOf(str.charAt(i), i+1);
+            idx = str.indexOf(str.charAt(i), i + 1);
             if (idx == -1) {
                 sb.append(str.charAt(i));
             }
@@ -79,10 +66,23 @@ public class RemoveDuplicateFromString {
     }
 
     public static void main(String[] args) {
-        System.out.println(removeDuplicatesUsingCharArray("mmmmmmaakkkbbbbbb"));
-        System.out.println(removeDuplicatesUsingHashSet("mmmmmmaakkkbbbbbb"));
-        System.out.println(removeDuplicatesUsingCharArray("mmmmmmaakkkbbbbbb"));
-        System.out.println(removeDuplicatesUsinglinkedHashSet("mmmmmmaakkkbbbbbb"));
-        System.out.println(removeDuplicatesUsingIndexOf("mmmmmmaakkkbbbbbb"));
+
+        System.out.println("Using LinkedHashSet: " + removeDuplicatesUsinglinkedHashSet("there are some moose on the loose and geeks for geeks"));
+        System.out.println("Using Sorting: " + removeDuplicatesUsingSorting("there are some moose on the loose and geeks for geeks"));
+        System.out.println("Using HashSet: " + removeDuplicatesUsingHashSet("there are some moose on the loose and geeks for geeks"));
+        System.out.println("Using IndexOf: " + removeDuplicatesUsingIndexOf("there are some moose on the loose and geeks for geeks"));
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("Using LinkedHashSet: " + removeDuplicatesUsinglinkedHashSet("racecar"));
+        System.out.println("Using Sorting: " + removeDuplicatesUsingSorting("racecar"));
+        System.out.println("Using HashSet: " + removeDuplicatesUsingHashSet("racecar"));
+        System.out.println("Using IndexOf: " + removeDuplicatesUsingIndexOf("racecar"));
+        System.out.println("-------------------------------------------------------------------------");
+        System.out.println("Using LinkedHashSet: " + removeDuplicatesUsinglinkedHashSet("programming with j2ee"));
+        System.out.println("Using Sorting: " + removeDuplicatesUsingSorting("programming with j2ee"));
+        System.out.println("Using HashSet: " + removeDuplicatesUsingHashSet("programming with j2ee"));
+        System.out.println("Using IndexOf: " + removeDuplicatesUsingIndexOf("programming with j2ee"));
+
     }
 }
+
+
