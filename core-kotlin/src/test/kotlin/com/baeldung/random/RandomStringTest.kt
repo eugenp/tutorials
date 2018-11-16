@@ -16,11 +16,10 @@ class RandomStringTest {
 
     val charPool = ArrayList<Char>()
 
-    @BeforeEach
-    fun charPool() {
-        charPool.addAll('a'..'z');
-        charPool.addAll('A'..'Z');
-        charPool.addAll('0'..'9');
+    init {
+        charPool.addAll('a'..'z')
+        charPool.addAll('A'..'Z')
+        charPool.addAll('0'..'9')
     }
 
     @Test
