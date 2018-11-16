@@ -4,9 +4,8 @@ package com.baeldung.modifystring;
 public class Main {
 
     public static void main(String[] args) {
-
+        
         String myString = "abcdefgh";
-
         // Using String builder
         StringBuilder sBuilder = new StringBuilder(myString);
         sBuilder.setCharAt(4, 'x');
