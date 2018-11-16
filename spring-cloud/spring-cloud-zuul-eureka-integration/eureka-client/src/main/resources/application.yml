@@ -3,7 +3,7 @@ spring:
     name: spring-cloud-eureka-client
 
 server:
-  port: 8082
+  port: 8081
 
 eureka:
   client:
