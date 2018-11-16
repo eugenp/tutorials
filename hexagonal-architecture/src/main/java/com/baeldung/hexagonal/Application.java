@@ -21,7 +21,6 @@ public class Application {
         EmployeeInput ui = new EmployeeConsoleInputImpl();
         ui.collectData(service);
         service.generateOutput();
-
     }
 
 }

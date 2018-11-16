@@ -11,24 +11,26 @@ import com.baeldung.hexagonal.domain.Employee;
 
 public class EmployeeCsvWriter implements EmployeeOutput {
     private File outputFile;
-    
+
     public EmployeeCsvWriter(String path, String fileName) throws IllegalArgumentException {
         if (fileName == null || path == null || fileName.length() == 0 || path.length() == 0) {
             throw new IllegalArgumentException("Path and FileName are required");
         } else if (!fileName.endsWith(".csv")) {
             throw new IllegalArgumentException("File name must be a .csv file");
         }
-        
+
         System.out.println(path);
-        if (!path.endsWith("/")) path += "/";
-        
+        if (!path.endsWith("/")) {
+            path += "/";
+        }
+
         outputFile = new File(path, fileName);
     }
 
     @Override
     public void writeAll(List<Employee> employees) {
         BufferedWriter writer = null;
-        
+
         try {
             writer = new BufferedWriter(new FileWriter(outputFile));
             for (Iterator<Employee> it = employees.iterator(); it.hasNext();) {
@@ -48,13 +50,13 @@ public class EmployeeCsvWriter implements EmployeeOutput {
             }
             writer.flush();
         } catch (IOException ioe) {
-            //handle the exception
+            // handle the exception
         } finally {
             if (writer != null) {
                 try {
                     writer.close();
                 } catch (IOException e) {
-                    //handle the exception
+                    // handle the exception
                 }
             }
         }

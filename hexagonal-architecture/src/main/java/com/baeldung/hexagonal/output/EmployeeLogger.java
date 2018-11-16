@@ -11,7 +11,7 @@ public class EmployeeLogger implements EmployeeOutput {
 
     @Override
     public void writeAll(List<Employee> employees) {
-       employees.forEach(employee -> LOG.info(employee.toString()));
+        employees.forEach(employee -> LOG.info(employee.toString()));
     }
 
 }
