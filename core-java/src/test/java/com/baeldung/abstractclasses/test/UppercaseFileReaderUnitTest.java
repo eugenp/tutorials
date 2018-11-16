@@ -16,14 +16,14 @@ public class UppercaseFileReaderUnitTest {
         Path path = Paths.get(getClass().getClassLoader().getResource("files/test.txt").toURI());
         BaseFileReader uppercaseFileReader = new UppercaseFileReader(path);
         
-        assertThat(lowercaseFileReader.readFile()).isInstanceOf(List.class);
+        assertThat(uppercaseFileReader.readFile()).isInstanceOf(List.class);
     }
     
     @Test
     public void givenUppercaseFileReaderInstance_whenCalledMapFileLines_thenCorrect() throws Exception {
         Path path = Paths.get(getClass().getClassLoader().getResource("files/test.txt").toURI());
-        BaseFileReader upperBaseFileReader = new UppercaseFileReader(path);
+        BaseFileReader uppercaseFileReaderr = new UppercaseFileReader(path);
         
-        assertThat(upperBaseFileReader.mapFileLines().get(0)).isEqualTo("THIS IS LINE 1");
+        assertThat(uppercaseFileReader.mapFileLines().get(0)).isEqualTo("THIS IS LINE 1");
     }
 }
