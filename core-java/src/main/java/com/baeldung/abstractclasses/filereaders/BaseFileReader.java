@@ -19,8 +19,9 @@ public abstract class BaseFileReader {
     }
     
     public List<String> readFile() throws IOException {
-        return Files.lines(filePath).collect(Collectors.toList());
+        return Files.lines(filePath)
+            .map(this::mapFileLine).collect(Collectors.toList());
     }
     
-    public abstract List<String> mapFileLines() throws IOException;
+    protected abstract String mapFileLine(String line);
 }

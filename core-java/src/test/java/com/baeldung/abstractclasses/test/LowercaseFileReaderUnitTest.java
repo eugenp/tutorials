@@ -17,12 +17,4 @@ public class LowercaseFileReaderUnitTest {
         
         assertThat(lowercaseFileReader.readFile()).isInstanceOf(List.class);
     }
-    
-    @Test
-    public void givenLowercaseFileReaderInstance_whenCalledMapFileLines_thenCorrect() throws Exception {
-        Path path = Paths.get(getClass().getClassLoader().getResource("files/test.txt").toURI());
-        BaseFileReader lowercaseFileReader = new LowercaseFileReader(path);
-        
-        assertThat(lowercaseFileReader.mapFileLines().get(0)).isEqualTo("this is line 1");
-    }
 }
