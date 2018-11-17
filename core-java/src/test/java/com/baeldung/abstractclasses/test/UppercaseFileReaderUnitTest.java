@@ -16,5 +16,4 @@ public class UppercaseFileReaderUnitTest {
         BaseFileReader uppercaseFileReader = new UppercaseFileReader(path);
         
         assertThat(uppercaseFileReader.readFile()).isInstanceOf(List.class);
-    }
 }
