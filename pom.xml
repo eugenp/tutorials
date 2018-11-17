@@ -376,8 +376,6 @@
 				<module>ethereum</module>
 				<module>feign</module>
 				<module>flips</module>
-				<module>testing-modules/gatling</module>
-				<module>geotools</module>
 				<module>testing-modules/groovy-spock</module>
 				<module>google-cloud</module>
 				<module>google-web-toolkit</module>
