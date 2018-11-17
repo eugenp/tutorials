@@ -18,3 +18,4 @@
 - [@JoinColumn Annotation Explained](https://www.baeldung.com/jpa-join-column)
 - [Hibernate 5 Naming Strategy Configuration](https://www.baeldung.com/hibernate-naming-strategy)
 - [Proxy in Hibernate load() Method](https://www.baeldung.com/hibernate-proxy-load-method)
+- [Custom Types in Hibernate](https://www.baeldung.com/hibernate-custom-types)
