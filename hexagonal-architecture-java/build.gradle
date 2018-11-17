@@ -1,0 +1,16 @@
+group 'hexagonal-architecture-java'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}

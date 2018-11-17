@@ -1,0 +1,5 @@
+rootProject.name = 'hexagonal-architecture-java'
+include 'invitation'
+
+
+

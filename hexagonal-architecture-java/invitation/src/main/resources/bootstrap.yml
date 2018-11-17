@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: invitation
+  cloud:
+    service-registry:
+      auto-registration:
+        enabled: false
