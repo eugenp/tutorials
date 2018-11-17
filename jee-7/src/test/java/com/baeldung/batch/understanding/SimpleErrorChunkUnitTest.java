@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 
 class SimpleErrorChunkUnitTest {
 
-    // @Test
+    @Test
     public void givenChunkError_thenBatch_CompletesWithFailed() throws Exception {
         JobOperator jobOperator = BatchRuntime.getJobOperator();
         Long executionId = jobOperator.start("simpleErrorChunk", new Properties());

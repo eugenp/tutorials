@@ -7,9 +7,7 @@ import java.util.StringTokenizer;
 
 @Named
 public class MyItemReader extends AbstractItemReader {
-
     private StringTokenizer tokens;
-
     private MyInputRecord lastElement;
     private boolean alreadyFailed;
 

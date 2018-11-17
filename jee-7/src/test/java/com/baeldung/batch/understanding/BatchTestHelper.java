@@ -17,9 +17,6 @@ public class BatchTestHelper {
     }
 
     public static JobExecution keepTestAlive(JobExecution jobExecution) throws InterruptedException {
-        System.out.println(" * Entering keepTestAlive, completed is: " + jobExecution.getBatchStatus()
-            .equals(BatchStatus.COMPLETED));
-
         int maxTries = 0;
         while (!jobExecution.getBatchStatus()
             .equals(BatchStatus.COMPLETED)) {
@@ -33,17 +30,10 @@ public class BatchTestHelper {
             }
         }
         Thread.sleep(THREAD_SLEEP);
-
-        System.out.println(" * Exiting keepTestAlive, completed is: " + jobExecution.getBatchStatus()
-            .equals(BatchStatus.COMPLETED));
-
         return jobExecution;
     }
 
     public static JobExecution keepTestFailed(JobExecution jobExecution) throws InterruptedException {
-        System.out.println(" * Entering keepTestFailed, STARTED is: " + jobExecution.getBatchStatus()
-            .equals(BatchStatus.FAILED));
-
         int maxTries = 0;
         while (!jobExecution.getBatchStatus()
             .equals(BatchStatus.FAILED)) {
@@ -58,16 +48,10 @@ public class BatchTestHelper {
         }
         Thread.sleep(THREAD_SLEEP);
 
-        System.out.println(" * Exiting keepTestFailed, completed is: " + jobExecution.getBatchStatus()
-            .equals(BatchStatus.FAILED));
-
         return jobExecution;
     }
 
     public static JobExecution keepTestStopped(JobExecution jobExecution) throws InterruptedException {
-        System.out.println(" * Entering keepTestStopped, STARTED is: " + jobExecution.getBatchStatus()
-            .equals(BatchStatus.STOPPED));
-
         int maxTries = 0;
         while (!jobExecution.getBatchStatus()
             .equals(BatchStatus.STOPPED)) {
@@ -81,10 +65,6 @@ public class BatchTestHelper {
             }
         }
         Thread.sleep(THREAD_SLEEP);
-
-        System.out.println(" * Exiting keepTestFailed, completed is: " + jobExecution.getBatchStatus()
-            .equals(BatchStatus.STOPPED));
-
         return jobExecution;
     }
 
