@@ -9,7 +9,7 @@ public class BootstrappingApplication {
     public static void main(String... args) {
         SeContainerInitializer containerInitializer = SeContainerInitializer.newInstance();
         try (SeContainer container = containerInitializer.initialize()) {
-            container.getBeanManager().fireEvent(new SimpleEvent());
+            container.getBeanManager().fireEvent(new SimpleEvent("Welcome to Baeldung!"));
         }
     }
 }
