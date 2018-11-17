@@ -8,18 +8,15 @@ import java.util.List;
 
 public class HolidayFileService implements HolidayService {
 
-	@Override
-	public boolean dateExists(String dateInMMDDYYYYFormat) {
-		boolean dateFound = false;
-		
-		try {
-			List<String> allLines = Files.readAllLines(Paths.get("E:\\holidays.txt"), StandardCharsets.UTF_8);
-			dateFound = allLines.contains(dateInMMDDYYYYFormat);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("Internal Error!");
-		}
-		
-		return dateFound;
-	}
+    @Override
+    public boolean dateExists(String dateInMMDDYYYYFormat) {
+        boolean dateFound = false;
+        try {
+            List<String> allLines = Files.readAllLines(Paths.get("E:\\holidays.txt"), StandardCharsets.UTF_8);
+            dateFound = allLines.contains(dateInMMDDYYYYFormat);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return dateFound;
+    }
 }
