@@ -6,3 +6,4 @@
 - [Servlet Redirect vs Forward](http://www.baeldung.com/servlet-redirect-forward)
 - [Apache Tiles Integration with Spring MVC](http://www.baeldung.com/spring-mvc-apache-tiles)
 - [Guide to Spring Email](http://www.baeldung.com/spring-email)
+- [Request Method Not Supported (405) in Spring](https://www.baeldung.com/spring-request-method-not-supported-405)
