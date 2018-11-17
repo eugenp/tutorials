@@ -84,3 +84,4 @@
 - [Understanding Memory Leaks in Java](https://www.baeldung.com/java-memory-leaks)
 - [A Guide to SimpleDateFormat](https://www.baeldung.com/java-simple-date-format)
 - [SSL Handshake Failures](https://www.baeldung.com/java-ssl-handshake-failures)
+- [Implementing a Binary Tree in Java](https://www.baeldung.com/java-binary-tree)
