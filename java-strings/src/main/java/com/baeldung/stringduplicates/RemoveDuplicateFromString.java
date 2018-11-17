@@ -81,9 +81,10 @@ public class RemoveDuplicateFromString {
         StringBuilder sb = new StringBuilder();
         int idx;
         for (int i = 0; i < str.length(); i++) {
-            idx = str.indexOf(str.charAt(i), i + 1);
+            char c = str.charAt(i);
+            idx = str.indexOf(c, i + 1);
             if (idx == -1) {
-                sb.append(str.charAt(i));
+                sb.append(c);
             }
         }
         return sb.toString();
