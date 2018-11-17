@@ -11,6 +11,4 @@ public class DynamicValidationApp {
     public static void main(String[] args) {
         SpringApplication.run(DynamicValidationApp.class, args);
     }
-    
-    
 }
