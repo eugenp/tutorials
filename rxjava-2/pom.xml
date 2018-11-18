@@ -34,6 +34,13 @@
             <artifactId>rxrelay</artifactId>
             <version>${rxrelay.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.akarnokd/rxjava2-extensions -->
+<dependency>
+    <groupId>com.github.akarnokd</groupId>
+    <artifactId>rxjava2-extensions</artifactId>
+    <version>${rxjava2.ext.version}</version>
+</dependency>
+        
     </dependencies>
 
     <properties>
@@ -41,5 +48,6 @@
         <rx.java2.version>2.2.2</rx.java2.version>
         <awaitility.version>1.7.0</awaitility.version>
         <rxrelay.version>2.0.0</rxrelay.version>
+        <rxjava2.ext.version>0.20.4</rxjava2.ext.version>
     </properties>
 </project>
