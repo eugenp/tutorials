@@ -38,14 +38,7 @@ public class EmployeeCsvWriter implements EmployeeOutput {
                 StringBuffer empLine = new StringBuffer();
                 empLine.append(emp.getId());
                 empLine.append(",");
-                empLine.append(emp.getFirstName());
-                empLine.append(",");
-                empLine.append(emp.getLastName());
-                empLine.append(",");
-                empLine.append(emp.getEmployeeId());
-                empLine.append(",");
-                empLine.append(emp.getSalary());
-                writer.write(empLine.toString());
+                empLine.append(emp.getName());
                 writer.newLine();
             }
             writer.flush();
