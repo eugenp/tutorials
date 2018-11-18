@@ -1,7 +1,5 @@
 package com.baeldung.swaggerboot.configuration;
 
-import com.fasterxml.classmate.TypeResolver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +18,6 @@ import java.util.Collections;
 @EnableSwagger2
 @ComponentScan("com.baeldung.swaggerboot.controller")
 public class SpringFoxConfig {
-
-    @Autowired
-    private TypeResolver typeResolver;
 
     private ApiInfo apiInfo() {
         return new ApiInfo(
