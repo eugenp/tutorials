@@ -57,7 +57,7 @@
         <log4j-api.version>2.7</log4j-api.version>
         <log4j-core.version>2.7</log4j-core.version>
         <disruptor.version>3.3.6</disruptor.version>
-        <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
+        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
     </properties>
 
 </project>
