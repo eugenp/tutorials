@@ -101,7 +101,8 @@ public class GuavaRangeMapUnitTest {
         final RangeMap<Integer, String> experiencedSubRangeDesignationMap = experienceRangeDesignationMap.subRangeMap(Range.closed(4, 14));
 
         assertNull(experiencedSubRangeDesignationMap.get(3));
-        assertTrue(experiencedSubRangeDesignationMap.asMapOfRanges().values().containsAll(Arrays.asList("Executive Director", "Vice President", "Executive Director")));
+        assertTrue(experiencedSubRangeDesignationMap.asMapOfRanges().values()
+            .containsAll(Arrays.asList("Executive Director", "Vice President", "Executive Director")));
         
     }
 
