@@ -416,6 +416,7 @@
 				<module>jsf</module>
 				<module>json-path</module>
 				<module>json</module>
+				<module>json-escape-comparison</module>
 				<module>jsoup</module>
 				<module>testing-modules/junit-5</module>
 				<!-- <module>jws</module> --><!-- POM jar version repo download failure -->
