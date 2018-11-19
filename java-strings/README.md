@@ -34,3 +34,6 @@
 - [Remove Emojis from a Java String](https://www.baeldung.com/java-string-remove-emojis)
 - [String Not Empty Test Assertions in Java](https://www.baeldung.com/java-assert-string-not-empty)
 - [String Performance Hints](https://www.baeldung.com/java-string-performance)
+- [Using indexOf to Find All Occurrences of a Word in a String](https://www.baeldung.com/java-indexOf-find-string-occurrences)
+- [Java Base64 Encoding and Decoding](https://www.baeldung.com/java-base64-encode-and-decode)
+- [Generate a Secure Random Password in Java](https://www.baeldung.com/java-generate-secure-password)
