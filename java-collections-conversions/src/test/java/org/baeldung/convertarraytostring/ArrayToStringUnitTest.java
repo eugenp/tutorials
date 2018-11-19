@@ -1,4 +1,4 @@
-package org.baeldung.java.collections;
+package org.baeldung.convertarraytostring;
 
 import java.util.Arrays;
 import java.util.List;
