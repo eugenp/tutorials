@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.util.SocketUtils;
 
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
@@ -32,16 +33,16 @@ class ManualEmbeddedMongoDbIntegrationTest {
     @BeforeEach
     void setup() throws Exception {
         String ip = "localhost";
-        int port = 27017;
+        int randomPort = SocketUtils.findAvailableTcpPort();
 
         IMongodConfig mongodConfig = new MongodConfigBuilder().version(Version.Main.PRODUCTION)
-            .net(new Net(ip, port, Network.localhostIsIPv6()))
+            .net(new Net(ip, randomPort, Network.localhostIsIPv6()))
             .build();
 
         MongodStarter starter = MongodStarter.getDefaultInstance();
         mongodExecutable = starter.prepare(mongodConfig);
         mongodExecutable.start();
-        mongoTemplate = new MongoTemplate(new MongoClient(ip, port), "test");
+        mongoTemplate = new MongoTemplate(new MongoClient(ip, randomPort), "test");
     }
 
     @DisplayName("Given object When save object using MongoDB template Then object can be found")

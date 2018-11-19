@@ -19,6 +19,11 @@
             <version>${commons-math3.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
             <version>${junit.platform.version}</version>
@@ -70,6 +75,7 @@
 
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
         <junit.platform.version>1.1.1</junit.platform.version>
         <junit.vintage.version>5.2.0</junit.vintage.version>
         <assertj.version>3.10.0</assertj.version>

@@ -41,7 +41,7 @@
                 <configuration>
                     <install>
                         <runtimeUrl>
-                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/nightly/2018-05-25_1422/openliberty-all-20180525-1300.zip
+                            https://public.dhe.ibm.com/ibmdl/export/pub/software/openliberty/runtime/release/2018-09-05_2337/openliberty-18.0.0.3.zip
                         </runtimeUrl>
                     </install>
                     <looseApplication>true</looseApplication>
