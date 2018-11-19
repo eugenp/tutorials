@@ -1,4 +1,4 @@
-package com.baeldung.classes;
+package com.baeldung.className;
 
 import org.junit.Test;
 
@@ -49,48 +49,48 @@ public class RetrievingClassNameTest {
     // - Object Types
     @Test
     public void givenRetrievingClassName_whenGetName_thenCanonicalName() {
-        assertEquals("com.baeldung.classes.RetrievingClassName", RetrievingClassName.class.getName());
+        assertEquals("com.baeldung.className.RetrievingClassName", RetrievingClassName.class.getName());
     }
 
     @Test
     public void givenRetrievingClassName_whenGetTypeName_thenCanonicalName() {
-        assertEquals("com.baeldung.classes.RetrievingClassName", RetrievingClassName.class.getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassName", RetrievingClassName.class.getTypeName());
     }
 
     @Test
     public void givenRetrievingClassName_whenGetCanonicalName_thenCanonicalName() {
-        assertEquals("com.baeldung.classes.RetrievingClassName", RetrievingClassName.class.getCanonicalName());
+        assertEquals("com.baeldung.className.RetrievingClassName", RetrievingClassName.class.getCanonicalName());
     }
 
     // - Inner Classes
     @Test
     public void givenRetrievingClassNameInnerClass_whenGetName_thenCanonicalNameWithDollarSeparator() {
-        assertEquals("com.baeldung.classes.RetrievingClassName$InnerClass", RetrievingClassName.InnerClass.class.getName());
+        assertEquals("com.baeldung.className.RetrievingClassName$InnerClass", RetrievingClassName.InnerClass.class.getName());
     }
 
     @Test
     public void givenRetrievingClassNameInnerClass_whenGetTypeName_thenCanonicalNameWithDollarSeparator() {
-        assertEquals("com.baeldung.classes.RetrievingClassName$InnerClass", RetrievingClassName.InnerClass.class.getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassName$InnerClass", RetrievingClassName.InnerClass.class.getTypeName());
     }
 
     @Test
     public void givenRetrievingClassNameInnerClass_whenGetCanonicalName_thenCanonicalName() {
-        assertEquals("com.baeldung.classes.RetrievingClassName.InnerClass", RetrievingClassName.InnerClass.class.getCanonicalName());
+        assertEquals("com.baeldung.className.RetrievingClassName.InnerClass", RetrievingClassName.InnerClass.class.getCanonicalName());
     }
 
     // - Anonymous Classes
     @Test
     public void givenAnonymousClass_whenGetName_thenCallingClassCanonicalNameWithDollarSeparatorAndCountNumber() {
         // These are the second and third appearences of an anonymous class in RetrievingClassNameTest, hence $2 and $3 expectations
-        assertEquals("com.baeldung.classes.RetrievingClassNameTest$2", new RetrievingClassName() {}.getClass().getName());
-        assertEquals("com.baeldung.classes.RetrievingClassNameTest$3", new RetrievingClassName() {}.getClass().getName());
+        assertEquals("com.baeldung.className.RetrievingClassNameTest$2", new RetrievingClassName() {}.getClass().getName());
+        assertEquals("com.baeldung.className.RetrievingClassNameTest$3", new RetrievingClassName() {}.getClass().getName());
     }
 
     @Test
     public void givenAnonymousClass_whenGetTypeName_thenCallingClassCanonicalNameWithDollarSeparatorAndCountNumber() {
         // These are the fourth and fifth appearences of an anonymous class in RetrievingClassNameTest, hence $4 and $5 expectations
-        assertEquals("com.baeldung.classes.RetrievingClassNameTest$4", new RetrievingClassName() {}.getClass().getTypeName());
-        assertEquals("com.baeldung.classes.RetrievingClassNameTest$5", new RetrievingClassName() {}.getClass().getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassNameTest$4", new RetrievingClassName() {}.getClass().getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassNameTest$5", new RetrievingClassName() {}.getClass().getTypeName());
     }
 
     @Test
@@ -107,14 +107,14 @@ public class RetrievingClassNameTest {
 
     @Test
     public void givenRetrievingClassNameArray_whenGetName_thenOpeningBracketsLetterLAndRetrievingClassNameGetName() {
-        assertEquals("[Lcom.baeldung.classes.RetrievingClassName;", RetrievingClassName[].class.getName());
-        assertEquals("[[Lcom.baeldung.classes.RetrievingClassName;", RetrievingClassName[][].class.getName());
+        assertEquals("[Lcom.baeldung.className.RetrievingClassName;", RetrievingClassName[].class.getName());
+        assertEquals("[[Lcom.baeldung.className.RetrievingClassName;", RetrievingClassName[][].class.getName());
     }
 
     @Test
     public void givenRetrievingClassNameInnerClassArray_whenGetName_thenOpeningBracketsLetterLAndRetrievingClassNameInnerClassGetName() {
-        assertEquals("[Lcom.baeldung.classes.RetrievingClassName$InnerClass;", RetrievingClassName.InnerClass[].class.getName());
-        assertEquals("[[Lcom.baeldung.classes.RetrievingClassName$InnerClass;", RetrievingClassName.InnerClass[][].class.getName());
+        assertEquals("[Lcom.baeldung.className.RetrievingClassName$InnerClass;", RetrievingClassName.InnerClass[].class.getName());
+        assertEquals("[[Lcom.baeldung.className.RetrievingClassName$InnerClass;", RetrievingClassName.InnerClass[][].class.getName());
     }
 
     @Test
@@ -125,14 +125,14 @@ public class RetrievingClassNameTest {
 
     @Test
     public void givenRetrievingClassNameArray_whenGetTypeName_thenRetrievingClassNameGetTypeNameWithBrackets() {
-        assertEquals("com.baeldung.classes.RetrievingClassName[]", RetrievingClassName[].class.getTypeName());
-        assertEquals("com.baeldung.classes.RetrievingClassName[][]", RetrievingClassName[][].class.getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassName[]", RetrievingClassName[].class.getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassName[][]", RetrievingClassName[][].class.getTypeName());
     }
 
     @Test
     public void givenRetrievingClassNameInnerClassArray_whenGetTypeName_thenRetrievingClassNameInnerClassGetTypeNameWithBrackets() {
-        assertEquals("com.baeldung.classes.RetrievingClassName$InnerClass[]", RetrievingClassName.InnerClass[].class.getTypeName());
-        assertEquals("com.baeldung.classes.RetrievingClassName$InnerClass[][]", RetrievingClassName.InnerClass[][].class.getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassName$InnerClass[]", RetrievingClassName.InnerClass[].class.getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassName$InnerClass[][]", RetrievingClassName.InnerClass[][].class.getTypeName());
     }
 
     @Test
@@ -143,14 +143,14 @@ public class RetrievingClassNameTest {
 
     @Test
     public void givenRetrievingClassNameArray_whenGetCanonicalName_thenRetrievingClassNameGetCanonicalNameWithBrackets() {
-        assertEquals("com.baeldung.classes.RetrievingClassName[]", RetrievingClassName[].class.getCanonicalName());
-        assertEquals("com.baeldung.classes.RetrievingClassName[][]", RetrievingClassName[][].class.getCanonicalName());
+        assertEquals("com.baeldung.className.RetrievingClassName[]", RetrievingClassName[].class.getCanonicalName());
+        assertEquals("com.baeldung.className.RetrievingClassName[][]", RetrievingClassName[][].class.getCanonicalName());
     }
 
     @Test
     public void givenRetrievingClassNameInnerClassArray_whenGetCanonicalName_thenRetrievingClassNameInnerClassGetCanonicalNameWithBrackets() {
-        assertEquals("com.baeldung.classes.RetrievingClassName.InnerClass[]", RetrievingClassName.InnerClass[].class.getCanonicalName());
-        assertEquals("com.baeldung.classes.RetrievingClassName.InnerClass[][]", RetrievingClassName.InnerClass[][].class.getCanonicalName());
+        assertEquals("com.baeldung.className.RetrievingClassName.InnerClass[]", RetrievingClassName.InnerClass[].class.getCanonicalName());
+        assertEquals("com.baeldung.className.RetrievingClassName.InnerClass[][]", RetrievingClassName.InnerClass[][].class.getCanonicalName());
     }
 
 }

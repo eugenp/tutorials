@@ -34,7 +34,7 @@ public class MyInstrumentationAgent {
         } catch (Exception ex) {
             LOGGER.error("Class [{}] not found with Class.forName");
         }
-        // otherwise iterate all loaded classes and find what we want
+        // otherwise iterate all loaded className and find what we want
         for(Class<?> clazz: instrumentation.getAllLoadedClasses()) {
             if(clazz.getName().equals(className)) {
                 targetCls = clazz;

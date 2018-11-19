@@ -1,4 +1,4 @@
-package com.baeldung.classes;
+package com.baeldung.className;
 
 public class RetrievingClassName {
 
