@@ -1,46 +1,37 @@
-package com.baeldung.subflows.separateflows;
+package com.baeldung.subflows.discardflow;
 
 import java.util.Collection;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.annotation.MessagingGateway;
-
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.dsl.IntegrationFlow;
 
 @EnableIntegration
 @IntegrationComponentScan
-public class SeparateFlowsExample {
+public class FilterExample {
     @MessagingGateway
     public interface NumbersClassifier {
-        @Gateway(requestChannel = "multipleOfThreeFlow.input")
-        void multipleofThree(Collection<Integer> numbers);
-
-        @Gateway(requestChannel = "remainderIsOneFlow.input")
-        void remainderIsOne(Collection<Integer> numbers);
-
-        @Gateway(requestChannel = "remainderIsTwoFlow.input")
-        void remainderIsTwo(Collection<Integer> numbers);
+        @Gateway(requestChannel = "classify.input")
+        void classify(Collection<Integer> numbers);
     }
-    
+
     @Bean
-    QueueChannel multipleOfThreeChannel() {
+    QueueChannel multipleofThreeChannel() {
         return new QueueChannel();
     }
- 
+
     @Bean
     QueueChannel remainderIsOneChannel() {
         return new QueueChannel();
     }
- 
+
     @Bean
     QueueChannel remainderIsTwoChannel() {
         return new QueueChannel();
     }
-
     boolean isMultipleOfThree(Integer number) {
         return number % 3 == 0;
     }
@@ -52,26 +43,15 @@ public class SeparateFlowsExample {
     boolean isRemainderTwo(Integer number) {
         return number % 3 == 2;
     }
-
     @Bean
-    public IntegrationFlow multipleOfThreeFlow() {
+    public IntegrationFlow classify() {
         return flow -> flow.split()
-            .<Integer> filter(this::isMultipleOfThree)
-            .channel("multipleOfThreeChannel");
-    }
-
-    @Bean
-    public IntegrationFlow remainderIsOneFlow() {
-        return flow -> flow.split()
-            .<Integer> filter(this::isRemainderOne)
-            .channel("remainderIsOneChannel");
-    }
-
-    @Bean
-    public IntegrationFlow remainderIsTwoFlow() {
-        return flow -> flow.split()
-            .<Integer> filter(this::isRemainderTwo)
-            .channel("remainderIsTwoChannel");
+            .<Integer> filter(this::isMultipleOfThree, notMultiple  -> notMultiple 
+                .discardFlow(oneflow  -> oneflow 
+                    .<Integer> filter(this::isRemainderOne, 
+                    twoflow  -> twoflow .discardChannel("remainderIsTwoChannel"))
+                .channel("remainderIsOneChannel")))
+            .channel("multipleofThreeChannel");
     }
 
 }
