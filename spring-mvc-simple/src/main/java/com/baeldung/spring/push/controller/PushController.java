@@ -1,4 +1,4 @@
-package com.baeldung.spring.controller.push;
+package com.baeldung.spring.push.controller;
 
 import javax.servlet.http.PushBuilder;
 
