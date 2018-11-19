@@ -18,42 +18,42 @@ import com.baeldung.subflows.publishsubscribechannel.PublishSubscibeChannelExamp
 @ContextConfiguration(classes = { PublishSubscibeChannelExample.class })
 public class PublishSubscribeChannelUnitTest {
     @Autowired
-    private QueueChannel multipleof3Channel;
+    private QueueChannel multipleofThreeChannel;
 
     @Autowired
-    private QueueChannel remainderIs1Channel;
+    private QueueChannel remainderIsOneChannel;
 
     @Autowired
-    private QueueChannel remainderIs2Channel;
+    private QueueChannel remainderIsTwoChannel;
 
     @Autowired
     private NumbersClassifier numbersClassifier;
 
     @Test
-    public void whenSendMessagesToFlow_thenOutputIsCorrect() {
+    public void whenSendMessagesToFlow_thenNumbersAreClassified() {
 
-        numbersClassifier.flow(Arrays.asList(1, 2, 3, 4, 5, 6));
-        // checking multipleof3Channel
-        Message<?> outMessage = multipleof3Channel.receive(0);
+        numbersClassifier.classify(Arrays.asList(1, 2, 3, 4, 5, 6));
+       
+        Message<?> outMessage = multipleofThreeChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 3);
 
-        outMessage = multipleof3Channel.receive(0);
+        outMessage = multipleofThreeChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 6);
-        // checking remainderIs1Channel
-        outMessage = remainderIs1Channel.receive(0);
+       
+        outMessage = remainderIsOneChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 1);
-        outMessage = remainderIs1Channel.receive(0);
+        outMessage = remainderIsOneChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 4);
-        // checking remainderIs2Channel
-        outMessage = remainderIs2Channel.receive(0);
+      
+        outMessage = remainderIsTwoChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 2);
 
-        outMessage = remainderIs2Channel.receive(0);
+        outMessage = remainderIsTwoChannel.receive(0);
 
         assertEquals(outMessage.getPayload(), 5);
 

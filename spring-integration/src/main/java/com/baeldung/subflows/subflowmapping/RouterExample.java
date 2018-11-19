@@ -14,32 +14,49 @@ import org.springframework.integration.dsl.IntegrationFlow;
 public class RouterExample {
     @MessagingGateway
     public interface NumbersClassifier {
-        @Gateway(requestChannel = "flow.input")
-        void flow(Collection<Integer> numbers);
+        @Gateway(requestChannel = "classify.input")
+        void classify(Collection<Integer> numbers);
     }
 
     @Bean
-    QueueChannel multipleof3Channel() {
+    QueueChannel multipleofThreeChannel() {
         return new QueueChannel();
     }
 
     @Bean
-    QueueChannel remainderIs1Channel() {
+    QueueChannel remainderIsOneChannel() {
         return new QueueChannel();
     }
 
     @Bean
-    QueueChannel remainderIs2Channel() {
+    QueueChannel remainderIsTwoChannel() {
         return new QueueChannel();
     }
 
+    boolean isMultipleOfThree(Integer number) {
+        return number % 3 == 0;
+    }
+
+    boolean isRemainderOne(Integer number) {
+        return number % 3 == 1;
+    }
+
+    boolean isRemainderTwo(Integer number) {
+        return number % 3 == 2;
+    }
+
     @Bean
-    public IntegrationFlow flow() {  
-        return f -> f.split()
-            .<Integer, Integer> route(p -> p % 3, m -> m.channelMapping(0, "multipleof3Channel")
-                .subFlowMapping(1, sf -> sf.channel("remainderIs1Channel"))
-                .subFlowMapping(2, sf -> sf.<Integer> handle((payload, headers) -> payload * 1)))
-            .channel("remainderIs2Channel");
+    public IntegrationFlow classify() {
+        return flow -> flow.split()
+            .<Integer, Integer> route(number -> number % 3, 
+                mapping -> mapping
+                  .channelMapping(0, "multipleofThreeChannel")
+                  .subFlowMapping(1, subflow -> subflow.channel("remainderIsOneChannel"))
+                  .subFlowMapping(2, subflow -> subflow
+                      .<Integer> handle((payload, headers) -> {
+                          // do extra work on the payload
+                         return payload;
+                      }))).channel("remainderIsTwoChannel");
     }
 
 }

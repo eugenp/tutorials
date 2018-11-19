@@ -15,32 +15,46 @@ import org.springframework.integration.dsl.IntegrationFlow;
 public class RouteToRecipientsExample {
     @MessagingGateway
     public interface NumbersClassifier {
-        @Gateway(requestChannel = "flow.input")
-        void flow(Collection<Integer> numbers);
+        @Gateway(requestChannel = "classify.input")
+        void classify(Collection<Integer> numbers);
     }
 
     @Bean
-    QueueChannel multipleof3Channel() {
+    QueueChannel multipleofThreeChannel() {
         return new QueueChannel();
     }
 
     @Bean
-    QueueChannel remainderIs1Channel() {
+    QueueChannel remainderIsOneChannel() {
         return new QueueChannel();
     }
 
     @Bean
-    QueueChannel remainderIs2Channel() {
+    QueueChannel remainderIsTwoChannel() {
         return new QueueChannel();
+    }
+    boolean isMultipleOfThree(Integer number) {
+        return number % 3 == 0;
+    }
+
+    boolean isRemainderOne(Integer number) {
+        return number % 3 == 1;
+    }
+
+    boolean isRemainderTwo(Integer number) {
+        return number % 3 == 2;
     }
 
     @Bean
-    public IntegrationFlow flow() {
+    public IntegrationFlow classify() {
         return flow -> flow.split()
-            .routeToRecipients(r -> r.<Integer> recipient("multipleof3Channel", p -> p % 3 == 0)// filter
-                .<Integer> recipient("remainderIs1Channel", p -> p % 3 == 1)
-                .recipientFlow(sf -> sf.<Integer> filter(p -> p % 3 == 2)
-                    .channel("remainderIs2Channel")));
+            .routeToRecipients(route -> route
+                .recipientFlow(subflow -> subflow
+                    .<Integer> filter(this::isMultipleOfThree)
+                    .channel("multipleofThreeChannel"))
+                .<Integer> recipient("remainderIsOneChannel",this::isRemainderOne)
+                .<Integer> recipient("remainderIsTwoChannel",this::isRemainderTwo));
     }
+   
 
 }
