@@ -3,13 +3,12 @@ package com.baeldung.jpa.stringcast;
 import javax.persistence.*;
 
 @SqlResultSetMapping(name = "textQueryMapping", classes = {
-  @ConstructorResult(targetClass = DummyEntity.class, columns = {
+  @ConstructorResult(targetClass = Message.class, columns = {
     @ColumnResult(name = "text")
   })
 })
 @Entity
-@Table(name = "dummy")
-public class DummyEntity {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +16,11 @@ public class DummyEntity {
 
     private String text;
 
-    public DummyEntity() {
+    public Message() {
 
     }
 
-    public DummyEntity(String text) {
+    public Message(String text) {
         this.text = text;
     }
 
