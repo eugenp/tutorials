@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class StringFromPrimitiveArrayTest {
+public class StringFromPrimitiveArrayUnitTest {
 
     private static final int[] PRIMITIVE_ARRAY = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
