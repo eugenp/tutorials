@@ -1,6 +1,5 @@
 package com.baeldung.regexp.optmization;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,13 +13,15 @@ import static org.junit.Assert.assertTrue;
 
 public class OptimizedMatcherUnitTest {
 
-    private long time;
-    private long mstimePreCompiled;
-    private long mstimeNotPreCompiled;
-
     private String action;
 
     private List<String> items;
+    
+    private class TimeWrapper {
+        private long time;
+        private long mstimePreCompiled;
+        private long mstimeNotPreCompiled;
+    }
 
     @Before
     public void setup() {
@@ -48,27 +49,27 @@ public class OptimizedMatcherUnitTest {
 
     @Test
     public void givenANotPreCompiledAndAPreCompiledPatternA_whenMatcheItems_thenPreCompiledFasterThanNotPreCompiled() {
-
-        testPatterns("A*");
-        assertTrue(mstimePreCompiled < mstimeNotPreCompiled);
+        TimeWrapper timeObj = new TimeWrapper();
+        testPatterns("A*", timeObj);
+        assertTrue(timeObj.mstimePreCompiled < timeObj.mstimeNotPreCompiled);
     }
 
     @Test
     public void givenANotPreCompiledAndAPreCompiledPatternABC_whenMatcheItems_thenPreCompiledFasterThanNotPreCompiled() {
-
-        testPatterns("A*B*C*");
-        assertTrue(mstimePreCompiled < mstimeNotPreCompiled);
+        TimeWrapper timeObj = new TimeWrapper();
+        testPatterns("A*B*C*", timeObj);
+        assertTrue(timeObj.mstimePreCompiled < timeObj.mstimeNotPreCompiled);
     }
 
     @Test
     public void givenANotPreCompiledAndAPreCompiledPatternECWF_whenMatcheItems_thenPreCompiledFasterThanNotPreCompiled() {
-
-        testPatterns("E*C*W*F*");
-        assertTrue(mstimePreCompiled < mstimeNotPreCompiled);
+        TimeWrapper timeObj = new TimeWrapper();
+        testPatterns("E*C*W*F*", timeObj);
+        assertTrue(timeObj.mstimePreCompiled < timeObj.mstimeNotPreCompiled);
     }
 
-    private void testPatterns(String regex) {
-        time = System.nanoTime();
+    private void testPatterns(String regex, TimeWrapper timeObj) {
+        timeObj.time = System.nanoTime();
         int matched = 0;
         int unmatched = 0;
 
@@ -83,10 +84,10 @@ public class OptimizedMatcherUnitTest {
 
         this.action = "uncompiled: regex=" + regex + " matched=" + matched + " unmatched=" + unmatched;
 
-        this.mstimeNotPreCompiled = (System.nanoTime() - time) / 1000000;
-        System.out.println(this.action + ": " + mstimeNotPreCompiled + "ms");
+        timeObj.mstimeNotPreCompiled = (System.nanoTime() - timeObj.time) / 1000000;
+        System.out.println(this.action + ": " + timeObj.mstimeNotPreCompiled + "ms");
 
-        time = System.nanoTime();
+        timeObj.time = System.nanoTime();
 
         Matcher matcher = Pattern.compile(regex).matcher("");
         matched = 0;
@@ -103,7 +104,7 @@ public class OptimizedMatcherUnitTest {
 
         this.action = "compiled: regex=" + regex + " matched=" + matched + " unmatched=" + unmatched;
 
-        this.mstimePreCompiled = (System.nanoTime() - time) / 1000000;
-        System.out.println(this.action + ": " + mstimePreCompiled + "ms");
+        timeObj.mstimePreCompiled = (System.nanoTime() - timeObj.time) / 1000000;
+        System.out.println(this.action + ": " + timeObj.mstimePreCompiled + "ms");
     }
 }
