@@ -14,45 +14,45 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class StringFromPrimitiveArrayTest {
 
-    private int[] testPrimitiveArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    private static final int[] PRIMITIVE_ARRAY = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    private char separatorChar = '-';
+    private static final char SEPARATOR_CHAR = '-';
 
-    private String separator = String.valueOf(separatorChar);
+    private static final String SEPARATOR = String.valueOf(SEPARATOR_CHAR);
 
-    private String expectedString = "1-2-3-4-5-6-7-8-9";
+    private static final String EXPECTED_STRING = "1-2-3-4-5-6-7-8-9";
 
     @Test
     public void givenPrimitiveArray_whenJoinBySeparator_thenReturnsString_through_Java8CollectorsJoining() {
-        assertThat(Arrays.stream(testPrimitiveArray)
+        assertThat(Arrays.stream(PRIMITIVE_ARRAY)
                 .mapToObj(String::valueOf)
-                .collect(Collectors.joining(separator))).isEqualTo(expectedString);
+                .collect(Collectors.joining(SEPARATOR))).isEqualTo(EXPECTED_STRING);
     }
 
     @Test
     public void givenPrimitiveArray_whenJoinBySeparator_thenReturnsString_through_Java8StringJoiner() {
-        StringJoiner stringJoiner = new StringJoiner(separator);
-        Arrays.stream(testPrimitiveArray)
+        StringJoiner stringJoiner = new StringJoiner(SEPARATOR);
+        Arrays.stream(PRIMITIVE_ARRAY)
                 .mapToObj(String::valueOf)
                 .forEach(stringJoiner::add);
 
-        assertThat(stringJoiner.toString()).isEqualTo(expectedString);
+        assertThat(stringJoiner.toString()).isEqualTo(EXPECTED_STRING);
     }
 
     @Test
     public void givenPrimitiveArray_whenJoinBySeparator_thenReturnsString_through_CommonsLang() {
-        assertThat(StringUtils.join(testPrimitiveArray, separatorChar)).isEqualTo(expectedString);
-        assertThat(StringUtils.join(ArrayUtils.toObject(testPrimitiveArray), separator)).isEqualTo(expectedString);
+        assertThat(StringUtils.join(PRIMITIVE_ARRAY, SEPARATOR_CHAR)).isEqualTo(EXPECTED_STRING);
+        assertThat(StringUtils.join(ArrayUtils.toObject(PRIMITIVE_ARRAY), SEPARATOR)).isEqualTo(EXPECTED_STRING);
     }
 
     @Test
     public void givenPrimitiveArray_whenJoinBySeparator_thenReturnsString_through_GuavaJoiner() {
-        assertThat(Joiner.on(separator).join(Ints.asList(testPrimitiveArray))).isEqualTo(expectedString);
+        assertThat(Joiner.on(SEPARATOR).join(Ints.asList(PRIMITIVE_ARRAY))).isEqualTo(EXPECTED_STRING);
     }
 
     @Test
     public void givenPrimitiveArray_whenJoinBySeparator_thenReturnsString_through_Java7StringBuilder() {
-        assertThat(joinWithStringBuilder(testPrimitiveArray, separator)).isEqualTo(expectedString);
+        assertThat(joinWithStringBuilder(PRIMITIVE_ARRAY, SEPARATOR)).isEqualTo(EXPECTED_STRING);
     }
 
     private String joinWithStringBuilder(int[] array, String separator) {
