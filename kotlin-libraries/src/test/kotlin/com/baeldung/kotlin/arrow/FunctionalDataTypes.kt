@@ -8,11 +8,11 @@ class FunctionalDataTypes {
 
     @Test
     fun whenIdCreated_thanValueIsPresent(){
-        val const = Id("foo")
-        val just = Id.just("foo");
+        val id = Id("foo")
+        val justId = Id.just("foo");
 
-        Assert.assertEquals("foo", const.extract())
-        Assert.assertEquals(just, const)
+        Assert.assertEquals("foo", id.extract())
+        Assert.assertEquals(justId, id)
     }
 
     fun length(s : String) : Int = s.length
@@ -82,18 +82,18 @@ class FunctionalDataTypes {
 
     @Test
     fun whenEitherCreated_thanOneValueIsPresent(){
-        val either1 : Either<String,Int> = Either.right(42)
-        val either2 : Either<String,Int> = Either.left("foo")
+        val rightOnly : Either<String,Int> = Either.right(42)
+        val leftOnly : Either<String,Int> = Either.left("foo")
 
-        Assert.assertTrue(either1.isRight())
-        Assert.assertTrue(either2.isLeft())
-        Assert.assertEquals(42, either1.getOrElse { -1 })
-        Assert.assertEquals(-1, either2.getOrElse { -1 })
+        Assert.assertTrue(rightOnly.isRight())
+        Assert.assertTrue(leftOnly.isLeft())
+        Assert.assertEquals(42, rightOnly.getOrElse { -1 })
+        Assert.assertEquals(-1, leftOnly.getOrElse { -1 })
 
-        Assert.assertEquals(0, either1.map { it % 2 }.getOrElse { -1 })
-        Assert.assertEquals(-1, either2.map { it % 2 }.getOrElse { -1 })
-        Assert.assertTrue(either1.flatMap { Either.Right(it % 2) }.isRight())
-        Assert.assertTrue(either2.flatMap { Either.Right(it % 2) }.isLeft())
+        Assert.assertEquals(0, rightOnly.map { it % 2 }.getOrElse { -1 })
+        Assert.assertEquals(-1, leftOnly.map { it % 2 }.getOrElse { -1 })
+        Assert.assertTrue(rightOnly.flatMap { Either.Right(it % 2) }.isRight())
+        Assert.assertTrue(leftOnly.flatMap { Either.Right(it % 2) }.isLeft())
     }
 
     @Test
