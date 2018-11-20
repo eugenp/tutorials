@@ -18,6 +18,11 @@
             <version>${commons-math3.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
             <version>${commons-codec.version}</version>
@@ -73,6 +78,7 @@
         <commons-math3.version>3.6.1</commons-math3.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
+         <guava.version>25.1-jre</guava.version>
     </properties>
 
 </project>

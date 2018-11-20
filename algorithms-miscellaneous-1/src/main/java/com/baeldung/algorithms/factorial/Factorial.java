@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.LongStream;
 
+import org.apache.commons.math3.util.CombinatoricsUtils;
+
+import com.google.common.math.BigIntegerMath;
+
 public class Factorial {
 
     public long factorialUsingLoop(long n) {
@@ -48,6 +52,14 @@ public class Factorial {
         for (int i = 1; i <= n; i++)
             result = result.multiply(BigInteger.valueOf(i));
         return result;
+    }
+
+    public long factorialUsingApacheCommons(int n) {
+        return CombinatoricsUtils.factorial(n);
+    }
+
+    public BigInteger factorialUsingGuava(int n) {
+        return BigIntegerMath.factorial(n);
     }
 
 }
