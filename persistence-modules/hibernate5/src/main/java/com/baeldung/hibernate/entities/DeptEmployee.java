@@ -2,6 +2,9 @@ package com.baeldung.hibernate.entities;
 
 import javax.persistence.*;
 
+@org.hibernate.annotations.NamedQueries(
+        @org.hibernate.annotations.NamedQuery(name = "findByEmployeeNumber", query = "from DeptEmployee where employeeNumber = :employeeNo")
+)
 @Entity
 public class DeptEmployee {
     @Id
