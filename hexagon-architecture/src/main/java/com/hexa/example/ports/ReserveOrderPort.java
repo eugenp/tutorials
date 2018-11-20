@@ -7,7 +7,7 @@ import com.hexa.example.domain.FoodType;
 
 public interface ReserveOrderPort {
 
-	public FoodType createItem(String item,List<String> toppings);
-	
-	public FoodOrderSummary processOrder(List<FoodType> foodItems)  throws Exception ;
+	public FoodType createItem(String item, List<String> toppings);
+
+	public FoodOrderSummary processOrder(List<FoodType> foodItems) throws Exception;
 }
