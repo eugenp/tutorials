@@ -41,12 +41,6 @@
             <artifactId>streamex</artifactId>
             <version>0.6.5</version>
         </dependency>
-        <dependency>
-            <groupId>nl.jqno.equalsverifier</groupId>
-            <artifactId>equalsverifier</artifactId>
-            <version>3.0.3</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <properties>

@@ -1,5 +1,11 @@
-package com.baeldung.map.hashcode;
+package com.baeldung.equalshashcode;
 
+/* (non-Javadoc)
+* This class overrides equals, but it doesn't override hashCode.
+*
+* To see which problems this leads to:
+* TeamUnitTest.givenMapKeyWithoutHashCode_whenSearched_thenReturnsWrongValue
+*/
 class WrongTeam {
 
     String city;

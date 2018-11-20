@@ -1,4 +1,4 @@
-package com.baeldung.map.hashcode;
+package com.baeldung.equalshashcode;
 
 class Money {
 
@@ -17,15 +17,19 @@ class Money {
         if (!(o instanceof Money))
             return false;
         Money other = (Money)o;
+        boolean currencyCodeEquals = (this.currencyCode == null && other.currencyCode == null)
+          || (this.currencyCode != null && this.currencyCode.equals(other.currencyCode));
         return this.amount == other.amount
-          && this.currencyCode == other.currencyCode;
+          && currencyCodeEquals;
     }
 
     @Override
     public int hashCode() {
         int result = 17;
         result = 31 * result + amount;
-        result = 31 * result + currencyCode.hashCode();
+        if (currencyCode != null) {
+            result = 31 * result + currencyCode.hashCode();
+        }
         return result;
     }
 

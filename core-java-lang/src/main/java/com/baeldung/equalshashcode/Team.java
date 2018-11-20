@@ -1,4 +1,4 @@
-package com.baeldung.map.hashcode;
+package com.baeldung.equalshashcode;
 
 class Team {
 

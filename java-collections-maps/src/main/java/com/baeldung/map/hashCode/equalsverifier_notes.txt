@@ -1,1 +1,0 @@
- Non-nullity: hashCode throws NullPointerException on field city.
