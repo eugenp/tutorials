@@ -9,6 +9,6 @@ public class ExampleEventSource {
     Event<ExampleEvent> exampleEvent;
     
     public void fireEvent() {
-        simpleEvent.fireAsync(new ExampleEvent("Welcome to Baeldung!"));
+        exampleEvent.fireAsync(new ExampleEvent("Welcome to Baeldung!"));
     }   
 }
