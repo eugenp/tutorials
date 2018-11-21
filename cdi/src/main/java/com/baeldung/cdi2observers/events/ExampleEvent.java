@@ -1,10 +1,10 @@
 package com.baeldung.cdi.cdi2observers.events;
 
-public class SimpleEvent {
+public class ExampleEvent {
     
    private final String eventMessage;
 
-    public SimpleEvent(String eventMessage) {
+    public ExampleEvent(String eventMessage) {
         this.eventMessage = eventMessage;
     }
     
