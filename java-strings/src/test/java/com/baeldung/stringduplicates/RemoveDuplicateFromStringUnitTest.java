@@ -20,6 +20,7 @@ public class RemoveDuplicateFromStringUnitTest {
     public void whenUsingCharArray_DuplicatesShouldBeRemovedWithoutKeepingStringOrder() {
         String str1 = removeDuplicateFromString.removeDuplicatesUsingCharArray(STR1);
         String str2 = removeDuplicateFromString.removeDuplicatesUsingCharArray(STR2);
+        Assert.assertEquals("", "");
         Assert.assertEquals("ecar", str1);
         Assert.assertEquals("J2e poraming", str2);
     }
@@ -28,6 +29,7 @@ public class RemoveDuplicateFromStringUnitTest {
     public void whenUsingLinkedHashSet_DuplicatesShouldBeRemovedAndItKeepStringOrder() {
         String str1 = removeDuplicateFromString.removeDuplicatesUsinglinkedHashSet(STR1);
         String str2 = removeDuplicateFromString.removeDuplicatesUsinglinkedHashSet(STR2);
+        Assert.assertEquals("", "");
         Assert.assertEquals("race", str1);
         Assert.assertEquals("J2e progamin", str2);
     }
@@ -36,6 +38,7 @@ public class RemoveDuplicateFromStringUnitTest {
     public void whenUsingSorting_DuplicatesShouldBeRemovedWithoutKeepingStringOrder() {
         String str1 = removeDuplicateFromString.removeDuplicatesUsingSorting(STR1);
         String str2 = removeDuplicateFromString.removeDuplicatesUsingSorting(STR2);
+        Assert.assertEquals("", "");
         Assert.assertEquals("acer", str1);
         Assert.assertEquals(" 2Jaegimnopr", str2);
     }
@@ -44,6 +47,7 @@ public class RemoveDuplicateFromStringUnitTest {
     public void whenUsingHashSet_DuplicatesShouldBeRemovedWithoutKeepingStringOrder() {
         String str1 = removeDuplicateFromString.removeDuplicatesUsingHashSet(STR1);
         String str2 = removeDuplicateFromString.removeDuplicatesUsingHashSet(STR2);
+        Assert.assertEquals("", "");
         Assert.assertEquals("arce", str1);
         Assert.assertEquals(" pa2regiJmno", str2);
     }
@@ -52,7 +56,17 @@ public class RemoveDuplicateFromStringUnitTest {
     public void whenUsingIndexOf_DuplicatesShouldBeRemovedWithoutKeepingStringOrder() {
         String str1 = removeDuplicateFromString.removeDuplicatesUsingIndexOf(STR1);
         String str2 = removeDuplicateFromString.removeDuplicatesUsingIndexOf(STR2);
+        Assert.assertEquals("", "");
         Assert.assertEquals("ecar", str1);
         Assert.assertEquals("J2e poraming", str2);
+    }
+
+    @Test
+    public void whenUsingJava8_DuplicatesShouldBeRemovedAndItKeepStringOrder() {
+        String str1 = removeDuplicateFromString.removeDuplicatesUsingDistinct(STR1);
+        String str2 = removeDuplicateFromString.removeDuplicatesUsingDistinct(STR2);
+        Assert.assertEquals("", "");
+        Assert.assertEquals("race", str1);
+        Assert.assertEquals("J2e progamin", str2);
     }
 }

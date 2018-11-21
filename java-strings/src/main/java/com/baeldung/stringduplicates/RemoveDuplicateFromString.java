@@ -90,6 +90,13 @@ public class RemoveDuplicateFromString {
         return sb.toString();
     }
 
+    String removeDuplicatesUsingDistinct(String str) {
+        StringBuilder sb = new StringBuilder();
+        str.chars().distinct().forEach(c -> sb.append((char) c));
+        return sb.toString();
+    }
+
+
 }
 
 
