@@ -36,11 +36,15 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-data</artifactId>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
@@ -216,7 +220,7 @@
 
 
     <properties>
-        <start-class>org.baeldung.Application</start-class>
+        <start-class>org.baeldung.custom.Application</start-class>
         <!--If you want to run the example with the voters comment the tag 
             above and uncomment the one below -->
         <!--<start-class>org.baeldung.voter.VoterApplication</start-class> -->
@@ -225,12 +229,16 @@
         <!--<start-class>org.baeldung.multiplelogin.MultipleLoginApplication</start-class> -->
         <!--If you want to run the example with the multiple http elements, 
             comment the tag above and uncomment the one below -->
-        <!--<start-class>org.baeldung.multipleentrypoints.MultipleEntryPointsApplication</start-class> -->
+        <!--<start-class>org.baeldung.multipleentrypoints.MultipleEntryPointsApplication</start-class>-->
+        <!--If you want to run the example with the Https enabled endpoints,
+            comment the tag above and uncomment the one below -->
+       <!-- <start-class>org.baeldung.ssl.HttpsEnabledApplication</start-class> -->
 
         <taglibs-standard.version>1.1.2</taglibs-standard.version>
         <jstl.version>1.2</jstl.version>
         <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
         <ehcache-core.version>2.6.11</ehcache-core.version>
+        <java.version>1.8</java.version>
     </properties>
 
 </project>

@@ -2,22 +2,32 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.singletonsession</groupId>
-    <artifactId>singleton-ejb-bean</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <name>EJB Singleton Session Bean</name>
+    <artifactId>ejb-beans</artifactId>
+    <name>spring-ejb-beans</name>
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
-        <artifactId>ejb-for-spring</artifactId>
-        <version>1.0.1</version>
+        <artifactId>spring-ejb</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.arquillian</groupId>
+                <artifactId>arquillian-bom</artifactId>
+                <version>${arquillian-bom.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/javax/javaee-api -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>${javaee.version}</version>
             <scope>provided</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.openejb/tomee-embedded -->
@@ -26,10 +36,49 @@
             <artifactId>tomee-embedded</artifactId>
             <version>${tomee-embedded.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+    <profiles>
+        <profile>
+            <id>arquillian-glassfish-embedded</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-glassfish-embedded-3.1</artifactId>
+                    <version>${arquillian-glassfish-embedded-3.1.version}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.main.extras</groupId>
+                    <artifactId>glassfish-embedded-all</artifactId>
+                    <version>${glassfish-embedded-all.version}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
+        <arquillian-bom.version>1.1.13.Final</arquillian-bom.version>
         <tomee-embedded.version>1.7.5</tomee-embedded.version>
+        <glassfish-embedded-all.version>3.1.2</glassfish-embedded-all.version>
+        <arquillian-glassfish-embedded-3.1.version>1.0.0.CR4</arquillian-glassfish-embedded-3.1.version>
     </properties>
 
 </project>

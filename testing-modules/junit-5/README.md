@@ -1,7 +1,6 @@
 ### Relevant Articles:
 - [The Basics of JUnit 5 – A Preview](http://www.baeldung.com/junit-5-preview)
 - [A Guide to JUnit 5](http://www.baeldung.com/junit-5)
-- [Guide to Dynamic Tests in Junit 5](http://www.baeldung.com/junit5-dynamic-tests)
 - [A Guide to @RepeatedTest in Junit 5](http://www.baeldung.com/junit-5-repeated-test)
 - [Guide to Dynamic Tests in Junit 5](http://www.baeldung.com/junit5-dynamic-tests)
 - [A Guied to JUnit 5 Extensions](http://www.baeldung.com/junit-5-extensions)
@@ -14,4 +13,6 @@
 - [Migrating from JUnit 4 to JUnit 5](http://www.baeldung.com/junit-5-migration)
 - [JUnit5 Programmatic Extension Registration with @RegisterExtension](http://www.baeldung.com/junit-5-registerextension-annotation)
 - [The Order of Tests in JUnit](http://www.baeldung.com/junit-5-test-order)
-
+- [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)
+- [Testing an Abstract Class With JUnit](https://www.baeldung.com/junit-test-abstract-class)
+- [A Quick JUnit vs TestNG Comparison](http://www.baeldung.com/junit-vs-testng)
