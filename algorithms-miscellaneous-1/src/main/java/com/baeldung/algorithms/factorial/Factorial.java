@@ -11,17 +11,26 @@ import com.google.common.math.BigIntegerMath;
 
 public class Factorial {
 
-    public long factorialUsingLoop(long n) {
-        long factorial = 1;
+    public long factorialUsingForLoop(long n) {
+        long fact = 1;
         for (int i = 1; i <= n; i++) {
-            factorial = factorial * i;
+            fact = fact * i;
         }
-        return factorial;
+        return fact;
+    }
+
+    public long factorialUsingWhileLoop(long n) {
+        long fact = 1;
+        while (n >= 1) {
+            fact = fact * n;
+            n--;
+        }
+        return fact;
     }
 
     public long factorialUsingStreams(long n) {
         return LongStream.rangeClosed(1, n)
-            .reduce(1, (long a, long b) -> a * b);
+            .reduce(1, (long x, long y) -> x * y);
     }
 
     public int factorialUsingRecursion(int n) {

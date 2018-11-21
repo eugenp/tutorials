@@ -17,9 +17,15 @@ public class FactorialTest {
     }
 
     @Test
-    public void givenNumber_whenCallingFactorialUsingLoop_calcualeFactorial() {
+    public void givenNumber_whenCallingFactorialUsingForLoop_calcualeFactorial() {
         int n = 5;
-        assertThat(factorial.factorialUsingLoop(n)).isEqualTo(120);
+        assertThat(factorial.factorialUsingForLoop(n)).isEqualTo(120);
+    }
+
+    @Test
+    public void givenNumber_whenCallingFactorialUsingWhileLoop_calcualeFactorial() {
+        int n = 5;
+        assertThat(factorial.factorialUsingWhileLoop(n)).isEqualTo(120);
     }
 
     @Test
@@ -40,7 +46,6 @@ public class FactorialTest {
         assertThat(factorial.factorialUsingMemoize(n)).isEqualTo(120);
         n = 6;
         assertThat(factorial.factorialUsingMemoize(n)).isEqualTo(720);
-
     }
 
     @Test
