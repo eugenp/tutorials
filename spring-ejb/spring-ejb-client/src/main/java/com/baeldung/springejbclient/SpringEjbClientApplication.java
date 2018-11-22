@@ -37,7 +37,7 @@ public class SpringEjbClientApplication {
     
     @SuppressWarnings("rawtypes")
     private String getFullName(Class classType) {
-        String moduleName = "ejb-remote-for-spring/";
+        String moduleName = "spring-ejb-remote/";
         String beanName = classType.getSimpleName();
         String viewClassName = classType.getName();
         
