@@ -1089,7 +1089,6 @@
                 <module>persistence-modules/solr</module>
                 <module>persistence-modules/spring-data-dynamodb</module>
                 <module>persistence-modules/spring-data-keyvalue</module>
-                <module>persistence-modules/spring-data-mongodb</module>
                 <module>persistence-modules/spring-data-neo4j</module>
                 <module>persistence-modules/spring-data-solr</module>
                 <module>persistence-modules/spring-hibernate-5</module>
@@ -1110,6 +1109,11 @@
                 <module>rxjava</module>
                 <module>rxjava-2</module>
                 <module>rabbitmq</module>
+                
+                <!-- very long running - temporarily disabled -->
+                <!-- 
+                <module>persistence-modules/spring-data-mongodb</module>
+                -->
                 
             </modules>
 
@@ -1146,7 +1150,6 @@
                 <module>parent-kotlin</module>
                 
                 <module>spring-4</module>
-                <module>spring-5-data-reactive</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-security</module>
                 <module>spring-5-reactive-client</module>
@@ -1156,7 +1159,6 @@
                 <module>spring-akka</module>
                 <module>spring-amqp</module>
                 <module>spring-all</module>
-                <module>spring-amqp-simple</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
                 <module>spring-bom</module>
@@ -1254,6 +1256,12 @@
                 <module>spring-security-thymeleaf</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-webflux-amqp</module>
+                
+                <!-- very long running - temporarily disabled -->
+                <!-- 
+                <module>spring-amqp-simple</module>
+                <module>spring-5-data-reactive</module>
+                -->
                 
             </modules>
 
