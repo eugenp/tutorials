@@ -1384,37 +1384,6 @@
                 <module>testing-modules/selenium-junit-testng</module>
                 <module>persistence-modules/solr</module>
                 <module>spark-java</module>
-                <module>spring-4</module>
-                <module>spring-5-data-reactive</module>
-                <module>spring-5-reactive</module>
-                <module>spring-5-reactive-security</module>
-                <module>spring-5-reactive-client</module>
-                <module>spring-5-mvc</module>
-                <module>spring-5-security</module>
-                <module>spring-activiti</module>
-                <module>spring-akka</module>
-                <module>spring-amqp</module>
-                <module>spring-all</module>
-                <module>spring-amqp-simple</module>
-                <module>spring-apache-camel</module>
-                <module>spring-batch</module>
-                <module>spring-bom</module>
-                <module>spring-boot-keycloak</module>
-                <module>spring-boot-bootstrap</module>
-                <module>spring-boot-admin</module>
-                <module>spring-boot-camel</module>
-                <module>persistence-modules/spring-boot-persistence</module>
-                <module>spring-boot-security</module>
-                <module>spring-boot-mvc</module>
-                <module>spring-boot-logging-log4j2</module>
-                <module>spring-boot-disable-console-logging</module>
-                <module>spring-cloud-data-flow</module>
-                <module>spring-cloud</module>
-                <module>spring-cloud-bus</module>
-                <module>spring-core</module>
-                <module>spring-cucumber</module>
-                <module>spring-ejb</module>
-                <module>spring-aop</module>
                 
             </modules>
 
@@ -1449,6 +1418,38 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
+                
+                <module>spring-4</module>
+                <module>spring-5-data-reactive</module>
+                <module>spring-5-reactive</module>
+                <module>spring-5-reactive-security</module>
+                <module>spring-5-reactive-client</module>
+                <module>spring-5-mvc</module>
+                <module>spring-5-security</module>
+                <module>spring-activiti</module>
+                <module>spring-akka</module>
+                <module>spring-amqp</module>
+                <module>spring-all</module>
+                <module>spring-amqp-simple</module>
+                <module>spring-apache-camel</module>
+                <module>spring-batch</module>
+                <module>spring-bom</module>
+                <module>spring-boot-keycloak</module>
+                <module>spring-boot-bootstrap</module>
+                <module>spring-boot-admin</module>
+                <module>spring-boot-camel</module>
+                <module>persistence-modules/spring-boot-persistence</module>
+                <module>spring-boot-security</module>
+                <module>spring-boot-mvc</module>
+                <module>spring-boot-logging-log4j2</module>
+                <module>spring-boot-disable-console-logging</module>
+                <module>spring-cloud-data-flow</module>
+                <module>spring-cloud</module>
+                <module>spring-cloud-bus</module>
+                <module>spring-core</module>
+                <module>spring-cucumber</module>
+                <module>spring-ejb</module>
+                <module>spring-aop</module>
                 
                 <module>persistence-modules/spring-data-dynamodb</module>
                 <module>persistence-modules/spring-data-keyvalue</module>
@@ -1531,6 +1532,39 @@
                 <module>testing-modules/testing</module>
                 <module>testing-modules/testng</module>
                 <module>video-tutorials</module>
+            </modules>
+
+        </profile>
+
+        <profile>
+            <id>integration-lite-third</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                            <includes>
+                                <include>**/*IntegrationTest.java</include>
+                                <include>**/*IntTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <modules>
+                <module>parent-boot-1</module>
+                <module>parent-boot-2</module>
+                <module>parent-spring-4</module>
+                <module>parent-spring-5</module>
+                <module>parent-java</module>
+                <module>parent-kotlin</module>
 
                 <module>xmlunit-2</module>
                 <module>struts-2</module>
