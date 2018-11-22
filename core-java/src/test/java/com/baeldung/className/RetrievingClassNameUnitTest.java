@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class RetrievingClassNameTest {
+public class RetrievingClassNameUnitTest {
 
     // Retrieving Simple Name
     @Test
@@ -81,16 +81,16 @@ public class RetrievingClassNameTest {
     // - Anonymous Classes
     @Test
     public void givenAnonymousClass_whenGetName_thenCallingClassCanonicalNameWithDollarSeparatorAndCountNumber() {
-        // These are the second and third appearences of an anonymous class in RetrievingClassNameTest, hence $2 and $3 expectations
-        assertEquals("com.baeldung.className.RetrievingClassNameTest$2", new RetrievingClassName() {}.getClass().getName());
-        assertEquals("com.baeldung.className.RetrievingClassNameTest$3", new RetrievingClassName() {}.getClass().getName());
+        // These are the second and third appearences of an anonymous class in RetrievingClassNameUnitTest, hence $2 and $3 expectations
+        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$2", new RetrievingClassName() {}.getClass().getName());
+        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$3", new RetrievingClassName() {}.getClass().getName());
     }
 
     @Test
     public void givenAnonymousClass_whenGetTypeName_thenCallingClassCanonicalNameWithDollarSeparatorAndCountNumber() {
-        // These are the fourth and fifth appearences of an anonymous class in RetrievingClassNameTest, hence $4 and $5 expectations
-        assertEquals("com.baeldung.className.RetrievingClassNameTest$4", new RetrievingClassName() {}.getClass().getTypeName());
-        assertEquals("com.baeldung.className.RetrievingClassNameTest$5", new RetrievingClassName() {}.getClass().getTypeName());
+        // These are the fourth and fifth appearences of an anonymous class in RetrievingClassNameUnitTest, hence $4 and $5 expectations
+        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$4", new RetrievingClassName() {}.getClass().getTypeName());
+        assertEquals("com.baeldung.className.RetrievingClassNameUnitTest$5", new RetrievingClassName() {}.getClass().getTypeName());
     }
 
     @Test
