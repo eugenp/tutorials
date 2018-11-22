@@ -740,6 +740,46 @@
 
         </profile>
         
+        <profile>
+            <id>default-third</id>
+            <build>
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <forkCount>3</forkCount>
+                            <reuseForks>true</reuseForks>
+                            <excludes>
+                                <exclude>**/*IntegrationTest.java</exclude>
+                                <exclude>**/*IntTest.java</exclude>
+                                <exclude>**/*LongRunningUnitTest.java</exclude>
+                                <exclude>**/*ManualTest.java</exclude>
+                                <exclude>**/*JdbcTest.java</exclude>
+                                <exclude>**/*LiveTest.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+
+            <modules>
+                <module>parent-boot-1</module>
+                <module>parent-boot-2</module>
+                <module>parent-spring-4</module>
+                <module>parent-spring-5</module>
+                <module>parent-java</module>
+                <module>parent-kotlin</module>
+                
+                <module>testing-modules/gatling</module>
+                <module>geotools</module>
+            </modules>
+
+        </profile>
+        
 		<profile>
 			<id>spring-context</id>
 			<build>
