@@ -1,3 +1,5 @@
+import java.math.BigDecimal
+
 enum class Currency {
     DOLLARS, EURO
 }
