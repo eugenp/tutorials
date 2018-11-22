@@ -35,3 +35,4 @@
 - [String Not Empty Test Assertions in Java](https://www.baeldung.com/java-assert-string-not-empty)
 - [String Performance Hints](https://www.baeldung.com/java-string-performance)
 - [Using indexOf to Find All Occurrences of a Word in a String](https://www.baeldung.com/java-indexOf-find-string-occurrences)
+- [Convert String to Byte Array and Reverse in Java](https://www.baeldung.com/java-string-to-byte-array)
