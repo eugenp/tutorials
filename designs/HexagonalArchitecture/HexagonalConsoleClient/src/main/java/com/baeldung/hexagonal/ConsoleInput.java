@@ -21,8 +21,8 @@ public class ConsoleInput implements Input {
             employee = new Employee(lastName, firstName);
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
-        	scanner.close();
+        } finally {
+            scanner.close();
         }
         return employee;
     }
