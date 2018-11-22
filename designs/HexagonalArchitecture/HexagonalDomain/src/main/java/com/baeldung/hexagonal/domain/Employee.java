@@ -15,10 +15,10 @@ public class Employee implements Serializable {
     }
 
     public Employee() {
-		super();
-	}
+        super();
+    }
 
-	public String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
