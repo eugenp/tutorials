@@ -7,17 +7,17 @@ import com.baeldung.hexagonal.domain.Employee;
 import com.baeldung.hexagonal.domain.Input;
 
 @Component
-@Scope(value="prototype")
+@Scope(value = "prototype")
 public class RestInput implements Input {
 
-	private Employee employee; 
-	
-	public RestInput(Employee employee) {
-		this.employee = employee;
-	}
+    private Employee employee;
 
-	public Employee createEmployee() {
-		return employee;
-	}
+    public RestInput(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Employee createEmployee() {
+        return employee;
+    }
 
 }

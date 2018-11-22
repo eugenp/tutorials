@@ -16,16 +16,16 @@ import com.baeldung.hexagonal.domain.Input;
 
 @RestController
 public class HexagonalExampleRestController {
-	
-	@RequestMapping(path = "/register",method=RequestMethod.POST)
-	@Consumes(MediaType.APPLICATION_JSON_VALUE)
-	@Produces(MediaType.APPLICATION_JSON_VALUE)
-	public Employee registerEmployee(@RequestBody Employee employee) {
-		Input restInput = new RestInput(employee);
-		EmployeeRepository repository = new InMemoryEmployeeRepository();
-		EmployeeService employeeService = new EmployeeService(restInput,repository);
-		Employee createdEmployee = employeeService.registerEmployee();
-		return createdEmployee;
-	}
-	
+
+    @RequestMapping(path = "/register", method = RequestMethod.POST)
+    @Consumes(MediaType.APPLICATION_JSON_VALUE)
+    @Produces(MediaType.APPLICATION_JSON_VALUE)
+    public Employee registerEmployee(@RequestBody Employee employee) {
+        Input restInput = new RestInput(employee);
+        EmployeeRepository repository = new InMemoryEmployeeRepository();
+        EmployeeService employeeService = new EmployeeService(restInput, repository);
+        Employee createdEmployee = employeeService.registerEmployee();
+        return createdEmployee;
+    }
+
 }
