@@ -85,4 +85,6 @@
 - [A Guide to SimpleDateFormat](https://www.baeldung.com/java-simple-date-format)
 - [SSL Handshake Failures](https://www.baeldung.com/java-ssl-handshake-failures)
 - [Implementing a Binary Tree in Java](https://www.baeldung.com/java-binary-tree)
+- [Changing the Order in a Sum Operation Can Produce Different Results?](https://www.baeldung.com/java-floating-point-sum-order)
+- [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
 - [Abstract Classes in Java](https://www.baeldung.com/java-abstract-class)
