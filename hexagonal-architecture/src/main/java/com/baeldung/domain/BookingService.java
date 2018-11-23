@@ -3,7 +3,9 @@ package com.baeldung.domain;
 import com.baeldung.ports.BookingRepository;
 import com.baeldung.ports.BookingRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BookingService implements com.baeldung.ports.BookingService {
 
     @Autowired
