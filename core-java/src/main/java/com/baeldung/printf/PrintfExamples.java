@@ -1,13 +1,35 @@
 package com.baeldung.printf;
 
 import java.util.Date;
+import java.util.Locale;
 
 public class PrintfExamples {
 
     public static void main(String[] args) {
 
+        printfChar();
+        printfNumber();
         printfDateTime();
-        //printfBoolean();
+        printfBoolean();
+
+        System.out.printf("baeldung%nline%nterminator");
+    }
+
+    private static void printfChar() {
+        System.out.printf("%c%n", 's');
+        System.out.printf("%C%n", 's');
+    }
+
+    private static void printfNumber() {
+
+        System.out.printf("simple integer: %d%n", 10000L);
+
+        System.out.printf(Locale.US, "%,d %n", 10000);
+        System.out.printf(Locale.ITALY, "%,d %n", 10000);
+
+        System.out.printf("%f%n", 5.1473);
+        System.out.printf("<%5.2f>%n", 5.1473);
+        System.out.printf("<%5.2e>%n", 5.1473);
     }
 
     private static void printfBoolean() {
