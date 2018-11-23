@@ -7,12 +7,23 @@ public class PrintfExamples {
 
     public static void main(String[] args) {
 
+        printfNewLine();
         printfChar();
+        printfString();
         printfNumber();
         printfDateTime();
         printfBoolean();
+    }
 
+    private static void printfNewLine() {
         System.out.printf("baeldung%nline%nterminator");
+    }
+
+    private static void printfString() {
+        System.out.printf("'%s' %n", "baeldung");
+        System.out.printf("'%S' %n", "baeldung");
+        System.out.printf("'%15s' %n", "baeldung");
+        System.out.printf("'%-10s' %n", "baeldung");
     }
 
     private static void printfChar() {
@@ -21,7 +32,6 @@ public class PrintfExamples {
     }
 
     private static void printfNumber() {
-
         System.out.printf("simple integer: %d%n", 10000L);
 
         System.out.printf(Locale.US, "%,d %n", 10000);
@@ -34,8 +44,9 @@ public class PrintfExamples {
 
     private static void printfBoolean() {
         System.out.printf("%b%n", null);
-        System.out.printf("%b%n", false);
         System.out.printf("%B%n", false);
+        System.out.printf("%B%n", 5.3);
+        System.out.printf("%b%n", "random text");
     }
 
     private static void printfDateTime() {
