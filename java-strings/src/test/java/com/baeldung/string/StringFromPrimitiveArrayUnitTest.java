@@ -38,7 +38,7 @@ public class StringFromPrimitiveArrayUnitTest {
 
         assertThat(CharBuffer.wrap(charArray).chars()
           .mapToObj(intChar -> String.valueOf((char) intChar))
-          .collect(Collectors.joining("-")))
+          .collect(Collectors.joining(separator)))
           .isEqualTo(expectedCharString);
     }
 
