@@ -44,16 +44,16 @@ public class RemoveDuplicateFromString {
     }
 
     String removeDuplicatesUsingSorting(String str) {
-
-        char[] chars = str.toCharArray();
-
-        Arrays.sort(chars);
-
         StringBuilder sb = new StringBuilder();
-        sb.append(chars[0]);
-        for (int i = 1; i < chars.length; i++) {
-            if (chars[i] != chars[i - 1]) {
-                sb.append(chars[i]);
+        if(!str.isEmpty()) {
+            char[] chars = str.toCharArray();
+            Arrays.sort(chars);
+
+            sb.append(chars[0]);
+            for (int i = 1; i < chars.length; i++) {
+                if (chars[i] != chars[i - 1]) {
+                    sb.append(chars[i]);
+                }
             }
         }
 
