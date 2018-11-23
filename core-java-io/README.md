@@ -31,4 +31,7 @@
 - [Create a Symbolic Link with Java](http://www.baeldung.com/java-symlink)
 - [Quick Use of FilenameFilter](http://www.baeldung.com/java-filename-filter)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
-- [ Read a File into an ArrayList](https://www.baeldung.com/java-file-to-arraylist)
+- [Read a File into an ArrayList](https://www.baeldung.com/java-file-to-arraylist)
+- [Guide to Java OutputStream](https://www.baeldung.com/java-outputstream)
+- [Reading a CSV File into an Array](https://www.baeldung.com/java-csv-file-array)
+- [Guide to BufferedReader](https://www.baeldung.com/java-buffered-reader)
