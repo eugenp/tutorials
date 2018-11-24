@@ -1,8 +1,6 @@
 package com.baeldung.algorithms.factorial;
 
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.stream.LongStream;
 
 import org.apache.commons.math3.util.CombinatoricsUtils;
@@ -13,17 +11,8 @@ public class Factorial {
 
     public long factorialUsingForLoop(long n) {
         long fact = 1;
-        for (int i = 1; i <= n; i++) {
+        for (int i = 2; i <= n; i++) {
             fact = fact * i;
-        }
-        return fact;
-    }
-
-    public long factorialUsingWhileLoop(long n) {
-        long fact = 1;
-        while (n >= 1) {
-            fact = fact * n;
-            n--;
         }
         return fact;
     }
@@ -33,32 +22,32 @@ public class Factorial {
             .reduce(1, (long x, long y) -> x * y);
     }
 
-    public int factorialUsingRecursion(int n) {
-        if (n == 1) {
+    public long factorialUsingRecursion(long n) {
+        if (n < 2) {
             return 1;
         }
         return n * factorialUsingRecursion(n - 1);
     }
 
-    private Map<Long, Long> factorials = new HashMap<Long, Long>();
+    private Long[] factorials = new Long[20];
 
-    public long factorialUsingMemoize(long n) {
+    public long factorialUsingMemoize(int n) {
 
-        if (factorials.containsKey(n)) {
-            return factorials.get(n);
+        if (factorials[n] != null) {
+            return factorials[n];
         }
 
-        if (n == 1) {
+        if (n < 2) {
             return 1;
         }
         long nthValue = n * factorialUsingMemoize(n - 1);
-        factorials.put(n, nthValue);
+        factorials[n] = nthValue;
         return nthValue;
     }
 
     public BigInteger factorialHavingLargeResult(long n) {
         BigInteger result = BigInteger.ONE;
-        for (int i = 1; i <= n; i++)
+        for (int i = 2; i <= n; i++)
             result = result.multiply(BigInteger.valueOf(i));
         return result;
     }

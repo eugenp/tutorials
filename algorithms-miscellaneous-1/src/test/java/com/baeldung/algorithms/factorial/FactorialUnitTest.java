@@ -23,12 +23,6 @@ public class FactorialUnitTest {
     }
 
     @Test
-    public void givenNumber_whenCallingFactorialUsingWhileLoop_calcualeFactorial() {
-        int n = 5;
-        assertThat(factorial.factorialUsingWhileLoop(n)).isEqualTo(120);
-    }
-
-    @Test
     public void givenNumber_whenCallingFactorialUsingStreams_calcualeFactorial() {
         int n = 5;
         assertThat(factorial.factorialUsingStreams(n)).isEqualTo(120);
