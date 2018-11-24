@@ -67,6 +67,7 @@
 	
     <properties>
         <oauth-auto.version>2.0.1.RELEASE</oauth-auto.version>
+        <start-class>com.baeldung.oauth2.SpringOAuthApplication</start-class>
     </properties>
 
 </project>
