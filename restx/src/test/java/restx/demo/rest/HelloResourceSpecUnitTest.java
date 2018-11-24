@@ -1,13 +1,13 @@
 package restx.demo.rest;
 
-import restx.demo.AppServer;
 import org.junit.runner.RunWith;
-import restx.tests.RestxSpecTestsRunner;
+
 import restx.tests.FindSpecsIn;
+import restx.tests.RestxSpecTestsRunner;
 
 @RunWith(RestxSpecTestsRunner.class)
 @FindSpecsIn("specs/hello")
-public class HelloResourceSpecTest {
+public class HelloResourceSpecUnitTest {
 
     /**
      * Useless, thanks to both @RunWith(RestxSpecTestsRunner.class) & @FindSpecsIn()
