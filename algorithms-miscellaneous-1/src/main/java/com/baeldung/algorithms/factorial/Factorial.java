@@ -9,7 +9,7 @@ import com.google.common.math.BigIntegerMath;
 
 public class Factorial {
 
-    public long factorialUsingForLoop(long n) {
+    public long factorialUsingForLoop(int n) {
         long fact = 1;
         for (int i = 2; i <= n; i++) {
             fact = fact * i;
@@ -17,12 +17,12 @@ public class Factorial {
         return fact;
     }
 
-    public long factorialUsingStreams(long n) {
+    public long factorialUsingStreams(int n) {
         return LongStream.rangeClosed(1, n)
             .reduce(1, (long x, long y) -> x * y);
     }
 
-    public long factorialUsingRecursion(long n) {
+    public long factorialUsingRecursion(int n) {
         if (n < 2) {
             return 1;
         }
@@ -45,7 +45,7 @@ public class Factorial {
         return nthValue;
     }
 
-    public BigInteger factorialHavingLargeResult(long n) {
+    public BigInteger factorialHavingLargeResult(int n) {
         BigInteger result = BigInteger.ONE;
         for (int i = 2; i <= n; i++)
             result = result.multiply(BigInteger.valueOf(i));
