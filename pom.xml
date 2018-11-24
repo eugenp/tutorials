@@ -775,7 +775,7 @@
                 <module>parent-kotlin</module>
                 
                 <module>testing-modules/gatling</module>
-                <module>geotools</module>
+                <!-- <module>geotools</module> --> <!-- the opengeo is down -->
             </modules>
 
         </profile>
