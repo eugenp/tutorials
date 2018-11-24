@@ -31,7 +31,7 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <artifactId>thymeleaf-extras-springsecurity4</artifactId>
         </dependency>
 
         <!-- oauth2 -->
@@ -64,5 +64,9 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+	
+    <properties>
+        <oauth-auto.version>2.0.5.RELEASE</oauth-auto.version>
+    </properties>
 
 </project>

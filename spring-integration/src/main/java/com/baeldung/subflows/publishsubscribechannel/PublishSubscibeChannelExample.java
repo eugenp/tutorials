@@ -1,15 +1,13 @@
 package com.baeldung.subflows.publishsubscribechannel;
 
-import java.util.Arrays;
 import java.util.Collection;
 
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.annotation.MessagingGateway;
-import org.springframework.integration.channel.DirectChannel;
+
+import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.dsl.IntegrationFlow;
 
@@ -18,46 +16,45 @@ import org.springframework.integration.dsl.IntegrationFlow;
 public class PublishSubscibeChannelExample {
     @MessagingGateway
     public interface NumbersClassifier {
-        @Gateway(requestChannel = "flow.input")
-        void flow(Collection<Integer> numbers);
+        @Gateway(requestChannel = "classify.input")
+        void classify(Collection<Integer> numbers);
     }
 
     @Bean
-    DirectChannel multipleof3Channel() {
-        return new DirectChannel();
+    QueueChannel multipleofThreeChannel() {
+        return new QueueChannel();
     }
 
     @Bean
-    DirectChannel remainderIs1Channel() {
-        return new DirectChannel();
+    QueueChannel remainderIsOneChannel() {
+        return new QueueChannel();
     }
 
     @Bean
-    DirectChannel remainderIs2Channel() {
-        return new DirectChannel();
+    QueueChannel remainderIsTwoChannel() {
+        return new QueueChannel();
+    }
+    boolean isMultipleOfThree(Integer number) {
+        return number % 3 == 0;
     }
 
+    boolean isRemainderOne(Integer number) {
+        return number % 3 == 1;
+    }
+
+    boolean isRemainderTwo(Integer number) {
+        return number % 3 == 2;
+    }
     @Bean
-    public IntegrationFlow flow() {
+    public IntegrationFlow classify() {
         return flow -> flow.split()
-            .publishSubscribeChannel(s -> s.subscribe(f -> f.<Integer> filter(p -> p % 3 == 0)
-                .channel("multipleof3Channel"))
-                .subscribe(f -> f.<Integer> filter(p -> p % 3 == 1)
-                    .channel("remainderIs1Channel"))
-                .subscribe(f -> f.<Integer> filter(p -> p % 3 == 2)
-                    .channel("remainderIs2Channel")));
+            .publishSubscribeChannel(subscription -> subscription.subscribe(subflow -> subflow.<Integer> filter(this::isMultipleOfThree)
+                .channel("multipleofThreeChannel"))
+                .subscribe(subflow -> subflow.<Integer> filter(this::isRemainderOne)
+                    .channel("remainderIsOneChannel"))
+                .subscribe(subflow -> subflow.<Integer> filter(this::isRemainderTwo)
+                    .channel("remainderIsTwoChannel")));
     }
+    
 
-    public static void main(String[] args) {
-        final ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(PublishSubscibeChannelExample.class);
-        DirectChannel multipleof3Channel = ctx.getBean("multipleof3Channel", DirectChannel.class);
-        multipleof3Channel.subscribe(x -> System.out.println("multipleof3Channel: " + x));
-        DirectChannel remainderIs1Channel = ctx.getBean("remainderIs1Channel", DirectChannel.class);
-        remainderIs1Channel.subscribe(x -> System.out.println("remainderIs1Channel: " + x));
-        DirectChannel remainderIs2Channel = ctx.getBean("remainderIs2Channel", DirectChannel.class);
-        remainderIs2Channel.subscribe(x -> System.out.println("remainderIs2Channel: " + x));
-        ctx.getBean(NumbersClassifier.class)
-            .flow(Arrays.asList(1, 2, 3, 4, 5, 6));
-        ctx.close();
-    }
 }

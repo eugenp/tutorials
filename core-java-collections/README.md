@@ -50,3 +50,4 @@
 - [Check If Two Lists are Equal in Java](http://www.baeldung.com/java-test-a-list-for-ordinality-and-equality)
 - [Java List Initialization in One Line](https://www.baeldung.com/java-init-list-one-line)
 - [ClassCastException: Arrays$ArrayList cannot be cast to ArrayList](https://www.baeldung.com/java-classcastexception-arrays-arraylist)
+- [A Guide to EnumMap](https://www.baeldung.com/java-enum-map)
