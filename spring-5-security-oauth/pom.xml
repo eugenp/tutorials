@@ -66,7 +66,7 @@
     </dependencies>
 	
     <properties>
-        <oauth-auto.version>2.0.5.RELEASE</oauth-auto.version>
+        <oauth-auto.version>2.0.1.RELEASE</oauth-auto.version>
     </properties>
 
 </project>
