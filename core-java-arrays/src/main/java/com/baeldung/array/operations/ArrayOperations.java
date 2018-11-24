@@ -4,11 +4,13 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -193,5 +195,17 @@ public class ArrayOperations {
 
     public static <T> T getRandomFromObjectArray(T[] array) {
         return array[new Random().nextInt(array.length)];
+    }
+
+    public static Integer[] intersectionSimple(final Integer[] a, final Integer[] b){
+        return Stream.of(a).filter(Arrays.asList(b)::contains).toArray(Integer[]::new);
+    }
+
+    public static Integer[] intersectionSet(final Integer[] a, final Integer[] b){
+        return Stream.of(a).filter(Arrays.asList(b)::contains).distinct().toArray(Integer[]::new);
+    }
+
+    public static Integer[] intersectionMultiSet(final Integer[] a, final Integer[] b){
+        return Stream.of(a).filter(new LinkedList<>(Arrays.asList(b))::remove).toArray(Integer[]::new);
     }
 }

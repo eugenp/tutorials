@@ -17,3 +17,4 @@
 - [Round Up to the Nearest Hundred](https://www.baeldung.com/java-round-up-nearest-hundred)
 - [Calculate Percentage in Java](https://www.baeldung.com/java-calculate-percentage)
 - [Converting Between Byte Arrays and Hexadecimal Strings in Java](https://www.baeldung.com/java-byte-arrays-hex-strings)
+- [Convert Latitude and Longitude to a 2D Point in Java](https://www.baeldung.com/java-convert-latitude-longitude)
