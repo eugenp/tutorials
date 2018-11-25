@@ -1,4 +1,4 @@
-package com.baeldung.limit;
+package com.baeldung.passenger;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class LimitIntegrationTest {
+public class PassengerRepositoryIntegrationTest {
 
     @PersistenceContext
     private EntityManager entityManager;
