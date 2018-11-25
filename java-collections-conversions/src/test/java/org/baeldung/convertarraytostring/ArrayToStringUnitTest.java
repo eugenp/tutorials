@@ -128,7 +128,7 @@ public class ArrayToStringUnitTest {
             .trimResults()
             .omitEmptyStrings()
             .splitToList(input);   
-        String[] strArray = new String[resultList.size()];
+        String[] strArray = resultList.toArray(new String[0]);
         
         assertThat(strArray, instanceOf(String[].class));
         assertEquals(5, strArray.length);    
