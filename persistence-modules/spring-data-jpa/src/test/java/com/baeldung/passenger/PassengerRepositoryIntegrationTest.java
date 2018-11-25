@@ -70,7 +70,7 @@ public class PassengerRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenSeveralPassengersWhenOrderedBySeatNumberAscThenThePassengersReturnedInCorrectOrder() {
+    public void givenPassengers_whenOrderedBySeatNumberAsc_thenCorrectOrder() {
         Passenger fred = Passenger.from("Fred", "Bloggs", 22);
         Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
         Passenger jill = Passenger.from("Jill", "Smith", 50);
@@ -83,7 +83,7 @@ public class PassengerRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenSeveralPassengersWhenFindAllWithSortBySeatNumberAscThenReturnPassengersInCorrectOrder() {
+    public void givenPassengers_whenFindAllWithSortBySeatNumberAsc_thenCorrectOrder() {
         Passenger fred = Passenger.from("Fred", "Bloggs", 22);
         Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
         Passenger jill = Passenger.from("Jill", "Smith", 50);
@@ -94,4 +94,5 @@ public class PassengerRepositoryIntegrationTest {
 
         assertThat(passengers, contains(fred, ricki, jill, siya, eve));
     }
+    
 }
