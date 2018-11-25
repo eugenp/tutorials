@@ -54,6 +54,7 @@
     <properties>
         <start-class>com.baeldung.SpringDataRestApplication</start-class>
         <sqlite.version>3.25.2</sqlite.version>
+        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
     </properties>
 
 </project>
