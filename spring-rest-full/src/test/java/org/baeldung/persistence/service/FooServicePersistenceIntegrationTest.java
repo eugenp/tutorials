@@ -2,6 +2,9 @@ package org.baeldung.persistence.service;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 
 import org.baeldung.persistence.IOperations;
 import org.baeldung.persistence.model.Foo;
@@ -12,6 +15,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -73,4 +79,20 @@ public class FooServicePersistenceIntegrationTest extends AbstractServicePersist
         return service;
     }
 
+    @Test
+    public final void givenPersisted_whenRetrievingEntityWithPageInfo_thenFound() {
+        
+        service.create(new Foo("A"));
+        service.create(new Foo("B"));
+        service.create(new Foo("C"));
+        service.create(new Foo("D"));
+        service.create(new Foo("E"));
+
+        PageRequest pageRequest = new PageRequest(1, 2, new Sort(Sort.Direction.DESC, "name"));
+        final Page<Foo> pageResult = service.findPaginated(pageRequest);
+        List<Foo> content = pageResult.getContent();
+        
+        assertEquals("D", content.get(0).getName());
+        assertEquals("C", content.get(1).getName());
+    }
 }
