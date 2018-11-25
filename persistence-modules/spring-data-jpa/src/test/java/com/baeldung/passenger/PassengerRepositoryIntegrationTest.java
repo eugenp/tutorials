@@ -14,6 +14,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertEquals;
 
 @DataJpaTest
@@ -65,5 +67,31 @@ public class PassengerRepositoryIntegrationTest {
 
         Passenger actual = page.getContent().get(0);
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void givenSeveralPassengersWhenOrderedBySeatNumberAscThenThePassengersReturnedInCorrectOrder() {
+        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+        Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
+        Passenger jill = Passenger.from("Jill", "Smith", 50);
+        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
+        Passenger eve = Passenger.from("Eve", "Jackson", 95);
+
+        List<Passenger> passengers = repository.findByOrderBySeatNumberAsc();
+
+        assertThat(passengers, contains(fred, ricki, jill, siya, eve));
+    }
+
+    @Test
+    public void givenSeveralPassengersWhenFindAllWithSortBySeatNumberAscThenReturnPassengersInCorrectOrder() {
+        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+        Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
+        Passenger jill = Passenger.from("Jill", "Smith", 50);
+        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
+        Passenger eve = Passenger.from("Eve", "Jackson", 95);
+
+        List<Passenger> passengers = repository.findAll(Sort.by(Sort.Direction.ASC, "seatNumber"));
+
+        assertThat(passengers, contains(fred, ricki, jill, siya, eve));
     }
 }
