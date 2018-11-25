@@ -1,0 +1,20 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: YOUR_APP_CLIENT_ID
+            client-secret: YOUR_APP_CLIENT_SECRET
+          custom:
+            client-id: fooClientIdPassword
+            client-secret: secret
+            scopes: read,foo
+            authorization-grant-type: authorization_code
+            redirect-uri-template: http://localhost:8080/login/oauth2/code/custom
+        provider:
+          custom:
+            authorization-uri: http://localhost:8081/spring-security-oauth-server/oauth/authorize
+            token-uri: http://localhost:8081/spring-security-oauth-server/oauth/token
+            user-info-uri: http://localhost:8088/spring-security-oauth-resource/users/extra
+            user-name-attribute: user_name

@@ -22,3 +22,6 @@
 - [Calculate Age in Java](http://www.baeldung.com/java-get-age)
 - [Increment Date in Java](http://www.baeldung.com/java-increment-date)
 - [Add Hours To a Date In Java](http://www.baeldung.com/java-add-hours-date)
+- [Guide to DateTimeFormatter](https://www.baeldung.com/java-datetimeformatter)
+- [Format ZonedDateTime to String](https://www.baeldung.com/java-format-zoned-datetime-string)
+- [Convert Between java.time.Instant and java.sql.Timestamp](Convert Between java.time.Instant and java.sql.Timestamp)

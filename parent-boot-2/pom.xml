@@ -17,7 +17,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-       			<version>2.0.4.RELEASE</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -41,7 +41,11 @@
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
-					<version>2.0.4.RELEASE</version>
+					<version>${spring-boot.version}</version>
+					<configuration>
+						<mainClass>${start-class}</mainClass>
+						<!-- this is necessary as we're not using the Boot parent -->
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -73,6 +77,8 @@
         <rest-assured.version>3.1.0</rest-assured.version>
         <!-- plugins -->
         <thin.version>1.0.11.RELEASE</thin.version>
+        <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
     </properties>
-
 </project>
+
+

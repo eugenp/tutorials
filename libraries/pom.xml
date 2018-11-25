@@ -358,6 +358,7 @@
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
+            <type>pom</type>
             <version>${groovy.version}</version>
         </dependency>
         <dependency>
@@ -710,14 +711,20 @@
             <version>${snakeyaml.version}</version>            
         </dependency>       
 
+        <dependency>
+            <groupId>com.numericalmethod</groupId>
+            <artifactId>suanshu</artifactId>
+            <version>${suanshu.version}</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
-        <repository>
+        <!-- <repository>
             <id>maven2-repository.dev.java.net</id>
             <name>Java.net repository</name>
             <url>http://download.java.net/maven/2</url>
-        </repository>
+        </repository> -->
         <repository>
             <snapshots>
                 <enabled>false</enabled>
@@ -729,6 +736,12 @@
         <repository>
             <id>Apache Staging</id>
             <url>https://repository.apache.org/content/groups/staging</url>
+        </repository>
+        <repository>
+            <id>nm-repo</id>
+            <name>Numerical Method's Maven Repository</name>
+            <url>http://repo.numericalmethod.com/maven/</url>
+            <layout>default</layout>
         </repository>
     </repositories>
 
@@ -834,6 +847,7 @@
     </build>
 
     <properties>
+        <suanshu.version>4.0.0</suanshu.version>
         <snakeyaml.version>1.21</snakeyaml.version>
         <googleclient.version>1.23.0</googleclient.version>
         <crdt.version>0.1.0</crdt.version>
@@ -922,7 +936,7 @@
         <quartz.version>2.3.0</quartz.version>
         <jool.version>0.9.12</jool.version>
         <jmh.version>1.19</jmh.version>
-        <groovy.version>2.4.10</groovy.version>
+        <groovy.version>2.5.2</groovy.version>
         <noexception.version>1.1.0</noexception.version>
         <logging-interceptor.version>3.9.0</logging-interceptor.version>
         <yarg.version>2.0.4</yarg.version>
