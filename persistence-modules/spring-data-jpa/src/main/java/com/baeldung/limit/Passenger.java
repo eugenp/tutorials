@@ -17,7 +17,7 @@ class Passenger {
 
     @Basic(optional = false)
     @Column(nullable = false)
-    private String fistName;
+    private String firstName;
 
     @Basic(optional = false)
     @Column(nullable = false)
@@ -27,8 +27,8 @@ class Passenger {
     @Column(nullable = false)
     private int seatNumber;
 
-    private Passenger(String fistName, String lastName, int seatNumber) {
-        this.fistName = fistName;
+    private Passenger(String firstName, String lastName, int seatNumber) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.seatNumber = seatNumber;
     }
@@ -44,20 +44,20 @@ class Passenger {
         if (object == null || getClass() != object.getClass())
             return false;
         Passenger passenger = (Passenger) object;
-        return getSeatNumber() == passenger.getSeatNumber() && Objects.equals(getFistName(), passenger.getFistName())
+        return getSeatNumber() == passenger.getSeatNumber() && Objects.equals(getFirstName(), passenger.getFirstName())
           && Objects.equals(getLastName(), passenger.getLastName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFistName(), getLastName(), getSeatNumber());
+        return Objects.hash(getFirstName(), getLastName(), getSeatNumber());
     }
 
     @Override
     public String toString() {
         final StringBuilder toStringBuilder = new StringBuilder(getClass().getSimpleName());
         toStringBuilder.append("{ id=").append(id);
-        toStringBuilder.append(", fistName='").append(fistName).append('\'');
+        toStringBuilder.append(", firstName='").append(firstName).append('\'');
         toStringBuilder.append(", lastName='").append(lastName).append('\'');
         toStringBuilder.append(", seatNumber=").append(seatNumber);
         toStringBuilder.append('}');
@@ -68,8 +68,8 @@ class Passenger {
         return id;
     }
 
-    String getFistName() {
-        return fistName;
+    String getFirstName() {
+        return firstName;
     }
 
     String getLastName() {
