@@ -24,13 +24,11 @@ public class FindAllTest {
     @Before
     public void setUp() throws IOException {
 
-        session = HibernateUtil.getSessionFactory()
-            .openSession();
+        session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();
         findAll = new FindAll(session);
 
-        session.createNativeQuery("delete from Student")
-            .executeUpdate();
+        session.createNativeQuery("delete from Student").executeUpdate();
 
         Student student1 = new Student();
         session.persist(student1);
