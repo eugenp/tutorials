@@ -21,8 +21,7 @@ public class FindAll {
     }
 
     public List<Student> findAllWithJpql() {
-        return session.createQuery("SELECT a FROM Student a", Student.class)
-            .getResultList();
+        return session.createQuery("SELECT a FROM Student a", Student.class).getResultList();
     }
 
     public List<Student> findAllWithCriteriaQuery() {
