@@ -16,19 +16,4 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    CommandLineRunner commandLineRunner(UserRepository userRepository) {
-        return args -> {
-
-            User user = new User();
-            user.setFirstName("John");
-            user.setLastName("Doe");
-            user.setEmail("john.doe@example.com");
-            userRepository.save(user);
-
-            List<User> storedUsers = userRepository.findAll();
-            storedUsers.forEach(System.out::println);
-
-        };
-    }
 }
