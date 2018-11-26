@@ -37,3 +37,4 @@
 - [Using indexOf to Find All Occurrences of a Word in a String](https://www.baeldung.com/java-indexOf-find-string-occurrences)
 - [Java Base64 Encoding and Decoding](https://www.baeldung.com/java-base64-encode-and-decode)
 - [Generate a Secure Random Password in Java](https://www.baeldung.com/java-generate-secure-password)
+- [Removing Repeated Characters from a String](https://www.baeldung.com/java-remove-repeated-char)
