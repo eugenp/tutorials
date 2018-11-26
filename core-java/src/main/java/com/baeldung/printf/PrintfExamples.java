@@ -38,8 +38,8 @@ public class PrintfExamples {
         System.out.printf(Locale.ITALY, "%,d %n", 10000);
 
         System.out.printf("%f%n", 5.1473);
-        System.out.printf("<%5.2f>%n", 5.1473);
-        System.out.printf("<%5.2e>%n", 5.1473);
+        System.out.printf("'%5.2f'%n", 5.1473);
+        System.out.printf("'%5.2e'%n", 5.1473);
     }
 
     private static void printfBoolean() {
