@@ -1,61 +1,69 @@
 package com.baeldung.sorting.arrays;
 
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-import static org.junit.Assert.*;
-
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
 public class PersonUnitTest {
 
     @Test
-    public void givenThatAPersonWithLastNameWithGreaterAlphabeticOrderThanAnotherPerson_whenAnArrayIncludingThoseTwoPersonsIsSorted_thenTheGreaterAlphabeticOrderPersonIsFirst() {
+    public void givenThatTwoPersonsHasDifferentLastName_whenAnArrayIsSorted_thenTheResultIsTheCorrectOne() {
 
         Person[] persons = new Person[2];
 
         persons[0] = new Person("FirstName","BbLastName",10 );
         persons[1] = new Person("FirstName","AaLastName",10 );
 
+        Comparator<Person> personComparator = Comparator.comparing(Person::getFirstName)
+                                                        .thenComparing(Person::getLastName)
+                                                        .thenComparingInt(Person::getAge);
 
         List<Person> personsList = Arrays.asList(persons);
-        Collections.sort(personsList);
+        personsList = personsList.stream().sorted(personComparator).collect(Collectors.toList());
         persons = personsList.toArray(persons);
-        assertEquals(persons[0].getLastName(), "AaLastName");
-        assertEquals(persons[1].getLastName(), "BbLastName");
+        assert  persons[0].getLastName().equals("AaLastName");
+        assert  persons[1].getLastName().equals("BbLastName");
     }
 
     @Test
-    public void givenThatAPersonWithFirstNameWithGreaterAlphabeticOrderThanAnotherPerson_whenAnArrayIncludingThoseTwoPersonsIsSorted_thenTheGreaterAlphabeticOrderPersonIsFirst() {
+    public void givenThatTwoPersonsHasDifferentFirst_whenAnArrayIsSorted_thenTheResultIsTheCorrectOne() {
 
         Person[] persons = new Person[2];
 
         persons[0] = new Person("BbFirstName","LastName",10 );
         persons[1] = new Person("AaFirstName","LastName",10 );
 
+        Comparator<Person> personComparator = Comparator.comparing(Person::getFirstName)
+                                                        .thenComparing(Person::getLastName)
+                                                        .thenComparingInt(Person::getAge);
 
         List<Person> personsList = Arrays.asList(persons);
-        Collections.sort(personsList);
+        personsList = personsList.stream().sorted(personComparator).collect(Collectors.toList());
         persons = personsList.toArray(persons);
-        assertEquals(persons[0].getFirstName(),"AaFirstName");
-        assertEquals(persons[1].getFirstName(),"BbFirstName");
+        assert  persons[0].getFirstName().equals("AaFirstName");
+        assert  persons[1].getFirstName().equals("BbFirstName");
     }
 
     @Test
-    public void givenThatAPersonWithAgeGreaterAgeThanAnotherPerson_whenAnArrayIncludingThoseTwoPersonsIsSorted_thenTheGreaterAgePersonIsFirst() {
+    public void givenThatTwoPersonsHasDifferentAge_whenAnArrayIsSorted_thenTheResultIsTheCorrectOne() {
 
         Person[] persons = new Person[2];
 
         persons[0] = new Person("FirstName","LastName",12 );
         persons[1] = new Person("FirstName","LastName",15 );
 
+        Comparator<Person> personComparator = Comparator.comparing(Person::getFirstName)
+                                                        .thenComparing(Person::getLastName)
+                                                        .thenComparingInt(Person::getAge);
 
         List<Person> personsList = Arrays.asList(persons);
-        Collections.sort(personsList);
+        personsList = personsList.stream().sorted(personComparator).collect(Collectors.toList());
         persons = personsList.toArray(persons);
-        assertEquals(persons[0].getAge(),12);
-        assertEquals(persons[1].getAge(),15);
+        assert  persons[0].getAge() == 12;
+        assert  persons[1].getAge() == 15;
     }
 
 }

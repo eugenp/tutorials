@@ -1,24 +1,10 @@
 package com.baeldung.sorting.arrays;
 
-public class Person implements Comparable<Person> {
+public class Person {
 
     private String firstName;
     private String lastName;
     private int age;
-
-    @Override
-    public int compareTo(Person o) {
-        if (lastName.compareTo(o.getLastName()) > 0) {
-            return 1;
-        } else if (lastName.compareTo(o.getLastName()) == 0) {
-            if(firstName.compareTo(o.getFirstName()) > 0) {
-                return 1;
-            } else if (firstName.compareTo(o.getFirstName()) == 0) {
-                return age - o.getAge();
-            }
-        }
-        return -1;
-    }
 
     public Person(String firstName, String lastName, int age) {
         this.firstName = firstName;
@@ -50,12 +36,4 @@ public class Person implements Comparable<Person> {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Person{" +
-            "firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", age=" + age +
-            '}';
-    }
 }
