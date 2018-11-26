@@ -42,4 +42,8 @@
         <finalName>${project.artifactId}</finalName>
     </build>
 
+    <properties>
+        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
+    </properties>
+
 </project>
