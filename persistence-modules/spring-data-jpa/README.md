@@ -15,6 +15,7 @@
 - [Query Entities by Dates and Times with Spring Data JPA](https://www.baeldung.com/spring-data-jpa-query-by-date)
 - [DDD Aggregates and @DomainEvents](https://www.baeldung.com/spring-data-ddd)
 - [Spring Data – CrudRepository save() Method](https://www.baeldung.com/spring-data-crud-repository-save)
+- [Limiting Query Results with JPA and Spring Data JPA](https://www.baeldung.com/jpa-limit-query-results)
 
 ### Eclipse Config 
 After importing the project into Eclipse, you may see the following error:  

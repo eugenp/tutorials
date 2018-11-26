@@ -720,11 +720,11 @@
     </dependencies>
 
     <repositories>
-        <repository>
+        <!-- <repository>
             <id>maven2-repository.dev.java.net</id>
             <name>Java.net repository</name>
             <url>http://download.java.net/maven/2</url>
-        </repository>
+        </repository> -->
         <repository>
             <snapshots>
                 <enabled>false</enabled>
