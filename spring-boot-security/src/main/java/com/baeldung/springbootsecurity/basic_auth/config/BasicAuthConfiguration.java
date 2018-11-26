@@ -15,11 +15,11 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
         auth
           .inMemoryAuthentication()
           .withUser("user")
-          .password("password")
+          .password("{noop}password")
           .roles("USER")
           .and()
           .withUser("admin")
-          .password("admin")
+          .password("{noop}admin")
           .roles("USER", "ADMIN");
     }
 
