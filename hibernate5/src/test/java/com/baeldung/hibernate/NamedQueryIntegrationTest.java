@@ -21,10 +21,10 @@ public class NamedQueryIntegrationTest {
     public void setUp() throws IOException {
         session = HibernateUtil.getSessionFactory().openSession();
         transaction = session.beginTransaction();
-        session.createNativeQuery("delete from department").executeUpdate();
         session.createNativeQuery("delete from deptemployee").executeUpdate();
+        session.createNativeQuery("delete from department").executeUpdate();
         Department department = new Department("Sales");
-        DeptEmployee employee1 = new DeptEmployee("John Smith", "001", department);
+        DeptEmployee employee1 = new DeptEmployee("John Wayne", "001", department);
         DeptEmployee employee2 = new DeptEmployee("Sarah Vinton", "002", department);
         DeptEmployee employee3 = new DeptEmployee("Lisa Carter", "003", department);
         session.persist(department);
@@ -36,11 +36,20 @@ public class NamedQueryIntegrationTest {
     }
 
     @Test
-    public void givenMultipleEmployees_WhenFindByEmployeeNumberIsExecuted_ThenCorrectEmployeeIsReturned() {
-        Query<DeptEmployee> query = session.createNamedQuery("findByEmployeeNumber", DeptEmployee.class);
-        query.setParameter("employeeNo", "002");
+    public void givenMultipleEmployees_WhenFindByEmployeeNumberIsExecutedWithResultClass_ThenCorrectEmployeeIsReturned() {
+        Query<DeptEmployee> query = session.createNamedQuery("DeptEmployee_findByEmployeeNumber", DeptEmployee.class);
+        query.setParameter("employeeNo", "001");
         DeptEmployee result = query.getSingleResult();
         Assert.assertNotNull(result);
-        Assert.assertEquals("Sarah Vinton", result.getName());
+        Assert.assertEquals("John Wayne", result.getName());
+    }
+
+    @Test
+    public void givenMultipleEmployees_WhenFindByEmployeeNumberIsExecutedWOResultClass_ThenCorrectEmployeeIsReturned() {
+        Query query = session.createNamedQuery("DeptEmployee_findByEmployeeNumber");
+        query.setParameter("employeeNo", "003");
+        DeptEmployee result = (DeptEmployee) query.getSingleResult();
+        Assert.assertNotNull(result);
+        Assert.assertEquals("Lisa Carter", result.getName());
     }
 }
