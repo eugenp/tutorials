@@ -1,11 +1,11 @@
-package com.baeldung.schedlock;
+package com.baeldung.shedlock;
 
 import net.javacrumbs.shedlock.core.SchedulerLock;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component
-class SchedlockScheduler {
+class ShedlockScheduler {
 
     @Scheduled(cron = "0 */30 * * * *")
     @SchedulerLock(name = "TaskScheduler_scheduledTask", lockAtLeastForString = "PT5M", lockAtMostForString = "PT15M")
