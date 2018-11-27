@@ -15,12 +15,24 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class StreamFilterUnitTest {
 
     @Test
-    public void givenListOfCustomers_whenFilterBy100Points_thenGetTwo() {
+    public void givenListOfCustomers_whenFilterByLambda_thenGetTwo() {
         List<Customer> customers = Arrays.asList(new Customer("John P.", 15), new Customer("Sarah M.", 200), new Customer("Charles B.", 150), new Customer("Mary T.", 1));
 
         long customersWithMoreThan100Points = customers
           .stream()
-          .filter(c -> c.hasOver(100))
+          .filter(c -> c.getPoints() > 100)
+          .count();
+
+        assertThat(customersWithMoreThan100Points).isEqualTo(2);
+    }
+
+    @Test
+    public void givenListOfCustomers_whenFilterByMethodReference_thenGetTwo() {
+        List<Customer> customers = Arrays.asList(new Customer("John P.", 15), new Customer("Sarah M.", 200), new Customer("Charles B.", 150), new Customer("Mary T.", 1));
+
+        long customersWithMoreThan100Points = customers
+          .stream()
+          .filter(Customer::hasOverThousandPoints)
           .count();
 
         assertThat(customersWithMoreThan100Points).isEqualTo(2);
@@ -35,7 +47,7 @@ public class StreamFilterUnitTest {
           .flatMap(c -> c
             .map(Stream::of)
             .orElseGet(Stream::empty))
-          .filter(c -> c.hasOver(100))
+          .filter(Customer::hasOverThousandPoints)
           .count();
 
         assertThat(customersWithMoreThan100Points).isEqualTo(2);

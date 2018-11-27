@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-    public class Customer {
-        private String name;
-        private int points;
-        private String profilePhotoUrl;
+public class Customer {
+    private String name;
+    private int points;
+    private String profilePhotoUrl;
 
     public Customer(String name, int points) {
         this(name, points, "");
@@ -30,6 +30,10 @@ import java.net.URL;
 
     public boolean hasOver(int points) {
         return this.points > points;
+    }
+
+    public boolean hasOverThousandPoints() {
+        return this.points > 100;
     }
 
     public boolean hasValidProfilePhoto() throws IOException {
