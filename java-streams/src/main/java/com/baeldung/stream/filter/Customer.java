@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class Customer {
-    private String name;
-    private int points;
-    private String profilePhotoUrl;
+    public class Customer {
+        private String name;
+        private int points;
+        private String profilePhotoUrl;
 
     public Customer(String name, int points) {
         this(name, points, "");

@@ -1,6 +1,6 @@
 package com.baeldung.stream.filter;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pl.touk.throwing.ThrowingPredicate;
 import pl.touk.throwing.exception.WrappedException;
 
@@ -41,7 +41,7 @@ public class StreamFilterUnitTest {
         assertThat(customersWithMoreThan100Points).isEqualTo(2);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void givenListOfCustomers_whenFilterWithCustomHandling_thenThrowException() {
         List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
           new Customer("Mary T.", 1, "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"));
@@ -52,7 +52,7 @@ public class StreamFilterUnitTest {
           .count()).isInstanceOf(RuntimeException.class);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     public void givenListOfCustomers_whenFilterWithThrowingFunction_thenThrowException() {
         List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
           new Customer("Mary T.", 1, "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"));
