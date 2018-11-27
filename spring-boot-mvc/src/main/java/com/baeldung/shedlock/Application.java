@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import net.javacrumbs.shedlock.spring.annotation.EnableSchedulerLock;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-@SpringApplication
+@SpringBootApplication
 @EnableScheduling
 @EnableSchedulerLock(defaultLockAtMostFor = "PT30S")
 public class Application {
