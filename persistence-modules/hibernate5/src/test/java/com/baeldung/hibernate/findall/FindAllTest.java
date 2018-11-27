@@ -14,7 +14,7 @@ import org.junit.Test;
 import com.baeldung.hibernate.HibernateUtil;
 import com.baeldung.hibernate.pojo.Student;
 
-public class FindAllTest {
+public class FindAllUnitTest {
 
     private Session session;
     private Transaction transaction;
