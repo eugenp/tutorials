@@ -30,3 +30,4 @@
 - [Introduction to Netflix Archaius with Spring Cloud](https://www.baeldung.com/netflix-archaius-spring-cloud-integration)
 - [An Intro to Spring Cloud Vault](https://www.baeldung.com/spring-cloud-vault)
 - [Netflix Archaius with Various Database Configurations](https://www.baeldung.com/netflix-archaius-database-configurations)
+- [Rate Limiting in Spring Cloud Netflix Zuul](https://www.baeldung.com/spring-cloud-zuul-rate-limit)
