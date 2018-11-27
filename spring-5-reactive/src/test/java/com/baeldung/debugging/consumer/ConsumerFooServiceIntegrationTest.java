@@ -20,7 +20,7 @@ import ch.qos.logback.classic.spi.IThrowableProxy;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Hooks;
 
-public class ConsumerFooServiceUnitTest {
+public class ConsumerFooServiceIntegrationTest {
 
     FooService service = new FooService();
 
