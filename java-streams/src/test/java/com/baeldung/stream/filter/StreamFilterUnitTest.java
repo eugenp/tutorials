@@ -1,6 +1,7 @@
 package com.baeldung.stream.filter;
 
 import org.junit.jupiter.api.Test;
+import pl.touk.throwing.ThrowingPredicate;
 import pl.touk.throwing.exception.WrappedException;
 
 import java.util.Arrays;
@@ -70,7 +71,7 @@ public class StreamFilterUnitTest {
 
         assertThatThrownBy(() -> customers
           .stream()
-          .filter((Customer::hasValidProfilePhoto))
+          .filter((ThrowingPredicate.unchecked(Customer::hasValidProfilePhoto)))
           .count()).isInstanceOf(WrappedException.class);
     }
 }
