@@ -1714,6 +1714,7 @@
                 <module>persistence-modules/spring-data-elasticsearch</module>
                 <module>core-java-concurrency</module>
 				<module>core-java-concurrency-collections</module>
+				<module>restx</module>
             </modules>
 
         </profile>
