@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 import static org.junit.Assert.assertTrue;
 
-public class OptimizedMatcherUnitTest {
+public class OptimizedMatcherManualTest {
 
     private String action;
 
