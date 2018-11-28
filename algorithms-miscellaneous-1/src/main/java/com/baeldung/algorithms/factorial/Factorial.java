@@ -23,8 +23,8 @@ public class Factorial {
     }
 
     public long factorialUsingRecursion(int n) {
-        if (n < 2) {
-            return 1;
+        if (n <= 2) {
+            return n;
         }
         return n * factorialUsingRecursion(n - 1);
     }
@@ -37,8 +37,8 @@ public class Factorial {
             return factorials[n];
         }
 
-        if (n < 2) {
-            return 1;
+        if (n <= 2) {
+            return n;
         }
         long nthValue = n * factorialUsingMemoize(n - 1);
         factorials[n] = nthValue;
