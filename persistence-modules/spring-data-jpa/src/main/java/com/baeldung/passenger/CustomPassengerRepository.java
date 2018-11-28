@@ -1,4 +1,4 @@
-package com.baeldung.limit;
+package com.baeldung.passenger;
 
 import java.util.List;
 

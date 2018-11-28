@@ -1,4 +1,4 @@
-package com.baeldung.limit;
+package com.baeldung.passenger;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,11 +14,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertEquals;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-public class LimitIntegrationTest {
+public class PassengerRepositoryIntegrationTest {
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -66,4 +68,31 @@ public class LimitIntegrationTest {
         Passenger actual = page.getContent().get(0);
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void givenPassengers_whenOrderedBySeatNumberAsc_thenCorrectOrder() {
+        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+        Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
+        Passenger jill = Passenger.from("Jill", "Smith", 50);
+        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
+        Passenger eve = Passenger.from("Eve", "Jackson", 95);
+
+        List<Passenger> passengers = repository.findByOrderBySeatNumberAsc();
+
+        assertThat(passengers, contains(fred, ricki, jill, siya, eve));
+    }
+
+    @Test
+    public void givenPassengers_whenFindAllWithSortBySeatNumberAsc_thenCorrectOrder() {
+        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+        Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
+        Passenger jill = Passenger.from("Jill", "Smith", 50);
+        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
+        Passenger eve = Passenger.from("Eve", "Jackson", 95);
+
+        List<Passenger> passengers = repository.findAll(Sort.by(Sort.Direction.ASC, "seatNumber"));
+
+        assertThat(passengers, contains(fred, ricki, jill, siya, eve));
+    }
+    
 }
