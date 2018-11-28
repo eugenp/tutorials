@@ -37,20 +37,15 @@ public class Customer {
     }
 
     public boolean hasValidProfilePhoto() throws IOException {
-        URL url = new URL(profilePhotoUrl);
+        URL url = new URL(this.profilePhotoUrl);
         HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        //Without User-Agent pexels.com returns HTTP 403
-        connection.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36");
         return connection.getResponseCode() == HttpURLConnection.HTTP_OK;
     }
 
     public boolean hasValidProfilePhotoWithoutCheckedException() {
         try {
-            URL url = new URL(profilePhotoUrl);
-            HttpsURLConnection connection = null;
-            connection = (HttpsURLConnection) url.openConnection();
-            //Without User-Agent pexels.com returns HTTP 403
-            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36");
+            URL url = new URL(this.profilePhotoUrl);
+            HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
             return connection.getResponseCode() == HttpURLConnection.HTTP_OK;
         } catch (IOException e) {
             throw new RuntimeException(e);

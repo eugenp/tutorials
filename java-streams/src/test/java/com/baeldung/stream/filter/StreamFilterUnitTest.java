@@ -1,7 +1,6 @@
 package com.baeldung.stream.filter;
 
 import org.junit.jupiter.api.Test;
-import pl.touk.throwing.ThrowingPredicate;
 import pl.touk.throwing.exception.WrappedException;
 
 import java.util.Arrays;
@@ -55,8 +54,8 @@ public class StreamFilterUnitTest {
 
     @Test
     public void givenListOfCustomers_whenFilterWithCustomHandling_thenThrowException() {
-        List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
-          new Customer("Mary T.", 1, "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"));
+        List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.unsplash.com/photo-1543320485-d0d5a49c2b2e"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
+          new Customer("Mary T.", 1, "https://images.unsplash.com/photo-1543297057-25167dfc180e"));
 
         assertThatThrownBy(() -> customers
           .stream()
@@ -66,12 +65,12 @@ public class StreamFilterUnitTest {
 
     @Test
     public void givenListOfCustomers_whenFilterWithThrowingFunction_thenThrowException() {
-        List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.pexels.com/photos/1624438/pexels-photo-1624438.jpeg"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
-          new Customer("Mary T.", 1, "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg"));
+        List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.unsplash.com/photo-1543320485-d0d5a49c2b2e"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
+          new Customer("Mary T.", 1, "https://images.unsplash.com/photo-1543297057-25167dfc180e"));
 
         assertThatThrownBy(() -> customers
           .stream()
-          .filter(ThrowingPredicate.unchecked(Customer::hasValidProfilePhoto))
+          .filter((Customer::hasValidProfilePhoto))
           .count()).isInstanceOf(WrappedException.class);
     }
 }
