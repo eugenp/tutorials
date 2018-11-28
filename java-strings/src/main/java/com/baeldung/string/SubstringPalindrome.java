@@ -15,18 +15,20 @@ public class SubstringPalindrome {
             return palindromes;
         }
         for (int i = 0; i < input.length(); i++) {
-            findPalindromes(palindromes, input, i, i + 1);
-            findPalindromes(palindromes, input, i, i);
+            palindromes.addAll(findPalindromes(input, i, i + 1));
+            palindromes.addAll(findPalindromes(input, i, i));
         }
         return palindromes;
     }
 
-    private void findPalindromes(final Set<String> result, final String input, int low, int high) {
+    private Set<String> findPalindromes(String input, int low, int high) {
+        Set<String> result = new HashSet<>();
         while (low >= 0 && high < input.length() && input.charAt(low) == input.charAt(high)) {
             result.add(input.substring(low, high + 1));
             low--;
             high++;
         }
+        return result;
     }
 
     public Set<String> isPalindromeUsingSubstring(String input) {
@@ -54,32 +56,32 @@ public class SubstringPalindrome {
     }
 
     public Set<String> isPalindromeUsingManachersAlgo(String input) {
-        Set<String> palindromes = new HashSet<>();
-        String formattedInput = "@" + input + "#";
-        char inputCharArr[] = formattedInput.toCharArray();
-        int rp;
-        int radius[][] = new int[2][input.length() + 1];
+    Set<String> palindromes = new HashSet<>();
+    String formattedInput = "@" + input + "#";
+    char inputCharArr[] = formattedInput.toCharArray();
+    int max;
+    int radius[][] = new int[2][input.length() + 1];
         for (int j = 0; j <= 1; j++) {
-            radius[j][0] = rp = 0;
+            radius[j][0] = max = 0;
             int i = 1;
             while (i <= input.length()) {
                 palindromes.add(Character.toString(inputCharArr[i]));
-                while (inputCharArr[i - rp - 1] == inputCharArr[i + j + rp])
-                    rp++;
-                radius[j][i] = rp;
+                while (inputCharArr[i - max - 1] == inputCharArr[i + j + max])
+                    max++;
+                radius[j][i] = max;
                 int k = 1;
-                while ((radius[j][i - k] != rp - k) && (k < rp)) {
-                    radius[j][i + k] = Math.min(radius[j][i - k], rp - k);
+                while ((radius[j][i - k] != max - k) && (k < max)) {
+                    radius[j][i + k] = Math.min(radius[j][i - k], max - k);
                     k++;
                 }
-                rp = Math.max(rp - k, 0);
+                max = Math.max(max - k, 0);
                 i += k;
             }
         }
         for (int i = 1; i <= input.length(); i++) {
             for (int j = 0; j <= 1; j++) {
-                for (rp = radius[j][i]; rp > 0; rp--) {
-                    palindromes.add(input.substring(i - rp - 1, (2 * rp + j) + (i - rp - 1)));
+                for (max = radius[j][i]; max > 0; max--) {
+                    palindromes.add(input.substring(i - max - 1, (2 * max + j) + (i - max - 1)));
                 }
             }
         }
