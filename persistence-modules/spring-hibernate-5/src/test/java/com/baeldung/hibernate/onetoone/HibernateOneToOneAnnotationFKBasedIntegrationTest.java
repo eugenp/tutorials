@@ -46,27 +46,31 @@ public class HibernateOneToOneAnnotationFKBasedIntegrationTest {
 
         //Address entry will automatically be created by hibernate, since cascade type is specified as ALL
         session.persist(user);
+        session.getTransaction().commit();
+
+        assert1to1InsertedData();
+    }
+
+    private void assert1to1InsertedData() {
+        @SuppressWarnings("unchecked")
+        List<User> userList = session.createQuery("FROM User").list();
+
+        assertNotNull(userList);
+        assertEquals(1, userList.size());
+
+        User user = userList.get(0);
+        assertEquals("alice@baeldung.com", user.getUserName());
+
+        Address address = user.getAddress();
+        assertNotNull(address);
+        assertEquals("FK Street", address.getStreet());
+        assertEquals("FK City", address.getCity());
+
     }
 
     @After
     public void tearDown() {
-        session.getTransaction()
-                .commit();
         session.close();
-    }
-
-    @Test
-    public void givenSession_whenRead_thenReturns1to1data() {
-        @SuppressWarnings("unchecked")
-        List<User> userList = session.createQuery("FROM User").list();
-        assertNotNull(userList);
-        for (User user : userList) {
-            assertEquals("alice@baeldung.com", user.getUserName());
-            assertNotNull(user.getAddress());
-            assertEquals("FK Street", user.getAddress().getStreet());
-            assertEquals("FK City", user.getAddress().getCity());
-
-        }
     }
 
     @AfterClass

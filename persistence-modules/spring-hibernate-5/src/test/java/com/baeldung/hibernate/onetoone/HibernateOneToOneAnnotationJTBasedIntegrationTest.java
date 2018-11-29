@@ -46,27 +46,31 @@ public class HibernateOneToOneAnnotationJTBasedIntegrationTest {
         workStation.setEmployee(employee);
 
         session.persist(employee);
+        session.getTransaction().commit();
+
+        assert1to1InsertedData();
+    }
+
+    private void assert1to1InsertedData() {
+        @SuppressWarnings("unchecked")
+        List<Employee> employeeList = session.createQuery("FROM Employee").list();
+        assertNotNull(employeeList);
+        assertEquals(1, employeeList.size());
+
+        Employee employee = employeeList.get(0);
+        assertEquals("bob@baeldung.com", employee.getName());
+
+        WorkStation workStation = employee.getWorkStation();
+
+        assertNotNull(workStation);
+        assertEquals((long) 626, (long) workStation.getWorkstationNumber());
+        assertEquals("Sixth Floor", workStation.getFloor());
+
     }
 
     @After
     public void tearDown() {
-        session.getTransaction()
-                .commit();
         session.close();
-    }
-
-    @Test
-    public void givenSession_whenRead_thenReturns1to1data() {
-        @SuppressWarnings("unchecked")
-        List<Employee> employees = session.createQuery("FROM Employee").list();
-        assertNotNull(employees);
-        for (Employee employee : employees) {
-            assertEquals("bob@baeldung.com", employee.getName());
-            assertNotNull(employee.getWorkStation());
-            assertEquals((long) 626, (long) employee.getWorkStation().getWorkstationNumber());
-            assertEquals("Sixth Floor", employee.getWorkStation().getFloor());
-
-        }
     }
 
     @AfterClass
