@@ -401,6 +401,7 @@
 				<module>jackson</module>
 				<module>persistence-modules/java-cassandra</module>
 				<module>vavr</module>
+				<module>java-hexagonal-architecture</module>
 				<module>java-lite</module>
 				<module>java-numbers</module>
 				<module>java-rmi</module>
