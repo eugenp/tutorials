@@ -1,0 +1,15 @@
+{
+    "name": "local-file-source",
+    "config": {
+        "connector.class": "FileStreamSource",
+        "tasks.max": 1,
+        "file": "transformation.txt",
+        "topic": "connect-transformation",
+        "transforms": "MakeMap,InsertSource",
+        "transforms.MakeMap.type": "org.apache.kafka.connect.transforms.HoistField$Value",
+        "transforms.MakeMap.field": "line",
+        "transforms.InsertSource.type": "org.apache.kafka.connect.transforms.InsertField$Value",
+        "transforms.InsertSource.static.field": "data_source",
+        "transforms.InsertSource.static.value": "test-file-source"
+    }
+}
