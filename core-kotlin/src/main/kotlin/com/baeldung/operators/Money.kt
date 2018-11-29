@@ -1,3 +1,5 @@
+package com.baeldung.operators
+
 import java.math.BigDecimal
 
 enum class Currency {
