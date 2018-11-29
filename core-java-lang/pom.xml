@@ -66,6 +66,12 @@
             <artifactId>mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
+        <dependency>
+            <groupId>nl.jqno.equalsverifier</groupId>
+            <artifactId>equalsverifier</artifactId>
+            <version>${equalsverifier.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -424,6 +430,7 @@
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
+        <equalsverifier.version>3.0.3</equalsverifier.version>
     </properties>
 
 </project>
