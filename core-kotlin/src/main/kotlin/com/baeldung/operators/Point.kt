@@ -1,3 +1,5 @@
+package com.baeldung.operators
+
 data class Point(val x: Int, val y: Int)
 
 operator fun Point.unaryMinus() = Point(-x, -y)
@@ -14,7 +16,7 @@ operator fun Point.times(factor: Int): Point = Point(x * factor, y * factor)
 operator fun Int.times(point: Point): Point = Point(point.x * this, point.y * this)
 
 class Shape {
-    private val points = mutableListOf<Point>()
+    val points = mutableListOf<Point>()
 
     operator fun Point.unaryPlus() {
         points.add(this)

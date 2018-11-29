@@ -1,3 +1,5 @@
+package com.baeldung.operators
+
 interface Page<T> {
     fun pageNumber(): Int
     fun pageSize(): Int
