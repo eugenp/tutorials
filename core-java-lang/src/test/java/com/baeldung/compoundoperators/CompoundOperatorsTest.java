@@ -24,8 +24,8 @@ public class CompoundOperatorsTest {
 
     @Test
     public void whenAssignmentOperatorIsUsed_thenValueIsReturned() {
-        long x = 5;
-        long y = (x=3);
+        long x = 1;
+        long y = (x+=2);
 
         assertEquals(3, y);
         assertEquals(y, x);
