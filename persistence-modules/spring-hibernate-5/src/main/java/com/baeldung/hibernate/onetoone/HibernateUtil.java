@@ -17,17 +17,14 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(entityClass);
             }
             configuration.configure("onetoone.cfg.xml");
-            System.out.println("Hibernate Annotation Configuration loaded");
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
                     .build();
-            System.out.println("Hibernate Annotation serviceRegistry created");
 
             SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
             return sessionFactory;
         } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed." + ex);
             ex.printStackTrace();
             throw new ExceptionInInitializerError(ex);
         }
