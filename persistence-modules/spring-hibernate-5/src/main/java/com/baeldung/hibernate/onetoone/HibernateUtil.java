@@ -16,7 +16,7 @@ public class HibernateUtil {
             for (Class<?> entityClass : strategy.getEntityClasses()) {
                 configuration.addAnnotatedClass(entityClass);
             }
-            configuration.configure("onetoone.cfg.xml");
+            configuration.configure("one-to-one.cfg.xml");
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
                     .build();
