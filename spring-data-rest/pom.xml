@@ -29,6 +29,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+        <!-- Comment in case other database is desired.-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -37,6 +38,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
+        <!-- Uncomment if we want to use SQLite Database. Leave commented for other databases-->
         <!--<dependency>-->
             <!--<groupId>org.xerial</groupId>-->
             <!--<artifactId>sqlite-jdbc</artifactId>-->
