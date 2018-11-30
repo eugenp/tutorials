@@ -56,11 +56,11 @@ public class SubstringPalindrome {
     }
 
     public Set<String> isPalindromeUsingManachersAlgo(String input) {
-    Set<String> palindromes = new HashSet<>();
-    String formattedInput = "@" + input + "#";
-    char inputCharArr[] = formattedInput.toCharArray();
-    int max;
-    int radius[][] = new int[2][input.length() + 1];
+        Set<String> palindromes = new HashSet<>();
+        String formattedInput = "@" + input + "#";
+        char inputCharArr[] = formattedInput.toCharArray();
+        int max;
+        int radius[][] = new int[2][input.length() + 1];
         for (int j = 0; j <= 1; j++) {
             radius[j][0] = max = 0;
             int i = 1;
