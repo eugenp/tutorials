@@ -3,7 +3,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>demo-backend</artifactId>
-
+	<name>demo-backend</name>
+	
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>
         <artifactId>spring-cloud-kubernetes</artifactId>

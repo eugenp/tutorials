@@ -6,7 +6,8 @@
     <version>1.0-SNAPSHOT</version>
     <groupId>com.stackify</groupId>
     <packaging>jar</packaging>
-
+	<name>core-kotlin</name>
+	
     <repositories>
         <repository>
             <id>jcenter</id>

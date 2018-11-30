@@ -4,7 +4,8 @@
     <groupId>org.baeldung</groupId>
     <artifactId>json</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <name>json</name>
+    
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
