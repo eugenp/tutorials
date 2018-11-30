@@ -12,6 +12,8 @@ import org.junit.jupiter.api.BeforeEach;
 
 import java.io.IOException;
 
+import javax.transaction.Transactional;
+
 public class NamedQueryIntegrationTest {
     private Session session;
 
@@ -43,13 +45,19 @@ public class NamedQueryIntegrationTest {
         Assert.assertNotNull(result);
         Assert.assertEquals("John Wayne", result.getName());
     }
-
+    
     @Test
-    public void givenMultipleEmployees_WhenFindByEmployeeNumberIsExecutedWOResultClass_ThenCorrectEmployeeIsReturned() {
-        Query query = session.createNamedQuery("DeptEmployee_findByEmployeeNumber");
-        query.setParameter("employeeNo", "003");
-        DeptEmployee result = (DeptEmployee) query.getSingleResult();
+    public void whenUpdateEmployeeDesignationIsExecuted_ThenEmployeeDesignationIsUpdated() {
+        Query updateQuery = session.createNamedQuery("DeptEmployee_UpdateEmployeeDesignation");
+        updateQuery.setParameter("employeeNo", "001");
+        updateQuery.setParameter("newDesignation", "Supervisor");
+        updateQuery.executeUpdate();
+
+        Query<DeptEmployee> readQuery = session.createNamedQuery("DeptEmployee_FindByEmployeeNumber", DeptEmployee.class);
+        readQuery.setParameter("employeeNo", "001");
+        DeptEmployee result = readQuery.getSingleResult();
         Assert.assertNotNull(result);
-        Assert.assertEquals("Lisa Carter", result.getName());
+        Assert.assertEquals("Supervisor", result.getDesignation()); 
+        transaction.commit();
     }
 }
