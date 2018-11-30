@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jsf</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <name>jsf</name>
     <packaging>war</packaging>
 
     <parent>

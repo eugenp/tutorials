@@ -5,7 +5,8 @@
     <artifactId>etl-spring-cloud-data-flow</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-
+	<name>etl-spring-cloud-data-flow</name>
+	
     <parent>
         <groupId>org.baeldung.spring.cloud</groupId>
         <artifactId>spring-cloud-data-flow</artifactId>

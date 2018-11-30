@@ -3,10 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>wildfly-ear</artifactId>
     <packaging>ear</packaging>
-
+	<name>wildfly-ear</name>
+	
     <parent>
         <groupId>com.baeldung.wildfly</groupId>
-        <artifactId>wildfly-example</artifactId>
+        <artifactId>wildfly</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 

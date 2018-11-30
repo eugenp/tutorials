@@ -5,7 +5,7 @@
     <artifactId>struts-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Struts 2</name>
+    <name>struts-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
