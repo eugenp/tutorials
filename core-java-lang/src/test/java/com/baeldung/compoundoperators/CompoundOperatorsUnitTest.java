@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class CompoundOperatorsTest {
+public class CompoundOperatorsUnitTest {
 
     @Test
     public void whenAssignmentOperatorIsUsed_thenValueIsAssigned() {
