@@ -19,6 +19,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 // @PropertySource("persistence-h2.properties")
 // @PropertySource("persistence-hsqldb.properties")
 // @PropertySource("persistence-derby.properties")
+//@PropertySource("persistence-sqlite.properties")
 public class DbConfig {
 
     @Autowired

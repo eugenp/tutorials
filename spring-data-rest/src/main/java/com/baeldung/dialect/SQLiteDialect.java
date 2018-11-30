@@ -45,7 +45,7 @@ public class SQLiteDialect extends Dialect {
     }
 
     public String getDropForeignKeyString() {
-        throw new UnsupportedOperationException("No drop foreign key syntax supported by SQLiteDialect");
+        return "";
     }
 
     public String getAddForeignKeyConstraintString(String constraintName, String[] foreignKey, String referencedTable, String[] primaryKey, boolean referencesPrimaryKey) {
