@@ -12,6 +12,17 @@ import javax.persistence.ManyToOne;
         @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDepartment", query = "from DeptEmployee where department = :department", timeout = 1, fetchSize = 10) })
 @org.hibernate.annotations.NamedNativeQueries({ @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_FindByEmployeeName", query = "select * from deptemployee emp where name=:name", resultClass = DeptEmployee.class),
         @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_UpdateEmployeeDesignation", query = "call UPDATE_EMPLOYEE_DESIGNATION(:employeeNumber, :newDesignation)", resultClass = DeptEmployee.class) })
+        query = "from DeptEmployee where employeeNumber = :employeeNo"),
+        @org.hibernate.annotations.NamedQuery(
+            name = "DeptEmployee_UpdateEmployeeDesignation", 
+            query = "Update DeptEmployee set designation = :newDesignation where employeeNumber = :employeeNo"
+        ),
+        @org.hibernate.annotations.NamedQuery(
+            name = "DeptEmployee_FindAllByDepartment", 
+            query = "from DeptEmployee where department = :department",
+            timeout = 1,
+            fetchSize = 10
+        })
 @Entity
 public class DeptEmployee {
     @Id
