@@ -1,4 +1,4 @@
-package com.baeldung.webFluxLogging;
+package com.baeldung.webflux.logging;
 
 import reactor.core.publisher.Flux;
 
