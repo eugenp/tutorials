@@ -405,7 +405,8 @@
                 <module>jaxb</module>
                 <module>javafx</module>
                 <module>jgroups</module>
-                <module>jee-7</module>
+                <!-- JIRA-10842
+                <module>jee-7</module> -->
                 <module>jee-7-security</module>
                 <module>jjwt</module>
                 <module>jsf</module>
