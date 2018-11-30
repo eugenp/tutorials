@@ -13,3 +13,4 @@
 - [Apache Maven Standard Directory Layout](https://www.baeldung.com/maven-directory-structure)
 - [Apache Maven Tutorial](https://www.baeldung.com/maven)
 - [Use the Latest Version of a Dependency in Maven](https://www.baeldung.com/maven-dependency-latest-version)
+- [Multi-Module Project with Maven](https://www.baeldung.com/maven-multi-module)
