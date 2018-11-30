@@ -2,9 +2,24 @@ package com.baeldung.hibernate.entities;
 
 import javax.persistence.*;
 
-@org.hibernate.annotations.NamedQueries(
-        @org.hibernate.annotations.NamedQuery(name = "findByEmployeeNumber", query = "from DeptEmployee where employeeNumber = :employeeNo")
-)
+import org.hibernate.annotations.FlushModeType;
+
+@org.hibernate.annotations.NamedQueries({
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", 
+        query = "from DeptEmployee where employeeNumber = :employeeNo"),
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllDesignation", 
+        query = "from DeptEmployee where employeeNumber = :employeeNo"),
+        @org.hibernate.annotations.NamedQuery(
+            name = "DeptEmployee_UpdateEmployeeDesignation", 
+            query = "Update DeptEmployee set designation = :newDesignation where employeeNumber = :employeeNo"
+        ),
+        @org.hibernate.annotations.NamedQuery(
+            name = "DeptEmployee_FindAllByDepartment", 
+            query = "from DeptEmployee where department = :department",
+            timeout = 1,
+            fetchSize = 10
+        )
+        })
 @Entity
 public class DeptEmployee {
     @Id
