@@ -4,10 +4,10 @@
     <artifactId>widlfly-web</artifactId>
     <packaging>war</packaging>
 	<name>widlfly-web</name>
-	
+		
     <parent>
         <groupId>com.baeldung.wildfly</groupId>
-        <artifactId>wildfly-example</artifactId>
+        <artifactId>wildfly</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
