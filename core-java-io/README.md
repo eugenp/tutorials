@@ -33,3 +33,5 @@
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
 - [Read a File into an ArrayList](https://www.baeldung.com/java-file-to-arraylist)
 - [Guide to Java OutputStream](https://www.baeldung.com/java-outputstream)
+- [Reading a CSV File into an Array](https://www.baeldung.com/java-csv-file-array)
+- [Guide to BufferedReader](https://www.baeldung.com/java-buffered-reader)

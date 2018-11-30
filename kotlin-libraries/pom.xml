@@ -87,6 +87,13 @@
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.arrow-kt/arrow-core -->
+        <dependency>
+            <groupId>io.arrow-kt</groupId>
+            <artifactId>arrow-core</artifactId>
+            <version>0.7.3</version>
+        </dependency>
+
     </dependencies>
 
     <properties>
