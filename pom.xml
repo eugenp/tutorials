@@ -324,6 +324,7 @@
 			<modules>
 				<module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -513,6 +514,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -870,6 +872,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1055,6 +1058,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1263,6 +1267,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>

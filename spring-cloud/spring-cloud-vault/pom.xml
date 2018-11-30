@@ -12,9 +12,9 @@
 
 	<parent>
 		<groupId>com.baeldung</groupId>
-		<artifactId>parent-boot-2</artifactId>
+		<artifactId>parent-boot-2.0-temp</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../../parent-boot-2</relativePath>
+		<relativePath>../../parent-boot-2.0-temp</relativePath>
 	</parent>
 
 	<!-- <parent> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-parent</artifactId> 
