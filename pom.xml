@@ -523,7 +523,7 @@
 				<module>spring-jooq</module>
 				<module>persistence-modules/spring-jpa</module>
 				<module>ddd</module>
-				
+				<module>hexagonal-architecture-example</module>
 			</modules>
 
 		</profile>
