@@ -468,18 +468,17 @@
                 <module>persistence-modules/hbase</module>
                 <module>persistence-modules/influxdb</module>
                 <module>persistence-modules/spring-hibernate4</module>
+                <module>persistence-modules/spring-data-mongodb</module>
+                <module>persistence-modules/java-cassandra</module>
+                <module>persistence-modules/spring-data-cassandra</module>
+                <module>persistence-modules/spring-data-couchbase-2</module>
+                <module>persistence-modules/spring-data-redis</module>
                 
                 <module>reactor-core</module>
                 <module>resteasy</module>
                 <module>rxjava</module>
                 <module>rxjava-2</module>
                 <module>rabbitmq</module>
-                
-                <!-- very long running - temporarily disabled -->
-                <!--
-                
-                --> 
-                <module>persistence-modules/spring-data-mongodb</module>
                 
 			</modules>
 
@@ -600,7 +599,7 @@
                 <module>spring-security-mvc-session</module>
                 <module>spring-security-mvc-socket</module>
                 <module>spring-security-openid</module>
-                <!--<module>spring-security-react</module> -->
+                <module>spring-security-react</module>
                 <module>spring-security-rest-basic-auth</module>
                 <module>spring-security-rest-custom</module>
                 <module>spring-security-rest</module>
@@ -628,7 +627,7 @@
                 <module>spring-security-thymeleaf</module>
                 <module>spring-boot-ctx-fluent</module>
                 <module>spring-webflux-amqp</module>
-                                
+                
                 <module>spark-java</module>
                 <module>saas</module>
                 <module>struts-2</module>
@@ -662,12 +661,7 @@
                 
                 <!-- problematic -->
                 <!--
-                <module>persistence-modules/java-cassandra</module>
-                <module>persistence-modules/spring-data-cassandra</module>
                 <module>logging-modules/log4j2</module>
-                <module>persistence-modules/spring-data-couchbase-2</module>
-                <module>persistence-modules/spring-data-redis</module>
-
                 <module>jmeter</module>
                 -->
 
@@ -1020,18 +1014,17 @@
                 <module>persistence-modules/hbase</module>
                 <module>persistence-modules/influxdb</module>
                 <module>persistence-modules/spring-hibernate4</module>
+                <module>persistence-modules/spring-data-mongodb</module>
+                <module>persistence-modules/java-cassandra</module>
+                <module>persistence-modules/spring-data-cassandra</module>
+                <module>persistence-modules/spring-data-couchbase-2</module>
+                <module>persistence-modules/spring-data-redis</module>
                 
                 <module>reactor-core</module>
                 <module>resteasy</module>
                 <module>rxjava</module>
                 <module>rxjava-2</module>
                 <module>rabbitmq</module>
-                
-                <!-- very long running - temporarily disabled -->
-                <!--
-                
-                --> 
-                <module>persistence-modules/spring-data-mongodb</module>
                 
             </modules>
 
@@ -1148,7 +1141,7 @@
                 <module>spring-security-mvc-session</module>
                 <module>spring-security-mvc-socket</module>
                 <module>spring-security-openid</module>
-                <!--<module>spring-security-react</module> -->
+                <module>spring-security-react</module>
                 <module>spring-security-rest-basic-auth</module>
                 <module>spring-security-rest-custom</module>
                 <module>spring-security-rest</module>
