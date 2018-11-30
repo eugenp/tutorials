@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class JsonEscapeTest {
+class JsonEscapeUnitTest {
 
     private JsonEscape testedInstance;
     private static final String EXPECTED = "{\"message\":\"Hello \\\"World\\\"\"}";
