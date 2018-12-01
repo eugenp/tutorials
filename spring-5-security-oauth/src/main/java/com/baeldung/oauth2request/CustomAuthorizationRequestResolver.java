@@ -1,4 +1,4 @@
-package com.baeldung.oauth2;
+package com.baeldung.oauth2request;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,5 +46,12 @@ public class CustomAuthorizationRequestResolver implements OAuth2AuthorizationRe
 
     private OAuth2AuthorizationRequest customizeAuthorizationRequest1(OAuth2AuthorizationRequest req) {
         return OAuth2AuthorizationRequest.from(req).state("xyz").build();
+    }
+    
+    private OAuth2AuthorizationRequest customizeOktaReq(OAuth2AuthorizationRequest req) {
+        Map<String,Object> extraParams = new HashMap<String,Object>();
+        extraParams.putAll(req.getAdditionalParameters()); 
+        extraParams.put("idp", "https://idprovider.com");
+        return OAuth2AuthorizationRequest.from(req).additionalParameters(extraParams).build();
     }
 }
