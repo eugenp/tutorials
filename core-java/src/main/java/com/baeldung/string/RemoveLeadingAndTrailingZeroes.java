@@ -99,5 +99,4 @@ public class RemoveLeadingAndTrailingZeroes {
     public static String removeTrailingZeroesWithRegex(String s) {
         return s.replaceAll("(?!^)0+$", "");
     }
-
 }
