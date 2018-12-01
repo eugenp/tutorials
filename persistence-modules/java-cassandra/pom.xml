@@ -4,6 +4,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>java-cassandra</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+	<name>java-cassandra</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

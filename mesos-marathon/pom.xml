@@ -5,7 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>mesos-marathon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+	<name>mesos-marathon</name>
+	
     <parent>
         <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>

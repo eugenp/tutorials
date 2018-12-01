@@ -5,6 +5,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>hibernate5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<name>hibernate5</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

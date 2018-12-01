@@ -5,6 +5,7 @@
 	<groupId>com.baeldung.msf4j</groupId>
 	<artifactId>msf4j</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name>msf4j</name>
 
     <parent>
         <artifactId>parent-modules</artifactId>

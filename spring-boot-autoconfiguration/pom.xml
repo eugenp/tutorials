@@ -5,7 +5,7 @@
     <artifactId>spring-boot-autoconfiguration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>spring-boot-auto-configuration</name>
+    <name>spring-boot-autoconfiguration</name>
     <description>This is simple boot application demonstrating a custom auto-configuration</description>
 
     <parent>
