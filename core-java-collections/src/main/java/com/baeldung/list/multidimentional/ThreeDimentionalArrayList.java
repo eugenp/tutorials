@@ -20,7 +20,6 @@ public class ThreeDimentionalArrayList {
 			}
 		}
 		
-		//We can add colors to points in space
 		//Set Red color for points (0,0,0) and (0,0,1)
 		space.get(0).get(0).add("Red");
 		space.get(0).get(0).add("Red");
