@@ -364,7 +364,7 @@
                 <module>core-groovy</module>
                 <module>couchbase</module>
                 <module>core-java-concurrency</module>
-                <module>core-kotlin</module>
+                <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
                 
                 <module>dozer</module>
@@ -916,7 +916,7 @@
                 <module>core-groovy</module>
                 <module>couchbase</module>
                 <module>core-java-concurrency</module>
-                <module>core-kotlin</module>
+                <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
                 
                 <module>dozer</module>
