@@ -7,6 +7,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -14,11 +15,12 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
-//@Configuration
+@Configuration
 @EnableJpaRepositories(basePackages = "com.baeldung.repositories")
 // @PropertySource("persistence-h2.properties")
 // @PropertySource("persistence-hsqldb.properties")
 // @PropertySource("persistence-derby.properties")
+//@PropertySource("persistence-sqlite.properties")
 public class DbConfig {
 
     @Autowired
@@ -59,3 +61,25 @@ public class DbConfig {
     }
 
 }
+
+@Configuration
+@Profile("h2")
+@PropertySource("persistence-h2.properties")
+class H2Config {}
+
+@Configuration
+@Profile("hsqldb")
+@PropertySource("persistence-hsqldb.properties")
+class HsqldbConfig {}
+
+
+@Configuration
+@Profile("derby")
+@PropertySource("persistence-derby.properties")
+class DerbyConfig {}
+
+
+@Configuration
+@Profile("sqlite")
+@PropertySource("persistence-sqlite.properties")
+class SqliteConfig {}
