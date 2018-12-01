@@ -631,7 +631,7 @@
                 <module>spring-security-mvc-session</module>
                 <module>spring-security-mvc-socket</module>
                 <module>spring-security-openid</module>
-                <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) -->
+                <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
                 <module>spring-security-rest-basic-auth</module>
                 <module>spring-security-rest-custom</module>
                 <module>spring-security-rest</module>
@@ -1179,7 +1179,7 @@
                 <module>spring-security-mvc-session</module>
                 <module>spring-security-mvc-socket</module>
                 <module>spring-security-openid</module>
-                <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) -->
+                <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
                 <module>spring-security-rest-basic-auth</module>
                 <module>spring-security-rest-custom</module>
                 <module>spring-security-rest</module>
