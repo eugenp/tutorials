@@ -422,7 +422,7 @@
                 <module>java-spi</module>
                 <module>java-ee-8-security-api</module>
                 
-                <module>libraries</module>
+                <!-- <module>libraries</module> --> <!-- very long running -->
                 <module>libraries-data</module>
                 <module>linkrest</module>
                 <module>logging-modules/log-mdc</module>
@@ -974,7 +974,7 @@
                 <module>java-spi</module>
                 <module>java-ee-8-security-api</module>
                 
-                <module>libraries</module>
+                <!-- <module>libraries</module> --> <!-- very long running -->
                 <module>libraries-data</module>
                 <module>linkrest</module>
                 <module>logging-modules/log-mdc</module>
