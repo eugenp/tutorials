@@ -7,7 +7,7 @@
     <packaging>pom</packaging>
 	
     <parent>
-        <groupId>org.baeldung.spring.cloud</groupId>
+        <groupId>com.baeldung</groupId>
         <artifactId>spring-cloud-data-flow</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
