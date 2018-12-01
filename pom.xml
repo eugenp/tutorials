@@ -363,7 +363,7 @@
                 <module>core-java-8</module>
                 <module>core-groovy</module>
                 <module>couchbase</module>
-                <module>core-java-concurrency</module>
+                <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
                 <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
                 
