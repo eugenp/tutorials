@@ -44,8 +44,11 @@ public class LongestSubstringNonRepeatingCharacters {
     }
 
     public static void main(String[] args) {
-        String input = "CODINGISAWESOME";
-        System.out.println(getUniqueCharacterSubstring(input));
+        if(args.length > 0) {
+            System.out.println(getUniqueCharacterSubstring(args[0]));
+        } else {
+            System.err.println("This program expects command-line input. Please try again!");
+        }
     }
 
 }
