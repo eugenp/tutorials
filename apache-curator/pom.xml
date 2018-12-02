@@ -4,6 +4,7 @@
     <artifactId>apache-curator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+	<name>apache-curator</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

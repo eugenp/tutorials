@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>disabling-console-log4j2</artifactId>
-
+	<name>disabling-console-log4j2</name>
 	<!-- this needs to use the boot parent directly in order to not inherit logback dependencies -->
 
 	<parent>

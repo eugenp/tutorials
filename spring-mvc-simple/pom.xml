@@ -4,8 +4,7 @@
     <artifactId>spring-mvc-simple</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Spring MVC simple Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <name>spring-mvc-simple</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -20,10 +19,6 @@
             <artifactId>spring-oxm</artifactId>
             <version>${spring-oxm.version}</version>
         </dependency>
-        <dependency>
-    <groupId>org.springframework</groupId>
-    <artifactId>spring-context-support</artifactId>
-</dependency>
 <dependency>
     <groupId>com.sun.mail</groupId>
     <artifactId>javax.mail</artifactId>

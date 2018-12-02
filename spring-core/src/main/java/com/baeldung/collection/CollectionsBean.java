@@ -1,12 +1,13 @@
 package com.baeldung.collection;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * Created by Gebruiker on 5/18/2018.
@@ -24,6 +25,9 @@ public class CollectionsBean {
     @Qualifier("CollectionsBean")
     private List<BaeldungBean> beanList = new ArrayList<>();
 
+    @Value("${names.list:}#{T(java.util.Collections).emptyList()}")
+    private List<String> nameListWithDefaultValue;
+    
     public CollectionsBean() {
     }
 
@@ -50,5 +54,9 @@ public class CollectionsBean {
 
     public void printBeanList() {
         System.out.println(beanList);
+    }
+    
+    public void printNameListWithDefaults() {
+        System.out.println(nameListWithDefaultValue);
     }
 }

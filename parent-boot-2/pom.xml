@@ -3,6 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>parent-boot-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<name>parent-boot-2</name>
     <packaging>pom</packaging>
     <description>Parent for all Spring Boot 2 modules</description>
 
@@ -42,6 +43,10 @@
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
 					<version>${spring-boot.version}</version>
+					<configuration>
+						<mainClass>${start-class}</mainClass>
+						<!-- this is necessary as we're not using the Boot parent -->
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -76,3 +81,5 @@
         <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
     </properties>
 </project>
+
+

@@ -1,5 +1,6 @@
 package com.baeldung.reactive;
 
+import com.baeldung.web.reactive.Task;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.springframework.http.server.reactive.HttpHandler;
@@ -7,9 +8,6 @@ import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
-
-import com.baeldung.web.reactive.Task;
-
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.ipc.netty.NettyContext;
@@ -21,7 +19,6 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RequestPredicates.POST;
 
 public class Spring5ReactiveServerClientIntegrationTest {
-
     private static NettyContext nettyContext;
 
     @BeforeAll

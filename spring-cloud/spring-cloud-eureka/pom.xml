@@ -6,7 +6,7 @@
     <artifactId>spring-cloud-eureka</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Spring Cloud Eureka</name>
+    <name>spring-cloud-eureka</name>
     <description>Spring Cloud Eureka Server and Sample Clients</description>
 
     <modules>
@@ -23,7 +23,8 @@
     </parent>
 
     <properties>
-        <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
+        <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
+        <spring-cloud-dependencies.version>Finchley.SR2</spring-cloud-dependencies.version>
     </properties>
 
 </project>

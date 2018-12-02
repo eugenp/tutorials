@@ -5,6 +5,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>java-mongodb</artifactId>
     <version>1.0-SNAPSHOT</version>
+	<name>java-mongodb</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
