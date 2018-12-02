@@ -17,25 +17,25 @@ public class FactorialUnitTest {
     }
 
     @Test
-    public void givenNumber_whenCallingFactorialUsingForLoop_calcualeFactorial() {
+    public void whenCalculatingFactorialUsingForLoop_thenCorrect() {
         int n = 5;
         assertThat(factorial.factorialUsingForLoop(n)).isEqualTo(120);
     }
 
     @Test
-    public void givenNumber_whenCallingFactorialUsingStreams_calcualeFactorial() {
+    public void whenCalculatingFactorialUsingStreams_thenCorrect() {
         int n = 5;
         assertThat(factorial.factorialUsingStreams(n)).isEqualTo(120);
     }
 
     @Test
-    public void givenNumber_whenCallingFactorialUsingRecursion_calcualeFactorial() {
+    public void whenCalculatingFactorialUsingRecursion_thenCorrect() {
         int n = 5;
         assertThat(factorial.factorialUsingRecursion(n)).isEqualTo(120);
     }
 
     @Test
-    public void givenNumber_whenfactorialUsingMemoize_calcualeFactorial() {
+    public void whenCalculatingFactorialUsingMemoize_thenCorrect() {
         int n = 5;
         assertThat(factorial.factorialUsingMemoize(n)).isEqualTo(120);
         n = 6;
@@ -43,19 +43,19 @@ public class FactorialUnitTest {
     }
 
     @Test
-    public void givenNumber_whenCallingFactorialHavingLargeResult_calcualeFactorial() {
+    public void whenCalculatingFactorialHavingLargeResult_thenCorrect() {
         int n = 22;
         assertThat(factorial.factorialHavingLargeResult(n)).isEqualTo(new BigInteger("1124000727777607680000"));
     }
 
     @Test
-    public void givenNumber_whenCallingFactorialUsingApacheCommons_calcualeFactorial() {
+    public void whenCalculatingFactorialUsingApacheCommons_thenCorrect() {
         int n = 5;
         assertThat(factorial.factorialUsingApacheCommons(n)).isEqualTo(120);
     }
 
     @Test
-    public void givenNumber_whenCallingFactorialUsingGuava_calcualeFactorial() {
+    public void whenCalculatingFactorialUsingGuava_thenCorrect() {
         int n = 22;
         assertThat(factorial.factorialUsingGuava(n)).isEqualTo(new BigInteger("1124000727777607680000"));
     }
