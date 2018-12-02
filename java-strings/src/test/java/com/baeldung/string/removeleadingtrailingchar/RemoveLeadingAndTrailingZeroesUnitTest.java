@@ -1,4 +1,4 @@
-package com.baeldung.string;
+package com.baeldung.string.removeleadingtrailingchar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

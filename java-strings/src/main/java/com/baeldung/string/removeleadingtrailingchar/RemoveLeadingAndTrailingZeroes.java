@@ -1,6 +1,7 @@
-package com.baeldung.string;
+package com.baeldung.string.removeleadingtrailingchar;
 
-import org.apache.commons.lang.StringUtils;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.google.common.base.CharMatcher;
 
