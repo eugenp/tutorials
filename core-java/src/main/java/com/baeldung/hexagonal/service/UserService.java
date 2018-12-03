@@ -4,7 +4,7 @@ import com.baeldung.hexagonal.data.User;
 
 public interface UserService {
 
-    public String login(String uid, String pwd);
+    public boolean login(String uid, String pwd);
 
-    public String register(User user);
+    public boolean register(User user);
 }

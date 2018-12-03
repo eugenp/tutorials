@@ -12,22 +12,22 @@ public class DefaultUserService implements UserService {
     }
 
     @Override
-    public String login(String uid, String pwd) {
+    public boolean login(String uid, String pwd) {
         boolean loginSuccess = userRepository.fetch(uid, pwd);
         if (loginSuccess) {
-            return "User is logged in successfully";
+            return true;
         } else {
-            return "User not able to login due to incorrect username or password";
+            return false;
         }
     }
 
     @Override
-    public String register(User user) {
+    public boolean register(User user) {
         boolean registrationSuccess = userRepository.create(user);
         if (registrationSuccess) {
-            return "User registration success";
+            return true;
         } else {
-            return "User registration failed";
+            return false;
         }
     }
 

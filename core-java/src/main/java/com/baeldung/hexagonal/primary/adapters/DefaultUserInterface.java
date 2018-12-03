@@ -14,7 +14,12 @@ public class DefaultUserInterface implements UserInterface {
 
     @Override
     public String loginUser(String uid, String pwd) {
-        return userService.login(uid, pwd);
+        boolean loginSuccess = userService.login(uid, pwd);
+        if (loginSuccess) {
+            return "User is logged in successfully";
+        } else {
+            return "User not able to login due to incorrect username or password";
+        }
     }
 
     @Override
@@ -22,7 +27,12 @@ public class DefaultUserInterface implements UserInterface {
         User user = new User();
         user.setUid(uid);
         user.setPassword(pwd);
-        return userService.register(user);
+        boolean registrationSuccess = userService.register(user);
+        if (registrationSuccess) {
+            return "User registration success";
+        } else {
+            return "User registration failed";
+        }
     }
 
 }
