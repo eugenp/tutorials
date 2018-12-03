@@ -8,10 +8,10 @@
     <packaging>jar</packaging>
 
     <parent>
-        <artifactId>parent-boot-2.0-temp</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-2.0-temp</relativePath>
+        <relativePath>../../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -48,20 +48,8 @@
             <artifactId>junit-jupiter-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>${junit.platform.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
-            <version>${junit.platform.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -97,8 +85,6 @@
         <nosqlunit.version>0.10.0</nosqlunit.version>
         <spring-data-commons.version>2.0.3.RELEASE</spring-data-commons.version>
         <embedded-redis.version>0.6</embedded-redis.version>
-        <junit.platform.version>1.0.0</junit.platform.version>
-        <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
 
 </project>
