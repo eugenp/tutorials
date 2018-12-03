@@ -7,7 +7,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
 @Component
-public class FunctionalHandler {
+public class CorsGlobalFunctionalHandler {
 
     public Mono<ServerResponse> useHandler(final ServerRequest request) {
         final String responseMessage = "CORS GLOBAL CONFIG IS NOT EFFECTIVE ON FUNCTIONAL ENDPOINTS!!!";

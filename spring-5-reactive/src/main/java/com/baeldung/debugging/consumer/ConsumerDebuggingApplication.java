@@ -14,17 +14,17 @@ import reactor.core.publisher.Hooks;
 
 @SpringBootApplication(exclude = MongoReactiveAutoConfiguration.class)
 @EnableScheduling
-public class ConsumerSSEApplication {
+public class ConsumerDebuggingApplication {
 
     public static void main(String[] args) {
         Hooks.onOperatorDebug();
-        SpringApplication app = new SpringApplication(ConsumerSSEApplication.class);
+        SpringApplication app = new SpringApplication(ConsumerDebuggingApplication.class);
         app.setDefaultProperties(Collections.singletonMap("server.port", "8082"));
         app.run(args);
     }
 
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+    public SecurityWebFilterChain debuggingConsumerSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
             .anyExchange()
             .permitAll();
