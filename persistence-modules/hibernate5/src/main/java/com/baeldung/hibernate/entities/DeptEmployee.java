@@ -4,22 +4,12 @@ import javax.persistence.*;
 
 import org.hibernate.annotations.FlushModeType;
 
-@org.hibernate.annotations.NamedQueries({
-        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", 
-        query = "from DeptEmployee where employeeNumber = :employeeNo"),
-        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllDesignation", 
-        query = "from DeptEmployee where employeeNumber = :employeeNo"),
-        @org.hibernate.annotations.NamedQuery(
-            name = "DeptEmployee_UpdateEmployeeDesignation", 
-            query = "Update DeptEmployee set designation = :newDesignation where employeeNumber = :employeeNo"
-        ),
-        @org.hibernate.annotations.NamedQuery(
-            name = "DeptEmployee_FindAllByDepartment", 
-            query = "from DeptEmployee where department = :department",
-            timeout = 1,
-            fetchSize = 10
-        )
-        })
+@org.hibernate.annotations.NamedQueries({ @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", query = "from DeptEmployee where employeeNumber = :employeeNo"),
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDesgination", query = "from DeptEmployee where designation = :designation"),
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_UpdateEmployeeDepartment", query = "Update DeptEmployee set department = :newDepartment where employeeNumber = :employeeNo"),
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDepartment", query = "from DeptEmployee where department = :department", timeout = 1, fetchSize = 10) })
+@org.hibernate.annotations.NamedNativeQueries({ @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_FindByEmployeeName", query = "select * from deptemployee emp where name=:name", resultClass = DeptEmployee.class),
+        @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_UpdateEmployeeDesignation", query = "call UPDATE_EMPLOYEE_DESIGNATION(:employeeNumber, :newDesignation)", resultClass = DeptEmployee.class) })
 @Entity
 public class DeptEmployee {
     @Id
@@ -34,7 +24,7 @@ public class DeptEmployee {
 
     @ManyToOne
     private Department department;
-    
+
     public DeptEmployee(String name, String employeeNumber, Department department) {
         this.name = name;
         this.employeeNumber = employeeNumber;
