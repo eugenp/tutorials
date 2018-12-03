@@ -71,6 +71,17 @@
             <artifactId>injekt-core</artifactId>
             <version>1.16.1</version>
         </dependency>
+        <dependency>
+            <groupId>uy.kohesive.kovert</groupId>
+            <artifactId>kovert-vertx</artifactId>
+            <version>[1.5.0,1.6.0)</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>nl.komponents.kovenant</groupId>
+                    <artifactId>kovenant</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <properties>
