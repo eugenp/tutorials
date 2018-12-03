@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 import com.google.common.collect.ImmutableMap;
 
 
-public class ImmutableMapTest {
+public class ImmutableMapUnitTest {
 
 	@Test
 	public void whenCollectionsUnModifiableMapMethod_thenOriginalCollectionChangesReflectInUnmodifiableMap() {
