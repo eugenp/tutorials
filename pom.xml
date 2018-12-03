@@ -479,6 +479,7 @@
                 <module>persistence-modules/spring-data-cassandra</module>
                 <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-redis</module>
+				<module>persistence-modules/spring-boot-persistence-mongodb</module>
                 
                 <module>reactor-core</module>
                 <module>resteasy</module>
