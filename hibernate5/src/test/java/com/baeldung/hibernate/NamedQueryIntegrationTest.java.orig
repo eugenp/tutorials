@@ -1,7 +1,8 @@
 package com.baeldung.hibernate;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
 import java.io.IOException;
-
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -42,6 +43,12 @@ public class NamedQueryIntegrationTest {
         session.persist(purchaseDepartment);
         purchaseDeptId = purchaseDepartment.getId();
 =======
+import com.baeldung.hibernate.entities.Department;
+import com.baeldung.hibernate.entities.DeptEmployee;
+=======
+import java.io.IOException;
+
+>>>>>>> Added new initialisation script and new queries
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
@@ -83,6 +90,9 @@ public class NamedQueryIntegrationTest {
         transaction = session.beginTransaction();
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> Added new initialisation script and new queries
     
     @After
     public void tearDown() {
@@ -90,6 +100,7 @@ public class NamedQueryIntegrationTest {
             transaction.rollback();
         }
     }
+<<<<<<< HEAD
 
     @Test
     public void whenNamedQueryIsCalledUsingCreateNamedQuery_ThenOk() {
@@ -138,13 +149,8 @@ public class NamedQueryIntegrationTest {
         transaction.commit();        
     }       
 =======
-    
-    @After
-    public void tearDown() {
-        if(transaction.isActive()) {
-            transaction.rollback();
-        }
-    }
+=======
+>>>>>>> Added new initialisation script and new queries
 
     @Test
     public void givenMultipleEmployees_WhenFindByEmployeeNumberIsExecutedWithResultClass_ThenCorrectEmployeeIsReturned() {

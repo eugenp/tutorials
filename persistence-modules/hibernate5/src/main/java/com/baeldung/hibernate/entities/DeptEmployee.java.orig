@@ -1,10 +1,16 @@
 package com.baeldung.hibernate.entities;
 
+<<<<<<< HEAD
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+=======
+import javax.persistence.*;
+
+import org.hibernate.annotations.FlushModeType;
+>>>>>>> Added new initialisation script and new queries
 
 @org.hibernate.annotations.NamedQueries({ @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", query = "from DeptEmployee where employeeNumber = :employeeNo"),
         @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDesgination", query = "from DeptEmployee where designation = :designation"),
@@ -12,15 +18,7 @@ import javax.persistence.ManyToOne;
         @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDepartment", query = "from DeptEmployee where department = :department", timeout = 1, fetchSize = 10) })
 @org.hibernate.annotations.NamedNativeQueries({ @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_FindByEmployeeName", query = "select * from deptemployee emp where name=:name", resultClass = DeptEmployee.class),
         @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_UpdateEmployeeDesignation", query = "call UPDATE_EMPLOYEE_DESIGNATION(:employeeNumber, :newDesignation)", resultClass = DeptEmployee.class) })
-
-import javax.persistence.*;
-
-import org.hibernate.annotations.FlushModeType;
-
-@org.hibernate.annotations.NamedQueries({
-        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", 
-        query = "from DeptEmployee where employeeNumber = :employeeNo"),
-        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllDesignation", 
+<<<<<<< HEAD
         query = "from DeptEmployee where employeeNumber = :employeeNo"),
         @org.hibernate.annotations.NamedQuery(
             name = "DeptEmployee_UpdateEmployeeDesignation", 
@@ -31,8 +29,9 @@ import org.hibernate.annotations.FlushModeType;
             query = "from DeptEmployee where department = :department",
             timeout = 1,
             fetchSize = 10
-        )
         })
+=======
+>>>>>>> Added new initialisation script and new queries
 @Entity
 public class DeptEmployee {
     @Id
