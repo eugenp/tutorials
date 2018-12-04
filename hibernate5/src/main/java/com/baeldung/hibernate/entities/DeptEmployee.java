@@ -1,8 +1,10 @@
 package com.baeldung.hibernate.entities;
 
-import javax.persistence.*;
-
-import org.hibernate.annotations.FlushModeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @org.hibernate.annotations.NamedQueries({ @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", query = "from DeptEmployee where employeeNumber = :employeeNo"),
         @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDesgination", query = "from DeptEmployee where designation = :designation"),
