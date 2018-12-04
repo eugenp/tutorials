@@ -2,6 +2,7 @@ package com.baeldung.mongodb;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.baeldung.boot.Application;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -6,7 +6,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-roo</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
-    <name>Spring Roo</name>
+    <name>spring-roo</name>
     <packaging>jar</packaging>
 
     <parent>

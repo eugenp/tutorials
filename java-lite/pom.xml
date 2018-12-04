@@ -5,6 +5,7 @@
     <groupId>org.baeldung</groupId>
     <artifactId>java-lite</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>java-lite</name>
     <packaging>war</packaging>
 
     <parent>
