@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>apache-shiro</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <name>apache-shiro</name>
+    
     <parent>
         <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
@@ -36,13 +36,11 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${slf4j-version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j-version}</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
@@ -53,26 +51,9 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <apache-shiro-core-version>1.4.0</apache-shiro-core-version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <java.version>1.8</java.version>
         <log4j-version>1.2.17</log4j-version>
-        <slf4j-version>1.7.25</slf4j-version>
     </properties>
 
 </project>

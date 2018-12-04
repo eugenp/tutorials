@@ -4,6 +4,7 @@
     <groupId>com.stackify</groupId>
     <artifactId>deep-jsf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>deep-jsf</name>
     <packaging>war</packaging>
     
     <parent>

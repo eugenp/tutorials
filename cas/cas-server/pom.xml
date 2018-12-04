@@ -2,11 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd ">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>cas-server</artifactId>
-    <packaging>war</packaging>
     <version>1.0</version>
+    <name>cas-server</name>
+    <packaging>war</packaging>
 
+    <parent>
+        <artifactId>parent-boot-1</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-1</relativePath>
+    </parent>
+    
     <dependencies>
         <dependency>
             <groupId>org.apereo.cas</groupId>
@@ -39,7 +46,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${springboot.version}</version>
                 <configuration>
                     <mainClass>${mainClassName}</mainClass>
                     <addResources>true</addResources>
@@ -74,41 +80,9 @@
                     </overlays>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-            </plugin>
         </plugins>
         <finalName>cas</finalName>
     </build>
-
-    <repositories>
-        <repository>
-            <id>sonatype-releases</id>
-            <url>http://oss.sonatype.org/content/repositories/releases/</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>sonatype-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-        </repository>
-        <repository>
-            <id>shibboleth-releases</id>
-            <url>https://build.shibboleth.net/nexus/content/repositories/releases</url>
-        </repository>
-    </repositories>
 
     <profiles>
         <profile>
@@ -214,8 +188,7 @@
     </profiles>
 
     <properties>
-        <cas.version>5.3.0-SNAPSHOT</cas.version>
-        <springboot.version>1.5.13.RELEASE</springboot.version>
+        <cas.version>5.3.3</cas.version>
         <!-- app.server could be -jetty, -undertow, -tomcat, or blank if you plan to provide appserver -->
         <app.server>-tomcat</app.server>
 
@@ -223,12 +196,10 @@
         <isExecutable>false</isExecutable>
         <manifestFileToUse>${project.build.directory}/war/work/org.apereo.cas/cas-server-webapp${app.server}/META-INF/MANIFEST.MF</manifestFileToUse>
 
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <wrapper-maven-plugin.version>0.0.4</wrapper-maven-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
+        
         <echo-maven-plugin.version>0.3.0</echo-maven-plugin.version>
         <pgpverify-maven-plugin.version>1.1.0</pgpverify-maven-plugin.version>
     </properties>

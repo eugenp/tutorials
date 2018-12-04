@@ -5,14 +5,14 @@
     <groupId>com.stackify.guest</groupId>
     <artifactId>spring-mvc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-mvc</name>
+    <packaging>jar</packaging>
     <description>Spring MVC sample project</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.0.M5</version>
+        <version>2.0.0.RELEASE</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
 

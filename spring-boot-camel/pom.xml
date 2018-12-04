@@ -5,7 +5,8 @@
     <groupId>com.example</groupId>
     <artifactId>spring-boot-camel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+	<name>spring-boot-camel</name>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -37,6 +38,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot-starter.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

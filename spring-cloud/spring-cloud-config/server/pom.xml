@@ -3,35 +3,32 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <artifactId>server</artifactId>
+	<name>server</name>
+	
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>
         <artifactId>spring-cloud-config</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <artifactId>server</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-config-server</artifactId>
-            <version>${spring-cloud-config-server.version}</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-            <version>${org.springframework.boot.version}</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${org.springframework.boot.version}</version>
-        </dependency>
+            </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${org.springframework.boot.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -41,14 +38,8 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${org.springframework.boot.version}</version>
-            </plugin>
+                </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <spring-cloud-config-server.version>1.2.2.RELEASE</spring-cloud-config-server.version>
-        <org.springframework.boot.version>1.4.2.RELEASE</org.springframework.boot.version>
-    </properties>
 
 </project>

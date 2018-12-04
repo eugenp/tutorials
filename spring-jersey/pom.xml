@@ -6,7 +6,8 @@
     <artifactId>spring-jersey</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-
+	<name>spring-jersey</name>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -118,6 +119,14 @@
             <version>3.10.0</version>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Test -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>1.5.10.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
 
     </dependencies>
 

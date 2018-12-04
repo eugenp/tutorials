@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>core-java-io</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -155,6 +154,12 @@
             <artifactId>async-http-client</artifactId>
             <version>${async-http-client.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -166,36 +171,6 @@
             </resource>
         </resources>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*LiveTest.java</exclude>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*IntTest.java</exclude>
-                        <exclude>**/*LongRunningUnitTest.java</exclude>
-                        <exclude>**/*ManualTest.java</exclude>
-                    </excludes>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-maven-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>spring-boot</classifier>
-                            <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -229,32 +204,6 @@
             <id>integration</id>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*ManualTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/*IntegrationTest.java</include>
-                                        <include>**/*IntTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
@@ -304,20 +253,17 @@
         <protonpack.version>1.13</protonpack.version>
         <streamex.version>0.6.5</streamex.version>
         <vavr.version>0.9.0</vavr.version>
-
+        <opencsv.version>4.1</opencsv.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>
 
         <!-- maven plugins -->
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <hsqldb.version>2.4.0</hsqldb.version>
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <async-http-client.version>2.4.5</async-http-client.version>
-        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
 </project>

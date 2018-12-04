@@ -1,0 +1,13 @@
+{
+    "error": {
+        "title": "Page d'erreur !",
+        "http": {
+            "400": "Mauvaise requête.",
+            "403": "Vous n'avez pas les droits pour accéder à cette page.",
+            "405": "Le verbe HTTP que vous avez utilisé n'est pas reconnu par cet URL.",
+            "500": "Erreur interne du serveur."
+        },
+        "concurrencyFailure": "Un autre utilisateur a modifié ces données en même temps que vous. Vos changements n'ont pas été sauvegardés.",
+        "validation": "Erreur de validation côté serveur."
+    }
+}
