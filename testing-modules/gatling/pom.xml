@@ -6,7 +6,8 @@
 	<groupId>org.baeldung</groupId>
 	<artifactId>gatling</artifactId>
 	<version>1.0-SNAPSHOT</version>
-
+	<name>gatling</name>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

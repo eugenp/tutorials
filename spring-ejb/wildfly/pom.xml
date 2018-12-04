@@ -1,0 +1,93 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.wildfly</groupId>
+    <artifactId>wildfly</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+	<name>wildfly</name>
+
+    <parent>
+        <groupId>com.baeldung.spring.ejb</groupId>
+        <artifactId>spring-ejb</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>widlfly-web</module>
+        <module>wildfly-ear</module>
+        <module>wildfly-jpa</module>
+        <module>wildfly-ejb-interfaces</module>
+        <module>wildfly-ejb</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Dependencies for other libraries -->
+            <!-- Dependency for java ee -->
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${javaee-api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- Dependency for wildfly -->
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-javaee7</artifactId>
+                <version>${wildfly-javaee7.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <!-- Dependency on Hibernate -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-core</artifactId>
+                <version>${hibernate-core.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- Dependency for ear module -->
+            <dependency>
+                <groupId>com.baeldung.wildfly</groupId>
+                <artifactId>wildlfy-ear</artifactId>
+                <version>${wildlfy.version}</version>
+                <type>ear</type>
+            </dependency>
+            <!-- Dependency for web module -->
+            <dependency>
+                <groupId>com.baeldung.wildfly</groupId>
+                <artifactId>wildlfy-web</artifactId>
+                <version>${wildlfy.version}</version>
+                <type>war</type>
+            </dependency>
+            <!-- Dependency for jpa module -->
+            <dependency>
+                <groupId>com.baeldung.wildfly</groupId>
+                <artifactId>wildlfy-jpa</artifactId>
+                <version>${wildlfy.version}</version>
+            </dependency>
+            <!-- Dependency for EJB -->
+            <dependency>
+                <groupId>com.baeldung.wildfly</groupId>
+                <artifactId>wildfly-ejb</artifactId>
+                <version>${wildlfy.version}</version>
+            </dependency>
+            <!-- Dependency for EJB interfaces -->
+            <dependency>
+                <groupId>com.baeldung.wildfly</groupId>
+                <artifactId>wildfly-ejb-interfaces</artifactId>
+                <version>${wildlfy.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <javaee-api.version>7.0</javaee-api.version>
+        <wildfly-javaee7.version>10.1.0.Final</wildfly-javaee7.version>
+        <hibernate-core.version>5.2.3.Final</hibernate-core.version>
+        <wildlfy.version>0.0.1-SNAPSHOT</wildlfy.version>
+    </properties>
+
+</project>

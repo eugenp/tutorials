@@ -5,7 +5,7 @@
     <artifactId>spring-cloud-eureka-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Spring Cloud Eureka Server</name>
+    <name>spring-cloud-eureka-server</name>
     <description>Spring Cloud Eureka Server Demo</description>
 
     <parent>
@@ -18,7 +18,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
             <version>${spring-cloud-starter-eureka.version}</version>
         </dependency>
     </dependencies>

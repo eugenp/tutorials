@@ -5,7 +5,7 @@
     <artifactId>spring-cloud-eureka-feign-client</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Spring Cloud Eureka Feign Client</name>
+    <name>spring-cloud-eureka-feign-client</name>
     <description>Spring Cloud Eureka - Sample Feign Client</description>
 
     <parent>
@@ -17,24 +17,24 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.baeldung.spring.cloud</groupId>
-            <artifactId>spring-cloud-eureka-client</artifactId>
-            <version>${spring-cloud-eureka-client.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
             <version>${spring-cloud-starter-feign.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>${spring-cloud-starter-eureka.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring-boot-starter-web.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>${spring-boot-starter-web.version}</version>
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
 
