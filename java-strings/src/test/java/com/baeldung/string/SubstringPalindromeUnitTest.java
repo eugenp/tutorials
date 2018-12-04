@@ -7,17 +7,19 @@ import org.junit.Test;
 
 public class SubstringPalindromeUnitTest {
 
-    private static final String INPUT_NITIN = "nitin";
+    private static final String INPUT_BUBBLE = "bubble";
     private static final String INPUT_CIVIC = "civic";
-    private static final String INPUT_LEVEL = "level";
+    private static final String INPUT_INDEED = "indeed";
+    private static final String INPUT_ABABAC = "ababac";
 
-    Set<String> EXPECTED_PALINDROME_NITIN = new HashSet<String>() {
+    Set<String> EXPECTED_PALINDROME_BUBBLE = new HashSet<String>() {
         {
-            add("nitin");
-            add("iti");
-            add("n");
-            add("i");
-            add("t");
+            add("b");
+            add("u");
+            add("l");
+            add("e");
+            add("bb");
+            add("bub");
         }
     };
 
@@ -31,13 +33,25 @@ public class SubstringPalindromeUnitTest {
         }
     };
 
-    Set<String> EXPECTED_PALINDROME_LEVEL = new HashSet<String>() {
+    Set<String> EXPECTED_PALINDROME_INDEED = new HashSet<String>() {
         {
-            add("level");
-            add("eve");
+            add("i");
+            add("n");
+            add("d");
             add("e");
-            add("v");
-            add("l");
+            add("ee");
+            add("deed");
+        }
+    };
+
+    Set<String> EXPECTED_PALINDROME_ABABAC = new HashSet<String>() {
+        {
+            add("a");
+            add("b");
+            add("c");
+            add("aba");
+            add("bab");
+            add("ababa");
         }
     };
 
@@ -45,22 +59,25 @@ public class SubstringPalindromeUnitTest {
 
     @Test
     public void whenApproachUsingManachersAlgo_shouldBePalindrome() {
-        assertEquals(EXPECTED_PALINDROME_NITIN, palindrome.isPalindromeUsingManachersAlgo(INPUT_NITIN));
-        assertEquals(EXPECTED_PALINDROME_LEVEL, palindrome.isPalindromeUsingManachersAlgo(INPUT_LEVEL));
-        assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.isPalindromeUsingManachersAlgo(INPUT_CIVIC));
+        assertEquals(EXPECTED_PALINDROME_BUBBLE, palindrome.findAllPalindromesUsingManachersAlgorithm(INPUT_BUBBLE));
+        assertEquals(EXPECTED_PALINDROME_INDEED, palindrome.findAllPalindromesUsingManachersAlgorithm(INPUT_INDEED));
+        assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.findAllPalindromesUsingManachersAlgorithm(INPUT_CIVIC));
+        assertEquals(EXPECTED_PALINDROME_ABABAC, palindrome.findAllPalindromesUsingManachersAlgorithm(INPUT_ABABAC));
     }
 
     @Test
     public void whenApproachUsingCenter_shouldBePalindrome() {
-        assertEquals(EXPECTED_PALINDROME_NITIN, palindrome.isPalindromeUsingCenter(INPUT_NITIN));
-        assertEquals(EXPECTED_PALINDROME_LEVEL, palindrome.isPalindromeUsingCenter(INPUT_LEVEL));
-        assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.isPalindromeUsingCenter(INPUT_CIVIC));
+        assertEquals(EXPECTED_PALINDROME_BUBBLE, palindrome.findAllPalindromesUsingCenter(INPUT_BUBBLE));
+        assertEquals(EXPECTED_PALINDROME_INDEED, palindrome.findAllPalindromesUsingCenter(INPUT_INDEED));
+        assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.findAllPalindromesUsingCenter(INPUT_CIVIC));
+        assertEquals(EXPECTED_PALINDROME_ABABAC, palindrome.findAllPalindromesUsingCenter(INPUT_ABABAC));
     }
 
     @Test
-    public void whenApproachUsingSubstrings_shouldBePalindrome() {
-        assertEquals(EXPECTED_PALINDROME_NITIN, palindrome.isPalindromeUsingSubstring(INPUT_NITIN));
-        assertEquals(EXPECTED_PALINDROME_LEVEL, palindrome.isPalindromeUsingSubstring(INPUT_LEVEL));
-        assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.isPalindromeUsingSubstring(INPUT_CIVIC));
+    public void whenApproachUsingBruteForce_shouldBePalindrome() {
+        assertEquals(EXPECTED_PALINDROME_BUBBLE, palindrome.findAllPalindromesUsingBruteForceApproach(INPUT_BUBBLE));
+        assertEquals(EXPECTED_PALINDROME_INDEED, palindrome.findAllPalindromesUsingBruteForceApproach(INPUT_INDEED));
+        assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.findAllPalindromesUsingBruteForceApproach(INPUT_CIVIC));
+        assertEquals(EXPECTED_PALINDROME_ABABAC, palindrome.findAllPalindromesUsingBruteForceApproach(INPUT_ABABAC));
     }
 }

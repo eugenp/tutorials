@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class SubstringPalindrome {
 
-    public Set<String> isPalindromeUsingCenter(String input) {
+    public Set<String> findAllPalindromesUsingCenter(String input) {
         final Set<String> palindromes = new HashSet<>();
         if (input == null || input.isEmpty()) {
             return palindromes;
@@ -31,7 +31,7 @@ public class SubstringPalindrome {
         return result;
     }
 
-    public Set<String> isPalindromeUsingSubstring(String input) {
+    public Set<String> findAllPalindromesUsingBruteForceApproach(String input) {
         Set<String> palindromes = new HashSet<>();
         if (input == null || input.isEmpty()) {
             return palindromes;
@@ -55,7 +55,7 @@ public class SubstringPalindrome {
         return (reverse.toString()).equals(input);
     }
 
-    public Set<String> isPalindromeUsingManachersAlgo(String input) {
+    public Set<String> findAllPalindromesUsingManachersAlgorithm(String input) {
         Set<String> palindromes = new HashSet<>();
         String formattedInput = "@" + input + "#";
         char inputCharArr[] = formattedInput.toCharArray();
@@ -81,7 +81,7 @@ public class SubstringPalindrome {
         for (int i = 1; i <= input.length(); i++) {
             for (int j = 0; j <= 1; j++) {
                 for (max = radius[j][i]; max > 0; max--) {
-                    palindromes.add(input.substring(i - max - 1, (2 * max + j) + (i - max - 1)));
+                    palindromes.add(input.substring(i - max - 1, max + j + i - 1));
                 }
             }
         }
