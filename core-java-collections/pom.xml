@@ -56,6 +56,12 @@
             <artifactId>commons-exec</artifactId>
             <version>1.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -67,5 +73,6 @@
         <avaitility.version>1.7.0</avaitility.version>
         <assertj.version>3.11.1</assertj.version>
         <eclipse.collections.version>7.1.0</eclipse.collections.version>
+        <lombok.version>1.16.12</lombok.version>
     </properties>
 </project>

@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>widlfly-web</artifactId>
+    <packaging>war</packaging>
+	<name>widlfly-web</name>
+		
+    <parent>
+        <groupId>com.baeldung.wildfly</groupId>
+        <artifactId>wildfly</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <!-- Dependency for java ee -->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javaee-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Dependency for JPA module -->
+        <dependency>
+            <groupId>com.baeldung.wildfly</groupId>
+            <artifactId>wildfly-jpa</artifactId>
+            <version>${wildlfy.version}</version>
+        </dependency>
+        <!-- Dependency for EJB interface module -->
+        <dependency>
+            <groupId>com.baeldung.wildfly</groupId>
+            <artifactId>wildfly-ejb-interfaces</artifactId>
+            <version>${wildlfy.version}</version>
+        </dependency>
+        <!-- Dependency for EJB interface module -->
+        <dependency>
+            <groupId>com.baeldung.wildfly</groupId>
+            <artifactId>wildfly-ejb</artifactId>
+            <version>${wildlfy.version}</version>
+        </dependency>
+    </dependencies>
+</project>

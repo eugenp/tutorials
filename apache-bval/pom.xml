@@ -4,7 +4,8 @@
     <groupId>apache-bval</groupId>
     <artifactId>apache-bval</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <name>apache-bval</name>
+    
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

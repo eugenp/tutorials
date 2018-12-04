@@ -12,3 +12,5 @@
 - [The DAO Pattern in Java](http://www.baeldung.com/java-dao-pattern)
 - [Interpreter Design Pattern in Java](http://www.baeldung.com/java-interpreter-pattern)
 - [State Design Pattern in Java](https://www.baeldung.com/java-state-design-pattern)
+- [The Decorator Pattern in Java](https://www.baeldung.com/java-decorator-pattern)
+- [Abstract Factory Pattern in Java](https://www.baeldung.com/java-abstract-factory-pattern)
