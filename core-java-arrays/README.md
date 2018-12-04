@@ -12,4 +12,4 @@
 - [Arrays in Java: A Reference Guide](https://www.baeldung.com/java-arrays-guide)
 - [How to Invert an Array in Java](http://www.baeldung.com/java-invert-array)
 - [Array Operations in Java](http://www.baeldung.com/java-common-array-operations)
-
+- [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
