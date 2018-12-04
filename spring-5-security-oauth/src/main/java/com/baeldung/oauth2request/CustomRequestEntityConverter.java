@@ -1,4 +1,4 @@
-package com.baeldung.oauth2;
+package com.baeldung.oauth2request;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.RequestEntity;

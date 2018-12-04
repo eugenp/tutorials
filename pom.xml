@@ -363,10 +363,11 @@
                 <module>core-java-8</module>
                 <module>core-groovy</module>
                 <module>couchbase</module>
-                <module>core-java-concurrency</module>
-                <module>core-kotlin</module>
+                <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
+                <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
-                
+                <module>core-java-net</module>
+
                 <module>dozer</module>
                 <module>disruptor</module>
                 <module>drools</module>
@@ -422,7 +423,7 @@
                 <module>java-spi</module>
                 <module>java-ee-8-security-api</module>
                 
-                <module>libraries</module>
+                <!-- <module>libraries</module> --> <!-- very long running -->
                 <module>libraries-data</module>
                 <module>linkrest</module>
                 <module>logging-modules/log-mdc</module>
@@ -478,6 +479,7 @@
                 <module>persistence-modules/spring-data-cassandra</module>
                 <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-redis</module>
+				<module>persistence-modules/spring-boot-persistence-mongodb</module>
                 
                 <module>reactor-core</module>
                 <module>resteasy</module>
@@ -915,9 +917,10 @@
                 <module>core-java-8</module>
                 <module>core-groovy</module>
                 <module>couchbase</module>
-                <module>core-java-concurrency</module>
-                <module>core-kotlin</module>
+                <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
+                <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
+                <module>core-java-net</module>
                 
                 <module>dozer</module>
                 <module>disruptor</module>
@@ -974,7 +977,7 @@
                 <module>java-spi</module>
                 <module>java-ee-8-security-api</module>
                 
-                <module>libraries</module>
+                <!-- <module>libraries</module> --> <!-- very long running -->
                 <module>libraries-data</module>
                 <module>linkrest</module>
                 <module>logging-modules/log-mdc</module>

@@ -1,4 +1,4 @@
-package com.baeldung.oauth2;
+package com.baeldung.oauth2request;
 
 import java.util.Arrays;
 import java.util.Collections;
