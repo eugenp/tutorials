@@ -1,7 +1,7 @@
-package com.baeldung.gson_primitive_types.boolean_value;
+package org.baeldung.gson.primitives.booleanvalue;
 
-import com.baeldung.gson_primitive_types.models.GsonBoolean;
 import com.google.gson.Gson;
+import org.baeldung.gson.primitives.models.GsonBoolean;
 
 public class JsonYesRepresentationBooleanValue {
     public static void main(String[] args) {

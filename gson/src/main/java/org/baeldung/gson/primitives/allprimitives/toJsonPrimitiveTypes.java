@@ -1,6 +1,6 @@
-package com.baeldung.gson_primitive_types.all_primitive_values;
+package org.baeldung.gson.primitives.allprimitives;
 
-import com.baeldung.gson_primitive_types.models.GsonBundle;
+import org.baeldung.gson.primitives.models.GsonBundle;
 import com.google.gson.Gson;
 
 public class toJsonPrimitiveTypes {

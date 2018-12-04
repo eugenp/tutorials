@@ -1,7 +1,7 @@
-package com.baeldung.gson_primitive_types.byte_value;
+package org.baeldung.gson.primitives.bytevalue;
 
-import com.baeldung.gson_primitive_types.models.GsonBitString;
 import com.google.gson.*;
+import org.baeldung.gson.primitives.models.GsonBitString;
 
 import java.lang.reflect.Type;
 

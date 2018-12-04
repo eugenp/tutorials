@@ -1,7 +1,7 @@
-package com.baeldung.gson_primitive_types.number_value;
+package org.baeldung.gson.primitives.numbervalue;
 
-import com.baeldung.gson_primitive_types.models.GsonBitString;
 import com.google.gson.Gson;
+import org.baeldung.gson.primitives.models.GsonBitString;
 
 public class JsonOverflowValue {
     public static void main(String[] args) {

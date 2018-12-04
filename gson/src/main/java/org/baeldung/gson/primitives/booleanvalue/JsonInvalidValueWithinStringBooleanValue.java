@@ -1,6 +1,5 @@
-package com.baeldung.gson_primitive_types.boolean_value;
+package org.baeldung.gson.primitives.booleanvalue;
 
-import com.baeldung.gson_primitive_types.models.GsonBoolean;
 import com.google.gson.Gson;
 
 public class JsonInvalidValueWithinStringBooleanValue {
@@ -9,7 +8,7 @@ public class JsonInvalidValueWithinStringBooleanValue {
         String json = "{\"value\": \"15x\"}";
         Gson gson = new Gson();
 
-        GsonBoolean model = gson.fromJson(json, GsonBoolean.class);
+        org.baeldung.gson.primitives.models.GsonBoolean model = gson.fromJson(json, org.baeldung.gson.primitives.models.GsonBoolean.class);
 
         System.out.println(model);
     }

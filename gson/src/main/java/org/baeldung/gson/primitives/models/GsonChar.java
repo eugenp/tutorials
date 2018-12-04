@@ -1,6 +1,6 @@
-package com.baeldung.gson_primitive_types.models;
+package org.baeldung.gson.primitives.models;
 
-public class GsonLatinChar {
+public class GsonChar {
     public char value;
 
     public String toString() {

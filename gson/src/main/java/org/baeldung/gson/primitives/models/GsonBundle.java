@@ -1,4 +1,4 @@
-package com.baeldung.gson_primitive_types.models;
+package org.baeldung.gson.primitives.models;
 
 public class GsonBundle {
     public byte byteValue = (byte) 0x00001111;

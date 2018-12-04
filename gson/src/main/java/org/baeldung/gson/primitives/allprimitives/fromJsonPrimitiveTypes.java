@@ -1,7 +1,7 @@
-package com.baeldung.gson_primitive_types.all_primitive_values;
+package org.baeldung.gson.primitives.allprimitives;
 
-import com.baeldung.gson_primitive_types.models.GsonBundle;
 import com.google.gson.Gson;
+import org.baeldung.gson.primitives.models.GsonBundle;
 
 public class fromJsonPrimitiveTypes {
     public static void main(String[] args) {
