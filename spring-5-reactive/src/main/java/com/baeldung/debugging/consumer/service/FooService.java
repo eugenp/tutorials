@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.baeldung.debugging.consumer.model.Foo;
 
 import reactor.core.publisher.Flux;
+import reactor.core.scheduler.Schedulers;
 
 @Component
 public class FooService {
@@ -84,6 +85,34 @@ public class FooService {
         flux = reportResult(flux, "FOUR");
         flux = flux.doOnError(error -> {
             logger.error("Approach 4-2 failed!", error);
+        });
+        flux.subscribe();
+    }
+
+    public void processUsingApproachFivePublishingToDifferentParallelThreads(Flux<Foo> flux) {
+        logger.info("starting approach five-parallel!");
+        flux = concatAndSubstringFooName(flux).publishOn(Schedulers.newParallel("five-parallel-foo"))
+            .log();
+        flux = concatAndSubstringFooName(flux);
+        flux = divideFooQuantity(flux);
+        flux = reportResult(flux, "FIVE-PARALLEL").publishOn(Schedulers.newSingle("five-parallel-bar"));
+        flux = concatAndSubstringFooName(flux).doOnError(error -> {
+            logger.error("Approach 5-parallel failed!", error);
+        });
+        flux.subscribeOn(Schedulers.newParallel("five-parallel-starter"))
+            .subscribe();
+    }
+
+    public void processUsingApproachFivePublishingToDifferentSingleThreads(Flux<Foo> flux) {
+        logger.info("starting approach five-single!");
+        flux = flux.log()
+            .subscribeOn(Schedulers.newSingle("five-single-starter"));
+        flux = concatAndSubstringFooName(flux).publishOn(Schedulers.newSingle("five-single-foo"));
+        flux = concatAndSubstringFooName(flux);
+        flux = divideFooQuantity(flux);
+        flux = reportResult(flux, "FIVE-SINGLE").publishOn(Schedulers.newSingle("five-single-bar"));
+        flux = concatAndSubstringFooName(flux).doOnError(error -> {
+            logger.error("Approach 5-single failed!", error);
         });
         flux.subscribe();
     }
