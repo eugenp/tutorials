@@ -20,6 +20,8 @@ public class NamedQueryIntegrationTest {
 
     private Transaction transaction;
     
+    private Long purchaseDeptId;
+    
     @BeforeClass
     public static void setUpClass() throws IOException {
         session = HibernateUtil.getSessionFactory("hibernate-namedquery.properties").openSession();
@@ -30,11 +32,14 @@ public class NamedQueryIntegrationTest {
         transaction = session.beginTransaction();
         session.createNativeQuery("delete from deptemployee").executeUpdate();
         session.createNativeQuery("delete from department").executeUpdate();
-        Department department = new Department("Sales");
-        DeptEmployee employee1 = new DeptEmployee("John Wayne", "001", department);
-        DeptEmployee employee2 = new DeptEmployee("Sarah Vinton", "002", department);
-        DeptEmployee employee3 = new DeptEmployee("Lisa Carter", "003", department);
-        session.persist(department);
+        Department salesDepartment = new Department("Sales");
+        Department purchaseDepartment = new Department("Purchase");        
+        DeptEmployee employee1 = new DeptEmployee("John Wayne", "001", salesDepartment);
+        DeptEmployee employee2 = new DeptEmployee("Sarah Vinton", "002", salesDepartment);
+        DeptEmployee employee3 = new DeptEmployee("Lisa Carter", "003", salesDepartment);
+        session.persist(salesDepartment);
+        session.persist(purchaseDepartment);
+        purchaseDeptId = purchaseDepartment.getId();
         session.persist(employee1);
         session.persist(employee2);
         session.persist(employee3);
@@ -50,7 +55,7 @@ public class NamedQueryIntegrationTest {
     }
 
     @Test
-    public void givenMultipleEmployees_WhenFindByEmployeeNumberIsExecutedWithResultClass_ThenCorrectEmployeeIsReturned() {
+    public void whenNamedQueryIsCalledUsingCreateNamedQuery_ThenOk() {
         Query<DeptEmployee> query = session.createNamedQuery("DeptEmployee_FindByEmployeeNumber", DeptEmployee.class);
         query.setParameter("employeeNo", "001");
         DeptEmployee result = query.getSingleResult();
@@ -78,17 +83,21 @@ public class NamedQueryIntegrationTest {
     }
     
     @Test
-    public void whenNamedStoredProcedureIsCalled_ThenOk() {
+    public void whenUpdateQueryIsCalledWithCreateNamedQuery_ThenOk() {
+        Query spQuery = session.createNamedQuery("DeptEmployee_UpdateEmployeeDepartment");
+        spQuery.setParameter("employeeNo", "001");
+        Department newDepartment = session.find(Department.class, purchaseDeptId);
+        spQuery.setParameter("newDepartment", newDepartment);
+        spQuery.executeUpdate();
+        transaction.commit();        
+    } 
+    
+    @Test
+    public void whenNamedStoredProcedureIsCalledWithCreateNamedQuery_ThenOk() {
         Query spQuery = session.createNamedQuery("DeptEmployee_UpdateEmployeeDesignation");
         spQuery.setParameter("employeeNumber", "002");
         spQuery.setParameter("newDesignation", "Supervisor");
         spQuery.executeUpdate();
-        transaction.commit();
-        transaction.begin();
-        Query<DeptEmployee> query = session.createNamedQuery("DeptEmployee_FindByEmployeeNumber", DeptEmployee.class);
-        query.setParameter("employeeNo", "002");
-        DeptEmployee result = query.getSingleResult();
-        Assert.assertNotNull(result);
-        Assert.assertEquals("Supervisor", result.getDesignation());
-    }
+        transaction.commit();        
+    }       
 }
