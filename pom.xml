@@ -366,7 +366,7 @@
                 <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
                 <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
-                <module>core-java-net</module>
+                <module>core-java-networking</module>
 
                 <module>dozer</module>
                 <module>disruptor</module>
@@ -920,7 +920,7 @@
                 <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
                 <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
-                <module>core-java-net</module>
+                <module>core-java-networking</module>
                 
                 <module>dozer</module>
                 <module>disruptor</module>
