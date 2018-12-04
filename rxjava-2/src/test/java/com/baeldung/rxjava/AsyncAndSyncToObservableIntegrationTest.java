@@ -21,8 +21,9 @@ public class AsyncAndSyncToObservableIntegrationTest {
     AtomicInteger counter = new AtomicInteger();
     Callable<Integer> callable = () -> counter.incrementAndGet();
 
+    /* Method will execute every time it gets subscribed*/
     @Test
-    public void givenSyncMethod_whenConvertedWithFromCallable_thenReturnObservable() {// method will execute every time it gets subscribed
+    public void givenSyncMethod_whenConvertedWithFromCallable_thenReturnObservable() {
 
         Observable<Integer> source = Observable.fromCallable(callable);
 
@@ -35,8 +36,9 @@ public class AsyncAndSyncToObservableIntegrationTest {
         }
     }
 
+    /* Method will execute only once and cache its result.*/
     @Test
-    public void givenSyncMethod_whenConvertedWithStart_thenReturnObservable() {// method will execute only once and cache its result.
+    public void givenSyncMethod_whenConvertedWithStart_thenReturnObservable() {
 
         Observable<Integer> source = AsyncObservable.start(callable);
 
@@ -49,8 +51,9 @@ public class AsyncAndSyncToObservableIntegrationTest {
         }
     }
 
+    /* Method will execute only once and cache its result.*/
     @Test
-    public void givenAsyncMethod_whenConvertedWithFromFuture_thenRetrunObservble() { // method will execute only once and cache its result.
+    public void givenAsyncMethod_whenConvertedWithFromFuture_thenRetrunObservble() { 
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<Integer> future = executor.submit(callable);
@@ -67,8 +70,9 @@ public class AsyncAndSyncToObservableIntegrationTest {
         executor.shutdown();
     }
 
+    /* Method will execute every time it gets subscribed*/
     @Test
-    public void givenAsyncMethod_whenConvertedWithStartFuture_thenRetrunObservble() {// method will execute every time it gets subscribed
+    public void givenAsyncMethod_whenConvertedWithStartFuture_thenRetrunObservble() {
 
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Observable<Integer> source = AsyncObservable.startFuture(() -> executor.submit(callable));
@@ -84,9 +88,9 @@ public class AsyncAndSyncToObservableIntegrationTest {
         executor.shutdown();
     }
 
+    /*Method will execute only once and cache its result.*/
     @Test
-    public void givenAsyncMethod_whenConvertedWithDeferFuture_thenRetrunObservble() { // method will execute only once and cache its result.
-
+    public void givenAsyncMethod_whenConvertedWithDeferFuture_thenRetrunObservble() { 
         List<Integer> list = Arrays.asList(new Integer[] { counter.incrementAndGet(), counter.incrementAndGet(), counter.incrementAndGet() });
         ExecutorService exec = Executors.newSingleThreadExecutor();
         Callable<Observable<Integer>> callable = () -> Observable.fromIterable(list);
