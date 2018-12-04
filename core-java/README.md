@@ -89,3 +89,6 @@
 - [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
 - [Abstract Classes in Java](https://www.baeldung.com/java-abstract-class)
 - [Guide to Character Encoding](https://www.baeldung.com/java-char-encoding)
+- [A Guide to the Java Math Class](https://www.baeldung.com/java-lang-math)
+- [Calculate the Area of a Circle in Java](https://www.baeldung.com/java-calculate-circle-area)
+- [Graphs in Java](https://www.baeldung.com/java-graphs)
