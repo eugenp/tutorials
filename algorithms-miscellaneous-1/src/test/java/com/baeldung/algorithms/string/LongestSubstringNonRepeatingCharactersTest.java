@@ -9,7 +9,7 @@ import static com.baeldung.algorithms.string.LongestSubstringNonRepeatingCharact
 public class LongestSubstringNonRepeatingCharactersTest {
 
     @Test
-    void givenString_whenGetUniqueCharacterSubstringBruteForceCalled_thenResultFoundAsExpected() {
+    void givenString_whenGetUniqueCharacterSubstringBruteForceCalled_thenResultFoundAsExpectedUnitTest() {
         assertEquals("", getUniqueCharacterSubstringBruteForce(""));
         assertEquals("A", getUniqueCharacterSubstringBruteForce("A"));
         assertEquals("ABCDEF", getUniqueCharacterSubstringBruteForce("AABCDEF"));
@@ -19,7 +19,7 @@ public class LongestSubstringNonRepeatingCharactersTest {
     }
 
     @Test
-    void givenString_whenGetUniqueCharacterSubstringCalled_thenResultFoundAsExpected() {
+    void givenString_whenGetUniqueCharacterSubstringCalled_thenResultFoundAsExpectedUnitTest() {
         assertEquals("", getUniqueCharacterSubstring(""));
         assertEquals("A", getUniqueCharacterSubstring("A"));
         assertEquals("ABCDEF", getUniqueCharacterSubstring("AABCDEF"));
