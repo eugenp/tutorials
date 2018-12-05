@@ -4,6 +4,7 @@
     <groupId>com.stackify</groupId>
     <artifactId>spring-rest-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>spring-rest-service</name>
     <packaging>war</packaging>
 
     <parent>

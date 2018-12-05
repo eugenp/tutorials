@@ -1,0 +1,11 @@
+{
+    "name": "mqtt-source",
+    "config": {
+        "connector.class": "io.confluent.connect.mqtt.MqttSourceConnector",
+        "tasks.max": 1,
+        "mqtt.server.uri": "ws://broker.hivemq.com:8000/mqtt",
+        "mqtt.topics": "baeldung",
+        "kafka.topic": "connect-custom",
+        "value.converter": "org.apache.kafka.connect.converters.ByteArrayConverter"
+    }
+}

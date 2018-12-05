@@ -4,6 +4,7 @@
     <groupId>com.stackify</groupId>
     <artifactId>logback-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>logback-example</name>
     
     <parent>
         <groupId>com.baeldung</groupId>

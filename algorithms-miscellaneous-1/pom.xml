@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>algorithms-miscellaneous-1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <name>algorithms-miscellaneous-1</name>
+    
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -16,6 +16,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math3</artifactId>
             <version>${commons-math3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-codec</groupId>
@@ -73,6 +78,7 @@
         <commons-math3.version>3.6.1</commons-math3.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
+        <guava.version>25.1-jre</guava.version>
     </properties>
 
 </project>

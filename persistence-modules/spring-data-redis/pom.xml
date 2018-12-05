@@ -4,6 +4,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-redis</artifactId>
     <version>1.0</version>
+	<name>spring-data-redis</name>
     <packaging>jar</packaging>
 
     <parent>
