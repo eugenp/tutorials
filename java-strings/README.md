@@ -42,3 +42,4 @@
 - [Convert String to Byte Array and Reverse in Java](https://www.baeldung.com/java-string-to-byte-array)
 - [Pad a String with Zeros or Spaces in Java](https://www.baeldung.com/java-pad-string)
 - [Adding a Newline Character to a String in Java](https://www.baeldung.com/java-string-newline)
+- [Remove or Replace part of a String in Java](https://www.baeldung.com/java-remove-replace-string-part)
