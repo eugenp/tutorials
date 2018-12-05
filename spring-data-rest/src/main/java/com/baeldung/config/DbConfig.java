@@ -1,9 +1,12 @@
 package com.baeldung.config;
 
+import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
+import org.h2.tools.Server;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +21,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 @Configuration
 @EnableJpaRepositories(basePackages = "com.baeldung.repositories")
 // @PropertySource("persistence-h2.properties")
+// @PropertySource("persistence-h2-c3p0.properties")
 // @PropertySource("persistence-hsqldb.properties")
 // @PropertySource("persistence-derby.properties")
 //@PropertySource("persistence-sqlite.properties")
@@ -48,14 +52,44 @@ public class DbConfig {
 
     final Properties additionalProperties() {
         final Properties hibernateProperties = new Properties();
+        if (env.getProperty("hibernate.connection.driver_class") != null) {
+            hibernateProperties.setProperty("hibernate.connection.driver_class", env.getProperty("hibernate.connection.driver_class"));
+        }
+        if (env.getProperty("hibernate.connection.url") != null) {
+            hibernateProperties.setProperty("hibernate.connection.url", env.getProperty("hibernate.connection.url"));
+        }
         if (env.getProperty("hibernate.hbm2ddl.auto") != null) {
             hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         }
-        if (env.getProperty("hibernate.dialect") != null) {
-            hibernateProperties.setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        if (env.getProperty("hibernate.hbm2ddl.auto") != null) {
+            hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
         }
         if (env.getProperty("hibernate.show_sql") != null) {
             hibernateProperties.setProperty("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        }
+        if (env.getProperty("hibernate.connection.provider_class") != null) {
+            hibernateProperties.setProperty("hibernate.connection.provider_class", env.getProperty("hibernate.connection.provider_class"));
+        }
+        if (env.getProperty("hibernate.c3p0.initialPoolSize") != null) {
+            hibernateProperties.setProperty("hibernate.c3p0.initialPoolSize", env.getProperty("hibernate.c3p0.initialPoolSize"));
+        }
+        if (env.getProperty("hibernate.c3p0.min_size") != null) {
+            hibernateProperties.setProperty("hibernate.c3p0.min_size", env.getProperty("hibernate.c3p0.min_size"));
+        }
+        if (env.getProperty("hibernate.c3p0.max_size") != null) {
+            hibernateProperties.setProperty("hibernate.c3p0.max_size", env.getProperty("hibernate.c3p0.max_size"));
+        }
+        if (env.getProperty("hibernate.c3p0.acquire_increment") != null) {
+            hibernateProperties.setProperty("hibernate.c3p0.acquire_increment", env.getProperty("hibernate.c3p0.acquire_increment"));
+        }
+        if (env.getProperty("hibernate.c3p0.idle_test_period") != null) {
+            hibernateProperties.setProperty("hibernate.c3p0.idle_test_period", env.getProperty("hibernate.c3p0.idle_test_period"));
+        }
+        if (env.getProperty("hibernate.c3p0.max_statements") != null) {
+            hibernateProperties.setProperty("hibernate.c3p0.max_statements", env.getProperty("hibernate.c3p0.max_statements"));
+        }
+        if (env.getProperty("hibernate.c3p0.timeout") != null) {
+            hibernateProperties.setProperty("hibernate.c3p0.timeout", env.getProperty("hibernate.c3p0.timeout"));
         }
         return hibernateProperties;
     }
@@ -83,3 +117,9 @@ class DerbyConfig {}
 @Profile("sqlite")
 @PropertySource("persistence-sqlite.properties")
 class SqliteConfig {}
+
+
+@Configuration
+@Profile("h2c3p0")
+@PropertySource("persistence-h2-c3p0.properties")
+class H2c3p0Config {}
