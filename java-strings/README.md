@@ -41,3 +41,4 @@
 - [Join Array of Primitives with Separator in Java](https://www.baeldung.com/java-join-primitive-array)
 - [Convert String to Byte Array and Reverse in Java](https://www.baeldung.com/java-string-to-byte-array)
 - [Pad a String with Zeros or Spaces in Java](https://www.baeldung.com/java-pad-string)
+- [Adding a Newline Character to a String in Java](https://www.baeldung.com/java-string-newline)
