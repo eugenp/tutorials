@@ -43,3 +43,4 @@
 - [Adding a Newline Character to a String in Java](https://www.baeldung.com/java-string-newline)
 - [Pad a String with Zeros or Spaces in Java](https://www.baeldung.com/java-pad-string)
 - [Convert String to Byte Array and Reverse in Java](https://www.baeldung.com/java-string-to-byte-array)
+- [Remove Leading and Trailing Characters from a String](https://www.baeldung.com/java-remove-trailing-characters)
