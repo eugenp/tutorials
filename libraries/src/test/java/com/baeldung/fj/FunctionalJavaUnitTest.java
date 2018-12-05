@@ -29,6 +29,7 @@ public class FunctionalJavaUnitTest {
         List<Integer> fList = List.list(1, 2, 3, 4);
         List<Integer> fList1 = fList.map(timesTwo);
         List<Integer> fList2 = fList.map(i -> i * 2);
+
         assertEquals(fList1.equals(fList2), true);
     }
 
@@ -39,6 +40,7 @@ public class FunctionalJavaUnitTest {
         Show.listShow(Show.intShow).println(fList1);
         List<Integer> fList2 = fList.map(plusOne).map(timesTwo);
         Show.listShow(Show.intShow).println(fList2);
+
         assertEquals(fList1.equals(fList2), false);
     }
 
@@ -48,6 +50,7 @@ public class FunctionalJavaUnitTest {
         List<Boolean> evenList = fList.map(isEven);
         List<Boolean> evenListTrueResult = List.list(false, true, false, true);
         List<Boolean> evenListFalseResult = List.list(true, false, false, true);
+
         assertEquals(evenList.equals(evenListTrueResult), true);
         assertEquals(evenList.equals(evenListFalseResult), false);
     }
@@ -58,6 +61,7 @@ public class FunctionalJavaUnitTest {
         fList = fList.map(i -> i + 100);
         List<Integer> resultList = List.list(103, 104, 105, 106);
         List<Integer> falseResultList = List.list(15, 504, 105, 106);
+
         assertEquals(fList.equals(resultList), true);
         assertEquals(fList.equals(falseResultList), false);
     }
@@ -68,6 +72,7 @@ public class FunctionalJavaUnitTest {
         Array<Integer> filteredArray = array.filter(isEven);
         Array<Integer> result = Array.array(4, 6);
         Array<Integer> wrongResult = Array.array(3, 5);
+
         assertEquals(filteredArray.equals(result), true);
         assertEquals(filteredArray.equals(wrongResult), false);
     }
@@ -79,6 +84,7 @@ public class FunctionalJavaUnitTest {
         Boolean isExist = array.exists(s -> List.fromString(s).forall(Characters.isLowerCase));
         Boolean isExist2 = array2.exists(s -> List.fromString(s).forall(Characters.isLowerCase));
         Boolean isAll = array.forall(s -> List.fromString(s).forall(Characters.isLowerCase));
+
         assertEquals(isExist, true);
         assertEquals(isExist2, false);
         assertEquals(isAll, false);
@@ -105,8 +111,11 @@ public class FunctionalJavaUnitTest {
     public void foldLeft_givenArray_returnResult() {
         Array<Integer> intArray = Array.array(17, 44, 67, 2, 22, 80, 1, 27);
         int sumAll = intArray.foldLeft(Integers.add, 0);
+
         assertEquals(sumAll, 260);
+
         int sumEven = intArray.filter(isEven).foldLeft(Integers.add, 0);
+
         assertEquals(sumEven, 148);
     }
 
