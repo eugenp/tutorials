@@ -329,164 +329,240 @@
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
-                <module>asm</module>
-                <module>atomix</module>
-                <module>aws</module>
-                <module>aws-lambda</module>
                 <module>akka-streams</module>
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
                 <module>algorithms-sorting</module>
+                <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
+                <module>antlr</module>
+                <module>apache-avro</module>
+                <module>apache-bval</module>
+                <module>apache-curator</module>
                 <module>apache-cxf</module>
                 <module>apache-fop</module>
-                <module>apache-poi</module>
-                <module>apache-tika</module>
-                <module>apache-thrift</module>
-                <module>apache-curator</module>
-                <module>apache-zookeeper</module>
+                <module>apache-geode</module>
+                <module>apache-meecrowave</module>
                 <module>apache-opennlp</module>
+                <module>apache-poi</module>
+                <module>apache-pulsar</module>
+                <module>apache-shiro</module>
+                <module>apache-solrj</module>
+                <module>apache-spark</module>
+                <module>apache-thrift</module>
+                <module>apache-tika</module>
+                <module>apache-velocity</module>
+                <module>apache-zookeeper</module>
+                <module>asciidoctor</module>
+                <module>asm</module>
+                <module>atomix</module>
                 <module>autovalue</module>
+                <module>aws</module>
+                <module>aws-lambda</module>
                 <module>axon</module>
                 <module>azure</module>
-                <module>apache-velocity</module>
-                <module>apache-solrj</module>
-                <module>apache-meecrowave</module>
-                <module>antlr</module>
-                
-                <module>bootique</module>
-                
-                <module>cdi</module>
-                <module>core-java-collections</module>
-                <module>core-java-io</module>
-                <module>core-java-8</module>
-                <module>core-groovy</module>
-                <module>couchbase</module>
-                <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
-                <!-- <module>core-kotlin</module> --> <!-- long running? -->
-                <module>core-java</module>
-                <module>core-java-net</module>
 
-                <module>dozer</module>
-                <module>disruptor</module>
-                <module>drools</module>
+                <module>bootique</module>
+
+                <module>cas/cas-secured-app</module>
+                <module>cas/cas-server</module>
+                <module>cdi</module>
+                <module>checker-plugin</module>
+                <module>core-groovy</module>
+                <module>core-java</module>
+                <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
+                <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 --> 
+                <module>core-java-8</module>
+                <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <module>core-java-arrays</module>
+                <module>core-java-collections</module>
+                <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
+                <module>core-java-concurrency-collections</module>
+                <module>core-java-io</module>
+                <module>core-java-lang</module>
+                <module>core-java-net</module>
+                <module>core-java-sun</module>
+                <!-- <module>core-kotlin</module> --> <!-- long running? -->
+                <module>core-scala</module>
+                <module>couchbase</module>
+                <module>custom-pmd</module>
+                                
+                <module>dagger</module>
+                <module>data-structures</module>
+                <module>ddd</module>
                 <module>deeplearning4j</module>
+                <module>disruptor</module>
+                <module>dozer</module>
+                <module>drools</module>
+                <module>dubbo</module>             
                 
                 <module>ethereum</module>
                 
                 <module>feign</module>
                 <module>flips</module>
+                <module>flyway-cdi-extension</module>
                 
+                <module>geotools</module>
                 <module>google-cloud</module>
+                <module>google-web-toolkit</module>
+                <!-- <module>gradle</module> --> <!-- Not a maven project -->
+                <!-- <module>grails</module> --> <!-- Not a maven project -->
+                <module>graphql/graphql-java</module>
+                <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
                 <module>guava-collections</module>
                 <module>guava-modules/guava-18</module>
                 <module>guava-modules/guava-19</module>
                 <module>guava-modules/guava-21</module>
+                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
                 
                 <module>hazelcast</module>
-                <module>hystrix</module>
+                <module>helidon</module>
                 <module>httpclient</module>
+                <module>hystrix</module>
                 
                 <module>image-processing</module>
                 <module>immutables</module>
-                
+
                 <module>jackson</module>
-                <module>java-strings</module>
-                <!--<module>core-java-9</module> --> <!-- we haven't upgraded to java 9 -->
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
-                <module>java-streams</module>
+                <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <module>java-ee-8-security-api</module>
                 <module>java-lite</module>
                 <module>java-numbers</module>
                 <module>java-rmi</module>
+                <module>java-spi</module>
+                <module>java-streams</module>
+                <module>java-strings</module>
                 <module>java-vavr-stream</module>
+                <module>java-websocket</module>
+                <module>javafx</module>
                 <module>javax-servlets</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>javafx</module>
-                <module>jgroups</module>
                 <!-- JIRA-10842
                 <module>jee-7</module> -->
                 <module>jee-7-security</module>
+                <module>jenkins/hello-world</module>
+                <module>jersey</module>
+                <module>JGit</module>
+                <module>jgroups</module>
+                <module>jhipster</module>
+                <module>jib</module>
                 <module>jjwt</module>
+                <module>jmeter</module>
+                <module>jmh</module>
+                <module>jni</module>
+                <module>jooby</module>
                 <module>jsf</module>
-                <module>json-path</module>
                 <module>json</module>
+                <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
                 <module>jws</module>
-                <module>jersey</module>
-                <module>java-spi</module>
-                <module>java-ee-8-security-api</module>
+
+                <!-- <module>kotlin-js</module> --> <!-- Not a maven project -->
+                <module>kotlin-libraries</module>
                 
+                <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <!-- <module>libraries</module> --> <!-- very long running -->
                 <module>libraries-data</module>
+                <module>libraries-security</module>
+                <module>libraries-server</module>
                 <module>linkrest</module>
-                <module>logging-modules/log-mdc</module>
                 <module>logging-modules/log4j</module>
+                <module>logging-modules/log4j2</module>
                 <module>logging-modules/logback</module>
+                <module>logging-modules/log-mdc</module>
                 <module>lombok</module>
                 <module>lucene</module>
-                
+
                 <module>mapstruct</module>
                 <module>maven</module>
+                <module>maven-archetype</module>
+                <!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
+                <module>maven-polyglot/maven-polyglot-json-extension</module>
+                <!-- <module>maven-polyglot/maven-polyglot-yml-app</module> --> <!-- Not a maven project -->
                 <module>mesos-marathon</module>
+                <module>metrics</module>
+                <!-- <module>micronaut</module> --> <!-- Fixing in BAEL-10877 -->
+                <module>microprofile</module>
                 <module>msf4j</module>
+                <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mvn-wrapper</module>
                 <module>mybatis</module>
-                <module>metrics</module>
-                <module>maven-archetype</module>
                 
                 <module>noexception</module>
                 
-                <module>osgi</module>
+                <module>optaplanner</module>
                 <module>orika</module>
-                                
+                <module>osgi</module>
+
                 <module>patterns</module>
                 <module>pdf</module>
-                <module>protobuffer</module>
                 <module>performance-tests</module>
+                <!-- <module>play-framework</module> --> <!-- Not a maven project -->
+                <module>protobuffer</module>
                 
+                <module>persistence-modules/activejdbc</module>
+                <module>persistence-modules/apache-cayenne</module>
+                <module>persistence-modules/core-java-persistence</module>
+                <module>persistence-modules/deltaspike</module>
+                <module>persistence-modules/flyway</module>
+                <module>persistence-modules/hbase</module>
+                <module>persistence-modules/hibernate5</module>
+                <module>persistence-modules/influxdb</module>
+                <module>persistence-modules/java-cassandra</module>
+                <module>persistence-modules/java-cockroachdb</module>
                 <module>persistence-modules/java-jdbi</module>
-                <module>persistence-modules/redis</module>
+                <module>persistence-modules/java-jpa</module>
+                <module>persistence-modules/java-mongodb</module>
+                <module>persistence-modules/jnosql</module>
+                <module>persistence-modules/liquibase</module>
                 <module>persistence-modules/orientdb</module>
                 <module>persistence-modules/querydsl</module>
-                <module>persistence-modules/apache-cayenne</module>
+                <module>persistence-modules/redis</module>
                 <module>persistence-modules/solr</module>
-                <module>persistence-modules/spring-data-dynamodb</module>
-                <module>persistence-modules/spring-data-keyvalue</module>
-                <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-data-solr</module>
-                <module>persistence-modules/spring-hibernate-5</module>
-                <module>persistence-modules/spring-data-eclipselink</module>
-                <module>persistence-modules/spring-jpa</module>
-                <module>persistence-modules/spring-hibernate-3</module>
-                <module>persistence-modules/spring-data-gemfire</module>
+                <module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
                 <module>persistence-modules/spring-boot-persistence</module>
-                <module>persistence-modules/liquibase</module>
-                <module>persistence-modules/java-cockroachdb</module>
-                <module>persistence-modules/deltaspike</module>
-                <module>persistence-modules/hbase</module>
-                <module>persistence-modules/influxdb</module>
-                <module>persistence-modules/spring-hibernate4</module>
-                <module>persistence-modules/spring-data-mongodb</module> <!-- long -->
-                <module>persistence-modules/java-cassandra</module>
+                <module>persistence-modules/spring-boot-persistence-mongodb</module>
                 <module>persistence-modules/spring-data-cassandra</module>
+                <module>persistence-modules/spring-data-cassandra-reactive</module>
                 <module>persistence-modules/spring-data-couchbase-2</module>
+                <module>persistence-modules/spring-data-dynamodb</module>
+                <module>persistence-modules/spring-data-eclipselink</module>
+                <module>persistence-modules/spring-data-elasticsearch</module>
+                <module>persistence-modules/spring-data-gemfire</module>
+                <module>persistence-modules/spring-data-jpa</module>
+                <module>persistence-modules/spring-data-keyvalue</module>
+                <module>persistence-modules/spring-data-mongodb</module> <!-- long -->
+                <module>persistence-modules/spring-data-neo4j</module>
                 <module>persistence-modules/spring-data-redis</module>
-				<module>persistence-modules/spring-boot-persistence-mongodb</module>
-                
-                <module>reactor-core</module>
-                <module>resteasy</module>
-                <module>rxjava</module>
-                <module>rxjava-2</module>
+                <module>persistence-modules/spring-data-solr</module>
+                <module>persistence-modules/spring-hibernate-3</module>
+                <module>persistence-modules/spring-hibernate-5</module>
+                <module>persistence-modules/spring-hibernate4</module>
+                <module>persistence-modules/spring-jpa</module>
+                                
                 <module>rabbitmq</module>
-                
+                <!-- <module>raml</module> --> <!-- Not a maven project -->
+                <module>ratpack</module>
+                <module>reactor-core</module>
+                <module>rest-with-spark-java</module>
+                <module>resteasy</module>
+                <module>restx</module>
+                <!-- <module>rmi</module> --> <!-- Not a maven project -->
+                <module>rule-engines/easy-rules</module>
+                <module>rule-engines/openl-tablets</module>
+                <module>rule-engines/rulebook</module>
+                <module>rxjava</module>
+                <module>rxjava-2</module>                                
+                                                 
 			</modules>
 
 		</profile>
@@ -876,169 +952,246 @@
             </build>
 
             <modules>
-                <module>parent-boot-1</module>
+				<module>parent-boot-1</module>
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
-                <module>asm</module>
-                <module>atomix</module>
-                <module>aws</module>
-                <module>aws-lambda</module>
                 <module>akka-streams</module>
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
                 <module>algorithms-miscellaneous-2</module>
                 <module>algorithms-sorting</module>
+                <module>animal-sniffer-mvn-plugin</module>
                 <module>annotations</module>
+                <module>antlr</module>
+                <module>apache-avro</module>
+                <module>apache-bval</module>
+                <module>apache-curator</module>
                 <module>apache-cxf</module>
                 <module>apache-fop</module>
-                <module>apache-poi</module>
-                <module>apache-tika</module>
-                <module>apache-thrift</module>
-                <module>apache-curator</module>
-                <module>apache-zookeeper</module>
+                <module>apache-geode</module>
+                <module>apache-meecrowave</module>
                 <module>apache-opennlp</module>
+                <module>apache-poi</module>
+                <module>apache-pulsar</module>
+                <module>apache-shiro</module>
+                <module>apache-solrj</module>
+                <module>apache-spark</module>
+                <module>apache-thrift</module>
+                <module>apache-tika</module>
+                <module>apache-velocity</module>
+                <module>apache-zookeeper</module>
+                <module>asciidoctor</module>
+                <module>asm</module>
+                <module>atomix</module>
                 <module>autovalue</module>
+                <module>aws</module>
+                <module>aws-lambda</module>
                 <module>axon</module>
                 <module>azure</module>
-                <module>apache-velocity</module>
-                <module>apache-solrj</module>
-                <module>apache-meecrowave</module>
-                <module>antlr</module>
-                
+
                 <module>bootique</module>
-                
+
+                <module>cas/cas-secured-app</module>
+                <module>cas/cas-server</module>
                 <module>cdi</module>
-                <module>core-java-collections</module>
-                <module>core-java-io</module>
-                <module>core-java-8</module>
+                <module>checker-plugin</module>
                 <module>core-groovy</module>
-                <module>couchbase</module>
-                <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
-                <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
+                <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
+                <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 --> 
+                <module>core-java-8</module>
+                <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <module>core-java-arrays</module>
+                <module>core-java-collections</module>
+                <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
+                <module>core-java-concurrency-collections</module>
+                <module>core-java-io</module>
+                <module>core-java-lang</module>
                 <module>core-java-net</module>
-                
-                <module>dozer</module>
-                <module>disruptor</module>
-                <module>drools</module>
+                <module>core-java-sun</module>
+                <!-- <module>core-kotlin</module> --> <!-- long running? -->
+                <module>core-scala</module>
+                <module>couchbase</module>
+                <module>custom-pmd</module>
+                                
+                <module>dagger</module>
+                <module>data-structures</module>
+                <module>ddd</module>
                 <module>deeplearning4j</module>
+                <module>disruptor</module>
+                <module>dozer</module>
+                <module>drools</module>
+                <module>dubbo</module>             
                 
                 <module>ethereum</module>
                 
                 <module>feign</module>
                 <module>flips</module>
+                <module>flyway-cdi-extension</module>
                 
+                <module>geotools</module>
                 <module>google-cloud</module>
+                <module>google-web-toolkit</module>
+                <!-- <module>gradle</module> --> <!-- Not a maven project -->
+                <!-- <module>grails</module> --> <!-- Not a maven project -->
+                <module>graphql/graphql-java</module>
+                <module>grpc</module>
                 <module>gson</module>
                 <module>guava</module>
                 <module>guava-collections</module>
                 <module>guava-modules/guava-18</module>
                 <module>guava-modules/guava-19</module>
                 <module>guava-modules/guava-21</module>
+                <!-- <module>guest</module> --> <!-- not to be built as its for guest articles  -->
                 <module>guice</module>
                 
                 <module>hazelcast</module>
-                <module>hystrix</module>
+                <module>helidon</module>
                 <module>httpclient</module>
+                <module>hystrix</module>
                 
                 <module>image-processing</module>
                 <module>immutables</module>
-                
+
                 <module>jackson</module>
-                <module>java-strings</module>
-                <!--<module>core-java-9</module> --> <!-- we haven't upgraded to java 9 -->
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
-                <module>java-streams</module>
+                <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <module>java-ee-8-security-api</module>
                 <module>java-lite</module>
                 <module>java-numbers</module>
                 <module>java-rmi</module>
+                <module>java-spi</module>
+                <module>java-streams</module>
+                <module>java-strings</module>
                 <module>java-vavr-stream</module>
+                <module>java-websocket</module>
+                <module>javafx</module>
                 <module>javax-servlets</module>
                 <module>javaxval</module>
                 <module>jaxb</module>
-                <module>javafx</module>
-                <module>jgroups</module>
                 <!-- JIRA-10842
                 <module>jee-7</module> -->
                 <module>jee-7-security</module>
+                <module>jenkins/hello-world</module>
+                <module>jersey</module>
+                <module>JGit</module>
+                <module>jgroups</module>
+                <module>jhipster</module>
+                <module>jib</module>
                 <module>jjwt</module>
+                <module>jmeter</module>
+                <module>jmh</module>
+                <module>jni</module>
+                <module>jooby</module>
                 <module>jsf</module>
-                <module>json-path</module>
                 <module>json</module>
+                <module>json-path</module>
                 <module>jsoup</module>
                 <module>jta</module>
                 <module>jws</module>
-                <module>jersey</module>
-                <module>java-spi</module>
-                <module>java-ee-8-security-api</module>
+
+                <!-- <module>kotlin-js</module> --> <!-- Not a maven project -->
+                <module>kotlin-libraries</module>
                 
+                <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <!-- <module>libraries</module> --> <!-- very long running -->
                 <module>libraries-data</module>
+                <module>libraries-security</module>
+                <module>libraries-server</module>
                 <module>linkrest</module>
-                <module>logging-modules/log-mdc</module>
                 <module>logging-modules/log4j</module>
+                <module>logging-modules/log4j2</module>
                 <module>logging-modules/logback</module>
+                <module>logging-modules/log-mdc</module>
                 <module>lombok</module>
                 <module>lucene</module>
-                
+
                 <module>mapstruct</module>
                 <module>maven</module>
+                <module>maven-archetype</module>
+                <!-- <module>maven-polyglot/maven-polyglot-json-app</module> --> <!-- Not a maven project -->
+                <module>maven-polyglot/maven-polyglot-json-extension</module>
+                <!-- <module>maven-polyglot/maven-polyglot-yml-app</module> --> <!-- Not a maven project -->
                 <module>mesos-marathon</module>
+                <module>metrics</module>
+                <!-- <module>micronaut</module> --> <!-- Fixing in BAEL-10877 -->
+                <module>microprofile</module>
                 <module>msf4j</module>
+                <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
                 <module>mvn-wrapper</module>
                 <module>mybatis</module>
-                <module>metrics</module>
-                <module>maven-archetype</module>
                 
                 <module>noexception</module>
                 
-                <module>osgi</module>
+                <module>optaplanner</module>
                 <module>orika</module>
-                                
+                <module>osgi</module>
+
                 <module>patterns</module>
                 <module>pdf</module>
-                <module>protobuffer</module>
                 <module>performance-tests</module>
+                <!-- <module>play-framework</module> --> <!-- Not a maven project -->
+                <module>protobuffer</module>
                 
+                <module>persistence-modules/activejdbc</module>
+                <module>persistence-modules/apache-cayenne</module>
+                <module>persistence-modules/core-java-persistence</module>
+                <module>persistence-modules/deltaspike</module>
+                <module>persistence-modules/flyway</module>
+                <module>persistence-modules/hbase</module>
+                <module>persistence-modules/hibernate5</module>
+                <module>persistence-modules/influxdb</module>
+                <module>persistence-modules/java-cassandra</module>
+                <module>persistence-modules/java-cockroachdb</module>
                 <module>persistence-modules/java-jdbi</module>
-                <module>persistence-modules/redis</module>
+                <module>persistence-modules/java-jpa</module>
+                <module>persistence-modules/java-mongodb</module>
+                <module>persistence-modules/jnosql</module>
+                <module>persistence-modules/liquibase</module>
                 <module>persistence-modules/orientdb</module>
                 <module>persistence-modules/querydsl</module>
-                <module>persistence-modules/apache-cayenne</module>
+                <module>persistence-modules/redis</module>
                 <module>persistence-modules/solr</module>
-                <module>persistence-modules/spring-data-dynamodb</module>
-                <module>persistence-modules/spring-data-keyvalue</module>
-                <module>persistence-modules/spring-data-neo4j</module>
-                <module>persistence-modules/spring-data-solr</module>
-                <module>persistence-modules/spring-hibernate-5</module>
-                <module>persistence-modules/spring-data-eclipselink</module>
-                <module>persistence-modules/spring-jpa</module>
-                <module>persistence-modules/spring-hibernate-3</module>
-                <module>persistence-modules/spring-data-gemfire</module>
+                <module>persistence-modules/spring-boot-h2/spring-boot-h2-database</module>
                 <module>persistence-modules/spring-boot-persistence</module>
-                <module>persistence-modules/liquibase</module>
-                <module>persistence-modules/java-cockroachdb</module>
-                <module>persistence-modules/deltaspike</module>
-                <module>persistence-modules/hbase</module>
-                <module>persistence-modules/influxdb</module>
-                <module>persistence-modules/spring-hibernate4</module>
-                <module>persistence-modules/spring-data-mongodb</module> <!-- long -->
-                <module>persistence-modules/java-cassandra</module>
+                <module>persistence-modules/spring-boot-persistence-mongodb</module>
                 <module>persistence-modules/spring-data-cassandra</module>
+                <module>persistence-modules/spring-data-cassandra-reactive</module>
                 <module>persistence-modules/spring-data-couchbase-2</module>
+                <module>persistence-modules/spring-data-dynamodb</module>
+                <module>persistence-modules/spring-data-eclipselink</module>
+                <module>persistence-modules/spring-data-elasticsearch</module>
+                <module>persistence-modules/spring-data-gemfire</module>
+                <module>persistence-modules/spring-data-jpa</module>
+                <module>persistence-modules/spring-data-keyvalue</module>
+                <module>persistence-modules/spring-data-mongodb</module> <!-- long -->
+                <module>persistence-modules/spring-data-neo4j</module>
                 <module>persistence-modules/spring-data-redis</module>
-                
-                <module>reactor-core</module>
-                <module>resteasy</module>
-                <module>rxjava</module>
-                <module>rxjava-2</module>
+                <module>persistence-modules/spring-data-solr</module>
+                <module>persistence-modules/spring-hibernate-3</module>
+                <module>persistence-modules/spring-hibernate-5</module>
+                <module>persistence-modules/spring-hibernate4</module>
+                <module>persistence-modules/spring-jpa</module>
+                                
                 <module>rabbitmq</module>
+                <!-- <module>raml</module> --> <!-- Not a maven project -->
+                <module>ratpack</module>
+                <module>reactor-core</module>
+                <module>rest-with-spark-java</module>
+                <module>resteasy</module>
+                <module>restx</module>
+                <!-- <module>rmi</module> --> <!-- Not a maven project -->
+                <module>rule-engines/easy-rules</module>
+                <module>rule-engines/openl-tablets</module>
+                <module>rule-engines/rulebook</module>
+                <module>rxjava</module>
+                <module>rxjava-2</module>                                
                 
             </modules>
 
