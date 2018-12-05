@@ -39,3 +39,4 @@
 - [Generate a Secure Random Password in Java](https://www.baeldung.com/java-generate-secure-password)
 - [Removing Repeated Characters from a String](https://www.baeldung.com/java-remove-repeated-char)
 - [Join Array of Primitives with Separator in Java](https://www.baeldung.com/java-join-primitive-array)
+- [Convert String to Byte Array and Reverse in Java](https://www.baeldung.com/java-string-to-byte-array)
