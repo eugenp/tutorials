@@ -20,7 +20,7 @@ public class DeptEmployee {
 
     private String employeeNumber;
 
-    private String title;
+    private String designation;
 
     private String name;
 
@@ -30,14 +30,6 @@ public class DeptEmployee {
     public DeptEmployee(String name, String employeeNumber, Department department) {
         this.name = name;
         this.employeeNumber = employeeNumber;
-        this.department = department;
-    }
-    
-    public DeptEmployee(String name, String employeeNumber, String title, Department department) {
-        super();
-        this.name = name;
-        this.employeeNumber = employeeNumber;
-        this.title = title;
         this.department = department;
     }
 
@@ -73,11 +65,11 @@ public class DeptEmployee {
         this.department = department;
     }
 
-    public String getTitle() {
-        return title;
+    public String getDesignation() {
+        return designation;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDesignation(String designation) {
+        this.designation = designation;
     }
 }
