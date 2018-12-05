@@ -10,3 +10,4 @@
 - [A Guide to Jdbi](http://www.baeldung.com/jdbi)
 - [Pessimistic Locking in JPA](http://www.baeldung.com/jpa-pessimistic-locking)
 - [Get All Data from a Table with Hibernate](https://www.baeldung.com/hibernate-select-all)
+- [Auto-Generated Field for MongoDB using Spring Boot](https://www.baeldung.com/spring-boot-mongodb-auto-generated-field)
