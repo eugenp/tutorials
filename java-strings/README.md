@@ -40,3 +40,4 @@
 - [Removing Repeated Characters from a String](https://www.baeldung.com/java-remove-repeated-char)
 - [Join Array of Primitives with Separator in Java](https://www.baeldung.com/java-join-primitive-array)
 - [Convert String to Byte Array and Reverse in Java](https://www.baeldung.com/java-string-to-byte-array)
+- [Pad a String with Zeros or Spaces in Java](https://www.baeldung.com/java-pad-string)
