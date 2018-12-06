@@ -601,98 +601,122 @@
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
-                <module>spring-4</module>
-                <module>spring-5</module>
-                <module>spring-5-reactive</module>
-                <module>spring-5-reactive-security</module>
-                <module>spring-5-reactive-client</module>
-                <module>spring-5-mvc</module>
-                <module>spring-5-security</module>
-				<module>spring-5-security-oauth</module>
+                <module>saas</module>
+                <module>spark-java</module>
                 
-                <module>spring-aop</module>
+                <module>spring-4</module>
+                
+                <module>spring-5</module>
+                <!-- <module>spring-5-data-reactive</module> --> <!-- very long running - temporarily disabled. Fixing in BAEL-10891  -->
+                <module>spring-5-mvc</module>
+                <module>spring-5-reactive</module>
+                <module>spring-5-reactive-client</module>
+                <module>spring-5-reactive-oauth</module>
+                <module>spring-5-reactive-security</module>
+                <module>spring-5-security</module>
+                <module>spring-5-security-oauth</module>
+                
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
-                <module>spring-amqp</module>
                 <module>spring-all</module>
+                <module>spring-amqp</module>
+                <!-- <module>spring-amqp-simple</module> --> <!-- very long running - temporarily disabled. Fixing in BAEL-10891 -->
+                <module>spring-aop</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
                 <module>spring-bom</module>
-                <module>spring-boot-keycloak</module>
-                <module>spring-boot-bootstrap</module>
-                <module>spring-boot-admin</module>
-                <module>spring-boot-camel</module>
-                <module>spring-boot-security</module>
-                <module>spring-boot-mvc</module>
-                <module>spring-boot-logging-log4j2</module>
-                <module>spring-boot-disable-console-logging</module>
-                <module>spring-boot-property-exp</module>
-                <module>spring-boot-ctx-fluent</module>
-                <module>spring-boot</module>
-                <module>spring-boot-ops</module>
                 
-                <module>spring-cloud-data-flow</module>
+                <module>spring-boot</module>
+                <module>spring-boot-admin</module>
+                <module>spring-boot-angular-ecommerce</module>
+                <module>spring-boot-autoconfiguration</module>
+                <module>spring-boot-bootstrap</module>
+                <module>spring-boot-camel</module>
+                <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
+                <module>spring-boot-client</module>
+                <module>spring-boot-crud</module>
+                <module>spring-boot-ctx-fluent</module>
+                <module>spring-boot-custom-starter</module>
+                <module>spring-boot-disable-console-logging</module>
+                <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
+                <module>spring-boot-jasypt</module>
+                <module>spring-boot-keycloak</module>
+                <module>spring-boot-logging-log4j2</module>
+                <module>spring-boot-mvc</module>
+                <module>spring-boot-ops</module>
+                <module>spring-boot-property-exp</module>
+                <module>spring-boot-security</module>
+                <module>spring-boot-vue</module>
+                
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
+                <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
+                <module>spring-cloud-data-flow</module>
+                
                 <module>spring-core</module>
                 <module>spring-cucumber</module>
+                
                 <module>spring-data-rest</module>
-                <module>spring-drools</module>
+                <module>spring-data-rest-querydsl</module>
                 <module>spring-dispatcher-servlet</module>
+                <module>spring-drools</module>
+                
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
                 <module>spring-freemarker</module>
+                
+                <module>spring-groovy</module>
+                
                 <module>spring-integration</module>
                 
-                <module>spring-jinq</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
+                <module>spring-jinq</module>
                 <module>spring-jms</module>
                 <module>spring-jooq</module>
+                
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
+                
                 <module>spring-ldap</module>
                 
+                <module>spring-mobile</module>
                 <module>spring-mockito</module>
+                <module>spring-mustache</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
+                <module>spring-mvc-kotlin</module>
+                <module>spring-mvc-simple</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
-                <module>spring-mvc-kotlin</module>
+                <module>spring-mybatis</module>
                 
                 <module>spring-protobuf</module>
+                
                 <module>spring-quartz</module>
-                <module>spring-rest-angular</module>
-                <module>spring-rest-full</module>
-                <module>spring-rest-query-language</module>
-                <module>spring-rest</module>
-                <module>spring-resttemplate</module>
-                <module>spring-rest-simple</module>
-                <module>spring-remoting</module>
                 
-                <module>spring-session</module>
-                <module>spring-sleuth</module>
-                <module>spring-social-login</module>
-                <module>spring-spel</module>
-                <module>spring-state-machine</module>
-                <module>spring-thymeleaf</module>
-                <module>spring-userservice</module>
-                
-                <module>spring-zuul</module>
+                <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
-                <module>spring-vertx</module>
-                <module>spring-vault</module>
+                <module>spring-remoting</module>
+                <module>spring-rest</module>
+                <module>spring-rest-angular</module>
                 <module>spring-rest-embedded-tomcat</module>
-                <module>spring-swagger-codegen</module>
-                <module>spring-webflux-amqp</module> <!-- long -->
+                <module>spring-rest-full</module>
+                <module>spring-rest-hal-browser</module>
+                <module>spring-rest-query-language</module>
+                <module>spring-rest-shell</module>
+                <module>spring-rest-simple</module>
+                <module>spring-rest-template</module>
+                <module>spring-resttemplate</module>
+                <module>spring-roo</module>
                 
-                <module>spring-static-resources</module>
-                <module>spring-security-thymeleaf</module>
                 <module>spring-security-acl</module>
+                <module>spring-security-angular/server</module>
                 <module>spring-security-cache-control</module>
+                
                 <module>spring-security-client/spring-security-jsp-authentication</module>
                 <module>spring-security-client/spring-security-jsp-authorize</module>
                 <module>spring-security-client/spring-security-jsp-config</module>
@@ -700,8 +724,10 @@
                 <module>spring-security-client/spring-security-thymeleaf-authentication</module>
                 <module>spring-security-client/spring-security-thymeleaf-authorize</module>
                 <module>spring-security-client/spring-security-thymeleaf-config</module>
+                
                 <module>spring-security-core</module>
                 <module>spring-security-mvc-boot</module>
+                <module>spring-security-mvc-custom</module>
                 <module>spring-security-mvc-digest-auth</module>
                 <module>spring-security-mvc-ldap</module>
                 <module>spring-security-mvc-login</module>
@@ -710,65 +736,74 @@
                 <module>spring-security-mvc-socket</module>
                 <module>spring-security-openid</module>
                 <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
+                <module>spring-security-rest</module>
                 <module>spring-security-rest-basic-auth</module>
                 <module>spring-security-rest-custom</module>
-                <module>spring-security-rest</module>
                 <module>spring-security-sso</module>
+                <module>spring-security-stormpath</module>
+                <module>spring-security-thymeleaf</module>
                 <module>spring-security-x509</module>
-                <module>spring-security-mvc-custom</module>
+                <module>spring-session</module>
+                <module>spring-sleuth</module>
+                <module>spring-social-login</module>
+                <module>spring-spel</module>
+                <module>spring-state-machine</module>
+                <module>spring-static-resources</module>
+                <module>spring-swagger-codegen</module>
                 
-                <module>spark-java</module>
-                <module>saas</module>
+                <module>spring-thymeleaf</module>
+                
+                <module>spring-userservice</module>
+                
+                <module>spring-vault</module>
+                <module>spring-vertx</module>
+                
+                <module>spring-webflux-amqp</module> <!-- long -->
+                
+                <module>spring-zuul</module>
+                
+                <module>sse-jaxrs</module>
+                <module>static-analysis</module>
+                <module>stripe</module>
+                <module>structurizr</module>
                 <module>struts-2</module>
                 
-                <module>testing-modules/selenium-junit-testng</module>
+                <module>testing-modules/gatling</module>
                 <module>testing-modules/groovy-spock</module>
+                <module>testing-modules/junit-5</module>
+                <module>testing-modules/junit5-migration</module>
+                <module>testing-modules/load-testing-comparison</module>
                 <module>testing-modules/mockito</module>
                 <module>testing-modules/mockito-2</module>
                 <module>testing-modules/mocks</module>
+                <module>testing-modules/mockserver</module>
+                <module>testing-modules/parallel-tests-junit</module>
                 <module>testing-modules/rest-assured</module>
                 <module>testing-modules/rest-testing</module>
-                <module>testing-modules/junit-5</module>
-                <module>testing-modules/junit5-migration</module>
+                <!-- <module>testing-modules/runjunitfromjava</module> --> <!-- Not a maven project -->
+                <module>testing-modules/selenium-junit-testng</module>
+                <module>testing-modules/spring-testing</module>
+                <module>testing-modules/test-containers</module>
                 <module>testing-modules/testing</module>
                 <module>testing-modules/testng</module>
-                <module>testing-modules/mockserver</module>
-                <module>testing-modules/test-containers</module>
+                                
                 <module>twilio</module>
+                <module>Twitter4J</module>
                 
                 <module>undertow</module>
-                
-                <module>video-tutorials</module>
                 <module>vaadin</module>
-                <module>vertx-and-rxjava</module>
-                <module>vraptor</module>
-                <module>vertx</module>
+                
                 <module>vavr</module>
+                <module>vertx</module>
+                <module>vertx-and-rxjava</module>
+                <module>video-tutorials</module>
+                <module>vraptor</module>
                 
-                <module>xmlunit-2</module>
+                <module>wicket</module>
+                
                 <module>xml</module>
-                
-                <!-- problematic -->
-                <!--
-                <module>logging-modules/log4j2</module>
-                <module>jmeter</module>
-                -->
-
-                <!-- heavy -->
-                <!--
-                
-                <module>geotools</module>
-                <module>jhipster/jhipster-monolithic</module>
-                <module>testing-modules/gatling</module>
-                <module>google-web-toolkit</module>
-                
-                -->
-                
-                <!-- very long running - temporarily disabled -->
-                <!-- 
-                <module>spring-amqp-simple</module>
-                <module>spring-5-data-reactive</module>
-                -->
+                <module>xmlunit-2</module>
+                <module>xstream</module>
                 
             </modules>
 
@@ -1227,98 +1262,122 @@
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
-                <module>spring-4</module>
-                <module>spring-5</module>
-                <module>spring-5-reactive</module>
-                <module>spring-5-reactive-security</module>
-                <module>spring-5-reactive-client</module>
-                <module>spring-5-mvc</module>
-                <module>spring-5-security</module>
-				<module>spring-5-security-oauth</module>
+                <module>saas</module>
+                <module>spark-java</module>
                 
-                <module>spring-aop</module>
+                <module>spring-4</module>
+                
+                <module>spring-5</module>
+                <!-- <module>spring-5-data-reactive</module> --> <!-- very long running - temporarily disabled. Fixing in BAEL-10891  -->
+                <module>spring-5-mvc</module>
+                <module>spring-5-reactive</module>
+                <module>spring-5-reactive-client</module>
+                <module>spring-5-reactive-oauth</module>
+                <module>spring-5-reactive-security</module>
+                <module>spring-5-security</module>
+                <module>spring-5-security-oauth</module>
+                
                 <module>spring-activiti</module>
                 <module>spring-akka</module>
-                <module>spring-amqp</module>
                 <module>spring-all</module>
+                <module>spring-amqp</module>
+                <!-- <module>spring-amqp-simple</module> --> <!-- very long running - temporarily disabled. Fixing in BAEL-10891 -->
+                <module>spring-aop</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
                 <module>spring-bom</module>
-                <module>spring-boot-keycloak</module>
-                <module>spring-boot-bootstrap</module>
-                <module>spring-boot-admin</module>
-                <module>spring-boot-camel</module>
-                <module>spring-boot-security</module>
-                <module>spring-boot-mvc</module>
-                <module>spring-boot-logging-log4j2</module>
-                <module>spring-boot-disable-console-logging</module>
-                <module>spring-boot-property-exp</module>
-                <module>spring-boot-ctx-fluent</module>
-                <module>spring-boot</module>
-                <module>spring-boot-ops</module>
                 
-                <module>spring-cloud-data-flow</module>
+                <module>spring-boot</module>
+                <module>spring-boot-admin</module>
+                <module>spring-boot-angular-ecommerce</module>
+                <module>spring-boot-autoconfiguration</module>
+                <module>spring-boot-bootstrap</module>
+                <module>spring-boot-camel</module>
+                <!-- <module>spring-boot-cli</module> --> <!-- Not a maven project -->
+                <module>spring-boot-client</module>
+                <module>spring-boot-crud</module>
+                <module>spring-boot-ctx-fluent</module>
+                <module>spring-boot-custom-starter</module>
+                <module>spring-boot-disable-console-logging</module>
+                <!-- <module>spring-boot-gradle</module> --> <!-- Not a maven project -->
+                <module>spring-boot-jasypt</module>
+                <module>spring-boot-keycloak</module>
+                <module>spring-boot-logging-log4j2</module>
+                <module>spring-boot-mvc</module>
+                <module>spring-boot-ops</module>
+                <module>spring-boot-property-exp</module>
+                <module>spring-boot-security</module>
+                <module>spring-boot-vue</module>
+                
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
+                <!-- <module>spring-cloud-cli</module> --> <!-- Not a maven project -->
+                <module>spring-cloud-data-flow</module>
+                
                 <module>spring-core</module>
                 <module>spring-cucumber</module>
+                
                 <module>spring-data-rest</module>
-                <module>spring-drools</module>
+                <module>spring-data-rest-querydsl</module>
                 <module>spring-dispatcher-servlet</module>
+                <module>spring-drools</module>
+                
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
                 <module>spring-freemarker</module>
+                
+                <module>spring-groovy</module>
+                
                 <module>spring-integration</module>
                 
-                <module>spring-jinq</module>
                 <module>spring-jenkins-pipeline</module>
                 <module>spring-jersey</module>
+                <module>spring-jinq</module>
                 <module>spring-jms</module>
                 <module>spring-jooq</module>
+                
                 <module>spring-kafka</module>
                 <module>spring-katharsis</module>
+                
                 <module>spring-ldap</module>
                 
+                <module>spring-mobile</module>
                 <module>spring-mockito</module>
+                <module>spring-mustache</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
+                <module>spring-mvc-kotlin</module>
+                <module>spring-mvc-simple</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
-                <module>spring-mvc-kotlin</module>
+                <module>spring-mybatis</module>
                 
                 <module>spring-protobuf</module>
+                
                 <module>spring-quartz</module>
-                <module>spring-rest-angular</module>
-                <module>spring-rest-full</module>
-                <module>spring-rest-query-language</module>
-                <module>spring-rest</module>
-                <module>spring-resttemplate</module>
-                <module>spring-rest-simple</module>
-                <module>spring-remoting</module>
                 
-                <module>spring-session</module>
-                <module>spring-sleuth</module>
-                <module>spring-social-login</module>
-                <module>spring-spel</module>
-                <module>spring-state-machine</module>
-                <module>spring-thymeleaf</module>
-                <module>spring-userservice</module>
-                
-                <module>spring-zuul</module>
+                <module>spring-reactive-kotlin</module>
                 <module>spring-reactor</module>
-                <module>spring-vertx</module>
-                <module>spring-vault</module>
+                <module>spring-remoting</module>
+                <module>spring-rest</module>
+                <module>spring-rest-angular</module>
                 <module>spring-rest-embedded-tomcat</module>
-                <module>spring-swagger-codegen</module>
-                <module>spring-webflux-amqp</module> <!-- long -->
+                <module>spring-rest-full</module>
+                <module>spring-rest-hal-browser</module>
+                <module>spring-rest-query-language</module>
+                <module>spring-rest-shell</module>
+                <module>spring-rest-simple</module>
+                <module>spring-rest-template</module>
+                <module>spring-resttemplate</module>
+                <module>spring-roo</module>
                 
-                <module>spring-static-resources</module>
-                <module>spring-security-thymeleaf</module>
                 <module>spring-security-acl</module>
+                <module>spring-security-angular/server</module>
                 <module>spring-security-cache-control</module>
+                
                 <module>spring-security-client/spring-security-jsp-authentication</module>
                 <module>spring-security-client/spring-security-jsp-authorize</module>
                 <module>spring-security-client/spring-security-jsp-config</module>
@@ -1326,8 +1385,10 @@
                 <module>spring-security-client/spring-security-thymeleaf-authentication</module>
                 <module>spring-security-client/spring-security-thymeleaf-authorize</module>
                 <module>spring-security-client/spring-security-thymeleaf-config</module>
+                
                 <module>spring-security-core</module>
                 <module>spring-security-mvc-boot</module>
+                <module>spring-security-mvc-custom</module>
                 <module>spring-security-mvc-digest-auth</module>
                 <module>spring-security-mvc-ldap</module>
                 <module>spring-security-mvc-login</module>
@@ -1336,66 +1397,75 @@
                 <module>spring-security-mvc-socket</module>
                 <module>spring-security-openid</module>
                 <!--<module>spring-security-react</module> --> <!-- fails on Travis, fails intermittently on the new Jenkins (01.12.2018) BAEL-10834 -->
+                <module>spring-security-rest</module>
                 <module>spring-security-rest-basic-auth</module>
                 <module>spring-security-rest-custom</module>
-                <module>spring-security-rest</module>
                 <module>spring-security-sso</module>
+                <module>spring-security-stormpath</module>
+                <module>spring-security-thymeleaf</module>
                 <module>spring-security-x509</module>
-                <module>spring-security-mvc-custom</module>
+                <module>spring-session</module>
+                <module>spring-sleuth</module>
+                <module>spring-social-login</module>
+                <module>spring-spel</module>
+                <module>spring-state-machine</module>
+                <module>spring-static-resources</module>
+                <module>spring-swagger-codegen</module>
                 
-                <module>spark-java</module>
-                <module>saas</module>
+                <module>spring-thymeleaf</module>
+                
+                <module>spring-userservice</module>
+                
+                <module>spring-vault</module>
+                <module>spring-vertx</module>
+                
+                <module>spring-webflux-amqp</module> <!-- long -->
+                
+                <module>spring-zuul</module>
+                
+                <module>sse-jaxrs</module>
+                <module>static-analysis</module>
+                <module>stripe</module>
+                <module>structurizr</module>
                 <module>struts-2</module>
                 
-                <module>testing-modules/selenium-junit-testng</module>
+                <module>testing-modules/gatling</module>
                 <module>testing-modules/groovy-spock</module>
+                <module>testing-modules/junit-5</module>
+                <module>testing-modules/junit5-migration</module>
+                <module>testing-modules/load-testing-comparison</module>
                 <module>testing-modules/mockito</module>
                 <module>testing-modules/mockito-2</module>
                 <module>testing-modules/mocks</module>
+                <module>testing-modules/mockserver</module>
+                <module>testing-modules/parallel-tests-junit</module>
                 <module>testing-modules/rest-assured</module>
                 <module>testing-modules/rest-testing</module>
-                <module>testing-modules/junit-5</module>
-                <module>testing-modules/junit5-migration</module>
+                <!-- <module>testing-modules/runjunitfromjava</module> --> <!-- Not a maven project -->
+                <module>testing-modules/selenium-junit-testng</module>
+                <module>testing-modules/spring-testing</module>
+                <module>testing-modules/test-containers</module>
                 <module>testing-modules/testing</module>
                 <module>testing-modules/testng</module>
-                <module>testing-modules/mockserver</module>
-                <module>testing-modules/test-containers</module>
+                                
                 <module>twilio</module>
+                <module>Twitter4J</module>
                 
                 <module>undertow</module>
-                
-                <module>video-tutorials</module>
                 <module>vaadin</module>
-                <module>vertx-and-rxjava</module>
-                <module>vraptor</module>
-                <module>vertx</module>
+                
                 <module>vavr</module>
+                <module>vertx</module>
+                <module>vertx-and-rxjava</module>
+                <module>video-tutorials</module>
+                <module>vraptor</module>
                 
-                <module>xmlunit-2</module>
+                <module>wicket</module>
+                
                 <module>xml</module>
-                
-                <!-- problematic -->
-                <!--
-                <module>logging-modules/log4j2</module>
-                <module>jmeter</module>
-                -->
-
-                <!-- heavy -->
-                <!--
-                
-                <module>geotools</module>
-                <module>jhipster/jhipster-monolithic</module>
-                <module>testing-modules/gatling</module>
-                <module>google-web-toolkit</module>
-                
-                -->
-                
-                <!-- very long running - temporarily disabled -->
-                <!-- 
-                <module>spring-amqp-simple</module>
-                <module>spring-5-data-reactive</module>
-                -->
-                
+                <module>xmlunit-2</module>
+                <module>xstream</module>
+                                 
             </modules>
 
         </profile>
