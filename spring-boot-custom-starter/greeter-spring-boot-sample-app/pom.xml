@@ -1,17 +1,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>greeter-spring-boot-sample-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<name>greeter-spring-boot-sample-app</name>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>spring-boot-custom-starter</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../spring-boot-custom-starter</relativePath>
     </parent>
+	
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -19,9 +31,27 @@
             <artifactId>greeter-spring-boot-starter</artifactId>
             <version>${greeter-starter.version}</version>
         </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
+	
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<version>${spring-boot.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
     <properties>
+	    <spring-boot.version>1.5.15.RELEASE</spring-boot.version>
         <greeter-starter.version>0.0.1-SNAPSHOT</greeter-starter.version>
     </properties>
 
