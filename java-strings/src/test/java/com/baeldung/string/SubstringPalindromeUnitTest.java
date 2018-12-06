@@ -58,7 +58,7 @@ public class SubstringPalindromeUnitTest {
     private SubstringPalindrome palindrome = new SubstringPalindrome();
 
     @Test
-    public void whenApproachUsingManachersAlgo_shouldBePalindrome() {
+    public void whenUsingManachersAlgorithm_thenFindsAllPalindromes() {
         assertEquals(EXPECTED_PALINDROME_BUBBLE, palindrome.findAllPalindromesUsingManachersAlgorithm(INPUT_BUBBLE));
         assertEquals(EXPECTED_PALINDROME_INDEED, palindrome.findAllPalindromesUsingManachersAlgorithm(INPUT_INDEED));
         assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.findAllPalindromesUsingManachersAlgorithm(INPUT_CIVIC));
@@ -66,7 +66,7 @@ public class SubstringPalindromeUnitTest {
     }
 
     @Test
-    public void whenApproachUsingCenter_shouldBePalindrome() {
+    public void whenUsingCenterApproach_thenFindsAllPalindromes() {
         assertEquals(EXPECTED_PALINDROME_BUBBLE, palindrome.findAllPalindromesUsingCenter(INPUT_BUBBLE));
         assertEquals(EXPECTED_PALINDROME_INDEED, palindrome.findAllPalindromesUsingCenter(INPUT_INDEED));
         assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.findAllPalindromesUsingCenter(INPUT_CIVIC));
@@ -74,7 +74,7 @@ public class SubstringPalindromeUnitTest {
     }
 
     @Test
-    public void whenApproachUsingBruteForce_shouldBePalindrome() {
+    public void whenUsingBruteForceApproach_thenFindsAllPalindromes() {
         assertEquals(EXPECTED_PALINDROME_BUBBLE, palindrome.findAllPalindromesUsingBruteForceApproach(INPUT_BUBBLE));
         assertEquals(EXPECTED_PALINDROME_INDEED, palindrome.findAllPalindromesUsingBruteForceApproach(INPUT_INDEED));
         assertEquals(EXPECTED_PALINDROME_CIVIC, palindrome.findAllPalindromesUsingBruteForceApproach(INPUT_CIVIC));
