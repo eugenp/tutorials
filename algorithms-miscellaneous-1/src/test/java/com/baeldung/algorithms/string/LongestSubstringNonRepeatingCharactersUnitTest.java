@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static com.baeldung.algorithms.string.LongestSubstringNonRepeatingCharacters.getUniqueCharacterSubstring;
 import static com.baeldung.algorithms.string.LongestSubstringNonRepeatingCharacters.getUniqueCharacterSubstringBruteForce;
 
-public class LongestSubstringNonRepeatingCharactersTest {
+public class LongestSubstringNonRepeatingCharactersUnitTest {
 
     @Test
     void givenString_whenGetUniqueCharacterSubstringBruteForceCalled_thenResultFoundAsExpectedUnitTest() {
