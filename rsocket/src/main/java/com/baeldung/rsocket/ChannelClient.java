@@ -14,17 +14,17 @@ public class ChannelClient {
 
     public ChannelClient() {
         this.socket = RSocketFactory.connect()
-                .transport(TcpClientTransport.create("localhost", TCP_PORT))
-                .start()
-                .block();
+          .transport(TcpClientTransport.create("localhost", TCP_PORT))
+          .start()
+          .block();
 
         this.gameController = new GameController("Client Player");
     }
 
     public void playGame() {
         socket.requestChannel(Flux.from(gameController))
-                .doOnNext(gameController::processPayload)
-                .blockLast();
+          .doOnNext(gameController::processPayload)
+          .blockLast();
     }
 
     public void dispose() {
