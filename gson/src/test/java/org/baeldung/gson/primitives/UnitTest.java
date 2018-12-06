@@ -10,28 +10,42 @@ import static junit.framework.TestCase.*;
 
 public class UnitTest {
     @Test public void toJsonAllPrimitives() {
-        GsonBundle gsonBundle = new GsonBundle();
+        PrimitiveBundle primitiveBundle = new PrimitiveBundle();
+
+        // @formatter:off
+        primitiveBundle.byteValue    = (byte) 0x00001111;
+        primitiveBundle.shortValue   = (short) 3;
+        primitiveBundle.intValue     = 3;
+        primitiveBundle.longValue    = 3;
+        primitiveBundle.floatValue   = 3.5f;
+        primitiveBundle.doubleValue  = 3.5;
+        primitiveBundle.booleanValue = true;
+        primitiveBundle.charValue    = 'a';
+        // @formatter:on
+
         Gson gson = new Gson();
 
         String expected = "{\"byteValue\":17,\"shortValue\":3,\"intValue\":3," + "\"longValue\":3,\"floatValue\":3.5" + ",\"doubleValue\":3.5" + ",\"booleanValue\":true,\"charValue\":\"a\"}";
 
-        assertEquals(expected, gson.toJson(gsonBundle));
+        assertEquals(expected, gson.toJson(primitiveBundle));
     }
 
     @Test public void fromJsonAllPrimitives() {
         String json = "{\"byteValue\": 17, \"shortValue\": 3, \"intValue\": 3, " + "\"longValue\": 3, \"floatValue\": 3.5" + ", \"doubleValue\": 3.5" + ", \"booleanValue\": true, \"charValue\": \"a\"}";
 
         Gson gson = new Gson();
-        GsonBundle model = gson.fromJson(json, GsonBundle.class);
+        PrimitiveBundle model = gson.fromJson(json, PrimitiveBundle.class);
 
-        assertEquals(17, model.byteValue);
-        assertEquals(3, model.shortValue);
-        assertEquals(3, model.intValue);
-        assertEquals(3, model.longValue);
+        // @formatter:off
+        assertEquals(17,  model.byteValue);
+        assertEquals(3,   model.shortValue);
+        assertEquals(3,   model.intValue);
+        assertEquals(3,   model.longValue);
         assertEquals(3.5, model.floatValue, 0.0001);
         assertEquals(3.5, model.doubleValue, 0.0001);
-        assertTrue(model.booleanValue);
+        assertTrue(       model.booleanValue);
         assertEquals('a', model.charValue);
+        // @formatter:on
     }
 
     @Test public void toJsonByteToBitString() {
@@ -143,7 +157,19 @@ public class UnitTest {
         fail();
     }
 
-    @Test public void fromJsonBooleanfromYes() {
+    @Test public void fromJsonBooleanFrom2ValueIntegerSolution() {
+        String json = "{\"value\": 1}";
+        GsonBuilder builder = new GsonBuilder();
+        builder.registerTypeAdapter(GsonBoolean.class, new GsonBoolean2ValueIntegerDeserializer());
+
+        Gson gson = builder.create();
+
+        GsonBoolean model = gson.fromJson(json, GsonBoolean.class);
+
+        assertTrue(model.value);
+    }
+
+    @Test public void fromJsonBooleanFromYes() {
         String json = "{\"value\": yes}";
         Gson gson = new Gson();
 
@@ -162,19 +188,54 @@ public class UnitTest {
         assertFalse(model.value);
     }
 
+    // @formatter:off
     static class GsonBitStringDeserializer implements JsonDeserializer<GsonBitString> {
-        @Override public GsonBitString deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        @Override public GsonBitString deserialize(
+            JsonElement jsonElement,
+            Type type,
+            JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+
             GsonBitString gsonBitString = new GsonBitString();
-            gsonBitString.value = (byte) Integer.parseInt(jsonElement.getAsJsonObject().getAsJsonPrimitive("value").getAsString(), 2);
+            gsonBitString.value = (byte) Integer.parseInt(
+                                                  jsonElement.getAsJsonObject()
+                                                             .getAsJsonPrimitive("value")
+                                                             .getAsString()
+                                                  , 2);
             return gsonBitString;
         }
     }
 
     static class GsonBitStringSerializer implements JsonSerializer<GsonBitString> {
-        @Override public JsonElement serialize(GsonBitString gsonBundle, Type type, JsonSerializationContext jsonSerializationContext) {
+        @Override public JsonElement serialize(
+            GsonBitString model,
+            Type type,
+            JsonSerializationContext jsonSerializationContext) {
+
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("value", Integer.toBinaryString(gsonBundle.value));
+            jsonObject.addProperty("value", Integer.toBinaryString(model.value));
             return jsonObject;
         }
     }
+
+    static class GsonBoolean2ValueIntegerDeserializer implements JsonDeserializer<GsonBoolean> {
+        @Override public GsonBoolean deserialize(
+            JsonElement jsonElement,
+            Type type,
+            JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+
+            GsonBoolean model = new GsonBoolean();
+            int value = jsonElement.getAsJsonObject().getAsJsonPrimitive("value").getAsInt();
+            if (value == 0) {
+                model.value = false;
+            } else if (value == 1) {
+                model.value = true;
+            } else {
+                throw new JsonParseException("Unexpected value. Trying to deserialize "
+                    + "a boolean from an integer different than 0 and 1.");
+            }
+
+            return model;
+        }
+    }
+    // @formatter:on
 }
