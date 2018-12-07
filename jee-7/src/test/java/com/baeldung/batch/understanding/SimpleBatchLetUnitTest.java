@@ -1,18 +1,11 @@
 package com.baeldung.batch.understanding;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.List;
-import java.util.Map;
 import java.util.Properties;
-
 import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
 import javax.batch.runtime.BatchStatus;
 import javax.batch.runtime.JobExecution;
-import javax.batch.runtime.Metric;
-import javax.batch.runtime.StepExecution;
-
 import org.junit.jupiter.api.Test;
 
 class SimpleBatchLetUnitTest {
