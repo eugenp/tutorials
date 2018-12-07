@@ -1,7 +1,5 @@
 package org.baeldung.persistence.service;
 
-import java.util.List;
-
 import org.baeldung.persistence.model.Event;
 import org.baeldung.spring.PersistenceConfig;
 import org.hamcrest.core.IsInstanceOf;
