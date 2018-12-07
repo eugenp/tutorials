@@ -1,6 +1,6 @@
 package org.baeldung.gson.primitives.models;
 
-public class GsonBoolean {
+public class BooleanExample {
     public boolean value;
 
     public String toString() {

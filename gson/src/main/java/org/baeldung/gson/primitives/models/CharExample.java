@@ -1,6 +1,6 @@
 package org.baeldung.gson.primitives.models;
 
-public class GsonChar {
+public class CharExample {
     public char value;
 
     public String toString() {

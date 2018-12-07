@@ -1,6 +1,6 @@
 package org.baeldung.gson.primitives.models;
 
-public class GsonFloat {
+public class FloatExample {
     public float value;
 
     public String toString() {
