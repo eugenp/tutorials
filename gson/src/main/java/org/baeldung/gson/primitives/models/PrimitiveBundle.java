@@ -12,8 +12,8 @@ public class PrimitiveBundle {
 
     public String toString() {
         return "{" + "byte: " + byteValue + ", " + "short: " + shortValue + ", "
-            + "int: " + intValue + ", " + "long: " + longValue + ", " + "float: "
-            + floatValue + ", " + "double: " + doubleValue + ", " + "boolean: "
-            + booleanValue + ", " + "char: " + charValue + "}";
+            + "int: " + intValue + ", " + "long: " + longValue + ", "
+            + "float: " + floatValue + ", " + "double: " + doubleValue + ", "
+            + "boolean: " + booleanValue + ", " + "char: " + charValue + "}";
     }
 }

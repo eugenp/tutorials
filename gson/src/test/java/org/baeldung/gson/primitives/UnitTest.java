@@ -25,13 +25,17 @@ public class UnitTest {
 
         Gson gson = new Gson();
 
-        String expected = "{\"byteValue\":17,\"shortValue\":3,\"intValue\":3," + "\"longValue\":3,\"floatValue\":3.5" + ",\"doubleValue\":3.5" + ",\"booleanValue\":true,\"charValue\":\"a\"}";
+        String expected = "{\"byteValue\":17,\"shortValue\":3,\"intValue\":3,"
+            + "\"longValue\":3,\"floatValue\":3.5" + ",\"doubleValue\":3.5"
+            + ",\"booleanValue\":true,\"charValue\":\"a\"}";
 
         assertEquals(expected, gson.toJson(primitiveBundle));
     }
 
     @Test public void fromJsonAllPrimitives() {
-        String json = "{\"byteValue\": 17, \"shortValue\": 3, \"intValue\": 3, " + "\"longValue\": 3, \"floatValue\": 3.5" + ", \"doubleValue\": 3.5" + ", \"booleanValue\": true, \"charValue\": \"a\"}";
+        String json = "{\"byteValue\": 17, \"shortValue\": 3, \"intValue\": 3, "
+            + "\"longValue\": 3, \"floatValue\": 3.5" + ", \"doubleValue\": 3.5"
+            + ", \"booleanValue\": true, \"charValue\": \"a\"}";
 
         Gson gson = new Gson();
         PrimitiveBundle model = gson.fromJson(json, PrimitiveBundle.class);
@@ -50,7 +54,8 @@ public class UnitTest {
 
     @Test public void toJsonByteToBitString() {
         GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(ByteExample.class, new GsonBitStringSerializer());
+        builder.registerTypeAdapter(ByteExample.class,
+            new GsonBitStringSerializer());
 
         Gson gson = builder.create();
         ByteExample model = new ByteExample();
@@ -62,7 +67,8 @@ public class UnitTest {
     @Test public void fromJsonByteFromBitString() {
         String json = "{\"value\": \"1111\"}";
         GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(ByteExample.class, new GsonBitStringDeserializer());
+        gsonBuilder.registerTypeAdapter(ByteExample.class,
+            new GsonBitStringDeserializer());
 
         Gson gson = gsonBuilder.create();
 
@@ -110,36 +116,52 @@ public class UnitTest {
 
     @Test public void fromJsonNull() {
         Gson gson = new Gson();
-        String json = "{\"value\": null}";
-        ByteExample model = gson.fromJson(json, ByteExample.class);
+        // @formatter:off
+        String json = "{\"byteValue\": null, \"shortValue\": null, "
+            + "\"intValue\": null, " + "\"longValue\": null, \"floatValue\": null"
+            + ", \"doubleValue\": null" + ", \"booleanValue\": null, \"charValue\": null}";
+        // @formatter:on
+        PrimitiveBundleInitialized model = gson.fromJson(json,
+            PrimitiveBundleInitialized.class);
 
-        assertEquals(1, model.value);
+        assertEquals(1, model.byteValue);
+        assertEquals(1, model.shortValue);
+        assertEquals(1, model.intValue);
+        assertEquals(1, model.longValue);
+        assertEquals(1, model.floatValue, 0.0001);
+        assertEquals(1, model.doubleValue, 0.0001);
+        assertTrue(model.booleanValue);
+        assertEquals('a', model.charValue);
     }
 
     @Test(expected = JsonSyntaxException.class) public void fromJsonEmptyString() {
         Gson gson = new Gson();
-        String json = "{\"value\": \"\"}";
-        gson.fromJson(json, ByteExample.class);
+        // @formatter:off
+        String json = "{\"byteValue\": \"\", \"shortValue\": \"\", "
+            + "\"intValue\": \"\", " + "\"longValue\": \"\", \"floatValue\": \"\""
+            + ", \"doubleValue\": \"\"" + ", \"booleanValue\": \"\", \"charValue\": \"\"}";
+        // @formatter:on
+        gson.fromJson(json, PrimitiveBundleInitialized.class);
     }
 
     @Test public void fromJsonValidValueWithinString() {
         Gson gson = new Gson();
-        String json = "{\"value\": \"15\"}";
-        ByteExample model = gson.fromJson(json, ByteExample.class);
+        // @formatter:off
+        String json = "{\"byteValue\": \"15\", \"shortValue\": \"15\", "
+            + "\"intValue\": \"15\", " + "\"longValue\": \"15\", \"floatValue\": \"15.0\""
+            + ", \"doubleValue\": \"15.0\"" + ", \"booleanValue\": \"false\", \"charValue\": \"z\"}";
+        // @formatter:on
+        PrimitiveBundleInitialized model = gson.fromJson(json,
+            PrimitiveBundleInitialized.class);
 
-        assertEquals(15, model.value);
-    }
-
-    @Test(expected = JsonSyntaxException.class) public void fromJsonInvalidValueWithinString() {
-        Gson gson = new Gson();
-        String json = "{\"value\": \"15x\"}";
-        gson.fromJson(json, ByteExample.class);
-    }
-
-    @Test(expected = JsonSyntaxException.class) public void fromJsonInvalidValueNotInAString() {
-        Gson gson = new Gson();
-        String json = "{\"value\": s15s}";
-        gson.fromJson(json, ByteExample.class);
+        assertEquals(15, model.byteValue);
+        assertEquals(15, model.shortValue);
+        assertEquals(15, model.intValue);
+        assertEquals(15, model.longValue);
+        assertEquals(15, model.floatValue, 0.0001);
+        assertEquals(15, model.doubleValue, 0.0001);
+        assertFalse(model.booleanValue);
+        assertEquals('z', model.charValue);
     }
 
     @Test public void fromJsonBooleanFrom2ValueInteger() {
@@ -160,7 +182,8 @@ public class UnitTest {
     @Test public void fromJsonBooleanFrom2ValueIntegerSolution() {
         String json = "{\"value\": 1}";
         GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(BooleanExample.class, new BooleanAs2ValueIntegerDeserializer());
+        builder.registerTypeAdapter(BooleanExample.class,
+            new BooleanAs2ValueIntegerDeserializer());
 
         Gson gson = builder.create();
 
