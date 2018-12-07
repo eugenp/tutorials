@@ -11,16 +11,16 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 
 @EnableWebFlux
 @SpringBootApplication
-public class ServerSSEApplication {
+public class ServerDebuggingApplication {
     
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(ServerSSEApplication.class);
+        SpringApplication app = new SpringApplication(ServerDebuggingApplication.class);
         app.setDefaultProperties(Collections.singletonMap("server.port", "8081"));
         app.run(args);
     }
     
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
+    public SecurityWebFilterChain debuggingServerSpringSecurityFilterChain(ServerHttpSecurity http) {
         http.authorizeExchange()
             .anyExchange()
             .permitAll();

@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>parent-boot-2</artifactId>
+    <artifactId>parent-boot-2.0-temp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>parent-boot-2</name>
     <packaging>pom</packaging>
-    <description>Parent for all Spring Boot 2 modules</description>
+    <description>Temporary Parent for all Spring Boot 2.0.x modules</description>
+    <!-- This pom will be ued only temporary until we migrate parent-boot-2 to 2.1.0 for ticket BAEL-10354 -->
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -78,7 +78,7 @@
         <rest-assured.version>3.1.0</rest-assured.version>
         <!-- plugins -->
         <thin.version>1.0.11.RELEASE</thin.version>
-        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <spring-boot.version>2.0.5.RELEASE</spring-boot.version>
     </properties>
 </project>
 

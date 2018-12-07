@@ -2,9 +2,7 @@ package com.baeldung.validations.functional;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 
@@ -13,7 +11,6 @@ import com.baeldung.validations.functional.model.CustomRequestEntity;
 
 import reactor.core.publisher.Mono;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FunctionalEndpointValidationsLiveTest {
 
