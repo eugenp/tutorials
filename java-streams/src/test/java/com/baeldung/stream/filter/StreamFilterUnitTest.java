@@ -8,56 +8,93 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class StreamFilterUnitTest {
 
     @Test
-    public void givenListOfCustomers_whenFilterByLambda_thenGetTwo() {
-        List<Customer> customers = Arrays.asList(new Customer("John P.", 15), new Customer("Sarah M.", 200), new Customer("Charles B.", 150), new Customer("Mary T.", 1));
+    public void givenListOfCustomers_whenFilterByPoints_thenGetTwo() {
+        Customer john = new Customer("John P.", 15);
+        Customer sarah = new Customer("Sarah M.", 200);
+        Customer charles = new Customer("Charles B.", 150);
+        Customer mary = new Customer("Mary T.", 1);
+        List<Customer> customers = Arrays.asList(john, sarah, charles, mary);
 
-        long customersWithMoreThan100Points = customers
+        List<Customer> customersWithMoreThan100Points = customers
           .stream()
           .filter(c -> c.getPoints() > 100)
-          .count();
+          .collect(Collectors.toList());
 
-        assertThat(customersWithMoreThan100Points).isEqualTo(2);
+        assertThat(customersWithMoreThan100Points).hasSize(2);
+        assertThat(customersWithMoreThan100Points).contains(sarah, charles);
+    }
+
+    @Test
+    public void givenListOfCustomers_whenFilterByPointsAndName_thenGetOne() {
+        Customer john = new Customer("John P.", 15);
+        Customer sarah = new Customer("Sarah M.", 200);
+        Customer charles = new Customer("Charles B.", 150);
+        Customer mary = new Customer("Mary T.", 1);
+        List<Customer> customers = Arrays.asList(john, sarah, charles, mary);
+
+        List<Customer> charlesWithMoreThan100Points = customers
+          .stream()
+          .filter(c -> c.getPoints() > 100 && c
+            .getName()
+            .startsWith("Charles"))
+          .collect(Collectors.toList());
+
+        assertThat(charlesWithMoreThan100Points).hasSize(1);
+        assertThat(charlesWithMoreThan100Points).contains(charles);
     }
 
     @Test
     public void givenListOfCustomers_whenFilterByMethodReference_thenGetTwo() {
-        List<Customer> customers = Arrays.asList(new Customer("John P.", 15), new Customer("Sarah M.", 200), new Customer("Charles B.", 150), new Customer("Mary T.", 1));
+        Customer john = new Customer("John P.", 15);
+        Customer sarah = new Customer("Sarah M.", 200);
+        Customer charles = new Customer("Charles B.", 150);
+        Customer mary = new Customer("Mary T.", 1);
+        List<Customer> customers = Arrays.asList(john, sarah, charles, mary);
 
-        long customersWithMoreThan100Points = customers
+        List<Customer> customersWithMoreThan100Points = customers
           .stream()
           .filter(Customer::hasOverThousandPoints)
-          .count();
+          .collect(Collectors.toList());
 
-        assertThat(customersWithMoreThan100Points).isEqualTo(2);
+        assertThat(customersWithMoreThan100Points).hasSize(2);
+        assertThat(customersWithMoreThan100Points).contains(sarah, charles);
     }
 
     @Test
     public void givenListOfCustomersWithOptional_whenFilterBy100Points_thenGetTwo() {
-        List<Optional<Customer>> customers = Arrays.asList(Optional.of(new Customer("John P.", 15)), Optional.of(new Customer("Sarah M.", 200)), Optional.empty(), Optional.of(new Customer("Mary T.", 300)), Optional.empty());
+        Optional<Customer> john = Optional.of(new Customer("John P.", 15));
+        Optional<Customer> sarah = Optional.of(new Customer("Sarah M.", 200));
+        Optional<Customer> mary = Optional.of(new Customer("Mary T.", 300));
+        List<Optional<Customer>> customers = Arrays.asList(john, sarah, Optional.empty(), mary, Optional.empty());
 
-        long customersWithMoreThan100Points = customers
+        List<Customer> customersWithMoreThan100Points = customers
           .stream()
           .flatMap(c -> c
             .map(Stream::of)
             .orElseGet(Stream::empty))
           .filter(Customer::hasOverThousandPoints)
-          .count();
+          .collect(Collectors.toList());
 
-        assertThat(customersWithMoreThan100Points).isEqualTo(2);
+        assertThat(customersWithMoreThan100Points).hasSize(2);
+        assertThat(customersWithMoreThan100Points).contains(sarah.get(), mary.get());
     }
 
     @Test
     public void givenListOfCustomers_whenFilterWithCustomHandling_thenThrowException() {
-        List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.unsplash.com/photo-1543320485-d0d5a49c2b2e"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
-          new Customer("Mary T.", 1, "https://images.unsplash.com/photo-1543297057-25167dfc180e"));
+        Customer john = new Customer("John P.", 15, "https://images.unsplash.com/photo-1543320485-d0d5a49c2b2e");
+        Customer sarah = new Customer("Sarah M.", 200);
+        Customer charles = new Customer("Charles B.", 150);
+        Customer mary = new Customer("Mary T.", 1, "https://images.unsplash.com/photo-1543297057-25167dfc180e");
+        List<Customer> customers = Arrays.asList(john, sarah, charles, mary);
 
         assertThatThrownBy(() -> customers
           .stream()
@@ -67,21 +104,27 @@ public class StreamFilterUnitTest {
 
     @Test
     public void givenListOfCustomers_whenFilterWithThrowingFunction_thenThrowException() {
-        List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.unsplash.com/photo-1543320485-d0d5a49c2b2e"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
-          new Customer("Mary T.", 1, "https://images.unsplash.com/photo-1543297057-25167dfc180e"));
+        Customer john = new Customer("John P.", 15, "https://images.unsplash.com/photo-1543320485-d0d5a49c2b2e");
+        Customer sarah = new Customer("Sarah M.", 200);
+        Customer charles = new Customer("Charles B.", 150);
+        Customer mary = new Customer("Mary T.", 1, "https://images.unsplash.com/photo-1543297057-25167dfc180e");
+        List<Customer> customers = Arrays.asList(john, sarah, charles, mary);
 
         assertThatThrownBy(() -> customers
           .stream()
           .filter((ThrowingPredicate.unchecked(Customer::hasValidProfilePhoto)))
-          .count()).isInstanceOf(WrappedException.class);
+          .collect(Collectors.toList())).isInstanceOf(WrappedException.class);
     }
 
     @Test
     public void givenListOfCustomers_whenFilterWithTryCatch_thenGetTwo() {
-        List<Customer> customers = Arrays.asList(new Customer("John P.", 15, "https://images.unsplash.com/photo-1543320485-d0d5a49c2b2e"), new Customer("Sarah M.", 200), new Customer("Charles B.", 150),
-          new Customer("Mary T.", 1, "https://images.unsplash.com/photo-1543297057-25167dfc180e"));
+        Customer john = new Customer("John P.", 15, "https://images.unsplash.com/photo-1543320485-d0d5a49c2b2e");
+        Customer sarah = new Customer("Sarah M.", 200);
+        Customer charles = new Customer("Charles B.", 150);
+        Customer mary = new Customer("Mary T.", 1, "https://images.unsplash.com/photo-1543297057-25167dfc180e");
+        List<Customer> customers = Arrays.asList(john, sarah, charles, mary);
 
-        long customersWithValidProfilePhoto = customers
+        List<Customer> customersWithValidProfilePhoto = customers
           .stream()
           .filter(c -> {
               try {
@@ -91,9 +134,10 @@ public class StreamFilterUnitTest {
               }
               return false;
           })
-          .count();
+          .collect(Collectors.toList());
 
-        assertThat(customersWithValidProfilePhoto).isEqualTo(2);
+        assertThat(customersWithValidProfilePhoto).hasSize(2);
+        assertThat(customersWithValidProfilePhoto).contains(john, mary);
     }
 
     @Test
@@ -110,6 +154,6 @@ public class StreamFilterUnitTest {
                   throw new RuntimeException(e);
               }
           })
-          .count()).isInstanceOf(RuntimeException.class);
+          .collect(Collectors.toList())).isInstanceOf(RuntimeException.class);
     }
 }
