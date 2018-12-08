@@ -10,8 +10,4 @@
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
-
-    <logger name="com.mchange.v2.c3p0" level="WARN">
-        <appender-ref ref="STDOUT" />
-    </logger>
 </configuration>
