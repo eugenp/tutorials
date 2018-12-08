@@ -21,4 +21,3 @@ To view the running application, visit [http://localhost:8080](http://localhost:
 - [Projections and Excerpts in Spring Data REST](http://www.baeldung.com/spring-data-rest-projections-excerpts)
 - [Spring Data REST Events with @RepositoryEventHandler](http://www.baeldung.com/spring-data-rest-events)
 - [Customizing HTTP Endpoints in Spring Data REST](https://www.baeldung.com/spring-data-rest-customize-http-endpoints)
-- [Spring Boot with SQLite](https://www.baeldung.com/spring-boot-sqlite)
