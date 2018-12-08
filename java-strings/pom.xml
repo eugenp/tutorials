@@ -68,6 +68,21 @@
             <artifactId>emoji-java</artifactId>
             <version>4.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.3.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-library</artifactId>
+            <version>1.3</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- Added for password generation -->
         <dependency>
             <groupId>org.passay</groupId>
@@ -79,6 +94,7 @@
             <artifactId>commons-text</artifactId>
             <version>1.4</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -106,13 +122,13 @@
 
     <properties>
         <!-- util -->
-        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
         <commons-codec.version>1.10</commons-codec.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <jmh-core.version>1.19</jmh-core.version>
         <icu4j.version>61.1</icu4j.version>
-        <guava.version>26.0-jre</guava.version>
+        <guava.version>27.0.1-jre</guava.version>
     </properties>
 
 </project>

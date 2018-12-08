@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>spring-reactive-kotlin</artifactId>
 	<packaging>jar</packaging>
-	<name>Spring Reactive Kotlin</name>
+	<name>spring-reactive-kotlin</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>

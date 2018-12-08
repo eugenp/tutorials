@@ -5,8 +5,8 @@
     <groupId>com.stackify.guest</groupId>
     <artifactId>spring-mvc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-mvc</name>
+    <packaging>jar</packaging>
     <description>Spring MVC sample project</description>
 
     <parent>

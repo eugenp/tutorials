@@ -8,10 +8,10 @@
     <description>A simple project to demonstrate Spring REST Shell features.</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2.0-temp</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2.0-temp</relativePath>
     </parent>
 
     <dependencies>

@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    <artifactId>sse-jaxrs-client</artifactId>
+    <name>sse-jaxrs-client</name>
+    
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>sse-jaxrs</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-
-    <artifactId>sse-jaxrs-client</artifactId>
 
     <properties>
         <cxf-version>3.2.0</cxf-version>
@@ -21,7 +21,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
                 <executions>
                     <execution>
                         <id>singleEvent</id>

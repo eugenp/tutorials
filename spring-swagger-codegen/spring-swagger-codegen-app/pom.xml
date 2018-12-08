@@ -2,7 +2,8 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-swagger-codegen-app</artifactId>
-    
+	<name>spring-swagger-codegen-app</name>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>spring-swagger-codegen</artifactId>

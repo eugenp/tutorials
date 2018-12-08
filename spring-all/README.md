@@ -4,10 +4,12 @@
 
 This project is used to replicate Spring Exceptions only.
 
-###The Course
+### The Course
+
 The "REST With Spring" Classes: http://bit.ly/restwithspring
- 
-### Relevant articles: 
+
+### Relevant articles:
+
 - [Guide to Spring @Autowired](http://www.baeldung.com/spring-autowire)
 - [Properties with Spring](http://www.baeldung.com/properties-with-spring) - checkout the `org.baeldung.properties` package for all scenarios of properties injection and usage
 - [Spring Profiles](http://www.baeldung.com/spring-profiles)
@@ -30,3 +32,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Web Contexts](http://www.baeldung.com/spring-web-contexts)
 - [Spring Cache – Creating a Custom KeyGenerator](http://www.baeldung.com/spring-cache-custom-keygenerator)
 - [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
+- [Spring Events](https://www.baeldung.com/spring-events)
+- [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)

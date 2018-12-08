@@ -32,3 +32,5 @@
 - [Set the Time Zone of a Date in Java](https://www.baeldung.com/java-set-date-time-zone)
 - [An Overview of Regular Expressions Performance in Java](https://www.baeldung.com/java-regex-performance)
 - [Java Primitives versus Objects](https://www.baeldung.com/java-primitives-vs-objects)
+- [How to Use if/else Logic in Java 8 Streams](https://www.baeldung.com/java-8-streams-if-else-logic)
+- [How to Replace Many if Statements in Java](https://www.baeldung.com/java-replace-if-statements)
