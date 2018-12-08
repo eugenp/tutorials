@@ -98,7 +98,8 @@ public class HashMapComparisonUnitTest {
         asiaCapital4.put("Japan", "Osaka");
         asiaCapital4.put("China", "Beijing");
 
-        Map<String, Boolean> result = areEqualKeys(asiaCapital3, asiaCapital4);
+        Map<String, Boolean> result = areEqualKeyValues(asiaCapital3, asiaCapital4);
+        
         assertEquals(3, result.size());
         assertThat(result, hasEntry("Japan", false));
         assertThat(result, hasEntry("South Korea", true));
@@ -141,10 +142,10 @@ public class HashMapComparisonUnitTest {
 
         MapDifference<String, String> diff = Maps.difference(asia1, asia2);
         Map<String, String> entriesOnlyOnRight = diff.entriesOnlyOnRight();
+        Map<String, String> entriesOnlyOnLeft = diff.entriesOnlyOnLeft();
+
         assertEquals(1, entriesOnlyOnRight.size());
         assertThat(entriesOnlyOnRight, hasEntry("China", "Beijing"));
-
-        Map<String, String> entriesOnlyOnLeft = diff.entriesOnlyOnLeft();
         assertEquals(1, entriesOnlyOnLeft.size());
         assertThat(entriesOnlyOnLeft, hasEntry("South Korea", "Seoul"));
     }
@@ -218,7 +219,7 @@ public class HashMapComparisonUnitTest {
             .allMatch(e -> Arrays.equals(e.getValue(), second.get(e.getKey())));
     }
 
-    private Map<String, Boolean> areEqualKeys(Map<String, String> first, Map<String, String> second) {
+    private Map<String, Boolean> areEqualKeyValues(Map<String, String> first, Map<String, String> second) {
         return first.entrySet()
             .stream()
             .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().equals(second.get(e.getKey()))));
