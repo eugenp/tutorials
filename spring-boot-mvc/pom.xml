@@ -72,18 +72,6 @@
             <version>${spring.fox.version}</version>
         </dependency>
 
-        <!-- ShedLock -->
-        <dependency>
-            <groupId>net.javacrumbs.shedlock</groupId>
-            <artifactId>shedlock-spring</artifactId>
-            <version>2.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>net.javacrumbs.shedlock</groupId>
-            <artifactId>shedlock-provider-jdbc-template</artifactId>
-            <version>2.1.0</version>
-        </dependency>
-
 	</dependencies>
 
 	<build>
