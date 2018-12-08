@@ -982,6 +982,7 @@
                 
                 <!-- <module>libraries</module> --> <!-- very long running -->
                 <module>libraries-data</module>
+                <module>libraries-apache-commons</module>
                 <module>linkrest</module>
                 <module>logging-modules/log-mdc</module>
                 <module>logging-modules/log4j</module>
