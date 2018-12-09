@@ -17,7 +17,12 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void registerUser(User user) {
-        if (user == null || user.getUsername() == null || user.getPassword() == null) {
+        if (user == null ||
+                user.getUsername() == null ||
+                user.getUsername().isEmpty() ||
+                user.getPassword() == null ||
+                user.getPassword().isEmpty()
+        ) {
             throw new IllegalArgumentException();
         }
 
