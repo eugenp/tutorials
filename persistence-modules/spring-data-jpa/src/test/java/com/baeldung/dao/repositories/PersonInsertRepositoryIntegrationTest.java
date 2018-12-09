@@ -33,14 +33,14 @@ public class PersonInsertRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenPersonEntity_WhenSaveWithNativeQuery_ThenPersonIsPersisted() {
+    public void givenPersonEntity_whenSaveWithNativeQuery_ThenPersonIsPersisted() {
         insertPerson();
 
         assertPersonPersisted();
     }
 
     @Test
-    public void givenPersonEntityWhenInsertedTwiceWithNativeQueryWithSameIdThenConstraintViolationExceptionIsThrown() {
+    public void givenPersonEntity_whenInsertedTwiceWithNativeQuery_thenDataIntegrityViolationExceptionIsThrown() {
         assertThatExceptionOfType(DataIntegrityViolationException.class).isThrownBy(() -> {
             insertPerson();
             insertPerson();
@@ -48,14 +48,14 @@ public class PersonInsertRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenPersonEntityWhenSaveWithQueryAnnotationThenPersonIsPersisted() {
+    public void givenPersonEntity_whenSaveWithQueryAnnotation_thenPersonIsPersisted() {
         insertPersonWithQueryAnnotation();
 
         assertPersonPersisted();
     }
 
     @Test
-    public void givenPersonEntityWhenInsertedTwiceWithQueryAnnotationWithSameIdThenConstraintViolationExceptionIsThrown() {
+    public void givenPersonEntity_whenInsertedTwiceWithQueryAnnotation_thenDataIntegrityViolationExceptionIsThrown() {
         assertThatExceptionOfType(DataIntegrityViolationException.class).isThrownBy(() -> {
             insertPersonWithQueryAnnotation();
             insertPersonWithQueryAnnotation();
@@ -63,14 +63,14 @@ public class PersonInsertRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenPersonEntityWhenSaveWithEntityManagerThenPersonIsPersisted() {
+    public void givenPersonEntity_whenSaveWithEntityManager_thenPersonIsPersisted() {
         insertPersonWithEntityManager();
 
         assertPersonPersisted();
     }
 
     @Test
-    public void givenPersonEntityWhenInsertedTwiceWithEntityManagerWithSameIdThenConstraintViolationExceptionIsThrown() {
+    public void givenPersonEntity_whenInsertedTwiceWithEntityManager_thenDataIntegrityViolationExceptionIsThrown() {
         assertThatExceptionOfType(DataIntegrityViolationException.class).isThrownBy(() -> {
             insertPersonWithEntityManager();
             insertPersonWithEntityManager();
