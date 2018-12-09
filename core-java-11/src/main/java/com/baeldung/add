@@ -1,4 +1,4 @@
-#!/home/rock/jdk-11.0.1/bin/java --source 11
+#!/usr/local/bin/java --source 11
 
 import java.util.Arrays;
 
