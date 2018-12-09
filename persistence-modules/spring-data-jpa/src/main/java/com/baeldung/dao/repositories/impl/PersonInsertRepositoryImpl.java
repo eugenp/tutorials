@@ -2,22 +2,16 @@ package com.baeldung.dao.repositories.impl;
 
 import com.baeldung.dao.repositories.PersonInsertRepository;
 import com.baeldung.domain.Person;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-@Repository
 @Transactional
 public class PersonInsertRepositoryImpl implements PersonInsertRepository {
 
+    @PersistenceContext
     private EntityManager entityManager;
-
-    @Autowired
-    public PersonInsertRepositoryImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
 
     @Override
     public void insert(Person person) {
