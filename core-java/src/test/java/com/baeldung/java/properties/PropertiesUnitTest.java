@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.Properties;
 
 import org.junit.Test;
@@ -142,5 +143,29 @@ public class PropertiesUnitTest {
         assertEquals("1.0", appVersion);
         assertEquals("TestApp", appName);
         assertEquals("www.google.com", defaultSite);
+    }
+
+    @Test
+    public void givenPropertiesSize_whenPropertyFileLoaded_thenCorrect() throws IOException {
+        
+        String rootPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+        String appPropsPath = rootPath + "app.properties";
+        Properties appProps = new Properties();
+        appProps.load(new FileInputStream(appPropsPath));
+         
+        appProps.list(System.out); // list all key-value pairs
+        
+        Enumeration<Object> valueEnumeration = appProps.elements();
+        while (valueEnumeration.hasMoreElements()) {
+            System.out.println(valueEnumeration.nextElement());
+        }
+         
+        Enumeration<Object> keyEnumeration = appProps.keys();
+        while (keyEnumeration.hasMoreElements()) {
+            System.out.println(keyEnumeration.nextElement());
+        }
+         
+        int size = appProps.size();
+        assertEquals(3, size);
     }
 }
