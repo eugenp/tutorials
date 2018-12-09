@@ -24,11 +24,11 @@ public class Server {
 
     public Server() {
         this.server = RSocketFactory.receive()
-                .acceptor((setupPayload, reactiveSocket) -> Mono.just(new RSocketImpl()))
-                .transport(TcpServerTransport.create("localhost", TCP_PORT))
-                .start()
-                .doOnNext(x -> LOG.info("Server started"))
-                .subscribe();
+          .acceptor((setupPayload, reactiveSocket) -> Mono.just(new RSocketImpl()))
+          .transport(TcpServerTransport.create("localhost", TCP_PORT))
+          .start()
+          .doOnNext(x -> LOG.info("Server started"))
+          .subscribe();
 
         this.gameController = new GameController("Server Player");
     }
@@ -98,7 +98,7 @@ public class Server {
         @Override
         public Flux<Payload> requestChannel(Publisher<Payload> payloads) {
             Flux.from(payloads)
-                    .subscribe(gameController::processPayload);
+              .subscribe(gameController::processPayload);
             Flux<Payload> channel = Flux.from(gameController);
             return channel;
         }

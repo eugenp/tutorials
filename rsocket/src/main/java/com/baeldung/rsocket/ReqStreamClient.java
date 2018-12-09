@@ -14,17 +14,17 @@ public class ReqStreamClient {
 
     public ReqStreamClient() {
         this.socket = RSocketFactory.connect()
-                .transport(TcpClientTransport.create("localhost", TCP_PORT))
-                .start()
-                .block();
+          .transport(TcpClientTransport.create("localhost", TCP_PORT))
+          .start()
+          .block();
     }
 
     public Flux<Float> getDataStream() {
         return socket
-                .requestStream(DefaultPayload.create(WIND_DATA_STREAM_NAME))
-                .map(Payload::getData)
-                .map(buf -> buf.getFloat())
-                .onErrorReturn(null);
+          .requestStream(DefaultPayload.create(WIND_DATA_STREAM_NAME))
+          .map(Payload::getData)
+          .map(buf -> buf.getFloat())
+          .onErrorReturn(null);
     }
 
     public void dispose() {

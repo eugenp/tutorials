@@ -25,9 +25,9 @@ public class FireNForgetClient {
 
     public FireNForgetClient() {
         this.socket = RSocketFactory.connect()
-                .transport(TcpClientTransport.create("localhost", TCP_PORT))
-                .start()
-                .block();
+          .transport(TcpClientTransport.create("localhost", TCP_PORT))
+          .start()
+          .block();
         this.data = Collections.unmodifiableList(generateData());
     }
 
@@ -36,11 +36,11 @@ public class FireNForgetClient {
      */
     public void sendData() {
         Flux.interval(Duration.ofMillis(50))
-                .take(data.size())
-                .map(this::createFloatPayload)
-                .map(socket::fireAndForget)
-                .flatMap(Function.identity())
-                .blockLast();
+          .take(data.size())
+          .map(this::createFloatPayload)
+          .map(socket::fireAndForget)
+          .flatMap(Function.identity())
+          .blockLast();
     }
 
     /**

@@ -31,9 +31,9 @@ public class GameController implements Publisher<Payload> {
      */
     private List<Long> generateShotList() {
         return Flux.range(1, SHOT_COUNT)
-                .map(x -> (long) Math.ceil(Math.random() * 1000))
-                .collectList()
-                .block();
+          .map(x -> (long) Math.ceil(Math.random() * 1000))
+          .collectList()
+          .block();
     }
 
     @Override
