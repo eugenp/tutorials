@@ -22,6 +22,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class PersonInsertRepositoryIntegrationTest {
 
     private static final Person PERSON = new Person(1l, "firstname", "lastname");
+
     @Autowired
     private PersonRepository personRepository;
     @Autowired
