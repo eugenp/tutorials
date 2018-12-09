@@ -38,8 +38,7 @@ public class FireNForgetClient {
         Flux.interval(Duration.ofMillis(50))
           .take(data.size())
           .map(this::createFloatPayload)
-          .map(socket::fireAndForget)
-          .flatMap(Function.identity())
+          .flatMap(socket::fireAndForget)
           .blockLast();
     }
 
