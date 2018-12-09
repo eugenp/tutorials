@@ -483,6 +483,7 @@
                 
                 <module>reactor-core</module>
                 <module>resteasy</module>
+								<module>rsocket</module>
                 <module>rxjava</module>
                 <module>rxjava-2</module>
                 <module>rabbitmq</module>
@@ -1036,6 +1037,7 @@
                 
                 <module>reactor-core</module>
                 <module>resteasy</module>
+								<module>rsocket</module>
                 <module>rxjava</module>
                 <module>rxjava-2</module>
                 <module>rabbitmq</module>
