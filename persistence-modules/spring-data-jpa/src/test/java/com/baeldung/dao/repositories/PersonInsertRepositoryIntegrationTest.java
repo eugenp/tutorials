@@ -21,7 +21,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @DataJpaTest(excludeAutoConfiguration = {PersistenceConfiguration.class, PersistenceUserConfiguration.class, PersistenceProductConfiguration.class})
 public class PersonInsertRepositoryIntegrationTest {
 
-    private static final Person PERSON = new Person(1l, "firstname", "lastname");
+    private static final Long ID = 1L;
+    private static final String FIRST_NAME = "firstname";
+    private static final String LAST_NAME = "firstname";
+    private static final Person PERSON = new Person(ID, FIRST_NAME, LAST_NAME);
 
     @Autowired
     private PersonRepository personRepository;
@@ -83,11 +86,11 @@ public class PersonInsertRepositoryIntegrationTest {
     }
 
     private void insertPersonWithQueryAnnotation() {
-        personRepository.insertWithAnnotation(1L, "firstname", "lastname");
+        personRepository.insertWithAnnotation(ID, FIRST_NAME, LAST_NAME);
     }
 
     private void insertPersonWithEntityManager() {
-        personCustomRepository.insert(new Person(1L, "firstname", "lastname"));
+        personCustomRepository.insert(new Person(ID, FIRST_NAME, LAST_NAME));
     }
 
     private void assertPersonPersisted() {
