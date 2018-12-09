@@ -33,7 +33,9 @@ public class RSocketIntegrationTest {
     public void whenSendingAString_thenRevceiveTheSameString() {
         ReqResClient client = new ReqResClient();
         String string = "Hello RSocket";
+
         assertEquals(string, client.callBlocking(string));
+
         client.dispose();
     }
 
