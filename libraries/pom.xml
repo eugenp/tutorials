@@ -717,14 +717,20 @@
             <version>${suanshu.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.derive4j</groupId>
+            <artifactId>derive4j</artifactId>
+            <version>${derive4j.version}</version>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
     <repositories>
-        <repository>
+        <!-- <repository>
             <id>maven2-repository.dev.java.net</id>
             <name>Java.net repository</name>
             <url>http://download.java.net/maven/2</url>
-        </repository>
+        </repository> -->
         <repository>
             <snapshots>
                 <enabled>false</enabled>
@@ -942,7 +948,7 @@
         <yarg.version>2.0.4</yarg.version>
         <mbassador.version>1.3.1</mbassador.version>
         <jdeferred.version>1.2.6</jdeferred.version>
-        <functionaljava.version>4.7</functionaljava.version>
+        <functionaljava.version>4.8.1</functionaljava.version>
         <jgrapht.version>1.0.1</jgrapht.version>
         <docx4j.version>3.3.5</docx4j.version>
         <jaxb-api.version>2.1</jaxb-api.version>
@@ -952,6 +958,7 @@
         <fugue.version>4.5.1</fugue.version>
         <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
+        <derive4j.version>1.1.0</derive4j.version>
     </properties>
 
 </project>

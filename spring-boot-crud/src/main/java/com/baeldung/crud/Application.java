@@ -14,11 +14,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages="com.baeldung.crud.repositories")
 @EnableTransactionManagement
 @EntityScan(basePackages="com.baeldung.crud.entities")
-
-@SpringBootApplication
 public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+    
 }

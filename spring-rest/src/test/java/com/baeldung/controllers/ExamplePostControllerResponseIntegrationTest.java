@@ -1,5 +1,6 @@
 package com.baeldung.controllers;
 
+import com.baeldung.sampleapp.config.MainApplication;
 import com.baeldung.services.ExampleService;
 import com.baeldung.transfer.LoginForm;
 import org.junit.Before;
@@ -19,7 +20,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import org.baeldung.config.MainApplication;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MainApplication.class)
