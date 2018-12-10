@@ -135,7 +135,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- this surefire configuration allows concurrent execution; do not remove -->
+            <!-- this surefire configuration allows concurrent execution; 
+                do not remove -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -143,14 +144,6 @@
                 <configuration>
                     <parallel>methods</parallel>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*IntTest.java</exclude>
-                        <exclude>**/*LongRunningUnitTest.java</exclude>
-                        <exclude>**/*ManualTest.java</exclude>
-                        <exclude>**/JdbcTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
