@@ -24,7 +24,6 @@ public class Application {
         registrationController.registerUser(user);
     }
 
-    //TODO replace with spring dependency injection
     public static void main(String[] args) {
         UserRepository userRepository = new UserRepositoryImpl();
         EventPublisher eventPublisher = new EventPublisherImpl();
