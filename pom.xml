@@ -419,6 +419,7 @@
                 
                 <module>hazelcast</module>
                 <module>helidon</module>
+				 <module>hexagonal-architecture</module>
                 <module>httpclient</module>
                 <module>hystrix</module>
                 
