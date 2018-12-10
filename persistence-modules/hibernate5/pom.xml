@@ -51,6 +51,11 @@
             <artifactId>hibernate-testing</artifactId>
             <version>5.2.2.Final</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -69,6 +74,7 @@
         <mariaDB4j.version>2.2.3</mariaDB4j.version>
         <h2database.version>1.4.196</h2database.version>
         <assertj-core.version>3.8.0</assertj-core.version>
+        <jackson.version>2.8.11.3</jackson.version>
     </properties>
 
 </project>
