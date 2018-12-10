@@ -14,7 +14,6 @@ import com.google.common.collect.Lists;
 
 public class ConvertStringToList {
 
-
     public List<Integer> stringToIntegerListUsingJava8Stream(String stringToConvert) {
         List<Integer> listOfInteger = Stream.of(stringToConvert.split(","))
             .map(String::trim)
