@@ -8,6 +8,9 @@ import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfigurat
 import org.springframework.boot.autoconfigure.data.mongo.MongoReactiveDataAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @SpringBootApplication(exclude = { MongoAutoConfiguration.class,
         MongoDataAutoConfiguration.class,
@@ -22,4 +25,9 @@ public class CorsGlobalConfigApplication {
         app.run(args);
     }
 
+    @Bean
+    public SecurityWebFilterChain corsGlobalSpringSecurityFilterChain(ServerHttpSecurity http) {
+        http.csrf().disable();
+        return http.build();
+    }
 }

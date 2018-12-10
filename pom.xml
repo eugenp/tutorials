@@ -324,6 +324,7 @@
 			<modules>
 				<module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -366,7 +367,7 @@
                 <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
                 <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
-                <module>core-java-net</module>
+                <module>core-java-networking</module>
 
                 <module>dozer</module>
                 <module>disruptor</module>
@@ -483,6 +484,7 @@
                 
                 <module>reactor-core</module>
                 <module>resteasy</module>
+								<module>rsocket</module>
                 <module>rxjava</module>
                 <module>rxjava-2</module>
                 <module>rabbitmq</module>
@@ -520,6 +522,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -878,6 +881,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -920,7 +924,7 @@
                 <!-- <module>core-java-concurrency</module> --> <!-- very long running? -->
                 <!-- <module>core-kotlin</module> --> <!-- long running? -->
                 <module>core-java</module>
-                <module>core-java-net</module>
+                <module>core-java-networking</module>
                 
                 <module>dozer</module>
                 <module>disruptor</module>
@@ -1036,6 +1040,7 @@
                 
                 <module>reactor-core</module>
                 <module>resteasy</module>
+								<module>rsocket</module>
                 <module>rxjava</module>
                 <module>rxjava-2</module>
                 <module>rabbitmq</module>
@@ -1069,6 +1074,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1272,6 +1278,7 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
+                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>

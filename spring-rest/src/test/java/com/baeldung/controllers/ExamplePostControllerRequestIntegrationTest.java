@@ -1,5 +1,6 @@
 package com.baeldung.controllers;
 
+import com.baeldung.sampleapp.config.MainApplication;
 import com.baeldung.services.ExampleService;
 import com.baeldung.transfer.LoginForm;
 import org.junit.Before;
@@ -12,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.baeldung.config.MainApplication;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
