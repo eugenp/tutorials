@@ -1,0 +1,6 @@
+{
+  "query": "mutation($name: String! ){ deleteUser ( id: $id) { id name email age} }",
+  "parameters": {
+    "id": 2
+  }
+}

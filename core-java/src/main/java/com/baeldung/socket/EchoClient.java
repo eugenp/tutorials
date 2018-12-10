@@ -8,9 +8,8 @@ import java.net.*;
 
 public class EchoClient {
 
-
     private static final Logger LOG = LoggerFactory.getLogger(EchoClient.class);
-    
+
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;

@@ -11,5 +11,5 @@
     - git add .
     - git commit -m "First commit"
   - start the config server
-  - start the discover server
+  - start the discovery server
   - start all the other servers in any order (gateway, svc-book, svc-rating, zipkin)

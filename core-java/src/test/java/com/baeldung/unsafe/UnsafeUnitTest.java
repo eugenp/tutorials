@@ -1,6 +1,7 @@
 package com.baeldung.unsafe;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import sun.misc.Unsafe;
 
@@ -56,6 +57,7 @@ public class UnsafeUnitTest {
     }
 
     @Test
+    @Ignore // Uncomment for local
     public void givenArrayBiggerThatMaxInt_whenAllocateItOffHeapMemory_thenSuccess() throws NoSuchFieldException, IllegalAccessException {
         //given
         long SUPER_SIZE = (long) Integer.MAX_VALUE * 2;

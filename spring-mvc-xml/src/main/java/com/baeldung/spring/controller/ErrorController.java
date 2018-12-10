@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ErrorController {
-    
+
     @RequestMapping(value = "500Error", method = RequestMethod.GET)
     public void throwRuntimeException() {
         throw new NullPointerException("Throwing a null pointer exception");
@@ -34,19 +34,18 @@ public class ErrorController {
             errorMsg = "Http Error Code : 404. Resource not found";
             break;
         }
-            // Handle other 4xx error codes.
+        // Handle other 4xx error codes.
         case 500: {
             errorMsg = "Http Error Code : 500. Internal Server Error";
             break;
         }
-            // Handle other 5xx error codes.
+        // Handle other 5xx error codes.
         }
         errorPage.addObject("errorMsg", errorMsg);
         return errorPage;
     }
 
     private int getErrorCode(HttpServletRequest httpRequest) {
-        return (Integer) httpRequest
-                .getAttribute("javax.servlet.error.status_code");
+        return (Integer) httpRequest.getAttribute("javax.servlet.error.status_code");
     }
 }

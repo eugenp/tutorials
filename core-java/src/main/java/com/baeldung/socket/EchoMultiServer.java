@@ -16,7 +16,7 @@ public class EchoMultiServer {
         try {
             serverSocket = new ServerSocket(port);
             while (true)
-                new EchoClientHandler(serverSocket.accept()).run();
+                new EchoClientHandler(serverSocket.accept()).start();
 
         } catch (IOException e) {
             e.printStackTrace();

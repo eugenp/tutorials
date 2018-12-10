@@ -20,3 +20,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [HttpAsyncClient Tutorial](http://www.baeldung.com/httpasyncclient-tutorial)
 - [HttpClient 4 Tutorial](http://www.baeldung.com/httpclient-guide)
 - [Advanced HttpClient Configuration](http://www.baeldung.com/httpclient-advanced-config)
+- [HttpClient 4 – Do Not Follow Redirects](http://www.baeldung.com/httpclient-stop-follow-redirect)
+- [HttpClient 4 – Setting a Custom User-Agent](http://www.baeldung.com/httpclient-user-agent-header)

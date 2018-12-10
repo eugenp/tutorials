@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/9/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/9/modelMap http://cayenne.apache.org/schema/9/modelMap.xsd"
+	 project-version="9">
+	<property name="defaultPackage" value="com.baeldung.cayenne"/>
+	<db-entity name="departments">
+		<db-attribute name="dep_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="name" type="NVARCHAR" length="50"/>
+	</db-entity>
+	<db-entity name="employees">
+		<db-attribute name="emp_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="name" type="NVARCHAR" length="50"/>
+	</db-entity>
+	<obj-entity name="Department" className="com.baeldung.cayenne.Department" dbEntityName="departments">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="Employee" className="com.baeldung.cayenne.Employee" dbEntityName="employees">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<db-relationship name="employees" source="departments" target="employees" toMany="true">
+		<db-attribute-pair source="dep_id" target="emp_id"/>
+	</db-relationship>
+	<db-relationship name="department" source="employees" target="departments" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="emp_id" target="dep_id"/>
+	</db-relationship>
+	<obj-relationship name="employees" source="Department" target="Employee" deleteRule="Deny" db-relationship-path="employees"/>
+	<obj-relationship name="department" source="Employee" target="Department" deleteRule="Nullify" db-relationship-path="department"/>
+</data-map>

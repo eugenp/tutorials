@@ -1,6 +1,8 @@
 package org.baeldung.session.exception.repository;
 
-import org.baeldung.boot.model.Foo;
+import javax.persistence.EntityManagerFactory;
+
+import org.baeldung.demo.model.Foo;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
@@ -10,16 +12,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class FooRepositoryImpl implements FooRepository {
     @Autowired
-    private SessionFactory sessionFactory;
+    private EntityManagerFactory emf;
 
     @Override
     public void save(Foo foo) {
-        sessionFactory.getCurrentSession().saveOrUpdate(foo);
+        emf.unwrap(SessionFactory.class).getCurrentSession().saveOrUpdate(foo);
     }
 
     @Override
     public Foo get(Integer id) {
-        return sessionFactory.getCurrentSession().get(Foo.class, id);
+        return emf.unwrap(SessionFactory.class).getCurrentSession().get(Foo.class, id);
     }
-
 }

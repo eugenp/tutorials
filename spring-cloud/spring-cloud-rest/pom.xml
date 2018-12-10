@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://maven.apache.org/POM/4.0.0"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.baeldung</groupId>
     <artifactId>spring-cloud-rest</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <modules>
-        <module>spring-cloud-rest-config-server</module>
-        <module>spring-cloud-rest-discovery-server</module>
-        <module>spring-cloud-rest-books-api</module>
-        <module>spring-cloud-rest-reviews-api</module>
-    </modules>
     <packaging>pom</packaging>
-
     <name>spring-cloud-rest</name>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>
         <artifactId>spring-cloud</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-    </parent>      
-      
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
-    </properties>
+    </parent>
+
+    <modules>
+        <module>spring-cloud-rest-config-server</module>
+        <module>spring-cloud-rest-discovery-server</module>
+        <module>spring-cloud-rest-books-api</module>
+        <module>spring-cloud-rest-reviews-api</module>
+    </modules>
 
     <build>
         <pluginManagement>
@@ -37,8 +29,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -49,4 +41,11 @@
             </plugins>
         </pluginManagement>
     </build>
+
+    <properties>
+        <spring-boot-maven-plugin.version>1.4.2.RELEASE</spring-boot-maven-plugin.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
 </project>

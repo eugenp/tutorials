@@ -7,7 +7,7 @@ public class AuditFilter implements Filter {
 
     @Override
     public boolean postprocess(Context context, Exception exception) {
-        //    Send notification to customer & bank.
+        // Send notification to customer & bank.
         return false;
     }
 

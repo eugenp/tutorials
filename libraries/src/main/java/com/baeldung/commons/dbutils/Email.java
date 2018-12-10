@@ -20,7 +20,6 @@ public class Email {
     public void setEmployeeId(Integer employeeId) {
         this.employeeId = employeeId;
     }
-    
 
     public String getAddress() {
         return address;
