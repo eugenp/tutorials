@@ -1,3 +1,3 @@
-package com.baeldung.kotlin.inline
+package com.baeldung.inline.classes
 
 inline class InlineDoubleWrapper(val doubleValue : Double)

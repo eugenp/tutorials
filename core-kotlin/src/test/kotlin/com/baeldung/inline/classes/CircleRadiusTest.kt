@@ -1,4 +1,4 @@
-package com.baeldung.kotlin.inline
+package com.baeldung.inline.classes
 
 import org.junit.Test
 import kotlin.test.assertEquals
