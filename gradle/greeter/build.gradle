@@ -1,0 +1,18 @@
+apply plugin : 'java'
+apply plugin : 'application'
+
+
+
+dependencies {
+    compile project(':greeting-library')
+    compile project(':greeting-library-java')
+}
+
+mainClassName = 'greeter.Greeter'
+run {
+    if (project.hasProperty("appArgs")) {
+        args Eval.me(appArgs)
+    }
+    else
+        args = ["Baeldung"];
+}

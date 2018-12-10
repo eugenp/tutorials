@@ -1,38 +1,41 @@
 <?xml version="1.0"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>parent-modules</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-  </parent>
-  <groupId>com.baeldung</groupId>
-  <artifactId>rest-with-spark-java</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>rest-with-spark-java</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-	<dependency>
-	    <groupId>junit</groupId>
-	    <artifactId>junit</artifactId>
-	    <version>3.8.1</version>
-	    <scope>test</scope>
-	</dependency>
-	<dependency>
-	    <groupId>com.sparkjava</groupId>
-	    <artifactId>spark-core</artifactId>
-	    <version>2.5.4</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.fasterxml.jackson.core</groupId>
-	    <artifactId>jackson-core</artifactId>
-	    <version>2.8.6</version>
-	</dependency>
-	<dependency>
-	    <groupId>com.fasterxml.jackson.core</groupId>
-	    <artifactId>jackson-databind</artifactId>
-	    <version>2.8.6</version>
-	</dependency>
-  </dependencies>
+    <artifactId>rest-with-spark-java</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>rest-with-spark-java</name>
+    <url>http://maven.apache.org</url>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sparkjava</groupId>
+            <artifactId>spark-core</artifactId>
+            <version>${spark-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <spark-core.version>2.5.4</spark-core.version>
+        <jackson-core.version>2.8.6</jackson-core.version>
+        <jackson-databind.version>2.8.6</jackson-databind.version>
+    </properties>
+
 </project>

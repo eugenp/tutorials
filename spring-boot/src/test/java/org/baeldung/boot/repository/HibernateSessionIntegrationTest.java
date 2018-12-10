@@ -4,17 +4,15 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-import org.baeldung.boot.ApplicationIntegrationTest;
-import org.baeldung.boot.model.Foo;
-import org.baeldung.session.exception.repository.FooRepository;
+import org.baeldung.boot.DemoApplicationIntegrationTest;
+import org.baeldung.demo.model.Foo;
+import org.baeldung.demo.repository.FooRepository;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
-@TestPropertySource("classpath:exception-hibernate.properties")
-public class HibernateSessionIntegrationTest extends ApplicationIntegrationTest {
+public class HibernateSessionIntegrationTest extends DemoApplicationIntegrationTest {
     @Autowired
     private FooRepository fooRepository;
 
@@ -23,7 +21,7 @@ public class HibernateSessionIntegrationTest extends ApplicationIntegrationTest 
         Foo foo = new Foo("Exception Solved");
         fooRepository.save(foo);
         foo = null;
-        foo = fooRepository.get(1);
+        foo = fooRepository.findByName("Exception Solved");
 
         assertThat(foo, notNullValue());
         assertThat(foo.getId(), is(1));

@@ -23,7 +23,8 @@ import static com.baeldung.serenity.spring.RandomNumberUtil.randomInt;
 @ContextConfiguration(classes = AdderService.class)
 public class AdderMethodDirtiesContextInitWorkaroundIntegrationTest {
 
-    @Steps private AdderServiceSteps adderServiceSteps;
+    @Steps
+    private AdderServiceSteps adderServiceSteps;
 
     @Before
     public void init() {
@@ -36,7 +37,8 @@ public class AdderMethodDirtiesContextInitWorkaroundIntegrationTest {
         adderServiceSteps.summedUp();
     }
 
-    @Rule public SpringIntegrationMethodRule springIntegration = new SpringIntegrationMethodRule();
+    @Rule
+    public SpringIntegrationMethodRule springIntegration = new SpringIntegrationMethodRule();
 
     @DirtiesContext
     @Test

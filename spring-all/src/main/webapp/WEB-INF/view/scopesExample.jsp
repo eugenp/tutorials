@@ -2,9 +2,9 @@
 <head></head>
 
 <body>
-    <h1>Bean Scopes Examples</h1>
-    <br>
- Request Message: ${requestMessage }<br>
- Session Message: ${sessionMessage }
+	<h1>Bean Scopes Examples</h1>
+	<br> Previous Message: ${previousMessage }
+	<br> Current Message: ${currentMessage }
+	<br>
 </body>
 </html>

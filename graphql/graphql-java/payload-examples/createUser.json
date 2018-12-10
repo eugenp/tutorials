@@ -1,0 +1,8 @@
+{
+  "query": "mutation($name: String! $email: String! $age: String! ){ createUser ( name: $name email: $email age: $age) { id name email age } }",
+  "parameters": {
+    "name": "John",
+	"email": "john@email.com",
+    "age": 34
+  }
+}

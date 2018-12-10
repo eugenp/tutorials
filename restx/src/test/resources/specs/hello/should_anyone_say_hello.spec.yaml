@@ -1,0 +1,8 @@
+title: should admin say hello
+given:
+  - time: 2013-08-28T01:18:00.822+02:00
+wts:
+  - when: |
+      GET hello?who=xavier
+    then: |
+      {"message":"hello xavier, it's 01:18:00"}

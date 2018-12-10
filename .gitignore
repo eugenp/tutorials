@@ -34,10 +34,35 @@ spring-security-openid/src/main/resources/application.properties
 
 spring-all/*.log
 
-*.jar
-
 SpringDataInjectionDemo/.mvn/wrapper/maven-wrapper.properties
 
 spring-call-getters-using-reflection/.mvn/wrapper/maven-wrapper.properties
 
 spring-check-if-a-property-is-null/.mvn/wrapper/maven-wrapper.properties
+*.springBeans
+
+20171220-JMeter.csv
+
+.factorypath
+dependency-reduced-pom.xml
+*.so
+*.dylib
+*.dll
+
+xml/src/test/resources/example_dom4j_new.xml
+xml/src/test/resources/example_dom4j_updated.xml
+xml/src/test/resources/example_jaxb_new.xml
+core-java-io/hard_link.txt
+core-java-io/target_link.txt
+core-java/src/main/java/com/baeldung/manifest/MANIFEST.MF
+ethereum/logs/
+jmeter/src/main/resources/*-JMeter.csv
+
+**/node_modules/
+**/dist
+**/tmp
+**/out-tsc
+**/nbproject/
+**/nb-configuration.xml
+core-scala/.cache-main
+core-scala/.cache-tests

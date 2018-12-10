@@ -20,7 +20,8 @@ public class Item {
     private List<Person> authors = new ArrayList<>();
     private float price;
 
-    public Item(){}
+    public Item() {
+    }
 
     public Item(String title, Author author) {
         this.id = UUID.randomUUID();

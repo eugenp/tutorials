@@ -7,16 +7,11 @@
     <name>spring-protobuf</name>
 
     <parent>
-        <artifactId>parent-boot-4</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-4</relativePath>
+        <relativePath>../parent-boot-1</relativePath>
     </parent>
-
-    <properties>
-        <protobuf-java.version>3.1.0</protobuf-java.version>
-        <protobuf-java-format.version>1.4</protobuf-java-format.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -46,46 +41,16 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                 <configuration>
-                      <skip>true</skip>
-                 </configuration>                
-            </plugin>            
-        </plugins>              
-    </build>  
-      
-    <profiles>
-        <profile>
-            <id>integration</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/*IntegrationTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-    
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <properties>
+        <protobuf-java.version>3.1.0</protobuf-java.version>
+        <protobuf-java-format.version>1.4</protobuf-java-format.version>
+    </properties>
+
 </project>

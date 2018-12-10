@@ -47,10 +47,8 @@ public class DbUtilsUnitTest {
         List<Map<String, Object>> list = runner.query(connection, "SELECT * FROM employee", beanListHandler);
 
         assertEquals(list.size(), 5);
-        assertEquals(list.get(0)
-          .get("firstname"), "John");
-        assertEquals(list.get(4)
-          .get("firstname"), "Christian");
+        assertEquals(list.get(0).get("firstname"), "John");
+        assertEquals(list.get(4).get("firstname"), "Christian");
     }
 
     @Test
@@ -61,10 +59,8 @@ public class DbUtilsUnitTest {
         List<Employee> employeeList = runner.query(connection, "SELECT * FROM employee", beanListHandler);
 
         assertEquals(employeeList.size(), 5);
-        assertEquals(employeeList.get(0)
-          .getFirstName(), "John");
-        assertEquals(employeeList.get(4)
-          .getFirstName(), "Christian");
+        assertEquals(employeeList.get(0).getFirstName(), "John");
+        assertEquals(employeeList.get(4).getFirstName(), "Christian");
     }
 
     @Test
@@ -85,12 +81,8 @@ public class DbUtilsUnitTest {
         QueryRunner runner = new QueryRunner();
         List<Employee> employees = runner.query(connection, "SELECT * FROM employee", employeeHandler);
 
-        assertEquals(employees.get(0)
-          .getEmails()
-          .size(), 2);
-        assertEquals(employees.get(2)
-          .getEmails()
-          .size(), 3);
+        assertEquals(employees.get(0).getEmails().size(), 2);
+        assertEquals(employees.get(2).getEmails().size(), 3);
         assertNotNull(employees.get(0).getEmails().get(0).getEmployeeId());
     }
 

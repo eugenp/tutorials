@@ -10,7 +10,6 @@ public class JMXTutorialMainlauncher {
 
     private static final Logger LOG = LoggerFactory.getLogger(JMXTutorialMainlauncher.class);
 
-
     public static void main(String[] args) {
         // TODO Auto-generated method stub
 

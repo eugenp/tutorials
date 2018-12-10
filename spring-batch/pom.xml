@@ -1,12 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>spring-batch</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>spring-batch</name>
     <url>http://maven.apache.org</url>
 
@@ -15,13 +13,6 @@
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>4.3.4.RELEASE</spring.version>
-        <spring.batch.version>3.0.7.RELEASE</spring.batch.version>
-        <sqlite.version>3.15.1</sqlite.version>
-    </properties>
 
     <dependencies>
         <!-- SQLite database driver -->
@@ -51,6 +42,31 @@
             <artifactId>spring-batch-core</artifactId>
             <version>${spring.batch.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.batch</groupId>
+            <artifactId>spring-batch-test</artifactId>
+            <version>${spring.batch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>${opencsv.version}</version>
+        </dependency>
+        
+        <dependency>
+    		<groupId>org.awaitility</groupId>
+    		<artifactId>awaitility</artifactId>
+    		<version>${awaitility.version}</version>
+    		<scope>test</scope>
+		</dependency>
     </dependencies>
+
+    <properties>
+        <spring.version>5.0.3.RELEASE</spring.version>
+        <spring.batch.version>4.0.0.RELEASE</spring.batch.version>
+        <sqlite.version>3.15.1</sqlite.version>
+        <opencsv.version>4.1</opencsv.version>
+        <awaitility.version>3.1.1</awaitility.version>
+    </properties>
 
 </project>

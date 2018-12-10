@@ -8,9 +8,7 @@ public class LinearAlgebraUnitTest {
 
     @Test
     public void whenDecompositionSolverSolve_thenCorrect() {
-        RealMatrix a =
-                new Array2DRowRealMatrix(new double[][] { { 2, 3, -2 }, { -1, 7, 6 }, { 4, -3, -5 } },
-                        false);
+        RealMatrix a = new Array2DRowRealMatrix(new double[][] { { 2, 3, -2 }, { -1, 7, 6 }, { 4, -3, -5 } }, false);
         RealVector b = new ArrayRealVector(new double[] { 1, -2, 1 }, false);
 
         DecompositionSolver solver = new LUDecomposition(a).getSolver();

@@ -26,8 +26,7 @@ public @interface SpringJUnit5Config {
     String[] locations() default {};
 
     @AliasFor(annotation = ContextConfiguration.class)
-    Class<? extends ApplicationContextInitializer<?
-      extends ConfigurableApplicationContext>>[] initializers() default {};
+    Class<? extends ApplicationContextInitializer<? extends ConfigurableApplicationContext>>[] initializers() default {};
 
     @AliasFor(annotation = ContextConfiguration.class)
     boolean inheritLocations() default true;
