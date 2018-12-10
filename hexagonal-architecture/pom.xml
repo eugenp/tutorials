@@ -3,15 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!--<parent>-->
-        <!--<artifactId>parent-modules</artifactId>-->
-        <!--<groupId>com.baeldung</groupId>-->
-        <!--<version>1.0.0-SNAPSHOT</version>-->
-    <!--</parent>-->
-    <!--<modelVersion>4.0.0</modelVersion>-->
-
-    <!--<artifactId>hexagonal-architecture</artifactId>-->
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -19,6 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>hexagonal-architecture</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -58,6 +50,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
