@@ -1,13 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.mabsisa</groupId>
     <artifactId>Twitter4J</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
     <name>Twitter4J</name>
-    <url>http://maven.apache.org</url>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -22,27 +18,6 @@
             <version>${twitter4j-stream.version}</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>**/ApplicationTest.java</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
     <properties>
         <twitter4j-stream.version>4.0.6</twitter4j-stream.version>

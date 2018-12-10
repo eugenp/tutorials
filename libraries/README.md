@@ -81,6 +81,8 @@
 - [Guide to Resilience4j](http://www.baeldung.com/resilience4j)
 - [Parsing YAML with SnakeYAML](http://www.baeldung.com/java-snake-yaml)
 - [Guide to JMapper](http://www.baeldung.com/jmapper)
+- [An Introduction to Apache Commons Lang 3](https://www.baeldung.com/java-commons-lang-3)
+- [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 

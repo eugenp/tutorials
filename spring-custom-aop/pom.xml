@@ -149,6 +149,7 @@
         <subethasmtp.version>3.1.7</subethasmtp.version>
         <tomee-servlet-api.version>8.5.11</tomee-servlet-api.version>
         <guava.version>18.0</guava.version>
+        <tomcat.version>8.0.43</tomcat.version>
     </properties>
 
 </project>

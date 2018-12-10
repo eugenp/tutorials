@@ -11,7 +11,7 @@ public class CustomClassLoaderUnitTest {
     public void customLoader() throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
 
         CustomClassLoader customClassLoader = new CustomClassLoader();
-        Class<?> c = customClassLoader.getClass(PrintClassLoader.class.getName());
+        Class<?> c = customClassLoader.findClass(PrintClassLoader.class.getName());
 
         Object ob = c.newInstance();
 

@@ -65,6 +65,7 @@
     <properties>
         <flyway-core.version>5.0.2</flyway-core.version>
         <flyway-maven-plugin.version>5.0.2</flyway-maven-plugin.version>
+        <h2.version>1.4.195</h2.version>
     </properties>
 
 </project>

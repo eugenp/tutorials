@@ -31,3 +31,4 @@
 - [Create a Symbolic Link with Java](http://www.baeldung.com/java-symlink)
 - [Quick Use of FilenameFilter](http://www.baeldung.com/java-filename-filter)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
+- [ Read a File into an ArrayList](https://www.baeldung.com/java-file-to-arraylist)

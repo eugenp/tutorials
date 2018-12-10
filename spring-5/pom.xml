@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
@@ -134,7 +135,26 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- this surefire configuration allows concurrent execution; do not remove -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                        <exclude>**/*IntTest.java</exclude>
+                        <exclude>**/*LongRunningUnitTest.java</exclude>
+                        <exclude>**/*ManualTest.java</exclude>
+                        <exclude>**/JdbcTest.java</exclude>
+                        <exclude>**/*LiveTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
         </plugins>
+
     </build>
 
     <properties>
@@ -142,6 +162,8 @@
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+
     </properties>
 
 </project>

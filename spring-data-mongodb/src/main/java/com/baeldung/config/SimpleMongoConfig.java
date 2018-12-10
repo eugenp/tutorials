@@ -1,18 +1,18 @@
 package com.baeldung.config;
 
-import com.mongodb.Mongo;
-import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+
+import com.mongodb.MongoClient;
 
 @Configuration
 @EnableMongoRepositories(basePackages = "com.baeldung.repository")
 public class SimpleMongoConfig {
 
     @Bean
-    public Mongo mongo() throws Exception {
+    public MongoClient mongo() throws Exception {
         return new MongoClient("localhost");
     }
 

@@ -48,9 +48,19 @@
             <version>${jmh-core.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${jmh-core.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.ibm.icu</groupId>
             <artifactId>icu4j</artifactId>
             <version>${icu4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
         
         <dependency>
@@ -92,6 +102,7 @@
         <assertj.version>3.6.1</assertj.version>
         <jmh-core.version>1.19</jmh-core.version>
         <icu4j.version>61.1</icu4j.version>
+        <guava.version>26.0-jre</guava.version>
     </properties>
 
 </project>

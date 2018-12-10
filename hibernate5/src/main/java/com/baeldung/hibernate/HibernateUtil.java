@@ -1,5 +1,11 @@
 package com.baeldung.hibernate;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Properties;
+
+import com.baeldung.hibernate.entities.DeptEmployee;
 import com.baeldung.hibernate.optimisticlocking.OptimisticLockingCourse;
 import com.baeldung.hibernate.optimisticlocking.OptimisticLockingStudent;
 import com.baeldung.hibernate.pessimisticlocking.Individual;
@@ -16,10 +22,30 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.URL;
-import java.util.Properties;
+import com.baeldung.hibernate.pojo.Course;
+import com.baeldung.hibernate.pojo.Employee;
+import com.baeldung.hibernate.pojo.EntityDescription;
+import com.baeldung.hibernate.pojo.OrderEntry;
+import com.baeldung.hibernate.pojo.OrderEntryIdClass;
+import com.baeldung.hibernate.pojo.OrderEntryPK;
+import com.baeldung.hibernate.pojo.Person;
+import com.baeldung.hibernate.pojo.Phone;
+import com.baeldung.hibernate.pojo.PointEntity;
+import com.baeldung.hibernate.pojo.PolygonEntity;
+import com.baeldung.hibernate.pojo.Product;
+import com.baeldung.hibernate.pojo.Student;
+import com.baeldung.hibernate.pojo.TemporalValues;
+import com.baeldung.hibernate.pojo.User;
+import com.baeldung.hibernate.pojo.UserProfile;
+import com.baeldung.hibernate.pojo.inheritance.Animal;
+import com.baeldung.hibernate.pojo.inheritance.Bag;
+import com.baeldung.hibernate.pojo.inheritance.Book;
+import com.baeldung.hibernate.pojo.inheritance.Car;
+import com.baeldung.hibernate.pojo.inheritance.MyEmployee;
+import com.baeldung.hibernate.pojo.inheritance.MyProduct;
+import com.baeldung.hibernate.pojo.inheritance.Pen;
+import com.baeldung.hibernate.pojo.inheritance.Pet;
+import com.baeldung.hibernate.pojo.inheritance.Vehicle;
 
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
@@ -72,6 +98,8 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(PessimisticLockingCourse.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Customer.class);
         metadataSources.addAnnotatedClass(com.baeldung.hibernate.pessimisticlocking.Address.class);
+        metadataSources.addAnnotatedClass(DeptEmployee.class);
+        metadataSources.addAnnotatedClass(com.baeldung.hibernate.entities.Department.class);
         metadataSources.addAnnotatedClass(OptimisticLockingCourse.class);
         metadataSources.addAnnotatedClass(OptimisticLockingStudent.class);
 

@@ -118,7 +118,7 @@
 
     <properties>
         <!-- marshalling -->
-        <jackson.version>2.9.6</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <!-- util -->
         <commons-lang3.version>3.8</commons-lang3.version>
         <joda-time.version>2.10</joda-time.version>

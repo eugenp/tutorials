@@ -44,4 +44,12 @@ public class Employee {
         result = 31 * result + name.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>activejdbc</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
@@ -79,55 +78,11 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <reportFormat>brief</reportFormat>
-                    <trimStackTrace>true</trimStackTrace>
-                    <useFile>false</useFile>
-                    <includes>
-                        <include>**/*Spec*.java</include>
-                        <include>**/*Test*.java</include>
-                    </includes>
-                    <excludes>
-                        <exclude>**/helpers/*</exclude>
-                        <exclude>**/*$*</exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>snapshots1</id>
-            <name>JavaLite Snapshots1</name>
-            <url>http://repo.javalite.io/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>snapshots2</id>
-            <name>JavaLite Snapshots2</name>
-            <url>http://repo.javalite.io/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
     <properties>
-        <activejdbc.version>1.4.13</activejdbc.version>
+        <activejdbc.version>2.0</activejdbc.version>
         <environments>development.test,development</environments>
         <mysql.connector.version>5.1.34</mysql.connector.version>
     </properties>

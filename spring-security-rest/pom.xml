@@ -300,7 +300,7 @@
         <rest-assured.version>2.9.0</rest-assured.version>
 
         <!-- swagger -->
-        <springfox-swagger.version>2.7.0</springfox-swagger.version>
+        <springfox-swagger.version>2.9.2</springfox-swagger.version>
 
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>

@@ -31,7 +31,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String signup(@Validated @ModelAttribute("student") Student student, BindingResult result, ModelMap model) {
-		if (studentService.getStudentByUserName(student.getUserName())) {
+		if (studentService.getStudentByUserName(student.getUserName()) != null) {
 			model.addAttribute("message", "User Name exists. Try another user name");
 			return "signup";
 		} else {
@@ -50,7 +50,7 @@ public class StudentController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute("studentLogin") StudentLogin studentLogin, BindingResult result, ModelMap model) {
-		boolean found = studentService.getStudentByLogin(studentLogin.getUserName(), studentLogin.getPassword());
+		boolean found = studentService.getStudentByLogin(studentLogin.getUserName(), studentLogin.getPassword()) != null;
 		if (found) {
 			return "success";
 		} else {

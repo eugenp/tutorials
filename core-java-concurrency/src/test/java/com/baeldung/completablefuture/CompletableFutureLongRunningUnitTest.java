@@ -184,5 +184,25 @@ public class CompletableFutureLongRunningUnitTest {
 
         assertEquals("Hello World", future.get());
     }
+    
+    @Test
+    public void whenPassingTransformation_thenFunctionExecutionWithThenApply() throws InterruptedException, ExecutionException {
+        CompletableFuture<Integer> finalResult = compute().thenApply(s -> s + 1);
+        assertTrue(finalResult.get() == 11);
+    }
+    
+    @Test
+    public void whenPassingPreviousStage_thenFunctionExecutionWithThenCompose() throws InterruptedException, ExecutionException {
+        CompletableFuture<Integer> finalResult = compute().thenCompose(this::computeAnother);
+        assertTrue(finalResult.get() == 20);
+    }
+    
+    public CompletableFuture<Integer> compute(){
+        return CompletableFuture.supplyAsync(() -> 10);
+    }
+    
+    public CompletableFuture<Integer> computeAnother(Integer i){
+        return CompletableFuture.supplyAsync(() -> 10 + i);
+    }
 
 }

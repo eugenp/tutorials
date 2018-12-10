@@ -1,6 +1,7 @@
 package com.baeldung.file;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matchers;
 import org.junit.Test;
@@ -17,6 +18,7 @@ import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
@@ -49,7 +51,7 @@ public class FileOperationsManualTest {
 
     @Test
     public void givenFileName_whenUsingJarFile_thenFileData() throws IOException {
-        String expectedData = "BSD License";
+        String expectedData = "MIT License";
 
         Class clazz = Matchers.class;
         InputStream inputStream = clazz.getResourceAsStream("/LICENSE.txt");
@@ -78,7 +80,7 @@ public class FileOperationsManualTest {
 
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("fileTest.txt").getFile());
-        String data = FileUtils.readFileToString(file);
+        String data = FileUtils.readFileToString(file, "UTF-8");
 
         assertEquals(expectedData, data.trim());
     }
@@ -101,12 +103,11 @@ public class FileOperationsManualTest {
 
         Path path = Paths.get(getClass().getClassLoader().getResource("fileTest.txt").toURI());
 
-        StringBuilder data = new StringBuilder();
         Stream<String> lines = Files.lines(path);
-        lines.forEach(line -> data.append(line).append("\n"));
+        String data = lines.collect(Collectors.joining("\n"));
         lines.close();
 
-        assertEquals(expectedData, data.toString().trim());
+        assertEquals(expectedData, data.trim());
     }
 
     private String readFromInputStream(InputStream inputStream) throws IOException {
@@ -119,5 +120,15 @@ public class FileOperationsManualTest {
         }
 
         return resultStringBuilder.toString();
+    }
+    
+    @Test
+    public void givenFileName_whenUsingIOUtils_thenFileData() throws IOException {
+        String expectedData = "This is a content of the file";
+
+        FileInputStream fis = new FileInputStream("src/test/resources/fileToRead.txt");
+        String data = IOUtils.toString(fis, "UTF-8");
+        
+        assertEquals(expectedData, data.trim());
     }
 }

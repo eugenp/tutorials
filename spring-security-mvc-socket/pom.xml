@@ -148,10 +148,18 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        
+        <!-- Test -->
+        <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>1.5.10.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
 
     <build>
-        <pluginManagement>
+      
             <plugins>
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
@@ -171,7 +179,6 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
         <finalName>spring-security-mvc-socket</finalName>
     </build>
 

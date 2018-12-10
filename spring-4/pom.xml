@@ -71,10 +71,8 @@
     </build>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <flips-web.version>1.0.1</flips-web.version>
         <lombok.version>1.16.18</lombok.version>
-        <java.version>1.8</java.version>
         <h2database.version>1.4.197</h2database.version>
     </properties>
 
