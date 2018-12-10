@@ -9,7 +9,7 @@ import org.mockito.Mock;
 
 import java.time.LocalDateTime;
 
-public class RegistrationControllerTest {
+public class RegistrationControllerUnitTest {
 
     private RegistrationController registrationController;
 

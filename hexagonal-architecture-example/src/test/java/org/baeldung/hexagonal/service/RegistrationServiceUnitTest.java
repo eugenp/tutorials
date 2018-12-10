@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import java.time.LocalDateTime;
 
 //TODO finish this test
-public class RegistrationServiceTest {
+public class RegistrationServiceUnitTest {
 
     private RegistrationService registrationService;
 
@@ -30,7 +30,7 @@ public class RegistrationServiceTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenUserNameIsNullThrowException() {
         // given
-        User invalidUser = new User(LocaDateTime.now(), null, "somePassword");
+        User invalidUser = new User(LocalDateTime.now(), null, "somePassword");
 
         // when
         registrationService.registerUser(invalidUser);
@@ -39,7 +39,7 @@ public class RegistrationServiceTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenUserNameIsEmptyThrowException() {
         // given
-        User invalidUser = new User(LocaDateTime.now(), null, "somePassword");
+        User invalidUser = new User(LocalDateTime.now(), null, "somePassword");
 
         // when
         registrationService.registerUser(invalidUser);
@@ -48,7 +48,7 @@ public class RegistrationServiceTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenPasswordIsNullThrowException() {
         // given
-        User invalidUser = new User(LocaDateTime.now(), "someValidUserName", null);
+        User invalidUser = new User(LocalDateTime.now(), "someValidUserName", null);
 
         // when
         registrationService.registerUser(invalidUser);
@@ -57,7 +57,7 @@ public class RegistrationServiceTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenPasswordIsEmptyThrowException() {
         // given
-        User invalidUser = new User(LocaDateTime.now(), "someValidUserName", "");
+        User invalidUser = new User(LocalDateTime.now(), "someValidUserName", "");
 
         // when
         registrationService.registerUser(invalidUser);
@@ -66,7 +66,7 @@ public class RegistrationServiceTest {
     @Test
     public void whenValidUserProcessSuccessfully() {
         // given
-        User validUser = new User(LocaDateTime.now(), "someValidUserName", "someValidPassword");
+        User validUser = new User(LocalDateTime.now(), "someValidUserName", "someValidPassword");
 
         // when
         registrationService.registerUser(validUser);
