@@ -22,7 +22,7 @@ public class CustomerControllerUnitTest {
     private MockMvc mockMvc;
 
     @Test
-    public void whenPostRequesttoAddCustomer_thenJSONContentCorrecr() throws Exception {
+    public void whenPostRequesttoAddCustomer_thenJSONContentCorrect() throws Exception {
         this.mockMvc
                 .perform(post("/addcustomer"))
                 .andExpect(status().isOk())
