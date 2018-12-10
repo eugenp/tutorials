@@ -7,10 +7,10 @@
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-2.0-temp</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-2.0-temp</relativePath>
     </parent>
 
     <dependencies>
@@ -183,9 +183,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -300,6 +297,7 @@
         <json.path.version>2.2.0</json.path.version>
         <pact.version>3.5.11</pact.version>
         <rest-assured.version>3.1.0</rest-assured.version>
+        <start-class>com.baeldung.sampleapp.config.MainApplication</start-class>
     </properties>
 
 </project>

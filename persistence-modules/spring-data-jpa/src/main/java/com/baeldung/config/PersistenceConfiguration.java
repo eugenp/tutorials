@@ -1,13 +1,14 @@
 package com.baeldung.config;
 
-import com.baeldung.services.IBarService;
-import com.baeldung.services.impl.BarSpringDataJpaService;
-import com.google.common.base.Preconditions;
-import com.baeldung.dao.repositories.impl.ExtendedRepositoryImpl;
-import com.baeldung.services.IFooService;
-import com.baeldung.services.impl.FooService;
+import java.util.Properties;
+
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -20,13 +21,15 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.sql.DataSource;
-import java.util.Properties;
+import com.baeldung.dao.repositories.impl.ExtendedRepositoryImpl;
+import com.baeldung.services.IBarService;
+import com.baeldung.services.impl.BarSpringDataJpaService;
+import com.google.common.base.Preconditions;
 
 @Configuration
-@ComponentScan({"com.baeldung.dao", "com.baeldung.services"})
+@ComponentScan({ "com.baeldung.dao", "com.baeldung.services" })
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"com.baeldung.dao"}, repositoryBaseClass = ExtendedRepositoryImpl.class)
+@EnableJpaRepositories(basePackages = { "com.baeldung.dao" }, repositoryBaseClass = ExtendedRepositoryImpl.class)
 @EnableJpaAuditing
 @PropertySource("classpath:persistence.properties")
 public class PersistenceConfiguration {
@@ -79,11 +82,6 @@ public class PersistenceConfiguration {
         return new BarSpringDataJpaService();
     }
 
-    @Bean
-    public IFooService fooService() {
-        return new FooService();
-    }
-
     private final Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
@@ -94,7 +92,8 @@ public class PersistenceConfiguration {
         // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
 
         // Envers properties
-        hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix", env.getProperty("envers.audit_table_suffix"));
+        hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix",
+            env.getProperty("envers.audit_table_suffix"));
 
         return hibernateProperties;
     }

@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.client.MockRestServiceServer;
@@ -18,8 +17,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class)
-@RestClientTest(DetailsServiceClient.class)
+@RestClientTest({ DetailsServiceClient.class, Application.class })
 public class DetailsServiceClientIntegrationTest {
 
     @Autowired
@@ -34,7 +32,8 @@ public class DetailsServiceClientIntegrationTest {
     @Before
     public void setUp() throws Exception {
         String detailsString = objectMapper.writeValueAsString(new Details("John Smith", "john"));
-        this.server.expect(requestTo("/john/details")).andRespond(withSuccess(detailsString, MediaType.APPLICATION_JSON));
+        this.server.expect(requestTo("/john/details"))
+            .andRespond(withSuccess(detailsString, MediaType.APPLICATION_JSON));
     }
 
     @Test
