@@ -30,14 +30,6 @@ public class HexagonalTest {
       .forName("utf8"));
 
 
-  @Before
-  public void before() {
-  }
-
-  @After
-  public void after() {
-  }
-
   @Test
   public void testCreateAthlete() throws Exception {
     Athlete wAthleteFTP = generateAthlete();
