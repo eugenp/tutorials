@@ -34,9 +34,8 @@ public class WebFluxSecurityConfig {
     }
 
     @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http
-                .authorizeExchange()
+    public SecurityWebFilterChain webSessionSpringSecurityFilterChain(ServerHttpSecurity http) {
+        http.authorizeExchange()
                 .anyExchange().authenticated()
                 .and()
                 .httpBasic()
@@ -44,8 +43,7 @@ public class WebFluxSecurityConfig {
                 .and()
                 .formLogin();
 
-        http
-                .csrf().disable();
+        http.csrf().disable();
 
         return http.build();
 
