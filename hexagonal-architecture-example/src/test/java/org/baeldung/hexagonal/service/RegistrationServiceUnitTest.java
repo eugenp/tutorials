@@ -1,17 +1,23 @@
 package org.baeldung.hexagonal.service;
 
 import org.baeldung.hexagonal.domain.core.User;
+import org.baeldung.hexagonal.domain.event.Event;
 import org.baeldung.hexagonal.domain.event.EventPublisher;
 import org.baeldung.hexagonal.domain.repository.UserRepository;
 import org.baeldung.hexagonal.domain.service.RegistrationService;
 import org.baeldung.hexagonal.domain.service.RegistrationServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.LocalDateTime;
 
-//TODO finish this test
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
+
+@RunWith(MockitoJUnitRunner.class)
 public class RegistrationServiceUnitTest {
 
     private RegistrationService registrationService;
@@ -72,7 +78,8 @@ public class RegistrationServiceUnitTest {
         registrationService.registerUser(validUser);
 
         // then
-        //TODO validate calls to eventPublisher and userRepository
+        verify(eventPublisher).publish(any(Event.class));
+        verify(userRepository).storeUser(any(User.class));
     }
 
 
