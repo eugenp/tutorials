@@ -6,7 +6,7 @@
     <artifactId>spring-cloud-eureka</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Spring Cloud Eureka</name>
+    <name>spring-cloud-eureka</name>
     <description>Spring Cloud Eureka Server and Sample Clients</description>
 
     <modules>

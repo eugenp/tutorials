@@ -88,3 +88,7 @@
 - [Changing the Order in a Sum Operation Can Produce Different Results?](https://www.baeldung.com/java-floating-point-sum-order)
 - [Java – Try with Resources](https://www.baeldung.com/java-try-with-resources)
 - [Abstract Classes in Java](https://www.baeldung.com/java-abstract-class)
+- [Guide to Character Encoding](https://www.baeldung.com/java-char-encoding)
+- [Calculate the Area of a Circle in Java](https://www.baeldung.com/java-calculate-circle-area)
+- [A Guide to the Java Math Class](https://www.baeldung.com/java-lang-math)
+- [Graphs in Java](https://www.baeldung.com/java-graphs)

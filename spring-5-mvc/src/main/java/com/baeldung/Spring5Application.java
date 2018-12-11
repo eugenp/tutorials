@@ -4,10 +4,11 @@ import javax.servlet.Filter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.web.filter.DelegatingFilterProxy;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-@SpringBootApplication
+@SpringBootApplication( exclude = SecurityAutoConfiguration.class)
 public class Spring5Application {
 
     public static void main(String[] args) {

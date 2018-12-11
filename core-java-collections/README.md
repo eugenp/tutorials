@@ -51,3 +51,4 @@
 - [Java List Initialization in One Line](https://www.baeldung.com/java-init-list-one-line)
 - [ClassCastException: Arrays$ArrayList cannot be cast to ArrayList](https://www.baeldung.com/java-classcastexception-arrays-arraylist)
 - [A Guide to EnumMap](https://www.baeldung.com/java-enum-map)
+- [Ways to Iterate Over a List in Java](https://www.baeldung.com/java-iterate-list)
