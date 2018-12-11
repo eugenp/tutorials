@@ -1,8 +1,8 @@
-package com.baeldung.list.multidimentional;
+package com.baeldung.list.multidimensional;
 
 import java.util.ArrayList;
 
-public class ThreeDimentionalArrayList {
+public class ThreeDimensionalArrayList {
 
     public static void main(String args[]) {
         

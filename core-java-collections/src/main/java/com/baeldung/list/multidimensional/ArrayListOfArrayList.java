@@ -1,4 +1,4 @@
-package com.baeldung.list.multidimentional;
+package com.baeldung.list.multidimensional;
 
 import java.util.ArrayList;
 
