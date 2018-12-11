@@ -17,7 +17,7 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Project Configuration with Spring](http://www.baeldung.com/project-configuration-with-spring)
 - [Metrics for your Spring REST API](http://www.baeldung.com/spring-rest-api-metrics)
 - [Bootstrap a Web Application with Spring 4](http://www.baeldung.com/bootstraping-a-web-application-with-spring-and-java-based-configuration)
-- [Build a REST API with Spring 4 and Java Config](http://www.baeldung.com/building-a-restful-web-service-with-spring-and-java-based-configuration)
+- [Build a REST API with Spring and Java Config](http://www.baeldung.com/building-a-restful-web-service-with-spring-and-java-based-configuration)
 - [Error Handling for REST with Spring](http://www.baeldung.com/exception-handling-for-rest-with-spring)
 
 
