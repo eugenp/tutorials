@@ -22,18 +22,20 @@ public class CustomerControllerUnitTest {
     private MockMvc mockMvc;
 
     @Test
-    public void whenPostRequesttoAddCustomer_thenJSONContentCorrect() throws Exception {
+    public void whenPostHttpRequesttoAddCustomer_thenJSONEntityRepresentation() throws Exception {
         this.mockMvc
-                .perform(post("/addcustomer"))
-                .andExpect(status().isOk())
-                .andExpect(content().json("{\"id\":1,\"name\":\"Julie\",\"email\":\"Julie@domain.com\"}"));
+          .perform(MockMvcRequestBuilders.post("/addcustomer"))
+          .andExpect(MockMvcResultMatchers.status().isOk())
+          .andExpect(MockMvcResultMatchers.content().json("{\"id\":1,\"name\":\"Julie\",\"email\":\"Julie@domain.com\"}"));
     }
-
+    
     @Test
-    public void whenGetRequesttogetCustomers_thenJSONContentCorrect() throws Exception {
+    public void whenGetHttpRequesttogetCustomers_thenJSONContentType() throws Exception {
+        MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
+        MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
         this.mockMvc
-                .perform(get("/getcustomers"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE + ";charset=UTF-8"));
+            .perform(MockMvcRequestBuilders.get("/getcustomers"))
+            .andExpect(MockMvcResultMatchers.status().isOk())
+            .andExpect(MockMvcResultMatchers.content().contentType(contentType));
     }
 }
