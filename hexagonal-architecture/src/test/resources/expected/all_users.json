@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Test 1",
+    "status": "ACTIVE",
+    "email": "test1@test.com"
+  },
+  {
+    "id": 2,
+    "name": "Test 2",
+    "status": "INACTIVE",
+    "email": "test2@test.com"
+  },
+  {
+    "id": 3,
+    "name": "Test 3",
+    "status": "INACTIVE",
+    "email": "test3@test.com"
+  },
+  {
+    "id": 4,
+    "name": "Test 4",
+    "status": "INACTIVE",
+    "email": "test4@test.com"
+  },
+  {
+    "id": 5,
+    "name": "Test 5",
+    "status": "ACTIVE",
+    "email": "test5@test.com"
+  }
+]

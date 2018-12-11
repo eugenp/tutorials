@@ -1,0 +1,8 @@
+sever:
+  port: 8080
+
+spring:
+  profiles:
+    active: local
+  datasource:
+    initialization-mode: always
