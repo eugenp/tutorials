@@ -31,6 +31,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
+    @ResponseStatus(HttpStatus.CREATED)
     public User createUser(@RequestBody final User user) {
         return applicationService.createUser(user);
     }

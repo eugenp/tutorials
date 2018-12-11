@@ -43,20 +43,20 @@ public class UserControllerTests {
     }
 
     @Test
-    public void contextLoads3() throws Exception {
+    public void whenCallEndPointToCreateUser_ShouldBeReturnAddedUser_WithStatusCreated() throws Exception {
         final MvcResult mvcResult =
                 mockMvc.perform(post("/users").contentType(MediaType.APPLICATION_JSON_UTF8).content(getJsonFileAsString("request/create_user.json")))
-                        .andExpect(status().isOk()).andReturn();
+                        .andExpect(status().isCreated()).andReturn();
         JSONAssert.assertEquals(getJsonFileAsString("expected/user_created.json"), getMvcResultAsString(mvcResult), true);
     }
 
     @Test
-    public void contextLoads4() throws Exception {
+    public void whenCallEndPointToGetUser_WithInvalidId_ShouldBeReturnNotFound() throws Exception {
         mockMvc.perform(get("/users/10")).andExpect(status().isNotFound()).andReturn();
     }
 
     @Test
-    public void contextLoads5() throws Exception {
+    public void whenCallEndPointToDeleteUser_WithInvalidStatus_ShouldBeReturnStatusPreConditionFailed() throws Exception {
         mockMvc.perform(delete("/users/1")).andExpect(status().isPreconditionFailed()).andReturn();
     }
 
