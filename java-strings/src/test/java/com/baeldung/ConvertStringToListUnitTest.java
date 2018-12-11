@@ -19,143 +19,117 @@ public class ConvertStringToListUnitTest {
 
     private final String countries = "Russia,Germany,England,France,Italy";
     private final String ranks = "1,2,3,4,5, 6,7";
-    private final String others = ",,,,,";
+    private final String emptyStrings = ",,,,,";
     private final List<String> expectedCountriesList = Arrays.asList("Russia", "Germany", "England", "France", "Italy");
     private final List<Integer> expectedRanksList = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
-    private final List<String> expectedOthersList = Arrays.asList("", "", "", "", "", "");
+    private final List<String> expectedEmptyStringsList = Arrays.asList("", "", "", "", "", "");
 
     @Test
     public void givenString_thenGetListOfStringByJava() {
-        List<String> convertedList = stringToStringListInJava(countries);
-        assertEquals(expectedCountriesList, convertedList);
-    }
+        List<String> convertedCountriesList = Arrays.asList(countries.split(",", -1));
 
-    @Test
-    public void givenEmptyStrings_thenGetListOfStringByJava() {
-        List<String> convertedList = stringToStringListInJava(others);
-        assertEquals(expectedOthersList, convertedList);
-    }
-
-    @Test
-    public void givenEmptyStrings_thenGetListOfStringByApache() {
-        List<String> convertedList = stringToStringListUsingApacheCommonsLang(others);
-        assertEquals(expectedOthersList, convertedList);
-    }
-
-    @Test
-    public void givenEmptyStrings_thenGetListOfStringByGuava() {
-        List<String> convertedList = stringToStringListUsingGuava(others);
-        assertEquals(expectedOthersList, convertedList);
-    }
-
-    @Test
-    public void givenEmptyStrings_thenGetListOfStringByJava8() {
-        List<String> convertedList = stringToStringListUsingJava8Stream(others);
-        assertEquals(expectedOthersList, convertedList);
+        assertEquals(expectedCountriesList, convertedCountriesList);
     }
 
     @Test
     public void givenString_thenGetListOfStringByApache() {
-        List<String> convertedList = stringToStringListUsingApacheCommonsLang(countries);
-        assertEquals(expectedCountriesList, convertedList);
+        List<String> convertedCountriesList = Arrays.asList(StringUtils.splitPreserveAllTokens(countries, ","));
+
+        assertEquals(expectedCountriesList, convertedCountriesList);
     }
 
     @Test
     public void givenString_thenGetListOfStringByGuava() {
-        List<String> convertedList = stringToStringListUsingGuava(countries);
-        assertEquals(expectedCountriesList, convertedList);
+        List<String> convertedCountriesList = Splitter.on(",")
+            .trimResults()
+            .splitToList(countries);
+
+        assertEquals(expectedCountriesList, convertedCountriesList);
     }
 
     @Test
     public void givenString_thenGetListOfStringByJava8() {
-        List<String> convertedList = stringToStringListUsingJava8Stream(countries);
-        assertEquals(expectedCountriesList, convertedList);
+        List<String> convertedCountriesList = Stream.of(countries.split(",", -1))
+            .collect(Collectors.toList());
+
+        assertEquals(expectedCountriesList, convertedCountriesList);
     }
 
     @Test
     public void givenString_thenGetListOfIntegerByJava() {
-        List<Integer> convertedNumberList = stringToIntegerListInJava(ranks);
-        assertEquals(expectedRanksList, convertedNumberList);
+        String[] convertedRankArray = ranks.split(",");
+        List<Integer> convertedRankList = new ArrayList<Integer>();
+        for (String number : convertedRankArray) {
+            convertedRankList.add(Integer.parseInt(number.trim()));
+        }
+
+        assertEquals(expectedRanksList, convertedRankList);
     }
 
     @Test
     public void givenString_thenGetListOfIntegerByGuava() {
-        List<Integer> convertedNumberList = stringToIntegerListUsingGuava(ranks);
-        assertEquals(expectedRanksList, convertedNumberList);
-    }
-
-    @Test
-    public void givenString_thenGetListOfIntegerByJava8() {
-        List<Integer> convertedNumberList = stringToIntegerListUsingJava8Stream(ranks);
-        assertEquals(expectedRanksList, convertedNumberList);
-    }
-
-    @Test
-    public void givenString_thenGetListOfIntegerByApache() {
-        List<Integer> convertedNumberList = stringToIntegerListUsingApacheCommonsLang(ranks);
-        assertEquals(expectedRanksList, convertedNumberList);
-    }
-
-    public List<Integer> stringToIntegerListUsingJava8Stream(String stringToConvert) {
-        List<Integer> listOfInteger = Stream.of(stringToConvert.split(","))
-            .map(String::trim)
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
-        return listOfInteger;
-    }
-
-    public List<Integer> stringToIntegerListUsingGuava(String stringToConvert) {
-        List<Integer> listOfInteger = Lists.transform(Splitter.on(",")
+        List<Integer> convertedRankList = Lists.transform(Splitter.on(",")
             .trimResults()
-            .splitToList(stringToConvert), new Function<String, Integer>() {
+            .splitToList(ranks), new Function<String, Integer>() {
                 @Override
                 public Integer apply(String input) {
                     return Integer.parseInt(input.trim());
                 }
             });
 
-        return listOfInteger;
+        assertEquals(expectedRanksList, convertedRankList);
     }
 
-    public List<Integer> stringToIntegerListUsingApacheCommonsLang(String stringToConvert) {
-        String[] arrayOfString = StringUtils.split(stringToConvert, ",");
-        List<Integer> listOfInteger = new ArrayList<Integer>();
-        for (String number : arrayOfString) {
-            listOfInteger.add(Integer.parseInt(number.trim()));
-        }
-        return listOfInteger;
-    }
-
-    public List<Integer> stringToIntegerListInJava(String stringToConvert) {
-        String[] arrayOfString = stringToConvert.split(",");
-        List<Integer> listOfInteger = new ArrayList<Integer>();
-        for (String number : arrayOfString) {
-            listOfInteger.add(Integer.parseInt(number.trim()));
-        }
-        return listOfInteger;
-    }
-
-    public List<String> stringToStringListUsingJava8Stream(String stringToConvert) {
-        List<String> listOfString = Stream.of(stringToConvert.split(",", -1))
+    @Test
+    public void givenString_thenGetListOfIntegerByJava8() {
+        List<Integer> convertedRankList = Stream.of(ranks.split(","))
+            .map(String::trim)
+            .map(Integer::parseInt)
             .collect(Collectors.toList());
-        return listOfString;
+
+        assertEquals(expectedRanksList, convertedRankList);
     }
 
-    public List<String> stringToStringListUsingGuava(String stringToConvert) {
-        List<String> listOfString = Splitter.on(",")
+    @Test
+    public void givenString_thenGetListOfIntegerByApache() {
+        String[] convertedRankArray = StringUtils.split(ranks, ",");
+        List<Integer> convertedRankList = new ArrayList<Integer>();
+        for (String number : convertedRankArray) {
+            convertedRankList.add(Integer.parseInt(number.trim()));
+        }
+
+        assertEquals(expectedRanksList, convertedRankList);
+    }
+
+    @Test
+    public void givenEmptyStrings_thenGetListOfStringByJava() {
+        List<String> convertedEmptyStringsList = Arrays.asList(emptyStrings.split(",", -1));
+
+        assertEquals(expectedEmptyStringsList, convertedEmptyStringsList);
+    }
+
+    @Test
+    public void givenEmptyStrings_thenGetListOfStringByApache() {
+        List<String> convertedEmptyStringsList = Arrays.asList(StringUtils.splitPreserveAllTokens(emptyStrings, ","));
+
+        assertEquals(expectedEmptyStringsList, convertedEmptyStringsList);
+    }
+
+    @Test
+    public void givenEmptyStrings_thenGetListOfStringByGuava() {
+        List<String> convertedEmptyStringsList = Splitter.on(",")
             .trimResults()
-            .splitToList(stringToConvert);
-        return listOfString;
+            .splitToList(emptyStrings);
+
+        assertEquals(expectedEmptyStringsList, convertedEmptyStringsList);
     }
 
-    public List<String> stringToStringListUsingApacheCommonsLang(String stringToConvert) {
-        List<String> listOfString = Arrays.asList(StringUtils.splitPreserveAllTokens(stringToConvert, ","));
-        return listOfString;
-    }
+    @Test
+    public void givenEmptyStrings_thenGetListOfStringByJava8() {
+        List<String> convertedEmptyStringsList = Stream.of(emptyStrings.split(",", -1))
+            .collect(Collectors.toList());
 
-    public List<String> stringToStringListInJava(String stringToConvert) {
-        List<String> listOfString = Arrays.asList(stringToConvert.split(",", -1));
-        return listOfString;
+        assertEquals(expectedEmptyStringsList, convertedEmptyStringsList);
     }
 
 }
