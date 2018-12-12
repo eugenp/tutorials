@@ -14,7 +14,7 @@ public class BarConsumerService {
 
     @Autowired
     public BarConsumerService(RestTemplateBuilder restTemplateBuilder) {
-        RestTemplate restTemplate = restTemplateBuilder
+        restTemplate = restTemplateBuilder
           .errorHandler(new RestTemplateResponseErrorHandler())
           .build();
     }

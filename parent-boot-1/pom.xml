@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>parent-boot-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name>parent-boot-1</name>
 	<packaging>pom</packaging>
 	<description>Parent for all Spring Boot 1.x modules</description>
 
@@ -17,7 +18,7 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
-				<version>1.5.16.RELEASE</version>
+				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -42,7 +43,11 @@
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-maven-plugin</artifactId>
-					<version>1.5.15.RELEASE</version>
+					<version>${spring-boot.version}</version>
+					<configuration>
+						<mainClass>${start-class}</mainClass>
+						<!-- this is necessary as we're not using the Boot parent -->
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -50,6 +55,7 @@
 
 	<properties>
 		<rest-assured.version>3.1.0</rest-assured.version>
+		<spring-boot.version>1.5.16.RELEASE</spring-boot.version>
 	</properties>
-
+	
 </project>

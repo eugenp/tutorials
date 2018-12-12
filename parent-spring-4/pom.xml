@@ -29,7 +29,7 @@
     </dependencies>
 
     <properties>
-        <spring.version>4.3.17.RELEASE</spring.version>
+        <spring.version>4.3.20.RELEASE</spring.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
     </properties>
 

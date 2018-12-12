@@ -5,3 +5,4 @@
 - [RxJava 2 - Completable](http://www.baeldung.com/rxjava-completable)
 - [RxJava Maybe](http://www.baeldung.com/rxjava-maybe)
 - [Introduction to RxRelay for RxJava](http://www.baeldung.com/rx-relay)
+- [Combining RxJava Completables](https://www.baeldung.com/rxjava-completable)

@@ -83,6 +83,7 @@
 - [Guide to JMapper](http://www.baeldung.com/jmapper)
 - [An Introduction to Apache Commons Lang 3](https://www.baeldung.com/java-commons-lang-3)
 - [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
+- [An Introduction to SuanShu](https://www.baeldung.com/suanshu)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
