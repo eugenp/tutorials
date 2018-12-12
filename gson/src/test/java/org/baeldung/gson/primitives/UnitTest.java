@@ -53,11 +53,19 @@ public class UnitTest {
     }
 
     @Test public void fromJsonPrecissionMismatch() {
-        String json = "{\"value\": 12.123456789123456}";
+        String json = "{\"value\": 12.123425589123456}";
         Gson gson = new Gson();
         FloatExample model = gson.fromJson(json, FloatExample.class);
-        assertEquals(12.123457f, model.value, 0.000001);
+        assertEquals(12.123426f, model.value, 0.000001);
     }
+
+    @Test public void fromJsonPrecissionMismatchForDouble() {
+        String json = "{\"value\": 12.123425589123556}";
+        Gson gson = new Gson();
+        DoubleExample model = gson.fromJson(json, DoubleExample.class);
+        assertEquals(12.123425589124f, model.value, 0.000001);
+    }
+
 
     @Test public void fromJsonOverflow() {
         Gson gson = new Gson();
