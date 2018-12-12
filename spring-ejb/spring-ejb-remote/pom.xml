@@ -4,7 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-ejb-remote</artifactId>
     <packaging>ejb</packaging>
-
+	<name>spring-ejb-remote</name>
+	
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
         <artifactId>spring-ejb</artifactId>

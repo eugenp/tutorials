@@ -6,7 +6,8 @@
     <artifactId>spring-security-x509</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-
+	<name>spring-security-x509</name>
+	
     <parent>
         <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>

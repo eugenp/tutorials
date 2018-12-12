@@ -4,8 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>remoting-http</artifactId>
-    <description>Parent for all modules related to HTTP Spring Remoting.</description>
     <packaging>pom</packaging>
+
+	<name>remoting-http</name>
+    <description>Parent for all modules related to HTTP Spring Remoting.</description>
     
     <parent>
         <groupId>com.baeldung</groupId>

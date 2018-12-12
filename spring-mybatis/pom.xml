@@ -5,8 +5,7 @@
     <artifactId>spring-mybatis</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-mybatis Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <name>spring-mybatis</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
