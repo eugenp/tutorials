@@ -112,4 +112,5 @@ public class FunctionalJavaUnitTest {
 
         assertEquals(148, sumEven);
     }
+    
 }
