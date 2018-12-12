@@ -52,31 +52,6 @@ public class UnitTest {
         // @formatter:on
     }
 
-    @Test public void toJsonByteToBitString() {
-        GsonBuilder builder = new GsonBuilder();
-        builder.registerTypeAdapter(ByteExample.class,
-            new GsonBitStringSerializer());
-
-        Gson gson = builder.create();
-        ByteExample model = new ByteExample();
-        model.value = (byte) 0b1111;
-
-        assertEquals("{\"value\":\"1111\"}", gson.toJson(model));
-    }
-
-    @Test public void fromJsonByteFromBitString() {
-        String json = "{\"value\": \"1111\"}";
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.registerTypeAdapter(ByteExample.class,
-            new GsonBitStringDeserializer());
-
-        Gson gson = gsonBuilder.create();
-
-        ByteExample model = gson.fromJson(json, ByteExample.class);
-
-        assertEquals(15, model.value);
-    }
-
     @Test public void fromJsonPrecissionMismatch() {
         String json = "{\"value\": 12.123456789123456}";
         Gson gson = new Gson();
@@ -212,34 +187,6 @@ public class UnitTest {
     }
 
     // @formatter:off
-    static class GsonBitStringDeserializer implements JsonDeserializer<ByteExample> {
-        @Override public ByteExample deserialize(
-            JsonElement jsonElement,
-            Type type,
-            JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-
-            ByteExample byteExample = new ByteExample();
-            byteExample.value = (byte) Integer.parseInt(
-                                                  jsonElement.getAsJsonObject()
-                                                             .getAsJsonPrimitive("value")
-                                                             .getAsString()
-                                                  , 2);
-            return byteExample;
-        }
-    }
-
-    static class GsonBitStringSerializer implements JsonSerializer<ByteExample> {
-        @Override public JsonElement serialize(
-            ByteExample model,
-            Type type,
-            JsonSerializationContext jsonSerializationContext) {
-
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("value", Integer.toBinaryString(model.value));
-            return jsonObject;
-        }
-    }
-
     static class BooleanAs2ValueIntegerDeserializer implements JsonDeserializer<BooleanExample> {
         @Override public BooleanExample deserialize(
             JsonElement jsonElement,
