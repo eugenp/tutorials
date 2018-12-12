@@ -1,4 +1,4 @@
-package com.baeldung.string;
+package com.baeldung.algorithms.string;
 
 import java.util.HashSet;
 import java.util.Set;
