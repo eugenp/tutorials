@@ -32,6 +32,25 @@ public class UnitTest {
         assertEquals(expected, gson.toJson(primitiveBundle));
     }
 
+    @Test public void toJsonLimitValues() {
+        LimitValuesExample model = new LimitValuesExample();
+        model.minValue = Float.MIN_VALUE;
+        model.maxValue = Float.MAX_VALUE;
+
+        Gson gson = new Gson();
+
+        String expected = "{\"minValue\":1.4E-45,\"maxValue\":3.4028235E38}";
+        assertEquals(expected, gson.toJson(model));
+    }
+
+    @Test(expected = IllegalArgumentException.class) public void toJsonNaN() {
+        FloatExample model = new FloatExample();
+        model.value = Float.NaN;
+
+        Gson gson = new Gson();
+        gson.toJson(model);
+    }
+
     @Test public void fromJsonAllPrimitives() {
         String json = "{\"byteValue\": 17, \"shortValue\": 3, \"intValue\": 3, "
             + "\"longValue\": 3, \"floatValue\": 3.5" + ", \"doubleValue\": 3.5"
