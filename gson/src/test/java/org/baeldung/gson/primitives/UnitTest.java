@@ -143,9 +143,19 @@ public class UnitTest {
         // @formatter:off
         String json = "{\"byteValue\": \"\", \"shortValue\": \"\", "
             + "\"intValue\": \"\", " + "\"longValue\": \"\", \"floatValue\": \"\""
-            + ", \"doubleValue\": \"\"" + ", \"booleanValue\": \"\", \"charValue\": \"\"}";
+            + ", \"doubleValue\": \"\"" + ", \"booleanValue\": \"\"}";
         // @formatter:on
         gson.fromJson(json, PrimitiveBundleInitialized.class);
+    }
+
+    @Test public void fromJsonEmptyStringToChar() {
+        Gson gson = new Gson();
+        // @formatter:off
+        String json = "{\"charValue\": \"\"}";
+        // @formatter:on
+        CharExample model = gson.fromJson(json, CharExample.class);
+
+        assertEquals(Character.MIN_VALUE, model.value);
     }
 
     @Test public void fromJsonValidValueWithinString() {
