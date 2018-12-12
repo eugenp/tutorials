@@ -75,7 +75,7 @@ public class UnitTest {
         assertEquals(44, model.value);
     }
 
-    @Test public void fromJsonNonCompatibleNumberTypes() {
+    @Test public void fromJsonRealToByte() {
         Gson gson = new Gson();
         String json = "{\"value\": 2.3}";
         try {
@@ -87,6 +87,27 @@ public class UnitTest {
         }
 
         fail();
+    }
+
+    @Test public void fromJsonRealToLong() {
+        Gson gson = new Gson();
+        String json = "{\"value\": 2.3}";
+        try {
+            gson.fromJson(json, LongExample.class);
+        } catch (Exception ex) {
+            assertTrue(ex instanceof JsonSyntaxException);
+            assertTrue(ex.getCause() instanceof NumberFormatException);
+            return;
+        }
+
+        fail();
+    }
+
+    @Test public void fromJsonRealToLongEndingIn0() {
+        Gson gson = new Gson();
+        String json = "{\"value\": 2.0}";
+        LongExample model = gson.fromJson(json, LongExample.class);
+        assertEquals(2, model.value);
     }
 
     @Test public void fromJsonUnicodeChar() {
