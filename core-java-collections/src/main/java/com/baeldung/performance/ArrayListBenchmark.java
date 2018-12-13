@@ -17,6 +17,7 @@ public class ArrayListBenchmark {
     public static class MyState {
 
         List<Employee> employeeList = new ArrayList<>();
+        Vector<Employee> employeeVector = new Vector<>();
         //LinkedList<Employee> employeeList = new LinkedList<>();
 
         long iterations = 100000;
@@ -29,9 +30,11 @@ public class ArrayListBenchmark {
         public void setUp() {
             for (long i = 0; i < iterations; i++) {
                 employeeList.add(new Employee(i, "John"));
+                employeeVector.add(new Employee(i, "John"));
             }
 
             employeeList.add(employee);
+            employeeVector.add(employee);
             employeeIndex = employeeList.indexOf(employee);
         }
     }
@@ -55,16 +58,20 @@ public class ArrayListBenchmark {
     public Employee testGet(ArrayListBenchmark.MyState state) {
         return state.employeeList.get(state.employeeIndex);
     }
+    @Benchmark
+    public Employee testVectorGet(ArrayListBenchmark.MyState state) {
+        return state.employeeVector.get(state.employeeIndex);
+    }
 
     @Benchmark
     public boolean testRemove(ArrayListBenchmark.MyState state) {
         return state.employeeList.remove(state.employee);
     }
 
-//    @Benchmark
-//    public void testAdd(ArrayListBenchmark.MyState state) {
-//        state.employeeList.add(new Employee(state.iterations + 1, "John"));
-//    }
+    @Benchmark
+    public void testAdd(ArrayListBenchmark.MyState state) {
+        state.employeeList.add(new Employee(state.iterations + 1, "John"));
+    }
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
