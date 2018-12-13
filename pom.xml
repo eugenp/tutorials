@@ -511,6 +511,7 @@
                 <module>persistence-modules/flyway</module>
                 <module>persistence-modules/hbase</module>
                 <module>persistence-modules/hibernate5</module>
+				<module>persistence-modules/hibernate-ogm</module>
                 <module>persistence-modules/influxdb</module>
                 <module>persistence-modules/java-cassandra</module>
                 <module>persistence-modules/java-cockroachdb</module>
@@ -1225,6 +1226,7 @@
                 <module>persistence-modules/flyway</module>
                 <module>persistence-modules/hbase</module>
                 <module>persistence-modules/hibernate5</module>
+				<module>persistence-modules/hibernate-ogm</module>
                 <module>persistence-modules/influxdb</module>
                 <module>persistence-modules/java-cassandra</module>
                 <module>persistence-modules/java-cockroachdb</module>
