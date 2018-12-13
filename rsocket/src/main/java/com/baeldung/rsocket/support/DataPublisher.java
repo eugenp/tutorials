@@ -7,7 +7,7 @@ import org.reactivestreams.Subscriber;
 /**
  * Simple PUblisher to provide async data to Flux stream
  */
-public class WindDataPublisher implements Publisher<Payload> {
+public class DataPublisher implements Publisher<Payload> {
 
     private Subscriber<? super Payload> subscriber;
 

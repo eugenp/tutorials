@@ -21,7 +21,7 @@ public class ReqStreamClient {
 
     public Flux<Float> getDataStream() {
         return socket
-          .requestStream(DefaultPayload.create(WIND_DATA_STREAM_NAME))
+          .requestStream(DefaultPayload.create(DATA_STREAM_NAME))
           .map(Payload::getData)
           .map(buf -> buf.getFloat())
           .onErrorReturn(null);
