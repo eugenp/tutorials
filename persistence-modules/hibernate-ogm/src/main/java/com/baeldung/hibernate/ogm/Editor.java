@@ -13,57 +13,56 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Editor {
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String editorId;
 
-        @Id
-        @GeneratedValue(generator = "uuid")
-        @GenericGenerator(name = "uuid", strategy = "uuid2")
-        private String editorId;
-        
-        private String editorName;
-        private String editorEmail;
-        
-        @OneToMany(mappedBy = "editor", cascade = CascadeType.PERSIST)
-        private Set<Author> assignedAuthors = new HashSet<>();
+    private String editorName;
+    private String editorEmail;
 
-        // constructors, getters and setters...
-        
-        Editor() {
-        }
+    @OneToMany(mappedBy = "editor", cascade = CascadeType.PERSIST)
+    private Set<Author> assignedAuthors = new HashSet<>();
 
-        public Editor(String editorName, String editorEmail) {
-                this.editorName = editorName;
-                this.editorEmail = editorEmail;
-        }
+    // constructors, getters and setters...
 
-        public String getEditorId() {
-                return editorId;
-        }
+    Editor() {
+    }
 
-        public void setEditorId(String editorId) {
-                this.editorId = editorId;
-        }
+    public Editor(String editorName, String editorEmail) {
+        this.editorName = editorName;
+        this.editorEmail = editorEmail;
+    }
 
-        public String getEditorName() {
-                return editorName;
-        }
+    public String getEditorId() {
+        return editorId;
+    }
 
-        public void setEditorName(String editorName) {
-                this.editorName = editorName;
-        }
+    public void setEditorId(String editorId) {
+        this.editorId = editorId;
+    }
 
-        public String getEditorEmail() {
-                return editorEmail;
-        }
+    public String getEditorName() {
+        return editorName;
+    }
 
-        public void setEditorEmail(String editorEmail) {
-                this.editorEmail = editorEmail;
-        }
-        
-        public Set<Author> getAssignedAuthors() {
-                return assignedAuthors;
-        }
+    public void setEditorName(String editorName) {
+        this.editorName = editorName;
+    }
 
-        public void setAssignedAuthors(Set<Author> assignedAuthors) {
-                this.assignedAuthors = assignedAuthors;
-        }
+    public String getEditorEmail() {
+        return editorEmail;
+    }
+
+    public void setEditorEmail(String editorEmail) {
+        this.editorEmail = editorEmail;
+    }
+
+    public Set<Author> getAssignedAuthors() {
+        return assignedAuthors;
+    }
+
+    public void setAssignedAuthors(Set<Author> assignedAuthors) {
+        this.assignedAuthors = assignedAuthors;
+    }
 }

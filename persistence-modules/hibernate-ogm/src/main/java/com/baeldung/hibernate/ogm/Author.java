@@ -14,68 +14,67 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Author {
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String authorId;
 
-        @Id
-        @GeneratedValue(generator = "uuid")
-        @GenericGenerator(name = "uuid", strategy = "uuid2")
-        private String authorId;
-        
-        private String authorName;
-        private String authorEmail;
-        
-        @ManyToOne
-        private Editor editor;
+    private String authorName;
+    private String authorEmail;
 
-        @OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST)
-        private Set<Article> authoredArticles = new HashSet<>();
+    @ManyToOne
+    private Editor editor;
 
-        // constructors, getters and setters...
+    @OneToMany(mappedBy = "author", cascade = CascadeType.PERSIST)
+    private Set<Article> authoredArticles = new HashSet<>();
 
-        Author() {
-        }
+    // constructors, getters and setters...
 
-        public Author(String authorName, String authorEmail) {
-                this.authorName = authorName;
-                this.authorEmail = authorEmail;
-        }
+    Author() {
+    }
 
-        public String getAuthorId() {
-                return authorId;
-        }
+    public Author(String authorName, String authorEmail) {
+        this.authorName = authorName;
+        this.authorEmail = authorEmail;
+    }
 
-        public void setAuthorId(String authorId) {
-                this.authorId = authorId;
-        }
+    public String getAuthorId() {
+        return authorId;
+    }
 
-        public String getAuthorName() {
-                return authorName;
-        }
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
+    }
 
-        public void setAuthorName(String authorName) {
-                this.authorName = authorName;
-        }
+    public String getAuthorName() {
+        return authorName;
+    }
 
-        public String getAuthorEmail() {
-                return authorEmail;
-        }
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
 
-        public void setAuthorEmail(String authorEmail) {
-                this.authorEmail = authorEmail;
-        }
-        
-        public Editor getEditor() {
-                return editor;
-        }
+    public String getAuthorEmail() {
+        return authorEmail;
+    }
 
-        public void setEditor(Editor editor) {
-                this.editor = editor;
-        }
+    public void setAuthorEmail(String authorEmail) {
+        this.authorEmail = authorEmail;
+    }
 
-        public Set<Article> getAuthoredArticles() {
-                return authoredArticles;
-        }
+    public Editor getEditor() {
+        return editor;
+    }
 
-        public void setAuthoredArticles(Set<Article> authoredArticles) {
-                this.authoredArticles = authoredArticles;
-        }       
+    public void setEditor(Editor editor) {
+        this.editor = editor;
+    }
+
+    public Set<Article> getAuthoredArticles() {
+        return authoredArticles;
+    }
+
+    public void setAuthoredArticles(Set<Article> authoredArticles) {
+        this.authoredArticles = authoredArticles;
+    }
 }

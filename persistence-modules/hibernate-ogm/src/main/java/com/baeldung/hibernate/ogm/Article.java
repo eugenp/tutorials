@@ -9,57 +9,56 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Article {
-        
-        @Id
-        @GeneratedValue(generator = "uuid")
-        @GenericGenerator(name = "uuid", strategy = "uuid2")
-        private String articleId;
-        
-        private String articleTitle;
-        private String articleUrl;
-        
-        @ManyToOne
-        private Author author;
-        
-        // constructors, getters and setters...
-        
-        Article() {
-        }
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String articleId;
 
-        public Article(String articleTitle, String articleUrl) {
-                this.articleTitle = articleTitle;
-                this.articleUrl = articleUrl;
-        }
+    private String articleTitle;
+    private String articleUrl;
 
-        public String getArticleId() {
-                return articleId;
-        }
+    @ManyToOne
+    private Author author;
 
-        public void setArticleId(String articleId) {
-                this.articleId = articleId;
-        }
+    // constructors, getters and setters...
 
-        public String getArticleTitle() {
-                return articleTitle;
-        }
+    Article() {
+    }
 
-        public void setArticleTitle(String articleTitle) {
-                this.articleTitle = articleTitle;
-        }
+    public Article(String articleTitle, String articleUrl) {
+        this.articleTitle = articleTitle;
+        this.articleUrl = articleUrl;
+    }
 
-        public String getArticleUrl() {
-                return articleUrl;
-        }
+    public String getArticleId() {
+        return articleId;
+    }
 
-        public void setArticleUrl(String articleUrl) {
-                this.articleUrl = articleUrl;
-        }       
-        
-        public Author getAuthor() {
-                return author;
-        }
+    public void setArticleId(String articleId) {
+        this.articleId = articleId;
+    }
 
-        public void setAuthor(Author author) {
-                this.author = author;
-        }
+    public String getArticleTitle() {
+        return articleTitle;
+    }
+
+    public void setArticleTitle(String articleTitle) {
+        this.articleTitle = articleTitle;
+    }
+
+    public String getArticleUrl() {
+        return articleUrl;
+    }
+
+    public void setArticleUrl(String articleUrl) {
+        this.articleUrl = articleUrl;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 }
