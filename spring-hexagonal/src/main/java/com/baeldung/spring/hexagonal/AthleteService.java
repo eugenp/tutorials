@@ -6,25 +6,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class AthleteService implements IAthleteService {
 
-  IAthleteRepositoryService athleteRepositoryService;
+    IAthleteRepositoryService athleteRepositoryService;
 
-  @Autowired
-  public AthleteService(
-      IAthleteRepositoryService athleteRepositoryService) {
-    this.athleteRepositoryService = athleteRepositoryService;
-  }
-
-  @Override
-  public Athlete getAthlete(long id) {
-    return athleteRepositoryService.findOne(id);
-  }
-
-  @Override
-  public Athlete updateMarathonTime(Athlete athlete) {
-    if (athlete.getId() != null) {
-      Athlete athlete1 = athleteRepositoryService.findOne(athlete.getId());
-      athlete.setId(athlete1.getId());
+    @Autowired
+    public AthleteService(
+        IAthleteRepositoryService athleteRepositoryService) {
+        this.athleteRepositoryService = athleteRepositoryService;
     }
-    return athleteRepositoryService.save(athlete);
-  }
+
+    @Override
+    public Athlete getAthlete(long id) {
+        return athleteRepositoryService.findOne(id);
+    }
+
+    @Override
+    public Athlete updateMarathonTime(Athlete athlete) {
+        if (athlete.getId() != null) {
+            Athlete athlete1 = athleteRepositoryService.findOne(athlete.getId());
+            athlete.setId(athlete1.getId());
+        }
+        return athleteRepositoryService.save(athlete);
+    }
 }

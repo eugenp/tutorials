@@ -11,37 +11,37 @@ import javax.persistence.Table;
 @Table(name = "athlete")
 public class Athlete implements IAthlete {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  String username = "";
-  double marathonTime = 0.0;
+    String username = "";
+    double marathonTime = 0.0;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  public Athlete(){
-  }
+    public Athlete() {
+    }
 
-  public Long getId() {
-    return id;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public String getUsername() {
-    return username;
-  }
+    public String getUsername() {
+        return username;
+    }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-  public double getMarathonTime() {
-    return marathonTime;
-  }
+    public double getMarathonTime() {
+        return marathonTime;
+    }
 
-  public void setMarathonTime(double marathonTime) {
-    this.marathonTime = marathonTime;
-  }
+    public void setMarathonTime(double marathonTime) {
+        this.marathonTime = marathonTime;
+    }
 
 }

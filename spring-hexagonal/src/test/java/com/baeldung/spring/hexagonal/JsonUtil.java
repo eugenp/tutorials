@@ -9,8 +9,9 @@ import org.springframework.http.MediaType;
 public class JsonUtil {
 
 
-
-    public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+    public static final MediaType APPLICATION_JSON_UTF8 = new MediaType(
+        MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(),
+        Charset.forName("utf8"));
 
     public static String convertObjectToJsonBytes(Object object) throws IOException {
         ObjectMapper mapper = new ObjectMapper();

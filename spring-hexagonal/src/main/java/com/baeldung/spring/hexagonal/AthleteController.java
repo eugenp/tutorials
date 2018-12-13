@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api")
-public class AthleteController implements IAthleteController{
+public class AthleteController implements IAthleteController {
 
-  IAthleteService athleteService;
+    IAthleteService athleteService;
 
-  @Autowired
-  public AthleteController(
-      IAthleteService athleteService) {
-    this.athleteService = athleteService;
-  }
+    @Autowired
+    public AthleteController(
+        IAthleteService athleteService) {
+        this.athleteService = athleteService;
+    }
 
-  @RequestMapping(value = "/athlete/{id}", method = RequestMethod.GET, produces = "application/json")
-  public Athlete getAthlete(@PathVariable("id") long id) {
-    Athlete athlete = athleteService.getAthlete(id);
-    return athlete;
-  }
+    @RequestMapping(value = "/athlete/{id}", method = RequestMethod.GET, produces = "application/json")
+    public Athlete getAthlete(@PathVariable("id") long id) {
+        Athlete athlete = athleteService.getAthlete(id);
+        return athlete;
+    }
 
-  @RequestMapping(value = "/athlete", method = RequestMethod.POST, produces = "application/json")
-  public Athlete createOrUpdateAthlete(@RequestBody Athlete athlete) throws Exception {
-    return athleteService.updateMarathonTime(athlete);
-  }
+    @RequestMapping(value = "/athlete", method = RequestMethod.POST, produces = "application/json")
+    public Athlete createOrUpdateAthlete(@RequestBody Athlete athlete) throws Exception {
+        return athleteService.updateMarathonTime(athlete);
+    }
 
 
 }
