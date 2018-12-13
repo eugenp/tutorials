@@ -448,7 +448,6 @@
                 <module>jersey</module>
                 <module>JGit</module>
                 <module>jgroups</module>
-                <module>jhipster</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -516,7 +515,6 @@
                 <module>persistence-modules/java-cockroachdb</module>
                 <module>persistence-modules/java-jdbi</module>
                 <module>persistence-modules/java-jpa</module>
-                <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>
                 <module>persistence-modules/liquibase</module>
                 <module>persistence-modules/orientdb</module>
@@ -998,12 +996,14 @@
                 <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/hello-world</module>
+                <module>jhipster</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
 
                 <module>persistence-modules/hibernate5</module>
                 <module>persistence-modules/java-jpa</module>
+                <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>             
 
                 <module>spring-5-data-reactive</module> <!-- very long running. Fixing in BAEL-10891  -->
@@ -1162,7 +1162,6 @@
                 <module>jersey</module>
                 <module>JGit</module>
                 <module>jgroups</module>
-                <module>jhipster</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -1230,7 +1229,6 @@
                 <module>persistence-modules/java-cockroachdb</module>
                 <module>persistence-modules/java-jdbi</module>
                 <module>persistence-modules/java-jpa</module>
-                <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>
                 <module>persistence-modules/liquibase</module>
                 <module>persistence-modules/orientdb</module>
@@ -1549,18 +1547,20 @@
                 <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/hello-world</module>
+                <module>jhipster</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
 
                 <module>persistence-modules/hibernate5</module>
                 <module>persistence-modules/java-jpa</module>
+                <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>             
 
                 <module>spring-5-data-reactive</module> <!-- very long running. Fixing in BAEL-10891  -->
                 <module>spring-amqp-simple</module> <!-- very long running. Fixing in BAEL-10891 -->
                 
-                <module>vaadin</module>
+                <module>vaadin</module>            
             </modules>
 
         </profile>
