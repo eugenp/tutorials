@@ -1,6 +1,6 @@
-package com.baeldung.hsqldb.application.tests;
+package com.baeldung.springboothsqldb.application.tests;
 
-import com.baeldung.hsqldb.application.entities.Customer;
+import com.baeldung.springboothsqldb.application.entities.Customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
