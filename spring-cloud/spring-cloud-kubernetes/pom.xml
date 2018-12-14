@@ -11,6 +11,8 @@
     <modules>
         <module>demo-frontend</module>
         <module>demo-backend</module>
+        <module>liveness-example</module>
+        <module>readiness-example</module>
     </modules>
 
     <parent>

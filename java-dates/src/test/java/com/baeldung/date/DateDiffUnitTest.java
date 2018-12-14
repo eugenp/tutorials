@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
@@ -52,12 +53,32 @@ public class DateDiffUnitTest {
     }
 
     @Test
+    public void givenTwoDateTimesInJava8_whenDifferentiatingInSeconds_thenWeGetTen() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime tenSecondsLater = now.plusSeconds(10);
+
+        long diff = ChronoUnit.SECONDS.between(now, tenSecondsLater);
+
+        assertEquals(diff, 10);
+    }
+
+    @Test
     public void givenTwoZonedDateTimesInJava8_whenDifferentiating_thenWeGetSix() {
         LocalDateTime ldt = LocalDateTime.now();
         ZonedDateTime now = ldt.atZone(ZoneId.of("America/Montreal"));
         ZonedDateTime sixDaysBehind = now.withZoneSameInstant(ZoneId.of("Asia/Singapore")).minusDays(6);
         long diff = ChronoUnit.DAYS.between(sixDaysBehind, now);
         assertEquals(diff, 6);
+    }
+
+    @Test
+    public void givenTwoDateTimesInJava8_whenDifferentiatingInSecondsUsingUntil_thenWeGetTen() {
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime tenSecondsLater = now.plusSeconds(10);
+
+        long diff = now.until(tenSecondsLater, ChronoUnit.SECONDS);
+
+        assertEquals(diff, 10);
     }
 
     @Test

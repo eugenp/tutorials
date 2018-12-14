@@ -17,7 +17,7 @@ import com.baeldung.validations.functional.handlers.impl.OtherEntityValidationHa
 public class ValidationsRouters {
 
     @Bean
-    public RouterFunction<ServerResponse> responseHeaderRoute(@Autowired CustomRequestEntityValidationHandler dryHandler,
+    public RouterFunction<ServerResponse> validationsRouter(@Autowired CustomRequestEntityValidationHandler dryHandler,
         @Autowired FunctionalHandler complexHandler,
         @Autowired OtherEntityValidationHandler otherHandler,
         @Autowired AnnotatedRequestEntityValidationHandler annotatedEntityHandler) {

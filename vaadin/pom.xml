@@ -10,10 +10,10 @@
     <name>Vaadin</name>
 
     <parent>
-        <artifactId>parent-boot-2</artifactId>
+        <artifactId>parent-boot-2.0-temp</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-2</relativePath>
+        <relativePath>../parent-boot-2.0-temp</relativePath>
     </parent>
     
     <dependencyManagement>
