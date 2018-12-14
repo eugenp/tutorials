@@ -23,21 +23,22 @@ public class PersonInsertRepositoryIntegrationTest {
 
     private static final Long ID = 1L;
     private static final String FIRST_NAME = "firstname";
-    private static final String LAST_NAME = "firstname";
+    private static final String LAST_NAME = "lastname";
     private static final Person PERSON = new Person(ID, FIRST_NAME, LAST_NAME);
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonQueryRepository personQueryRepository;
+
     @Autowired
-    private PersonCustomRepository personCustomRepository;
+    private PersonEntityManagerRepository personEntityManagerRepository;
 
     @BeforeEach
     public void clearDB() {
-        personRepository.deleteAll();
+        personQueryRepository.deleteAll();
     }
 
     @Test
-    public void givenPersonEntity_whenSaveWithNativeQuery_ThenPersonIsPersisted() {
+    public void givenPersonEntity_whenInsertWithNativeQuery_ThenPersonIsPersisted() {
         insertPerson();
 
         assertPersonPersisted();
@@ -52,7 +53,7 @@ public class PersonInsertRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenPersonEntity_whenSaveWithQueryAnnotation_thenPersonIsPersisted() {
+    public void givenPersonEntity_whenInsertWithQueryAnnotation_thenPersonIsPersisted() {
         insertPersonWithQueryAnnotation();
 
         assertPersonPersisted();
@@ -67,7 +68,7 @@ public class PersonInsertRepositoryIntegrationTest {
     }
 
     @Test
-    public void givenPersonEntity_whenSaveWithEntityManager_thenPersonIsPersisted() {
+    public void givenPersonEntity_whenInsertWithEntityManager_thenPersonIsPersisted() {
         insertPersonWithEntityManager();
 
         assertPersonPersisted();
@@ -82,19 +83,20 @@ public class PersonInsertRepositoryIntegrationTest {
     }
 
     private void insertPerson() {
-        personRepository.insert(PERSON);
+        personQueryRepository.insert(PERSON);
     }
 
     private void insertPersonWithQueryAnnotation() {
-        personRepository.insertWithAnnotation(ID, FIRST_NAME, LAST_NAME);
+        personQueryRepository.insertWithAnnotation(ID, FIRST_NAME, LAST_NAME);
     }
 
     private void insertPersonWithEntityManager() {
-        personCustomRepository.insert(new Person(ID, FIRST_NAME, LAST_NAME));
+        personEntityManagerRepository.insert(new Person(ID, FIRST_NAME, LAST_NAME));
     }
 
     private void assertPersonPersisted() {
-        Optional<Person> personOptional = personRepository.findById(PERSON.getId());
+        Optional<Person> personOptional = personQueryRepository.findById(PERSON.getId());
+
         assertThat(personOptional.isPresent()).isTrue();
         assertThat(personOptional.get().getId()).isEqualTo(PERSON.getId());
         assertThat(personOptional.get().getFirstName()).isEqualTo(PERSON.getFirstName());

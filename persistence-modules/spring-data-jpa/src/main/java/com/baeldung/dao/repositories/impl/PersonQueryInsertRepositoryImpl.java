@@ -1,6 +1,6 @@
 package com.baeldung.dao.repositories.impl;
 
-import com.baeldung.dao.repositories.PersonInsertRepository;
+import com.baeldung.dao.repositories.PersonQueryInsertRepository;
 import com.baeldung.domain.Person;
 
 import javax.persistence.EntityManager;
@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 @Transactional
-public class PersonInsertRepositoryImpl implements PersonInsertRepository {
+public class PersonQueryInsertRepositoryImpl implements PersonQueryInsertRepository {
 
     @PersistenceContext
     private EntityManager entityManager;

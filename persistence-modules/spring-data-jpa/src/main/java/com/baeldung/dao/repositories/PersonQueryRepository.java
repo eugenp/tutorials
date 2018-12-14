@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Long>, PersonInsertRepository {
+public interface PersonQueryRepository extends JpaRepository<Person, Long>, PersonQueryInsertRepository {
 
     @Modifying
     @Query(value = "INSERT INTO person (id, first_name, last_name) VALUES (:id,:firstName,:lastName)", nativeQuery = true)

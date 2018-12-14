@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonCustomRepository extends JpaRepository<Person, Long>, InsertRepository<Person> {
+public interface PersonEntityManagerRepository extends JpaRepository<Person, Long>, PersonEntityManagerInsertRepository {
 
 }

@@ -2,6 +2,6 @@ package com.baeldung.dao.repositories;
 
 import com.baeldung.domain.Person;
 
-public interface PersonInsertRepository {
+public interface PersonEntityManagerInsertRepository {
     void insert(Person person);
 }
