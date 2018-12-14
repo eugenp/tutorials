@@ -20,7 +20,6 @@ public class Author {
     private String authorId;
 
     private String authorName;
-    private String authorEmail;
 
     @ManyToOne
     private Editor editor;
@@ -33,9 +32,8 @@ public class Author {
     Author() {
     }
 
-    public Author(String authorName, String authorEmail) {
+    public Author(String authorName) {
         this.authorName = authorName;
-        this.authorEmail = authorEmail;
     }
 
     public String getAuthorId() {
@@ -52,14 +50,6 @@ public class Author {
 
     public void setAuthorName(String authorName) {
         this.authorName = authorName;
-    }
-
-    public String getAuthorEmail() {
-        return authorEmail;
-    }
-
-    public void setAuthorEmail(String authorEmail) {
-        this.authorEmail = authorEmail;
     }
 
     public Editor getEditor() {

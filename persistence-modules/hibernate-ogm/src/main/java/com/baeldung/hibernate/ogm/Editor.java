@@ -19,7 +19,6 @@ public class Editor {
     private String editorId;
 
     private String editorName;
-    private String editorEmail;
 
     @OneToMany(mappedBy = "editor", cascade = CascadeType.PERSIST)
     private Set<Author> assignedAuthors = new HashSet<>();
@@ -29,9 +28,8 @@ public class Editor {
     Editor() {
     }
 
-    public Editor(String editorName, String editorEmail) {
+    public Editor(String editorName) {
         this.editorName = editorName;
-        this.editorEmail = editorEmail;
     }
 
     public String getEditorId() {
@@ -48,14 +46,6 @@ public class Editor {
 
     public void setEditorName(String editorName) {
         this.editorName = editorName;
-    }
-
-    public String getEditorEmail() {
-        return editorEmail;
-    }
-
-    public void setEditorEmail(String editorEmail) {
-        this.editorEmail = editorEmail;
     }
 
     public Set<Author> getAssignedAuthors() {

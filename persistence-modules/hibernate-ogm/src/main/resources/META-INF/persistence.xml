@@ -21,11 +21,4 @@
 			<property name="hibernate.ogm.neo4j.database_path" value="target/test_data_dir" />
 		</properties>
 	</persistence-unit>
-	<!-- Infinispan -->
-	<persistence-unit name="ogm-infinispan" transaction-type="JTA">
-		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
-		<properties>
-			<property name="hibernate.ogm.datastore.provider" value="INFINISPAN" />
-		</properties>
-	</persistence-unit>
 </persistence>

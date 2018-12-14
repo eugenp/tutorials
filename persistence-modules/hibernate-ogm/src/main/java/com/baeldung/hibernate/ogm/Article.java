@@ -15,7 +15,6 @@ public class Article {
     private String articleId;
 
     private String articleTitle;
-    private String articleUrl;
 
     @ManyToOne
     private Author author;
@@ -25,9 +24,8 @@ public class Article {
     Article() {
     }
 
-    public Article(String articleTitle, String articleUrl) {
+    public Article(String articleTitle) {
         this.articleTitle = articleTitle;
-        this.articleUrl = articleUrl;
     }
 
     public String getArticleId() {
@@ -44,14 +42,6 @@ public class Article {
 
     public void setArticleTitle(String articleTitle) {
         this.articleTitle = articleTitle;
-    }
-
-    public String getArticleUrl() {
-        return articleUrl;
-    }
-
-    public void setArticleUrl(String articleUrl) {
-        this.articleUrl = articleUrl;
     }
 
     public Author getAuthor() {
