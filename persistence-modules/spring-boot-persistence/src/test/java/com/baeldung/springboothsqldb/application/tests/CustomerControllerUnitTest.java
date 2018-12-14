@@ -4,7 +4,6 @@ import com.baeldung.hsqldb.application.entities.Customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import java.nio.charset.Charset;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,13 +46,12 @@ public class CustomerControllerUnitTest {
                 )
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
+    
     @Test
     public void whenGetHttpRequesttogetCustomers_thenJSONContentType() throws Exception {
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/customers"))
                 .andExpect(MockMvcResultMatchers.content().contentType(MEDIA_TYPE_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-
     }
 }
