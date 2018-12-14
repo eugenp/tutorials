@@ -1,7 +1,7 @@
 package com.baeldung.hsqldb.application.controllers;
 
 import com.baeldung.hsqldb.application.entities.Customer;
-import com.baeldung.crud.hsqldb.application.repositories.CustomerRepository;
+import com.baeldung.hsqldb.application.repositories.CustomerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
