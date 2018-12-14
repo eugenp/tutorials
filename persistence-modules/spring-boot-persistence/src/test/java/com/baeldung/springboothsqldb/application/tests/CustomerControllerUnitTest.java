@@ -40,18 +40,21 @@ public class CustomerControllerUnitTest {
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
         ObjectWriter objectWriter = mapper.writer().withDefaultPrettyPrinter();
         String requestJson = objectWriter.writeValueAsString(customer);
+        
         this.mockMvc
                 .perform(MockMvcRequestBuilders.post("/customer")
                         .contentType(MEDIA_TYPE_JSON)
                         .content(requestJson)
                 )
+                
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
     @Test
-    public void whenGetHttpRequesttogetCustomers_thenJSONContentType() throws Exception {
+    public void whenGetHttpRequesttoCustomers_thenJSONContentType() throws Exception {
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/customers"))
+                
                 .andExpect(MockMvcResultMatchers.content().contentType(MEDIA_TYPE_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
