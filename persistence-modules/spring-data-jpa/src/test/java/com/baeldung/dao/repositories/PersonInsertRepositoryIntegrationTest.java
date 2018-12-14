@@ -1,8 +1,5 @@
 package com.baeldung.dao.repositories;
 
-import com.baeldung.config.PersistenceConfiguration;
-import com.baeldung.config.PersistenceProductConfiguration;
-import com.baeldung.config.PersistenceUserConfiguration;
 import com.baeldung.domain.Person;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest(excludeAutoConfiguration = {PersistenceConfiguration.class, PersistenceUserConfiguration.class, PersistenceProductConfiguration.class})
+@DataJpaTest
 public class PersonInsertRepositoryIntegrationTest {
 
     private static final Long ID = 1L;

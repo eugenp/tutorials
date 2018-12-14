@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-@Transactional(readOnly = true)
+@Transactional
 public class PersonEntityManagerInsertRepositoryImpl implements PersonEntityManagerInsertRepository {
 
     @PersistenceContext
