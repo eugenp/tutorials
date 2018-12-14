@@ -8,14 +8,11 @@ public class PrimitiveBundleInitialized {
     public long longValue       = 1L;
     public float floatValue     = 1.0f;
     public double doubleValue   = 1;
-    public boolean booleanValue = true;
-    public char charValue       = 'a';
     // @formatter:on
 
     public String toString() {
         return "{" + "byte: " + byteValue + ", " + "short: " + shortValue + ", "
             + "int: " + intValue + ", " + "long: " + longValue + ", "
-            + "float: " + floatValue + ", " + "double: " + doubleValue + ", "
-            + "boolean: " + booleanValue + ", " + "char: " + charValue + "}";
+            + "float: " + floatValue + ", " + "double: " + doubleValue + "}";
     }
 }

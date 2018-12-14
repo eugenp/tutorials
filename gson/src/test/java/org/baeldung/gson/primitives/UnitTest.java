@@ -141,7 +141,7 @@ public class UnitTest {
         // @formatter:off
         String json = "{\"byteValue\": null, \"shortValue\": null, "
             + "\"intValue\": null, " + "\"longValue\": null, \"floatValue\": null"
-            + ", \"doubleValue\": null" + ", \"booleanValue\": null, \"charValue\": null}";
+            + ", \"doubleValue\": null}";
         // @formatter:on
         PrimitiveBundleInitialized model = gson.fromJson(json,
             PrimitiveBundleInitialized.class);
@@ -152,8 +152,6 @@ public class UnitTest {
         assertEquals(1, model.longValue);
         assertEquals(1, model.floatValue, 0.0001);
         assertEquals(1, model.doubleValue, 0.0001);
-        assertTrue(model.booleanValue);
-        assertEquals('a', model.charValue);
     }
 
     @Test(expected = JsonSyntaxException.class) public void fromJsonEmptyString() {
@@ -181,7 +179,7 @@ public class UnitTest {
         // @formatter:off
         String json = "{\"byteValue\": \"15\", \"shortValue\": \"15\", "
             + "\"intValue\": \"15\", " + "\"longValue\": \"15\", \"floatValue\": \"15.0\""
-            + ", \"doubleValue\": \"15.0\"" + ", \"booleanValue\": \"false\", \"charValue\": \"z\"}";
+            + ", \"doubleValue\": \"15.0\"}";
         // @formatter:on
         PrimitiveBundleInitialized model = gson.fromJson(json,
             PrimitiveBundleInitialized.class);
@@ -192,8 +190,6 @@ public class UnitTest {
         assertEquals(15, model.longValue);
         assertEquals(15, model.floatValue, 0.0001);
         assertEquals(15, model.doubleValue, 0.0001);
-        assertFalse(model.booleanValue);
-        assertEquals('z', model.charValue);
     }
 
     @Test public void fromJsonBooleanFrom2ValueInteger() {
