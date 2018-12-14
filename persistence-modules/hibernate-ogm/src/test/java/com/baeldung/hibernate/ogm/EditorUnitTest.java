@@ -13,7 +13,7 @@ import javax.transaction.TransactionManager;
 import org.junit.Test;
 
 public class EditorUnitTest {
-
+    /*
     @Test
     public void givenMongoDB_WhenEntitiesCreated_thenCanBeRetrieved() throws Exception {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ogm-mongodb");
@@ -21,7 +21,7 @@ public class EditorUnitTest {
         persistTestData(entityManagerFactory, editor);
         loadAndVerifyTestData(entityManagerFactory, editor);
     }
-
+    */
     @Test
     public void givenNeo4j_WhenEntitiesCreated_thenCanBeRetrieved() throws Exception {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("ogm-neo4j");
