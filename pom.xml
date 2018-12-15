@@ -397,7 +397,6 @@
                 <module>ethereum</module>
                 
                 <module>feign</module>
-                <module>flips</module>
                 <module>flyway-cdi-extension</module>
                 
                 <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
@@ -1108,7 +1107,6 @@
                 <module>ethereum</module>
                 
                 <module>feign</module>
-                <module>flips</module>
                 <module>flyway-cdi-extension</module>
                 
                 <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
