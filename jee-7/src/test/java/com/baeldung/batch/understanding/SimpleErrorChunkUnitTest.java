@@ -1,5 +1,6 @@
 package com.baeldung.batch.understanding;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -36,10 +37,10 @@ class SimpleErrorChunkUnitTest {
         for (StepExecution stepExecution : stepExecutions) {
             if (stepExecution.getStepName()
                 .equals("errorStep")) {
-                Map<MetricType, Long> metricsMap = BatchTestHelper.getMetricsMap(stepExecution.getMetrics());
-                long skipCount = metricsMap.get(MetricType.PROCESS_SKIP_COUNT)
-                    .longValue();
-                assertTrue("Skip count=" + skipCount, skipCount == 1l );
+                jobOperator.getStepExecutions(executionId)
+                .stream()
+                .map(BatchTestHelper::getProcessSkipCount)
+                .forEach(skipCount -> assertEquals(1L, skipCount.longValue()));
             }
         }
         assertEquals(jobExecution.getBatchStatus(), BatchStatus.COMPLETED);
