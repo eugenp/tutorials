@@ -36,7 +36,7 @@ import com.baeldung.util.DummyContentUtil;
 @WebAppConfiguration
 @ContextConfiguration
 @DirtiesContext
-public class SpringDataWithSecurityUnitTest {
+public class SpringDataWithSecurityIntegrationTest {
     AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
     @Autowired
     private ServletContext servletContext;
