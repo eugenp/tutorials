@@ -51,7 +51,7 @@ public class CustomerControllerUnitTest {
     }
     
     @Test
-    public void whenGetHttpRequesttoCustomers_thenStatusOK throws Exception {
+    public void whenGetHttpRequesttoCustomers_thenStatusOK() throws Exception {
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/customers"))
                 
