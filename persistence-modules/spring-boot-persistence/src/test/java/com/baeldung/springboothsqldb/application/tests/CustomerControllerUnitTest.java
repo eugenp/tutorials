@@ -42,7 +42,7 @@ public class CustomerControllerUnitTest {
         String requestJson = objectWriter.writeValueAsString(customer);
         
         this.mockMvc
-                .perform(MockMvcRequestBuilders.post("/customer")
+                .perform(MockMvcRequestBuilders.post("/customers")
                         .contentType(MEDIA_TYPE_JSON)
                         .content(requestJson)
                 )
