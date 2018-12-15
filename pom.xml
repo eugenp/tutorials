@@ -700,7 +700,6 @@
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
-                <module>spring-rest-template</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
                 
@@ -1407,7 +1406,6 @@
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
-                <module>spring-rest-template</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
                 
