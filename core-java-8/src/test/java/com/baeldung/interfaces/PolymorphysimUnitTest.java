@@ -6,10 +6,10 @@ import com.baeldung.interfaces.polymorphysim.Square;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
-public class PolymorphysimTest {
+public class PolymorphysimUnitTest {
 
     @Test
-    public void circleAreaTest(){
+    public void whenInterfacePointsToCircle_CircleAreaMethodisBeingCalled(){
         double expectedArea = 12.566370614359172;
         Shape circle = new Circle(2);
         double actualArea = circle.area();
@@ -17,7 +17,7 @@ public class PolymorphysimTest {
     }
 
     @Test
-    public void squareAreaTest(){
+    public void whenInterfacePointsToSquare_SquareAreaMethodisBeingCalled(){
         double expectedArea = 4;
         Shape square = new Square(2);
         double actualArea = square.area();
