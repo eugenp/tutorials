@@ -21,14 +21,12 @@ public class CustomerController {
     }
     
     @PostMapping("/customers")
-    @ResponseBody
     public Customer addCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
         return customer;
     }
     
     @GetMapping(value = "/customers")
-    @ResponseBody
     public List<Customer> getCustomers() {
         return (List<Customer>) customerRepository.findAll();
     }
