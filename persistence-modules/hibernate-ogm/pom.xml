@@ -27,27 +27,11 @@
 			<artifactId>hibernate-ogm-neo4j</artifactId>
 			<version>5.4.0.Final</version>
 		</dependency>
-		<!-- Standard APIs -->
-		<dependency>
-			<groupId>org.hibernate.javax.persistence</groupId>
-			<artifactId>hibernate-jpa-2.1-api</artifactId>
-			<version>1.0.2.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.transaction</groupId>
-			<artifactId>jboss-transaction-api_1.2_spec</artifactId>
-			<version>1.0.1.Final</version>
-		</dependency>
-		<!-- Narayana JTA -->
+		<!-- Narayana JTA -->  
 		<dependency>
 			<groupId>org.jboss.narayana.jta</groupId>
 			<artifactId>narayana-jta</artifactId>
 			<version>5.5.23.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss</groupId>
-			<artifactId>jboss-transaction-spi</artifactId>
-			<version>7.1.0.Final</version>
 		</dependency>
 		<!-- Testing -->
 		<dependency>
