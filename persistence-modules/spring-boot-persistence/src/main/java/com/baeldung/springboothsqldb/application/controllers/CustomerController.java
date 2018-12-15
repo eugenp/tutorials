@@ -20,7 +20,7 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
     
-    @PostMapping("/customer")
+    @PostMapping("/customers")
     @ResponseBody
     public Customer addCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
