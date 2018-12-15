@@ -26,7 +26,7 @@ public class CustomerController {
         return customer;
     }
     
-    @GetMapping(value = "/customers")
+    @GetMapping("/customers")
     public List<Customer> getCustomers() {
         return (List<Customer>) customerRepository.findAll();
     }
