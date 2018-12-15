@@ -34,7 +34,7 @@ public class CustomerControllerUnitTest {
     }
 
     @Test
-    public void whenPostHttpRequesttoCustomer_thenJSONEntityRepresentation() throws Exception {
+    public void whenPostHttpRequesttoCustomers_thenStatusOK() throws Exception {
         Customer customer = new Customer("John", "john@domain.com");
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
@@ -51,7 +51,7 @@ public class CustomerControllerUnitTest {
     }
     
     @Test
-    public void whenGetHttpRequesttoCustomers_thenJSONContentType() throws Exception {
+    public void whenGetHttpRequesttoCustomers_thenStatusOK throws Exception {
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/customers"))
                 
