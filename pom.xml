@@ -463,6 +463,7 @@
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-data</module>
+                <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>linkrest</module>
@@ -1173,6 +1174,7 @@
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-data</module>
+                <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>linkrest</module>
