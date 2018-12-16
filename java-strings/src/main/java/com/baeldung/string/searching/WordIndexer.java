@@ -11,11 +11,14 @@ public class WordIndexer {
         String lowerCaseTextString = textString.toLowerCase();
         String lowerCaseWord = word.toLowerCase();
 
-        while(index != -1){
-            index = lowerCaseTextString.indexOf(lowerCaseWord, index + 1);
-            if (index != -1) {
-                indexes.add(index);
+        while(index != -1) {
+            index = lowerCaseTextString.indexOf(lowerCaseWord, index);
+            if (index == -1) {
+                break;
             }
+
+            indexes.add(index);
+            index++;
         }
         return indexes;
     }

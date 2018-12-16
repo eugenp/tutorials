@@ -25,7 +25,7 @@ public class SimpleDateFormatUnitTest {
 
   @Test
   public void givenSpecificDate_whenFormattedUsingDateFormat_thenCheckFormatCorrect() throws Exception {
-    DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT);
+    DateFormat formatter = DateFormat.getDateInstance(DateFormat.SHORT, Locale.US);
     assertEquals("5/24/77", formatter.format(new Date(233345223232L)));
   }
 

@@ -33,6 +33,15 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>${sqlite.version}</version>
+        </dependency>
         <!-- <dependency> <groupId>org.hsqldb</groupId> <artifactId>hsqldb</artifactId> <version>${hsqldb.version}</version> </dependency> <dependency> <groupId>org.apache.derby</groupId> 
             <artifactId>derby</artifactId> <version>${derby.version}</version> </dependency> <dependency> <groupId>org.xerial</groupId> <artifactId>sqlite-jdbc</artifactId> <version>${sqlite.version}</version> 
             </dependency> -->
@@ -41,5 +50,11 @@
     <build>
         <finalName>${project.artifactId}</finalName>
     </build>
+
+    <properties>
+        <start-class>com.baeldung.SpringDataRestApplication</start-class>
+        <sqlite.version>3.25.2</sqlite.version>
+        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
+    </properties>
 
 </project>

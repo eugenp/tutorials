@@ -8,9 +8,10 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+// needs HTTP 2 https://github.com/spring-projects/spring-framework/wiki/HTTP-2-support
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.baeldung.spring.controller.push")
+@ComponentScan(basePackages = "com.baeldung.spring.push.controller")
 public class PushConfiguration implements WebMvcConfigurer {
 
     @Bean

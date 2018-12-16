@@ -5,7 +5,8 @@
     <artifactId>spring-katharsis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-
+	<name>spring-katharsis</name>
+	
     <parent>
         <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>

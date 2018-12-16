@@ -10,3 +10,4 @@
 - [Multi-Swarm Optimization Algorithm in Java](http://www.baeldung.com/java-multi-swarm-algorithm)
 - [String Search Algorithms for Large Texts](http://www.baeldung.com/java-full-text-search-algorithms)
 - [Check If a String Contains All The Letters of The Alphabet](https://www.baeldung.com/java-string-contains-all-letters)
+- [Find the Middle Element of a Linked List](http://www.baeldung.com/java-linked-list-middle-element)
