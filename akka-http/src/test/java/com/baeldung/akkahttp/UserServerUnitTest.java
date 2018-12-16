@@ -9,13 +9,13 @@ import akka.http.javadsl.testkit.JUnitRouteTest;
 import akka.http.javadsl.testkit.TestRoute;
 import org.junit.Test;
 
-public class UserRoutesUnitTest extends JUnitRouteTest {
+public class UserServerUnitTest extends JUnitRouteTest {
 
   ActorSystem system = ActorSystem.create("helloAkkaHttpServer");
 
   ActorRef userActorRef = system.actorOf(UserActor.props(), "userActor");
 
-  TestRoute appRoute = testRoute(new UserRoutes(userActorRef).routes());
+  TestRoute appRoute = testRoute(new UserServer(userActorRef).routes());
 
   @Test
   public void whenRequest_thenActorResponds() {

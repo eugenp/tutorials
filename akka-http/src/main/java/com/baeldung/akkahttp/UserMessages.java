@@ -2,71 +2,48 @@ package com.baeldung.akkahttp;
 
 import java.io.Serializable;
 
-/**
- * Defines all messages related to User Actor
- * 
- */
-public interface UserRegistryMessages {
+public interface UserMessages {
 
-    class GetUsers implements Serializable {
+  class ActionPerformed implements Serializable {
 
-        private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
+
+    private final String description;
+
+    public ActionPerformed(String description) {
+      this.description = description;
     }
 
-    class ActionPerformed implements Serializable {
+    public String getDescription() {
+      return description;
+    }
+  }
 
-        private static final long serialVersionUID = 1L;
+  class CreateUserMessage implements Serializable {
 
-        private final String description;
+    private static final long serialVersionUID = 1L;
+    private final User user;
 
-        public ActionPerformed(String description) {
-            this.description = description;
-        }
-
-        public String getDescription() {
-            return description;
-        }
+    public CreateUserMessage(User user) {
+      this.user = user;
     }
 
-    class CreateUser implements Serializable {
+    public User getUser() {
+      return user;
+    }
+  }
 
-        private static final long serialVersionUID = 1L;
-        private final User user;
+  class GetUserMessage implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private final Long userId;
 
-        public CreateUser(User user) {
-            this.user = user;
-        }
-
-        public User getUser() {
-            return user;
-        }
+    public GetUserMessage(Long userId) {
+      this.userId = userId;
     }
 
-    class GetUser implements Serializable {
-
-        private static final long serialVersionUID = 1L;
-        private final String name;
-
-        public GetUser(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
+    public Long getUserId() {
+      return userId;
     }
+  }
 
-    class DeleteUser implements Serializable {
-
-        private static final long serialVersionUID = 1L;
-        private final String name;
-
-        public DeleteUser(String name) {
-            this.name = name;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
 }

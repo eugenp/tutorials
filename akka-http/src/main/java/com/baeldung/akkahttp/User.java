@@ -1,30 +1,26 @@
 package com.baeldung.akkahttp;
 
-/**
- * User Entity
- * 
- */
 public class User {
 
+    private final Long id;
+
     private final String name;
-    private final String address;
 
     public User() {
         this.name = "";
-        this.address = "";
+        this.id = null;
     }
 
-    public User(String name, String address) {
+    public User(Long id, String name) {
         this.name = name;
-        this.address = address;
+        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAddress() {
-        return address;
+    public Long getId() {
+        return id;
     }
-
 }
