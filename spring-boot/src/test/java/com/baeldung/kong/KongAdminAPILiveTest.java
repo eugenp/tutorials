@@ -55,7 +55,7 @@ public class KongAdminAPILiveTest {
     public void givenKongAdminAPI_whenAddAPI_thenAPIAccessibleViaKong() throws Exception {
         restTemplate.delete("http://localhost:8001/apis/stock-api");
 
-        APIObject stockAPI = new APIObject("stock-api", "stock.api", "http://localhost:8080", "/");
+        APIObject stockAPI = new APIObject("stock-api", "stock.api", "http://localhost:9090", "/");
         HttpEntity<APIObject> apiEntity = new HttpEntity<>(stockAPI);
         ResponseEntity<String> addAPIResp = restTemplate.postForEntity("http://localhost:8001/apis", apiEntity, String.class);
 
@@ -69,7 +69,7 @@ public class KongAdminAPILiveTest {
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Host", "stock.api");
-        RequestEntity<String> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI("http://localhost:8000/stock/btc"));
+        RequestEntity<String> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI("http://localhost:8000/springbootapp/stock/btc"));
         ResponseEntity<String> stockPriceResp = restTemplate.exchange(requestEntity, String.class);
 
         assertEquals("10000", stockPriceResp.getBody());
@@ -126,22 +126,26 @@ public class KongAdminAPILiveTest {
             givenKongAdminAPI_whenAddAPIConsumer_thenAdded();
         }
 
+        PluginObject authPlugin = new PluginObject("key-auth");
+        ResponseEntity<String> enableAuthResp = restTemplate.postForEntity("http://localhost:8001/apis/stock-api/plugins", new HttpEntity<>(authPlugin), String.class);
+        assertTrue(HttpStatus.CREATED == enableAuthResp.getStatusCode() || HttpStatus.CONFLICT == enableAuthResp.getStatusCode());
+
         final String consumerKey = "eugenp.pass";
         KeyAuthObject keyAuth = new KeyAuthObject(consumerKey);
         ResponseEntity<String> keyAuthResp = restTemplate.postForEntity("http://localhost:8001/consumers/eugenp/key-auth", new HttpEntity<>(keyAuth), String.class);
-
+        
         assertTrue(HttpStatus.CREATED == keyAuthResp.getStatusCode() || HttpStatus.CONFLICT == keyAuthResp.getStatusCode());
 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Host", "stock.api");
         headers.set("apikey", consumerKey);
-        RequestEntity<String> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI("http://localhost:8000/stock/btc"));
+        RequestEntity<String> requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI("http://localhost:8000/springbootapp/stock/btc"));
         ResponseEntity<String> stockPriceResp = restTemplate.exchange(requestEntity, String.class);
 
         assertEquals("10000", stockPriceResp.getBody());
 
         headers.set("apikey", "wrongpass");
-        requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI("http://localhost:8000/stock/btc"));
+        requestEntity = new RequestEntity<>(headers, HttpMethod.GET, new URI("http://localhost:8000/springbootapp/stock/btc"));
         stockPriceResp = restTemplate.exchange(requestEntity, String.class);
         assertEquals(HttpStatus.FORBIDDEN, stockPriceResp.getStatusCode());
     }

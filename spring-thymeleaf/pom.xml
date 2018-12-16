@@ -5,6 +5,7 @@
     <artifactId>spring-thymeleaf</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
+	<name>spring-thymeleaf</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

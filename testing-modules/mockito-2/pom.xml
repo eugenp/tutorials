@@ -5,7 +5,7 @@
     <artifactId>mockito-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>mockito-2-with-java8</name>
+    <name>mockito-2</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

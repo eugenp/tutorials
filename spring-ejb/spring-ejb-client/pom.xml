@@ -12,7 +12,7 @@
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>
         <artifactId>spring-ejb</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 	
 	<dependencyManagement>
@@ -36,14 +36,12 @@
         <dependency>
             <groupId>org.wildfly</groupId>
             <artifactId>wildfly-ejb-client-bom</artifactId>
-            <version>${wildfly-ejb.version}</version>
             <type>pom</type>
         </dependency>
 
         <dependency>
             <groupId>com.baeldung.spring.ejb</groupId>
-            <artifactId>ejb-remote-for-spring</artifactId>
-            <version>${ejb-remote-for-spring.version}</version>
+            <artifactId>spring-ejb-remote</artifactId>
             <type>ejb</type>
         </dependency>
 
@@ -69,10 +67,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <properties>
-        <ejb-remote-for-spring.version>1.0.1</ejb-remote-for-spring.version>
-        <wildfly-ejb.version>12.0.0.Final</wildfly-ejb.version>
-    </properties>
 
 </project>

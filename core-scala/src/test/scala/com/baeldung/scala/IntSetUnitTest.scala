@@ -1,14 +1,12 @@
 package com.baeldung.scala
 
-import scala.Range
-
 import org.junit.Assert.assertFalse
 import org.junit.Test
 
 class IntSetUnitTest {
 
   @Test
-  def givenSetof1To10_whenContains11Called_thenFalse = {
+  def givenSetof1To10_whenContains11Called_thenFalse() = {
 
     // Set up a set containing integers 1 to 10.
     val set1To10 =
