@@ -18,4 +18,3 @@
 - [Apache Commons Collections MapUtils](http://www.baeldung.com/apache-commons-map-utils)
 - [Histograms with Apache Commons Frequency](http://www.baeldung.com/apache-commons-frequency)
 - [An Introduction to Apache Commons Lang 3](https://www.baeldung.com/java-commons-lang-3)
-- [Implementing a FTP-Client in Java](http://www.baeldung.com/java-ftp-client)

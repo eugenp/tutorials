@@ -56,6 +56,11 @@
             <version>${commons-lang.version}</version>
         </dependency>
         <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>${commons-net.version}</version>
+        </dependency>
+        <dependency>
             <groupId>tec.units</groupId>
             <artifactId>unit-ri</artifactId>
             <version>${unit-ri.version}</version>
@@ -664,6 +669,12 @@
             <version>${derive4j.version}</version>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.mockftpserver</groupId>
+            <artifactId>MockFtpServer</artifactId>
+            <version>${mockftpserver.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -888,6 +899,8 @@
         <maven-bundle-plugin.version>3.3.0</maven-bundle-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <derive4j.version>1.1.0</derive4j.version>
+        <mockftpserver.version>2.7.1</mockftpserver.version>
+        <commons-net.version>3.6</commons-net.version>
     </properties>
 
 </project>

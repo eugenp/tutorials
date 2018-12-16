@@ -83,12 +83,6 @@
             <version>${org.hamcrest.java-hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mockftpserver</groupId>
-            <artifactId>MockFtpServer</artifactId>
-            <version>${mockftpserver.version}</version>
-            <scope>test</scope>
-        </dependency>
 
     </dependencies>
 
@@ -110,7 +104,6 @@
         <commons-net.version>3.6</commons-net.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <common-math3.version>3.6.1</common-math3.version>
-        <mockftpserver.version>2.7.1</mockftpserver.version>
     </properties>
 
 </project>
