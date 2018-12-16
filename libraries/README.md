@@ -66,6 +66,7 @@
 - [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
 - [An Introduction to SuanShu](https://www.baeldung.com/suanshu)
 - [Implementing a FTP-Client in Java](http://www.baeldung.com/java-ftp-client)
+- [Introduction to Functional Java](https://www.baeldung.com/java-functional-library
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
