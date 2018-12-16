@@ -3,13 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung.spring</groupId>
-    <artifactId>cloudfunction-aws</artifactId>
+    <artifactId>spring-cloud-functions</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <name>cloudfunction-aws</name>
+    <name>spring-cloud-functions</name>
     <description>Demo project for Spring Cloud Function</description>
 
     <parent>

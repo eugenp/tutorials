@@ -7,9 +7,9 @@ package com.baeldung.scala
  *
  */
 object Utils {
-  def average(x : Double, y : Double) = (x + y) / 2
+  def average(x : Double, y : Double): Double = (x + y) / 2
 
-  def randomLessThan(d : Double) = {
+  def randomLessThan(d : Double): Double = {
     var random = 0d
     do {
       random = Math.random()

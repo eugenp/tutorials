@@ -122,13 +122,13 @@
 
     <properties>
         <!-- util -->
-        <commons-lang3.version>3.5</commons-lang3.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
         <commons-codec.version>1.10</commons-codec.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <jmh-core.version>1.19</jmh-core.version>
         <icu4j.version>61.1</icu4j.version>
-        <guava.version>26.0-jre</guava.version>
+        <guava.version>27.0.1-jre</guava.version>
     </properties>
 
 </project>
