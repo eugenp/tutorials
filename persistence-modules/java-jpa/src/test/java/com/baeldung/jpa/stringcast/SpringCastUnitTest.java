@@ -3,10 +3,7 @@ package com.baeldung.jpa.stringcast;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -22,18 +19,18 @@ public class SpringCastUnitTest {
         em = emFactory.createEntityManager();
 
         // insert an object into the db
-        DummyEntity dummyEntity = new DummyEntity();
-        dummyEntity.setText("text");
+        Message message = new Message();
+        message.setText("text");
 
         EntityTransaction tr = em.getTransaction();
         tr.begin();
-        em.persist(dummyEntity);
+        em.persist(message);
         tr.commit();
     }
 
     @Test(expected = ClassCastException.class)
     public void givenExecutorNoCastCheck_whenQueryReturnsOneColumn_thenClassCastThrown() {
-        List<String[]> results = QueryExecutor.executeNativeQueryNoCastCheck("select text from dummy", em);
+        List<String[]> results = QueryExecutor.executeNativeQueryNoCastCheck("select text from message", em);
 
         // fails
         for (String[] row : results) {
@@ -43,13 +40,13 @@ public class SpringCastUnitTest {
 
     @Test
     public void givenExecutorWithCastCheck_whenQueryReturnsOneColumn_thenNoClassCastThrown() {
-        List<String[]> results = QueryExecutor.executeNativeQueryWithCastCheck("select text from dummy", em);
+        List<String[]> results = QueryExecutor.executeNativeQueryWithCastCheck("select text from message", em);
         assertEquals("text", results.get(0)[0]);
     }
 
     @Test
     public void givenExecutorGeneric_whenQueryReturnsOneColumn_thenNoClassCastThrown() {
-        List<DummyEntity> results = QueryExecutor.executeNativeQueryGeneric("select text from dummy", "textQueryMapping", em);
+        List<Message> results = QueryExecutor.executeNativeQueryGeneric("select text from message", "textQueryMapping", em);
         assertEquals("text", results.get(0).getText());
     }
 

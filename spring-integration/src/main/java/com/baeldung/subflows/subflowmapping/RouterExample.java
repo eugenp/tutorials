@@ -1,15 +1,11 @@
 package com.baeldung.subflows.subflowmapping;
 
-import java.util.Arrays;
 import java.util.Collection;
-
-import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.integration.annotation.Gateway;
 import org.springframework.integration.annotation.IntegrationComponentScan;
 import org.springframework.integration.annotation.MessagingGateway;
-import org.springframework.integration.channel.DirectChannel;
+import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.dsl.IntegrationFlow;
 
@@ -18,44 +14,49 @@ import org.springframework.integration.dsl.IntegrationFlow;
 public class RouterExample {
     @MessagingGateway
     public interface NumbersClassifier {
-        @Gateway(requestChannel = "flow.input")
-        void flow(Collection<Integer> numbers);
+        @Gateway(requestChannel = "classify.input")
+        void classify(Collection<Integer> numbers);
     }
 
     @Bean
-    DirectChannel multipleof3Channel() {
-        return new DirectChannel();
+    QueueChannel multipleofThreeChannel() {
+        return new QueueChannel();
     }
 
     @Bean
-    DirectChannel remainderIs1Channel() {
-        return new DirectChannel();
+    QueueChannel remainderIsOneChannel() {
+        return new QueueChannel();
     }
 
     @Bean
-    DirectChannel remainderIs2Channel() {
-        return new DirectChannel();
+    QueueChannel remainderIsTwoChannel() {
+        return new QueueChannel();
+    }
+
+    boolean isMultipleOfThree(Integer number) {
+        return number % 3 == 0;
+    }
+
+    boolean isRemainderOne(Integer number) {
+        return number % 3 == 1;
+    }
+
+    boolean isRemainderTwo(Integer number) {
+        return number % 3 == 2;
     }
 
     @Bean
-    public IntegrationFlow flow() {
-        return f -> f.split()
-            .<Integer, Integer> route(p -> p % 3, m -> m.channelMapping(0, "multipleof3Channel")
-                .subFlowMapping(1, sf -> sf.channel("remainderIs1Channel"))
-                .subFlowMapping(2, sf -> sf.<Integer> handle((p, h) -> p)))
-            .channel("remainderIs2Channel");
+    public IntegrationFlow classify() {
+        return flow -> flow.split()
+            .<Integer, Integer> route(number -> number % 3, 
+                mapping -> mapping
+                  .channelMapping(0, "multipleofThreeChannel")
+                  .subFlowMapping(1, subflow -> subflow.channel("remainderIsOneChannel"))
+                  .subFlowMapping(2, subflow -> subflow
+                      .<Integer> handle((payload, headers) -> {
+                          // do extra work on the payload
+                         return payload;
+                      }))).channel("remainderIsTwoChannel");
     }
 
-    public static void main(String[] args) {
-        final ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(RouterExample.class);
-        DirectChannel multipleof3Channel = ctx.getBean("multipleof3Channel", DirectChannel.class);
-        multipleof3Channel.subscribe(x -> System.out.println("multipleof3Channel: " + x));
-        DirectChannel remainderIs1Channel = ctx.getBean("remainderIs1Channel", DirectChannel.class);
-        remainderIs1Channel.subscribe(x -> System.out.println("remainderIs1Channel: " + x));
-        DirectChannel remainderIs2Channel = ctx.getBean("remainderIs2Channel", DirectChannel.class);
-        remainderIs2Channel.subscribe(x -> System.out.println("remainderIs2Channel: " + x));
-        ctx.getBean(NumbersClassifier.class)
-            .flow(Arrays.asList(1, 2, 3, 4, 5, 6));
-        ctx.close();
-    }
 }

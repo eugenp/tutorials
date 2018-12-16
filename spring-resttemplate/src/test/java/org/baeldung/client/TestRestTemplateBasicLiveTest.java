@@ -58,9 +58,9 @@ public class TestRestTemplateBasicLiveTest {
 
     @Test
     public void givenRestTemplateWrapperWithCredentials_whenSendGetForEntity_thenStatusOk() {
-        RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder().basicAuthentication("user", "passwd");
+        RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         restTemplateBuilder.configure(restTemplate);
-        TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder);
+        TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder, "user", "passwd");
         ResponseEntity<String> response = testRestTemplate.getForEntity(URL_SECURED_BY_AUTHENTICATION,
                 String.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
