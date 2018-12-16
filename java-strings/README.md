@@ -35,6 +35,7 @@
 - [String Not Empty Test Assertions in Java](https://www.baeldung.com/java-assert-string-not-empty)
 - [String Performance Hints](https://www.baeldung.com/java-string-performance)
 - [Using indexOf to Find All Occurrences of a Word in a String](https://www.baeldung.com/java-indexOf-find-string-occurrences)
+- [Convert String to Byte Array and Reverse in Java](https://www.baeldung.com/java-string-to-byte-array)
 - [Java Base64 Encoding and Decoding](https://www.baeldung.com/java-base64-encode-and-decode)
 - [Generate a Secure Random Password in Java](https://www.baeldung.com/java-generate-secure-password)
 - [Removing Repeated Characters from a String](https://www.baeldung.com/java-remove-repeated-char)
