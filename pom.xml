@@ -486,7 +486,6 @@
                 <module>msf4j</module>
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
-                <module>mvn-wrapper</module>
                 <module>mybatis</module>
                 
                 <module>noexception</module>
@@ -674,7 +673,6 @@
                 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                <module>spring-mustache</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
@@ -683,7 +681,6 @@
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
-                <module>spring-mybatis</module>
                 
                 <module>spring-protobuf</module>
                 
@@ -694,7 +691,6 @@
                 <module>spring-remoting</module>
                 <module>spring-rest</module>
                 <module>spring-rest-angular</module>
-                <module>spring-rest-embedded-tomcat</module>
                 <module>spring-rest-full</module>
                 <module>spring-rest-hal-browser</module>
                 <module>spring-rest-query-language</module>
@@ -752,7 +748,6 @@
                 
                 <module>spring-zuul</module>
                 
-                <module>sse-jaxrs</module>
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
@@ -903,7 +898,6 @@
 				<module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
 				<module>spring-rest</module>
 				<module>spring-rest-angular</module>
-				<module>spring-rest-embedded-tomcat</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-simple</module>
 				<module>spring-resttemplate</module>
@@ -1196,7 +1190,6 @@
                 <module>msf4j</module>
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
-                <module>mvn-wrapper</module>
                 <module>mybatis</module>
                 
                 <module>noexception</module>
@@ -1380,7 +1373,6 @@
                 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                <module>spring-mustache</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
@@ -1389,7 +1381,6 @@
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
-                <module>spring-mybatis</module>
                 
                 <module>spring-protobuf</module>
                 
@@ -1400,7 +1391,6 @@
                 <module>spring-remoting</module>
                 <module>spring-rest</module>
                 <module>spring-rest-angular</module>
-                <module>spring-rest-embedded-tomcat</module>
                 <module>spring-rest-full</module>
                 <module>spring-rest-hal-browser</module>
                 <module>spring-rest-query-language</module>
@@ -1458,7 +1448,6 @@
                 
                 <module>spring-zuul</module>
                 
-                <module>sse-jaxrs</module>
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
