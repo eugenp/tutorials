@@ -24,3 +24,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Get and Post Lists of Objects with RestTemplate](http://www.baeldung.com/spring-rest-template-list)
 - [How to Set a Header on a Response with Spring 5](http://www.baeldung.com/spring-response-header)
 - [Spring’s RequestBody and ResponseBody Annotations](https://www.baeldung.com/spring-request-response-body)
+- [Uploading MultipartFile with Spring RestTemplate](http://www.baeldung.com/spring-rest-template-multipart-upload)
