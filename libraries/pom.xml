@@ -823,7 +823,7 @@
         <jnats.version>1.0</jnats.version>
 
         <httpclient.version>4.5.3</httpclient.version>
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
         <serenity.jbehave.version>1.41.0</serenity.jbehave.version>

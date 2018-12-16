@@ -68,7 +68,7 @@
     </dependencies>
 
     <properties>
-        <jackson.library>2.9.2</jackson.library>
+        <jackson.library>2.9.7</jackson.library>
         <servlet.version>4.0.0</servlet.version>
         <tomcat.version>9.0.1</tomcat.version>
         <httpclient.version>4.5.3</httpclient.version>
