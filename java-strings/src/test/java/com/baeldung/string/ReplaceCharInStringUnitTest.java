@@ -3,7 +3,7 @@ package com.baeldung.string;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class ReplaceCharInStringTest {
+public class ReplaceCharInStringUnitTest {
     private ReplaceCharacterInString characterInString = new ReplaceCharacterInString();
 
     @Test
