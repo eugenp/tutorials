@@ -7,17 +7,17 @@ public class ReplaceCharInStringUnitTest {
     private ReplaceCharacterInString characterInString = new ReplaceCharacterInString();
 
     @Test
-    public void whenReplaceCharAtIndex_UsingSubstring_thenSuccess(){
+    public void whenReplaceCharAtIndexUsingSubstring_thenSuccess(){
         assertEquals("abcme",characterInString.replaceCharSubstring("abcde",'m',3));
     }
 
     @Test
-    public void whenReplaceCharAtIndex_UsingStringBuilder_thenSuccess(){
+    public void whenReplaceCharAtIndexUsingStringBuilder_thenSuccess(){
         assertEquals("abcme",characterInString.replaceCharStringBuilder("abcde",'m',3));
     }
 
     @Test
-    public void whenReplaceCharAtIndex_UsingStringBuffer_thenSuccess(){
+    public void whenReplaceCharAtIndexUsingStringBuffer_thenSuccess(){
         assertEquals("abcme",characterInString.replaceCharStringBuffer("abcde",'m',3));
     }
 }
