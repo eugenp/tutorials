@@ -2,7 +2,7 @@
 
 ## Java Strings Cookbooks and Examples
 
-### Relevant Articles: 
+### Relevant Articles:
 - [String Operations with Java Streams](http://www.baeldung.com/java-stream-operations-on-strings)
 - [Converting String to Stream of chars](http://www.baeldung.com/java-string-to-stream)
 - [Java 8 StringJoiner](http://www.baeldung.com/java-string-joiner)
@@ -35,6 +35,7 @@
 - [String Not Empty Test Assertions in Java](https://www.baeldung.com/java-assert-string-not-empty)
 - [String Performance Hints](https://www.baeldung.com/java-string-performance)
 - [Using indexOf to Find All Occurrences of a Word in a String](https://www.baeldung.com/java-indexOf-find-string-occurrences)
+- [Convert String to Byte Array and Reverse in Java](https://www.baeldung.com/java-string-to-byte-array)
 - [Java Base64 Encoding and Decoding](https://www.baeldung.com/java-base64-encode-and-decode)
 - [Generate a Secure Random Password in Java](https://www.baeldung.com/java-generate-secure-password)
 - [Removing Repeated Characters from a String](https://www.baeldung.com/java-remove-repeated-char)
@@ -43,4 +44,3 @@
 - [Pad a String with Zeros or Spaces in Java](https://www.baeldung.com/java-pad-string)
 - [Adding a Newline Character to a String in Java](https://www.baeldung.com/java-string-newline)
 - [Remove or Replace part of a String in Java](https://www.baeldung.com/java-remove-replace-string-part)
-
