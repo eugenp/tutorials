@@ -3,7 +3,7 @@ package com.baeldung.hexagonal;
 //core application interface
 interface HatList {
 
-    HatStore getHatStore();
+	HatStore getHatStore();
 
-    void setHatPersistence(HatPersistence hatPersistence);
+	void setHatPersistence(HatPersistence hatPersistence);
 }
