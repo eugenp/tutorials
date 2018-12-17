@@ -5,17 +5,19 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.stream.IntStream;
 
 import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
 
 public class ArraySortUnitTest {
     private Employee[] employees;
     private int[] numbers;
     private String[] strings;
+
+    private Employee john = new Employee(6, "John");
+    private Employee mary = new Employee(3, "Mary");
+    private Employee david = new Employee(4, "David");
 
     @Before
     public void setup() {
@@ -25,13 +27,7 @@ public class ArraySortUnitTest {
     }
 
     private void createEmployeesArray() {
-        employees = new Employee[5];
-        Employee employee;
-        for (int i = 1; i <= employees.length; i++) {
-            employee = new Employee(i, "Emp" + i);
-            employees[i - 1] = employee;
-        }
-        Collections.shuffle(Arrays.asList(employees));
+        employees = new Employee[]{john, mary, david};
     }
 
     private void createNumbersArray() {
@@ -74,45 +70,21 @@ public class ArraySortUnitTest {
     public void givenObjectArray_whenSortingAscending_thenCorrectlySorted() {
         Arrays.sort(employees, Comparator.comparing(Employee::getName));
 
-        Employee[] sorted = new Employee[]{
-          new Employee(1, "Emp1"),
-          new Employee(2, "Emp2"),
-          new Employee(3, "Emp3"),
-          new Employee(4, "Emp4"),
-          new Employee(5, "Emp5")
-        };
-
-        assertEquals(sorted[0].getId(), employees[0].getId());
+        assertArrayEquals(new Employee[]{david, john, mary}, employees);
     }
 
     @Test
     public void givenObjectArray_whenSortingDescending_thenCorrectlySorted() {
         Arrays.sort(employees, Comparator.comparing(Employee::getName).reversed());
 
-        Employee[] sorted = new Employee[]{
-          new Employee(5, "Emp5"),
-          new Employee(4, "Emp4"),
-          new Employee(3, "Emp3"),
-          new Employee(2, "Emp2"),
-          new Employee(1, "Emp1")
-        };
-
-        assertEquals(sorted[0].getId(), employees[0].getId());
+        assertArrayEquals(new Employee[]{mary, john, david}, employees);
     }
 
     @Test
     public void givenObjectArray_whenSortingMultipleAttributesAscending_thenCorrectlySorted() {
         Arrays.sort(employees, Comparator.comparing(Employee::getName).thenComparing(Employee::getId));
 
-        Employee[] sorted = new Employee[]{
-          new Employee(1, "Emp1"),
-          new Employee(2, "Emp2"),
-          new Employee(3, "Emp3"),
-          new Employee(4, "Emp4"),
-          new Employee(5, "Emp5")
-        };
-
-        assertEquals(sorted[0].getId(), employees[0].getId());
+        assertArrayEquals(new Employee[]{david, john, mary}, employees);
     }
 
 }
