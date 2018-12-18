@@ -9,8 +9,8 @@ import org.axonframework.spring.stereotype.Aggregate;
 
 import com.baeldung.axon.coreapi.commands.CreateMessageCommand;
 import com.baeldung.axon.coreapi.commands.MarkReadMessageCommand;
-import com.baeldung.axon.events.MessageCreatedEvent;
-import com.baeldung.axon.events.MessageReadEvent;
+import com.baeldung.axon.coreapi.events.MessageCreatedEvent;
+import com.baeldung.axon.coreapi.events.MessageReadEvent;
 
 @Aggregate
 public class MessagesAggregate {

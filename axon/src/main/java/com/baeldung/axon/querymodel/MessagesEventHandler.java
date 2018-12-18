@@ -3,8 +3,8 @@ package com.baeldung.axon.querymodel;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.axon.events.MessageCreatedEvent;
-import com.baeldung.axon.events.MessageReadEvent;
+import com.baeldung.axon.coreapi.events.MessageCreatedEvent;
+import com.baeldung.axon.coreapi.events.MessageReadEvent;
 
 @Service
 public class MessagesEventHandler {

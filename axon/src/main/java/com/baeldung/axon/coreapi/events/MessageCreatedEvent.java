@@ -1,4 +1,4 @@
-package com.baeldung.axon.events;
+package com.baeldung.axon.coreapi.events;
 
 import java.util.Objects;
 
