@@ -1,4 +1,4 @@
-package com.baeldung.axon.aggregates;
+package com.baeldung.axon.commandmodel;
 
 import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 

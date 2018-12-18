@@ -1,4 +1,4 @@
-package com.baeldung.axon;
+package com.baeldung.axon.commandmodel;
 
 import java.util.UUID;
 
@@ -6,7 +6,6 @@ import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.*;
 
-import com.baeldung.axon.aggregates.MessagesAggregate;
 import com.baeldung.axon.commands.CreateMessageCommand;
 import com.baeldung.axon.commands.MarkReadMessageCommand;
 import com.baeldung.axon.events.MessageCreatedEvent;
