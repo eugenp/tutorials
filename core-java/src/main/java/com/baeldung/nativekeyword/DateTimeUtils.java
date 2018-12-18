@@ -5,6 +5,6 @@ public class DateTimeUtils {
     public native String getSystemTime();
 
     static {
-        System.loadLibrary("DateTimeUtils");
+        System.loadLibrary("nativedatetimeutils");
     }
 }
