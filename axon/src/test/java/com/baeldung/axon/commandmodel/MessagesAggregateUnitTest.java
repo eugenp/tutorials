@@ -11,7 +11,7 @@ import com.baeldung.axon.coreapi.commands.MarkReadMessageCommand;
 import com.baeldung.axon.coreapi.events.MessageCreatedEvent;
 import com.baeldung.axon.coreapi.events.MessageReadEvent;
 
-public class MessagesAggregateTest {
+public class MessagesAggregateUnitTest {
 
     private FixtureConfiguration<MessagesAggregate> fixture;
 
