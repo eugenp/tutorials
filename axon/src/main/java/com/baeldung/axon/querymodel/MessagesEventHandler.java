@@ -1,4 +1,4 @@
-package com.baeldung.axon.eventhandlers;
+package com.baeldung.axon.querymodel;
 
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.stereotype.Service;
