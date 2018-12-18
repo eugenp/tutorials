@@ -1,10 +1,12 @@
 package com.baeldung.axon.eventhandlers;
 
-import com.baeldung.axon.events.MessageReadEvent;
-import com.baeldung.axon.events.MessageCreatedEvent;
 import org.axonframework.eventhandling.EventHandler;
+import org.springframework.stereotype.Service;
 
+import com.baeldung.axon.events.MessageCreatedEvent;
+import com.baeldung.axon.events.MessageReadEvent;
 
+@Service
 public class MessagesEventHandler {
 
     @EventHandler
