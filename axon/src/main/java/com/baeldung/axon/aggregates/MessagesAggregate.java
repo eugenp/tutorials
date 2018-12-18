@@ -1,16 +1,18 @@
 package com.baeldung.axon.aggregates;
 
+import static org.axonframework.modelling.command.AggregateLifecycle.apply;
+
+import org.axonframework.commandhandling.CommandHandler;
+import org.axonframework.eventsourcing.EventSourcingHandler;
+import org.axonframework.modelling.command.AggregateIdentifier;
+import org.axonframework.spring.stereotype.Aggregate;
+
 import com.baeldung.axon.commands.CreateMessageCommand;
 import com.baeldung.axon.commands.MarkReadMessageCommand;
 import com.baeldung.axon.events.MessageCreatedEvent;
 import com.baeldung.axon.events.MessageReadEvent;
-import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.commandhandling.model.AggregateIdentifier;
-import org.axonframework.eventhandling.EventHandler;
 
-import static org.axonframework.commandhandling.model.AggregateLifecycle.apply;
-
-
+@Aggregate
 public class MessagesAggregate {
 
     @AggregateIdentifier
@@ -24,13 +26,13 @@ public class MessagesAggregate {
         apply(new MessageCreatedEvent(command.getId(), command.getText()));
     }
 
-    @EventHandler
-    public void on(MessageCreatedEvent event) {
-        this.id = event.getId();
+    @CommandHandler
+    public void handle(MarkReadMessageCommand command) {
+        apply(new MessageReadEvent(id));
     }
 
-    @CommandHandler
-    public void markRead(MarkReadMessageCommand command) {
-        apply(new MessageReadEvent(id));
+    @EventSourcingHandler
+    public void on(MessageCreatedEvent event) {
+        this.id = event.getId();
     }
 }
