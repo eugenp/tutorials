@@ -6,8 +6,8 @@ import org.axonframework.test.aggregate.AggregateTestFixture;
 import org.axonframework.test.aggregate.FixtureConfiguration;
 import org.junit.*;
 
-import com.baeldung.axon.commands.CreateMessageCommand;
-import com.baeldung.axon.commands.MarkReadMessageCommand;
+import com.baeldung.axon.coreapi.commands.CreateMessageCommand;
+import com.baeldung.axon.coreapi.commands.MarkReadMessageCommand;
 import com.baeldung.axon.events.MessageCreatedEvent;
 import com.baeldung.axon.events.MessageReadEvent;
 

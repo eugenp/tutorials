@@ -1,20 +1,26 @@
-package com.baeldung.axon.commands;
+package com.baeldung.axon.coreapi.commands;
 
 import java.util.Objects;
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
-public class MarkReadMessageCommand {
+public class CreateMessageCommand {
 
     @TargetAggregateIdentifier
     private final String id;
+    private final String text;
 
-    public MarkReadMessageCommand(String id) {
+    public CreateMessageCommand(String id, String text) {
         this.id = id;
+        this.text = text;
     }
 
     public String getId() {
         return id;
+    }
+
+    public String getText() {
+        return text;
     }
 
     @Override
@@ -25,12 +31,12 @@ public class MarkReadMessageCommand {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MarkReadMessageCommand that = (MarkReadMessageCommand) o;
-        return Objects.equals(id, that.id);
+        CreateMessageCommand that = (CreateMessageCommand) o;
+        return Objects.equals(id, that.id) && Objects.equals(text, that.text);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, text);
     }
 }
