@@ -27,7 +27,7 @@ import com.mongodb.MongoCommandException;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class MongoTransactionalIntegrationTest {
+public class MongoTransactionalLiveTest {
 
     @Autowired
     private MongoTemplate mongoTemplate;
