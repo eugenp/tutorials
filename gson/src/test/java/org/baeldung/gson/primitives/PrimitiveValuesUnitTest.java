@@ -8,8 +8,8 @@ import java.lang.reflect.Type;
 
 import static junit.framework.TestCase.*;
 
-public class UnitTest {
-    @Test public void toJsonAllPrimitives() {
+public class PrimitiveValuesUnitTest {
+    @Test public void whenSerializingToJSON_thenShouldCreateJSON() {
         PrimitiveBundle primitiveBundle = new PrimitiveBundle();
 
         // @formatter:off
@@ -32,7 +32,8 @@ public class UnitTest {
         assertEquals(expected, gson.toJson(primitiveBundle));
     }
 
-    @Test(expected = IllegalArgumentException.class) public void toJsonInfinity() {
+    @Test(expected = IllegalArgumentException.class) public void
+    whenSerializingInfinity_thenShouldRaiseAnException() {
         InfinityValuesExample model = new InfinityValuesExample();
         model.negativeInfinity = Float.NEGATIVE_INFINITY;
         model.positiveInfinity = Float.POSITIVE_INFINITY;
@@ -42,7 +43,8 @@ public class UnitTest {
         gson.toJson(model);
     }
 
-    @Test(expected = IllegalArgumentException.class) public void toJsonNaN() {
+    @Test(expected = IllegalArgumentException.class) public void
+        whenSerializingNaN_thenShouldRaiseAnException() {
         FloatExample model = new FloatExample();
         model.value = Float.NaN;
 
@@ -50,7 +52,7 @@ public class UnitTest {
         gson.toJson(model);
     }
 
-    @Test public void fromJsonAllPrimitives() {
+    @Test public void whenDeserializingFromJSON_thenShouldParseTheValueInTheString() {
         String json = "{\"byteValue\": 17, \"shortValue\": 3, \"intValue\": 3, "
             + "\"longValue\": 3, \"floatValue\": 3.5" + ", \"doubleValue\": 3.5"
             + ", \"booleanValue\": true, \"charValue\": \"a\"}";
@@ -70,14 +72,14 @@ public class UnitTest {
         // @formatter:on
     }
 
-    @Test public void fromJsonPrecissionMismatch() {
+    @Test public void whenDeserializingHighPrecissionNumberIntoFloat_thenShouldPerformRounding() {
         String json = "{\"value\": 12.123425589123456}";
         Gson gson = new Gson();
         FloatExample model = gson.fromJson(json, FloatExample.class);
         assertEquals(12.123426f, model.value, 0.000001);
     }
 
-    @Test public void fromJsonPrecissionMismatchForDouble() {
+    @Test public void whenDeserializingHighPrecissiongNumberIntoDouble_thenShouldPerformRounding() {
         String json = "{\"value\": 12.123425589123556}";
         Gson gson = new Gson();
         DoubleExample model = gson.fromJson(json, DoubleExample.class);
@@ -85,7 +87,7 @@ public class UnitTest {
     }
 
 
-    @Test public void fromJsonOverflow() {
+    @Test public void whenDeserializingValueThatOverflows_thenShouldOverflowSilently() {
         Gson gson = new Gson();
         String json = "{\"value\": \"300\"}";
         ByteExample model = gson.fromJson(json, ByteExample.class);
@@ -93,7 +95,7 @@ public class UnitTest {
         assertEquals(44, model.value);
     }
 
-    @Test public void fromJsonRealToByte() {
+    @Test public void whenDeserializingRealIntoByte_thenShouldRaiseAnException() {
         Gson gson = new Gson();
         String json = "{\"value\": 2.3}";
         try {
@@ -107,7 +109,7 @@ public class UnitTest {
         fail();
     }
 
-    @Test public void fromJsonRealToLong() {
+    @Test public void whenDeserializingRealIntoLong_thenShouldRaiseAnException() {
         Gson gson = new Gson();
         String json = "{\"value\": 2.3}";
         try {
@@ -121,14 +123,14 @@ public class UnitTest {
         fail();
     }
 
-    @Test public void fromJsonRealToLongEndingIn0() {
+    @Test public void whenDeserializingRealWhoseDecimalPartIs0_thenShouldParseItCorrectly() {
         Gson gson = new Gson();
         String json = "{\"value\": 2.0}";
         LongExample model = gson.fromJson(json, LongExample.class);
         assertEquals(2, model.value);
     }
 
-    @Test public void fromJsonUnicodeChar() {
+    @Test public void whenDeserializingUnicodeChar_thenShouldParseItCorrectly() {
         Gson gson = new Gson();
         String json = "{\"value\": \"\\u00AE\"}";
         CharExample model = gson.fromJson(json, CharExample.class);
@@ -136,7 +138,7 @@ public class UnitTest {
         assertEquals('\u00AE', model.value);
     }
 
-    @Test public void fromJsonNull() {
+    @Test public void whenDeserializingNullValues_thenShouldIgnoreThoseFields() {
         Gson gson = new Gson();
         // @formatter:off
         String json = "{\"byteValue\": null, \"shortValue\": null, "
@@ -154,7 +156,8 @@ public class UnitTest {
         assertEquals(1, model.doubleValue, 0.0001);
     }
 
-    @Test(expected = JsonSyntaxException.class) public void fromJsonEmptyString() {
+    @Test(expected = JsonSyntaxException.class) public void
+    whenDeserializingTheEmptyString_thenShouldRaiseAnException() {
         Gson gson = new Gson();
         // @formatter:off
         String json = "{\"byteValue\": \"\", \"shortValue\": \"\", "
@@ -164,7 +167,7 @@ public class UnitTest {
         gson.fromJson(json, PrimitiveBundleInitialized.class);
     }
 
-    @Test public void fromJsonEmptyStringToChar() {
+    @Test public void whenDeserializingTheEmptyStringIntoChar_thenShouldHaveTheEmtpyChar() {
         Gson gson = new Gson();
         // @formatter:off
         String json = "{\"charValue\": \"\"}";
@@ -174,7 +177,7 @@ public class UnitTest {
         assertEquals(Character.MIN_VALUE, model.value);
     }
 
-    @Test public void fromJsonValidValueWithinString() {
+    @Test public void whenDeserializingValidValueAppearingInAString_thenShouldParseTheValue() {
         Gson gson = new Gson();
         // @formatter:off
         String json = "{\"byteValue\": \"15\", \"shortValue\": \"15\", "
@@ -192,7 +195,7 @@ public class UnitTest {
         assertEquals(15, model.doubleValue, 0.0001);
     }
 
-    @Test public void fromJsonBooleanFrom2ValueInteger() {
+    @Test public void whenDeserializingABooleanFrom0Or1Integer_thenShouldRaiseAnException() {
         String json = "{\"value\": 1}";
         Gson gson = new Gson();
 
@@ -207,7 +210,7 @@ public class UnitTest {
         fail();
     }
 
-    @Test public void fromJsonBooleanFrom2ValueIntegerSolution() {
+    @Test public void whenDeserializingWithCustomDeserializerABooleanFrom0Or1Integer_thenShouldWork() {
         String json = "{\"value\": 1}";
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(BooleanExample.class,
@@ -218,25 +221,6 @@ public class UnitTest {
         BooleanExample model = gson.fromJson(json, BooleanExample.class);
 
         assertTrue(model.value);
-    }
-
-    @Test public void fromJsonBooleanFromYes() {
-        String json = "{\"value\": yes}";
-        Gson gson = new Gson();
-
-        BooleanExample model = gson.fromJson(json, BooleanExample.class);
-
-        // pay attention here that we are deserializing yes.
-        assertFalse(model.value);
-    }
-
-    @Test public void fromJsonBooleanFromInvalidValue() {
-        String json = "{\"value\": \"15x\"}";
-        Gson gson = new Gson();
-
-        BooleanExample model = gson.fromJson(json, BooleanExample.class);
-
-        assertFalse(model.value);
     }
 
     // @formatter:off
