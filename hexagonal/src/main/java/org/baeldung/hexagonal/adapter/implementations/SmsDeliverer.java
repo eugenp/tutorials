@@ -2,24 +2,25 @@ package org.baeldung.hexagonal.adapter.implementations;
 
 import org.baeldung.hexagonal.adapter.ArticleDeliverer;
 import org.baeldung.hexagonal.news.Article;
+import org.baeldung.hexagonal.users.User;
 
 public class SmsDeliverer implements ArticleDeliverer {
 
 	@Override
-	public void deliverArticle(Article article) {
+	public void deliverArticle(Article article, User user) {
 		// We received an article from our app (the hexagon)
 		// Let's use this for sending a SMS with the last news
 		Sms sms = new Sms(article.getTitle(), article.getBody());
-		sendSms(sms);
+		sendSms(sms, user.getPhoneNumber());
 	}
 
 	/**
-	 * Will send a SMS to whoever is listed for this way of receive news
+	 * Will send a SMS to an User
 	 * 
 	 * @param sms
 	 */
-	private void sendSms(Sms sms) {
-		// TODO: The real implementation depends on the techonologies used
+	private void sendSms(Sms sms, String destinationNumber) {
+		// TODO: The real implementation depends on the technologies used
 	}
 
 	private class Sms {

@@ -1,14 +1,16 @@
 package org.baeldung.hexagonal.news;
 
-/**
- * An article created in the app
- *
- */
 public class Article {
-	
+
 	private String title;
-	
+
 	private String body;
+
+	public Article(String title, String body) {
+		super();
+		this.title = title;
+		this.body = body;
+	}
 
 	public String getBody() {
 		return body;
