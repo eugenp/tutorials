@@ -19,9 +19,9 @@ public class DateTimeUtilsManualTest {
     }
 
     @Test
-    public void verifySystemTimeReturnFromNativeLibrary() {
+    public void givenNativeLibsLoaded_thenNativeMethodIsAccessible() {
         DateTimeUtils dateTimeUtils = new DateTimeUtils();
-        LOG.info(dateTimeUtils.getSystemTime());
+        LOG.info("System time is : " + dateTimeUtils.getSystemTime());
         assertNotNull(dateTimeUtils.getSystemTime());
     }
 }
