@@ -3,10 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    
     <groupId>com.baeldung.spring-boot-crud</groupId>
     <artifactId>spring-boot-crud</artifactId>
     <version>0.1.0</version>
+	<name>spring-boot-crud</name>
     
     <parent>
         <groupId>org.springframework.boot</groupId>
