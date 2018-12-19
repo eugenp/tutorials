@@ -2,9 +2,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-boot</artifactId>
+    <artifactId>spring-boot-libraries</artifactId>
     <packaging>war</packaging>
-    <name>spring-boot</name>
+    <name>spring-boot-libraries</name>
     <description>This is simple boot application for Spring boot actuator test</description>
 
     <parent>
