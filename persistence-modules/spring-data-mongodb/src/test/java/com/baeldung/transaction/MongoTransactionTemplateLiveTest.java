@@ -26,7 +26,7 @@ import com.baeldung.model.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
-public class MongoTransactionTemplateIntegrationTest {
+public class MongoTransactionTemplateLiveTest {
 
     @Autowired
     private MongoTemplate mongoTemplate;

@@ -14,7 +14,7 @@ import com.baeldung.model.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoReactiveConfig.class)
-public class MongoTransactionReactiveIntegrationTest {
+public class MongoTransactionReactiveLiveTest {
 
     @Autowired
     private ReactiveMongoOperations reactiveOps;
