@@ -7,15 +7,10 @@
   
   <properties>
     <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass>
-    <micronaut.version>1.0.0.M2</micronaut.version>
-    <jdk.version>9</jdk.version>
+    <micronaut.version>1.0.0.RC2</micronaut.version>
+    <jdk.version>1.8</jdk.version>
   </properties>
-  <repositories>
-        <repository>
-          <id>jcenter.bintray.com</id>
-          <url>http://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
+
   <dependencyManagement>
     <dependencies>
       <dependency>

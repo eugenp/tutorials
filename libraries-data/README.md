@@ -14,3 +14,4 @@
 - [Building a Data Pipeline with Flink and Kafka](https://www.baeldung.com/kafka-flink-data-pipeline)
 - [Intro to Apache Storm](https://www.baeldung.com/apache-storm)
 - [Guide to Ebean ORM](https://www.baeldung.com/ebean-orm)
+- [Introduction to Kafka Connectors](https://www.baeldung.com/kafka-connectors-guide)

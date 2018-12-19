@@ -7,33 +7,32 @@
        http://www.springframework.org/schema/data/mongo
        http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
        http://www.springframework.org/schema/context 
-       http://www.springframework.org/schema/context/spring-context.xsd"
->
-    <context:annotation-config/>
-    
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config />
+
     <mongo:mongo-client id="mongoClient" host="localhost" />
-    
+
     <mongo:db-factory id="mongoDbFactory" dbname="test" mongo-ref="mongoClient" />
-    
+
     <bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
         <constructor-arg ref="mongoDbFactory" />
         <constructor-arg ref="mongoConverter" />
     </bean>
 
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-        <constructor-arg ref="mongoDbFactory"/>
+        <constructor-arg ref="mongoDbFactory" />
         <constructor-arg ref="mongoConverter" />
     </bean>
 
-    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
-    <mongo:repositories base-package="com.baeldung.repository" mongo-template-ref="mongoTemplate"/>
+    <mongo:repositories base-package="com.baeldung.repository" mongo-template-ref="mongoTemplate" />
 
     <bean class="com.baeldung.event.CascadeSaveMongoEventListener">
     </bean>
 
     <mongo:mapping-converter id="mongoConverter" base-package="com.baeldung.converter">
-        <mongo:custom-converters base-package="org.baeldung.converter"/>
+        <mongo:custom-converters base-package="com.baeldung.converter" />
     </mongo:mapping-converter>
 
 </beans>

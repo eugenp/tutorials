@@ -1,15 +1,17 @@
 package com.baeldung.crud;
 
-import com.baeldung.crud.UserController;
-import com.baeldung.crud.entities.User;
-import com.baeldung.crud.UserRepository;
 import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+
+import com.baeldung.crud.controllers.UserController;
+import com.baeldung.crud.entities.User;
+import com.baeldung.crud.repositories.UserRepository;
 
 public class UserControllerUnitTest {
 
