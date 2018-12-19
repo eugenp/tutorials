@@ -13,6 +13,18 @@ public class ItemService {
 
     public boolean borrow(String id, String user){
         Item retrieved = itemRepository.retrieve(id);
+        if (retrieved != null) {
+            publishEvent(retrieved);
+            auditRetrieval(retrieved);
+        }
         return retrieved != null;
+    }
+
+    private void publishEvent(Item retrieved) {
+        //do something
+    }
+
+    private void auditRetrieval(Item retrieved) {
+        //do something
     }
 }
