@@ -641,6 +641,7 @@
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-vue</module>
+                <module>spring-boot-libraries</module>
                 
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
