@@ -1,20 +1,15 @@
 package com.baeldung.concurrent.parameter;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class ParameterizedThreadExample {
 
-    private static void parameterizedThreadLambdaFunction() {
-        final String parameter = "123";
-        Thread parameterizedThread = new Thread(() -> System.out.println(Thread.currentThread()
-            .getName() + " : " + parameter));
-        parameterizedThread.start();
-    }
-
-    private static void paramtereizedThreadRunnable() {
-        Thread parameterizedThread = new Thread(new ParameterizedThread("123"));
-        parameterizedThread.start();
-    }
-
-    private static void paramterizedThreadAnonymousClass() {
+    public static void parameterisedThreadAnonymousClass() {
         final String parameter = "123";
         Thread parameterizedThread = new Thread(new Runnable() {
 
@@ -28,11 +23,39 @@ public class ParameterizedThreadExample {
         parameterizedThread.start();
     }
 
-    public static void main(String... args) {
-        paramtereizedThreadRunnable();
+    public static Runnable numberGenerator(BlockingQueue<Integer> topic) {
+        return () -> {
+            IntStream.rangeClosed(1, 10)
+                .forEach(i -> {
+                    try {
+                        Thread.sleep(50);
+                        topic.put(i);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                });
+            try {
+                topic.put(-1); // This marks the end of the message.
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        };
+    }
 
-        paramterizedThreadAnonymousClass();
-
-        parameterizedThreadLambdaFunction();
+    public static Callable<Double> averageCalculator(BlockingQueue<Integer> topic) {
+        return () -> {
+            List<Integer> numbers = new ArrayList<>();
+            try {
+                int i;
+                while ((i = topic.take()) > 0) {
+                    numbers.add(i);
+                    Thread.sleep(50);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return numbers.stream()
+                .collect(Collectors.averagingInt(v -> v));
+        };
     }
 }
