@@ -17,3 +17,4 @@
 - [Hamcrest Custom Matchers](http://www.baeldung.com/hamcrest-custom-matchers)
 - [Hamcrest Common Core Matchers](http://www.baeldung.com/hamcrest-core-matchers)
 - [Testing Callbacks with Mockito](http://www.baeldung.com/mockito-callbacks)
+- [Using Hamcrest Number Matchers](https://www.baeldung.com/hamcrest-number-matchers)
