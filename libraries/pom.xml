@@ -675,6 +675,30 @@
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-tcp</artifactId>
+            <version>${smack.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-im</artifactId>
+            <version>${smack.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-extensions</artifactId>
+            <version>${smack.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-java7</artifactId>
+            <version>${smack.version}</version>
+        </dependency>
     </dependencies>
 
     <repositories>
@@ -896,6 +920,7 @@
         <derive4j.version>1.1.0</derive4j.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
+        <smack.version>4.3.1</smack.version>
     </properties>
 
 </project>
