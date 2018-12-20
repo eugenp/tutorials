@@ -14,7 +14,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Custom Media Type for a Spring REST API](http://www.baeldung.com/spring-rest-custom-media-type)
 - [HTTP PUT vs HTTP PATCH in a REST API](http://www.baeldung.com/http-put-patch-difference-spring)
 - [Spring – Log Incoming Requests](http://www.baeldung.com/spring-http-logging)
-- [RequestBody and ResponseBody Annotations](http://www.baeldung.com/requestbody-and-responsebody-annotations)
 - [Introduction to CheckStyle](http://www.baeldung.com/checkstyle-java)
 - [How to Change the Default Port in Spring Boot](http://www.baeldung.com/spring-boot-change-port)
 - [Guide to DeferredResult in Spring](http://www.baeldung.com/spring-deferred-result)
