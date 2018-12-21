@@ -28,7 +28,6 @@ public class CustomerRepositoryTest {
     @Test
     public void whenFindingAllCustomers_thenCorrect() {
         customerRepository.save(new Customer("John", "john@domain.com"));
-        customerRepository.save(new Customer("Julie", "julie@domain.com"));
         
         assertThat(customerRepository.findAll()).isInstanceOf(List.class);
     }
