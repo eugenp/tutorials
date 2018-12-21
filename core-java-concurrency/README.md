@@ -26,7 +26,6 @@
 - [ExecutorService - Waiting for Threads to Finish](http://www.baeldung.com/java-executor-wait-for-threads)
 - [wait and notify() Methods in Java](http://www.baeldung.com/java-wait-notify)
 - [Priority-based Job Scheduling in Java](http://www.baeldung.com/java-priority-job-schedule)
-- [A Custom Spring SecurityConfigurer](http://www.baeldung.com/spring-security-custom-configurer)
 - [Life Cycle of a Thread in Java](http://www.baeldung.com/java-thread-lifecycle)
 - [Runnable vs. Callable in Java](http://www.baeldung.com/java-runnable-callable)
 - [Brief Introduction to Java Thread.yield()](https://www.baeldung.com/java-thread-yield)
