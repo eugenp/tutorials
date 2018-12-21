@@ -3,12 +3,14 @@ package com.baeldung.parameters;
 import com.baeldung.concurrent.parameter.AverageCalculator;
 import org.junit.Test;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.stream.IntStream;
 
-import static com.baeldung.concurrent.parameter.ParameterizedThreadExample.*;
 import static org.junit.Assert.assertEquals;
 
-public class ParameterisedThreadUnitTest {
+public class ParameterizedThreadUnitTest {
 
     @Test
     public void whenSendingParameterToCallable_thenSuccessful() throws Exception {
@@ -25,10 +27,12 @@ public class ParameterisedThreadUnitTest {
     public void whenParametersToThreadWithLamda_thenParametersPassedCorrectly() throws Exception {
         ExecutorService executorService = Executors.newFixedThreadPool(2);
         int[] numbers = new int[] { 4, 5, 6 };
-        Future<Integer> sumResult = executorService.submit(sumCalculator(numbers));
-        Future<Double> averageResult = executorService.submit(averageCalculator(numbers));
-
         try {
+            Future<Integer> sumResult = executorService.submit(() -> IntStream.of(numbers)
+                .sum());
+            Future<Double> averageResult = executorService.submit(() -> IntStream.of(numbers)
+                .average()
+                .orElse(0d));
             assertEquals(Integer.valueOf(15), sumResult.get());
             assertEquals(Double.valueOf(5.0), averageResult.get());
         } finally {
