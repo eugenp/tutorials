@@ -1,9 +1,10 @@
-package com.baeldung.hsqldb.application.tests;
+package com.baeldung.springboothsqldb.application.tests;
 
-import com.baeldung.hsqldb.application.entities.Customer;
+import com.baeldung.springboothsqldb.application.entities.Customer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import java.nio.charset.Charset;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,24 +34,27 @@ public class CustomerControllerUnitTest {
     }
 
     @Test
-    public void whenPostHttpRequesttoCustomer_thenJSONEntityRepresentation() throws Exception {
+    public void whenPostHttpRequesttoCustomers_thenStatusOK() throws Exception {
         Customer customer = new Customer("John", "john@domain.com");
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
         ObjectWriter objectWriter = mapper.writer().withDefaultPrettyPrinter();
         String requestJson = objectWriter.writeValueAsString(customer);
+        
         this.mockMvc
-                .perform(MockMvcRequestBuilders.post("/customer")
+                .perform(MockMvcRequestBuilders.post("/customers")
                         .contentType(MEDIA_TYPE_JSON)
                         .content(requestJson)
                 )
+                
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
     
     @Test
-    public void whenGetHttpRequesttogetCustomers_thenJSONContentType() throws Exception {
+    public void whenGetHttpRequesttoCustomers_thenStatusOK() throws Exception {
         this.mockMvc
                 .perform(MockMvcRequestBuilders.get("/customers"))
+                
                 .andExpect(MockMvcResultMatchers.content().contentType(MEDIA_TYPE_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }

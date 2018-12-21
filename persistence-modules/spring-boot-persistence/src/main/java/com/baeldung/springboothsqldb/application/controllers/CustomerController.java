@@ -1,7 +1,7 @@
-package com.baeldung.hsqldb.application.controllers;
+package com.baeldung.springboothsqldb.application.controllers;
 
-import com.baeldung.hsqldb.application.entities.Customer;
-import com.baeldung.crud.hsqldb.application.repositories.CustomerRepository;
+import com.baeldung.springboothsqldb.application.entities.Customer;
+import com.baeldung.springboothsqldb.application.repositories.CustomerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,15 +20,13 @@ public class CustomerController {
         this.customerRepository = customerRepository;
     }
     
-    @PostMapping("/customer")
-    @ResponseBody
+    @PostMapping("/customers")
     public Customer addCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
         return customer;
     }
     
-    @GetMapping(value = "/customers")
-    @ResponseBody
+    @GetMapping("/customers")
     public List<Customer> getCustomers() {
         return (List<Customer>) customerRepository.findAll();
     }
