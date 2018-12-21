@@ -1,4 +1,4 @@
-package com.baeldung.springboothsqldb.application.application.tests;
+package com.baeldung.springboothsqldb.application.tests;
 
 import com.baeldung.springboothsqldb.application.entities.Customer;
 import com.baeldung.springboothsqldb.application.repositories.CustomerRepository;
