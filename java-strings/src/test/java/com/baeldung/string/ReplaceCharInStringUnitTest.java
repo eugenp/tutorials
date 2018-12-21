@@ -12,6 +12,11 @@ public class ReplaceCharInStringUnitTest {
     }
 
     @Test
+    public void whenReplaceCharAtIndexUsingCharArray_thenSuccess(){
+        assertEquals("abcme",characterInString.replaceCharUsingCharArray("abcde",'m',3));
+    }
+
+    @Test
     public void whenReplaceCharAtIndexUsingStringBuilder_thenSuccess(){
         assertEquals("abcme",characterInString.replaceCharStringBuilder("abcde",'m',3));
     }
