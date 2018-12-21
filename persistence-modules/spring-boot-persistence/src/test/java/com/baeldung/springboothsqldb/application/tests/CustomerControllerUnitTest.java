@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class CustomerControllerUnitTest {
-
     private MediaType MEDIA_TYPE_JSON;
 
     @Autowired

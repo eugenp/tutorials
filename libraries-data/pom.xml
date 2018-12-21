@@ -429,13 +429,6 @@
         </plugins>
     </build>
 
-    <repositories>
-        <repository>
-            <id>Apache Staging</id>
-            <url>https://repository.apache.org/content/groups/staging</url>
-        </repository>
-    </repositories>
-
     <properties>
         <storm.version>1.2.2</storm.version>
         <kryo.version>4.0.1</kryo.version>
