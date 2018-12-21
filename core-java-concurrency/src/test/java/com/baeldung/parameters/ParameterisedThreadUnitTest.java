@@ -3,49 +3,37 @@ package com.baeldung.parameters;
 import com.baeldung.concurrent.parameter.AverageCalculator;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.*;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-import static com.baeldung.concurrent.parameter.ParameterizedThreadExample.averageCalculator;
-import static com.baeldung.concurrent.parameter.ParameterizedThreadExample.numberGenerator;
+import static com.baeldung.concurrent.parameter.ParameterizedThreadExample.*;
 import static org.junit.Assert.assertEquals;
 
 public class ParameterisedThreadUnitTest {
 
     @Test
-    public void whenSendingParameterToCallable_thenSuccessful() {
+    public void whenSendingParameterToCallable_thenSuccessful() throws Exception {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        List<Integer> numbers = Arrays.asList(1, 2, 3);
-        Double expectedAverage = numbers.stream()
-            .collect(Collectors.averagingInt(v -> v));
-
-        Future<Double> result = executorService.submit(new AverageCalculator(numbers));
+        Future<Double> result = executorService.submit(new AverageCalculator(1, 2, 3));
         try {
-            Double average = result.get();
-            assertEquals(expectedAverage, average);
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            assertEquals(Double.valueOf(2.0), result.get());
+        } finally {
+            executorService.shutdown();
         }
-
-        executorService.shutdown();
     }
 
     @Test
-    public void whenParametersToThreadWithLambda_thenParametersPassedCorrectly() {
-        BlockingQueue<Integer> topic = new ArrayBlockingQueue<>(5);
-        ExecutorService executorService = Executors.newFixedThreadPool(3);
-        executorService.submit(numberGenerator(topic));
-        Future<Double> average = executorService.submit(averageCalculator(topic));
+    public void whenParametersToThreadWithLamda_thenParametersPassedCorrectly() throws Exception {
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        int[] numbers = new int[] { 4, 5, 6 };
+        Future<Integer> sumResult = executorService.submit(sumCalculator(numbers));
+        Future<Double> averageResult = executorService.submit(averageCalculator(numbers));
 
         try {
-            assertEquals(Double.valueOf(5.5), average.get());
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+            assertEquals(Integer.valueOf(15), sumResult.get());
+            assertEquals(Double.valueOf(5.0), averageResult.get());
+        } finally {
+            executorService.shutdown();
         }
-
-        executorService.shutdown();
     }
+
 }

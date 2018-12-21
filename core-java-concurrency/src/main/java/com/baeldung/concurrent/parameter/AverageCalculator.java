@@ -1,23 +1,20 @@
 package com.baeldung.concurrent.parameter;
 
-import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class AverageCalculator implements Callable<Double> {
 
-    List<Integer> numbers;
+    int[] numbers;
 
-    public AverageCalculator(List<Integer> parameter) {
-        this.numbers = parameter;
+    public AverageCalculator(int... parameter) {
+        this.numbers = parameter == null ? new int[0] : parameter;
     }
 
     @Override
     public Double call() throws Exception {
-        if (this.numbers != null && !this.numbers.isEmpty()) {
-            return this.numbers.stream()
-                .collect(Collectors.averagingInt(v -> v));
-        }
-        return null;
+        return IntStream.of(this.numbers)
+            .average()
+            .orElse(0d);
     }
 }
