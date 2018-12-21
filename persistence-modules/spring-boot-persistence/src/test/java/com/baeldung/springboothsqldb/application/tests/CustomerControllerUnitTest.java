@@ -22,7 +22,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @AutoConfigureMockMvc
 public class CustomerControllerUnitTest {
 
-    private static MediaType MEDIA_TYPE_JSON;
+    private MediaType MEDIA_TYPE_JSON;
 
     @Autowired
     private MockMvc mockMvc;
