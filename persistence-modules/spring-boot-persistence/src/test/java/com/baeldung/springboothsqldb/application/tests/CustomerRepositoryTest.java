@@ -1,7 +1,7 @@
 package com.baeldung.hsqldb.application.tests;
 
-import com.baeldung.hsqldb.application.entities.Customer;
-import com.baeldung.hsqldb.application.repositories.CustomerRepository;
+import com.baeldung.springboothsqldb.application.entities.Customer;
+import com.baeldung.springboothsqldb.application.repositories.CustomerRepository;
 import java.util.List;
 import java.util.Optional;
 import org.junit.Test;
