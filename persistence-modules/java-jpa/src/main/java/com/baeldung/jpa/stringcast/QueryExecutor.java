@@ -1,12 +1,11 @@
 package com.baeldung.jpa.stringcast;
 
-import com.sun.istack.internal.Nullable;
-
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 public class QueryExecutor {
 
@@ -24,10 +23,7 @@ public class QueryExecutor {
         }
 
         if (results.get(0) instanceof String) {
-            return ((List<String>) results)
-              .stream()
-              .map(s -> new String[] { s })
-              .collect(Collectors.toList());
+            return ((List<String>) results).stream().map(s -> new String[] { s }).collect(Collectors.toList());
         } else {
             return (List<String[]>) results;
         }
