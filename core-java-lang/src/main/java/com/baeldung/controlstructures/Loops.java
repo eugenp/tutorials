@@ -71,6 +71,40 @@ public class Loops {
     }
 
     /**
+     * Finds the index of {@code name} in a list
+     * @param name The name to look for
+     * @param names The list of names
+     * @return The index where the name was found or -1 otherwise
+     */
+    public static int findFirstInstanceOfName(String name, String[] names) {
+        int index = 0;
+        for ( ; index < names.length; index++) {
+            if (names[index].equals(name)) {
+                break;
+            }
+        }
+        return index == names.length ? -1 : index;
+    }
+
+    /**
+     * Takes several names and makes a list, skipping the specified {@code name}.
+     *
+     * @param name The name to skip
+     * @param names The list of names
+     * @return The list of names as a single string, missing the specified {@code name}.
+     */
+    public static String makeListSkippingName(String name, String[] names) {
+        String list = "";
+        for (int i = 0; i < names.length; i++) {
+            if (names[i].equals(name)) {
+                continue;
+            }
+            list += names[i];
+        }
+        return list;
+    }
+
+    /**
      * Prints an specified amount of even numbers. Shows usage of both {@code break} and {@code continue} branching statements.
      * @param amountToPrint Amount of even numbers to print.
      */
