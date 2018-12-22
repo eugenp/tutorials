@@ -18,7 +18,6 @@
 - [Guide to the HyperLogLog Algorithm](http://www.baeldung.com/java-hyperloglog)
 - [Introduction to Neuroph](http://www.baeldung.com/neuroph)
 - [Quick Guide to RSS with Rome](http://www.baeldung.com/rome-rss)
-- [Introduction to NoException](http://www.baeldung.com/introduction-to-noexception)
 - [Introduction to PCollections](http://www.baeldung.com/java-pcollections)
 - [Introduction to Hoverfly in Java](http://www.baeldung.com/hoverfly)
 - [Introduction to Eclipse Collections](http://www.baeldung.com/eclipse-collections)
@@ -34,7 +33,6 @@
 - [Introduction to Retrofit](http://www.baeldung.com/retrofit)
 - [Using Pairs in Java](http://www.baeldung.com/java-pairs)
 - [Introduction to Caffeine](http://www.baeldung.com/java-caching-caffeine)
-- [Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
 - [Introduction To Docx4J](http://www.baeldung.com/docx4j)
 - [Introduction to StreamEx](http://www.baeldung.com/streamex)
 - [Introduction to BouncyCastle with Java](http://www.baeldung.com/java-bouncy-castle)
@@ -66,6 +64,7 @@
 - [Exactly Once Processing in Kafka](https://www.baeldung.com/kafka-exactly-once)
 - [An Introduction to SuanShu](https://www.baeldung.com/suanshu)
 - [Implementing a FTP-Client in Java](http://www.baeldung.com/java-ftp-client)
+- [Introduction to Functional Java](https://www.baeldung.com/java-functional-library
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
