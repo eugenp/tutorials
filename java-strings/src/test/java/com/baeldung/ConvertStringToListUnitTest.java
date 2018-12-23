@@ -102,6 +102,17 @@ public class ConvertStringToListUnitTest {
     }
 
     @Test
+    public void givenString_thenGetListOfIntegerByApacheAndStream() {
+        String[] convertedRankArray = StringUtils.split(ranks, ",");
+        List<Integer> convertedRankList = Stream.of(convertedRankArray)
+            .map(String::trim)
+            .map(Integer::parseInt)
+            .collect(Collectors.toList());
+
+        assertEquals(expectedRanksList, convertedRankList);
+    }
+
+    @Test
     public void givenEmptyStrings_thenGetListOfStringByJava() {
         List<String> convertedEmptyStringsList = Arrays.asList(emptyStrings.split(",", -1));
 
