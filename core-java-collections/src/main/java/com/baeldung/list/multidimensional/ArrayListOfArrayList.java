@@ -26,8 +26,9 @@ public class ArrayListOfArrayList {
         for(int i=0; i<vertex; i++) {
             int vertexNo = i;
             int edgeCount = graph.get(vertexNo).size();
+            ArrayList<Integer> listOfVertices = graph.get(vertexNo);
             for(int j=0; j<edgeCount; j++) {
-                System.out.println("Vertex "+vertexNo+" is connected to vetex "+graph.get(vertexNo).get(j));
+                System.out.println("Vertex "+vertexNo+" is connected to vetex "+listOfVertices.get(j));
             }
         }
     }
