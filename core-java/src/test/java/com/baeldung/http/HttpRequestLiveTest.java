@@ -160,6 +160,8 @@ public class HttpRequestLiveTest {
         }
         in.close();
 
+        con.disconnect();
+
         assertEquals("status code incorrect", status, 411);
         assertTrue("error content", content.toString()
             .contains("411 - Length Required"));
@@ -175,6 +177,8 @@ public class HttpRequestLiveTest {
         con.setReadTimeout(5000);
 
         String fullResponse = FullResponseBuilder.getFullResponse(con);
+
+        con.disconnect();
 
         assertEquals("status code incorrect", con.getResponseCode(), 200);
         assertTrue("header incorrect", fullResponse.contains("Content-Type: text/html; charset=UTF-8"));
