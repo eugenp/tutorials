@@ -20,17 +20,17 @@ public class ThreeDimensionalArrayList {
         }
 
         //Set Red color for points (0,0,0) and (0,0,1)
-        space.get(0).get(0).add("Red");
-        space.get(0).get(0).add("Red");
+        space.get(0).get(0).add(0,"Red");
+        space.get(0).get(0).add(1,"Red");
         //Set Blue color for points (0,1,0) and (0,1,1)
-        space.get(0).get(1).add("Blue");
-        space.get(0).get(1).add("Blue");
+        space.get(0).get(1).add(0,"Blue");
+        space.get(0).get(1).add(1,"Blue");
         //Set Green color for points (1,0,0) and (1,0,1)
-        space.get(1).get(0).add("Green");
-        space.get(1).get(0).add("Green");
+        space.get(1).get(0).add(0,"Green");
+        space.get(1).get(0).add(1,"Green");
         //Set Yellow color for points (1,1,0) and (1,1,1)
-        space.get(1).get(1).add("Yellow");
-        space.get(1).get(1).add("Yellow");
+        space.get(1).get(1).add(0,"Yellow");
+        space.get(1).get(1).add(1,"Yellow");
 
         //Printing colors for all the points
         for(int i=0; i<x_axis_length; i++) {
