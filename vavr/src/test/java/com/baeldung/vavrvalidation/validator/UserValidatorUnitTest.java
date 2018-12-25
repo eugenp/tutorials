@@ -7,7 +7,7 @@ import com.baeldung.vavrvalidation.validator.UserValidator;
 import io.vavr.control.Validation.Invalid;
 import io.vavr.control.Validation.Valid;
 
-public class UserValidatorTest {
+public class UserValidatorUnitTest {
     
     @Test
     public void givenValidUserParams_whenValidated_thenInstanceOfValid() {

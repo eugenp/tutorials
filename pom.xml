@@ -383,6 +383,7 @@
                 <module>core-java-io</module>
                 <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
+                <module>core-java-lang-oop</module>
 				<module>core-java-networking</module>
                 <module>core-java-sun</module>
                 <module>core-scala</module>
@@ -1091,6 +1092,7 @@
                 <module>core-java-io</module>
                 <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
+                <module>core-java-lang-oop</module>
                 <module>core-java-networking</module>
                 <module>core-java-sun</module>
                 <module>core-scala</module>
@@ -1606,7 +1608,7 @@
 		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
 		<jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
 		<jstl.version>1.2</jstl.version>
-		<jackson-databind.version>2.5.0</jackson-databind.version>
+		<jackson-databind.version>2.9.7</jackson-databind.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
 		<junit-platform.version>1.2.0</junit-platform.version>
 		<junit-jupiter.version>5.2.0</junit-jupiter.version>
