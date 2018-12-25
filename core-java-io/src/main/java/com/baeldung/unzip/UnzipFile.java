@@ -9,13 +9,13 @@ import java.util.zip.ZipInputStream;
 
 public class UnzipFile {
     public static void main(final String[] args) throws IOException {
-        final String fileZip = "src/main/resources/compressed.zip";
+        final String fileZip = "src/main/resources/unzipTest/compressed.zip";
+        final File destDir = new File("src/main/resources/unzipTest");
         final byte[] buffer = new byte[1024];
         final ZipInputStream zis = new ZipInputStream(new FileInputStream(fileZip));
         ZipEntry zipEntry = zis.getNextEntry();
         while (zipEntry != null) {
-            final String fileName = zipEntry.getName();
-            final File newFile = new File("src/main/resources/unzipTest/" + fileName);
+            final File newFile = newFile(destDir, zipEntry);
             final FileOutputStream fos = new FileOutputStream(newFile);
             int len;
             while ((len = zis.read(buffer)) > 0) {
@@ -26,5 +26,21 @@ public class UnzipFile {
         }
         zis.closeEntry();
         zis.close();
+    }
+    
+    /**
+     * @see https://snyk.io/research/zip-slip-vulnerability
+     */
+    public static File newFile(File destinationDir, ZipEntry zipEntry) throws IOException {
+        File destFile = new File(destinationDir, zipEntry.getName());
+        
+        String destDirPath = destinationDir.getCanonicalPath();
+        String destFilePath = destFile.getCanonicalPath();
+        
+        if (!destFilePath.startsWith(destDirPath + File.separator)) {
+            throw new IOException("Entry is outside of the target dir: " + zipEntry.getName());
+        }
+        
+        return destFile;
     }
 }

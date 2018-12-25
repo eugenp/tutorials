@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.example</groupId>
     <artifactId>jws</artifactId>
-    <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>jws-example</name>
+    <name>jws</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

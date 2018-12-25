@@ -4,6 +4,7 @@
     <groupId>com.stackify</groupId>
     <artifactId>rest-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>rest-server</name>
     <packaging>war</packaging>
 
     <parent>

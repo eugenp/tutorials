@@ -38,7 +38,7 @@
 
     <properties>
         <!-- Spring -->
-        <spring-cloud.version>1.2.3.RELEASE</spring-cloud.version>
+        <spring-cloud.version>1.2.7.RELEASE</spring-cloud.version>
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
         <!-- Maven plugins -->

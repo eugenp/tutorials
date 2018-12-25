@@ -41,9 +41,21 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+                <configuration>
+                    <mainClass>com.baeldung.activitiwithspring.ActivitiWithSpringApplication</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
     <properties>
-        <start-class>com.example.activitiwithspring.ActivitiWithSpringApplication</start-class>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <activiti.version>6.0.0</activiti.version>

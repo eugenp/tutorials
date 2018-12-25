@@ -24,7 +24,7 @@
     <properties>
         <rest-assured.version>3.1.0</rest-assured.version>
         <oauth.version>2.3.3.RELEASE</oauth.version>        
-        <oauth-auto.version>2.0.1.RELEASE</oauth-auto.version>        
+        <oauth-auto.version>2.1.1.RELEASE</oauth-auto.version>    
     </properties>  
         
 </project>

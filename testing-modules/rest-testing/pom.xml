@@ -151,7 +151,7 @@
 
     <properties>
         <!-- marshalling -->
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>
