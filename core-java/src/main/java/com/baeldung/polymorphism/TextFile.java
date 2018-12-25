@@ -20,10 +20,12 @@ public class TextFile extends GenericFile {
         this.wordCount = wordCount;
     }
 
+    @Override
     public String getFileInfo() {
         return "Text File Impl";
     }
 
+    @Override
     public String read() {
         return this.getContent()
             .toString();

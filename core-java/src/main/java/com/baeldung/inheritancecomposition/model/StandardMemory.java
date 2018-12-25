@@ -10,10 +10,12 @@ public class StandardMemory implements Memory {
         this.size = size;
     }
 
+    @Override
     public String getBrand() {
         return brand;
     }
-    
+
+    @Override
     public String getSize() {
         return size;
     }

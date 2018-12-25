@@ -29,10 +29,12 @@ public class ImageFile extends GenericFile {
         this.width = width;
     }
 
+    @Override
     public String getFileInfo() {
         return "Image File Impl";
     }
 
+    @Override
     public String read() {
         return this.getContent()
             .toString();

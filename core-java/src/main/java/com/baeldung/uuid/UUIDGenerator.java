@@ -5,6 +5,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
+
+/**
+ * @descript: java.util.UUID体验
+ * @see java.util.UUID
+ */
 public class UUIDGenerator {
 
     /**
