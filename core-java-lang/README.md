@@ -5,7 +5,6 @@
 ### Relevant Articles: 
 - [Guide to Java Reflection](http://www.baeldung.com/java-reflection)
 - [Introduction to Java Generics](http://www.baeldung.com/java-generics)
-- [Generate equals() and hashCode() with Eclipse](http://www.baeldung.com/java-eclipse-equals-and-hashcode)
 - [Chained Exceptions in Java](http://www.baeldung.com/java-chained-exceptions)
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
 - [Call Methods at Runtime Using Java Reflection](http://www.baeldung.com/java-method-reflection)
@@ -40,4 +39,3 @@
 - [How to Separate Double into Integer and Decimal Parts](https://www.baeldung.com/java-separate-double-into-integer-decimal-parts)
 - [“Sneaky Throws” in Java](http://www.baeldung.com/java-sneaky-throws)
 - [Retrieving a Class Name in Java](https://www.baeldung.com/java-class-name)
-- [Java equals() and hashCode() Contracts](https://www.baeldung.com/java-equals-hashcode-contracts)

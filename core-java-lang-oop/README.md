@@ -21,3 +21,5 @@
 - [Immutable Objects in Java](http://www.baeldung.com/java-immutable-object)
 - [Inheritance and Composition (Is-a vs Has-a relationship) in Java](http://www.baeldung.com/java-inheritance-composition)
 - [A Guide to Constructors in Java](https://www.baeldung.com/java-constructors)
+- [Generate equals() and hashCode() with Eclipse](http://www.baeldung.com/java-eclipse-equals-and-hashcode)
+- [Java equals() and hashCode() Contracts](https://www.baeldung.com/java-equals-hashcode-contracts)
