@@ -1,6 +1,6 @@
-package com.example.quick.hexagonal.app;
+package com.baeldung.hexagonal.app;
 
-import com.example.quick.hexagonal.domain.BankServiceImpl;
+import com.baeldung.hexagonal.domain.BankServiceImpl;
 
 import java.util.Scanner;
 

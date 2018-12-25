@@ -1,6 +1,4 @@
-package com.example.quick.hexagonal.database;
-
-import com.example.quick.hexagonal.domain.CustomerAccount;
+package com.baeldung.hexagonal.domain;
 
 public interface BankAccountRepository {
 
@@ -8,6 +6,6 @@ public interface BankAccountRepository {
 
   void createAccount(CustomerAccount customerAccount);
 
-  void updateFunds(CustomerAccount customerAccount);
+  void updateAccount(CustomerAccount customerAccount);
 
 }

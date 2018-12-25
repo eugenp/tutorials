@@ -1,8 +1,9 @@
-package com.example.quick.hexagonal.services;
+package com.baeldung.hexagonal.services;
 
-import com.example.quick.hexagonal.domain.CustomerAccount;
+import com.baeldung.hexagonal.domain.CustomerAccount;
 
 public interface Transfers {
   void deposit(CustomerAccount customerAccount, double amount);
+
   void withdraw(CustomerAccount customerAccount, double amount);
 }

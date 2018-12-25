@@ -1,11 +1,7 @@
-/**
- * Copyright 2018 Expedia Group. All rights reserved. EXPEDIA PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
+package com.baeldung.hexagonal.app;
 
-package com.example.quick.hexagonal.app;
-
-import com.example.quick.hexagonal.domain.BankServiceImpl;
-import com.example.quick.hexagonal.domain.CustomerAccount;
+import com.baeldung.hexagonal.domain.BankServiceImpl;
+import com.baeldung.hexagonal.domain.CustomerAccount;
 
 import java.util.Scanner;
 

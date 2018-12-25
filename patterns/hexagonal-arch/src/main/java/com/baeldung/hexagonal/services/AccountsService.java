@@ -1,16 +1,15 @@
-package com.example.quick.hexagonal.services;
+package com.baeldung.hexagonal.services;
 
-import com.example.quick.hexagonal.database.BankAccountRepository;
-import com.example.quick.hexagonal.domain.CustomerAccount;
-import com.example.quick.hexagonal.log.EventLog;
-import com.google.inject.Inject;
+import com.baeldung.hexagonal.domain.BankAccountRepository;
+import com.baeldung.hexagonal.domain.CustomerAccount;
+import com.baeldung.hexagonal.log.EventLog;
 
 public class AccountsService implements Accounts {
 
   private BankAccountRepository bankAccountRepository;
+
   private EventLog eventLog;
 
-  @Inject
   public AccountsService(BankAccountRepository bankAccountRepository, EventLog eventLog) {
     this.bankAccountRepository = bankAccountRepository;
     this.eventLog = eventLog;

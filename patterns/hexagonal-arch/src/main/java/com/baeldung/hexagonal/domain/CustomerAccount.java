@@ -1,4 +1,4 @@
-package com.example.quick.hexagonal.domain;
+package com.baeldung.hexagonal.domain;
 
 public class CustomerAccount {
   private String name;

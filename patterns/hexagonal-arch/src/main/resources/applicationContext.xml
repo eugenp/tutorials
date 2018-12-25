@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="eventLog" class="com.baeldung.hexagonal.log.StdOutErrorLog"></bean>
+    <bean id="bankAccountRepository" class="com.baeldung.hexagonal.domain.InMemoryBankRepository">
+        <constructor-arg type="com.baeldung.hexagonal.log.EventLog" ref="eventLog"></constructor-arg>
+    </bean>
+
+    <bean id="accounts" class="com.baeldung.hexagonal.services.AccountsService">
+        <constructor-arg type="com.baeldung.hexagonal.domain.BankAccountRepository" ref="bankAccountRepository"></constructor-arg>
+        <constructor-arg type="com.baeldung.hexagonal.log.EventLog" ref="eventLog"></constructor-arg>
+    </bean>
+
+    <bean id="transfers" class="com.baeldung.hexagonal.services.TransfersService">
+        <constructor-arg type="com.baeldung.hexagonal.domain.BankAccountRepository" ref="bankAccountRepository"></constructor-arg>
+        <constructor-arg type="com.baeldung.hexagonal.log.EventLog" ref="eventLog"></constructor-arg>
+    </bean>
+
+    <bean id="bankService" class="com.baeldung.hexagonal.domain.BankServiceImpl">
+        <constructor-arg type="com.baeldung.hexagonal.services.Accounts" ref="accounts"></constructor-arg>
+        <constructor-arg type="com.baeldung.hexagonal.services.Transfers" ref="transfers"></constructor-arg>
+        <constructor-arg type="com.baeldung.hexagonal.domain.BankAccountRepository" ref="bankAccountRepository"></constructor-arg>
+        <constructor-arg type="com.baeldung.hexagonal.log.EventLog" ref="eventLog"></constructor-arg>
+    </bean>
+
+</beans>

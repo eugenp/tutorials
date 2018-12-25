@@ -1,21 +1,17 @@
-/**
- * Copyright 2018 Expedia Group. All rights reserved. EXPEDIA PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
+package com.baeldung.hexagonal.app;
 
-package com.example.quick.hexagonal.app;
-
-import com.example.quick.hexagonal.domain.BankServiceImpl;
-import com.example.quick.hexagonal.module.BankModule;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
+import com.baeldung.hexagonal.domain.BankServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Scanner;
 
 public class BankingConsoleApp {
   public static void main(String[] args) {
 
-    Injector injector = Guice.createInjector(new BankModule());
-    BankServiceImpl service = injector.getInstance( BankServiceImpl.class);
+    ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+    BankServiceImpl service = context.getBean(BankServiceImpl.class);
+
     try (final Scanner scanner = new Scanner(System.in)) {
       boolean exit = false;
       while (!exit) {

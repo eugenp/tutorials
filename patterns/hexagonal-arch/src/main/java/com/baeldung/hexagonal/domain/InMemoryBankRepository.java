@@ -1,8 +1,6 @@
-package com.example.quick.hexagonal.database;
+package com.baeldung.hexagonal.domain;
 
-import com.example.quick.hexagonal.domain.CustomerAccount;
-import com.example.quick.hexagonal.log.EventLog;
-import com.google.inject.Inject;
+import com.baeldung.hexagonal.log.EventLog;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +9,9 @@ import java.util.Optional;
 public class InMemoryBankRepository implements BankAccountRepository {
 
   private static Map<String, CustomerAccount> accounts = new HashMap<>();
+
   private EventLog eventLog;
 
-  @Inject
   public InMemoryBankRepository(EventLog eventLog) {
     this.eventLog = eventLog;
   }
@@ -39,7 +37,7 @@ public class InMemoryBankRepository implements BankAccountRepository {
   }
 
   @Override
-  public void updateFunds(CustomerAccount customerAccount) {
+  public void updateAccount(CustomerAccount customerAccount) {
     if (Optional.ofNullable(accounts.get(customerAccount.getAccNumber())).isPresent()) {
       accounts.put(customerAccount.getAccNumber(), customerAccount);
     } else {
