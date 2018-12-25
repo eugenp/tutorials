@@ -5,4 +5,10 @@
 - [Chain of Responsibility Design Pattern in Java](http://www.baeldung.com/chain-of-responsibility-pattern)
 - [The Command Pattern in Java](http://www.baeldung.com/java-command-pattern)
 - [The DAO Pattern in Java](http://www.baeldung.com/java-dao-pattern)
-
+- [Introduction to Creational Design Patterns](http://www.baeldung.com/creational-design-patterns)
+- [Proxy, Decorator, Adapter and Bridge Patterns](http://www.baeldung.com/java-structural-design-patterns)
+- [Singletons in Java](http://www.baeldung.com/java-singleton)
+- [Flyweight Pattern in Java](http://www.baeldung.com/java-flyweight)
+- [The Observer Pattern in Java](http://www.baeldung.com/java-observer-pattern)
+- [Service Locator Pattern](http://www.baeldung.com/java-service-locator-pattern)
+- [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
