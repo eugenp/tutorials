@@ -382,6 +382,7 @@
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
                 <module>core-java-lang</module>
+                <module>core-java-lang-oop</module>
 				<module>core-java-networking</module>
                 <module>core-java-sun</module>
                 <module>core-scala</module>
@@ -1089,6 +1090,7 @@
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
                 <module>core-java-lang</module>
+                <module>core-java-lang-oop</module>
                 <module>core-java-networking</module>
                 <module>core-java-sun</module>
                 <module>core-scala</module>
