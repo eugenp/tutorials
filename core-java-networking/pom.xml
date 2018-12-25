@@ -19,6 +19,11 @@
             <artifactId>mail</artifactId>
             <version>${javax.mail.version}</version>
         </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-io.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -27,5 +32,6 @@
 
     <properties>
         <javax.mail.version>1.5.0-b01</javax.mail.version>
+        <commons-io.version>2.5</commons-io.version>
     </properties>	
 </project>

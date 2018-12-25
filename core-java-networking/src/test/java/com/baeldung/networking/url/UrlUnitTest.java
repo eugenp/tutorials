@@ -1,4 +1,4 @@
-package com.baeldung.java.networking.url;
+package com.baeldung.networking.url;
 
 import static org.junit.Assert.assertEquals;
 

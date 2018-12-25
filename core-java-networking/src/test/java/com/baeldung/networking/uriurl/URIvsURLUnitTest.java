@@ -1,4 +1,4 @@
-package com.baeldung.javanetworking.uriurl;
+package com.baeldung.networking.uriurl;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
