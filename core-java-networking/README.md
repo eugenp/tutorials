@@ -8,4 +8,6 @@
 - [Broadcasting and Multicasting in Java](http://www.baeldung.com/java-broadcast-multicast)
 - [A Guide To UDP In Java](http://www.baeldung.com/udp-in-java)
 - [Sending Emails with Java](http://www.baeldung.com/java-email)
-- [Console I/O in Java](http://www.baeldung.com/java-console-input-output)
+- [A Guide To HTTP Cookies In Java](http://www.baeldung.com/cookies-java)
+- [A Guide to the Java URL](http://www.baeldung.com/java-url)
+- [Working with Network Interfaces in Java](http://www.baeldung.com/java-network-interfaces)

@@ -71,3 +71,4 @@
 - [Calculate the Area of a Circle in Java](https://www.baeldung.com/java-calculate-circle-area)
 - [A Guide to the Java Math Class](https://www.baeldung.com/java-lang-math)
 - [Graphs in Java](https://www.baeldung.com/java-graphs)
+- [Console I/O in Java](http://www.baeldung.com/java-console-input-output)
