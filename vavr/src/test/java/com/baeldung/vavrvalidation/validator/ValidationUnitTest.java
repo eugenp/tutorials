@@ -11,7 +11,7 @@ import io.vavr.control.Either.Right;
 import io.vavr.control.Validation.Invalid;
 import io.vavr.control.Validation.Valid;
 
-public class ValidationTest {
+public class ValidationUnitTest {
 	
     private static UserValidator userValidator;
     
