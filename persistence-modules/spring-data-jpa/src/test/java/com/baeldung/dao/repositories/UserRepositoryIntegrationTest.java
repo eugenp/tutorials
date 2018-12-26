@@ -18,7 +18,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -274,9 +276,8 @@ public class UserRepositoryIntegrationTest {
 
         List<User> usersSortByName = userRepository.findAll(new Sort(Sort.Direction.ASC, "name"));
 
-        assertThat(usersSortByName
-          .get(0)
-          .getName()).isEqualTo(USER_NAME_ADAM);
+        assertThat(usersSortByName.get(0)
+            .getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test(expected = PropertyReferenceException.class)
@@ -289,9 +290,8 @@ public class UserRepositoryIntegrationTest {
 
         List<User> usersSortByNameLength = userRepository.findAll(new Sort("LENGTH(name)"));
 
-        assertThat(usersSortByNameLength
-          .get(0)
-          .getName()).isEqualTo(USER_NAME_ADAM);
+        assertThat(usersSortByNameLength.get(0)
+            .getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
@@ -304,9 +304,8 @@ public class UserRepositoryIntegrationTest {
 
         List<User> usersSortByNameLength = userRepository.findAllUsers(JpaSort.unsafe("LENGTH(name)"));
 
-        assertThat(usersSortByNameLength
-          .get(0)
-          .getName()).isEqualTo(USER_NAME_ADAM);
+        assertThat(usersSortByNameLength.get(0)
+            .getName()).isEqualTo(USER_NAME_ADAM);
     }
 
     @Test
@@ -320,10 +319,9 @@ public class UserRepositoryIntegrationTest {
 
         Page<User> usersPage = userRepository.findAllUsersWithPagination(new PageRequest(1, 3));
 
-        assertThat(usersPage
-          .getContent()
-          .get(0)
-          .getName()).isEqualTo("SAMPLE1");
+        assertThat(usersPage.getContent()
+            .get(0)
+            .getName()).isEqualTo("SAMPLE1");
     }
 
     @Test
@@ -337,10 +335,9 @@ public class UserRepositoryIntegrationTest {
 
         Page<User> usersSortByNameLength = userRepository.findAllUsersWithPaginationNative(new PageRequest(1, 3));
 
-        assertThat(usersSortByNameLength
-          .getContent()
-          .get(0)
-          .getName()).isEqualTo("SAMPLE1");
+        assertThat(usersSortByNameLength.getContent()
+            .get(0)
+            .getName()).isEqualTo("SAMPLE1");
     }
 
     @Test
@@ -368,6 +365,30 @@ public class UserRepositoryIntegrationTest {
         int updatedUsersSize = userRepository.updateUserSetStatusForNameNative(INACTIVE_STATUS, "SAMPLE");
 
         assertThat(updatedUsersSize).isEqualTo(2);
+    }
+
+    @Test
+    public void givenUsersInDBWhenFindByEmailsWithDynamicQueryThenReturnCollection() {
+
+        User user1 = new User();
+        user1.setEmail(USER_EMAIL);
+        userRepository.save(user1);
+
+        User user2 = new User();
+        user2.setEmail(USER_EMAIL2);
+        userRepository.save(user2);
+
+        User user3 = new User();
+        user3.setEmail(USER_EMAIL3);
+        userRepository.save(user3);
+
+        Set<String> emails = new HashSet<>();
+        emails.add(USER_EMAIL2);
+        emails.add(USER_EMAIL3);
+
+        Collection<User> usersWithEmails = userRepository.findUserByEmails(emails);
+
+        assertThat(usersWithEmails.size()).isEqualTo(2);
     }
 
     @After
