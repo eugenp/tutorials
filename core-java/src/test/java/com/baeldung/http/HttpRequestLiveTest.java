@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.CookieManager;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
@@ -48,7 +49,8 @@ public class HttpRequestLiveTest {
         in.close();
 
         assertEquals("status code incorrect", status, 200);
-        assertTrue("content incorrect", content.toString().contains("Example Domain"));
+        assertTrue("content incorrect", content.toString()
+            .contains("Example Domain"));
     }
 
     @Test
@@ -89,18 +91,24 @@ public class HttpRequestLiveTest {
         Optional<HttpCookie> usernameCookie = null;
         if (cookiesHeader != null) {
             List<HttpCookie> cookies = HttpCookie.parse(cookiesHeader);
-            cookies.forEach(cookie -> cookieManager.getCookieStore().add(null, cookie));
-            usernameCookie = cookies.stream().findAny().filter(cookie -> cookie.getName().equals("username"));
+            cookies.forEach(cookie -> cookieManager.getCookieStore()
+                .add(null, cookie));
+            usernameCookie = cookies.stream()
+                .findAny()
+                .filter(cookie -> cookie.getName()
+                    .equals("username"));
         }
 
         if (usernameCookie == null) {
-            cookieManager.getCookieStore().add(null, new HttpCookie("username", "john"));
+            cookieManager.getCookieStore()
+                .add(null, new HttpCookie("username", "john"));
         }
 
         con.disconnect();
 
         con = (HttpURLConnection) url.openConnection();
-        con.setRequestProperty("Cookie", StringUtils.join(cookieManager.getCookieStore().getCookies(), ";"));
+        con.setRequestProperty("Cookie", StringUtils.join(cookieManager.getCookieStore()
+            .getCookies(), ";"));
 
         int status = con.getResponseCode();
 
@@ -123,6 +131,58 @@ public class HttpRequestLiveTest {
         }
 
         assertEquals("status code incorrect", con.getResponseCode(), 200);
+    }
+
+    @Test
+    public void whenFailedRequest_thenOk() throws IOException {
+        URL url = new URL("http://example.com");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("POST");
+
+        con.setConnectTimeout(5000);
+        con.setReadTimeout(5000);
+
+        int status = con.getResponseCode();
+
+        Reader streamReader = null;
+
+        if (status > 299) {
+            streamReader = new InputStreamReader(con.getErrorStream());
+        } else {
+            streamReader = new InputStreamReader(con.getInputStream());
+        }
+
+        BufferedReader in = new BufferedReader(streamReader);
+        String inputLine;
+        StringBuilder content = new StringBuilder();
+        while ((inputLine = in.readLine()) != null) {
+            content.append(inputLine);
+        }
+        in.close();
+
+        con.disconnect();
+
+        assertEquals("status code incorrect", status, 411);
+        assertTrue("error content", content.toString()
+            .contains("411 - Length Required"));
+    }
+
+    @Test
+    public void whenGetRequestFullResponse_thenOk() throws IOException {
+        URL url = new URL("http://example.com");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+
+        con.setConnectTimeout(5000);
+        con.setReadTimeout(5000);
+
+        String fullResponse = FullResponseBuilder.getFullResponse(con);
+
+        con.disconnect();
+
+        assertEquals("status code incorrect", con.getResponseCode(), 200);
+        assertTrue("header incorrect", fullResponse.contains("Content-Type: text/html; charset=UTF-8"));
+        assertTrue("response incorrect", fullResponse.contains("<!doctype html><html><head>"));
     }
 
 }

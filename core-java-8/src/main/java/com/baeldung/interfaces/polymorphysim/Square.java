@@ -17,4 +17,9 @@ public class Square implements Shape {
     public double area() {
         return width * width;
     }
+
+    @Override
+    public String getColor() {
+        return "red";
+    }
 }
