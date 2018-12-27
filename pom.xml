@@ -379,6 +379,7 @@
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
                 <module>core-java-lang-syntax</module>
@@ -991,7 +992,7 @@
                 <module>parent-kotlin</module>
                 
                 <module>core-java</module>                
-                <module>core-java-concurrency</module> <!-- very long running? -->
+                <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/hello-world</module>
@@ -1089,6 +1090,7 @@
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
                 <module>core-java-lang-syntax</module>
@@ -1537,7 +1539,7 @@
                 <module>parent-kotlin</module>
                 
                 <module>core-java</module>                
-                <module>core-java-concurrency</module> <!-- very long running? -->
+                <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/hello-world</module>
