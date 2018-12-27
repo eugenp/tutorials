@@ -15,20 +15,20 @@ public class ReentrantReadWriteLockCounter {
     }
     
     public void incrementCounter() {
-        readLock.lock();
+        writeLock.lock();
         try {
             counter += 1;
         } finally {
-            readLock.unlock();
+            writeLock.unlock();
         }
     }
     
     public int getCounter() {
-        writeLock.lock();
+        readLock.lock();
         try {
             return counter;
         } finally {
-            writeLock.unlock();
+            readLock.unlock();
         }
     }
 }
