@@ -58,7 +58,6 @@ public class TypeSafeCriteriaIntegrationTest {
         assertEquals("Ken", student.getFirstName());
         assertEquals("Thompson", student.getLastName());
         assertEquals(1965, student.getGradYear());
-
     }
 
     private void prepareData() {
@@ -74,12 +73,10 @@ public class TypeSafeCriteriaIntegrationTest {
         student2.setLastName("Ritchie");
         student2.setGradYear(1963);
 
-
         session.save(student2);
         session.getTransaction().commit();
 
     }
-
 
     @After
     public void tearDown() {

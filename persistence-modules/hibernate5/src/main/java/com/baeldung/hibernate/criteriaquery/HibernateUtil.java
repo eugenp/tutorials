@@ -35,9 +35,7 @@ public class HibernateUtil {
             Metadata metadata = metadataSources.getMetadataBuilder()
                     .applyBasicType(LocalDateStringType.INSTANCE)
                     .build();
-
-            return metadata.getSessionFactoryBuilder()
-                    .build();
+            return metadata.getSessionFactoryBuilder().build();
         } catch (IOException ex) {
             throw new ExceptionInInitializerError(ex);
         }
@@ -46,8 +44,7 @@ public class HibernateUtil {
 
     private static ServiceRegistry configureServiceRegistry() throws IOException {
         Properties properties = getProperties();
-        return new StandardServiceRegistryBuilder().applySettings(properties)
-                .build();
+        return new StandardServiceRegistryBuilder().applySettings(properties).build();
     }
 
     private static Properties getProperties() throws IOException {

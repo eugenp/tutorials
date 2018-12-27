@@ -130,10 +130,10 @@
             <version>${serenity.version}</version>
             <scope>test</scope>
             <exclusions>
-            	<exclusion>
-            		<groupId>org.asciidoctor</groupId>
-					<artifactId>asciidoctorj</artifactId>
-            	</exclusion>
+                <exclusion>
+                    <groupId>org.asciidoctor</groupId>
+                    <artifactId>asciidoctorj</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -577,7 +577,7 @@
             <classifier>test</classifier>
             <scope>test</scope>
         </dependency>
-		
+
         <dependency>
             <groupId>org.milyn</groupId>
             <artifactId>milyn-smooks-all</artifactId>
@@ -654,8 +654,8 @@
         <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
-            <version>${snakeyaml.version}</version>            
-        </dependency>       
+            <version>${snakeyaml.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.numericalmethod</groupId>
@@ -678,11 +678,6 @@
     </dependencies>
 
     <repositories>
-        <!-- <repository>
-            <id>maven2-repository.dev.java.net</id>
-            <name>Java.net repository</name>
-            <url>http://download.java.net/maven/2</url>
-        </repository> -->
         <repository>
             <snapshots>
                 <enabled>false</enabled>
@@ -823,7 +818,7 @@
         <jnats.version>1.0</jnats.version>
 
         <httpclient.version>4.5.3</httpclient.version>
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <neuroph.version>2.92</neuroph.version>
         <serenity.version>1.9.26</serenity.version>
         <serenity.jbehave.version>1.41.0</serenity.jbehave.version>
