@@ -1,9 +1,11 @@
 package com.baeldung;
 
+import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.junit.Test;
 
@@ -33,18 +35,13 @@ public class OuterUnitTest {
 
     @Test
     public void whenGetNestMembersForNestedClasses_thenGetAllNestedClasses() {
-        List<String> nestMembers = Arrays.stream(Outer.Inner.class.getNestMembers())
+        Set<String> nestMembers = Arrays.stream(Outer.Inner.class.getNestMembers())
           .map(Class::getName)
-          .collect(Collectors.toList());
+          .collect(Collectors.toSet());
 
         is(nestMembers.size()).equals(2);
 
-        boolean containsOuter = nestMembers.stream()
-          .anyMatch("com.baeldung.Outer"::equals);
-        is(containsOuter).equals(true);
-
-        boolean containsInner = nestMembers.stream()
-          .anyMatch("com.baeldung.Outer$Inner"::equals);
-        is(containsInner).equals(true);
+        assertTrue(nestMembers.contains("com.baeldung.Outer"));
+        assertTrue(nestMembers.contains("com.baeldung.Outer$Inner"));
     }
 }
