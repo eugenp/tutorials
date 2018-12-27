@@ -1,15 +1,19 @@
 package com.baeldung.axon.querymodel;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.axonframework.eventhandling.EventHandler;
+import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Service;
 
-import com.baeldung.axon.coreapi.queries.OrderedProduct;
 import com.baeldung.axon.coreapi.events.OrderConfirmedEvent;
 import com.baeldung.axon.coreapi.events.OrderPlacedEvent;
 import com.baeldung.axon.coreapi.events.OrderShippedEvent;
+import com.baeldung.axon.coreapi.queries.FindAllOrderedProductsQuery;
+import com.baeldung.axon.coreapi.queries.OrderedProduct;
 
 @Service
 public class OrderedProductsEventHandler {
@@ -37,6 +41,11 @@ public class OrderedProductsEventHandler {
             orderedProduct.setOrderConfirmed();
             return orderedProduct;
         });
+    }
+
+    @QueryHandler
+    public List<OrderedProduct> handle(FindAllOrderedProductsQuery query) {
+        return new ArrayList<>(orderedProducts.values());
     }
 
 }
