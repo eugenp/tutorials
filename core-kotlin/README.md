@@ -34,7 +34,6 @@
 - [Kotlin Constructors](https://www.baeldung.com/kotlin-constructors)
 - [Creational Design Patterns in Kotlin: Builder](https://www.baeldung.com/kotlin-builder-pattern)
 - [Kotlin Nested and Inner Classes](https://www.baeldung.com/kotlin-inner-classes)
-- [Kotlin with Ktor](https://www.baeldung.com/kotlin-ktor)
 - [Fuel HTTP Library with Kotlin](https://www.baeldung.com/kotlin-fuel)
 - [Introduction to Kovenant Library for Kotlin](https://www.baeldung.com/kotlin-kovenant)
 - [Converting Kotlin Data Class from JSON using GSON](https://www.baeldung.com/kotlin-json-convert-data-class)
@@ -47,3 +46,4 @@
 - [Guide to Sorting in Kotlin](https://www.baeldung.com/kotlin-sort)
 - [Dependency Injection for Kotlin with Injekt](https://www.baeldung.com/kotlin-dependency-injection-with-injekt)
 - [Implementing a Binary Tree in Kotlin](https://www.baeldung.com/kotlin-binary-tree)
+- [Generate a Random Alphanumeric String in Kotlin](https://www.baeldung.com/kotlin-random-alphanumeric-string)

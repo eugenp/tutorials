@@ -1,14 +1,13 @@
 package com.baeldung.scala
 
+import com.baeldung.scala.HigherOrderFunctions.mapReduce
 import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import HigherOrderFunctions.mapReduce
 
 class HigherOrderFunctionsUnitTest {
 
   @Test
-  def whenCalledWithSumAndSquareFunctions_thenCorrectValueReturned = {
+  def whenCalledWithSumAndSquareFunctions_thenCorrectValueReturned() = {
     def square(x : Int) = x * x
 
     def sum(x : Int, y : Int) = x + y
@@ -20,7 +19,7 @@ class HigherOrderFunctionsUnitTest {
   }
 
   @Test
-  def whenComputingSumOfSquaresWithAnonymousFunctions_thenCorrectValueReturned = {
+  def whenComputingSumOfSquaresWithAnonymousFunctions_thenCorrectValueReturned() = {
     def sumSquares(a : Int, b : Int) =
       mapReduce((x, y) => x + y, 0, x => x * x, a, b)
 
@@ -28,7 +27,7 @@ class HigherOrderFunctionsUnitTest {
   }
 
   @Test
-  def givenCurriedFunctions_whenInvoked_thenCorrectValueReturned = {
+  def givenCurriedFunctions_whenInvoked_thenCorrectValueReturned() = {
     // a curried function
     def sum(f : Int => Int)(a : Int,
                             b : Int) : Int =

@@ -2,6 +2,9 @@ package org.baeldung.guava;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Arrays;
 import java.util.Map;
 import org.junit.Test;
 import com.google.common.collect.ImmutableRangeMap;
@@ -98,8 +101,9 @@ public class GuavaRangeMapUnitTest {
         final RangeMap<Integer, String> experiencedSubRangeDesignationMap = experienceRangeDesignationMap.subRangeMap(Range.closed(4, 14));
 
         assertNull(experiencedSubRangeDesignationMap.get(3));
-        assertEquals("Executive Director", experiencedSubRangeDesignationMap.get(14));
-        assertEquals("Vice President", experiencedSubRangeDesignationMap.get(7));
+        assertTrue(experiencedSubRangeDesignationMap.asMapOfRanges().values()
+            .containsAll(Arrays.asList("Executive Director", "Vice President", "Executive Director")));
+        
     }
 
     @Test
