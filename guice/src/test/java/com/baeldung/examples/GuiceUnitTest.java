@@ -15,7 +15,7 @@ import com.baeldung.examples.guice.modules.GuiceModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
-public class GuiceTests {
+public class GuiceUnitTest {
 
     @Test
     public void givenAccountFieldInjectedInGuiceUser_WhenGetAccountInvoked_ThenReturnValueIsNotNull() {

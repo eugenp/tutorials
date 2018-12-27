@@ -18,7 +18,7 @@ import com.baeldung.examples.spring.UserService;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { AppConfig.class })
-public class SpringTests {
+public class SpringUnitTest {
     @Autowired
     ApplicationContext context;
 
