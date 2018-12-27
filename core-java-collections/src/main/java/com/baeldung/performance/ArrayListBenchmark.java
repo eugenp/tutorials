@@ -50,6 +50,11 @@ public class ArrayListBenchmark {
     }
 
     @Benchmark
+    public boolean testContainsVector(ArrayListBenchmark.MyState state) {
+        return state.employeeVector.contains(state.employee);
+    }
+
+    @Benchmark
     public int testIndexOf(ArrayListBenchmark.MyState state) {
         return state.employeeList.indexOf(state.employee);
     }
@@ -71,6 +76,11 @@ public class ArrayListBenchmark {
     @Benchmark
     public void testAdd(ArrayListBenchmark.MyState state) {
         state.employeeList.add(new Employee(state.iterations + 1, "John"));
+    }
+
+    @Benchmark
+    public void testAddVector(ArrayListBenchmark.MyState state) {
+        state.employeeVector.add(new Employee(state.iterations + 1, "John"));
     }
 
     public static void main(String[] args) throws Exception {
