@@ -162,6 +162,12 @@
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
         </dependency>
+        
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -259,6 +265,7 @@
         <graphql-java-tools.version>5.2.4</graphql-java-tools.version>
         <guava.version>18.0</guava.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
+        <modelmapper.version>2.3.2</modelmapper.version>
     </properties>
 
 </project>

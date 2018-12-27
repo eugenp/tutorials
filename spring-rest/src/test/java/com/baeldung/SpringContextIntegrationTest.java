@@ -14,7 +14,7 @@ import com.baeldung.web.log.app.Application;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { CustomApplication.class, ImageApplication.class, PropertyEditorApplication.class,
-		ResponseHeadersApplication.class, Application.class, com.baeldung.web.upload.app.Application.class,
+		ResponseHeadersApplication.class, Application.class, com.baeldung.web.upload.app.UploadApplication.class,
 		MainApplication.class})
 public class SpringContextIntegrationTest {
 
