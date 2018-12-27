@@ -75,7 +75,6 @@ public class TypeSafeCriteriaIntegrationTest {
 
         session.save(student2);
         session.getTransaction().commit();
-
     }
 
     @After
