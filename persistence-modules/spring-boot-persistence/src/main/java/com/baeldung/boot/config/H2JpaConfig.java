@@ -18,7 +18,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = { "org.baeldung.boot.repository", "org.baeldung.repository" })
+@EnableJpaRepositories(basePackages = { "com.baeldung.boot.repository", "com.baeldung.repository" })
 @PropertySource("classpath:persistence-generic-entity.properties")
 @EnableTransactionManagement
 public class H2JpaConfig {
@@ -41,7 +41,7 @@ public class H2JpaConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "org.baeldung.boot.domain" });
+        em.setPackagesToScan(new String[] { "com.baeldung.boot.domain" });
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;
