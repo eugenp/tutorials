@@ -119,4 +119,36 @@ public class ChronJobs {
         logger.info("process 4 with approach 4");
         service.processUsingApproachFourWithCheckpoint(fluxFoo);
     }
+
+    @Scheduled(fixedRate = 20000)
+    public void consumeFiniteFluxWitParallelScheduler() {
+        Flux<Foo> fluxFoo = client.get()
+            .uri("/functional-reactive/periodic-foo-2")
+            .accept(MediaType.TEXT_EVENT_STREAM)
+            .retrieve()
+            .bodyToFlux(FooDto.class)
+            .delayElements(Duration.ofMillis(100))
+            .map(dto -> {
+                logger.debug("process 5-parallel with dto id {} name{}", dto.getId(), dto.getName());
+                return new Foo(dto);
+            });
+        logger.info("process 5-parallel with approach 5-parallel");
+        service.processUsingApproachFivePublishingToDifferentParallelThreads(fluxFoo);
+    }
+
+    @Scheduled(fixedRate = 20000)
+    public void consumeFiniteFluxWithSingleSchedulers() {
+        Flux<Foo> fluxFoo = client.get()
+            .uri("/functional-reactive/periodic-foo-2")
+            .accept(MediaType.TEXT_EVENT_STREAM)
+            .retrieve()
+            .bodyToFlux(FooDto.class)
+            .delayElements(Duration.ofMillis(100))
+            .map(dto -> {
+                logger.debug("process 5-single with dto id {} name{}", dto.getId(), dto.getName());
+                return new Foo(dto);
+            });
+        logger.info("process 5-single with approach 5-single");
+        service.processUsingApproachFivePublishingToDifferentSingleThreads(fluxFoo);
+    }
 }
