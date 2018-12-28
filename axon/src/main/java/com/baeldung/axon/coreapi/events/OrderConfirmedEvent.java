@@ -30,4 +30,11 @@ public class OrderConfirmedEvent {
         final OrderConfirmedEvent other = (OrderConfirmedEvent) obj;
         return Objects.equals(this.orderId, other.orderId);
     }
+
+    @Override
+    public String toString() {
+        return "OrderConfirmedEvent{" +
+                "orderId='" + orderId + '\'' +
+                '}';
+    }
 }

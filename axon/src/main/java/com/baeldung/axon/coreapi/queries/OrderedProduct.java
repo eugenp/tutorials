@@ -52,4 +52,13 @@ public class OrderedProduct {
                 && Objects.equals(this.product, other.product)
                 && Objects.equals(this.orderStatus, other.orderStatus);
     }
+
+    @Override
+    public String toString() {
+        return "OrderedProduct{" +
+                "orderId='" + orderId + '\'' +
+                ", product='" + product + '\'' +
+                ", orderStatus=" + orderStatus +
+                '}';
+    }
 }

@@ -19,8 +19,6 @@ import com.baeldung.axon.coreapi.queries.OrderedProduct;
 @RestController
 public class OrderRestEndpoint {
 
-    private static final String DEFAULT_PRODUCT = "Deluxe Chair";
-
     private final CommandGateway commandGateway;
     private final QueryGateway queryGateway;
 
@@ -32,7 +30,7 @@ public class OrderRestEndpoint {
     @PostMapping("/ship-order")
     public void shipOrder() {
         String orderId = UUID.randomUUID().toString();
-        commandGateway.send(new PlaceOrderCommand(orderId, DEFAULT_PRODUCT));
+        commandGateway.send(new PlaceOrderCommand(orderId, "Deluxe Chair"));
         commandGateway.send(new ConfirmOrderCommand(orderId));
         commandGateway.send(new ShipOrderCommand(orderId));
     }
@@ -40,7 +38,7 @@ public class OrderRestEndpoint {
     @PostMapping("/ship-unconfirmed-order")
     public void shipUnconfirmedOrder() {
         String orderId = UUID.randomUUID().toString();
-        commandGateway.send(new PlaceOrderCommand(orderId, DEFAULT_PRODUCT));
+        commandGateway.send(new PlaceOrderCommand(orderId, "Deluxe Chair"));
         // This throws an exception, as an Order cannot be shipped if it has not been confirmed yet.
         commandGateway.send(new ShipOrderCommand(orderId));
     }
@@ -48,7 +46,7 @@ public class OrderRestEndpoint {
     @GetMapping("/all-orders")
     public List<OrderedProduct> findAllOrderedProducts() {
         return queryGateway.query(new FindAllOrderedProductsQuery(), ResponseTypes.multipleInstancesOf(OrderedProduct.class))
-            .join();
+                           .join();
     }
 
 }

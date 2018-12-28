@@ -33,4 +33,11 @@ public class ConfirmOrderCommand {
         final ConfirmOrderCommand other = (ConfirmOrderCommand) obj;
         return Objects.equals(this.orderId, other.orderId);
     }
+
+    @Override
+    public String toString() {
+        return "ConfirmOrderCommand{" +
+                "orderId='" + orderId + '\'' +
+                '}';
+    }
 }

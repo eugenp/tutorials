@@ -37,4 +37,12 @@ public class OrderPlacedEvent {
         return Objects.equals(this.orderId, other.orderId)
                 && Objects.equals(this.product, other.product);
     }
+
+    @Override
+    public String toString() {
+        return "OrderPlacedEvent{" +
+                "orderId='" + orderId + '\'' +
+                ", product='" + product + '\'' +
+                '}';
+    }
 }

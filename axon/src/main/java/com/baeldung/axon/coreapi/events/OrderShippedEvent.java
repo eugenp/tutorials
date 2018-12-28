@@ -30,4 +30,11 @@ public class OrderShippedEvent {
         final OrderShippedEvent other = (OrderShippedEvent) obj;
         return Objects.equals(this.orderId, other.orderId);
     }
+
+    @Override
+    public String toString() {
+        return "OrderShippedEvent{" +
+                "orderId='" + orderId + '\'' +
+                '}';
+    }
 }

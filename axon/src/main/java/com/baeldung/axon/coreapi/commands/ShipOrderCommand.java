@@ -33,4 +33,11 @@ public class ShipOrderCommand {
         final ShipOrderCommand other = (ShipOrderCommand) obj;
         return Objects.equals(this.orderId, other.orderId);
     }
+
+    @Override
+    public String toString() {
+        return "ShipOrderCommand{" +
+                "orderId='" + orderId + '\'' +
+                '}';
+    }
 }

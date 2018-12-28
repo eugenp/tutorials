@@ -40,4 +40,12 @@ public class PlaceOrderCommand {
         return Objects.equals(this.orderId, other.orderId)
                 && Objects.equals(this.product, other.product);
     }
+
+    @Override
+    public String toString() {
+        return "PlaceOrderCommand{" +
+                "orderId='" + orderId + '\'' +
+                ", product='" + product + '\'' +
+                '}';
+    }
 }

@@ -34,7 +34,7 @@ public class OrderAggregate {
     @CommandHandler
     public void handle(ShipOrderCommand command) {
         if (!orderConfirmed) {
-            throw new IllegalStateException("Cannot ship an order which has not ben confirmed yet.");
+            throw new IllegalStateException("Cannot ship an order which has not been confirmed yet.");
         }
 
         apply(new OrderShippedEvent(orderId));

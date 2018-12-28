@@ -24,21 +24,20 @@ public class OrderedProductsEventHandler {
     public void on(OrderPlacedEvent event) {
         String orderId = event.getOrderId();
         orderedProducts.put(orderId, new OrderedProduct(orderId, event.getProduct()));
-
-    }
-
-    @EventHandler
-    public void on(OrderShippedEvent event) {
-        orderedProducts.computeIfPresent(event.getOrderId(), (orderId, orderedProduct) -> {
-            orderedProduct.setOrderShipped();
-            return orderedProduct;
-        });
     }
 
     @EventHandler
     public void on(OrderConfirmedEvent event) {
         orderedProducts.computeIfPresent(event.getOrderId(), (orderId, orderedProduct) -> {
             orderedProduct.setOrderConfirmed();
+            return orderedProduct;
+        });
+    }
+
+    @EventHandler
+    public void on(OrderShippedEvent event) {
+        orderedProducts.computeIfPresent(event.getOrderId(), (orderId, orderedProduct) -> {
+            orderedProduct.setOrderShipped();
             return orderedProduct;
         });
     }
