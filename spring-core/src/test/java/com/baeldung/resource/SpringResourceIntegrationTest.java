@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.util.stream.Collectors;
 
@@ -24,8 +22,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.util.ResourceUtils;
-
-import com.baeldung.dependson.config.TestConfig;
 
 /**
  * Test class illustrating various methods of accessing a file from the classpath using Resource.
