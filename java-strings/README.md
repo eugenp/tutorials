@@ -43,3 +43,4 @@
 - [Pad a String with Zeros or Spaces in Java](https://www.baeldung.com/java-pad-string)
 - [Adding a Newline Character to a String in Java](https://www.baeldung.com/java-string-newline)
 - [Remove or Replace part of a String in Java](https://www.baeldung.com/java-remove-replace-string-part)
+- [Replace a Character at a Specific Index in a String in Java](https://www.baeldung.com/java-replace-character-at-index)
