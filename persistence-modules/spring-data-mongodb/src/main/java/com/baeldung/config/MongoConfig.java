@@ -3,6 +3,8 @@ package com.baeldung.config;
 import java.util.ArrayList;
 import java.util.List;
 
+import converter.ZonedDateTimeReadConverter;
+import converter.ZonedDateTimeWriteConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;
@@ -52,6 +54,8 @@ public class MongoConfig extends AbstractMongoConfiguration {
     @Override
     public MongoCustomConversions customConversions() {
         converters.add(new UserWriterConverter());
+        converters.add(new ZonedDateTimeReadConverter());
+        converters.add(new ZonedDateTimeWriteConverter());
         return new MongoCustomConversions(converters);
     }
 
@@ -64,5 +68,5 @@ public class MongoConfig extends AbstractMongoConfiguration {
     MongoTransactionManager transactionManager(MongoDbFactory dbFactory) {
             return new MongoTransactionManager(dbFactory);
     }
-    
+
 }

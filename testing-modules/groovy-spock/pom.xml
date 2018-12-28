@@ -6,6 +6,7 @@
     <artifactId>groovy-spock</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+	<name>groovy-spock</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
