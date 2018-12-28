@@ -1,4 +1,4 @@
-package com.baeldung;
+package org.baeldung;
 
 import com.google.common.collect.Lists;
 import org.junit.Test;
