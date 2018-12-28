@@ -17,12 +17,12 @@ public class UnmodifiableSet {
         coreJDK(set);
         guavaOf();
         copyOf(set);
-        setOf();
+        java9Of();
     }
 
-    private static void setOf() {
-        Set<String> immutable = Set.of("Canada", "USA");
-        System.out.println(immutable);
+    private static void java9Of() {
+        //Set<String> immutable = Set.of("Canada", "USA");
+        //System.out.println(immutable);
     }
 
     private static void guavaOf() {
