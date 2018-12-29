@@ -17,7 +17,6 @@
 - [Finding Max/Min of a List or Collection](http://www.baeldung.com/java-collection-min-max)
 - [Collections.emptyList() vs. New List Instance](https://www.baeldung.com/java-collections-emptylist-new-list)
 - [Remove All Occurrences of a Specific Value from a List](https://www.baeldung.com/java-remove-value-from-list)
-- [Converting a Collection to ArrayList in Java](https://www.baeldung.com/java-convert-collection-arraylist)
 - [Check If Two Lists are Equal in Java](http://www.baeldung.com/java-test-a-list-for-ordinality-and-equality)
 - [Java 8 Streams: Find Items From One List Based On Values From Another List](https://www.baeldung.com/java-streams-find-list-items)
 - [A Guide to the Java LinkedList](http://www.baeldung.com/java-linkedlist)
