@@ -1,6 +1,6 @@
-package org.baeldung.boot
+package com.baeldung.boot
 
-import org.baeldung.boot.controller.rest.WebController
+import com.baeldung.boot.controller.rest.WebController
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Narrative
