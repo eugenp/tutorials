@@ -122,11 +122,6 @@
             <version>${jmh-generator-annprocess.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${springframework.spring-web.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
@@ -500,7 +495,6 @@
 
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
         
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <h2database.version>1.4.197</h2database.version>
