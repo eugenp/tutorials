@@ -1,0 +1,36 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.baeldung.jhipster.uaa",
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "5.4.2",
+    "applicationType": "uaa",
+    "baseName": "uaa",
+    "packageName": "com.baeldung.jhipster.uaa",
+    "packageFolder": "com/baeldung/jhipster/uaa",
+    "serverPort": "9999",
+    "authenticationType": "uaa",
+    "cacheProvider": "hazelcast",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZTljMjA0NzA0OWE0MTVhM2Y2MjJkNzg2MzU4NDFhYTZhM2JlOGY4MmM0Y2M4ZTQ3NzdkNjVjZmJkMTFhOGU2MmY3MWMzNDg4OGY2OWI2Zjc4NTFhNDVkOTZlMDVhNzFkNDUyZjMzNDYxNGY5NWNmYTI4NzA2NzRkYzQ4Y2ZiZjU=",
+    "enableTranslation": true,
+    "languages": [
+      "en"
+    ],
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "skipClient": true
+  }
+}

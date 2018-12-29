@@ -14,7 +14,7 @@ import com.baeldung.reactive.cors.webfilter.functional.handlers.CorsWithWebFilte
 public class CorsWithWebFilterRouterFunctions {
 
     @Bean
-    public RouterFunction<ServerResponse> responseHeaderRoute(@Autowired CorsWithWebFilterHandler handler) {
+    public RouterFunction<ServerResponse> corsWebfilterRouter(@Autowired CorsWithWebFilterHandler handler) {
         return RouterFunctions.route(RequestPredicates.PUT("/web-filter-on-functional/functional-endpoint"), handler::useHandler);
     }
 }

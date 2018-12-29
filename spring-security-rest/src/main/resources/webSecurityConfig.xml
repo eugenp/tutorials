@@ -5,10 +5,12 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="
       http://www.springframework.org/schema/security
-      http://www.springframework.org/schema/security/spring-security-4.2.xsd
+      http://www.springframework.org/schema/security/spring-security.xsd
       http://www.springframework.org/schema/beans
-      http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+      http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+<!-- Spring Security Configurations are managed in SecurityJavaConfig class -->
+<!-- 
 	<http use-expressions="true" entry-point-ref="restAuthenticationEntryPoint">
         <intercept-url pattern="/admin/*" access="hasAnyRole('ROLE_ADMIN')"/>
     
@@ -20,7 +22,7 @@
 			authentication-failure-handler-ref="myFailureHandler" />
 
         
-        <!-- <access-denied-handler error-page="/my-error-page" /> -->
+        <access-denied-handler error-page="/my-error-page" />
         
         <access-denied-handler ref="customAccessDeniedHandler" />
         
@@ -44,5 +46,5 @@
 	</authentication-manager>
     
     <global-method-security pre-post-annotations="enabled"/>
-
+-->
 </beans:beans>

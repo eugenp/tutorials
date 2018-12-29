@@ -23,23 +23,19 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@PropertySource({ "classpath:persistence-jndi.properties" })
-@ComponentScan({ "org.baeldung.persistence" })
+@PropertySource("classpath:persistence-jndi.properties")
+@ComponentScan("org.baeldung.persistence")
 @EnableJpaRepositories(basePackages = "org.baeldung.persistence.dao")
 public class PersistenceJNDIConfig {
 
     @Autowired
     private Environment env;
 
-    public PersistenceJNDIConfig() {
-        super();
-    }
-
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws NamingException {
         final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
-        em.setPackagesToScan(new String[] { "org.baeldung.persistence.model" });
+        em.setPackagesToScan("org.baeldung.persistence.model");
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(additionalProperties());
         return em;
@@ -52,9 +48,7 @@ public class PersistenceJNDIConfig {
 
     @Bean
     public PlatformTransactionManager transactionManager(final EntityManagerFactory emf) {
-        final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(emf);
-        return transactionManager;
+        return new JpaTransactionManager(emf);
     }
 
     @Bean

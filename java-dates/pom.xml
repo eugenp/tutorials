@@ -80,7 +80,7 @@
         <joda-time.version>2.10</joda-time.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-		<maven.compiler.source>9</maven.compiler.source>
-        <maven.compiler.target>9</maven.compiler.target>
+		<maven.compiler.source>1.9</maven.compiler.source>
+        <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
 </project>

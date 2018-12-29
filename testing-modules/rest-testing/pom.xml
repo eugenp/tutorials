@@ -106,12 +106,52 @@
                 <filtering>true</filtering>
             </resource>
         </resources>
+        
+        <plugins>
+             <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
+                <configuration>
+                    <parallel>classes</parallel>
+                    <threadCount>4</threadCount>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin> 
+            <plugin>
+              <groupId>com.github.temyers</groupId>
+              <artifactId>cucumber-jvm-parallel-plugin</artifactId>
+              <version>5.0.0</version>
+              <executions>
+                <execution>
+                  <id>generateRunners</id>
+                  <phase>generate-test-sources</phase>
+                  <goals>
+                    <goal>generateRunners</goal>
+                  </goals>
+                  <configuration>
+                    <glue>
+                      <package>com.baeldung.rest.cucumber</package>
+                    </glue>
+                    <featuresDirectory>src/test/resources/Feature/</featuresDirectory>
+                    <parallelScheme>SCENARIO</parallelScheme>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin>
+        </plugins>
 
     </build>
 
     <properties>
         <!-- marshalling -->
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
 
         <!-- util -->
         <guava.version>19.0</guava.version>

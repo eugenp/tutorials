@@ -54,4 +54,9 @@ public class Fruit {
     public void setSerial(String serial) {
         this.serial = serial;
     }
+    
+    @Override
+    public String toString() {
+        return "Fruit [name: " + getName() + " colour: " + getColour() + "]";
+    }
 }

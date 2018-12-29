@@ -85,6 +85,7 @@
         <lombok.version>1.16.12</lombok.version>
         <commons.io.version>2.5</commons.io.version>
         <spring-boot.version>1.5.2.RELEASE</spring-boot.version>
+        <mockito.version>1.10.19</mockito.version>
     </properties>
 
 </project>
