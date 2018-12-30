@@ -5,10 +5,10 @@ import com.baeldung.hexagonal.events.EventPublisher;
 import com.baeldung.hexagonal.model.Item;
 import com.baeldung.hexagonal.persistence.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
-public class ItemService {
+@Component
+public class ItemBorrower {
 
     @Autowired
     ItemRepository itemRepository;

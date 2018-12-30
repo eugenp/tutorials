@@ -1,6 +1,6 @@
 package com.baeldung.hexagonal.api;
 
-import com.baeldung.hexagonal.service.ItemService;
+import com.baeldung.hexagonal.service.ItemBorrower;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +12,11 @@ import org.springframework.web.server.ResponseStatusException;
 public class ItemController {
 
     @Autowired
-    ItemService itemService;
+    ItemBorrower itemBorrower;
 
     @GetMapping(path="/{id}")
     public String borrowItem(@PathVariable String id) {
-        if(itemService.borrow(id, "anonymous")) {
+        if(itemBorrower.borrow(id, "anonymous")) {
             return "ok";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Item Not Found");
