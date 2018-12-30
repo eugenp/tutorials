@@ -22,7 +22,7 @@ public class KafkaApplication {
     public static void main(String[] args) throws Exception {
 
         ConfigurableApplicationContext context = SpringApplication.run(KafkaApplication.class, args);
-
+        
         MessageProducer producer = context.getBean(MessageProducer.class);
         MessageListener listener = context.getBean(MessageListener.class);
         /*
@@ -102,7 +102,7 @@ public class KafkaApplication {
         }
 
         public void sendMessageToPartion(String message, int partition) {
-            kafkaTemplate.send(partionedTopicName, partition, message);
+            kafkaTemplate.send(partionedTopicName, partition, null, message);
         }
 
         public void sendMessageToFiltered(String message) {
@@ -124,13 +124,13 @@ public class KafkaApplication {
 
         private CountDownLatch greetingLatch = new CountDownLatch(1);
 
-        @KafkaListener(topics = "${message.topic.name}", group = "foo", containerFactory = "fooKafkaListenerContainerFactory")
+        @KafkaListener(topics = "${message.topic.name}", groupId = "foo", containerFactory = "fooKafkaListenerContainerFactory")
         public void listenGroupFoo(String message) {
             System.out.println("Received Messasge in group 'foo': " + message);
             latch.countDown();
         }
 
-        @KafkaListener(topics = "${message.topic.name}", group = "bar", containerFactory = "barKafkaListenerContainerFactory")
+        @KafkaListener(topics = "${message.topic.name}", groupId = "bar", containerFactory = "barKafkaListenerContainerFactory")
         public void listenGroupBar(String message) {
             System.out.println("Received Messasge in group 'bar': " + message);
             latch.countDown();
