@@ -1,4 +1,4 @@
-package com.baeldung.set;
+package com.baeldung.java9.set;
 
 import com.google.common.collect.ImmutableSet;
 
@@ -21,8 +21,8 @@ public class UnmodifiableSet {
     }
 
     private static void java9Of() {
-        //Set<String> immutable = Set.of("Canada", "USA");
-        //System.out.println(immutable);
+        Set<String> immutable = Set.of("Canada", "USA");
+        System.out.println(immutable);
     }
 
     private static void guavaOf() {
