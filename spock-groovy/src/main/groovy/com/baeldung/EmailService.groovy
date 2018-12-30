@@ -7,7 +7,7 @@ class EmailService {
     }
 
     def sendEmail(Invoice invoice) {
-        if (invoice) {
+        if (invoice && invoice.eligibleForWithdraw()) {
             logService.log(invoice, 'Email sent')
             return true
         }

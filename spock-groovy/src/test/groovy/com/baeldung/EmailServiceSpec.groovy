@@ -2,36 +2,38 @@ import spock.lang.Specification
 
 class EmailServiceSpec extends Specification {
 
-    def "Should log the invoice when the email is successfully sent to the client"() {
+    def "Should send the email and log the invoice when the total amount of the invoice is greater than zero"() {
 
-        given: "an invoice"
-        def invoice = new Invoice()
-
-        and: "a mock of LogService"
+        given: "a mock of LogService"
         def logService = Mock(LogService)
 
         and: "an instance of EmailService"
         def emailService = new EmailService(logService)
 
-        when: "an attempt to send an email with an log is made"
-        def emailSent = emailService.sendEmail(invoice)
+        when: "an attempt to send an email is made"
+        def actualEmailSent = emailService.sendEmail(invoice)
 
-        then: "the correct overloaded log method is invoked"
-        1 * logService.log(invoice, 'Email sent')
+        then: "the email is sent only if the total amount of the invoice is greater than zero"
+        assert actualEmailSent == expectedEmailSent
 
-        and: "the email is sent"
-        emailSent
+        and: "a log statement is produced only if the email is sent successfully"
+        expectedLogCalls * logService.log(invoice, 'Email sent')
+
+        where:
+        invoice                                   || expectedEmailSent || expectedLogCalls
+        [totalAmount: BigDecimal.ZERO] as Invoice || false             || 0
+        [totalAmount: BigDecimal.ONE] as Invoice  || true              || 1
     }
 
     def "Should return true if the email is sent successfully to the client"() {
 
         given: "an log"
-        def invoice = new Invoice()
+        def invoice = new Invoice(totalAmount: BigDecimal.TEN)
 
         and: "a fake LogService"
         def logService = Stub(LogService)
 
-        logService.log(invoice, 'Email sent') >> {}
+        logService.log(_, _) >> {}
 
         and: "an instance of EmailService"
         def emailService = new EmailService(logService)
@@ -52,7 +54,7 @@ class EmailServiceSpec extends Specification {
         def emailService = new EmailService(spyLogService)
 
         and: "an invoice instance"
-        def invoice = new Invoice()
+        def invoice = new Invoice(totalAmount: BigDecimal.ONE)
 
         when: "an attempt tp send an email with an log is made"
         emailService.sendEmail(invoice)
