@@ -21,7 +21,7 @@ public class ArrayListOfArrayList {
         graph.get(1).add(0);
         graph.get(2).add(1);
         graph.get(0).add(2);
-        
+
         vertexCount = graph.size();
         for(int i = 0; i < vertexCount; i++) {
             int edgeCount = graph.get(i).size();
