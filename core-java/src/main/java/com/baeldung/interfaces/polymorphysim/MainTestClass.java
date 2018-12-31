@@ -6,14 +6,14 @@ import java.util.List;
 public class MainTestClass {
     public static void main(String[] args) {
         List<Shape> shapes = new ArrayList<>();
-        Shape circleShape = new Circle(2);
-        Shape squareShape = new Square(2);
+        Shape circleShape = new Circle();
+        Shape squareShape = new Square();
 
         shapes.add(circleShape);
         shapes.add(squareShape);
 
         for (Shape shape : shapes) {
-            System.out.println(shape.name() + " area: " + shape.area());
+            System.out.println(shape.name());
         }
     }
 }

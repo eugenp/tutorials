@@ -1,10 +1,7 @@
 package com.baeldung.interfaces.polymorphysim;
 
-import com.baeldung.interfaces.HasColor;
 
-public interface Shape extends HasColor {
+public interface Shape {
 
     String name();
-
-    double area();
 }
