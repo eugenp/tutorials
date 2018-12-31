@@ -21,3 +21,5 @@
 - [Custom Types in Hibernate](https://www.baeldung.com/hibernate-custom-types)
 - [Criteria API – An Example of IN Expressions](https://www.baeldung.com/jpa-criteria-api-in-expressions)
 - [Difference Between @JoinColumn and mappedBy](https://www.baeldung.com/jpa-joincolumn-vs-mappedby)
+- [Hibernate 5 Bootstrapping API](https://www.baeldung.com/hibernate-5-bootstrapping-api)
+- [Criteria Queries Using JPA Metamodel](https://www.baeldung.com/hibernate-criteria-queries-metamodel)

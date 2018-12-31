@@ -35,7 +35,6 @@ public class HibernateUtil {
             Metadata metadata = metadataSources.getMetadataBuilder()
                     .applyBasicType(LocalDateStringType.INSTANCE)
                     .build();
-
             return metadata.getSessionFactoryBuilder().build();
         } catch (IOException ex) {
             throw new ExceptionInInitializerError(ex);
