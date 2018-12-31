@@ -16,7 +16,7 @@
     <dependencies>
         <dependency>
             <groupId>org.axonframework</groupId>
-            <artifactId>axon-spring-boot-autoconfigure</artifactId>
+            <artifactId>axon-spring-boot-starter</artifactId>
             <version>${axon.version}</version>
             <exclusions>
                 <exclusion>
