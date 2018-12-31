@@ -1,9 +1,23 @@
-package com.baeldung.hexagonal.bookstore.model;
+package com.baeldung.hexagonal.bookstore.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "books")
 public class Book {
+    @Id
     public String isbn;
     public String authorName;
     public String title;
+
+    public Book(String isbn, String authorName, String title) {
+        super();
+        this.isbn = isbn;
+        this.authorName = authorName;
+        this.title = title;
+    }
 
     public String getIsbn() {
         return isbn;

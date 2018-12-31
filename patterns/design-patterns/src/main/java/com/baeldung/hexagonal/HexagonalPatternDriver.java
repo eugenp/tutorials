@@ -4,7 +4,7 @@ import static com.baeldung.util.LogerUtil.LOG;
 
 import com.baeldung.hexagonal.bookstore.core.BookStore;
 import com.baeldung.hexagonal.bookstore.core.BookStoreImpl;
-import com.baeldung.hexagonal.bookstore.model.Book;
+import com.baeldung.hexagonal.bookstore.entity.Book;
 import com.baeldung.hexagonal.bookstore.primaryport.BookFinder;
 import com.baeldung.hexagonal.bookstore.primaryport.BookFinderMockAdaptor;
 import com.baeldung.hexagonal.bookstore.secondaryport.BookStoreMemoryRepository;

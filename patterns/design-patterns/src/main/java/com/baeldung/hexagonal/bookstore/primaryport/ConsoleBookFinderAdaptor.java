@@ -1,7 +1,7 @@
 package com.baeldung.hexagonal.bookstore.primaryport;
 
 import com.baeldung.hexagonal.bookstore.core.BookStore;
-import com.baeldung.hexagonal.bookstore.model.Book;
+import com.baeldung.hexagonal.bookstore.entity.Book;
 
 public class ConsoleBookFinderAdaptor implements BookFinder {
 

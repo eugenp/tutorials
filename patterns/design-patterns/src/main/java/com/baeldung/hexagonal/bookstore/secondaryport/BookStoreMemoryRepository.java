@@ -3,8 +3,8 @@ package com.baeldung.hexagonal.bookstore.secondaryport;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.baeldung.hexagonal.bookstore.model.Book;
-import com.baeldung.hexagonal.bookstore.utils.BookStoreData;
+import com.baeldung.hexagonal.bookstore.entity.Book;
+import com.baeldung.hexagonal.bookstore.utils.BookStoreDataMock;
 
 public class BookStoreMemoryRepository implements BookStoreRepository {
 
@@ -12,7 +12,7 @@ public class BookStoreMemoryRepository implements BookStoreRepository {
 
     public BookStoreMemoryRepository() {
         super();
-        books.put("9780062312686", BookStoreData.bookBuilder("9780062312686"));
+        books.put("9780062312686", BookStoreDataMock.bookBuilder("9780062312686"));
     }
 
     @Override

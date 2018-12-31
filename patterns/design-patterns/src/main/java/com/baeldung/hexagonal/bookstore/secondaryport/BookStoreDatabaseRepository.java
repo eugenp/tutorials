@@ -1,12 +1,12 @@
 package com.baeldung.hexagonal.bookstore.secondaryport;
 
-import com.baeldung.hexagonal.bookstore.model.Book;
-import com.baeldung.hexagonal.bookstore.utils.BookStoreData;
+import com.baeldung.hexagonal.bookstore.entity.Book;
+import com.baeldung.hexagonal.bookstore.jpa.BookStoreData;
 
 public class BookStoreDatabaseRepository implements BookStoreRepository {
 
     @Override
     public Book findBookByIsbn(String isbnNumber) {
-        return BookStoreData.fetchBook(isbnNumber);
+        return BookStoreData.getBook(isbnNumber);
     }
 }

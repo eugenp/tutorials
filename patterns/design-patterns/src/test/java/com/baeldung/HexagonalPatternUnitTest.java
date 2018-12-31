@@ -7,21 +7,22 @@ import org.junit.Test;
 
 import com.baeldung.hexagonal.bookstore.core.BookStore;
 import com.baeldung.hexagonal.bookstore.core.BookStoreImpl;
-import com.baeldung.hexagonal.bookstore.model.Book;
+import com.baeldung.hexagonal.bookstore.entity.Book;
 import com.baeldung.hexagonal.bookstore.primaryport.BookFinder;
-import com.baeldung.hexagonal.bookstore.primaryport.ConsoleBookFinderAdaptor;
-import com.baeldung.hexagonal.bookstore.secondaryport.BookStoreDatabaseRepository;
+import com.baeldung.hexagonal.bookstore.primaryport.BookFinderMockAdaptor;
+import com.baeldung.hexagonal.bookstore.secondaryport.BookStoreMemoryRepository;
 import com.baeldung.hexagonal.bookstore.secondaryport.BookStoreRepository;
 
-public class HexagonalPatternIntegrationTest {
+public class HexagonalPatternUnitTest {
+
     @Test
     public void givenValidISBNNumber_WhenBookFindingInDatabase_thenSuccessfullyFoundBook() {
 
-        BookStoreRepository bookStoreDatabaseRepository = new BookStoreDatabaseRepository();
+        BookStoreRepository bookStoreMemoryRepository = new BookStoreMemoryRepository();
 
-        BookStore bookStore = new BookStoreImpl(bookStoreDatabaseRepository);
+        BookStore bookStore = new BookStoreImpl(bookStoreMemoryRepository);
 
-        BookFinder bookFinder = new ConsoleBookFinderAdaptor(bookStore);
+        BookFinder bookFinder = new BookFinderMockAdaptor(bookStore);
 
         Book findBook = bookFinder.findBook("9780062312686");
 
