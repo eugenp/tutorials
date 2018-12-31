@@ -25,6 +25,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
@@ -43,6 +47,13 @@
             <version>${spock.version}</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
 
     <build>
@@ -99,13 +110,23 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*IntegrationTest.java</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>        
+        
         </plugins>
 
     </build>
 
     <profiles>
         <profile>
-            <id>autoconfiguration</id>
+            <id>integration</id>
             <build>
                 <plugins>
                     <plugin>
@@ -118,13 +139,8 @@
                                     <goal>test</goal>
                                 </goals>
                                 <configuration>
-                                    <excludes>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                        <exclude>**/*IntegrationTest.java</exclude>
-                                        <exclude>**/*IntTest.java</exclude>
-                                    </excludes>
                                     <includes>
-                                        <include>**/AutoconfigurationTest.java</include>
+                                        <include>**/*IntegrationTest.java</include>
                                     </includes>
                                 </configuration>
                             </execution>
@@ -142,7 +158,7 @@
 
     <properties>
         <!-- The main class to start by executing java -jar -->
-        <start-class>org.baeldung.boot.Application</start-class>
+        <start-class>com.baeldung.boot.Application</start-class>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <spock.version>1.2-groovy-2.4</spock.version>
     </properties>

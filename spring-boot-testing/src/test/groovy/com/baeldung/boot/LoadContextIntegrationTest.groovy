@@ -10,7 +10,7 @@ import spock.lang.Title
 @Title("Application Specification")
 @Narrative("Specification which beans are expected")
 @SpringBootTest
-class LoadContextTest extends Specification {
+class LoadContextIntegrationTest extends Specification {
 
     @Autowired(required = false)
     private WebController webController

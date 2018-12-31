@@ -12,9 +12,9 @@ import spock.lang.Title
 
 @Title("WebController Specification")
 @Narrative("The Specification of the behaviour of the WebController. It can greet a person, change the name and reset it to 'world'")
-@AutoConfigureMockMvc
-@WebMvcTest
-class WebControllerTest extends Specification {
+@AutoConfigureMockMvc(secure=false)
+@WebMvcTest()
+class WebControllerIntegrationTest extends Specification {
 
     @Autowired
     private MockMvc mvc
