@@ -20,65 +20,65 @@ all:	clean create-keystore add-host create-truststore add-client
 
 create-keystore:
 	# Generate a certificate authority (CA)
-	keytool -genkey -alias ca -ext BC=ca:true \
+	keytool -genkey -alias ca -ext san=dns:localhost,ip:127.0.0.1 -ext BC=ca:true \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA -keypass $(PASSWORD) \
 	    -validity 3650 -dname $(DNAME_CA) \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 
 add-host:
 	# Generate a host certificate
-	keytool -genkey -alias $(HOSTNAME) \
+	keytool -genkey -alias $(HOSTNAME) -ext san=dns:localhost,ip:127.0.0.1  \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA -keypass $(PASSWORD) \
 	    -validity 3650 -dname $(DNAME_HOST) \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 	# Generate a host certificate signing request
-	keytool -certreq -alias $(HOSTNAME) -ext BC=ca:true \
+	keytool -certreq -alias $(HOSTNAME) -ext san=dns:localhost,ip:127.0.0.1 -ext BC=ca:true \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA \
 	    -validity 3650 -file "$(HOSTNAME).csr" \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 	# Generate signed certificate with the certificate authority
-	keytool -gencert -alias ca \
+	keytool -gencert -alias ca -ext san=dns:localhost,ip:127.0.0.1 \
 	    -validity 3650 -sigalg SHA512withRSA \
 	    -infile "$(HOSTNAME).csr" -outfile "$(HOSTNAME).crt" -rfc \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 	# Import signed certificate into the keystore
-	keytool -import -trustcacerts -alias $(HOSTNAME) \
+	keytool -import -trustcacerts -alias $(HOSTNAME) -ext san=dns:localhost,ip:127.0.0.1 \
 	    -file "$(HOSTNAME).crt" \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 
 export-authority:
 	# Export certificate authority
-	keytool -export -alias ca -file ca.crt -rfc \
+	keytool -export -alias ca -ext san=dns:localhost,ip:127.0.0.1 -file ca.crt -rfc \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 
 
 create-truststore: export-authority
 	# Import certificate authority into a new truststore
-	keytool -import -trustcacerts -noprompt -alias ca -file ca.crt \
+	keytool -import -trustcacerts -noprompt -alias ca -ext san=dns:localhost,ip:127.0.0.1 -file ca.crt \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 
 add-client:
 	# Generate client certificate
-	keytool -genkey -alias $(CLIENTNAME) \
+	keytool -genkey -alias $(CLIENTNAME) -ext san=dns:localhost,ip:127.0.0.1 \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA -keypass $(PASSWORD) \
 	    -validity 3650 -dname $(DNAME_CLIENT) \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 	# Generate a host certificate signing request
-	keytool -certreq -alias $(CLIENTNAME) -ext BC=ca:true \
+	keytool -certreq -alias $(CLIENTNAME) -ext san=dns:localhost,ip:127.0.0.1 -ext  BC=ca:true \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA \
 	    -validity 3650 -file "$(CLIENTNAME).csr" \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 	# Generate signed certificate with the certificate authority
-	keytool -gencert -alias ca \
+	keytool -gencert -alias ca -ext san=dns:localhost,ip:127.0.0.1 \
 	    -validity 3650 -sigalg SHA512withRSA \
 	    -infile "$(CLIENTNAME).csr" -outfile "$(CLIENTNAME).crt" -rfc \
 	    -keystore $(KEYSTORE) -storepass $(PASSWORD)
 	# Import signed certificate into the truststore
-	keytool -import -trustcacerts -alias $(CLIENTNAME) \
+	keytool -import -trustcacerts -alias $(CLIENTNAME) -ext san=dns:localhost,ip:127.0.0.1 \
 	    -file "$(CLIENTNAME).crt" \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 	# Export private certificate for importing into a browser
-	keytool -importkeystore -srcalias $(CLIENTNAME) \
+	keytool -importkeystore -srcalias $(CLIENTNAME) -ext san=dns:localhost,ip:127.0.0.1 \
 	    -srckeystore $(TRUSTSTORE) -srcstorepass $(PASSWORD) \
 	    -destkeystore "$(CLIENTNAME).p12" -deststorepass $(PASSWORD) \
 	    -deststoretype PKCS12

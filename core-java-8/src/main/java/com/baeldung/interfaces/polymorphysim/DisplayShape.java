@@ -6,6 +6,10 @@ public class DisplayShape {
 
     private ArrayList<Shape> shapes;
 
+    public ArrayList<Shape> getShapes() {
+        return shapes;
+    }
+
     public DisplayShape() {
         shapes = new ArrayList<>();
     }
