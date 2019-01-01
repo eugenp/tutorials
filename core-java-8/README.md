@@ -15,7 +15,6 @@
 - [Guide to Java 8 Comparator.comparing()](http://www.baeldung.com/java-8-comparator-comparing)
 - [Guide To Java 8 Optional](http://www.baeldung.com/java-optional)
 - [Guide to the Java 8 forEach](http://www.baeldung.com/foreach-java)
-- [Java Base64 Encoding and Decoding](http://www.baeldung.com/java-base64-encode-and-decode)
 - [The Difference Between map() and flatMap()](http://www.baeldung.com/java-difference-map-and-flatmap)
 - [Static and Default Methods in Interfaces in Java](http://www.baeldung.com/java-static-default-methods)
 - [Efficient Word Frequency Calculator in Java](http://www.baeldung.com/java-word-frequency)

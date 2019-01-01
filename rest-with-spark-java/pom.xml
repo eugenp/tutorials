@@ -34,8 +34,8 @@
 
     <properties>
         <spark-core.version>2.5.4</spark-core.version>
-        <jackson-core.version>2.8.6</jackson-core.version>
-        <jackson-databind.version>2.8.6</jackson-databind.version>
+        <jackson-core.version>2.9.7</jackson-core.version>
+        <jackson-databind.version>2.9.7</jackson-databind.version>
     </properties>
 
 </project>

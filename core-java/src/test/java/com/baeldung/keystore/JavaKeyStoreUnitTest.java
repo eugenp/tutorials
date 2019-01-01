@@ -4,15 +4,24 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
 import sun.security.x509.AlgorithmId;
 import sun.security.x509.CertificateAlgorithmId;
 import sun.security.x509.CertificateSerialNumber;
 import sun.security.x509.CertificateValidity;
 import sun.security.x509.CertificateVersion;
 import sun.security.x509.CertificateX509Key;
+import sun.security.x509.SubjectAlternativeNameExtension;
 import sun.security.x509.X500Name;
 import sun.security.x509.X509CertImpl;
 import sun.security.x509.X509CertInfo;
+import sun.security.x509.CertificateExtensions;
+import sun.security.x509.GeneralNames;
+import sun.security.x509.GeneralName;
+import sun.security.x509.GeneralNameInterface;
+import sun.security.x509.DNSName;
+import sun.security.x509.IPAddressName;
+import sun.security.util.DerOutputStream;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -188,6 +197,23 @@ public class JavaKeyStoreUnitTest {
         Date validTo = new Date(validFrom.getTime() + 50L * 365L * 24L * 60L * 60L * 1000L); //50 years
         CertificateValidity validity = new CertificateValidity(validFrom, validTo);
         certInfo.set(X509CertInfo.VALIDITY, validity);
+        
+        GeneralNameInterface dnsName = new DNSName("baeldung.com");
+        DerOutputStream dnsNameOutputStream = new DerOutputStream();
+        dnsName.encode(dnsNameOutputStream);
+        
+        GeneralNameInterface ipAddress = new IPAddressName("127.0.0.1");
+        DerOutputStream ipAddressOutputStream = new DerOutputStream();
+        ipAddress.encode(ipAddressOutputStream);
+        
+        GeneralNames generalNames = new GeneralNames();
+        generalNames.add(new GeneralName(dnsName));
+        generalNames.add(new GeneralName(ipAddress));
+        
+        CertificateExtensions ext = new CertificateExtensions();
+        ext.set(SubjectAlternativeNameExtension.NAME, new SubjectAlternativeNameExtension(generalNames));
+
+        certInfo.set(X509CertInfo.EXTENSIONS, ext);        
 
         // Create certificate and sign it
         X509CertImpl cert = new X509CertImpl(certInfo);
@@ -202,4 +228,5 @@ public class JavaKeyStoreUnitTest {
 
         return newCert;
     }
+
 }
