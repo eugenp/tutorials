@@ -1,6 +1,5 @@
 package com.baeldung.examples;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -12,8 +11,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.examples.common.BookService;
 import com.baeldung.examples.spring.AppConfig;
+import com.baeldung.examples.spring.SpringPersonService;
 import com.baeldung.examples.spring.SpringUser;
-import com.baeldung.examples.spring.Student;
 import com.baeldung.examples.spring.UserService;
 
 @RunWith(SpringRunner.class)
@@ -23,13 +22,20 @@ public class SpringUnitTest {
     ApplicationContext context;
 
     @Test
-    public void givenAccountFieldAutowiredToSpringUser_WhenGetAccountInvoked_ThenReturnValueIsNotNull() {
+    public void givenAccountAutowiredToSpringUser_WhenGetAccountInvoked_ThenReturnValueIsNotNull() {
         SpringUser springUser = context.getBean(SpringUser.class);
         assertNotNull(springUser.getAccount());
     }
 
     @Test
-    public void givenAccountServiceFieldAutowiredToUserService_WhenGetAccountServiceInvoked_ThenReturnValueIsNotNull() {
+    public void givenPersonDaoAutowiredToSpringPersonService_WhenGetPersonDaoInvoked_ThenReturnValueIsNotNull() {
+        SpringPersonService personService = context.getBean(SpringPersonService.class);
+        assertNotNull(personService);
+        assertNotNull(personService.getPersonDao());
+    }
+
+    @Test
+    public void givenAccountServiceAutowiredToUserService_WhenGetAccountServiceInvoked_ThenReturnValueIsNotNull() {
         UserService userService = context.getBean(UserService.class);
         assertNotNull(userService.getAccountService());
     }
@@ -41,18 +47,16 @@ public class SpringUnitTest {
     }
 
     @Test
-    public void givenStudentConstructorAnnotatedByAutowired_WhenStudentIsRetrievedFromContext_ThenInstanceWillBeCreatedFromTheConstructor() {
-        Student student = context.getBean(Student.class);
-        assertNotNull(student);
-        assertEquals("Default", student.getFirstName());
-        assertEquals("Default", student.getLastName());
+    public void givenSpringPersonServiceConstructorAnnotatedByAutowired_WhenSpringPersonServiceIsRetrievedFromContext_ThenInstanceWillBeCreatedFromTheConstructor() {
+        SpringPersonService personService = context.getBean(SpringPersonService.class);
+        assertNotNull(personService);
     }
 
     @Test
-    public void givenAddressAutowiredToSpringUserBySetterInjection_WhenSpringUserRetrievedFromContext_ThenAddressInitializedByTheSetter() {
-        SpringUser springUser = context.getBean(SpringUser.class);
-        assertNotNull(springUser.getAddress());
-        assertEquals("Default", springUser.getAddress().getCity());
+    public void givenPersonDaoAutowiredToSpringPersonServiceBySetterInjection_WhenSpringPersonServiceRetrievedFromContext_ThenPersonDaoInitializedByTheSetter() {
+        SpringPersonService personService = context.getBean(SpringPersonService.class);
+        assertNotNull(personService);
+        assertNotNull(personService.getPersonDao());
     }
 
 }
