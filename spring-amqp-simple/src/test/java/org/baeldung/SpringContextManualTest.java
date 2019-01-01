@@ -5,11 +5,11 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.client.RmiClient;
+import com.baeldung.springamqpsimple.SpringAmqpApplication;
 
-@SpringBootTest(classes = RmiClient.class)
 @RunWith(SpringRunner.class)
-public class SpringContextIntegrationTest {
+@SpringBootTest(classes = SpringAmqpApplication.class)
+public class SpringContextManualTest {
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
