@@ -383,6 +383,7 @@
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
+                <module>core-java-security</module>
                 <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
@@ -1095,6 +1096,7 @@
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
+                <module>core-java-security</module>
                 <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
