@@ -12,7 +12,7 @@ public class Counter {
         counter += 1;
     }
     
-    public synchronized int getCounter() {
+    public int getCounter() {
         return counter;
     }
 }

@@ -1,23 +1,23 @@
 package com.baeldung.threadsafety.tests;
 
-import com.baeldung.threadsafety.services.MessageService;
-import com.baeldung.threadsafety.threads.ThreadD;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.threadsafety.callables.MessageServiceCallable;
+import com.baeldung.threadsafety.services.MessageService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class MessageServiceTest {
-    
+
     @Test
-    public void whenCalledGetMessage_thenCorrect() throws InterruptedException {
+    public void whenCalledgetMessage_thenCorrect() throws Exception {
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
         MessageService messageService = new MessageService("Welcome to Baeldung!");
-        ThreadD thread1 = new ThreadD(messageService);
-        ThreadD thread2 = new ThreadD(messageService);
-        thread1.start();
-        thread2.start();
-        thread1.join();
-        thread2.join();
-        
-        assertThat(thread1.getMessageService().getMesssage()).isEqualTo("Welcome to Baeldung!");
-        assertThat(thread2.getMessageService().getMesssage()).isEqualTo("Welcome to Baeldung!");
+        Future<String> future1 = (Future<String>) executorService.submit(new MessageServiceCallable(messageService));
+        Future<String> future2 = (Future<String>) executorService.submit(new MessageServiceCallable(messageService));
+
+        assertThat(future1.get()).isEqualTo("Welcome to Baeldung!");
+        assertThat(future2.get()).isEqualTo("Welcome to Baeldung!");
     }
 }

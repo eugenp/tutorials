@@ -1,23 +1,23 @@
 package com.baeldung.threadsafety.tests;
 
-import com.baeldung.threadsafety.services.Counter;
-import com.baeldung.threadsafety.threads.ThreadE;
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.threadsafety.callables.CounterCallable;
+import com.baeldung.threadsafety.services.Counter;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class CounterTest {
-    
+
     @Test
-    public void whenCalledIncremenCounter_thenCorrect() throws InterruptedException {
+    public void whenCalledIncrementCounter_thenCorrect() throws Exception {
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
         Counter counter = new Counter();
-        ThreadE thread1 = new ThreadE(counter);
-        ThreadE thread2 = new ThreadE(counter);
-        thread1.start();
-        thread2.start();
-        thread1.join();
-        thread2.join();
+        Future<Integer> future1 = (Future<Integer>) executorService.submit(new CounterCallable(counter));
+        Future<Integer> future2 = (Future<Integer>) executorService.submit(new CounterCallable(counter));
         
-        assertThat(thread1.getCounter().getCounter()).isEqualTo(2);
-        assertThat(thread2.getCounter().getCounter()).isEqualTo(2);
+        assertThat(future1.get()).isEqualTo(1);
+        assertThat(future2.get()).isEqualTo(2);
     }
 }

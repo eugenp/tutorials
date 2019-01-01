@@ -6,11 +6,11 @@ public class ReentrantLockCounter {
 
     private int counter;
     private final ReentrantLock reLock = new ReentrantLock(true);
-    
+
     public ReentrantLockCounter() {
         this.counter = 0;
     }
-    
+
     public void incrementCounter() {
         reLock.lock();
         try {
@@ -19,7 +19,7 @@ public class ReentrantLockCounter {
             reLock.unlock();
         }
     }
-    
+
     public int getCounter() {
         return counter;
     }
