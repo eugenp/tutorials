@@ -37,7 +37,7 @@
 	</dependencies>
 
 	<properties>
-		<guice.version>4.1.0</guice.version>
+		<guice.version>4.2.2</guice.version>
 		<spring.version>5.1.3.RELEASE</spring.version>
 		<springtest.version>5.1.3.RELEASE</springtest.version>
 	</properties>

@@ -1,12 +1,10 @@
 package com.baeldung.examples.common;
 
-import java.util.Arrays;
-import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class BookServiceImpl implements BookService {
 
-    public List<String> findBestSellerBooks() {
-        return Arrays.asList("Harry Potter", "Lord of The Rings");
-    }
+	@Autowired(required = false)
+	private AuthorService authorService;
 
 }
