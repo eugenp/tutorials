@@ -144,8 +144,8 @@ public class JedisIntegrationTest {
         scores.put("PlayerTwo", 1500.0);
         scores.put("PlayerThree", 8200.0);
 
-        scores.keySet().forEach(player -> {
-            jedis.zadd(key, scores.get(player), player);
+        scores.entrySet().forEach(playerScore -> {
+            jedis.zadd(key, playerScore.getValue(), playerScore.getKey());
         });
 
         Set<String> players = jedis.zrevrange(key, 0, 1);

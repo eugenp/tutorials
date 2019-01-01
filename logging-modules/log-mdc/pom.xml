@@ -103,7 +103,7 @@
         <disruptor.version>3.3.6</disruptor.version>
         <jbosslogging.version>3.3.0.Final</jbosslogging.version>
         <javax.servlet.version>3.1.0</javax.servlet.version>
-        <jackson.library>2.8.5</jackson.library>
+        <jackson.library>2.9.7</jackson.library>
         <maven-war-plugin.version>2.4</maven-war-plugin.version>
     </properties>
 
