@@ -15,7 +15,7 @@ public class TwoSum {
             } else if (sum < targetValue) {
                 pointerOne++;
             } else {
-                pointerTwo++;
+                pointerTwo--;
             }
         }
 
