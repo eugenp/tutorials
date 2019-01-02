@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
+import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -17,7 +19,7 @@ public class WebClientChonJob {
     @Autowired
     private WebClient webClient;
 
-    @Scheduled(fixedRate = 50000)
+    @Scheduled(fixedRate = 10000)
     public void logResourceServiceResponse() {
 
         webClient.get()

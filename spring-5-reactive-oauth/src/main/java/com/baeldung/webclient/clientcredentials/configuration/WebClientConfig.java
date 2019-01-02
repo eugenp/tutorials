@@ -12,11 +12,11 @@ public class WebClientConfig {
 
     @Bean
     WebClient webClient(ReactiveClientRegistrationRepository clientRegistrations) {
-        ServerOAuth2AuthorizedClientExchangeFilterFunction oauth =
-            new ServerOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrations, new UnAuthenticatedServerOAuth2AuthorizedClientRepository());
+        ServerOAuth2AuthorizedClientExchangeFilterFunction oauth = new ServerOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrations, new UnAuthenticatedServerOAuth2AuthorizedClientRepository());
         oauth.setDefaultClientRegistrationId("bael");
         return WebClient.builder()
             .filter(oauth)
             .build();
     }
+
 }

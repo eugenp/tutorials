@@ -1,4 +1,4 @@
-package com.baeldung.webclient.authcode.client;
+package com.baeldung.webclient.authorizationcodeclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.PropertySource;
  * @author rozagerardo
  *
  */
-@PropertySource("classpath:webclient-auth-code-application.properties")
+@PropertySource("classpath:webclient-auth-code-client-application.properties")
 @SpringBootApplication
 public class OauthClientApplication {
 
