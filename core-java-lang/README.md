@@ -33,3 +33,4 @@
 - [How to Separate Double into Integer and Decimal Parts](https://www.baeldung.com/java-separate-double-into-integer-decimal-parts)
 - [“Sneaky Throws” in Java](http://www.baeldung.com/java-sneaky-throws)
 - [Retrieving a Class Name in Java](https://www.baeldung.com/java-class-name)
+- [Java Compound Operators](https://www.baeldung.com/java-compound-operators)
