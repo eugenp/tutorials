@@ -8,6 +8,7 @@ import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.http.server.reactive.ReactorHttpHandlerAdapter;
 import org.springframework.web.reactive.config.EnableWebFlux;
 import org.springframework.web.server.adapter.WebHttpHandlerBuilder;
+
 import reactor.netty.DisposableServer;
 import reactor.netty.http.server.HttpServer;
 
@@ -23,11 +24,14 @@ public class SpringSecurity5Application {
     }
 
     @Bean
-    public DisposableServer nettyContext(ApplicationContext context) {
+    public DisposableServer disposableServer(ApplicationContext context) {
         HttpHandler handler = WebHttpHandlerBuilder.applicationContext(context)
                 .build();
         ReactorHttpHandlerAdapter adapter = new ReactorHttpHandlerAdapter(handler);
-        return HttpServer.create().host("localhost").port(8080).handle(adapter).bind().block();
+        HttpServer httpServer = HttpServer.create();
+        httpServer.host("localhost");
+        httpServer.port(8080);
+        return httpServer.handle(adapter).bindNow();
     }
 
 }

@@ -1,9 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-data-mongodb</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>spring-data-mongodb</name>
 
     <parent>
@@ -23,7 +21,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-releasetrain</artifactId>
-            <version>Lovelace-M3</version>
+            <version>Lovelace-SR3</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
@@ -75,17 +73,6 @@
             <version>${querydsl.version}</version>
         </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <build>
         <plugins>

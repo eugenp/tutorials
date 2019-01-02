@@ -3,6 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>core-kotlin</artifactId>
+    <name>core-kotlin</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -70,6 +71,17 @@
             <groupId>uy.kohesive.injekt</groupId>
             <artifactId>injekt-core</artifactId>
             <version>1.16.1</version>
+        </dependency>
+        <dependency>
+            <groupId>uy.kohesive.kovert</groupId>
+            <artifactId>kovert-vertx</artifactId>
+            <version>[1.5.0,1.6.0)</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>nl.komponents.kovenant</groupId>
+                    <artifactId>kovenant</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

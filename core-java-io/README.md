@@ -34,3 +34,6 @@
 - [Read a File into an ArrayList](https://www.baeldung.com/java-file-to-arraylist)
 - [Guide to Java OutputStream](https://www.baeldung.com/java-outputstream)
 - [Reading a CSV File into an Array](https://www.baeldung.com/java-csv-file-array)
+- [Guide to BufferedReader](https://www.baeldung.com/java-buffered-reader)
+- [How to Get the File Extension of a File in Java](http://www.baeldung.com/java-file-extension)
+- [Getting a File’s Mime Type in Java](http://www.baeldung.com/java-file-mime-type)
