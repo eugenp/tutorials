@@ -8,25 +8,19 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-    // ... more configuration, e.g. for form login
-    // For example: Use only Http Basic and not form login.
-    // http.authorizeRequests()
-    // .anyRequest()
-    // .authenticated()
-    // .and()
-    // .httpBasic();
         http.authorizeRequests()
-            .antMatchers("/login", "/user/bael-user")
+            .antMatchers("/login", "/user")
             .permitAll()
             .and()
             .authorizeRequests()
             .anyRequest()
-            .authenticated().and()
-        .formLogin()                      
+            .authenticated()
             .and()
-        .httpBasic();
+            .formLogin()
+            .and()
+            .httpBasic();
     }
 }
