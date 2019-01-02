@@ -12,6 +12,6 @@ public class CustomerComplexObjectToString extends Customer {
     @Override
     public String toString() {
 	return "Customer [orders=" + orders + ", getFirstName()=" + getFirstName()
-	                + ", getLastName()=" + getLastName() + "]";
+	  + ", getLastName()=" + getLastName() + "]";
     }    
 }

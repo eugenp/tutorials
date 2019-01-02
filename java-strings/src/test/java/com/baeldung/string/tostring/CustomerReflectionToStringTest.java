@@ -1,6 +1,5 @@
 package com.baeldung.string.tostring;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -9,10 +8,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class CustomerReflectionToStringTest {
-    public static final String CUSTOMER_REFLECTION_TO_STRING = "com.baeldung.string.tostring.CustomerReflectionToString";
+    private static final String CUSTOMER_REFLECTION_TO_STRING = "com.baeldung.string.tostring.CustomerReflectionToString";
     	 
     @Test
-    public void givingWrapperCollectionStrBuffer_whenReflectionToString_thenCustomerDetails() {
+    public void givenWrapperCollectionStrBuffer_whenReflectionToString_thenCustomerDetails() {
 	CustomerReflectionToString customer = new CustomerReflectionToString();
         customer.setFirstName("Rajesh");
         customer.setLastName("Bhojwani");

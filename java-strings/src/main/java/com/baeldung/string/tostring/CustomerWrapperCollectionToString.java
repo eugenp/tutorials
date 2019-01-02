@@ -28,6 +28,6 @@ public class CustomerWrapperCollectionToString extends Customer {
     @Override
     public String toString() {
 	return "Customer [score=" + score + ", orders=" + orders + ", fullname=" + fullname
-			+ ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() + "]";
+	  + ", getFirstName()=" + getFirstName() + ", getLastName()=" + getLastName() + "]";
     }
 }

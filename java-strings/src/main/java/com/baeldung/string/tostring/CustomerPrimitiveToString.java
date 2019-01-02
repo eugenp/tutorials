@@ -12,6 +12,6 @@ public class CustomerPrimitiveToString extends Customer {
     @Override
     public String toString() {
 	return "Customer [balance=" + balance + ", getFirstName()=" + getFirstName()
-			+ ", getLastName()=" + getLastName() + "]";
+	  + ", getLastName()=" + getLastName() + "]";
     }
 }

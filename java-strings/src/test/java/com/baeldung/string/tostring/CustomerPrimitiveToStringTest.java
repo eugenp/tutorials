@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 class CustomerPrimitiveToStringTest {
 
-    public static final String CUSTOMER_PRIMITIVE_TO_STRING	= "Customer [balance=110, getFirstName()=Rajesh, getLastName()=Bhojwani]";
+    private static final String CUSTOMER_PRIMITIVE_TO_STRING = "Customer [balance=110, getFirstName()=Rajesh, getLastName()=Bhojwani]";
 
     @Test
-    public void givingPrimitive_whenToString_thenCustomerDetails() {
+    public void givenPrimitive_whenToString_thenCustomerDetails() {
         CustomerPrimitiveToString customer = new CustomerPrimitiveToString();
         customer.setFirstName("Rajesh");
         customer.setLastName("Bhojwani");

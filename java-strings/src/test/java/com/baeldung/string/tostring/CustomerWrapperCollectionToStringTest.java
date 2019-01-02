@@ -8,10 +8,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class CustomerWrapperCollectionToStringTest {
-    public static final String CUSTOMER_WRAPPER_COLLECTION_TO_STRING = "Customer [score=8, orders=[Book, Pen], fullname=Bhojwani, Rajesh, getFirstName()=Rajesh, getLastName()=Bhojwani]";
+    private static final String CUSTOMER_WRAPPER_COLLECTION_TO_STRING = "Customer [score=8, orders=[Book, Pen], fullname=Bhojwani, Rajesh, getFirstName()=Rajesh, getLastName()=Bhojwani]";
     	 
     @Test
-    public void givingWrapperCollectionStrBuffer_whenToString_thenCustomerDetails() {
+    public void givenWrapperCollectionStrBuffer_whenToString_thenCustomerDetails() {
 	CustomerWrapperCollectionToString customer = new CustomerWrapperCollectionToString();
 	customer.setFirstName("Rajesh");
 	customer.setLastName("Bhojwani");

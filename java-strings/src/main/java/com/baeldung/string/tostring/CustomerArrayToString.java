@@ -14,6 +14,6 @@ public class CustomerArrayToString  extends Customer {
     @Override
     public String toString() {
 	return "Customer [orders=" + Arrays.toString(orders) + ", getFirstName()=" + getFirstName()
-			+ ", getLastName()=" + getLastName() + "]";
+	  + ", getLastName()=" + getLastName() + "]";
     }    
 }
