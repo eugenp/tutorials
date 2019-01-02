@@ -4,7 +4,11 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 测试：使用{@link org.apache.commons.lang3.StringUtils#isNumericSpace(CharSequence)}
+ */
 public class StringUtilsIsNumericSpaceUnitTest {
+
     @Test
     public void givenApacheCommons_whenUsingIsNumericSpace_thenTrue() {
         // Valid Numbers

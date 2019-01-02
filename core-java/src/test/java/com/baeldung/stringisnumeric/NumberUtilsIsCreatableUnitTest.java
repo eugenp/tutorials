@@ -5,7 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
+/**
+ * 测试：{@link org.apache.commons.lang3.math.NumberUtils#isCreatable(String)}
+ */
 public class NumberUtilsIsCreatableUnitTest {
+
     @Test
     public void givenApacheCommons_whenUsingIsParsable_thenTrue() {
         // Valid Numbers
@@ -17,7 +21,7 @@ public class NumberUtilsIsCreatableUnitTest {
         assertThat(NumberUtils.isCreatable("0xFF")).isTrue();
         assertThat(NumberUtils.isCreatable("07")).isTrue();
         assertThat(NumberUtils.isCreatable("2.99e+8")).isTrue();
-         
+
         // Invalid Numbers
         assertThat(NumberUtils.isCreatable(null)).isFalse();
         assertThat(NumberUtils.isCreatable("")).isFalse();

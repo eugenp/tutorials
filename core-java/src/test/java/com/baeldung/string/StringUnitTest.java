@@ -12,18 +12,45 @@ import java.util.regex.PatternSyntaxException;
 
 import org.junit.Test;
 
+/**
+ * 测试：
+ * {@link java.lang.String#codePointAt(int)}
+ * {@link java.lang.String#concat(String)}
+ * {@link java.lang.String#charAt(int)}
+ * {@link java.lang.String#contains(CharSequence)}
+ * {@link java.lang.String#intern()}
+ * {@link java.lang.String#replaceAll(String, String)}
+ * {@link java.lang.String#toLowerCase()}
+ * {@link java.lang.String#toUpperCase()}
+ * {@link java.lang.String#substring(int, int)}
+ * {@link java.lang.String#subSequence(int, int)}
+ * {@link java.lang.String#split(String)}
+ * {@link java.lang.String#trim()}
+ * {@link java.lang.String#regionMatches(boolean, int, String, int, int)}
+ * {@link java.lang.String#format(String, Object...)}
+ * {@link java.lang.String#endsWith(String)}
+ * {@link java.lang.String#copyValueOf(char[], int, int)}
+ *
+ */
 public class StringUnitTest {
 
+    /**
+     * 获取字符串中，第i个位置的字符对应的Unicode值大小
+     */
     @Test
     public void whenCallCodePointAt_thenDecimalUnicodeReturned() {
         assertEquals(97, "abcd".codePointAt(0));
     }
+
 
     @Test(expected = StringIndexOutOfBoundsException.class)
     public void whenPassNonExistingIndex_thenExceptionThrown() {
         int a = "abcd".codePointAt(4);
     }
 
+    /**
+     * 字符串连接测试
+     */
     @Test
     public void whenCallConcat_thenCorrect() {
         assertEquals("elephant", "elep".concat("hant"));
@@ -57,6 +84,10 @@ public class StringUnitTest {
         String s = new String(array);
 
         assertEquals("abcd", s);
+
+        char [] charArray = new char[]{'a' ,'b' ,'c' ,'d'};
+        String ss = new String(charArray);
+        assertEquals("abcd", ss);
     }
 
     @Test
@@ -101,6 +132,9 @@ public class StringUnitTest {
         assertTrue(s1.endsWith("t"));
     }
 
+    /**
+     * 占位符：s%测试
+     */
     @Test
     public void whenFormat_thenCorrect() {
         String value = "Baeldung";
@@ -133,6 +167,9 @@ public class StringUnitTest {
         assertEquals(2, "foo".lastIndexOf(111));
     }
 
+    /**
+     * 区域范围内正则匹配
+     */
     @Test
     public void whenCallRegionMatches_thenCorrect() {
         assertTrue("welcome to baeldung".regionMatches(false, 11, "baeldung", 0, 8));
@@ -159,8 +196,7 @@ public class StringUnitTest {
     @Test(expected = PatternSyntaxException.class)
     public void whenPassInvalidParameterToSplit_thenPatternSyntaxExceptionThrown() {
         String s = "Welcome*to Baeldung";
-
-        String[] result = s.split("*");
+        String[] result = s.split("*");//改成String[] result = s.split("\\*");就OK
     }
 
     @Test

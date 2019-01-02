@@ -4,6 +4,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 测试：使用{@link org.apache.commons.lang3.StringUtils#isNumeric(CharSequence)}
+ */
 public class StringUtilsIsNumericUnitTest {
     @Test
     public void givenApacheCommons_whenUsingIsNumeric_thenTrue() {
