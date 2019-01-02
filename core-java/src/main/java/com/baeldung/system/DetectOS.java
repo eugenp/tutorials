@@ -2,6 +2,10 @@ package com.baeldung.system;
 
 import org.apache.commons.lang3.SystemUtils;
 
+/**
+ * @author zn.wang
+ * 检测操作系统
+ */
 public class DetectOS {
 
     public String getOperatingSystem() {

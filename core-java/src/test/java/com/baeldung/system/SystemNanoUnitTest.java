@@ -11,6 +11,8 @@ public class SystemNanoUnitTest {
         // do something that takes time
         long endTime = System.nanoTime();
 
+        System.out.println("endTime:{}" + endTime);
+        System.out.println("startTime:{}" + startTime);
         Assert.assertTrue(endTime - startTime < 10000);
     }
 }

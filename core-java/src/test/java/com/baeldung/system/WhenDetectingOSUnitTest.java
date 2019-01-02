@@ -13,6 +13,7 @@ public class WhenDetectingOSUnitTest {
     public void whenUsingSystemProperty_shouldReturnOS() {
         String expected = "Windows 10";
         String actual = os.getOperatingSystem();
+        System.out.println("actual:{}" + actual);
         Assert.assertEquals(expected, actual);
     }
 
@@ -20,6 +21,7 @@ public class WhenDetectingOSUnitTest {
     public void whenUsingSystemUtils_shouldReturnOS() {
         String expected = "Windows 10";
         String actual = os.getOperatingSystemSystemUtils();
+        System.out.println("actual:{}" + actual);
         Assert.assertEquals(expected, actual);
     }
 }

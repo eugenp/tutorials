@@ -6,6 +6,14 @@ import org.junit.Test;
 
 import java.util.Properties;
 
+/**
+ * 测试：
+ * @see
+ * {@link java.lang.System#getProperty(String)}
+ * {@link java.lang.System#clearProperty(String)}
+ * {@link java.lang.System#getProperties().clear();}
+ *
+ */
 public class SystemPropertiesUnitTest {
 
     @Test
@@ -15,7 +23,6 @@ public class SystemPropertiesUnitTest {
 
     @Test
     public void givenSystem_whenCalledSetProperty_thenSetPropertyasResult() {
-
         // set a particular property
         System.setProperty("abckey", "abcvaluefoo");
         Assert.assertEquals("abcvaluefoo", System.getProperty("abckey"));
@@ -31,9 +38,12 @@ public class SystemPropertiesUnitTest {
 
     @Test
     public void givenSystem_whenCalledGetPropertyDefaultValue_thenReturnPropertyinResult() {
-
         System.clearProperty("dbHost");
+        System.out.println("dbHost:{}" + System.getProperty("dbHost"));
+
         String myKey = System.getProperty("dbHost", "db.host.com");
+        System.out.println("myKey:{}" + myKey);
+
         Assert.assertEquals("db.host.com", myKey);
     }
 

@@ -3,6 +3,9 @@ package com.baeldung.system;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 测试：System.arraycopy函数
+ */
 public class SystemArrayCopyUnitTest {
 
     @Test

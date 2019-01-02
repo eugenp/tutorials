@@ -7,6 +7,7 @@ import java.awt.event.WindowEvent;
  * features at low level and that it uses 'System' gc() which suggests
  * JVM for garbage collection. But the usage below demonstrates how the
  * method can be used.
+ * @author zn.wang
  */
 public class ChatWindow {
     public void windowStateChanged(WindowEvent event) {

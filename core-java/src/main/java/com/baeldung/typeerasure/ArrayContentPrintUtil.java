@@ -1,5 +1,8 @@
 package com.baeldung.typeerasure;
 
+/**
+ * @author zn.wang
+ */
 public class ArrayContentPrintUtil {
 
    public static <E> void printArray(E[] array) {

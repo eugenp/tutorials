@@ -17,12 +17,14 @@ public class TokenizerUnitTest {
 	public void givenString_thenGetListOfString() {
 		String str = "Welcome,to,baeldung.com";
 		List<String> actualTokens = myTokenizer.getTokens(str);
+		System.out.println("actualTokens:{}" + actualTokens);
 		assertEquals(expectedTokensForString, actualTokens);
 	}
 
 	@Test
 	public void givenFile_thenGetListOfString() {
 		List<String> actualTokens = myTokenizer.getTokensFromFile("data.csv", "|");
+		System.out.println("actualTokens:{}" + actualTokens);
 		assertEquals(expectedTokensForFile, actualTokens);
 	}
 

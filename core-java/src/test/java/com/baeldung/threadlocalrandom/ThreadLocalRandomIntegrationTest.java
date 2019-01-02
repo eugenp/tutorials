@@ -5,21 +5,33 @@ import java.util.concurrent.ThreadLocalRandom;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
+/**
+ * 测试：ThreadLocalRandom
+ */
 public class ThreadLocalRandomIntegrationTest {
-    
+
+    /**
+     * 说明：ThreadLocalRandom.current().nextInt(leftLimit, rightLimit)为前闭后开区间
+     */
     @Test
     public void givenUsingThreadLocalRandom_whenGeneratingRandomIntBounded_thenCorrect() {
         int leftLimit = 1;
         int rightLimit = 100;
         int generatedInt = ThreadLocalRandom.current().nextInt(leftLimit, rightLimit);
-        
+
+        System.out.println("generatedInt:{}" + generatedInt);
         assertTrue(generatedInt < rightLimit && generatedInt >= leftLimit);
     }
-    
+
+    /**
+     * 说明：System.out.println("generatedInt:{}" + generatedInt)的取值
+     * 空间为【Integer.MIN_VALUE，Integer.MAX_VALUE）
+     */
     @Test
     public void givenUsingThreadLocalRandom_whenGeneratingRandomIntUnbounded_thenCorrect() {
         int generatedInt = ThreadLocalRandom.current().nextInt();
-        
+
+        System.out.println("generatedInt:{}" + generatedInt);
         assertTrue(generatedInt < Integer.MAX_VALUE && generatedInt >= Integer.MIN_VALUE);
     }
     
@@ -28,7 +40,8 @@ public class ThreadLocalRandomIntegrationTest {
         long leftLimit = 1L;
         long rightLimit = 100L;
         long generatedLong = ThreadLocalRandom.current().nextLong(leftLimit, rightLimit);
-        
+
+        System.out.println("generatedLong:{}" + generatedLong);
         assertTrue(generatedLong < rightLimit && generatedLong >= leftLimit);
     }
     
@@ -43,16 +56,17 @@ public class ThreadLocalRandomIntegrationTest {
     public void givenUsingThreadLocalRandom_whenGeneratingRandomDoubleBounded_thenCorrect() {
         double leftLimit = 1D;
         double rightLimit = 100D;
-        double generatedInt = ThreadLocalRandom.current().nextDouble(leftLimit, rightLimit);
-        
-        assertTrue(generatedInt < rightLimit && generatedInt >= leftLimit);
+        double generatedDouble = ThreadLocalRandom.current().nextDouble(leftLimit, rightLimit);
+
+        System.out.println("generatedDouble:{}" + generatedDouble);
+        assertTrue(generatedDouble < rightLimit && generatedDouble >= leftLimit);
     }
     
     @Test
     public void givenUsingThreadLocalRandom_whenGeneratingRandomDoubleUnbounded_thenCorrect() {
-        double generatedInt = ThreadLocalRandom.current().nextDouble();
+        double generatedDouble = ThreadLocalRandom.current().nextDouble();
         
-        assertTrue(generatedInt < Double.MAX_VALUE && generatedInt >= Double.MIN_VALUE);
+        assertTrue(generatedDouble < Double.MAX_VALUE && generatedDouble >= Double.MIN_VALUE);
     }
     
     @Test(expected = UnsupportedOperationException.class)

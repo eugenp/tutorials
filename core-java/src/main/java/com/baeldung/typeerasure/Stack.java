@@ -2,6 +2,9 @@ package com.baeldung.typeerasure;
 
 import java.util.Arrays;
 
+/**
+ * @author zn.wang
+ */
 public class Stack<E> {
 
     private E[] stackContent;
@@ -11,15 +14,16 @@ public class Stack<E> {
         this.stackContent = (E[]) new Object[capacity];
     }
 
-    public void push(E data) {
+    public synchronized void push(E data) {
         System.out.println("In base stack push#");
+
         if (total == stackContent.length) {
             resize(2 * stackContent.length);
         }
         stackContent[total++] = data;
     }
 
-    public E pop() {
+    public synchronized E pop() {
         if (!isEmpty()) {
             E datum = stackContent[total];
             stackContent[total--] = null;
@@ -28,11 +32,11 @@ public class Stack<E> {
         return null;
     }
 
-    private void resize(int capacity) {
+    private synchronized void resize(int capacity) {
         Arrays.copyOf(stackContent, capacity);
     }
 
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return total == 0;
     }
 
