@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 10)
 public class ArrayListBenchmark {
 
@@ -63,6 +63,7 @@ public class ArrayListBenchmark {
     public Employee testGet(ArrayListBenchmark.MyState state) {
         return state.employeeList.get(state.employeeIndex);
     }
+
     @Benchmark
     public Employee testVectorGet(ArrayListBenchmark.MyState state) {
         return state.employeeVector.get(state.employeeIndex);
@@ -78,14 +79,9 @@ public class ArrayListBenchmark {
         state.employeeList.add(new Employee(state.iterations + 1, "John"));
     }
 
-    @Benchmark
-    public void testAddVector(ArrayListBenchmark.MyState state) {
-        state.employeeVector.add(new Employee(state.iterations + 1, "John"));
-    }
-
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
-                .include(ArrayListBenchmark.class.getSimpleName()).threads(1)
+                .include(ArrayListBenchmark.class.getSimpleName()).threads(3)
                 .forks(1).shouldFailOnError(true)
                 .shouldDoGC(true)
                 .jvmArgs("-server").build();
