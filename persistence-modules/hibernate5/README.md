@@ -23,3 +23,4 @@
 - [Difference Between @JoinColumn and mappedBy](https://www.baeldung.com/jpa-joincolumn-vs-mappedby)
 - [Hibernate 5 Bootstrapping API](https://www.baeldung.com/hibernate-5-bootstrapping-api)
 - [Criteria Queries Using JPA Metamodel](https://www.baeldung.com/hibernate-criteria-queries-metamodel)
+- [Guide to the Hibernate EntityManager](https://www.baeldung.com/hibernate-entitymanager)
