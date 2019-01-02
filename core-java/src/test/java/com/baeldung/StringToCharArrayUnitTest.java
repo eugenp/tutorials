@@ -4,6 +4,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * 测试：字符串-》字符数组
+ * @see java.lang.String#toCharArray()
+ */
 public class StringToCharArrayUnitTest {
 
     @Test

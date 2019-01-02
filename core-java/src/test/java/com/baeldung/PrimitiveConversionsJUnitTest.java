@@ -6,10 +6,16 @@ import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * 测试：基本类型之间的转化
+ */
 public class PrimitiveConversionsJUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(PrimitiveConversionsJUnitTest.class);
-    
+
+    /**
+     * 注意：0.01默认的是double类型
+     */
     @Test
     public void givenDataWithLessBits_whenAttributingToLargerSizeVariable_thenNoSpecialNotation() {
         int myInt = 127;

@@ -5,6 +5,9 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ * 测试：String.format的格式化
+ */
 public class FormatterUnitTest {
 
     private final static String FORMAT = "%s %s %s";

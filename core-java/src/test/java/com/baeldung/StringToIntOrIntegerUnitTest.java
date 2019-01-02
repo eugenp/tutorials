@@ -6,6 +6,16 @@ import org.junit.Test;
 
 import com.google.common.primitives.Ints;
 
+/**
+ * 测试：String->int or Integer
+ * 方法：
+ * （1）{@link java.lang.Integer#parseInt(String)}
+ * （2）{@link java.lang.Integer#valueOf(String)}
+ * （3）{@link new Integer(givenString)}
+ * （4）{@link java.lang.Integer#decode(String)}
+ * （5）{@link com.google.common.primitives.Ints#tryParse(String)}
+ *
+ */
 public class StringToIntOrIntegerUnitTest {
 
     @Test

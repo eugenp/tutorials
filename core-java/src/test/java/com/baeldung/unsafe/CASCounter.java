@@ -4,6 +4,9 @@ import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 
+/**
+ * CAS计数器
+ */
 class CASCounter {
     private final Unsafe unsafe;
     private volatile long counter = 0;

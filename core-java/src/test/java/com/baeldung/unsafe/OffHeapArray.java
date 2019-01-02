@@ -4,6 +4,9 @@ import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
 
+/**
+ * 直接从堆数组分配内存
+ */
 class OffHeapArray {
     private final static int BYTE = 1;
     private long size;

@@ -7,6 +7,9 @@ import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * 测试：从resources路径下加载资源。
+ */
 public class PropertiesLoaderUnitTest {
 
     @Test

@@ -6,6 +6,8 @@ import sun.misc.Unsafe;
 
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -78,6 +80,10 @@ public class UnsafeUnitTest {
 
     }
 
+    /**
+     * 1000*1000的操作，由1000个线程去干
+     * @throws Exception
+     */
     @Test
     public void givenUnsafeCompareAndSwap_whenUseIt_thenCounterYildCorrectLockFreeResults() throws Exception {
         //given
@@ -87,17 +93,26 @@ public class UnsafeUnitTest {
         CASCounter casCounter = new CASCounter();
 
         //when
-        IntStream.rangeClosed(0, NUM_OF_THREADS - 1)
-                .forEach(i -> service.submit(() -> IntStream
-                        .rangeClosed(0, NUM_OF_INCREMENTS - 1)
-                        .forEach(j -> casCounter.increment())));
+        int bound = NUM_OF_THREADS - 1;
+        for (int i = 0; i <= bound; i++) {
+            service.submit(() -> {
+                int bound1 = NUM_OF_INCREMENTS - 1;
+                for (int j = 0; j <= bound1; j++) {
+                    casCounter.increment();
+                }
+            });
+        }
 
         service.shutdown();
         service.awaitTermination(1, TimeUnit.MINUTES);
 
+        System.out.println("NUM_OF_INCREMENTS:{}" + NUM_OF_INCREMENTS);
+        System.out.println("NUM_OF_THREADS:{}" + NUM_OF_THREADS);
+        System.out.println("NUM_OF_INCREMENTS * NUM_OF_THREADS:{}" + NUM_OF_INCREMENTS * NUM_OF_THREADS);
+        System.out.println("casCounter.getCounter():{}" + casCounter.getCounter());
+
         //then
         assertEquals(NUM_OF_INCREMENTS * NUM_OF_THREADS, casCounter.getCounter());
-
     }
 
     class InitializationOrdering {
