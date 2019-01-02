@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 public class CustomerReflectionToStringTest {
     public static final String CUSTOMER_REFLECTION_TO_STRING = "com.baeldung.string.tostring.CustomerReflectionToString";
     	 
-	@Test
+    @Test
     public void givingWrapperCollectionStrBuffer_whenReflectionToString_thenCustomerDetails() {
-	    CustomerReflectionToString customer = new CustomerReflectionToString();
+	CustomerReflectionToString customer = new CustomerReflectionToString();
         customer.setFirstName("Rajesh");
         customer.setLastName("Bhojwani");
         customer.setScore(8);
@@ -29,6 +29,5 @@ public class CustomerReflectionToStringTest {
  
         assertTrue(customer.toString().contains(CUSTOMER_REFLECTION_TO_STRING));
     }
-
 
 }

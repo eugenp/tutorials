@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class CustomerComplexObjectToStringTest {
-	public static final String CUSTOMER_COMPLEX_TO_STRING =	"Customer [orders=Order [orderId=A1111, desc=Game, value=0, status=In-Shiping], getFirstName()=Rajesh, getLastName()=Bhojwani]";
+    public static final String CUSTOMER_COMPLEX_TO_STRING =	"Customer [orders=Order [orderId=A1111, desc=Game, value=0, status=In-Shiping], getFirstName()=Rajesh, getLastName()=Bhojwani]";
 	 
-	@Test
+    @Test
     public void givingComplex_whenToString_thenCustomerDetails() {
         CustomerComplexObjectToString customer = new CustomerComplexObjectToString();
         customer.setFirstName("Rajesh");

@@ -9,11 +9,9 @@ public class CustomerComplexObjectToString extends Customer {
     public void setOrders(Order orders) {
         this.orders = orders;
     }
-	@Override
-	public String toString() {
-		return "Customer [orders=" + orders + ", getFirstName()=" + getFirstName()
-				+ ", getLastName()=" + getLastName() + "]";
-	}    
- 
-  
+    @Override
+    public String toString() {
+	return "Customer [orders=" + orders + ", getFirstName()=" + getFirstName()
+	                + ", getLastName()=" + getLastName() + "]";
+    }    
 }

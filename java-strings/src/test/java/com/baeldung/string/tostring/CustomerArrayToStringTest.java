@@ -7,16 +7,16 @@ import org.junit.jupiter.api.Test;
 public class CustomerArrayToStringTest {
     public static final String CUSTOMER_ARRAY_TO_STRING	= "Customer [orders=[Order [orderId=A1111, desc=Game, value=0, status=In-Shiping]], getFirstName()=Rajesh, getLastName()=Bhojwani]";
 	 
-	@Test
+    @Test
     public void givingArray_whenToString_thenCustomerDetails() {
-		CustomerArrayToString customer = new CustomerArrayToString();
-		customer.setFirstName("Rajesh");
-		customer.setLastName("Bhojwani");
-		Order[] orders = new Order[1];  
-	    orders[0] = new Order();
-	    orders[0].setOrderId("A1111");
-	    orders[0].setDesc("Game");
-	    orders[0].setStatus("In-Shiping");
+	CustomerArrayToString customer = new CustomerArrayToString();
+	customer.setFirstName("Rajesh");
+	customer.setLastName("Bhojwani");
+	Order[] orders = new Order[1];  
+	orders[0] = new Order();
+	orders[0].setOrderId("A1111");
+	orders[0].setDesc("Game");
+	orders[0].setStatus("In-Shiping");
         customer.setOrders(orders);         
         
         assertEquals(CUSTOMER_ARRAY_TO_STRING,customer.toString());

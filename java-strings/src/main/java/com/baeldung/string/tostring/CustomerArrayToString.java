@@ -11,10 +11,9 @@ public class CustomerArrayToString  extends Customer {
     public void setOrders(Order[] orders) {
         this.orders = orders;
     }
-	@Override
-	public String toString() {
-		return "Customer [orders=" + Arrays.toString(orders) + ", getFirstName()=" + getFirstName()
-				+ ", getLastName()=" + getLastName() + "]";
-	}    
-
+    @Override
+    public String toString() {
+	return "Customer [orders=" + Arrays.toString(orders) + ", getFirstName()=" + getFirstName()
+			+ ", getLastName()=" + getLastName() + "]";
+    }    
 }
