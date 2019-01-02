@@ -12,9 +12,9 @@ public class ThreeDimensionalArrayList {
         ArrayList< ArrayList< ArrayList<String> > > space = new ArrayList<>(x_axis_length);
 
         //Initializing each element of ArrayList with ArrayList< ArrayList<String> >
-        for(int i=0; i< x_axis_length; i++) {
+        for(int i = 0; i < x_axis_length; i++) {
             space.add(new ArrayList< ArrayList<String> >(y_axis_length));
-            for(int j =0; j< y_axis_length; j++) {
+            for(int j = 0; j < y_axis_length; j++) {
                 space.get(i).add(new ArrayList<String>(z_axis_length));
             }
         }
@@ -33,9 +33,9 @@ public class ThreeDimensionalArrayList {
         space.get(1).get(1).add(1,"Yellow");
 
         //Printing colors for all the points
-        for(int i=0; i<x_axis_length; i++) {
-            for(int j=0; j<y_axis_length; j++) {
-                for(int k=0; k<z_axis_length; k++) {
+        for(int i = 0; i < x_axis_length; i++) {
+            for(int j = 0; j < y_axis_length; j++) {
+                for(int k = 0; k < z_axis_length; k++) {
                     System.out.println("Color of point ("+i+","+j+","+k+") is :"+space.get(i).get(j).get(k));
                 }
             }
