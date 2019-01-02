@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class ImmutableObjectDeserializationUnitTest {
 
     @Test
-    public void testPublicConstructor() throws IOException {
+    public void whenPublicConstructorIsUsed_thenObjectIsDeserialized() throws IOException {
         final String json = "{\"name\":\"Frank\",\"age\":50}";
         Person person = new ObjectMapper().readValue(json, Person.class);
 
@@ -19,7 +19,7 @@ public class ImmutableObjectDeserializationUnitTest {
     }
 
     @Test
-    public void testBuilderNullField() throws IOException {
+    public void whenBuilderIsUsedAndFieldIsNull_thenObjectIsDeserialized() throws IOException {
         final String json = "{\"name\":\"Frank\",\"age\":50}";
         MaritalAwarePerson person = new ObjectMapper().readValue(json, MaritalAwarePerson.class);
 
@@ -29,7 +29,7 @@ public class ImmutableObjectDeserializationUnitTest {
     }
 
     @Test
-    public void testBuilderAllFields() throws IOException {
+    public void whenBuilderIsUsedAndAllFieldsPresent_thenObjectIsDeserialized() throws IOException {
         final String json = "{\"name\":\"Frank\",\"age\":50,\"married\":true}";
         MaritalAwarePerson person = new ObjectMapper().readValue(json, MaritalAwarePerson.class);
 
