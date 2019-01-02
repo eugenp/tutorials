@@ -19,7 +19,7 @@ public class WebClientChonJob {
     @Autowired
     private WebClient webClient;
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 1000)
     public void logResourceServiceResponse() {
 
         webClient.get()
