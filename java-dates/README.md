@@ -26,3 +26,5 @@
 - [Format ZonedDateTime to String](https://www.baeldung.com/java-format-zoned-datetime-string)
 - [Convert Between java.time.Instant and java.sql.Timestamp](https://www.baeldung.com/java-time-instant-to-java-sql-timestamp)
 - [Convert between String and Timestamp](https://www.baeldung.com/java-string-to-timestamp)
+- [A Guide to SimpleDateFormat](https://www.baeldung.com/java-simple-date-format)
+- [ZoneOffset in Java](https://www.baeldung.com/java-zone-offset)

@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>core-java-concurrency-basic</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>core-java-concurrency-basic</name>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-java</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${avaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>core-java-concurrency-basic</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <properties>
+        <!-- util -->
+        <commons-lang3.version>3.5</commons-lang3.version>
+        <!-- testing -->
+        <assertj.version>3.6.1</assertj.version>
+        <avaitility.version>1.7.0</avaitility.version>
+    </properties>
+
+</project>

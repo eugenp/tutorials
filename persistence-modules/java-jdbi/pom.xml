@@ -27,15 +27,6 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>Central</id>
-            <name>Central</name>
-            <url>http://repo1.maven.org/maven2/</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
-
     <properties>
         <jdbi3-core.version>3.1.0</jdbi3-core.version>
         <hsqldb.version>2.4.0</hsqldb.version>
