@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 public class Pangram {
     private static final int ALPHABET_COUNT = 26;
 
-    public static boolean isPanagram(String str) {
+    public static boolean isPangram(String str) {
         if (str == null)
             return false;
         Boolean[] alphabetMarker = new Boolean[ALPHABET_COUNT];
@@ -29,10 +29,10 @@ public class Pangram {
         return true;
     }
 
-    public static boolean isPanagramWithStreams(String str) {
+    public static boolean isPangramWithStreams(String str) {
         if (str == null)
             return false;
-        
+
         // filtered character stream
         String strUpper = str.toUpperCase();
         Stream<Character> filteredCharStream = strUpper.chars()
@@ -43,10 +43,10 @@ public class Pangram {
         return (alphabetMap.size() == ALPHABET_COUNT);
     }
 
-    public static boolean isPerfectPanagram(String str) {
+    public static boolean isPerfectPangram(String str) {
         if (str == null)
             return false;
-        
+
         // filtered character stream
         String strUpper = str.toUpperCase();
         Stream<Character> filteredCharStream = strUpper.chars()
