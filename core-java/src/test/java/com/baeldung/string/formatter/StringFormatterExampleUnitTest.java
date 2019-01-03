@@ -8,14 +8,20 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
+/**
+ * 测试：String字符串格式化
+ */
 public class StringFormatterExampleUnitTest {
 
+    /**
+     * 查看String字符串格式化，常用转换符查找：{https://blog.csdn.net/lonely_fireworks/article/details/7962171}
+     */
     @Test
     public void givenString_whenFormatSpecifierForCalendar_thenGotExpected() {
         //Syntax of Format Specifiers for Date/Time Representation
         Calendar c = new GregorianCalendar(2017, 11, 10);
         String s = String.format("The date is: %tm %1$te,%1$tY", c);
-
+        System.out.println("s:{}" + s);
 
         assertEquals("The date is: 12 10,2017", s);
     }

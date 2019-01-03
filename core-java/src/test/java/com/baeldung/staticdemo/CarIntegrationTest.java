@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * 测试：类的静态属性
+ */
 public class CarIntegrationTest {
     @Test
     public void whenNumberOfCarObjectsInitialized_thenStaticCounterIncreases() {

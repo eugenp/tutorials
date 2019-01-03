@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
+/**
+ * 测试：带有终止条件的无限递归
+ */
 public class InfiniteRecursionWithTerminationConditionManualTest {
     @Test
     public void givenPositiveIntNoOne_whenCalcFact_thenCorrectlyCalc() {
@@ -23,9 +26,15 @@ public class InfiniteRecursionWithTerminationConditionManualTest {
 
     @Test(expected = StackOverflowError.class)
     public void givenNegativeInt_whenCalcFact_thenThrowsException() {
-        int numToCalcFactorial = -1;
-        InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
+        try{
+            int numToCalcFactorial = -1;
+            InfiniteRecursionWithTerminationCondition irtc = new InfiniteRecursionWithTerminationCondition();
 
-        irtc.calculateFactorial(numToCalcFactorial);
+            irtc.calculateFactorial(numToCalcFactorial);
+        }
+        catch (Throwable e){
+            e.printStackTrace();
+        }
+
     }
 }

@@ -9,6 +9,10 @@ import java.util.ListIterator;
 import java.util.Stack;
 
 import org.junit.Test;
+
+/**
+ * 测试：栈测试
+ */
 public class StackUnitTest {
 
     @Test
@@ -45,7 +49,7 @@ public class StackUnitTest {
     public void whenElementIsPeeked_thenElementIsNotRemovedAndSizeDoesNotChange() {
         Stack<Integer> intStack = new Stack();
         intStack.push(5);
-        intStack.peek();
+        intStack.peek();//获取栈顶元素，不删除元素
         assertEquals(1, intStack.search(5));
         assertEquals(1, intStack.size());
     }
@@ -54,7 +58,10 @@ public class StackUnitTest {
     public void whenElementIsOnStack_thenSearchReturnsItsDistanceFromTheTop() {
         Stack<Integer> intStack = new Stack();
         intStack.push(5);
-        assertEquals(1, intStack.search(5));
+        intStack.push(4);
+        int indexOf = intStack.search(5);
+        System.out.println("indexOf:{}" + indexOf);
+        assertEquals(2, intStack.search(5));
     }
 
     @Test
@@ -62,6 +69,7 @@ public class StackUnitTest {
         Stack<Integer> intStack = new Stack();
         intStack.push(5);
         int indexOf = intStack.indexOf(5);
+        System.out.println("indexOf:{}" + indexOf);
         assertEquals(0, indexOf);
     }
 

@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
+/**
+ * 测试：带有正确终止条件的递归
+ */
 public class RecursionWithCorrectTerminationConditionManualTest {
     @Test
     public void givenNegativeInt_whenCalcFact_thenCorrectlyCalc() {

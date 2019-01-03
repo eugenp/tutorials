@@ -7,6 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * 测试：静态块获取
+ */
 public class StaticBlockIntegrationTest {
 
     @Test

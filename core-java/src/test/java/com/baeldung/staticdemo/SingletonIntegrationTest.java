@@ -3,6 +3,9 @@ package com.baeldung.staticdemo;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 测试：单例
+ */
 public class SingletonIntegrationTest {
 
     @Test
