@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.net.*;
 
+/**
+ * @author zn.wang
+ */
 public class EchoClient {
 
     private static final Logger LOG = LoggerFactory.getLogger(EchoClient.class);

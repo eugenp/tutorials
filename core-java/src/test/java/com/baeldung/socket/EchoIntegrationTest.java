@@ -9,6 +9,9 @@ import java.util.concurrent.Executors;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * 测试：java网络通信->socket
+ */
 public class EchoIntegrationTest {
     private static final Integer PORT = 4444;
 
@@ -32,7 +35,6 @@ public class EchoIntegrationTest {
     }
 
     //
-
     @Test
     public void givenClient_whenServerEchosMessage_thenCorrect() {
         String resp1 = client.sendMessage("hello");
