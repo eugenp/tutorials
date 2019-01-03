@@ -19,7 +19,7 @@ public class CustomerComplexObjectToStringTest {
         orders.setStatus("In-Shiping");
         customer.setOrders(orders);
              
-        assertEquals(CUSTOMER_COMPLEX_TO_STRING,customer.toString());
+        assertEquals(CUSTOMER_COMPLEX_TO_STRING, customer.toString());
     }
 
 }
