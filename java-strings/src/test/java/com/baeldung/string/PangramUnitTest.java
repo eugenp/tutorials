@@ -5,40 +5,40 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 
-public class PanagramUnitTest {
+public class PangramUnitTest {
     
     @Test
     public void givenValidString_isPanagram_shouldReturnSuccess() {
         String input = "Two driven jocks help fax my big quiz";
-        assertTrue(Panagram.isPanagram(input));  
-        assertTrue(Panagram.isPanagramWithStreams(input));        
+        assertTrue(Pangram.isPanagram(input));  
+        assertTrue(Pangram.isPanagramWithStreams(input));        
     }
     
     @Test
     public void givenNullString_isPanagram_shouldReturnFailure() {
         String input = null;
-        assertFalse(Panagram.isPanagram(input));
-        assertFalse(Panagram.isPanagramWithStreams(input));
-        assertFalse(Panagram.isPerfectPanagram(input));
+        assertFalse(Pangram.isPanagram(input));
+        assertFalse(Pangram.isPanagramWithStreams(input));
+        assertFalse(Pangram.isPerfectPanagram(input));
     }
     
     @Test
     public void givenPerfectPanagramString_isPerfectPanagram_shouldReturnSuccess() {
         String input = "abcdefghijklmNoPqrStuVwxyz";
-        assertTrue(Panagram.isPerfectPanagram(input));         
+        assertTrue(Pangram.isPerfectPanagram(input));         
     }
     
     @Test
     public void givenNonPanagramString_isPanagram_shouldReturnFailure() {
         String input = "invalid panagram";
-        assertFalse(Panagram.isPanagram(input));
-        assertFalse(Panagram.isPanagramWithStreams(input));
+        assertFalse(Pangram.isPanagram(input));
+        assertFalse(Pangram.isPanagramWithStreams(input));
     }
     
     @Test
     public void givenPanagram_isPerfectPanagram_shouldReturnFailure() {
         String input = "Two driven jocks help fax my big quiz";
-        assertFalse(Panagram.isPerfectPanagram(input));
+        assertFalse(Pangram.isPerfectPanagram(input));
     }
 
 }

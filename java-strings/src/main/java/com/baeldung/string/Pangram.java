@@ -6,12 +6,13 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Panagram {
+public class Pangram {
+    private static final int ALPHABET_COUNT = 26;
 
     public static boolean isPanagram(String str) {
         if (str == null)
             return false;
-        Boolean[] alphabetMarker = new Boolean[26];
+        Boolean[] alphabetMarker = new Boolean[ALPHABET_COUNT];
         Arrays.fill(alphabetMarker, false);
         int alphabetIndex = 0;
         str = str.toUpperCase();
@@ -33,13 +34,13 @@ public class Panagram {
             return false;
         
         // filtered character stream
-        str = str.toUpperCase();
-        Stream<Character> filteredCharStream = str.chars()
-            .filter(item -> ((item >= 'A' && item <= 'Z') || (item >= 'a' && item <= 'z')))
+        String strUpper = str.toUpperCase();
+        Stream<Character> filteredCharStream = strUpper.chars()
+            .filter(item -> ((item >= 'A' && item <= 'Z')))
             .mapToObj(c -> (char) c);
         Map<Character, Boolean> alphabetMap = filteredCharStream.collect(Collectors.toMap(item -> item, k -> Boolean.TRUE, (p1, p2) -> p1));
 
-        return (alphabetMap.size() == 26);
+        return (alphabetMap.size() == ALPHABET_COUNT);
     }
 
     public static boolean isPerfectPanagram(String str) {
@@ -47,13 +48,13 @@ public class Panagram {
             return false;
         
         // filtered character stream
-        str = str.toUpperCase();
-        Stream<Character> filteredCharStream = str.chars()
-            .filter(item -> ((item >= 'A' && item <= 'Z') || (item >= 'a' && item <= 'z')))
+        String strUpper = str.toUpperCase();
+        Stream<Character> filteredCharStream = strUpper.chars()
+            .filter(item -> ((item >= 'A' && item <= 'Z')))
             .mapToObj(c -> (char) c);
         Map<Character, Long> alphabetFrequencyMap = filteredCharStream.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 
-        return (alphabetFrequencyMap.size() == 26 && alphabetFrequencyMap.values()
+        return (alphabetFrequencyMap.size() == ALPHABET_COUNT && alphabetFrequencyMap.values()
             .stream()
             .allMatch(item -> item == 1));
     }
