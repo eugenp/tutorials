@@ -8,8 +8,14 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 测试：字符串的截取
+ */
 public class SplitUnitTest {
 
+    /**
+     * 查看正则表达式{http://tool.oschina.net/uploads/apidocs/jquery/regexp.html}
+     */
     @Test
     public void givenString_whenSplit_thenReturnsArray_through_JavaLangString() {
         assertThat("peter,james,thomas".split(","))
@@ -28,6 +34,9 @@ public class SplitUnitTest {
           .containsExactly("b", "a", "e", "l", "d", "u", "n", "g");
     }
 
+    /**
+     * @see org.apache.commons.lang.StringUtils#split(String)
+     */
     @Test
     public void givenString_whenSplit_thenReturnsArray_through_StringUtils() {
         StringUtils.split("car jeep scooter");
@@ -45,6 +54,9 @@ public class SplitUnitTest {
           .containsExactly("car", "jeep", "scooter");
     }
 
+    /**
+     * @see com.google.common.base.Splitter#on(char)
+     */
     @Test
     public void givenString_whenSplit_thenReturnsList_Splitter() {
         //given

@@ -7,6 +7,9 @@ import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 测试：字符串比较
+ */
 public class StringComparisonUnitTest {
 
     @Test
@@ -101,6 +104,10 @@ public class StringComparisonUnitTest {
         assertThat(StringUtils.equalsIgnoreCase("equals method", "EQUALS METHOD")).isTrue();
     }
 
+    /**
+     * @see org.apache.commons.lang3.StringUtils#equalsAny(CharSequence, CharSequence...)
+     * 测试：在一个字符串中，是否包含待搜索的字符串数组中的字符，只要包含一个就返回true。
+     */
     @Test
     public void whenUsingEqualsAnyOf_ThenComparingStrings(){
 
@@ -128,10 +135,11 @@ public class StringComparisonUnitTest {
         assertThat(StringUtils.compare(null, null)).isEqualTo(0);
         assertThat(StringUtils.compare(null, "abc")).isEqualTo(-1);
 
-        assertThat(StringUtils.compare("abc", "bbc")).isEqualTo(-1);
-        assertThat(StringUtils.compare("bbc", "abc")).isEqualTo(1);
-        assertThat(StringUtils.compare("abc", "abc")).isEqualTo(0);
+        assertThat(StringUtils.compare("abc", "bbc")).isEqualTo(-1);//abc<bbc，所以返回-1
+        assertThat(StringUtils.compare("bbc", "abc")).isEqualTo(1);//bbc>abc，所以返回为1
+        assertThat(StringUtils.compare("abc", "abc")).isEqualTo(0);//abc==abc,所以返回为0
     }
+
 
     @Test
     public void whenUsingCompareIgnoreCase_ThenComparingStringsWithNulls(){
@@ -144,6 +152,10 @@ public class StringComparisonUnitTest {
         assertThat(StringUtils.compareIgnoreCase("abc", "ABC")).isEqualTo(0);
     }
 
+    /**
+     * @see org.apache.commons.lang3.StringUtils#compare(String, String)
+     * 注意：两个字符串比较时，是否把null认为是比较大的字符串。
+     */
     @Test
     public void whenUsingCompareWithNullIsLessOption_ThenComparingStrings(){
 

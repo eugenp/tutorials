@@ -6,6 +6,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * 测试:字符序列vs字符串
+ */
 public class CharSequenceVsStringUnitTest {
 
     @Test
@@ -42,6 +45,8 @@ public class CharSequenceVsStringUnitTest {
         test.append("b");
         int secondAddressOfTest = System.identityHashCode(test);
 
+        System.out.print("firstAddressOfTest:{}" + firstAddressOfTest);
+        System.out.print("secondAddressOfTest:{}" + secondAddressOfTest);
         assertEquals(firstAddressOfTest, secondAddressOfTest);
     }
 }

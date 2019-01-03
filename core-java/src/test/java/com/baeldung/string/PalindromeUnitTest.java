@@ -3,6 +3,9 @@ package com.baeldung.string;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+/**
+ * 测试：回文字符串
+ */
 public class PalindromeUnitTest {
 
     private String[] words = {
