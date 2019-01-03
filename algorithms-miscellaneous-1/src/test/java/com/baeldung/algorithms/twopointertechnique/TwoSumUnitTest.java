@@ -1,6 +1,7 @@
 package com.baeldung.algorithms.twopointertechnique;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -19,7 +20,7 @@ public class TwoSumUnitTest {
 
         targetValue = 12;
 
-        assertThat(twoSum.twoSumSlow(sortedArray, targetValue)).isEqualTo(true);
+        assertTrue(twoSum.twoSumSlow(sortedArray, targetValue));
     }
 
     @Test
@@ -29,7 +30,7 @@ public class TwoSumUnitTest {
 
         targetValue = 20;
 
-        assertThat(twoSum.twoSumSlow(sortedArray, targetValue)).isEqualTo(false);
+        assertFalse(twoSum.twoSumSlow(sortedArray, targetValue));
     }
 
     @Test
@@ -39,7 +40,7 @@ public class TwoSumUnitTest {
 
         targetValue = 12;
 
-        assertThat(twoSum.twoSum(sortedArray, targetValue)).isEqualTo(true);
+        assertTrue(twoSum.twoSum(sortedArray, targetValue));
     }
 
     @Test
@@ -49,7 +50,7 @@ public class TwoSumUnitTest {
 
         targetValue = 20;
 
-        assertThat(twoSum.twoSum(sortedArray, targetValue)).isEqualTo(false);
+        assertFalse(twoSum.twoSum(sortedArray, targetValue));
     }
 
 }
