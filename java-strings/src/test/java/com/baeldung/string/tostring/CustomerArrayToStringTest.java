@@ -5,7 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class CustomerArrayToStringTest {
-    private static final String CUSTOMER_ARRAY_TO_STRING = "Customer [orders=[Order [orderId=A1111, desc=Game, value=0, status=In-Shiping]], getFirstName()=Rajesh, getLastName()=Bhojwani]";
+    private static final String CUSTOMER_ARRAY_TO_STRING 
+      = "Customer [orders=[Order [orderId=A1111, desc=Game, value=0, status=In-Shiping]], getFirstName()=Rajesh, getLastName()=Bhojwani]";
 	 
     @Test
     public void givenArray_whenToString_thenCustomerDetails() {
@@ -19,7 +20,7 @@ public class CustomerArrayToStringTest {
 	orders[0].setStatus("In-Shiping");
         customer.setOrders(orders);         
         
-        assertEquals(CUSTOMER_ARRAY_TO_STRING,customer.toString());
+        assertEquals(CUSTOMER_ARRAY_TO_STRING, customer.toString());
     }
 
 }

@@ -8,7 +8,8 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 public class CustomerWrapperCollectionToStringTest {
-    private static final String CUSTOMER_WRAPPER_COLLECTION_TO_STRING = "Customer [score=8, orders=[Book, Pen], fullname=Bhojwani, Rajesh, getFirstName()=Rajesh, getLastName()=Bhojwani]";
+    private static final String CUSTOMER_WRAPPER_COLLECTION_TO_STRING 
+      = "Customer [score=8, orders=[Book, Pen], fullname=Bhojwani, Rajesh, getFirstName()=Rajesh, getLastName()=Bhojwani]";
     	 
     @Test
     public void givenWrapperCollectionStrBuffer_whenToString_thenCustomerDetails() {
@@ -26,7 +27,7 @@ public class CustomerWrapperCollectionToStringTest {
 	fullname.append(customer.getLastName()+", "+ customer.getFirstName());
 	customer.setFullname(fullname);
 	
-	assertEquals(CUSTOMER_WRAPPER_COLLECTION_TO_STRING,customer.toString());
+	assertEquals(CUSTOMER_WRAPPER_COLLECTION_TO_STRING, customer.toString());
     }
 
 }
