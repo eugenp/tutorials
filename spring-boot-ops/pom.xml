@@ -86,6 +86,12 @@
             <version>${jquery.version}</version>
         </dependency>
 
+	<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+            <version>${springcloud.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -153,6 +159,7 @@
         <jpa.version>2.2</jpa.version>
         <guava.version>18.0</guava.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
+	<springcloud.version>2.0.2.RELEASE</springcloud.version>
     </properties>
 
 </project>
