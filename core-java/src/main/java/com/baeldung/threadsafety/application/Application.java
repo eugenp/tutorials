@@ -1,11 +1,13 @@
 package com.baeldung.threadsafety.application;
 
+import com.baeldung.threadsafety.callables.AtomicCounterCallable;
 import com.baeldung.threadsafety.mathutils.MathUtils;
 import com.baeldung.threadsafety.callables.CounterCallable;
 import com.baeldung.threadsafety.callables.ExtrinsicLockCounterCallable;
 import com.baeldung.threadsafety.callables.MessageServiceCallable;
 import com.baeldung.threadsafety.callables.ReentranReadWriteLockCounterCallable;
 import com.baeldung.threadsafety.callables.ReentrantLockCounterCallable;
+import com.baeldung.threadsafety.services.AtomicCounter;
 import com.baeldung.threadsafety.services.Counter;
 import com.baeldung.threadsafety.services.ExtrinsicLockCounter;
 import com.baeldung.threadsafety.services.MessageService;
@@ -63,6 +65,12 @@ public class Application {
         Future<Integer> future10 = (Future<Integer>) executorService.submit(new ReentranReadWriteLockCounterCallable(reentrantReadWriteLockCounter));
         System.out.println(future9.get());
         System.out.println(future10.get());
+        
+        AtomicCounter atomicCounter = new AtomicCounter();
+        Future<Integer> future11 = (Future<Integer>) executorService.submit(new AtomicCounterCallable(atomicCounter));
+        Future<Integer> future12 = (Future<Integer>) executorService.submit(new AtomicCounterCallable(atomicCounter));
+        System.out.println(future11.get());
+        System.out.println(future12.get());
         
         Collection<Integer> syncCollection = Collections.synchronizedCollection(new ArrayList<>());
         Thread thread11 = new Thread(() -> syncCollection.addAll(Arrays.asList(1, 2, 3, 4, 5, 6)));

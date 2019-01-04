@@ -1,0 +1,24 @@
+package com.baeldung.threadsafety.tests;
+
+import com.baeldung.threadsafety.callables.AtomicCounterCallable;
+import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThat;
+import com.baeldung.threadsafety.services.AtomicCounter;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
+public class AtomicCounterTest {
+
+    @Test
+    public void whenCalledIncrementCounter_thenCorrect() throws Exception {
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+        AtomicCounter counter = new AtomicCounter();
+        Future<Integer> future1 = (Future<Integer>) executorService.submit(new AtomicCounterCallable(counter));
+        Future<Integer> future2 = (Future<Integer>) executorService.submit(new AtomicCounterCallable(counter));
+        
+        assertThat(future1.get()).isEqualTo(1);
+        assertThat(future2.get()).isEqualTo(2);
+    }
+}
+
