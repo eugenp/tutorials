@@ -20,7 +20,7 @@ public class JavaCurlExamplesUnitTest {
         Process process = processBuilder.start();
         InputStream inputStream = process.getInputStream();
         // Consume the inputStream so the process can exit
-        JavaCurlExamples.consumeInputStream(process.getInputStream());
+        JavaCurlExamples.consumeInputStream(inputStream);
         int exitCode = process.exitValue();
         
         Assert.assertEquals(0, exitCode);
