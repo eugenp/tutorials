@@ -1,17 +1,19 @@
 package com.baeldung.string.tostring;
 
 public class CustomerComplexObjectToString extends Customer {
-    private Order orders;
- 
-    public Order getOrders() {
-        return orders;
+    private Order order;
+  
+    public Order getOrder() {
+        return order;
     }
-    public void setOrders(Order orders) {
-        this.orders = orders;
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
+
     @Override
     public String toString() {
-	return "Customer [orders=" + orders + ", getFirstName()=" + getFirstName()
+	return "Customer [order=" + order + ", getFirstName()=" + getFirstName()
 	  + ", getLastName()=" + getLastName() + "]";
     }    
 }
