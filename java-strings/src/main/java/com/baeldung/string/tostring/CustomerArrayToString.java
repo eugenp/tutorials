@@ -2,7 +2,7 @@ package com.baeldung.string.tostring;
 
 import java.util.Arrays;
 
-public class CustomerArrayToString  extends Customer {
+public class CustomerArrayToString extends Customer {
     private Order[] orders;
  
     public Order[] getOrders() {
