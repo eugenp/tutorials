@@ -6,10 +6,11 @@ public class CustomerPrimitiveToString extends Customer {
     public long getBalance() {
         return balance;
     }
+	
     public void setBalance(long balance) {
         this.balance = balance;
     }
-	
+        
     @Override
     public String toString() {
 	return "Customer [balance=" + balance + ", getFirstName()=" + getFirstName()
