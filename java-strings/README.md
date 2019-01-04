@@ -48,3 +48,4 @@
 - [Guide to java.util.Formatter](http://www.baeldung.com/java-string-formatter)
 - [Add a Character to a String at a Given Position](https://www.baeldung.com/java-add-character-to-string)
 - [Remove Leading and Trailing Characters from a String](https://www.baeldung.com/java-remove-trailing-characters)
+- [Concatenating Strings In Java](https://www.baeldung.com/java-strings-concatenation)
