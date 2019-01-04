@@ -12,12 +12,15 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.jxmpp.stringprep.XmppStringprepException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
 public class SmackIntegrationTest {
 
     static AbstractXMPPConnection connection;
+    Logger logger = LoggerFactory.getLogger(SmackIntegrationTest.class.getName());
 
     @BeforeClass
     public static void setup() throws IOException, InterruptedException, XMPPException, SmackException {
@@ -41,17 +44,17 @@ public class SmackIntegrationTest {
     }
 
     @Test
-    public void whenSendMessageWithChatThenReceiveMessage() throws XmppStringprepException, InterruptedException {
+    public void whenSendMessageWithChat_thenReceiveMessage() throws XmppStringprepException, InterruptedException {
 
         Object cv = new Object();
         ChatManager chatManager = ChatManager.getInstanceFor(connection);
         final String[] expected = {null};
 
-        new StanzaThread().start();
+        new StanzaThread().run();
 
 
         chatManager.addIncomingListener((entityBareJid, message, chat) -> {
-            System.out.println("Message arrived: " + message.getBody());
+            logger.info("Message arrived: " + message.getBody());
             expected[0] = message.getBody();
             synchronized (cv) {
                 cv.notify();
@@ -65,12 +68,12 @@ public class SmackIntegrationTest {
     }
 
     @Test
-    public void whenSendMessageThenReceiveMessageWithFilter() throws XmppStringprepException, InterruptedException {
+    public void whenSendMessage_thenReceiveMessageWithFilter() throws XmppStringprepException, InterruptedException {
 
         Object cv = new Object();
         final String[] expected = {null};
 
-        new StanzaThread().start();
+        new StanzaThread().run();
 
         connection.addAsyncStanzaListener(stanza -> {
             if (stanza instanceof Message) {
@@ -88,5 +91,3 @@ public class SmackIntegrationTest {
         Assert.assertEquals("Hello!", expected[0]);
     }
 }
-
-

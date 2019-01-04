@@ -1,23 +1,17 @@
 package com.baeldung.smack;
 
 import org.jivesoftware.smack.AbstractXMPPConnection;
-import org.jivesoftware.smack.SmackException;
-import org.jivesoftware.smack.XMPPException;
 import org.jivesoftware.smack.chat2.Chat;
 import org.jivesoftware.smack.chat2.ChatManager;
-import org.jivesoftware.smack.packet.Message;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jxmpp.jid.impl.JidCreate;
-import org.jxmpp.stringprep.XmppStringprepException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
+public class StanzaThread implements Runnable {
 
-public class StanzaThread extends Thread{
-
-
-    public StanzaThread(){
-    }
+    Logger logger = LoggerFactory.getLogger(StanzaThread.class.getName());
 
     @Override
     public void run() {
@@ -33,25 +27,14 @@ public class StanzaThread extends Thread{
             connection.connect();
             connection.login();
 
-
             ChatManager chatManager = ChatManager.getInstanceFor(connection);
 
             Chat chat = chatManager.chatWith(JidCreate.from("baeldung@jabb3r.org").asEntityBareJidOrThrow());
 
             chat.send("Hello!");
 
-        } catch (XmppStringprepException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SmackException e) {
-            e.printStackTrace();
-        } catch (XMPPException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
         }
-
-
     }
 }
