@@ -3,6 +3,7 @@ package com.baeldung.string.tostring;
 public class Customer {
     private String firstName;
     private String lastName;
+	
     public String getFirstName() {
 	return firstName;
     }
