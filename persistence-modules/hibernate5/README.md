@@ -27,3 +27,4 @@
 - [Get All Data from a Table with Hibernate](https://www.baeldung.com/hibernate-select-all)
 - [One-to-One Relationship in JPA](https://www.baeldung.com/jpa-one-to-one)
 - [Hibernate Named Query](https://www.baeldung.com/hibernate-named-query)
+- [Using c3p0 with Hibernate](https://www.baeldung.com/hibernate-c3p0)
