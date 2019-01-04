@@ -47,3 +47,4 @@
 - [Convert a Comma Separated String to a List in Java](https://www.baeldung.com/java-string-with-separator-to-list)
 - [Guide to java.util.Formatter](http://www.baeldung.com/java-string-formatter)
 - [Add a Character to a String at a Given Position](https://www.baeldung.com/java-add-character-to-string)
+- [Remove Leading and Trailing Characters from a String](https://www.baeldung.com/java-remove-trailing-characters)
