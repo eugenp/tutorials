@@ -9,6 +9,7 @@ import java.nio.ByteBuffer;
 import org.junit.jupiter.api.Test;
 
 class InputStreamToByteBufferUnitTest {
+
 @Test
 void giventUsingCoreClasses_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch()
   throws IOException {
@@ -26,6 +27,6 @@ void giventUsingCoreClasses_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustM
 
     in.getChannel().read(bufferByte);
 
-    assertEquals(bufferByte.position(),inputFile.length());
+    assertEquals(bufferByte.position(), inputFile.length());
 }
 }
