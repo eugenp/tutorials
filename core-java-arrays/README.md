@@ -13,3 +13,4 @@
 - [How to Invert an Array in Java](http://www.baeldung.com/java-invert-array)
 - [Array Operations in Java](http://www.baeldung.com/java-common-array-operations)
 - [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
+- [Sorting Arrays in Java](https://www.baeldung.com/java-sorting-arrays)
