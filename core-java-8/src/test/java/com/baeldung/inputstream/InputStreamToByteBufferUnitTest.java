@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class InputStreamToByteBufferUnitTest {
 
 @Test
-void giventUsingCoreClasses_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch()
+void givenUsingCoreClasses_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch()
   throws IOException {
 
     ClassLoader classLoader = new InputStreamToByteBufferUnitTest().getClass().getClassLoader();
