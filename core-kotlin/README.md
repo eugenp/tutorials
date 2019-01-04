@@ -48,3 +48,4 @@
 - [Implementing a Binary Tree in Kotlin](https://www.baeldung.com/kotlin-binary-tree)
 - [Generate a Random Alphanumeric String in Kotlin](https://www.baeldung.com/kotlin-random-alphanumeric-string)
 - [Kotlin Contracts](https://www.baeldung.com/kotlin-contracts)
+- [Operator Overloading in Kotlin](https://www.baeldung.com/kotlin-operator-overloading)
