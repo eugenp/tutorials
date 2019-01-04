@@ -11,6 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * 测试：java网络通信->socket
+ * 电话的
  */
 public class EchoIntegrationTest {
     private static final Integer PORT = 4444;

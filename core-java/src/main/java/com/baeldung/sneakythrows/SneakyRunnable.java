@@ -4,6 +4,7 @@ import lombok.SneakyThrows;
 
 public class SneakyRunnable implements Runnable {
 
+    @Override
     @SneakyThrows
     public void run() {
         try {

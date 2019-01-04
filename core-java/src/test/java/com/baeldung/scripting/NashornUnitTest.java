@@ -13,6 +13,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 测试：java如何获取js脚本（具体加载逻辑查看jdk下的nashorn.jar）
+ */
 public class NashornUnitTest {
 
     private ScriptEngine engine;

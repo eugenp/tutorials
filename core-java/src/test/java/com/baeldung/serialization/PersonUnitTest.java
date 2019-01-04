@@ -10,6 +10,9 @@ import java.io.ObjectOutputStream;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * 测试：类序列化
+ */
 public class PersonUnitTest {
 
     @Test
@@ -28,6 +31,8 @@ public class PersonUnitTest {
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Person p2 = (Person) objectInputStream.readObject();
         objectInputStream.close();
+
+        System.out.println("p2:{}" + p2);
 
         assertTrue(p2.getAge() == p.getAge());
         assertTrue(p2.getName().equals(p.getName()));
@@ -56,6 +61,8 @@ public class PersonUnitTest {
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         Employee e2 = (Employee) objectInputStream.readObject();
         objectInputStream.close();
+
+        System.out.println("e2:{}" + e2);
 
         assertTrue(e2.getPerson().getAge() == e.getPerson().getAge());
         assertTrue(e2.getAddress().getHouseNumber() == (e.getAddress().getHouseNumber()));

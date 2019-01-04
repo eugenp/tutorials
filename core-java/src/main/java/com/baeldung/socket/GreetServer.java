@@ -22,10 +22,12 @@ public class GreetServer {
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             String greeting = in.readLine();
-            if ("hello server".equals(greeting))
+            if ("hello server".equals(greeting)){
                 out.println("hello client");
-            else
+            }
+            else{
                 out.println("unrecognised greeting");
+            }
         } catch (IOException e) {
             LOG.debug(e.getMessage());
         }

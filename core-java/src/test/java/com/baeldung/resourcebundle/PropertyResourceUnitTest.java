@@ -5,10 +5,16 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * 测试：资源包加载
+ * 注意：去加载resources路径下的文件
+ * 比如：resourcebundle.resource，是加载resources/resourcebundle路径下以resource开头并且符合规则的资源。
+ */
 public class PropertyResourceUnitTest {
 
     @Test
@@ -16,6 +22,9 @@ public class PropertyResourceUnitTest {
         Locale.setDefault(Locale.US);
 
         ResourceBundle bundle = ResourceBundle.getBundle("resourcebundle.resource", new Locale("pl", "PL"));
+
+        Set<String> keySet = bundle.keySet();
+        System.out.println("keySet:{}" + keySet);
 
         assertTrue(bundle.keySet()
             .containsAll(Arrays.asList("backButton", "helloLabel", "cancelButton", "continueButton", "helloLabelNoEncoding")));

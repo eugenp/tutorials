@@ -41,4 +41,11 @@ public class Employee implements Serializable {
 		this.setAddress(a);
 	}
 
+	@Override
+	public String toString() {
+		return "Employee{" +
+				"address=" + address +
+				", person=" + person +
+				'}';
+	}
 }

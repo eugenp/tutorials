@@ -6,6 +6,11 @@ import org.slf4j.LoggerFactory;
 import java.net.*;
 import java.io.*;
 
+
+/**
+ * Server端多线程进行处理
+ * @author zn.wang
+ */
 public class EchoMultiServer {
 
     private static final Logger LOG = LoggerFactory.getLogger(EchoMultiServer.class);
@@ -15,9 +20,9 @@ public class EchoMultiServer {
     public void start(int port) {
         try {
             serverSocket = new ServerSocket(port);
-            while (true)
+            while (true){
                 new EchoClientHandler(serverSocket.accept()).start();
-
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -36,6 +41,7 @@ public class EchoMultiServer {
 
     }
 
+
     private static class EchoClientHandler extends Thread {
         private Socket clientSocket;
         private PrintWriter out;
@@ -45,6 +51,7 @@ public class EchoMultiServer {
             this.clientSocket = socket;
         }
 
+        @Override
         public void run() {
             try {
                 out = new PrintWriter(clientSocket.getOutputStream(), true);

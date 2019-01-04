@@ -6,9 +6,15 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
+/**
+ * 测试：资源包加载
+ * 注意：去加载类路径下的文件
+ * 比如：com.baeldung.resourcebundle.ExampleResource，是加载com.baeldung.resourcebundle包下所有ExampleResource开头的并且符合规则的资源。
+ */
 public class ExampleResourceUnitTest {
 
     @Test
@@ -16,6 +22,9 @@ public class ExampleResourceUnitTest {
         Locale plLocale = new Locale("pl", "PL");
 
         ResourceBundle exampleBundle = ResourceBundle.getBundle("com.baeldung.resourcebundle.ExampleResource", plLocale);
+
+        Set<String> keySet = exampleBundle.keySet();
+        System.out.println("keySet:{}" + keySet);
 
         assertTrue(exampleBundle.keySet()
             .containsAll(Arrays.asList("toUsdRate", "cities", "greeting", "currency", "language")));

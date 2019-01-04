@@ -12,4 +12,10 @@ public class Address {
 		this.houseNumber = houseNumber;
 	}
 
+	@Override
+	public String toString() {
+		return "Address{" +
+				"houseNumber=" + houseNumber +
+				'}';
+	}
 }
