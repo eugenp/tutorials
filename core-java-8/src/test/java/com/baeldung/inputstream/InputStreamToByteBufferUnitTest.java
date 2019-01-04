@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class InputStreamToByteBufferUnitTest {
 
     @Test
-    void givenUsingCoreClasses_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch() throws IOException {
+    public void givenUsingCoreClasses_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch() throws IOException {
 
         ClassLoader classLoader = new InputStreamToByteBufferUnitTest()
           .getClass()
