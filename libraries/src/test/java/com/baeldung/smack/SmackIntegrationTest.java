@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
 
 public class SmackIntegrationTest {
 
@@ -46,31 +47,26 @@ public class SmackIntegrationTest {
     @Test
     public void whenSendMessageWithChat_thenReceiveMessage() throws XmppStringprepException, InterruptedException {
 
-        Object cv = new Object();
+        CountDownLatch latch = new CountDownLatch(1);
         ChatManager chatManager = ChatManager.getInstanceFor(connection);
         final String[] expected = {null};
 
         new StanzaThread().run();
 
-
         chatManager.addIncomingListener((entityBareJid, message, chat) -> {
             logger.info("Message arrived: " + message.getBody());
             expected[0] = message.getBody();
-            synchronized (cv) {
-                cv.notify();
-            }
+            latch.countDown();
         });
 
-        synchronized (cv) {
-            cv.wait();
-        }
+        latch.await();
         Assert.assertEquals("Hello!", expected[0]);
     }
 
     @Test
     public void whenSendMessage_thenReceiveMessageWithFilter() throws XmppStringprepException, InterruptedException {
 
-        Object cv = new Object();
+        CountDownLatch latch = new CountDownLatch(1);
         final String[] expected = {null};
 
         new StanzaThread().run();
@@ -79,15 +75,11 @@ public class SmackIntegrationTest {
             if (stanza instanceof Message) {
                 Message message = (Message) stanza;
                 expected[0] = message.getBody();
-                synchronized (cv) {
-                    cv.notify();
-                }
+                latch.countDown();
             }
         }, StanzaTypeFilter.MESSAGE);
 
-        synchronized (cv) {
-            cv.wait();
-        }
+        latch.await();
         Assert.assertEquals("Hello!", expected[0]);
     }
 }
