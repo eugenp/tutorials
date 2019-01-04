@@ -25,3 +25,4 @@
 - [Criteria Queries Using JPA Metamodel](https://www.baeldung.com/hibernate-criteria-queries-metamodel)
 - [Guide to the Hibernate EntityManager](https://www.baeldung.com/hibernate-entitymanager)
 - [Get All Data from a Table with Hibernate](https://www.baeldung.com/hibernate-select-all)
+- [One-to-One Relationship in JPA](https://www.baeldung.com/jpa-one-to-one)
