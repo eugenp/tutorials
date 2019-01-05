@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class PersonAndEmployeeReflectionTest {
+public class PersonAndEmployeeReflectionUnitTest {
 
     // Fields names
     private static final String LAST_NAME_FIELD = "lastName";
