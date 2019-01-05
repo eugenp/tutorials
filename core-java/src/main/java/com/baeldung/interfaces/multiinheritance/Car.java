@@ -1,6 +1,7 @@
 package com.baeldung.interfaces.multiinheritance;
 
-public class Car implements Fly, Transform {
+public class Car implements Fly,Transform {
+
     @Override
     public void fly() {
         System.out.println("I can Fly!!");
