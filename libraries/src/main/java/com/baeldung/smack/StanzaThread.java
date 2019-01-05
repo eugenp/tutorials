@@ -6,12 +6,12 @@ import org.jivesoftware.smack.chat2.ChatManager;
 import org.jivesoftware.smack.tcp.XMPPTCPConnection;
 import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
 import org.jxmpp.jid.impl.JidCreate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 public class StanzaThread implements Runnable {
 
-    Logger logger = LoggerFactory.getLogger(StanzaThread.class.getName());
+//    Logger logger = LoggerFactory.getLogger(StanzaThread.class.getName());
 
     @Override
     public void run() {
@@ -34,7 +34,7 @@ public class StanzaThread implements Runnable {
             chat.send("Hello!");
 
         } catch (Exception e) {
-            logger.error(e.getMessage());
+//            logger.info(e.getMessage());
         }
     }
 }
