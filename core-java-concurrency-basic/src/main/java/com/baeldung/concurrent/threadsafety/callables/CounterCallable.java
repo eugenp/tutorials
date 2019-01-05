@@ -1,7 +1,7 @@
 package com.baeldung.concurrent.threadsafety.callables;
 
 import com.baeldung.concurrent.threadsafety.services.Counter;
-import java.util.concurrent.concurrent.Callable;
+import java.util.concurrent.Callable;
 
 public class CounterCallable implements Callable<Integer> {
 
