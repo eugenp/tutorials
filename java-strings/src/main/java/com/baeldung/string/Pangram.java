@@ -15,10 +15,10 @@ public class Pangram {
         Boolean[] alphabetMarker = new Boolean[ALPHABET_COUNT];
         Arrays.fill(alphabetMarker, false);
         int alphabetIndex = 0;
-        str = str.toUpperCase();
+        String strUpper = str.toUpperCase();
         for (int i = 0; i < str.length(); i++) {
-            if ('A' <= str.charAt(i) && str.charAt(i) <= 'Z') {
-                alphabetIndex = str.charAt(i) - 'A';
+            if ('A' <= strUpper.charAt(i) && strUpper.charAt(i) <= 'Z') {
+                alphabetIndex = strUpper.charAt(i) - 'A';
                 alphabetMarker[alphabetIndex] = true;
             }
         }
