@@ -1,4 +1,4 @@
-package org.baeldung.boot
+package com.baeldung.boot
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -12,8 +12,8 @@ import spock.lang.Title
 
 @Title("WebController Specification")
 @Narrative("The Specification of the behaviour of the WebController. It can greet a person, change the name and reset it to 'world'")
-@AutoConfigureMockMvc
-@WebMvcTest
+@AutoConfigureMockMvc(secure=false)
+@WebMvcTest()
 class WebControllerTest extends Specification {
 
     @Autowired

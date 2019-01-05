@@ -663,6 +663,7 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 
+                <module>spring-ehcache</module>
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
@@ -882,6 +883,7 @@
 				<module>spring-data-rest</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
+				<module>spring-ehcache</module>
 				<module>spring-freemarker</module>
 				<module>persistence-modules/spring-hibernate-3</module>
 				<module>persistence-modules/spring-hibernate4</module>
@@ -1370,6 +1372,7 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 
+				<module>spring-ehcache</module>                
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
