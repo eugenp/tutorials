@@ -40,27 +40,21 @@ public class Element4UnitTest {
     @Test
     public void whenLocatebyLabel_thenReturnCorrectValue() {
         for (Element4 e4 : Element4.values()) {
-            Element4 result = Element4.valueOfLabel(e4.label);
-            
-            assertSame(e4, result);
+            assertSame(e4, Element4.valueOfLabel(e4.label));
         }
     }
 
     @Test
     public void whenLocatebyAtmNum_thenReturnCorrectValue() {
         for (Element4 e4 : Element4.values()) {
-            Element4 result = Element4.valueOfAtomicNumber(e4.atomicNumber);
-            
-            assertSame(e4, result);
+            assertSame(e4, Element4.valueOfAtomicNumber(e4.atomicNumber));
         }
     }
 
     @Test
     public void whenLocatebyAtmWt_thenReturnCorrectValue() {
         for (Element4 e4 : Element4.values()) {
-            Element4 result = Element4.valueOfAtomicWeight(e4.atomicWeight);
-            
-            assertSame(e4, result);
+            assertSame(e4, Element4.valueOfAtomicWeight(e4.atomicWeight));
         }
     }
 
@@ -70,9 +64,7 @@ public class Element4UnitTest {
     @Test
     public void whenCallingToString_thenReturnLabel() {
         for (Element4 e4 : Element4.values()) {
-            String result = e4.toString();
-            
-            assertEquals(e4.label, result);
+            assertEquals(e4.label, e4.toString());
         }
     }
     
