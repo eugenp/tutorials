@@ -47,3 +47,7 @@
 - [Dependency Injection for Kotlin with Injekt](https://www.baeldung.com/kotlin-dependency-injection-with-injekt)
 - [Implementing a Binary Tree in Kotlin](https://www.baeldung.com/kotlin-binary-tree)
 - [Generate a Random Alphanumeric String in Kotlin](https://www.baeldung.com/kotlin-random-alphanumeric-string)
+- [Kotlin Contracts](https://www.baeldung.com/kotlin-contracts)
+- [Operator Overloading in Kotlin](https://www.baeldung.com/kotlin-operator-overloading)
+- [Inline Classes in Kotlin](https://www.baeldung.com/kotlin-inline-classes)
+- [Creating Java static final Equivalents in Kotlin](https://www.baeldung.com/kotlin-java-static-final)
