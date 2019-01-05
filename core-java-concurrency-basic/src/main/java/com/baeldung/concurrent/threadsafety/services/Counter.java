@@ -1,4 +1,4 @@
-package com.baeldung.councurrent.threadsafety.services;
+package com.baeldung.concurrent.threadsafety.services;
 
 public class Counter {
     
