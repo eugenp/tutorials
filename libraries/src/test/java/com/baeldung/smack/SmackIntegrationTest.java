@@ -12,16 +12,16 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.jxmpp.stringprep.XmppStringprepException;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 
 public class SmackIntegrationTest {
 
-    static AbstractXMPPConnection connection;
-//    Logger logger = LoggerFactory.getLogger(SmackIntegrationTest.class.getName());
+    private static AbstractXMPPConnection connection;
+    private Logger logger = LoggerFactory.getLogger(SmackIntegrationTest.class);
 
     @BeforeClass
     public static void setup() throws IOException, InterruptedException, XMPPException, SmackException {
@@ -54,7 +54,7 @@ public class SmackIntegrationTest {
         new StanzaThread().run();
 
         chatManager.addIncomingListener((entityBareJid, message, chat) -> {
-//            logger.info("Message arrived: " + message.getBody());
+            logger.info("Message arrived: " + message.getBody());
             expected[0] = message.getBody();
             latch.countDown();
         });
