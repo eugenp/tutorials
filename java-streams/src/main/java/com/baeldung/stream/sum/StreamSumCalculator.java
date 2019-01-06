@@ -1,6 +1,8 @@
 package com.baeldung.stream.sum;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class StreamSumCalculator {
@@ -29,11 +31,29 @@ public class StreamSumCalculator {
             .collect(Collectors.summingInt(Integer::intValue));
 
     }
-    
+
     public static Integer getSumUsingSum(List<Integer> integers) {
-        
+
         return integers.stream()
             .mapToInt(Integer::intValue)
             .sum();
+    }
+
+    public static Integer getSumOfMapValues(Map<Object, Integer> map) {
+
+        return map.values()
+            .stream()
+            .mapToInt(Integer::valueOf)
+            .sum();
+    }
+
+    public static Integer getSumIntegersFromString(String str) {
+
+        Integer sum = Arrays.stream(str.split(" "))
+            .filter((s) -> s.matches("\\d+"))
+            .mapToInt(Integer::valueOf)
+            .sum();
+
+        return sum;
     }
 }
