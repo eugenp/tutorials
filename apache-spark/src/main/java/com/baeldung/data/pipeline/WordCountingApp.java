@@ -6,7 +6,6 @@ import static com.datastax.spark.connector.japi.CassandraJavaUtil.mapToRow;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -35,7 +34,6 @@ import scala.Tuple2;
 
 public class WordCountingApp {
 
-    @SuppressWarnings("serial")
     public static void main(String[] args) throws InterruptedException {
         Logger.getLogger("org")
             .setLevel(Level.OFF);
@@ -61,52 +59,24 @@ public class WordCountingApp {
 
         JavaInputDStream<ConsumerRecord<String, String>> messages = KafkaUtils.createDirectStream(streamingContext, LocationStrategies.PreferConsistent(), ConsumerStrategies.<String, String> Subscribe(topics, kafkaParams));
 
-        JavaPairDStream<String, String> results = messages.mapToPair(new PairFunction<ConsumerRecord<String, String>, String, String>() {
-            @Override
-            public Tuple2<String, String> call(ConsumerRecord<String, String> record) {
-                return new Tuple2<>(record.key(), record.value());
-            }
-        });
+        JavaPairDStream<String, String> results = messages.mapToPair((PairFunction<ConsumerRecord<String, String>, String, String>) record -> new Tuple2<>(record.key(), record.value()));
 
-        JavaDStream<String> lines = results.map(new Function<Tuple2<String, String>, String>() {
-            @Override
-            public String call(Tuple2<String, String> tuple2) {
-                return tuple2._2();
-            }
-        });
+        JavaDStream<String> lines = results.map((Function<Tuple2<String, String>, String>) tuple2 -> tuple2._2());
 
-        JavaDStream<String> words = lines.flatMap(new FlatMapFunction<String, String>() {
-            @Override
-            public Iterator<String> call(String x) {
-                return Arrays.asList(x.split("\\s+"))
-                    .iterator();
-            }
-        });
+        JavaDStream<String> words = lines.flatMap((FlatMapFunction<String, String>) x -> Arrays.asList(x.split("\\s+"))
+            .iterator());
 
-        JavaPairDStream<String, Integer> wordCounts = words.mapToPair(new PairFunction<String, String, Integer>() {
-            @Override
-            public Tuple2<String, Integer> call(String s) {
-                return new Tuple2<>(s, 1);
-            }
-        })
-            .reduceByKey(new Function2<Integer, Integer, Integer>() {
-                @Override
-                public Integer call(Integer i1, Integer i2) {
-                    return i1 + i2;
-                }
-            });
+        JavaPairDStream<String, Integer> wordCounts = words.mapToPair((PairFunction<String, String, Integer>) s -> new Tuple2<>(s, 1))
+            .reduceByKey((Function2<Integer, Integer, Integer>) (i1, i2) -> i1 + i2);
 
-        wordCounts.foreachRDD(new VoidFunction<JavaPairRDD<String, Integer>>() {
-            @Override
-            public void call(JavaPairRDD<String, Integer> javaRdd) throws Exception {
-                Map<String, Integer> wordCountMap = javaRdd.collectAsMap();
-                for (String key : wordCountMap.keySet()) {
-                    List<Word> words = Arrays.asList(new Word(key, wordCountMap.get(key)));
-                    JavaRDD<Word> rdd = streamingContext.sparkContext()
-                        .parallelize(words);
-                    javaFunctions(rdd).writerBuilder("vocabulary", "words", mapToRow(Word.class))
-                        .saveToCassandra();
-                }
+        wordCounts.foreachRDD((VoidFunction<JavaPairRDD<String, Integer>>) javaRdd -> {
+            Map<String, Integer> wordCountMap = javaRdd.collectAsMap();
+            for (String key : wordCountMap.keySet()) {
+                List<Word> wordList = Arrays.asList(new Word(key, wordCountMap.get(key)));
+                JavaRDD<Word> rdd = streamingContext.sparkContext()
+                    .parallelize(wordList);
+                javaFunctions(rdd).writerBuilder("vocabulary", "words", mapToRow(Word.class))
+                    .saveToCassandra();
             }
         });
 
