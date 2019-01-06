@@ -5,6 +5,7 @@ import java.time.Year;
 import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
 
+//Run with -ea or -enableassertions VM argument
 public class LeapYear {
 	/**
 	 * Checks whether the year in the given date is leap year or not using {@link java.time.Year} API.
@@ -19,19 +20,17 @@ public class LeapYear {
 	}
 	
 	public static void main (String args[]) {
-		boolean isLeap = Year.isLeap(2012);
-		System.out.println("Is Leap year (2012) : "+isLeap);
+		//Before Java 8
+		assert new GregorianCalendar().isLeapYear(-4); 
+
+		//Java 8 and above
+		assert Year.isLeap(-3) == false;
 		
-		boolean isLeapBC = new GregorianCalendar().isLeapYear(-4);
-		System.out.println("Is Leap year (BC 5) : "+isLeapBC);
+		assert Year.isLeap(2012);
 		
-		System.out.println("Is Leap year (BC 4) : "+Year.isLeap(-3));
+		assert !isLeapYear("2019-01-05");
 		
-		boolean isLeapFromDate = isLeapYear("2019-01-05");
-		System.out.println("Is Leap year (2019-01-05): "+isLeapFromDate);
-		
-		isLeapFromDate = isLeapYear("2020-01-05");
-		System.out.println("Is Leap year (2020-01-05): "+isLeapFromDate);
+		assert isLeapYear("2020-01-05");
 	}
 
 }
