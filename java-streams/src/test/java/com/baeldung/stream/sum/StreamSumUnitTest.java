@@ -3,7 +3,9 @@ package com.baeldung.stream.sum;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
@@ -109,6 +111,26 @@ public class StreamSumUnitTest {
 
         Integer sum = StreamSumCalculatorWithObject.getSumUsingSum(items);
         assertEquals(90, sum.intValue());
+    }
+
+    @Test
+    public void givenMapWhenSummingThenCorrectValueReturned() {
+        Map<Object, Integer> map = new HashMap<Object, Integer>();
+        map.put(1, 10);
+        map.put(2, 15);
+        map.put(3, 25);
+        map.put(4, 40);
+
+        Integer sum = StreamSumCalculator.getSumOfMapValues(map);
+        assertEquals(90, sum.intValue());
+    }
+
+    @Test
+    public void givenStringWhenSummingThenCorrectValueReturned() {
+        String string = "Item1 10 Item2 25 Item3 30 Item4 45";
+
+        Integer sum = StreamSumCalculator.getSumIntegersFromString(string);
+        assertEquals(110, sum.intValue());
     }
 
 }
