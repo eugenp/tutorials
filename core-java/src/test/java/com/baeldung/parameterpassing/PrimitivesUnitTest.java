@@ -3,6 +3,9 @@ package com.baeldung.parameterpassing;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 测试：参数传递
+ */
 public class PrimitivesUnitTest {
     @Test
     public void whenModifyingPrimitives_thenOriginalValuesNotModified() {

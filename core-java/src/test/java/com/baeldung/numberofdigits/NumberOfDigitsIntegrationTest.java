@@ -7,6 +7,9 @@ import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
 import org.junit.runner.RunWith;
 
+/**
+ * 测试：数的位数
+ */
 @RunWith(Theories.class)
 public class NumberOfDigitsIntegrationTest {
     
@@ -69,36 +72,66 @@ public class NumberOfDigitsIntegrationTest {
 
     @Theory
     public void givenDataPoints_whenStringBasedSolutionInvoked_thenAllPointsMatch(final int[] entry) {
+        System.out.println("=====[start]=====");
+        System.out.println("input:{} key=" + entry[0] + ",value=" + entry[1]);
+        System.out.println("output:{} " + numberOfDigits.stringBasedSolution(entry[1]));
+        System.out.println("=====[end]=====\n");
+
         Assume.assumeTrue(entry[0] > 0 && entry[1] > 0);
         Assert.assertEquals(entry[0], numberOfDigits.stringBasedSolution(entry[1]));
     }
 
     @Theory
     public void givenDataPoints_whenLogarithmicApproachInvoked_thenAllPointsMatch(final int[] entry) {
+        System.out.println("=====[start]=====");
+        System.out.println("input:{} key=" + entry[0] + ",value=" + entry[1]);
+        System.out.println("output:{} " + numberOfDigits.logarithmicApproach(entry[1]));
+        System.out.println("=====[end]=====\n");
+
         Assume.assumeTrue(entry[0] > 0 && entry[1] > 0);
         Assert.assertEquals(entry[0], numberOfDigits.logarithmicApproach(entry[1]));
     }
 
     @Theory
     public void givenDataPoints_whenRepeatedMultiplicationInvoked_thenAllPointsMatch(final int[] entry) {
+        System.out.println("=====[start]=====");
+        System.out.println("input:{} key=" + entry[0] + ",value=" + entry[1]);
+        System.out.println("output:{} " + numberOfDigits.repeatedMultiplication(entry[1]));
+        System.out.println("=====[end]=====\n");
+
         Assume.assumeTrue(entry[0] > 0 && entry[1] > 0);
         Assert.assertEquals(entry[0], numberOfDigits.repeatedMultiplication(entry[1]));
     }
 
     @Theory
     public void givenDataPoints_whenShiftOperatorsInvoked_thenAllPointsMatch(final int[] entry) {
+        System.out.println("=====[start]=====");
+        System.out.println("input:{} key=" + entry[0] + ",value=" + entry[1]);
+        System.out.println("output:{} " + numberOfDigits.shiftOperators(entry[1]));
+        System.out.println("=====[end]=====\n");
+
         Assume.assumeTrue(entry[0] > 0 && entry[1] > 0);
         Assert.assertEquals(entry[0], numberOfDigits.shiftOperators(entry[1]));
     }
 
     @Theory
     public void givenDataPoints_whenDividingWithPowersOf2Invoked_thenAllPointsMatch(final int[] entry) {
+        System.out.println("=====[start]=====");
+        System.out.println("input:{} key=" + entry[0] + ",value=" + entry[1]);
+        System.out.println("output:{} " + numberOfDigits.dividingWithPowersOf2(entry[1]));
+        System.out.println("=====[end]=====\n");
+
         Assume.assumeTrue(entry[0] > 0 && entry[1] > 0);
         Assert.assertEquals(entry[0], numberOfDigits.dividingWithPowersOf2(entry[1]));
     }
 
     @Theory
     public void givenDataPoints_whenDivideAndConquerInvoked_thenAllPointsMatch(final int[] entry) {
+        System.out.println("=====[start]=====");
+        System.out.println("input:{} key=" + entry[0] + ",value=" + entry[1]);
+        System.out.println("output:{} " + numberOfDigits.divideAndConquer(entry[1]));
+        System.out.println("=====[end]=====\n");
+
         Assume.assumeTrue(entry[0] > 0 && entry[1] > 0);
         Assert.assertEquals(entry[0], numberOfDigits.divideAndConquer(entry[1]));
     }

@@ -5,6 +5,9 @@ import java.awt.image.BufferedImage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author zn.wang
+ */
 public class FileManager {
 
     final static Logger logger = LoggerFactory.getLogger(FileManager.class);

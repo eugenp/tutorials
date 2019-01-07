@@ -7,6 +7,9 @@ import java.io.File;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * 测试：屏幕截图
+ */
 public class ScreenshotLiveTest {
 
     private Screenshot screenshot = new Screenshot("Screenshot.jpg");

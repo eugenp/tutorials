@@ -1,5 +1,10 @@
 package com.baeldung.recursion;
 
+
+/**
+ * 二进制节点
+ * @author zn.wang
+ */
 public class BinaryNode {
     int value;
     BinaryNode left;
@@ -27,5 +32,13 @@ public class BinaryNode {
     public void setRight(BinaryNode right) {
         this.right = right;
     }
-    
+
+    @Override
+    public String toString() {
+        return "BinaryNode{" +
+                "value=" + value +
+                ", left=" + left +
+                ", right=" + right +
+                '}';
+    }
 }

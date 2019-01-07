@@ -3,6 +3,9 @@ package com.baeldung.regexp.datepattern;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 测试：正确范围内的日期
+ */
 public class RangedDateMatcherUnitTest {
 
     private DateMatcher matcher = new RangedDateMatcher();

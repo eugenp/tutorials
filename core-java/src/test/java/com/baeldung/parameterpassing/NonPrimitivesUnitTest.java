@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class NonPrimitivesUnitTest {
+
     @Test
     public void whenModifyingObjects_thenOriginalObjectChanged() {
         Foo a = new Foo(1);

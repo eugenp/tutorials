@@ -7,6 +7,9 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * 测试：反射
+ */
 public class BaeldungReflectionUtilsUnitTest {
 
     @Test
@@ -14,11 +17,12 @@ public class BaeldungReflectionUtilsUnitTest {
         Customer customer = new Customer(1, "Himanshu", null, null);
 
         List<String> result = BaeldungReflectionUtils.getNullPropertiesList(customer);
+        System.out.println("result:{}" + result);
+
         List<String> expectedFieldNames = Arrays.asList("emailId", "phoneNumber");
 
         assertTrue(result.size() == expectedFieldNames.size());
         assertTrue(result.containsAll(expectedFieldNames));
-
     }
 
 }

@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+/**
+ * @author zn.wang
+ */
 public class Screenshot {
 
     private final String path;

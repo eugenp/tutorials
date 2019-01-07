@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 import java.awt.image.BufferedImage;
 import org.junit.Test;
 
+/**
+ * 测试：多态性
+ */
 public class PolymorphismUnitTest {
 
     @Test
@@ -25,8 +28,13 @@ public class PolymorphismUnitTest {
     // Downcasting
     @Test(expected = ClassCastException.class)
     public void givenGenericFile_whenCastToTextFileAndInvokeGetWordCount_shouldFail() {
-        GenericFile genericFile = new GenericFile();
-        TextFile textFile = (TextFile) genericFile;
-        System.out.println(textFile.getWordCount());
+        try{
+            GenericFile genericFile = new GenericFile();
+            TextFile textFile = (TextFile) genericFile;
+            System.out.println(textFile.getWordCount());
+        }
+        catch (Throwable e){
+            e.printStackTrace();
+        }
     }
 }

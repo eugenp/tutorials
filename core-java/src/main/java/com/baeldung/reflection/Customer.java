@@ -1,5 +1,8 @@
 package com.baeldung.reflection;
 
+/**
+ * @author zn.wang
+ */
 public class Customer {
 
     private Integer id;
@@ -52,5 +55,7 @@ public class Customer {
     public void setPhoneNumber(Long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
+
 
 }

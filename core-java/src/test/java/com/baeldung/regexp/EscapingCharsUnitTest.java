@@ -2,6 +2,7 @@ package com.baeldung.regexp;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,7 +11,11 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
+/**
+ * 测试：正则表达式
+ */
 public class EscapingCharsUnitTest {
+
     @Test
     public void givenRegexWithDot_whenMatchingStr_thenMatches() {
         String strInput = "foof";
@@ -27,14 +32,20 @@ public class EscapingCharsUnitTest {
         assertEquals(false, strInput.matches(strRegex));
     }
 
+
     @Test
     public void givenRegexWithPipeEscaped_whenSplitStr_thenSplits() {
         String strInput = "foo|bar|hello|world";
         String strRegex = "\\Q|\\E";
+        String[] splitArray = strInput.split(strRegex);
+        System.out.println("splitArray:{}" + Arrays.asList(splitArray));
 
-        assertEquals(4, strInput.split(strRegex).length);
+        assertEquals(4, splitArray.length);
     }
 
+    /**
+     * Pattern.quote 方法就是给添加上 \Q...\E 引用字符的，可以使得其失去正则表达式的含义，而仅作为普通字符串。
+     */
     @Test
     public void givenRegexWithPipeEscQuoteMeth_whenSplitStr_thenSplits() {
         String strInput = "foo|bar|hello|world";
