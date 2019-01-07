@@ -1,5 +1,6 @@
 package com.baeldung.inputstream;
 
+import com.google.common.io.ByteStreams;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +11,6 @@ import java.nio.ByteBuffer;
 import java.nio.channels.ReadableByteChannel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class InputStreamToByteBufferUnitTest {
 
@@ -39,17 +39,22 @@ class InputStreamToByteBufferUnitTest {
 
         ReadableByteChannel readableByteChannel = new FileInputStream(inputFile).getChannel();
 
+        // read all bytes into the allocated ByteBuffer
         IOUtils.readFully(readableByteChannel, bufferByte);
 
         assertEquals(bufferByte.position(), inputFile.length());
     }
 
     @Test
-    public void givenUsingGuava_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch() {
+    public void givenUsingGuava_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch() throws IOException {
 
         File inputFile = getFile();
 
-        assertTrue(false);
+        FileInputStream in = new FileInputStream(inputFile);
+
+        byte[] targetArray = ByteStreams.toByteArray(in);
+
+        ByteBuffer bufferByte = ByteBuffer.wrap(targetArray);
 
     }
 
