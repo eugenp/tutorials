@@ -188,7 +188,7 @@
         <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
         <h2database.version>1.4.196</h2database.version>
         <logback-classic.version>1.2.3</logback-classic.version>
-        <jackson.version>2.8.7</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
     </properties>
 
 </project>
