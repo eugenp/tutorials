@@ -4,6 +4,7 @@
     <artifactId>spring-swagger-codegen</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+	<name>spring-swagger-codegen</name>
 
     <parent>
         <groupId>com.baeldung</groupId>

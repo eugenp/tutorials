@@ -5,6 +5,7 @@
     <groupId>com.baeldung.examples</groupId>
     <artifactId>asm</artifactId>
     <version>1.0</version>
+    <name>asm</name>
     <packaging>jar</packaging>
 
     <parent>

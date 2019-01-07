@@ -24,7 +24,6 @@
             <version>${jaxen.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>org.jdom</groupId>
             <artifactId>jdom2</artifactId>
@@ -166,7 +165,7 @@
                             <excludes>
                                 <exclude>template-binding.xml</exclude>
                             </excludes>
-							<schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
+                            <schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
                             <includeSchemaBindings>
                                 <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
                             </includeSchemaBindings>
@@ -174,14 +173,14 @@
                         </configuration>
                         <executions>
                             <execution>
-                            	<id>process-classes</id>
+                                <id>process-classes</id>
                                 <phase>process-classes</phase>
                                 <goals>
                                     <goal>bind</goal>
                                 </goals>
                             </execution>
-							<execution>
-								<id>process-test-classes</id>
+                            <execution>
+                                <id>process-test-classes</id>
                                 <phase>process-test-classes</phase>
                                 <goals>
                                     <goal>test-bind</goal>
@@ -229,34 +228,6 @@
             </build>
         </profile>
     </profiles>
-
-    <repositories>
-        <repository>
-            <id>jibx.sf.net</id>
-            <name>JiBX repository</name>
-            <url>http://jibx.sf.net/maven2</url>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jibx.sf.net</id>
-            <name>JiBX repository</name>
-            <url>http://jibx.sf.net/maven2</url>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
 
     <properties>
         <dom4j.version>1.6.1</dom4j.version>

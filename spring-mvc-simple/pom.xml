@@ -4,8 +4,7 @@
     <artifactId>spring-mvc-simple</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Spring MVC simple Maven Webapp</name>
-    <url>http://maven.apache.org</url>
+    <name>spring-mvc-simple</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -197,7 +196,7 @@
         <jade.version>1.2.5</jade.version>
         <junit.platform.version>1.0.2</junit.platform.version>
         <rome.version>1.9.0</rome.version>
-        <jackson.version>2.9.4</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <xstream.version>1.4.9</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>
