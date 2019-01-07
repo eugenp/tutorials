@@ -5,6 +5,9 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+/**
+ * @author zn.wang
+ */
 public class EchoClient {
     private DatagramSocket socket;
     private InetAddress address;
@@ -18,7 +21,6 @@ public class EchoClient {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public String sendEcho(String msg) {

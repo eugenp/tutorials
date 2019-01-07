@@ -5,6 +5,10 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+/**
+ * 多点广播
+ * @author zn.wang
+ */
 public class MulticastingClient {
     private DatagramSocket socket;
     private InetAddress group;

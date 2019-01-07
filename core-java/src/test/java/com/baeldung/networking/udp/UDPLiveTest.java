@@ -9,7 +9,11 @@ import java.io.IOException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
+/**
+ * 测试：网络传输层协议UDP测试
+ */
 public class UDPLiveTest {
+
     private EchoClient client;
 
     @Before
@@ -22,6 +26,7 @@ public class UDPLiveTest {
     public void whenCanSendAndReceivePacket_thenCorrect1() {
         String echo = client.sendEcho("hello server");
         assertEquals("hello server", echo);
+        System.out.println("=====================");
         echo = client.sendEcho("server is working");
         assertFalse(echo.equals("hello server"));
     }

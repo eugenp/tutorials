@@ -5,6 +5,9 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
+/**
+ * @author zn.wang
+ */
 public class EchoServer extends Thread {
 
     protected DatagramSocket socket = null;
@@ -15,12 +18,12 @@ public class EchoServer extends Thread {
         socket = new DatagramSocket(4445);
     }
 
+    @Override
     public void run() {
         running = true;
 
         while (running) {
             try {
-
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 socket.receive(packet);
                 InetAddress address = packet.getAddress();
@@ -29,10 +32,10 @@ public class EchoServer extends Thread {
                 String received = new String(packet.getData(), 0, packet.getLength());
                 if (received.equals("end")) {
                     running = false;
-                    continue;
                 }
                 socket.send(packet);
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 e.printStackTrace();
                 running = false;
             }

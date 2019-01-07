@@ -11,6 +11,9 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @author zn.wang
+ */
 public class BroadcastingClient {
     private DatagramSocket socket;
     private InetAddress address;

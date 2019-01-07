@@ -1,5 +1,8 @@
 package com.baeldung.noclassdeffounderror;
 
+/**
+ * @author zn.wang
+ */
 public class NoClassDefFoundErrorExample {
     public ClassWithInitErrors getClassWithInitErrors() {
         ClassWithInitErrors test;

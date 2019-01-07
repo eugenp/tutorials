@@ -7,6 +7,9 @@ import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * 广播
+ */
 public class BroadcastLiveTest {
     private BroadcastingClient client;
 
