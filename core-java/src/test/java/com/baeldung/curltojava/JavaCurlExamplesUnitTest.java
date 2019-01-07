@@ -3,8 +3,6 @@ package com.baeldung.curltojava;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import org.junit.Assert;
 import org.junit.Test;
