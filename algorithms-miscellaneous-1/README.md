@@ -14,3 +14,4 @@
 - [Calculate Factorial in Java](https://www.baeldung.com/java-calculate-factorial)
 - [Find Substrings That Are Palindromes in Java](https://www.baeldung.com/java-palindrome-substrings)
 - [Find the Longest Substring without Repeating Characters](https://www.baeldung.com/java-longest-substring-without-repeated-characters)
+- [Java Two Pointer Technique](https://www.baeldung.com/java-two-pointer-technique)
