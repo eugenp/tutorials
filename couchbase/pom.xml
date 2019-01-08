@@ -70,7 +70,7 @@
         <couchbase.client.version>2.5.0</couchbase.client.version>
         <spring-framework.version>4.3.5.RELEASE</spring-framework.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <jackson-version>2.9.1</jackson-version>
+        <jackson-version>2.9.7</jackson-version>
     </properties>
 
 </project>
