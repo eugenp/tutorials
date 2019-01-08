@@ -7,9 +7,6 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 public class JavaCurlExamples {
 
     public static String inputStreamToString(InputStream inputStream) {
