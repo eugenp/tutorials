@@ -645,7 +645,6 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-property-exp</module>
-				<module>spring-boot-rest</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-testing</module>
                 <module>spring-boot-vue</module>
@@ -1357,11 +1356,8 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-property-exp</module>
-				<module>spring-boot-rest</module>
                 <module>spring-boot-security</module>
-                <module>spring-boot-testing</module>
                 <module>spring-boot-vue</module>
-                <module>spring-boot-libraries</module>
                 
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
@@ -1376,7 +1372,7 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 
-                <module>spring-ehcache</module>
+				<module>spring-ehcache</module>                
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
