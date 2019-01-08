@@ -1,13 +1,14 @@
 package com.baeldung.hexagonal.api;
 
 import com.baeldung.hexagonal.api.jmx.GreetingJmxResource;
+import com.baeldung.hexagonal.api.rest.GreetingRestController;
 import com.baeldung.hexagonal.services.GreetingService;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class GreetingApiTest {
+public class GreetingServiceUnitTest {
 
     private GreetingService greetingService ;
 
@@ -17,15 +18,15 @@ public class GreetingApiTest {
     }
 
     @Test
-    public void sayHelloJmx() {
+    public void whenUsingJmx_ThenSuccessful() {
         GreetingJmxResource greetingJmxResource = new GreetingJmxResource(greetingService) ;
         executeSayHelloTest(greetingJmxResource);
     }
 
     @Test
-    public void sayHelloRest() {
-        GreetingJmxResource greetingJmxResource = new GreetingJmxResource(greetingService) ;
-        executeSayHelloTest(greetingJmxResource);
+    public void whenUsingRest_ThenSuccessful() {
+        GreetingRestController greetingRestController = new GreetingRestController(greetingService) ;
+        executeSayHelloTest(greetingRestController);
     }
 
     protected void executeSayHelloTest(GreetingApi greetingApi) {
