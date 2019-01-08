@@ -35,6 +35,12 @@ public class InstanceOfUnitTest {
         Circle circle = new Circle();
         Assert.assertTrue("circle is instance of Shape", circle instanceof Shape);
     }
+    
+    @Test
+    public void giveWhenTypeIsOfObjectType_thenReturnTrue() {
+        Thread thread = new Thread();
+        Assert.assertTrue("thread is instance of Object", thread instanceof Object);
+    }
 
     @Test
     public void giveWhenInstanceValueIsNull_thenReturnFalse() {
