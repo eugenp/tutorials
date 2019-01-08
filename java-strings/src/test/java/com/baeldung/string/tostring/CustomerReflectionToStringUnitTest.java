@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-public class CustomerReflectionToStringTest {
+public class CustomerReflectionToStringUnitTest {
     private static final String CUSTOMER_REFLECTION_TO_STRING = "com.baeldung.string.tostring.CustomerReflectionToString";
     	 
     @Test
