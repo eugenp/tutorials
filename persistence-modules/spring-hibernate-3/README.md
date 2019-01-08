@@ -5,6 +5,7 @@
  
 ### Relevant ArticleS: 
 - [Hibernate 3 with Spring](http://www.baeldung.com/hibernate3-spring)
+- [HibernateException: No Hibernate Session Bound to Thread in Hibernate 3](http://www.baeldung.com/no-hibernate-session-bound-to-thread-exception)
 
 
 ### Quick Start

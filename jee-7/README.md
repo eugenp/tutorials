@@ -5,3 +5,4 @@
 - [Introduction to JAX-WS](http://www.baeldung.com/jax-ws)
 - [A Guide to Java EE Web-Related Annotations](http://www.baeldung.com/javaee-web-annotations)
 - [Introduction to Testing with Arquillian](http://www.baeldung.com/arquillian)
+- [Java EE 7 Batch Processing](https://www.baeldung.com/java-ee-7-batch-processing)

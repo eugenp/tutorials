@@ -4,17 +4,22 @@ import java.io.Serializable;
 import java.util.StringTokenizer;
 
 import javax.batch.api.chunk.AbstractItemReader;
+import javax.batch.runtime.context.JobContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 public class SimpleChunkItemReaderError extends AbstractItemReader {
+    @Inject 
+    JobContext jobContext;
     private StringTokenizer tokens;
-    public static int COUNT = 0;
+    private Integer count = 0;
 
     @Override
     public Integer readItem() throws Exception {
         if (tokens.hasMoreTokens()) {
-            COUNT++;
+            count++;
+            jobContext.setTransientUserData(count);
             int token = Integer.valueOf(tokens.nextToken());
             if (token == 3) {
                 throw new RuntimeException("Something happened");

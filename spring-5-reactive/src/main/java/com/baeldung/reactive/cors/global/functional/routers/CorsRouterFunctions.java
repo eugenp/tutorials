@@ -8,13 +8,13 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
-import com.baeldung.reactive.cors.global.functional.handlers.FunctionalHandler;
+import com.baeldung.reactive.cors.global.functional.handlers.CorsGlobalFunctionalHandler;
 
 @Configuration
 public class CorsRouterFunctions {
 
     @Bean
-    public RouterFunction<ServerResponse> responseHeaderRoute(@Autowired FunctionalHandler handler) {
+    public RouterFunction<ServerResponse> corsGlobalRouter(@Autowired CorsGlobalFunctionalHandler handler) {
         return RouterFunctions.route(RequestPredicates.PUT("/global-config-on-functional/cors-disabled-functional-endpoint"), handler::useHandler);
     }
 }

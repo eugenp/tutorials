@@ -1,3 +1,8 @@
+# Relevant Articles
+
+- [Introduction to Netflix Archaius with Spring Cloud](https://www.baeldung.com/netflix-archaius-spring-cloud-integration)
+- [Netflix Archaius with Various Database Configurations](https://www.baeldung.com/netflix-archaius-database-configurations)
+
 # Spring Cloud Archaius
 
 #### Basic Config
