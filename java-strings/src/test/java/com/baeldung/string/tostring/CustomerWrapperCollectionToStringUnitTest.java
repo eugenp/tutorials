@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-public class CustomerWrapperCollectionToStringTest {
+public class CustomerWrapperCollectionToStringUnitTest {
     private static final String CUSTOMER_WRAPPER_COLLECTION_TO_STRING 
       = "Customer [score=8, orders=[Book, Pen], fullname=Bhojwani, Rajesh, getFirstName()=Rajesh, getLastName()=Bhojwani]";
     	 

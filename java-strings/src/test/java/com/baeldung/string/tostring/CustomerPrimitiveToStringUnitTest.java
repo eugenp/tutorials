@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class CustomerPrimitiveToStringTest {
+public class CustomerPrimitiveToStringUnitTest {
 
     private static final String CUSTOMER_PRIMITIVE_TO_STRING 
       = "Customer [balance=110, getFirstName()=Rajesh, getLastName()=Bhojwani]";

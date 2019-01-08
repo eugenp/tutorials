@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class CustomerArrayToStringTest {
+public class CustomerArrayToStringUnitTest {
     private static final String CUSTOMER_ARRAY_TO_STRING 
       = "Customer [orders=[Order [orderId=A1111, desc=Game, value=0]], getFirstName()=Rajesh, getLastName()=Bhojwani]";
 	 
