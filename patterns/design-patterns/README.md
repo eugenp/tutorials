@@ -14,3 +14,7 @@
 - [State Design Pattern in Java](https://www.baeldung.com/java-state-design-pattern)
 - [The Decorator Pattern in Java](https://www.baeldung.com/java-decorator-pattern)
 - [Abstract Factory Pattern in Java](https://www.baeldung.com/java-abstract-factory-pattern)
+- [Implementing the Template Method Pattern in Java](http://www.baeldung.com/java-template-method-pattern)
+- [Chain of Responsibility Design Pattern in Java](http://www.baeldung.com/chain-of-responsibility-pattern)
+- [The Command Pattern in Java](http://www.baeldung.com/java-command-pattern)
+- [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
