@@ -2,6 +2,9 @@ package com.baeldung.nestedclass;
 
 import org.junit.Test;
 
+/**
+ * 局部内部类测试
+ */
 public class NewEnclosing {
 
     private void run() {

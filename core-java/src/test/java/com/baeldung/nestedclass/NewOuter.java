@@ -25,6 +25,5 @@ public class NewOuter {
         NewOuter outer = new NewOuter();
         NewOuter.InnerClass inner = outer.new InnerClass();
         inner.run();
-
     }
 }

@@ -3,19 +3,22 @@ package com.baeldung.networking.cookies;
 import java.net.*;
 import java.util.List;
 
+/**
+ * @author zn.wang
+ */
 public class PersistentCookieStore implements CookieStore, Runnable {
     CookieStore store;
 
     public PersistentCookieStore() {
         store = new CookieManager().getCookieStore();
-        // deserialize cookies into store
+        // deserialize cookies into store(将cookie反序列化到存储中)
         Runtime.getRuntime()
             .addShutdownHook(new Thread(this));
     }
 
     @Override
     public void run() {
-        // serialize cookies to persistent storage
+        // serialize cookies to persistent storage(将cookie序列化到持久存储)
     }
 
     @Override

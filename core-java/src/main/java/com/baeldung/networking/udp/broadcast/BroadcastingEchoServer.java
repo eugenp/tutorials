@@ -6,6 +6,9 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
+/**
+ * @author zn.wang
+ */
 public class BroadcastingEchoServer extends Thread {
 
     protected DatagramSocket socket = null;
@@ -18,6 +21,7 @@ public class BroadcastingEchoServer extends Thread {
         socket.bind(new InetSocketAddress(4445));
     }
 
+    @Override
     public void run() {
         running = true;
 

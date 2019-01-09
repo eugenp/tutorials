@@ -2,6 +2,9 @@ package com.baeldung.networking.cookies;
 
 import java.net.*;
 
+/**
+ * @author zn.wang
+ */
 public class ProxyAcceptCookiePolicy implements CookiePolicy {
     String acceptedProxy;
 
@@ -9,6 +12,7 @@ public class ProxyAcceptCookiePolicy implements CookiePolicy {
         this.acceptedProxy = acceptedProxy;
     }
 
+    @Override
     public boolean shouldAccept(URI uri, HttpCookie cookie) {
         String host;
         try {

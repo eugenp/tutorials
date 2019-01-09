@@ -2,6 +2,9 @@ package com.baeldung.nestedclass;
 
 import org.junit.Test;
 
+/**
+ * 内部类测试
+ */
 public class Outer {
 
     public class Inner {
