@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Map;
 
-public class StringToMapTest {
+public class StringToMapUnitTest {
 
     @Test
     public void testConversionViaStream() {
