@@ -14,13 +14,13 @@ public class MatchWords {
         String[] items = {"hello", "Baeldung"};
         String inputString = "hello there, Baeldung";
 
-        //System.out.println(containsWords(inputString, items));
+        System.out.println(containsWords(inputString, items));
 
         System.out.println(java8(new ArrayList<>(Arrays.asList(inputString.split(" "))), new ArrayList<>(Arrays.asList(items))));
 
-        //System.out.println(patternMatch(inputString));
+        System.out.println(patternMatch(inputString));
 
-        //ahoCorasick();
+        ahoCorasick();
     }
 
     private static boolean containsWords(String inputString, String[] items) {
