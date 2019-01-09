@@ -31,9 +31,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.baeldung.spring.data.es.config.Config;
 import com.vividsolutions.jts.geom.Coordinate;
 
+/**
+ * 
+ * This Manual test requires:
+ * * Elasticsearch instance running on host
+ * * with cluster name = elasticsearch
+ * * and further configurations
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
-public class GeoQueriesIntegrationTest {
+public class GeoQueriesManualTest {
 
     private static final String WONDERS_OF_WORLD = "wonders-of-world";
     private static final String WONDERS = "Wonders";

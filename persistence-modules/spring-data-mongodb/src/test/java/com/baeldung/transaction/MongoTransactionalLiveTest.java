@@ -24,6 +24,12 @@ import com.baeldung.model.User;
 import com.baeldung.repository.UserRepository;
 import com.mongodb.MongoCommandException;
 
+/**
+ * 
+ * This test requires:
+ * * mongodb instance running on the environment
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
