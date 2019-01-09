@@ -10,18 +10,28 @@ import java.util.regex.Pattern;
 
 public class MatchWords {
 
-    // *778*1# *778*00#
     public static void main(String[] args) {
         String[] items = {"hello", "Baeldung"};
         String inputString = "hello there, Baeldung";
 
-        boolean isMatch = java8(inputString, new ArrayList<>(Arrays.asList(items)));
+        //System.out.println(containsWords(inputString, items));
 
-        System.out.println(isMatch);
+        System.out.println(java8(new ArrayList<>(Arrays.asList(inputString.split(" "))), new ArrayList<>(Arrays.asList(items))));
 
-        System.out.println(patternMatch(inputString));
+        //System.out.println(patternMatch(inputString));
 
-        ahoCorasick();
+        //ahoCorasick();
+    }
+
+    private static boolean containsWords(String inputString, String[] items) {
+        boolean found = true;
+        for (String item : items) {
+            if (!inputString.contains(item)) {
+                found = false;
+                break;
+            }
+        }
+        return found;
     }
 
     private static void ahoCorasick() {
@@ -42,7 +52,12 @@ public class MatchWords {
         return false;
     }
 
-    private static boolean java8(String inputString, ArrayList<String> items) {
-        return Arrays.stream(inputString.split(" ")).allMatch(items::contains);
+    private static boolean java8(ArrayList<String> inputString, ArrayList<String> items) {
+        return items.stream().allMatch(inputString::contains);
     }
+
+    private static boolean array(ArrayList<String> inputString, ArrayList<String> items) {
+        return inputString.containsAll(items);
+    }
+
 }
