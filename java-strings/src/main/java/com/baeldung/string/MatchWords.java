@@ -3,9 +3,7 @@ package com.baeldung.string;
 import org.ahocorasick.trie.Emit;
 import org.ahocorasick.trie.Trie;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class MatchWords {
@@ -21,6 +19,25 @@ public class MatchWords {
         System.out.println(patternMatch(inputString));
 
         ahoCorasick();
+
+        wordIndices(inputString);
+    }
+
+    private static void wordIndices(String inputString) {
+        Map<Integer, String> wordIndices = new TreeMap<>();
+        List<String> words = new ArrayList<>();
+        words.add("hello");
+        words.add("Baeldung");
+
+        for (String word : words) {
+            int index = inputString.indexOf(word);
+
+            if (index != -1) {
+                wordIndices.put(index, word);
+            }
+        }
+
+        wordIndices.keySet().forEach(System.out::println);
     }
 
     private static boolean containsWords(String inputString, String[] items) {
