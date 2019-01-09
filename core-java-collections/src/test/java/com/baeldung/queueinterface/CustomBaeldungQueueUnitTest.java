@@ -1,11 +1,11 @@
-package com.baeldung.queueInterface;
+package com.baeldung.queueinterface;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CustomBaeldungQueueTest {
+public class CustomBaeldungQueueUnitTest {
 
   private CustomBaeldungQueue<Integer> customQueue;
 

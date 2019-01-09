@@ -1,4 +1,4 @@
-package com.baeldung.queueInterface;
+package com.baeldung.queueinterface;
 
 import java.util.AbstractQueue;
 import java.util.Iterator;
