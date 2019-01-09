@@ -1,4 +1,5 @@
-package com.baeldung.inputstream;
+package org.baeldung.java.io;
+
 
 import com.google.common.io.ByteStreams;
 import org.apache.commons.io.IOUtils;
@@ -55,6 +56,11 @@ class InputStreamToByteBufferUnitTest {
         byte[] targetArray = ByteStreams.toByteArray(in);
 
         ByteBuffer bufferByte = ByteBuffer.wrap(targetArray);
+
+        // read all bytes into the allocated ByteBuffer
+        bufferByte.rewind();
+        while (bufferByte.hasRemaining()) bufferByte.get();
+        assertEquals(bufferByte.position(), inputFile.length());
 
     }
 
