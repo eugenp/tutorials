@@ -1,15 +1,15 @@
 package com.baeldung.jackson.deserialization.immutable;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
+@JsonDeserialize(builder = Person.Builder.class)
 public class Person {
 
     private final String name;
-    private final int age;
+    private final Integer age;
 
-    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
-    public Person(@JsonProperty("name") String name, @JsonProperty("age") int age) {
+    private Person(String name, Integer age) {
         this.name = name;
         this.age = age;
     }
@@ -18,7 +18,27 @@ public class Person {
         return name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
+    }
+
+    @JsonPOJOBuilder
+    static class Builder {
+        String name;
+        Integer age;
+
+        Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        Builder withAge(Integer age) {
+            this.age = age;
+            return this;
+        }
+
+        Person build() {
+            return new Person(name, age);
+        }
     }
 }
