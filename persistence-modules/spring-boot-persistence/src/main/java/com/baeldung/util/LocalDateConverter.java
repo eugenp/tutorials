@@ -10,15 +10,15 @@ import java.util.Optional;
 public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {
 
     @Override
-    public Date convertToDatabaseColumn(LocalDate localDateTime) {
-        return Optional.ofNullable(localDateTime)
+    public Date convertToDatabaseColumn(LocalDate localDate) {
+        return Optional.ofNullable(localDate)
                 .map(Date::valueOf)
                 .orElse(null);
     }
 
     @Override
-    public LocalDate convertToEntityAttribute(Date timestamp) {
-        return Optional.ofNullable(timestamp)
+    public LocalDate convertToEntityAttribute(Date date) {
+        return Optional.ofNullable(date)
                 .map(Date::toLocalDate)
                 .orElse(null);
     }
