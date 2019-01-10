@@ -1,6 +1,5 @@
 package org.baeldung.java.io;
 
-
 import com.google.common.io.ByteStreams;
 import org.apache.commons.io.IOUtils;
 import org.junit.jupiter.api.Test;
@@ -59,6 +58,7 @@ class InputStreamToByteBufferUnitTest {
 
         // read all bytes into the allocated ByteBuffer
         bufferByte.rewind();
+
         while (bufferByte.hasRemaining()) bufferByte.get();
         assertEquals(bufferByte.position(), inputFile.length());
 
