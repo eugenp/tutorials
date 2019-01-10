@@ -171,7 +171,7 @@
     </dependencies>
 
     <properties>
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <jackson-coreutils.version>1.8</jackson-coreutils.version>
         <guava.version>19.0</guava.version>
 

@@ -25,7 +25,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot: Configuring a Main Class](http://www.baeldung.com/spring-boot-main-class)
 - [A Quick Intro to the SpringBootServletInitializer](http://www.baeldung.com/spring-boot-servlet-initializer)
 - [How to Define a Spring Boot Filter?](http://www.baeldung.com/spring-boot-add-filter)
-- [How to Change the Default Port in Spring Boot](http://www.baeldung.com/spring-boot-change-port)
 - [Spring Boot Exit Codes](http://www.baeldung.com/spring-boot-exit-codes)
 - [Guide to the Favicon in Spring Boot](http://www.baeldung.com/spring-boot-favicon)
 - [Spring Shutdown Callbacks](http://www.baeldung.com/spring-shutdown-callbacks)
