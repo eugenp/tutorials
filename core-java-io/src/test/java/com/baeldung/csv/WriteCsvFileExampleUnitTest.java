@@ -3,12 +3,10 @@ package com.baeldung.csv;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Before;
@@ -73,15 +71,11 @@ public class WriteCsvFileExampleUnitTest {
         dataLines.add(new String[] { "Jane", "Doe, Jr.", "19", "She said \"I'm being quoted\"" });
 
         File csvOutputFile = new File(CSV_FILE_NAME);
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvOutputFile))) {
-            for (Iterator<String[]> dataIterator = dataLines.iterator(); dataIterator.hasNext();) {
-                csvExample.writeLine(writer, dataIterator.next());
-                if (dataIterator.hasNext()) {
-                    writer.newLine();
-                }
-            }
-            writer.flush();
-        } catch (IOException e) {
+        try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
+            dataLines.stream()
+                .map(csvExample::convertToCSV)
+                .forEach(pw::println);
+        } catch (FileNotFoundException e) {
             LOG.error("IOException " + e.getMessage());
         }
 

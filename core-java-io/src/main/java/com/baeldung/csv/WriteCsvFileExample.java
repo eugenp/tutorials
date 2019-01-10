@@ -1,11 +1,8 @@
 package com.baeldung.csv;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-
 public class WriteCsvFileExample {
 
-    public void writeLine(BufferedWriter writer, String[] data) throws IOException {
+    public String convertToCSV(String[] data) {
         StringBuilder csvLine = new StringBuilder();
 
         for (int i = 0; i < data.length; i++) {
@@ -15,7 +12,7 @@ public class WriteCsvFileExample {
             csvLine.append(escapeSpecialCharacters(data[i]));
         }
 
-        writer.write(csvLine.toString());
+        return csvLine.toString();
     }
 
     public String escapeSpecialCharacters(String data) {
