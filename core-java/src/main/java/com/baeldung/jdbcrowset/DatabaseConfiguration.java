@@ -12,18 +12,27 @@ import javax.sql.rowset.RowSetProvider;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author zn.wang
+ */
 @Configuration
 @EnableAutoConfiguration
 public class DatabaseConfiguration {
- 
-    
+
     public static Connection geth2Connection() throws Exception {
         Class.forName("org.h2.Driver");
         System.out.println("Driver Loaded.");
         String url = "jdbc:h2:mem:testdb";
         return DriverManager.getConnection(url, "sa", "");
       }
-    
+
+    /**
+     * 初始化2张表：
+     * （1）customers（id, name）
+     * （2）associates（id, name）
+      * @param stmt
+     * @throws SQLException
+     */
     public static void initDatabase(Statement stmt) throws SQLException{
         int iter = 1;
         while(iter<=5){

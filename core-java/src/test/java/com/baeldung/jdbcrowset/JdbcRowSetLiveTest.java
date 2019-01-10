@@ -46,6 +46,8 @@ public class JdbcRowSetLiveTest {
 
     }
 
+
+
     // JdbcRowSet Example
     @Test
     public void createJdbcRowSet_SelectCustomers_ThenCorrect() throws Exception {

@@ -20,7 +20,10 @@ import javax.sql.rowset.WebRowSet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+/**
+ * @author zn.wang
+ */
+@SpringBootApplication(scanBasePackages = "com.baeldung.jdbcrowset")
 public class JdbcRowsetApplication {
 
     public static void main(String[] args) throws Exception {

@@ -196,27 +196,12 @@
         <dependency>
             <groupId>javax.mail</groupId>
             <artifactId>mail</artifactId>
-            <version>${javax.mail.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
             <version>1.5.0-b01</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>1.10.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>1.5.9.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.0.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -276,6 +261,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.1</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -314,6 +300,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.0</version>
                 <executions>
                     <execution>
                         <goals>
@@ -353,6 +340,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.5.14.RELEASE</version>
                 <executions>
                     <execution>
                         <goals>
@@ -389,7 +377,7 @@
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
-                    <target>1.8</target>
+                    <!--<target>1.8</target>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -503,7 +491,7 @@
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <h2database.version>1.4.197</h2database.version>
         <esapi.version>2.1.0.1</esapi.version>
-        <jmh-core.version>1.19</jmh-core.version>
+        <jmh-core.version>1.10.2</jmh-core.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <maven-javadoc-plugin.version>3.0.1</maven-javadoc-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>

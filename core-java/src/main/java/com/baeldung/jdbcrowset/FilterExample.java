@@ -16,7 +16,8 @@ public class FilterExample implements Predicate {
             pattern = Pattern.compile(regexQuery);
         }
     }
- 
+
+    @Override
     public boolean evaluate(RowSet rs) {
         try {
             if (!rs.isAfterLast()) {
@@ -26,18 +27,21 @@ public class FilterExample implements Predicate {
                         name));
                 Matcher matcher = pattern.matcher(name);
                 return matcher.matches();
-            } else
+            } else {
                 return false;
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
- 
+
+    @Override
     public boolean evaluate(Object value, int column) throws SQLException {
         throw new UnsupportedOperationException("This operation is unsupported.");
     }
- 
+
+    @Override
     public boolean evaluate(Object value, String columnName)
             throws SQLException {
         throw new UnsupportedOperationException("This operation is unsupported.");
