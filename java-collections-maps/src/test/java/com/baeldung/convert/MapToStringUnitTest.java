@@ -22,25 +22,25 @@ public class MapToStringUnitTest {
     }
 
     @Test
-    public void testConversionViaIteration() {
+    public void givenMapForConversion_StringIsCorrectlyBuild_WithIteration() {
         String mapAsString = MapToString.convertWithIteration(wordsByKey);
         Assert.assertEquals("{1=one, 2=two, 3=three, 4=four}", mapAsString);
     }
 
     @Test
-    public void testConversionViaStreams() {
+    public void givenMapForConversion_StringIsCorrectlyBuild_WithStream() {
         String mapAsString = MapToString.convertWithStream(wordsByKey);
         Assert.assertEquals("{1=one, 2=two, 3=three, 4=four}", mapAsString);
     }
 
     @Test
-    public void testConversionViaGuava() {
+    public void givenMapForConversion_StringIsCorrectlyBuild_WithGuava() {
         String mapAsString = MapToString.convertWithGuava(wordsByKey);
         Assert.assertEquals("1=one,2=two,3=three,4=four", mapAsString);
     }
 
     @Test
-    public void convertWithApache() {
+    public void givenMapForConversion_StringIsCorrectlyBuild_WithApache() {
         String mapAsString = MapToString.convertWithApache(wordsByKey);
         Assert.assertEquals("{1=one, 2=two, 3=three, 4=four}", mapAsString);
         MapUtils.debugPrint(System.out, "Map as String", wordsByKey);
