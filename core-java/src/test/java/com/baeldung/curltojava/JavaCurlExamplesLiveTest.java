@@ -9,7 +9,6 @@ import org.junit.Test;
 
 public class JavaCurlExamplesLiveTest {
 
-
     @Test
     public void givenCommand_whenCalled_thenProduceZeroExitCode() throws IOException {
         String command = "curl -X GET https://postman-echo.com/get?foo1=bar1&foo2=bar2";
@@ -47,6 +46,5 @@ public class JavaCurlExamplesLiveTest {
 
         Assert.assertTrue(null != content && !content.isEmpty());
     }
-
 
 }
