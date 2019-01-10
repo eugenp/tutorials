@@ -44,7 +44,6 @@
             <artifactId>postgresql</artifactId>
             <version>${postgres.version}</version>
             <scope>runtime</scope>
-            <type>bundle</type>
         </dependency>
     </dependencies>
 
