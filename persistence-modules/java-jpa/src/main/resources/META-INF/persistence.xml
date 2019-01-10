@@ -26,6 +26,7 @@
     <persistence-unit name="jpa-h2">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.baeldung.jpa.stringcast.Message</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
@@ -41,6 +42,7 @@
     <persistence-unit name="jpa-db">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.baeldung.jpa.model.Car</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://127.0.0.1:3306/baeldung"/>
