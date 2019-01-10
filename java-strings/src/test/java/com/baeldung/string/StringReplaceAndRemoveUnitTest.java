@@ -4,8 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.RegExUtils;
 import org.junit.Test;
 
-import com.sun.source.tree.AssertTree;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
