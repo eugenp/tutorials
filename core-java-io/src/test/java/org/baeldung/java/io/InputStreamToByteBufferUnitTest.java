@@ -17,30 +17,19 @@ class InputStreamToByteBufferUnitTest {
 
     @Test
     public void givenUsingCoreClasses_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch() throws IOException {
-
         File inputFile = getFile();
-
         ByteBuffer bufferByte = ByteBuffer.allocate((int) inputFile.length());
-
-        // read all bytes into the allocated ByteBuffer
         FileInputStream in = new FileInputStream(inputFile);
-        in
-          .getChannel()
-          .read(bufferByte);
+        in.getChannel().read(bufferByte);
 
         assertEquals(bufferByte.position(), inputFile.length());
     }
 
     @Test
     public void givenUsingCommonsIo_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch() throws IOException {
-
         File inputFile = getFile();
-
         ByteBuffer bufferByte = ByteBuffer.allocateDirect((int) inputFile.length());
-
         ReadableByteChannel readableByteChannel = new FileInputStream(inputFile).getChannel();
-
-        // read all bytes into the allocated ByteBuffer
         IOUtils.readFully(readableByteChannel, bufferByte);
 
         assertEquals(bufferByte.position(), inputFile.length());
@@ -48,32 +37,24 @@ class InputStreamToByteBufferUnitTest {
 
     @Test
     public void givenUsingGuava_whenWritingAFileIntoAByteBuffer_thenBytesLengthMustMatch() throws IOException {
-
         File inputFile = getFile();
-
         FileInputStream in = new FileInputStream(inputFile);
-
         byte[] targetArray = ByteStreams.toByteArray(in);
-
         ByteBuffer bufferByte = ByteBuffer.wrap(targetArray);
-
-        // read all bytes into the allocated ByteBuffer
         bufferByte.rewind();
-        while (bufferByte.hasRemaining()) bufferByte.get();
+        while (bufferByte.hasRemaining()) {
+            bufferByte.get();
+        }
+        
         assertEquals(bufferByte.position(), inputFile.length());
-
     }
 
     private File getFile() {
-        ClassLoader classLoader = new InputStreamToByteBufferUnitTest()
-          .getClass()
-          .getClassLoader();
+        ClassLoader classLoader = new InputStreamToByteBufferUnitTest().getClass().getClassLoader();
 
         String fileName = "frontenac-2257154_960_720.jpg";
 
-        return new File(classLoader
-          .getResource(fileName)
-          .getFile());
+        return new File(classLoader.getResource(fileName).getFile());
     }
 
 }
