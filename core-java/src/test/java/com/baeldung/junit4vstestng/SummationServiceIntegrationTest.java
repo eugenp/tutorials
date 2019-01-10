@@ -11,6 +11,9 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 测试：求和运算
+ */
 public class SummationServiceIntegrationTest {
     private static List<Integer> numbers;
 
@@ -46,8 +49,11 @@ public class SummationServiceIntegrationTest {
     @Ignore
     @Test
     public void givenEmptyList_sumEqualsZero_thenCorrect() {
-        int sum = numbers.stream()
-            .reduce(0, Integer::sum);
+        Integer acc = 0;
+        for (Integer number : numbers) {
+            acc = acc + number;
+        }
+        int sum = acc;
         Assert.assertEquals(6, sum);
     }
 

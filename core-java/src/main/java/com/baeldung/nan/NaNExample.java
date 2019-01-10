@@ -3,6 +3,7 @@ package com.baeldung.nan;
 /**
  * Sample usage of NaN.
  *
+ * @author zn.wang
  */
 public class NaNExample {
 
@@ -15,15 +16,20 @@ public class NaNExample {
         undefined_operations_produce_NaN();
         operations_with_no_real_results_produce_NaN();
         operations_with_NaN_produce_NaN();
+        assign_NaN_to_missing_values();
         comparison_with_NaN();
         check_if_a_value_is_NaN();
-        assign_NaN_to_missing_values();
     }
 
+    /**
+     * 未定义的操作产生的的NaN
+     */
     void undefined_operations_produce_NaN() {
         System.out.println("Undefined Operations Produce NaN");
         final double ZERO = 0;
+        System.out.println("1.0 / 0.0 = " + (1.0 / 0.0));
         System.out.println("ZERO / ZERO = " + (ZERO / ZERO));
+        System.out.println("Double.POSITIVE_INFINITY = " + Double.POSITIVE_INFINITY);
         System.out.println("INFINITY - INFINITY = " + (Double.POSITIVE_INFINITY - Double.POSITIVE_INFINITY));
         System.out.println("INFINITY * ZERO = " + (Double.POSITIVE_INFINITY * ZERO));
         System.out.println();

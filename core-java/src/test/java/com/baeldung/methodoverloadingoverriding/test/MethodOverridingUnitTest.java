@@ -6,6 +6,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
 
+/**
+ * 测试：方法重写
+ */
 public class MethodOverridingUnitTest {
     
     private static Vehicle vehicle;

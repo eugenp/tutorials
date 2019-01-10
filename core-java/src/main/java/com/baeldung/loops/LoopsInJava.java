@@ -1,5 +1,9 @@
 package com.baeldung.loops;
 
+/**
+ * java中的循环
+ * @author zn.wang
+ */
 public class LoopsInJava {
 
     public int[] simple_for_loop() {
@@ -37,7 +41,8 @@ public class LoopsInJava {
         do {
             arr[i] = i;
             System.out.println("Do-While loop: i - " + i++);
-        } while (i < 5);
+        }
+        while (i < 5);
         return arr;
     }
 }

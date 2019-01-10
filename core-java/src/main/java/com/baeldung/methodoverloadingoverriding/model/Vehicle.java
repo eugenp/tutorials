@@ -1,5 +1,8 @@
 package com.baeldung.methodoverloadingoverriding.model;
 
+/**
+ * @author zn.wang
+ */
 public class Vehicle {
     
     public String accelerate(long mph) {

@@ -7,6 +7,9 @@ import java.text.DecimalFormat;
 import org.apache.commons.math3.util.Precision;
 import org.decimal4j.util.DoubleRounder;
 
+/**
+ * @author zn.wang
+ */
 public class Round {
     private static final double PI = 3.1415d;
     
@@ -24,7 +27,9 @@ public class Round {
     }
     
     public static double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
         
         BigDecimal bd = new BigDecimal(Double.toString(value));
         bd = bd.setScale(places, RoundingMode.HALF_UP);
@@ -32,7 +37,9 @@ public class Round {
     }
     
     public static double roundNotPrecise(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
 
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);

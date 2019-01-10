@@ -1,5 +1,8 @@
 package com.baeldung.methodoverloadingoverriding.util;
 
+/**
+ * @author zn.wang
+ */
 public class Multiplier {
     
     public int multiply(int a, int b) {

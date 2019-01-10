@@ -5,6 +5,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
 
+/**
+ * 测试：方法重载
+ */
 public class MethodOverloadingUnitTest {
     
     private static Multiplier multiplier;

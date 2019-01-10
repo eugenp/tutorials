@@ -12,6 +12,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * 测试：循环
+ */
 public class WhenUsingLoops {
 
     private LoopsInJava loops = new LoopsInJava();

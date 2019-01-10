@@ -64,6 +64,7 @@ public class JavaKeyStoreUnitTest {
     public void givenNoKeyStore_whenCreateEmptyKeyStore_thenGetKeyStoreNotNull() throws Exception {
         keyStore.createEmptyKeyStore();
         KeyStore result = keyStore.getKeyStore();
+        System.out.println("KeyStore result:{}" + result.getType());
         Assert.assertNotNull(result);
     }
 
@@ -72,6 +73,7 @@ public class JavaKeyStoreUnitTest {
         keyStore.createEmptyKeyStore();
         keyStore.loadKeyStore();
         KeyStore result = keyStore.getKeyStore();
+        System.out.println("KeyStore result:{}" + result.size());
         Assert.assertNotNull(result);
         Assert.assertTrue(result.size() == 0);
     }
@@ -89,8 +91,11 @@ public class JavaKeyStoreUnitTest {
         keyStore.setEntry(MY_SECRET_ENTRY, secretKeyEntry, protParam);
 
         KeyStore result = keyStore.getKeyStore();
+        System.out.println("KeyStore result:{}" + result.size());
         Assert.assertTrue(result.size() == 1);
+
         KeyStore.Entry entry = keyStore.getEntry(MY_SECRET_ENTRY);
+        System.out.println("KeyStore.Entry entry:{}" + entry);
         Assert.assertTrue(entry != null);
     }
 
@@ -103,6 +108,9 @@ public class JavaKeyStoreUnitTest {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
         keyPairGenerator.initialize(1024);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
+        System.out.println("PrivateKey:{}" + keyPair.getPrivate());
+        System.out.println("publicKey:{}" + keyPair.getPublic());
+        System.out.println("\n================================");
 
         // Generate a self signed certificate
         X509Certificate certificate = generateSelfSignedCertificate(keyPair);
@@ -112,8 +120,10 @@ public class JavaKeyStoreUnitTest {
         keyStore.setKeyEntry(MY_PRIVATE_KEY, keyPair.getPrivate(), KEYSTORE_PWD, certificateChain);
 
         KeyStore result = keyStore.getKeyStore();
+        System.out.println("KeyStore result:{}" + result);
         Assert.assertTrue(result.size() == 1);
         KeyStore.Entry entry = keyStore.getEntry(MY_PRIVATE_KEY);
+        System.out.println("KeyStore.Entry entry:{}" + entry);
         Assert.assertTrue(entry != null);
     }
 
@@ -167,6 +177,17 @@ public class JavaKeyStoreUnitTest {
         Assert.assertTrue(result == null);
     }
 
+    /**
+     * 生成自签名
+     * @param keyPair
+     * @return
+     * @throws CertificateException
+     * @throws IOException
+     * @throws NoSuchProviderException
+     * @throws NoSuchAlgorithmException
+     * @throws InvalidKeyException
+     * @throws SignatureException
+     */
     private X509Certificate generateSelfSignedCertificate(KeyPair keyPair) throws CertificateException, IOException, NoSuchProviderException, NoSuchAlgorithmException, InvalidKeyException, SignatureException {
         X509CertInfo certInfo = new X509CertInfo();
         // Serial number and version

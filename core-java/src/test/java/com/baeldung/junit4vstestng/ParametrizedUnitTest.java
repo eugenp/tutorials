@@ -29,6 +29,7 @@ public class ParametrizedUnitTest {
 
     @Test
     public void givenParametrizedNumber_ifEvenCheckOK_thenCorrect() {
+        System.out.println("isEven=" + isEven + "   " + (value % 2));
         Assert.assertEquals(isEven, value % 2 == 0);
     }
 }

@@ -5,6 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * 取余运算
+ */
 public class DivisibilityUnitTest {
 
     private static int number;

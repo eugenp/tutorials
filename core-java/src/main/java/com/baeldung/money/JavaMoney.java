@@ -18,6 +18,10 @@ import org.javamoney.moneta.FastMoney;
 import org.javamoney.moneta.Money;
 import org.javamoney.moneta.format.CurrencyStyle;
 
+/**
+ * JavaMoney操作
+ * @author zn.wang
+ */
 public class JavaMoney {
     final static Logger LOGGER = Logger.getLogger(JavaMoney.class.getName());
     CurrencyUnit USD;
@@ -69,10 +73,12 @@ public class JavaMoney {
             LOGGER.severe("Unknown Currency");
         }
 
+        //四舍五入
         roundEUR = fstAmtEUR.with(Monetary.getDefaultRounding());
 
         LOGGER.info("Rounded EUR : " + roundEUR);
 
+        //减法
         calcAmtUSD = Money.of(1, "USD").subtract(fstAmtUSD);
 
         LOGGER.info("Substracting amounts : " + calcAmtUSD);
@@ -81,6 +87,7 @@ public class JavaMoney {
 
         LOGGER.info("Money & FastMoney operations : " + calcMoneyFastMoney);
 
+        //加法
         monetaryAmounts = 
                 new MonetaryAmount[] { 
                         Money.of(100, "CHF"), 
@@ -93,9 +100,11 @@ public class JavaMoney {
 
         LOGGER.info("Adding amounts : " + sumAmtCHF);
 
+        //乘法
         multiplyAmount = oneDolar.multiply(0.25);
         LOGGER.info("Multiply Amount : " + multiplyAmount);
 
+        //除法
         divideAmount = oneDolar.divide(0.25);
         LOGGER.info("Divide Amount : " + divideAmount);
 

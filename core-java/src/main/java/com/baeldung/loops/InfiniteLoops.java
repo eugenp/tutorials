@@ -1,5 +1,9 @@
 package com.baeldung.loops;
 
+/**
+ * 无限循环
+ * @author zn.wang
+ */
 public class InfiniteLoops {
 
     public void infiniteLoopUsingWhile() {

@@ -1,5 +1,8 @@
 package com.baeldung.methodoverloadingoverriding.model;
 
+/**
+ * @author zn.wang
+ */
 public class Car extends Vehicle {
 
     @Override
