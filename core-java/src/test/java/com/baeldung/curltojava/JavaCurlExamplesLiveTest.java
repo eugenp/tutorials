@@ -3,19 +3,16 @@ package com.baeldung.curltojava;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class JavaCurlExamplesUnitTest {
-
+public class JavaCurlExamplesLiveTest {
 
     @Test
     public void givenCommand_whenCalled_thenProduceZeroExitCode() throws IOException {
-        String command = "curl --location --request GET \"https://postman-echo.com/get?foo1=bar1&foo2=bar2\"";
-        ProcessBuilder processBuilder = new ProcessBuilder(command.replaceAll("\"", "").split(" "));
+        String command = "curl -X GET https://postman-echo.com/get?foo1=bar1&foo2=bar2";
+        ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
         processBuilder.directory(new File("/home/"));
         Process process = processBuilder.start();
         InputStream inputStream = process.getInputStream();
@@ -28,8 +25,8 @@ public class JavaCurlExamplesUnitTest {
     
     @Test
     public void givenNewCommands_whenCalled_thenCheckIfIsAlive() throws IOException {
-        String command = "curl --location --request GET \"https://postman-echo.com/get?foo1=bar1&foo2=bar2\"";
-        ProcessBuilder processBuilder = new ProcessBuilder(command.replaceAll("\"", "").split(" "));
+        String command = "curl -X GET https://postman-echo.com/get?foo1=bar1&foo2=bar2";
+        ProcessBuilder processBuilder = new ProcessBuilder(command.split(" "));
         processBuilder.directory(new File("/home/"));
         Process process = processBuilder.start();
         
@@ -40,16 +37,14 @@ public class JavaCurlExamplesUnitTest {
     }
 
     @Test
-    public void whenRequestGet_thenReturnSuccessResponseCode() throws IOException {
-        String url = "https://postman-echo.com/get?foo1=bar1&foo2=bar2";
-        URL urlObj = new URL(url);
-        HttpURLConnection connection = (HttpURLConnection) urlObj.openConnection();
-        connection.setDoOutput(true);
-        connection.setInstanceFollowRedirects(false);
-        connection.setRequestMethod("GET");
-        connection.connect();
+    public void whenRequestPost_thenCheckIfReturnContent() throws IOException {
+        String command = "curl -X POST https://postman-echo.com/post --data foo1=bar1&foo2=bar2";
+        Process process = Runtime.getRuntime().exec(command);
         
-        Assert.assertEquals(HttpURLConnection.HTTP_OK, connection.getResponseCode());
+        // Get the POST result
+        String content = JavaCurlExamples.inputStreamToString(process.getInputStream());
+
+        Assert.assertTrue(null != content && !content.isEmpty());
     }
 
 }

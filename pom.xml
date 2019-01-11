@@ -232,6 +232,7 @@
 				<version>${maven-war-plugin.version}</version>
 			</plugin>
 		</plugins>
+		
 		<extensions>
 			<extension>
 				<groupId>com.vackosar.gitflowincrementalbuilder</groupId>
@@ -436,7 +437,7 @@
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <module>java-ee-8-security-api</module>
+                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-numbers</module>
                 <module>java-rmi</module>
@@ -644,6 +645,7 @@
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-rest</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-testing</module>
@@ -1355,6 +1357,7 @@
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-rest</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-vue</module>

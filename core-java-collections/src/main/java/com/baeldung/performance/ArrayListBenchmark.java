@@ -9,7 +9,7 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 10)
 public class ArrayListBenchmark {
 
@@ -17,6 +17,7 @@ public class ArrayListBenchmark {
     public static class MyState {
 
         List<Employee> employeeList = new ArrayList<>();
+        Vector<Employee> employeeVector = new Vector<>();
         //LinkedList<Employee> employeeList = new LinkedList<>();
 
         long iterations = 100000;
@@ -29,9 +30,11 @@ public class ArrayListBenchmark {
         public void setUp() {
             for (long i = 0; i < iterations; i++) {
                 employeeList.add(new Employee(i, "John"));
+                employeeVector.add(new Employee(i, "John"));
             }
 
             employeeList.add(employee);
+            employeeVector.add(employee);
             employeeIndex = employeeList.indexOf(employee);
         }
     }
@@ -47,6 +50,11 @@ public class ArrayListBenchmark {
     }
 
     @Benchmark
+    public boolean testContainsVector(ArrayListBenchmark.MyState state) {
+        return state.employeeVector.contains(state.employee);
+    }
+
+    @Benchmark
     public int testIndexOf(ArrayListBenchmark.MyState state) {
         return state.employeeList.indexOf(state.employee);
     }
@@ -57,18 +65,23 @@ public class ArrayListBenchmark {
     }
 
     @Benchmark
+    public Employee testVectorGet(ArrayListBenchmark.MyState state) {
+        return state.employeeVector.get(state.employeeIndex);
+    }
+
+    @Benchmark
     public boolean testRemove(ArrayListBenchmark.MyState state) {
         return state.employeeList.remove(state.employee);
     }
 
-//    @Benchmark
-//    public void testAdd(ArrayListBenchmark.MyState state) {
-//        state.employeeList.add(new Employee(state.iterations + 1, "John"));
-//    }
+    @Benchmark
+    public void testAdd(ArrayListBenchmark.MyState state) {
+        state.employeeList.add(new Employee(state.iterations + 1, "John"));
+    }
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
-                .include(ArrayListBenchmark.class.getSimpleName()).threads(1)
+                .include(ArrayListBenchmark.class.getSimpleName()).threads(3)
                 .forks(1).shouldFailOnError(true)
                 .shouldDoGC(true)
                 .jvmArgs("-server").build();
