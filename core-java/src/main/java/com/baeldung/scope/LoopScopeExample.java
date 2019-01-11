@@ -12,7 +12,6 @@ public class LoopScopeExample {
         for (String name : listOfNames) {
             allNames = allNames + " " + name;
         }
-
     }
 
 }
