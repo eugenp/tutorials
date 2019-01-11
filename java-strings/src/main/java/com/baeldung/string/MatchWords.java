@@ -20,24 +20,19 @@ public class MatchWords {
 
         ahoCorasick();
 
-        wordIndices(inputString);
+        indexOfWords(inputString, items);
     }
 
-    private static void wordIndices(String inputString) {
-        Map<Integer, String> wordIndices = new TreeMap<>();
-        List<String> words = new ArrayList<>();
-        words.add("hello");
-        words.add("Baeldung");
-
+    private static boolean indexOfWords(String inputString, String[] words) {
+        boolean found = true;
         for (String word : words) {
             int index = inputString.indexOf(word);
-
-            if (index != -1) {
-                wordIndices.put(index, word);
+            if (index == -1) {
+                found = false;
+                break;
             }
         }
-
-        wordIndices.keySet().forEach(System.out::println);
+        return found;
     }
 
     private static boolean containsWords(String inputString, String[] items) {
