@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>parent-spring-5</artifactId>
+    <artifactId>parent-spring-5-1</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>parent-spring-5</name>
+    <name>parent-spring-5-1</name>
     <description>Parent for all spring 5 core modules</description>
 
     <parent>
@@ -29,11 +29,11 @@
     </dependencies>
 
     <properties>
-        <spring.version>5.1.2.RELEASE</spring.version>
+        <spring.version>5.0.6.RELEASE</spring.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
         <jackson-databind.version>2.9.6</jackson-databind.version>
 		<jackson.version>2.9.6</jackson.version>
-		<spring-security.version>5.1.2.RELEASE</spring-security.version>
+		<spring-security.version>5.0.6.RELEASE</spring-security.version>
     </properties>
 
 </project>
