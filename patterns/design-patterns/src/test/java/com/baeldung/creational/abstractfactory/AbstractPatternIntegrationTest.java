@@ -11,10 +11,10 @@ public class AbstractPatternIntegrationTest {
         
         //creating a brown toy dog
         abstractFactory = FactoryProvider.getFactory("Toy");
-        Animal toy = abstractFactory.getAnimal("Dog");
+        Animal toy = (Animal) abstractFactory.create("Dog");
         
         abstractFactory = FactoryProvider.getFactory("Color");
-        Color color = abstractFactory.getColor("Brown");
+        Color color =(Color) abstractFactory.create("Brown");
         
         String result = "A " + toy.getType() + " with " + color.getColor() + " color " + toy.makeSound();
         assertEquals("A Dog with brown color Barks", result);
