@@ -25,11 +25,6 @@
             <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.unix4j</groupId>
             <artifactId>unix4j-command</artifactId>
             <version>${unix4j.version}</version>
@@ -75,12 +70,6 @@
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
@@ -125,17 +114,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
-        </dependency>
-        <!-- Mime Type Resolution Libraries -->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>${tika.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.jmimemagic</groupId>
-            <artifactId>jmimemagic</artifactId>
-            <version>${jmime-magic.version}</version>
         </dependency>
         <!-- instrumentation -->
         <dependency>
@@ -477,8 +455,6 @@
 
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
-        <bouncycastle.version>1.55</bouncycastle.version>
-        <commons-codec.version>1.10</commons-codec.version>
         <commons-io.version>2.5</commons-io.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <decimal4j.version>1.0.3</decimal4j.version>
@@ -509,9 +485,6 @@
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <icu4j.version>61.1</icu4j.version>
-        <!-- Mime Type Libraries -->
-        <tika.version>1.18</tika.version>
-        <jmime-magic.version>0.1.5</jmime-magic.version>
         <!-- instrumentation -->
         <javaassist.version>3.21.0-GA</javaassist.version>
         

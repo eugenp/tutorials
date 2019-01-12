@@ -1,6 +1,7 @@
 package com.baeldung.dao.repositories.user;
 
 import com.baeldung.domain.user.User;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -13,7 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
 
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> , UserRepositoryCustom{
 
     Stream<User> findAllByName(String name);
 
