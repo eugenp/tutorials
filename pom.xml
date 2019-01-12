@@ -330,7 +330,6 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
-                <module>parent-spring-5-1</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
@@ -603,7 +602,6 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
-                <module>parent-spring-5-1</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
@@ -997,7 +995,6 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
-                <module>parent-spring-5-1</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                         
@@ -1049,7 +1046,6 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
-                <module>parent-spring-5-1</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
@@ -1317,7 +1313,6 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
-                <module>parent-spring-5-1</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
@@ -1550,7 +1545,6 @@
                 <module>parent-boot-2</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
-                <module>parent-spring-5-1</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 

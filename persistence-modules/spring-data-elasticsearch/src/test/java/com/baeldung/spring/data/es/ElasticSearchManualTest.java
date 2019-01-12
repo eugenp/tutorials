@@ -27,9 +27,16 @@ import com.baeldung.spring.data.es.model.Article;
 import com.baeldung.spring.data.es.model.Author;
 import com.baeldung.spring.data.es.service.ArticleService;
 
+/**
+ * 
+ * This Manual test requires:
+ * * Elasticsearch instance running on host
+ * * with cluster name = elasticsearch
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = Config.class)
-public class ElasticSearchIntegrationTest {
+public class ElasticSearchManualTest {
 
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
