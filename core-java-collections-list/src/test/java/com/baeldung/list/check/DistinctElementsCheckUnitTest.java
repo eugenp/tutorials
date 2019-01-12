@@ -26,7 +26,8 @@ public class DistinctElementsCheckUnitTest {
             .allMatch(e -> e.equals(distinctList.get(0))));
 
         // 2
-        assertTrue(distinctList.stream().allMatch(distinctList.get(0)::equals));
+        assertTrue(distinctList.stream()
+            .allMatch(distinctList.get(0)::equals));
 
         assertTrue(distinctList.parallelStream()
             .allMatch(distinctList.get(0)::equals));
