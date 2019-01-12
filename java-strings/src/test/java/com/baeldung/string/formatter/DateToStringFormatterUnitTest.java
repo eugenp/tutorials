@@ -1,7 +1,6 @@
 package com.baeldung.string.formatter;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,9 +10,11 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class DateToStringFormatterUnitTest {
 
@@ -40,7 +41,7 @@ public class DateToStringFormatterUnitTest {
     @Test
     public void whenDateConvertedUsingDateFormatToString_thenCorrect() {
         String formattedDate = DateFormat
-          .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT)
+          .getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT, Locale.US)
           .format(date);
 
         assertEquals(EXPECTED_STRING_DATE, formattedDate);
