@@ -41,16 +41,15 @@ class InputStreamToByteBufferUnitTest {
         FileInputStream in = new FileInputStream(inputFile);
         byte[] targetArray = ByteStreams.toByteArray(in);
         ByteBuffer bufferByte = ByteBuffer.wrap(targetArray);
-        bufferByte.rewind();
         while (bufferByte.hasRemaining()) {
             bufferByte.get();
         }
-        
+
         assertEquals(bufferByte.position(), inputFile.length());
     }
 
     private File getFile() {
-        ClassLoader classLoader = new InputStreamToByteBufferUnitTest().getClass().getClassLoader();
+        ClassLoader classLoader = getClass().getClassLoader();
 
         String fileName = "frontenac-2257154_960_720.jpg";
 
