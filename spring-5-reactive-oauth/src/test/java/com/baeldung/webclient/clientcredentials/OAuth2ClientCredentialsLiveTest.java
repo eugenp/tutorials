@@ -19,9 +19,9 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 
 /**
  * 
- * Note: this Live test requires the Authorization Service and the Resource service located in the spring-5-security-oauth module 
+ * Note: this Live test requires the Authorization Service and the Resource service located in the Baeldung/spring-security-oauth repo 
  * 
- * @author ger
+ * @author rozagerardo
  *
  */
 @RunWith(SpringRunner.class)
@@ -46,7 +46,7 @@ public class OAuth2ClientCredentialsLiveTest {
             .stream()
             .map(ILoggingEvent::getFormattedMessage)
             .collect(Collectors.toList());
-        assertThat(allLoggedEntries).anyMatch(entry -> entry.contains("We retrieved the following resource using Client Credentials Grant Type: This is the resource!"));
+        assertThat(allLoggedEntries).anyMatch(entry -> entry.contains("We retrieved the following resource using Client Credentials Grant Type: {\"id\""));
     }
 
 }
