@@ -4,30 +4,30 @@ import java.util.List;
 
 public class CriminalHistoryChecker {
 
-    private ISuspectHandler suspectHandler;
-    private ICriminalDataHandler criminalDataHandler;
+    private ISuspectDataProvider suspectDataProvider;
+    private ICriminalDataProvider criminalDataProvider;
 
     // Dependency injection via constructor
-    public CriminalHistoryChecker(ISuspectHandler suspectHandler, ICriminalDataHandler criminalDataHandler) {
-        this.suspectHandler = suspectHandler;
-        this.criminalDataHandler = criminalDataHandler;
+    public CriminalHistoryChecker(ISuspectDataProvider suspectDataProvider, ICriminalDataProvider criminalDataProvider) {
+        this.suspectDataProvider = suspectDataProvider;
+        this.criminalDataProvider = criminalDataProvider;
     }
 
     public boolean isSuspectACriminal() {
-        //Assume suspect is not a criminal
+        // Assume suspect is not a criminal
         boolean isSuspectACriminal = false;
 
-        // Get suspect details using suspect interface 
-        PersonRecord suspect = suspectHandler.getSuspectDetails();
+        // Get suspect details using suspect interface
+        PersonRecord suspectRecord = suspectDataProvider.getSuspectDetails();
         // Search suspect in criminal DB by SSN using data handler interface
-        List<PersonRecord> criminalList = criminalDataHandler.searchBySsn(suspect.getSsn());
+        List<PersonRecord> criminalSearchResultList = criminalDataProvider.searchBySsn(suspectRecord.getSsn());
 
         // Search suspect in criminal DB by first name and last name using data handler interface
-        if (criminalList == null || criminalList.size() == 0) {
-            criminalList = criminalDataHandler.searchByName(suspect.getFirstName(), suspect.getLastName());
+        if (criminalSearchResultList == null || criminalSearchResultList.size() == 0) {
+            criminalSearchResultList = criminalDataProvider.searchByName(suspectRecord.getFirstName(), suspectRecord.getLastName());
         }
 
-        if (criminalList != null && criminalList.size() > 0) {
+        if (criminalSearchResultList != null && criminalSearchResultList.size() > 0) {
             isSuspectACriminal = true;
         }
 

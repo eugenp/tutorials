@@ -1,8 +1,8 @@
 package com.baeldung.hexagonalarchapp.application;
 
 import com.baeldung.hexagonalarchapp.domain.CriminalHistoryChecker;
-import com.baeldung.hexagonalarchapp.domain.ICriminalDataHandler;
-import com.baeldung.hexagonalarchapp.domain.ISuspectHandler;
+import com.baeldung.hexagonalarchapp.domain.ICriminalDataProvider;
+import com.baeldung.hexagonalarchapp.domain.ISuspectDataProvider;
 
 /**
  * Hello world!
@@ -13,10 +13,10 @@ public class App {
         
         // Scenario 1 - Infrastructure for input is console
         {
-            ISuspectHandler suspectHandlerConsole = new SuspectDetailsFromConsole();
-            ICriminalDataHandler criminalData = new CriminalDataFetcher();
+            ISuspectDataProvider suspectDataProviderFromConsole = new SuspectDetailsFromConsole();
+            ICriminalDataProvider criminalDataFetcherFromDb = new CriminalDataFetcherFromDb();
 
-            CriminalHistoryChecker criminalHistoryChecker = new CriminalHistoryChecker(suspectHandlerConsole, criminalData);
+            CriminalHistoryChecker criminalHistoryChecker = new CriminalHistoryChecker(suspectDataProviderFromConsole, criminalDataFetcherFromDb);
             boolean isSuspectCriminal = criminalHistoryChecker.isSuspectACriminal();
 
             System.out.println("Suspect with details entered has criminal history? " + isSuspectCriminal);
@@ -25,10 +25,10 @@ public class App {
 
         // Scenario 2 - Infrastructure for input is file
         {
-            ISuspectHandler suspectHandlerFile = new SuspectDetailsFromFile();
-            ICriminalDataHandler criminalData = new CriminalDataFetcher();
+            ISuspectDataProvider suspectDataProviderFromFile = new SuspectDetailsFromFile();
+            ICriminalDataProvider criminalDataFetcherFromDb = new CriminalDataFetcherFromDb();
 
-            CriminalHistoryChecker criminalHistoryChecker = new CriminalHistoryChecker(suspectHandlerFile, criminalData);
+            CriminalHistoryChecker criminalHistoryChecker = new CriminalHistoryChecker(suspectDataProviderFromFile, criminalDataFetcherFromDb);
             boolean isSuspectCriminal = criminalHistoryChecker.isSuspectACriminal();
 
             System.out.println("Suspect from file has criminal history? " + isSuspectCriminal);

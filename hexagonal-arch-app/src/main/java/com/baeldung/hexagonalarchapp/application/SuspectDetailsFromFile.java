@@ -4,10 +4,10 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
-import com.baeldung.hexagonalarchapp.domain.ISuspectHandler;
+import com.baeldung.hexagonalarchapp.domain.ISuspectDataProvider;
 import com.baeldung.hexagonalarchapp.domain.PersonRecord;
 
-public class SuspectDetailsFromFile implements ISuspectHandler {
+public class SuspectDetailsFromFile implements ISuspectDataProvider {
 
     @Override
     public PersonRecord getSuspectDetails() {

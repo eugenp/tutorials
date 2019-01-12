@@ -1,6 +1,6 @@
 package com.baeldung.hexagonalarchapp.domain;
 
-public interface ISuspectHandler {
+public interface ISuspectDataProvider {
 
     public PersonRecord getSuspectDetails();
 

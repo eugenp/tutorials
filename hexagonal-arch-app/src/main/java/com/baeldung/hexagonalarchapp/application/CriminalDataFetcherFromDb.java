@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.baeldung.hexagonalarchapp.domain.ICriminalDataHandler;
+import com.baeldung.hexagonalarchapp.domain.ICriminalDataProvider;
 import com.baeldung.hexagonalarchapp.domain.PersonRecord;
 
-public class CriminalDataFetcher implements ICriminalDataHandler {
+public class CriminalDataFetcherFromDb implements ICriminalDataProvider {
 
     private List<PersonRecord> dbDataList;
 
-    public CriminalDataFetcher() {
+    public CriminalDataFetcherFromDb() {
         dbDataList = getInMemoryDb();
     }
 

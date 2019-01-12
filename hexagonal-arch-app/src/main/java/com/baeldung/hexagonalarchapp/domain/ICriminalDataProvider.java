@@ -2,7 +2,7 @@ package com.baeldung.hexagonalarchapp.domain;
 
 import java.util.List;
 
-public interface ICriminalDataHandler {
+public interface ICriminalDataProvider {
 
     public List<PersonRecord> searchByName(String firstName, String lastName);
 

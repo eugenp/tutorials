@@ -3,10 +3,10 @@ package com.baeldung.hexagonalarchapp.application;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
-import com.baeldung.hexagonalarchapp.domain.ISuspectHandler;
+import com.baeldung.hexagonalarchapp.domain.ISuspectDataProvider;
 import com.baeldung.hexagonalarchapp.domain.PersonRecord;
 
-public class SuspectDetailsFromConsole implements ISuspectHandler {
+public class SuspectDetailsFromConsole implements ISuspectDataProvider {
 
     @Override
     public PersonRecord getSuspectDetails() {
