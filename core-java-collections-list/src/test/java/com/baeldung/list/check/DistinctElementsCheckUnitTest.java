@@ -34,9 +34,7 @@ public class DistinctElementsCheckUnitTest {
 
         // 3
         assertTrue(Collections.frequency(distinctList, distinctList.get(0)) == distinctList.size());
-
-        // 4
-        assertTrue(distinctList.size() > 0 && distinctList.lastIndexOf(distinctList.get(0)) == distinctList.size() - 1);
+       
     }
     
 
@@ -59,8 +57,5 @@ public class DistinctElementsCheckUnitTest {
 
         // 3
         assertFalse(Collections.frequency(nonDistinctList, nonDistinctList.get(0)) == nonDistinctList.size());
-
-        // 4
-        assertFalse(nonDistinctList.size() > 0 && nonDistinctList.lastIndexOf(nonDistinctList.get(0)) == nonDistinctList.size() - 1);
     }
 }
