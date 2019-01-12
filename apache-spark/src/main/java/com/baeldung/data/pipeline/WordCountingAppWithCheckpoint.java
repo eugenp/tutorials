@@ -6,7 +6,6 @@ import static com.datastax.spark.connector.japi.CassandraJavaUtil.mapToRow;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -15,18 +14,10 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.Optional;
-import org.apache.spark.api.java.function.FlatMapFunction;
-import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.Function2;
-import org.apache.spark.api.java.function.Function3;
-import org.apache.spark.api.java.function.PairFunction;
-import org.apache.spark.api.java.function.VoidFunction;
 import org.apache.spark.streaming.Durations;
-import org.apache.spark.streaming.State;
 import org.apache.spark.streaming.StateSpec;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
@@ -43,7 +34,6 @@ public class WordCountingAppWithCheckpoint {
 
     public static JavaSparkContext sparkContext;
 
-    @SuppressWarnings("serial")
     public static void main(String[] args) throws InterruptedException {
 
         Logger.getLogger("org")
@@ -74,63 +64,30 @@ public class WordCountingAppWithCheckpoint {
 
         JavaInputDStream<ConsumerRecord<String, String>> messages = KafkaUtils.createDirectStream(streamingContext, LocationStrategies.PreferConsistent(), ConsumerStrategies.<String, String> Subscribe(topics, kafkaParams));
 
-        JavaPairDStream<String, String> results = messages.mapToPair(new PairFunction<ConsumerRecord<String, String>, String, String>() {
-            @Override
-            public Tuple2<String, String> call(ConsumerRecord<String, String> record) {
-                return new Tuple2<>(record.key(), record.value());
-            }
-        });
+        JavaPairDStream<String, String> results = messages.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
 
-        JavaDStream<String> lines = results.map(new Function<Tuple2<String, String>, String>() {
-            @Override
-            public String call(Tuple2<String, String> tuple2) {
-                return tuple2._2();
-            }
-        });
+        JavaDStream<String> lines = results.map(tuple2 -> tuple2._2());
 
-        JavaDStream<String> words = lines.flatMap(new FlatMapFunction<String, String>() {
-            @Override
-            public Iterator<String> call(String x) {
-                return Arrays.asList(x.split("\\s+"))
-                    .iterator();
-            }
-        });
+        JavaDStream<String> words = lines.flatMap(x -> Arrays.asList(x.split("\\s+"))
+            .iterator());
 
-        JavaPairDStream<String, Integer> wordCounts = words.mapToPair(new PairFunction<String, String, Integer>() {
-            @Override
-            public Tuple2<String, Integer> call(String s) {
-                return new Tuple2<>(s, 1);
-            }
-        })
-            .reduceByKey(new Function2<Integer, Integer, Integer>() {
-                @Override
-                public Integer call(Integer i1, Integer i2) {
-                    return i1 + i2;
-                }
-            });
+        JavaPairDStream<String, Integer> wordCounts = words.mapToPair(s -> new Tuple2<>(s, 1))
+            .reduceByKey((Function2<Integer, Integer, Integer>) (i1, i2) -> i1 + i2);
 
-        Function3<String, Optional<Integer>, State<Integer>, Tuple2<String, Integer>> mappingFunc = (word, one, state) -> {
+        JavaMapWithStateDStream<String, Integer, Integer, Tuple2<String, Integer>> cumulativeWordCounts = wordCounts.mapWithState(StateSpec.function((word, one, state) -> {
             int sum = one.orElse(0) + (state.exists() ? state.get() : 0);
             Tuple2<String, Integer> output = new Tuple2<>(word, sum);
             state.update(sum);
             return output;
-        };
+        }));
 
-        JavaPairRDD<String, Integer> initialRDD = JavaPairRDD.fromJavaRDD(sparkContext.emptyRDD());
-
-        JavaMapWithStateDStream<String, Integer, Integer, Tuple2<String, Integer>> cumulativeWordCounts = wordCounts.mapWithState(StateSpec.function(mappingFunc)
-            .initialState(initialRDD));
-
-        cumulativeWordCounts.foreachRDD(new VoidFunction<JavaRDD<Tuple2<String, Integer>>>() {
-            @Override
-            public void call(JavaRDD<Tuple2<String, Integer>> javaRdd) throws Exception {
-                List<Tuple2<String, Integer>> wordCountList = javaRdd.collect();
-                for (Tuple2<String, Integer> tuple : wordCountList) {
-                    List<Word> words = Arrays.asList(new Word(tuple._1, tuple._2));
-                    JavaRDD<Word> rdd = sparkContext.parallelize(words);
-                    javaFunctions(rdd).writerBuilder("vocabulary", "words", mapToRow(Word.class))
-                        .saveToCassandra();
-                }
+        cumulativeWordCounts.foreachRDD(javaRdd -> {
+            List<Tuple2<String, Integer>> wordCountList = javaRdd.collect();
+            for (Tuple2<String, Integer> tuple : wordCountList) {
+                List<Word> wordList = Arrays.asList(new Word(tuple._1, tuple._2));
+                JavaRDD<Word> rdd = sparkContext.parallelize(wordList);
+                javaFunctions(rdd).writerBuilder("vocabulary", "words", mapToRow(Word.class))
+                    .saveToCassandra();
             }
         });
 
