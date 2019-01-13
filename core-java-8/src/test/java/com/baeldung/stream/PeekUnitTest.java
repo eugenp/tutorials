@@ -81,6 +81,37 @@ public class PeekUnitTest {
         assertThat(out.toString()).isEqualTo("AliceAliceBobBobChuckChuck");
     }
 
+    @Test
+    void givenStringStream_whenCallingPeek_thenElementsProcessedTwice() {
+        // given
+        Stream<User> userStream = Stream.of(new User("Alice"), new User("Bob"), new User("Chuck"));
+
+        // when
+        userStream.peek(u -> u.setName(u.getName().toLowerCase()))
+            .map(User::getName)
+            .forEach(out::append);
+
+        // then
+        assertThat(out.toString()).isEqualTo("alicebobchuck");
+    }
+
+    private static class User {
+        private String name;
+
+        public User(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+    }
+
     private void noop(String s) {
     }
 
