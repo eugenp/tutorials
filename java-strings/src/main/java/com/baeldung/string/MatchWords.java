@@ -56,15 +56,20 @@ public class MatchWords {
                 .addKeyword(words[1])
                 .ignoreOverlaps()
                 .build();
+
         Collection<Emit> emits = trie.parseText(inputString)
                 .stream()
                 .filter(e -> !Objects.equals(e.getKeyword(), e.getKeyword()))
                 .collect(Collectors.toList());
+
+        emits.forEach(System.out::println);
+
         return emits.size() == words.length;
     }
 
     private static boolean containsWordsPatternMatch(String inputString, String[] words) {
-        Pattern pattern = Pattern.compile("(?=.*hello)(?=.*Baeldung)");
+
+        Pattern pattern = Pattern.compile("(?=.*" + words[0] + ")(?=.*" + words[1] + ")");
         if (pattern.matcher(inputString).find()) {
             return true;
         }
