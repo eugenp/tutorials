@@ -9,21 +9,21 @@ import java.util.regex.Pattern;
 public class MatchWords {
 
     public static void main(String[] args) {
-        String[] items = {"hello", "Baeldung"};
+        String[] words = {"hello", "Baeldung"};
         String inputString = "hello there, Baeldung";
 
-        System.out.println(containsWords(inputString, items));
+        containsWords(inputString, words);
 
-        System.out.println(java8(new ArrayList<>(Arrays.asList(inputString.split(" "))), new ArrayList<>(Arrays.asList(items))));
+        containsWordsJava8(new ArrayList<>(Arrays.asList(inputString.split(" "))), new ArrayList<>(Arrays.asList(words)));
 
-        System.out.println(patternMatch(inputString));
+        containsWordsPatternMatch(inputString, words);
 
-        ahoCorasick();
+        containsWordsAhoCorasick(inputString, words);
 
-        indexOfWords(inputString, items);
+        containsWordsIndexOf(inputString, words);
     }
 
-    private static boolean indexOfWords(String inputString, String[] words) {
+    private static boolean containsWordsIndexOf(String inputString, String[] words) {
         boolean found = true;
         for (String word : words) {
             int index = inputString.indexOf(word);
@@ -46,30 +46,31 @@ public class MatchWords {
         return found;
     }
 
-    private static void ahoCorasick() {
+    private static boolean containsWordsAhoCorasick(String inputString, String[] words) {
         Trie trie = Trie.builder()
                 .onlyWholeWords()
-                .addKeyword("hello")
-                .addKeyword("Baeldung")
+                .addKeyword(words[0])
+                .addKeyword(words[1])
                 .build();
-        Collection<Emit> emits = trie.parseText("hello there, Baeldung");
-        emits.forEach(System.out::println);
+        Collection<Emit> emits = trie.parseText(inputString);
+
+        return emits.size() == words.length;
     }
 
-    private static boolean patternMatch(String inputString) {
-        Pattern pattern = Pattern.compile("(?=.*hello)(?=.*Baeldung)");
+    private static boolean containsWordsPatternMatch(String inputString, String[] words) {
+        Pattern pattern = Pattern.compile("(?=.*words[0])(?=.*words[1])");
         if (pattern.matcher(inputString).find()) {
             return true;
         }
         return false;
     }
 
-    private static boolean java8(ArrayList<String> inputString, ArrayList<String> items) {
-        return items.stream().allMatch(inputString::contains);
+    private static boolean containsWordsJava8(ArrayList<String> inputString, ArrayList<String> words) {
+        return words.stream().allMatch(inputString::contains);
     }
 
-    private static boolean array(ArrayList<String> inputString, ArrayList<String> items) {
-        return inputString.containsAll(items);
+    private static boolean containsWordsArray(ArrayList<String> inputString, ArrayList<String> words) {
+        return inputString.containsAll(words);
     }
 
 }
