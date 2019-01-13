@@ -12,7 +12,7 @@ public class LoopScopeExample {
         for (String name : listOfNames) {
             allNames = allNames + " " + name;
         }
-
+        // compiler error, name cannot be resolved to a variable
+        // String lastNameUsed = name;
     }
-
 }

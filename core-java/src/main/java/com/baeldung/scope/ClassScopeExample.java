@@ -9,7 +9,6 @@ public class ClassScopeExample {
     }
 
     public void anotherExampleMethod() {
-        amount--;
+        Integer anotherAmount = amount + 4;
     }
-
 }

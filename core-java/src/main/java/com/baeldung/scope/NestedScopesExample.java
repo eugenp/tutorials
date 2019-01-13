@@ -9,5 +9,4 @@ public class NestedScopesExample {
         String title = "John Doe";
         System.out.println(title);
     }
-
 }

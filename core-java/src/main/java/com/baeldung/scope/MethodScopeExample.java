@@ -2,15 +2,12 @@ package org.baeldung.variable.scope.examples;
 
 public class MethodScopeExample {
 
-    Integer size = 2;
-
     public void methodA() {
         Integer area = 2;
-        area = area + size;
     }
 
     public void methodB() {
-        size = size + 5;
+        // compiler error, area cannot be resolved to a variable
+        // area = area + 2;
     }
-
 }
