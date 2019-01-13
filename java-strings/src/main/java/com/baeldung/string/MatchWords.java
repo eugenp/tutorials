@@ -4,7 +4,10 @@ import org.ahocorasick.trie.Emit;
 import org.ahocorasick.trie.Trie;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MatchWords {
 
@@ -51,14 +54,17 @@ public class MatchWords {
                 .onlyWholeWords()
                 .addKeyword(words[0])
                 .addKeyword(words[1])
+                .ignoreOverlaps()
                 .build();
-        Collection<Emit> emits = trie.parseText(inputString);
-
+        Collection<Emit> emits = trie.parseText(inputString)
+                .stream()
+                .filter(e -> !Objects.equals(e.getKeyword(), e.getKeyword()))
+                .collect(Collectors.toList());
         return emits.size() == words.length;
     }
 
     private static boolean containsWordsPatternMatch(String inputString, String[] words) {
-        Pattern pattern = Pattern.compile("(?=.*words[0])(?=.*words[1])");
+        Pattern pattern = Pattern.compile("(?=.*hello)(?=.*Baeldung)");
         if (pattern.matcher(inputString).find()) {
             return true;
         }
