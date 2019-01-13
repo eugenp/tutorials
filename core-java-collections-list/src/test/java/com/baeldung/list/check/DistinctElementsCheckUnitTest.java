@@ -1,6 +1,7 @@
 package com.baeldung.list.check;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -9,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import org.apache.commons.collections4.IterableUtils;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import com.google.common.collect.Iterables;
@@ -53,6 +55,8 @@ public class DistinctElementsCheckUnitTest {
         
         assertTrue(Iterables.frequency(distinctList, distinctList.get(0)) == distinctList.size());
         
+        // 6
+        assertThat(distinctList, Matchers.everyItem(Matchers.comparesEqualTo(distinctList.get(0))));
         
     }
 
@@ -89,5 +93,8 @@ public class DistinctElementsCheckUnitTest {
         assertFalse(Iterables.all(nonDistinctList,  e -> e.equals(nonDistinctList.get(0))));
         
         assertFalse(Iterables.frequency(nonDistinctList, nonDistinctList.get(0)) == nonDistinctList.size());
+        
+        // 6
+        assertThat(nonDistinctList, Matchers.not(Matchers.everyItem(Matchers.comparesEqualTo(nonDistinctList.get(0)))));
     }
 }
