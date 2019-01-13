@@ -1,5 +1,6 @@
 package com.baeldung.webclient.manualrequest;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
@@ -8,7 +9,7 @@ import org.springframework.test.web.reactive.server.WebTestClient.ResponseSpec;
 /**
  * 
  * Note: this Live test requires not only the corresponding application running,
- * but also the Authorization Service and the Resource service located in the spring-5-security-oauth module.
+ * but also the Authorization Service and the Resource service located in the Baeldung/spring-security-oauth repo
  * 
  * 
  * @author ger
@@ -37,7 +38,7 @@ public class OAuth2ManualRequestLiveTest {
         response.expectStatus()
             .isOk()
             .expectBody(String.class)
-            .isEqualTo("Retrieved the resource using a manual approach: This is the resource!");
+            .value(Matchers.containsString("Retrieved the resource using a manual approach: {\"id\""));
     }
 
 }
