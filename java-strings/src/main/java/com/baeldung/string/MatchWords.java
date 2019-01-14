@@ -77,6 +77,7 @@ public class MatchWords {
         for (String word : words) {
             regexp.append("(?=.*").append(word).append(")");
         }
+
         Pattern pattern = Pattern.compile(regexp.toString());
         if (pattern.matcher(inputString).find()) {
             return true;
@@ -97,12 +98,4 @@ public class MatchWords {
 
         return inputStringList.containsAll(wordsList);
     }
-
-    private static boolean containsAnyWord(String inputString, String[] words) {
-        ArrayList inputStringList = new ArrayList<>(Arrays.asList(inputString.split(" ")));
-        ArrayList<String> wordsList = new ArrayList<>(Arrays.asList(words));
-
-        return inputStringList.contains(wordsList);
-    }
-
 }
