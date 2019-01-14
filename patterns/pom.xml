@@ -17,6 +17,7 @@
         <module>front-controller</module>
         <module>intercepting-filter</module>
         <module>design-patterns</module>
+        <module>hexagonal-design-pattern</module>
     </modules>
 
     <dependencyManagement>

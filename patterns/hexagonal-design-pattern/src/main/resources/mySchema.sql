@@ -1,0 +1,1 @@
+create table user(id int identity primary key, name varchar(30));
