@@ -168,6 +168,12 @@
             <artifactId>modelmapper</artifactId>
             <version>${modelmapper.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.zalando</groupId>
+            <artifactId>problem-spring-web</artifactId>
+            <version>${problem-spring-web.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -266,6 +272,7 @@
         <guava.version>18.0</guava.version>
         <git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
         <modelmapper.version>2.3.2</modelmapper.version>
+        <problem-spring-web.version>0.22.2</problem-spring-web.version>
     </properties>
 
 </project>
