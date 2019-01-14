@@ -1,6 +1,7 @@
 package com.baeldung.string;
 
 import org.ahocorasick.trie.Emit;
+import org.ahocorasick.trie.Token;
 import org.ahocorasick.trie.Trie;
 
 import java.util.*;
@@ -17,7 +18,7 @@ public class MatchWords {
 
         containsWords(inputString, words);
 
-        containsWordsJava8(new ArrayList<>(Arrays.asList(inputString.split(" "))), new ArrayList<>(Arrays.asList(words)));
+        containsWordsJava8(inputString, words);
 
         containsWordsPatternMatch(inputString, words);
 
@@ -52,36 +53,56 @@ public class MatchWords {
     private static boolean containsWordsAhoCorasick(String inputString, String[] words) {
         Trie trie = Trie.builder()
                 .onlyWholeWords()
-                .addKeyword(words[0])
-                .addKeyword(words[1])
-                .ignoreOverlaps()
+                .addKeywords(words)
                 .build();
 
-        Collection<Emit> emits = trie.parseText(inputString)
-                .stream()
-                .filter(e -> !Objects.equals(e.getKeyword(), e.getKeyword()))
-                .collect(Collectors.toList());
-
+        Collection<Emit> emits = trie.parseText(inputString);
         emits.forEach(System.out::println);
 
-        return emits.size() == words.length;
+        boolean found = true;
+        for(String word : words) {
+            boolean contains = Arrays.toString(emits.toArray()).contains(word);
+            if (!contains) {
+                found = false;
+                break;
+            }
+        }
+
+        return found;
     }
 
     private static boolean containsWordsPatternMatch(String inputString, String[] words) {
 
-        Pattern pattern = Pattern.compile("(?=.*" + words[0] + ")(?=.*" + words[1] + ")");
+        StringBuilder regexp = new StringBuilder();
+        for (String word : words) {
+            regexp.append("(?=.*").append(word).append(")");
+        }
+        Pattern pattern = Pattern.compile(regexp.toString());
         if (pattern.matcher(inputString).find()) {
             return true;
         }
         return false;
     }
 
-    private static boolean containsWordsJava8(ArrayList<String> inputString, ArrayList<String> words) {
-        return words.stream().allMatch(inputString::contains);
+    private static boolean containsWordsJava8(String inputString, String[] words) {
+        ArrayList inputStringList = new ArrayList<>(Arrays.asList(inputString.split(" ")));
+        ArrayList<String> wordsList = new ArrayList<>(Arrays.asList(words));
+
+        return wordsList.stream().allMatch(inputStringList::contains);
     }
 
-    private static boolean containsWordsArray(ArrayList<String> inputString, ArrayList<String> words) {
-        return inputString.containsAll(words);
+    private static boolean containsWordsArray(String inputString, String[] words) {
+        ArrayList inputStringList = new ArrayList<>(Arrays.asList(inputString.split(" ")));
+        ArrayList<String> wordsList = new ArrayList<>(Arrays.asList(words));
+
+        return inputStringList.containsAll(wordsList);
+    }
+
+    private static boolean containsAnyWord(String inputString, String[] words) {
+        ArrayList inputStringList = new ArrayList<>(Arrays.asList(inputString.split(" ")));
+        ArrayList<String> wordsList = new ArrayList<>(Arrays.asList(words));
+
+        return inputStringList.contains(wordsList);
     }
 
 }
