@@ -21,25 +21,42 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * jdbc在线测试
+ */
 public class JdbcLiveTest {
 
     private static final Logger LOG = Logger.getLogger(JdbcLiveTest.class);
 
     private Connection con;
 
+    /**
+     * 连接的mysql的地址为：
+     * （1）本机mysql
+     *
+     * @throws ClassNotFoundException
+     * @throws SQLException
+     */
     @Before
     public void setup() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+        Class.forName("com.mysql.jdbc.Driver");
 
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/myDb?noAccessToProcedureBodies=true", "user1", "pass");
+        con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/mysqlbook_schema?noAccessToProcedureBodies=true",
+                "root",
+                "123456"
+        );
 
         Statement stmt = con.createStatement();
 
         String tableSql = "CREATE TABLE IF NOT EXISTS employees (emp_id int PRIMARY KEY AUTO_INCREMENT, name varchar(30), position varchar(30), salary double)";
         stmt.execute(tableSql);
-
     }
 
+    /**
+     * 测试:插入、查询、同一个事物中修改同一条记录
+     * @throws SQLException
+     */
     @Test
     public void whenInsertUpdateRecord_thenCorrect() throws SQLException {
         Statement stmt = con.createStatement();
@@ -71,19 +88,19 @@ public class JdbcLiveTest {
 
         updatableResultSet.moveToInsertRow();
         updatableResultSet.updateString("name", "mark");
-        updatableResultSet.updateString("position", "analyst");
         updatableResultSet.updateDouble("salary", 2000);
+        updatableResultSet.updateString("position", "analyst");
         updatableResultSet.insertRow();
 
         String updatePositionSql = "UPDATE employees SET position=? WHERE emp_id=?";
         PreparedStatement pstmt = con.prepareStatement(updatePositionSql);
         pstmt.setString(1, "lead developer");
-        pstmt.setInt(2, 1);
+        pstmt.setInt(2, 22);
 
         String updateSalarySql = "UPDATE employees SET salary=? WHERE emp_id=?";
         PreparedStatement pstmt2 = con.prepareStatement(updateSalarySql);
-        pstmt.setDouble(1, 3000);
-        pstmt.setInt(2, 1);
+        pstmt2.setDouble(1, 3000);
+        pstmt2.setInt(2, 22);
 
         boolean autoCommit = con.getAutoCommit();
 
@@ -93,12 +110,30 @@ public class JdbcLiveTest {
             pstmt2.executeUpdate();
             con.commit();
         } catch (SQLException exc) {
+            exc.printStackTrace();
             con.rollback();
         } finally {
             con.setAutoCommit(autoCommit);
         }
     }
 
+    /**
+     * 测试：mysql存储过程后续需要学习，已经不会了～～～
+     *
+     * （1）简单案例
+     * @see {http://www.voidcn.com/article/p-qfdreduh-bap.html}
+     * @see {http://www.voidcn.com/article/p-udythsml-ra.html} 存储过程的应用案例
+     *
+     * (2) 如果表不设置主键时，编写的存储过程如下：
+     * CREATE DEFINER=`root`@`localhost` PROCEDURE `insertEmployee`(in emp_id_temp int  ,in name_temp VARCHAR(50) , in position_temp VARCHAR(50)  , in salary_temp double)
+     * BEGIN
+     * 	insert into employees(emp_id,name,position,salary) values (emp_id_temp,name_temp,position_temp,salary_temp);
+     * END
+     *
+     *（3）如果表设置了主键自动生成时，编写的存储过程如下：
+     *
+     *
+     */
     @Test
     public void whenCallProcedure_thenCorrect() {
 

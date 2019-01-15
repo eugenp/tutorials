@@ -214,6 +214,11 @@
             <artifactId>money-api</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -453,6 +458,9 @@
     </profiles>
 
     <properties>
+        <!-- db -->
+        <mysql.version>5.1.25</mysql.version>
+
         <!-- marshalling -->
         <jackson.version>2.8.5</jackson.version>
         <gson.version>2.8.5</gson.version>
