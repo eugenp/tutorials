@@ -4,6 +4,10 @@ import org.assertj.core.util.Arrays;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.IntSummaryStatistics;
+
+import org.apache.commons.math3.stat.descriptive.SummaryStatistics;
+
 public class StreamReduceUnitTest {
 
     @Test
@@ -73,6 +77,18 @@ public class StreamReduceUnitTest {
 
     }
     
-    
-    
+    @Test
+    public void givenIntegerArray_predefinedReductionSummaryStatistics_returnsExpectedValues() {
+        int[] input = { 10, 20, 45, 6 };
+        Double expectedAverage = 20.25;
+        int expectedSum = 81;
+        int expectedMin = 6;
+        int expectedMax = 45;
+        IntSummaryStatistics response = StreamReduce.predefinedReductionSummaryStats(input);
+        assertEquals(expectedAverage, response.getAverage(), 0);
+        assertEquals(expectedMin, response.getMin());
+        assertEquals(expectedMax, response.getMax());
+        assertEquals(expectedSum, response.getSum());
+    }
+       
 }
