@@ -232,6 +232,7 @@
 				<version>${maven-war-plugin.version}</version>
 			</plugin>
 		</plugins>
+		
 		<extensions>
 			<extension>
 				<groupId>com.vackosar.gitflowincrementalbuilder</groupId>
@@ -327,7 +328,6 @@
 			<modules>
 				<module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -380,11 +380,18 @@
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-collections-list</module>
+                <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
+                <module>core-java-security</module>
+                <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
-				<module>core-java-networking</module>
+                <module>core-java-lang-oop</module>
+                <module>core-java-networking</module>
+                <module>core-java-perf</module>
                 <module>core-java-sun</module>
+                <module>core-java</module>        
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -401,7 +408,6 @@
                 <module>ethereum</module>
                 
                 <module>feign</module>
-                <module>flips</module>
                 <module>flyway-cdi-extension</module>
                 
                 <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
@@ -432,7 +438,7 @@
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <module>java-ee-8-security-api</module>
+                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-numbers</module>
                 <module>java-rmi</module>
@@ -468,6 +474,7 @@
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-data</module>
+                <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>linkrest</module>
@@ -491,7 +498,6 @@
                 <module>msf4j</module>
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
-                <module>mvn-wrapper</module>
                 <module>mybatis</module>
                 
                 <module>noexception</module>
@@ -513,6 +519,7 @@
                 <module>persistence-modules/flyway</module>
                 <module>persistence-modules/hbase</module>
                 <module>persistence-modules/hibernate5</module>
+				<module>persistence-modules/hibernate-ogm</module>
                 <module>persistence-modules/influxdb</module>
                 <module>persistence-modules/java-cassandra</module>
                 <module>persistence-modules/java-cockroachdb</module>
@@ -532,7 +539,7 @@
                 <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-dynamodb</module>
                 <module>persistence-modules/spring-data-eclipselink</module>
-                <module>persistence-modules/spring-data-elasticsearch</module>
+                <!-- <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- Fixing in BAEL-10995 -->
                 <module>persistence-modules/spring-data-gemfire</module>
                 <module>persistence-modules/spring-data-jpa</module>
                 <module>persistence-modules/spring-data-keyvalue</module>
@@ -593,7 +600,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -640,9 +646,12 @@
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-rest</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
+                <module>spring-boot-testing</module>
                 <module>spring-boot-vue</module>
+                <module>spring-boot-libraries</module>
                 
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
@@ -657,6 +666,7 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 
+                <module>spring-ehcache</module>
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
@@ -679,7 +689,6 @@
                 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                <module>spring-mustache</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
@@ -688,7 +697,6 @@
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
-                <module>spring-mybatis</module>
                 
                 <module>spring-protobuf</module>
                 
@@ -699,13 +707,11 @@
                 <module>spring-remoting</module>
                 <module>spring-rest</module>
                 <module>spring-rest-angular</module>
-                <module>spring-rest-embedded-tomcat</module>
                 <module>spring-rest-full</module>
                 <module>spring-rest-hal-browser</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
-                <module>spring-rest-template</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
                 
@@ -758,7 +764,6 @@
                 
                 <module>spring-zuul</module>
                 
-                <module>sse-jaxrs</module>
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
@@ -881,6 +886,7 @@
 				<module>spring-data-rest</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
+				<module>spring-ehcache</module>
 				<module>spring-freemarker</module>
 				<module>persistence-modules/spring-hibernate-3</module>
 				<module>persistence-modules/spring-hibernate4</module>
@@ -909,7 +915,6 @@
 				<module>spring-remoting/remoting-rmi/remoting-rmi-server</module>
 				<module>spring-rest</module>
 				<module>spring-rest-angular</module>
-				<module>spring-rest-embedded-tomcat</module>
 				<module>spring-rest-full</module>
 				<module>spring-rest-simple</module>
 				<module>spring-resttemplate</module>
@@ -988,14 +993,12 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
-                
-                <module>core-java</module>                
-                <module>core-java-concurrency</module> <!-- very long running? -->
+                        
+                <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/hello-world</module>
@@ -1041,7 +1044,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1094,10 +1096,16 @@
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-collections-list</module>
+                <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
+                <module>core-java-security</module>
+                <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
+                <module>core-java-lang-oop</module>
                 <module>core-java-networking</module>
+                <module>core-java-perf</module>
                 <module>core-java-sun</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
@@ -1115,7 +1123,6 @@
                 <module>ethereum</module>
                 
                 <module>feign</module>
-                <module>flips</module>
                 <module>flyway-cdi-extension</module>
                 
                 <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
@@ -1182,6 +1189,7 @@
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries-data</module>
+                <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
                 <module>libraries-server</module>
                 <module>linkrest</module>
@@ -1205,7 +1213,6 @@
                 <module>msf4j</module>
                 <!-- <module>muleesb</module> --> <!-- Fixing in BAEL-10878 -->
                 <module>mustache</module>
-                <module>mvn-wrapper</module>
                 <module>mybatis</module>
                 
                 <module>noexception</module>
@@ -1227,6 +1234,7 @@
                 <module>persistence-modules/flyway</module>
                 <module>persistence-modules/hbase</module>
                 <module>persistence-modules/hibernate5</module>
+				<module>persistence-modules/hibernate-ogm</module>
                 <module>persistence-modules/influxdb</module>
                 <module>persistence-modules/java-cassandra</module>
                 <module>persistence-modules/java-cockroachdb</module>
@@ -1246,7 +1254,7 @@
                 <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-dynamodb</module>
                 <module>persistence-modules/spring-data-eclipselink</module>
-                <module>persistence-modules/spring-data-elasticsearch</module>
+                <!-- <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- Fixing in BAEL-10995 -->
                 <module>persistence-modules/spring-data-gemfire</module>
                 <module>persistence-modules/spring-data-jpa</module>
                 <module>persistence-modules/spring-data-keyvalue</module>
@@ -1303,7 +1311,6 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
@@ -1350,6 +1357,7 @@
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-rest</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-vue</module>
@@ -1367,6 +1375,7 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 
+				<module>spring-ehcache</module>                
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
@@ -1389,7 +1398,6 @@
                 
                 <module>spring-mobile</module>
                 <module>spring-mockito</module>
-                <module>spring-mustache</module>
                 <module>spring-mvc-forms-jsp</module>
                 <module>spring-mvc-forms-thymeleaf</module>
                 <module>spring-mvc-java</module>
@@ -1398,7 +1406,6 @@
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
-                <module>spring-mybatis</module>
                 
                 <module>spring-protobuf</module>
                 
@@ -1409,13 +1416,11 @@
                 <module>spring-remoting</module>
                 <module>spring-rest</module>
                 <module>spring-rest-angular</module>
-                <module>spring-rest-embedded-tomcat</module>
                 <module>spring-rest-full</module>
                 <module>spring-rest-hal-browser</module>
                 <module>spring-rest-query-language</module>
                 <module>spring-rest-shell</module>
                 <module>spring-rest-simple</module>
-                <module>spring-rest-template</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
                 
@@ -1468,7 +1473,6 @@
                 
                 <module>spring-zuul</module>
                 
-                <module>sse-jaxrs</module>
                 <module>static-analysis</module>
                 <module>stripe</module>
                 <module>structurizr</module>
@@ -1539,14 +1543,13 @@
             <modules>
                 <module>parent-boot-1</module>
                 <module>parent-boot-2</module>
-                <module>parent-boot-2.0-temp</module>
                 <module>parent-spring-4</module>
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
                 
                 <module>core-java</module>                
-                <module>core-java-concurrency</module> <!-- very long running? -->
+                <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/hello-world</module>
@@ -1619,7 +1622,7 @@
 		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
 		<jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
 		<jstl.version>1.2</jstl.version>
-		<jackson-databind.version>2.5.0</jackson-databind.version>
+		<jackson-databind.version>2.9.7</jackson-databind.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
 		<junit-platform.version>1.2.0</junit-platform.version>
 		<junit-jupiter.version>5.2.0</junit-jupiter.version>

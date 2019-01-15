@@ -66,4 +66,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <start-class>com.baeldung.springbootsecurity.basic_auth.SpringBootSecurityApplication</start-class>
+    </properties>
+
 </project>

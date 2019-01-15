@@ -1,9 +1,9 @@
 package com.baeldung.creational.abstractfactory;
 
-public class AnimalFactory implements AbstractFactory {
+public class AnimalFactory implements AbstractFactory<Animal> {
 
     @Override
-    public Animal getAnimal(String animalType) {
+    public Animal create(String animalType) {
         if ("Dog".equalsIgnoreCase(animalType)) {
             return new Dog();
         } else if ("Duck".equalsIgnoreCase(animalType)) {
@@ -11,11 +11,6 @@ public class AnimalFactory implements AbstractFactory {
         }
 
         return null;
-    }
-
-    @Override
-    public Color getColor(String color) {
-        throw new UnsupportedOperationException();
     }
 
 }
