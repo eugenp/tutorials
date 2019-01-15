@@ -189,6 +189,11 @@
             <version>${springframework.boot.spring-boot-starter.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <version>${springframework.boot.spring-boot-starter.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
@@ -201,12 +206,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>1.5.9.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.0.3.RELEASE</version>
+            <version>${springframework.boot.spring-boot-starter.version}</version>
         </dependency>
 
         <dependency>
@@ -485,8 +485,8 @@
         <!-- maven plugins -->
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
-        <springframework.boot.spring-boot-starter.version>1.5.8.RELEASE</springframework.boot.spring-boot-starter.version>
+        <springframework.spring-web.version>4.3.13.RELEASE</springframework.spring-web.version>
+        <springframework.boot.spring-boot-starter.version>1.5.9.RELEASE</springframework.boot.spring-boot-starter.version>
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <h2database.version>1.4.197</h2database.version>

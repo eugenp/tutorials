@@ -80,7 +80,8 @@ public class EncoderDecoderUnitTest {
     private String encodePath(String path) {
         try {
             path = UriUtils.encodePath(path, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
+            //UnsupportedEncodingException
+        } catch (Exception e) {
             LOGGER.error("Error encoding parameter {}", e.getMessage(), e);
         }
         return path;
