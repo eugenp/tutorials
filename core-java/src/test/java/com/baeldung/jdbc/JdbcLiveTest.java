@@ -122,7 +122,9 @@ public class JdbcLiveTest {
      *
      * （1）简单案例
      * @see {http://www.voidcn.com/article/p-qfdreduh-bap.html}
-     * @see {http://www.voidcn.com/article/p-udythsml-ra.html} 存储过程的应用案例
+     * @see {http://www.voidcn.com/article/p-udythsml-ra.html} 存储过程的应用案例1
+     * @see {http://developer.51cto.com/art/201203/321033.htm} 存储过程的应用案例2
+     *
      *
      * (2) 如果表不设置主键时，编写的存储过程如下：
      * CREATE DEFINER=`root`@`localhost` PROCEDURE `insertEmployee`(in emp_id_temp int  ,in name_temp VARCHAR(50) , in position_temp VARCHAR(50)  , in salary_temp double)
@@ -130,13 +132,18 @@ public class JdbcLiveTest {
      * 	insert into employees(emp_id,name,position,salary) values (emp_id_temp,name_temp,position_temp,salary_temp);
      * END
      *
-     *（3）如果表设置了主键自动生成时，编写的存储过程如下：
+     *（3）如果表设置了主键自动生成时，编写的存储过程如下：(注意，设置表的时候，一定要设置除了主键外的唯一索引键，保证唯一)
+     *CREATE DEFINER=`root`@`localhost` PROCEDURE `insertEmployee`(out emp_id_temp int  ,in name_temp VARCHAR(50) , in position_temp VARCHAR(50)  , in salary_temp double)
+     * BEGIN
+     *     insert into employees(name, position, salary) values (name_temp,position_temp,salary_temp);
+     * 	set emp_id_temp = (select emp_id from employees where name = name_temp and position = position_temp and salary = salary_temp);
+     * END
      *
+     * 注意1：如果测试{@link JdbcLiveTest#whenCallProcedure_thenCorrect()}方法时，再数据库中找不到记录的话，请查看{@link JdbcLiveTest#closeConnection()}方法是否已经被注释掉了。
      *
      */
     @Test
     public void whenCallProcedure_thenCorrect() {
-
         try {
             String preparedSql = "{call insertEmployee(?,?,?,?)}";
             CallableStatement cstmt = con.prepareCall(preparedSql);
@@ -146,12 +153,41 @@ public class JdbcLiveTest {
             cstmt.registerOutParameter(1, Types.INTEGER);
             cstmt.execute();
             int new_id = cstmt.getInt(1);
+            System.out.println("new_id:{}" + new_id);
             assertTrue(new_id > 0);
-        } catch (SQLException exc) {
+        }
+        catch (SQLException exc) {
+            LOG.error("Procedure incorrect or does not exist!"  + exc);
+        }
+    }
+
+    /**
+     * (1)简单案例
+     * @see {https://blog.csdn.net/sinat_19351993/article/details/47169789}
+     * @see {https://blog.csdn.net/somnl/article/details/50902250}
+     *
+     * 测试：使用存储过程，mysql如何设置自动增长序列sequence
+     */
+    @Test
+    public void getUerId(){
+        try{
+            String preparedSql = "{call mysqlbook_schema.pro_nextval(?)}";
+            CallableStatement prepareCall = con.prepareCall(preparedSql);
+            prepareCall.registerOutParameter(1, Types.INTEGER);
+            prepareCall.execute();
+            int new_id = prepareCall.getInt(1);
+            System.out.println("new_id:{}" + new_id);
+            assertTrue(new_id > 0);
+        }
+        catch (SQLException e){
             LOG.error("Procedure incorrect or does not exist!");
         }
     }
 
+    /**
+     * 测试：查询数据库中表名称、表列名
+     * @throws SQLException
+     */
     @Test
     public void whenReadMetadata_thenCorrect() throws SQLException {
 
@@ -160,6 +196,7 @@ public class JdbcLiveTest {
         while (tablesResultSet.next()) {
             LOG.info(tablesResultSet.getString("TABLE_NAME"));
         }
+        System.out.println("=====================");
 
         String selectSql = "SELECT * FROM employees";
         Statement stmt = con.createStatement();
@@ -168,13 +205,13 @@ public class JdbcLiveTest {
         int nrColumns = rsmd.getColumnCount();
         assertEquals(nrColumns, 4);
 
-        IntStream.range(1, nrColumns).forEach(i -> {
+        for (int i = 1; i <= nrColumns; i++) {
             try {
                 LOG.info(rsmd.getColumnName(i));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        });
+        }
     }
 
     @After
