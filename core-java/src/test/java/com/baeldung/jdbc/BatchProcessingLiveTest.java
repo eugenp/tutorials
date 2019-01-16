@@ -14,6 +14,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
+/**
+ * 测试：批量插入
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class BatchProcessingLiveTest {
 
