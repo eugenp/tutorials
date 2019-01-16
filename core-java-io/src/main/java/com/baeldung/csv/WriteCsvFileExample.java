@@ -6,10 +6,9 @@ import java.util.stream.Stream;
 public class WriteCsvFileExample {
 
     public String convertToCSV(String[] data) {
-        return Stream
-          .of(data)
-          .map(this::escapeSpecialCharacters)
-          .collect(Collectors.joining(","));
+        return Stream.of(data)
+            .map(this::escapeSpecialCharacters)
+            .collect(Collectors.joining(","));
     }
 
     public String escapeSpecialCharacters(String data) {
