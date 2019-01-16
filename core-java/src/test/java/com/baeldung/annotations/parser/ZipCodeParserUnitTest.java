@@ -3,7 +3,7 @@ package com.baeldung.annotations.parser;
 import com.baeldung.annotations.Address;
 import org.junit.Test;
 
-public class ZipCodeParserTest {
+public class ZipCodeParserUnitTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testInvalidZipCodeLength() {

@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MethodDescriptionParserTest {
+public class MethodDescriptionParserUnitTest {
 
     @Test
     void listMethodDescriptions() {
