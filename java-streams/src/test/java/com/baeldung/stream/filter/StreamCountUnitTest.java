@@ -64,7 +64,7 @@ public class StreamCountUnitTest {
     public void givenListOfCustomers_whenUsingMethodOverHundredPointsAndCount_thenGetTwo() {
         long count = customers
           .stream()
-          .filter(Customer::hasOverThousandPoints)
+          .filter(Customer::hasOverHundredPoints)
           .count();
 
         assertThat(count).isEqualTo(2L);
