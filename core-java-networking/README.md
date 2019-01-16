@@ -11,3 +11,6 @@
 - [A Guide To HTTP Cookies In Java](http://www.baeldung.com/cookies-java)
 - [A Guide to the Java URL](http://www.baeldung.com/java-url)
 - [Working with Network Interfaces in Java](http://www.baeldung.com/java-network-interfaces)
+- [A Guide to Java Sockets](http://www.baeldung.com/a-guide-to-java-sockets)
+- [URL Encoding and Decoding in Java](http://www.baeldung.com/java-url-encoding-decoding)
+- [How to Perform a Simple HTTP Request in Java](http://www.baeldung.com/java-http-request)
