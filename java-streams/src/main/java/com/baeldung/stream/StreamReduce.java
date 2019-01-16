@@ -14,6 +14,13 @@ public class StreamReduce {
             .reduce((s1, s2) -> s1 + s2);
         return result.orElse(null);
     }
+    
+    public static void simpleReduce() {
+        Integer[] input = { 10, 20, 45, 6 };
+        Integer sum = 0;
+        sum = Arrays.stream(input).reduce(Integer::sum).orElse(null);
+        System.out.println("Sum of all elements:" + sum);
+    }
 
     public static String reduceWithAccumulatorAndIdentity(String... input) {
         String result = Arrays.stream(input)
