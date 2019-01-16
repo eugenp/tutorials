@@ -27,13 +27,10 @@ public class DistinctElementsCheckUnitTest {
         // 1
         assertTrue(distinctList.stream()
             .allMatch(e -> e.equals(distinctList.get(0))));
-
         assertTrue(distinctList.parallelStream()
             .allMatch(e -> e.equals(distinctList.get(0))));
-
         assertTrue(distinctList.stream()
             .allMatch(distinctList.get(0)::equals));
-
         assertTrue(distinctList.parallelStream()
             .allMatch(distinctList.get(0)::equals));
 
@@ -45,19 +42,15 @@ public class DistinctElementsCheckUnitTest {
 
         // 4
         assertTrue(IterableUtils.countMatches(distinctList, e -> e.equals(distinctList.get(0))) == distinctList.size());
-
         assertTrue(IterableUtils.frequency(distinctList, distinctList.get(0)) == distinctList.size());
-
         assertTrue(IterableUtils.matchesAll(distinctList, e -> e.equals(distinctList.get(0))));
 
         // 5
         assertTrue(Iterables.all(distinctList, e -> e.equals(distinctList.get(0))));
-
         assertTrue(Iterables.frequency(distinctList, distinctList.get(0)) == distinctList.size());
 
         // 6
         assertThat(distinctList, Matchers.everyItem(Matchers.comparesEqualTo(distinctList.get(0))));
-
     }
 
     @Test
@@ -66,13 +59,11 @@ public class DistinctElementsCheckUnitTest {
         // 1
         assertFalse(nonDistinctList.stream()
             .allMatch(e -> e.equals(nonDistinctList.get(0))));
-
         assertFalse(nonDistinctList.parallelStream()
             .allMatch(e -> e.equals(nonDistinctList.get(0))));
-
+        
         assertFalse(nonDistinctList.stream()
             .allMatch(nonDistinctList.get(0)::equals));
-
         assertFalse(nonDistinctList.parallelStream()
             .allMatch(nonDistinctList.get(0)::equals));
 
@@ -84,14 +75,11 @@ public class DistinctElementsCheckUnitTest {
 
         // 4
         assertFalse(IterableUtils.countMatches(nonDistinctList, e -> e.equals(nonDistinctList.get(0))) == nonDistinctList.size());
-
         assertFalse(IterableUtils.frequency(nonDistinctList, nonDistinctList.get(0)) == nonDistinctList.size());
-
         assertFalse(IterableUtils.matchesAll(nonDistinctList, e -> e.equals(nonDistinctList.get(0))));
 
         // 5
         assertFalse(Iterables.all(nonDistinctList, e -> e.equals(nonDistinctList.get(0))));
-
         assertFalse(Iterables.frequency(nonDistinctList, nonDistinctList.get(0)) == nonDistinctList.size());
 
         // 6
