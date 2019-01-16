@@ -20,9 +20,7 @@ class InputStreamToByteBufferUnitTest {
         File inputFile = getFile();
         ByteBuffer bufferByte = ByteBuffer.allocate((int) inputFile.length());
         FileInputStream in = new FileInputStream(inputFile);
-        in
-          .getChannel()
-          .read(bufferByte);
+        in.getChannel().read(bufferByte);
 
         assertEquals(bufferByte.position(), inputFile.length());
     }
@@ -47,20 +45,16 @@ class InputStreamToByteBufferUnitTest {
         while (bufferByte.hasRemaining()) {
             bufferByte.get();
         }
-
+        
         assertEquals(bufferByte.position(), inputFile.length());
     }
 
     private File getFile() {
-        ClassLoader classLoader = new InputStreamToByteBufferUnitTest()
-          .getClass()
-          .getClassLoader();
+        ClassLoader classLoader = new InputStreamToByteBufferUnitTest().getClass().getClassLoader();
 
         String fileName = "frontenac-2257154_960_720.jpg";
 
-        return new File(classLoader
-          .getResource(fileName)
-          .getFile());
+        return new File(classLoader.getResource(fileName).getFile());
     }
 
 }
