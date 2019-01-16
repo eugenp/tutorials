@@ -1,21 +1,14 @@
 package com.baeldung.csv;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class WriteCsvFileExample {
 
-    public void writeLine(BufferedWriter writer, String[] data) throws IOException {
-        StringBuilder csvLine = new StringBuilder();
-
-        for (int i = 0; i < data.length; i++) {
-            if (i > 0) {
-                csvLine.append(",");
-            }
-            csvLine.append(escapeSpecialCharacters(data[i]));
-        }
-
-        writer.write(csvLine.toString());
+    public String convertToCSV(String[] data) {
+        return Stream.of(data)
+            .map(this::escapeSpecialCharacters)
+            .collect(Collectors.joining(","));
     }
 
     public String escapeSpecialCharacters(String data) {
