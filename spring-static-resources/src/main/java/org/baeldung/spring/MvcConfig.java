@@ -18,7 +18,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.resource.GzipResourceResolver;
+import org.springframework.web.servlet.resource.EncodedResourceResolver;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -57,10 +57,10 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // For examples using Spring 4.1.0
         if ((env.getProperty("resource.handler.conf")).equals("4.1.0")) {
-            registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(3600).resourceChain(true).addResolver(new GzipResourceResolver()).addResolver(new PathResourceResolver());
+            registry.addResourceHandler("/js/**").addResourceLocations("/js/").setCachePeriod(3600).resourceChain(true).addResolver(new EncodedResourceResolver()).addResolver(new PathResourceResolver());
             registry.addResourceHandler("/resources/**").addResourceLocations("/resources/", "classpath:/other-resources/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
             registry.addResourceHandler("/files/**").addResourceLocations("file:/Users/Elena/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
-            registry.addResourceHandler("/other-files/**").addResourceLocations("file:/Users/Elena/").setCachePeriod(3600).resourceChain(true).addResolver(new GzipResourceResolver());
+            registry.addResourceHandler("/other-files/**").addResourceLocations("file:/Users/Elena/").setCachePeriod(3600).resourceChain(true).addResolver(new EncodedResourceResolver());
         }
         // For examples using Spring 4.0.7
         else if ((env.getProperty("resource.handler.conf")).equals("4.0.7")) {
