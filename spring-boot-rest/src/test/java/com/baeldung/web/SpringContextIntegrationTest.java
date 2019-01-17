@@ -1,4 +1,4 @@
-package com.baeldung.spring.boot.rest;
+package com.baeldung.web;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
