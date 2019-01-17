@@ -85,4 +85,5 @@ public class DistinctElementsCheckUnitTest {
         // 6
         assertThat(nonDistinctList, Matchers.not(Matchers.everyItem(Matchers.comparesEqualTo(nonDistinctList.get(0)))));
     }
+    
 }
