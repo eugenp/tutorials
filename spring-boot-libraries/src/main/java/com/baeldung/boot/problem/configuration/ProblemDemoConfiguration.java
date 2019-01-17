@@ -14,5 +14,4 @@ public class ProblemDemoConfiguration {
     public ObjectMapper objectMapper() {
         return new ObjectMapper().registerModules(new ProblemModule(), new ConstraintViolationProblemModule());
     }
-
 }
