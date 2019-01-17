@@ -1,5 +1,8 @@
 package com.baeldung.java.reflection;
 
+/**
+ * @author zn.wang
+ */
 public abstract class Animal implements Eating {
 
     public static final String CATEGORY = "domestic";

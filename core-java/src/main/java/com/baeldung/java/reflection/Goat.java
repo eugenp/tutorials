@@ -1,5 +1,8 @@
 package com.baeldung.java.reflection;
 
+/**
+ * @author zn.wang
+ */
 public class Goat extends Animal implements Locomotion {
 
     public Goat(String name) {

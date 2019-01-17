@@ -5,6 +5,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
 
+/**
+ * @author zn.wang
+ */
 public class GreetingAnnotation {
    
     private static final String ANNOTATION_METHOD = "annotationData";

@@ -14,6 +14,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * 测试：反射
+ */
 public class ReflectionUnitTest {
 
     @Test
@@ -22,6 +25,7 @@ public class ReflectionUnitTest {
         final Field[] fields = person.getClass().getDeclaredFields();
 
         final List<String> actualFieldNames = getFieldNames(fields);
+        System.out.println("actualFieldNames:{}" + actualFieldNames);
 
         assertTrue(Arrays.asList("name", "age").containsAll(actualFieldNames));
     }
@@ -30,33 +34,51 @@ public class ReflectionUnitTest {
     public void givenObject_whenGetsClassName_thenCorrect() {
         final Object goat = new Goat("goat");
         final Class<?> clazz = goat.getClass();
+        System.out.println("clazz:{}" + clazz);
 
         assertEquals("Goat", clazz.getSimpleName());
         assertEquals("com.baeldung.java.reflection.Goat", clazz.getName());
         assertEquals("com.baeldung.java.reflection.Goat", clazz.getCanonicalName());
     }
 
+    /**
+     * @see java.lang.Class#forName(String className)
+     * @throws ClassNotFoundException
+     */
     @Test
     public void givenClassName_whenCreatesObject_thenCorrect() throws ClassNotFoundException {
         final Class<?> clazz = Class.forName("com.baeldung.java.reflection.Goat");
+        System.out.println("clazz:{}" + clazz);
 
         assertEquals("Goat", clazz.getSimpleName());
         assertEquals("com.baeldung.java.reflection.Goat", clazz.getName());
         assertEquals("com.baeldung.java.reflection.Goat", clazz.getCanonicalName());
     }
 
+    /**
+     * 判断类的修饰符
+     * @see java.lang.reflect.Modifier#isPublic(int)
+     * @see java.lang.reflect.Modifier#isAbstract(int)
+     *
+     * @throws ClassNotFoundException
+     */
     @Test
     public void givenClass_whenRecognisesModifiers_thenCorrect() throws ClassNotFoundException {
         final Class<?> goatClass = Class.forName("com.baeldung.java.reflection.Goat");
         final Class<?> animalClass = Class.forName("com.baeldung.java.reflection.Animal");
         final int goatMods = goatClass.getModifiers();
         final int animalMods = animalClass.getModifiers();
+        System.out.println("goatMods:{}" + goatMods);
+        System.out.println("animalMods:{}" + animalMods);
 
         assertTrue(Modifier.isPublic(goatMods));
         assertTrue(Modifier.isAbstract(animalMods));
         assertTrue(Modifier.isPublic(animalMods));
     }
 
+    /**
+     *
+     */
     @Test
     public void givenClass_whenGetsPackageInfo_thenCorrect() {
         final Goat goat = new Goat("goat");
@@ -282,6 +304,11 @@ public class ReflectionUnitTest {
 
     }
 
+    /**
+     * 获取Field的名称
+     * @param fields
+     * @return
+     */
     private static List<String> getFieldNames(Field[] fields) {
         final List<String> fieldNames = new ArrayList<>();
         for (final Field field : fields) {
@@ -291,6 +318,11 @@ public class ReflectionUnitTest {
 
     }
 
+    /**
+     * 获取Method的名称
+     * @param methods
+     * @return
+     */
     private static List<String> getMethodNames(Method[] methods) {
         final List<String> methodNames = new ArrayList<>();
         for (final Method method : methods) {

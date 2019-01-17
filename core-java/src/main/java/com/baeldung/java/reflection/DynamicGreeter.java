@@ -2,6 +2,9 @@ package com.baeldung.java.reflection;
 
 import java.lang.annotation.Annotation;
 
+/**
+ * @author zn.wang
+ */
 public class DynamicGreeter implements Greeter {
     
     private String greet;
@@ -13,6 +16,7 @@ public class DynamicGreeter implements Greeter {
     @Override
     public Class<? extends Annotation> annotationType() {
         return DynamicGreeter.class;
+
     }
 
     @Override

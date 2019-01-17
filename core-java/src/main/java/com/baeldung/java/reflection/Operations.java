@@ -1,5 +1,8 @@
 package com.baeldung.java.reflection;
 
+/**
+ * @author zn.wang
+ */
 public class Operations {
 
     public double publicSum(int a, double b) {

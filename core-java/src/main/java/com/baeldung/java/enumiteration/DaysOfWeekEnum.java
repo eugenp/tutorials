@@ -2,6 +2,10 @@ package com.baeldung.java.enumiteration;
 
 import java.util.stream.Stream;
 
+/**
+ * @author zn.wang
+ */
+
 public enum DaysOfWeekEnum {
 	SUNDAY("off"), 
 	MONDAY("working"), 
