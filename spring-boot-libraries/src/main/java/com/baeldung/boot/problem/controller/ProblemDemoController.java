@@ -48,9 +48,9 @@ public class ProblemDemoController {
         throw new UnsupportedOperationException();
     }
 
-    @DeleteMapping("/{id}/details")
+    @DeleteMapping("/{id}")
     public void deleteTask(@PathVariable("id") Long id) {
-        throw new AccessDeniedException(null);
+        throw new AccessDeniedException("You can't delete this task");
     }
 
 }
