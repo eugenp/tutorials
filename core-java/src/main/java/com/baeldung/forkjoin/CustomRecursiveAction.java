@@ -7,6 +7,10 @@ import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
 import java.util.logging.Logger;
 
+/**
+ * RecursiveAction : 无结果返回的任务
+ * @author zn.wang
+ */
 public class CustomRecursiveAction extends RecursiveAction {
 
     private String workLoad = "";
@@ -20,7 +24,6 @@ public class CustomRecursiveAction extends RecursiveAction {
 
     @Override
     protected void compute() {
-
         if (workLoad.length() > THRESHOLD) {
             ForkJoinTask.invokeAll(createSubtasks());
         } else {
@@ -28,6 +31,10 @@ public class CustomRecursiveAction extends RecursiveAction {
         }
     }
 
+    /**
+     * 测试用例解析：ddddffffgggghhhh
+     * @return
+     */
     private Collection<CustomRecursiveAction> createSubtasks() {
 
         List<CustomRecursiveAction> subtasks = new ArrayList<>();

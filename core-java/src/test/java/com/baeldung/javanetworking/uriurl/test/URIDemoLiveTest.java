@@ -22,6 +22,9 @@ import org.slf4j.LoggerFactory;
 
 import com.baeldung.javanetworking.uriurl.URLDemo;
 
+/**
+ * 测试：URI
+ */
 @FixMethodOrder
 public class URIDemoLiveTest {
     private final Logger log = LoggerFactory.getLogger(URIDemoLiveTest.class);

@@ -5,7 +5,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ForkJoinPool;
+import java.util.concurrent.Future;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +16,9 @@ import com.baeldung.forkjoin.CustomRecursiveAction;
 import com.baeldung.forkjoin.CustomRecursiveTask;
 import com.baeldung.forkjoin.util.PoolUtil;
 
+/**
+ * 测试：fork-join集成
+ */
 public class Java8ForkJoinIntegrationTest {
 
     private int[] arr;
@@ -58,19 +63,29 @@ public class Java8ForkJoinIntegrationTest {
 
     }
 
+    /**
+     * @see {https://blog.csdn.net/guhong5153/article/details/71247266} 案例1，将ThreadPoolExecutor线程池execute和submit方法的区别。
+     * @see {https://www.jianshu.com/p/99e5a66f0482} 案例2，这里讲的是ForkJoinPool中的方法.
+     * @see {https://www.cnblogs.com/shijiaqi1066/p/4631466.html} 案例3，这里讲的是ForkJoinPool中的方法，讲的非常详细。
+     */
     @Test
     public void executeRecursiveTask_whenExecuted_thenCorrect() {
         ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
 
         forkJoinPool.execute(customRecursiveTask);
         int result = customRecursiveTask.join();
+        System.out.println("result:{}" + result);
         assertTrue(customRecursiveTask.isDone());
 
         forkJoinPool.submit(customRecursiveTask);
         int resultTwo = customRecursiveTask.join();
+        System.out.println("resultTwo:{}" + resultTwo);
         assertTrue(customRecursiveTask.isDone());
     }
 
+    /**
+     * fork/join原理测试
+     */
     @Test
     public void executeRecursiveTaskWithFJ_whenExecuted_thenCorrect() {
         CustomRecursiveTask customRecursiveTaskFirst = new CustomRecursiveTask(arr);
@@ -84,6 +99,7 @@ public class Java8ForkJoinIntegrationTest {
         result += customRecursiveTaskLast.join();
         result += customRecursiveTaskSecond.join();
         result += customRecursiveTaskFirst.join();
+        System.out.println("result:{}" + result);
 
         assertTrue(customRecursiveTaskFirst.isDone());
         assertTrue(customRecursiveTaskSecond.isDone());

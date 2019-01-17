@@ -11,6 +11,10 @@ import java.net.URLConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * URL测试
+ * @author zn.wang
+ */
 public class URLDemo {
     private final Logger log = LoggerFactory.getLogger(URLDemo.class);
 

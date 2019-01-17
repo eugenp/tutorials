@@ -1,6 +1,7 @@
 package com.baeldung.javadoc;
 
 /**
+ * java的doc文档的注释说明
  * Hero is the main entity we will be using to . . .
  * @author Captain America
  * 

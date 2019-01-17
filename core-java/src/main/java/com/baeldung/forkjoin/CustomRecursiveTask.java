@@ -7,6 +7,12 @@ import java.util.List;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveTask;
 
+/**
+ *
+ * RecursiveTask : 有返回结果的任务
+ *
+ * @author zn.wang
+ */
 public class CustomRecursiveTask extends RecursiveTask<Integer> {
 
     private int[] arr;
@@ -22,7 +28,12 @@ public class CustomRecursiveTask extends RecursiveTask<Integer> {
 
         if (arr.length > THRESHOLD) {
 
-            return ForkJoinTask.invokeAll(createSubtasks()).stream().mapToInt(ForkJoinTask::join).sum();
+            int sum = 0;
+            for (CustomRecursiveTask customRecursiveTask : ForkJoinTask.invokeAll(createSubtasks())) {
+                int join = customRecursiveTask.join();
+                sum += join;
+            }
+            return sum;
 
         } else {
             return processing(arr);
@@ -37,6 +48,13 @@ public class CustomRecursiveTask extends RecursiveTask<Integer> {
     }
 
     private Integer processing(int[] arr) {
-        return Arrays.stream(arr).filter(a -> a > 10 && a < 27).map(a -> a * 10).sum();
+        int sum = 0;
+        for (int a : arr) {
+            if (a > 10 && a < 27) {
+                int i = a * 10;
+                sum += i;
+            }
+        }
+        return sum;
     }
 }

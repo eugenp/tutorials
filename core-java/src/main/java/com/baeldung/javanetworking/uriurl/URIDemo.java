@@ -10,6 +10,10 @@ import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * URI测试
+ * @author zn.wang
+ */
 public class URIDemo {
     private final Logger logger = LoggerFactory.getLogger(URIDemo.class);
 

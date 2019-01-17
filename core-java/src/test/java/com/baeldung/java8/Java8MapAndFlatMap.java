@@ -6,12 +6,16 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
+/**
+ * java8中的Map和FlatMap
+ */
 public class Java8MapAndFlatMap {
 
     @Test
@@ -41,10 +45,20 @@ public class Java8MapAndFlatMap {
     @Test
     public void givenOptional_whenCalledFlatMap_thenProduceFlattenedOptional() {
         assertEquals(Optional.of(Optional.of("STRING")), Optional.of("string")
-            .map(s -> Optional.of("STRING")));
+            .map(new Function<String, Optional<String>>() {
+                @Override
+                public Optional<String> apply(String s) {
+                    return Optional.of("STRING");
+                }
+            }));
 
         assertEquals(Optional.of("STRING"), Optional.of("string")
-            .flatMap(s -> Optional.of("STRING")));
+            .flatMap(new Function<String, Optional<String>>() {
+                @Override
+                public Optional<String> apply(String s) {
+                    return Optional.of("STRING");
+                }
+            }));
     }
 
 }

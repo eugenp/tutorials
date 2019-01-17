@@ -1,5 +1,8 @@
 package com.baeldung.javadoc;
 
+/**
+ * @author zn.wang
+ */
 public class Person {
 	/**
 	 * This is a first name
