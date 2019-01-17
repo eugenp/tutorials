@@ -47,7 +47,6 @@ public class FilesClearDataManualTest {
         new PrintWriter(FILE_PATH).close();
         assertEquals(0, StreamUtils.getStringFromInputStream(new FileInputStream(FILE_PATH)).length());
     }    
-
        
     @Test
     public void givenExistingFile_whenDeleteContentUsingFileWriter_thenEmptyFile() throws IOException {
