@@ -1,7 +1,6 @@
 package com.baeldung.dao.repositories.user;
 
 import com.baeldung.domain.user.User;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -67,4 +66,8 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Modifying
     @Query(value = "UPDATE USERS.Users u SET u.status = ? WHERE u.name = ?", nativeQuery = true)
     int updateUserSetStatusForNameNative(Integer status, String name);
+
+    @Query(value = "INSERT INTO USERS.Users (name, age, email, status) VALUES (:name, :age, :email, :status)", nativeQuery = true)
+    @Modifying
+    void insertUser(@Param("name") String name, @Param("age") Integer age, @Param("status") Integer status, @Param("email") String email);
 }
