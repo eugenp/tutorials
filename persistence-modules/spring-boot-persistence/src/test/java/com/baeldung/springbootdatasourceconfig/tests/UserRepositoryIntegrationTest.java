@@ -1,7 +1,7 @@
 package com.baeldung.springbootdatasourceconfig.tests;
 
-import com.baeldung.springbootdatasourceconfig.entities.User;
-import com.baeldung.springbootdatasourceconfig.repositories.UserRepository;
+import com.baeldung.springbootdatasourceconfig.application.entities.User;
+import com.baeldung.springbootdatasourceconfig.application.repositories.UserRepository;
 import java.util.List;
 import java.util.Optional;
 import org.junit.Test;
