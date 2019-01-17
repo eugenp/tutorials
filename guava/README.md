@@ -18,4 +18,3 @@
 - [Hamcrest Text Matchers](http://www.baeldung.com/hamcrest-text-matchers)
 - [Quick Guide to the Guava RateLimiter](http://www.baeldung.com/guava-rate-limiter)
 - [Hamcrest File Matchers](https://www.baeldung.com/hamcrest-file-matchers)
-- [SHA-256 Hashing in Java](https://www.baeldung.com/sha-256-hashing-java)

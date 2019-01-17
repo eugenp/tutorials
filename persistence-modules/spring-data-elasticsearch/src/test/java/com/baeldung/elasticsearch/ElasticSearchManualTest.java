@@ -30,6 +30,13 @@ import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 
+/**
+ * 
+ * This Manual test requires:
+ * * Elasticsearch instance running on host
+ * * with cluster name = elasticsearch
+ *
+ */
 public class ElasticSearchManualTest {
     private List<Person> listOfPersons = new ArrayList<>();
     private Client client = null;
