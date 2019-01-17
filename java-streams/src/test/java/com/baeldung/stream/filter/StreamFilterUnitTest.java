@@ -156,4 +156,5 @@ public class StreamFilterUnitTest {
           })
           .collect(Collectors.toList())).isInstanceOf(RuntimeException.class);
     }
+    
 }
