@@ -19,25 +19,10 @@ public class UserRepositoryIntegrationTest {
     private UserRepository userRepository;
     
     @Test
-    public void whenCalledfindById_thenCorrect() {
-        userRepository.save(new User("Julie", "julie@domain.com"));
-        
-        assertThat(userRepository.findById(1L)).isInstanceOf(Optional.class);
-    }
-    
-    @Test
-    public void whenCalledfindAll_thenCorrect() {
-        userRepository.save(new User("John", "john@domain.com"));
-        userRepository.save(new User("Jennifer", "jennifer@domain.com"));
-        
-        assertThat(userRepository.findAll()).isInstanceOf(List.class);
-    }
-    
-    @Test
-    public void whenCalledSave_thenCorrect() {
+    public void whenCalledSave_thenCorrectNumberOfUsers() {
         userRepository.save(new User("Bob", "bob@domain.com"));
-        User customer = userRepository.findById(4L).orElseGet(() -> new User("John", "john@domain.com"));
+        List<User> users = (List<User>) userRepository.findAll();
         
-        assertThat(customer.getName()).isEqualTo("Bob");
+        assertThat(users.size()).isEqualTo(1);
     }
 }
