@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.MediaType;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -41,9 +43,14 @@ public class ProblemDemoController {
         }
     }
 
-    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String updateTask(@PathVariable("id") Long id) {
+    @PutMapping("/{id}")
+    public void updateTask(@PathVariable("id") Long id) {
         throw new UnsupportedOperationException();
+    }
+
+    @DeleteMapping("/{id}/details")
+    public void deleteTask(@PathVariable("id") Long id) {
+        throw new AccessDeniedException(null);
     }
 
 }
