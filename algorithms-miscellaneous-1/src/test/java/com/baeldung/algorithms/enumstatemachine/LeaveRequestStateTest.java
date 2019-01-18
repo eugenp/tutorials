@@ -10,9 +10,7 @@ public class LeaveRequestStateTest {
     public void givenLeaveRequest_whenStateEscalated_thenResponsibleIsTeamLeader() {
         LeaveRequestState state = LeaveRequestState.Escalated;
 
-        String responsible = state.responsiblePerson();
-
-        assertEquals(responsible, "Team Leader");
+        assertEquals(state.responsiblePerson(), "Team Leader");
     }
 
 
@@ -20,9 +18,7 @@ public class LeaveRequestStateTest {
     public void givenLeaveRequest_whenStateApproved_thenResponsibleIsDepartmentManager() {
         LeaveRequestState state = LeaveRequestState.Approved;
 
-        String responsible = state.responsiblePerson();
-
-        assertEquals(responsible, "Department Manager");
+        assertEquals(state.responsiblePerson(), "Department Manager");
     }
 
     @Test
