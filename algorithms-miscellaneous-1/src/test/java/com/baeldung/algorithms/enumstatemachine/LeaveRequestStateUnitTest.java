@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class LeaveRequestStateTest {
+public class LeaveRequestStateUnitTest {
 
     @Test
     public void givenLeaveRequest_whenStateEscalated_thenResponsibleIsTeamLeader() {
