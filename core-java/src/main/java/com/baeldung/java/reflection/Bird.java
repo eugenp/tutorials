@@ -4,6 +4,7 @@ package com.baeldung.java.reflection;
  * @author zn.wang
  */
 public class Bird extends Animal {
+
     private boolean walks;
 
     public Bird() {
