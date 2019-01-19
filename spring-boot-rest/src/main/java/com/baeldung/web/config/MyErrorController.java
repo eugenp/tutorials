@@ -1,4 +1,4 @@
-package com.baeldung.errorhandling.boot.configurations;
+package com.baeldung.web.config;
 
 import java.util.Map;
 

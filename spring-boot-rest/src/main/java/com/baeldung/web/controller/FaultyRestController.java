@@ -1,4 +1,4 @@
-package com.baeldung.errorhandling.boot.web;
+package com.baeldung.web.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ public class FaultyRestController {
     
     @GetMapping("/exception")
     public ResponseEntity<Void> requestWithException() {
-        throw new NullPointerException("Error in the faulty controller!");
+        throw new RuntimeException("Error in the faulty controller!");
     }
 
 }
