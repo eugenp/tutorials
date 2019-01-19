@@ -24,7 +24,7 @@
     </dependencies>
 
     <properties>
-        <guava.version>22.0</guava.version>
+        <guava.version>23.0</guava.version>
     </properties>
 
 </project>

@@ -6,11 +6,11 @@ public class ArrayListOfArrayList {
 
     public static void main(String args[]) {
 
-        int numVertices = 3;
-        ArrayList<ArrayList<Integer>> graph = new ArrayList<>(numVertices);
+        int vertexCount = 3;
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>(vertexCount);
 
         //Initializing each element of ArrayList with ArrayList
-        for(int i=0; i< numVertices; i++) {
+        for(int i = 0; i< vertexCount; i++) {
             graph.add(new ArrayList<Integer>());
         }
 
@@ -21,13 +21,14 @@ public class ArrayListOfArrayList {
         graph.get(1).add(0);
         graph.get(2).add(1);
         graph.get(0).add(2);
-      
-        //Printing all the edges
-        for(int vertexNo=0; vertexNo<numVertices; vertexNo++) {
-            int edgeCount = graph.get(vertexNo).size();
-            ArrayList<Integer> listOfVertices = graph.get(vertexNo);
-            for(int i=0; i<edgeCount; i++) {
-                System.out.println("Vertex "+vertexNo+" is connected to vetex "+listOfVertices.get(i));
+
+        vertexCount = graph.size();
+        for(int i = 0; i < vertexCount; i++) {
+            int edgeCount = graph.get(i).size();
+            for(int j = 0; j < edgeCount; j++) {
+                Integer startVertex = i;
+                Integer endVertex = graph.get(i).get(j);
+                System.out.printf("Vertex %d is connected to vertex %d%n", startVertex, endVertex);
             }
         }
     }
