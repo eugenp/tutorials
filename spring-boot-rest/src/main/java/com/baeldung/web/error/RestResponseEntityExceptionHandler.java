@@ -1,5 +1,11 @@
 package com.baeldung.web.error;
 
+import javax.persistence.EntityNotFoundException;
+
+import org.hibernate.exception.ConstraintViolationException;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,8 +16,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.baeldung.web.exception.MyDataAccessException;
-import com.baeldung.web.exception.MyDataIntegrityViolationException;
 import com.baeldung.web.exception.MyResourceNotFoundException;
 
 @ControllerAdvice
@@ -24,13 +28,15 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     // API
 
     // 400
-    /*
-     *  Some examples of exceptions that we could retrieve as 400 (BAD_REQUEST) responses:
-     *  Hibernate's ConstraintViolationException
-     *  Spring's DataIntegrityViolationException
-     */
-    @ExceptionHandler({ MyDataIntegrityViolationException.class })
-    public ResponseEntity<Object> handleBadRequest(final MyDataIntegrityViolationException ex, final WebRequest request) {
+
+    @ExceptionHandler({ ConstraintViolationException.class })
+    public ResponseEntity<Object> handleBadRequest(final ConstraintViolationException ex, final WebRequest request) {
+        final String bodyOfResponse = "This should be application specific";
+        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({ DataIntegrityViolationException.class })
+    public ResponseEntity<Object> handleBadRequest(final DataIntegrityViolationException ex, final WebRequest request) {
         final String bodyOfResponse = "This should be application specific";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
@@ -50,23 +56,16 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
 
     // 404
-    /*
-     *  Some examples of exceptions that we could retrieve as 404 (NOT_FOUND) responses:
-     *  Java Persistence's EntityNotFoundException
-     */
-    @ExceptionHandler(value = { MyResourceNotFoundException.class })
+
+    @ExceptionHandler(value = { EntityNotFoundException.class, MyResourceNotFoundException.class })
     protected ResponseEntity<Object> handleNotFound(final RuntimeException ex, final WebRequest request) {
         final String bodyOfResponse = "This should be application specific";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 
     // 409
-    /*
-     *  Some examples of exceptions that we could retrieve as 409 (CONFLICT) responses:
-     *  Spring's InvalidDataAccessApiUsageException
-     *  Spring's DataAccessException
-     */
-    @ExceptionHandler({ MyDataAccessException.class})
+
+    @ExceptionHandler({ InvalidDataAccessApiUsageException.class, DataAccessException.class })
     protected ResponseEntity<Object> handleConflict(final RuntimeException ex, final WebRequest request) {
         final String bodyOfResponse = "This should be application specific";
         return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.CONFLICT, request);
