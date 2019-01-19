@@ -145,4 +145,5 @@ public class DistinctElementsCheckUnitTest {
 
         assertThat(notSameElements, Matchers.not(Matchers.everyItem(Matchers.comparesEqualTo(notSameElements.get(0)))));
     }
+    
 }
