@@ -17,72 +17,132 @@ import com.google.common.collect.Iterables;
 
 public class DistinctElementsCheckUnitTest {
 
-    private List<String> nonDistinctList = Arrays.asList("AB", "XY", "AB", "XY");
+    private List<String> notSameElements = Arrays.asList("AB", "XY", "AB", "XY");
 
-    private List<String> distinctList = Arrays.asList("AB", "AB", "AB", "AB");
+    private List<String> sameElements = Arrays.asList("AB", "AB", "AB", "AB");
 
     @Test
-    public void whenDistinctList_thenAssertTrue() {
+    public void whenSameElements_thenAllMatchWithFirstElementsWillBeTrue() {
 
-        // 1
-        assertTrue(distinctList.stream()
-            .allMatch(e -> e.equals(distinctList.get(0))));
-        assertTrue(distinctList.parallelStream()
-            .allMatch(e -> e.equals(distinctList.get(0))));
-        assertTrue(distinctList.stream()
-            .allMatch(distinctList.get(0)::equals));
-        assertTrue(distinctList.parallelStream()
-            .allMatch(distinctList.get(0)::equals));
+        assertTrue(sameElements.stream()
+            .allMatch(e -> e.equals(sameElements.get(0))));
+        assertTrue(sameElements.parallelStream()
+            .allMatch(e -> e.equals(sameElements.get(0))));
 
-        // 2
-        assertTrue(Collections.frequency(distinctList, distinctList.get(0)) == distinctList.size());
-
-        // 3
-        assertTrue(new HashSet<>(distinctList).size() == 1);
-
-        // 4
-        assertTrue(IterableUtils.countMatches(distinctList, e -> e.equals(distinctList.get(0))) == distinctList.size());
-        assertTrue(IterableUtils.frequency(distinctList, distinctList.get(0)) == distinctList.size());
-        assertTrue(IterableUtils.matchesAll(distinctList, e -> e.equals(distinctList.get(0))));
-
-        // 5
-        assertTrue(Iterables.all(distinctList, e -> e.equals(distinctList.get(0))));
-        assertTrue(Iterables.frequency(distinctList, distinctList.get(0)) == distinctList.size());
-
-        // 6
-        assertThat(distinctList, Matchers.everyItem(Matchers.comparesEqualTo(distinctList.get(0))));
+        assertTrue(sameElements.stream()
+            .allMatch(sameElements.get(0)::equals));
+        assertTrue(sameElements.parallelStream()
+            .allMatch(sameElements.get(0)::equals));
     }
 
     @Test
-    public void whenNonDistinctList_thenAssertFalse() {
+    public void whenSameElements_thenFrequencyOfFirstElementShouldBeEqualToSize() {
 
-        // 1
-        assertFalse(nonDistinctList.stream()
-            .allMatch(e -> e.equals(nonDistinctList.get(0))));
-        assertFalse(nonDistinctList.parallelStream()
-            .allMatch(e -> e.equals(nonDistinctList.get(0))));
-        
-        assertFalse(nonDistinctList.stream()
-            .allMatch(nonDistinctList.get(0)::equals));
-        assertFalse(nonDistinctList.parallelStream()
-            .allMatch(nonDistinctList.get(0)::equals));
+        assertTrue(Collections.frequency(sameElements, sameElements.get(0)) == sameElements.size());
+    }
 
-        // 2
-        assertFalse(Collections.frequency(nonDistinctList, nonDistinctList.get(0)) == nonDistinctList.size());
+    @Test
+    public void whenSameElements_thenSetShouldHaveSingleElement() {
 
-        // 3
-        assertFalse(new HashSet<>(nonDistinctList).size() == 1);
+        assertTrue(new HashSet<>(sameElements).size() == 1);
+    }
 
-        // 4
-        assertFalse(IterableUtils.countMatches(nonDistinctList, e -> e.equals(nonDistinctList.get(0))) == nonDistinctList.size());
-        assertFalse(IterableUtils.frequency(nonDistinctList, nonDistinctList.get(0)) == nonDistinctList.size());
-        assertFalse(IterableUtils.matchesAll(nonDistinctList, e -> e.equals(nonDistinctList.get(0))));
+    @Test
+    public void whenSameElements_thenCountMatchesShouldBeEqualToSize() {
 
-        // 5
-        assertFalse(Iterables.all(nonDistinctList, e -> e.equals(nonDistinctList.get(0))));
-        assertFalse(Iterables.frequency(nonDistinctList, nonDistinctList.get(0)) == nonDistinctList.size());
+        assertTrue(IterableUtils.countMatches(sameElements, e -> e.equals(sameElements.get(0))) == sameElements.size());
+    }
 
-        // 6
-        assertThat(nonDistinctList, Matchers.not(Matchers.everyItem(Matchers.comparesEqualTo(nonDistinctList.get(0)))));
+    @Test
+    public void whenSameElements_thenIterableFrequencyShouldBeEqualToSize() {
+
+        assertTrue(IterableUtils.frequency(sameElements, sameElements.get(0)) == sameElements.size());
+    }
+
+    @Test
+    public void whenSameElements_thenMatchesAllShouldBeTrue() {
+
+        assertTrue(IterableUtils.matchesAll(sameElements, e -> e.equals(sameElements.get(0))));
+    }
+
+    @Test
+    public void whenSameElements_thenIterablesAllShouldBeEqualToFirstElement() {
+
+        assertTrue(Iterables.all(sameElements, e -> e.equals(sameElements.get(0))));
+    }
+
+    @Test
+    public void whenSameElements_thenIterablesFrequencyEqualsSize() {
+
+        assertTrue(Iterables.frequency(sameElements, sameElements.get(0)) == sameElements.size());
+    }
+
+    @Test
+    public void whenSameElements_thenEveryItemIsEqualToFirstElement() {
+
+        assertThat(sameElements, Matchers.everyItem(Matchers.comparesEqualTo(sameElements.get(0))));
+    }
+
+    @Test
+    public void whenNotSameElements_thenAllMatchWithFirstElementsWillBeTrue() {
+
+        assertFalse(notSameElements.stream()
+            .allMatch(e -> e.equals(notSameElements.get(0))));
+        assertFalse(notSameElements.parallelStream()
+            .allMatch(e -> e.equals(notSameElements.get(0))));
+
+        assertFalse(notSameElements.stream()
+            .allMatch(notSameElements.get(0)::equals));
+        assertFalse(notSameElements.parallelStream()
+            .allMatch(notSameElements.get(0)::equals));
+
+    }
+
+    @Test
+    public void whenNotSameElements_thenFrequencyOfFirstElementShouldNotBeEqualToSize() {
+
+        assertFalse(Collections.frequency(notSameElements, notSameElements.get(0)) == notSameElements.size());
+    }
+
+    @Test
+    public void whenNotSameElements_thenSetShouldHaveMoreThanOneElement() {
+
+        assertFalse(new HashSet<>(notSameElements).size() == 1);
+    }
+
+    @Test
+    public void whenNotSameElements_thenCountMatchesShouldNotBeEqualToSize() {
+
+        assertFalse(IterableUtils.countMatches(notSameElements, e -> e.equals(notSameElements.get(0))) == notSameElements.size());
+    }
+
+    @Test
+    public void whenNotSameElements_thenIterableFrequencyShouldNotBeEqualToSize() {
+
+        assertFalse(IterableUtils.frequency(notSameElements, notSameElements.get(0)) == notSameElements.size());
+    }
+
+    @Test
+    public void whenNotSameElements_thenMatchesAllShouldNotBeTrue() {
+
+        assertFalse(IterableUtils.matchesAll(notSameElements, e -> e.equals(notSameElements.get(0))));
+    }
+
+    @Test
+    public void whenNotSameElements_thenIterablesAllShouldNotBeEqualToFirstElement() {
+
+        assertFalse(Iterables.all(notSameElements, e -> e.equals(notSameElements.get(0))));
+    }
+
+    @Test
+    public void whenNotSameElements_thenIterablesFrequencyIsNotEqualToSize() {
+
+        assertFalse(Iterables.frequency(notSameElements, notSameElements.get(0)) == notSameElements.size());
+    }
+
+    @Test
+    public void whenNotSameElements_thenEveryItemIsEqualToFirstElement() {
+
+        assertThat(notSameElements, Matchers.not(Matchers.everyItem(Matchers.comparesEqualTo(notSameElements.get(0)))));
     }
 }
