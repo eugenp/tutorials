@@ -10,6 +10,6 @@ import org.junit.runners.Suite;
     ,FooLiveTest.class
     ,FooPageableLiveTest.class
 }) //
-public class LiveTestSuite {
+public class LiveTestSuiteLiveTest {
 
 }
