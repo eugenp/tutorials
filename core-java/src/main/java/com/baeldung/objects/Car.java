@@ -11,15 +11,6 @@ public class Car {
         this.type = type;
         this.model = model;
         this.color = color;
-        this.speed = 0;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
     }
 
     public String getColor() {
@@ -32,10 +23,6 @@ public class Car {
 
     public int getSpeed() {
         return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
     }
     
     public int increaseSpeed(int increment) {
