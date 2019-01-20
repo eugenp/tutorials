@@ -62,7 +62,7 @@ public class NewDirectoryUnitTest {
 
     @Test
     public void givenUnexistingNestedDirectories_whenMkdirs_thenTrue() {
-        File newDirectory = new File(TEMP_DIRECTORY, "new_directory");
+        File newDirectory = new File(System.getProperty("java.io.tmpdir") + File.separator + "new_directory");
         File nestedDirectory = new File(newDirectory, "nested_directory");
         assertFalse(newDirectory.exists());
         assertFalse(nestedDirectory.exists());
