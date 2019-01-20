@@ -1,7 +1,7 @@
 package org.baeldung;
 
 import org.baeldung.persistence.PersistenceTestSuite;
-import org.baeldung.web.LiveTestSuite;
+import org.baeldung.web.LiveTestSuiteLiveTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -9,8 +9,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 // @formatter:off
     PersistenceTestSuite.class
-    ,LiveTestSuite.class
+    ,LiveTestSuiteLiveTest.class
 }) //
-public class TestSuite {
+public class TestSuiteLiveTest {
 
 }
