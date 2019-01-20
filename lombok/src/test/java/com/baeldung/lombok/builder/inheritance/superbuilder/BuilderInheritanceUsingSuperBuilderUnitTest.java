@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
-public class BuilderInheritanceUsingSuperBuilderTest {
+public class BuilderInheritanceUsingSuperBuilderUnitTest {
 
     @Test
     public void givenSuperBuilderOnParentAndOnChild_ChildInheritingParentIsBuilt() {
