@@ -6,6 +6,7 @@ import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isA;
 import static org.hamcrest.Matchers.not;
+import static com.baeldung.Consts.APPLICATION_PORT;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
@@ -16,8 +17,8 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 public class ErrorHandlingLiveTest {
 
-    private static final String BASE_URL = "http://localhost:8080";
-    private static final String EXCEPTION_ENDPOINT = "/exception";
+    private static final String BASE_URL = "http://localhost:" + APPLICATION_PORT + "/spring-boot-rest";
+    private static final String EXCEPTION_ENDPOINT = BASE_URL + "/exception";
 
     private static final String ERROR_RESPONSE_KEY_PATH = "error";
     private static final String XML_RESPONSE_KEY_PATH = "xmlkey";
@@ -57,7 +58,7 @@ public class ErrorHandlingLiveTest {
         try (WebClient webClient = new WebClient()) {
             webClient.getOptions()
                 .setThrowExceptionOnFailingStatusCode(false);
-            HtmlPage page = webClient.getPage(BASE_URL + EXCEPTION_ENDPOINT);
+            HtmlPage page = webClient.getPage(EXCEPTION_ENDPOINT);
             assertThat(page.getBody()
                 .asText()).contains("Whitelabel Error Page");
         }

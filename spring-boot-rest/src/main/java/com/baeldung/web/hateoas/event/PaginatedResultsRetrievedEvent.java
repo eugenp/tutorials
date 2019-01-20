@@ -1,4 +1,4 @@
-package org.baeldung.web.hateoas.event;
+package com.baeldung.web.hateoas.event;
 
 import java.io.Serializable;
 

@@ -1,13 +1,13 @@
-package org.baeldung.web.hateoas.listener;
+package com.baeldung.web.hateoas.listener;
 
 import javax.servlet.http.HttpServletResponse;
 
-import org.baeldung.web.hateoas.event.PaginatedResultsRetrievedEvent;
-import org.baeldung.web.util.LinkUtil;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.baeldung.web.hateoas.event.PaginatedResultsRetrievedEvent;
+import com.baeldung.web.util.LinkUtil;
 import com.google.common.base.Preconditions;
 import com.google.common.net.HttpHeaders;
 
