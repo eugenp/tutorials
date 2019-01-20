@@ -12,6 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Pojo {
-    private final String name = "foo";
-    private final boolean original = true;
+    private String name = "foo";
+    private boolean original = true;
 }
