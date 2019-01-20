@@ -9,38 +9,37 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ListFiles {
     public static final int DEPTH = 1;
 
-    public Set<String> listFilesUsingJAVAIO(String dir) {
-        Set<String> fileList = new HashSet<>();
-        File[] listOfFiles = new File(dir).listFiles();
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                fileList.add(file.getName());
-            }
-        }
+    public Set<String> listFilesUsingJavaIO(String dir) {
+        Set<String> fileList = Stream.of(new File(dir).listFiles())
+            .filter(file -> !Files.isDirectory(Paths.get(file.getAbsolutePath())))
+            .map(file -> file.getName()
+                .toString())
+            .collect(Collectors.toSet());
         return fileList;
     }
 
     public Set<String> listFilesUsingFileWalk(String dir) throws IOException {
-        Set<String> fileList = new HashSet<>();
+        Set<String> fileList;
         try (Stream<Path> stream = Files.walk(Paths.get(dir), DEPTH)) {
-            stream.filter(file -> !Files.isDirectory(file))
-                .forEach(file -> fileList.add(file.getFileName()
-                    .toString()));
+            fileList = stream.filter(file -> !Files.isDirectory(file))
+                .map(file -> file.getFileName()
+                    .toString())
+                .collect(Collectors.toSet());
         }
         return fileList;
     }
 
     public Set<String> listFilesUsingFileWalkAndVisitor(String dir) throws IOException {
         Set<String> fileList = new HashSet<>();
-        Files.walkFileTree(Paths.get(dir), Collections.emptySet(), DEPTH, new SimpleFileVisitor<Path>() {
+        Files.walkFileTree(Paths.get(dir), new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                 if (!Files.isDirectory(file))

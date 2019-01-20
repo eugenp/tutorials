@@ -18,7 +18,7 @@ public class ListFilesUnitTest {
     private Set<String> EXPECTED_FILE_LIST = new HashSet<String>() {
         {
             add("test.xml");
-            add("employe.json");
+            add("employee.json");
             add("students.json");
             add("country.txt");
         }
@@ -26,7 +26,7 @@ public class ListFilesUnitTest {
 
     @Test
     public void givenDir_whenUsingJAVAIO_thenListAllFiles() throws IOException {
-        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingJAVAIO(DIRECTORY));
+        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingJavaIO(DIRECTORY));
     }
 
     @Test
