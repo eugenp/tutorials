@@ -47,5 +47,9 @@ public class Employee {
     public void setPosition(String position) {
         this.position = position;
     }
-
+    
+    @Override
+    public boolean equals(Object obj) {
+        return this.getId() == ((Employee) obj).getId();
+    }
 }
