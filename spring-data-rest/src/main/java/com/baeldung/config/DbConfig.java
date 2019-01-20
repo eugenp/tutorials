@@ -64,22 +64,22 @@ public class DbConfig {
 
 @Configuration
 @Profile("h2")
-@PropertySource("persistence-h2.properties")
+@PropertySource("classpath:persistence-h2.properties")
 class H2Config {}
 
 @Configuration
 @Profile("hsqldb")
-@PropertySource("persistence-hsqldb.properties")
+@PropertySource("classpath:persistence-hsqldb.properties")
 class HsqldbConfig {}
 
 
 @Configuration
 @Profile("derby")
-@PropertySource("persistence-derby.properties")
+@PropertySource("classpath:persistence-derby.properties")
 class DerbyConfig {}
 
 
 @Configuration
 @Profile("sqlite")
-@PropertySource("persistence-sqlite.properties")
+@PropertySource("classpath:persistence-sqlite.properties")
 class SqliteConfig {}

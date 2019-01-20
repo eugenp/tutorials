@@ -232,6 +232,7 @@
 				<version>${maven-war-plugin.version}</version>
 			</plugin>
 		</plugins>
+		
 		<extensions>
 			<extension>
 				<groupId>com.vackosar.gitflowincrementalbuilder</groupId>
@@ -379,11 +380,18 @@
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-collections-list</module>
+                <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
+                <module>core-java-security</module>
+                <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
-				<module>core-java-networking</module>
+                <module>core-java-lang-oop</module>
+                <module>core-java-networking</module>
+                <module>core-java-perf</module>
                 <module>core-java-sun</module>
+                <module>core-java</module>        
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -430,7 +438,7 @@
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
-                <module>java-ee-8-security-api</module>
+                <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-numbers</module>
                 <module>java-rmi</module>
@@ -638,9 +646,12 @@
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-rest</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
+                <module>spring-boot-testing</module>
                 <module>spring-boot-vue</module>
+                <module>spring-boot-libraries</module>
                 
                 <module>spring-cloud</module>
                 <module>spring-cloud-bus</module>
@@ -655,6 +666,7 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 
+                <module>spring-ehcache</module>
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
@@ -874,6 +886,7 @@
 				<module>spring-data-rest</module>
 				<module>spring-dispatcher-servlet</module>
 				<module>spring-drools</module>
+				<module>spring-ehcache</module>
 				<module>spring-freemarker</module>
 				<module>persistence-modules/spring-hibernate-3</module>
 				<module>persistence-modules/spring-hibernate4</module>
@@ -984,9 +997,8 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
-                
-                <module>core-java</module>                
-                <module>core-java-concurrency</module> <!-- very long running? -->
+                        
+                <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/hello-world</module>
@@ -1084,10 +1096,16 @@
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-collections-list</module>
+                <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
+                <module>core-java-security</module>
+                <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
+                <module>core-java-lang-oop</module>
                 <module>core-java-networking</module>
+                <module>core-java-perf</module>
                 <module>core-java-sun</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
@@ -1339,6 +1357,7 @@
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
+                <module>spring-boot-rest</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-vue</module>
@@ -1356,6 +1375,7 @@
                 <module>spring-dispatcher-servlet</module>
                 <module>spring-drools</module>
                 
+				<module>spring-ehcache</module>                
                 <module>spring-ejb</module>
                 <module>spring-exceptions</module>
                 
@@ -1529,7 +1549,7 @@
                 <module>parent-kotlin</module>
                 
                 <module>core-java</module>                
-                <module>core-java-concurrency</module> <!-- very long running? -->
+                <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
 
                 <module>jenkins/hello-world</module>
@@ -1602,7 +1622,7 @@
 		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
 		<jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
 		<jstl.version>1.2</jstl.version>
-		<jackson-databind.version>2.5.0</jackson-databind.version>
+		<jackson-databind.version>2.9.7</jackson-databind.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
 		<junit-platform.version>1.2.0</junit-platform.version>
 		<junit-jupiter.version>5.2.0</junit-jupiter.version>

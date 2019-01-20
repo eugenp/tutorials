@@ -15,16 +15,76 @@
     </parent>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-core_2.10 -->
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.10</artifactId>
+            <artifactId>spark-core_2.11</artifactId>
             <version>${org.apache.spark.spark-core.version}</version>
+            <scope>provided</scope>
         </dependency>
+		<dependency>
+    		<groupId>org.apache.spark</groupId>
+    		<artifactId>spark-sql_2.11</artifactId>
+    		<version>${org.apache.spark.spark-sql.version}</version>
+    		<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-streaming_2.11</artifactId>
+			<version>${org.apache.spark.spark-streaming.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.spark</groupId>
+			<artifactId>spark-streaming-kafka-0-10_2.11</artifactId>
+			<version>${org.apache.spark.spark-streaming-kafka.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.datastax.spark</groupId>
+			<artifactId>spark-cassandra-connector_2.11</artifactId>
+			<version>${com.datastax.spark.spark-cassandra-connector.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.datastax.spark</groupId>
+			<artifactId>spark-cassandra-connector-java_2.11</artifactId>
+			<version>${com.datastax.spark.spark-cassandra-connector-java.version}</version>
+		</dependency>
     </dependencies>
-
+	<build>
+    	<plugins>
+    	  	<plugin>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-compiler-plugin</artifactId>
+    			<version>3.2</version>
+    			<configuration>
+      				<source>1.8</source>
+      				<target>1.8</target>
+    			</configuration>
+  			</plugin>
+      		<plugin>
+        		<artifactId>maven-assembly-plugin</artifactId>
+        		<executions>
+          			<execution>
+            			<phase>package</phase>
+            			<goals>
+              				<goal>single</goal>
+            			</goals>
+          			</execution>
+        		</executions>
+        		<configuration>
+          			<descriptorRefs>
+            			<descriptorRef>jar-with-dependencies</descriptorRef>
+          			</descriptorRefs>
+        		</configuration>
+      		</plugin>
+   		</plugins>
+  	</build>
     <properties>
-        <org.apache.spark.spark-core.version>2.2.0</org.apache.spark.spark-core.version>
+        <org.apache.spark.spark-core.version>2.3.0</org.apache.spark.spark-core.version>
+        <org.apache.spark.spark-sql.version>2.3.0</org.apache.spark.spark-sql.version>
+        <org.apache.spark.spark-streaming.version>2.3.0</org.apache.spark.spark-streaming.version>
+        <org.apache.spark.spark-streaming-kafka.version>2.3.0</org.apache.spark.spark-streaming-kafka.version>
+        <com.datastax.spark.spark-cassandra-connector.version>2.3.0</com.datastax.spark.spark-cassandra-connector.version>
+        <com.datastax.spark.spark-cassandra-connector-java.version>1.5.2</com.datastax.spark.spark-cassandra-connector-java.version>
     </properties>
 
 </project>

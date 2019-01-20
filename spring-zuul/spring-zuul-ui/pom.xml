@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zuul</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
             <version>${spring-cloud.version}</version>
         </dependency>
         <!-- <dependency> <groupId>org.springframework.cloud</groupId> <artifactId>spring-cloud-netflix-core</artifactId> <version>1.0.4.RELEASE</version> </dependency> -->

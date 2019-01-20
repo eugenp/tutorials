@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.TimeZone;
 
-import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;
@@ -24,8 +23,9 @@ import com.baeldung.jackson.date.EventWithSerializer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.databind.util.StdDateFormat;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
-import com.fasterxml.jackson.datatype.jsr310.JSR310Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 public class JacksonDateUnitTest {
 
@@ -54,10 +54,12 @@ public class JacksonDateUnitTest {
 
         final ObjectMapper mapper = new ObjectMapper();
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        mapper.setDateFormat(new ISO8601DateFormat());
+        
+        // StdDateFormat is ISO8601 since jackson 2.9
+        mapper.setDateFormat(new StdDateFormat().withColonInTimeZone(true));
 
         final String result = mapper.writeValueAsString(event);
-        assertThat(result, containsString("1970-01-01T02:30:00Z"));
+        assertThat(result, containsString("1970-01-01T02:30:00.000+00:00"));
     }
 
     @Test
@@ -152,7 +154,7 @@ public class JacksonDateUnitTest {
         final LocalDateTime date = LocalDateTime.of(2014, 12, 20, 2, 30);
 
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JSR310Module());
+        mapper.registerModule(new JavaTimeModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
         final String result = mapper.writeValueAsString(date);
