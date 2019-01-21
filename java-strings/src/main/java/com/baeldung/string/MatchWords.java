@@ -71,15 +71,15 @@ public class MatchWords {
     }
 
     public static boolean containsWordsJava8(String inputString, String[] words) {
-        ArrayList inputStringList = new ArrayList<>(Arrays.asList(inputString.split(" ")));
-        ArrayList<String> wordsList = new ArrayList<>(Arrays.asList(words));
+        List inputStringList = Arrays.asList(inputString.split(" "));
+        List<String> wordsList = Arrays.asList(words);
 
         return wordsList.stream().allMatch(inputStringList::contains);
     }
 
     public static boolean containsWordsArray(String inputString, String[] words) {
-        ArrayList inputStringList = new ArrayList<>(Arrays.asList(inputString.split(" ")));
-        ArrayList<String> wordsList = new ArrayList<>(Arrays.asList(words));
+        List inputStringList = Arrays.asList(inputString.split(" "));
+        List<String> wordsList = Arrays.asList(words);
 
         return inputStringList.containsAll(wordsList);
     }
