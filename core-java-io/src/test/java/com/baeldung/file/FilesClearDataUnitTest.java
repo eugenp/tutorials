@@ -93,5 +93,4 @@ public class FilesClearDataUnitTest {
         
         assertEquals(0, StreamUtils.getStringFromInputStream(new FileInputStream(FILE_PATH)).length());
     }    
-    
 }
