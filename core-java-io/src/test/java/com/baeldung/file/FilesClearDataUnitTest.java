@@ -22,7 +22,7 @@ import org.junit.Test;
 
 import com.baeldung.util.StreamUtils;
 
-public class FilesClearDataManualTest {
+public class FilesClearDataUnitTest {
 	
     public static final String FILE_PATH = "src/test/resources/fileexample.txt";
 
