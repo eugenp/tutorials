@@ -15,6 +15,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 
+/**
+ * 
+ * This test requires:
+ * * mongodb instance running on the environment
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 public class ActionRepositoryLiveTest {

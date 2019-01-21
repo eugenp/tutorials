@@ -29,11 +29,11 @@
     </dependencies>
 
     <properties>
-        <spring.version>5.0.6.RELEASE</spring.version>
+        <spring.version>5.1.2.RELEASE</spring.version>
         <junit.jupiter.version>5.0.2</junit.jupiter.version>
         <jackson-databind.version>2.9.6</jackson-databind.version>
 		<jackson.version>2.9.6</jackson.version>
-		<spring-security.version>5.0.6.RELEASE</spring-security.version>
+		<spring-security.version>5.1.2.RELEASE</spring-security.version>
     </properties>
 
 </project>

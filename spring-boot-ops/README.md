@@ -9,4 +9,4 @@
  - [Shutdown a Spring Boot Application](http://www.baeldung.com/spring-boot-shutdown)
  - [Spring Boot Console Application](http://www.baeldung.com/spring-boot-console-app)
  - [Comparing Embedded Servlet Containers in Spring Boot](http://www.baeldung.com/spring-boot-servlet-containers)
- 
+ - [Programmatically Restarting a Spring Boot Application](https://www.baeldung.com/java-restart-spring-boot-app)
