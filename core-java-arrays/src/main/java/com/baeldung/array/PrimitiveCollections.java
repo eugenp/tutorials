@@ -2,8 +2,6 @@ package com.baeldung.array;
 
 import com.google.common.primitives.ImmutableIntArray;
 import com.google.common.primitives.Ints;
-import gnu.trove.list.TIntList;
-import gnu.trove.list.array.TIntArrayList;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,25 +12,21 @@ public class PrimitiveCollections {
 
         int[] primitives = new int[] {5, 10, 0, 2};
 
-        //guavaPrimitives(primitives);
-
-        trovePrimitives(primitives);
+        guavaPrimitives(primitives);
     }
 
-    private static void trovePrimitives(int[] primitives) {
-        TIntList tList = new TIntArrayList(primitives);
-        tList.reverse();
-        System.out.println(tList);
-        System.out.println(tList.size());
-    }
 
     private static void guavaPrimitives(int[] primitives) {
 
-        ImmutableIntArray list = ImmutableIntArray.builder().addAll(primitives).build();
+        ImmutableIntArray immutableIntArray = ImmutableIntArray.builder().addAll(primitives).build();
+        System.out.println(immutableIntArray);
 
-        List<Integer> integers = Ints.asList(primitives);
+        List<Integer> list = Ints.asList(primitives);
 
-        int[] primitive = Ints.toArray(Arrays.asList(1, 2, 3, 4, 5));
-        System.out.println(Arrays.toString(primitive));
+        int[] primitiveArray = Ints.toArray(list);
+
+        int[] concatenated = Ints.concat(primitiveArray, primitives);
+
+        System.out.println(Arrays.toString(concatenated));
     }
 }
