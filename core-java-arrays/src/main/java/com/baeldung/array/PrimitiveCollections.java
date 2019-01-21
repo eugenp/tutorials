@@ -2,6 +2,7 @@ package com.baeldung.array;
 
 import com.google.common.primitives.ImmutableIntArray;
 import com.google.common.primitives.Ints;
+import gnu.trove.list.TIntList;
 import gnu.trove.list.array.TIntArrayList;
 
 import java.util.Arrays;
@@ -13,13 +14,16 @@ public class PrimitiveCollections {
 
         int[] primitives = new int[] {5, 10, 0, 2};
 
-        guavaPrimitives(primitives);
+        //guavaPrimitives(primitives);
 
         trovePrimitives(primitives);
     }
 
     private static void trovePrimitives(int[] primitives) {
-        TIntArrayList list = new TIntArrayList(primitives);
+        TIntList tList = new TIntArrayList(primitives);
+        tList.reverse();
+        System.out.println(tList);
+        System.out.println(tList.size());
     }
 
     private static void guavaPrimitives(int[] primitives) {
