@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.array.conversions;
 
 import java.nio.ByteBuffer;
 
@@ -10,9 +10,7 @@ public class FloatToByteArray {
      * @return byte[]
      */
     public static byte[] floatToByteArray(float value) {
-        int intBits =  Float.floatToIntBits(value); //use floatToRawIntBits to preserve Not-a-Number (NaN) values
-        
-        //convert int bits into byte array using right shift 
+        int intBits =  Float.floatToIntBits(value);
         return new byte[] {(byte) (intBits >> 24), (byte) (intBits >> 16), (byte) (intBits >> 8), (byte) (intBits) };
     }
     
@@ -22,7 +20,6 @@ public class FloatToByteArray {
      * @return float
      */
     public static float byteArrayToFloat(byte[] bytes) {
-        //convert byte array into int bits using left shift
         int intBits =  bytes[0] << 24 | (bytes[1] & 0xFF) << 16 | (bytes[2] & 0xFF) << 8 | (bytes[3] & 0xFF);
         return Float.intBitsToFloat(intBits);
     }

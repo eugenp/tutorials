@@ -1,9 +1,9 @@
-package com.baeldung.array;
+package com.baeldung.array.conversions;
 
-import static com.baeldung.array.FloatToByteArray.floatToByteArray;
-import static com.baeldung.array.FloatToByteArray.byteArrayToFloat;
-import static com.baeldung.array.FloatToByteArray.floatToByteArrayWithByteBuffer;
-import static com.baeldung.array.FloatToByteArray.byteArrayToFloatWithByteBuffer;
+import static com.baeldung.array.conversions.FloatToByteArray.byteArrayToFloat;
+import static com.baeldung.array.conversions.FloatToByteArray.byteArrayToFloatWithByteBuffer;
+import static com.baeldung.array.conversions.FloatToByteArray.floatToByteArray;
+import static com.baeldung.array.conversions.FloatToByteArray.floatToByteArrayWithByteBuffer;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
