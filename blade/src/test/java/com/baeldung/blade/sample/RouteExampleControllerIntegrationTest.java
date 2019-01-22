@@ -12,7 +12,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-public class RouteExampleControllerTest {
+public class RouteExampleControllerIntegrationTest {
 
     @Test
     public void givenRoute_whenGet_thenCorrectOutput() throws Exception {

@@ -10,7 +10,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-public class ParameterInjectionExampleControllerTest {
+public class ParameterInjectionExampleControllerIntegrationTest {
 
     @Test
     public void givenFormParam_whenSet_thenRetrieveWithGet() throws Exception {

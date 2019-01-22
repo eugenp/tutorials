@@ -9,7 +9,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-public class AttributesExampleControllerTest {
+public class AttributesExampleControllerIntegrationTest {
 
     @Test
     public void givenRequestAttribute_whenSet_thenRetrieveWithGet() throws Exception {
