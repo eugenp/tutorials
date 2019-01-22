@@ -1,6 +1,6 @@
 package com.baeldung.bitwiseoperator.test;
 
-import org.junit.Assert;
+import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.Test;
 
 public class BitwiseOperatorUnitTest {
@@ -10,7 +10,7 @@ public class BitwiseOperatorUnitTest {
         int value1 = 6;
         int value2 = 5;
         int result = value1 & value2;
-        Assert.assertEquals(result, 4);
+        assertEquals(result, 4);
     }
 
     @Test
@@ -18,7 +18,7 @@ public class BitwiseOperatorUnitTest {
         int value1 = 6;
         int value2 = 5;
         int result = value1 | value2;
-        Assert.assertEquals(result, 7);
+        assertEquals(result, 7);
     }
 
     @Test
@@ -26,56 +26,56 @@ public class BitwiseOperatorUnitTest {
         int value1 = 6;
         int value2 = 5;
         int result = value1 ^ value2;
-        Assert.assertEquals(result, 3);
+        assertEquals(result, 3);
     }
 
     @Test
     public void givenOneInteger_whenNotOperator_thenNewDecimalNumber() {
         int value1 = 6;
         int result = ~value1;
-        Assert.assertEquals(result, -7);
+        assertEquals(result, -7);
     }
 
     @Test
     public void givenOnePositiveInteger_whenSignedRightShiftOperator_thenNewDecimalNumber() {
         int value = 12;
         int rightShift = value >> 2;
-        Assert.assertEquals(rightShift, 3);
+        assertEquals(rightShift, 3);
     }
 
     @Test
     public void givenOneNegativeInteger_whenSignedRightShiftOperator_thenNewDecimalNumber() {
         int value = -12;
         int rightShift = value >> 2;
-        Assert.assertEquals(rightShift, -3);
+        assertEquals(rightShift, -3);
     }
 
     @Test
     public void givenOnePositiveInteger_whenLeftShiftOperator_thenNewDecimalNumber() {
         int value = 12;
         int leftShift = value << 2;
-        Assert.assertEquals(leftShift, 48);
+        assertEquals(leftShift, 48);
     }
 
     @Test
     public void givenOneNegativeInteger_whenLeftShiftOperator_thenNewDecimalNumber() {
         int value = -12;
         int leftShift = value << 2;
-        Assert.assertEquals(leftShift, -48);
+        assertEquals(leftShift, -48);
     }
 
     @Test
     public void givenOnePositiveInteger_whenUnsignedRightShiftOperator_thenNewDecimalNumber() {
         int value = 12;
         int unsignedRightShift = value >>> 2;
-        Assert.assertEquals(unsignedRightShift, 3);
+        assertEquals(unsignedRightShift, 3);
     }
 
     @Test
     public void givenOneNegativeInteger_whenUnsignedRightShiftOperator_thenNewDecimalNumber() {
         int value = -12;
         int unsignedRightShift = value >>> 2;
-        Assert.assertEquals(unsignedRightShift, 1073741821);
+        assertEquals(unsignedRightShift, 1073741821);
     }
 
 }
