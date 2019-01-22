@@ -2,32 +2,26 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<artifactId>spring-hexagonal-architecture</artifactId>
+	<packaging>jar</packaging>
+	<name>spring-hexagonal-architecture</name>
+	<description>Spring Hexagonal Architecture</description>
+	
 	<parent>
 		<artifactId>parent-boot-2</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../parent-boot-2</relativePath>
 	</parent>
-	<groupId>com.baeldung</groupId>
-	<artifactId>spring-hexagonal-architecture</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-hexagonal-architecture</name>
-	<description>Spring Hexagonal Architecture</description>
-	
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<version>${spring-boot.version}</version>
 	</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<version>${spring-boot.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -38,11 +32,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.baeldung.springbootmvc.SpringBootMvcApplication</mainClass>
+					<mainClass>com.baeldung.hexagonal.SpringHexagonalArchitectureApplication</mainClass>
 					<layout>JAR</layout>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+	
+	<properties>
+		<start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
+	</properties>
 
 </project>
