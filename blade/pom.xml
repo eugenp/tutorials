@@ -99,60 +99,60 @@
 				</configuration>
 			</plugin>
 
-<!-- 		<plugin> -->
-<!-- 	        <groupId>org.codehaus.mojo</groupId> -->
-<!-- 	        <artifactId>exec-maven-plugin</artifactId> -->
-<!-- 	        <version>1.6.0</version> -->
-<!-- 	        <executions> -->
-<!-- 	            <execution> -->
-<!-- 	                <id>default-cli</id> -->
-<!-- 	                <phase>pre-integration-test</phase> -->
-<!-- 	                <goals> -->
-<!-- 	                    <goal>java</goal> -->
-<!-- 	                </goals> -->
-<!-- 	                <configuration> -->
-<!-- 	                    <mainClass>com.baeldung.blade.sample.App</mainClass> -->
-<!-- 	                </configuration> -->
-<!-- 	            </execution> -->
-<!-- 	        </executions> -->
-<!-- 	    </plugin>             -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.mojo</groupId> -->
+			<!-- <artifactId>exec-maven-plugin</artifactId> -->
+			<!-- <version>1.6.0</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>default-cli</id> -->
+			<!-- <phase>pre-integration-test</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>java</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <mainClass>com.baeldung.blade.sample.App</mainClass> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 
- <plugin>
-            <groupId>com.bazaarvoice.maven.plugins</groupId>
-            <artifactId>process-exec-maven-plugin</artifactId>
-            <version>0.7</version>
-            <executions>
-                <!--Start Blade-->
-                <execution>
-                    <id>blaed-process</id>
-                    <phase>pre-integration-test</phase>
-                    <goals>
-                        <goal>start</goal>
-                    </goals>
-                    <configuration>
-                        <name>Blade</name>
-                        <workingDir>blade</workingDir>
-                        <waitForInterrupt>false</waitForInterrupt>
-                        <arguments>
-                            <argument>java</argument>
-                            <argument>-jar</argument>
-                            <argument>../sample-blade-app.jar</argument>
-                        </arguments>
-                    </configuration>
-                </execution>
+			<plugin>
+				<groupId>com.bazaarvoice.maven.plugins</groupId>
+				<artifactId>process-exec-maven-plugin</artifactId>
+				<version>0.7</version>
+				<executions>
+					<!--Start Blade -->
+					<execution>
+						<id>blaed-process</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>start</goal>
+						</goals>
+						<configuration>
+							<name>Blade</name>
+							<workingDir>blade</workingDir>
+							<waitForInterrupt>false</waitForInterrupt>
+							<arguments>
+								<argument>java</argument>
+								<argument>-jar</argument>
+								<argument>../sample-blade-app.jar</argument>
+							</arguments>
+						</configuration>
+					</execution>
 
-                <!--Stop all processes in reverse order-->
-                <execution>
-                    <id>stop-all</id>
-                    <phase>post-integration-test</phase>
-                    <goals>
-                        <goal>stop-all</goal>
-                    </goals>
-                </execution>
-            </executions>
-        </plugin>
+					<!--Stop all processes in reverse order -->
+					<execution>
+						<id>stop-all</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>stop-all</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 
-			
+
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>3.1.0</version>
