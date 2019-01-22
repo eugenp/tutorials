@@ -673,7 +673,7 @@
                 <module>spring-freemarker</module>
                 
                 <module>spring-groovy</module>
-                
+                <module>spring-hexagonal-architecture</module>
                 <module>spring-integration</module>
                 
                 <module>spring-jenkins-pipeline</module>
