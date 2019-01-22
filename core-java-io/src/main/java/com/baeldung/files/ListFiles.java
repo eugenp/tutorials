@@ -18,23 +18,19 @@ public class ListFiles {
     public static final int DEPTH = 1;
 
     public Set<String> listFilesUsingJavaIO(String dir) {
-        Set<String> fileList = Stream.of(new File(dir).listFiles())
-            .filter(file -> !Files.isDirectory(Paths.get(file.getAbsolutePath())))
-            .map(file -> file.getName()
-                .toString())
+        return Stream.of(new File(dir).listFiles())
+            .filter(file -> !file.isDirectory())
+            .map(File::getName)
             .collect(Collectors.toSet());
-        return fileList;
     }
 
-    public Set<String> listFilesUsingFileWalk(String dir) throws IOException {
-        Set<String> fileList;
-        try (Stream<Path> stream = Files.walk(Paths.get(dir), DEPTH)) {
-            fileList = stream.filter(file -> !Files.isDirectory(file))
-                .map(file -> file.getFileName()
-                    .toString())
+    public Set<String> listFilesUsingFileWalk(String dir, int depth) throws IOException {
+        try (Stream<Path> stream = Files.walk(Paths.get(dir), depth)) {
+            return stream.filter(file -> !Files.isDirectory(file))
+                .map(Path::getFileName)
+                .map(Path::toString)
                 .collect(Collectors.toSet());
         }
-        return fileList;
     }
 
     public Set<String> listFilesUsingFileWalkAndVisitor(String dir) throws IOException {
@@ -42,9 +38,10 @@ public class ListFiles {
         Files.walkFileTree(Paths.get(dir), new SimpleFileVisitor<Path>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                if (!Files.isDirectory(file))
+                if (!Files.isDirectory(file)) {
                     fileList.add(file.getFileName()
                         .toString());
+                }
                 return FileVisitResult.CONTINUE;
             }
         });

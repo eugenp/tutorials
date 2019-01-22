@@ -14,7 +14,7 @@ public class ListFilesUnitTest {
 
     private ListFiles listFiles = new ListFiles();
     private String DIRECTORY = "src/test/resources/listFilesUnitTestFolder";
-
+    private static final int DEPTH = 1;
     private Set<String> EXPECTED_FILE_LIST = new HashSet<String>() {
         {
             add("test.xml");
@@ -31,7 +31,7 @@ public class ListFilesUnitTest {
 
     @Test
     public void givenDir_whenWalkingTree_thenListAllFiles() throws IOException {
-        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingFileWalk(DIRECTORY));
+        assertEquals(EXPECTED_FILE_LIST, listFiles.listFilesUsingFileWalk(DIRECTORY,DEPTH));
     }
 
     @Test
