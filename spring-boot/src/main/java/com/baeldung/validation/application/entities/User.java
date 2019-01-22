@@ -10,6 +10,8 @@ import javax.validation.constraints.NotBlank;
 @Entity
 public class User implements Serializable {
     
+    private static final long serialVersionUID = 42L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
