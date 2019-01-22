@@ -53,6 +53,11 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.hotels.beans</groupId>
+            <artifactId>bean-utils-library</artifactId>
+            <version>${bull.version}</version>
+        </dependency>
     </dependencies>
     
     <build>
@@ -87,6 +92,7 @@
         <jmapper.version>1.6.0.1</jmapper.version>
         <jmh.version>1.20</jmh.version>
         <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
+        <bull.version>1.0.14</bull.version>
     </properties>
 
 </project>
