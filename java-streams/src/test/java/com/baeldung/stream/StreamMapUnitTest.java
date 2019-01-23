@@ -4,10 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class StreamMapUnitTest {
 
@@ -60,6 +63,29 @@ public class StreamMapUnitTest {
                 .orElse(null);
 
         assertEquals(null, isbn);
+    }
+
+    @Test
+    public void whenMultipleResultsVersionCalledForExistingTitle_aCollectionWithMultipleValuesIsReturned() {
+        books.put("978-0321356680", "Effective Java: Second Edition");
+
+        List<String> isbnCodes = books.entrySet().stream()
+                .filter(e -> e.getValue().startsWith("Effective Java"))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        assertTrue(isbnCodes.contains("978-0321356680"));
+        assertTrue(isbnCodes.contains("978-0134685991"));
+    }
+
+    @Test
+    public void whenMultipleResultsVersionCalledForNonExistingTitle_aCollectionWithNoValuesIsReturned() {
+        List<String> isbnCodes = books.entrySet().stream()
+                .filter(e -> e.getValue().startsWith("Spring"))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+
+        assertTrue(isbnCodes.isEmpty());
     }
 
 }
