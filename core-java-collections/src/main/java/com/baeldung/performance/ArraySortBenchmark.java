@@ -11,8 +11,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-@BenchmarkMode(Mode.AverageTime)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@BenchmarkMode(Mode.SingleShotTime)
+@OutputTimeUnit(TimeUnit.MINUTES)
 @Measurement(batchSize = 100000, iterations = 10)
 @Warmup(batchSize = 100000, iterations = 10)
 public class ArraySortBenchmark {
@@ -20,27 +20,31 @@ public class ArraySortBenchmark {
     @State(Scope.Thread)
     public static class Initialize {
 
-        String[] array = new String[]{"A", "AB", "B"};
+        int iterations = 1000;
 
-        List<String> list = new ArrayList<>();
+        int[] array = new int[iterations];
+
+        List<Integer> list = new ArrayList<>();
 
         @Setup(Level.Trial)
         public void setUp() {
-            list.add("A");
-            list.add("AB");
-            list.add("B");
+
+            for (int i = 0; i < iterations; i++) {
+                array[i] = i;
+                list.add(i);
+            }
         }
 
     }
 
     @Benchmark
-    public String[] benchmarkArraysSort(ArraySortBenchmark.Initialize state) {
+    public int[] benchmarkArraysSort(ArraySortBenchmark.Initialize state) {
         Arrays.sort(state.array);
         return state.array;
     }
 
     @Benchmark
-    public List<String> benchmarkCollectionsSort(ArraySortBenchmark.Initialize state) {
+    public List<Integer> benchmarkCollectionsSort(ArraySortBenchmark.Initialize state) {
         Collections.sort(state.list);
         return state.list;
     }
