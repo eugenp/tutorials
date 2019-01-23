@@ -29,7 +29,7 @@ public class AttributesExampleController {
     }
 
     @GetRoute("/header-example")
-    public void getHeader(Request request, Response response) {        
+    public void getHeader(Request request, Response response) {
         String headerVal = request.header("a-header", HEADER);
         response.header("a-header", headerVal);
     }

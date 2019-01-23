@@ -12,7 +12,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
-public class AppIntegrationTest {
+public class AppLiveTest {
 
     @Test
     public void givenBasicRoute_whenGet_thenCorrectOutput() throws Exception {

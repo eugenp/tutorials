@@ -13,4 +13,3 @@ public class ScheduleExample {
         log.info("[ScheduleExample] This is a scheduled Task running once per minute.");
     }
 }
-

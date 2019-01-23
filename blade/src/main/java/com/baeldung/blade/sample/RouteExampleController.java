@@ -13,67 +13,66 @@ import com.blade.mvc.http.Request;
 import com.blade.mvc.http.Response;
 
 @Path
-public class RouteExampleController {        
-    
+public class RouteExampleController {
+
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(RouteExampleController.class);
 
-    
-    @GetRoute("/route-example") 
-    public String get(){ 
-        return "get.html"; 
-    }
-    
-    @PostRoute("/route-example") 
-    public String post(){ 
-        return "post.html"; 
-    }
-    
-    @PutRoute("/route-example") 
-    public String put(){ 
-        return "put.html"; 
-    }
-     
-    @DeleteRoute("/route-example") 
-    public String delete(){ 
-        return "delete.html"; 
-    }
-        
-    @Route(value="/another-route-example", method=HttpMethod.GET) 
-    public String anotherGet(){ 
-        return "get.html" ; 
+    @GetRoute("/route-example")
+    public String get() {
+        return "get.html";
     }
 
-    @Route(value="/allmatch-route-example") 
-    public String allmatch(){ 
-        return "allmatch.html" ; 
+    @PostRoute("/route-example")
+    public String post() {
+        return "post.html";
     }
 
-    @Route(value="/triggerInternalServerError")
+    @PutRoute("/route-example")
+    public String put() {
+        return "put.html";
+    }
+
+    @DeleteRoute("/route-example")
+    public String delete() {
+        return "delete.html";
+    }
+
+    @Route(value = "/another-route-example", method = HttpMethod.GET)
+    public String anotherGet() {
+        return "get.html";
+    }
+
+    @Route(value = "/allmatch-route-example")
+    public String allmatch() {
+        return "allmatch.html";
+    }
+
+    @Route(value = "/triggerInternalServerError")
     public void triggerInternalServerError() {
-    	int x = 1/0;
+        int x = 1 / 0;
     }
 
-    @Route(value="/triggerBaeldungException")
+    @Route(value = "/triggerBaeldungException")
     public void triggerBaeldungException() throws BaeldungException {
-        throw new BaeldungException("Foobar Exception to threat differently");        
+        throw new BaeldungException("Foobar Exception to threat differently");
     }
 
-    
-    @Route(value="/user/foo") 
-    public void urlCoveredByNarrowedWebhook(Response response){ 
-        response.text("Check out for the WebHook covering '/user/*' in the logs"); 
+    @Route(value = "/user/foo")
+    public void urlCoveredByNarrowedWebhook(Response response) {
+        response.text("Check out for the WebHook covering '/user/*' in the logs");
     }
 
     @GetRoute("/load-configuration-in-a-route")
-    public void loadConfigurationInARoute(Response response){
-        String authors = WebContext.blade().env("app.authors","Unknown authors");        
+    public void loadConfigurationInARoute(Response response) {
+        String authors = WebContext.blade()
+            .env("app.authors", "Unknown authors");
         log.info("[/load-configuration-in-a-route] Loading 'app.authors' from configuration, value: " + authors);
         response.render("index.html");
     }
 
     @GetRoute("/template-output-test")
-    public void templateOutputTest(Request request, Response response){
-        request.attribute("name","Blade");       
+    public void templateOutputTest(Request request, Response response) {
+        request.attribute("name", "Blade");
         response.render("template-output-test.html");
     }
 }

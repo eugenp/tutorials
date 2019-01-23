@@ -23,7 +23,9 @@ public class App {
             .enableCors(true)
             .before("/user/*", ctx -> log.info("[NarrowedHook] Before '/user/*', URL called: " + ctx.uri()))
             .on(EventType.SERVER_STARTED, e -> {
-                String version = WebContext.blade().env("app.version").orElse("N/D");
+                String version = WebContext.blade()
+                    .env("app.version")
+                    .orElse("N/D");
                 log.info("[Event::serverStarted] Loading 'app.version' from configuration, value: " + version);
             })
             .on(EventType.SESSION_CREATED, e -> {
