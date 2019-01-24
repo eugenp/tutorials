@@ -1,6 +1,7 @@
 package com.baeldung.java8.lambda.methodreference;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 
@@ -15,7 +16,7 @@ public class MethodReferenceExamples {
 
     @Test
     public void referenceToStaticMethod() {
-        List<String> messages = List.of("Hello", "Baeldung", "readers!");
+        List<String> messages = Arrays.asList("Hello", "Baeldung", "readers!");
         messages.forEach((word) -> {
             System.out.println(word);
         });
@@ -33,7 +34,7 @@ public class MethodReferenceExamples {
 
     @Test
     public void referenceToInstanceMethodOfArbitratyObjectOfParticularType() {
-        List<Integer> numbers = List.of(5, 3, 50, 24, 40, 2, 9, 18);
+        List<Integer> numbers = Arrays.asList(5, 3, 50, 24, 40, 2, 9, 18);
         numbers.stream()
             .sorted((a, b) -> Integer.compare(a, b));
         numbers.stream()
