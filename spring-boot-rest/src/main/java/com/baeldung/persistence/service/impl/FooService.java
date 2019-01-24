@@ -1,17 +1,16 @@
-package org.baeldung.persistence.service.impl;
+package com.baeldung.persistence.service.impl;
 
-import java.util.List;
-
-import org.baeldung.persistence.dao.IFooDao;
-import org.baeldung.persistence.model.Foo;
-import org.baeldung.persistence.service.IFooService;
-import org.baeldung.persistence.service.common.AbstractService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.google.common.collect.Lists;
+import com.baeldung.persistence.dao.IFooDao;
+import com.baeldung.persistence.model.Foo;
+import com.baeldung.persistence.service.IFooService;
+import com.baeldung.persistence.service.common.AbstractService;
 
 @Service
 @Transactional
@@ -34,16 +33,8 @@ public class FooService extends AbstractService<Foo> implements IFooService {
     // custom methods
 
     @Override
-    public Foo retrieveByName(final String name) {
-        return dao.retrieveByName(name);
-    }
-
-    // overridden to be secured
-
-    @Override
-    @Transactional(readOnly = true)
-    public List<Foo> findAll() {
-        return Lists.newArrayList(getDao().findAll());
+    public Page<Foo> findPaginated(Pageable pageable) {
+        return dao.findAll(pageable);
     }
 
 }

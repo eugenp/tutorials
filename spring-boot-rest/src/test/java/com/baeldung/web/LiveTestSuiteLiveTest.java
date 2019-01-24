@@ -1,4 +1,4 @@
-package org.baeldung.web;
+package com.baeldung.web;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -6,8 +6,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 // @formatter:off
-    FooDiscoverabilityLiveTest.class
-    ,FooLiveTest.class
+    FooLiveTest.class
+    ,FooPageableLiveTest.class
 }) //
 public class LiveTestSuiteLiveTest {
 
