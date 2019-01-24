@@ -23,18 +23,15 @@ public class ArraySortBenchmark {
         int iterations = 1000;
 
         int[] array = new int[iterations];
-
         List<Integer> list = new ArrayList<>();
 
         @Setup(Level.Trial)
         public void setUp() {
-
             for (int i = 0; i < iterations; i++) {
                 array[i] = i;
                 list.add(i);
             }
         }
-
     }
 
     @Benchmark
