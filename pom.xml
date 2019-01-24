@@ -367,6 +367,8 @@
                 <module>axon</module>
                 <module>azure</module>
 
+                <module>blade</module>
+
                 <module>bootique</module>
 
                 <module>cas/cas-secured-app</module>

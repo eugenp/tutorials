@@ -27,5 +27,4 @@ public class MyErrorController extends BasicErrorController {
         HttpStatus status = getStatus(request);
         return new ResponseEntity<>(body, status);
     }
-
 }

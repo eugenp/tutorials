@@ -1,25 +1,27 @@
-package org.baeldung.web;
+package com.baeldung.web;
 
+import static com.baeldung.Consts.APPLICATION_PORT;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
-import static org.baeldung.Consts.APPLICATION_PORT;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 
 import java.util.List;
 
-import org.baeldung.common.web.AbstractBasicLiveTest;
-import org.baeldung.persistence.model.Foo;
-import org.baeldung.spring.ConfigIntegrationTest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+
+import com.baeldung.common.web.AbstractBasicLiveTest;
+import com.baeldung.persistence.model.Foo;
+import com.baeldung.spring.ConfigIntegrationTest;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { ConfigIntegrationTest.class }, loader = AnnotationConfigContextLoader.class)
@@ -34,7 +36,7 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
 
     @Override
     public final void create() {
-        create(new Foo(randomAlphabetic(6)));
+        super.create(new Foo(randomAlphabetic(6)));
     }
 
     @Override
@@ -45,6 +47,8 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
     @Override
     @Test
     public void whenResourcesAreRetrievedPaged_then200IsReceived() {
+        this.create();
+        
         final Response response = RestAssured.get(getPageableURL() + "?page=0&size=10");
 
         assertThat(response.getStatusCode(), is(200));
@@ -70,7 +74,7 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
     }
 
     protected String getPageableURL() {
-        return "http://localhost:" + APPLICATION_PORT + "/spring-rest-full/auth/foos/pageable";
+        return "http://localhost:" + APPLICATION_PORT + "/spring-boot-rest/auth/foos/pageable";
     }
     
 }
