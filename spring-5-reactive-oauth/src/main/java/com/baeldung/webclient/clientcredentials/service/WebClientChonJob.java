@@ -4,8 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
-import org.springframework.security.oauth2.client.annotation.RegisteredOAuth2AuthorizedClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -14,12 +12,12 @@ public class WebClientChonJob {
 
     Logger logger = LoggerFactory.getLogger(WebClientChonJob.class);
 
-    private static final String RESOURCE_URI = "http://localhost:8084/retrieve-resource";
+    private static final String RESOURCE_URI = "localhost:8082/spring-security-oauth-resource/foos/1";
 
     @Autowired
     private WebClient webClient;
 
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 5000)
     public void logResourceServiceResponse() {
 
         webClient.get()

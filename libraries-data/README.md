@@ -15,3 +15,4 @@
 - [Intro to Apache Storm](https://www.baeldung.com/apache-storm)
 - [Guide to Ebean ORM](https://www.baeldung.com/ebean-orm)
 - [Introduction to Kafka Connectors](https://www.baeldung.com/kafka-connectors-guide)
+- [Kafka Connect Example with MQTT and MongoDB](https://www.baeldung.com/kafka-connect-mqtt-mongodb)

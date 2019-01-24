@@ -52,6 +52,21 @@
             <!-- Check for the most recent available version: https://projectlombok.org/changelog.html -->
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        <!-- Provided -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -71,6 +86,7 @@
     </build>
 
     <properties>
+        <start-class>com.baeldung.flips.ApplicationConfig</start-class>
         <flips-web.version>1.0.1</flips-web.version>
         <lombok.version>1.16.18</lombok.version>
         <h2database.version>1.4.197</h2database.version>
