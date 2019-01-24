@@ -41,6 +41,7 @@
 	
 	<properties>
 		<start-class>com.baeldung.springbootmvc.SpringBootMvcApplication</start-class>
+		<java.version>1.8</java.version>
 	</properties>
 
 </project>
