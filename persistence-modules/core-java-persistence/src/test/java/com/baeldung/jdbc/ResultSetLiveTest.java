@@ -79,7 +79,7 @@ public class ResultSetLiveTest {
             }
         }
 
-        assertEquals("Employee information retreived by column ids.", expectedEmployee1, employee);
+        assertEquals("Employee information retreived by column ids:", expectedEmployee1, employee);
     }
 
     @Test
