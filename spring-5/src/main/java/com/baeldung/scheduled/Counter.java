@@ -7,14 +7,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class Counter {
-  private final AtomicInteger count = new AtomicInteger(0);
+    private final AtomicInteger count = new AtomicInteger(0);
 
-  @Scheduled(fixedDelay = 5)
-  public void scheduled() {
-    this.count.incrementAndGet();
-  }
+    @Scheduled(fixedDelay = 5)
+    public void scheduled() {
+        this.count.incrementAndGet();
+    }
 
-  public int getInvocationCount() {
-    return this.count.get();
-  }
+    public int getInvocationCount() {
+        return this.count.get();
+    }
 }
