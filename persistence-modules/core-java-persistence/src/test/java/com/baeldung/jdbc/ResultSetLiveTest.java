@@ -112,7 +112,7 @@ public class ResultSetLiveTest {
     @Test
     public void givenDbConnectionE_whenRowCount_thenCorrect() throws SQLException {
         int numOfRows = 0;
-        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
+        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE); ResultSet rs = pstmt.executeQuery()) {
             rs.last();
             numOfRows = rs.getRow();
         }
@@ -123,7 +123,7 @@ public class ResultSetLiveTest {
     @Test
     public void givenDbConnectionG_whenAbsoluteNavigation_thenCorrect() throws SQLException {
         Employee secondEmployee = null;
-        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
+        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE); ResultSet rs = pstmt.executeQuery()) {
             rs.absolute(2);
             secondEmployee = populateResultSet(rs);
         }
@@ -145,7 +145,7 @@ public class ResultSetLiveTest {
     @Test
     public void givenDbConnectionI_whenNavigation_thenCorrect() throws SQLException {
         Employee firstEmployee = null;
-        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
+        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE); ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 Employee employee = populateResultSet(rs);
             }
