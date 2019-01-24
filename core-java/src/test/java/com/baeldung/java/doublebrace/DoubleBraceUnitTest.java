@@ -5,12 +5,15 @@ import org.junit.Test;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toSet;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * 测试：双支撑
+ */
 public class DoubleBraceUnitTest {
 
     @Test
@@ -22,6 +25,9 @@ public class DoubleBraceUnitTest {
         assertTrue(countries.contains("India"));
     }
 
+    /**
+     * 初始化Set<String>并赋值
+     */
     @Test
     public void whenInitializeSetWithDoubleBraces_containsElements() {
         final Set<String> countries = new HashSet<String>() {
@@ -37,8 +43,13 @@ public class DoubleBraceUnitTest {
 
     @Test
     public void whenInitializeUnmodifiableSetWithDoubleBrace_containsElements() {
-         Set<String> countries = Stream.of("India", "USSR", "USA")
-           .collect(collectingAndThen(toSet(), Collections::unmodifiableSet));
+         Set<String> countries = Stream.<String>of("India", "USSR", "USA")
+           .collect(Collectors.collectingAndThen(Collectors.toSet(), new Function<Set<String>, Set<String>>() {
+               @Override
+               public Set<String> apply(Set<String> s) {
+                   return Collections.unmodifiableSet(s);
+               }
+           }));
 
         assertTrue(countries.contains("India"));
     }
