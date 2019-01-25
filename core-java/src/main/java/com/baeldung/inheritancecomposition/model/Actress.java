@@ -1,5 +1,9 @@
 package com.baeldung.inheritancecomposition.model;
 
+/**
+ * 女演员
+ * @author zn.wang
+ */
 public class Actress extends Person {
     
     public Actress(String name, String email, int age) {

@@ -1,7 +1,13 @@
 package com.baeldung.inheritancecomposition.model;
 
+/**
+ * 标准内存
+ * @author zn.wang
+ */
 public class StandardMemory implements Memory {
-    
+    /**
+     * 品牌
+     */
     private String brand;
     private String size;
 

@@ -1,5 +1,9 @@
 package com.baeldung.inheritancecomposition.model;
 
+/**
+ * 人
+ * @author zn.wang
+ */
 public class Person {
     
     private final String name;

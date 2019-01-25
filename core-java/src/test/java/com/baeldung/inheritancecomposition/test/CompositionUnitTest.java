@@ -10,12 +10,20 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
+/**
+ * 测试Computer组成
+ */
 public class CompositionUnitTest {
-    
-    
+
+    /**
+     * 简单的策落模式
+     */
     @Test
     public void givenComputerInstance_whenExtractedEachField_thenThreeAssertions() {
-        Computer computer = new Computer(new StandardProcessor("Intel I3"), new StandardMemory("Kingston", "1TB"));
+        Computer computer = new Computer(
+                new StandardProcessor("Intel I3"),
+                new StandardMemory("Kingston", "1TB")
+        );
         computer.setSoundCard(new StandardSoundCard("Generic Sound Card"));
         assertThat(computer.getProcessor()).isInstanceOf(Processor.class);
         assertThat(computer.getMemory()).isInstanceOf(Memory.class);

@@ -12,6 +12,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * 测试：Clock
+ */
 public class ClockUnitTest {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ClockUnitTest.class);
@@ -78,7 +81,7 @@ public class ClockUnitTest {
 	public void givenClock_usingOffset_retrievesPastDate() {
 		Clock baseClock = Clock.systemDefaultZone();
 
-		// result clock will be later than baseClock
+		// result clock will be earlier than baseClock
 		Clock pastClock = Clock.offset(baseClock, Duration.ofHours(-72));
 
 		assertEquals(pastClock.instant().equals(null), false);

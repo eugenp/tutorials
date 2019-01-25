@@ -1,5 +1,9 @@
 package com.baeldung.inheritancecomposition.model;
 
+/**
+ * 标准处理器
+ * @author zn.wang
+ */
 public class StandardProcessor implements Processor {
 
     private String model;

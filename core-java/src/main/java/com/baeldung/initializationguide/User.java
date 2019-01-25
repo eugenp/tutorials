@@ -2,6 +2,9 @@ package com.baeldung.initializationguide;
 
 import java.io.Serializable;
 
+/**
+ * 代码块、静态代码块、构造方法初始化顺序
+ */
 public class User implements Serializable, Cloneable {
     private static final long serialVersionUID = 1L;
     static String forum;
@@ -49,5 +52,12 @@ public class User implements Serializable, Cloneable {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                '}';
+    }
 }
 

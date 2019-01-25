@@ -6,8 +6,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+/**
+ * 内部接口测试
+ */
 @RunWith(JUnit4.class)
 public class InnerInterfaceUnitTest {
+
     @Test
     public void whenCustomerListJoined_thenReturnsJoinedNames() {
         Customer.List customerList = new CommaSeparatedCustomers();

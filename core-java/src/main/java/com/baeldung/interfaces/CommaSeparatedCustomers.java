@@ -2,8 +2,12 @@ package com.baeldung.interfaces;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
+/**
+ * @author zn.wang
+ */
 public class CommaSeparatedCustomers implements Customer.List {
 
     private List<Customer> customers = new ArrayList<Customer>();
@@ -15,7 +19,12 @@ public class CommaSeparatedCustomers implements Customer.List {
 
     @Override
     public String getCustomerNames() {
-        return customers.stream().map(customer -> customer.getName()).collect(Collectors.joining(","));
+        StringJoiner joiner = new StringJoiner(",");
+        for (Customer customer : customers) {
+            String name = customer.getName();
+            joiner.add(name);
+        }
+        return joiner.toString();
     }
 
 }

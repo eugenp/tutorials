@@ -2,6 +2,10 @@ package com.baeldung.inheritancecomposition.model;
 
 import java.util.Optional;
 
+/**
+ * 计算机
+ * @author zn.wang
+ */
 public class Computer {
 
     private Processor processor;

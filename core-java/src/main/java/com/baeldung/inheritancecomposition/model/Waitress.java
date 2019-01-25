@@ -1,5 +1,9 @@
 package com.baeldung.inheritancecomposition.model;
 
+/**
+ * 女服务员
+ * @author zn.wang
+ */
 public class Waitress extends Person {
     
     public Waitress(String name, String email, int age) {
