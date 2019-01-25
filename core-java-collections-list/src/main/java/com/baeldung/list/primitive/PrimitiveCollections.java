@@ -20,13 +20,5 @@ public class PrimitiveCollections {
 
         ImmutableIntArray immutableIntArray = ImmutableIntArray.builder().addAll(primitives).build();
         System.out.println(immutableIntArray);
-
-        List<Integer> list = Ints.asList(primitives);
-
-        int[] primitiveArray = Ints.toArray(list);
-
-        int[] concatenated = Ints.concat(primitiveArray, primitives);
-
-        System.out.println(Arrays.toString(concatenated));
     }
 }
