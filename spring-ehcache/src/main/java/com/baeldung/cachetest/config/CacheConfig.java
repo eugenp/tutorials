@@ -1,5 +1,6 @@
 package com.baeldung.cachetest.config;
 
+<<<<<<< HEAD
 import java.math.BigDecimal;
 import java.time.Duration;
 
@@ -18,11 +19,15 @@ import org.ehcache.jsr107.Eh107Configuration;
 import org.springframework.boot.autoconfigure.cache.JCacheManagerCustomizer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+=======
+import org.springframework.cache.annotation.EnableCaching;
+>>>>>>> upstream/master
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableCaching
 public class CacheConfig {
+<<<<<<< HEAD
 
 	private static final int ON_HEAP_CACHE_SIZE_ENTRIES = 2;
 	private static final int OFF_HEAP_CACHE_SIZE_MB = 10;
@@ -54,4 +59,7 @@ public class CacheConfig {
 		};
 	}
 
+=======
+ 
+>>>>>>> upstream/master
 }

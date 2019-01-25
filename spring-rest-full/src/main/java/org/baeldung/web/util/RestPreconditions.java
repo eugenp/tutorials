@@ -1,7 +1,8 @@
 package org.baeldung.web.util;
 
-import org.baeldung.web.exception.MyResourceNotFoundException;
 import org.springframework.http.HttpStatus;
+
+import org.baeldung.web.exception.MyResourceNotFoundException;
 
 /**
  * Simple static methods to be called at the start of your own methods to verify correct arguments and state. If the Precondition fails, an {@link HttpStatus} code is thrown

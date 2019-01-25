@@ -14,4 +14,9 @@
 - [ExecutorService - Waiting for Threads to Finish](http://www.baeldung.com/java-executor-wait-for-threads)
 - [wait and notify() Methods in Java](http://www.baeldung.com/java-wait-notify)
 - [Life Cycle of a Thread in Java](http://www.baeldung.com/java-thread-lifecycle)
+<<<<<<< HEAD
 - [Runnable vs. Callable in Java](http://www.baeldung.com/java-runnable-callable)
+=======
+- [Runnable vs. Callable in Java](http://www.baeldung.com/java-runnable-callable)
+- [What is Thread-Safety and How to Achieve it](https://www.baeldung.com/java-thread-safety)
+>>>>>>> upstream/master

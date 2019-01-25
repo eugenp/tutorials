@@ -676,6 +676,7 @@
             <scope>test</scope>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>org.igniterealtime.smack</groupId>
             <artifactId>smack-tcp</artifactId>
@@ -699,6 +700,8 @@
             <artifactId>smack-java7</artifactId>
             <version>${smack.version}</version>
         </dependency>
+=======
+>>>>>>> upstream/master
     </dependencies>
 
     <repositories>
@@ -920,7 +923,10 @@
         <derive4j.version>1.1.0</derive4j.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
+<<<<<<< HEAD
         <smack.version>4.3.1</smack.version>
+=======
+>>>>>>> upstream/master
     </properties>
 
 </project>

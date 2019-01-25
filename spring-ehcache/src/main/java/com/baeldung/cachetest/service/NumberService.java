@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class NumberService {
 
+<<<<<<< HEAD
 	private final static Logger log = LoggerFactory.getLogger(NumberService.class);
 
 	@Cacheable(value = "squareCache", key = "#number", condition = "#number>10")
@@ -18,5 +19,16 @@ public class NumberService {
 		log.info("square of {} is {}", number, square);
 		return square;
 	}
+=======
+    private final static Logger log = LoggerFactory.getLogger(NumberService.class);
+
+    @Cacheable(value = "squareCache", key = "#number", condition = "#number>10")
+    public BigDecimal square(Long number) {
+        BigDecimal square = BigDecimal.valueOf(number)
+            .multiply(BigDecimal.valueOf(number));
+        log.info("square of {} is {}", number, square);
+        return square;
+    }
+>>>>>>> upstream/master
 
 }
