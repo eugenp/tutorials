@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.list.primitive;
 
 import com.google.common.primitives.ImmutableIntArray;
 import com.google.common.primitives.Ints;

@@ -1,4 +1,4 @@
-package com.baeldung.array;
+package com.baeldung.list.primitive;
 
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import gnu.trove.list.array.TIntArrayList;
@@ -9,7 +9,6 @@ import org.openjdk.jmh.runner.options.OptionsBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
