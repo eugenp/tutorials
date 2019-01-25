@@ -29,3 +29,5 @@
 - [Sorting in Java](http://www.baeldung.com/java-sorting)
 - [Join and Split Arrays and Collections in Java](http://www.baeldung.com/java-join-and-split)
 - [A Guide to EnumMap](https://www.baeldung.com/java-enum-map)
+- [A Guide to Iterator in Java](http://www.baeldung.com/java-iterator)
+- [Differences Between HashMap and Hashtable](https://www.baeldung.com/hashmap-hashtable-differences)

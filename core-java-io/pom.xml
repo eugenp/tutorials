@@ -160,6 +160,17 @@
             <version>${opencsv.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- Mime Type Resolution Libraries -->
+        <dependency>
+            <groupId>org.apache.tika</groupId>
+            <artifactId>tika-core</artifactId>
+            <version>${tika.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.jmimemagic</groupId>
+            <artifactId>jmimemagic</artifactId>
+            <version>${jmime-magic.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -264,6 +275,9 @@
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <async-http-client.version>2.4.5</async-http-client.version>
+        <!-- Mime Type Libraries -->
+        <tika.version>1.18</tika.version>
+        <jmime-magic.version>0.1.5</jmime-magic.version>
     </properties>
 
 </project>
