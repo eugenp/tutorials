@@ -79,7 +79,7 @@ public class ResultSetLiveTest {
             }
         }
 
-        assertEquals("Employee information retreived by column ids:", expectedEmployee1, employee);
+        assertEquals("Employee information retreived by column ids.", expectedEmployee1, employee);
     }
 
     @Test
@@ -112,7 +112,7 @@ public class ResultSetLiveTest {
     @Test
     public void givenDbConnectionE_whenRowCount_thenCorrect() throws SQLException {
         int numOfRows = 0;
-        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE); ResultSet rs = pstmt.executeQuery()) {
+        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
             rs.last();
             numOfRows = rs.getRow();
         }
@@ -123,7 +123,7 @@ public class ResultSetLiveTest {
     @Test
     public void givenDbConnectionG_whenAbsoluteNavigation_thenCorrect() throws SQLException {
         Employee secondEmployee = null;
-        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE); ResultSet rs = pstmt.executeQuery()) {
+        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
             rs.absolute(2);
             secondEmployee = populateResultSet(rs);
         }
@@ -145,7 +145,7 @@ public class ResultSetLiveTest {
     @Test
     public void givenDbConnectionI_whenNavigation_thenCorrect() throws SQLException {
         Employee firstEmployee = null;
-        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE); ResultSet rs = pstmt.executeQuery()) {
+        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
                 Employee employee = populateResultSet(rs);
             }
@@ -195,6 +195,7 @@ public class ResultSetLiveTest {
     @Test
     public void givenDbConnectionK_whenUpdate_thenCorrect() throws SQLException {
         int numOfRows = 0;
+        dbConnection.setHoldability(ResultSet.HOLD_CURSORS_OVER_COMMIT);
         try (Statement pstmt = dbConnection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT)) {
             dbConnection.setAutoCommit(false);
             pstmt.executeUpdate("INSERT INTO employees (name, salary,position) VALUES ('Michael',1200.0,'Consultant')");
@@ -211,15 +212,16 @@ public class ResultSetLiveTest {
     }
 
     @Test
-    public void givenDbConnectionL_whenDelete_thenCorrect() throws SQLException {
+    public void givenDbConnectionM_whenDelete_thenCorrect() throws SQLException {
         int numOfRows = 0;
         try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
             rs.absolute(3);
             rs.deleteRow();
+        }
+        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
             rs.last();
             numOfRows = rs.getRow();
         }
-
         assertEquals("Deleted row", 3, numOfRows);
     }
 
@@ -296,13 +298,13 @@ public class ResultSetLiveTest {
     }
 
     @Test
-    public void givenDbConnectionM_whenDelete_thenCorrect() throws SQLException {
+    public void givenDbConnectionL_whenFetch_thenCorrect() throws SQLException {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         List<Employee> listOfEmployees = new ArrayList<Employee>();
         try {
-            pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
-            pstmt.setFetchSize(2);
+            pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            pstmt.setFetchSize(1);
             rs = pstmt.executeQuery();
             rs.setFetchSize(1);
             while (rs.next()) {
@@ -318,7 +320,7 @@ public class ResultSetLiveTest {
                 pstmt.close();
         }
 
-        assertEquals(3, listOfEmployees.size());
+        assertEquals(4, listOfEmployees.size());
     }
 
     @AfterClass
