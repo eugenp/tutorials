@@ -86,8 +86,7 @@ public class PCollectionsUnitTest {
     @Test
     public void whenMapPSetMethods_thenPerformOperations() {
 
-        MapPSet pSet = HashTreePSet.empty()
-          .plusAll(Arrays.asList("e1", "e2", "e3", "e4"));
+        MapPSet pSet = HashTreePSet.empty().plusAll(Arrays.asList("e1", "e2", "e3", "e4"));
         assertEquals(pSet.size(), 4);
 
         MapPSet pSet1 = pSet.minus("e4");

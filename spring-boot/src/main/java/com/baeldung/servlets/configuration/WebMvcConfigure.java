@@ -1,17 +1,17 @@
 package com.baeldung.servlets.configuration;
 
-import org.springframework.boot.web.support.ErrorPageFilter;
+import org.springframework.boot.web.servlet.support.ErrorPageFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.resource.PathResourceResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-public class WebMvcConfigure extends WebMvcConfigurerAdapter {
+public class WebMvcConfigure implements WebMvcConfigurer {
 
     @Bean
     public ViewResolver getViewResolver() {
@@ -28,11 +28,7 @@ public class WebMvcConfigure extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**")
-            .addResourceLocations("/resources/")
-            .setCachePeriod(3600)
-            .resourceChain(true)
-            .addResolver(new PathResourceResolver());
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").setCachePeriod(3600).resourceChain(true).addResolver(new PathResourceResolver());
     }
 
     @Bean

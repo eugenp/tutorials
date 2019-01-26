@@ -1,5 +1,10 @@
 package org.baeldung.userservice;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.baeldung.custom.config.MvcConfig;
 import org.baeldung.custom.config.PersistenceDerbyJPAConfig;
 import org.baeldung.custom.config.SecSecurityConfig;
@@ -8,22 +13,16 @@ import org.baeldung.web.MyUserDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.dao.DuplicateKeyException;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import static org.junit.Assert.*;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = { MvcConfig.class, PersistenceDerbyJPAConfig.class, SecSecurityConfig.class })
+@RunWith(SpringRunner.class)
+@SpringBootTest(classes = { MvcConfig.class, PersistenceDerbyJPAConfig.class, SecSecurityConfig.class })
 @WebAppConfiguration
 public class CustomUserDetailsServiceIntegrationTest {
 

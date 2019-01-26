@@ -1,10 +1,12 @@
 package org.baeldung.java.io;
 
 import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.SequenceInputStream;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
@@ -68,15 +70,37 @@ public class JavaXToInputStreamUnitTest {
 
     @Test
     public final void givenUsingPlainJava_whenConvertingFileToInputStream_thenCorrect() throws IOException {
-        final File initialFile = new File("src/main/resources/sample.txt");
+        final File initialFile = new File("src/test/resources/sample.txt");
         final InputStream targetStream = new FileInputStream(initialFile);
 
         IOUtils.closeQuietly(targetStream);
     }
 
     @Test
+    public final void givenUsingPlainJava_whenConvertingFileToDataInputStream_thenCorrect() throws IOException {
+        final File initialFile = new File("src/test/resources/sample.txt");
+        final InputStream targetStream = new DataInputStream(new FileInputStream(initialFile));
+
+        IOUtils.closeQuietly(targetStream);
+    }
+    
+    @Test
+    public final void givenUsingPlainJava_whenConvertingFileToSequenceInputStream_thenCorrect() throws IOException {
+        final File initialFile = new File("src/test/resources/sample.txt");
+        final File anotherFile = new File("src/test/resources/anothersample.txt");
+        final InputStream targetStream = new FileInputStream(initialFile);
+        final InputStream anotherTargetStream = new FileInputStream(anotherFile);
+        
+        InputStream sequenceTargetStream = new SequenceInputStream(targetStream, anotherTargetStream);
+
+        IOUtils.closeQuietly(targetStream);
+        IOUtils.closeQuietly(anotherTargetStream);
+        IOUtils.closeQuietly(sequenceTargetStream);
+    }
+
+    @Test
     public final void givenUsingGuava_whenConvertingFileToInputStream_thenCorrect() throws IOException {
-        final File initialFile = new File("src/main/resources/sample.txt");
+        final File initialFile = new File("src/test/resources/sample.txt");
         final InputStream targetStream = Files.asByteSource(initialFile).openStream();
 
         IOUtils.closeQuietly(targetStream);
@@ -84,7 +108,7 @@ public class JavaXToInputStreamUnitTest {
 
     @Test
     public final void givenUsingCommonsIO_whenConvertingFileToInputStream_thenCorrect() throws IOException {
-        final File initialFile = new File("src/main/resources/sample.txt");
+        final File initialFile = new File("src/test/resources/sample.txt");
         final InputStream targetStream = FileUtils.openInputStream(initialFile);
 
         IOUtils.closeQuietly(targetStream);

@@ -7,6 +7,12 @@ public class LoginForm {
     public LoginForm() {
     }
 
+    public LoginForm(String username, String password) {
+        super();
+        this.username = username;
+        this.password = password;
+    }
+    
     public String getUsername() {
         return username;
     }

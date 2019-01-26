@@ -32,7 +32,9 @@
 			</tr>
 			<tr>
 				<td><label th:text="#{msg.percent}" /></td>
-				<td><input type="text" th:field="*{percentage}" /></td>
+				<td><select id="percentage" name="percentage">
+						<option th:each="i : ${#numbers.sequence(0, 100)}" th:value="${i}" th:text="${i}" th:selected="${i==75}"></option>
+				</select></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Submit" /></td>

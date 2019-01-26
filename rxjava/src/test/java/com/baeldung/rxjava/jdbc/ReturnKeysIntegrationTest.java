@@ -22,14 +22,14 @@ public class ReturnKeysIntegrationTest {
     @Before
     public void setup() {
         begin = db.beginTransaction();
-        createStatement = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int auto_increment primary key, name varchar(255))")
+        createStatement = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE_SAMPLE(id int auto_increment primary key, name varchar(255))")
           .dependsOn(begin)
           .count();
     }
 
     @Test
     public void whenInsertAndReturnGeneratedKey_thenCorrect() {
-        Integer key = db.update("INSERT INTO EMPLOYEE(name) VALUES('John')")
+        Integer key = db.update("INSERT INTO EMPLOYEE_SAMPLE(name) VALUES('John')")
           .dependsOn(createStatement)
           .returnGeneratedKeys()
           .getAs(Integer.class)
@@ -41,7 +41,7 @@ public class ReturnKeysIntegrationTest {
 
     @After
     public void close() {
-        db.update("DROP TABLE EMPLOYEE")
+        db.update("DROP TABLE EMPLOYEE_SAMPLE")
           .dependsOn(createStatement);
         connectionProvider.close();
     }

@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class XORIntegrationTest {
     private NeuralNetwork ann = null;
 
-     private void print(String input, double output, double actual) {
+    private void print(String input, double output, double actual) {
         System.out.println("Testing: " + input + " Expected: " + actual + " Result: " + output);
     }
 

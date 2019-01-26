@@ -18,7 +18,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = { "org.baeldung.boot.repository", "org.baeldung.boot.boottest","org.baeldung.repository" })
+@EnableJpaRepositories(basePackages = { "org.baeldung.boot.repository", "org.baeldung.boot.boottest", "org.baeldung.repository" })
 @PropertySource("classpath:persistence-generic-entity.properties")
 @EnableTransactionManagement
 public class H2JpaConfig {

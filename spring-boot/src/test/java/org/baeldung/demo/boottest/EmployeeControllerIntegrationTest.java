@@ -45,13 +45,10 @@ public class EmployeeControllerIntegrationTest {
     @Test
     public void whenPostEmployee_thenCreateEmployee() throws Exception {
         Employee alex = new Employee("alex");
-        given(service.save(Mockito.anyObject())).willReturn(alex);
+        given(service.save(Mockito.any())).willReturn(alex);
 
-        mvc.perform(post("/api/employees").contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJson(alex)))
-            .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.name", is("alex")));
-        verify(service, VerificationModeFactory.times(1)).save(Mockito.anyObject());
+        mvc.perform(post("/api/employees").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJson(alex))).andExpect(status().isCreated()).andExpect(jsonPath("$.name", is("alex")));
+        verify(service, VerificationModeFactory.times(1)).save(Mockito.any());
         reset(service);
     }
 
@@ -65,12 +62,8 @@ public class EmployeeControllerIntegrationTest {
 
         given(service.getAllEmployees()).willReturn(allEmployees);
 
-        mvc.perform(get("/api/employees").contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$", hasSize(3)))
-            .andExpect(jsonPath("$[0].name", is(alex.getName())))
-            .andExpect(jsonPath("$[1].name", is(john.getName())))
-            .andExpect(jsonPath("$[2].name", is(bob.getName())));
+        mvc.perform(get("/api/employees").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andExpect(jsonPath("$", hasSize(3))).andExpect(jsonPath("$[0].name", is(alex.getName()))).andExpect(jsonPath("$[1].name", is(john.getName())))
+                .andExpect(jsonPath("$[2].name", is(bob.getName())));
         verify(service, VerificationModeFactory.times(1)).getAllEmployees();
         reset(service);
     }

@@ -1,32 +1,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-cassandra</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>spring-data-cassandra</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>        
+        <artifactId>parent-spring-4</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-spring-4</relativePath>
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
-        <org.springframework.data.version>1.3.2.RELEASE</org.springframework.data.version>
-        <cassandra-driver-core.version>2.1.5</cassandra-driver-core.version>
-        <cassandra-unit-spring.version>2.1.9.2</cassandra-unit-spring.version>
-        <cassandra-unit-shaded.version>2.1.9.2</cassandra-unit-shaded.version>
-        <hector-core.version>2.0-0</hector-core.version>
-        <guava.version>19.0</guava.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -37,7 +23,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>commons-logging</artifactId>
@@ -48,7 +34,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${org.springframework.version}</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -88,38 +74,13 @@
         </dependency>
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>integration</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>test</goal>
-                                </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*LiveTest.java</exclude>
-                                    </excludes>
-                                    <includes>
-                                        <include>**/*IntegrationTest.java</include>
-                                    </includes>
-                                </configuration>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <systemPropertyVariables>
-                                <test.mime>json</test.mime>
-                            </systemPropertyVariables>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
+    <properties>
+        <org.springframework.data.version>1.3.2.RELEASE</org.springframework.data.version>
+        <cassandra-driver-core.version>2.1.5</cassandra-driver-core.version>
+        <cassandra-unit-spring.version>2.1.9.2</cassandra-unit-spring.version>
+        <cassandra-unit-shaded.version>2.1.9.2</cassandra-unit-shaded.version>
+        <hector-core.version>2.0-0</hector-core.version>
+        <guava.version>19.0</guava.version>
+    </properties>
+
 </project>

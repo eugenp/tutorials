@@ -11,8 +11,6 @@ public class AuthorDao {
     }
 
     public Optional<Author> getAuthor(String id) {
-        return authors.stream()
-            .filter(author -> id.equals(author.getId()))
-            .findFirst();
+        return authors.stream().filter(author -> id.equals(author.getId())).findFirst();
     }
 }

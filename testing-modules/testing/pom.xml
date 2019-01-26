@@ -8,63 +8,52 @@
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-modules</artifactId>
-        <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
+        <artifactId>parent-java</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-java</relativePath>
     </parent>
 
     <dependencies>
         <dependency>
             <groupId>com.insightfullogic</groupId>
             <artifactId>lambda-behave</artifactId>
-            <version>0.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
+            <version>${lambda-behave.version}</version>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-guava</artifactId>
-            <version>3.0.0</version>
+            <version>${assertj-guava.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java8</artifactId>
             <version>${cucumber.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.pitest</groupId>
             <artifactId>pitest-parent</artifactId>
             <version>${pitest.version}</version>
             <type>pom</type>
         </dependency>
-        
         <dependency>
             <groupId>com.google.truth</groupId>
             <artifactId>truth</artifactId>
@@ -87,11 +76,11 @@
             <artifactId>jgotesting</artifactId>
             <version>${jgotesting.version}</version>
             <scope>test</scope>
-        </dependency>        
+        </dependency>
         <dependency>
             <groupId>org.jukito</groupId>
             <artifactId>jukito</artifactId>
-            <version>1.5</version>
+            <version>${jukito.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -99,7 +88,13 @@
             <artifactId>javalite-common</artifactId>
             <version>${javalite.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>0.15</version>
+        </dependency>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -179,5 +174,9 @@
         <jUnitParams.version>1.1.0</jUnitParams.version>
         <jgotesting.version>0.12</jgotesting.version>
         <javalite.version>1.4.13</javalite.version>
+        <lambda-behave.version>0.4</lambda-behave.version>
+        <assertj-guava.version>3.0.0</assertj-guava.version>
+        <jukito.version>1.5</jukito.version>
     </properties>
+
 </project>

@@ -7,15 +7,14 @@
     <artifactId>spring-security-thymeleaf-authentication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-
     <name>spring-security-thymeleaf-authentication</name>
     <description>Spring Security thymeleaf authentication tag sample</description>
 
     <parent>
-        <artifactId>parent-boot-5</artifactId>
+        <artifactId>parent-boot-1</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-5</relativePath>
+        <relativePath>../../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
@@ -27,23 +26,18 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>

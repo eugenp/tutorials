@@ -19,7 +19,6 @@ class RecordedSimulation extends Simulation {
 
 
 
-
     val scn = scenario("RecordedSimulation")
         .exec(http("request_0")
             .get("/"))

@@ -31,12 +31,15 @@ public class Supplier {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
 
         Supplier supplier = (Supplier) o;
 
-        if (name != null ? !name.equals(supplier.name) : supplier.name != null) return false;
+        if (name != null ? !name.equals(supplier.name) : supplier.name != null)
+            return false;
         return phoneNumber != null ? phoneNumber.equals(supplier.phoneNumber) : supplier.phoneNumber == null;
     }
 

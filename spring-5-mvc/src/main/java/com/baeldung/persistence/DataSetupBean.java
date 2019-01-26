@@ -16,8 +16,6 @@ public class DataSetupBean implements InitializingBean {
     @Autowired
     private FooRepository repo;
 
-    //
-
     @Override
     public void afterPropertiesSet() throws Exception {
         IntStream.range(1, 5).forEach(i -> repo.save(new Foo(randomAlphabetic(8))));

@@ -73,7 +73,7 @@ public class GuavaMemoizerUnitTest {
         // then
         assertSupplierGetExecutionResultAndDuration(memoizedSupplier, expectedValue, 0D);
         // add one more second until memoized Supplier is evicted from memory
-        TimeUnit.SECONDS.sleep(1);
+        TimeUnit.SECONDS.sleep(3);
         assertSupplierGetExecutionResultAndDuration(memoizedSupplier, expectedValue, 2000D);
     }
 

@@ -14,52 +14,40 @@ public class DockerClientLiveTest {
     @Test
     public void whenCreatingDockerClient_thenReturnDefaultInstance() {
 
-        //when
-        DefaultDockerClientConfig.Builder config
-                = DefaultDockerClientConfig.createDefaultConfigBuilder();
+        // when
+        DefaultDockerClientConfig.Builder config = DefaultDockerClientConfig.createDefaultConfigBuilder();
         DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
 
-        //then
+        // then
         assertNotNull(dockerClient);
     }
 
     @Test
     public void whenCreatingDockerClientWithDockerHost_thenReturnInstance() {
-        //when
-        DockerClient dockerClient
-                = DockerClientBuilder.getInstance("tcp://docker.bealdung.com:2375")
-                .build();
+        // when
+        DockerClient dockerClient = DockerClientBuilder.getInstance("tcp://docker.bealdung.com:2375").build();
 
-        //then
+        // then
         assertNotNull(dockerClient);
     }
 
     @Test
     public void whenCreatingAdvanceDockerClient_thenReturnInstance() {
 
-        //when
-        DefaultDockerClientConfig config
-                = DefaultDockerClientConfig.createDefaultConfigBuilder()
-                .withRegistryEmail("info@bealdung.com")
-                .withRegistryUrl("register.bealdung.io/v2/")
-                .withRegistryPassword("strongpassword")
-                .withRegistryUsername("bealdung")
-                .withDockerCertPath("/home/bealdung/public/.docker/certs")
-                .withDockerConfig("/home/bealdung/public/.docker/")
-                .withDockerTlsVerify("1")
-                .withDockerHost("tcp://docker.beauldung.com:2376")
-                .build();
+        // when
+        DefaultDockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder().withRegistryEmail("info@bealdung.com").withRegistryUrl("register.bealdung.io/v2/").withRegistryPassword("strongpassword").withRegistryUsername("bealdung")
+                .withDockerCertPath("/home/bealdung/public/.docker/certs").withDockerConfig("/home/bealdung/public/.docker/").withDockerTlsVerify("1").withDockerHost("tcp://docker.beauldung.com:2376").build();
 
         DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
 
-        //then
+        // then
         assertNotNull(dockerClient);
     }
 
     @Test
     public void whenCreatingDockerClientWithProperties_thenReturnInstance() {
 
-        //when
+        // when
         Properties properties = new Properties();
         properties.setProperty("registry.email", "info@bealdung.com");
         properties.setProperty("registry.url", "register.bealdung.io/v2/");
@@ -70,14 +58,11 @@ public class DockerClientLiveTest {
         properties.setProperty("DOCKER_TLS_VERIFY", "1");
         properties.setProperty("DOCKER_HOST", "tcp://docker.bealdung.com:2376");
 
-        DefaultDockerClientConfig config
-                = DefaultDockerClientConfig.createDefaultConfigBuilder()
-                .withProperties(properties)
-                .build();
+        DefaultDockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder().withProperties(properties).build();
 
         DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
 
-        //then
+        // then
         assertNotNull(dockerClient);
     }
 }

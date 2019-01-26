@@ -15,8 +15,7 @@ import java.io.IOException;
 public class UserJsonDeserializer extends JsonDeserializer<User> {
     @Override
     public User deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-        TreeNode treeNode = jsonParser.getCodec()
-            .readTree(jsonParser);
+        TreeNode treeNode = jsonParser.getCodec().readTree(jsonParser);
         TextNode favoriteColor = (TextNode) treeNode.get("favoriteColor");
         return new User(Color.web(favoriteColor.asText()));
     }

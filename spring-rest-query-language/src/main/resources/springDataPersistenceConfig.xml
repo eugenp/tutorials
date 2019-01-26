@@ -7,6 +7,6 @@
     http://www.springframework.org/schema/data/jpa/spring-jpa.xsd"
 >
 
-    <jpa:repositories base-package="org.baeldung.persistence.dao"/>
+    <jpa:repositories base-package="com.baeldung.persistence.dao"/>
 
 </beans>
