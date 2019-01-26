@@ -32,19 +32,22 @@ public class ClientErrorLoggingFilter extends GenericFilterBean {
         Authentication auth = SecurityContextHolder.getContext()
             .getAuthentication();
 
-        if (auth != null) {
-            int status = ((HttpServletResponse) response).getStatus();
-            if (status >= 400 && status < 500) {
-                if (errorCodes == null) {
-                    logger.debug("User " + auth.getName() + " encountered error " + status);
-                } else {
-                    if (errorCodes.stream()
-                        .filter(s -> s.value() == status)
-                        .findFirst()
-                        .isPresent()) {
-                        logger.debug("User " + auth.getName() + " encountered error " + status);
-                    }
-                }
+        if (auth == null) {
+            chain.doFilter(request, response);
+            return;
+        }
+        int status = ((HttpServletResponse) response).getStatus();
+        if (status < 400 || status >= 500) {
+            chain.doFilter(request, response);
+            return;
+        }
+
+        if (errorCodes == null) {
+            logger.debug("User " + auth.getName() + " encountered error " + status);
+        } else {
+            if (errorCodes.stream()
+                .anyMatch(s -> s.value() == status)) {
+                logger.debug("User " + auth.getName() + " encountered error " + status);
             }
         }
 

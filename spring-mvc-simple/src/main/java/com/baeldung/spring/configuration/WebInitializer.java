@@ -21,6 +21,8 @@ public class WebInitializer implements WebApplicationInitializer {
         // ctx.register(JadeTemplateConfiguration.class);
         // ctx.register(PushConfiguration.class);
         // ctx.setServletContext(container);
+        
+        //ctx.register(TilesApplicationConfiguration.class);
 
         // Manage the lifecycle of the root application context
         container.addListener(new ContextLoaderListener(ctx));

@@ -7,8 +7,6 @@ class SimpleDeferredManagerDemo {
 
     public static void initiate() {
         DeferredManager dm = new DefaultDeferredManager();
-        dm.when(() -> 1)
-          .done(r -> System.out.println("done"))
-          .fail(Throwable::printStackTrace);
+        dm.when(() -> 1).done(r -> System.out.println("done")).fail(Throwable::printStackTrace);
     }
 }

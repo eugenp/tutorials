@@ -13,7 +13,6 @@ public class AnnotationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("/annotationservlet.jsp")
-            .forward(request, response);
+        request.getRequestDispatcher("/annotationservlet.jsp").forward(request, response);
     }
 }

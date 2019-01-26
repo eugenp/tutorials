@@ -27,138 +27,96 @@ public class ContainerLiveTest {
     @Test
     public void whenListingRunningContainers_thenReturnNonEmptyList() {
 
-        //when
+        // when
         List<Container> containers = dockerClient.listContainersCmd().exec();
 
-        //then
+        // then
         assertThat(containers.size(), is(not(0)));
     }
 
     @Test
     public void whenListingExitedContainers_thenReturnNonEmptyList() {
 
-        //when
-        List<Container> containers = dockerClient.listContainersCmd()
-                .withShowSize(true)
-                .withShowAll(true)
-                .withStatusFilter("exited")
-                .exec();
+        // when
+        List<Container> containers = dockerClient.listContainersCmd().withShowSize(true).withShowAll(true).withStatusFilter("exited").exec();
 
-        //then
+        // then
         assertThat(containers.size(), is(not(0)));
     }
 
     @Test
     public void whenCreatingContainer_thenMustReturnContainerId() {
 
-        //when
-        CreateContainerResponse container
-                = dockerClient.createContainerCmd("mongo:3.6")
-                .withCmd("--bind_ip_all")
-                .withName("mongo")
-                .withHostName("baeldung")
-                .withEnv("MONGO_LATEST_VERSION=3.6")
-                .withPortBindings(PortBinding.parse("9999:27017"))
-                .exec();
+        // when
+        CreateContainerResponse container = dockerClient.createContainerCmd("mongo:3.6").withCmd("--bind_ip_all").withName("mongo").withHostName("baeldung").withEnv("MONGO_LATEST_VERSION=3.6").withPortBindings(PortBinding.parse("9999:27017")).exec();
 
-        //then
+        // then
         assertThat(container.getId(), is(not(null)));
     }
-
 
     @Test
     public void whenHavingContainer_thenRunContainer() throws InterruptedException {
 
-        //when
-        CreateContainerResponse container
-                = dockerClient.createContainerCmd("alpine:3.6")
-                .withCmd("sleep", "10000")
-                .exec();
+        // when
+        CreateContainerResponse container = dockerClient.createContainerCmd("alpine:3.6").withCmd("sleep", "10000").exec();
 
         Thread.sleep(3000);
-        //then
-        dockerClient.startContainerCmd(container.getId())
-                .exec();
+        // then
+        dockerClient.startContainerCmd(container.getId()).exec();
 
-        dockerClient.stopContainerCmd(container.getId())
-                .exec();
+        dockerClient.stopContainerCmd(container.getId()).exec();
     }
 
     @Test
     public void whenRunningContainer_thenStopContainer() throws InterruptedException {
 
-        //when
-        CreateContainerResponse container
-                = dockerClient.createContainerCmd("alpine:3.6")
-                .withCmd("sleep", "10000")
-                .exec();
+        // when
+        CreateContainerResponse container = dockerClient.createContainerCmd("alpine:3.6").withCmd("sleep", "10000").exec();
 
         Thread.sleep(3000);
-        dockerClient.startContainerCmd(container.getId())
-                .exec();
+        dockerClient.startContainerCmd(container.getId()).exec();
 
-        //then
-        dockerClient.stopContainerCmd(container.getId())
-                .exec();
+        // then
+        dockerClient.stopContainerCmd(container.getId()).exec();
     }
 
     @Test
     public void whenRunningContainer_thenKillContainer() throws InterruptedException {
 
-        //when
-        CreateContainerResponse container
-                = dockerClient.createContainerCmd("alpine:3.6")
-                .withCmd("sleep", "10000")
-                .exec();
+        // when
+        CreateContainerResponse container = dockerClient.createContainerCmd("alpine:3.6").withCmd("sleep", "10000").exec();
 
-        dockerClient.startContainerCmd(container.getId())
-                .exec();
+        dockerClient.startContainerCmd(container.getId()).exec();
 
         Thread.sleep(3000);
-        dockerClient.stopContainerCmd(container.getId())
-                .exec();
+        dockerClient.stopContainerCmd(container.getId()).exec();
 
-        //then
-        dockerClient.killContainerCmd(container.getId())
-                .exec();
+        // then
+        dockerClient.killContainerCmd(container.getId()).exec();
     }
 
     @Test
     public void whenHavingContainer_thenInspectContainer() {
 
-        //when
-        CreateContainerResponse container
-                = dockerClient.createContainerCmd("alpine:3.6")
-                .withCmd("sleep", "10000")
-                .exec();
+        // when
+        CreateContainerResponse container = dockerClient.createContainerCmd("alpine:3.6").withCmd("sleep", "10000").exec();
 
-        //then
-        InspectContainerResponse containerResponse
-                = dockerClient.inspectContainerCmd(container.getId())
-                .exec();
+        // then
+        InspectContainerResponse containerResponse = dockerClient.inspectContainerCmd(container.getId()).exec();
 
         assertThat(containerResponse.getId(), is(container.getId()));
     }
 
-
     @Test
     public void givenContainer_whenCommittingContainer_thenMustReturnImageId() {
 
-        //given
-        CreateContainerResponse container
-                = dockerClient.createContainerCmd("alpine:3.6")
-                .withCmd("sleep", "10000")
-                .exec();
+        // given
+        CreateContainerResponse container = dockerClient.createContainerCmd("alpine:3.6").withCmd("sleep", "10000").exec();
 
-        //when
-        String imageId = dockerClient.commitCmd(container.getId())
-                .withEnv("SNAPSHOT_YEAR=2018")
-                .withMessage("add git support")
-                .withCmd("sleep", "10000")
-                .withRepository("alpine")
-                .withTag("3.6.v2").exec();
+        // when
+        String imageId = dockerClient.commitCmd(container.getId()).withEnv("SNAPSHOT_YEAR=2018").withMessage("add git support").withCmd("sleep", "10000").withRepository("alpine").withTag("3.6.v2").exec();
 
-        //then
+        // then
         assertThat(imageId, is(not(null)));
     }
 

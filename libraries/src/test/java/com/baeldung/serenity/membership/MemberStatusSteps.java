@@ -33,7 +33,7 @@ public class MemberStatusSteps {
     @Pending
     @Step("When the member exchange {}")
     public void aMemberExchangeA(Commodity commodity) {
-        //TODO
+        // TODO
     }
 
     @Pending

@@ -19,17 +19,13 @@ public class DistinctWithStreamexUnitTest {
 
     @Test
     public void whenFilterListByName_thenSizeShouldBe4() {
-        List<Person> personListFiltered = StreamEx.of(personList)
-            .distinct(Person::getName)
-            .toList();
+        List<Person> personListFiltered = StreamEx.of(personList).distinct(Person::getName).toList();
         assertTrue(personListFiltered.size() == 4);
     }
 
     @Test
     public void whenFilterListByAge_thenSizeShouldBe2() {
-        List<Person> personListFiltered = StreamEx.of(personList)
-            .distinct(Person::getAge)
-            .toList();
+        List<Person> personListFiltered = StreamEx.of(personList).distinct(Person::getAge).toList();
         assertTrue(personListFiltered.size() == 2);
     }
 

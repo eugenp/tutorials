@@ -7,9 +7,7 @@ import net.openhft.chronicle.ExcerptAppender;
 
 public class ChronicleQueue {
 
-    static void writeToQueue(
-      Chronicle chronicle, String stringValue, int intValue, long longValue, double doubleValue) 
-        throws IOException {
+    static void writeToQueue(Chronicle chronicle, String stringValue, int intValue, long longValue, double doubleValue) throws IOException {
         ExcerptAppender appender = chronicle.createAppender();
         appender.startExcerpt();
         appender.writeUTF(stringValue);

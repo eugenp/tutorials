@@ -24,6 +24,13 @@ public class ZipDirectory {
             return;
         }
         if (fileToZip.isDirectory()) {
+            if (fileName.endsWith("/")) {
+                zipOut.putNextEntry(new ZipEntry(fileName));
+                zipOut.closeEntry();
+            } else {
+                zipOut.putNextEntry(new ZipEntry(fileName + "/"));
+                zipOut.closeEntry();
+            }
             final File[] children = fileToZip.listFiles();
             for (final File childFile : children) {
                 zipFile(childFile, fileName + "/" + childFile.getName(), zipOut);

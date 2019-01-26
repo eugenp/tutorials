@@ -14,12 +14,12 @@ import net.openhft.chronicle.ExcerptTailer;
 import net.openhft.chronicle.tools.ChronicleTools;
 
 public class ChronicleQueueIntegrationTest {
-    
+
     @Test
     public void givenSetOfValues_whenWriteToQueue_thenWriteSuccesfully() throws IOException {
         File queueDir = Files.createTempDirectory("chronicle-queue").toFile();
         ChronicleTools.deleteOnExit(queueDir.getPath());
-        
+
         Chronicle chronicle = ChronicleQueueBuilder.indexed(queueDir).build();
         String stringVal = "Hello World";
         int intVal = 101;
@@ -37,7 +37,7 @@ public class ChronicleQueueIntegrationTest {
         }
         tailer.finish();
         tailer.close();
-        chronicle.close();        
+        chronicle.close();
     }
 
 }

@@ -36,3 +36,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Jackson – Change Name of Field](http://www.baeldung.com/jackson-name-of-property)
 - [Serialize Only Fields that meet a Custom Criteria with Jackson](http://www.baeldung.com/jackson-serialize-field-custom-criteria)
 - [Mapping Nested Values with Jackson](http://www.baeldung.com/jackson-nested-values)
+- [Convert XML to JSON Using Jackson](https://www.baeldung.com/jackson-convert-xml-json)

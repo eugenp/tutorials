@@ -15,9 +15,6 @@ public class JSONObjectDemo {
         
         System.out.println("\n4.3. Creating JSONObject from JSON string: ");
         jsonFromJSONString();
-        
-        System.out.println("\n4.4. Creating JSONObject from Java Bean: ");
-        jsonFromDemoBean();
     }
     
     public static void jsonFromJSONObject() {
@@ -45,15 +42,5 @@ public class JSONObjectDemo {
         );
         
         System.out.println(jo.toString());
-    }
-    
-    public static void jsonFromDemoBean() {
-        DemoBean demo = new DemoBean();
-        demo.setId(1);
-        demo.setName("lorem ipsum");
-        demo.setActive(true);
-         
-        JSONObject jo = new JSONObject(demo);
-        System.out.println(jo);
     }
 }

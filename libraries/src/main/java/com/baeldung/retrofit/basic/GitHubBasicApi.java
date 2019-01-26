@@ -18,7 +18,7 @@ public interface GitHubBasicApi {
      */
     @GET("users/{user}/repos")
     Call<List<Repository>> listRepos(@Path("user") String user);
-    
+
     /**
      * List Contributors of a GitHub Repository
      * @param user GitHub Account
@@ -26,8 +26,6 @@ public interface GitHubBasicApi {
      * @return GitHub Repository Contributors
      */
     @GET("repos/{user}/{repo}/contributors")
-    Call<List<Contributor>> listRepoContributors(
-      @Path("user") String user,
-      @Path("repo") String repo);
-    
+    Call<List<Contributor>> listRepoContributors(@Path("user") String user, @Path("repo") String repo);
+
 }

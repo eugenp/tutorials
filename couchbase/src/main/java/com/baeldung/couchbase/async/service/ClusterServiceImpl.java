@@ -5,6 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.couchbase.client.java.Bucket;
@@ -18,6 +19,11 @@ public class ClusterServiceImpl implements ClusterService {
 
     private Cluster cluster;
     private Map<String, Bucket> buckets = new ConcurrentHashMap<>();
+    
+    @Autowired
+    public ClusterServiceImpl(Cluster cluster) {
+        this.cluster = cluster;
+    }
 
     @PostConstruct
     private void init() {

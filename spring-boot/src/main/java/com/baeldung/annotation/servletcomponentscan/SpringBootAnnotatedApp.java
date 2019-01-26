@@ -4,8 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
-import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
-
 /**
  * using the following annotations are equivalent:
  * <ul><li>
@@ -16,7 +14,7 @@ import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
  * <code>@ServletComponentScan(basePackageClasses = {AttrListener.class, HelloFilter.class, HelloServlet.class, EchoServlet.class})</code>
  * </li></ul>
  */
-@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
+@SpringBootApplication
 @ServletComponentScan("com.baeldung.annotation.servletcomponentscan.components")
 public class SpringBootAnnotatedApp {
 

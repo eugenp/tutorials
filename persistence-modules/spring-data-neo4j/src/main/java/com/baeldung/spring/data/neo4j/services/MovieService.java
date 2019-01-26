@@ -1,9 +1,10 @@
 package com.baeldung.spring.data.neo4j.services;
 
-import com.baeldung.spring.data.neo4j.repostory.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.baeldung.spring.data.neo4j.repository.MovieRepository;
 
 import java.util.*;
 
