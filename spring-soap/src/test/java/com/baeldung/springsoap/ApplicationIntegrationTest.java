@@ -1,4 +1,4 @@
-package soapserver;
+package com.baeldung.springsoap;
 
 import com.baeldung.springsoap.gen.GetCountryRequest;
 import org.junit.Before;
@@ -29,7 +29,7 @@ public class ApplicationIntegrationTest {
     }
 
     @Test
-    public void testSendAndReceive() {
+    public void whenSendRequest_thenResponseIsNotNull() {
         WebServiceTemplate ws = new WebServiceTemplate(marshaller);
         GetCountryRequest request = new GetCountryRequest();
         request.setName("Spain");

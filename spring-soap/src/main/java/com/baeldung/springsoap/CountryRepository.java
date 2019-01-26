@@ -1,4 +1,4 @@
-package soapserver;
+package com.baeldung.springsoap;
 
 import com.baeldung.springsoap.gen.*;
 import org.springframework.stereotype.Component;
