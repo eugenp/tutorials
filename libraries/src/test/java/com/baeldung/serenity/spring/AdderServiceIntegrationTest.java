@@ -14,8 +14,7 @@ import static com.baeldung.serenity.spring.RandomNumberUtil.randomInt;
 @RunWith(SerenityRunner.class)
 public class AdderServiceIntegrationTest {
 
-    @Steps
-    private AdderServiceSteps adderServiceSteps;
+    @Steps private AdderServiceSteps adderServiceSteps;
 
     @Test
     public void givenNumber_whenAdd_thenSummedUp() {

@@ -1,6 +1,7 @@
 package org.baeldung.persistence.deletion.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "BAZ")

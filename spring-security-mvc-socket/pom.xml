@@ -1,27 +1,24 @@
 <?xml version="1.0"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung.springsecuredsockets</groupId>
     <artifactId>spring-security-mvc-socket</artifactId>
+    <packaging>war</packaging>
     <version>1.0.0</version>
     <name>spring-security-mvc-socket</name>
-    <packaging>war</packaging>
-
-    <parent>
-        <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-4</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-4</relativePath>
-    </parent>
-
+    <properties>
+        <springframework.version>4.3.8.RELEASE</springframework.version>
+        <springsecurity.version>4.2.3.RELEASE</springsecurity.version>
+        <jackson.version>2.8.7</jackson.version>
+        <slf4j.version>1.7.25</slf4j.version>
+    </properties>
     <dependencies>
         <!-- Spring Dependencies -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
+            <version>${springframework.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -32,7 +29,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>${spring.version}</version>
+            <version>${springframework.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -43,7 +40,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
+            <version>${springframework.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
@@ -56,80 +53,80 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${spring-security.version}</version>
+            <version>${springsecurity.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${spring-security.version}</version>
+            <version>${springsecurity.version}</version>
         </dependency>
 
         <!-- Data -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>${spring-data-jpa.version}</version>
+            <version>1.11.3.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate-core.version}</version>
+            <version>5.2.10.Final</version>
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>${h2database.version}</version>
+            <version>1.4.196</version>
         </dependency>
 
         <!-- Websockets -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-websocket</artifactId>
-            <version>${spring.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-messaging</artifactId>
-            <version>${spring.version}</version>
+            <version>${springframework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-messaging</artifactId>
-            <version>${spring-security.version}</version>
+            <version>${springsecurity.version}</version>
         </dependency>
 
         <!-- Logging -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j.version}</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback-classic.version}</version>
+            <version>1.2.3</version>
         </dependency>
 
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
+            <version>3.1.0</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl-api</artifactId>
-            <version>${jstl-api.version}</version>
+            <version>1.2</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>javax.servlet.jsp-api</artifactId>
-            <version>${javax.servlet.jsp-api.version}</version>
+            <version>2.3.1</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
+            <version>1.2</version>
         </dependency>
 
         <!-- Jackson Dependencies -->
@@ -148,19 +145,18 @@
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        
-        <!-- Test -->
-        <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<version>1.5.10.RELEASE</version>
-			<scope>test</scope>
-		</dependency>
     </dependencies>
-
     <build>
-      
+        <pluginManagement>
             <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>org.apache.tomcat.maven</groupId>
                     <artifactId>tomcat7-maven-plugin</artifactId>
@@ -179,16 +175,7 @@
                     </configuration>
                 </plugin>
             </plugins>
+        </pluginManagement>
         <finalName>spring-security-mvc-socket</finalName>
     </build>
-
-    <properties>
-        <hibernate-core.version>5.2.10.Final</hibernate-core.version>
-        <spring-security.version>4.2.3.RELEASE</spring-security.version>
-        <spring-data-jpa.version>1.11.3.RELEASE</spring-data-jpa.version>
-        <h2database.version>1.4.196</h2database.version>
-        <logback-classic.version>1.2.3</logback-classic.version>
-        <jackson.version>2.9.7</jackson.version>
-    </properties>
-
 </project>

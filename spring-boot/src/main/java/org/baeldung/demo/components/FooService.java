@@ -12,7 +12,7 @@ public class FooService {
     private FooRepository fooRepository;
 
     public Foo getFooWithId(Integer id) throws Exception {
-        return fooRepository.findById(id).orElse(null);
+        return fooRepository.findOne(id);
     }
 
     public Foo getFooWithName(String name) {

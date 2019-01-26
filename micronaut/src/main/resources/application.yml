@@ -1,5 +1,0 @@
-micronaut:
-    application:
-        name: hello-world-server
-    server:
-        port: 9080

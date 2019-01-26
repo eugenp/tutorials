@@ -28,14 +28,14 @@ public class Log {
                 System.out.println("Had " + count + " commits overall on current branch");
 
                 logs = git.log()
-                        .add(repository.resolve(git.getRepository().getFullBranch()))
+                        .add(repository.resolve("remotes/origin/testbranch"))
                         .call();
                 count = 0;
                 for (RevCommit rev : logs) {
                     System.out.println("Commit: " + rev /* + ", name: " + rev.getName() + ", id: " + rev.getId().getName() */);
                     count++;
                 }
-                System.out.println("Had " + count + " commits overall on "+git.getRepository().getFullBranch());
+                System.out.println("Had " + count + " commits overall on test-branch");
 
                 logs = git.log()
                         .all()

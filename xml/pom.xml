@@ -1,8 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
     <artifactId>xml</artifactId>
     <version>0.1-SNAPSHOT</version>
+
     <name>xml</name>
 
     <parent>
@@ -11,6 +13,32 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jibx.sf.net</id>
+            <name>JiBX repository</name>
+            <url>http://jibx.sf.net/maven2</url>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+    <repositories>
+        <repository>
+            <id>jibx.sf.net</id>
+            <name>JiBX repository</name>
+            <url>http://jibx.sf.net/maven2</url>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
     <dependencies>
         <!-- xml libraries -->
         <dependency>
@@ -23,6 +51,7 @@
             <artifactId>jaxen</artifactId>
             <version>${jaxen.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.jdom</groupId>
@@ -54,12 +83,12 @@
             <artifactId>jibx-run</artifactId>
             <version>${jibx-version}</version>
         </dependency>
-
         <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
             <version>${commons-lang.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -129,6 +158,16 @@
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.7.0</version>                       
+                        <configuration>
+                            <source>${java-version}</source>
+                            <target>${java-version}</target>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire-plugin.version}</version>
                         <configuration>
@@ -138,6 +177,7 @@
                         </configuration>
                     </plugin>
                 </plugins>
+
             </build>
         </profile>
 
@@ -165,6 +205,22 @@
                             <excludes>
                                 <exclude>template-binding.xml</exclude>
                             </excludes>
+                            <verbose>true</verbose>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>process-classes</phase>
+                                <goals>
+                                    <goal>bind</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.jibx</groupId>
+                        <artifactId>maven-jibx-plugin</artifactId>
+                        <version>1.3.1</version>
+                        <configuration>
                             <schemaBindingDirectory>src/main/resources</schemaBindingDirectory>
                             <includeSchemaBindings>
                                 <includeSchemaBindings>*-binding.xml</includeSchemaBindings>
@@ -173,14 +229,6 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <id>process-classes</id>
-                                <phase>process-classes</phase>
-                                <goals>
-                                    <goal>bind</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>process-test-classes</id>
                                 <phase>process-test-classes</phase>
                                 <goals>
                                     <goal>test-bind</goal>
@@ -188,6 +236,7 @@
                             </execution>
                         </executions>
                     </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
@@ -197,7 +246,8 @@
                         </configuration>
                     </plugin>
                     <plugin>
-                        <!-- NOTE: We don't need a groupId specification because the group is org.apache.maven.plugins ...which is assumed by default. -->
+                        <!-- NOTE: We don't need a groupId specification 
+                            because the group is org.apache.maven.plugins ...which is assumed by default. -->
                         <artifactId>maven-assembly-plugin</artifactId>
                         <configuration>
                             <archiveBaseDirectory>${project.basedir}</archiveBaseDirectory>
@@ -216,8 +266,10 @@
                         </configuration>
                         <executions>
                             <execution>
-                                <id>make-assembly</id><!-- this is used for inheritance merges -->
-                                <phase>package</phase><!-- append to the packaging phase. -->
+                                <id>make-assembly</id><!-- this is used for 
+                                    inheritance merges -->
+                                <phase>package</phase><!-- append to the 
+                                    packaging phase. -->
                                 <goals>
                                     <goal>attached</goal><!-- goals == mojos -->
                                 </goals>
@@ -227,8 +279,9 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
 
+
+    </profiles>
     <properties>
         <dom4j.version>1.6.1</dom4j.version>
         <jaxen.version>1.1.6</jaxen.version>
@@ -242,8 +295,12 @@
         <commons-lang.version>2.4</commons-lang.version>
         <java-version>1.8</java-version>
 
+
+
         <!-- maven plugins -->
         <maven-jibx-plugin.version>1.3.1</maven-jibx-plugin.version>
+
     </properties>
 
 </project>
+

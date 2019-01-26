@@ -4,9 +4,10 @@ import com.baeldung.graphql.GraphqlConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 import org.springframework.context.annotation.Import;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
 @Import(GraphqlConfiguration.class)
 public class DemoApplication {
 

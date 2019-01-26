@@ -17,7 +17,8 @@ public enum MyFeatures implements Feature {
     EMPLOYEE_MANAGEMENT_FEATURE;
 
     public boolean isActive() {
-        return FeatureContext.getFeatureManager().isActive(this);
+        return FeatureContext.getFeatureManager()
+            .isActive(this);
     }
 
 }

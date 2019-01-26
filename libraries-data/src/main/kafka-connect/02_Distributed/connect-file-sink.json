@@ -1,9 +1,0 @@
-{
-    "name": "local-file-sink",
-    "config": {
-        "connector.class": "FileStreamSink",
-        "tasks.max": 1,
-        "file": "test-distributed.sink.txt",
-        "topics": "connect-distributed"
-    }
-}

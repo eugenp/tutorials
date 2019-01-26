@@ -2,6 +2,7 @@ package com.baeldung.eclipsecollections;
 
 import java.util.List;
 
+import org.eclipse.collections.api.list.MutableList;
 import org.eclipse.collections.impl.set.mutable.UnifiedSet;
 
 public class ConvertContainerToAnother {

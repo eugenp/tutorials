@@ -4,7 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-@SpringBootApplication
+import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
+
+@SpringBootApplication(exclude = MySQLAutoconfiguration.class)
 public class Application {
     private static ApplicationContext applicationContext;
 

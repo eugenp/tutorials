@@ -1,5 +1,8 @@
 package org.baeldung.config;
 
+import java.text.SimpleDateFormat;
+import java.util.List;
+
 import org.baeldung.config.converter.KryoHttpMessageConverter;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,10 +17,7 @@ import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.oxm.xstream.XStreamMarshaller;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-import java.text.SimpleDateFormat;
-import java.util.List;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /*
  * Please note that main web configuration is in src/main/webapp/WEB-INF/api-servlet.xml
@@ -25,7 +25,7 @@ import java.util.List;
 @Configuration
 @EnableWebMvc
 @ComponentScan({ "org.baeldung.web" })
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig extends WebMvcConfigurerAdapter {
 
     public WebConfig() {
         super();
@@ -48,6 +48,7 @@ public class WebConfig implements WebMvcConfigurer {
         messageConverters.add(new ProtobufHttpMessageConverter());
         messageConverters.add(new KryoHttpMessageConverter());
         messageConverters.add(new StringHttpMessageConverter());
+        super.configureMessageConverters(messageConverters);
     }
 
     private HttpMessageConverter<Object> createXmlHttpMessageConverter() {

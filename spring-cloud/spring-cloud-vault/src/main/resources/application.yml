@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: fakebank
-    
-  datasource:
-    url: jdbc:mysql://localhost:3306/fakebank

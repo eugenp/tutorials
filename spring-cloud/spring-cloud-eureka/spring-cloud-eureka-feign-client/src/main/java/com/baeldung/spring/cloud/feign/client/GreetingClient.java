@@ -1,10 +1,8 @@
 package com.baeldung.spring.cloud.feign.client;
 
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.baeldung.spring.cloud.eureka.client.GreetingController;
+import org.springframework.cloud.netflix.feign.FeignClient;
 
 @FeignClient("spring-cloud-eureka-client")
-public interface GreetingClient {
-    @RequestMapping("/greeting")
-    String greeting();
+public interface GreetingClient extends GreetingController {
 }

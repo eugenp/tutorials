@@ -1,1 +1,0 @@
-This example shows how we can delete the file contents without deleting the file

@@ -25,7 +25,7 @@ public class CacheRefinementsIntegrationTest extends AbstractJUnit4SpringContext
             executorService.execute(() -> service.getFoo("test").printInstanceNumber());
         }
         executorService.awaitTermination(1, TimeUnit.SECONDS);
-        assertEquals(1, Foo.getInstanceCount());
+        assertEquals(Foo.getInstanceCount(), 1);
     }
 
 }

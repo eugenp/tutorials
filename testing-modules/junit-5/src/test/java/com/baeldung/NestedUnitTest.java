@@ -10,13 +10,13 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public class NestedUnitTest {
-
     Stack<Object> stack;
+    boolean isRun = false;
 
     @Test
     @DisplayName("is instantiated with new Stack()")
     void isInstantiatedWithNew() {
-        new Stack<>();
+        new Stack<Object>();
     }
 
     @Nested
@@ -25,7 +25,7 @@ public class NestedUnitTest {
 
         @BeforeEach
         void init() {
-            stack = new Stack<>();
+            stack = new Stack<Object>();
         }
 
         @Test

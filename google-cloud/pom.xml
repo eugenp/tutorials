@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-storage</artifactId>
-            <version>${google-cloud-storage.version}</version>
+            <version>1.16.0</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -31,7 +31,8 @@
 
     <properties>
         <lombok.version>1.16.18</lombok.version>
-        <google-cloud-storage.version>1.16.0</google-cloud-storage.version>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
 </project>

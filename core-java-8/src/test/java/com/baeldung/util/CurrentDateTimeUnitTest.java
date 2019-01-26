@@ -39,4 +39,5 @@ public class CurrentDateTimeUnitTest {
 
         assertEquals(clock.instant().getEpochSecond(), now.getEpochSecond());
     }
+
 }

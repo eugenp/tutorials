@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.baeldung.spring.form.GeoIP;
 import com.baeldung.spring.service.RawDBDemoGeoIPLocationService;
 
-//@Controller
-//add db file and uncomment to see the working example
+@Controller
 public class GeoIPTestController {
     private RawDBDemoGeoIPLocationService locationService;
 

@@ -1,14 +1,11 @@
 package com.baeldung.classloader;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class CustomClassLoader extends ClassLoader {
 
-    @Override
-    public Class findClass(String name) throws ClassNotFoundException {
+
+    public Class getClass(String name) throws ClassNotFoundException {
         byte[] b = loadClassFromFile(name);
         return defineClass(name, b, 0, b.length);
     }

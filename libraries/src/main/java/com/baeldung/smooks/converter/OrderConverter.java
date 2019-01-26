@@ -21,6 +21,7 @@ public class OrderConverter {
             smooks.close();
         }
     }
+    
 
     public String convertOrderXMLtoEDIFACT(String path) throws IOException, SAXException {
         return convertDocumentWithTempalte(path, "/smooks/smooks-transform-edi.xml");

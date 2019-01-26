@@ -14,20 +14,13 @@ public class AppInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext container) throws ServletException {
         AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-        
-        context.scan("com.baeldung");
+        context.setConfigLocation("org.baeldung.config");
 
         container.addListener(new ContextLoaderListener(context));
 
-        ServletRegistration.Dynamic dispatcher = container.addServlet("mvc", new DispatcherServlet(context));
+        ServletRegistration.Dynamic dispatcher = container.addServlet("java-servlet", new DispatcherServlet(context));
         dispatcher.setLoadOnStartup(1);
-        dispatcher.addMapping("/");
-        
-        // final MultipartConfigElement multipartConfigElement = new
-        // MultipartConfigElement(TMP_FOLDER, MAX_UPLOAD_SIZE,
-        // MAX_UPLOAD_SIZE * 2, MAX_UPLOAD_SIZE / 2);
-        //
-        // appServlet.setMultipartConfig(multipartConfigElement);
+        dispatcher.addMapping("/java-servlet/*");
     }
 
 }

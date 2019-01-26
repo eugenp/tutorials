@@ -44,6 +44,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return StmUtils.atomic((TxnCallable<String>) txn -> "Balance: " + balance.get(txn) + " lastUpdateDate: " + lastUpdate.get(txn));
+        return StmUtils.atomic((TxnCallable<String>)
+          txn -> "Balance: " + balance.get(txn) + " lastUpdateDate: " + lastUpdate.get(txn));
     }
 }

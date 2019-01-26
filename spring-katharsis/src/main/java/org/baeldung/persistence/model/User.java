@@ -1,9 +1,9 @@
 package org.baeldung.persistence.model;
 
 import io.katharsis.resource.annotations.JsonApiId;
-import io.katharsis.resource.annotations.JsonApiRelation;
+import io.katharsis.resource.annotations.JsonApiIncludeByDefault;
 import io.katharsis.resource.annotations.JsonApiResource;
-import io.katharsis.resource.annotations.SerializeType;
+import io.katharsis.resource.annotations.JsonApiToMany;
 
 import java.util.Set;
 
@@ -31,7 +31,8 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    @JsonApiRelation(serialize=SerializeType.EAGER)
+    @JsonApiToMany
+    @JsonApiIncludeByDefault
     private Set<Role> roles;
 
     public User() {
@@ -86,19 +87,15 @@ public class User {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj) {
+        if (this == obj)
             return true;
-        }
-        if (obj == null) {
+        if (obj == null)
             return false;
-        }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
             return false;
-        }
         final User user = (User) obj;
-        if (!email.equals(user.email)) {
+        if (!email.equals(user.email))
             return false;
-        }
         return true;
     }
 

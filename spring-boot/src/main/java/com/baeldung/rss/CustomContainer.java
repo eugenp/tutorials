@@ -1,17 +1,16 @@
 package com.baeldung.rss;
 
-import org.springframework.boot.web.server.WebServerFactoryCustomizer;
-import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomContainer implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {
+public class CustomContainer implements EmbeddedServletContainerCustomizer {
 
     @Override
-    public void customize(ConfigurableServletWebServerFactory factory) {
-        factory.setContextPath("");
-        factory.setPort(8080);
-
+    public void customize(ConfigurableEmbeddedServletContainer container) {
+        container.setPort(8080);
+        container.setContextPath("");
     }
 
 }

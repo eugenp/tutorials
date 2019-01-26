@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <appender name="LISTAPPENDER" class="com.stackify.slf4j.guide.utils.ListAppender">
-    </appender>
-    <root level="trace">
-        <appender-ref ref="LISTAPPENDER" />
-    </root>
-</configuration>

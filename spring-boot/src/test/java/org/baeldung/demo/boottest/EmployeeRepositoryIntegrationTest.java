@@ -43,13 +43,13 @@ public class EmployeeRepositoryIntegrationTest {
         Employee emp = new Employee("test");
         entityManager.persistAndFlush(emp);
 
-        Employee fromDb = employeeRepository.findById(emp.getId()).orElse(null);
+        Employee fromDb = employeeRepository.findById(emp.getId());
         assertThat(fromDb.getName()).isEqualTo(emp.getName());
     }
 
     @Test
     public void whenInvalidId_thenReturnNull() {
-        Employee fromDb = employeeRepository.findById(-11l).orElse(null);
+        Employee fromDb = employeeRepository.findById(-11L);
         assertThat(fromDb).isNull();
     }
 
@@ -66,6 +66,8 @@ public class EmployeeRepositoryIntegrationTest {
 
         List<Employee> allEmployees = employeeRepository.findAll();
 
-        assertThat(allEmployees).hasSize(3).extracting(Employee::getName).containsOnly(alex.getName(), ron.getName(), bob.getName());
+        assertThat(allEmployees).hasSize(3)
+            .extracting(Employee::getName)
+            .containsOnly(alex.getName(), ron.getName(), bob.getName());
     }
 }

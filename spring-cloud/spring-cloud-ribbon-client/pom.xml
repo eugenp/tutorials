@@ -2,18 +2,22 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-cloud-ribbon-client</artifactId>
+    <artifactId>spring-cloud-ribbon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>spring-cloud-ribbon-client</name>
     <description>Introduction to Spring Cloud Rest Client with Netflix Ribbon</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-5</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../../parent-boot-1</relativePath>
+        <relativePath>../../parent-boot-5</relativePath>
     </parent>
+
+    <properties>
+        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -38,8 +42,60 @@
         </dependencies>
     </dependencyManagement>
 
-    <properties>
-        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
-    </properties>
+    <repositories>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <build>
+
+                <plugins>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+
+            </build>
+        </profile>
+    </profiles>
 </project>

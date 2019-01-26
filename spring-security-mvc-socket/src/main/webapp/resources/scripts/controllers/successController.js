@@ -1,12 +1,13 @@
 'use strict';
 
 angularApp
-.controller('successController', function ($scope) {
-  $scope.successMsg = '';
+    .controller('successController', function ($scope) {
 
-  $scope.initialize = function () {
-    $scope.successMsg = "You've logged in!";
-  };
+        $scope.successMsg = '';
 
-  $scope.initialize();
-});
+        $scope.initialize = function () {
+            $scope.successMsg = "You've logged in!";
+        };
+
+        $scope.initialize();
+    });

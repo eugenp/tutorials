@@ -3,7 +3,9 @@ package com.baeldung.junit5.mockito;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +16,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.stubbing.Answer;
 
 import com.baeldung.junit5.mockito.repository.MailClient;
@@ -24,24 +25,21 @@ import com.baeldung.junit5.mockito.service.DefaultUserService;
 import com.baeldung.junit5.mockito.service.Errors;
 import com.baeldung.junit5.mockito.service.UserService;
 
-@ExtendWith(MockitoExtension.class)
 @RunWith(JUnitPlatform.class)
+@ExtendWith(MockitoExtension.class)
 public class UserServiceUnitTest {
     
     UserService userService;
-    SettingRepository settingRepository;
     @Mock UserRepository userRepository;
-    @Mock MailClient mailClient;
-
+    
     User user;
     
     @BeforeEach
-    void init(@Mock SettingRepository settingRepository) {
+    void init(@Mock SettingRepository settingRepository, @Mock MailClient mailClient) {
         userService = new DefaultUserService(userRepository, settingRepository, mailClient);
-        lenient().when(settingRepository.getUserMinAge()).thenReturn(10);
+        when(settingRepository.getUserMinAge()).thenReturn(10);
         when(settingRepository.getUserNameMinLength()).thenReturn(4);
-        lenient().when(userRepository.isUsernameAlreadyExists(any(String.class))).thenReturn(false);
-        this.settingRepository = settingRepository;
+        when(userRepository.isUsernameAlreadyExists(any(String.class))).thenReturn(false);
     }
     
     @Test
@@ -58,9 +56,7 @@ public class UserServiceUnitTest {
                 return user;
             }
         });
-
-        userService = new DefaultUserService(userRepository, settingRepository, mailClient);
-
+        
         // When
         User insertedUser = userService.register(user);
         

@@ -19,7 +19,9 @@ final class DataObject {
 
     @Override
     public String toString() {
-        return "DataObject{" + "data='" + data + '\'' + '}';
+        return "DataObject{" +
+                "data='" + data + '\'' +
+                '}';
     }
 
     public static DataObject get(String data) {

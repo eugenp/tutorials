@@ -1,5 +1,6 @@
 package com.baeldung.javers;
 
+
 import java.util.List;
 
 public class PersonWithAddress {

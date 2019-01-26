@@ -1,9 +1,7 @@
 package org.baeldung.persistence.katharsis;
 
-
-import io.katharsis.queryspec.QuerySpec;
-import io.katharsis.repository.ResourceRepositoryV2;
-import io.katharsis.resource.list.ResourceList;
+import io.katharsis.queryParams.QueryParams;
+import io.katharsis.repository.ResourceRepository;
 
 import org.baeldung.persistence.dao.RoleRepository;
 import org.baeldung.persistence.model.Role;
@@ -11,23 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RoleResourceRepository implements ResourceRepositoryV2<Role, Long> {
+public class RoleResourceRepository implements ResourceRepository<Role, Long> {
 
-    @Autowired private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Override
-    public Role findOne(Long id, QuerySpec querySpec) {
+    public Role findOne(Long id, QueryParams params) {
         return roleRepository.findOne(id);
     }
 
     @Override
-    public ResourceList<Role> findAll(QuerySpec querySpec) {
-        return querySpec.apply(roleRepository.findAll());
+    public Iterable<Role> findAll(QueryParams params) {
+        return roleRepository.findAll();
     }
 
     @Override
-    public ResourceList<Role> findAll(Iterable<Long> ids, QuerySpec querySpec) {
-        return querySpec.apply(roleRepository.findAll(ids));
+    public Iterable<Role> findAll(Iterable<Long> ids, QueryParams params) {
+        return roleRepository.findAll(ids);
     }
 
     @Override
@@ -38,16 +37,6 @@ public class RoleResourceRepository implements ResourceRepositoryV2<Role, Long> 
     @Override
     public void delete(Long id) {
         roleRepository.delete(id);
-    }
-
-    @Override
-    public Class<Role> getResourceClass() {
-        return Role.class;
-    }
-
-    @Override
-    public <S extends Role> S create(S entity) {
-        return save(entity);
     }
 
 }

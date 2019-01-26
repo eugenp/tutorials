@@ -1,1 +1,0 @@
-The façade pattern is a software-design pattern commonly used with object-oriented programming.

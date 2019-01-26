@@ -1,6 +1,5 @@
 package org.baeldung.web.controller;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -19,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping(value = "/custom")
 public class LoginController {
 
-    @Resource(name="authenticationManager")
+    @Autowired
     private AuthenticationManager authManager;
 
     public LoginController() {

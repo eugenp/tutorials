@@ -4,14 +4,15 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-security-mvc-ldap</artifactId>
     <version>0.1-SNAPSHOT</version>
+
     <name>spring-security-mvc-ldap</name>
     <packaging>war</packaging>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-5</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-5</relativePath>
     </parent>
 
     <dependencies>

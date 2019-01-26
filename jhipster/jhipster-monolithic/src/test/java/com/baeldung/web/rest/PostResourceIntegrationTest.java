@@ -90,7 +90,7 @@ public class PostResourceIntegrationTest {
             .content(DEFAULT_CONTENT)
             .creationDate(DEFAULT_CREATION_DATE);
         // Add required entity
-        User creator = UserResourceIntegrationTest.createEntity(em);
+        User creator = UserResourceIntTest.createEntity(em);
         em.persist(creator);
         em.flush();
         post.setCreator(creator);

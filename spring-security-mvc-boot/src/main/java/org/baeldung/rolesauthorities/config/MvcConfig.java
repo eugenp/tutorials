@@ -7,11 +7,11 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @EnableWebMvc
-public class MvcConfig implements WebMvcConfigurer {
+public class MvcConfig extends WebMvcConfigurerAdapter {
 
     public MvcConfig() {
         super();
@@ -30,6 +30,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(final ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
         registry.addViewController("/").setViewName("forward:/home");
 		registry.addViewController("/protectedbynothing").setViewName("rolesauthorities/protectedbynothing");
 		registry.addViewController("/protectedbyrole").setViewName("rolesauthorities/protectedbyrole");

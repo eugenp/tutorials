@@ -18,9 +18,9 @@ public class TestLauncher {
 
         //@formatter:off
         LauncherDiscoveryRequest request = LauncherDiscoveryRequestBuilder.request()
-                .selectors(selectClass("com.baeldung.EmployeesUnitTest"))
+                .selectors(selectClass("com.baeldung.EmployeesTest"))
                 .configurationParameter("junit.conditions.deactivate", "com.baeldung.extensions.*")
-                .configurationParameter("junit.jupiter.extensions.autodetection.enabled", "true")
+                .configurationParameter("junit.extensions.autodetection.enabled", "true")
                 .build();
         
         //@formatter:on

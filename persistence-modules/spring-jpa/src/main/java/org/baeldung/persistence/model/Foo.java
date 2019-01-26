@@ -25,7 +25,7 @@ public class Foo implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
-    private Long id;
+    private long id;
     @Column(name = "NAME")
     private String name;
 
@@ -41,11 +41,11 @@ public class Foo implements Serializable {
         this.bar = bar;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(final Long id) {
+    public void setId(final int id) {
         this.id = id;
     }
 

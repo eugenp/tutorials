@@ -1,5 +1,19 @@
 package com.baeldung.rest.wiremock.introduction;
 
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.junit.Rule;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.containing;
 import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
@@ -15,46 +29,16 @@ import static com.github.tomakehurst.wiremock.client.WireMock.urlPathMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static org.junit.Assert.assertEquals;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.ServerSocket;
-import java.util.Scanner;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.junit.Rule;
-import org.junit.Test;
-import com.github.tomakehurst.wiremock.junit.WireMockRule;
-
 public class JUnitManagedIntegrationTest {
 
     private static final String BAELDUNG_WIREMOCK_PATH = "/baeldung/wiremock";
     private static final String APPLICATION_JSON = "application/json";
-    static int port;
-    
-    static {
-        
-        try {
-            // Get a free port
-            ServerSocket s = new ServerSocket(0);
-            port = s.getLocalPort();
-            s.close();
-            
-        } catch (IOException e) {
-            // No OPS
-        }
-    }
-    
+
     @Rule
-    public WireMockRule wireMockRule = new WireMockRule(port);
+    public WireMockRule wireMockRule = new WireMockRule();
 
     @Test
     public void givenJUnitManagedServer_whenMatchingURL_thenCorrect() throws IOException {
-        
         stubFor(get(urlPathMatching("/baeldung/.*"))
                 .willReturn(aResponse()
                         .withStatus(200)
@@ -62,7 +46,7 @@ public class JUnitManagedIntegrationTest {
                         .withBody("\"testing-library\": \"WireMock\"")));
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet request = new HttpGet(String.format("http://localhost:%s/baeldung/wiremock", port));
+        HttpGet request = new HttpGet("http://localhost:8080/baeldung/wiremock");
         HttpResponse httpResponse = httpClient.execute(request);
         String stringResponse = convertHttpResponseToString(httpResponse);
 
@@ -82,7 +66,7 @@ public class JUnitManagedIntegrationTest {
                         .withBody("!!! Service Unavailable !!!")));
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet request = new HttpGet(String.format("http://localhost:%s/baeldung/wiremock", port));
+        HttpGet request = new HttpGet("http://localhost:8080/baeldung/wiremock");
         request.addHeader("Accept", "text/html");
         HttpResponse httpResponse = httpClient.execute(request);
         String stringResponse = convertHttpResponseToString(httpResponse);
@@ -107,7 +91,7 @@ public class JUnitManagedIntegrationTest {
         StringEntity entity = new StringEntity(jsonString);
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost request = new HttpPost(String.format("http://localhost:%s/baeldung/wiremock", port));
+        HttpPost request = new HttpPost("http://localhost:8080/baeldung/wiremock");
         request.addHeader("Content-Type", APPLICATION_JSON);
         request.setEntity(entity);
         HttpResponse response = httpClient.execute(request);
@@ -153,7 +137,7 @@ public class JUnitManagedIntegrationTest {
 
     private HttpResponse generateClientAndReceiveResponseForPriorityTests() throws IOException {
         CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpGet request = new HttpGet(String.format("http://localhost:%s/baeldung/wiremock", port));
+        HttpGet request = new HttpGet("http://localhost:8080/baeldung/wiremock");
         request.addHeader("Accept", "text/xml");
         return httpClient.execute(request);
     }

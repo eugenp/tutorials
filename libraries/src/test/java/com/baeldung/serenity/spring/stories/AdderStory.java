@@ -11,8 +11,7 @@ import org.jbehave.core.annotations.When;
  */
 public class AdderStory {
 
-    @Steps
-    AdderRestSteps restSteps;
+    @Steps AdderRestSteps restSteps;
 
     @Given("a number")
     public void givenANumber() throws Exception {

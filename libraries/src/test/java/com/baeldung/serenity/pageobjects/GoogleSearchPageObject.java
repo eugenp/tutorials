@@ -24,7 +24,9 @@ public class GoogleSearchPageObject extends PageObject {
     }
 
     public void resultMatches(String expected) {
-        withTimeoutOf(5, SECONDS).waitFor(result).waitUntilVisible();
+        withTimeoutOf(5, SECONDS)
+          .waitFor(result)
+          .waitUntilVisible();
         assertThat(result.getText(), containsString(expected));
     }
 

@@ -27,25 +27,19 @@ public class ScopesConfig {
 
     @Bean
     @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public HelloMessageGenerator requestScopedBean() {
+    public HelloMessageGenerator requestMessage() {
         return new HelloMessageGenerator();
     }
 
     @Bean
     @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public HelloMessageGenerator sessionScopedBean() {
+    public HelloMessageGenerator sessionMessage() {
         return new HelloMessageGenerator();
     }
 
     @Bean
-    @Scope(value = WebApplicationContext.SCOPE_APPLICATION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public HelloMessageGenerator applicationScopedBean() {
-        return new HelloMessageGenerator();
-    }
-
-    @Bean
-    @Scope(scopeName = "websocket", proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public HelloMessageGenerator websocketScopedBean() {
+    @Scope(value = WebApplicationContext.SCOPE_GLOBAL_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public HelloMessageGenerator globalSessionMessage() {
         return new HelloMessageGenerator();
     }
 

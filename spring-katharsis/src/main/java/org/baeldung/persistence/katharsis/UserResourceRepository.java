@@ -1,8 +1,7 @@
 package org.baeldung.persistence.katharsis;
 
-import io.katharsis.queryspec.QuerySpec;
-import io.katharsis.repository.ResourceRepositoryV2;
-import io.katharsis.resource.list.ResourceList;
+import io.katharsis.queryParams.QueryParams;
+import io.katharsis.repository.ResourceRepository;
 
 import org.baeldung.persistence.dao.UserRepository;
 import org.baeldung.persistence.model.User;
@@ -10,24 +9,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserResourceRepository implements ResourceRepositoryV2<User, Long> {
+public class UserResourceRepository implements ResourceRepository<User, Long> {
 
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public User findOne(Long id, QuerySpec querySpec) {
+    public User findOne(Long id, QueryParams params) {
         return userRepository.findOne(id);
     }
 
     @Override
-    public ResourceList<User> findAll(QuerySpec querySpec) {
-        return querySpec.apply(userRepository.findAll());
+    public Iterable<User> findAll(QueryParams params) {
+        return userRepository.findAll();
     }
 
     @Override
-    public ResourceList<User> findAll(Iterable<Long> ids, QuerySpec querySpec) {
-        return querySpec.apply(userRepository.findAll(ids));
+    public Iterable<User> findAll(Iterable<Long> ids, QueryParams params) {
+        return userRepository.findAll(ids);
     }
 
     @Override
@@ -38,16 +37,6 @@ public class UserResourceRepository implements ResourceRepositoryV2<User, Long> 
     @Override
     public void delete(Long id) {
         userRepository.delete(id);
-    }
-
-    @Override
-    public Class<User> getResourceClass() {
-        return User.class;
-    }
-
-    @Override
-    public <S extends User> S create(S entity) {
-        return save(entity);
     }
 
 }

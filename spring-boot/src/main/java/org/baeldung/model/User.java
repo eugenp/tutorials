@@ -15,14 +15,6 @@ public class User {
     private String name;
     private Integer status;
 
-    public User() {
-    }
-
-    public User(String name, Integer status) {
-        this.name = name;
-        this.status = status;
-    }
-
     public Integer getId() {
         return id;
     }

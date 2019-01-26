@@ -13,6 +13,9 @@ public class GoogleSearchResults implements Question<List<String>> {
     }
 
     public List<String> answeredBy(Actor actor) {
-        return Text.of(GoogleSearchPage.SEARCH_RESULT_TITLES).viewedBy(actor).asList();
+        return Text
+          .of(GoogleSearchPage.SEARCH_RESULT_TITLES)
+          .viewedBy(actor)
+          .asList();
     }
 }

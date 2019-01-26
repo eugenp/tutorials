@@ -20,7 +20,3 @@ org.baeldung.springquartz.SpringQuartzApp
     ```
     using.spring.schedulerFactory=false
     ```
-
-### Relevant Articles: 
-- [Scheduling in Spring with Quartz](http://www.baeldung.com/spring-quartz-schedule)
-    

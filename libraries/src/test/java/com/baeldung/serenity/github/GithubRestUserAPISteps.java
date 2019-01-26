@@ -43,6 +43,9 @@ public class GithubRestUserAPISteps {
 
     private static HttpResponse getGithubUserProfile(String api, String username) throws IOException {
         HttpUriRequest request = new HttpGet(String.format(api, username));
-        return HttpClientBuilder.create().build().execute(request);
+        return HttpClientBuilder
+          .create()
+          .build()
+          .execute(request);
     }
 }

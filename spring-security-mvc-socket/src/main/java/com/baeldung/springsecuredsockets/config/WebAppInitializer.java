@@ -1,5 +1,6 @@
 package com.baeldung.springsecuredsockets.config;
 
+import org.hibernate.cfg.Configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;

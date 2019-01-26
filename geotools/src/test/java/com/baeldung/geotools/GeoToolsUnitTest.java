@@ -3,6 +3,7 @@ package com.baeldung.geotools;
 import static org.junit.Assert.assertNotNull;
 
 import org.geotools.feature.DefaultFeatureCollection;
+import org.geotools.feature.simple.SimpleFeatureBuilder;
 import org.junit.Test;
 import org.opengis.feature.simple.SimpleFeatureType;
 
@@ -18,5 +19,4 @@ public class GeoToolsUnitTest {
 
         assertNotNull(collection);
     }
-    
 }

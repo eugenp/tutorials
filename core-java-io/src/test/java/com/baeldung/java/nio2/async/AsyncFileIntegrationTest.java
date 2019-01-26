@@ -17,19 +17,18 @@ import java.util.concurrent.Future;
 import static org.junit.Assert.assertEquals;
 
 public class AsyncFileIntegrationTest {
-
     @Test
     public void givenPath_whenReadsContentWithFuture_thenCorrect() throws IOException, ExecutionException, InterruptedException {
-        final Path path = Paths.get(URI.create(this.getClass().getClassLoader().getResource("file.txt").toString()));
-        final AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
+        Path path = Paths.get(URI.create(this.getClass().getClassLoader().getResource("file.txt").toString()));
+        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
 
-        final ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
 
-        final Future<Integer> operation = fileChannel.read(buffer, 0);
+        Future<Integer> operation = fileChannel.read(buffer, 0);
 
         operation.get();
 
-        final String fileContent = new String(buffer.array()).trim();
+        String fileContent = new String(buffer.array()).trim();
         buffer.clear();
 
         assertEquals(fileContent, "baeldung.com");
@@ -37,16 +36,18 @@ public class AsyncFileIntegrationTest {
 
     @Test
     public void givenPath_whenReadsContentWithCompletionHandler_thenCorrect() throws IOException {
-        final Path path = Paths.get(URI.create(this.getClass().getClassLoader().getResource("file.txt").toString()));
-        final AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
+        Path path = Paths.get(URI.create(AsyncFileIntegrationTest.class.getResource("/file.txt").toString()));
+        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
 
-        final ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
 
         fileChannel.read(buffer, 0, buffer, new CompletionHandler<Integer, ByteBuffer>() {
+
             @Override
             public void completed(Integer result, ByteBuffer attachment) {
                 // result is number of bytes read
                 // attachment is the buffer
+
             }
 
             @Override
@@ -58,40 +59,42 @@ public class AsyncFileIntegrationTest {
 
     @Test
     public void givenPathAndContent_whenWritesToFileWithFuture_thenCorrect() throws IOException, ExecutionException, InterruptedException {
-        final String fileName = "temp";
-        final Path path = Paths.get(fileName);
-        final AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
+        String fileName = "temp";
+        Path path = Paths.get(fileName);
+        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE);
 
-        final ByteBuffer buffer = ByteBuffer.allocate(1024);
-        final long position = 0;
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        long position = 0;
 
         buffer.put("hello world".getBytes());
         buffer.flip();
 
-        final Future<Integer> operation = fileChannel.write(buffer, position);
+        Future<Integer> operation = fileChannel.write(buffer, position);
         buffer.clear();
 
         operation.get();
 
-        final String content = readContent(path);
+        String content = readContent(path);
         assertEquals("hello world", content);
     }
 
     @Test
     public void givenPathAndContent_whenWritesToFileWithHandler_thenCorrect() throws IOException {
-        final String fileName = UUID.randomUUID().toString();
-        final Path path = Paths.get(fileName);
-        final AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.DELETE_ON_CLOSE);
+        String fileName = UUID.randomUUID().toString();
+        Path path = Paths.get(fileName);
+        AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.WRITE, StandardOpenOption.CREATE, StandardOpenOption.DELETE_ON_CLOSE);
 
-        final ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
         buffer.put("hello world".getBytes());
         buffer.flip();
 
         fileChannel.write(buffer, 0, buffer, new CompletionHandler<Integer, ByteBuffer>() {
+
             @Override
             public void completed(Integer result, ByteBuffer attachment) {
                 // result is number of bytes written
                 // attachment is the buffer
+
             }
 
             @Override
@@ -101,25 +104,23 @@ public class AsyncFileIntegrationTest {
         });
     }
 
-    //
-
-    private String readContent(Path file) throws ExecutionException, InterruptedException {
+    public static String readContent(Path file) throws ExecutionException, InterruptedException {
         AsynchronousFileChannel fileChannel = null;
         try {
             fileChannel = AsynchronousFileChannel.open(file, StandardOpenOption.READ);
         } catch (IOException e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        final ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
 
-        final Future<Integer> operation = fileChannel.read(buffer, 0);
+        Future<Integer> operation = fileChannel.read(buffer, 0);
 
         operation.get();
 
-        final String fileContent = new String(buffer.array()).trim();
+        String fileContent = new String(buffer.array()).trim();
         buffer.clear();
         return fileContent;
     }
-
 }

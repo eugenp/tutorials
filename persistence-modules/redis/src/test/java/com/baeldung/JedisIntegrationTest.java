@@ -1,45 +1,28 @@
 package com.baeldung;
 
+import org.junit.*;
+import redis.clients.jedis.*;
+import redis.embedded.RedisServer;
+
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
-import redis.clients.jedis.JedisPoolConfig;
-import redis.clients.jedis.Pipeline;
-import redis.clients.jedis.Response;
-import redis.clients.jedis.Transaction;
-import redis.embedded.RedisServer;
-
 public class JedisIntegrationTest {
 
-    private static Jedis jedis;
+    private Jedis jedis;
     private static RedisServer redisServer;
-    private static int port;
+
+    public JedisIntegrationTest() {
+        jedis = new Jedis();
+    }
 
     @BeforeClass
     public static void setUp() throws IOException {
-        
-        // Take an available port
-        ServerSocket s = new ServerSocket(0);
-        port = s.getLocalPort();
-        s.close();
-        
-        redisServer = new RedisServer(port);
+        redisServer = new RedisServer(6379);
         redisServer.start();
-        
-        // Configure JEDIS
-        jedis = new Jedis("localhost", port);
     }
 
     @AfterClass
@@ -144,8 +127,8 @@ public class JedisIntegrationTest {
         scores.put("PlayerTwo", 1500.0);
         scores.put("PlayerThree", 8200.0);
 
-        scores.entrySet().forEach(playerScore -> {
-            jedis.zadd(key, playerScore.getValue(), playerScore.getKey());
+        scores.keySet().forEach(player -> {
+            jedis.zadd(key, scores.get(player), player);
         });
 
         Set<String> players = jedis.zrevrange(key, 0, 1);
@@ -195,7 +178,7 @@ public class JedisIntegrationTest {
     public void givenAPoolConfiguration_thenCreateAJedisPool() {
         final JedisPoolConfig poolConfig = buildPoolConfig();
 
-        try (JedisPool jedisPool = new JedisPool(poolConfig, "localhost", port); Jedis jedis = jedisPool.getResource()) {
+        try (JedisPool jedisPool = new JedisPool(poolConfig, "localhost"); Jedis jedis = jedisPool.getResource()) {
 
             // do simple operation to verify that the Jedis resource is working
             // properly

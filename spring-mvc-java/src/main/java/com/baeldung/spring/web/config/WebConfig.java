@@ -3,105 +3,40 @@ package com.baeldung.spring.web.config;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Description;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 import org.springframework.web.servlet.view.XmlViewResolver;
 import org.springframework.web.util.UrlPathHelper;
-import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+import com.baeldung.excel.*;
 
-import com.baeldung.excel.ExcelPOIHelper;
-
-@EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = { "com.baeldung.web.controller" })
-public class WebConfig implements WebMvcConfigurer {
+@EnableWebMvc
+@ComponentScan("com.baeldung.web")
+public class WebConfig extends WebMvcConfigurerAdapter {
 
-	 @Autowired
-	    private ServletContext ctx;
-	
-    @Override
-    public void addViewControllers(final ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-    }
-    
-    @Bean
-    public ViewResolver thymeleafViewResolver() {
-        final ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-        viewResolver.setTemplateEngine(templateEngine());
-        viewResolver.setOrder(1);
-        return viewResolver;
+    public WebConfig() {
+        super();
     }
 
-    @Bean
-    public ViewResolver viewResolver() {
-        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
-        bean.setViewClass(JstlView.class);
-        bean.setPrefix("/WEB-INF/view/");
-        bean.setSuffix(".jsp");
-        bean.setOrder(0);
-        return bean;
-    }
+    // @Bean
+    // public StandardServletMultipartResolver multipartResolver() {
+    // return new StandardServletMultipartResolver();
+    // }
 
-    @Bean
-    @Description("Thymeleaf template resolver serving HTML 5")
-    public ServletContextTemplateResolver templateResolver() {
-        final ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(ctx);
-        templateResolver.setPrefix("/WEB-INF/templates/");
-        templateResolver.setSuffix(".html");
-        templateResolver.setTemplateMode("HTML5");
-        return templateResolver;
-    }
-
-    @Bean
-    @Description("Thymeleaf template engine with Spring integration")
-    public SpringTemplateEngine templateEngine() {
-        final SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-        templateEngine.setTemplateResolver(templateResolver());
-        return templateEngine;
-    }
-
-    @Bean
-    @Description("Spring message resolver")
-    public MessageSource messageSource() {
-        final ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-        messageSource.setBasename("messages");
-        return messageSource;
-    }
-
-    @Override
-    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
-    
-    @Override
-    public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
-        configurer.favorPathExtension(false).favorParameter(true).parameterName("mediaType").ignoreAcceptHeader(true).useRegisteredExtensionsOnly(false).defaultContentType(MediaType.APPLICATION_JSON).mediaType("xml", MediaType.APPLICATION_XML).mediaType("json",
-                MediaType.APPLICATION_JSON);
-    }
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver multipartResolver() {
 
@@ -110,7 +45,23 @@ public class WebConfig implements WebMvcConfigurer {
 
         return multipartResolver;
     }
-    
+
+    @Override
+    public void addViewControllers(final ViewControllerRegistry registry) {
+        super.addViewControllers(registry);
+        registry.addViewController("/sample.html");
+    }
+
+    @Bean
+    public ViewResolver internalResourceViewResolver() {
+        final InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setViewClass(JstlView.class);
+        bean.setPrefix("/WEB-INF/view/");
+        bean.setSuffix(".jsp");
+        bean.setOrder(2);
+        return bean;
+    }
+
     @Bean
     public ViewResolver xmlViewResolver() {
         final XmlViewResolver bean = new XmlViewResolver();
@@ -161,4 +112,5 @@ public class WebConfig implements WebMvcConfigurer {
     public ExcelPOIHelper excelPOIHelper() {
         return new ExcelPOIHelper();
     }
+
 }

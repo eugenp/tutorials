@@ -21,7 +21,9 @@ public class HelloServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
-            response.getOutputStream().write(servletConfig.getInitParameter("msg").getBytes());
+            response.getOutputStream()
+                .write(servletConfig.getInitParameter("msg")
+                    .getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }

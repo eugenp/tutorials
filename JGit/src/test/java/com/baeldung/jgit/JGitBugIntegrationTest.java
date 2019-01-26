@@ -1,5 +1,3 @@
-package com.baeldung.jgit;
-
 import com.baeldung.jgit.helper.Helper;
 import org.eclipse.jgit.lib.ObjectLoader;
 import org.eclipse.jgit.lib.ObjectReader;

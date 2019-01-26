@@ -10,5 +10,7 @@
 
 	<context:component-scan base-package="com.baeldung.contexts.services" />
 	
-	<import resource="greeting.xml" />
+	<bean id="greeting" class="ccom.baeldung.contexts.Greeting">
+		<property name="message" value="Hello World !!" />
+	</bean>
 </beans>

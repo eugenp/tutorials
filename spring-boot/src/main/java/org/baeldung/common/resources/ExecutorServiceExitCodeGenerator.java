@@ -1,9 +1,9 @@
 package org.baeldung.common.resources;
 
-import org.springframework.boot.ExitCodeGenerator;
-
 import java.util.Objects;
 import java.util.concurrent.ExecutorService;
+
+import org.springframework.boot.ExitCodeGenerator;
 
 public class ExecutorServiceExitCodeGenerator implements ExitCodeGenerator {
 
@@ -14,15 +14,16 @@ public class ExecutorServiceExitCodeGenerator implements ExitCodeGenerator {
 
     @Override
     public int getExitCode() {
+        int returnCode = 0;
         try {
             if (!Objects.isNull(executorService)) {
                 executorService.shutdownNow();
-                return 1;
+                returnCode = 1;
             }
-
-            return 0;
         } catch (SecurityException ex) {
-            return 0;
+            returnCode = 0;
         }
+        return returnCode;
     }
+
 }

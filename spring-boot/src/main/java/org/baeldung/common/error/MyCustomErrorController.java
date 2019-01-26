@@ -1,7 +1,7 @@
 package org.baeldung.common.error;
 
-import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.boot.autoconfigure.web.ErrorController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 public class MyCustomErrorController implements ErrorController {
 
@@ -11,9 +11,9 @@ public class MyCustomErrorController implements ErrorController {
         // TODO Auto-generated constructor stub
     }
 
-    @GetMapping(value = PATH)
+    @RequestMapping(value = PATH)
     public String error() {
-        return "Error haven";
+        return "Error heaven";
     }
 
     @Override

@@ -3,7 +3,6 @@ package com.baeldung.springsecuredsockets.transfer.socket;
 public class Message {
 
     private String from;
-    private String to;
     private String text;
 
     public String getFrom() {
@@ -11,13 +10,6 @@ public class Message {
     }
     public void setFrom(String from) {
         this.from = from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-    public void setTo(String to) {
-        this.to = to;
     }
     public String getText() {
         return text;

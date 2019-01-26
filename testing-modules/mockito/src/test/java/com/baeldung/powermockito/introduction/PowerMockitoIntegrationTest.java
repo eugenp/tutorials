@@ -7,8 +7,6 @@ import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.powermock.api.mockito.PowerMockito.*;
 
 @RunWith(PowerMockRunner.class)
@@ -25,7 +23,7 @@ public class PowerMockitoIntegrationTest {
 
         when(collaborator.helloMethod()).thenReturn("Hello Baeldung!");
         String welcome = collaborator.helloMethod();
-        verify(collaborator).helloMethod();
+        Mockito.verify(collaborator).helloMethod();
         assertEquals("Hello Baeldung!", welcome);
     }
 
@@ -44,7 +42,7 @@ public class PowerMockitoIntegrationTest {
         assertEquals("Hello Baeldung!", firstWelcome);
         assertEquals("Hello Baeldung!", secondWelcome);
 
-        verifyStatic(times(2));
+        verifyStatic(Mockito.times(2));
         CollaboratorWithStaticMethods.firstMethod(Mockito.anyString());
 
         verifyStatic(Mockito.never());
@@ -69,7 +67,7 @@ public class PowerMockitoIntegrationTest {
 
         when(mock.finalMethod()).thenReturn("I am a final mock method.");
         returnValue = mock.finalMethod();
-        verify(mock,times(3)).finalMethod();
+        Mockito.verify(mock).finalMethod();
         assertEquals("I am a final mock method.", returnValue);
 
         when(mock, "privateMethod").thenReturn("I am a private mock method.");

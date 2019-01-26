@@ -25,8 +25,7 @@ public class AdderMethodDirtiesContextDependencyWorkaroundIntegrationTest {
 
     private AdderConstructorDependencySteps adderSteps;
 
-    @Autowired
-    private AdderService adderService;
+    @Autowired private AdderService adderService;
 
     @Before
     public void init() {
@@ -39,8 +38,7 @@ public class AdderMethodDirtiesContextDependencyWorkaroundIntegrationTest {
         adderSteps.summedUp();
     }
 
-    @Rule
-    public SpringIntegrationMethodRule springIntegration = new SpringIntegrationMethodRule();
+    @Rule public SpringIntegrationMethodRule springIntegration = new SpringIntegrationMethodRule();
 
     @DirtiesContext
     @Test

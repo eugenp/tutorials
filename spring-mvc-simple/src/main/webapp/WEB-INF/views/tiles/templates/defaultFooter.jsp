@@ -1,2 +1,0 @@
-
-<footer>copyright © Baeldung</footer>

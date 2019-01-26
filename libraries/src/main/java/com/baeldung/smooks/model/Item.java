@@ -15,6 +15,7 @@ public class Item {
     private Double price;
     private Integer quantity;
 
+
     public String getCode() {
         return code;
     }
@@ -41,17 +42,13 @@ public class Item {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
         Item item = (Item) o;
 
-        if (code != null ? !code.equals(item.code) : item.code != null)
-            return false;
-        if (price != null ? !price.equals(item.price) : item.price != null)
-            return false;
+        if (code != null ? !code.equals(item.code) : item.code != null) return false;
+        if (price != null ? !price.equals(item.price) : item.price != null) return false;
         return quantity != null ? quantity.equals(item.quantity) : item.quantity == null;
     }
 
@@ -65,6 +62,10 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "code='" + code + '\'' + ", price=" + price + ", quantity=" + quantity + '}';
+        return "Item{" +
+                "code='" + code + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                '}';
     }
 }

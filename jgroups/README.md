@@ -1,7 +1,7 @@
 ## Reliable Messaging with JGroups Tutorial Project
 
 ### Relevant Article:
-- [Reliable Messaging with JGroups](http://www.baeldung.com/jgroups)
+- [Reliable Messaging with JGroups](http://www.baeldung.com/reliable-messaging-with-jgroups/)
 
 ### Overview
 This Maven project contains the Java code for the article linked above.

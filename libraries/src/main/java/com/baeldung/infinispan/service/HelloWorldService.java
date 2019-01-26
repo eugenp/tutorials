@@ -15,8 +15,11 @@ public class HelloWorldService {
     private final Cache<String, String> evictingHelloWorldCache;
     private final Cache<String, String> passivatingHelloWorldCache;
 
-    public HelloWorldService(HelloWorldRepository repository, CacheListener listener, Cache<String, String> simpleHelloWorldCache, Cache<String, String> expiringHelloWorldCache, Cache<String, String> evictingHelloWorldCache,
-            Cache<String, String> passivatingHelloWorldCache) {
+    public HelloWorldService(HelloWorldRepository repository, CacheListener listener,
+      Cache<String, String> simpleHelloWorldCache,
+      Cache<String, String> expiringHelloWorldCache,
+      Cache<String, String> evictingHelloWorldCache,
+      Cache<String, String> passivatingHelloWorldCache) {
 
         this.repository = repository;
 
@@ -63,7 +66,7 @@ public class HelloWorldService {
 
     public String findEvictingHelloWorld(String key) {
         String value = evictingHelloWorldCache.get(key);
-        if (value == null) {
+        if(value == null) {
             value = repository.getHelloWorld();
             evictingHelloWorldCache.put(key, value);
         }

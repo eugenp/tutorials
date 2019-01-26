@@ -18,27 +18,26 @@ public class AutomapInterfaceIntegrationTest {
     private ConnectionProvider connectionProvider = Connector.connectionProvider;
     private Database db = Database.from(connectionProvider);
 
-    private Observable<Integer> truncate = null;
+    private Observable<Integer> create = null;
     private Observable<Integer> insert1, insert2 = null;
 
     @Before
     public void setup() {
-        Observable<Integer> create = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
+        create = db.update("CREATE TABLE IF NOT EXISTS EMPLOYEE(id int primary key, name varchar(255))")
           .count();
-        truncate = db.update("TRUNCATE TABLE EMPLOYEE")
-           .dependsOn(create)
-           .count();
         insert1 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(1, 'Alan')")
-          .dependsOn(truncate)
+          .dependsOn(create)
           .count();
         insert2 = db.update("INSERT INTO EMPLOYEE(id, name) VALUES(2, 'Sarah')")
-          .dependsOn(insert1)
+          .dependsOn(create)
           .count();
     }
 
     @Test
     public void whenSelectFromTableAndAutomap_thenCorrect() {
         List<Employee> employees = db.select("select id, name from EMPLOYEE")
+          .dependsOn(create)
+          .dependsOn(insert1)
           .dependsOn(insert2)
           .autoMap(Employee.class)
           .toList()
@@ -58,7 +57,7 @@ public class AutomapInterfaceIntegrationTest {
     @After
     public void close() {
         db.update("DROP TABLE EMPLOYEE")
-          .dependsOn(truncate);
+          .dependsOn(create);
         connectionProvider.close();
     }
 }

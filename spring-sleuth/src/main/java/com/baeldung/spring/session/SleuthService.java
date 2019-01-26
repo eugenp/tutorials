@@ -3,12 +3,10 @@ package com.baeldung.spring.session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.sleuth.Span;
+import org.springframework.cloud.sleuth.Tracer;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-
-import brave.Span;
-import brave.Tracer;
-import brave.Tracer.SpanInScope;
 
 @Service
 public class SleuthService {
@@ -28,12 +26,12 @@ public class SleuthService {
     public void doSomeWorkNewSpan() throws InterruptedException {
         logger.info("I'm in the original span");
 
-        Span newSpan = tracer.newTrace().name("newSpan").start();
-        try (SpanInScope ws = tracer.withSpanInScope(newSpan.start())) {
+        Span newSpan = tracer.createSpan("newSpan");
+        try {
             Thread.sleep(1000L);
             logger.info("I'm in the new span doing some cool work that needs its own span");
         } finally {
-        	newSpan.finish();
+            tracer.close(newSpan);
         }
 
         logger.info("I'm in the original span");

@@ -5,21 +5,40 @@
     <artifactId>spring-thymeleaf</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-	<name>spring-thymeleaf</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
+
+    <properties>
+        <java-version>1.8</java-version>
+        <!-- spring -->
+        <org.springframework-version>4.3.4.RELEASE</org.springframework-version>
+        <springframework-security.version>4.2.0.RELEASE</springframework-security.version>
+        <javax.servlet-version>3.1.0</javax.servlet-version>
+        <!-- thymeleaf -->
+        <org.thymeleaf-version>3.0.3.RELEASE</org.thymeleaf-version>
+        <org.thymeleaf.extras-version>3.0.0.RELEASE</org.thymeleaf.extras-version>
+        <thymeleaf-layout-dialect.version>2.1.2</thymeleaf-layout-dialect.version>
+        <!-- validation -->
+        <javax.validation-version>1.1.0.Final</javax.validation-version>
+        <hibernate-validator.version>5.3.3.Final</hibernate-validator.version>
+        <org.hibernate-version>5.2.5.Final</org.hibernate-version>
+
+        <!-- Maven plugins -->
+        <maven-war-plugin.version>2.6</maven-war-plugin.version>
+        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
+        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
+    </properties>
 
     <dependencies>
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring.version}</version>
+            <version>${org.springframework-version}</version>
             <exclusions>
                 <!-- Exclude Commons Logging in favor of SLF4j -->
                 <exclusion>
@@ -31,38 +50,19 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
+            <version>${org.springframework-version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>${spring-data.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>${javax.validation-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-
         <!-- Spring Security -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${spring-security.version}</version>
+            <version>${springframework-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${spring-security.version}</version>
+            <version>${springframework-security.version}</version>
         </dependency>
-        
         <!-- Thymeleaf -->
         <dependency>
             <groupId>org.thymeleaf</groupId>
@@ -71,9 +71,10 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
+            <artifactId>thymeleaf-spring4</artifactId>
             <version>${org.thymeleaf-version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect -->
         <dependency>
             <groupId>nz.net.ultraq.thymeleaf</groupId>
             <artifactId>thymeleaf-layout-dialect</artifactId>
@@ -84,30 +85,40 @@
             <artifactId>thymeleaf-extras-java8time</artifactId>
             <version>${org.thymeleaf.extras-version}</version>
         </dependency>
-
         <!-- Servlet -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
+            <version>${javax.servlet-version}</version>
             <scope>provided</scope>
         </dependency>
-
+        <!-- Validation -->
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${javax.validation-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
         <!-- test scoped -->
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
+            <version>${org.springframework-version}</version>
             <scope>test</scope>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-test -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
-            <version>${spring-security.version}</version>
+            <version>${springframework-security.version}</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -120,7 +131,6 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.codehaus.cargo</groupId>
                 <artifactId>cargo-maven2-plugin</artifactId>
@@ -128,7 +138,7 @@
                 <configuration>
                     <wait>true</wait>
                     <container>
-                        <containerId>jetty9x</containerId>
+                        <containerId>jetty8x</containerId>
                         <type>embedded</type>
                         <systemProperties>
                         </systemProperties>
@@ -140,7 +150,6 @@
                     </configuration>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
@@ -164,17 +173,38 @@
         </plugins>
     </build>
 
-    <properties>
-        <spring-data.version>2.0.9.RELEASE</spring-data.version>
-        <org.thymeleaf-version>3.0.9.RELEASE</org.thymeleaf-version>
-        <org.thymeleaf.extras-version>3.0.1.RELEASE</org.thymeleaf.extras-version>
-        <thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
-        <javax.validation-version>2.0.1.Final</javax.validation-version>
-        <hibernate-validator.version>6.0.11.Final</hibernate-validator.version>
-
-        <!-- Maven plugins -->
-        <cargo-maven2-plugin.version>1.6.1</cargo-maven2-plugin.version>
-        <tomcat7-maven-plugin.version>2.2</tomcat7-maven-plugin.version>
-    </properties>
-
+    <profiles>
+        <profile>
+            <id>integration</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*LiveTest.java</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IntegrationTest.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <test.mime>json</test.mime>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

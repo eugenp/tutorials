@@ -29,7 +29,7 @@ public class FooLiveTest {
         // }
         // return RestAssured.given().cookie("JSESSIONID", cookie);
         return RestAssured.given()
-            .auth().preemptive()
+            .auth()
             .basic("user", "userPass");
     }
 

@@ -1,5 +1,6 @@
 package com.baeldung.javasisst;
 
+
 public class ThreeDimensionalPoint {
     public int x = 0;
     public int y = 0;

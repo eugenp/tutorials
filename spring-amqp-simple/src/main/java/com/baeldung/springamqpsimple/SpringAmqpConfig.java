@@ -35,7 +35,7 @@ public class SpringAmqpConfig {
     }
 
     @Bean
-    SimpleMessageListenerContainer springAmqpContainer(ConnectionFactory connectionFactory,
+    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
             MessageListenerAdapter listenerAdapter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);

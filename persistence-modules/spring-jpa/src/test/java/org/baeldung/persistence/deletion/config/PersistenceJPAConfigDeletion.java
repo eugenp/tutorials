@@ -2,6 +2,8 @@ package org.baeldung.persistence.deletion.config;
 
 import org.baeldung.config.PersistenceJPAConfigL2Cache;
 
+import java.util.Properties;
+
 public class PersistenceJPAConfigDeletion extends PersistenceJPAConfigL2Cache {
 
     public PersistenceJPAConfigDeletion() {
@@ -10,6 +12,6 @@ public class PersistenceJPAConfigDeletion extends PersistenceJPAConfigL2Cache {
 
     @Override
     protected String[] getPackagesToScan() {
-        return new String[] { "org.baeldung.persistence.deletion.model", "org.baeldung.persistence.model" };
+        return new String[] { "org.baeldung.persistence.deletion.model" };
     }
 }

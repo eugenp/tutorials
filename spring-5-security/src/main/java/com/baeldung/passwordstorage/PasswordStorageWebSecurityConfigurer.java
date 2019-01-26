@@ -21,6 +21,7 @@ import java.util.Map;
 @Configuration
 public class PasswordStorageWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.eraseCredentials(false) // 4
@@ -30,11 +31,8 @@ public class PasswordStorageWebSecurityConfigurer extends WebSecurityConfigurerA
 
     @Bean
     public UserDetailsService getUserDefaultDetailsService() {
-        return new InMemoryUserDetailsManager(User
-          .withUsername("baeldung")
-          .password("{noop}SpringSecurity5")
-          .authorities(Collections.emptyList())
-          .build());
+        User testUser = new User("baeldung", "{noop}SpringSecurity5", Collections.emptyList());
+        return new InMemoryUserDetailsManager(testUser);
     }
 
     @Bean

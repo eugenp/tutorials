@@ -8,11 +8,11 @@ import java.util.concurrent.TimeUnit;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Configuration
 @ComponentScan("org.baeldung.core")
-public class CoreConfig implements WebMvcConfigurer {
+public class CoreConfig extends WebMvcConfigurerAdapter {
 
     public CoreConfig() {
         super();

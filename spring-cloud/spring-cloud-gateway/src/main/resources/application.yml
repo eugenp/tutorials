@@ -8,9 +8,6 @@ spring:
         uri: http://www.baeldung.com
         predicates:
         - Path=/baeldung
-        
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+  security:
+    enabled: false

@@ -17,7 +17,7 @@ import java.io.IOException;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.baeldung.springdispatcherservlet")
-public class AppConfig implements WebMvcConfigurer {
+public class AppConfig extends WebMvcConfigurerAdapter {
 
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");

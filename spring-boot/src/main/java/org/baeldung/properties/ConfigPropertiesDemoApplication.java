@@ -1,15 +1,15 @@
 package org.baeldung.properties;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
-@ComponentScan(basePackageClasses = { ConfigProperties.class, JsonProperties.class, CustomJsonProperties.class })
+import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
+
+@EnableAutoConfiguration(exclude = MySQLAutoconfiguration.class)
+@ComponentScan(basePackageClasses = ConfigProperties.class)
 public class ConfigPropertiesDemoApplication {
     public static void main(String[] args) {
-        new SpringApplicationBuilder(ConfigPropertiesDemoApplication.class).initializers(new JsonPropertyContextInitializer())
-            .run();
+        SpringApplication.run(ConfigPropertiesDemoApplication.class);
     }
-
 }

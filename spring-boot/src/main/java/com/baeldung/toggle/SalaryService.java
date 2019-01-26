@@ -11,7 +11,7 @@ public class SalaryService {
 
     @FeatureAssociation(value = MyFeatures.EMPLOYEE_MANAGEMENT_FEATURE)
     public void increaseSalary(long id) {
-        Employee employee = employeeRepository.findById(id).orElse(null);
+        Employee employee = employeeRepository.findOne(id);
         employee.setSalary(employee.getSalary() + employee.getSalary() * 0.1);
         employeeRepository.save(employee);
     }
