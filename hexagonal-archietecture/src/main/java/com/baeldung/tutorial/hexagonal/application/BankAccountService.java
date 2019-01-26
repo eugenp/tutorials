@@ -4,5 +4,5 @@ import java.math.BigDecimal;
 
 public interface BankAccountService {
 
-        void withdraw(String bankAccountId, BigDecimal withdrawalAmount);
+    void withdraw(String bankAccountId, BigDecimal withdrawalAmount);
 }
