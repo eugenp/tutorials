@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -13,10 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
@@ -61,7 +65,8 @@ public class PassengerRepositoryIntegrationTest {
     public void givenSeveralPassengersWhenFindPageSortedByThenThePassengerInTheFirstFilledSeatIsReturned() {
         Passenger expected = Passenger.from("Fred", "Bloggs", 22);
 
-        Page<Passenger> page = repository.findAll(PageRequest.of(0, 1, Sort.by(Sort.Direction.ASC, "seatNumber")));
+        Page<Passenger> page = repository.findAll(PageRequest.of(0, 1,
+          Sort.by(Sort.Direction.ASC, "seatNumber")));
 
         assertEquals(page.getContent().size(), 1);
 
@@ -94,5 +99,61 @@ public class PassengerRepositoryIntegrationTest {
 
         assertThat(passengers, contains(fred, ricki, jill, siya, eve));
     }
-    
+
+    @Test
+    public void givenPassengers_whenFindByExampleDefaultMatcher_thenExpectedReturned() {
+        Example<Passenger> example = Example.of(Passenger.from("Fred", "Bloggs", null));
+
+        Optional<Passenger> actual = repository.findOne(example);
+
+        assertTrue(actual.isPresent());
+        assertEquals(actual.get(), Passenger.from("Fred", "Bloggs", 22));
+    }
+
+    @Test
+    public void givenPassengers_whenFindByExampleCaseInsensitiveMatcher_thenExpectedReturned() {
+        ExampleMatcher caseInsensitiveExampleMatcher = ExampleMatcher.matchingAll().withIgnoreCase();
+        Example<Passenger> example = Example.of(Passenger.from("fred", "bloggs", null),
+          caseInsensitiveExampleMatcher);
+
+        Optional<Passenger> actual = repository.findOne(example);
+
+        assertTrue(actual.isPresent());
+        assertEquals(actual.get(), Passenger.from("Fred", "Bloggs", 22));
+    }
+
+    @Test
+    public void givenPassengers_whenFindByExampleCustomMatcher_thenExpectedReturned() {
+        Passenger jill = Passenger.from("Jill", "Smith", 50);
+        Passenger eve = Passenger.from("Eve", "Jackson", 95);
+        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
+
+        ExampleMatcher customExampleMatcher = ExampleMatcher.matchingAny().withMatcher("firstName",
+          ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase()).withMatcher("lastName",
+          ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+
+        Example<Passenger> example = Example.of(Passenger.from("e", "s", null),
+          customExampleMatcher);
+
+        List<Passenger> passengers = repository.findAll(example);
+
+        assertThat(passengers, contains(jill, eve, fred, siya));
+    }
+
+@Test
+public void givenPassengers_whenFindByIgnoringMatcher_thenExpectedReturned() {
+    Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+    Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
+
+    ExampleMatcher ignoringExampleMatcher = ExampleMatcher.matchingAny().withMatcher("lastName",
+      ExampleMatcher.GenericPropertyMatchers.startsWith().ignoreCase()).withIgnorePaths("firstName", "seatNumber");
+
+    Example<Passenger> example = Example.of(Passenger.from(null, "b", null),
+      ignoringExampleMatcher);
+
+    List<Passenger> passengers = repository.findAll(example);
+
+    assertThat(passengers, contains(fred, ricki));
+}
 }
