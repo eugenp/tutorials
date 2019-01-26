@@ -21,4 +21,20 @@ public class BuilderInheritanceUsingMethodNameUnitTest {
         assertThat(child.getParentAge()).isEqualTo(38);
     }
 
+    @Test
+    public void givenSuperBuilderOnAllThreeLevels_StudentInheritingChildAndParentIsBuilt() {
+        Student student = Student.studentBuilder()
+                .parentName("Andrea")
+                .parentAge(38)
+                .childName("Emma")
+                .childAge(6)
+                .schoolName("Baeldung High School")
+                .build();
+
+        assertThat(student.getChildName()).isEqualTo("Emma");
+        assertThat(student.getChildAge()).isEqualTo(6);
+        assertThat(student.getParentName()).isEqualTo("Andrea");
+        assertThat(student.getParentAge()).isEqualTo(38);
+        assertThat(student.getSchoolName()).isEqualTo("Baeldung High School");
+    }
 }
