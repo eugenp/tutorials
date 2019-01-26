@@ -249,7 +249,6 @@
         <module>spring-jinq</module>
 
         <module>spring-rest-embedded-tomcat</module>
-        <module>spring-soap</module>
 
 
         <module>testing-modules/testing</module>
