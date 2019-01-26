@@ -7,12 +7,12 @@ import com.baeldung.architecture.hexagonal.domain.Movie;
 
 public interface MovieService {
 
-	public Movie createMovie(Movie movie);
+    public Movie createMovie(Movie movie);
 
-	public void deleteMovie(Movie movie);
+    public void deleteMovie(Movie movie);
 
-	public List<Movie> getAllMovies();
+    public List<Movie> getAllMovies();
 
-	public Optional<Movie> findMovieById(int id);
+    public Optional<Movie> findMovieById(int id);
 
 }

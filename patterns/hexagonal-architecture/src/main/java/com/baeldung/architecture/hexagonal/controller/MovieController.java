@@ -14,16 +14,16 @@ import com.baeldung.architecture.hexagonal.service.MovieService;
 @RequestMapping(value = "/api/v1/movies")
 public class MovieController {
 
-	@Autowired
-	private MovieService movieService;
+    @Autowired
+    private MovieService movieService;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Movie> create(@RequestBody @Validated Movie movie) {
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Movie> create(@RequestBody @Validated Movie movie) {
 
-		Movie movieCreated = movieService.createMovie(movie);
+        Movie movieCreated = movieService.createMovie(movie);
 
-		Movie output = Movie.fromMovieDetails(movieCreated);
-		return new ResponseEntity<Movie>(output, HttpStatus.CREATED);
-	}
+        Movie output = Movie.fromMovieDetails(movieCreated);
+        return new ResponseEntity<Movie>(output, HttpStatus.CREATED);
+    }
 
 }
