@@ -3,28 +3,6 @@ package com.baeldung.file
 class ReadFile {
 
     /**
-     * reads file content in string using File.text
-     * @param filePath
-     * @return
-     */
-    String readFileString(String filePath) {
-        File file = new File(filePath)
-        String fileContent = file.text
-        return fileContent
-    }
-
-    /**
-     * reads file content in string with encoding using File.getText
-     * @param filePath
-     * @return
-     */
-    String readFileStringWithCharset(String filePath) {
-        File file = new File(filePath)
-        String utf8Content = file.getText("UTF-8")
-        return utf8Content
-    }
-
-    /**
      * reads file content line by line using withReader and reader.readLine
      * @param filePath
      * @return
@@ -52,10 +30,28 @@ class ReadFile {
         def lines = file.readLines()
         return lines
     }
-    
-    public static void main(String[] args) {
-        def file = new File("../../src")
-        println file.directorySize
+
+    /**
+     * reads file content in string using File.text
+     * @param filePath
+     * @return
+     */
+    String readFileString(String filePath) {
+        File file = new File(filePath)
+        String fileContent = file.text
+        return fileContent
     }
+
+    /**
+     * reads file content in string with encoding using File.getText
+     * @param filePath
+     * @return
+     */
+    String readFileStringWithCharset(String filePath) {
+        File file = new File(filePath)
+        String utf8Content = file.getText("UTF-8")
+        return utf8Content
+    }
+
 
 }
