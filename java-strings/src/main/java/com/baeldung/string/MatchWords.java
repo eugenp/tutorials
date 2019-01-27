@@ -15,8 +15,7 @@ public class MatchWords {
     public static boolean containsWordsIndexOf(String inputString, String[] words) {
         boolean found = true;
         for (String word : words) {
-            int index = inputString.indexOf(word);
-            if (index == -1) {
+            if (inputString.indexOf(word) == -1) {
                 found = false;
                 break;
             }
@@ -64,21 +63,19 @@ public class MatchWords {
         }
 
         Pattern pattern = Pattern.compile(regexp.toString());
-        if (pattern.matcher(inputString).find()) {
-            return true;
-        }
-        return false;
+
+        return pattern.matcher(inputString).find();
     }
 
     public static boolean containsWordsJava8(String inputString, String[] words) {
-        List inputStringList = Arrays.asList(inputString.split(" "));
+        List<String> inputStringList = Arrays.asList(inputString.split(" "));
         List<String> wordsList = Arrays.asList(words);
 
         return wordsList.stream().allMatch(inputStringList::contains);
     }
 
     public static boolean containsWordsArray(String inputString, String[] words) {
-        List inputStringList = Arrays.asList(inputString.split(" "));
+        List<String> inputStringList = Arrays.asList(inputString.split(" "));
         List<String> wordsList = Arrays.asList(words);
 
         return inputStringList.containsAll(wordsList);
