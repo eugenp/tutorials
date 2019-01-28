@@ -7,8 +7,8 @@ public class JarExample {
     private static final String DIMENSION_FILE = "/dimensions.txt";
 
     public static void main(String[] args) {
-        String environment = System.getProperty("environment");
-        if (environment != null && environment.equalsIgnoreCase("prod")) {
+        String inputType = System.getProperty("input");
+        if (inputType != null && inputType.equalsIgnoreCase("file")) {
             Dimensioner dimensioner = new Dimensioner();
             try {
                 List<Rectangle> rectangles = dimensioner.loadFromFile(DIMENSION_FILE);
