@@ -8,7 +8,6 @@ import org.junit.runners.Suite;
 // @formatter:off
     FooDiscoverabilityLiveTest.class
     ,FooLiveTest.class
-    ,FooPageableLiveTest.class
 }) //
 public class LiveTestSuiteLiveTest {
 
