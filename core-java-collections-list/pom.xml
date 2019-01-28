@@ -38,17 +38,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-core</artifactId>
-            <version>${jmh-core.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.openjdk.jmh</groupId>
-            <artifactId>jmh-generator-annprocess</artifactId>
-            <version>${jmh-generator-annprocess.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>net.sf.trove4j</groupId>
             <artifactId>trove4j</artifactId>
             <version>3.0.2</version>
@@ -71,7 +60,5 @@
         <avaitility.version>1.7.0</avaitility.version>
         <assertj.version>3.11.1</assertj.version>
         <lombok.version>1.16.12</lombok.version>
-        <jmh-core.version>1.19</jmh-core.version>
-        <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
     </properties>
 </project>
