@@ -26,7 +26,7 @@ public class BitwiseOperatorUnitTest {
         int value1 = 6;
         int value2 = 5;
         int result = value1 ^ value2;
-        assertEquals(3 result);
+        assertEquals(3, result);
     }
 
     @Test
