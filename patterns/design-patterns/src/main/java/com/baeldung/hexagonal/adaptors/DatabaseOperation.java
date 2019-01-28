@@ -14,7 +14,7 @@ public class DatabaseOperation implements IDatabaseOperation {
     public boolean updateCustomerData(int customerID, Customer customer) {
 
         try {
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("xaDataSource");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("user-unit");
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
 
@@ -38,7 +38,7 @@ public class DatabaseOperation implements IDatabaseOperation {
     public Customer findCustomer(int customerID) {
 
         try {
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("xaDataSource");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("user-unit");
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
             Customer cust = entitymanager.find(Customer.class, customerID);
@@ -58,7 +58,7 @@ public class DatabaseOperation implements IDatabaseOperation {
     public boolean AddCustomer(Customer customer) {
 
         try {
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("xaDataSource");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("user-unit");
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
 
