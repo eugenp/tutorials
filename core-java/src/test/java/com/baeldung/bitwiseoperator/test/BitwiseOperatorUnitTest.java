@@ -10,7 +10,7 @@ public class BitwiseOperatorUnitTest {
         int value1 = 6;
         int value2 = 5;
         int result = value1 & value2;
-        assertEquals(result, 4);
+        assertEquals(4, result);
     }
 
     @Test
@@ -18,7 +18,7 @@ public class BitwiseOperatorUnitTest {
         int value1 = 6;
         int value2 = 5;
         int result = value1 | value2;
-        assertEquals(result, 7);
+        assertEquals(7, result);
     }
 
     @Test
@@ -26,7 +26,7 @@ public class BitwiseOperatorUnitTest {
         int value1 = 6;
         int value2 = 5;
         int result = value1 ^ value2;
-        assertEquals(result, 3);
+        assertEquals(3 result);
     }
 
     @Test
@@ -40,42 +40,42 @@ public class BitwiseOperatorUnitTest {
     public void givenOnePositiveInteger_whenSignedRightShiftOperator_thenNewDecimalNumber() {
         int value = 12;
         int rightShift = value >> 2;
-        assertEquals(rightShift, 3);
+        assertEquals(3, rightShift);
     }
 
     @Test
     public void givenOneNegativeInteger_whenSignedRightShiftOperator_thenNewDecimalNumber() {
         int value = -12;
         int rightShift = value >> 2;
-        assertEquals(rightShift, -3);
+        assertEquals(-3, rightShift);
     }
 
     @Test
     public void givenOnePositiveInteger_whenLeftShiftOperator_thenNewDecimalNumber() {
         int value = 12;
         int leftShift = value << 2;
-        assertEquals(leftShift, 48);
+        assertEquals(48, leftShift);
     }
 
     @Test
     public void givenOneNegativeInteger_whenLeftShiftOperator_thenNewDecimalNumber() {
         int value = -12;
         int leftShift = value << 2;
-        assertEquals(leftShift, -48);
+        assertEquals(-48, leftShift);
     }
 
     @Test
     public void givenOnePositiveInteger_whenUnsignedRightShiftOperator_thenNewDecimalNumber() {
         int value = 12;
         int unsignedRightShift = value >>> 2;
-        assertEquals(unsignedRightShift, 3);
+        assertEquals(3, unsignedRightShift);
     }
 
     @Test
     public void givenOneNegativeInteger_whenUnsignedRightShiftOperator_thenNewDecimalNumber() {
         int value = -12;
         int unsignedRightShift = value >>> 2;
-        assertEquals(unsignedRightShift, 1073741821);
+        assertEquals(1073741821, unsignedRightShift);
     }
 
 }
