@@ -8,7 +8,7 @@ public class User {
 
     public User() {
         this.name = "";
-        this.id = null;
+        this.id = null;    
     }
 
     public User(Long id, String name) {
