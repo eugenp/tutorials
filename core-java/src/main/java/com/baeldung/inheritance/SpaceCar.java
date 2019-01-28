@@ -1,5 +1,9 @@
 package com.baeldung.inheritance;
 
+/**
+ * 空间车
+ * @author zn.wang
+ */
 public class SpaceCar extends Car implements SpaceTraveller {
 	@Override
     public void floatOnWater() {

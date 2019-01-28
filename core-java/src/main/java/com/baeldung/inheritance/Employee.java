@@ -1,5 +1,9 @@
 package com.baeldung.inheritance;
 
+/**
+ * 雇员
+ * @author zn.wang
+ */
 public class Employee {
     private String name;
     private Car car;

@@ -19,6 +19,7 @@ public class AppUnitTest extends TestCase {
     @SuppressWarnings("static-access")
 	public void testStaticMethodUsingBaseClassVariable() {
     	Car first = new ArmoredCar();
+    	System.out.println("Car.msg():{}" + Car.msg());
     	assertEquals("Car", first.msg());
     }
     	
@@ -30,16 +31,19 @@ public class AppUnitTest extends TestCase {
     
     public void testAssignArmoredCarToCar() {
     	Employee e1 = new Employee("Shreya", new ArmoredCar());
+    	System.out.println("e1:{}" + e1.getCar());
     	assertNotNull(e1.getCar());
     }
 
     public void testAssignSpaceCarToCar() {
     	Employee e2 = new Employee("Paul", new SpaceCar());
+    	System.out.println("e2:{}" + e2.getCar());
     	assertNotNull(e2.getCar());
     }
 
     public void testBMWToCar() {
     	Employee e3 = new Employee("Pavni", new BMW());
+        System.out.println("e3:{}" + e3.getCar());
     	assertNotNull(e3.getCar());
     }
 

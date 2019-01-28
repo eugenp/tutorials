@@ -1,19 +1,37 @@
 package com.baeldung.inheritance;
 
+/**
+ * 装甲车
+ * @author zn.wang
+ */
 public class ArmoredCar extends Car implements Floatable, Flyable{
+    /**
+     * 防弹窗户
+     */
     private int bulletProofWindows;
+    /**
+     * 模型
+     */
     private String model;
-    
+
+    /**
+     * 远程启动汽车
+     */
     public void remoteStartCar() {
         // this vehicle can be started by using a remote control
     }
-    
+
+    /**
+     * 注册模式
+     * @return
+     */
     public String registerModel() {
         return model;
     }
     
     public String getAValue() {
-        return super.model;   // returns value of model defined in base class Car
+        // returns value of model defined in base class Car
+        return super.model;
         // return this.model;   // will return value of model defined in ArmoredCar
         // return model;   // will return value of model defined in ArmoredCar
     }

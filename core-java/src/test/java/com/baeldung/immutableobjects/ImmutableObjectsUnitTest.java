@@ -7,6 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * 不可变对象测试
+ */
 public class ImmutableObjectsUnitTest {
 
     @Test
@@ -19,10 +22,13 @@ public class ImmutableObjectsUnitTest {
         assertEquals("bael----", newName);
     }
 
+    /**
+     * 重新分配Final值时，则编译器错误
+     */
     public void whenReassignFinalValue_thenCompilerError() {
         // 3. The final Keyword in Java (1)
         final String name = "baeldung";
-        // name = "bael...";
+        //name = "bael...";
     }
 
     @Test

@@ -299,4 +299,32 @@ public class HashUtilsTest {
         // path不能以'/'开头
         System.out.println(HashUtilsTest.class.getClassLoader().getResource("/"));
     }
+
+    /**
+     * md5文件签名-zip
+     * @throws IOException
+     */
+    @Test
+    public void md524Zip() throws IOException {
+        //String FILE_NAME_1 = "ab.zip";
+        //String FILE_NAME_2 = "cd.zip";
+        String FILE_NAME_1 = "WechatIMG384.jpeg";
+        String FILE_NAME_2 = "WechatIMG385.jpeg";
+        //获取文件路径
+        String filePath = this.getClass().getClassLoader().getResource(FILE_NAME_1).getPath();
+        System.out.println("FILE_NAME_1:{}"+ filePath);
+        String filePath2 = this.getClass().getClassLoader().getResource(FILE_NAME_2).getPath();
+        System.out.println("FILE_NAME_2:{}"+ filePath2);
+
+
+        byte [] bytes1 =  HashUtils.md5(new File(filePath));
+        byte [] bytes2 =  HashUtils.md5(new File(filePath2));
+
+        String encodeFileContent1 = Base64.getEncoder().encodeToString(bytes1);
+        String encodeFileContent2 = Base64.getEncoder().encodeToString(bytes2);
+        System.out.println("encodeFileContent1:{}" + encodeFileContent1 + " " + encodeFileContent1.length());
+        System.out.println("encodeFileContent2:{}" + encodeFileContent2);
+
+        System.out.println(new String(bytes1).equals(new String(bytes2)));
+    }
 }

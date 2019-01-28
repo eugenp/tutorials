@@ -1,11 +1,22 @@
 package com.baeldung.inheritance;
 
+/**
+ * 汽车
+ * @author zn.wang
+ */
 public class Car {
 	private final int DEFAULT_WHEEL_COUNT = 5;
 	private final String DEFAULT_MODEL = "Basic";
 
+    /**
+     * 轮子
+     */
 	protected int wheels;
-    protected String model;
+
+    /**
+     * 模型
+     */
+	protected String model;
     
     public Car() {
     	this.wheels = DEFAULT_WHEEL_COUNT;
@@ -16,7 +27,10 @@ public class Car {
     	this.wheels = wheels;
     	this.model = model;
     }
-        
+
+    /**
+     * 检查必不可少的部分，如果ok，则启动。
+     */
     public void start() {
         // Check essential parts
         // If okay, start.
@@ -25,7 +39,8 @@ public class Car {
     public static String msg() {
         return "Car";
     }
-    
+
+    @Override
     public String toString() {
     	return model;
     } 

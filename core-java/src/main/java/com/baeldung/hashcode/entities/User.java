@@ -3,6 +3,9 @@ package com.baeldung.hashcode.entities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author zn.wang
+ */
 public class User {
 
     private final Logger logger = LoggerFactory.getLogger(User.class);
@@ -16,16 +19,24 @@ public class User {
         this.email = email;
     }
 
+    /**
+     * 注意：有点意思，2个User的id、name、email均不相同的时候，值为true。
+     * @param o
+     * @return
+     */
     @Override
     public boolean equals(Object o) {
-        if (this == o)
+        if (this == o){
             return true;
-        if (o == null)
+        }
+        if (o == null){
             return false;
-        if (this.getClass() != o.getClass())
+        }
+        if (this.getClass() != o.getClass()){
             return false;
+        }
         User user = (User) o;
-        return id != user.id && (!name.equals(user.name) && !email.equals(user.email));
+        return id == user.id && (name.equals(user.name) && email.equals(user.email));
     }
 
     @Override

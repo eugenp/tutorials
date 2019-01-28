@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * SHA256-HASH测试
+ */
 public class SHA256HashingUnitTest {
 
     private static String originalValue = "abc123";

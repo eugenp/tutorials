@@ -17,9 +17,17 @@ public class ApplicationUnitTest {
         User user2 = new User(2L, "Jennifer", "jennifer@domain.com");
         User user3 = new User(3L, "Mary", "mary@domain.com");
 
-        users.put(user1, user1);
         users.put(user2, user2);
+        users.put(user1, user1);
         users.put(user3, user3);
+
+        System.out.println(user1.equals(user2));
+        System.out.println(user1.equals(user3));
+        System.out.println(user2.equals(user3));
+        System.out.println(user1.equals(user1));
+
+        users.put(user3, user3);
+        System.out.println(users.size());
 
         assertTrue(users.containsKey(user1));
     }
