@@ -14,7 +14,7 @@
     </http>
 
     <beans:bean class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler" name="awareAuthenticationSuccessHandler"/>
-    <beans:bean class="org.baeldung.security.RefererAuthenticationSuccessHandler" name="refererHandler"/>
+    <beans:bean class="com.baeldung.security.RefererAuthenticationSuccessHandler" name="refererHandler"/>
 
     <authentication-manager>
         <authentication-provider>
@@ -26,4 +26,3 @@
 
 
 </beans:beans>
-
