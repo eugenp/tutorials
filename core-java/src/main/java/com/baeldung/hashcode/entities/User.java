@@ -19,11 +19,6 @@ public class User {
         this.email = email;
     }
 
-    /**
-     * 注意：有点意思，2个User的id、name、email均不相同的时候，值为true。
-     * @param o
-     * @return
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o){
