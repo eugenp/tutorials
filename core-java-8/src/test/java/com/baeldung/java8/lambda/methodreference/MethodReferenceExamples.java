@@ -53,9 +53,17 @@ public class MethodReferenceExamples {
     }
 
     @Test
+    public void referenceToConstructorSimpleExample() {
+        List<String> bikeBrands = Arrays.asList("Giant", "Scott", "Trek", "GT");
+        bikeBrands.stream()
+            .map(Bicycle::new)
+            .toArray(Bicycle[]::new);
+    }
+
+    @Test
     public void limitationsAndAdditionalExamples() {
         createBicyclesList().forEach(b -> System.out.printf("Bike brand is '%s' and frame size is '%d'%n", b.getBrand(), b.getFrameSize()));
-        createBicyclesList().forEach((o) -> this.doNothingAtAll(o));
+        createBicyclesList().forEach((o) -> MethodReferenceExamples.doNothingAtAll(o));
     }
 
     private List<Bicycle> createBicyclesList() {
