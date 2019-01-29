@@ -568,7 +568,7 @@
 				<module>rsocket</module>
                 <module>rxjava</module>
                 <module>rxjava-2</module> 
-			    <module>sql-injection-samples</module>
+			    <module>software-security</module>
                                                  
 			</modules>
 
