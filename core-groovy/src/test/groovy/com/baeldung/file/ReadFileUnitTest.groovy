@@ -48,11 +48,21 @@ Line 3 : String content""")
 
     def 'Should return UTF-8 encoded file content in string using ReadFile.readFileStringWithCharset given filePath' () {
         given:
-            def filePath = "src/main/resources/fileContent.txt"
+            def filePath = "src/main/resources/utf8Content.html"
         when:
             def noOfLines = readFile.readFileStringWithCharset(filePath)
         then:
             noOfLines
             noOfLines instanceof String
+    }
+    
+    def 'Should return binary file content in byte arry using ReadFile.readBinaryFile given filePath' () {
+        given:
+            def filePath = "src/main/resources/sample.png"
+        when:
+            def noOfLines = readFile.readBinaryFile(filePath)
+        then:
+            noOfLines
+            noOfLines instanceof byte[]
     }
 }

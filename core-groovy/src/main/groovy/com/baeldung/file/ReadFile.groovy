@@ -53,5 +53,41 @@ class ReadFile {
         return utf8Content
     }
 
+    /**
+     * reads content of binary file and returns byte array
+     * @param filePath
+     * @return
+     */
+    byte[] readBinaryFile(String filePath) {
+        File file = new File(filePath)
+        byte[] binaryContent = file.bytes
+        return binaryContent
+    }
+    
+    /**
+     * More Examples of reading a file 
+     * @return
+     */
+    def moreExamples() {
+        def list = new File("src/main/resources/fileContent.txt").collect {it}
+                
+        def array = new File("src/main/resources/fileContent.txt") as String[]
+                
+        new File("src/main/resources/fileContent.txt").eachLine { line ->
+            println line
+        }
+        
+        def is = new File("src/main/resources/fileContent.txt").newInputStream()
+        is.eachLine {
+            println it
+        }
+        is.close()
+        
+        new File("src/main/resources/fileContent.txt").withInputStream { stream ->
+            stream.eachLine { line ->
+                println line
+            }
+        }
+    }
 
 }
