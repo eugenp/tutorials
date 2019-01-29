@@ -15,7 +15,6 @@ public class StudentService {
     }
 
     public void saveStudentInfo() {
-
         Student student = new Student();
         //build student information
         databaseService.save(student);
@@ -23,23 +22,17 @@ public class StudentService {
 
     public static void main(String[] args) {
 
-        // Adapter
-        DatabaseService databaseService = new MySqlAdapter();
-
-        // business service
-        StudentService studentService = new StudentService(databaseService);
-
-        studentService.saveStudentInfo();
+        // MySql Adapter
+        DatabaseService databaseServiceV1 = new MySqlAdapter();
+        // business service with MySql Adapte
+        StudentService studentServiceForMySql = new StudentService(databaseServiceV1);
+        studentServiceForMySql.saveStudentInfo();
 
 
-        // Adapter
-        DatabaseService databaseServiceForOracle = new OracleServerAdapter();
-
-        // business service
-        StudentService studentServiceV2 = new StudentService(databaseServiceForOracle);
-
+        // Oracle Adapter
+        DatabaseService databaseServiceV2 = new OracleServerAdapter();
+        // business service with Oracle Adapter
+        StudentService studentServiceV2 = new StudentService(databaseServiceV2);
         studentServiceV2.saveStudentInfo();
     }
-
-
 }
