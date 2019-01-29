@@ -5,11 +5,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * @author zn.wang
+ */
 public class Finalizable {
     private BufferedReader reader;
 
     public Finalizable() {
-        InputStream input = this.getClass().getClassLoader().getResourceAsStream("file.txt");
+        InputStream input =
+                this.getClass()
+                .getClassLoader()
+                .getResourceAsStream("file.txt");
         reader = new BufferedReader(new InputStreamReader(input));
     }
 
@@ -18,12 +24,16 @@ public class Finalizable {
         return firstLine;
     }
 
+    /**
+     * jvm进行gc时，会执行{@link java.lang.Object#finalize()}
+     */
     @Override
     public void finalize() {
         try {
             reader.close();
             System.out.println("Closed BufferedReader in the finalizer");
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

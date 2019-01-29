@@ -8,6 +8,7 @@ import org.junit.Test;
 public class UserUnitTest {
 
     private User user;
+    //比较
     private User comparisonUser;
 
     @Before
@@ -29,6 +30,7 @@ public class UserUnitTest {
 
     @Test
     public void hashCode_UserHash_TrueAssertion() {
+        System.out.println(user.hashCode());
         Assert.assertEquals(1792276941, user.hashCode());
     }
 }

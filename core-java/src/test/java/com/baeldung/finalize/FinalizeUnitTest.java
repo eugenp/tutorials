@@ -6,6 +6,11 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class FinalizeUnitTest {
+
+    /**
+     * 执行System.gc()会调用{@link java.lang.Object#finalize()}
+     * @throws IOException
+     */
     @Test
     public void whenGC_thenFinalizerExecuted() throws IOException {
         String firstLine = new Finalizable().readFirstLine();

@@ -12,6 +12,10 @@ public final class Cat {
         this.weight = weight;
     }
 
+    /**
+     * final类型的变量是不能进行赋值操作的。
+     * @param x
+     */
     public void methodWithFinalArguments(final int x) {
         // x=1;
     }

@@ -3,6 +3,9 @@ package com.baeldung.generics;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author zn.wang
+ */
 public class Building {
     private static final Logger LOGGER = LoggerFactory.getLogger(Building.class);
 

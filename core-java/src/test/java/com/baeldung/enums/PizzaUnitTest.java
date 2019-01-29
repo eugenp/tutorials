@@ -11,6 +11,9 @@ import static junit.framework.TestCase.assertTrue;
 
 public class PizzaUnitTest {
 
+    /**
+     * 获取准备好的披萨
+     */
     @Test
     public void givenPizaOrder_whenReady_thenDeliverable() {
         Pizza testPz = new Pizza();
@@ -18,33 +21,18 @@ public class PizzaUnitTest {
         assertTrue(testPz.isDeliverable());
     }
 
+    /**
+     * 获取所有没有送出去的披萨
+     */
     @Test
     public void givenPizaOrders_whenRetrievingUnDeliveredPzs_thenCorrectlyRetrieved() {
-        List<Pizza> pzList = new ArrayList<>();
-        Pizza pz1 = new Pizza();
-        pz1.setStatus(Pizza.PizzaStatusEnum.DELIVERED);
-
-        Pizza pz2 = new Pizza();
-        pz2.setStatus(Pizza.PizzaStatusEnum.ORDERED);
-
-        Pizza pz3 = new Pizza();
-        pz3.setStatus(Pizza.PizzaStatusEnum.ORDERED);
-
-        Pizza pz4 = new Pizza();
-        pz4.setStatus(Pizza.PizzaStatusEnum.READY);
-
-        pzList.add(pz1);
-        pzList.add(pz2);
-        pzList.add(pz3);
-        pzList.add(pz4);
+        List<Pizza> pzList = buildListPizza();
 
         List<Pizza> undeliveredPzs = Pizza.getAllUndeliveredPizzas(pzList);
         assertTrue(undeliveredPzs.size() == 3);
     }
 
-    @Test
-    public void givenPizaOrders_whenGroupByStatusCalled_thenCorrectlyGrouped() {
-
+    private List<Pizza>  buildListPizza(){
         List<Pizza> pzList = new ArrayList<>();
         Pizza pz1 = new Pizza();
         pz1.setStatus(Pizza.PizzaStatusEnum.DELIVERED);
@@ -62,6 +50,16 @@ public class PizzaUnitTest {
         pzList.add(pz2);
         pzList.add(pz3);
         pzList.add(pz4);
+        return pzList;
+    }
+
+    /**
+     * 根据披萨的状态进行分组
+     */
+    @Test
+    public void givenPizaOrders_whenGroupByStatusCalled_thenCorrectlyGrouped() {
+
+        List<Pizza> pzList = buildListPizza();
 
         EnumMap<Pizza.PizzaStatusEnum, List<Pizza>> map = Pizza.groupPizzaByStatus(pzList);
         assertTrue(map.get(Pizza.PizzaStatusEnum.DELIVERED).size() == 1);
@@ -69,6 +67,9 @@ public class PizzaUnitTest {
         assertTrue(map.get(Pizza.PizzaStatusEnum.READY).size() == 1);
     }
 
+    /**
+     * 配送披萨
+     */
     @Test
     public void whenDelivered_thenPizzaGetsDeliveredAndStatusChanges() {
         Pizza pz = new Pizza();
@@ -76,7 +77,10 @@ public class PizzaUnitTest {
         pz.deliver();
         assertTrue(pz.getStatus() == Pizza.PizzaStatusEnum.DELIVERED);
     }
-    
+
+    /**
+     * @see com.baeldung.enums.Pizza.PizzaStatusEnum#valueOf(String name)
+     */
     @Test
     public void whenConvertedIntoEnum_thenGetsConvertedCorrectly() {
         String pizzaEnumValue = "READY";
@@ -87,14 +91,23 @@ public class PizzaUnitTest {
     @Test(expected = IllegalArgumentException.class)
     public void whenConvertedIntoEnum_thenThrowsException() {
         String pizzaEnumValue = "rEAdY";
-        PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.valueOf(pizzaEnumValue);
+        try{
+            PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.valueOf(pizzaEnumValue);
+        }
+        catch (Throwable e){
+            e.printStackTrace();
+        }
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void givenInvalidEnumValueContentWiseAsString_whenConvertedIntoEnum_thenThrowsException() {
         String pizzaEnumValue = "invalid";
-        PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.valueOf(pizzaEnumValue);
+        try{
+            PizzaStatusEnum pizzaStatusEnum = PizzaStatusEnum.valueOf(pizzaEnumValue);
+        }
+        catch (Throwable e){
+            e.printStackTrace();
+        }
     }
-    
 
 }

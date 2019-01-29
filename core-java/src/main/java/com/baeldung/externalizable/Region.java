@@ -5,12 +5,24 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
+/**
+ * @author zn.wang
+ */
 public class Region extends Country implements Externalizable {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 气候
+     */
     private String climate;
+    /**
+     * 人口
+     */
     private Double population;
+    /**
+     * 社区
+     */
     private Community community;
 
     public String getClimate() {

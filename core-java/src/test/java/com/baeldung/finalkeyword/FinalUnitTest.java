@@ -14,6 +14,9 @@ public class FinalUnitTest {
 
     }
 
+    /**
+     * final类型的变量，是不可以再赋值的。
+     */
     @Test
     public void whenFinalVariableAssign_thenOnlyOnce() {
         final int i;
@@ -23,7 +26,6 @@ public class FinalUnitTest {
 
     @Test
     public void whenChangedFinalReference_thenChanged() {
-
         final Cat cat = new Cat();
         // cat=new Cat();
         cat.setWeight(5);

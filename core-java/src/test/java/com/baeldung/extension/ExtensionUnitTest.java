@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.Optional;
 
 public class ExtensionUnitTest {
+
     private Extension extension = new Extension();
 
     @Test

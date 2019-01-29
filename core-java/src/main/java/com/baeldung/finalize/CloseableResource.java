@@ -5,11 +5,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * @author zn.wang
+ */
 public class CloseableResource implements AutoCloseable {
+
     private BufferedReader reader;
 
     public CloseableResource() {
-        InputStream input = this.getClass().getClassLoader().getResourceAsStream("file.txt");
+        InputStream input =
+                this.getClass()
+                        .getClassLoader()
+                        .getResourceAsStream("file.txt");
         reader = new BufferedReader(new InputStreamReader(input));
     }
 
@@ -23,7 +30,8 @@ public class CloseableResource implements AutoCloseable {
         try {
             reader.close();
             System.out.println("Closed BufferedReader in the close method");
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
     }

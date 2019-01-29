@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
+/**
+ * @author zn.wang
+ */
 public class Country implements Externalizable {
 
     private static final long serialVersionUID = 1L;

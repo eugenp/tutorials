@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -24,7 +25,12 @@ public class GenericsUnitTest {
     @Test
     public void givenArrayOfIntegers_thanListOfStringReturnedOK() {
         Integer[] intArray = { 1, 2, 3, 4, 5 };
-        List<String> stringList = Generics.fromArrayToList(intArray, Object::toString);
+        List<String> stringList = Generics.fromArrayToList(intArray, new Function<Integer, String>() {
+            @Override
+            public String apply(Integer integer) {
+                return integer.toString();
+            }
+        });
         assertThat(stringList, hasItems("1", "2", "3", "4", "5"));
     }
 
@@ -54,14 +60,16 @@ public class GenericsUnitTest {
     public void givenSubTypeOfWildCardBoundedGenericType_thanPaintingOK() {
         try {
             List<Building> subBuildingsList = new ArrayList<>();
-            subBuildingsList.add(new Building());
             subBuildingsList.add(new House());
+            subBuildingsList.add(new Building());
 
             // prints
             // Painting Building
             // Painting House
             Generics.paintAllBuildings(subBuildingsList);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
+            e.printStackTrace();
             fail();
         }
     }
