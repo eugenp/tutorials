@@ -5,8 +5,6 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import io.restassured.RestAssured;
-import io.restassured.response.Response;
 
 import java.io.Serializable;
 
@@ -17,6 +15,9 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 
 import com.google.common.net.HttpHeaders;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 
 public abstract class AbstractDiscoverabilityLiveTest<T extends Serializable> extends AbstractLiveTest<T> {
 

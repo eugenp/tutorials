@@ -6,27 +6,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
-import org.baeldung.web.exception.MyResourceNotFoundException;
-import org.baeldung.web.hateoas.event.PaginatedResultsRetrievedEvent;
 import org.baeldung.web.hateoas.event.ResourceCreatedEvent;
 import org.baeldung.web.hateoas.event.SingleResourceRetrievedEvent;
 import org.baeldung.web.util.RestPreconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import com.google.common.base.Preconditions;
 
@@ -70,30 +63,6 @@ public class FooController {
     @ResponseBody
     public List<Foo> findAll() {
         return service.findAll();
-    }
-
-    @RequestMapping(params = { "page", "size" }, method = RequestMethod.GET)
-    @ResponseBody
-    public List<Foo> findPaginated(@RequestParam("page") final int page, @RequestParam("size") final int size, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
-        final Page<Foo> resultPage = service.findPaginated(page, size);
-        if (page > resultPage.getTotalPages()) {
-            throw new MyResourceNotFoundException();
-        }
-        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, page, resultPage.getTotalPages(), size));
-
-        return resultPage.getContent();
-    }
-    
-    @GetMapping("/pageable")
-    @ResponseBody
-    public List<Foo> findPaginatedWithPageable(Pageable pageable, final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
-        final Page<Foo> resultPage = service.findPaginated(pageable);
-        if (pageable.getPageNumber() > resultPage.getTotalPages()) {
-            throw new MyResourceNotFoundException();
-        }
-        eventPublisher.publishEvent(new PaginatedResultsRetrievedEvent<Foo>(Foo.class, uriBuilder, response, pageable.getPageNumber(), resultPage.getTotalPages(), pageable.getPageSize()));
-
-        return resultPage.getContent();
     }
 
     // write
