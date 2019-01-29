@@ -717,7 +717,6 @@
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
-                
                 <module>spring-security-acl</module>
                 <module>spring-security-angular/server</module>
                 <module>spring-security-cache-control</module>

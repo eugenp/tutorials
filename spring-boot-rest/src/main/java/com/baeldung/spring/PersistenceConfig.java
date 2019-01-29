@@ -25,7 +25,6 @@ import com.google.common.base.Preconditions;
 @EnableTransactionManagement
 @PropertySource({ "classpath:persistence-${envTarget:h2}.properties" })
 @ComponentScan({ "com.baeldung.persistence" })
-// @ImportResource("classpath*:springDataPersistenceConfig.xml")
 @EnableJpaRepositories(basePackages = "com.baeldung.persistence.dao")
 public class PersistenceConfig {
 
