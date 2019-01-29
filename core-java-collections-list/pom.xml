@@ -36,6 +36,12 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -44,5 +50,6 @@
         <avaitility.version>1.7.0</avaitility.version>
         <assertj.version>3.11.1</assertj.version>
         <lombok.version>1.16.12</lombok.version>
+        <junit-jupiter.version>5.0.0-M4</junit-jupiter.version>
     </properties>
 </project>
