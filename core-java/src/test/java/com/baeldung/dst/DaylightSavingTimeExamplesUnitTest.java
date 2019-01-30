@@ -13,6 +13,9 @@ import java.util.TimeZone;
 import org.junit.Ignore;
 import org.junit.Test;
 
+/**
+ * 夏令时测试用例
+ */
 public class DaylightSavingTimeExamplesUnitTest {
 
     @Test
@@ -46,6 +49,10 @@ public class DaylightSavingTimeExamplesUnitTest {
         assertThat(deltaBetweenDatesInMillis).isEqualTo(tenMinutesInMillis);
     }
 
+    /**
+     * 优雅的打印函数
+     * @param tz
+     */
     private void prettyPrint(TimeZone tz) {
 
         //@formatter:off

@@ -2,6 +2,9 @@ package com.baeldung.comparator;
 
 import java.util.Comparator;
 
+/**
+ * @author zn.wang
+ */
 public class PlayerAgeComparator implements Comparator<Player> {
 
     @Override

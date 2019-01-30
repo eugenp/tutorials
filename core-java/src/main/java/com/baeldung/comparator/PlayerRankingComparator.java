@@ -2,6 +2,9 @@ package com.baeldung.comparator;
 
 import java.util.Comparator;
 
+/**
+ * @author zn.wang
+ */
 public class PlayerRankingComparator implements Comparator<Player> {
 
     @Override

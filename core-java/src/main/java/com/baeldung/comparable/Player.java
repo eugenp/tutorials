@@ -1,5 +1,8 @@
 package com.baeldung.comparable;
 
+/**
+ * @author zn.wang
+ */
 public class Player implements Comparable<Player> {
 
     private int ranking;

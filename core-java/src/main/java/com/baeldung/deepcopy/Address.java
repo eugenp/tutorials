@@ -2,13 +2,17 @@ package com.baeldung.deepcopy;
 
 import java.io.Serializable;
 
+/**
+ * @author zn.wang
+ */
 public class Address implements Serializable, Cloneable {
 
     @Override
     public Object clone() {
         try {
             return (Address) super.clone();
-        } catch (CloneNotSupportedException e) {
+        }
+        catch (CloneNotSupportedException e) {
             return new Address(this.street, this.getCity(), this.getCountry());
         }
     }
@@ -29,8 +33,7 @@ public class Address implements Serializable, Cloneable {
         this.country = country;
     }
 
-    public Address() {
-    }
+    public Address() {}
 
     public String getStreet() {
         return street;

@@ -11,6 +11,9 @@ import java.security.cert.X509Certificate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 加解密机制
+ */
 public class EncryptorUnitTest {
     private String encKeyString;
     private String message;

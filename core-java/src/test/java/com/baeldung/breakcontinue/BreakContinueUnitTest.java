@@ -9,6 +9,11 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+/**
+ * 测试：
+ * Break
+ * Continue
+ */
 public class BreakContinueUnitTest {
 
     @Test
@@ -28,12 +33,12 @@ public class BreakContinueUnitTest {
 
     @Test
     public void whenUnlabeledContinue_ThenEqual() {
-        assertEquals(5, unlabeledContinue());
+        assertEquals(2, unlabeledContinue());
     }
 
     @Test
     public void whenLabeledContinue_ThenEqual() {
-        assertEquals(3, labeledContinue());
+        assertEquals(2, labeledContinue());
     }
 
 }

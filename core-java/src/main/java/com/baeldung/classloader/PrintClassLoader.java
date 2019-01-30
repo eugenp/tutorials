@@ -10,6 +10,9 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
+/**
+ * @author zn.wang
+ */
 public class PrintClassLoader {
 
     public void printClassLoaders() throws ClassNotFoundException {

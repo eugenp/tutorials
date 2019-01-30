@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * @author zn.wang
+ */
 public class PlayerRankingSorter {
 
     public static void main(String[] args) {

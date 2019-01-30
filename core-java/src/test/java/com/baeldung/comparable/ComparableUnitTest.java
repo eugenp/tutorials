@@ -8,6 +8,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+/**
+ * @see java.lang.Comparable#compareTo(Object o)
+ */
 public class ComparableUnitTest {
 
     @Test
@@ -20,10 +23,9 @@ public class ComparableUnitTest {
         footballTeam.add(player2);
         footballTeam.add(player3);
         Collections.sort(footballTeam);
-        assertEquals(footballTeam.get(0)
-            .getName(), "Steven");
-        assertEquals(footballTeam.get(2)
-            .getRanking(), 67);
+
+        assertEquals(footballTeam.get(0).getName(), "Steven");
+        assertEquals(footballTeam.get(2).getRanking(), 67);
     }
 
 }

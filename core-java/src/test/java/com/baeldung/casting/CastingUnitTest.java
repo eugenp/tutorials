@@ -1,10 +1,14 @@
 package com.baeldung.casting;
 
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 类型转换测试
+ */
 public class CastingUnitTest {
 
     @Test
@@ -12,7 +16,7 @@ public class CastingUnitTest {
         double myDouble = 1.1;
         int myInt = (int) myDouble;
 
-        assertNotEquals(myDouble, myInt);
+        Assert.assertNotEquals(myDouble, myInt);
     }
 
     @Test
@@ -51,10 +55,15 @@ public class CastingUnitTest {
 
     @Test(expected = ClassCastException.class)
     public void whenDownCastWithoutCheck_thenExceptionThrown() {
-        List<Animal> animals = new ArrayList<>();
-        animals.add(new Cat());
-        animals.add(new Dog());
-        new AnimalFeeder().uncheckedFeed(animals);
+        try {
+            List<Animal> animals = new ArrayList<>();
+            animals.add(new Cat());
+            animals.add(new Dog());
+            new AnimalFeeder().uncheckedFeed(animals);
+        }
+        catch (Throwable e){
+            e.printStackTrace();
+        }
     }
 
     @Test
@@ -68,10 +77,10 @@ public class CastingUnitTest {
     
     @Test
     public void whenParameterCat_thenOnlyCatsFed() {
-        List<Animal> animals = new ArrayList<>();
+        List<Animal> animals = new ArrayList<Animal>();
         animals.add(new Cat());
         animals.add(new Dog());
-        AnimalFeederGeneric<Cat> catFeeder = new AnimalFeederGeneric<Cat>(Cat.class);
+        AnimalFeederGeneric<Cat> catFeeder = new AnimalFeederGeneric<>(Cat.class);
         List<Cat> fedAnimals = catFeeder.feed(animals);
 
         assertTrue(fedAnimals.size() == 1);

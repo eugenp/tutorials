@@ -10,6 +10,9 @@ import java.io.InvalidClassException;
 import org.junit.Ignore;
 import org.junit.Test;
 
+/**
+ * 序列化、反序列化测试
+ */
 public class DeserializationUnitTest {
 
     private static final String serializedObj = "rO0ABXNyACljb20uYmFlbGR1bmcuZGVzZXJpYWxpemF0aW9uLkFwcGxlUHJvZHVjdAAAAAAAdMuxAgADTAANaGVhZHBob25lUG9ydHQAEkxqYXZhL2xhbmcvU3RyaW5nO0wADWxpZ2h0bmluZ1BvcnRxAH4AAUwAD3RodW5kZXJib2x0UG9ydHEAfgABeHB0ABFoZWFkcGhvbmVQb3J0MjAyMHQAEWxpZ2h0bmluZ1BvcnQyMDIwdAATdGh1bmRlcmJvbHRQb3J0MjAyMA";
@@ -56,13 +59,18 @@ public class DeserializationUnitTest {
      * @throws ClassNotFoundException
      * @throws IOException
      */
-    @Ignore
+    //@Ignore
     @Test(expected = InvalidClassException.class)
     public void testDeserializeObj_incompatible() throws ClassNotFoundException, IOException {
 
-        assertNotEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
+        //assertNotEquals(userDefinedSerialVersionUID, AppleProduct.getSerialVersionUID());
         // attempts to deserialize the "AppleProduct" object
-        DeserializationUtility.deSerializeObjectFromString(serializedObj);
+        try{
+            DeserializationUtility.deSerializeObjectFromString(serializedObj);
+        }
+        catch (Throwable e){
+            e.printStackTrace();
+        }
     }
 
 }

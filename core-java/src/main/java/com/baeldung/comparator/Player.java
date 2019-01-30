@@ -1,5 +1,8 @@
 package com.baeldung.comparator;
 
+/**
+ * @author zn.wang
+ */
 public class Player {
 
     private int ranking;

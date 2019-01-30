@@ -9,6 +9,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @see java.util.Comparator#compare(Object o1, Object o2)
+ */
 public class ComparatorUnitTest {
 
     List<Player> footballTeam;
@@ -24,24 +27,33 @@ public class ComparatorUnitTest {
         footballTeam.add(player3);
     }
 
+    /**
+     * 按照排名排序
+     */
     @Test
     public void whenUsingRankingComparator_thenSortedList() {
         PlayerRankingComparator playerComparator = new PlayerRankingComparator();
         Collections.sort(footballTeam, playerComparator);
-        assertEquals(footballTeam.get(0)
-            .getName(), "Steven");
-        assertEquals(footballTeam.get(2)
-            .getRanking(), 67);
+
+        System.out.println("footballTeam:{}" + footballTeam);
+
+        assertEquals(footballTeam.get(0).getName(), "Steven");
+        assertEquals(footballTeam.get(2).getRanking(), 67);
     }
 
+    /**
+     * 按照age排序
+     * @see java.util.Collections#sort(List list)
+     */
     @Test
     public void whenUsingAgeComparator_thenSortedList() {
         PlayerAgeComparator playerComparator = new PlayerAgeComparator();
         Collections.sort(footballTeam, playerComparator);
-        assertEquals(footballTeam.get(0)
-            .getName(), "John");
-        assertEquals(footballTeam.get(2)
-            .getRanking(), 45);
+
+        System.out.println("footballTeam:{}" + footballTeam);
+
+        assertEquals(footballTeam.get(0).getName(), "John");
+        assertEquals(footballTeam.get(2).getRanking(), 45);
     }
 
 }

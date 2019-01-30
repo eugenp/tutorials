@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Base64;
 
+/**
+ * 对象反序列化
+ * @author zn.wang
+ */
 public class DeserializationUtility {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException {
@@ -15,8 +19,18 @@ public class DeserializationUtility {
         System.out.println("Headphone port of AppleProduct:" + deserializedObj.getHeadphonePort());
         System.out.println("Thunderbolt port of AppleProduct:" + deserializedObj.getThunderboltPort());
         System.out.println("LightningPort port of AppleProduct:" + deserializedObj.getLightningPort());
+
     }
 
+    /**
+     * String反序列化.
+     * @see java.util.Base64#getDecoder()
+     * @see java.util.Base64.Decoder#decode(byte[] src)
+     * @param s
+     * @return
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
     public static Object deSerializeObjectFromString(String s) throws IOException, ClassNotFoundException {
         byte[] data = Base64.getDecoder().decode(s);
         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));

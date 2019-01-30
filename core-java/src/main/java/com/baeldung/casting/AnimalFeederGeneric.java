@@ -3,7 +3,13 @@ package com.baeldung.casting;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 通用动物饲养员
+ * @author zn.wang
+ */
 public class AnimalFeederGeneric<T> {
+
     private Class<T> type;
 
     public AnimalFeederGeneric(Class<T> type) {

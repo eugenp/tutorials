@@ -11,6 +11,9 @@ import java.util.Locale;
 
 import org.junit.Test;
 
+/**
+ * @see java.text.DecimalFormat#format(long)
+ */
 public class DecimalFormatExamplesUnitTest {
 
 	double d = 1234567.89;
@@ -18,62 +21,80 @@ public class DecimalFormatExamplesUnitTest {
 	@Test
 	public void givenSimpleDecimal_WhenFormatting_ThenCorrectOutput() {
 
-		assertThat(new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("1234567.89");
+		assertThat(
+				new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("1234567.89");
 
-		assertThat(new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("1234567.89");
+		assertThat(
+				new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("1234567.89");
 
-		assertThat(new DecimalFormat("#########.###", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("1234567.89");
+		assertThat(
+				new DecimalFormat("#########.###", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("1234567.89");
 
-		assertThat(new DecimalFormat("000000000.000", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("001234567.890");
+		assertThat(
+				new DecimalFormat("000000000.000", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("001234567.890");
 
 	}
 
+	/**
+	 * 四舍五入
+	 */
 	@Test
 	public void givenSmallerDecimalPattern_WhenFormatting_ThenRounding() {
 
-		assertThat(new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.ENGLISH)).format(d)).isEqualTo("1234567.9");
+		assertThat(
+				new DecimalFormat("#.#", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("1234567.9");
 
-		assertThat(new DecimalFormat("#", new DecimalFormatSymbols(Locale.ENGLISH)).format(d)).isEqualTo("1234568");
+		assertThat(
+				new DecimalFormat("#", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("1234568");
 
 	}
 
 	@Test
 	public void givenGroupingSeparator_WhenFormatting_ThenGroupedOutput() {
 
-		assertThat(new DecimalFormat("#,###.#", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("1,234,567.9");
+		assertThat(
+				new DecimalFormat("#,###.#", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("1,234,567.9");
 
-		assertThat(new DecimalFormat("#,###", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("1,234,568");
+		assertThat(
+				new DecimalFormat("#,###", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("1,234,568");
 
 	}
 
 	@Test
 	public void givenMixedPattern_WhenFormatting_ThenCorrectOutput() {
 
-		assertThat(new DecimalFormat("The # number", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("The 1234568 number");
+		assertThat(
+				new DecimalFormat("The # number", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("The 1234568 number");
 
-		assertThat(new DecimalFormat("The '#' # number", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("The # 1234568 number");
+		assertThat(
+				new DecimalFormat("The '#' # number", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("The # 1234568 number");
 
 	}
 
 	@Test
 	public void givenLocales_WhenFormatting_ThenCorrectOutput() {
 
-		assertThat(new DecimalFormat("#,###.##", new DecimalFormatSymbols(Locale.ENGLISH)).format(d))
-				.isEqualTo("1,234,567.89");
+		assertThat(
+				new DecimalFormat("#,###.##", new DecimalFormatSymbols(Locale.ENGLISH))
+						.format(d)).isEqualTo("1,234,567.89");
 
-		assertThat(new DecimalFormat("#,###.##", new DecimalFormatSymbols(Locale.ITALIAN)).format(d))
-				.isEqualTo("1.234.567,89");
+		assertThat(
+				new DecimalFormat("#,###.##", new DecimalFormatSymbols(Locale.ITALIAN))
+						.format(d)).isEqualTo("1.234.567,89");
 
-		assertThat(new DecimalFormat("#,###.##", DecimalFormatSymbols.getInstance(new Locale("it", "IT"))).format(d))
-				.isEqualTo("1.234.567,89");
+		assertThat(
+				new DecimalFormat("#,###.##", DecimalFormatSymbols.getInstance(new Locale("it", "IT")))
+						.format(d)).isEqualTo("1.234.567,89");
 
 	}
 
@@ -111,6 +132,7 @@ public class DecimalFormatExamplesUnitTest {
 		NumberFormat nf = new DecimalFormat("", new DecimalFormatSymbols(Locale.ENGLISH));
 		((DecimalFormat) nf).setParseBigDecimal(true);
 		assertThat(nf.parse("1234567.89")).isEqualTo(BigDecimal.valueOf(1234567.89));
+
 	}
 
 }

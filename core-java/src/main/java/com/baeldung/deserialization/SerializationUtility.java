@@ -6,6 +6,10 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Base64;
 
+/**
+ * 对象序列化
+ * @author zn.wang
+ */
 public class SerializationUtility {
 
     public static void main(String[] args) throws ClassNotFoundException, IOException {
@@ -20,6 +24,14 @@ public class SerializationUtility {
         System.out.println(serializedObj);
     }
 
+    /**
+     * 序列化对象为String
+     * @see java.util.Base64#getEncoder()
+     * @see java.util.Base64.Encoder#encodeToString(byte[] src)
+     * @param o
+     * @return
+     * @throws IOException
+     */
     public static String serializeObjectToString(Serializable o) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = new ObjectOutputStream(baos);

@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+/**
+ * 浅克隆测试
+ */
 public class ShallowCopyUnitTest {
 
 
@@ -13,7 +16,11 @@ public class ShallowCopyUnitTest {
         Address address = new Address("Downing St 10", "London", "England");
         User pm = new User("Prime", "Minister", address);
 
-        User shallowCopy = new User(pm.getFirstName(), pm.getLastName(), pm.getAddress());
+        User shallowCopy = new User(
+                pm.getFirstName(),
+                pm.getLastName(),
+                pm.getAddress()
+        );
 
         assertThat(shallowCopy)
                 .isNotSameAs(pm);
@@ -26,6 +33,9 @@ public class ShallowCopyUnitTest {
         User shallowCopy = new User(pm.getFirstName(), pm.getLastName(), pm.getAddress());
 
         address.setCountry("Great Britain");
+
+        System.out.println(shallowCopy.getAddress().getCountry());
+        System.out.println(pm.getAddress().getCountry());
         
         assertThat(shallowCopy.getAddress().getCountry())
                 .isEqualTo(pm.getAddress().getCountry());

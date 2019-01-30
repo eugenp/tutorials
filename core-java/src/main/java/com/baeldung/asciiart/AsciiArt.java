@@ -1,11 +1,21 @@
 package com.baeldung.asciiart;
 
+import com.google.common.collect.Lists;
+import org.apache.commons.io.FileUtils;
+
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.List;
 
+/**
+ * @author zn.wang
+ */
 public class AsciiArt {
 
     public AsciiArt() {
@@ -16,6 +26,9 @@ public class AsciiArt {
 
         Graphics2D graphics2D = getGraphics2D(image.getGraphics(), settings);
         graphics2D.drawString(text, 6, ((int) (settings.height * 0.67)));
+
+
+        StringBuilder lines = new StringBuilder();
 
         for (int y = 0; y < settings.height; y++) {
             StringBuilder stringBuilder = new StringBuilder();
@@ -30,11 +43,25 @@ public class AsciiArt {
                 continue;
             }
 
-            System.out.println(stringBuilder);
+            //System.out.println(stringBuilder);
+
+            lines.append(stringBuilder.toString()).append("\n");
+        }
+
+        try {
+            FileUtils.writeStringToFile(new File("nameFile20190130.txt") , lines.toString() , Charset.forName("UTF-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }
 
+    /**
+     * 获取图像整数模式
+     * @param width
+     * @param height
+     * @return
+     */
     private BufferedImage getImageIntegerMode(int width, int height) {
         return new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
     }
@@ -48,6 +75,9 @@ public class AsciiArt {
         return graphics2D;
     }
 
+    /**
+     * 设置配置
+     */
     public class Settings {
         public Font font;
         public int width;
