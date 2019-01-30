@@ -8,14 +8,17 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author zn.wang
+ */
 public class TimingDynamicInvocationHandler implements InvocationHandler {
 
     private static Logger LOGGER = LoggerFactory.getLogger(TimingDynamicInvocationHandler.class);
-    private final Map<String, Method> methods = new HashMap<>();
+    private final Map<String, Method> methods = new HashMap<String, Method>();
 
     private Object target;
 
-    TimingDynamicInvocationHandler(Object target) {
+    public TimingDynamicInvocationHandler(Object target) {
         this.target = target;
 
         for(Method method: target.getClass().getDeclaredMethods()) {
