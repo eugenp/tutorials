@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class CharStackWithArrayTest {
+public class CharStackWithArrayUnitTest {
 
     @Test
     public void whenCharStackIsCreated_thenItHasSize0() {

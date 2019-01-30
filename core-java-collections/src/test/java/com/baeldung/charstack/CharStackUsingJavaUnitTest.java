@@ -2,14 +2,16 @@ package com.baeldung.charstack;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Stack;
+
 import org.junit.jupiter.api.Test;
 
-public class CharStackTest {
+public class CharStackUsingJavaUnitTest {
 
     @Test
     public void whenCharStackIsCreated_thenItHasSize0() {
 
-        CharStack charStack = new CharStack();
+        Stack<Character> charStack = new Stack<>();
 
         assertEquals(0, charStack.size());
     }
@@ -17,7 +19,7 @@ public class CharStackTest {
     @Test
     public void givenEmptyCharStack_whenElementIsPushed_thenStackSizeisIncreased() {
 
-        CharStack charStack = new CharStack();
+        Stack<Character> charStack = new Stack<>();
 
         charStack.push('A');
 
@@ -27,7 +29,7 @@ public class CharStackTest {
     @Test
     public void givenCharStack_whenElementIsPoppedFromStack_thenElementIsRemovedAndSizeChanges() {
 
-        CharStack charStack = new CharStack();
+        Stack<Character> charStack = new Stack<>();
         charStack.push('A');
 
         char element = charStack.pop();
@@ -38,7 +40,8 @@ public class CharStackTest {
 
     @Test
     public void givenCharStack_whenElementIsPeeked_thenElementIsNotRemovedAndSizeDoesNotChange() {
-        CharStack charStack = new CharStack();
+
+        Stack<Character> charStack = new Stack<>();
         charStack.push('A');
 
         char element = charStack.peek();
