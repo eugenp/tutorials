@@ -1,6 +1,6 @@
 package com.baeldung.markerinterface;
 
-public interface Shape {
+public interface ShapeInterface {
     double getArea();
 
     double getCircumference();
