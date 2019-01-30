@@ -1,22 +1,28 @@
 package com.baeldung.passenger;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.core.IsNot.not;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.junit.Assert.assertEquals;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
@@ -45,7 +51,7 @@ public class PassengerRepositoryIntegrationTest {
         assertEquals(1, passengers.size());
 
         Passenger actual = passengers.get(0);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -54,16 +60,17 @@ public class PassengerRepositoryIntegrationTest {
 
         Passenger actual = repository.findFirstByOrderBySeatNumberAsc();
 
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void givenSeveralPassengersWhenFindPageSortedByThenThePassengerInTheFirstFilledSeatIsReturned() {
         Passenger expected = Passenger.from("Fred", "Bloggs", 22);
 
-        Page<Passenger> page = repository.findAll(PageRequest.of(0, 1, Sort.by(Sort.Direction.ASC, "seatNumber")));
+        Page<Passenger> page = repository.findAll(PageRequest.of(0, 1,
+          Sort.by(Sort.Direction.ASC, "seatNumber")));
 
-        assertEquals(page.getContent().size(), 1);
+        assertEquals(1, page.getContent().size());
 
         Passenger actual = page.getContent().get(0);
         assertEquals(expected, actual);
@@ -94,5 +101,69 @@ public class PassengerRepositoryIntegrationTest {
 
         assertThat(passengers, contains(fred, ricki, jill, siya, eve));
     }
+
+    @Test
+    public void givenPassengers_whenFindByExampleDefaultMatcher_thenExpectedReturned() {
+        Example<Passenger> example = Example.of(Passenger.from("Fred", "Bloggs", null));
+
+        Optional<Passenger> actual = repository.findOne(example);
+
+        assertTrue(actual.isPresent());
+        assertEquals(Passenger.from("Fred", "Bloggs", 22), actual.get());
+    }
+
+    @Test
+    public void givenPassengers_whenFindByExampleCaseInsensitiveMatcher_thenExpectedReturned() {
+        ExampleMatcher caseInsensitiveExampleMatcher = ExampleMatcher.matchingAll().withIgnoreCase();
+        Example<Passenger> example = Example.of(Passenger.from("fred", "bloggs", null),
+          caseInsensitiveExampleMatcher);
+
+        Optional<Passenger> actual = repository.findOne(example);
+
+        assertTrue(actual.isPresent());
+        assertEquals(Passenger.from("Fred", "Bloggs", 22), actual.get());
+    }
+
+    @Test
+    public void givenPassengers_whenFindByExampleCustomMatcher_thenExpectedReturned() {
+        Passenger jill = Passenger.from("Jill", "Smith", 50);
+        Passenger eve = Passenger.from("Eve", "Jackson", 95);
+        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
+        Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
+
+        ExampleMatcher customExampleMatcher = ExampleMatcher.matchingAny().withMatcher("firstName",
+          ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase()).withMatcher("lastName",
+          ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+
+        Example<Passenger> example = Example.of(Passenger.from("e", "s", null),
+          customExampleMatcher);
+
+        List<Passenger> passengers = repository.findAll(example);
+
+        assertThat(passengers, contains(jill, eve, fred, siya));
+        assertThat(passengers, not(contains(ricki)));
+    }
+
+    @Test
+    public void givenPassengers_whenFindByIgnoringMatcher_thenExpectedReturned() {
+        Passenger jill = Passenger.from("Jill", "Smith", 50);
+        Passenger eve = Passenger.from("Eve", "Jackson", 95);
+        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
+        Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
     
+        ExampleMatcher ignoringExampleMatcher = ExampleMatcher.matchingAny().withMatcher("lastName",
+          ExampleMatcher.GenericPropertyMatchers.startsWith().ignoreCase()).withIgnorePaths("firstName", "seatNumber");
+    
+        Example<Passenger> example = Example.of(Passenger.from(null, "b", null),
+          ignoringExampleMatcher);
+    
+        List<Passenger> passengers = repository.findAll(example);
+    
+        assertThat(passengers, contains(fred, ricki));
+        assertThat(passengers, not(contains(jill)));
+        assertThat(passengers, not(contains(eve)));
+        assertThat(passengers, not(contains(siya)));
+    }
 }

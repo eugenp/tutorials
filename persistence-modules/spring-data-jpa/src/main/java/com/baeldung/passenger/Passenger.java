@@ -25,15 +25,15 @@ class Passenger {
 
     @Basic(optional = false)
     @Column(nullable = false)
-    private int seatNumber;
+    private Integer seatNumber;
 
-    private Passenger(String firstName, String lastName, int seatNumber) {
+    private Passenger(String firstName, String lastName, Integer seatNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.seatNumber = seatNumber;
     }
 
-    static Passenger from(String firstName, String lastName, int seatNumber) {
+    static Passenger from(String firstName, String lastName, Integer seatNumber) {
         return new Passenger(firstName, lastName, seatNumber);
     }
 
@@ -76,7 +76,7 @@ class Passenger {
         return lastName;
     }
 
-    int getSeatNumber() {
+    Integer getSeatNumber() {
         return seatNumber;
     }
 }
