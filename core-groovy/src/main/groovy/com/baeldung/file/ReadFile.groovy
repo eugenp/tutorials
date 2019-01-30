@@ -69,6 +69,14 @@ class ReadFile {
      * @return
      */
     def moreExamples() {
+        
+        new File("src/main/resources/utf8Content.html").withReader('UTF-8') { reader ->
+            def line
+            while ((line = reader.readLine())!=null) { 
+                println "${line}"
+            }
+        }
+        
         def list = new File("src/main/resources/fileContent.txt").collect {it}
                 
         def array = new File("src/main/resources/fileContent.txt") as String[]
