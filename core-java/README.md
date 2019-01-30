@@ -45,3 +45,4 @@
 - [Guide to Character Encoding](https://www.baeldung.com/java-char-encoding)
 - [Graphs in Java](https://www.baeldung.com/java-graphs)
 - [Console I/O in Java](http://www.baeldung.com/java-console-input-output)
+- [Formatting with printf() in Java](https://www.baeldung.com/java-printstream-printf)
