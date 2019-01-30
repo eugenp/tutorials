@@ -65,7 +65,7 @@ public class WriteCsvFileExampleUnitTest {
     }
 
     @Test
-    public void givenBufferedWriter_whenWriteLine_thenOutputCreated() {
+    public void givenDataArray_whenConvertToCSV_thenOutputCreated() {
         List<String[]> dataLines = new ArrayList<String[]>();
         dataLines.add(new String[] { "John", "Doe", "38", "Comment Data\nAnother line of comment data" });
         dataLines.add(new String[] { "Jane", "Doe, Jr.", "19", "She said \"I'm being quoted\"" });
