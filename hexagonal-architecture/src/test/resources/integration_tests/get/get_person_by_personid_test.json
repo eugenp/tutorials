@@ -1,0 +1,41 @@
+{
+    "scenarioName": "Register a person and then fetch details of newly created park runner.",
+    "steps": [
+        {
+            "name": "create_person",
+            "url": "/services/api/v1/persons/",
+            "operation": "POST",
+            "request": {
+                "body": {
+                    "firstName": "Andy",
+                    "lastName": "Terry",
+                    "gender": "M",
+                    "homeRun": "Swindon",
+                    "runningClub": "RunSwindon",
+                    "email": "runner@themepark.com",
+                    "postCode": "LW8999"
+                }
+            },
+            "assertions": {
+                "status": 201,
+                "body": {
+                    "location": "$NOT.NULL",
+                    "message": "$CONTAINS.STRING:Success"
+                }
+            }
+        },
+        {
+            "name": "get_person_by_id",
+            "url": "/services/api/v1/persons/${$.create_person.response.body.location}",
+            "operation": "GET",
+            "request": {
+            },
+            "assertions": {
+                "status": 200,
+                "body": {
+                    "id": "$NOT.NULL"
+                }
+            }
+        }
+    ]
+}

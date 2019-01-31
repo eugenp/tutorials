@@ -1,0 +1,11 @@
+{
+    "id": 1,
+    "firstName": "FirstJava",
+    "lastName": "LastJava",
+    "gender": "M",
+    "homeRun": "INDORE",
+    "runningClub": "NA",
+    "totalRuns": "28",
+    "email": "RestAPI_integrationTest@code.com",
+    "postCode": "CW2ZZZ"
+}

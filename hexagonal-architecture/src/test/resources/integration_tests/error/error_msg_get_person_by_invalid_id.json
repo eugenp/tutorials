@@ -1,0 +1,19 @@
+{
+    "scenarioName": "Get Person by Id with valid and invalid id",
+    "steps": [
+        {
+            "name": "get_person_by_invalid_id",
+            "url": "/services/api/v1/persons/999",
+            "operation": "GET",
+            "request": {
+            },
+            "assertions": {
+                "status": 404,
+                "body": {
+                    "code": "404",
+                    "message": "Person Not Found"
+                }
+            }
+        }
+    ]
+}

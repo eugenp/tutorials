@@ -1,0 +1,21 @@
+{
+    "scenarioName": "Bad Url Test",
+    "steps": [
+        {
+            "name": "bad_url_test",
+            "url": "/services/bad/url",
+            "operation": "GET",
+            "request": {
+            },
+            "assertions": {
+                "status": 404,
+                "body": {
+                    "status" : 404,
+                    "error" : "Not Found",
+                    "path" : "/services/bad/url"
+                }
+            }
+        }
+
+    ]
+}
