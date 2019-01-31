@@ -50,19 +50,21 @@ Line 3 : String content""")
         given:
             def filePath = "src/main/resources/utf8Content.html"
         when:
-            def noOfLines = readFile.readFileStringWithCharset(filePath)
+            def encodedContent = readFile.readFileStringWithCharset(filePath)
         then:
-            noOfLines
-            noOfLines instanceof String
+            encodedContent
+            encodedContent instanceof String
     }
     
     def 'Should return binary file content in byte arry using ReadFile.readBinaryFile given filePath' () {
         given:
             def filePath = "src/main/resources/sample.png"
         when:
-            def noOfLines = readFile.readBinaryFile(filePath)
+            def binaryContent = readFile.readBinaryFile(filePath)
         then:
-            noOfLines
-            noOfLines instanceof byte[]
+            binaryContent
+            binaryContent instanceof byte[]
+            binaryContent.length == 329
     }
+    
 }

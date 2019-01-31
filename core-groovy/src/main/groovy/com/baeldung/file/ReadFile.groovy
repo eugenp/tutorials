@@ -70,6 +70,7 @@ class ReadFile {
      */
     def moreExamples() {
         
+        //with reader with utf-8
         new File("src/main/resources/utf8Content.html").withReader('UTF-8') { reader ->
             def line
             while ((line = reader.readLine())!=null) { 
@@ -77,20 +78,25 @@ class ReadFile {
             }
         }
         
+        //collect api
         def list = new File("src/main/resources/fileContent.txt").collect {it}
                 
+        //as operator
         def array = new File("src/main/resources/fileContent.txt") as String[]
-                
+              
+        //eachline  
         new File("src/main/resources/fileContent.txt").eachLine { line ->
             println line
         }
         
+        //newInputStream with eachLine
         def is = new File("src/main/resources/fileContent.txt").newInputStream()
         is.eachLine {
             println it
         }
         is.close()
         
+        //withInputStream
         new File("src/main/resources/fileContent.txt").withInputStream { stream ->
             stream.eachLine { line ->
                 println line
