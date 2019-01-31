@@ -1,5 +1,8 @@
 package com.baeldung.accessmodifiers;
 
+/**
+ * @author zn.wang
+ */
 //Only public or default access modifiers are permitted
 public class SuperPublic {
     // Always available from anywhere

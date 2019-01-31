@@ -42,6 +42,7 @@ public class SumAndAverageInArrayUnitTest {
 
         System.out.println("actualAvgOfArray:{}" + actualAvgOfArray);
 
+        //第三个参数：delta为增量
         Assert.assertEquals(expectedAvgOfArray, actualAvgOfArray, 0.0034);
     }
 

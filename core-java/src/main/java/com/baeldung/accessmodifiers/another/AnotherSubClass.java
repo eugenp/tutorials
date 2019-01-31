@@ -2,6 +2,9 @@ package com.baeldung.accessmodifiers.another;
 
 import com.baeldung.accessmodifiers.SuperPublic;
 
+/**
+ * @author zn.wang
+ */
 public class AnotherSubClass extends SuperPublic {
     public AnotherSubClass() {
         SuperPublic.publicMethod(); // Available everywhere.

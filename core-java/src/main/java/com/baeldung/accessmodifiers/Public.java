@@ -1,5 +1,8 @@
 package com.baeldung.accessmodifiers;
 
+/**
+ * @author zn.wang
+ */
 public class Public {
     public Public() {
         SuperPublic.publicMethod(); // Available everywhere.
