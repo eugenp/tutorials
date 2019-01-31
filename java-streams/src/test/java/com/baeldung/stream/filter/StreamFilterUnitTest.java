@@ -62,7 +62,7 @@ public class StreamFilterUnitTest {
 
         List<Customer> customersWithMoreThan100Points = customers
           .stream()
-          .filter(Customer::hasOverThousandPoints)
+          .filter(Customer::hasOverHundredPoints)
           .collect(Collectors.toList());
 
         assertThat(customersWithMoreThan100Points).hasSize(2);
@@ -81,7 +81,7 @@ public class StreamFilterUnitTest {
           .flatMap(c -> c
             .map(Stream::of)
             .orElseGet(Stream::empty))
-          .filter(Customer::hasOverThousandPoints)
+          .filter(Customer::hasOverHundredPoints)
           .collect(Collectors.toList());
 
         assertThat(customersWithMoreThan100Points).hasSize(2);
@@ -156,4 +156,5 @@ public class StreamFilterUnitTest {
           })
           .collect(Collectors.toList())).isInstanceOf(RuntimeException.class);
     }
+    
 }

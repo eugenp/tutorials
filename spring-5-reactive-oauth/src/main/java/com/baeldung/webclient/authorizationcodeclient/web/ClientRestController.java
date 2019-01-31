@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 @RestController
 public class ClientRestController {
 
-    private static final String RESOURCE_URI = "http://localhost:8084/retrieve-resource";
+    private static final String RESOURCE_URI = "http://localhost:8082/spring-security-oauth-resource/foos/1";
 
     @Autowired
     WebClient webClient;

@@ -367,6 +367,8 @@
                 <module>axon</module>
                 <module>azure</module>
 
+                <module>blade</module>
+
                 <module>bootique</module>
 
                 <module>cas/cas-secured-app</module>
@@ -714,7 +716,6 @@
                 <module>spring-rest-simple</module>
                 <module>spring-resttemplate</module>
                 <module>spring-roo</module>
-                
                 <module>spring-security-acl</module>
                 <module>spring-security-angular/server</module>
                 <module>spring-security-cache-control</module>
