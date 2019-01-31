@@ -2,6 +2,9 @@ package com.baeldung.arraycopy.model;
 
 import java.io.Serializable;
 
+/**
+ * @author zn.wang
+ */
 public class Employee implements Serializable {
     private static final long serialVersionUID = -2454619097207585825L;
     private int id;
@@ -21,5 +24,13 @@ public class Employee implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
