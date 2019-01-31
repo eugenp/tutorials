@@ -44,7 +44,7 @@ public class SpringSecurityJsonViewIntegrationTest {
 
     @Test
     @WithMockUser(username = "admin", password = "adminPass", roles = "ADMIN")
-    public void testAdminView() throws Exception {
+    public void whenAdminRequests_thenOwnerNameIsPresent() throws Exception {
         mvc.perform(get("/items"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1))
@@ -54,7 +54,7 @@ public class SpringSecurityJsonViewIntegrationTest {
 
     @Test
     @WithMockUser(username = "user", password = "userPass", roles = "USER")
-    public void testUserView() throws Exception {
+    public void whenUserRequests_thenOwnerNameIsAbsent() throws Exception {
         mvc.perform(get("/items"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(1))
@@ -64,7 +64,7 @@ public class SpringSecurityJsonViewIntegrationTest {
 
     @Test
     @WithMockUser(username = "user", password = "userPass", roles = {"ADMIN", "USER"})
-    public void testMultipleRolesView() throws Exception {
+    public void whenMultipleRoles_thenExceptionIsThrown() throws Exception {
         expectedException.expect(new BaseMatcher<NestedServletException>() {
             @Override
             public boolean matches(Object o) {
