@@ -8,8 +8,10 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Vector;
@@ -214,7 +216,7 @@ public class ArrayCopyUtilUnitTest {
     }
 
     /**
-     * 按类型执行基本类型（除了String外）数组的深、浅拷贝
+     * 按类型执行基本类型（另外加上String类型）数组的深、浅拷贝
      * @param sourceArray 原数组
      * @param sourceArrayIndex 原数组第i个位置
      * @param sourceArrayIndexValue 原数组第i个位置的值
@@ -251,68 +253,201 @@ public class ArrayCopyUtilUnitTest {
     }
 
 
+    /**
+     * 使用数组的原生的clone方法测试，原理同 {@link ArrayCopyUtilUnitTest#basicJavaDataType()}
+     */
     @Test
     public void givenArrayOfPrimitiveType_whenCopiedViaArrayClone_thenValueChangeIsSuccessful(){
         int[] array = {23, 43, 55, 12};
-        
         int[] copiedArray = array.clone();
-        
         Assert.assertArrayEquals(copiedArray, array);
+
+        //改变array和copiedArray之前的值：
+        System.out.println("array:{}" + Arrays.toString(array));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
+        System.out.println();
+
+        //改变array中的值
         array[0] = 9;
+        System.out.println("array:{}" + Arrays.toString(array));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
         assertTrue(copiedArray[0] != array[0]);
+        System.out.println();
+
+        //改变copiedArray中的值
         copiedArray[1] = 12;
+        System.out.println("array:{}" + Arrays.toString(array));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
         assertTrue(copiedArray[1] != array[1]);
     }
 
+
+    /**
+     * 数组的原生的clone方法，如果处理的是引用类型的数组时，为浅拷贝；如果处理的是基本类型（另外加上String类型），为深拷贝。
+     */
     @Test
     public void givenArraysOfNonPrimitiveType_whenCopiedViaArrayClone_thenDoShallowCopy(){
         Employee[] copiedArray = employees.clone();
-        
         Assert.assertArrayEquals(copiedArray, employees);;
+
+        //改变employees和copiedArray之前的值：
+        System.out.println("employees:{}" + Arrays.toString(employees));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
+        System.out.println();
+
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element changed the copied array
         assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
+
+        //改变employees之后的值：
+        System.out.println("employees:{}" + Arrays.toString(employees));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
+        System.out.println();
     }
 
+
+    /**
+     * 使用引用类型的数组的clone方法，为浅拷贝。
+     */
     @Test
     public void givenArraysOfCloneableNonPrimitiveType_whenCopiedViaArrayClone_thenDoShallowCopy(){
         Address[] addresses = createAddressArray();
-        
         Address[] copiedArray = addresses.clone();
-        
+
+        //改变addresses和copiedArray之前的值：
+        System.out.println("addresses:{}" + Arrays.toString(addresses));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
+        System.out.println();
+
         addresses[0].setCity(addresses[0].getCity()+"_Changed");
         Assert.assertArrayEquals(copiedArray, addresses);
+
+        //改变addresses之后的值：
+        System.out.println("addresses:{}" + Arrays.toString(addresses));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
+        System.out.println();
     }
 
+    /**
+     * @see com.baeldung.arraycopy.model.Address#clone() 已经实现的深度克隆。
+     * @throws CloneNotSupportedException
+     */
+    @Test
+    public void signalAddress() throws CloneNotSupportedException {
+        Address address = createAddress();
+        Address copyAddree =  (Address)address.clone();
+
+        System.out.println("========单纯的测试Address对象的clone:================");
+        //改变address和copyAddree之前的值：
+        System.out.println("addresses:{}" + address);
+        System.out.println("copiedArray:{}" + copyAddree);
+        System.out.println();
+
+        address.setCity("beijing");
+
+        //改变address之后的值：
+        System.out.println("addresses:{}" + address);
+        System.out.println("copiedArray:{}" + copyAddree);
+        System.out.println();
+
+
+        System.out.println("========测试List_Address对象的clone:================");
+        Address [] arrayList = new Address[]{ createAddress() };
+        Address [] copyArrayList = arrayList.clone();
+
+        //未改变arrayList和copyArrayList值时，打印结果
+        System.out.println("arrayList:{}" + Arrays.toString(arrayList));
+        System.out.println("copyArrayList:{}" + Arrays.toString(copyArrayList));
+        System.out.println();
+
+        arrayList[0].setCountry("俄罗斯");
+        arrayList[0].setCity("莫斯科");
+
+        //改变arrayList值时，打印结果
+        System.out.println("arrayList:{}" + Arrays.toString(arrayList));
+        System.out.println("copyArrayList:{}" + Arrays.toString(copyArrayList));
+
+    }
+
+
+    /**
+     * @see org.apache.commons.lang3.SerializationUtils#clone(Serializable)
+     * 实现深度拷贝
+     */
     @Test
     public void givenArraysOfSerializableNonPrimitiveType_whenCopiedViaSerializationUtils_thenDoDeepCopy(){
         Employee[] copiedArray = SerializationUtils.clone(employees);
-       
+        //改变employees和copiedArray之前的值：
+        System.out.println("employees:{}" + Arrays.toString(employees));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
+        System.out.println();
+
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element didn't change in the copied array
         Assert.assertFalse(
             copiedArray[0].getName().equals(employees[0].getName()));
+
+        //改变employees和copiedArray之前的值：
+        System.out.println("employees:{}" + Arrays.toString(employees));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
     }
-    
+
+    /**
+     * @see java.util.List#toArray(Object[])
+     * 注意：处理引用类型时，实现浅拷贝；处理基本类型时，实现深拷贝。
+     */
     @Test
     public void givenArraysOfNonPrimitiveType_whenCopiedViaStream_thenDoShallowCopy(){
-        Employee[] copiedArray = Arrays.stream(employees).toArray(Employee[]::new);
+        List<Employee> list = new ArrayList<>();
+        for (Employee employee : employees) {
+            list.add(employee);
+        }
+        Employee[] copiedArray = list.toArray(new Employee[0]);
+        //改变employees和copiedArray之前的值：
+        System.out.println("employees:{}" + Arrays.toString(employees));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
+        System.out.println();
+
         
         Assert.assertArrayEquals(copiedArray, employees);
         employees[0].setName(employees[0].getName()+"_Changed");
         //change in employees' element didn't change in the copied array
         assertTrue(copiedArray[0].getName().equals(employees[0].getName()));
+
+        //改变employees后的值：
+        System.out.println("employees:{}" + Arrays.toString(employees));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
+        System.out.println();
     }
-    
+
+    /**
+     * @see ArrayCopyUtilUnitTest#givenArraysOfNonPrimitiveType_whenCopiedViaStream_thenDoShallowCopy()
+     */
     @Test
     public void givenArraysOfPrimitiveType_whenCopiedViaStream_thenSuccessful(){
         String[] strArray = {"orange", "red", "green'"};
-        
-        String[] copiedArray = Arrays.stream(strArray).toArray(String[]::new);
-        
+
+        List<String> list = new ArrayList<>();
+        for (String s : strArray) {
+            list.add(s);
+        }
+        String[] copiedArray = list.toArray(new String[0]);
+
+        //比较的是值相等
         Assert.assertArrayEquals(copiedArray, strArray);
+
+        strArray[0] = "hello";
+
+        System.out.println("strArray:{}" + Arrays.toString(strArray));
+        System.out.println("copiedArray:{}" + Arrays.toString(copiedArray));
     }
-    
+
+
+    /**
+     * 在{@link com.baeldung.arraycopy.model.Address}类中，已经通过实现了{@link java.lang.Cloneable}接口，
+     * 并且重写了{@link java.lang.Object#clone()}方法实现了深拷贝。
+     * @return
+     */
     private Address[] createAddressArray(){
         Address[] addresses = new Address[1];
         addresses[0] = createAddress();

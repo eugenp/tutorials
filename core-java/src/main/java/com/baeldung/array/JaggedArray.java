@@ -3,14 +3,22 @@ package com.baeldung.array;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * 二维数组的使用
+ * @author zn.wang
+ */
 public class JaggedArray {
 
-    int[][] shortHandFormInitialization() {
-        int[][] jaggedArr = { { 1, 2 }, { 3, 4, 5 }, { 6, 7, 8, 9 } };
+    public int[][] shortHandFormInitialization() {
+        int[][] jaggedArr = {
+                { 1, 2 },
+                { 3, 4, 5 },
+                { 6, 7, 8, 9 }
+        };
         return jaggedArr;
     }
 
-    int[][] declarationAndThenInitialization() {
+    public int[][] declarationAndThenInitialization() {
         int[][] jaggedArr = new int[3][];
         jaggedArr[0] = new int[] { 1, 2 };
         jaggedArr[1] = new int[] { 3, 4, 5 };
@@ -18,7 +26,7 @@ public class JaggedArray {
         return jaggedArr;
     }
 
-    int[][] declarationAndThenInitializationUsingUserInputs() {
+    public int[][] declarationAndThenInitializationUsingUserInputs() {
         int[][] jaggedArr = new int[3][];
         jaggedArr[0] = new int[2];
         jaggedArr[1] = new int[3];
@@ -27,7 +35,7 @@ public class JaggedArray {
         return jaggedArr;
     }
 
-    void initializeElements(int[][] jaggedArr) {
+    public void initializeElements(int[][] jaggedArr) {
         Scanner sc = new Scanner(System.in);
         for (int outer = 0; outer < jaggedArr.length; outer++) {
             for (int inner = 0; inner < jaggedArr[outer].length; inner++) {
@@ -36,13 +44,23 @@ public class JaggedArray {
         }
     }
 
-    void printElements(int[][] jaggedArr) {
+    /**
+     * 打印二维数组
+     * @param jaggedArr
+     */
+    public void printElements(int[][] jaggedArr) {
         for (int index = 0; index < jaggedArr.length; index++) {
             System.out.println(Arrays.toString(jaggedArr[index]));
         }
     }
 
-    int[] getElementAtGivenIndex(int[][] jaggedArr, int index) {
+    /**
+     * 获取一维数组
+     * @param jaggedArr
+     * @param index
+     * @return
+     */
+    public int[] getElementAtGivenIndex(int[][] jaggedArr, int index) {
         return jaggedArr[index];
     }
 

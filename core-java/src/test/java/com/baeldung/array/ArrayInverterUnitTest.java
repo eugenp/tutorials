@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+/**
+ * 数组反转
+ */
 public class ArrayInverterUnitTest {
 
     private String[] fruits = { "apples", "tomatoes", "bananas", "guavas", "pineapples", "oranges" };

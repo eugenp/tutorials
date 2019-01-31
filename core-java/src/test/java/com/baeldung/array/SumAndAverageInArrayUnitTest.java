@@ -3,7 +3,11 @@ package com.baeldung.array;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 数组求和&求平均数
+ */
 public class SumAndAverageInArrayUnitTest {
+
     @Test
     public void givenAnIntArray_whenNotUsingStream_thenFindSum() {
         int[] array = { 1, 3, 4, 8, 19, 20 };
@@ -36,6 +40,8 @@ public class SumAndAverageInArrayUnitTest {
         double expectedAvgOfArray = 9.17;
         double actualAvgOfArray = SumAndAverageInArray.findAverageWithoutUsingStream(array);
 
+        System.out.println("actualAvgOfArray:{}" + actualAvgOfArray);
+
         Assert.assertEquals(expectedAvgOfArray, actualAvgOfArray, 0.0034);
     }
 
@@ -53,6 +59,9 @@ public class SumAndAverageInArrayUnitTest {
         int[] array = {};
         double expectedAvgOfArray = Double.NaN;
         double actualAvgOfArray = SumAndAverageInArray.findAverageUsingStream(array);
+
+        System.out.println("expectedAvgOfArray:{}" + expectedAvgOfArray);
+        System.out.println("actualAvgOfArray:{}" + actualAvgOfArray);
 
         Assert.assertEquals(expectedAvgOfArray, actualAvgOfArray, 0.00);
     }

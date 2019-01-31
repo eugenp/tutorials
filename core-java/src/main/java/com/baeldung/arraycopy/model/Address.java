@@ -1,5 +1,8 @@
 package com.baeldung.arraycopy.model;
 
+/**
+ * @author zn.wang
+ */
 public class Address implements Cloneable {
     private String country;
     private String state;
@@ -48,7 +51,7 @@ public class Address implements Cloneable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
+    public Object clone() throws CloneNotSupportedException {
         super.clone();
         Address address = new Address();
         address.setCity(this.city);
@@ -57,5 +60,16 @@ public class Address implements Cloneable {
         address.setStreet(this.street);
         address.setZipcode(this.zipcode);
         return address;
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "country='" + country + '\'' +
+                ", state='" + state + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", zipcode='" + zipcode + '\'' +
+                '}';
     }
 }

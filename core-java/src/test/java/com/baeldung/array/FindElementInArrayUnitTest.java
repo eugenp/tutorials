@@ -3,7 +3,11 @@ package com.baeldung.array;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+ * 在数组中查元素测试
+ */
 public class FindElementInArrayUnitTest {
+
     @Test
     public void givenAnIntArray_whenNotUsingStream_thenFindAnElement() {
         int[] array = { 1, 3, 4, 8, 19, 20 };
