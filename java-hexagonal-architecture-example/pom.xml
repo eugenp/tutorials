@@ -4,9 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.calculatesum</groupId>
-    <artifactId>calculatesum</artifactId>
+    <groupId>com.baeldung</groupId>
+    <artifactId>java-hexagonal-architecture-example</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>java-hexagonal-architecture-example</name>
+    <packaging>jar</packaging>
+
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <properties>
         <org.springframework-version>5.0.1.RELEASE</org.springframework-version>
@@ -25,6 +33,13 @@
             <artifactId>spring-context</artifactId>
             <version>${org.springframework-version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.4.1.Final</version>
+        </dependency>
+
     </dependencies>
 
     <build>

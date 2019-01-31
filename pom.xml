@@ -447,6 +447,7 @@
                 <module>java-strings</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
+				<module>java-hexagonal-architecture-example</module>
                 <module>javafx</module>
                 <module>javax-servlets</module>
                 <module>javaxval</module>
