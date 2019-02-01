@@ -10,10 +10,10 @@ import static org.junit.Assert.assertEquals;
 
 public class PersonDtoUnitTest {
 
-    private static final ModelMapper modelMapper = new ModelMapper();
+    private final ModelMapper modelMapper = new ModelMapper();
 
     @Test
-    public void testRegisterRunnerDTO_ToEnityMapping() {
+    public void testDto_toModel() {
 
         PersonDto personDto = new PersonDto();
 
@@ -28,7 +28,6 @@ public class PersonDtoUnitTest {
         assertEquals(personDto.getLastName(), personEntity.getLastName());
         assertEquals(personDto.getGender(), personEntity.getGender());
         assertEquals(personDto.getEmail(), personEntity.getEmail());
-
     }
 
 }

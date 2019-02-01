@@ -66,12 +66,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.jsmart</groupId>
-            <artifactId>zerocode-rest-bdd</artifactId>
-            <version>${version.zerocode-rest-bdd}</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
