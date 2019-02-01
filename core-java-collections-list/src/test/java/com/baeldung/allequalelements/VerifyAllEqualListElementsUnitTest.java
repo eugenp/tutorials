@@ -2,6 +2,7 @@ package com.baeldung.allequalelements;
 
 import org.junit.Test;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -10,30 +11,17 @@ public class VerifyAllEqualListElementsUnitTest {
 
     private static List<String> distinctList = new ArrayList<>();
 
-    static {
-        distinctList.add(new String("Jack"));
-        distinctList.add(new String("James"));
-        distinctList.add(new String("Sam"));
-    }
-
     private static List<String> notAllEqualList = new ArrayList<>();
-
-    static {
-        notAllEqualList.add(new String("Jack"));
-        notAllEqualList.add(new String("James"));
-        notAllEqualList.add(new String("Sam"));
-        notAllEqualList.add(new String("James"));
-    }
 
     private static List<String> emptyList = new ArrayList<>();
 
     private static List<String> allEqualList = new ArrayList<>();
 
     static {
-        allEqualList.add(new String("Jack"));
-        allEqualList.add(new String("Jack"));
-        allEqualList.add(new String("Jack"));
-        allEqualList.add(new String("Jack"));
+        distinctList = Arrays.asList("Jack", "James", "Sam");
+        notAllEqualList = Arrays.asList("Jack", "James", "Sam", "James");
+        emptyList = Arrays.asList();
+        allEqualList = Arrays.asList("Jack", "Jack", "Jack", "Jack");
     }
 
     private static VerifyAllEqualListElements verifyAllEqualListElements = new VerifyAllEqualListElements();
@@ -62,6 +50,62 @@ public class VerifyAllEqualListElementsUnitTest {
     @Test
     public void verifyAllEqualUsingALoop_whenAllEqualList_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingALoop(allEqualList);
+
+        assertTrue(allEqual);
+    }
+
+    @Test
+    public void verifyAllEqualUsingHashSet_whenUsingDistinctList_thenReturnFalse() {
+        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingHashSet(distinctList);
+
+        assertFalse(allEqual);
+    }
+
+    @Test
+    public void verifyAllEqualUsingHashSet_whenNotAllEqualList_thenReturnFalse() {
+        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingHashSet(notAllEqualList);
+
+        assertFalse(allEqual);
+    }
+
+    @Test
+    public void verifyAllEqualUsingHashSet_whenEmptyList_thenReturnTrue() {
+        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingHashSet(emptyList);
+
+        assertTrue(allEqual);
+    }
+
+    @Test
+    public void verifyAllEqualUsingHashSet_whenAllEqualList_thenReturnTrue() {
+        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingHashSet(allEqualList);
+
+        assertTrue(allEqual);
+    }
+
+    @Test
+    public void verifyAllEqualUsingFrequency_whenUsingDistinctList_thenReturnFalse() {
+        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingFrequency(distinctList);
+
+        assertFalse(allEqual);
+    }
+
+    @Test
+    public void verifyAllEqualUsingFrequency_whenNotAllEqualList_thenReturnFalse() {
+        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingFrequency(notAllEqualList);
+
+        assertFalse(allEqual);
+    }
+
+    @Test
+    public void verifyAllEqualUsingFrequency_whenEmptyList_thenReturnTrue() {
+        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingFrequency(emptyList);
+
+        assertTrue(allEqual);
+    }
+
+    @Test
+    public void verifyAllEqualUsingFrequency_whenAllEqualList_thenReturnTrue() {
+        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingFrequency(allEqualList);
 
         assertTrue(allEqual);
     }
@@ -121,7 +165,6 @@ public class VerifyAllEqualListElementsUnitTest {
 
         assertTrue(allEqual);
     }
-
 
     @Test
     public void verifyAllEqualUsingGuava_whenUsingDistinctList_thenReturnFalse() {
