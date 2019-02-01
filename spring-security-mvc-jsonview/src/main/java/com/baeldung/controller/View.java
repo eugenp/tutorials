@@ -10,8 +10,8 @@ public class View {
     public static final Map<Role, Class> MAPPING = new HashMap<>();
 
     static {
-        MAPPING.put(Role.ADMIN, Admin.class);
-        MAPPING.put(Role.USER, User.class);
+        MAPPING.put(Role.ROLE_ADMIN, Admin.class);
+        MAPPING.put(Role.ROLE_USER, User.class);
     }
 
     public static class User {
