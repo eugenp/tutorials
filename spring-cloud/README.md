@@ -15,8 +15,6 @@
 ### Relevant Articles:
 - [Intro to Spring Cloud Netflix - Hystrix](http://www.baeldung.com/spring-cloud-netflix-hystrix)
 - [Dockerizing a Spring Boot Application](http://www.baeldung.com/dockerizing-spring-boot-application)
-- [Using a Spring Cloud App Starter](http://www.baeldung.com/using-a-spring-cloud-app-starter)
-- [Using a Spring Cloud App Starter](http://www.baeldung.com/spring-cloud-app-starter)
 - [Instance Profile Credentials using Spring Cloud](http://www.baeldung.com/spring-cloud-instance-profiles)
 - [Running Spring Boot Applications With Minikube](http://www.baeldung.com/spring-boot-minikube)
 
