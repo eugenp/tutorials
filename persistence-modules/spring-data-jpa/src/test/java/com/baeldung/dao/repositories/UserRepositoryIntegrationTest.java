@@ -17,6 +17,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -389,6 +390,28 @@ public class UserRepositoryIntegrationTest {
         Collection<User> usersWithEmails = userRepository.findUserByEmails(emails);
 
         assertThat(usersWithEmails.size()).isEqualTo(2);
+    }
+    
+    @Test
+    public void givenUsersInDBWhenFindByNameListReturnCollection() {
+
+        User user1 = new User();
+        user1.setName(USER_NAME_ADAM);
+        user1.setEmail(USER_EMAIL);
+        userRepository.save(user1);
+
+        User user2 = new User();
+        user2.setName(USER_NAME_PETER);
+        user2.setEmail(USER_EMAIL2);
+        userRepository.save(user2);
+
+        List<String> names = new ArrayList<>();
+        names.add(USER_NAME_ADAM);
+        names.add(USER_NAME_PETER);
+
+        Collection<User> usersWithNames = userRepository.findUserByNameList(names);
+
+        assertThat(usersWithNames.size()).isEqualTo(2);
     }
 
     @After
