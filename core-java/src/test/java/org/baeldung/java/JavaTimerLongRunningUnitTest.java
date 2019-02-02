@@ -11,6 +11,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Java Timer测试
+ */
 public class JavaTimerLongRunningUnitTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(JavaTimerLongRunningUnitTest.class);
