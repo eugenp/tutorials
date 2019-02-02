@@ -3,11 +3,14 @@ package com.baeldung.stream;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -87,5 +90,19 @@ public class StreamMapUnitTest {
 
         assertTrue(isbnCodes.isEmpty());
     }
+
+    @Test
+    public void ValuesFromMapBasedOnPattern() {
+        Map<String, Integer> authorToYearOfBirth = new HashMap<>();
+        authorToYearOfBirth.put("Asimov, Isaac", 1920);
+        authorToYearOfBirth.put("Adams, Douglas", 1952);
+        authorToYearOfBirth.put("Bradbury, Ray", 1920);
+        authorToYearOfBirth.put("Clarke, Arthur", 1917);
+
+        List<Integer> yearOfBirthAuthorsStartingWithA = authorToYearOfBirth.entrySet().stream().filter(e -> e.getKey().startsWith("A")).map(Map.Entry::getValue).collect(Collectors.toList());
+        assertEquals(2, yearOfBirthAuthorsStartingWithA.size());
+
+    }
+
 
 }
