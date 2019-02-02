@@ -7,6 +7,8 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 import static org.junit.Assert.assertTrue;
 
@@ -27,9 +29,30 @@ public class JavaSortingUnitTest {
         sortedInts = new int[] { 1, 5, 7, 66, 88, 89, 123, 200, 255 };
         sortedRangeInts = new int[] { 5, 1, 89, 7, 88, 200, 255, 123, 66 };
 
-        employees = new Employee[] { new Employee("John", 23, 5000), new Employee("Steve", 26, 6000), new Employee("Frank", 33, 7000), new Employee("Earl", 43, 10000), new Employee("Jessica", 23, 4000), new Employee("Pearl", 33, 6000) };
-        employeesSorted = new Employee[] { new Employee("Earl", 43, 10000), new Employee("Frank", 33, 70000), new Employee("Jessica", 23, 4000), new Employee("John", 23, 5000), new Employee("Pearl", 33, 4000), new Employee("Steve", 26, 6000) };
-        employeesSortedByAge = new Employee[] { new Employee("John", 23, 5000), new Employee("Jessica", 23, 4000), new Employee("Steve", 26, 6000), new Employee("Frank", 33, 70000), new Employee("Pearl", 33, 4000), new Employee("Earl", 43, 10000) };
+        employees = new Employee[] {
+                new Employee("John", 23, 5000),
+                new Employee("Steve", 26, 6000),
+                new Employee("Frank", 33, 7000),
+                new Employee("Earl", 43, 10000),
+                new Employee("Jessica", 23, 4000),
+                new Employee("Pearl", 33, 6000)
+        };
+        employeesSorted = new Employee[] {
+                new Employee("Earl", 43, 10000),
+                new Employee("Frank", 33, 70000),
+                new Employee("Jessica", 23, 4000),
+                new Employee("John", 23, 5000),
+                new Employee("Pearl", 33, 4000),
+                new Employee("Steve", 26, 6000)
+        };
+        employeesSortedByAge = new Employee[] {
+                new Employee("John", 23, 5000),
+                new Employee("Jessica", 23, 4000),
+                new Employee("Steve", 26, 6000),
+                new Employee("Frank", 33, 70000),
+                new Employee("Pearl", 33, 4000),
+                new Employee("Earl", 43, 10000)
+        };
 
         map = new HashMap<>();
         map.put(55, "John");
@@ -51,7 +74,12 @@ public class JavaSortingUnitTest {
     @Test
     public void givenIntegerArray_whenUsingSort_thenSortedArray() {
         Integer[] integers = ArrayUtils.toObject(toSort);
-        Arrays.sort(integers, Comparator.comparingInt(a -> a));
+        Arrays.sort(integers, Comparator.comparingInt(new ToIntFunction<Integer>() {
+            @Override
+            public int applyAsInt(Integer a) {
+                return a;
+            }
+        }));
 
         assertTrue(Arrays.equals(integers, ArrayUtils.toObject(sortedInts)));
     }
@@ -122,7 +150,12 @@ public class JavaSortingUnitTest {
         String[] sortedValues = new String[] { "Apple", "Earl", "George", "John", "Pearl", "Rocky" };
 
         List<Map.Entry<Integer, String>> entries = new ArrayList<>(map.entrySet());
-        entries.sort(Comparator.comparing(Entry::getValue));
+        entries.sort(Comparator.comparing(new Function<Entry<Integer, String>, String>() {
+            @Override
+            public String apply(Entry<Integer, String> integerStringEntry) {
+                return integerStringEntry.getValue();
+            }
+        }));
         HashMap<Integer, String> sortedMap = new LinkedHashMap<>();
         for (Map.Entry<Integer, String> entry : entries) {
             sortedMap.put(entry.getKey(), entry.getValue());
@@ -138,7 +171,12 @@ public class JavaSortingUnitTest {
         HashSet<Integer> descSortedIntegersSet = new LinkedHashSet<>(Arrays.asList(255, 200, 123, 89, 88, 66, 7, 5, 1));
 
         ArrayList<Integer> list = new ArrayList<>(integersSet);
-        list.sort((i1, i2) -> i2 - i1);
+        list.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer i1, Integer i2) {
+                return i2 - i1;
+            }
+        });
         integersSet = new LinkedHashSet<>(list);
 
         assertTrue(Arrays.equals(integersSet.toArray(), descSortedIntegersSet.toArray()));

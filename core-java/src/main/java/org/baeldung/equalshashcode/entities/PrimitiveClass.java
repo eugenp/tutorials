@@ -1,5 +1,8 @@
 package org.baeldung.equalshashcode.entities;
 
+/**
+ * @author zn.wang
+ */
 public class PrimitiveClass {
 
     private boolean primitiveBoolean;
@@ -26,17 +29,22 @@ public class PrimitiveClass {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj){
             return true;
-        if (obj == null)
+        }
+        if (obj == null){
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         PrimitiveClass other = (PrimitiveClass) obj;
-        if (primitiveBoolean != other.primitiveBoolean)
+        if (primitiveBoolean != other.primitiveBoolean) {
             return false;
-        if (primitiveInt != other.primitiveInt)
+        }
+        if (primitiveInt != other.primitiveInt){
             return false;
+        }
         return true;
     }
 

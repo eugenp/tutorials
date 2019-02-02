@@ -2,6 +2,9 @@ package org.baeldung.equalshashcode.entities;
 
 import java.awt.Color;
 
+/**
+ * @author zn.wang
+ */
 public class Square extends Rectangle {
 
     Color color;

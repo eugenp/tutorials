@@ -1,5 +1,8 @@
 package org.baeldung.equalshashcode.entities;
 
+/**
+ * @author zn.wang
+ */
 public class Rectangle extends Shape {
     private double width;
     private double length;
@@ -33,17 +36,22 @@ public class Rectangle extends Shape {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj){
             return true;
-        if (obj == null)
+        }
+        if (obj == null){
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Rectangle other = (Rectangle) obj;
-        if (Double.doubleToLongBits(length) != Double.doubleToLongBits(other.length))
+        if (Double.doubleToLongBits(length) != Double.doubleToLongBits(other.length)) {
             return false;
-        if (Double.doubleToLongBits(width) != Double.doubleToLongBits(other.width))
+        }
+        if (Double.doubleToLongBits(width) != Double.doubleToLongBits(other.width)) {
             return false;
+        }
         return true;
     }
 

@@ -10,9 +10,13 @@ import java.util.TimerTask;
 
 public class SandboxJavaManualTest {
 
-
     private static final Logger LOG = LoggerFactory.getLogger(SandboxJavaManualTest.class);
 
+    /**
+     * @see java.util.TimerTask
+     * @see java.util.Timer#schedule(TimerTask task, long delay)
+     * @throws InterruptedException
+     */
     @Test
     public void givenUsingTimer_whenSchedulingTimerTaskOnce_thenCorrect() throws InterruptedException {
         final TimerTask timerTask = new TimerTask() {
@@ -30,6 +34,11 @@ public class SandboxJavaManualTest {
         Thread.sleep(delay);
     }
 
+    /**
+     * 固定频率执行
+     * @see java.util.Timer#scheduleAtFixedRate(TimerTask task, long delay, long period)
+     * @throws InterruptedException
+     */
     @Test
     public void givenUsingTimer_whenSchedulingRepeatedTask_thenCorrect() throws InterruptedException {
         final TimerTask repeatedTask = new TimerTask() {
@@ -56,6 +65,7 @@ public class SandboxJavaManualTest {
 
     @Test
     public void givenUsingTimer_whenSchedulingRepeatedCustomTimerTask_thenCorrect() throws InterruptedException {
+
         class MyTask extends TimerTask {
             long timesToRun = 0;
             long timesRunned = 0;

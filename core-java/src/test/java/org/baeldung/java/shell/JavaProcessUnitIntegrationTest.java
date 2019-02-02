@@ -48,7 +48,8 @@ public class JavaProcessUnitIntegrationTest {
         ProcessBuilder builder = new ProcessBuilder();
         if (IS_WINDOWS) {
             builder.command("cmd.exe", "/c", "dir");
-        } else {
+        }
+        else {
             builder.command("sh", "-c", "ls");
         }
         builder.directory(new File(homeDirectory));

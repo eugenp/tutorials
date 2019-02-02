@@ -3,6 +3,9 @@ package org.baeldung.equalshashcode.entities;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * @author zn.wang
+ */
 public class ComplexClass {
 
     private List<?> genericList;
@@ -25,23 +28,32 @@ public class ComplexClass {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj){
             return true;
-        if (obj == null)
+        }
+        if (obj == null){
             return false;
-        if (!(obj instanceof ComplexClass))
+        }
+        if (!(obj instanceof ComplexClass)){
             return false;
+        }
         ComplexClass other = (ComplexClass) obj;
         if (genericList == null) {
-            if (other.genericList != null)
+            if (other.genericList != null){
                 return false;
-        } else if (!genericList.equals(other.genericList))
+            }
+        }
+        else if (!genericList.equals(other.genericList)){
             return false;
+        }
         if (integerSet == null) {
-            if (other.integerSet != null)
+            if (other.integerSet != null){
                 return false;
-        } else if (!integerSet.equals(other.integerSet))
+            }
+        }
+        else if (!integerSet.equals(other.integerSet)) {
             return false;
+        }
         return true;
     }
 
