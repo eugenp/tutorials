@@ -48,7 +48,7 @@ public class Java8CollectorsUnitTest {
     }
 
     @Test
-    public void whenCollectingToList_shouldCollectToSet() throws Exception {
+    public void whenCollectingToSet_shouldCollectToSet() throws Exception {
         final Set<String> result = givenList.stream().collect(toSet());
 
         assertThat(result).containsAll(givenList);
