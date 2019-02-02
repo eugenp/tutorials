@@ -1,13 +1,9 @@
 package unittest;
 
 import com.baeldung.springboot.controller.PersonController;
-import com.baeldung.springboot.entity.Person;
-import com.baeldung.springboot.exception.GlobalExceptionHandler;
-import com.baeldung.springboot.exception.PersonException;
 import com.baeldung.springboot.model.PersonResponse;
 import com.baeldung.springboot.model.dto.PersonDto;
 import com.baeldung.springboot.service.PersonServiceImpl;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,15 +17,10 @@ import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.ResourceUtils;
-
-import java.io.File;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 
@@ -51,7 +42,8 @@ public class PersonControllerUnitTest {
 
     @Before
     public void setup() {
-        mockMvc = MockMvcBuilders.standaloneSetup(personControllerController).setControllerAdvice(new GlobalExceptionHandler()).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(personControllerController)
+                .build();
         objectMapper = new ObjectMapper();
     }
 
