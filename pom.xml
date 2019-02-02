@@ -733,6 +733,7 @@
                 <module>spring-security-mvc-boot</module>
                 <module>spring-security-mvc-custom</module>
                 <module>spring-security-mvc-digest-auth</module>
+				<module>spring-security-mvc-jsonview</module>
                 <module>spring-security-mvc-ldap</module>
                 <module>spring-security-mvc-login</module>
                 <module>spring-security-mvc-persisted-remember-me</module>
