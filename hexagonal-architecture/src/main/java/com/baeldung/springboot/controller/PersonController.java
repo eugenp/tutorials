@@ -1,5 +1,6 @@
 package com.baeldung.springboot.controller;
 
+import com.baeldung.springboot.endpoint.PersonEndPoint;
 import com.baeldung.springboot.entity.Person;
 import com.baeldung.springboot.exception.PersonException;
 import com.baeldung.springboot.model.PersonResponse;
@@ -11,30 +12,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/persons")
-public class PersonController {
+public class PersonController implements PersonEndPoint {
 
-	private final PersonService personService;
+    private final PersonService personService;
 
-	@Autowired
-	public PersonController(PersonService personService) {
-		
-		this.personService = personService;
+    @Autowired
+    public PersonController(PersonService personService) {
 
-	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Person> getperson(@PathVariable Long id) throws PersonException {
-		
-		return new ResponseEntity<>(personService.getPersonById(id), HttpStatus.OK);
-		
-	}
-	
-	@PostMapping
-	public ResponseEntity<PersonResponse> registerRunner(@RequestBody PersonDto personDto) {
-		
-		return new ResponseEntity<>(personService.createPerson(personDto), HttpStatus.CREATED);
+        this.personService = personService;
 
-	}
-	
+    }
+
+    @Override
+    public ResponseEntity<PersonResponse> registerPerson(@RequestBody PersonDto personDto) {
+
+        return new ResponseEntity<>(personService.createPerson(personDto), HttpStatus.CREATED);
+
+    }
+
 }

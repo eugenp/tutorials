@@ -55,51 +55,6 @@ public class PersonControllerUnitTest {
         objectMapper = new ObjectMapper();
     }
 
-    @Test
-    public void testGetpersonById_WhenRecordExist_thenRespondWith_200() throws Exception {
-
-        // GIVEN
-        Person mockServiceResponse = prepareMockServiceResponse_getpersonById();
-        given(personServiceImpl.getPersonById(anyLong())).willReturn(mockServiceResponse);
-
-        // WHEN
-        MockHttpServletResponse response = this.mockMvc.perform(get("/api/v1/persons/1")).andReturn().getResponse();
-
-        //THEN
-        assertThat(response).isNotNull();
-        assertThat(response.getStatus()).isEqualTo(HttpStatus.OK.value());
-
-        Person person = objectMapper.readValue(response.getContentAsString(), new TypeReference<Person>() {
-        });
-
-        assertThat(person).hasFieldOrProperty("id").isNotNull();
-
-    }
-
-    @Test
-    public void testGetpersonById_WithRecordNotFound_thenRespondWith_404() throws Exception {
-
-        // GIVEN
-        given(personServiceImpl.getPersonById(anyLong())).willThrow(new PersonException("2", "404", "Person not found"));
-
-        // WHEN
-        MockHttpServletResponse response = this.mockMvc.perform(get("/api/v1/persons/2")).andReturn().getResponse();
-
-        // THEN
-        assertThat(response).isNotNull();
-        assertThat(response.getStatus()).isEqualTo(HttpStatus.NOT_FOUND.value());
-    }
-
-    @Test
-    public void testGetpersonById_WithInCorrectIdPattern_thenRespondWith_400() throws Exception {
-
-        // WHEN
-        MockHttpServletResponse response = this.mockMvc.perform(get("/api/v1/persons/ZZ")).andReturn().getResponse();
-
-        // THEN
-        assertThat(response).isNotNull();
-        assertThat(response.getStatus()).isEqualTo(HttpStatus.BAD_REQUEST.value());
-    }
 
     @Test
     public void testRegisterperson_WithValidRequest_ThenRespondWith_201() throws Exception {
@@ -130,14 +85,4 @@ public class PersonControllerUnitTest {
         assertThat(response).isNotNull();
         assertThat(response.getStatus()).isEqualTo(HttpStatus.CREATED.value());
     }
-
-    private Person prepareMockServiceResponse_getpersonById() throws Exception {
-
-        File personByIdResponse = ResourceUtils
-                .getFile("classpath:data_files/response/get_person_byId_response_body.json");
-        return objectMapper.readValue(personByIdResponse, new TypeReference<Person>() {
-        });
-
-    }
-
 }

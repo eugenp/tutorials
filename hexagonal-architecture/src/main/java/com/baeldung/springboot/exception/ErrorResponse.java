@@ -11,7 +11,6 @@ public class ErrorResponse {
 		this.code=code;
 		this.message=message;
 	}
-		
 
 	/**
 	 * @return the id

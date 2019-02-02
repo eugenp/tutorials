@@ -1,6 +1,6 @@
 package com.baeldung.springboot.exception;
 
-public class PersonException extends Exception {
+public class PersonException extends RuntimeException {
 
 	private static final long serialVersionUID = -6930542248556723784L;
 	
