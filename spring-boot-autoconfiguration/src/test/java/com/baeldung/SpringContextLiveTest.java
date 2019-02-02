@@ -11,7 +11,7 @@ import com.baeldung.autoconfiguration.MySQLAutoconfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MySQLAutoconfiguration.class)
 @WebAppConfiguration
-public class SpringContextIntegrationTest {
+public class SpringContextLiveTest {
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
