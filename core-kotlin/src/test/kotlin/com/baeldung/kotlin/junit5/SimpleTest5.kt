@@ -14,7 +14,7 @@ class SimpleTest5 {
 
     @Test
     @Disabled
-    fun `JUnit should complain and report failed assertions`() {
+    fun `3 is equal to 4`() {
         Assertions.assertEquals(3, 4) {
             "Three does not equal four"
         }
