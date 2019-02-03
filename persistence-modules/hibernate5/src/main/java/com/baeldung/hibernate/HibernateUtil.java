@@ -68,6 +68,11 @@ public class HibernateUtil {
         return sessionFactory;
     }
 
+    public static SessionFactory getSessionFactoryByProperties(Properties properties) throws IOException {
+        ServiceRegistry serviceRegistry = configureServiceRegistry(properties);
+        return makeSessionFactory(serviceRegistry);
+    }
+
     private static SessionFactory makeSessionFactory(ServiceRegistry serviceRegistry) {
         MetadataSources metadataSources = new MetadataSources(serviceRegistry);
 
@@ -119,12 +124,15 @@ public class HibernateUtil {
     }
 
     private static ServiceRegistry configureServiceRegistry() throws IOException {
-        Properties properties = getProperties();
+        return configureServiceRegistry(getProperties());
+    }
+
+    private static ServiceRegistry configureServiceRegistry(Properties properties) throws IOException {
         return new StandardServiceRegistryBuilder().applySettings(properties)
                 .build();
     }
 
-    private static Properties getProperties() throws IOException {
+    public static Properties getProperties() throws IOException {
         Properties properties = new Properties();
         URL propertiesURL = Thread.currentThread()
           .getContextClassLoader()

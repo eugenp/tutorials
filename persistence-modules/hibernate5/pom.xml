@@ -73,6 +73,11 @@
             <artifactId>hibernate-jpamodelgen</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>${dropwizard-metrics.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -92,6 +97,7 @@
         <h2database.version>1.4.196</h2database.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <jackson.version>2.9.7</jackson.version>
+        <dropwizard-metrics.version>4.0.5</dropwizard-metrics.version>
     </properties>
 
 </project>
