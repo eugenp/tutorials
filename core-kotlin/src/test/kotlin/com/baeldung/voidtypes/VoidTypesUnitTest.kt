@@ -6,7 +6,19 @@ import kotlin.test.assertTrue
 
 class VoidTypesUnitTest {
 
-    fun returnTypeAsVoid(): Void? {
+    // Un-commenting below methods will result into compilation error
+    // as the syntax used is incorrect and is used for explanation in tutorial.	
+
+    //    fun returnTypeAsVoidAttempt1(): Void {
+    //        println("Trying with Void as return type")
+    //    }
+
+    //    fun returnTypeAsVoidAttempt2(): Void {
+    //        println("Trying with Void as return type")
+    //        return null
+    //    }
+
+    fun returnTypeAsVoidSuccess(): Void? {
         println("Function can have Void as return type")
         return null
     }
@@ -36,7 +48,7 @@ class VoidTypesUnitTest {
 
     @Test
     fun givenVoidReturnType_thenReturnsNullOnly() {
-        assertNull(returnTypeAsVoid())
+        assertNull(returnTypeAsVoidSuccess())
     }
 
     @Test

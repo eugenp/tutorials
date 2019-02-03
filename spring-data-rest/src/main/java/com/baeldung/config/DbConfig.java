@@ -20,7 +20,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 // @PropertySource("persistence-h2.properties")
 // @PropertySource("persistence-hsqldb.properties")
 // @PropertySource("persistence-derby.properties")
-//@PropertySource("persistence-sqlite.properties")
+// @PropertySource("persistence-sqlite.properties")
 public class DbConfig {
 
     @Autowired
@@ -64,22 +64,24 @@ public class DbConfig {
 
 @Configuration
 @Profile("h2")
-@PropertySource("persistence-h2.properties")
-class H2Config {}
+@PropertySource("classpath:persistence-h2.properties")
+class H2Config {
+}
 
 @Configuration
 @Profile("hsqldb")
-@PropertySource("persistence-hsqldb.properties")
-class HsqldbConfig {}
-
+@PropertySource("classpath:persistence-hsqldb.properties")
+class HsqldbConfig {
+}
 
 @Configuration
 @Profile("derby")
-@PropertySource("persistence-derby.properties")
-class DerbyConfig {}
-
+@PropertySource("classpath:persistence-derby.properties")
+class DerbyConfig {
+}
 
 @Configuration
 @Profile("sqlite")
-@PropertySource("persistence-sqlite.properties")
-class SqliteConfig {}
+@PropertySource("classpath:persistence-sqlite.properties")
+class SqliteConfig {
+}
