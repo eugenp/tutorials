@@ -19,12 +19,7 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     public ResponseEntity<Object> handleAccessDeniedException(Exception ex, WebRequest request) {
         RepositoryConstraintViolationException nevEx = (RepositoryConstraintViolationException) ex;
 
-        String errors = nevEx
-          .getErrors()
-          .getAllErrors()
-          .stream()
-          .map(ObjectError::toString)
-          .collect(Collectors.joining("\n"));
+        String errors = nevEx.getErrors().getAllErrors().stream().map(ObjectError::toString).collect(Collectors.joining("\n"));
         return new ResponseEntity<>(errors, new HttpHeaders(), HttpStatus.NOT_ACCEPTABLE);
     }
 
