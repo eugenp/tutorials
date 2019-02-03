@@ -59,6 +59,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+	
     <properties>
         <cdi-api.version>2.0.SP1</cdi-api.version>
         <weld-se-core.version>3.0.5.Final</weld-se-core.version>

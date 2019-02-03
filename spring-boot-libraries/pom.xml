@@ -44,12 +44,12 @@
 		<dependency>
 			<groupId>net.javacrumbs.shedlock</groupId>
 			<artifactId>shedlock-spring</artifactId>
-			<version>2.1.0</version>
+			<version>${shedlock.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.javacrumbs.shedlock</groupId>
 			<artifactId>shedlock-provider-jdbc-template</artifactId>
-			<version>2.1.0</version>
+			<version>${shedlock.version}</version>
 		</dependency>
 
 	</dependencies>
@@ -151,6 +151,7 @@
 		<git-commit-id-plugin.version>2.2.4</git-commit-id-plugin.version>
 		<modelmapper.version>2.3.2</modelmapper.version>
 		<problem-spring-web.version>0.23.0</problem-spring-web.version>
+		<shedlock.version>2.1.0</shedlock.version>
 	</properties>
 
 </project>
