@@ -3,7 +3,7 @@
 ## Java Strings Cookbooks and Examples
 
 ### Relevant Articles:
-- [Common String Operations in Java](https://baeldung.com/common-string-operations-in-java/) 
+- [Common String Operations in Java](https://baeldung.com/java-string-operations) 
 - [String Operations with Java Streams](http://www.baeldung.com/java-stream-operations-on-strings)
 - [Converting String to Stream of chars](http://www.baeldung.com/java-string-to-stream)
 - [Java 8 StringJoiner](http://www.baeldung.com/java-string-joiner)
