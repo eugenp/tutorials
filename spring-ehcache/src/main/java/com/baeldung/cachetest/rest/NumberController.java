@@ -15,15 +15,15 @@ import com.baeldung.cachetest.service.NumberService;
 @RequestMapping(path = "/number", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class NumberController {
 
-	private final static Logger log = LoggerFactory.getLogger(NumberController.class);
+    private final static Logger log = LoggerFactory.getLogger(NumberController.class);
 
-	@Autowired
-	private NumberService numberService;
+    @Autowired
+    private NumberService numberService;
 
-	@GetMapping(path = "/square/{number}")
-	public String getThing(@PathVariable Long number) {
-		log.info("call numberService to square {}", number);
-		return String.format("{\"square\": %s}", numberService.square(number));
-	}
+    @GetMapping(path = "/square/{number}")
+    public String getThing(@PathVariable Long number) {
+        log.info("call numberService to square {}", number);
+        return String.format("{\"square\": %s}", numberService.square(number));
+    }
 
 }
