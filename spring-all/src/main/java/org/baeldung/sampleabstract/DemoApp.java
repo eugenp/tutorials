@@ -15,9 +15,6 @@ public class DemoApp {
     @Autowired
     private FooService fooService;
 
-    @Autowired
-    private FooGenericService fooGenericService;
-
     public static void main(String[] args) {
 
         ApplicationContext applicationContext = new AnnotationConfigApplicationContext(DemoApp.class);
@@ -27,6 +24,5 @@ public class DemoApp {
     public void afterInitialize() {
 
         fooService.afterInitialize();
-        fooGenericService.afterInitialize();
     }
 }
