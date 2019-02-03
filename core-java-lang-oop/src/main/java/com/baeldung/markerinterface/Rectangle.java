@@ -1,6 +1,6 @@
 package com.baeldung.markerinterface;
 
-public class Rectangle implements Deletable {
+public class Rectangle implements DeletableShape {
 
     private double width;
     private double height;

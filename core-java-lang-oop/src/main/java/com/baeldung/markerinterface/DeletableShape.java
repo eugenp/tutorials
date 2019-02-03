@@ -1,7 +1,5 @@
 package com.baeldung.markerinterface;
 
-public interface DeletableShape {
-    double getArea();
+public interface DeletableShape extends Shape {
 
-    double getCircumference();
 }
