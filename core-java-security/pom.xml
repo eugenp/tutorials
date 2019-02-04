@@ -44,8 +44,8 @@
 
         <!-- util -->
         <commons-lang3.version>3.8.1</commons-lang3.version>
-        <bouncycastle.version>1.55</bouncycastle.version>
-        <commons-codec.version>1.10</commons-codec.version>
+        <bouncycastle.version>1.60</bouncycastle.version>
+        <commons-codec.version>1.11</commons-codec.version>
 
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
