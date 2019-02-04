@@ -154,25 +154,6 @@
                         <outputDirectory>${deploy-path}</outputDirectory>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>default-test</id>
-                            <configuration>
-                                <skip>true</skip>
-                            </configuration>
-                        </execution>
-                    </executions>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.junit.platform</groupId>
-                            <artifactId>junit-platform-surefire-provider</artifactId>
-                            <version>${junit.platform.version}</version>
-                        </dependency>
-                    </dependencies>
-                </plugin>
             </plugins>
         </pluginManagement>
         <finalName>spring-mvc-simple</finalName>
@@ -196,7 +177,7 @@
         <jade.version>1.2.5</jade.version>
         <junit.platform.version>1.0.2</junit.platform.version>
         <rome.version>1.9.0</rome.version>
-        <jackson.version>2.9.4</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <xstream.version>1.4.9</xstream.version>
         <scribejava.version>5.1.0</scribejava.version>
         <json.version>20180130</json.version>

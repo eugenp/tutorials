@@ -1,6 +1,6 @@
 package com.baeldung.rsocket;
 
-import com.baeldung.rsocket.support.WindDataPublisher;
+import com.baeldung.rsocket.support.DataPublisher;
 import static com.baeldung.rsocket.support.Constants.*;
 import com.baeldung.rsocket.support.GameController;
 import io.rsocket.AbstractRSocket;
@@ -19,7 +19,7 @@ public class Server {
     private static final Logger LOG = LoggerFactory.getLogger(Server.class);
 
     private final Disposable server;
-    private final WindDataPublisher windDataPublisher = new WindDataPublisher();
+    private final DataPublisher dataPublisher = new DataPublisher();
     private final GameController gameController;
 
     public Server() {
@@ -34,7 +34,7 @@ public class Server {
     }
 
     public void dispose() {
-        windDataPublisher.complete();
+        dataPublisher.complete();
         this.server.dispose();
     }
 
@@ -67,7 +67,7 @@ public class Server {
         @Override
         public Mono<Void> fireAndForget(Payload payload) {
             try {
-                windDataPublisher.publish(payload); // forward the payload
+                dataPublisher.publish(payload); // forward the payload
                 return Mono.empty();
             } catch (Exception x) {
                 return Mono.error(x);
@@ -78,13 +78,13 @@ public class Server {
          * Handle Request/Stream messages. Each request returns a new stream.
          *
          * @param payload Payload that can be used to determine which stream to return
-         * @return Flux stream containing simulated wind speed data
+         * @return Flux stream containing simulated measurement data
          */
         @Override
         public Flux<Payload> requestStream(Payload payload) {
             String streamName = payload.getDataUtf8();
-            if (WIND_DATA_STREAM_NAME.equals(streamName)) {
-                return Flux.from(windDataPublisher);
+            if (DATA_STREAM_NAME.equals(streamName)) {
+                return Flux.from(dataPublisher);
             }
             return Flux.error(new IllegalArgumentException(streamName));
         }
