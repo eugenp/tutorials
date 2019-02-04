@@ -9,8 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class VerifyAllEqualListElementsUnitTest {
 
-    private static List<String> distinctList = new ArrayList<>();
-
     private static List<String> notAllEqualList = new ArrayList<>();
 
     private static List<String> emptyList = new ArrayList<>();
@@ -18,7 +16,6 @@ public class VerifyAllEqualListElementsUnitTest {
     private static List<String> allEqualList = new ArrayList<>();
 
     static {
-        distinctList = Arrays.asList("Jack", "James", "Sam");
         notAllEqualList = Arrays.asList("Jack", "James", "Sam", "James");
         emptyList = Arrays.asList();
         allEqualList = Arrays.asList("Jack", "Jack", "Jack", "Jack");
@@ -27,196 +24,147 @@ public class VerifyAllEqualListElementsUnitTest {
     private static VerifyAllEqualListElements verifyAllEqualListElements = new VerifyAllEqualListElements();
 
     @Test
-    public void verifyAllEqualUsingALoop_whenUsingDistinctList_thenReturnFalse() {
-        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingALoop(distinctList);
-
-        assertFalse(allEqual);
-    }
-
-    @Test
-    public void verifyAllEqualUsingALoop_whenNotAllEqualList_thenReturnFalse() {
+    public void givenNotAllEqualList_whenUsingALoop_thenReturnFalse() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingALoop(notAllEqualList);
 
         assertFalse(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingALoop_whenEmptyList_thenReturnTrue() {
+    public void givenEmptyList_whenUsingALoop_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingALoop(emptyList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingALoop_whenAllEqualList_thenReturnTrue() {
+    public void givenAllEqualList_whenUsingALoop_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingALoop(allEqualList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingHashSet_whenUsingDistinctList_thenReturnFalse() {
-        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingHashSet(distinctList);
-
-        assertFalse(allEqual);
-    }
-
-    @Test
-    public void verifyAllEqualUsingHashSet_whenNotAllEqualList_thenReturnFalse() {
+    public void givenNotAllEqualList_whenUsingHashSet_thenReturnFalse() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingHashSet(notAllEqualList);
 
         assertFalse(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingHashSet_whenEmptyList_thenReturnTrue() {
+    public void givenEmptyList_whenUsingHashSet_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingHashSet(emptyList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingHashSet_whenAllEqualList_thenReturnTrue() {
+    public void givenAllEqualList_whenUsingHashSet_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingHashSet(allEqualList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingFrequency_whenUsingDistinctList_thenReturnFalse() {
-        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingFrequency(distinctList);
-
-        assertFalse(allEqual);
-    }
-
-    @Test
-    public void verifyAllEqualUsingFrequency_whenNotAllEqualList_thenReturnFalse() {
+    public void givenNotAllEqualList_whenUsingFrequency_thenReturnFalse() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingFrequency(notAllEqualList);
 
         assertFalse(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingFrequency_whenEmptyList_thenReturnTrue() {
+    public void givenEmptyList_whenUsingFrequency_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingFrequency(emptyList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingFrequency_whenAllEqualList_thenReturnTrue() {
+    public void givenAllEqualList_whenUsingFrequency_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingFrequency(allEqualList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingStream_whenUsingDistinctList_thenReturnFalse() {
-        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingStream(distinctList);
-
-        assertFalse(allEqual);
-    }
-
-    @Test
-    public void verifyAllEqualUsingStream_whenNotAllEqualList_thenReturnFalse() {
+    public void givenNotAllEqualList_whenUsingStream_thenReturnFalse() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingStream(notAllEqualList);
 
         assertFalse(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingStream_whenEmptyList_thenReturnTrue() {
+    public void givenEmptyList_whenUsingStream_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingStream(emptyList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingStream_whenAllEqualList_thenReturnTrue() {
+    public void givenAllEqualList_whenUsingStream_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingStream(allEqualList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualAnotherUsingStream_whenUsingDistinctList_thenReturnFalse() {
-        boolean allEqual = verifyAllEqualListElements.verifyAllEqualAnotherUsingStream(distinctList);
-
-        assertFalse(allEqual);
-    }
-
-    @Test
-    public void verifyAllEqualAnotherUsingStream_whenNotAllEqualList_thenReturnFalse() {
+    public void givenNotAllEqualList_whenUsingAnotherStream_thenReturnFalse() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualAnotherUsingStream(notAllEqualList);
 
         assertFalse(allEqual);
     }
 
     @Test
-    public void verifyAllEqualAnotherUsingStream_whenEmptyList_thenReturnTrue() {
+    public void givenEmptyList_whenUsingAnotherStream_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualAnotherUsingStream(emptyList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualAnotherUsingStream_whenAllEqualList_thenReturnTrue() {
+    public void givenAllEqualList_whenUsingAnotherStream_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualAnotherUsingStream(allEqualList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingGuava_whenUsingDistinctList_thenReturnFalse() {
-        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingGuava(distinctList);
-
-        assertFalse(allEqual);
-    }
-
-    @Test
-    public void verifyAllEqualUsingGuava_whenNotAllEqualList_thenReturnFalse() {
+    public void givenNotAllEqualList_whenUsingGuava_thenReturnFalse() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingGuava(notAllEqualList);
 
         assertFalse(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingGuava_whenEmptyList_thenReturnTrue() {
+    public void givenEmptyList_whenUsingGuava_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingGuava(emptyList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingGuava_whenAllEqualList_thenReturnTrue() {
+    public void givenAllEqualList_whenUsingGuava_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingGuava(allEqualList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingApacheCommon_whenUsingDistinctList_thenReturnFalse() {
-        boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingApacheCommon(distinctList);
-
-        assertFalse(allEqual);
-    }
-
-    @Test
-    public void verifyAllEqualUsingApacheCommon_whenNotAllEqualList_thenReturnFalse() {
+    public void givenNotAllEqualList_whenUsingApacheCommon_thenReturnFalse() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingApacheCommon(notAllEqualList);
 
         assertFalse(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingApacheCommon_whenEmptyList_thenReturnTrue() {
+    public void givenEmptyList_whenUsingApacheCommon_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingApacheCommon(emptyList);
 
         assertTrue(allEqual);
     }
 
     @Test
-    public void verifyAllEqualUsingApacheCommon_whenAllEqualList_thenReturnTrue() {
+    public void givenAllEqualList_whenUsingApacheCommon_thenReturnTrue() {
         boolean allEqual = verifyAllEqualListElements.verifyAllEqualUsingApacheCommon(allEqualList);
 
         assertTrue(allEqual);

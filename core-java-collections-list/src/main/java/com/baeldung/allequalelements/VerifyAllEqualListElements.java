@@ -28,7 +28,6 @@ public class VerifyAllEqualListElements {
     public boolean verifyAllEqualUsingStream(List<String> list) {
         return list.stream()
             .distinct()
-            .limit(2)
             .count() <= 1;
     }
 
