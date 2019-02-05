@@ -40,3 +40,4 @@
 - [Control Structures in Java](https://www.baeldung.com/java-control-structures)
 - [Java Interfaces](https://www.baeldung.com/java-interfaces)
 - [Attaching Values to Java Enum](https://www.baeldung.com/java-enum-values)
+- [Variable Scope in Java](https://www.baeldung.com/java-variable-scope)
