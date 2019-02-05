@@ -12,10 +12,10 @@ import com.hotels.beans.BeanUtils;
 import com.hotels.beans.model.FieldMapping;
 import com.hotels.beans.model.FieldTransformer;
 
-public class BullConverter implements Converter {
+public class BULLConverter implements Converter {
     private final BeanUtils beanUtils;
 
-    public BullConverter() {
+    public BULLConverter() {
         BeanUtils beanUtils = new BeanUtils();
         this.beanUtils = beanUtils;
     }
