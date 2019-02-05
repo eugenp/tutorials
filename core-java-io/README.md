@@ -39,3 +39,4 @@
 - [Getting a File’s Mime Type in Java](http://www.baeldung.com/java-file-mime-type)
 - [Create a Directory in Java](https://www.baeldung.com/java-create-directory)
 - [How to Write to a CSV File in Java](https://www.baeldung.com/java-csv)
+- [List Files in a Directory in Java](https://www.baeldung.com/java-list-directory-files)
