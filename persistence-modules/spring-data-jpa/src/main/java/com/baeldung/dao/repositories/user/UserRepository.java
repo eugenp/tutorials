@@ -10,6 +10,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Stream;
@@ -17,6 +18,9 @@ import java.util.stream.Stream;
 public interface UserRepository extends JpaRepository<User, Integer> , UserRepositoryCustom{
 
     Stream<User> findAllByName(String name);
+
+    @Query("select u from User u where u.email like '%@gmail.com'")
+    List<User> findUsersWithGmailAddress();
 
     @Query("SELECT u FROM User u WHERE u.status = 1")
     Collection<User> findAllActiveUsers();
@@ -67,4 +71,19 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Modifying
     @Query(value = "UPDATE USERS.Users u SET u.status = ? WHERE u.name = ?", nativeQuery = true)
     int updateUserSetStatusForNameNative(Integer status, String name);
+
+    void deleteAllByCreationDateAfter(LocalDate date);
+
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query("update User u set u.active = false where u.lastLoginDate < :date")
+    void deactivateUsersNotLoggedInSince(@Param("date") LocalDate date);
+
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query("delete User u where u.active = false")
+    void deleteDeactivatedUsers();
+
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
+    @Query(value = "alter table USERS.USERS add column deleted int(1) not null default 0", nativeQuery = true)
+    void addDeletedColumn();
+
 }
