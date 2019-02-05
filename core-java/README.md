@@ -50,3 +50,4 @@
 - [Introduction to Basic Syntax in Java](https://www.baeldung.com/java-syntax)
 - [Using Curl in Java](https://www.baeldung.com/java-curl)
 - [Finding Leap Years in Java](https://www.baeldung.com/java-leap-year)
+- [Java Bitwise Operators](https://www.baeldung.com/java-bitwise-operators)
