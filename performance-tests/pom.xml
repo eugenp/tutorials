@@ -92,7 +92,7 @@
         <jmapper.version>1.6.0.1</jmapper.version>
         <jmh.version>1.20</jmh.version>
         <mapstruct-processor.version>1.2.0.Final</mapstruct-processor.version>
-        <bull.version>1.0.16</bull.version>
+        <bull.version>1.1.0</bull.version>
     </properties>
 
 </project>
