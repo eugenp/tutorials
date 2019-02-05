@@ -35,3 +35,4 @@
 - [Retrieving a Class Name in Java](https://www.baeldung.com/java-class-name)
 - [Java Compound Operators](https://www.baeldung.com/java-compound-operators)
 - [Guide to Java Packages](https://www.baeldung.com/java-packages)
+- [The Java Native Keyword and Methods](https://www.baeldung.com/java-native)
