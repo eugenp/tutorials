@@ -47,3 +47,4 @@
 - [Console I/O in Java](http://www.baeldung.com/java-console-input-output)
 - [Formatting with printf() in Java](https://www.baeldung.com/java-printstream-printf)
 - [Retrieve Fields from a Java Class Using Reflection](https://www.baeldung.com/java-reflection-class-fields)
+- [Introduction to Basic Syntax in Java](https://www.baeldung.com/java-syntax)
