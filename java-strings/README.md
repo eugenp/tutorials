@@ -50,3 +50,4 @@
 - [Remove Leading and Trailing Characters from a String](https://www.baeldung.com/java-remove-trailing-characters)
 - [Concatenating Strings In Java](https://www.baeldung.com/java-strings-concatenation)
 - [Java toString() Method](https://www.baeldung.com/java-tostring)
+- [Java String Interview Questions and Answers](https://www.baeldung.com/java-string-interview-questions)
