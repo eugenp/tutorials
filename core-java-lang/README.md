@@ -39,3 +39,4 @@
 - [If-Else Statement in Java](https://www.baeldung.com/java-if-else)
 - [Control Structures in Java](https://www.baeldung.com/java-control-structures)
 - [Java Interfaces](https://www.baeldung.com/java-interfaces)
+- [Attaching Values to Java Enum](https://www.baeldung.com/java-enum-values)
