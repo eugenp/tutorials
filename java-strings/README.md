@@ -51,3 +51,4 @@
 - [Concatenating Strings In Java](https://www.baeldung.com/java-strings-concatenation)
 - [Java toString() Method](https://www.baeldung.com/java-tostring)
 - [Java String Interview Questions and Answers](https://www.baeldung.com/java-string-interview-questions)
+- [Check if a String is a Pangram in Java](https://www.baeldung.com/java-string-pangram)
