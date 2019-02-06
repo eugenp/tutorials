@@ -1,5 +1,8 @@
-package com.baeldung.examples.common;
+package com.baeldung.di.spring;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Account {
 
 	private String accountNumber;

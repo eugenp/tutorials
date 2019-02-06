@@ -1,10 +1,7 @@
-package com.baeldung.examples.spring;
+package com.baeldung.di.spring;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.baeldung.examples.common.AudioBookService;
-import com.baeldung.examples.common.AudioBookServiceImpl;
 
 @Configuration
 public class SpringBeansConfig {
