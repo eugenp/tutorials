@@ -14,13 +14,7 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.spark.SparkConf;
-import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.function.FlatMapFunction;
-import org.apache.spark.api.java.function.Function;
-import org.apache.spark.api.java.function.Function2;
-import org.apache.spark.api.java.function.PairFunction;
-import org.apache.spark.api.java.function.VoidFunction;
 import org.apache.spark.streaming.Durations;
 import org.apache.spark.streaming.api.java.JavaDStream;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
@@ -59,17 +53,17 @@ public class WordCountingApp {
 
         JavaInputDStream<ConsumerRecord<String, String>> messages = KafkaUtils.createDirectStream(streamingContext, LocationStrategies.PreferConsistent(), ConsumerStrategies.<String, String> Subscribe(topics, kafkaParams));
 
-        JavaPairDStream<String, String> results = messages.mapToPair((PairFunction<ConsumerRecord<String, String>, String, String>) record -> new Tuple2<>(record.key(), record.value()));
+        JavaPairDStream<String, String> results = messages.mapToPair(record -> new Tuple2<>(record.key(), record.value()));
 
-        JavaDStream<String> lines = results.map((Function<Tuple2<String, String>, String>) tuple2 -> tuple2._2());
+        JavaDStream<String> lines = results.map(tuple2 -> tuple2._2());
 
-        JavaDStream<String> words = lines.flatMap((FlatMapFunction<String, String>) x -> Arrays.asList(x.split("\\s+"))
+        JavaDStream<String> words = lines.flatMap(x -> Arrays.asList(x.split("\\s+"))
             .iterator());
 
-        JavaPairDStream<String, Integer> wordCounts = words.mapToPair((PairFunction<String, String, Integer>) s -> new Tuple2<>(s, 1))
-            .reduceByKey((Function2<Integer, Integer, Integer>) (i1, i2) -> i1 + i2);
+        JavaPairDStream<String, Integer> wordCounts = words.mapToPair(s -> new Tuple2<>(s, 1))
+            .reduceByKey((i1, i2) -> i1 + i2);
 
-        wordCounts.foreachRDD((VoidFunction<JavaPairRDD<String, Integer>>) javaRdd -> {
+        wordCounts.foreachRDD(javaRdd -> {
             Map<String, Integer> wordCountMap = javaRdd.collectAsMap();
             for (String key : wordCountMap.keySet()) {
                 List<Word> wordList = Arrays.asList(new Word(key, wordCountMap.get(key)));
