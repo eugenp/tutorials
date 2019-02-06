@@ -17,3 +17,4 @@
 - [Java Switch Statement](https://www.baeldung.com/java-switch)
 - [The Modulo Operator in Java](https://www.baeldung.com/modulo-java)
 - [Ternary Operator In Java](https://www.baeldung.com/java-ternary-operator)
+- [Java instanceof Operator](https://www.baeldung.com/java-instanceof)
