@@ -37,3 +37,4 @@
 - [Guide to BufferedReader](https://www.baeldung.com/java-buffered-reader)
 - [How to Get the File Extension of a File in Java](http://www.baeldung.com/java-file-extension)
 - [Getting a File’s Mime Type in Java](http://www.baeldung.com/java-file-mime-type)
+- [Create a Directory in Java](https://www.baeldung.com/java-create-directory)

@@ -567,7 +567,8 @@
                 <module>rule-engines/rulebook</module>
 				<module>rsocket</module>
                 <module>rxjava</module>
-                <module>rxjava-2</module>                                
+                <module>rxjava-2</module> 
+			    <module>software-security/sql-injection-samples</module>
                                                  
 			</modules>
 

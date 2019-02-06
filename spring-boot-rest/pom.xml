@@ -51,7 +51,6 @@
         <dependency>
             <groupId>net.sourceforge.htmlunit</groupId>
             <artifactId>htmlunit</artifactId>
-            <version>${htmlunit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -67,7 +66,6 @@
 
     <properties>
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
-        <htmlunit.version>2.32</htmlunit.version>
         <guava.version>27.0.1-jre</guava.version>
     </properties>
 </project>
