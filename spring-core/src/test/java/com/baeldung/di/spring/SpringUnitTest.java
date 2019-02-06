@@ -1,4 +1,4 @@
-package com.baeldung.examples;
+package com.baeldung.di.spring;
 
 import static org.junit.Assert.assertNotNull;
 
@@ -8,12 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.baeldung.examples.common.AudioBookService;
-import com.baeldung.examples.common.BookService;
-import com.baeldung.examples.spring.SpringMainConfig;
-import com.baeldung.examples.spring.SpringPersonService;
-import com.baeldung.examples.spring.UserService;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { SpringMainConfig.class })

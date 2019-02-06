@@ -1,9 +1,7 @@
-package com.baeldung.examples.spring;
+package com.baeldung.di.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.baeldung.examples.common.PersonDao;
 
 @Component
 public class SpringPersonService {
