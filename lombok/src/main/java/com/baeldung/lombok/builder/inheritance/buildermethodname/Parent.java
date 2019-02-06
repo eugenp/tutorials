@@ -1,4 +1,4 @@
-package com.baeldung.lombok.builder;
+package com.baeldung.lombok.builder.inheritance.buildermethodname;
 
 import lombok.Builder;
 import lombok.Getter;
