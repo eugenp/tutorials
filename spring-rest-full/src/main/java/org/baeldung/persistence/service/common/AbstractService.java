@@ -40,16 +40,6 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
         return getDao().save(entity);
     }
 
-    @Override
-    public void delete(final T entity) {
-        getDao().delete(entity);
-    }
-
-    @Override
-    public void deleteById(final long entityId) {
-        getDao().delete(entityId);
-    }
-
     protected abstract PagingAndSortingRepository<T, Long> getDao();
 
 }
