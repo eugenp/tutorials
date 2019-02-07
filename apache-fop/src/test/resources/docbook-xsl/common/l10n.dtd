@@ -1,0 +1,64 @@
+<!ENTITY % prefix "l">
+
+<!ENTITY % xmlns "xmlns:%prefix;">
+<!ENTITY % uri "'http://docbook.sourceforge.net/xmlns/l10n/1.0'">
+
+<!ENTITY % i18n "%prefix;:i18n">
+<!ENTITY % l10n "%prefix;:l10n">
+<!ENTITY % gentext "%prefix;:gentext">
+<!ENTITY % dingbat "%prefix;:dingbat">
+<!ENTITY % context "%prefix;:context">
+<!ENTITY % template "%prefix;:template">
+<!ENTITY % letters "%prefix;:letters">
+<!ENTITY % l "%prefix;:l">
+<!ENTITY % lang "lang NMTOKEN #IMPLIED"> 
+
+<!ELEMENT %i18n; ((%l10n;)+)>
+<!ATTLIST %i18n;
+	%xmlns;		CDATA	#FIXED %uri;
+>
+
+<!ELEMENT %l10n; (%gentext;|%dingbat;|%context;|%letters;)*>
+<!ATTLIST %l10n;
+	%xmlns;		CDATA	#FIXED %uri;
+	language	CDATA	#REQUIRED
+	english-language-name	CDATA	#IMPLIED
+	href            CDATA   #IMPLIED
+>
+
+<!ELEMENT %gentext; EMPTY>
+<!ATTLIST %gentext;
+	%lang;
+	key		CDATA	#REQUIRED
+	text		CDATA	#REQUIRED
+>
+
+<!ELEMENT %dingbat; EMPTY>
+<!ATTLIST %dingbat;
+        %lang;
+	key		CDATA	#REQUIRED
+	text		CDATA	#REQUIRED
+>
+
+<!ELEMENT %context; ((%template;)+)>
+<!ATTLIST %context;
+	name		CDATA	#REQUIRED
+>
+
+<!ELEMENT %template; EMPTY>
+<!ATTLIST %template;
+        %lang;
+	name		CDATA	#REQUIRED
+	text		CDATA	#REQUIRED
+	style		CDATA	#IMPLIED
+>
+
+<!ELEMENT %letters; ((%l;)+)>
+<!ATTLIST %letters;
+          %lang;
+>
+
+<!ELEMENT %l; (#PCDATA)>
+<!ATTLIST %l;
+          i 		CDATA 	#REQUIRED
+>

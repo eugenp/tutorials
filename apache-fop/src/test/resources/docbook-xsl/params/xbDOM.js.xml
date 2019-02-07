@@ -1,0 +1,28 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="xbDOM.js">
+<refmeta>
+<refentrytitle>xbDOM.js</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>xbDOM.js</refname>
+<refpurpose>xbDOM JavaScript file</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="xbDOM.js.frag">
+<xsl:param name="xbDOM.js">xbDOM.js</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the filename of the xbDOM JavaScript file. It's unlikely
+that you will ever need to change this parameter.</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,106 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="man.endnotes.are.numbered">
+<refmeta>
+<refentrytitle>man.endnotes.are.numbered</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>man.endnotes.are.numbered</refname>
+<refpurpose>Number endnotes?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="man.endnotes.are.numbered.frag">
+<xsl:param name="man.endnotes.are.numbered">1</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If the value of <parameter>man.endnotes.are.numbered</parameter> is
+non-zero (the default), then for each non-empty<footnote>
+<para>A “non-empty” notesource is one that looks like
+this:<literallayout class="monospaced">  &lt;ulink url="http://docbook.sf.net/snapshot/xsl/doc/manpages/"&gt;manpages&lt;/ulink&gt;</literallayout>
+an “empty” notesource is on that looks like this:<literallayout class="monospaced">  &lt;ulink url="http://docbook.sf.net/snapshot/xsl/doc/manpages/"/&gt;</literallayout>
+</para></footnote> “notesource”:
+
+<itemizedlist>
+  <listitem>
+    <para>a number (in square brackets) is displayed inline after the
+    rendered inline contents (if any) of the notesource</para>
+  </listitem>
+  <listitem>
+    <para>the contents of the notesource are included in a
+      numbered list of endnotes that is generated at the end of
+      each man page; the number for each endnote corresponds to
+      the inline number for the notesource with which it is
+      associated</para>
+  </listitem>
+</itemizedlist>
+The default heading for the list of endnotes is
+<literal>NOTES</literal>. To output a different heading, set a value
+for the <parameter>man.endnotes.section.heading</parameter>
+parameter.</para>
+
+<note>
+  <para>The endnotes list is also displayed (but without
+    numbers) if the value of
+    <parameter>man.endnotes.list.enabled</parameter> is
+    non-zero.</para>
+</note>
+
+
+<para>If the value of <parameter>man.endnotes.are.numbered</parameter> is
+zero, numbering of endnotess is suppressed; only inline
+contents (if any) of the notesource are displayed inline.
+<important>
+  <para>If you are thinking about disabling endnote numbering by setting
+  the value of <parameter>man.endnotes.are.numbered</parameter> to zero,
+  before you do so, first take some time to carefully
+  consider the information needs and experiences of your users. The
+  square-bracketed numbers displayed inline after notesources may seem
+  obstrusive and aesthetically unpleasing<footnote><para>As far as notesources that are links, ytou might
+  think it would be better to just display URLs for non-empty
+  links inline, after their content, rather than displaying
+  square-bracketed numbers all over the place. But it's not better. In
+  fact, it's not even practical, because many (most) URLs for links
+  are too long to be displayed inline. They end up overflowing the
+  right margin. You can set a non-zero value for
+  <parameter>man.break.after.slash</parameter> parameter to deal with
+  that, but it could be argued that what you end up with is at least
+  as ugly, and definitely more obstrusive, then having short
+  square-bracketed numbers displayed inline.</para></footnote>,
+
+  but in a text-only output format, the
+  numbered-notesources/endnotes-listing mechanism is the only
+  practical way to handle this kind of content.</para>
+
+  <para>Also, users of “text based” browsers such as
+  <command>lynx</command> will already be accustomed to seeing inline
+  numbers for links. And various "man to html" applications, such as
+  the widely used <command><link xlink:href="http://users.actrix.gen.nz/michael/vhman2html.html">man2html</link></command> (<literal>VH-Man2html</literal>)
+  application, can automatically turn URLs into "real" HTML hyperlinks
+  in output. So leaving <parameter>man.endnotes.are.numbered</parameter>
+  at its default (non-zero) value ensures that no information is
+  lost in your man-page output. It just gets
+  “rearranged”.</para>
+</important>
+</para>
+<para>The handling of empty links is not affected by this
+parameter. Empty links are handled simply by displaying their URLs
+inline. Empty links are never auto-numbered.</para>
+
+<para>If you disable endnotes numbering, you should probably also set
+<parameter>man.font.links</parameter> to an empty value (to
+disable font formatting for links.</para>
+</refsection>
+
+<refsection><info><title>Related Parameters</title></info>
+  <para><parameter>man.endnotes.list.enabled</parameter>,
+    <parameter>man.font.links</parameter></para>
+</refsection>
+</refentry>

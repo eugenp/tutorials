@@ -1,0 +1,29 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="html.cellspacing">
+<refmeta>
+<refentrytitle>html.cellspacing</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">integer</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>html.cellspacing</refname>
+<refpurpose>Default value for cellspacing in HTML tables</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="html.cellspacing.frag">
+<xsl:param name="html.cellspacing"></xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If non-zero, this value will be used as the default cellspacing
+value in HTML tables. nn for pixels or nn% for percentage
+length. E.g. 5 or 5%</para>
+
+</refsection>
+</refentry>

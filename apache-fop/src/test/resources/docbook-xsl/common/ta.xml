@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ta" english-language-name="Tamil">
+
+<!-- * This file is generated automatically. -->
+<!-- * To submit changes to this file upstream (to the DocBook Project) -->
+<!-- * do not submit an edited version of this file. Instead, submit an -->
+<!-- * edited version of the source file at the following location: -->
+<!-- * -->
+<!-- *  https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/gentext/locale/ta.xml -->
+<!-- * -->
+<!-- * E-mail the edited ta.xml source file to: -->
+<!-- * -->
+<!-- *  docbook-developers@lists.sourceforge.net -->
+
+<!-- ******************************************************************** -->
+
+<!-- This file is part of the XSL DocBook Stylesheet distribution. -->
+<!-- See ../README or http://docbook.sf.net/release/xsl/current/ for -->
+<!-- copyright and other information. -->
+
+<!-- ******************************************************************** -->
+<!-- In these files, % with a letter is used for a placeholder: -->
+<!--   %t is the current element's title -->
+<!--   %s is the current element's subtitle (if applicable)-->
+<!--   %n is the current element's number label-->
+<!--   %p is the current element's page number (if applicable)-->
+<!-- ******************************************************************** -->
+
+
+<l:gentext key="Abstract" text="சுருக்கம்"/>
+<l:gentext key="abstract" text="சுருக்கம்"/>
+<l:gentext key="Acknowledgements" text="ஒப்புதல்கள்"/>
+<l:gentext key="acknowledgements" text="ஒப்புதல்கள்"/>
+<l:gentext key="Answer" text="விடை:"/>
+<l:gentext key="answer" text="விடை:"/>
+<l:gentext key="Appendix" text="இணைப்பு"/>
+<l:gentext key="appendix" text="இணைப்பு"/>
+<l:gentext key="Article" text="கட்டுரை"/>
+<l:gentext key="article" text="கட்டுரை"/>
+<l:gentext key="Author" text="ஆசிரியர்"/>
+<l:gentext key="Bibliography" text="விவரக்குறிப்பு"/>
+<l:gentext key="bibliography" text="விவரக்குறிப்பு"/>
+<l:gentext key="Book" text="புத்தகம்"/>
+<l:gentext key="book" text="புத்தகம்"/>
+<l:gentext key="CAUTION" text="எச்சரிக்கை"/>
+<l:gentext key="Caution" text="எச்சரிக்கை"/>
+<l:gentext key="caution" text="எச்சரிக்கை"/>
+<l:gentext key="Chapter" text="பாடம்"/>
+<l:gentext key="chapter" text="பாடம்"/>
+<l:gentext key="Colophon" text="பின்குறிப்பு"/>
+<l:gentext key="colophon" text="பின்குறிப்பு"/>
+<l:gentext key="Copyright" text="காப்புரிமை"/>
+<l:gentext key="copyright" text="காப்புரிமை"/>
+<l:gentext key="Dedication" text="சமர்பணம்"/>
+<l:gentext key="dedication" text="சமர்பணம்"/>
+<l:gentext key="Edition" text="பதிப்பு"/>
+<l:gentext key="edition" text="பதிப்பு"/>
+<l:gentext key="Editor" text="ஆசிரியர்"/>
+<l:gentext key="Equation" text="சமன்பாடு"/>
+<l:gentext key="equation" text="சமன்பாடு"/>
+<l:gentext key="Example" text="உதாரணம்"/>
+<l:gentext key="example" text="உதாரணம்"/>
+<l:gentext key="Figure" text="படம்"/>
+<l:gentext key="figure" text="படம்"/>
+<l:gentext key="Glossary" text="அகராதி"/>
+<l:gentext key="glossary" text="அகராதி"/>
+<l:gentext key="GlossSee" text="பார்"/>
+<l:gentext key="glosssee" text="பார்"/>
+<l:gentext key="GlossSeeAlso" text="இதையும்பார்க்கவும்"/>
+<l:gentext key="glossseealso" text="இதையும்பார்க்கவும்"/>
+<l:gentext key="IMPORTANT" text="முக்கியம்"/>
+<l:gentext key="important" text="முக்கியம்"/>
+<l:gentext key="Important" text="முக்கியம்"/>
+<l:gentext key="Index" text="அட்டவணை"/>
+<l:gentext key="index" text="அட்டவணை"/>
+<l:gentext key="ISBN" text="ISBN"/>
+<l:gentext key="isbn" text="ISBN"/>
+<l:gentext key="LegalNotice" text="சட்டஅறிக்கை"/>
+<l:gentext key="legalnotice" text="சட்டஅறிக்கை"/>
+<l:gentext key="MsgAud" text="பார்வையாளர்கள்"/>
+<l:gentext key="msgaud" text="பார்வையாளர்கள்"/>
+<l:gentext key="MsgLevel" text="நிலை"/>
+<l:gentext key="msglevel" text="நிலை"/>
+<l:gentext key="MsgOrig" text="மூலம்"/>
+<l:gentext key="msgorig" text="மூலம்"/>
+<l:gentext key="NOTE" text="குறிப்பு"/>
+<l:gentext key="Note" text="குறிப்பு"/>
+<l:gentext key="note" text="குறிப்பு"/>
+<l:gentext key="Part" text="பகுதி"/>
+<l:gentext key="part" text="பகுதி"/>
+<l:gentext key="Preface" text="முன்னுரை"/>
+<l:gentext key="preface" text="முன்னுரை"/>
+<l:gentext key="Procedure" text="முறை"/>
+<l:gentext key="procedure" text="முறை"/>
+<l:gentext key="ProductionSet" text="உற்பத்தி"/>
+<l:gentext key="PubDate" text="வெளியீடு தேதி"/>
+<l:gentext key="pubdate" text="வெளியீடு தேதி"/>
+<l:gentext key="Published" text="பதிப்பிக்கப்பட்ட"/>
+<l:gentext key="published" text="பதிப்பிக்கப்பட்ட"/>
+<l:gentext key="Publisher" text="வெளியீட்டாளர்"/>
+<l:gentext key="Qandadiv" text="வினா &amp; விடை"/>
+<l:gentext key="qandadiv" text="வினா &amp; விடை"/>
+<l:gentext key="QandASet" text="அடிக்கடி எழும் வினாக்கள்"/>
+<l:gentext key="Question" text="வினா:"/>
+<l:gentext key="question" text="வினா:"/>
+<l:gentext key="RefEntry" text="பக்கம்"/>
+<l:gentext key="refentry" text="பக்கம்"/>
+<l:gentext key="Reference" text="குறிப்புகள்"/>
+<l:gentext key="reference" text="குறிப்புகள்"/>
+<l:gentext key="References" text="குறிப்புகள்"/>
+<l:gentext key="RefName" text="பெயர்"/>
+<l:gentext key="refname" text="பெயர்"/>
+<l:gentext key="RefSection" text="பகுதி"/>
+<l:gentext key="refsection" text="பகுதி"/>
+<l:gentext key="RefSynopsisDiv" text="சுருக்கம்"/>
+<l:gentext key="refsynopsisdiv" text="சுருக்கம்"/>
+<l:gentext key="RevHistory" text="மீள்பார்வைவரலாறு"/>
+<l:gentext key="revhistory" text="மீள்பார்வைவரலாறு"/>
+<l:gentext key="revision" text="மீள்பார்வை"/>
+<l:gentext key="Revision" text="மீள்பார்வை"/>
+<l:gentext key="sect1" text="பிரிவு"/>
+<l:gentext key="sect2" text="பிரிவு"/>
+<l:gentext key="sect3" text="பிரிவு"/>
+<l:gentext key="sect4" text="பிரிவு"/>
+<l:gentext key="sect5" text="பிரிவு"/>
+<l:gentext key="section" text="பிரிவு"/>
+<l:gentext key="Section" text="பிரிவு"/>
+<l:gentext key="see" text="பார்"/>
+<l:gentext key="See" text="பார்"/>
+<l:gentext key="seealso" text="இதையும்பார்க்கவும்"/>
+<l:gentext key="Seealso" text="இதையும்பார்க்கவும்"/>
+<l:gentext key="SeeAlso" text="இதையும்பார்க்கவும்"/>
+<l:gentext key="set" text="அமை"/>
+<l:gentext key="Set" text="அமை"/>
+<l:gentext key="setindex" text="அட்டவணைஅமை"/>
+<l:gentext key="SetIndex" text="அட்டவணைஅமை"/>
+<l:gentext key="Sidebar" text="பக்கப்பட்டை"/>
+<l:gentext key="sidebar" text="பக்கப்பட்டை"/>
+<l:gentext key="step" text="படிமுறை"/>
+<l:gentext key="Step" text="படிமுறை"/>
+<l:gentext key="table" text="அட்டவணை"/>
+<l:gentext key="Table" text="அட்டவணை"/>
+<l:gentext key="task" text="பணி"/>
+<l:gentext key="Task" text="பணி"/>
+<l:gentext key="tip" text="குறிப்பு"/>
+<l:gentext key="TIP" text="குறிப்பு"/>
+<l:gentext key="Tip" text="குறிப்பு"/>
+<l:gentext key="Warning" text="எச்சரிக்கை"/>
+<l:gentext key="warning" text="எச்சரிக்கை"/>
+<l:gentext key="WARNING" text="எச்சரிக்கை"/>
+<l:gentext key="and" text="மற்றும்"/>
+<l:gentext key="or" text="அல்லது"/>
+<l:gentext key="by" text="ஆல்"/>
+<l:gentext key="Edited" text="திருத்தப்பட்ட"/>
+<l:gentext key="edited" text="திருத்தப்பட்ட"/>
+<l:gentext key="Editedby" text="திருத்தியவர்"/>
+<l:gentext key="editedby" text="திருத்தியவர்"/>
+<l:gentext key="in" text="இல்"/>
+<l:gentext key="lastlistcomma" text=","/>
+<l:gentext key="listcomma" text=","/>
+<l:gentext key="notes" text="குறிப்புகள்"/>
+<l:gentext key="Notes" text="குறிப்புகள்"/>
+<l:gentext key="Pgs" text="பக்கம்"/>
+<l:gentext key="pgs" text="பக்கம்"/>
+<l:gentext key="Revisedby" text="மீண்டும்பார்த்தவர்: "/>
+<l:gentext key="revisedby" text="மீண்டும்பார்த்தவர்: "/>
+<l:gentext key="TableNotes" text="குறிப்புகள்"/>
+<l:gentext key="tablenotes" text="குறிப்புகள்"/>
+<l:gentext key="TableofContents" text="உள்ளடக்கங்கள்"/>
+<l:gentext key="tableofcontents" text="உள்ளடக்கங்கள்"/>
+<l:gentext key="unexpectedelementname" text="எதிர்பாராதஉறுப்புபெயர்"/>
+<l:gentext key="unsupported" text="ஆதரவற்ற"/>
+<l:gentext key="xrefto" text="xref to"/>
+<l:gentext key="Authors" text="ஆசிரியர்கள்"/>
+<l:gentext key="copyeditor" text="காப்பி எடிட்டர்"/>
+<l:gentext key="graphicdesigner" text="வரைகலை வடிவமைப்பாளர்"/>
+<l:gentext key="productioneditor" text="தயாரிப்பு எடிட்டர்"/>
+<l:gentext key="technicaleditor" text="தொழில்நுட்ப ஆசிரியர்"/>
+<l:gentext key="translator" text="மொழிபெயர்ப்பாளர்"/>
+<l:gentext key="listofequations" text="சமன்பாடுகளின்பட்டியல்"/>
+<l:gentext key="ListofEquations" text="சமன்பாடுகளின்பட்டியல்"/>
+<l:gentext key="ListofExamples" text="சமன்பாடுகளின்பட்டியல்"/>
+<l:gentext key="listofexamples" text="சமன்பாடுகளின்பட்டியல்"/>
+<l:gentext key="ListofFigures" text="படங்களின்பட்டியல்"/>
+<l:gentext key="listoffigures" text="படங்களின்பட்டியல்"/>
+<l:gentext key="ListofProcedures" text="செய்முறைகளின்பட்டியல்"/>
+<l:gentext key="listofprocedures" text="செய்முறைகளின்பட்டியல்"/>
+<l:gentext key="listoftables" text="அட்டவணைகளின்பட்டியல்"/>
+<l:gentext key="ListofTables" text="அட்டவணைகளின்பட்டியல்"/>
+<l:gentext key="ListofUnknown" text="தெரியாதபட்டியல்"/>
+<l:gentext key="listofunknown" text="தெரியாதபட்டியல்"/>
+<l:gentext key="nav-home" text="இல்லம்"/>
+<l:gentext key="nav-next" text="அடுத்து"/>
+<l:gentext key="nav-next-sibling" text="வேகமாகமுன்செல்"/>
+<l:gentext key="nav-prev" text="முன்"/>
+<l:gentext key="nav-prev-sibling" text="வேகமாகபின்செல்"/>
+<l:gentext key="nav-up" text="மேல்"/>
+<l:gentext key="nav-toc" text="உள்ளடக்கங்கள்"/>
+<l:gentext key="Draft" text="ஆவணம்"/>
+<l:gentext key="above" text="மேல்"/>
+<l:gentext key="below" text="கீழ்"/>
+<l:gentext key="sectioncalled" text="அழைக்கபட்டபகுதி"/>
+<l:gentext key="index symbols" text="குறியீடுகள்"/>
+<l:gentext key="writing-mode" text="lr-tb"/>
+<l:gentext key="lowercase.alpha" text="abcdefghijklmnopqrstuvwxyz"/>
+<l:gentext key="uppercase.alpha" text="ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+<l:gentext key="normalize.sort.input" text="AaÀàÁáÂâÃãÄäÅåĀāĂăĄąǍǎǞǟǠǡǺǻȀȁȂȃȦȧḀḁẚẠạẢảẤấẦầẨẩẪẫẬậẮắẰằẲẳẴẵẶặBbƀƁɓƂƃḂḃḄḅḆḇCcÇçĆćĈĉĊċČčƇƈɕḈḉDdĎďĐđƊɗƋƌǅǲȡɖḊḋḌḍḎḏḐḑḒḓEeÈèÉéÊêËëĒēĔĕĖėĘęĚěȄȅȆȇȨȩḔḕḖḗḘḙḚḛḜḝẸẹẺẻẼẽẾếỀềỂểỄễỆệFfƑƒḞḟGgĜĝĞğĠġĢģƓɠǤǥǦǧǴǵḠḡHhĤĥĦħȞȟɦḢḣḤḥḦḧḨḩḪḫẖIiÌìÍíÎîÏïĨĩĪīĬĭĮįİƗɨǏǐȈȉȊȋḬḭḮḯỈỉỊịJjĴĵǰʝKkĶķƘƙǨǩḰḱḲḳḴḵLlĹĺĻļĽľĿŀŁłƚǈȴɫɬɭḶḷḸḹḺḻḼḽMmɱḾḿṀṁṂṃNnÑñŃńŅņŇňƝɲƞȠǋǸǹȵɳṄṅṆṇṈṉṊṋOoÒòÓóÔôÕõÖöØøŌōŎŏŐőƟƠơǑǒǪǫǬǭǾǿȌȍȎȏȪȫȬȭȮȯȰȱṌṍṎṏṐṑṒṓỌọỎỏỐốỒồỔổỖỗỘộỚớỜờỞởỠỡỢợPpƤƥṔṕṖṗQqʠRrŔŕŖŗŘřȐȑȒȓɼɽɾṘṙṚṛṜṝṞṟSsŚśŜŝŞşŠšȘșʂṠṡṢṣṤṥṦṧṨṩTtŢţŤťŦŧƫƬƭƮʈȚțȶṪṫṬṭṮṯṰṱẗUuÙùÚúÛûÜüŨũŪūŬŭŮůŰűŲųƯưǓǔǕǖǗǘǙǚǛǜȔȕȖȗṲṳṴṵṶṷṸṹṺṻỤụỦủỨứỪừỬửỮữỰựVvƲʋṼṽṾṿWwŴŵẀẁẂẃẄẅẆẇẈẉẘXxẊẋẌẍYyÝýÿŸŶŷƳƴȲȳẎẏẙỲỳỴỵỶỷỸỹZzŹźŻżŽžƵƶȤȥʐʑẐẑẒẓẔẕẕ" lang="en"/>
+<l:gentext key="normalize.sort.output" text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBCCCCCCCCCCCCCCCCCDDDDDDDDDDDDDDDDDDDDDDDDEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEFFFFFFGGGGGGGGGGGGGGGGGGGGHHHHHHHHHHHHHHHHHHHHIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIJJJJJJKKKKKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLLLMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOPPPPPPPPQQQRRRRRRRRRRRRRRRRRRRRRRRSSSSSSSSSSSSSSSSSSSSSSSTTTTTTTTTTTTTTTTTTTTTTTTTUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUVVVVVVVVWWWWWWWWWWWWWWWXXXXXXYYYYYYYYYYYYYYYYYYYYYYYZZZZZZZZZZZZZZZZZZZZZ" lang="en"/>
+<l:dingbat key="startquote" text="“"/>
+<l:dingbat key="endquote" text="”"/>
+<l:dingbat key="nestedstartquote" text="‘"/>
+<l:dingbat key="nestedendquote" text="’"/>
+<l:dingbat key="singlestartquote" text="‘"/>
+<l:dingbat key="singleendquote" text="’"/>
+<l:dingbat key="bullet" text="•"/>
+<l:gentext key="hyphenation-character" text="-"/>
+<l:gentext key="hyphenation-push-character-count" text="2"/>
+<l:gentext key="hyphenation-remain-character-count" text="2"/>
+<l:context name="keycap"><l:template name="alt" text="Alt" lang="en"/>
+<l:template name="backspace" text="&lt;—" lang="en"/>
+<l:template name="command" text="⌘" lang="en"/>
+<l:template name="control" text="Ctrl" lang="en"/>
+<l:template name="delete" text="Del" lang="en"/>
+<l:template name="down" text="↓" lang="en"/>
+<l:template name="end" text="End" lang="en"/>
+<l:template name="enter" text="Enter" lang="en"/>
+<l:template name="escape" text="Esc" lang="en"/>
+<l:template name="home" text="Home" lang="en"/>
+<l:template name="insert" text="Ins" lang="en"/>
+<l:template name="left" text="←" lang="en"/>
+<l:template name="meta" text="Meta" lang="en"/>
+<l:template name="option" text="???" lang="en"/>
+<l:template name="pagedown" text="Page ↓" lang="en"/>
+<l:template name="pageup" text="Page ↑" lang="en"/>
+<l:template name="right" text="→" lang="en"/>
+<l:template name="shift" text="Shift" lang="en"/>
+<l:template name="space" text="Space" lang="en"/>
+<l:template name="tab" text="→|" lang="en"/>
+<l:template name="up" text="↑" lang="en"/>
+</l:context>
+<l:context name="webhelp"><l:template name="Search" text="Search" lang="en"/>
+<l:template name="Enter_a_term_and_click" text="Enter a term and click " lang="en"/>
+<l:template name="Go" text="Go" lang="en"/>
+<l:template name="to_perform_a_search" text=" to perform a search." lang="en"/>
+<l:template name="txt_filesfound" text="Results" lang="en"/>
+<l:template name="txt_enter_at_least_1_char" text="You must enter at least one character." lang="en"/>
+<l:template name="txt_browser_not_supported" text="JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site." lang="en"/>
+<l:template name="txt_please_wait" text="Please wait. Search in progress..." lang="en"/>
+<l:template name="txt_results_for" text="Results for: " lang="en"/>
+<l:template name="TableofContents" text="Contents" lang="en"/>
+<l:template name="HighlightButton" text="Toggle search result highlighting" lang="en"/>
+<l:template name="Your_search_returned_no_results" text="Your search returned no results." lang="en"/>
+</l:context>
+<l:context name="styles"><l:template name="person-name" text="first-last"/>
+</l:context>
+<l:context name="title"><l:template name="abstract" text="%t"/>
+<l:template name="acknowledgements" text="%t" lang="en"/>
+<l:template name="answer" text="%t"/>
+<l:template name="appendix" text="இணைப்பு %n. %t"/>
+<l:template name="article" text="%t"/>
+<l:template name="authorblurb" text="%t"/>
+<l:template name="bibliodiv" text="%t"/>
+<l:template name="biblioentry" text="%t"/>
+<l:template name="bibliography" text="%t"/>
+<l:template name="bibliolist" text="%t"/>
+<l:template name="bibliomixed" text="%t"/>
+<l:template name="bibliomset" text="%t"/>
+<l:template name="biblioset" text="%t"/>
+<l:template name="blockquote" text="%t"/>
+<l:template name="book" text="%t"/>
+<l:template name="calloutlist" text="%t"/>
+<l:template name="caution" text="%t"/>
+<l:template name="chapter" text="பாடம் %n. %t"/>
+<l:template name="colophon" text="%t"/>
+<l:template name="dedication" text="%t"/>
+<l:template name="equation" text="சமன்பாடு %n. %t"/>
+<l:template name="example" text="உதாரணம் %n. %t"/>
+<l:template name="figure" text="படம் %n. %t"/>
+<l:template name="foil" text="%t"/>
+<l:template name="foilgroup" text="%t"/>
+<l:template name="formalpara" text="%t"/>
+<l:template name="glossary" text="%t"/>
+<l:template name="glossdiv" text="%t"/>
+<l:template name="glosslist" text="%t"/>
+<l:template name="glossentry" text="%t"/>
+<l:template name="important" text="%t"/>
+<l:template name="index" text="%t"/>
+<l:template name="indexdiv" text="%t"/>
+<l:template name="itemizedlist" text="%t"/>
+<l:template name="legalnotice" text="%t"/>
+<l:template name="listitem" text=""/>
+<l:template name="lot" text="%t"/>
+<l:template name="msg" text="%t"/>
+<l:template name="msgexplan" text="%t"/>
+<l:template name="msgmain" text="%t"/>
+<l:template name="msgrel" text="%t"/>
+<l:template name="msgset" text="%t"/>
+<l:template name="msgsub" text="%t"/>
+<l:template name="note" text="%t"/>
+<l:template name="orderedlist" text="%t"/>
+<l:template name="part" text="பகுதி %n. %t"/>
+<l:template name="partintro" text="%t"/>
+<l:template name="preface" text="%t"/>
+<l:template name="procedure" text="%t"/>
+<l:template name="procedure.formal" text="முறை %n. %t"/>
+<l:template name="productionset" text="%t"/>
+<l:template name="productionset.formal" text="உற்பத்தி %n"/>
+<l:template name="qandadiv" text="%t"/>
+<l:template name="qandaentry" text="%t"/>
+<l:template name="qandaset" text="%t"/>
+<l:template name="question" text="%t"/>
+<l:template name="refentry" text="%t"/>
+<l:template name="reference" text="%t"/>
+<l:template name="refsection" text="%t"/>
+<l:template name="refsect1" text="%t"/>
+<l:template name="refsect2" text="%t"/>
+<l:template name="refsect3" text="%t"/>
+<l:template name="refsynopsisdiv" text="%t"/>
+<l:template name="refsynopsisdivinfo" text="%t"/>
+<l:template name="screenshot" text="%t" lang="en"/>
+<l:template name="segmentedlist" text="%t"/>
+<l:template name="set" text="%t"/>
+<l:template name="setindex" text="%t"/>
+<l:template name="sidebar" text="%t"/>
+<l:template name="step" text="%t"/>
+<l:template name="table" text="அட்டவணை %n. %t"/>
+<l:template name="task" text="%t"/>
+<l:template name="tasksummary" text="%t" lang="en"/>
+<l:template name="taskprerequisites" text="%t" lang="en"/>
+<l:template name="taskrelated" text="%t" lang="en"/>
+<l:template name="tip" text="%t"/>
+<l:template name="toc" text="%t"/>
+<l:template name="variablelist" text="%t"/>
+<l:template name="varlistentry" text=""/>
+<l:template name="warning" text="%t"/>
+</l:context>
+<l:context name="title-unnumbered"><l:template name="appendix" text="%t"/>
+<l:template name="article/appendix" text="%t"/>
+<l:template name="bridgehead" text="%t"/>
+<l:template name="chapter" text="%t"/>
+<l:template name="sect1" text="%t"/>
+<l:template name="sect2" text="%t"/>
+<l:template name="sect3" text="%t"/>
+<l:template name="sect4" text="%t"/>
+<l:template name="sect5" text="%t"/>
+<l:template name="section" text="%t"/>
+<l:template name="simplesect" text="%t"/>
+<l:template name="topic" text="%t" lang="en"/>
+<l:template name="part" text="%t" lang="en"/>
+</l:context>
+<l:context name="title-numbered"><l:template name="appendix" text="இணைப்பு %n. %t"/>
+<l:template name="article/appendix" text="%n. %t"/>
+<l:template name="bridgehead" text="%n. %t"/>
+<l:template name="chapter" text="பாடம் %n. %t"/>
+<l:template name="part" text="பகுதி %n. %t"/>
+<l:template name="sect1" text="%n. %t"/>
+<l:template name="sect2" text="%n. %t"/>
+<l:template name="sect3" text="%n. %t"/>
+<l:template name="sect4" text="%n. %t"/>
+<l:template name="sect5" text="%n. %t"/>
+<l:template name="section" text="%n. %t"/>
+<l:template name="simplesect" text="%t"/>
+<l:template name="topic" text="%t" lang="en"/>
+</l:context>
+<l:context name="subtitle"><l:template name="appendix" text="%s"/>
+<l:template name="acknowledgements" text="%s" lang="en"/>
+<l:template name="article" text="%s"/>
+<l:template name="bibliodiv" text="%s"/>
+<l:template name="biblioentry" text="%s"/>
+<l:template name="bibliography" text="%s"/>
+<l:template name="bibliomixed" text="%s"/>
+<l:template name="bibliomset" text="%s"/>
+<l:template name="biblioset" text="%s"/>
+<l:template name="book" text="%s"/>
+<l:template name="chapter" text="%s"/>
+<l:template name="colophon" text="%s"/>
+<l:template name="dedication" text="%s"/>
+<l:template name="glossary" text="%s"/>
+<l:template name="glossdiv" text="%s"/>
+<l:template name="index" text="%s"/>
+<l:template name="indexdiv" text="%s"/>
+<l:template name="lot" text="%s"/>
+<l:template name="part" text="%s"/>
+<l:template name="partintro" text="%s"/>
+<l:template name="preface" text="%s"/>
+<l:template name="refentry" text="%s"/>
+<l:template name="reference" text="%s"/>
+<l:template name="refsection" text="%s"/>
+<l:template name="refsect1" text="%s"/>
+<l:template name="refsect2" text="%s"/>
+<l:template name="refsect3" text="%s"/>
+<l:template name="refsynopsisdiv" text="%s"/>
+<l:template name="sect1" text="%s"/>
+<l:template name="sect2" text="%s"/>
+<l:template name="sect3" text="%s"/>
+<l:template name="sect4" text="%s"/>
+<l:template name="sect5" text="%s"/>
+<l:template name="section" text="%s"/>
+<l:template name="set" text="%s"/>
+<l:template name="setindex" text="%s"/>
+<l:template name="sidebar" text="%s"/>
+<l:template name="simplesect" text="%s"/>
+<l:template name="topic" text="%t" lang="en"/>
+<l:template name="toc" text="%s"/>
+</l:context>
+<l:context name="xref"><l:template name="abstract" text="%t"/>
+<l:template name="acknowledgements" text="%t" lang="en"/>
+<l:template name="answer" text="விடை: %n"/>
+<l:template name="appendix" text="%t"/>
+<l:template name="article" text="%t"/>
+<l:template name="authorblurb" text="%t"/>
+<l:template name="bibliodiv" text="%t"/>
+<l:template name="bibliography" text="%t"/>
+<l:template name="bibliomset" text="%t"/>
+<l:template name="biblioset" text="%t"/>
+<l:template name="blockquote" text="%t"/>
+<l:template name="book" text="%t"/>
+<l:template name="calloutlist" text="%t"/>
+<l:template name="caution" text="%t"/>
+<l:template name="chapter" text="%t"/>
+<l:template name="colophon" text="%t"/>
+<l:template name="constraintdef" text="%t"/>
+<l:template name="dedication" text="%t"/>
+<l:template name="equation" text="%t"/>
+<l:template name="example" text="%t"/>
+<l:template name="figure" text="%t"/>
+<l:template name="foil" text="%t"/>
+<l:template name="foilgroup" text="%t"/>
+<l:template name="formalpara" text="%t"/>
+<l:template name="glossary" text="%t"/>
+<l:template name="glossdiv" text="%t"/>
+<l:template name="important" text="%t"/>
+<l:template name="index" text="%t"/>
+<l:template name="indexdiv" text="%t"/>
+<l:template name="itemizedlist" text="%t"/>
+<l:template name="legalnotice" text="%t"/>
+<l:template name="listitem" text="%n"/>
+<l:template name="lot" text="%t"/>
+<l:template name="msg" text="%t"/>
+<l:template name="msgexplan" text="%t"/>
+<l:template name="msgmain" text="%t"/>
+<l:template name="msgrel" text="%t"/>
+<l:template name="msgset" text="%t"/>
+<l:template name="msgsub" text="%t"/>
+<l:template name="note" text="%t"/>
+<l:template name="orderedlist" text="%t"/>
+<l:template name="part" text="%t"/>
+<l:template name="partintro" text="%t"/>
+<l:template name="preface" text="%t"/>
+<l:template name="procedure" text="%t"/>
+<l:template name="productionset" text="%t"/>
+<l:template name="qandadiv" text="%t"/>
+<l:template name="qandaentry" text="வினா: %n"/>
+<l:template name="qandaset" text="%t"/>
+<l:template name="question" text="வினா: %n"/>
+<l:template name="reference" text="%t"/>
+<l:template name="refsynopsisdiv" text="%t"/>
+<l:template name="screenshot" text="%t" lang="en"/>
+<l:template name="segmentedlist" text="%t"/>
+<l:template name="set" text="%t"/>
+<l:template name="setindex" text="%t"/>
+<l:template name="sidebar" text="%t"/>
+<l:template name="table" text="%t"/>
+<l:template name="task" text="%t" lang="en"/>
+<l:template name="tip" text="%t"/>
+<l:template name="toc" text="%t"/>
+<l:template name="variablelist" text="%t"/>
+<l:template name="varlistentry" text="%n"/>
+<l:template name="warning" text="%t"/>
+<l:template name="olink.document.citation" text=" in %o"/>
+<l:template name="olink.page.citation" text=" (page %p)"/>
+<l:template name="page.citation" text=" [%p]"/>
+<l:template name="page" text="(page %p)"/>
+<l:template name="docname" text=" in %o"/>
+<l:template name="docnamelong" text=" in the document titled %o"/>
+<l:template name="pageabbrev" text="(p. %p)"/>
+<l:template name="Page" text="Page %p"/>
+<l:template name="topic" text="%t" lang="en"/>
+<l:template name="bridgehead" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="refsection" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="refsect1" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="refsect2" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="refsect3" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="sect1" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="sect2" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="sect3" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="sect4" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="sect5" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="section" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="simplesect" text="அழைக்கபட்டபகுதி “%t”"/>
+</l:context>
+<l:context name="xref-number"><l:template name="answer" text="விடை: %n"/>
+<l:template name="appendix" text="இணைப்பு %n"/>
+<l:template name="bridgehead" text="பிரிவு %n"/>
+<l:template name="chapter" text="பாடம் %n"/>
+<l:template name="equation" text="சமன்பாடு %n"/>
+<l:template name="example" text="உதாரணம் %n"/>
+<l:template name="figure" text="படம் %n"/>
+<l:template name="part" text="பகுதி %n"/>
+<l:template name="procedure" text="முறை %n"/>
+<l:template name="productionset" text="உற்பத்தி %n"/>
+<l:template name="qandadiv" text="வினா &amp; விடை %n"/>
+<l:template name="qandaentry" text="வினா: %n"/>
+<l:template name="question" text="வினா: %n"/>
+<l:template name="sect1" text="பிரிவு %n"/>
+<l:template name="sect2" text="பிரிவு %n"/>
+<l:template name="sect3" text="பிரிவு %n"/>
+<l:template name="sect4" text="பிரிவு %n"/>
+<l:template name="sect5" text="பிரிவு %n"/>
+<l:template name="section" text="பிரிவு %n"/>
+<l:template name="table" text="அட்டவணை %n"/>
+</l:context>
+<l:context name="xref-number-and-title"><l:template name="appendix" text="இணைப்பு %n, %t"/>
+<l:template name="bridgehead" text="பிரிவு %n, “%t”"/>
+<l:template name="chapter" text="பாடம் %n, %t"/>
+<l:template name="equation" text="சமன்பாடு %n, “%t”"/>
+<l:template name="example" text="உதாரணம் %n, “%t”"/>
+<l:template name="figure" text="படம் %n, “%t”"/>
+<l:template name="part" text="பகுதி %n, “%t”"/>
+<l:template name="procedure" text="முறை %n, “%t”"/>
+<l:template name="productionset" text="உற்பத்தி %n, “%t”"/>
+<l:template name="qandadiv" text="வினா &amp; விடை %n, “%t”"/>
+<l:template name="refsect1" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="refsect2" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="refsect3" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="refsection" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="sect1" text="பிரிவு %n, “%t”"/>
+<l:template name="sect2" text="பிரிவு %n, “%t”"/>
+<l:template name="sect3" text="பிரிவு %n, “%t”"/>
+<l:template name="sect4" text="பிரிவு %n, “%t”"/>
+<l:template name="sect5" text="பிரிவு %n, “%t”"/>
+<l:template name="section" text="பிரிவு %n, “%t”"/>
+<l:template name="simplesect" text="அழைக்கபட்டபகுதி “%t”"/>
+<l:template name="table" text="அட்டவணை %n, “%t”"/>
+</l:context>
+<l:context name="authorgroup"><l:template name="sep" text=", "/>
+<l:template name="sep2" text=" மற்றும் "/>
+<l:template name="seplast" text=", மற்றும் "/>
+</l:context>
+<l:context name="glossary"><l:template name="see" text="பார் %t."/>
+<l:template name="seealso" text="இதையும்பார்க்கவும் %t."/>
+<l:template name="seealso-separator" text=", "/>
+</l:context>
+<l:context name="msgset"><l:template name="MsgAud" text="பார்வையாளர்கள்: "/>
+<l:template name="MsgLevel" text="நிலை: "/>
+<l:template name="MsgOrig" text="மூலம்: "/>
+</l:context>
+<l:context name="datetime"><l:template name="format" text="m/d/Y"/>
+</l:context>
+<l:context name="termdef"><l:template name="prefix" text="[Definition: "/>
+<l:template name="suffix" text="]"/>
+</l:context>
+<l:context name="datetime-full"><l:template name="January" text="ஜனவரி"/>
+<l:template name="February" text="பிப்ரவரி"/>
+<l:template name="March" text="மார்ச்"/>
+<l:template name="April" text="ஏப்ரல்"/>
+<l:template name="May" text="மே"/>
+<l:template name="June" text="ஜூன்"/>
+<l:template name="July" text="ஜூலை"/>
+<l:template name="August" text="ஆகஸ்ட்"/>
+<l:template name="September" text="செப்டம்பர்"/>
+<l:template name="October" text="அக்டோபர்"/>
+<l:template name="November" text="நவம்பர்"/>
+<l:template name="December" text="டிசம்பர்"/>
+<l:template name="Monday" text="திங்கட்கிழமை"/>
+<l:template name="Tuesday" text="செவ்வாய்கிழமை"/>
+<l:template name="Wednesday" text="புதன்கிழமை"/>
+<l:template name="Thursday" text="வியாழக்கிழமை"/>
+<l:template name="Friday" text="வெள்ளிக்கிழமை"/>
+<l:template name="Saturday" text="சனிக்கிழமை"/>
+<l:template name="Sunday" text="ஞாயிற்றுக்கிழமை"/>
+</l:context>
+<l:context name="datetime-abbrev"><l:template name="Jan" text="ஐன"/>
+<l:template name="Feb" text="பிப்"/>
+<l:template name="Mar" text="மார்"/>
+<l:template name="Apr" text="ஏப்"/>
+<l:template name="May" text="மே"/>
+<l:template name="Jun" text="ஜூன்"/>
+<l:template name="Jul" text="ஜூலை"/>
+<l:template name="Aug" text="ஆக"/>
+<l:template name="Sep" text="செப்"/>
+<l:template name="Oct" text="அக்"/>
+<l:template name="Nov" text="நவ"/>
+<l:template name="Dec" text="டிச"/>
+<l:template name="Mon" text="திங்"/>
+<l:template name="Tue" text="செவ்"/>
+<l:template name="Wed" text="புத"/>
+<l:template name="Thu" text="வியா"/>
+<l:template name="Fri" text="வெள்"/>
+<l:template name="Sat" text="சனி"/>
+<l:template name="Sun" text="ஞாயி"/>
+</l:context>
+<l:context name="htmlhelp"><l:template name="langcode" text="0x0049 Tamil"/>
+</l:context>
+<l:context name="index"><l:template name="term-separator" text=", "/>
+<l:template name="number-separator" text=", "/>
+<l:template name="range-separator" text="-"/>
+</l:context>
+<l:context name="iso690"><l:template name="lastfirst.sep" text=", "/>
+<l:template name="alt.person.two.sep" text=" – "/>
+<l:template name="alt.person.last.sep" text=" – "/>
+<l:template name="alt.person.more.sep" text=" – "/>
+<l:template name="primary.editor" text=" (ed.)"/>
+<l:template name="primary.many" text=", et al."/>
+<l:template name="primary.sep" text=". "/>
+<l:template name="submaintitle.sep" text=": "/>
+<l:template name="title.sep" text=". "/>
+<l:template name="othertitle.sep" text=", "/>
+<l:template name="medium1" text=" ["/>
+<l:template name="medium2" text="]"/>
+<l:template name="secondary.person.sep" text="; "/>
+<l:template name="secondary.sep" text=". "/>
+<l:template name="respons.sep" text=". "/>
+<l:template name="edition.sep" text=". "/>
+<l:template name="edition.serial.sep" text=", "/>
+<l:template name="issuing.range" text="-"/>
+<l:template name="issuing.div" text=", "/>
+<l:template name="issuing.sep" text=". "/>
+<l:template name="partnr.sep" text=". "/>
+<l:template name="placepubl.sep" text=": "/>
+<l:template name="publyear.sep" text=", "/>
+<l:template name="pubinfo.sep" text=". "/>
+<l:template name="spec.pubinfo.sep" text=", "/>
+<l:template name="upd.sep" text=", "/>
+<l:template name="datecit1" text=" [cited "/>
+<l:template name="datecit2" text="]"/>
+<l:template name="extent.sep" text=". "/>
+<l:template name="locs.sep" text=", "/>
+<l:template name="location.sep" text=". "/>
+<l:template name="serie.sep" text=". "/>
+<l:template name="notice.sep" text=". "/>
+<l:template name="access" text="Available "/>
+<l:template name="acctoo" text="Also available "/>
+<l:template name="onwww" text="from World Wide Web"/>
+<l:template name="oninet" text="from Internet"/>
+<l:template name="access.end" text=": "/>
+<l:template name="link1" text="&lt;"/>
+<l:template name="link2" text="&gt;"/>
+<l:template name="access.sep" text=". "/>
+<l:template name="isbn" text="ISBN "/>
+<l:template name="issn" text="ISSN "/>
+<l:template name="stdnum.sep" text=". "/>
+<l:template name="patcountry.sep" text=". "/>
+<l:template name="pattype.sep" text=", "/>
+<l:template name="patnum.sep" text=". "/>
+<l:template name="patdate.sep" text=". "/>
+</l:context><l:letters><l:l i="-1"/>
+<l:l i="0">குறியீடுகள்</l:l>
+<l:l i="10">A</l:l>
+<l:l i="10">a</l:l>
+<l:l i="20">B</l:l>
+<l:l i="20">b</l:l>
+<l:l i="30">C</l:l>
+<l:l i="30">c</l:l>
+<l:l i="40">D</l:l>
+<l:l i="40">d</l:l>
+<l:l i="50">E</l:l>
+<l:l i="50">e</l:l>
+<l:l i="60">F</l:l>
+<l:l i="60">f</l:l>
+<l:l i="70">G</l:l>
+<l:l i="70">g</l:l>
+<l:l i="80">H</l:l>
+<l:l i="80">h</l:l>
+<l:l i="90">I</l:l>
+<l:l i="90">i</l:l>
+<l:l i="100">J</l:l>
+<l:l i="100">j</l:l>
+<l:l i="110">K</l:l>
+<l:l i="110">k</l:l>
+<l:l i="120">L</l:l>
+<l:l i="120">l</l:l>
+<l:l i="130">M</l:l>
+<l:l i="130">m</l:l>
+<l:l i="140">N</l:l>
+<l:l i="140">n</l:l>
+<l:l i="150">O</l:l>
+<l:l i="150">o</l:l>
+<l:l i="160">P</l:l>
+<l:l i="160">p</l:l>
+<l:l i="170">Q</l:l>
+<l:l i="170">q</l:l>
+<l:l i="180">R</l:l>
+<l:l i="180">r</l:l>
+<l:l i="190">S</l:l>
+<l:l i="190">s</l:l>
+<l:l i="200">T</l:l>
+<l:l i="200">t</l:l>
+<l:l i="210">U</l:l>
+<l:l i="210">u</l:l>
+<l:l i="220">V</l:l>
+<l:l i="220">v</l:l>
+<l:l i="230">W</l:l>
+<l:l i="230">w</l:l>
+<l:l i="240">X</l:l>
+<l:l i="240">x</l:l>
+<l:l i="250">Y</l:l>
+<l:l i="250">y</l:l>
+<l:l i="260">Z</l:l>
+<l:l i="260">z</l:l>
+</l:letters>
+</l:l10n>

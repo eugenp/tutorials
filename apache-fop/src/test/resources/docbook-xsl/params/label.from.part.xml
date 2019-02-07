@@ -1,0 +1,38 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="label.from.part">
+<refmeta>
+<refentrytitle>label.from.part</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">boolean</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>label.from.part</refname>
+<refpurpose>Renumber components in each part?</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="label.from.part.frag">
+<xsl:param name="label.from.part" select="0"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>If <parameter>label.from.part</parameter> is non-zero, then
+  numbering of components — <tag>preface</tag>,
+  <tag>chapter</tag>, <tag>appendix</tag>, and
+  <tag>reference</tag> (when <tag>reference</tag> occurs at the
+  component level) — is re-started within each
+  <tag>part</tag>.</para>
+<para>If <parameter>label.from.part</parameter> is zero (the
+  default), numbering of components is <emphasis>not</emphasis>
+  re-started within each <tag>part</tag>; instead, components are
+  numbered sequentially throughout each <tag>book</tag>,
+  regardless of whether or not they occur within <tag>part</tag>
+  instances.</para>
+
+</refsection>
+</refentry>

@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="toc.bg.color">
+<refmeta>
+<refentrytitle>toc.bg.color</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">color</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>toc.bg.color</refname>
+<refpurpose>Background color for ToC frame</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="toc.bg.color.frag">
+<xsl:param name="toc.bg.color">#FFFFFF</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the background color used in the ToC frame.</para>
+
+</refsection>
+</refentry>

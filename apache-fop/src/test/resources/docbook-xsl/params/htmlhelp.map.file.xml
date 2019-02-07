@@ -1,0 +1,25 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="htmlhelp.map.file">
+<refmeta>
+<refentrytitle>htmlhelp.map.file</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">string</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>htmlhelp.map.file</refname>
+<refpurpose>Filename of map file.</refpurpose>
+</refnamediv>
+<refsynopsisdiv>
+<src:fragment xml:id="htmlhelp.map.file.frag">
+<xsl:param name="htmlhelp.map.file">context.h</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+<refsection><info><title>Description</title></info>
+<para>Set the name of map file. The default is
+  <filename>context.h</filename>. (used for context-sensitive
+  help).</para>
+</refsection>
+</refentry>

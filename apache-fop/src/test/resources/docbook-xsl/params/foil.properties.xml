@@ -1,0 +1,36 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="foil.properties">
+<refmeta>
+<refentrytitle>foil.properties</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">attribute set</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>foil.properties</refname>
+<refpurpose>Specifies properties for all foils</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+  <src:fragment xml:id="foil.properties.frag">
+    <xsl:attribute-set name="foil.properties">
+      <xsl:attribute name="font-family">
+        <xsl:value-of select="$slide.font.family"/>
+      </xsl:attribute>
+      <xsl:attribute name="margin-{$direction.align.start}">1in</xsl:attribute>
+      <xsl:attribute name="margin-{$direction.align.end}">1in</xsl:attribute>
+      <xsl:attribute name="font-size">
+        <xsl:value-of select="$body.font.size"/>
+      </xsl:attribute>
+    </xsl:attribute-set>
+  </src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>This parameter specifies properties that are applied to all foils.</para>
+
+</refsection>
+</refentry>

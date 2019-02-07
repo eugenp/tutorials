@@ -1,0 +1,27 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:xi="http://www.w3.org/2001/XInclude"
+          xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+          xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+          version="5.0" xml:id="no.home.image">
+<refmeta>
+<refentrytitle>no.home.image</refentrytitle>
+<refmiscinfo class="other" otherclass="datatype">filename</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>no.home.image</refname>
+<refpurpose>Inactive home image</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="no.home.image.frag">
+<xsl:param name="no.home.image">inactive/nav-home.png</xsl:param>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsection><info><title>Description</title></info>
+
+<para>Specifies the filename of the inactive home navigation icon.</para>
+
+</refsection>
+</refentry>
