@@ -4,7 +4,7 @@ import com.google.gson.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
-public class JsonObjectConversionsTest {
+public class JsonObjectConversionsUnitTest {
 
     @Test
     void givenAStringAndJsonParser_shouldConvertToJsonObject() throws Exception {
