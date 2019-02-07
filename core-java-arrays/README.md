@@ -14,3 +14,4 @@
 - [Array Operations in Java](http://www.baeldung.com/java-common-array-operations)
 - [Intersection Between two Integer Arrays](https://www.baeldung.com/java-array-intersection)
 - [Sorting Arrays in Java](https://www.baeldung.com/java-sorting-arrays)
+- [Convert a Float to a Byte Array in Java](https://www.baeldung.com/java-convert-float-to-byte-array)
