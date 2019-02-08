@@ -56,7 +56,7 @@ Line 3 : String content""")
             encodedContent instanceof String
     }
     
-    def 'Should return binary file content in byte arry using ReadFile.readBinaryFile given filePath' () {
+    def 'Should return binary file content in byte array using ReadFile.readBinaryFile given filePath' () {
         given:
             def filePath = "src/main/resources/sample.png"
         when:
