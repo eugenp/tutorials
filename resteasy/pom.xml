@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>resteasy</artifactId>
     <version>1.0</version>
-    <packaging>war</packaging>
 	<name>resteasy</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

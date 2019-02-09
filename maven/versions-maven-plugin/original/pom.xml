@@ -6,10 +6,6 @@
     <artifactId>versions-maven-plugin-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <properties>        
-        <commons-compress-version>1.15</commons-compress-version>
-    </properties>
-
     <dependencies>
 
         <dependency>
@@ -73,4 +69,8 @@
         </repository>
     </repositories>
 
+    <properties>        
+        <commons-compress-version>1.15</commons-compress-version>
+    </properties>
+    	
 </project>

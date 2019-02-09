@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-security-react</artifactId>
     <version>0.1-SNAPSHOT</version>
-
     <name>spring-security-react</name>
     <packaging>war</packaging>
 

@@ -5,9 +5,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>JGit</artifactId>
     <version>1.0-SNAPSHOT</version>
+	<name>JGit</name>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
-	<name>JGit</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
