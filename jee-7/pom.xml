@@ -133,12 +133,12 @@
 		<dependency>
 			<groupId>org.jberet</groupId>
 			<artifactId>jberet-core</artifactId>
-			<version>${jberet-core.version}</version>
+			<version>${jberet.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jberet</groupId>
 			<artifactId>jberet-support</artifactId>
-			<version>${jberet-support.version}</version>
+			<version>${jberet.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.spec.javax.transaction</groupId>
@@ -153,17 +153,17 @@
 		<dependency>
 			<groupId>org.jboss.weld</groupId>
 			<artifactId>weld-core</artifactId>
-			<version>${weld-core.version}</version>
+			<version>${weld.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se</artifactId>
-			<version>${weld-se.version}</version>
+			<version>${weld.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jberet</groupId>
 			<artifactId>jberet-se</artifactId>
-			<version>${jberet-se.version}</version>
+			<version>${jberet.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -534,13 +534,10 @@
 		<jsp-api.version>2.2</jsp-api.version>
 		<ozark.version>20160715</ozark.version>
 		<jboss-batch-api.version>1.0.0.Final</jboss-batch-api.version>
-		<jberet-core.version>1.0.2.Final</jberet-core.version>
-		<jberet-support.version>1.0.2.Final</jberet-support.version>
+		<jberet.version>1.0.2.Final</jberet.version>
 		<jboss-transaction-api.version>1.0.0.Final</jboss-transaction-api.version>
 		<jboss-marshalling.version>1.4.2.Final</jboss-marshalling.version>
-		<weld-core.version>2.1.1.Final</weld-core.version>
-		<weld-se.version>2.1.1.Final</weld-se.version>
-		<jberet-se.version>1.0.2.Final</jberet-se.version>
+		<weld.version>2.1.1.Final</weld.version>
 		<h2.version>1.4.178</h2.version>
 		<jersey-container-jetty-servlet.version>2.22.1</jersey-container-jetty-servlet.version>
 	</properties>
