@@ -3,17 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>restx</artifactId>
     <version>0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>restx-demo</name>
-
-    <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <restx.version>0.35-rc4</restx.version>
-    </properties>
 	
 	<parent>
         <groupId>com.baeldung</groupId>
@@ -106,7 +99,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
+            <version>${logback-classic.version}</version>
         </dependency>
         <dependency>
             <groupId>io.restx</groupId>
@@ -117,10 +110,11 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+	
     <build>
         <plugins>
             <plugin>
@@ -152,4 +146,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <restx.version>0.35-rc4</restx.version>
+		<logback-classic.version>1.0.13</logback-classic.version>
+    </properties>
 </project>

@@ -128,52 +128,52 @@
 		<dependency>
 			<groupId>org.jboss.spec.javax.batch</groupId>
 			<artifactId>jboss-batch-api_1.0_spec</artifactId>
-			<version>1.0.0.Final</version>
+			<version>${jboss-batch-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jberet</groupId>
 			<artifactId>jberet-core</artifactId>
-			<version>1.0.2.Final</version>
+			<version>${jberet.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jberet</groupId>
 			<artifactId>jberet-support</artifactId>
-			<version>1.0.2.Final</version>
+			<version>${jberet.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.spec.javax.transaction</groupId>
 			<artifactId>jboss-transaction-api_1.2_spec</artifactId>
-			<version>1.0.0.Final</version>
+			<version>${jboss-transaction-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.marshalling</groupId>
 			<artifactId>jboss-marshalling</artifactId>
-			<version>1.4.2.Final</version>
+			<version>${jboss-marshalling.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.weld</groupId>
 			<artifactId>weld-core</artifactId>
-			<version>2.1.1.Final</version>
+			<version>${weld.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se</artifactId>
-			<version>2.1.1.Final</version>
+			<version>${weld.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jberet</groupId>
 			<artifactId>jberet-se</artifactId>
-			<version>1.0.2.Final</version>
+			<version>${jberet.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>1.4.178</version>
+			<version>${h2.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.glassfish.jersey.containers</groupId>
 			<artifactId>jersey-container-jetty-servlet</artifactId>
-			<version>2.22.1</version>
+			<version>${jersey-container-jetty-servlet.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -533,6 +533,13 @@
 		<jstl.version>1.2</jstl.version>
 		<jsp-api.version>2.2</jsp-api.version>
 		<ozark.version>20160715</ozark.version>
+		<jboss-batch-api.version>1.0.0.Final</jboss-batch-api.version>
+		<jberet.version>1.0.2.Final</jberet.version>
+		<jboss-transaction-api.version>1.0.0.Final</jboss-transaction-api.version>
+		<jboss-marshalling.version>1.4.2.Final</jboss-marshalling.version>
+		<weld.version>2.1.1.Final</weld.version>
+		<h2.version>1.4.178</h2.version>
+		<jersey-container-jetty-servlet.version>2.22.1</jersey-container-jetty-servlet.version>
 	</properties>
 
 </project>
