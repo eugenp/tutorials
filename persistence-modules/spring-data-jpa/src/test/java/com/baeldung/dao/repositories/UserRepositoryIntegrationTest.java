@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PersistenceConfiguration.class)
 @DirtiesContext
-public class UserRepositoryIntegrationTest extends UserRepositoryCommonIntegrationTests {
+public class UserRepositoryIntegrationTest extends UserRepositoryCommon {
 
     @Test
     @Transactional

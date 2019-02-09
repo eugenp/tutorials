@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @ActiveProfiles("tc")
 @ContextConfiguration(initializers = {UserRepositoryTCIntegrationTest.Initializer.class})
-public class UserRepositoryTCIntegrationTest extends UserRepositoryCommonIntegrationTests {
+public class UserRepositoryTCIntegrationTest extends UserRepositoryCommon {
 
     @ClassRule
     public static PostgreSQLContainer postgreSQLContainer = new PostgreSQLContainer("postgres:11.1")

@@ -20,7 +20,7 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UserRepositoryCommonIntegrationTests {
+class UserRepositoryCommon {
 
     final String USER_EMAIL = "email@example.com";
     final String USER_EMAIL2 = "email2@example.com";
