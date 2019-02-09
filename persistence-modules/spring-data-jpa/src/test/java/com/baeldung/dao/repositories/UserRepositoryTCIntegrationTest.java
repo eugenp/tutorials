@@ -16,9 +16,6 @@ import org.testcontainers.containers.PostgreSQLContainer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Created by adam.
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("tc")
