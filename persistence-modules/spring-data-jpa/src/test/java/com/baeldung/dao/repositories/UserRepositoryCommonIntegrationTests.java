@@ -21,16 +21,18 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class UserRepositoryCommonIntegrationTests {
-    protected final String USER_EMAIL = "email@example.com";
-    protected final String USER_EMAIL2 = "email2@example.com";
-    protected final String USER_EMAIL3 = "email3@example.com";
-    protected final String USER_EMAIL4 = "email4@example.com";
-    protected final String USER_EMAIL5 = "email5@example.com";
-    protected final String USER_EMAIL6 = "email6@example.com";
-    protected final Integer INACTIVE_STATUS = 0;
-    protected final Integer ACTIVE_STATUS = 1;
+
+    final String USER_EMAIL = "email@example.com";
+    final String USER_EMAIL2 = "email2@example.com";
+    final String USER_EMAIL3 = "email3@example.com";
+    final String USER_EMAIL4 = "email4@example.com";
+    final Integer INACTIVE_STATUS = 0;
+    final Integer ACTIVE_STATUS = 1;
+    private final String USER_EMAIL5 = "email5@example.com";
+    private final String USER_EMAIL6 = "email6@example.com";
     private final String USER_NAME_ADAM = "Adam";
     private final String USER_NAME_PETER = "Peter";
+
     @Autowired
     protected UserRepository userRepository;
 
