@@ -7,7 +7,7 @@ class CalculatorTest5 {
     private val calculator = Calculator()
 
     @Test
-    fun `Adding 1 and 3 should be eqaul to 4`() {
+    fun `Adding 1 and 3 should be equal to 4`() {
         Assertions.assertEquals(4, calculator.add(1, 3))
     }
 
@@ -21,7 +21,7 @@ class CalculatorTest5 {
     }
 
     @Test
-    fun `The square of a number should be eqaul to that number multiplied in itself`() {
+    fun `The square of a number should be equal to that number multiplied in itself`() {
         Assertions.assertAll(
                 Executable { Assertions.assertEquals(1, calculator.square(1)) },
                 Executable { Assertions.assertEquals(4, calculator.square(2)) },
