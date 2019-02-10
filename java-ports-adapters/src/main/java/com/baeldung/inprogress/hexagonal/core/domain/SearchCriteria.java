@@ -1,6 +1,6 @@
 package com.baeldung.inprogress.hexagonal.core.domain;
 
-public class PackageSearchCriteria {
+public class SearchCriteria {
     private String from;
     private String to;
 

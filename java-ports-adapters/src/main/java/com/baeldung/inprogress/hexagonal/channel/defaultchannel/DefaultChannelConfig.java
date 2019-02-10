@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = "com.baeldung.inprogress.hexagonal.channel.defaultchannel")
 public class DefaultChannelConfig {
     @Bean
-    public DefaultChannelPackageSearchService defaultChannelPackageSearchService() {
-        return new DefaultChannelPackageSearchService();
+    public DefaultPackageSearchService defaultPackageSearchService() {
+        return new DefaultPackageSearchService();
     }
 }
