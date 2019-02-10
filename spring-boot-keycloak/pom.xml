@@ -5,9 +5,9 @@
     <groupId>com.baeldung.keycloak</groupId>
     <artifactId>spring-boot-keycloak</artifactId>
     <version>0.0.1</version>
-    <packaging>jar</packaging>
     <name>spring-boot-keycloak</name>
     <description>This is a simple application demonstrating integration between Keycloak and Spring Boot.</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

@@ -3,9 +3,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-security</artifactId>
-    <packaging>jar</packaging>
     <name>spring-boot-security</name>
     <description>Spring Boot Security Auto-Configuration</description>
+    <packaging>jar</packaging>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>

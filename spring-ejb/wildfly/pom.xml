@@ -4,8 +4,8 @@
     <groupId>com.baeldung.wildfly</groupId>
     <artifactId>wildfly</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
 	<name>wildfly</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung.spring.ejb</groupId>

@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-data-rest</artifactId>
     <version>1.0</version>
-    <packaging>jar</packaging>
     <name>spring-data-rest</name>
+    <packaging>jar</packaging>
     <description>Intro to Spring Data REST</description>
 
     <parent>
