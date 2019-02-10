@@ -92,15 +92,14 @@ public class StreamMapUnitTest {
     }
 
     @Test
-    public void ValuesFromMapBasedOnPattern() {
-        Map<String, Integer> authorToYearOfBirth = new HashMap<>();
-        authorToYearOfBirth.put("Asimov, Isaac", 1920);
-        authorToYearOfBirth.put("Adams, Douglas", 1952);
-        authorToYearOfBirth.put("Bradbury, Ray", 1920);
-        authorToYearOfBirth.put("Clarke, Arthur", 1917);
-
-        List<Integer> yearOfBirthAuthorsStartingWithA = authorToYearOfBirth.entrySet().stream().filter(e -> e.getKey().startsWith("A")).map(Map.Entry::getValue).collect(Collectors.toList());
-        assertEquals(2, yearOfBirthAuthorsStartingWithA.size());
+    public void whenKeysFollowingPatternReturnsAllValuesForThoseKeys() {
+        List<String> titlesForKeyPattern = books.entrySet().stream()
+                .filter(e -> e.getKey().startsWith("978-0"))
+                .map(Map.Entry::getValue)
+                .collect(Collectors.toList());
+        assertEquals(2, titlesForKeyPattern.size());
+        assertTrue(titlesForKeyPattern.contains("Design patterns : elements of reusable object-oriented software"));
+        assertTrue(titlesForKeyPattern.contains("Effective Java"));
 
     }
 
