@@ -39,7 +39,7 @@
         <dependency>
             <groupId>one.util</groupId>
             <artifactId>streamex</artifactId>
-            <version>0.6.5</version>
+            <version>${streamex.version}</version>
         </dependency>
     </dependencies>
 
@@ -50,5 +50,6 @@
         <avaitility.version>1.7.0</avaitility.version>
         <assertj.version>3.6.1</assertj.version>
         <eclipse.collections.version>7.1.0</eclipse.collections.version>
+		<streamex.version>0.6.5</streamex.version>
     </properties>
 </project>

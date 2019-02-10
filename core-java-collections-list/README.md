@@ -26,3 +26,4 @@
 - [ClassCastException: Arrays$ArrayList cannot be cast to ArrayList](https://www.baeldung.com/java-classcastexception-arrays-arraylist)
 - [Flattening Nested Collections in Java](http://www.baeldung.com/java-flatten-nested-collections)
 - [Intersection of Two Lists in Java](https://www.baeldung.com/java-lists-intersection)
+- [Multi Dimensional ArrayList in Java](https://www.baeldung.com/java-multi-dimensional-arraylist)

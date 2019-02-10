@@ -9,3 +9,4 @@
 - [Hashing a Password in Java](https://www.baeldung.com/java-password-hashing)
 - [SSL Handshake Failures](https://www.baeldung.com/java-ssl-handshake-failures)
 - [SHA-256 Hashing in Java](https://www.baeldung.com/sha-256-hashing-java)
+- [Enabling TLS v1.2 in Java 7](https://www.baeldung.com/java-7-tls-v12)

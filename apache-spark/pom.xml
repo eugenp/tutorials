@@ -54,10 +54,10 @@
     	  	<plugin>
     			<groupId>org.apache.maven.plugins</groupId>
     			<artifactId>maven-compiler-plugin</artifactId>
-    			<version>3.2</version>
+    			<version>${maven-compiler-plugin.version}</version>
     			<configuration>
-      				<source>1.8</source>
-      				<target>1.8</target>
+      				<source>${maven.compiler.source}</source>
+      				<target>${maven.compiler.target}</target>
     			</configuration>
   			</plugin>
       		<plugin>
@@ -85,6 +85,9 @@
         <org.apache.spark.spark-streaming-kafka.version>2.3.0</org.apache.spark.spark-streaming-kafka.version>
         <com.datastax.spark.spark-cassandra-connector.version>2.3.0</com.datastax.spark.spark-cassandra-connector.version>
         <com.datastax.spark.spark-cassandra-connector-java.version>1.5.2</com.datastax.spark.spark-cassandra-connector-java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
     </properties>
 
 </project>

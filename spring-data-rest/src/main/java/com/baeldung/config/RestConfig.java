@@ -12,10 +12,9 @@ import org.springframework.http.HttpMethod;
 public class RestConfig implements RepositoryRestConfigurer {
 
     @Override
-    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration repositoryRestConfiguration){
+    public void configureRepositoryRestConfiguration(RepositoryRestConfiguration repositoryRestConfiguration) {
         repositoryRestConfiguration.getProjectionConfiguration().addProjection(CustomBook.class);
         ExposureConfiguration config = repositoryRestConfiguration.getExposureConfiguration();
-        config.forDomainType(WebsiteUser.class).withItemExposure((metadata, httpMethods) ->
-          httpMethods.disable(HttpMethod.PATCH));
+        config.forDomainType(WebsiteUser.class).withItemExposure((metadata, httpMethods) -> httpMethods.disable(HttpMethod.PATCH));
     }
 }

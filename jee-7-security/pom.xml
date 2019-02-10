@@ -56,7 +56,7 @@
         <dependency>
             <groupId>javax.mvc</groupId>
             <artifactId>javax.mvc-api</artifactId>
-            <version>1.0-pr</version>
+            <version>${javax.mvc-api.version}</version>
         </dependency>
 
         <dependency>
@@ -97,6 +97,7 @@
         <jsp-api.version>2.2</jsp-api.version>
         <taglibs.standard.version>1.1.2</taglibs.standard.version>
         <org.springframework.security.version>4.2.3.RELEASE</org.springframework.security.version>
+		<javax.mvc-api.version>1.0-pr</javax.mvc-api.version>
     </properties>
 
 </project>

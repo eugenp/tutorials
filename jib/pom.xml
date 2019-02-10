@@ -18,11 +18,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
-
+	
     <build>
         <plugins>
             <plugin>
@@ -32,7 +28,7 @@
             <plugin>
                 <groupId>com.google.cloud.tools</groupId>
                 <artifactId>jib-maven-plugin</artifactId>
-                <version>0.9.10</version>
+                <version>${jib-maven-plugin.version}</version>
                 <configuration>
                     <to>
                         <image>registry.hub.docker.com/baeldungjib/jib-spring-boot-app</image>
@@ -42,4 +38,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <java.version>1.8</java.version>
+		<jib-maven-plugin.version>0.9.10</jib-maven-plugin.version>
+    </properties>
 </project>
