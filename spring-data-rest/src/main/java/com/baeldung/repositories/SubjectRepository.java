@@ -8,8 +8,8 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import com.baeldung.models.Subject;
 
 public interface SubjectRepository extends PagingAndSortingRepository<Subject, Long> {
-    
+
     @RestResource(path = "nameContains")
     public Page<Subject> findByNameContaining(@Param("name") String name, Pageable p);
-    
+
 }

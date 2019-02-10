@@ -7,4 +7,5 @@ import com.baeldung.models.Book;
 import com.baeldung.projections.CustomBook;
 
 @RepositoryRestResource(excerptProjection = CustomBook.class)
-public interface BookRepository extends CrudRepository<Book, Long> {}
+public interface BookRepository extends CrudRepository<Book, Long> {
+}

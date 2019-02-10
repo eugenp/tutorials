@@ -1,0 +1,6 @@
+#
+# Test profile configuration
+#
+spring:
+  datasource:
+    initialization-mode: always
