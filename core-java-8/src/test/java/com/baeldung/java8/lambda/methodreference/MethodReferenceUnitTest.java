@@ -5,22 +5,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
-public class MethodReferenceExamples {
+public class MethodReferenceUnitTest {
 
     private static <T> void doNothingAtAll(Object... o) {
     }
 
     ;
-
+    
     @Test
     public void referenceToStaticMethod() {
         List<String> messages = Arrays.asList("Hello", "Baeldung", "readers!");
-        messages.forEach((word) -> {
-            System.out.println(word);
-        });
-        messages.forEach(System.out::println);
+        messages.forEach(word -> StringUtils.capitalize(word));
+        messages.forEach(StringUtils::capitalize);
     }
 
     @Test
@@ -63,7 +62,7 @@ public class MethodReferenceExamples {
     @Test
     public void limitationsAndAdditionalExamples() {
         createBicyclesList().forEach(b -> System.out.printf("Bike brand is '%s' and frame size is '%d'%n", b.getBrand(), b.getFrameSize()));
-        createBicyclesList().forEach((o) -> MethodReferenceExamples.doNothingAtAll(o));
+        createBicyclesList().forEach((o) -> MethodReferenceUnitTest.doNothingAtAll(o));
     }
 
     private List<Bicycle> createBicyclesList() {
