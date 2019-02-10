@@ -17,11 +17,11 @@ public class RatpackParallelismApp {
             .handlers(chain -> chain.get("movies", ctx -> {
                 MovieService movieSvc = ctx.get(MovieService.class);
                 Observable<Movie> movieObs = movieSvc.getMovies();
-                System.out.println(Thread.currentThread());
-                RxRatpack.promise(movieObs.compose(RxRatpack::forkEach)
+                Observable<String> upperCasedNames = movieObs.compose(RxRatpack::forkEach)
                     .map(movie -> movie.getName()
                         .toUpperCase())
-                    .serialize())
+                    .serialize();
+                RxRatpack.promise(upperCasedNames)
                     .then(movie -> {
                         ctx.render(Jackson.json(movie));
                     });
