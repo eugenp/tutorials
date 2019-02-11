@@ -27,7 +27,7 @@ public class GuiceModule extends AbstractModule {
 			// });
 			bind(Foo.class).toProvider(new Provider<Foo>() {
 				public Foo get() {
-					return null;
+					return new Foo();
 				}
 			});
 			bind(PersonDao.class).to(PersonDaoImpl.class);
