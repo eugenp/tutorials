@@ -47,28 +47,6 @@ public class StreamMapUnitTest {
     }
 
     @Test
-    public void whenStringVersionCalledForExistingTitle_thenReturnISBN() {
-        String isbn = books.entrySet().stream()
-                .filter(e -> "Effective Java".equals(e.getValue()))
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .orElse(null);
-
-        assertEquals("978-0134685991", isbn);
-    }
-
-    @Test
-    public void whenStringVersionCalledForNonExistingTitle_thenReturnNull() {
-        String isbn = books.entrySet().stream()
-                .filter(e -> "Non Existent Title".equals(e.getValue()))
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .orElse(null);
-
-        assertEquals(null, isbn);
-    }
-
-    @Test
     public void whenMultipleResultsVersionCalledForExistingTitle_aCollectionWithMultipleValuesIsReturned() {
         books.put("978-0321356680", "Effective Java: Second Edition");
 
@@ -100,8 +78,6 @@ public class StreamMapUnitTest {
         assertEquals(2, titlesForKeyPattern.size());
         assertTrue(titlesForKeyPattern.contains("Design patterns : elements of reusable object-oriented software"));
         assertTrue(titlesForKeyPattern.contains("Effective Java"));
-
     }
-
-
+    
 }
