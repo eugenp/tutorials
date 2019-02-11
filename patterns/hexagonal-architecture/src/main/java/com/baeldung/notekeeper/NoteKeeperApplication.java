@@ -11,21 +11,20 @@ import java.util.Optional;
 @SpringBootApplication
 public class NoteKeeperApplication {
 
-	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = SpringApplication.run(NoteKeeperApplication.class, args);
+    public static void main(String[] args) {
+        ConfigurableApplicationContext ctx = SpringApplication.run(NoteKeeperApplication.class, args);
 
-		NoteKeeperService noteKeeperService = ctx.getBean(NoteKeeperService.class);
+        NoteKeeperService noteKeeperService = ctx.getBean(NoteKeeperService.class);
 
-		// Add new note
-		Note helloWorldNote = noteKeeperService.create("Hello World!");
+        // Add new note
+        Note helloWorldNote = noteKeeperService.create("Hello World!");
 
-		// Get previously added note
-		Optional<Note> note = noteKeeperService.getNote(helloWorldNote.getId());
+        // Get previously added note
+        Optional<Note> note = noteKeeperService.getNote(helloWorldNote.getId());
 
-		System.out.println("Got: " + note.get());
+        System.out.println("Got: " + note.get());
 
-
-	}
+    }
 
 }
 

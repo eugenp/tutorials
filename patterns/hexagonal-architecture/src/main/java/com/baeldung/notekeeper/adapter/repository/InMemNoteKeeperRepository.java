@@ -15,7 +15,7 @@ public class InMemNoteKeeperRepository implements NoteRepository {
 
     @Override
     public Note create(Note note) {
-        if(note != null){
+        if (note != null) {
             note.setId(++currentId);
         }
 
@@ -28,5 +28,6 @@ public class InMemNoteKeeperRepository implements NoteRepository {
     public Note getById(Long id) {
         return inMemStorage.get(id);
     }
+
 }
 

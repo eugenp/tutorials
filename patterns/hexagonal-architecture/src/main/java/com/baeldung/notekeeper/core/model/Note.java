@@ -28,4 +28,5 @@ public class Note {
                 ", body='" + body + '\'' +
                 '}';
     }
+
 }
