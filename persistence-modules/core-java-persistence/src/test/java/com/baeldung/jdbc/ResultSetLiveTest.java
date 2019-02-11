@@ -175,54 +175,60 @@ public class ResultSetLiveTest {
 
     @Test
     public void givenDbConnectionJ_whenClosedCursor_thenCorrect() throws SQLException {
-        int numOfRows = 0;
+        Employee employee = null;
         dbConnection.setHoldability(ResultSet.CLOSE_CURSORS_AT_COMMIT);
         try (Statement pstmt = dbConnection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.CLOSE_CURSORS_AT_COMMIT)) {
             dbConnection.setAutoCommit(false);
-            pstmt.executeUpdate("INSERT INTO employees (name, salary,position) VALUES ('Chris',2100.0,'Manager')");
             ResultSet rs = pstmt.executeQuery("select * from employees");
-            dbConnection.commit();
             while (rs.next()) {
-                Employee employee = populateResultSet(rs);
+                if (rs.getString("name")
+                    .equalsIgnoreCase("john")) {
+                    rs.updateString("position", "Senior Engineer");
+                    rs.updateRow();
+                    dbConnection.commit();
+                    employee = populateResultSet(rs);
+                }
             }
             rs.last();
-            numOfRows = rs.getRow();
         }
 
-        assertEquals("Inserted using close cursor after commit", 3, numOfRows);
+        assertEquals("Update using closed cursor", "Senior Engineer", employee.getPosition());
     }
 
     @Test
     public void givenDbConnectionK_whenUpdate_thenCorrect() throws SQLException {
-        int numOfRows = 0;
+        Employee employee = null;
         dbConnection.setHoldability(ResultSet.HOLD_CURSORS_OVER_COMMIT);
         try (Statement pstmt = dbConnection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE, ResultSet.HOLD_CURSORS_OVER_COMMIT)) {
             dbConnection.setAutoCommit(false);
-            pstmt.executeUpdate("INSERT INTO employees (name, salary,position) VALUES ('Michael',1200.0,'Consultant')");
             ResultSet rs = pstmt.executeQuery("select * from employees");
-            dbConnection.commit();
             while (rs.next()) {
-                Employee employee = populateResultSet(rs);
+                if (rs.getString("name")
+                    .equalsIgnoreCase("john")) {
+                    rs.updateString("name", "John Doe");
+                    rs.updateRow();
+                    dbConnection.commit();
+                    employee = populateResultSet(rs);
+                }
             }
             rs.last();
-            numOfRows = rs.getRow();
         }
 
-        assertEquals("Inserted using hold cursor after commit", 4, numOfRows);
+        assertEquals("Update using open cursor", "John Doe", employee.getName());
     }
 
     @Test
     public void givenDbConnectionM_whenDelete_thenCorrect() throws SQLException {
         int numOfRows = 0;
         try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
-            rs.absolute(3);
+            rs.absolute(2);
             rs.deleteRow();
         }
         try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
             rs.last();
             numOfRows = rs.getRow();
         }
-        assertEquals("Deleted row", 3, numOfRows);
+        assertEquals("Deleted row", 1, numOfRows);
     }
 
     @Test
@@ -231,12 +237,33 @@ public class ResultSetLiveTest {
         try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
             while (rs.next()) {
 
-                Assert.assertEquals(1000.0, rs.getDouble("salary"));
+                Assert.assertEquals(1100.0, rs.getDouble("salary"));
 
-                rs.updateDouble("salary", 1100.0);
+                rs.updateDouble("salary", 1200.0);
                 rs.updateRow();
 
-                Assert.assertEquals(1100.0, rs.getDouble("salary"));
+                Assert.assertEquals(1200.0, rs.getDouble("salary"));
+
+                String name = rs.getString("name");
+                Integer empId = rs.getInt("emp_id");
+                Double salary = rs.getDouble("salary");
+                String position = rs.getString("position");
+                employee = new Employee(empId, name, salary, position);
+            }
+        }
+    }
+
+    @Test
+    public void givenDbConnectionC_whenUpdateByIndex_thenCorrect() throws SQLException {
+        Employee employee = null;
+        try (PreparedStatement pstmt = dbConnection.prepareStatement("select * from employees", ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE); ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+
+                Assert.assertEquals(1000.0, rs.getDouble(4));
+
+                rs.updateDouble(4, 1100.0);
+                rs.updateRow();
+                Assert.assertEquals(1100.0, rs.getDouble(4));
 
                 String name = rs.getString("name");
                 Integer empId = rs.getInt("emp_id");
@@ -320,7 +347,7 @@ public class ResultSetLiveTest {
                 pstmt.close();
         }
 
-        assertEquals(4, listOfEmployees.size());
+        assertEquals(2, listOfEmployees.size());
     }
 
     @AfterClass
