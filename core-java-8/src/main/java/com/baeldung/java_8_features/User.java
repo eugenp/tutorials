@@ -34,7 +34,7 @@ public class User {
         return result;
     }
 
-    public boolean isLegalName(String name) {
-        return name.length() > 3 && name.length() < 16;
+    public boolean isLegalName(User user) {
+	return user.getName().length() > 3 && user.getName().length() < 16;
     }
 }
