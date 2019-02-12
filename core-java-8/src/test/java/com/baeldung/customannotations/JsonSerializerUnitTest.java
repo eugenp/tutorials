@@ -11,7 +11,6 @@ public class JsonSerializerUnitTest {
     public void givenObjectNotSerializedThenExceptionThrown() throws JsonSerializationException {
         Object object = new Object();
         ObjectToJsonConverter serializer = new ObjectToJsonConverter();
-        serializer.convertToJson(object);
         assertThrows(JsonSerializationException.class, () -> {
             serializer.convertToJson(object);
         });
