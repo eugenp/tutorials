@@ -1,7 +1,7 @@
 package com.baeldung.springbootangularapplication.application;
 
 import com.baeldung.springbootangularapplication.application.entities.User;
-import com.baeldung.springbootangularapplicationn.application.repositories.UserRepository;
+import com.baeldung.springbootangularapplication.application.repositories.UserRepository;
 import java.util.stream.Stream;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
