@@ -1,13 +1,15 @@
 package com.baeldung.dao.repositories;
 
-import com.baeldung.config.PersistenceConfiguration;
 import com.baeldung.domain.user.User;
+import com.baeldung.util.BaeldungPostgresqlContainer;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -15,20 +17,23 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Created by adam.
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = PersistenceConfiguration.class)
-@DirtiesContext
-public class UserRepositoryIntegrationTest extends UserRepositoryCommon {
+@SpringBootTest
+@ActiveProfiles({"tc", "tc-auto"})
+public class UserRepositoryTCAutoIntegrationTest extends UserRepositoryCommon {
+
+    @ClassRule
+    public static PostgreSQLContainer postgreSQLContainer = BaeldungPostgresqlContainer.getInstance();
 
     @Test
     @Transactional
-    public void givenUsersInDBWhenUpdateStatusForNameModifyingQueryAnnotationNativeThenModifyMatchingUsers() {
+    public void givenUsersInDB_WhenUpdateStatusForNameModifyingQueryAnnotationNativePostgres_ThenModifyMatchingUsers() {
         userRepository.save(new User("SAMPLE", USER_EMAIL, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE1", USER_EMAIL2, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE", USER_EMAIL3, ACTIVE_STATUS));
         userRepository.save(new User("SAMPLE3", USER_EMAIL4, ACTIVE_STATUS));
         userRepository.flush();
 
-        int updatedUsersSize = userRepository.updateUserSetStatusForNameNative(INACTIVE_STATUS, "SAMPLE");
+        int updatedUsersSize = userRepository.updateUserSetStatusForNameNativePostgres(INACTIVE_STATUS, "SAMPLE");
 
         assertThat(updatedUsersSize).isEqualTo(2);
     }
