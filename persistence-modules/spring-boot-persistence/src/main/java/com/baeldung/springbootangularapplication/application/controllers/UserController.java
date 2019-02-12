@@ -1,6 +1,6 @@
 package com.baeldung.springbootangularapplication.application.controllers;
 
-import com.springbootangularapplication.application.entities.User;
+import com.baeldung.springbootangularapplication.application.entities.User;
 import com.baeldung.springbootangularapplication.application.repositories.UserRepository;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
