@@ -750,6 +750,7 @@
                 <module>spring-security-x509</module>
                 <module>spring-session</module>
                 <module>spring-sleuth</module>
+                <module>spring-soap</module>
                 <module>spring-social-login</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
@@ -1460,6 +1461,7 @@
                 <module>spring-security-x509</module>
                 <module>spring-session</module>
                 <module>spring-sleuth</module>
+                <module>spring-soap</module>
                 <module>spring-social-login</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
