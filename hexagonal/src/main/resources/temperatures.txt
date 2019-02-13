@@ -1,0 +1,6 @@
+Athens 18
+Berlin 12
+Amsterdam 10
+Istanbul 20
+Madrid 25
+Moscow -1

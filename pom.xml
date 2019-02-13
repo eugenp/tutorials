@@ -60,6 +60,7 @@
 
         <module>handling-spring-static-resources</module>
         <module>hazelcast</module>
+        <module>hexagonal</module>
         <module>hbase</module>
         <!--<module>hibernate5</module>-->
         <module>httpclient</module>
