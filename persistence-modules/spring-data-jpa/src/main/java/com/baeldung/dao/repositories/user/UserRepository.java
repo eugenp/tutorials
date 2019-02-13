@@ -67,8 +67,7 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Modifying
     @Query(value = "UPDATE USERS.Users u SET u.status = ? WHERE u.name = ?", nativeQuery = true)
     int updateUserSetStatusForNameNative(Integer status, String name);
-    
-    
+       
     @Query(value = "SELECT u FROM User u WHERE u.name IN :names")
     List<User> findUserByNameList(@Param("names") Collection<String> names);
 }

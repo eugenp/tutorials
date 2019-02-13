@@ -16,8 +16,7 @@ import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
@@ -405,11 +404,9 @@ public class UserRepositoryIntegrationTest {
         user2.setEmail(USER_EMAIL2);
         userRepository.save(user2);
 
-        List<String> names = new ArrayList<>();
-        names.add(USER_NAME_ADAM);
-        names.add(USER_NAME_PETER);
+        List<String> names = Arrays.asList(USER_NAME_ADAM, USER_NAME_PETER);
 
-        Collection<User> usersWithNames = userRepository.findUserByNameList(names);
+        List<User> usersWithNames = userRepository.findUserByNameList(names);
 
         assertThat(usersWithNames.size()).isEqualTo(2);
     }
