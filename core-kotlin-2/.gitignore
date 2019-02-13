@@ -1,0 +1,14 @@
+/bin/
+
+#ignore gradle
+.gradle/
+
+
+#ignore build and generated files
+build/
+node/
+out/
+
+#ignore installed node modules and package lock file
+node_modules/
+package-lock.json
