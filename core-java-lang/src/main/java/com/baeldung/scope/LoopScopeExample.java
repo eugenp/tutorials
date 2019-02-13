@@ -1,4 +1,4 @@
-package org.baeldung.variable.scope.examples;
+package com.baeldung.scope;
 
 import java.util.Arrays;
 import java.util.List;

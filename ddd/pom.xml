@@ -1,6 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.ddd</groupId>
+    <artifactId>ddd</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>ddd</name>
+    <packaging>jar</packaging>
+    <description>DDD series examples</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -8,18 +14,6 @@
         <version>2.0.6.RELEASE</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
-
-    <groupId>com.baeldung.ddd</groupId>
-    <artifactId>ddd</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>ddd</name>
-    <description>DDD series examples</description>
-
-    <properties>
-        <joda-money.version>1.0.1</joda-money.version>
-        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -88,4 +82,10 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <properties>
+        <joda-money.version>1.0.1</joda-money.version>
+        <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+    </properties>
+	
 </project>
