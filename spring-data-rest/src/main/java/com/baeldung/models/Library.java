@@ -17,7 +17,7 @@ import org.springframework.data.rest.core.annotation.RestResource;
 public class Library {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column

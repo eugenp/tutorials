@@ -37,3 +37,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Serialize Only Fields that meet a Custom Criteria with Jackson](http://www.baeldung.com/jackson-serialize-field-custom-criteria)
 - [Mapping Nested Values with Jackson](http://www.baeldung.com/jackson-nested-values)
 - [Convert XML to JSON Using Jackson](https://www.baeldung.com/jackson-convert-xml-json)
+- [Deserialize Immutable Objects with Jackson](https://www.baeldung.com/jackson-deserialize-immutable-objects)

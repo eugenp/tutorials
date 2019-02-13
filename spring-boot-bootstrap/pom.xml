@@ -4,16 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.baeldung</groupId>
 	<artifactId>spring-boot-bootstrap</artifactId>
-	<packaging>jar</packaging>
 	<name>spring-boot-bootstrap</name>
 	<description>Demo project for Spring Boot</description>
-	<parent>
+	<packaging>jar</packaging>
+    
+    <parent>
 		<artifactId>parent-boot-2</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../parent-boot-2</relativePath>
 	</parent>
-	<dependencies>
+    
+    <dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -57,6 +59,27 @@
 	</dependencies>
 
 	<profiles>
+		<profile>
+			<id>beanstalk</id>
+			<build>
+				<finalName>${project.name}-eb</finalName>
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<excludes>
+								<exclude>**/cloud/config/*.java</exclude>
+							</excludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
 		<profile>
 			<id>openshift</id>
 			<properties>
@@ -291,7 +314,8 @@
 			</build>
 		</profile>
 	</profiles>
-	<build>
+    
+    <build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -304,7 +328,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<properties>
+    
+    <properties>
 		<servlet.version>4.0.0</servlet.version>
 	</properties>
 

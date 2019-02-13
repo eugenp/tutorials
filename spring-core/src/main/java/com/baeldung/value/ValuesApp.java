@@ -2,6 +2,7 @@ package com.baeldung.value;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 
@@ -45,6 +46,27 @@ public class ValuesApp {
 
     @Value("#{'${listOfValues}'.split(',')}")
     private List<String> valuesList;
+	
+    @Value("#{${valuesMap}}")
+    private Map<String, Integer> valuesMap;
+
+    @Value("#{${valuesMap}.key1}")
+    private Integer valuesMapKey1;
+
+    @Value("#{${valuesMap}['unknownKey']}")
+    private Integer unknownMapKey;
+
+    @Value("#{${unknownMap : {key1:'1', key2 : '2'}}}")
+    private Map<String, Integer> unknownMap;
+
+    @Value("#{${valuesMap}['unknownKey'] ?: 5}")
+    private Integer unknownMapKeyWithDefaultValue;
+
+    @Value("#{${valuesMap}.?[value>'1']}")
+    private Map<String, Integer> valuesMapFiltered;
+
+    @Value("#{systemProperties}")
+    private Map<String, String> systemPropertiesMap;
 
     public static void main(String[] args) {
         System.setProperty("systemValue", "Some system parameter value");
@@ -69,5 +91,12 @@ public class ValuesApp {
         System.out.println(spelSomeDefault);
         System.out.println(someBeanValue);
         System.out.println(valuesList);
+        System.out.println(valuesMap);
+        System.out.println(valuesMapKey1);
+        System.out.println(unknownMapKey);
+        System.out.println(unknownMap);
+        System.out.println(unknownMapKeyWithDefaultValue);
+        System.out.println(valuesMapFiltered);
+        System.out.println(systemPropertiesMap);
     }
 }
