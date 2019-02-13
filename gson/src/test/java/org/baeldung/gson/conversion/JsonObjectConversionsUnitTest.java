@@ -22,6 +22,8 @@ public class JsonObjectConversionsUnitTest {
         String json = "{ \"name\": \"Baeldung\", \"java\": true }";
         JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
         Assert.assertTrue(convertedObject.isJsonObject());
+        Assert.assertTrue(convertedObject.get("name").getAsString().equals("Baeldung"));
+        Assert.assertTrue(convertedObject.get("java").getAsBoolean() == true);
     }
 
 }
