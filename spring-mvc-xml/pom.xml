@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
     <version>0.1-SNAPSHOT</version>
     <artifactId>spring-mvc-xml</artifactId>
-
     <name>spring-mvc-xml</name>
     <packaging>war</packaging>
 
