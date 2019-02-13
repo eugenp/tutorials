@@ -9,65 +9,65 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-public class ConditionalAnnotationsTest {
+public class ConditionalAnnotationsUnitTest {
     @Test
     @EnabledOnOs({OS.WINDOWS, OS.MAC})
     public void shouldRunBothWindowsAndMac() {
-        //...
+        System.out.println("runs on Windows and Mac");
     }
 
     @Test
     @DisabledOnOs(OS.LINUX)
     public void shouldNotRunAtLinux() {
-        //...
+        System.out.println("will not run on Linux");
     }
 
     @Test
     @EnabledOnJre({JRE.JAVA_10, JRE.JAVA_11})
     public void shouldOnlyRunOnJava10And11() {
-        //...
+        System.out.println("runs with java 10 and 11");
     }
 
     @Test
     @DisabledOnJre(JRE.OTHER)
     public void thisTestOnlyRunsWithUpToDateJREs() {
-        // this test will only run on java8, 9, 10 and 11.
+        System.out.println("this test will only run on java8, 9, 10 and 11.");
     }
 
     @Test
     @EnabledIfSystemProperty(named = "java.vm.vendor", matches = "Oracle.*")
     public void onlyIfVendorNameStartsWithOracle() {
-        //...
+        System.out.println("runs only if vendor name starts with Oracle");
     }
 
     @Test
     @DisabledIfSystemProperty(named = "file.separator", matches = "[/]")
     public void disabledIfFileSeperatorIsSlash() {
-        //...
+        System.out.println("Will not run if file.sepeartor property is /");
     }
 
     @Test
     @EnabledIfEnvironmentVariable(named = "GDMSESSION", matches = "ubuntu")
     public void onlyRunOnUbuntuServer() {
-        //...
+        System.out.println("only runs if GDMSESSION is ubuntu");
     }
 
     @Test
     @DisabledIfEnvironmentVariable(named = "LC_TIME", matches = ".*UTF-8.")
     public void shouldNotRunWhenTimeIsNotUTF8() {
-        //...
+        System.out.println("will not run if environment variable LC_TIME is UTF-8");
     }
 
     @Test
     @EnabledIf("'FR' == systemProperty.get('user.country')")
     public void onlyFrenchPeopleWillRunThisMethod() {
-        //...
+        System.out.println("will run only if user.country is FR");
     }
 
     @Test
     @DisabledIf("java.lang.System.getProperty('os.name').toLowerCase().contains('mac')")
     public void shouldNotRunOnMacOS() {
-        //...
+        System.out.println("will not run if our os.name is mac");
     }
 
     @Test
@@ -81,15 +81,15 @@ public class ConditionalAnnotationsTest {
     },
             engine = "nashorn",
             reason = "Self-fulfilling: {result}")
-    public void thisTestsOnlyRunsAtFebruary() {
-        //...
+    public void onlyRunsInFebruary() {
+        System.out.println("this test only runs in February");
     }
 
     @Test
     @DisabledIf("systemEnvironment.get('XPC_SERVICE_NAME') != null " +
             "&& systemEnvironment.get('XPC_SERVICE_NAME').contains('intellij')")
     public void notValidForIntelliJ() {
-        //this method will not run on intelliJ
+        System.out.println("this test will run if our ide is INTELLIJ");
     }
 
     @Target(ElementType.METHOD)
@@ -102,7 +102,7 @@ public class ConditionalAnnotationsTest {
 
     @ThisTestWillOnlyRunAtLinuxAndMacWithJava9Or10Or11
     public void someSuperTestMethodHere() {
-        //this method will run with java9, 10, 11 and Linux or macOS.
+        System.out.println("this method will run with java9, 10, 11 and Linux or macOS.");
     }
 
     @Target(ElementType.METHOD)
