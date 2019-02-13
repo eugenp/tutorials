@@ -20,48 +20,27 @@ public class ArraySortBenchmark {
     @State(Scope.Thread)
     public static class Initialize {
 
-        int iterations = 1000;
-
-        String[] array = new String[iterations];
-        List<String> list = new ArrayList<>();
-
-        int[] intArray = new int[iterations];
-        List<Integer> integerList = new ArrayList<>();
+        String[] words = {"Java", "Baeldung", "Tutorial"};
+        List<String> wordList = new ArrayList<>();
 
         @Setup(Level.Trial)
         public void setUp() {
-            for (int i = 0; i < iterations; i++) {
-                array[i] = i + "";
-                list.add(i + "");
-
-                intArray[i] = i;
-                integerList.add(i);
-            }
+            wordList.add("Java");
+            wordList.add("Baeldung");
+            wordList.add("Tutorial");
         }
     }
 
     @Benchmark
     public String[] benchmarkArraysSort(ArraySortBenchmark.Initialize state) {
-        Arrays.sort(state.array);
-        return state.array;
+        Arrays.sort(state.words);
+        return state.words;
     }
 
     @Benchmark
     public List<String> benchmarkCollectionsSort(ArraySortBenchmark.Initialize state) {
-        Collections.sort(state.list);
-        return state.list;
-    }
-
-    @Benchmark
-    public int[] benchmarkArraysSortInt(ArraySortBenchmark.Initialize state) {
-        Arrays.sort(state.intArray);
-        return state.intArray;
-    }
-
-    @Benchmark
-    public List<Integer> benchmarkCollectionsSortInteger(ArraySortBenchmark.Initialize state) {
-        Collections.sort(state.integerList);
-        return state.integerList;
+        Collections.sort(state.wordList);
+        return state.wordList;
     }
 
     public static void main(String[] args) throws Exception {
