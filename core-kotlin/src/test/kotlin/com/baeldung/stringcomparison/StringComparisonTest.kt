@@ -7,8 +7,8 @@ import kotlin.test.assertTrue
 class StringComparisonUnitTest {
 
 	@Test
-	fun compareUsingEqualsOperator() {
-		val first = "kotlin"
+	fun `compare using equals operator`() {
+	    val first = "kotlin"
 		val second = "kotlin"
 		val firstCapitalized = "KOTLIN"
 		assertTrue { first == second }
@@ -16,7 +16,7 @@ class StringComparisonUnitTest {
 	}
 
 	@Test
-	fun compareUsingReferencialEqualsOperator() {
+	fun `compare using referential equals operator`() {
 		val first = "kotlin"
 		val second = "kotlin"
 		val firstBuildAgain = buildString { "kotlin" }
@@ -25,7 +25,7 @@ class StringComparisonUnitTest {
 	}
 
 	@Test
-	fun compareUsingEqualsMethod() {
+	fun `compare using equals method`() {
 		val first = "kotlin"
 		val second = "kotlin"
 		val firstCapitalized = "KOTLIN"
@@ -35,7 +35,7 @@ class StringComparisonUnitTest {
 	}
 
 	@Test
-	fun compareUsingCompareToMethod() {
+	fun `compare using compare method`() {
 		val first = "kotlin"
 		val second = "kotlin"
 		val firstCapitalized = "KOTLIN"
