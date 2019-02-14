@@ -8,7 +8,7 @@ class StringComparisonUnitTest {
 
 	@Test
 	fun `compare using equals operator`() {
-	    val first = "kotlin"
+		val first = "kotlin"
 		val second = "kotlin"
 		val firstCapitalized = "KOTLIN"
 		assertTrue { first == second }
