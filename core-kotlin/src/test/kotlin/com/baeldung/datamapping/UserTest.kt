@@ -8,7 +8,7 @@ class UserTest {
 
     @Test
     fun `maps User to UserResponse using extension function`() {
-		val p = buildUser()
+	val p = buildUser()
         val view = p.toUserView()
         assertUserView(view)
     }
