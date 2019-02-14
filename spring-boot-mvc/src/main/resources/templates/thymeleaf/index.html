@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Access Spring MVC params</title>
 <script src="/js/jquery.js"></script>
 <script src="/js/script-async.js"></script>
 <script src="/js/script-async-jquery.js"></script>
 <script>
-	var number = <c:out value="${number}"></c:out>;
-	var message = "<c:out value="${message}"></c:out>";
+	var number = [[${number}]];
+	var message = "[[${message}]]";
 </script>
 </head>
 <body>
-	Number=${number}
-	<br /> Message=${message}
+	Number=
+	<span th:text="${number}" th:remove="tag"></span>
+	<br /> Message=
+	<span th:text="${message}" th:remove="tag"></span>
 	<h2>Data from the external JS file (due to loading order)</h2>
 	<div id="number-ext"></div>
 	<div id="message-ext"></div>
