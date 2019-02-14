@@ -1,0 +1,47 @@
+package com.baeldung.stringcomparison
+
+import org.junit.Test
+import kotlin.test.assertFalse
+import kotlin.test.assertTrue
+
+class StringComparisonUnitTest {
+
+	@Test
+	fun compareUsingEqualsOperator() {
+		val first = "kotlin"
+		val second = "kotlin"
+		val firstCapitalized = "KOTLIN"
+		assertTrue { first == second }
+		assertFalse { first == firstCapitalized }
+	}
+
+	@Test
+	fun compareUsingReferencialEqualsOperator() {
+		val first = "kotlin"
+		val second = "kotlin"
+		val firstBuildAgain = buildString { "kotlin" }
+		assertTrue { first === second }
+		assertFalse { first === firstBuildAgain }
+	}
+
+	@Test
+	fun compareUsingEqualsMethod() {
+		val first = "kotlin"
+		val second = "kotlin"
+		val firstCapitalized = "KOTLIN"
+		assertTrue { first.equals(second) }
+		assertFalse { first.equals(firstCapitalized) }
+		assertTrue { first.equals(firstCapitalized, true) }
+	}
+
+	@Test
+	fun compareUsingCompareToMethod() {
+		val first = "kotlin"
+		val second = "kotlin"
+		val firstCapitalized = "KOTLIN"
+		assertTrue { first.compareTo(second) == 0 }
+		assertTrue { first.compareTo(firstCapitalized) == 32 }
+		assertTrue { firstCapitalized.compareTo(first) == -32 }
+		assertTrue { first.compareTo(firstCapitalized, true) == 0 }
+	}
+}
