@@ -1,7 +1,7 @@
 package com.baeldung.notekeeper.adapter.notifier;
 
 import com.baeldung.notekeeper.core.model.Note;
-import com.baeldung.notekeeper.core.notifier.NoteNotifier;
+import com.baeldung.notekeeper.core.port.notifier.NoteNotifier;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 

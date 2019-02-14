@@ -1,12 +1,18 @@
 package com.baeldung.notekeeper;
 
+import com.baeldung.notekeeper.adapter.handler.BatchNoteKeeperHandler;
 import com.baeldung.notekeeper.core.model.Note;
-import com.baeldung.notekeeper.core.service.NoteKeeperService;
+import com.baeldung.notekeeper.core.port.handler.NoteKeeperHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @SpringBootApplication
 public class NoteKeeperApplication {
@@ -14,16 +20,19 @@ public class NoteKeeperApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = SpringApplication.run(NoteKeeperApplication.class, args);
 
-        NoteKeeperService noteKeeperService = ctx.getBean(NoteKeeperService.class);
+        // Primary adapter
+        BatchNoteKeeperHandler batchHandler = ctx.getBean(BatchNoteKeeperHandler.class);
 
-        // Add new note
-        Note helloWorldNote = noteKeeperService.create("Hello World!");
+        // Add new notes
+        Collection<Note> notes = batchHandler.createNotes(Arrays.asList("first", "second", "third"));
 
-        // Get previously added note
-        Optional<Note> note = noteKeeperService.getNote(helloWorldNote.getId());
+        // Get saved notes' ids
+        List<Long> savedNotesIds = notes.stream()
+                .map(n -> n.getId())
+                .collect(Collectors.toList());
 
-        System.out.println("Got: " + note.get());
-
+        // Get saved notes
+        Collection<Note> retrievedNotes = batchHandler.getNotes(savedNotesIds);
     }
 
 }

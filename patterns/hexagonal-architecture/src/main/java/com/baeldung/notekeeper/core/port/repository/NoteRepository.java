@@ -1,4 +1,4 @@
-package com.baeldung.notekeeper.core.repository;
+package com.baeldung.notekeeper.core.port.repository;
 
 import com.baeldung.notekeeper.core.model.Note;
 

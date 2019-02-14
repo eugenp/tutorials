@@ -1,7 +1,7 @@
 package com.baeldung.notekeeper.adapter.repository;
 
 import com.baeldung.notekeeper.core.model.Note;
-import com.baeldung.notekeeper.core.repository.NoteRepository;
+import com.baeldung.notekeeper.core.port.repository.NoteRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

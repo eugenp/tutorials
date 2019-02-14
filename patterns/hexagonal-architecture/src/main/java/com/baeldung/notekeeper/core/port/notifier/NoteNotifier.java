@@ -1,4 +1,4 @@
-package com.baeldung.notekeeper.core.notifier;
+package com.baeldung.notekeeper.core.port.notifier;
 
 import com.baeldung.notekeeper.core.model.Note;
 
