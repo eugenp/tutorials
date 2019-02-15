@@ -6,20 +6,20 @@ import java.util.Scanner;
 
 public class ConsoleAdapter {
 
-        private final WeatherQuery weatherQuery;
+    private final WeatherQuery weatherQuery;
 
-        public ConsoleAdapter(WeatherQuery weatherQuery) {
-                this.weatherQuery = weatherQuery;
-        }
+    public ConsoleAdapter(WeatherQuery weatherQuery) {
+        this.weatherQuery = weatherQuery;
+    }
 
-        public void start() {
-                System.out.println("Please enter a city");
+    public void start() {
+        System.out.println("Please enter a city");
 
-                Scanner console = new Scanner(System.in);
-                String city = console.next();
+        Scanner console = new Scanner(System.in);
+        String city = console.next();
 
-                WeatherStatus weatherStatus = weatherQuery.query(city);
+        WeatherStatus weatherStatus = weatherQuery.query(city);
 
-                System.out.println(weatherStatus);
-        }
+        System.out.println(weatherStatus);
+    }
 }

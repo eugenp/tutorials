@@ -9,13 +9,13 @@ import java.io.IOException;
 
 public class Application {
 
-        public static void main(String[] args) throws IOException {
-                TemperatureRepository temperatureRepository = new TemperatureRepositoryAdapter();
+    public static void main(String[] args) throws IOException {
+        TemperatureRepository temperatureRepository = new TemperatureRepositoryAdapter();
 
-                WeatherQuery weatherQuery = new DefaultWeatherQuery(temperatureRepository);
+        WeatherQuery weatherQuery = new DefaultWeatherQuery(temperatureRepository);
 
-                ConsoleAdapter consoleAdapter = new ConsoleAdapter(weatherQuery);
+        ConsoleAdapter consoleAdapter = new ConsoleAdapter(weatherQuery);
 
-                consoleAdapter.start();
-        }
+        consoleAdapter.start();
+    }
 }
