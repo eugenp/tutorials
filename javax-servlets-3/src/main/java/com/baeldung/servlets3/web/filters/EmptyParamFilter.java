@@ -8,9 +8,8 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebFilter(servletNames = { "uppercaseServlet" }, filterName = "emptyParamFilter")
+@WebFilter(servletNames = { "uppercaseServlet" }, urlPatterns = "/uppercase")
 public class EmptyParamFilter implements Filter {
 
     @Override
@@ -22,19 +21,11 @@ public class EmptyParamFilter implements Filter {
         FilterChain filterChain) throws IOException, ServletException {
         String inputString = servletRequest.getParameter("input");
 
-        if (inputString == null || inputString.isEmpty()) {
-            response(servletResponse);
-        } else {
+        if (inputString != null && inputString.matches("[A-Za-z0-9]+")) {
             filterChain.doFilter(servletRequest, servletResponse);
+        } else {
+            servletResponse.getWriter().println("Missing input parameter");
         }
-    }
-
-    private void response(ServletResponse response) throws IOException {
-        response.setContentType("text/html");
-
-        PrintWriter out = response.getWriter();
-
-        out.println("Missing input parameter");
     }
 
     @Override

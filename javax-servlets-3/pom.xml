@@ -31,6 +31,7 @@
         <spring.version>5.1.3.RELEASE</spring.version>
     </properties>
     <build>
+        <finalName>uppercasing-app</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
