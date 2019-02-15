@@ -6,7 +6,7 @@
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd"
 >
 
-    <context:component-scan base-package="org.baeldung.web" />
+    <context:component-scan base-package="com.baeldung.sampleapp.web" />
 
     <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager" >
         <mvc:message-converters register-defaults="true">
@@ -19,13 +19,11 @@
 		    </bean> 
             -->     
            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-           <bean class="org.baeldung.config.converter.KryoHttpMessageConverter"/>  
-           <bean class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>         
-        </mvc:message-converters>
+<!-- <bean class="org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter"/>         -->      
+  </mvc:message-converters>
     </mvc:annotation-driven>
     
     <bean id="xstreamMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller" />
-    
     <!--  -->
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />

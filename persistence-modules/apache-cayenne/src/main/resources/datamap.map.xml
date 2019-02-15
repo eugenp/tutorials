@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/9/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/9/modelMap http://cayenne.apache.org/schema/9/modelMap.xsd"
+	 project-version="9">
+	<property name="defaultPackage" value="com.baeldung.apachecayenne.persistent"/>
+	<db-entity name="article" catalog="intro_cayenne">
+		<db-attribute name="author_id" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="content" type="VARCHAR" isMandatory="true" length="254"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="10"/>
+		<db-attribute name="title" type="VARCHAR" isMandatory="true" length="254"/>
+	</db-entity>
+	<db-entity name="author" catalog="intro_cayenne">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true" length="10"/>
+		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="254"/>
+	</db-entity>
+	<obj-entity name="Article" className="com.baeldung.apachecayenne.persistent.Article" dbEntityName="article">
+		<obj-attribute name="content" type="java.lang.String" db-attribute-path="content"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+	</obj-entity>
+	<obj-entity name="Author" className="com.baeldung.apachecayenne.persistent.Author" dbEntityName="author">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<db-relationship name="author" source="article" target="author" toMany="false">
+		<db-attribute-pair source="author_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="articles" source="author" target="article" toMany="true">
+		<db-attribute-pair source="id" target="author_id"/>
+	</db-relationship>
+	<obj-relationship name="author" source="Article" target="Author" deleteRule="Nullify" db-relationship-path="author"/>
+	<obj-relationship name="articles" source="Author" target="Article" deleteRule="Deny" db-relationship-path="articles"/>
+</data-map>

@@ -20,14 +20,11 @@ public class JsonCreatorUnitTest {
     public void whenDeserializingUsingJsonCreator_thenCorrect() throws IOException {
 
         // arrange
-        String authorJson =
-                "{" +
-                "    \"christianName\": \"Alex\"," +
-                "    \"surname\": \"Theedom\"" +
-                "}";
+        String authorJson = "{" + "    \"christianName\": \"Alex\"," + "    \"surname\": \"Theedom\"" + "}";
 
         // act
-        final Author author = new ObjectMapper().readerFor(Author.class).readValue(authorJson);
+        final Author author = new ObjectMapper().readerFor(Author.class)
+            .readValue(authorJson);
 
         // assert
         assertThat(from(authorJson).getString("christianName")).isEqualTo(author.getFirstName());

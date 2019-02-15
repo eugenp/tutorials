@@ -6,12 +6,9 @@ import net.thucydides.core.annotations.Step;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-/**
- * @author aiet
- */
 public class MemberStatusSteps {
 
-    Member member;
+    private Member member;
 
     @Step("Given a member has {0} points")
     public void aMemberHasPointsOf(int points) {
@@ -35,8 +32,8 @@ public class MemberStatusSteps {
 
     @Pending
     @Step("When the member exchange {}")
-    public void aMemberExchangeA(Commodity commodity){
-        //TODO
+    public void aMemberExchangeA(Commodity commodity) {
+        // TODO
     }
 
     @Pending

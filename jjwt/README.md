@@ -43,3 +43,7 @@ Available commands (assumes httpie - https://github.com/jkbrzt/httpie):
 ```
 
 The Baeldung post that compliments this repo can be found [here](http://www.baeldung.com/)
+
+## Relevant articles:
+
+- [Supercharge Java Authentication with JSON Web Tokens (JWTs)](http://www.baeldung.com/java-json-web-tokens-jjwt)

@@ -7,22 +7,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.Computer;
 import org.junit.runner.JUnitCore;
 
-public class Spring5JUnit5ParallelIntegrationTest {
+class Spring5JUnit5ParallelIntegrationTest {
 
     @Test
-    public void givenTwoTestClasses_whenJUnitRunParallel_thenTheTestsExecutingParallel() {
-        final Class<?>[] classes = {
-          Example1IntegrationTest.class, Example2IntegrationTest.class
-        };
+    void givenTwoTestClasses_whenJUnitRunParallel_thenTheTestsExecutingParallel() {
+        final Class<?>[] classes = { Example1IntegrationTest.class, Example2IntegrationTest.class };
 
         JUnitCore.runClasses(new ParallelComputer(true, true), classes);
     }
 
     @Test
-    public void givenTwoTestClasses_whenJUnitRunParallel_thenTheTestsExecutingLinear() {
-        final Class<?>[] classes = {
-          Example1IntegrationTest.class, Example2IntegrationTest.class
-        };
+    void givenTwoTestClasses_whenJUnitRunParallel_thenTheTestsExecutingLinear() {
+        final Class<?>[] classes = { Example1IntegrationTest.class, Example2IntegrationTest.class };
 
         JUnitCore.runClasses(new Computer(), classes);
     }

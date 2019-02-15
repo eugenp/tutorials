@@ -9,7 +9,7 @@ public class IdleConnectionMonitorThread extends Thread {
     private final HttpClientConnectionManager connMgr;
     private volatile boolean shutdown;
 
-    public IdleConnectionMonitorThread(final PoolingHttpClientConnectionManager connMgr) {
+    IdleConnectionMonitorThread(final PoolingHttpClientConnectionManager connMgr) {
         super();
         this.connMgr = connMgr;
     }
@@ -31,7 +31,7 @@ public class IdleConnectionMonitorThread extends Thread {
         }
     }
 
-    public final void shutdown() {
+    private void shutdown() {
         shutdown = true;
         synchronized (this) {
             notifyAll();

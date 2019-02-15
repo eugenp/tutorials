@@ -12,7 +12,7 @@ import com.baeldung.xml.binding.Tutorial;
 
 public class StaxParserUnitTest {
 
-    final String fileName = "src/test/resources/example.xml";
+    final String fileName = "src/test/resources/example_stax.xml";
 
     StaxParser parser;
 

@@ -1,10 +1,10 @@
 package com.baeldung.jsonpath.introduction;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.not;
-
+import com.jayway.jsonpath.Criteria;
+import com.jayway.jsonpath.DocumentContext;
+import com.jayway.jsonpath.Filter;
+import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.Predicate;
 import org.junit.Test;
 
 import java.io.InputStream;
@@ -12,15 +12,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import com.jayway.jsonpath.Criteria;
-import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.Filter;
-import com.jayway.jsonpath.JsonPath;
-import com.jayway.jsonpath.Predicate;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class OperationIntegrationTest {
-    InputStream jsonInputStream = this.getClass().getClassLoader().getResourceAsStream("intro_api.json");
-    String jsonDataSourceString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z").next();
+    private InputStream jsonInputStream = this.getClass()
+        .getClassLoader()
+        .getResourceAsStream("intro_api.json");
+    private String jsonDataSourceString = new Scanner(jsonInputStream, "UTF-8").useDelimiter("\\Z")
+        .next();
 
     @Test
     public void givenJsonPathWithoutPredicates_whenReading_thenCorrect() {
@@ -39,26 +41,27 @@ public class OperationIntegrationTest {
 
     @Test
     public void givenJsonPathWithFilterPredicate_whenReading_thenCorrect() {
-        Filter expensiveFilter = Filter.filter(Criteria.where("price").gt(20.00));
-        List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString).read("$['book'][?]", expensiveFilter);
+        Filter expensiveFilter = Filter.filter(Criteria.where("price")
+            .gt(20.00));
+        List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString)
+            .read("$['book'][?]", expensiveFilter);
         predicateUsageAssertionHelper(expensive);
     }
 
     @Test
     public void givenJsonPathWithCustomizedPredicate_whenReading_thenCorrect() {
-        Predicate expensivePredicate = new Predicate() {
-            public boolean apply(PredicateContext context) {
-                String value = context.item(Map.class).get("price").toString();
-                return Float.valueOf(value) > 20.00;
-            }
-        };
-        List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString).read("$['book'][?]", expensivePredicate);
+        Predicate expensivePredicate = context -> Float.valueOf(context.item(Map.class)
+            .get("price")
+            .toString()) > 20.00;
+        List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString)
+            .read("$['book'][?]", expensivePredicate);
         predicateUsageAssertionHelper(expensive);
     }
 
     @Test
     public void givenJsonPathWithInlinePredicate_whenReading_thenCorrect() {
-        List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString).read("$['book'][?(@['price'] > $['price range']['medium'])]");
+        List<Map<String, Object>> expensive = JsonPath.parse(jsonDataSourceString)
+            .read("$['book'][?(@['price'] > $['price range']['medium'])]");
         predicateUsageAssertionHelper(expensive);
     }
 

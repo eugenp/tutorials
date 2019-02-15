@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class JaxenDemoUnitTest {
 
-    final String fileName = "src/test/resources/example.xml";
+    final String fileName = "src/test/resources/example_jaxen.xml";
 
     JaxenDemo jaxenDemo;
 

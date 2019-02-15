@@ -21,10 +21,10 @@ public class JsonCreatorUnitTest {
 
         // arrange
         String authorJson =
-                "{" +
-                "    \"christianName\": \"Alex\"," +
-                "    \"surname\": \"Theedom\"" +
-                "}";
+          "{" +
+            "    \"christianName\": \"Alex\"," +
+            "    \"surname\": \"Theedom\"" +
+            "}";
 
         // act
         final Author author = new ObjectMapper().readerFor(Author.class).readValue(authorJson);

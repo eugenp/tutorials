@@ -20,17 +20,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic()
-            .disable()
+        http
         .authorizeRequests()
             .regexMatchers("^/ratings\\?bookId.*$").authenticated()
             .antMatchers(HttpMethod.POST,"/ratings").authenticated()
             .antMatchers(HttpMethod.PATCH,"/ratings/*").hasRole("ADMIN")
             .antMatchers(HttpMethod.DELETE,"/ratings/*").hasRole("ADMIN")
             .antMatchers(HttpMethod.GET,"/ratings").hasRole("ADMIN")
+            .antMatchers(HttpMethod.GET,"/hystrix").authenticated()
             .anyRequest().authenticated()
             .and()
+         .httpBasic().and()   
         .csrf()
             .disable();
+       
+        
     }
 }

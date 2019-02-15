@@ -22,8 +22,8 @@ public class JsonPropertyUnitTest {
 
         // arrange
         Book book = new Book(
-                "Design Patterns: Elements of Reusable Object-oriented Software",
-                new Author("The", "GoF")
+          "Design Patterns: Elements of Reusable Object-oriented Software",
+          new Author("The", "GoF")
         );
         book.configureBinding("Hardback");
 

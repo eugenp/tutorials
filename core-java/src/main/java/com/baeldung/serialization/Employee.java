@@ -1,4 +1,4 @@
-package com.baeuldung.serialization;
+package com.baeldung.serialization;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

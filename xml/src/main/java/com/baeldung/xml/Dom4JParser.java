@@ -82,7 +82,7 @@ public class Dom4JParser {
                     title.setText(title.getText() + " updated");
                 }
             }
-            XMLWriter writer = new XMLWriter(new FileWriter(new File("src/test/resources/example_updated.xml")));
+            XMLWriter writer = new XMLWriter(new FileWriter(new File("src/test/resources/example_dom4j_updated.xml")));
             writer.write(document);
             writer.close();
         } catch (DocumentException e) {
@@ -110,7 +110,7 @@ public class Dom4JParser {
             tutorialElement.addElement("author").addText("Dom4J tech writer");
 
             OutputFormat format = OutputFormat.createPrettyPrint();
-            XMLWriter writer = new XMLWriter(new FileWriter(new File("src/test/resources/example_new.xml")), format);
+            XMLWriter writer = new XMLWriter(new FileWriter(new File("src/test/resources/example_dom4j_new.xml")), format);
             writer.write(document);
             writer.close();
         } catch (IOException e) {

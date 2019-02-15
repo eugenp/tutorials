@@ -17,7 +17,7 @@ public class DataProducerController {
         return "Hello world";
     }
 
-    @GetMapping(value = "/get-image")
+    @GetMapping("/get-image")
     public @ResponseBody byte[] getImage() throws IOException {
         final InputStream in = getClass().getResourceAsStream("/com/baeldung/produceimage/image.jpg");
         return IOUtils.toByteArray(in);

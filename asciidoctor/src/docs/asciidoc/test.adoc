@@ -1,0 +1,13 @@
+:icons: font
+
+
+= Generating book with AsciiDoctorj
+Baeldung
+
+[abstract]
+This is the actual content.
+
+== First Section
+
+This is first section of the book where you can include some nice icons like icon:comment[].
+You can also create http://www.baeldung.com[links]

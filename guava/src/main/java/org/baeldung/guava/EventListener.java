@@ -28,11 +28,11 @@ public class EventListener {
         eventsHandled++;
     }
 
-    public int getEventsHandled() {
+    int getEventsHandled() {
         return eventsHandled;
     }
 
-    public void resetEventsHandled() {
+    void resetEventsHandled() {
         eventsHandled = 0;
     }
 }

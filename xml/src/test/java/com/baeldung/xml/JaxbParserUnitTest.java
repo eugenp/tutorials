@@ -11,7 +11,7 @@ import com.baeldung.xml.binding.Tutorials;
 
 public class JaxbParserUnitTest {
 
-    final String fileName = "src/test/resources/example.xml";
+    final String fileName = "src/test/resources/example_jaxb.xml";
 
     JaxbParser parser;
 
@@ -27,7 +27,7 @@ public class JaxbParserUnitTest {
 
     @Test
     public void createNewDocumentTest() {
-        File newFile = new File("src/test/resources/example_new.xml");
+        File newFile = new File("src/test/resources/example_jaxb_new.xml");
         parser = new JaxbParser(newFile);
         parser.createNewDocument();
 

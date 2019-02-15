@@ -1,6 +1,5 @@
 package com.baeldung.jupiter;
 
-import com.baeldung.web.reactive.Task;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +15,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class Spring5JUnit5ComposedAnnotationIntegrationTest {
 
     @Autowired
-    Task task;
+    private Task task;
 
     @Autowired
-    List<Task> tasks;
+    private List<Task> tasks;
 
     @Test
     @DisplayName("ApplicationContext injected into method")
