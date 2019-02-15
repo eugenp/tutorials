@@ -31,7 +31,7 @@ public class PrimitivesListPerformance {
     }
 
     @Benchmark
-    public boolean addTIntList() {
+    public boolean addTroveIntList() {
         return tList.add(getValue);
     }
 
@@ -51,7 +51,7 @@ public class PrimitivesListPerformance {
     }
 
     @Benchmark
-    public int getTIntList() {
+    public int getTroveIntList() {
         return tList.get(getValue);
     }
 
@@ -71,7 +71,7 @@ public class PrimitivesListPerformance {
     }
 
     @Benchmark
-    public boolean containsTIntList() {
+    public boolean containsTroveIntList() {
         return tList.contains(getValue);
     }
 
