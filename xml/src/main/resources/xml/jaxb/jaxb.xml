@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xmlexample>
     <ancestor>
-        <descedantOne>Yo</descedantOne>
-        <descedantTwo>
+        <descendantOne>Yo</descendantOne>
+        <descendantTwo>
             <descendantThree>
                 DustyOrb
             </descendantThree>
-        </descedantTwo>
+        </descendantTwo>
     </ancestor>
 </xmlexample>

@@ -1,12 +1,5 @@
-package com.baeldung.xmlhtml.pojo.jaxb.html.elements;
+package com.baeldung.xmlhtml.pojo.stax;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
-@XmlRootElement
 public class Body {
 
     private CustomElement customElement;
@@ -14,8 +7,6 @@ public class Body {
     public CustomElement getCustomElement() {
         return customElement;
     }
-
-    @XmlElement(name = "p")
     public void setCustomElement(CustomElement customElement) {
         this.customElement = customElement;
     }
@@ -25,8 +16,6 @@ public class Body {
     public NestedElement getNestedElement() {
         return nestedElement;
     }
-
-    @XmlElement(name = "div")
     public void setNestedElement(NestedElement nestedElement) {
         this.nestedElement = nestedElement;
     }

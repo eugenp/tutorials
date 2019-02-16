@@ -1,21 +1,17 @@
 package com.baeldung.xmlhtml.helpers.jaxb;
 
-import com.baeldung.xmlhtml.pojo.jaxb.html.FullHTML;
-import com.baeldung.xmlhtml.pojo.jaxb.html.SimpleHTML;
-import com.baeldung.xmlhtml.pojo.jaxb.html.elements.Ancestor;
+import com.baeldung.xmlhtml.pojo.jaxb.html.ExampleHTML;
 import com.baeldung.xmlhtml.pojo.jaxb.html.elements.Body;
-import com.baeldung.xmlhtml.pojo.jaxb.html.elements.Descendant;
+import com.baeldung.xmlhtml.pojo.jaxb.html.elements.CustomElement;
 import com.baeldung.xmlhtml.pojo.jaxb.html.elements.Meta;
-import com.baeldung.xmlhtml.pojo.jaxb.xml.XmlFull;
-import com.baeldung.xmlhtml.pojo.jaxb.xml.XmlSimple;
+import com.baeldung.xmlhtml.pojo.jaxb.html.elements.NestedElement;
+import com.baeldung.xmlhtml.pojo.jaxb.xml.XMLExample;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 import static com.baeldung.xmlhtml.Constants.*;
 
@@ -51,6 +47,8 @@ public class JAXBHelper {
             JAXBContext context = JAXBContext.newInstance(clazz);
             marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            //https://stackoverflow.com/questions/277996/remove-standalone-yes-from-generated-xml
+            marshaller.setProperty("jaxb.fragment", Boolean.TRUE);
         } catch (Exception ex) {
             System.out.println(EXCEPTION_ENCOUNTERED + ex);
         }
@@ -58,12 +56,7 @@ public class JAXBHelper {
         return marshaller;
     }
 
-    /**
-     * This example demonstrates unmarshalling from an example XmlFull and marshalling
-     * to a shortened but valid HTML5 document.
-     */
-
-    public static void simple() {
+    public static void example() {
 
         try {
 
@@ -71,77 +64,43 @@ public class JAXBHelper {
              *   Cast to desired POJO.
              */
 
-            XmlSimple xml = (XmlSimple) getContextUnmarshaller(XmlSimple.class).unmarshal(new File(JAXB_SIMPLE_IN));
-            print(xml.toString());
-            print(xml.getAncestor().get(0).toString());
+            XMLExample xml = (XMLExample) JAXBHelper.getContextUnmarshaller(XMLExample.class).unmarshal(new File(JAXB_FILE_IN));
+            JAXBHelper.print(xml.toString());
+            //JAXBHelper.print(xml.getAncestor().getDescendantOne().getValue());
+            //JAXBHelper.print(xml.getAncestor().getDescendantTwo().getDescendantThree().getValue());
 
             /**
              * Transfer exchanged to writeable POJO.
              */
 
-            SimpleHTML html = new SimpleHTML();
-            List<Descendant> ancestor = new ArrayList<>();
-            ancestor.add(xml.getAncestor().get(0));
-            html.setAncestor(ancestor);
+            ExampleHTML html = new ExampleHTML();
 
-            /**
-             * Marshall into XML (HTML).
-             */
+            Body body = new Body();
+            CustomElement customElement = new CustomElement();
+            NestedElement nested = new NestedElement();
+            CustomElement child = new CustomElement();
 
-            getContextMarshaller(SimpleHTML.class).marshal(html, new File(JAXB_SIMPLE_OUT));
+            customElement.setValue("descendantOne: " + xml.getAncestor().getDescendantOne().getValue());
+            child.setValue("descendantThree: " + xml.getAncestor().getDescendantTwo().getDescendantThree().getValue());
+            nested.setCustomElement(child);
 
-        } catch (Exception ex) {
-            System.out.println(EXCEPTION_ENCOUNTERED + ex);
-        }
-
-    }
-
-    /**
-     * This example demonstrates unmarshalling from an example XmlFull and marshalling
-     * to a full, semantically valid, HTML5 document.
-     */
-
-    public static void full() {
-
-        try {
-
-            /**
-             *   Cast to desired POJO.
-             */
-
-            XmlFull xml = (XmlFull) getContextUnmarshaller(XmlFull.class).unmarshal(new File(JAXB_FULL_IN));
-            print(xml.toString());
-            print(xml.getAncestor().toString());
-            print(xml.getAncestor().getDescendant().toString());
-            print(xml.getCustomElement().toString());
-
-            /**
-             * Transfer exchanged to writeable POJO.
-             */
-
-            FullHTML html = new FullHTML();
+            body.setCustomElement(customElement);
+            body.setNestedElement(nested);
 
             Meta meta = new Meta();
             meta.setTitle("example");
             html.getHead().add(meta);
-
-            Body body = new Body();
-            body.setAncestor(xml.getAncestor());
-            body.setCustomElement(xml.getCustomElement());
-            body.setTitle("example");
-
             html.setBody(body);
 
             /**
              * Marshall into XML (HTML).
              */
 
-            getContextMarshaller(FullHTML.class).marshal(html, new File(JAXB_FULL_OUT));
+            JAXBHelper.getContextMarshaller(ExampleHTML.class).marshal(html, new File(JAXB_FILE_OUT));
 
         } catch (Exception ex) {
             System.out.println(EXCEPTION_ENCOUNTERED + ex);
         }
-
 
     }
 

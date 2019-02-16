@@ -11,16 +11,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
 @XmlRootElement
-public class Ancestor {
+public class NestedElement {
 
-    private Descendant descendant;
+    private CustomElement customElement;
 
-    public Descendant getDescendant() {
-        return descendant;
+    public CustomElement getCustomElement() {
+        return customElement;
     }
 
-    @XmlElement(name = "Descendant")
-    public void setDescendant(Descendant descendant) {
-        this.descendant = descendant;
+    @XmlElement(name = "p")
+    public void setCustomElement(CustomElement customElement) {
+        this.customElement = customElement;
     }
 }

@@ -1,10 +1,9 @@
 package com.baeldung.xmlhtml.helpers;
 
+
 import com.baeldung.xmlhtml.helpers.jaxb.JAXBHelper;
 import com.baeldung.xmlhtml.helpers.jaxp.JAXPHelper;
-
-import static com.baeldung.xmlhtml.Constants.JAXB_FULL_OUT;
-import static com.baeldung.xmlhtml.Constants.JAXB_SIMPLE_OUT;
+import com.baeldung.xmlhtml.helpers.stax.STAXHelper;
 
 /**
  * @author Adam In Tae Gerard
@@ -16,11 +15,13 @@ public class XMLRunner {
 
 	public static void doWork() {
 
-		JAXBHelper.simple();
-		JAXBHelper.full();
+		JAXBHelper.example();
 
 		JAXPHelper.saxParser();
 		JAXPHelper.documentBuilder();
+
+        STAXHelper.write(STAXHelper.read());
+
 	}
 
 }

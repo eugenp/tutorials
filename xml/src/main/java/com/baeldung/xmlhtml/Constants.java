@@ -10,13 +10,17 @@ public class Constants {
      * File-related constants.
      */
 
-    public static final String JAXB_FULL_IN = "src/main/resources/xml/jaxb_full/jaxb_in.xml";
-    public static final String JAXB_FULL_OUT = "src/main/resources/xml/jaxb_full/jaxb_out.html";
-    public static final String JAXB_SIMPLE_IN = "src/main/resources/xml/jaxb_simple/jaxb_in.xml";
-    public static final String JAXB_SIMPLE_OUT = "src/main/resources/xml/jaxb_simple/jaxb_out.html";
+    public static final String JAXB_FILE_IN = "src/main/resources/xml/jaxb/jaxb.xml";
+    public static final String JAXB_FILE_OUT = "src/main/resources/xml/jaxb/jaxb.html";
 
-    public static final String JAXP_FILE_IN = "src/main/resources/xml/jaxp/jaxp_in.xml";
-    public static final String JAXP_FILE_OUT = "src/main/resources/xml/jaxp/jaxp_out.html";
+    public static final String JAXP_FILE_IN = "src/main/resources/xml/jaxp/jaxp.xml";
+    public static final String JAXP_FILE_OUT = "src/main/resources/xml/jaxp/jaxp.html";
+
+    public static final String STAX_FILE_IN = "src/main/resources/xml/stax/stax.xml";
+    public static final String STAX_FILE_OUT = "src/main/resources/xml/stax/stax.html";
+
+    public static final String XPATH_FILE_IN = "src/main/resources/xml/xpath/xpath.xml";
+    public static final String XPATH_FILE_OUT = "src/main/resources/xml/xpath/xpath.html";
 
     /**
      * Generic exceptions  constants.
@@ -40,4 +44,10 @@ public class Constants {
     public static final String ELEMENT_START = "Element parsing has begun!";
     public static final String ELEMENT_END = "Element parsing has ended!";
 
+    /**
+     * STAX prefixes.
+     */
+
+    public static final String BREAK = "\n";
+    public static final String TAB = "\t";
 }

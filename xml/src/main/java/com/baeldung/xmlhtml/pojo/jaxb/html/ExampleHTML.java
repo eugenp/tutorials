@@ -1,5 +1,7 @@
 package com.baeldung.xmlhtml.pojo.jaxb.html;
 
+
+
 import com.baeldung.xmlhtml.pojo.jaxb.html.elements.Body;
 import com.baeldung.xmlhtml.pojo.jaxb.html.elements.Meta;
 
@@ -10,28 +12,13 @@ import java.util.List;
 /**
  * @author Adam I. Gerard
  *
- * FullHTML POJO.
- */
-
-/**
- * @XmlAccessorType - Specifies whether the fields are
- * nested or element attributes:
- *
- * <element>
- *     <element></element>
- * </element>
- *
- * or:
- *
- * <element attribute="me"></element>
- *
- * @XmlType - Specifies order.
+ * ExampleHTML POJO.
  */
 
 @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
 @XmlType(propOrder = { "head", "body" })
 @XmlRootElement(name="html")
-public class FullHTML {
+public class ExampleHTML {
 
     /**
      * If a wrapper (annotated collection) is used,
@@ -49,7 +36,7 @@ public class FullHTML {
 
     private Body body;
 
-    public FullHTML () {}
+    public ExampleHTML () {}
 
     public List<Meta> getHead() {
         return head;

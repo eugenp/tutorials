@@ -1,14 +1,13 @@
-package com.baeldung.xmlhtml.pojo.jaxb.html.elements;
+package com.baeldung.xmlhtml.pojo.jaxb.xml.elements;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlValue;
 
-/**
- * @author Adam I. Gerard
- */
-
+@XmlAccessorType(XmlAccessType.PROPERTY)
 @XmlRootElement
-public class Descendant {
+public class DescendantOne {
 
     private String value;
 
@@ -22,3 +21,4 @@ public class Descendant {
     }
 
 }
+

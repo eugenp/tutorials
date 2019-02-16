@@ -12,7 +12,7 @@ public class CustomHandler implements ContentHandler {
      */
 
     public void startDocument() {
-        System.out.println(DOCUMENT_START);
+        //System.out.println(DOCUMENT_START);
     }
 
 
@@ -21,7 +21,7 @@ public class CustomHandler implements ContentHandler {
      */
 
     public void startElement(String uri, String localName, String qName, org.xml.sax.Attributes atts) {
-        System.out.println(ELEMENT_START);
+        //System.out.println(ELEMENT_START);
     }
 
     /**
@@ -37,7 +37,7 @@ public class CustomHandler implements ContentHandler {
      */
 
     public void endElement(String uri, String localName, String qName) {
-        System.out.println(ELEMENT_END);
+        //System.out.println(ELEMENT_END);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.baeldung.xmlhtml.helpers.jaxp;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.XMLReader;
@@ -86,14 +87,31 @@ public class JAXPHelper {
         try {
 
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse(new File(JAXP_FILE_IN));
+            Document parsed = db.parse(new File(JAXP_FILE_IN));
+            Element xml = parsed.getDocumentElement();
 
-            print(document);
+            Document doc = db.newDocument();
+            Element html = doc.createElement("html");
+            Element head = doc.createElement("head");
+            html.appendChild(head);
+
+            Element body = doc.createElement("body");
+            Element descendantOne = doc.createElement("p");
+            descendantOne.setTextContent("descendantOne: " + xml.getElementsByTagName("descendantOne").item(0).getTextContent());
+            Element descendantThree = doc.createElement("p");
+            descendantThree.setTextContent("descendantThree: " + xml.getElementsByTagName("descendantThree").item(0).getTextContent());
+            Element nested = doc.createElement("div");
+            nested.appendChild(descendantThree);
+
+            body.appendChild(descendantOne);
+            body.appendChild(nested);
+            html.appendChild(body);
+            doc.appendChild(html);
 
             TransformerFactory tFactory = TransformerFactory.newInstance();
             tFactory
                     .newTransformer()
-                    .transform(new DOMSource(document), new StreamResult(new File(JAXP_FILE_OUT)));
+                    .transform(new DOMSource(doc), new StreamResult(new File(JAXP_FILE_OUT)));
 
         } catch (Exception ex) {
             System.out.println(EXCEPTION_ENCOUNTERED + ex);
