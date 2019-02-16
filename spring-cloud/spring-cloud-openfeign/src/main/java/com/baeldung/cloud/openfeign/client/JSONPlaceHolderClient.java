@@ -19,7 +19,7 @@ public interface JSONPlaceHolderClient {
     @RequestMapping(method = RequestMethod.GET, value = "/posts")
     List<Post> getPosts();
 
-    @RequestMapping(method = RequestMethod.GET, value = "/posts54")
+    @RequestMapping(method = RequestMethod.GET, value = "/postsWrongPath")
     List<Post> getPostsWrong();
 
     @RequestMapping(method = RequestMethod.GET, value = "/posts/{postId}", produces = "application/json")
