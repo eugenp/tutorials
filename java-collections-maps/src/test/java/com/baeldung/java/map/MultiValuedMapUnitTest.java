@@ -75,6 +75,7 @@ public class MultiValuedMapUnitTest {
         MultiSet<String> keys = map.keys();
         
         assertThat((keys)).contains("fruits", "vehicles");
+
     }
 
     @Test
@@ -88,6 +89,7 @@ public class MultiValuedMapUnitTest {
         Set<String> keys = map.keySet();
         
         assertThat(keys).contains("fruits", "vehicles");
+
     }
 
     @Test

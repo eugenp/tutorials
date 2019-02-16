@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>jee-7-security</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>jee-7-security</name>
+    <packaging>war</packaging>
     <description>JavaEE 7 Spring Security Application</description>
 
     <parent>

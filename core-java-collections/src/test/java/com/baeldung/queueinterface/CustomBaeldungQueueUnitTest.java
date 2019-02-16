@@ -1,4 +1,4 @@
-package com.baeldung.queueinterface;
+package com.baeldung.queueInterface;
 
 import org.junit.Before;
 import org.junit.Test;
