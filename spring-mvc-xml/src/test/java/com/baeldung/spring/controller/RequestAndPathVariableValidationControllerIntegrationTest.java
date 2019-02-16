@@ -35,4 +35,9 @@ public class RequestAndPathVariableValidationControllerIntegrationTest {
     public void getNameOfDayByNumberRequestParam_whenGetWithProperRequestParam_thenReturn200() throws Exception {
         mockMvc.perform(get("/public/api/1/name-for-day").param("dayOfWeek", Integer.toString(5))).andExpect(status().isOk());
     }
+
+    @Test
+    public void getNameOfDayByNumberRequestParam_whenGetWithProperRequestParam_thenReturn200() throws Exception {
+        mockMvc.perform(get("/public/api/1/name-for-day").param("dayOfWeek", Integer.toString(5))).andExpect(status().isBadRequest());
+    }
 }
