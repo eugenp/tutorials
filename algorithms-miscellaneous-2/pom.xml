@@ -68,7 +68,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.7</version>
+                <version>${cobertura-maven-plugin.version}</version>
                 <configuration>
                     <instrumentation>
                         <ignores>
@@ -91,6 +91,7 @@
         <org.jgrapht.ext.version>1.0.1</org.jgrapht.ext.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
+        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
     </properties>
 
 </project>

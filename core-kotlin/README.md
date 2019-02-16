@@ -51,3 +51,4 @@
 - [Operator Overloading in Kotlin](https://www.baeldung.com/kotlin-operator-overloading)
 - [Inline Classes in Kotlin](https://www.baeldung.com/kotlin-inline-classes)
 - [Creating Java static final Equivalents in Kotlin](https://www.baeldung.com/kotlin-java-static-final)
+- [Nested forEach in Kotlin](https://www.baeldung.com/kotlin-nested-foreach)

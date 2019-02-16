@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>vraptor</artifactId>
     <version>1.0.0</version>
-    <packaging>war</packaging>
 	<name>vraptor</name>
+    <packaging>war</packaging>
     <description>A demo project to start using VRaptor 4</description>
 
     <parent>
