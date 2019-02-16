@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.baeldung</groupId>
     <artifactId>spring-cloud-consul</artifactId>
-    <packaging>jar</packaging>
     <name>spring-cloud-consul</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung.spring.cloud</groupId>
