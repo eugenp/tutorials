@@ -1,6 +1,5 @@
 package com.baeldung.cloud.openfeign;
 
-import com.baeldung.cloud.openfeign.client.JSONPlaceHolderClient;
 import com.baeldung.cloud.openfeign.model.Post;
 import com.baeldung.cloud.openfeign.service.JSONPlaceHolderService;
 import org.junit.Test;
@@ -10,6 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,7 +30,7 @@ public class OpenfeignUnitTest {
 
         List<Post> posts = jsonPlaceHolderService.getPosts();
 
-        assert posts.size() > 0;
+        assertFalse(posts.isEmpty());
     }
 
     @Test
@@ -35,7 +38,7 @@ public class OpenfeignUnitTest {
 
         Post post = jsonPlaceHolderService.getPostById(1l);
 
-        assert post != null;
+        assertNotNull(post);
     }
 
     @Test
@@ -43,7 +46,7 @@ public class OpenfeignUnitTest {
 
         List<Post> posts = jsonPlaceHolderService.getPostsWrong();
 
-        assert posts.size() == 0;
+        assertTrue(posts.isEmpty());
     }
 
 }

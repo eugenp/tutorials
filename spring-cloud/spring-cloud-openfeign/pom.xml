@@ -7,7 +7,7 @@
     <artifactId>openfeign</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>openfeign</name>
-    <description>OpenFeing project for Spring Boot</description>
+    <description>OpenFeign project for Spring Boot</description>
 
 
     <parent>
