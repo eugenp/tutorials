@@ -10,7 +10,5 @@ public interface JSONPlaceHolderService {
 
     List<Post> getPosts();
 
-    List<Post> getPostsWrong();
-
     Post getPostById(Long id);
 }

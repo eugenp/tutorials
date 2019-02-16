@@ -1,5 +1,6 @@
 package com.baeldung.cloud.openfeign;
 
+import com.baeldung.cloud.openfeign.client.JSONPlaceHolderClient;
 import com.baeldung.cloud.openfeign.model.Post;
 import com.baeldung.cloud.openfeign.service.JSONPlaceHolderService;
 import org.junit.Test;
@@ -20,6 +21,8 @@ public class OpenfeignUnitTest {
 
     @Autowired
     private JSONPlaceHolderService jsonPlaceHolderService;
+    @Autowired
+    private JSONPlaceHolderClient jsonPlaceHolderClient;
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
@@ -44,7 +47,7 @@ public class OpenfeignUnitTest {
     @Test
     public void whenGetPostsWithWrongUrl_thenListPostSizeEqualsZero() {
 
-        List<Post> posts = jsonPlaceHolderService.getPostsWrong();
+        List<Post> posts = jsonPlaceHolderClient.getPostsWrong();
 
         assertTrue(posts.isEmpty());
     }

@@ -20,11 +20,6 @@ public class JSONPlaceHolderServiceImpl implements JSONPlaceHolderService {
     }
 
     @Override
-    public List<Post> getPostsWrong() {
-        return jsonPlaceHolderClient.getPostsWrong();
-    }
-
-    @Override
     public Post getPostById(Long id) {
         return jsonPlaceHolderClient.getPostById(id);
     }
