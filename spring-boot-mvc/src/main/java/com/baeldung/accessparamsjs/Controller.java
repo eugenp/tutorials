@@ -17,25 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class Controller {
 
     /**
-     * Define two model objects (one integer and one string) and pass them to a jsp view.
+     * Define two model objects (one integer and one string) and pass them to the view.
      *  
      * @param model
      * @return
      */
-    @RequestMapping("/jsp/index")
-    public ModelAndView jspView(Map<String, Object> model) {
-        model.put("number", 1234);
-        model.put("message", "Hello from Spring MVC");
-        return new ModelAndView("jsp/index");
-    }
-
-    /**
-     * Define two model objects (one integer and one string) and pass them to a thymeleaf view.
-     *  
-     * @param model
-     * @return
-     */
-    @RequestMapping("/thymeleaf/index")
+    @RequestMapping("/index")
     public ModelAndView thymeleafView(Map<String, Object> model) {
         model.put("number", 1234);
         model.put("message", "Hello from Spring MVC");

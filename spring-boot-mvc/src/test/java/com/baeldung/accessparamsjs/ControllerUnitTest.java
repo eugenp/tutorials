@@ -20,15 +20,8 @@ public class ControllerUnitTest {
     private MockMvc mvc;
 
     @Test
-    public void whenRequestJSP_thenStatusOk() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/jsp/index")
-            .accept(MediaType.APPLICATION_JSON))
-            .andExpect(status().isOk());
-    }
-
-    @Test
     public void whenRequestThymeleaf_thenStatusOk() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/thymeleaf/index")
+        mvc.perform(MockMvcRequestBuilders.get("/index")
             .accept(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk());
     }

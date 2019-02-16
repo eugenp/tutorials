@@ -11,19 +11,19 @@
 </script>
 </head>
 <body>
-	Number=
-	<span th:text="${number}" th:remove="tag"></span>
-	<br /> Message=
-	<span th:text="${message}" th:remove="tag"></span>
-	<h2>Data from the external JS file (due to loading order)</h2>
-	<div id="number-ext"></div>
-	<div id="message-ext"></div>
-	<h2>Asynchronous loading from external JS file (plain JS)</h2>
-	<div id="number-async"></div>
-	<div id="message-async"></div>
-	<h2>Asynchronous loading from external JS file (jQuery)</h2>
-	<div id="number-async-jquery"></div>
-	<div id="message-async-jquery"></div>
+    Number=
+    <span th:text="${number}" th:remove="tag"></span>
+    <br /> Message=
+    <span th:text="${message}" th:remove="tag"></span>
+    <h2>Data from the external JS file (due to loading order)</h2>
+    <div id="number-ext"></div>
+    <div id="message-ext"></div>
+    <h2>Asynchronous loading from external JS file (plain JS)</h2>
+    <div id="number-async"></div>
+    <div id="message-async"></div>
+    <h2>Asynchronous loading from external JS file (jQuery)</h2>
+    <div id="number-async-jquery"></div>
+    <div id="message-async-jquery"></div>
 </body>
 <script src="/js/script.js"></script>
 </html>
