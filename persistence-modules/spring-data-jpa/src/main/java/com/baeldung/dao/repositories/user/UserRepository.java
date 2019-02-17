@@ -70,4 +70,7 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Modifying
     @Query(value = "UPDATE Users u SET status = ? WHERE u.name = ?", nativeQuery = true)
     int updateUserSetStatusForNameNativePostgres(Integer status, String name);
+    
+    @Query(value = "SELECT u FROM User u WHERE u.name IN :names")
+	List<User> findUserByNameList(@Param("names") Collection<String> names);
 }

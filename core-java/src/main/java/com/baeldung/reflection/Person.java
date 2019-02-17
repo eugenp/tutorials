@@ -2,7 +2,7 @@ package com.baeldung.reflection;
 
 public class Person {
 
-    public String lastName;
+    protected String lastName;
     private String firstName;
 
 }

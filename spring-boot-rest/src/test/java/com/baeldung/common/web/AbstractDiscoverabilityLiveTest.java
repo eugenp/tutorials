@@ -1,4 +1,4 @@
-package org.baeldung.common.web;
+package com.baeldung.common.web;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.containsString;
@@ -8,8 +8,8 @@ import static org.junit.Assert.assertThat;
 
 import java.io.Serializable;
 
-import org.baeldung.persistence.model.Foo;
-import org.baeldung.web.util.HTTPLinkHeaderUtil;
+import com.baeldung.persistence.model.Foo;
+import com.baeldung.web.util.HTTPLinkHeaderUtil;
 import org.hamcrest.core.AnyOf;
 import org.junit.Test;
 import org.springframework.http.MediaType;
