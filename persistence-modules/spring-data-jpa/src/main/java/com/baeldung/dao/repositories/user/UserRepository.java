@@ -1,7 +1,6 @@
 package com.baeldung.dao.repositories.user;
 
 import com.baeldung.domain.user.User;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -21,13 +20,13 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Query("SELECT u FROM User u WHERE u.status = 1")
     Collection<User> findAllActiveUsers();
 
-    @Query(value = "SELECT * FROM USERS.USERS u WHERE u.status = 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Users u WHERE u.status = 1", nativeQuery = true)
     Collection<User> findAllActiveUsersNative();
 
     @Query("SELECT u FROM User u WHERE u.status = ?1")
     User findUserByStatus(Integer status);
 
-    @Query(value = "SELECT * FROM USERS.Users u WHERE u.status = ?1", nativeQuery = true)
+    @Query(value = "SELECT * FROM Users u WHERE u.status = ?1", nativeQuery = true)
     User findUserByStatusNative(Integer status);
 
     @Query("SELECT u FROM User u WHERE u.status = ?1 and u.name = ?2")
@@ -36,7 +35,7 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Query("SELECT u FROM User u WHERE u.status = :status and u.name = :name")
     User findUserByStatusAndNameNamedParams(@Param("status") Integer status, @Param("name") String name);
 
-    @Query(value = "SELECT * FROM USERS.Users u WHERE u.status = :status AND u.name = :name", nativeQuery = true)
+    @Query(value = "SELECT * FROM Users u WHERE u.status = :status AND u.name = :name", nativeQuery = true)
     User findUserByStatusAndNameNamedParamsNative(@Param("status") Integer status, @Param("name") String name);
 
     @Query("SELECT u FROM User u WHERE u.status = :status and u.name = :name")
@@ -48,7 +47,7 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Query("SELECT u FROM User u WHERE u.name like :name%")
     User findUserByNameLikeNamedParam(@Param("name") String name);
 
-    @Query(value = "SELECT * FROM USERS.users u WHERE u.name LIKE ?1%", nativeQuery = true)
+    @Query(value = "SELECT * FROM users u WHERE u.name LIKE ?1%", nativeQuery = true)
     User findUserByNameLikeNative(String name);
 
     @Query(value = "SELECT u FROM User u")
@@ -57,7 +56,7 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Query(value = "SELECT u FROM User u ORDER BY id")
     Page<User> findAllUsersWithPagination(Pageable pageable);
 
-    @Query(value = "SELECT * FROM USERS.Users ORDER BY id", countQuery = "SELECT count(*) FROM USERS.Users", nativeQuery = true)
+    @Query(value = "SELECT * FROM Users ORDER BY id", countQuery = "SELECT count(*) FROM Users", nativeQuery = true)
     Page<User> findAllUsersWithPaginationNative(Pageable pageable);
 
     @Modifying
@@ -65,6 +64,13 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     int updateUserSetStatusForName(@Param("status") Integer status, @Param("name") String name);
 
     @Modifying
-    @Query(value = "UPDATE USERS.Users u SET u.status = ? WHERE u.name = ?", nativeQuery = true)
+    @Query(value = "UPDATE Users u SET u.status = ? WHERE u.name = ?", nativeQuery = true)
     int updateUserSetStatusForNameNative(Integer status, String name);
+
+    @Modifying
+    @Query(value = "UPDATE Users u SET status = ? WHERE u.name = ?", nativeQuery = true)
+    int updateUserSetStatusForNameNativePostgres(Integer status, String name);
+    
+    @Query(value = "SELECT u FROM User u WHERE u.name IN :names")
+	List<User> findUserByNameList(@Param("names") Collection<String> names);
 }
