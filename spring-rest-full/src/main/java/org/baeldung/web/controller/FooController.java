@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.baeldung.persistence.model.Foo;
 import org.baeldung.persistence.service.IFooService;
 import org.baeldung.web.hateoas.event.ResourceCreatedEvent;
-import org.baeldung.web.hateoas.event.SingleResourceRetrievedEvent;
 import org.baeldung.web.util.RestPreconditions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -53,7 +52,6 @@ public class FooController {
     public Foo findById(@PathVariable("id") final Long id, final HttpServletResponse response) {
         final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
 
-        eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
         return resourceById;
     }
 
