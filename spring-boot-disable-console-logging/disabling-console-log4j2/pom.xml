@@ -6,10 +6,11 @@
 	<!-- this needs to use the boot parent directly in order to not inherit logback dependencies -->
 
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.1.RELEASE</version>
-	</parent>
+        <artifactId>parent-boot-2</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-2</relativePath>
+    </parent>
 
 	<dependencies>
 		<dependency>
