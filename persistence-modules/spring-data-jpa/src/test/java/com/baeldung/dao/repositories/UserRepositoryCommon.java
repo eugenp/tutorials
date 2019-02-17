@@ -12,11 +12,7 @@ import org.springframework.data.jpa.domain.JpaSort;
 import org.springframework.data.mapping.PropertyReferenceException;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -29,10 +25,10 @@ class UserRepositoryCommon {
     final String USER_EMAIL4 = "email4@example.com";
     final Integer INACTIVE_STATUS = 0;
     final Integer ACTIVE_STATUS = 1;
-    private final String USER_EMAIL5 = "email5@example.com";
-    private final String USER_EMAIL6 = "email6@example.com";
-    private final String USER_NAME_ADAM = "Adam";
-    private final String USER_NAME_PETER = "Peter";
+    final String USER_EMAIL5 = "email5@example.com";
+    final String USER_EMAIL6 = "email6@example.com";
+    final String USER_NAME_ADAM = "Adam";
+    final String USER_NAME_PETER = "Peter";
 
     @Autowired
     protected UserRepository userRepository;

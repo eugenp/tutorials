@@ -67,7 +67,7 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     @Query(value = "UPDATE Users u SET u.status = ? WHERE u.name = ?", nativeQuery = true)
     int updateUserSetStatusForNameNative(Integer status, String name);
 
-    @Query(value = "INSERT INTO USERS.Users (name, age, email, status) VALUES (:name, :age, :email, :status)", nativeQuery = true)
+    @Query(value = "INSERT INTO Users (name, age, email, status) VALUES (:name, :age, :email, :status)", nativeQuery = true)
     @Modifying
     void insertUser(@Param("name") String name, @Param("age") Integer age, @Param("status") Integer status, @Param("email") String email);
 
