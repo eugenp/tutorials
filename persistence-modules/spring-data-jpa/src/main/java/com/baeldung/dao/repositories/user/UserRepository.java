@@ -79,8 +79,8 @@ public interface UserRepository extends JpaRepository<User, Integer> , UserRepos
     void deactivateUsersNotLoggedInSince(@Param("date") LocalDate date);
 
     @Modifying(clearAutomatically = true, flushAutomatically = true)
-    @Query("delete User u where u.active = false")
-    void deleteDeactivatedUsers();
+    @Query("delete from User u where u.active = false")
+    int deleteDeactivatedUsers();
 
     @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query(value = "alter table USERS.USERS add column deleted int(1) not null default 0", nativeQuery = true)

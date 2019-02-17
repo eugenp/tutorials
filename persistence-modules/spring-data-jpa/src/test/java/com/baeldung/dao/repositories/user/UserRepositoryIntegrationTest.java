@@ -501,11 +501,12 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(usr01);
         userRepository.save(usr02);
 
-        userRepository.deleteDeactivatedUsers();
+        int deletedUsersCount = userRepository.deleteDeactivatedUsers();
 
         List<User> users = userRepository.findAll();
         assertEquals(1, users.size());
         assertEquals(usr01, users.get(0));
+        assertEquals(1, deletedUsersCount);
     }
 
     @Test
