@@ -9,10 +9,10 @@
     <packaging>war</packaging>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.8.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <artifactId>parent-boot-1</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../parent-boot-1</relativePath>
     </parent>
 
     <dependencies>
@@ -39,6 +39,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <spring-boot.version>1.5.8.RELEASE</spring-boot.version>
     </properties>
 
 </project>
