@@ -2,6 +2,6 @@ package com.baeldung.reflection;
 
 public class MonthEmployee extends Employee {
 
-    private double reward;
+    protected double reward;
 
 }

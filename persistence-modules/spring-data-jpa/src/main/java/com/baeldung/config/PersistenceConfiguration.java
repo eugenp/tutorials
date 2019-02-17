@@ -1,14 +1,11 @@
 package com.baeldung.config;
 
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import com.baeldung.dao.repositories.impl.ExtendedRepositoryImpl;
+import com.baeldung.services.IBarService;
+import com.baeldung.services.impl.BarSpringDataJpaService;
+import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -21,10 +18,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.baeldung.dao.repositories.impl.ExtendedRepositoryImpl;
-import com.baeldung.services.IBarService;
-import com.baeldung.services.impl.BarSpringDataJpaService;
-import com.google.common.base.Preconditions;
+import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @ComponentScan({ "com.baeldung.dao", "com.baeldung.services" })
@@ -32,6 +27,7 @@ import com.google.common.base.Preconditions;
 @EnableJpaRepositories(basePackages = { "com.baeldung.dao" }, repositoryBaseClass = ExtendedRepositoryImpl.class)
 @EnableJpaAuditing
 @PropertySource("classpath:persistence.properties")
+@Profile("!tc")
 public class PersistenceConfiguration {
 
     @Autowired

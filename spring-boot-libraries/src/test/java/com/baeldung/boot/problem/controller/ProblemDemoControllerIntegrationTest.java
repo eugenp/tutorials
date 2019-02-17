@@ -1,6 +1,8 @@
 package com.baeldung.boot.problem.controller;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -70,6 +72,30 @@ public class ProblemDemoControllerIntegrationTest {
             .andExpect(jsonPath("$.status", equalTo(403)))
             .andExpect(jsonPath("$.detail", equalTo("You can't delete this task")))
             .andExpect(status().isForbidden());
+    }
+    
+    @Test
+    public void whenMakeGetCallWithInvalidIdFormat_thenReturnBadRequestResponseWithStackTrace() throws Exception {
+        mockMvc.perform(get("/tasks/invalid-id").contentType(MediaType.APPLICATION_PROBLEM_JSON_VALUE))
+            .andDo(print())
+            .andExpect(jsonPath("$.title", equalTo("Bad Request")))
+            .andExpect(jsonPath("$.status", equalTo(400)))
+            .andExpect(jsonPath("$.stacktrace", notNullValue()))
+            .andExpect(status().isBadRequest());
+    }
+    
+    @Test
+    public void whenMakeGetCallWithInvalidIdFormat_thenReturnBadRequestResponseWithCause() throws Exception {
+        mockMvc.perform(get("/tasks/invalid-id").contentType(MediaType.APPLICATION_PROBLEM_JSON_VALUE))
+            .andDo(print())
+            .andExpect(jsonPath("$.title", equalTo("Bad Request")))
+            .andExpect(jsonPath("$.status", equalTo(400)))
+            .andExpect(jsonPath("$.cause", notNullValue()))
+            .andExpect(jsonPath("$.cause.title", equalTo("Internal Server Error")))
+            .andExpect(jsonPath("$.cause.status", equalTo(500)))
+            .andExpect(jsonPath("$.cause.detail", containsString("For input string:")))
+            .andExpect(jsonPath("$.cause.stacktrace", notNullValue()))
+            .andExpect(status().isBadRequest());
     }
 
 }
