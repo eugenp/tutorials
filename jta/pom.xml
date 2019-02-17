@@ -7,7 +7,6 @@
     <version>1.0-SNAPSHOT</version>
     <name>jta</name>
     <packaging>jar</packaging>
-
     <description>JEE JTA demo</description>
 
     <parent>
@@ -16,12 +15,6 @@
         <version>2.0.4.RELEASE</version>
         <relativePath/>
     </parent>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -46,7 +39,7 @@
         <dependency>
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
-            <version>2.4.1</version>
+            <version>${hsqldb.version}</version>
         </dependency>
     </dependencies>
 
@@ -86,4 +79,11 @@
             </build>
         </profile>
     </profiles>
+	
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+		<hsqldb.version>2.4.1</hsqldb.version>
+    </properties>
 </project>

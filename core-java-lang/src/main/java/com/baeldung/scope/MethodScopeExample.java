@@ -1,4 +1,4 @@
-package org.baeldung.variable.scope.examples;
+package com.baeldung.scope;
 
 public class MethodScopeExample {
 

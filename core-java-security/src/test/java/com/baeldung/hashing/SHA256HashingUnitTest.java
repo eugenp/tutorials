@@ -12,24 +12,24 @@ public class SHA256HashingUnitTest {
     @Test
     public void testHashWithJavaMessageDigest() throws Exception {
         final String currentHashedValue = SHA256Hashing.HashWithJavaMessageDigest(originalValue);
-        assertEquals(currentHashedValue, hashedValue);
+        assertEquals(hashedValue, currentHashedValue);
     }
 
     @Test
     public void testHashWithGuava() throws Exception {
-        final String currentHashedValue = SHA256Hashing.HashWithApacheCommons(originalValue);
-        assertEquals(currentHashedValue, hashedValue);
+        final String currentHashedValue = SHA256Hashing.hashWithGuava(originalValue);
+        assertEquals(hashedValue, currentHashedValue);
     }
 
     @Test
     public void testHashWithApacheCommans() throws Exception {
-        final String currentHashedValue = SHA256Hashing.HashWithGuava(originalValue);
-        assertEquals(currentHashedValue, hashedValue);
+        final String currentHashedValue = SHA256Hashing.HashWithApacheCommons(originalValue);
+        assertEquals(hashedValue, currentHashedValue);
     }
 
     @Test
     public void testHashWithBouncyCastle() throws Exception {
         final String currentHashedValue = SHA256Hashing.HashWithBouncyCastle(originalValue);
-        assertEquals(currentHashedValue, hashedValue);
+        assertEquals(hashedValue, currentHashedValue);
     }
 }

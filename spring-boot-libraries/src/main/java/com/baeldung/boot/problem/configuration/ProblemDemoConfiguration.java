@@ -12,6 +12,8 @@ public class ProblemDemoConfiguration {
 
     @Bean
     public ObjectMapper objectMapper() {
-        return new ObjectMapper().registerModules(new ProblemModule(), new ConstraintViolationProblemModule());
+        // In this example, stack traces support is enabled by default. 
+        // If you want to disable stack traces just use new ProblemModule() instead of new ProblemModule().withStackTraces()
+        return new ObjectMapper().registerModules(new ProblemModule().withStackTraces(), new ConstraintViolationProblemModule());
     }
 }

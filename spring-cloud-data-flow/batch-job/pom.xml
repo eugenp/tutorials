@@ -5,9 +5,9 @@
     <groupId>org.baeldung.spring.cloud</groupId>
     <artifactId>batch-job</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>batch-job</name>
     <description>Demo project for Spring Boot</description>
+    <packaging>jar</packaging>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>
