@@ -380,6 +380,22 @@ class UserRepositoryCommon {
 
         assertThat(usersWithNames.size()).isEqualTo(2);
     }
+
+
+    @Test
+    @Transactional
+    public void whenInsertedWithQuery_ThenUserIsPersisted() {
+        userRepository.insertUser(USER_NAME_ADAM, 1, ACTIVE_STATUS, USER_EMAIL);
+        userRepository.insertUser(USER_NAME_PETER, 1, ACTIVE_STATUS, USER_EMAIL2);
+
+        User userAdam = userRepository.findUserByNameLike(USER_NAME_ADAM);
+        User userPeter = userRepository.findUserByNameLike(USER_NAME_PETER);
+
+        assertThat(userAdam).isNotNull();
+        assertThat(userAdam.getEmail()).isEqualTo(USER_EMAIL);
+        assertThat(userPeter).isNotNull();
+        assertThat(userPeter.getEmail()).isEqualTo(USER_EMAIL2);
+    }
     
     @After
     public void cleanUp() {
