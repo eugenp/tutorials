@@ -1,36 +1,36 @@
 package com.baeldung.reactor.creation;
 
 import reactor.core.publisher.Flux;
+import reactor.util.function.Tuples;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SequenceGenerator {
-    public char nextCharacter;
+    public int finalState;
 
     public Flux<Integer> generateFibonacciSequence(int limit) {
         return Flux.generate(
-                () -> new FibonacciState(0, 1),
+                () -> Tuples.of(0, 1),
                 (state, sink) -> {
-                    sink.next(state.getFormer());
-                    if (state.getLatter() > limit) {
+                    sink.next(state.getT1());
+                    if (state.getT2() > limit) {
                         sink.complete();
                     }
-                    int temp = state.getFormer();
-                    state.setFormer(state.getLatter());
-                    state.setLatter(temp + state.getLatter());
-                    return state;
-                });
+                    return Tuples.of(state.getT2(), state.getT1() + state.getT2());
+                }
+        );
     }
 
-    public Flux<Character> generateCharacterSequence(char limit) {
+    public Flux<Integer> generateNumbersInAscendingOrder(int limit) {
         return Flux.generate(
-                () -> 'A',
+                AtomicInteger::new,
                 (state, sink) -> {
-                    sink.next(state);
-                    if (state == limit) {
+                    sink.next(state.getAndIncrement());
+                    if (state.get() > limit) {
                         sink.complete();
                     }
-                    return (char) (state + 1);
+                    return state;
                 },
-                state -> nextCharacter = state
-        );
+                state -> finalState = state.updateAndGet(s -> 0));
     }
 }

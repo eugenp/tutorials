@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SequenceUnitTest {
     @Test
-    public void whenGeneratingIntegersWithTheGenerateMethod_thenFibonacciSequenceIsProduced() {
+    public void whenGeneratingNumbersWithTuplesState_thenFibonacciSequenceIsProduced() {
         SequenceGenerator sequenceGenerator = new SequenceGenerator();
 
         StepVerifier.create(sequenceGenerator.generateFibonacciSequence(10))
@@ -22,14 +22,14 @@ public class SequenceUnitTest {
     }
 
     @Test
-    public void whenGeneratingCharactersWithTheGenerateMethod_thenCharacterSequenceIsProduced() {
+    public void whenGeneratingNumbersWithAtomicIntegerState_thenIntegerSequenceIsProduced() {
         SequenceGenerator sequenceGenerator = new SequenceGenerator();
 
-        StepVerifier.create(sequenceGenerator.generateCharacterSequence('D'))
-                .expectNext('A', 'B', 'C', 'D')
+        StepVerifier.create(sequenceGenerator.generateNumbersInAscendingOrder(5))
+                .expectNext(0, 1, 2, 3, 4, 5)
                 .expectComplete()
                 .verify();
-        assertThat(sequenceGenerator.nextCharacter).isEqualTo('E');
+        assertThat(sequenceGenerator.finalState).isEqualTo(0);
     }
 
     @Test
