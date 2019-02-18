@@ -27,9 +27,8 @@ public class JSONObjectIterator {
                 handleJSONArray(key, jsonObject.getJSONArray(key));
             } else if (isJSONObject) {
                 handleJSONObject(jsonObject.getJSONObject(key));
-            } else {
-                keyValuePairs.put(key, value);
             }
+            keyValuePairs.put(key, value);
         });
     }
 

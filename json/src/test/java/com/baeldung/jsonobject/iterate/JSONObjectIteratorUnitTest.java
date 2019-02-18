@@ -2,7 +2,6 @@ package com.baeldung.jsonobject.iterate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Arrays;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -31,7 +30,12 @@ public class JSONObjectIteratorUnitTest {
         assertThat(keyValuePairs.get("type")).isEqualTo("donut");
         assertThat(keyValuePairs.get("Type")).isEqualTo("Maple");
         assertThat(keyValuePairs.get("tId")).isEqualTo("5001");
-        assertThat(keyValuePairs.get("cakeShapes")).isEqualTo(Arrays.asList("square", "circle", "heart"));
+        assertThat(keyValuePairs.get("batters")
+            .toString()).isEqualTo("[{\"rType\":\"Regular\",\"rId\":\"1001\"},{\"cType\":\"Chocolate\",\"cId\":\"1002\"},{\"bType\":\"BlueBerry\",\"bId\":\"1003\"}]");
+        assertThat(keyValuePairs.get("cakeShapes")
+            .toString()).isEqualTo("[\"square\",\"circle\",\"heart\"]");
+        assertThat(keyValuePairs.get("topping")
+            .toString()).isEqualTo("{\"Type\":\"Maple\",\"tId\":\"5001\"}");
     }
 
     public JSONObject getJsonObject() {
