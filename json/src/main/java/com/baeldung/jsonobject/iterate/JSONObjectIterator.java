@@ -1,9 +1,7 @@
 package com.baeldung.jsonobject.iterate;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -17,34 +15,28 @@ public class JSONObjectIterator {
         keyValuePairs = new HashMap<>();
     }
 
+    public void handleValue(String key, Object value) {
+        if (value instanceof JSONArray) {
+            handleJSONArray(key, (JSONArray) value);
+        } else if (value instanceof JSONObject) {
+            handleJSONObject((JSONObject) value);
+        }
+        keyValuePairs.put(key, value);
+    }
+
     public void handleJSONObject(JSONObject jsonObject) {
         Iterator<String> jsonObjectIterator = jsonObject.keys();
         jsonObjectIterator.forEachRemaining(key -> {
             Object value = jsonObject.get(key);
-            boolean isJSONArray = value instanceof JSONArray;
-            boolean isJSONObject = value instanceof JSONObject;
-            if (isJSONArray) {
-                handleJSONArray(key, jsonObject.getJSONArray(key));
-            } else if (isJSONObject) {
-                handleJSONObject(jsonObject.getJSONObject(key));
-            }
-            keyValuePairs.put(key, value);
+            handleValue(key, value);
         });
     }
 
     public void handleJSONArray(String key, JSONArray jsonArray) {
         Iterator<Object> jsonArrayIterator = jsonArray.iterator();
-        List<Object> list = new ArrayList<>();
         jsonArrayIterator.forEachRemaining(element -> {
-            if (element instanceof JSONObject) {
-                handleJSONObject((JSONObject) element);
-            } else if (element instanceof JSONArray) {
-                handleJSONArray(key, (JSONArray) element);
-            } else {
-                list.add(element);
-            }
+            handleValue(key, element);
         });
-        keyValuePairs.put(key, list);
     }
 
     public Map<String, Object> getKeyValuePairs() {
