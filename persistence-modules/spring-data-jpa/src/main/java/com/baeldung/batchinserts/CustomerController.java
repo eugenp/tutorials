@@ -1,4 +1,4 @@
-package com.baeldung.controller;
+package com.baeldung.batchinserts;
 
 import java.net.URISyntaxException;
 import java.util.Arrays;
@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.baeldung.dao.repositories.CustomerRepository;
-import com.baeldung.domain.Customer;
+import com.baeldung.batchinserts.model.Customer;
+import com.baeldung.batchinserts.repository.CustomerRepository;
 
 /**
  * A simple controller to test the JPA CrudRepository operations

@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.batchinserts;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -14,11 +14,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.baeldung.batchinserts.CustomerController;
+import com.baeldung.batchinserts.repository.CustomerRepository;
 import com.baeldung.config.PersistenceConfiguration;
 import com.baeldung.config.PersistenceProductConfiguration;
 import com.baeldung.config.PersistenceUserConfiguration;
-import com.baeldung.controller.CustomerController;
-import com.baeldung.dao.repositories.CustomerRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
