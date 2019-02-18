@@ -6,8 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 // @formatter:off
-    FooDiscoverabilityLiveTest.class
-    ,FooLiveTest.class
+    FooLiveTest.class
 }) //
 public class LiveTestSuiteLiveTest {
 

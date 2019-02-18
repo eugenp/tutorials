@@ -1594,7 +1594,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<gib.referenceBranch>refs/heads/master</gib.referenceBranch>
+		<gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>
 		<gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
 		<gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
 		<gib.failOnError>false</gib.failOnError>
