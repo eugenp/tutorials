@@ -50,7 +50,8 @@ class MapUnitTest {
         ]
 
         map.eachWithIndex { entry, index ->
-            println "At Index $index, Hex Code: $entry.key = Color Name: $entry.value"
+            def indent = ((index == 0 || index % 2 == 0) ? "   " : "")
+            println "$indent Hex Code: $entry.key = Color Name: $entry.value"
         }
     }
 
@@ -62,9 +63,10 @@ class MapUnitTest {
             'FF6347' : 'Tomato',
             'FF4500' : 'Orange Red'
         ]
-
+        
         map.eachWithIndex { key, val, index ->
-            println "At Index $index, Hex Code: $key = Color Name: $val"
+            def indent = ((index == 0 || index % 2 == 0) ? "   " : "")
+            println "$indent Hex Code: $key = Color Name: $val"
         }
     }
 
