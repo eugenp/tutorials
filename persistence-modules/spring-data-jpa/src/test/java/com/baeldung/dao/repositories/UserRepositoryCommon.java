@@ -30,10 +30,10 @@ class UserRepositoryCommon {
     final String USER_EMAIL4 = "email4@example.com";
     final Integer INACTIVE_STATUS = 0;
     final Integer ACTIVE_STATUS = 1;
-    private final String USER_EMAIL5 = "email5@example.com";
-    private final String USER_EMAIL6 = "email6@example.com";
-    private final String USER_NAME_ADAM = "Adam";
-    private final String USER_NAME_PETER = "Peter";
+    final String USER_EMAIL5 = "email5@example.com";
+    final String USER_EMAIL6 = "email6@example.com";
+    final String USER_NAME_ADAM = "Adam";
+    final String USER_NAME_PETER = "Peter";
 
     @Autowired
     protected UserRepository userRepository;
@@ -391,6 +391,22 @@ class UserRepositoryCommon {
 
     @Test
     @Transactional
+    public void whenInsertedWithQuery_ThenUserIsPersisted() {
+        userRepository.insertUser(USER_NAME_ADAM, 1, USER_EMAIL, ACTIVE_STATUS, true);
+        userRepository.insertUser(USER_NAME_PETER, 1, USER_EMAIL2, ACTIVE_STATUS, true);
+
+        User userAdam = userRepository.findUserByNameLike(USER_NAME_ADAM);
+        User userPeter = userRepository.findUserByNameLike(USER_NAME_PETER);
+
+        assertThat(userAdam).isNotNull();
+        assertThat(userAdam.getEmail()).isEqualTo(USER_EMAIL);
+        assertThat(userPeter).isNotNull();
+        assertThat(userPeter.getEmail()).isEqualTo(USER_EMAIL2);
+    }
+
+
+    @Test
+    @Transactional
     public void givenTwoUsers_whenFindByNameUsr01_ThenUserUsr01() {
         User usr01 = new User("usr01", LocalDate.now(), "usr01@baeldung.com", 1);
         User usr02 = new User("usr02", LocalDate.now(), "usr02@baeldung.com", 1);
@@ -520,7 +536,7 @@ class UserRepositoryCommon {
         Query nativeQuery = entityManager.createNativeQuery("select deleted from USERS where NAME = 'usr01'");
         assertEquals(0, nativeQuery.getResultList().get(0));
     }
-    
+
     @After
     public void cleanUp() {
         userRepository.deleteAll();
