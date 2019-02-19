@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung.ratpack.rxjava</groupId>
+    <artifactId>ratpack-rxjava</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <parent>
+    	<groupId>com.baeldung</groupId>
+    	<artifactId>reactive-modules</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>io.ratpack</groupId>
+            <artifactId>ratpack-core</artifactId>
+            <version>${ratpack.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ratpack</groupId>
+            <artifactId>ratpack-rx</artifactId>
+            <version>${ratpack.version}</version>
+        </dependency>
+    </dependencies>
+    <properties>
+        <ratpack.version>1.5.4</ratpack.version>
+    </properties>
+</project>
