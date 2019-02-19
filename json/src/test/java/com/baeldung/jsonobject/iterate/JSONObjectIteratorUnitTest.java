@@ -13,7 +13,7 @@ public class JSONObjectIteratorUnitTest {
     private JSONObjectIterator jsonObjectIterator = new JSONObjectIterator();
 
     @Test
-    public void testJsonObjectIterator() {
+    public void givenJSONObject_whenIterating_thenGetKeyValuePairs() {
         JSONObject jsonObject = getJsonObject();
 
         jsonObjectIterator.handleJSONObject(jsonObject);
@@ -38,7 +38,7 @@ public class JSONObjectIteratorUnitTest {
             .toString()).isEqualTo("{\"Type\":\"Maple\",\"tId\":\"5001\"}");
     }
 
-    public JSONObject getJsonObject() {
+    private JSONObject getJsonObject() {
         JSONObject cake = new JSONObject();
         cake.put("cakeId", "0001");
         cake.put("type", "donut");
