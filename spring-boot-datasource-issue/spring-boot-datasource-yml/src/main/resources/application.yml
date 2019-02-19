@@ -1,6 +1,0 @@
-spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/lonar
-    username: root
-    password: Chinna@1988
