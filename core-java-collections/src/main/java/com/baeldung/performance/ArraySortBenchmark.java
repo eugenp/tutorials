@@ -12,36 +12,29 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.SingleShotTime)
-@OutputTimeUnit(TimeUnit.MINUTES)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
 @Measurement(batchSize = 100000, iterations = 10)
 @Warmup(batchSize = 100000, iterations = 10)
 public class ArraySortBenchmark {
 
     @State(Scope.Thread)
     public static class Initialize {
-
-        String[] words = {"Java", "Baeldung", "Tutorial"};
-        List<String> wordList = new ArrayList<>();
-
-        @Setup(Level.Trial)
-        public void setUp() {
-            wordList.add("Java");
-            wordList.add("Baeldung");
-            wordList.add("Tutorial");
-        }
+        Integer[] numbers = {5, 22, 10, 0};
+        int[] primitives = {5, 22, 10, 0};
     }
 
     @Benchmark
-    public String[] benchmarkArraysSort(ArraySortBenchmark.Initialize state) {
-        Arrays.sort(state.words);
-        return state.words;
+    public Integer[] benchmarkArraysIntegerSort(ArraySortBenchmark.Initialize state) {
+        Arrays.sort(state.numbers);
+        return state.numbers;
     }
 
     @Benchmark
-    public List<String> benchmarkCollectionsSort(ArraySortBenchmark.Initialize state) {
-        Collections.sort(state.wordList);
-        return state.wordList;
+    public int[] benchmarkArraysIntSort(ArraySortBenchmark.Initialize state) {
+        Arrays.sort(state.primitives);
+        return state.primitives;
     }
+
 
     public static void main(String[] args) throws Exception {
         Options options = new OptionsBuilder()
