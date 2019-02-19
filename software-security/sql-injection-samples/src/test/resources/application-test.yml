@@ -2,5 +2,17 @@
 # Test profile configuration
 #
 spring:
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
+    
+  jpa:
+    hibernate:
+      ddl-auto: none
+      
   datasource:
-    initialization-mode: always
+    initialization-mode: embedded
+      
+logging:
+  level:
+    sql: DEBUG    
+    
