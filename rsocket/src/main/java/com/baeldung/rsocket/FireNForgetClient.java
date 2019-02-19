@@ -61,9 +61,9 @@ public class FireNForgetClient {
      * @return List of random floats
      */
     private List<Float> generateData() {
-        List<Float> dataList = new ArrayList<>(WIND_DATA_LENGTH);
+        List<Float> dataList = new ArrayList<>(DATA_LENGTH);
         float velocity = 0;
-        for (int i = 0; i < WIND_DATA_LENGTH; i++) {
+        for (int i = 0; i < DATA_LENGTH; i++) {
             velocity += Math.random();
             dataList.add(velocity);
         }

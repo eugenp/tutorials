@@ -4,8 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.concurrent.CompletableFuture;
-
 public class EthereumContractUnitTest {
 
     private Web3Service web3Service;
@@ -17,14 +15,14 @@ public class EthereumContractUnitTest {
 
     @Test
     public void testContract() {
-        CompletableFuture<String> result = web3Service.fromScratchContractExample();
-        assert (result instanceof CompletableFuture);
+        String result = web3Service.fromScratchContractExample();
+        assert (result instanceof String);
     }
 
     @Test
     public void sendTx() {
-        CompletableFuture<String> result = web3Service.sendTx();
-        assert (result instanceof CompletableFuture);
+        String result = web3Service.sendTx();
+        assert (result instanceof String);
     }
 
     @After

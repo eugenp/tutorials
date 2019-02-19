@@ -5,9 +5,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-5-mvc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-5-mvc</name>
     <description>spring 5 MVC sample project about new features</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

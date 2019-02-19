@@ -34,6 +34,11 @@
             <version>${org.jgrapht.core.version}</version>
         </dependency>
         <dependency>
+        	<groupId>org.jgrapht</groupId>
+        	<artifactId>jgrapht-ext</artifactId>
+        	<version>${org.jgrapht.ext.version}</version>
+        </dependency>
+        <dependency>
             <groupId>pl.allegro.finance</groupId>
             <artifactId>tradukisto</artifactId>
             <version>${tradukisto.version}</version>
@@ -63,7 +68,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.7</version>
+                <version>${cobertura-maven-plugin.version}</version>
                 <configuration>
                     <instrumentation>
                         <ignores>
@@ -83,8 +88,10 @@
         <commons-math3.version>3.6.1</commons-math3.version>
         <tradukisto.version>1.0.1</tradukisto.version>
         <org.jgrapht.core.version>1.0.1</org.jgrapht.core.version>
+        <org.jgrapht.ext.version>1.0.1</org.jgrapht.ext.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
+        <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
     </properties>
 
 </project>

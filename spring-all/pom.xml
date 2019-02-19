@@ -155,6 +155,18 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
         </dependency>
+
+        <!-- ShedLock -->
+        <dependency>
+            <groupId>net.javacrumbs.shedlock</groupId>
+            <artifactId>shedlock-spring</artifactId>
+            <version>${shedlock.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.javacrumbs.shedlock</groupId>
+            <artifactId>shedlock-provider-jdbc-template</artifactId>
+            <version>${shedlock.version}</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -231,7 +243,7 @@
         <easymock.version>3.6</easymock.version>
         <assertj.version>3.6.1</assertj.version>
         <jasperreports.version>6.6.0</jasperreports.version>
-
+        <shedlock.version>2.1.0</shedlock.version>
         <javassist.version>3.22.0-GA</javassist.version>
     </properties>
 

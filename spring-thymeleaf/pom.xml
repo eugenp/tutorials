@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-thymeleaf</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
 	<name>spring-thymeleaf</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

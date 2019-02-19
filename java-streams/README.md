@@ -14,3 +14,6 @@
 - [Primitive Type Streams in Java 8](http://www.baeldung.com/java-8-primitive-streams)
 - [Stream Ordering in Java](https://www.baeldung.com/java-stream-ordering)
 - [Introduction to Protonpack](https://www.baeldung.com/java-protonpack)
+- [Java Stream Filter with Lambda Expression](https://www.baeldung.com/java-stream-filter-lambda)
+- [Counting Matches on a Stream Filter](https://www.baeldung.com/java-stream-filter-count)
+- [Java 8 Streams peek() API](https://www.baeldung.com/java-streams-peek-api)

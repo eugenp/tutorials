@@ -1,0 +1,18 @@
+<person>
+	<firstName></firstName>
+	<lastName></lastName>
+	<phoneNumbers>9911778981</phoneNumbers>
+	<phoneNumbers>9991111111</phoneNumbers>
+	<addresses>
+		<address>
+			<street_number>1</street_number>
+			<street_name>streetname1</street_name>
+			<city>city1</city>
+		</address>
+		<address>
+			<street_number>2</street_number>
+			<street_name>streetname2</street_name>
+			<city>city2</city>
+		</address>
+	</addresses>
+</person>
