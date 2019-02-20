@@ -2,8 +2,10 @@ package com.baeldung.jackson.xml;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -74,7 +76,8 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaDeserializedFromXmlFile_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
-        Person value = xmlMapper.readValue(new File("src/test/resources/person.xml"), Person.class);
+        String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers><addresses><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></addresses></person>";
+        Person value = xmlMapper.readValue(xml, Person.class);
 
         assertTrue(value.getAddress()
             .get(0)
@@ -89,6 +92,7 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaSerializedToXmlFile_thenSuccess() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
+        String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers><addresses><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></addresses></person>";
 
         Person person = new Person();
 
@@ -101,22 +105,24 @@ public class XMLSerializeDeserializeUnitTest {
         person.setPhoneNumbers(ph);
 
         List<Address> addresses = new ArrayList<>();
-        
+
         Address address1 = new Address();
         address1.setStreetNumber("1");
         address1.setStreetName("streetname1");
         address1.setCity("city1");
-        
+
         Address address2 = new Address();
         address2.setStreetNumber("2");
         address2.setStreetName("streetname2");
         address2.setCity("city2");
-        
+
         addresses.add(address1);
         addresses.add(address2);
         person.setAddress(addresses);
 
-        xmlMapper.writeValue(new File("src/test/resources/PersonGenerated.xml"), person);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        xmlMapper.writeValue(baos, person);
+        assertEquals(xml, baos.toString());
     }
 
     private static String inputStreamToString(InputStream is) throws IOException {
