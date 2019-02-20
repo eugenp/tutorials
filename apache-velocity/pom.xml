@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <version>0.1-SNAPSHOT</version>
     <artifactId>apache-velocity</artifactId>
-    <packaging>war</packaging>
     <name>apache-velocity</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

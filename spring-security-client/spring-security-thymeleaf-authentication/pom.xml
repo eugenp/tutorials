@@ -6,9 +6,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-security-thymeleaf-authentication</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-security-thymeleaf-authentication</name>
     <description>Spring Security thymeleaf authentication tag sample</description>
+    <packaging>war</packaging>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>

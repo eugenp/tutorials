@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.springframework.security.oauth</groupId>
             <artifactId>spring-security-oauth2</artifactId>
-            <version>2.3.3.RELEASE</version>
+            <version>${spring-security-oauth2.version}</version>
         </dependency>
 
         <dependency>
@@ -41,21 +41,21 @@
         <dependency>
             <groupId>org.passay</groupId>
             <artifactId>passay</artifactId>
-            <version>1.3.1</version>
+            <version>${passay.version}</version>
         </dependency>
         <dependency>
             <groupId>org.cryptacular</groupId>
             <artifactId>cryptacular</artifactId>
-            <version>1.2.2</version>
+            <version>${cryptacular.version}</version>
         </dependency>
-
     </dependencies>
 
     <properties>
         <junit.version>4.12</junit.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
         <scribejava.version>5.6.0</scribejava.version>
+		<spring-security-oauth2.version>2.3.3.RELEASE</spring-security-oauth2.version>
+		<passay.version>1.3.1</passay.version>
+		<cryptacular.version>1.2.2</cryptacular.version>
     </properties>
-
-
 </project>
