@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
   //    ,ManagementWebSecurityAutoConfiguration.class
 }, scanBasePackages = "com.baeldung.springbootsecurity.basic_auth")
 public class SpringBootSecurityApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(SpringBootSecurityApplication.class, args);
     }
