@@ -17,7 +17,7 @@ public class JsonObjectConversionsUnitTest {
     }
 
     @Test
-    void givenAStringAndGsonInstance_shouldConvertToJsonObject() throws Exception {
+    void whenUsingGsonInstanceFromJson_thenConvertToJsonObject() throws Exception {
         // Example 2: Using fromJson
         String json = "{ \"name\": \"Baeldung\", \"java\": true }";
         JsonObject convertedObject = new Gson().fromJson(json, JsonObject.class);
