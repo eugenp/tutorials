@@ -76,6 +76,7 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaDeserializedFromXmlFile_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
+
         String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers><addresses><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></addresses></person>";
         Person value = xmlMapper.readValue(xml, Person.class);
 
@@ -92,6 +93,7 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaSerializedToXmlFile_thenSuccess() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
+
         String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers><addresses><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></addresses></person>";
 
         Person person = new Person();
@@ -115,10 +117,11 @@ public class XMLSerializeDeserializeUnitTest {
         address2.setStreetNumber("2");
         address2.setStreetName("streetname2");
         address2.setCity("city2");
-
+      
         addresses.add(address1);
         addresses.add(address2);
         person.setAddress(addresses);
+
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         xmlMapper.writeValue(baos, person);

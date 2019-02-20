@@ -9,14 +9,16 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.baeldung.persistence.model.Foo;
@@ -24,9 +26,11 @@ import com.baeldung.persistence.service.IFooService;
 import com.baeldung.web.exception.MyResourceNotFoundException;
 import com.baeldung.web.hateoas.event.PaginatedResultsRetrievedEvent;
 import com.baeldung.web.hateoas.event.ResourceCreatedEvent;
+import com.baeldung.web.hateoas.event.SingleResourceRetrievedEvent;
+import com.baeldung.web.util.RestPreconditions;
 import com.google.common.base.Preconditions;
 
-@Controller
+@RestController
 @RequestMapping(value = "/auth/foos")
 public class FooController {
 
@@ -42,10 +46,24 @@ public class FooController {
 
     // API
 
+    // read - one
+
+    @GetMapping(value = "/{id}")
+    public Foo findById(@PathVariable("id") final Long id, final HttpServletResponse response) {
+        final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
+
+        eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
+        return resourceById;
+    }
+
     // read - all
 
-    @RequestMapping(params = { "page", "size" }, method = RequestMethod.GET)
-    @ResponseBody
+    @GetMapping
+    public List<Foo> findAll() {
+        return service.findAll();
+    }
+
+    @GetMapping(params = { "page", "size" })
     public List<Foo> findPaginated(@RequestParam("page") final int page, @RequestParam("size") final int size,
         final UriComponentsBuilder uriBuilder, final HttpServletResponse response) {
         final Page<Foo> resultPage = service.findPaginated(page, size);
@@ -59,7 +77,6 @@ public class FooController {
     }
 
     @GetMapping("/pageable")
-    @ResponseBody
     public List<Foo> findPaginatedWithPageable(Pageable pageable, final UriComponentsBuilder uriBuilder,
         final HttpServletResponse response) {
         final Page<Foo> resultPage = service.findPaginated(pageable);
@@ -74,9 +91,8 @@ public class FooController {
 
     // write
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    @ResponseBody
     public Foo create(@RequestBody final Foo resource, final HttpServletResponse response) {
         Preconditions.checkNotNull(resource);
         final Foo foo = service.create(resource);
@@ -85,5 +101,19 @@ public class FooController {
         eventPublisher.publishEvent(new ResourceCreatedEvent(this, response, idOfCreatedResource));
 
         return foo;
+    }
+
+    @PutMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void update(@PathVariable("id") final Long id, @RequestBody final Foo resource) {
+        Preconditions.checkNotNull(resource);
+        RestPreconditions.checkFound(service.findOne(resource.getId()));
+        service.update(resource);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") final Long id) {
+        service.deleteById(id);
     }
 }

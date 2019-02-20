@@ -2,6 +2,7 @@ PASSWORD=changeit
 KEYSTORE=keystore.jks
 HOSTNAME=localhost
 CLIENTNAME=cid
+CLIENT_PRIVATE_KEY="${CLIENTNAME}_pk"
 
 # CN = Common Name
 # OU = Organization Unit
@@ -59,12 +60,12 @@ create-truststore: export-authority
 
 add-client:
 	# Generate client certificate
-	keytool -genkey -alias $(CLIENTNAME) -ext san=dns:localhost,ip:127.0.0.1 \
+	keytool -genkey -alias $(CLIENT_PRIVATE_KEY) -ext san=dns:localhost,ip:127.0.0.1 \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA -keypass $(PASSWORD) \
 	    -validity 3650 -dname $(DNAME_CLIENT) \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 	# Generate a host certificate signing request
-	keytool -certreq -alias $(CLIENTNAME) -ext san=dns:localhost,ip:127.0.0.1 -ext  BC=ca:true \
+	keytool -certreq -alias $(CLIENT_PRIVATE_KEY) -ext san=dns:localhost,ip:127.0.0.1 -ext  BC=ca:true \
 	    -keyalg RSA -keysize 4096 -sigalg SHA512withRSA \
 	    -validity 3650 -file "$(CLIENTNAME).csr" \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
@@ -78,10 +79,13 @@ add-client:
 	    -file "$(CLIENTNAME).crt" \
 	    -keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 	# Export private certificate for importing into a browser
-	keytool -importkeystore -srcalias $(CLIENTNAME) -ext san=dns:localhost,ip:127.0.0.1 \
+	keytool -importkeystore -srcalias $(CLIENT_PRIVATE_KEY) -ext san=dns:localhost,ip:127.0.0.1 \
 	    -srckeystore $(TRUSTSTORE) -srcstorepass $(PASSWORD) \
 	    -destkeystore "$(CLIENTNAME).p12" -deststorepass $(PASSWORD) \
 	    -deststoretype PKCS12
+	# Delete client private key as truststore should not contain any private keys
+	keytool -delete -alias $(CLIENT_PRIVATE_KEY) \
+		-keystore $(TRUSTSTORE) -storepass $(PASSWORD)
 
 clean:
 	# Remove generated artifacts
