@@ -1,11 +1,11 @@
-package com.baeldung.rxjava.service.impl;
+package com.baeldung.ratpack.intro.rxjava.service.impl;
 
-import com.baeldung.model.Movie;
-import com.baeldung.rxjava.service.MovieService;
+import com.baeldung.ratpack.intro.model.Movie;
+import com.baeldung.ratpack.intro.rxjava.service.MovieObservableService;
 
 import rx.Observable;
 
-public class MovieServiceImpl implements MovieService {
+public class MovieObservableServiceImpl implements MovieObservableService {
 
     @Override
     public Observable<Movie> getMovie() {

@@ -1,8 +1,8 @@
-package com.baeldung.rxjava;
+package com.baeldung.ratpack.intro.rxjava;
 
-import com.baeldung.model.Movie;
-import com.baeldung.rxjava.service.MovieService;
-import com.baeldung.rxjava.service.impl.MovieServiceImpl;
+import com.baeldung.ratpack.intro.model.Movie;
+import com.baeldung.ratpack.intro.rxjava.service.MovieObservableService;
+import com.baeldung.ratpack.intro.rxjava.service.impl.MovieObservableServiceImpl;
 
 import ratpack.jackson.Jackson;
 import ratpack.rx.RxRatpack;
@@ -11,11 +11,17 @@ import rx.Observable;
 
 public class RatpackParallelismApp {
 
+    /**
+     * Try hitting http://localhost:5050/movies to see the application in action.
+     * 
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         RxRatpack.initialize();
-        RatpackServer.start(def -> def.registryOf(regSpec -> regSpec.add(MovieService.class, new MovieServiceImpl()))
+        RatpackServer.start(def -> def.registryOf(regSpec -> regSpec.add(MovieObservableService.class, new MovieObservableServiceImpl()))
             .handlers(chain -> chain.get("movies", ctx -> {
-                MovieService movieSvc = ctx.get(MovieService.class);
+                MovieObservableService movieSvc = ctx.get(MovieObservableService.class);
                 Observable<Movie> movieObs = movieSvc.getMovies();
                 Observable<String> upperCasedNames = movieObs.compose(RxRatpack::forkEach)
                     .map(movie -> movie.getName()

@@ -1,4 +1,4 @@
-package com.baeldung.rxjava;
+package com.baeldung.ratpack.intro.rxjava;
 
 import ratpack.error.ServerErrorHandler;
 import ratpack.rx.RxRatpack;
@@ -6,6 +6,12 @@ import ratpack.server.RatpackServer;
 import rx.Observable;
 
 public class RatpackErrorHandlingApp {
+
+    /**
+     * Try hitting http://localhost:5050/error to see the error handler in action
+     * @param args
+     * @throws Exception
+     */
 
     public static void main(String[] args) throws Exception {
         RxRatpack.initialize();

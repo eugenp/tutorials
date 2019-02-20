@@ -1,10 +1,10 @@
-package com.baeldung.rxjava.service.impl;
+package com.baeldung.ratpack.intro.rxjava.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.baeldung.model.Movie;
-import com.baeldung.rxjava.service.MoviePromiseService;
+import com.baeldung.ratpack.intro.model.Movie;
+import com.baeldung.ratpack.intro.rxjava.service.MoviePromiseService;
 
 import ratpack.exec.Promise;
 

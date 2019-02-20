@@ -9,7 +9,6 @@
 	<version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>lombok-custom</module>
-        <module>reactive-modules</module>
     </modules>
     <name>parent-modules</name>
 	<packaging>pom</packaging>
@@ -570,7 +569,7 @@
                 <module>rxjava</module>
                 <module>rxjava-2</module> 
 			    <module>software-security/sql-injection-samples</module>
-                                                 
+                <module>reactive-modules</module>                                 
 			</modules>
 
 		</profile>

@@ -1,4 +1,4 @@
-package com.baeldung.model;
+package com.baeldung.ratpack.intro.model;
 /**
  * 
  *POJO class for Movie object

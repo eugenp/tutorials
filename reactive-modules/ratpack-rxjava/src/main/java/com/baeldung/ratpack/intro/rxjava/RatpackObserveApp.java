@@ -1,10 +1,10 @@
-package com.baeldung.rxjava;
+package com.baeldung.ratpack.intro.rxjava;
 
 import java.util.List;
 
-import com.baeldung.model.Movie;
-import com.baeldung.rxjava.service.MoviePromiseService;
-import com.baeldung.rxjava.service.impl.MoviePromiseServiceImpl;
+import com.baeldung.ratpack.intro.model.Movie;
+import com.baeldung.ratpack.intro.rxjava.service.MoviePromiseService;
+import com.baeldung.ratpack.intro.rxjava.service.impl.MoviePromiseServiceImpl;
 
 import ratpack.exec.Promise;
 import ratpack.handling.Handler;
@@ -13,7 +13,12 @@ import ratpack.rx.RxRatpack;
 import ratpack.server.RatpackServer;
 
 public class RatpackObserveApp {
-
+    /**
+     * Try hitting http://localhost:5050/movies or http://localhost:5050/movie to see the application in action.
+     * 
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         RxRatpack.initialize();
 
