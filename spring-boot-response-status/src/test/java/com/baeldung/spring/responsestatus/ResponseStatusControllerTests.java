@@ -16,8 +16,7 @@ public class ResponseStatusControllerTests {
 
     @Test
     public void whenCallRest_thenStatusIsOk() {
-        testClient
-                .get()
+        testClient.get()
                 .uri("/statuses/ok")
                 .exchange()
                 .expectStatus()
@@ -26,17 +25,16 @@ public class ResponseStatusControllerTests {
 
     @Test
     public void whenCallRest_thenStatusIsNoContent() {
-        testClient
-                .get()
+        testClient.get()
                 .uri("/statuses/no-content")
                 .exchange()
-                .expectStatus().isNoContent();
+                .expectStatus()
+                .isNoContent();
     }
 
     @Test
     public void whenCallRest_thenStatusIsAccepted() {
-        testClient
-                .get()
+        testClient.get()
                 .uri("/statuses/accepted")
                 .exchange()
                 .expectStatus()
@@ -45,8 +43,7 @@ public class ResponseStatusControllerTests {
 
     @Test
     public void whenCallRest_thenStatusIsBadRequest() {
-        testClient
-                .get()
+        testClient.get()
                 .uri("/statuses/bad-request")
                 .exchange()
                 .expectStatus()
@@ -55,8 +52,7 @@ public class ResponseStatusControllerTests {
 
     @Test
     public void whenCallRest_thenStatusIsUnauthorized() {
-        testClient
-                .get()
+        testClient.get()
                 .uri("/statuses/unauthorized")
                 .exchange()
                 .expectStatus()
@@ -65,8 +61,7 @@ public class ResponseStatusControllerTests {
 
     @Test
     public void whenCallRest_thenStatusIsNotFound() {
-        testClient
-                .get()
+        testClient.get()
                 .uri("/statuses/not-found")
                 .exchange()
                 .expectStatus()

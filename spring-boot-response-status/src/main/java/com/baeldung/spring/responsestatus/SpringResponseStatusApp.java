@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringResponseStatusApp {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SpringResponseStatusApp.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringResponseStatusApp.class, args);
+    }
 }

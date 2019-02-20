@@ -44,35 +44,31 @@ public class ResponseStatusController {
         return Flux.just("accepted");
     }
 
-    @GetMapping(
-            value = "/bad-request"
-    )
+    @GetMapping(value = "/bad-request")
     public Mono<String> badRequest() {
         return Mono.error(new IllegalArgumentException());
     }
 
-    @ResponseStatus(value = HttpStatus.BAD_REQUEST,
-            reason = "Illegal arguments")
+    @ResponseStatus(
+            value = HttpStatus.BAD_REQUEST,
+            reason = "Illegal arguments"
+    )
     @ExceptionHandler(IllegalArgumentException.class)
     public void illegalArgument() {
 
     }
 
-    @GetMapping(
-            value = "/unauthorized"
-    )
+    @GetMapping(value = "/unauthorized")
     public ResponseEntity<Mono<String>> unathorized() {
-        return ResponseEntity
-                .status(HttpStatus.UNAUTHORIZED)
-                .header("X-Reason","user-invalid")
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .header("X-Reason", "user-invalid")
                 .body(Mono.just("unauthorized"));
     }
 
     @Bean
     public RouterFunction<ServerResponse> notFound() {
-        return RouterFunctions
-                .route(GET("/statuses/not-found"),
-                        request -> ServerResponse.notFound().build());
+        return RouterFunctions.route(GET("/statuses/not-found"),
+                request -> ServerResponse.notFound().build());
     }
 
 }
