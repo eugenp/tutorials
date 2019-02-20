@@ -4,8 +4,11 @@
     <groupId>com.baeldung</groupId>
     <artifactId>maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-	<name>maven</name>
-    <packaging>war</packaging>
+    <modules>
+        <module>custom-rule</module>
+    </modules>
+    <name>maven</name>
+    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
@@ -179,6 +182,50 @@
                                     <directory>src/integration-test/resources</directory>
                                 </resource>
                             </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.baeldung</groupId>
+                        <artifactId>custom-rule</artifactId>
+                        <version>1.0</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <banDuplicatePomDependencyVersions/>
+                                <requireMavenVersion>
+                                    <version>3.0</version>
+                                    <message>Invalid Maven version. It should, at least, be 3.0</message>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>1.8</version>
+                                </requireJavaVersion>
+                                <requireEnvironmentVariable>
+                                    <variableName>ui</variableName>
+                                </requireEnvironmentVariable>
+                                <requireEnvironmentVariable>
+                                    <variableName>cook</variableName>
+                                </requireEnvironmentVariable>
+                                <requireActiveProfile>
+                                    <profiles>local,base</profiles>
+                                    <message>Missing active profiles</message>
+                                </requireActiveProfile>
+                                <!--other rules -->
+                                <myCustomRule implementation="com.baeldung.enforcer.MyCustomRule"/>
+                            </rules>
                         </configuration>
                     </execution>
                 </executions>
