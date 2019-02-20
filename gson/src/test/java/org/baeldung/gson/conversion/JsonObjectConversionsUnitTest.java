@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class JsonObjectConversionsUnitTest {
 
     @Test
-    void givenAStringAndJsonParser_shouldConvertToJsonObject() throws Exception {
+    void whenUsingJsonParser_thenConvertToJsonObject() throws Exception {
         // Example 1: Using JsonParser
         String json = "{ \"name\": \"Baeldung\", \"java\": true }";
         JsonObject jsonObject = new JsonParser().parse(json).getAsJsonObject();
