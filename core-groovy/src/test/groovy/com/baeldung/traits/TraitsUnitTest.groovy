@@ -57,7 +57,7 @@ class TraitsUnitTest extends Specification {
     
     def 'Should return employee instance when using Employee.whoAmI method' () {
         when:
-            def emp = employee.whoAmI()
+            def emp = employee.self()
         then:
             emp
             emp instanceof Employee
