@@ -74,7 +74,7 @@ public class XMLSerializeDeserializeUnitTest {
     public void whenJavaDeserializedFromXmlFile_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
 
-        String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></address></person>";
+        String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><streetNumber>1</streetNumber><streetName>Name1</streetName><city>City1</city></address><address><streetNumber>2</streetNumber><streetName>Name2</streetName><city>City2</city></address></address></person>";
         Person value = xmlMapper.readValue(xml, Person.class);
 
         assertTrue(value.getAddress()
@@ -91,7 +91,7 @@ public class XMLSerializeDeserializeUnitTest {
     public void whenJavaSerializedToXmlFile_thenSuccess() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
 
-        String expectedXml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></address></person>";
+        String expectedXml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><streetNumber>1</streetNumber><streetName>Name1</streetName><city>City1</city></address><address><streetNumber>2</streetNumber><streetName>Name2</streetName><city>City2</city></address></address></person>";
 
         Person person = new Person();
 
