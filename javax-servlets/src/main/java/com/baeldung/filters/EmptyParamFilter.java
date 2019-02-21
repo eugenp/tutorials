@@ -1,4 +1,4 @@
-package com.baeldung.servlets3.web.filters;
+package com.baeldung.filters;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -9,7 +9,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter(servletNames = { "uppercaseServlet" }, urlPatterns = "/uppercase")
+@WebFilter(urlPatterns = "/uppercase")
 public class EmptyParamFilter implements Filter {
 
     @Override

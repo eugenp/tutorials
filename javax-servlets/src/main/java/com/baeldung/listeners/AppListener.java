@@ -1,4 +1,4 @@
-package com.baeldung.servlets3.web.listeners;
+package com.baeldung.listeners;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
