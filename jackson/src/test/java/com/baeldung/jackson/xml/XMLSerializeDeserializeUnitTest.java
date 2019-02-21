@@ -58,17 +58,14 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaGotFromXmlStrWithCapitalElem_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
-        SimpleBeanForCapitalizedFields value = xmlMapper.
-            readValue("<SimpleBeanForCapitalizedFields><X>1</X><y>2</y></SimpleBeanForCapitalizedFields>",
-                SimpleBeanForCapitalizedFields.class);
+        SimpleBeanForCapitalizedFields value = xmlMapper.readValue("<SimpleBeanForCapitalizedFields><X>1</X><y>2</y></SimpleBeanForCapitalizedFields>", SimpleBeanForCapitalizedFields.class);
         assertTrue(value.getX() == 1 && value.getY() == 2);
     }
 
     @Test
     public void whenJavaSerializedToXmlFileWithCapitalizedField_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.writeValue(new File("target/simple_bean_capitalized.xml"),
-            new SimpleBeanForCapitalizedFields());
+        xmlMapper.writeValue(new File("target/simple_bean_capitalized.xml"), new SimpleBeanForCapitalizedFields());
         File file = new File("target/simple_bean_capitalized.xml");
         assertNotNull(file);
     }
@@ -77,7 +74,7 @@ public class XMLSerializeDeserializeUnitTest {
     public void whenJavaDeserializedFromXmlFile_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
 
-        String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers><addresses><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></addresses></person>";
+        String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></address></person>";
         Person value = xmlMapper.readValue(xml, Person.class);
 
         assertTrue(value.getAddress()
@@ -94,7 +91,7 @@ public class XMLSerializeDeserializeUnitTest {
     public void whenJavaSerializedToXmlFile_thenSuccess() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
 
-        String expectedXml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers><addresses><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></addresses></person>";
+        String expectedXml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><street_number>1</street_number><street_name>Name1</street_name><city>City1</city></address><address><street_number>2</street_number><street_name>Name2</street_name><city>City2</city></address></address></person>";
 
         Person person = new Person();
 
@@ -107,20 +104,20 @@ public class XMLSerializeDeserializeUnitTest {
         person.setPhoneNumbers(ph);
 
         List<Address> addresses = new ArrayList<>();
-        
+
         Address address1 = new Address();
         address1.setStreetNumber("1");
         address1.setStreetName("Name1");
         address1.setCity("City1");
-        
+
         Address address2 = new Address();
         address2.setStreetNumber("2");
         address2.setStreetName("Name2");
         address2.setCity("City2");
-        
+
         addresses.add(address1);
         addresses.add(address2);
-        
+
         person.setAddress(addresses);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
