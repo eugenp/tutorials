@@ -675,6 +675,14 @@
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
         </dependency>
+		
+		<!-- Reflections -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>${reflections.version}</version>
+		</dependency>
+	</dependencies>
 
     </dependencies>
 
@@ -897,6 +905,7 @@
         <derive4j.version>1.1.0</derive4j.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
+		<reflections.version>0.9.11</reflections.version>
     </properties>
 
 </project>
