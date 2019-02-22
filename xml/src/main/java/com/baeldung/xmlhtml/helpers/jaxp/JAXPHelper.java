@@ -69,7 +69,7 @@ public class JAXPHelper {
             SAXParser saxParser = spf.newSAXParser();
             XMLReader xmlReader = saxParser.getXMLReader();
             xmlReader.setContentHandler(new CustomHandler());
-            xmlReader.parse(JAXP_FILE_IN);
+            xmlReader.parse(XML_FILE_IN);
 
         } catch (Exception ex) {
             System.out.println(EXCEPTION_ENCOUNTERED + ex);
@@ -87,7 +87,7 @@ public class JAXPHelper {
         try {
 
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document parsed = db.parse(new File(JAXP_FILE_IN));
+            Document parsed = db.parse(new File(XML_FILE_IN));
             Element xml = parsed.getDocumentElement();
 
             Document doc = db.newDocument();

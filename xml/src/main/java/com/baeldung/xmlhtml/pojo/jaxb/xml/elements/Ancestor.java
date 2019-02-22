@@ -3,10 +3,8 @@ package com.baeldung.xmlhtml.pojo.jaxb.xml.elements;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
-@XmlRootElement
 public class Ancestor {
 
     private DescendantOne descendantOne;

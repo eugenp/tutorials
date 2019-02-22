@@ -25,7 +25,7 @@ public class STAXHelper {
     private static XMLStreamReader reader() {
         XMLStreamReader xmlStreamReader = null;
         try {
-            xmlStreamReader = XMLInputFactory.newInstance().createXMLStreamReader(new FileInputStream(STAX_FILE_IN));
+            xmlStreamReader = XMLInputFactory.newInstance().createXMLStreamReader(new FileInputStream(XML_FILE_IN));
         } catch (Exception ex) {
             System.out.println(EXCEPTION_ENCOUNTERED + ex);
         }

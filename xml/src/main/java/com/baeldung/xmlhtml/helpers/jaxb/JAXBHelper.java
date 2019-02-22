@@ -64,7 +64,7 @@ public class JAXBHelper {
              *   Cast to desired POJO.
              */
 
-            XMLExample xml = (XMLExample) JAXBHelper.getContextUnmarshaller(XMLExample.class).unmarshal(new File(JAXB_FILE_IN));
+            XMLExample xml = (XMLExample) JAXBHelper.getContextUnmarshaller(XMLExample.class).unmarshal(new File(XML_FILE_IN));
             JAXBHelper.print(xml.toString());
             //JAXBHelper.print(xml.getAncestor().getDescendantOne().getValue());
             //JAXBHelper.print(xml.getAncestor().getDescendantTwo().getDescendantThree().getValue());

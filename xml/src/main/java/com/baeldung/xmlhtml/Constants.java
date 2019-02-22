@@ -10,17 +10,10 @@ public class Constants {
      * File-related constants.
      */
 
-    public static final String JAXB_FILE_IN = "src/main/resources/xml/jaxb/jaxb.xml";
-    public static final String JAXB_FILE_OUT = "src/main/resources/xml/jaxb/jaxb.html";
-
-    public static final String JAXP_FILE_IN = "src/main/resources/xml/jaxp/jaxp.xml";
-    public static final String JAXP_FILE_OUT = "src/main/resources/xml/jaxp/jaxp.html";
-
-    public static final String STAX_FILE_IN = "src/main/resources/xml/stax/stax.xml";
-    public static final String STAX_FILE_OUT = "src/main/resources/xml/stax/stax.html";
-
-    public static final String XPATH_FILE_IN = "src/main/resources/xml/xpath/xpath.xml";
-    public static final String XPATH_FILE_OUT = "src/main/resources/xml/xpath/xpath.html";
+    public static final String XML_FILE_IN = "src/main/resources/xml/in.xml";
+    public static final String JAXB_FILE_OUT = "src/main/resources/xml/jaxb.html";
+    public static final String JAXP_FILE_OUT = "src/main/resources/xml/jaxp.html";
+    public static final String STAX_FILE_OUT = "src/main/resources/xml/stax.html";
 
     /**
      * Generic exceptions  constants.
