@@ -23,10 +23,10 @@ public class Controller {
      * @return
      */
     @RequestMapping("/index")
-    public ModelAndView index(Map<String, Object> model) {
+    public ModelAndView thymeleafView(Map<String, Object> model) {
         model.put("number", 1234);
         model.put("message", "Hello from Spring MVC");
-        return new ModelAndView("/index");
+        return new ModelAndView("thymeleaf/index");
     }
 
 }

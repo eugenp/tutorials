@@ -5,9 +5,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>couchbase</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>couchbase</name>
     <description>Couchbase Tutorials</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

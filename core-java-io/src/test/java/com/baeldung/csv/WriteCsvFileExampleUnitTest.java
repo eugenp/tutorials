@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,6 @@ import org.slf4j.LoggerFactory;
 public class WriteCsvFileExampleUnitTest {
     private static final Logger LOG = LoggerFactory.getLogger(WriteCsvFileExampleUnitTest.class);
 
-    private static final String CSV_FILE_NAME = "src/test/resources/exampleOutput.csv";
     private WriteCsvFileExample csvExample;
 
     @Before
@@ -65,12 +65,12 @@ public class WriteCsvFileExampleUnitTest {
     }
 
     @Test
-    public void givenDataArray_whenConvertToCSV_thenOutputCreated() {
+    public void givenDataArray_whenConvertToCSV_thenOutputCreated() throws IOException {
         List<String[]> dataLines = new ArrayList<String[]>();
         dataLines.add(new String[] { "John", "Doe", "38", "Comment Data\nAnother line of comment data" });
         dataLines.add(new String[] { "Jane", "Doe, Jr.", "19", "She said \"I'm being quoted\"" });
 
-        File csvOutputFile = new File(CSV_FILE_NAME);
+        File csvOutputFile = File.createTempFile("exampleOutput", ".csv");
         try (PrintWriter pw = new PrintWriter(csvOutputFile)) {
             dataLines.stream()
                 .map(csvExample::convertToCSV)
@@ -80,5 +80,6 @@ public class WriteCsvFileExampleUnitTest {
         }
 
         assertTrue(csvOutputFile.exists());
+        csvOutputFile.deleteOnExit();
     }
 }

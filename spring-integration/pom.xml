@@ -4,8 +4,8 @@
     <groupId>com.baeldung.samples.spring.integration</groupId>
     <artifactId>spring-integration</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-integration</name>
+    <packaging>jar</packaging>
     <url>http://www.springsource.org/spring-integration</url>
 
     <parent>
