@@ -8,8 +8,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
-- [HATEOAS for a Spring REST Service](http://www.baeldung.com/rest-api-discoverability-with-spring)
-- [REST API Discoverability and HATEOAS](http://www.baeldung.com/restful-web-service-discoverability)
 - [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
 - [Integration Testing with the Maven Cargo plugin](http://www.baeldung.com/integration-testing-with-the-maven-cargo-plugin)
 - [Introduction to Spring Data JPA](http://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
