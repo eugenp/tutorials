@@ -50,7 +50,7 @@
                                     <message>Missing active profiles</message>
                                 </requireActiveProfile>
                                 <!--other rules -->
-                                <myCustomRule implementation="com.baeldung.enforcer.MyCustomRule"/>
+                                <!--<myCustomRule implementation="com.baeldung.enforcer.MyCustomRule"/>-->
                             </rules>
                         </configuration>
                     </execution>
