@@ -16,13 +16,13 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>3.0.0-M2</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>com.baeldung</groupId>
-                        <artifactId>custom-rule</artifactId>
-                        <version>1.0</version>
-                    </dependency>
-                </dependencies>
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>com.baeldung</groupId>-->
+                        <!--<artifactId>custom-rule</artifactId>-->
+                        <!--<version>1.0</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
                 <executions>
                     <execution>
                         <id>enforce</id>
