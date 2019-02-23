@@ -41,13 +41,16 @@
                                 </requireJavaVersion>
                                 <requireEnvironmentVariable>
                                     <variableName>ui</variableName>
+                                    <level>WARN</level>
                                 </requireEnvironmentVariable>
                                 <requireEnvironmentVariable>
                                     <variableName>cook</variableName>
+                                    <level>WARN</level>
                                 </requireEnvironmentVariable>
                                 <requireActiveProfile>
                                     <profiles>local,base</profiles>
                                     <message>Missing active profiles</message>
+                                    <level>WARN</level>
                                 </requireActiveProfile>
                                 <!--other rules -->
                                 <!--<myCustomRule implementation="com.baeldung.enforcer.MyCustomRule"/>-->
