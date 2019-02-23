@@ -114,7 +114,6 @@ public class StreamReduceUnitTest {
         for (int i = 0; i <= 1000000; i++) {
             userList.add(new User("John" + i, i));
         }
-        
         long currentTime1 = System.currentTimeMillis();
         userList.stream().reduce(0, (partialAgeResult, user) -> partialAgeResult + user.getAge(), Integer::sum);
         long sequentialExecutionTime = System.currentTimeMillis() -currentTime1;
