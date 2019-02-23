@@ -9,6 +9,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.oxm.xstream.XStreamMarshaller;
+import org.springframework.web.filter.ShallowEtagHeaderFilter;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
@@ -45,5 +46,15 @@ public class WebConfig implements WebMvcConfigurer {
 //
 //        return xmlConverter;
 //    }
+    
+    
+    // Etags
+    
+    // If we're not using Spring Boot we can make use of
+    // AbstractAnnotationConfigDispatcherServletInitializer#getServletFilters
+    @Bean
+    public ShallowEtagHeaderFilter shallowEtagHeaderFilter() {
+        return new ShallowEtagHeaderFilter();
+    }
 
 }

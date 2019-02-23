@@ -8,3 +8,4 @@ Module for the articles that are part of the Spring REST E-book:
 6. [REST API Discoverability and HATEOAS](http://www.baeldung.com/restful-web-service-discoverability)
 7. [Versioning a REST API](http://www.baeldung.com/rest-versioning)
 8. [Http Message Converters with the Spring Framework](http://www.baeldung.com/spring-httpmessageconverter-rest)
+9. [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
