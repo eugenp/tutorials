@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: client-service
+  cloud:
+    config:
+      uri: http://localhost:8088
