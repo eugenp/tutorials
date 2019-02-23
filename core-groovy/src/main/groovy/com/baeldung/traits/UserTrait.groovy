@@ -22,7 +22,7 @@ trait UserTrait implements Human {
         msg
     }
     
-    def whoAmI() {
+    def self() {
         return this 
     }
     
