@@ -41,6 +41,15 @@ public class SqlInjectionSamplesApplicationUnitTest {
     }
 
     @Test
+    public void givenAVulnerableJpaMethod_whenHackedCustomerId_thenReturnAllAccounts() {
+
+        List<AccountDTO> accounts = target.unsafeJpaFindAccountsByCustomerId("C1' or '1'='1");
+        assertThat(accounts).isNotNull();
+        assertThat(accounts).isNotEmpty();
+        assertThat(accounts).hasSize(3);
+    }
+    
+    @Test
     public void givenASafeMethod_whenHackedCustomerId_thenReturnNoAccounts() {
 
         List<AccountDTO> accounts = target.safeFindAccountsByCustomerId("C1' or '1'='1");
@@ -48,13 +57,36 @@ public class SqlInjectionSamplesApplicationUnitTest {
         assertThat(accounts).isEmpty();
     }
 
+    @Test
+    public void givenASafeJpaMethod_whenHackedCustomerId_thenReturnNoAccounts() {
+
+        List<AccountDTO> accounts = target.safeJpaFindAccountsByCustomerId("C1' or '1'='1");
+        assertThat(accounts).isNotNull();
+        assertThat(accounts).isEmpty();
+    }
+
+
+    @Test
+    public void givenASafeJpaCriteriaMethod_whenHackedCustomerId_thenReturnNoAccounts() {
+
+        List<AccountDTO> accounts = target.safeJpaCriteriaFindAccountsByCustomerId("C1' or '1'='1");
+        assertThat(accounts).isNotNull();
+        assertThat(accounts).isEmpty();
+    }
+    
     @Test(expected = IllegalArgumentException.class)
     public void givenASafeMethod_whenInvalidOrderBy_thenThroweException() {
         target.safeFindAccountsByCustomerId("C1", "INVALID");
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test(expected = Exception.class)
     public void givenWrongPlaceholderUsageMethod_whenNormalCall_thenThrowsException() {        
         target.wrongCountRecordsByTableName("Accounts");
     }
+
+    @Test(expected = Exception.class)
+    public void givenWrongJpaPlaceholderUsageMethod_whenNormalCall_thenThrowsException() {        
+        target.wrongJpaCountRecordsByTableName("Accounts");
+    }
+    
 }

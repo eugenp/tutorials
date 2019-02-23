@@ -6,3 +6,4 @@ Module for the articles that are part of the Spring REST E-book:
 4. [Build a REST API with Spring and Java Config](http://www.baeldung.com/building-a-restful-web-service-with-spring-and-java-based-configuration)
 5. [HATEOAS for a Spring REST Service](http://www.baeldung.com/rest-api-discoverability-with-spring)
 6. [REST API Discoverability and HATEOAS](http://www.baeldung.com/restful-web-service-discoverability)
+7. [Http Message Converters with the Spring Framework](http://www.baeldung.com/spring-httpmessageconverter-rest)
