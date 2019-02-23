@@ -88,14 +88,14 @@ public class StreamReduceUnitTest {
     }
 
     @Test
-    public void givenNumberUtilsClass_whenCalledDivideListElementsAndListContainsZero_thenCorrect() {
+    public void givenNumberUtilsClass_whenCalledDivideListElementsWithExtractedTryCatchBlockAndListContainsZero_thenCorrect() {
         List<Integer> numbers = Arrays.asList(0, 1, 2, 3, 4, 5, 6);
         
         assertThat(NumberUtils.divideListElementsWithExtractedTryCatchBlock(numbers, 1)).isEqualTo(21);
     }
     
     @Test
-    public void givenNumberUtilsClass_whenCalledDivideListElementsAndDividerIsZero_thenCorrect() {
+    public void givenNumberUtilsClass_whenCalledDivideListElementsWithExtractedTryCatchBlockAndDividerIsZero_thenCorrect() {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         
         assertThat(NumberUtils.divideListElementsWithExtractedTryCatchBlock(numbers, 0)).isEqualTo(0);
