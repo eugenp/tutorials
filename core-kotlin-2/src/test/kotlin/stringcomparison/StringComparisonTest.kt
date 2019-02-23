@@ -1,4 +1,4 @@
-package com.baeldung.stringcomparison
+package stringcomparison
 
 import org.junit.Test
 import kotlin.test.assertFalse
