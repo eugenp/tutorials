@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class ViolateOrderBusinessRulesTest {
+public class ViolateOrderBusinessRulesUnitTest {
     @DisplayName("given two non-zero order line items, when create an order with them, it's possible to set total cost to zero")
     @Test
     void test() throws Exception {
