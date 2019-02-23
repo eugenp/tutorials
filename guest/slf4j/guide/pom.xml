@@ -59,6 +59,5 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <powermock.version>2.0.0-beta.5</powermock.version>
-        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
     </properties>
 </project>
