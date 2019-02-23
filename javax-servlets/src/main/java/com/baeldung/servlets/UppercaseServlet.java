@@ -13,8 +13,6 @@ public class UppercaseServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String inputString = request.getParameter("input").toUpperCase();
 
-        response.setContentType("text/html");
-
         PrintWriter out = response.getWriter();
 
         out.println(inputString);

@@ -11,8 +11,6 @@ import java.io.PrintWriter;
 public class CounterServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-
         PrintWriter out = response.getWriter();
 
         int count = (int)request.getServletContext().getAttribute("counter");
