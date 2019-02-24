@@ -18,7 +18,13 @@ public class Server {
             System.out.println("Got connection from client.");
             //Get input stream from socket variable and convert the same to DataInputStream
             in = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
-            byte[] messageByte = new byte[1000];
+            //Read type and length of data
+            char dataType = in.readChar();
+            int length = in.readInt();
+            System.out.println("Type : "+dataType);
+            System.out.println("Lenght :"+length);
+            //Read String data in bytes
+            byte[] messageByte = new byte[length];
             boolean end = false;
             String dataString = "";
             int totalBytesRead = 0;
@@ -26,20 +32,21 @@ public class Server {
             while(!end) {
                 int currentBytesRead = in.read(messageByte);
                 totalBytesRead = currentBytesRead + totalBytesRead;
-                if(totalBytesRead <= 10) {
+                if(totalBytesRead <= length) {
                     dataString += new String(messageByte,0,currentBytesRead);   
                 } else {
-                    dataString += new String(messageByte,0,10 - totalBytesRead + currentBytesRead); 
+                    dataString += new String(messageByte,0,length - totalBytesRead + currentBytesRead); 
                 }
-                if(dataString.length()>=10) {
+                if(dataString.length()>=length) {
                     end = true;
                 }
             }
-            System.out.println("Read 10 bytes of message from client. Message = "+dataString);;
+            System.out.println("Read "+length+" bytes of message from client. Message = "+dataString);;
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    
     public static void main(String[] args) {
         //Run Server
         Server server = new Server();

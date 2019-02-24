@@ -18,17 +18,21 @@ public class Client {
         } catch(Exception e) {
             e.printStackTrace();
         }
-        //Read 100 bytes of data from console and send to server
-        String data = "";
+        char type = 's'; // s for string
+        int length = 29;
+        String data = "This is a string of length 29";
+        byte[] dataInBytes = data.getBytes();         
+        //Sending data in TLV format        
         try {
-            data = in.readLine();
-            out.writeUTF(data);
+            out.writeChar(type);
+            out.writeInt(length);
+            out.write(dataInBytes);
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
     }
+    
     public static void main(String[] args) {
         // Start Client
         Client client = new Client();
