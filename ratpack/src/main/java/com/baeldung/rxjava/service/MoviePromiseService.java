@@ -1,8 +1,8 @@
-package com.baeldung.ratpack.intro.rxjava.service;
+package com.baeldung.rxjava.service;
 
 import java.util.List;
 
-import com.baeldung.ratpack.intro.model.Movie;
+import com.baeldung.model.Movie;
 
 import ratpack.exec.Promise;
 

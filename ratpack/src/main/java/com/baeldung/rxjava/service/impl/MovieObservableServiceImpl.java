@@ -1,7 +1,7 @@
-package com.baeldung.ratpack.intro.rxjava.service.impl;
+package com.baeldung.rxjava.service.impl;
 
-import com.baeldung.ratpack.intro.model.Movie;
-import com.baeldung.ratpack.intro.rxjava.service.MovieObservableService;
+import com.baeldung.model.Movie;
+import com.baeldung.rxjava.service.MovieObservableService;
 
 import rx.Observable;
 

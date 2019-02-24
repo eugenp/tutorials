@@ -1,4 +1,4 @@
-package com.baeldung.ratpack.intro.rxjava;
+package com.baeldung.rxjava;
 
 import ratpack.error.ServerErrorHandler;
 import ratpack.rx.RxRatpack;
