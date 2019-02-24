@@ -223,6 +223,12 @@
             <artifactId>serenity-spring</artifactId>
             <version>${serenity.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-test</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.serenity-bdd</groupId>
@@ -318,6 +324,12 @@
             <artifactId>pact-jvm-consumer-junit_2.11</artifactId>
             <version>${pact.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.codehaus.groovy</groupId>
+                    <artifactId>groovy-all</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
@@ -675,15 +687,18 @@
             <version>${mockftpserver.version}</version>
             <scope>test</scope>
         </dependency>
-		
-		<!-- Reflections -->
+        <dependency>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <version>1.5.7.1</version>
+        </dependency>
+      	<!-- Reflections -->
 		<dependency>
 			<groupId>org.reflections</groupId>
 			<artifactId>reflections</artifactId>
 			<version>${reflections.version}</version>
 		</dependency>
 	</dependencies>
-
     </dependencies>
 
     <repositories>
@@ -694,10 +709,6 @@
             <id>bintray-cuba-platform-main</id>
             <name>bintray</name>
             <url>http://dl.bintray.com/cuba-platform/main</url>
-        </repository>
-        <repository>
-            <id>Apache Staging</id>
-            <url>https://repository.apache.org/content/groups/staging</url>
         </repository>
         <repository>
             <id>nm-repo</id>
@@ -742,7 +753,7 @@
                     <api>JDO</api>
                     <props>${basedir}/datanucleus.properties</props>
                     <log4jConfiguration>${basedir}/log4j.properties</log4jConfiguration>
-                    <verbose>true</verbose>
+                    <verbose>false</verbose>
                     <fork>false</fork>
                     <!-- Solve windows line too long error -->
                 </configuration>
@@ -905,7 +916,8 @@
         <derive4j.version>1.1.0</derive4j.version>
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
-		<reflections.version>0.9.11</reflections.version>
+        <reflections.version>0.9.11</reflections.version>
+
     </properties>
 
 </project>
