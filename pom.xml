@@ -475,6 +475,7 @@
                 <module>kotlin-libraries</module>
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+		<module>libraries</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-security</module>

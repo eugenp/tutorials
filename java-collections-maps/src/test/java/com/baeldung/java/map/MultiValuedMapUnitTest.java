@@ -9,8 +9,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.apache.commons.collections4.MultiMapUtils;
+import org.apache.commons.collections4.MultiSet;
 import org.apache.commons.collections4.MultiValuedMap;
 import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 import org.apache.commons.collections4.multimap.HashSetValuedHashMap;
@@ -65,25 +67,28 @@ public class MultiValuedMapUnitTest {
     @Test
     public void givenMultiValuesMap_whenUsingKeysMethod_thenReturningAllKeys() {
         MultiValuedMap<String, String> map = new ArrayListValuedHashMap<>();
-
         map.put("fruits", "apple");
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
         
-        assertThat(((Collection<String>) map.keys())).contains("fruits", "vehicles");
+        MultiSet<String> keys = map.keys();
+        
+        assertThat((keys)).contains("fruits", "vehicles");
+
     }
 
     @Test
     public void givenMultiValuesMap_whenUsingKeySetMethod_thenReturningAllKeys() {
         MultiValuedMap<String, String> map = new ArrayListValuedHashMap<>();
-
         map.put("fruits", "apple");
         map.put("fruits", "orange");
         map.put("vehicles", "car");
         map.put("vehicles", "bike");
         
-        assertThat((Collection<String>) map.keySet()).contains("fruits", "vehicles");
+        Set<String> keys = map.keySet();
+        
+        assertThat(keys).contains("fruits", "vehicles");
 
     }
 
