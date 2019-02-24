@@ -8,7 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 
-public class StreamReduceUnitTest {
+public class StreamReduceManualTest {
 
     @Test
     public void givenIntegerList_whenReduceWithSumAccumulatorLambda_thenCorrect() {
