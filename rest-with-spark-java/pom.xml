@@ -23,19 +23,17 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>${jackson-core.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <spark-core.version>2.5.4</spark-core.version>
-        <jackson-core.version>2.9.7</jackson-core.version>
-        <jackson-databind.version>2.9.7</jackson-databind.version>
     </properties>
 
 </project>

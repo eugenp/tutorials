@@ -3,16 +3,13 @@ package com.baeldung.jackson.dtos;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 @JacksonXmlRootElement(localName = "person")
 public final class Person {
     private String firstName;
     private String lastName;
-    @JacksonXmlElementWrapper(useWrapping = false)
     private List<String> phoneNumbers = new ArrayList<>();
-    @JacksonXmlElementWrapper(localName = "addresses")
     private List<Address> address = new ArrayList<>();
 
     public List<Address> getAddress() {
@@ -38,6 +35,7 @@ public final class Person {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public List<String> getPhoneNumbers() {
         return phoneNumbers;
     }
@@ -45,7 +43,5 @@ public final class Person {
     public void setPhoneNumbers(List<String> phoneNumbers) {
         this.phoneNumbers = phoneNumbers;
     }
-
-
 
 }

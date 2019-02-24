@@ -9,10 +9,10 @@
     <description>DDD series examples</description>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
+        <artifactId>parent-boot-2</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -86,6 +86,7 @@
     <properties>
         <joda-money.version>1.0.1</joda-money.version>
         <maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+        <spring-boot.version>2.0.6.RELEASE</spring-boot.version>
     </properties>
 	
 </project>
