@@ -11,7 +11,7 @@ import org.joda.money.Money;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class OrderTest {
+class OrderUnitTest {
     @DisplayName("given order with two items, when calculate total cost, then sum is returned")
     @Test
     void test0() throws Exception {

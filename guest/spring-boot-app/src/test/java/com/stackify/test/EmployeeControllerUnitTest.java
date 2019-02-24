@@ -21,7 +21,7 @@ import com.stackify.Application;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Application.class)
 @WebAppConfiguration
-public class EmployeeControllerTest {
+public class EmployeeControllerUnitTest {
 
     private static final String CONTENT_TYPE = "application/json;charset=UTF-8";
 

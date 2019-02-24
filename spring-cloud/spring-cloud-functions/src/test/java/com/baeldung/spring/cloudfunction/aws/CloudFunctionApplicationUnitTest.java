@@ -12,7 +12,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CloudFunctionApplicationTests {
+public class CloudFunctionApplicationUnitTest {
 
     @LocalServerPort
     private int port;
