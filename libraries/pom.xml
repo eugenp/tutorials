@@ -845,7 +845,6 @@
         <serenity.jira.version>1.9.0</serenity.jira.version>
         <serenity.plugin.version>1.9.27</serenity.plugin.version>
         <jUnitParams.version>1.1.0</jUnitParams.version>
-        <junit.version>4.12</junit.version>
         <java-lsh.version>0.10</java-lsh.version>
         <pact.version>3.5.0</pact.version>
         <awaitility.version>3.0.0</awaitility.version>
