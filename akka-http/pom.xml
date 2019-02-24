@@ -23,7 +23,7 @@
 		<dependency>
 			<groupId>com.typesafe.akka</groupId>
 			<artifactId>akka-stream_2.12</artifactId>
-			<version>2.5.11</version>
+			<version>${akka.stream.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.typesafe.akka</groupId>

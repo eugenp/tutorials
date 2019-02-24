@@ -2,10 +2,7 @@ package com.baeldung.config;
 
 import com.google.common.base.Preconditions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -20,6 +17,7 @@ import java.util.HashMap;
 @Configuration
 @PropertySource({"classpath:persistence-multiple-db.properties"})
 @EnableJpaRepositories(basePackages = "com.baeldung.dao.repositories.user", entityManagerFactoryRef = "userEntityManager", transactionManagerRef = "userTransactionManager")
+@Profile("!tc")
 public class PersistenceUserConfiguration {
     @Autowired
     private Environment env;

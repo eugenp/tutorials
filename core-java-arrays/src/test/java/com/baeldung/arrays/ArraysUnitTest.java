@@ -1,5 +1,7 @@
 package com.baeldung.arrays;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -9,6 +11,7 @@ import org.junit.rules.ExpectedException;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Stream;
 
 public class ArraysUnitTest {
@@ -150,4 +153,52 @@ public class ArraysUnitTest {
         exception.expect(UnsupportedOperationException.class);
         rets.add("the");
     }
+
+    @Test
+    public void givenIntArray_whenPrefixAdd_thenAllAccumulated() {
+        int[] arri = new int[] { 1, 2, 3, 4};
+        Arrays.parallelPrefix(arri, (left, right) -> left + right);
+        assertThat(arri, is(new int[] { 1, 3, 6, 10}));
+    }
+
+    @Test
+    public void givenStringArray_whenPrefixConcat_thenAllMerged() {
+        String[] arrs = new String[] { "1", "2", "3" };
+        Arrays.parallelPrefix(arrs, (left, right) -> left + right);
+        assertThat(arrs, is(new String[] { "1", "12", "123" }));
+    }
+
+    @Test
+    public void whenPrefixAddWithRange_thenRangeAdded() {
+        int[] arri = new int[] { 1, 2, 3, 4, 5 };
+        Arrays.parallelPrefix(arri, 1, 4, (left, right) -> left + right);
+        assertThat(arri, is(new int[] { 1, 2, 5, 9, 5 }));
+    }
+
+    @Test
+    public void whenPrefixNonAssociative_thenError() {
+        boolean consistent = true;
+        Random r = new Random();
+        for (int k = 0; k < 100_000; k++) {
+            int[] arrA = r.ints(100, 1, 5).toArray();
+            int[] arrB = Arrays.copyOf(arrA, arrA.length);
+
+            Arrays.parallelPrefix(arrA, this::nonassociativeFunc);
+
+            for (int i = 1; i < arrB.length; i++) {
+                arrB[i] = nonassociativeFunc(arrB[i - 1], arrB[i]);
+            }
+            consistent = Arrays.equals(arrA, arrB);
+            if(!consistent) break;
+        }
+        assertFalse(consistent);
+    }
+
+    /**
+     * non-associative int binary operator
+     */
+    private int nonassociativeFunc(int left, int right) {
+        return left + right*left;
+    }
+
 }

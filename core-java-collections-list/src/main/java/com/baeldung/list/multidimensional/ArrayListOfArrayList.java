@@ -10,7 +10,7 @@ public class ArrayListOfArrayList {
         ArrayList<ArrayList<Integer>> graph = new ArrayList<>(vertexCount);
 
         //Initializing each element of ArrayList with ArrayList
-        for(int i=0; i< vertexCount; i++) {
+        for(int i = 0; i< vertexCount; i++) {
             graph.add(new ArrayList<Integer>());
         }
 
@@ -21,7 +21,7 @@ public class ArrayListOfArrayList {
         graph.get(1).add(0);
         graph.get(2).add(1);
         graph.get(0).add(2);
-        
+
         vertexCount = graph.size();
         for(int i = 0; i < vertexCount; i++) {
             int edgeCount = graph.get(i).size();
