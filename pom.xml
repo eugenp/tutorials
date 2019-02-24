@@ -1630,7 +1630,7 @@
 		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
 		<jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
 		<jstl.version>1.2</jstl.version>
-		<jackson-databind.version>2.9.7</jackson-databind.version>
+		<jackson.version>2.9.7</jackson.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
 		<junit-platform.version>1.2.0</junit-platform.version>
 		<junit-jupiter.version>5.2.0</junit-jupiter.version>
@@ -1641,5 +1641,6 @@
 		<maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
 		<!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
 		<maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
+		<lombok.version>1.16.12</lombok.version>
 	</properties>
 </project>
