@@ -561,7 +561,7 @@
                 <module>reactor-core</module>
                 <module>rest-with-spark-java</module>
                 <module>resteasy</module>
-                <!-- <module>restx</module> --> <!-- Tests failing. Fixing in BAEL-10944 -->
+                <module>restx</module>
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines/easy-rules</module>
                 <module>rule-engines/openl-tablets</module>
@@ -1280,7 +1280,7 @@
                 <module>reactor-core</module>
                 <module>rest-with-spark-java</module>
                 <module>resteasy</module>
-                <!-- <module>restx</module> --> <!-- Tests failing. Fixing in BAEL-10944 -->
+                <module>restx</module>
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines/easy-rules</module>
                 <module>rule-engines/openl-tablets</module>
