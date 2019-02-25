@@ -12,7 +12,7 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { MultiBucketCouchbaseConfig.class, MultiBucketIntegrationTestConfig.class })
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
-public class SpringContextIntegrationTest {
+public class SpringContextLiveTest {
 
     @Test
     public void whenSpringContextIsBootstrapped_thenNoExceptions() {
