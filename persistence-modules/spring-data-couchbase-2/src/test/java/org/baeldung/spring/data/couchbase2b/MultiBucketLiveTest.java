@@ -9,6 +9,6 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { MultiBucketCouchbaseConfig.class, MultiBucketIntegrationTestConfig.class })
 @TestExecutionListeners(listeners = { DependencyInjectionTestExecutionListener.class })
-public abstract class MultiBucketIntegrationTest {
+public abstract class MultiBucketLiveTest {
 
 }

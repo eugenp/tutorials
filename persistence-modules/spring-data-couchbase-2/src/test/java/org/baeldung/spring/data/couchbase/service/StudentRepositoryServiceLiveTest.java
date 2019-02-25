@@ -3,10 +3,10 @@ package org.baeldung.spring.data.couchbase.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
-public class StudentTemplateServiceIntegrationTest extends StudentServiceIntegrationTest {
+public class StudentRepositoryServiceLiveTest extends StudentServiceLiveTest {
 
     @Autowired
-    @Qualifier("StudentTemplateService")
+    @Qualifier("StudentRepositoryService")
     public void setStudentService(StudentService service) {
         this.studentService = service;
     }
