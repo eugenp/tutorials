@@ -35,5 +35,5 @@ public class LeapYearUnitTest {
 		LocalDate date = LocalDate.parse("2020-01-05", DateTimeFormatter.ISO_LOCAL_DATE);
 		Assert.assertTrue(Year.from(date).isLeap());
 	}
-
+	
 }
