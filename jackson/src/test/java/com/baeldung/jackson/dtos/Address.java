@@ -2,17 +2,8 @@ package com.baeldung.jackson.dtos;
 
 public class Address {
 
-    String streetNumber;
     String streetName;
     String city;
-
-    public String getStreetNumber() {
-        return streetNumber;
-    }
-
-    public void setStreetNumber(String streetNumber) {
-        this.streetNumber = streetNumber;
-    }
 
     public String getStreetName() {
         return streetName;

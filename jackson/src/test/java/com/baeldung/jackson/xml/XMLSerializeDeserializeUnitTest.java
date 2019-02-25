@@ -74,24 +74,18 @@ public class XMLSerializeDeserializeUnitTest {
     public void whenJavaDeserializedFromXmlFile_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
 
-        String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><streetNumber>1</streetNumber><streetName>Name1</streetName><city>City1</city></address><address><streetNumber>2</streetNumber><streetName>Name2</streetName><city>City2</city></address></address></person>";
+        String xml = "<Person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><streetName>Name1</streetName><city>City1</city></address><address><streetName>Name2</streetName><city>City2</city></address></Person>";
         Person value = xmlMapper.readValue(xml, Person.class);
 
-        assertTrue(value.getAddress()
-            .get(0)
-            .getCity()
-            .equalsIgnoreCase("city1")
-            && value.getAddress()
-                .get(1)
-                .getCity()
-                .equalsIgnoreCase("city2"));
+        assertEquals("City1", value.getAddress().get(0).getCity());
+        assertEquals("City2", value.getAddress().get(1).getCity());
     }
 
     @Test
     public void whenJavaSerializedToXmlFile_thenSuccess() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
 
-        String expectedXml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><streetNumber>1</streetNumber><streetName>Name1</streetName><city>City1</city></address><address><streetNumber>2</streetNumber><streetName>Name2</streetName><city>City2</city></address></address></person>";
+        String xml = "<Person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><streetName>Name1</streetName><city>City1</city></address><address><streetName>Name2</streetName><city>City2</city></address></Person>";
 
         Person person = new Person();
 
@@ -106,12 +100,10 @@ public class XMLSerializeDeserializeUnitTest {
         List<Address> addresses = new ArrayList<>();
 
         Address address1 = new Address();
-        address1.setStreetNumber("1");
         address1.setStreetName("Name1");
         address1.setCity("City1");
 
         Address address2 = new Address();
-        address2.setStreetNumber("2");
         address2.setStreetName("Name2");
         address2.setCity("City2");
 
@@ -122,7 +114,7 @@ public class XMLSerializeDeserializeUnitTest {
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         xmlMapper.writeValue(byteArrayOutputStream, person);
-        assertEquals(expectedXml, byteArrayOutputStream.toString());
+        assertEquals(xml, byteArrayOutputStream.toString());
     }
 
     private static String inputStreamToString(InputStream is) throws IOException {
