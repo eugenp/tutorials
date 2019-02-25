@@ -3,9 +3,6 @@ package com.baeldung.jackson.dtos;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-
-@JacksonXmlRootElement(localName = "person")
 public final class Person {
     private String firstName;
     private String lastName;
