@@ -100,10 +100,12 @@ public class XMLSerializeDeserializeUnitTest {
         List<Address> addresses = new ArrayList<>();
 
         Address address1 = new Address();
+
         address1.setStreetName("Name1");
         address1.setCity("City1");
 
         Address address2 = new Address();
+
         address2.setStreetName("Name2");
         address2.setCity("City2");
 
@@ -114,7 +116,9 @@ public class XMLSerializeDeserializeUnitTest {
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         xmlMapper.writeValue(byteArrayOutputStream, person);
+
         assertEquals(xml, byteArrayOutputStream.toString());
+
     }
 
     private static String inputStreamToString(InputStream is) throws IOException {

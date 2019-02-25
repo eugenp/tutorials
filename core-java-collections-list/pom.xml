@@ -70,7 +70,6 @@
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <avaitility.version>1.7.0</avaitility.version>
         <assertj.version>3.11.1</assertj.version>
-        <lombok.version>1.16.12</lombok.version>
 		<trove4j.version>3.0.2</trove4j.version>
 		<fastutil.version>8.1.0</fastutil.version>
 		<colt.version>1.2.0</colt.version>
