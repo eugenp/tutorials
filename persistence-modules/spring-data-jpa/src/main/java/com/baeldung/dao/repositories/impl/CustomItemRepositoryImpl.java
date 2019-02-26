@@ -56,13 +56,13 @@ public class CustomItemRepositoryImpl implements CustomItemRepository {
 
 		criteriaQuery.where(finalPredicate);
 
-		List<Item> phones = entityManager.createQuery(criteriaQuery).getResultList();
-		return phones;
+		List<Item> items = entityManager.createQuery(criteriaQuery).getResultList();
+		return items;
 	}
 
 	@Override
 	public List<Item> findItemByColorOrGrade() {
-		
+
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Item> criteriaQuery = criteriaBuilder.createQuery(Item.class);
 		Root<Item> itemRoot = criteriaQuery.from(Item.class);
@@ -80,7 +80,7 @@ public class CustomItemRepositoryImpl implements CustomItemRepository {
 
 		criteriaQuery.where(finalPredicate);
 
-		List<Item> phones = entityManager.createQuery(criteriaQuery).getResultList();
-		return phones;
+		List<Item> items = entityManager.createQuery(criteriaQuery).getResultList();
+		return items;
 	}
 }
