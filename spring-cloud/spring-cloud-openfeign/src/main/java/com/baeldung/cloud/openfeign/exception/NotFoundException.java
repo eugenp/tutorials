@@ -1,17 +1,12 @@
 package com.baeldung.cloud.openfeign.exception;
 
-
-public class NotFoundException extends Exception{
-
-    private String message;
+public class NotFoundException extends Exception {
 
     public NotFoundException() {
-        super();
     }
 
     public NotFoundException(String message) {
-        super();
-        this.message = message;
+        super(message);
     }
 
     public NotFoundException(Throwable cause) {
@@ -20,11 +15,7 @@ public class NotFoundException extends Exception{
 
     @Override
     public String toString() {
-        return "NotFoundException: "+message;
+        return "NotFoundException: "+getMessage();
     }
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

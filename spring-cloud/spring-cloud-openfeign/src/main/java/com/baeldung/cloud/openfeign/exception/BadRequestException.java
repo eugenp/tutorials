@@ -2,15 +2,11 @@ package com.baeldung.cloud.openfeign.exception;
 
 public class BadRequestException extends Exception{
 
-    private String message;
-
     public BadRequestException() {
-        super();
     }
 
     public BadRequestException(String message) {
-        super();
-        this.message = message;
+        super(message);
     }
 
     public BadRequestException(Throwable cause) {
@@ -19,11 +15,7 @@ public class BadRequestException extends Exception{
 
     @Override
     public String toString() {
-        return "BadRequestException: "+message;
+        return "BadRequestException: "+getMessage();
     }
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }
