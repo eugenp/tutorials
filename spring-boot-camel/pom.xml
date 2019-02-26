@@ -5,7 +5,8 @@
     <groupId>com.example</groupId>
     <artifactId>spring-boot-camel</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+	<name>spring-boot-camel</name>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

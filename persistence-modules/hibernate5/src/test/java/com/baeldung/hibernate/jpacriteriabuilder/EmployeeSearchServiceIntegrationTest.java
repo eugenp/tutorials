@@ -81,42 +81,41 @@ public class EmployeeSearchServiceIntegrationTest {
 
     @Test
     public final void givenCriteriaQuery_whenSearchedUsingCriteriaBuilderWithListofAuthors_thenResultIsFilteredByAuthorNames() {
-        List<String> designations = new ArrayList<String>() {
+        List<String> titles = new ArrayList<String>() {
             {
                 add("Manager");
                 add("Senior Manager");
                 add("Director");
             }
         };
-        List<DeptEmployee> result = searchService.filterbyDesignationUsingCriteriaBuilder(designations);
+        List<DeptEmployee> result = searchService.filterbyTitleUsingCriteriaBuilder(titles);
         assertEquals("Number of Employees does not match with expected.", 6, result.size());
         assertThat(result.stream()
-            .map(DeptEmployee::getDesignation)
+            .map(DeptEmployee::getTitle)
             .distinct()
-            .collect(Collectors.toList()), containsInAnyOrder(designations.toArray()));
+            .collect(Collectors.toList()), containsInAnyOrder(titles.toArray()));
     }
 
     @Test
     public final void givenCriteriaQuery_whenSearchedUsingExpressionWithListofAuthors_thenResultIsFilteredByAuthorNames() {
-        List<String> designations = new ArrayList<String>() {
+        List<String> titles = new ArrayList<String>() {
             {
                 add("Manager");
                 add("Senior Manager");
                 add("Director");
             }
         };
-        List<DeptEmployee> result = searchService.filterbyDesignationUsingExpression(designations);
+        List<DeptEmployee> result = searchService.filterbyTitleUsingExpression(titles);
         assertEquals("Number of Employees does not match with expected.", 6, result.size());
         assertThat(result.stream()
-            .map(DeptEmployee::getDesignation)
+            .map(DeptEmployee::getTitle)
             .distinct()
-            .collect(Collectors.toList()), containsInAnyOrder(designations.toArray()));
+            .collect(Collectors.toList()), containsInAnyOrder(titles.toArray()));
     }
 
     @Test
     public final void givenCriteriaQuery_whenSearchedDepartmentLike_thenResultIsFilteredByDepartment() {
         List<DeptEmployee> result = searchService.searchByDepartmentQuery("Sales");
         assertEquals("Number of Employees does not match with expected.", 7, result.size());
-        // assertThat(result.stream().map(DeptEmployee::getDesignation).distinct().collect(Collectors.toList()), containsInAnyOrder(designations.toArray()));
     }
 }

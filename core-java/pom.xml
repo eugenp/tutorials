@@ -1,11 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>core-java</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>core-java</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -13,6 +12,7 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../parent-java</relativePath>
     </parent>
+
 
     <dependencies>
         <dependency>
@@ -24,11 +24,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15on</artifactId>
-            <version>${bouncycastle.version}</version>
         </dependency>
         <dependency>
             <groupId>org.unix4j</groupId>
@@ -76,12 +71,6 @@
             <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>commons-codec</groupId>
-            <artifactId>commons-codec</artifactId>
-            <version>${commons-codec.version}</version>
-        </dependency>
         <dependency>
             <groupId>org.javamoney</groupId>
             <artifactId>moneta</artifactId>
@@ -123,30 +112,9 @@
             <version>${jmh-generator-annprocess.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>${springframework.spring-web.version}</version>
-        </dependency>
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>${javax.mail.version}</version>
-        </dependency>
-        <!-- Mime Type Resolution Libraries -->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>${tika.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.jmimemagic</groupId>
-            <artifactId>jmimemagic</artifactId>
-            <version>${jmime-magic.version}</version>
         </dependency>
         <!-- instrumentation -->
         <dependency>
@@ -157,7 +125,7 @@
         <dependency>
             <groupId>com.sun</groupId>
             <artifactId>tools</artifactId>
-            <version>1.8.0</version>
+            <version>${sun.tools.version}</version>
             <scope>system</scope>
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
@@ -173,21 +141,6 @@
         </resources>
 
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>**/*LiveTest.java</exclude>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*IntTest.java</exclude>
-                        <exclude>**/*LongRunningUnitTest.java</exclude>
-                        <exclude>**/*ManualTest.java</exclude>
-                    </excludes>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -498,13 +451,11 @@
     <properties>
         
         <!-- marshalling -->
-        <jackson.version>2.8.5</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <gson.version>2.8.2</gson.version>
 
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
-        <bouncycastle.version>1.55</bouncycastle.version>
-        <commons-codec.version>1.10</commons-codec.version>
         <commons-io.version>2.5</commons-io.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <decimal4j.version>1.0.3</decimal4j.version>
@@ -521,7 +472,6 @@
 
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        <springframework.spring-web.version>4.3.4.RELEASE</springframework.spring-web.version>
         
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <h2database.version>1.4.197</h2database.version>
@@ -530,18 +480,15 @@
        
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
-        <javax.mail.version>1.5.0-b01</javax.mail.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
         <onejar-maven-plugin.version>1.4.4</onejar-maven-plugin.version>
         <maven-shade-plugin.version>3.1.1</maven-shade-plugin.version>
         <spring-boot-maven-plugin.version>2.0.3.RELEASE</spring-boot-maven-plugin.version>
         <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
         <icu4j.version>61.1</icu4j.version>
-        <!-- Mime Type Libraries -->
-        <tika.version>1.18</tika.version>
-        <jmime-magic.version>0.1.5</jmime-magic.version>
         <!-- instrumentation -->
         <javaassist.version>3.21.0-GA</javaassist.version>
+        
+        <sun.tools.version>1.8.0</sun.tools.version>
     </properties>
-
 </project>

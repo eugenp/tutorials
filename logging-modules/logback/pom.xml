@@ -42,7 +42,7 @@
     <properties>
         <logback.version>1.2.3</logback.version>
         <logback.contrib.version>0.1.5</logback.contrib.version>
-        <jackson.version>2.9.3</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
     </properties>
 
 </project>

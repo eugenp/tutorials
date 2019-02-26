@@ -33,3 +33,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Cache – Creating a Custom KeyGenerator](http://www.baeldung.com/spring-cache-custom-keygenerator)
 - [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
 - [Spring Events](https://www.baeldung.com/spring-events)
+- [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)

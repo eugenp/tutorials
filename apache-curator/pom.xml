@@ -4,6 +4,7 @@
     <artifactId>apache-curator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+	<name>apache-curator</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -58,7 +59,7 @@
     <properties>
         <curator.version>4.0.1</curator.version>
         <zookeeper.version>3.4.11</zookeeper.version>
-        <jackson-databind.version>2.9.4</jackson-databind.version>
+        <jackson-databind.version>2.9.7</jackson-databind.version>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
         <avaitility.version>1.7.0</avaitility.version>

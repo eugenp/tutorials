@@ -10,7 +10,7 @@ import io.grpc.ManagedChannelBuilder;
 public class GrpcClient {
     public static void main(String[] args) throws InterruptedException {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
-            .usePlaintext(true)
+            .usePlaintext()
             .build();
 
         HelloServiceGrpc.HelloServiceBlockingStub stub 

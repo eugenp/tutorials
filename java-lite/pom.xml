@@ -5,6 +5,7 @@
     <groupId>org.baeldung</groupId>
     <artifactId>java-lite</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>java-lite</name>
     <packaging>war</packaging>
 
     <parent>
@@ -94,7 +95,7 @@
         <activeweb.version>1.15</activeweb.version>
         <mysql.connector.java.version>5.1.45</mysql.connector.java.version>
         <sun.tools.version>1.7.0</sun.tools.version>
-        <jackson.version>1.8.2</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
         <activeweb-testing.version>1.15</activeweb-testing.version>
     </properties>
 

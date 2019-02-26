@@ -6,9 +6,9 @@ import com.baeldung.hibernate.entities.DeptEmployee;
 
 public interface EmployeeSearchService {
 
-    List<DeptEmployee> filterbyDesignationUsingCriteriaBuilder(List<String> designaitons);
+    List<DeptEmployee> filterbyTitleUsingCriteriaBuilder(List<String> titles);
 
-    List<DeptEmployee> filterbyDesignationUsingExpression(List<String> aurhors);
+    List<DeptEmployee> filterbyTitleUsingExpression(List<String> titles);
 
     List<DeptEmployee> searchByDepartmentQuery(String query);
 
