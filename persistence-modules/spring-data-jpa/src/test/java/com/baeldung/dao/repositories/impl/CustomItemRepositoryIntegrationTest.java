@@ -23,7 +23,7 @@ import org.springframework.util.CollectionUtils;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest(excludeAutoConfiguration = {PersistenceConfiguration.class, PersistenceUserConfiguration.class, PersistenceProductConfiguration.class})
-public class CustomItemRepositoryImplTest {
+public class CustomItemRepositoryIntegrationTest {
 
 	@Autowired
 	CustomItemRepository customItemRepositoryImpl;
