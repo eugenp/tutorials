@@ -412,7 +412,7 @@
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
                 
-                <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
+                <module>geotools</module>
                 <module>google-cloud</module>
                 <module>google-web-toolkit</module>
                 <!-- <module>gradle</module> --> <!-- Not a maven project -->
@@ -1130,7 +1130,7 @@
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
                 
-                <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
+                <module>geotools</module>
                 <module>google-cloud</module>
                 <module>google-web-toolkit</module>
                 <!-- <module>gradle</module> --> <!-- Not a maven project -->
