@@ -25,12 +25,12 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
     }
 
     @Override
-    public List<DeptEmployee> filterbyDesignationUsingCriteriaBuilder(List<String> designations) {
+    public List<DeptEmployee> filterbyTitleUsingCriteriaBuilder(List<String> titles) {
         CriteriaQuery<DeptEmployee> criteriaQuery = createCriteriaQuery(DeptEmployee.class);
         Root<DeptEmployee> root = criteriaQuery.from(DeptEmployee.class);
-        In<String> inClause = criteriaBuilder.in(root.get("designation"));
-        for (String designaiton : designations) {
-            inClause.value(designaiton);
+        In<String> inClause = criteriaBuilder.in(root.get("title"));
+        for (String title : titles) {
+            inClause.value(title);
         }
         criteriaQuery.select(root)
             .where(inClause);
@@ -39,12 +39,12 @@ public class EmployeeSearchServiceImpl implements EmployeeSearchService {
     }
 
     @Override
-    public List<DeptEmployee> filterbyDesignationUsingExpression(List<String> designations) {
+    public List<DeptEmployee> filterbyTitleUsingExpression(List<String> titles) {
         CriteriaQuery<DeptEmployee> criteriaQuery = createCriteriaQuery(DeptEmployee.class);
         Root<DeptEmployee> root = criteriaQuery.from(DeptEmployee.class);
         criteriaQuery.select(root)
-            .where(root.get("designation")
-                .in(designations));
+            .where(root.get("title")
+                .in(titles));
         TypedQuery<DeptEmployee> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();
     }

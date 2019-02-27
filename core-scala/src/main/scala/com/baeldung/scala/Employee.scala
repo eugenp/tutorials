@@ -22,6 +22,6 @@ class Employee(val name : String,
  * A Trait which will make the toString return upper case value.
  */
 trait UpperCasePrinter {
-  override def toString = super.toString toUpperCase
+  override def toString: String = super.toString toUpperCase
 }
 

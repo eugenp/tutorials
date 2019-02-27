@@ -1,7 +1,17 @@
 package com.baeldung.hibernate.entities;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@org.hibernate.annotations.NamedQueries({ @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindByEmployeeNumber", query = "from DeptEmployee where employeeNumber = :employeeNo"),
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDesgination", query = "from DeptEmployee where designation = :designation"),
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_UpdateEmployeeDepartment", query = "Update DeptEmployee set department = :newDepartment where employeeNumber = :employeeNo"),
+        @org.hibernate.annotations.NamedQuery(name = "DeptEmployee_FindAllByDepartment", query = "from DeptEmployee where department = :department", timeout = 1, fetchSize = 10) })
+@org.hibernate.annotations.NamedNativeQueries({ @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_FindByEmployeeName", query = "select * from deptemployee emp where name=:name", resultClass = DeptEmployee.class),
+        @org.hibernate.annotations.NamedNativeQuery(name = "DeptEmployee_UpdateEmployeeDesignation", query = "call UPDATE_EMPLOYEE_DESIGNATION(:employeeNumber, :newDesignation)", resultClass = DeptEmployee.class) })
 @Entity
 public class DeptEmployee {
     @Id
@@ -10,24 +20,24 @@ public class DeptEmployee {
 
     private String employeeNumber;
 
-    private String designation;
+    private String title;
 
     private String name;
 
     @ManyToOne
     private Department department;
-    
+
     public DeptEmployee(String name, String employeeNumber, Department department) {
         this.name = name;
         this.employeeNumber = employeeNumber;
         this.department = department;
     }
     
-    public DeptEmployee(String name, String employeeNumber, String designation, Department department) {
+    public DeptEmployee(String name, String employeeNumber, String title, Department department) {
         super();
         this.name = name;
         this.employeeNumber = employeeNumber;
-        this.designation = designation;
+        this.title = title;
         this.department = department;
     }
 
@@ -63,11 +73,11 @@ public class DeptEmployee {
         this.department = department;
     }
 
-    public String getDesignation() {
-        return designation;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDesignation(String designation) {
-        this.designation = designation;
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

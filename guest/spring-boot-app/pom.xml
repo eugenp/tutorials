@@ -4,6 +4,7 @@
     <groupId>spring-boot-app</groupId>
     <artifactId>spring-boot-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>spring-boot-app</name>
     <packaging>war</packaging>
 
     <parent>

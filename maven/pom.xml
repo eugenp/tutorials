@@ -4,6 +4,7 @@
     <groupId>com.baeldung</groupId>
     <artifactId>maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<name>maven</name>
     <packaging>war</packaging>
 
     <dependencies>

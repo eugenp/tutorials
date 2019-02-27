@@ -8,10 +8,10 @@
     <description>Intro to Kafka with Spring</description>
 
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -30,12 +30,11 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
-
     </dependencies>
 
     <properties>
-        <spring-kafka.version>1.1.3.RELEASE</spring-kafka.version>
-        <jackson.version>2.6.7</jackson.version>
+        <spring-kafka.version>2.2.2.RELEASE</spring-kafka.version>
+        <jackson.version>2.9.7</jackson.version>
     </properties>
 
 </project>

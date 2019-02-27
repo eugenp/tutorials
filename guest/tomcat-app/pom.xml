@@ -4,6 +4,7 @@
     <groupId>com.stackify</groupId>
     <artifactId>tomcat-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <name>tomcat-app</name>
     <packaging>war</packaging>
 
     <parent>

@@ -1,7 +1,9 @@
 package com.baeldung.spring.configuration;
 
-import com.baeldung.spring.controller.rss.ArticleRssFeedViewResolver;
-import com.baeldung.spring.controller.rss.JsonChannelHttpMessageConverter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -21,13 +23,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import com.baeldung.spring.controller.rss.ArticleRssFeedViewResolver;
+import com.baeldung.spring.controller.rss.JsonChannelHttpMessageConverter;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator", "com.baeldung.spring.mail" })
+@ComponentScan(basePackages = { "com.baeldung.springmvcforms", "com.baeldung.spring.controller", "com.baeldung.spring.validator", "com.baeldung.spring.mail", "com.baeldung.spring.service" })
 public class ApplicationConfiguration implements WebMvcConfigurer {
 
     @Override

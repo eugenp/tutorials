@@ -4,7 +4,8 @@
     <groupId>com.stackify</groupId>
     <artifactId>core-java-9</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+	<name>core-java-9</name>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
