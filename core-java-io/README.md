@@ -11,7 +11,7 @@
 - [Java – Byte Array to Writer](http://www.baeldung.com/java-convert-byte-array-to-writer)
 - [Java – Directory Size](http://www.baeldung.com/java-folder-size)
 - [Differences Between the Java WatchService API and the Apache Commons IO Monitor Library](http://www.baeldung.com/java-watchservice-vs-apache-commons-io-monitor-library)
-- [Calculate the Size of a File in Java](http://www.baeldung.com/java-file-size)
+- [File Size in Java](http://www.baeldung.com/java-file-size)
 - [Comparing getPath(), getAbsolutePath(), and getCanonicalPath() in Java](http://www.baeldung.com/java-path)
 - [Using Java MappedByteBuffer](http://www.baeldung.com/java-mapped-byte-buffer)
 - [Copy a File with Java](http://www.baeldung.com/java-copy-file)
