@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 
 class SplittingTest {
-    private val list = listOf(0, "a", 1, "b", 2, "c");
+    private val evenList = listOf(0, "a", 1, "b", 2, "c");
 
     private val unevenList = listOf(0, "a", 1, "b", 2, "c", 3);
 
@@ -18,7 +18,7 @@ class SplittingTest {
 
     @Test
     fun whenChunked_thenListIsSplit() {
-        val resultList = list.chunked(2)
+        val resultList = evenList.chunked(2)
         verifyList(resultList)
     }
 
@@ -30,7 +30,7 @@ class SplittingTest {
 
     @Test
     fun whenWindowed_thenListIsSplit() {
-        val resultList = list.windowed(2, 2)
+        val resultList = evenList.windowed(2, 2)
         verifyList(resultList)
     }
 
@@ -49,8 +49,9 @@ class SplittingTest {
     @Test
     fun whenGroupByWithAscendingNumbers_thenListIsSplit() {
         val numberList = listOf(1, 2, 3, 4, 5, 6);
-        val resultList = numberList.groupBy { (it + 1) / 2 }.values
-        assertEquals("[[1, 2], [3, 4], [5, 6]]", resultList.toString())
+        val resultList = numberList.groupBy { (it + 1) / 2 }
+        assertEquals("[[1, 2], [3, 4], [5, 6]]", resultList.values.toString())
+        assertEquals("[1, 2, 3]", resultList.keys.toString())
     }
 
     @Test
@@ -63,13 +64,14 @@ class SplittingTest {
     @Test
     fun whenGroupByWithRandomNumbers_thenListIsSplitInWrongWay() {
         val numberList = listOf(1, 3, 8, 20, 23, 30);
-        val resultList = numberList.groupBy { (it + 1) / 2 }.values
-        assertEquals("[[1], [3], [8], [20], [23], [30]]", resultList.toString())
+        val resultList = numberList.groupBy { (it + 1) / 2 }
+        assertEquals("[[1], [3], [8], [20], [23], [30]]", resultList.values.toString())
+        assertEquals("[1, 2, 4, 10, 12, 15]", resultList.keys.toString())
     }
 
     @Test
     fun whenWithIndexGroupBy_thenListIsSplit() {
-        val resultList = list.withIndex()
+        val resultList = evenList.withIndex()
                 .groupBy { it.index / 2 }
                 .map { it.value.map { it.value } }
         verifyList(resultList)
@@ -85,7 +87,7 @@ class SplittingTest {
 
     @Test
     fun whenFoldIndexed_thenListIsSplit() {
-        val resultList = list.foldIndexed(ArrayList<ArrayList<Any>>(list.size / 2)) { index, acc, item ->
+        val resultList = evenList.foldIndexed(ArrayList<ArrayList<Any>>(evenList.size / 2)) { index, acc, item ->
             if (index % 2 == 0) {
                 acc.add(ArrayList(2))
             }
