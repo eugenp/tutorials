@@ -15,8 +15,8 @@
 
     <modules>
         <module>easy-rules</module>
-		<module>openl-tablets</module>
-		<module>rulebook</module>
+        <module>openl-tablets</module>
+        <module>rulebook</module>
     </modules>
 
 </project>

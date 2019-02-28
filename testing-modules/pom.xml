@@ -32,5 +32,5 @@
         <module>test-containers</module>
         <module>testing</module>
         <module>testng</module>
-	</modules>
+    </modules>
 </project>

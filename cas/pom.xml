@@ -15,7 +15,7 @@
 
     <modules>
         <module>cas-secured-app</module>
-		<module>cas-server</module>
+        <module>cas-server</module>
     </modules>
 
 </project>

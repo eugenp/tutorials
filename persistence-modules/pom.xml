@@ -54,5 +54,5 @@
         <module>spring-hibernate-5</module>
         <module>spring-hibernate4</module>
         <module>spring-jpa</module>
-	</modules>
+    </modules>
 </project>
