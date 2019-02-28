@@ -3,7 +3,7 @@
 - [A Guide to JUnit 5](http://www.baeldung.com/junit-5)
 - [A Guide to @RepeatedTest in Junit 5](http://www.baeldung.com/junit-5-repeated-test)
 - [Guide to Dynamic Tests in Junit 5](http://www.baeldung.com/junit5-dynamic-tests)
-- [A Guied to JUnit 5 Extensions](http://www.baeldung.com/junit-5-extensions)
+- [A Guide to JUnit 5 Extensions](http://www.baeldung.com/junit-5-extensions)
 - [Inject Parameters into JUnit Jupiter Unit Tests](http://www.baeldung.com/junit-5-parameters)
 - [Mockito and JUnit 5 – Using ExtendWith](http://www.baeldung.com/mockito-junit-5-extension)
 - [JUnit 5 – @RunWith](http://www.baeldung.com/junit-5-runwith)
