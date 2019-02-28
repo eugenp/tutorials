@@ -3,7 +3,7 @@
 ## Core Java IO Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Java - Reading a Large File Efficiently](http://www.baeldung.com/java-read-lines-large-file)
+- [How to Read a Large File Efficiently with Java](http://www.baeldung.com/java-read-lines-large-file)
 - [Java InputStream to String](http://www.baeldung.com/convert-input-stream-to-string)
 - [Java – Write to File](http://www.baeldung.com/java-write-to-file)
 - [Java - Convert File to InputStream](http://www.baeldung.com/convert-file-to-input-stream)
