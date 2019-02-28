@@ -6,7 +6,7 @@
 - [Java 8 Collectors](http://www.baeldung.com/java-8-collectors)
 - [Functional Interfaces in Java 8](http://www.baeldung.com/java-8-functional-interfaces)
 - [Java 8 – Powerful Comparison with Lambdas](http://www.baeldung.com/java-8-sort-lambda)
-- [Java 8 New Features](http://www.baeldung.com/java-8-new-features)
+- [New Features in Java 8](http://www.baeldung.com/java-8-new-features)
 - [Lambda Expressions and Functional Interfaces: Tips and Best Practices](http://www.baeldung.com/java-8-lambda-expressions-tips)
 - [The Double Colon Operator in Java 8](http://www.baeldung.com/java-8-double-colon-operator)
 - [Guide to Java 8 groupingBy Collector](http://www.baeldung.com/java-groupingby-collector)
