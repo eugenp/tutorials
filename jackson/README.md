@@ -17,7 +17,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Jackson JSON Tutorial](http://www.baeldung.com/jackson)
 - [Jackson – Working with Maps and nulls](http://www.baeldung.com/jackson-map-null-values-or-null-key)
 - [Jackson – Decide What Fields Get Serialized/Deserializaed](http://www.baeldung.com/jackson-field-serializable-deserializable-or-not)
-- [A Guide to Jackson Annotations](http://www.baeldung.com/jackson-annotations)
+- [Jackson Annotation Examples](http://www.baeldung.com/jackson-annotations)
 - [Working with Tree Model Nodes in Jackson](http://www.baeldung.com/jackson-json-node-tree-model)
 - [Jackson vs Gson](http://www.baeldung.com/jackson-vs-gson)
 - [Intro to the Jackson ObjectMapper](http://www.baeldung.com/jackson-object-mapper-tutorial)
