@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>apache-spark</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>apache-spark</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <parent>
@@ -54,10 +54,10 @@
     	  	<plugin>
     			<groupId>org.apache.maven.plugins</groupId>
     			<artifactId>maven-compiler-plugin</artifactId>
-    			<version>3.2</version>
+    			<version>${maven-compiler-plugin.version}</version>
     			<configuration>
-      				<source>1.8</source>
-      				<target>1.8</target>
+      				<source>${java.version}</source>
+      				<target>${java.version}</target>
     			</configuration>
   			</plugin>
       		<plugin>
@@ -85,6 +85,7 @@
         <org.apache.spark.spark-streaming-kafka.version>2.3.0</org.apache.spark.spark-streaming-kafka.version>
         <com.datastax.spark.spark-cassandra-connector.version>2.3.0</com.datastax.spark.spark-cassandra-connector.version>
         <com.datastax.spark.spark-cassandra-connector-java.version>1.5.2</com.datastax.spark.spark-cassandra-connector-java.version>
+		<maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
     </properties>
 
 </project>

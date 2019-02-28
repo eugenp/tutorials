@@ -5,16 +5,17 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>libraries-server</name>
     
-     <parent>
+    <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-     <dependencies>
+    
+    <dependencies>
         <dependency>
             <groupId>org.eclipse.paho</groupId>
             <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-            <version>1.2.0</version>
+            <version>${eclipse.paho.client.mqttv3.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
@@ -104,9 +105,9 @@
         <jetty.version>9.4.8.v20171121</jetty.version>
         <netty.version>4.1.20.Final</netty.version>
         <commons.collections.version>4.1</commons.collections.version>
-        <junit.version>4.12</junit.version>
         <tomcat.version>8.5.24</tomcat.version>
         <smack.version>4.3.1</smack.version>
+		<eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>
     </properties>
 
 </project>
