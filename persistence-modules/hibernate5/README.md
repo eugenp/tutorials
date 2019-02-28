@@ -18,7 +18,7 @@
 - [@JoinColumn Annotation Explained](https://www.baeldung.com/jpa-join-column)
 - [Hibernate 5 Naming Strategy Configuration](https://www.baeldung.com/hibernate-naming-strategy)
 - [Proxy in Hibernate load() Method](https://www.baeldung.com/hibernate-proxy-load-method)
-- [Custom Types in Hibernate](https://www.baeldung.com/hibernate-custom-types)
+- [Custom Types in Hibernate and the @Type Annotation](https://www.baeldung.com/hibernate-custom-types)
 - [Criteria API – An Example of IN Expressions](https://www.baeldung.com/jpa-criteria-api-in-expressions)
 - [Difference Between @JoinColumn and mappedBy](https://www.baeldung.com/jpa-joincolumn-vs-mappedby)
 - [Hibernate 5 Bootstrapping API](https://www.baeldung.com/hibernate-5-bootstrapping-api)
