@@ -4,7 +4,7 @@
 
 ### Relevant Articles: 
 - [Java 8 Collectors](http://www.baeldung.com/java-8-collectors)
-- [Guide to Java 8’s Functional Interfaces](http://www.baeldung.com/java-8-functional-interfaces)
+- [Functional Interfaces in Java 8](http://www.baeldung.com/java-8-functional-interfaces)
 - [Java 8 – Powerful Comparison with Lambdas](http://www.baeldung.com/java-8-sort-lambda)
 - [Java 8 New Features](http://www.baeldung.com/java-8-new-features)
 - [Lambda Expressions and Functional Interfaces: Tips and Best Practices](http://www.baeldung.com/java-8-lambda-expressions-tips)
