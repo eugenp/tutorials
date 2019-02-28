@@ -12,5 +12,5 @@
 - [A Guide to the Java URL](http://www.baeldung.com/java-url)
 - [Working with Network Interfaces in Java](http://www.baeldung.com/java-network-interfaces)
 - [A Guide to Java Sockets](http://www.baeldung.com/a-guide-to-java-sockets)
-- [URL Encoding and Decoding in Java](http://www.baeldung.com/java-url-encoding-decoding)
+- [Guide to Java URL Encoding/Decoding](http://www.baeldung.com/java-url-encoding-decoding)
 - [Do a Simple HTTP Request in Java](http://www.baeldung.com/java-http-request)
