@@ -3,7 +3,7 @@
 ## Core Java Lang Syntax Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Introduction to Java Generics](http://www.baeldung.com/java-generics)
+- [The Basics of Java Generics](http://www.baeldung.com/java-generics)
 - [Java Primitive Conversions](http://www.baeldung.com/java-primitive-conversions)
 - [Java Double Brace Initialization](http://www.baeldung.com/java-double-brace-initialization)
 - [Guide to the Diamond Operator in Java](http://www.baeldung.com/java-diamond-operator)
