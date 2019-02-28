@@ -1,6 +1,5 @@
 package com.baeldung.processbuilder;
 
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.hasItem;
@@ -83,24 +82,6 @@ public class ProcessBuilderUnitTest {
         assertEquals("No errors should be detected", 0, exitCode);
     }
 
-    private List<String> getDirectoryListingCommand() {
-        return isWindows() ? Arrays.asList("cmd.exe", "/c", "dir") : Arrays.asList("/bin/sh", "-c", "ls");
-    }
-    
-    private List<String> getGreetingCommand() {
-        return isWindows() ? Arrays.asList("cmd.exe", "/c", "echo %GREETING%") : Arrays.asList("/bin/bash", "-c", "echo $GREETING");
-    }
-    
-    private List<String> getEchoCommand() {
-        return isWindows() ? Arrays.asList("cmd.exe", "/c", "echo hello") : Arrays.asList("/bin/sh", "-c", "echo hello");
-    }
-    
-    private boolean isWindows() {
-        return System.getProperty("os.name")
-            .toLowerCase()
-            .startsWith("windows");
-    }
-
     @Test
     public void givenProcessBuilder_whenRedirectStandardOutput_thenSuccessWriting() throws IOException, InterruptedException {
         ProcessBuilder processBuilder = new ProcessBuilder("java", "-version");
@@ -146,18 +127,20 @@ public class ProcessBuilderUnitTest {
         assertThat("Results should contain java version: ", lines, hasItem(containsString("java version")));
     }
 
-/*    @Test
+    @Test
     public void givenProcessBuilder_whenStartingPipeline_thenSuccess() throws IOException, InterruptedException {
-        List<ProcessBuilder> builders = Arrays.asList(
-            new ProcessBuilder("find", "src", "-name", "*.java", "-type", "f"), 
-            new ProcessBuilder("wc", "-l"));
+        if (!isWindows()) {
+            List<ProcessBuilder> builders = Arrays.asList(
+                new ProcessBuilder("find", "src", "-name", "*.java", "-type", "f"), 
+                new ProcessBuilder("wc", "-l"));
 
-        List<Process> processes = ProcessBuilder.startPipeline(builders);
-        Process last = processes.get(processes.size() - 1);
+            List<Process> processes = ProcessBuilder.startPipeline(builders);
+            Process last = processes.get(processes.size() - 1);
 
-        List<String> output = readOutput(last.getInputStream());
-        assertThat("Results should not be empty", output, is(not(empty())));
-    }*/
+            List<String> output = readOutput(last.getInputStream());
+            assertThat("Results should not be empty", output, is(not(empty())));
+        }
+    }
     
     @Test
     public void givenProcessBuilder_whenInheritIO_thenSuccess() throws IOException, InterruptedException {
@@ -176,6 +159,24 @@ public class ProcessBuilderUnitTest {
             return output.lines()
                 .collect(Collectors.toList());
         }
+    }
+
+    private List<String> getDirectoryListingCommand() {
+        return isWindows() ? Arrays.asList("cmd.exe", "/c", "dir") : Arrays.asList("/bin/sh", "-c", "ls");
+    }
+
+    private List<String> getGreetingCommand() {
+        return isWindows() ? Arrays.asList("cmd.exe", "/c", "echo %GREETING%") : Arrays.asList("/bin/bash", "-c", "echo $GREETING");
+    }
+
+    private List<String> getEchoCommand() {
+        return isWindows() ? Arrays.asList("cmd.exe", "/c", "echo hello") : Arrays.asList("/bin/sh", "-c", "echo hello");
+    }
+
+    private boolean isWindows() {
+        return System.getProperty("os.name")
+            .toLowerCase()
+            .startsWith("windows");
     }
 
 }
