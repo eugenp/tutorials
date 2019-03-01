@@ -18,12 +18,8 @@ public class Order {
     private Type type;
     private int internalAudit;
 
-    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME,
-            include = JsonTypeInfo.As.PROPERTY,
-            property = "ordertype")
-    @JsonSubTypes({
-            @JsonSubTypes.Type(value = InternalType.class, name = "internal")
-    })
+    @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "ordertype")
+    @JsonSubTypes({ @JsonSubTypes.Type(value = InternalType.class, name = "internal") })
     public static class Type {
         public long id;
         public String name;

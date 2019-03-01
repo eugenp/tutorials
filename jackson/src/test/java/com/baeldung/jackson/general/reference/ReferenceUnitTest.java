@@ -36,7 +36,7 @@ public class ReferenceUnitTest {
         /*
         Without references defined it throws StackOverflowError.
         Authors excluded.
-
+        
             {
               "id": "9c45d9b3-4888-4c24-8b74-65ef35627cd7",
               "firstName": "Alex",
