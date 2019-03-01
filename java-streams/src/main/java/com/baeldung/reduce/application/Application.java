@@ -39,32 +39,5 @@ public class Application {
 
         int result8 = users.parallelStream().reduce(0, (partialAgeResult, user) -> partialAgeResult + user.getAge(), Integer::sum);
         System.out.println(result8);
-
-        org.openjdk.jmh.Main.main(args);
-        
-    }
-    
-    @Benchmark
-    @Fork(value = 1, warmups = 2)
-    @Warmup(iterations = 2) 
-    @BenchmarkMode(Mode.AverageTime)
-    public void executeReduceOnParallelizedStream() {
-        List<User> userList = new ArrayList<>();
-        for (int i = 0; i <= 1000000; i++) {
-            userList.add(new User("John" + i, i));
-        }
-        userList.parallelStream().reduce(0, (partialAgeResult, user) -> partialAgeResult + user.getAge(), Integer::sum);
-    }
-    
-    @Benchmark
-    @Fork(value = 1, warmups = 2)
-    @Warmup(iterations = 2) 
-    @BenchmarkMode(Mode.AverageTime)
-    public void executeReduceOnSequentialStream() {
-        List<User> userList = new ArrayList<>();
-        for (int i = 0; i <= 1000000; i++) {
-            userList.add(new User("John" + i, i));
-        }
-        userList.stream().reduce(0, (partialAgeResult, user) -> partialAgeResult + user.getAge(), Integer::sum);
     }
 }
