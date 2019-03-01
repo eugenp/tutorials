@@ -9,7 +9,7 @@
 - [A Guide To UDP In Java](http://www.baeldung.com/udp-in-java)
 - [Sending Emails with Java](http://www.baeldung.com/java-email)
 - [A Guide To HTTP Cookies In Java](http://www.baeldung.com/cookies-java)
-- [A Guide to the Java URL](http://www.baeldung.com/java-url)
+- [A Simple Guide to the Java URL](http://www.baeldung.com/java-url)
 - [Working with Network Interfaces in Java](http://www.baeldung.com/java-network-interfaces)
 - [A Guide to Java Sockets](http://www.baeldung.com/a-guide-to-java-sockets)
 - [Guide to Java URL Encoding/Decoding](http://www.baeldung.com/java-url-encoding-decoding)
