@@ -1,6 +1,5 @@
 package com.baeldung.performancetests.model.destination;
 
-import com.baeldung.performancetests.model.source.User;
 import com.googlecode.jmapper.annotations.JGlobalMap;
 
 @JGlobalMap

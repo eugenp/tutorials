@@ -1,5 +1,6 @@
 package com.baeldung.performancetests.benchmark;
 
+import com.baeldung.performancetests.bull.BullConverter;
 import com.baeldung.performancetests.dozer.DozerConverter;
 import com.baeldung.performancetests.jmapper.JMapperConverter;
 import com.baeldung.performancetests.mapstruct.MapStructConverter;
@@ -52,6 +53,7 @@ public class MappingFrameworksPerformance {
     private static final JMapperConverter JMAPPER_CONVERTER = new JMapperConverter();
     private static final ModelMapperConverter MODEL_MAPPER_CONVERTER = new ModelMapperConverter();
     private static final DozerConverter DOZER_CONVERTER = new DozerConverter();
+    private static final BullConverter BULL_CONVERTER = new BullConverter();
 
     @Setup
     public void setUp() {
@@ -132,6 +134,12 @@ public class MappingFrameworksPerformance {
     }
 
     @Benchmark
+    @Group("realLifeTest")
+    public Order bullMapperRealLifeBenchmark() {
+        return BULL_CONVERTER.convert(sourceOrder);
+    }
+
+    @Benchmark
     @Group("simpleTest")
     public DestinationCode orikaMapperSimpleBenchmark() {
         return ORIKA_CONVERTER.convert(sourceCode);
@@ -159,5 +167,11 @@ public class MappingFrameworksPerformance {
     @Group("simpleTest")
     public DestinationCode mapStructMapperSimpleBenchmark() {
         return MapStructConverter.MAPPER.convert(sourceCode);
+    }
+
+    @Benchmark
+    @Group("simpleTest")
+    public DestinationCode bullMapperSimpleBenchmark() {
+        return BULL_CONVERTER.convert(sourceCode);
     }
 }
