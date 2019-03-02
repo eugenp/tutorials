@@ -1521,6 +1521,7 @@
                 <module>xmlunit-2</module>
                 <module>xstream</module>
                 
+				<module>hexagonalArchitecture</module>
             </modules>
 
         </profile>
