@@ -17,6 +17,7 @@ public class MockitoMisusingUnitTest {
     public void givenNotASpy_whenDoReturn_thenThrowNotAMock() {
         try {
             List<String> list = new ArrayList<String>();
+            
             Mockito.doReturn(100)
                 .when(list)
                 .size();
