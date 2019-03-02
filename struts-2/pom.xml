@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>struts-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>struts-2</name>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

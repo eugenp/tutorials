@@ -14,3 +14,4 @@
 - [A Guide to Java Sockets](http://www.baeldung.com/a-guide-to-java-sockets)
 - [URL Encoding and Decoding in Java](http://www.baeldung.com/java-url-encoding-decoding)
 - [How to Perform a Simple HTTP Request in Java](http://www.baeldung.com/java-http-request)
+- [Difference between URL and URI](http://www.baeldung.com/java-url-vs-uri)

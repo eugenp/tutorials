@@ -434,7 +434,6 @@
         <kryo.version>4.0.1</kryo.version>
         <h2.version>1.4.196</h2.version>
         <reladomo.version>16.5.1</reladomo.version>
-        <junit.version>4.12</junit.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <ormlite.version>5.0</ormlite.version>
         <kafka.version>1.0.0</kafka.version>

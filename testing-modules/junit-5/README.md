@@ -16,3 +16,4 @@
 - [Running JUnit Tests Programmatically, from a Java Application](https://www.baeldung.com/junit-tests-run-programmatically-from-java)
 - [Testing an Abstract Class With JUnit](https://www.baeldung.com/junit-test-abstract-class)
 - [A Quick JUnit vs TestNG Comparison](http://www.baeldung.com/junit-vs-testng)
+- [Guide to JUnit 5 Parameterized Tests](https://www.baeldung.com/parameterized-tests-junit-5)

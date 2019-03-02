@@ -74,7 +74,6 @@
     </reporting>
 
     <properties>
-        <lombok.version>1.16.12</lombok.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>

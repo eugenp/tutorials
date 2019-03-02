@@ -5,9 +5,9 @@
     <groupId>org.baeldung</groupId>
     <artifactId>spring-cloud-rest-discovery-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-cloud-rest-discovery-server</name>
     <description>Spring Cloud REST server</description>
+    <packaging>jar</packaging>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>

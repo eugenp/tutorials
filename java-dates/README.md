@@ -28,3 +28,4 @@
 - [Convert between String and Timestamp](https://www.baeldung.com/java-string-to-timestamp)
 - [A Guide to SimpleDateFormat](https://www.baeldung.com/java-simple-date-format)
 - [ZoneOffset in Java](https://www.baeldung.com/java-zone-offset)
+- [Differences Between ZonedDateTime and OffsetDateTime](https://www.baeldung.com/java-zoneddatetime-offsetdatetime)

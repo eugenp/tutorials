@@ -26,3 +26,4 @@
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
 - [Java 9 Platform Logging API](https://www.baeldung.com/java-9-logging-api)
 - [Guide to java.lang.Process API](https://www.baeldung.com/java-process-api)
+- [Immutable Set in Java](https://www.baeldung.com/java-immutable-set)
