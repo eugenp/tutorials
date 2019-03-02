@@ -13,7 +13,7 @@ import java.util.List;
  * @author Alex Theedom www.readlearncode.com
  * @version 1.0
  */
-@JsonRootName("writer")
+@JsonRootName(value = "writer", namespace = "book")
 public class Author extends Person {
 
     List<Item> items = new ArrayList<>();
