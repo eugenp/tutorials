@@ -38,22 +38,11 @@
 
     <properties>
         <!-- Spring -->
-        <spring-cloud.version>2.1.0.RC3</spring-cloud.version>
+        <spring-cloud.version>2.1.0.RELEASE</spring-cloud.version>
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>http://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
 </project>

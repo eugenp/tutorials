@@ -105,7 +105,6 @@
         <jetty.version>9.4.8.v20171121</jetty.version>
         <netty.version>4.1.20.Final</netty.version>
         <commons.collections.version>4.1</commons.collections.version>
-        <junit.version>4.12</junit.version>
         <tomcat.version>8.5.24</tomcat.version>
         <smack.version>4.3.1</smack.version>
 		<eclipse.paho.client.mqttv3.version>1.2.0</eclipse.paho.client.mqttv3.version>

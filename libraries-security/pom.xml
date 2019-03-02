@@ -51,7 +51,6 @@
     </dependencies>
 
     <properties>
-        <junit.version>4.12</junit.version>
         <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
         <scribejava.version>5.6.0</scribejava.version>
 		<spring-security-oauth2.version>2.3.3.RELEASE</spring-security-oauth2.version>
