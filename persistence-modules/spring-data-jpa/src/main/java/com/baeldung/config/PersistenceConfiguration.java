@@ -1,11 +1,9 @@
 package com.baeldung.config;
 
+import com.baeldung.dao.repositories.impl.ExtendedRepositoryImpl;
 import com.baeldung.services.IBarService;
 import com.baeldung.services.impl.BarSpringDataJpaService;
 import com.google.common.base.Preconditions;
-import com.baeldung.dao.repositories.impl.ExtendedRepositoryImpl;
-import com.baeldung.services.IFooService;
-import com.baeldung.services.impl.FooService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -24,11 +22,12 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@ComponentScan({"com.baeldung.dao", "com.baeldung.services"})
+@ComponentScan({ "com.baeldung.dao", "com.baeldung.services" })
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"com.baeldung.dao"}, repositoryBaseClass = ExtendedRepositoryImpl.class)
+@EnableJpaRepositories(basePackages = { "com.baeldung.dao" }, repositoryBaseClass = ExtendedRepositoryImpl.class)
 @EnableJpaAuditing
 @PropertySource("classpath:persistence.properties")
+@Profile("!tc")
 public class PersistenceConfiguration {
 
     @Autowired
@@ -79,11 +78,6 @@ public class PersistenceConfiguration {
         return new BarSpringDataJpaService();
     }
 
-    @Bean
-    public IFooService fooService() {
-        return new FooService();
-    }
-
     private final Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
@@ -94,7 +88,8 @@ public class PersistenceConfiguration {
         // hibernateProperties.setProperty("hibernate.globally_quoted_identifiers", "true");
 
         // Envers properties
-        hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix", env.getProperty("envers.audit_table_suffix"));
+        hibernateProperties.setProperty("org.hibernate.envers.audit_table_suffix",
+            env.getProperty("envers.audit_table_suffix"));
 
         return hibernateProperties;
     }

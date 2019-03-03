@@ -4,7 +4,8 @@
     <groupId>com.atomix.io</groupId>
     <artifactId>atomix</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-
+    <name>atomix</name>
+    
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>

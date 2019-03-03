@@ -8,15 +8,15 @@ import org.springframework.data.rest.core.config.Projection;
 import com.baeldung.models.Author;
 import com.baeldung.models.Book;
 
-@Projection(name = "customBook", types = { Book.class }) 
+@Projection(name = "customBook", types = { Book.class })
 public interface CustomBook {
     @Value("#{target.id}")
-    long getId(); 
-    
+    long getId();
+
     String getTitle();
-    
+
     List<Author> getAuthors();
-    
+
     @Value("#{target.getAuthors().size()}")
     int getAuthorCount();
 }

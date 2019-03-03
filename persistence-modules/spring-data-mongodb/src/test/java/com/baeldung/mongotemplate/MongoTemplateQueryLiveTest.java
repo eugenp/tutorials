@@ -27,6 +27,12 @@ import com.baeldung.config.MongoConfig;
 import com.baeldung.model.EmailAddress;
 import com.baeldung.model.User;
 
+/**
+ * 
+ * This test requires:
+ * * mongodb instance running on the environment
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = MongoConfig.class)
 public class MongoTemplateQueryLiveTest {

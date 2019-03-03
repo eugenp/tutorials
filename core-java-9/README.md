@@ -9,7 +9,6 @@
 - [Java 9 Convenience Factory Methods for Collections](http://www.baeldung.com/java-9-collections-factory-methods) 
 - [New Stream Collectors in Java 9](http://www.baeldung.com/java9-stream-collectors)
 - [Java 9 CompletableFuture API Improvements](http://www.baeldung.com/java-9-completablefuture)
-- [Spring Security – Redirect to the Previous URL After Login](http://www.baeldung.com/spring-security-redirect-login)
 - [Java 9 Process API Improvements](http://www.baeldung.com/java-9-process-api)
 - [Introduction to Java 9 StackWalking API](http://www.baeldung.com/java-9-stackwalking-api)
 - [Introduction to Project Jigsaw](http://www.baeldung.com/project-jigsaw-java-modularity)
@@ -27,3 +26,4 @@
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
 - [Java 9 Platform Logging API](https://www.baeldung.com/java-9-logging-api)
 - [Guide to java.lang.Process API](https://www.baeldung.com/java-process-api)
+- [Immutable Set in Java](https://www.baeldung.com/java-immutable-set)
