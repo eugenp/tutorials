@@ -5,14 +5,17 @@ public class Player {
 
     private long score;
 
-    public String getName() {
-        return name;
-    }
+    public Player() {
 
+    }
+    
     public Player(String name, long score) {
-        super();
         this.name = name;
         this.score = score;
+    }
+    
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
