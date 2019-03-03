@@ -24,15 +24,13 @@ public class PiApproximation {
 
         JavaRDD<Integer> dataSet = context.parallelize(xs, slices);
 
-        JavaRDD<Integer> pointsInsideTheCircle = dataSet.map(new Function<Integer, Integer>() {
-            @Override
-            public Integer call(Integer integer) throws Exception {
-               double x = Math.random() * 2 - 1;
-               double y = Math.random() * 2 - 1;
-               return (x*x + y*y ) < 1 ? 1: 0;
-            }});
+        JavaRDD<Integer> pointsInsideTheCircle = dataSet.map(integer -> {
+           double x = Math.random() * 2 - 1;
+           double y = Math.random() * 2 - 1;
+           return (x*x + y*y ) < 1 ? 1: 0;
+        });
 
-        int count = pointsInsideTheCircle.reduce((Function2<Integer, Integer, Integer>) (integer, integer2) -> integer + integer2);
+        int count = pointsInsideTheCircle.reduce((integer, integer2) -> integer + integer2);
 
         System.out.println("The pi was estimated as:" + count / n);
 
