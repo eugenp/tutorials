@@ -2,7 +2,7 @@ package mocks
 
 import spock.lang.Specification
 
-class ItemServiceTest extends Specification {
+class ItemServiceUnitTest extends Specification {
 
     ItemProvider itemProvider
     ItemService itemService
