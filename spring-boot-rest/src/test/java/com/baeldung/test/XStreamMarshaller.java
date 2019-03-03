@@ -1,8 +1,8 @@
-package org.baeldung.test;
+package com.baeldung.test;
 
 import java.util.List;
 
-import org.baeldung.persistence.model.Foo;
+import com.baeldung.persistence.model.Foo;
 import org.springframework.http.MediaType;
 
 import com.google.common.base.Preconditions;

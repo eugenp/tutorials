@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>restx</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>restx-demo</name>
+    <name>restx</name>
     <packaging>war</packaging>
 	
 	<parent>
@@ -151,6 +151,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <restx.version>0.35-rc4</restx.version>
-		<logback-classic.version>1.2.3</logback-classic.version>
+        <logback-classic.version>1.2.3</logback-classic.version>
     </properties>
 </project>

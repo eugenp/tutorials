@@ -412,7 +412,7 @@
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
                 
-                <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
+                <module>geotools</module>
                 <module>google-cloud</module>
                 <module>google-web-toolkit</module>
                 <!-- <module>gradle</module> --> <!-- Not a maven project -->
@@ -542,7 +542,7 @@
                 <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-dynamodb</module>
                 <module>persistence-modules/spring-data-eclipselink</module>
-                <!-- <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- Fixing in BAEL-10995 -->
+                <module>persistence-modules/spring-data-elasticsearch</module>
                 <module>persistence-modules/spring-data-gemfire</module>
                 <module>persistence-modules/spring-data-jpa</module>
                 <module>persistence-modules/spring-data-keyvalue</module>
@@ -1130,7 +1130,7 @@
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
                 
-                <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
+                <module>geotools</module>
                 <module>google-cloud</module>
                 <module>google-web-toolkit</module>
                 <!-- <module>gradle</module> --> <!-- Not a maven project -->
@@ -1260,7 +1260,7 @@
                 <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-dynamodb</module>
                 <module>persistence-modules/spring-data-eclipselink</module>
-                <!-- <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- Fixing in BAEL-10995 -->
+                <module>persistence-modules/spring-data-elasticsearch</module>
                 <module>persistence-modules/spring-data-gemfire</module>
                 <module>persistence-modules/spring-data-jpa</module>
                 <module>persistence-modules/spring-data-keyvalue</module>
