@@ -3,8 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-streams</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>java-streams</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -94,10 +94,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <compilerArgument>-parameters</compilerArgument>
                 </configuration>
             </plugin>
@@ -108,7 +108,6 @@
         <!-- util -->
         <jmh.version>1.21</jmh.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <lombok.version>1.16.12</lombok.version>
         <vavr.version>0.9.0</vavr.version>
         <protonpack.version>1.15</protonpack.version>
         <streamex.version>0.6.5</streamex.version>
@@ -117,5 +116,8 @@
         <!-- testing -->
         <assertj.version>3.11.1</assertj.version>
         <asspectj.version>1.8.9</asspectj.version>
+		<maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 </project>

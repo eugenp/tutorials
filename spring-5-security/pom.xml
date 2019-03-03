@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-5-security</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-5-security</name>
+    <packaging>jar</packaging>
     <description>spring 5 security sample project</description>
 
     <parent>
@@ -16,7 +16,6 @@
     </parent>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>

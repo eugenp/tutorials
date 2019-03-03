@@ -27,8 +27,7 @@ public class TestMarshallerFactory implements FactoryBean<IMarshaller> {
             case "json":
                 return new JacksonMarshaller();
             case "xml":
-                // If we need to implement xml marshaller we can include spring-rest-full XStreamMarshaller
-                throw new IllegalStateException();
+                return new XStreamMarshaller();
             default:
                 throw new IllegalStateException();
             }

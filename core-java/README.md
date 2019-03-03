@@ -19,7 +19,6 @@
 - [Introduction to Java Serialization](http://www.baeldung.com/java-serialization)
 - [Guide to UUID in Java](http://www.baeldung.com/java-uuid)
 - [Guide to Escaping Characters in Java RegExps](http://www.baeldung.com/java-regexp-escape-char)
-- [Difference between URL and URI](http://www.baeldung.com/java-url-vs-uri)
 - [Creating a Java Compiler Plugin](http://www.baeldung.com/java-build-compiler-plugin)
 - [Quick Guide to Java Stack](http://www.baeldung.com/java-stack)
 - [Compiling Java *.class Files with javac](http://www.baeldung.com/javac)
