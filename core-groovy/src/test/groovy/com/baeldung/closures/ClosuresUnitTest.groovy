@@ -12,12 +12,26 @@ class ClosuresUnitTest extends GroovyTestCase {
         def multipliedResult = closures.multiplyWithReturn(x, y) // or closures.multiplyWithReturn.call(x,y)
         assert multipliedResult == 120
         
+        //closures vs methods
+        
+        assert closures.formatLowerCase("TONY STARK") == closures.formatLowerCaseClosure("Tony STark")
+        
+        assert closures.formatLowerCase("TONY STARK") == closures.formatLowerCaseWithImplicitParam("Tony STark")
+        
+        //parameters
+        
         assert closures.stringUpperCase("Hello! Closure") == "HELLO! CLOSURE"
         
         assert closures.stringUpperCaseWithExplicitType("I am closure") == "I AM CLOSURE"
         
         assert closures.addAll(12, 10, 14) == 36
         
+        def area = { length, breadth ->
+            return length*breadth
+        }
+        
+        assert closures.volume(10, area) == 160
+       
         /*Delegation Strategy*/
         
         //this

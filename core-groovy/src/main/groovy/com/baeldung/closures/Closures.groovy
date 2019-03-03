@@ -32,11 +32,23 @@ class Closures {
         return x*y
     }
     
-    def stringUpperCase = { str -> 
-        str.toUpperCase() 
+    def formatLowerCase(name) {
+        return name.toLowerCase()
     }
     
-    def stringUpperCaseWithExplicitType = { String str -> 
+    def formatLowerCaseClosure = { name ->
+        return name.toLowerCase()
+    }
+    
+    def formatLowerCaseWithImplicitParam = {
+        return it.toLowerCase()
+    }
+    
+    def stringUpperCase = { str ->
+        str.toUpperCase()
+    }
+    
+    def stringUpperCaseWithExplicitType = { String str ->
         str.toUpperCase()
     }
     
@@ -50,6 +62,10 @@ class Closures {
             result += it
         }
         return result
+    }
+    
+    def volume(height, areaClosure) {
+        return height * areaClosure.call(2, 8)
     }
     
     def self = {
@@ -88,5 +104,7 @@ class Closures {
     def upperCaseFullName = {
         return delegate.fullName.toUpperCase()
     }
+    
+    
     
 }
