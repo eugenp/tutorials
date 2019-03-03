@@ -4,9 +4,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>parent-java</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
     <name>parent-java</name>
     <description>Parent for all java modules</description>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>

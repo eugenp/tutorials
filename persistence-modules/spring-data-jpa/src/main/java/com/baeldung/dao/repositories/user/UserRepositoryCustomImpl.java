@@ -1,8 +1,11 @@
 package com.baeldung.dao.repositories.user;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,6 +41,17 @@ public class UserRepositoryCustomImpl implements UserRepositoryCustom {
 
         return entityManager.createQuery(query)
             .getResultList();
+    }
+
+    @Override
+    public List<User> findAllUsersByPredicates(Collection<java.util.function.Predicate<User>> predicates) {
+        List<User> allUsers = entityManager.createQuery("select u from User u", User.class).getResultList();
+        Stream<User> allUsersStream = allUsers.stream();
+        for (java.util.function.Predicate<User> predicate : predicates) {
+            allUsersStream = allUsersStream.filter(predicate);
+        }
+
+        return allUsersStream.collect(Collectors.toList());
     }
 
 }

@@ -412,7 +412,7 @@
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
                 
-                <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
+                <module>geotools</module>
                 <module>google-cloud</module>
                 <module>google-web-toolkit</module>
                 <!-- <module>gradle</module> --> <!-- Not a maven project -->
@@ -475,6 +475,7 @@
                 <module>kotlin-libraries</module>
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+		<module>libraries</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
@@ -541,7 +542,7 @@
                 <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-dynamodb</module>
                 <module>persistence-modules/spring-data-eclipselink</module>
-                <!-- <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- Fixing in BAEL-10995 -->
+                <module>persistence-modules/spring-data-elasticsearch</module>
                 <module>persistence-modules/spring-data-gemfire</module>
                 <module>persistence-modules/spring-data-jpa</module>
                 <module>persistence-modules/spring-data-keyvalue</module>
@@ -560,15 +561,15 @@
                 <module>reactor-core</module>
                 <module>rest-with-spark-java</module>
                 <module>resteasy</module>
-                <!-- <module>restx</module> --> <!-- Tests failing. Fixing in BAEL-10944 -->
+                <module>restx</module>
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines/easy-rules</module>
                 <module>rule-engines/openl-tablets</module>
                 <module>rule-engines/rulebook</module>
 				<module>rsocket</module>
                 <module>rxjava</module>
-                <module>rxjava-2</module>                                
-                                                 
+                <module>rxjava-2</module> 
+			    <module>software-security/sql-injection-samples</module>
 			</modules>
 
 		</profile>
@@ -732,6 +733,7 @@
                 <module>spring-security-mvc-boot</module>
                 <module>spring-security-mvc-custom</module>
                 <module>spring-security-mvc-digest-auth</module>
+				<module>spring-security-mvc-jsonview</module>
                 <module>spring-security-mvc-ldap</module>
                 <module>spring-security-mvc-login</module>
                 <module>spring-security-mvc-persisted-remember-me</module>
@@ -748,6 +750,7 @@
                 <module>spring-security-x509</module>
                 <module>spring-session</module>
                 <module>spring-sleuth</module>
+                <module>spring-soap</module>
                 <module>spring-social-login</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
@@ -1001,6 +1004,7 @@
                         
                 <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
+                <module>core-kotlin-2</module>
 
                 <module>jenkins/hello-world</module>
                 <module>jhipster</module>
@@ -1126,7 +1130,7 @@
                 <module>feign</module>
                 <module>flyway-cdi-extension</module>
                 
-                <!-- <module>geotools</module> --> <!-- Hangs the build. Fixing in BAEL-10943 -->
+                <module>geotools</module>
                 <module>google-cloud</module>
                 <module>google-web-toolkit</module>
                 <!-- <module>gradle</module> --> <!-- Not a maven project -->
@@ -1189,6 +1193,7 @@
                 <module>kotlin-libraries</module>
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
+                <module>libraries</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
@@ -1255,7 +1260,7 @@
                 <module>persistence-modules/spring-data-couchbase-2</module>
                 <module>persistence-modules/spring-data-dynamodb</module>
                 <module>persistence-modules/spring-data-eclipselink</module>
-                <!-- <module>persistence-modules/spring-data-elasticsearch</module> --> <!-- Fixing in BAEL-10995 -->
+                <module>persistence-modules/spring-data-elasticsearch</module>
                 <module>persistence-modules/spring-data-gemfire</module>
                 <module>persistence-modules/spring-data-jpa</module>
                 <module>persistence-modules/spring-data-keyvalue</module>
@@ -1274,7 +1279,7 @@
                 <module>reactor-core</module>
                 <module>rest-with-spark-java</module>
                 <module>resteasy</module>
-                <!-- <module>restx</module> --> <!-- Tests failing. Fixing in BAEL-10944 -->
+                <module>restx</module>
                 <!-- <module>rmi</module> --> <!-- Not a maven project -->
                 <module>rule-engines/easy-rules</module>
                 <module>rule-engines/openl-tablets</module>
@@ -1457,6 +1462,7 @@
                 <module>spring-security-x509</module>
                 <module>spring-session</module>
                 <module>spring-sleuth</module>
+                <module>spring-soap</module>
                 <module>spring-social-login</module>
                 <module>spring-spel</module>
                 <module>spring-state-machine</module>
@@ -1552,6 +1558,7 @@
                 <module>core-java</module>                
                 <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
+                <module>core-kotlin-2</module>
 
                 <module>jenkins/hello-world</module>
                 <module>jhipster</module>
@@ -1588,7 +1595,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<gib.referenceBranch>refs/heads/master</gib.referenceBranch>
+		<gib.referenceBranch>refs/remotes/origin/master</gib.referenceBranch>
 		<gib.skipTestsForNotImpactedModules>true</gib.skipTestsForNotImpactedModules>
 		<gib.failOnMissingGitDir>false</gib.failOnMissingGitDir>
 		<gib.failOnError>false</gib.failOnError>
@@ -1623,7 +1630,7 @@
 		<javax.servlet.jsp-api.version>2.3.1</javax.servlet.jsp-api.version>
 		<jackson-mapper-asl.version>1.9.13</jackson-mapper-asl.version>
 		<jstl.version>1.2</jstl.version>
-		<jackson-databind.version>2.9.7</jackson-databind.version>
+		<jackson.version>2.9.7</jackson.version>
 		<commons-fileupload.version>1.3</commons-fileupload.version>
 		<junit-platform.version>1.2.0</junit-platform.version>
 		<junit-jupiter.version>5.2.0</junit-jupiter.version>
@@ -1634,5 +1641,6 @@
 		<maven-jxr-plugin.version>2.3</maven-jxr-plugin.version>
 		<!-- <maven-pmd-plugin.version>3.9.0</maven-pmd-plugin.version> -->
 		<maven-pmd-plugin.version>3.8</maven-pmd-plugin.version>
+		<lombok.version>1.16.12</lombok.version>
 	</properties>
 </project>
