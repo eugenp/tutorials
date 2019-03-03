@@ -26,5 +26,4 @@ public class MockitoMisusingUnitTest {
             assertThat(e.getMessage(), containsString("Argument passed to when() is not a mock!"));
         }
     }
-
 }
