@@ -5,7 +5,7 @@
 ### Relevant Articles: 
 - [Immutable ArrayList in Java](http://www.baeldung.com/java-immutable-list)
 - [Guide to the Java ArrayList](http://www.baeldung.com/java-arraylist)
-- [Random List Element](http://www.baeldung.com/java-random-list-element)
+- [Java – Get Random Item/Element From a List](http://www.baeldung.com/java-random-list-element)
 - [Removing all nulls from a List in Java](http://www.baeldung.com/java-remove-nulls-from-list)
 - [Removing all duplicates from a List in Java](http://www.baeldung.com/java-remove-duplicates-from-list)
 - [How to TDD a List Implementation in Java](http://www.baeldung.com/java-test-driven-list)

@@ -16,7 +16,7 @@
 - [Java 9 Reactive Streams](http://www.baeldung.com/java-9-reactive-streams)
 - [Java 9 java.util.Objects Additions](http://www.baeldung.com/java-9-objects-new)
 - [Java 9 Variable Handles Demistyfied](http://www.baeldung.com/java-variable-handles)
-- [Exploring the New HTTP Client in Java 9](http://www.baeldung.com/java-9-http-client)
+- [Exploring the New HTTP Client in Java 9 and 11](http://www.baeldung.com/java-9-http-client)
 - [Method Handles in Java](http://www.baeldung.com/java-method-handles)
 - [Introduction to Chronicle Queue](http://www.baeldung.com/java-chronicle-queue)
 - [A Guide to Java 9 Modularity](http://www.baeldung.com/java-9-modularity)
