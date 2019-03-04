@@ -30,3 +30,5 @@
 - [Using c3p0 with Hibernate](https://www.baeldung.com/hibernate-c3p0)
 - [Persist a JSON Object Using Hibernate](https://www.baeldung.com/hibernate-persist-json-object)
 - [Common Hibernate Exceptions](https://www.baeldung.com/hibernate-exceptions)
+- [Hibernate Aggregate Functions](https://www.baeldung.com/hibernate-aggregate-functions)
+- [Hibernate Query Plan Cache](https://www.baeldung.com/hibernate-query-plan-cache)
