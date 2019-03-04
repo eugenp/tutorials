@@ -7,7 +7,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 - [Introduction to the Functional Web Framework in Spring 5](http://www.baeldung.com/spring-5-functional-web)
 - [Spring 5 WebClient](http://www.baeldung.com/spring-5-webclient)
-- [Exploring the Spring 5 MVC URL Matching](http://www.baeldung.com/spring-5-mvc-url-matching)
+- [Exploring the Spring 5 WebFlux URL Matching](http://www.baeldung.com/spring-5-mvc-url-matching)
 - [Reactive WebSockets with Spring 5](http://www.baeldung.com/spring-5-reactive-websockets)
 - [Spring Webflux Filters](http://www.baeldung.com/spring-webflux-filters)
 - [How to Set a Header on a Response with Spring 5](http://www.baeldung.com/spring-response-header)
