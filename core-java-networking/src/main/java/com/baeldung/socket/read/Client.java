@@ -33,11 +33,5 @@ public class Client {
             e.printStackTrace();
         }
     }
-    
-    public static void main(String[] args) {
-        // Start Client
-        Client client = new Client();
-        client.runClient("127.0.0.1", 5555);
-    }
 
 }

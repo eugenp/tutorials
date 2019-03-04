@@ -47,11 +47,5 @@ public class Server {
             e.printStackTrace();
         }
     }
-    
-    public static void main(String[] args) {
-        //Run Server
-        Server server = new Server();
-        server.runServer(5555);
-    }
 
 }
