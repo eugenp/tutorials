@@ -53,3 +53,4 @@
 - [Java String Interview Questions and Answers](https://www.baeldung.com/java-string-interview-questions)
 - [Check if a String is a Pangram in Java](https://www.baeldung.com/java-string-pangram)
 - [Check If a String Contains Multiple Keywords](https://www.baeldung.com/string-contains-multiple-words)
+- [Common String Operations in Java](https://www.baeldung.com/java-string-operations)
