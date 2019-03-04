@@ -52,3 +52,5 @@
 - [Inline Classes in Kotlin](https://www.baeldung.com/kotlin-inline-classes)
 - [Creating Java static final Equivalents in Kotlin](https://www.baeldung.com/kotlin-java-static-final)
 - [Nested forEach in Kotlin](https://www.baeldung.com/kotlin-nested-foreach)
+- [Building DSLs in Kotlin](https://www.baeldung.com/kotlin-dsl)
+- [Static Methods Behavior in Kotlin](https://www.baeldung.com/kotlin-static-methods)

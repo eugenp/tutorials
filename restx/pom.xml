@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>restx</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <name>restx-demo</name>
+    <name>restx</name>
     <packaging>war</packaging>
 	
 	<parent>
