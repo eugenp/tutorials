@@ -28,3 +28,4 @@
 - [Intersection of Two Lists in Java](https://www.baeldung.com/java-lists-intersection)
 - [Multi Dimensional ArrayList in Java](https://www.baeldung.com/java-multi-dimensional-arraylist)
 - [Determine If All Elements Are the Same in a Java List](https://www.baeldung.com/java-list-all-equal)
+- [List of Primitive Integer Values in Java](https://www.baeldung.com/java-list-primitive-int)
