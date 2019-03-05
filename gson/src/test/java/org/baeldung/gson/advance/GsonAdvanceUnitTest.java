@@ -37,8 +37,7 @@ public class GsonAdvanceUnitTest {
         Gson gson = new Gson();
         List<MyClass> list = gson.fromJson(inputString, ArrayList.class);
 
-        assertEquals(2, list.size());
-        int id = list.get(0).getId();
+        assertEquals(1, list.get(0).getId());
     }
 
     @Test public void givenJsonString_whenDeserializing_thenReturnListOfMyClass() {
