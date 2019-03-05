@@ -7,22 +7,25 @@ class ClosuresUnitTest extends GroovyTestCase {
     Closures closures = new Closures()
     
     void testClosures() {
-        def x = 12
-        def y = 10
-        def multipliedResult = closures.multiplyWithReturn(x, y) // or closures.multiplyWithReturn.call(x,y)
-        assert multipliedResult == 120
         
+        closures.print("Hello! Closure")
+        closures.formatLowerCaseClosure("Hello! Closure")
+        
+        closures.print.call("Hello! Closure")
+        closures.formatLowerCaseClosure.call("Hello! Closure")
+        
+        assert closures.stringUpperCase("Hello! Closure") == "HELLO! CLOSURE"
+
+        assert closures.multiply(2, 4) == 8
+
+        assert closures.closureWithTypedParameters("Alex", 2, 4) == "hey Alex the value is 2 and 4"
+                
         //closures vs methods
         
         assert closures.formatLowerCase("TONY STARK") == closures.formatLowerCaseClosure("Tony STark")
         
-        assert closures.formatLowerCase("TONY STARK") == closures.formatLowerCaseWithImplicitParam("Tony STark")
-        
         //parameters
-        
-        assert closures.stringUpperCase("Hello! Closure") == "HELLO! CLOSURE"
-        
-        assert closures.stringUpperCaseWithExplicitType("I am closure") == "I AM CLOSURE"
+        assert closures.greet("Alex") == "Hello! Alex"
         
         assert closures.addAll(12, 10, 14) == 36
         
@@ -40,16 +43,27 @@ class ClosuresUnitTest extends GroovyTestCase {
         
         //owner
         assert closures.self() == closures.classOwner()
-        assert closures.classOwner() != closures.objectOwner()
+        assert closures.classOwner() != closures.objectOwner() //classOwner returns class instance and objectOwner returns object instance
         
         //delegate
         assert closures.self() == closures.ownerDelegate()
         assert closures.enclosedDelegate() == closures.enclosedDelegate
         
         //Set object to delegate
-        def employee = new Employee(fullName: "Norman Lewis")
+        def employee = new Employee(fullName: "Wall E")
         closures.upperCaseFullName.delegate = employee
-        assert closures.upperCaseFullName() == "NORMAN LEWIS"
+        assert closures.upperCaseFullName() == "WALL E"
+        
+        //closure vs lambda
+        
+        def players = ["A", "B", "C", "D", "E"]
+        
+        players.each {
+            println it
+        }
+        
+        //List<String> playerStream = players.stream().collect(Collectors.toList());
+        //playerStream.forEach(System.out::println);
         
         //closure in GStrings
         def age = 12
@@ -60,7 +74,7 @@ class ClosuresUnitTest extends GroovyTestCase {
         assert gs == "Age is 24"
         
         //closure in Lists
-        def list = [10, 11, 12, 13, 14, true, false, "Norman"]
+        def list = [10, 11, 12, 13, 14, true, false, "BUNTHER"]
         list.each {
             println it
         }
@@ -71,64 +85,6 @@ class ClosuresUnitTest extends GroovyTestCase {
         def map = [1:10, 2:30, 4:5]
         
         assert [10, 60, 20] == map.collect{it.key * it.value}
-        
-        //SAM type coercion
-        Human human = {"Norman"}
-        assert human.greet() == "Hello, Norman"
-        
-        //interface coercion
-        def impl = { println 'Kate'; 12 } as User
-        
-        assert impl.age() == 12
-        impl.name()
-        
-        //left currying 
-        def copyStr = { int numOfTimes, String str -> str*numOfTimes }
-        def threeCopies = copyStr.curry(3)
-        assert threeCopies('hello') == 'hellohellohello'
-        assert threeCopies('bla') == copyStr(3, 'bla')
-        
-        //right currying
-        def hellos = copyStr.rcurry('hello')
-        assert hellos(2) == 'hellohello'
-        assert hellos(2) == copyStr(2, 'hello')
-        
-        //index based currying
-        def simpleInterest = { long amount, double interest, int years -> amount*interest*years/100 }
-        def fixedTimeInterest = simpleInterest.ncurry(2, 10)
-        
-        assert simpleInterest(300L, 1.2d, 10) == fixedTimeInterest(300L, 1.2d)
-        
-        def fixedRateandTimeInterest = simpleInterest.ncurry(1, 1.2d, 10) //set multiple parameters, starting from the specified index
-        assert simpleInterest(300L, 1.2d, 10) == fixedRateandTimeInterest(300L)
-        
-        //composition
-        def add4  = { it + 4 }
-        def multiply2 = { it * 2 }
-        
-        def multiply2add4 = add4 << multiply2
-        assert multiply2add4(3) == 10
-        assert multiply2add4(4) == add4(multiply2(4))
-        
-        def add4multiply2 = multiply2 << add4
-        assert add4multiply2(10) == 28
-        assert add4multiply2(15) == multiply2(add4(15))
-        
-        // reverse composition
-        assert multiply2add4(3) == (multiply2 >> add4)(3)
-        
-        //trampoline
-        def factorial
-        factorial = { int num, BigInteger res = 1G ->
-            if (num < 2) return res
-            factorial.trampoline(num - 1, num * res)
-        }
-        factorial = factorial.trampoline()
-        
-        assert factorial(1) == 1
-        assert factorial(6) == 1 * 2 * 3 * 4 * 5 * 6
-        assert factorial(16) == 20922789888000
-        assert factorial(50) == 30414093201713378043612608166064768844377641568960512000000000000
         
     }
     

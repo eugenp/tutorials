@@ -5,12 +5,36 @@ package com.baeldung.closures
 
 class Closures {
     
+    def print = { name ->
+        println name
+    }
+    
+    def formatLowerCase(name) {
+        return name.toLowerCase()
+    }
+    def formatLowerCaseClosure = { name ->
+        return name.toLowerCase()
+    }
+    
     def count=0
     
     def increaseCount = {
         count++
     }
-                                       
+    
+    def stringUpperCase = { str ->
+        str.toUpperCase()
+    }
+    
+    def multiply = { int x, int y ->
+        println x*y
+        return x*y
+    }
+    
+    def closureWithTypedParameters = { String x, int y, int z ->
+        return "hey ${x} the value is ${y} and ${z}"
+    }
+    
     def printSelf = {
         println it
     }
@@ -23,37 +47,8 @@ class Closures {
         println name
     }
     
-    def closureWithTypedParameters = { String x, int y, int z ->
-        println "hey ${x} the value is ${y} and ${z}"
-    }
-    
-    def multiplyWithReturn = { int x, int y ->
-        println x*y
-        return x*y
-    }
-    
-    def formatLowerCase(name) {
-        return name.toLowerCase()
-    }
-    
-    def formatLowerCaseClosure = { name ->
-        return name.toLowerCase()
-    }
-    
-    def formatLowerCaseWithImplicitParam = {
-        return it.toLowerCase()
-    }
-    
-    def stringUpperCase = { str ->
-        str.toUpperCase()
-    }
-    
-    def stringUpperCaseWithExplicitType = { String str ->
-        str.toUpperCase()
-    }
-    
     def greet = {
-        println "Hello! ${it}"
+        return "Hello! ${it}"
     }
     
     def addAll = { int... args ->
@@ -91,7 +86,7 @@ class Closures {
     }
     
     def ownerDelegate = {
-        return delegate
+        return delegate //equivalent to this
     }
     
     def enclosedDelegate = {
@@ -104,7 +99,5 @@ class Closures {
     def upperCaseFullName = {
         return delegate.fullName.toUpperCase()
     }
-    
-    
-    
+     
 }
