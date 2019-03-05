@@ -9,16 +9,6 @@ public class MyClass {
         strings = new String[] { "a", "b" };
     }
 
-
-    //  @Override
-    //  public String toString() {
-    //    return "{" +
-    //        "id=" + id +
-    //        ", name='" + name + '\'' +
-    //        ", strings=" + Arrays.toString(strings) +
-    //        '}';
-    //  }
-
     public int getId() {
         return id;
     }
