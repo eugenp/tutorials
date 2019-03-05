@@ -15,7 +15,7 @@ import org.junit.Test;
  *
  * @author Rodolfo Felipe
  */
-public class CollectionFilteringTest {
+public class CollectionFilteringUnitTest {
 
     private List<Employee> buildEmployeeList() {
         return Arrays.asList(new Employee(1, "Mike", 1), new Employee(2, "John", 1), new Employee(3, "Mary", 1), new Employee(4, "Joe", 2), new Employee(5, "Nicole", 2), new Employee(6, "Alice", 2), new Employee(7, "Bob", 3), new Employee(8, "Scarlett", 3));
@@ -26,7 +26,7 @@ public class CollectionFilteringTest {
     }
 
     @Test
-    public void givenEmployeeList_andNameFilterList_thenObtainFilteredEmployeeList_usingForEachLoopUnitTest() {
+    public void givenEmployeeList_andNameFilterList_thenObtainFilteredEmployeeList_usingForEachLoop() {
         List<Employee> filteredList = new ArrayList<>();
         List<Employee> originalList = buildEmployeeList();
         List<String> nameFilter = employeeNameFilter();
@@ -44,7 +44,7 @@ public class CollectionFilteringTest {
     }
 
     @Test
-    public void givenEmployeeList_andNameFilterList_thenObtainFilteredEmployeeList_usingLambdaUnitTest() {
+    public void givenEmployeeList_andNameFilterList_thenObtainFilteredEmployeeList_usingLambda() {
         List<Employee> filteredList;
         List<Employee> originalList = buildEmployeeList();
         List<String> nameFilter = employeeNameFilter();
@@ -57,7 +57,7 @@ public class CollectionFilteringTest {
     }
 
     @Test
-    public void givenEmployeeList_andNameFilterList_thenObtainFilteredEmployeeList_usingLambdaAndHashSetUnitTest() {
+    public void givenEmployeeList_andNameFilterList_thenObtainFilteredEmployeeList_usingLambdaAndHashSet() {
         List<Employee> filteredList;
         List<Employee> originalList = buildEmployeeList();
         Set<String> nameFilterSet = employeeNameFilter().stream()
