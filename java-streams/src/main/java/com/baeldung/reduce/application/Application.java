@@ -4,11 +4,6 @@ import com.baeldung.reduce.entities.User;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.BenchmarkMode;
-import org.openjdk.jmh.annotations.Fork;
-import org.openjdk.jmh.annotations.Mode;
-import org.openjdk.jmh.annotations.Warmup;
 
 public class Application {
 
