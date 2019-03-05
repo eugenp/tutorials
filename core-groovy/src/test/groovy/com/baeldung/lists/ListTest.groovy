@@ -20,11 +20,11 @@ class ListTest{
         ArrayList arrList = [1, 2, 3]
         assertTrue(arrList.class == ArrayList)
 
-        def list2 = new ArrayList(arrList)
-        assertTrue(list2 == arrList)
+        def copyList = new ArrayList(arrList)
+        assertTrue(copyList == arrList)
 
-        def list3 = arrList.clone()
-        assertTrue(list3 == arrList)
+        def cloneList = arrList.clone()
+        assertTrue(cloneList == arrList)
     }
 
     @Test
@@ -122,30 +122,33 @@ class ListTest{
 
     @Test
     void testFilteringOnLists(){
-        def list = [2, 1, 3, 4, 5, 6, 76]
+        def filterList = [2, 1, 3, 4, 5, 6, 76]
 
-        assertTrue(list.find{it > 3} == 4)
+        assertTrue(filterList.find{it > 3} == 4)
 
-        assertTrue(list.findAll{it > 3} == [4, 5, 6, 76])
+        assertTrue(filterList.findAll{it > 3} == [4, 5, 6, 76])
 
-        assertTrue(list.findAll{ it instanceof Number} == [2, 1, 3, 4, 5, 6, 76])
+        assertTrue(filterList.findAll{ it instanceof Number} == [2, 1, 3, 4, 5, 6, 76])
+        
+        assertTrue(filterList.grep( Number )== [2, 1, 3, 4, 5, 6, 76])
+        
+        assertTrue(filterList.grep{ it> 6 }== [76])
 
-        assertFalse(list.every{ it < 6})
+        def conditionList = [2, 1, 3, 4, 5, 6, 76]
+        
+        assertFalse(conditionList.every{ it < 6})
 
-        assertTrue(list.any{ it%2 == 0})
+        assertTrue(conditionList.any{ it%2 == 0})
 
-        assertTrue(list.grep( Number )== [2, 1, 3, 4, 5, 6, 76])
-
-        assertTrue(list.grep{ it> 6 }== [76])
     }
 
     @Test
     void testGetUniqueItemsInAList(){
         assertTrue([1, 3, 3, 4].toUnique() == [1, 3, 4])
 
-        def list = [1, 3, 3, 4]
-        list.unique()
-        assertTrue(list == [1, 3, 4])
+        def uniqueList = [1, 3, 3, 4]
+        uniqueList.unique()
+        assertTrue(uniqueList == [1, 3, 4])
 
         assertTrue(["A", "B", "Ba", "Bat", "Cat"].toUnique{ it.size()} == ["A", "Ba", "Bat"])
     }
@@ -160,11 +163,11 @@ class ListTest{
         list.sort(mc)
         assertTrue(list == [2, 1, 1, 0])
 
-        def list1 = ["na", "ppp", "as"]
-        assertTrue(list1.max() == "ppp")
+        def strList = ["na", "ppp", "as"]
+        assertTrue(strList.max() == "ppp")
         
         Comparator minc = {a,b -> a == b? 0: a < b? -1 : 1}
-        def list2 = [3, 2, 0, 7]
-        assertTrue(list2.min(minc) == 0)
+        def numberList = [3, 2, 0, 7]
+        assertTrue(numberList.min(minc) == 0)
     }
 }
