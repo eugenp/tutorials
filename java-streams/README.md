@@ -3,7 +3,7 @@
 ## Java Streams Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Java 8 Streams Advanced](http://www.baeldung.com/java-8-streams)
+- [The Java 8 Stream API Tutorial](http://www.baeldung.com/java-8-streams)
 - [Introduction to Java 8 Streams](http://www.baeldung.com/java-8-streams-introduction)
 - [Java 8 and Infinite Streams](http://www.baeldung.com/java-inifinite-streams)
 - [Java 8 Stream findFirst() vs. findAny()](http://www.baeldung.com/java-stream-findfirst-vs-findany)

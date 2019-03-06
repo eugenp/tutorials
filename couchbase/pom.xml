@@ -5,9 +5,9 @@
     <groupId>com.baeldung</groupId>
     <artifactId>couchbase</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>couchbase</name>
     <description>Couchbase Tutorials</description>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -25,7 +25,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-version}</version>
+            <version>${jackson.version}</version>
         </dependency>
         <!-- Spring Context for Dependency Injection -->
         <dependency>
@@ -70,7 +70,6 @@
         <couchbase.client.version>2.5.0</couchbase.client.version>
         <spring-framework.version>4.3.5.RELEASE</spring-framework.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <jackson-version>2.9.7</jackson-version>
     </properties>
 
 </project>

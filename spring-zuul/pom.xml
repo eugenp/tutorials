@@ -2,7 +2,6 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.baeldung</groupId>
     <artifactId>spring-zuul</artifactId>
     <version>1.0.0-SNAPSHOT</version>
@@ -39,22 +38,11 @@
 
     <properties>
         <!-- Spring -->
-        <spring-cloud.version>2.1.0.RC3</spring-cloud.version>
+        <spring-cloud.version>2.1.0.RELEASE</spring-cloud.version>
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
     </properties>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>http://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
 </project>

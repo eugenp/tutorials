@@ -4,7 +4,6 @@
     <groupId>org.baeldung</groupId>
     <artifactId>spring-session</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
     <name>spring-session</name>
     <packaging>pom</packaging>
 

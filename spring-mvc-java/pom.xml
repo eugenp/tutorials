@@ -5,7 +5,7 @@
     <artifactId>spring-mvc-java</artifactId>
     <version>0.1-SNAPSHOT</version>
     <name>spring-mvc-java</name>
-     <packaging>war</packaging>
+    <packaging>war</packaging>
 
     <parent>
         <artifactId>parent-spring-5</artifactId>
@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-             <version>${jackson-databind.version}</version>
+             <version>${jackson.version}</version>
         </dependency>
 
         <!-- AOP -->
