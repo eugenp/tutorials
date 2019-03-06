@@ -12,9 +12,10 @@ import static org.junit.Assert.*;
 
 public class SmooksIntegrationTest {
 
-    private static final String EDIFACT_MESSAGE = "UNA:+.? '\r\n" + "UNH+771+IN_PROGRESS+2018-01-14'\r\n" + "CTA+CompanyX+1234567'\r\n" + "LIN+1+PX1234+9.99'\r\n" + "LIN+2+RX990+120.32'\r\n";
-    private static final String EMAIL_MESSAGE = "Hi,\r\n" + "Order number #771 created on 2018-01-14 is currently in IN_PROGRESS status.\r\n" + "Consider contact supplier \"CompanyX\"  with phone number: \"1234567\".\r\n" + "Order items:\r\n"
-            + "1  X PX1234 (total price 9.99)\r\n" + "2  X RX990 (total price 240.64)\r\n";
+    private static final String EDIFACT_MESSAGE = "UNA:+.? '" + System.lineSeparator() + "UNH+771+IN_PROGRESS+2018-01-14'" + System.lineSeparator() + "CTA+CompanyX+1234567'" + System.lineSeparator() + "LIN+1+PX1234+9.99'" + System.lineSeparator()
+        + "LIN+2+RX990+120.32'" + System.lineSeparator();
+    private static final String EMAIL_MESSAGE = "Hi," + System.lineSeparator() + "Order number #771 created on 2018-01-14 is currently in IN_PROGRESS status." + System.lineSeparator() + "Consider contact supplier \"CompanyX\"  with phone number: \"1234567\"."
+        + System.lineSeparator() + "Order items:" + System.lineSeparator() + "1  X PX1234 (total price 9.99)" + System.lineSeparator() + "2  X RX990 (total price 240.64)" + System.lineSeparator();
 
     @Test
     public void givenOrderXML_whenConvert_thenPOJOsConstructedCorrectly() throws Exception {
@@ -37,7 +38,10 @@ public class SmooksIntegrationTest {
 
         assertThat(validationResult.getErrors(), hasSize(1));
         // 1234567 didn't match ^[0-9\\-\\+]{9,15}$
-        assertThat(validationResult.getErrors().get(0).getFailRuleResult().getRuleName(), is("supplierPhone"));
+        assertThat(validationResult.getErrors()
+            .get(0)
+            .getFailRuleResult()
+            .getRuleName(), is("supplierPhone"));
     }
 
     @Test
