@@ -1,0 +1,6 @@
+
+/target/
+/spring-boot-data.iml
+/.idea/
+/src/main/resources/application-local.properties
+/src/test/resources/application-local.properties
