@@ -2,9 +2,10 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <artifactId>osgi-intro-sample-activator</artifactId>
+    <name>osgi-intro-sample-activator</name>
     <!-- Please, note this is not the usual 'jar'. -->
     <packaging>bundle</packaging>
-    <artifactId>osgi-intro-sample-activator</artifactId>
 
     <!-- com.baeldung/osgi-intro-sample-activator/1.0-SNAPSHOT -->
     <parent>

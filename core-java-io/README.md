@@ -3,7 +3,7 @@
 ## Core Java IO Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Java - Reading a Large File Efficiently](http://www.baeldung.com/java-read-lines-large-file)
+- [How to Read a Large File Efficiently with Java](http://www.baeldung.com/java-read-lines-large-file)
 - [Java InputStream to String](http://www.baeldung.com/convert-input-stream-to-string)
 - [Java – Write to File](http://www.baeldung.com/java-write-to-file)
 - [Java - Convert File to InputStream](http://www.baeldung.com/convert-file-to-input-stream)
@@ -11,7 +11,7 @@
 - [Java – Byte Array to Writer](http://www.baeldung.com/java-convert-byte-array-to-writer)
 - [Java – Directory Size](http://www.baeldung.com/java-folder-size)
 - [Differences Between the Java WatchService API and the Apache Commons IO Monitor Library](http://www.baeldung.com/java-watchservice-vs-apache-commons-io-monitor-library)
-- [Calculate the Size of a File in Java](http://www.baeldung.com/java-file-size)
+- [File Size in Java](http://www.baeldung.com/java-file-size)
 - [Comparing getPath(), getAbsolutePath(), and getCanonicalPath() in Java](http://www.baeldung.com/java-path)
 - [Using Java MappedByteBuffer](http://www.baeldung.com/java-mapped-byte-buffer)
 - [Copy a File with Java](http://www.baeldung.com/java-copy-file)
@@ -35,3 +35,8 @@
 - [Guide to Java OutputStream](https://www.baeldung.com/java-outputstream)
 - [Reading a CSV File into an Array](https://www.baeldung.com/java-csv-file-array)
 - [Guide to BufferedReader](https://www.baeldung.com/java-buffered-reader)
+- [How to Get the File Extension of a File in Java](http://www.baeldung.com/java-file-extension)
+- [Getting a File’s Mime Type in Java](http://www.baeldung.com/java-file-mime-type)
+- [Create a Directory in Java](https://www.baeldung.com/java-create-directory)
+- [How to Write to a CSV File in Java](https://www.baeldung.com/java-csv)
+- [List Files in a Directory in Java](https://www.baeldung.com/java-list-directory-files)

@@ -54,6 +54,18 @@
             <artifactId>spring-data-jpa</artifactId>
             <version>LATEST</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.awaitility</groupId>
+            <artifactId>awaitility</artifactId>
+            <version>${awaitility.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -70,6 +82,8 @@
     <properties>
         <!-- testing -->
         <hamcrest.version>2.0.0.0</hamcrest.version>
+        <awaitility.version>3.1.6</awaitility.version>
+        <junit.jupiter.version>5.4.0</junit.jupiter.version>
     </properties>
 
 </project>

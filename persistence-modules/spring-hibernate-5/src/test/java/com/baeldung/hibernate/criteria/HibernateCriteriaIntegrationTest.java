@@ -1,16 +1,23 @@
 package com.baeldung.hibernate.criteria;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.junit.Test;
 
 import com.baeldung.hibernate.criteria.model.Item;
 import com.baeldung.hibernate.criteria.util.HibernateUtil;
 import com.baeldung.hibernate.criteria.view.ApplicationView;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
+import javax.persistence.criteria.CriteriaUpdate;
+import javax.persistence.criteria.Root;
 
 public class HibernateCriteriaIntegrationTest {
 
@@ -179,4 +186,51 @@ public class HibernateCriteriaIntegrationTest {
         session.close();
         assertArrayEquals(expectedPriceBetweenItems, av.betweenCriteria());
     }
+
+    @Test
+    public void givenNewItemPrice_whenCriteriaUpdate_thenReturnAffectedResult() {
+
+        int oldPrice = 10, newPrice = 20;
+
+        Session session = HibernateUtil.getHibernateSession();
+
+        Item item = new Item(12, "Test Item 12", "This is a description");
+        item.setItemPrice(oldPrice);
+        session.save(item);
+
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaUpdate<Item> criteriaUpdate = cb.createCriteriaUpdate(Item.class);
+        Root<Item> root = criteriaUpdate.from(Item.class);
+        criteriaUpdate.set("itemPrice", newPrice);
+        criteriaUpdate.where(cb.equal(root.get("itemPrice"), oldPrice));
+
+        Transaction transaction = session.beginTransaction();
+        session.createQuery(criteriaUpdate).executeUpdate();
+        transaction.commit();
+
+        Item updatedItem = session.createQuery("FROM Item WHERE itemPrice = " + newPrice, Item.class).getSingleResult();
+        session.refresh(updatedItem);
+        assertEquals(newPrice, updatedItem.getItemPrice().intValue());
+    }
+
+    @Test
+    public void givenTargetItemPrice_whenCriteriaDelete_thenDeleteMatched() {
+
+        int targetPrice = 1000;
+
+        Session session = HibernateUtil.getHibernateSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaDelete<Item> criteriaDelete = cb.createCriteriaDelete(Item.class);
+        Root<Item> root = criteriaDelete.from(Item.class);
+        criteriaDelete.where(cb.greaterThan(root.get("itemPrice"), targetPrice));
+
+        Transaction transaction = session.beginTransaction();
+        session.createQuery(criteriaDelete).executeUpdate();
+        transaction.commit();
+
+        List<Item> deletedItem = session.createQuery("FROM Item WHERE itemPrice > " + targetPrice, Item.class).list();
+        assertTrue(deletedItem.isEmpty());
+
+    }
+
 }

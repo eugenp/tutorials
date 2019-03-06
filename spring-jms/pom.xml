@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-jms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-jms</name>
+    <packaging>war</packaging>
     <description>Introduction to Spring JMS</description>
 
     <parent>
