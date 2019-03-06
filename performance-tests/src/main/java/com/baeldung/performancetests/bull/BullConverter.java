@@ -37,16 +37,12 @@ public class BullConverter implements Converter {
                 new FieldTransformer<>("orderStatus", orderStatus -> new Order().conversion(sourceOrder.getStatus()));
         FieldTransformer<PaymentType, com.baeldung.performancetests.model.destination.PaymentType> paymentTypeTransformer =
                 new FieldTransformer<>("paymentType", paymentType -> new Order().conversion(sourceOrder.getPaymentType()));
-        Order order = new Order();
-        beanTransformer.withFieldTransformer(accountStatusTransformer, orderStatusTransformer, paymentTypeTransformer)
-                .transform(sourceOrder, order);
-        return order;
+        return beanTransformer.withFieldTransformer(accountStatusTransformer, orderStatusTransformer, paymentTypeTransformer)
+                .transform(sourceOrder, Order.class);
     }
 
     @Override
     public DestinationCode convert(SourceCode sourceCode) {
-        DestinationCode destinationCode = new DestinationCode();
-        beanTransformer.transform(sourceCode, destinationCode);
-        return destinationCode;
+        return beanTransformer.transform(sourceCode, DestinationCode.class);
     }
 }
