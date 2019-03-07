@@ -1,4 +1,3 @@
-module com.baeldung.java9.mavendemo {
-
-  requires java.xml;
+module com.baeldung.maven.java9 {
+    requires java.xml;
 }

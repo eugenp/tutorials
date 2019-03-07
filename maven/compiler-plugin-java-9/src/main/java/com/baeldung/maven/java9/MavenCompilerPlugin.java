@@ -1,4 +1,4 @@
-package com.baeldung.java9.mavendemo;
+package com.baeldung.maven.java9;
 
 import static javax.xml.XMLConstants.XML_NS_PREFIX;
 
