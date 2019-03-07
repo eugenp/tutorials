@@ -36,5 +36,4 @@ public class Application {
         int result8 = users.parallelStream().reduce(0, (partialAgeResult, user) -> partialAgeResult + user.getAge(), Integer::sum);
         System.out.println(result8);
     }    
-            
 }
