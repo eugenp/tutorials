@@ -9,10 +9,10 @@ class Closures {
         println name
     }
     
-    def formatLowerCase(name) {
+    def formatToLowerCase(name) {
         return name.toLowerCase()
     }
-    def formatLowerCaseClosure = { name ->
+    def formatToLowerCaseClosure = { name ->
         return name.toLowerCase()
     }
     
@@ -26,26 +26,47 @@ class Closures {
         str.toUpperCase()
     }
     
-    def multiply = { int x, int y ->
-        println x*y
+    def multiply = { x, y ->
         return x*y
     }
     
-    def closureWithTypedParameters = { String x, int y, int z ->
-        return "hey ${x} the value is ${y} and ${z}"
+    def calculate = {int x, int y, String operation ->
+        def result = 0    
+        switch(operation) {
+            case "ADD":
+                result = x+y
+                break
+            case "SUB":
+                result = x-y
+                break
+            case "MUL":
+                result = x*y
+                break
+            case "DIV":
+                result = x/y
+                break
+        }
+        return result
     }
     
-    def printSelf = {
-        println it
+    def exchange = { float euros, String currency ->
+        def euroRatesMap = ["RON":4.6, "USD":1.1]
+        
+        float exchangedAmount = euros
+        
+        if(euroRatesMap[currency]) {
+            exchangedAmount = euros * euroRatesMap[currency]  
+        }
+        return exchangedAmount
     }
     
-    def printWithImplicitParameter = { it ->
-        println it
+    def toggle = { it ->
+        return !it
     }
     
-    def printWithExplicitParameter = { name ->
-        println name
-    }
+//    def toggle = { value ->
+//        return !value
+//    }
     
     def greet = {
         return "Hello! ${it}"
@@ -59,8 +80,24 @@ class Closures {
         return result
     }
     
-    def volume(height, areaClosure) {
-        return height * areaClosure.call(2, 8)
+    def volume(Closure area, int... dimensions) {
+        if(dimensions.size() == 3) {
+            
+            //consider dimension[0] = length, dimension[1] = breadth, dimension[2] = height
+            //for cube and cuboid
+            return area(dimensions[0], dimensions[1]) * dimensions[2]
+        } else if(dimensions.size() == 2) {
+            
+            //consider dimension[0] = radius, dimension[1] = height
+            //for cylinder and cone
+            return area(dimensions[0]) * dimensions[1]
+        } else if(dimensions.size() == 1) {
+            
+            //consider dimension[0] = radius
+            //for sphere
+            return area(dimensions[0]) * dimensions[0]
+        }
+        
     }
     
     def self = {
