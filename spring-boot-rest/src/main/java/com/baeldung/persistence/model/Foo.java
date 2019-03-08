@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
+@XStreamAlias("Foo")
 @Entity
 public class Foo implements Serializable {
 
@@ -17,6 +21,9 @@ public class Foo implements Serializable {
 
     @Column(nullable = false)
     private String name;
+    
+    @Version
+    private long version;
 
     public Foo() {
         super();
@@ -46,6 +53,14 @@ public class Foo implements Serializable {
         this.name = name;
     }
 
+    public long getVersion() {
+        return version;
+    }
+
+    public void setVersion(long version) {
+        this.version = version;
+    }
+    
     //
 
     @Override

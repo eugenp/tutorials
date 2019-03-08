@@ -7,14 +7,6 @@
     <version>0.0.1-SNAPSHOT</version>
 	<name>apache-avro</name>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <compiler-plugin.version>3.5</compiler-plugin.version>
-        <avro.version>1.8.2</avro.version>
-        <java.version>1.8</java.version>
-        <slf4j.version>1.7.25</slf4j.version>
-    </properties>
-	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -85,4 +77,12 @@
             </plugin>
         </plugins>
     </build>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <compiler-plugin.version>3.5</compiler-plugin.version>
+        <avro.version>1.8.2</avro.version>
+        <slf4j.version>1.7.25</slf4j.version>
+    </properties>
+	
 </project>

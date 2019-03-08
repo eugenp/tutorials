@@ -4,16 +4,18 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.baeldung</groupId>
 	<artifactId>spring-boot-bootstrap</artifactId>
-	<packaging>jar</packaging>
 	<name>spring-boot-bootstrap</name>
 	<description>Demo project for Spring Boot</description>
-	<parent>
+	<packaging>jar</packaging>
+    
+    <parent>
 		<artifactId>parent-boot-2</artifactId>
 		<groupId>com.baeldung</groupId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../parent-boot-2</relativePath>
 	</parent>
-	<dependencies>
+    
+    <dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -82,7 +84,7 @@
 			<id>openshift</id>
 			<properties>
 				<spring-cloud-k8s.version>0.3.0.RELEASE</spring-cloud-k8s.version>
-				<spring-cloud.version>Finchley.SR2</spring-cloud.version>
+				<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 				<fabric8.maven.plugin.version>3.5.37</fabric8.maven.plugin.version>
 			</properties>
 			<dependencyManagement>
@@ -164,7 +166,7 @@
 					<dependency>
 						<groupId>org.springframework.cloud</groupId>
 						<artifactId>spring-cloud-dependencies</artifactId>
-						<version>Finchley.SR1</version>
+						<version>Greenwich.RELEASE</version>
 						<type>pom</type>
 						<scope>import</scope>
 					</dependency>
@@ -212,7 +214,7 @@
 					<dependency>
 						<groupId>org.springframework.cloud</groupId>
 						<artifactId>spring-cloud-dependencies</artifactId>
-						<version>Finchley.SR1</version>
+						<version>Greenwich.RELEASE</version>
 						<type>pom</type>
 						<scope>import</scope>
 					</dependency>
@@ -312,7 +314,8 @@
 			</build>
 		</profile>
 	</profiles>
-	<build>
+    
+    <build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -325,7 +328,8 @@
 			</plugin>
 		</plugins>
 	</build>
-	<properties>
+    
+    <properties>
 		<servlet.version>4.0.0</servlet.version>
 	</properties>
 

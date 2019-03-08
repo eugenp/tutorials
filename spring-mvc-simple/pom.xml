@@ -19,11 +19,11 @@
             <artifactId>spring-oxm</artifactId>
             <version>${spring-oxm.version}</version>
         </dependency>
-<dependency>
-    <groupId>com.sun.mail</groupId>
-    <artifactId>javax.mail</artifactId>
-    <version>1.6.1</version>
-</dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.1</version>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
