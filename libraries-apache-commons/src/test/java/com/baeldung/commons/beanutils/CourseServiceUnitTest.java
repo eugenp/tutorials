@@ -45,7 +45,7 @@ public class CourseServiceUnitTest {
 
         CourseService.copyProperties(course, courseEntity);
         assertNotNull(course.getName());
-		assertNotNull(courseEntity.getName());
+	assertNotNull(courseEntity.getName());
         Assert.assertEquals(course.getName(), courseEntity.getName());
         Assert.assertEquals(course.getCodes(), courseEntity.getCodes());
         Assert.assertNull(courseEntity.getStudent("ST-1"));
