@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.spring.ejb</groupId>
     <artifactId>spring-ejb</artifactId>
-    <packaging>pom</packaging>
     <name>spring-ejb</name>
+    <packaging>pom</packaging>
     <description>Spring EJB Tutorial</description>
 
     <parent>

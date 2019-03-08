@@ -39,6 +39,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class Java8CollectorsUnitTest {
 
     private final List<String> givenList = Arrays.asList("a", "bb", "ccc", "dd");
+    private final List<String> listWithDuplicates = Arrays.asList("a", "bb", "c", "d", "bb");
 
     @Test
     public void whenCollectingToList_shouldCollectToList() throws Exception {
@@ -48,10 +49,17 @@ public class Java8CollectorsUnitTest {
     }
 
     @Test
-    public void whenCollectingToList_shouldCollectToSet() throws Exception {
+    public void whenCollectingToSet_shouldCollectToSet() throws Exception {
         final Set<String> result = givenList.stream().collect(toSet());
 
         assertThat(result).containsAll(givenList);
+    }
+
+    @Test
+    public void givenContainsDuplicateElements_whenCollectingToSet_shouldAddDuplicateElementsOnlyOnce() throws Exception {
+        final Set<String> result = listWithDuplicates.stream().collect(toSet());
+
+        assertThat(result).hasSize(4);
     }
 
     @Test
@@ -77,10 +85,23 @@ public class Java8CollectorsUnitTest {
     }
 
     @Test
-    public void whenCollectingToMap_shouldCollectToMapMerging() throws Exception {
-        final Map<String, Integer> result = givenList.stream().collect(toMap(Function.identity(), String::length, (i1, i2) -> i1));
+    public void whenCollectingToMapwWithDuplicates_shouldCollectToMapMergingTheIdenticalItems() throws Exception {
+        final Map<String, Integer> result = listWithDuplicates.stream().collect(
+          toMap(
+            Function.identity(),
+            String::length,
+            (item, identicalItem) -> item
+          )
+        );
 
-        assertThat(result).containsEntry("a", 1).containsEntry("bb", 2).containsEntry("ccc", 3).containsEntry("dd", 2);
+        assertThat(result).containsEntry("a", 1).containsEntry("bb", 2).containsEntry("c", 1).containsEntry("d", 1);
+    }
+
+    @Test
+    public void givenContainsDuplicateElements_whenCollectingToMap_shouldThrowException() throws Exception {
+        assertThatThrownBy(() -> {
+            listWithDuplicates.stream().collect(toMap(Function.identity(), String::length));
+        }).isInstanceOf(IllegalStateException.class);
     }
 
     @Test

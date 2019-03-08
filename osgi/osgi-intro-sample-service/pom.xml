@@ -3,6 +3,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>osgi-intro-sample-service</artifactId>
+    <name>osgi-intro-sample-service</name>
     <!-- Please, note this is not the usual 'jar'. -->
     <packaging>bundle</packaging>
 

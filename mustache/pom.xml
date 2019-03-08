@@ -3,8 +3,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>mustache</artifactId>
-    <packaging>jar</packaging>
     <name>mustache</name>
+    <packaging>jar</packaging>
 
     <parent>
         <artifactId>parent-boot-2</artifactId>
