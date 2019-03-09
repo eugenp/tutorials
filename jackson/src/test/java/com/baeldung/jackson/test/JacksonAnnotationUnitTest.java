@@ -39,7 +39,6 @@ import com.baeldung.jackson.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.exception.UserWithRoot;
 import com.baeldung.jackson.jsonview.Item;
 import com.baeldung.jackson.jsonview.Views;
-import com.baeldung.jackson.serialization.jsonrootname.Author;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.InjectableValues;
 import com.fasterxml.jackson.databind.MapperFeature;
@@ -48,7 +47,6 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class JacksonAnnotationUnitTest {
 
@@ -387,31 +385,6 @@ public class JacksonAnnotationUnitTest {
 
         // assert
         assertThat(aliasBean.getFirstName(), is("Alex"));
-    }
-    
-    @Test
-    public void whenSerializingUsingXMLRootNameWithNameSpace_thenCorrect() throws JsonProcessingException {
-
-        // arrange
-        Author author = new Author("Alex", "Theedom");
-
-        // act
-        ObjectMapper mapper = new XmlMapper();
-        mapper = mapper.enable(SerializationFeature.WRAP_ROOT_VALUE).enable(SerializationFeature.INDENT_OUTPUT);
-        String result = mapper.writeValueAsString(author);
-
-        // assert
-        assertThat(result, containsString("<writer xmlns=\"book\">"));
-
-        /*
-            <writer xmlns="book">
-              <id xmlns="">3006b44a-cf62-4cfe-b3d8-30dc6c46ea96</id>
-              <firstName xmlns="">Alex</firstName>
-              <lastName xmlns="">Theedom</lastName>
-              <items xmlns=""/>
-            </writer>
-        */
-
     }
 
 }
