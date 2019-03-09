@@ -29,7 +29,8 @@ public class MyClass {
         this.name = name;
     }
 
-    @Override public boolean equals(Object o) {
+    @Override
+    public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
@@ -40,7 +41,8 @@ public class MyClass {
         return id == myClass.id && Objects.equals(name, myClass.name);
     }
 
-    @Override public int hashCode() {
+    @Override
+    public int hashCode() {
 
         return Objects.hash(id, name);
     }
