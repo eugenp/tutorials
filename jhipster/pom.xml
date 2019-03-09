@@ -15,10 +15,17 @@
         <relativePath>../parent-boot-1</relativePath>
     </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-java8</artifactId>
+        </dependency>
+    </dependencies>
+
     <modules>
         <module>jhipster-monolithic</module>
         <module>jhipster-microservice</module>
-		<module>jhipster-uaa</module>
-	</modules>
-	
+        <module>jhipster-uaa</module>
+    </modules>
+
 </project>
