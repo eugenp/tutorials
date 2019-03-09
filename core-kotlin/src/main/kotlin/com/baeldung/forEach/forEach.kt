@@ -5,6 +5,15 @@ class Country(val name : String, val cities : List<City>)
 
 class City(val name : String, val streets : List<String>)
 
+fun City.getStreetsWithCityName() : List<String> {
+    return streets.map { "$name, $it" }.toList()
+}
+
+fun Country.getCitiesWithCountryName() : List<String> {
+    return cities.flatMap { it.getStreetsWithCityName() }
+            .map { "$name, $it" }
+}
+
 class World {
 
     private val streetsOfAmsterdam = listOf("Herengracht", "Prinsengracht")
@@ -45,6 +54,19 @@ class World {
             }
         }
     }
+
+    fun allStreetsFlatMap() {
+
+        countries.flatMap { it.cities}
+                .flatMap { it.streets}
+                .forEach { println(it) }
+    }
+
+    fun allFlatMapTable() {
+
+        countries.flatMap { it.getCitiesWithCountryName() }
+                .forEach { println(it) }
+    }
 }
 
 fun main(args : Array<String>) {
@@ -56,6 +78,10 @@ fun main(args : Array<String>) {
     world.allNested()
 
     world.allTable()
+
+    world.allStreetsFlatMap()
+
+    world.allFlatMapTable()
 }
 
 
