@@ -1,6 +1,5 @@
 package com.baeldung.jackson.dynamicIgnore;
 
-
 public class Person implements Hidable {
     private String name;
     private Address address;
@@ -12,7 +11,6 @@ public class Person implements Hidable {
         this.address = address;
         this.hidden = hidden;
     }
-
 
     public String getName() {
         return name;
@@ -29,6 +27,7 @@ public class Person implements Hidable {
     public void setAddress(final Address address) {
         this.address = address;
     }
+
     @Override
     public boolean isHidden() {
         return hidden;

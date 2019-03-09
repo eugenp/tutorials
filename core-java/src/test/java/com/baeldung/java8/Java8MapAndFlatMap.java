@@ -17,8 +17,8 @@ public class Java8MapAndFlatMap {
     @Test
     public void givenStream_whenCalledMap_thenProduceList() {
         List<String> myList = Stream.of("a", "b")
-                .map(String::toUpperCase)
-                .collect(Collectors.toList());
+            .map(String::toUpperCase)
+            .collect(Collectors.toList());
         assertEquals(asList("A", "B"), myList);
     }
 
@@ -27,9 +27,9 @@ public class Java8MapAndFlatMap {
         List<List<String>> list = Arrays.asList(Arrays.asList("a"), Arrays.asList("b"));
         System.out.println(list);
 
-        System.out.println(list
-                .stream().flatMap(Collection::stream)
-                .collect(Collectors.toList()));
+        System.out.println(list.stream()
+            .flatMap(Collection::stream)
+            .collect(Collectors.toList()));
     }
 
     @Test
@@ -40,13 +40,11 @@ public class Java8MapAndFlatMap {
 
     @Test
     public void givenOptional_whenCalledFlatMap_thenProduceFlattenedOptional() {
-        assertEquals(Optional.of(Optional.of("STRING")), Optional
-                .of("string")
-                .map(s -> Optional.of("STRING")));
+        assertEquals(Optional.of(Optional.of("STRING")), Optional.of("string")
+            .map(s -> Optional.of("STRING")));
 
-        assertEquals(Optional.of("STRING"), Optional
-                .of("string")
-                .flatMap(s -> Optional.of("STRING")));
+        assertEquals(Optional.of("STRING"), Optional.of("string")
+            .flatMap(s -> Optional.of("STRING")));
     }
 
 }

@@ -1,12 +1,13 @@
 'use strict';
 
 angularApp
-	.controller('indexController', function ($scope) {
-        $scope.greeting = '';
+.controller('indexController', function ($scope) {
 
-		$scope.initialize = function () {
-            $scope.greeting = "Howdy!"
-		};
+  $scope.greeting = '';
 
-		$scope.initialize();
-	});
+  $scope.initialize = function () {
+    $scope.greeting = "Howdy!"
+  };
+
+  $scope.initialize();
+});

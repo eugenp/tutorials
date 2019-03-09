@@ -16,7 +16,7 @@ import java.util.List;
  * @version 1.0
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({"lastName", "items", "firstName", "id"})
+@JsonPropertyOrder({ "lastName", "items", "firstName", "id" })
 public class Author extends Person {
 
     @JsonIgnore

@@ -27,7 +27,9 @@ public class JacksonInjectUnitTest {
 
         // act
         InjectableValues inject = new InjectableValues.Std().addValue(UUID.class, id);
-        Author author = new ObjectMapper().reader(inject).forType(Author.class).readValue(authorJson);
+        Author author = new ObjectMapper().reader(inject)
+            .forType(Author.class)
+            .readValue(authorJson);
 
         // assert
         assertThat(author.getId()).isEqualTo(id);
