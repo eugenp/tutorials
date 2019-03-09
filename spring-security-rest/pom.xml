@@ -21,12 +21,12 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -144,7 +144,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -274,7 +274,6 @@
 
     <properties>
         <!-- Spring -->
-        <org.springframework.security.version>5.1.0.RELEASE</org.springframework.security.version>
         <org.springframework.hateoas.version>0.25.0.RELEASE</org.springframework.hateoas.version>
 
         <!-- various -->

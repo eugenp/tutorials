@@ -22,3 +22,4 @@
 - [Inheritance and Composition (Is-a vs Has-a relationship) in Java](http://www.baeldung.com/java-inheritance-composition)
 - [A Guide to Constructors in Java](https://www.baeldung.com/java-constructors)
 - [Java equals() and hashCode() Contracts](https://www.baeldung.com/java-equals-hashcode-contracts)
+- [Marker Interfaces in Java](https://www.baeldung.com/java-marker-interfaces)
