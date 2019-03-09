@@ -80,6 +80,7 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+	
     <properties>
         <org.apache.httpcomponents.version>4.5.3</org.apache.httpcomponents.version>
         <spring-test.version>5.0.5.RELEASE</spring-test.version>

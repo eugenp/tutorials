@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-static-resources</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-static-resources</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -140,6 +140,14 @@
             <artifactId>handlebars</artifactId>
             <version>${handlebars.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+             <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
 
     <build>
