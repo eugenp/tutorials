@@ -81,6 +81,7 @@ public class GsonAdvanceUnitTest {
 
         assertEquals(2, outList.size());
         assertTrue(outList.get(0) instanceof Dog);
+        assertTrue(outList.get(1) instanceof Cow);
     }
 
     @Test
@@ -101,7 +102,7 @@ public class GsonAdvanceUnitTest {
 
         Type listOfAnimals = new TypeToken<ArrayList<Animal>>() {}.getType();
 
-        RuntimeTypeAdapterFactory<Animal> adapter = RuntimeTypeAdapterFactory.of(Animal.class)
+        RuntimeTypeAdapterFactory<Animal> adapter = RuntimeTypeAdapterFactory.of(Animal.class, "type")
           .registerSubtype(Dog.class)
           .registerSubtype(Cow.class);
 
@@ -111,5 +112,6 @@ public class GsonAdvanceUnitTest {
 
         assertEquals(2, outList.size());
         assertTrue(outList.get(0) instanceof Dog);
+        assertTrue(outList.get(1) instanceof Cow);
     }
 }
