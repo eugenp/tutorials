@@ -11,33 +11,30 @@ import static org.junit.Assert.*;
 
 public class OptionalChainingUnitTest {
 
-    private boolean getFirstEvaluated;
-    private boolean getSecondEvaluated;
-    private boolean getThirdEvaluated;
+    private boolean getEmptyEvaluated;
+    private boolean getHelloEvaluated;
+    private boolean getByeEvaluated;
 
     @Before
     public void setUp() {
-        getFirstEvaluated = false;
-        getSecondEvaluated = false;
-        getThirdEvaluated = false;
+        getEmptyEvaluated = false;
+        getHelloEvaluated = false;
+        getByeEvaluated = false;
     }
 
     @Test
     public void givenThreeOptionals_whenChaining_thenFirstNonEmptyIsReturned() {
-        Optional<String> found = Stream.of(getFirst(), getSecond(), getThird())
+        Optional<String> found = Stream.of(getEmpty(), getHello(), getBye())
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .findFirst();
 
-        assertEquals(getSecond(), found);
+        assertEquals(getHello(), found);
     }
 
     @Test
     public void givenTwoEmptyOptionals_whenChaining_thenEmptyOptionalIsReturned() {
-        Optional<Object> first = Optional.empty();
-        Optional<Object> second = Optional.empty();
-
-        Optional<Object> found = Stream.of(first, second)
+        Optional<String> found = Stream.of(getEmpty(), getEmpty())
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .findFirst();
@@ -47,66 +44,63 @@ public class OptionalChainingUnitTest {
 
     @Test
     public void givenTwoEmptyOptionals_whenChaining_thenDefaultIsReturned() {
-        Optional<Object> first = Optional.empty();
-        Optional<Object> second = Optional.empty();
-
-        Object found = Stream.of(first, second)
+        String found = Stream.<Supplier<Optional<String>>>of(
+                () -> createOptional("empty"),
+                () -> createOptional("empty")
+        )
+                .map(Supplier::get)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .findFirst()
-                .orElse("default");
+                .orElseGet(() -> "default");
 
         assertEquals("default", found);
     }
 
     @Test
     public void givenThreeOptionals_whenChaining_thenFirstNonEmptyIsReturnedAndRestNotEvaluated() {
-        Supplier<Optional<String>> getFirstSupplier = this::getFirst;
-        Supplier<Optional<String>> getSecondSupplier = this::getSecond;
-        Supplier<Optional<String>> getThirdSupplier = this::getThird;
-
-        Optional<String> found = Stream.<Supplier<Optional<String>>>of(getFirstSupplier, getSecondSupplier, getThirdSupplier)
+        Optional<String> found = Stream.<Supplier<Optional<String>>>of(this::getEmpty, this::getHello, this::getBye)
                 .map(Supplier::get)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .findFirst();
 
-        assertTrue(this.getFirstEvaluated);
-        assertTrue(this.getSecondEvaluated);
-        assertFalse(this.getThirdEvaluated);
-        assertEquals(getSecond(), found);
+        assertTrue(this.getEmptyEvaluated);
+        assertTrue(this.getHelloEvaluated);
+        assertFalse(this.getByeEvaluated);
+        assertEquals(getHello(), found);
     }
 
     @Test
     public void givenTwoOptionalsReturnedByOneArgMethod_whenChaining_thenFirstNonEmptyIsReturned() {
         Optional<String> found = Stream.<Supplier<Optional<String>>>of(
-                () -> get("empty"),
-                () -> get("hello")
+                () -> createOptional("empty"),
+                () -> createOptional("hello")
         )
                 .map(Supplier::get)
                 .filter(Optional::isPresent)
                 .map(Optional::get)
                 .findFirst();
 
-        assertEquals(get("hello"), found);
+        assertEquals(createOptional("hello"), found);
     }
 
-    private Optional<String> getFirst() {
-        this.getFirstEvaluated = true;
+    private Optional<String> getEmpty() {
+        this.getEmptyEvaluated = true;
         return Optional.empty();
     }
 
-    private Optional<String> getSecond() {
-        this.getSecondEvaluated = true;
-        return Optional.of("second");
+    private Optional<String> getHello() {
+        this.getHelloEvaluated = true;
+        return Optional.of("hello");
     }
 
-    private Optional<String> getThird() {
-        this.getThirdEvaluated = true;
-        return Optional.of("third");
+    private Optional<String> getBye() {
+        this.getByeEvaluated = true;
+        return Optional.of("bye");
     }
 
-    private Optional<String> get(String input) {
+    private Optional<String> createOptional(String input) {
         if (input == null || input == "" || input == "empty") {
             return Optional.empty();
         }
