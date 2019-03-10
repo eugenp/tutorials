@@ -4,6 +4,7 @@ import cern.colt.map.AbstractIntDoubleMap;
 import cern.colt.map.OpenIntDoubleHashMap;
 import gnu.trove.map.TDoubleIntMap;
 import gnu.trove.map.hash.TDoubleIntHashMap;
+import it.unimi.dsi.fastutil.ints.*;
 import org.eclipse.collections.api.map.primitive.*;
 import org.eclipse.collections.impl.factory.primitive.*;
 
@@ -14,6 +15,17 @@ public class PrimitiveMaps {
         eclipseCollectionsMap();
         troveMap();
         coltMap();
+        fastutilMap();
+    }
+
+    private static void fastutilMap() {
+        Int2BooleanMap int2BooleanMap = new Int2BooleanOpenHashMap();
+        int2BooleanMap.put(1, true);
+
+        Int2BooleanSortedMap int2BooleanSorted = Int2BooleanSortedMaps.EMPTY_MAP;
+        int2BooleanSorted.putIfAbsent(7, true);
+        int2BooleanSorted.putIfAbsent(1, true);
+        int2BooleanSorted.putIfAbsent(4, true);
     }
 
     private static void coltMap() {
