@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FooService extends AbstractService {
+public class BasketballService extends BallService {
 
     @Autowired
-    public FooService(FooBarBean fooBarBean) {
-
-        super(fooBarBean);
+    public BasketballService(RuleRepository ruleRepository) {
+        super(ruleRepository);
     }
 }

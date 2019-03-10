@@ -3,10 +3,10 @@ package org.baeldung.sampleabstract;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FooBarBean {
+public class LogRepository {
 
-    public String value() {
-
-        return "fooBarBean";
+    @Override
+    public String toString() {
+        return "logRepository";
     }
 }
