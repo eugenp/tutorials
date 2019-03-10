@@ -27,7 +27,7 @@
 		<dependency>
 		    <groupId>com.google.guava</groupId>
 		    <artifactId>guava</artifactId>
-		    <version>18.0</version>
+		    <version>${guava.version}</version>
 		</dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -170,6 +170,7 @@
     </dependencies>
 
     <properties>
+        <guava.version>18.0</guava.version>
         <jackson.version>2.9.7</jackson.version>
         <jackson-coreutils.version>1.8</jackson-coreutils.version>
         <guava.version>19.0</guava.version>
