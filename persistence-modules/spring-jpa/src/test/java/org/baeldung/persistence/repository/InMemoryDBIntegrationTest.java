@@ -35,7 +35,7 @@ public class InMemoryDBIntegrationTest {
         Student student = new Student(ID, NAME);
         studentRepository.save(student);
 
-        Student student2 = studentRepository.findOne(ID);
+        Student student2 = studentRepository.findById(ID).get();
         assertEquals("name incorrect", NAME, student2.getName());
     }
 
