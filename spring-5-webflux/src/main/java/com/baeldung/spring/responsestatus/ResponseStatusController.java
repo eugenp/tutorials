@@ -16,7 +16,7 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 
 @RequestMapping("/statuses")
 @RestController
-public class ResponseStatusController {
+public class    ResponseStatusController {
 
     @GetMapping(
             value = "/ok",

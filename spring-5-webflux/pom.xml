@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.baeldung</groupId>
-    <artifactId>spring-boot-response-status</artifactId>
+    <artifactId>spring-5-webflux</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>spring-boot-response-status</name>
+    <name>spring-5-webflux</name>
 
     <url>http://www.baeldung.com</url>
 
