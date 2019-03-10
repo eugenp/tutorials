@@ -13,13 +13,6 @@ import java.io.FileWriter;
 
 import static com.baeldung.xmlhtml.Constants.*;
 
-/**
- * @author Adam In Tae Gerard
- *
- * All STAX logic in here :)
- */
-
-
 public class STAXHelper {
 
     private static XMLStreamReader reader() {

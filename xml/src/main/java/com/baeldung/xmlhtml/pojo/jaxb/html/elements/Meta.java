@@ -1,11 +1,10 @@
 package com.baeldung.xmlhtml.pojo.jaxb.html.elements;
 
-import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlValue;
 
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType()
 public class Meta {
 
     private String title;

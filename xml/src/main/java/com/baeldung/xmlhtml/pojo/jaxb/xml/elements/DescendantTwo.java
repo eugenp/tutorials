@@ -1,10 +1,9 @@
 package com.baeldung.xmlhtml.pojo.jaxb.xml.elements;
 
-import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
+@XmlAccessorType()
 public class DescendantTwo {
 
     private DescendantThree descendantThree;

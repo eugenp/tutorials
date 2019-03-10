@@ -2,18 +2,11 @@ package com.baeldung.xmlhtml.pojo.jaxb.xml;
 
 import com.baeldung.xmlhtml.pojo.jaxb.xml.elements.Ancestor;
 
-import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- * @author Adam I. Gerard
- *
- * Full XML POJO with explicit fields.
- */
-
-@XmlAccessorType(XmlAccessType.PUBLIC_MEMBER)
+@XmlAccessorType()
 @XmlRootElement(name = "xmlexample")
 public class XMLExample {
 
@@ -27,6 +20,4 @@ public class XMLExample {
     public Ancestor getAncestor() {
         return ancestor;
     }
-
-
 }

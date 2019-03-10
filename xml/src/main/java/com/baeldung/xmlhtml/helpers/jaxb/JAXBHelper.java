@@ -15,12 +15,6 @@ import java.io.File;
 
 import static com.baeldung.xmlhtml.Constants.*;
 
-/**
- * @author Adam In Tae Gerard
- * <p>
- * All JAXB logic in here :)
- */
-
 public class JAXBHelper {
 
     private static void print(String xmlContent) {
@@ -29,50 +23,32 @@ public class JAXBHelper {
 
     private static Unmarshaller getContextUnmarshaller(Class clazz) {
         Unmarshaller unmarshaller = null;
-
         try {
             JAXBContext context = JAXBContext.newInstance(clazz);
             unmarshaller = context.createUnmarshaller();
         } catch (Exception ex) {
             System.out.println(EXCEPTION_ENCOUNTERED + ex);
         }
-
         return unmarshaller;
     }
 
     private static Marshaller getContextMarshaller(Class clazz) {
         Marshaller marshaller = null;
-
         try {
             JAXBContext context = JAXBContext.newInstance(clazz);
             marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            //https://stackoverflow.com/questions/277996/remove-standalone-yes-from-generated-xml
             marshaller.setProperty("jaxb.fragment", Boolean.TRUE);
         } catch (Exception ex) {
             System.out.println(EXCEPTION_ENCOUNTERED + ex);
         }
-
         return marshaller;
     }
 
     public static void example() {
-
         try {
-
-            /**
-             *   Cast to desired POJO.
-             */
-
             XMLExample xml = (XMLExample) JAXBHelper.getContextUnmarshaller(XMLExample.class).unmarshal(new File(XML_FILE_IN));
             JAXBHelper.print(xml.toString());
-            //JAXBHelper.print(xml.getAncestor().getDescendantOne().getValue());
-            //JAXBHelper.print(xml.getAncestor().getDescendantTwo().getDescendantThree().getValue());
-
-            /**
-             * Transfer exchanged to writeable POJO.
-             */
-
             ExampleHTML html = new ExampleHTML();
 
             Body body = new Body();
@@ -92,16 +68,10 @@ public class JAXBHelper {
             html.getHead().add(meta);
             html.setBody(body);
 
-            /**
-             * Marshall into XML (HTML).
-             */
-
             JAXBHelper.getContextMarshaller(ExampleHTML.class).marshal(html, new File(JAXB_FILE_OUT));
 
         } catch (Exception ex) {
             System.out.println(EXCEPTION_ENCOUNTERED + ex);
         }
-
     }
-
 }

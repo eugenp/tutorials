@@ -7,42 +7,15 @@ import static com.baeldung.xmlhtml.Constants.*;
 
 public class CustomHandler implements ContentHandler {
 
-     /**
-     * Start document event.
-     */
+    public void startDocument() {}
 
-    public void startDocument() {
-        //System.out.println(DOCUMENT_START);
-    }
-
-
-    /**
-     * New element event.
-     */
-
-    public void startElement(String uri, String localName, String qName, org.xml.sax.Attributes atts) {
-        //System.out.println(ELEMENT_START);
-    }
-
-    /**
-     * End document event.
-     */
+    public void startElement(String uri, String localName, String qName, org.xml.sax.Attributes atts) { }
 
     public void endDocument() {
         System.out.println(DOCUMENT_END);
     }
 
-    /**
-     * End element event.
-     */
-
-    public void endElement(String uri, String localName, String qName) {
-        //System.out.println(ELEMENT_END);
-    }
-
-    /**
-     * Other methods.
-     */
+    public void endElement(String uri, String localName, String qName) { }
 
     public void startPrefixMapping(String prefix, String uri) { }
 

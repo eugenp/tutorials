@@ -1,9 +1,5 @@
 package com.baeldung.xmlhtml.pojo.stax;
 
-/**
- * @author Adam I. Gerard
- */
-
 public class CustomElement {
 
     private String value;

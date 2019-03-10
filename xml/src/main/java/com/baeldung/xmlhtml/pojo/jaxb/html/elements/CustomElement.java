@@ -1,14 +1,9 @@
 package com.baeldung.xmlhtml.pojo.jaxb.html.elements;
 
-import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlValue;
 
-/**
- * @author Adam I. Gerard
- */
-
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@XmlAccessorType()
 public class CustomElement {
 
     private String value;
