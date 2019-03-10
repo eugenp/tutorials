@@ -1,6 +1,0 @@
-spring:
-  application:
-    name: travelagency-service
-  cloud:
-    config:
-      uri: http://localhost:8088
