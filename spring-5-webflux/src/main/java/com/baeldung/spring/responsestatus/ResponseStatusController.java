@@ -16,29 +16,20 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 
 @RequestMapping("/statuses")
 @RestController
-public class    ResponseStatusController {
+public class ResponseStatusController {
 
-    @GetMapping(
-            value = "/ok",
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE
-    )
+    @GetMapping(value = "/ok", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Flux<String> ok() {
         return Flux.just("ok");
     }
 
-    @GetMapping(
-            value = "/no-content",
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE
-    )
+    @GetMapping(value = "/no-content", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Flux<String> noContent() {
         return Flux.empty();
     }
 
-    @GetMapping(
-            value = "/accepted",
-            produces = MediaType.APPLICATION_JSON_UTF8_VALUE
-    )
+    @GetMapping(value = "/accepted", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Flux<String> accepted(ServerHttpResponse response) {
         response.setStatusCode(HttpStatus.ACCEPTED);
         return Flux.just("accepted");
@@ -49,10 +40,7 @@ public class    ResponseStatusController {
         return Mono.error(new IllegalArgumentException());
     }
 
-    @ResponseStatus(
-            value = HttpStatus.BAD_REQUEST,
-            reason = "Illegal arguments"
-    )
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Illegal arguments")
     @ExceptionHandler(IllegalArgumentException.class)
     public void illegalArgument() {
 
@@ -60,15 +48,17 @@ public class    ResponseStatusController {
 
     @GetMapping(value = "/unauthorized")
     public ResponseEntity<Mono<String>> unathorized() {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .header("X-Reason", "user-invalid")
-                .body(Mono.just("unauthorized"));
+        return ResponseEntity
+          .status(HttpStatus.UNAUTHORIZED)
+          .header("X-Reason", "user-invalid")
+          .body(Mono.just("unauthorized"));
     }
 
     @Bean
     public RouterFunction<ServerResponse> notFound() {
-        return RouterFunctions.route(GET("/statuses/not-found"),
-                request -> ServerResponse.notFound().build());
+        return RouterFunctions.route(GET("/statuses/not-found"), request -> ServerResponse
+          .notFound()
+          .build());
     }
 
 }
