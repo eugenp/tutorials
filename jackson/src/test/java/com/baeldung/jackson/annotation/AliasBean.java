@@ -1,14 +1,16 @@
-package com.baeldung.jackson.domain;
+package com.baeldung.jackson.annotation;
 
-public class Person {
+import com.fasterxml.jackson.annotation.JsonAlias;
 
+public class AliasBean {
+    
+    @JsonAlias({ "fName", "f_name" })
     private String firstName;
+    
     private String lastName;
     
-    public Person(String firstName, String lastName) {
-        super();
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public AliasBean() {
+    
     }
 
     public String getFirstName() {
@@ -27,4 +29,3 @@ public class Person {
         this.lastName = lastName;
     }
 }
-

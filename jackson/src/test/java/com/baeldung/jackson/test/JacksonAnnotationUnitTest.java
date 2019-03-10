@@ -14,6 +14,7 @@ import java.util.TimeZone;
 
 import org.junit.Test;
 
+import com.baeldung.jackson.annotation.AliasBean;
 import com.baeldung.jackson.annotation.BeanWithCreator;
 import com.baeldung.jackson.annotation.BeanWithCustomAnnotation;
 import com.baeldung.jackson.annotation.BeanWithFilter;
@@ -371,6 +372,19 @@ public class JacksonAnnotationUnitTest {
         final String result = mapper.writeValueAsString(bean);
         assertThat(result, containsString("1"));
         assertThat(result, containsString("name"));
+    }
+    
+    @Test
+    public void whenDeserializingUsingJsonAlias_thenCorrect() throws IOException {
+
+        // arrange
+        String json = "{\"fName\": \"Alex\", \"lastName\": \"Theedom\"}";
+
+        // act
+        AliasBean aliasBean = new ObjectMapper().readerFor(AliasBean.class).readValue(json);
+
+        // assert
+        assertThat(aliasBean.getFirstName(), is("Alex"));
     }
 
 }
