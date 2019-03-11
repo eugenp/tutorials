@@ -3,7 +3,7 @@ package com.baeldung.hexagonal.core.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.baeldung.hexagonal.core.domain.Article;
-import com.baeldung.hexagonal.framework_layer.ports.ArticleNotificationPort;
+import com.baeldung.hexagonal.framework_layer.secondary.ports.ArticleNotificationPort;
 
 @Service
 public class ArticleNotificationService {
@@ -13,7 +13,7 @@ public class ArticleNotificationService {
 
     public void publish(Article article) {
 
-        articleNotification.notificate(article);
+        articleNotification.notify(article);
 
     }
 

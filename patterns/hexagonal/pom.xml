@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.baeldung</groupId>
 	<artifactId>patterns</artifactId>
-	<version>0.0.1-SNAPSHOT</version>	
+	<version>0.0.1-SNAPSHOT</version>
 	<description>Sample project for explain Java Hexagonal Architecture </description>
 
 
@@ -35,6 +35,10 @@
 			<groupId>ch.qos.logback.contrib</groupId>
 			<artifactId>logback-json-classic</artifactId>
 			<version>${logback.contrib.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>
