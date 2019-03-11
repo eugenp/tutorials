@@ -4,8 +4,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>core-java-lang-oop</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>core-java-lang-oop</name>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -82,7 +82,6 @@
 
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
-        <lombok.version>1.16.12</lombok.version>
         <!-- testing -->
         <assertj-core.version>3.10.0</assertj-core.version>
         <equalsverifier.version>3.0.3</equalsverifier.version>

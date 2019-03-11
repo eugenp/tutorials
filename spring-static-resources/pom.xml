@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-static-resources</artifactId>
     <version>0.1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-static-resources</name>
+    <packaging>war</packaging>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -20,17 +20,17 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -140,6 +140,14 @@
             <artifactId>handlebars</artifactId>
             <version>${handlebars.version}</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+             <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
     </dependencies>
 
     <build>
@@ -188,9 +196,6 @@
     </build>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.security.version>5.0.6.RELEASE</org.springframework.security.version>
-
         <org.aspectj-version>1.8.9</org.aspectj-version>
         <javax.servlet.jsp-api.version>2.3.2-b02</javax.servlet.jsp-api.version>
 

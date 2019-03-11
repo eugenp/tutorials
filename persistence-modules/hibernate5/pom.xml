@@ -72,7 +72,16 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
             <version>${hibernate.version}</version>
-            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-core</artifactId>
+            <version>${openjdk-jmh.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjdk.jmh</groupId>
+            <artifactId>jmh-generator-annprocess</artifactId>
+            <version>${openjdk-jmh.version}</version>
         </dependency>
     </dependencies>
 
@@ -93,6 +102,7 @@
         <h2database.version>1.4.196</h2database.version>
         <assertj-core.version>3.8.0</assertj-core.version>
         <jackson.version>2.9.7</jackson.version>
+        <openjdk-jmh.version>1.21</openjdk-jmh.version>
     </properties>
 
 </project>

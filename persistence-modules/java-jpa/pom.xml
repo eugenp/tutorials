@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>java-jpa</artifactId>
-	<name>java-jpa</name>
-	
+    <name>java-jpa</name>
+
     <parent>
         <artifactId>parent-modules</artifactId>
         <groupId>com.baeldung</groupId>
@@ -24,10 +24,34 @@
             <artifactId>h2</artifactId>
             <version>${h2.version}</version>
         </dependency>
+
+        <!--Compile time JPA API-->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+        <!--Runtime JPA implementation-->
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>${eclipselink.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgres.version}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <properties>
-        <hibernate.version>5.3.1.Final</hibernate.version>
+        <hibernate.version>5.4.0.Final</hibernate.version>
         <h2.version>1.4.197</h2.version>
+        <eclipselink.version>2.7.4-RC1</eclipselink.version>
+        <postgres.version>42.2.5</postgres.version>
     </properties>
+
 </project>

@@ -17,6 +17,8 @@
         <module>front-controller</module>
         <module>intercepting-filter</module>
         <module>design-patterns</module>
+        <module>design-patterns-2</module>
+        <module>solid</module>
     </modules>
 
     <dependencyManagement>

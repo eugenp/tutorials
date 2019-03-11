@@ -8,3 +8,4 @@
 - [Guide to Spring Email](http://www.baeldung.com/spring-email)
 - [Request Method Not Supported (405) in Spring](https://www.baeldung.com/spring-request-method-not-supported-405)
 - [Spring @RequestParam Annotation](https://www.baeldung.com/spring-request-param)
+- [Validating RequestParams and PathVariables in Spring](https://www.baeldung.com/spring-validate-requestparam-pathvariable)

@@ -10,17 +10,18 @@ import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
 
 @RepositoryEventHandler
 public class BookEventHandler {
-        Logger logger = Logger.getLogger("Class BookEventHandler");
-        @HandleBeforeCreate
-        public void handleBookBeforeCreate(Book book){
+    Logger logger = Logger.getLogger("Class BookEventHandler");
 
-                logger.info("Inside Book Before Create ....");
-                book.getAuthors();
-        }
+    @HandleBeforeCreate
+    public void handleBookBeforeCreate(Book book) {
 
-        @HandleBeforeCreate
-        public void handleAuthorBeforeCreate(Author author){
-                logger.info("Inside Author Before Create ....");
-                author.getBooks();
-        }
+        logger.info("Inside Book Before Create ....");
+        book.getAuthors();
+    }
+
+    @HandleBeforeCreate
+    public void handleAuthorBeforeCreate(Author author) {
+        logger.info("Inside Author Before Create ....");
+        author.getBooks();
+    }
 }
