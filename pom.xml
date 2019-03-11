@@ -456,6 +456,7 @@
                 <module>jersey</module>
                 <module>JGit</module>
                 <module>jgroups</module>
+                <module>jhipster</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -925,7 +926,6 @@
                 <module>core-kotlin-2</module>
 
                 <module>jenkins/hello-world</module>
-                <module>jhipster</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
@@ -1092,6 +1092,7 @@
                 <module>jersey</module>
                 <module>JGit</module>
                 <module>jgroups</module>
+                <module>jhipster</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -1411,7 +1412,6 @@
                 <module>core-kotlin-2</module>
 
                 <module>jenkins/hello-world</module>
-                <module>jhipster</module>
                 <module>jws</module>
 
                 <module>libraries</module> <!-- very long running -->
