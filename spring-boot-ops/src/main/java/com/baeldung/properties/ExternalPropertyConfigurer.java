@@ -11,7 +11,7 @@ public class ExternalPropertyConfigurer {
     @Bean
     public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
         PropertySourcesPlaceholderConfigurer properties = new PropertySourcesPlaceholderConfigurer();
-        properties.setLocation(new FileSystemResource("src/test/resources/external/conf.properties"));
+        properties.setLocation(new FileSystemResource("src/main/resources/external/conf.properties"));
         properties.setIgnoreResourceNotFound(false);
         return properties;
     }
