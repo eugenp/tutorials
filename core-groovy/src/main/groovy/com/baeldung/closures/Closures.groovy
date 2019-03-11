@@ -64,10 +64,6 @@ class Closures {
         return !it
     }
     
-//    def toggle = { value ->
-//        return !value
-//    }
-    
     def greet = {
         return "Hello! ${it}"
     }

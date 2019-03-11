@@ -6,7 +6,7 @@ class ClosuresUnitTest extends GroovyTestCase {
 
     Closures closures = new Closures()
     
-    void testClosures() {
+    void testSyntax() {
         
         closures.print("Hello! Closure")
         closures.formatToLowerCaseClosure("Hello! Closure")
@@ -24,12 +24,13 @@ class ClosuresUnitTest extends GroovyTestCase {
         
         assert closures.exchange(40, "RON") == 40*4.6
         assert closures.exchange(100, "USD") == 110.0
-                
-        //closures vs methods
-        
+    }
+    
+    void testClosureVsMethods() {   
         assert closures.formatToLowerCase("TONY STARK") == closures.formatToLowerCaseClosure("Tony STark")
-        
-        //parameters
+    }
+    
+    void testParameters() {
         assert closures.greet("Alex") == "Hello! Alex"
         
         assert closures.addAll(12, 10, 14) == 36
@@ -37,9 +38,9 @@ class ClosuresUnitTest extends GroovyTestCase {
         assert closures.volume({ l, b -> return l*b }, 12, 6, 10) == 720
         
         assert closures.volume({ radius -> return Math.PI*radius*radius/3 }, 5, 10) == Math.PI * 250/3
-        
-        //closure in GStrings
-        
+    }
+    
+    void testGStringsLazyEvaluation() {
         def name = "Samwell"
         def welcomeMsg = "Welcome! $name"
         
@@ -56,21 +57,24 @@ class ClosuresUnitTest extends GroovyTestCase {
 
         fullName = "Jon Smith"
         assert greetStr == "Hello! Jon Smith"
-        
-        //closure in Lists
+    }
+    
+    void testClosureInLists() {
         def list = [10, 11, 12, 13, 14, true, false, "BUNTHER"]
         list.each {
             println it
         }
         
         assert [13, 14] == list.findAll{ it instanceof Integer && it >= 13}
-       
-        //closure in Maps
+    }
+    
+    void testClosureInMaps() {
         def map = [1:10, 2:30, 4:5]
         
         assert [10, 60, 20] == map.collect{it.key * it.value}
-        
-        /*Delegation Strategy*/
+    }
+    
+    void testDelegationStrategy() {
         
         //this
         assert closures.self() instanceof Closures
@@ -94,7 +98,9 @@ class ClosuresUnitTest extends GroovyTestCase {
         closures.upperCaseFullName.delegate = delegationMap
         assert closures.upperCaseFullName() == "SMITH, JON"
         
-        //closure vs lambda
+    }
+    
+    void testClosureVslambda() {
         
         def players = ["A", "B", "C", "D", "E"]
         
@@ -104,7 +110,6 @@ class ClosuresUnitTest extends GroovyTestCase {
         
         //List<String> playerStream = players.stream().collect(Collectors.toList());
         //playerStream.forEach(System.out::println);
-        
     }
     
 }
