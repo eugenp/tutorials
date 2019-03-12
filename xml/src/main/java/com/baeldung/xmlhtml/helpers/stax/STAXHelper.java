@@ -95,9 +95,9 @@ public class STAXHelper {
             xmlStreamWriter.writeCharacters(TAB + TAB + TAB + TAB + "descendantThree: " + body.getNestedElement().getCustomElement().getValue());
             xmlStreamWriter.writeCharacters(BREAK + TAB + TAB + TAB);
             xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeCharacters(BREAK  + TAB + TAB);
+            xmlStreamWriter.writeCharacters(BREAK + TAB + TAB);
             xmlStreamWriter.writeEndElement();
-            xmlStreamWriter.writeCharacters(BREAK + TAB );
+            xmlStreamWriter.writeCharacters(BREAK + TAB);
             xmlStreamWriter.writeEndElement();
             xmlStreamWriter.writeCharacters(BREAK);
             xmlStreamWriter.writeEndDocument();

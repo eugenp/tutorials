@@ -7,15 +7,10 @@ import com.baeldung.xmlhtml.helpers.stax.STAXHelper;
 
 public class XMLRunner {
 
-	public static void doWork() {
-
-		JAXBHelper.example();
-
-		JAXPHelper.saxParser();
-		JAXPHelper.documentBuilder();
-
+    public static void doWork() {
+        JAXBHelper.example();
+        JAXPHelper.saxParser();
+        JAXPHelper.documentBuilder();
         STAXHelper.write(STAXHelper.read());
-
-	}
-
+    }
 }
