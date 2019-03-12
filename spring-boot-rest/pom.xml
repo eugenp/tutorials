@@ -21,10 +21,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-<!--         <dependency> -->
-<!--             <groupId>com.fasterxml.jackson.dataformat</groupId> -->
-<!--             <artifactId>jackson-dataformat-xml</artifactId> -->
-<!--         </dependency> -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
         <!-- We'll need to comment out the jackson-dataformat-xml dependency if we want to use XStream: -->
         <dependency>
             <groupId>org.springframework</groupId>
