@@ -575,6 +575,7 @@
                 <module>spring-5-reactive-client</module>
                 <module>spring-5-reactive-oauth</module>
                 <module>spring-5-reactive-security</module>
+                <module>spring-5-reactive-netty</module>
                 <module>spring-5-security</module>
                 <module>spring-5-security-oauth</module>
                 
