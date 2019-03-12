@@ -7,7 +7,6 @@ import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlAccessorType()
 @XmlType(propOrder = { "head", "body" })
 @XmlRootElement(name="html")
 public class ExampleHTML {

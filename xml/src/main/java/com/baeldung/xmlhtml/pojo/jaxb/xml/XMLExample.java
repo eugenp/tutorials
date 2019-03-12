@@ -2,11 +2,9 @@ package com.baeldung.xmlhtml.pojo.jaxb.xml;
 
 import com.baeldung.xmlhtml.pojo.jaxb.xml.elements.Ancestor;
 
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlAccessorType()
 @XmlRootElement(name = "xmlexample")
 public class XMLExample {
 
