@@ -10,4 +10,4 @@
     <root level="info">
         <appender-ref ref="Console"/>
     </root>
-</configuration>  
+</configuration>

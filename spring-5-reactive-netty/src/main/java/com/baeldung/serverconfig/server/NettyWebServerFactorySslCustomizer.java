@@ -20,4 +20,3 @@ public class NettyWebServerFactorySslCustomizer implements WebServerFactoryCusto
         serverFactory.setPort(8443);
     }
 }
-

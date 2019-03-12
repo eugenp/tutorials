@@ -28,4 +28,3 @@ public class NettyWebServerFactoryPortCustomizer implements WebServerFactoryCust
         }
     }
 }
-
