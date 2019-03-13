@@ -1,12 +1,18 @@
-package com.baeldung.primitives;
+package com.baeldung.map;
 
 import cern.colt.map.AbstractIntDoubleMap;
 import cern.colt.map.OpenIntDoubleHashMap;
 import gnu.trove.map.TDoubleIntMap;
 import gnu.trove.map.hash.TDoubleIntHashMap;
-import it.unimi.dsi.fastutil.ints.*;
-import org.eclipse.collections.api.map.primitive.*;
-import org.eclipse.collections.impl.factory.primitive.*;
+import it.unimi.dsi.fastutil.ints.Int2BooleanMap;
+import it.unimi.dsi.fastutil.ints.Int2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2BooleanSortedMap;
+import it.unimi.dsi.fastutil.ints.Int2BooleanSortedMaps;
+import org.eclipse.collections.api.map.primitive.ImmutableIntIntMap;
+import org.eclipse.collections.api.map.primitive.MutableIntIntMap;
+import org.eclipse.collections.api.map.primitive.MutableObjectDoubleMap;
+import org.eclipse.collections.impl.factory.primitive.IntIntMaps;
+import org.eclipse.collections.impl.factory.primitive.ObjectDoubleMaps;
 
 public class PrimitiveMaps {
 
