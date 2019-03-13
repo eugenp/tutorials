@@ -1,8 +1,7 @@
 package com.baeldung.environmentpostprocessor;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,16 +13,14 @@ import com.baeldung.environmentpostprocessor.service.PriceCalculationService;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = PriceCalculationApplication.class)
 public class PriceCalculationEnvironmentPostProcessorLiveTest {
-    
+
     @Autowired
     PriceCalculationService pcService;
-    
-    
+
     @Test
-    public void WhenSetGrossEnvironmentVariable_ThenTaxApplied() {
+    public void whenSetNetEnvironmentVariablebyDefault_thenNoTaxApplied() {
         double total = pcService.productTotalPrice(100, 4);
-        
-        Assert.assertEquals(400.0,total);
+        assertEquals(400.0, total, 0);
     }
 
 }
