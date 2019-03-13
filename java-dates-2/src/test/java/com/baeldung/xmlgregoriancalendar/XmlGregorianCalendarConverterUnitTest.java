@@ -7,11 +7,9 @@ import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.time.LocalDate;
 
-import static com.baeldung.xmlgregoriancalendar.XmlGregorianCalendarConverter.fromLocalDate;
-import static com.baeldung.xmlgregoriancalendar.XmlGregorianCalendarConverter.fromXMLGregorianCalendar;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class XmlGregorianCalendarConverterTest {
+public class XmlGregorianCalendarConverterUnitTest {
 
     @Test
     public void fromLocalDateToXMLGregorianCalendar() throws DatatypeConfigurationException {
@@ -32,5 +30,5 @@ public class XmlGregorianCalendarConverterTest {
         assertThat(localDate.getMonthValue()).isEqualTo(xmlGregorianCalendar.getMonth());
         assertThat(localDate.getDayOfMonth()).isEqualTo(xmlGregorianCalendar.getDay());
     }
-    
+
 }
