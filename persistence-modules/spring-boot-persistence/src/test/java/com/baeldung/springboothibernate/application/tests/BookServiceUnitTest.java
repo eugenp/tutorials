@@ -19,7 +19,7 @@ public class BookServiceUnitTest {
     private BookService bookService;
 
     @Test
-    public void test() {
+    public void whenApplicationStarts_thenHibernateCreatesInitialRecords() {
         List<Book> books = bookService.list();
 
         Assert.assertEquals(books.size(), 3);
