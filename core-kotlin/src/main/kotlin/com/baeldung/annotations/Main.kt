@@ -1,4 +1,4 @@
-package com.baeldung
+package com.baeldung.annotations
 
 fun main(args: Array<String>) {
     val item = Item(amount = 1.0f, name = "Bob")

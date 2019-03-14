@@ -1,4 +1,4 @@
-package com.baeldung
+package com.baeldung.annotations
 
 @Target(AnnotationTarget.FIELD)
 annotation class Positive
