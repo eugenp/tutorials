@@ -41,3 +41,4 @@
 - [Java Interfaces](https://www.baeldung.com/java-interfaces)
 - [Attaching Values to Java Enum](https://www.baeldung.com/java-enum-values)
 - [Variable Scope in Java](https://www.baeldung.com/java-variable-scope)
+- [Java Classes and Objects](https://www.baeldung.com/java-classes-objects)
