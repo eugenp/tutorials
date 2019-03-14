@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>store-email-sender</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <parent>
+        <artifactId>hexagonal-architecture</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../../hexagonal-architecture</relativePath>
+    </parent>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baeldung</groupId>
+            <artifactId>store-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>${javax.mail.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.context.version}</version>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <spring.context.version>5.1.5.RELEASE</spring.context.version>
+        <javax.mail.version>1.5.5</javax.mail.version>
+    </properties>
+
+</project>
