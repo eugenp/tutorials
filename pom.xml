@@ -440,6 +440,7 @@
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+				<module>java-dates-2</module>
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-numbers</module>
