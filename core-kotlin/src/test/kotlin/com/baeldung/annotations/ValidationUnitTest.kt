@@ -1,8 +1,8 @@
 package com.baeldung.annotations
 
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
-import kotlin.test.assertFalse
 
 
 class ValidationUnitTest {
