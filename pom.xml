@@ -526,6 +526,9 @@
                 <module>rxjava</module>
                 <module>rxjava-2</module> 
 			    <module>software-security/sql-injection-samples</module>
+				
+				<module>tensorflow-java</module>
+				
 			</modules>
 
 		</profile>
@@ -742,6 +745,8 @@
                 <module>xml</module>
                 <module>xmlunit-2</module>
                 <module>xstream</module>
+				
+				<module>tensorflow-java</module>
                 
             </modules>
 
