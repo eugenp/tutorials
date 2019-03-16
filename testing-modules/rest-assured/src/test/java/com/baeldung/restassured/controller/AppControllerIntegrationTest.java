@@ -60,7 +60,7 @@ public class AppControllerIntegrationTest {
             .statusCode(HttpStatus.OK.value())
             .body("id", equalTo(testMovie.getId()))
             .body("name", equalTo(testMovie.getName()))
-            .body("synopsis", equalTo(testMovie.getSynopsis()));
+            .body("synopsis", notNullValue());
 
         Movie result = get(uri + "/movie/" + testMovie.getId()).then()
             .assertThat()
@@ -68,6 +68,13 @@ public class AppControllerIntegrationTest {
             .extract()
             .as(Movie.class);
         assertThat(result).isEqualTo(testMovie);
+
+        String responseString = get(uri + "/movie/" + testMovie.getId()).then()
+            .assertThat()
+            .statusCode(HttpStatus.OK.value())
+            .extract()
+            .asString();
+        assertThat(responseString).isNotEmpty();
     }
 
     @Test
