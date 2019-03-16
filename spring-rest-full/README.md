@@ -12,7 +12,6 @@ The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 - [Introduction to Spring Data JPA](http://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
 - [Project Configuration with Spring](http://www.baeldung.com/project-configuration-with-spring)
 - [Metrics for your Spring REST API](http://www.baeldung.com/spring-rest-api-metrics)
-- [Bootstrap a Web Application with Spring 5](http://www.baeldung.com/bootstraping-a-web-application-with-spring-and-java-based-configuration)
 - [Spring Security Expressions - hasRole Example](https://www.baeldung.com/spring-security-expressions-basic)
 
 
