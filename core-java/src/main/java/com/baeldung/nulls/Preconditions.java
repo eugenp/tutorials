@@ -3,22 +3,26 @@ package com.baeldung.nulls;
 public class Preconditions {
 
     public void goodAccept(String one, String two, String three) {
-        if (null == one || null == two || three == null)
+        if (one == null || two == null || three == null)
             throw new IllegalArgumentException();
+
+        process(one);
+        process(two);
+        process(three);
     }
 
-    public void badAccept(String one, String two, String three){
-        if (null == one)
+    public void badAccept(String one, String two, String three) {
+        if (one == null)
             throw new IllegalArgumentException();
         else
             process(one);
 
-        if (null == two)
+        if (two == null)
             throw new IllegalArgumentException();
         else
             process(two);
 
-        if (null == three)
+        if (three == null)
             throw new IllegalArgumentException();
         else
             process(three);
@@ -27,6 +31,5 @@ public class Preconditions {
 
     private void process(String one) {
     }
-
 
 }

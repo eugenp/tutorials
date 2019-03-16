@@ -4,20 +4,24 @@ import java.util.Optional;
 
 public class UsingOptional {
 
-    public Optional<Object> process() {
-        if (isProcessed())
-            return Optional.of("dummy");
-        else
+    public Optional<Object> process(boolean processed) {
+
+        String response = doSomething(processed);
+
+        if (response == null) {
             return Optional.empty();
+        }
+
+        return Optional.of(response);
     }
 
-    public void caller() {
-        Optional<Object> result = process();
-        result.ifPresent(p -> System.out.println(p));
-        result.orElseThrow(() -> new IllegalArgumentException());
+    private String doSomething(boolean processed) {
+
+        if (processed) {
+            return "passed";
+        } else {
+            return null;
+        }
     }
 
-    private boolean isProcessed() {
-        return false;
-    }
 }

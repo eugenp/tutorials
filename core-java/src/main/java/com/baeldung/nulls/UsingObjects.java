@@ -4,21 +4,13 @@ import java.util.Objects;
 
 public class UsingObjects {
 
-    private String checked;
-
-    public void accept(Object param) {
+    public void accept(Object param) throws Exception {
         try {
             Objects.requireNonNull(param);
         } catch (NullPointerException e) {
-            //doSomethingElseToo
-            e.printStackTrace();
-        }
-    }
-
-    public void caller() throws Exception {
-        if (Objects.nonNull(checked))
-            accept(checked);
-        else
             throw new Exception();
+        }
+
+        //doSomething()
     }
 }

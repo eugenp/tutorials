@@ -216,8 +216,7 @@
                         <configuration>
                             <shadedArtifactAttached>true</shadedArtifactAttached>
                             <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>org.baeldung.executable.ExecutableMavenJar</mainClass>
                                 </transformer>
                             </transformers>
@@ -272,7 +271,7 @@
                         <argument>-Xmx300m</argument>
                         <argument>-XX:+UseParallelGC</argument>
                         <argument>-classpath</argument>
-                        <classpath/>
+                        <classpath />
                         <argument>com.baeldung.outofmemoryerror.OutOfMemoryGCLimitExceed</argument>
                     </arguments>
                 </configuration>
@@ -338,7 +337,7 @@
                                     <executable>java</executable>
                                     <arguments>
                                         <argument>-classpath</argument>
-                                        <classpath/>
+                                        <classpath />
                                         <argument>org.openjdk.jmh.Main</argument>
                                         <argument>.*</argument>
                                     </arguments>
@@ -371,8 +370,7 @@
                                         <manifest>
                                             <addClasspath>true</addClasspath>
                                         </manifest>
-                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF
-                                        </manifestFile>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                                     </archive>
 
                                     <includes>
@@ -406,14 +404,12 @@
                                         <manifest>
                                             <addClasspath>true</addClasspath>
                                         </manifest>
-                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF
-                                        </manifestFile>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                                     </archive>
 
                                     <includes>
                                         <include>com/baeldung/instrumentation/application/MyAtm.class</include>
-                                        <include>com/baeldung/instrumentation/application/MyAtmApplication.class
-                                        </include>
+                                        <include>com/baeldung/instrumentation/application/MyAtmApplication.class</include>
                                         <include>com/baeldung/instrumentation/application/Launcher.class</include>
                                     </includes>
                                 </configuration>
@@ -443,14 +439,12 @@
                                         <manifest>
                                             <addClasspath>true</addClasspath>
                                         </manifest>
-                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF
-                                        </manifestFile>
+                                        <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                                     </archive>
 
                                     <includes>
                                         <include>com/baeldung/instrumentation/agent/AtmTransformer.class</include>
-                                        <include>com/baeldung/instrumentation/agent/MyInstrumentationAgent.class
-                                        </include>
+                                        <include>com/baeldung/instrumentation/agent/MyInstrumentationAgent.class</include>
                                     </includes>
                                 </configuration>
                             </execution>
@@ -462,7 +456,6 @@
     </profiles>
 
     <properties>
-
         <!-- marshalling -->
         <gson.version>2.8.2</gson.version>
 
@@ -483,12 +476,10 @@
 
         <!-- maven plugins -->
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-
         <javamoney.moneta.version>1.1</javamoney.moneta.version>
         <h2database.version>1.4.197</h2database.version>
         <esapi.version>2.1.0.1</esapi.version>
         <jmh-core.version>1.19</jmh-core.version>
-
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>
         <maven-javadoc-plugin.version>3.0.0-M1</maven-javadoc-plugin.version>
         <maven-jar-plugin.version>3.0.2</maven-jar-plugin.version>
@@ -499,7 +490,6 @@
         <icu4j.version>61.1</icu4j.version>
         <!-- instrumentation -->
         <javaassist.version>3.21.0-GA</javaassist.version>
-
         <sun.tools.version>1.8.0</sun.tools.version>
         <intellij.annotations.version>16.0.2</intellij.annotations.version>
     </properties>

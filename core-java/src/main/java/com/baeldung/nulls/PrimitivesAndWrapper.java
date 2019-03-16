@@ -2,11 +2,11 @@ package com.baeldung.nulls;
 
 public class PrimitivesAndWrapper {
 
-    public static int sum(int a, int b) {
+    public static int primitiveSum(int a, int b) {
         return a + b;
     }
 
-    public static Integer sum(Integer a, Integer b) {
+    public static Integer wrapperSum(Integer a, Integer b) {
         return a + b;
     }
 
@@ -17,8 +17,4 @@ public class PrimitivesAndWrapper {
             throw new IllegalArgumentException();
     }
 
-    public static void main(String[] args) {
-        sum(0, 0);
-        sum(null, null);
-    }
 }
