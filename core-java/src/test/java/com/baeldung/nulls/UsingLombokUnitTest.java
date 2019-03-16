@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class UsingLombokTest {
+class UsingLombokUnitTest {
 
     private UsingLombok classUnderTest;
 

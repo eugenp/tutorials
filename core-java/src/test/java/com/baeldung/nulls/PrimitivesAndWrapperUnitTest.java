@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-class PrimitivesAndWrapperTest {
+class PrimitivesAndWrapperUnitTest {
 
     @Test
     public void givenWrappers_whenBothArgsNonNull_thenReturnResult() {
