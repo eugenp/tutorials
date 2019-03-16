@@ -14,7 +14,7 @@ import java.net.URI;
 import java.util.Arrays;
 import java.util.Set;
 
-import org.baeldung.web.dto.Foo;
+import org.baeldung.resttemplate.web.dto.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;

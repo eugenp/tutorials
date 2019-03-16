@@ -1,6 +1,6 @@
-package org.baeldung.web.service;
+package org.baeldung.resttemplate.web.service;
 
-import org.baeldung.web.model.Employee;
+import org.baeldung.resttemplate.web.model.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

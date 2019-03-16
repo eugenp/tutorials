@@ -1,4 +1,4 @@
-package org.baeldung.web.dto;
+package org.baeldung.resttemplate.web.dto;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 

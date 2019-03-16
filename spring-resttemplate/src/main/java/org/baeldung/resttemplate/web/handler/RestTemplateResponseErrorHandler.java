@@ -1,6 +1,6 @@
-package org.baeldung.web.handler;
+package org.baeldung.resttemplate.web.handler;
 
-import org.baeldung.web.exception.NotFoundException;
+import org.baeldung.resttemplate.web.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Component;

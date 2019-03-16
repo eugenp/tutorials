@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.web.client.RestTemplate;
 
 @Configuration
 @EnableAutoConfiguration
@@ -25,4 +26,8 @@ public class SpringConfig {
         return new RestTemplateBuilder(customRestTemplateCustomizer());
     }
 
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 }
