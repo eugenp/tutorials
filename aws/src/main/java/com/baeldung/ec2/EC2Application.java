@@ -25,6 +25,7 @@ import com.amazonaws.services.ec2.model.StartInstancesRequest;
 import com.amazonaws.services.ec2.model.StopInstancesRequest;
 import com.amazonaws.services.ec2.model.UnmonitorInstancesRequest;
 
+// use
 public class EC2Application {
 
     private static final AWSCredentials credentials;
@@ -32,8 +33,8 @@ public class EC2Application {
     static {
         // put your accesskey and secretkey here
         credentials = new BasicAWSCredentials(
-            "<AWS accesskey>", 
-            "<AWS secretkey>"
+                "AKIAJ7GVMBC3GLF2C66Q",
+                "UQFsUeQzlFdD9Obx62IknCiOn3IuTzxtnAyYcITq"
         );
     }
 
@@ -42,12 +43,23 @@ public class EC2Application {
         // Set up the client
         AmazonEC2 ec2Client = AmazonEC2ClientBuilder.standard()
             .withCredentials(new AWSStaticCredentialsProvider(credentials))
-            .withRegion(Regions.US_EAST_1)
+            .withRegion(Regions.US_EAST_2) //this region should be the region/zone associated with your instance. If it is not recognized, it needs to update the AWS JDK version.
             .build();
 
+        // Describe an Instance
+        DescribeInstancesRequest describeInstancesRequest = new DescribeInstancesRequest();
+        DescribeInstancesResult response = ec2Client.describeInstances(describeInstancesRequest);
+        System.out.println(response.getReservations()
+                .get(0)
+                .getInstances()
+                .get(0)
+                .getKernelId());
+
+        /*
         // Create a security group
-        CreateSecurityGroupRequest createSecurityGroupRequest = new CreateSecurityGroupRequest().withGroupName("BaeldungSecurityGroup")
-            .withDescription("Baeldung Security Group");
+
+        CreateSecurityGroupRequest createSecurityGroupRequest = new CreateSecurityGroupRequest().withGroupName("LycooSecurityGroup")
+            .withDescription("Lycoo Security Group");
         ec2Client.createSecurityGroup(createSecurityGroupRequest);
 
         // Allow HTTP and SSH traffic
@@ -64,14 +76,14 @@ public class EC2Application {
             .withToPort(22);
 
         AuthorizeSecurityGroupIngressRequest authorizeSecurityGroupIngressRequest = new AuthorizeSecurityGroupIngressRequest()
-            .withGroupName("BaeldungSecurityGroup")
+            .withGroupName("LycooSecurityGroup")
             .withIpPermissions(ipPermission1, ipPermission2);
 
         ec2Client.authorizeSecurityGroupIngress(authorizeSecurityGroupIngressRequest);
 
         // Create KeyPair
         CreateKeyPairRequest createKeyPairRequest = new CreateKeyPairRequest()
-            .withKeyName("baeldung-key-pair");
+            .withKeyName("lycoo-key-pair");
         CreateKeyPairResult createKeyPairResult = ec2Client.createKeyPair(createKeyPairRequest);
         String privateKey = createKeyPairResult
             .getKeyPair()
@@ -82,12 +94,12 @@ public class EC2Application {
         DescribeKeyPairsResult describeKeyPairsResult = ec2Client.describeKeyPairs(describeKeyPairsRequest);
 
         // Launch an Amazon Instance
-        RunInstancesRequest runInstancesRequest = new RunInstancesRequest().withImageId("ami-97785bed") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/usingsharedamis-finding.html
+        RunInstancesRequest runInstancesRequest = new RunInstancesRequest().withImageId("ami-020b3ac65b2354d94") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html | https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/usingsharedamis-finding.html
             .withInstanceType("t2.micro") // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html
             .withMinCount(1)
             .withMaxCount(1)
-            .withKeyName("baeldung-key-pair") // optional - if not present, can't connect to instance
-            .withSecurityGroups("BaeldungSecurityGroup");
+            .withKeyName("lycoo-key-pair") // optional - if not present, can't connect to instance
+            .withSecurityGroups("LycooSecurityGroup");
 
         String yourInstanceId = ec2Client.runInstances(runInstancesRequest).getReservation().getInstances().get(0).getInstanceId();
 
@@ -133,5 +145,6 @@ public class EC2Application {
             .getInstances()
             .get(0)
             .getKernelId());
+*/
     }
 }
