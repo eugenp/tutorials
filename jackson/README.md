@@ -3,10 +3,9 @@
 ## Jackson Cookbooks and Examples
 
 ###The Course
-The "REST With Spring" Classes: https://bit.ly/restwithspring
+The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles: 
-<<<<<<< Updated upstream
 - [Jackson Ignore Properties on Marshalling](http://www.baeldung.com/jackson-ignore-properties-on-serialization)
 - [Jackson – Unmarshall to Collection/Array](http://www.baeldung.com/jackson-collection-array)
 - [Jackson Unmarshalling json with Unknown Properties](http://www.baeldung.com/jackson-deserialize-json-unknown-properties)
