@@ -59,7 +59,7 @@ public abstract class AbstractLiveTest<T extends Serializable> {
     //
 
     protected String getURL() {
-        return "http://localhost:" + APPLICATION_PORT + "/spring-boot-rest/auth/foos";
+        return "http://localhost:" + APPLICATION_PORT + "/spring-boot-rest/foos";
     }
 
 }

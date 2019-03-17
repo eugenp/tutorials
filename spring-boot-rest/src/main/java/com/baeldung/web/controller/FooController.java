@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.baeldung.persistence.model.Foo;
@@ -32,7 +34,7 @@ import com.baeldung.web.util.RestPreconditions;
 import com.google.common.base.Preconditions;
 
 @RestController
-@RequestMapping(value = "/auth/foos")
+@RequestMapping(value = "/foos")
 public class FooController {
 
     @Autowired
@@ -40,6 +42,10 @@ public class FooController {
 
     @Autowired
     private IFooService service;
+    
+
+    @Value("${version}")
+    Integer version;
 
     public FooController() {
         super();
@@ -51,28 +57,36 @@ public class FooController {
     @GetMapping(value = "/{id}/custom-etag")
     public ResponseEntity<Foo> findByIdWithCustomEtag(@PathVariable("id") final Long id,
         final HttpServletResponse response) {
-        final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
+        final Foo foo = RestPreconditions.checkFound(service.findById(id));
 
         eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
         return ResponseEntity.ok()
-            .eTag(Long.toString(resourceById.getVersion()))
-            .body(resourceById);
+            .eTag(Long.toString(foo.getVersion()))
+            .body(foo);
     }
 
     // read - one
 
     @GetMapping(value = "/{id}")
     public Foo findById(@PathVariable("id") final Long id, final HttpServletResponse response) {
-        final Foo resourceById = RestPreconditions.checkFound(service.findOne(id));
+        try {
+            final Foo resourceById = RestPreconditions.checkFound(service.findById(id));
 
-        eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
-        return resourceById;
+            eventPublisher.publishEvent(new SingleResourceRetrievedEvent(this, response));
+            return resourceById;
+        }
+        catch (MyResourceNotFoundException exc) {
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "Foo Not Found", exc);
+        }
+
     }
 
     // read - all
 
     @GetMapping
     public List<Foo> findAll() {
+        System.out.println(version);
         return service.findAll();
     }
 
@@ -120,7 +134,7 @@ public class FooController {
     @ResponseStatus(HttpStatus.OK)
     public void update(@PathVariable("id") final Long id, @RequestBody final Foo resource) {
         Preconditions.checkNotNull(resource);
-        RestPreconditions.checkFound(service.findOne(resource.getId()));
+        RestPreconditions.checkFound(service.findById(resource.getId()));
         service.update(resource);
     }
 
