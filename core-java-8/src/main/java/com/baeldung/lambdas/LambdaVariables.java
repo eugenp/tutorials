@@ -44,12 +44,10 @@ public class LambdaVariables {
 
     public void workaroundMultithreading() {
         int[] holder = new int[] { 2 };
-        Runnable runnable = () -> {
-            System.out.println(IntStream
-              .of(1, 2, 3)
-              .map(val -> val + holder[0])
-              .sum());
-        };
+        Runnable runnable = () -> System.out.println(IntStream
+          .of(1, 2, 3)
+          .map(val -> val + holder[0])
+          .sum());
 
         new Thread(runnable).start();
 
@@ -57,7 +55,7 @@ public class LambdaVariables {
         try {
             Thread.sleep(new Random().nextInt(3) * 1000L);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
 
         holder[0] = 0;
