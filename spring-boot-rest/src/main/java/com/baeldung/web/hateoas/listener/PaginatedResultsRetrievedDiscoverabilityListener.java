@@ -115,7 +115,7 @@ class PaginatedResultsRetrievedDiscoverabilityListener implements ApplicationLis
     protected void plural(final UriComponentsBuilder uriBuilder, final Class clazz) {
         final String resourceName = clazz.getSimpleName()
             .toLowerCase() + "s";
-        uriBuilder.path("/auth/" + resourceName);
+        uriBuilder.path("/" + resourceName);
     }
 
 }
