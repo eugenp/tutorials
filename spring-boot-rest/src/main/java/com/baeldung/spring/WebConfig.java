@@ -55,7 +55,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public FilterRegistrationBean<ShallowEtagHeaderFilter> shallowEtagHeaderFilter() {
         FilterRegistrationBean<ShallowEtagHeaderFilter> filterRegistrationBean = new FilterRegistrationBean<>( new ShallowEtagHeaderFilter());
-        filterRegistrationBean.addUrlPatterns("/auth/foos/*");
+        filterRegistrationBean.addUrlPatterns("/foos/*");
         filterRegistrationBean.setName("etagFilter");
         return filterRegistrationBean;
     }

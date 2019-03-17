@@ -29,7 +29,7 @@ public class FooControllerCustomEtagIntegrationTest {
     @Autowired
     private MockMvc mvc;
 
-    private String FOOS_ENDPOINT = "/auth/foos/";
+    private String FOOS_ENDPOINT = "/foos/";
     private String CUSTOM_ETAG_ENDPOINT_SUFFIX = "/custom-etag";
 
     private static String serializeFoo(Foo foo) throws Exception {
