@@ -1,7 +1,6 @@
-package org.baeldung.client;
+package org.baeldung.web.test;
 
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
-import static org.baeldung.client.Consts.APPLICATION_PORT;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -14,7 +13,7 @@ import java.net.URI;
 import java.util.Arrays;
 import java.util.Set;
 
-import org.baeldung.resttemplate.web.dto.Foo;
+import org.baeldung.web.dto.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.HttpEntity;
@@ -34,12 +33,13 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.google.common.base.Charsets;
 
 public class RestTemplateBasicLiveTest {
 
     private RestTemplate restTemplate;
-    private static final String fooResourceUrl = "http://localhost:" + APPLICATION_PORT + "/spring-rest/foos";
+    private static final String fooResourceUrl = "http://localhost:8082/spring-rest/foos";
 
     @Before
     public void beforeTest() {
@@ -61,7 +61,7 @@ public class RestTemplateBasicLiveTest {
         final RestTemplate template = new RestTemplate();
         final ResponseEntity<String> response = template.getForEntity(fooResourceUrl + "/1", String.class);
 
-        final ObjectMapper mapper = new ObjectMapper();
+        final ObjectMapper mapper = new XmlMapper();
         final JsonNode root = mapper.readTree(response.getBody());
         final JsonNode name = root.path("name");
         assertThat(name.asText(), notNullValue());
