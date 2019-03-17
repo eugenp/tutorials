@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,10 +41,6 @@ public class FooController {
 
     @Autowired
     private IFooService service;
-    
-
-    @Value("${version}")
-    Integer version;
 
     public FooController() {
         super();
@@ -86,7 +81,6 @@ public class FooController {
 
     @GetMapping
     public List<Foo> findAll() {
-        System.out.println(version);
         return service.findAll();
     }
 
