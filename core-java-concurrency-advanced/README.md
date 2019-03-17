@@ -22,3 +22,4 @@
 - [Guide to the Fork/Join Framework in Java](http://www.baeldung.com/java-fork-join)
 - [A Guide to ThreadLocalRandom in Java](http://www.baeldung.com/java-thread-local-random)
 - [The Thread.join() Method in Java](http://www.baeldung.com/java-thread-join)
+- [Passing Parameters to Java Threads](https://www.baeldung.com/java-thread-parameters)

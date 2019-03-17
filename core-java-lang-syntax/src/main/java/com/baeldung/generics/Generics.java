@@ -1,5 +1,6 @@
 package com.baeldung.generics;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
@@ -26,6 +27,12 @@ public class Generics {
     // with a list of any subtype of Building
     public static void paintAllBuildings(List<? extends Building> buildings) {
         buildings.forEach(Building::paint);
+    }
+
+    public static List<Integer> createList(int a) {
+        List<Integer> list = new ArrayList<>();
+        list.add(a);
+        return list;
     }
 
 }
