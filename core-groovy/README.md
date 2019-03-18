@@ -10,3 +10,4 @@
 - [An Introduction to Traits in Groovy](https://www.baeldung.com/groovy-traits)
 - [Lists in Groovy](https://www.baeldung.com/groovy-lists)
 - [Converting a String to a Date in Groovy](https://www.baeldung.com/groovy-string-to-date)
+- [Guide to I/O in Groovy](https://www.baeldung.com/groovy-io)
