@@ -39,4 +39,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Convert XML to JSON Using Jackson](https://www.baeldung.com/jackson-convert-xml-json)
 - [Deserialize Immutable Objects with Jackson](https://www.baeldung.com/jackson-deserialize-immutable-objects)
 - [Mapping a Dynamic JSON Object with Jackson](https://www.baeldung.com/jackson-mapping-dynamic-object)
+- [Mapping Multiple JSON Fields to a Single Java Field](https://www.baeldung.com/json-multiple-fields-single-java-field)
 
