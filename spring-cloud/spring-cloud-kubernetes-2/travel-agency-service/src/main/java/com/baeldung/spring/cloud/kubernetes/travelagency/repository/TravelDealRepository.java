@@ -9,5 +9,4 @@ public interface TravelDealRepository extends MongoRepository<TravelDeal, String
 
     public List<TravelDeal> findByDestination(String destination);
 
-
 }

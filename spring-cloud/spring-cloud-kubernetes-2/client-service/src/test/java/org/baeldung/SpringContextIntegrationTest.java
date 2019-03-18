@@ -11,8 +11,7 @@ import com.baeldung.spring.cloud.kubernetes.client.Application;
 @SpringBootTest(classes = Application.class)
 public class SpringContextIntegrationTest {
 
-	@Test
-	public void contextLoads() {
-	}
-
+    @Test
+    public void contextLoads() {
+    }
 }

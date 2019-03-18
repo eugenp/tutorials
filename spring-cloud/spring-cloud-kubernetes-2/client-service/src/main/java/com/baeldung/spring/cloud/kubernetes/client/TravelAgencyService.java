@@ -8,20 +8,19 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class TravelAgencyService {
 
-	private final RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
-	public TravelAgencyService(RestTemplate restTemplate) {
-		this.restTemplate = restTemplate;
-	}
+    public TravelAgencyService(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
-	@HystrixCommand(fallbackMethod = "getFallbackName", commandProperties = {
-		@HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000")
-	})
-	public String getDeals() {
-		return this.restTemplate.getForObject("http://travel-agency-service:8080/deals", String.class);
-	}
+    @HystrixCommand(fallbackMethod = "getFallbackName", commandProperties =
+            { @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000") })
+    public String getDeals() {
+        return this.restTemplate.getForObject("http://travel-agency-service:8080/deals", String.class);
+    }
 
-	private String getFallbackName() {
-		return "Fallback";
-	}
+    private String getFallbackName() {
+        return "Fallback";
+    }
 }

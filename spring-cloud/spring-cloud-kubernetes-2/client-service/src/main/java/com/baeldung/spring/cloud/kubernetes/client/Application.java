@@ -9,20 +9,19 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
-
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @RibbonClient(name = "travel-agency-service", configuration = RibbonConfiguration.class)
 public class Application {
 
-	@LoadBalanced
-	@Bean
-	RestTemplate restTemplate(){
-		return new RestTemplate();
-	}
+    @LoadBalanced
+    @Bean
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 }

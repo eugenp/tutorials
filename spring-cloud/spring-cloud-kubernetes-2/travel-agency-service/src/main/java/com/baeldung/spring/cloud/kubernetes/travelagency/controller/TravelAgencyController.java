@@ -27,7 +27,8 @@ public class TravelAgencyController {
         List<TravelDeal> travelDealList = travelDealRepository.findAll();
         if (!travelDealList.isEmpty()) {
             int randomDeal = new Random().nextInt(travelDealList.size());
-            return travelDealList.get(randomDeal).toString();
+            return travelDealList.get(randomDeal)
+                .toString();
         } else {
             return "NO DEALS";
         }
@@ -38,9 +39,17 @@ public class TravelAgencyController {
     public String get() throws UnknownHostException {
 
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Host: ").append(InetAddress.getLocalHost().getHostName()).append("<br/>");
-        stringBuilder.append("IP: ").append(InetAddress.getLocalHost().getHostAddress()).append("<br/>");
-        stringBuilder.append("Type: ").append("Travel Agency").append("<br/>");
+        stringBuilder.append("Host: ")
+            .append(InetAddress.getLocalHost()
+                .getHostName())
+            .append("<br/>");
+        stringBuilder.append("IP: ")
+            .append(InetAddress.getLocalHost()
+                .getHostAddress())
+            .append("<br/>");
+        stringBuilder.append("Type: ")
+            .append("Travel Agency")
+            .append("<br/>");
         return stringBuilder.toString();
     }
 }
