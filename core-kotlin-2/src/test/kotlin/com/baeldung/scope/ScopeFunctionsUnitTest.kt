@@ -1,7 +1,8 @@
 package com.baeldung.scope
 
-import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
+import kotlin.test.assertTrue
+
 
 class ScopeFunctionsUnitTest {
 
@@ -24,7 +25,10 @@ class ScopeFunctionsUnitTest {
             it.append("It takes a StringBuilder instance and returns the number of characters in the generated String")
             it.length
         }
-        assertThat(numberOfCharacters).isEqualTo(128)
+
+        assertTrue {
+            numberOfCharacters == 128
+        }
     }
 
     @Test
@@ -35,14 +39,18 @@ class ScopeFunctionsUnitTest {
             "At this point is safe to reference the variable. Let's print the message: $it"
         } ?: "default value"
 
-        assertThat(charactersInMessage).isEqualTo("At this point is safe to reference the variable. Let's print the message: hello there!")
+        assertTrue {
+            charactersInMessage.equals("At this point is safe to reference the variable. Let's print the message: hello there!")
+        }
 
         val aNullMessage = null
         val thisIsNull = aNullMessage?.let {
             "At this point it would be safe to reference the variable. But it will not really happen because it is null. Let's reference: $it"
         } ?: "default value"
 
-        assertThat(thisIsNull).isEqualTo("default value")
+        assertTrue {
+            thisIsNull.equals("default value")
+        }
     }
 
     @Test
@@ -52,7 +60,10 @@ class ScopeFunctionsUnitTest {
             name = "Mary"
             surname = "Smith"
         }
-        assertThat(aStudent.name).isEqualTo("Mary")
+
+        assertTrue {
+            aStudent.name.equals("Mary")
+        }
     }
 
     @Test
@@ -62,7 +73,9 @@ class ScopeFunctionsUnitTest {
             .setName("Martha")
             .setSurname("Spector")
 
-        assertThat(teacher.surname).isEqualTo("Spector")
+        assertTrue {
+            teacher.surname.equals("Spector")
+        }
     }
 
     @Test
@@ -76,14 +89,19 @@ class ScopeFunctionsUnitTest {
             .also { logger.info(it.toString()) }
             .headers
 
-        assertThat(logger.wasCalled()).isTrue()
-        assertThat(headers.headerInfo).isEqualTo("some header info")
+        assertTrue {
+            logger.wasCalled() && headers.headerInfo.equals("some header info")
+        }
+
     }
 
     @Test
     fun shouldInitializeFieldWhenAlsoUsed() {
         val aStudent = Student().also { it.name = "John"}
-        assertThat(aStudent.name).isEqualTo("John")
+
+        assertTrue {
+            aStudent.name.equals("John")
+        }
     }
 
     @Test
@@ -104,7 +122,10 @@ class ScopeFunctionsUnitTest {
             append("It takes a StringBuilder instance and returns the number of characters in the generated String")
             length
         }
-        assertThat(numberOfCharacters).isEqualTo(128)
+
+        assertTrue {
+            numberOfCharacters == 128
+        }
     }
 
     @Test
@@ -113,7 +134,10 @@ class ScopeFunctionsUnitTest {
         val charactersInMessage = message?.run {
             "At this point is safe to reference the variable. Let's print the message: $this"
         } ?: "default value"
-        assertThat(charactersInMessage).isEqualTo("At this point is safe to reference the variable. Let's print the message: hello there!")
+
+        assertTrue {
+            charactersInMessage.equals("At this point is safe to reference the variable. Let's print the message: hello there!")
+        }
     }
 
 }
