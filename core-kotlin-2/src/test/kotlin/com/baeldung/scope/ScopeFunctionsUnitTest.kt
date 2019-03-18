@@ -3,6 +3,7 @@ package com.baeldung.scope
 import org.junit.Test
 import kotlin.test.assertTrue
 
+
 class ScopeFunctionsUnitTest {
 
     class Logger {
@@ -91,6 +92,7 @@ class ScopeFunctionsUnitTest {
         assertTrue {
             logger.wasCalled() && headers.headerInfo.equals("some header info")
         }
+
     }
 
     @Test
