@@ -5,25 +5,22 @@ import java.util.stream.IntStream;
 
 public class LambdaVariables {
 
-    private String greeting = "Hello";
+    private int counter = 0;
 
     public static void main(String[] args) {
-        new LambdaVariables().workaroundMultithreading();
+        new LambdaVariables().instanceVariableInLambda();
     }
 
     public void localVariableInLambda() {
         int counter = 1;
-        Runnable runnable = () -> System.out.println(counter);
-
+        Runnable runnable = () -> System.out.println(counter); // counter++ is not allowed
         runnable.run();
         new Thread(runnable).start();
     }
 
     public void instanceVariableInLambda() {
-        Runnable runnable = () -> System.out.println(greeting);
-
-        greeting = "hi";
-
+        Runnable runnable = () -> System.out.println(counter++);
+        runnable.run();
         new Thread(runnable).start();
     }
 
