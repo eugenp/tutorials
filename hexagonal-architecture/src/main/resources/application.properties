@@ -1,0 +1,1 @@
+spring.h2.console.enabled=true
