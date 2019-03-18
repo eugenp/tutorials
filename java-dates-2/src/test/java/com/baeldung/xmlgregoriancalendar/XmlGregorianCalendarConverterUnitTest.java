@@ -3,6 +3,7 @@ package com.baeldung.xmlgregoriancalendar;
 import org.junit.Test;
 
 import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeConstants;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 import java.time.LocalDate;
@@ -19,6 +20,7 @@ public class XmlGregorianCalendarConverterUnitTest {
         assertThat(xmlGregorianCalendar.getYear()).isEqualTo(localDate.getYear());
         assertThat(xmlGregorianCalendar.getMonth()).isEqualTo(localDate.getMonthValue());
         assertThat(xmlGregorianCalendar.getDay()).isEqualTo(localDate.getDayOfMonth());
+        assertThat(xmlGregorianCalendar.getTimezone()).isEqualTo(DatatypeConstants.FIELD_UNDEFINED);
     }
 
     @Test
