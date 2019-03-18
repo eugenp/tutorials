@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import org.junit.Test;
 
@@ -18,6 +16,7 @@ public class FileChannelUnitTest {
     public void givenFile_whenReadWithFileChannelUsingRandomAccessFile_thenCorrect() throws IOException {
         String expected_value = "Hello world";
         String file = "src/test/resources/test_read.in";
+        StringBuilder output = new StringBuilder();
         RandomAccessFile reader = new RandomAccessFile(file, "r");
         FileChannel channel = reader.getChannel();
 
@@ -26,10 +25,18 @@ public class FileChannelUnitTest {
             bufferSize = (int) channel.size();
         }
         ByteBuffer buff = ByteBuffer.allocate(bufferSize);
-        channel.read(buff);
-        buff.flip();
+        int noOfBytesRead = channel.read(buff);
 
-        assertEquals(expected_value, new String(buff.array()));
+        while (noOfBytesRead != -1) {
+            buff.flip();
+            while (buff.hasRemaining()) {
+                output.append((char) buff.get());
+            }
+            buff.clear();
+            noOfBytesRead = channel.read(buff);
+        }
+
+        assertEquals(expected_value, output.toString());
         channel.close();
         reader.close();
     }
@@ -38,6 +45,7 @@ public class FileChannelUnitTest {
     public void givenFile_whenReadWithFileChannelUsingFileInputStream_thenCorrect() throws IOException {
         String expected_value = "Hello world";
         String file = "src/test/resources/test_read.in";
+        StringBuilder output = new StringBuilder();
         FileInputStream fin = new FileInputStream(file);
         FileChannel channel = fin.getChannel();
 
@@ -46,10 +54,18 @@ public class FileChannelUnitTest {
             bufferSize = (int) channel.size();
         }
         ByteBuffer buff = ByteBuffer.allocate(bufferSize);
-        channel.read(buff);
-        buff.flip();
+        int noOfBytesRead = channel.read(buff);
 
-        assertEquals(expected_value, new String(buff.array()));
+        while (noOfBytesRead != -1) {
+            buff.flip();
+            while (buff.hasRemaining()) {
+                output.append((char) buff.get());
+            }
+            buff.clear();
+            noOfBytesRead = channel.read(buff);
+        }
+
+        assertEquals(expected_value, output.toString());
         channel.close();
         fin.close();
     }
@@ -63,9 +79,9 @@ public class FileChannelUnitTest {
         FileChannel channel = writer.getChannel();
 
         ByteBuffer buff = ByteBuffer.wrap(input.getBytes());
-        channel.write(buff);
-        buff.flip();
-
+        while (buff.hasRemaining()) {
+            channel.write(buff);
+        }
         channel.close();
         writer.close();
 
@@ -84,8 +100,9 @@ public class FileChannelUnitTest {
         FileChannel channel = fout.getChannel();
 
         ByteBuffer buff = ByteBuffer.wrap(input.getBytes());
-        channel.write(buff);
-        buff.flip();
+        while (buff.hasRemaining()) {
+            channel.write(buff);
+        }
 
         channel.close();
         fout.close();
@@ -100,6 +117,7 @@ public class FileChannelUnitTest {
     public void givenFile_whenReadWithFileChannelGetPosition_thenCorrect() throws IOException {
         long expected_value = 11;
         String file = "src/test/resources/test_read.in";
+        StringBuilder output = new StringBuilder();
         RandomAccessFile reader = new RandomAccessFile(file, "r");
         FileChannel channel = reader.getChannel();
 
@@ -108,8 +126,16 @@ public class FileChannelUnitTest {
             bufferSize = (int) channel.size();
         }
         ByteBuffer buff = ByteBuffer.allocate(bufferSize);
-        channel.read(buff);
-        buff.flip();
+        int noOfBytesRead = channel.read(buff);
+
+        while (noOfBytesRead != -1) {
+            buff.flip();
+            while (buff.hasRemaining()) {
+                output.append((char) buff.get());
+            }
+            buff.clear();
+            noOfBytesRead = channel.read(buff);
+        }
 
         assertEquals(expected_value, channel.position());
 
@@ -123,12 +149,15 @@ public class FileChannelUnitTest {
     @Test
     public void whenGetFileSize_thenCorrect() throws IOException {
         long expectedSize = 11;
+        String file = "src/test/resources/test_read.in";
+        RandomAccessFile reader = new RandomAccessFile(file, "r");
+        FileChannel channel = reader.getChannel();
 
-        Path filePath = Paths.get("src/test/resources/test_read.in");
-        FileChannel imageFileChannel = FileChannel.open(filePath);
-
-        long imageFileSize = imageFileChannel.size();
+        long imageFileSize = channel.size();
         assertEquals(expectedSize, imageFileSize);
+
+        channel.close();
+        reader.close();
     }
 
     @Test
