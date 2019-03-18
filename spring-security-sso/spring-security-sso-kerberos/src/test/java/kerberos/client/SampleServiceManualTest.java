@@ -13,6 +13,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * Procedure to run this manual test:
+ * <ol>
+ * <li>Start {@code KerberosMiniKdc}</li>
+ * <li>Start {@code KerberizedServerApp}</li>
+ * <li>Run the test</li>
+ * </ol>
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @FixMethodOrder
