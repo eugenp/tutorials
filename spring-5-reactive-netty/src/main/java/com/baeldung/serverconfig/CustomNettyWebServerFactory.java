@@ -1,35 +1,24 @@
-package com.baeldung.serverconfig.server;
+package com.baeldung.serverconfig;
 
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.springframework.boot.web.embedded.netty.NettyReactiveWebServerFactory;
 import org.springframework.boot.web.embedded.netty.NettyServerCustomizer;
-import org.springframework.boot.web.server.WebServerFactoryCustomizer;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import reactor.netty.http.server.HttpServer;
 
-@Component
-public class NettyWebServerFactoryBootstrapCustomizer implements WebServerFactoryCustomizer<NettyReactiveWebServerFactory> {
+@Configuration
+@Profile("skipAutoConfig")
+public class CustomNettyWebServerFactory {
 
-    @Override
-    public void customize(NettyReactiveWebServerFactory serverFactory) {
-        serverFactory.addServerCustomizers(new PortCustomizer(8443));
-        serverFactory.addServerCustomizers(new EventLoopNettyCustomizer());
-    }
-
-    private static class PortCustomizer implements NettyServerCustomizer {
-
-        private final int port;
-
-        private PortCustomizer(int port) {
-            this.port = port;
-        }
-
-        @Override
-        public HttpServer apply(HttpServer httpServer) {
-            return httpServer.port(port);
-        }
+    @Bean
+    public NettyReactiveWebServerFactory nettyReactiveWebServerFactory() {
+        NettyReactiveWebServerFactory webServerFactory = new NettyReactiveWebServerFactory();
+        webServerFactory.addServerCustomizers(new EventLoopNettyCustomizer());
+        return webServerFactory;
     }
 
     private static class EventLoopNettyCustomizer implements NettyServerCustomizer {

@@ -1,4 +1,4 @@
-package com.baeldung.serverconfig.server;
+package com.baeldung.serverconfig;
 
 import static org.mockito.Mockito.when;
 
@@ -22,11 +22,11 @@ public class GreetingControllerIntegrationTest {
     @MockBean
     private GreetingService greetingService;
 
-    private final String name = "baeldung";
+    private final String name = "Baeldung";
 
     @Before
     public void setUp() {
-        when(greetingService.greet(name)).thenReturn(Mono.just("Hello baeldung"));
+        when(greetingService.greet(name)).thenReturn(Mono.just("Greeting Baeldung"));
     }
 
     @Test
@@ -36,6 +36,6 @@ public class GreetingControllerIntegrationTest {
                  .expectStatus()
                  .isOk()
                  .expectBody(String.class)
-                 .isEqualTo("Hello baeldung");
+                 .isEqualTo("Greeting Baeldung");
     }
 }

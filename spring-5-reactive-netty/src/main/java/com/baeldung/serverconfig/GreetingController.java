@@ -1,4 +1,4 @@
-package com.baeldung.serverconfig.server;
+package com.baeldung.serverconfig;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
