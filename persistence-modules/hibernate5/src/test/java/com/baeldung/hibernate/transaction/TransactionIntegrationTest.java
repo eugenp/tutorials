@@ -1,66 +1,56 @@
 package com.baeldung.hibernate.transaction;
 
-import com.baeldung.hibernate.transaction.dao.PostRepository;
-import com.baeldung.hibernate.transaction.models.Post;
-import com.baeldung.hibernate.transaction.service.PostService;
+import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.pojo.Post;
+import com.baeldung.hibernate.transaction.PostService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest(classes = {TransactionApplication.class})
-@RunWith(SpringRunner.class)
 public class TransactionIntegrationTest {
 
-    @Autowired
-    PostRepository postRepository;
-    @Autowired
-    PostService postService;
+    private static PostService postService;
+    private static Session session;
+    private static Logger logger = LoggerFactory.getLogger(TransactionIntegrationTest.class);
+
+    @BeforeClass
+    public static void init() throws IOException {
+        Properties properties = new Properties();
+        properties.setProperty("hibernate.connection.driver_class", "org.h2.Driver");
+        properties.setProperty("hibernate.connection.url", "jdbc:h2:mem:mydb1;DB_CLOSE_DELAY=-1");
+        properties.setProperty("hibernate.connection.username", "sa");
+        properties.setProperty("hibernate.show_sql", "true");
+        properties.setProperty("jdbc.password", "");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactoryByProperties(properties);
+        session = sessionFactory.openSession();
+        postService = new PostService(session);
+    }
 
     @Test
     public void givenTitleAndBody_whenRepositoryUpdatePost_thenUpdatePost() {
-        Post post = new Post("This is a title", "This is a sample post");
-        post = postRepository.save(post);
-        Post fetchedPost = postRepository.findById(post.getId()).orElse(null);
-        assertNotNull(fetchedPost);
 
+        Post post = new Post("This is a title", "This is a sample post");
+        session.persist(post);
 
         String title = "[UPDATE] Java HowTos";
         String body = "This is an updated posts on Java how-tos";
-        postService.updatePost(post.getId(), title, body);
+        postService.updatePost(title, body, post.getId());
 
-        Post fetchedPost2 = postRepository.findById(post.getId()).orElse(null);
-        assertNotNull(fetchedPost);
-        assertEquals(fetchedPost2.getTitle(), title);
-        assertEquals(fetchedPost2.getBody(), body);
-    }
+        session.refresh(post);
 
-
-    @Test
-    public void givenTitleAndBody_whenUpdatePostWithTransactionTemplate_thenUpdatePost() {
-        Post post = new Post("This is a title", "This is a sample post");
-        post = postRepository.save(post);
-        List<Post> posts = (List<Post>) postRepository.findAll();
-        assertFalse(posts.isEmpty());
-
-        String title = "[UPDATE] Java HowTos";
-        String body = "This is an updated posts on Java how-tos";
-
-        postService.updateWithTransactionTemplate(post.getId(), title, body);
-
-        Post fetchedPost = postRepository.findById(post.getId()).orElse(null);
-        assertNotNull(fetchedPost);
-        assertEquals(fetchedPost.getTitle(), title);
-        assertEquals(fetchedPost.getBody(), body);
+        assertEquals(post.getTitle(), title);
+        assertEquals(post.getBody(), body);
     }
 
 

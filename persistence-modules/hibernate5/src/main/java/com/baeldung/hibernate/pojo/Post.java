@@ -1,4 +1,4 @@
-package com.baeldung.hibernate.transaction.models;
+package com.baeldung.hibernate.pojo;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
