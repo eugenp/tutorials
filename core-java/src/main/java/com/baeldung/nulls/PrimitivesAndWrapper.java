@@ -11,10 +11,11 @@ public class PrimitivesAndWrapper {
     }
 
     public static Integer goodSum(Integer a, Integer b) {
-        if (a != null && b != null)
+        if (a != null && b != null) {
             return a + b;
-        else
+        } else {
             throw new IllegalArgumentException();
+        }
     }
 
 }

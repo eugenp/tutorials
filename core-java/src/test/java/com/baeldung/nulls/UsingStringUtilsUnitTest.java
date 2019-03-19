@@ -16,28 +16,28 @@ class UsingStringUtilsUnitTest {
     }
 
     @Test
-    public void givenAccept_whenArgIsNull_throwIllegalArgumentException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> classUnderTest.accept(null));
+    public void givenArgIsNull_whenCallingAccept_throwIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> classUnderTest.accept(null));
     }
 
     @Test
-    public void givenAccept_whenArgIsEmpty_throwIllegalArgumentException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> classUnderTest.accept(""));
+    public void givenArgIsEmpty_whenCallingAccept_throwIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> classUnderTest.accept(""));
     }
 
     @Test
-    public void givenAcceptOnlyNonBlank_whenArgIsNull_throwIllegalArgumentException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> classUnderTest.acceptOnlyNonBlank(null));
+    public void givenArgIsNull_whenCallingAcceptOnlyNonBlank_throwIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> classUnderTest.acceptOnlyNonBlank(null));
     }
 
     @Test
-    public void givenAcceptOnlyNonBlank_whenArgIsEmpty_throwIllegalArgumentException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> classUnderTest.acceptOnlyNonBlank(""));
+    public void givenArgIsEmpty_whenCallingAcceptOnlyNonBlank_throwIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> classUnderTest.acceptOnlyNonBlank(""));
     }
 
     @Test
-    public void givenAcceptOnlyNonBlank_whenArgIsBlank_throwIllegalArgumentException() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> classUnderTest.acceptOnlyNonBlank(" "));
+    public void givenArgIsBlank_whenCallingAcceptOnlyNonBlank_throwIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> classUnderTest.acceptOnlyNonBlank(" "));
     }
 
 }

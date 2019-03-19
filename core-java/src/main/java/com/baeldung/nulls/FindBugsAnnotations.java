@@ -16,10 +16,11 @@ public class FindBugsAnnotations {
     @Nonnull
     public Object process() throws Exception {
         Object result = doSomething();
-        if (result == null)
+        if (result == null) {
             throw new Exception("Processing fail. Got a null response");
-        else
+        } else {
             return result;
+        }
     }
 
     private Object doSomething() {

@@ -7,11 +7,12 @@ import java.util.stream.Stream;
 
 public class EmptyCollections {
 
-    public List<String> names(){
-        if (userExist())
+    public List<String> names() {
+        if (userExist()) {
             return Stream.of(readName()).collect(Collectors.toList());
-        else
+        } else {
             return Collections.emptyList();
+        }
     }
 
     private boolean userExist() {

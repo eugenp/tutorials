@@ -3,8 +3,9 @@ package com.baeldung.nulls;
 public class Preconditions {
 
     public void goodAccept(String one, String two, String three) {
-        if (one == null || two == null || three == null)
+        if (one == null || two == null || three == null) {
             throw new IllegalArgumentException();
+        }
 
         process(one);
         process(two);
@@ -12,20 +13,23 @@ public class Preconditions {
     }
 
     public void badAccept(String one, String two, String three) {
-        if (one == null)
+        if (one == null) {
             throw new IllegalArgumentException();
-        else
+        } else {
             process(one);
+        }
 
-        if (two == null)
+        if (two == null) {
             throw new IllegalArgumentException();
-        else
+        } else {
             process(two);
+        }
 
-        if (three == null)
+        if (three == null) {
             throw new IllegalArgumentException();
-        else
+        } else {
             process(three);
+        }
 
     }
 

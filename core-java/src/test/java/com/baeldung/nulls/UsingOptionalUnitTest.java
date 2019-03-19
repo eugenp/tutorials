@@ -20,18 +20,23 @@ class UsingOptionalUnitTest {
 
     @Test
     public void whenArgIsFalse_thenReturnEmptyResponse() {
+
         Optional<Object> result = classUnderTest.process(false);
+
         assertFalse(result.isPresent());
     }
 
     @Test
     public void whenArgIsTrue_thenReturnValidResponse() {
+
         Optional<Object> result = classUnderTest.process(true);
+
         assertTrue(result.isPresent());
     }
 
     @Test
     public void whenArgIsFalse_thenChainResponseAndThrowException() {
+
         assertThrows(Exception.class, () -> classUnderTest.process(false).orElseThrow(() -> new Exception()));
     }
 }
