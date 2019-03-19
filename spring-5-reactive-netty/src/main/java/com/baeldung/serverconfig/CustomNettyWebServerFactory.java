@@ -31,8 +31,6 @@ public class CustomNettyWebServerFactory {
                     .tcpConfiguration(tcpServer -> tcpServer.bootstrap(
                             serverBootstrap -> serverBootstrap.group(parentGroup, childGroup).channel(NioServerSocketChannel.class)
                     ));
-
         }
-
     }
 }
