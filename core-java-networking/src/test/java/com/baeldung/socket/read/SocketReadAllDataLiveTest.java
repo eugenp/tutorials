@@ -3,7 +3,7 @@ package com.baeldung.socket.read;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
 
-public class SocketReadAllDataTest {
+public class SocketReadAllDataLiveTest {
     
     @Test
     public void givenServerAndClient_whenClientSendsAndServerReceivesData_thenCorrect() {
