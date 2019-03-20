@@ -12,10 +12,9 @@
 
   Client-side service discovery allows services to find and communicate with each other without hardcoding hostname and port. The only ‘fixed point’ in such an architecture consists of a service registry with which each service has to register.
 
+### Relevant Articles:
 - [Intro to Spring Cloud Netflix - Hystrix](http://www.baeldung.com/spring-cloud-netflix-hystrix)
 - [Dockerizing a Spring Boot Application](http://www.baeldung.com/dockerizing-spring-boot-application)
-- [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
+- [Instance Profile Credentials using Spring Cloud](http://www.baeldung.com/spring-cloud-instance-profiles)
+- [Running Spring Boot Applications With Minikube](http://www.baeldung.com/spring-boot-minikube)
 
-### Relevant Articles:
-- [Introduction to Spring Cloud Rest Client with Netflix Ribbon](http://www.baeldung.com/spring-cloud-rest-client-with-netflix-ribbon)
- [An Introduction to Spring Cloud Zookeeper](http://www.baeldung.com/spring-cloud-zookeeper)

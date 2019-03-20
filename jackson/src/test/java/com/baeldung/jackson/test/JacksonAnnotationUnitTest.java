@@ -14,6 +14,7 @@ import java.util.TimeZone;
 
 import org.junit.Test;
 
+import com.baeldung.jackson.annotation.AliasBean;
 import com.baeldung.jackson.annotation.BeanWithCreator;
 import com.baeldung.jackson.annotation.BeanWithCustomAnnotation;
 import com.baeldung.jackson.annotation.BeanWithFilter;
@@ -36,6 +37,7 @@ import com.baeldung.jackson.date.EventWithSerializer;
 import com.baeldung.jackson.dtos.MyMixInForIgnoreType;
 import com.baeldung.jackson.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.exception.UserWithRoot;
+import com.baeldung.jackson.exception.UserWithRootNamespace;
 import com.baeldung.jackson.jsonview.Item;
 import com.baeldung.jackson.jsonview.Views;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -46,6 +48,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class JacksonAnnotationUnitTest {
 
@@ -124,7 +127,8 @@ public class JacksonAnnotationUnitTest {
     public void whenDeserializingUsingJsonCreator_thenCorrect() throws IOException {
         final String json = "{\"id\":1,\"theName\":\"My bean\"}";
 
-        final BeanWithCreator bean = new ObjectMapper().readerFor(BeanWithCreator.class).readValue(json);
+        final BeanWithCreator bean = new ObjectMapper().readerFor(BeanWithCreator.class)
+            .readValue(json);
         assertEquals("My bean", bean.name);
     }
 
@@ -133,7 +137,9 @@ public class JacksonAnnotationUnitTest {
         final String json = "{\"name\":\"My bean\"}";
         final InjectableValues inject = new InjectableValues.Std().addValue(int.class, 1);
 
-        final BeanWithInject bean = new ObjectMapper().reader(inject).forType(BeanWithInject.class).readValue(json);
+        final BeanWithInject bean = new ObjectMapper().reader(inject)
+            .forType(BeanWithInject.class)
+            .readValue(json);
         assertEquals("My bean", bean.name);
         assertEquals(1, bean.id);
     }
@@ -142,16 +148,19 @@ public class JacksonAnnotationUnitTest {
     public void whenDeserializingUsingJsonAnySetter_thenCorrect() throws IOException {
         final String json = "{\"name\":\"My bean\",\"attr2\":\"val2\",\"attr1\":\"val1\"}";
 
-        final ExtendableBean bean = new ObjectMapper().readerFor(ExtendableBean.class).readValue(json);
+        final ExtendableBean bean = new ObjectMapper().readerFor(ExtendableBean.class)
+            .readValue(json);
         assertEquals("My bean", bean.name);
-        assertEquals("val2", bean.getProperties().get("attr2"));
+        assertEquals("val2", bean.getProperties()
+            .get("attr2"));
     }
 
     @Test
     public void whenDeserializingUsingJsonSetter_thenCorrect() throws IOException {
         final String json = "{\"id\":1,\"name\":\"My bean\"}";
 
-        final BeanWithGetter bean = new ObjectMapper().readerFor(BeanWithGetter.class).readValue(json);
+        final BeanWithGetter bean = new ObjectMapper().readerFor(BeanWithGetter.class)
+            .readValue(json);
         assertEquals("My bean", bean.getTheName());
     }
 
@@ -161,7 +170,8 @@ public class JacksonAnnotationUnitTest {
 
         final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
-        final EventWithSerializer event = new ObjectMapper().readerFor(EventWithSerializer.class).readValue(json);
+        final EventWithSerializer event = new ObjectMapper().readerFor(EventWithSerializer.class)
+            .readValue(json);
         assertEquals("20-12-2014 02:30:00", df.format(event.eventDate));
     }
 
@@ -232,7 +242,8 @@ public class JacksonAnnotationUnitTest {
     public void whenDeserializingPolymorphic_thenCorrect() throws IOException {
         final String json = "{\"animal\":{\"name\":\"lacy\",\"type\":\"cat\"}}";
 
-        final Zoo zoo = new ObjectMapper().readerFor(Zoo.class).readValue(json);
+        final Zoo zoo = new ObjectMapper().readerFor(Zoo.class)
+            .readValue(json);
 
         assertEquals("lacy", zoo.animal.name);
         assertEquals(Zoo.Cat.class, zoo.animal.getClass());
@@ -247,7 +258,8 @@ public class JacksonAnnotationUnitTest {
         assertThat(result, containsString("My bean"));
         assertThat(result, containsString("1"));
 
-        final BeanWithGetter resultBean = new ObjectMapper().readerFor(BeanWithGetter.class).readValue(result);
+        final BeanWithGetter resultBean = new ObjectMapper().readerFor(BeanWithGetter.class)
+            .readValue(result);
         assertEquals("My bean", resultBean.getTheName());
     }
 
@@ -278,7 +290,8 @@ public class JacksonAnnotationUnitTest {
     public void whenSerializingUsingJsonView_thenCorrect() throws JsonProcessingException, JsonProcessingException {
         final Item item = new Item(2, "book", "John");
 
-        final String result = new ObjectMapper().writerWithView(Views.Public.class).writeValueAsString(item);
+        final String result = new ObjectMapper().writerWithView(Views.Public.class)
+            .writeValueAsString(item);
 
         assertThat(result, containsString("book"));
         assertThat(result, containsString("2"));
@@ -317,7 +330,8 @@ public class JacksonAnnotationUnitTest {
 
         final FilterProvider filters = new SimpleFilterProvider().addFilter("myFilter", SimpleBeanPropertyFilter.filterOutAllExcept("name"));
 
-        final String result = new ObjectMapper().writer(filters).writeValueAsString(bean);
+        final String result = new ObjectMapper().writer(filters)
+            .writeValueAsString(bean);
 
         assertThat(result, containsString("My bean"));
         assertThat(result, not(containsString("id")));
@@ -361,5 +375,45 @@ public class JacksonAnnotationUnitTest {
         assertThat(result, containsString("1"));
         assertThat(result, containsString("name"));
     }
+    
+    @Test
+    public void whenDeserializingUsingJsonAlias_thenCorrect() throws IOException {
+
+        // arrange
+        String json = "{\"fName\": \"John\", \"lastName\": \"Green\"}";
+
+        // act
+        AliasBean aliasBean = new ObjectMapper().readerFor(AliasBean.class).readValue(json);
+
+        // assert
+        assertThat(aliasBean.getFirstName(), is("John"));
+    }
+    
+    @Test
+    public void whenSerializingUsingXMLRootNameWithNameSpace_thenCorrect() throws JsonProcessingException {
+
+        // arrange
+        UserWithRootNamespace author = new UserWithRootNamespace(1, "John");
+
+        // act
+        ObjectMapper mapper = new XmlMapper();
+        mapper = mapper.enable(SerializationFeature.WRAP_ROOT_VALUE).enable(SerializationFeature.INDENT_OUTPUT);
+        String result = mapper.writeValueAsString(author);
+
+        // assert
+        assertThat(result, containsString("<user xmlns=\"users\">"));
+
+        /*
+            <user xmlns="users">
+              <id xmlns="">3006b44a-cf62-4cfe-b3d8-30dc6c46ea96</id>
+              <id xmlns="">1</id>
+              <name xmlns="">John</name>
+              <items xmlns=""/>
+            </user>
+        */
+
+    }
+    
+    
 
 }

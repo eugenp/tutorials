@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Arrays in Thymeleaf</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    
+    <body>
+        <h3>THE CONTINENTS</h3>
+        <p>
+            We have a total of <span th:text="${continents.length}"></span>
+            continents in this world. Following is a list showing their order
+            based on the number of population in each of them.
+        </p>
+
+        <ol>
+            <li th:text="${continents[2]}"></li>
+            <li th:text="${continents[0]}"></li>
+            <li th:text="${continents[4]}"></li>
+            <li th:text="${continents[5]}"></li>
+            <li th:text="${continents[6]}"></li>
+            <li th:text="${continents[3]}"></li>
+            <li th:text="${continents[1]}"></li>
+        </ol>
+
+        <ul th:each="continent : ${continents}">
+            <li th:text="${continent}"></li>
+        </ul>
+
+        <h4 th:each="continent : ${continents}" th:text="${continent}"></h4>
+
+        <p>
+            The greatest <span th:text="${#arrays.length(continents)}"></span>
+            continents.
+        </p>
+
+        <p>
+            Europe is a continent: <span
+                th:text="${#arrays.contains(continents, 'Europe')}"></span>.
+        </p>
+
+        <p>
+            Array of continents is empty <span
+                th:text="${#arrays.isEmpty(continents)}"></span>.
+        </p>
+
+    </body>
+</html>

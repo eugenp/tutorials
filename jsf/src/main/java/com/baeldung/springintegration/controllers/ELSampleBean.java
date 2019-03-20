@@ -27,18 +27,22 @@ public class ELSampleBean {
     @PostConstruct
     public void init() {
         pageCounter = randomIntGen.nextInt();
-        FacesContext.getCurrentInstance().getApplication().addELContextListener(new ELContextListener() {
-            @Override
-            public void contextCreated(ELContextEvent evt) {
-                evt.getELContext().getImportHandler().importClass("com.baeldung.springintegration.controllers.ELSampleBean");
-            }
-        });
+        FacesContext.getCurrentInstance()
+            .getApplication()
+            .addELContextListener(new ELContextListener() {
+                @Override
+                public void contextCreated(ELContextEvent evt) {
+                    evt.getELContext()
+                        .getImportHandler()
+                        .importClass("com.baeldung.springintegration.controllers.ELSampleBean");
+                }
+            });
     }
 
     public void save() {
 
     }
-    
+
     public static String constantField() {
         return constantField;
     }
@@ -48,7 +52,8 @@ public class ELSampleBean {
     }
 
     public Long multiplyValue(LambdaExpression expr) {
-        Long theResult = (Long) expr.invoke(FacesContext.getCurrentInstance().getELContext(), pageCounter);
+        Long theResult = (Long) expr.invoke(FacesContext.getCurrentInstance()
+            .getELContext(), pageCounter);
         return theResult;
     }
 

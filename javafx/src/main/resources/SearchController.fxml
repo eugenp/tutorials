@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx"
+            fx:controller="com.baeldung.view.SearchController"
+            prefHeight="400.0" prefWidth="600.0">
+    <children>
+
+        <HBox id="HBox" alignment="CENTER" spacing="5.0" AnchorPane.leftAnchor="10.0"
+              AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <children>
+                <Label text="Search Text:"/>
+                <TextField fx:id="searchField" prefWidth="-1.0" HBox.hgrow="ALWAYS"/>
+                <Button fx:id="searchButton" prefWidth="-1.0" HBox.hgrow="ALWAYS"/>
+                <Label fx:id="searchLabel"/>
+            </children>
+        </HBox>
+
+        <Pagination fx:id="pagination"
+                    AnchorPane.leftAnchor="10.0"
+                    AnchorPane.rightAnchor="10.0"
+                    AnchorPane.topAnchor="50.0"
+                    visible="false">
+
+        </Pagination>
+
+    </children>
+</AnchorPane>
