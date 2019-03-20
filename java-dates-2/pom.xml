@@ -49,7 +49,7 @@
     <properties>
         <!-- testing -->
         <assertj.version>3.6.1</assertj.version>
-		<maven.compiler.source>1.9</maven.compiler.source>
+        <maven.compiler.source>1.9</maven.compiler.source>
         <maven.compiler.target>1.9</maven.compiler.target>
     </properties>
 </project>
