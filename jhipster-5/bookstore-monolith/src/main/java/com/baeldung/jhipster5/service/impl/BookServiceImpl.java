@@ -5,6 +5,7 @@ import com.baeldung.jhipster5.domain.Book;
 import com.baeldung.jhipster5.repository.BookRepository;
 import com.baeldung.jhipster5.service.dto.BookDTO;
 import com.baeldung.jhipster5.service.mapper.BookMapper;
+import com.baeldung.jhipster5.web.rest.errors.BadRequestAlertException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,5 +87,23 @@ public class BookServiceImpl implements BookService {
     public void delete(Long id) {
         log.debug("Request to delete Book : {}", id);
         bookRepository.deleteById(id);
+    }
+
+    @Override
+    public Optional<BookDTO> purchase(Long id) {
+        Optional<BookDTO> bookDTO = findOne(id);
+        if(bookDTO.isPresent()) {
+            int quantity = bookDTO.get().getQuantity();
+            if(quantity > 0) {
+                bookDTO.get().setQuantity(quantity - 1);
+                Book book = bookMapper.toEntity(bookDTO.get());
+                book = bookRepository.save(book);
+                return bookDTO;
+            }
+            else {
+                throw new BadRequestAlertException("Book is not in stock", "book", "notinstock");
+            }
+        }
+        return Optional.empty();
     }
 }

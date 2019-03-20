@@ -38,6 +38,13 @@ export class BookService {
             .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
     }
 
+    purchase(id: number): Observable<EntityResponseType> {
+        console.log('Calling /api/books/purchase/ ' + id);
+        return this.http
+            .get<IBook>(`${this.resourceUrl}/purchase/${id}`, { observe: 'response' })
+            .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+    }
+
     query(req?: any): Observable<EntityArrayResponseType> {
         const options = createRequestOption(req);
         return this.http

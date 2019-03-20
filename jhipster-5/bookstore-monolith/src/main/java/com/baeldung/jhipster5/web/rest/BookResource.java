@@ -109,4 +109,10 @@ public class BookResource {
         bookService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+    @GetMapping("/books/purchase/{id}")
+    public ResponseEntity<BookDTO> purchase(@PathVariable Long id) {
+        Optional<BookDTO> bookDTO = bookService.purchase(id);
+        return ResponseUtil.wrapOrNotFound(bookDTO);
+    }
 }
