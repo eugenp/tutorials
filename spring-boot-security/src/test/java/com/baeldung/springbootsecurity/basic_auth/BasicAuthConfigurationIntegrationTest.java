@@ -1,5 +1,6 @@
 package com.baeldung.springbootsecurity.basic_auth;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,8 +50,6 @@ public class BasicAuthConfigurationIntegrationTest {
         ResponseEntity<String> response = restTemplate.getForEntity(base.toString(), String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-        assertTrue(response
-          .getBody()
-          .contains("Unauthorized"));
+        Assert.assertNull(response.getBody());
     }
 }
