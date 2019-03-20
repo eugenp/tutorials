@@ -11,7 +11,6 @@ import java.util.Objects;
 
 class MiniKdcConfigBuilder {
 
-	private static final int CFG_FIELDS_COUNT = 3;
 	private String workDir;
 	private String confDir;
 	private String keytabName;
