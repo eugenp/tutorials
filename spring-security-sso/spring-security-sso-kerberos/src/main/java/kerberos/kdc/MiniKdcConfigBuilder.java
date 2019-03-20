@@ -4,15 +4,18 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Objects;
 
 class MiniKdcConfigBuilder {
 
-	private static final int FIELDS_COUNT = 3;
+	private static final int CFG_FIELDS_COUNT = 3;
 	private String workDir;
 	private String confDir;
 	private String keytabName;
-	private String[] principals = { "principal/localhost" };
+	private Collection<String> principals;
 
 	private MiniKdcConfigBuilder() {
 		// desired
@@ -44,22 +47,19 @@ class MiniKdcConfigBuilder {
 	}
 
 	MiniKdcConfigBuilder principals(String... principals) {
-		this.principals = principals;
+		this.principals = Arrays.asList(principals);
 		return this;
 	}
 
 	String[] build() {
 
-		String[] args = new String[FIELDS_COUNT + principals.length];
+		Collection<String> miniKdcConfig = new ArrayList<>();
 
-		args[0] = workDir;
-		args[1] = confDir;
-		args[2] = keytabName;
+		miniKdcConfig.add(workDir);
+		miniKdcConfig.add(confDir);
+		miniKdcConfig.add(keytabName);
+		miniKdcConfig.addAll(principals);
 
-		for (int i = 0, j = 3; i < principals.length; i++, j++) {
-			args[j] = principals[i];
-		}
-
-		return args;
+		return miniKdcConfig.toArray(new String[0]);
 	}
 }

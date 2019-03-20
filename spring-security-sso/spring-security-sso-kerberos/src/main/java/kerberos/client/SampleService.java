@@ -1,6 +1,5 @@
 package kerberos.client;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -13,8 +12,11 @@ class SampleService {
 
 	private RestTemplate restTemplate;
 
-	@Autowired
-	public void setRestTemplate(RestTemplate restTemplate) {
+	public SampleService(RestTemplate restTemplate) {
+		this.restTemplate = restTemplate;
+	}
+
+	void setRestTemplate(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
 	}
 
