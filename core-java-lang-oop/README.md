@@ -5,7 +5,6 @@
 ### Relevant Articles: 
 - [Guide to hashCode() in Java](http://www.baeldung.com/java-hashcode)
 - [A Guide to the Static Keyword in Java](http://www.baeldung.com/java-static)
-- [A Guide to Java Initialization](http://www.baeldung.com/java-initialization)
 - [Polymorphism in Java](http://www.baeldung.com/java-polymorphism)
 - [Method Overloading and Overriding in Java](http://www.baeldung.com/java-method-overload-override)
 - [How to Make a Deep Copy of an Object in Java](http://www.baeldung.com/java-deep-copy)

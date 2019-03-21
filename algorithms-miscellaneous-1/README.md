@@ -17,3 +17,4 @@
 - [Java Two Pointer Technique](https://www.baeldung.com/java-two-pointer-technique)
 - [Permutations of an Array in Java](https://www.baeldung.com/java-array-permutations)
 - [Implementing Simple State Machines with Java Enums](https://www.baeldung.com/java-enum-simple-state-machine)
+- [Generate Combinations in Java](https://www.baeldung.com/java-combinations-algorithm)
