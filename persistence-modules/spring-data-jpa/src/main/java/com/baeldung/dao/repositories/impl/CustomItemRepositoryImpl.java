@@ -5,8 +5,8 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.baeldung.domain.Item;
 import com.baeldung.dao.repositories.CustomItemRepository;
+import com.baeldung.domain.Item;
 
 @Repository
 public class CustomItemRepositoryImpl implements CustomItemRepository {
@@ -29,4 +29,5 @@ public class CustomItemRepositoryImpl implements CustomItemRepository {
         final Item item = entityManager.find(Item.class, id);
         entityManager.remove(item);
     }
+
 }

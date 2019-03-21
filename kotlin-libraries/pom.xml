@@ -3,6 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>kotlin-libraries</artifactId>
+    <name>kotlin-libraries</name>
     <packaging>jar</packaging>
 
     <parent>
@@ -86,6 +87,30 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>${h2database.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.arrow-kt/arrow-core -->
+        <dependency>
+            <groupId>io.arrow-kt</groupId>
+            <artifactId>arrow-core</artifactId>
+            <version>0.7.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>uy.kohesive.kovert</groupId>
+            <artifactId>kovert-vertx</artifactId>
+            <version>[1.5.0,1.6.0)</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>nl.komponents.kovenant</groupId>
+                    <artifactId>kovenant</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>nl.komponents.kovenant</groupId>
+            <artifactId>kovenant</artifactId>
+            <version>3.3.0</version>
+            <type>pom</type>
         </dependency>
     </dependencies>
 

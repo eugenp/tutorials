@@ -5,8 +5,8 @@
     <groupId>com.baeldung</groupId>
     <artifactId>deltaspike</artifactId>
     <version>1.0</version>
-    <packaging>war</packaging>
     <name>deltaspike</name>
+    <packaging>war</packaging>
     <description>A starter Java EE 7 webapp which uses DeltaSpike</description>
     <url>http://wildfly.org</url>
 

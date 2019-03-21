@@ -4,7 +4,7 @@ import org.apache.http.HttpHost;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.support.BasicAuthorizationInterceptor;
+import org.springframework.http.client.support.BasicAuthenticationInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -38,7 +38,7 @@ public class RestTemplateFactory implements FactoryBean<RestTemplate>, Initializ
         HttpHost host = new HttpHost("localhost", 8082, "http");
         final ClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactoryBasicAuth(host);
         restTemplate = new RestTemplate(requestFactory);
-        restTemplate.getInterceptors().add(new BasicAuthorizationInterceptor("user1", "user1Pass"));
+        restTemplate.getInterceptors().add(new BasicAuthenticationInterceptor("user1", "user1Pass"));
     }
 
 }

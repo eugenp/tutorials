@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>parent-boot-1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<name>parent-boot-1</name>
 	<packaging>pom</packaging>
 	<description>Parent for all Spring Boot 1.x modules</description>
 
@@ -54,7 +55,7 @@
 
 	<properties>
 		<rest-assured.version>3.1.0</rest-assured.version>
-		<spring-boot.version>1.5.16.RELEASE</spring-boot.version>
+		<spring-boot.version>1.5.19.RELEASE</spring-boot.version>
 	</properties>
 	
 </project>

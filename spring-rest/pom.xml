@@ -53,10 +53,6 @@
             <artifactId>spring-webmvc</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-oxm</artifactId>
-        </dependency>
-        <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>${commons-fileupload.version}</version>
@@ -84,12 +80,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.thoughtworks.xstream</groupId>
-            <artifactId>xstream</artifactId>
-            <version>${xstream.version}</version>
         </dependency>
 
         <!-- util -->
@@ -183,9 +173,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -284,7 +271,6 @@
         <protobuf-java-format.version>1.4</protobuf-java-format.version>
         <protobuf-java.version>3.1.0</protobuf-java.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <xstream.version>1.4.9</xstream.version>
 
         <!-- util -->
         <guava.version>20.0</guava.version>
@@ -300,6 +286,7 @@
         <json.path.version>2.2.0</json.path.version>
         <pact.version>3.5.11</pact.version>
         <rest-assured.version>3.1.0</rest-assured.version>
+        <start-class>com.baeldung.sampleapp.config.MainApplication</start-class>
     </properties>
 
 </project>

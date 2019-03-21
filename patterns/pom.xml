@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>patterns</artifactId>
     <packaging>pom</packaging>
+	<name>patterns</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -16,6 +17,8 @@
         <module>front-controller</module>
         <module>intercepting-filter</module>
         <module>design-patterns</module>
+        <module>design-patterns-2</module>
+        <module>solid</module>
     </modules>
 
     <dependencyManagement>
