@@ -18,23 +18,23 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
                 PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
         auth
-          .inMemoryAuthentication()
-          .withUser("user")
-          .password(encoder.encode("password"))
-          .roles("USER")
-          .and()
-          .withUser("admin")
-          .password("{noop}admin")
-          .roles("USER", "ADMIN");
+                .inMemoryAuthentication()
+                .withUser("user")
+                .password(encoder.encode("password"))
+                .roles("USER")
+                .and()
+                .withUser("admin")
+                .password(encoder.encode("admin"))
+                .roles("USER", "ADMIN");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-          .authorizeRequests()
-          .anyRequest()
-          .authenticated()
-          .and()
-          .httpBasic();
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic();
     }
 }

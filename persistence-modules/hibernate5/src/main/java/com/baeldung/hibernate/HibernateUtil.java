@@ -113,6 +113,7 @@ public class HibernateUtil {
         metadataSources.addAnnotatedClass(OptimisticLockingCourse.class);
         metadataSources.addAnnotatedClass(OptimisticLockingStudent.class);
         metadataSources.addAnnotatedClass(OfficeEmployee.class);
+        metadataSources.addAnnotatedClass(Post.class);
 
         Metadata metadata = metadataSources.getMetadataBuilder()
                 .applyBasicType(LocalDateStringType.INSTANCE)
