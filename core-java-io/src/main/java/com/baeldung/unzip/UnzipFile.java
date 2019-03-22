@@ -16,6 +16,7 @@ public class UnzipFile {
         ZipEntry zipEntry = zis.getNextEntry();
         while (zipEntry != null) {
             final File newFile = newFile(destDir, zipEntry);
+            newFile.getParentFile().mkdirs(); // for when files are in folders inside the zip
             final FileOutputStream fos = new FileOutputStream(newFile);
             int len;
             while ((len = zis.read(buffer)) > 0) {
