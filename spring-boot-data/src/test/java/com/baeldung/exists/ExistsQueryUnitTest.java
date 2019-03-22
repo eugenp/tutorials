@@ -31,7 +31,7 @@ public class ExistsQueryUnitTest {
     }
 
     @After
-    public void teardown(){
+    public void teardown() {
         repository.deleteAll();
     }
 
@@ -41,10 +41,10 @@ public class ExistsQueryUnitTest {
     }
 
     @Test
-    public void existsByExample(){
+    public void existsByExample() {
         ExampleMatcher modelMatcher = ExampleMatcher.matching()
-                                                    .withIgnorePaths("id") // must explicitly ignore -> PK
-                                                    .withMatcher("model", ignoreCase());
+                .withIgnorePaths("id") // must explicitly ignore -> PK
+                .withMatcher("model", ignoreCase());
         Car probe = new Car();
         probe.setModel("bmw");
 
@@ -54,18 +54,33 @@ public class ExistsQueryUnitTest {
     }
 
     @Test
-    public void existsByDerivecQuery(){
+    public void existsByDerivecQuery_byPower() {
         assertThat(repository.existsCarByPower(200)).isTrue();
+        assertThat(repository.existsCarByPower(800)).isFalse();
     }
 
     @Test
-    public void existsByDerivedQuery2(){
-        assertThat(repository.existsCarLikeModel("aud")).isTrue();
+    public void existsByDerivedQuery_byModel() {
+        assertThat(repository.existsCarByModel("Audi")).isTrue();
+        assertThat(repository.existsCarByModel("audi")).isFalse();
+        assertThat(repository.existsCarByModel("AUDI")).isFalse();
+        assertThat(repository.existsCarByModel("")).isFalse();
     }
 
     @Test
-    public void existsByCustomQuery(){
-        assertThat(repository.existsCarLikeModel("bmw")).isTrue();
+    public void existsCarExactCustomQuery() {
+        assertThat(repository.existsCarExactCustomQuery("BMW")).isTrue();
+        assertThat(repository.existsCarExactCustomQuery("Bmw")).isFalse();
+        assertThat(repository.existsCarExactCustomQuery("bmw")).isFalse();
+        assertThat(repository.existsCarExactCustomQuery("")).isFalse();
+    }
+
+    @Test
+    public void existsCarLikeCustomQuery() {
+        assertThat(repository.existsCarLikeCustomQuery("BMW")).isTrue();
+        assertThat(repository.existsCarLikeCustomQuery("Bmw")).isTrue();
+        assertThat(repository.existsCarLikeCustomQuery("bmw")).isTrue();
+        assertThat(repository.existsCarLikeCustomQuery("")).isFalse();
     }
 
 }
