@@ -21,17 +21,17 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -117,7 +117,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>${jackson-databind.version}</version>
+            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
@@ -144,7 +144,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -192,9 +192,6 @@
     </build>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.security.version>5.0.6.RELEASE</org.springframework.security.version>
-
         <!-- various -->
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <jstl.version>1.2</jstl.version>
@@ -202,7 +199,7 @@
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        <jackson-databind.version>2.9.7</jackson-databind.version>
+        <jackson.version>2.9.7</jackson.version>
 
         <!-- Maven plugins -->
         <maven-war-plugin.version>2.6</maven-war-plugin.version>

@@ -39,6 +39,11 @@
             <version>${org.assertj.core.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.dpaukov</groupId>
+            <artifactId>combinatoricslib3</artifactId>
+            <version>3.3.0</version>
+         </dependency>
     </dependencies>
 
     <build>
@@ -74,11 +79,10 @@
     </reporting>
 
     <properties>
-        <lombok.version>1.16.12</lombok.version>
         <commons-math3.version>3.6.1</commons-math3.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>
         <commons-codec.version>1.11</commons-codec.version>
-        <guava.version>25.1-jre</guava.version>
+        <guava.version>27.0.1-jre</guava.version>
     </properties>
 
 </project>

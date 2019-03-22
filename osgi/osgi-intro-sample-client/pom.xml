@@ -5,6 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <!-- mvn:com.baeldung/osgi-intro-sample-client/1.0-SNAPSHOT -->
     <artifactId>osgi-intro-sample-client</artifactId>
+    <name>osgi-intro-sample-client</name>
     <packaging>bundle</packaging>
 
     <parent>

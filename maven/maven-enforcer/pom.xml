@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>maven-enforcer</artifactId>
+	<name>maven-enforcer</name>
 
     <build>
         <plugins>

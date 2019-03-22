@@ -58,6 +58,13 @@
         </plugins>
     </build>
 
+    <modules>
+        <module>app-auth-basic-store-db</module>
+        <module>app-auth-form-store-ldap</module>
+        <module>app-auth-custom-form-store-custom</module>
+        <module>app-auth-custom-no-store</module>
+    </modules>
+
     <properties>
         <defaultHttpPort>9080</defaultHttpPort>
         <defaultHttpsPort>9443</defaultHttpsPort>
@@ -69,12 +76,5 @@
         
         <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
     </properties>
-
-    <modules>
-        <module>app-auth-basic-store-db</module>
-        <module>app-auth-form-store-ldap</module>
-        <module>app-auth-custom-form-store-custom</module>
-        <module>app-auth-custom-no-store</module>
-    </modules>
 
 </project>
