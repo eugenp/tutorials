@@ -66,6 +66,7 @@ public class FileChannelUnitTest {
         }
 
         assertEquals(expected_value, out.toString());
+        out.close();
         channel.close();
         fin.close();
     }
@@ -141,6 +142,7 @@ public class FileChannelUnitTest {
         channel.position(4);
         assertEquals(4, channel.position());
 
+        out.close();
         channel.close();
         reader.close();
     }
