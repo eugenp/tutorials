@@ -7,7 +7,6 @@
     <artifactId>solid</artifactId>
     <name>solid</name>
     <version>1.0-SNAPSHOT</version>
-
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>patterns</artifactId>
@@ -35,5 +34,4 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-
 </project>

@@ -4,7 +4,6 @@
     <groupId>com.baeldung</groupId>
     <artifactId>spring-exceptions</artifactId>
     <version>0.1-SNAPSHOT</version>
-
     <name>spring-exceptions</name>
     <packaging>war</packaging>
 
@@ -175,6 +174,7 @@
     </build>
 
     <properties>
+
         <!-- Spring -->
         <org.springframework.version>4.3.4.RELEASE</org.springframework.version>
         <org.springframework.security.version>4.2.0.RELEASE</org.springframework.security.version>
@@ -195,7 +195,7 @@
         <!-- util -->
         <guava.version>19.0</guava.version>
         <commons-lang3.version>3.5</commons-lang3.version>
-        
+
         <httpcore.version>4.4.5</httpcore.version>
         <httpclient.version>4.5.2</httpclient.version>
 

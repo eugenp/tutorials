@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
-import com.gargoylesoftware.htmlunit.html.HtmlHeading1;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 public class HtmlUnitWebScrapingLiveTest {
@@ -37,7 +36,7 @@ public class HtmlUnitWebScrapingLiveTest {
         final HtmlAnchor latestPostLink = (HtmlAnchor) page.getByXPath(xpath).get(0);
         final HtmlPage postPage = latestPostLink.click();
 
-        final List<HtmlHeading1> h1 = (List<HtmlHeading1>) postPage.getByXPath("//h1");
+        final List<Object> h1 = postPage.getByXPath("//h1");
 
         Assert.assertTrue(h1.size() > 0);
     }

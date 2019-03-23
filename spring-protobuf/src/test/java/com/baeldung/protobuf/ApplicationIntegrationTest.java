@@ -1,7 +1,11 @@
 package com.baeldung.protobuf;
 
-import com.baeldung.protobuf.BaeldungTraining.Course;
-import com.googlecode.protobuf.format.JsonFormat;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertThat;
+
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -9,21 +13,19 @@ import org.apache.http.impl.client.HttpClients;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
-import java.io.InputStream;
+import com.baeldung.protobuf.BaeldungTraining.Course;
+import com.googlecode.protobuf.format.JsonFormat;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertThat;
-
+@DirtiesContext
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
-@WebIntegrationTest
+@SpringBootTest(classes = Application.class, webEnvironment = WebEnvironment.DEFINED_PORT)
 public class ApplicationIntegrationTest {
 
     private static final String COURSE1_URL = "http://localhost:8080/courses/1";
