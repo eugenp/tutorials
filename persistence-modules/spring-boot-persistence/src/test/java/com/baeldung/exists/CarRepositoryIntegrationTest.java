@@ -36,12 +36,12 @@ public class CarRepositoryIntegrationTest {
     }
 
     @Test
-    public void existsById() {
+    public void whenIdIsCorrect_thenExistsShouldReturnTrue() {
         assertThat(repository.existsById(searchId)).isTrue();
     }
 
     @Test
-    public void existsByExample() {
+    public void givenExample_whenExists_thenIsTrue() {
         ExampleMatcher modelMatcher = ExampleMatcher.matching()
                 .withIgnorePaths("id") // must explicitly ignore -> PK
                 .withMatcher("model", ignoreCase());
@@ -54,7 +54,7 @@ public class CarRepositoryIntegrationTest {
     }
 
     @Test
-    public void existsByDerivecQuery_byPower() {
+    public void givenPower_whenExists_thenIsFalse() {
         assertThat(repository.existsCarByPower(200)).isTrue();
         assertThat(repository.existsCarByPower(800)).isFalse();
     }
@@ -68,7 +68,7 @@ public class CarRepositoryIntegrationTest {
     }
 
     @Test
-    public void existsCarExactCustomQuery() {
+    public void givenModelName_whenExistsExact_thenIsTrue() {
         assertThat(repository.existsCarExactCustomQuery("BMW")).isTrue();
         assertThat(repository.existsCarExactCustomQuery("Bmw")).isFalse();
         assertThat(repository.existsCarExactCustomQuery("bmw")).isFalse();
@@ -76,7 +76,7 @@ public class CarRepositoryIntegrationTest {
     }
 
     @Test
-    public void existsCarLikeCustomQuery() {
+    public void givenModelName_whenExistsLike_thenIsTrue() {
         assertThat(repository.existsCarLikeCustomQuery("BMW")).isTrue();
         assertThat(repository.existsCarLikeCustomQuery("Bmw")).isTrue();
         assertThat(repository.existsCarLikeCustomQuery("bmw")).isTrue();
