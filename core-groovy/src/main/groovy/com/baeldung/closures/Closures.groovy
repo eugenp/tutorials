@@ -1,8 +1,5 @@
 package com.baeldung.closures
 
-//import org.junit.Assert
-//import org.junit.Test
-
 class Closures {
     
     def printWelcome = {
@@ -36,27 +33,27 @@ class Closures {
     
     def calculate = {int x, int y, String operation ->
         
-        //logging closure
-        def logging = {
+        //log closure
+        def log = {
             println "Performing $it"
         }
         
         def result = 0    
         switch(operation) {
             case "ADD":
-                logging("Addition")
+                log("Addition")
                 result = x+y
                 break
             case "SUB":
-                logging("Subtraction")
+                log("Subtraction")
                 result = x-y
                 break
             case "MUL":
-                logging("Multiplication")
+                log("Multiplication")
                 result = x*y
                 break
             case "DIV":
-                logging("Division")
+                log("Division")
                 result = x/y
                 break
         }
