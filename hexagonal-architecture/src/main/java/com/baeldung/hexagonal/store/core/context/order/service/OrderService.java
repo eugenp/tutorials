@@ -1,13 +1,10 @@
 package com.baeldung.hexagonal.store.core.context.order.service;
 
-import com.baeldung.hexagonal.store.core.context.customer.exception.CustomerNotFoundException;
-import com.baeldung.hexagonal.store.core.context.customer.exception.NotEnoughFundsException;
 import com.baeldung.hexagonal.store.core.context.order.entity.Order;
-import com.baeldung.hexagonal.store.core.context.order.exception.ProductNotFoundException;
 
 import java.util.Map;
 import java.util.Optional;
 
 public interface OrderService {
-    Optional<Order> processNewCustomerOrder(long customerId, Map<Long, Integer> productQuantityMap) throws CustomerNotFoundException, ProductNotFoundException, NotEnoughFundsException;
+    Optional<Order> processNewCustomerOrder(long customerId, Map<Long, Integer> productQuantityMap) throws RuntimeException;
 }

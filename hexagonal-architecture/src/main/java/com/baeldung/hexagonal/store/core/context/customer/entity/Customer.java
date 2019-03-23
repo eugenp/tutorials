@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Data
-public class Customer implements StoreCustomer {
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -25,17 +25,14 @@ public class Customer implements StoreCustomer {
     )
     List<Order> orders = new ArrayList<>();
 
-    @Override
     public boolean isNegativeBalanceAllowed() {
         return true;
     }
 
-    @Override
     public void withdrawFunds(Double amount) {
         this.balance -= amount;
     }
 
-    @Override
     public boolean hasEnoughFunds(Double amount) {
         return this.balance >= amount;
     }

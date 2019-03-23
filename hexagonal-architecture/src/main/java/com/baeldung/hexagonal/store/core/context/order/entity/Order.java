@@ -33,13 +33,4 @@ public class Order {
                         (aDouble, orderProduct) -> orderProduct.getTotalPrice(),
                         (aDouble, aDouble2) -> aDouble + aDouble2);
     }
-
-    public void addOrderProduct(OrderProduct product) {
-        this.orderProducts.add(product);
-    }
-
-    @Transient
-    public int getNumberOfProducts() {
-        return this.orderProducts.size();
-    }
 }

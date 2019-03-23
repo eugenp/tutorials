@@ -1,13 +1,10 @@
 package com.baeldung.hexagonal.store.core.context.order.service;
 
 import com.baeldung.hexagonal.store.core.context.customer.entity.Customer;
-import com.baeldung.hexagonal.store.core.context.customer.exception.CustomerNotFoundException;
-import com.baeldung.hexagonal.store.core.context.customer.exception.NotEnoughFundsException;
 import com.baeldung.hexagonal.store.core.context.customer.infrastructure.CustomerDataStore;
 import com.baeldung.hexagonal.store.core.context.order.entity.Order;
 import com.baeldung.hexagonal.store.core.context.order.entity.OrderProduct;
 import com.baeldung.hexagonal.store.core.context.order.entity.Product;
-import com.baeldung.hexagonal.store.core.context.order.exception.ProductNotFoundException;
 import com.baeldung.hexagonal.store.core.context.order.infrastructure.EmailNotificationSender;
 import com.baeldung.hexagonal.store.core.context.order.infrastructure.OrderDataStore;
 import com.baeldung.hexagonal.store.core.context.order.infrastructure.ProductDataStore;
@@ -35,11 +32,10 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Optional<Order> processNewCustomerOrder(long customerId, Map<Long, Integer> productQuantityMap)
-            throws CustomerNotFoundException, ProductNotFoundException, NotEnoughFundsException {
+    public Optional<Order> processNewCustomerOrder(long customerId, Map<Long, Integer> productQuantityMap) throws RuntimeException {
         Optional<Customer> customer = this.customerDataStore.findById(customerId);
         if (!customer.isPresent()) {
-            throw new CustomerNotFoundException();
+            throw new RuntimeException("Customer not found!");
         }
         Customer existingCustomer = customer.get();
         Order order = new Order();
@@ -47,7 +43,7 @@ public class OrderServiceImpl implements OrderService {
         for (Map.Entry<Long, Integer> productEntry : productQuantityMap.entrySet()) {
             Optional<Product> product = productDataStore.findById(productEntry.getKey());
             if (!product.isPresent()) {
-                throw new ProductNotFoundException();
+                throw new RuntimeException("Product not found!");
             }
             OrderProduct orderProduct = new OrderProduct(order, product.get(), productEntry.getValue());
             orderProducts.add(orderProduct);
@@ -55,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderProducts(orderProducts);
         Double finalPrice = order.getTotalOrderPrice();
         if (!existingCustomer.hasEnoughFunds(finalPrice) && !existingCustomer.isNegativeBalanceAllowed()) {
-            throw new NotEnoughFundsException();
+            throw new RuntimeException("Not enough funds!");
         }
         existingCustomer.withdrawFunds(finalPrice);
         order.setStatus("Completed");

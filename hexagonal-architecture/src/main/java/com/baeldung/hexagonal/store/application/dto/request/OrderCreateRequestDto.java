@@ -7,14 +7,6 @@ import java.util.stream.Collectors;
 public class OrderCreateRequestDto {
     List<OrderProductDescriptor> productIds;
 
-    public List<OrderProductDescriptor> getProductIds() {
-        return productIds;
-    }
-
-    public void setProductIds(List<OrderProductDescriptor> productIds) {
-        this.productIds = productIds;
-    }
-
     public Map<Long, Integer> getProductQuantityMap() {
         return this.productIds
                 .stream()
@@ -29,16 +21,8 @@ public class OrderCreateRequestDto {
             return quantity;
         }
 
-        public void setQuantity(int quantity) {
-            this.quantity = quantity;
-        }
-
         public long getProductId() {
             return productId;
-        }
-
-        public void setProductId(long productId) {
-            this.productId = productId;
         }
     }
 }

@@ -1,9 +1,11 @@
-package com.baeldung.hexagonal.store.infrastructure.persistence.repo.customer;
+package com.baeldung.hexagonal.store.infrastructure.persistence.repo;
 
 import com.baeldung.hexagonal.store.core.context.customer.entity.Customer;
 import com.baeldung.hexagonal.store.core.context.customer.infrastructure.CustomerDataStore;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
@@ -16,4 +18,8 @@ public class CustomerRepositoryImpl implements CustomerDataStore {
     public Optional<Customer> findById(Long customerId) {
         return customerRepository.findById(customerId);
     }
+}
+
+@Repository
+interface CustomerRepository extends CrudRepository<Customer, Long> {
 }

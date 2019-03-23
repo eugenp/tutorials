@@ -21,7 +21,7 @@ public class OrderController {
     }
 
     @PostMapping("/customer/{customerId}")
-    public ResponseEntity<Order> createOrder(@PathVariable("customerId") int customerId, @RequestBody OrderCreateRequestDto requestDto) {
+    public ResponseEntity<Order> createOrder(@PathVariable("customerId") int customerId, @RequestBody OrderCreateRequestDto requestDto) throws RuntimeException {
         Optional<Order> order = this.orderService.processNewCustomerOrder(customerId, requestDto.getProductQuantityMap());
         return new ResponseEntity<>(order.get(), HttpStatus.OK);
     }
