@@ -24,8 +24,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     Optional<User> findOneByName(String name);
 
-    Stream<User> findAllByName(String name);
-
     @Async
     CompletableFuture<User> findOneByStatus(Integer status);
 

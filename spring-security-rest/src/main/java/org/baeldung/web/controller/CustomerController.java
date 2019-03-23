@@ -48,7 +48,7 @@ public class CustomerController {
         }
         
         Link link =linkTo(methodOn(CustomerController.class).getOrdersForCustomer(customerId)).withSelfRel();
-        Resources<Order> result = new Resources<Order>(orders,link);
+        Resources<Order> result = new Resources<>(orders,link);
         return result;
     }
 
@@ -67,7 +67,7 @@ public class CustomerController {
         }
         
         Link link =linkTo(CustomerController.class).withSelfRel();
-        Resources<Customer> result = new Resources<Customer>(allCustomers,link);
+        Resources<Customer> result = new Resources<>(allCustomers,link);
         return result;
     }
 

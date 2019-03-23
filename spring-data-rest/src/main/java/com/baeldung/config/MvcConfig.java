@@ -11,11 +11,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebMvc
 public class MvcConfig implements WebMvcConfigurer {
-    
-    public MvcConfig(){
+
+    public MvcConfig() {
         super();
     }
-    
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
@@ -27,7 +27,7 @@ public class MvcConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    BookEventHandler bookEventHandler(){
+    BookEventHandler bookEventHandler() {
         return new BookEventHandler();
     }
 

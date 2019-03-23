@@ -16,14 +16,14 @@ import javax.persistence.ManyToOne;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false)
     private String title;
-    
+
     private String isbn;
-    
+
     @ManyToOne
     @JoinColumn(name = "library_id")
     private Library library;
@@ -62,7 +62,6 @@ public class Book {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-
 
     public Library getLibrary() {
         return library;

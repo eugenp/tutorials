@@ -2,12 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-boot-ops</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
     <name>spring-boot-ops</name>
+    <packaging>war</packaging>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -18,10 +15,6 @@
     </parent>
 
     <dependencies>
-
-        <!-- add dependency management if you have a different parent pom <dependencyManagement> <dependencies> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-data-jpa</artifactId> 
-            <version>1.5.10.RELEASE</version> </dependency> <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-dependencies</artifactId> <version>1.5.10.RELEASE</version> 
-            <type>pom</type> <scope>import</scope> </dependency> </dependencies> </dependencyManagement> -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -92,16 +85,26 @@
             <version>${jquery.version}</version>
         </dependency>
 
+	<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+            <version>${springcloud.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
-        <finalName>${artifactId}</finalName>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>**/conf.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -116,6 +119,29 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.18</version>
+				<executions>
+					<!-- Invokes both the integration-test and the verify goals of the Failsafe 
+						Maven plugin -->
+					<execution>
+						<id>integration-tests</id>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+						<configuration>
+							<!-- Skips integration tests if the value of skip.integration.tests 
+								property is true -->
+								<includes>
+										<include>**/ExternalPropertyFileLoaderIntegrationTest.java</include>
+									</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
         </plugins>
     </build>
 
@@ -164,6 +190,7 @@
         <jpa.version>2.2</jpa.version>
         <guava.version>18.0</guava.version>
         <subethasmtp.version>3.1.7</subethasmtp.version>
+	<springcloud.version>2.0.2.RELEASE</springcloud.version>
     </properties>
 
 </project>

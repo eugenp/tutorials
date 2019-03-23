@@ -13,21 +13,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ScopesController {
     public static final Logger LOG = LoggerFactory.getLogger(ScopesController.class);
 
-    @Resource(name = "requestMessage")
-    HelloMessageGenerator requestMessage;
+    @Resource(name = "requestScopedBean")
+    HelloMessageGenerator requestScopedBean;
 
-    @Resource(name = "sessionMessage")
-    HelloMessageGenerator sessionMessage;
+    @Resource(name = "sessionScopedBean")
+    HelloMessageGenerator sessionScopedBean;
 
-    @RequestMapping("/scopes")
-    public String getScopes(final Model model) {
-        LOG.info("Request Message:" + requestMessage.getMessage());
-        LOG.info("Session Message" + sessionMessage.getMessage());
-        requestMessage.setMessage("Good morning!");
-        sessionMessage.setMessage("Good afternoon!");
-        model.addAttribute("requestMessage", requestMessage.getMessage());
-        model.addAttribute("sessionMessage", sessionMessage.getMessage());
+    @Resource(name = "applicationScopedBean")
+    HelloMessageGenerator applicationScopedBean;
+
+    @RequestMapping("/scopes/request")
+    public String getRequestScopeMessage(final Model model) {
+        model.addAttribute("previousMessage", requestScopedBean.getMessage());
+        requestScopedBean.setMessage("Request Scope Message!");
+        model.addAttribute("currentMessage", requestScopedBean.getMessage());
         return "scopesExample";
     }
 
+    @RequestMapping("/scopes/session")
+    public String getSessionScopeMessage(final Model model) {
+        model.addAttribute("previousMessage", sessionScopedBean.getMessage());
+        sessionScopedBean.setMessage("Session Scope Message!");
+        model.addAttribute("currentMessage", sessionScopedBean.getMessage());
+        return "scopesExample";
+    }
+
+    @RequestMapping("/scopes/application")
+    public String getApplicationScopeMessage(final Model model) {
+        model.addAttribute("previousMessage", applicationScopedBean.getMessage());
+        applicationScopedBean.setMessage("Application Scope Message!");
+        model.addAttribute("currentMessage", applicationScopedBean.getMessage());
+        return "scopesExample";
+    }
 }

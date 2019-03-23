@@ -3,7 +3,9 @@ package com.baeldung.string;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
@@ -61,6 +63,21 @@ public class JoinerSplitterUnitTest {
         List<Character> result = JoinerSplitter.splitToListOfChar(programming_languages);
         assertEquals(result, expectation);
 
+    }
+    
+    @Test
+    public void givenStringArray_transformedToStream_convertToMap() {
+
+        String[] programming_languages = new String[] {"language:java","os:linux","editor:emacs"};
+        
+        Map<String,String> expectation=new HashMap<>();
+        expectation.put("language", "java");
+        expectation.put("os", "linux");
+        expectation.put("editor", "emacs");
+        
+        Map<String, String> result = JoinerSplitter.arrayToMap(programming_languages);
+        assertEquals(result, expectation);
+        
     }
 
 }

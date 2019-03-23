@@ -12,3 +12,4 @@
 - [RxJava StringObservable](http://www.baeldung.com/rxjava-string)
 - [Filtering Observables in RxJava](http://www.baeldung.com/rxjava-filtering)
 - [RxJava One Observable, Multiple Subscribers](http://www.baeldung.com/rxjava-multiple-subscribers-observable)
+- [Difference Between Flatmap and Switchmap in RxJava](https://www.baeldung.com/rxjava-flatmap-switchmap)

@@ -2,13 +2,13 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-jooq</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-
+	<name>spring-jooq</name>
+	
     <parent>
-        <artifactId>parent-boot-1</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-boot-1</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
 
     <dependencies>
@@ -54,11 +54,6 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
@@ -134,6 +129,9 @@
                                     <packageName>com.baeldung.jooq.introduction.db</packageName>
                                     <directory>src/main/java</directory>
                                 </target>
+                                 <database>
+                                    <inputCatalog></inputCatalog>
+                                </database>
                             </generator>
                         </configuration>
                     </execution>
@@ -190,14 +188,12 @@
     </dependencyManagement>
 
     <properties>
-        <org.jooq.version>3.8.6</org.jooq.version>
+        <org.jooq.version>3.11.7</org.jooq.version>
         <com.h2database.version>1.4.193</com.h2database.version>
-        <org.springframework.version>4.3.17.RELEASE</org.springframework.version>
 
         <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
         <sql-maven-plugin.version>1.5</sql-maven-plugin.version>
         <properties-maven-plugin.version>1.0.0</properties-maven-plugin.version>
-        <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
         <start-class>org.jooq.example.spring.Application</start-class>
     </properties>
 

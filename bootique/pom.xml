@@ -3,9 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung.bootique</groupId>
     <artifactId>bootique</artifactId>
-    <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>bootique</name>
+    <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 
     <parent>

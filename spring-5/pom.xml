@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-5</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-5</name>
+    <packaging>jar</packaging>
     <description>spring 5 sample project about new features</description>
 
     <parent>
@@ -134,7 +135,19 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- this surefire configuration allows concurrent execution; 
+                do not remove -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <parallel>methods</parallel>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                </configuration>
+            </plugin>
         </plugins>
+
     </build>
 
     <properties>
@@ -142,6 +155,7 @@
         <asciidoctor-plugin.version>1.5.6</asciidoctor-plugin.version>
         <commons-collections4.version>4.1</commons-collections4.version>
         <snippetsDirectory>${project.build.directory}/generated-snippets</snippetsDirectory>
+        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
     </properties>
 
 </project>

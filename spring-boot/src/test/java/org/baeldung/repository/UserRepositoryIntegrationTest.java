@@ -53,30 +53,6 @@ public class UserRepositoryIntegrationTest {
     }
 
     @Test
-    @Transactional
-    public void givenUsersWithSameNameInDBWhenFindAllByNameThenReturnStreamOfUsers() {
-        User user1 = new User();
-        user1.setName(USER_NAME_ADAM);
-        userRepository.save(user1);
-
-        User user2 = new User();
-        user2.setName(USER_NAME_ADAM);
-        userRepository.save(user2);
-
-        User user3 = new User();
-        user3.setName(USER_NAME_ADAM);
-        userRepository.save(user3);
-
-        User user4 = new User();
-        user4.setName("SAMPLE");
-        userRepository.save(user4);
-
-        try (Stream<User> foundUsersStream = userRepository.findAllByName(USER_NAME_ADAM)) {
-            assertThat(foundUsersStream.count()).isEqualTo(3l);
-        }
-    }
-
-    @Test
     public void givenUserInDBWhenFindOneByStatusAsyncThenReturnCompletableFutureUser() throws ExecutionException, InterruptedException {
         User user = new User();
         user.setName(USER_NAME_ADAM);

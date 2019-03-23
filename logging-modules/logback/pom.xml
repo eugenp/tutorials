@@ -4,9 +4,9 @@
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <name>logback</name>
     <artifactId>logback</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <name>logback</name>
 
     <parent>
         <groupId>com.baeldung</groupId>
@@ -42,7 +42,7 @@
     <properties>
         <logback.version>1.2.3</logback.version>
         <logback.contrib.version>0.1.5</logback.contrib.version>
-        <jackson.version>2.9.3</jackson.version>
+        <jackson.version>2.9.7</jackson.version>
     </properties>
 
 </project>

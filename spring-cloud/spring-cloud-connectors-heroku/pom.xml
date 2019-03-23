@@ -5,6 +5,7 @@
     <groupId>com.baeldung.spring.cloud</groupId>
     <artifactId>spring-cloud-connectors-heroku</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+	<name>spring-cloud-connectors-heroku</name>
 
     <parent>
         <artifactId>parent-boot-1</artifactId>
@@ -33,8 +34,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
@@ -54,33 +54,8 @@
         </dependencies>
     </dependencyManagement>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <configuration>
-                    <forkCount>3</forkCount>
-                    <reuseForks>true</reuseForks>
-                    <excludes>
-                        <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*IntTest.java</exclude>
-                        <exclude>**/*LongRunningUnitTest.java</exclude>
-                        <exclude>**/*ManualTest.java</exclude>
-                        <exclude>**/JdbcTest.java</exclude>
-                        <exclude>**/*LiveTest.java</exclude>
-                    </excludes>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
     <properties>
         <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <postgresql.version>9.4-1201-jdbc4</postgresql.version>
     </properties>
-
 </project>

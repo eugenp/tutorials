@@ -2,41 +2,37 @@
 The "REST with Spring" Classes
 ==============================
 
-After 5 months of work, here's the Master Class of REST With Spring: <br/>
-**[>> THE REST WITH SPRING MASTER CLASS](http://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=rws#master-class)**
+Here's the Master Class of REST With Spring (along with the newly announced Boot 2 material): <br/>
+**[>> THE REST WITH SPRING - MASTER CLASS](http://www.baeldung.com/rest-with-spring-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=rws#master-class)**
 
 And here's the Master Class of Learn Spring Security: <br/>
-**[>> LEARN SPRING SECURITY MASTER CLASS](http://www.baeldung.com/learn-spring-security-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=lss#master-class)**
+**[>> LEARN SPRING SECURITY - MASTER CLASS](http://www.baeldung.com/learn-spring-security-course?utm_source=github&utm_medium=social&utm_content=tutorials&utm_campaign=lss#master-class)**
 
 
 
-Spring Tutorials
+Java and Spring Tutorials
 ================
 
-This project is **a collection of small and focused tutorials** each covering a single and well defined area of development. 
-Most of the tutorial projects are focused on the `Spring Framework` (and `Spring Security`).  
+This project is **a collection of small and focused tutorials** - each covering a single and well defined area of development in the Java ecosystem. 
+A strong focus of these is, of course, the Spring Framework - Spring, Spring Boot and Spring Security. 
 In additional to Spring, the following technologies are in focus: `core Java`, `Jackson`, `HttpClient`, `Guava`. 
+
 
 Building the project
 ====================
 To do the full build, do: `mvn install -Pdefault -Dgib.enabled=false`
 
 
-Working with the code in Eclipse
-================================
-Any IDE can be used to work with the projects, but if you're using Eclipse, consider the following. 
-
-- import the included **formatter** in Eclipse: 
-`https://github.com/eugenp/tutorials/tree/master/eclipse`
+Building a single module
+====================
+To build a specific module run the command: `mvn clean install -Dgib.enabled=false` in the module directory
 
 
-CI - Jenkins
-================================
-This tutorials project is being built **[>> HERE](https://rest-security.ci.cloudbees.com/job/tutorials-unit/)**
+Running a Spring Boot module
+====================
+To run a Spring Boot module run the command: `mvn spring-boot:run -Dgib.enabled=false` in the module directory
 
-### Relevant Articles: 
-================================
 
-- [Apache Maven Standard Directory Layout](http://www.baeldung.com/maven-directory-structure)
-- [Apache Maven Tutorial](http://www.baeldung.com/maven)
-- [Designing a User Friendly Java Library](http://www.baeldung.com/design-a-user-friendly-java-library)
+
+
+
