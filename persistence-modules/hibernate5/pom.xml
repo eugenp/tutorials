@@ -83,13 +83,18 @@
             <artifactId>jmh-generator-annprocess</artifactId>
             <version>${openjdk-jmh.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <finalName>hibernate5</finalName>
         <resources>
             <resource>
-                <directory>src/main/resources</directory>
+                <directory>src/test/resources</directory>
                 <filtering>true</filtering>
             </resource>
         </resources>

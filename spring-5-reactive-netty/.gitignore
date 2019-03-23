@@ -1,0 +1,11 @@
+# Folders #
+**/.idea
+**/target
+
+# Files #
+*.log
+
+# Packaged files #
+*.jar
+*.war
+*.ear
