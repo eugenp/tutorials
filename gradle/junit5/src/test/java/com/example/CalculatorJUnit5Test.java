@@ -33,4 +33,10 @@ public class CalculatorJUnit5Test {
             Integer.divideUnsigned(42, 0);
         });
     }
+    
+    @Test
+    public void testCalculate() {
+        Integer number = Integer.valueOf(5);
+        assertEquals(Integer.valueOf(8), number.add(3));
+    }
 }
