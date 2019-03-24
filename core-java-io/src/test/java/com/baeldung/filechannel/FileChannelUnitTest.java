@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
 
@@ -26,17 +27,15 @@ public class FileChannelUnitTest {
             bufferSize = (int) channel.size();
         }
         ByteBuffer buff = ByteBuffer.allocate(bufferSize);
-        int noOfBytesRead = channel.read(buff);
 
-        while (noOfBytesRead != -1) {
+        while (channel.read(buff) > 0) {
             if (buff.hasArray()) {
                 out.write(buff.array(), 0, buff.position());
                 buff.clear();
-                noOfBytesRead = channel.read(buff);
             }
         }
 
-        assertEquals(expected_value, out.toString());
+        assertEquals(expected_value, new String(out.toByteArray(), StandardCharsets.UTF_8));
         out.close();
         channel.close();
         reader.close();
@@ -55,13 +54,11 @@ public class FileChannelUnitTest {
             bufferSize = (int) channel.size();
         }
         ByteBuffer buff = ByteBuffer.allocate(bufferSize);
-        int noOfBytesRead = channel.read(buff);
 
-        while (noOfBytesRead != -1) {
+        while (channel.read(buff) > 0) {
             if (buff.hasArray()) {
                 out.write(buff.array(), 0, buff.position());
                 buff.clear();
-                noOfBytesRead = channel.read(buff);
             }
         }
 
@@ -127,13 +124,11 @@ public class FileChannelUnitTest {
             bufferSize = (int) channel.size();
         }
         ByteBuffer buff = ByteBuffer.allocate(bufferSize);
-        int noOfBytesRead = channel.read(buff);
 
-        while (noOfBytesRead != -1) {
+        while (channel.read(buff) > 0) {
             if (buff.hasArray()) {
                 out.write(buff.array(), 0, buff.position());
                 buff.clear();
-                noOfBytesRead = channel.read(buff);
             }
         }
 
