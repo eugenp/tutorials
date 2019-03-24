@@ -59,8 +59,11 @@ public class PrimitiveMaps {
 
         TDoubleIntMap doubleIntMap = new TDoubleIntHashMap(doubles, ints);
 
-        doubleIntMap.put(1.2, 1);
-        doubleIntMap.put(4.5, 4);
-        doubleIntMap.put(0.3, 0);
+        doubleIntMap.put(1.2, 22);
+        doubleIntMap.put(4.5, 16);
+
+        doubleIntMap.adjustValue(1.2, 1);
+        doubleIntMap.adjustValue(4.5, 4);
+        doubleIntMap.adjustValue(0.3, 7);
     }
 }
