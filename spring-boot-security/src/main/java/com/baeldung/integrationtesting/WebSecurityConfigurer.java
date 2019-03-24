@@ -12,7 +12,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
             .withUser("spring")
-            .password("secret")
+            .password("{noop}secret")
             .roles("USER");
     }
 

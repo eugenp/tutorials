@@ -14,7 +14,7 @@ public class SpringBootSecurityTagLibsConfig extends WebSecurityConfigurerAdapte
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
             .withUser("testUser")
-            .password("password")
+            .password("{noop}password")
             .roles("ADMIN");
     }
 
