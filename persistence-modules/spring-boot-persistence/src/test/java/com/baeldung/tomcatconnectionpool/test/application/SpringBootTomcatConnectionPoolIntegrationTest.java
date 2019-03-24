@@ -5,11 +5,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.tomcatconnectionpool.application.SpringBootConsoleApplication;
+
 import static org.assertj.core.api.Assertions.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {SpringBootConsoleApplication.class})
 public class SpringBootTomcatConnectionPoolIntegrationTest {
     
     @Autowired
@@ -17,6 +20,6 @@ public class SpringBootTomcatConnectionPoolIntegrationTest {
     
     @Test
     public void givenTomcatConnectionPoolInstance_whenCheckedPoolClassName_thenCorrect() {
-        assertThat(dataSource.getClass().getName()).isEqualTo("org.apache.tomcat.jdbc.pool.DataSource");
+        assertThat(dataSource.getClass().getName()).isEqualTo("com.zaxxer.hikari.HikariDataSource");
     }
 }

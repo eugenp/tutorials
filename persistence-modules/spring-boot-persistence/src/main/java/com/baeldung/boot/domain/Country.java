@@ -1,4 +1,4 @@
-package com.baeldung.domain;
+package com.baeldung.boot.domain;
 
 import static javax.persistence.GenerationType.IDENTITY;
 

@@ -1,4 +1,4 @@
-package com.baeldung.naming;
+package com.baeldung.boot.naming;
 
 import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;
 import org.springframework.boot.test.context.TestConfiguration;

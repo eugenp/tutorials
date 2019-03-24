@@ -1,4 +1,4 @@
-package com.baeldung.naming.entity;
+package com.baeldung.boot.naming.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
