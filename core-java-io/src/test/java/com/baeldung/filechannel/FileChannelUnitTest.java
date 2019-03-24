@@ -62,7 +62,7 @@ public class FileChannelUnitTest {
             }
         }
 
-        assertEquals(expected_value, out.toString());
+        assertEquals(expected_value, new String(out.toByteArray(), StandardCharsets.UTF_8));
         out.close();
         channel.close();
         fin.close();
