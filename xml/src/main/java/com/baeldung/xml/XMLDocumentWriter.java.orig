@@ -17,11 +17,11 @@ import org.w3c.dom.Document;
 public class XMLDocumentWriter {
     
     public void write(Document document, String fileName, boolean excludeDeclaration, boolean prettyPrint) {
-<<<<<<< HEAD
         try(FileWriter writer = new FileWriter(new File(fileName))) {
+<<<<<<< HEAD
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
 =======
-        try {
->>>>>>> Added implementation and test class
+>>>>>>> Updated code as per review comments
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             if(excludeDeclaration) {
@@ -29,28 +29,17 @@ public class XMLDocumentWriter {
             }
             if(prettyPrint) {
                 transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-<<<<<<< HEAD
                 transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-=======
->>>>>>> Added implementation and test class
             }
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(writer);
             transformer.transform(source, result);
         } catch (IOException e) {
-<<<<<<< HEAD
             throw new IllegalArgumentException(e);
         } catch (TransformerConfigurationException e) {
             throw new IllegalStateException(e);
         } catch (TransformerException e) {
             throw new IllegalArgumentException(e);
-=======
-            e.printStackTrace();
-        } catch (TransformerConfigurationException e) {
-            e.printStackTrace();
-        } catch (TransformerException e) {
-            e.printStackTrace();
->>>>>>> Added implementation and test class
         }
     }
 }

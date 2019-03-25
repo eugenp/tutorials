@@ -44,6 +44,12 @@ public class XMLDocumentWriterUnitTest {
         return document;
     }
 
+    @After
+    public void cleanUp() throws Exception {
+        FileUtils.deleteQuietly(new File("company_simple.xml"));
+        FileUtils.deleteQuietly(new File("company_prettyprinted.xml"));
+    }
+
     private Document createSampleDocument() throws ParserConfigurationException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
