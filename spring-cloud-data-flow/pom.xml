@@ -20,6 +20,7 @@
         <module>log-sink</module>
         <module>batch-job</module>
         <module>etl</module>
+        <module>apache-spark-job</module>
     </modules>
 
 </project>
