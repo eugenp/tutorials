@@ -19,6 +19,7 @@ public class XMLDocumentWriter {
     public void write(Document document, String fileName, boolean excludeDeclaration, boolean prettyPrint) {
         try(FileWriter writer = new FileWriter(new File(fileName))) {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             if(excludeDeclaration) {
                 transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
