@@ -1,6 +1,5 @@
 package com.baeldung.xml;
 
-<<<<<<< HEAD
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -12,16 +11,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import java.io.File;
-=======
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.junit.Test;
-import org.w3c.dom.Document;
->>>>>>> Added implementation and test class
 
 public class XMLDocumentWriterUnitTest {
 
@@ -60,13 +49,19 @@ public class XMLDocumentWriterUnitTest {
     public void cleanUp() throws Exception {
         FileUtils.deleteQuietly(new File("company_simple.xml"));
         FileUtils.deleteQuietly(new File("company_prettyprinted.xml"));
-    }
 =======
         DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         InputStream stringInputStream = new ByteArrayInputStream("<Company><Department name=\"Sales\"><Employee name=\"John Smith\"/><Employee name=\"Tim Dellor\"/></Department></Company>".getBytes());
         Document document = documentBuilder.parse(stringInputStream);
-        new XMLDocumentWriter().write(document, "company.xml", false, false);
+        new XMLDocumentWriter().write(document, "company_simple.xml", false, false);
     }
 
->>>>>>> Added implementation and test class
+    @Test
+    public void givenXMLDocumentWhenWriteIsCalledWithPrettyPrintThenFormattedXMLIsWrittenToFile() throws Exception {
+        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        InputStream stringInputStream = new ByteArrayInputStream("<Company><Department name=\"Sales\"><Employee name=\"John Smith\"/><Employee name=\"Tim Dellor\"/></Department></Company>".getBytes());
+        Document document = documentBuilder.parse(stringInputStream);
+        new XMLDocumentWriter().write(document, "company_prettyprinted.xml", false, true);
+>>>>>>> Added more details
+    }
 }

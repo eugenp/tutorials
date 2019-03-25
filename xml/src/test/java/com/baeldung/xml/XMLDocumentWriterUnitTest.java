@@ -49,4 +49,5 @@ public class XMLDocumentWriterUnitTest {
         FileUtils.deleteQuietly(new File("company_simple.xml"));
         FileUtils.deleteQuietly(new File("company_prettyprinted.xml"));
     }
+     
 }
