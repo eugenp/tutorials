@@ -9,14 +9,16 @@ import org.junit.After;
 import org.junit.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+<<<<<<< HEAD
 
 import java.io.File;
+=======
+>>>>>>> Updated tests
 
 public class XMLDocumentWriterUnitTest {
 
     @Test
     public void givenXMLDocumentWhenWriteIsCalledThenXMLIsWrittenToFile() throws Exception {
-<<<<<<< HEAD
         Document document = createSampleDocument();
         new XMLDocumentWriter().write(document, "company_simple.xml", false, false);
     }
@@ -44,24 +46,14 @@ public class XMLDocumentWriterUnitTest {
         departmentElement.appendChild(employee2);
         return document;
     }
+<<<<<<< HEAD
 
     @After
     public void cleanUp() throws Exception {
         FileUtils.deleteQuietly(new File("company_simple.xml"));
         FileUtils.deleteQuietly(new File("company_prettyprinted.xml"));
+    }
+     
 =======
-        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        InputStream stringInputStream = new ByteArrayInputStream("<Company><Department name=\"Sales\"><Employee name=\"John Smith\"/><Employee name=\"Tim Dellor\"/></Department></Company>".getBytes());
-        Document document = documentBuilder.parse(stringInputStream);
-        new XMLDocumentWriter().write(document, "company_simple.xml", false, false);
-    }
-
-    @Test
-    public void givenXMLDocumentWhenWriteIsCalledWithPrettyPrintThenFormattedXMLIsWrittenToFile() throws Exception {
-        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        InputStream stringInputStream = new ByteArrayInputStream("<Company><Department name=\"Sales\"><Employee name=\"John Smith\"/><Employee name=\"Tim Dellor\"/></Department></Company>".getBytes());
-        Document document = documentBuilder.parse(stringInputStream);
-        new XMLDocumentWriter().write(document, "company_prettyprinted.xml", false, true);
->>>>>>> Added more details
-    }
+>>>>>>> Updated tests
 }

@@ -44,6 +44,24 @@ public class XMLDocumentWriterUnitTest {
         return document;
     }
 
+    private Document createSampleDocument() throws ParserConfigurationException {
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        Document document = documentBuilder.newDocument();
+        Element companyElement = document.createElement("Company");
+        document.appendChild(companyElement);
+        Element departmentElement = document.createElement("Department");
+        departmentElement.setAttribute("name", "Sales");
+        companyElement.appendChild(departmentElement);
+        Element employee1 = document.createElement("Employee");
+        employee1.setAttribute("name", "John Smith");
+        departmentElement.appendChild(employee1);
+        Element employee2 = document.createElement("Employee");
+        employee2.setAttribute("name", "Tim Dellor");
+        departmentElement.appendChild(employee2);
+        return document;
+    }
+
     @After
     public void cleanUp() throws Exception {
         FileUtils.deleteQuietly(new File("company_simple.xml"));
