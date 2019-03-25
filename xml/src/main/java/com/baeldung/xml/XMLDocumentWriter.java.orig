@@ -4,15 +4,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-<<<<<<< HEAD
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
-=======
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
->>>>>>> Added writer
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -21,9 +16,12 @@ import org.w3c.dom.Document;
 
 public class XMLDocumentWriter {
     
-<<<<<<< HEAD
     public void write(Document document, String fileName, boolean excludeDeclaration, boolean prettyPrint) {
+<<<<<<< HEAD
         try(FileWriter writer = new FileWriter(new File(fileName))) {
+=======
+        try {
+>>>>>>> Added implementation and test class
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             if(excludeDeclaration) {
@@ -31,34 +29,28 @@ public class XMLDocumentWriter {
             }
             if(prettyPrint) {
                 transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+<<<<<<< HEAD
                 transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+=======
+>>>>>>> Added implementation and test class
             }
             DOMSource source = new DOMSource(document);
             StreamResult result = new StreamResult(writer);
             transformer.transform(source, result);
         } catch (IOException e) {
+<<<<<<< HEAD
             throw new IllegalArgumentException(e);
         } catch (TransformerConfigurationException e) {
             throw new IllegalStateException(e);
         } catch (TransformerException e) {
             throw new IllegalArgumentException(e);
 =======
-    public void write(Document document, String fileName) {
-        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        try {
-            Transformer transformer = transformerFactory.newTransformer();
-        } catch (TransformerConfigurationException e) {
-            return;
-        }
-                
-        try {
-            DOMSource source = new DOMSource(document);
-            FileWriter writer = new FileWriter(new File(fileName));
-            StreamResult result = new StreamResult(writer);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
->>>>>>> Added writer
+        } catch (TransformerConfigurationException e) {
+            e.printStackTrace();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+>>>>>>> Added implementation and test class
         }
     }
 }
