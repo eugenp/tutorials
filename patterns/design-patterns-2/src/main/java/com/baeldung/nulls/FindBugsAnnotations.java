@@ -1,11 +1,12 @@
 package com.baeldung.nulls;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 
 public class FindBugsAnnotations {
 
-    public void accept(@Nonnull Object param) {
+    public void accept(@NotNull Object param) {
         System.out.println(param.toString());
     }
 
@@ -13,7 +14,7 @@ public class FindBugsAnnotations {
         System.out.println("Printing " + param);
     }
 
-    @Nonnull
+    @NotNull
     public Object process() throws Exception {
         Object result = doSomething();
         if (result == null) {

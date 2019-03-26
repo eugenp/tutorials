@@ -1,11 +1,10 @@
 package com.baeldung.nulls;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UsingObjectsUnitTest {
 
@@ -19,7 +18,7 @@ class UsingObjectsUnitTest {
     @Test
     public void whenArgIsNull_thenThrowException() {
 
-        assertThrows(Exception.class, () -> classUnderTest.accept(null));
+        assertThrows(NullPointerException.class, () -> classUnderTest.accept(null));
     }
 
     @Test
