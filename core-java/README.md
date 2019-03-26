@@ -50,3 +50,4 @@
 - [Finding Leap Years in Java](https://www.baeldung.com/java-leap-year)
 - [Java Bitwise Operators](https://www.baeldung.com/java-bitwise-operators)
 - [Guide to Creating and Running a Jar File in Java](https://www.baeldung.com/java-create-jar)
+- [Making a JSON POST Request With HttpURLConnection](https://www.baeldung.com/httpurlconnection-post)

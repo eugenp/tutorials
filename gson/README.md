@@ -12,4 +12,5 @@
 - [Working with Primitive Values in Gson](https://www.baeldung.com/java-gson-primitives)
 - [Convert String to JsonObject with Gson](https://www.baeldung.com/gson-string-to-jsonobject)
 - [Mapping Multiple JSON Fields to One Java Field](https://www.baeldung.com/json-multiple-fields-single-java-field)
+- [Serializing and Deserializing a List with Gson](https://www.baeldung.com/gson-list)
 
