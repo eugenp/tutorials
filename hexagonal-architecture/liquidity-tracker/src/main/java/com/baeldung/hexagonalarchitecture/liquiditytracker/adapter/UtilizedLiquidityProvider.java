@@ -7,7 +7,6 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.Utilized
  *
  * since March 2019
  */
-public interface UtilizedLiquidityProvider{
-    public UtilizedLiquidityData provide();    
+public interface UtilizedLiquidityProvider {
+    public UtilizedLiquidityData provide();
 }
-

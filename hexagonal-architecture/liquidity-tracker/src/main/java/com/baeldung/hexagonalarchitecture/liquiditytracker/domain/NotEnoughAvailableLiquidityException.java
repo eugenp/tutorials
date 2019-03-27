@@ -5,7 +5,6 @@ package com.baeldung.hexagonalarchitecture.liquiditytracker.domain;
  *
  * since March 2019
  */
-public class NotEnoughAvailableLiquidityException extends Exception{
+public class NotEnoughAvailableLiquidityException extends Exception {
     private static final long serialVersionUID = 4674553774364286372L;
 }
-

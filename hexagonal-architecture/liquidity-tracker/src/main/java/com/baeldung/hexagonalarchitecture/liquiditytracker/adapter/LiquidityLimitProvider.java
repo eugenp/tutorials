@@ -7,7 +7,6 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.Liquidit
  *
  * since March 2019
  */
-public interface LiquidityLimitProvider{
+public interface LiquidityLimitProvider {
     public LiquidityLimitData provide();
 }
-
