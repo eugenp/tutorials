@@ -1,22 +1,17 @@
 package com.baeldung.spring.statemachine;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
+import com.baeldung.spring.statemachine.config.SimpleStateMachineConfiguration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.statemachine.StateMachine;
-
-import com.baeldung.spring.statemachine.config.SimpleStateMachineConfiguration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SimpleStateMachineConfiguration.class)
@@ -42,7 +37,7 @@ public class StateMachineIntegrationTest {
     }
 
     @Test
-    public void whenSimpleStringMachineActionState_thenActionExecuted() throws InterruptedException {
+    public void whenSimpleStringMachineActionState_thenActionExecuted() {
 
         stateMachine.sendEvent("E3");
         assertEquals("S3", stateMachine.getState().getId());
