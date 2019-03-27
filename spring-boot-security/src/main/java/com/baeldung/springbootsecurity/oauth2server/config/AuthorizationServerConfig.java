@@ -25,13 +25,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients
           .inMemory()
           .withClient("baeldung")
-          .secret("baeldung")
+          .secret("{noop}baeldung")
           .authorizedGrantTypes("client_credentials", "password", "authorization_code")
           .scopes("openid", "read")
           .autoApprove(true)
           .and()
           .withClient("baeldung-admin")
-          .secret("baeldung")
+          .secret("{noop}baeldung")
           .authorizedGrantTypes("authorization_code", "client_credentials", "refresh_token")
           .scopes("read", "write")
           .autoApprove(true);

@@ -17,3 +17,4 @@
 - [Java Stream Filter with Lambda Expression](https://www.baeldung.com/java-stream-filter-lambda)
 - [Counting Matches on a Stream Filter](https://www.baeldung.com/java-stream-filter-count)
 - [Java 8 Streams peek() API](https://www.baeldung.com/java-streams-peek-api)
+- [Working With Maps Using Streams](https://www.baeldung.com/java-maps-streams)
