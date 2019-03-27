@@ -2,7 +2,6 @@ package com.baeldung.mongodb;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.baeldung.boot.Application;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,10 +11,11 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import com.baeldung.SpringBootPersistenceApplication;
 import com.mongodb.BasicDBObjectBuilder;
 import com.mongodb.DBObject;
 
-@ContextConfiguration(classes = Application.class)
+@ContextConfiguration(classes = SpringBootPersistenceApplication.class)
 @DataMongoTest
 @ExtendWith(SpringExtension.class)
 public class MongoDbSpringIntegrationTest {
