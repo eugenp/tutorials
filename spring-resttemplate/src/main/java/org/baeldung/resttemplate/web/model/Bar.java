@@ -1,4 +1,4 @@
-package org.baeldung.web.model;
+package org.baeldung.resttemplate.web.model;
 
 public class Bar {
     private String id;

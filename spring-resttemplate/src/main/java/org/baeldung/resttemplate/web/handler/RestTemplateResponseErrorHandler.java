@@ -1,12 +1,13 @@
-package org.baeldung.web.handler;
+package org.baeldung.resttemplate.web.handler;
 
-import org.baeldung.web.exception.NotFoundException;
+import java.io.IOException;
+
+import org.baeldung.resttemplate.web.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResponseErrorHandler;
-
-import java.io.IOException;
 
 @Component
 public class RestTemplateResponseErrorHandler
@@ -31,6 +32,7 @@ public class RestTemplateResponseErrorHandler
           .getStatusCode()
           .series() == HttpStatus.Series.SERVER_ERROR) {
             //Handle SERVER_ERROR
+            throw new HttpClientErrorException(httpResponse.getStatusCode());
         } else if (httpResponse
           .getStatusCode()
           .series() == HttpStatus.Series.CLIENT_ERROR) {

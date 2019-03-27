@@ -1,7 +1,7 @@
-package org.baeldung.web.service;
+package org.baeldung.resttemplate.web.service;
 
-import org.baeldung.web.handler.RestTemplateResponseErrorHandler;
-import org.baeldung.web.model.Bar;
+import org.baeldung.resttemplate.web.handler.RestTemplateResponseErrorHandler;
+import org.baeldung.resttemplate.web.model.Bar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.stereotype.Service;

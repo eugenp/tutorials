@@ -1,12 +1,15 @@
-package org.baeldung.web.controller;
+package org.baeldung.resttemplate.configuration;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
-import java.util.List;
+import java.net.URI;
+import java.util.Collection;
+import java.util.Map;
 
-import org.baeldung.web.dto.Foo;
-import org.baeldung.web.dto.FooProtos;
+import org.baeldung.resttemplate.web.dto.Foo;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,11 +18,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 
 @Controller
 public class FooController {
+    
+    private Map<Long, Foo> fooRepository = Maps.newHashMap(ImmutableMap.of(1L, new Foo(1L, randomAlphabetic(4))));
 
     public FooController() {
         super();
@@ -27,16 +35,22 @@ public class FooController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/foos")
     @ResponseBody
-    public List<Foo> findListOfFoo() {
-        return Lists.newArrayList(new Foo(1, randomAlphabetic(4)));
+    public Collection<Foo> findListOfFoo() {
+        return fooRepository.values();
     }
 
     // API - read
 
     @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}")
     @ResponseBody
-    public Foo findById(@PathVariable final long id) {
-        return new Foo(id, randomAlphabetic(4));
+    public Foo findById(@PathVariable final long id) throws HttpClientErrorException {
+        Foo foo = fooRepository.get(id);
+        
+        if (foo == null) {
+            throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+        } else {
+            return foo;
+        }    
     }
 
     // API - write
@@ -44,22 +58,37 @@ public class FooController {
     @RequestMapping(method = RequestMethod.PUT, value = "/foos/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public Foo updateFoo(@PathVariable("id") final String id, @RequestBody final Foo foo) {
+    public Foo updateFoo(@PathVariable("id") final long id, @RequestBody final Foo foo) {
+        fooRepository.put(id, foo);
         return foo;
     }
     
     @RequestMapping(method = RequestMethod.PATCH, value = "/foos/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public Foo patchFoo(@PathVariable("id") final String id, @RequestBody final Foo foo) {
+    public Foo patchFoo(@PathVariable("id") final long id, @RequestBody final Foo foo) {
+        fooRepository.put(id, foo);
         return foo;
     }
     
     @RequestMapping(method = RequestMethod.POST, value = "/foos")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public Foo postFoo(@RequestBody final Foo foo) {
-        return foo;
+    public ResponseEntity<Foo> postFoo(@RequestBody final Foo foo) {
+        
+        fooRepository.put(foo.getId(), foo);
+        final URI location = ServletUriComponentsBuilder
+                .fromCurrentServletMapping()
+                .path("/foos/{id}")
+                .build()
+                .expand(foo.getId())
+                .toUri();
+        
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setLocation(location);
+        
+        final ResponseEntity<Foo> entity = new ResponseEntity<Foo>(foo, headers, HttpStatus.CREATED);
+        return entity;
     }
     
     @RequestMapping(method = RequestMethod.HEAD, value = "/foos")
@@ -69,19 +98,11 @@ public class FooController {
         return new Foo(1, randomAlphabetic(4));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/foos/{id}", produces = { "application/x-protobuf" })
-    @ResponseBody
-    public FooProtos.Foo findProtoById(@PathVariable final long id) {
-        return FooProtos.Foo.newBuilder()
-            .setId(1)
-            .setName("Foo Name")
-            .build();
-    }
-
     @RequestMapping(method = RequestMethod.POST, value = "/foos/new")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public Foo createFoo(@RequestBody final Foo foo) {
+        fooRepository.put(foo.getId(), foo);
         return foo;
     }
 
@@ -89,6 +110,7 @@ public class FooController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public long deleteFoo(@PathVariable final long id) {
+        fooRepository.remove(id);
         return id;
     }
 

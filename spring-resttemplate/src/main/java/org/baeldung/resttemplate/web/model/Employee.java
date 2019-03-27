@@ -1,4 +1,4 @@
-package org.baeldung.web.model;
+package org.baeldung.resttemplate.web.model;
 
 import java.util.Date;
 import java.util.Objects;
