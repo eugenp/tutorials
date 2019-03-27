@@ -9,7 +9,7 @@ public interface LiquidityTracker {
 
     public long getLiquidityLimit();
 
-    public void setLiquidityLimit(long utilityLimit) throws NotEnoughAvailableLiquidityException;
+    public void setLiquidityLimit(long newLiquidityityLimit) throws NotEnoughAvailableLiquidityException;
 
     public long getAvailableLiquidity();
 
