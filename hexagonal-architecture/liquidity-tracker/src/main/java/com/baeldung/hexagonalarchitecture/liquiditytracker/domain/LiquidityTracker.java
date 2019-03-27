@@ -7,13 +7,13 @@ package com.baeldung.hexagonalarchitecture.liquiditytracker.domain;
  */
 public interface LiquidityTracker{
 
-    public long getUtilityLimit();
+    public long getLiquidityLimit();
     
-    public void setUtilityLimit(long utilityLimit) throws NotEnoughAvailableLiquidityException;
+    public void setLiquidityLimit(long utilityLimit) throws NotEnoughAvailableLiquidityException;
     
-    public long getAvailableUtility();
+    public long getAvailableLiquidity();
     
-    public long getUtilizedUtility();
+    public long getUtilizedLiquidity();
     
     public void increaseUtilizedLiquidity(long amount);
     
