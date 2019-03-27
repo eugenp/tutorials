@@ -1,6 +1,6 @@
 package com.baeldung.hexagonalarchitecture.liquiditytracker.adapter;
 
-import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.UtilizedUtilityData;
+import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.UtilizedLiquidityData;
 
 /**
  * @author Víctor Gil
@@ -8,6 +8,6 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.Utilized
  * since March 2019
  */
 public interface UtilizedUtilityProvider{
-    public UtilizedUtilityData provide();    
+    public UtilizedLiquidityData provide();    
 }
 
