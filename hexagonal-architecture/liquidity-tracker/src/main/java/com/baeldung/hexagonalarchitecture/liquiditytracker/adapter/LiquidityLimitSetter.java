@@ -6,5 +6,5 @@ package com.baeldung.hexagonalarchitecture.liquiditytracker.adapter;
  * since March 2019
  */
 public interface LiquidityLimitSetter {
-    public void set(long id, long liquidityLimit);
+    public void set(long id, long newLiquidityLimit);
 }
