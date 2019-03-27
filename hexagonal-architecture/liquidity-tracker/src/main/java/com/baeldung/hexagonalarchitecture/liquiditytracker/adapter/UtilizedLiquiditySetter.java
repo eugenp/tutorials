@@ -5,7 +5,7 @@ package com.baeldung.hexagonalarchitecture.liquiditytracker.adapter;
  *
  * since March 2019
  */
-public interface UtilizedUtilitySetter{
+public interface UtilizedLiquiditySetter{
     public void set(long id, long operationAmount, long totalAmount);
 }
 
