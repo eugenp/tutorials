@@ -129,12 +129,6 @@
             <scope>system</scope>
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>${intellij.annotations.version}</version>
-        </dependency>
-
 
     </dependencies>
 
@@ -491,6 +485,5 @@
         <!-- instrumentation -->
         <javaassist.version>3.21.0-GA</javaassist.version>
         <sun.tools.version>1.8.0</sun.tools.version>
-        <intellij.annotations.version>16.0.2</intellij.annotations.version>
     </properties>
 </project>
