@@ -1,6 +1,6 @@
 package com.baeldung.hexagonalarchitecture.liquiditytracker.adapter;
 
-import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.UtilityLimitData;
+import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.LiquidityLimitData;
 
 /**
  * @author Víctor Gil
@@ -8,6 +8,6 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.UtilityL
  * since March 2019
  */
 public interface LiquidityLimitProvider{
-    public UtilityLimitData provide();
+    public LiquidityLimitData provide();
 }
 

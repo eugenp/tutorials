@@ -8,13 +8,13 @@ import org.slf4j.LoggerFactory;
  *
  * since March 2019
  */
-public class UtilityLimitData{
-    private static final Logger log = LoggerFactory.getLogger(UtilityLimitData.class);
+public class LiquidityLimitData{
+    private static final Logger log = LoggerFactory.getLogger(LiquidityLimitData.class);
     
     private final long id;
     private final long amount;
     
-    public UtilityLimitData(long id, long amount){
+    public LiquidityLimitData(long id, long amount){
         this.id = id;
         this.amount = amount;
     }
