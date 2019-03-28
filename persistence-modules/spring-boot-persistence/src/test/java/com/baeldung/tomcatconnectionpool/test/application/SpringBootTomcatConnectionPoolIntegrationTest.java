@@ -20,6 +20,6 @@ public class SpringBootTomcatConnectionPoolIntegrationTest {
     
     @Test
     public void givenTomcatConnectionPoolInstance_whenCheckedPoolClassName_thenCorrect() {
-        assertThat(dataSource.getClass().getName()).isEqualTo("com.zaxxer.hikari.HikariDataSource");
+        assertThat(dataSource.getClass().getName()).isEqualTo("org.apache.tomcat.jdbc.pool.DataSource");
     }
 }

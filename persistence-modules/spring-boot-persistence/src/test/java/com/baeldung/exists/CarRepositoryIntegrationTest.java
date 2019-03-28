@@ -13,11 +13,15 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.boot.Application;
+import com.baeldung.boot.domain.Car;
+import com.baeldung.boot.repository.CarRepository;
+
 import java.util.Arrays;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = {Application.class})
 public class CarRepositoryIntegrationTest {
 
     @Autowired
