@@ -12,9 +12,8 @@ public class ShapeClient {
         this.shapeService = shapeService;
     }
 
-    public String dispalyRedShapes(Map<String, Object> model) {
+    public void dispalyRedShapes(Map<String, Object> model) {
         model.put("shapes", shapeService.findShapesByColor("red"));
-        return "shapesView";
     }
 
 }

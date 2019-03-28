@@ -6,7 +6,7 @@ public class DummyShapeService implements ShapeService {
 
     private ShapeRepository ShapeRepository;
 
-    public DummyShapeService(com.baeldung.architecture.hexa.inside.ShapeRepository shapeRepository) {
+    public DummyShapeService(ShapeRepository shapeRepository) {
         ShapeRepository = shapeRepository;
     }
 
