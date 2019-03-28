@@ -377,6 +377,7 @@
                 <module>core-groovy</module>
                 <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
                 <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 --> 
+                <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
                 <module>core-java-8</module>
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
@@ -393,7 +394,8 @@
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
                 <module>core-java-sun</module>
-                <module>core-java</module>        
+                <module>core-java</module>
+                <module>core-java-jvm</module>
                 <module>core-scala</module>
                 <module>couchbase</module>
                 <module>custom-pmd</module>
@@ -435,9 +437,11 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
+                <module>jackson-2</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
+                <!-- <module>java-dates-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
                 <module>java-lite</module>
                 <module>java-numbers</module>
@@ -573,6 +577,7 @@
                 <module>spring-4</module>
                 
                 <module>spring-5</module>
+                <module>spring-5-webflux</module>
                 <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-client</module>
@@ -1077,6 +1082,7 @@
                 <module>immutables</module>
 
                 <module>jackson</module>
+                <module>jackson-2</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
