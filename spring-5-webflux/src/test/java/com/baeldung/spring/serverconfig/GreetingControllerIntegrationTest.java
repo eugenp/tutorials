@@ -1,4 +1,4 @@
-package com.baeldung.serverconfig;
+package com.baeldung.spring.serverconfig;
 
 import static org.mockito.Mockito.when;
 

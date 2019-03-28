@@ -1,4 +1,4 @@
-package com.baeldung.serverconfig;
+package com.baeldung.spring.serverconfig;
 
 import org.springframework.boot.web.embedded.netty.NettyReactiveWebServerFactory;
 import org.springframework.boot.web.embedded.netty.SslServerCustomizer;

@@ -1,4 +1,4 @@
-package com.baeldung.serverconfig;
+package com.baeldung.spring.serverconfig;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

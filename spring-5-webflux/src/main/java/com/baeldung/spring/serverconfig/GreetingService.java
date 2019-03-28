@@ -1,4 +1,4 @@
-package com.baeldung.serverconfig;
+package com.baeldung.spring.serverconfig;
 
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
