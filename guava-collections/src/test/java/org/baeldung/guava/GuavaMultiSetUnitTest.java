@@ -15,6 +15,6 @@ public class GuavaMultiSetUnitTest {
                 bookStore.add("Potter");
 
                 assertThat(bookStore.contains("Potter")).isTrue();
-                assertThat(bookStore.count("Potter")).isEqualTo(2);
+                assertThat(bookStore.count("Potter")).isEqualTo(3);
         }
 }
