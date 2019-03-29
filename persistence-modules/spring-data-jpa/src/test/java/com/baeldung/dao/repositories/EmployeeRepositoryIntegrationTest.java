@@ -8,32 +8,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.domain.Person;
+import com.baeldung.domain.Employee;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class PersonRepositoryIntegrationTest {
+public class EmployeeRepositoryIntegrationTest {
 
-    private static final Person PERSON1 = new Person(1L, "John", "Doe");
-    private static final Person PERSON2 = new Person(2L, "Alice", "Bob");
+    private static final Employee EMPLOYEE1 = new Employee(1L, "John");
+    private static final Employee EMPLOYEE2 = new Employee(2L, "Alice");
 
     @Autowired
-    private PersonRepository personRepository;
+    private EmployeeRepository employeeRepository;
 
     @Test
-    public void givenPersonEntity_whenInsertWithSave_ThenPersonIsPersisted() {
-        personRepository.save(PERSON1);
-        assertPersonPersisted(PERSON1);
+    public void givenEmployeeEntity_whenInsertWithSave_ThenEmployeeIsPersisted() {
+        employeeRepository.save(EMPLOYEE1);
+        assertEmployeePersisted(EMPLOYEE1);
     }
     
     @Test
-    public void givenPersonEntity_whenInsertWithSaveAndFlush_ThenPersonIsPersisted() {
-        personRepository.saveAndFlush(PERSON2);
-        assertPersonPersisted(PERSON2);
+    public void givenEmployeeEntity_whenInsertWithSaveAndFlush_ThenEmployeeIsPersisted() {
+        employeeRepository.saveAndFlush(EMPLOYEE2);
+        assertEmployeePersisted(EMPLOYEE2);
     }
 
-    private void assertPersonPersisted(Person input) {
-        Person person = personRepository.getOne(input.getId());
-        assertThat(person).isNotNull();
+    private void assertEmployeePersisted(Employee input) {
+        Employee employee = employeeRepository.getOne(input.getId());
+        assertThat(employee).isNotNull();
     }
 }
