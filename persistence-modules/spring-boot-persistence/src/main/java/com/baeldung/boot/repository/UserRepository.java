@@ -1,6 +1,5 @@
-package com.baeldung.repository;
+package com.baeldung.boot.repository;
 
-import com.baeldung.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -10,6 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Repository;
+
+import com.baeldung.boot.domain.User;
 
 import java.util.Collection;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.baeldung.naming;
+package com.baeldung.boot.naming;
 
 import org.hibernate.jpa.boot.spi.IntegratorProvider;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernatePropertiesCustomizer;

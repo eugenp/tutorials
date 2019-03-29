@@ -1,6 +1,5 @@
-package com.baeldung.naming;
+package com.baeldung.boot.naming;
 
-import com.baeldung.naming.entity.Account;
 import org.assertj.core.api.SoftAssertions;
 import org.hibernate.boot.Metadata;
 import org.hibernate.mapping.PersistentClass;
@@ -8,8 +7,12 @@ import org.hibernate.mapping.Table;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.baeldung.boot.naming.NamingConfig.Config;
+import com.baeldung.boot.naming.entity.Account;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -17,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
   "spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl",
   "spring.jpa.hibernate.naming.implicit-strategy=org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl"
 })
+@Import(Config.class)
 public class LegacyJpaImplNamingIntegrationTest extends NamingConfig {
 
     @Test

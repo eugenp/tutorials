@@ -1,4 +1,4 @@
-package com.baeldung.exists;
+package com.baeldung.boot.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +17,7 @@ public class Car {
     private Integer power;
     private String model;
 
-    Car() {
+    public Car() {
 
     }
 

@@ -1,4 +1,4 @@
-package com.baeldung.naming;
+package com.baeldung.boot.naming;
 
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.model.relational.Database;
