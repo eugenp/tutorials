@@ -38,3 +38,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Mapping Nested Values with Jackson](http://www.baeldung.com/jackson-nested-values)
 - [Convert XML to JSON Using Jackson](https://www.baeldung.com/jackson-convert-xml-json)
 - [Deserialize Immutable Objects with Jackson](https://www.baeldung.com/jackson-deserialize-immutable-objects)
+- [Mapping a Dynamic JSON Object with Jackson](https://www.baeldung.com/jackson-mapping-dynamic-object)
+

@@ -14,6 +14,7 @@ import java.util.TimeZone;
 
 import org.junit.Test;
 
+import com.baeldung.jackson.annotation.AliasBean;
 import com.baeldung.jackson.annotation.BeanWithCreator;
 import com.baeldung.jackson.annotation.BeanWithCustomAnnotation;
 import com.baeldung.jackson.annotation.BeanWithFilter;
@@ -36,6 +37,7 @@ import com.baeldung.jackson.date.EventWithSerializer;
 import com.baeldung.jackson.dtos.MyMixInForIgnoreType;
 import com.baeldung.jackson.dtos.withEnum.DistanceEnumWithValue;
 import com.baeldung.jackson.exception.UserWithRoot;
+import com.baeldung.jackson.exception.UserWithRootNamespace;
 import com.baeldung.jackson.jsonview.Item;
 import com.baeldung.jackson.jsonview.Views;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -46,6 +48,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class JacksonAnnotationUnitTest {
 
@@ -372,5 +375,45 @@ public class JacksonAnnotationUnitTest {
         assertThat(result, containsString("1"));
         assertThat(result, containsString("name"));
     }
+    
+    @Test
+    public void whenDeserializingUsingJsonAlias_thenCorrect() throws IOException {
+
+        // arrange
+        String json = "{\"fName\": \"John\", \"lastName\": \"Green\"}";
+
+        // act
+        AliasBean aliasBean = new ObjectMapper().readerFor(AliasBean.class).readValue(json);
+
+        // assert
+        assertThat(aliasBean.getFirstName(), is("John"));
+    }
+    
+    @Test
+    public void whenSerializingUsingXMLRootNameWithNameSpace_thenCorrect() throws JsonProcessingException {
+
+        // arrange
+        UserWithRootNamespace author = new UserWithRootNamespace(1, "John");
+
+        // act
+        ObjectMapper mapper = new XmlMapper();
+        mapper = mapper.enable(SerializationFeature.WRAP_ROOT_VALUE).enable(SerializationFeature.INDENT_OUTPUT);
+        String result = mapper.writeValueAsString(author);
+
+        // assert
+        assertThat(result, containsString("<user xmlns=\"users\">"));
+
+        /*
+            <user xmlns="users">
+              <id xmlns="">3006b44a-cf62-4cfe-b3d8-30dc6c46ea96</id>
+              <id xmlns="">1</id>
+              <name xmlns="">John</name>
+              <items xmlns=""/>
+            </user>
+        */
+
+    }
+    
+    
 
 }

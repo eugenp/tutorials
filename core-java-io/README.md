@@ -30,7 +30,6 @@
 - [Download a File From an URL in Java](http://www.baeldung.com/java-download-file)
 - [Create a Symbolic Link with Java](http://www.baeldung.com/java-symlink)
 - [Quick Use of FilenameFilter](http://www.baeldung.com/java-filename-filter)
-- [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
 - [Read a File into an ArrayList](https://www.baeldung.com/java-file-to-arraylist)
 - [Guide to Java OutputStream](https://www.baeldung.com/java-outputstream)
 - [Reading a CSV File into an Array](https://www.baeldung.com/java-csv-file-array)
@@ -40,3 +39,4 @@
 - [Create a Directory in Java](https://www.baeldung.com/java-create-directory)
 - [How to Write to a CSV File in Java](https://www.baeldung.com/java-csv)
 - [List Files in a Directory in Java](https://www.baeldung.com/java-list-directory-files)
+- [Java InputStream to Byte Array and ByteBuffer](https://www.baeldung.com/convert-input-stream-to-array-of-bytes)

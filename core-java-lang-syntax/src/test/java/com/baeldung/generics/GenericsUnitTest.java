@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.hasItems;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.fail;
 
@@ -64,6 +65,14 @@ public class GenericsUnitTest {
         } catch (Exception e) {
             fail();
         }
+    }
+
+    @Test
+    public void givenAnInt_whenAddedToAGenericIntegerList_thenAListItemCanBeAssignedToAnInt() {
+        int number = 7;
+        List<Integer> list = Generics.createList(number);
+        int otherNumber = list.get(0);
+        assertThat(otherNumber, is(number));
     }
 
 }

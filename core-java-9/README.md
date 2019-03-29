@@ -9,7 +9,6 @@
 - [Java 9 Convenience Factory Methods for Collections](http://www.baeldung.com/java-9-collections-factory-methods) 
 - [New Stream Collectors in Java 9](http://www.baeldung.com/java9-stream-collectors)
 - [Java 9 CompletableFuture API Improvements](http://www.baeldung.com/java-9-completablefuture)
-- [Java 9 Process API Improvements](http://www.baeldung.com/java-9-process-api)
 - [Introduction to Java 9 StackWalking API](http://www.baeldung.com/java-9-stackwalking-api)
 - [Introduction to Project Jigsaw](http://www.baeldung.com/project-jigsaw-java-modularity)
 - [Java 9 Optional API Additions](http://www.baeldung.com/java-9-optional)
@@ -25,7 +24,9 @@
 - [Iterate Through a Range of Dates in Java](https://www.baeldung.com/java-iterate-date-range)
 - [Initialize a HashMap in Java](https://www.baeldung.com/java-initialize-hashmap)
 - [Java 9 Platform Logging API](https://www.baeldung.com/java-9-logging-api)
-- [Guide to java.lang.Process API](https://www.baeldung.com/java-process-api)
 - [Immutable Set in Java](https://www.baeldung.com/java-immutable-set)
 - [Multi-Release Jar Files](https://www.baeldung.com/java-multi-release-jar)
 - [Ahead of Time Compilation (AoT)](https://www.baeldung.com/ahead-of-time-compilation)
+- [Java 9 Process API Improvements](https://www.baeldung.com/java-9-process-api)
+- [Guide to java.lang.Process API](https://www.baeldung.com/java-process-api)
+

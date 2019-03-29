@@ -124,11 +124,44 @@ public class Java8SortUnitTest {
 
     @Test
     public final void givenStreamCustomOrdering_whenSortingEntitiesByName_thenCorrectlySorted() {
-        
         final List<Human> humans = Lists.newArrayList(new Human("Sarah", 10), new Human("Jack", 12));
         final Comparator<Human> nameComparator = (h1, h2) -> h1.getName().compareTo(h2.getName());
         
         final List<Human> sortedHumans = humans.stream().sorted(nameComparator).collect(Collectors.toList());
         Assert.assertThat(sortedHumans.get(0), equalTo(new Human("Jack", 12)));
     }
+
+    @Test
+    public final void givenStreamComparatorOrdering_whenSortingEntitiesByName_thenCorrectlySorted() {
+        final List<Human> humans = Lists.newArrayList(new Human("Sarah", 10), new Human("Jack", 12));
+
+        final List<Human> sortedHumans = humans.stream().sorted(Comparator.comparing(Human::getName)).collect(Collectors.toList());
+        Assert.assertThat(sortedHumans.get(0), equalTo(new Human("Jack", 12)));
+    }
+
+    @Test
+    public final void givenStreamNaturalOrdering_whenSortingEntitiesByNameReversed_thenCorrectlySorted() {
+        final List<String> letters = Lists.newArrayList("B", "A", "C");
+
+        final List<String> reverseSortedLetters = letters.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        Assert.assertThat(reverseSortedLetters.get(0), equalTo("C"));
+    }
+
+    @Test
+    public final void givenStreamCustomOrdering_whenSortingEntitiesByNameReversed_thenCorrectlySorted() {
+        final List<Human> humans = Lists.newArrayList(new Human("Sarah", 10), new Human("Jack", 12));
+        final Comparator<Human> reverseNameComparator = (h1, h2) -> h2.getName().compareTo(h1.getName());
+
+        final List<Human> reverseSortedHumans = humans.stream().sorted(reverseNameComparator).collect(Collectors.toList());
+        Assert.assertThat(reverseSortedHumans.get(0), equalTo(new Human("Sarah", 10)));
+    }
+
+    @Test
+    public final void givenStreamComparatorOrdering_whenSortingEntitiesByNameReversed_thenCorrectlySorted() {
+        final List<Human> humans = Lists.newArrayList(new Human("Sarah", 10), new Human("Jack", 12));
+
+        final List<Human> reverseSortedHumans = humans.stream().sorted(Comparator.comparing(Human::getName, Comparator.reverseOrder())).collect(Collectors.toList());
+        Assert.assertThat(reverseSortedHumans.get(0), equalTo(new Human("Sarah", 10)));
+    }
+
 }
