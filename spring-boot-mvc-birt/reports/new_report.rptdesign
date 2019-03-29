@@ -1,10 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.7.0.v201706222054</property>
+    <text-property name="title">new_report</text-property>
     <list-property name="propertyBindings">
         <structure>
             <property name="name">queryText</property>
             <property name="id">5</property>
+        </structure>
+        <structure>
+            <property name="name">HOME</property>
+            <property name="id">4</property>
+        </structure>
+        <structure>
+            <property name="name">URI</property>
+            <property name="id">4</property>
+        </structure>
+        <structure>
+            <property name="name">DELIMTYPE</property>
+            <property name="id">4</property>
+        </structure>
+        <structure>
+            <property name="name">CHARSET</property>
+            <property name="id">4</property>
+        </structure>
+        <structure>
+            <property name="name">INCLCOLUMNNAME</property>
+            <property name="id">4</property>
+        </structure>
+        <structure>
+            <property name="name">INCLTYPELINE</property>
+            <property name="id">4</property>
+        </structure>
+        <structure>
+            <property name="name">TRAILNULLCOLS</property>
+            <property name="id">4</property>
+        </structure>
+        <structure>
+            <property name="name">OdaConnProfileName</property>
+            <property name="id">4</property>
+        </structure>
+        <structure>
+            <property name="name">OdaConnProfileStorePath</property>
+            <property name="id">4</property>
         </structure>
     </list-property>
     <property name="units">in</property>
@@ -13,7 +50,7 @@
     <property name="imageDPI">96</property>
     <data-sources>
         <oda-data-source extensionID="org.eclipse.datatools.connectivity.oda.flatfile" name="Data Source" id="4">
-            <property name="HOME">.</property>
+            <property name="URI">reports/data.csv</property>
             <property name="DELIMTYPE">COMMA</property>
             <property name="CHARSET">UTF-8</property>
             <property name="INCLCOLUMNNAME">YES</property>
@@ -27,18 +64,22 @@
             <list-property name="columnHints">
                 <structure>
                     <property name="columnName">Student</property>
+                    <property name="analysis">dimension</property>
                     <text-property name="heading">Student</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">Math</property>
+                    <property name="analysis">measure</property>
                     <text-property name="heading">Math</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">Geography</property>
+                    <property name="analysis">measure</property>
                     <text-property name="heading">Geography</text-property>
                 </structure>
                 <structure>
                     <property name="columnName">History</property>
+                    <property name="analysis">measure</property>
                     <text-property name="heading">History</text-property>
                 </structure>
             </list-property>
@@ -98,7 +139,7 @@
                     <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select "Student", "Math", "Geography", "History" from "./data.csv" : {"Student","Student",STRING;"Math","Math",STRING;"Geography","Geography",STRING;"History","History",STRING}]]></xml-property>
+            <xml-property name="queryText"><![CDATA[select "Student", "Math", "Geography", "History" from "reports/data.csv" : {"Student","Student",STRING;"Math","Math",STRING;"Geography","Geography",STRING;"History","History",STRING}]]></xml-property>
             <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
   <Version>2.0</Version>
@@ -176,6 +217,21 @@
 </model:DesignValues>]]></xml-property>
         </oda-data-set>
     </data-sets>
+    <styles>
+        <style name="table" id="49">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="table-header" id="50">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+    </styles>
     <page-setup>
         <simple-master-page name="Simple MasterPage" id="2"/>
     </page-setup>
@@ -227,7 +283,7 @@
       <Visible>true</Visible>
       <Label>
         <Caption>
-          <Value>Student results</Value>
+          <Value>Exam results</Value>
           <Font>
             <Size>16.0</Size>
             <Bold>true</Bold>
