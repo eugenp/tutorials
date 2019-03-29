@@ -19,7 +19,8 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.UtilizedLiqui
 public class UtilizedLiquiditySetterImpl implements UtilizedLiquiditySetter{
     private static final Logger log = LoggerFactory.getLogger(UtilizedLiquiditySetterImpl.class);
     
-    private static final String INSERT_SQL = "insert into liquidity_limit values(?,?,?,?)";
+    private static final String INSERT_SQL = "insert into liquidity_utilized(id, operationAmount, operationTS, "
+            + "totalAmount) values(?,?,?,?)";
     
     private Connection connection;
     private PreparedStatement statement;

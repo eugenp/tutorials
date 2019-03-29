@@ -32,12 +32,18 @@ public class LiquidityTrackerImpl implements LiquidityTracker {
     public long getLiquidityLimit() {
         LiquidityLimitData liquidityLimitData = liquidityLimitProvider.provide();
 
+        long liquidityLimit = liquidityLimitData.getAmount();
+        log.trace("Current liquidity limit: " + liquidityLimit);
+        
         return liquidityLimitData.getAmount();
     }
 
     long getLiquidityLimitId() {
         LiquidityLimitData liquidityLimitData = liquidityLimitProvider.provide();
-
+        
+        long liquidityLimitId = liquidityLimitData.getId();
+        log.trace("Current liquidity limit id/version: " + liquidityLimitId);
+        
         return liquidityLimitData.getId();
     }
     
@@ -64,8 +70,12 @@ public class LiquidityTrackerImpl implements LiquidityTracker {
    
     @Override
     public long getAvailableLiquidity() {
+        
         // this method can easily be unit-tested
-        return getAvailableLiquidity(getLiquidityLimit(), getUtilizedLiquidity());
+        long availableLiquidity = getAvailableLiquidity(getLiquidityLimit(), getUtilizedLiquidity());
+        log.trace("Current available liquidity: " + availableLiquidity);
+                
+        return availableLiquidity;
     }
 
     long getAvailableLiquidity(long liquidityLimit, long utilizedLiquidity){
@@ -78,7 +88,10 @@ public class LiquidityTrackerImpl implements LiquidityTracker {
     public long getUtilizedLiquidity() {
         UtilizedLiquidityData utilizedLiquidityData = utilizedLiquidityProvider.provide();
         
-        return utilizedLiquidityData.getAmount();
+        long utilizedLiquidity = utilizedLiquidityData.getAmount();
+        log.trace("Current utilized liquidity: " + utilizedLiquidity);
+        
+        return utilizedLiquidity;
     }
 
     @Override

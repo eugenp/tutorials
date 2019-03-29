@@ -58,7 +58,13 @@ public class MessageListenerTester {
             return;
         }        
         
-        byte[] data = getData();
+        //byte[] data = getData();   //SHUTDOWN
+        //byte[] data = getData2();    //GET_AVAILABLE_LIQUIDITY
+        //byte[] data = getData3();   //GET_UTILIZED_LIQUIDITY
+        //byte[] data = getData4(); //GET_LIQUIDITY_LIMIT
+        //byte[] data = getData5(); //INCREASE_UTILIZED_LIQUIDITY
+        //byte[] data = getData6(); //DECREASE_UTILIZED_LIQUIDITY
+        byte[] data = getData7(); //SET_LIQUIDITY_LIMIT
         
         try{
             channel.basicPublish("", queueName, null, data);
@@ -75,6 +81,45 @@ public class MessageListenerTester {
     private byte[] getData(){
         LiquidityTrackerIncomingMessage.Builder builder = LiquidityTrackerIncomingMessage.newBuilder(); 
         builder.setType(IncomingMessageType.SHUTDOWN);        
+        return builder.build().toByteArray();
+    }
+
+    private byte[] getData2(){
+        LiquidityTrackerIncomingMessage.Builder builder = LiquidityTrackerIncomingMessage.newBuilder(); 
+        builder.setType(IncomingMessageType.GET_AVAILABLE_LIQUIDITY);        
+        return builder.build().toByteArray();
+    }
+
+    private byte[] getData3(){
+        LiquidityTrackerIncomingMessage.Builder builder = LiquidityTrackerIncomingMessage.newBuilder(); 
+        builder.setType(IncomingMessageType.GET_UTILIZED_LIQUIDITY);        
+        return builder.build().toByteArray();
+    }
+
+    private byte[] getData4(){
+        LiquidityTrackerIncomingMessage.Builder builder = LiquidityTrackerIncomingMessage.newBuilder(); 
+        builder.setType(IncomingMessageType.GET_LIQUIDITY_LIMIT);        
+        return builder.build().toByteArray();
+    }
+
+    private byte[] getData5(){
+        LiquidityTrackerIncomingMessage.Builder builder = LiquidityTrackerIncomingMessage.newBuilder(); 
+        builder.setType(IncomingMessageType.INCREASE_UTILIZED_LIQUIDITY);
+        builder.setValue(611);
+        return builder.build().toByteArray();
+    }
+
+    private byte[] getData6(){
+        LiquidityTrackerIncomingMessage.Builder builder = LiquidityTrackerIncomingMessage.newBuilder(); 
+        builder.setType(IncomingMessageType.DECREASE_UTILIZED_LIQUIDITY);
+        builder.setValue(10);
+        return builder.build().toByteArray();
+    }
+
+    private byte[] getData7(){
+        LiquidityTrackerIncomingMessage.Builder builder = LiquidityTrackerIncomingMessage.newBuilder(); 
+        builder.setType(IncomingMessageType.SET_LIQUIDITY_LIMIT);
+        builder.setValue(280);
         return builder.build().toByteArray();
     }
     

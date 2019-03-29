@@ -28,7 +28,7 @@ public class ExternalConsumer extends DefaultConsumer {
     @Override
     public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties,
             byte[] data) throws IOException{        
-        log.info("Received message, number of bytes: " + data.length);
+        log.trace("Received message, number of bytes: " + data.length);
         processor.process(data);                
     }
 }

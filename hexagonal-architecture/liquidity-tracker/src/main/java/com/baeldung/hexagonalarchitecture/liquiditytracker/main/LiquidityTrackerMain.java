@@ -74,8 +74,8 @@ public class LiquidityTrackerMain {
         LiquidityTrackerImpl tracker = new LiquidityTrackerImpl();
         tracker.setLiquidityLimitProvider(liquidityLimitProvider);
         tracker.setLiquidityLimitSetter(liquidityLimitSetter);
-        tracker.setLiquidityLimitProvider(liquidityLimitProvider);
         tracker.setUtilizedLiquiditySetter(utilizedLiquiditySetter);
+        tracker.setUtilizedLiquidityProvider(utilizedLiquidityProvider);
         
         
         BrokerConnector brokerConnector = new BrokerConnector();
