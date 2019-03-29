@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.baeldung.boot.domain.User;
@@ -18,7 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class UserRepositoryIntegrationTest {
+@ActiveProfiles("multiplesqlfiles")
+public class UserRepositoryMultipleSqlFilesIntTest {
 
     @Autowired private UserRepository userRepository;
 
@@ -26,7 +28,7 @@ public class UserRepositoryIntegrationTest {
     public void givenTwoImportFilesWhenFindAllShouldReturnSixUsers() {
         Collection<User> users = userRepository.findAll();
 
-        assertThat(users.size()).isEqualTo(3);
+        assertThat(users.size()).isEqualTo(6);
     }
 
 }
