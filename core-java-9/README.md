@@ -27,5 +27,4 @@
 - [Immutable Set in Java](https://www.baeldung.com/java-immutable-set)
 - [Multi-Release Jar Files](https://www.baeldung.com/java-multi-release-jar)
 - [Ahead of Time Compilation (AoT)](https://www.baeldung.com/ahead-of-time-compilation)
-- [Java 9 Process API Improvements](https://www.baeldung.com/java-9-process-api)
 
