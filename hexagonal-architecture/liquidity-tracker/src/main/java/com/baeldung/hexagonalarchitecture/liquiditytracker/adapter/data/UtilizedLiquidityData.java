@@ -26,4 +26,9 @@ public class UtilizedLiquidityData {
     public long getAmount() {
         return amount;
     }
+
+    @Override
+    public String toString() {
+        return "UtilizedLiquidityData [id=" + id + ", amount=" + amount + "]";
+    }
 }

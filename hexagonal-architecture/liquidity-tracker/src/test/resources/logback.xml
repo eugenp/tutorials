@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="false">
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+        
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="com.baeldung.hexagonalarchitecture" level="trace" additivity="false">
+        <appender-ref ref="console" />
+    </logger>
+
+    <logger name="ch.qos.logback" level="error" additivity="false">
+        <appender-ref ref="console" />
+    </logger>
+            
+    <!--root level="error"-->
+    <root level="info">
+        <appender-ref ref="console" />
+    </root>
+
+</configuration>

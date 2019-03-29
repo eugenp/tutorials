@@ -15,7 +15,7 @@ public interface LiquidityTracker {
 
     public long getUtilizedLiquidity();
 
-    public void increaseUtilizedLiquidity(long amount);
+    public void increaseUtilizedLiquidity(long amount) throws NotEnoughAvailableLiquidityException;
 
-    public void decreaseUtilizedLiquidity(long amount) throws NotEnoughAvailableLiquidityException;
+    public void decreaseUtilizedLiquidity(long amount);
 }
