@@ -25,6 +25,7 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(new User("Bob", "bob@domain.com"));
         List<User> users = (List<User>) userRepository.findAll();
         
+        // 2 additional users are saved in the CommandLineRunner bean
         assertThat(users.size()).isEqualTo(3);
     }
 }
