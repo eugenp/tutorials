@@ -1,0 +1,17 @@
+{
+    "messaging":{
+        "brokerHostname": "fedoravm",
+        "incomingMessagesQueue": "liquidity_tracker_in",
+        "outgoingMessagesQueue": "liquidity_tracker_out",
+        "username": "user1",
+        "password": "user1pw"
+    },
+    
+    "database":{
+        "driverName": "postgresql",
+        "hostname": "fedoravm",
+        "databaseName": "liquidity_db",
+        "username": "app_user1",
+        "password": "22pass01"
+    }
+}

@@ -30,7 +30,7 @@ public class LiquidityLimitInserterTester {
           return;
         }
         
-        LiquidityLimitInserter inserter = new LiquidityLimitInserter();
+        LiquidityLimitSetterImpl inserter = new LiquidityLimitSetterImpl();
         inserter.setConnection(connection);
         try {
             inserter.start();
@@ -39,7 +39,7 @@ public class LiquidityLimitInserterTester {
             return;
         }
         
-        inserter.insert(1, 1000);
+        inserter.set(1, 1000);
         closeConnection();
     }
     

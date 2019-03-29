@@ -9,15 +9,17 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.UtilizedLiquiditySetter;
+
 /**
  * @author Víctor Gil
  *
  * since March 2019
  */
-public class LiquidityLimitInserter {
-    private static final Logger log = LoggerFactory.getLogger(LiquidityLimitInserter.class);
+public class UtilizedLiquiditySetterImpl implements UtilizedLiquiditySetter{
+    private static final Logger log = LoggerFactory.getLogger(UtilizedLiquiditySetterImpl.class);
     
-    private static final String INSERT_SQL = "insert into liquidity_limit values(?,?,?)";
+    private static final String INSERT_SQL = "insert into liquidity_limit values(?,?,?,?)";
     
     private Connection connection;
     private PreparedStatement statement;
@@ -26,12 +28,14 @@ public class LiquidityLimitInserter {
         statement = connection.prepareStatement(INSERT_SQL);    
     }
     
-    public void insert(long id, long amount){
+    @Override
+    public void set(long id, long operationAmount, long newTotalAmount){
         try {
             statement.setLong(1, id);
+            statement.setLong(2, operationAmount);
             Timestamp now = new Timestamp(new Date().getTime());
-            statement.setTimestamp(2, now);
-            statement.setLong(3, amount);
+            statement.setTimestamp(3, now);
+            statement.setLong(4, newTotalAmount);
         } catch (SQLException ex) {
             log.error("Unable to set required arguments into the SQL prepared statement.", ex);
             return;
@@ -41,7 +45,7 @@ public class LiquidityLimitInserter {
         try {
            recordCount = statement.executeUpdate();
         } catch (SQLException ex) {
-            log.error("Unable to execute insertion", ex);
+            log.error("Unable to execute insertion, SQL statement: " + INSERT_SQL, ex);
             return;
         }
         log.debug("Number of records inserted: " + recordCount);
@@ -51,4 +55,3 @@ public class LiquidityLimitInserter {
         this.connection = connection;
     }
 }
-

@@ -1,0 +1,39 @@
+/**
+* @author VictorGil
+*
+* since March 2019 
+*/
+
+syntax = "proto2";
+
+package com.baeldung.hexagonalarchitecture.liquiditytracker.protoapi;
+
+option java_multiple_files = true; 
+option java_generate_equals_and_hash = true;
+
+message LiquidityTrackerIncomingMessage {
+    required IncomingMessageType type = 1;
+    optional int64 value = 2;    
+}
+
+enum IncomingMessageType {
+    GET_LIQUIDITY_LIMIT = 0;
+    SET_LIQUIDITY_LIMIT = 1;
+    GET_AVAILABLE_LIQUIDITY = 2;
+    GET_UTILIZED_LIQUIDITY = 3;
+    INCREASE_UTILIZED_LIQUIDITY = 4;
+    DECREASE_UTILIZED_LIQUIDITY = 5;
+    SHUTDOWN = 6;    
+}
+
+message LiquidityTrackerOutgoingMessage {
+    required OutgoingMessageType type = 1;
+    optional int64 value = 2;
+    optional string errorMessage = 3;    
+}
+
+enum OutgoingMessageType {
+    LIQUIDITY_LIMIT = 0;
+    AVAILABLE_LIQUIDITY = 1;
+    UTILIZED_LIQUIDITY = 2;
+}
