@@ -1,31 +1,48 @@
 package com.baeldung.lambdas;
 
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
 public class LambdaVariables {
 
-    private int counter = 0;
+    private volatile boolean run = true;
+    private int start = 0;
+
+    private ExecutorService executor = Executors.newFixedThreadPool(3);
 
     public static void main(String[] args) {
-        new LambdaVariables().instanceVariableInLambda();
+        new LambdaVariables().localVariableMultithreading();
     }
 
-    public void localVariableInLambda() {
-        int counter = 1;
-        Runnable runnable = () -> System.out.println(counter); // counter++ is not allowed
-        runnable.run();
-        new Thread(runnable).start();
+    Supplier<Integer> incrementer(int start) {
+        return () -> start;
     }
 
-    public void instanceVariableInLambda() {
-        Runnable runnable = () -> System.out.println(counter++);
-        runnable.run();
-        new Thread(runnable).start();
+    Supplier<Integer> incrementer() {
+        return () -> start++;
     }
 
-    public void parameterLambda(int counter) {
-        Runnable runnable = () -> System.out.println(counter);
+    public void localVariableMultithreading() {
+        boolean run = true;
+        executor.execute(() -> {
+            while (run) {
+                // do operation
+            }
+        });
+        // run = false; // doesn't compile
+    }
+
+    public void instanceVariableMultithreading() {
+        executor.execute(() -> {
+            while (run) {
+                // do operation
+            }
+        });
+
+        run = false;
     }
 
     public void workaroundSingleThread() {
