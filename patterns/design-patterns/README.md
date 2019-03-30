@@ -20,3 +20,4 @@
 - [Java Constructors vs Static Factory Methods](https://www.baeldung.com/java-constructors-vs-static-factory-methods)
 - [The Adapter Pattern in Java](https://www.baeldung.com/java-adapter-pattern)
 - [Currying in Java](https://baeldung.com/currying-in-java)
+- [A quick and practical example of Hexagonal Architecture in Java](http://inprogress.baeldung.com/a-quick-and-practical-example-of-hexagonal-architecture-in-java/)
