@@ -366,6 +366,7 @@
                 <module>aws-lambda</module>
                 <module>axon</module>
                 <module>azure</module>
+                <module>architecture</module>
 
                 <module>blade</module>
 
