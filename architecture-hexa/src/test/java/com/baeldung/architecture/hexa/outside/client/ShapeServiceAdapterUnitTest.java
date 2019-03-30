@@ -10,22 +10,22 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.baeldung.architecture.hexa.inside.DummyShapeService;
-import com.baeldung.architecture.hexa.outside.repo.DummyShapeRepository;
+import com.baeldung.architecture.hexa.outside.repo.DummyShapeRepositoryAdapter;
 
-public class ShapeClientUnitTest {
+public class ShapeServiceAdapterUnitTest {
 
-    private ShapeClient shapeClient;
+    private ShapeServiceAdapter shapeServiceAdapter;
 
     @Before
     public void setUp() {
-        shapeClient = new ShapeClient(new DummyShapeService(new DummyShapeRepository()));
+        shapeServiceAdapter = new ShapeServiceAdapter(new DummyShapeService(new DummyShapeRepositoryAdapter()));
     }
 
     @Test
     public void whenDispalyRedShapes_thenAddToModel() {
         Map<String, Object> model = new HashMap<>();
 
-        shapeClient.dispalyRedShapes(model);
+        shapeServiceAdapter.dispalyRedShapes(model);
 
         assertThat(model.get("shapes")).isInstanceOf(List.class);
         assertThat(((List) model.get("shapes")).size()).isEqualTo(2);

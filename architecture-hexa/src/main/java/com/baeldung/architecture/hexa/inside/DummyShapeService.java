@@ -2,17 +2,17 @@ package com.baeldung.architecture.hexa.inside;
 
 import java.util.List;
 
-public class DummyShapeService implements ShapeService {
+public class DummyShapeService implements ShapeServicePort {
 
-    private ShapeRepository ShapeRepository;
+    private ShapeRepositoryPort ShapeRepositoryPort;
 
-    public DummyShapeService(ShapeRepository shapeRepository) {
-        ShapeRepository = shapeRepository;
+    public DummyShapeService(ShapeRepositoryPort shapeRepository) {
+        ShapeRepositoryPort = shapeRepository;
     }
 
     @Override
     public List<Shape> findShapesByColor(String color) {
-        return ShapeRepository.loadShapes(color);
+        return ShapeRepositoryPort.loadShapes(color);
     }
 
 }

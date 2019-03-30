@@ -2,7 +2,7 @@ package com.baeldung.architecture.hexa.inside;
 
 import java.util.List;
 
-public interface ShapeService {
+public interface ShapeServicePort {
 
     List<Shape> findShapesByColor(String color);
 
