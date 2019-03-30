@@ -35,7 +35,7 @@ public class CustomerServiceUnitTest {
 
     @Test
     public void givenCustomerServiceInstance_whenCalledFindByIdWithNullCustomer_thenCorrect() {
-        var customers = new HashMap<Integer, Customer>();
+        Map<Integer, Customer> customers = new HashMap<>();
         customers.put(1, null);
         customerService = new CustomerService(new SimpleCustomerDao(customers));
 
