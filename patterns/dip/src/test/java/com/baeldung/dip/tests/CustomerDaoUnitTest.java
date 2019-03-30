@@ -35,7 +35,7 @@ public class CustomerDaoUnitTest {
 
     @Test
     public void givenCustomerDaoInstance_whenCalledFindByIdWithNullCustomer_thenCorrect() {
-        var customers = new HashMap<Integer, Customer>();
+        Map<Integer, Customer> customers = new HashMap<Integer, Customer>();
         customers.put(1, null);
         CustomerDao customerDaoObject = new SimpleCustomerDao(customers);
 
