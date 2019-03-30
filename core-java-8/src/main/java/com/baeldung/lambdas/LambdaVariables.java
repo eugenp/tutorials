@@ -6,6 +6,9 @@ import java.util.concurrent.Executors;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
+/**
+ * Class with examples about working with capturing lambdas.
+ */
 public class LambdaVariables {
 
     private volatile boolean run = true;
@@ -18,7 +21,7 @@ public class LambdaVariables {
     }
 
     Supplier<Integer> incrementer(int start) {
-        return () -> start;
+        return () -> start; // can't modify start parameter inside the lambda
     }
 
     Supplier<Integer> incrementer() {
@@ -32,7 +35,8 @@ public class LambdaVariables {
                 // do operation
             }
         });
-        // run = false; // doesn't compile
+        // commented because it doesn't compile, it's just an example of non-final local variables in lambdas
+        // run = false;
     }
 
     public void instanceVariableMultithreading() {
@@ -45,6 +49,9 @@ public class LambdaVariables {
         run = false;
     }
 
+    /**
+     * WARNING: always avoid this workaround!!
+     */
     public void workaroundSingleThread() {
         int[] holder = new int[] { 2 };
         IntStream sums = IntStream
@@ -56,6 +63,9 @@ public class LambdaVariables {
         System.out.println(sums.sum());
     }
 
+    /**
+     * WARNING: always avoid this workaround!!
+     */
     public void workaroundMultithreading() {
         int[] holder = new int[] { 2 };
         Runnable runnable = () -> System.out.println(IntStream
