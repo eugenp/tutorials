@@ -96,7 +96,7 @@ public class ReportDesignHelper implements CommandLineRunner {
         File report = new File(REPORTS_FOLDER);
         report.mkdirs();
 
-        design.saveAs(new File(report, "sample.rptdesign").getAbsolutePath());
+        design.saveAs(new File(report, "simple_static.rptdesign").getAbsolutePath());
         design.close();
         log.info("Report generated");
     }
