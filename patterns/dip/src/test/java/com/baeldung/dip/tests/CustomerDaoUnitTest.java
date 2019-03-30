@@ -16,7 +16,7 @@ public class CustomerDaoUnitTest {
 
     @Before
     public void setUpCustomerDaoInstance() {
-        var customers = new HashMap<Integer, Customer>();
+        Map<Integer, Customer> customers = new HashMap<>();
         customers.put(1, new Customer("John"));
         customers.put(2, new Customer("Susan"));
         customerDao = new SimpleCustomerDao(customers);
