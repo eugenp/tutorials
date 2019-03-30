@@ -16,13 +16,13 @@
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>org.baeldung.config</param-value>
+        <param-value>com.baeldung.sampleapp.config</param-value>
     </context-param>
  
-    <listener>
+<!--     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
+ -->
     <!-- Spring child -->
     <servlet>
         <servlet-name>api</servlet-name>

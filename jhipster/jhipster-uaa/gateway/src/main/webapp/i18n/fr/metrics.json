@@ -1,0 +1,101 @@
+{
+    "metrics": {
+        "title": "Métriques de l'application",
+        "refresh.button": "Rafraîchir",
+        "updating": "Mise à jour...",
+        "jvm": {
+            "title": "Métriques de la JVM",
+            "memory": {
+                "title": "Mémoire",
+                "total": "Mémoire totale",
+                "heap": "Mémoire \"Heap\"",
+                "nonheap": "Mémoire \"Non-Heap\""
+            },
+            "threads": {
+                "title": "Threads",
+                "all": "Tous",
+                "runnable": "Exécutable",
+                "timedwaiting": "Temps d'attente",
+                "waiting": "En attente",
+                "blocked": "Bloqué",
+                "dump": {
+                    "title": "Threads dump",
+                    "id": "Id :",
+                    "blockedtime": "Temps bloqué",
+                    "blockedcount": "Nb fois bloqué",
+                    "waitedtime": "Temps d'attente",
+                    "waitedcount": "Nb fois en attente",
+                    "lockname": "Nom du process bloquant",
+                    "stacktrace": "Stacktrace",
+                    "show": "Afficher",
+                    "hide": "Cacher"
+                }
+            },
+            "gc": {
+                "title": "Garbage collections",
+                "marksweepcount": "Total de \"Mark Sweep\"",
+                "marksweeptime": "Temps \"Mark Sweep\"",
+                "scavengecount": "Total \"Scavenge\"",
+                "scavengetime": "Temps \"Scavenge\""
+            },
+            "http": {
+                "title": "Requêtes HTTP (évènements par seconde)",
+                "active": "Requêtes actives :",
+                "total": "Requêtes totales :",
+                "table": {
+                    "code": "Code",
+                    "count": "Total",
+                    "mean": "Médian",
+                    "average": "Moyenne"
+                },
+                "code": {
+                    "ok": "Ok",
+                    "notfound": "Non trouvé",
+                    "servererror": "Erreur serveur"
+                }
+            }
+        },
+        "servicesstats": {
+            "title": "Statistiques des services (temps en millisecondes)",
+            "table": {
+                "name": "Nom du server",
+                "count": "Total",
+                "mean": "Médian",
+                "min": "Min",
+                "max": "Max",
+                "p50": "p50",
+                "p75": "p75",
+                "p95": "p95",
+                "p99": "p99"
+            }
+        },
+        "cache": {
+            "title": "Statistiques de cache",
+            "cachename": "Nom du cache",
+            "hits": "Données existantes",
+            "misses": "Données non existantes",
+            "gets": "Lectures",
+            "puts": "Écritures",
+            "removals": "Suppressions",
+            "evictions": "Évictions",
+            "hitPercent": "% données existantes",
+            "missPercent": "% données non existantes",
+            "averageGetTime": "Temps de lecture moyen (µs)",
+            "averagePutTime": "Temps d'écriture moyen (µs)",
+            "averageRemoveTime": "Temps de suppression moyen (µs)"
+        },
+        "datasource": {
+            "usage": "Usage",
+            "title": "Statistiques du pool de connexions (temps en millisecondes)",
+            "name": "Utilisation du pool",
+            "count": "Total",
+            "mean": "Médian",
+            "min": "Min",
+            "max": "Max",
+            "p50": "p50",
+            "p75": "p75",
+            "p95": "p95",
+            "p99": "p99"
+        }
+    }
+}

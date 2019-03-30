@@ -21,14 +21,9 @@ public class ByteBuddyUnitTest {
 
     @Test
     public void givenObject_whenToString_thenReturnHelloWorldString() throws InstantiationException, IllegalAccessException {
-        DynamicType.Unloaded unloadedType = new ByteBuddy()
-          .subclass(Object.class)
-          .method(ElementMatchers.isToString())
-          .intercept(FixedValue.value("Hello World ByteBuddy!"))
-          .make();
+        DynamicType.Unloaded unloadedType = new ByteBuddy().subclass(Object.class).method(ElementMatchers.isToString()).intercept(FixedValue.value("Hello World ByteBuddy!")).make();
 
-        Class<?> dynamicType = unloadedType.load(getClass().getClassLoader())
-          .getLoaded();
+        Class<?> dynamicType = unloadedType.load(getClass().getClassLoader()).getLoaded();
 
         assertEquals(dynamicType.newInstance().toString(), "Hello World ByteBuddy!");
     }
@@ -36,12 +31,7 @@ public class ByteBuddyUnitTest {
     @Test
     public void givenFoo_whenRedefined_thenReturnFooRedefined() throws Exception {
         ByteBuddyAgent.install();
-        new ByteBuddy()
-            .redefine(Foo.class)
-            .method(named("sayHelloFoo"))
-            .intercept(FixedValue.value("Hello Foo Redefined"))
-            .make()
-            .load(Foo.class.getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
+        new ByteBuddy().redefine(Foo.class).method(named("sayHelloFoo")).intercept(FixedValue.value("Hello Foo Redefined")).make().load(Foo.class.getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
         Foo f = new Foo();
         assertEquals(f.sayHelloFoo(), "Hello Foo Redefined");
     }
@@ -49,34 +39,16 @@ public class ByteBuddyUnitTest {
     @Test
     public void givenSayHelloFoo_whenMethodDelegation_thenSayHelloBar() throws IllegalAccessException, InstantiationException {
 
-        String r = new ByteBuddy()
-          .subclass(Foo.class)
-          .method(
-            named("sayHelloFoo")
-            .and(isDeclaredBy(Foo.class)
-            .and(returns(String.class)))
-          )
-          .intercept(MethodDelegation.to(Bar.class))
-          .make()
-          .load(getClass().getClassLoader())
-          .getLoaded()
-          .newInstance()
-          .sayHelloFoo();
+        String r = new ByteBuddy().subclass(Foo.class).method(named("sayHelloFoo").and(isDeclaredBy(Foo.class).and(returns(String.class)))).intercept(MethodDelegation.to(Bar.class)).make().load(getClass().getClassLoader()).getLoaded().newInstance()
+                .sayHelloFoo();
 
         assertEquals(r, Bar.sayHelloBar());
     }
 
     @Test
     public void givenMethodName_whenDefineMethod_thenCreateMethod() throws Exception {
-        Class<?> type = new ByteBuddy()
-            .subclass(Object.class)
-            .name("MyClassName")
-            .defineMethod("custom", String.class, Modifier.PUBLIC)
-            .intercept(MethodDelegation.to(Bar.class))
-            .defineField("x", String.class, Modifier.PUBLIC)
-            .make()
-            .load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER)
-            .getLoaded();
+        Class<?> type = new ByteBuddy().subclass(Object.class).name("MyClassName").defineMethod("custom", String.class, Modifier.PUBLIC).intercept(MethodDelegation.to(Bar.class)).defineField("x", String.class, Modifier.PUBLIC).make()
+                .load(getClass().getClassLoader(), ClassLoadingStrategy.Default.WRAPPER).getLoaded();
 
         Method m = type.getDeclaredMethod("custom", null);
 
@@ -84,6 +56,5 @@ public class ByteBuddyUnitTest {
         assertNotNull(type.getDeclaredField("x"));
 
     }
-
 
 }
