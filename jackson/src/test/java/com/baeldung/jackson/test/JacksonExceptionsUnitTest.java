@@ -34,7 +34,9 @@ public class JacksonExceptionsUnitTest {
         final String json = "{\"animal\":{\"name\":\"lacy\"}}";
         final ObjectMapper mapper = new ObjectMapper();
 
-        mapper.reader().forType(Zoo.class).readValue(json);
+        mapper.reader()
+            .forType(Zoo.class)
+            .readValue(json);
     }
 
     @Test
@@ -42,7 +44,9 @@ public class JacksonExceptionsUnitTest {
         final String json = "{\"animal\":{\"name\":\"lacy\"}}";
         final ObjectMapper mapper = new ObjectMapper();
 
-        mapper.reader().forType(ZooConfigured.class).readValue(json);
+        mapper.reader()
+            .forType(ZooConfigured.class)
+            .readValue(json);
     }
 
     // JsonMappingException: No serializer found for class
@@ -51,7 +55,8 @@ public class JacksonExceptionsUnitTest {
         final UserWithPrivateFields user = new UserWithPrivateFields(1, "John");
 
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.writer().writeValueAsString(user);
+        mapper.writer()
+            .writeValueAsString(user);
     }
 
     @Test
@@ -61,7 +66,8 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.FIELD, Visibility.ANY);
 
-        final String result = mapper.writer().writeValueAsString(user);
+        final String result = mapper.writer()
+            .writeValueAsString(user);
         assertThat(result, containsString("John"));
     }
 
@@ -71,7 +77,9 @@ public class JacksonExceptionsUnitTest {
         final String json = "{\"id\":1,\"name\":\"John\"}";
         final ObjectMapper mapper = new ObjectMapper();
 
-        mapper.reader().forType(User.class).readValue(json);
+        mapper.reader()
+            .forType(User.class)
+            .readValue(json);
     }
 
     @Test
@@ -79,7 +87,9 @@ public class JacksonExceptionsUnitTest {
         final String json = "{\"id\":1,\"name\":\"John\"}";
         final ObjectMapper mapper = new ObjectMapper();
 
-        final com.baeldung.jackson.dtos.User user = mapper.reader().forType(com.baeldung.jackson.dtos.User.class).readValue(json);
+        final com.baeldung.jackson.dtos.User user = mapper.reader()
+            .forType(com.baeldung.jackson.dtos.User.class)
+            .readValue(json);
         assertEquals("John", user.name);
     }
 
@@ -91,7 +101,9 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
 
-        mapper.reader().forType(com.baeldung.jackson.dtos.User.class).readValue(json);
+        mapper.reader()
+            .forType(com.baeldung.jackson.dtos.User.class)
+            .readValue(json);
     }
 
     @Test
@@ -101,7 +113,9 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
 
-        final UserWithRoot user = mapper.reader().forType(UserWithRoot.class).readValue(json);
+        final UserWithRoot user = mapper.reader()
+            .forType(UserWithRoot.class)
+            .readValue(json);
         assertEquals("John", user.name);
     }
 
@@ -111,7 +125,9 @@ public class JacksonExceptionsUnitTest {
         final String json = "[{\"id\":1,\"name\":\"John\"},{\"id\":2,\"name\":\"Adam\"}]";
         final ObjectMapper mapper = new ObjectMapper();
 
-        mapper.reader().forType(com.baeldung.jackson.dtos.User.class).readValue(json);
+        mapper.reader()
+            .forType(com.baeldung.jackson.dtos.User.class)
+            .readValue(json);
     }
 
     @Test
@@ -119,8 +135,10 @@ public class JacksonExceptionsUnitTest {
         final String json = "[{\"id\":1,\"name\":\"John\"},{\"id\":2,\"name\":\"Adam\"}]";
         final ObjectMapper mapper = new ObjectMapper();
 
-        final List<com.baeldung.jackson.dtos.User> users = mapper.reader().forType(new TypeReference<List<com.baeldung.jackson.dtos.User>>() {
-        }).readValue(json);
+        final List<com.baeldung.jackson.dtos.User> users = mapper.reader()
+            .forType(new TypeReference<List<com.baeldung.jackson.dtos.User>>() {
+            })
+            .readValue(json);
 
         assertEquals(2, users.size());
     }
@@ -131,7 +149,9 @@ public class JacksonExceptionsUnitTest {
         final String json = "{\"id\":1,\"name\":\"John\", \"checked\":true}";
 
         final ObjectMapper mapper = new ObjectMapper();
-        mapper.reader().forType(com.baeldung.jackson.dtos.User.class).readValue(json);
+        mapper.reader()
+            .forType(com.baeldung.jackson.dtos.User.class)
+            .readValue(json);
     }
 
     @Test
@@ -141,7 +161,9 @@ public class JacksonExceptionsUnitTest {
         final ObjectMapper mapper = new ObjectMapper();
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 
-        final com.baeldung.jackson.dtos.User user = mapper.reader().forType(com.baeldung.jackson.dtos.User.class).readValue(json);
+        final com.baeldung.jackson.dtos.User user = mapper.reader()
+            .forType(com.baeldung.jackson.dtos.User.class)
+            .readValue(json);
         assertEquals("John", user.name);
     }
 
@@ -151,7 +173,9 @@ public class JacksonExceptionsUnitTest {
         final String json = "{'id':1,'name':'John'}";
         final ObjectMapper mapper = new ObjectMapper();
 
-        mapper.reader().forType(com.baeldung.jackson.dtos.User.class).readValue(json);
+        mapper.reader()
+            .forType(com.baeldung.jackson.dtos.User.class)
+            .readValue(json);
     }
 
     @Test
@@ -162,7 +186,9 @@ public class JacksonExceptionsUnitTest {
         factory.enable(JsonParser.Feature.ALLOW_SINGLE_QUOTES);
         final ObjectMapper mapper = new ObjectMapper(factory);
 
-        final com.baeldung.jackson.dtos.User user = mapper.reader().forType(com.baeldung.jackson.dtos.User.class).readValue(json);
+        final com.baeldung.jackson.dtos.User user = mapper.reader()
+            .forType(com.baeldung.jackson.dtos.User.class)
+            .readValue(json);
         assertEquals("John", user.name);
     }
 

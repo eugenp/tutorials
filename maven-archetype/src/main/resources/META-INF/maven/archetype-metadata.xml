@@ -1,0 +1,35 @@
+<archetype-descriptor
+        xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0 http://maven.apache.org/xsd/archetype-descriptor-1.0.0.xsd
+        http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+        xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        name="microprofile12">
+
+    <requiredProperties>
+        <requiredProperty key="app-path">
+            <defaultValue>resources</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="greeting-msg">
+            <defaultValue>Hi, I was generated from an archetype!</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="liberty-plugin-version">
+            <defaultValue>2.4.2</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <fileSets>
+        <fileSet filtered="true" packaged="true">
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/liberty/config</directory>
+            <includes>
+                <include>server.xml</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+
+</archetype-descriptor>

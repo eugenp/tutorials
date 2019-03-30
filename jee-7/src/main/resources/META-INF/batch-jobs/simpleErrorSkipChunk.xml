@@ -1,0 +1,26 @@
+<job id="simpleErrorSkipChunk"  xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/jobXML_1_0.xsd" version="1.0">
+    <step id="errorStep" >
+        <listeners>
+            <listener ref="mySkipReadListener"/>
+            <listener ref="mySkipProcessorListener"/>
+            <listener ref="mySkipWriteListener"/>
+            <listener ref="myRetryReadListener"/>
+            <listener ref="myRetryProcessorListener"/>
+            <listener ref="myRetryWriteListener"/>
+        </listeners>
+        <chunk checkpoint-policy="item" item-count="3" skip-limit="3" retry-limit="3">
+            <reader ref="myItemReader"/>
+            <processor ref="myItemProcessor"/>
+            <writer ref="myItemWriter"/>
+            <skippable-exception-classes>
+                <include class="java.lang.RuntimeException"/>
+                <include class="java.lang.UnsupportedOperationException"/>
+            </skippable-exception-classes>
+            <retryable-exception-classes>
+                <include class="java.lang.IllegalArgumentException"/>
+                <include class="java.lang.UnsupportedOperationException"/>
+            </retryable-exception-classes>
+        </chunk>
+    </step>
+</job>	

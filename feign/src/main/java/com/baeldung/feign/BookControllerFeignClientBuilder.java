@@ -14,6 +14,12 @@ public class BookControllerFeignClientBuilder {
     private BookClient bookClient = createClient(BookClient.class, "http://localhost:8081/api/books");
 
     private static <T> T createClient(Class<T> type, String uri) {
-        return Feign.builder().client(new OkHttpClient()).encoder(new GsonEncoder()).decoder(new GsonDecoder()).logger(new Slf4jLogger(type)).logLevel(Logger.Level.FULL).target(type, uri);
+        return Feign.builder()
+            .client(new OkHttpClient())
+            .encoder(new GsonEncoder())
+            .decoder(new GsonDecoder())
+            .logger(new Slf4jLogger(type))
+            .logLevel(Logger.Level.FULL)
+            .target(type, uri);
     }
 }

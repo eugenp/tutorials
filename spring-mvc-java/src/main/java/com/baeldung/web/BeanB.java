@@ -8,5 +8,4 @@ public class BeanB {
     public BeanB() {
         super();
     }
-
 }
