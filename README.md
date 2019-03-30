@@ -33,6 +33,9 @@ Running a Spring Boot module
 To run a Spring Boot module run the command: `mvn spring-boot:run -Dgib.enabled=false` in the module directory
 
 
+Run a single standalone application
+====================
+mvn exec:java -Dexec.mainClass="com.baeldung.{mainClassName}" in the module directory
 
 
 
