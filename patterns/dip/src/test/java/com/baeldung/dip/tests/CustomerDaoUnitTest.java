@@ -3,6 +3,7 @@ package com.baeldung.dip.tests;
 import com.baeldung.dip.daoimplementations.SimpleCustomerDao;
 import com.baeldung.dip.daointerfaces.CustomerDao;
 import com.baeldung.dip.entities.Customer;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
