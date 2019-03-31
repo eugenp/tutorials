@@ -20,6 +20,7 @@
         <module>design-patterns-2</module>
         <module>solid</module>
         <module>dip</module>     
+        <module>hexagonal-architecture</module>
     </modules>
 
     <dependencyManagement>
