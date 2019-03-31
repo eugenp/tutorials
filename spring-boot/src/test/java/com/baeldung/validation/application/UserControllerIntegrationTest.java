@@ -1,4 +1,4 @@
-package com.baeldung.validation.tests;
+package com.baeldung.validation.application;
 
 import com.baeldung.validation.application.controllers.UserController;
 import com.baeldung.validation.application.repositories.UserRepository;
