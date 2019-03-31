@@ -1,7 +1,6 @@
 package com.baeldung.hexagonalarchitecture.liquiditytracker.domain.impl;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,8 +17,8 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.domain.NotEnoughAvail
  *
  * since March 2019
  */
-public class LiquidityTrackerImplApiMethodsTest {
-    private static final Logger log = LoggerFactory.getLogger(LiquidityTrackerImplApiMethodsTest.class);
+public class LiquidityTrackerImplApiMethodsUnitTest {
+    private static final Logger log = LoggerFactory.getLogger(LiquidityTrackerImplApiMethodsUnitTest.class);
     
     // The following two references point to the same object
     private LiquidityTrackerImpl trackerImpl;
@@ -33,7 +32,7 @@ public class LiquidityTrackerImplApiMethodsTest {
     
     private UtilizedLiquiditySetterForTesting utilizedLiquiditySetter;
     
-    public LiquidityTrackerImplApiMethodsTest(){
+    public LiquidityTrackerImplApiMethodsUnitTest(){
         trackerImpl = new LiquidityTrackerImpl();
         
         liquidityLimitProvider = new LiquidityLimitProviderForTesting();

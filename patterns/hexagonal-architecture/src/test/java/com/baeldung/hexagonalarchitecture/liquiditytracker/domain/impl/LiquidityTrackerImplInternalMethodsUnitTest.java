@@ -13,12 +13,12 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.domain.NotEnoughAvail
  *
  * since March 2019
  */
-public class LiquidityTrackerImplInternalMethodsTest {
-    private static final Logger log = LoggerFactory.getLogger(LiquidityTrackerImplInternalMethodsTest.class);
+public class LiquidityTrackerImplInternalMethodsUnitTest {
+    private static final Logger log = LoggerFactory.getLogger(LiquidityTrackerImplInternalMethodsUnitTest.class);
     
     private final LiquidityTrackerImpl trackerImpl;
     
-    public LiquidityTrackerImplInternalMethodsTest() {
+    public LiquidityTrackerImplInternalMethodsUnitTest() {
         trackerImpl = new LiquidityTrackerImpl();
     }
      
