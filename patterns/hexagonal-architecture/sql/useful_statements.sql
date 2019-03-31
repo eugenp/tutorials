@@ -1,5 +1,3 @@
---Monday 25/3/2019 
-
 create table liquidity_utilized(
     id integer primary key,
     operationAmount integer,
@@ -13,4 +11,9 @@ create table liquidity_limit(
     amount integer
 );
 
-select max(id) from liquidity_utilized; --returns null initially;
+select * from liquidity_limit ORDER BY id asc;
+select * from liquidity_utilized order by id asc;
+
+select id, amount from liquidity_limit where id = (select max(id) from liquidity_limit); 
+
+select id, totalAmount from liquidity_utilized where id = (select max(id) from liquidity_utilized);
