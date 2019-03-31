@@ -28,7 +28,7 @@ public class ShutterImpl implements Shutter{
             stoppable.stop();
             if (iter.hasNext()) {
                 try {
-                    TimeUnit.SECONDS.sleep(5);
+                    TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException ex) {
                     log.error("Thread interrupted", ex);
                 }

@@ -58,13 +58,13 @@ public class MessageListenerTester {
             return;
         }        
         
-        //byte[] data = getData();   //SHUTDOWN
+        byte[] data = getData();   //SHUTDOWN
         //byte[] data = getData2();    //GET_AVAILABLE_LIQUIDITY
         //byte[] data = getData3();   //GET_UTILIZED_LIQUIDITY
         //byte[] data = getData4(); //GET_LIQUIDITY_LIMIT
         //byte[] data = getData5(); //INCREASE_UTILIZED_LIQUIDITY
         //byte[] data = getData6(); //DECREASE_UTILIZED_LIQUIDITY
-        byte[] data = getData7(); //SET_LIQUIDITY_LIMIT
+        //byte[] data = getData7(); //SET_LIQUIDITY_LIMIT
         
         try{
             channel.basicPublish("", queueName, null, data);
