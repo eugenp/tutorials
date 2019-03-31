@@ -18,39 +18,39 @@ import java.nio.file.Paths;
  *
  * since March 2019
  */
-public class ConfigReader{
-	private static final Logger log = LoggerFactory.getLogger(ConfigReader.class);
-	
-    //this file must be present in the classpath
+public class ConfigReader {
+    private static final Logger log = LoggerFactory.getLogger(ConfigReader.class);
+
+    // This file must be present in the classpath
     private static final String CONFIG_FILE = "/config.json";
-    
-    public ConfigValues read() throws Exception{
+
+    public ConfigValues read() throws Exception {
         byte[] jsonBytes = null;
         log.debug("Going to read the configuration values from " + CONFIG_FILE);
-        
-        try{
-           jsonBytes = readBytesFromClasspath(CONFIG_FILE); 
-        } catch(URISyntaxException | IOException ex){
+
+        try {
+            jsonBytes = readBytesFromClasspath(CONFIG_FILE);
+        } catch (URISyntaxException | IOException ex) {
             String errorMessage = "Error when trying to read " + CONFIG_FILE + " file";
             log.error(errorMessage, ex);
             throw ex;
         }
-        
+
         ObjectMapper objectMapper = new ObjectMapper();
         ConfigValues config = null;
-        try{ 
+        try {
             config = objectMapper.readValue(jsonBytes, ConfigValues.class);
-        } catch(IOException ex){
+        } catch (IOException ex) {
             String errorMessage = "Error when trying to parse " + CONFIG_FILE + " file";
             log.error(errorMessage, ex);
             throw ex;
         }
-        
+
         log.info("Application configuration: " + config);
         return config;
     }
-    
-    private byte[] readBytesFromClasspath(String filename) throws URISyntaxException, IOException{
+
+    private byte[] readBytesFromClasspath(String filename) throws URISyntaxException, IOException {
         URL url = this.getClass().getResource(filename);
         URI uri = url.toURI();
         Path path = Paths.get(uri);

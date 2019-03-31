@@ -8,12 +8,12 @@ package com.baeldung.hexagonalarchitecture.liquiditytracker.messaging;
 public interface Sender {
 
     public void sendLiquidityLimit(long value);
-    
+
     public void sendAvailableLiquidity(long value);
-    
-    public void sendUtilizedLiquidity(long value); 
-    
+
+    public void sendUtilizedLiquidity(long value);
+
     public void sendSetLiquidityLimitError(String errorMessage);
-    
+
     public void increaseUtilizedLiquidityError(String errorMessage);
 }

@@ -13,17 +13,17 @@ import org.slf4j.LoggerFactory;
  *
  * since March 2019
  */
-public class ShutterImpl implements Shutter{
+public class ShutterImpl implements Shutter {
     private static final Logger log = LoggerFactory.getLogger(ShutterImpl.class);
-    
+
     private List<Stoppable> stoppables = new LinkedList<Stoppable>();
-    
+
     @Override
     public void shutdown() {
         log.info("We have been asked to shut down the application");
-        
+
         Iterator<Stoppable> iter = stoppables.iterator();
-        while(iter.hasNext()) {
+        while (iter.hasNext()) {
             Stoppable stoppable = iter.next();
             stoppable.stop();
             if (iter.hasNext()) {
@@ -33,10 +33,10 @@ public class ShutterImpl implements Shutter{
                     log.error("Thread interrupted", ex);
                 }
             }
-        }        
+        }
     }
-    
-    public void addStoppable(Stoppable stoppable){
+
+    public void addStoppable(Stoppable stoppable) {
         stoppables.add(stoppable);
     }
 }

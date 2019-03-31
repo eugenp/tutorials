@@ -34,103 +34,110 @@ public class LiquidityTrackerImpl implements LiquidityTracker {
 
         long liquidityLimit = liquidityLimitData.getAmount();
         log.trace("Current liquidity limit: " + liquidityLimit);
-        
+
         return liquidityLimitData.getAmount();
     }
 
     long getLiquidityLimitId() {
         LiquidityLimitData liquidityLimitData = liquidityLimitProvider.provide();
-        
+
         long liquidityLimitId = liquidityLimitData.getId();
         log.trace("Current liquidity limit id/version: " + liquidityLimitId);
-        
+
         return liquidityLimitData.getId();
     }
-    
+
     @Override
     public void setLiquidityLimit(long newLiquidityLimit) throws NotEnoughAvailableLiquidityException {
         long utilizedLiquidity = getUtilizedLiquidity();
-        
+
         long currentLiquidityLimitId = getLiquidityLimitId();
-        
-        // this method can easily be unit-tested 
+
+        // this method can easily be unit-tested
         checkIfThereIsEnoughLiquidityAvailable(newLiquidityLimit, utilizedLiquidity);
 
-        liquidityLimitSetter.set(currentLiquidityLimitId + 1, newLiquidityLimit);       
+        liquidityLimitSetter.set(currentLiquidityLimitId + 1, newLiquidityLimit);
     }
 
-    void checkIfThereIsEnoughLiquidityAvailable(long newLiquidityLimit, long utilizedLiquidity) throws NotEnoughAvailableLiquidityException {
+    void checkIfThereIsEnoughLiquidityAvailable(long newLiquidityLimit, long utilizedLiquidity)
+            throws NotEnoughAvailableLiquidityException {
         if (utilizedLiquidity > newLiquidityLimit) {
-            String errorMessage = "There is not enough liquidity available, trying to set a new liquidity limit: " + newLiquidityLimit + 
-                    " which is smaller than the current utilized liquidity: " + utilizedLiquidity;
+            String errorMessage = "There is not enough liquidity available, trying to set a new liquidity limit: "
+                    + newLiquidityLimit + " which is smaller than the current utilized liquidity: " + utilizedLiquidity;
             log.error(errorMessage);
             throw new NotEnoughAvailableLiquidityException(errorMessage);
-        }        
-    }    
-   
+        }
+    }
+
     @Override
     public long getAvailableLiquidity() {
-        
+
         // this method can easily be unit-tested
         long availableLiquidity = getAvailableLiquidity(getLiquidityLimit(), getUtilizedLiquidity());
         log.trace("Current available liquidity: " + availableLiquidity);
-                
+
         return availableLiquidity;
     }
 
-    long getAvailableLiquidity(long liquidityLimit, long utilizedLiquidity){
+    long getAvailableLiquidity(long liquidityLimit, long utilizedLiquidity) {
         assert liquidityLimit >= utilizedLiquidity;
-        
-        return liquidityLimit - utilizedLiquidity;        
+
+        return liquidityLimit - utilizedLiquidity;
     }
-    
+
     @Override
     public long getUtilizedLiquidity() {
         UtilizedLiquidityData utilizedLiquidityData = utilizedLiquidityProvider.provide();
-        
+
         long utilizedLiquidity = utilizedLiquidityData.getAmount();
         log.trace("Current utilized liquidity: " + utilizedLiquidity);
-        
+
         return utilizedLiquidity;
     }
 
     @Override
     public void increaseUtilizedLiquidity(long amount) throws NotEnoughAvailableLiquidityException {
         UtilizedLiquidityData currentData = utilizedLiquidityProvider.provide();
-        UtilizedLiquidityData newData = increaseUtilizedLiquidity(currentData.getAmount(), amount, currentData.getId(), getLiquidityLimit());
+        UtilizedLiquidityData newData = increaseUtilizedLiquidity(currentData.getAmount(), amount, currentData.getId(),
+                getLiquidityLimit());
         utilizedLiquiditySetter.set(newData.getId(), amount, newData.getAmount());
     }
 
-    UtilizedLiquidityData increaseUtilizedLiquidity(long currentUtilizedLiquidity, long increasingAmount, long currentId, long liquidityLimit) throws NotEnoughAvailableLiquidityException {
-        UtilizedLiquidityData newData = new UtilizedLiquidityData(++currentId, increaseUtilizedLiquidityAmount(currentUtilizedLiquidity, increasingAmount, liquidityLimit));
+    UtilizedLiquidityData increaseUtilizedLiquidity(long currentUtilizedLiquidity, long increasingAmount,
+            long currentId, long liquidityLimit) throws NotEnoughAvailableLiquidityException {
+        UtilizedLiquidityData newData = new UtilizedLiquidityData(++currentId,
+                increaseUtilizedLiquidityAmount(currentUtilizedLiquidity, increasingAmount, liquidityLimit));
         return newData;
     }
-    
-    long increaseUtilizedLiquidityAmount(long currentUtilizedLiquidity, long increasingUtilizedLiquidityAmount, long liquidityLimit) throws NotEnoughAvailableLiquidityException {
+
+    long increaseUtilizedLiquidityAmount(long currentUtilizedLiquidity, long increasingUtilizedLiquidityAmount,
+            long liquidityLimit) throws NotEnoughAvailableLiquidityException {
         long liquidityAvailable = liquidityLimit - currentUtilizedLiquidity;
-        
-        if (increasingUtilizedLiquidityAmount > liquidityAvailable){
-            String errorMessage = "There is not enough liquidity available: " + liquidityAvailable + ", trying to increase the utilized liquidity by " + increasingUtilizedLiquidityAmount + 
-                    " and the current value is " + currentUtilizedLiquidity + ". Current liquidity limit is " + liquidityLimit;
-            NotEnoughAvailableLiquidityException exception = new NotEnoughAvailableLiquidityException(errorMessage);   
+
+        if (increasingUtilizedLiquidityAmount > liquidityAvailable) {
+            String errorMessage = "There is not enough liquidity available: " + liquidityAvailable
+                    + ", trying to increase the utilized liquidity by " + increasingUtilizedLiquidityAmount
+                    + " and the current value is " + currentUtilizedLiquidity + ". Current liquidity limit is "
+                    + liquidityLimit;
+            NotEnoughAvailableLiquidityException exception = new NotEnoughAvailableLiquidityException(errorMessage);
             log.error(errorMessage);
             throw exception;
-        }        
-        
+        }
+
         return currentUtilizedLiquidity + increasingUtilizedLiquidityAmount;
     }
 
     @Override
-    public void decreaseUtilizedLiquidity(long amount){
+    public void decreaseUtilizedLiquidity(long amount) {
         UtilizedLiquidityData utilizedLiquidityData = utilizedLiquidityProvider.provide();
-        long newUtilizedLiquidityAmount =  decreaseUtilizedLiquidityAmount(utilizedLiquidityData.getAmount(), amount);
-        utilizedLiquiditySetter.set(utilizedLiquidityData.getId() + 1, amount, newUtilizedLiquidityAmount);                
+        long newUtilizedLiquidityAmount = decreaseUtilizedLiquidityAmount(utilizedLiquidityData.getAmount(), amount);
+        utilizedLiquiditySetter.set(utilizedLiquidityData.getId() + 1, amount, newUtilizedLiquidityAmount);
     }
 
-    long decreaseUtilizedLiquidityAmount(long currentUtilizedLiquidity, long decreasingAmount) {     
+    long decreaseUtilizedLiquidityAmount(long currentUtilizedLiquidity, long decreasingAmount) {
         return currentUtilizedLiquidity - decreasingAmount;
     }
-    
+
     // Setter methods
     public void setLiquidityLimitProvider(LiquidityLimitProvider liquidityLimitProvider) {
         this.liquidityLimitProvider = liquidityLimitProvider;
@@ -148,4 +155,3 @@ public class LiquidityTrackerImpl implements LiquidityTracker {
         this.utilizedLiquiditySetter = utilizedLiquiditySetter;
     }
 }
-

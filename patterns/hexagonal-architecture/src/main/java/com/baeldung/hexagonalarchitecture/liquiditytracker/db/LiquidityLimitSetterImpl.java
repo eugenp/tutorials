@@ -16,20 +16,20 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.LiquidityLimi
  *
  * since March 2019
  */
-public class LiquidityLimitSetterImpl implements LiquidityLimitSetter{
+public class LiquidityLimitSetterImpl implements LiquidityLimitSetter {
     private static final Logger log = LoggerFactory.getLogger(LiquidityLimitSetterImpl.class);
-    
+
     private static final String INSERT_SQL = "insert into liquidity_limit values(?,?,?)";
-    
+
     private Connection connection;
     private PreparedStatement statement;
-    
-    public void start() throws SQLException{
-        statement = connection.prepareStatement(INSERT_SQL);    
+
+    public void start() throws SQLException {
+        statement = connection.prepareStatement(INSERT_SQL);
     }
-    
+
     @Override
-    public void set(long id, long amount){
+    public void set(long id, long amount) {
         try {
             statement.setLong(1, id);
             Timestamp now = new Timestamp(new Date().getTime());
@@ -39,10 +39,10 @@ public class LiquidityLimitSetterImpl implements LiquidityLimitSetter{
             log.error("Unable to set required arguments into the SQL prepared statement.", ex);
             return;
         }
-        
+
         int recordCount = -1;
         try {
-           recordCount = statement.executeUpdate();
+            recordCount = statement.executeUpdate();
         } catch (SQLException ex) {
             log.error("Unable to execute insertion, SQL statement: " + INSERT_SQL, ex);
             return;
@@ -54,4 +54,3 @@ public class LiquidityLimitSetterImpl implements LiquidityLimitSetter{
         this.connection = connection;
     }
 }
-

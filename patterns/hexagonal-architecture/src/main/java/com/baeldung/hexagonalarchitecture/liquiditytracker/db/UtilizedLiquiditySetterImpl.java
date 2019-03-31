@@ -16,21 +16,21 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.UtilizedLiqui
  *
  * since March 2019
  */
-public class UtilizedLiquiditySetterImpl implements UtilizedLiquiditySetter{
+public class UtilizedLiquiditySetterImpl implements UtilizedLiquiditySetter {
     private static final Logger log = LoggerFactory.getLogger(UtilizedLiquiditySetterImpl.class);
-    
+
     private static final String INSERT_SQL = "insert into liquidity_utilized(id, operationAmount, operationTS, "
             + "totalAmount) values(?,?,?,?)";
-    
+
     private Connection connection;
     private PreparedStatement statement;
-    
-    public void start() throws SQLException{
-        statement = connection.prepareStatement(INSERT_SQL);    
+
+    public void start() throws SQLException {
+        statement = connection.prepareStatement(INSERT_SQL);
     }
-    
+
     @Override
-    public void set(long id, long operationAmount, long newTotalAmount){
+    public void set(long id, long operationAmount, long newTotalAmount) {
         try {
             statement.setLong(1, id);
             statement.setLong(2, operationAmount);
@@ -41,10 +41,10 @@ public class UtilizedLiquiditySetterImpl implements UtilizedLiquiditySetter{
             log.error("Unable to set required arguments into the SQL prepared statement.", ex);
             return;
         }
-        
+
         int recordCount = -1;
         try {
-           recordCount = statement.executeUpdate();
+            recordCount = statement.executeUpdate();
         } catch (SQLException ex) {
             log.error("Unable to execute insertion, SQL statement: " + INSERT_SQL, ex);
             return;

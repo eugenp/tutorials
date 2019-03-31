@@ -15,44 +15,45 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.lifecycle.Stoppable;
  *
  * since March 2019
  */
-public class DbConnector implements Stoppable{
+public class DbConnector implements Stoppable {
     private static final Logger log = LoggerFactory.getLogger(DbConnector.class);
     private Connection connection;
-    
+
     private DatabaseConfigValues configValues;
-    
+
     private LiquidityLimitProviderImpl liquidityLimitProvider;
     private LiquidityLimitSetterImpl liquidityLimitSetter;
     private UtilizedLiquidityProviderImpl utilizedLiquidityProvider;
     private UtilizedLiquiditySetterImpl utilizedLiquiditySetter;
 
-    public void start() throws SQLException{
-        connect(configValues.getDriverName(), configValues.getHostname(), configValues.getDatabaseName(), 
+    public void start() throws SQLException {
+        connect(configValues.getDriverName(), configValues.getHostname(), configValues.getDatabaseName(),
                 configValues.getUsername(), configValues.getPassword());
-        
+
         liquidityLimitProvider.setConnection(connection);
         liquidityLimitSetter.setConnection(connection);
         utilizedLiquidityProvider.setConnection(connection);
         utilizedLiquiditySetter.setConnection(connection);
     }
-    
-    private void connect (String driverName, String hostname, String dbName, String username, String password) throws SQLException {
+
+    private void connect(String driverName, String hostname, String dbName, String username, String password)
+            throws SQLException {
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://" + hostname + ":5432/"
-                    + dbName, username, password);
+            connection = DriverManager.getConnection("jdbc:postgresql://" + hostname + ":5432/" + dbName, username,
+                    password);
         } catch (SQLException ex) {
-          String errorMessage = "Unable to connect to database.";
-          log.error(errorMessage, ex); 
-          throw ex;
+            String errorMessage = "Unable to connect to database.";
+            log.error(errorMessage, ex);
+            throw ex;
         }
     }
-    
+
     @Override
     public void stop() {
-        closeConnection();        
+        closeConnection();
     }
-    
-    private void closeConnection(){
+
+    private void closeConnection() {
         if (connection != null) {
             log.info("Closing the JDBC connection");
             try {
@@ -62,7 +63,7 @@ public class DbConnector implements Stoppable{
             }
         }
     }
-    
+
     // setters
     public void setLiquidityLimitProvider(LiquidityLimitProviderImpl liquidityLimitProvider) {
         this.liquidityLimitProvider = liquidityLimitProvider;
@@ -82,5 +83,5 @@ public class DbConnector implements Stoppable{
 
     public void setConfigValues(DatabaseConfigValues configValues) {
         this.configValues = configValues;
-    }    
+    }
 }

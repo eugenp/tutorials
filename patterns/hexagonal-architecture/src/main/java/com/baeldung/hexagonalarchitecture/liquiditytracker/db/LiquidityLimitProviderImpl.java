@@ -16,23 +16,23 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.Liquidit
  *
  * since March 2019
  */
-public class LiquidityLimitProviderImpl implements LiquidityLimitProvider{
+public class LiquidityLimitProviderImpl implements LiquidityLimitProvider {
     private static final Logger log = LoggerFactory.getLogger(LiquidityLimitProviderImpl.class);
-    
-    private static final String LIQUIDITY_LIMIT = "liquidity_limit";    
+
+    private static final String LIQUIDITY_LIMIT = "liquidity_limit";
     private static final String ID = "id";
     private static final String AMOUNT = "amount";
-    
-    private static final String SELECT_SQL = "select " + ID + ", " + AMOUNT + " from " + 
-            LIQUIDITY_LIMIT + " where " + ID + " = (select max(" + ID + ") from " + LIQUIDITY_LIMIT + ")";
-    
+
+    private static final String SELECT_SQL = "select " + ID + ", " + AMOUNT + " from " + LIQUIDITY_LIMIT + " where "
+            + ID + " = (select max(" + ID + ") from " + LIQUIDITY_LIMIT + ")";
+
     private Connection connection;
     private PreparedStatement statement;
-    
-    public void start() throws SQLException{
-        statement = connection.prepareStatement(SELECT_SQL);    
+
+    public void start() throws SQLException {
+        statement = connection.prepareStatement(SELECT_SQL);
     }
-    
+
     @Override
     public LiquidityLimitData provide() {
         ResultSet rs;
@@ -44,23 +44,23 @@ public class LiquidityLimitProviderImpl implements LiquidityLimitProvider{
         }
 
         long id = -1;
-        long amount = -1;        
+        long amount = -1;
         try {
             boolean result = rs.next();
             if (!result) {
                 return new LiquidityLimitData(0, 0);
-            }                
+            }
             id = rs.getLong(ID);
             amount = rs.getLong(AMOUNT);
         } catch (SQLException ex) {
             log.error(ex.toString(), ex);
             return null;
         }
-        
+
         LiquidityLimitData data = new LiquidityLimitData(id, amount);
         return data;
     }
-    
+
     public void setConnection(Connection connection) {
         this.connection = connection;
     }

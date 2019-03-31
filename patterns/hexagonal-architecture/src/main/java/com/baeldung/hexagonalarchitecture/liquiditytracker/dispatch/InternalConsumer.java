@@ -13,24 +13,24 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.protoapi.LiquidityTra
  *
  * since March 2019
  */
-public class InternalConsumer implements Runnable, Stoppable{
+public class InternalConsumer implements Runnable, Stoppable {
     private static final Logger log = LoggerFactory.getLogger(InternalConsumer.class);
-    
+
     private final BlockingQueue<LiquidityTrackerIncomingMessage> queue;
-    
+
     private final InternalProcessor processor;
-    
+
     private volatile boolean stop;
-    
-    public InternalConsumer(BlockingQueue<LiquidityTrackerIncomingMessage> queue, InternalProcessor processor){
+
+    public InternalConsumer(BlockingQueue<LiquidityTrackerIncomingMessage> queue, InternalProcessor processor) {
         this.queue = queue;
         this.processor = processor;
     }
-    
+
     @Override
     public void run() {
 
-        while(!stop) {
+        while (!stop) {
             LiquidityTrackerIncomingMessage message = null;
             try {
                 message = queue.take();
@@ -46,6 +46,6 @@ public class InternalConsumer implements Runnable, Stoppable{
     @Override
     public void stop() {
         log.info("We have been told to stop.");
-        stop = true;       
+        stop = true;
     }
 }

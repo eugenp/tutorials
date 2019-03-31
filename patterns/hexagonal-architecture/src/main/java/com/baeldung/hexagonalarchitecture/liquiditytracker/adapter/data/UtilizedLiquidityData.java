@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
  * since March 2019
  */
 public class UtilizedLiquidityData {
-    private static final Logger log = LoggerFactory.getLogger(UtilizedLiquidityData.class);
-
     private final long id;
     private final long amount;
 

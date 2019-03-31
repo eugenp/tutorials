@@ -5,7 +5,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,14 +33,14 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.protoapi.LiquidityTra
  */
 public class LiquidityTrackerMain {
     private static final Logger log = LoggerFactory.getLogger(LiquidityTrackerMain.class);
-    
+
     public static void main(String[] args) {
         new LiquidityTrackerMain().run();
     }
-    
-    private void run(){
+
+    private void run() {
         log.info("Starting application.");
-        
+
         ConfigReader configReader = new ConfigReader();
         ConfigValues configValues;
         try {
@@ -49,63 +48,61 @@ public class LiquidityTrackerMain {
         } catch (Exception ex) {
             log.error("FATAL: " + "Unable to read the config file, exiting.");
             return;
-        } 
-        
+        }
+
         LiquidityLimitProviderImpl liquidityLimitProvider = new LiquidityLimitProviderImpl();
         LiquidityLimitSetterImpl liquidityLimitSetter = new LiquidityLimitSetterImpl();
         UtilizedLiquidityProviderImpl utilizedLiquidityProvider = new UtilizedLiquidityProviderImpl();
         UtilizedLiquiditySetterImpl utilizedLiquiditySetter = new UtilizedLiquiditySetterImpl();
-        
+
         DbConnector dbConnector = new DbConnector();
         dbConnector.setConfigValues(configValues.getDatabase());
-        
+
         dbConnector.setLiquidityLimitProvider(liquidityLimitProvider);
         dbConnector.setLiquidityLimitSetter(liquidityLimitSetter);
         dbConnector.setUtilizedLiquidityProvider(utilizedLiquidityProvider);
-        dbConnector.setUtilizedLiquiditySetter(utilizedLiquiditySetter);        
-        
+        dbConnector.setUtilizedLiquiditySetter(utilizedLiquiditySetter);
+
         try {
             dbConnector.start();
         } catch (SQLException ex) {
             log.error("FATAL: exiting", ex);
             return;
         }
-        
+
         LiquidityTrackerImpl tracker = new LiquidityTrackerImpl();
         tracker.setLiquidityLimitProvider(liquidityLimitProvider);
         tracker.setLiquidityLimitSetter(liquidityLimitSetter);
         tracker.setUtilizedLiquiditySetter(utilizedLiquiditySetter);
         tracker.setUtilizedLiquidityProvider(utilizedLiquidityProvider);
-        
-        
+
         BrokerConnector brokerConnector = new BrokerConnector();
         brokerConnector.setConfigValues(configValues.getMessaging());
-     
+
         SenderImpl sender = new SenderImpl();
         brokerConnector.setSender(sender);
- 
+
         ShutterImpl shutter = new ShutterImpl();
         InternalProcessor internalProcessor = new InternalProcessor(sender, tracker, shutter);
-        
-        BlockingQueue<LiquidityTrackerIncomingMessage> queue = 
-                new LinkedBlockingQueue<LiquidityTrackerIncomingMessage>();
-        
+
+        BlockingQueue<LiquidityTrackerIncomingMessage> queue = new LinkedBlockingQueue<LiquidityTrackerIncomingMessage>();
+
         MessageProcessorImpl messageProcessor = new MessageProcessorImpl(queue);
         MessageListener messageListener = new MessageListener();
         messageListener.setProcessor(messageProcessor);
-        
-        brokerConnector.setMessageListener(messageListener);        
- 
+
+        brokerConnector.setMessageListener(messageListener);
+
         InternalConsumer internalConsumer = new InternalConsumer(queue, internalProcessor);
-        
+
         shutter.addStoppable(messageListener);
         shutter.addStoppable(dbConnector);
         shutter.addStoppable(internalConsumer);
-        
-        final ExecutorService executorService = Executors.newFixedThreadPool(1);     
-        executorService.execute(internalConsumer);       
+
+        final ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.execute(internalConsumer);
         executorService.shutdown();
-        
+
         try {
             dbConnector.start();
             liquidityLimitProvider.start();
@@ -116,7 +113,7 @@ public class LiquidityTrackerMain {
             log.error("FATAL, exiting", ex);
             return;
         }
-        
+
         try {
             brokerConnector.start();
             sender.start();
