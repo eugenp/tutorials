@@ -6,7 +6,7 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.Utilized
 /**
  * @author Víctor Gil
  *
- *         since March 2019
+ * since March 2019
  */
 public class UtilizedLiquidityProviderForTesting implements UtilizedLiquidityProvider {
 

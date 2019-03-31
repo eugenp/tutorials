@@ -6,7 +6,7 @@ import com.baeldung.hexagonalarchitecture.liquiditytracker.adapter.data.Liquidit
 /**
  * @author Víctor Gil
  *
- *         since March 2019
+ * since March 2019
  */
 public class LiquidityLimitProviderForTesting implements LiquidityLimitProvider {
 
