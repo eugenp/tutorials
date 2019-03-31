@@ -30,7 +30,7 @@ public class GuavaMultiSetUnitTest {
     @Test
     public void givenMultiSet_whenSetCount_shouldReturnCorrectCount() {
         Multiset<String> bookStore = HashMultiset.create();
-        bookStore.setCount("Potter", 50); //add 50 to the count
+        bookStore.setCount("Potter", 50);
         assertThat(bookStore.count("Potter")).isEqualTo(50);
     }
 
@@ -50,24 +50,18 @@ public class GuavaMultiSetUnitTest {
     @Test
     public void givenMap_compareMultiSetOperations() {
         Map<String, Integer> bookStore = new HashMap<>();
-        bookStore.put("Potter", 1);
-        bookStore.put("Potter", 2);
         bookStore.put("Potter", 3);
 
         assertThat(bookStore.containsKey("Potter")).isTrue();
         assertThat(bookStore.get("Potter")).isEqualTo(3);
+
+        bookStore.put("Potter", 2);
+        assertThat(bookStore.get("Potter")).isEqualTo(2);
 
         bookStore.put("Potter", null);
         assertThat(bookStore.containsKey("Potter")).isTrue();
 
         bookStore.put("Potter", -1);
         assertThat(bookStore.containsKey("Potter")).isTrue();
-
-        bookStore.put("Potter", 2);
-        assertThat(bookStore.containsKey("Potter")).isTrue();
-        assertThat(bookStore.get("Potter")).isEqualTo(2);
-
-        bookStore.put("Potter", 52);
-        assertThat(bookStore.get("Potter")).isEqualTo(52);
     }
 }
