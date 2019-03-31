@@ -112,7 +112,7 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
     }
 
     /**
-     * Generate a report as html
+     * Generate a report as HTML
      */
     @SuppressWarnings("unchecked")
     private void generateHTMLReport(IReportRunnable report, HttpServletResponse response, HttpServletRequest request) {
@@ -137,6 +137,10 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
         }
     }
 
+    /**
+     * Generate a report as PDF
+     */
+    @SuppressWarnings("unchecked")
     private void generatePDFReport(IReportRunnable report, HttpServletResponse response, HttpServletRequest request) {
         IRunAndRenderTask runAndRenderTask = birtEngine.createRunAndRenderTask(report);
         response.setContentType(birtEngine.getMIMEType("pdf"));
@@ -156,7 +160,8 @@ public class BirtReportService implements ApplicationContextAware, DisposableBea
         }
     }
 
-    @Override public void destroy() {
+    @Override
+    public void destroy() {
         birtEngine.destroy();
         Platform.shutdown();
     }
