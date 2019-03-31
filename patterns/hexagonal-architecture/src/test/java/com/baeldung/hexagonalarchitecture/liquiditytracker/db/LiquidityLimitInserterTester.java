@@ -22,8 +22,8 @@ public class LiquidityLimitInserterTester {
     
     private void run(String hostname, String dbName, String username, String password){
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://fedoravm:5432/liquidity_db", "app_user1",
-                    "22pass01");
+            connection = DriverManager.getConnection("jdbc:postgresql://" + hostname + ":5432/" + dbName, 
+                    username, password);
         } catch (SQLException ex) {
           String errorMessage = "Unable to connect to database.";
           log.error(errorMessage, ex); 
