@@ -28,7 +28,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring Boot Exit Codes](http://www.baeldung.com/spring-boot-exit-codes)
 - [Guide to the Favicon in Spring Boot](http://www.baeldung.com/spring-boot-favicon)
 - [Spring Shutdown Callbacks](http://www.baeldung.com/spring-shutdown-callbacks)
-- [Spring Boot Integration Testing with Embedded MongoDB](http://www.baeldung.com/spring-boot-embedded-mongodb)
 - [Container Configuration in Spring Boot 2](http://www.baeldung.com/embeddedservletcontainercustomizer-configurableembeddedservletcontainer-spring-boot)
 - [Introduction to Chaos Monkey](https://www.baeldung.com/spring-boot-chaos-monkey)
 - [Spring Component Scanning](https://www.baeldung.com/spring-component-scanning)
@@ -36,3 +35,5 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Display Auto-Configuration Report in Spring Boot](https://www.baeldung.com/spring-boot-auto-configuration-report)
 - [Injecting Git Information Into Spring](https://www.baeldung.com/spring-git-information)
 - [Validation in Spring Boot](https://www.baeldung.com/spring-boot-bean-validation)
+- [Entity To DTO Conversion for a Spring REST API](https://www.baeldung.com/entity-to-and-from-dto-for-a-java-spring-application)
+- [Guide to Creating and Running a Jar File in Java](https://www.baeldung.com/java-create-jar)

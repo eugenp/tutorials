@@ -74,7 +74,7 @@ public class FooPageableLiveTest extends AbstractBasicLiveTest<Foo> {
     }
 
     protected String getPageableURL() {
-        return "http://localhost:" + APPLICATION_PORT + "/spring-boot-rest/auth/foos/pageable";
+        return "http://localhost:" + APPLICATION_PORT + "/spring-boot-rest/foos/pageable";
     }
     
 }

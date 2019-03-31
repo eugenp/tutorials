@@ -22,7 +22,6 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [A Guide to the Spring Task Scheduler](http://www.baeldung.com/spring-task-scheduler)
 - [Guide to Spring Retry](http://www.baeldung.com/spring-retry)
 - [Custom Scope in Spring](http://www.baeldung.com/spring-custom-scope)
-- [New in Guava 21 common.util.concurrent](http://www.baeldung.com/guava-21-util-concurrent)
 - [A CLI with Spring Shell](http://www.baeldung.com/spring-shell-cli)
 - [JasperReports with Spring](http://www.baeldung.com/spring-jasper)
 - [Model, ModelMap, and ModelView in Spring MVC](http://www.baeldung.com/spring-mvc-model-model-map-model-view)
@@ -34,3 +33,4 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Spring @Primary Annotation](http://www.baeldung.com/spring-primary)
 - [Spring Events](https://www.baeldung.com/spring-events)
 - [Spring Null-Safety Annotations](https://www.baeldung.com/spring-null-safety-annotations)
+- [Spring JDBC](https://www.baeldung.com/spring-jdbc-jdbctemplate)

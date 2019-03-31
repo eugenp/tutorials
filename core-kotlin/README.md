@@ -54,3 +54,5 @@
 - [Nested forEach in Kotlin](https://www.baeldung.com/kotlin-nested-foreach)
 - [Building DSLs in Kotlin](https://www.baeldung.com/kotlin-dsl)
 - [Static Methods Behavior in Kotlin](https://www.baeldung.com/kotlin-static-methods)
+- [Inline Functions in Kotlin](https://www.baeldung.com/kotlin-inline-functions)
+- [Delegation Pattern in Kotlin](https://www.baeldung.com/kotlin-delegation-pattern)
