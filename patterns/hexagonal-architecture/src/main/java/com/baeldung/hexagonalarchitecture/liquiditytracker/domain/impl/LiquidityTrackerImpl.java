@@ -129,9 +129,11 @@ public class LiquidityTrackerImpl implements LiquidityTracker {
 
     @Override
     public void decreaseUtilizedLiquidity(long amount) {
+        assert amount > 0;
+        
         UtilizedLiquidityData utilizedLiquidityData = utilizedLiquidityProvider.provide();
         long newUtilizedLiquidityAmount = decreaseUtilizedLiquidityAmount(utilizedLiquidityData.getAmount(), amount);
-        utilizedLiquiditySetter.set(utilizedLiquidityData.getId() + 1, amount, newUtilizedLiquidityAmount);
+        utilizedLiquiditySetter.set(utilizedLiquidityData.getId() + 1, -1 * amount, newUtilizedLiquidityAmount);
     }
 
     long decreaseUtilizedLiquidityAmount(long currentUtilizedLiquidity, long decreasingAmount) {

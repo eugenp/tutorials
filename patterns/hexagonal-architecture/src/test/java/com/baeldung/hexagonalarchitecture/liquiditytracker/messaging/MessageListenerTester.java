@@ -58,8 +58,8 @@ public class MessageListenerTester {
             return;
         }        
         
-        byte[] data = getData();   //SHUTDOWN
-        //byte[] data = getData2();    //GET_AVAILABLE_LIQUIDITY
+        //byte[] data = getData();   //SHUTDOWN
+        byte[] data = getData2();    //GET_AVAILABLE_LIQUIDITY
         //byte[] data = getData3();   //GET_UTILIZED_LIQUIDITY
         //byte[] data = getData4(); //GET_LIQUIDITY_LIMIT
         //byte[] data = getData5(); //INCREASE_UTILIZED_LIQUIDITY
@@ -112,7 +112,7 @@ public class MessageListenerTester {
     private byte[] getData6(){
         LiquidityTrackerIncomingMessage.Builder builder = LiquidityTrackerIncomingMessage.newBuilder(); 
         builder.setType(IncomingMessageType.DECREASE_UTILIZED_LIQUIDITY);
-        builder.setValue(10);
+        builder.setValue(30);
         return builder.build().toByteArray();
     }
 
