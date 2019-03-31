@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -22,9 +21,6 @@ public class BirtReportController {
     @Autowired
     private BirtReportService reportService;
 
-    /**
-     * generate list of reports
-     */
     @RequestMapping(produces = "application/json", method = RequestMethod.GET, value = "/report")
     @ResponseBody
     public List<Report> listReports() {
@@ -44,16 +40,12 @@ public class BirtReportController {
         return ResponseEntity.ok().build();
     }
 
-    /**
-     * Generate full report
-     */
     @RequestMapping(method = RequestMethod.GET, value = "/report/{name}")
     @ResponseBody
     public void generateFullReport(HttpServletResponse response, HttpServletRequest request,
-                                   @PathVariable("name") String name, @RequestParam("output") String output) throws EngineException, IOException {
+                                   @PathVariable("name") String name, @RequestParam("output") String output) {
         log.info("Generating full report: " + name);
         OutputType format = OutputType.from(output);
         reportService.generateMainReport(name, format, response, request);
     }
-
 }

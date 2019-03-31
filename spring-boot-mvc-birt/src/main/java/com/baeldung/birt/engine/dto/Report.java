@@ -3,9 +3,7 @@ package com.baeldung.birt.engine.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +32,6 @@ public class Report {
     }
 
     public enum ParameterType {
-        INT, STRING;
+        INT, STRING
     }
 }
