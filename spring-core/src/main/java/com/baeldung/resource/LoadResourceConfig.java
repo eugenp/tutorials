@@ -1,7 +1,7 @@
 package com.baeldung.resource;
 
 import com.google.common.io.CharStreams;
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,9 +20,7 @@ public class LoadResourceConfig {
     @Value("classpath:resource.txt")
     private Resource resource;
 
-    @Value("#{T(org.apache.commons.io.FileUtils).readFileToString(" +
-            "T(org.springframework.util.ResourceUtils).getFile('classpath:resource.txt')" +
-            ")}")
+    @Value("#{T(org.apache.commons.io.FileUtils).readFileToString(" + "T(org.springframework.util.ResourceUtils).getFile('classpath:resource.txt')" + ")}")
     private String resourceStringUsingSpel;
 
     @Bean
@@ -38,7 +36,7 @@ public class LoadResourceConfig {
 
     @Bean
     public String resourceStringUsingStreamUtils() throws IOException {
-        try(InputStream inputStream = resource.getInputStream()) {
+        try (InputStream inputStream = resource.getInputStream()) {
             return StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
         }
     }
@@ -52,12 +50,6 @@ public class LoadResourceConfig {
 
     @Bean
     public String resourceStringUsingCommonsIo() throws IOException {
-        try(InputStream inputStream = resource.getInputStream()) {
-            return IOUtils.toString(inputStream,  StandardCharsets.UTF_8.name() );
-        }
+        return FileUtils.readFileToString(resource.getFile(), StandardCharsets.UTF_8);
     }
 }
-
-
-
-

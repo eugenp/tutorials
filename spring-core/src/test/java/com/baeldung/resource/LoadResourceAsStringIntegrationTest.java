@@ -11,12 +11,10 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class,
-        classes = LoadResourceConfig.class)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = LoadResourceConfig.class)
 public class LoadResourceAsStringIntegrationTest {
 
-    private static final String ORIGINAL_DESCRIPTION = "This is a resource text file. This file will be loaded as a " +
-            "resource and use its contents as a string.";
+    private static final String ORIGINAL_DESCRIPTION = "This is a resource text file. This file will be loaded as a " + "resource and use its contents as a string.";
 
     @Autowired
     @Qualifier("resourceStringUsingSpel")
