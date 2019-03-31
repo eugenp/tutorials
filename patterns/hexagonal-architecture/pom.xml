@@ -22,6 +22,9 @@
         <protobuf.version>3.6.1</protobuf.version>
         <postgresql.version>42.2.5</postgresql.version>
         <rabbitmq.version>5.6.0</rabbitmq.version>
+        <!-- To skip the generation and compilation of the proto Java classes which  -->
+        <!-- requires the protoc binary to be present in the PATH environment variable -->
+        <skip.proto>true</skip.proto>
     </properties>
 
     <dependencies>
@@ -95,6 +98,9 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <version>${maven.antrun.plugin.version}</version>
+                <configuration>
+                    <skip>${skip.proto}</skip>
+                </configuration>
                 <executions>
                     <execution>
                         <id>compile-proto</id>
@@ -117,9 +123,6 @@
                                 <!-- com.google.protobuf:protobuf-java version -->
                                 
                                 <script language="javascript" >
-                                <!-- workaround for "Unable to create javax script engine for javascript" using JAVA 10 -->
-                                <!-- bug as explained in: https://bugs.eclipse.org/bugs/show_bug.cgi?id=481482#c11 -->
-                                <!--script manager="javax" language="javascript" classpath="${java.home}/lib/ext/nashorn.jar"-->
                                     <![CDATA[
                                     print("Going to generate the proto Java classes.\n");
                                     var execTask = project.createTask("exec");
