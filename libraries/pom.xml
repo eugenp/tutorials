@@ -699,6 +699,12 @@
 			<version>${reflections.version}</version>
 		</dependency>
 
+        <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId>
+            <version>${classgraph.version}</version>
+        </dependency>
+
     </dependencies>
 
     <repositories>
@@ -916,6 +922,7 @@
         <mockftpserver.version>2.7.1</mockftpserver.version>
         <commons-net.version>3.6</commons-net.version>
         <reflections.version>0.9.11</reflections.version>
+        <classgraph.version>4.8.22</classgraph.version>
 
     </properties>
 
