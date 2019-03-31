@@ -462,6 +462,7 @@
                 <module>JGit</module>
                 <module>jgroups</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -1106,6 +1107,7 @@
                 <module>JGit</module>
                 <module>jgroups</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
