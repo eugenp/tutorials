@@ -1,71 +1,81 @@
 package com.baeldung.environmentpostprocessor;
 
+import static org.springframework.core.env.StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME;
+
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
 import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.PropertySource;
-import org.springframework.core.env.StandardEnvironment;
 
-public class PriceCalculationEnvironmentPostProcessor implements EnvironmentPostProcessor, Ordered {
+@Order(Ordered.LOWEST_PRECEDENCE)
+public class PriceCalculationEnvironmentPostProcessor implements EnvironmentPostProcessor {
 
     private static final Logger logger = LoggerFactory.getLogger(PriceCalculationEnvironmentPostProcessor.class);
 
-    public static final int DEFAULT_ORDER = Ordered.LOWEST_PRECEDENCE;
-    private int order = DEFAULT_ORDER;
-    private static final String PROPERTY_PREFIX = "com.baeldung.environmentpostprocessor.";
-    private static final String OS_ENV_PROPERTY_CALCUATION_MODE = "calculation_mode";
-    private static final String OS_ENV_PROPERTY_GROSS_CALCULATION_TAX_RATE = "gross_calculation_tax_rate";
-    private static final String OS_ENV_PROPERTY_CALCUATION_MODE_DEFAULT_VALUE = "NET";
-    private static final double OS_ENV_PROPERTY_GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE = 0;
+    private static final String PREFIX = "com.baeldung.environmentpostprocessor.";
+    private static final String CALCUATION_MODE = "calculation_mode";
+    private static final String GROSS_CALCULATION_TAX_RATE = "gross_calculation_tax_rate";
+    private static final String CALCUATION_MODE_DEFAULT_VALUE = "NET";
+    private static final double GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE = 0;
+
+    List<String> names = Arrays.asList(CALCUATION_MODE, GROSS_CALCULATION_TAX_RATE);
+
+    private static Map<String, Object> defaults = new LinkedHashMap<>();
+    static {
+        defaults.put(CALCUATION_MODE, CALCUATION_MODE_DEFAULT_VALUE);
+        defaults.put(GROSS_CALCULATION_TAX_RATE, GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE);
+    }
 
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
 
-        PropertySource<?> systemEnvironmentPropertySource = environment.getPropertySources()
-            .get(StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME);
+        PropertySource<?> system = environment.getPropertySources()
+            .get(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME);
 
-        Map<String, Object> priceCalculationConfiguration = new LinkedHashMap<>();
-        if (isActive(systemEnvironmentPropertySource)) {
-            priceCalculationConfiguration.put(key(OS_ENV_PROPERTY_CALCUATION_MODE), systemEnvironmentPropertySource.getProperty(OS_ENV_PROPERTY_CALCUATION_MODE));
-            priceCalculationConfiguration.put(key(OS_ENV_PROPERTY_GROSS_CALCULATION_TAX_RATE), systemEnvironmentPropertySource.getProperty(OS_ENV_PROPERTY_GROSS_CALCULATION_TAX_RATE));
-        } else {
-            logger.warn("System environment variables [calculation_mode,gross_calculation_tax_rate] not detected, fallback to default value [calcuation_mode={},gross_calcuation_tax_rate={}]", OS_ENV_PROPERTY_CALCUATION_MODE_DEFAULT_VALUE,
-                OS_ENV_PROPERTY_GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE);
-            priceCalculationConfiguration.put(key(OS_ENV_PROPERTY_CALCUATION_MODE), OS_ENV_PROPERTY_CALCUATION_MODE_DEFAULT_VALUE);
-            priceCalculationConfiguration.put(key(OS_ENV_PROPERTY_GROSS_CALCULATION_TAX_RATE), OS_ENV_PROPERTY_GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE);
+        Map<String, Object> prefixed = new LinkedHashMap<>();
+
+        if (!hasOurPriceProperties(system)) {
+            // Baeldung-internal code so this doesn't break other examples
+            logger.warn("System environment variables [calculation_mode,gross_calculation_tax_rate] not detected, fallback to default value [calcuation_mode={},gross_calcuation_tax_rate={}]", CALCUATION_MODE_DEFAULT_VALUE,
+                GROSS_CALCULATION_TAX_RATE_DEFAULT_VALUE);
+            prefixed = names.stream()
+                .collect(Collectors.toMap(this::rename, this::getDefaultValue));
+            environment.getPropertySources()
+                .addAfter(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, new MapPropertySource("prefixer", prefixed));
+            return;
         }
 
-        PropertySource<?> priceCalcuationPropertySource = new MapPropertySource("priceCalcuationPS", priceCalculationConfiguration);
+        prefixed = names.stream()
+            .collect(Collectors.toMap(this::rename, system::getProperty));
         environment.getPropertySources()
-            .addAfter(StandardEnvironment.SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, priceCalcuationPropertySource);
+            .addAfter(SYSTEM_ENVIRONMENT_PROPERTY_SOURCE_NAME, new MapPropertySource("prefixer", prefixed));
 
     }
 
-    private String key(String key) {
-        return PROPERTY_PREFIX + key.replaceAll("\\_", ".");
+    private Object getDefaultValue(String key) {
+        return defaults.get(key);
     }
 
-    private boolean isActive(PropertySource<?> systemEnvpropertySource) {
-        if (systemEnvpropertySource.containsProperty(OS_ENV_PROPERTY_CALCUATION_MODE) && systemEnvpropertySource.containsProperty(OS_ENV_PROPERTY_GROSS_CALCULATION_TAX_RATE)) {
+    private String rename(String key) {
+        return PREFIX + key.replaceAll("\\_", ".");
+    }
+
+    private boolean hasOurPriceProperties(PropertySource<?> system) {
+        if (system.containsProperty(CALCUATION_MODE) && system.containsProperty(GROSS_CALCULATION_TAX_RATE)) {
             return true;
         } else
             return false;
-    }
-
-    public void setOrder(int order) {
-        this.order = order;
-    }
-
-    @Override
-    public int getOrder() {
-        return order;
     }
 
 }
