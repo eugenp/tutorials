@@ -481,6 +481,7 @@
                 <module>JGit</module>
                 <module>jgroups</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -522,7 +523,6 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 
-                <module>noexception</module>
                 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -1125,6 +1125,7 @@
                 <module>JGit</module>
                 <module>jgroups</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -1166,7 +1167,6 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 
-                <module>noexception</module>
                 
                 <module>optaplanner</module>
                 <module>orika</module>
