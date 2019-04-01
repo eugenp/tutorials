@@ -504,7 +504,6 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 
-                <module>noexception</module>
                 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -1149,7 +1148,6 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 
-                <module>noexception</module>
                 
                 <module>optaplanner</module>
                 <module>orika</module>
