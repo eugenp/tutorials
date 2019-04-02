@@ -10,12 +10,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import com.baeldung.boot.Application;
+import com.baeldung.boot.config.H2JpaConfig;
 import com.baeldung.boot.domain.GenericEntity;
 import com.baeldung.boot.repository.GenericEntityRepository;
-import com.baeldung.config.H2TestProfileJPAConfig;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { Application.class, H2TestProfileJPAConfig.class })
+@SpringBootTest(classes = { Application.class, H2JpaConfig.class })
 @ActiveProfiles("test")
 public class SpringBootProfileIntegrationTest {
     @Autowired
