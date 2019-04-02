@@ -462,6 +462,7 @@
                 <module>JGit</module>
                 <module>jgroups</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -479,6 +480,7 @@
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
+                <module>libraries2</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
@@ -503,7 +505,6 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 
-                <module>noexception</module>
                 
                 <module>optaplanner</module>
                 <module>orika</module>
@@ -1106,6 +1107,7 @@
                 <module>JGit</module>
                 <module>jgroups</module>
                 <module>jhipster</module>
+                <module>jhipster-5</module>
                 <module>jib</module>
                 <module>jjwt</module>
                 <module>jmeter</module>
@@ -1147,7 +1149,6 @@
                 <module>mustache</module>
                 <module>mybatis</module>
                 
-                <module>noexception</module>
                 
                 <module>optaplanner</module>
                 <module>orika</module>
