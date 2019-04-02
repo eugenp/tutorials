@@ -1,0 +1,9 @@
+
+spring:
+  jersey:
+    application-path: /odata
+    
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
