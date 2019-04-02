@@ -10,7 +10,7 @@ import org.kie.api.runtime.manager.RuntimeManager;
 import org.kie.api.runtime.process.ProcessInstance;
 import org.kie.internal.runtime.manager.context.ProcessInstanceIdContext;
 
-public class WorkflowEngineTest extends JbpmJUnitBaseTestCase {
+public class WorkflowEngineIntegrationTest extends JbpmJUnitBaseTestCase {
 
     private String[] triggeredNodesArray = { "Start", "HelloWorld", "End" };
     private RuntimeManager manager = null;
