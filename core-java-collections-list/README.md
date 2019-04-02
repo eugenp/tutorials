@@ -5,7 +5,7 @@
 ### Relevant Articles: 
 - [Immutable ArrayList in Java](http://www.baeldung.com/java-immutable-list)
 - [Guide to the Java ArrayList](http://www.baeldung.com/java-arraylist)
-- [Random List Element](http://www.baeldung.com/java-random-list-element)
+- [Java – Get Random Item/Element From a List](http://www.baeldung.com/java-random-list-element)
 - [Removing all nulls from a List in Java](http://www.baeldung.com/java-remove-nulls-from-list)
 - [Removing all duplicates from a List in Java](http://www.baeldung.com/java-remove-duplicates-from-list)
 - [How to TDD a List Implementation in Java](http://www.baeldung.com/java-test-driven-list)
@@ -27,3 +27,7 @@
 - [Flattening Nested Collections in Java](http://www.baeldung.com/java-flatten-nested-collections)
 - [Intersection of Two Lists in Java](https://www.baeldung.com/java-lists-intersection)
 - [Multi Dimensional ArrayList in Java](https://www.baeldung.com/java-multi-dimensional-arraylist)
+- [Determine If All Elements Are the Same in a Java List](https://www.baeldung.com/java-list-all-equal)
+- [List of Primitive Integer Values in Java](https://www.baeldung.com/java-list-primitive-int)
+- [Performance Comparison of Primitive Lists in Java](https://www.baeldung.com/java-list-primitive-performance)
+- [Filtering a Java Collection by a List](https://www.baeldung.com/java-filter-collection-by-list)

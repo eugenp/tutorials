@@ -1,7 +1,7 @@
 ## Spring Data Couchbase Tutorial Project
 
 ### Relevant Articles:
-- [Spring Data Couchbase](http://www.baeldung.com/spring-data-couchbase)
+- [Intro to Spring Data Couchbase](http://www.baeldung.com/spring-data-couchbase)
 - [Entity Validation, Query Consistency, and Optimistic Locking in Spring Data Couchbase](http://www.baeldung.com/entity-validation-locking-and-query-consistency-in-spring-data-couchbase)
 - [Multiple Buckets and Spatial View Queries in Spring Data Couchbase](http://www.baeldung.com/spring-data-couchbase-buckets-and-spatial-view-queries)
 

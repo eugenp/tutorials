@@ -6,3 +6,8 @@ Module for the articles that are part of the Spring REST E-book:
 4. [Build a REST API with Spring and Java Config](http://www.baeldung.com/building-a-restful-web-service-with-spring-and-java-based-configuration)
 5. [HATEOAS for a Spring REST Service](http://www.baeldung.com/rest-api-discoverability-with-spring)
 6. [REST API Discoverability and HATEOAS](http://www.baeldung.com/restful-web-service-discoverability)
+7. [Versioning a REST API](http://www.baeldung.com/rest-versioning)
+8. [Http Message Converters with the Spring Framework](http://www.baeldung.com/spring-httpmessageconverter-rest)
+9. [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
+10. [Testing REST with multiple MIME types](http://www.baeldung.com/testing-rest-api-with-multiple-media-types)
+11. [Testing Web APIs with Postman Collections](https://www.baeldung.com/postman-testing-collections)

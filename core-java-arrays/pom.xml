@@ -390,7 +390,6 @@
 
         <!-- util -->
         <commons-lang3.version>3.8.1</commons-lang3.version>
-        <lombok.version>1.16.12</lombok.version>
         
         <jmh-core.version>1.19</jmh-core.version>
         <jmh-generator-annprocess.version>1.19</jmh-generator-annprocess.version>

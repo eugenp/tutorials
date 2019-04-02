@@ -3,5 +3,5 @@
 A simple example of using ehcache with spring-boot.
 
 ### Relevant Articles:
-- [Spring Boot Ehcache Example](http://www.baeldung.com/spring-ehcache)
+- [Spring Boot Ehcache Example](https://www.baeldung.com/spring-boot-ehcache)
 

@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import org.baeldung.resttemplate.web.dto.Foo;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -34,7 +35,7 @@ public class TestRestTemplateBasicLiveTest {
     @Test
     public void givenTestRestTemplate_whenSendGetForEntity_thenStatusOk() {
         TestRestTemplate testRestTemplate = new TestRestTemplate();
-        ResponseEntity<String> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", String.class);
+        ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
@@ -43,7 +44,7 @@ public class TestRestTemplateBasicLiveTest {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         restTemplateBuilder.configure(restTemplate);
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder);
-        ResponseEntity<String> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", String.class);
+        ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
@@ -52,7 +53,7 @@ public class TestRestTemplateBasicLiveTest {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         restTemplateBuilder.build();
         TestRestTemplate testRestTemplate = new TestRestTemplate(restTemplateBuilder);
-        ResponseEntity<String> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", String.class);
+        ResponseEntity<Foo> response = testRestTemplate.getForEntity(FOO_RESOURCE_URL + "/1", Foo.class);
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
