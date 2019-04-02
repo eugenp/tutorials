@@ -1,4 +1,4 @@
-package com.baeldung.dao.repositories;
+package com.baeldung.repository;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.domain.Employee;
+import com.baeldung.entity.Employee;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
