@@ -1,8 +1,6 @@
 package com.baeldung.exists;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.ignoreCase;
-
+import com.baeldung.Application;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,12 +11,11 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.boot.Application;
-import com.baeldung.boot.domain.Car;
-import com.baeldung.boot.repository.CarRepository;
-
 import java.util.Arrays;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.ignoreCase;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {Application.class})
