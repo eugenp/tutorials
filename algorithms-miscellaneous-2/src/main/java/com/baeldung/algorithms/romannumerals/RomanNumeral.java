@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.romannumerals;
+package com.baeldung.math.romannumerals;
 
 import java.util.Arrays;
 import java.util.Comparator;

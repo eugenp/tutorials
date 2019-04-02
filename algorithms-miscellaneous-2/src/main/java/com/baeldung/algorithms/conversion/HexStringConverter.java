@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.conversion;
+package com.baeldung.math.conversion;
 
 import java.math.BigInteger;
 

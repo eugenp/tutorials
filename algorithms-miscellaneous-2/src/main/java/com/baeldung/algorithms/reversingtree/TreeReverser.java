@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.reversingtree;
+package com.baeldung.math.reversingtree;
 
 import java.util.LinkedList;
 

@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.insertionsort;
+package com.baeldung.math.insertionsort;
 
 public class InsertionSort {
 

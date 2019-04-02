@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.sudoku;
+package com.baeldung.math.sudoku;
 
 import java.util.stream.IntStream;
 

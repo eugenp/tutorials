@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.heapsort;
+package com.baeldung.math.heapsort;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

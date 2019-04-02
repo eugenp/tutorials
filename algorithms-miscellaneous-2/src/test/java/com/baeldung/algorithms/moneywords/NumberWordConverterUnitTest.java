@@ -1,10 +1,10 @@
-package com.baeldung.algorithms.moneywords;
+package com.baeldung.math.moneywords;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.baeldung.algorithms.numberwordconverter.NumberWordConverter;
+import com.baeldung.math.numberwordconverter.NumberWordConverter;
 
 public class NumberWordConverterUnitTest {
 

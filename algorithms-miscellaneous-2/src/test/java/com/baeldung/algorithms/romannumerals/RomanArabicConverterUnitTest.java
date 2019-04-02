@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.romannumerals;
+package com.baeldung.math.romannumerals;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

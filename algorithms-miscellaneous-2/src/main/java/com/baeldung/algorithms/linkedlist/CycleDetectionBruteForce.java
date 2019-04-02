@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.linkedlist;
+package com.baeldung.math.linkedlist;
 
 public class CycleDetectionBruteForce {
 

@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.linkedlist;
+package com.baeldung.math.linkedlist;
 
 import java.util.Arrays;
 import java.util.Collection;
