@@ -16,7 +16,7 @@ import sun.reflect.Reflection;
 
 public class App {
 
-    private static final Logger logger = LoggerFactory.getLogger(App.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 
     public static void main(String[] args) throws Exception {
 
@@ -28,28 +28,26 @@ public class App {
 
     private static void getCrytpographyProviderName() {
         try {
-            logger.info("1. Java Cryptography Extension - Provider Name: " + new SunJCE().getName() + "\n");
+            LOGGER.info("1. JCE Provider Name: {}\n", new SunJCE().getName());
         } catch (Throwable e) {
-            logger.error(e.toString());
+            LOGGER.error(e.toString());
         }
     }
 
     private static void getCallStackClassNames() {
         try {
-            int i = 0;
             StringBuffer sbStack = new StringBuffer();
-            while (true) {
-                Class<?> caller = Reflection.getCallerClass(i++);
-                if (caller == null) {
-                    break;
-                } else {
-                    sbStack.append(caller.getName())
-                        .append("\n");
-                }
-            }
-            logger.info("2. Call Stack Class Names:\n" + sbStack.toString());
+            int i = 0;
+            Class<?> caller = Reflection.getCallerClass(i++);
+            do {
+                sbStack.append(i + ".")
+                    .append(caller.getName())
+                    .append("\n");
+                caller = Reflection.getCallerClass(i++);
+            } while (caller != null);
+            LOGGER.info("2. Call Stack:\n{}", sbStack);
         } catch (Throwable e) {
-            logger.error(e.toString());
+            LOGGER.error(e.toString());
         }
     }
 
@@ -61,9 +59,9 @@ public class App {
 
             StringWriter sw = new StringWriter();
             marshallerObj.marshal(book, sw);
-            logger.info("3. Xml for Book object:\n" + sw);
+            LOGGER.info("3. Xml for Book object:\n{}", sw);
         } catch (Throwable e) {
-            logger.error(e.toString());
+            LOGGER.error(e.toString());
         }
 
     }
@@ -71,9 +69,9 @@ public class App {
     private static void getBase64EncodedString(String inputString) {
         try {
             String encodedString = new BASE64Encoder().encode(inputString.getBytes());
-            logger.info("4. Base Encoded String: " + encodedString);
+            LOGGER.info("4. Base Encoded String: {}", encodedString);
         } catch (Throwable e) {
-            logger.error(e.toString());
+            LOGGER.error(e.toString());
         }
     }
 }

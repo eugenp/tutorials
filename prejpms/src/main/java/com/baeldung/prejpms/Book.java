@@ -10,9 +10,8 @@ public class Book {
     private String name;
 
     public Book() {
-        
     }
-    
+
     public Book(long id, String name) {
         this.id = id;
         this.name = name;
@@ -35,5 +34,4 @@ public class Book {
     public Long getId() {
         return id;
     }
-
 }
