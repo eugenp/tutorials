@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.ga.binary;
+package com.baeldung.math.ga.binary;
 
 import lombok.Data;
 

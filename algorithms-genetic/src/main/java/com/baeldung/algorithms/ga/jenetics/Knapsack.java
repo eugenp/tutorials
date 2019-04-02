@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.ga.jenetics;
+package com.baeldung.math.ga.jenetics;
 
 import static org.jenetics.engine.EvolutionResult.toBestPhenotype;
 import static org.jenetics.engine.limit.bySteadyFitness;

@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.conversion;
+package com.baeldung.math.conversion;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -9,7 +9,7 @@ import org.hamcrest.text.IsEqualIgnoringCase;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.algorithms.conversion.HexStringConverter;
+import com.baeldung.math.conversion.HexStringConverter;
 
 public class ByteArrayConverterUnitTest {
 

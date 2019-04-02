@@ -1,9 +1,9 @@
-package com.baeldung.algorithms;
+package com.baeldung.math;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.baeldung.algorithms.ga.annealing.SimulatedAnnealing;
+import com.baeldung.math.ga.annealing.SimulatedAnnealing;
 
 public class SimulatedAnnealingLongRunningUnitTest {
 

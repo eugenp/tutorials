@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.primechecker;
+package com.baeldung.math.primechecker;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.slope_one;
+package com.baeldung.math.slope_one;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

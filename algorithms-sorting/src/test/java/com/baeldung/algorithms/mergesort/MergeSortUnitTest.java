@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.mergesort;
+package com.baeldung.math.mergesort;
 
 import org.junit.Assert;
 

@@ -1,9 +1,9 @@
-package com.baeldung.algorithms;
+package com.baeldung.math;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.baeldung.algorithms.ga.binary.SimpleGeneticAlgorithm;
+import com.baeldung.math.ga.binary.SimpleGeneticAlgorithm;
 
 public class BinaryGeneticAlgorithmLongRunningUnitTest {
 

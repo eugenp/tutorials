@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.editdistance;
+package com.baeldung.math.editdistance;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.maze.solver;
+package com.baeldung.math.maze.solver;
 
 import java.io.File;
 import java.io.FileNotFoundException;

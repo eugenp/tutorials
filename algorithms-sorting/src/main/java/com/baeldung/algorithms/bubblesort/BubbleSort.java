@@ -1,4 +1,4 @@
-package com.baeldung.algorithms.bubblesort;
+package com.baeldung.math.bubblesort;
 
 import java.util.stream.IntStream;
 
