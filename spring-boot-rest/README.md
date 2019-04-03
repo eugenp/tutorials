@@ -10,3 +10,4 @@ Module for the articles that are part of the Spring REST E-book:
 8. [Http Message Converters with the Spring Framework](http://www.baeldung.com/spring-httpmessageconverter-rest)
 9. [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
 10. [Testing REST with multiple MIME types](http://www.baeldung.com/testing-rest-api-with-multiple-media-types)
+11. [Testing Web APIs with Postman Collections](https://www.baeldung.com/postman-testing-collections)

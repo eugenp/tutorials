@@ -42,15 +42,14 @@
                     "raw": "{\n  \"name\": \"Transformers\"\n}"
                 },
                 "url": {
-                    "raw": "http://localhost:8082/spring-boot-rest/auth/foos",
+                    "raw": "http://localhost:8080/spring-boot-rest/foos",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8082",
+                    "port": "8080",
                     "path": [
                         "spring-boot-rest",
-                        "auth",
                         "foos"
                     ]
                 }
@@ -85,15 +84,14 @@
                     "raw": ""
                 },
                 "url": {
-                    "raw": "http://localhost:8082/spring-boot-rest/auth/foos/{{id}}",
+                    "raw": "http://localhost:8080/spring-boot-rest/foos/{{id}}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8082",
+                    "port": "8080",
                     "path": [
                         "spring-boot-rest",
-                        "auth",
                         "foos",
                         "{{id}}"
                     ]
@@ -123,15 +121,14 @@
                     "raw": ""
                 },
                 "url": {
-                    "raw": "http://localhost:8082/spring-boot-rest/auth/foos/{{id}}",
+                    "raw": "http://localhost:8080/spring-boot-rest/foos/{{id}}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8082",
+                    "port": "8080",
                     "path": [
                         "spring-boot-rest",
-                        "auth",
                         "foos",
                         "{{id}}"
                     ]
@@ -164,15 +161,14 @@
                     "raw": ""
                 },
                 "url": {
-                    "raw": "http://localhost:8082/spring-boot-rest/auth/foos/{{id}}",
+                    "raw": "http://localhost:8080/spring-boot-rest/foos/{{id}}",
                     "protocol": "http",
                     "host": [
                         "localhost"
                     ],
-                    "port": "8082",
+                    "port": "8080",
                     "path": [
                         "spring-boot-rest",
-                        "auth",
                         "foos",
                         "{{id}}"
                     ]
