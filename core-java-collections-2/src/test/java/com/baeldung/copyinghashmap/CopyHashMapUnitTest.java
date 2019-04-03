@@ -13,27 +13,6 @@ import com.google.common.collect.ImmutableMap;
 public class CopyHashMapUnitTest {
     
     @Test
-    public void givenHashmap_whenCopy_thenCopyContainsAllMappings() {
-        
-        HashMap<String, String> colorMap = new HashMap<>();
-        colorMap.put("1", "Red");
-        colorMap.put("2", "Blue");
-        colorMap.put("3", "Green");
-        
-        System.out.println("ColorMap content : " + colorMap);
-        
-        HashMap<String, String> colorMapCopy = new HashMap<>();
-        colorMapCopy.put("1", "Orange");
-        colorMapCopy.put("4", "Black");
-        
-        colorMapCopy = CopyHashMap.basicCopy(colorMap, colorMapCopy);
-        
-        System.out.println("ColorMapCopy content : " +colorMapCopy);
-        
-        assertEquals(4, colorMapCopy.size());
-    }
-    
-    @Test
     public void givenHashMap_whenShallowCopy_thenCopyisNotSameAsOriginal() {
         
         HashMap<String, Employee> employeeMap = new HashMap<>();
@@ -80,7 +59,21 @@ public class CopyHashMapUnitTest {
         assertThat(employeeMapDeepCopy.get("employee1"))
         .isNotEqualTo(employeeMap.get("employee1"));
         
-    }  
+    } 
+    
+    @Test
+    public void givenHashMapWithValuesInCms_whenCopy_thenCopyMapShouldHaveValuesInInches() {
+        
+        HashMap<String, Integer> heightMap = new HashMap<>();
+        heightMap.put("emp1", 160);
+        heightMap.put("emp2", 165);
+        heightMap.put("emp3", 163);
+        HashMap heightMapInInches = CopyHashMap.copyMapAndConvertCmsToInches(heightMap);
+        
+        assertThat(heightMap).isNotEqualTo(heightMapInInches);
+        
+        assertThat(heightMap.get("emp1")/2.54).isEqualTo(heightMapInInches.get("emp1"));
+    } 
     
     @Test
     public void givenImmutableMap_whenCopyUsingGuava_thenCopyShouldNotChange() {
@@ -95,6 +88,5 @@ public class CopyHashMapUnitTest {
         assertThat(heightMapCopy).isSameAs(heightMap);
         
     }
-    
 
 }
