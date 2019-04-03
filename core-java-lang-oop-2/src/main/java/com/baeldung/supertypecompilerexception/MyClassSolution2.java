@@ -1,15 +1,15 @@
 package com.baeldung.supertypecompilerexception;
 
-public class MyClassSolutionII {
+public class MyClassSolution2 {
 
     private int myField1 = 10;
     private int myField2;
 
-    public MyClassSolutionII() {
+    public MyClassSolution2() {
         setupMyFields(myField1);
     }
 
-    public MyClassSolutionII(int i) {
+    public MyClassSolution2(int i) {
         setupMyFields(i);
     }
 
