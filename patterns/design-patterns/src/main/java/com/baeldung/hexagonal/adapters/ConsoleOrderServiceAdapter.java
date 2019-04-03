@@ -5,8 +5,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 import com.baeldung.hexagonal.core.Order;
-import com.baeldung.hexagonal.exception.ItemNotFoundException;
-import com.baeldung.hexagonal.exception.OrderNotFoundException;
 import com.baeldung.hexagonal.ports.IOrderService;
 
 public class ConsoleOrderServiceAdapter {
@@ -19,7 +17,7 @@ public class ConsoleOrderServiceAdapter {
         this.orderService = orderService;
     }
     
-    public String createOrder() throws ItemNotFoundException {
+    public String createOrder() throws Exception {
         System.out.println("Enter the Order Items in 'name:count' pair, separate by comma, as 'item1:1,item2:2'");
         System.out.print(">");
         String itemsStr = scanner.next();
@@ -38,7 +36,7 @@ public class ConsoleOrderServiceAdapter {
         return order.getOrderId();
     }
     
-    public Order findOrderById() throws OrderNotFoundException {
+    public Order findOrderById() throws Exception {
         System.out.println("Enter the Order id:");
         System.out.print(">");
         String orderId = scanner.next();
@@ -48,7 +46,7 @@ public class ConsoleOrderServiceAdapter {
         return order;
     }
 
-    public void cancelOrder() throws OrderNotFoundException {
+    public void cancelOrder() throws Exception {
         System.out.println("Enter the Order id:");
         System.out.print(">");
         String orderId = scanner.next();
@@ -56,7 +54,7 @@ public class ConsoleOrderServiceAdapter {
         orderService.cancelOrder(orderId);
     }
 
-    public String updateOrder() throws ItemNotFoundException, OrderNotFoundException {
+    public String updateOrder() throws Exception {
         System.out.println("Enter the Order Items in 'orderId--name:count' pair, separate by comma, as '827abbe5-2cd1-4426-b56a-81caf18549be-item1:1,item2:2'");
         System.out.print(">");
         String orderStr = scanner.next();

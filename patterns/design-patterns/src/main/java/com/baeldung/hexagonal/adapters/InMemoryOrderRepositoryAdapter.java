@@ -8,8 +8,6 @@ import java.util.Map;
 
 import com.baeldung.hexagonal.core.Item;
 import com.baeldung.hexagonal.core.Order;
-import com.baeldung.hexagonal.exception.ItemNotFoundException;
-import com.baeldung.hexagonal.exception.OrderNotFoundException;
 import com.baeldung.hexagonal.ports.IOrderRepository;
 
 public class InMemoryOrderRepositoryAdapter implements IOrderRepository {
@@ -42,16 +40,16 @@ public class InMemoryOrderRepositoryAdapter implements IOrderRepository {
     }
 
     @Override
-    public Order findOrderById(String orderId) throws OrderNotFoundException {
+    public Order findOrderById(String orderId) throws Exception {
         if(allOrders.containsKey(orderId)) {
             return allOrders.get(orderId);
         }
         
-        throw new OrderNotFoundException("Order ("+orderId+") isn't found.");
+        throw new Exception("Order ("+orderId+") isn't found.");
     }
 
     @Override
-    public Order updateOrder(Order order) throws OrderNotFoundException {
+    public Order updateOrder(Order order) throws Exception {
         this.findOrderById(order.getOrderId());
         
         allOrders.put(order.getOrderId(), order);
@@ -60,7 +58,7 @@ public class InMemoryOrderRepositoryAdapter implements IOrderRepository {
     }
 
     @Override
-    public void cancelOrder(String orderId) throws OrderNotFoundException {
+    public void cancelOrder(String orderId) throws Exception {
         this.findOrderById(orderId);
 
         allOrders.remove(orderId);
@@ -73,12 +71,12 @@ public class InMemoryOrderRepositoryAdapter implements IOrderRepository {
 
 
     @Override
-    public Item findItemById(String itemId) throws ItemNotFoundException {
+    public Item findItemById(String itemId) throws Exception {
         if(allItems.containsKey(itemId)) {
             return allItems.get(itemId);
         }
         
-        throw new ItemNotFoundException("Item ("+itemId+") isn't found.");
+        throw new Exception("Item ("+itemId+") isn't found.");
     }
 
 }

@@ -3,8 +3,6 @@ package com.baeldung.hexagonal.core;
 import java.util.List;
 import java.util.Map;
 
-import com.baeldung.hexagonal.exception.ItemNotFoundException;
-import com.baeldung.hexagonal.exception.OrderNotFoundException;
 import com.baeldung.hexagonal.ports.IOrderNotification;
 import com.baeldung.hexagonal.ports.IOrderRepository;
 import com.baeldung.hexagonal.ports.IOrderService;
@@ -22,7 +20,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Order createOrder(Map<String, Integer> orderedItems) throws ItemNotFoundException {
+    public Order createOrder(Map<String, Integer> orderedItems) throws Exception {
         Order order = new Order();
         
         for(Map.Entry<String, Integer> orderedItem: orderedItems.entrySet()) {
@@ -40,7 +38,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Order findOrderById(String orderId) throws OrderNotFoundException {   
+    public Order findOrderById(String orderId) throws Exception {   
         
         Order order = repository.findOrderById(orderId);
         notification.sendNotification(orderId, "order is successfully retrieved. There are "
@@ -52,7 +50,7 @@ public class OrderService implements IOrderService {
 
     @Override
     public Order updateOrder(String orderId, Map<String, Integer> orderedItems) 
-        throws OrderNotFoundException, ItemNotFoundException {
+        throws Exception {
         
         Order order = repository.findOrderById(orderId);
         
@@ -70,7 +68,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public void cancelOrder(String orderId) throws OrderNotFoundException {
+    public void cancelOrder(String orderId) throws Exception {
         
         repository.cancelOrder(orderId);    
         notification.sendNotification(orderId, "order is successfully cancelled.");
