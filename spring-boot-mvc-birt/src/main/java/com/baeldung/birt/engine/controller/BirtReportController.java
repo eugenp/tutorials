@@ -44,7 +44,7 @@ public class BirtReportController {
     @ResponseBody
     public void generateFullReport(HttpServletResponse response, HttpServletRequest request,
                                    @PathVariable("name") String name, @RequestParam("output") String output) {
-        log.info("Generating full report: " + name);
+        log.info("Generating full report: " + name + "; format: " + output);
         OutputType format = OutputType.from(output);
         reportService.generateMainReport(name, format, response, request);
     }
