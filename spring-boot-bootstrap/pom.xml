@@ -52,9 +52,25 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.jmockit</groupId>
+			<artifactId>jmockit</artifactId>
+			<version>${jmockit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>${servlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-boot.web.version}</version>
 		</dependency>
 	</dependencies>
 
@@ -331,6 +347,8 @@
     
     <properties>
 		<servlet.version>4.0.0</servlet.version>
+		<spring-boot.web.version>5.1.4.RELEASE</spring-boot.web.version>
+		<jmockit.version>1.21</jmockit.version>
 	</properties>
 
 </project>

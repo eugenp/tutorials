@@ -20,6 +20,8 @@ public class SpringBootBootstrapLiveTest {
 
     private static final String API_ROOT = "http://localhost:8080/api/books";
 
+    private static final String ACCOUNT_API = "http://localhost:8080/api/account";
+
     @Test
     public void whenGetAllBooks_thenOK() {
         final Response response = RestAssured.get(API_ROOT);

@@ -1,5 +1,6 @@
 package com.baeldung.web;
 
+import com.baeldung.web.exception.AccountNotFoundException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
@@ -33,5 +34,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleBadRequest(Exception ex, WebRequest request) {
         return handleExceptionInternal(ex, ex
           .getLocalizedMessage(), new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler({AccountNotFoundException.class})
+    public ResponseEntity<Object> handleAccountServiceExceptions(Exception e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
