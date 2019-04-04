@@ -1,4 +1,4 @@
-package com.baeldung.math.quicksort;
+package com.baeldung.algorithms.quicksort;
 
 public class ThreeWayQuickSort {
 

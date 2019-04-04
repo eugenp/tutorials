@@ -1,4 +1,4 @@
-package com.baeldung.math.bubblesort;
+package com.baeldung.algorithms.bubblesort;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
