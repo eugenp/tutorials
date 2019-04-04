@@ -1,4 +1,4 @@
-package com.baeldung.math.sudoku;
+package com.baeldung.algorithms.sudoku;
 
 class ColumnNode extends DancingNode {
     int size;

@@ -1,4 +1,4 @@
-package com.baeldung.math.ga.jenetics;
+package com.baeldung.algorithms.ga.jenetics;
 
 import java.util.Random;
 import java.util.stream.Collector;

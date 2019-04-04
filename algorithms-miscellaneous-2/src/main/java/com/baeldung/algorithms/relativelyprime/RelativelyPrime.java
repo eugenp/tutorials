@@ -1,4 +1,4 @@
-package com.baeldung.math.relativelyprime;
+package com.baeldung.algorithms.relativelyprime;
 
 import java.math.BigInteger;
 

@@ -1,4 +1,4 @@
-package com.baeldung.math.reversingtree;
+package com.baeldung.algorithms.reversingtree;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
