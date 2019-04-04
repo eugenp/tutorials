@@ -9,14 +9,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableWebMvc
-public class BirtIntegrationApplication implements WebMvcConfigurer {
+public class ReportEngineApplication implements WebMvcConfigurer {
     @Value("${reports.relative.path}")
     private String reportsPath;
     @Value("${images.relative.path}")
     private String imagesPath;
 
     public static void main(final String[] args) {
-        SpringApplication.run(BirtIntegrationApplication.class, args);
+        SpringApplication.run(ReportEngineApplication.class, args);
     }
 
     @Override
