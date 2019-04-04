@@ -31,10 +31,10 @@ public class UserControllerIntegrationTest {
 
     @Test
     public void whenGetRequestToUserEndPointWithIdPathVariable_thenCorrectResponse() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", "727")
+        mockMvc.perform(MockMvcRequestBuilders.get("/user/{id}", "1")
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("727"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
     }
 
     @Test
