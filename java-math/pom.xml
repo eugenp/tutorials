@@ -67,10 +67,10 @@
                 <configuration>
                     <instrumentation>
                         <ignores>
-                            <ignore>com/baeldung/algorithms/dijkstra/*</ignore>
+                            <ignore>com/baeldung/math/dijkstra/*</ignore>
                         </ignores>
                         <excludes>
-                            <exclude>com/baeldung/algorithms/dijkstra/*</exclude>
+                            <exclude>com/baeldung/math/dijkstra/*</exclude>
                         </excludes>
                     </instrumentation>
                 </configuration>
