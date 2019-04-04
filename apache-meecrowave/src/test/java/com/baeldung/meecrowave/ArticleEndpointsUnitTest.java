@@ -17,7 +17,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 @RunWith(MonoMeecrowave.Runner.class)
-public class ArticleEndpointsTest {
+public class ArticleEndpointsUnitTest {
     
     @ConfigurationInject
     private Meecrowave.Builder config;
