@@ -1,4 +1,4 @@
-package com.baeldung.algorithms;
+package com.baeldung.math;
 
 import static org.junit.Assert.assertEquals;
 
