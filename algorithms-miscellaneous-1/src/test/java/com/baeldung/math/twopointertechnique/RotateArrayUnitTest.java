@@ -2,6 +2,7 @@ package com.baeldung.math.twopointertechnique;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.baeldung.algorithms.twopointertechnique.RotateArray;
 import org.junit.Test;
 
 public class RotateArrayUnitTest {

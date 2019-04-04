@@ -8,12 +8,12 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.baeldung.math.mcts.montecarlo.MonteCarloTreeSearch;
-import com.baeldung.math.mcts.montecarlo.State;
-import com.baeldung.math.mcts.montecarlo.UCT;
-import com.baeldung.math.mcts.tictactoe.Board;
-import com.baeldung.math.mcts.tictactoe.Position;
-import com.baeldung.math.mcts.tree.Tree;
+import com.baeldung.algorithms.mcts.montecarlo.MonteCarloTreeSearch;
+import com.baeldung.algorithms.mcts.montecarlo.State;
+import com.baeldung.algorithms.mcts.montecarlo.UCT;
+import com.baeldung.algorithms.mcts.tictactoe.Board;
+import com.baeldung.algorithms.mcts.tictactoe.Position;
+import com.baeldung.algorithms.mcts.tree.Tree;
 
 public class MCTSUnitTest {
     private Tree gameTree;

@@ -3,6 +3,7 @@ package com.baeldung.math.twopointertechnique;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import com.baeldung.algorithms.twopointertechnique.TwoSum;
 import org.junit.Test;
 
 public class TwoSumUnitTest {

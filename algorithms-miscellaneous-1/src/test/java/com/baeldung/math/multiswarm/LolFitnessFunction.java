@@ -1,5 +1,7 @@
 package com.baeldung.math.multiswarm;
 
+import com.baeldung.algorithms.multiswarm.FitnessFunction;
+
 /**
  * Specific fitness function implementation to solve the League of Legends
  * problem. This is the problem statement: <br>

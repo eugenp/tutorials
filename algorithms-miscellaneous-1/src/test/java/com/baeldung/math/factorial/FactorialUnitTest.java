@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.math.BigInteger;
 
+import com.baeldung.algorithms.factorial.Factorial;
 import org.junit.Before;
 import org.junit.Test;
 

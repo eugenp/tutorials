@@ -3,6 +3,8 @@ package com.baeldung.math.string;
 import static org.junit.Assert.assertEquals;
 import java.util.HashSet;
 import java.util.Set;
+
+import com.baeldung.algorithms.string.SubstringPalindrome;
 import org.junit.Test;
 
 public class SubstringPalindromeUnitTest {
