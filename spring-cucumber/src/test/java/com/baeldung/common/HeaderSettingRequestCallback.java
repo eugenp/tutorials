@@ -1,4 +1,4 @@
-package com.baeldung;
+package com.baeldung.common;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.ClientHttpRequest;
