@@ -1,6 +1,6 @@
-package com.baeldung.math.quicksort;
+package com.baeldung.algorithms.quicksort;
 
-import com.baeldung.math.quicksort.QuickSort;
+import com.baeldung.algorithms.quicksort.QuickSort;
 import org.junit.Assert;
 import org.junit.Test;
 

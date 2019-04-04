@@ -1,4 +1,4 @@
-package com.baeldung.math.heapsort;
+package com.baeldung.algorithms.heapsort;
 
 import java.util.ArrayList;
 import java.util.Arrays;
