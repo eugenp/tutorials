@@ -7,6 +7,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
 @PropertySource("classpath:foo.properties")
+@PropertySource("classpath:bar.properties")
 public class PropertiesWithJavaConfig {
 
     public PropertiesWithJavaConfig() {
