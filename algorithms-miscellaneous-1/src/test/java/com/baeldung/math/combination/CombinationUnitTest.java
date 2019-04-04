@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
+import com.baeldung.algorithms.combination.IterativeCombinationGenerator;
+import com.baeldung.algorithms.combination.SelectionRecursiveCombinationGenerator;
+import com.baeldung.algorithms.combination.SetRecursiveCombinationGenerator;
 import org.junit.Test;
 
 public class CombinationUnitTest {

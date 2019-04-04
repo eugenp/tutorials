@@ -1,5 +1,7 @@
 package com.baeldung.math.minimax;
 
+import com.baeldung.algorithms.minimax.MiniMax;
+import com.baeldung.algorithms.minimax.Tree;
 import org.junit.Before;
 import org.junit.Test;
 

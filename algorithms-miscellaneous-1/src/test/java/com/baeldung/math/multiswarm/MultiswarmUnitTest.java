@@ -1,5 +1,6 @@
 package com.baeldung.math.multiswarm;
 
+import com.baeldung.algorithms.multiswarm.Multiswarm;
 import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;

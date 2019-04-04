@@ -2,6 +2,7 @@ package com.baeldung.math.enumstatemachine;
 
 import static org.junit.Assert.assertEquals;
 
+import com.baeldung.algorithms.enumstatemachine.LeaveRequestState;
 import org.junit.Test;
 
 public class LeaveRequestStateUnitTest {

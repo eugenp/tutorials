@@ -2,6 +2,7 @@ package com.baeldung.math.kthlargest;
 
 import static org.assertj.core.api.Assertions.*;
 
+import com.baeldung.algorithms.kthlargest.FindKthLargest;
 import org.junit.Before;
 import org.junit.Test;
 

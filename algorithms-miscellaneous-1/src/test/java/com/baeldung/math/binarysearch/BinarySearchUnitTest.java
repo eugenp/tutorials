@@ -3,6 +3,7 @@ package com.baeldung.math.binarysearch;
 import java.util.Arrays;
 import java.util.List;
 
+import com.baeldung.algorithms.binarysearch.BinarySearch;
 import org.junit.Assert;
 import org.junit.Test;
 

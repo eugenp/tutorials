@@ -3,8 +3,8 @@ package com.baeldung.math.string;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static com.baeldung.math.string.LongestSubstringNonRepeatingCharacters.getUniqueCharacterSubstring;
-import static com.baeldung.math.string.LongestSubstringNonRepeatingCharacters.getUniqueCharacterSubstringBruteForce;
+import static com.baeldung.algorithms.string.LongestSubstringNonRepeatingCharacters.getUniqueCharacterSubstring;
+import static com.baeldung.algorithms.string.LongestSubstringNonRepeatingCharacters.getUniqueCharacterSubstringBruteForce;
 
 public class LongestSubstringNonRepeatingCharactersUnitTest {
 

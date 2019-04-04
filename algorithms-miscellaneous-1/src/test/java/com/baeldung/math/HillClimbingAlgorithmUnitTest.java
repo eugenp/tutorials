@@ -1,7 +1,7 @@
 package com.baeldung.math;
 
-import com.baeldung.math.hillclimbing.HillClimbing;
-import com.baeldung.math.hillclimbing.State;
+import com.baeldung.algorithms.hillclimbing.HillClimbing;
+import com.baeldung.algorithms.hillclimbing.State;
 import org.junit.Before;
 import org.junit.Test;
 

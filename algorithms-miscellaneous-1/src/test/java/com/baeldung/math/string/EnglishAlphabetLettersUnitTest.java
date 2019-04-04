@@ -1,5 +1,6 @@
 package com.baeldung.math.string;
 
+import com.baeldung.algorithms.string.EnglishAlphabetLetters;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

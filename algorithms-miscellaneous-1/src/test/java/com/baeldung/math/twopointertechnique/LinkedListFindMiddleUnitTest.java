@@ -2,6 +2,8 @@ package com.baeldung.math.twopointertechnique;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.baeldung.algorithms.twopointertechnique.LinkedListFindMiddle;
+import com.baeldung.algorithms.twopointertechnique.MyNode;
 import org.junit.Test;
 
 public class LinkedListFindMiddleUnitTest {

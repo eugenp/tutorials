@@ -4,7 +4,7 @@ package com.baeldung.math;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.baeldung.math.string.search.StringSearchAlgorithms;
+import com.baeldung.algorithms.string.search.StringSearchAlgorithms;
 
 public class StringSearchAlgorithmsUnitTest {
 	

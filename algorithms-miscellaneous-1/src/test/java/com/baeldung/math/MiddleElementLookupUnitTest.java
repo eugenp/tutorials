@@ -1,7 +1,7 @@
 package com.baeldung.math;
 
-import com.baeldung.math.middleelementlookup.MiddleElementLookup;
-import com.baeldung.math.middleelementlookup.Node;
+import com.baeldung.algorithms.middleelementlookup.MiddleElementLookup;
+import com.baeldung.algorithms.middleelementlookup.Node;
 import org.junit.Test;
 
 import java.util.LinkedList;
