@@ -1,8 +1,8 @@
-package com.baeldung.math;
+package com.baeldung.algorithms;
 
 import java.util.Scanner;
 
-import com.baeldung.math.slope_one.SlopeOne;
+import com.baeldung.algorithms.slope_one.SlopeOne;
 
 public class RunAlgorithm {
 

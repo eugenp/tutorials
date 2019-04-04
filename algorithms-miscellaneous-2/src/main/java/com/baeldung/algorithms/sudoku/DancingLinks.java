@@ -1,4 +1,4 @@
-package com.baeldung.math.sudoku;
+package com.baeldung.algorithms.sudoku;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

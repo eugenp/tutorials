@@ -1,4 +1,4 @@
-package com.baeldung.math.editdistance;
+package com.baeldung.algorithms.editdistance;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

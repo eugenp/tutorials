@@ -1,4 +1,4 @@
-package com.baeldung.math.maze.solver;
+package com.baeldung.algorithms.maze.solver;
 
 public class Coordinate {
     int x;

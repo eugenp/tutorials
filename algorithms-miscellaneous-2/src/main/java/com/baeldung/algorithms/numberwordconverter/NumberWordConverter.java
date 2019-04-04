@@ -1,4 +1,4 @@
-package com.baeldung.math.numberwordconverter;
+package com.baeldung.algorithms.numberwordconverter;
 
 import java.math.BigDecimal;
 

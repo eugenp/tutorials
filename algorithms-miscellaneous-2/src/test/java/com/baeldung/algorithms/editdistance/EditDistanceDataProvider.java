@@ -1,4 +1,4 @@
-package com.baeldung.math.editdistance;
+package com.baeldung.algorithms.editdistance;
 
 import org.junit.runners.Parameterized.Parameters;
 

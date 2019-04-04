@@ -1,4 +1,4 @@
-package com.baeldung.math.analysis;
+package com.baeldung.algorithms.analysis;
 
 import org.junit.Test;
 

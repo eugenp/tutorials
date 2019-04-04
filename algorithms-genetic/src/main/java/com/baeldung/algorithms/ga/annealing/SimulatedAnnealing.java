@@ -1,4 +1,4 @@
-package com.baeldung.math.ga.annealing;
+package com.baeldung.algorithms.ga.annealing;
 
 public class SimulatedAnnealing {
 

@@ -1,4 +1,4 @@
-package com.baeldung.math.linkedlist;
+package com.baeldung.algorithms.linkedlist;
 
 import java.util.HashSet;
 import java.util.Set;
