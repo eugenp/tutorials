@@ -2,111 +2,34 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
     xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-mvc-simple-2</artifactId>
     <packaging>war</packaging>
-    <version>0.0.1-SNAPSHOT</version>
     <name>spring-mvc-simple-2</name>
-    
-    <!-- -->
+
     <parent>
         <groupId>com.baeldung</groupId>
-        <artifactId>parent-spring-5</artifactId>
+        <artifactId>parent-boot-2</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../parent-spring-5</relativePath>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
-   <!-- -->
+
     <dependencies>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>${javax.servlet-api.version}</version>
-        </dependency>
-        <!--Testing -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven-surefire-plugin.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-jdk14</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest</artifactId>
-            <version>2.1</version>
-            <scope>test</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
-    
+
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <maven-surefire-plugin.version>3.0.0-M3</maven-surefire-plugin.version>
-        <junit.platform.version>5.5.0-M1</junit.platform.version>
-        <junit.jupiter.version>5.5.0-M1</junit.jupiter.version>
-        <spring.version>5.1.5.RELEASE</spring.version>
-        <javax.servlet-api.version>4.0.0</javax.servlet-api.version>
-        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
-        <deploy-path>/Apps/apache-tomcat-9.0.17/webapps</deploy-path>
     </properties>
-    
+
     <build>
         <plugins>
             <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-war-plugin</artifactId>
-                    <version>${maven-war-plugin.version}</version>
-                    <configuration>
-                        <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                        <warName>springMvcSimple2</warName>
-                        <failOnMissingWebXml>false</failOnMissingWebXml>
-                        <outputDirectory>${deploy-path}</outputDirectory>
-                    </configuration>
-                </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven-surefire-plugin.version}</version>
-                <executions>
-                  <execution>
-                    <goals>
-                      <goal>integration-test</goal>
-                      <goal>verify</goal>
-                    </goals>
-                  </execution>
-                 </executions>
+                <artifactId>maven-war-plugin</artifactId>
             </plugin>
         </plugins>
         <finalName>spring-mvc-simple2</finalName>

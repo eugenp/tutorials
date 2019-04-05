@@ -17,6 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ReadHeaderRestController {
     private static final Log LOG = LogFactory.getLog(ReadHeaderRestController.class);
+    
+    @GetMapping("/")
+    public ResponseEntity<String> index() {
+        return new ResponseEntity<String>("Index", HttpStatus.OK);
+    }
 
     @GetMapping("/greeting")
     public ResponseEntity<String> greeting(@RequestHeader(value = "accept-language") String language) {
