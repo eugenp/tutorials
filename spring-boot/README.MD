@@ -11,7 +11,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Using Custom Banners in Spring Boot](http://www.baeldung.com/spring-boot-custom-banners)
 - [Guide to Internationalization in Spring Boot](http://www.baeldung.com/spring-boot-internationalization)
 - [Create a Custom FailureAnalyzer with Spring Boot](http://www.baeldung.com/spring-boot-failure-analyzer)
-- [Dynamic DTO Validation Config Retrieved from DB](http://www.baeldung.com/spring-dynamic-dto-validation)
+- [Dynamic DTO Validation Config Retrieved from the Database](http://www.baeldung.com/spring-dynamic-dto-validation)
 - [Custom Information in Spring Boot Info Endpoint](http://www.baeldung.com/spring-boot-info-actuator-custom)
 - [Using @JsonComponent in Spring Boot](http://www.baeldung.com/spring-boot-jsoncomponent)
 - [Testing in Spring Boot](http://www.baeldung.com/spring-boot-testing)
