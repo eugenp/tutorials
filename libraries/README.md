@@ -67,6 +67,7 @@
 - [Introduction to Functional Java](https://www.baeldung.com/java-functional-library)
 - [Intro to Derive4J](https://www.baeldung.com/derive4j)
 - [A Guide to the Reflections Library](https://www.baeldung.com/reflections-library)
+- [A Guide to Google-Http-Client](https://www.baeldung.com/google-http-client)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
