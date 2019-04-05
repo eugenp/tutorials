@@ -7,7 +7,7 @@
 - [A Guide to the Java ExecutorService](http://www.baeldung.com/java-executor-service-tutorial)
 - [Guide to java.util.concurrent.Future](http://www.baeldung.com/java-future)
 - [Difference Between Wait and Sleep in Java](http://www.baeldung.com/java-wait-and-sleep)
-- [Guide to Synchronized Keyword in Java](http://www.baeldung.com/java-synchronized)
+- [Guide to the Synchronized Keyword in Java](http://www.baeldung.com/java-synchronized)
 - [Overview of the java.util.concurrent](http://www.baeldung.com/java-util-concurrent)
 - [Implementing a Runnable vs Extending a Thread](http://www.baeldung.com/java-runnable-vs-extending-thread)
 - [How to Kill a Java Thread](http://www.baeldung.com/java-thread-stop)
