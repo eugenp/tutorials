@@ -4,33 +4,23 @@ import java.io.Serializable;
 
 public class Employee implements Serializable{
     
-    private String firstName;
-    private String lastName;
+    private String name;
     
-    public Employee(String firstName, String lastName) {
+    public Employee(String name) {
         super();
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
     }
-    public String getFirstName() {
-        return firstName;
-    }
-    
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getName() {
+        return name;
     }
     
-    public String getLastName() {
-        return lastName;
-    }
-    
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(String name) {
+        this.name = name;
     }
     
     @Override
     public String toString() {
-        return this.firstName + " " + this.lastName;
+        return this.name;
     }
  
 }
