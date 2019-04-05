@@ -1031,7 +1031,7 @@
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
-	            <module>core-java-collections-2</module>
+                <module>core-java-collections-2</module>
                 <module>core-java-collections-list</module>
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
