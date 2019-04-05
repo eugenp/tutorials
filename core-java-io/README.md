@@ -40,3 +40,4 @@
 - [How to Write to a CSV File in Java](https://www.baeldung.com/java-csv)
 - [List Files in a Directory in Java](https://www.baeldung.com/java-list-directory-files)
 - [Java InputStream to Byte Array and ByteBuffer](https://www.baeldung.com/convert-input-stream-to-array-of-bytes)
+- [How to Copy a File with Java](https://www.baeldung.com/java-copy-file)
