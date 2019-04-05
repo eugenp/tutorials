@@ -6,7 +6,7 @@
 - [Introduction to Apache Flink with Java](http://www.baeldung.com/apache-flink)
 - [Introduction to JSONassert](http://www.baeldung.com/jsonassert)
 - [Intro to JaVers](http://www.baeldung.com/javers)
-- [Intro to Serenity BDD](http://www.baeldung.com/serenity-bdd)
+- [Introduction to Serenity BDD](http://www.baeldung.com/serenity-bdd)
 - [Merging Streams in Java](http://www.baeldung.com/java-merge-streams)
 - [Serenity BDD and Screenplay](http://www.baeldung.com/serenity-screenplay)
 - [Introduction to Quartz](http://www.baeldung.com/quartz)
