@@ -43,11 +43,11 @@ public class CopyHashMap {
         return copyMap;
     }
     
-    public static HashMap copyMapAndConvertCmsToInches(HashMap originalMap) {
+    public static HashMap copyMapAndDivideValuesBy2(HashMap originalMap) {
         Set<Map.Entry> entries = originalMap.entrySet();
         HashMap copyMap = (HashMap) entries
             .stream()
-            .collect(Collectors.toMap(mapEntry -> mapEntry.getKey(), mapEntry -> (int)mapEntry.getValue()/2.54));
+            .collect(Collectors.toMap(mapEntry -> mapEntry.getKey(), mapEntry -> (int)mapEntry.getValue()/2));
         
         return copyMap;
     }

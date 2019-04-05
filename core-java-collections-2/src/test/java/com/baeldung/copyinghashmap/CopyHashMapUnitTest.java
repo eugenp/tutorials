@@ -15,64 +15,63 @@ public class CopyHashMapUnitTest {
     @Test
     public void givenHashMap_whenShallowCopy_thenCopyisNotSameAsOriginal() {
         
-        HashMap<String, Employee> employeeMap = new HashMap<>();
-        Employee emp1 = new Employee("John", "Smith");
-        Employee emp2 = new Employee("Norman", "Lewis");
-        employeeMap.put("employee1",emp1);
-        employeeMap.put("employee2",emp2);
+        HashMap<String, Employee> map = new HashMap<>();
+        Employee emp1 = new Employee("John");
+        Employee emp2 = new Employee("Norman");
+        map.put("emp1",emp1);
+        map.put("emp2",emp2);
     
-        HashMap employeeMapShallowCopy = CopyHashMap.shallowCopy(employeeMap);
+        HashMap shallowCopy = CopyHashMap.shallowCopy(map);
         
-        assertThat(employeeMapShallowCopy).isNotSameAs(employeeMap);
+        assertThat(shallowCopy).isNotSameAs(map);
         
     }
     
     @Test
     public void givenHashMap_whenShallowCopyModifyingOriginalObject_thenCopyShouldChange() {
         
-        HashMap<String, Employee> employeeMap = new HashMap<>();
-        Employee emp1 = new Employee("John", "Smith");
-        Employee emp2 = new Employee("Norman", "Lewis");
-        employeeMap.put("employee1",emp1);
-        employeeMap.put("employee2",emp2);
-        HashMap employeeMapShallowCopy = CopyHashMap.shallowCopy(employeeMap);
+        HashMap<String, Employee> map = new HashMap<>();
+        Employee emp1 = new Employee("John");
+        Employee emp2 = new Employee("Norman");
+        map.put("emp1",emp1);
+        map.put("emp2",emp2);
         
-        emp1.setFirstName("Johny");
+        HashMap shallowCopy = CopyHashMap.shallowCopy(map);
         
-        assertThat(employeeMapShallowCopy.get("employee1"))
-        .isEqualTo(employeeMap.get("employee1"));
+        emp1.setName("Johny");
+        
+        assertThat(shallowCopy.get("emp1")).isEqualTo(map.get("emp1"));
         
     }
     
     @Test
     public void givenHashMap_whenDeepCopyModifyingOriginalObject_thenCopyShouldNotChange() {
         
-        HashMap<String, Employee> employeeMap = new HashMap<>();
-        Employee emp1 = new Employee("John", "Smith");
-        Employee emp2 = new Employee("Norman", "Lewis");
-        employeeMap.put("employee1",emp1);
-        employeeMap.put("employee2",emp2);
-        HashMap employeeMapDeepCopy = CopyHashMap.deepCopy(employeeMap);
+        HashMap<String, Employee> map = new HashMap<>();
+        Employee emp1 = new Employee("John");
+        Employee emp2 = new Employee("Norman");
+        map.put("emp1",emp1);
+        map.put("emp2",emp2);
+        HashMap deepCopy = CopyHashMap.deepCopy(map);
         
-        emp1.setFirstName("Johny");
+        emp1.setName("Johny");
         
-        assertThat(employeeMapDeepCopy.get("employee1"))
-        .isNotEqualTo(employeeMap.get("employee1"));
+        assertThat(deepCopy.get("emp1")).isNotEqualTo(map.get("emp1"));
         
     } 
     
     @Test
-    public void givenHashMapWithValuesInCms_whenCopy_thenCopyMapShouldHaveValuesInInches() {
+    public void givenHashMap_whenCopy_thenCopyMapShouldHaveValuesDivideBy2() {
         
         HashMap<String, Integer> heightMap = new HashMap<>();
         heightMap.put("emp1", 160);
         heightMap.put("emp2", 165);
         heightMap.put("emp3", 163);
-        HashMap heightMapInInches = CopyHashMap.copyMapAndConvertCmsToInches(heightMap);
+        HashMap heightMapCopy = CopyHashMap.copyMapAndDivideValuesBy2(heightMap);
         
-        assertThat(heightMap).isNotEqualTo(heightMapInInches);
+        assertThat(heightMap).isNotEqualTo(heightMapCopy);
         
-        assertThat(heightMap.get("emp1")/2.54).isEqualTo(heightMapInInches.get("emp1"));
+        assertThat(heightMap.get("emp1")/2).isEqualTo(heightMapCopy.get("emp1"));
     } 
     
     @Test
