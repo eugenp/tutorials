@@ -12,7 +12,7 @@
 - [Guide to the Java Phaser](http://www.baeldung.com/java-phaser)
 - [An Introduction to Atomic Variables in Java](http://www.baeldung.com/java-atomic-variables)
 - [CyclicBarrier in Java](http://www.baeldung.com/java-cyclic-barrier)
-- [Guide to Volatile Keyword in Java](http://www.baeldung.com/java-volatile)
+- [Guide to the Volatile Keyword in Java](http://www.baeldung.com/java-volatile)
 - [Semaphores in Java](http://www.baeldung.com/java-semaphore)
 - [Daemon Threads in Java](http://www.baeldung.com/java-daemon-thread)
 - [Priority-based Job Scheduling in Java](http://www.baeldung.com/java-priority-job-schedule)
