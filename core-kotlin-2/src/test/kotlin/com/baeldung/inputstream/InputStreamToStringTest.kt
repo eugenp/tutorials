@@ -1,6 +1,5 @@
-package com.baeldung.range
+package com.baeldung.inputstream
 
-import com.baeldung.inputstream.readUpToNullChar
 import kotlinx.io.core.use
 import org.junit.Test
 import java.io.BufferedReader
