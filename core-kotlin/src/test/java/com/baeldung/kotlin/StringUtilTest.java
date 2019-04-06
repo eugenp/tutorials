@@ -10,7 +10,7 @@ import static com.baeldung.kotlin.Strings.*;
 public class StringUtilTest {
 
     @Test
-    public void shouldSwapTwoElementsInList() {
+    public void shouldEscapeXmlTagsInString() {
         String xml = "<a>hi</a>";
 
         String escapedXml = escapeForXml(xml);
