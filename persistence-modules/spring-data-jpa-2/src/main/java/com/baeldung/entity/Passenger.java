@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-class Passenger {
+public class Passenger {
 
     @Id
     @GeneratedValue
@@ -27,7 +27,7 @@ class Passenger {
         this.lastName = lastName;
     }
 
-    static Passenger from(String firstName, String lastName) {
+    public static Passenger from(String firstName, String lastName) {
         return new Passenger(firstName, lastName);
     }
 
