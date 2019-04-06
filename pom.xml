@@ -332,7 +332,7 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
-                
+                <!-- <module>akka-http</module> --> <!-- Unit test is failing -->
                 <module>akka-streams</module>
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
@@ -391,6 +391,7 @@
                 <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
+                <module>core-java-lang-oop-2</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
                 <module>core-java-sun</module>
@@ -440,6 +441,7 @@
                 <module>jackson-2</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
+                <module>java-collections-maps-2</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-dates-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
@@ -448,6 +450,7 @@
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-streams</module>
+                <module>java-streams-2</module>
                 <module>java-strings</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
@@ -616,6 +619,7 @@
                 <module>spring-boot-mvc</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-data</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-testing</module>
@@ -663,11 +667,13 @@
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
                 <module>spring-mvc-simple</module>
+                <module>spring-mvc-simple-2</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
                 
                 <module>spring-protobuf</module>
+                <!-- <module>spring-security-cors</module> -->  <!-- PMD violation -->
                 
                 <module>spring-quartz</module>
                 
