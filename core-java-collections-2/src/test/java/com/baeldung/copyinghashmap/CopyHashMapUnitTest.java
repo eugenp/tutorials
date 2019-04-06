@@ -76,15 +76,16 @@ public class CopyHashMapUnitTest {
     
     @Test
     public void givenImmutableMap_whenCopyUsingGuava_thenCopyShouldNotChange() {
+        Employee emp1 = new Employee("John");
+        Employee emp2 = new Employee("Norman");
         
-        Map<String, Integer> heightMap = ImmutableMap.<String, Integer> builder()
-            .put("emp1", 160)
-            .put("emp2", 165)
-            .put("emp3", 163)
+        Map<String, Employee> map = ImmutableMap.<String, Employee> builder()
+            .put("emp1",emp1)
+            .put("emp2",emp2)
             .build();
-        Map<String, Integer> heightMapCopy = ImmutableMap.copyOf(heightMap);
+        Map<String, Employee> mapCopy = ImmutableMap.copyOf(map);
         
-        assertThat(heightMapCopy).isSameAs(heightMap);
+        assertThat(mapCopy).isSameAs(map);
         
     }
 
