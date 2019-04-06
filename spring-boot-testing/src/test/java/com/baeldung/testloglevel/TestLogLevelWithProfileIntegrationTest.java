@@ -17,52 +17,54 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT, classes = TestLogLevelApplication.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT, classes = TestLogLevelApplication.class)
 @EnableAutoConfiguration(exclude = SecurityAutoConfiguration.class)
-@ActiveProfiles("testloglevel")
+@ActiveProfiles("logging-test")
 public class TestLogLevelWithProfileIntegrationTest {
 
-	@Autowired
-	private TestRestTemplate restTemplate;
+    @Autowired
+    private TestRestTemplate restTemplate;
 
-	@Rule
-	public OutputCapture outputCapture = new OutputCapture();
+    @Rule
+    public OutputCapture outputCapture = new OutputCapture();
 
-	@Test
-	public void givenInfoRootLevelAndDebugLevelForOurPackage_whenCall_thenPrintDebugLogsForOurPackage() {
-		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/testLogLevel", String.class);
+    private String baseUrl = "/testLogLevel";
 
-		assertThat(response.getStatusCode().value()).isEqualTo(200);
-		assertThatOutputContainsLogForOurPackage("DEBUG");
-	}
+    @Test
+    public void givenInfoRootLevelAndDebugLevelForOurPackage_whenCall_thenPrintDebugLogsForOurPackage() {
+        ResponseEntity<String> response = restTemplate.getForEntity(baseUrl, String.class);
 
-	@Test
-	public void givenInfoRootLevelAndDebugLevelForOurPackage_whenCall_thenNoDebugLogsForOtherPackages() {
-		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/testLogLevel", String.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThatOutputContainsLogForOurPackage("DEBUG");
+    }
 
-		assertThat(response.getStatusCode().value()).isEqualTo(200);
-		assertThatOutputDoesntContainLogForOtherPackages("DEBUG");
-	}
+    @Test
+    public void givenInfoRootLevelAndDebugLevelForOurPackage_whenCall_thenNoDebugLogsForOtherPackages() {
+        ResponseEntity<String> response = restTemplate.getForEntity(baseUrl, String.class);
 
-	@Test
-	public void givenInfoRootLevelAndDebugLevelForOurPackage_whenCall_thenPrintInfoLogs() {
-		ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/testLogLevel", String.class);
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThatOutputDoesntContainLogForOtherPackages("DEBUG");
+    }
 
-		assertThat(response.getStatusCode().value()).isEqualTo(200);
-		assertThatOutputContainsLogForOurPackage("INFO");
-		assertThatOutputContainsLogForOtherPackages("INFO");
-	}
+    @Test
+    public void givenInfoRootLevelAndDebugLevelForOurPackage_whenCall_thenPrintInfoLogs() {
+        ResponseEntity<String> response = restTemplate.getForEntity(baseUrl, String.class);
 
-	private void assertThatOutputContainsLogForOurPackage(String level) {
-		assertThat(outputCapture.toString()).containsPattern("TestLogLevelController.*" + level + ".*");
-	}
+        assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThatOutputContainsLogForOurPackage("INFO");
+        assertThatOutputContainsLogForOtherPackages("INFO");
+    }
 
-	private void assertThatOutputDoesntContainLogForOtherPackages(String level) {
-		assertThat(outputCapture.toString().replaceAll("(?m)^.*TestLogLevelController.*$", "")).doesNotContain(level);
-	}
+    private void assertThatOutputContainsLogForOurPackage(String level) {
+        assertThat(outputCapture.toString()).containsPattern("TestLogLevelController.*" + level + ".*");
+    }
 
-	private void assertThatOutputContainsLogForOtherPackages(String level) {
-		assertThat(outputCapture.toString().replaceAll("(?m)^.*TestLogLevelController.*$", "")).contains(level);
-	}
+    private void assertThatOutputDoesntContainLogForOtherPackages(String level) {
+        assertThat(outputCapture.toString().replaceAll("(?m)^.*TestLogLevelController.*$", "")).doesNotContain(level);
+    }
+
+    private void assertThatOutputContainsLogForOtherPackages(String level) {
+        assertThat(outputCapture.toString().replaceAll("(?m)^.*TestLogLevelController.*$", "")).contains(level);
+    }
 
 }

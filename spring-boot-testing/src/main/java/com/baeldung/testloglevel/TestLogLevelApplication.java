@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.baeldung.boot.Application;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.baeldung.testloglevel", "com.baeldung.component"})
 public class TestLogLevelApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 }
