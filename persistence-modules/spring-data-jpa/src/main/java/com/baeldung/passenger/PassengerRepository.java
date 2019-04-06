@@ -15,4 +15,6 @@ interface PassengerRepository extends JpaRepository<Passenger, Long>, CustomPass
     
     List<Passenger> findByLastName(String lastName, Sort sort);
 
+    List<Passenger> findByFirstNameIgnoreCase(String firstName);
+
 }
