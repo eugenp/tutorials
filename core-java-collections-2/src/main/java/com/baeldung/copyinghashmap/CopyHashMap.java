@@ -43,15 +43,6 @@ public class CopyHashMap {
         return copyMap;
     }
     
-    public static HashMap copyMapAndDivideValuesBy2(HashMap originalMap) {
-        Set<Map.Entry> entries = originalMap.entrySet();
-        HashMap copyMap = (HashMap) entries
-            .stream()
-            .collect(Collectors.toMap(mapEntry -> mapEntry.getKey(), mapEntry -> (int)mapEntry.getValue()/2));
-        
-        return copyMap;
-    }
-    
     public static HashMap shallowCopy(HashMap originalMap) {
         return (HashMap) originalMap.clone();
     }

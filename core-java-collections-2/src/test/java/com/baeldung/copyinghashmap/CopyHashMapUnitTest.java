@@ -58,21 +58,7 @@ public class CopyHashMapUnitTest {
         
         assertThat(deepCopy.get("emp1")).isNotEqualTo(map.get("emp1"));
         
-    } 
-    
-    @Test
-    public void givenHashMap_whenCopy_thenCopyMapShouldHaveValuesDivideBy2() {
-        
-        HashMap<String, Integer> heightMap = new HashMap<>();
-        heightMap.put("emp1", 160);
-        heightMap.put("emp2", 165);
-        heightMap.put("emp3", 163);
-        HashMap heightMapCopy = CopyHashMap.copyMapAndDivideValuesBy2(heightMap);
-        
-        assertThat(heightMap).isNotEqualTo(heightMapCopy);
-        
-        assertThat(heightMap.get("emp1")/2).isEqualTo(heightMapCopy.get("emp1"));
-    } 
+    }
     
     @Test
     public void givenImmutableMap_whenCopyUsingGuava_thenCopyShouldNotChange() {
