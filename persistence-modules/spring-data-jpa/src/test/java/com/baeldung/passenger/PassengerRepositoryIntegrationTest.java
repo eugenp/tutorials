@@ -166,21 +166,4 @@ public class PassengerRepositoryIntegrationTest {
         assertThat(passengers, not(contains(siya)));
     }
 
-    @Test
-    public void givenPassengers_whenMatchingIgnoreCase_thenExpectedReturned() {
-        Passenger jill = Passenger.from("Jill", "Smith", 50);
-        Passenger eve = Passenger.from("Eve", "Jackson", 95);
-        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
-        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
-        Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
-
-        List<Passenger> passengers = repository.findByFirstNameIgnoreCase("FRED");
-
-        assertThat(passengers, contains(fred));
-        assertThat(passengers, not(contains(eve)));
-        assertThat(passengers, not(contains(siya)));
-        assertThat(passengers, not(contains(jill)));
-        assertThat(passengers, not(contains(ricki)));
-
-    }
 }
