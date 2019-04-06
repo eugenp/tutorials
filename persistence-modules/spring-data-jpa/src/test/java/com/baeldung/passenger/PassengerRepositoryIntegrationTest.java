@@ -1,17 +1,5 @@
 package com.baeldung.passenger;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.util.List;
-import java.util.Optional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +11,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.List;
+import java.util.Optional;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.core.IsNot.not;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
@@ -152,18 +151,36 @@ public class PassengerRepositoryIntegrationTest {
         Passenger fred = Passenger.from("Fred", "Bloggs", 22);
         Passenger siya = Passenger.from("Siya", "Kolisi", 85);
         Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
-    
+
         ExampleMatcher ignoringExampleMatcher = ExampleMatcher.matchingAny().withMatcher("lastName",
-          ExampleMatcher.GenericPropertyMatchers.startsWith().ignoreCase()).withIgnorePaths("firstName", "seatNumber");
-    
+            ExampleMatcher.GenericPropertyMatchers.startsWith().ignoreCase()).withIgnorePaths("firstName", "seatNumber");
+
         Example<Passenger> example = Example.of(Passenger.from(null, "b", null),
-          ignoringExampleMatcher);
-    
+            ignoringExampleMatcher);
+
         List<Passenger> passengers = repository.findAll(example);
-    
+
         assertThat(passengers, contains(fred, ricki));
         assertThat(passengers, not(contains(jill)));
         assertThat(passengers, not(contains(eve)));
         assertThat(passengers, not(contains(siya)));
+    }
+
+    @Test
+    public void givenPassengers_whenMatchingIgnoreCase_thenExpectedReturned() {
+        Passenger jill = Passenger.from("Jill", "Smith", 50);
+        Passenger eve = Passenger.from("Eve", "Jackson", 95);
+        Passenger fred = Passenger.from("Fred", "Bloggs", 22);
+        Passenger siya = Passenger.from("Siya", "Kolisi", 85);
+        Passenger ricki = Passenger.from("Ricki", "Bobbie", 36);
+
+        List<Passenger> passengers = repository.findByFirstNameIgnoreCase("FRED");
+
+        assertThat(passengers, contains(fred));
+        assertThat(passengers, not(contains(eve)));
+        assertThat(passengers, not(contains(siya)));
+        assertThat(passengers, not(contains(jill)));
+        assertThat(passengers, not(contains(ricki)));
+
     }
 }

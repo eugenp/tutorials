@@ -38,17 +38,17 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
         </dependency>
 
         <!-- Spring -->
@@ -133,7 +133,7 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
-            <version>${org.springframework.security.version}</version>
+            <version>${spring-security.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -206,9 +206,6 @@
     </build>
 
     <properties>
-        <!-- Spring -->
-        <org.springframework.security.version>5.0.5.RELEASE</org.springframework.security.version>
-
         <!-- various -->
         <javax.servlet.version>3.1.0</javax.servlet.version>
         <jstl.version>1.2</jstl.version>
