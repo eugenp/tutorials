@@ -3,7 +3,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath "io.ratpack:ratpack-gradle:1.4.5"
+    classpath "io.ratpack:ratpack-gradle:1.5.4"
     classpath "com.h2database:h2:1.4.193"
   }
 }
