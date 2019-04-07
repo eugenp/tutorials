@@ -35,7 +35,7 @@ public class PriceCalculationApplication implements CommandLineRunner {
             int quantity = Integer.valueOf(params.get(1));
             priceCalculationService.productTotalPrice(singlePrice, quantity);
         } else {
-            logger.error("Invalid arguments " + params.toString());
+            logger.warn("Invalid arguments " + params.toString());
         }
 
     }
