@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class GuavaMultiSetUnitTest {
 
     @Test
-    public void givenMultiSet_whenAddAndRemoveValues_shouldReturnCorrectCount() {
+    public void givenMultiSet_whenAddingValues_shouldReturnCorrectCount() {
         Multiset<String> bookStore = HashMultiset.create();
         bookStore.add("Potter");
         bookStore.add("Potter");
@@ -21,10 +21,17 @@ public class GuavaMultiSetUnitTest {
 
         assertThat(bookStore.contains("Potter")).isTrue();
         assertThat(bookStore.count("Potter")).isEqualTo(3);
+    }
+
+    @Test
+    public void givenMultiSet_whenRemovingValues_shouldReturnCorrectCount() {
+        Multiset<String> bookStore = HashMultiset.create();
+        bookStore.add("Potter");
+        bookStore.add("Potter");
 
         bookStore.remove("Potter");
         assertThat(bookStore.contains("Potter")).isTrue();
-        assertThat(bookStore.count("Potter")).isEqualTo(2);
+        assertThat(bookStore.count("Potter")).isEqualTo(1);
     }
 
     @Test
@@ -37,14 +44,32 @@ public class GuavaMultiSetUnitTest {
     @Test
     public void givenMultiSet_whenSettingNegativeCount_shouldThrowException() {
         Multiset<String> bookStore = HashMultiset.create();
-        assertThatThrownBy(() -> bookStore.setCount("Potter", -1)).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(() -> bookStore.setCount("Potter", -1))
+          .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    public void givenMultiSet_whenSettingCountWithOldCount_shouldReturnCorrectValue() {
+    public void givenMultiSet_whenSettingCountWithEmptySet_shouldBeSuccessful() {
         Multiset<String> bookStore = HashMultiset.create();
         assertThat(bookStore.setCount("Potter", 0, 2)).isTrue();
-        assertThat(bookStore.setCount("Potter", 50, 5)).isFalse();
+    }
+
+    @Test
+    public void givenMultiSet_whenSettingCountWithCorrectValue_shouldBeSuccessful() {
+        Multiset<String> bookStore = HashMultiset.create();
+        bookStore.add("Potter");
+        bookStore.add("Potter");
+
+        assertThat(bookStore.setCount("Potter", 2, 52)).isTrue();
+    }
+
+    @Test
+    public void givenMultiSet_whenSettingCountWithIncorrectValue_shouldFail() {
+        Multiset<String> bookStore = HashMultiset.create();
+        bookStore.add("Potter");
+        bookStore.add("Potter");
+
+        assertThat(bookStore.setCount("Potter", 5, 52)).isFalse();
     }
 
     @Test
