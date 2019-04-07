@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class ArithmeticFunctionTest {
+public class ArithmeticFunctionUnitTest {
 
     @Test
     public void test_addingIntegers_returnsSum() {

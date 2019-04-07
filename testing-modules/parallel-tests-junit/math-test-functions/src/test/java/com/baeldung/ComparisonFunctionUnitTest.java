@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class ComparisonFunctionTest {
+public class ComparisonFunctionUnitTest {
 
     @Test
     public void test_findMax() {
