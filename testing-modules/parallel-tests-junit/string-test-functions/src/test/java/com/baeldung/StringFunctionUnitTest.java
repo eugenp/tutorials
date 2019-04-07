@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class StringFunctionTest {
+public class StringFunctionUnitTest {
 
     @Test
     public void test_upperCase() {
