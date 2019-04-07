@@ -24,20 +24,20 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @FixMethodOrder
-public class SampleServiceManualTest {
+public class SampleClientManualTest {
 
 	@Autowired
-	private SampleService sampleService;
+	private SampleClient sampleClient;
 
 	@Test
 	public void a_givenKerberizedRestTemplate_whenServiceCall_thenSuccess() {
-		assertNotNull(sampleService);
-		assertEquals("data from kerberized server", sampleService.getData());
+		assertNotNull(sampleClient);
+		assertEquals("data from kerberized server", sampleClient.getData());
 	}
 
 	@Test
 	public void b_givenRestTemplate_whenServiceCall_thenFail() {
-		sampleService.setRestTemplate(new RestTemplate());
-		assertThrows(RestClientException.class, sampleService::getData);
+		sampleClient.setRestTemplate(new RestTemplate());
+		assertThrows(RestClientException.class, sampleClient::getData);
 	}
 }
