@@ -63,6 +63,7 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -92,86 +93,6 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>${maven.antrun.plugin.version}</version>
-                <configuration>
-                    <skip>${skip.proto}</skip>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>compile-proto</id>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <target>
-                                <mkdir dir="target/generated-sources"/>
-                                <path  id="proto.path">
-                                    <fileset dir="src/main/proto">
-                                        <include name="**/*.proto"/>
-                                    </fileset>                                
-                                </path>
-                                <pathconvert pathsep=" " property="proto.files" refid="proto.path" setonempty="false"/>
-                                
-                                <property name="projectBaseDir" value="${project.basedir}"/>
-                                <property name="projectBuildDirectory" value="${project.build.directory}"/>
-                                
-                                <!-- Note: the OS should be able to find the protoc binary -->
-                                <!-- the version of the protoc compiler must match the --> 
-                                <!-- com.google.protobuf:protobuf-java version -->
-                                
-                                <script language="javascript" >
-                                    <![CDATA[
-                                    print("Going to generate the proto Java classes.\n");
-                                    var execTask = project.createTask("exec");
-                                    
-                                    execTask.setExecutable("protoc");
-                                    execTask.setFailonerror(true);
-                                    
-                                    print("Source proto files: " + project.getProperty("proto.files") + "\n");
-                                    var arg1 = execTask.createArg();
-                                    var baseDir = project.getProperty("projectBaseDir");
-                                    arg1.setLine("--java_out=" + baseDir + "/target/generated-sources");
-                                    
-                                    var arg2 = execTask.createArg();
-                                    arg2.setLine("--proto_path=" + baseDir + "/src/main/proto");
-                                    
-                                    var protoFiles = project.getProperty("proto.files"); 
-                                    var arg3 = execTask.createArg();
-                                    arg3.setLine(protoFiles);
-                                    
-                                    execTask.execute();
-                                    ]]>
-                                </script>                                
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>${build.helper.maven.plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>add-source</id>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>add-source</goal>
-                        </goals>
-                        <configuration>
-                            <sources>
-                                <source>${project.build.directory}/generated-sources</source>                
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>                     
+        </pluginManagement>                  
     </build>    
 </project>
