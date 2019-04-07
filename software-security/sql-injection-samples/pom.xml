@@ -17,7 +17,6 @@
 
 	<dependencies>
 	
-	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
@@ -53,7 +52,6 @@
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-jpamodelgen</artifactId>
 		</dependency>
-
 
 	</dependencies>
 
