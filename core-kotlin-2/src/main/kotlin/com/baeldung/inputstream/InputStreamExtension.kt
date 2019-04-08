@@ -2,10 +2,10 @@ package com.baeldung.inputstream
 
 import java.io.InputStream
 
-fun InputStream.readUpToNullChar(nullChar: Char = '\n'): String {
+fun InputStream.readUpToChar(stopChar: Char): String {
     val stringBuilder = StringBuilder()
     var currentChar = this.read().toChar()
-    while (currentChar != nullChar) {
+    while (currentChar != stopChar) {
         stringBuilder.append(currentChar)
         currentChar = this.read().toChar()
         if (this.available() <= 0) {
@@ -15,3 +15,4 @@ fun InputStream.readUpToNullChar(nullChar: Char = '\n'): String {
     }
     return stringBuilder.toString()
 }
+

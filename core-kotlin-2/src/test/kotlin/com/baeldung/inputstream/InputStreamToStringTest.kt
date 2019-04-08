@@ -10,7 +10,7 @@ class InputStreamToStringTest {
     private val fileName = "src/test/resources/inputstream2string.txt"
     private val fileFullContent = "Computer programming can be a hassle\r\n" +
             "It's like trying to take a defended castle"
-    private val fileContentUpToNullChar = "Computer programming can be a hassle\r\n" +
+    private val fileContentUpToStopChar = "Computer programming can be a hassle\r\n" +
             "It"
 
     @Test
@@ -22,18 +22,37 @@ class InputStreamToStringTest {
     }
 
     @Test
-    fun whenReadFileUpToNullChar_thenPartBeforeNullCharIsReadAsString() {
+    fun whenReadFileWithBufferedReaderManually_thenFullFileContentIsReadAsString() {
         val file = File(fileName)
         val inputStream = file.inputStream()
-        val content = inputStream.use { it.readUpToNullChar('\'') }
-        assertEquals(fileContentUpToNullChar, content)
+        val reader = BufferedReader(inputStream.reader())
+        val content = StringBuilder()
+        try {
+            var line = reader.readLine()
+            while (line != null) {
+                content.append(line)
+                line = reader.readLine()
+            }
+        } finally {
+            reader.close()
+        }
+        assertEquals(fileFullContent.replace("\r\n", ""), content.toString())
+
     }
 
     @Test
-    fun whenReadFileWithoutContainingNullChar_thenFullFileContentIsReadAsString() {
+    fun whenReadFileUpToStopChar_thenPartBeforeStopCharIsReadAsString() {
         val file = File(fileName)
         val inputStream = file.inputStream()
-        val content = inputStream.use { it.readUpToNullChar('-') }
+        val content = inputStream.use { it.readUpToChar('\'') }
+        assertEquals(fileContentUpToStopChar, content)
+    }
+
+    @Test
+    fun whenReadFileWithoutContainingStopChar_thenFullFileContentIsReadAsString() {
+        val file = File(fileName)
+        val inputStream = file.inputStream()
+        val content = inputStream.use { it.readUpToChar('-') }
         assertEquals(fileFullContent, content)
     }
 
