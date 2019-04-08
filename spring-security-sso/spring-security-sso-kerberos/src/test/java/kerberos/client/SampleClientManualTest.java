@@ -31,7 +31,6 @@ public class SampleClientManualTest {
 
 	@Test
 	public void a_givenKerberizedRestTemplate_whenServiceCall_thenSuccess() {
-		assertNotNull(sampleClient);
 		assertEquals("data from kerberized server", sampleClient.getData());
 	}
 
