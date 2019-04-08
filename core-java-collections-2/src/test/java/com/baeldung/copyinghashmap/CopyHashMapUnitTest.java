@@ -1,6 +1,5 @@
 package com.baeldung.copyinghashmap;
 
-import static org.junit.Assert.assertEquals;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashMap;
@@ -21,7 +20,7 @@ public class CopyHashMapUnitTest {
         map.put("emp1",emp1);
         map.put("emp2",emp2);
     
-        HashMap shallowCopy = CopyHashMap.shallowCopy(map);
+        HashMap<String, Employee> shallowCopy = CopyHashMap.shallowCopy(map);
         
         assertThat(shallowCopy).isNotSameAs(map);
         
@@ -36,7 +35,7 @@ public class CopyHashMapUnitTest {
         map.put("emp1",emp1);
         map.put("emp2",emp2);
         
-        HashMap shallowCopy = CopyHashMap.shallowCopy(map);
+        HashMap<String, Employee> shallowCopy = CopyHashMap.shallowCopy(map);
         
         emp1.setName("Johny");
         
@@ -52,7 +51,7 @@ public class CopyHashMapUnitTest {
         Employee emp2 = new Employee("Norman");
         map.put("emp1",emp1);
         map.put("emp2",emp2);
-        HashMap deepCopy = CopyHashMap.deepCopy(map);
+        HashMap<String, Employee> deepCopy = CopyHashMap.deepCopy(map);
         
         emp1.setName("Johny");
         
