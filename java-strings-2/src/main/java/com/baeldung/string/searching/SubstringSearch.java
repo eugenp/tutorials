@@ -3,6 +3,8 @@ package com.baeldung.string.searching;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * BAEL-2832
  */
@@ -43,10 +45,10 @@ public class SubstringSearch {
     public void searchSubstringWithStringUtils() {
 
         // it will return true
-        org.apache.commons.lang3.StringUtils.containsIgnoreCase("Runaway train ", "train");
+        StringUtils.containsIgnoreCase("Runaway train ", "train");
 
         // it will also return true, because ignores case ;)
-        org.apache.commons.lang3.StringUtils.containsIgnoreCase("Runaway train", "Train");
+        StringUtils.containsIgnoreCase("Runaway train", "Train");
 
     }
 
