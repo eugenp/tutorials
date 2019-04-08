@@ -18,11 +18,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest(excludeAutoConfiguration = {
-        PersistenceConfiguration.class,
-        PersistenceUserConfiguration.class,
-        PersistenceProductConfiguration.class
-})
+@DataJpaTest(excludeAutoConfiguration = { PersistenceConfiguration.class, PersistenceUserConfiguration.class, PersistenceProductConfiguration.class })
 @ActiveProfiles("joins")
 public class JpaJoinsIntegrationTest {
 
@@ -36,7 +32,8 @@ public class JpaJoinsIntegrationTest {
         List<Department> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(3);
-        assertThat(resultList).extracting("name").containsOnly("Infra", "Accounting", "Accounting");
+        assertThat(resultList).extracting("name")
+            .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
@@ -46,7 +43,8 @@ public class JpaJoinsIntegrationTest {
         List<Department> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(3);
-        assertThat(resultList).extracting("name").containsOnly("Infra", "Accounting", "Accounting");
+        assertThat(resultList).extracting("name")
+            .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
@@ -56,18 +54,19 @@ public class JpaJoinsIntegrationTest {
         List<Department> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(3);
-        assertThat(resultList).extracting("name").containsOnly("Infra", "Accounting", "Accounting");
+        assertThat(resultList).extracting("name")
+            .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
     public void whenEntitiesAreListedInFromAndMatchedInWhere_ThenCreatesJoin() {
-        TypedQuery<Department> query = entityManager
-                .createQuery("SELECT d FROM Employee e, Department d WHERE e.department = d", Department.class);
+        TypedQuery<Department> query = entityManager.createQuery("SELECT d FROM Employee e, Department d WHERE e.department = d", Department.class);
 
         List<Department> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(3);
-        assertThat(resultList).extracting("name").containsOnly("Infra", "Accounting", "Accounting");
+        assertThat(resultList).extracting("name")
+            .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
@@ -77,16 +76,13 @@ public class JpaJoinsIntegrationTest {
         List<Department> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(9);
-        assertThat(resultList)
-                .extracting("name")
-                .containsOnly("Infra", "Accounting", "Management", "Infra", "Accounting", "Management", "Infra", "Accounting",
-                              "Management");
+        assertThat(resultList).extracting("name")
+            .containsOnly("Infra", "Accounting", "Management", "Infra", "Accounting", "Management", "Infra", "Accounting", "Management");
     }
 
     @Test
     public void whenCollectionValuedAssociationIsJoined_ThenCanSelect() {
-        TypedQuery<Phone> query = entityManager
-                .createQuery("SELECT ph FROM Employee e JOIN e.phones ph ", Phone.class);
+        TypedQuery<Phone> query = entityManager.createQuery("SELECT ph FROM Employee e JOIN e.phones ph ", Phone.class);
 
         List<Phone> resultList = query.getResultList();
 
@@ -95,43 +91,43 @@ public class JpaJoinsIntegrationTest {
 
     @Test
     public void whenMultipleEntitiesAreListedWithJoin_ThenCreatesMultipleJoins() {
-        TypedQuery<Phone> query = entityManager
-                .createQuery("SELECT ph FROM Employee e JOIN e.department d JOIN e.phones ph WHERE d.name IS NOT NULL", Phone.class);
+        TypedQuery<Phone> query = entityManager.createQuery("SELECT ph FROM Employee e JOIN e.department d JOIN e.phones ph WHERE d.name IS NOT NULL", Phone.class);
 
         List<Phone> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(3);
-        assertThat(resultList).extracting("number").containsOnly("111", "222", "333");
+        assertThat(resultList).extracting("number")
+            .containsOnly("111", "222", "333");
     }
 
     @Test
     public void whenLeftKeywordIsSpecified_thenCreatesOuterJoinAndIncludesNonMatched() {
-        TypedQuery<Department> query = entityManager
-                .createQuery("SELECT DISTINCT d FROM Department d LEFT JOIN d.employees e", Department.class);
+        TypedQuery<Department> query = entityManager.createQuery("SELECT DISTINCT d FROM Department d LEFT JOIN d.employees e", Department.class);
 
         List<Department> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(3);
-        assertThat(resultList).extracting("name").containsOnly("Infra", "Accounting", "Management");
+        assertThat(resultList).extracting("name")
+            .containsOnly("Infra", "Accounting", "Management");
     }
 
     @Test
     public void whenFetchKeywordIsSpecified_ThenCreatesFetchJoin() {
-        TypedQuery<Department> query = entityManager
-                .createQuery("SELECT d FROM Department d JOIN FETCH d.employees", Department.class);
+        TypedQuery<Department> query = entityManager.createQuery("SELECT d FROM Department d JOIN FETCH d.employees", Department.class);
 
         List<Department> resultList = query.getResultList();
 
         assertThat(resultList).hasSize(3);
-        assertThat(resultList).extracting("name").containsOnly("Infra", "Accounting", "Accounting");
+        assertThat(resultList).extracting("name")
+            .containsOnly("Infra", "Accounting", "Accounting");
     }
 
     @Test
     public void whenLeftAndFetchKeywordsAreSpecified_ThenCreatesOuterFetchJoin() {
-        TypedQuery<Department> query = entityManager
-                .createQuery("SELECT d FROM Department d LEFT JOIN FETCH d.employees", Department.class);
+        TypedQuery<Department> query = entityManager.createQuery("SELECT d FROM Department d LEFT JOIN FETCH d.employees", Department.class);
         List<Department> resultList = query.getResultList();
         assertThat(resultList).hasSize(4);
-        assertThat(resultList).extracting("name").containsOnly("Infra", "Accounting", "Accounting", "Management");
+        assertThat(resultList).extracting("name")
+            .containsOnly("Infra", "Accounting", "Accounting", "Management");
     }
 }
