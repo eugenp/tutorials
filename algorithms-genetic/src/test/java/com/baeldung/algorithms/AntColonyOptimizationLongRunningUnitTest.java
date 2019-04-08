@@ -1,9 +1,9 @@
 package com.baeldung.algorithms;
 
-import com.baeldung.algorithms.ga.ant_colony.AntColonyOptimization;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.baeldung.algorithms.ga.ant_colony.AntColonyOptimization;
 
 public class AntColonyOptimizationLongRunningUnitTest {
 
