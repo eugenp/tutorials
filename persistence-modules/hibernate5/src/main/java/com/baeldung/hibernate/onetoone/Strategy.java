@@ -2,6 +2,7 @@ package com.baeldung.hibernate.onetoone;
 
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public enum Strategy {
@@ -11,7 +12,18 @@ public enum Strategy {
     SHARED_PRIMARY_KEY(Arrays.asList(com.baeldung.hibernate.onetoone.sharedkeybased.User.class,
             com.baeldung.hibernate.onetoone.sharedkeybased.Address.class)),
     JOIN_TABLE_BASED(Arrays.asList(com.baeldung.hibernate.onetoone.jointablebased.Employee.class,
-            com.baeldung.hibernate.onetoone.jointablebased.WorkStation.class));
+            com.baeldung.hibernate.onetoone.jointablebased.WorkStation.class)),
+    MAP_KEY_COLUMN_BASED(Collections.singletonList(com.baeldung.hibernate.persistmaps.mapkeycolumn.Order.class)),
+    MAP_KEY_BASED(Arrays.asList(com.baeldung.hibernate.persistmaps.mapkey.Item.class,
+            com.baeldung.hibernate.persistmaps.mapkey.Order.class)),
+    MAP_KEY_JOIN_COLUMN_BASED(Arrays.asList(com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Seller.class,
+            com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Item.class,
+            com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Order.class)),
+    MAP_KEY_ENUMERATED_BASED(Arrays.asList(com.baeldung.hibernate.persistmaps.mapkeyenumerated.Order.class,
+            com.baeldung.hibernate.persistmaps.mapkey.Item.class)),
+    MAP_KEY_TEMPORAL_BASED(Arrays.asList(com.baeldung.hibernate.persistmaps.mapkeytemporal.Order.class,
+            com.baeldung.hibernate.persistmaps.mapkey.Item.class));
+
 
     private List<Class<?>> entityClasses;
 
