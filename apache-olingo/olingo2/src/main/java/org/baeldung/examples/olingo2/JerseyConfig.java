@@ -1,4 +1,4 @@
-package org.baeldung.examples.olingo2;
+    package org.baeldung.examples.olingo2;
 
 import java.io.IOException;
 
@@ -6,12 +6,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.Path;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.Provider;
 
 import org.apache.olingo.odata2.api.ODataServiceFactory;
@@ -57,10 +59,14 @@ public class JerseyConfig extends ResourceConfig {
      */
     @Provider
     public static class EntityManagerFilter implements ContainerRequestFilter, ContainerResponseFilter {
-        
+
         private static final Logger log = LoggerFactory.getLogger(EntityManagerFilter.class);
-        
+        public static final String EM_REQUEST_ATTRIBUTE = EntityManagerFilter.class.getName() + "_ENTITY_MANAGER";
+
         private final EntityManagerFactory emf;
+
+        @Context
+        private HttpServletRequest httpRequest;
 
         public EntityManagerFilter(EntityManagerFactory emf) {
             this.emf = emf;
@@ -70,11 +76,12 @@ public class JerseyConfig extends ResourceConfig {
         public void filter(ContainerRequestContext ctx) throws IOException {
             log.info("[I60] >>> filter");
             EntityManager em = this.emf.createEntityManager();
-            EntityManagerHolder.setCurrentEntityManager(em); 
-            
+            httpRequest.setAttribute(EM_REQUEST_ATTRIBUTE, em);
+
             // Start a new transaction unless we have a simple GET
-            if ( !"GET".equalsIgnoreCase(ctx.getMethod())) {
-                em.getTransaction().begin();
+            if (!"GET".equalsIgnoreCase(ctx.getMethod())) {
+                em.getTransaction()
+                    .begin();
             }
         }
 
@@ -82,24 +89,23 @@ public class JerseyConfig extends ResourceConfig {
         public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) throws IOException {
 
             log.info("[I68] <<< filter");
+            EntityManager em = (EntityManager) httpRequest.getAttribute(EM_REQUEST_ATTRIBUTE);
 
-            EntityManager em = EntityManagerHolder.getCurrentEntityManager();
-            if ( em != null && !"GET".equalsIgnoreCase(requestContext.getMethod())) {
+            if (!"GET".equalsIgnoreCase(requestContext.getMethod())) {
                 EntityTransaction t = em.getTransaction();
-                if ( t.isActive()) {
-                    if ( !t.getRollbackOnly()) {
+                if (t.isActive()) {
+                    if (!t.getRollbackOnly()) {
                         t.commit();
                     }
                 }
             }
-            
+
             em.close();
-            
+
         }
-        
+
     }
-    
-    
+
     @Path("/")
     public static class CarsRootLocator extends ODataRootLocator {
 
@@ -113,7 +119,7 @@ public class JerseyConfig extends ResourceConfig {
         public ODataServiceFactory getServiceFactory() {
             return this.serviceFactory;
         }
-        
+
     }
 
 }

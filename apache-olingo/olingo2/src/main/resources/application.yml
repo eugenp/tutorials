@@ -1,4 +1,6 @@
-
+server:
+  port: 8180
+  
 spring:
   jersey:
     application-path: /odata

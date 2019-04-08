@@ -19,10 +19,13 @@ import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.metamodel.Metamodel;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.olingo.odata2.api.processor.ODataContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAContext;
 import org.apache.olingo.odata2.jpa.processor.api.ODataJPAServiceFactory;
 import org.apache.olingo.odata2.jpa.processor.api.exception.ODataJPARuntimeException;
+import org.baeldung.examples.olingo2.JerseyConfig.EntityManagerFilter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.orm.jpa.EntityManagerFactoryUtils;
@@ -36,15 +39,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CarsODataJPAServiceFactory extends ODataJPAServiceFactory {
-    
+
     private static final Logger log = LoggerFactory.getLogger(CarsODataJPAServiceFactory.class);
-    
+
     public CarsODataJPAServiceFactory() {
         // Enable detailed error messages (useful for debugging)
         setDetailErrors(true);
     }
 
-    
     /**
      * This method will be called by Olingo on every request to
      * initialize the ODataJPAContext that will be used. 
@@ -54,37 +56,40 @@ public class CarsODataJPAServiceFactory extends ODataJPAServiceFactory {
 
         log.info("[I32] >>> initializeODataJPAContext()");
         ODataJPAContext ctx = getODataJPAContext();
-        
+        ODataContext octx = ctx.getODataContext();
+        HttpServletRequest request = (HttpServletRequest)octx.getParameter(ODataContext.HTTP_SERVLET_REQUEST_OBJECT);
+        EntityManager em = (EntityManager)request.getAttribute(EntityManagerFilter.EM_REQUEST_ATTRIBUTE);
+                
         // Here we're passing the EM that was created by the EntityManagerFilter (see JerseyConfig)
-        ctx.setEntityManager(new EntityManagerWrapper(EntityManagerHolder.getCurrentEntityManager()));
+        ctx.setEntityManager(new EntityManagerWrapper(em));
         ctx.setPersistenceUnitName("default");
         
         // We're managing the EM's lifecycle, so we must inform Olingo that it should not
         // try to manage transactions and/or persistence sessions
-        ctx.setContainerManaged(true);
-        
-                
+        ctx.setContainerManaged(true);                
         return ctx;
-        
     }
-    
+
     static class EntityManagerWrapper implements EntityManager {
-        
+
         private EntityManager delegate;
-        
+
         public void persist(Object entity) {
-            log.info("[I68] persist: entity.class=" + entity.getClass().getSimpleName());
+            log.info("[I68] persist: entity.class=" + entity.getClass()
+                .getSimpleName());
             delegate.persist(entity);
-            //delegate.flush();
+            // delegate.flush();
         }
 
         public <T> T merge(T entity) {
-            log.info("[I74] merge: entity.class=" + entity.getClass().getSimpleName());
+            log.info("[I74] merge: entity.class=" + entity.getClass()
+                .getSimpleName());
             return delegate.merge(entity);
         }
 
         public void remove(Object entity) {
-            log.info("[I78] remove: entity.class=" + entity.getClass().getSimpleName());
+            log.info("[I78] remove: entity.class=" + entity.getClass()
+                .getSimpleName());
             delegate.remove(entity);
         }
 
@@ -287,7 +292,7 @@ public class CarsODataJPAServiceFactory extends ODataJPAServiceFactory {
         public EntityManagerWrapper(EntityManager delegate) {
             this.delegate = delegate;
         }
-        
+
     }
 
 }
