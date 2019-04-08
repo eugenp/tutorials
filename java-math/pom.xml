@@ -58,26 +58,6 @@
         </pluginManagement>
     </build>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.7</version>
-                <configuration>
-                    <instrumentation>
-                        <ignores>
-                            <ignore>com/baeldung/math/dijkstra/*</ignore>
-                        </ignores>
-                        <excludes>
-                            <exclude>com/baeldung/math/dijkstra/*</exclude>
-                        </excludes>
-                    </instrumentation>
-                </configuration>
-            </plugin>
-        </plugins>
-    </reporting>
-
     <properties>
         <commons-math3.version>3.6.1</commons-math3.version>
         <org.assertj.core.version>3.9.0</org.assertj.core.version>

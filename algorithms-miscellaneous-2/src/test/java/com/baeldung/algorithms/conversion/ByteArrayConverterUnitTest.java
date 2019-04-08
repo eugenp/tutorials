@@ -1,6 +1,7 @@
 package com.baeldung.algorithms.conversion;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 import org.apache.commons.codec.DecoderException;
@@ -8,6 +9,7 @@ import org.hamcrest.text.IsEqualIgnoringCase;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.baeldung.algorithms.conversion.HexStringConverter;
 
 public class ByteArrayConverterUnitTest {
 

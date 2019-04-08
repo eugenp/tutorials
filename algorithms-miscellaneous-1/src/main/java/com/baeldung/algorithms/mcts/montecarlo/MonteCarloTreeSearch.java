@@ -2,9 +2,9 @@ package com.baeldung.algorithms.mcts.montecarlo;
 
 import java.util.List;
 
+import com.baeldung.algorithms.mcts.tictactoe.Board;
 import com.baeldung.algorithms.mcts.tree.Node;
 import com.baeldung.algorithms.mcts.tree.Tree;
-import com.baeldung.algorithms.mcts.tictactoe.Board;
 
 public class MonteCarloTreeSearch {
 

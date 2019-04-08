@@ -2,6 +2,7 @@ package com.baeldung.algorithms.mcts.montecarlo;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 import com.baeldung.algorithms.mcts.tree.Node;
 
