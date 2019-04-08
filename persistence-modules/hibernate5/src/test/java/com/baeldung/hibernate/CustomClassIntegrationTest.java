@@ -74,4 +74,6 @@ public class CustomClassIntegrationTest {
         assertEquals("John Smith", result.getEmployeeName());
         assertEquals("Sales", result.getDepartmentName());   
     }
+
+
 }

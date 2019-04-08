@@ -8,12 +8,10 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
-- [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
 - [Integration Testing with the Maven Cargo plugin](http://www.baeldung.com/integration-testing-with-the-maven-cargo-plugin)
 - [Introduction to Spring Data JPA](http://www.baeldung.com/the-persistence-layer-with-spring-data-jpa)
 - [Project Configuration with Spring](http://www.baeldung.com/project-configuration-with-spring)
 - [Metrics for your Spring REST API](http://www.baeldung.com/spring-rest-api-metrics)
-- [Bootstrap a Web Application with Spring 4](http://www.baeldung.com/bootstraping-a-web-application-with-spring-and-java-based-configuration)
 - [Spring Security Expressions - hasRole Example](https://www.baeldung.com/spring-security-expressions-basic)
 
 

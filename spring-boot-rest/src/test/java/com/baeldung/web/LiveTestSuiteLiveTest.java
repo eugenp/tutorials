@@ -8,8 +8,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 // @formatter:off
     FooDiscoverabilityLiveTest.class,
-    FooLiveTest.class
-    ,FooPageableLiveTest.class
+    FooLiveTest.class,
+    FooPageableLiveTest.class
 }) //
 public class LiveTestSuiteLiveTest {
 

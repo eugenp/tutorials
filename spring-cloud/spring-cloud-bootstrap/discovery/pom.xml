@@ -50,6 +50,6 @@
     </dependencyManagement>
 
     <properties>
-        <spring-cloud-dependencies.version>Brixton.SR7</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>Edgware.SR5</spring-cloud-dependencies.version>
     </properties>
 </project>
