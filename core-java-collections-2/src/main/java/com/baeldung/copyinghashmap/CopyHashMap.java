@@ -2,6 +2,7 @@ package com.baeldung.copyinghashmap;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -9,45 +10,45 @@ import org.apache.commons.lang3.SerializationUtils;
 
 public class CopyHashMap {
     
-    public static HashMap copyUsingConstructor(HashMap originalMap) {
-        return new HashMap(originalMap);
+    public static <K, V> HashMap<K, V> copyUsingConstructor(HashMap<K, V> originalMap) {
+        return new HashMap<K, V>(originalMap);
     }
     
-    public static HashMap copyUsingClone(HashMap originalMap) {
-        return (HashMap) originalMap.clone();
+    public static <K, V> HashMap<K, V> copyUsingClone(HashMap<K, V> originalMap) {
+        return (HashMap<K, V>) originalMap.clone();
     }
 
-    public static HashMap copyUsingPut(HashMap originalMap) {
-        HashMap copyMap = new HashMap();
-        Set<Map.Entry> entries = originalMap.entrySet();
-        for(Map.Entry mapEntry: entries) {
-            copyMap.put(mapEntry.getKey(), mapEntry.getValue());
+    public static <K, V> HashMap<K, V> copyUsingPut(HashMap<K, V> originalMap) {
+        HashMap<K, V> copyMap = new HashMap<K, V>();
+        Set<Entry<K, V>> entries = originalMap.entrySet();
+        for(Map.Entry<K, V> mapEntry: entries) {
+            copyMap.put((K)mapEntry.getKey(), (V)mapEntry.getValue());
         }
         
         return copyMap;
     }
     
-    public static Map copyUsingPutAll(Map originalMap) {
-        HashMap copyMap = new HashMap();
+    public static <K, V> HashMap<K, V> copyUsingPutAll(HashMap<K, V> originalMap) {
+        HashMap<K, V> copyMap = new HashMap<K, V>();
         copyMap.putAll(originalMap);
         
         return copyMap;
     }
     
-    public static HashMap copyUsingJava8Stream(HashMap originalMap) {
-        Set<Map.Entry> entries = originalMap.entrySet();
-        HashMap copyMap = (HashMap) entries
+    public static <K, V> HashMap<K, V> copyUsingJava8Stream(HashMap<K, V> originalMap) {
+        Set<Entry<K, V>> entries = originalMap.entrySet();
+        HashMap<K, V> copyMap = (HashMap<K, V>) entries
             .stream()
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         
         return copyMap;
     }
     
-    public static HashMap shallowCopy(HashMap originalMap) {
-        return (HashMap) originalMap.clone();
+    public static <K, V> HashMap<K, V> shallowCopy(HashMap<K, V> originalMap) {
+        return (HashMap<K, V>) originalMap.clone();
     }
     
-    public static HashMap deepCopy(HashMap originalMap) {
+    public static <K, V> HashMap<K, V> deepCopy(HashMap<K, V> originalMap) {
         return SerializationUtils.clone(originalMap);
     }
     
