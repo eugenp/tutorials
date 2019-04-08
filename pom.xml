@@ -385,6 +385,7 @@
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
                 <module>core-java-collections-list</module>
+                <module>core-java-collections-set</module>
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
@@ -1039,6 +1040,7 @@
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
                 <module>core-java-collections-list</module>
+                <module>core-java-collections-set</module>
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
                 <module>core-java-io</module>
