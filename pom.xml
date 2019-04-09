@@ -618,6 +618,7 @@
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
+                <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
@@ -1260,6 +1261,7 @@
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
+                <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-rest</module>
                 <module>spring-boot-data</module>
