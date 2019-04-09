@@ -1,4 +1,4 @@
-package com.baeldung.percentage;
+package com.baeldung.algorithms.percentage;
 
 import java.util.Scanner;
 

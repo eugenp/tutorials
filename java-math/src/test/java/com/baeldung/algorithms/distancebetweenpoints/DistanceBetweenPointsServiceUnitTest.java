@@ -2,8 +2,6 @@ package com.baeldung.algorithms.distancebetweenpoints;
 
 import org.junit.Test;
 
-import com.baeldung.algorithms.distancebetweenpoints.DistanceBetweenPointsService;
-
 import static org.junit.Assert.assertEquals;
 
 public class DistanceBetweenPointsServiceUnitTest {
