@@ -4,9 +4,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 import org.junit.Test;
 
-import com.baeldung.algorithms.rectanglesoverlap.Point;
-import com.baeldung.algorithms.rectanglesoverlap.Rectangle;
-
 public class RectangleUnitTest {
 
     @Test
