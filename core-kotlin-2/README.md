@@ -6,3 +6,4 @@
 - [String Comparison in Kotlin](https://www.baeldung.com/kotlin-string-comparison)
 - [Kotlin Annotations](https://www.baeldung.com/kotlin-annotations)
 - [Kotlin Scope Functions](https://www.baeldung.com/kotlin-scope-functions)
+- [Creating a Kotlin Range Iterator on a Custom Object](https://www.baeldung.com/kotlin-custom-range-iterator)
