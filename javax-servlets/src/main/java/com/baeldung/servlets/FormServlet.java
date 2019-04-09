@@ -1,7 +1,6 @@
 package com.baeldung.servlets;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,7 @@ public class FormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+      throws IOException {
 
         String height = request.getParameter("height");
         String weight = request.getParameter("weight");
@@ -25,23 +24,20 @@ public class FormServlet extends HttpServlet {
             response.setHeader("Test", "Success");
             response.setHeader("BMI", String.valueOf(bmi));
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {
-
             response.sendRedirect("index.jsp");
         }
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 
         // do something else here
     }
 
     private Double calculateBMI(Double weight, Double height) {
-
         return weight / (height * height);
     }
 }

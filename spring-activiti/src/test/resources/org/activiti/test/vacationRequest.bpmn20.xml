@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0ev" modeler:exportDateTime="20170708124328" modeler:modelId="1005826" modeler:modelVersion="1" modeler:modelLastUpdated="1499514116825">
+    <process id="vacationRequest" name="vacationRequest" isExecutable="true">
+        <startEvent id="startEvent" name="request" activiti:initiator="employeeName">
+            <extensionElements>
+                <activiti:formProperty id="numberOfDays" name="Number of days" type="long" required="true"/>
+                <activiti:formProperty id="startDate" name="Vacation start date (MM-dd-yyyy)" type="date" datePattern="MM-dd-yyyy hh:mm" required="true"/>
+                <activiti:formProperty id="reason" name="Reason for leave" type="string"/>
+                <modeler:editor-resource-id><![CDATA[startEvent1]]></modeler:editor-resource-id>
+            </extensionElements>
+        </startEvent>
+        <userTask id="handle_vacation_request" name="Handle Request for Vacation">
+            <documentation>${employeeName} would like to take ${numberOfDays} day(s) of vacation (Motivation: ${reason}).</documentation>
+            <extensionElements>
+                <activiti:formProperty id="vacationApproval" name="Do you approve this vacation request?" type="enum" required="true"/>
+                <activiti:formProperty id="comments" name="Comments from Manager" type="string"/>
+                <modeler:allow-send-email><![CDATA[true]]></modeler:allow-send-email>
+                <modeler:activiti-idm-initiator><![CDATA[true]]></modeler:activiti-idm-initiator>
+                <modeler:editor-resource-id><![CDATA[sid-B9AA8E66-2F11-45D0-A270-B052E1A9248E]]></modeler:editor-resource-id>
+            </extensionElements>
+            <potentialOwner>
+                <resourceAssignmentExpression>
+                    <formalExpression>management</formalExpression>
+                </resourceAssignmentExpression>
+            </potentialOwner>
+        </userTask>
+        <exclusiveGateway id="sid-12A577AE-5227-4918-8DE1-DC077D70967C">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-12A577AE-5227-4918-8DE1-DC077D70967C]]></modeler:editor-resource-id>
+            </extensionElements>
+        </exclusiveGateway>
+        <userTask id="modify_vacation_request" name="Modify vacation request" activiti:assignee="$INITIATOR">
+            <documentation>Your manager has disapproved your vacation request for ${numberOfDays} days.
+                Reason: ${comments}</documentation>
+            <extensionElements>
+                <activiti:formProperty id="numberOfDays" name="Number of days" type="long" expression="${numberOfDays}" required="true"/>
+                <activiti:formProperty id="startDate" name="First day of vacation(MM-dd-yyyy)" type="date" expression="${startDate}" datePattern="MM-dd-yyyy hh:mm" required="true"/>
+                <activiti:formProperty id="reason" name="Reason for leave" type="string" expression="${reason}"/>
+                <activiti:formProperty id="resendRequest" name="Resend vacation request to manager?" type="enum" required="true"/>
+                <modeler:allow-send-email><![CDATA[true]]></modeler:allow-send-email>
+                <modeler:activiti-idm-initiator><![CDATA[true]]></modeler:activiti-idm-initiator>
+                <modeler:initiator-can-complete><![CDATA[false]]></modeler:initiator-can-complete>
+                <modeler:editor-resource-id><![CDATA[sid-47240E94-C0C1-4886-B856-BC8E757746C9]]></modeler:editor-resource-id>
+            </extensionElements>
+        </userTask>
+        <serviceTask id="send-email-confirmation" name="Send email confirmation" activiti:class="com.example.activitiwithspring.servicetasks.SendEmailServiceTask.java">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-2C5E1831-9101-4F70-9AEF-4BA72B704205]]></modeler:editor-resource-id>
+            </extensionElements>
+        </serviceTask>
+        <sequenceFlow id="flow1" name="flow1" sourceRef="startEvent" targetRef="handle_vacation_request">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-638FA42C-E698-4BC9-9EB3-265968CA4E93]]></modeler:editor-resource-id>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow id="flow2" name="flow2" sourceRef="handle_vacation_request" targetRef="sid-12A577AE-5227-4918-8DE1-DC077D70967C">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-6F2DDE04-7618-4EEA-B7DC-5BD5E0036BE3]]></modeler:editor-resource-id>
+            </extensionElements>
+        </sequenceFlow>
+        <endEvent id="EndEvent" name="End Event">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-381E38DD-C43B-4D36-8BB1-4C96F4E90A5C]]></modeler:editor-resource-id>
+            </extensionElements>
+        </endEvent>
+        <sequenceFlow id="flow7" name="flow7" sourceRef="send-email-confirmation" targetRef="EndEvent">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-F059DECE-ADF0-4BFC-BCB5-1F670ECA2C1D]]></modeler:editor-resource-id>
+            </extensionElements>
+        </sequenceFlow>
+        <sequenceFlow id="flow3" name="approved" sourceRef="sid-12A577AE-5227-4918-8DE1-DC077D70967C" targetRef="send-email-confirmation">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-609BEB69-E833-4D2F-BD14-FC8F7FD3E9C7]]></modeler:editor-resource-id>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vacationApproved == 'true'}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow4" name="rejected" sourceRef="sid-12A577AE-5227-4918-8DE1-DC077D70967C" targetRef="modify_vacation_request">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-C5D24BF7-A499-4B44-8670-F4D674475623]]></modeler:editor-resource-id>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${vacationApproved == 'false'}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow6" name="Don't Resend" sourceRef="modify_vacation_request" targetRef="EndEvent">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-5E626939-310D-4A58-947E-B3AE0DCDEE58]]></modeler:editor-resource-id>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${resendRequest == 'false'}]]></conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow id="flow5" name="Resend Request" sourceRef="modify_vacation_request" targetRef="handle_vacation_request">
+            <extensionElements>
+                <modeler:editor-resource-id><![CDATA[sid-F0B813CA-C242-4C33-861A-5EFDDAE0C66D]]></modeler:editor-resource-id>
+            </extensionElements>
+            <conditionExpression xsi:type="tFormalExpression"><![CDATA[${resendRequest == 'true'}]]></conditionExpression>
+        </sequenceFlow>
+    </process>
+    <bpmndi:BPMNDiagram id="BPMNDiagram_vacationRequest">
+        <bpmndi:BPMNPlane bpmnElement="vacationRequest" id="BPMNPlane_vacationRequest">
+            <bpmndi:BPMNShape bpmnElement="startEvent" id="BPMNShape_startEvent">
+                <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="handle_vacation_request" id="BPMNShape_handle_vacation_request">
+                <omgdc:Bounds height="80.0" width="100.0" x="210.0" y="138.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="sid-12A577AE-5227-4918-8DE1-DC077D70967C" id="BPMNShape_sid-12A577AE-5227-4918-8DE1-DC077D70967C">
+                <omgdc:Bounds height="40.0" width="40.0" x="375.0" y="158.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="modify_vacation_request" id="BPMNShape_modify_vacation_request">
+                <omgdc:Bounds height="80.0" width="100.0" x="465.0" y="225.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="send-email-confirmation" id="BPMNShape_send-email-confirmation">
+                <omgdc:Bounds height="80.0" width="100.0" x="465.0" y="105.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape bpmnElement="EndEvent" id="BPMNShape_EndEvent">
+                <omgdc:Bounds height="28.0" width="28.0" x="660.0" y="180.0"/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+                <omgdi:waypoint x="130.0" y="178.0"/>
+                <omgdi:waypoint x="210.0" y="178.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+                <omgdi:waypoint x="310.0" y="178.18450184501845"/>
+                <omgdi:waypoint x="375.4259259259259" y="178.42592592592592"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+                <omgdi:waypoint x="411.12091503267976" y="174.12091503267973"/>
+                <omgdi:waypoint x="465.0" y="159.01673640167365"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+                <omgdi:waypoint x="395.5" y="197.5"/>
+                <omgdi:waypoint x="395.5" y="265.0"/>
+                <omgdi:waypoint x="465.0" y="265.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+                <omgdi:waypoint x="465.0" y="285.0"/>
+                <omgdi:waypoint x="259.75" y="285.0"/>
+                <omgdi:waypoint x="259.99632352941177" y="218.0"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow6" id="BPMNEdge_flow6">
+                <omgdi:waypoint x="565.0" y="242.67295597484278"/>
+                <omgdi:waypoint x="661.2166041257227" y="199.70830884952008"/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+                <omgdi:waypoint x="565.0" y="145.0"/>
+                <omgdi:waypoint x="674.0" y="145.0"/>
+                <omgdi:waypoint x="674.0" y="180.0"/>
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</definitions>

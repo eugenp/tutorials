@@ -6,20 +6,11 @@
     <version>1.0</version>
     <name>autovalue</name>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>7</source>
-                    <target>7</target>
-                    <useIncrementalCompilation>false</useIncrementalCompilation>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
     <dependencies>
         <dependency>
@@ -27,19 +18,29 @@
             <artifactId>auto-value</artifactId>
             <version>${auto-value.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.auto.factory</groupId>
+            <artifactId>auto-factory</artifactId>
+            <version>${auto-factory.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.guava</groupId>
+                    <artifactId>guava</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <auto-value.version>1.3</auto-value.version>
-        <junit.version>4.12</junit.version>
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <auto-factory.version>1.0-beta5</auto-factory.version>
+        <guice.version>4.2.0</guice.version>
     </properties>
 
 </project>

@@ -1,18 +1,20 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.baeldung</groupId>
     <artifactId>spring-zuul</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-
     <name>spring-zuul</name>
     <packaging>pom</packaging>
 
     <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.4.RELEASE</version>
+        <artifactId>parent-boot-2</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
     </parent>
-        
+
     <modules>
         <module>spring-zuul-foos-resource</module>
         <module>spring-zuul-ui</module>
@@ -22,17 +24,6 @@
         <finalName>spring-zuul</finalName>
         <pluginManagement>
             <plugins>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven-compiler-plugin.version}</version>
-                    <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
-                    </configuration>
-                </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
@@ -41,43 +32,17 @@
                         <failOnMissingWebXml>false</failOnMissingWebXml>
                     </configuration>
                 </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                    <configuration>
-                        <testFailureIgnore>true</testFailureIgnore>
-                        <excludes>
-                            <exclude>**/*IntegrationTest.java</exclude>
-                            <exclude>**/*LiveTest.java</exclude>
-                        </excludes>
-                        <systemPropertyVariables>
-                            <!-- <provPersistenceTarget>h2</provPersistenceTarget> -->
-                        </systemPropertyVariables>
-                    </configuration>
-                </plugin>
-
             </plugins>
         </pluginManagement>
     </build>
 
-
     <properties>
         <!-- Spring -->
-        <spring-cloud.version>1.2.3.RELEASE</spring-cloud.version>
-
+        <spring-cloud.version>2.1.0.RELEASE</spring-cloud.version>
         <!-- util -->
         <commons-lang3.version>3.5</commons-lang3.version>
-
-        <!-- testing -->
-        <rest-assured.version>2.9.0</rest-assured.version>
-
         <!-- Maven plugins -->
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-
     </properties>
 
 </project>

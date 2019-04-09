@@ -1,41 +1,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.baeldung</groupId>
+    <artifactId>spring-amqp</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <name>spring-amqp</name>
+    <packaging>jar</packaging>
+    <description>Introduction to Spring-AMQP</description>
 
-	<groupId>com.baeldung</groupId>
-	<artifactId>springamqp</artifactId>
-	<version>0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <parent>
+        <groupId>com.baeldung</groupId>
+        <artifactId>parent-modules</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
 
-	<name>springamqp</name>
-	<description>Introduction to Spring-AMQP</description>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>${spring-rabbit}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-	</properties>
+    <build>
+        <finalName>spring-amqp</finalName>
+    </build>
 
-	<dependencies>
-		<dependency>
-		    <groupId>org.springframework.amqp</groupId>
-			<artifactId>spring-rabbit</artifactId>
-			<version>1.6.6.RELEASE</version>
-		</dependency>
-	</dependencies>
+    <properties>
+        <spring-rabbit>1.6.6.RELEASE</spring-rabbit>
+    </properties>
 
-	<build>
-		<finalName>springamqp</finalName>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-					<verbose>true</verbose>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 </project>

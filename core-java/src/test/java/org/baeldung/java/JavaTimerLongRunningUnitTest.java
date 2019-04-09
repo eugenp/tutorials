@@ -1,5 +1,9 @@
 package org.baeldung.java;
 
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -7,9 +11,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
-
 public class JavaTimerLongRunningUnitTest {
+
+    private static final Logger LOG = LoggerFactory.getLogger(JavaTimerLongRunningUnitTest.class);
 
     // tests
 
@@ -18,7 +22,8 @@ public class JavaTimerLongRunningUnitTest {
         final TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Task performed on: " + new Date() + "\n" + "Thread's name: " + Thread.currentThread().getName());
+                LOG.debug("Task performed on: " + new Date() + "\n" + "Thread's name: " + Thread.currentThread()
+                    .getName());
             }
         };
         final Timer timer = new Timer("Timer");
@@ -35,7 +40,7 @@ public class JavaTimerLongRunningUnitTest {
         final TimerTask repeatedTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Task performed on " + new Date());
+                LOG.debug("Task performed on " + new Date());
             }
         };
         final Timer timer = new Timer("Timer");
@@ -53,7 +58,7 @@ public class JavaTimerLongRunningUnitTest {
         final TimerTask repeatedTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Task performed on " + new Date());
+                LOG.debug("Task performed on " + new Date());
             }
         };
         final Timer timer = new Timer("Timer");
@@ -71,7 +76,7 @@ public class JavaTimerLongRunningUnitTest {
         final TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Task performed on " + new Date());
+                LOG.debug("Task performed on " + new Date());
                 cancel();
             }
         };
@@ -89,7 +94,7 @@ public class JavaTimerLongRunningUnitTest {
         final TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Task performed on " + new Date());
+                LOG.debug("Task performed on " + new Date());
             }
         };
         final Timer timer = new Timer("Timer");
@@ -104,7 +109,7 @@ public class JavaTimerLongRunningUnitTest {
         final TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Task performed on " + new Date());
+                LOG.debug("Task performed on " + new Date());
             }
         };
         final Timer timer = new Timer("Timer");
@@ -120,7 +125,7 @@ public class JavaTimerLongRunningUnitTest {
         final TimerTask repeatedTask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("Task performed on " + new Date());
+                LOG.debug("Task performed on " + new Date());
             }
         };
         final ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();

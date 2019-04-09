@@ -10,7 +10,7 @@ import org.apache.http.entity.HttpEntityWrapper;
 public class ProgressEntityWrapper extends HttpEntityWrapper {
     private final ProgressListener listener;
 
-    public ProgressEntityWrapper(final HttpEntity entity, final ProgressListener listener) {
+    ProgressEntityWrapper(final HttpEntity entity, final ProgressListener listener) {
         super(entity);
         this.listener = listener;
     }
@@ -20,7 +20,7 @@ public class ProgressEntityWrapper extends HttpEntityWrapper {
         super.writeTo(new CountingOutputStream(outstream, listener, getContentLength()));
     }
 
-    public static interface ProgressListener {
+    public interface ProgressListener {
         void progress(float percentage);
     }
 
@@ -30,7 +30,7 @@ public class ProgressEntityWrapper extends HttpEntityWrapper {
         private long transferred;
         private long totalBytes;
 
-        public CountingOutputStream(final OutputStream out, final ProgressListener listener, final long totalBytes) {
+        CountingOutputStream(final OutputStream out, final ProgressListener listener, final long totalBytes) {
             super(out);
             this.listener = listener;
             transferred = 0;

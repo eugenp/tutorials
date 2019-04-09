@@ -2,11 +2,11 @@ package org.baeldung.web;
 
 import static org.junit.Assert.assertEquals;
 
-import org.baeldung.config.MvcConfig;
-import org.baeldung.config.PersistenceConfig;
-import org.baeldung.config.SecurityConfig;
-import org.baeldung.persistence.dao.UserRepository;
-import org.baeldung.persistence.model.User;
+import org.baeldung.custom.Application;
+import org.baeldung.custom.config.MvcConfig;
+import org.baeldung.custom.config.SecurityConfig;
+import org.baeldung.custom.persistence.dao.UserRepository;
+import org.baeldung.custom.persistence.model.User;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,22 +21,22 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = { MvcConfig.class, SecurityConfig.class, PersistenceConfig.class })
+@SpringBootTest(classes = {Application.class})
 @WebAppConfiguration
 public class CustomUserDetailsServiceIntegrationTest {
 
-    public static final String USERNAME = "user";
-    public static final String PASSWORD = "pass";
-    public static final String USERNAME2 = "user2";
+    private static final String USERNAME = "user";
+    private static final String PASSWORD = "pass";
+    private static final String USERNAME2 = "user2";
 
     @Autowired
-    UserRepository myUserRepository;
+    private UserRepository myUserRepository;
 
     @Autowired
-    AuthenticationProvider authenticationProvider;
+    private AuthenticationProvider authenticationProvider;
 
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     //
 
