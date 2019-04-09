@@ -4,7 +4,7 @@
 The "REST With Spring" Classes: http://bit.ly/restwithspring
 
 ### Relevant Articles:
-- [Spring RestTemplate Tutorial](http://www.baeldung.com/rest-template)
+- [The Guide to RestTemplate](http://www.baeldung.com/rest-template)
 - [Exploring the Spring Boot TestRestTemplate](http://www.baeldung.com/spring-boot-testresttemplate)
 - [Spring RestTemplate Error Handling](http://www.baeldung.com/spring-rest-template-error-handling)
 - [Configure a RestTemplate with RestTemplateBuilder](http://www.baeldung.com/spring-rest-template-builder)

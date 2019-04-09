@@ -2,8 +2,10 @@ package com.baeldung.jackson.xml;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -56,17 +58,14 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaGotFromXmlStrWithCapitalElem_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
-        SimpleBeanForCapitalizedFields value = xmlMapper.
-            readValue("<SimpleBeanForCapitalizedFields><X>1</X><y>2</y></SimpleBeanForCapitalizedFields>",
-                SimpleBeanForCapitalizedFields.class);
+        SimpleBeanForCapitalizedFields value = xmlMapper.readValue("<SimpleBeanForCapitalizedFields><X>1</X><y>2</y></SimpleBeanForCapitalizedFields>", SimpleBeanForCapitalizedFields.class);
         assertTrue(value.getX() == 1 && value.getY() == 2);
     }
 
     @Test
     public void whenJavaSerializedToXmlFileWithCapitalizedField_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
-        xmlMapper.writeValue(new File("target/simple_bean_capitalized.xml"),
-            new SimpleBeanForCapitalizedFields());
+        xmlMapper.writeValue(new File("target/simple_bean_capitalized.xml"), new SimpleBeanForCapitalizedFields());
         File file = new File("target/simple_bean_capitalized.xml");
         assertNotNull(file);
     }
@@ -74,7 +73,9 @@ public class XMLSerializeDeserializeUnitTest {
     @Test
     public void whenJavaDeserializedFromXmlFile_thenCorrect() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
-        Person value = xmlMapper.readValue(new File("src/test/resources/person.xml"), Person.class);
+
+        String xml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><streetNumber>1</streetNumber><streetName>Name1</streetName><city>City1</city></address><address><streetNumber>2</streetNumber><streetName>Name2</streetName><city>City2</city></address></address></person>";
+        Person value = xmlMapper.readValue(xml, Person.class);
 
         assertTrue(value.getAddress()
             .get(0)
@@ -90,33 +91,38 @@ public class XMLSerializeDeserializeUnitTest {
     public void whenJavaSerializedToXmlFile_thenSuccess() throws IOException {
         XmlMapper xmlMapper = new XmlMapper();
 
+        String expectedXml = "<person><firstName>Rohan</firstName><lastName>Daye</lastName><phoneNumbers><phoneNumbers>9911034731</phoneNumbers><phoneNumbers>9911033478</phoneNumbers></phoneNumbers><address><address><streetNumber>1</streetNumber><streetName>Name1</streetName><city>City1</city></address><address><streetNumber>2</streetNumber><streetName>Name2</streetName><city>City2</city></address></address></person>";
+
         Person person = new Person();
 
         person.setFirstName("Rohan");
         person.setLastName("Daye");
 
         List<String> ph = new ArrayList<>();
-        ph.add("9911778981");
-        ph.add("9991111111");
+        ph.add("9911034731");
+        ph.add("9911033478");
         person.setPhoneNumbers(ph);
 
         List<Address> addresses = new ArrayList<>();
-        
+
         Address address1 = new Address();
         address1.setStreetNumber("1");
-        address1.setStreetName("streetname1");
-        address1.setCity("city1");
-        
+        address1.setStreetName("Name1");
+        address1.setCity("City1");
+
         Address address2 = new Address();
         address2.setStreetNumber("2");
-        address2.setStreetName("streetname2");
-        address2.setCity("city2");
-        
+        address2.setStreetName("Name2");
+        address2.setCity("City2");
+
         addresses.add(address1);
         addresses.add(address2);
+
         person.setAddress(addresses);
 
-        xmlMapper.writeValue(new File("src/test/resources/PersonGenerated.xml"), person);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        xmlMapper.writeValue(byteArrayOutputStream, person);
+        assertEquals(expectedXml, byteArrayOutputStream.toString());
     }
 
     private static String inputStreamToString(InputStream is) throws IOException {

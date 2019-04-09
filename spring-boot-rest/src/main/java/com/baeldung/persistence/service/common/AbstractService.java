@@ -18,9 +18,8 @@ public abstract class AbstractService<T extends Serializable> implements IOperat
 
     @Override
     @Transactional(readOnly = true)
-    public T findOne(final long id) {
-        return getDao().findById(id)
-            .get();
+    public T findById(final long id) {
+        return getDao().findById(id).orElse(null);
     }
 
     // read - all

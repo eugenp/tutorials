@@ -84,7 +84,7 @@
 			<id>openshift</id>
 			<properties>
 				<spring-cloud-k8s.version>0.3.0.RELEASE</spring-cloud-k8s.version>
-				<spring-cloud.version>Finchley.SR2</spring-cloud.version>
+				<spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
 				<fabric8.maven.plugin.version>3.5.37</fabric8.maven.plugin.version>
 			</properties>
 			<dependencyManagement>
@@ -166,7 +166,7 @@
 					<dependency>
 						<groupId>org.springframework.cloud</groupId>
 						<artifactId>spring-cloud-dependencies</artifactId>
-						<version>Finchley.SR1</version>
+						<version>Greenwich.RELEASE</version>
 						<type>pom</type>
 						<scope>import</scope>
 					</dependency>
@@ -214,7 +214,7 @@
 					<dependency>
 						<groupId>org.springframework.cloud</groupId>
 						<artifactId>spring-cloud-dependencies</artifactId>
-						<version>Finchley.SR1</version>
+						<version>Greenwich.RELEASE</version>
 						<type>pom</type>
 						<scope>import</scope>
 					</dependency>
