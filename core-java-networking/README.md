@@ -15,3 +15,4 @@
 - [URL Encoding and Decoding in Java](http://www.baeldung.com/java-url-encoding-decoding)
 - [How to Perform a Simple HTTP Request in Java](http://www.baeldung.com/java-http-request)
 - [Difference between URL and URI](http://www.baeldung.com/java-url-vs-uri)
+- [Read an InputStream using the Java Server Socket](https://www.baeldung.com/java-inputstream-server-socket)
