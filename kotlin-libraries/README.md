@@ -11,3 +11,4 @@
 - [Kotlin with Ktor](https://www.baeldung.com/kotlin-ktor)
 - [REST API With Kotlin and Kovert](https://www.baeldung.com/kotlin-kovert)
 - [Kotlin Immutable Collections](https://www.baeldung.com/kotlin-immutable-collections)
+- [MockK: A Mocking Library for Kotlin](https://www.baeldung.com/kotlin-mockk)
