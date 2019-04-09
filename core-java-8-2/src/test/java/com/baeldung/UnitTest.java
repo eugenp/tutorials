@@ -7,14 +7,12 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-{
+public class UnitTest {
     /**
-     * Rigorous Test :-)
+     * Stub test
      */
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    public void givenPreconditions_whenCondition_shouldResult() {
+        assertTrue(true);
     }
 }
