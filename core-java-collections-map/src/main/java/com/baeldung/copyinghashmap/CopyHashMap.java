@@ -19,29 +19,29 @@ public class CopyHashMap {
     }
 
     public static <String, Employee> HashMap<String, Employee> copyUsingPut(HashMap<String, Employee> originalMap) {
-        HashMap<String, Employee> copyMap = new HashMap<String, Employee>();
+        HashMap<String, Employee> shallowCopy = new HashMap<String, Employee>();
         Set<Entry<String, Employee>> entries = originalMap.entrySet();
         for(Map.Entry<String, Employee> mapEntry: entries) {
-            copyMap.put(mapEntry.getKey(), mapEntry.getValue());
+            shallowCopy.put(mapEntry.getKey(), mapEntry.getValue());
         }
         
-        return copyMap;
+        return shallowCopy;
     }
     
     public static <String, Employee> HashMap<String, Employee> copyUsingPutAll(HashMap<String, Employee> originalMap) {
-        HashMap<String, Employee> copyMap = new HashMap<String, Employee>();
-        copyMap.putAll(originalMap);
+        HashMap<String, Employee> shallowCopy = new HashMap<String, Employee>();
+        shallowCopy.putAll(originalMap);
         
-        return copyMap;
+        return shallowCopy;
     }
     
     public static <String, Employee> HashMap<String, Employee> copyUsingJava8Stream(HashMap<String, Employee> originalMap) {
         Set<Entry<String, Employee>> entries = originalMap.entrySet();
-        HashMap<String, Employee> copyMap = (HashMap<String, Employee>) entries
+        HashMap<String, Employee> shallowCopy = (HashMap<String, Employee>) entries
             .stream()
             .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         
-        return copyMap;
+        return shallowCopy;
     }
     
     public static <String, Employee> HashMap<String, Employee> shallowCopy(HashMap<String, Employee> originalMap) {
