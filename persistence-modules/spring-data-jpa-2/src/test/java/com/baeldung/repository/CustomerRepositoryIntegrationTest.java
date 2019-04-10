@@ -1,8 +1,6 @@
-package com.baeldung.customer;
+package com.baeldung.repository;
 
-import com.baeldung.config.PersistenceConfiguration;
-import com.baeldung.config.PersistenceProductConfiguration;
-import com.baeldung.config.PersistenceUserConfiguration;
+import com.baeldung.entity.Customer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,7 +15,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-@DataJpaTest(excludeAutoConfiguration = { PersistenceConfiguration.class, PersistenceUserConfiguration.class, PersistenceProductConfiguration.class })
+@DataJpaTest
 @RunWith(SpringRunner.class)
 public class CustomerRepositoryIntegrationTest {
 

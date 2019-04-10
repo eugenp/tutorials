@@ -1,5 +1,6 @@
-package com.baeldung.customer;
+package com.baeldung.repository;
 
+import com.baeldung.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
