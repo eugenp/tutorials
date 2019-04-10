@@ -1,4 +1,4 @@
-package org.baeldung;
+package com.baeldung.spring.cloud.connectors.heroku;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
