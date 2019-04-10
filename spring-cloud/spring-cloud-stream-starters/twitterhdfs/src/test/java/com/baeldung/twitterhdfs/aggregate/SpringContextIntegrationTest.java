@@ -1,17 +1,12 @@
-package org.baeldung;
+package com.baeldung.twitterhdfs.aggregate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.baeldung.twitterhdfs.aggregate.AggregateApp;
-import com.baeldung.twitterhdfs.processor.ProcessorApp;
-import com.baeldung.twitterhdfs.sink.SinkApp;
-import com.baeldung.twitterhdfs.source.SourceApp;
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = {AggregateApp.class, ProcessorApp.class, SinkApp.class, SourceApp.class})
+@SpringBootTest(classes = AggregateApp.class)
 public class SpringContextIntegrationTest {
 
     @Test
