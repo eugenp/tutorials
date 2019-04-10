@@ -68,9 +68,9 @@ public class CopyHashMapUnitTest {
             .put("emp1",emp1)
             .put("emp2",emp2)
             .build();
-        Map<String, Employee> mapCopy = ImmutableMap.copyOf(map);
+        Map<String, Employee> shallowCopy = ImmutableMap.copyOf(map);
         
-        assertThat(mapCopy).isSameAs(map);
+        assertThat(shallowCopy).isSameAs(map);
         
     }
 
