@@ -10,8 +10,6 @@ class InputStreamToStringTest {
     private val fileName = "src/test/resources/inputstream2string.txt"
     private val fileFullContent = "Computer programming can be a hassle\r\n" +
             "It's like trying to take a defended castle"
-    private val fileContentUpToStopChar = "Computer programming can be a hassle\r\n" +
-            "It"
 
     @Test
     fun whenReadFileWithBufferedReader_thenFullFileContentIsReadAsString() {
@@ -20,7 +18,19 @@ class InputStreamToStringTest {
         val content = inputStream.bufferedReader().use(BufferedReader::readText)
         assertEquals(fileFullContent, content)
     }
-
+    @Test
+    fun whenReadFileWithBufferedReaderReadText_thenFullFileContentIsReadAsString() {
+        val file = File(fileName)
+        val inputStream = file.inputStream()
+        val reader = BufferedReader(inputStream.reader())
+        var content: String
+        try {
+            content = reader.readText()
+        } finally {
+            reader.close()
+        }
+        assertEquals(fileFullContent, content)
+    }
     @Test
     fun whenReadFileWithBufferedReaderManually_thenFullFileContentIsReadAsString() {
         val file = File(fileName)
@@ -44,8 +54,8 @@ class InputStreamToStringTest {
     fun whenReadFileUpToStopChar_thenPartBeforeStopCharIsReadAsString() {
         val file = File(fileName)
         val inputStream = file.inputStream()
-        val content = inputStream.use { it.readUpToChar('\'') }
-        assertEquals(fileContentUpToStopChar, content)
+        val content = inputStream.use { it.readUpToChar(' ') }
+        assertEquals("Computer", content)
     }
 
     @Test
