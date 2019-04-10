@@ -537,7 +537,8 @@
 			    <module>software-security/sql-injection-samples</module>
 				
 				<module>tensorflow-java</module>
-				
+				<module>spring-boot-flowable</module>
+					
 			</modules>
 
 		</profile>
@@ -761,6 +762,7 @@
                 <module>xstream</module>
 				
 				<module>tensorflow-java</module>
+				<module>spring-boot-flowable</module>
                 
             </modules>
 
@@ -903,6 +905,8 @@
 				<module>persistence-modules/spring-data-eclipselink</module>
 				<module>persistence-modules/spring-data-solr</module>
 				<module>persistence-modules/spring-hibernate-5</module>
+				
+				<module>spring-boot-flowable</module>
 			</modules>
 
 		</profile>
