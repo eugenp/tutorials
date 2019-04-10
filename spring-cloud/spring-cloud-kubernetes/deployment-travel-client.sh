@@ -1,8 +1,8 @@
-### build the repository
-mvn clean  install
-
 ### set docker env
 eval $(minikube docker-env)
+
+### build the repository
+#mvn clean  install
 
 ### build the docker images on minikube
 cd travel-agency-service
@@ -12,11 +12,11 @@ docker build -t client-service .
 cd ..
 
 ### secret and mongodb
-kubectl delete -f secret.yaml
-kubectl delete -f mongo-deployment.yaml
+kubectl delete -f travel-agency-service/secret.yaml
+kubectl delete -f travel-agency-service/mongo-deployment.yaml
 
-kubectl create -f secret.yaml
-kubectl create -f mongo-deployment.yaml
+kubectl create -f travel-agency-service/secret.yaml
+kubectl create -f travel-agency-service/mongo-deployment.yaml
 
 ### travel-agency-service
 kubectl delete -f travel-agency-service/travel-agency-deployment.yaml
