@@ -1,13 +1,12 @@
 package com.baeldung.hexagonal;
 
-import org.junit.Assert;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.Test;
 
 import com.baeldung.hexagonal.adapter.StudentInMemoryRepositoryAdapter;
 import com.baeldung.hexagonal.adapter.StudentInputAdapter;
 import com.baeldung.hexagonal.service.StudentService;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StudentRegistrationIntegrationTest {
 
