@@ -7,7 +7,7 @@ import org.junit.Test;
 import static com.baeldung.kotlin.Strings.*;
 
 
-public class StringUtilTest {
+public class StringUtilUnitTest {
 
     @Test
     public void shouldEscapeXmlTagsInString() {
