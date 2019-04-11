@@ -16,7 +16,7 @@ public class JpaPopulators {
     @Bean
     public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() throws Exception {
         Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[] { (Resource) new ClassPathResource("fruit-data.json") });
+        factory.setResources(new Resource[] { new ClassPathResource("fruit-data.json") });
         return factory;
     }
 

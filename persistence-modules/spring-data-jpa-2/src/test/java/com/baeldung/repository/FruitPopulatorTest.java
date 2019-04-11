@@ -23,31 +23,16 @@ public class FruitPopulatorTest {
     public void givenFruitJsonPopulatorThenShouldInsertRecordOnStart() {
 
         List<Fruit> fruits = fruitRepository.findAll();
-        assertEquals("record count is not matching", 3, fruits.size());
+        assertEquals("record count is not matching", 2, fruits.size());
 
         fruits.forEach(fruit -> {
             if (1 == fruit.getId()) {
-                assertEquals("This is not an apple", "apple", fruit.getName());
-                assertEquals("It is not a red colored fruit", "red", fruit.getColor());
+                assertEquals("apple", fruit.getName());
+                assertEquals("red", fruit.getColor());
             } else if (2 == fruit.getId()) {
-                assertEquals("This is not a guava", "guava", fruit.getName());
-                assertEquals("It is not a green colored fruit", "green", fruit.getColor());
+                assertEquals("guava", fruit.getName());
+                assertEquals("green", fruit.getColor());
             }
         });
     }
-
-    @Test
-    public void givenFruitXmlPopulatorThenShouldInsertRecordOnStart() {
-
-        List<Fruit> fruits = fruitRepository.findAll();
-        assertEquals("record count is not matching", 3, fruits.size());
-
-        fruits.forEach(fruit -> {
-            if (3 == fruit.getId()) {
-                assertEquals("This is not a mango", "mango", fruit.getName());
-                assertEquals("It is not a yellow colored fruit", "yellow", fruit.getColor());
-            }
-        });
-    }
-
 }
