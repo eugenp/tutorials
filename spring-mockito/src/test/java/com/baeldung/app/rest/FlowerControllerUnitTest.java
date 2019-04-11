@@ -1,17 +1,18 @@
 package com.baeldung.app.rest;
 
-import com.baeldung.app.api.Flower;
-import com.baeldung.domain.service.FlowerService;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.when;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.eq;
-import static org.mockito.Mockito.when;
+import com.baeldung.app.api.Flower;
+import com.baeldung.domain.service.FlowerService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FlowerControllerUnitTest {

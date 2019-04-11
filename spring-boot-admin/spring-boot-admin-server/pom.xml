@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>spring-boot-admin-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
     <name>spring-boot-admin-server</name>
     <description>Spring Boot Admin Server</description>
+    <packaging>jar</packaging>
 
     <parent>
         <artifactId>spring-boot-admin</artifactId>
@@ -76,6 +76,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
@@ -83,6 +84,7 @@
     <properties>
         <spring-boot-admin-server.version>1.5.4</spring-boot-admin-server.version>
         <spring-boot-admin-starter-client.version>1.5.4</spring-boot-admin-starter-client.version>
+        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
     </properties>
 
 </project>

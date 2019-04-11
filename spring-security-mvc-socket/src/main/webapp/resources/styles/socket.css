@@ -1,0 +1,19 @@
+main {
+  background-color: black;
+}
+
+div#all, div#specific, div#conversationDiv {
+  border: 1px solid white;
+  border-radius: 25px;
+  padding: 15px;
+  margin: 15px
+}
+
+button[disabled=true] {
+  color: lightgray;
+  border: 1px solid lightgray;
+}
+
+button[disabled=true]:hover {
+  opacity: 1;
+}

@@ -88,6 +88,11 @@
             <artifactId>javalite-common</artifactId>
             <version>${javalite.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${javafaker.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -172,6 +177,7 @@
         <lambda-behave.version>0.4</lambda-behave.version>
         <assertj-guava.version>3.0.0</assertj-guava.version>
         <jukito.version>1.5</jukito.version>
+        <javafaker.version>0.15</javafaker.version>
     </properties>
 
 </project>

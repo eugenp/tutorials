@@ -23,6 +23,12 @@
             <artifactId>lucene-queryparser</artifactId>
             <version>${lucene.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+            <version>${lucene.version}</version>
+        </dependency>
+        
     </dependencies>
 
     <properties>
@@ -32,7 +38,7 @@
         <hibernate-jpa-2.1-api.version>1.0.0.Final</hibernate-jpa-2.1-api.version>
         <!-- delombok maven plugin -->
         <delombok-maven-plugin.version>1.16.10.0</delombok-maven-plugin.version>
-        <lucene.version>7.1.0</lucene.version>
+        <lucene.version>7.4.0</lucene.version>
     </properties>
 
 </project>

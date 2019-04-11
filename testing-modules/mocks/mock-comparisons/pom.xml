@@ -46,9 +46,10 @@
     </build>
 
     <properties>
-        <mockito.version>2.9.0</mockito.version>
+        <mockito.version>2.21.0</mockito.version>
         <easymock.version>3.5.1</easymock.version>
-        <jmockit.version>1.34</jmockit.version>
+        <jmockit.version>1.41</jmockit.version>
+        
     </properties>
 
 </project>

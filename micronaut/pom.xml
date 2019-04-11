@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.baeldung.micronaut</groupId>
-  <artifactId>hello-world</artifactId>
+  <artifactId>micronaut</artifactId>
   <version>0.1</version>
-  <properties>
-    <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass>
-    <micronaut.version>1.0.0.M2</micronaut.version>
-    <jdk.version>9</jdk.version>
-  </properties>
-  <repositories>
-        <repository>
-          <id>jcenter.bintray.com</id>
-          <url>http://jcenter.bintray.com</url>
-        </repository>
-    </repositories>
+  <name>micronaut</name>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -136,4 +127,10 @@
       </plugins>
     </pluginManagement>
   </build>
+  
+  <properties>
+    <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass>
+    <micronaut.version>1.0.0.RC2</micronaut.version>
+    <jdk.version>1.8</jdk.version>
+  </properties>
 </project>

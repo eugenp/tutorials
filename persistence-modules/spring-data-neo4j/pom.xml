@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baeldung</groupId>
     <artifactId>spring-data-neo4j</artifactId>
     <version>1.0</version>
-
+	<name>spring-data-neo4j</name>
+	
     <parent>
         <groupId>com.baeldung</groupId>
         <artifactId>parent-modules</artifactId>
@@ -37,18 +37,6 @@
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-neo4j</artifactId>
             <version>${spring-data-neo4j.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-neo4j</artifactId>
-            <version>${spring-data-neo4j.version}</version>
-            <type>test-jar</type>
         </dependency>
         <dependency>
             <groupId>com.voodoodyne.jackson.jsog</groupId>
@@ -96,23 +84,17 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>${spring-test.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
 
     <properties>
-        <neo4j-java-driver.version>1.1.1</neo4j-java-driver.version>
-        <neo4j.version>3.1.0</neo4j.version>
-        <spring-data-neo4j.version>4.1.6.RELEASE</spring-data-neo4j.version>
+        <neo4j-java-driver.version>1.6.2</neo4j-java-driver.version>
+        <neo4j.version>3.4.6</neo4j.version>
+        <spring-data-neo4j.version>5.0.1.RELEASE</spring-data-neo4j.version>
         <jackson-jsog.version>1.1</jackson-jsog.version>
-        <spring-boot.version>1.5.13.RELEASE</spring-boot.version>
-        <spring-test.version>4.3.17.RELEASE</spring-test.version>
-        <neo4j-ogm.version>2.1.1</neo4j-ogm.version>
+        <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
+        <spring-test.version>5.0.1.RELEASE</spring-test.version>
+        <neo4j-ogm.version>3.1.2</neo4j-ogm.version>
     </properties>
 
 </project>

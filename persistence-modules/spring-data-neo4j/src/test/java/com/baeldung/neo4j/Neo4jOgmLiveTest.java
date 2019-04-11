@@ -12,14 +12,12 @@ import org.neo4j.ogm.session.SessionFactory;
 
 import com.baeldung.spring.data.neo4j.domain.Car;
 import com.baeldung.spring.data.neo4j.domain.Company;
-import org.neo4j.ogm.transaction.Transaction;
 
 public class Neo4jOgmLiveTest {
 
     @Test
     public void testOgm() {
-        Configuration conf = new Configuration();
-        conf.driverConfiguration().setDriverClassName("org.neo4j.ogm.drivers.embedded.driver.EmbeddedDriver");
+        Configuration conf = new Configuration.Builder().build();
 
         SessionFactory factory = new SessionFactory(conf, "com.baeldung.spring.data.neo4j.domain");
         Session session = factory.openSession();

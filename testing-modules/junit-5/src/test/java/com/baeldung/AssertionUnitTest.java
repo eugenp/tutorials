@@ -11,14 +11,17 @@ import java.util.Optional;
 import java.util.function.BooleanSupplier;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
  * Unit test that demonstrate the different assertions available within JUnit 4
  */
+@DisplayName("Test case for assertions")
 public class AssertionUnitTest {
 
     @Test
+    @DisplayName("Arrays should be equals")
     public void whenAssertingArraysEquality_thenEqual() {
         char[] expected = {'J', 'u', 'p', 'i', 't', 'e', 'r'};
         char[] actual = "Jupiter".toCharArray();
@@ -27,6 +30,7 @@ public class AssertionUnitTest {
     }
 
     @Test
+    @DisplayName("The area of two polygons should be equal")
     public void whenAssertingEquality_thenEqual() {
         float square = 2 * 2;
         float rectangle = 2 * 2;

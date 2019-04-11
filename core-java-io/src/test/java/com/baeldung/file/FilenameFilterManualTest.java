@@ -18,7 +18,7 @@ public class FilenameFilterManualTest {
     @BeforeClass
     public static void setupClass() {
         directory = new File(FilenameFilterManualTest.class.getClassLoader()
-            .getResource("testFolder")
+            .getResource("fileNameFilterManualTestFolder")
             .getFile());
     }
 

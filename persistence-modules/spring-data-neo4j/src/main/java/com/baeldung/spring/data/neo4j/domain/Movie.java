@@ -2,7 +2,9 @@ package com.baeldung.spring.data.neo4j.domain;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.voodoodyne.jackson.jsog.JSOGGenerator;
-import org.neo4j.ogm.annotation.GraphId;
+
+import org.neo4j.ogm.annotation.GeneratedValue;
+import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
@@ -13,7 +15,7 @@ import java.util.List;
 
 @NodeEntity
 public class Movie {
-    @GraphId
+    @Id @GeneratedValue
     Long id;
 
     private String title;
