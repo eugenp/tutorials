@@ -36,7 +36,7 @@
 - [Introduction To Docx4J](http://www.baeldung.com/docx4j)
 - [Introduction to StreamEx](http://www.baeldung.com/streamex)
 - [Introduction to BouncyCastle with Java](http://www.baeldung.com/java-bouncy-castle)
-- [Guide to google-http-client](http://www.baeldung.com/google-http-client)
+- [A Guide to Google-Http-Client](http://www.baeldung.com/google-http-client)
 - [Interact with Google Sheets from Java](http://www.baeldung.com/google-sheets-java-client)
 - [A Docker Guide for Java](http://www.baeldung.com/docker-java-api)
 - [Introduction To OpenCSV](http://www.baeldung.com/opencsv)
@@ -67,7 +67,6 @@
 - [Introduction to Functional Java](https://www.baeldung.com/java-functional-library)
 - [Intro to Derive4J](https://www.baeldung.com/derive4j)
 - [A Guide to the Reflections Library](https://www.baeldung.com/reflections-library)
-- [A Guide to Google-Http-Client](https://www.baeldung.com/google-http-client)
 
 The libraries module contains examples related to small libraries that are relatively easy to use and does not require any separate module of its own.
 
