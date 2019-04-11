@@ -12,6 +12,7 @@ public class StudentRegistrationIntegrationTest {
 
     @Test
     public void givenStudentNameIsEntered_whenStudentIsCreated_thenStudentWillBePresentInRepository(){
+
         StudentInMemoryRepositoryAdapter repositoryAdapter = new StudentInMemoryRepositoryAdapter();
         StudentService studentService = new StudentService(repositoryAdapter);
         StudentInputAdapter inputAdapter = new StudentInputAdapter(studentService);
@@ -23,6 +24,7 @@ public class StudentRegistrationIntegrationTest {
 
     @Test
     public void givenStudentIdIsEnteredForRemoval_whenStudentIsValid_thenStudentWillBeRemovedFromRepository(){
+
         StudentInMemoryRepositoryAdapter repositoryAdapter = new StudentInMemoryRepositoryAdapter();
         StudentService studentService = new StudentService(repositoryAdapter);
         StudentInputAdapter inputAdapter = new StudentInputAdapter(studentService);
@@ -36,6 +38,7 @@ public class StudentRegistrationIntegrationTest {
 
     @Test
     public void givenStudentIdIsEnteredForRemoval_whenStudentIsNotValid_thenStudentWillNotBeRemovedFromRepository(){
+
         StudentInMemoryRepositoryAdapter repositoryAdapter = new StudentInMemoryRepositoryAdapter();
         StudentService studentService = new StudentService(repositoryAdapter);
         StudentInputAdapter inputAdapter = new StudentInputAdapter(studentService);
