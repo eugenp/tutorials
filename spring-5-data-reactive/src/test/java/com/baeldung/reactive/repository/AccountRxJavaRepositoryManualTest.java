@@ -15,7 +15,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Spring5ReactiveApplication.class)
-public class AccountRxJavaRepositoryIntegrationTest {
+public class AccountRxJavaRepositoryManualTest {
 
     @Autowired
     AccountRxJavaRepository repository;
