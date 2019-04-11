@@ -14,7 +14,7 @@
 - [File Size in Java](http://www.baeldung.com/java-file-size)
 - [Comparing getPath(), getAbsolutePath(), and getCanonicalPath() in Java](http://www.baeldung.com/java-path)
 - [Using Java MappedByteBuffer](http://www.baeldung.com/java-mapped-byte-buffer)
-- [Copy a File with Java](http://www.baeldung.com/java-copy-file)
+- [How to Copy a File with Java](http://www.baeldung.com/java-copy-file)
 - [Java – Append Data to a File](http://www.baeldung.com/java-append-to-file)
 - [FileNotFoundException in Java](http://www.baeldung.com/java-filenotfound-exception)
 - [How to Read a File in Java](http://www.baeldung.com/reading-file-in-java)
@@ -40,4 +40,3 @@
 - [How to Write to a CSV File in Java](https://www.baeldung.com/java-csv)
 - [List Files in a Directory in Java](https://www.baeldung.com/java-list-directory-files)
 - [Java InputStream to Byte Array and ByteBuffer](https://www.baeldung.com/convert-input-stream-to-array-of-bytes)
-- [How to Copy a File with Java](https://www.baeldung.com/java-copy-file)
