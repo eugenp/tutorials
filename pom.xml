@@ -12,6 +12,7 @@
     	
     <modules>
         <module>lombok-custom</module>
+      <module>core-java-lambdas</module>
     </modules>
 
 	<dependencies>
