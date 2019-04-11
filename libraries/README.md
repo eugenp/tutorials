@@ -14,7 +14,7 @@
 - [Software Transactional Memory in Java Using Multiverse](http://www.baeldung.com/java-multiverse-stm)
 - [Serenity BDD with Spring and JBehave](http://www.baeldung.com/serenity-spring-jbehave)
 - [Locality-Sensitive Hashing in Java Using Java-LSH](http://www.baeldung.com/locality-sensitive-hashing)
-- [Introduction to Awaitility](http://www.baeldung.com/awaitlity-testing)
+- [Introduction to Awaitlity](http://www.baeldung.com/awaitlity-testing)
 - [Guide to the HyperLogLog Algorithm](http://www.baeldung.com/java-hyperloglog)
 - [Introduction to Neuroph](http://www.baeldung.com/neuroph)
 - [Quick Guide to RSS with Rome](http://www.baeldung.com/rome-rss)
