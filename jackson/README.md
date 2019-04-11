@@ -16,7 +16,7 @@ The "REST With Spring" Classes: http://bit.ly/restwithspring
 - [Jackson – Bidirectional Relationships](http://www.baeldung.com/jackson-bidirectional-relationships-and-infinite-recursion)
 - [Jackson JSON Tutorial](http://www.baeldung.com/jackson)
 - [Jackson – Working with Maps and nulls](http://www.baeldung.com/jackson-map-null-values-or-null-key)
-- [Jackson – Decide What Fields Get Serialized/Deserializaed](http://www.baeldung.com/jackson-field-serializable-deserializable-or-not)
+- [Jackson – Decide What Fields Get Serialized/Deserialized](http://www.baeldung.com/jackson-field-serializable-deserializable-or-not)
 - [Jackson Annotation Examples](http://www.baeldung.com/jackson-annotations)
 - [Working with Tree Model Nodes in Jackson](http://www.baeldung.com/jackson-json-node-tree-model)
 - [Jackson vs Gson](http://www.baeldung.com/jackson-vs-gson)
