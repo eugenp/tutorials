@@ -21,7 +21,7 @@
 - [Introduction to PCollections](http://www.baeldung.com/java-pcollections)
 - [Introduction to Hoverfly in Java](http://www.baeldung.com/hoverfly)
 - [Introduction to Eclipse Collections](http://www.baeldung.com/eclipse-collections)
-- [DistinctBy in Java Stream API](http://www.baeldung.com/java-streams-distinct-by)
+- [DistinctBy in the Java Stream API](http://www.baeldung.com/java-streams-distinct-by)
 - [Introduction to NoException](http://www.baeldung.com/no-exception)
 - [Introduction to Conflict-Free Replicated Data Types](http://www.baeldung.com/java-conflict-free-replicated-data-types)
 - [Introduction to javax.measure](http://www.baeldung.com/javax-measure)
