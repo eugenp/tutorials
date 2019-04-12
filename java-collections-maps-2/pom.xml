@@ -24,22 +24,25 @@
         <dependency>
             <groupId>net.sf.trove4j</groupId>
             <artifactId>trove4j</artifactId>
-            <version>3.0.2</version>
+            <version>${trove4j.version}</version>
         </dependency>
         <dependency>
             <groupId>it.unimi.dsi</groupId>
             <artifactId>fastutil</artifactId>
-            <version>8.1.0</version>
+            <version>${fastutil.version}</version>
         </dependency>
         <dependency>
             <groupId>colt</groupId>
             <artifactId>colt</artifactId>
-            <version>1.2.0</version>
+            <version>${colt.version}</version>
         </dependency>
     </dependencies>
 
     <properties>
         <eclipse-collections.version>8.2.0</eclipse-collections.version>
+        <trove4j.version>3.0.2</trove4j.version>
+        <fastutil.version>8.1.0</fastutil.version>
+        <colt.version>1.2.0</colt.version>
     </properties>
 
 </project>

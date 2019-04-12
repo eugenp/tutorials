@@ -7,11 +7,6 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>maven-war-plugin-property</name>
-    
-    <!-- Set failOnMissingWebXml as false in properties section -->
-    <properties>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
-    </properties>
 
     <build>
         <plugins>
@@ -26,4 +21,9 @@
             </plugin>
         </plugins>
     </build>
+    
+    <!-- Set failOnMissingWebXml as false in properties section -->
+    <properties>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+    </properties>
 </project>
