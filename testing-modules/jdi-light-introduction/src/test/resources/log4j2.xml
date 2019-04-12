@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30" status="warn">
+
+
+  <Properties>
+    <Property name="logFileName">jdiEvents</Property>
+    <Property name="baseDir">./target/.logs</Property>
+  </Properties>
+
+  <Appenders>
+    <!-- the standard-console-appender. Whole message colored according to log level-->
+
+    <!--<Console name="SOUT" target="SYSTEM_OUT">-->
+    <!--<ThresholdFilter level="WARN" onMatch="DENY" onMismatch="ACCEPT"/>-->
+    <!--<PatternLayout pattern="%d{HH:mm:ss} [%t] %-7level %logger{3} - %msg%n"/>-->
+    <!--</Console>-->
+
+    <!--<Console name="SERR" target="SYSTEM_ERR">-->
+    <!--<ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>-->
+    <!--<PatternLayout pattern="%d{HH:mm:ss} [%t] %-7level %logger{3} - %msg%n"/>-->
+    <!--</Console>-->
+
+
+    <Console name="ColoredConsoleAppender" target="SYSTEM_OUT" follow="true">
+      <PatternLayout
+              pattern="[%highlight{${LOG_LEVEL_PATTERN:-%5p}}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=green, DEBUG=green bold, TRACE=blue} %d{mm:ss.SSS}] : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%throwable}"/>
+    </Console>
+
+    <RollingFile name="fileAppender" fileName="${baseDir}/${logFileName}.log">
+      <FilePattern>${baseDir}/${logFileName}_%d{yyyy-MM-dd__HH-mm}_%i.log</FilePattern>
+      <PatternLayout>
+        <Pattern>%d{HH:mm:ss} [%t] %-5level %logger{6} - %msg%n</Pattern>
+      </PatternLayout>
+
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="10" modulate="true"/>
+        <SizeBasedTriggeringPolicy size="250 MB"/>
+
+      </Policies>
+      <DefaultRolloverStrategy min="1" max="5" fileIndex="max">
+        <Delete basePath="${baseDir}" maxDepth="5">
+          <IfFileName glob="${logFileName}_*.log"/>
+          <testMode>false</testMode>
+          <IfAccumulatedFileCount exceeds="2"/>
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingFile>
+
+    <RollingFile name="htmlFileLogger" fileName="${baseDir}/app-info.html"
+                 filePattern="${baseDir}/app-info-%d{yyyy-MM-dd}.html">
+      <HTMLLayout charset="UTF-8" title="Info Logs" locationInfo="true"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        <SizeBasedTriggeringPolicy size="10 MB"/>
+      </Policies>
+    </RollingFile>
+  </Appenders>
+
+
+  <Loggers>
+    <!-- Every configuration must have a root logger. If one is not configured the default root LoggerConfig is ERROR with Console appender attached. -->
+    <Root level="INFO">
+      <!--<AppenderRef ref="SOUT"/>-->
+      <!--<AppenderRef ref="SERR"/>-->
+      <AppenderRef ref="fileAppender"/>
+      <AppenderRef ref="htmlFileLogger"/>
+      <AppenderRef ref="ColoredConsoleAppender"/>
+    </Root>
+
+    <!-- additivity means, that parent-logger (in every case the root-logger) will also get the chance to log this stuff -->
+    <Logger name="JDI" additivity="TRUE" level="INFO">
+      <AppenderRef ref="fileAppender"/>
+      <AppenderRef ref="htmlFileLogger"/>
+    </Logger>
+
+  </Loggers>
+</Configuration>
