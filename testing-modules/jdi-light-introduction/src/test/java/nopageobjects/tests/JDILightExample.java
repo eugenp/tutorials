@@ -1,5 +1,6 @@
 package nopageobjects.tests;
 
+import com.epam.jdi.light.elements.composite.WebPage;
 import org.testng.annotations.Test;
 
 import static com.epam.jdi.light.elements.composite.WebPage.*;
@@ -18,6 +19,7 @@ public class JDILightExample {
         $(".menu-about a").click();
         $("//h3[contains(.,'About Baeldung')]").click();
         assertThat(getUrl(), is("https://www.baeldung.com/about/"));
+        assertThat(getTitle(), is("About Baeldung | Baeldung"));
     }
 
     @Test
