@@ -62,8 +62,9 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
 
             if (e != null) {
                 CsdlEntitySet entitySet = new CsdlEntitySet();
-                entitySet.setName(entitySetName);
-                entitySet.setType(new FullQualifiedName(NAMESPACE, e.getName()));
+                entitySet
+                  .setName(entitySetName)
+                  .setType(new FullQualifiedName(NAMESPACE, e.getName()));
                 return entitySet;
             }
         }
@@ -135,7 +136,6 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
             .map((e) -> {
                 try {
                     // Here we use a simple mapping strategy to map entity types to entity set names:
-                    // 
                     return getEntitySet(CONTAINER, e.getName() + "s");
                 } catch (ODataException oe) {
                     throw new RuntimeException(oe);
@@ -197,12 +197,22 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
 
         result.setKey(ids);
 
-        // Process navs
+        // Process 1:N navs
         List<CsdlNavigationProperty> navs = et.getDeclaredPluralAttributes()
             .stream()
             .map(attr -> buildNavAttribute(et, attr))
             .collect(Collectors.toList());
         result.setNavigationProperties(navs);
+        
+        // Process N:1 navs
+        List<CsdlNavigationProperty> navs2 = et.getDeclaredSingularAttributes()
+            .stream()
+            .filter(attr -> attr.getPersistentAttributeType() == PersistentAttributeType.MANY_TO_ONE)
+            .map(attr -> buildNavAttribute(et, attr))
+            .collect(Collectors.toList());
+
+        result.getNavigationProperties().addAll(navs2);
+        
 
         return result;
     }
@@ -225,13 +235,26 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
         return p;
     }
 
+    // Build NavProperty for 1:N or M:N associations
     private CsdlNavigationProperty buildNavAttribute(EntityType<?> et, PluralAttribute<?, ?, ?> attr) {
 
         CsdlNavigationProperty p = new CsdlNavigationProperty().setName(attr.getName())
             .setType(new FullQualifiedName(NAMESPACE, attr.getBindableJavaType().getSimpleName()))
-            .setNullable(false); // for now
+            .setCollection(true)
+            .setNullable(false); 
 
         return p;
     }
 
+    // Build NavProperty for N:1 associations
+    private CsdlNavigationProperty buildNavAttribute(EntityType<?> et, SingularAttribute<?, ?> attr) {
+
+        CsdlNavigationProperty p = new CsdlNavigationProperty().setName(attr.getName())
+            .setType(new FullQualifiedName(NAMESPACE, attr.getBindableJavaType().getSimpleName()))
+            .setCollection(false)
+            .setNullable(attr.isOptional());
+
+        return p;
+    }
+    
 }

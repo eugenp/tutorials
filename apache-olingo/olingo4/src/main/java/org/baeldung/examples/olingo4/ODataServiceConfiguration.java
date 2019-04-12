@@ -14,33 +14,22 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ODataServiceConfiguration {
-    
-    
-    @Bean
-    public ServletRegistrationBean<HttpServlet> odataServletRegistration(ODataHttpHandlerFactory factory, EntityManagerFactory emf) {
-        
-        ServletRegistrationBean bean = new ServletRegistrationBean(
-            odataServlet(factory,emf), 
-            "/odata/*");
-          bean.setLoadOnStartup(1);
-          return bean;
-    }
-    
 
     @Bean
-    public HttpServlet odataServlet(ODataHttpHandlerFactory factory, EntityManagerFactory emf ) {
-        
-        return new ODataServlet(factory,emf);
+    public ServletRegistrationBean<HttpServlet> odataServletRegistration(ODataHttpHandlerFactory factory) {
+        ServletRegistrationBean<HttpServlet> srb = 
+          new ServletRegistrationBean<>(new ODataServlet(factory), "/odata/*");
+        srb.setLoadOnStartup(1);
+        return srb;
     }
-    
-    
+
     @Bean
     public ODataHttpHandlerFactory httpHandlerFactory(CsdlEdmProvider edmProvider, ODataFactory odataFactory, List<Processor> processors) {
         return new ODataHttpHandlerFactoryImplBuilder()
-            .edmProvider(edmProvider)
-            .odataFactory(odataFactory)
-            .processors(processors)
-            .build();
+          .edmProvider(edmProvider)
+          .odataFactory(odataFactory)
+          .processors(processors)
+          .build();
     }
 
 }

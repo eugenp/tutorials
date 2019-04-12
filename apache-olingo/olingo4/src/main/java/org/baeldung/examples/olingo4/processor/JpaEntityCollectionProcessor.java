@@ -48,10 +48,12 @@ public class JpaEntityCollectionProcessor implements CountEntityCollectionProces
     private ServiceMetadata serviceMetadata;
     private EntityManagerFactory emf;
     private RepositoryRegistry repositoryRegistry;
+    private JpaEntityMapper entityMapper;
 
-    public JpaEntityCollectionProcessor(EntityManagerFactory emf, RepositoryRegistry repositoryRegistry) {
+    public JpaEntityCollectionProcessor(EntityManagerFactory emf, RepositoryRegistry repositoryRegistry, JpaEntityMapper entityMapper) {
         this.emf = emf;
         this.repositoryRegistry = repositoryRegistry;
+        this.entityMapper = entityMapper;
     }
 
     @Override
@@ -115,71 +117,40 @@ public class JpaEntityCollectionProcessor implements CountEntityCollectionProces
 
     }
 
-    private EntityCollection getData(EdmEntitySet edmEntitySet, UriInfo uriInfo) {
+    /**
+     * Helper method to retrieve all entities of an entity set from an the backend database
+     * @param edmEntitySet
+     * @param uriInfo
+     * @return
+     */
+    protected EntityCollection getData(EdmEntitySet edmEntitySet, UriInfo uriInfo) {
 
         EdmEntityType type = edmEntitySet.getEntityType();
-        JpaRepository<?, ?> repo = repositoryRegistry.getRepositoryForEntity(type);
+        JpaRepository<?, ?> repo = (JpaRepository<?, ?>)repositoryRegistry.getRepositoryForEntity(type);
         EntityCollection result = new EntityCollection();
 
         repo.findAll()
             .stream()
             .forEach((it) -> result.getEntities()
-                .add(map2entity(edmEntitySet, it)));
+                .add(entityMapper.map2entity(edmEntitySet, it)));
 
         return result;
     }
 
-    private Entity map2entity(EdmEntitySet edmEntitySet, Object entry) {
 
-        EntityType<?> et = emf.getMetamodel()
-            .entity(entry.getClass());
-
-
-        Entity e = new Entity();
-        try {
-            // First, we set the entity's primary key
-            
-            // Now map all properties
-            et.getDeclaredSingularAttributes().stream()
-              .forEach( (attr) -> {
-                 if ( !attr.isAssociation()) {
-                     Object v = getPropertyValue(entry,attr.getName());
-                     Property p = new Property(null, attr.getName(),ValueType.PRIMITIVE,v);
-                     e.addProperty(p);
-
-                     if ( attr.isId()) {
-                         e.setId(createId(edmEntitySet.getName(),v));                     
-                     }                     
-                 }
-                 
-              });
-            
-        } catch (Exception ex) {
-            throw new ODataRuntimeException("[E141] Unable to create OData entity", ex);
-        }
-
-        return e;
-    }
-    
-    private Object getPropertyValue(Object entry, String name) {
-        try {
-            return PropertyUtils.getProperty(entry,name);
-        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            throw new ODataRuntimeException("[E141] Unable to read property from entity, property=" + name, e);
-        }
-    }
-
-    private URI createId(String entitySetName, Object id)  {
-        try {
-            return new URI(entitySetName + "(" + String.valueOf(id) + ")");
-        } catch (URISyntaxException e) {
-            throw new ODataRuntimeException("[E177] Unable to create URI", e);
-        }
-    }
-
+    /**
+     * Helper method to get the total size of an entity set
+     * @param edmEntitySet
+     * @param uriInfo
+     * @return
+     */
     private Long getCount(EdmEntitySet edmEntitySet, UriInfo uriInfo) {
-        // TODO Auto-generated method stub
-        return null;
+        
+        EdmEntityType type = edmEntitySet.getEntityType();
+        JpaRepository<?, ?> repo = (JpaRepository<?, ?>)repositoryRegistry.getRepositoryForEntity(type);
+        EntityCollection result = new EntityCollection();
+
+        return repo.count();
     }
 
 }

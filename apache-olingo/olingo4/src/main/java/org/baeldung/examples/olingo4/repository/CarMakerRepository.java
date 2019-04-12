@@ -6,7 +6,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CarMakerRepository extends JpaRepository<CarMaker, Long>, JpaSpecificationExecutor<CarMaker>, EdmEntityRepository {
+public interface CarMakerRepository extends EdmEntityRepository<CarMaker>, JpaRepository<CarMaker, Long>, JpaSpecificationExecutor<CarMaker> {
 
     public default String getEdmEntityName() { return CarMaker.class.getSimpleName();}
+    @Override
+    default Class<CarMaker> getEntityClass() {
+        return CarMaker.class;
+    }
 }

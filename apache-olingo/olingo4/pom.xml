@@ -52,7 +52,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.apache.olingo</groupId>
 			<artifactId>odata-server-api</artifactId>

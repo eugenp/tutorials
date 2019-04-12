@@ -25,7 +25,7 @@ public class ODataServlet extends HttpServlet {
     private final ODataHttpHandlerFactory odataHttpHandlerFactory;
     
     
-    public ODataServlet(ODataHttpHandlerFactory factory, EntityManagerFactory emf) {
+    public ODataServlet(ODataHttpHandlerFactory factory) {
         this.odataHttpHandlerFactory = factory;
     }
 
