@@ -1,4 +1,4 @@
-package com.baeldung.string.searching;
+package com.baeldung.string.search.performance;
 
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;

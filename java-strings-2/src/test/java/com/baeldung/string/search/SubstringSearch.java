@@ -1,4 +1,4 @@
-package com.baeldung.string.searching;
+package com.baeldung.string.search;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
