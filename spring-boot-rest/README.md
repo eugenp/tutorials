@@ -11,3 +11,4 @@ Module for the articles that are part of the Spring REST E-book:
 9. [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
 10. [Testing REST with multiple MIME types](http://www.baeldung.com/testing-rest-api-with-multiple-media-types)
 11. [Testing Web APIs with Postman Collections](https://www.baeldung.com/postman-testing-collections)
+12. [Spring Boot Consuming and Producing JSON](https://www.baeldung.com/spring-boot-json)

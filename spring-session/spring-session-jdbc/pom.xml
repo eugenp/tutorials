@@ -10,10 +10,6 @@
     <packaging>jar</packaging>
     <description>Spring Session with JDBC tutorial</description>
 
-    <properties>
-        <h2.version>1.4.197</h2.version>
-    </properties>
-
     <parent>
         <artifactId>parent-boot-2</artifactId>
         <groupId>com.baeldung</groupId>
@@ -52,5 +48,8 @@
         </plugins>
     </build>
 
+    <properties>
+        <h2.version>1.4.197</h2.version>
+    </properties>
 
 </project>
