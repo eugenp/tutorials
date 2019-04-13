@@ -1,4 +1,4 @@
-package com.baeldung.sampleapp.config;
+package com.baeldung.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
 
-import com.baeldung.sampleapp.interceptors.RestTemplateHeaderModifierInterceptor;
+import com.baeldung.interceptors.RestTemplateHeaderModifierInterceptor;
 
 @Configuration
 public class RestClientConfig {
