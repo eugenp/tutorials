@@ -3,6 +3,7 @@ package com.baeldung.string.searching;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
 import org.openjdk.jmh.annotations.Fork;
@@ -47,11 +48,12 @@ public class SubstringSearchPerformanceComparison {
 
     @Benchmark
     public boolean containsStringUtilsIgnoreCase() {
-        return org.apache.commons.lang3.StringUtils.containsIgnoreCase(message, "eiusmod");
+        return StringUtils.containsIgnoreCase(message, "eiusmod");
     }
 
     @Benchmark
     public boolean searchWithPattern() {
-        return pattern.matcher(message).find();
+        return pattern.matcher(message)
+            .find();
     }
 }

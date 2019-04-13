@@ -4,69 +4,68 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
- * BAEL-2832
+ * BAEL-2832: Different ways to check if a Substring could be found in a String.
  */
 public class SubstringSearch {
 
-    public static void main(String args[]) {
-        new SubstringSearch().searchUsingPattern();
-    }
-
-    public void searchSubstringWithContains() {
-        // contains will return true
-        "Hey Ho, let's go".contains("Hey");
-
-        // contains will return false, because it's case sensitive
-        "Hey Ho, let's go".contains("hey");
-
-        // contains will return true, because it's all lowercase
-        "Hey Ho, let's go".toLowerCase().contains("hey");
-
-        // contains will return false, because 'jey' can't be found
-        "Hey Ho, let's go".contains("jey");
-    }
-
+    @Test
     public void searchSubstringWithIndexOf() {
-        // indexOf will return 9
-        "Bohemian Rhapsodyan".indexOf("Rhap");
+        Assert.assertEquals("Bohemian Rhapsodyan".indexOf("Rhap"), 9);
 
         // indexOf will return -1, because it's case sensitive
-        "Bohemian Rhapsodyan".indexOf("rhap");
+        Assert.assertEquals("Bohemian Rhapsodyan".indexOf("rhap"), -1);
 
         // indexOf will return 9, because it's all lowercase
-        "Bohemian Rhapsodyan".toLowerCase().indexOf("rhap");
+        Assert.assertEquals("Bohemian Rhapsodyan".toLowerCase()
+            .indexOf("rhap"), 9);
 
-        // it will return 6, because it's the first ocurrence. Sorry Queen for being blasphemic
-        "Bohemian Rhapsodyan".indexOf("an");
+        // it will return 6, because it's the first occurrence. Sorry Queen for being blasphemic
+        Assert.assertEquals("Bohemian Rhapsodyan".indexOf("an"), 6);
     }
 
+    @Test
+    public void searchSubstringWithContains() {
+        Assert.assertTrue("Hey Ho, let's go".contains("Hey"));
+
+        // contains will return false, because it's case sensitive
+        Assert.assertFalse("Hey Ho, let's go".contains("hey"));
+
+        // contains will return true, because it's all lowercase
+        Assert.assertTrue("Hey Ho, let's go".toLowerCase()
+            .contains("hey"));
+
+        // contains will return false, because 'jey' can't be found
+        Assert.assertFalse("Hey Ho, let's go".contains("jey"));
+    }
+
+    @Test
     public void searchSubstringWithStringUtils() {
+        Assert.assertTrue(StringUtils.containsIgnoreCase("Runaway train", "train"));
 
-        // it will return true
-        StringUtils.containsIgnoreCase("Runaway train ", "train");
-
-        // it will also return true, because ignores case ;)
-        StringUtils.containsIgnoreCase("Runaway train", "Train");
-
+        // it will also be true, because ignores case ;)
+        Assert.assertTrue(StringUtils.containsIgnoreCase("Runaway train", "Train"));
     }
 
+    @Test
     public void searchUsingPattern() {
-        
-        //We create the Pattern first
+
+        // We create the Pattern first
         Pattern pattern = Pattern.compile("(?<!\\S)" + "road" + "(?!\\S)");
-        
-        // We need to create the Matcher after   
+
+        // We need to create the Matcher after
         Matcher matcher = pattern.matcher("Hit the road Jack");
-        
+
         // find will return true when the first match is found
-        matcher.find(); 
-        
-        // We will create a different matcher with a diferent text   
+        Assert.assertTrue(matcher.find());
+
+        // We will create a different matcher with a different text
         matcher = pattern.matcher("and don't you come back no more");
-        
+
         // find will return false, because 'road' can't be find as a substring
-        matcher.find();
-    }  
+        Assert.assertFalse(matcher.find());
+    }
 }
