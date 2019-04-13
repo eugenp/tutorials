@@ -4,6 +4,12 @@
   <artifactId>micronaut</artifactId>
   <version>0.1</version>
   <name>micronaut</name>
+  
+  <properties>
+    <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass>
+    <micronaut.version>1.0.0.RC2</micronaut.version>
+    <jdk.version>1.8</jdk.version>
+  </properties>
 
   <dependencyManagement>
     <dependencies>
@@ -128,9 +134,5 @@
     </pluginManagement>
   </build>
   
-  <properties>
-    <exec.mainClass>com.baeldung.micronaut.helloworld.server.ServerApplication</exec.mainClass>
-    <micronaut.version>1.0.0.RC2</micronaut.version>
-    <jdk.version>1.8</jdk.version>
-  </properties>
+  
 </project>
