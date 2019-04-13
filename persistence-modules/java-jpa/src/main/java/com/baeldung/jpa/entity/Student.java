@@ -17,7 +17,7 @@ import javax.persistence.Transient;
 import com.baeldung.util.Gender;
 
 @Entity
-@Table(name="STUD_NAME")
+@Table(name="STUD")
 public class Student {
 
 	@Id
