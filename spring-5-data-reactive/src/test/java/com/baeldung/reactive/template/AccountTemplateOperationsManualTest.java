@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = Spring5ReactiveApplication.class)
-public class AccountTemplateOperationsIntegrationTest {
+public class AccountTemplateOperationsManualTest {
 
     @Autowired
     AccountTemplateOperations accountTemplate;

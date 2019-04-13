@@ -586,6 +586,7 @@
                 
                 <module>spring-5</module>
                 <module>spring-5-webflux</module>
+                <module>spring-5-data-reactive</module>
                 <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-client</module>
@@ -598,6 +599,7 @@
                 <module>spring-akka</module>
                 <module>spring-all</module>
                 <module>spring-amqp</module>
+                <module>spring-amqp-simple</module>
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
@@ -958,9 +960,6 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>             
 
-                <module>spring-5-data-reactive</module> <!-- very long running. Fixing in BAEL-10891  -->
-                <module>spring-amqp-simple</module> <!-- very long running. Fixing in BAEL-10891 -->
-                
                 <module>vaadin</module>            
             </modules>
         </profile>
@@ -1231,6 +1230,7 @@
                 <module>spring-4</module>
                 
                 <module>spring-5</module>
+                <module>spring-5-data-reactive</module>
                 <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-client</module>
@@ -1243,6 +1243,7 @@
                 <module>spring-akka</module>
                 <module>spring-all</module>
                 <module>spring-amqp</module>
+                <module>spring-amqp-simple</module>
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
@@ -1455,9 +1456,6 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>             
 
-                <module>spring-5-data-reactive</module> <!-- very long running. Fixing in BAEL-10891  -->
-                <module>spring-amqp-simple</module> <!-- very long running. Fixing in BAEL-10891 -->
-                
                 <module>vaadin</module>            
             </modules>
 
