@@ -16,7 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
-import com.baeldung.sampleapp.config.RestClientConfig;
+import com.baeldung.config.RestClientConfig;
 import com.baeldung.transfer.LoginForm;
 
 @RunWith(SpringJUnit4ClassRunner.class)
