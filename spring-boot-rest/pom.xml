@@ -63,6 +63,11 @@
             <artifactId>htmlunit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -78,5 +83,6 @@
         <start-class>com.baeldung.SpringBootRestApplication</start-class>
         <guava.version>27.0.1-jre</guava.version>
         <xstream.version>1.4.11.1</xstream.version>
+        <modelmapper.version>2.3.2</modelmapper.version>
     </properties>
 </project>
