@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -16,8 +17,7 @@ public class LoadResourceAsStringIntegrationTest {
 
     private static final String ORIGINAL_DESCRIPTION = "This is a resource text file. This file will be loaded as a " + "resource and use its contents as a string.";
 
-    @Autowired
-    @Qualifier("resourceStringUsingSpel")
+    @Value("#{T(org.baeldung.resource.ResourceUtils).readFileToString('classpath:resource.txt'))}")
     private String resourceStringUsingSpel;
 
     @Autowired

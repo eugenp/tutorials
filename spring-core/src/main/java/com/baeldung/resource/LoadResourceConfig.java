@@ -20,17 +20,9 @@ public class LoadResourceConfig {
     @Value("classpath:resource.txt")
     private Resource resource;
 
-    @Value("#{T(org.apache.commons.io.FileUtils).readFileToString(" + "T(org.springframework.util.ResourceUtils).getFile('classpath:resource.txt')" + ")}")
-    private String resourceStringUsingSpel;
-
-    @Bean
-    public String resourceStringUsingSpel() throws IOException {
-        return resourceStringUsingSpel;
-    }
-
     @Bean
     public String resourceStringUsingFileCopyUtils() throws IOException {
-        final Reader reader = new InputStreamReader(resource.getInputStream());
+        Reader reader = new InputStreamReader(resource.getInputStream());
         return FileCopyUtils.copyToString(reader);
     }
 
@@ -43,7 +35,7 @@ public class LoadResourceConfig {
 
     @Bean
     public String resourceStringUsingGuava() throws IOException {
-        try (final Reader reader = new InputStreamReader(resource.getInputStream())) {
+        try (Reader reader = new InputStreamReader(resource.getInputStream())) {
             return CharStreams.toString(reader);
         }
     }
