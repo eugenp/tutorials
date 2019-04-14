@@ -63,13 +63,22 @@ public class JpaEntityMapper {
     }
     
     
-    private Object getPropertyValue(Object entry, String name) {
+    public Object getPropertyValue(Object entry, String name) {
         try {
             return PropertyUtils.getProperty(entry,name);
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new ODataRuntimeException("[E141] Unable to read property from entity, property=" + name, e);
         }
     }
+    
+    public void setPropertyValue(Object entry, String name,Object value) {
+        try {
+            PropertyUtils.setProperty(entry,name,value);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            throw new ODataRuntimeException("[E141] Unable to read property from entity, property=" + name, e);
+        }
+    }
+    
 
     private URI createId(String entitySetName, Object id)  {
         try {

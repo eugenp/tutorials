@@ -1,7 +1,9 @@
 package org.baeldung.examples.olingo4.edm;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.persistence.EntityManagerFactory;
@@ -33,11 +35,14 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
     private EdmTypeMapper typeMapper;
 
     // Service Namespace
-    public static final String NAMESPACE = "OData.Demo";
+    public static final String NAMESPACE = "Baeldung.OData";
 
     // EDM Container
     public static final String CONTAINER_NAME = "Cars";
     public static final FullQualifiedName CONTAINER = new FullQualifiedName(NAMESPACE, CONTAINER_NAME);
+    
+    // Caches of OData types by it fully qualified name
+    private Map<FullQualifiedName, CsdlEntityType> cdslName2Type = new HashMap<>();
 
     public JpaEdmProvider(EntityManagerFactory emf, EdmTypeMapper mapper) {
         this.emf = emf;
@@ -153,11 +158,13 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
 
     @Override
     public CsdlEntityType getEntityType(FullQualifiedName entityTypeName) throws ODataException {
+        
+        CsdlEntityType result = cdslName2Type.get(entityTypeName);
+        if ( result != null ) {
+            return result;
+        }
 
         Metamodel mm = emf.getMetamodel();
-
-        CsdlEntityType result = null;
-
         result = mm.getEntities()
             .stream()
             .filter(et -> entityTypeName.equals(new FullQualifiedName(NAMESPACE, et.getName())))
@@ -165,6 +172,8 @@ public class JpaEdmProvider extends CsdlAbstractEdmProvider {
             .findFirst()
             .orElse(null);
 
+        // save for future use
+        cdslName2Type.put(entityTypeName, result);
         return result;
         
     }

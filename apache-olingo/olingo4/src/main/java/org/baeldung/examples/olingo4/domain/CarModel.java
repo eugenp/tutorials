@@ -31,7 +31,7 @@ public class CarModel {
     @NotNull
     private String sku;
     
-    @ManyToOne(optional=false, fetch= FetchType.LAZY)
+    @ManyToOne(optional=false, fetch= FetchType.EAGER   )
     @JoinColumn(name="maker_fk")
     private CarMaker maker;
 

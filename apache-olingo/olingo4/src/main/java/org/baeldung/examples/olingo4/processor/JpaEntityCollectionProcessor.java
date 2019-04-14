@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
@@ -19,6 +20,7 @@ import org.apache.olingo.commons.api.data.Property;
 import org.apache.olingo.commons.api.data.ValueType;
 import org.apache.olingo.commons.api.edm.EdmEntitySet;
 import org.apache.olingo.commons.api.edm.EdmEntityType;
+import org.apache.olingo.commons.api.edm.EdmNavigationProperty;
 import org.apache.olingo.commons.api.ex.ODataRuntimeException;
 import org.apache.olingo.commons.api.format.ContentType;
 import org.apache.olingo.commons.api.http.HttpHeader;
@@ -35,6 +37,7 @@ import org.apache.olingo.server.api.serializer.EntityCollectionSerializerOptions
 import org.apache.olingo.server.api.serializer.ODataSerializer;
 import org.apache.olingo.server.api.serializer.SerializerResult;
 import org.apache.olingo.server.api.uri.UriInfo;
+import org.apache.olingo.server.api.uri.UriParameter;
 import org.apache.olingo.server.api.uri.UriResource;
 import org.apache.olingo.server.api.uri.UriResourceEntitySet;
 import org.baeldung.examples.olingo4.repository.RepositoryRegistry;
@@ -110,8 +113,7 @@ public class JpaEntityCollectionProcessor implements CountEntityCollectionProces
         Long count = getCount(edmEntitySet, uriInfo);
 
         // Finally: configure the response object: set the body, headers and status code
-        response.setContent(new ByteArrayInputStream(count.toString()
-            .getBytes()));
+        response.setContent(new ByteArrayInputStream(count.toString().getBytes()));
         response.setStatusCode(HttpStatusCode.OK.getStatusCode());
         response.setHeader(HttpHeader.CONTENT_TYPE, "text/plain");
 
@@ -130,9 +132,9 @@ public class JpaEntityCollectionProcessor implements CountEntityCollectionProces
         EntityCollection result = new EntityCollection();
 
         repo.findAll()
-            .stream()
-            .forEach((it) -> result.getEntities()
-                .add(entityMapper.map2entity(edmEntitySet, it)));
+          .stream()
+          .forEach((it) -> result.getEntities()
+          .add(entityMapper.map2entity(edmEntitySet, it)));
 
         return result;
     }
@@ -144,7 +146,7 @@ public class JpaEntityCollectionProcessor implements CountEntityCollectionProces
      * @param uriInfo
      * @return
      */
-    private Long getCount(EdmEntitySet edmEntitySet, UriInfo uriInfo) {
+    protected Long getCount(EdmEntitySet edmEntitySet, UriInfo uriInfo) {
         
         EdmEntityType type = edmEntitySet.getEntityType();
         JpaRepository<?, ?> repo = (JpaRepository<?, ?>)repositoryRegistry.getRepositoryForEntity(type);
@@ -152,5 +154,8 @@ public class JpaEntityCollectionProcessor implements CountEntityCollectionProces
 
         return repo.count();
     }
+    
+    
+
 
 }
