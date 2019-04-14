@@ -31,7 +31,9 @@ class MapTest{
         map.putAll(hobbyMap)
 
         assertTrue(map == [name:"Jerry", age: 42, city: "New York", hobby:"Singing"])
-
+        assertTrue(hobbyMap.hobby == "Singing")
+        assertTrue(hobbyMap[hobbyLiteral] == "Singing")
+        
         map.plus([1:20]) // returns new map
 
         map << [2:30]
