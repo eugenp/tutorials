@@ -1,4 +1,4 @@
-package org.baeldung.rest;
+package com.baeldung.rest;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.equalTo;
