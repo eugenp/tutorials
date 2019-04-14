@@ -5,14 +5,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-class SampleService {
+class SampleClient {
 
 	@Value("${app.access-url}")
 	private String endpoint;
 
 	private RestTemplate restTemplate;
 
-	public SampleService(RestTemplate restTemplate) {
+	public SampleClient(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
 	}
 
