@@ -1,6 +1,5 @@
 package kerberos.client;
 
-import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
@@ -23,21 +21,19 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@FixMethodOrder
-public class SampleServiceManualTest {
+public class SampleClientManualTest {
 
 	@Autowired
-	private SampleService sampleService;
+	private SampleClient sampleClient;
 
 	@Test
-	public void a_givenKerberizedRestTemplate_whenServiceCall_thenSuccess() {
-		assertNotNull(sampleService);
-		assertEquals("data from kerberized server", sampleService.getData());
+	public void givenKerberizedRestTemplate_whenServiceCall_thenSuccess() {
+		assertEquals("data from kerberized server", sampleClient.getData());
 	}
 
 	@Test
-	public void b_givenRestTemplate_whenServiceCall_thenFail() {
-		sampleService.setRestTemplate(new RestTemplate());
-		assertThrows(RestClientException.class, sampleService::getData);
+	public void givenRestTemplate_whenServiceCall_thenFail() {
+		sampleClient.setRestTemplate(new RestTemplate());
+		assertThrows(RestClientException.class, sampleClient::getData);
 	}
 }
