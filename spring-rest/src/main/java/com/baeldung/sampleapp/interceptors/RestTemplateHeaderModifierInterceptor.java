@@ -1,4 +1,4 @@
-package com.baeldung.interceptors;
+package com.baeldung.sampleapp.interceptors;
 
 import java.io.IOException;
 
