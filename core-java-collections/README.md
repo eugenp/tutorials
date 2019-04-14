@@ -3,7 +3,7 @@
 ## Core Java Collections Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Java - Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
+- [Java – Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
 - [HashSet and TreeSet Comparison](http://www.baeldung.com/java-hashset-vs-treeset)
 - [Collect a Java Stream to an Immutable Collection](http://www.baeldung.com/java-stream-immutable-collection)
 - [Introduction to the Java ArrayDeque](http://www.baeldung.com/java-array-deque)

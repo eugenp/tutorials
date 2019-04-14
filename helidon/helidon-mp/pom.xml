@@ -15,13 +15,18 @@
         <dependency>
             <groupId>io.helidon.microprofile.bundles</groupId>
             <artifactId>helidon-microprofile-1.2</artifactId>
-            <version>0.10.4</version>
+            <version>${helidon-microprofile.version}</version>
         </dependency>
         <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-json-binding</artifactId>
-            <version>2.26</version>
+            <version>${jersey-media-json-binding.version}</version>
         </dependency>
     </dependencies>
+
+    <properties>
+        <helidon-microprofile.version>0.10.4</helidon-microprofile.version>
+        <jersey-media-json-binding.version>2.26</jersey-media-json-binding.version>
+    </properties>
 
 </project>

@@ -7,11 +7,12 @@
 	<groupId>com.baeldung</groupId>
 	<artifactId>parent-modules</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
+    <name>parent-modules</name>
+	<packaging>pom</packaging>
+    	
     <modules>
         <module>lombok-custom</module>
     </modules>
-    <name>parent-modules</name>
-	<packaging>pom</packaging>
 
 	<dependencies>
 		<!-- logging -->
@@ -332,7 +333,7 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
-                
+                <!-- <module>akka-http</module> --> <!-- Unit test is failing -->
                 <module>akka-streams</module>
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
@@ -379,10 +380,13 @@
                 <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 --> 
                 <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
                 <module>core-java-8</module>
+                <module>core-java-8-2</module>
+		<module>core-java-lambdas</module>
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-collections-map</module>
                 <module>core-java-collections-list</module>
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
@@ -391,6 +395,7 @@
                 <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
+                <module>core-java-lang-oop-2</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
                 <module>core-java-sun</module>
@@ -440,6 +445,7 @@
                 <module>jackson-2</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
+                <module>java-collections-maps-2</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-dates-2</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!-- <module>java-ee-8-security-api</module> --> <!-- long running -->
@@ -448,6 +454,7 @@
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-streams</module>
+                <module>java-streams-2</module>
                 <module>java-strings</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
@@ -480,6 +487,7 @@
                 
                 <!-- <module>lagom</module> --> <!-- Not a maven project -->
                 <module>libraries</module>
+                <module>libraries-2</module>
                 <module>libraries-data</module>
                 <module>libraries-apache-commons</module>
                 <module>libraries-security</module>
@@ -578,6 +586,7 @@
                 
                 <module>spring-5</module>
                 <module>spring-5-webflux</module>
+                <module>spring-5-data-reactive</module>
                 <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-client</module>
@@ -590,6 +599,7 @@
                 <module>spring-akka</module>
                 <module>spring-all</module>
                 <module>spring-amqp</module>
+                <module>spring-amqp-simple</module>
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
@@ -613,8 +623,10 @@
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
+                <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-data</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-testing</module>
@@ -662,11 +674,13 @@
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
                 <module>spring-mvc-simple</module>
+                <module>spring-mvc-simple-2</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
                 
                 <module>spring-protobuf</module>
+                <!-- <module>spring-security-cors</module> -->  <!-- PMD violation -->
                 
                 <module>spring-quartz</module>
                 
@@ -946,9 +960,6 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>             
 
-                <module>spring-5-data-reactive</module> <!-- very long running. Fixing in BAEL-10891  -->
-                <module>spring-amqp-simple</module> <!-- very long running. Fixing in BAEL-10891 -->
-                
                 <module>vaadin</module>            
             </modules>
         </profile>
@@ -982,7 +993,7 @@
                 <module>parent-spring-5</module>
                 <module>parent-java</module>
                 <module>parent-kotlin</module>
-                
+                <!-- <module>akka-http</module> --> <!-- Unit test is failing -->
                 <module>akka-streams</module>
                 <module>algorithms-genetic</module>
                 <module>algorithms-miscellaneous-1</module>
@@ -1026,10 +1037,12 @@
                 <!-- <module>core-java-10</module> --> <!-- We haven't upgraded to java 10. Fixing in BAEL-10841 -->
                 <!-- <module>core-java-11</module> --> <!-- We haven't upgraded to java 11. Fixing in BAEL-10841 --> 
                 <module>core-java-8</module>
+                <module>core-java-8-2</module>
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-collections-map</module>
                 <module>core-java-collections-list</module>
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
@@ -1038,6 +1051,7 @@
                 <module>core-java-lang-syntax</module>
                 <module>core-java-lang</module>
                 <module>core-java-lang-oop</module>
+                <module>core-java-lang-oop-2</module>
                 <module>core-java-networking</module>
                 <module>core-java-perf</module>
                 <module>core-java-sun</module>
@@ -1085,6 +1099,7 @@
                 <module>jackson-2</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
+                <module>java-collections-maps-2</module>
                 <!-- <module>java-dates</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <module>java-ee-8-security-api</module>
                 <module>java-lite</module>
@@ -1092,6 +1107,7 @@
                 <module>java-rmi</module>
                 <module>java-spi</module>
                 <module>java-streams</module>
+                <module>java-streams-2</module>
                 <module>java-strings</module>
                 <module>java-vavr-stream</module>
                 <module>java-websocket</module>
@@ -1214,6 +1230,7 @@
                 <module>spring-4</module>
                 
                 <module>spring-5</module>
+                <module>spring-5-data-reactive</module>
                 <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-client</module>
@@ -1226,6 +1243,7 @@
                 <module>spring-akka</module>
                 <module>spring-all</module>
                 <module>spring-amqp</module>
+                <module>spring-amqp-simple</module>
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
@@ -1249,8 +1267,10 @@
                 <module>spring-boot-keycloak</module>
                 <module>spring-boot-logging-log4j2</module>
                 <module>spring-boot-mvc</module>
+                <module>spring-boot-mvc-birt</module>
                 <module>spring-boot-ops</module>
                 <module>spring-boot-rest</module>
+                <module>spring-boot-data</module>
                 <module>spring-boot-property-exp</module>
                 <module>spring-boot-security</module>
                 <module>spring-boot-vue</module>
@@ -1296,11 +1316,13 @@
                 <module>spring-mvc-java</module>
                 <module>spring-mvc-kotlin</module>
                 <module>spring-mvc-simple</module>
+                <module>spring-mvc-simple-2</module>
                 <module>spring-mvc-velocity</module>
                 <module>spring-mvc-webflow</module>
                 <module>spring-mvc-xml</module>
                 
                 <module>spring-protobuf</module>
+                <!-- <module>spring-security-cors</module> -->  <!-- PMD violation -->
                 
                 <module>spring-quartz</module>
                 
@@ -1434,9 +1456,6 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>             
 
-                <module>spring-5-data-reactive</module> <!-- very long running. Fixing in BAEL-10891  -->
-                <module>spring-amqp-simple</module> <!-- very long running. Fixing in BAEL-10891 -->
-                
                 <module>vaadin</module>            
             </modules>
 

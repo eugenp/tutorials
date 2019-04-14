@@ -4,21 +4,6 @@ import java.util.LinkedList;
 
 public class TreeReverser {
 
-    public TreeNode createBinaryTree() {
-
-        TreeNode leaf1 = new TreeNode(3);
-        TreeNode leaf2 = new TreeNode(1);
-        TreeNode leaf3 = new TreeNode(9);
-        TreeNode leaf4 = new TreeNode(6);
-
-        TreeNode nodeLeft = new TreeNode(2, leaf1, leaf2);
-        TreeNode nodeRight = new TreeNode(7, leaf3, leaf4);
-
-        TreeNode root = new TreeNode(4, nodeRight, nodeLeft);
-
-        return root;
-    }
-
     public void reverseRecursive(TreeNode treeNode) {
         if (treeNode == null) {
             return;
