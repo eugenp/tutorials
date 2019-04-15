@@ -6,7 +6,7 @@
 The "Learn Spring Security" Classes: http://github.learnspringsecurity.com
 
 ### Relevant Articles: 
-- [Spring Security Persisted Remember Me](http://www.baeldung.com/spring-security-persistent-remember-me)
+- [Spring Security – Persistent Remember Me](http://www.baeldung.com/spring-security-persistent-remember-me)
 
 ### Build the Project
 ```
