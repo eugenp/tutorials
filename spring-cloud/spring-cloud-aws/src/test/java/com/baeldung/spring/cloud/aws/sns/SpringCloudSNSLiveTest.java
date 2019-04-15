@@ -16,10 +16,17 @@ import com.amazonaws.services.sns.model.CreateTopicResult;
 import com.baeldung.spring.cloud.aws.SpringCloudAwsTestUtil;
 import com.baeldung.spring.cloud.aws.sqs.Greeting;
 
+/**
+ * 
+ * To run this Live Test, we need to have an AWS account and have API keys generated for programmatic access.
+ * 
+ * Check the README file in this module for more information.
+ *
+ */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @TestPropertySource("classpath:application-test.properties")
-public class SpringCloudSNSIntegrationTest {
+public class SpringCloudSNSLiveTest {
 
     @Autowired
     private SNSMessageSender snsMessageSender;
