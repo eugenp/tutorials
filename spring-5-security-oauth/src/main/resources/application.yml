@@ -1,0 +1,24 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            client-id: clientId
+            client-secret: clientSecret
+            clientAuthenticationMethod: post
+            authorizationGrantType: authorization_code
+            scope:
+              - openid
+            redirectUriTemplate: "{baseUrl}/login/oauth2/code/cognito"
+            clientName: cognito-client-name
+        provider:
+          cognito:
+            authorizationUri: https://custom-cognito-domain.auth.us-east-1.amazoncognito.com/oauth2/authorize
+            tokenUri: https://custom-cognito-domain.auth.us-east-1.amazoncognito.com/oauth2/token
+            jwkSetUri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_poolId/.well-known/jwks.json
+            userInfoUri: https://custom-cognito-domain.auth.us-east-1.amazoncognito.com/oauth2/userInfo
+            usernameAttribute: cognito:username
+logging:
+  level:
+    ROOT: INFO
