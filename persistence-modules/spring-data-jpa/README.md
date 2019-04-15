@@ -5,7 +5,7 @@
 ### Relevant Articles: 
 - [Spring JPA – Multiple Databases](http://www.baeldung.com/spring-data-jpa-multiple-databases)
 - [Spring Data JPA – Adding a Method in All Repositories](http://www.baeldung.com/spring-data-jpa-method-in-all-repositories)
-- [Advanced Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging-advanced)
+- [An Advanced Tagging Implementation with JPA](http://www.baeldung.com/jpa-tagging-advanced)
 - [Spring Data JPA @Query](http://www.baeldung.com/spring-data-jpa-query)
 - [Spring Data Annotations](http://www.baeldung.com/spring-data-annotations)
 - [Spring Data Java 8 Support](http://www.baeldung.com/spring-data-java-8)

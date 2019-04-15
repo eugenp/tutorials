@@ -15,12 +15,6 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-	<properties>
-		<java.version>1.8</java.version>
-		<tensorflow.version>1.12.0</tensorflow.version>
-		<junit.jupiter.version>5.4.0</junit.jupiter.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.tensorflow</groupId>
@@ -49,4 +43,10 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<tensorflow.version>1.12.0</tensorflow.version>
+		<junit.jupiter.version>5.4.0</junit.jupiter.version>
+	</properties>
 </project>
