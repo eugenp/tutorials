@@ -381,10 +381,12 @@
                 <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
                 <module>core-java-8</module>
                 <module>core-java-8-2</module>
+		<module>core-java-lambdas</module>
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-collections-map</module>
                 <module>core-java-collections-list</module>
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
@@ -538,7 +540,8 @@
 			    <module>software-security/sql-injection-samples</module>
 				
 				<module>tensorflow-java</module>
-				
+				<module>spring-boot-flowable</module>
+					
 			</modules>
 
 		</profile>
@@ -584,6 +587,7 @@
                 
                 <module>spring-5</module>
                 <module>spring-5-webflux</module>
+                <module>spring-5-data-reactive</module>
                 <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-client</module>
@@ -596,6 +600,7 @@
                 <module>spring-akka</module>
                 <module>spring-all</module>
                 <module>spring-amqp</module>
+                <module>spring-amqp-simple</module>
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
@@ -762,6 +767,7 @@
                 <module>xstream</module>
 				
 				<module>tensorflow-java</module>
+				<module>spring-boot-flowable</module>
                 
             </modules>
 
@@ -904,6 +910,8 @@
 				<module>persistence-modules/spring-data-eclipselink</module>
 				<module>persistence-modules/spring-data-solr</module>
 				<module>persistence-modules/spring-hibernate-5</module>
+				
+				<module>spring-boot-flowable</module>
 			</modules>
 
 		</profile>
@@ -956,9 +964,6 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>             
 
-                <module>spring-5-data-reactive</module> <!-- very long running. Fixing in BAEL-10891  -->
-                <module>spring-amqp-simple</module> <!-- very long running. Fixing in BAEL-10891 -->
-                
                 <module>vaadin</module>            
             </modules>
         </profile>
@@ -1041,6 +1046,7 @@
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-arrays</module>
                 <module>core-java-collections</module>
+                <module>core-java-collections-map</module>
                 <module>core-java-collections-list</module>
                 <module>core-java-concurrency-basic</module>
                 <module>core-java-concurrency-collections</module>
@@ -1228,6 +1234,7 @@
                 <module>spring-4</module>
                 
                 <module>spring-5</module>
+                <module>spring-5-data-reactive</module>
                 <module>spring-5-mvc</module>
                 <module>spring-5-reactive</module>
                 <module>spring-5-reactive-client</module>
@@ -1240,6 +1247,7 @@
                 <module>spring-akka</module>
                 <module>spring-all</module>
                 <module>spring-amqp</module>
+                <module>spring-amqp-simple</module>
                 <module>spring-aop</module>
                 <module>spring-apache-camel</module>
                 <module>spring-batch</module>
@@ -1452,9 +1460,6 @@
                 <module>persistence-modules/java-mongodb</module>
                 <module>persistence-modules/jnosql</module>             
 
-                <module>spring-5-data-reactive</module> <!-- very long running. Fixing in BAEL-10891  -->
-                <module>spring-amqp-simple</module> <!-- very long running. Fixing in BAEL-10891 -->
-                
                 <module>vaadin</module>            
             </modules>
 
