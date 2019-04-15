@@ -1,5 +1,7 @@
 package com.baeldung.convert;
 
+import org.joda.time.Instant;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -35,9 +37,12 @@ public class ConvertDateTime {
     }
 
     private static void joda() {
-        org.joda.time.DateTime jodaDateTime = new org.joda.time.DateTime(new Date());
+        org.joda.time.DateTime jodaDateTime = new org.joda.time.DateTime();
         long delta = jodaDateTime.getMillis();
         System.out.println("Joda - Time in milliseconds : " + delta);
+
+        Instant jodaInstant = Instant.now();
+        System.out.println("Joda - Instant in milliseconds : " + jodaInstant.getMillis());
     }
 
     private static void java8() {
