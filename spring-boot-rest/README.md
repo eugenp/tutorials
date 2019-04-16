@@ -16,3 +16,4 @@ Module for the articles that are part of the Spring REST E-book:
 - [ETags for REST with Spring](http://www.baeldung.com/etags-for-rest-with-spring)
 - [Testing REST with multiple MIME types](http://www.baeldung.com/testing-rest-api-with-multiple-media-types)
 - [Testing Web APIs with Postman Collections](https://www.baeldung.com/postman-testing-collections)
+- [An Intro to Spring HATEOAS](http://www.baeldung.com/spring-hateoas-tutorial)

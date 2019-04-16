@@ -1,8 +1,8 @@
-package org.baeldung.web.service;
+package com.baeldung.services;
 
 import java.util.List;
 
-import org.baeldung.persistence.model.Order;
+import com.baeldung.persistence.model.Order;
 
 public interface OrderService {
 

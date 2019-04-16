@@ -1,13 +1,14 @@
-package org.baeldung.web.service;
+package com.baeldung.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.baeldung.persistence.model.Customer;
-import org.baeldung.persistence.model.Order;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.persistence.model.Customer;
+import com.baeldung.persistence.model.Order;
 
 @Service
 public class OrderServiceImpl implements OrderService {
