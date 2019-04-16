@@ -1,7 +1,7 @@
 package com.baeldung.hibernate.persistmaps;
 
-import com.baeldung.hibernate.onetoone.HibernateUtil;
-import com.baeldung.hibernate.onetoone.Strategy;
+import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.Strategy;
 import com.baeldung.hibernate.persistmaps.mapkeycolumn.Order;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

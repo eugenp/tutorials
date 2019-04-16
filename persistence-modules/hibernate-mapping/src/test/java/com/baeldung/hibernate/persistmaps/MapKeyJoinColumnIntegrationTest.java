@@ -1,9 +1,10 @@
 package com.baeldung.hibernate.persistmaps;
 
-import com.baeldung.hibernate.onetoone.HibernateUtil;
-import com.baeldung.hibernate.onetoone.Strategy;
-import com.baeldung.hibernate.persistmaps.mapkey.Item;
-import com.baeldung.hibernate.persistmaps.mapkeytemporal.Order;
+import com.baeldung.hibernate.HibernateUtil;
+import com.baeldung.hibernate.Strategy;
+import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Item;
+import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Order;
+import com.baeldung.hibernate.persistmaps.mapkeyjoincolumn.Seller;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -21,14 +22,14 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class MapKeyTemporalIntegrationTest {
+public class MapKeyJoinColumnIntegrationTest {
     private static SessionFactory sessionFactory;
 
     private Session session;
 
     @BeforeClass
     public static void beforeTests() {
-        sessionFactory = HibernateUtil.getSessionFactory(Strategy.MAP_KEY_TEMPORAL_BASED);
+        sessionFactory = HibernateUtil.getSessionFactory(Strategy.MAP_KEY_JOIN_COLUMN_BASED);
     }
 
     @Before
@@ -38,36 +39,43 @@ public class MapKeyTemporalIntegrationTest {
     }
 
     @Test
-    public void givenData_whenInsertUsingMapKeyEnumerated_thenPersistMap() {
-        Date item1CreatedOn = Date.from(Instant.ofEpochSecond(1554926573));
+    public void givenData_whenInsertUsingMapKeyJoinColumn_thenPersistMap() {
+        Seller seller1 = new Seller();
+        seller1.setSellerName("Walmart");
+
         Item item1 = new Item();
         item1.setItemName("Wrangler Jeans");
         item1.setItemPrice(150.0);
         item1.setItemType(ItemType.JEANS);
-        item1.setCreatedOn(item1CreatedOn);
+        item1.setCreatedOn(Date.from(Instant.ofEpochSecond(1554926573)));
+        item1.setSeller(seller1);
 
 
-        Date item2CreatedOn = Date.from(Instant.ofEpochSecond(1554890573));
+        Seller seller2 = new Seller();
+        seller2.setSellerName("Amazon");
+
         Item item2 = new Item();
         item2.setItemName("Armani Tshirts");
         item2.setItemPrice(180.0);
         item2.setItemType(ItemType.TSHIRTS);
-        item2.setCreatedOn(item2CreatedOn);
+        item2.setCreatedOn(Date.from(Instant.ofEpochSecond(1554890573)));
+        item2.setSeller(seller2);
 
-        Map<Date, Item> itemMap = new HashMap<>();
-        itemMap.put(item1CreatedOn, item1);
-        itemMap.put(item2CreatedOn, item2);
+        Map<Seller, Item> itemSellerMap = new HashMap<>();
+        itemSellerMap.put(seller1, item1);
+        itemSellerMap.put(seller2, item2);
 
         Order order = new Order();
-        order.setItemMap(itemMap);
+        order.setSellerItemMap(itemSellerMap);
+
 
         session.persist(order);
         session.getTransaction().commit();
 
-        assertInsertedData(item1CreatedOn, item1, item2CreatedOn, item2);
+        assertInsertedData(seller1, item1, seller2, item2);
     }
 
-    private void assertInsertedData(Date item1CreatedOn, Item expectedItem1, Date item2CreatedOn, Item expectedItem2) {
+    private void assertInsertedData(Seller seller1, Item expectedItem1, Seller seller2, Item expectedItem2) {
         @SuppressWarnings("unchecked")
         List<Order> orderList = session.createQuery("FROM Order").list();
 
@@ -76,11 +84,11 @@ public class MapKeyTemporalIntegrationTest {
 
         Order order = orderList.get(0);
 
-        Map<Date, Item> itemMap = order.getItemMap();
-        assertNotNull(itemMap);
-        assertEquals(2, itemMap.size());
-        assertEquals(expectedItem1, itemMap.get(item1CreatedOn));
-        assertEquals(expectedItem2, itemMap.get(item2CreatedOn));
+        Map<Seller, Item> sellerItemMap = order.getSellerItemMap();
+        assertNotNull(sellerItemMap);
+        assertEquals(2, sellerItemMap.size());
+        assertEquals(expectedItem1, sellerItemMap.get(seller1));
+        assertEquals(expectedItem2, sellerItemMap.get(seller2));
 
     }
 
@@ -94,3 +102,4 @@ public class MapKeyTemporalIntegrationTest {
         sessionFactory.close();
     }
 }
+
