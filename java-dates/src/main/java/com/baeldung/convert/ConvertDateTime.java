@@ -3,7 +3,6 @@ package com.baeldung.convert;
 import org.joda.time.Instant;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -12,18 +11,16 @@ import java.util.Date;
 
 public class ConvertDateTime {
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
 
         java8();
         joda();
-        Date date = simpleDateTimeFormatter();
+        Date date = coreDate();
         calendar(date);
     }
 
-    private static Date simpleDateTimeFormatter() throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        String dateInString = "22-04-2019 10:20:56";
-        Date date = sdf.parse(dateInString);
+    private static Date coreDate() {
+        Date date = new Date();
 
         System.out.println("Date - Time in milliseconds : " + date.getTime());
 
@@ -46,6 +43,8 @@ public class ConvertDateTime {
     }
 
     private static void java8() {
+        long instantMillis = java.time.Instant.now().toEpochMilli();
+
         LocalDateTime localDateTime = LocalDateTime.now();
         ZoneId id = ZoneId.systemDefault();
         ZonedDateTime zdt = ZonedDateTime.of(localDateTime, id);
