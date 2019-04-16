@@ -6,19 +6,10 @@ spring:
           cognito:
             client-id: clientId
             client-secret: clientSecret
-            clientAuthenticationMethod: post
-            authorizationGrantType: authorization_code
-            scope:
-              - openid
-            redirectUriTemplate: "{baseUrl}/login/oauth2/code/cognito"
+            scope: openid
+            redirectUriTemplate: "http://localhost:8080/login/oauth2/code/cognito"
             clientName: cognito-client-name
         provider:
           cognito:
-            authorizationUri: https://custom-cognito-domain.auth.us-east-1.amazoncognito.com/oauth2/authorize
-            tokenUri: https://custom-cognito-domain.auth.us-east-1.amazoncognito.com/oauth2/token
-            jwkSetUri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_poolId/.well-known/jwks.json
-            userInfoUri: https://custom-cognito-domain.auth.us-east-1.amazoncognito.com/oauth2/userInfo
+            issuerUri: https://cognito-idp.{region}.amazonaws.com/{poolId}
             usernameAttribute: cognito:username
-logging:
-  level:
-    ROOT: INFO
