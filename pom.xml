@@ -953,6 +953,7 @@
                 <module>core-java-concurrency-advanced</module> <!-- very long running? -->
                 <module>core-kotlin</module> <!-- long running? -->
                 <module>core-kotlin-2</module>
+                <module>core-kotlin-io</module>
 
                 <module>jenkins/hello-world</module>
                 <module>jws</module>
