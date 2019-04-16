@@ -1,4 +1,4 @@
-package com.baeldung.controllers;
+package com.baeldung.web.controller;
 
 import com.baeldung.services.ExampleService;
 import com.baeldung.transfer.ResponseTransfer;
