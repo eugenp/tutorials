@@ -1,15 +1,21 @@
 package com.bealdung.adapter;
 
 import com.bealdung.Application;
+import com.bealdung.adapter.feeder.HttpFeedAdapter;
+import com.bealdung.adapter.notification.DesktopNotificationAdapter;
+import com.bealdung.adapter.notification.PhoneNotificationAdapter;
+import com.bealdung.adapter.storage.InMemoryStorage;
 import com.bealdung.dto.HttpFeed;
 import com.bealdung.dto.SourceType;
 import com.bealdung.dto.WeatherInfo;
-import com.bealdung.port.WeatherFeeder;
-import com.bealdung.port.WeatherRepository;
+import com.bealdung.port.feeder.WeatherFeeder;
+import com.bealdung.port.notification.Notification;
+import com.bealdung.port.repository.WeatherRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class WeatherFeederTestUnitTest {
@@ -20,8 +26,9 @@ public class WeatherFeederTestUnitTest {
 
     @Before
     public void setUp() {
+        List<Notification> notificationClient = Arrays.asList(new DesktopNotificationAdapter(), new PhoneNotificationAdapter());
         inMemoryStorage = new InMemoryStorage();
-        application = new Application(inMemoryStorage);
+        application = new Application(inMemoryStorage, notificationClient);
         weatherFeeder = new HttpFeedAdapter(application);
     }
 

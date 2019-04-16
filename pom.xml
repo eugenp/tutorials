@@ -12,7 +12,7 @@
     	
     <modules>
         <module>lombok-custom</module>
-        <module>hexagonal -architecture</module>
+        <module>hexagonal-architecture</module>
     </modules>
 
 	<dependencies>

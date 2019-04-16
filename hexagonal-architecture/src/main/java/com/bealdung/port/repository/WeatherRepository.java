@@ -1,4 +1,4 @@
-package com.bealdung.port;
+package com.bealdung.port.repository;
 
 import com.bealdung.dto.SourceType;
 import com.bealdung.dto.WeatherInfo;
@@ -6,7 +6,7 @@ import com.bealdung.dto.WeatherInfo;
 import java.util.List;
 
 public interface WeatherRepository {
-    void save(WeatherInfo weatherInfo);
+    WeatherInfo save(WeatherInfo weatherInfo);
 
     List<WeatherInfo> getWeatherInfo(SourceType source);
 }

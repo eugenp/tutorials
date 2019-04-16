@@ -1,11 +1,11 @@
-package com.bealdung.adapter;
+package com.bealdung.adapter.feeder;
 
 import com.bealdung.Application;
 import com.bealdung.dto.BaseWeatherDTO;
 import com.bealdung.dto.RssFeed;
 import com.bealdung.dto.SourceType;
 import com.bealdung.dto.WeatherInfo;
-import com.bealdung.port.WeatherFeeder;
+import com.bealdung.port.feeder.WeatherFeeder;
 
 public class RssFeedAdapter implements WeatherFeeder {
 

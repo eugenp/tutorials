@@ -1,4 +1,4 @@
-package com.bealdung.port;
+package com.bealdung.port.feeder;
 
 import com.bealdung.dto.BaseWeatherDTO;
 

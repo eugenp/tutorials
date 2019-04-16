@@ -1,12 +1,23 @@
 package com.bealdung.dto;
 
+import java.util.UUID;
+
 public class WeatherInfo {
+    private UUID id;
     private String humidity;
     private String pressure;
     private String temperature;
     private String windSpeed;
     private String precipitation;
     private SourceType source;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getHumidity() {
         return humidity;
