@@ -19,7 +19,7 @@ class DefUnitTest extends GroovyTestCase {
     }
         
     @TypeChecked(TypeCheckingMode.SKIP)
-    void testDef() {
+    void testDefVariableDeclaration() {
         
         def list
         assert list.getClass() == org.codehaus.groovy.runtime.NullObject
@@ -27,15 +27,21 @@ class DefUnitTest extends GroovyTestCase {
         
         list = [1,2,4]
         assert list instanceof ArrayList
-                
-        int sum = 200
+    }
+    
+    @TypeChecked(TypeCheckingMode.SKIP)
+    void testTypeVariables() {   
+        int rate = 200
         try {
-            sum = [12] //GroovyCastException
-            sum = "nill" //GroovyCastException
+            rate = [12] //GroovyCastException
+            rate = "nill" //GroovyCastException
         } catch(GroovyCastException) {
             println "Cannot assign anything other than integer"
         }
-        
+    }
+     
+    @TypeChecked(TypeCheckingMode.SKIP)
+    void testDefVariableMultipleAssignment() {
         def rate
         assert rate == null
         assert rate.getClass() == org.codehaus.groovy.runtime.NullObject
