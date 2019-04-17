@@ -22,11 +22,13 @@ public class JpaPopulators {
 
     @Bean
     public UnmarshallerRepositoryPopulatorFactoryBean repositoryPopulator() {
-        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-        marshaller.setClassesToBeBound(Fruit.class);
+
+        Jaxb2Marshaller unmarshaller = new Jaxb2Marshaller();
+        unmarshaller.setClassesToBeBound(Fruit.class);
+
         UnmarshallerRepositoryPopulatorFactoryBean factory = new UnmarshallerRepositoryPopulatorFactoryBean();
-        factory.setUnmarshaller(marshaller);
-        factory.setResources(new Resource[] { new ClassPathResource("fruit-data.xml") });
+        factory.setUnmarshaller(unmarshaller);
+        factory.setResources(new Resource[] { new ClassPathResource("apple-fruit-data.xml"), new ClassPathResource("guava-fruit-data.xml") });
         return factory;
     }
 
