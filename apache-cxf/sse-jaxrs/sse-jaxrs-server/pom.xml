@@ -13,11 +13,28 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
-        <failOnMissingWebXml>false</failOnMissingWebXml>
-        <openliberty-version>18.0.0.2</openliberty-version>
-    </properties>
+    <dependencies>
+
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.enterprise</groupId>
+            <artifactId>cdi-api</artifactId>
+            <version>2.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.json.bind</groupId>
+            <artifactId>javax.json.bind-api</artifactId>
+            <version>1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
 
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -59,27 +76,10 @@
         </plugins>
     </build>
 
-    <dependencies>
-
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>2.0</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.json.bind</groupId>
-            <artifactId>javax.json.bind-api</artifactId>
-            <version>1.0</version>
-            <scope>provided</scope>
-        </dependency>
-
-    </dependencies>
+    <properties>
+        <liberty-maven-plugin.version>2.4.2</liberty-maven-plugin.version>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+        <openliberty-version>18.0.0.2</openliberty-version>
+    </properties>
 
 </project>
