@@ -19,6 +19,7 @@
 .idea/
 *.iml
 *.iws
+out/
 
 # Mac
 .DS_Store
@@ -26,6 +27,9 @@
 # Maven
 log/
 target/
+
+# Gradle
+.gradle/
 
 spring-openid/src/main/resources/application.properties
 .recommenders/
