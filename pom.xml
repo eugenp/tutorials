@@ -443,6 +443,7 @@
 
                 <module>jackson</module>
                 <module>jackson-2</module>
+                <module>jackson-simple</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
@@ -1103,6 +1104,7 @@
 
                 <module>jackson</module>
                 <module>jackson-2</module>
+                <module>jackson-simple</module>
                 <module>java-collections-conversions</module>
                 <module>java-collections-maps</module>
                 <module>java-collections-maps-2</module>
