@@ -14,17 +14,17 @@ public class SubstringSearch {
 
     @Test
     public void searchSubstringWithIndexOf() {
-        Assert.assertEquals("Bohemian Rhapsodyan".indexOf("Rhap"), 9);
+        Assert.assertEquals(9, "Bohemian Rhapsodyan".indexOf("Rhap"));
 
         // indexOf will return -1, because it's case sensitive
-        Assert.assertEquals("Bohemian Rhapsodyan".indexOf("rhap"), -1);
+        Assert.assertEquals(-1, "Bohemian Rhapsodyan".indexOf("rhap"));
 
         // indexOf will return 9, because it's all lowercase
-        Assert.assertEquals("Bohemian Rhapsodyan".toLowerCase()
-            .indexOf("rhap"), 9);
+        Assert.assertEquals(9, "Bohemian Rhapsodyan".toLowerCase()
+            .indexOf("rhap"));
 
         // it will return 6, because it's the first occurrence. Sorry Queen for being blasphemic
-        Assert.assertEquals("Bohemian Rhapsodyan".indexOf("an"), 6);
+        Assert.assertEquals(6, "Bohemian Rhapsodyan".indexOf("an"));
     }
 
     @Test
