@@ -96,6 +96,15 @@
                         </configuration>
                     </execution>
                 </executions>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.20.1</version>
+                <configuration>
+                <useFile>false</useFile>
+                <includes>
+                    <include>**/*Test.java</include>
+                    <include>**/*Spec.java</include>
+                </includes>
+                </configuration>
             </plugin>
         </plugins>
     </build>

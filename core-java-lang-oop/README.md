@@ -10,7 +10,7 @@
 - [How to Make a Deep Copy of an Object in Java](http://www.baeldung.com/java-deep-copy)
 - [Guide to Inheritance in Java](http://www.baeldung.com/java-inheritance)
 - [Object Type Casting in Java](http://www.baeldung.com/java-type-casting)
-- [The "final" Keyword in Java](http://www.baeldung.com/java-final)
+- [The “final” Keyword in Java](http://www.baeldung.com/java-final)
 - [Type Erasure in Java Explained](http://www.baeldung.com/java-type-erasure)
 - [Pass-By-Value as a Parameter Passing Mechanism in Java](http://www.baeldung.com/java-pass-by-value-or-pass-by-reference)
 - [Variable and Method Hiding in Java](http://www.baeldung.com/java-variable-method-hiding)
