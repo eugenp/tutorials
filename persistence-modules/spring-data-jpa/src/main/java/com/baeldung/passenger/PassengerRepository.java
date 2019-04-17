@@ -4,12 +4,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 interface PassengerRepository extends JpaRepository<Passenger, Long>, CustomPassengerRepository {
-
-    Passenger findFirstByOrderBySeatNumberAsc();
-
-    Passenger findTopByOrderBySeatNumberAsc();
 
     Optional<Passenger> findFirstByOrderBySeatNumberAsc();
 
