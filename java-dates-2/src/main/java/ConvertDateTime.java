@@ -1,8 +1,5 @@
-package com.baeldung.convert;
-
 import org.joda.time.Instant;
 
-import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
