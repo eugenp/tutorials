@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@PropertySource("application_cognito.yml")
+@PropertySource("cognito/application_cognito.yml")
 public class CognitoWebConfiguration implements WebMvcConfigurer {
 
     @Override
