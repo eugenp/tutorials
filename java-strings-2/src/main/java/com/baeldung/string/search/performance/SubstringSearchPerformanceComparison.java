@@ -53,7 +53,6 @@ public class SubstringSearchPerformanceComparison {
 
     @Benchmark
     public boolean searchWithPattern() {
-        return pattern.matcher(message)
-            .find();
+        return pattern.matcher(message).find();
     }
 }
