@@ -381,7 +381,7 @@
                 <!-- <module>core-java-12</module> --> <!-- We haven't upgraded to java 12. Fixing in BAEL-10841 -->
                 <module>core-java-8</module>
                 <module>core-java-8-2</module>
-		<module>core-java-lambdas</module>
+				<module>core-java-lambdas</module>
                 <!--<module>core-java-9</module> --> <!-- We haven't upgraded to java 9. Fixing in BAEL-10841 -->
                 <!--<module>core-java-os</module> --> <!-- We haven't upgraded to java 9.-->
                 <module>core-java-arrays</module>
@@ -542,6 +542,7 @@
 				
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
+				<module>spring-security-kerberos</module>
 					
 			</modules>
 
@@ -769,6 +770,7 @@
 				
 				<module>tensorflow-java</module>
 				<module>spring-boot-flowable</module>
+				<module>spring-security-kerberos</module>
                 
             </modules>
 
@@ -913,6 +915,7 @@
 				<module>persistence-modules/spring-hibernate-5</module>
 				
 				<module>spring-boot-flowable</module>
+				<module>spring-security-kerberos</module>
 			</modules>
 
 		</profile>
