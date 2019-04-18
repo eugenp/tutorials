@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 import com.baeldung.hexagonal.adapters.ConsoleOrderServiceAdapter;
 import com.baeldung.hexagonal.core.OrderGuiceModule;
+import com.baeldung.hexagonal.exception.ItemNotFoundException;
 import com.baeldung.hexagonal.ports.IOrderService;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 public class HexagonalClientApp {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws ItemNotFoundException {
         Injector injector = Guice.createInjector(new OrderGuiceModule());
         IOrderService orderService = injector.getInstance(IOrderService.class);
         try (final Scanner scanner = new Scanner(System.in)) {
