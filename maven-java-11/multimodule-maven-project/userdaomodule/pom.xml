@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.baeldung.multimoduleproject</groupId>
+        <artifactId>multimoduleproject</artifactId>
+        <version>1.0</version>
+    </parent>
+    <groupId>com.baeldung.userdao</groupId>
+    <artifactId>userdao</artifactId>
+    <packaging>jar</packaging>
+    <name>UserDaoModule</name>
+    <dependencies>
+        <dependency>
+            <groupId>com.baeldung.entity</groupId>
+            <artifactId>entity</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baeldung.dao</groupId>
+            <artifactId>dao</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
