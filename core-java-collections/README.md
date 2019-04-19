@@ -3,7 +3,7 @@
 ## Core Java Collections Cookbooks and Examples
 
 ### Relevant Articles: 
-- [Java - Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
+- [Java – Combine Multiple Collections](http://www.baeldung.com/java-combine-multiple-collections)
 - [HashSet and TreeSet Comparison](http://www.baeldung.com/java-hashset-vs-treeset)
 - [Collect a Java Stream to an Immutable Collection](http://www.baeldung.com/java-stream-immutable-collection)
 - [Introduction to the Java ArrayDeque](http://www.baeldung.com/java-array-deque)
@@ -33,3 +33,4 @@
 - [Differences Between HashMap and Hashtable](https://www.baeldung.com/hashmap-hashtable-differences)
 - [Java ArrayList vs Vector](https://www.baeldung.com/java-arraylist-vs-vector)
 - [Defining a Char Stack in Java](https://www.baeldung.com/java-char-stack)
+- [Time Comparison of Arrays.sort(Object[]) and Arrays.sort(int[])](https://www.baeldung.com/arrays-sortobject-vs-sortint)
