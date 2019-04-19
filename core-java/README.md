@@ -51,3 +51,4 @@
 - [Java Bitwise Operators](https://www.baeldung.com/java-bitwise-operators)
 - [Guide to Creating and Running a Jar File in Java](https://www.baeldung.com/java-create-jar)
 - [Making a JSON POST Request With HttpURLConnection](https://www.baeldung.com/httpurlconnection-post)
+- [Run Jar application with command line arguments](http://inprogress.baeldung.com/run-jar-application-with-command-line-arguments)
