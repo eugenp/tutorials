@@ -56,9 +56,9 @@ public class DeleteFromRepositoryUnitTest {
     @Test
     @Transactional
     public void whenDeleteFromDerivedQuery_thenDeletingShouldBeSuccessful() {
-        repository.deleteByTitle("The Hobbit");
+        long deletedRecords = repository.deleteByTitle("The Hobbit");
 
-        assertThat(repository.count()).isEqualTo(1);
+        assertThat(deletedRecords).isEqualTo(1);
     }
 
     @Test
