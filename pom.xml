@@ -436,6 +436,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
+                <module>httpclient-simple</module>
                 <module>hystrix</module>
 
                 <module>image-processing</module>
@@ -1103,6 +1104,7 @@
                 <module>hazelcast</module>
                 <module>helidon</module>
                 <module>httpclient</module>
+                <module>httpclient-simple</module>
                 <module>hystrix</module>
 
                 <module>image-processing</module>
