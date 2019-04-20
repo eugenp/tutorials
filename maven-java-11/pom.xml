@@ -5,6 +5,9 @@
     <artifactId>maven-java-11</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
+    <modules>
+        <name>MultimoduleProject</name>
+    </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
