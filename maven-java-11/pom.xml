@@ -5,7 +5,12 @@
     <artifactId>maven-java-11</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>MavenJava11</name>
+    <name>maven-java-11</name>
+    <parent>
+		<artifactId>parent-modules</artifactId>
+		<groupId>com.baeldung</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
     <modules>
         <name>multimoduleproject</name>
     </modules>
