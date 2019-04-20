@@ -7,7 +7,7 @@
     <packaging>pom</packaging>
     <name>MavenJava11</name>
     <modules>
-        <name>MultimoduleProject</name>
+        <name>multimoduleproject</name>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
