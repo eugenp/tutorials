@@ -41,10 +41,10 @@
     </build>
     
     <modules>
-        <module>EntitiyProject</module>
-        <module>DaoProject</module>
-        <module>UserDaoProject</module>
-        <module>MainAppProject</module>
+        <module>EntitiyModule</module>
+        <module>DaoModule</module>
+        <module>UserDaoModule</module>
+        <module>MainAppModule</module>
     </modules>
     
     <properties>
