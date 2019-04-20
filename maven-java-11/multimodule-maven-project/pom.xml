@@ -41,7 +41,7 @@
     </build>
     
     <modules>
-        <module>EntitiyModule</module>
+        <module>EntityModule</module>
         <module>DaoModule</module>
         <module>UserDaoModule</module>
         <module>MainAppModule</module>
