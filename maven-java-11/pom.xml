@@ -5,6 +5,7 @@
     <artifactId>maven-java-11</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
+    <name>MavenJava11</name>
     <modules>
         <name>MultimoduleProject</name>
     </modules>
