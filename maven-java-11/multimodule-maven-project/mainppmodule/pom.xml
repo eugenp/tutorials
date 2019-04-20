@@ -9,7 +9,7 @@
     <groupId>com.baeldung.mainapp</groupId>
     <artifactId>mainapp</artifactId>
     <packaging>jar</packaging>
-    <name>MainAppModule</name>
+    <name>mainappmodule</name>
     
     <dependencies>
         <dependency>
