@@ -1,31 +1,30 @@
 package org.baeldung.httpclient;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.conn.ClientConnectionManager;
-import org.apache.http.conn.scheme.Scheme;
-import org.apache.http.conn.scheme.SchemeRegistry;
-import org.apache.http.conn.ssl.NoopHostnameVerifier;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
-import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
-import org.apache.http.conn.ssl.TrustStrategy;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.conn.PoolingClientConnectionManager;
-import org.apache.http.ssl.SSLContextBuilder;
-import org.apache.http.ssl.SSLContexts;
-import org.junit.Test;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertThat;
 
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLHandshakeException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLHandshakeException;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.config.Registry;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
+import org.apache.http.conn.ssl.TrustStrategy;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+import org.apache.http.ssl.SSLContextBuilder;
+import org.apache.http.ssl.SSLContexts;
+import org.junit.Test;
 
 /**
  * This test requires a localhost server over HTTPS <br>
@@ -50,16 +49,22 @@ public class HttpsClientSslLiveTest {
             .getStatusCode(), equalTo(200));
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public final void givenHttpClientPre4_3_whenAcceptingAllCertificates_thenCanConsumeHttpsUriWithSelfSignedCertificate() throws IOException, GeneralSecurityException {
         final TrustStrategy acceptingTrustStrategy = (certificate, authType) -> true;
-        final SSLSocketFactory sf = new SSLSocketFactory(acceptingTrustStrategy, SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-        final SchemeRegistry registry = new SchemeRegistry();
-        registry.register(new Scheme("https", 443, sf));
-        final ClientConnectionManager ccm = new PoolingClientConnectionManager(registry);
+        
+        final SSLContext sslContext = SSLContexts.custom()
+                .loadTrustMaterial(null, acceptingTrustStrategy)
+                .build();
 
-        final CloseableHttpClient httpClient = new DefaultHttpClient(ccm);
+        final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create().register("https", sslsf).build();
+        PoolingHttpClientConnectionManager clientConnectionManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+
+        final CloseableHttpClient httpClient = HttpClients.custom()
+                .setSSLSocketFactory(sslsf)
+                .setConnectionManager(clientConnectionManager)
+                .build();
 
         final HttpGet getMethod = new HttpGet(HOST_WITH_SSL);
         final HttpResponse response = httpClient.execute(getMethod);
@@ -76,10 +81,9 @@ public class HttpsClientSslLiveTest {
             .loadTrustMaterial(null, acceptingTrustStrategy)
             .build();
 
-        final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        final SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
 
         final CloseableHttpClient httpClient = HttpClients.custom()
-            .setHostnameVerifier(SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER)
             .setSSLSocketFactory(sslsf)
             .build();
 
