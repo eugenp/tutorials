@@ -43,7 +43,7 @@
     <modules>
         <module>entitymodule</module>
         <module>daomodule</module>
-        <module>userDaomodule</module>
+        <module>userdaomodule</module>
         <module>mainappmodule</module>
     </modules>
     
