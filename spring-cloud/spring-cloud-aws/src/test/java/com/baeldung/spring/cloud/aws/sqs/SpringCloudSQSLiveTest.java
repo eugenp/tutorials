@@ -26,12 +26,19 @@ import java.util.concurrent.CountDownLatch;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * 
+ * To run this Live Test, we need to have an AWS account and have API keys generated for programmatic access.
+ * 
+ * Check the README file in this module for more information.
+ *
+ */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @TestPropertySource("classpath:application-test.properties")
-public class SpringCloudSQSIntegrationTest {
+public class SpringCloudSQSLiveTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(SpringCloudSQSIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(SpringCloudSQSLiveTest.class);
 
     @Autowired
     @Lazy

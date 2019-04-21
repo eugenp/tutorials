@@ -16,12 +16,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.ec2.AmazonEC2;
 
+/**
+ * 
+ * To run this Live Test, we need to have an AWS account and have API keys generated for programmatic access.
+ * 
+ * Check the README file in this module for more information.
+ *
+ */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @TestPropertySource("classpath:application-test.properties")
-public class EC2MetadataIntegrationTest {
+public class EC2MetadataLiveTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(EC2MetadataIntegrationTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(EC2MetadataLiveTest.class);
 
     private boolean serverEc2;
 
