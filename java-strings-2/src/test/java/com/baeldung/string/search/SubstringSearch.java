@@ -35,8 +35,7 @@ public class SubstringSearch {
         Assert.assertFalse("Hey Ho, let's go".contains("hey"));
 
         // contains will return true, because it's all lowercase
-        Assert.assertTrue("Hey Ho, let's go".toLowerCase()
-            .contains("hey"));
+        Assert.assertTrue("Hey Ho, let's go".toLowerCase().contains("hey"));
 
         // contains will return false, because 'jey' can't be found
         Assert.assertFalse("Hey Ho, let's go".contains("jey"));
