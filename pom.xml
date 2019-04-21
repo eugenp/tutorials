@@ -525,6 +525,7 @@
                 <module>protobuffer</module>
 
                 <module>persistence-modules</module>
+								<module>quarkus</module>
 
                 <module>rabbitmq</module>
                 <!-- <module>raml</module> --> <!-- Not a maven project -->
