@@ -33,13 +33,13 @@ public class ClientLiveTest {
 
     @Test
     public final void whenSecuredRestApiIsConsumed_then200OK() {
-        final ResponseEntity<Foo> responseEntity = secureRestTemplate.exchange("http://localhost:8082/spring-security-rest-basic-auth/api/foos/1", HttpMethod.GET, null, Foo.class);
+        final ResponseEntity<Foo> responseEntity = secureRestTemplate.exchange("http://localhost:8082/httpclient-simple/api/foos/1", HttpMethod.GET, null, Foo.class);
         assertThat(responseEntity.getStatusCode().value(), is(200));
     }
 
     @Test(expected = ResourceAccessException.class)
     public final void whenHttpsUrlIsConsumed_thenException() {
-        final String urlOverHttps = "https://localhost:8443/spring-security-rest-basic-auth/api/bars/1";
+        final String urlOverHttps = "https://localhost:8443/httpclient-simple/api/bars/1";
         final ResponseEntity<String> response = new RestTemplate().exchange(urlOverHttps, HttpMethod.GET, null, String.class);
         assertThat(response.getStatusCode().value(), equalTo(200));
     }
