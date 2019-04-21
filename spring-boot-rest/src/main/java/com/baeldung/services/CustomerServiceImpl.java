@@ -1,11 +1,12 @@
-package org.baeldung.web.service;
+package com.baeldung.services;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.baeldung.persistence.model.Customer;
 import org.springframework.stereotype.Service;
+
+import com.baeldung.persistence.model.Customer;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
