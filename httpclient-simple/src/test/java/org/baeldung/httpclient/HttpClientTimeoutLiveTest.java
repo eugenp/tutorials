@@ -1,19 +1,19 @@
 package org.baeldung.httpclient;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.junit.Assert.assertThat;
+
+import java.io.IOException;
+
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.config.SocketConfig;
-import org.apache.http.conn.HttpHostConnectException;
+import org.apache.http.conn.ConnectTimeoutException;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.After;
 import org.junit.Test;
-
-import java.io.IOException;
-
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.assertThat;
 
 public class HttpClientTimeoutLiveTest {
 
@@ -71,7 +71,7 @@ public class HttpClientTimeoutLiveTest {
     /**
      * This simulates a timeout against a domain with multiple routes/IPs to it (not a single raw IP)
      */
-    @Test(expected = HttpHostConnectException.class)
+    @Test(expected = ConnectTimeoutException.class)
     public final void givenTimeoutIsConfigured_whenTimingOut_thenTimeoutException() throws IOException {
         final int timeout = 3;
 
